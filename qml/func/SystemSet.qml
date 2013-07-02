@@ -37,21 +37,45 @@ Item {
             ListModel {
                 id: clearModel
                 ListElement {
-                    title: "清理垃圾"
-                    picture: "../img/icons/user.png"
-                    detailstr: "清理系统垃圾，让系统运行跟流畅"
+                    iconName: "homepage.png"
+                    method: "Launcher"
+                    text: "launcher"
                 }
                 ListElement {
-                    title: "清理痕迹"
-                    picture: "../img/icons/at.png"
-                    detailstr: "清理使用计算机时留下的各种痕迹，保护个人隐私"
+                    title: "clearrubbish.png"
+                    picture: "Search"
+                    detailstr: "search"
                 }
                 ListElement {
-                    title: "清理插件"
-                    picture: "../img/icons/pen.png"
-                    detailstr: "清理电脑日常使用中下载的插件，提高系统性能"
+                    title: "optimalacceleration.png"
+                    picture: "Panel"
+                    detailstr: "panel"
+                }
+                ListElement {
+                    iconName: "searchtrojan.png"
+                    method: "Switcher"
+                    text: "switcher"
+                }
+                ListElement {
+                    title: "computerclinic.png"
+                    picture: "WebApps"
+                    detailstr: "search"
+                }
+                ListElement {
+                    title: "optimalacceleration.png"
+                    picture: "Panel"
+                    detailstr: "panel"
                 }
             }
+
+
+
+            SetBtn {iconName: "homepage.png"; method: "Launcher"; text: "launcher"}
+            SetBtn {iconName: "clearrubbish.png"; method: "Search"; text: "search"}
+            SetBtn {iconName: "optimalacceleration.png"; method: "Panel"; text: "panel"}
+            SetBtn {iconName: "searchtrojan.png"; method: "Switcher"; text: "switcher"}
+            SetBtn {iconName: "computerclinic.png"; method: "WebApps"; text: "webapps"}
+            SetBtn {iconName: "fixbug.png"; method: "Additonal_uinty"; text: "additonal_uinty"}
 //            ListModel {
 //                id: scanModel
 //                ListElement {
