@@ -36,6 +36,8 @@ DispatcherQml::DispatcherQml(QObject *parent) :
                                "/",
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
+    QObject::connect(iface,SIGNAL(clear_browser(QString)),this,SLOT(show_progress_clear_rubbish(QString)));
+    QObject::connect(iface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
 //    QObject::connect(iface,SIGNAL(clear_rubbish(QString)),this,SLOT(show_progress_clear_rubbish(QString)));
     //呼叫远程的pc_message，参数为num
     //QDBusReply<int> reply = iface.call("pc_message", num);
@@ -69,7 +71,6 @@ QString DispatcherQml::get_value(QString key)
 {
     QVariant tt = myinfo.value(key);
     return tt.toString();
-//    return "aa";
 }
 
 int DispatcherQml::get_add_value()
@@ -79,11 +80,18 @@ int DispatcherQml::get_add_value()
     return tt;
 }
 
-QString DispatcherQml::show_progress_clear_rubbish(QString str)
+QString DispatcherQml::show_progress_clear_rubbish(QString msg)
 {
-    qDebug() << str;
-    emit myStringChanged("Kobe test for fastclear button and dbus communication");
-    return str;
+    qDebug() << "kobekoeb***********";
+    qDebug() << msg;
+//    emit myStringChanged("Kobe test for fastclear button and dbus communication");
+    return msg;
+}
+
+QString DispatcherQml::show_signal(QString msg) {
+    qDebug() << "pspspspspps***********";
+    qDebug() << msg;
+    return msg;
 }
 
 void DispatcherQml::send_btn_msg(QString str)
@@ -142,6 +150,40 @@ void DispatcherQml::check_screen_break_point() {
 
 void DispatcherQml::custom_plymouth_bg(QString imagepath) {
     QDBusReply<void> reply = iface->call("custom_plymouth", imagepath);
+}
+
+//QMap<QString, QStringList> search_the_same_file(QString imagepath);
+
+//QMap<QString, QStringList> DispatcherQml::search_the_same_file(QString path) {
+//    QDBusReply<QMap<QString, QStringList> > reply = iface->call("search_the_same", path);
+////    if (reply.isValid()) {
+////        QMap<QString, QStringList> value = reply.value();
+//////        myinfo = value;
+////        qDebug() << value;
+////    }
+////    else {
+////        qDebug() << "get same file failed!";
+////    }
+//}
+
+int DispatcherQml::get_record_number(QString mode) {
+    QDBusReply<int> reply = iface->call("get_the_record", mode);
+    if (reply.isValid()) {
+        int value = reply.value();
+        qDebug() << "value start";
+        qDebug() << value;
+        qDebug() << "value end";
+        return value;
+    }
+    else {
+        qDebug() << "get record number failed!";
+        return 0;
+    }
+}
+
+
+void DispatcherQml::clean_browser_record(QString mode) {
+    QDBusReply<void> reply = iface->call("clean_the_browser", mode);
 }
 
 void DispatcherQml::set_str(QString str)

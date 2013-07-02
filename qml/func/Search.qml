@@ -258,7 +258,30 @@ Item {
                                 opacity: !fade.checked || containsMouse ? 1 : 0.5
                                 Behavior on scale { NumberAnimation { easing.type: Easing.OutCubic ; duration: 120} }
                                 Behavior on opacity { NumberAnimation { easing.type: Easing.OutCubic ; duration: 220} }
+                                onClicked: {
+                                    console.log("555555555555555555");
+                                    console.log(mydispather.get_record_number("cookies"));
+                                    console.log("666666666666666666");
+                                    console.log(mydispather.get_record_number("history"));
+                                    console.log("777777777777777777");
+                                }
                             }
+
+                            Button {
+                                width:200
+                                text: "Clean button"
+//                                scale: scale.checked && containsMouse ? 1.1 : 1
+//                                opacity: !fade.checked || containsMouse ? 1 : 0.5
+//                                Behavior on scale { NumberAnimation { easing.type: Easing.OutCubic ; duration: 120} }
+//                                Behavior on opacity { NumberAnimation { easing.type: Easing.OutCubic ; duration: 220} }
+                                onClicked: {
+                                    console.log("888888888");
+                                    mydispather.clean_browser_record("cookies")
+                                    mydispather.clean_browser_record("history")
+                                    console.log("9999999999");
+                                }
+                            }
+
                             Slider {
                                 value: 0.5
                                 scale: scale.checked && containsMouse ? 1.1 : 1

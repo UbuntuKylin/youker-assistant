@@ -48,6 +48,11 @@ public:
     Q_INVOKABLE void set_theme(QString theme);
     Q_INVOKABLE void check_screen_break_point();
     Q_INVOKABLE void custom_plymouth_bg(QString imagepath);
+
+//    Q_INVOKABLE QMap<QString, QStringList> search_the_same_file(QString path);
+    Q_INVOKABLE int get_record_number(QString mode);
+    Q_INVOKABLE void clean_browser_record(QString mode);
+
     //custom_plymouth
     QMap<QString, QVariant> myinfo;
     QDBusInterface *iface;
@@ -65,7 +70,8 @@ signals:
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
 
 public slots:
-    QString show_progress_clear_rubbish(QString);
+    QString show_progress_clear_rubbish(QString msg);
+    QString show_signal(QString msg);
 //    void setmyString(QString aString);
 //    QString myString();
 private:

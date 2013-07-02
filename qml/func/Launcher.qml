@@ -111,21 +111,6 @@ Rectangle {
 
     }//Column
 
-
-    //工具栏
-    Common.ToolBar {
-        id: toolBar
-        height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        button1Label: qsTr("返回")
-        button2Label: qsTr("确定")
-        onButton1Clicked: {
-//            pageStack.push(launcher);
-        }
-        onButton2Clicked: {
-//            if (screen.inListView == true) screen.inListView = false; else screen.inListView = true
-        }
-    }
-
 }
 
 

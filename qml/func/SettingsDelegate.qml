@@ -19,7 +19,8 @@ import RegisterMyType 0.1
 import "common" as Common
 
 Item {
-
+    id: mysettings
+    signal senditemset(string itemset)
     Column {
         anchors.fill: parent
         //---------------------Unity设置start---------------------
