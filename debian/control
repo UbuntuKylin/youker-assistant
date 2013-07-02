@@ -1,0 +1,19 @@
+Source: youker-assistant
+Section: gnome
+Priority: optional
+Maintainer: Ubuntu Kylin Team <ubuntukylin-members@list.launchpad.net>
+Build-Depends: debhelper (>= 9),
+               dh-translations,
+               pkg-config,
+               qtchooser,
+               libqt4-dev,
+               qt4-default,
+Standards-Version: 3.9.3
+Homepage: https://launchpad.net/youker-assistant
+
+Package: youker-assistant
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: Help users to manage system better
+ 'Youker Assistant' is aimed at helping all users to manage their linux system conveniently.

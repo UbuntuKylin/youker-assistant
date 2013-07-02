@@ -1,0 +1,10 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: i-help-you
+Upstream-Contact: Ubuntu Kylin Team <ubuntukylin-members@lists.launchpad.net>
+Source: https://launchpad.net/i-help-you
+
+Files: *
+Copyright: 2013, National University of Defense Technology(NUDT) & Kylin Ltd.
+License: GPL-3
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in `/usr/share/common-licenses/GPL-3'.
