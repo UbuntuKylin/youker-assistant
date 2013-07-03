@@ -64,6 +64,26 @@ DispatcherQml::DispatcherQml(QObject *parent) :
         qDebug() << "get thems msg failed!";
     }
 
+    QDBusReply<QMap<QString, QVariant> > reply2 = iface->call("search_the_same", "/home/kobe/a/");
+    if (reply2.isValid()) {
+        qDebug() << "aaaaaaaaaaaaa";
+        qDebug() << reply2.value();
+    }
+    else {
+        qDebug() << "search_the_same failed!";
+//        return "search_the_same has error";
+    }
+
+
+    QDBusReply<QStringList> reply3 = iface->call("search_the_large", "/home/kobe/a/");
+    if (reply3.isValid()) {
+        QStringList value = reply3.value();
+        qDebug() << value;
+    }
+    else {
+        qDebug() << "search_the_large failed!";
+    }
+
 
 }
 
@@ -184,6 +204,32 @@ int DispatcherQml::get_record_number(QString mode) {
 
 void DispatcherQml::clean_browser_record(QString mode) {
     QDBusReply<void> reply = iface->call("clean_the_browser", mode);
+}
+
+QMap<QString, QVariant> DispatcherQml::search_same_files(QString path) {
+    QDBusReply<QMap<QString, QVariant> > reply = iface->call("search_the_same", path);
+    if (reply.isValid()) {
+        qDebug() << "aaaaaaaaaaaaa";
+        qDebug() << reply.value();
+        return reply.value();
+    }
+    else {
+        qDebug() << "search_the_same failed!";
+//        return "search_the_same has error";
+    }
+}
+
+QStringList DispatcherQml::search_largest_file(QString path) {
+    QDBusReply<QStringList> reply = iface->call("search_the_large", path);
+    if (reply.isValid()) {
+        QStringList value = reply.value();
+        qDebug() << value;
+        return reply.value();
+    }
+    else {
+        qDebug() << "search_the_large failed!";
+//        return "search_the_large has error";
+    }
 }
 
 void DispatcherQml::set_str(QString str)
