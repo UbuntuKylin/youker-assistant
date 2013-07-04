@@ -52,6 +52,8 @@ public:
 //    Q_INVOKABLE QMap<QString, QStringList> search_the_same_file(QString path);
     Q_INVOKABLE int get_record_number(QString mode);
     Q_INVOKABLE void clean_browser_record(QString mode);
+    Q_INVOKABLE QMap<QString, QVariant> search_same_files(QString path);
+    Q_INVOKABLE QStringList search_largest_file(QString path);
 
     //custom_plymouth
     QMap<QString, QVariant> myinfo;
