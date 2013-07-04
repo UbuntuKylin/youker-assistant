@@ -62,54 +62,84 @@
              color: "black"; opacity: 0.4
          }
 
-         Column {
-             id: launchercolumn
-             spacing: 10
+//         Column {
+//             id: launchercolumn
+//             spacing: 10
+//             visible: false
+//             anchors {
+//                 left: parent.left; leftMargin: 10
+//                 right: parent.right; rightMargin: 10
+//                 top: parent.top; topMargin: 120
+//             }
+//             Text { font.bold: true; color: "white"; elide: Text.ElideRight; text: "container.photoTitle"; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "Size: "; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "Type: "; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "Author: "; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "Published: "; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "container.photoTags"; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "container.photoTags"; width: parent.width }
+//         }
+
+
+//         Column {
+//             id: searchcolumn
+//             visible: false
+//             spacing: 10
+//             anchors {
+//                 left: parent.left; leftMargin: 10
+//                 right: parent.right; rightMargin: 10
+//                 top: parent.top; topMargin: 120
+//             }
+//             Text { font.bold: true; color: "white"; elide: Text.ElideRight; text: "container.photoTitle"; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "jjj: "; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "jjj: "; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "aaa: "; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "bbb: "; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "ccc.photoTags"; width: parent.width }
+//             Text { color: "white"; elide: Text.ElideRight; text: "ggg.photoTags"; width: parent.width }
+//         }
+
+         Launcher {
+             id: launchpage
              visible: false
-             anchors {
-                 left: parent.left; leftMargin: 10
-                 right: parent.right; rightMargin: 10
-                 top: parent.top; topMargin: 120
-             }
-             Text { font.bold: true; color: "white"; elide: Text.ElideRight; text: "container.photoTitle"; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "Size: "; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "Type: "; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "Author: "; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "Published: "; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "container.photoTags"; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "container.photoTags"; width: parent.width }
          }
-
-
-         Column {
-             id: searchcolumn
+         Search {
+             id: searchpage
              visible: false
-             spacing: 10
-             anchors {
-                 left: parent.left; leftMargin: 10
-                 right: parent.right; rightMargin: 10
-                 top: parent.top; topMargin: 120
-             }
-             Text { font.bold: true; color: "white"; elide: Text.ElideRight; text: "container.photoTitle"; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "jjj: "; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "jjj: "; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "aaa: "; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "bbb: "; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "ccc.photoTags"; width: parent.width }
-             Text { color: "white"; elide: Text.ElideRight; text: "ggg.photoTags"; width: parent.width }
+         }
+         Panel {
+             id: panelpage
+             visible: false
          }
 
 
          states: [
              State {
                  name: "Launcher"; when: settigsDetails.setTitle == "launcher"
-                 PropertyChanges { target: launchercolumn; x: 0; visible: true }
-                 PropertyChanges { target: searchcolumn; x: -(parent.width * 1.5) }
+                 PropertyChanges { target: launchpage; x: 0; visible: true }
+                 PropertyChanges { target: searchpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: panelpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: launchercolumn; x: 0; visible: true }
+//                 PropertyChanges { target: searchcolumn; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: launchpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "Search"; when: settigsDetails.setTitle == "search"
-                 PropertyChanges { target: searchcolumn; x: 0; visible: true }
-                 PropertyChanges { target: launchercolumn; x: -(parent.width * 1.5) }
+                 PropertyChanges { target: searchpage; x: 0; visible: true }
+                 PropertyChanges { target: launchpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: panelpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: searchcolumn; x: 0; visible: true }
+//                 PropertyChanges { target: launchercolumn; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: launchpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "Panel"; when: settigsDetails.setTitle == "panel"
+                 PropertyChanges { target: panelpage; x: 0; visible: true }
+                 PropertyChanges { target: launchpage;visible:false/* x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: searchpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: launchpage; x: 0; visible: true }
+//                 PropertyChanges { target: launchercolumn;visible:false/* x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: searchcolumn; visible:false/*x: -(parent.width * 1.5)*/ }
              }
          ]
 

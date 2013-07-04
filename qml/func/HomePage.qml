@@ -84,6 +84,13 @@ Rectangle {
                 text: qsTr("第一期工程 20130601")
                 width: parent.width - 12
             }
+            Button {
+                id: mybtn
+                text: qsTr("测试")
+                onClicked: {
+                    mydispather.new_object_test();
+                }
+            }
         }
     }
     //------------------------------------------------

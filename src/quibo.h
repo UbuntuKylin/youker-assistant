@@ -18,7 +18,8 @@ class QUIBO : public QWidget
 public:
     explicit QUIBO(QWidget *parent = 0);
     ~QUIBO();
-    
+
+    void myshow();
 private:
     Ui::QUIBO *ui;
 

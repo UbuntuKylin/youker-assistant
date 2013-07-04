@@ -38,14 +38,20 @@ Item {
                 Image {
                     id: seticon
                     source: icon
-                    anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors.horizontalCenter: parent.horizontalCenter
                 }
                 Text {
                     id: btnText
-                    anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors.horizontalCenter: parent.horizontalCenter
                     color: "green"
                     text: qsTr(name)
                 }
+            }
+            Image {
+                id: btnImg
+                anchors.fill: parent
+//                anchors.horizontalCenter: parent.horizontalCenter
+                source: ""
             }
         }
 
@@ -83,7 +89,19 @@ Item {
             }
         ]
     }
-    MouseArea { anchors.fill: wrapper; onClicked: iconClicked() }
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        onEntered: btnImg.source = "../img/toolWidget/menu_hover.png"
+        onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
+        onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
+        onExited: btnImg.source = ""
+        onClicked: {
+            iconClicked();
+            //kobe:选中项深色块移动
+//            wrapper.GridView.view.currentIndex = index;
+        }
+    }
 }
 
 

@@ -32,6 +32,7 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
+#include "quibo.h"
 
 class DispatcherQml : public QObject
 {
@@ -55,6 +56,9 @@ public:
     Q_INVOKABLE QMap<QString, QVariant> search_same_files(QString path);
     Q_INVOKABLE QStringList search_largest_file(QString path);
 
+
+    Q_INVOKABLE void new_object_test();
+
     //custom_plymouth
     QMap<QString, QVariant> myinfo;
     QDBusInterface *iface;
@@ -62,6 +66,8 @@ public:
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE QString get_str();
     QString notify_str;
+
+
 //    Q_INVOKABLE QString get_str(QString str);
 
 //    Q_INVOKABLE QMap <int, QString> data;
@@ -78,6 +84,7 @@ public slots:
 //    QString myString();
 private:
 //    QString m_string;
+    QUIBO *qtui;
 };
 
 #endif // CONTROL_H
