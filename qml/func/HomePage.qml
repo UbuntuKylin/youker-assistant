@@ -28,9 +28,18 @@ import "common" as Common
 'home_path': '/home/kobe', 'cpu': 'Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz'}
 */
 Rectangle {
+    id: home
     width: parent.width
     height: 460
     property Dispatcher dis: mydispather
+
+    function openFile(file) {
+         var component = Qt.createComponent(file)
+         if (component.status == Component.Ready)
+             pageStack.push(component);
+         else
+             console.log("Error loading component:", component.errorString());
+     }
 
 
     Common.Border {
@@ -126,12 +135,130 @@ Rectangle {
                 id: mybtn
                 text: qsTr("测试")
                 onClicked: {
-                    mydispather.new_object_test();
+
+                    //method 1
+//                     var component = Qt.createComponent("MyDialog.qml");
+//                     if (component.status == Component.Ready) {
+////                         var button = component.createObject(home);
+////                         button.color = "red";
+//                         component.createObject(home);
+//                     }
+
+
+                    ////method 2
+//                    pageLoader.source = "MyDialog.qml"
+
+                    //method 3
+//                    mydialog.open();
+
+                    //method 4
+                    home.openFile("MyDialog.qml");
                 }
             }
         }
+
+
     }
     //------------------------------------------------
+
+    //Loader { id: pageLoader }
+    //对话框 //method 3
+//    MyDialog {
+//        id: mydialog
+//        content:
+//            Column {
+//                anchors.centerIn: parent
+//                spacing: 10
+//                Label {
+//                    id: lable
+//                    text: qsTr("点击鼠标左键开始,右键结束")
+//                    color: "white"
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                }
+//                Row {
+//                    spacing: 10
+//                    Button {
+//                        id: quitbtn
+//                        text: qsTr("取消")
+//                        onClicked: {
+//                            mydialog.close();
+//                            mydialog.rejected();
+//                        }
+//                    }
+//                    Button {
+//                        id: okbtn
+//                        text: qsTr("确定")
+//                        onClicked: {
+//                            mydispather.new_object_test();
+//                        }
+//                    }
+//                }
+//        }
+//        onRejected: console.log("Dialog closed.")
+//    }
+
+
+
+
+
+//    MyDialog {
+//        id: mydialog
+
+//        property alias titleText: titleText.text
+//        property alias message: message.text
+
+//        signal accepted();
+
+//        Text{
+//            id: titleText
+//            anchors.bottom: message.top
+//            anchors.margins: 20
+//            width: parent.width
+//            color: "white"
+//            font.pointSize: 40
+//            font.bold: true
+//            horizontalAlignment: Text.AlignHCenter
+//            wrapMode: Text.Wrap
+//        }
+
+//        Text{
+//            id:message
+//            anchors.centerIn: parent
+//            width: parent.width
+//            color: "white"
+//            font.pointSize: 25
+//            horizontalAlignment: Text.AlignHCenter
+//            wrapMode: Text.Wrap
+//        }
+
+//        Button{
+//            id: acceptButton
+//            text: "OK"
+//            anchors.top: message.bottom
+//            anchors.topMargin: 20
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            width: parent.width * 0.5
+//            onClicked: {
+//                close()
+//                accepted()
+//            }
+//        }
+
+//        Button{
+//            id: rejectButton
+//            text: "Cancel"
+//            anchors.top: acceptButton.bottom
+//            anchors.topMargin: 10
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            width: parent.width * 0.5
+//            onClicked: {
+//                close()
+//                rejected()
+//            }
+//        }
+//    }
+
+
 
 
     Column {
