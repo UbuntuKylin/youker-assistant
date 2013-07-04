@@ -68,7 +68,6 @@ public:
     QString notify_str;
 
 
-    QUIBO *quibo;
 //    Q_INVOKABLE QString get_str(QString str);
 
 //    Q_INVOKABLE QMap <int, QString> data;
@@ -85,6 +84,7 @@ public slots:
 //    QString myString();
 private:
 //    QString m_string;
+    QUIBO *qtui;
 };
 
 #endif // CONTROL_H

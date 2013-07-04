@@ -83,8 +83,6 @@ DispatcherQml::DispatcherQml(QObject *parent) :
     else {
         qDebug() << "search_the_large failed!";
     }
-
-
 }
 
 QString DispatcherQml::get_value(QString key)
@@ -234,7 +232,8 @@ QStringList DispatcherQml::search_largest_file(QString path) {
 
 
 void DispatcherQml::new_object_test() {
-    quibo = new QUIBO();
+    delete this->qtui;
+    this->qtui = new QUIBO();
 }
 
 void DispatcherQml::set_str(QString str)
