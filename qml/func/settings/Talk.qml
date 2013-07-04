@@ -50,15 +50,27 @@ Rectangle {
         ListElement { text: "baby" }
     }
 
+    Connections {
+        target: toolBar
+        //按下确定按钮
+        onButton2Clicked: {
+//            console.log("111111111111");
+//            console.log(settigsDetails.setTitle);
+            if (settigsDetails.setTitle == "talk")
+                console.log(talklabel.text);
+//            console.log("222222222222");
+        }
+    }
+
     Column {
         spacing: 20
         anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
             Label {
-                id: modelabel
+                id: talklabel
                 width: 110
-                text: qsTr("模式:")
+                text: qsTr("ps6-model")
             }
             ComboBox {
                 id: combobox

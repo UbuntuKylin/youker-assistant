@@ -33,7 +33,7 @@ Rectangle {
     function iconClicked() {
         scaleMe.state = "Details";
         settigsDetails.setTitle = flag;
-        console.log(settigsDetails.setTitle);
+//        console.log(settigsDetails.setTitle);
     }
 
     //竖列
@@ -85,6 +85,12 @@ Rectangle {
         target: toolBar
         //按下返回按钮
         onButton1Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+        //按下确定按钮
+//        onButton2Clicked: {
+//            console.log("111111111111");
+//            console.log(settigsDetails.setTitle);
+//            console.log("222222222222");
+//        }
     }
 
     states: [
