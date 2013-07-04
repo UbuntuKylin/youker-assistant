@@ -65,8 +65,8 @@ Item {
             }
 
             GridView {
-                id: listView
-                height: parent.height
+                id: gridView
+                height: parent.height/3
                 width: parent.width
                 anchors.top: parent.top
                 anchors.topMargin: 45
@@ -74,6 +74,23 @@ Item {
                 delegate: SettingsDelegate {}
                 cacheBuffer: 1000
                 cellWidth: (parent.width-2)/8; cellHeight: cellWidth
+//                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+//                focus: true
+            }
+
+            GridView {
+                id: gridView1
+                height: parent.height/3
+                width: parent.width
+                anchors.top: gridView.bottom
+                anchors.topMargin: 45
+                model: clearModel
+                delegate: SettingsDelegate {}
+                cacheBuffer: 1000
+                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
+//                highlight: Rectangle { color: "red"; radius: 5 }//kobe:设置选中项深色块
+////                focus: true
+//                focus: false
             }
 
             SettingsDetails {
@@ -108,105 +125,6 @@ Item {
     }
 }
 
-//Item {
-//    id: screen; width: parent.width; height: 420
-//    property Dispatcher dis: mydispather
-//    property bool inListView : false
-
-//    Rectangle {
-//        id: background
-//        anchors.fill: parent; color: "white"
-//        Item {
-//            id: views
-//            width: parent.width
-//            anchors.top: parent.top
-//            anchors.topMargin: titleBar.height + 45
-//            anchors.bottom: toolBar.top
-//            ListModel {
-//                id: clearModel
-//                ListElement {
-//                    icon: "../img/toolWidget/homepage.png"
-//                    name: "Launcher"
-//                    flag: "launcher"
-//                }
-//                ListElement {
-//                    icon: "../img/toolWidget/clearrubbish.png"
-//                    name: "Search"
-//                    flag: "search"
-//                }
-//                ListElement {
-//                    icon: "../img/toolWidget/optimalacceleration.png"
-//                    name: "Panel"
-//                    flag: "panel"
-//                }
-//                ListElement {
-//                    icon: "../img/toolWidget/searchtrojan.png"
-//                    name: "Switcher"
-//                    flag: "switcher"
-//                }
-//                ListElement {
-//                    icon: "../img/toolWidget/computerclinic.png"
-//                    name: "WebApps"
-//                    flag: "search"
-//                }
-//                ListElement {
-//                    icon: "../img/toolWidget/optimalacceleration.png"
-//                    name: "Panel"
-//                    flag: "panel"
-//                }
-//            }
-//            ListView {
-//                id: gridview; model: clearModel; delegate: SettingsDelegate {}
-////                cacheBuffer: 1000
-////                cellWidth: (parent.width-2)/4; cellHeight: cellWidth; width: parent.width; height: parent.height
-//            }
-
-//            Common.RotateDetails { id: rotateDetails; width: parent.width; anchors.left: views.right; height: parent.height }
-
-//            Item { id: foreground; anchors.fill: parent }
-//        }
-//        //工具栏
-//        Common.ToolBar {
-//            id: toolBar
-////            visible: false
-//            height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("无效 back")
-//            button2Label: qsTr("页面切换测试 ok")
-//            onButton1Clicked: {
-
-//            }
-//            onButton2Clicked: {
-//            }
-//        }
-
-
-//        Connections {
-//            target: rotateDetails
-//            onClosed: {
-//                if (background.state == "DetailedView") {
-//                    background.state = '';
-////                    imageDetails.photoUrl = "";
-//                }
-//            }
-//        }
-
-//        states: State {
-//            name: "DetailedView"
-//            PropertyChanges { target: views; x: -parent.width }
-//            PropertyChanges { target: toolBar; button1Label: qsTr("开始翻转") }
-//            PropertyChanges {
-//                target: toolBar
-//                onButton1Clicked: if (rotateDetails.state=='') rotateDetails.state='Back'; else rotateDetails.state=''
-//            }
-//            PropertyChanges { target: toolBar; button2Label: qsTr("返回列表") }
-//            PropertyChanges { target: toolBar; onButton2Clicked: rotateDetails.closed() }
-//        }
-
-//        transitions: Transition {
-//            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
-//        }
-//    }
-//}
 
 
 
