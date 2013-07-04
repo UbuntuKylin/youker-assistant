@@ -18,91 +18,217 @@ import QtQuick 1.1
 import RegisterMyType 0.1
 import "common" as Common
 
-Item {
-    id: wrapper; width: GridView.view.cellWidth; height: GridView.view.cellHeight
+Rectangle {
+    id: scaleMe
+    scale: 0.0
+    Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+    //竖列高度和宽度
+//    width: 78
+//    height: 82
+    //横列高度和宽度
+    width: 120
+    height: 78
+    SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
+    color: "transparent"
     function iconClicked() {
         scaleMe.state = "Details";
         settigsDetails.setTitle = flag;
         console.log(settigsDetails.setTitle);
     }
-    Item {
-        anchors.centerIn: parent
-        scale: 0.0
-        Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-        id: scaleMe
-        Item {
-            width: 77
-            height: 77
-            anchors.centerIn: parent
-            Column {
-                Image {
-                    id: seticon
-                    source: icon
-//                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-                Text {
-                    id: btnText
-//                    anchors.horizontalCenter: parent.horizontalCenter
-                    color: "green"
-                    text: qsTr(name)
-                }
-            }
-            Image {
-                id: btnImg
-                anchors.fill: parent
-//                anchors.horizontalCenter: parent.horizontalCenter
-                source: ""
-            }
-        }
 
-        Connections {
-            target: toolBar
-            //按下返回按钮
-            onButton1Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
-        }
-
-        states: [
-            State {
-                name: "Original"; when: seticon.status == Image.Ready
-                PropertyChanges { target: scaleMe; scale: 1 }
-            },
-            State {
-                name: "Details"
-                PropertyChanges { target: scaleMe; scale: 1 }
-                PropertyChanges { target: setting_widget; state: "DetailedView" }//展示细节页面,出现工具栏
-            }
-        ]
-        transitions: [
-            Transition {
-                from: "Original"; to: "Details"
-                ParentAnimation {
-                    via: foreground
-                    NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-                }
-            },
-            Transition {
-                from: "Details"; to: "Original"
-                ParentAnimation {
-                    via: foreground
-                    NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-                }
-            }
-        ]
-    }
-    MouseArea {
+    //竖列
+//    Column {
+//        anchors.fill: parent
+//        anchors.topMargin: 7
+//        Image {
+//            id: seticon
+//            source: icon
+//            anchors.horizontalCenter: parent.horizontalCenter
+//        }
+//        Text {
+//            id: btnText
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            color: "green"
+//            text: qsTr(name)
+//        }
+//    }
+    //横列
+    Row {
         anchors.fill: parent
+        anchors.topMargin: 7
+        Image {
+            id: seticon
+            source: icon
+            //横列
+            anchors.verticalCenter: parent.verticalCenter
+            //竖列
+//            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Text {
+            id: btnText
+            //横列
+            anchors.verticalCenter: parent.verticalCenter
+            //竖列
+//            anchors.horizontalCenter: parent.horizontalCenter
+            color: "green"
+            text: qsTr(name)
+        }
+    }
+
+    Image {
+        id: btnImg
+        anchors.fill: parent
+        source: ""
+    }
+
+    Connections {
+        target: toolBar
+        //按下返回按钮
+        onButton1Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+    }
+
+    states: [
+        State {
+            name: "Original"; when: seticon.status == Image.Ready
+            PropertyChanges { target: scaleMe; scale: 1 }
+        },
+        State {
+            name: "Details"
+            PropertyChanges { target: scaleMe; scale: 1 }
+            PropertyChanges { target: setting_widget; state: "DetailedView" }//展示细节页面,出现工具栏
+        }
+    ]
+    transitions: [
+        Transition {
+            from: "Original"; to: "Details"
+            ParentAnimation {
+                via: foreground
+                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+            }
+        },
+        Transition {
+            from: "Details"; to: "Original"
+            ParentAnimation {
+                via: foreground
+                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+            }
+        }
+    ]
+
+    MouseArea {
+        id: signaltest
         hoverEnabled: true
+        anchors.fill: parent
         onEntered: btnImg.source = "../img/toolWidget/menu_hover.png"
         onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
+        //要判断松开是鼠标位置
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
             iconClicked();
             //kobe:选中项深色块移动
-//            wrapper.GridView.view.currentIndex = index;
+            scaleMe.GridView.view.currentIndex = index;
         }
     }
 }
+
+
+
+//Item {
+//    id: wrapper; width: GridView.view.cellWidth; height: GridView.view.cellHeight
+//    function iconClicked() {
+//        scaleMe.state = "Details";
+//        settigsDetails.setTitle = flag;
+//        console.log(settigsDetails.setTitle);
+//    }
+//    Item {
+//        anchors.centerIn: parent
+//        scale: 0.0
+//        Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+//        id: scaleMe
+//        Item {
+//            width: 70
+//            height: 77
+//            anchors.centerIn: parent
+//            Column {
+//                Image {
+//                    id: seticon
+//                    source: icon
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                }
+//                Text {
+//                    id: btnText
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    color: "green"
+//                    text: qsTr(name)
+//                }
+//            }
+//            Image {
+//                id: btnImg
+//                anchors.fill: parent
+////                anchors.horizontalCenter: parent.horizontalCenter
+//                source: ""
+//            }
+//        }
+
+//        Connections {
+//            target: toolBar
+//            //按下返回按钮
+//            onButton1Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+//        }
+
+//        states: [
+//            State {
+//                name: "Original"; when: seticon.status == Image.Ready
+//                PropertyChanges { target: scaleMe; scale: 1 }
+//            },
+//            State {
+//                name: "Details"
+//                PropertyChanges { target: scaleMe; scale: 1 }
+//                PropertyChanges { target: setting_widget; state: "DetailedView" }//展示细节页面,出现工具栏
+//            }
+//        ]
+//        transitions: [
+//            Transition {
+//                from: "Original"; to: "Details"
+//                ParentAnimation {
+//                    via: foreground
+//                    NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+//                }
+//            },
+//            Transition {
+//                from: "Details"; to: "Original"
+//                ParentAnimation {
+//                    via: foreground
+//                    NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+//                }
+//            }
+//        ]
+//    }
+//    MouseArea {
+//        anchors.fill: wrapper
+//        hoverEnabled: true
+//        onEntered: btnImg.source = "../img/toolWidget/menu_hover.png"
+//        onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
+//        onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
+//        onExited: btnImg.source = ""
+//        onClicked: {
+//            iconClicked();
+//            //kobe:选中项深色块移动
+//            wrapper.GridView.view.currentIndex = index;
+//        }
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
 
 
 

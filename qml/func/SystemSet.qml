@@ -34,63 +34,104 @@ Item {
                 id: clearModel
                 ListElement {
                     icon: "../img/toolWidget/homepage.png"
-                    name: "Launcher"
-                    flag: "launcher"
+                    name: "主题"
+                    flag: "theme"
                 }
                 ListElement {
                     icon: "../img/toolWidget/clearrubbish.png"
-                    name: "Search"
-                    flag: "search"
+                    name: "声音"
+                    flag: "voice"
                 }
                 ListElement {
                     icon: "../img/toolWidget/optimalacceleration.png"
-                    name: "Panel"
-                    flag: "panel"
+                    name: "字体"
+                    flag: "fonts"
                 }
                 ListElement {
                     icon: "../img/toolWidget/searchtrojan.png"
-                    name: "Switcher"
-                    flag: "switcher"
+                    name: "会话指示器"
+                    flag: "talk"
                 }
                 ListElement {
                     icon: "../img/toolWidget/computerclinic.png"
-                    name: "WebApps"
-                    flag: "search"
+                    name: "登录设置"
+                    flag: "login"
                 }
                 ListElement {
                     icon: "../img/toolWidget/optimalacceleration.png"
-                    name: "Panel"
-                    flag: "panel"
+                    name: "Unity"
+                    flag: "unity"
+                }
+                ListElement {
+                    icon: "../img/toolWidget/computerclinic.png"
+                    name: "桌面图标"
+                    flag: "desktopicon"
+                }
+                ListElement {
+                    icon: "../img/toolWidget/optimalacceleration.png"
+                    name: "壁纸"
+                    flag: "wallpaper"
+                }
+                ListElement {
+                    icon: "../img/toolWidget/computerclinic.png"
+                    name: "窗口"
+                    flag: "widget"
+                }
+                ListElement {
+                    icon: "../img/toolWidget/optimalacceleration.png"
+                    name: "文件管理器"
+                    flag: "files"
+                }
+            }
+
+            Common.Border {
+                id: leftborder
+//                width: 2
+//                height: parent.height
+            }
+            Common.Border {
+                id: roightborder
+//                width: 2
+//                height: parent.height
+                anchors.right: parent.right
+            }
+
+            Label {
+                id: label
+                text: qsTr("系统美化 >")
+                height: 30
+                font.bold: true
+                font.family: "Ubuntu"
+                elide: Text.ElideRight
+                font.pointSize: 20
+                anchors {
+                    top: parent.top
+                    topMargin: 10
+                    left: parent.left
+                    leftMargin: 15
                 }
             }
 
             GridView {
                 id: gridView
-                height: parent.height/3
+                height: parent.height -label.height
                 width: parent.width
-                anchors.top: parent.top
-                anchors.topMargin: 45
-                model: clearModel
-                delegate: SettingsDelegate {}
-                cacheBuffer: 1000
-                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
-//                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
-//                focus: true
-            }
+                anchors {
+                    top: label.bottom
+                    topMargin: 10
+                    left: parent.left
+                    leftMargin: 15
+                }
 
-            GridView {
-                id: gridView1
-                height: parent.height/3
-                width: parent.width
-                anchors.top: gridView.bottom
-                anchors.topMargin: 45
                 model: clearModel
                 delegate: SettingsDelegate {}
                 cacheBuffer: 1000
-                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
-//                highlight: Rectangle { color: "red"; radius: 5 }//kobe:设置选中项深色块
-////                focus: true
-//                focus: false
+                //竖列
+//                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
+                //横列
+                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
+                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+                focus: true
             }
 
             SettingsDetails {

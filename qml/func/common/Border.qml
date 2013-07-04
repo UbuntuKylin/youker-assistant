@@ -16,37 +16,17 @@
 
 import QtQuick 1.1
 
-Rectangle {
-    width: 850
-    height: 600
-    id: main
-    objectName: "main"
+Item {
+    width: 2
+    height: parent.height
     Image {
-        id: bgImg
-        anchors.fill: parent
-        source: "./img/skin/background.png"
-    }
-
-    Column {
-        id: layout
-        anchors.fill: parent
-//        anchors {
-//            left: parent.left
-//            top: parent.top
-//            right: parent.right
-//        }
-        spacing: 0
-        ContentWidget{
-            id: contentwidget
-            anchors {
-                bottom: statuswidget.top
-            }
-        }
-        StatusWidget{
-            id: statuswidget
-//            anchors.fill: parent
+        source: "../../img/icons/tab.png"
+        width: parent.width
+        height: parent.height
+        anchors {
+            top: parent.top
+            left: parent.left
+            bottom: parent.bottom
         }
     }
-
-
 }

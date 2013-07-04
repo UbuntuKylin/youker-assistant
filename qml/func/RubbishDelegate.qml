@@ -32,15 +32,15 @@ Item {
                     //kobe: wait for adding function
                     if (checkbox.checked) {
                         if (flags == "clear_rubbish")
-                            check_flag = "clear_rubbish";
+                            clearDelegate.ccheck_flag = "clear_rubbish";
                         else if (flags == "clear_traces")
-                            check_flag = "clear_traces";
+                            clearDelegate.check_flag = "clear_traces";
                         else if (flags == "clear_plugins")
-                            check_flag = "clear_plugins";
+                            clearDelegate.check_flag = "clear_plugins";
 //                        console.log("lilililili");
                     }
                     else {
-                        check_flag = "";
+                        clearDelegate.check_flag = "";
 //                        console.log("xiangxiang");
                     }
                 }

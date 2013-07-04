@@ -18,6 +18,7 @@ import QtQuick 1.1
 //import Ubuntu.Components 0.1
 import RegisterMyType 0.1
 import QtDesktop 0.1
+import "common" as Common
 /*
 {'desktopenvironment': 'Unity', 'update_time': 'The package information was last updated 4 hours ago.',
 'hostname': 'kobe-3570R-370R-470R-450R-510R', 'language': 'zh_CN.UTF-8', 'platform': 'i686',
@@ -30,6 +31,43 @@ Rectangle {
     width: parent.width
     height: 460
     property Dispatcher dis: mydispather
+
+
+    Common.Border {
+        id: leftborder
+//        width: 2
+//        height: parent.height
+    }
+    Common.Border {
+        id: roightborder
+//        width: 2
+//        height: parent.height
+        anchors.right: parent.right
+    }
+
+//    Image {
+//        id: leftborder
+//        source: "../img/icons/tab.png"
+//        width: 2
+//        height: parent.height
+//        anchors {
+//            top: parent.top
+//            left: parent.left
+//            bottom: parent.bottom
+//        }
+//    }
+//    Image {
+//        id: rightborder
+//        source: "../img/icons/tab.png"
+//        width: 2
+//        height: parent.height
+//        anchors {
+//            top: parent.top
+//            right: parent.right
+//            bottom: parent.bottom
+//        }
+//    }
+
 
 
     //--------------------右边隐藏说明栏---------------------
