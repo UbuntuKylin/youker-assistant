@@ -40,6 +40,7 @@
 #include <QDeclarativeEngine>
 #include <QDeclarativeView>
 #include <QtDeclarative>
+#include "quibo.h"
 
 int main(int argc, char** argv)
 {
@@ -50,6 +51,9 @@ int main(int argc, char** argv)
     }
     return application.exec();
 
+//    QApplication app(argc, argv);
+//    QUIBO *ui = new QUIBO();
+//    app.exec();
 
 //    QApplication app(argc, argv);
 //    IhuApplication ihu;
