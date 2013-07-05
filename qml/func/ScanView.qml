@@ -17,13 +17,15 @@
 import QtQuick 1.1
 //import Ubuntu.Components 0.1
 import QtDesktop 0.1
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
 //import Ubuntu.Components.ListItems 0.1 as ListItem
 import "common" as Common
 Item {
     height: threadListView.height + pictureImage.height
     width: parent.width
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
     Component.onCompleted: {
         streamModel.clear();
         if (item_flags == "clear_rubbish") {

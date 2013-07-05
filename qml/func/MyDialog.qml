@@ -2,11 +2,14 @@
 import QtQuick 1.1
 import QtDesktop 0.1
 import "common" as Common
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+import SessionType 0.1
+//import SystemType 0.1
 Rectangle {
     width: parent.width
     height: 460
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
+    property SessionDispatcher dis: sessiondispatcher
     Row {
         spacing: 10
         Button {
@@ -20,7 +23,7 @@ Rectangle {
             id: okbtn
             text: "测试"
             onClicked: {
-                mydispather.new_object_test();
+                sessiondispatcher.new_object_test();
             }
         }
     }

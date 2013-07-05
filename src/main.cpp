@@ -36,6 +36,8 @@
 //#include <QQmlComponent>
 // local
 #include "dispatcher.h"
+#include "systemdispatcher.h"
+#include "sessiondispatcher.h"
 #include "youker-application.h"
 #include <QDeclarativeEngine>
 #include <QDeclarativeView>
@@ -44,7 +46,14 @@
 
 int main(int argc, char** argv)
 {
-    qmlRegisterType<DispatcherQml>("RegisterMyType", 0, 1, "Dispatcher");
+//    qmlRegisterType<Person>("People",1,0,"Person");
+    //通过qmlRegisterType<Person>("People",1,0,"Person");
+//    向QML中导出Person类，这个类在People包中，在QML中需要使用Person类的
+//    话就必须包含People包，通过import People 1.0来包含，之后就可以使用Person
+//    创建对象使用来。
+//    qmlRegisterType<DispatcherQml>("RegisterMyType", 0, 1, "Dispatcher");
+    qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
+    qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     IhuApplication application(argc, argv);
     if (!application.setup()) {
         return 0;

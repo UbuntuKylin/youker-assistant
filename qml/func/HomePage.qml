@@ -16,7 +16,9 @@
 
 import QtQuick 1.1
 //import Ubuntu.Components 0.1
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+//import SessionType 0.1
+import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
 /*
@@ -31,7 +33,8 @@ Rectangle {
     id: home
     width: parent.width
     height: 460
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
+    property SystemDispatcher dis: systemdispatcher
 
     function openFile(file) {
          var component = Qt.createComponent(file)
@@ -285,10 +288,10 @@ Rectangle {
                 anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 + refreshArrow.width + text0.width }
                 spacing: 10
                 Text {
-                    text: qsTr("CPU: "+ mydispather.get_value("cpu"))
+                    text: qsTr("CPU: "+ systemdispatcher.get_value("cpu"))
                 }
                 Text {
-                    text: qsTr("内存: " + mydispather.get_value("ram"))
+                    text: qsTr("内存: " + systemdispatcher.get_value("ram"))
                 }
             }
         }
@@ -316,16 +319,16 @@ Rectangle {
                 anchors { top: lineLayout1.top; topMargin: -20; left: parent.left; leftMargin: 45 + refreshArrow1.width + text1.width }
                 spacing: 10
                 Text {
-                    text: qsTr("主机名: " + mydispather.get_value("hostname"))
+                    text: qsTr("主机名: " + systemdispatcher.get_value("hostname"))
                 }
                 Text {
-                    text: qsTr("平台: " + mydispather.get_value("platform"))
+                    text: qsTr("平台: " + systemdispatcher.get_value("platform"))
                 }
                 Text {
-                    text: qsTr("发行版: " + mydispather.get_value("distribution"))
+                    text: qsTr("发行版: " + systemdispatcher.get_value("distribution"))
                 }
                 Text {
-                    text: qsTr("桌面环境: " + mydispather.get_value("desktopenvironment"))
+                    text: qsTr("桌面环境: " + systemdispatcher.get_value("desktopenvironment"))
                 }
             }
 
@@ -357,10 +360,10 @@ Rectangle {
                     text: qsTr("可以清除一些缓存以便释放您的磁盘空间")
                 }
                 Text {
-                    text: qsTr(mydispather.get_value("cache_packages"))
+                    text: qsTr(systemdispatcher.get_value("cache_packages"))
                 }
                 Text {
-                    text: qsTr(mydispather.get_value("cache_size"))
+                    text: qsTr(systemdispatcher.get_value("cache_size"))
                 }
             }
         }
@@ -391,7 +394,7 @@ Rectangle {
                     text: qsTr("您的系统已经为最新")
                 }
                 Text {
-                    text: qsTr("更新时间: "+ mydispather.get_value("update_time"))
+                    text: qsTr("更新时间: "+ systemdispatcher.get_value("update_time"))
                 }
             }
         }

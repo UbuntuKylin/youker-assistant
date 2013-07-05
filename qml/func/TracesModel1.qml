@@ -1,5 +1,7 @@
 import QtQuick 1.1
 import RegisterMyType 0.1
+import SessionType 0.1
+import SystemType 0.1
 import "common" as Common
 Item {
     id: traceitem

@@ -17,17 +17,19 @@
 import QtQuick 1.1
 
 //import Ubuntu.Components 0.1
-import RegisterMyType 0.1
-
+//import RegisterMyType 0.1
+//import SessionType 0.1
+import SystemType 0.1
 Rectangle {
     width: parent.width
     height: 460
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
+    property SystemDispatcher dis: systemdispatcher
 
     //信号绑定，绑定qt的信号myStringChanged，该信号emit时触发onMyStringChanged
     Connections
     {
-        target: mydispather
+        target: systemdispatcher
         onMyStringChanged: {
             console.log("******Signal handler received******")
             console.log("******Start******")

@@ -17,6 +17,8 @@
 import QtQuick 1.1
 //import Ubuntu.Components 0.1
 import RegisterMyType 0.1
+import SessionType 0.1
+import SystemType 0.1
 //import Ubuntu.Components.ListItems 0.1 as ListItem
 //import Ubuntu.Components.Popups 0.1
 //import QtQuick.LocalStorage 2.0

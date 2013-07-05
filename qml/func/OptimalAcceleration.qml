@@ -15,12 +15,15 @@
  */
 
 import QtQuick 1.1
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+//import SessionType 0.1
+import SystemType 0.1
 import QtDesktop 0.1
 Rectangle {
     width: parent.width
     height: 460
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
+    property SystemDispatcher dis: systemdispatcher
 
 
     GroupBox {

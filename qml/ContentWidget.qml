@@ -18,7 +18,9 @@ import QtQuick 1.1
 import QtDesktop 0.1
 //import "./func/desktopui" as DesktopUi
 //import Ubuntu.Components 0.1
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+import SessionType 0.1
+import SystemType 0.1
 import "./func/common" as Common
 //import QtQuick.Window 2.0 //sudo apt-get install qtdeclarative5-window-plugin
 
@@ -32,10 +34,17 @@ Rectangle {
     height: parent.height - 30  //去掉StatusWidget所占用的高度30
 
     property string text: "homepage"
-    Dispatcher
-    {
-        id: mydispather
+    SessionDispatcher {
+        id: sessiondispatcher
     }
+    SystemDispatcher {
+        id: systemdispatcher
+    }
+
+//    Dispatcher
+//    {
+//        id: mydispather
+//    }
 
     Rectangle {
         id: rectangle1
@@ -96,55 +105,55 @@ Rectangle {
             Common.Page {
                 id: homepage
                 visible: false
-                HomePage {dis: mydispather}
+                HomePage {dis: systemdispatcher}
             }
             Common.Page {
                 id: clearrubbish
                 visible: false
 //                title: "clearrubbish by kobe"
-                ClearRubbish {dis: mydispather}
+                ClearRubbish {dis: systemdispatcher}
             }
             Common.Page {
                 id: systemset
                 visible: false
 //                title: "softwaremanager by kobe"
-                SystemSet {dis: mydispather}
+                SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
             }
             Common.Page {
                 id: searchtrojan
                 visible: false
 //                title: "search by kobe"
-                SearchTrojan {dis: mydispather}
+                SearchTrojan {dis: systemdispatcher}
             }
             Common.Page {
                 id: fixbug
                 visible: false
 //                title: "fixbug by kobe"
-                FixBug {dis: mydispather}
+                FixBug {dis: systemdispatcher}
             }
             Common.Page {
                 id: computerclinic
                 visible: false
 //                title: "computerclinic by kobe"
-                ComputerClinic {dis: mydispather}
+                ComputerClinic {dis: systemdispatcher}
             }
             Common.Page {
                 id: systemrepair
                 visible: false
 //                title: "systemrepair by kobe"
-                SystemRepair {dis: mydispather}
+                SystemRepair {dis: systemdispatcher}
             }
             Common.Page {
                 id: optimalacceleration
                 visible: false
 //                title: "optimalacceleration by kobe"
-                OptimalAcceleration {dis: mydispather}
+                OptimalAcceleration {dis: systemdispatcher}
             }
             Common.Page {
                 id: allfunction
                 visible: false
 //                title: "allfunction by kobe"
-                AllFunction {dis: mydispather}
+                AllFunction {dis: systemdispatcher}
             }
 
             /*-----------pages of system settings-----------*/

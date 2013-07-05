@@ -15,7 +15,9 @@
  */
 
 import QtQuick 1.1
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
 import "common" as Common
 import QtDesktop 0.1
 
@@ -24,7 +26,8 @@ Rectangle {
     property bool on: true
     width: parent.width
     height: 460
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
+//    property SystemDispatcher dis: systemdispatcher
 
     Component.onCompleted: {
 //        choices.clear();

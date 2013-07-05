@@ -1,12 +1,15 @@
 import QtQuick 1.1
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+//import SessionType 0.1
+import SystemType 0.1
 import QtDesktop 0.1
 
 import "common" as Common
 Item {
     id: screen; width: parent.width; height: 420
 //    frame:false
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
+    property SystemDispatcher dis: systemdispatcher
     property bool inListView : false
 
     Rectangle {

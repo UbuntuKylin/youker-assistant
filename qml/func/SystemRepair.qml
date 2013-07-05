@@ -17,7 +17,9 @@
 import QtQuick 1.1
 //import Ubuntu.Components 0.1
 //import Ubuntu.Components.ListItems 0.1 as ListItem
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+//import SessionType 0.1
+import SystemType 0.1
 
 //Item {
 //    property Dispatcher dis: mydispather
@@ -45,7 +47,8 @@ import RegisterMyType 0.1
 Rectangle {
     width: parent.width
     height: 460
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
+    property SystemDispatcher dis: systemdispatcher
 
     Item {
         Column {
@@ -72,12 +75,12 @@ Rectangle {
                             x: 65
                             height: 20
                             //text: qsTr("CPU: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz")
-                            text: qsTr("CPU: "+ mydispather.get_value("cpu"))
+                            text: qsTr("CPU: "+ systemdispatcher.get_value("cpu"))
                         }
                         Text {
                             x: 65
                             height: 20
-                            text: qsTr("内存: " + mydispather.get_value("ram"))
+                            text: qsTr("内存: " + systemdispatcher.get_value("ram"))
 //                            text: qsTr("内存: 1.8 GB")
                         }
                     }

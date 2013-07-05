@@ -22,14 +22,16 @@ INSTALLS += inst1 \
 QML_IMPORT_PATH = /usr/lib/i386-linux-gnu/qt4/imports/QtDesktop/plugin
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-HEADERS += dispatcher.h \
-    youker-application.h \
-    quibo.h
+HEADERS += youker-application.h \
+    quibo.h \
+    systemdispatcher.h \
+    sessiondispatcher.h
 
 SOURCES += main.cpp \
-           dispatcher.cpp \
     youker-application.cpp \
-    quibo.cpp
+    quibo.cpp \
+    systemdispatcher.cpp \
+    sessiondispatcher.cpp
 
 OTHER_FILES += youker-assistant/ihu.png
 

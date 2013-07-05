@@ -16,13 +16,15 @@
 import QtQuick 1.1
 //import Ubuntu.Components 0.1
 //import Ubuntu.Components.ListItems 0.1
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
 import "common" as Common
 import QtDesktop 0.1
 
 Item {
     id: rubbishitem; width: parent.width; height: 420
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
     property bool inListView : false
     Rectangle {
         id: background

@@ -20,7 +20,9 @@ import QtQuick 1.1
 //import Ubuntu.Components.ListItems 0.1 as ListItem
 //import Ubuntu.Components.Popups 0.1
 import QtDesktop 0.1
-import RegisterMyType 0.1
+//import RegisterMyType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
 
 
 Item {
@@ -31,7 +33,7 @@ Item {
 //    property string title1: "清理垃圾"
 //    property string title2: "清理系统垃圾，让系统运行跟流畅"
 //    property string icon_source: "../img/icons/user.png"
-    property Dispatcher dis: mydispather
+//    property Dispatcher dis: mydispather
     Rectangle {
         id: tileRect
         height: status_update_content.height + detailsWrapper.height
