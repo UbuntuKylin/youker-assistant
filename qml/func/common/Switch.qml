@@ -2,39 +2,30 @@ import QtQuick 1.1
 
 Item {
     id: container
-
-    // Signal that gets fired when switch state has been toggled
     signal switched(bool position)
-    // Font properties
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-    // Images for switch states
     property string imageOn: '../../img/icons/switch_on.png'
     property string imageOff: '../../img/icons/switch_off.png'
-    // Property indicating current state
     property bool switchedOn: true
-    // Labels for the states
     property alias textOn: textOn.text
     property alias textOff: textOff.text
-    // Spacing between labels and switch
     property alias spacing: row.spacing
-
-    width: row.width
-    height: 44
-
+    width: 15//row.width
+    height: 26
     Row {
         id: row
         spacing: 8
         Text {
             id: textOn
-            text: "On"
+            text: qsTr("开启")
             height: container.height
             color: container.fontColor
-            font {
-                family: container.fontName
-                pointSize: container.fontSize
-            }
+//            font {
+//                family: container.fontName
+//                pointSize: container.fontSize
+//            }
             verticalAlignment: Text.AlignVCenter
         }
         Image {
@@ -47,12 +38,12 @@ Item {
         Text {
             id: textOff
             height: container.height
-            text: "Off"
+            text: qsTr("关闭")
             color: container.fontColor
-            font {
-                family: container.fontName
-                pointSize: container.fontSize
-            }
+//            font {
+//                family: container.fontName
+//                pointSize: container.fontSize
+//            }
             verticalAlignment: Text.AlignVCenter
         }
     }

@@ -35,7 +35,6 @@
 #include <QApplication>
 //#include <QQmlComponent>
 // local
-#include "dispatcher.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
 #include "youker-application.h"
