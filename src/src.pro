@@ -18,7 +18,7 @@ INSTALLS += inst1 \
     target
 
 # Additional import path used to resolve QML modules in Creator's code model
-#QML_IMPORT_PATH =
+#QML_IMPORT_PATH = /usr/lib/i386-linux-gnu/qt4/imports/Qt/labs/components/plugin
 QML_IMPORT_PATH = /usr/lib/i386-linux-gnu/qt4/imports/QtDesktop/plugin
 
 # The .cpp file which was generated for your project. Feel free to hack it.

@@ -16,15 +16,22 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-import SessionType 0.1
-import SystemType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
+
 Rectangle {
-    id: lancherpage
+    id: touchpadpage
     property bool on: true
     width: parent.width
     height: 460
+    property string fontName: "Helvetica"
+    property int fontSize: 12
+    property color fontColor: "black"
+
+
+
 //    property Dispatcher dis: mydispather
 
     Common.Border {
@@ -34,105 +41,120 @@ Rectangle {
         id: roightborder
         anchors.right: parent.right
     }
+
     Component.onCompleted: {
-//        choices.clear();
-//        choices.append({"text": mydispather.get_themes()[0]});
-//        choices.append({"text": mydispather.get_themes()[1]});
-//        choices.append({"text": mydispather.get_themes()[2]});
-//        choices.append({"text": mydispather.get_themes()[3]});
-
-//        streamModel.sync();
-    }
-
-    ListModel {
-        id: choices
-        ListElement { text: "voice" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-//            console.log("111111111111");
-//            console.log(settigsDetails.setTitle);
-            if (settigsDetails.setTitle == "voice")
-                console.log(voicelabel.text);
-//            console.log("222222222222");
+            if (settigsDetails.setTitle == "touchpad")
+                console.log(touchpadlabel.text);
+        }
+    }
+
+    Label {
+        id: touchpad
+        text: qsTr("触摸板设置>")
+        height: 30
+        font.bold: true
+        font.family: "Ubuntu"
+        elide: Text.ElideRight
+        font.pointSize: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 15
         }
     }
 
     Column {
         spacing: 20
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors {
+            top: touchpad.bottom
+            topMargin: 20
+            horizontalCenter: parent.horizontalCenter
+        }
+
+//        anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
+            anchors.horizontalCenter: parent.horizontalCenter
             Label {
-                id: voicelabel
+                id: touchpadlabel
                 width: 110
-                text: qsTr("ps8-model")
+                text: qsTr("触摸板开关:")
+                font {
+                    family: touchpadpage.fontName
+                    pointSize: touchpadpage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
-            ComboBox {
-                id: combobox
-                model: choices;
-                width: parent.width;
-//                KeyNavigation.tab: t1
-//                KeyNavigation.backtab: button2
-//                onSelectedIndexChanged: console.log(selectedText)
-            }
-            Button {
-                id: button1
-                text: qsTr("确定")
-                width: 96
-                tooltip:"This is an interesting tool tip"
-                //                KeyNavigation.tab: button2
-                //                KeyNavigation.backtab: frame.tabBar
-                onClicked: {
-
+            Common.Switch {
+                id: touchpadswitcher
+                width: parent.width
+                onSwitched: {
+                    if (touchpadswitcher.switchedOn)
+                        console.log("触摸板开关on---------------");
+                    else if(!touchpadswitcher.switchedOn)
+                        console.log("触摸板开关off---------------");
                 }
             }
         }
+
         Row {
+            anchors.horizontalCenter: parent.horizontalCenter
             Label {
-                id: modelabel1
+                id: horizontallabel
                 width: 110
-                text: qsTr("模式:")
+                text: qsTr("水平:")
+                font {
+                    family: touchpadpage.fontName
+                    pointSize: touchpadpage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
-            ComboBox {
-                id: combobox2
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel3
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox4
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel5
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox6
-                x: 110
+            Common.Switch {
+                id: horizontalswitcher
+                width: parent.width
+                onSwitched: {
+                    if (horizontalswitcher.switchedOn)
+                        console.log("水平on---------------");
+                    else if(!horizontalswitcher.switchedOn)
+                        console.log("水平off---------------");
+                }
             }
         }
 
+
+        Row {
+            anchors {
+                left: parent.left
+                leftMargin: 0
+            }
+            anchors.horizontalCenter: parent.horizontalCenter
+            GroupBox {
+                title: qsTr("触摸板滚动模式:")
+                adjustToContentSize: true
+                ButtonRow {
+                    exclusive: true//控制是否联动
+                    CheckBox {
+                        id:edge
+                        text: "edge模式"
+                    }
+                    CheckBox {
+                        id: twofinger
+                        text: "twofinger模式"
+                    }
+                }
+            }
+        }
 
     }//Column
 
 }
-
 
 
 

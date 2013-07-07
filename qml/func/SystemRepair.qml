@@ -20,6 +20,104 @@ import QtQuick 1.1
 //import RegisterMyType 0.1
 //import SessionType 0.1
 import SystemType 0.1
+//import "symbian" as Symbian
+//import Qt.labs.components 1.0
+import QtDesktop 0.1
+Rectangle {
+    width: parent.width
+    height: 460
+//    property Dispatcher dis: mydispather
+    property SystemDispatcher dis: systemdispatcher
+//    Dialog {
+
+//    }
+
+//    Symbian.Dialog {
+//        id: myDialog
+//    }
+
+//    Symbian.Button {
+//        id: mybtn
+//        onClicked: myDialog.open()
+//    }
+
+//    Symbian.Dialog {
+//           id: myDialog
+//           title: Rectangle {
+//             id: titleField
+//             height: 20
+//             width: parent.width
+//             color: "red"
+//           }
+//           content:Item {
+//             id: name
+//             height: 50
+//             width: parent.width
+//             Text {
+//               id: text
+//               font.pixelSize: 22
+//               anchors.centerIn: parent
+//               color: "white"
+//               text: "Hello Dialog"
+//             }
+//           }
+//           buttons: Symbian.ButtonRow {
+////             style: Symbian.ButtonStyle { }
+////               anchors.horizontalCenter: parent.horizontalCenter
+////               Button {text: "OK"; onClicked: myDialog.accept()}
+////             }
+//           }
+//    }
+}
+
+
+//Rectangle {
+//    width: parent.width
+//    height: 460
+////    property Dispatcher dis: mydispather
+//    property SystemDispatcher dis: systemdispatcher
+
+//    Item {
+//        Column {
+//            anchors.fill: parent
+//            Row {
+//                Image {
+//                    id: refreshArrow
+//                    source: "../img/icons/system.png"
+//                    Behavior on rotation { NumberAnimation { duration: 200 } }
+//                }
+//                Text {
+//                    id: text1
+//                    x: 30
+//                    y: 11
+//                    width: 69
+//                    height: 20
+//                    text: qsTr("修复:")
+//                    font.bold: true
+//                    font.pointSize: 13
+//                    font.pixelSize: 12
+
+//                    Column {
+//                        Text {
+//                            x: 65
+//                            height: 20
+//                            //text: qsTr("CPU: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz")
+//                            text: qsTr("CPU: "+ systemdispatcher.get_value("cpu"))
+//                        }
+//                        Text {
+//                            x: 65
+//                            height: 20
+//                            text: qsTr("内存: " + systemdispatcher.get_value("ram"))
+////                            text: qsTr("内存: 1.8 GB")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+
+
 
 //Item {
 //    property Dispatcher dis: mydispather
@@ -44,48 +142,3 @@ import SystemType 0.1
 //}
 
 
-Rectangle {
-    width: parent.width
-    height: 460
-//    property Dispatcher dis: mydispather
-    property SystemDispatcher dis: systemdispatcher
-
-    Item {
-        Column {
-            anchors.fill: parent
-            Row {
-                Image {
-                    id: refreshArrow
-                    source: "../img/icons/system.png"
-                    Behavior on rotation { NumberAnimation { duration: 200 } }
-                }
-                Text {
-                    id: text1
-                    x: 30
-                    y: 11
-                    width: 69
-                    height: 20
-                    text: qsTr("修复:")
-                    font.bold: true
-                    font.pointSize: 13
-                    font.pixelSize: 12
-
-                    Column {
-                        Text {
-                            x: 65
-                            height: 20
-                            //text: qsTr("CPU: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz")
-                            text: qsTr("CPU: "+ systemdispatcher.get_value("cpu"))
-                        }
-                        Text {
-                            x: 65
-                            height: 20
-                            text: qsTr("内存: " + systemdispatcher.get_value("ram"))
-//                            text: qsTr("内存: 1.8 GB")
-                        }
-                    }
-                }
-            }
-        }
-    }
-}

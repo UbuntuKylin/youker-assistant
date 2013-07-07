@@ -6,24 +6,51 @@ import "common" as Common
 import SessionType 0.1
 //import SystemType 0.1
 Rectangle {
+    id: dialog
     width: parent.width
     height: 460
 //    property Dispatcher dis: mydispather
     property SessionDispatcher dis: sessiondispatcher
-    Row {
-        spacing: 10
-        Button {
-            id: quitbtn
-            text: "取消"
-            onClicked: {
-                pageStack.push(homepage);
-            }
+    anchors.fill: parent
+    Column {
+        spacing: 20
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        Label {
+            id: label
+            text: qsTr("测试过程中点击鼠标左键更换颜色,右键退出")
+            width: quitbtn.width + okbtn.width + 10
+            anchors.horizontalCenter: parent.horizontalCenter
         }
-        Button {
-            id: okbtn
-            text: "测试"
-            onClicked: {
-                sessiondispatcher.new_object_test();
+//        TextArea {
+//            id: textarea
+//            text: qsTr("测试过程中点击鼠标左键更换颜色,右键退出")
+//             width: quitbtn.width + okbtn.width + 10
+//            anchors.horizontalCenter: parent.horizontalCenter
+//        }
+//        TextField {
+//            id: textarea
+//            text: qsTr("测试过程中点击鼠标左键更换颜色,右键退出")
+//            width: quitbtn.width + okbtn.width + 10
+//            anchors.horizontalCenter: parent.horizontalCenter
+//        }
+
+        Row {
+            spacing: 10
+            Button {
+                id: quitbtn
+                text: "取消"
+                onClicked: {
+                    pageStack.push(homepage);
+                }
+            }
+            Button {
+                id: okbtn
+                text: "测试"
+                onClicked: {
+                    sessiondispatcher.new_object_test();
+                }
             }
         }
     }

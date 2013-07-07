@@ -35,6 +35,7 @@ Rectangle {
     height: 460
 //    property Dispatcher dis: mydispather
     property SystemDispatcher dis: systemdispatcher
+    signal dialogmsg()
 
     function openFile(file) {
          var component = Qt.createComponent(file)
@@ -148,7 +149,7 @@ Rectangle {
 //                     }
 
 
-                    ////method 2
+                    //method 2
 //                    pageLoader.source = "MyDialog.qml"
 
                     //method 3
@@ -163,8 +164,8 @@ Rectangle {
 
     }
     //------------------------------------------------
-
-    //Loader { id: pageLoader }
+    //method 2
+//    Loader { id: pageLoader }
     //对话框 //method 3
 //    MyDialog {
 //        id: mydialog

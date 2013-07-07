@@ -44,7 +44,7 @@ Item {
                 ListElement {
                     icon: "../img/toolWidget/clearrubbish.png"
                     name: "声音"
-                    flag: "voice"
+                    flag: "sound"
                 }
                 ListElement {
                     icon: "../img/toolWidget/optimalacceleration.png"
@@ -53,14 +53,14 @@ Item {
                 }
                 ListElement {
                     icon: "../img/toolWidget/searchtrojan.png"
-                    name: "会话指示器"
-                    flag: "talk"
+                    name: "触摸板"
+                    flag: "touchpad"
                 }
-                ListElement {
-                    icon: "../img/toolWidget/computerclinic.png"
-                    name: "登录设置"
-                    flag: "login"
-                }
+//                ListElement {
+//                    icon: "../img/toolWidget/computerclinic.png"
+//                    name: "登录设置"
+//                    flag: "login"
+//                }
                 ListElement {
                     icon: "../img/toolWidget/optimalacceleration.png"
                     name: "Unity"
@@ -71,20 +71,20 @@ Item {
                     name: "桌面图标"
                     flag: "desktopicon"
                 }
-                ListElement {
-                    icon: "../img/toolWidget/optimalacceleration.png"
-                    name: "壁纸"
-                    flag: "wallpaper"
-                }
+//                ListElement {
+//                    icon: "../img/toolWidget/optimalacceleration.png"
+//                    name: "壁纸"
+//                    flag: "wallpaper"
+//                }
                 ListElement {
                     icon: "../img/toolWidget/computerclinic.png"
                     name: "窗口"
-                    flag: "widget"
+                    flag: "window"
                 }
                 ListElement {
                     icon: "../img/toolWidget/optimalacceleration.png"
-                    name: "文件管理器"
-                    flag: "files"
+                    name: "滑动条"
+                    flag: "scrollbar"
                 }
             }
 

@@ -26,6 +26,12 @@ Rectangle {
     property bool on: true
     width: parent.width
     height: 460
+    property string fontName: "Helvetica"
+    property int fontSize: 12
+    property color fontColor: "black"
+
+
+
 //    property Dispatcher dis: mydispather
 
     Common.Border {
@@ -48,10 +54,28 @@ Rectangle {
         }
     }
 
+    Label {
+        id: desktop
+        text: qsTr("桌面图标设置>")
+        height: 30
+        font.bold: true
+        font.family: "Ubuntu"
+        elide: Text.ElideRight
+        font.pointSize: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 15
+        }
+    }
+
     Column {
         spacing: 20
         anchors {
-            top: parent.top
+//            top: parent.top
+//            topMargin: 20
+            top: desktop.bottom
             topMargin: 20
             horizontalCenter: parent.horizontalCenter
         }
@@ -63,7 +87,12 @@ Rectangle {
             Label {
                 id: desktopiconlabel
                 width: 110
-                text: qsTr("桌面图标")
+                text: qsTr("桌面图标:")
+                font {
+                    family: lancherpage.fontName
+                    pointSize: lancherpage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
                 id: iconswitcher
@@ -75,13 +104,19 @@ Rectangle {
                         console.log("桌面图标off---------------");
                 }
             }
+
         }
 
         Row {
             Label {
                 id: homefolderlabel
                 width: 110
-                text: qsTr("根文件夹")
+                text: qsTr("根文件夹:")
+                font {
+                    family: lancherpage.fontName
+                    pointSize: lancherpage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
                 id: folderswitcher
@@ -99,7 +134,12 @@ Rectangle {
             Label {
                 id: networklabel
                 width: 110
-                text: qsTr("网络")
+                text: qsTr("网络:")
+                font {
+                    family: lancherpage.fontName
+                    pointSize: lancherpage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
                 id: networkswitcher
@@ -117,7 +157,12 @@ Rectangle {
             Label {
                 id: trashlabel
                 width: 110
-                text: qsTr("垃圾")
+                text: qsTr("垃圾:")
+                font {
+                    family: lancherpage.fontName
+                    pointSize: lancherpage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
                 id: trashswitcher

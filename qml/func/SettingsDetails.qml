@@ -38,22 +38,22 @@ import "settings" as Settings
              id: themepage
              visible: false
          }
-         Settings.Voice {
-             id: voicepage
+         Settings.Sound {
+             id: soundpage
              visible: false
          }
          Settings.Fonts {
              id: fontspage
              visible: false
          }
-         Settings.Talk {
-             id: talkpage
+         Settings.Touchpad {
+             id: touchpadpage
              visible: false
          }
-         Settings.Login {
-             id: loginpage
-             visible: false
-         }
+//         Settings.Login {
+//             id: loginpage
+//             visible: false
+//         }
          Settings.Unity {
              id: unitypage
              visible: false
@@ -62,16 +62,16 @@ import "settings" as Settings
              id: desktopiconpage
              visible: false
          }
-         Settings.Wallpaper {
-             id: wallpaperpage
+//         Settings.Wallpaper {
+//             id: wallpaperpage
+//             visible: false
+//         }
+         Settings.Window {
+             id: windowpage
              visible: false
          }
-         Settings.Widget {
-             id: widgetpage
-             visible: false
-         }
-         Settings.Files {
-             id: filespage
+         Settings.Scrollbar {
+             id: scrollbarpage
              visible: false
          }
 
@@ -79,132 +79,132 @@ import "settings" as Settings
              State {
                  name: "Themes"; when: settigsDetails.setTitle == "theme"
                  PropertyChanges { target: themepage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
              },
              State {
-                 name: "Voice"; when: settigsDetails.setTitle == "voice"
-                 PropertyChanges { target: voicepage; x: 0; visible: true }
+                 name: "Voice"; when: settigsDetails.setTitle == "sound"
+                 PropertyChanges { target: soundpage; x: 0; visible: true }
                  PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "Fonts"; when: settigsDetails.setTitle == "fonts"
                  PropertyChanges { target: fontspage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
              },
              State {
-                 name: "Talk"; when: settigsDetails.setTitle == "talk"
-                 PropertyChanges { target: talkpage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 name: "Talk"; when: settigsDetails.setTitle == "touchpad"
+                 PropertyChanges { target: touchpadpage; x: 0; visible: true }
+                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
              },
-             State {
-                 name: "Login"; when: settigsDetails.setTitle == "login"
-                 PropertyChanges { target: loginpage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
-             },
+//             State {
+//                 name: "Login"; when: settigsDetails.setTitle == "login"
+//                 PropertyChanges { target: loginpage; x: 0; visible: true }
+//                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//             },
              State {
                  name: "Unity"; when: settigsDetails.setTitle == "unity"
                  PropertyChanges { target: unitypage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "Desktopicon"; when: settigsDetails.setTitle == "desktopicon"
                  PropertyChanges { target: desktopiconpage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+             },
+//             State {
+//                 name: "Wallpaperpage"; when: settigsDetails.setTitle == "wallpaper"
+//                 PropertyChanges { target: wallpaperpage; x: 0; visible: true }
+//                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//             },
+             State {
+                 name: "Widgetpage"; when: settigsDetails.setTitle == "window"
+                 PropertyChanges { target: windowpage; x: 0; visible: true }
+                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
              },
              State {
-                 name: "Wallpaperpage"; when: settigsDetails.setTitle == "wallpaper"
-                 PropertyChanges { target: wallpaperpage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 name: "Filespage"; when: settigsDetails.setTitle == "scrollbar"
+                 PropertyChanges { target: scrollbarpage; x: 0; visible: true }
+                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
-             },
-             State {
-                 name: "Widgetpage"; when: settigsDetails.setTitle == "widget"
-                 PropertyChanges { target: widgetpage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: filespage; visible:false/*; x: -(parent.width * 1.5)*/ }
-             },
-             State {
-                 name: "Filespage"; when: settigsDetails.setTitle == "files"
-                 PropertyChanges { target: filespage; x: 0; visible: true }
-                 PropertyChanges { target: voicepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: talkpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: widgetpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
              }
          ]
 

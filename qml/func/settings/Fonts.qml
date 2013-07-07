@@ -16,15 +16,22 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-import SessionType 0.1
-import SystemType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
+
 Rectangle {
-    id: lancherpage
+    id: fontspage
     property bool on: true
     width: parent.width
     height: 460
+    property string fontName: "Helvetica"
+    property int fontSize: 12
+    property color fontColor: "black"
+
+
+
 //    property Dispatcher dis: mydispather
 
     Common.Border {
@@ -36,103 +43,294 @@ Rectangle {
     }
 
     Component.onCompleted: {
-//        choices.clear();
-//        choices.append({"text": mydispather.get_themes()[0]});
-//        choices.append({"text": mydispather.get_themes()[1]});
-//        choices.append({"text": mydispather.get_themes()[2]});
-//        choices.append({"text": mydispather.get_themes()[3]});
-
-//        streamModel.sync();
-    }
-
-    ListModel {
-        id: choices
-        ListElement { text: "fonts" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-//            console.log("111111111111");
-//            console.log(settigsDetails.setTitle);
             if (settigsDetails.setTitle == "fonts")
                 console.log(fontslabel.text);
-//            console.log("222222222222");
+        }
+    }
+
+    ListModel {
+        id: choices
+        ListElement { text: "kobe" }
+        ListElement { text: "lixiang" }
+        ListElement { text: "ps" }
+        ListElement { text: "baby" }
+    }
+
+    Label {
+        id: fonts
+        text: qsTr("字体设置>")
+        height: 30
+        font.bold: true
+        font.family: "Ubuntu"
+        elide: Text.ElideRight
+        font.pointSize: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 15
         }
     }
 
     Column {
         spacing: 20
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors {
+//            top: parent.top
+//            topMargin: 20
+            top: fonts.bottom
+            topMargin: 20
+            horizontalCenter: parent.horizontalCenter
+        }
+
+//        anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
+            anchors.horizontalCenter: parent.horizontalCenter
             Label {
                 id: fontslabel
                 width: 110
-                text: qsTr("ps4-model")
+                text: qsTr("字体设置:")
+                font {
+                    family: fontspage.fontName
+                    pointSize: fontspage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: combobox
+                id: fontscombo;
                 model: choices;
                 width: parent.width;
-//                KeyNavigation.tab: t1
-//                KeyNavigation.backtab: button2
-//                onSelectedIndexChanged: console.log(selectedText)
+                onSelectedTextChanged: console.log(selectedText)
             }
-            Button {
-                id: button1
-                text: qsTr("确定")
-                width: 96
-                tooltip:"This is an interesting tool tip"
-                //                KeyNavigation.tab: button2
-                //                KeyNavigation.backtab: frame.tabBar
-                onClicked: {
+        }
 
+        Row {
+            Label {
+                id: desktopfontlabel
+                width: 110
+                text: qsTr("桌面字体:")
+                font {
+                    family: fontspage.fontName
+                    pointSize: fontspage.fontSize
                 }
-            }
-        }
-        Row {
-            Label {
-                id: modelabel1
-                width: 110
-                text: qsTr("模式:")
+                anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: combobox2
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel3
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox4
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel5
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox6
-                x: 110
+                id: desktopfontcombo;
+                model: choices;
+                width: parent.width;
+                onSelectedTextChanged: console.log(selectedText)
             }
         }
 
+        Row {
+            Label {
+                id: documentfontlabel
+                width: 110
+                text: qsTr("文档字体:")
+                font {
+                    family: fontspage.fontName
+                    pointSize: fontspage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            ComboBox {
+                id: documentfontcombo;
+                model: choices;
+                width: parent.width;
+                onSelectedTextChanged: console.log(selectedText)
+            }
+        }
+
+        Row {
+            Label {
+                id: monospacefontlabel
+                width: 110
+                text: qsTr("monospace字体:")
+                font {
+                    family: fontspage.fontName
+                    pointSize: fontspage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            ComboBox {
+                id: monospacefontcombo;
+                model: choices;
+                width: parent.width;
+                onSelectedTextChanged: console.log(selectedText)
+            }
+        }
+
+        Row {
+            Label {
+                id: windowtitlefontlabel
+                width: 110
+                text: qsTr("标题栏字体:")
+                font {
+                    family: fontspage.fontName
+                    pointSize: fontspage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            ComboBox {
+                id: windowtitlefontcombo;
+                model: choices;
+                width: parent.width;
+                onSelectedTextChanged: console.log(selectedText)
+            }
+        }
+
+        Row {
+            Label {
+                id: fontzoomlabel
+                width: 110
+                text: qsTr("字体大小:")
+                font {
+                    family: fontspage.fontName
+                    pointSize: fontspage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            SpinBox {
+                id: fontzoomspinbox
+                width: 97
+                minimumValue: 32
+                maximumValue: 64
+                value: 48
+            }
+        }
 
     }//Column
 
 }
+
+
+
+//import QtQuick 1.1
+////import RegisterMyType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
+//import QtDesktop 0.1
+//import "../common" as Common
+//Rectangle {
+//    id: lancherpage
+//    property bool on: true
+//    width: parent.width
+//    height: 460
+////    property Dispatcher dis: mydispather
+
+//    Common.Border {
+//        id: leftborder
+//    }
+//    Common.Border {
+//        id: roightborder
+//        anchors.right: parent.right
+//    }
+
+//    Component.onCompleted: {
+////        choices.clear();
+////        choices.append({"text": mydispather.get_themes()[0]});
+////        choices.append({"text": mydispather.get_themes()[1]});
+////        choices.append({"text": mydispather.get_themes()[2]});
+////        choices.append({"text": mydispather.get_themes()[3]});
+
+////        streamModel.sync();
+//    }
+
+//    ListModel {
+//        id: choices
+//        ListElement { text: "fonts" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
+//    }
+
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onButton2Clicked: {
+////            console.log("111111111111");
+////            console.log(settigsDetails.setTitle);
+//            if (settigsDetails.setTitle == "fonts")
+//                console.log(fontslabel.text);
+////            console.log("222222222222");
+//        }
+//    }
+
+//    Column {
+//        spacing: 20
+//        anchors.horizontalCenter: parent.horizontalCenter
+
+//        Row {
+//            Label {
+//                id: fontslabel
+//                width: 110
+//                text: qsTr("ps4-model")
+//            }
+//            ComboBox {
+//                id: combobox
+//                model: choices;
+//                width: parent.width;
+////                KeyNavigation.tab: t1
+////                KeyNavigation.backtab: button2
+////                onSelectedIndexChanged: console.log(selectedText)
+//            }
+//            Button {
+//                id: button1
+//                text: qsTr("确定")
+//                width: 96
+//                tooltip:"This is an interesting tool tip"
+//                //                KeyNavigation.tab: button2
+//                //                KeyNavigation.backtab: frame.tabBar
+//                onClicked: {
+
+//                }
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel1
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox2
+//                x: 110
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel3
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox4
+//                x: 110
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel5
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox6
+//                x: 110
+//            }
+//        }
+
+
+//    }//Column
+
+//}
 
 
 

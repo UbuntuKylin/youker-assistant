@@ -16,17 +16,23 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-import SessionType 0.1
-import SystemType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
+
 Rectangle {
-    id: lancherpage
+    id: scrollbarpage
     property bool on: true
     width: parent.width
     height: 460
-//    property Dispatcher dis: mydispather
+    property string fontName: "Helvetica"
+    property int fontSize: 12
+    property color fontColor: "black"
 
+
+
+//    property Dispatcher dis: mydispather
 
     Common.Border {
         id: leftborder
@@ -35,99 +41,75 @@ Rectangle {
         id: roightborder
         anchors.right: parent.right
     }
+
     Component.onCompleted: {
-//        choices.clear();
-//        choices.append({"text": mydispather.get_themes()[0]});
-//        choices.append({"text": mydispather.get_themes()[1]});
-//        choices.append({"text": mydispather.get_themes()[2]});
-//        choices.append({"text": mydispather.get_themes()[3]});
-
-//        streamModel.sync();
-    }
-
-    ListModel {
-        id: choices
-        ListElement { text: "files" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-//            console.log("111111111111");
-//            console.log(settigsDetails.setTitle);
-            if (settigsDetails.setTitle == "files")
-                console.log(fileslabel.text);
-//            console.log("222222222222");
+            if (settigsDetails.setTitle == "scrollbar")
+                console.log(scrollbarlabel.text);
+        }
+    }
+    Label {
+        id: scrollbar
+        text: qsTr("滑动条设置>")
+        height: 30
+        font.bold: true
+        font.family: "Ubuntu"
+        elide: Text.ElideRight
+        font.pointSize: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 15
         }
     }
 
     Column {
         spacing: 20
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors {
+//            top: parent.top
+//            topMargin: 20
+            top: scrollbar.bottom
+            topMargin: 20
+            horizontalCenter: parent.horizontalCenter
+        }
+
+//        anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
-            Label {
-                id: fileslabel
-                width: 110
-                text: qsTr("ps3-model")
-            }
-            ComboBox {
-                id: combobox
-                model: choices;
-                width: parent.width;
-//                KeyNavigation.tab: t1
-//                KeyNavigation.backtab: button2
-//                onSelectedIndexChanged: console.log(selectedText)
-            }
-            Button {
-                id: button1
-                text: qsTr("确定")
-                width: 96
-                tooltip:"This is an interesting tool tip"
-                //                KeyNavigation.tab: button2
-                //                KeyNavigation.backtab: frame.tabBar
-                onClicked: {
-
+            anchors.horizontalCenter: parent.horizontalCenter
+//            Label {
+//                id: scrollbarlabel
+//                width: 110
+//                text: qsTr("滑动条:")
+//                font {
+//                    family: scrollbarpage.fontName
+//                    pointSize: scrollbarpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+            GroupBox {
+                title: qsTr("滑动条:")
+                adjustToContentSize: true
+                ButtonColumn {
+                    exclusive: true//控制是否联动
+                    CheckBox {
+                        id:overlay
+                        text: "overlay模式"
+                    }
+                    CheckBox {
+                        id: legacy
+                        text: "legacy模式"
+                    }
                 }
             }
         }
-        Row {
-            Label {
-                id: modelabel1
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox2
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel3
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox4
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel5
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox6
-                x: 110
-            }
-        }
+
 
 
     }//Column

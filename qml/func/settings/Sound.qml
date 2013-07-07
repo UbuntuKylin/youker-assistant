@@ -16,15 +16,22 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-import SessionType 0.1
-import SystemType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
+
 Rectangle {
-    id: lancherpage
+    id: soundpage
     property bool on: true
     width: parent.width
     height: 460
+    property string fontName: "Helvetica"
+    property int fontSize: 12
+    property color fontColor: "black"
+
+
+
 //    property Dispatcher dis: mydispather
 
     Common.Border {
@@ -34,99 +41,97 @@ Rectangle {
         id: roightborder
         anchors.right: parent.right
     }
+
     Component.onCompleted: {
-//        choices.clear();
-//        choices.append({"text": mydispather.get_themes()[0]});
-//        choices.append({"text": mydispather.get_themes()[1]});
-//        choices.append({"text": mydispather.get_themes()[2]});
-//        choices.append({"text": mydispather.get_themes()[3]});
-
-//        streamModel.sync();
-    }
-
-    ListModel {
-        id: choices
-        ListElement { text: "talk" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-//            console.log("111111111111");
-//            console.log(settigsDetails.setTitle);
-            if (settigsDetails.setTitle == "talk")
-                console.log(talklabel.text);
-//            console.log("222222222222");
+            if (settigsDetails.setTitle == "sound")
+                console.log(soundlabel.text);
+        }
+    }
+
+    ListModel {
+        id: choices
+        ListElement { text: "kobe" }
+        ListElement { text: "lixiang" }
+        ListElement { text: "ps" }
+        ListElement { text: "baby" }
+    }
+
+    Label {
+        id: sound
+        text: qsTr("声音设置>")
+        height: 30
+        font.bold: true
+        font.family: "Ubuntu"
+        elide: Text.ElideRight
+        font.pointSize: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 15
         }
     }
 
     Column {
         spacing: 20
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors {
+            top: sound.bottom
+            topMargin: 20
+            horizontalCenter: parent.horizontalCenter
+        }
+
+//        anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
+            anchors.horizontalCenter: parent.horizontalCenter
             Label {
-                id: talklabel
+                id: soundlabel
                 width: 110
-                text: qsTr("ps6-model")
+                text: qsTr("系统登录音乐:")
+                font {
+                    family: soundpage.fontName
+                    pointSize: soundpage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
-            ComboBox {
-                id: combobox
-                model: choices;
-                width: parent.width;
-//                KeyNavigation.tab: t1
-//                KeyNavigation.backtab: button2
-//                onSelectedIndexChanged: console.log(selectedText)
-            }
-            Button {
-                id: button1
-                text: qsTr("确定")
-                width: 96
-                tooltip:"This is an interesting tool tip"
-                //                KeyNavigation.tab: button2
-                //                KeyNavigation.backtab: frame.tabBar
-                onClicked: {
-
+            Common.Switch {
+                id: soundswitcher
+                width: parent.width
+                onSwitched: {
+                    if (soundswitcher.switchedOn)
+                        console.log("系统登录音乐on---------------");
+                    else if(!soundswitcher.switchedOn)
+                        console.log("系统登录音乐off---------------");
                 }
             }
         }
+
         Row {
             Label {
-                id: modelabel1
+                id: soundthemelabel
                 width: 110
-                text: qsTr("模式:")
+                text: qsTr("音乐主题:")
+                font {
+                    family: fontspage.fontName
+                    pointSize: fontspage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: combobox2
-                x: 110
+                id: soundcombo;
+                model: choices;
+                width: parent.width;
+                onSelectedTextChanged: console.log(selectedText)
             }
         }
-        Row {
-            Label {
-                id: modelabel3
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox4
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel5
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox6
-                x: 110
-            }
-        }
+
+
 
 
     }//Column
