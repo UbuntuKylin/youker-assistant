@@ -17,7 +17,7 @@
 import QtQuick 1.1
 //import Ubuntu.Components 0.1
 //import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
@@ -34,7 +34,8 @@ Rectangle {
     width: parent.width
     height: 460
 //    property Dispatcher dis: mydispather
-    property SystemDispatcher dis: systemdispatcher
+    property SessionDispatcher dis1: sessiondispatcher
+    property SystemDispatcher dis2: systemdispatcher
     signal dialogmsg()
 
     function openFile(file) {
@@ -156,7 +157,11 @@ Rectangle {
 //                    mydialog.open();
 
                     //method 4
-                    home.openFile("MyDialog.qml");
+//                    home.openFile("MyDialog.qml");
+                    console.log("1111111111111111111");
+//                    sessiondispatcher.send_dialog_msg("modeless");
+                    sessiondispatcher.send_dialog_msg("modal");
+                    console.log("222222222222222222222");
                 }
             }
         }

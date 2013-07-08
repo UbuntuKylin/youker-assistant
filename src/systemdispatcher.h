@@ -9,6 +9,7 @@
 #include <QString>
 #include <QDeclarativeView>
 
+
 class SystemDispatcher : public QObject
 {
     Q_OBJECT
@@ -30,6 +31,7 @@ public:
     Q_INVOKABLE QStringList search_largest_file(QString path);
 
 
+
     //custom_plymouth
     QMap<QString, QVariant> myinfo;
     QDBusInterface *systemiface;
@@ -45,9 +47,14 @@ public:
 signals:
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
 
+
+
 public slots:
     QString show_progress_clear_rubbish(QString msg);
     QString show_signal(QString msg);
+
+
+
 //    void setmyString(QString aString);
 //    QString myString();
 private:

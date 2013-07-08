@@ -42,7 +42,7 @@
 #include <QDeclarativeView>
 #include <QtDeclarative>
 #include "quibo.h"
-
+#include <QTextCodec>
 int main(int argc, char** argv)
 {
 //    qmlRegisterType<Person>("People",1,0,"Person");
@@ -51,6 +51,14 @@ int main(int argc, char** argv)
 //    话就必须包含People包，通过import People 1.0来包含，之后就可以使用Person
 //    创建对象使用来。
 //    qmlRegisterType<DispatcherQml>("RegisterMyType", 0, 1, "Dispatcher");
+
+
+
+    QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     IhuApplication application(argc, argv);

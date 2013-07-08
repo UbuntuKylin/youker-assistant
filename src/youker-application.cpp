@@ -15,16 +15,10 @@
  */
 
 #include "youker-application.h"
-//#include <QtQuick/QQuickView>
 #include <QDeclarativeView>
 #include <QApplication>
-//#include <QtQml/QQmlEngine>
-//#include <QtQml>
-//#include <QtQuick/QQuickItem>
-#include <QtCore/QCoreApplication>
 #include <QDebug>
 #include <QDir>
-//#include <QtWidgets/QApplication>
 #include <QtGui/QApplication>
 #include <QtDeclarative/QDeclarativeView>
 #include <QtDeclarative/QDeclarativeEngine>

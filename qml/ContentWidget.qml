@@ -105,7 +105,7 @@ Rectangle {
             Common.Page {
                 id: homepage
                 visible: false
-                HomePage {dis: systemdispatcher}
+                HomePage {dis1: sessiondispatcher; dis2: systemdispatcher}
             }
             Common.Page {
                 id: clearrubbish

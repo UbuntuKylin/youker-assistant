@@ -14,6 +14,9 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                QDBusConnection::systemBus());
     QObject::connect(systemiface,SIGNAL(clear_browser(QString)),this,SLOT(show_progress_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
+
+
+
 //    QObject::connect(iface,SIGNAL(clear_rubbish(QString)),this,SLOT(show_progress_clear_rubbish(QString)));
     //呼叫远程的pc_message，参数为num
     //QDBusReply<int> reply = iface.call("pc_message", num);
@@ -183,3 +186,5 @@ QString SystemDispatcher::get_str()
 {
     return notify_str;
 }
+
+

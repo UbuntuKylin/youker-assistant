@@ -8,6 +8,8 @@
 #include <QString>
 #include <QDeclarativeView>
 #include "quibo.h"
+#include "modaldialog.h"
+
 class SessionDispatcher : public QObject
 {
     Q_OBJECT
@@ -16,6 +18,9 @@ public:
     explicit SessionDispatcher(QObject *parent = 0);
 
     QDBusInterface *sessioniface;
+
+    Q_INVOKABLE void send_dialog_msg(QString mode);
+    void create_dialog(QString mode);
 
     Q_INVOKABLE bool set_launcher(bool);
     Q_INVOKABLE QStringList get_themes();
@@ -100,7 +105,7 @@ public:
 signals:
 
 public slots:
-    
+
 private:
     QUIBO *qtui;
 };

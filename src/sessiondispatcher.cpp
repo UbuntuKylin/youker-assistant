@@ -5,6 +5,8 @@
 #include <QtDBus>
 #include <QObject>
 #include <QString>
+#include "modelessdialog.h"
+#include <QDesktopWidget>
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -13,6 +15,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
 
+//    QObject::connect(sessioniface,SIGNAL(receive_dialog_msg()), this, SLOT(create_dialog()));
     QDBusReply<QStringList> reply = sessioniface->call("get_sys_themes");
     if (reply.isValid()) {
         QStringList value = reply.value();
@@ -21,6 +24,42 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     else {
         qDebug() << "get thems msg failed!";
     }
+}
+
+
+
+void SessionDispatcher::send_dialog_msg(QString mode) {
+    qDebug() << "3333333333333333";
+//    emit receive_dialog_msg();
+    create_dialog(mode);
+    qDebug() << "44444444444444444";
+}
+
+void SessionDispatcher::create_dialog(QString mode) {
+    if (mode == "modal") {
+
+//        QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
+//        QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
+//        QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+//        QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+
+        qDebug() << "555555555555";
+        ModalDialog *dialog = new ModalDialog;
+        qDebug() << "6666666666666";
+//        dialog->setColumnRange('C','F');
+        qDebug() << "77777777777";
+        dialog->setModal(true);
+        dialog->show();
+        qDebug() << "888888888888888";
+    }
+    else if (mode == "modeless") {
+        qDebug() << "555555555555";
+        ModelessDialog *dialog = new ModelessDialog;
+        dialog->show();
+        dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
+        qDebug() << "6666666666666";
+    }
+
 }
 
 bool SessionDispatcher::set_launcher(bool flag) {

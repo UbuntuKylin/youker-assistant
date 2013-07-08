@@ -25,13 +25,17 @@ QML_IMPORT_PATH = /usr/lib/i386-linux-gnu/qt4/imports/QtDesktop/plugin
 HEADERS += youker-application.h \
     quibo.h \
     systemdispatcher.h \
-    sessiondispatcher.h
+    sessiondispatcher.h \
+    modaldialog.h \
+    modelessdialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
-    sessiondispatcher.cpp
+    sessiondispatcher.cpp \
+    modaldialog.cpp \
+    modelessdialog.cpp
 
 OTHER_FILES += youker-assistant/ihu.png
 
