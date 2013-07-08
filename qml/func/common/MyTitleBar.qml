@@ -40,8 +40,10 @@
  ****************************************************************************/
 import QtQuick 1.1
 import QtDesktop 0.1
+import SessionType 0.1
  Item {
      id: titleBar
+     property SessionDispatcher dis: sessiondispatcher
      property string btn_text: "一键清理"
      property string title: "一键清理系统垃圾，有效提高系统运行效率"
      property string description: "全面清理垃圾、痕迹、注册表，高效率解决系统清理问题"
@@ -91,6 +93,14 @@ import QtDesktop 0.1
                  //kobe: wait for adding function
                  if (btn_flag == "one_key") {
                      console.log("one_key");
+                     var str = sessiondispatcher.get_str();
+                     if (str.indexOf("r") > -1)
+                         console.log("rrrrrrrrrrr");
+                     if (str.indexOf("t") > -1)
+                         console.log("ttttttttttttt");
+                     if (str.indexOf("p") > -1)
+                         console.log("pppppppppppp");
+
                  }
                  else if (btn_flag == "rubbish") {
                      console.log("rubbish");

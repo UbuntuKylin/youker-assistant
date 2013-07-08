@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #ifndef SESSIONDISPATCHER_H
 #define SESSIONDISPATCHER_H
 
@@ -21,6 +36,12 @@ public:
 
     Q_INVOKABLE void send_dialog_msg(QString mode);
     void create_dialog(QString mode);
+
+    Q_INVOKABLE void set_str(QString str);
+    Q_INVOKABLE void del_str(QString str);
+    Q_INVOKABLE QString get_str();
+    QString notify_str;
+
 
     Q_INVOKABLE bool set_launcher(bool);
     Q_INVOKABLE QStringList get_themes();
@@ -107,7 +128,7 @@ signals:
 public slots:
 
 private:
-    QUIBO *qtui;
+//    QUIBO *qtui;
 };
 
 #endif // SESSIONDISPATCHER_H

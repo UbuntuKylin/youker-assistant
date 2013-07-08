@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include "sessiondispatcher.h"
 #include <QDebug>
 #include <QVariant>
@@ -24,6 +39,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     else {
         qDebug() << "get thems msg failed!";
     }
+
+    notify_str = "";
 }
 
 
@@ -33,6 +50,22 @@ void SessionDispatcher::send_dialog_msg(QString mode) {
 //    emit receive_dialog_msg();
     create_dialog(mode);
     qDebug() << "44444444444444444";
+}
+
+
+void SessionDispatcher::set_str(QString str)
+{
+    notify_str += str;
+}
+
+void SessionDispatcher::del_str(QString str)
+{
+    notify_str.replace(QString(str), QString(""));
+}
+
+QString SessionDispatcher::get_str()
+{
+    return notify_str;
 }
 
 void SessionDispatcher::create_dialog(QString mode) {
@@ -87,8 +120,8 @@ void SessionDispatcher::set_theme(QString theme) {
 
 
 void SessionDispatcher::new_object_test() {
-    delete this->qtui;
-    this->qtui = new QUIBO();
+//    delete this->qtui;
+//    this->qtui = new QUIBO();
 }
 
 /*-----------------------------desktop of beauty-----------------------------*/

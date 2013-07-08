@@ -120,7 +120,7 @@ Rectangle {
             }
             Common.Switch {
                 id: folderswitcher
-                width: parent.width
+//                width: parent.width
                 onSwitched: {
                     if (folderswitcher.switchedOn)
                         console.log("根文件夹on---------------");
@@ -143,7 +143,7 @@ Rectangle {
             }
             Common.Switch {
                 id: networkswitcher
-                width: parent.width
+//                width: parent.width
                 onSwitched: {
                     if (networkswitcher.switchedOn)
                         console.log("网络on---------------");
@@ -166,7 +166,7 @@ Rectangle {
             }
             Common.Switch {
                 id: trashswitcher
-                width: parent.width
+//                width: parent.width
                 onSwitched: {
                     if (trashswitcher.switchedOn)
                         console.log("垃圾on---------------");

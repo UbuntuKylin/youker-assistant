@@ -149,7 +149,6 @@ Rectangle {
 //                         component.createObject(home);
 //                     }
 
-
                     //method 2
 //                    pageLoader.source = "MyDialog.qml"
 
@@ -158,10 +157,8 @@ Rectangle {
 
                     //method 4
 //                    home.openFile("MyDialog.qml");
-                    console.log("1111111111111111111");
 //                    sessiondispatcher.send_dialog_msg("modeless");
                     sessiondispatcher.send_dialog_msg("modal");
-                    console.log("222222222222222222222");
                 }
             }
         }

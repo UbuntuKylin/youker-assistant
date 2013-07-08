@@ -60,7 +60,7 @@ Rectangle {
             ComboBox {
                 id: combobox
                 model: choices;
-                width: parent.width;
+//                width: parent.width;
 //                KeyNavigation.tab: t1
 //                KeyNavigation.backtab: button2
 //                onSelectedIndexChanged: console.log(selectedText)
