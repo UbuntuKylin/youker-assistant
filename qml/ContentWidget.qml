@@ -28,10 +28,14 @@ import "./func/common" as Common
 //  /usr/lib/i386-linux-gnu/qt4/bin/qdbusviewer
 
 import "func"
-Rectangle {
+//Rectangle {
+Item {
     id:content
     width: parent.width
     height: parent.height - 30  //去掉StatusWidget所占用的高度30
+
+//    radius: 10
+//    color: "lightgray"
 
     property string text: "homepage"
     SessionDispatcher {
@@ -51,12 +55,12 @@ Rectangle {
         width: parent.width
         height: 84 + 20
         color: "transparent"
-        Image {
-            id: bgImg
-            width: parent.width
-            height: 84 + 20  //标题栏 + 功能图标栏的高度
-            source: "./img/skin/background.png"
-        }
+//        Image {
+//            id: bgImg
+//            width: parent.width
+//            height: 84 + 20  //标题栏 + 功能图标栏的高度
+//            source: "./img/skin/background.png"
+//        }
 
         Column {
             id: layout1
@@ -66,11 +70,13 @@ Rectangle {
             TitleWidget {
                 id: titlebar
                 height: 20
+//                opacity: 0.3
             }
             //功能图标栏
             ToolWidget {
                 id: toolwidget
                 height: 84
+//                opacity: 0.3
             }
         }
     }
@@ -83,6 +89,7 @@ Rectangle {
         height: parent.height - 104 -30 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
         anchors.top: parent.top
         anchors.topMargin: 106
+        opacity: 1.0
         property string text: "homepage"
 //        ProgressBar {
 //            id: mypb

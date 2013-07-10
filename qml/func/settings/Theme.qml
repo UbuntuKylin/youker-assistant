@@ -56,7 +56,7 @@ Rectangle {
 
     ListModel {
         id: choices
-        ListElement { text: "kobe" }
+        ListElement { text: "kobe999" }
         ListElement { text: "lixiang" }
         ListElement { text: "ps" }
         ListElement { text: "baby" }
@@ -103,10 +103,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: syscombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: syscombo
+                model: choices
+                width: cursorthemelabel.width
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 
@@ -122,10 +122,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: iconcombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: iconcombo
+                model: choices
+                width: cursorthemelabel.width
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 
@@ -141,10 +141,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: cursorcombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: cursorcombo
+                model: choices
+                width: cursorthemelabel.width
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 
@@ -161,7 +161,8 @@ Rectangle {
             }
             SpinBox {
                 id: themespinbox
-                width: 97
+                width: trashlabel.width
+//                width: 97
                 minimumValue: 32
                 maximumValue: 64
                 value: 48

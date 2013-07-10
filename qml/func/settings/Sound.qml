@@ -56,7 +56,7 @@ Rectangle {
 
     ListModel {
         id: choices
-        ListElement { text: "kobe" }
+        ListElement { text: "kobe888" }
         ListElement { text: "lixiang" }
         ListElement { text: "ps" }
         ListElement { text: "baby" }
@@ -102,7 +102,7 @@ Rectangle {
             }
             Common.Switch {
                 id: soundswitcher
-                width: parent.width
+                width: soundlabel.width
                 onSwitched: {
                     if (soundswitcher.switchedOn)
                         console.log("系统登录音乐on---------------");
@@ -124,10 +124,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: soundcombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: soundcombo
+                model: choices
+                width: soundthemelabel.width
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 

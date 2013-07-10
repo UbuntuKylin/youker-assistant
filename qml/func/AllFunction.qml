@@ -91,7 +91,7 @@ Item {
 
     ListModel {
         id: choices
-        ListElement { text: "kobe" }
+        ListElement { text: "kobe222" }
         ListElement { text: "lixiang" }
         ListElement { text: "ps" }
         ListElement { text: "baby" }

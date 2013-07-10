@@ -1,11 +1,25 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import QtQuick 1.1
 
 ListModel {
     id: model
     ListElement {
         itemTitle: "Item title 1"
-        itemTitle1: "Item title 11"
-        iconpath: "../img/icon/settings.png"
         attributes: [
             ListElement { subItemTitle: "kobe 1/1" },
             ListElement { subItemTitle: "kobe 2/1" }
@@ -13,8 +27,6 @@ ListModel {
     }
     ListElement {
         itemTitle: "Item title 2"
-        itemTitle1: "Item title 22"
-        iconpath: "../img/icon/history.png"
         attributes: [
             ListElement { subItemTitle: "kobe 1/3" },
             ListElement { subItemTitle: "kobe 2/3" },
@@ -23,8 +35,6 @@ ListModel {
     }
     ListElement {
         itemTitle: "Item title 3"
-        itemTitle1: "Item title 33"
-        iconpath: "../img/icon/about.png"
         attributes: [
             ListElement { subItemTitle: "kobe 1/4" },
             ListElement { subItemTitle: "kobe 2/4" },

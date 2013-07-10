@@ -21,30 +21,25 @@ Rectangle {
     height: 600
     id: main
     objectName: "main"
-    Image {
-        id: bgImg
-        anchors.fill: parent
-        source: "./img/skin/background.png"
-    }
+    anchors.fill: parent
+//    Image {
+//        id: bgImg
+//        anchors.fill: parent
+//        source: "./img/skin/background.png"
+//    }
+    radius: 5
+    color: "gray"
+    opacity: 0.9
 
     Column {
         id: layout
         anchors.fill: parent
-//        anchors {
-//            left: parent.left
-//            top: parent.top
-//            right: parent.right
-//        }
         spacing: 0
         ContentWidget{
             id: contentwidget
-            anchors {
-                bottom: statuswidget.top
-            }
         }
         StatusWidget{
             id: statuswidget
-//            anchors.fill: parent
         }
     }
 

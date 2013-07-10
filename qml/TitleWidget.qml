@@ -15,10 +15,12 @@
  */
 import QtQuick 1.1
 import QtDesktop 0.1
-Rectangle {
+//Rectangle {
+Item {
     height: 20
     width: parent.width
-    color: "transparent"
+//    color: "transparent"
+//    opacity: 0.3
     Text {
         anchors.top: parent.top
         anchors.topMargin: 4
@@ -90,6 +92,7 @@ Rectangle {
       }
 
     Row {
+        id:row
         anchors.right: parent.right
         anchors.rightMargin: 1
         SysBtn {
@@ -102,7 +105,7 @@ Rectangle {
 //                    clickPos  = Qt.point(mouse.x,mouse.y)
 //                }
 //                  onClicked: menu.showPopup(clickPos.x, clickPos.y)
-                onClicked: menu.showPopup(mouseX, mouseY)
+                onClicked: menu.showPopup(row.x, row.y+20)
 //
             }
         }

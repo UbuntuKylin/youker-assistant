@@ -17,11 +17,13 @@ import QtQuick 1.1
 //import RegisterMyType 0.1
 import SessionType 0.1
 import SystemType 0.1
-Rectangle {
+//Rectangle {
+Item {
     id: rectangle1
     width: parent.width
     height: 84
-    color: "transparent"
+//    color: "transparent"
+//    opacity: 0.3
     Row {
         id: tool_line
         anchors.left: parent.left

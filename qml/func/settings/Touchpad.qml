@@ -94,7 +94,7 @@ Rectangle {
             }
             Common.Switch {
                 id: touchpadswitcher
-                width: parent.width
+                width: touchpadlabel.width
                 onSwitched: {
                     if (touchpadswitcher.switchedOn)
                         console.log("触摸板开关on---------------");
@@ -118,7 +118,7 @@ Rectangle {
             }
             Common.Switch {
                 id: horizontalswitcher
-                width: parent.width
+                width: horizontallabel.width
                 onSwitched: {
                     if (horizontalswitcher.switchedOn)
                         console.log("水平on---------------");

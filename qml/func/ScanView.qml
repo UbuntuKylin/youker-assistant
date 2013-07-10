@@ -101,7 +101,7 @@ Item {
     ListModel {
         id: streamModel
         ListElement {
-            title1: "kobe"
+            title1: "kobe111"
             title2: "lixiang"
         }
     }

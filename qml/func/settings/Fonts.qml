@@ -56,7 +56,7 @@ Rectangle {
 
     ListModel {
         id: choices
-        ListElement { text: "kobe" }
+        ListElement { text: "kobe777" }
         ListElement { text: "lixiang" }
         ListElement { text: "ps" }
         ListElement { text: "baby" }
@@ -103,10 +103,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: fontscombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: fontscombo
+                model: choices
+                width: fontslabel.width
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 
@@ -122,10 +122,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: desktopfontcombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: desktopfontcombo
+                model: choices
+                width: desktopfontlabel.width
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 
@@ -141,10 +141,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: documentfontcombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: documentfontcombo
+                model: choices
+                width: documentfontlabel.width
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 
@@ -160,10 +160,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: monospacefontcombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: monospacefontcombo
+                model: choices
+                width: monospacefontlabel.width
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 
@@ -179,10 +179,10 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
-                id: windowtitlefontcombo;
-                model: choices;
-                width: parent.width;
-                onSelectedTextChanged: console.log(selectedText)
+                id: windowtitlefontcombo
+                model: choices
+                width: windowtitlefontlabel.width;
+//                onSelectedTextChanged: console.log(selectedText)
             }
         }
 

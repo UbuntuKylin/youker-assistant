@@ -34,8 +34,7 @@ public:
     virtual ~IhuApplication();
     bool setup();
 private:
-    QDeclarativeView *m_view;
-    QBoxLayout *hlayout;
+    QDeclarativeView *viewer;
 };
 
 

@@ -96,7 +96,7 @@ Rectangle {
             }
             Common.Switch {
                 id: iconswitcher
-                width: parent.width
+                width: desktopiconlabel.width
                 onSwitched: {
                     if (iconswitcher.switchedOn)
                         console.log("桌面图标on---------------");

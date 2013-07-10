@@ -94,7 +94,7 @@ Rectangle {
             }
             Common.Switch {
                 id: launcherswitcher
-                width: parent.width
+                width: launcherlabel.width
                 onSwitched: {
                     if (launcherswitcher.switchedOn)
                         console.log("Launcher自动隐藏on---------------");
@@ -137,7 +137,7 @@ Rectangle {
             }
             Common.Switch {
                 id: showdesktopswitcher
-                width: parent.width
+                width: showdesktoplabel.width
                 onSwitched: {
                     if (showdesktopswitcher.switchedOn)
                         console.log("图标显示在桌面上on---------------");

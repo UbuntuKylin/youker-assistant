@@ -12,7 +12,8 @@ Item {
 
     Rectangle {
         id: background
-        anchors.fill: parent; color: "white"
+        anchors.fill: parent
+//        color: "white"
         Item {
             id: views
             width: parent.width

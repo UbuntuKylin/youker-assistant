@@ -23,6 +23,7 @@
 #include "modelessdialog.h"
 #include "warningdialog.h"
 #include <QDesktopWidget>
+#include <QDeclarativeContext>
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -43,6 +44,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     notify_str = "";
 }
+
 
 
 

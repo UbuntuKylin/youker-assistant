@@ -40,7 +40,7 @@ Item {
 
     ListModel {
         id: choices
-        ListElement { text: "kobe" }
+        ListElement { text: "kobe555" }
         ListElement { text: "lixiang" }
         ListElement { text: "ps" }
         ListElement { text: "baby" }

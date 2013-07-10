@@ -117,7 +117,7 @@ Rectangle {
             }
             Common.Switch {
                 id: menuiconswitcher
-                width: parent.width
+                width: menuiconlabel.width
                 onSwitched: {
                     if (menuiconswitcher.switchedOn)
                         console.log("菜单栏显示图标on---------------");

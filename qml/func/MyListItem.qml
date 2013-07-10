@@ -7,12 +7,11 @@ Item {
     property int fontSize: 10
     property color fontColor: "black"
     property bool fontBold: false
-    property string text: "NOT SET"
+    property string text: "NULL"
     property string bgImage: '../img/icons/list_item.png'
 
     property string bgImageSelected: '../img/icons/list_item_selected.png'
     property string bgImagePressed: '../img/icons/list_item_pressed.png'
-    property string bgImageActive: '../img/icons/list_item_active.png'
     property bool selected: false
     property bool selectable: false
     property int textIndent: 0
@@ -68,10 +67,6 @@ Item {
         State {
             name: 'selected'
             PropertyChanges { target: background; source: bgImageSelected; border { left: 35; top: 35; right: 35; bottom: 10 } }
-        },
-        State {
-            name: 'active';
-            PropertyChanges { target: background; source: bgImageActive; }
         }
     ]
 }

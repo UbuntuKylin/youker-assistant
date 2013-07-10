@@ -19,12 +19,12 @@ import QtDesktop 0.1
 //import SessionType 0.1
 //import SystemType 0.1
 import "common" as Common
-Item {
+Rectangle {
     id:root
 //    property Dispatcher dis: mydispather
     width: parent.width
     height: 420//340
-//    color:"#c3c3c3"
+    color:"#c3c3c3"
     //垃圾清理自定义标题栏
     Common.MyTitleBar {
         id: titleBar; width: parent.width; height: 45; opacity: 0.9
@@ -41,13 +41,14 @@ Item {
         anchors.topMargin: 50
         Item {
             width:parent.width
-            height:content.height + 50//1000//this height must be higher than root.height, then the slidebar can display
-            Component {
-                id: statusDelegate
-                RubbishStatus {
-                    id: content
-                }
-            }
+            height: 450
+//            height:content.height + 50//1000//this height must be higher than root.height, then the slidebar can display
+//            Component {
+//                id: statusDelegate
+//                RubbishStatus {
+//                    id: content
+//                }
+//            }
             ListModel {
                 id: streamModel
                 ListElement {
@@ -61,7 +62,7 @@ Item {
             //垃圾清理显示内容
             ListView {
                 id: listView
-                height: parent.height - titlebar.height
+                height: parent.height - titleBar.height
                 width: parent.width
                 model: streamModel
                 delegate: RubbishDelegate {}

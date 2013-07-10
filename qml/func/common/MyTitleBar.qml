@@ -42,7 +42,7 @@ import QtQuick 1.1
 import QtDesktop 0.1
 import SessionType 0.1
 import SystemType 0.1
- Item {
+Item {
      id: titleBar
      property SessionDispatcher dis1: sessiondispatcher
      property SystemDispatcher dis2: systemdispatcher

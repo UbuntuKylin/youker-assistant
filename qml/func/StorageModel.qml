@@ -6,7 +6,7 @@ ListModel {
     id: storageModel
 
     ListElement {
-            title1: "kobe"
+            title1: "kobe666"
             title2: "lixiang"
     }
 
