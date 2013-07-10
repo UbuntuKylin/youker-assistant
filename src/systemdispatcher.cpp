@@ -27,17 +27,15 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
-    QObject::connect(systemiface,SIGNAL(clear_browser(QString)),this,SLOT(show_progress_clear_rubbish(QString)));
+
+    //绑定到底层清理完毕后发送到信号函数clear_browser
+    QObject::connect(systemiface,SIGNAL(clear_browser(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
 
-
-
-//    QObject::connect(iface,SIGNAL(clear_rubbish(QString)),this,SLOT(show_progress_clear_rubbish(QString)));
-    //呼叫远程的pc_message，参数为num
-    //QDBusReply<int> reply = iface.call("pc_message", num);
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("pc_message");
 
     notify_str = "";
+
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         myinfo = value;
@@ -46,27 +44,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     else {
         qDebug() << "get pc_message failed!";
     }
-
-
-//    QDBusReply<QMap<QString, QVariant> > reply2 = systemiface->call("search_the_same", "/home/kobe/a/");
-//    if (reply2.isValid()) {
-//        qDebug() << "aaaaaaaaaaaaa";
-//        qDebug() << reply2.value();
-//    }
-//    else {
-//        qDebug() << "search_the_same failed!";
-////        return "search_the_same has error";
-//    }
-
-
-//    QDBusReply<QStringList> reply3 = iface->call("search_the_large", "/home/kobe/a/");
-//    if (reply3.isValid()) {
-//        QStringList value = reply3.value();
-//        qDebug() << value;
-//    }
-//    else {
-//        qDebug() << "search_the_large failed!";
-//    }
 }
 
 
@@ -83,13 +60,12 @@ int SystemDispatcher::get_add_value()
     return tt;
 }
 
-QString SystemDispatcher::show_progress_clear_rubbish(QString msg)
+void SystemDispatcher::handler_clear_rubbish(QString msg)
 {
-    qDebug() << "kobekoeb***********";
-    qDebug() << msg;
+    emit finishCleanWork(msg);
 //    emit myStringChanged("Kobe test for fastclear button and dbus communication");
-    return msg;
 }
+
 
 QString SystemDispatcher::show_signal(QString msg) {
     qDebug() << "pspspspspps***********";
@@ -133,7 +109,6 @@ void SystemDispatcher::custom_plymouth_bg(QString imagepath) {
     QDBusReply<void> reply = systemiface->call("custom_plymouth", imagepath);
 }
 
-//QMap<QString, QStringList> search_the_same_file(QString imagepath);
 
 //QMap<QString, QStringList> SystemDispatcher::search_the_same_file(QString path) {
 //    QDBusReply<QMap<QString, QStringList> > reply = iface->call("search_the_same", path);
@@ -147,13 +122,13 @@ void SystemDispatcher::custom_plymouth_bg(QString imagepath) {
 ////    }
 //}
 
-int SystemDispatcher::get_record_number(QString mode) {
+int SystemDispatcher::get_the_record_qt(QString mode) {
     QDBusReply<int> reply = systemiface->call("get_the_record", mode);
     if (reply.isValid()) {
         int value = reply.value();
-        qDebug() << "value start";
-        qDebug() << value;
-        qDebug() << "value end";
+//        qDebug() << "value start";
+//        qDebug() << value;
+//        qDebug() << "value end";
         return value;
     }
     else {
@@ -163,7 +138,7 @@ int SystemDispatcher::get_record_number(QString mode) {
 }
 
 
-void SystemDispatcher::clean_browser_record(QString mode) {
+void SystemDispatcher::clean_the_browser_qt(QString mode) {
     QDBusReply<void> reply = systemiface->call("clean_the_browser", mode);
 }
 

@@ -41,13 +41,44 @@
 import QtQuick 1.1
 import QtDesktop 0.1
 import SessionType 0.1
+import SystemType 0.1
  Item {
      id: titleBar
-     property SessionDispatcher dis: sessiondispatcher
+     property SessionDispatcher dis1: sessiondispatcher
+     property SystemDispatcher dis2: systemdispatcher
      property string btn_text: "一键清理"
      property string title: "一键清理系统垃圾，有效提高系统运行效率"
      property string description: "全面清理垃圾、痕迹、注册表，高效率解决系统清理问题"
-     property string btn_flag: "one_key"
+     property string btn_flag: "one_key_scan"
+     property string work_result: ""
+
+     signal dataRequired();
+
+     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
+     Connections
+     {
+         target: systemdispatcher
+         onFinishCleanWork: {
+             if (btn_flag == "one_key_work") {
+                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "OneKeyFinish";
+             }
+             if (btn_flag == "history_work") {
+                 console.log("******Signal handler received  Start******")
+                 console.log(msg);
+                 titleBar.state = "HistoryWorkFinish";
+                 console.log("******End******");
+             }
+             else if (btn_flag == "cookies_work") {
+                 console.log(msg);
+                 titleBar.state = "CookiesWorkFinish";
+             }
+         }
+     }
+
+
+
      BorderImage {
          source: "../../img/icons/unselect.png"
          width: parent.width
@@ -82,6 +113,15 @@ import SessionType 0.1
              }
          }
 
+         Label {
+             id: label
+             visible: false
+             text: ""
+             anchors.right: bitButton.left
+             anchors.rightMargin: 20
+             anchors.verticalCenter: parent.verticalCenter
+         }
+
          Button {
              id: bitButton
              width: 95
@@ -91,31 +131,123 @@ import SessionType 0.1
              anchors.rightMargin: 50
              onClicked: {
                  //kobe: wait for adding function
-                 if (btn_flag == "one_key") {
-                     console.log("one_key");
-                     var str = sessiondispatcher.get_str();
-                     if (str.indexOf("r") > -1)
-                         console.log("rrrrrrrrrrr");
-                     if (str.indexOf("t") > -1)
-                         console.log("ttttttttttttt");
-                     if (str.indexOf("p") > -1)
-                         console.log("pppppppppppp");
-
+                 var str = sessiondispatcher.get_str();
+                 console.log('cccccc');
+                 console.log(str)
+                 //one key
+                 if (btn_flag == "one_key_scan") {
+                    if (str.indexOf("r") > -1 || str.indexOf("h") > -1 || str.indexOf("c") > -1 || str.indexOf("p") > -1) {
+                        titleBar.state = "OneKeyWork";
+                        if (str.indexOf("r") > -1)
+                            console.log("rrrrrrrrrrr");
+                        if (str.indexOf("h") > -1)
+                            console.log("hhhhhhhhhhh");
+                        if (str.indexOf("c") > -1)
+                            console.log("ccccccccccc");
+                        if (str.indexOf("p") > -1)
+                            console.log("pppppppppppp");
+                    }
+                    else {
+                        sessiondispatcher.send_warningdialog_msg("对不起，您没有选中一键清理的任何扫描项，请确认！");
+                    }
                  }
+                 else if (btn_flag == "one_key_work") {
+                      if (str.indexOf("r") > -1 || str.indexOf("h") > -1 || str.indexOf("c") > -1 || str.indexOf("p") > -1) {
+                          systemdispatcher.clean_the_browser_qt("history");//kobe: need to add other function
+                      }
+                     else
+                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
+                 }
+
+                 //rubbish
                  else if (btn_flag == "rubbish") {
                      console.log("rubbish");
+                     if (str.indexOf("r") > -1)
+                         console.log("rrrrrrrrrrrrr");
+                     else
+                         console.log("nrnrnrnrnrnrnr");
                  }
+
+
+                 //broswer history
+                 else if (btn_flag == "history_scan") {
+                      if (str.indexOf("h") > -1)
+                          titleBar.state = "HistoryWork";
+                     else
+                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录扫描项，请确认！");
+                 }
+                 else if (btn_flag == "history_work") {
+                      if (str.indexOf("h") > -1)
+//                          dataRequired();
+                          systemdispatcher.clean_the_browser_qt("history");
+                     else
+                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
+                 }
+
+                //broswer cookies
+                 else if (btn_flag == "cookies_scan") {
+                     if (str.indexOf("c") > -1)
+                         titleBar.state = "CookiesWork";
+                     else
+                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies扫描项，请确认！");
+                 }
+                 else if (btn_flag == "cookies_work") {
+                     if (str.indexOf("c") > -1)
+                         systemdispatcher.clean_the_browser_qt("cookies");
+                     else
+                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies清理项，请确认！");
+                 }
+
+                 //plugins
                  else if (btn_flag == "plugins") {
                      console.log("plugins");
                      pageStack.pop();
  //                    pageStack.push(pluginlist);
                      pageStack.push(Qt.resolvedUrl("../PluginList.qml"));
                  }
-                 else if (btn_flag == "traces") {
-                     console.log("traces");
-                 }
              }
              anchors.verticalCenter: parent.verticalCenter
          }
      }
+
+
+     states: [
+         State {
+             name: "HistoryWork"
+             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" }
+             PropertyChanges { target: bitButton; text: "开始清理" }
+             PropertyChanges { target: titleBar; btn_flag: "history_work" }
+         },
+         State {
+             name: "CookiesWork"
+             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" }
+             PropertyChanges { target: bitButton; text: "开始清理" }
+             PropertyChanges { target: titleBar; btn_flag: "cookies_work" }
+         },
+         State {
+             name: "OneKeyWork"
+             PropertyChanges { target: label; visible: true; text: "one key scan" }
+//             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" }
+             PropertyChanges { target: bitButton; text: "开始清理" }
+             PropertyChanges { target: titleBar; btn_flag: "one_key_work" }
+         },
+         State {
+             name: "HistoryWorkFinish"
+             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: bitButton; text: "开始扫描" }
+             PropertyChanges { target: titleBar; btn_flag: "history_scan" }
+         },
+         State {
+             name: "CookiesWorkFinish"
+             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: bitButton; text: "开始扫描" }
+             PropertyChanges { target: titleBar; btn_flag: "cookies_scan" }
+         },
+         State {
+             name: "OneKeyFinish"
+             PropertyChanges { target: label; visible: true; text: titleBar.work_result + "清理完毕！" }
+             PropertyChanges { target: bitButton; text: "开始扫描" }
+             PropertyChanges { target: titleBar; btn_flag: "one_key_scan" }
+         }
+     ]
  }

@@ -29,9 +29,9 @@ Item {
     Common.MyTitleBar {
         id: titleBar; width: parent.width; height: 45; opacity: 0.9
         btn_text: "开始扫描"
-        title: "清理电脑痕迹"
-        description:  "清理痕迹可以保障系统安全"
-        btn_flag: "traces"
+        title: "清理浏览器Cookies"
+        description:  "清理浏览器Cookies可以保障系统安全"
+        btn_flag: "cookies_scan"
     }
 
     ScrollArea {
@@ -51,10 +51,10 @@ Item {
             ListModel {
                 id: streamModel
                 ListElement {
-                    title: "清理痕迹"
+                    title: "清理Cookies"
                     picture: "../img/icons/user.png"
-                    detailstr: "清理系统痕迹，让系统更安全"
-                    flags: "clear_traces"
+                    detailstr: "清理Cookies，让系统更安全"
+                    flags: "clear_cookies"
                 }
             }
 

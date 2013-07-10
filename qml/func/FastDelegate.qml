@@ -15,6 +15,7 @@ Component {
 //            scaleMe.state = "Details";
 //        }
 
+        //kobe: 'flag' comes from ListModel in FastclearModel.qml
         Component.onCompleted: {
             if (checkbox.checked) {
                 if (flag == "rubbish") {
@@ -22,10 +23,15 @@ Component {
                     if (rubbish_str.indexOf("r") < 0)
                         sessiondispatcher.set_str("r");
                 }
-                else if (flag == "trace") {
-                    var trace_str = sessiondispatcher.get_str();
-                    if (trace_str.indexOf("t") < 0)
-                        sessiondispatcher.set_str("t");
+                else if (flag == "history") {
+                    var history_str = sessiondispatcher.get_str();
+                    if (history_str.indexOf("h") < 0)
+                        sessiondispatcher.set_str("h");
+                }
+                else if (flag == "cookie") {
+                    var cookie_str = sessiondispatcher.get_str();
+                    if (cookie_str.indexOf("c") < 0)
+                        sessiondispatcher.set_str("c");
                 }
                 else if (flag == "plugin") {
                     var plugin_str = sessiondispatcher.get_str();
@@ -54,49 +60,51 @@ Component {
                     onCheckedChanged: {
                         //kobe: wait for adding function
                         if (checkbox.checked) {
-                            console.log(flag);
-
                             if (flag == "rubbish") {
                                 var rubbish_str = sessiondispatcher.get_str();
                                 if (rubbish_str.indexOf("r") < 0)
                                     sessiondispatcher.set_str("r");
                             }
-                            else if (flag == "trace") {
-                                var trace_str = sessiondispatcher.get_str();
-                                if (trace_str.indexOf("t") < 0)
-                                    sessiondispatcher.set_str("t");
+                            else if (flag == "history") {
+                                var history_str = sessiondispatcher.get_str();
+                                if (history_str.indexOf("h") < 0)
+                                    sessiondispatcher.set_str("h");
+                            }
+                            else if (flag == "cookie") {
+                                var cookie_str = sessiondispatcher.get_str();
+                                if (cookie_str.indexOf("c") < 0)
+                                    sessiondispatcher.set_str("c");
                             }
                             else if (flag == "plugin") {
                                 var plugin_str = sessiondispatcher.get_str();
                                 if (plugin_str.indexOf("p") < 0)
                                     sessiondispatcher.set_str("p");
                             }
-                            console.log("is checked");
+//                            console.log("is checked");
                         }
                         else if (!checkbox.checked) {
-                            console.log(flag);
                             if (flag == "rubbish") {
-                                console.log("aaaaaaaaa");
                                 var rubbish_str1 = sessiondispatcher.get_str();
-                                console.log("bbbbbbbbb");
                                 if (rubbish_str1.indexOf("r") > -1) {
-                                    console.log("ccccccccc");
                                     sessiondispatcher.del_str("r");
-                                    console.log("dddddd");
                                 }
-                                console.log("eeeeeeee");
                             }
-                            else if (flag == "trace") {
-                                var trace_str1 = sessiondispatcher.get_str();
-                                if (trace_str1.indexOf("t") > -1)
-                                    sessiondispatcher.del_str("t");
+                            else if (flag == "history") {
+                                var history_str1 = sessiondispatcher.get_str();
+                                if (history_str1.indexOf("h") > -1)
+                                    sessiondispatcher.del_str("h");
+                            }
+                            else if (flag == "cookie") {
+                                var cookie_str1 = sessiondispatcher.get_str();
+                                if (cookie_str1.indexOf("c") > -1)
+                                    sessiondispatcher.del_str("c");
                             }
                             else if (flag == "plugin") {
                                 var plugin_str1 = sessiondispatcher.get_str();
                                 if (plugin_str1.indexOf("p") > -1)
                                     sessiondispatcher.del_str("p");
                             }
-                            console.log("is not checked");
+//                            console.log("is not checked");
                         }
                     }
                 }

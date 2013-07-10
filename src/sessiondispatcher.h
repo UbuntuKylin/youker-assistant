@@ -36,6 +36,8 @@ public:
 
     Q_INVOKABLE void send_dialog_msg(QString mode);
     void create_dialog(QString mode);
+    Q_INVOKABLE void send_warningdialog_msg(QString msg);
+    void create_warningdialog(QString msg);
 
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE void del_str(QString str);

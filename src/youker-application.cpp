@@ -29,6 +29,7 @@
 #include <QDeclarativeContext>
 #include <QDesktopWidget>
 
+#include <QGraphicsObject>
 
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), m_view(0)
@@ -119,6 +120,8 @@ bool IhuApplication::setup()
     view->rootContext()->setContextProperty("WindowControl",view);
 
 
+//    QObject *rootObject = dynamic_cast<QObject *>(view->rootObject());
+//    QObject::connect(rootObject, SIGNAL(dataRequired()), )
 
     QDesktopWidget* desktop = QApplication::desktop();
     QSize size = view->sizeHint();

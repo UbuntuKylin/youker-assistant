@@ -2,6 +2,7 @@ import QtQuick 1.1
 //import Ubuntu.Components 0.1
 //import Ubuntu.Components.ListItems 0.1 as ListItem
 import QtDesktop 0.1
+import SessionType 0.1
 import "common" as Common
 //Component {
 Item {
@@ -11,6 +12,41 @@ Item {
 //        property string trans_flags: flags //把flags标记传递给RubbishStatusDetails
     width: parent.width//clearDelegate.ListView.view.width
     height: 65
+    property SessionDispatcher dis: sessiondispatcher
+
+    //'flags' comes from ListModel in BrowserHistory.qml or BrowserCookies.qml
+    Component.onCompleted: {
+//        console.log("1111111111111");
+        if (checkbox.checked) {
+//            console.log("2222222222222");
+            if (flags == "clear_rubbish") {
+                var rubbish_str = sessiondispatcher.get_str();
+                if (rubbish_str.indexOf("r") < 0)
+                    sessiondispatcher.set_str("r");
+            }
+            else if (flags == "clear_history") {
+                console.log("aaaaaaaaa");
+                var history_str = sessiondispatcher.get_str();
+                console.log(history_str)
+                if (history_str.indexOf("h") < 0)
+                    sessiondispatcher.set_str("h");
+                console.log('bbbbbbbbbbb');
+            }
+            else if (flags == "clear_cookies") {
+                var cookie_str = sessiondispatcher.get_str();
+                if (cookie_str.indexOf("c") < 0)
+                    sessiondispatcher.set_str("c");
+            }
+            else if (flags == "clear_plugins") {
+                var plugin_str = sessiondispatcher.get_str();
+                if (plugin_str.indexOf("p") < 0)
+                    sessiondispatcher.set_str("p");
+            }
+        }
+    }
+
+
+
     Item {
         Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
         id: scaleMe
@@ -29,19 +65,58 @@ Item {
                 checked: true
                 anchors.verticalCenter: parent.verticalCenter
                 onCheckedChanged: {
-                    //kobe: wait for adding function
+                    //kobe: wait for adding function  
                     if (checkbox.checked) {
-                        if (flags == "clear_rubbish")
-                            clearDelegate.ccheck_flag = "clear_rubbish";
-                        else if (flags == "clear_traces")
-                            clearDelegate.check_flag = "clear_traces";
-                        else if (flags == "clear_plugins")
+                        if (flags == "clear_rubbish") {
+                            clearDelegate.check_flag = "clear_rubbish";
+                            var rubbish_str = sessiondispatcher.get_str();
+                            if (rubbish_str.indexOf("r") < 0)
+                                sessiondispatcher.set_str("r");
+                        }
+                        else if (flags == "clear_history") {
+                            clearDelegate.check_flag = "clear_history";
+                            var history_str = sessiondispatcher.get_str();
+                            if (history_str.indexOf("h") < 0)
+                                sessiondispatcher.set_str("h");
+                        }
+                        else if (flags == "clear_cookies") {
+                            clearDelegate.check_flag = "clear_cookies";
+                            var cook_str = sessiondispatcher.get_str();
+                            if (cook_str.indexOf("c") < 0)
+                                sessiondispatcher.set_str("c");
+                        }
+                        else if (flags == "clear_plugins") {
                             clearDelegate.check_flag = "clear_plugins";
-//                        console.log("lilililili");
+                            var plugin_str = sessiondispatcher.get_str();
+                            if (plugin_str.indexOf("p") < 0)
+                                sessiondispatcher.set_str("p");
+                        }
                     }
-                    else {
+                    else if (!checkbox.checked) {
                         clearDelegate.check_flag = "";
-//                        console.log("xiangxiang");
+                        if (flags == "clear_rubbish") {
+                            var rubbish_str1 = sessiondispatcher.get_str();
+                            if (rubbish_str1.indexOf("r") > -1) {
+                                sessiondispatcher.del_str("r");
+                            }
+                        }
+                        else if (flags == "clear_history") {
+                            var history_str1 = sessiondispatcher.get_str();
+                            console.log(history_str1);
+                            if (history_str1.indexOf("h") > -1) {
+                                sessiondispatcher.del_str("h");
+                            }
+                        }
+                        else if (flags == "clear_cookies") {
+                            var cook_str1 = sessiondispatcher.get_str();
+                            if (cook_str1.indexOf("c") > -1)
+                                sessiondispatcher.del_str("c");
+                        }
+                        else if (flags == "clear_plugins") {
+                            var plugin_str1 = sessiondispatcher.get_str();
+                            if (plugin_str1.indexOf("p") > -1)
+                                sessiondispatcher.del_str("p");
+                        }
                     }
                 }
             }
@@ -77,7 +152,6 @@ Item {
             MouseArea {
                 anchors.fill: status_update_content
                 onClicked: {
-                    console.log("1111111111111111");
                     console.log(flags);
 //                    console.log(trans_flags);
 //                    mydispather.set_str(trans_flags);

@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
@@ -25,7 +25,8 @@ Item {
     width: parent.width
     height: 460
 //    property Dispatcher dis: mydispather
-    property SystemDispatcher dis: systemdispatcher
+    property SessionDispatcher dis1: sessiondispatcher
+    property SystemDispatcher dis2: systemdispatcher
     ListModel {
         id: choices
         ListElement { text: "kobe" }
@@ -60,10 +61,17 @@ Item {
             }
         }
         Tab {
-            title: qsTr("清理痕迹")
+            title: qsTr("清理浏览器历史记录")
             contentMargin: 20
-            TracesModel {
-                id: traceitem
+            BrowserHistroy {
+                id: historyitem
+            }
+        }
+        Tab {
+            title: qsTr("清理浏览器Cookies")
+            contentMargin: 20
+            BrowserCookies {
+                id: cookiesitem
             }
         }
         Tab {
@@ -74,48 +82,48 @@ Item {
             }
 
         }
-        Tab {
-            title: qsTr("测试隐藏框")
-            contentMargin: 20
-            Panel {
-                anchors.fill:parent
-            }
-        }
-        Tab {
-            title: qsTr("测试列表")
-            contentMargin: 20
-            PluginList {
-//                id: pluginlist
-            }
-        }
-        Tab {
-            title: qsTr("测试旋转")
-            contentMargin: 20
-            RotateModel {
-//                id: pluginlist
-            }
-        }
-        Tab {
-            title: qsTr("测试垃圾")
-            contentMargin: 20
-            RubbishModelTest {
-//                id: pluginlist
-            }
-        }
-        Tab {
-            title: qsTr("测试痕迹")
-            contentMargin: 20
-            TracesModelTest {
-//                id: pluginlist
-            }
-        }
-        Tab {
-            title: qsTr("测试插件")
-            contentMargin: 20
-            PluginModelTest {
-//                id: pluginlist
-            }
-        }
+//        Tab {
+//            title: qsTr("测试隐藏框")
+//            contentMargin: 20
+//            Panel {
+//                anchors.fill:parent
+//            }
+//        }
+//        Tab {
+//            title: qsTr("测试列表")
+//            contentMargin: 20
+//            PluginList {
+////                id: pluginlist
+//            }
+//        }
+//        Tab {
+//            title: qsTr("测试旋转")
+//            contentMargin: 20
+//            RotateModel {
+////                id: pluginlist
+//            }
+//        }
+//        Tab {
+//            title: qsTr("测试垃圾")
+//            contentMargin: 20
+//            RubbishModelTest {
+////                id: pluginlist
+//            }
+//        }
+//        Tab {
+//            title: qsTr("测试痕迹")
+//            contentMargin: 20
+//            TracesModelTest {
+////                id: pluginlist
+//            }
+//        }
+//        Tab {
+//            title: qsTr("测试插件")
+//            contentMargin: 20
+//            PluginModelTest {
+////                id: pluginlist
+//            }
+//        }
     }
 }
 

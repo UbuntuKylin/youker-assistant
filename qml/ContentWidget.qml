@@ -111,7 +111,7 @@ Rectangle {
                 id: clearrubbish
                 visible: false
 //                title: "clearrubbish by kobe"
-                ClearRubbish {dis: systemdispatcher}
+                ClearRubbish {dis1: sessiondispatcher; dis2: systemdispatcher}
             }
             Common.Page {
                 id: systemset

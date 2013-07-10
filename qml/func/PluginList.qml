@@ -44,7 +44,8 @@ Item {
         btn_text: "开始扫描"
         title: "测试"
         description:  "test"
-        btn_flag: "rubbish"}
+        btn_flag: "plugin"
+    }
 
     PluginListModel {
         id: mainModel

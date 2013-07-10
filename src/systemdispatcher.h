@@ -24,11 +24,11 @@
 #include <QString>
 #include <QDeclarativeView>
 
-
 class SystemDispatcher : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QNOTIFY myStringChanged)
+    Q_PROPERTY(QNOTIFY finishCleanWork)
 //    Q_PROPERTY(QString myString READ myString WRITE setmyString NOTIFY myStringChanged)
 public:
     explicit SystemDispatcher(QObject *parent = 0);
@@ -40,12 +40,10 @@ public:
     Q_INVOKABLE void custom_plymouth_bg(QString imagepath);
 
 //    Q_INVOKABLE QMap<QString, QStringList> search_the_same_file(QString path);
-    Q_INVOKABLE int get_record_number(QString mode);
-    Q_INVOKABLE void clean_browser_record(QString mode);
+    Q_INVOKABLE int get_the_record_qt(QString mode);
+    Q_INVOKABLE void clean_the_browser_qt(QString mode);
     Q_INVOKABLE QMap<QString, QVariant> search_same_files(QString path);
     Q_INVOKABLE QStringList search_largest_file(QString path);
-
-
 
     //custom_plymouth
     QMap<QString, QVariant> myinfo;
@@ -53,23 +51,17 @@ public:
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE QString get_str();
     QString notify_str;
-
-
 //    Q_INVOKABLE QString get_str(QString str);
 //    Q_INVOKABLE QMap <int, QString> data;
 //    Q_INVOKABLE QString getMyString();
 
 signals:
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
-
-
+    void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
 
 public slots:
-    QString show_progress_clear_rubbish(QString msg);
+    void handler_clear_rubbish(QString msg);
     QString show_signal(QString msg);
-
-
-
 //    void setmyString(QString aString);
 //    QString myString();
 private:

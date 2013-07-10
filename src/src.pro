@@ -27,7 +27,8 @@ HEADERS += youker-application.h \
     systemdispatcher.h \
     sessiondispatcher.h \
     modaldialog.h \
-    modelessdialog.h
+    modelessdialog.h \
+    warningdialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -35,7 +36,8 @@ SOURCES += main.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
     modaldialog.cpp \
-    modelessdialog.cpp
+    modelessdialog.cpp \
+    warningdialog.cpp
 
 OTHER_FILES += youker-assistant/ihu.png
 

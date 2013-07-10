@@ -27,10 +27,16 @@ Item {
                     flag: "rubbish"
                 }
                 ListElement {
-                    title: "清理痕迹"
+                    title: "清理历史记录"
                     picture: "../img/icons/at.png"
-                    detailstr: "清理使用计算机时留下的各种痕迹，保护个人隐私"
-                    flag: "trace"
+                    detailstr: "清理使用计算机时留下的历史记录，保护个人隐私"
+                    flag: "history"
+                }
+                ListElement {
+                    title: "清理Cookies"
+                    picture: "../img/icons/at.png"
+                    detailstr: "清理使用计算机时留下的Cookies，保护个人隐私"
+                    flag: "cookie"
                 }
                 ListElement {
                     title: "清理插件"
@@ -55,7 +61,7 @@ Item {
         //垃圾清理自定义标题栏
         Common.MyTitleBar {
             id: titlebar; width: parent.width; height: 45; opacity: 0.9
-            btn_flag: "one_key"
+            btn_flag: "one_key_scan"
         }
     }
 }

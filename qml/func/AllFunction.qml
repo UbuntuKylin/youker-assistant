@@ -314,9 +314,9 @@ Item {
                                 Behavior on opacity { NumberAnimation { easing.type: Easing.OutCubic ; duration: 220} }
                                 onClicked: {
                                     console.log("555555555555555555");
-                                    console.log(systemdispatcher.get_record_number("cookies"));
-                                    console.log("666666666666666666");
-                                    console.log(systemdispatcher.get_record_number("history"));
+//                                    console.log(systemdispatcher.get_record_number("cookies"));
+//                                    console.log("666666666666666666");
+//                                    console.log(systemdispatcher.get_record_number("history"));
                                     console.log("777777777777777777");
                                 }
                             }

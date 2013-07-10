@@ -33,7 +33,7 @@ Item {
             streamModel.append({"title1": "Pizza2", "title2": "kobe2"});
             streamModel.append({"title1": "Pizza3", "title2": "kobe3"});
         }
-        else if (item_flags == "clear_traces") {
+        else if (item_flags == "clear_history") {
             streamModel.append({"title1": "KKK", "title2": "kobe1"});
             streamModel.append({"title1": "BBB", "title2": "kobe2"});
             streamModel.append({"title1": "CCC", "title2": "kobe3"});
@@ -49,6 +49,10 @@ Item {
             streamModel.append({"title1": "KKK", "title2": "kobe1"});
             streamModel.append({"title1": "BBB", "title2": "kobe2"});
             streamModel.append({"title1": "CCC", "title2": "kobe3"});
+        }
+        else if (item_flags == "clear_cookies") {
+            streamModel.append({"title1": "AAA", "title2": "kobe1"});
+            streamModel.append({"title1": "BBB", "title2": "kobe2"});
         }
         else if (item_flags == "clear_plugins") {
             streamModel.append({"title1": "PS", "title2": "kobe1"});
