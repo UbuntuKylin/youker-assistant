@@ -60,7 +60,7 @@ Item {
         }
 
         //垃圾清理自定义标题栏
-        Common.MyTitleBar {
+        Common.TitleBar {
             id: titlebar; width: parent.width; height: 45; opacity: 0.9
             btn_flag: "one_key_scan"
         }
@@ -174,7 +174,7 @@ Item {
 //        //标题栏
 ////        Common.RotateTitleBar { id: titleBar; width: parent.width; height: 40; y: 80; opacity: 0.9 }
 //        //垃圾清理自定义标题栏
-//        Common.MyTitleBar {
+//        Common.TitleBar {
 //            id: titleBar; width: parent.width; height: 45; y: 80; opacity: 0.9}
 
 //        //工具栏

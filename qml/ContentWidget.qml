@@ -16,17 +16,9 @@
 
 import QtQuick 1.1
 import QtDesktop 0.1
-//import "./func/desktopui" as DesktopUi
-//import Ubuntu.Components 0.1
-//import RegisterMyType 0.1
 import SessionType 0.1
 import SystemType 0.1
 import "./func/common" as Common
-//import QtQuick.Window 2.0 //sudo apt-get install qtdeclarative5-window-plugin
-
-//sudo apt-get install qt4-dev-tools
-//  /usr/lib/i386-linux-gnu/qt4/bin/qdbusviewer
-
 import "func"
 //Rectangle {
 Item {
@@ -45,10 +37,6 @@ Item {
         id: systemdispatcher
     }
 
-//    Dispatcher
-//    {
-//        id: mydispather
-//    }
 
     Rectangle {
         id: rectangle1
@@ -91,17 +79,6 @@ Item {
         anchors.topMargin: 106
         opacity: 1.0
         property string text: "homepage"
-//        ProgressBar {
-//            id: mypb
-//            minimumValue: 0
-//            maximumValue: 100
-//            value: 30
-//        }
-//        SpinBox {
-
-//        }
-
-
 
         Common.PageStack {
             id: pageStack
@@ -161,39 +138,6 @@ Item {
                 visible: false
 //                title: "allfunction by kobe"
                 AllFunction {dis: systemdispatcher}
-            }
-
-            /*-----------pages of system settings-----------*/
-            Common.Page {
-                id: launcher
-                visible: false
-                Launcher {}
-            }
-            Common.Page {
-                id: search
-                visible: false
-                Search {}
-            }
-            Common.Page {
-                id: clearprogress
-                visible: false
-                ClearProgress {}
-            }
-            Common.Page {
-                id: pluginlist
-                visible: false
-                PluginList {}
-            }
-            Common.Page {
-                id: switcher
-                visible: false
-                Switcher {}
-            }
-
-            Common.Page {
-                id: panel
-                visible: false
-                Panel {}
             }
         }
     }

@@ -92,7 +92,7 @@ Item {
 //        Tab {
 //            title: qsTr("测试列表")
 //            contentMargin: 20
-//            PluginList {
+//            ItemListModel {
 ////                id: pluginlist
 //            }
 //        }
@@ -169,7 +169,7 @@ Item {
 //            page: Page {
 
 //                //垃圾清理自定义标题栏
-//                Common.MyTitleBar {
+//                Common.TitleBar {
 //                    id: titleBar; width: parent.width; height: 45; opacity: 0.9
 //                    btn_text: "开始扫描"
 //                    title: "清理电脑中的插件"

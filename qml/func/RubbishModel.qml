@@ -19,6 +19,8 @@ import QtDesktop 0.1
 //import SessionType 0.1
 //import SystemType 0.1
 import "common" as Common
+
+
 Item {
     id:root
 //    property Dispatcher dis: mydispather
@@ -26,61 +28,99 @@ Item {
     height: 420//340
 //    color:"#c3c3c3"
     //垃圾清理自定义标题栏
-    Common.MyTitleBar {
-        id: titleBar; width: parent.width; height: 45; opacity: 0.9
-        btn_text: "开始扫描"
-        title: "清理电脑中的垃圾"
-        description:  "清理垃圾可以提高系统速度"
-        btn_flag: "rubbish"
+    property string btn_text: "开始扫描"
+    property string title: "清理电脑中的垃圾"
+    property string description: "清理垃圾可以提高系统速度"
+    property string btn_flag: "rubbish"
+    property ListModel listmodel: mainModel
+
+
+    ListModel {
+        id: mainModel
+        ListElement {
+            itemTitle: "清理垃圾"
+            picture: "../img/icons/user.png"
+            detailstr: "清理系统垃圾，让系统运行跟流畅"
+            flags: "clear_rubbish"
+            attributes: [
+                ListElement { subItemTitle: "系统垃圾1" },
+                ListElement { subItemTitle: "系统垃圾2" }
+            ]
+        }
     }
 
-    ScrollArea {
-        frame:false
-        anchors.fill: parent
-        anchors.top: titleBar.bottom
-        anchors.topMargin: 50
-        Item {
-            width:parent.width
-            height:content.height + 50//1000//this height must be higher than root.height, then the slidebar can display
-            Component {
-                id: statusDelegate
-                RubbishStatus {
-                    id: content
-                }
-            }
-            ListModel {
-                id: streamModel
-                ListElement {
-                    title: "清理垃圾"
-                    picture: "../img/icons/user.png"
-                    detailstr: "清理系统垃圾，让系统运行跟流畅"
-                    flags: "clear_rubbish"
-                }
-            }
-
-            //垃圾清理显示内容
-            ListView {
-                id: listView
-                height: parent.height - titlebar.height
-                width: parent.width
-                model: streamModel
-                delegate: RubbishDelegate {}
-                cacheBuffer: 1000
-
-
-                opacity: 1
-                spacing: 10
-                snapMode: ListView.NoSnap
-//                cacheBuffer: parent.height
-                boundsBehavior: Flickable.DragOverBounds
-                currentIndex: 0
-                preferredHighlightBegin: 0
-                preferredHighlightEnd: preferredHighlightBegin
-                highlightRangeMode: ListView.StrictlyEnforceRange
-            }
-        }//Item
-    }//ScrollArea
+    ItemListModel {
+        id: pluginlist
+        btn_text: root.btn_text
+        title: root.title
+        description: root.description
+        btn_flag: root.btn_flag
+        listmodel: root.listmodel
+    }
 }
+
+//Item {
+//    id:root
+////    property Dispatcher dis: mydispather
+//    width: parent.width
+//    height: 420//340
+////    color:"#c3c3c3"
+//    //垃圾清理自定义标题栏
+//    Common.TitleBar {
+//        id: titleBar; width: parent.width; height: 45; opacity: 0.9
+//        btn_text: "开始扫描"
+//        title: "清理电脑中的垃圾"
+//        description:  "清理垃圾可以提高系统速度"
+//        btn_flag: "rubbish"
+//    }
+
+//    ScrollArea {
+//        frame:false
+//        anchors.fill: parent
+//        anchors.top: titleBar.bottom
+//        anchors.topMargin: 50
+//        Item {
+//            width:parent.width
+//            height:content.height + 50//1000//this height must be higher than root.height, then the slidebar can display
+//            Component {
+//                id: statusDelegate
+//                RubbishStatus {
+//                    id: content
+//                }
+//            }
+//            ListModel {
+//                id: streamModel
+//                ListElement {
+//                    title: "清理垃圾"
+//                    picture: "../img/icons/user.png"
+//                    detailstr: "清理系统垃圾，让系统运行跟流畅"
+//                    flags: "clear_rubbish"
+//                }
+//            }
+
+//            //垃圾清理显示内容
+//            ListView {
+//                id: listView
+//                height: parent.height - titlebar.height
+//                width: parent.width
+//                model: streamModel
+//                delegate: RubbishDelegate {}
+//                cacheBuffer: 1000
+
+
+//                opacity: 1
+//                spacing: 10
+//                snapMode: ListView.NoSnap
+////                cacheBuffer: parent.height
+//                boundsBehavior: Flickable.DragOverBounds
+//                currentIndex: 0
+//                preferredHighlightBegin: 0
+//                preferredHighlightEnd: preferredHighlightBegin
+//                highlightRangeMode: ListView.StrictlyEnforceRange
+//            }
+//        }//Item
+//    }//ScrollArea
+//}
 
 
 

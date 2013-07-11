@@ -8,10 +8,10 @@ Item {
     property color fontColor: "black"
     property bool fontBold: false
     property string text: "NULL"
-    property string bgImage: '../img/icons/list_item.png'
+    property string bgImage: '../../img/icons/list_item.png'
 
-    property string bgImageSelected: '../img/icons/list_item_selected.png'
-    property string bgImagePressed: '../img/icons/list_item_pressed.png'
+    property string bgImageSelected: '../../img/icons/list_item_selected.png'
+    property string bgImagePressed: '../../img/icons/list_item_pressed.png'
     property bool selected: false
     property bool selectable: false
     property int textIndent: 0

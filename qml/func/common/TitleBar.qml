@@ -205,7 +205,7 @@ Item {
                      console.log("plugins");
                      pageStack.pop();
  //                    pageStack.push(pluginlist);
-                     pageStack.push(Qt.resolvedUrl("../PluginList.qml"));
+                     pageStack.push(Qt.resolvedUrl("../ItemListModel.qml"));
                  }
              }
              anchors.verticalCenter: parent.verticalCenter

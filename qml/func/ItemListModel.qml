@@ -48,7 +48,7 @@ Rectangle {
     }
 
     //垃圾清理自定义标题栏
-    Common.MyTitleBar {
+    Common.TitleBar {
         id: titleBar; width: parent.width; height: 45; opacity: 0.9
         btn_text: container.btn_text
         title: container.title
@@ -252,18 +252,18 @@ Rectangle {
                         id: subItemRepeater
                         model: attributes
                         width: subItemsRect.width
-                        MyListItem {
+                        Common.ListItem {
                             id: subListItem
                             width: delegate.width
                             height: subItemsRect.itemHeight
                             text: subItemTitle
-                            bgImage: "../img/icons/list_subitem.png"
+                            bgImage: "../../img/icons/list_subitem.png"
                             fontName: container.subItemFontName
                             fontSize: container.subItemFontSize
                             fontColor: container.subItemFontColor
                             textIndent: 20
                             onClicked: {}
-                        }//MyListItem
+                        }
 
                     }//Repeater
                 }//Column
@@ -326,7 +326,7 @@ Rectangle {
 //    }
 
 //    //垃圾清理自定义标题栏
-//    Common.MyTitleBar {
+//    Common.TitleBar {
 //        id: titleBar; width: parent.width; height: 45; opacity: 0.9
 //        btn_text: "开始扫描"
 //        title: "test"

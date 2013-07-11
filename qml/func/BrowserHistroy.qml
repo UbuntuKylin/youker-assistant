@@ -48,7 +48,7 @@ Item {
         }
     }
 
-    PluginList {
+    ItemListModel {
         id: pluginlist
         btn_text: root.btn_text
         title: root.title
@@ -71,7 +71,7 @@ Item {
 //    }
 
 
-//    Common.MyTitleBar {
+//    Common.TitleBar {
 //        id: titleBar; width: parent.width; height: 45; opacity: 0.9
 //        btn_text: "开始扫描"
 //        title: "清理浏览器历史记录"

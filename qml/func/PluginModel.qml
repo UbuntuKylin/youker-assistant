@@ -75,7 +75,7 @@ Item {
         }
     }
 
-    PluginList {
+    ItemListModel {
         id: pluginlist
         btn_text: root.btn_text
         title: root.title
@@ -100,7 +100,7 @@ Item {
 //    height: 420//340
 ////    color:"#c3c3c3"
 //    //垃圾清理自定义标题栏
-//    Common.MyTitleBar {
+//    Common.TitleBar {
 //        id: titleBar; width: parent.width; height: 45; opacity: 0.9
 //        btn_text: "开始扫描"
 //        title: "清理插件"
