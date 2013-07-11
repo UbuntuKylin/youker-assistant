@@ -20,6 +20,9 @@ ListModel {
     id: model
     ListElement {
         itemTitle: "Item title 1"
+        picture: "../img/icons/user.png"
+        detailstr: "清理Plugins，让系统更瘦1"
+        flags: "clear_plugins"
         attributes: [
             ListElement { subItemTitle: "kobe 1/1" },
             ListElement { subItemTitle: "kobe 2/1" }
@@ -27,6 +30,9 @@ ListModel {
     }
     ListElement {
         itemTitle: "Item title 2"
+        picture: "../img/icons/user.png"
+        detailstr: "清理Plugins，让系统更瘦2"
+        flags: "clear_plugins"
         attributes: [
             ListElement { subItemTitle: "kobe 1/3" },
             ListElement { subItemTitle: "kobe 2/3" },
@@ -35,6 +41,9 @@ ListModel {
     }
     ListElement {
         itemTitle: "Item title 3"
+        picture: "../img/icons/user.png"
+        detailstr: "清理Plugins，让系统更瘦3"
+        flags: "clear_plugins"
         attributes: [
             ListElement { subItemTitle: "kobe 1/4" },
             ListElement { subItemTitle: "kobe 2/4" },

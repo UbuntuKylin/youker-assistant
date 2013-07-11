@@ -132,7 +132,7 @@ Item {
              onClicked: {
                  //kobe: wait for adding function
                  var str = sessiondispatcher.get_str();
-                 console.log('cccccc');
+                 console.log('cccccc-------');
                  console.log(str)
                  //one key
                  if (btn_flag == "one_key_scan") {
@@ -171,12 +171,14 @@ Item {
 
                  //broswer history
                  else if (btn_flag == "history_scan") {
+                     console.log("dddddd------------");
                       if (str.indexOf("h") > -1)
                           titleBar.state = "HistoryWork";
                      else
                           sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录扫描项，请确认！");
                  }
                  else if (btn_flag == "history_work") {
+                     console.log("eeeeeee-------------");
                       if (str.indexOf("h") > -1)
 //                          dataRequired();
                           systemdispatcher.clean_the_browser_qt("history");

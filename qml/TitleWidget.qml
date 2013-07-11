@@ -21,11 +21,12 @@ Item {
     width: parent.width
 //    color: "transparent"
 //    opacity: 0.3
+
     Text {
         anchors.top: parent.top
         anchors.topMargin: 4
-        anchors.left: parent.left
-        anchors.leftMargin: 14
+        anchors.right: parent.right
+        anchors.rightMargin: 14
         color: "black"
         font.bold: true
         text: qsTr("系统助手 0.1.0")
@@ -93,8 +94,27 @@ Item {
 
     Row {
         id:row
-        anchors.right: parent.right
-        anchors.rightMargin: 1
+        anchors.left: parent.left
+        anchors.leftMargin: 1
+
+        SysBtn {
+            iconName: "sys_button_close.png"
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    Qt.quit();
+                }
+            }
+        }
+        SysBtn {
+            iconName: "sys_button_min.png"
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    WindowControl.showMinimized();
+                }
+            }
+        }
         SysBtn {
             iconName: "title_bar_menu.png"
             MouseArea {
@@ -109,24 +129,8 @@ Item {
 //
             }
         }
-        SysBtn {
-            iconName: "sys_button_min.png"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    WindowControl.showMinimized();
-                }
-            }
-        }
+
 //        SysBtn {iconName: "sys_button_max.png"}
-        SysBtn {
-            iconName: "sys_button_close.png"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    Qt.quit();
-                }
-            }
-        }
+
     }
 }

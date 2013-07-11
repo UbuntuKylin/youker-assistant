@@ -17,9 +17,11 @@ import QtQuick 1.1
 import QtDesktop 0.1
 import "common" as Common
 
+import SessionType 0.1
+
 Rectangle {
     id:container
-//    property SessionDispatcher dis: sessiondispatcher
+    property SessionDispatcher dis: sessiondispatcher
     width: parent.width
     height: 420
 
@@ -34,20 +36,24 @@ Rectangle {
     property int subItemFontSize: headerItemFontSize-2
     property color subItemFontColor: "black"
 
-    Component.onCompleted: {
+
+    property ListModel listmodel: mymodel
+    property string btn_text: ""
+    property string title: ""
+    property string description: ""
+    property string btn_flag: ""
+
+    ListModel {
+        id: mymodel
     }
 
     //垃圾清理自定义标题栏
     Common.MyTitleBar {
         id: titleBar; width: parent.width; height: 45; opacity: 0.9
-        btn_text: "开始扫描"
-        title: "test"
-        description:  "kobe lee"
-        btn_flag: "history_scan"
-    }
-
-    PluginListModel {
-        id: mainModel
+        btn_text: container.btn_text
+        title: container.title
+        description:  container.description
+        btn_flag: container.btn_flag
     }
 
     Component {
@@ -57,36 +63,146 @@ Rectangle {
             property int itemHeight: 40
             property alias expandedItemCount: subItemRepeater.count
             property bool expanded: false
-            x: 0; y: 0;
+//            x: 0; y: 0;
+            x: 5; y: 2
             width: container.width
             height: headerItemRect.height + subItemsRect.height
 
-            //母项
-            Row {
-                id: headerItemRect
-                x: 0; y: 0
-                width: parent.width
-                height: parent.itemHeight
-                Image {
-                    id: logo
-                    fillMode: "PreserveAspectFit"
-                    height: parent.height*0.9
-                    source: "../img/icons/kysoft.png"
-                    smooth: true
-                    anchors {
-                        left: parent.left
-                        verticalCenter: parent.verticalCenter
-                        leftMargin: 10
+
+            //'flags' comes from ListModel in BrowserHistory.qml or BrowserCookies.qml
+            Component.onCompleted: {
+                if (checkbox.checked) {
+        //            console.log("2222222222222");
+                    if (flags == "clear_rubbish") {
+                        var rubbish_str = sessiondispatcher.get_str();
+                        if (rubbish_str.indexOf("r") < 0)
+                            sessiondispatcher.set_str("r");
+                    }
+                    else if (flags == "clear_history") {
+                        console.log("aaaaaaaaa");
+                        var history_str = sessiondispatcher.get_str();
+                        console.log(history_str)
+                        if (history_str.indexOf("h") < 0)
+                            sessiondispatcher.set_str("h");
+                        console.log('bbbbbbbbbbb');
+                    }
+                    else if (flags == "clear_cookies") {
+                        var cookie_str = sessiondispatcher.get_str();
+                        if (cookie_str.indexOf("c") < 0)
+                            sessiondispatcher.set_str("c");
+                    }
+                    else if (flags == "clear_plugins") {
+                        var plugin_str = sessiondispatcher.get_str();
+                        if (plugin_str.indexOf("p") < 0)
+                            sessiondispatcher.set_str("p");
                     }
                 }
+            }
 
-                Text {
-                    id: itemtext
-                    text: itemTitle
+            //母项
+            //checkbox, picture and words
+            Row {
+                id: headerItemRect
+//                x: 0; y: 0
+                x: 5; y: 2
+                width: parent.width
+                height: parent.itemHeight
+                spacing: 10
+//                anchors {
+//                    fill: parent
+//                    left: parent.left
+//                    leftMargin: 50
+//                }
+                Common.CheckBox {
+                    id: checkbox
+                    checked: true
+                    anchors.verticalCenter: parent.verticalCenter
+                    onCheckedChanged: {
+                        //kobe: wait for adding function
+                        if (checkbox.checked) {
+                            if (flags == "clear_rubbish") {
+//                                clearDelegate.check_flag = "clear_rubbish";
+                                var rubbish_str = sessiondispatcher.get_str();
+                                if (rubbish_str.indexOf("r") < 0)
+                                    sessiondispatcher.set_str("r");
+                            }
+                            else if (flags == "clear_history") {
+//                                clearDelegate.check_flag = "clear_history";
+                                var history_str = sessiondispatcher.get_str();
+                                if (history_str.indexOf("h") < 0)
+                                    sessiondispatcher.set_str("h");
+                            }
+                            else if (flags == "clear_cookies") {
+//                                clearDelegate.check_flag = "clear_cookies";
+                                var cook_str = sessiondispatcher.get_str();
+                                if (cook_str.indexOf("c") < 0)
+                                    sessiondispatcher.set_str("c");
+                            }
+                            else if (flags == "clear_plugins") {
+//                                clearDelegate.check_flag = "clear_plugins";
+                                var plugin_str = sessiondispatcher.get_str();
+                                if (plugin_str.indexOf("p") < 0)
+                                    sessiondispatcher.set_str("p");
+                            }
+                        }
+                        else if (!checkbox.checked) {
+//                            clearDelegate.check_flag = "";
+                            if (flags == "clear_rubbish") {
+                                var rubbish_str1 = sessiondispatcher.get_str();
+                                if (rubbish_str1.indexOf("r") > -1) {
+                                    sessiondispatcher.del_str("r");
+                                }
+                            }
+                            else if (flags == "clear_history") {
+                                var history_str1 = sessiondispatcher.get_str();
+                                console.log(history_str1);
+                                if (history_str1.indexOf("h") > -1) {
+                                    sessiondispatcher.del_str("h");
+                                }
+                            }
+                            else if (flags == "clear_cookies") {
+                                var cook_str1 = sessiondispatcher.get_str();
+                                if (cook_str1.indexOf("c") > -1)
+                                    sessiondispatcher.del_str("c");
+                            }
+                            else if (flags == "clear_plugins") {
+                                var plugin_str1 = sessiondispatcher.get_str();
+                                if (plugin_str1.indexOf("p") > -1)
+                                    sessiondispatcher.del_str("p");
+                            }
+                        }
+                    }
+                }
+                Image {
+                    id: clearImage
+//                    width: 47; height: 47
+                    fillMode: "PreserveAspectFit"
+                    height: parent.height*0.9
+                    source: picture
+                    smooth: true
                     anchors {
-                        left: logo.right
+                        left: checkbox.right; leftMargin: 15
                         verticalCenter: parent.verticalCenter
-                        leftMargin: 10
+                    }
+
+                }
+
+                Column {
+                    id: status_update_content
+                    spacing: 5
+                    anchors {
+                        left: clearImage.right; leftMargin: 15
+                        verticalCenter: parent.verticalCenter
+                    }
+                    Text {
+                        text: itemTitle
+                        font.pointSize: 11
+                        color: "black"
+                    }
+                    Text {
+                        text: detailstr
+                        font.pointSize: 9
+                        color: "gray"
                     }
                 }
 
@@ -106,13 +222,12 @@ Rectangle {
                 }
 
                 MouseArea {
-                      id: mouseRegion
-                      anchors.fill: parent
-                      hoverEnabled: true
-                      onPressed: {
-                          expanded = !expanded
-                      }
-                  }
+                    id: mouseRegion
+                    anchors.fill: status_update_content
+                    onPressed: {
+                        expanded = !expanded
+                    }
+                }
             }//母项Row
 
             //子项
@@ -169,7 +284,7 @@ Rectangle {
             ListView {
                 id: listView
                 height: parent.height
-                model: mainModel
+                model: container.listmodel
                 delegate: listViewDelegate
                 cacheBuffer: 1000
                 opacity: 1
@@ -188,93 +303,58 @@ Rectangle {
 
 
 
-//Item {
-//    id: container
+
+//Rectangle {
+//    id:container
+////    property SessionDispatcher dis: sessiondispatcher
 //    width: parent.width
 //    height: 420
 
-//    property string bgImage: '../img/icons/list_item.png'
-//    property string bgImagePressed: '../img/icons/list_item_pressed.png'
-//    property string bgImageActive: '../img/icons/list_item_active.png'
-//    property string bgImageSubItem: "../img/icons/list_subitem.png"
+//    //箭头图标
 //    property string arrow: '../img/icons/arrow.png'
+//    //母项字体
 //    property string headerItemFontName: "Helvetica"
 //    property int headerItemFontSize: 12
 //    property color headerItemFontColor: "black"
-//    // Font properties for  subitems
+//    //子项字体
 //    property string subItemFontName: "Helvetica"
 //    property int subItemFontSize: headerItemFontSize-2
 //    property color subItemFontColor: "black"
+
+
+//    Component.onCompleted: {
+//    }
 
 //    //垃圾清理自定义标题栏
 //    Common.MyTitleBar {
 //        id: titleBar; width: parent.width; height: 45; opacity: 0.9
 //        btn_text: "开始扫描"
-//        title: "测试"
-//        description:  "test"
-//        btn_flag: "plugin"
+//        title: "test"
+//        description:  "kobe lee"
+//        btn_flag: "history_scan"
 //    }
 
 //    PluginListModel {
 //        id: mainModel
 //    }
 
-//    ScrollArea {
-//        frame:false
-//        anchors.fill: parent
-//        anchors.top: titleBar.bottom
-
-//        Item {
-//            width:parent.width
-//            height:450
-
-//            ListView {
-//                id: listView
-//                height: parent.height - titleBar.height
-//                anchors {
-//                    left: parent.left
-//                    right: parent.right
-//                    top: parent.top
-//                    topMargin: titleBar.height
-//                }
-//                model: mainModel
-//                delegate: listViewDelegate
-//                focus: true
-//                spacing: 0
-//            }
-//        }
-//    }
-
 //    Component {
 //        id: listViewDelegate
 //        Item {
 //            id: delegate
-//            // Modify appearance from these properties
 //            property int itemHeight: 40
 //            property alias expandedItemCount: subItemRepeater.count
-
-//            // Flag to indicate if this delegate is expanded
 //            property bool expanded: false
-
 //            x: 0; y: 0;
 //            width: container.width
 //            height: headerItemRect.height + subItemsRect.height
 
-//            // Top level list item.
+//            //母项
 //            Row {
 //                id: headerItemRect
 //                x: 0; y: 0
 //                width: parent.width
 //                height: parent.itemHeight
-////                text: itemTitle
-////                onClicked: expanded = !expanded
-////                bgImage: container.bgImage
-////                bgImagePressed: container.bgImagePressed
-////                bgImageActive: container.bgImageActive
-////                fontName: container.headerItemFontName
-////                fontSize: container.headerItemFontSize
-////                fontColor: container.headerItemFontColor
-////                fontBold: true
 //                Image {
 //                    id: logo
 //                    fillMode: "PreserveAspectFit"
@@ -315,71 +395,25 @@ Rectangle {
 
 //                MouseArea {
 //                      id: mouseRegion
-//                      anchors.fill: parent;
-
+//                      anchors.fill: parent
+//                      hoverEnabled: true
 //                      onPressed: {
 //                          expanded = !expanded
 //                      }
 //                  }
-//            }
-////            ListItem {
-////                id: headerItemRect
-////                x: 0; y: 0
-////                width: parent.width
-////                height: parent.itemHeight
-////                text: itemTitle
-////                onClicked: expanded = !expanded
-////                bgImage: container.bgImage
-////                bgImagePressed: container.bgImagePressed
-////                bgImageActive: container.bgImageActive
-////                fontName: container.headerItemFontName
-////                fontSize: container.headerItemFontSize
-////                fontColor: container.headerItemFontColor
-////                fontBold: true
-//////                Image {
-//////                    id: logo
-//////                    fillMode: "PreserveAspectFit"
-//////                    height: parent.height*0.9
-//////                    source: "../img/icons/kysoft1.png"
-//////                    smooth: true
-//////                    anchors {
-//////                        left: parent.left
-//////                        verticalCenter: parent.verticalCenter
-//////                        leftMargin: 10
-//////                    }
-//////                }
-////                Image {
-////                    id: arrow
-////                    fillMode: "PreserveAspectFit"
-////                    height: parent.height*0.3
-////                    source: container.arrow
-////                    //当鼠标点击后,箭头图片旋转90度
-////                    rotation: expanded ? 90 : 0
-////                    smooth: true
-////                    anchors {
-////                        right: parent.right
-////                        verticalCenter: parent.verticalCenter
-////                        rightMargin: 30
-////                    }
-////                }
-////            }
+//            }//母项Row
 
-//            // Subitems are in a column whose height depends
-//            // on the expanded status. When not expandend, it is zero.
+//            //子项
 //            Item {
 //                id: subItemsRect
 //                property int itemHeight: delegate.itemHeight
-
 //                y: headerItemRect.height
 //                width: parent.width
 //                //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
 //                height: expanded ? expandedItemCount * itemHeight : 0
 //                clip: true
-
 //                opacity: 1
 //                Behavior on height {
-//                    // Animate subitem expansion. After the final height is reached,
-//                    // ensure that it is visible to the user.
 //                    SequentialAnimation {
 //                        NumberAnimation { duration: 100; easing.type: Easing.InOutQuad }
 //                    }
@@ -387,206 +421,55 @@ Rectangle {
 
 //                Column {
 //                    width: parent.width
-
-//                    // Repeater creates each sub-ListItem using attributes
-//                    // from the model.
 //                    Repeater {
 //                        id: subItemRepeater
 //                        model: attributes
 //                        width: subItemsRect.width
-
 //                        MyListItem {
 //                            id: subListItem
 //                            width: delegate.width
 //                            height: subItemsRect.itemHeight
 //                            text: subItemTitle
-//                            bgImage: container.bgImageSubItem
+//                            bgImage: "../img/icons/list_subitem.png"
 //                            fontName: container.subItemFontName
 //                            fontSize: container.subItemFontSize
 //                            fontColor: container.subItemFontColor
 //                            textIndent: 20
-//                            onClicked: {
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+//                            onClicked: {}
+//                        }//MyListItem
 
-
-
-
+//                    }//Repeater
+//                }//Column
+//            }//子项Item
 //        }
-//    }
-//}
+//    }//Component
 
-
-
-
-//Item {
-//    id: container
-//    width: parent.width
-//    height: 420
-
-//    property string bgImage: '../img/icons/list_item.png'
-//    property string bgImagePressed: '../img/icons/list_item_pressed.png'
-//    property string bgImageActive: '../img/icons/list_item_active.png'
-//    property string bgImageSubItem: "../img/icons/list_subitem.png"
-//    property string arrow: '../img/icons/arrow.png'
-//    property string headerItemFontName: "Helvetica"
-//    property int headerItemFontSize: 12
-//    property color headerItemFontColor: "black"
-//    // Font properties for  subitems
-//    property string subItemFontName: "Helvetica"
-//    property int subItemFontSize: headerItemFontSize-2
-//    property color subItemFontColor: "black"
-
-//    //垃圾清理自定义标题栏
-//    Common.MyTitleBar {
-//        id: titleBar; width: parent.width; height: 45; opacity: 0.9
-//        btn_text: "开始扫描"
-//        title: "测试"
-//        description:  "test"
-//        btn_flag: "plugin"
-//    }
-
-//    PluginListModel {
-//        id: mainModel
-//    }
 
 //    ScrollArea {
 //        frame:false
 //        anchors.fill: parent
 //        anchors.top: titleBar.bottom
+//        anchors.topMargin: 50
 //        Item {
 //            width:parent.width
-//            height:450
-
+//            height:450 //this height must be higher than root.height, then the slidebar can display
+//            //垃圾清理显示内容
 //            ListView {
 //                id: listView
-//                height: parent.height - titleBar.height
-//                anchors {
-//                    left: parent.left
-//                    right: parent.right
-//                    top: parent.top
-//                    topMargin: titleBar.height
-//                }
+//                height: parent.height
 //                model: mainModel
 //                delegate: listViewDelegate
-//                focus: true
-//                spacing: 0
-//            }
-//        }
-//    }
-
-//    Component {
-//        id: listViewDelegate
-//        Item {
-//            id: delegate
-//            // Modify appearance from these properties
-//            property int itemHeight: 40
-//            property alias expandedItemCount: subItemRepeater.count
-
-//            // Flag to indicate if this delegate is expanded
-//            property bool expanded: false
-
-//            x: 0; y: 0;
-//            width: container.width
-//            height: headerItemRect.height + subItemsRect.height
-
-//            // Top level list item.
-//            ListItem {
-//                id: headerItemRect
-//                x: 0; y: 0
-//                width: parent.width
-//                height: parent.itemHeight
-//                text: itemTitle
-//                onClicked: expanded = !expanded
-//                bgImage: container.bgImage
-//                bgImagePressed: container.bgImagePressed
-//                bgImageActive: container.bgImageActive
-//                fontName: container.headerItemFontName
-//                fontSize: container.headerItemFontSize
-//                fontColor: container.headerItemFontColor
-//                fontBold: true
-////                Image {
-////                    id: logo
-////                    fillMode: "PreserveAspectFit"
-////                    height: parent.height*0.9
-////                    source: "../img/icons/kysoft1.png"
-////                    smooth: true
-////                    anchors {
-////                        left: parent.left
-////                        verticalCenter: parent.verticalCenter
-////                        leftMargin: 10
-////                    }
-////                }
-//                Image {
-//                    id: arrow
-//                    fillMode: "PreserveAspectFit"
-//                    height: parent.height*0.3
-//                    source: container.arrow
-//                    //当鼠标点击后,箭头图片旋转90度
-//                    rotation: expanded ? 90 : 0
-//                    smooth: true
-//                    anchors {
-//                        right: parent.right
-//                        verticalCenter: parent.verticalCenter
-//                        rightMargin: 30
-//                    }
-//                }
-//            }
-
-//            // Subitems are in a column whose height depends
-//            // on the expanded status. When not expandend, it is zero.
-//            Item {
-//                id: subItemsRect
-//                property int itemHeight: delegate.itemHeight
-
-//                y: headerItemRect.height
-//                width: parent.width
-//                //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
-//                height: expanded ? expandedItemCount * itemHeight : 0
-//                clip: true
-
+//                cacheBuffer: 1000
 //                opacity: 1
-//                Behavior on height {
-//                    // Animate subitem expansion. After the final height is reached,
-//                    // ensure that it is visible to the user.
-//                    SequentialAnimation {
-//                        NumberAnimation { duration: 100; easing.type: Easing.InOutQuad }
-//                    }
-//                }
-
-//                Column {
-//                    width: parent.width
-
-//                    // Repeater creates each sub-ListItem using attributes
-//                    // from the model.
-//                    Repeater {
-//                        id: subItemRepeater
-//                        model: attributes
-//                        width: subItemsRect.width
-
-//                        MyListItem {
-//                            id: subListItem
-//                            width: delegate.width
-//                            height: subItemsRect.itemHeight
-//                            text: subItemTitle
-//                            bgImage: container.bgImageSubItem
-//                            fontName: container.subItemFontName
-//                            fontSize: container.subItemFontSize
-//                            fontColor: container.subItemFontColor
-//                            textIndent: 20
-//                            onClicked: {
-//                            }
-//                        }
-//                    }
-//                }
+//                spacing: 10
+//                snapMode: ListView.NoSnap
+//                boundsBehavior: Flickable.DragOverBounds
+//                currentIndex: 0
+//                preferredHighlightBegin: 0
+//                preferredHighlightEnd: preferredHighlightBegin
+//                highlightRangeMode: ListView.StrictlyEnforceRange
 //            }
 
-
-
-
-//        }
-//    }
+//        }//Item
+//    }//ScrollArea
 //}

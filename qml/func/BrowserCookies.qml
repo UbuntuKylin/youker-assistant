@@ -19,66 +19,105 @@ import QtDesktop 0.1
 //import SessionType 0.1
 //import SystemType 0.1
 import "common" as Common
-Rectangle {
+
+Item {
     id:root
 //    property Dispatcher dis: mydispather
     width: parent.width
     height: 420//340
-    color:"#c3c3c3"
+//    color:"#c3c3c3"
     //垃圾清理自定义标题栏
-    Common.MyTitleBar {
-        id: titleBar; width: parent.width; height: 45; opacity: 0.9
-        btn_text: "开始扫描"
-        title: "清理浏览器Cookies"
-        description:  "清理浏览器Cookies可以保障系统安全"
-        btn_flag: "cookies_scan"
+    property string btn_text: "开始扫描"
+    property string title: "清理浏览器Cookies"
+    property string description: "清理浏览器Cookies可以保障系统安全"
+    property string btn_flag: "cookies_scan"
+
+    property ListModel listmodel: mainModel
+    ListModel {
+        id: mainModel
+        ListElement {
+            itemTitle: "清理浏览器Cookies"
+            picture: "../img/icons/user.png"
+            detailstr: "清理Cookies，让系统更安全"
+            flags: "clear_cookies"
+            attributes: [
+                ListElement { subItemTitle: "Cookies1" },
+                ListElement { subItemTitle: "Cookies2" }
+            ]
+        }
     }
 
-    ScrollArea {
-        frame:false
-        anchors.fill: parent
-        anchors.top: titleBar.bottom
-        anchors.topMargin: 50
-        Item {
-            width:parent.width
-            height: 450
-//            height:content.height + 50//1000//this height must be higher than root.height, then the slidebar can display
-//            Component {
-//                id: statusDelegate
-//                RubbishStatus {
-//                    id: content
+    PluginList {
+        id: pluginlist
+        btn_text: root.btn_text
+        title: root.title
+        description: root.description
+        btn_flag: root.btn_flag
+        listmodel: root.listmodel
+    }
+}
+
+
+//Rectangle {
+//    id:root
+////    property Dispatcher dis: mydispather
+//    width: parent.width
+//    height: 420//340
+//    color:"#c3c3c3"
+//    //垃圾清理自定义标题栏
+//    Common.MyTitleBar {
+//        id: titleBar; width: parent.width; height: 45; opacity: 0.9
+//        btn_text: "开始扫描"
+//        title: "清理浏览器Cookies"
+//        description:  "清理浏览器Cookies可以保障系统安全"
+//        btn_flag: "cookies_scan"
+//    }
+
+//    ScrollArea {
+//        frame:false
+//        anchors.fill: parent
+//        anchors.top: titleBar.bottom
+//        anchors.topMargin: 50
+//        Item {
+//            width:parent.width
+//            height: 450
+////            height:content.height + 50//1000//this height must be higher than root.height, then the slidebar can display
+////            Component {
+////                id: statusDelegate
+////                RubbishStatus {
+////                    id: content
+////                }
+////            }
+//            ListModel {
+//                id: streamModel
+//                ListElement {
+//                    title: "清理Cookies"
+//                    picture: "../img/icons/user.png"
+//                    detailstr: "清理Cookies，让系统更安全"
+//                    flags: "clear_cookies"
 //                }
 //            }
-            ListModel {
-                id: streamModel
-                ListElement {
-                    title: "清理Cookies"
-                    picture: "../img/icons/user.png"
-                    detailstr: "清理Cookies，让系统更安全"
-                    flags: "clear_cookies"
-                }
-            }
 
-            //垃圾清理显示内容
-            ListView {
-                id: listView
-                height: parent.height - titleBar.height
-                width: parent.width
-                model: streamModel
-                delegate: RubbishDelegate {}
-                cacheBuffer: 1000
+//            //垃圾清理显示内容
+//            ListView {
+//                id: listView
+//                height: parent.height - titleBar.height
+//                width: parent.width
+//                model: streamModel
+//                delegate: RubbishDelegate {}
+//                cacheBuffer: 1000
 
 
-                opacity: 1
-                spacing: 10
-                snapMode: ListView.NoSnap
-//                cacheBuffer: parent.height
-                boundsBehavior: Flickable.DragOverBounds
-                currentIndex: 0
-                preferredHighlightBegin: 0
-                preferredHighlightEnd: preferredHighlightBegin
-                highlightRangeMode: ListView.StrictlyEnforceRange
-            }
-        }//Item
-    }//ScrollArea
-}
+//                opacity: 1
+//                spacing: 10
+//                snapMode: ListView.NoSnap
+////                cacheBuffer: parent.height
+//                boundsBehavior: Flickable.DragOverBounds
+//                currentIndex: 0
+//                preferredHighlightBegin: 0
+//                preferredHighlightEnd: preferredHighlightBegin
+//                highlightRangeMode: ListView.StrictlyEnforceRange
+//            }
+//        }//Item
+//    }//ScrollArea
+//}

@@ -89,13 +89,13 @@ Item {
 //                anchors.fill:parent
 //            }
 //        }
-        Tab {
-            title: qsTr("测试列表")
-            contentMargin: 20
-            PluginList {
-//                id: pluginlist
-            }
-        }
+//        Tab {
+//            title: qsTr("测试列表")
+//            contentMargin: 20
+//            PluginList {
+////                id: pluginlist
+//            }
+//        }
 //        Tab {
 //            title: qsTr("测试旋转")
 //            contentMargin: 20
