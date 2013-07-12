@@ -34,6 +34,7 @@ Rectangle {
         id: roightborder
         anchors.right: parent.right
     }
+
     Component.onCompleted: {
 //        choices.clear();
 //        choices.append({"text": mydispather.get_themes()[0]});

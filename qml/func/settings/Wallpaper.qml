@@ -26,7 +26,6 @@ Rectangle {
     width: parent.width
     height: 460
 //    property Dispatcher dis: mydispather
-
     Common.Border {
         id: leftborder
     }
@@ -34,6 +33,7 @@ Rectangle {
         id: roightborder
         anchors.right: parent.right
     }
+
     Component.onCompleted: {
 //        choices.clear();
 //        choices.append({"text": mydispather.get_themes()[0]});

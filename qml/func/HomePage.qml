@@ -30,16 +30,11 @@ import "common" as Common
 'home_path': '/home/kobe', 'cpu': 'Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz'}
 */
 
-
 Rectangle {
-    id: home
-    width: parent.width
-    height: 460
-//    property Dispatcher dis: mydispather
+    id: screen; width: parent.width; height: 460
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
     signal dialogmsg()
-
     function openFile(file) {
          var component = Qt.createComponent(file)
          if (component.status == Component.Ready)
@@ -47,786 +42,411 @@ Rectangle {
          else
              console.log("Error loading component:", component.errorString());
      }
-
-
     Common.Border {
         id: leftborder
-//        width: 2
-//        height: parent.height
+        width: 2
+        height: parent.height
     }
     Common.Border {
-        id: roightborder
-//        width: 2
-//        height: parent.height
+        id: rightborder
+        width: 2
+        height: parent.height
         anchors.right: parent.right
     }
 
-//    Image {
-//        id: leftborder
-//        source: "../img/icons/tab.png"
-//        width: 2
-//        height: parent.height
-//        anchors {
-//            top: parent.top
-//            left: parent.left
-//            bottom: parent.bottom
-//        }
-//    }
-//    Image {
-//        id: rightborder
-//        source: "../img/icons/tab.png"
-//        width: 2
-//        height: parent.height
-//        anchors {
-//            top: parent.top
-//            right: parent.right
-//            bottom: parent.bottom
-//        }
-//    }
-
-
-
-    //--------------------右边隐藏说明栏---------------------
-    BorderImage {
-        id: sidebar
-        source: "../img/icons/unselect.png"
-//        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        width: show ? 140 : 10
-        height:parent.height
-        Behavior on width { NumberAnimation { easing.type: Easing.OutSine ; duration: 250 } }
-        property bool show: false
-//        border.left: 0;
-//        border.right: 26;
-        border.left: 26;
-        border.right: 0;
-        MouseArea {
-            id:mouseArea
-            anchors.fill: parent
-            onClicked: sidebar.show = !sidebar.show
+    Rectangle {
+        id: tools_widget
+        anchors {
+            fill: parent
+            left: leftborder.right
+            leftMargin: 2
+            right: rightborder.left
+            rightMargin: 2
         }
-        Column {
-            id: panel1
-            opacity: sidebar.show ? 1 : 0
-            Behavior on opacity { NumberAnimation { easing.type:Easing.InCubic; duration: 600} }
+//        color: "white"
 
-            scale: sidebar.show ? 1 : 0
-            Behavior on scale { NumberAnimation { easing.type:Easing.InCubic; duration: 200 } }
-            transformOrigin: Item.Top
+        Item {
+            id: views
+            width: parent.width
+            height: parent.height
 
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.margins: 12
-            spacing:12
-
-            Image {
-                width: 47
-                height: 47
-                source: "../img/icons/kysoft.png"
-            }
-            Label {
-                text: "UbuntuKylin Team"
-                width: parent.width - 12
-            }
-            Label {
-                text: qsTr("Youker Assistant")
-                width: parent.width - 12
-            }
-            Label {
-                text: qsTr("第一期工程 20130601")
-                width: parent.width - 12
-            }
-            Button {
-                id: mybtn
-                text: qsTr("测试")
-                onClicked: {
-
-                    //method 1
-//                     var component = Qt.createComponent("MyDialog.qml");
-//                     if (component.status == Component.Ready) {
-////                         var button = component.createObject(home);
-////                         button.color = "red";
-//                         component.createObject(home);
-//                     }
-
-                    //method 2
-//                    pageLoader.source = "MyDialog.qml"
-
-                    //method 3
-//                    mydialog.open();
-
-                    //method 4
-//                    home.openFile("MyDialog.qml");
-//                    sessiondispatcher.send_dialog_msg("modeless");
-                    sessiondispatcher.send_dialog_msg("modal");
-                }
-            }
-        }
-
-
-    }
-
-
-
-    ListModel {
-        id: toolModel
-        ListElement {
-            icon: "../img/toolWidget/homepage.png"
-            name: "主题"
-            flag: "theme"
-        }
-        ListElement {
-            icon: "../img/toolWidget/clearrubbish.png"
-            name: "声音"
-            flag: "sound"
-        }
-        ListElement {
-            icon: "../img/toolWidget/optimalacceleration.png"
-            name: "字体"
-            flag: "fonts"
-        }
-        ListElement {
-            icon: "../img/toolWidget/searchtrojan.png"
-            name: "触摸板"
-            flag: "touchpad"
-        }
-        ListElement {
-            icon: "../img/toolWidget/optimalacceleration.png"
-            name: "Unity"
-            flag: "unity"
-        }
-        ListElement {
-            icon: "../img/toolWidget/computerclinic.png"
-            name: "桌面图标"
-            flag: "desktopicon"
-        }
-    }
-
-    Row {
-        //左边栏
-        Column {
-            width: 600; height: home.height
-            Rectangle {
-                id: lineLayout
-                Image {
-                    id: refreshArrow
-                    source: "../img/toolWidget/hardware.png"
-                    anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 }
-                    width: 47; height: 47
-                    Behavior on rotation { NumberAnimation { duration: 200 } }
-                }
-                Text {
-                    id: text0
-                    width: 69
-                    text: qsTr("硬件信息:")
-                    font.bold: true
-                    font.pointSize: 13
-                    font.pixelSize: 12
-                    anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+            //--------------------左边隐藏说明栏---------------------
+            BorderImage {
+                id: sidebar
+                source: "../img/icons/unselect.png"
+                anchors.left: parent.left
+//                anchors.right: parent.right
+                anchors.top: parent.top
+                width: show ? 140 : 10
+                height:parent.height
+                Behavior on width { NumberAnimation { easing.type: Easing.OutSine ; duration: 250 } }
+                property bool show: false
+                border.left: 0;
+                border.right: 26;
+//                border.left: 26;
+//                border.right: 0;
+                MouseArea {
+                    id:mouseArea
+                    anchors.fill: parent
+                    onClicked: sidebar.show = !sidebar.show
                 }
                 Column {
-                    anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 + refreshArrow.width + text0.width }
-                    spacing: 10
-                    Text {
-                        text: qsTr("CPU: "+ systemdispatcher.get_value("cpu"))
-                    }
-                    Text {
-                        text: qsTr("内存: " + systemdispatcher.get_value("ram"))
-                    }
-                }
-            }
-
-            Rectangle {
-                id: lineLayout1
-                y: 110
-                Image {
-                    id: refreshArrow1
-                    anchors { left: parent.left; leftMargin: 45}
-                    width: 47; height: 47
-                    source: "../img/toolWidget/desktop.png"
-                    Behavior on rotation { NumberAnimation { duration: 200 } }
-                }
-                Text {
-                    id: text1
-                    width: 69
-                    anchors { top: lineLayout1.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow1.width }
-                    text: qsTr("桌面信息:")
-                    font.bold: true
-                    font.pointSize: 13
-                    font.pixelSize: 12
-                }
-                Column {
-                    anchors { top: lineLayout1.top; topMargin: -20; left: parent.left; leftMargin: 45 + refreshArrow1.width + text1.width }
-                    spacing: 10
-                    Text {
-                        text: qsTr("主机名: " + systemdispatcher.get_value("hostname"))
-                    }
-                    Text {
-                        text: qsTr("平台: " + systemdispatcher.get_value("platform"))
-                    }
-                    Text {
-                        text: qsTr("发行版: " + systemdispatcher.get_value("distribution"))
-                    }
-                    Text {
-                        text: qsTr("桌面环境: " + systemdispatcher.get_value("desktopenvironment"))
-                    }
-                }
-
-            }
-
-            Rectangle {
-                id: lineLayout2
-                y: 220
-                Image {
-                    id: refreshArrow2
-                    anchors { left: parent.left; leftMargin: 45}
-                    width: 47; height: 47
-                    source: "../img/toolWidget/cache.png"
-                    Behavior on rotation { NumberAnimation { duration: 200 } }
-                }
-                Text {
-                    id: text2
-                    width: 69
-                    text: qsTr("缓存信息:")
-                    font.bold: true
-                    font.pointSize: 13
-                    font.pixelSize: 12
-                    anchors { top: lineLayout2.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow2.width }
-                }
-                Column {
-                    anchors { top: lineLayout2.top; topMargin: -10; left: parent.left; leftMargin: 45 + refreshArrow2.width + text2.width }
-                    spacing: 10
-                    Text {
-                        text: qsTr("可以清除一些缓存以便释放您的磁盘空间")
-                    }
-                    Text {
-                        text: qsTr(systemdispatcher.get_value("cache_packages"))
-                    }
-                    Text {
-                        text: qsTr(systemdispatcher.get_value("cache_size"))
-                    }
-                }
-            }
-
-            Rectangle {
-                id: lineLayout3
-                y: 330
-                Image {
-                    id: refreshArrow3
-                    anchors { left: parent.left; leftMargin: 45}
-                    width: 47; height: 47
-                    source: "../img/toolWidget/softpackage.png"
-                    Behavior on rotation { NumberAnimation { duration: 200 } }
-                }
-                Text {
-                    id: text3
-                    width: 69
-                    text: qsTr("软件包信息:")
-                    font.bold: true
-                    font.pointSize: 13
-                    font.pixelSize: 12
-                    anchors { top: lineLayout3.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow3.width }
-                }
-                Column {
-                    anchors { top: lineLayout3.top; topMargin: 5; left: parent.left; leftMargin: 45 + refreshArrow3.width + text3.width }
-                    spacing: 10
-                    Text {
-                        text: qsTr("您的系统已经为最新")
-                    }
-                    Text {
-                        text: qsTr("更新时间: "+ systemdispatcher.get_value("update_time"))
-                    }
-                }
-            }
-        }//Column
-
-
-        //右边栏
-        Rectangle {
-            id: rightbar
-            width: home.width - 600; height: home.height
-            Column {
-                Rectangle {
-                    id: logoimage
-                    anchors {
-                        left: parent.left; leftMargin: 100
-                        top: parent.top; topMargin: 10
-                    }
+                    id: panel1
+                    opacity: sidebar.show ? 1 : 0
+                    Behavior on opacity { NumberAnimation { easing.type:Easing.InCubic; duration: 600} }
+                    scale: sidebar.show ? 1 : 0
+                    Behavior on scale { NumberAnimation { easing.type:Easing.InCubic; duration: 200 } }
+                    transformOrigin: Item.Top
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.margins: 12
+                    spacing:12
                     Image {
-                        source: "../img/icons/logo.png"
-                    }
-                }
-                Row {
-                    id: setrow
-                    anchors {
-                        left: parent.left; leftMargin: 110
-                        top: logoimage.bottom; topMargin: 60
-                    }
-                    SetBtn {iconName: "about.png"}
-                    SetBtn {iconName: "history.png"}
-                }
-                Column {
-                    anchors {
-                        left: parent.left; leftMargin: 10
-                        top: setrow.bottom
+                        width: 47
+                        height: 47
+                        source: "../img/icons/kysoft.png"
                     }
                     Label {
-                        id: hareware
-                        text: qsTr("硬件信息>")
-                    }
-                    Text {
-                        text: qsTr("CPU:")
-                    }
-                    Text {
-                        text: qsTr("cpu")
-                    }
-                    Text {
-                        text: qsTr("内存:")
+                        text: "UbuntuKylin Team"
+                        width: parent.width - 12
                     }
                     Label {
-                        id: desktop
-                        text: qsTr("桌面信息>")
+                        text: qsTr("Youker Assistant")
+                        width: parent.width - 12
                     }
-                    Text {
-                        text: qsTr("主机名:")
+                    Label {
+                        text: qsTr("第一期工程 20130601")
+                        width: parent.width - 12
                     }
-                    Text {
-                        text: qsTr("平台:")
-                    }
-                    Text {
-                        text: qsTr("发行版:")
-                    }
-                    Text {
-                        text: qsTr("桌面环境:")
+                    Button {
+                        id: mybtn
+                        text: qsTr("测试")
+                        onClicked: {
+                            //method 1
+        //                     var component = Qt.createComponent("MyDialog.qml");
+        //                     if (component.status == Component.Ready) {
+        ////                         var button = component.createObject(home);
+        ////                         button.color = "red";
+        //                         component.createObject(home);
+        //                     }
+
+                            //method 2
+        //                    pageLoader.source = "MyDialog.qml"
+
+                            //method 3
+        //                    mydialog.open();
+
+                            //method 4
+        //                    home.openFile("MyDialog.qml");
+        //                    sessiondispatcher.send_dialog_msg("modeless");
+                            sessiondispatcher.send_dialog_msg("modal");
+                        }
                     }
                 }
             }
-
-            Rectangle {id: splitbar; y: 260; width: parent.width; height: 1; color: "#cccccc" }
-
+            //--------------------左边隐藏说明栏---------------------
 
 
-            GridView {
-                id: gridView
-                height: parent.height
-                width: parent.width
-                anchors {
-                    top: splitbar.bottom
-                    topMargin: 10
-                    left: parent.left
-                    leftMargin: 5
+            ListModel {
+                id: clearModel
+                ListElement {
+                    icon: "../img/toolWidget/homepage.png"
+                    name: "主题"
+                    flag: "theme"
                 }
-                model: toolModel
-                delegate: ToolsDelegate {}
-                cacheBuffer: 1000
-                cellWidth: (parent.width-2)/3; cellHeight: cellWidth
-                focus: true
+                ListElement {
+                    icon: "../img/toolWidget/clearrubbish.png"
+                    name: "声音"
+                    flag: "sound"
+                }
+                ListElement {
+                    icon: "../img/toolWidget/optimalacceleration.png"
+                    name: "字体"
+                    flag: "fonts"
+                }
+                ListElement {
+                    icon: "../img/toolWidget/searchtrojan.png"
+                    name: "触摸板"
+                    flag: "touchpad"
+                }
+                ListElement {
+                    icon: "../img/toolWidget/optimalacceleration.png"
+                    name: "Unity"
+                    flag: "unity"
+                }
+                ListElement {
+                    icon: "../img/toolWidget/computerclinic.png"
+                    name: "桌面图标"
+                    flag: "desktopicon"
+                }
             }
 
-
+            //左右布局
             Row {
-                spacing: 40
-                anchors {
-                    bottom: parent.bottom
-                    left: parent.left
-                    leftMargin: 10
-                }
-                Label {
-                    text: "论坛求助"
-                    color: "green"
-                }
-                Label {
-                    text: "新版本特性"
-                    color: "green"
-                }
+                //坐边栏
+                Rectangle {
+                    id: leftbar
+                    width: 600; height: screen.height
+//                    color: "blue"
+                    Row {
+                        spacing: 10
+                        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 45 }
+                        Image {
+                            id: refreshArrow
+                            source: "../img/toolWidget/hardware.png"
+        //                    anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 45 }
+        //                    width: 47; height: 47
+        //                    Behavior on rotation { NumberAnimation { duration: 200 } }
+                        }
+                        Column {
+                            Text {
+                                id: text0
+                                width: 69
+                                text: qsTr("您的电脑已经有1天没有清理垃圾,建议立即清理!")
+                                font.bold: true
+                                font.pointSize: 13
+                                font.pixelSize: 12
+        //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+                            }
+                            Text {
+                                id: text1
+                                width: 69
+                                text: qsTr("定期清理垃圾可以提升电脑的运行速率.")
+        //                        font.bold: true
+                                font.pointSize: 13
+                                font.pixelSize: 12
+        //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+                            }
+                            Button {
+                                text: qsTr("一键清理")
+                                anchors {left: parent.left; leftMargin: 45 }
+        //                        anchors.horizontalCenter: parent.horizontalCenter
+                            }
+                        }
+                        Label {
+                            id: itemtip
+                            text: qsTr("<h1>安全项目</h1>")
+                            font.family: "楷体"
+                            color: "green"
+                            anchors { top: parent.top; topMargin: 100; left: parent.left; leftMargin: 5 }
+                        }
+                        ScrollArea {
+                            frame:false
+        //                    anchors.fill: parent
+                            width:550
+                            height: 300
+                            anchors.top: itemtip.bottom
+                            anchors.topMargin: 10
+                            anchors.left: parent.left
+                            Item {
+                                width:parent.width
+                                height:350
+                                Component {
+                                    id: statusDelegate
+                                    Row {
+                                        Text {
+                                            text: title
+                                        }
+                                    }
+                                }
+                                ListModel {
+                                    id: streamModel
+                                    ListElement {
+                                        title: "清理垃圾1"
+                                    }
+                                    ListElement {
+                                        title: "清理垃圾2"
+                                    }
+                                    ListElement {
+                                        title: "清理垃圾3"
+                                    }
+                                    ListElement {
+                                        title: "清理垃圾4"
+                                    }
+                                    ListElement {
+                                        title: "清理垃圾5"
+                                    }
+                                    ListElement {
+                                        title: "清理垃圾6"
+                                    }
+                                    ListElement {
+                                        title: "清理垃圾7"
+                                    }
+                                    ListElement {
+                                        title: "清理垃圾8"
+                                    }
+
+                                }
+
+                                //垃圾清理显示内容
+                                ListView {
+                                    id: listView
+                                    height: parent.height
+                                    width: parent.width
+                                    model: streamModel
+                                    delegate: statusDelegate
+                                    cacheBuffer: 1000
+                                    opacity: 1
+                                    spacing: 10
+                                    snapMode: ListView.NoSnap
+        //                            cacheBuffer: parent.height
+                                    boundsBehavior: Flickable.DragOverBounds
+                                    currentIndex: 0
+                                    preferredHighlightBegin: 0
+                                    preferredHighlightEnd: preferredHighlightBegin
+                                    highlightRangeMode: ListView.StrictlyEnforceRange
+                                }
+                            }//Item
+                        }//ScrollArea
+                    }
+                }//坐边栏Rectangle
+
+                //右边栏
+                Rectangle {
+                    id: rightbar
+                    width: screen.width - 600; height: screen.height
+                    //-------------------
+                    Column {
+                        Rectangle {
+                            id: logoimage
+                            anchors {
+                                left: parent.left; leftMargin: 100
+                                top: parent.top; topMargin: 10
+                            }
+                            Image {
+                                source: "../img/icons/logo.png"
+                            }
+                        }
+                        Row {
+                            id: setrow
+                            anchors {
+                                left: parent.left; leftMargin: 110
+                                top: logoimage.bottom; topMargin: 60
+                            }
+                            SetBtn {iconName: "about.png"}
+                            SetBtn {iconName: "history.png"}
+                        }
+                        Column {
+                            anchors {
+                                left: parent.left; leftMargin: 10
+                                top: setrow.bottom
+                            }
+                            Label {
+                                id: hareware
+                                text: qsTr("<h1>硬件信息</h1>")
+                                font.family: "楷体"
+                            }
+                            Text {
+                                text: qsTr("CPU:" + systemdispatcher.get_value("cpu"))
+                            }
+                            Text {
+                                text: qsTr("内存:" + systemdispatcher.get_value("ram"))
+                            }
+                            Label {
+                                id: desktop
+                                text: qsTr("<h1>桌面信息</h1>")
+                                font.family: "楷体"
+                            }
+
+                            Text {
+                                text: qsTr("主机名:" + systemdispatcher.get_value("hostname"))
+                            }
+                            Text {
+                                text: qsTr("平台:" + systemdispatcher.get_value("platform"))
+                            }
+                            Text {
+                                text: qsTr("发行版:" + systemdispatcher.get_value("distribution"))
+                            }
+                            Text {
+                                text: qsTr("桌面环境:" + systemdispatcher.get_value("desktopenvironment"))
+                            }
+                        }
+                    }
+                    //上下分割条
+                    Rectangle {id: splitbar; y: 270; width: parent.width; height: 1; color: "#cccccc" }
+                    //-------------------
+
+
+                    GridView {
+                        id: gridView
+                        height: parent.height
+                        width: parent.width
+                        anchors {
+                            top: splitbar.bottom
+                            topMargin: 5
+                            left: parent.left
+                            leftMargin: 5
+                        }
+                        model: clearModel
+                        delegate: ToolsDelegate {}
+                        cellWidth: (parent.width-2)/3; cellHeight: cellWidth
+//                        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+                        focus: true
+                    }
+
+                    Row {
+                        spacing: 40
+                        anchors {
+                            bottom: parent.bottom
+                            left: parent.left
+                            leftMargin: 10
+                        }
+                        Label {
+                            text: "论坛求助"
+                            color: "green"
+                        }
+                        Label {
+                            text: "新版本特性"
+                            color: "green"
+                        }
+                    }
+
+                    //颜色渐变
+                    gradient: Gradient{
+                           GradientStop{
+                               position: 0.0
+                               color: "purple"
+                           }
+                           GradientStop{
+                               position: 1.0
+                               color: "white"
+                           }
+                       }
+                }//右边栏Rectangle
+            }//左右布局Row
+            SettingsDetails {
+                id: settigsDetails
+                width: parent.width
+                anchors.left: views.right
+                height: parent.height
             }
+            Item { id: foreground; anchors.fill: parent }
+            //左右分割条
+            Rectangle {id: midsplitbar; x: 600; height: screen.height; width: 1; color: "#cccccc" }
 
+        }//Item:views
+
+
+        //工具栏
+        Common.ToolBar {
+            id: toolBar
+            visible: false
+            height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+            button1Label: qsTr("返回")
+            button2Label: qsTr("确定")
+            onButton1Clicked: {}
+            onButton2Clicked: {}
         }
-    }//Row
-    Rectangle {x: 600; height: home.height; width: 1; color: "#cccccc" }
 
+        states: State {
+            name: "DetailedView"
+            PropertyChanges { target: views; x: -parent.width }
+            PropertyChanges { target: toolBar; visible: true }
+        }
 
-}
-
-
-
-
-
-
-
-//Rectangle {
-//    id: home
-//    width: parent.width
-//    height: 460
-////    property Dispatcher dis: mydispather
-//    property SessionDispatcher dis1: sessiondispatcher
-//    property SystemDispatcher dis2: systemdispatcher
-//    signal dialogmsg()
-
-//    function openFile(file) {
-//         var component = Qt.createComponent(file)
-//         if (component.status == Component.Ready)
-//             pageStack.push(component);
-//         else
-//             console.log("Error loading component:", component.errorString());
-//     }
-
-
-//    Common.Border {
-//        id: leftborder
-////        width: 2
-////        height: parent.height
-//    }
-//    Common.Border {
-//        id: roightborder
-////        width: 2
-////        height: parent.height
-//        anchors.right: parent.right
-//    }
-
-////    Image {
-////        id: leftborder
-////        source: "../img/icons/tab.png"
-////        width: 2
-////        height: parent.height
-////        anchors {
-////            top: parent.top
-////            left: parent.left
-////            bottom: parent.bottom
-////        }
-////    }
-////    Image {
-////        id: rightborder
-////        source: "../img/icons/tab.png"
-////        width: 2
-////        height: parent.height
-////        anchors {
-////            top: parent.top
-////            right: parent.right
-////            bottom: parent.bottom
-////        }
-////    }
-
-
-
-//    //--------------------右边隐藏说明栏---------------------
-//    BorderImage {
-//        id: sidebar
-//        source: "../img/icons/unselect.png"
-////        anchors.left: parent.left
-//        anchors.right: parent.right
-//        anchors.top: parent.top
-//        width: show ? 140 : 10
-//        height:parent.height
-//        Behavior on width { NumberAnimation { easing.type: Easing.OutSine ; duration: 250 } }
-//        property bool show: false
-////        border.left: 0;
-////        border.right: 26;
-//        border.left: 26;
-//        border.right: 0;
-//        MouseArea {
-//            id:mouseArea
-//            anchors.fill: parent
-//            onClicked: sidebar.show = !sidebar.show
-//        }
-//        Column {
-//            id: panel1
-//            opacity: sidebar.show ? 1 : 0
-//            Behavior on opacity { NumberAnimation { easing.type:Easing.InCubic; duration: 600} }
-
-//            scale: sidebar.show ? 1 : 0
-//            Behavior on scale { NumberAnimation { easing.type:Easing.InCubic; duration: 200 } }
-//            transformOrigin: Item.Top
-
-//            anchors.top: parent.top
-//            anchors.left: parent.left
-//            anchors.right: parent.right
-//            anchors.margins: 12
-//            spacing:12
-
-//            Image {
-//                width: 47
-//                height: 47
-//                source: "../img/icons/kysoft.png"
-//            }
-//            Label {
-//                text: "UbuntuKylin Team"
-//                width: parent.width - 12
-//            }
-//            Label {
-//                text: qsTr("Youker Assistant")
-//                width: parent.width - 12
-//            }
-//            Label {
-//                text: qsTr("第一期工程 20130601")
-//                width: parent.width - 12
-//            }
-//            Button {
-//                id: mybtn
-//                text: qsTr("测试")
-//                onClicked: {
-
-//                    //method 1
-////                     var component = Qt.createComponent("MyDialog.qml");
-////                     if (component.status == Component.Ready) {
-//////                         var button = component.createObject(home);
-//////                         button.color = "red";
-////                         component.createObject(home);
-////                     }
-
-//                    //method 2
-////                    pageLoader.source = "MyDialog.qml"
-
-//                    //method 3
-////                    mydialog.open();
-
-//                    //method 4
-////                    home.openFile("MyDialog.qml");
-////                    sessiondispatcher.send_dialog_msg("modeless");
-//                    sessiondispatcher.send_dialog_msg("modal");
-//                }
-//            }
-//        }
-
-
-//    }
-//    //------------------------------------------------
-//    //method 2
-////    Loader { id: pageLoader }
-//    //对话框 //method 3
-////    MyDialog {
-////        id: mydialog
-////        content:
-////            Column {
-////                anchors.centerIn: parent
-////                spacing: 10
-////                Label {
-////                    id: lable
-////                    text: qsTr("点击鼠标左键开始,右键结束")
-////                    color: "white"
-////                    anchors.horizontalCenter: parent.horizontalCenter
-////                }
-////                Row {
-////                    spacing: 10
-////                    Button {
-////                        id: quitbtn
-////                        text: qsTr("取消")
-////                        onClicked: {
-////                            mydialog.close();
-////                            mydialog.rejected();
-////                        }
-////                    }
-////                    Button {
-////                        id: okbtn
-////                        text: qsTr("确定")
-////                        onClicked: {
-////                            mydispather.new_object_test();
-////                        }
-////                    }
-////                }
-////        }
-////        onRejected: console.log("Dialog closed.")
-////    }
-
-
-
-
-
-////    MyDialog {
-////        id: mydialog
-
-////        property alias titleText: titleText.text
-////        property alias message: message.text
-
-////        signal accepted();
-
-////        Text{
-////            id: titleText
-////            anchors.bottom: message.top
-////            anchors.margins: 20
-////            width: parent.width
-////            color: "white"
-////            font.pointSize: 40
-////            font.bold: true
-////            horizontalAlignment: Text.AlignHCenter
-////            wrapMode: Text.Wrap
-////        }
-
-////        Text{
-////            id:message
-////            anchors.centerIn: parent
-////            width: parent.width
-////            color: "white"
-////            font.pointSize: 25
-////            horizontalAlignment: Text.AlignHCenter
-////            wrapMode: Text.Wrap
-////        }
-
-////        Button{
-////            id: acceptButton
-////            text: "OK"
-////            anchors.top: message.bottom
-////            anchors.topMargin: 20
-////            anchors.horizontalCenter: parent.horizontalCenter
-////            width: parent.width * 0.5
-////            onClicked: {
-////                close()
-////                accepted()
-////            }
-////        }
-
-////        Button{
-////            id: rejectButton
-////            text: "Cancel"
-////            anchors.top: acceptButton.bottom
-////            anchors.topMargin: 10
-////            anchors.horizontalCenter: parent.horizontalCenter
-////            width: parent.width * 0.5
-////            onClicked: {
-////                close()
-////                rejected()
-////            }
-////        }
-////    }
-
-
-
-
-//    Column {
-//        anchors.fill: parent
-//        Rectangle {
-//            id: lineLayout
-//            Image {
-//                id: refreshArrow
-//                source: "../img/toolWidget/hardware.png"
-//                anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 }
-//                width: 47; height: 47
-//                Behavior on rotation { NumberAnimation { duration: 200 } }
-//            }
-//            Text {
-//                id: text0
-//                width: 69
-//                text: qsTr("硬件信息:")
-//                font.bold: true
-//                font.pointSize: 13
-//                font.pixelSize: 12
-//                anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
-//            }
-//            Column {
-//                anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 + refreshArrow.width + text0.width }
-//                spacing: 10
-//                Text {
-//                    text: qsTr("CPU: "+ systemdispatcher.get_value("cpu"))
-//                }
-//                Text {
-//                    text: qsTr("内存: " + systemdispatcher.get_value("ram"))
-//                }
-//            }
-//        }
-
-//        Rectangle {
-//            id: lineLayout1
-//            y: 110
-//            Image {
-//                id: refreshArrow1
-//                anchors { left: parent.left; leftMargin: 45}
-//                width: 47; height: 47
-//                source: "../img/toolWidget/desktop.png"
-//                Behavior on rotation { NumberAnimation { duration: 200 } }
-//            }
-//            Text {
-//                id: text1
-//                width: 69
-//                anchors { top: lineLayout1.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow1.width }
-//                text: qsTr("桌面信息:")
-//                font.bold: true
-//                font.pointSize: 13
-//                font.pixelSize: 12
-//            }
-//            Column {
-//                anchors { top: lineLayout1.top; topMargin: -20; left: parent.left; leftMargin: 45 + refreshArrow1.width + text1.width }
-//                spacing: 10
-//                Text {
-//                    text: qsTr("主机名: " + systemdispatcher.get_value("hostname"))
-//                }
-//                Text {
-//                    text: qsTr("平台: " + systemdispatcher.get_value("platform"))
-//                }
-//                Text {
-//                    text: qsTr("发行版: " + systemdispatcher.get_value("distribution"))
-//                }
-//                Text {
-//                    text: qsTr("桌面环境: " + systemdispatcher.get_value("desktopenvironment"))
-//                }
-//            }
-
-//        }
-
-//        Rectangle {
-//            id: lineLayout2
-//            y: 220
-//            Image {
-//                id: refreshArrow2
-//                anchors { left: parent.left; leftMargin: 45}
-//                width: 47; height: 47
-//                source: "../img/toolWidget/cache.png"
-//                Behavior on rotation { NumberAnimation { duration: 200 } }
-//            }
-//            Text {
-//                id: text2
-//                width: 69
-//                text: qsTr("缓存信息:")
-//                font.bold: true
-//                font.pointSize: 13
-//                font.pixelSize: 12
-//                anchors { top: lineLayout2.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow2.width }
-//            }
-//            Column {
-//                anchors { top: lineLayout2.top; topMargin: -10; left: parent.left; leftMargin: 45 + refreshArrow2.width + text2.width }
-//                spacing: 10
-//                Text {
-//                    text: qsTr("可以清除一些缓存以便释放您的磁盘空间")
-//                }
-//                Text {
-//                    text: qsTr(systemdispatcher.get_value("cache_packages"))
-//                }
-//                Text {
-//                    text: qsTr(systemdispatcher.get_value("cache_size"))
-//                }
-//            }
-//        }
-
-//        Rectangle {
-//            id: lineLayout3
-//            y: 330
-//            Image {
-//                id: refreshArrow3
-//                anchors { left: parent.left; leftMargin: 45}
-//                width: 47; height: 47
-//                source: "../img/toolWidget/softpackage.png"
-//                Behavior on rotation { NumberAnimation { duration: 200 } }
-//            }
-//            Text {
-//                id: text3
-//                width: 69
-//                text: qsTr("软件包信息:")
-//                font.bold: true
-//                font.pointSize: 13
-//                font.pixelSize: 12
-//                anchors { top: lineLayout3.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow3.width }
-//            }
-//            Column {
-//                anchors { top: lineLayout3.top; topMargin: 5; left: parent.left; leftMargin: 45 + refreshArrow3.width + text3.width }
-//                spacing: 10
-//                Text {
-//                    text: qsTr("您的系统已经为最新")
-//                }
-//                Text {
-//                    text: qsTr("更新时间: "+ systemdispatcher.get_value("update_time"))
-//                }
-//            }
-//        }
-//    }
-//}
+        transitions: Transition {
+            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
+        }
+    }//Rectangle:tools_widget
+}//Rectangle:screen

@@ -29,9 +29,6 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-
-
-
 //    property Dispatcher dis: mydispather
 
     Common.Border {
@@ -42,7 +39,20 @@ Rectangle {
         anchors.right: parent.right
     }
 
+    //OK工具栏
+//    Common.OkToolBar {
+//        id: oktoolBar
+////        visible: idenfer ? true : false
+//        visible: false
+//        height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//        buttonLabel: qsTr("确定")
+//        onButtonClicked: {
+//            console.log("oktoolbar clicked...");
+//        }
+//    }
+
     Component.onCompleted: {
+
     }
 
     Connections {
@@ -53,7 +63,6 @@ Rectangle {
                 console.log(themelabel.text);
         }
     }
-
     ListModel {
         id: choices
         ListElement { text: "kobe999" }

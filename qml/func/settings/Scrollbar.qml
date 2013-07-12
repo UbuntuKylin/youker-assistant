@@ -31,7 +31,6 @@ Rectangle {
     property color fontColor: "black"
 
 
-
 //    property Dispatcher dis: mydispather
 
     Common.Border {
@@ -41,6 +40,7 @@ Rectangle {
         id: roightborder
         anchors.right: parent.right
     }
+
 
     Component.onCompleted: {
     }

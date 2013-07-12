@@ -39,9 +39,9 @@
  **
  ****************************************************************************/
 
- import QtQuick 1.1
+import QtQuick 1.1
 import QtDesktop 0.1
- Item {
+Item {
      id: toolbar
 
      property alias button1Label: button1.text

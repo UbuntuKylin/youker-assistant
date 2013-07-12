@@ -31,7 +31,6 @@ Rectangle {
     property color fontColor: "black"
 
 
-
 //    property Dispatcher dis: mydispather
 
     Common.Border {

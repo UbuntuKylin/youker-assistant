@@ -24,20 +24,16 @@ Rectangle {
     id: scaleMe
     scale: 0.0
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-    //竖列高度和宽度
     width: 78
     height: 82
-    //横列高度和宽度
-//    width: 120
-//    height: 78
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
     function iconClicked() {
-//        scaleMe.state = "Details";
-//        settigsDetails.setTitle = flag;
+        scaleMe.state = "Details";
+        settigsDetails.setTitle = flag;
+//        console.log(settigsDetails.setTitle);
     }
 
-    //竖列
     Column {
         anchors.fill: parent
         anchors.topMargin: 7
@@ -53,28 +49,6 @@ Rectangle {
             text: qsTr(name)
         }
     }
-    //横列
-//    Row {
-//        anchors.fill: parent
-//        anchors.topMargin: 7
-//        Image {
-//            id: seticon
-//            source: icon
-//            //横列
-//            anchors.verticalCenter: parent.verticalCenter
-//            //竖列
-////            anchors.horizontalCenter: parent.horizontalCenter
-//        }
-//        Text {
-//            id: btnText
-//            //横列
-//            anchors.verticalCenter: parent.verticalCenter
-//            //竖列
-////            anchors.horizontalCenter: parent.horizontalCenter
-//            color: "green"
-//            text: qsTr(name)
-//        }
-//    }
 
     Image {
         id: btnImg
@@ -82,6 +56,17 @@ Rectangle {
         source: ""
     }
 
+    Connections {
+        target: toolBar
+        //按下返回按钮
+        onButton1Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+        //按下确定按钮
+//        onButton2Clicked: {
+//            console.log("111111111111");
+//            console.log(settigsDetails.setTitle);
+//            console.log("222222222222");
+//        }
+    }
 
     states: [
         State {
@@ -91,25 +76,25 @@ Rectangle {
         State {
             name: "Details"
             PropertyChanges { target: scaleMe; scale: 1 }
-            PropertyChanges { target: setting_widget; state: "DetailedView" }//展示细节页面,出现工具栏
+            PropertyChanges { target: tools_widget; state: "DetailedView" }//展示细节页面,出现工具栏
         }
     ]
-//    transitions: [
-//        Transition {
-//            from: "Original"; to: "Details"
-//            ParentAnimation {
-//                via: foreground
-//                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-//            }
-//        },
-//        Transition {
-//            from: "Details"; to: "Original"
-//            ParentAnimation {
-//                via: foreground
-//                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-//            }
-//        }
-//    ]
+    transitions: [
+        Transition {
+            from: "Original"; to: "Details"
+            ParentAnimation {
+                via: foreground
+                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+            }
+        },
+        Transition {
+            from: "Details"; to: "Original"
+            ParentAnimation {
+                via: foreground
+                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+            }
+        }
+    ]
 
     MouseArea {
         id: signaltest

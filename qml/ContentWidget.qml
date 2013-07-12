@@ -19,6 +19,7 @@ import QtDesktop 0.1
 import SessionType 0.1
 import SystemType 0.1
 import "./func/common" as Common
+import "./func/settings" as Settings
 import "func"
 //Rectangle {
 Item {
@@ -139,6 +140,15 @@ Item {
 //                title: "allfunction by kobe"
                 AllFunction {dis: systemdispatcher}
             }
+
+
+
+//            Common.Page {
+//                id: theme
+//                visible: false
+////                title: "allfunction by kobe"
+//                Settings.Theme {}
+//            }
         }
     }
 }
