@@ -23,6 +23,9 @@ import "common" as Common
 Rectangle {
     id: scaleMe
     scale: 0.0
+
+    property SessionDispatcher dis1: sessiondispatcher
+
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     width: 78
     height: 82
@@ -106,7 +109,10 @@ Rectangle {
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
-            iconClicked();
+            if (flag == "checkpoint")
+                sessiondispatcher.send_dialog_msg("modal");
+            else
+                iconClicked();
             //kobe:选中项深色块移动
 //            scaleMe.GridView.view.currentIndex = index;
         }

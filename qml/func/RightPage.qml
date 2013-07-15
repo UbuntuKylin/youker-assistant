@@ -32,8 +32,10 @@ Rectangle {
         id: clearModel
         ListElement {
             icon: "../img/icons/themeset.png"
-            name: "主题"
-            flag: "theme"
+//            name: "主题"
+//            flag: "theme"
+            name: "坏点检测"
+            flag: "checkpoint"
         }
         ListElement {
             icon: "../img/icons/iconbeauty.png"
@@ -98,13 +100,19 @@ Rectangle {
                 left: parent.left; leftMargin: 10
                 top: setrow.bottom
             }
-            Label {
-                id: hareware
-                text: qsTr("<h1>硬件信息</h1>")
-                font.family: "楷体"
+//            Label {
+//                id: hareware
+//                text: qsTr("<h1>Youker Assistant</h1>")
+//                font.family: "楷体"
+//            }
+            Text {
+                text: qsTr("Youker Assistant")
             }
             Text {
-                text: qsTr("CPU:" + systemdispatcher.get_value("cpu") + "; "+ "内存:" + systemdispatcher.get_value("ram"))
+                text: qsTr("UbuntuKylin Team")
+            }
+            Text {
+                text: qsTr("第一期工程")
             }
         }
     }

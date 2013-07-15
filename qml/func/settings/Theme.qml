@@ -15,8 +15,7 @@
  */
 
 import QtQuick 1.1
-//import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
@@ -29,7 +28,7 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-//    property Dispatcher dis: mydispather
+    property SessionDispatcher dis: sessiondispatcher
 
     Common.Border {
         id: leftborder
@@ -51,7 +50,24 @@ Rectangle {
 //        }
 //    }
 
+
     Component.onCompleted: {
+//        console.log("---------------");
+        var syslist = sessiondispatcher.get_themes_qt();
+        choices1.clear();
+        for(var i=0; i < syslist.length; i++) {
+            choices1.append({"text": syslist[i]});
+        }
+        var iconlist = sessiondispatcher.get_icon_themes_qt();
+        choices2.clear();
+        for(var j=0; j < iconlist.length; j++) {
+            choices2.append({"text": iconlist[j]});
+        }
+        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+        choices3.clear();
+        for(var k=0; k < cursorlist.length; k++) {
+            choices3.append({"text": cursorlist[k]});
+        }
 
     }
 
@@ -64,11 +80,32 @@ Rectangle {
         }
     }
     ListModel {
-        id: choices
+        id: choices1
         ListElement { text: "kobe999" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
+    }
+    ListModel {
+        id: choices2
+        ListElement { text: "kobe888" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
+    }
+    ListModel {
+        id: choices3
+        ListElement { text: "kobe999" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
+    }
+    ListModel {
+        id: choices4
+        ListElement { text: "kobe999" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
     }
 
     Label {
@@ -113,9 +150,14 @@ Rectangle {
             }
             ComboBox {
                 id: syscombo
-                model: choices
+                model: choices1
                 width: cursorthemelabel.width
 //                onSelectedTextChanged: console.log(selectedText)
+            }
+            Label {
+                text: sessiondispatcher.get_theme_qt()
+                width: cursorthemelabel.width
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
 
@@ -132,10 +174,11 @@ Rectangle {
             }
             ComboBox {
                 id: iconcombo
-                model: choices
+                model: choices2
                 width: cursorthemelabel.width
 //                onSelectedTextChanged: console.log(selectedText)
             }
+
         }
 
         Row {
@@ -151,7 +194,7 @@ Rectangle {
             }
             ComboBox {
                 id: cursorcombo
-                model: choices
+                model: choices3
                 width: cursorthemelabel.width
 //                onSelectedTextChanged: console.log(selectedText)
             }
@@ -172,9 +215,10 @@ Rectangle {
                 id: themespinbox
                 width: trashlabel.width
 //                width: 97
-                minimumValue: 32
+                minimumValue: 0//32
                 maximumValue: 64
-                value: 48
+                value: sessiondispatcher.get_cursor_size_qt()
+//                value: 48
             }
         }
 

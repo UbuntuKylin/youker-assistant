@@ -33,9 +33,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                QDBusConnection::sessionBus());
 
 //    QObject::connect(sessioniface,SIGNAL(receive_dialog_msg()), this, SLOT(create_dialog()));
-    QDBusReply<QStringList> reply = sessioniface->call("get_sys_themes");
+    QDBusReply<QStringList> reply = sessioniface->call("get_themes");
     if (reply.isValid()) {
         QStringList value = reply.value();
+
         qDebug() << value;
     }
     else {
@@ -43,9 +44,15 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     }
 
     notify_str = "";
+
+
+
+//    QDBusReply<QString> reply1 = sessioniface->call("get_theme");
+//    qDebug() << "12345677654321";
+//    qDebug() << reply1.value();
+//    qDebug() << "7654321";
+
 }
-
-
 
 
 void SessionDispatcher::send_dialog_msg(QString mode) {
@@ -218,6 +225,8 @@ bool SessionDispatcher::get_launcher_have_showdesktopicon_qt() {
 /*-----------------------------theme of beauty-----------------------------*/
 QStringList SessionDispatcher::get_themes_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_themes");
+    qDebug() << "1234567890";
+    qDebug() << reply.value();
     return reply.value();
 }
 
