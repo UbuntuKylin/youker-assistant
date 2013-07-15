@@ -37,22 +37,22 @@ Item {
             ListModel {
                 id: clearModel
                 ListElement {
-                    icon: "../img/toolWidget/homepage.png"
+                    icon: "../img/icons/themeset.png"
                     name: "主题"
                     flag: "theme"
                 }
                 ListElement {
-                    icon: "../img/toolWidget/clearrubbish.png"
+                    icon: "../img/icons/systemsound.png"
                     name: "声音"
                     flag: "sound"
                 }
                 ListElement {
-                    icon: "../img/toolWidget/optimalacceleration.png"
+                    icon: "../img/icons/bootanimation.png"
                     name: "字体"
                     flag: "fonts"
                 }
                 ListElement {
-                    icon: "../img/toolWidget/searchtrojan.png"
+                    icon: "../img/icons/systemreduce.png"
                     name: "触摸板"
                     flag: "touchpad"
                 }
@@ -62,12 +62,12 @@ Item {
 //                    flag: "login"
 //                }
                 ListElement {
-                    icon: "../img/toolWidget/optimalacceleration.png"
+                    icon: "../img/icons/deepclear.png"
                     name: "Unity"
                     flag: "unity"
                 }
                 ListElement {
-                    icon: "../img/toolWidget/computerclinic.png"
+                    icon: "../img/icons/iconbeauty.png"
                     name: "桌面图标"
                     flag: "desktopicon"
                 }
@@ -77,12 +77,12 @@ Item {
 //                    flag: "wallpaper"
 //                }
                 ListElement {
-                    icon: "../img/toolWidget/computerclinic.png"
+                    icon: "../img/icons/iconbeauty.png"
                     name: "窗口"
                     flag: "window"
                 }
                 ListElement {
-                    icon: "../img/toolWidget/optimalacceleration.png"
+                    icon: "../img/icons/iconbeauty.png"
                     name: "滑动条"
                     flag: "scrollbar"
                 }

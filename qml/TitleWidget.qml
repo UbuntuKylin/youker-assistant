@@ -22,15 +22,15 @@ Item {
 //    color: "transparent"
 //    opacity: 0.3
 
-    Text {
-        anchors.top: parent.top
-        anchors.topMargin: 4
-        anchors.right: parent.right
-        anchors.rightMargin: 14
-        color: "black"
-        font.bold: true
-        text: qsTr("系统助手 0.1.0")
-    }
+//    Text {
+//        anchors.top: parent.top
+//        anchors.topMargin: 4
+//        anchors.right: parent.right
+//        anchors.rightMargin: 14
+//        color: "black"
+//        font.bold: true
+//        text: qsTr("系统助手 0.1.0")
+//    }
 
 
     //竖列菜单
@@ -99,6 +99,7 @@ Item {
 
         SysBtn {
             iconName: "sys_button_close.png"
+//            iconName: "closeBtn.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -108,6 +109,7 @@ Item {
         }
         SysBtn {
             iconName: "sys_button_min.png"
+//            iconName: "minBtn.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -117,6 +119,8 @@ Item {
         }
         SysBtn {
             iconName: "title_bar_menu.png"
+//            iconName: "SkinButton.png"
+
             MouseArea {
                 anchors.fill: parent
                 acceptedButtons : Qt.LeftButton//Qt.RightButton

@@ -42,6 +42,7 @@ Item {
     Rectangle {
         id: rectangle1
         width: parent.width
+//        height: titlebar.height + toolwidget.height + 30
         height: 84 + 20
         color: "transparent"
 //        Image {
@@ -51,10 +52,28 @@ Item {
 //            source: "./img/skin/background.png"
 //        }
 
+        Image {
+            id: bgImg
+            anchors.fill: parent
+            source: "./img/skin/titlebar.png"
+        }
+
+        //优客助手logo
+        Image {
+            id: logo
+            anchors.right: parent.right
+            anchors.rightMargin: 4
+            anchors.verticalCenter: parent.verticalCenter
+    //        width: 140
+    //        height: 70
+            source: "./img/icons/logo.png"
+        }
+
         Column {
             id: layout1
             anchors.fill: parent
             spacing: 0
+
             //标题栏
             TitleWidget {
                 id: titlebar
@@ -64,7 +83,12 @@ Item {
             //功能图标栏
             ToolWidget {
                 id: toolwidget
-                height: 84
+                height: 40
+                anchors {
+                    top: parent.top
+                    topMargin: 65
+                }
+
 //                opacity: 0.3
             }
         }
@@ -73,11 +97,13 @@ Item {
     //内容展示区域
     /*widget for displaying contents*/
     Item {
-        id:content1
+        id:display_content
         width: parent.width
         height: parent.height - 104 -30 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
+//        height: parent.height - titlebar.height - toolwidget.height -30 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
         anchors.top: parent.top
         anchors.topMargin: 106
+//        anchors.topMargin: titlebar.height + toolwidget.height + 20
         opacity: 1.0
         property string text: "homepage"
 
@@ -105,58 +131,21 @@ Item {
                 SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
             }
             Common.Page {
-                id: searchtrojan
+                id: systemmessage
                 visible: false
 //                title: "search by kobe"
-                SearchTrojan {dis: systemdispatcher}
+                SystemMessage {dis1: sessiondispatcher; dis2: systemdispatcher}
             }
             Common.Page {
-                id: fixbug
-                visible: false
-//                title: "fixbug by kobe"
-                FixBug {dis: systemdispatcher}
-            }
-            Common.Page {
-                id: computerclinic
-                visible: false
-//                title: "computerclinic by kobe"
-                ComputerClinic {dis: systemdispatcher}
-            }
-            Common.Page {
-                id: systemrepair
-                visible: false
-//                title: "systemrepair by kobe"
-                SystemRepair {dis: systemdispatcher}
-            }
-            Common.Page {
-                id: optimalacceleration
-                visible: false
-//                title: "optimalacceleration by kobe"
-                OptimalAcceleration {dis: systemdispatcher}
-            }
-            Common.Page {
-                id: allfunction
+                id: functioncollection
                 visible: false
 //                title: "allfunction by kobe"
-                AllFunction {dis: systemdispatcher}
+                FunctionCollection {dis: systemdispatcher}
             }
 
-
-
-//            Common.Page {
-//                id: theme
-//                visible: false
-////                title: "allfunction by kobe"
-//                Settings.Theme {}
-//            }
         }
     }
 }
-
-
-
-
-
 
 
 

@@ -27,89 +27,134 @@ Rectangle {
     width: parent.width
     height: 84
     color: "transparent"
+    state: "Home"
 //    opacity: 0.3
 
-    ListModel {
-        id: clearModel
-        ListElement {
-            iconName: "homepage.png"
-            method: "首页"
-            text: "homepage"
-        }
-        ListElement {
-            iconName: "clearrubbish.png"
-            method: "电脑清理"
-            text: "clearrubbish"
-        }
-        ListElement {
-            iconName: "systemset.png"
-            method: "系统设置"
-            text: "systemset"
-        }
-        ListElement {
-            iconName: "optimalacceleration.png"
-            method: "优化加速"
-            text: "optimalacceleration"
-        }
-        ListElement {
-            iconName: "searchtrojan.png"
-            method: "查杀木马"
-            text: "searchtrojan"
-        }
-        ListElement {
-            iconName: "computerclinic.png"
-            method: "电脑门诊"
-            text: "computerclinic"
-        }
-        ListElement {
-            iconName: "fixbug.png"
-            method: "修复漏洞"
-            text: "fixbug"
-        }
-        ListElement {
-            iconName: "systemrepair.png"
-            method: "系统修复"
-            text: "systemrepair"
-        }
-        ListElement {
-            iconName: "allfunction.png"
-            method: "功能大全"
-            text: "allfunction"
-        }
-    }
 
-    GridView {
-        id: gridView
-        height: parent.height
-        width: parent.width
-        anchors {
-            top: parent.top
-            topMargin: 2
-            left: parent.left
-            leftMargin: 15
-        }
-        flow: GridView.LeftToRight
-        model: clearModel
-        delegate: ToolBtn {}
-//        cacheBuffer: 1000
-        cellWidth: (parent.width-2)/11; cellHeight: cellWidth
-        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
-//        focus: true
+
+
+    //-------------------------------start
+//    ListModel {
+//        id: toolModel
+//        ListElement {
+//            iconName: "homepage.png"
+////            method: "首页"
+//            text: "homepage"
+//        }
+//        ListElement {
+//            iconName: "systemclear.png"
+////            method: "电脑清理"
+//            text: "clearrubbish"
+//        }
+//        ListElement {
+//            iconName: "systembeauty.png"
+////            method: "系统设置"
+//            text: "systemset"
+//        }
+//        ListElement {
+//            iconName: "systemmessage.png"
+////            method: "优化加速"
+//            text: "sysmessage"
+//        }
+//        ListElement {
+//            iconName: "functioncollection.png"
+////            method: "功能大全"
+//            text: "functioncollection"
+//        }
+//    }
+//    GridView {
+//        id: gridView
+//        height: parent.height
+//        width: parent.width
+//        anchors {
+//            top: parent.top
+//            topMargin: 20
+//            left: parent.left
+//            leftMargin: 15
+//        }
+//        flow: GridView.LeftToRight
+//        model: toolModel
+//        delegate: ToolBtn {}
+////        cacheBuffer: 1000
+////        cellWidth: (parent.width-2)/11; cellHeight: cellWidth
+//        cellWidth: 114; cellHeight: 40
+//        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+////        focus: true
+//    }
+    //-------------------------------end
+
+
+    Row {
+        id: tool_line
+        anchors.left: parent.left
+        anchors.leftMargin: 5
+        spacing: 0
+        ToolBtn {id: home_tool; iconName: "homepage.png"; text: "homepage"; onSend: toolwidget.state = "Home"}
+        ToolBtn {id: clear_tool; iconName: "systemclear.png"; text: "clearrubbish"; onSend: toolwidget.state = "Clear"}
+        ToolBtn {id: beauty_tool;iconName: "systembeauty.png";text: "systemset"; onSend: toolwidget.state = "Beauty"}
+        ToolBtn {id: message_tool;iconName: "systemmessage.png"; text: "systemmessage"; onSend: toolwidget.state = "Message"}
+        ToolBtn {id: function_tool;iconName: "functioncollection.png"; text: "functioncollection"; onSend: toolwidget.state = "Function"}
     }
 
 
-    Image {
-        id: logo
-//        anchors.top: parent.top
-//        anchors.topMargin: titlebar.height
-        anchors.right: parent.right
-        anchors.rightMargin: 4
-        width: 140
-        height: 70
-        source: "./img/logo.png"
-    }
+
+//    Image {
+//        id: logo
+////        anchors.top: parent.top
+////        anchors.topMargin: titlebar.height
+//        anchors.right: parent.right
+//        anchors.rightMargin: 4
+////        width: 140
+////        height: 70
+//        source: "./img/icons/logo.png"
+//    }
 
     Item { id: foreground; anchors.fill: parent }
+
+
+    states: [
+        State {
+            name: "Home"/*; when: (menulogo.text == "homepage")*/
+            PropertyChanges { target: home_tool; iconName:  "homepage-hover.png"}
+            PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
+            PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
+            PropertyChanges { target: message_tool; iconName:  "systemmessage.png"}
+            PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
+
+        },
+        State {
+            name: "Clear"/*; when: (menulogo.text == "clearrubbish")*/
+            PropertyChanges { target: home_tool; iconName:  "homepage.png"}
+            PropertyChanges { target: clear_tool; iconName:  "systemclear-hover.png"}
+            PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
+            PropertyChanges { target: message_tool; iconName:  "systemmessage.png"}
+            PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
+        },
+        State {
+            name: "Beauty"/*; when: (menulogo.text == "systemset")*/
+            PropertyChanges { target: home_tool; iconName:  "homepage.png"}
+            PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
+            PropertyChanges { target: beauty_tool; iconName:  "systembeauty-hover.png"}
+            PropertyChanges { target: message_tool; iconName:  "systemmessage.png"}
+            PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
+        },
+        State {
+            name: "Message"/*; when: (menulogo.text == "systemmessage")*/
+            PropertyChanges { target: home_tool; iconName:  "homepage.png"}
+            PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
+            PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
+            PropertyChanges { target: message_tool; iconName:  "systemmessage-hover.png"}
+            PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
+        },
+        State {
+            name: "Function"/*; when: (menulogo.text == "functioncollection")*/
+            PropertyChanges { target: home_tool; iconName:  "homepage.png"}
+            PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
+            PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
+            PropertyChanges { target: message_tool; iconName:  "systemmessage.png"}
+            PropertyChanges { target: function_tool; iconName:  "functioncollection-hover.png"}
+        }
+    ]
 }
 
 

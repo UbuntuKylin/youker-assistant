@@ -25,7 +25,7 @@ Rectangle {
 //    Image {
 //        id: bgImg
 //        anchors.fill: parent
-//        source: "./img/skin/background.png"
+//        source: "./img/skin/titlebar.png"
 //    }
     radius: 5
     color: "gray"

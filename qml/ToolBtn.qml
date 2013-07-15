@@ -18,24 +18,34 @@ import QtQuick 1.1
 
 Rectangle {
     id: menulogo
-    width: 78
-    height: 82
+    width: 114
+    height: 40
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
+    property string iconName: "homepage.png"
+    property string text: "homepage"
+//    Image {
+//        id: seticon
+//        source: "./img/toolWidget/" + iconName
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        anchors.fill: parent
+//        anchors.top: parent.top
+//        anchors.topMargin: 20
+//    }
     Column {
         anchors.fill: parent
-        anchors.topMargin: 7
+//        anchors.topMargin: 20
         Image {
             id: seticon
             source: "./img/toolWidget/" + iconName
             anchors.horizontalCenter: parent.horizontalCenter
         }
-        Text {
-            id: btnText
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: "green"
-            text: qsTr(method)
-        }
+//        Text {
+//            id: btnText
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            color: "green"
+//            text: qsTr(method)
+//        }
     }
     Image {
         id: btnImg
@@ -43,47 +53,83 @@ Rectangle {
         source: ""
     }
 
+    signal send(string a)
     MouseArea {
         id: signaltest
         hoverEnabled: true
         anchors.fill: parent
         onEntered: btnImg.source = "./img/toolWidget/menu_hover.png"
-//        onPressed: btnImg.source = "./img/toolWidget/menu_press.png"
+        onPressed: btnImg.source = "./img/toolWidget/menu_press.png"
+//        onEntered: btnImg.source = "./img/toolWidget/systemclear-hover.png"
+//        onPressed: btnImg.source = "./img/toolWidget/systemclear-hover.png"
+        //systemclear-hover.png
         //要判断松开是鼠标位置
-//        onReleased: btnImg.source = "./img/toolWidget/menu_hover.png"
+        onReleased: btnImg.source = "./img/toolWidget/menu_hover.png"
+//        onReleased: btnImg.source = "./img/toolWidget/systemclear.png"
+//        onExited: btnImg.source = "./img/toolWidget/homepage-hover.png"
         onExited: btnImg.source = ""
+
+
         onClicked: {
             //kobe:选中项深色块移动
-            menulogo.GridView.view.currentIndex = index;
+//            menulogo.GridView.view.currentIndex = index;
             if (text == "homepage") {
-                pageStack.push(homepage)
+//                menulogo.state = "Home";
+                menulogo.send("homepage");
+                pageStack.push(homepage);
             }
             else if (text == "clearrubbish") {
-                pageStack.push(clearrubbish)
+//                menulogo.state = "Clear";
+                menulogo.send("clearrubbish");
+                pageStack.push(clearrubbish);
             }
             else if (text == "systemset") {
-                pageStack.push(systemset)
+//                menulogo.state = "Beauty";
+                menulogo.send("systemset");
+                pageStack.push(systemset);
             }
-            else if (text == "searchtrojan") {
-                pageStack.push(searchtrojan)
+
+            else if (text == "systemmessage") {
+//                menulogo.state = "Message";
+                menulogo.send("systemmessage");
+                pageStack.push(systemmessage);
             }
-            else if (text == "fixbug") {
-                pageStack.push(fixbug)
-            }
-            else if (text == "systemrepair") {
-                pageStack.push(systemrepair)
-            }
-            else if (text == "computerclinic") {
-                pageStack.push(computerclinic)
-            }
-            else if (text == "optimalacceleration") {
-                pageStack.push(optimalacceleration)
-            }
-            else if (text == "allfunction") {
-                pageStack.push(allfunction)
+            else if (text == "functioncollection") {
+//                menulogo.state = "Function";
+                menulogo.send("functioncollection");
+                pageStack.push(functioncollection);
             }
         }
     }
+
+
+
+
+
+//    states: [
+//        State {
+//            name: "Home"; when: (menulogo.text == "homepage")
+//            PropertyChanges { target: menulogo; iconName:  "homepage-hover.png"}
+//        },
+//        State {
+//            name: "Clear"/*; when: (menulogo.text == "clearrubbish")*/
+//            PropertyChanges { target: menulogo; iconName:  "systemclear-hover.png"}
+//        },
+//        State {
+//            name: "Beauty"/*; when: (menulogo.text == "systemset")*/
+//            PropertyChanges { target: menulogo; iconName:  "systembeauty-hover.png"}
+//        },
+//        State {
+//            name: "Message"/*; when: (menulogo.text == "systemmessage")*/
+//            PropertyChanges { target: menulogo; iconName:  "systemmessage-hover.png"}
+//        },
+//        State {
+//            name: "Function"/*; when: (menulogo.text == "functioncollection")*/
+//            PropertyChanges { target: menulogo; iconName:  "functioncollection-hover.png"}
+//        }
+//    ]
+
+
 }
 
 

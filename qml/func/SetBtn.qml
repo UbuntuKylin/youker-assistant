@@ -18,15 +18,15 @@ import QtQuick 1.1
 
 Rectangle {
     id: menulogo
-    width: 20
-    height: 20
+    width: 58
+    height: 29
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
-    property string iconName: "about.png"
+    property string iconName: "set.png"
 
     Image {
         id: toolImg
-        anchors.horizontalCenter: parent.horizontalCenter
+//        anchors.horizontalCenter: parent.horizontalCenter
         source: "../img/icons/" + iconName
     }
 
@@ -40,12 +40,11 @@ Rectangle {
         anchors.fill: parent
         onEntered: btnImg.source = "../img/toolWidget/menu_hover.png"
         onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
-//        //要判断松开是鼠标位置
+        //要判断松开是鼠标位置
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
             console.log("clicked....")
         }
     }
-
 }

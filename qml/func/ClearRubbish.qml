@@ -44,14 +44,14 @@ Item {
         height: parent.height
         onCurrentChanged: {}
 
-        Tab {
-            title: qsTr("一键清理")
-            contentMargin: 20
-            FastclearModel {
-                id: screen
-            }
+//        Tab {
+//            title: qsTr("一键清理")
+//            contentMargin: 20
+//            FastclearModel {
+//                id: screen
+//            }
 
-        }
+//        }
         Tab {
             id:mytab
             title: qsTr("清理垃圾")
