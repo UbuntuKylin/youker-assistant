@@ -22,17 +22,12 @@ import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
 
-//    property SessionDispatcher dis1: sessiondispatcher
-//    property SystemDispatcher dis2: systemdispatcher
-
-
-
-
 //右边栏
 Rectangle {
     id: rightbar
     width: screen.width - 600; height: 460
-
+    property SessionDispatcher dis1: sessiondispatcher
+//    property SystemDispatcher dis2: systemdispatcher
     ListModel {
         id: clearModel
         ListElement {
@@ -135,19 +130,61 @@ Rectangle {
     }
 
     Row {
+        id: versionrow
         spacing: 40
         anchors {
             bottom: parent.bottom
             left: parent.left
-            leftMargin: 10
+            leftMargin: 20
         }
+
         Label {
+            id: helplabel
             text: "论坛求助"
             color: "green"
+            MouseArea {
+                  anchors.fill: helplabel
+
+                  hoverEnabled: true
+                  onEntered: btnImg1.source = "../img/toolWidget/menu_hover.png"
+                  onPressed: btnImg1.source = "../img/toolWidget/menu_press.png"
+                  //要判断松开是鼠标位置
+                  onReleased: btnImg1.source = "../img/toolWidget/menu_hover.png"
+                  onExited: btnImg1.source = ""
+
+                  onClicked: {
+                      Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php")
+                  }
+            }
         }
         Label {
+            id: versionlabel
             text: "新版本特性"
             color: "green"
+            MouseArea {
+                  anchors.fill: versionlabel
+                  hoverEnabled: true
+                  onEntered: btnImg2.source = "../img/toolWidget/menu_hover.png"
+                  onPressed: btnImg2.source = "../img/toolWidget/menu_press.png"
+                  //要判断松开是鼠标位置
+                  onReleased: btnImg2.source = "../img/toolWidget/menu_hover.png"
+                  onExited: btnImg2.source = ""
+
+                  onClicked: {
+                      sessiondispatcher.send_dialog_msg("modeless");
+                  }
+            }
+        }
+
+        Image {
+            id: btnImg1
+            anchors.fill: helplabel
+            source: ""
+        }
+        Image {
+            id: btnImg2
+            anchors.fill: versionlabel
+            source: ""
         }
     }
 

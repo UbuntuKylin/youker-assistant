@@ -29,7 +29,7 @@ Rectangle {
         anchors.fill: parent
     }
     Column {
-
+        anchors.fill: parent
         Row {
             id: myrow
             spacing: 10

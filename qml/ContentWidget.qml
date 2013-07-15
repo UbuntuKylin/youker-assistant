@@ -44,6 +44,7 @@ Item {
         width: parent.width
 //        height: titlebar.height + toolwidget.height + 30
         height: 84 + 20
+//        height: 40 + 20
         color: "transparent"
 //        Image {
 //            id: bgImg
@@ -64,6 +65,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 4
             anchors.verticalCenter: parent.verticalCenter
+//            height: 50
     //        width: 140
     //        height: 70
             source: "./img/icons/logo.png"
@@ -83,10 +85,10 @@ Item {
             //功能图标栏
             ToolWidget {
                 id: toolwidget
-                height: 40
+                height: 84
                 anchors {
-                    top: parent.top
-                    topMargin: 65
+                    top: titlebar.bottom
+                    topMargin: 45
                 }
 
 //                opacity: 0.3

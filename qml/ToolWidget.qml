@@ -155,6 +155,7 @@ Rectangle {
             PropertyChanges { target: function_tool; iconName:  "functioncollection-hover.png"}
         }
     ]
+
 }
 
 

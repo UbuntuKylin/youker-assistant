@@ -42,6 +42,9 @@ Rectangle {
     }
 
     Component.onCompleted: {
+//        var mylist = ["lili", "xiang", "peng", "shuang"];
+//        console.log("-----------------------------");
+//        console.log(mylist.length);
     }
 
     Connections {
