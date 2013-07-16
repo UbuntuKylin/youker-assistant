@@ -22,14 +22,14 @@ Rectangle {
     id: main
     objectName: "main"
     anchors.fill: parent
-//    Image {
-//        id: bgImg
-//        anchors.fill: parent
-//        source: "./img/skin/titlebar.png"
-//    }
-    radius: 5
-    color: "gray"
-    opacity: 0.9
+    Image {
+        id: bgImg
+        anchors.fill: parent
+        source: "./img/skin/bg0.png"
+    }
+    radius: 2
+    color: "black"
+    opacity: 0.85
 
     Column {
         id: layout
@@ -42,6 +42,4 @@ Rectangle {
             id: statuswidget
         }
     }
-
-
 }

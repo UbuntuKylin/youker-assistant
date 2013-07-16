@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
@@ -29,10 +29,8 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-
-
-//    property Dispatcher dis: mydispather
-
+    property SessionDispatcher dis: sessiondispatcher
+    property string touchscrolling_mode: ""
     Common.Border {
         id: leftborder
     }
@@ -42,14 +40,35 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        touchpadpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();//edge-scrolling
+//        console.log("888888888");
+//        console.log(touchpadpage.touchscrolling_mode);
+        if (sessiondispatcher.get_touchpad_enable_qt())
+            touchpadswitcher.switchedOn = true;
+        else
+            touchpadswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_touchscrolling_use_horizontal_qt())
+            horizontalswitcher.switchedOn = true;
+        else
+            horizontalswitcher.switchedOn = false;
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-            if (settigsDetails.setTitle == "touchpad")
-                console.log(touchpadlabel.text);
+            if (settigsDetails.setTitle == "touchpad") {
+//                console.log(touchpadlabel.text);
+                if (edge.checked == true) {
+                    console.log("123");
+                    sessiondispatcher.set_touchscrolling_mode_edge_qt();
+                }
+                else if (twofinger.checked == true) {
+                    console.log("1234");
+                    sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+                }
+            }
         }
     }
 
@@ -95,10 +114,14 @@ Rectangle {
                 id: touchpadswitcher
                 width: touchpadlabel.width
                 onSwitched: {
-                    if (touchpadswitcher.switchedOn)
+                    if (touchpadswitcher.switchedOn) {
                         console.log("触摸板开关on---------------");
-                    else if(!touchpadswitcher.switchedOn)
+                        sessiondispatcher.set_touchpad_enable_qt(true);
+                    }
+                    else if(!touchpadswitcher.switchedOn) {
                         console.log("触摸板开关off---------------");
+                        sessiondispatcher.set_touchpad_enable_qt(false);
+                    }
                 }
             }
         }
@@ -119,10 +142,14 @@ Rectangle {
                 id: horizontalswitcher
                 width: horizontallabel.width
                 onSwitched: {
-                    if (horizontalswitcher.switchedOn)
+                    if (horizontalswitcher.switchedOn) {
                         console.log("水平on---------------");
-                    else if(!horizontalswitcher.switchedOn)
+                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
+                    }
+                    else if(!horizontalswitcher.switchedOn) {
                         console.log("水平off---------------");
+                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
+                    }
                 }
             }
         }
@@ -142,10 +169,12 @@ Rectangle {
                     CheckBox {
                         id:edge
                         text: "edge模式"
+                        onClicked: console.log(edge.checked)
                     }
                     CheckBox {
                         id: twofinger
                         text: "twofinger模式"
+                        onClicked: console.log(twofinger.checked)
                     }
                 }
             }

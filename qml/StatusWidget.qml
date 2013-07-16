@@ -24,11 +24,11 @@ Rectangle {
     property string updateTime: "2012-06-01"
     property string status: "检查更新"
 
-    Image {
-        id: bgImg
-        anchors.fill: parent
-        source: "./img/skin/titlebar.png"
-    }
+//    Image {
+//        id: bgImg
+//        anchors.fill: parent
+//        source: "./img/skin/titlebar.png"
+//    }
     Row {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left

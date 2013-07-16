@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
@@ -29,7 +29,7 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-
+    property SessionDispatcher dis: sessiondispatcher
 
 //    property Dispatcher dis: mydispather
 
@@ -42,6 +42,16 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        if (sessiondispatcher.get_login_music_enable_qt())
+            soundswitcher.switchedOn = true;
+        else
+            soundswitcher.switchedOn = false;
+
+        var musiclist = sessiondispatcher.get_sound_themes_qt();
+        choices.clear();
+        for(var i=0; i < musiclist.length; i++) {
+            choices.append({"text": musiclist[i]});
+        }
     }
 
     Connections {
@@ -49,16 +59,13 @@ Rectangle {
         //按下确定按钮
         onButton2Clicked: {
             if (settigsDetails.setTitle == "sound")
-                console.log(soundlabel.text);
+                sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
         }
     }
 
     ListModel {
         id: choices
         ListElement { text: "kobe888" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
     }
 
     Label {
@@ -103,10 +110,14 @@ Rectangle {
                 id: soundswitcher
                 width: soundlabel.width
                 onSwitched: {
-                    if (soundswitcher.switchedOn)
+                    if (soundswitcher.switchedOn) {
                         console.log("系统登录音乐on---------------");
-                    else if(!soundswitcher.switchedOn)
+                        sessiondispatcher.set_login_music_enable_qt(true);
+                    }
+                    else if(!soundswitcher.switchedOn) {
                         console.log("系统登录音乐off---------------");
+                        sessiondispatcher.set_login_music_enable_qt(false);
+                    }
                 }
             }
         }
@@ -127,6 +138,12 @@ Rectangle {
                 model: choices
                 width: soundthemelabel.width
 //                onSelectedTextChanged: console.log(selectedText)
+            }
+            Label {
+                id: music_theme
+                text: sessiondispatcher.get_sound_theme_qt()
+                width: soundthemelabel.width
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
 

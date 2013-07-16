@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
@@ -30,8 +30,8 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
 
-
-//    property Dispatcher dis: mydispather
+//    property int cursor_size: 24
+    property SessionDispatcher dis: sessiondispatcher
 
     Common.Border {
         id: leftborder
@@ -45,23 +45,53 @@ Rectangle {
 //        var mylist = ["lili", "xiang", "peng", "shuang"];
 //        console.log("-----------------------------");
 //        console.log(mylist.length);
+//        themepage.cursor_size = themespinbox.value;
+//        var syslist = sessiondispatcher.get_themes_qt();
+//        choices1.clear();
+//        for(var i=0; i < syslist.length; i++) {
+//            choices1.append({"text": syslist[i]});
+//        }
+//        var iconlist = sessiondispatcher.get_icon_themes_qt();
+//        choices2.clear();
+//        for(var j=0; j < iconlist.length; j++) {
+//            choices2.append({"text": iconlist[j]});
+//        }
+//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+//        choices3.clear();
+//        for(var k=0; k < cursorlist.length; k++) {
+//            choices3.append({"text": cursorlist[k]});
+//        }
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-            if (settigsDetails.setTitle == "fonts")
+            if (settigsDetails.setTitle == "fonts") {
                 console.log(fontslabel.text);
+
+//                sessiondispatcher.set_theme_qt(syscombo.selectedText);
+//                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+//                if (themepage.cursor_size != themespinbox.value) {
+//                    themepage.cursor_size = themespinbox.value;
+//                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
+//                }
+            }
         }
     }
 
     ListModel {
+        id: choices1
+        ListElement { text: "kobe999" }
+    }
+    ListModel {
+        id: choices2
+        ListElement { text: "kobe888" }
+    }
+    ListModel {
         id: choices
         ListElement { text: "kobe777" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
     }
 
     Label {
@@ -108,8 +138,14 @@ Rectangle {
                 id: fontscombo
                 model: choices
                 width: fontslabel.width
-//                onSelectedTextChanged: console.log(selectedText)
+                onSelectedTextChanged: console.log(selectedText)
             }
+//            Label {
+//                id: current_theme
+//                text: sessiondispatcher.get_theme_qt()
+//                width: fontslabel.width
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
         }
 
         Row {
@@ -129,6 +165,12 @@ Rectangle {
                 width: desktopfontlabel.width
 //                onSelectedTextChanged: console.log(selectedText)
             }
+//            Label {
+//                id: fonts_set
+//                text: sessiondispatcher.get_theme_qt()
+//                width: fontslabel.width
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
         }
 
         Row {

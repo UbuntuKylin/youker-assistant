@@ -29,6 +29,7 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
+    property int cursor_size: 24
 
     Common.Border {
         id: leftborder
@@ -53,6 +54,8 @@ Rectangle {
 
     Component.onCompleted: {
 //        console.log("---------------");
+        themepage.cursor_size = themespinbox.value;
+//        console.log(themepage.cursor_size);
         var syslist = sessiondispatcher.get_themes_qt();
         choices1.clear();
         for(var i=0; i < syslist.length; i++) {
@@ -75,38 +78,75 @@ Rectangle {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-            if (settigsDetails.setTitle == "theme")
-                console.log(themelabel.text);
+            if (settigsDetails.setTitle == "theme") {
+                console.log("-----------------");
+                sessiondispatcher.set_theme_qt(syscombo.selectedText);
+                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+//                console.log(current_theme.text);
+//                console.log(syscombo.selectedText);
+//                console.log(current_icon_theme.text);
+//                console.log(iconcombo.selectedText);
+//                console.log(current_cursor_theme.text);
+//                console.log(cursorcombo.selectedText);
+                //default:ubuntukylin-theme
+//                if (current_theme.text != syscombo.selectedText) {
+//                    console.log("111");
+//                    current_theme.text = syscombo.selectedText;
+//                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
+//                }
+//                else
+//                    console.log("222");
+//                //default:ubuntukylin-icon-theme
+//                if (current_icon_theme.text != iconcombo.selectedText) {
+//                    console.log("333");
+//                    current_icon_theme.text = iconcombo.selectedText;
+//                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//                }
+//                else
+//                    console.log("444");
+//                //default:DMZ-White
+//                if (current_cursor_theme.text != cursorcombo.selectedText) {
+//                    console.log("555");
+//                    current_cursor_theme.text = cursorcombo.selectedText;
+//                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+//                }
+//                else
+//                    console.log("666");
+                //default:24
+                if (themepage.cursor_size != themespinbox.value) {
+                    themepage.cursor_size = themespinbox.value;
+                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
+                }
+//                console.log("*********************88");
+//                console.log(current_theme.text);
+//                console.log(syscombo.selectedText);
+//                console.log(current_icon_theme.text);
+//                console.log(iconcombo.selectedText);
+//                console.log(current_cursor_theme.text);
+//                console.log(cursorcombo.selectedText);
+//                console.log(themepage.cursor_size);
+//                console.log(themespinbox.value);
+
+            }
+
+//                console.log(themespinbox.value);
+//                console.log(themelabel.text);
         }
     }
     ListModel {
         id: choices1
         ListElement { text: "kobe999" }
-//        ListElement { text: "lixiang" }
-//        ListElement { text: "ps" }
-//        ListElement { text: "baby" }
     }
     ListModel {
         id: choices2
         ListElement { text: "kobe888" }
-//        ListElement { text: "lixiang" }
-//        ListElement { text: "ps" }
-//        ListElement { text: "baby" }
     }
     ListModel {
         id: choices3
-        ListElement { text: "kobe999" }
-//        ListElement { text: "lixiang" }
-//        ListElement { text: "ps" }
-//        ListElement { text: "baby" }
+        ListElement { text: "kobe777" }
     }
-    ListModel {
-        id: choices4
-        ListElement { text: "kobe999" }
-//        ListElement { text: "lixiang" }
-//        ListElement { text: "ps" }
-//        ListElement { text: "baby" }
-    }
+
 
     Label {
         id: theme
@@ -152,9 +192,11 @@ Rectangle {
                 id: syscombo
                 model: choices1
                 width: cursorthemelabel.width
-//                onSelectedTextChanged: console.log(selectedText)
+
+                onSelectedTextChanged: console.log(selectedText)
             }
             Label {
+                id: current_theme
                 text: sessiondispatcher.get_theme_qt()
                 width: cursorthemelabel.width
                 anchors.verticalCenter: parent.verticalCenter
@@ -176,9 +218,14 @@ Rectangle {
                 id: iconcombo
                 model: choices2
                 width: cursorthemelabel.width
-//                onSelectedTextChanged: console.log(selectedText)
+                onSelectedTextChanged: console.log(selectedText)
             }
-
+            Label {
+                id: current_icon_theme
+                text: sessiondispatcher.get_icon_theme_qt()
+                width: cursorthemelabel.width
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
 
         Row {
@@ -196,7 +243,13 @@ Rectangle {
                 id: cursorcombo
                 model: choices3
                 width: cursorthemelabel.width
-//                onSelectedTextChanged: console.log(selectedText)
+                onSelectedTextChanged: console.log(selectedText)
+            }
+            Label {
+                id: current_cursor_theme
+                text: sessiondispatcher.get_cursor_theme_qt()
+                width: cursorthemelabel.width
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
 
@@ -221,7 +274,6 @@ Rectangle {
 //                value: 48
             }
         }
-
     }//Column
 
 }

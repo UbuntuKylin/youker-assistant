@@ -53,11 +53,11 @@ Item {
 //            source: "./img/skin/background.png"
 //        }
 
-        Image {
-            id: bgImg
-            anchors.fill: parent
-            source: "./img/skin/titlebar.png"
-        }
+//        Image {
+//            id: bgImg
+//            anchors.fill: parent
+//            source: "./img/skin/titlebar.png"
+//        }
 
         //优客助手logo
         Image {

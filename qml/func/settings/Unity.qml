@@ -15,8 +15,7 @@
  */
 
 import QtQuick 1.1
-//import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
@@ -30,8 +29,8 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
 
-
-//    property Dispatcher dis: mydispather
+    property SessionDispatcher dis: sessiondispatcher
+    property int launcher_size: 24
 
     Common.Border {
         id: leftborder
@@ -42,14 +41,30 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        unitypage.launcher_size = unityspinbox.value;
+
+        if (sessiondispatcher.get_launcher_autohide_qt())
+            launcherswitcher.switchedOn = true;
+        else
+            launcherswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_launcher_have_showdesktopicon_qt())
+            showdesktopswitcher.switchedOn = true;
+        else
+            showdesktopswitcher.switchedOn = false;
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-            if (settigsDetails.setTitle == "unity")
-                console.log(launcherlabel.text);
+            if (settigsDetails.setTitle == "unity") {
+//                console.log(launcherlabel.text);
+                if (unitypage.launcher_size != unityspinbox.value) {
+                    tunitypage.launcher_size = unityspinbox.value;
+                    sessiondispatcher.set_launcher_icon_size_qt(unityspinbox.value);
+                }
+            }
         }
     }
 
@@ -95,10 +110,14 @@ Rectangle {
                 id: launcherswitcher
                 width: launcherlabel.width
                 onSwitched: {
-                    if (launcherswitcher.switchedOn)
+                    if (launcherswitcher.switchedOn) {
                         console.log("Launcher自动隐藏on---------------");
-                    else if(!launcherswitcher.switchedOn)
+                        sessiondispatcher.set_launcher_autohide_qt(true);
+                    }
+                    else if(!launcherswitcher.switchedOn) {
                         console.log("Launcher自动隐藏off---------------");
+                        sessiondispatcher.set_launcher_autohide_qt(false);
+                    }
                 }
             }
         }
@@ -119,7 +138,7 @@ Rectangle {
                 width: 97
                 minimumValue: 32
                 maximumValue: 64
-                value: 48
+                value: sessiondispatcher.get_launcher_icon_size_qt()
             }
         }
 
@@ -138,10 +157,14 @@ Rectangle {
                 id: showdesktopswitcher
                 width: showdesktoplabel.width
                 onSwitched: {
-                    if (showdesktopswitcher.switchedOn)
+                    if (showdesktopswitcher.switchedOn) {
                         console.log("图标显示在桌面上on---------------");
-                    else if(!showdesktopswitcher.switchedOn)
+                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(true);
+                    }
+                    else if(!showdesktopswitcher.switchedOn) {
                         console.log("图标显示在桌面上off---------------");
+                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(false);
+                    }
                 }
             }
         }

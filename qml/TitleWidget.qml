@@ -16,10 +16,10 @@
 import QtQuick 1.1
 import QtDesktop 0.1
 //Rectangle {
-Item {
+Rectangle {
     height: 20
     width: parent.width
-//    color: "transparent"
+    color: "transparent"
 //    opacity: 0.3
 
 //    Text {

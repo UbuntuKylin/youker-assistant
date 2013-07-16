@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
@@ -29,7 +29,7 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-
+    property SessionDispatcher dis: sessiondispatcher
 
 //    property Dispatcher dis: mydispather
 
@@ -43,6 +43,30 @@ Rectangle {
 
 
     Component.onCompleted: {
+        if (sessiondispatcher.get_show_desktop_icons_qt())
+            iconswitcher.switchedOn = true;
+        else
+            iconswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_show_homefolder_qt())
+            folderswitcher.switchedOn = true;
+        else
+            folderswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_show_network_qt())
+            networkswitcher.switchedOn = true;
+        else
+            networkswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_show_trash_qt())
+            trashswitcher.switchedOn = true;
+        else
+            trashswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_show_devices_qt())
+            deviceswitcher.switchedOn = true;
+        else
+            deviceswitcher.switchedOn = false;
     }
 
     Connections {
@@ -98,10 +122,14 @@ Rectangle {
                 id: iconswitcher
                 width: desktopiconlabel.width
                 onSwitched: {
-                    if (iconswitcher.switchedOn)
+                    if (iconswitcher.switchedOn) {
                         console.log("桌面图标on---------------");
-                    else if(!iconswitcher.switchedOn)
+                        sessiondispatcher.set_show_desktop_icons_qt(true);
+                    }
+                    else if(!iconswitcher.switchedOn) {
                         console.log("桌面图标off---------------");
+                        sessiondispatcher.set_show_desktop_icons_qt(false);
+                    }
                 }
             }
 
@@ -122,10 +150,14 @@ Rectangle {
                 id: folderswitcher
 //                width: parent.width
                 onSwitched: {
-                    if (folderswitcher.switchedOn)
+                    if (folderswitcher.switchedOn) {
                         console.log("根文件夹on---------------");
-                    else if(!folderswitcher.switchedOn)
+                        sessiondispatcher.set_show_homefolder_qt(true);
+                    }
+                    else if(!folderswitcher.switchedOn) {
                         console.log("根文件夹off---------------");
+                        sessiondispatcher.set_show_homefolder_qt(false);
+                    }
                 }
             }
         }
@@ -145,10 +177,14 @@ Rectangle {
                 id: networkswitcher
 //                width: parent.width
                 onSwitched: {
-                    if (networkswitcher.switchedOn)
+                    if (networkswitcher.switchedOn) {
                         console.log("网络on---------------");
-                    else if(!networkswitcher.switchedOn)
+                        sessiondispatcher.set_show_network_qt(true);
+                    }
+                    else if(!networkswitcher.switchedOn) {
                         console.log("网络off---------------");
+                        sessiondispatcher.set_show_network_qt(false);
+                    }
                 }
             }
         }
@@ -168,10 +204,42 @@ Rectangle {
                 id: trashswitcher
 //                width: parent.width
                 onSwitched: {
-                    if (trashswitcher.switchedOn)
+                    if (trashswitcher.switchedOn) {
                         console.log("垃圾on---------------");
-                    else if(!trashswitcher.switchedOn)
+                        sessiondispatcher.set_show_trash_qt(true);
+                    }
+                    else if(!trashswitcher.switchedOn) {
                         console.log("垃圾off---------------");
+                        sessiondispatcher.set_show_trash_qt(false);
+                    }
+                }
+            }
+        }
+
+
+        Row {
+            Label {
+                id: devicelabel
+                width: 110
+                text: qsTr("设备:")
+                font {
+                    family: lancherpage.fontName
+                    pointSize: lancherpage.fontSize
+                }
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: deviceswitcher
+//                width: parent.width
+                onSwitched: {
+                    if (deviceswitcher.switchedOn) {
+                        console.log("设备on---------------");
+                        sessiondispatcher.set_show_devices_qt(true);
+                    }
+                    else if(!deviceswitcher.switchedOn) {
+                        console.log("设备off---------------");
+                        sessiondispatcher.set_show_devices_qt(false);
+                    }
                 }
             }
         }
