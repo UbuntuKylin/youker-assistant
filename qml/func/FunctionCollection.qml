@@ -24,7 +24,7 @@ import "common" as Common
 
 Item {
     width: parent.width
-    height: 460
+    height: 475
     property SystemDispatcher dis: systemdispatcher
 
 
@@ -88,7 +88,7 @@ Item {
 //                                onClicked: {
 //                                    console.log("aaaaaaaaaaaaaaaaaaa");
 ////                                    mydispather.check_screen_break_point();
-////                                    mydispather.custom_plymouth_bg("/home/kobe/a.png");
+////                                    mydispather.custom_plymouth_qt("/home/kobe/a.png");
 
 //                                }
 //                            }

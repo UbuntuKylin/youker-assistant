@@ -21,13 +21,14 @@ import QtDesktop 0.1
 import "common" as Common
 
 Item {
-    id: screen; width: parent.width; height: 460
+    id: screen; width: parent.width; height: 475
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
 
     Rectangle {
         id: setting_widget
-        anchors.fill: parent; color: "white"
+        anchors.fill: parent
+//        color: "white"
         Item {
             id: views
             width: parent.width
@@ -84,19 +85,24 @@ Item {
                     name: "滑动条"
                     flag: "scrollbar"
                 }
+                ListElement {
+                    icon: "../img/icons/bootanimation.png"
+                    name: "开机动画"
+                    flag: "bootanimation"
+                }
             }
 
-            Common.Border {
-                id: leftborder
-//                width: 2
-//                height: parent.height
-            }
-            Common.Border {
-                id: roightborder
-//                width: 2
-//                height: parent.height
-                anchors.right: parent.right
-            }
+//            Common.Border {
+//                id: leftborder
+////                width: 2
+////                height: parent.height
+//            }
+//            Common.Border {
+//                id: roightborder
+////                width: 2
+////                height: parent.height
+//                anchors.right: parent.right
+//            }
 
             Label {
                 id: label

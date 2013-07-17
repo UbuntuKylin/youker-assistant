@@ -25,7 +25,7 @@ Rectangle {
     id: lancherpage
     property bool on: true
     width: parent.width
-    height: 460
+    height: 475
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
@@ -555,7 +555,7 @@ Rectangle {
 //                                onClicked: {
 //                                    console.log("aaaaaaaaaaaaaaaaaaa");
 ////                                    mydispather.check_screen_break_point();
-////                                    mydispather.custom_plymouth_bg("/home/kobe/a.png");
+////                                    mydispather.custom_plymouth_qt("/home/kobe/a.png");
 
 //                                }
 //                            }

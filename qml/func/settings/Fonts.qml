@@ -25,7 +25,7 @@ Rectangle {
     id: fontspage
     property bool on: true
     width: parent.width
-    height: 460
+    height: 475
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
@@ -68,7 +68,7 @@ Rectangle {
         //按下确定按钮
         onButton2Clicked: {
             if (settigsDetails.setTitle == "fonts") {
-                console.log(fontslabel.text);
+//                console.log(fontslabel.text);
 
 //                sessiondispatcher.set_theme_qt(syscombo.selectedText);
 //                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);

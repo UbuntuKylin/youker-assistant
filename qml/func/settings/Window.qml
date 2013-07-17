@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
@@ -25,11 +25,12 @@ Rectangle {
     id: windowpage
     property bool on: true
     width: parent.width
-    height: 460
+    height: 475
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-
+    property SessionDispatcher dis: sessiondispatcher
+    property string btn_align: ""
 
 //    property Dispatcher dis: mydispather
 
@@ -42,14 +43,29 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        windowpage.btn_align = sessiondispatcher.get_window_button_align_qt();
+
+        if (sessiondispatcher.get_menus_have_icons_qt())
+            menuiconswitcher.switchedOn = true;
+        else
+            menuiconswitcher.switchedOn = false;
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-            if (settigsDetails.setTitle == "window")
-                console.log(menuiconlabel.text);
+            if (settigsDetails.setTitle == "window") {
+//                console.log(menuiconlabel.text);
+                if (alignleft.checked == true) {
+                    console.log("123");
+                    sessiondispatcher.set_window_button_align_left_qt();
+                }
+                else if (alignright.checked == true) {
+                    console.log("1234");
+                    sessiondispatcher.set_window_button_align_right_qt();
+                }
+            }
         }
     }
 
@@ -93,10 +109,12 @@ Rectangle {
                     CheckBox {
                         id:alignleft
                         text: "左边"
+                        onClicked: console.log(alignleft.checked)
                     }
                     CheckBox {
                         id: alignright
                         text: "右边"
+                        onClicked: console.log(alignright.checked)
                     }
                 }
             }
@@ -118,10 +136,14 @@ Rectangle {
                 id: menuiconswitcher
                 width: menuiconlabel.width
                 onSwitched: {
-                    if (menuiconswitcher.switchedOn)
+                    if (menuiconswitcher.switchedOn) {
                         console.log("菜单栏显示图标on---------------");
-                    else if(!menuiconswitcher.switchedOn)
+                        sessiondispatcher.set_menus_have_icons_qt(true);
+                    }
+                    else if(!menuiconswitcher.switchedOn) {
                         console.log("菜单栏显示图标off---------------");
+                        sessiondispatcher.set_menus_have_icons_qt(false);
+                    }
                 }
             }
         }

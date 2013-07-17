@@ -43,7 +43,8 @@ Item {
         id: rectangle1
         width: parent.width
 //        height: titlebar.height + toolwidget.height + 30
-        height: 84 + 20
+        height: titlebar.height + toolwidget.height
+//        height: 40 + 64//84 + 20
 //        height: 40 + 20
         color: "transparent"
 //        Image {
@@ -60,93 +61,170 @@ Item {
 //        }
 
         //优客助手logo
-        Image {
-            id: logo
-            anchors.right: parent.right
-            anchors.rightMargin: 4
-            anchors.verticalCenter: parent.verticalCenter
-//            height: 50
-    //        width: 140
-    //        height: 70
-            source: "./img/icons/logo.png"
-        }
+//        Image {
+//            id: logo
+//            anchors.right: parent.right
+//            anchors.rightMargin: 4
+//            anchors.verticalCenter: parent.verticalCenter
+////            height: 50
+//    //        width: 140
+//    //        height: 70
+//            source: "./img/icons/logo.png"
+//        }
 
         Column {
             id: layout1
             anchors.fill: parent
-            spacing: 0
+//            spacing: 20
 
             //标题栏
             TitleWidget {
                 id: titlebar
-                height: 20
+                height: 40//20
 //                opacity: 0.3
             }
             //功能图标栏
             ToolWidget {
                 id: toolwidget
-                height: 84
+                height: 64//84
                 anchors {
                     top: titlebar.bottom
-                    topMargin: 45
+                    topMargin: 20
+//                    topMargin: 45
                 }
 
 //                opacity: 0.3
             }
+
+            //bg-top
+//            Image {
+//                id: bgImg
+//                anchors.fill: layout1
+//                source: "./img/skin/bg-top.png"
+//            }
+
+
+
+//---------------------------------------
+            Item {
+                id:display_content
+                width: parent.width
+                anchors {
+                    top: titlebar.bottom
+                    topMargin: 59
+//                    topMargin: 45
+                }
+        //        height: parent.height - 104 -30 + 8 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
+                height: parent.height - 104 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
+        //        height: parent.height - titlebar.height - toolwidget.height -30 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
+//                anchors.top: parent.top
+        //        anchors.topMargin: 99//106
+//                anchors.topMargin: 99
+        //        anchors.topMargin: titlebar.height + toolwidget.height + 20
+        //        opacity: 0.5
+        //        color: "red"
+        //        color: "transparent"
+                property string text: "homepage"
+
+                Common.PageStack {
+                    id: pageStack
+        //            anchors.fill: parent
+                    Component.onCompleted: {
+                        pageStack.push(homepage);
+                    }
+                    Common.Page {
+                        id: homepage
+                        visible: false
+                        HomePage {dis1: sessiondispatcher; dis2: systemdispatcher}
+                    }
+                    Common.Page {
+                        id: clearrubbish
+                        visible: false
+        //                title: "clearrubbish by kobe"
+                        ClearRubbish {dis1: sessiondispatcher; dis2: systemdispatcher}
+                    }
+                    Common.Page {
+                        id: systemset
+                        visible: false
+        //                title: "softwaremanager by kobe"
+                        SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
+                    }
+                    Common.Page {
+                        id: systemmessage
+                        visible: false
+        //                title: "search by kobe"
+                        SystemMessage {dis1: sessiondispatcher; dis2: systemdispatcher}
+                    }
+                    Common.Page {
+                        id: functioncollection
+                        visible: false
+        //                title: "allfunction by kobe"
+                        FunctionCollection {dis: systemdispatcher}
+                    }
+
+                }
+            }
+//---------------------------------------
+
+
         }
     }
 
     //内容展示区域
     /*widget for displaying contents*/
-    Item {
-        id:display_content
-        width: parent.width
-        height: parent.height - 104 -30 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
-//        height: parent.height - titlebar.height - toolwidget.height -30 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
-        anchors.top: parent.top
-        anchors.topMargin: 106
-//        anchors.topMargin: titlebar.height + toolwidget.height + 20
-        opacity: 1.0
-        property string text: "homepage"
+//    Item {
+//        id:display_content
+//        width: parent.width
+////        height: parent.height - 104 -30 + 8 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
+//        height: parent.height - 104 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
+////        height: parent.height - titlebar.height - toolwidget.height -30 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
+//        anchors.top: parent.top
+////        anchors.topMargin: 99//106
+//        anchors.topMargin: 99
+////        anchors.topMargin: titlebar.height + toolwidget.height + 20
+////        opacity: 0.5
+////        color: "red"
+////        color: "transparent"
+//        property string text: "homepage"
 
-        Common.PageStack {
-            id: pageStack
-//            anchors.fill: parent
-            Component.onCompleted: {
-                pageStack.push(homepage);
-            }
-            Common.Page {
-                id: homepage
-                visible: false
-                HomePage {dis1: sessiondispatcher; dis2: systemdispatcher}
-            }
-            Common.Page {
-                id: clearrubbish
-                visible: false
-//                title: "clearrubbish by kobe"
-                ClearRubbish {dis1: sessiondispatcher; dis2: systemdispatcher}
-            }
-            Common.Page {
-                id: systemset
-                visible: false
-//                title: "softwaremanager by kobe"
-                SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
-            }
-            Common.Page {
-                id: systemmessage
-                visible: false
-//                title: "search by kobe"
-                SystemMessage {dis1: sessiondispatcher; dis2: systemdispatcher}
-            }
-            Common.Page {
-                id: functioncollection
-                visible: false
-//                title: "allfunction by kobe"
-                FunctionCollection {dis: systemdispatcher}
-            }
+//        Common.PageStack {
+//            id: pageStack
+////            anchors.fill: parent
+//            Component.onCompleted: {
+//                pageStack.push(homepage);
+//            }
+//            Common.Page {
+//                id: homepage
+//                visible: false
+//                HomePage {dis1: sessiondispatcher; dis2: systemdispatcher}
+//            }
+//            Common.Page {
+//                id: clearrubbish
+//                visible: false
+////                title: "clearrubbish by kobe"
+//                ClearRubbish {dis1: sessiondispatcher; dis2: systemdispatcher}
+//            }
+//            Common.Page {
+//                id: systemset
+//                visible: false
+////                title: "softwaremanager by kobe"
+//                SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
+//            }
+//            Common.Page {
+//                id: systemmessage
+//                visible: false
+////                title: "search by kobe"
+//                SystemMessage {dis1: sessiondispatcher; dis2: systemdispatcher}
+//            }
+//            Common.Page {
+//                id: functioncollection
+//                visible: false
+////                title: "allfunction by kobe"
+//                FunctionCollection {dis: systemdispatcher}
+//            }
 
-        }
-    }
+//        }
+//    }
 }
 
 

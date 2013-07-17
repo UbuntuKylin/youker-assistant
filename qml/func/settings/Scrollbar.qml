@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 //import RegisterMyType 0.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
@@ -25,11 +25,12 @@ Rectangle {
     id: scrollbarpage
     property bool on: true
     width: parent.width
-    height: 460
+    height: 475
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-
+    property SessionDispatcher dis: sessiondispatcher
+    property string scrollbars_mode: ""
 
 //    property Dispatcher dis: mydispather
 
@@ -43,14 +44,29 @@ Rectangle {
 
 
     Component.onCompleted: {
+        scrollbarpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
+
+//        if (sessiondispatcher.get_menus_have_icons_qt())
+//            menuiconswitcher.switchedOn = true;
+//        else
+//            menuiconswitcher.switchedOn = false;
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-            if (settigsDetails.setTitle == "scrollbar")
-                console.log(scrollbarlabel.text);
+            if (settigsDetails.setTitle == "scrollbar") {
+//                console.log(scrollbarlabel.text);
+                if (overlay.checked == true) {
+                    console.log("123");
+                    sessiondispatcher.set_scrollbars_mode_overlay_qt();
+                }
+                else if (legacy.checked == true) {
+                    console.log("1234");
+                    sessiondispatcher.set_scrollbars_mode_legacy_qt();
+                }
+            }
         }
     }
     Label {
@@ -101,10 +117,12 @@ Rectangle {
                     CheckBox {
                         id:overlay
                         text: "overlay模式"
+                        onClicked: console.log(overlay.checked)
                     }
                     CheckBox {
                         id: legacy
                         text: "legacy模式"
+                        onClicked: console.log(legacy.checked)
                     }
                 }
             }

@@ -45,8 +45,8 @@ Rectangle {
         ListElement {
             icon: "../img/icons/bootanimation.png"
             name: "开机动画"
-            flag: "touchpad"
-//                    flag: "bootanimation"
+//            flag: "touchpad"
+            flag: "bootanimation"
         }
         ListElement {
             icon: "../img/icons/systemsound.png"
@@ -68,7 +68,7 @@ Rectangle {
     }
     //背景
     Image {
-        source: "../img/skin/rightbackground.png"
+        source: "../img/skin/bg-right.png"
         anchors.fill: parent
     }
 
@@ -92,8 +92,8 @@ Rectangle {
                 top: logoimage.bottom
                 topMargin: 1
             }
-            SetBtn {iconName: "set.png"}
-            SetBtn {iconName: "message.png"}
+            SetBtn {iconName: "set.png"; setbtn_flag: "set"}
+            SetBtn {iconName: "message.png"; setbtn_flag: "message"}
         }
         Column {
             anchors {
@@ -106,7 +106,8 @@ Rectangle {
 //                font.family: "楷体"
 //            }
             Text {
-                text: qsTr("Youker Assistant")
+                text: qsTr("Youker Assistantat")
+//                wrapMode: Text.WordWrap
             }
             Text {
                 text: qsTr("UbuntuKylin Team")
@@ -132,10 +133,34 @@ Rectangle {
         }
         model: clearModel
         delegate: ToolsDelegate {}
-        cellWidth: (parent.width-2)/3; cellHeight: cellWidth
+        cellWidth: (parent.width-2)/3
+        cellHeight: cellWidth
 //                        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
         focus: true
     }
+//    Rectangle {
+//        anchors {top: splitbar.bottom; topMargin: 20; left: parent.left; leftMargin: 10 }
+//        width: 250
+//        height: 300
+//        Item {
+//            id: views
+//            width: parent.width ////ListView不会随鼠标上下移动
+//            height: parent.height
+////            height: 250
+//            GridView {
+//                id: gridView
+//                anchors.fill: parent
+//                height: parent.height
+//                width: parent.width
+//                model: clearModel
+//                anchors.top: parent.top
+//                delegate: ToolsDelegate {}
+////                cellWidth: (parent.width-2)/3; cellHeight: 80//cellWidth
+//                cellWidth: 80; cellHeight: 80
+//                focus: true
+//            }
+//        }
+//    }
 
     Row {
         id: versionrow

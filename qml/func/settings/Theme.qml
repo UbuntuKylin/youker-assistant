@@ -24,12 +24,15 @@ Rectangle {
     id: themepage
     property bool on: true
     width: parent.width
-    height: 460
+    height: 475
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
     property int cursor_size: 24
+    property string default_theme: ""
+    property string default_icon_theme: ""
+    property string default_cursor_theme: ""
 
     Common.Border {
         id: leftborder
@@ -53,23 +56,72 @@ Rectangle {
 
 
     Component.onCompleted: {
-//        console.log("---------------");
+        console.log("------55555---------");
         themepage.cursor_size = themespinbox.value;
+        themepage.default_theme = sessiondispatcher.get_theme_qt();
+        themepage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
+        themepage.default_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+//        console.log(themepage.default_theme);
+//        console.log(themepage.default_icon_theme);
+//        console.log(themepage.default_cursor_theme);
 //        console.log(themepage.cursor_size);
+
+
+//        var syslist = sessiondispatcher.get_themes_qt();
+//        syslist.unshift(themepage.default_theme);
+//        choices1.clear();
+//        for(var i=0; i < syslist.length; i++) {
+//            choices1.append({"text": syslist[i]});
+//            if (i!=0 && syslist[i] == themepage.default_theme)
+//                choices1.remove(i);
+//        }
+
+//        var iconlist = sessiondispatcher.get_icon_themes_qt();
+//        iconlist.unshift(themepage.default_icon_themeg);
+//        choices2.clear();
+//        for(var j=0; j < iconlist.length; j++) {
+//            choices2.append({"text": iconlist[j]});
+//            if (j!=0 && iconlist[j] == themepage.default_icon_theme)
+//                choices2.remove(j);
+//        }
+
+//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+//        cursorlist.unshift(themepage.default_cursor_theme);
+//        choices3.clear();
+//        for(var k=0; k < cursorlist.length; k++) {
+//            choices3.append({"text": cursorlist[k]});
+//            if (k!=0 && cursorlist[k] == themepage.default_cursor_theme)
+//                choices3.remove(k);
+//        }
+
         var syslist = sessiondispatcher.get_themes_qt();
+        var current_theme = sessiondispatcher.get_theme_qt();
+        syslist.unshift(current_theme);
         choices1.clear();
         for(var i=0; i < syslist.length; i++) {
             choices1.append({"text": syslist[i]});
+            if (i!=0 && syslist[i] == current_theme)
+                choices1.remove(i);
         }
+
         var iconlist = sessiondispatcher.get_icon_themes_qt();
+        var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
+        iconlist.unshift(current_icon_theme);
         choices2.clear();
         for(var j=0; j < iconlist.length; j++) {
             choices2.append({"text": iconlist[j]});
+            if (j!=0 && iconlist[j] == current_icon_theme)
+                choices2.remove(j);
         }
+
         var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+        cursorlist.unshift(current_cursor_theme);
         choices3.clear();
         for(var k=0; k < cursorlist.length; k++) {
             choices3.append({"text": cursorlist[k]});
+            if (k!=0 && cursorlist[k] == current_cursor_theme)
+                choices3.remove(k);
         }
 
     }
@@ -80,9 +132,9 @@ Rectangle {
         onButton2Clicked: {
             if (settigsDetails.setTitle == "theme") {
                 console.log("-----------------");
-                sessiondispatcher.set_theme_qt(syscombo.selectedText);
-                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+//                sessiondispatcher.set_theme_qt(syscombo.selectedText);
+//                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
 //                console.log(current_theme.text);
 //                console.log(syscombo.selectedText);
 //                console.log(current_icon_theme.text);
@@ -90,29 +142,29 @@ Rectangle {
 //                console.log(current_cursor_theme.text);
 //                console.log(cursorcombo.selectedText);
                 //default:ubuntukylin-theme
-//                if (current_theme.text != syscombo.selectedText) {
-//                    console.log("111");
-//                    current_theme.text = syscombo.selectedText;
-//                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
-//                }
-//                else
-//                    console.log("222");
-//                //default:ubuntukylin-icon-theme
-//                if (current_icon_theme.text != iconcombo.selectedText) {
-//                    console.log("333");
-//                    current_icon_theme.text = iconcombo.selectedText;
-//                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                }
-//                else
-//                    console.log("444");
-//                //default:DMZ-White
-//                if (current_cursor_theme.text != cursorcombo.selectedText) {
-//                    console.log("555");
-//                    current_cursor_theme.text = cursorcombo.selectedText;
-//                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-//                }
-//                else
-//                    console.log("666");
+                if (themepage.default_theme != syscombo.selectedText) {
+                    console.log("111");
+                    themepage.default_theme = syscombo.selectedText;
+                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
+                }
+                else
+                    console.log("222");
+                //default:ubuntukylin-icon-theme
+                if (themepage.default_icon_theme != iconcombo.selectedText) {
+                    console.log("333");
+                    themepage.default_icon_theme = iconcombo.selectedText;
+                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+                }
+                else
+                    console.log("444");
+                //default:DMZ-White
+                if (themepage.default_cursor_theme != cursorcombo.selectedText) {
+                    console.log("555");
+                    themepage.default_cursor_theme = cursorcombo.selectedText;
+                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+                }
+                else
+                    console.log("666");
                 //default:24
                 if (themepage.cursor_size != themespinbox.value) {
                     themepage.cursor_size = themespinbox.value;
@@ -133,6 +185,10 @@ Rectangle {
 //                console.log(themespinbox.value);
 //                console.log(themelabel.text);
         }
+    }
+    ListModel {
+        id: choices0
+        ListElement { text: "" }
     }
     ListModel {
         id: choices1
@@ -195,12 +251,12 @@ Rectangle {
 
                 onSelectedTextChanged: console.log(selectedText)
             }
-            Label {
-                id: current_theme
-                text: sessiondispatcher.get_theme_qt()
-                width: cursorthemelabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
+//            Label {
+//                id: current_theme
+//                text: sessiondispatcher.get_theme_qt()
+//                width: cursorthemelabel.width
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
         }
 
         Row {
@@ -220,12 +276,12 @@ Rectangle {
                 width: cursorthemelabel.width
                 onSelectedTextChanged: console.log(selectedText)
             }
-            Label {
-                id: current_icon_theme
-                text: sessiondispatcher.get_icon_theme_qt()
-                width: cursorthemelabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
+//            Label {
+//                id: current_icon_theme
+//                text: sessiondispatcher.get_icon_theme_qt()
+//                width: cursorthemelabel.width
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
         }
 
         Row {
@@ -245,12 +301,12 @@ Rectangle {
                 width: cursorthemelabel.width
                 onSelectedTextChanged: console.log(selectedText)
             }
-            Label {
-                id: current_cursor_theme
-                text: sessiondispatcher.get_cursor_theme_qt()
-                width: cursorthemelabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
+//            Label {
+//                id: current_cursor_theme
+//                text: sessiondispatcher.get_cursor_theme_qt()
+//                width: cursorthemelabel.width
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
         }
 
         Row {

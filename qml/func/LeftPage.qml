@@ -25,7 +25,7 @@ Rectangle {
     width: 600; height: 460
     //背景
     Image {
-        source: "../img/skin/leftbackground.png"
+        source: "../img/skin/bg-left.png"
         anchors.fill: parent
     }
     Column {
@@ -63,6 +63,7 @@ Rectangle {
                 }
                 SetBtn {
                     iconName: "onekeyBtn.png"
+                    setbtn_flag: "onekey"
                     anchors {
                         top: text1.bottom; topMargin: 30
                         left: parent.left; leftMargin: 80
@@ -79,78 +80,111 @@ Rectangle {
             anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 10 }
             Label {
                 id: itemtip
-                text: qsTr("<h1>安全项目</h1>")
+                text: qsTr("<h1>一键清理项目</h1>")
                 font.family: "楷体"
                 color: "green"
     //            anchors { top: refreshArrow.bottom; topMargin: 10; left: parent.left; leftMargin: 5 }
             }
-            ScrollArea {
-                frame:false
-                width:leftbar.width -10 //因为左边移位了10
-                //leftbar.height - refreshArrow.height - refreshArrow顶部距离10 - refreshArrow底部距离10 - 顶部距离20 -顶部距离10
+//            ScrollArea {
+//                frame:false
+//                width:leftbar.width -10 //因为左边移位了10
+//                //leftbar.height - refreshArrow.height - refreshArrow顶部距离10 - refreshArrow底部距离10 - 顶部距离20 -顶部距离10
+//                height: leftbar.height - refreshArrow.height - itemtip.height - 10*2 - 20 -10
+//                anchors.top: itemtip.bottom
+//                anchors.topMargin: 10
+//                Item {
+//                    width:parent.width
+//                    height:330
+//                    Component {
+//                        id: statusDelegate
+//                        Row {
+//                            Text {
+//                                text: title
+//                            }
+//                        }
+//                    }
+//                    ListModel {
+//                        id: streamModel
+//                        ListElement {
+//                            title: ""
+//                        }
+//                    }
+
+//                    //垃圾清理显示内容
+//                    ListView {
+//                        id: listView
+//                        height: parent.height
+//                        width: parent.width
+//                        model: streamModel
+//                        delegate: statusDelegate
+//                        cacheBuffer: 1000
+//                        opacity: 1
+//                        spacing: 10
+//                        snapMode: ListView.NoSnap
+//        //                            cacheBuffer: parent.height
+//                        boundsBehavior: Flickable.DragOverBounds
+//                        currentIndex: 0
+//                        preferredHighlightBegin: 0
+//                        preferredHighlightEnd: preferredHighlightBegin
+//                        highlightRangeMode: ListView.StrictlyEnforceRange
+//                    }
+//                }//Item
+//            }//ScrollArea
+
+
+
+            Item {
+                id: views
+                width: parent.width ////ListView不会随鼠标上下移动
+//                width:leftbar.width -10 //ListView会随鼠标上下移动
+//                height: parent.height// - titlebar.height
                 height: leftbar.height - refreshArrow.height - itemtip.height - 10*2 - 20 -10
                 anchors.top: itemtip.bottom
-                anchors.topMargin: 10
-                Item {
-                    width:parent.width
-                    height:330
-                    Component {
-                        id: statusDelegate
-                        Row {
-                            Text {
-                                text: title
-                            }
-                        }
-                    }
-                    ListModel {
-                        id: streamModel
-                        ListElement {
-                            title: "清理垃圾1"
-                        }
-                        ListElement {
-                            title: "清理垃圾2"
-                        }
-                        ListElement {
-                            title: "清理垃圾3"
-                        }
-                        ListElement {
-                            title: "清理垃圾4"
-                        }
-                        ListElement {
-                            title: "清理垃圾5"
-                        }
-                        ListElement {
-                            title: "清理垃圾6"
-                        }
-                        ListElement {
-                            title: "清理垃圾7"
-                        }
-                        ListElement {
-                            title: "清理垃圾8"
-                        }
+                anchors.topMargin: 30
 
+                ListModel {
+                    id: clearModel
+                    ListElement {
+                        title: "清理垃圾"
+                        picture: "../img/icons/user.png"
+                        detailstr: "清理系统垃圾，让系统运行跟流畅"
+                        flag: "rubbish"
                     }
+                    ListElement {
+                        title: "清理历史记录"
+                        picture: "../img/icons/at.png"
+                        detailstr: "清理使用计算机时留下的历史记录，保护个人隐私"
+                        flag: "history"
+                    }
+                    ListElement {
+                        title: "清理Cookies"
+                        picture: "../img/icons/at.png"
+                        detailstr: "清理使用计算机时留下的Cookies，保护个人隐私"
+                        flag: "cookie"
+                    }
+                    ListElement {
+                        title: "清理不需要到deb包"
+                        picture: "../img/icons/pen.png"
+                        detailstr: "清理软件安装后不再需要的deb包，提高系统性能"
+                        flag: "plugin"
+                    }
+                }
 
-                    //垃圾清理显示内容
-                    ListView {
-                        id: listView
-                        height: parent.height
-                        width: parent.width
-                        model: streamModel
-                        delegate: statusDelegate
-                        cacheBuffer: 1000
-                        opacity: 1
-                        spacing: 10
-                        snapMode: ListView.NoSnap
-        //                            cacheBuffer: parent.height
-                        boundsBehavior: Flickable.DragOverBounds
-                        currentIndex: 0
-                        preferredHighlightBegin: 0
-                        preferredHighlightEnd: preferredHighlightBegin
-                        highlightRangeMode: ListView.StrictlyEnforceRange
-                    }
-                }//Item
-            }//ScrollArea
+                ListView {
+                    id: listView
+                    height: parent.height
+                    width: parent.width
+                    anchors.top: parent.top
+//                    anchors.topMargin: titlebar.height + 45
+                    model: clearModel
+                    delegate: FastDelegate {}
+                    cacheBuffer: 1000
+                }
+            }
+
+
+
+
         }//Column
     }//Column
 

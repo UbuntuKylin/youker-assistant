@@ -30,7 +30,7 @@ import "common" as Common
 'home_path': '/home/kobe', 'cpu': 'Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz'}
 */
 Rectangle {
-    id: screen; width: parent.width; height: 460
+    id: screen; width: parent.width; height: 475
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
     signal dialogmsg()
@@ -41,25 +41,25 @@ Rectangle {
          else
              console.log("Error loading component:", component.errorString());
      }
-    Common.Border {
-        id: leftborder
-        width: 2
-        height: parent.height
-    }
-    Common.Border {
-        id: rightborder
-        width: 2
-        height: parent.height
-        anchors.right: parent.right
-    }
+//    Common.Border {
+//        id: leftborder
+//        width: 2
+//        height: parent.height
+//    }
+//    Common.Border {
+//        id: rightborder
+//        width: 2
+//        height: parent.height
+//        anchors.right: parent.right
+//    }
 
     Rectangle {
         id: tools_widget
         anchors {
             fill: parent
-            left: leftborder.right
+            left: parent.right
             leftMargin: 2
-            right: rightborder.left
+            right: parent.left
             rightMargin: 2
         }
 //        color: "white"

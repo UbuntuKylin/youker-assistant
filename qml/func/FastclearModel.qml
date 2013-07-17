@@ -5,7 +5,7 @@ import QtDesktop 0.1
 
 import "common" as Common
 Item {
-    id: screen; width: parent.width; height: 420
+    id: screen; width: parent.width; height: 435
 //    frame:false
     property SystemDispatcher dis: systemdispatcher
     property bool inListView : false

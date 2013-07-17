@@ -18,7 +18,7 @@ import QtQuick 1.1
 
 Rectangle {
     width: parent.width
-    height: 28
+    height: 30//28
     color: "transparent"
     property string version: "8.6.0.2001"
     property string updateTime: "2012-06-01"

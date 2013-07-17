@@ -37,7 +37,8 @@ public:
     Q_INVOKABLE void send_btn_msg(QString);
 
     Q_INVOKABLE void check_screen_break_point();
-    Q_INVOKABLE void custom_plymouth_bg(QString imagepath);
+    //开机动画
+    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
 
 //    Q_INVOKABLE QMap<QString, QStringList> search_the_same_file(QString path);
     Q_INVOKABLE int get_the_record_qt(QString mode);
@@ -54,6 +55,10 @@ public:
 //    Q_INVOKABLE QString get_str(QString str);
 //    Q_INVOKABLE QMap <int, QString> data;
 //    Q_INVOKABLE QString getMyString();
+
+
+    /*-------------------one key scan-------------------*/
+    Q_INVOKABLE QMap<QString, QVariant> scan_by_one_key_qt();
 
 signals:
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged

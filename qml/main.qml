@@ -25,10 +25,10 @@ Rectangle {
     Image {
         id: bgImg
         anchors.fill: parent
-        source: "./img/skin/bg0.png"
+        source: "./img/skin/bg.png"
     }
     radius: 2
-    color: "black"
+//    color: "black"
     opacity: 0.85
 
     Column {

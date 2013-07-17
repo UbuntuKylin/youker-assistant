@@ -24,7 +24,7 @@ Rectangle {
     id: lancherpage
     property bool on: true
     width: parent.width
-    height: 460
+    height: 475
 //    property Dispatcher dis: mydispather
     Common.Border {
         id: leftborder

@@ -23,7 +23,7 @@ Rectangle {
     id:container
     property SessionDispatcher dis: sessiondispatcher
     width: parent.width
-    height: 420
+    height: 435
 
     //箭头图标
     property string arrow: '../img/icons/arrow.png'
@@ -79,12 +79,12 @@ Rectangle {
                             sessiondispatcher.set_str("r");
                     }
                     else if (flags == "clear_history") {
-                        console.log("aaaaaaaaa");
+//                        console.log("aaaaaaaaa");
                         var history_str = sessiondispatcher.get_str();
-                        console.log(history_str)
+//                        console.log(history_str)
                         if (history_str.indexOf("h") < 0)
                             sessiondispatcher.set_str("h");
-                        console.log('bbbbbbbbbbb');
+//                        console.log('bbbbbbbbbbb');
                     }
                     else if (flags == "clear_cookies") {
                         var cookie_str = sessiondispatcher.get_str();

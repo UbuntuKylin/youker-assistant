@@ -24,7 +24,7 @@ Item {
     id:root
 //    property Dispatcher dis: mydispather
     width: parent.width
-    height: 420//340
+    height: 435//420//340
 //    color:"#c3c3c3"
     //垃圾清理自定义标题栏
     property string btn_text: "开始扫描"
@@ -49,6 +49,7 @@ Item {
 
     ItemListModel {
         id: pluginlist
+        height: parent.height
         btn_text: root.btn_text
         title: root.title
         description: root.description

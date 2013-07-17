@@ -74,6 +74,10 @@ import "settings" as Settings
              id: scrollbarpage
              visible: false
          }
+         Settings.BootAnimation {
+             id: bootanimationpage
+             visible: false
+         }
 
          states: [
              State {
@@ -88,6 +92,7 @@ import "settings" as Settings
 //                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "Voice"; when: settigsDetails.setTitle == "sound"
@@ -101,6 +106,7 @@ import "settings" as Settings
 //                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "Fonts"; when: settigsDetails.setTitle == "fonts"
@@ -114,6 +120,7 @@ import "settings" as Settings
 //                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "Talk"; when: settigsDetails.setTitle == "touchpad"
@@ -127,6 +134,7 @@ import "settings" as Settings
 //                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
 //             State {
 //                 name: "Login"; when: settigsDetails.setTitle == "login"
@@ -153,6 +161,7 @@ import "settings" as Settings
 //                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "Desktopicon"; when: settigsDetails.setTitle == "desktopicon"
@@ -166,6 +175,7 @@ import "settings" as Settings
 //                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
 //             State {
 //                 name: "Wallpaperpage"; when: settigsDetails.setTitle == "wallpaper"
@@ -192,6 +202,7 @@ import "settings" as Settings
 //                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "Filespage"; when: settigsDetails.setTitle == "scrollbar"
@@ -204,8 +215,24 @@ import "settings" as Settings
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "Bootpage"; when: settigsDetails.setTitle == "bootanimation"
+                 PropertyChanges { target: bootanimationpage; x: 0; visible: true }
+                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: scrollbarpage; visible:false/*x: -(parent.width * 1.5)*/ }
 //                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
              }
+
          ]
 
          transitions: Transition {

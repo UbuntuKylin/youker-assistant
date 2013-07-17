@@ -15,14 +15,16 @@
  */
 
 import QtQuick 1.1
-
+import SystemType 0.1
 Rectangle {
     id: menulogo
     width: 58
     height: 29
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
-    property string iconName: "set.png"
+    property SystemDispatcher dis: systemdispatcher
+    property string iconName: "onekeyBtn.png"
+    property string setbtn_flag: "onekey"
 
     Image {
         id: toolImg
@@ -44,7 +46,14 @@ Rectangle {
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
-            console.log("clicked....")
+            if (setbtn_flag == "onekey") {
+                console.log("onekey clicked....");
+                systemdispatcher.scan_by_one_key_qt();
+            }
+            else if (setbtn_flag == "set")
+                console.log("set clicked....");
+            else if (setbtn_flag == "message")
+                console.log("message clicked....");
         }
     }
 }

@@ -23,7 +23,7 @@ import "common" as Common
 Rectangle {
     id: home
     width: parent.width
-    height: 460
+    height: 475
 //    property Dispatcher dis: mydispather
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
