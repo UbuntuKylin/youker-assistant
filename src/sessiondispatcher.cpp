@@ -24,6 +24,8 @@
 #include "warningdialog.h"
 #include <QDesktopWidget>
 #include <QDeclarativeContext>
+#include <QFontDialog>
+#include <QColorDialog>
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -272,6 +274,23 @@ void SessionDispatcher::set_cursor_size_qt(int size) {
 
 
 /*-----------------------------font of beauty-----------------------------*/
+void SessionDispatcher::show_font_dialog() {
+    QFontDialog *dialog = new QFontDialog;
+    bool ok;
+    QFont font = QFontDialog::getFont(&ok, QFont("Times", 12),dialog);
+    dialog->setFont(font);
+    qDebug()<<font.key();
+    dialog->show();
+}
+
+void SessionDispatcher::show_color_dialog() {
+    QColorDialog *dialog = new QColorDialog;
+    QColor color;
+    color = QColorDialog::getColor(Qt::green, dialog, "Select Color", QColorDialog::DontUseNativeDialog);
+    dialog->setPalette(QPalette(color));
+    dialog->show();
+}
+
 QString SessionDispatcher::get_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_font");
     return reply.value();

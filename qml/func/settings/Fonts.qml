@@ -21,6 +21,14 @@ import SessionType 0.1
 import QtDesktop 0.1
 import "../common" as Common
 
+
+//Gtk:GtkFontButton
+
+//     http://www.doc88.com/p-313626987748.html
+//Qt:QFontDialog
+//           http://www.kuqin.com/qtdocument/qfontdialog.html
+//QColorDialog
+//              http://www.kuqin.com/qtdocument/qcolordialog.html
 Rectangle {
     id: fontspage
     property bool on: true
@@ -252,6 +260,17 @@ Rectangle {
 
     }//Column
 
+    Button {
+        text: "显示字体设置框"
+        onClicked: sessiondispatcher.show_font_dialog();
+    }
+
+    Button {
+        text: "显示颜色设置框"
+        anchors.left: parent.left
+        anchors.leftMargin: 100
+        onClicked: sessiondispatcher.show_color_dialog();
+    }
 }
 
 

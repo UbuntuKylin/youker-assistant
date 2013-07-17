@@ -84,6 +84,8 @@ public:
     Q_INVOKABLE void set_cursor_size_qt(int size);
 
     /*-------------------fonts of beauty-------------------*/
+    Q_INVOKABLE void show_font_dialog();
+    Q_INVOKABLE void show_color_dialog();
     Q_INVOKABLE QString get_font_qt();
     Q_INVOKABLE bool set_font_qt(QString font);
     Q_INVOKABLE QString get_desktop_font_qt();

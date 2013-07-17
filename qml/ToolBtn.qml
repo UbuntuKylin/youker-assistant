@@ -86,6 +86,7 @@ Rectangle {
             else if (text == "systemset") {
 //                menulogo.state = "Beauty";
                 menulogo.send("systemset");
+//                pageStack.pop(systemset);
                 pageStack.push(systemset);
             }
 

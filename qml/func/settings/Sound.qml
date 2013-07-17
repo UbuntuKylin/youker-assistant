@@ -30,6 +30,7 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
+    property string default_sound: ""
 
 //    property Dispatcher dis: mydispather
 
@@ -47,25 +48,44 @@ Rectangle {
         else
             soundswitcher.switchedOn = false;
 
-        var musiclist = sessiondispatcher.get_sound_themes_qt();
+
+        soundpage.default_sound = sessiondispatcher.get_sound_theme_qt();
+        var soundlist = sessiondispatcher.get_themes_qt();
+        var current_sound = sessiondispatcher.get_sound_theme_qt();
+        soundlist.unshift(current_sound);
         choices.clear();
-        for(var i=0; i < musiclist.length; i++) {
-            choices.append({"text": musiclist[i]});
+        for(var i=0; i < soundlist.length; i++) {
+            choices.append({"text": soundlist[i]});
+            if (i!=0 && soundlist[i] == current_sound)
+                choices.remove(i);
         }
+
+//        var musiclist = sessiondispatcher.get_sound_themes_qt();
+//        choices.clear();
+//        for(var i=0; i < musiclist.length; i++) {
+//            choices.append({"text": musiclist[i]});
+//        }
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-            if (settigsDetails.setTitle == "sound")
-                sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+            if (settigsDetails.setTitle == "sound") {
+                if (soundpage.default_sound != soundcombo.selectedText) {
+                    console.log("111");
+                    soundpage.default_sound = soundcombo.selectedText;
+                    sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+                }
+                else
+                    console.log("222");
+            }
         }
     }
 
     ListModel {
         id: choices
-        ListElement { text: "kobe888" }
+        ListElement { text: "" }
     }
 
     Label {
@@ -139,12 +159,12 @@ Rectangle {
                 width: soundthemelabel.width
 //                onSelectedTextChanged: console.log(selectedText)
             }
-            Label {
-                id: music_theme
-                text: sessiondispatcher.get_sound_theme_qt()
-                width: soundthemelabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
+//            Label {
+//                id: music_theme
+//                text: sessiondispatcher.get_sound_theme_qt()
+//                width: soundthemelabel.width
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
         }
 
 
