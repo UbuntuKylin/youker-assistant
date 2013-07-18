@@ -40,7 +40,11 @@ Rectangle {
 
 //    property int cursor_size: 24
     property SessionDispatcher dis: sessiondispatcher
-
+    property string current_font: "Helvetica"
+    property string document_font: "Helvetica"
+    property string desktop_font: "Helvetica"
+    property string titlebar_font: "Helvetica"
+    property string monospace_font: "Helvetica"
     Common.Border {
         id: leftborder
     }
@@ -50,25 +54,11 @@ Rectangle {
     }
 
     Component.onCompleted: {
-//        var mylist = ["lili", "xiang", "peng", "shuang"];
-//        console.log("-----------------------------");
-//        console.log(mylist.length);
-//        themepage.cursor_size = themespinbox.value;
-//        var syslist = sessiondispatcher.get_themes_qt();
-//        choices1.clear();
-//        for(var i=0; i < syslist.length; i++) {
-//            choices1.append({"text": syslist[i]});
-//        }
-//        var iconlist = sessiondispatcher.get_icon_themes_qt();
-//        choices2.clear();
-//        for(var j=0; j < iconlist.length; j++) {
-//            choices2.append({"text": iconlist[j]});
-//        }
-//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-//        choices3.clear();
-//        for(var k=0; k < cursorlist.length; k++) {
-//            choices3.append({"text": cursorlist[k]});
-//        }
+        fontspage.current_font = sessiondispatcher.get_font_qt();
+        fontspage.document_font = sessiondispatcher.get_document_font_qt();
+        //        fontspage.desktop_font = sessiondispatcher.get_desktop_font_qt();
+        fontspage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
+        fontspage.monospace_font = sessiondispatcher.get_monospace_font_qt();
     }
 
     Connections {
@@ -76,30 +66,8 @@ Rectangle {
         //按下确定按钮
         onButton2Clicked: {
             if (settigsDetails.setTitle == "fonts") {
-//                console.log(fontslabel.text);
-
-//                sessiondispatcher.set_theme_qt(syscombo.selectedText);
-//                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-//                if (themepage.cursor_size != themespinbox.value) {
-//                    themepage.cursor_size = themespinbox.value;
-//                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
-//                }
             }
         }
-    }
-
-    ListModel {
-        id: choices1
-        ListElement { text: "kobe999" }
-    }
-    ListModel {
-        id: choices2
-        ListElement { text: "kobe888" }
-    }
-    ListModel {
-        id: choices
-        ListElement { text: "kobe777" }
     }
 
     Label {
@@ -142,18 +110,17 @@ Rectangle {
                 }
                 anchors.verticalCenter: parent.verticalCenter
             }
-            ComboBox {
-                id: fontscombo
-                model: choices
+            Text {
+//                text: sessiondispatcher.get_font_qt()
+                text: fontspage.current_font
                 width: fontslabel.width
-                onSelectedTextChanged: console.log(selectedText)
+                anchors.verticalCenter: parent.verticalCenter
             }
-//            Label {
-//                id: current_theme
-//                text: sessiondispatcher.get_theme_qt()
-//                width: fontslabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
+
+            Button {
+                text: "设置"
+                onClicked: sessiondispatcher.show_font_dialog("font");
+            }
         }
 
         Row {
@@ -167,18 +134,16 @@ Rectangle {
                 }
                 anchors.verticalCenter: parent.verticalCenter
             }
-            ComboBox {
-                id: desktopfontcombo
-                model: choices
+            Text {
+//                text: sessiondispatcher.get_desktop_font_qt()
+                text: "an error"
                 width: desktopfontlabel.width
-//                onSelectedTextChanged: console.log(selectedText)
+                anchors.verticalCenter: parent.verticalCenter
             }
-//            Label {
-//                id: fonts_set
-//                text: sessiondispatcher.get_theme_qt()
-//                width: fontslabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
+            Button {
+                text: "设置"
+                onClicked: sessiondispatcher.show_font_dialog("desktopfont");
+            }
         }
 
         Row {
@@ -192,11 +157,15 @@ Rectangle {
                 }
                 anchors.verticalCenter: parent.verticalCenter
             }
-            ComboBox {
-                id: documentfontcombo
-                model: choices
+            Text {
+//                text: sessiondispatcher.get_document_font_qt()
+                text: fontspage.document_font
                 width: documentfontlabel.width
-//                onSelectedTextChanged: console.log(selectedText)
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Button {
+                text: "设置"
+                onClicked: sessiondispatcher.show_font_dialog("documentfont");
             }
         }
 
@@ -211,11 +180,15 @@ Rectangle {
                 }
                 anchors.verticalCenter: parent.verticalCenter
             }
-            ComboBox {
-                id: monospacefontcombo
-                model: choices
+            Text {
+//                text: sessiondispatcher.get_monospace_font_qt()
+                text: fontspage.monospace_font
                 width: monospacefontlabel.width
-//                onSelectedTextChanged: console.log(selectedText)
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Button {
+                text: "设置"
+                onClicked: sessiondispatcher.show_font_dialog("monospacefont");
             }
         }
 
@@ -230,11 +203,15 @@ Rectangle {
                 }
                 anchors.verticalCenter: parent.verticalCenter
             }
-            ComboBox {
-                id: windowtitlefontcombo
-                model: choices
-                width: windowtitlefontlabel.width;
-//                onSelectedTextChanged: console.log(selectedText)
+            Text {
+//                text: sessiondispatcher.get_window_title_font_qt()
+                text: fontspage.titlebar_font
+                width: windowtitlefontlabel.width
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Button {
+                text: "设置"
+                onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
             }
         }
 
@@ -252,9 +229,10 @@ Rectangle {
             SpinBox {
                 id: fontzoomspinbox
                 width: 97
-                minimumValue: 32
+                minimumValue: 0
                 maximumValue: 64
-                value: 48
+                value: sessiondispatcher.get_font_zoom_qt()
+//                value: 48
             }
         }
 

@@ -42,6 +42,7 @@ public:
     //---------------------------------
     //开机动画
     Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
+    Q_INVOKABLE QString show_file_dialog();
     Q_INVOKABLE QStringList scan_history_records_qt();
     Q_INVOKABLE void clean_history_records_qt(QStringList strlist);
     Q_INVOKABLE QStringList scan_cookies_records_qt();
@@ -49,6 +50,12 @@ public:
     Q_INVOKABLE QStringList scan_unneed_packages_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist);
+//    Q_INVOKABLE QMap<QString, QVariant> scan_cache_cruft_qt();
+
+
+    Q_INVOKABLE void scan_cache_cruft_qt();
+    Q_INVOKABLE QStringList get_apt_data();
+    Q_INVOKABLE QStringList get_center_data();
     //---------------------------------
 
 
@@ -65,6 +72,7 @@ public:
 
     //custom_plymouth
     QMap<QString, QVariant> myinfo;
+    QMap<QString, QVariant> apt_center;
     QDBusInterface *systemiface;
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE QString get_str();

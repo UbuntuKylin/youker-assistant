@@ -45,7 +45,6 @@ Rectangle {
         ListElement {
             icon: "../img/icons/bootanimation.png"
             name: "开机动画"
-//            flag: "touchpad"
             flag: "bootanimation"
         }
         ListElement {

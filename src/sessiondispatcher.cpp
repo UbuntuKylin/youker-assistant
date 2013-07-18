@@ -26,6 +26,7 @@
 #include <QDeclarativeContext>
 #include <QFontDialog>
 #include <QColorDialog>
+#include <QColor>
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -274,23 +275,6 @@ void SessionDispatcher::set_cursor_size_qt(int size) {
 
 
 /*-----------------------------font of beauty-----------------------------*/
-void SessionDispatcher::show_font_dialog() {
-    QFontDialog *dialog = new QFontDialog;
-    bool ok;
-    QFont font = QFontDialog::getFont(&ok, QFont("Times", 12),dialog);
-    dialog->setFont(font);
-    qDebug()<<font.key();
-    dialog->show();
-}
-
-void SessionDispatcher::show_color_dialog() {
-    QColorDialog *dialog = new QColorDialog;
-    QColor color;
-    color = QColorDialog::getColor(Qt::green, dialog, "Select Color", QColorDialog::DontUseNativeDialog);
-    dialog->setPalette(QPalette(color));
-    dialog->show();
-}
-
 QString SessionDispatcher::get_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_font");
     return reply.value();
@@ -302,7 +286,6 @@ bool SessionDispatcher::set_font_qt(QString font) {
 QString SessionDispatcher::get_desktop_font_qt() {
     QDBusReply<void> reply = sessioniface->call("get_desktop_font");
 }
-
 bool SessionDispatcher::set_desktop_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_desktop_font", font);
     return reply.value();
@@ -311,7 +294,6 @@ QString SessionDispatcher::get_document_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_document_font");
     return reply.value();
 }
-
 bool SessionDispatcher::set_document_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_document_font", font);
     return reply.value();
@@ -341,6 +323,52 @@ bool SessionDispatcher::set_font_zoom_qt(double zoom) {
     return reply.value();
 }
 
+
+void SessionDispatcher::show_font_dialog(QString flag) {
+//    QFontDialog *dialog = new QFontDialog;
+//    bool ok;
+//    QFont font = QFontDialog::getFont(&ok, QFont("Times", 12),dialog);
+//    dialog->setFont(font);
+//    qDebug()<<font.key();
+//    dialog->show();
+
+
+    bool ok;
+//    const QFont& font = QFontDialog::getFont(&ok, get_font_qt());
+    const QFont& font = QFontDialog::getFont(&ok, 0);
+    if(ok)
+    {
+        qDebug() << "OK-----------";
+        qDebug() << font.family();
+        set_font_qt(font.family());//set font
+//        displayTextEdit->setFont(font);
+    }
+    else
+        qDebug() << "Quit-----------";
+
+}
+
+void SessionDispatcher::show_color_dialog() {
+//    QColorDialog *dialog = new QColorDialog;
+//    QColor color;
+//    color = QColorDialog::getColor(Qt::green, dialog, "Select Color", QColorDialog::DontUseNativeDialog);
+//    dialog->setPalette(QPalette(color));
+//    dialog->show();
+
+
+//    QPalette palette = displayTextEdit->palette();
+//    const QColor& color = QColorDialog::getColor(palette.color(QPalette::Base), this);
+    const QColor& color = QColorDialog::getColor(Qt::white, 0);
+    if(color.isValid())
+    {
+        qDebug() << "OK-----------";
+//        palette.setColor(QPalette::Base, color);
+//        displayTextEdit->setPalette(palette);
+    }
+    else
+        qDebug() << "Quit-----------";
+
+}
 /*-----------------------------scrollbars of beauty-----------------------------*/
 bool SessionDispatcher::set_scrollbars_mode_overlay_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_scrollbars_mode_overlay");

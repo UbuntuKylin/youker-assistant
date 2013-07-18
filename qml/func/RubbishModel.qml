@@ -31,22 +31,62 @@ Item {
     property string btn_text: "开始扫描"
     property string title: "清理电脑中的垃圾"
     property string description: "清理垃圾可以提高系统速度"
-    property string btn_flag: "rubbish"
+    property string btn_flag: "cruft_scan"
     property ListModel listmodel: mainModel
+    property ListModel submodel: subModel
+
+    property int sub_num: 0
+
+    signal cruft_signal(string cruft_msg);
+    onCruft_signal: {
+        if (cruft_msg == "CruftWork") {
+            //get data of cookies
+            console.log("xiang1111");
+            systemdispatcher.scan_cache_cruft_qt();
+            var apt_data = systemdispatcher.get_apt_data();
+//            var center_data = systemdispatcher.get_center_data();
+
+            sub_num = apt_data.length;// + center_data.legth;
+
+            subModel.clear();
+            for (var i=0; i< apt_data.length; i++) {
+                console.log(apt_data[i]);//sina.com.cn<2_2>10
+                var splitlist = apt_data[i].split("<2_2>");
+                subModel.append({"itemTitle": splitlist[0], "number": splitlist[1] + "字节"});
+//                subModel.append({"itemTitle": cookies_data[i], "number": i});
+            }
+            mainModel.clear();
+            mainModel.append({"itemTitle": "清理apt",
+                             "picture": "../img/icons/user.png",
+                             "detailstr": "清理系统apt，让系统运行跟流畅",
+                             "flags": "clear_rubbish",
+                            "attributes":
+                                 [{"subItemTitle": "Cookies1"},
+                                 {"subItemTitle": "Cookies2"},
+                                 {"subItemTitle": "Cookies3"},
+                                 {"subItemTitle": "Cookies4"}]
+                             })
+        }
+    }
+
 
 
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "清理垃圾"
+            itemTitle: "清理apt"
             picture: "../img/icons/user.png"
             detailstr: "清理系统垃圾，让系统运行跟流畅"
             flags: "clear_rubbish"
             attributes: [
-                ListElement { subItemTitle: "系统垃圾1" },
-                ListElement { subItemTitle: "系统垃圾2" }
+                ListElement { subItemTitle: "" }
             ]
         }
+    }
+
+    ListModel {
+        id: subModel
+        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
 
     ItemListModel {
@@ -57,6 +97,8 @@ Item {
         description: root.description
         btn_flag: root.btn_flag
         listmodel: root.listmodel
+        submodel: root.submodel
+        num: root.sub_num
     }
 }
 

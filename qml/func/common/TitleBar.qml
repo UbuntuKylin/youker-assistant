@@ -64,6 +64,12 @@ Item {
                  titleBar.work_result = msg;
                  titleBar.state = "OneKeyFinish";
              }
+             if (btn_flag == "cruft_work") {
+                 console.log("******Signal handler received  Start******")
+                 console.log(msg);
+                 titleBar.state = "CruftWorkFinish";
+                 console.log("******End******");
+             }
              if (btn_flag == "history_work") {
                  console.log("******Signal handler received  Start******")
                  console.log(msg);
@@ -73,6 +79,10 @@ Item {
              else if (btn_flag == "cookies_work") {
                  console.log(msg);
                  titleBar.state = "CookiesWorkFinish";
+             }
+             else if (btn_flag == "unneed_work") {
+                 console.log(msg);
+                 titleBar.state = "UnneedWorkFinish";
              }
          }
      }
@@ -160,12 +170,30 @@ Item {
                  }
 
                  //rubbish
-                 else if (btn_flag == "rubbish") {
-                     console.log("rubbish");
-                     if (str.indexOf("r") > -1)
-                         console.log("rrrrrrrrrrrrr");
+//                 else if (btn_flag == "rubbish") {
+//                     console.log("rubbish");
+//                     if (str.indexOf("r") > -1)
+//                         console.log("rrrrrrrrrrrrr");
+//                     else
+//                         console.log("nrnrnrnrnrnrnr");
+//                 }
+                 else if (btn_flag == "cruft_scan") {
+                     console.log("dddddd------------");
+                      if (str.indexOf("r") > -1) {
+                          titleBar.state = "CruftWork";
+                          //display context
+                          cruft_signal("CruftWork");
+                      }
                      else
-                         console.log("nrnrnrnrnrnrnr");
+                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中垃圾扫描项，请确认！");
+                 }
+                 else if (btn_flag == "cruft_work") {
+//                     console.log("eeeeeee-------------");
+//                      if (str.indexOf("h") > -1)
+////                          dataRequired();
+//                          systemdispatcher.clean_the_browser_qt("history");
+//                     else
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中垃圾清理项，请确认！");
                  }
 
 
@@ -207,11 +235,28 @@ Item {
                  }
 
                  //package
-                 else if (btn_flag == "package") {
-                     console.log("package");
-                     pageStack.pop();
- //                    pageStack.push(pluginlist);
-                     pageStack.push(Qt.resolvedUrl("../ItemListModel.qml"));
+//                 else if (btn_flag == "package") {
+//                     console.log("package");
+//                     pageStack.pop();
+// //                    pageStack.push(pluginlist);
+//                     pageStack.push(Qt.resolvedUrl("../ItemListModel.qml"));
+//                 }
+                 else if (btn_flag == "package_scan") {
+                     console.log("li11111");
+                     if (str.indexOf("p") > -1) {
+                         titleBar.state = "UnneedWork";
+                         console.log("li22222");
+                         //display context
+                         unneed_signal("UnneedWork");
+                     }
+                     else
+                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Unneed扫描项，请确认！");
+                 }
+                 else if (btn_flag == "package_work") {
+//                     if (str.indexOf("c") > -1)
+//                         systemdispatcher.clean_the_browser_qt("cookies");
+//                     else
+//                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Unneed清理项，请确认！");
                  }
              }
              anchors.verticalCenter: parent.verticalCenter
@@ -220,6 +265,12 @@ Item {
 
 
      states: [
+         State {
+             name: "CruftWork"
+             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" }
+             PropertyChanges { target: bitButton; text: "开始清理" }
+             PropertyChanges { target: titleBar; btn_flag: "cruft_work" }
+         },
          State {
              name: "HistoryWork"
              PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" }
@@ -233,11 +284,23 @@ Item {
              PropertyChanges { target: titleBar; btn_flag: "cookies_work" }
          },
          State {
+             name: "UnneedWork"
+             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" }
+             PropertyChanges { target: bitButton; text: "开始清理" }
+             PropertyChanges { target: titleBar; btn_flag: "package_work" }
+         },
+         State {
              name: "OneKeyWork"
              PropertyChanges { target: label; visible: true; text: "one key scan" }
 //             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" }
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "one_key_work" }
+         },
+         State {
+             name: "CruftWorkFinish"
+             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: bitButton; text: "开始扫描" }
+             PropertyChanges { target: titleBar; btn_flag: "cruft_scan" }
          },
          State {
              name: "HistoryWorkFinish"
@@ -250,6 +313,12 @@ Item {
              PropertyChanges { target: label; visible: true; text: "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
              PropertyChanges { target: titleBar; btn_flag: "cookies_scan" }
+         },
+         State {
+             name: "UnneedWorkFinish"
+             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: bitButton; text: "开始扫描" }
+             PropertyChanges { target: titleBar; btn_flag: "unneed_scan" }
          },
          State {
              name: "OneKeyFinish"

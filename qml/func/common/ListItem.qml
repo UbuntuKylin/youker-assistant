@@ -7,7 +7,9 @@ Item {
     property int fontSize: 10
     property color fontColor: "black"
     property bool fontBold: false
-    property string text: "NULL"
+    property string text: ""
+    property string description: ""
+    property string size_num: ""
     property string bgImage: '../../img/icons/list_item.png'
 
     property string bgImageSelected: '../../img/icons/list_item_selected.png'
@@ -39,14 +41,11 @@ Item {
     Text {
         id: itemText
         anchors {
-//            left: parent.left
             left: checkbox.right
             top: parent.top
-            right: parent.right
             topMargin: 4
             bottomMargin: 4
             leftMargin: 8 + textIndent
-            rightMargin: 8
             verticalCenter: container.verticalCenter
         }
         font {
@@ -57,6 +56,32 @@ Item {
         color: container.fontColor
         elide: Text.ElideRight
         text: container.text
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    Text {
+        text: container.description
+        anchors {
+            left: itemText.right
+            top: parent.top
+            leftMargin: 20
+            verticalCenter: container.verticalCenter
+        }
+        color: container.fontColor
+        elide: Text.ElideRight
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    Text {
+        text: container.size_num
+        anchors {
+            top: parent.top
+            right: parent.right
+            rightMargin: 80
+            verticalCenter: container.verticalCenter
+        }
+        color: container.fontColor
+        elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
     }
 

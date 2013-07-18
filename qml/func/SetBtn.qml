@@ -56,7 +56,7 @@ Rectangle {
         onClicked: {
             if (setbtn_flag == "onekey") {
                 console.log("onekey clicked....");
-                systemdispatcher.scan_by_one_key_qt();
+//                systemdispatcher.scan_by_one_key_qt();
             }
             else if (setbtn_flag == "set")
                 console.log("set clicked....");

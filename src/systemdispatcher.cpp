@@ -20,6 +20,7 @@
 #include <QtDBus>
 #include <QObject>
 #include <QString>
+#include <QFileDialog>
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -111,6 +112,21 @@ void SystemDispatcher::check_screen_break_point() {
 void SystemDispatcher::custom_plymouth_qt(QString imagepath) {
     QDBusReply<void> reply = systemiface->call("custom_plymouth", imagepath);
 }
+QString SystemDispatcher::show_file_dialog() {
+    QString fileName = QFileDialog::getOpenFileName(0, tr("选择开机动画"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+    qDebug() << "000000000000000000";
+    qDebug() << fileName;
+    return fileName;
+
+
+//    QFontDialog *dialog = new QFontDialog;
+//    bool ok;
+//    QFont font = QFontDialog::getFont(&ok, QFont("Times", 12),dialog);
+//    dialog->setFont(font);
+//    qDebug()<<font.key();
+//    dialog->show();
+}
+
 QStringList SystemDispatcher::scan_history_records_qt() {
     QDBusReply<QStringList> reply = systemiface->call("scan_history_records");
     return reply.value();
@@ -134,6 +150,23 @@ void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
 }
 void SystemDispatcher::clean_file_cruft_qt(QStringList strlist) {
     QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist);
+}
+void SystemDispatcher::scan_cache_cruft_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("scan_cache_cruft");
+    apt_center = reply.value();
+//    qDebug() << "-------------------";
+//    qDebug() << apt_center;
+//    return reply.value();
+}
+QStringList SystemDispatcher::get_apt_data()
+{
+//    qDebug() << apt_center["apt"];
+    qDebug() << "-------------------";
+    qDebug() << apt_center["apt"].toStringList();
+    return apt_center["apt"].toStringList();
+}
+QStringList SystemDispatcher::get_center_data() {
+    return apt_center["softwarecenter"].toStringList();
 }
 
 //------------------------------------------------------

@@ -31,48 +31,88 @@ Item {
     property string btn_text: "开始扫描"
     property string title: "清理不需要到deb包"
     property string description: "清理软件安装后不再需要的deb包，提高系统性能"
-    property string btn_flag: "package"
+    property string btn_flag: "package_scan"
 
 //    PluginListModel {
 //        id: mainModel
 //    }
 
     property ListModel listmodel: mainModel
+    property ListModel submodel: subModel
+
+    property int sub_num: 0
+
+
+    signal unneed_signal(string unneed_msg);
+    onUnneed_signal: {
+        if (unneed_msg == "UnneedWork") {
+            //get data of unneed
+            var unneed_data = systemdispatcher.scan_unneed_packages_qt();
+
+            root.sub_num = unneed_data.length;
+            subModel.clear();
+            for (var i=0; i< unneed_data.length; i++) {
+                console.log("unneed........................");
+                console.log(unneed_data[i]);//sina.com.cn<2_2>10
+                var splitlist = unneed_data[i].split("<2_2>");
+                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2] + "字节"});
+            }
+            mainModel.clear();submodel
+            mainModel.append({"itemTitle": "清理不再需要的安装包",
+                             "picture": "../img/icons/user.png",
+                             "detailstr": "不再需要的安装包,让系统更瘦",
+                             "flags": "clear_cookies",
+                            "attributes":
+                                 [{"subItemTitle": "Cookies1"},
+                                 {"subItemTitle": "Cookies2"},
+                                 {"subItemTitle": "Cookies3"},
+                                 {"subItemTitle": "Cookies4"}]
+                             })
+        }
+    }
+
+
+
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "Item title 1"
+            itemTitle: "清理不再需要的安装包"
             picture: "../img/icons/user.png"
-            detailstr: "清理deb，让系统更瘦1"
+            detailstr: "不再需要的安装包,让系统更瘦"
             flags: "clear_package"
             attributes: [
-                ListElement { subItemTitle: "kobe 1/1" },
-                ListElement { subItemTitle: "kobe 2/1" }
+                ListElement { subItemTitle: "" }
+//                ListElement { subItemTitle: "kobe 2/1" }
             ]
         }
-        ListElement {
-            itemTitle: "Item title 2"
-            picture: "../img/icons/user.png"
-            detailstr: "清理deb，让系统更瘦2"
-            flags: "clear_package"
-            attributes: [
-                ListElement { subItemTitle: "kobe 1/3" },
-                ListElement { subItemTitle: "kobe 2/3" },
-                ListElement { subItemTitle: "kobe 3/3" }
-            ]
-        }
-        ListElement {
-            itemTitle: "Item title 3"
-            picture: "../img/icons/user.png"
-            detailstr: "清理deb，让系统更瘦3"
-            flags: "clear_package"
-            attributes: [
-                ListElement { subItemTitle: "kobe 1/4" },
-                ListElement { subItemTitle: "kobe 2/4" },
-                ListElement { subItemTitle: "kobe 3/4" },
-                ListElement { subItemTitle: "kobe 4/4" }
-            ]
-        }
+//        ListElement {
+//            itemTitle: "Item title 2"
+//            picture: "../img/icons/user.png"
+//            detailstr: "清理deb，让系统更瘦2"
+//            flags: "clear_package"
+//            attributes: [
+//                ListElement { subItemTitle: "kobe 1/3" },
+//                ListElement { subItemTitle: "kobe 2/3" },
+//                ListElement { subItemTitle: "kobe 3/3" }
+//            ]
+//        }
+//        ListElement {
+//            itemTitle: "Item title 3"
+//            picture: "../img/icons/user.png"
+//            detailstr: "清理deb，让系统更瘦3"
+//            flags: "clear_package"
+//            attributes: [
+//                ListElement { subItemTitle: "kobe 1/4" },
+//                ListElement { subItemTitle: "kobe 2/4" },
+//                ListElement { subItemTitle: "kobe 3/4" },
+//                ListElement { subItemTitle: "kobe 4/4" }
+//            ]
+//        }
+    }
+
+    ListModel {
+        id: subModel
+        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
 
     ItemListModel {
@@ -83,6 +123,8 @@ Item {
         description: root.description
         btn_flag: root.btn_flag
         listmodel: root.listmodel
+        submodel: root.submodel
+        num: root.sub_num
     }
 }
 

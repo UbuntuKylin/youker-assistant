@@ -32,13 +32,28 @@ Item {
     property string description: "清理浏览器历史记录可以保障系统安全"
     property string btn_flag: "history_scan"
     property ListModel listmodel: mainModel
+    property ListModel submodel: subModel
 
+    property int sub_num: 0
 
     signal history_signal(string history_msg);
     onHistory_signal: {
         if (history_msg == "HistoryWork") {
             console.log("&&&&&&&&&&&&&&&&&&&&&&&");
             console.log(history_msg);
+
+
+            //get data of cookies
+//            var cookies_data = systemdispatcher.scan_cookies_records_qt();
+//            console.log("****************************8");
+//            root.sub_num = cookies_data.length;
+//            subModel.clear();
+//            for (var i=0; i< cookies_data.length; i++) {
+//                console.log(cookies_data[i]);
+//                subModel.append({"itemTitle": cookies_data[i], "number": i});
+//            }
+
+//            console.log("****************************9");
             mainModel.clear();
             mainModel.append({"itemTitle": "清理浏览器历史记录",
                              "picture": "../img/icons/user.png",
@@ -52,12 +67,7 @@ Item {
                              })
             console.log("%%%%%%%%%%%%%%%%%%%%%%%55");
         }
-//        mainModel.append(..., "attributes":
-//                             [{"subItemTitle": "111"},
-//                             {"subItemTitle": "222"},
-//                             {"subItemTitle": "333"},
-//                             {"subItemTitle": "444"}]
-//                         );
+
     }
 
     ListModel {
@@ -73,6 +83,12 @@ Item {
         }
     }
 
+    ListModel {
+        id: subModel
+        ListElement {itemTitle: ""; desc: ""; number: ""}
+    }
+
+
     ItemListModel {
         id: pluginlist
         height: parent.height
@@ -81,6 +97,8 @@ Item {
         description: root.description
         btn_flag: root.btn_flag
         listmodel: root.listmodel
+        submodel: root.submodel
+        num: root.sub_num
     }
 }
 

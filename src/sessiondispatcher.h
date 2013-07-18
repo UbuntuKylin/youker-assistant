@@ -84,20 +84,34 @@ public:
     Q_INVOKABLE void set_cursor_size_qt(int size);
 
     /*-------------------fonts of beauty-------------------*/
-    Q_INVOKABLE void show_font_dialog();
+    Q_INVOKABLE void show_font_dialog(QString flag);
     Q_INVOKABLE void show_color_dialog();
+
+
     Q_INVOKABLE QString get_font_qt();
-    Q_INVOKABLE bool set_font_qt(QString font);
+    bool set_font_qt(QString font);
     Q_INVOKABLE QString get_desktop_font_qt();
-    Q_INVOKABLE bool set_desktop_font_qt(QString font);
+    bool set_desktop_font_qt(QString font);
     Q_INVOKABLE QString get_document_font_qt();
-    Q_INVOKABLE bool set_document_font_qt(QString font);
+    bool set_document_font_qt(QString font);
     Q_INVOKABLE QString get_monospace_font_qt();
-    Q_INVOKABLE bool set_monospace_font_qt(QString font);
+    bool set_monospace_font_qt(QString font);
     Q_INVOKABLE QString get_window_title_font_qt();
-    Q_INVOKABLE bool set_window_title_font_qt(QString font);
+    bool set_window_title_font_qt(QString font);
     Q_INVOKABLE double get_font_zoom_qt();
-    Q_INVOKABLE bool set_font_zoom_qt(double zoom);
+    bool set_font_zoom_qt(double zoom);
+//    Q_INVOKABLE QString get_font_qt();
+//    Q_INVOKABLE bool set_font_qt(QString font);
+//    Q_INVOKABLE QString get_desktop_font_qt();
+//    Q_INVOKABLE bool set_desktop_font_qt(QString font);
+//    Q_INVOKABLE QString get_document_font_qt();
+//    Q_INVOKABLE bool set_document_font_qt(QString font);
+//    Q_INVOKABLE QString get_monospace_font_qt();
+//    Q_INVOKABLE bool set_monospace_font_qt(QString font);
+//    Q_INVOKABLE QString get_window_title_font_qt();
+//    Q_INVOKABLE bool set_window_title_font_qt(QString font);
+//    Q_INVOKABLE double get_font_zoom_qt();
+//    Q_INVOKABLE bool set_font_zoom_qt(double zoom);
 
     /*-------------------scrollbars of beauty-------------------*/
     Q_INVOKABLE bool set_scrollbars_mode_overlay_qt();

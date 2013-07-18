@@ -17,7 +17,7 @@ import QtQuick 1.1
 import QtDesktop 0.1
 //import RegisterMyType 0.1
 //import SessionType 0.1
-//import SystemType 0.1
+import SystemType 0.1
 import "common" as Common
 
 Item {
@@ -31,15 +31,31 @@ Item {
     property string title: "清理浏览器Cookies"
     property string description: "清理浏览器Cookies可以保障系统安全"
     property string btn_flag: "cookies_scan"
-
+    property SystemDispatcher dis: systemdispatcher
     property ListModel listmodel: mainModel
+    property ListModel submodel: subModel
+    property int sub_num: 0
+
 
 
     signal cookies_signal(string cookies_msg);
     onCookies_signal: {
         if (cookies_msg == "CookiesWork") {
-            console.log("&&&&&&&&&&&&&&&&&&&&&&&");
-            console.log(cookies_msg);
+//            console.log("&&&&&&&&&&&&&&&&&&&&&&&");
+//            console.log(cookies_msg);
+
+            //get data of cookies
+            var cookies_data = systemdispatcher.scan_cookies_records_qt();
+//            console.log("****************************8");
+            root.sub_num = cookies_data.length;
+            subModel.clear();
+            for (var i=0; i< cookies_data.length; i++) {
+                console.log(cookies_data[i]);//sina.com.cn<2_2>10
+                var splitlist = cookies_data[i].split("<2_2>");
+                subModel.append({"itemTitle": splitlist[0], "number": splitlist[1] + "个Cookie"});
+//                subModel.append({"itemTitle": cookies_data[i], "number": i});
+            }
+//            console.log("****************************9");
             mainModel.clear();
             mainModel.append({"itemTitle": "清理浏览器Cookies",
                              "picture": "../img/icons/user.png",
@@ -51,14 +67,23 @@ Item {
                                  {"subItemTitle": "Cookies3"},
                                  {"subItemTitle": "Cookies4"}]
                              })
-            console.log("%%%%%%%%%%%%%%%%%%%%%%%55");
+
+
+
+//            mainModel.clear();
+//            for (var i=0; i< cookies_data.length; i++) {
+//                mainModel.append({"attributes":[{"subItemTitle": cookies_data[i]}]});
+//            }
+
+//            mainModel.append({
+//                            "attributes":
+//                                 [{"subItemTitle": "Cookies1"},
+//                                 {"subItemTitle": "Cookies2"},
+//                                 {"subItemTitle": "Cookies3"},
+//                                 {"subItemTitle": "Cookies4"}]
+//                             })
+//            console.log("%%%%%%%%%%%%%%%%%%%%%%%55");
         }
-//        mainModel.append(..., "attributes":
-//                             [{"subItemTitle": "111"},
-//                             {"subItemTitle": "222"},
-//                             {"subItemTitle": "333"},
-//                             {"subItemTitle": "444"}]
-//                         );
     }
 
 
@@ -75,6 +100,11 @@ Item {
         }
     }
 
+    ListModel {
+        id: subModel
+        ListElement {itemTitle: ""; desc: ""; number: ""}
+    }
+
     ItemListModel {
         id: pluginlist
         height: parent.height
@@ -83,6 +113,8 @@ Item {
         description: root.description
         btn_flag: root.btn_flag
         listmodel: root.listmodel
+        submodel: root.submodel
+        num: root.sub_num
     }
 }
 

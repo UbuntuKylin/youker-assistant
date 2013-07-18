@@ -38,6 +38,8 @@ Rectangle {
 
 
     property ListModel listmodel: mymodel
+    property ListModel submodel: mysubmodel
+    property int num: 0
     property string btn_text: ""
     property string title: ""
     property string description: ""
@@ -45,6 +47,9 @@ Rectangle {
 
     ListModel {
         id: mymodel
+    }
+    ListModel {
+        id: mysubmodel
     }
 
     //垃圾清理自定义标题栏
@@ -252,13 +257,18 @@ Rectangle {
                     width: parent.width
                     Repeater {
                         id: subItemRepeater
-                        model: attributes
+//                        model: attributes
+                        model: container.submodel
+//                        model: mysubmodel
                         width: subItemsRect.width
                         Common.ListItem {
                             id: subListItem
                             width: delegate.width
                             height: subItemsRect.itemHeight
-                            text: subItemTitle
+//                            text: subItemTitle
+                            text: itemTitle
+                            description: desc
+                            size_num: number
                             bgImage: "../../img/icons/list_subitem.png"
                             fontName: container.subItemFontName
                             fontSize: container.subItemFontSize
@@ -281,7 +291,7 @@ Rectangle {
         anchors.topMargin: 50
         Item {
             width:parent.width
-            height:450 //this height must be higher than root.height, then the slidebar can display
+            height:(container.num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
             //垃圾清理显示内容
             ListView {
                 id: listView
