@@ -40,7 +40,15 @@ Rectangle {
     MouseArea {
         hoverEnabled: true
         anchors.fill: parent
-        onEntered: btnImg.source = "../img/toolWidget/menu_hover.png"
+        onEntered: {
+//            btnImg.source = "../img/toolWidget/menu_hover.png"
+            if (menulogo.setbtn_flag == "onekey")
+                btnImg.source = "../img/icons/onekeyBtn-hover.png"
+            else if (menulogo.setbtn_flag == "set")
+                btnImg.source = "../img/icons/set-hover.png"
+            else if (menulogo.setbtn_flag == "message")
+                btnImg.source = "../img/icons/message-hover.png"
+        }
         onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
         //要判断松开是鼠标位置
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"

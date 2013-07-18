@@ -29,9 +29,9 @@ Item {
 //    color:"#c3c3c3"
     //垃圾清理自定义标题栏
     property string btn_text: "开始扫描"
-    property string title: "清理插件"
-    property string description: "清理插件可以节省磁盘容量"
-    property string btn_flag: "plugins"
+    property string title: "清理不需要到deb包"
+    property string description: "清理软件安装后不再需要的deb包，提高系统性能"
+    property string btn_flag: "package"
 
 //    PluginListModel {
 //        id: mainModel
@@ -43,8 +43,8 @@ Item {
         ListElement {
             itemTitle: "Item title 1"
             picture: "../img/icons/user.png"
-            detailstr: "清理Plugins，让系统更瘦1"
-            flags: "clear_plugins"
+            detailstr: "清理deb，让系统更瘦1"
+            flags: "clear_package"
             attributes: [
                 ListElement { subItemTitle: "kobe 1/1" },
                 ListElement { subItemTitle: "kobe 2/1" }
@@ -53,8 +53,8 @@ Item {
         ListElement {
             itemTitle: "Item title 2"
             picture: "../img/icons/user.png"
-            detailstr: "清理Plugins，让系统更瘦2"
-            flags: "clear_plugins"
+            detailstr: "清理deb，让系统更瘦2"
+            flags: "clear_package"
             attributes: [
                 ListElement { subItemTitle: "kobe 1/3" },
                 ListElement { subItemTitle: "kobe 2/3" },
@@ -64,8 +64,8 @@ Item {
         ListElement {
             itemTitle: "Item title 3"
             picture: "../img/icons/user.png"
-            detailstr: "清理Plugins，让系统更瘦3"
-            flags: "clear_plugins"
+            detailstr: "清理deb，让系统更瘦3"
+            flags: "clear_package"
             attributes: [
                 ListElement { subItemTitle: "kobe 1/4" },
                 ListElement { subItemTitle: "kobe 2/4" },
@@ -129,7 +129,7 @@ Item {
 //                    title: "清理插件"
 //                    picture: "../img/icons/user.png"
 //                    detailstr: "清理插件包，让系统更瘦"
-//                    flags: "clear_plugins"
+//                    flags: "clear_package"
 //                }
 //            }
 

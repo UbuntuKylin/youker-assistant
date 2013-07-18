@@ -75,10 +75,10 @@ Item {
             }
         }
         Tab {
-            title: qsTr("清理插件")
+            title: qsTr("清理不需要到deb包")
             contentMargin: 20
-            PluginModel {
-                id: pluginmodel
+            PackageModel {
+                id: packagemodel
             }
 
         }
@@ -174,7 +174,7 @@ Item {
 //                    btn_text: "开始扫描"
 //                    title: "清理电脑中的插件"
 //                    description:  "清理插件可以给系统和浏览器“减负”，减少干扰，提供系统和浏览器速度"
-//                    btn_flag: "plugins"
+//                    btn_flag: "package"
 //                }
 
 
@@ -186,7 +186,7 @@ Item {
 ////                    btn_text: "开始扫描"
 ////                    title: "清理电脑中的插件"
 ////                    description:  "清理插件可以给系统和浏览器“减负”，减少干扰，提供系统和浏览器速度"
-////                    btn_flag: "plugins"
+////                    btn_flag: "package"
 ////                }
 
 ////                Rectangle {

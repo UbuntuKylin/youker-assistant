@@ -123,7 +123,7 @@ Rectangle {
     states: [
         State {
             name: "Home"/*; when: (menulogo.text == "homepage")*/
-            PropertyChanges { target: home_tool; iconName:  "homepage-hover.png"}
+            PropertyChanges { target: home_tool; iconName:  "homepage-active.png"}
             PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
             PropertyChanges { target: message_tool; iconName:  "systemmessage.png"}
@@ -133,7 +133,7 @@ Rectangle {
         State {
             name: "Clear"/*; when: (menulogo.text == "clearrubbish")*/
             PropertyChanges { target: home_tool; iconName:  "homepage.png"}
-            PropertyChanges { target: clear_tool; iconName:  "systemclear-hover.png"}
+            PropertyChanges { target: clear_tool; iconName:  "systemclear-active.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
             PropertyChanges { target: message_tool; iconName:  "systemmessage.png"}
             PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
@@ -142,7 +142,7 @@ Rectangle {
             name: "Beauty"/*; when: (menulogo.text == "systemset")*/
             PropertyChanges { target: home_tool; iconName:  "homepage.png"}
             PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
-            PropertyChanges { target: beauty_tool; iconName:  "systembeauty-hover.png"}
+            PropertyChanges { target: beauty_tool; iconName:  "systembeauty-active.png"}
             PropertyChanges { target: message_tool; iconName:  "systemmessage.png"}
             PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
         },
@@ -151,7 +151,7 @@ Rectangle {
             PropertyChanges { target: home_tool; iconName:  "homepage.png"}
             PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
-            PropertyChanges { target: message_tool; iconName:  "systemmessage-hover.png"}
+            PropertyChanges { target: message_tool; iconName:  "systemmessage-active.png"}
             PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
         },
         State {
@@ -160,7 +160,7 @@ Rectangle {
             PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
             PropertyChanges { target: message_tool; iconName:  "systemmessage.png"}
-            PropertyChanges { target: function_tool; iconName:  "functioncollection-hover.png"}
+            PropertyChanges { target: function_tool; iconName:  "functioncollection-active.png"}
         }
     ]
 

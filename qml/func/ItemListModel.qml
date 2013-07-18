@@ -62,7 +62,9 @@ Rectangle {
             id: delegate
             property int itemHeight: 40
             property alias expandedItemCount: subItemRepeater.count
-            property bool expanded: false
+            property bool expanded: true //kobe:子项扩展默认打开
+//            property bool expanded: subItemTitle="" ? false : true//kobe:子项扩展默认打开
+            //subListItem
 //            x: 0; y: 0;
             x: 5; y: 2
             width: container.width
@@ -91,7 +93,7 @@ Rectangle {
                         if (cookie_str.indexOf("c") < 0)
                             sessiondispatcher.set_str("c");
                     }
-                    else if (flags == "clear_plugins") {
+                    else if (flags == "clear_package") {
                         var plugin_str = sessiondispatcher.get_str();
                         if (plugin_str.indexOf("p") < 0)
                             sessiondispatcher.set_str("p");
@@ -138,8 +140,8 @@ Rectangle {
                                 if (cook_str.indexOf("c") < 0)
                                     sessiondispatcher.set_str("c");
                             }
-                            else if (flags == "clear_plugins") {
-//                                clearDelegate.check_flag = "clear_plugins";
+                            else if (flags == "clear_package") {
+//                                clearDelegate.check_flag = "clear_package";
                                 var plugin_str = sessiondispatcher.get_str();
                                 if (plugin_str.indexOf("p") < 0)
                                     sessiondispatcher.set_str("p");
@@ -165,7 +167,7 @@ Rectangle {
                                 if (cook_str1.indexOf("c") > -1)
                                     sessiondispatcher.del_str("c");
                             }
-                            else if (flags == "clear_plugins") {
+                            else if (flags == "clear_package") {
                                 var plugin_str1 = sessiondispatcher.get_str();
                                 if (plugin_str1.indexOf("p") > -1)
                                     sessiondispatcher.del_str("p");

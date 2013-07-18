@@ -34,6 +34,32 @@ Item {
     property ListModel listmodel: mainModel
 
 
+    signal history_signal(string history_msg);
+    onHistory_signal: {
+        if (history_msg == "HistoryWork") {
+            console.log("&&&&&&&&&&&&&&&&&&&&&&&");
+            console.log(history_msg);
+            mainModel.clear();
+            mainModel.append({"itemTitle": "清理浏览器历史记录",
+                             "picture": "../img/icons/user.png",
+                             "detailstr": "清理浏览器历史记录，让系统更安全",
+                             "flags": "clear_history",
+                            "attributes":
+                                 [{"subItemTitle": "111"},
+                                 {"subItemTitle": "222"},
+                                 {"subItemTitle": "333"},
+                                 {"subItemTitle": "444"}]
+                             })
+            console.log("%%%%%%%%%%%%%%%%%%%%%%%55");
+        }
+//        mainModel.append(..., "attributes":
+//                             [{"subItemTitle": "111"},
+//                             {"subItemTitle": "222"},
+//                             {"subItemTitle": "333"},
+//                             {"subItemTitle": "444"}]
+//                         );
+    }
+
     ListModel {
         id: mainModel
         ListElement {
@@ -42,8 +68,7 @@ Item {
             detailstr: "清理浏览器历史记录，让系统更安全"
             flags: "clear_history"
             attributes: [
-                ListElement { subItemTitle: "历史记录1" },
-                ListElement { subItemTitle: "历史记录2" }
+                ListElement { subItemTitle: "" }
             ]
         }
     }

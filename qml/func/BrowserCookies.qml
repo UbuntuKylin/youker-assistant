@@ -33,6 +33,35 @@ Item {
     property string btn_flag: "cookies_scan"
 
     property ListModel listmodel: mainModel
+
+
+    signal cookies_signal(string cookies_msg);
+    onCookies_signal: {
+        if (cookies_msg == "CookiesWork") {
+            console.log("&&&&&&&&&&&&&&&&&&&&&&&");
+            console.log(cookies_msg);
+            mainModel.clear();
+            mainModel.append({"itemTitle": "清理浏览器Cookies",
+                             "picture": "../img/icons/user.png",
+                             "detailstr": "清理Cookies，让系统更安全",
+                             "flags": "clear_cookies",
+                            "attributes":
+                                 [{"subItemTitle": "Cookies1"},
+                                 {"subItemTitle": "Cookies2"},
+                                 {"subItemTitle": "Cookies3"},
+                                 {"subItemTitle": "Cookies4"}]
+                             })
+            console.log("%%%%%%%%%%%%%%%%%%%%%%%55");
+        }
+//        mainModel.append(..., "attributes":
+//                             [{"subItemTitle": "111"},
+//                             {"subItemTitle": "222"},
+//                             {"subItemTitle": "333"},
+//                             {"subItemTitle": "444"}]
+//                         );
+    }
+
+
     ListModel {
         id: mainModel
         ListElement {
@@ -41,8 +70,7 @@ Item {
             detailstr: "清理Cookies，让系统更安全"
             flags: "clear_cookies"
             attributes: [
-                ListElement { subItemTitle: "Cookies1" },
-                ListElement { subItemTitle: "Cookies2" }
+                ListElement { subItemTitle: "" }
             ]
         }
     }

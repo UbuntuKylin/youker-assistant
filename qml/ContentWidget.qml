@@ -89,7 +89,7 @@ Item {
                 height: 64//84
                 anchors {
                     top: titlebar.bottom
-                    topMargin: 20
+                    topMargin: 18
 //                    topMargin: 45
                 }
 

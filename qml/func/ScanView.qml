@@ -54,7 +54,7 @@ Item {
             streamModel.append({"title1": "AAA", "title2": "kobe1"});
             streamModel.append({"title1": "BBB", "title2": "kobe2"});
         }
-        else if (item_flags == "clear_plugins") {
+        else if (item_flags == "clear_package") {
             streamModel.append({"title1": "PS", "title2": "kobe1"});
             streamModel.append({"title1": "Shuang", "title2": "kobe2"});
             streamModel.append({"title1": "Er", "title2": "kobe3"});
@@ -138,8 +138,8 @@ Item {
 //                            console.log("clear_rubbish check ");
 //                        else if (check == "clear_traces")
 //                            console.log("clear_traces check");
-//                        else if (check == "clear_plugins")
-//                            console.log("clear_plugins check");
+//                        else if (check == "clear_package")
+//                            console.log("clear_package check");
 //                    }
 //                }
 

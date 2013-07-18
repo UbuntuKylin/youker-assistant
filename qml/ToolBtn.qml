@@ -58,15 +58,67 @@ Rectangle {
         id: signaltest
         hoverEnabled: true
         anchors.fill: parent
-        onEntered: btnImg.source = "./img/toolWidget/menu_hover.png"
-        onPressed: btnImg.source = "./img/toolWidget/menu_press.png"
-//        onEntered: btnImg.source = "./img/toolWidget/systemclear-hover.png"
-//        onPressed: btnImg.source = "./img/toolWidget/systemclear-hover.png"
-        //systemclear-hover.png
+//        onEntered: btnImg.source = "./img/toolWidget/menu_hover.png"
+//        onPressed: btnImg.source = "./img/toolWidget/menu_press.png"
+//        //要判断松开是鼠标位置
+//        onReleased: btnImg.source = "./img/toolWidget/menu_hover.png"
+//        onExited: btnImg.source = ""
+        //鼠标放上时
+        onEntered: {
+            if (text == "homepage") {
+                btnImg.source = "./img/toolWidget/homepage-hover.png"
+            }
+            else if (text == "clearrubbish") {
+                btnImg.source = "./img/toolWidget/systemclear-hover.png"
+            }
+            else if (text == "systemset") {
+                btnImg.source = "./img/toolWidget/systembeauty-hover.png"
+            }
+            else if (text == "systemmessage") {
+                btnImg.source = "./img/toolWidget/systemmessage-hover.png"
+            }
+            else if (text == "functioncollection") {
+                btnImg.source = "./img/toolWidget/functioncollection-hover.png"
+            }
+        }
+        //鼠标按下时
+        onPressed: {
+            if (text == "homepage") {
+                btnImg.source = "./img/toolWidget/homepage-hover.png"
+            }
+            else if (text == "clearrubbish") {
+                btnImg.source = "./img/toolWidget/systemclear-hover.png"
+            }
+            else if (text == "systemset") {
+                btnImg.source = "./img/toolWidget/systembeauty-hover.png"
+            }
+            else if (text == "systemmessage") {
+                btnImg.source = "./img/toolWidget/systemmessage-hover.png"
+            }
+            else if (text == "functioncollection") {
+                btnImg.source = "./img/toolWidget/functioncollection-hover.png"
+            }
+        }
         //要判断松开是鼠标位置
-        onReleased: btnImg.source = "./img/toolWidget/menu_hover.png"
-//        onReleased: btnImg.source = "./img/toolWidget/systemclear.png"
-//        onExited: btnImg.source = "./img/toolWidget/homepage-hover.png"
+        //鼠标按下松开时
+        onReleased: {
+            if (text == "homepage") {
+                btnImg.source = "./img/toolWidget/homepage.png"
+            }
+            else if (text == "clearrubbish") {
+                btnImg.source = "./img/toolWidget/systemclear.png"
+            }
+            else if (text == "systemset") {
+                btnImg.source = "./img/toolWidget/systembeauty.png"
+            }
+            else if (text == "systemmessage") {
+                btnImg.source = "./img/toolWidget/systemmessage.png"
+            }
+            else if (text == "functioncollection") {
+                btnImg.source = "./img/toolWidget/functioncollection.png"
+            }
+        }
+        //鼠标按下松开再移开时
         onExited: btnImg.source = ""
 
 
@@ -74,63 +126,29 @@ Rectangle {
             //kobe:选中项深色块移动
 //            menulogo.GridView.view.currentIndex = index;
             if (text == "homepage") {
-//                menulogo.state = "Home";
                 menulogo.send("homepage");
                 pageStack.push(homepage);
             }
             else if (text == "clearrubbish") {
-//                menulogo.state = "Clear";
                 menulogo.send("clearrubbish");
                 pageStack.push(clearrubbish);
             }
             else if (text == "systemset") {
-//                menulogo.state = "Beauty";
                 menulogo.send("systemset");
 //                pageStack.pop(systemset);
                 pageStack.push(systemset);
             }
 
             else if (text == "systemmessage") {
-//                menulogo.state = "Message";
                 menulogo.send("systemmessage");
                 pageStack.push(systemmessage);
             }
             else if (text == "functioncollection") {
-//                menulogo.state = "Function";
                 menulogo.send("functioncollection");
                 pageStack.push(functioncollection);
             }
         }
     }
-
-
-
-
-
-//    states: [
-//        State {
-//            name: "Home"; when: (menulogo.text == "homepage")
-//            PropertyChanges { target: menulogo; iconName:  "homepage-hover.png"}
-//        },
-//        State {
-//            name: "Clear"/*; when: (menulogo.text == "clearrubbish")*/
-//            PropertyChanges { target: menulogo; iconName:  "systemclear-hover.png"}
-//        },
-//        State {
-//            name: "Beauty"/*; when: (menulogo.text == "systemset")*/
-//            PropertyChanges { target: menulogo; iconName:  "systembeauty-hover.png"}
-//        },
-//        State {
-//            name: "Message"/*; when: (menulogo.text == "systemmessage")*/
-//            PropertyChanges { target: menulogo; iconName:  "systemmessage-hover.png"}
-//        },
-//        State {
-//            name: "Function"/*; when: (menulogo.text == "functioncollection")*/
-//            PropertyChanges { target: menulogo; iconName:  "functioncollection-hover.png"}
-//        }
-//    ]
-
-
 }
 
 

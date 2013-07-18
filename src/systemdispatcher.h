@@ -37,8 +37,25 @@ public:
     Q_INVOKABLE void send_btn_msg(QString);
 
     Q_INVOKABLE void check_screen_break_point();
+
+
+    //---------------------------------
     //开机动画
     Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
+    Q_INVOKABLE QStringList scan_history_records_qt();
+    Q_INVOKABLE void clean_history_records_qt(QStringList strlist);
+    Q_INVOKABLE QStringList scan_cookies_records_qt();
+    Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
+    Q_INVOKABLE QStringList scan_unneed_packages_qt();
+    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
+    Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist);
+    //---------------------------------
+
+
+
+
+
+
 
 //    Q_INVOKABLE QMap<QString, QStringList> search_the_same_file(QString path);
     Q_INVOKABLE int get_the_record_qt(QString mode);

@@ -172,8 +172,11 @@ Item {
                  //broswer history
                  else if (btn_flag == "history_scan") {
                      console.log("dddddd------------");
-                      if (str.indexOf("h") > -1)
+                      if (str.indexOf("h") > -1) {
                           titleBar.state = "HistoryWork";
+                          //display context
+                          history_signal("HistoryWork");
+                      }
                      else
                           sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录扫描项，请确认！");
                  }
@@ -188,8 +191,11 @@ Item {
 
                 //broswer cookies
                  else if (btn_flag == "cookies_scan") {
-                     if (str.indexOf("c") > -1)
+                     if (str.indexOf("c") > -1) {
                          titleBar.state = "CookiesWork";
+                         //display context
+                         cookies_signal("CookiesWork");
+                     }
                      else
                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies扫描项，请确认！");
                  }
@@ -200,9 +206,9 @@ Item {
                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies清理项，请确认！");
                  }
 
-                 //plugins
-                 else if (btn_flag == "plugins") {
-                     console.log("plugins");
+                 //package
+                 else if (btn_flag == "package") {
+                     console.log("package");
                      pageStack.pop();
  //                    pageStack.push(pluginlist);
                      pageStack.push(Qt.resolvedUrl("../ItemListModel.qml"));

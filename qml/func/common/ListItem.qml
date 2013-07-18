@@ -29,10 +29,18 @@ Item {
         anchors.fill: parent
     }
 
+    CheckBox {
+        id: checkbox
+        checked: true
+        anchors.verticalCenter: parent.verticalCenter
+        onCheckedChanged: {}
+        visible: itemText.text=="" ? false : true
+    }
     Text {
         id: itemText
         anchors {
-            left: parent.left
+//            left: parent.left
+            left: checkbox.right
             top: parent.top
             right: parent.right
             topMargin: 4
@@ -54,7 +62,8 @@ Item {
 
     MouseArea {
         id: mouseArea
-        anchors.fill: parent
+//        anchors.fill: parent
+        anchors.fill: itemText
         onClicked: container.clicked();
         onReleased: selectable && !selected ? selected = true : selected = false
     }

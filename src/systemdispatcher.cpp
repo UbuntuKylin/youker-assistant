@@ -105,10 +105,47 @@ void SystemDispatcher::check_screen_break_point() {
     QDBusReply<void> reply = systemiface->call("check_screen");
 }
 
+
+//------------------------------------------------------
 //开机动画
 void SystemDispatcher::custom_plymouth_qt(QString imagepath) {
     QDBusReply<void> reply = systemiface->call("custom_plymouth", imagepath);
 }
+QStringList SystemDispatcher::scan_history_records_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("scan_history_records");
+    return reply.value();
+}
+void SystemDispatcher::clean_history_records_qt(QStringList strlist) {
+    QDBusReply<void> reply = systemiface->call("clean_history_records", strlist);
+}
+QStringList SystemDispatcher::scan_cookies_records_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("scan_cookies_records");
+    return reply.value();
+}
+void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
+    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
+}
+QStringList SystemDispatcher::scan_unneed_packages_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("scan_unneed_packages");
+    return reply.value();
+}
+void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
+    QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
+}
+void SystemDispatcher::clean_file_cruft_qt(QStringList strlist) {
+    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist);
+}
+
+//------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 
 //QMap<QString, QStringList> SystemDispatcher::search_the_same_file(QString path) {
