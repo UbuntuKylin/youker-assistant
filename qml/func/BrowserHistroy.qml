@@ -54,6 +54,7 @@ Item {
 //            }
 
 //            console.log("****************************9");
+
             mainModel.clear();
             mainModel.append({"itemTitle": "清理浏览器历史记录",
                              "picture": "../img/icons/user.png",

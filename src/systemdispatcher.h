@@ -80,6 +80,34 @@ public:
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE QString get_str();
     QString notify_str;
+
+//-------------
+    QStringList apt_args;
+    Q_INVOKABLE void set_apt_args(QString str);
+    Q_INVOKABLE void del_apt_args(QString str);
+    Q_INVOKABLE void clear_apt_args();
+    Q_INVOKABLE QStringList get_apt_args();
+
+    QStringList software_args;
+    Q_INVOKABLE void set_software_args(QString str);
+    Q_INVOKABLE void del_software_args(QString str);
+    Q_INVOKABLE void clear_software_args();
+    Q_INVOKABLE QStringList get_software_args();
+
+    QStringList cookies_args;
+    Q_INVOKABLE void set_cookies_args(QString str);
+    Q_INVOKABLE void del_cookies_args(QString str);
+    Q_INVOKABLE void clear_cookies_args();
+    Q_INVOKABLE QStringList get_cookies_args();
+
+    QStringList package_args;
+    Q_INVOKABLE void set_package_args(QString str);
+    Q_INVOKABLE void del_package_args(QString str);
+    Q_INVOKABLE void clear_package_args();
+    Q_INVOKABLE QStringList get_package_args();
+//-------------
+
+
 //    Q_INVOKABLE QString get_str(QString str);
 //    Q_INVOKABLE QMap <int, QString> data;
 //    Q_INVOKABLE QString getMyString();

@@ -44,11 +44,13 @@ Item {
             //get data of cookies
             var software_data = systemdispatcher.scan_softwarecenter_cruft_qt();
             root.sub_num = software_data.length;
+            systemdispatcher.clear_software_args();
             subModel.clear();
             for (var i=0; i< software_data.length; i++) {
                 console.log(software_data[i]);//sina.com.cn<2_2>10
                 var splitlist = software_data[i].split("<2_2>");
                 subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "字节"});
+                systemdispatcher.set_software_args(splitlist[0]);
             }
             mainModel.clear();
             mainModel.append({"itemTitle": "清理浏览器Cookies",

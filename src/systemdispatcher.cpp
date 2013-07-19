@@ -177,11 +177,99 @@ QStringList SystemDispatcher::scan_softwarecenter_cruft_qt() {
     QDBusReply<QStringList> reply = systemiface->call("scan_softwarecenter_cruft");
     return reply.value();
 }
+
 //------------------------------------------------------
 
 
 
 
+
+
+//--------------------
+void SystemDispatcher::set_apt_args(QString str) {
+    apt_args.append(str);
+}
+void SystemDispatcher::del_apt_args(QString str) {
+    QStringList bake;
+    int len = apt_args.length();
+    for (int i=0; i< len; i++) {
+        if (apt_args[i] != str)
+            bake.append(apt_args[i]);
+    }
+    apt_args.clear();
+    apt_args = bake;
+}
+void SystemDispatcher::clear_apt_args() {
+    apt_args.clear();
+}
+QStringList SystemDispatcher::get_apt_args() {
+    return apt_args;
+}
+
+
+void SystemDispatcher::set_software_args(QString str) {
+    software_args.append(str);
+}
+void SystemDispatcher::del_software_args(QString str) {
+    QStringList bake;
+    int len = software_args.length();
+    for (int i=0; i< len; i++) {
+        if (software_args[i] != str)
+            bake.append(software_args[i]);
+    }
+    software_args.clear();
+    software_args = bake;
+}
+void SystemDispatcher::clear_software_args() {
+    software_args.clear();
+}
+QStringList SystemDispatcher::get_software_args() {
+    return software_args;
+}
+
+
+void SystemDispatcher::set_cookies_args(QString str) {
+    cookies_args.append(str);
+}
+void SystemDispatcher::del_cookies_args(QString str) {
+    QStringList bake;
+    int len = cookies_args.length();
+    for (int i=0; i< len; i++) {
+        if (cookies_args[i] != str)
+            bake.append(cookies_args[i]);
+    }
+    cookies_args.clear();
+    cookies_args = bake;
+}
+void SystemDispatcher::clear_cookies_args() {
+    cookies_args.clear();
+}
+QStringList SystemDispatcher::get_cookies_args() {
+    return cookies_args;
+}
+
+
+void SystemDispatcher::set_package_args(QString str) {
+    package_args.append(str);
+}
+void SystemDispatcher::del_package_args(QString str) {
+    QStringList bake;
+    int len = package_args.length();
+    for (int i=0; i< len; i++) {
+        if (package_args[i] != str)
+            bake.append(package_args[i]);
+    }
+    package_args.clear();
+    package_args = bake;
+//    package_args.replaceInStrings(QString(str), QString(""));
+}
+void SystemDispatcher::clear_package_args() {
+    package_args.clear();
+}
+QStringList SystemDispatcher::get_package_args() {
+    return package_args;
+}
+//--------------------
 
 
 

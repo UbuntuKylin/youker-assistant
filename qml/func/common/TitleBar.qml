@@ -80,7 +80,8 @@ Item {
                  console.log(msg);
                  titleBar.state = "CookiesWorkFinish";
              }
-             else if (btn_flag == "unneed_work") {
+             else if (btn_flag == "package_work") {
+                 console.log("33333333333333");
                  console.log(msg);
                  titleBar.state = "UnneedWorkFinish";
              }
@@ -145,29 +146,29 @@ Item {
                  console.log('cccccc-------');
                  console.log(str)
                  //one key
-                 if (btn_flag == "one_key_scan") {
-                    if (str.indexOf("r") > -1 || str.indexOf("h") > -1 || str.indexOf("c") > -1 || str.indexOf("p") > -1) {
-                        titleBar.state = "OneKeyWork";
-                        if (str.indexOf("r") > -1)
-                            console.log("rrrrrrrrrrr");
-                        if (str.indexOf("h") > -1)
-                            console.log("hhhhhhhhhhh");
-                        if (str.indexOf("c") > -1)
-                            console.log("ccccccccccc");
-                        if (str.indexOf("p") > -1)
-                            console.log("pppppppppppp");
-                    }
-                    else {
-                        sessiondispatcher.send_warningdialog_msg("对不起，您没有选中一键清理的任何扫描项，请确认！");
-                    }
-                 }
-                 else if (btn_flag == "one_key_work") {
-                      if (str.indexOf("r") > -1 || str.indexOf("h") > -1 || str.indexOf("c") > -1 || str.indexOf("p") > -1) {
-                          systemdispatcher.clean_the_browser_qt("history");//kobe: need to add other function
-                      }
-                     else
-                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
-                 }
+//                 if (btn_flag == "one_key_scan") {
+//                    if (str.indexOf("r") > -1 || str.indexOf("h") > -1 || str.indexOf("c") > -1 || str.indexOf("p") > -1) {
+//                        titleBar.state = "OneKeyWork";
+//                        if (str.indexOf("r") > -1)
+//                            console.log("rrrrrrrrrrr");
+//                        if (str.indexOf("h") > -1)
+//                            console.log("hhhhhhhhhhh");
+//                        if (str.indexOf("c") > -1)
+//                            console.log("ccccccccccc");
+//                        if (str.indexOf("p") > -1)
+//                            console.log("pppppppppppp");
+//                    }
+//                    else {
+//                        sessiondispatcher.send_warningdialog_msg("对不起，您没有选中一键清理的任何扫描项，请确认！");
+//                    }
+//                 }
+//                 else if (btn_flag == "one_key_work") {
+//                      if (str.indexOf("r") > -1 || str.indexOf("h") > -1 || str.indexOf("c") > -1 || str.indexOf("p") > -1) {
+//                          systemdispatcher.clean_the_browser_qt("history");//kobe: need to add other function
+//                      }
+//                     else
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
+//                 }
 
                  //rubbish
 //                 else if (btn_flag == "rubbish") {
@@ -198,7 +199,7 @@ Item {
 
                  //------------------------------------
                  //apt cruft
-                  else if (btn_flag == "apt_scan") {
+                  if (btn_flag == "apt_scan") {
                       if (str.indexOf("a") > -1) {
                           titleBar.state = "AptWork";
                           //display context
@@ -208,6 +209,7 @@ Item {
                           sessiondispatcher.send_warningdialog_msg("对不起，您没有选中apt扫描项，请确认！");
                   }
                   else if (btn_flag == "apt_work") {
+                        console.log(systemdispatcher.get_apt_args());
 //                      if (str.indexOf("a") > -1)
 //                          systemdispatcher.clean_cookies_records_qt("all");
 //                      else
@@ -224,6 +226,7 @@ Item {
                           sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software扫描项，请确认！");
                   }
                   else if (btn_flag == "software_work") {
+                      console.log(systemdispatcher.get_software_args());
 //                      if (str.indexOf("s") > -1)
 //                          systemdispatcher.clean_cookies_records_qt("all");
 //                      else
@@ -265,8 +268,10 @@ Item {
                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies扫描项，请确认！");
                  }
                  else if (btn_flag == "cookies_work") {
-                     if (str.indexOf("c") > -1)
-                         systemdispatcher.clean_cookies_records_qt("all");
+                     if (str.indexOf("c") > -1) {
+//                         systemdispatcher.clean_cookies_records_qt("all");
+                         console.log(systemdispatcher.get_cookies_args());
+                     }
                      else
                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies清理项，请确认！");
                  }
@@ -283,6 +288,8 @@ Item {
                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Unneed扫描项，请确认！");
                  }
                  else if (btn_flag == "package_work") {
+                     console.log("22222222222222");
+                     console.log(systemdispatcher.get_package_args());
 //                     if (str.indexOf("c") > -1)
 //                         systemdispatcher.clean_the_browser_qt("cookies");
 //                     else
@@ -372,7 +379,7 @@ Item {
              name: "UnneedWorkFinish"
              PropertyChanges { target: label; visible: true; text: "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
-             PropertyChanges { target: titleBar; btn_flag: "unneed_scan" }
+             PropertyChanges { target: titleBar; btn_flag: "package_scan" }
          },
          State {
              name: "OneKeyFinish"

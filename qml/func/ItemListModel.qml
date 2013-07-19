@@ -79,42 +79,74 @@ Rectangle {
 
             //'flags' comes from ListModel in BrowserHistory.qml or BrowserCookies.qml
             Component.onCompleted: {
-                if (checkbox.checked) {
-        //            console.log("2222222222222");
-                    if (flags == "clear_rubbish") {
-                        var rubbish_str = sessiondispatcher.get_str();
-                        if (rubbish_str.indexOf("r") < 0)
-                            sessiondispatcher.set_str("r");
-                    }
-                    else if (flags == "clear_apt") {
-                        var apt_str = sessiondispatcher.get_str();
-                        if (apt_str.indexOf("a") < 0)
-                            sessiondispatcher.set_str("a");
-                    }
-                    else if (flags == "clear_software") {
-                        var software_str = sessiondispatcher.get_str();
-                        if (software_str.indexOf("s") < 0)
-                            sessiondispatcher.set_str("s");
-                    }
-                    else if (flags == "clear_history") {
-//                        console.log("aaaaaaaaa");
-                        var history_str = sessiondispatcher.get_str();
-//                        console.log(history_str)
-                        if (history_str.indexOf("h") < 0)
-                            sessiondispatcher.set_str("h");
-//                        console.log('bbbbbbbbbbb');
-                    }
-                    else if (flags == "clear_cookies") {
-                        var cookie_str = sessiondispatcher.get_str();
-                        if (cookie_str.indexOf("c") < 0)
-                            sessiondispatcher.set_str("c");
-                    }
-                    else if (flags == "clear_package") {
-                        var plugin_str = sessiondispatcher.get_str();
-                        if (plugin_str.indexOf("p") < 0)
-                            sessiondispatcher.set_str("p");
-                    }
+                if (flags == "clear_rubbish") {
+                    var rubbish_str = sessiondispatcher.get_str();
+                    if (rubbish_str.indexOf("r") < 0)
+                        sessiondispatcher.set_str("r");
                 }
+                else if (flags == "clear_apt") {
+                    var apt_str = sessiondispatcher.get_str();
+                    if (apt_str.indexOf("a") < 0)
+                        sessiondispatcher.set_str("a");
+                }
+                else if (flags == "clear_software") {
+                    var software_str = sessiondispatcher.get_str();
+                    if (software_str.indexOf("s") < 0)
+                        sessiondispatcher.set_str("s");
+                }
+                else if (flags == "clear_history") {
+                    var history_str = sessiondispatcher.get_str();
+                    if (history_str.indexOf("h") < 0)
+                        sessiondispatcher.set_str("h");
+                }
+                else if (flags == "clear_cookies") {
+                    var cookie_str = sessiondispatcher.get_str();
+                    if (cookie_str.indexOf("c") < 0)
+                        sessiondispatcher.set_str("c");
+                }
+                else if (flags == "clear_package") {
+                    var plugin_str = sessiondispatcher.get_str();
+                    if (plugin_str.indexOf("p") < 0)
+                        sessiondispatcher.set_str("p");
+                }
+
+
+//                if (checkbox.checked) {
+//        //            console.log("2222222222222");
+//                    if (flags == "clear_rubbish") {
+//                        var rubbish_str = sessiondispatcher.get_str();
+//                        if (rubbish_str.indexOf("r") < 0)
+//                            sessiondispatcher.set_str("r");
+//                    }
+//                    else if (flags == "clear_apt") {
+//                        var apt_str = sessiondispatcher.get_str();
+//                        if (apt_str.indexOf("a") < 0)
+//                            sessiondispatcher.set_str("a");
+//                    }
+//                    else if (flags == "clear_software") {
+//                        var software_str = sessiondispatcher.get_str();
+//                        if (software_str.indexOf("s") < 0)
+//                            sessiondispatcher.set_str("s");
+//                    }
+//                    else if (flags == "clear_history") {
+////                        console.log("aaaaaaaaa");
+//                        var history_str = sessiondispatcher.get_str();
+////                        console.log(history_str)
+//                        if (history_str.indexOf("h") < 0)
+//                            sessiondispatcher.set_str("h");
+////                        console.log('bbbbbbbbbbb');
+//                    }
+//                    else if (flags == "clear_cookies") {
+//                        var cookie_str = sessiondispatcher.get_str();
+//                        if (cookie_str.indexOf("c") < 0)
+//                            sessiondispatcher.set_str("c");
+//                    }
+//                    else if (flags == "clear_package") {
+//                        var plugin_str = sessiondispatcher.get_str();
+//                        if (plugin_str.indexOf("p") < 0)
+//                            sessiondispatcher.set_str("p");
+//                    }
+//                }
             }
 
             //母项
@@ -126,80 +158,75 @@ Rectangle {
                 width: parent.width
                 height: parent.itemHeight
                 spacing: 10
-//                anchors {
-//                    fill: parent
-//                    left: parent.left
-//                    leftMargin: 50
+//                CheckBox {
+//                    id: checkbox
+//                    checked: true
+//                    width: 30
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    onCheckedChanged: {
+//                        //kobe: wait for adding function
+//                        if (checkbox.checked) {
+//                            container.check_flag = true;
+//                            console.log(container.check_flag);
+//                            console.log(container.num);
+
+//                            if (flags == "clear_rubbish") {
+////                                clearDelegate.check_flag = "clear_rubbish";
+//                                var rubbish_str = sessiondispatcher.get_str();
+//                                if (rubbish_str.indexOf("r") < 0)
+//                                    sessiondispatcher.set_str("r");
+//                            }
+//                            else if (flags == "clear_history") {
+////                                clearDelegate.check_flag = "clear_history";
+//                                var history_str = sessiondispatcher.get_str();
+//                                if (history_str.indexOf("h") < 0)
+//                                    sessiondispatcher.set_str("h");
+//                            }
+//                            else if (flags == "clear_cookies") {
+////                                clearDelegate.check_flag = "clear_cookies";
+//                                var cook_str = sessiondispatcher.get_str();
+//                                if (cook_str.indexOf("c") < 0)
+//                                    sessiondispatcher.set_str("c");
+//                            }
+//                            else if (flags == "clear_package") {
+////                                clearDelegate.check_flag = "clear_package";
+//                                var plugin_str = sessiondispatcher.get_str();
+//                                if (plugin_str.indexOf("p") < 0)
+//                                    sessiondispatcher.set_str("p");
+//                            }
+//                        }
+//                        else if (!checkbox.checked) {
+
+//                            container.check_flag = false;
+//                            console.log(container.check_flag);
+//                            console.log(container.num);
+////                            clearDelegate.check_flag = "";
+//                            if (flags == "clear_rubbish") {
+//                                var rubbish_str1 = sessiondispatcher.get_str();
+//                                if (rubbish_str1.indexOf("r") > -1) {
+//                                    sessiondispatcher.del_str("r");
+//                                }
+//                            }
+//                            else if (flags == "clear_history") {
+//                                var history_str1 = sessiondispatcher.get_str();
+//                                console.log(history_str1);
+//                                if (history_str1.indexOf("h") > -1) {
+//                                    sessiondispatcher.del_str("h");
+//                                }
+//                            }
+//                            else if (flags == "clear_cookies") {
+//                                var cook_str1 = sessiondispatcher.get_str();
+//                                if (cook_str1.indexOf("c") > -1)
+//                                    sessiondispatcher.del_str("c");
+//                            }
+//                            else if (flags == "clear_package") {
+//                                var plugin_str1 = sessiondispatcher.get_str();
+//                                if (plugin_str1.indexOf("p") > -1)
+//                                    sessiondispatcher.del_str("p");
+//                            }
+//                        }
+//                    }
 //                }
-                /*Common.*/CheckBox {
-                    id: checkbox
-                    checked: true
-                    width: 30
-                    anchors.verticalCenter: parent.verticalCenter
-                    onCheckedChanged: {
-                        //kobe: wait for adding function
-                        if (checkbox.checked) {
-                            container.check_flag = true;
-                            console.log(container.check_flag);
-                            console.log(container.num);
-
-                            if (flags == "clear_rubbish") {
-//                                clearDelegate.check_flag = "clear_rubbish";
-                                var rubbish_str = sessiondispatcher.get_str();
-                                if (rubbish_str.indexOf("r") < 0)
-                                    sessiondispatcher.set_str("r");
-                            }
-                            else if (flags == "clear_history") {
-//                                clearDelegate.check_flag = "clear_history";
-                                var history_str = sessiondispatcher.get_str();
-                                if (history_str.indexOf("h") < 0)
-                                    sessiondispatcher.set_str("h");
-                            }
-                            else if (flags == "clear_cookies") {
-//                                clearDelegate.check_flag = "clear_cookies";
-                                var cook_str = sessiondispatcher.get_str();
-                                if (cook_str.indexOf("c") < 0)
-                                    sessiondispatcher.set_str("c");
-                            }
-                            else if (flags == "clear_package") {
-//                                clearDelegate.check_flag = "clear_package";
-                                var plugin_str = sessiondispatcher.get_str();
-                                if (plugin_str.indexOf("p") < 0)
-                                    sessiondispatcher.set_str("p");
-                            }
-                        }
-                        else if (!checkbox.checked) {
-
-                            container.check_flag = false;
-                            console.log(container.check_flag);
-                            console.log(container.num);
-//                            clearDelegate.check_flag = "";
-                            if (flags == "clear_rubbish") {
-                                var rubbish_str1 = sessiondispatcher.get_str();
-                                if (rubbish_str1.indexOf("r") > -1) {
-                                    sessiondispatcher.del_str("r");
-                                }
-                            }
-                            else if (flags == "clear_history") {
-                                var history_str1 = sessiondispatcher.get_str();
-                                console.log(history_str1);
-                                if (history_str1.indexOf("h") > -1) {
-                                    sessiondispatcher.del_str("h");
-                                }
-                            }
-                            else if (flags == "clear_cookies") {
-                                var cook_str1 = sessiondispatcher.get_str();
-                                if (cook_str1.indexOf("c") > -1)
-                                    sessiondispatcher.del_str("c");
-                            }
-                            else if (flags == "clear_package") {
-                                var plugin_str1 = sessiondispatcher.get_str();
-                                if (plugin_str1.indexOf("p") > -1)
-                                    sessiondispatcher.del_str("p");
-                            }
-                        }
-                    }
-                }
                 Image {
                     id: clearImage
 //                    width: 47; height: 47
@@ -208,7 +235,8 @@ Rectangle {
                     source: picture
                     smooth: true
                     anchors {
-                        left: checkbox.right; leftMargin: 15
+//                        left: checkbox.right; leftMargin: 15
+                        left: parent.left; leftMargin: 15
                         verticalCenter: parent.verticalCenter
                     }
 
@@ -295,6 +323,9 @@ Rectangle {
                             fontSize: container.subItemFontSize
                             fontColor: container.subItemFontColor
                             textIndent: 20
+
+                            btn_flag: container.btn_flag
+
                             onClicked: {/*console.log(number)*/}
                         }
 
@@ -329,7 +360,6 @@ Rectangle {
                 preferredHighlightEnd: preferredHighlightBegin
                 highlightRangeMode: ListView.StrictlyEnforceRange
             }
-
         }//Item
     }//ScrollArea
 }

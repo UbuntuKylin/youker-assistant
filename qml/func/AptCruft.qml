@@ -44,11 +44,13 @@ Item {
             //get data of cookies
             var apt_data = systemdispatcher.scan_apt_cruft_qt();
             root.sub_num = apt_data.length;
+            systemdispatcher.clear_apt_args();
             subModel.clear();
             for (var i=0; i< apt_data.length; i++) {
                 console.log(apt_data[i]);//sina.com.cn<2_2>10
                 var splitlist = apt_data[i].split("<2_2>");
                 subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "字节"});
+                systemdispatcher.set_apt_args(splitlist[0]);
             }
 
             mainModel.clear();

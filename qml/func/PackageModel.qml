@@ -24,6 +24,7 @@ import "common" as Common
 Item {
     id:root
 //    property Dispatcher dis: mydispather
+//    property SystemDispatcher dis: systemdispatcher
     width: parent.width
     height: 435//340
 //    color:"#c3c3c3"
@@ -50,14 +51,17 @@ Item {
             var unneed_data = systemdispatcher.scan_unneed_packages_qt();
 
             root.sub_num = unneed_data.length;
+            systemdispatcher.clear_package_args();
             subModel.clear();
             for (var i=0; i< unneed_data.length; i++) {
-                console.log("unneed........................");
-                console.log(unneed_data[i]);//sina.com.cn<2_2>10
+//                console.log(unneed_data[i]);//linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
                 var splitlist = unneed_data[i].split("<2_2>");
                 subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2] + "字节"});
+                systemdispatcher.set_package_args(splitlist[0]);
             }
-            mainModel.clear();submodel
+            mainModel.clear();
+            console.log("unneed........................");
+            console.log(systemdispatcher.get_package_args());
             mainModel.append({"itemTitle": "清理不再需要的安装包",
                              "picture": "../img/icons/user.png",
                              "detailstr": "不再需要的安装包,让系统更瘦",

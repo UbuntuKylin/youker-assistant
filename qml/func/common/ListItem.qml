@@ -18,6 +18,9 @@ Item {
     property bool selectable: false
     property int textIndent: 0
     property bool checkbox_status: true
+
+    property string btn_flag: "one_key_scan"
+
     signal clicked
 
     width: 360
@@ -38,7 +41,126 @@ Item {
         checked: container.checkbox_status ? true : false
         anchors.verticalCenter: parent.verticalCenter
         onCheckedChanged: {
-//            console.log(checkbox.checked);
+//            if (checkbox.checked) {
+//                var mylist = systemdispatcher.get_package_args();
+//                console.log("ok change............");
+//                var word_flag = "false";
+//                for (var i=0; i<mylist.length; i++) {
+//                    if (mylist[i] == container.text) {
+//                        word_flag = "true";
+//                        break;
+//                    }
+//                }
+//                if (word_flag == "false") {
+//                    console.log("no word_flag");
+//                    systemdispatcher.set_package_args(container.text);
+////                    console.log(systemdispatcher.get_package_args());
+//                }
+//                else
+//                    console.log("have word_flag");
+//            }
+//            else if (!checkbox.checked) {
+//                console.log("no change...........");
+////                console.log(systemdispatcher.get_package_args());
+//                systemdispatcher.del_package_args(container.text);
+////                console.log(container.text);
+////                console.log(systemdispatcher.get_package_args());
+//            }
+
+            if (checkbox.checked) {
+                if (btn_flag == "apt_work") {
+                    var aptlist = systemdispatcher.get_apt_args();
+                    console.log("ok change............");
+                    var word_flag = "false";
+                    for (var i=0; i<aptlist.length; i++) {
+                        if (aptlist[i] == container.text) {
+                            word_flag = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag == "false") {
+                        console.log("no word_flag");
+                        systemdispatcher.set_apt_args(container.text);
+    //                    console.log(systemdispatcher.get_package_args());
+                    }
+                    else
+                        console.log("have word_flag");
+                }
+                else if (btn_flag == "software_work") {
+                    var softwarelist = systemdispatcher.get_software_args();
+                    console.log("ok change............");
+                    var word_flag1 = "false";
+                    for (var j=0; j<softwarelist.length; j++) {
+                        if (softwarelist[j] == container.text) {
+                            word_flag1 = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag1 == "false") {
+                        console.log("no word_flag");
+                        systemdispatcher.set_software_args(container.text);
+    //                    console.log(systemdispatcher.get_package_args());
+                    }
+                    else
+                        console.log("have word_flag");
+                }
+                else if (btn_flag == "cookies_work") {
+                    var cookieslist = systemdispatcher.get_cookies_args();
+                    console.log("ok change............");
+                    var word_flag2 = "false";
+                    for (var k=0; k<cookieslist.length; k++) {
+                        if (cookieslist[k] == container.text) {
+                            word_flag2 = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag2 == "false") {
+                        console.log("no word_flag");
+                        systemdispatcher.set_cookies_args(container.text);
+    //                    console.log(systemdispatcher.get_package_args());
+                    }
+                    else
+                        console.log("have word_flag");
+                }
+                else if (btn_flag == "package_work") {
+                    var mylist = systemdispatcher.get_package_args();
+                    console.log("ok change............");
+                    var word_flag3 = "false";
+                    for (var q=0; q<mylist.length; q++) {
+                        if (mylist[q] == container.text) {
+                            word_flag3 = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag3 == "false") {
+                        console.log("no word_flag");
+                        systemdispatcher.set_package_args(container.text);
+    //                    console.log(systemdispatcher.get_package_args());
+                    }
+                    else
+                        console.log("have word_flag");
+                }
+            }
+            else if (!checkbox.checked) {
+                console.log("no change...........");
+//                console.log(systemdispatcher.get_package_args());
+                if (btn_flag == "apt_work")
+                    systemdispatcher.del_apt_args(container.text);
+                else if (btn_flag == "software_work")
+                    systemdispatcher.del_software_args(container.text);
+                else if (btn_flag == "cookies_work")
+                    systemdispatcher.del_cookies_args(container.text);
+                else if (btn_flag == "package_work")
+                    systemdispatcher.del_package_args(container.text);
+//                console.log(container.text);
+//                console.log(systemdispatcher.get_package_args());
+
+
+            }
+
+
+            //if (btn_flag == "apt_scan") {
+
         }
         visible: itemText.text=="" ? false : true
     }
