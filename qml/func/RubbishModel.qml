@@ -52,7 +52,7 @@ Item {
             for (var i=0; i< apt_data.length; i++) {
                 console.log(apt_data[i]);//sina.com.cn<2_2>10
                 var splitlist = apt_data[i].split("<2_2>");
-                subModel.append({"itemTitle": splitlist[0], "number": splitlist[1] + "字节"});
+                subModel.append({"itemTitle": splitlist[0], "desc": "", "number": splitlist[1] + "字节"});
 //                subModel.append({"itemTitle": cookies_data[i], "number": i});
             }
             mainModel.clear();

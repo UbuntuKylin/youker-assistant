@@ -39,11 +39,12 @@ Rectangle {
 
     property ListModel listmodel: mymodel
     property ListModel submodel: mysubmodel
-    property int num: 0
+    property int num: 0 //number of subitem
     property string btn_text: ""
     property string title: ""
     property string description: ""
     property string btn_flag: ""
+    property bool check_flag: true
 
     ListModel {
         id: mymodel
@@ -85,6 +86,16 @@ Rectangle {
                         if (rubbish_str.indexOf("r") < 0)
                             sessiondispatcher.set_str("r");
                     }
+                    else if (flags == "clear_apt") {
+                        var apt_str = sessiondispatcher.get_str();
+                        if (apt_str.indexOf("a") < 0)
+                            sessiondispatcher.set_str("a");
+                    }
+                    else if (flags == "clear_software") {
+                        var software_str = sessiondispatcher.get_str();
+                        if (software_str.indexOf("s") < 0)
+                            sessiondispatcher.set_str("s");
+                    }
                     else if (flags == "clear_history") {
 //                        console.log("aaaaaaaaa");
                         var history_str = sessiondispatcher.get_str();
@@ -120,13 +131,18 @@ Rectangle {
 //                    left: parent.left
 //                    leftMargin: 50
 //                }
-                Common.CheckBox {
+                /*Common.*/CheckBox {
                     id: checkbox
                     checked: true
+                    width: 30
                     anchors.verticalCenter: parent.verticalCenter
                     onCheckedChanged: {
                         //kobe: wait for adding function
                         if (checkbox.checked) {
+                            container.check_flag = true;
+                            console.log(container.check_flag);
+                            console.log(container.num);
+
                             if (flags == "clear_rubbish") {
 //                                clearDelegate.check_flag = "clear_rubbish";
                                 var rubbish_str = sessiondispatcher.get_str();
@@ -153,6 +169,10 @@ Rectangle {
                             }
                         }
                         else if (!checkbox.checked) {
+
+                            container.check_flag = false;
+                            console.log(container.check_flag);
+                            console.log(container.num);
 //                            clearDelegate.check_flag = "";
                             if (flags == "clear_rubbish") {
                                 var rubbish_str1 = sessiondispatcher.get_str();
@@ -267,14 +287,15 @@ Rectangle {
                             height: subItemsRect.itemHeight
 //                            text: subItemTitle
                             text: itemTitle
-                            description: desc
+                            descript: desc
                             size_num: number
+                            checkbox_status: container.check_flag
                             bgImage: "../../img/icons/list_subitem.png"
                             fontName: container.subItemFontName
                             fontSize: container.subItemFontSize
                             fontColor: container.subItemFontColor
                             textIndent: 20
-                            onClicked: {}
+                            onClicked: {/*console.log(number)*/}
                         }
 
                     }//Repeater

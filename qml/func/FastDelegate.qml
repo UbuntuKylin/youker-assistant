@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import "common" as Common
 import SessionType 0.1
+import QtDesktop 0.1
 Component {
 
     Item {
@@ -53,9 +54,10 @@ Component {
                     left: parent.left
                     leftMargin: 50
                 }
-                Common.CheckBox {
+                /*Common.*/CheckBox {
                     id: checkbox
                     checked: true
+                    width: 30
                     anchors.verticalCenter: parent.verticalCenter
                     onCheckedChanged: {
                         //kobe: wait for adding function

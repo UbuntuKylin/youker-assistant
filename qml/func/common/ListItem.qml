@@ -1,5 +1,5 @@
 import QtQuick 1.1
-
+import QtDesktop 0.1
 Item {
     id: container
 
@@ -8,7 +8,7 @@ Item {
     property color fontColor: "black"
     property bool fontBold: false
     property string text: ""
-    property string description: ""
+    property string descript: ""
     property string size_num: ""
     property string bgImage: '../../img/icons/list_item.png'
 
@@ -17,6 +17,7 @@ Item {
     property bool selected: false
     property bool selectable: false
     property int textIndent: 0
+    property bool checkbox_status: true
     signal clicked
 
     width: 360
@@ -33,9 +34,12 @@ Item {
 
     CheckBox {
         id: checkbox
-        checked: true
+        width: 30
+        checked: container.checkbox_status ? true : false
         anchors.verticalCenter: parent.verticalCenter
-        onCheckedChanged: {}
+        onCheckedChanged: {
+//            console.log(checkbox.checked);
+        }
         visible: itemText.text=="" ? false : true
     }
     Text {
@@ -60,7 +64,7 @@ Item {
     }
 
     Text {
-        text: container.description
+        text: container.descript
         anchors {
             left: itemText.right
             top: parent.top

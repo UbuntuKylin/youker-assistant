@@ -52,12 +52,26 @@ Item {
 //            }
 
 //        }
+//        Tab {
+//            id:mytab
+//            title: qsTr("清理垃圾")
+//            contentMargin: 20
+//            RubbishModel {
+//                id: rubbishitem
+//            }
+//        }
         Tab {
-            id:mytab
-            title: qsTr("清理垃圾")
+            title: qsTr("清理apt缓存")
             contentMargin: 20
-            RubbishModel {
-                id: rubbishitem
+            AptCruft {
+                id: aptitem
+            }
+        }
+        Tab {
+            title: qsTr("清理软件中心缓存")
+            contentMargin: 20
+            SoftwareCruft {
+                id: softwareitem
             }
         }
         Tab {

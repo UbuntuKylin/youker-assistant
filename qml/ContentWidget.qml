@@ -138,6 +138,12 @@ Item {
                         HomePage {dis1: sessiondispatcher; dis2: systemdispatcher}
                     }
                     Common.Page {
+                        id: systemmessage
+                        visible: false
+        //                title: "search by kobe"
+                        SystemMessage {dis1: sessiondispatcher; dis2: systemdispatcher}
+                    }
+                    Common.Page {
                         id: clearrubbish
                         visible: false
         //                title: "clearrubbish by kobe"
@@ -148,12 +154,6 @@ Item {
                         visible: false
         //                title: "softwaremanager by kobe"
                         SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
-                    }
-                    Common.Page {
-                        id: systemmessage
-                        visible: false
-        //                title: "search by kobe"
-                        SystemMessage {dis1: sessiondispatcher; dis2: systemdispatcher}
                     }
                     Common.Page {
                         id: functioncollection

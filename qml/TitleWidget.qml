@@ -119,8 +119,6 @@ Rectangle {
         }
         SysBtn {
             iconName: "title_bar_menu.png"
-//            iconName: "SkinButton.png"
-
             MouseArea {
                 anchors.fill: parent
                 acceptedButtons : Qt.LeftButton//Qt.RightButton

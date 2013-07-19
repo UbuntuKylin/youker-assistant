@@ -177,24 +177,62 @@ Item {
 //                     else
 //                         console.log("nrnrnrnrnrnrnr");
 //                 }
-                 else if (btn_flag == "cruft_scan") {
-                     console.log("dddddd------------");
-                      if (str.indexOf("r") > -1) {
-                          titleBar.state = "CruftWork";
-                          //display context
-                          cruft_signal("CruftWork");
-                      }
-                     else
-                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中垃圾扫描项，请确认！");
-                 }
-                 else if (btn_flag == "cruft_work") {
-//                     console.log("eeeeeee-------------");
-//                      if (str.indexOf("h") > -1)
-////                          dataRequired();
-//                          systemdispatcher.clean_the_browser_qt("history");
+//                 else if (btn_flag == "cruft_scan") {
+//                     console.log("dddddd------------");
+//                      if (str.indexOf("r") > -1) {
+//                          titleBar.state = "CruftWork";
+//                          //display context
+//                          cruft_signal("CruftWork");
+//                      }
 //                     else
-//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中垃圾清理项，请确认！");
-                 }
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中垃圾扫描项，请确认！");
+//                 }
+//                 else if (btn_flag == "cruft_work") {
+////                     console.log("eeeeeee-------------");
+////                      if (str.indexOf("h") > -1)
+//////                          dataRequired();
+////                          systemdispatcher.clean_the_browser_qt("history");
+////                     else
+////                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中垃圾清理项，请确认！");
+//                 }
+
+                 //------------------------------------
+                 //apt cruft
+                  else if (btn_flag == "apt_scan") {
+                      if (str.indexOf("a") > -1) {
+                          titleBar.state = "AptWork";
+                          //display context
+                          apt_signal("AptWork");
+                      }
+                      else
+                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中apt扫描项，请确认！");
+                  }
+                  else if (btn_flag == "apt_work") {
+//                      if (str.indexOf("a") > -1)
+//                          systemdispatcher.clean_cookies_records_qt("all");
+//                      else
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中apt清理项，请确认！");
+                  }
+                 //software cruft
+                  else if (btn_flag == "software_scan") {
+                      if (str.indexOf("s") > -1) {
+                          titleBar.state = "SoftwareWork";
+                          //display context
+                          software_signal("SoftwareWork");
+                      }
+                      else
+                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software扫描项，请确认！");
+                  }
+                  else if (btn_flag == "software_work") {
+//                      if (str.indexOf("s") > -1)
+//                          systemdispatcher.clean_cookies_records_qt("all");
+//                      else
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software清理项，请确认！");
+                  }
+                 //---------------------
+
+
+
 
 
                  //broswer history
@@ -211,8 +249,7 @@ Item {
                  else if (btn_flag == "history_work") {
                      console.log("eeeeeee-------------");
                       if (str.indexOf("h") > -1)
-//                          dataRequired();
-                          systemdispatcher.clean_the_browser_qt("history");
+                          systemdispatcher.clean_history_records_qt();
                      else
                           sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
                  }
@@ -229,18 +266,11 @@ Item {
                  }
                  else if (btn_flag == "cookies_work") {
                      if (str.indexOf("c") > -1)
-                         systemdispatcher.clean_the_browser_qt("cookies");
+                         systemdispatcher.clean_cookies_records_qt("all");
                      else
                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies清理项，请确认！");
                  }
 
-                 //package
-//                 else if (btn_flag == "package") {
-//                     console.log("package");
-//                     pageStack.pop();
-// //                    pageStack.push(pluginlist);
-//                     pageStack.push(Qt.resolvedUrl("../ItemListModel.qml"));
-//                 }
                  else if (btn_flag == "package_scan") {
                      console.log("li11111");
                      if (str.indexOf("p") > -1) {
@@ -265,27 +295,39 @@ Item {
 
 
      states: [
+//         State {
+//             name: "CruftWork"
+//             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" */}
+//             PropertyChanges { target: bitButton; text: "开始清理" }
+//             PropertyChanges { target: titleBar; btn_flag: "cruft_work" }
+//         },
          State {
-             name: "CruftWork"
-             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" }
+             name: "AptWork"
+             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" */}
              PropertyChanges { target: bitButton; text: "开始清理" }
-             PropertyChanges { target: titleBar; btn_flag: "cruft_work" }
+             PropertyChanges { target: titleBar; btn_flag: "apt_work" }
+         },
+         State {
+             name: "SoftwareWork"
+             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" */}
+             PropertyChanges { target: bitButton; text: "开始清理" }
+             PropertyChanges { target: titleBar; btn_flag: "software_work" }
          },
          State {
              name: "HistoryWork"
-             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" }
+             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.scan_history_records_qt() + "条历史记录" }
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "history_work" }
          },
          State {
              name: "CookiesWork"
-             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" }
+             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" */}
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "cookies_work" }
          },
          State {
              name: "UnneedWork"
-             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" }
+             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" */}
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "package_work" }
          },
@@ -296,11 +338,23 @@ Item {
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "one_key_work" }
          },
+//         State {
+//             name: "CruftWorkFinish"
+//             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+//             PropertyChanges { target: bitButton; text: "开始扫描" }
+//             PropertyChanges { target: titleBar; btn_flag: "cruft_scan" }
+//         },
          State {
-             name: "CruftWorkFinish"
+             name: "AptWorkFinish"
              PropertyChanges { target: label; visible: true; text: "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
-             PropertyChanges { target: titleBar; btn_flag: "cruft_scan" }
+             PropertyChanges { target: titleBar; btn_flag: "apt_scan" }
+         },
+         State {
+             name: "SoftwareWorkFinish"
+             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: bitButton; text: "开始扫描" }
+             PropertyChanges { target: titleBar; btn_flag: "software_scan" }
          },
          State {
              name: "HistoryWorkFinish"

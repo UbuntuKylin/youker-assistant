@@ -127,12 +127,12 @@ QString SystemDispatcher::show_file_dialog() {
 //    dialog->show();
 }
 
-QStringList SystemDispatcher::scan_history_records_qt() {
-    QDBusReply<QStringList> reply = systemiface->call("scan_history_records");
+int SystemDispatcher::scan_history_records_qt() {
+    QDBusReply<int> reply = systemiface->call("scan_history_records");
     return reply.value();
 }
-void SystemDispatcher::clean_history_records_qt(QStringList strlist) {
-    QDBusReply<void> reply = systemiface->call("clean_history_records", strlist);
+void SystemDispatcher::clean_history_records_qt() {
+    QDBusReply<void> reply = systemiface->call("clean_history_records");
 }
 QStringList SystemDispatcher::scan_cookies_records_qt() {
     QDBusReply<QStringList> reply = systemiface->call("scan_cookies_records");
@@ -169,6 +169,14 @@ QStringList SystemDispatcher::get_center_data() {
     return apt_center["softwarecenter"].toStringList();
 }
 
+QStringList SystemDispatcher::scan_apt_cruft_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("scan_apt_cruft");
+    return reply.value();
+}
+QStringList SystemDispatcher::scan_softwarecenter_cruft_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("scan_softwarecenter_cruft");
+    return reply.value();
+}
 //------------------------------------------------------
 
 

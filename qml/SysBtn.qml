@@ -22,19 +22,35 @@ Rectangle {
     clip: true
     color: "transparent"
     property string iconName
+//    Image {
+//        id: btnImg
+//        source: "./img/sysButton/" + iconName
+//        x: 0
+//    }
+
+//    MouseArea {
+//        hoverEnabled: true
+//        anchors.fill: parent
+//        onEntered: btnImg.x = 0-parent.width
+//        onPressed: btnImg.x = 0-parent.width*2
+//        //要判断鼠标松开时位置
+//        onReleased: btnImg.x = 0-parent.width*3
+//        onExited: btnImg.x = 0
+//    }
+
     Image {
         id: btnImg
         source: "./img/sysButton/" + iconName
-        x: 0
+        x: 0-parent.width*3
     }
 
     MouseArea {
         hoverEnabled: true
         anchors.fill: parent
-        onEntered: btnImg.x = 0-parent.width
-        onPressed: btnImg.x = 0-parent.width*2
+        onEntered: btnImg.x = 0
+        onPressed: btnImg.x = 0-parent.width
         //要判断鼠标松开时位置
-        onReleased: btnImg.x = 0-parent.width*3
-        onExited: btnImg.x = 0
+        onReleased: btnImg.x = 0-parent.width*2
+        onExited: btnImg.x = 0-parent.width*3
     }
 }

@@ -92,13 +92,13 @@ Rectangle {
         ToolBtn {id: home_tool; iconName: "homepage.png"; text: "homepage"; onSend: toolwidget.state = "Home"}
         Rectangle {id: splitbar1; height: 38; width: 1; color: "#086794" }
         Rectangle {id: splitbar5; height: 38; width: 1; color: "#45a6d4" }
-        ToolBtn {id: clear_tool; iconName: "systemclear.png"; text: "clearrubbish"; onSend: toolwidget.state = "Clear"}
+        ToolBtn {id: message_tool;iconName: "systemmessage.png"; text: "systemmessage"; onSend: toolwidget.state = "Message"}
         Rectangle {id: splitbar2; height: 38; width: 1; color: "#086794" }
         Rectangle {id: splitbar6; height: 38; width: 1; color: "#45a6d4" }
-        ToolBtn {id: beauty_tool;iconName: "systembeauty.png";text: "systemset"; onSend: toolwidget.state = "Beauty"}
+        ToolBtn {id: clear_tool; iconName: "systemclear.png"; text: "clearrubbish"; onSend: toolwidget.state = "Clear"}
         Rectangle {id: splitbar3; height: 38; width: 1; color: "#086794" }
         Rectangle {id: splitbar7; height: 38; width: 1; color: "#45a6d4" }
-        ToolBtn {id: message_tool;iconName: "systemmessage.png"; text: "systemmessage"; onSend: toolwidget.state = "Message"}
+        ToolBtn {id: beauty_tool;iconName: "systembeauty.png";text: "systemset"; onSend: toolwidget.state = "Beauty"}
         Rectangle {id: splitbar4; height: 38; width: 1; color: "#086794" }
         Rectangle {id: splitbar8; height: 38; width: 1; color: "#45a6d4" }
         ToolBtn {id: function_tool;iconName: "functioncollection.png"; text: "functioncollection"; onSend: toolwidget.state = "Function"}
