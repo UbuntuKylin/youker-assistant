@@ -53,12 +53,19 @@ Item {
             root.sub_num = unneed_data.length;
             systemdispatcher.clear_package_args();
             subModel.clear();
+            var num = 0;
             for (var i=0; i< unneed_data.length; i++) {
 //                console.log(unneed_data[i]);//linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
                 var splitlist = unneed_data[i].split("<2_2>");
-                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2] + "字节"});
-                systemdispatcher.set_package_args(splitlist[0]);
+                if (splitlist[0] == "") {
+                    num++;
+                }
+                else {
+                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2] + "字节"});
+                    systemdispatcher.set_package_args(splitlist[0]);
+                }
             }
+            root.sub_num -= num;
             mainModel.clear();
             console.log("unneed........................");
             console.log(systemdispatcher.get_package_args());

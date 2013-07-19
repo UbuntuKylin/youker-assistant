@@ -45,6 +45,17 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     else {
         qDebug() << "get pc_message failed!";
     }
+
+
+
+
+//    qDebug() << "ps111";
+//    QDBusReply<QStringList> reply1 = systemiface->call("scan_apt_cruft");
+//    qDebug() <<  reply1.value();
+//    qDebug() << "ps222";
+//    QDBusReply<QStringList> reply2 = systemiface->call("scan_softwarecenter_cruft");
+//    qDebug() << reply2.value();
+//    qDebug() << "ps333";
 }
 
 
@@ -203,6 +214,8 @@ void SystemDispatcher::clear_apt_args() {
     apt_args.clear();
 }
 QStringList SystemDispatcher::get_apt_args() {
+    qDebug () << "qt-valve";
+    qDebug() << apt_args;
     return apt_args;
 }
 

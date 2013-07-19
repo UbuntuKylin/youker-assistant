@@ -20,7 +20,7 @@ Rectangle {
     width: parent.width
     height: 30//28
     color: "transparent"
-    property string version: "8.6.0.2001"
+    property string version: "0.1"
     property string updateTime: "2012-06-01"
     property string status: "检查更新"
 
@@ -32,8 +32,12 @@ Rectangle {
     Row {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
-        anchors.leftMargin: 5
-        spacing: 15
+        anchors.leftMargin: 10
+        spacing: 5
+        Image {
+            source: "./img/icons/arrowhead.png"
+        }
+
         Text {
             color: "white"
             font.pointSize: 10
@@ -49,17 +53,31 @@ Rectangle {
             font.pointSize: 10
             text: qsTr(status)
         }
+
+    }
+
+    Row {
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        spacing: 5
+        Image {
+            source: "./img/icons/tool-hover.png"
+        }
+        Text {
+            color: "white"
+            font.pointSize: 10
+            text: qsTr("我的工具箱")
+        }
     }
 
     MouseArea {
           id: mouseRegion
-          anchors.fill: parent;
+          anchors.fill: parent
           property variant clickPos: "1,1"
-
           onPressed: {
               clickPos  = Qt.point(mouse.x,mouse.y)
           }
-
           onPositionChanged: {
               var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
               mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x,

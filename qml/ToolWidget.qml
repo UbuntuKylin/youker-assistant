@@ -30,9 +30,6 @@ Rectangle {
     state: "Home"
 //    opacity: 0.3
 
-
-
-
     //-------------------------------start
 //    ListModel {
 //        id: toolModel

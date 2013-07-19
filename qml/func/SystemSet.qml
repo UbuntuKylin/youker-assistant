@@ -25,10 +25,19 @@ Item {
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
 
+
     Rectangle {
         id: setting_widget
         anchors.fill: parent
 //        color: "white"
+
+        //背景
+        Image {
+            source: "../img/skin/bg-left.png"
+            anchors.fill: parent
+        }
+
+
         Item {
             id: views
             width: parent.width

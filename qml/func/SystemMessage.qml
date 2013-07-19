@@ -37,6 +37,12 @@ Rectangle {
              console.log("Error loading component:", component.errorString());
      }
 
+    //背景
+    Image {
+        source: "../img/skin/bg-left.png"
+        anchors.fill: parent
+    }
+
 
     Common.Border {
         id: leftborder
@@ -156,6 +162,160 @@ Rectangle {
 
 
     }
+
+
+    //上下分割条
+    Rectangle {id: splitbar1; y: 120; width: parent.width; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar2; y: 122; width: parent.width; height: 1; color: "#fafcfe" }
+    //-------------------
+
+    //上下分割条
+    Rectangle {id: splitbar3; y: 330; width: parent.width; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar4; y: 332; width: parent.width; height: 1; color: "#fafcfe" }
+    //-------------------
+
+    Column {
+        anchors {
+            fill: parent
+            top: parent.top
+            topMargin: 20
+            left: parent.left
+            leftMargin: 40
+        }
+        spacing: 20
+
+        Text {
+            id: hardwaretitle
+            text: qsTr("硬件信息:")
+            font.bold: true
+            font.pointSize: 14
+            color: "#383838"
+//            font.pointSize: 13
+//            font.pixelSize: 12
+//            anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+        }
+        Column {
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            spacing: 10
+            Text {
+                text: qsTr("CPU:  "+ systemdispatcher.get_value("cpu"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+            Text {
+                text: qsTr("内存:  " + systemdispatcher.get_value("ram"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+        }
+
+
+        Text {
+            id: desktoptitle
+//            anchors { top: lineLayout1.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow1.width }
+            text: qsTr("桌面信息:")
+            font.bold: true
+            font.pointSize: 14
+            color: "#383838"
+        }
+        Column {
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            spacing: 10
+            Text {
+                text: qsTr("主机名:  " + systemdispatcher.get_value("hostname"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+            Text {
+                text: qsTr("平台:  " + systemdispatcher.get_value("platform"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+            Text {
+                text: qsTr("发行版:  " + systemdispatcher.get_value("distribution"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+            Text {
+                text: qsTr("桌面环境:  " + systemdispatcher.get_value("desktopenvironment"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+            Text {
+                text: qsTr("语言版本:  " + systemdispatcher.get_value("language"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+        }
+
+        Text {
+            id: usertitle
+            text: qsTr("用户信息:")
+            font.bold: true
+            font.pointSize: 14
+            color: "#383838"
+//            font.pointSize: 13
+//            font.pixelSize: 12
+//            anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+        }
+        Column {
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            spacing: 10
+            Text {
+                text: qsTr("运行助手服务的当前用户:  "+ systemdispatcher.get_value("currrent_user"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+            Text {
+                text: qsTr("用户主目录:  " + systemdispatcher.get_value("home_path"))
+                font.pointSize: 12
+                color: "#7a7a7a"
+            }
+        }
+
+
+//        Rectangle {
+//            id: lineLayout
+//            Image {
+//                id: refreshArrow
+//                source: "../img/toolWidget/hardware.png"
+//                anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 }
+//                width: 47; height: 47
+//                Behavior on rotation { NumberAnimation { duration: 200 } }
+//            }
+
+//            Column {
+//                anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 + refreshArrow.width + text0.width }
+//                spacing: 10
+
+//            }
+//        }
+
+//        Rectangle {
+//            id: lineLayout1
+//            y: 110
+//            Image {
+//                id: refreshArrow1
+//                anchors { left: parent.left; leftMargin: 45}
+//                width: 47; height: 47
+//                source: "../img/toolWidget/desktop.png"
+//                Behavior on rotation { NumberAnimation { duration: 200 } }
+//            }
+
+//            Column {
+//                anchors { top: lineLayout1.top; topMargin: -20; left: parent.left; leftMargin: 45 + refreshArrow1.width + text1.width }
+//                spacing: 10
+
+//            }
+//        }
+    }
+
+
+
+
     //------------------------------------------------
     //method 2
 //    Loader { id: pageLoader }
@@ -258,87 +418,87 @@ Rectangle {
 
 
 
-    Column {
-        anchors.fill: parent
-        Rectangle {
-            id: lineLayout
-            Image {
-                id: refreshArrow
-                source: "../img/toolWidget/hardware.png"
-                anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 }
-                width: 47; height: 47
-                Behavior on rotation { NumberAnimation { duration: 200 } }
-            }
-            Text {
-                id: text0
-                width: 69
-                text: qsTr("硬件信息:")
-                font.bold: true
-                font.pointSize: 13
-                font.pixelSize: 12
-                anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
-            }
-            Column {
-                anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 + refreshArrow.width + text0.width }
-                spacing: 10
-                Text {
-                    text: qsTr("CPU: "+ systemdispatcher.get_value("cpu"))
-                }
-                Text {
-                    text: qsTr("内存: " + systemdispatcher.get_value("ram"))
-                }
-            }
-        }
+//    Column {
+//        anchors.fill: parent
+//        Rectangle {
+//            id: lineLayout
+//            Image {
+//                id: refreshArrow
+//                source: "../img/toolWidget/hardware.png"
+//                anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 }
+//                width: 47; height: 47
+//                Behavior on rotation { NumberAnimation { duration: 200 } }
+//            }
+//            Text {
+//                id: text0
+//                width: 69
+//                text: qsTr("硬件信息:")
+//                font.bold: true
+//                font.pointSize: 13
+//                font.pixelSize: 12
+//                anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+//            }
+//            Column {
+//                anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 + refreshArrow.width + text0.width }
+//                spacing: 10
+//                Text {
+//                    text: qsTr("CPU: "+ systemdispatcher.get_value("cpu"))
+//                }
+//                Text {
+//                    text: qsTr("内存: " + systemdispatcher.get_value("ram"))
+//                }
+//            }
+//        }
 
-        Rectangle {
-            id: lineLayout1
-            y: 110
-            Image {
-                id: refreshArrow1
-                anchors { left: parent.left; leftMargin: 45}
-                width: 47; height: 47
-                source: "../img/toolWidget/desktop.png"
-                Behavior on rotation { NumberAnimation { duration: 200 } }
-            }
-            Text {
-                id: text1
-                width: 69
-                anchors { top: lineLayout1.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow1.width }
-                text: qsTr("桌面信息:")
-                font.bold: true
-                font.pointSize: 13
-                font.pixelSize: 12
-            }
-            Column {
-                anchors { top: lineLayout1.top; topMargin: -20; left: parent.left; leftMargin: 45 + refreshArrow1.width + text1.width }
-                spacing: 10
-                Text {
-                    text: qsTr("主机名: " + systemdispatcher.get_value("hostname"))
-                }
-                Text {
-                    text: qsTr("平台: " + systemdispatcher.get_value("platform"))
-                }
-                Text {
-                    text: qsTr("发行版: " + systemdispatcher.get_value("distribution"))
-                }
-                Text {
-                    text: qsTr("桌面环境: " + systemdispatcher.get_value("desktopenvironment"))
-                }
-            }
-        }
-    }
+//        Rectangle {
+//            id: lineLayout1
+//            y: 110
+//            Image {
+//                id: refreshArrow1
+//                anchors { left: parent.left; leftMargin: 45}
+//                width: 47; height: 47
+//                source: "../img/toolWidget/desktop.png"
+//                Behavior on rotation { NumberAnimation { duration: 200 } }
+//            }
+//            Text {
+//                id: text1
+//                width: 69
+//                anchors { top: lineLayout1.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow1.width }
+//                text: qsTr("桌面信息:")
+//                font.bold: true
+//                font.pointSize: 13
+//                font.pixelSize: 12
+//            }
+//            Column {
+//                anchors { top: lineLayout1.top; topMargin: -20; left: parent.left; leftMargin: 45 + refreshArrow1.width + text1.width }
+//                spacing: 10
+//                Text {
+//                    text: qsTr("主机名: " + systemdispatcher.get_value("hostname"))
+//                }
+//                Text {
+//                    text: qsTr("平台: " + systemdispatcher.get_value("platform"))
+//                }
+//                Text {
+//                    text: qsTr("发行版: " + systemdispatcher.get_value("distribution"))
+//                }
+//                Text {
+//                    text: qsTr("桌面环境: " + systemdispatcher.get_value("desktopenvironment"))
+//                }
+//            }
+//        }
+//    }
 
 
-    gradient: Gradient{
-           GradientStop{
-               position: 0.0
-               color: "purple"
-           }
-           GradientStop{
-               position: 1.0
-               color: "white"
-           }
-       }
+//    gradient: Gradient{
+//           GradientStop{
+//               position: 0.0
+//               color: "purple"
+//           }
+//           GradientStop{
+//               position: 1.0
+//               color: "white"
+//           }
+//       }
 
 }
 

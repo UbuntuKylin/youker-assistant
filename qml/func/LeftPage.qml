@@ -33,7 +33,7 @@ Rectangle {
         Row {
             id: myrow
             spacing: 10
-            anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+            anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 10 }
             Image {
                 id: refreshArrow
                 source: "../img/toolWidget/hardware.png"
@@ -48,24 +48,39 @@ Rectangle {
                     width: 69
                     text: qsTr("一键清理系统垃圾，有效提高系统运行效率")
                     font.bold: true
-                    font.pointSize: 13
-                    font.pixelSize: 12
+                    font.pointSize: 14
+                    color: "#383838"
+//                    font.pointSize: 13
+//                    font.pixelSize: 12
     //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
                 }
                 Text {
                     id: text1
                     width: 69
-                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
-    //                        font.bold: true
-                    font.pointSize: 13
-                    font.pixelSize: 12
+//                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
+                    text: qsTr("       一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉")
+                    font.pointSize: 10
+                    color: "#7a7a7a"
+//                    font.pointSize: 13
+//                    font.pixelSize: 12
+    //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+                }
+                Text {
+                    id: text2
+                    width: 69
+//                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
+                    text: qsTr("某项内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理.")
+                    font.pointSize: 10
+                    color: "#7a7a7a"
+//                    font.pointSize: 13
+//                    font.pixelSize: 12
     //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
                 }
                 SetBtn {
                     iconName: "onekeyBtn.png"
                     setbtn_flag: "onekey"
                     anchors {
-                        top: text1.bottom; topMargin: 30
+                        top: text2.bottom; topMargin: 30
                         left: parent.left; leftMargin: 80
                     }
                     width: 186
@@ -80,9 +95,12 @@ Rectangle {
             anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 10 }
             Label {
                 id: itemtip
-                text: qsTr("<h1>一键清理项目</h1>")
-                font.family: "楷体"
-                color: "green"
+//                text: qsTr("<h1>一键清理项目</h1>")
+                text: "一键清理项目"
+//                font.family: "楷体"
+                font.bold: true
+                font.pointSize: 14
+                color: "#008000"
     //            anchors { top: refreshArrow.bottom; topMargin: 10; left: parent.left; leftMargin: 5 }
             }
 //            ScrollArea {

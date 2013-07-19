@@ -36,6 +36,7 @@ Item {
 
     property int sub_num: 0
 
+
     signal history_signal(string history_msg);
     onHistory_signal: {
         if (history_msg == "HistoryWork") {

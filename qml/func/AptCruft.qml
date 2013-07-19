@@ -42,17 +42,29 @@ Item {
     onApt_signal: {
         if (apt_msg == "AptWork") {
             //get data of cookies
+            console.log("apt_msg == AptWork");
             var apt_data = systemdispatcher.scan_apt_cruft_qt();
+//            console.log("1");
+//            console.log(apt_data);
             root.sub_num = apt_data.length;
+//            console.log("3");
+//            console.log(root.sub_num);
             systemdispatcher.clear_apt_args();
             subModel.clear();
+            var num = 0;
             for (var i=0; i< apt_data.length; i++) {
+                console.log("111");
                 console.log(apt_data[i]);//sina.com.cn<2_2>10
                 var splitlist = apt_data[i].split("<2_2>");
-                subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "字节"});
-                systemdispatcher.set_apt_args(splitlist[0]);
+                if (splitlist[0] == "") {
+                    num++;
+                }
+                else {
+                    subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "字节"});
+                    systemdispatcher.set_apt_args(splitlist[0]);
+                }
             }
-
+            root.sub_num -= num;
             mainModel.clear();
             mainModel.append({"itemTitle": "清理Apt",
                              "picture": "../img/icons/user.png",

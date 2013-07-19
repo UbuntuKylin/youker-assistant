@@ -48,8 +48,9 @@ Rectangle {
         Text {
             id: btnText
             anchors.horizontalCenter: parent.horizontalCenter
-            color: "green"
-            text: qsTr(name)
+            font.pointSize: 10
+            color: "#383838"
+            text: name
         }
     }
 

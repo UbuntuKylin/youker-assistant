@@ -27,6 +27,10 @@ Item {
 //    property Dispatcher dis: mydispather
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
+
+
+
+
     ListModel {
         id: choices
         ListElement { text: "kobe333" }
@@ -43,6 +47,7 @@ Item {
         width: parent.width
         height: parent.height
         onCurrentChanged: {}
+
 
 //        Tab {
 //            title: qsTr("一键清理")
@@ -61,39 +66,70 @@ Item {
 //            }
 //        }
         Tab {
+
             title: qsTr("清理apt缓存")
             contentMargin: 20
             AptCruft {
                 id: aptitem
             }
+//            //背景
+//            Image {
+//                source: "../img/skin/bg-left.png"
+//                anchors.fill: aptitem
+//            }
+
         }
         Tab {
+
             title: qsTr("清理软件中心缓存")
             contentMargin: 20
             SoftwareCruft {
                 id: softwareitem
             }
+//            //背景
+//            Image {
+//                source: "../img/skin/bg-left.png"
+//                anchors.fill: parent
+//            }
         }
         Tab {
+
             title: qsTr("清理浏览器历史记录")
             contentMargin: 20
             BrowserHistroy {
                 id: historyitem
             }
+//            //背景
+//            Image {
+//                source: "../img/skin/bg-left.png"
+//                anchors.fill: parent
+//            }
         }
         Tab {
+
             title: qsTr("清理浏览器Cookies")
             contentMargin: 20
             BrowserCookies {
                 id: cookiesitem
             }
+//            //背景
+//            Image {
+//                source: "../img/skin/bg-left.png"
+//                anchors.fill: parent
+//            }
         }
         Tab {
+
             title: qsTr("清理不需要到deb包")
             contentMargin: 20
             PackageModel {
                 id: packagemodel
             }
+//            //背景
+//            Image {
+//                source: "../img/skin/bg-left.png"
+//                anchors.fill: parent
+//            }
 
         }
 //        Tab {

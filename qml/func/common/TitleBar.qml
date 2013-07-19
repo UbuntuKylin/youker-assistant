@@ -209,6 +209,7 @@ Item {
                           sessiondispatcher.send_warningdialog_msg("对不起，您没有选中apt扫描项，请确认！");
                   }
                   else if (btn_flag == "apt_work") {
+                      console.log("apt_work---------------");
                         console.log(systemdispatcher.get_apt_args());
 //                      if (str.indexOf("a") > -1)
 //                          systemdispatcher.clean_cookies_records_qt("all");
@@ -226,6 +227,7 @@ Item {
                           sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software扫描项，请确认！");
                   }
                   else if (btn_flag == "software_work") {
+                      console.log("software_work---------------");
                       console.log(systemdispatcher.get_software_args());
 //                      if (str.indexOf("s") > -1)
 //                          systemdispatcher.clean_cookies_records_qt("all");
@@ -269,6 +271,7 @@ Item {
                  }
                  else if (btn_flag == "cookies_work") {
                      if (str.indexOf("c") > -1) {
+                         console.log("cookies_work---------------");
 //                         systemdispatcher.clean_cookies_records_qt("all");
                          console.log(systemdispatcher.get_cookies_args());
                      }
@@ -288,7 +291,8 @@ Item {
                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Unneed扫描项，请确认！");
                  }
                  else if (btn_flag == "package_work") {
-                     console.log("22222222222222");
+                      console.log("package_work---------------");
+//                         systemdispatcher.clean_cookies_records_
                      console.log(systemdispatcher.get_package_args());
 //                     if (str.indexOf("c") > -1)
 //                         systemdispatcher.clean_the_browser_qt("cookies");

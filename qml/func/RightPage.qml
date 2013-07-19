@@ -117,7 +117,8 @@ Rectangle {
         }
     }
     //上下分割条
-    Rectangle {id: splitbar; y: 270; width: parent.width; height: 1; color: "#cccccc" }
+    Rectangle {id: splitbar1; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar2; y: 272; width: parent.width; height: 1; color: "#fafcfe" }
     //-------------------
 
     GridView {
@@ -125,7 +126,7 @@ Rectangle {
         height: parent.height
         width: parent.width
         anchors {
-            top: splitbar.bottom
+            top: splitbar2.bottom
             topMargin: 5
             left: parent.left
             leftMargin: 5
@@ -173,7 +174,8 @@ Rectangle {
         Label {
             id: helplabel
             text: "论坛求助"
-            color: "green"
+            font.pointSize: 12
+            color: "#318d11"
             MouseArea {
                   anchors.fill: helplabel
 
@@ -192,7 +194,8 @@ Rectangle {
         Label {
             id: versionlabel
             text: "新版本特性"
-            color: "green"
+            font.pointSize: 12
+            color: "#318d11"
             MouseArea {
                   anchors.fill: versionlabel
                   hoverEnabled: true

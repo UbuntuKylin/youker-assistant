@@ -435,7 +435,8 @@ Rectangle {
             }
             Item { id: foreground; anchors.fill: parent }
             //左右分割条
-            Rectangle {id: midsplitbar; x: 600; height: screen.height; width: 1; color: "#cccccc" }
+            Rectangle {id: midsplitbar1; x: 600; height: screen.height; width: 1; color: "#b9c5cc" }
+            Rectangle {id: midsplitbar2; x: 602; height: screen.height; width: 1; color: "#fafcfe" }
 
         }//Item:views
 

@@ -50,13 +50,21 @@ Item {
             root.sub_num = cookies_data.length;
             systemdispatcher.clear_cookies_args();
             subModel.clear();
+            var num = 0;
             for (var i=0; i< cookies_data.length; i++) {
                 console.log(cookies_data[i]);//sina.com.cn<2_2>10
                 var splitlist = cookies_data[i].split("<2_2>");
-                subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "个Cookie"});
-                systemdispatcher.set_apt_args(splitlist[0]);
+                if (splitlist[0] == "") {
+                    num++;
+                }
+                else {
+                    subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "个Cookie"});
+                    systemdispatcher.set_apt_args(splitlist[0]);
+                }
+
 //                subModel.append({"itemTitle": cookies_data[i], "number": i});
             }
+            root.sub_num -= num;
 //            console.log("****************************9");
             mainModel.clear();
             mainModel.append({"itemTitle": "清理浏览器Cookies",
