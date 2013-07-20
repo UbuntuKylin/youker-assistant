@@ -59,11 +59,15 @@ Item {
                 }
                 else {
                     subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "个Cookie"});
-                    systemdispatcher.set_apt_args(splitlist[0]);
+                    systemdispatcher.set_cookies_args(splitlist[0]);
                 }
 
 //                subModel.append({"itemTitle": cookies_data[i], "number": i});
             }
+
+            console.log("**********************");
+            console.log(systemdispatcher.get_cookies_args());
+
             root.sub_num -= num;
 //            console.log("****************************9");
             mainModel.clear();

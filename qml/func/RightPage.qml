@@ -35,33 +35,33 @@ Rectangle {
 //            name: "主题"
 //            flag: "theme"
             name: "坏点检测"
-            flag: "checkpoint"
+            flag: "CheckScreen"
         }
         ListElement {
             icon: "../img/icons/iconbeauty.png"
             name: "桌面图标"
-            flag: "desktopicon"
+            flag: "DesktopIcon"
         }
         ListElement {
             icon: "../img/icons/bootanimation.png"
             name: "开机动画"
-            flag: "bootanimation"
+            flag: "BootAnimation"
         }
         ListElement {
             icon: "../img/icons/systemsound.png"
             name: "系统声音"
-            flag: "sound"
+            flag: "SoundEffects"
         }
         ListElement {
             icon: "../img/icons/deepclear.png"
             name: "深度清理"
-            flag: "fonts"
+            flag: "AdvanceSet"
         }
 
         ListElement {
             icon: "../img/icons/systemreduce.png"
             name: "系统瘦身"
-            flag: "unity"
+            flag: "DashTheme"
         }
 
     }
@@ -174,7 +174,7 @@ Rectangle {
         Label {
             id: helplabel
             text: "论坛求助"
-            font.pointSize: 12
+            font.pixelSize: 12
             color: "#318d11"
             MouseArea {
                   anchors.fill: helplabel
@@ -194,7 +194,7 @@ Rectangle {
         Label {
             id: versionlabel
             text: "新版本特性"
-            font.pointSize: 12
+            font.pixelSize: 12
             color: "#318d11"
             MouseArea {
                   anchors.fill: versionlabel

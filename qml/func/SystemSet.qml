@@ -19,187 +19,201 @@ import SessionType 0.1
 import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
-
-
 Item {
     id: screen; width: parent.width; height: 475
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
-
-
     Rectangle {
         id: setting_widget
         anchors.fill: parent
-//        color: "white"
-
         //背景
         Image {
             source: "../img/skin/bg-left.png"
             anchors.fill: parent
         }
+        Item {
+            id: views
+            width: parent.width
+            height: parent.height
 
-        Column {
-            anchors {
-                top: parent.top
-                topMargin: 20
-                left: parent.left
-                leftMargin: 10
+            Image {
+                id: titleimage
+                anchors {
+                    left: parent.left
+                    leftMargin: 2
+                }
+                source: "../img/skin/note-bg.png"
             }
-            spacing: 10
+            Text {
+                anchors {
+                    left: parent.left
+                    leftMargin: 50
+                    top: parent.top
+                    topMargin: titleimage.height/2 - 7
+                }
+                text: "您可以定制属于自己的视觉效果和声音。"
+                font.pixelSize: 12
+                color: "#383838"
+            }
 
-            Row {
+            Column {
+                anchors {
+                    top: titleimage.bottom
+                    topMargin: 40
+                    left: parent.left
+                    leftMargin: 30
+                }
                 spacing: 10
-                Image {
-                    id: personal
-                    source: "../img/icons/themeset.png"
-                }
-                Column {
+
+                Row {
                     spacing: 10
-                    Text {
-                        id: personaltext
-                        text: "个性化"
-                        font.bold: true
-//                        font.pointSize: 12
-                        font.pixelSize: 14
-                        color: "#383838"
-                        anchors.top: personal.top
+                    Image {
+                        id: personal
+                        source: "../img/icons/themeset.png"
                     }
-                    Row {
-                        anchors.bottom: personal.bottom
-                        anchors.bottomMargin: 10
-                        SetWord {wordname: "更改窗口主题"; width: 100}
-                        SetWord {wordname: "更改桌面背景"; width: 100}
-                        SetWord {wordname: "更改桌面图标"; width: 100}
-                        SetWord {wordname: "更改鼠标指针"; width: 100}
-                        SetWord {wordname: "更改声音效果"; width: 100}
-                        SetWord {wordname: "更改开机动画"; width: 100}
-                        SetWord {wordname: "更改屏幕保护程序"; width: 120}
+                    Column {
+                        spacing: 10
+                        Text {
+                            id: personaltext
+                            text: "个性化"
+                            font.bold: true
+    //                        font.pointSize: 12
+                            font.pixelSize: 14
+                            color: "#383838"
+                            anchors.top: personal.top
+                        }
+                        Row {
+                            anchors.bottom: personal.bottom
+                            anchors.bottomMargin: 10
+                            spacing: 5
+                            SetWord {wordname: "更改窗口主题"; width: 80; flag: "WidgetTheme"}
+                            //左右分割条
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+    //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
+                            SetWord {wordname: "更改桌面背景"; width: 80; flag: "DesktopBackground"}
+                            //左右分割条
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+    //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
+                            SetWord {wordname: "更改桌面图标"; width: 80; flag: "DesktopIcon"}
+                            //左右分割条
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+    //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
+                            SetWord {wordname: "更改鼠标指针"; width: 80; flag: "MousePointer"}
+                            //左右分割条
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+    //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
+                            SetWord {wordname: "更改声音效果"; width: 80; flag: "SoundEffects"}
+                            //左右分割条
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+    //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
+                            SetWord {wordname: "更改开机动画"; width: 80; flag: "BootAnimation"}
+                            //左右分割条
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+    //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
+                            SetWord {wordname: "更改屏幕保护程序"; width: 100; flag: "ScreenSaver"}
+                        }
+                    }
+                }
+
+
+                Row {
+                    spacing: 10
+                    Image {
+                        id: unity
+                        source: "../img/icons/themeset.png"
+                    }
+                    Column {
+                        spacing: 10
+                        Text {
+                            id: unitytext
+                            text: "Unity"
+                            font.bold: true
+    //                        font.pointSize: 12
+                            font.pixelSize: 14
+                            color: "#383838"
+                            anchors.top: unity.top
+                        }
+                        Row {
+                            anchors.bottom: unity.bottom
+                            anchors.bottomMargin: 10
+                            spacing: 5
+                            SetWord {wordname: "自定义launcher主题"; width: 120; flag: "LauncherTheme"}
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            SetWord {wordname: "自定义dash主题"; width: 90; flag: "DashTheme"}
+                        }
+                    }
+                }
+
+
+                Row {
+                    spacing: 10
+                    Image {
+                        id: fontimage
+                        source: "../img/icons/themeset.png"
+                    }
+                    Column {
+                        spacing: 10
+                        Text {
+                            id: fonttext
+                            text: "字体"
+                            font.bold: true
+    //                        font.pointSize: 12
+                            font.pixelSize: 14
+                            color: "#383838"
+                            anchors.top: fontimage.top
+                        }
+                        Row {
+                            anchors.bottom: fontimage.bottom
+                            anchors.bottomMargin: 10
+                            spacing: 5
+                            SetWord {wordname: "更改默认字体设置"; width: 110; flag: "DefaultFont"}
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            SetWord {wordname: "更改文档字体设置"; width: 110; flag: "DucumentFont"}
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            SetWord {wordname: "更改窗口标题栏字体设置"; width: 140; flag: "TitlebarFont"}
+                        }
+                    }
+                }
+
+
+                Row {
+                    spacing: 10
+                    Image {
+                        id: sysimage
+                        source: "../img/icons/themeset.png"
+                    }
+                    Column {
+                        spacing: 10
+                        Text {
+                            id: systext
+                            text: "系统选项"
+                            font.bold: true
+    //                        font.pointSize: 12
+                            font.pixelSize: 14
+                            color: "#383838"
+                            anchors.top: sysimage.top
+                        }
+                        Row {
+                            anchors.bottom: sysimage.bottom
+                            anchors.bottomMargin: 10
+                            spacing: 5
+                            SetWord {wordname: " 更改触摸板设置"; width: 100; flag: "TouchpadSet"}
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            SetWord {wordname: "高级选项"; width: 55; flag: "AdvanceSet"}
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            SetWord {wordname: "检测屏幕坏点"; width: 90; flag: "CheckScreen"}
+                        }
                     }
                 }
             }
+            SettingsDetails {
+                id: settigsDetails
+                width: parent.width
+                anchors.left: views.right
+                height: parent.height
+            }
+            Item { id: foreground; anchors.fill: parent }
         }
-
-//        Item {
-//            id: views
-//            width: parent.width
-//            height: parent.height
-//            ListModel {
-//                id: clearModel
-//                ListElement {
-//                    icon: "../img/icons/themeset.png"
-//                    name: "主题"
-//                    flag: "theme"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/systemsound.png"
-//                    name: "声音"
-//                    flag: "sound"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/bootanimation.png"
-//                    name: "字体"
-//                    flag: "fonts"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/systemreduce.png"
-//                    name: "触摸板"
-//                    flag: "touchpad"
-//                }
-////                ListElement {
-////                    icon: "../img/toolWidget/computerclinic.png"
-////                    name: "登录设置"
-////                    flag: "login"
-////                }
-//                ListElement {
-//                    icon: "../img/icons/deepclear.png"
-//                    name: "Unity"
-//                    flag: "unity"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/iconbeauty.png"
-//                    name: "桌面图标"
-//                    flag: "desktopicon"
-//                }
-////                ListElement {
-////                    icon: "../img/toolWidget/optimalacceleration.png"
-////                    name: "壁纸"
-////                    flag: "wallpaper"
-////                }
-//                ListElement {
-//                    icon: "../img/icons/iconbeauty.png"
-//                    name: "窗口"
-//                    flag: "window"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/iconbeauty.png"
-//                    name: "滑动条"
-//                    flag: "scrollbar"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/bootanimation.png"
-//                    name: "开机动画"
-//                    flag: "bootanimation"
-//                }
-//            }
-
-////            Common.Border {
-////                id: leftborder
-//////                width: 2
-//////                height: parent.height
-////            }
-////            Common.Border {
-////                id: roightborder
-//////                width: 2
-//////                height: parent.height
-////                anchors.right: parent.right
-////            }
-
-//            Label {
-//                id: label
-//                text: qsTr("系统美化 >")
-//                height: 30
-//                font.bold: true
-//                font.family: "Ubuntu"
-//                elide: Text.ElideRight
-//                font.pointSize: 20
-//                anchors {
-//                    top: parent.top
-//                    topMargin: 10
-//                    left: parent.left
-//                    leftMargin: 15
-//                }
-//            }
-
-//            GridView {
-//                id: gridView
-//                height: parent.height -label.height
-//                width: parent.width
-//                anchors {
-//                    top: label.bottom
-//                    topMargin: 10
-//                    left: parent.left
-//                    leftMargin: 15
-//                }
-
-//                model: clearModel
-//                delegate: SettingsDelegate {}
-//                cacheBuffer: 1000
-//                //竖列
-////                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
-//                //横列
-//                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
-//                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
-//                focus: true
-//            }
-
-//            SettingsDetails {
-//                id: settigsDetails
-//                width: parent.width
-//                anchors.left: views.right
-//                height: parent.height
-//            }
-//            Item { id: foreground; anchors.fill: parent }
-//        }
 
         //工具栏
         Common.ToolBar {

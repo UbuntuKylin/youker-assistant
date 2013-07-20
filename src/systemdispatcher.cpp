@@ -31,7 +31,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 
     //绑定到底层清理完毕后发送到信号函数clear_browser
 //    QObject::connect(systemiface,SIGNAL(clear_browser(QString)),this,SLOT(handler_clear_rubbish(QString)));
-    QObject::connect(systemiface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
+//    QObject::connect(systemiface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
 //    //error
 //    QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish(QString)));
 //    //begin
@@ -56,18 +56,18 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 
 
 
-    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("pc_message");
+//    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("pc_message");
 
     notify_str = "";
 
-    if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
-        myinfo = value;
-//        qDebug() << myinfo;
-    }
-    else {
-        qDebug() << "get pc_message failed!";
-    }
+//    if (reply.isValid()) {
+//        QMap<QString, QVariant> value = reply.value();
+//        myinfo = value;
+////        qDebug() << myinfo;
+//    }
+//    else {
+//        qDebug() << "get pc_message failed!";
+//    }
 
 
 
@@ -82,11 +82,11 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 }
 
 
-QString SystemDispatcher::get_value(QString key)
-{
-    QVariant tt = myinfo.value(key);
-    return tt.toString();
-}
+//QString SystemDispatcher::get_value(QString key)
+//{
+//    QVariant tt = myinfo.value(key);
+//    return tt.toString();
+//}
 
 int SystemDispatcher::get_add_value()
 {
@@ -106,11 +106,11 @@ void SystemDispatcher::handler_scan_rubbish(QString msg)
 //    emit myStringChanged("Kobe test for fastclear button and dbus communication");
 }
 
-QString SystemDispatcher::show_signal(QString msg) {
-    qDebug() << "*****signal******";
-    qDebug() << msg;
-    return msg;
-}
+//QString SystemDispatcher::show_signal(QString msg) {
+//    qDebug() << "*****signal******";
+//    qDebug() << msg;
+//    return msg;
+//}
 
 void SystemDispatcher::send_btn_msg(QString str)
 {
@@ -216,6 +216,12 @@ QStringList SystemDispatcher::scan_softwarecenter_cruft_qt() {
     return reply.value();
 }
 
+
+
+void SystemDispatcher::clean_by_one_key_qt(QStringList strlist) {
+    QDBusReply<void> reply = systemiface->call("clean_by_one_key", strlist);
+}
+
 //------------------------------------------------------
 
 
@@ -308,6 +314,29 @@ void SystemDispatcher::clear_package_args() {
 }
 QStringList SystemDispatcher::get_package_args() {
     return package_args;
+}
+
+
+
+void SystemDispatcher::set_onekey_args(QString str) {
+    onekey_args.append(str);
+}
+void SystemDispatcher::del_onekey_args(QString str) {
+    QStringList bake;
+    int len = onekey_args.length();
+    for (int i=0; i< len; i++) {
+        if (onekey_args[i] != str)
+            bake.append(onekey_args[i]);
+    }
+    onekey_args.clear();
+    onekey_args = bake;
+//    package_args.replaceInStrings(QString(str), QString(""));
+}
+void SystemDispatcher::clear_onekey_args() {
+    onekey_args.clear();
+}
+QStringList SystemDispatcher::get_onekey_args() {
+    return onekey_args;
 }
 //--------------------
 

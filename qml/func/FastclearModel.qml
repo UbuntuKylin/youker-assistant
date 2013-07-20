@@ -40,10 +40,10 @@ Item {
                     flag: "cookie"
                 }
                 ListElement {
-                    title: "清理插件"
+                    title: "清理package"
                     picture: "../img/icons/pen.png"
                     detailstr: "清理电脑日常使用中下载的插件，提高系统性能"
-                    flag: "plugin"
+                    flag: "package"
                 }
             }
 

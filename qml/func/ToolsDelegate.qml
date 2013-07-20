@@ -48,7 +48,7 @@ Rectangle {
         Text {
             id: btnText
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pointSize: 10
+            font.pixelSize: 12
             color: "#383838"
             text: name
         }
@@ -110,7 +110,8 @@ Rectangle {
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
-            if (flag == "checkpoint")
+            //屏幕坏点检测
+            if (flag == "CheckScreen")
                 sessiondispatcher.send_dialog_msg("modal");
             else
                 iconClicked();

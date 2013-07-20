@@ -22,7 +22,7 @@ import QtDesktop 0.1
 import "../common" as Common
 
 Rectangle {
-    id: touchpadpage
+    id: scrollbarpage
     property bool on: true
     width: parent.width
     height: 475
@@ -30,7 +30,10 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
-    property string touchscrolling_mode: ""
+    property string scrollbars_mode: ""
+
+//    property Dispatcher dis: mydispather
+
     Common.Border {
         id: leftborder
     }
@@ -39,42 +42,36 @@ Rectangle {
         anchors.right: parent.right
     }
 
-    Component.onCompleted: {
-        touchpadpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();//edge-scrolling
-//        console.log("888888888");
-//        console.log(touchpadpage.touchscrolling_mode);
-        if (sessiondispatcher.get_touchpad_enable_qt())
-            touchpadswitcher.switchedOn = true;
-        else
-            touchpadswitcher.switchedOn = false;
 
-        if (sessiondispatcher.get_touchscrolling_use_horizontal_qt())
-            horizontalswitcher.switchedOn = true;
-        else
-            horizontalswitcher.switchedOn = false;
+    Component.onCompleted: {
+        scrollbarpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
+
+//        if (sessiondispatcher.get_menus_have_icons_qt())
+//            menuiconswitcher.switchedOn = true;
+//        else
+//            menuiconswitcher.switchedOn = false;
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
         onButton2Clicked: {
-            if (settigsDetails.setTitle == "touchpad") {
-//                console.log(touchpadlabel.text);
-                if (edge.checked == true) {
+            if (settigsDetails.setTitle == "scrollbar") {
+//                console.log(scrollbarlabel.text);
+                if (overlay.checked == true) {
                     console.log("123");
-                    sessiondispatcher.set_touchscrolling_mode_edge_qt();
+                    sessiondispatcher.set_scrollbars_mode_overlay_qt();
                 }
-                else if (twofinger.checked == true) {
+                else if (legacy.checked == true) {
                     console.log("1234");
-                    sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+                    sessiondispatcher.set_scrollbars_mode_legacy_qt();
                 }
             }
         }
     }
-
     Label {
-        id: touchpad
-        text: qsTr("触摸板设置>")
+        id: scrollbar
+        text: qsTr("滑动条设置>")
         height: 30
         font.bold: true
         font.family: "Ubuntu"
@@ -91,7 +88,9 @@ Rectangle {
     Column {
         spacing: 20
         anchors {
-            top: touchpad.bottom
+//            top: parent.top
+//            topMargin: 20
+            top: scrollbar.bottom
             topMargin: 20
             horizontalCenter: parent.horizontalCenter
         }
@@ -100,89 +99,163 @@ Rectangle {
 
         Row {
             anchors.horizontalCenter: parent.horizontalCenter
-            Label {
-                id: touchpadlabel
-                width: 110
-                text: qsTr("触摸板开关:")
-                font {
-                    family: touchpadpage.fontName
-                    pointSize: touchpadpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: touchpadswitcher
-                width: touchpadlabel.width
-                onSwitched: {
-                    if (touchpadswitcher.switchedOn) {
-                        console.log("触摸板开关on---------------");
-                        sessiondispatcher.set_touchpad_enable_qt(true);
-                    }
-                    else if(!touchpadswitcher.switchedOn) {
-                        console.log("触摸板开关off---------------");
-                        sessiondispatcher.set_touchpad_enable_qt(false);
-                    }
-                }
-            }
-        }
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            Label {
-                id: horizontallabel
-                width: 110
-                text: qsTr("水平:")
-                font {
-                    family: touchpadpage.fontName
-                    pointSize: touchpadpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: horizontalswitcher
-                width: horizontallabel.width
-                onSwitched: {
-                    if (horizontalswitcher.switchedOn) {
-                        console.log("水平on---------------");
-                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
-                    }
-                    else if(!horizontalswitcher.switchedOn) {
-                        console.log("水平off---------------");
-                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
-                    }
-                }
-            }
-        }
-
-
-        Row {
-            anchors {
-                left: parent.left
-                leftMargin: 0
-            }
-            anchors.horizontalCenter: parent.horizontalCenter
+//            Label {
+//                id: scrollbarlabel
+//                width: 110
+//                text: qsTr("滑动条:")
+//                font {
+//                    family: scrollbarpage.fontName
+//                    pointSize: scrollbarpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
             GroupBox {
-                title: qsTr("触摸板滚动模式:")
+                title: qsTr("滑动条:")
                 adjustToContentSize: true
-                ButtonRow {
+                ButtonColumn {
                     exclusive: true//控制是否联动
                     CheckBox {
-                        id:edge
-                        text: "edge模式"
-                        onClicked: console.log(edge.checked)
+                        id:overlay
+                        text: "overlay模式"
+                        onClicked: console.log(overlay.checked)
                     }
                     CheckBox {
-                        id: twofinger
-                        text: "twofinger模式"
-                        onClicked: console.log(twofinger.checked)
+                        id: legacy
+                        text: "legacy模式"
+                        onClicked: console.log(legacy.checked)
                     }
                 }
             }
         }
+
+
 
     }//Column
 
 }
+
+
+//import QtQuick 1.1
+////import RegisterMyType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
+//import QtDesktop 0.1
+//import "../common" as Common
+//import "../common" as Common
+//Rectangle {
+//    id: lancherpage
+//    property bool on: true
+//    width: parent.width
+//    height: 460
+////    property Dispatcher dis: mydispather
+
+//    Common.Border {
+//        id: leftborder
+//    }
+//    Common.Border {
+//        id: roightborder
+//        anchors.right: parent.right
+//    }
+
+//    Component.onCompleted: {
+////        choices.clear();
+////        choices.append({"text": mydispather.get_themes()[0]});
+////        choices.append({"text": mydispather.get_themes()[1]});
+////        choices.append({"text": mydispather.get_themes()[2]});
+////        choices.append({"text": mydispather.get_themes()[3]});
+
+////        streamModel.sync();
+//    }
+
+//    ListModel {
+//        id: choices
+//        ListElement { text: "theme" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
+//    }
+
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onButton2Clicked: {
+////            console.log("111111111111");
+////            console.log(settigsDetails.setTitle);
+//            if (settigsDetails.setTitle == "theme")
+//                console.log(themelabel.text);
+////            console.log("222222222222");
+//        }
+//    }
+
+//    Column {
+//        spacing: 20
+//        anchors.horizontalCenter: parent.horizontalCenter
+
+//        Row {
+//            Label {
+//                id:themelabel
+//                width: 110
+//                text: qsTr("ps1-model")
+//            }
+//            ComboBox {
+//                id: combobox
+//                model: choices;
+//                width: parent.width;
+////                KeyNavigation.tab: t1
+////                KeyNavigation.backtab: button2
+////                onSelectedIndexChanged: console.log(selectedText)
+//            }
+//            Button {
+//                id: button1
+//                text: qsTr("确定")
+//                width: 96
+//                tooltip:"This is an interesting tool tip"
+//                //                KeyNavigation.tab: button2
+//                //                KeyNavigation.backtab: frame.tabBar
+//                onClicked: {
+
+//                }
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel1
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox2
+//                x: 110
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel3
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox4
+//                x: 110
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel5
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox6
+//                x: 110
+//            }
+//        }
+
+
+//    }//Column
+
+//}
+
 
 
 

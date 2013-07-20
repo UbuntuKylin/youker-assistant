@@ -33,7 +33,7 @@ Rectangle {
         Row {
             id: myrow
             spacing: 10
-            anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 10 }
+            anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
             Image {
                 id: refreshArrow
                 source: "../img/toolWidget/hardware.png"
@@ -48,7 +48,7 @@ Rectangle {
                     width: 69
                     text: qsTr("一键清理系统垃圾，有效提高系统运行效率")
                     font.bold: true
-                    font.pointSize: 14
+                    font.pixelSize: 14
                     color: "#383838"
 //                    font.pointSize: 13
 //                    font.pixelSize: 12
@@ -58,8 +58,8 @@ Rectangle {
                     id: text1
                     width: 69
 //                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
-                    text: qsTr("       一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉")
-                    font.pointSize: 10
+                    text: qsTr("       一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉某项")
+                    font.pixelSize: 12
                     color: "#7a7a7a"
 //                    font.pointSize: 13
 //                    font.pixelSize: 12
@@ -69,8 +69,8 @@ Rectangle {
                     id: text2
                     width: 69
 //                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
-                    text: qsTr("某项内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理.")
-                    font.pointSize: 10
+                    text: qsTr("内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理。")
+                    font.pixelSize: 12
                     color: "#7a7a7a"
 //                    font.pointSize: 13
 //                    font.pixelSize: 12
@@ -80,8 +80,8 @@ Rectangle {
                     iconName: "onekeyBtn.png"
                     setbtn_flag: "onekey"
                     anchors {
-                        top: text2.bottom; topMargin: 30
-                        left: parent.left; leftMargin: 80
+                        top: text2.bottom; topMargin: 10
+                        left: parent.left; leftMargin: 100
                     }
                     width: 186
                     height: 45
@@ -92,14 +92,14 @@ Rectangle {
 
 
         Column {
-            anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 10 }
+            anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 20 }
             Label {
                 id: itemtip
 //                text: qsTr("<h1>一键清理项目</h1>")
                 text: "一键清理项目"
 //                font.family: "楷体"
                 font.bold: true
-                font.pointSize: 14
+                font.pixelSize: 14
                 color: "#008000"
     //            anchors { top: refreshArrow.bottom; topMargin: 10; left: parent.left; leftMargin: 5 }
             }
@@ -166,7 +166,7 @@ Rectangle {
                         title: "清理垃圾"
                         picture: "../img/icons/user.png"
                         detailstr: "清理系统垃圾，让系统运行跟流畅"
-                        flag: "rubbish"
+                        flag: "cache"
                     }
                     ListElement {
                         title: "清理历史记录"
@@ -178,13 +178,13 @@ Rectangle {
                         title: "清理Cookies"
                         picture: "../img/icons/at.png"
                         detailstr: "清理使用计算机时留下的Cookies，保护个人隐私"
-                        flag: "cookie"
+                        flag: "cookies"
                     }
                     ListElement {
                         title: "清理不需要到deb包"
                         picture: "../img/icons/pen.png"
                         detailstr: "清理软件安装后不再需要的deb包，提高系统性能"
-                        flag: "plugin"
+                        flag: "unneed"
                     }
                 }
 

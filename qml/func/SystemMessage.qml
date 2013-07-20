@@ -17,16 +17,15 @@
 
 import QtQuick 1.1
 import SessionType 0.1
-import SystemType 0.1
+//import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
 Rectangle {
     id: home
     width: parent.width
     height: 475
-//    property Dispatcher dis: mydispather
-    property SessionDispatcher dis1: sessiondispatcher
-    property SystemDispatcher dis2: systemdispatcher
+    property SessionDispatcher dis: sessiondispatcher
+//    property SystemDispatcher dis2: systemdispatcher
     signal dialogmsg()
 
     function openFile(file) {
@@ -42,7 +41,36 @@ Rectangle {
         source: "../img/skin/bg-left.png"
         anchors.fill: parent
     }
+    //desktop logo
+    Image {
+        source: "../img/toolWidget/ubuntukylin.png"
+        anchors {
+            top: parent.top
+            topMargin: 230
+            right: parent.right
+            rightMargin: 70
+        }
+    }
 
+    Image {
+        id: titleimage
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        source: "../img/skin/note-bg.png"
+    }
+    Text {
+        anchors {
+            left: parent.left
+            leftMargin: 50
+            top: parent.top
+            topMargin: titleimage.height/2 - 7
+        }
+        text: "您可以查看相关信息，随时了解系统情况。"
+        font.pixelSize: 12
+        color: "#383838"
+    }
 
     Common.Border {
         id: leftborder
@@ -82,113 +110,119 @@ Rectangle {
 
 
     //--------------------右边隐藏说明栏---------------------
-    BorderImage {
-        id: sidebar
-        source: "../img/icons/unselect.png"
-//        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        width: show ? 140 : 10
-        height:parent.height
-        Behavior on width { NumberAnimation { easing.type: Easing.OutSine ; duration: 250 } }
-        property bool show: false
-//        border.left: 0;
-//        border.right: 26;
-        border.left: 26;
-        border.right: 0;
-        MouseArea {
-            id:mouseArea
-            anchors.fill: parent
-            onClicked: sidebar.show = !sidebar.show
-        }
-        Column {
-            id: panel1
-            opacity: sidebar.show ? 1 : 0
-            Behavior on opacity { NumberAnimation { easing.type:Easing.InCubic; duration: 600} }
+//    BorderImage {
+//        id: sidebar
+//        source: "../img/icons/unselect.png"
+////        anchors.left: parent.left
+//        anchors.right: parent.right
+//        anchors.top: parent.top
+//        width: show ? 140 : 10
+//        height:parent.height
+//        Behavior on width { NumberAnimation { easing.type: Easing.OutSine ; duration: 250 } }
+//        property bool show: false
+////        border.left: 0;
+////        border.right: 26;
+//        border.left: 26;
+//        border.right: 0;
+//        MouseArea {
+//            id:mouseArea
+//            anchors.fill: parent
+//            onClicked: sidebar.show = !sidebar.show
+//        }
+//        Column {
+//            id: panel1
+//            opacity: sidebar.show ? 1 : 0
+//            Behavior on opacity { NumberAnimation { easing.type:Easing.InCubic; duration: 600} }
 
-            scale: sidebar.show ? 1 : 0
-            Behavior on scale { NumberAnimation { easing.type:Easing.InCubic; duration: 200 } }
-            transformOrigin: Item.Top
+//            scale: sidebar.show ? 1 : 0
+//            Behavior on scale { NumberAnimation { easing.type:Easing.InCubic; duration: 200 } }
+//            transformOrigin: Item.Top
 
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.margins: 12
-            spacing:12
+//            anchors.top: parent.top
+//            anchors.left: parent.left
+//            anchors.right: parent.right
+//            anchors.margins: 12
+//            spacing:12
 
-            Image {
-                width: 47
-                height: 47
-                source: "../img/icons/kysoft.png"
-            }
-            Label {
-                text: "UbuntuKylin Team"
-                width: parent.width - 12
-            }
-            Label {
-                text: qsTr("Youker Assistant")
-                width: parent.width - 12
-            }
-            Label {
-                text: qsTr("第一期工程 20130601")
-                width: parent.width - 12
-            }
-            Button {
-                id: mybtn
-                text: qsTr("测试")
-                onClicked: {
+//            Image {
+//                width: 47
+//                height: 47
+//                source: "../img/icons/kysoft.png"
+//            }
+//            Label {
+//                text: "UbuntuKylin Team"
+//                width: parent.width - 12
+//            }
+//            Label {
+//                text: qsTr("Youker Assistant")
+//                width: parent.width - 12
+//            }
+//            Label {
+//                text: qsTr("第一期工程 20130601")
+//                width: parent.width - 12
+//            }
+//            Button {
+//                id: mybtn
+//                text: qsTr("测试")
+//                onClicked: {
 
-                    //method 1
-//                     var component = Qt.createComponent("MyDialog.qml");
-//                     if (component.status == Component.Ready) {
-////                         var button = component.createObject(home);
-////                         button.color = "red";
-//                         component.createObject(home);
-//                     }
+//                    //method 1
+////                     var component = Qt.createComponent("MyDialog.qml");
+////                     if (component.status == Component.Ready) {
+//////                         var button = component.createObject(home);
+//////                         button.color = "red";
+////                         component.createObject(home);
+////                     }
 
-                    //method 2
-//                    pageLoader.source = "MyDialog.qml"
+//                    //method 2
+////                    pageLoader.source = "MyDialog.qml"
 
-                    //method 3
-//                    mydialog.open();
+//                    //method 3
+////                    mydialog.open();
 
-                    //method 4
-//                    home.openFile("MyDialog.qml");
-//                    sessiondispatcher.send_dialog_msg("modeless");
-                    sessiondispatcher.send_dialog_msg("modal");
-                }
-            }
-        }
+//                    //method 4
+////                    home.openFile("MyDialog.qml");
+////                    sessiondispatcher.send_dialog_msg("modeless");
+//                    sessiondispatcher.send_dialog_msg("modal");
+//                }
+//            }
+//        }
 
 
-    }
+//    }
+
 
 
     //上下分割条
-    Rectangle {id: splitbar1; y: 120; width: parent.width; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar2; y: 122; width: parent.width; height: 1; color: "#fafcfe" }
+    Rectangle {x: 100; y: 90; width: parent.width - 150; height: 1; color: "#b9c5cc" }
+    Rectangle {x: 100; y: 92; width: parent.width - 150; height: 1; color: "#fafcfe" }
     //-------------------
 
     //上下分割条
-    Rectangle {id: splitbar3; y: 330; width: parent.width; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar4; y: 332; width: parent.width; height: 1; color: "#fafcfe" }
+    Rectangle {x: 100; y: 190; width: parent.width - 150; height: 1; color: "#b9c5cc" }
+    Rectangle {x: 100; y: 192; width: parent.width - 150; height: 1; color: "#fafcfe" }
+    //-------------------
+
+    //上下分割条
+    Rectangle {x: 100; y: 370; width: parent.width - 150; height: 1; color: "#b9c5cc" }
+    Rectangle {x: 100; y: 372; width: parent.width - 150; height: 1; color: "#fafcfe" }
     //-------------------
 
     Column {
         anchors {
-            fill: parent
-            top: parent.top
-            topMargin: 20
+//            fill: parent
+            top: titleimage.bottom
+            topMargin: 40
             left: parent.left
-            leftMargin: 40
+            leftMargin: 30
         }
         spacing: 20
 
         Text {
             id: hardwaretitle
-            text: qsTr("硬件信息:")
+            text: qsTr("硬件信息")
             font.bold: true
-            font.pointSize: 14
+            font.pixelSize: 14
             color: "#383838"
 //            font.pointSize: 13
 //            font.pixelSize: 12
@@ -198,15 +232,35 @@ Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: 20
             spacing: 10
-            Text {
-                text: qsTr("CPU:  "+ systemdispatcher.get_value("cpu"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("处理器:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x:120
+                    text: sessiondispatcher.get_value("cpu")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
-            Text {
-                text: qsTr("内存:  " + systemdispatcher.get_value("ram"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("内存:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x: 120
+                    text: sessiondispatcher.get_value("ram")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
         }
 
@@ -214,47 +268,97 @@ Rectangle {
         Text {
             id: desktoptitle
 //            anchors { top: lineLayout1.top; topMargin: 15; left: parent.left; leftMargin: 45 + refreshArrow1.width }
-            text: qsTr("桌面信息:")
+            text: qsTr("桌面信息")
             font.bold: true
-            font.pointSize: 14
+            font.pixelSize: 14
             color: "#383838"
         }
         Column {
             anchors.left: parent.left
             anchors.leftMargin: 20
             spacing: 10
-            Text {
-                text: qsTr("主机名:  " + systemdispatcher.get_value("hostname"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("主机名:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x:120
+                    text: sessiondispatcher.get_value("hostname")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
-            Text {
-                text: qsTr("平台:  " + systemdispatcher.get_value("platform"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("平台:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x: 120
+                    text: sessiondispatcher.get_value("platform")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
-            Text {
-                text: qsTr("发行版:  " + systemdispatcher.get_value("distribution"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("发行版:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x: 120
+                    text: sessiondispatcher.get_value("distribution")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
-            Text {
-                text: qsTr("桌面环境:  " + systemdispatcher.get_value("desktopenvironment"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("桌面环境:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x:120
+                    text: sessiondispatcher.get_value("desktopenvironment")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
-            Text {
-                text: qsTr("语言版本:  " + systemdispatcher.get_value("language"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("语言:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x: 120
+                    text: sessiondispatcher.get_value("language")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
         }
 
         Text {
             id: usertitle
-            text: qsTr("用户信息:")
+            text: qsTr("用户信息")
             font.bold: true
-            font.pointSize: 14
+            font.pixelSize: 14
             color: "#383838"
 //            font.pointSize: 13
 //            font.pixelSize: 12
@@ -264,17 +368,39 @@ Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: 20
             spacing: 10
-            Text {
-                text: qsTr("运行助手服务的当前用户:  "+ systemdispatcher.get_value("currrent_user"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("当前用户:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x:120
+                    text: sessiondispatcher.get_value("currrent_user")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
-            Text {
-                text: qsTr("用户主目录:  " + systemdispatcher.get_value("home_path"))
-                font.pointSize: 12
-                color: "#7a7a7a"
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("根目录:")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 50
+                }
+                Text {
+                    x:120
+                    text: sessiondispatcher.get_value("home_path")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
             }
         }
+
+
 
 
 //        Rectangle {

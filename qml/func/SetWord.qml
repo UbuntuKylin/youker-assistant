@@ -17,21 +17,20 @@
 import QtQuick 1.1
 //import SystemType 0.1
 Rectangle {
-    id: wordset
+    id: scaleMe
     width: 58
     height: 29
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
     property string wordname: ""
-//    property SystemDispatcher dis: systemdispatcher
-//    property string iconName: "onekeyBtn.png"
-//    property string setbtn_flag: "onekey"
+    property string flag: ""
 
-//    Image {
-//        id: toolImg
-////        anchors.horizontalCenter: parent.horizontalCenter
-//        source: "../img/icons/" + iconName
-//    }
+    function iconClicked() {
+        scaleMe.state = "Details";
+        settigsDetails.setTitle = scaleMe.flag;
+//        console.log(settigsDetails.setTitle);
+    }
+
     Text {
         text: wordname
         font.pointSize: 10
@@ -43,24 +42,65 @@ Rectangle {
         anchors.fill: parent
         source: ""
     }
+
+
+    Connections {
+        target: toolBar
+        //按下返回按钮
+        onButton1Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+        //按下确定按钮
+//        onButton2Clicked: {
+//            console.log("111111111111");
+//            console.log(settigsDetails.setTitle);
+//            console.log("222222222222");
+//        }
+    }
+
+    states: [
+        State {
+            name: "Original"; when: seticon.status == Image.Ready
+            PropertyChanges { target: scaleMe; scale: 1 }
+        },
+        State {
+            name: "Details"
+            PropertyChanges { target: scaleMe; scale: 1 }
+            PropertyChanges { target: setting_widget; state: "DetailedView" }//展示细节页面,出现工具栏
+        }
+    ]
+    transitions: [
+        Transition {
+            from: "Original"; to: "Details"
+            ParentAnimation {
+                via: foreground
+                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+            }
+        },
+        Transition {
+            from: "Details"; to: "Original"
+            ParentAnimation {
+                via: foreground
+                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+            }
+        }
+    ]
+
     MouseArea {
         hoverEnabled: true
         anchors.fill: parent
-//        onEntered: {
-////            btnImg.source = "../img/toolWidget/menu_hover.png"
-//            if (menulogo.setbtn_flag == "onekey")
-//                btnImg.source = "../img/icons/onekeyBtn-hover.png"
-//            else if (menulogo.setbtn_flag == "set")
-//                btnImg.source = "../img/icons/set-hover.png"
-//            else if (menulogo.setbtn_flag == "message")
-//                btnImg.source = "../img/icons/message-hover.png"
-//        }
+//        onEntered: btnImg.source = "../img/toolWidget/menu_hover.png"
 //        onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
 //        //要判断松开是鼠标位置
 //        onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
-        onExited: btnImg.source = ""
+//        onExited: btnImg.source = ""
+
+
         onClicked: {
             console.log("wordset clicked....");
+            //屏幕坏点检测
+            if (flag == "CheckScreen")
+                sessiondispatcher.send_dialog_msg("modal");
+            else
+                iconClicked();
 //            if (setbtn_flag == "onekey") {
 //                console.log("onekey clicked....");
 ////                systemdispatcher.scan_by_one_key_qt();

@@ -43,7 +43,8 @@ public:
     Q_INVOKABLE void del_str(QString str);
     Q_INVOKABLE QString get_str();
     QString notify_str;
-
+    QMap<QString, QVariant> myinfo;
+    Q_INVOKABLE QString get_value(QString);
 
     Q_INVOKABLE bool set_launcher(bool);
     Q_INVOKABLE QStringList get_themes();
@@ -144,7 +145,7 @@ public:
 signals:
 
 public slots:
-
+    QString show_signal(QString msg);
 private:
 //    QUIBO *qtui;
 };

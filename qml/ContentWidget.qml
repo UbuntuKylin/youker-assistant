@@ -141,7 +141,7 @@ Item {
                         id: systemmessage
                         visible: false
         //                title: "search by kobe"
-                        SystemMessage {dis1: sessiondispatcher; dis2: systemdispatcher}
+                        SystemMessage {dis: sessiondispatcher/*; dis2: systemdispatcher*/}
                     }
                     Common.Page {
                         id: clearrubbish

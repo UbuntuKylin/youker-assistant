@@ -34,44 +34,25 @@ import "settings" as Settings
              color: "black"; opacity: 0.4
          }
 
-         Settings.Theme {
-             id: themepage
+         Settings.WidgetTheme {
+             id: widgetthemepage
              visible: false
          }
-         Settings.Sound {
-             id: soundpage
+         Settings.DesktopBackground {
+             id: desktopbackgroundpage
              visible: false
          }
-         Settings.Fonts {
-             id: fontspage
-             visible: false
-         }
-         Settings.Touchpad {
-             id: touchpadpage
-             visible: false
-         }
-//         Settings.Login {
-//             id: loginpage
-//             visible: false
-//         }
-         Settings.Unity {
-             id: unitypage
-             visible: false
-         }
-         Settings.Desktopicon {
+         Settings.DesktopIcon {
              id: desktopiconpage
              visible: false
          }
-//         Settings.Wallpaper {
-//             id: wallpaperpage
-//             visible: false
-//         }
-         Settings.Window {
-             id: windowpage
+         Settings.MousePointer {
+             id: mousepointerpage
              visible: false
          }
-         Settings.Scrollbar {
-             id: scrollbarpage
+
+         Settings.SoundEffects {
+             id: soundeffectspage
              visible: false
          }
          Settings.BootAnimation {
@@ -79,160 +60,279 @@ import "settings" as Settings
              visible: false
          }
 
+         Settings.ScreenSaver {
+             id: screensaverpage
+             visible: false
+         }
+         Settings.LauncherTheme {
+             id: launcherthemepage
+             visible: false
+         }
+         Settings.DashTheme {
+             id: dashthemepage
+             visible: false
+         }
+
+         Settings.DefaultFont {
+             id: defaultfontpage
+             visible: false
+         }
+         Settings.DocumentFont {
+             id: documentfontpage
+             visible: false
+         }
+         Settings.TitlebarFont {
+             id: titlebarfontpage
+             visible: false
+         }
+         Settings.TouchpadSet {
+             id: touchpadsetpage
+             visible: false
+         }
+         Settings.AdvanceSet {
+             id: advancesetpage
+             visible: false
+         }
+
          states: [
              State {
-                 name: "Themes"; when: settigsDetails.setTitle == "theme"
-                 PropertyChanges { target: themepage; x: 0; visible: true }
-                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 name: "WidgetTheme"; when: settigsDetails.setTitle == "WidgetTheme"
+                 PropertyChanges { target: widgetthemepage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
-                 name: "Voice"; when: settigsDetails.setTitle == "sound"
-                 PropertyChanges { target: soundpage; x: 0; visible: true }
-                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 name: "DesktopBackground"; when: settigsDetails.setTitle == "DesktopBackground"
+                 PropertyChanges { target: desktopbackgroundpage; x: 0; visible: true }
+                 PropertyChanges { target: widgetthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
-                 name: "Fonts"; when: settigsDetails.setTitle == "fonts"
-                 PropertyChanges { target: fontspage; x: 0; visible: true }
-                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
-             },
-             State {
-                 name: "Talk"; when: settigsDetails.setTitle == "touchpad"
-                 PropertyChanges { target: touchpadpage; x: 0; visible: true }
-                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
-             },
-//             State {
-//                 name: "Login"; when: settigsDetails.setTitle == "login"
-//                 PropertyChanges { target: loginpage; x: 0; visible: true }
-//                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//             },
-             State {
-                 name: "Unity"; when: settigsDetails.setTitle == "unity"
-                 PropertyChanges { target: unitypage; x: 0; visible: true }
-                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
-             },
-             State {
-                 name: "Desktopicon"; when: settigsDetails.setTitle == "desktopicon"
+                 name: "DesktopIcon"; when: settigsDetails.setTitle == "DesktopIcon"
                  PropertyChanges { target: desktopiconpage; x: 0; visible: true }
-                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
-//             State {
-//                 name: "Wallpaperpage"; when: settigsDetails.setTitle == "wallpaper"
-//                 PropertyChanges { target: wallpaperpage; x: 0; visible: true }
-//                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//             },
              State {
-                 name: "Widgetpage"; when: settigsDetails.setTitle == "window"
-                 PropertyChanges { target: windowpage; x: 0; visible: true }
-                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 name: "MousePointer"; when: settigsDetails.setTitle == "MousePointer"
+                 PropertyChanges { target: mousepointerpage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: scrollbarpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
-                 name: "Filespage"; when: settigsDetails.setTitle == "scrollbar"
-                 PropertyChanges { target: scrollbarpage; x: 0; visible: true }
-                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 name: "SoundEffects"; when: settigsDetails.setTitle == "SoundEffects"
+                 PropertyChanges { target: soundeffectspage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: bootanimationpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
-                 name: "Bootpage"; when: settigsDetails.setTitle == "bootanimation"
+                 name: "BootAnimation"; when: settigsDetails.setTitle == "BootAnimation"
                  PropertyChanges { target: bootanimationpage; x: 0; visible: true }
-                 PropertyChanges { target: soundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: fontspage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: touchpadpage; visible:false/*; x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: loginpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: unitypage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: themepage; visible:false/*; x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: windowpage; visible:false/*x: -(parent.width * 1.5)*/ }
-                 PropertyChanges { target: scrollbarpage; visible:false/*x: -(parent.width * 1.5)*/ }
-//                 PropertyChanges { target: wallpaperpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "ScreenSaver"; when: settigsDetails.setTitle == "ScreenSaver"
+                 PropertyChanges { target: screensaverpage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "LauncherTheme"; when: settigsDetails.setTitle == "LauncherTheme"
+                 PropertyChanges { target: launcherthemepage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "DashTheme"; when: settigsDetails.setTitle == "DashTheme"
+                 PropertyChanges { target: dashthemepage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "DefaultFont"; when: settigsDetails.setTitle == "DefaultFont"
+                 PropertyChanges { target: defaultfontpage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "DucumentFont"; when: settigsDetails.setTitle == "DucumentFont"
+                 PropertyChanges { target: documentfontpage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "TitlebarFont"; when: settigsDetails.setTitle == "TitlebarFont"
+                 PropertyChanges { target: titlebarfontpage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "TouchpadSet"; when: settigsDetails.setTitle == "TouchpadSet"
+                 PropertyChanges { target: touchpadsetpage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "AdvanceSet"; when: settigsDetails.setTitle == "AdvanceSet"
+                 PropertyChanges { target: advancesetpage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
              }
-
          ]
 
          transitions: Transition {

@@ -33,7 +33,7 @@ class SystemDispatcher : public QObject
 //    Q_PROPERTY(QString myString READ myString WRITE setmyString NOTIFY myStringChanged)
 public:
     explicit SystemDispatcher(QObject *parent = 0);
-    Q_INVOKABLE QString get_value(QString);
+//    Q_INVOKABLE QString get_value(QString);
     Q_INVOKABLE int get_add_value();
     Q_INVOKABLE void send_btn_msg(QString);
 
@@ -44,6 +44,9 @@ public:
     //开机动画
     Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
     Q_INVOKABLE QString show_file_dialog();
+
+    Q_INVOKABLE void clean_by_one_key_qt(QStringList strlist);
+
     Q_INVOKABLE int scan_history_records_qt();
     Q_INVOKABLE void clean_history_records_qt();
     Q_INVOKABLE QStringList scan_cookies_records_qt();
@@ -75,7 +78,7 @@ public:
     Q_INVOKABLE QStringList search_largest_file(QString path);
 
     //custom_plymouth
-    QMap<QString, QVariant> myinfo;
+//    QMap<QString, QVariant> myinfo;
     QMap<QString, QVariant> apt_center;
     QDBusInterface *systemiface;
     Q_INVOKABLE void set_str(QString str);
@@ -106,6 +109,12 @@ public:
     Q_INVOKABLE void del_package_args(QString str);
     Q_INVOKABLE void clear_package_args();
     Q_INVOKABLE QStringList get_package_args();
+
+    QStringList onekey_args;
+    Q_INVOKABLE void set_onekey_args(QString str);
+    Q_INVOKABLE void del_onekey_args(QString str);
+    Q_INVOKABLE void clear_onekey_args();
+    Q_INVOKABLE QStringList get_onekey_args();
 //-------------
 
 
@@ -125,7 +134,7 @@ signals:
 public slots:
     void handler_clear_rubbish(QString msg);
     void handler_scan_rubbish(QString msg);
-    QString show_signal(QString msg);
+//    QString show_signal(QString msg);
 //    void setmyString(QString aString);
 //    QString myString();
 private:
