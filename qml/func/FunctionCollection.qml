@@ -38,6 +38,27 @@ Item {
 //        streamModel.sync();
     }
 
+
+    Image {
+        id: titleimage
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        source: "../img/skin/note-bg.png"
+    }
+    Text {
+        anchors {
+            left: parent.left
+            leftMargin: 50
+            top: parent.top
+            topMargin: titleimage.height/2 - 7
+        }
+        text: "功能大全正在研发中,敬请期待......"
+        font.pixelSize: 12
+        color: "#383838"
+    }
+
     ListModel {
         id: choices
         ListElement { text: "kobe222" }

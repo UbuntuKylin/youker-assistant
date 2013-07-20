@@ -56,7 +56,7 @@ Rectangle {
 
 
     Component.onCompleted: {
-        console.log("------55555---------");
+//        console.log("------55555---------");
         themepage.cursor_size = themespinbox.value;
         themepage.default_theme = sessiondispatcher.get_theme_qt();
         themepage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();

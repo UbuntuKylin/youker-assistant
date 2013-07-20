@@ -56,7 +56,7 @@ Rectangle {
 
 
     Component.onCompleted: {
-        console.log("------55555---------");
+//        console.log("------55555---------");
         desktopbackgroundpage.cursor_size = themespinbox.value;
         desktopbackgroundpage.default_theme = sessiondispatcher.get_theme_qt();
         desktopbackgroundpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();

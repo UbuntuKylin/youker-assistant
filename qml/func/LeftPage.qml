@@ -155,7 +155,6 @@ Rectangle {
                 id: views
                 width: parent.width ////ListView不会随鼠标上下移动
 //                width:leftbar.width -10 //ListView会随鼠标上下移动
-//                height: parent.height// - titlebar.height
                 height: leftbar.height - refreshArrow.height - itemtip.height - 10*2 - 20 -10
                 anchors.top: itemtip.bottom
                 anchors.topMargin: 30

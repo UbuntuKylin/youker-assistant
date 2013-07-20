@@ -56,7 +56,7 @@ Rectangle {
 
 
     Component.onCompleted: {
-        console.log("------55555---------");
+//        console.log("------55555---------");
         mousepointerpage.cursor_size = themespinbox.value;
         mousepointerpage.default_theme = sessiondispatcher.get_theme_qt();
         mousepointerpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();

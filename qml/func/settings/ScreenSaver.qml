@@ -56,7 +56,7 @@ Rectangle {
 
 
     Component.onCompleted: {
-        console.log("------55555---------");
+//        console.log("------55555---------");
         screensaverpage.cursor_size = themespinbox.value;
         screensaverpage.default_theme = sessiondispatcher.get_theme_qt();
         screensaverpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();

@@ -71,7 +71,8 @@ Component {
                 }
                 /*Common.*/CheckBox {
                     id: checkbox
-                    checked: true
+//                    checked: true
+                    checked: false
                     width: 30
                     anchors.verticalCenter: parent.verticalCenter
                     onCheckedChanged: {

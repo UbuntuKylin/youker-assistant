@@ -95,9 +95,12 @@ Rectangle {
             SetBtn {iconName: "message.png"; setbtn_flag: "message"}
         }
         Column {
+            spacing: 10
             anchors {
-                left: parent.left; leftMargin: 10
+//                left: parent.left; leftMargin: 10
                 top: setrow.bottom
+                topMargin: 10
+                horizontalCenter: parent.horizontalCenter
             }
 //            Label {
 //                id: hareware
@@ -105,14 +108,20 @@ Rectangle {
 //                font.family: "楷体"
 //            }
             Text {
-                text: qsTr("Youker Assistantat")
+                text: "UbuntuKylin Team"
 //                wrapMode: Text.WordWrap
+                font.pointSize: 12
+                color: "#318d11"
             }
             Text {
-                text: qsTr("UbuntuKylin Team")
+                text: "Lv 8"
+                font.pointSize: 12
+                color: "#318d11"
             }
             Text {
-                text: qsTr("第一期工程")
+                text: "经验值领先了88%的用户"
+                font.pointSize: 12
+                color: "#318d11"
             }
         }
     }
@@ -167,6 +176,7 @@ Rectangle {
         spacing: 40
         anchors {
             bottom: parent.bottom
+            bottomMargin: 10
             left: parent.left
             leftMargin: 20
         }

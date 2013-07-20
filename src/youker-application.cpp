@@ -43,9 +43,15 @@ inline bool isRunningInstalled() {
 
 inline QString getAppDirectory() {
     if (isRunningInstalled()) {
-        return QString("/usr/share/youker-assistant/qml/main.qml");
+        qDebug() << "111";
+        qDebug() << QCoreApplication::applicationDirPath();
+        return QString("/usr/share/youker-assistant/qml/");
+//        return QString("/usr/share/youker-assistant/qml/main.qml");//0720
     } else {
-        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");
+        qDebug() << "222";
+//        qDebug() << QCoreApplication::applicationDirPath() + "/../qml/main.qml";
+//        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");//0720
+        return QString(QCoreApplication::applicationDirPath() + "/../qml/");
     }
 }
 
@@ -54,7 +60,11 @@ bool IhuApplication::setup()
     IhuApplication::setApplicationName("Youker Assistant");
 //    QDeclarativeView *view = new QDeclarativeView;
     viewer = new QDeclarativeView;
-    viewer->setSource(QUrl("../qml/main.qml"));
+
+    viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));//0720
+    viewer->setSource(QUrl::fromLocalFile("main.qml"));//0720
+
+//    viewer->setSource(QUrl("../qml/main.qml"));//0720
     viewer->rootContext()->setContextProperty("mainwindow", viewer);
     viewer->setStyleSheet("background:transparent");
     viewer->setAttribute(Qt::WA_TranslucentBackground);

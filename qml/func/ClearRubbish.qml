@@ -38,6 +38,27 @@ Item {
         ListElement { text: "ps" }
         ListElement { text: "baby" }
     }
+
+    Image {
+        id: titleimage
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        source: "../img/skin/note-bg.png"
+    }
+    Text {
+        anchors {
+            left: parent.left
+            leftMargin: 50
+            top: parent.top
+            topMargin: titleimage.height/2 - 7
+        }
+        text: "您可以根据扫描结果,选择性地清理相关内容。"
+        font.pixelSize: 12
+        color: "#383838"
+    }
+
     TabFrame {
         id:frame
         //position decides the tabBar's location ,when is "South", the tabBar on Sourth, and when is "North", the tabBar on North
@@ -45,7 +66,9 @@ Item {
 //        KeyNavigation.tab:button1
 //        KeyNavigation.backtab: button2
         width: parent.width
-        height: parent.height
+//        height: parent.height
+        height: parent.height - titleimage.height
+        anchors.top: titleimage.bottom
         onCurrentChanged: {}
 
 
@@ -68,7 +91,7 @@ Item {
         Tab {
 
             title: qsTr("清理apt缓存")
-            contentMargin: 20
+            contentMargin: 850/5 //20
             AptCruft {
                 id: aptitem
             }
@@ -82,7 +105,7 @@ Item {
         Tab {
 
             title: qsTr("清理软件中心缓存")
-            contentMargin: 20
+            contentMargin: 850/5 //20
             SoftwareCruft {
                 id: softwareitem
             }
@@ -95,7 +118,7 @@ Item {
         Tab {
 
             title: qsTr("清理浏览器历史记录")
-            contentMargin: 20
+            contentMargin: 850/5 //20
             BrowserHistroy {
                 id: historyitem
             }
@@ -108,7 +131,7 @@ Item {
         Tab {
 
             title: qsTr("清理浏览器Cookies")
-            contentMargin: 20
+            contentMargin: 850/5 //20
             BrowserCookies {
                 id: cookiesitem
             }
@@ -121,7 +144,7 @@ Item {
         Tab {
 
             title: qsTr("清理不需要到deb包")
-            contentMargin: 20
+            contentMargin: 850/5 //20
             PackageModel {
                 id: packagemodel
             }
