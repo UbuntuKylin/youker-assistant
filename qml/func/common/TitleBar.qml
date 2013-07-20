@@ -58,7 +58,55 @@ Item {
      Connections
      {
          target: systemdispatcher
+         onFinishScanWork: {
+             console.log("begin onFinishScanWork..............");
+//             if (btn_flag == "one_key_work") {
+//                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "OneKeyFinish";
+//             }
+//             if (btn_flag == "cruft_work") {
+//                 console.log("******Signal handler received  Start******")
+//                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "CruftWorkFinish";
+//                 console.log("******End******");
+//             }
+             if (btn_flag == "apt_scan") {
+                 console.log("******Scan Signal handler received  Start******")
+                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "AptWork";
+                 console.log("******End******");
+             }
+             if (btn_flag == "software_scan") {
+                 console.log("******Scan Signal handler received  Start******")
+                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "SoftwareWork";
+                 console.log("******End******");
+             }
+//             if (btn_flag == "history_work") {
+//                 console.log("******Signal handler received  Start******")
+//                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "HistoryWorkFinish";
+//                 console.log("******End******");
+//             }
+//             else if (btn_flag == "cookies_work") {
+//                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "CookiesWorkFinish";
+//             }
+//             else if (btn_flag == "package_work") {
+//                 console.log("33333333333333");
+//                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "UnneedWorkFinish";
+//             }
+         }
          onFinishCleanWork: {
+             console.log("begin onFinishCleanWork..............");
              if (btn_flag == "one_key_work") {
                  console.log(msg);
                  titleBar.work_result = msg;
@@ -67,22 +115,40 @@ Item {
              if (btn_flag == "cruft_work") {
                  console.log("******Signal handler received  Start******")
                  console.log(msg);
+                 titleBar.work_result = msg;
                  titleBar.state = "CruftWorkFinish";
+                 console.log("******End******");
+             }
+             if (btn_flag == "apt_work") {
+                 console.log("******Clear Signal handler received  Start apt_work******");
+                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "AptWorkFinish";
+                 console.log("******End******");
+             }
+             if (btn_flag == "software_work") {
+                 console.log("******Clear Signal handler received  Start******")
+                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "HistoryWorkFinish";
                  console.log("******End******");
              }
              if (btn_flag == "history_work") {
                  console.log("******Signal handler received  Start******")
                  console.log(msg);
+                 titleBar.work_result = msg;
                  titleBar.state = "HistoryWorkFinish";
                  console.log("******End******");
              }
              else if (btn_flag == "cookies_work") {
                  console.log(msg);
+                 titleBar.work_result = msg;
                  titleBar.state = "CookiesWorkFinish";
              }
              else if (btn_flag == "package_work") {
                  console.log("33333333333333");
                  console.log(msg);
+                 titleBar.work_result = msg;
                  titleBar.state = "UnneedWorkFinish";
              }
          }
@@ -201,7 +267,7 @@ Item {
                  //apt cruft
                   if (btn_flag == "apt_scan") {
                       if (str.indexOf("a") > -1) {
-                          titleBar.state = "AptWork";
+//                          titleBar.state = "AptWork";
                           //display context
                           apt_signal("AptWork");
                       }
@@ -209,8 +275,9 @@ Item {
                           sessiondispatcher.send_warningdialog_msg("对不起，您没有选中apt扫描项，请确认！");
                   }
                   else if (btn_flag == "apt_work") {
-                      console.log("apt_work---------------");
+                        console.log("apt_work---------------");
                         console.log(systemdispatcher.get_apt_args());
+                        systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args());
 //                      if (str.indexOf("a") > -1)
 //                          systemdispatcher.clean_cookies_records_qt("all");
 //                      else
@@ -219,7 +286,7 @@ Item {
                  //software cruft
                   else if (btn_flag == "software_scan") {
                       if (str.indexOf("s") > -1) {
-                          titleBar.state = "SoftwareWork";
+//                          titleBar.state = "SoftwareWork";
                           //display context
                           software_signal("SoftwareWork");
                       }
@@ -229,6 +296,7 @@ Item {
                   else if (btn_flag == "software_work") {
                       console.log("software_work---------------");
                       console.log(systemdispatcher.get_software_args());
+                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args());
 //                      if (str.indexOf("s") > -1)
 //                          systemdispatcher.clean_cookies_records_qt("all");
 //                      else
@@ -357,31 +425,31 @@ Item {
 //         },
          State {
              name: "AptWorkFinish"
-             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: label; visible: true; text: titleBar.work_result + "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
              PropertyChanges { target: titleBar; btn_flag: "apt_scan" }
          },
          State {
              name: "SoftwareWorkFinish"
-             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: label; visible: true; text: titleBar.work_result + "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
              PropertyChanges { target: titleBar; btn_flag: "software_scan" }
          },
          State {
              name: "HistoryWorkFinish"
-             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: label; visible: true; text: titleBar.work_result + "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
              PropertyChanges { target: titleBar; btn_flag: "history_scan" }
          },
          State {
              name: "CookiesWorkFinish"
-             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: label; visible: true; text: titleBar.work_result + "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
              PropertyChanges { target: titleBar; btn_flag: "cookies_scan" }
          },
          State {
              name: "UnneedWorkFinish"
-             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
+             PropertyChanges { target: label; visible: true; text: titleBar.work_result + "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
              PropertyChanges { target: titleBar; btn_flag: "package_scan" }
          },

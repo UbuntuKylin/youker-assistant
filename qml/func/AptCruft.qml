@@ -53,8 +53,8 @@ Item {
             subModel.clear();
             var num = 0;
             for (var i=0; i< apt_data.length; i++) {
-                console.log("111");
-                console.log(apt_data[i]);//sina.com.cn<2_2>10
+//                console.log("111");
+//                console.log(apt_data[i]);//sina.com.cn<2_2>10
                 var splitlist = apt_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;

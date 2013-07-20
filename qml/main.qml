@@ -27,9 +27,10 @@ Rectangle {
         anchors.fill: parent
         source: "./img/skin/bg.png"
     }
-    radius: 2
+    radius: 4
 //    color: "black"
-    opacity: 0.85
+//    opacity: 0.85
+    opacity: 1.0
 
     Column {
         id: layout

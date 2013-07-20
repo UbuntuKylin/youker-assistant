@@ -29,6 +29,7 @@ class SystemDispatcher : public QObject
     Q_OBJECT
     Q_PROPERTY(QNOTIFY myStringChanged)
     Q_PROPERTY(QNOTIFY finishCleanWork)
+    Q_PROPERTY(QNOTIFY finishScanWork)
 //    Q_PROPERTY(QString myString READ myString WRITE setmyString NOTIFY myStringChanged)
 public:
     explicit SystemDispatcher(QObject *parent = 0);
@@ -119,9 +120,11 @@ public:
 signals:
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
+    void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
 
 public slots:
     void handler_clear_rubbish(QString msg);
+    void handler_scan_rubbish(QString msg);
     QString show_signal(QString msg);
 //    void setmyString(QString aString);
 //    QString myString();

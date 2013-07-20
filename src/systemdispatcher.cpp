@@ -30,8 +30,31 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                QDBusConnection::systemBus());
 
     //绑定到底层清理完毕后发送到信号函数clear_browser
-    QObject::connect(systemiface,SIGNAL(clear_browser(QString)),this,SLOT(handler_clear_rubbish(QString)));
+//    QObject::connect(systemiface,SIGNAL(clear_browser(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
+//    //error
+//    QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish(QString)));
+//    //begin
+//    QObject::connect(systemiface,SIGNAL(clean_begin(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    //over
+    QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    QObject::connect(systemiface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
+    //status
+//    QObject::connect(systemiface,SIGNAL(clean_status(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    //no exist
+//    QObject::connect(systemiface,SIGNAL(not_exist(QString)),this,SLOT(handler_clear_rubbish(QString)));
+//    //error
+//    QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clean_error(QString)));
+//    //begin
+//    QObject::connect(systemiface,SIGNAL(clean_begin(QString)),this,SLOT(handler_clean_begin(QString)));
+//    //over
+//    QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clean_complete(QString)));
+//    //status
+//    QObject::connect(systemiface,SIGNAL(clean_status(QString)),this,SLOT(handler_clean_status(QString)));
+//    //no exist
+//    QObject::connect(systemiface,SIGNAL(not_exist(QString)),this,SLOT(handler_not_exist(QString)));
+
+
 
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("pc_message");
 
@@ -77,7 +100,11 @@ void SystemDispatcher::handler_clear_rubbish(QString msg)
     emit finishCleanWork(msg);
 //    emit myStringChanged("Kobe test for fastclear button and dbus communication");
 }
-
+void SystemDispatcher::handler_scan_rubbish(QString msg)
+{
+    emit finishScanWork(msg);
+//    emit myStringChanged("Kobe test for fastclear button and dbus communication");
+}
 
 QString SystemDispatcher::show_signal(QString msg) {
     qDebug() << "*****signal******";

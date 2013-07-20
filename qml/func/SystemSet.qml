@@ -20,6 +20,7 @@ import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
 
+
 Item {
     id: screen; width: parent.width; height: 475
     property SessionDispatcher dis1: sessiondispatcher
@@ -37,128 +38,168 @@ Item {
             anchors.fill: parent
         }
 
+        Column {
+            anchors {
+                top: parent.top
+                topMargin: 20
+                left: parent.left
+                leftMargin: 10
+            }
+            spacing: 10
 
-        Item {
-            id: views
-            width: parent.width
-            height: parent.height
-            ListModel {
-                id: clearModel
-                ListElement {
-                    icon: "../img/icons/themeset.png"
-                    name: "主题"
-                    flag: "theme"
+            Row {
+                spacing: 10
+                Image {
+                    id: personal
+                    source: "../img/icons/themeset.png"
                 }
-                ListElement {
-                    icon: "../img/icons/systemsound.png"
-                    name: "声音"
-                    flag: "sound"
-                }
-                ListElement {
-                    icon: "../img/icons/bootanimation.png"
-                    name: "字体"
-                    flag: "fonts"
-                }
-                ListElement {
-                    icon: "../img/icons/systemreduce.png"
-                    name: "触摸板"
-                    flag: "touchpad"
-                }
-//                ListElement {
-//                    icon: "../img/toolWidget/computerclinic.png"
-//                    name: "登录设置"
-//                    flag: "login"
-//                }
-                ListElement {
-                    icon: "../img/icons/deepclear.png"
-                    name: "Unity"
-                    flag: "unity"
-                }
-                ListElement {
-                    icon: "../img/icons/iconbeauty.png"
-                    name: "桌面图标"
-                    flag: "desktopicon"
-                }
-//                ListElement {
-//                    icon: "../img/toolWidget/optimalacceleration.png"
-//                    name: "壁纸"
-//                    flag: "wallpaper"
-//                }
-                ListElement {
-                    icon: "../img/icons/iconbeauty.png"
-                    name: "窗口"
-                    flag: "window"
-                }
-                ListElement {
-                    icon: "../img/icons/iconbeauty.png"
-                    name: "滑动条"
-                    flag: "scrollbar"
-                }
-                ListElement {
-                    icon: "../img/icons/bootanimation.png"
-                    name: "开机动画"
-                    flag: "bootanimation"
+                Column {
+                    spacing: 10
+                    Text {
+                        id: personaltext
+                        text: "个性化"
+                        font.bold: true
+//                        font.pointSize: 12
+                        font.pixelSize: 14
+                        color: "#383838"
+                        anchors.top: personal.top
+                    }
+                    Row {
+                        anchors.bottom: personal.bottom
+                        anchors.bottomMargin: 10
+                        SetWord {wordname: "更改窗口主题"; width: 100}
+                        SetWord {wordname: "更改桌面背景"; width: 100}
+                        SetWord {wordname: "更改桌面图标"; width: 100}
+                        SetWord {wordname: "更改鼠标指针"; width: 100}
+                        SetWord {wordname: "更改声音效果"; width: 100}
+                        SetWord {wordname: "更改开机动画"; width: 100}
+                        SetWord {wordname: "更改屏幕保护程序"; width: 120}
+                    }
                 }
             }
-
-//            Common.Border {
-//                id: leftborder
-////                width: 2
-////                height: parent.height
-//            }
-//            Common.Border {
-//                id: roightborder
-////                width: 2
-////                height: parent.height
-//                anchors.right: parent.right
-//            }
-
-            Label {
-                id: label
-                text: qsTr("系统美化 >")
-                height: 30
-                font.bold: true
-                font.family: "Ubuntu"
-                elide: Text.ElideRight
-                font.pointSize: 20
-                anchors {
-                    top: parent.top
-                    topMargin: 10
-                    left: parent.left
-                    leftMargin: 15
-                }
-            }
-
-            GridView {
-                id: gridView
-                height: parent.height -label.height
-                width: parent.width
-                anchors {
-                    top: label.bottom
-                    topMargin: 10
-                    left: parent.left
-                    leftMargin: 15
-                }
-
-                model: clearModel
-                delegate: SettingsDelegate {}
-                cacheBuffer: 1000
-                //竖列
-//                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
-                //横列
-                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
-                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
-                focus: true
-            }
-
-            SettingsDetails {
-                id: settigsDetails
-                width: parent.width
-                anchors.left: views.right
-                height: parent.height
-            }
-            Item { id: foreground; anchors.fill: parent }
         }
+
+//        Item {
+//            id: views
+//            width: parent.width
+//            height: parent.height
+//            ListModel {
+//                id: clearModel
+//                ListElement {
+//                    icon: "../img/icons/themeset.png"
+//                    name: "主题"
+//                    flag: "theme"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/systemsound.png"
+//                    name: "声音"
+//                    flag: "sound"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/bootanimation.png"
+//                    name: "字体"
+//                    flag: "fonts"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/systemreduce.png"
+//                    name: "触摸板"
+//                    flag: "touchpad"
+//                }
+////                ListElement {
+////                    icon: "../img/toolWidget/computerclinic.png"
+////                    name: "登录设置"
+////                    flag: "login"
+////                }
+//                ListElement {
+//                    icon: "../img/icons/deepclear.png"
+//                    name: "Unity"
+//                    flag: "unity"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/iconbeauty.png"
+//                    name: "桌面图标"
+//                    flag: "desktopicon"
+//                }
+////                ListElement {
+////                    icon: "../img/toolWidget/optimalacceleration.png"
+////                    name: "壁纸"
+////                    flag: "wallpaper"
+////                }
+//                ListElement {
+//                    icon: "../img/icons/iconbeauty.png"
+//                    name: "窗口"
+//                    flag: "window"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/iconbeauty.png"
+//                    name: "滑动条"
+//                    flag: "scrollbar"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/bootanimation.png"
+//                    name: "开机动画"
+//                    flag: "bootanimation"
+//                }
+//            }
+
+////            Common.Border {
+////                id: leftborder
+//////                width: 2
+//////                height: parent.height
+////            }
+////            Common.Border {
+////                id: roightborder
+//////                width: 2
+//////                height: parent.height
+////                anchors.right: parent.right
+////            }
+
+//            Label {
+//                id: label
+//                text: qsTr("系统美化 >")
+//                height: 30
+//                font.bold: true
+//                font.family: "Ubuntu"
+//                elide: Text.ElideRight
+//                font.pointSize: 20
+//                anchors {
+//                    top: parent.top
+//                    topMargin: 10
+//                    left: parent.left
+//                    leftMargin: 15
+//                }
+//            }
+
+//            GridView {
+//                id: gridView
+//                height: parent.height -label.height
+//                width: parent.width
+//                anchors {
+//                    top: label.bottom
+//                    topMargin: 10
+//                    left: parent.left
+//                    leftMargin: 15
+//                }
+
+//                model: clearModel
+//                delegate: SettingsDelegate {}
+//                cacheBuffer: 1000
+//                //竖列
+////                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
+//                //横列
+//                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
+//                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+//                focus: true
+//            }
+
+//            SettingsDetails {
+//                id: settigsDetails
+//                width: parent.width
+//                anchors.left: views.right
+//                height: parent.height
+//            }
+//            Item { id: foreground; anchors.fill: parent }
+//        }
 
         //工具栏
         Common.ToolBar {
@@ -182,6 +223,174 @@ Item {
         }
     }
 }
+
+
+
+
+
+
+//Item {
+//    id: screen; width: parent.width; height: 475
+//    property SessionDispatcher dis1: sessiondispatcher
+//    property SystemDispatcher dis2: systemdispatcher
+
+
+//    Rectangle {
+//        id: setting_widget
+//        anchors.fill: parent
+////        color: "white"
+
+//        //背景
+//        Image {
+//            source: "../img/skin/bg-left.png"
+//            anchors.fill: parent
+//        }
+
+
+//        Item {
+//            id: views
+//            width: parent.width
+//            height: parent.height
+//            ListModel {
+//                id: clearModel
+//                ListElement {
+//                    icon: "../img/icons/themeset.png"
+//                    name: "主题"
+//                    flag: "theme"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/systemsound.png"
+//                    name: "声音"
+//                    flag: "sound"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/bootanimation.png"
+//                    name: "字体"
+//                    flag: "fonts"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/systemreduce.png"
+//                    name: "触摸板"
+//                    flag: "touchpad"
+//                }
+////                ListElement {
+////                    icon: "../img/toolWidget/computerclinic.png"
+////                    name: "登录设置"
+////                    flag: "login"
+////                }
+//                ListElement {
+//                    icon: "../img/icons/deepclear.png"
+//                    name: "Unity"
+//                    flag: "unity"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/iconbeauty.png"
+//                    name: "桌面图标"
+//                    flag: "desktopicon"
+//                }
+////                ListElement {
+////                    icon: "../img/toolWidget/optimalacceleration.png"
+////                    name: "壁纸"
+////                    flag: "wallpaper"
+////                }
+//                ListElement {
+//                    icon: "../img/icons/iconbeauty.png"
+//                    name: "窗口"
+//                    flag: "window"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/iconbeauty.png"
+//                    name: "滑动条"
+//                    flag: "scrollbar"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/bootanimation.png"
+//                    name: "开机动画"
+//                    flag: "bootanimation"
+//                }
+//            }
+
+////            Common.Border {
+////                id: leftborder
+//////                width: 2
+//////                height: parent.height
+////            }
+////            Common.Border {
+////                id: roightborder
+//////                width: 2
+//////                height: parent.height
+////                anchors.right: parent.right
+////            }
+
+//            Label {
+//                id: label
+//                text: qsTr("系统美化 >")
+//                height: 30
+//                font.bold: true
+//                font.family: "Ubuntu"
+//                elide: Text.ElideRight
+//                font.pointSize: 20
+//                anchors {
+//                    top: parent.top
+//                    topMargin: 10
+//                    left: parent.left
+//                    leftMargin: 15
+//                }
+//            }
+
+//            GridView {
+//                id: gridView
+//                height: parent.height -label.height
+//                width: parent.width
+//                anchors {
+//                    top: label.bottom
+//                    topMargin: 10
+//                    left: parent.left
+//                    leftMargin: 15
+//                }
+
+//                model: clearModel
+//                delegate: SettingsDelegate {}
+//                cacheBuffer: 1000
+//                //竖列
+////                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
+//                //横列
+//                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
+//                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+//                focus: true
+//            }
+
+//            SettingsDetails {
+//                id: settigsDetails
+//                width: parent.width
+//                anchors.left: views.right
+//                height: parent.height
+//            }
+//            Item { id: foreground; anchors.fill: parent }
+//        }
+
+//        //工具栏
+//        Common.ToolBar {
+//            id: toolBar
+//            visible: false
+//            height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+//            onButton1Clicked: {}
+//            onButton2Clicked: {}
+//        }
+
+//        states: State {
+//            name: "DetailedView"
+//            PropertyChanges { target: views; x: -parent.width }
+//            PropertyChanges { target: toolBar; visible: true }
+//        }
+
+//        transitions: Transition {
+//            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
+//        }
+//    }
+//}
 
 
 
