@@ -34,12 +34,17 @@ Rectangle {
             id: myrow
             spacing: 10
             anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
-            Image {
+//            Image {
+//                id: refreshArrow
+//                source: "../img/toolWidget/clear-logo.gif"
+////                width: 120; height: 120
+//                Behavior on rotation { NumberAnimation { duration: 200 } }
+//            }
+            AnimatedImage {
                 id: refreshArrow
-                source: "../img/toolWidget/ubuntukylin.png"
-//                width: 120; height: 120
-                Behavior on rotation { NumberAnimation { duration: 200 } }
+                source: "../img/toolWidget/clear-logo.gif"
             }
+
             Column {
                 spacing: 10
                 id: mycolumn
@@ -163,26 +168,26 @@ Rectangle {
                     id: clearModel
                     ListElement {
                         title: "清理垃圾"
-                        picture: "../img/icons/user.png"
-                        detailstr: "清理系统垃圾，让系统运行跟流畅"
+                        picture: "../img/toolWidget/brush.png"
+                        detailstr: "清理系统中的垃圾文件，释放磁盘空间"
                         flag: "cache"
                     }
                     ListElement {
                         title: "清理历史记录"
-                        picture: "../img/icons/at.png"
-                        detailstr: "清理使用计算机时留下的历史记录，保护个人隐私"
+                        picture: "../img/toolWidget/history.png"
+                        detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
                         flag: "history"
                     }
                     ListElement {
                         title: "清理Cookies"
-                        picture: "../img/icons/at.png"
-                        detailstr: "清理使用计算机时留下的Cookies，保护个人隐私"
+                        picture: "../img/toolWidget/cookies.png"
+                        detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
                         flag: "cookies"
                     }
                     ListElement {
-                        title: "清理不需要到deb包"
-                        picture: "../img/icons/pen.png"
-                        detailstr: "清理软件安装后不再需要的deb包，提高系统性能"
+                        title: "卸载不必要的安装程序"
+                        picture: "../img/toolWidget/deb.png"
+                        detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
                         flag: "unneed"
                     }
                 }

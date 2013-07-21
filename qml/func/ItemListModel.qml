@@ -306,7 +306,8 @@ Rectangle {
                             descript: desc
                             size_num: number
                             checkbox_status: container.check_flag
-                            bgImage: "../../img/icons/list_subitem.png"
+//                            bgImage: "../../img/icons/list_subitem.png"
+                            bgImage: ""
                             fontName: container.subItemFontName
                             fontSize: container.subItemFontSize
                             fontColor: container.subItemFontColor

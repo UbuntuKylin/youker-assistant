@@ -229,7 +229,7 @@ Component {
                 }
                 Image {
                     id: clearImage
-                    width: 47; height: 47
+                    width: 40; height: 42
                     source: picture
                     anchors {
                         left: checkbox.right; leftMargin: 15
@@ -246,13 +246,13 @@ Component {
                     }
                     Text {
                         text: title
-                        font.pointSize: 11
-                        color: "black"
+                        font.bold: true
+                        font.pixelSize: 14
                     }
                     Text {
                         text: detailstr
-                        font.pointSize: 9
-                        color: "gray"
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
                     }
                 }
             }

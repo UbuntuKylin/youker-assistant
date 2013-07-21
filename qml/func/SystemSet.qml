@@ -51,7 +51,7 @@ Item {
                     top: parent.top
                     topMargin: titleimage.height/2 - 7
                 }
-                text: "您可以定制属于自己的视觉效果和声音。"
+                text: "您可以定制属于自己的视觉效果和声音。(友情提示：系统美化的各个分页正在设计中，功能也在测试和完善中...)"
                 font.pixelSize: 12
                 color: "#383838"
             }

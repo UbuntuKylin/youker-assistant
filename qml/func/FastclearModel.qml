@@ -2,70 +2,289 @@ import QtQuick 1.1
 //import SessionType 0.1
 import SystemType 0.1
 import QtDesktop 0.1
-
 import "common" as Common
-Item {
-    id: screen; width: parent.width; height: 435
-//    frame:false
-    property SystemDispatcher dis: systemdispatcher
-    property bool inListView : false
+Rectangle {
+    id: leftbar
+//    width: 650; height: 435
+    width: parent.width
+    height: 435
 
-    Rectangle {
-        id: background
+    //背景
+    Image {
+        source: "../img/skin/bg-left.png"
         anchors.fill: parent
-//        color: "white"
-        Item {
-            id: views
-            width: parent.width
-            height: parent.height - titlebar.height
-
-            ListModel {
-                id: clearModel
-                ListElement {
-                    title: "清理垃圾"
-                    picture: "../img/icons/user.png"
-                    detailstr: "清理系统垃圾，让系统运行跟流畅"
-                    flag: "rubbish"
-                }
-                ListElement {
-                    title: "清理历史记录"
-                    picture: "../img/icons/at.png"
-                    detailstr: "清理使用计算机时留下的历史记录，保护个人隐私"
-                    flag: "history"
-                }
-                ListElement {
-                    title: "清理Cookies"
-                    picture: "../img/icons/at.png"
-                    detailstr: "清理使用计算机时留下的Cookies，保护个人隐私"
-                    flag: "cookie"
-                }
-                ListElement {
-                    title: "清理package"
-                    picture: "../img/icons/pen.png"
-                    detailstr: "清理电脑日常使用中下载的插件，提高系统性能"
-                    flag: "package"
-                }
-            }
-
-            ListView {
-                id: listView
-                height: parent.height - titlebar.height
-                width: parent.width
-                anchors.top: parent.top
-                anchors.topMargin: titlebar.height + 45
-                model: clearModel
-                delegate: FastDelegate {}
-                cacheBuffer: 1000
-            }
-        }
-
-        //垃圾清理自定义标题栏
-        Common.TitleBar {
-            id: titlebar; width: parent.width; height: 45; opacity: 0.9
-            btn_flag: "one_key_scan"
-        }
     }
-}
+
+    //上下分割条
+    Rectangle {y: 80; width: 650; height: 1; color: "#b9c5cc" }
+    Rectangle {y: 82; width: 650; height: 1; color: "#fafcfe" }
+
+    Rectangle {y: 140; width: 650; height: 1; color: "#b9c5cc" }
+    Rectangle {y: 142; width: 650; height: 1; color: "#fafcfe" }
+
+    Rectangle {y: 210; width: 650; height: 1; color: "#b9c5cc" }
+    Rectangle {y: 212; width: 650; height: 1; color: "#fafcfe" }
+
+    Rectangle {y: 270; width: 650; height: 1; color: "#b9c5cc" }
+    Rectangle {y: 272; width: 650; height: 1; color: "#fafcfe" }
+    //-------------------
+
+    //左右分割条
+    Rectangle {x: 650; height: parent.height; width: 1; color: "#b9c5cc" }
+    Rectangle {x: 652; height: parent.height; width: 1; color: "#fafcfe" }
+
+    Row {
+
+        Column {
+//            anchors.fill: parent
+            width: 650
+            Row {
+                id: myrow
+                spacing: 10
+                anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+                Image {
+                    id: refreshArrow
+                    source: "../img/toolWidget/ubuntukylin.png"
+                    width: 50; height: 50
+                    Behavior on rotation { NumberAnimation { duration: 200 } }
+                }
+                Column {
+                    spacing: 10
+                    id: mycolumn
+                    Text {
+                        id: text0
+                        width: 69
+                        text: qsTr("全面清理电脑中的垃圾、缓存和痕迹，只需要一个按键！")
+                        font.bold: true
+                        font.pixelSize: 14
+                        color: "#383838"
+                    }
+                    Text {
+                        id: text
+                        width: 69
+    //                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
+                        text: qsTr("一键帮您节省磁盘空间，清理电脑中的垃圾，让系统运行更加快速。")
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                    }
+                }
+                SetBtn {
+                    iconName: "onekey.png"
+                    setbtn_flag: "smallonekey"
+                    anchors {
+                        left: parent.left; leftMargin: 480
+                    }
+                    width: 120
+                    height: 39
+                }
+
+            }//Row
+
+            Item {
+                id: views
+                width: parent.width ////ListView不会随鼠标上下移动
+    //                width:leftbar.width -10 //ListView会随鼠标上下移动
+                height: leftbar.height - refreshArrow.height - 10*2 - 20 -10
+                anchors.top: parent.top
+                anchors.topMargin: 110
+
+                ListModel {
+                    id: clearModel
+                    ListElement {
+                        title: "清理垃圾"
+                        picture: "../img/toolWidget/brush.png"
+                        detailstr: "清理系统中的垃圾文件，释放磁盘空间"
+                        flag: "cache"
+                    }
+                    ListElement {
+                        title: "清理历史记录"
+                        picture: "../img/toolWidget/history.png"
+                        detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
+                        flag: "history"
+                    }
+                    ListElement {
+                        title: "清理Cookies"
+                        picture: "../img/toolWidget/cookies.png"
+                        detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
+                        flag: "cookies"
+                    }
+                    ListElement {
+                        title: "卸载不必要的安装程序"
+                        picture: "../img/toolWidget/deb.png"
+                        detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
+                        flag: "unneed"
+                    }
+                }
+
+                ListView {
+                    id: listView
+                    height: parent.height
+                    width: parent.width
+                    anchors.top: parent.top
+    //                    anchors.topMargin: titlebar.height + 45
+                    model: clearModel
+                    delegate: FastDelegate {}
+                    cacheBuffer: 1000
+                }
+            }
+        }//Column
+
+
+        Rectangle {
+            width: parent.width - 650
+            anchors {
+               left: parent.left
+               leftMargin: 650
+            }
+            Image {
+                id: titleimage
+                anchors {
+                    left: parent.left
+                    leftMargin: 2
+                }
+                source: "../img/skin/note-bg.png"
+            }
+            Text {
+                anchors {
+                    left: parent.left
+                    leftMargin: 50
+                    top: parent.top
+                    topMargin: titleimage.height/2 - 7
+                }
+                text: "正在研发测试中..."
+                font.pixelSize: 12
+                color: "#383838"
+            }
+
+        }
+
+
+    }
+}//坐边栏Rectangle
+
+
+
+//Item {
+//    id: screen; width: parent.width; height: 435
+////    frame:false
+//    property SystemDispatcher dis: systemdispatcher
+//    property bool inListView : false
+
+//    Rectangle {
+//        id: background
+//        anchors.fill: parent
+//        Item {
+//            id: views
+//            width: parent.width
+//            height: parent.height - titlebar.height
+
+//            ListModel {
+//                id: clearModel
+//                ListElement {
+//                    title: "清理垃圾"
+//                    picture: "../img/icons/user.png"
+//                    detailstr: "清理系统垃圾，让系统运行跟流畅"
+//                    flag: "cache"
+//                }
+//                ListElement {
+//                    title: "清理历史记录"
+//                    picture: "../img/icons/at.png"
+//                    detailstr: "清理浏览器的历史记录，还浏览器一片天空"
+//                    flag: "history"
+//                }
+//                ListElement {
+//                    title: "清理Cookies"
+//                    picture: "../img/icons/at.png"
+//                    detailstr: "清理使用计算机时留下的Cookies，保护个人隐私"
+//                    flag: "cookies"
+//                }
+//                ListElement {
+//                    title: "卸载不必要的安装程序"
+//                    picture: "../img/icons/pen.png"
+//                    detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
+//                    flag: "unneed"
+//                }
+//            }
+
+//            ListView {
+//                id: listView
+//                height: parent.height// - titlebar.height
+//                width: parent.width
+//                anchors.top: parent.top
+//                anchors.topMargin: titlebar.height + 45
+//                model: clearModel
+//                delegate: FastDelegate {}
+//                cacheBuffer: 1000
+//            }
+//        }
+
+
+//        Row {
+//            id: myrow
+//            spacing: 10
+//            anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+//            Image {
+//                id: refreshArrow
+//                source: "../img/toolWidget/ubuntukylin.png"
+////                width: 120; height: 120
+//                Behavior on rotation { NumberAnimation { duration: 200 } }
+//            }
+//            Column {
+//                spacing: 10
+//                id: mycolumn
+//                Text {
+//                    id: text0
+//                    width: 69
+//                    text: qsTr("一键清理系统垃圾，有效提高系统运行效率")
+//                    font.bold: true
+//                    font.pixelSize: 14
+//                    color: "#383838"
+////                    font.pointSize: 13
+////                    font.pixelSize: 12
+//    //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+//                }
+//                Text {
+//                    id: text1
+//                    width: 69
+////                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
+//                    text: qsTr("       一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉某项")
+//                    font.pixelSize: 12
+//                    color: "#7a7a7a"
+////                    font.pointSize: 13
+////                    font.pixelSize: 12
+//    //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+//                }
+//                Text {
+//                    id: text2
+//                    width: 69
+////                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
+//                    text: qsTr("内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理。")
+//                    font.pixelSize: 12
+//                    color: "#7a7a7a"
+////                    font.pointSize: 13
+////                    font.pixelSize: 12
+//    //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
+//                }
+//                SetBtn {
+//                    iconName: "onekeyBtn.png"
+//                    setbtn_flag: "onekey"
+//                    anchors {
+//                        top: text2.bottom; topMargin: 10
+//                        left: parent.left; leftMargin: 100
+//                    }
+//                    width: 186
+//                    height: 45
+//                }
+//            }
+//        }//Row
+
+////        //垃圾清理自定义标题栏
+////        Common.TitleBar {
+////            id: titlebar; width: parent.width; height: 45; opacity: 0.9
+////            btn_flag: "one_key_scan"
+////        }
+//    }
+//}
 
 
 

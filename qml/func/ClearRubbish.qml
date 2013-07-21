@@ -90,6 +90,14 @@ Item {
 //            }
 //        }
         Tab {
+            title: qsTr("一键清理")
+            contentMargin: 20
+            FastclearModel {
+                id: fastitem
+//                height: 435 - titleimage.height
+            }
+        }
+        Tab {
             title: qsTr("清理apt缓存")
             contentMargin: 20
             AptCruft {

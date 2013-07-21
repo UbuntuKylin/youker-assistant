@@ -99,6 +99,8 @@ Rectangle {
 //            btnImg.source = "../img/toolWidget/menu_hover.png"
             if (menulogo.setbtn_flag == "onekey")
                 btnImg.source = "../img/icons/onekeyBtn-hover.png"
+            else if (menulogo.setbtn_flag == "smallonekey")
+                btnImg.source = "../img/icons/onekey-hover.png"
             else if (menulogo.setbtn_flag == "set")
                 btnImg.source = "../img/icons/set-hover.png"
             else if (menulogo.setbtn_flag == "message")
@@ -111,6 +113,10 @@ Rectangle {
         onClicked: {
             if (setbtn_flag == "onekey") {
                 console.log("onekey clicked....");
+                systemdispatcher.clean_by_one_key_qt(systemdispatcher.get_onekey_args());
+            }
+            else if (setbtn_flag == "smallonekey") {
+                console.log("smallonekey clicked....");
                 systemdispatcher.clean_by_one_key_qt(systemdispatcher.get_onekey_args());
             }
             else if (setbtn_flag == "set")
