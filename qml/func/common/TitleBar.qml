@@ -58,99 +58,135 @@ Item {
      Connections
      {
          target: systemdispatcher
-         onFinishScanWork: {
-             console.log("begin onFinishScanWork..............");
-//             if (btn_flag == "one_key_work") {
-//                 console.log(msg);
+//         onFinishScanWork: {
+//             console.log("begin onFinishScanWork..............");
+//             console.log(btn_flag)
+////             if (btn_flag == "one_key_work") {
+////                 console.log(msg);
+////                 titleBar.work_result = msg;
+////                 titleBar.state = "OneKeyFinish";
+////             }
+////             if (btn_flag == "cruft_work") {
+////                 console.log("******Signal handler received  Start******")
+////                 console.log(msg);
+////                 titleBar.work_result = msg;
+////                 titleBar.state = "CruftWorkFinish";
+////                 console.log("******End******");
+////             }
+//             if (btn_flag == "apt_scan") {
+//                 console.log("******apt_scan Signal handler received  Start******");
+////                 console.log(msg);
 //                 titleBar.work_result = msg;
-//                 titleBar.state = "OneKeyFinish";
+//                 titleBar.state = "AptWork";
+////                 console.log("******End******");
 //             }
-//             if (btn_flag == "cruft_work") {
-//                 console.log("******Signal handler received  Start******")
-//                 console.log(msg);
+//             else if (btn_flag == "software_scan") {
+//                 console.log("****** software_scan Signal handler received  Start******");
+////                 console.log(msg);
 //                 titleBar.work_result = msg;
-//                 titleBar.state = "CruftWorkFinish";
+//                 titleBar.state = "SoftwareWork";
+////                 console.log("******End******");
+//             }
+//             else if (btn_flag == "history_scan") {
+//                 console.log("******history_scan Signal handler received  Start******");
+////                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "HistoryWork";
+////                 console.log("******End******");
+//             }
+//             else if (btn_flag == "cookies_scan") {
+//                 console.log("******cookies_scan Signal handler received  Start******");
+////                 console.log(msg);
+////                 titleBar.work_result = msg;
+//                 titleBar.state = "CookiesWork";
+//             }
+//             else if (btn_flag == "package_scan") {
+//                 console.log("******package_scan Signal handler received  Start******");
+////                 console.log("33333333333333");
+////                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "UnneedWork";
+//             }
+//         }
+         onFinishCleanWork: {
+             console.log("33333333333333");
+             console.log(msg);//apt software   package   history   cookies
+             console.log(btn_flag);
+
+
+             if (msg == "apt") {
+                 console.log("******Clear Signal handler received  Start apt_work******");
+//                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "AptWorkFinish";
 //                 console.log("******End******");
-//             }
-             if (btn_flag == "apt_scan") {
-                 console.log("******Scan Signal handler received  Start******")
-                 console.log(msg);
-                 titleBar.work_result = msg;
-                 titleBar.state = "AptWork";
-                 console.log("******End******");
              }
-             if (btn_flag == "software_scan") {
-                 console.log("******Scan Signal handler received  Start******")
-                 console.log(msg);
+             else if (msg == "software") {
+                 console.log("******Clear Signal handler received  Start software_work******");
+//                 console.log("******Clear Signal handler received  Start******")
+//                 console.log(msg);
                  titleBar.work_result = msg;
-                 titleBar.state = "SoftwareWork";
-                 console.log("******End******");
+                 titleBar.state = "SoftwareWorkFinish";
+//                 console.log("******End******");
              }
-//             if (btn_flag == "history_work") {
+             else if (msg == "history") {
+                 console.log("******Clear Signal handler received  Start history_work******");
 //                 console.log("******Signal handler received  Start******")
 //                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "HistoryWorkFinish";
+//                 console.log("******End******");
+             }
+             else if (msg == "cookies") {
+                 console.log("******Clear Signal handler received  Start cookies_work******");
+//                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "CookiesWorkFinish";
+             }
+             else if (msg == "package") {
+                 console.log("******Clear Signal handler received  Start package_work******");
+//                 console.log("33333333333333");
+//                 console.log(msg);
+                 titleBar.work_result = msg;
+                 titleBar.state = "UnneedWorkFinish";
+             }
+
+//             if (btn_flag == "apt_work") {
+//                 console.log("******Clear Signal handler received  Start apt_work******");
+////                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "AptWorkFinish";
+////                 console.log("******End******");
+//             }
+//             else if (btn_flag == "software_work") {
+//                 console.log("******Clear Signal handler received  Start software_work******");
+////                 console.log("******Clear Signal handler received  Start******")
+////                 console.log(msg);
+//                 titleBar.work_result = msg;
+//                 titleBar.state = "SoftwareWorkFinish";
+////                 console.log("******End******");
+//             }
+//             else if (btn_flag == "history_work") {
+//                 console.log("******Clear Signal handler received  Start history_work******");
+////                 console.log("******Signal handler received  Start******")
+////                 console.log(msg);
 //                 titleBar.work_result = msg;
 //                 titleBar.state = "HistoryWorkFinish";
-//                 console.log("******End******");
+////                 console.log("******End******");
 //             }
 //             else if (btn_flag == "cookies_work") {
-//                 console.log(msg);
+//                 console.log("******Clear Signal handler received  Start cookies_work******");
+////                 console.log(msg);
 //                 titleBar.work_result = msg;
 //                 titleBar.state = "CookiesWorkFinish";
 //             }
 //             else if (btn_flag == "package_work") {
-//                 console.log("33333333333333");
-//                 console.log(msg);
+//                 console.log("******Clear Signal handler received  Start package_work******");
+////                 console.log("33333333333333");
+////                 console.log(msg);
 //                 titleBar.work_result = msg;
 //                 titleBar.state = "UnneedWorkFinish";
 //             }
-         }
-         onFinishCleanWork: {
-             console.log("begin onFinishCleanWork..............");
-             if (btn_flag == "one_key_work") {
-                 console.log(msg);
-                 titleBar.work_result = msg;
-                 titleBar.state = "OneKeyFinish";
-             }
-             if (btn_flag == "cruft_work") {
-                 console.log("******Signal handler received  Start******")
-                 console.log(msg);
-                 titleBar.work_result = msg;
-                 titleBar.state = "CruftWorkFinish";
-                 console.log("******End******");
-             }
-             if (btn_flag == "apt_work") {
-                 console.log("******Clear Signal handler received  Start apt_work******");
-                 console.log(msg);
-                 titleBar.work_result = msg;
-                 titleBar.state = "AptWorkFinish";
-                 console.log("******End******");
-             }
-             if (btn_flag == "software_work") {
-                 console.log("******Clear Signal handler received  Start******")
-                 console.log(msg);
-                 titleBar.work_result = msg;
-                 titleBar.state = "HistoryWorkFinish";
-                 console.log("******End******");
-             }
-             if (btn_flag == "history_work") {
-                 console.log("******Signal handler received  Start******")
-                 console.log(msg);
-                 titleBar.work_result = msg;
-                 titleBar.state = "HistoryWorkFinish";
-                 console.log("******End******");
-             }
-             else if (btn_flag == "cookies_work") {
-                 console.log(msg);
-                 titleBar.work_result = msg;
-                 titleBar.state = "CookiesWorkFinish";
-             }
-             else if (btn_flag == "package_work") {
-                 console.log("33333333333333");
-                 console.log(msg);
-                 titleBar.work_result = msg;
-                 titleBar.state = "UnneedWorkFinish";
-             }
          }
      }
 
@@ -208,9 +244,9 @@ Item {
              anchors.rightMargin: 50
              onClicked: {
                  //kobe: wait for adding function
-                 var str = sessiondispatcher.get_str();
+//                 var str = sessiondispatcher.get_str();
                  console.log('cccccc-------');
-                 console.log(str)
+                 console.log(btn_flag);
                  //one key
 //                 if (btn_flag == "one_key_scan") {
 //                    if (str.indexOf("r") > -1 || str.indexOf("h") > -1 || str.indexOf("c") > -1 || str.indexOf("p") > -1) {
@@ -266,18 +302,21 @@ Item {
                  //------------------------------------
                  //apt cruft
                   if (btn_flag == "apt_scan") {
-                      if (str.indexOf("a") > -1) {
+                      console.log("apt_scan---------------");
+                      apt_signal("AptWork");
+                      titleBar.state = "AptWork";
+//                      if (str.indexOf("a") > -1) {
 //                          titleBar.state = "AptWork";
                           //display context
-                          apt_signal("AptWork");
-                      }
-                      else
-                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中apt扫描项，请确认！");
+//                          apt_signal("AptWork");
+//                      }
+//                      else
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中apt扫描项，请确认！");
                   }
                   else if (btn_flag == "apt_work") {
                         console.log("apt_work---------------");
                         console.log(systemdispatcher.get_apt_args());
-                        systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args());
+                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
 //                      if (str.indexOf("a") > -1)
 //                          systemdispatcher.clean_cookies_records_qt("all");
 //                      else
@@ -285,83 +324,99 @@ Item {
                   }
                  //software cruft
                   else if (btn_flag == "software_scan") {
-                      if (str.indexOf("s") > -1) {
-//                          titleBar.state = "SoftwareWork";
-                          //display context
-                          software_signal("SoftwareWork");
-                      }
-                      else
-                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software扫描项，请确认！");
+                      console.log("software_scan---------------");
+                      titleBar.state = "SoftwareWork";
+                      software_signal("SoftwareWork");
+//                      if (str.indexOf("s") > -1) {
+////                          titleBar.state = "SoftwareWork";
+//                          //display context
+//                          software_signal("SoftwareWork");
+//                      }
+//                      else
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software扫描项，请确认！");
                   }
                   else if (btn_flag == "software_work") {
                       console.log("software_work---------------");
                       console.log(systemdispatcher.get_software_args());
-                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args());
+                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
 //                      if (str.indexOf("s") > -1)
 //                          systemdispatcher.clean_cookies_records_qt("all");
 //                      else
 //                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software清理项，请确认！");
                   }
-                 //---------------------
+//                 ---------------------
 
 
 
 
 
-                 //broswer history
+//                 broswer history
                  else if (btn_flag == "history_scan") {
-                     console.log("dddddd------------");
-                      if (str.indexOf("h") > -1) {
-                          titleBar.state = "HistoryWork";
-                          //display context
-                          history_signal("HistoryWork");
-                      }
-                     else
-                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录扫描项，请确认！");
+                      console.log("history_scan---------------");
+                      titleBar.state = "HistoryWork";
+                      history_signal("HistoryWork");
+//                     console.log("dddddd------------");
+//                      if (str.indexOf("h") > -1) {
+////                          titleBar.state = "HistoryWork";
+//                          //display context
+//                          history_signal("HistoryWork");
+//                      }
+//                     else
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录扫描项，请确认！");
                  }
                  else if (btn_flag == "history_work") {
-                     console.log("eeeeeee-------------");
-                      if (str.indexOf("h") > -1)
-                          systemdispatcher.clean_history_records_qt();
-                     else
-                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
+                      console.log("history_work---------------");
+                      systemdispatcher.clean_history_records_qt();
+//                     console.log("eeeeeee-------------");
+//                      if (str.indexOf("h") > -1)
+//                          systemdispatcher.clean_history_records_qt();
+//                     else
+//                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
                  }
 
-                //broswer cookies
+//                broswer cookies
                  else if (btn_flag == "cookies_scan") {
-                     if (str.indexOf("c") > -1) {
-                         titleBar.state = "CookiesWork";
-                         //display context
-                         cookies_signal("CookiesWork");
-                     }
-                     else
-                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies扫描项，请确认！");
+                      console.log("cookies_scan---------------");
+                      titleBar.state = "CookiesWork";
+                      cookies_signal("CookiesWork");
+//                     if (str.indexOf("c") > -1) {
+////                         titleBar.state = "CookiesWork";
+//                         //display context
+//                         cookies_signal("CookiesWork");
+//                     }
+//                     else
+//                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies扫描项，请确认！");
                  }
                  else if (btn_flag == "cookies_work") {
-                     if (str.indexOf("c") > -1) {
-                         console.log("cookies_work---------------");
-//                         systemdispatcher.clean_cookies_records_qt("all");
-                         console.log(systemdispatcher.get_cookies_args());
-                     }
-                     else
-                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies清理项，请确认！");
+                      console.log("cookies_work---------------");
+                      console.log(systemdispatcher.get_cookies_args());
+                      systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+//                     if (str.indexOf("c") > -1) {
+//////                         systemdispatcher.clean_cookies_records_qt("all");
+////                         console.log(systemdispatcher.get_cookies_args());
+//                     }
+//                     else
+//                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies清理项，请确认！");
                  }
 
                  else if (btn_flag == "package_scan") {
-                     console.log("li11111");
-                     if (str.indexOf("p") > -1) {
-                         titleBar.state = "UnneedWork";
-                         console.log("li22222");
-                         //display context
-                         unneed_signal("UnneedWork");
-                     }
-                     else
-                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Unneed扫描项，请确认！");
+                      console.log("package_scan---------------");
+                      titleBar.state = "UnneedWork";
+                      unneed_signal("UnneedWork");
+//                     console.log("li11111");
+//                     if (str.indexOf("p") > -1) {
+//                         titleBar.state = "UnneedWork";
+//                         console.log("li22222");
+//                         //display context
+////                         unneed_signal("UnneedWork");
+//                     }
+//                     else
+//                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Unneed扫描项，请确认！");
                  }
                  else if (btn_flag == "package_work") {
-                      console.log("package_work---------------");
-//                         systemdispatcher.clean_cookies_records_
+                     console.log("package_work---------------");
                      console.log(systemdispatcher.get_package_args());
+                     systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
 //                     if (str.indexOf("c") > -1)
 //                         systemdispatcher.clean_the_browser_qt("cookies");
 //                     else
@@ -370,58 +425,223 @@ Item {
              }
              anchors.verticalCenter: parent.verticalCenter
          }
+
+
+
+
+
+//         Button {
+//             id: bitButton2
+//             width: 95
+//             height: 32
+//             visible: false
+//             text: btn_text
+//             anchors.right: parent.right
+//             anchors.rightMargin: 50
+//             onClicked: {//software cruft
+//                 if (btn_flag == "software_scan") {
+//                     console.log("software_scan---------------");
+//                     titleBar.state = "SoftwareWork";
+//                     software_signal("SoftwareWork");
+////                      if (str.indexOf("s") > -1) {
+//////                          titleBar.state = "SoftwareWork";
+////                          //display context
+////                          software_signal("SoftwareWork");
+////                      }
+////                      else
+////                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software扫描项，请确认！");
+//                 }
+//                 else if (btn_flag == "software_work") {
+//                     console.log("software_work---------------");
+//                     console.log(systemdispatcher.get_software_args());
+//                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
+////                      if (str.indexOf("s") > -1)
+////                          systemdispatcher.clean_cookies_records_qt("all");
+////                      else
+////                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中software清理项，请确认！");
+//                 }
+//             }
+//         }
+//         Button {
+//             id: bitButton3
+//             width: 95
+//             height: 32
+//             visible: false
+//             text: btn_text
+//             anchors.right: parent.right
+//             anchors.rightMargin: 50
+//             onClicked: {
+//                 if (btn_flag == "history_scan") {
+//                      console.log("history_scan---------------");
+//                      titleBar.state = "HistoryWork";
+//                      history_signal("HistoryWork");
+////                     console.log("dddddd------------");
+////                      if (str.indexOf("h") > -1) {
+//////                          titleBar.state = "HistoryWork";
+////                          //display context
+////                          history_signal("HistoryWork");
+////                      }
+////                     else
+////                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录扫描项，请确认！");
+//                 }
+//                 else if (btn_flag == "history_work") {
+//                      console.log("history_work---------------");
+//                      systemdispatcher.clean_history_records_qt();
+////                     console.log("eeeeeee-------------");
+////                      if (str.indexOf("h") > -1)
+////                          systemdispatcher.clean_history_records_qt();
+////                     else
+////                          sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
+//                 }
+//             }
+//         }
+//         Button {
+//             id: bitButton4
+//             width: 95
+//             height: 32
+//             visible: false
+//             text: btn_text
+//             anchors.right: parent.right
+//             anchors.rightMargin: 50
+//             onClicked: {
+//                 if (btn_flag == "cookies_scan") {
+//                      console.log("cookies_scan---------------");
+//                      titleBar.state = "CookiesWork";
+//                      cookies_signal("CookiesWork");
+////                     if (str.indexOf("c") > -1) {
+//////                         titleBar.state = "CookiesWork";
+////                         //display context
+////                         cookies_signal("CookiesWork");
+////                     }
+////                     else
+////                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies扫描项，请确认！");
+//                 }
+//                 else if (btn_flag == "cookies_work") {
+//                      console.log("cookies_work---------------");
+//                      console.log(systemdispatcher.get_cookies_args());
+//                      systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+////                     if (str.indexOf("c") > -1) {
+////////                         systemdispatcher.clean_cookies_records_qt("all");
+//////                         console.log(systemdispatcher.get_cookies_args());
+////                     }
+////                     else
+////                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Cookies清理项，请确认！");
+//                 }
+//             }
+//         }
+//         Button {
+//             id: bitButton5
+//             width: 95
+//             height: 32
+//             visible: false
+//             text: btn_text
+//             anchors.right: parent.right
+//             anchors.rightMargin: 50
+//             onClicked: {
+//                 if (btn_flag == "package_scan") {
+//                      console.log("package_scan---------------");
+//                      titleBar.state = "UnneedWork";
+//                      unneed_signal("UnneedWork");
+////                     console.log("li11111");
+////                     if (str.indexOf("p") > -1) {
+////                         titleBar.state = "UnneedWork";
+////                         console.log("li22222");
+////                         //display context
+//////                         unneed_signal("UnneedWork");
+////                     }
+////                     else
+////                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Unneed扫描项，请确认！");
+//                 }
+//                 else if (btn_flag == "package_work") {
+//                     console.log("package_work---------------");
+//                     console.log(systemdispatcher.get_package_args());
+//                     systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+////                     if (str.indexOf("c") > -1)
+////                         systemdispatcher.clean_the_browser_qt("cookies");
+////                     else
+////                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中Unneed清理项，请确认！");
+//                 }
+//             }
+//         }
+
      }
 
 
      states: [
-//         State {
-//             name: "CruftWork"
-//             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" */}
-//             PropertyChanges { target: bitButton; text: "开始清理" }
-//             PropertyChanges { target: titleBar; btn_flag: "cruft_work" }
-//         },
          State {
              name: "AptWork"
-             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" */}
+//             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" */}
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "apt_work" }
+
+//             PropertyChanges { target: bitButton; visible: true; text: "开始清理" }
+//             PropertyChanges { target: bitButton2; visible: false }
+//             PropertyChanges { target: bitButton3; visible: false}
+//             PropertyChanges { target: bitButton4; visible: false}
+//             PropertyChanges { target: bitButton5; visible: false}
+//             PropertyChanges { target: titleBar; btn_flag: "apt_work" }
          },
          State {
              name: "SoftwareWork"
-             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" */}
+//             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("history") + "条历史记录" */}
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "software_work" }
+
+
+//             PropertyChanges { target: bitButton2; visible: true; text: "开始清理" }
+//             PropertyChanges { target: bitButton0; visible: false }
+//             PropertyChanges { target: bitButton3; visible: false}
+//             PropertyChanges { target: bitButton4; visible: false}
+//             PropertyChanges { target: bitButton5; visible: false}
+//             PropertyChanges { target: titleBar; btn_flag: "software_work" }
          },
          State {
              name: "HistoryWork"
              PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.scan_history_records_qt() + "条历史记录" }
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "history_work" }
+
+//             PropertyChanges { target: bitButton3; visible: true; text: "开始清理" }
+//             PropertyChanges { target: bitButton0; visible: false }
+//             PropertyChanges { target: bitButton2; visible: false}
+//             PropertyChanges { target: bitButton4; visible: false}
+//             PropertyChanges { target: bitButton5; visible: false}
+//             PropertyChanges { target: titleBar; btn_flag: "history_work" }
          },
          State {
              name: "CookiesWork"
-             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" */}
+//             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" */}
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "cookies_work" }
+
+//             PropertyChanges { target: bitButton4; visible: true; text: "开始清理" }
+//             PropertyChanges { target: bitButton0; visible: false }
+//             PropertyChanges { target: bitButton2; visible: false}
+//             PropertyChanges { target: bitButton3; visible: false}
+//             PropertyChanges { target: bitButton5; visible: false}
+//             PropertyChanges { target: titleBar; btn_flag: "history_work" }
          },
          State {
              name: "UnneedWork"
-             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" */}
+//             PropertyChanges { target: label; visible: true/*; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" */}
              PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: titleBar; btn_flag: "package_work" }
-         },
-         State {
-             name: "OneKeyWork"
-             PropertyChanges { target: label; visible: true; text: "one key scan" }
-//             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" }
-             PropertyChanges { target: bitButton; text: "开始清理" }
-             PropertyChanges { target: titleBar; btn_flag: "one_key_work" }
+
+
+
+//             PropertyChanges { target: bitButton5; visible: true; text: "开始清理" }
+//             PropertyChanges { target: bitButton0; visible: false }
+//             PropertyChanges { target: bitButton2; visible: false}
+//             PropertyChanges { target: bitButton4; visible: false}
+//             PropertyChanges { target: bitButton3; visible: false}
+//             PropertyChanges { target: titleBar; btn_flag: "history_work" }
          },
 //         State {
-//             name: "CruftWorkFinish"
-//             PropertyChanges { target: label; visible: true; text: "清理完毕！" }
-//             PropertyChanges { target: bitButton; text: "开始扫描" }
-//             PropertyChanges { target: titleBar; btn_flag: "cruft_scan" }
+//             name: "OneKeyWork"
+////             PropertyChanges { target: label; visible: true; text: "one key scan" }
+////             PropertyChanges { target: label; visible: true; text: "共扫描到" + systemdispatcher.get_the_record_qt("cookies") + "条Cookies" }
+//             PropertyChanges { target: bitButton; text: "开始清理" }
+//             PropertyChanges { target: titleBar; btn_flag: "one_key_work" }
 //         },
          State {
              name: "AptWorkFinish"
@@ -452,12 +672,12 @@ Item {
              PropertyChanges { target: label; visible: true; text: titleBar.work_result + "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
              PropertyChanges { target: titleBar; btn_flag: "package_scan" }
-         },
+         }/*,
          State {
              name: "OneKeyFinish"
              PropertyChanges { target: label; visible: true; text: titleBar.work_result + "清理完毕！" }
              PropertyChanges { target: bitButton; text: "开始扫描" }
              PropertyChanges { target: titleBar; btn_flag: "one_key_scan" }
-         }
+         }*/
      ]
  }

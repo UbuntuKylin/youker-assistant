@@ -97,7 +97,18 @@ int SystemDispatcher::get_add_value()
 
 void SystemDispatcher::handler_clear_rubbish(QString msg)
 {
-    emit finishCleanWork(msg);
+    qDebug() << "love ps>>>>>>>>>>>>>>>>>>>>>>..";
+//    if (msg == "apt")
+//        emit finishCleanaptWork(msg);
+//    else if (msg == "software")
+//        emit finishCleansoftwareWork(msg);
+//    else if (msg == "history")
+//        emit finishCleanhistoryWork(msg);
+//    else if (msg == "cookies")
+//        emit finishCleancookiesWork(msg);
+//    else if (msg == "package")
+//        emit finishCleanpackageWork(msg);
+     emit finishCleanWork(msg);
 //    emit myStringChanged("Kobe test for fastclear button and dbus communication");
 }
 void SystemDispatcher::handler_scan_rubbish(QString msg)
@@ -186,8 +197,8 @@ QStringList SystemDispatcher::scan_unneed_packages_qt() {
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
     QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
 }
-void SystemDispatcher::clean_file_cruft_qt(QStringList strlist) {
-    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist);
+void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
+    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist, str);
 }
 void SystemDispatcher::scan_cache_cruft_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("scan_cache_cruft");

@@ -22,6 +22,7 @@ import QtDesktop 0.1
 import "common" as Common
 
 Item {
+    id: clearmode
     width: parent.width
     height: 475//460
 //    property Dispatcher dis: mydispather
@@ -39,25 +40,25 @@ Item {
         ListElement { text: "baby" }
     }
 
-    Image {
-        id: titleimage
-        anchors {
-            left: parent.left
-            leftMargin: 2
-        }
-        source: "../img/skin/note-bg.png"
-    }
-    Text {
-        anchors {
-            left: parent.left
-            leftMargin: 50
-            top: parent.top
-            topMargin: titleimage.height/2 - 7
-        }
-        text: "您可以根据扫描结果,选择性地清理相关内容。"
-        font.pixelSize: 12
-        color: "#383838"
-    }
+//    Image {
+//        id: titleimage
+//        anchors {
+//            left: parent.left
+//            leftMargin: 2
+//        }
+//        source: "../img/skin/note-bg.png"
+//    }
+//    Text {
+//        anchors {
+//            left: parent.left
+//            leftMargin: 50
+//            top: parent.top
+//            topMargin: titleimage.height/2 - 7
+//        }
+//        text: "您可以根据扫描结果,选择性地清理相关内容。"
+//        font.pixelSize: 12
+//        color: "#383838"
+//    }
 
     TabFrame {
         id:frame
@@ -66,9 +67,9 @@ Item {
 //        KeyNavigation.tab:button1
 //        KeyNavigation.backtab: button2
         width: parent.width
-//        height: parent.height
-        height: parent.height - titleimage.height
-        anchors.top: titleimage.bottom
+        height: parent.height
+//        height: parent.height - titleimage.height
+//        anchors.top: titleimage.bottom
         onCurrentChanged: {}
 
 
@@ -89,11 +90,11 @@ Item {
 //            }
 //        }
         Tab {
-
             title: qsTr("清理apt缓存")
-            contentMargin: 850/5 //20
+            contentMargin: 20
             AptCruft {
                 id: aptitem
+//                height: 435 - titleimage.height
             }
 //            //背景
 //            Image {
@@ -105,9 +106,10 @@ Item {
         Tab {
 
             title: qsTr("清理软件中心缓存")
-            contentMargin: 850/5 //20
+            contentMargin: 20
             SoftwareCruft {
                 id: softwareitem
+//                height: 435 - titleimage.height
             }
 //            //背景
 //            Image {
@@ -118,9 +120,10 @@ Item {
         Tab {
 
             title: qsTr("清理浏览器历史记录")
-            contentMargin: 850/5 //20
+            contentMargin: 20
             BrowserHistroy {
                 id: historyitem
+//                height: 435 - titleimage.height
             }
 //            //背景
 //            Image {
@@ -131,9 +134,10 @@ Item {
         Tab {
 
             title: qsTr("清理浏览器Cookies")
-            contentMargin: 850/5 //20
+            contentMargin: 20
             BrowserCookies {
                 id: cookiesitem
+//                height: 435 - titleimage.height
             }
 //            //背景
 //            Image {
@@ -144,9 +148,10 @@ Item {
         Tab {
 
             title: qsTr("清理不需要到deb包")
-            contentMargin: 850/5 //20
+            contentMargin: 20
             PackageModel {
                 id: packagemodel
+//                height: 435 - titleimage.height
             }
 //            //背景
 //            Image {

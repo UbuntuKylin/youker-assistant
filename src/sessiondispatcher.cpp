@@ -364,8 +364,16 @@ void SessionDispatcher::show_font_dialog(QString flag) {
     if(ok)
     {
         qDebug() << "OK-----------";
-        qDebug() << font.family();
-        set_font_qt(font.family());//set font
+//        qDebug() << font.family(); //"Ubuntu"
+//        qDebug() << font.styleName();//"Light"
+//        qDebug() << font.pointSizeF();//11
+//        qDebug() << font.pointSize();//11
+//        qDebug() << QString(font.pointSize());//11
+        QString fontsize = QString("%1").arg(font.pointSize());
+//        qDebug() << fontsize;//11
+        QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
+        qDebug() << fontstyle;
+        set_font_qt(fontstyle);//set font
 //        displayTextEdit->setFont(font);
     }
     else

@@ -40,9 +40,6 @@ Rectangle {
     property ListModel listmodel: mymodel
     property ListModel submodel: mysubmodel
     property int num: 0 //number of subitem
-    property string btn_text: ""
-    property string title: ""
-    property string description: ""
     property string btn_flag: ""
     property bool check_flag: true
 
@@ -51,15 +48,6 @@ Rectangle {
     }
     ListModel {
         id: mysubmodel
-    }
-
-    //垃圾清理自定义标题栏
-    Common.TitleBar {
-        id: titleBar; width: parent.width; height: 45; opacity: 0.9
-        btn_text: container.btn_text
-        title: container.title
-        description:  container.description
-        btn_flag: container.btn_flag
     }
 
     Component {
@@ -79,36 +67,36 @@ Rectangle {
 
             //'flags' comes from ListModel in BrowserHistory.qml or BrowserCookies.qml
             Component.onCompleted: {
-                if (flags == "clear_rubbish") {
-                    var rubbish_str = sessiondispatcher.get_str();
-                    if (rubbish_str.indexOf("r") < 0)
-                        sessiondispatcher.set_str("r");
-                }
-                else if (flags == "clear_apt") {
-                    var apt_str = sessiondispatcher.get_str();
-                    if (apt_str.indexOf("a") < 0)
-                        sessiondispatcher.set_str("a");
-                }
-                else if (flags == "clear_software") {
-                    var software_str = sessiondispatcher.get_str();
-                    if (software_str.indexOf("s") < 0)
-                        sessiondispatcher.set_str("s");
-                }
-                else if (flags == "clear_history") {
-                    var history_str = sessiondispatcher.get_str();
-                    if (history_str.indexOf("h") < 0)
-                        sessiondispatcher.set_str("h");
-                }
-                else if (flags == "clear_cookies") {
-                    var cookie_str = sessiondispatcher.get_str();
-                    if (cookie_str.indexOf("c") < 0)
-                        sessiondispatcher.set_str("c");
-                }
-                else if (flags == "clear_package") {
-                    var plugin_str = sessiondispatcher.get_str();
-                    if (plugin_str.indexOf("p") < 0)
-                        sessiondispatcher.set_str("p");
-                }
+//                if (flags == "clear_rubbish") {
+//                    var rubbish_str = sessiondispatcher.get_str();
+//                    if (rubbish_str.indexOf("r") < 0)
+//                        sessiondispatcher.set_str("r");
+//                }
+//                else if (flags == "clear_apt") {
+//                    var apt_str = sessiondispatcher.get_str();
+//                    if (apt_str.indexOf("a") < 0)
+//                        sessiondispatcher.set_str("a");
+//                }
+//                else if (flags == "clear_software") {
+//                    var software_str = sessiondispatcher.get_str();
+//                    if (software_str.indexOf("s") < 0)
+//                        sessiondispatcher.set_str("s");
+//                }
+//                else if (flags == "clear_history") {
+//                    var history_str = sessiondispatcher.get_str();
+//                    if (history_str.indexOf("h") < 0)
+//                        sessiondispatcher.set_str("h");
+//                }
+//                else if (flags == "clear_cookies") {
+//                    var cookie_str = sessiondispatcher.get_str();
+//                    if (cookie_str.indexOf("c") < 0)
+//                        sessiondispatcher.set_str("c");
+//                }
+//                else if (flags == "clear_package") {
+//                    var plugin_str = sessiondispatcher.get_str();
+//                    if (plugin_str.indexOf("p") < 0)
+//                        sessiondispatcher.set_str("p");
+//                }
 
 
 //                if (checkbox.checked) {
@@ -339,8 +327,8 @@ Rectangle {
     ScrollArea {
         frame:false
         anchors.fill: parent
-        anchors.top: titleBar.bottom
-        anchors.topMargin: 50
+//        anchors.top: titleBar.bottom
+//        anchors.topMargin: 50
         Item {
             width:parent.width
             height:(container.num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display

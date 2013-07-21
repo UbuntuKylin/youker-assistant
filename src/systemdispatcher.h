@@ -29,6 +29,11 @@ class SystemDispatcher : public QObject
     Q_OBJECT
     Q_PROPERTY(QNOTIFY myStringChanged)
     Q_PROPERTY(QNOTIFY finishCleanWork)
+//    Q_PROPERTY(QNOTIFY finishCleanaptWork)
+//    Q_PROPERTY(QNOTIFY finishCleansoftwareWork)
+//    Q_PROPERTY(QNOTIFY finishCleanhistoryWork)
+//    Q_PROPERTY(QNOTIFY finishCleancookiesWork)
+//    Q_PROPERTY(QNOTIFY finishCleanpackageWork)
     Q_PROPERTY(QNOTIFY finishScanWork)
 //    Q_PROPERTY(QString myString READ myString WRITE setmyString NOTIFY myStringChanged)
 public:
@@ -53,7 +58,7 @@ public:
     Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
     Q_INVOKABLE QStringList scan_unneed_packages_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
-    Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist);
+    Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
 //    Q_INVOKABLE QMap<QString, QVariant> scan_cache_cruft_qt();
 
 
@@ -129,6 +134,11 @@ public:
 signals:
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
+//    void finishCleanaptWork(QString msg);
+//    void finishCleansoftwareWork(QString msg);
+//    void finishCleanhistoryWork(QString msg);
+//    void finishCleancookiesWork(QString msg);
+//    void finishCleanpackageWork(QString msg);
     void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
 
 public slots:

@@ -36,8 +36,8 @@ Rectangle {
             anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
             Image {
                 id: refreshArrow
-                source: "../img/toolWidget/hardware.png"
-                width: 120; height: 120
+                source: "../img/toolWidget/ubuntukylin.png"
+//                width: 120; height: 120
                 Behavior on rotation { NumberAnimation { duration: 200 } }
             }
             Column {
