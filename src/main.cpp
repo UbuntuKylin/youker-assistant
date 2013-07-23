@@ -43,6 +43,15 @@
 #include <QtDeclarative>
 #include "quibo.h"
 #include <QTextCodec>
+#include <QProcess>
+
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <QDialog>
 int main(int argc, char** argv)
 {
 //    qmlRegisterType<Person>("People",1,0,"Person");
@@ -61,6 +70,60 @@ int main(int argc, char** argv)
 
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
+
+//    system("ps -ef | grep youker-assistant-session-daemon | grep -v grep | wc -l");
+//    system("ps -ef | grep youker-assistant-system-daemon | grep -v grep | wc -l");
+
+
+//    int value = 0;
+//    QString str = "";
+//    FILE *stream_session;
+//    char buf[128];
+//    memset(buf, '\0', sizeof(buf));
+//    stream_session = popen("ps -ef | grep youker-assistant-session-daemon | grep -v grep | wc -l", "r" );
+//    fread(buf, sizeof(char), sizeof(buf), stream_session);
+//    str = QString(buf);
+//    value = str.toInt();
+//    if (value == 0) {
+//        QProcess *process_session = new QProcess;
+//        process_session->start("/usr/bin/youker-assistant-session-daemon");
+//    }
+//    pclose(stream_session);
+
+//    FILE *stream_system;
+//    memset(buf, '\0', sizeof(buf));
+//    stream_system = popen("ps -ef | grep youker-assistant-system-daemon | grep -v grep | wc -l", "r" );
+//    fread(buf, sizeof(char), sizeof(buf), stream_system);
+//    str = QString(buf);
+//    value = str.toInt();
+//    if (value == 0) {
+//        QProcess *process_system = new QProcess;
+//        process_system->start("/usr/bin/youker-assistant-system-daemon");
+//    }
+//    pclose(stream_system);
+
+
+
+
+
+//    qDebug() << "121231232";
+//    qDebug() << buf;
+//    QString str = QString(buf);
+//    int value = str.toInt();
+//    qDebug() << value;
+//    if (value == 1)
+//        qDebug() << "is 1";
+//    else if (value == 0)
+//        qDebug() << "is 0";
+//    else if (value == 2)
+//        qDebug() << "is 2";
+//    qDebug() << rets2;
+
+//    QProcess *process_session = new QProcess;
+//    process_session->start("/usr/bin/youker-assistant-session-daemon");
+//    QProcess *process_system = new QProcess;
+//    process_system->start("sudo /usr/bin/youker-assistant-system-daemon");
+
     IhuApplication application(argc, argv);
     if (!application.setup()) {
         return 0;

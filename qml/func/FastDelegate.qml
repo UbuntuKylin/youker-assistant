@@ -248,6 +248,7 @@ Component {
                         text: title
                         font.bold: true
                         font.pixelSize: 14
+                        color: "#383838"
                     }
                     Text {
                         text: detailstr

@@ -28,7 +28,8 @@ HEADERS += youker-application.h \
     sessiondispatcher.h \
     modaldialog.h \
     modelessdialog.h \
-    warningdialog.h
+    warningdialog.h \
+    authdialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -37,11 +38,13 @@ SOURCES += main.cpp \
     sessiondispatcher.cpp \
     modaldialog.cpp \
     modelessdialog.cpp \
-    warningdialog.cpp
+    warningdialog.cpp \
+    authdialog.cpp
 
 OTHER_FILES += youker-assistant/ihu.png
 
 RESOURCES +=
 
 FORMS += \
-    quibo.ui
+    quibo.ui \
+    authdialog.ui

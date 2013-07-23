@@ -37,18 +37,20 @@ Item {
     signal cookies_signal(string cookies_msg);
     onCookies_signal: {
         if (cookies_msg == "CookiesWork") {
-//            console.log("&&&&&&&&&&&&&&&&&&&&&&&");
-//            console.log(cookies_msg);
+            console.log("1111111");
+            console.log(cookies_msg);
 
             //get data of cookies
             var cookies_data = systemdispatcher.scan_cookies_records_qt();
-//            console.log("****************************8");
+            console.log("****************************8");
+            console.log(cookies_data);
             root.sub_num = cookies_data.length;
+            console.log(root.sub_num);
             systemdispatcher.clear_cookies_args();
             subModel.clear();
             var num = 0;
             for (var i=0; i< cookies_data.length; i++) {
-//                console.log(cookies_data[i]);//sina.com.cn<2_2>10
+                console.log(cookies_data[i]);//sina.com.cn<2_2>10
                 var splitlist = cookies_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;

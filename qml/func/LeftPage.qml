@@ -23,6 +23,33 @@ import "common" as Common
 Rectangle {
     id: leftbar
     width: 600; height: 460
+
+    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
+    Connections
+    {
+        target: systemdispatcher
+        onFinishCleanWork: {
+            console.log("begin onOneKeyFinishCleanWork..............");
+            if (setbtn_flag == "onekey") {
+                console.log(msg);
+//                menulogo.get_msg = msg;
+                if (msg == "history") {
+                    leftbar.state = "StatusOne";
+                }
+                else if (msg == "cookies") {
+                    leftbar.state = "StatusTwo";
+                }
+                else if (msg == "unneed") {
+                    leftbar.state = "StatusThree";
+                }
+                else if (msg == "cache") {
+                    leftbar.state = "StatusFour";
+                }
+            }
+        }
+    }
+
+
     //背景
     Image {
         source: "../img/skin/bg-left.png"
@@ -206,9 +233,65 @@ Rectangle {
 
 
 
+            //status picture
+            Image {
+                id: rubbishstatus
+                source: "../img/toolWidget/unfinish.png"
+                anchors {
+                    top: itemtip.bottom; topMargin: 20
+                    left: parent.left; leftMargin: 500
+//                    left: parent.right; leftMargin: 400
+                }
+            }
+            Image {
+                id: historystatus
+                source: "../img/toolWidget/unfinish.png"
+                anchors {
+                    top: rubbishstatus.bottom; topMargin: 45
+                    left: parent.left; leftMargin: 500
+                }
+            }
+            Image {
+                id: cookiestatus
+                source: "../img/toolWidget/unfinish.png"
+                anchors {
+                    top: historystatus.bottom; topMargin: 45
+                    left: parent.left; leftMargin: 500
+                }
+            }
+            Image {
+                id: unneedstatus
+                source: "../img/toolWidget/unfinish.png"
+                anchors {
+                    top: cookiestatus.bottom; topMargin: 45
+                    left: parent.left; leftMargin: 500
+                }
+            }
+
 
         }//Column
     }//Column
+
+
+
+    states: [
+        State {
+            name: "StatusOne"
+            PropertyChanges { target: rubbishstatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusTwo"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusThree"
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusFour"
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+        }
+    ]
 
 
 }//坐边栏Rectangle

@@ -43,7 +43,10 @@ public:
     Q_INVOKABLE void del_str(QString str);
     Q_INVOKABLE QString get_str();
     QString notify_str;
+
+    //----get system message
     QMap<QString, QVariant> myinfo;
+    Q_INVOKABLE void get_system_message_qt();
     Q_INVOKABLE QString get_value(QString);
 
     Q_INVOKABLE bool set_launcher(bool);

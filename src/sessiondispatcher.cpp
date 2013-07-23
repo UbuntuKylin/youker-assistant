@@ -48,15 +48,15 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 //    }
 
 
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");
-    if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
-        myinfo = value;
-//        qDebug() << myinfo;
-    }
-    else {
-        qDebug() << "get pc_message failed!";
-    }
+//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");
+//    if (reply.isValid()) {
+//        QMap<QString, QVariant> value = reply.value();
+//        myinfo = value;
+////        qDebug() << myinfo;
+//    }
+//    else {
+//        qDebug() << "get pc_message failed!";
+//    }
 
     notify_str = "";
 
@@ -67,6 +67,18 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 //    qDebug() << reply1.value();
 //    qDebug() << "7654321";
 
+}
+
+void SessionDispatcher::get_system_message_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        myinfo = value;
+//        qDebug() << myinfo;
+    }
+    else {
+        qDebug() << "get pc_message failed!";
+    }
 }
 
 

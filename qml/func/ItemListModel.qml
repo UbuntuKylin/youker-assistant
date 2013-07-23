@@ -255,7 +255,8 @@ Rectangle {
                     height: parent.height*0.3
                     source: container.arrow
                     //当鼠标点击后,箭头图片旋转90度
-                    rotation: expanded ? 90 : 0
+//                    rotation: expanded ? 90 : 0
+                    rotation: expanded ? 0 : -180
                     smooth: true
                     anchors {
                         right: parent.right

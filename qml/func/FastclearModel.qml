@@ -4,29 +4,59 @@ import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
 Rectangle {
-    id: leftbar
+    id: leftbg
 //    width: 650; height: 435
     width: parent.width
     height: 435
 
+
+    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
+    Connections
+    {
+        target: systemdispatcher
+        onFinishCleanWork: {
+            console.log("begin onOneKeyFinishCleanWork..............");
+            if (setbtn_flag == "smallonekey") {
+                console.log(msg);
+//                menulogo.get_msg = msg;
+                if (msg == "history") {
+                    leftbg.state = "StatusOne";
+                }
+                else if (msg == "cookies") {
+                    leftbg.state = "StatusTwo";
+                }
+                else if (msg == "unneed") {
+                    leftbg.state = "StatusThree";
+                }
+                else if (msg == "cache") {
+                    leftbg.state = "StatusFour";
+                }
+            }
+        }
+    }
+
+
     //背景
     Image {
-        source: "../img/skin/bg-left.png"
+        source: "../img/skin/bg-onekey.png"
         anchors.fill: parent
     }
 
     //上下分割条
-    Rectangle {y: 80; width: 650; height: 1; color: "#b9c5cc" }
-    Rectangle {y: 82; width: 650; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar1; x: 2; y: 80; width: 650-2; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar2; x: 2; y: 82; width: 650-2; height: 1; color: "#fafcfe" }
 
-    Rectangle {y: 140; width: 650; height: 1; color: "#b9c5cc" }
-    Rectangle {y: 142; width: 650; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar3; x: 2; y: 140; width: 650-2; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar4; x: 2; y: 142; width: 650-2; height: 1; color: "#fafcfe" }
 
-    Rectangle {y: 210; width: 650; height: 1; color: "#b9c5cc" }
-    Rectangle {y: 212; width: 650; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar5; x: 2; y: 204; width: 650-2; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar6; x: 2; y: 206; width: 650-2; height: 1; color: "#fafcfe" }
 
-    Rectangle {y: 270; width: 650; height: 1; color: "#b9c5cc" }
-    Rectangle {y: 272; width: 650; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar7; x: 2; y: 268; width: 650-2; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar8; x: 2; y: 270; width: 650-2; height: 1; color: "#fafcfe" }
+
+    Rectangle {x: 652; y: 140; width: 200-8; height: 1; color: "#b9c5cc" }
+    Rectangle {x: 654; y: 142; width: 200-8; height: 1; color: "#fafcfe" }
     //-------------------
 
     //左右分割条
@@ -42,11 +72,15 @@ Rectangle {
                 id: myrow
                 spacing: 10
                 anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
-                Image {
+//                Image {
+//                    id: refreshArrow
+//                    source: "../img/toolWidget/ubuntukylin.png"
+//                    width: 50; height: 50
+//                    Behavior on rotation { NumberAnimation { duration: 200 } }
+//                }
+                AnimatedImage {
                     id: refreshArrow
-                    source: "../img/toolWidget/ubuntukylin.png"
-                    width: 50; height: 50
-                    Behavior on rotation { NumberAnimation { duration: 200 } }
+                    source: "../img/toolWidget/clear-movie.gif"
                 }
                 Column {
                     spacing: 10
@@ -69,6 +103,7 @@ Rectangle {
                     }
                 }
                 SetBtn {
+                    id: onekeybtn
                     iconName: "onekey.png"
                     setbtn_flag: "smallonekey"
                     anchors {
@@ -83,8 +118,8 @@ Rectangle {
             Item {
                 id: views
                 width: parent.width ////ListView不会随鼠标上下移动
-    //                width:leftbar.width -10 //ListView会随鼠标上下移动
-                height: leftbar.height - refreshArrow.height - 10*2 - 20 -10
+    //                width:leftbg.width -10 //ListView会随鼠标上下移动
+                height: leftbg.height - refreshArrow.height - 10*2 - 20 -10
                 anchors.top: parent.top
                 anchors.topMargin: 110
 
@@ -98,13 +133,13 @@ Rectangle {
                     }
                     ListElement {
                         title: "清理历史记录"
-                        picture: "../img/toolWidget/history.png"
+                        picture: "../img/toolWidget/eraser.png"
                         detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
                         flag: "history"
                     }
                     ListElement {
                         title: "清理Cookies"
-                        picture: "../img/toolWidget/cookies.png"
+                        picture: "../img/toolWidget/firefox.png"
                         detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
                         flag: "cookies"
                     }
@@ -127,6 +162,7 @@ Rectangle {
                     cacheBuffer: 1000
                 }
             }
+
         }//Column
 
 
@@ -136,30 +172,177 @@ Rectangle {
                left: parent.left
                leftMargin: 650
             }
-            Image {
-                id: titleimage
-                anchors {
-                    left: parent.left
-                    leftMargin: 2
+//            Image {
+//                id: titleimage
+//                anchors {
+//                    left: parent.left
+//                    leftMargin: 2
+//                }
+//                source: "../img/skin/note-bg.png"
+//            }
+//            Text {
+//                anchors {
+//                    left: parent.left
+//                    leftMargin: 50
+//                    top: parent.top
+//                    topMargin: titleimage.height/2 - 7
+//                }
+//                text: "正在研发测试中..."
+//                font.pixelSize: 12
+//                color: "#383838"
+//            }
+
+            Row {
+                spacing: 20
+                Column {
+                    spacing: 15
+                    anchors {
+                        top: parent.top
+                        topMargin: 30
+                        left: parent.left
+                        leftMargin: 10
+                    }
+                    Image {
+                        id: clearpic
+                        source: "../img/toolWidget/clear-pic.png"
+                    }
+                    Image {
+                        id: startpic
+                        source: "../img/toolWidget/open.png"
+                    }
                 }
-                source: "../img/skin/note-bg.png"
-            }
-            Text {
-                anchors {
-                    left: parent.left
-                    leftMargin: 50
-                    top: parent.top
-                    topMargin: titleimage.height/2 - 7
+
+                Column {
+                    spacing: 5
+                    anchors {
+                        top: parent.top
+                        topMargin: 30
+//                        left: parent.left
+//                        leftMargin: 10
+                    }
+                    Text {
+                        id: titletext
+                        text: "定时清理"
+                        font.bold: true
+                        font.pixelSize: 14
+                        color: "#383838"
+                    }
+                    Text {
+                        id: text1
+                        text: "定时清理帮您清理电脑"
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                    }
+                    Text {
+                        id: text2
+                        text: "中的垃圾和痕迹,让您的"
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                    }
+                    Text {
+                        id: text3
+                        text: "系统运行更加流畅!"
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                    }
                 }
-                text: "正在研发测试中..."
-                font.pixelSize: 12
-                color: "#383838"
+
+
+
+//                Text {
+//                    id: nextclear
+//                    text: "距离下次清理"
+//                    font.bold: true
+//                    font.pixelSize: 14
+//                    color: "#383838"
+//                }
+
+
+                Image {
+                    id: titleimage
+                    anchors {
+                        top: parent.top
+                        topMargin: 145
+                        left: parent.left
+                        leftMargin: 2
+                    }
+                    source: "../img/skin/note-bg.png"
+                }
+                Text {
+                    anchors {
+                        left: parent.left
+                        leftMargin: 50
+                        top: parent.top
+                        topMargin: 158//titleimage.height/2 - 7
+                    }
+                    text: "正在研发测试中..."
+                    font.pixelSize: 12
+                    color: "#383838"
+                }
             }
+
 
         }
 
 
-    }
+
+        Image {
+            id: rubbishstatus1
+            source: "../img/toolWidget/unfinish.png"
+            anchors {
+                top: parent.top; topMargin: 100
+                left: parent.left; leftMargin: 550
+            }
+        }
+        Image {
+            id: historystatus1
+            source: "../img/toolWidget/unfinish.png"
+            anchors {
+                top: parent.top; topMargin: 164
+                left: parent.left; leftMargin: 550
+            }
+        }
+        Image {
+            id: cookiestatus1
+            source: "../img/toolWidget/unfinish.png"
+            anchors {
+                top: parent.top; topMargin: 228
+                left: parent.left; leftMargin: 550
+            }
+        }
+        Image {
+            id: unneedstatus1
+            source: "../img/toolWidget/unfinish.png"
+            anchors {
+                top: parent.top; topMargin: 290
+                left: parent.left; leftMargin: 550
+            }
+        }
+
+
+    }//Row
+
+
+    states: [
+        State {
+            name: "StatusOne"
+            PropertyChanges { target: rubbishstatus1; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusTwo"
+            PropertyChanges { target: historystatus1; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusThree"
+            PropertyChanges { target: cookiestatus1; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusFour"
+            PropertyChanges { target: unneedstatus1; source: "../img/toolWidget/finish.png"}
+        }
+    ]
+
+
 }//坐边栏Rectangle
 
 

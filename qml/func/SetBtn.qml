@@ -113,6 +113,7 @@ Rectangle {
         onClicked: {
             if (setbtn_flag == "onekey") {
                 console.log("onekey clicked....");
+                console.log(systemdispatcher.get_onekey_args());
                 systemdispatcher.clean_by_one_key_qt(systemdispatcher.get_onekey_args());
             }
             else if (setbtn_flag == "smallonekey") {

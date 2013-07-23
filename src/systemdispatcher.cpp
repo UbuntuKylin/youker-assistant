@@ -185,6 +185,9 @@ void SystemDispatcher::clean_history_records_qt() {
 }
 QStringList SystemDispatcher::scan_cookies_records_qt() {
     QDBusReply<QStringList> reply = systemiface->call("scan_cookies_records");
+    qDebug() << "qt1111";
+    qDebug() << reply.value();
+    qDebug() << "qt222";
     return reply.value();
 }
 void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
@@ -230,7 +233,10 @@ QStringList SystemDispatcher::scan_softwarecenter_cruft_qt() {
 
 
 void SystemDispatcher::clean_by_one_key_qt(QStringList strlist) {
+    qDebug() << "aa";
+    qDebug() << strlist;
     QDBusReply<void> reply = systemiface->call("clean_by_one_key", strlist);
+    qDebug() << "bb";
 }
 
 //------------------------------------------------------

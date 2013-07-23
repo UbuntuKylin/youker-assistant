@@ -28,6 +28,11 @@ Rectangle {
 //    property SystemDispatcher dis2: systemdispatcher
     signal dialogmsg()
 
+    Component.onCompleted: {
+        console.log("start to get system message................");
+        sessiondispatcher.get_system_message_qt();
+    }
+
     function openFile(file) {
          var component = Qt.createComponent(file)
          if (component.status == Component.Ready)
