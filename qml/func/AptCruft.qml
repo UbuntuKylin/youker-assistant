@@ -94,14 +94,16 @@ Item {
 
 //         }
         onFinishCleanWork: {
-            console.log("33333333333333");
-            console.log(msg);//apt software   package   history   cookies
-            console.log(btn_flag);
-            if (msg == "apt") {
-                console.log("******Clear Signal handler received  Start apt_work******");
-//                 console.log(msg);
-                root.work_result = msg;
-                root.state = "AptWorkFinish";
+//            console.log("33333333333333");
+//            console.log(msg);//apt software   package   history   cookies
+//            console.log(btn_flag);
+            if (btn_flag == "apt_work") {
+                if (msg == "apt") {
+                    console.log("******Clear Signal handler received  Start apt_work******");
+    //                 console.log(msg);
+                    root.work_result = msg;
+                    root.state = "AptWorkFinish";
+                }
             }
         }
     }

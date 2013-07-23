@@ -106,14 +106,16 @@ Item {
 
 //         }
         onFinishCleanWork: {
-            console.log("33333333333333");
-            console.log(msg);//apt software   package   history   cookies
-            console.log(btn_flag);
-            if (msg == "history") {
-                console.log("******Clear Signal handler received  Start history_work******");
-//                 console.log(msg);
-                root.work_result = msg;
-                root.state = "HistoryWorkFinish";
+//            console.log("33333333333333");
+//            console.log(msg);//apt software   package   history   cookies
+//            console.log(btn_flag);
+            if (btn_flag == "history_work") {
+                if (msg == "history") {
+                    console.log("******Clear Signal handler received  Start history_work******");
+    //                 console.log(msg);
+                    root.work_result = msg;
+                    root.state = "HistoryWorkFinish";
+                }
             }
         }
     }

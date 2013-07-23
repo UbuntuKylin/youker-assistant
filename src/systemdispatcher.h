@@ -29,6 +29,8 @@ class SystemDispatcher : public QObject
     Q_OBJECT
     Q_PROPERTY(QNOTIFY myStringChanged)
     Q_PROPERTY(QNOTIFY finishCleanWork)
+    Q_PROPERTY(QNOTIFY finishCleanWorkMain)
+    Q_PROPERTY(QNOTIFY finishCleanWorkSecond)
 //    Q_PROPERTY(QNOTIFY finishCleanaptWork)
 //    Q_PROPERTY(QNOTIFY finishCleansoftwareWork)
 //    Q_PROPERTY(QNOTIFY finishCleanhistoryWork)
@@ -50,7 +52,10 @@ public:
     Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
     Q_INVOKABLE QString show_file_dialog();
 
-    Q_INVOKABLE void clean_by_one_key_qt(QStringList strlist);
+//    Q_INVOKABLE void clean_by_one_key_qt(QStringList strlist);
+    Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
+    Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
+
 
     Q_INVOKABLE int scan_history_records_qt();
     Q_INVOKABLE void clean_history_records_qt();
@@ -120,6 +125,12 @@ public:
     Q_INVOKABLE void del_onekey_args(QString str);
     Q_INVOKABLE void clear_onekey_args();
     Q_INVOKABLE QStringList get_onekey_args();
+
+    QStringList onekey_args2;
+    Q_INVOKABLE void set_onekey_args2(QString str);
+    Q_INVOKABLE void del_onekey_args2(QString str);
+    Q_INVOKABLE void clear_onekey_args2();
+    Q_INVOKABLE QStringList get_onekey_args2();
 //-------------
 
 
@@ -134,6 +145,8 @@ public:
 signals:
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
+    void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
+    void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
 //    void finishCleanaptWork(QString msg);
 //    void finishCleansoftwareWork(QString msg);
 //    void finishCleanhistoryWork(QString msg);
@@ -143,6 +156,8 @@ signals:
 
 public slots:
     void handler_clear_rubbish(QString msg);
+    void handler_clear_rubbish_main_onekey(QString msg);
+    void handler_clear_rubbish_second_onekey(QString msg);
     void handler_scan_rubbish(QString msg);
 //    QString show_signal(QString msg);
 //    void setmyString(QString aString);

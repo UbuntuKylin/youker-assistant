@@ -23,29 +23,157 @@ import "common" as Common
 Rectangle {
     id: leftbar
     width: 600; height: 460
-
+    property string onekeypage: "first"
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
         target: systemdispatcher
-        onFinishCleanWork: {
-            console.log("begin onOneKeyFinishCleanWork..............");
-            if (setbtn_flag == "onekey") {
+        onFinishCleanWorkMain: {
+            console.log("begin LeftPage Main onOneKeyFinishCleanWork..............");
+            console.log(systemdispatcher.get_onekey_args());
+//            var str_value = systemdispatcher.get_onekey_args();
+//            var word_flag = "";
+//            for (var i=0; i<str_value.length; i++) {
+//                if (str_value[i] == "cache")
+//                    word_flag += "c";
+//                else if (str_value[i] == "history")
+//                    word_flag += "h";
+//                else if (str_value[i] == "cookies")
+//                    word_flag += "k";
+//                else if (str_value[i] == "unneed")
+//                    word_flag += "u";
+//            }
+//            console.log("cache is.........");
+//            console.log(word_flag);
+//            if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") > -1 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") < 0 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") < 0 && word_flag.indexOf("k") < 0 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }else if (str_value[i] == "unneed")
+//                word_flag += "u";
+//            else if (word_flag.indexOf("c") < 0 && word_flag.indexOf("h") < 0 && word_flag.indexOf("k") < 0 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") > -1 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") > -1 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") > -1 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") > -1 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") > -1 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") > -1 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            else if (word_flag.indexOf("c") > -1 && word_flag.indexOf("h") > -1 && word_flag.indexOf("k") > -1 && word_flag.indexOf("u") < 0) {
+//                console.log("StatusOver1..............");
+//                leftbar.state = "StatusOver1";
+//            }
+//            if (word_flag1 == "false") {
+//                console.log("no word_flag");
+//                systemdispatcher.set_onekey_args(flag);
+////                    console.log(systemdispatcher.get_package_args());
+//            }
+//            else
+//                console.log("have word_flag");
+
+
+
+//            console.log(setbtn_flag);
+//            if (firstonekey.setbtn_flag == "onekey") {
                 console.log(msg);
-//                menulogo.get_msg = msg;
-                if (msg == "history") {
-                    leftbar.state = "StatusOne";
-                }
-                else if (msg == "cookies") {
-                    leftbar.state = "StatusTwo";
-                }
-                else if (msg == "unneed") {
-                    leftbar.state = "StatusThree";
-                }
-                else if (msg == "cache") {
-                    leftbar.state = "StatusFour";
-                }
+
+
+            if (msg == "h") {
+                leftbar.state = "StatusH";
             }
+            else if (msg == "k") {
+                leftbar.state = "StatusK";
+            }
+            else if (msg == "u") {
+                leftbar.state = "StatusU";
+            }
+            else if (msg == "c") {
+                leftbar.state = "StatusC";
+            }
+            else if (msg == "hk") {
+                leftbar.state = "StatusHK";
+            }
+            else if (msg == "hu") {
+                leftbar.state = "StatusHU";
+            }
+            else if (msg == "hc") {
+                leftbar.state = "StatusHC";
+            }
+            else if (msg == "ku") {
+                leftbar.state = "StatusKU";
+            }
+            else if (msg == "kc") {
+                leftbar.state = "StatusKC";
+            }
+            else if (msg == "uc") {
+                leftbar.state = "StatusUC";
+            }
+            else if (msg == "hku") {
+                leftbar.state = "StatusHKU";
+            }
+            else if (msg == "hkc") {
+                leftbar.state = "StatusHKC";
+            }
+            else if (msg == "huc") {
+                leftbar.state = "StatusHUC";
+            }
+            else if (msg == "kuc") {
+                leftbar.state = "StatusKUC";
+            }
+            else if (msg == "hkuc") {
+                leftbar.state = "StatusOver";
+            }
+
+
+//            if (msg == "one key") {
+//                console.log("StatusOver..............");
+//                leftbar.state = "StatusOver";
+//            }
+//                menulogo.get_msg = msg;
+//                if (msg == "cache") {
+//                    console.log("StatusOne..............");
+//                    leftbar.state = "StatusOne";
+//                }
+//                else if (msg == "history") {
+//                    console.log("StatusTwo..............");
+//                    leftbar.state = "StatusTwo";
+//                }
+//                else if (msg == "cookies") {
+//                    console.log("StatusThree..............");
+//                    leftbar.state = "StatusThree";
+//                }
+//                else if (msg == "unneed") {
+//                    console.log("StatusFour..............");
+//                    leftbar.state = "StatusFour";
+//                }
+//            }
         }
     }
 
@@ -109,6 +237,7 @@ Rectangle {
     //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
                 }
                 SetBtn {
+                    id: firstonekey
                     iconName: "onekeyBtn.png"
                     setbtn_flag: "onekey"
                     anchors {
@@ -226,7 +355,7 @@ Rectangle {
                     anchors.top: parent.top
 //                    anchors.topMargin: titlebar.height + 45
                     model: clearModel
-                    delegate: FastDelegate {}
+                    delegate: FastDelegate {pagenum: leftbar.onekeypage}
                     cacheBuffer: 1000
                 }
             }
@@ -235,7 +364,7 @@ Rectangle {
 
             //status picture
             Image {
-                id: rubbishstatus
+                id: cachestatus
                 source: "../img/toolWidget/unfinish.png"
                 anchors {
                     top: itemtip.bottom; topMargin: 20
@@ -247,7 +376,7 @@ Rectangle {
                 id: historystatus
                 source: "../img/toolWidget/unfinish.png"
                 anchors {
-                    top: rubbishstatus.bottom; topMargin: 45
+                    top: cachestatus.bottom; topMargin: 45
                     left: parent.left; leftMargin: 500
                 }
             }
@@ -276,20 +405,82 @@ Rectangle {
 
     states: [
         State {
-            name: "StatusOne"
-            PropertyChanges { target: rubbishstatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusTwo"
+            name: "StatusH"
             PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
         },
         State {
-            name: "StatusThree"
+            name: "StatusK"
             PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
         },
         State {
-            name: "StatusFour"
+            name: "StatusU"
             PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+
+        },
+        State {
+            name: "StatusC"
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHK"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHU"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHC"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusKU"
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusKC"
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusUC"
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHKU"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHKC"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHUC"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusKUC"
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusOver"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
         }
     ]
 

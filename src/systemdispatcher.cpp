@@ -38,6 +38,8 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 //    QObject::connect(systemiface,SIGNAL(clean_begin(QString)),this,SLOT(handler_clear_rubbish(QString)));
     //over
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
     //status
 //    QObject::connect(systemiface,SIGNAL(clean_status(QString)),this,SLOT(handler_clear_rubbish(QString)));
@@ -97,7 +99,7 @@ int SystemDispatcher::get_add_value()
 
 void SystemDispatcher::handler_clear_rubbish(QString msg)
 {
-    qDebug() << "love ps>>>>>>>>>>>>>>>>>>>>>>..";
+//    qDebug() << "love ps>>>>>>>>>>>>>>>>>>>>>>..";
 //    if (msg == "apt")
 //        emit finishCleanaptWork(msg);
 //    else if (msg == "software")
@@ -111,6 +113,16 @@ void SystemDispatcher::handler_clear_rubbish(QString msg)
      emit finishCleanWork(msg);
 //    emit myStringChanged("Kobe test for fastclear button and dbus communication");
 }
+
+void SystemDispatcher::handler_clear_rubbish_main_onekey(QString msg)
+{
+     emit finishCleanWorkMain(msg);
+}
+void SystemDispatcher::handler_clear_rubbish_second_onekey(QString msg)
+{
+     emit finishCleanWorkSecond(msg);
+}
+
 void SystemDispatcher::handler_scan_rubbish(QString msg)
 {
     emit finishScanWork(msg);
@@ -232,13 +244,24 @@ QStringList SystemDispatcher::scan_softwarecenter_cruft_qt() {
 
 
 
-void SystemDispatcher::clean_by_one_key_qt(QStringList strlist) {
-    qDebug() << "aa";
+//void SystemDispatcher::clean_by_one_key_qt(QStringList strlist) {
+//    qDebug() << "aa";
+//    qDebug() << strlist;
+//    QDBusReply<void> reply = systemiface->call("clean_by_one_key", strlist);
+//    qDebug() << "bb";
+//}
+void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
+//    qDebug() << "aa";
     qDebug() << strlist;
-    QDBusReply<void> reply = systemiface->call("clean_by_one_key", strlist);
-    qDebug() << "bb";
+    QDBusReply<void> reply = systemiface->call("clean_by_main_one_key", strlist);
+//    qDebug() << "bb";
 }
-
+void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
+//    qDebug() << "aa";
+    qDebug() << strlist;
+    QDBusReply<void> reply = systemiface->call("clean_by_second_one_key", strlist);
+//    qDebug() << "bb";
+}
 //------------------------------------------------------
 
 
@@ -354,6 +377,29 @@ void SystemDispatcher::clear_onekey_args() {
 }
 QStringList SystemDispatcher::get_onekey_args() {
     return onekey_args;
+}
+
+
+
+void SystemDispatcher::set_onekey_args2(QString str) {
+    onekey_args2.append(str);
+}
+void SystemDispatcher::del_onekey_args2(QString str) {
+    QStringList bake;
+    int len = onekey_args2.length();
+    for (int i=0; i< len; i++) {
+        if (onekey_args2[i] != str)
+            bake.append(onekey_args2[i]);
+    }
+    onekey_args2.clear();
+    onekey_args2 = bake;
+//    package_args.replaceInStrings(QString(str), QString(""));
+}
+void SystemDispatcher::clear_onekey_args2() {
+    onekey_args2.clear();
+}
+QStringList SystemDispatcher::get_onekey_args2() {
+    return onekey_args2;
 }
 //--------------------
 

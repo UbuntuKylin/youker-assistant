@@ -2,11 +2,12 @@ import QtQuick 1.1
 import "common" as Common
 import SessionType 0.1
 import QtDesktop 0.1
-Component {
+//Component {
 
     Item {
         id: clearDelegate
         property SessionDispatcher dis: sessiondispatcher
+        property string pagenum: ""
         width: parent.width//clearDelegate.ListView.view.width
         height: 65
 
@@ -52,8 +53,8 @@ Component {
 //                else if (flag == "package") {
 //                    systemdispatcher.set_onekey_args("package");
 //                }
-                console.log("OMG........");
-                console.log(systemdispatcher.get_onekey_args());
+//                console.log("OMG........");
+//                console.log(systemdispatcher.get_onekey_args());
 //            }
         }
 
@@ -78,100 +79,207 @@ Component {
                     onCheckedChanged: {
                         //kobe: wait for adding function
                         if (checkbox.checked) {
-                            if (flag == "cache") {
-                                var rubbishlist = systemdispatcher.get_onekey_args();
-                                console.log("ok change............");
-                                var word_flag = "false";
-                                for (var i=0; i<rubbishlist.length; i++) {
-                                    if (rubbishlist[i] == flag) {
-                                        word_flag = "true";
-                                        break;
+                            if (pagenum == "first") {
+                                console.log("fisrt check...........");
+                                if (flag == "cache") {
+                                    var rubbishlist = systemdispatcher.get_onekey_args();
+                                    console.log("ok change............");
+                                    var word_flag = "false";
+                                    for (var i=0; i<rubbishlist.length; i++) {
+                                        if (rubbishlist[i] == flag) {
+                                            word_flag = "true";
+                                            break;
+                                        }
                                     }
-                                }
-                                if (word_flag == "false") {
-                                    console.log("no word_flag");
-                                    systemdispatcher.set_onekey_args(flag);
-                //                    console.log(systemdispatcher.get_package_args());
-                                }
-                                else
-                                    console.log("have word_flag");
-                            }
-                            else if (flag == "history") {
-                                var historylist = systemdispatcher.get_onekey_args();
-                                console.log("ok change............");
-                                var word_flag1 = "false";
-                                for (var j=0; j<historylist.length; j++) {
-                                    if (historylist[j] == flag) {
-                                        word_flag1 = "true";
-                                        break;
+                                    if (word_flag == "false") {
+                                        console.log("no word_flag");
+                                        systemdispatcher.set_onekey_args(flag);
+                    //                    console.log(systemdispatcher.get_package_args());
                                     }
+                                    else
+                                        console.log("have word_flag");
                                 }
-                                if (word_flag1 == "false") {
-                                    console.log("no word_flag");
-                                    systemdispatcher.set_onekey_args(flag);
-                //                    console.log(systemdispatcher.get_package_args());
-                                }
-                                else
-                                    console.log("have word_flag");
-                            }
-                            else if (flag == "cookies") {
-                                var cookieslist = systemdispatcher.get_onekey_args();
-                                console.log("ok change............");
-                                var word_flag2 = "false";
-                                for (var k=0; k<cookieslist.length; k++) {
-                                    if (cookieslist[k] == flag) {
-                                        word_flag2 = "true";
-                                        break;
+                                else if (flag == "history") {
+                                    var historylist = systemdispatcher.get_onekey_args();
+                                    console.log("ok change............");
+                                    var word_flag1 = "false";
+                                    for (var j=0; j<historylist.length; j++) {
+                                        if (historylist[j] == flag) {
+                                            word_flag1 = "true";
+                                            break;
+                                        }
                                     }
-                                }
-                                if (word_flag2 == "false") {
-                                    console.log("no word_flag");
-                                    systemdispatcher.set_onekey_args(flag);
-                //                    console.log(systemdispatcher.get_package_args());
-                                }
-                                else
-                                    console.log("have word_flag");
-                            }
-                            else if (flag == "unneed") {
-                                var mylist = systemdispatcher.get_onekey_args();
-                                console.log("ok change............");
-                                var word_flag3 = "false";
-                                for (var q=0; q<mylist.length; q++) {
-                                    if (mylist[q] == flag) {
-                                        word_flag3 = "true";
-                                        break;
+                                    if (word_flag1 == "false") {
+                                        console.log("no word_flag");
+                                        systemdispatcher.set_onekey_args(flag);
+                    //                    console.log(systemdispatcher.get_package_args());
                                     }
+                                    else
+                                        console.log("have word_flag");
                                 }
-                                if (word_flag3 == "false") {
-                                    console.log("no word_flag");
-                                    systemdispatcher.set_onekey_args(flag);
-                //                    console.log(systemdispatcher.get_package_args());
+                                else if (flag == "cookies") {
+                                    var cookieslist = systemdispatcher.get_onekey_args();
+                                    console.log("ok change............");
+                                    var word_flag2 = "false";
+                                    for (var k=0; k<cookieslist.length; k++) {
+                                        if (cookieslist[k] == flag) {
+                                            word_flag2 = "true";
+                                            break;
+                                        }
+                                    }
+                                    if (word_flag2 == "false") {
+                                        console.log("no word_flag");
+                                        systemdispatcher.set_onekey_args(flag);
+                    //                    console.log(systemdispatcher.get_package_args());
+                                    }
+                                    else
+                                        console.log("have word_flag");
                                 }
-                                else
-                                    console.log("have word_flag");
+                                else if (flag == "unneed") {
+                                    var mylist = systemdispatcher.get_onekey_args();
+                                    console.log("ok change............");
+                                    var word_flag3 = "false";
+                                    for (var q=0; q<mylist.length; q++) {
+                                        if (mylist[q] == flag) {
+                                            word_flag3 = "true";
+                                            break;
+                                        }
+                                    }
+                                    if (word_flag3 == "false") {
+                                        console.log("no word_flag");
+                                        systemdispatcher.set_onekey_args(flag);
+                    //                    console.log(systemdispatcher.get_package_args());
+                                    }
+                                    else
+                                        console.log("have word_flag");
+                                }
+                                console.log(flag);
+                                console.log(systemdispatcher.get_onekey_args());
                             }
-                            console.log(flag);
-                            console.log(systemdispatcher.get_onekey_args());
+                            else if (pagenum == "second") {
+                                console.log("second check...........");
+                                if (flag == "cache") {
+                                    var rubbishlist2 = systemdispatcher.get_onekey_args2();
+                                    console.log("ok change............");
+                                    var second_flag = "false";
+                                    for (var x=0; x<rubbishlist2.length; x++) {
+                                        if (rubbishlist2[x] == flag) {
+                                            second_flag = "true";
+                                            break;
+                                        }
+                                    }
+                                    if (second_flag == "false") {
+                                        console.log("no word_flag");
+                                        systemdispatcher.set_onekey_args2(flag);
+                    //                    console.log(systemdispatcher.get_package_args());
+                                    }
+                                    else
+                                        console.log("have word_flag");
+                                }
+                                else if (flag == "history") {
+                                    var historylist2 = systemdispatcher.get_onekey_args2();
+                                    console.log("ok change............");
+                                    var second_flag2 = "false";
+                                    for (var y=0; y<historylist2.length; y++) {
+                                        if (historylist2[y] == flag) {
+                                            second_flag2 = "true";
+                                            break;
+                                        }
+                                    }
+                                    if (second_flag2 == "false") {
+                                        console.log("no word_flag");
+                                        systemdispatcher.set_onekey_args2(flag);
+                    //                    console.log(systemdispatcher.get_package_args());
+                                    }
+                                    else
+                                        console.log("have word_flag");
+                                }
+                                else if (flag == "cookies") {
+                                    var cookieslist2 = systemdispatcher.get_onekey_args2();
+                                    console.log("ok change............");
+                                    var second_flag3 = "false";
+                                    for (var z=0; z<cookieslist2.length; z++) {
+                                        if (cookieslist2[z] == flag) {
+                                            second_flag3 = "true";
+                                            break;
+                                        }
+                                    }
+                                    if (second_flag3 == "false") {
+                                        console.log("no word_flag");
+                                        systemdispatcher.set_onekey_args2(flag);
+                    //                    console.log(systemdispatcher.get_package_args());
+                                    }
+                                    else
+                                        console.log("have word_flag");
+                                }
+                                else if (flag == "unneed") {
+                                    var mylist2 = systemdispatcher.get_onekey_args2();
+                                    console.log("ok change............");
+                                    var second_flag4 = "false";
+                                    for (var w=0; w<mylist2.length; w++) {
+                                        if (mylist2[w] == flag) {
+                                            second_flag4 = "true";
+                                            break;
+                                        }
+                                    }
+                                    if (second_flag4 == "false") {
+                                        console.log("no word_flag");
+                                        systemdispatcher.set_onekey_args2(flag);
+                    //                    console.log(systemdispatcher.get_package_args());
+                                    }
+                                    else
+                                        console.log("have word_flag");
+                                }
+                                console.log(flag);
+                                console.log(systemdispatcher.get_onekey_args2());
+                            }
+
+//                            console.log(flag);
+//                            console.log(systemdispatcher.get_onekey_args());
 
                         }
                         else if (!checkbox.checked) {
                             console.log("no change...........");
-            //                console.log(systemdispatcher.get_package_args());
-                            if (flag == "cache") {
-                                systemdispatcher.del_onekey_args(flag);
-                            }
-                            else if (flag == "history") {
-                                systemdispatcher.del_onekey_args(flag);
-                            }
-                           else if (flag == "cookies") {
+                            if (pagenum == "first") {
+                                console.log("fisrt no check...........");
+                                if (flag == "cache") {
+                                    systemdispatcher.del_onekey_args(flag);
+                                }
+                                else if (flag == "history") {
+                                    systemdispatcher.del_onekey_args(flag);
+                                }
+                               else if (flag == "cookies") {
 
-                                systemdispatcher.del_onekey_args(flag);
+                                    systemdispatcher.del_onekey_args(flag);
+                                }
+                                else if (flag == "unneed") {
+                                    systemdispatcher.del_onekey_args(flag);
+                                }
+                                console.log(flag);
+                                console.log(systemdispatcher.get_onekey_args());
                             }
-                            else if (flag == "unneed") {
-                                systemdispatcher.del_onekey_args(flag);
+                            else if (pagenum == "second") {
+                                console.log("second no check...........");
+                                if (flag == "cache") {
+                                    systemdispatcher.del_onekey_args2(flag);
+                                }
+                                else if (flag == "history") {
+                                    systemdispatcher.del_onekey_args2(flag);
+                                }
+                               else if (flag == "cookies") {
+
+                                    systemdispatcher.del_onekey_args2(flag);
+                                }
+                                else if (flag == "unneed") {
+                                    systemdispatcher.del_onekey_args2(flag);
+                                }
+                                console.log(flag);
+                                console.log(systemdispatcher.get_onekey_args2());
                             }
-                            console.log(flag);
-                            console.log(systemdispatcher.get_onekey_args());
+            //                console.log(systemdispatcher.get_package_args());
+
+//                            console.log(flag);
+//                            console.log(systemdispatcher.get_onekey_args());
                         }
 
 
@@ -269,7 +377,7 @@ Component {
 //            onClicked: itemClicked()
 //        }
     }
-}
+//}
 
 
 

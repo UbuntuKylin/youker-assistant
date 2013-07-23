@@ -30,32 +30,32 @@ Rectangle {
 
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
-    Connections
-    {
-        target: systemdispatcher
-        onFinishCleanWork: {
-            console.log("begin onOneKeyFinishCleanWork..............");
-            if (setbtn_flag == "onekey") {
-                console.log(msg);
-//                menulogo.get_msg = msg;
-                if (msg == "history") {
-                    menulogo.state = "StatusOne";
-                }
-                else if (msg == "cookies") {
-                    menulogo.state = "StatusTwo";
-                }
-                else if (msg == "unneed") {
-                    menulogo.state = "StatusThree";
-                }
-                else if (msg == "cache") {
-                    menulogo.state = "StatusFour";
-                }
-                else if (msg == "one key") {
-                    menulogo.state = "StatusFive";
-                }
-            }
-        }
-    }
+//    Connections
+//    {
+//        target: systemdispatcher
+//        onFinishCleanWorkMain: {
+//            console.log("begin setBtn onOneKeyFinishCleanWork..............");
+////            if (setbtn_flag == "onekey") {
+//                console.log(msg);
+////                menulogo.get_msg = msg;
+//                if (msg == "history") {
+//                    menulogo.state = "StatusOne";
+//                }
+//                else if (msg == "cookies") {
+//                    menulogo.state = "StatusTwo";
+//                }
+//                else if (msg == "unneed") {
+//                    menulogo.state = "StatusThree";
+//                }
+//                else if (msg == "cache") {
+//                    menulogo.state = "StatusFour";
+//                }
+//                else if (msg == "one key") {
+//                    menulogo.state = "StatusFive";
+//                }
+////            }
+//        }
+//    }
 
     Image {
         id: toolImg
@@ -114,11 +114,11 @@ Rectangle {
             if (setbtn_flag == "onekey") {
                 console.log("onekey clicked....");
                 console.log(systemdispatcher.get_onekey_args());
-                systemdispatcher.clean_by_one_key_qt(systemdispatcher.get_onekey_args());
+                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
             }
             else if (setbtn_flag == "smallonekey") {
                 console.log("smallonekey clicked....");
-                systemdispatcher.clean_by_one_key_qt(systemdispatcher.get_onekey_args());
+                systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
             }
             else if (setbtn_flag == "set")
                 console.log("set clicked....");
@@ -132,26 +132,26 @@ Rectangle {
 
 
 
-    states: [
-        State {
-            name: "StatusOne"
-            PropertyChanges { target: toolImg; source: "../img/icons/onekey1.png"}
-        },
-        State {
-            name: "StatusTwo"
-            PropertyChanges { target: toolImg; source: "../img/icons/onekey3.png"}
-        },
-        State {
-            name: "StatusThree"
-            PropertyChanges { target: toolImg; source: "../img/icons/onekey5.png"}
-        },
-        State {
-            name: "StatusFour"
-            PropertyChanges { target: toolImg; source: "../img/icons/onekey7.png"}
-        },
-        State {
-            name: "StatusFive"
-            PropertyChanges { target: toolImg; source: "../img/icons/onekeyover.png"}
-        }
-    ]
+//    states: [
+//        State {
+//            name: "StatusOne"
+//            PropertyChanges { target: toolImg; source: "../img/icons/onekey1.png"}
+//        },
+//        State {
+//            name: "StatusTwo"
+//            PropertyChanges { target: toolImg; source: "../img/icons/onekey3.png"}
+//        },
+//        State {
+//            name: "StatusThree"
+//            PropertyChanges { target: toolImg; source: "../img/icons/onekey5.png"}
+//        },
+//        State {
+//            name: "StatusFour"
+//            PropertyChanges { target: toolImg; source: "../img/icons/onekey7.png"}
+//        },
+//        State {
+//            name: "StatusFive"
+//            PropertyChanges { target: toolImg; source: "../img/icons/onekeyover.png"}
+//        }
+//    ]
 }

@@ -4,33 +4,65 @@ import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
 Rectangle {
-    id: leftbg
+    id: fastmode
 //    width: 650; height: 435
     width: parent.width
     height: 435
+    property string onekeypage: "second"
 
 
+    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
         target: systemdispatcher
-        onFinishCleanWork: {
-            console.log("begin onOneKeyFinishCleanWork..............");
-            if (setbtn_flag == "smallonekey") {
-                console.log(msg);
-//                menulogo.get_msg = msg;
-                if (msg == "history") {
-                    leftbg.state = "StatusOne";
-                }
-                else if (msg == "cookies") {
-                    leftbg.state = "StatusTwo";
-                }
-                else if (msg == "unneed") {
-                    leftbg.state = "StatusThree";
-                }
-                else if (msg == "cache") {
-                    leftbg.state = "StatusFour";
-                }
+        onFinishCleanWorkSecond: {
+            console.log("begin LeftPage Second onOneKeyFinishCleanWork..............");
+            console.log(msg);
+            if (msg == "h") {
+                fastmode.state = "StatusH";
+            }
+            else if (msg == "k") {
+                fastmode.state = "StatusK";
+            }
+            else if (msg == "u") {
+                fastmode.state = "StatusU";
+            }
+            else if (msg == "c") {
+                fastmode.state = "StatusC";
+            }
+            else if (msg == "hk") {
+                fastmode.state = "StatusHK";
+            }
+            else if (msg == "hu") {
+                fastmode.state = "StatusHU";
+            }
+            else if (msg == "hc") {
+                fastmode.state = "StatusHC";
+            }
+            else if (msg == "ku") {
+                fastmode.state = "StatusKU";
+            }
+            else if (msg == "kc") {
+                fastmode.state = "StatusKC";
+            }
+            else if (msg == "uc") {
+                fastmode.state = "StatusUC";
+            }
+            else if (msg == "hku") {
+                fastmode.state = "StatusHKU";
+            }
+            else if (msg == "hkc") {
+                fastmode.state = "StatusHKC";
+            }
+            else if (msg == "huc") {
+                fastmode.state = "StatusHUC";
+            }
+            else if (msg == "kuc") {
+                fastmode.state = "StatusKUC";
+            }
+            else if (msg == "hkuc") {
+                fastmode.state = "StatusOver";
             }
         }
     }
@@ -118,8 +150,8 @@ Rectangle {
             Item {
                 id: views
                 width: parent.width ////ListView不会随鼠标上下移动
-    //                width:leftbg.width -10 //ListView会随鼠标上下移动
-                height: leftbg.height - refreshArrow.height - 10*2 - 20 -10
+    //                width:fastmode.width -10 //ListView会随鼠标上下移动
+                height: fastmode.height - refreshArrow.height - 10*2 - 20 -10
                 anchors.top: parent.top
                 anchors.topMargin: 110
 
@@ -158,7 +190,7 @@ Rectangle {
                     anchors.top: parent.top
     //                    anchors.topMargin: titlebar.height + 45
                     model: clearModel
-                    delegate: FastDelegate {}
+                    delegate: FastDelegate {pagenum: fastmode.onekeypage}
                     cacheBuffer: 1000
                 }
             }
@@ -287,7 +319,7 @@ Rectangle {
 
 
         Image {
-            id: rubbishstatus1
+            id: cachestatus
             source: "../img/toolWidget/unfinish.png"
             anchors {
                 top: parent.top; topMargin: 100
@@ -295,7 +327,7 @@ Rectangle {
             }
         }
         Image {
-            id: historystatus1
+            id: historystatus
             source: "../img/toolWidget/unfinish.png"
             anchors {
                 top: parent.top; topMargin: 164
@@ -303,7 +335,7 @@ Rectangle {
             }
         }
         Image {
-            id: cookiestatus1
+            id: cookiestatus
             source: "../img/toolWidget/unfinish.png"
             anchors {
                 top: parent.top; topMargin: 228
@@ -311,7 +343,7 @@ Rectangle {
             }
         }
         Image {
-            id: unneedstatus1
+            id: unneedstatus
             source: "../img/toolWidget/unfinish.png"
             anchors {
                 top: parent.top; topMargin: 290
@@ -325,22 +357,102 @@ Rectangle {
 
     states: [
         State {
-            name: "StatusOne"
-            PropertyChanges { target: rubbishstatus1; source: "../img/toolWidget/finish.png"}
+            name: "StatusH"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
         },
         State {
-            name: "StatusTwo"
-            PropertyChanges { target: historystatus1; source: "../img/toolWidget/finish.png"}
+            name: "StatusK"
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
         },
         State {
-            name: "StatusThree"
-            PropertyChanges { target: cookiestatus1; source: "../img/toolWidget/finish.png"}
+            name: "StatusU"
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+
         },
         State {
-            name: "StatusFour"
-            PropertyChanges { target: unneedstatus1; source: "../img/toolWidget/finish.png"}
+            name: "StatusC"
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHK"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHU"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHC"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusKU"
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusKC"
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusUC"
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHKU"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHKC"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusHUC"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusKUC"
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "StatusOver"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
         }
     ]
+//    states: [
+//        State {
+//            name: "StatusOne"
+//            PropertyChanges { target: rubbishstatus1; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusTwo"
+//            PropertyChanges { target: historystatus1; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusThree"
+//            PropertyChanges { target: cookiestatus1; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusFour"
+//            PropertyChanges { target: unneedstatus1; source: "../img/toolWidget/finish.png"}
+//        }
+//    ]
 
 
 }//坐边栏Rectangle

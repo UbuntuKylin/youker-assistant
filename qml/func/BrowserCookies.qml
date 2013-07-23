@@ -134,14 +134,16 @@ Item {
 
 //         }
         onFinishCleanWork: {
-            console.log("33333333333333");
-            console.log(msg);//apt software   package   history   cookies
-            console.log(btn_flag);
-            if (msg == "cookies") {
-                console.log("******Clear Signal handler received  Start cookies_work******");
-//                 console.log(msg);
-                root.work_result = msg;
-                root.state = "CookiesWorkFinish";
+//            console.log("33333333333333");
+//            console.log(msg);//apt software   package   history   cookies
+//            console.log(btn_flag);
+            if (btn_flag == "cookies_work") {
+                if (msg == "cookies") {
+                    console.log("******Clear Signal handler received  Start cookies_work******");
+    //                 console.log(msg);
+                    root.work_result = msg;
+                    root.state = "CookiesWorkFinish";
+                }
             }
         }
     }
