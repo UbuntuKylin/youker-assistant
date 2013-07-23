@@ -66,45 +66,45 @@ inline QString getAppDirectory() {
 
 bool IhuApplication::setup()
 {
-//    AuthDialog *dialog = new AuthDialog;
-//    dialog->exec();
-//    QString aa = dialog->passwd;
-//    qDebug() << "aaaaaaa";
-//    qDebug() << aa;
+    AuthDialog *dialog = new AuthDialog;
+    dialog->exec();
+    QString aa = dialog->passwd;
+    qDebug() << "aaaaaaa";
+    qDebug() << aa;
 
-//    int value = 0;
-//    QString str = "";
-//    FILE *stream_system;
-//    char buf[128];
-//    memset(buf, '\0', sizeof(buf));
-//    stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
-//    fread(buf, sizeof(char), sizeof(buf), stream_system);
-//    str = QString(buf);
-//    value = str.toInt();
-//    if (value == 0) {
-//        qDebug() << "1234567";
-//        QProcess *process_system = new QProcess;
-//        process_system->start("/usr/bin/youkersystem " + aa);
-//    }
-//    else
-//        qDebug() << "123456789";
-//    pclose(stream_system);
+    int value = 0;
+    QString str = "";
+    FILE *stream_system;
+    char buf[128];
+    memset(buf, '\0', sizeof(buf));
+    stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
+    fread(buf, sizeof(char), sizeof(buf), stream_system);
+    str = QString(buf);
+    value = str.toInt();
+    if (value == 0) {
+        qDebug() << "1234567";
+        QProcess *process_system = new QProcess;
+        process_system->start("/usr/bin/youkersystem " + aa);
+    }
+    else
+        qDebug() << "123456789";
+    pclose(stream_system);
 
 
-//    FILE *stream_session;
-//    memset(buf, '\0', sizeof(buf));
-//    stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
-//    fread(buf, sizeof(char), sizeof(buf), stream_session);
-//    str = QString(buf);
-//    value = str.toInt();
-//    if (value == 0) {
-//        qDebug() << "6789";
-//        QProcess *process_session = new QProcess;
-//        process_session->start("/usr/bin/youkersession");
-//    }
-//    else
-//        qDebug() << "67890";
-//    pclose(stream_session);
+    FILE *stream_session;
+    memset(buf, '\0', sizeof(buf));
+    stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
+    fread(buf, sizeof(char), sizeof(buf), stream_session);
+    str = QString(buf);
+    value = str.toInt();
+    if (value == 0) {
+        qDebug() << "6789";
+        QProcess *process_session = new QProcess;
+        process_session->start("/usr/bin/youkersession");
+    }
+    else
+        qDebug() << "67890";
+    pclose(stream_session);
 
 
 

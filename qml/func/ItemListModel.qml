@@ -43,6 +43,14 @@ Rectangle {
     property string btn_flag: ""
     property bool check_flag: true
 
+
+    //背景
+    Image {
+        source: "../img/skin/bg-onekey.png"
+        anchors.fill: parent
+    }
+
+
     ListModel {
         id: mymodel
     }
