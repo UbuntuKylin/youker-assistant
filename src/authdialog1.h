@@ -2,19 +2,23 @@
 #define AUTHDIALOG_H
 
 #include <QDialog>
-//#include <QPoint>
-//#include <QStackedWidget>
-
+#include <QPoint>
+#include <QStackedWidget>
 //#include <QDeclarativeView>
 //#include <QApplication>
 //#include <QMouseEvent>
-//#include "QPoint"
 //#include <QBoxLayout>
-//#include <QStackedWidget>
 
-namespace Ui {
-class AuthDialog;
-}
+#include <QDeclarativeView>
+#include <QApplication>
+#include <QMouseEvent>
+#include "QPoint"
+#include <QBoxLayout>
+#include <QStackedWidget>
+
+//namespace Ui {
+//class AuthDialog;
+//}
 
 class AuthDialog : public QDialog
 //class AuthDialog : public QStackedWidget
@@ -24,16 +28,16 @@ class AuthDialog : public QDialog
 public:
     explicit AuthDialog(QWidget *parent = 0);
     ~AuthDialog();
-    QString passwd;
+//    QString passwd;
 //    void mousePressEvent(QMouseEvent *event);
 //    void mouseMoveEvent(QMouseEvent *event);
-//    QDeclarativeView *view;
+    QDeclarativeView *view;
     
 private:
-    Ui::AuthDialog *ui;
-//    QPoint dragPosition;
+//    Ui::AuthDialog *ui;
+    QPoint dragPosition;
 
-//    QBoxLayout *layout;
+    QBoxLayout *layout;
 
 private slots:
     void on_quitBtn_clicked();

@@ -1,8 +1,8 @@
 import QtQuick 1.1
 
 QtObject {
-    property int minimumWidth: 32
-    property int minimumHeight: 32
+    property int minimumWidth: 13//32
+    property int minimumHeight: 13//32
 
     property Component background:
     Component {
@@ -17,7 +17,8 @@ QtObject {
             }
             BorderImage {
                 anchors.fill: parent
-                source: "../../../img/icons/lineedit_normal.png"
+//                source: "../../../img/icons/lineedit_normal.png"
+                source: "../../../img/icons/checkbox-0.png"
                 smooth: true
                 border.left: 6; border.top: 3
                 border.right: 6; border.bottom: 3
@@ -27,7 +28,8 @@ QtObject {
 
     property Component checkmark: Component {
         Image {
-            source: "../../../img/icons/checkbox_check.png"
+//            source: "../../../img/icons/checkbox_check.png"
+            source: "../../../img/icons/checkbox.png"
             anchors.verticalCenterOffset: 1
             anchors.horizontalCenterOffset: 1
             anchors.centerIn: parent

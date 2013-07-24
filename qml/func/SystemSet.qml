@@ -120,7 +120,7 @@ Item {
                     spacing: 10
                     Image {
                         id: unity
-                        source: "../img/icons/themeset.png"
+                        source: "../img/icons/unity.png"
                     }
                     Column {
                         spacing: 10
@@ -149,7 +149,7 @@ Item {
                     spacing: 10
                     Image {
                         id: fontimage
-                        source: "../img/icons/themeset.png"
+                        source: "../img/icons/font.png"
                     }
                     Column {
                         spacing: 10
@@ -180,7 +180,7 @@ Item {
                     spacing: 10
                     Image {
                         id: sysimage
-                        source: "../img/icons/themeset.png"
+                        source: "../img/icons/systemset.png"
                     }
                     Column {
                         spacing: 10

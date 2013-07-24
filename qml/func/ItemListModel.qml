@@ -260,7 +260,9 @@ Rectangle {
                 Image {
                     id: arrow
                     fillMode: "PreserveAspectFit"
-                    height: parent.height*0.3
+//                    height: parent.height*0.3
+                    height: 28
+                    width: 26
                     source: container.arrow
                     //当鼠标点击后,箭头图片旋转90度
 //                    rotation: expanded ? 90 : 0
@@ -306,7 +308,7 @@ Rectangle {
                         model: container.submodel
 //                        model: mysubmodel
                         width: subItemsRect.width
-                        Common.ListItem {
+                        /*Common.*/ListItem {
                             id: subListItem
                             width: delegate.width
                             height: subItemsRect.itemHeight

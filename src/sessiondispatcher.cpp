@@ -59,6 +59,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 //    }
 
     notify_str = "";
+    passwd = "";
 
 
 
@@ -68,6 +69,15 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 //    qDebug() << "7654321";
 
 }
+
+void SessionDispatcher::set_passwd(QString pwd) {
+    passwd = pwd;
+}
+
+QString SessionDispatcher::get_passwd() {
+    return passwd;
+}
+
 
 void SessionDispatcher::get_system_message_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");

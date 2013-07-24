@@ -70,17 +70,17 @@ import QtDesktop 0.1
                     left: parent.left
                     leftMargin: 50
                 }
-                /*Common.*/CheckBox {
+                Common.CheckBox {
                     id: checkbox
 //                    checked: true
-                    checked: false
-                    width: 30
+                    checked: (pagenum == "history") ? true : false
+//                    width: 30
                     anchors.verticalCenter: parent.verticalCenter
                     onCheckedChanged: {
                         //kobe: wait for adding function
                         if (checkbox.checked) {
                             if (pagenum == "first") {
-                                console.log("fisrt check...........");
+                                console.log("fisrt check fastdelegate...........");
                                 if (flag == "cache") {
                                     var rubbishlist = systemdispatcher.get_onekey_args();
                                     console.log("ok change............");
@@ -233,13 +233,17 @@ import QtDesktop 0.1
                                 console.log(flag);
                                 console.log(systemdispatcher.get_onekey_args2());
                             }
+                            else if (pagenum == "history") {
+                                console.log("111");
+                                systemdispatcher.set_history_flag(true);
+                            }
 
 //                            console.log(flag);
 //                            console.log(systemdispatcher.get_onekey_args());
 
                         }
                         else if (!checkbox.checked) {
-                            console.log("no change...........");
+                            console.log("no change fastdelegate...........");
                             if (pagenum == "first") {
                                 console.log("fisrt no check...........");
                                 if (flag == "cache") {
@@ -275,6 +279,10 @@ import QtDesktop 0.1
                                 }
                                 console.log(flag);
                                 console.log(systemdispatcher.get_onekey_args2());
+                            }
+                            else if (pagenum == "history") {
+                                console.log("222");
+                                systemdispatcher.set_history_flag(false);
                             }
             //                console.log(systemdispatcher.get_package_args());
 

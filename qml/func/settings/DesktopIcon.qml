@@ -111,7 +111,7 @@ Rectangle {
             Label {
                 id: desktopiconlabel
                 width: 110
-                text: qsTr("桌面图标:")
+                text: qsTr("由文件管理器处理桌面:")
                 font {
                     family: desktopiconpage.fontName
                     pointSize: desktopiconpage.fontSize

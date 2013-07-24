@@ -96,6 +96,11 @@ public:
     QString notify_str;
 
 //-------------
+    bool history_flag;
+    Q_INVOKABLE void set_history_flag(bool flag);
+    Q_INVOKABLE bool get_history_flag();
+
+
     QStringList apt_args;
     Q_INVOKABLE void set_apt_args(QString str);
     Q_INVOKABLE void del_apt_args(QString str);

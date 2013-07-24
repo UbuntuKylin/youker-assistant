@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import QtDesktop 0.1
+import "common" as Common
 Item {
     id: container
 
@@ -10,10 +11,10 @@ Item {
     property string text: ""
     property string descript: ""
     property string size_num: ""
-    property string bgImage: '../../img/icons/list_item.png'
+    property string bgImage: '../img/icons/list_item.png'
 
-    property string bgImageSelected: '../../img/icons/list_item_selected.png'
-    property string bgImagePressed: '../../img/icons/list_item_pressed.png'
+    property string bgImageSelected: '../img/icons/list_item_selected.png'
+    property string bgImagePressed: '../img/icons/list_item_pressed.png'
     property bool selected: false
     property bool selectable: false
     property int textIndent: 0
@@ -35,9 +36,9 @@ Item {
         anchors.fill: parent
     }
 
-    CheckBox {
+    Common.CheckBox {
         id: checkbox
-        width: 30
+//        width: 30
         checked: container.checkbox_status ? true : false
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left

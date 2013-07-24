@@ -52,6 +52,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <QDialog>
+
+//#include "authdialog.h"
 int main(int argc, char** argv)
 {
 //    qmlRegisterType<Person>("People",1,0,"Person");
@@ -125,6 +127,12 @@ int main(int argc, char** argv)
 //    process_system->start("sudo /usr/bin/youker-assistant-system-daemon");
 
     IhuApplication application(argc, argv);
+
+
+//    if (!application.setupdialog()) {
+//        return 0;
+//    }
+
     if (!application.setup()) {
         return 0;
     }

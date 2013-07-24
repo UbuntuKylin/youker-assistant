@@ -1,30 +1,26 @@
 #include "authdialog.h"
-#include "ui_authdialog.h"
+//#include "ui_authdialog.h"
 #include <QDebug>
-//#include <QMouseEvent>
-//#include <QDeclarativeView>
-//#include <QApplication>
-//#include <QDir>
-//#include <QtGui/QApplication>
-//#include <QtDeclarative/QDeclarativeView>
-//#include <QtDeclarative/QDeclarativeEngine>
-//#include <QtDeclarative/QDeclarativeComponent>
-//#include <QtDeclarative/QDeclarativeContext>
-//#include <QtDeclarative/QDeclarativeItem>
-//#include <QMetaObject>
-//#include <QDeclarativeContext>
-//#include <QDesktopWidget>
-//#include <QGraphicsObject>
-//#include <QDialog>
-//#include <QProcess>
+#include <QMouseEvent>
+#include <QDeclarativeView>
+#include <QApplication>
+#include <QDir>
+#include <QtGui/QApplication>
+#include <QtDeclarative/QDeclarativeView>
+#include <QtDeclarative/QDeclarativeEngine>
+#include <QtDeclarative/QDeclarativeComponent>
+#include <QtDeclarative/QDeclarativeContext>
+#include <QtDeclarative/QDeclarativeItem>
+#include <QMetaObject>
+#include <QDeclarativeContext>
+#include <QDesktopWidget>
+#include <QGraphicsObject>
+#include <QDialog>
+#include <QProcess>
 
-AuthDialog::AuthDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::AuthDialog)
-{
-    ui->setupUi(this);
-    passwd = "";
-    ui->lineEdit->setFocus();
+//AuthDialog::AuthDialog(QWidget *parent) :
+//    QStackedWidget(parent)
+//{
 //    this->view = new QDeclarativeView(this);
 //    this->view->setSource(QUrl("../qml/MyDialog.qml"));
 
@@ -39,46 +35,46 @@ AuthDialog::AuthDialog(QWidget *parent) :
 //    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
 //    QObject::connect(this->view->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
 
+//    passwd = "";
+//}
 
-}
-
-//AuthDialog::AuthDialog(QWidget *parent) :
-//    QDialog(parent)
-//{
-////    Qt::WindowFlags flags = Qt::Dialog;
-////    flags |= Qt::WindowMinimizeButtonHint;
-////    this->setWindowFlags(flags);
-////    this->setAttribute(Qt::WA_TranslucentBackground);
-////    this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->view = new QDeclarativeView(this);
-//    this->view->setSource(QUrl("../qml/MyDialog.qml"));
-
-
-//    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
-//    this->view->setStyleSheet("background:transparent");
+AuthDialog::AuthDialog(QWidget *parent) :
+    QDialog(parent)
+{
+//    Qt::WindowFlags flags = Qt::Dialog;
+//    flags |= Qt::WindowMinimizeButtonHint;
+//    this->setWindowFlags(flags);
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
-//    QObject::connect(this->view->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
+    this->view = new QDeclarativeView(this);
+    this->view->setSource(QUrl("../qml/MyDialog.qml"));
 
-////    passwd = "";
-//}
+
+    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
+    this->view->setStyleSheet("background:transparent");
+    this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
+    QObject::connect(this->view->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
+
+//    passwd = "";
+}
 
 AuthDialog::~AuthDialog()
 {
-    delete ui;
+//    delete ui;
 }
 
 
 
 void AuthDialog::on_quitBtn_clicked()
 {
-    QDialog::reject();
+//    QDialog::reject();
 }
 
 void AuthDialog::on_okBtn_clicked()
 {
-    QDialog::accept();
+//    QDialog::accept();
 }
 //void AuthDialog::mousePressEvent(QMouseEvent *event)
 //{

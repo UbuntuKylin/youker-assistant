@@ -89,7 +89,7 @@ Item {
             root.sub_num -= num;
 //            console.log("****************************9");
             mainModel.clear();
-            mainModel.append({"itemTitle": "清理Cookies",
+            mainModel.append({"itemTitle": "清理Cookies ( 发现" + root.sub_num + "处记录 )",
                              "picture": "../img/toolWidget/cookies.png",
                              "detailstr": "清理Firefox浏览器自动保存的登录信息(Cookies)",
                              "flags": "clear_cookies",
@@ -211,26 +211,28 @@ Item {
             anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
         }
-        Button {
+
+        Common.Button {
             id: bitButton
-            width: 95
-            height: 32
-            text: root.btn_text
+            width: 120
+            height: 39
+            hoverimage: "scan-start.png"
+//            text: root.btn_text
             anchors.right: parent.right
             anchors.rightMargin: 50
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-                 //broswer cookies
-                  if (btn_flag == "cookies_scan") {
-                      console.log("cookies_scan---------------");
-                      root.state = "CookiesWork";
-                      cookies_signal("CookiesWork");
-                  }
-                  else if (btn_flag == "cookies_work") {
-                      console.log("cookies_work---------------");
-                      console.log(systemdispatcher.get_cookies_args());
-                      systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
-                  }
+                //broswer cookies
+                 if (btn_flag == "cookies_scan") {
+                     console.log("cookies_scan---------------");
+                     root.state = "CookiesWork";
+                     cookies_signal("CookiesWork");
+                 }
+                 else if (btn_flag == "cookies_work") {
+                     console.log("cookies_work---------------");
+                     console.log(systemdispatcher.get_cookies_args());
+                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+                 }
             }
         }
     }
@@ -299,32 +301,22 @@ Item {
                     }
                 }
 
-                //status picture
-                Image {
-                    id: statusImage
-                    fillMode: "PreserveAspectFit"
-                    height: parent.height*0.9
-                    smooth: true
-                    source: "../img/toolWidget/unfinish.png"
-                    anchors {
-                        left: parent.left; leftMargin: 700
-                        verticalCenter: parent.verticalCenter
-                    }
-                }
 
                 Image {
                     id: arrow
                     fillMode: "PreserveAspectFit"
-                    height: parent.height*0.3
+//                    height: parent.height*0.3
+                    height: 28
+                    width: 26
                     source: root.arrow
                     //当鼠标点击后,箭头图片旋转90度
 //                    rotation: expanded ? 90 : 0
                     rotation: expanded ? 0 : -180
                     smooth: true
                     anchors {
-                        left: statusImage.right
+                        left: clearImage.right
                         verticalCenter: parent.verticalCenter
-                        leftMargin: 30
+                        leftMargin: 750
                     }
                 }
 
@@ -362,7 +354,7 @@ Item {
                         model: subModel
 //                        model: mysubmodel
                         width: subItemsRect.width
-                        Common.ListItem {
+                        /*Common.*/ListItem {
                             id: subListItem
                             width: root.width
                             height: subItemsRect.itemHeight
@@ -419,18 +411,33 @@ Item {
     }//ScrollArea
     //----------------------------
 
+    //status picture
+    Image {
+        id: statusImage
+        source: "../img/toolWidget/unfinish.png"
+        fillMode: "PreserveAspectFit"
+        smooth: true
+        anchors {
+            top: parent.top; topMargin: 120
+            left: parent.left; leftMargin: 650
+        }
+    }
+
     states: [
         State {
             name: "CookiesWork"
              PropertyChanges { target: label; visible: true; text: "cookies扫描完成"}
-            PropertyChanges { target: bitButton; text: "开始清理" }
+//            PropertyChanges { target: bitButton; text: "开始清理" }
+             PropertyChanges { target: bitButton; hoverimage: "scan-ing.png" }
             PropertyChanges { target: root; btn_flag: "cookies_work" }
         },
         State {
             name: "CookiesWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; text: "开始扫描" }
+//            PropertyChanges { target: bitButton; text: "开始扫描" }
+            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
+            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         }
     ]
 }

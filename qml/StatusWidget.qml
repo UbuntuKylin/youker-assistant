@@ -40,19 +40,19 @@ Rectangle {
 
         Text {
             color: "white"
-            font.pointSize: 10
+            font.pixelSize: 12
             text: qsTr("主程序版本:" + version)
         }
-        Text {
-            color: "white"
-            font.pointSize: 10
-            text: qsTr("备用木马库:" + updateTime)
-        }
-        Text {
-            color: "white"
-            font.pointSize: 10
-            text: qsTr(status)
-        }
+//        Text {
+//            color: "white"
+//            font.pointSize: 10
+//            text: qsTr("备用木马库:" + updateTime)
+//        }
+//        Text {
+//            color: "white"
+//            font.pointSize: 10
+//            text: qsTr(status)
+//        }
 
     }
 
@@ -66,7 +66,7 @@ Rectangle {
         }
         Text {
             color: "white"
-            font.pointSize: 10
+            font.pixelSize: 12
             text: qsTr("我的工具箱")
         }
     }

@@ -61,7 +61,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 //    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("pc_message");
 
     notify_str = "";
-
+    history_flag = false;
 //    if (reply.isValid()) {
 //        QMap<QString, QVariant> value = reply.value();
 //        myinfo = value;
@@ -89,6 +89,14 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 //    QVariant tt = myinfo.value(key);
 //    return tt.toString();
 //}
+
+void SystemDispatcher::set_history_flag(bool flag) {
+    history_flag = flag;
+}
+
+bool SystemDispatcher::get_history_flag() {
+    return history_flag;
+}
 
 int SystemDispatcher::get_add_value()
 {

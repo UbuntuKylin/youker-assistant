@@ -113,7 +113,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    WindowControl.showMinimized();
+                    mainwindow.showMinimized();
                 }
             }
         }
