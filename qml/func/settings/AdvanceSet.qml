@@ -31,21 +31,20 @@ Rectangle {
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
     property string scrollbars_mode: ""
+    property string actiontitle: "高级选项之滑动条设置"
+    property string actiontext: "设置滑动条模式"
 
 //    property Dispatcher dis: mydispather
 
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
 
 
     Component.onCompleted: {
         scrollbarpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
-
 //        if (sessiondispatcher.get_menus_have_icons_qt())
 //            menuiconswitcher.switchedOn = true;
 //        else
@@ -55,8 +54,8 @@ Rectangle {
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "scrollbar") {
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "AdvanceSet") {
 //                console.log(scrollbarlabel.text);
                 if (overlay.checked == true) {
                     console.log("123");
@@ -69,66 +68,56 @@ Rectangle {
             }
         }
     }
-    Label {
-        id: scrollbar
-        text: qsTr("滑动条设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
-        anchors {
-            top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 15
-        }
+
+
+    Column {
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: scrollbarpage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: scrollbarpage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
     }
+
 
     Column {
         spacing: 20
         anchors {
-//            top: parent.top
-//            topMargin: 20
-            top: scrollbar.bottom
-            topMargin: 20
+            top: parent.top
+            topMargin: 120
+//            left: parent.left
+//            leftMargin: 60
             horizontalCenter: parent.horizontalCenter
         }
 
-//        anchors.horizontalCenter: parent.horizontalCenter
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-//            Label {
-//                id: scrollbarlabel
-//                width: 110
-//                text: qsTr("滑动条:")
-//                font {
-//                    family: scrollbarpage.fontName
-//                    pointSize: scrollbarpage.fontSize
-//                }
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-            GroupBox {
-                title: qsTr("滑动条:")
-                adjustToContentSize: true
-                ButtonColumn {
-                    exclusive: true//控制是否联动
-                    CheckBox {
-                        id:overlay
-                        text: "overlay模式"
-                        onClicked: console.log(overlay.checked)
-                    }
-                    CheckBox {
-                        id: legacy
-                        text: "legacy模式"
-                        onClicked: console.log(legacy.checked)
-                    }
+        GroupBox {
+            title: qsTr("滑动条:")
+            adjustToContentSize: true
+            ButtonColumn {
+                exclusive: true//控制是否联动
+                spacing: 20
+                Common.CheckBox {
+                    id:overlay
+                    titleName: "overlay模式"
+                    onClicked: console.log(overlay.checked)
+                }
+                Common.CheckBox {
+                    id: legacy
+                    titleName: "legacy模式"
+                    onClicked: console.log(legacy.checked)
                 }
             }
         }
-
-
 
     }//Column
 

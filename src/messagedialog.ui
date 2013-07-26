@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MessageDialog</class>
+ <widget class="QDialog" name="MessageDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>329</width>
+    <height>195</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="okButton">
+   <property name="geometry">
+    <rect>
+     <x>224</x>
+     <y>156</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="btn_close">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>6</y>
+     <width>26</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="btn_min">
+   <property name="geometry">
+    <rect>
+     <x>33</x>
+     <y>6</y>
+     <width>26</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="displaylabel3">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>105</y>
+     <width>311</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
+   </property>
+   <property name="text">
+    <string>为用户展示当前机器和系统信息</string>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="displaylabel2">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>70</y>
+     <width>311</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
+   </property>
+   <property name="text">
+    <string>支持常见的各种系统美化设置</string>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="displaylabel1">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>35</y>
+     <width>311</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
+   </property>
+   <property name="text">
+    <string>支持一键清理和选择性系统清理</string>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>329</width>
+     <height>195</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/dialog-bg.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>okButton</zorder>
+  <zorder>btn_close</zorder>
+  <zorder>btn_min</zorder>
+  <zorder>displaylabel3</zorder>
+  <zorder>displaylabel2</zorder>
+  <zorder>displaylabel1</zorder>
+ </widget>
+ <tabstops>
+  <tabstop>okButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="pixmap.qrc"/>
+ </resources>
+ <connections/>
+</ui>

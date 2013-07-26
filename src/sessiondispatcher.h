@@ -34,10 +34,15 @@ public:
 
     QDBusInterface *sessioniface;
 
-    Q_INVOKABLE void send_dialog_msg(QString mode);
-    void create_dialog(QString mode);
-    Q_INVOKABLE void send_warningdialog_msg(QString msg);
-    void create_warningdialog(QString msg);
+    Q_INVOKABLE void send_message_dialog();
+    void create_messagedialog();
+
+    Q_INVOKABLE void send_checkscreen_dialog();
+    void create_checkscreendialog();
+
+//    void create_dialog(QString mode);
+    Q_INVOKABLE void send_warningdialog_msg(QString title, QString content);
+    void create_warningdialog(QString title, QString content);
 
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE void del_str(QString str);

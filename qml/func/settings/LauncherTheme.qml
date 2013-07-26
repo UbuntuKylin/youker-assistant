@@ -31,14 +31,16 @@ Rectangle {
 
     property SessionDispatcher dis: sessiondispatcher
     property int launcher_size: 24
+    property string actiontitle: "Launcher设置"
+    property string actiontext: "Launcher"
 
-    Common.Border {
-        id: leftborder
+
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
+
 
     Component.onCompleted: {
         launcherthemepage.launcher_size = unityspinbox.value;
@@ -57,8 +59,8 @@ Rectangle {
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "unity") {
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "LauncherTheme") {
 //                console.log(launcherlabel.text);
                 if (launcherthemepage.launcher_size != unityspinbox.value) {
                     launcherthemepage.launcher_size = unityspinbox.value;
@@ -68,31 +70,35 @@ Rectangle {
         }
     }
 
-    Label {
-        id: unity
-        text: qsTr("Unity设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
-        anchors {
-            top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 15
-        }
+    Column {
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: launcherthemepage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: launcherthemepage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
     }
+
 
     Column {
         spacing: 20
         anchors {
-            top: unity.bottom
-            topMargin: 20
+            top: parent.top
+            topMargin: 120
+//            left: parent.left
+//            leftMargin: 60
             horizontalCenter: parent.horizontalCenter
         }
-
-//        anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
             anchors.horizontalCenter: parent.horizontalCenter

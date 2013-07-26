@@ -1,3 +1,11 @@
+youker-assistant (0.1.2-0ubuntu1) raring; urgency=low
+
+  * Modify some systemset pages.
+  * systemdbus and sessiondbus start when the program run.
+  * Modify Rubbish Clear functions.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 26 Jul 2013 18:23:15 +0800
+
 youker-assistant (0.1.1-0ubuntu1) raring; urgency=low
 
   * Initial release.

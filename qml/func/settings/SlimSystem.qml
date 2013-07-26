@@ -15,239 +15,41 @@
  */
 
 import QtQuick 1.1
-//import RegisterMyType 0.1
 import SessionType 0.1
 //import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
 
-
-//Gtk:GtkFontButton
-
-//     http://www.doc88.com/p-313626987748.html
-//Qt:QFontDialog
-//           http://www.kuqin.com/qtdocument/qfontdialog.html
-//QColorDialog
-//              http://www.kuqin.com/qtdocument/qcolordialog.html
-Rectangle {
-    id: fontspage
-    property bool on: true
+Item {
     width: parent.width
     height: 475
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
-
-//    property int cursor_size: 24
-    property SessionDispatcher dis: sessiondispatcher
-    property string current_font: "Helvetica"
-    property string document_font: "Helvetica"
-    property string desktop_font: "Helvetica"
-    property string titlebar_font: "Helvetica"
-    property string monospace_font: "Helvetica"
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
-
     Component.onCompleted: {
-        fontspage.current_font = sessiondispatcher.get_font_qt();
-        fontspage.document_font = sessiondispatcher.get_document_font_qt();
-        //        fontspage.desktop_font = sessiondispatcher.get_desktop_font_qt();
-        fontspage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
-        fontspage.monospace_font = sessiondispatcher.get_monospace_font_qt();
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "fonts") {
-            }
-        }
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
 
-    Label {
-        id: fonts
-        text: qsTr("字体设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
+    Image {
+        id: titleimage
         anchors {
-            top: parent.top
-            topMargin: 10
             left: parent.left
-            leftMargin: 15
+            leftMargin: 2
         }
+        source: "../../img/skin/note-bg.png"
     }
-
-    Column {
-        spacing: 20
+    Text {
         anchors {
-//            top: parent.top
-//            topMargin: 20
-            top: fonts.bottom
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
+            left: parent.left
+            leftMargin: 50
+            top: parent.top
+            topMargin: titleimage.height/2 - 7
         }
-
-//        anchors.horizontalCenter: parent.horizontalCenter
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            Label {
-                id: fontslabel
-                width: 110
-                text: qsTr("字体设置:")
-                font {
-                    family: fontspage.fontName
-                    pointSize: fontspage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_font_qt()
-                text: fontspage.current_font
-                width: fontslabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("font");
-            }
-        }
-
-        Row {
-            Label {
-                id: desktopfontlabel
-                width: 110
-                text: qsTr("桌面字体:")
-                font {
-                    family: fontspage.fontName
-                    pointSize: fontspage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_desktop_font_qt()
-                text: "an error"
-                width: desktopfontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("desktopfont");
-            }
-        }
-
-        Row {
-            Label {
-                id: documentfontlabel
-                width: 110
-                text: qsTr("文档字体:")
-                font {
-                    family: fontspage.fontName
-                    pointSize: fontspage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_document_font_qt()
-                text: fontspage.document_font
-                width: documentfontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("documentfont");
-            }
-        }
-
-        Row {
-            Label {
-                id: monospacefontlabel
-                width: 110
-                text: qsTr("monospace字体:")
-                font {
-                    family: fontspage.fontName
-                    pointSize: fontspage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_monospace_font_qt()
-                text: fontspage.monospace_font
-                width: monospacefontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("monospacefont");
-            }
-        }
-
-        Row {
-            Label {
-                id: windowtitlefontlabel
-                width: 110
-                text: qsTr("标题栏字体:")
-                font {
-                    family: fontspage.fontName
-                    pointSize: fontspage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_window_title_font_qt()
-                text: fontspage.titlebar_font
-                width: windowtitlefontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
-            }
-        }
-
-        Row {
-            Label {
-                id: fontzoomlabel
-                width: 110
-                text: qsTr("字体大小:")
-                font {
-                    family: fontspage.fontName
-                    pointSize: fontspage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            SpinBox {
-                id: fontzoomspinbox
-                width: 97
-                minimumValue: 0
-                maximumValue: 64
-                value: sessiondispatcher.get_font_zoom_qt()
-//                value: 48
-            }
-        }
-
-    }//Column
-
-    Button {
-        text: "显示字体设置框"
-        onClicked: sessiondispatcher.show_font_dialog();
-    }
-
-    Button {
-        text: "显示颜色设置框"
-        anchors.left: parent.left
-        anchors.leftMargin: 100
-        onClicked: sessiondispatcher.show_color_dialog();
+        text: "系统瘦身功能正在研发中,敬请期待......"
+        font.pixelSize: 12
+        color: "#383838"
     }
 }
 
@@ -258,6 +60,7 @@ Rectangle {
 //import SessionType 0.1
 //import SystemType 0.1
 //import QtDesktop 0.1
+//import "../common" as Common
 //import "../common" as Common
 //Rectangle {
 //    id: lancherpage
@@ -286,7 +89,7 @@ Rectangle {
 
 //    ListModel {
 //        id: choices
-//        ListElement { text: "fonts" }
+//        ListElement { text: "theme" }
 //        ListElement { text: "lixiang" }
 //        ListElement { text: "ps" }
 //        ListElement { text: "baby" }
@@ -298,8 +101,8 @@ Rectangle {
 //        onButton2Clicked: {
 ////            console.log("111111111111");
 ////            console.log(settigsDetails.setTitle);
-//            if (settigsDetails.setTitle == "fonts")
-//                console.log(fontslabel.text);
+//            if (settigsDetails.setTitle == "theme")
+//                console.log(themelabel.text);
 ////            console.log("222222222222");
 //        }
 //    }
@@ -310,9 +113,9 @@ Rectangle {
 
 //        Row {
 //            Label {
-//                id: fontslabel
+//                id:themelabel
 //                width: 110
-//                text: qsTr("ps4-model")
+//                text: qsTr("ps1-model")
 //            }
 //            ComboBox {
 //                id: combobox

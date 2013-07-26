@@ -21,6 +21,7 @@ import SessionType 0.1
 import SystemType 0.1
 import QtDesktop 0.1
 import "common" as Common
+import "bars" as Bars
 /*
 {'desktopenvironment': 'Unity', 'update_time': 'The package information was last updated 4 hours ago.',
 'hostname': 'kobe-3570R-370R-470R-450R-510R', 'language': 'zh_CN.UTF-8', 'platform': 'i686',
@@ -441,21 +442,36 @@ Rectangle {
         }//Item:views
 
 
+        //顶层工具栏
+        Bars.TopBar {
+            id: topBar
+            visible: false
+            width: 28
+            height: 26
+            anchors.top: parent.top
+            anchors.topMargin: 40
+            anchors.left: parent.left
+            anchors.leftMargin: 40
+            opacity: 0.9
+            onButtonClicked: {}
+        }
+
         //工具栏
-        Common.ToolBar {
+        Bars.ToolBar {
             id: toolBar
             visible: false
             height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-            button1Label: qsTr("返回")
-            button2Label: qsTr("确定")
-            onButton1Clicked: {}
-            onButton2Clicked: {}
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+            onQuitBtnClicked: {}
+            onOkBtnClicked: {}
         }
 
         states: State {
             name: "DetailedView"
             PropertyChanges { target: views; x: -parent.width }
             PropertyChanges { target: toolBar; visible: true }
+            PropertyChanges { target: topBar; visible: true }
         }
 
         transitions: Transition {

@@ -26,25 +26,30 @@ HEADERS += youker-application.h \
     quibo.h \
     systemdispatcher.h \
     sessiondispatcher.h \
+    authdialog.h \
     modaldialog.h \
-    modelessdialog.h \
     warningdialog.h \
-    authdialog.h
+    messagedialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
+    authdialog.cpp \
+    authdialog_event.cpp \
     modaldialog.cpp \
-    modelessdialog.cpp \
     warningdialog.cpp \
-    authdialog.cpp
+    messagedialog.cpp
+
 
 OTHER_FILES += youker-assistant/ihu.png
 
-RESOURCES +=
+RESOURCES += pixmap.qrc
 
 FORMS += \
     quibo.ui \
-    authdialog.ui
+    authdialog.ui \
+    modaldialog.ui \
+    warningdialog.ui \
+    messagedialog.ui

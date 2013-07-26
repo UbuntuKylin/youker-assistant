@@ -83,10 +83,11 @@ Rectangle {
         source: ""
     }
 
+
     Connections {
         target: toolBar
         //按下返回按钮
-        onButton1Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+        onQuitBtnClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
         //按下确定按钮
 //        onButton2Clicked: {
 //            console.log("111111111111");

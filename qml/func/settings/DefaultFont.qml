@@ -44,64 +44,64 @@ Rectangle {
     property string desktop_font: "Helvetica"
     property string titlebar_font: "Helvetica"
     property string monospace_font: "Helvetica"
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
+    property string actiontitle: "默认字体设置"
+    property string actiontext: "根据您的喜好设置系统默认字体"
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
 
     Component.onCompleted: {
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
-        defaultfontpage.document_font = sessiondispatcher.get_document_font_qt();
         //        defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
-        defaultfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
         defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "fonts") {
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "DefaultFont") {
             }
         }
     }
 
-    Label {
-        id: fonts
-        text: qsTr("字体设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
-        anchors {
-            top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 15
-        }
+    Column {
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: defaultfontpage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: defaultfontpage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
     }
 
     Column {
         spacing: 20
         anchors {
-//            top: parent.top
-//            topMargin: 20
-            top: fonts.bottom
-            topMargin: 20
+            top: parent.top
+            topMargin: 120
+//            left: parent.left
+//            leftMargin: 60
             horizontalCenter: parent.horizontalCenter
         }
-
 //        anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
             anchors.horizontalCenter: parent.horizontalCenter
             Label {
                 id: fontslabel
-                width: 110
+                width: 130
                 text: qsTr("字体设置:")
                 font {
                     family: defaultfontpage.fontName
@@ -125,7 +125,7 @@ Rectangle {
         Row {
             Label {
                 id: desktopfontlabel
-                width: 110
+                width: 130
                 text: qsTr("桌面字体:")
                 font {
                     family: defaultfontpage.fontName
@@ -145,33 +145,11 @@ Rectangle {
             }
         }
 
-        Row {
-            Label {
-                id: documentfontlabel
-                width: 110
-                text: qsTr("文档字体:")
-                font {
-                    family: defaultfontpage.fontName
-                    pointSize: defaultfontpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_document_font_qt()
-                text: defaultfontpage.document_font
-                width: documentfontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("documentfont");
-            }
-        }
 
         Row {
             Label {
                 id: monospacefontlabel
-                width: 110
+                width: 130
                 text: qsTr("monospace字体:")
                 font {
                     family: defaultfontpage.fontName
@@ -191,33 +169,11 @@ Rectangle {
             }
         }
 
-        Row {
-            Label {
-                id: windowtitlefontlabel
-                width: 110
-                text: qsTr("标题栏字体:")
-                font {
-                    family: defaultfontpage.fontName
-                    pointSize: defaultfontpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_window_title_font_qt()
-                text: defaultfontpage.titlebar_font
-                width: windowtitlefontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
-            }
-        }
 
         Row {
             Label {
                 id: fontzoomlabel
-                width: 110
+                width: 130
                 text: qsTr("字体大小:")
                 font {
                     family: defaultfontpage.fontName
@@ -237,17 +193,17 @@ Rectangle {
 
     }//Column
 
-    Button {
-        text: "显示字体设置框"
-        onClicked: sessiondispatcher.show_font_dialog();
-    }
+//    Button {
+//        text: "显示字体设置框"
+//        onClicked: sessiondispatcher.show_font_dialog();
+//    }
 
-    Button {
-        text: "显示颜色设置框"
-        anchors.left: parent.left
-        anchors.leftMargin: 100
-        onClicked: sessiondispatcher.show_color_dialog();
-    }
+//    Button {
+//        text: "显示颜色设置框"
+//        anchors.left: parent.left
+//        anchors.leftMargin: 100
+//        onClicked: sessiondispatcher.show_color_dialog();
+//    }
 }
 
 

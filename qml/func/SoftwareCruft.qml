@@ -82,7 +82,7 @@ Item {
             root.sub_num -= num;
             mainModel.clear();
             mainModel.append({"itemTitle": "清理浏览器Cookies",
-                             "picture": "../img/toolWidget/brush.png",
+                             "picture": "../img/toolWidget/software-min.png",
                              "detailstr": "清理Cookies，让系统更安全",
                              "flags": "clear_software",
                             "attributes":
@@ -99,7 +99,7 @@ Item {
         id: mainModel
         ListElement {
             itemTitle: "清理Software"
-            picture: "../img/toolWidget/brush.png"
+            picture: "../img/toolWidget/software-min.png"
             detailstr: "清理Software可以节省磁盘空间"
             flags: "clear_software"
             attributes: [
@@ -161,7 +161,7 @@ Item {
         anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
         Image {
             id: refreshArrow
-            source: "../img/toolWidget/software.png"
+            source: "../img/toolWidget/software-max.png"
 //            width: 50; height: 50
             Behavior on rotation { NumberAnimation { duration: 200 } }
         }

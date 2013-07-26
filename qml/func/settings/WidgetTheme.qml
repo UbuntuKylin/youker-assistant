@@ -22,317 +22,853 @@ import "../common" as Common
 
 Rectangle {
     id: widgetthemepage
-    property bool on: true
     width: parent.width
     height: 475
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
+    property string actiontitle: "窗口主题设置"
+    property string actiontext: "单击某个主题立即更改 窗口主题，您可以点击右侧按钮选择想要的排序方式。"
+    property string cur_theme: ""
     property SessionDispatcher dis: sessiondispatcher
-    property int cursor_size: 24
-    property string default_theme: ""
-    property string default_icon_theme: ""
-    property string default_cursor_theme: ""
-
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
-
-    //OK工具栏
-//    Common.OkToolBar {
-//        id: oktoolBar
-////        visible: idenfer ? true : false
-//        visible: false
-//        height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//        buttonLabel: qsTr("确定")
-//        onButtonClicked: {
-//            console.log("oktoolbar clicked...");
-//        }
-//    }
-
+//    property bool listorgrid: false
 
     Component.onCompleted: {
-//        console.log("------55555---------");
-        widgetthemepage.cursor_size = themespinbox.value;
-        widgetthemepage.default_theme = sessiondispatcher.get_theme_qt();
-        widgetthemepage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        widgetthemepage.default_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-//        console.log(widgetthemepage.default_theme);
-//        console.log(widgetthemepage.default_icon_theme);
-//        console.log(widgetthemepage.default_cursor_theme);
-//        console.log(widgetthemepage.cursor_size);
-
-
-//        var syslist = sessiondispatcher.get_themes_qt();
-//        syslist.unshift(widgetthemepage.default_theme);
-//        choices1.clear();
-//        for(var i=0; i < syslist.length; i++) {
-//            choices1.append({"text": syslist[i]});
-//            if (i!=0 && syslist[i] == widgetthemepage.default_theme)
-//                choices1.remove(i);
-//        }
-
-//        var iconlist = sessiondispatcher.get_icon_themes_qt();
-//        iconlist.unshift(widgetthemepage.default_icon_themeg);
-//        choices2.clear();
-//        for(var j=0; j < iconlist.length; j++) {
-//            choices2.append({"text": iconlist[j]});
-//            if (j!=0 && iconlist[j] == widgetthemepage.default_icon_theme)
-//                choices2.remove(j);
-//        }
-
-//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-//        cursorlist.unshift(widgetthemepage.default_cursor_theme);
-//        choices3.clear();
-//        for(var k=0; k < cursorlist.length; k++) {
-//            choices3.append({"text": cursorlist[k]});
-//            if (k!=0 && cursorlist[k] == widgetthemepage.default_cursor_theme)
-//                choices3.remove(k);
-//        }
-
         var syslist = sessiondispatcher.get_themes_qt();
-        var current_theme = sessiondispatcher.get_theme_qt();
-        syslist.unshift(current_theme);
-        choices1.clear();
+        widgetthemepage.cur_theme = sessiondispatcher.get_theme_qt();
+        syslist.unshift(widgetthemepage.cur_theme);
+//        var current_theme = sessiondispatcher.get_theme_qt();
+//        syslist.unshift(current_theme);
+        themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
-            choices1.append({"text": syslist[i]});
-            if (i!=0 && syslist[i] == current_theme)
-                choices1.remove(i);
+            themeModel.append({"icon": "../../img/icons/systemsound.png", "name": syslist[i]});
+            if (i!=0 && syslist[i] == widgetthemepage.cur_theme)
+                themeModel.remove(i);
+//            if (i!=0 && syslist[i] == current_theme)
+//                themeModel.remove(i);
         }
-
-        var iconlist = sessiondispatcher.get_icon_themes_qt();
-        var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        iconlist.unshift(current_icon_theme);
-        choices2.clear();
-        for(var j=0; j < iconlist.length; j++) {
-            choices2.append({"text": iconlist[j]});
-            if (j!=0 && iconlist[j] == current_icon_theme)
-                choices2.remove(j);
-        }
-
-        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-        cursorlist.unshift(current_cursor_theme);
-        choices3.clear();
-        for(var k=0; k < cursorlist.length; k++) {
-            choices3.append({"text": cursorlist[k]});
-            if (k!=0 && cursorlist[k] == current_cursor_theme)
-                choices3.remove(k);
-        }
-
     }
+
 
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "theme") {
-                console.log("-----------------");
-//                sessiondispatcher.set_theme_qt(syscombo.selectedText);
-//                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-//                console.log(current_theme.text);
-//                console.log(syscombo.selectedText);
-//                console.log(current_icon_theme.text);
-//                console.log(iconcombo.selectedText);
-//                console.log(current_cursor_theme.text);
-//                console.log(cursorcombo.selectedText);
-                //default:ubuntukylin-theme
-                if (widgetthemepage.default_theme != syscombo.selectedText) {
-                    console.log("111");
-                    widgetthemepage.default_theme = syscombo.selectedText;
-                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
-                }
-                else
-                    console.log("222");
-                //default:ubuntukylin-icon-theme
-                if (widgetthemepage.default_icon_theme != iconcombo.selectedText) {
-                    console.log("333");
-                    widgetthemepage.default_icon_theme = iconcombo.selectedText;
-                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                }
-                else
-                    console.log("444");
-                //default:DMZ-White
-                if (widgetthemepage.default_cursor_theme != cursorcombo.selectedText) {
-                    console.log("555");
-                    widgetthemepage.default_cursor_theme = cursorcombo.selectedText;
-                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-                }
-                else
-                    console.log("666");
-                //default:24
-                if (widgetthemepage.cursor_size != themespinbox.value) {
-                    widgetthemepage.cursor_size = themespinbox.value;
-                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
-                }
-//                console.log("*********************88");
-//                console.log(current_theme.text);
-//                console.log(syscombo.selectedText);
-//                console.log(current_icon_theme.text);
-//                console.log(iconcombo.selectedText);
-//                console.log(current_cursor_theme.text);
-//                console.log(cursorcombo.selectedText);
-//                console.log(widgetthemepage.cursor_size);
-//                console.log(themespinbox.value);
-
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "WidgetTheme") {
+//                console.log("-----------------");
+//                console.log(widgetthemepage.cur_theme);
+                sessiondispatcher.set_theme_qt(syscombo.selectedText);
             }
-
-//                console.log(themespinbox.value);
-//                console.log(themelabel.text);
         }
     }
+
     ListModel {
-        id: choices0
-        ListElement { text: "" }
-    }
-    ListModel {
-        id: choices1
-        ListElement { text: "kobe999" }
-    }
-    ListModel {
-        id: choices2
-        ListElement { text: "kobe888" }
-    }
-    ListModel {
-        id: choices3
-        ListElement { text: "kobe777" }
+        id: themeModel
+        ListElement {
+            icon: ""
+            name: ""
+            flag: ""
+        }
     }
 
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
+    }
 
-    Label {
-        id: theme
-        text: qsTr("主题设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
-        anchors {
+     Component {
+         id: themegridDelegate
+         Item {
+             id: griditem
+             width: themegrid.cellWidth; height: themegrid.cellHeight
+
+             function iconClicked() {
+                 widgetthemepage.cur_theme = name;
+             }
+
+             Column {
+                 anchors.fill: parent
+                 spacing: 5
+                 Image {
+                     id: seticon
+                     source: icon
+                     anchors.top: parent.top
+                     anchors.topMargin: 5
+                     width: griditem.width - 20
+                     height: griditem.height - 30
+                     anchors.horizontalCenter: parent.horizontalCenter
+                 }
+                 Text {
+                     id: btnText
+                     height: 20
+                     anchors.horizontalCenter: parent.horizontalCenter
+                     color: "green"
+                     text: qsTr(name)
+                 }
+             }
+
+
+             Image {
+                 id: btnImg
+                 anchors.fill: parent
+                 source: ""
+             }
+
+             MouseArea {
+                 id: signaltest
+                 hoverEnabled: true
+                 anchors.fill: parent
+                 onEntered: btnImg.source = "../../img/toolWidget/menu_hover.png"
+                 onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"
+                 //要判断松开是鼠标位置
+                 onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
+                 onExited: btnImg.source = ""
+                 onClicked: {
+                     //kobe:选中项深色块移动
+                     iconClicked();
+                     griditem.GridView.view.currentIndex = index;
+                 }
+             }
+         }
+     }
+
+
+//     Component {
+//         id: themelistDelegate
+//         Item {
+//             id: listitem
+////             width: themegrid.cellWidth; height: themegrid.cellHeight
+
+//             function listiconClicked() {
+//                 widgetthemepage.cur_theme = name;
+//             }
+
+//             Column {
+//                 anchors.fill: parent
+//                 spacing: 5
+//                 Image {
+//                     id: listseticon
+//                     source: icon
+//                     anchors.top: parent.top
+//                     anchors.topMargin: 5
+//                     width: listitem.width - 20
+//                     height: listitem.height - 30
+//                     anchors.horizontalCenter: parent.horizontalCenter
+//                 }
+//                 Text {
+//                     id: listbtnText
+//                     height: 20
+//                     anchors.horizontalCenter: parent.horizontalCenter
+//                     color: "green"
+//                     text: qsTr(name)
+//                 }
+//             }
+//             Image {
+//                 id: listbtnImg
+//                 anchors.fill: parent
+//                 source: ""
+//             }
+//             MouseArea {
+//                 id: listsignaltest
+//                 hoverEnabled: true
+//                 anchors.fill: parent
+//                 onEntered: listbtnImg.source = "../../img/toolWidget/menu_hover.png"
+//                 onPressed: listbtnImg.source = "../../img/toolWidget/menu_press.png"
+//                 //要判断松开是鼠标位置
+//                 onReleased: listbtnImg.source = "../../img/toolWidget/menu_hover.png"
+//                 onExited: listbtnImg.source = ""
+//                 onClicked: {
+//                     listiconClicked();
+//                 }
+//             }
+//         }
+//     }
+
+
+     Column {
+         spacing: 10
+         anchors {
             top: parent.top
-            topMargin: 10
+            topMargin: 44
             left: parent.left
-            leftMargin: 15
-        }
-    }
+            leftMargin: 80
+         }
+         Text {
+              text: widgetthemepage.actiontitle
+              font.bold: true
+              font.pixelSize: 14
+              color: "#383838"
+          }
+          Text {
+              text: widgetthemepage.actiontext
+              font.pixelSize: 12
+              color: "#7a7a7a"
+          }
+     }
 
-    Column {
-        spacing: 20
-        anchors {
+//     Common.Button {
+//         anchors.top: parent.top
+//         anchors.right: parent.right
+//         width: 120
+//         height: 39
+//         hoverimage: "scan-start.png"
+//         onClicked: {
+//             if (widgetthemepage.listorgrid == true) {
+//                 console.log("111");
+//                 widgetthemepage.listorgrid = false;
+//             }
+//             else {
+//                 widgetthemepage.listorgrid = true;
+//                 console.log("222");
+//             }
+//         }
+//     }
+
+
+     GridView {
+         id: themegrid
+         anchors {
+             fill: parent
+             top: parent.top
+             topMargin: 120
+             left: parent.left
+             leftMargin: 60
+         }
+         cellWidth: 120; cellHeight: 120
+         model: themeModel
+         delegate: themegridDelegate
+         focus: true
+         cacheBuffer: 1000
+         highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+     }
+
+//     ListView {
+//         id: themelist
+//         anchors {
+//             fill: parent
+//             top: parent.top
+//             topMargin: 120
+//             left: parent.left
+//             leftMargin: 60
+//         }
+//         width: parent.width
+//         height: parent.height
+//         model: themeModel
+//         delegate: themelistDelegate
+////         focus: true
+//         cacheBuffer: 1000
+//         x: -(parent.width * 1.5)
+//     }
+
+
+//     states: [
+//         State {
+//             name: "ListView"; when: widgetthemepage.listorgrid == true
+//             PropertyChanges { target: themelist; x: 0 }
+//             PropertyChanges { target: themegrid; x: -(parent.width * 1.5) }
+//         }
+//     ]
+//     transitions: [
+//         Transition {
+//             NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+//         }
+//     ]
+
+     Item { id: foreground; anchors.fill: parent }
+ }
+
+
+
+
+//Item {
+//    id: screen
+
+//    width: parent.width
+//    height: 475
+//    property bool listorgrid: false
+
+//    Rectangle {
+//        id: widgetthemepage
+//        anchors.fill: parent
+////        width: parent.width
+////        height: 475
+//        property string actiontitle: "窗口主题设置"
+//        property string actiontext: "单击某个主题立即更改 窗口主题，您可以点击右侧按钮选择想要的排序方式。"
+//        property string cur_theme: ""
+//        property SessionDispatcher dis: sessiondispatcher
+
+//        Component.onCompleted: {
+//            var syslist = sessiondispatcher.get_themes_qt();
+//            widgetthemepage.cur_theme = sessiondispatcher.get_theme_qt();
+//            syslist.unshift(widgetthemepage.cur_theme);
+//    //        var current_theme = sessiondispatcher.get_theme_qt();
+//    //        syslist.unshift(current_theme);
+//            themeModel.clear();
+//            for(var i=0; i < syslist.length; i++) {
+//                themeModel.append({"icon": "../../img/icons/systemsound.png", "name": syslist[i]});
+//                if (i!=0 && syslist[i] == widgetthemepage.cur_theme)
+//                    themeModel.remove(i);
+//    //            if (i!=0 && syslist[i] == current_theme)
+//    //                themeModel.remove(i);
+//            }
+//        }
+
+
+//        Connections {
+//            target: toolBar
+//            //按下确定按钮
+//            onOkBtnClicked: {
+//                if (settigsDetails.setTitle == "WidgetTheme") {
+//    //                console.log("-----------------");
+//    //                console.log(widgetthemepage.cur_theme);
+//                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
+//                }
+//            }
+//        }
+
+//        ListModel {
+//            id: themeModel
+//            ListElement {
+//                icon: ""
+//                name: ""
+//                flag: ""
+//            }
+//        }
+
+//        //背景
+//        Image {
+//            source: "../../img/skin/bg-left.png"
+//            anchors.fill: parent
+//        }
+
+//         Component {
+//             id: themegridDelegate
+//             Item {
+//                 id: griditem
+//                 width: themegrid.cellWidth; height: themegrid.cellHeight
+
+//                 function iconClicked() {
+//                     widgetthemepage.cur_theme = name;
+//                 }
+
+//                 Column {
+//                     anchors.fill: parent
+//                     spacing: 5
+//                     Image {
+//                         id: seticon
+//                         source: icon
+//                         anchors.top: parent.top
+//                         anchors.topMargin: 5
+//                         width: griditem.width - 20
+//                         height: griditem.height - 30
+//                         anchors.horizontalCenter: parent.horizontalCenter
+//                     }
+//                     Text {
+//                         id: btnText
+//                         height: 20
+//                         anchors.horizontalCenter: parent.horizontalCenter
+//                         color: "green"
+//                         text: qsTr(name)
+//                     }
+//                 }
+
+
+//                 Image {
+//                     id: btnImg
+//                     anchors.fill: parent
+//                     source: ""
+//                 }
+
+//                 MouseArea {
+//                     id: signaltest
+//                     hoverEnabled: true
+//                     anchors.fill: parent
+//                     onEntered: btnImg.source = "../../img/toolWidget/menu_hover.png"
+//                     onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"
+//                     //要判断松开是鼠标位置
+//                     onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
+//                     onExited: btnImg.source = ""
+//                     onClicked: {
+//                         //kobe:选中项深色块移动
+//                         iconClicked();
+//                         griditem.GridView.view.currentIndex = index;
+//                     }
+//                 }
+//             }
+//         }
+
+
+//         Component {
+//             id: themelistDelegate
+//             Item {
+//                 id: listitem
+//    //             width: themegrid.cellWidth; height: themegrid.cellHeight
+
+//                 function listiconClicked() {
+//                     widgetthemepage.cur_theme = name;
+//                 }
+
+//                 Column {
+//                     anchors.fill: parent
+//                     spacing: 5
+//                     Image {
+//                         id: listseticon
+//                         source: icon
+//                         anchors.top: parent.top
+//                         anchors.topMargin: 5
+//                         width: listitem.width - 20
+//                         height: listitem.height - 30
+//                         anchors.horizontalCenter: parent.horizontalCenter
+//                     }
+//                     Text {
+//                         id: listbtnText
+//                         height: 20
+//                         anchors.horizontalCenter: parent.horizontalCenter
+//                         color: "green"
+//                         text: qsTr(name)
+//                     }
+//                 }
+//                 Image {
+//                     id: listbtnImg
+//                     anchors.fill: parent
+//                     source: ""
+//                 }
+//                 MouseArea {
+//                     id: listsignaltest
+//                     hoverEnabled: true
+//                     anchors.fill: parent
+//                     onEntered: listbtnImg.source = "../../img/toolWidget/menu_hover.png"
+//                     onPressed: listbtnImg.source = "../../img/toolWidget/menu_press.png"
+//                     //要判断松开是鼠标位置
+//                     onReleased: listbtnImg.source = "../../img/toolWidget/menu_hover.png"
+//                     onExited: listbtnImg.source = ""
+//                     onClicked: {
+//                         listiconClicked();
+//                     }
+//                 }
+//             }
+//         }
+
+
+//         Column {
+//             spacing: 10
+//             anchors {
+//                top: parent.top
+//                topMargin: 44
+//                left: parent.left
+//                leftMargin: 80
+//             }
+//             Text {
+//                  text: widgetthemepage.actiontitle
+//                  font.bold: true
+//                  font.pixelSize: 14
+//                  color: "#383838"
+//              }
+//              Text {
+//                  text: widgetthemepage.actiontext
+//                  font.pixelSize: 12
+//                  color: "#7a7a7a"
+//              }
+//         }
+
+//         Common.Button {
+//             anchors.top: parent.top
+//             anchors.right: parent.right
+//             width: 120
+//             height: 39
+//             hoverimage: "scan-start.png"
+//             onClicked: {
+//                 if (screen.listorgrid == true) {
+//                     console.log("111");
+//                     screen.listorgrid = false;
+//                 }
+//                 else {
+//                     screen.listorgrid = true;
+//                     console.log("222");
+//                 }
+//             }
+//         }
+
+
+//         Item {
+//             id: views
+//             width: parent.width
+
+//             GridView {
+//                 id: themegrid
+//                 anchors {
+//                     fill: parent
+//                     top: parent.top
+//                     topMargin: 120
+//                     left: parent.left
+//                     leftMargin: 60
+//                 }
+//                 cellWidth: 120; cellHeight: 120
+//                 model: themeModel
+//                 delegate: themegridDelegate
+//                 focus: true
+//                 cacheBuffer: 1000
+//                 highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+//             }
+
+//             ListView {
+//                 id: themelist
+//                 anchors {
+//                     fill: parent
+//                     top: parent.top
+//                     topMargin: 120
+//                     left: parent.left
+//                     leftMargin: 60
+//                 }
+//                 width: parent.width
+//                 height: parent.height
+//                 model: themeModel
+//                 delegate: themelistDelegate
+//        //         focus: true
+//                 cacheBuffer: 1000
+//                 x: -(parent.width * 1.5)
+//             }
+
+
+//             states: [
+//                 State {
+//                     name: "ListView"; when: screen.listorgrid == true
+//                     PropertyChanges { target: themelist; x: 0 }
+//                     PropertyChanges { target: themegrid; x: -(parent.width * 1.5) }
+//                 }
+//             ]
+//             transitions: [
+//                 Transition {
+//                     NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+//                 }
+//             ]
+//             Item { id: foreground; anchors.fill: parent }
+//         }
+//     }
+//}
+
+
+
+
+//Rectangle {
+//    id: widgetthemepage
+//    property bool on: true
+//    width: parent.width
+//    height: 475
+//    property string fontName: "Helvetica"
+//    property int fontSize: 12
+//    property color fontColor: "black"
+//    property SessionDispatcher dis: sessiondispatcher
+//    property int cursor_size: 24
+//    property string default_theme: ""
+//    property string default_icon_theme: ""
+//    property string default_cursor_theme: ""
+
+//    Common.Border {
+//        id: leftborder
+//    }
+//    Common.Border {
+//        id: roightborder
+//        anchors.right: parent.right
+//    }
+
+//    //OK工具栏
+////    Common.OkToolBar {
+////        id: oktoolBar
+//////        visible: idenfer ? true : false
+////        visible: false
+////        height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+////        buttonLabel: qsTr("确定")
+////        onButtonClicked: {
+////            console.log("oktoolbar clicked...");
+////        }
+////    }
+
+
+//    Component.onCompleted: {
+////        console.log("------55555---------");
+//        widgetthemepage.cursor_size = themespinbox.value;
+//        widgetthemepage.default_theme = sessiondispatcher.get_theme_qt();
+//        widgetthemepage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
+//        widgetthemepage.default_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+////        console.log(widgetthemepage.default_theme);
+////        console.log(widgetthemepage.default_icon_theme);
+////        console.log(widgetthemepage.default_cursor_theme);
+////        console.log(widgetthemepage.cursor_size);
+
+
+////        var syslist = sessiondispatcher.get_themes_qt();
+////        syslist.unshift(widgetthemepage.default_theme);
+////        choices1.clear();
+////        for(var i=0; i < syslist.length; i++) {
+////            choices1.append({"text": syslist[i]});
+////            if (i!=0 && syslist[i] == widgetthemepage.default_theme)
+////                choices1.remove(i);
+////        }
+
+////        var iconlist = sessiondispatcher.get_icon_themes_qt();
+////        iconlist.unshift(widgetthemepage.default_icon_themeg);
+////        choices2.clear();
+////        for(var j=0; j < iconlist.length; j++) {
+////            choices2.append({"text": iconlist[j]});
+////            if (j!=0 && iconlist[j] == widgetthemepage.default_icon_theme)
+////                choices2.remove(j);
+////        }
+
+////        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+////        cursorlist.unshift(widgetthemepage.default_cursor_theme);
+////        choices3.clear();
+////        for(var k=0; k < cursorlist.length; k++) {
+////            choices3.append({"text": cursorlist[k]});
+////            if (k!=0 && cursorlist[k] == widgetthemepage.default_cursor_theme)
+////                choices3.remove(k);
+////        }
+
+//        var syslist = sessiondispatcher.get_themes_qt();
+//        var current_theme = sessiondispatcher.get_theme_qt();
+//        syslist.unshift(current_theme);
+//        choices1.clear();
+//        for(var i=0; i < syslist.length; i++) {
+//            choices1.append({"text": syslist[i]});
+//            if (i!=0 && syslist[i] == current_theme)
+//                choices1.remove(i);
+//        }
+
+//        var iconlist = sessiondispatcher.get_icon_themes_qt();
+//        var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
+//        iconlist.unshift(current_icon_theme);
+//        choices2.clear();
+//        for(var j=0; j < iconlist.length; j++) {
+//            choices2.append({"text": iconlist[j]});
+//            if (j!=0 && iconlist[j] == current_icon_theme)
+//                choices2.remove(j);
+//        }
+
+//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+//        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+//        cursorlist.unshift(current_cursor_theme);
+//        choices3.clear();
+//        for(var k=0; k < cursorlist.length; k++) {
+//            choices3.append({"text": cursorlist[k]});
+//            if (k!=0 && cursorlist[k] == current_cursor_theme)
+//                choices3.remove(k);
+//        }
+
+//    }
+
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "theme") {
+//                console.log("-----------------");
+////                sessiondispatcher.set_theme_qt(syscombo.selectedText);
+////                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+////                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+////                console.log(current_theme.text);
+////                console.log(syscombo.selectedText);
+////                console.log(current_icon_theme.text);
+////                console.log(iconcombo.selectedText);
+////                console.log(current_cursor_theme.text);
+////                console.log(cursorcombo.selectedText);
+//                //default:ubuntukylin-theme
+//                if (widgetthemepage.default_theme != syscombo.selectedText) {
+//                    console.log("111");
+//                    widgetthemepage.default_theme = syscombo.selectedText;
+//                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
+//                }
+//                else
+//                    console.log("222");
+//                //default:ubuntukylin-icon-theme
+//                if (widgetthemepage.default_icon_theme != iconcombo.selectedText) {
+//                    console.log("333");
+//                    widgetthemepage.default_icon_theme = iconcombo.selectedText;
+//                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//                }
+//                else
+//                    console.log("444");
+//                //default:DMZ-White
+//                if (widgetthemepage.default_cursor_theme != cursorcombo.selectedText) {
+//                    console.log("555");
+//                    widgetthemepage.default_cursor_theme = cursorcombo.selectedText;
+//                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+//                }
+//                else
+//                    console.log("666");
+//                //default:24
+//                if (widgetthemepage.cursor_size != themespinbox.value) {
+//                    widgetthemepage.cursor_size = themespinbox.value;
+//                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
+//                }
+////                console.log("*********************88");
+////                console.log(current_theme.text);
+////                console.log(syscombo.selectedText);
+////                console.log(current_icon_theme.text);
+////                console.log(iconcombo.selectedText);
+////                console.log(current_cursor_theme.text);
+////                console.log(cursorcombo.selectedText);
+////                console.log(widgetthemepage.cursor_size);
+////                console.log(themespinbox.value);
+
+//            }
+
+////                console.log(themespinbox.value);
+////                console.log(themelabel.text);
+//        }
+//    }
+//    ListModel {
+//        id: choices0
+//        ListElement { text: "" }
+//    }
+//    ListModel {
+//        id: choices1
+//        ListElement { text: "kobe999" }
+//    }
+//    ListModel {
+//        id: choices2
+//        ListElement { text: "kobe888" }
+//    }
+//    ListModel {
+//        id: choices3
+//        ListElement { text: "kobe777" }
+//    }
+
+
+//    Label {
+//        id: theme
+//        text: qsTr("主题设置>")
+//        height: 30
+//        font.bold: true
+//        font.family: "Ubuntu"
+//        elide: Text.ElideRight
+//        font.pointSize: 20
+//        anchors {
 //            top: parent.top
+//            topMargin: 10
+//            left: parent.left
+//            leftMargin: 15
+//        }
+//    }
+
+//    Column {
+//        spacing: 20
+//        anchors {
+////            top: parent.top
+////            topMargin: 20
+//            top: theme.bottom
 //            topMargin: 20
-            top: theme.bottom
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
-        }
+//            horizontalCenter: parent.horizontalCenter
+//        }
 
-//        anchors.horizontalCenter: parent.horizontalCenter
+////        anchors.horizontalCenter: parent.horizontalCenter
 
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            Label {
-                id: systhemelabel
-                width: 110
-                text: qsTr("系统主题:")
-                font {
-                    family: widgetthemepage.fontName
-                    pointSize: widgetthemepage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: syscombo
-                model: choices1
-                width: cursorthemelabel.width
-
-                onSelectedTextChanged: console.log(selectedText)
-            }
+//        Row {
+//            anchors.horizontalCenter: parent.horizontalCenter
 //            Label {
-//                id: current_theme
-//                text: sessiondispatcher.get_theme_qt()
-//                width: cursorthemelabel.width
+//                id: systhemelabel
+//                width: 110
+//                text: qsTr("系统主题:")
+//                font {
+//                    family: widgetthemepage.fontName
+//                    pointSize: widgetthemepage.fontSize
+//                }
 //                anchors.verticalCenter: parent.verticalCenter
 //            }
-        }
-
-        Row {
-            Label {
-                id: iconthemelabel
-                width: 110
-                text: qsTr("图标主题:")
-                font {
-                    family: widgetthemepage.fontName
-                    pointSize: widgetthemepage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: iconcombo
-                model: choices2
-                width: cursorthemelabel.width
-                onSelectedTextChanged: console.log(selectedText)
-            }
-//            Label {
-//                id: current_icon_theme
-//                text: sessiondispatcher.get_icon_theme_qt()
+//            ComboBox {
+//                id: syscombo
+//                model: choices1
 //                width: cursorthemelabel.width
+
+//                onSelectedTextChanged: console.log(selectedText)
+//            }
+////            Label {
+////                id: current_theme
+////                text: sessiondispatcher.get_theme_qt()
+////                width: cursorthemelabel.width
+////                anchors.verticalCenter: parent.verticalCenter
+////            }
+//        }
+
+//        Row {
+//            Label {
+//                id: iconthemelabel
+//                width: 110
+//                text: qsTr("图标主题:")
+//                font {
+//                    family: widgetthemepage.fontName
+//                    pointSize: widgetthemepage.fontSize
+//                }
 //                anchors.verticalCenter: parent.verticalCenter
 //            }
-        }
-
-        Row {
-            Label {
-                id: cursorthemelabel
-                width: 110
-                text: qsTr("cursor主题:")
-                font {
-                    family: widgetthemepage.fontName
-                    pointSize: widgetthemepage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: cursorcombo
-                model: choices3
-                width: cursorthemelabel.width
-                onSelectedTextChanged: console.log(selectedText)
-            }
-//            Label {
-//                id: current_cursor_theme
-//                text: sessiondispatcher.get_cursor_theme_qt()
+//            ComboBox {
+//                id: iconcombo
+//                model: choices2
 //                width: cursorthemelabel.width
+//                onSelectedTextChanged: console.log(selectedText)
+//            }
+////            Label {
+////                id: current_icon_theme
+////                text: sessiondispatcher.get_icon_theme_qt()
+////                width: cursorthemelabel.width
+////                anchors.verticalCenter: parent.verticalCenter
+////            }
+//        }
+
+//        Row {
+//            Label {
+//                id: cursorthemelabel
+//                width: 110
+//                text: qsTr("cursor主题:")
+//                font {
+//                    family: widgetthemepage.fontName
+//                    pointSize: widgetthemepage.fontSize
+//                }
 //                anchors.verticalCenter: parent.verticalCenter
 //            }
-        }
+//            ComboBox {
+//                id: cursorcombo
+//                model: choices3
+//                width: cursorthemelabel.width
+//                onSelectedTextChanged: console.log(selectedText)
+//            }
+////            Label {
+////                id: current_cursor_theme
+////                text: sessiondispatcher.get_cursor_theme_qt()
+////                width: cursorthemelabel.width
+////                anchors.verticalCenter: parent.verticalCenter
+////            }
+//        }
 
-        Row {
-            Label {
-                id: trashlabel
-                width: 110
-                text: qsTr("cursor大小:")
-                font {
-                    family: widgetthemepage.fontName
-                    pointSize: widgetthemepage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            SpinBox {
-                id: themespinbox
-                width: trashlabel.width
-//                width: 97
-                minimumValue: 0//32
-                maximumValue: 64
-                value: sessiondispatcher.get_cursor_size_qt()
-//                value: 48
-            }
-        }
-    }//Column
+//        Row {
+//            Label {
+//                id: trashlabel
+//                width: 110
+//                text: qsTr("cursor大小:")
+//                font {
+//                    family: widgetthemepage.fontName
+//                    pointSize: widgetthemepage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            SpinBox {
+//                id: themespinbox
+//                width: trashlabel.width
+////                width: 97
+//                minimumValue: 0//32
+//                maximumValue: 64
+//                value: sessiondispatcher.get_cursor_size_qt()
+////                value: 48
+//            }
+//        }
+//    }//Column
 
-}
+//}
+
+
+
+
+
+
+
+
 
 
 //import QtQuick 1.1

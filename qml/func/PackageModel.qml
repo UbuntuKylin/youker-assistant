@@ -82,7 +82,7 @@ Item {
             console.log("unneed........................");
             console.log(systemdispatcher.get_package_args());
             mainModel.append({"itemTitle": "卸载不必要的安装程序",
-                             "picture": "../img/toolWidget/deb.png",
+                             "picture": "../img/toolWidget/deb-min.png",
                              "detailstr": "卸载不再需要的安装程序,让系统更瘦",
                              "flags": "clear_cookies",
                             "attributes":
@@ -100,7 +100,7 @@ Item {
         id: mainModel
         ListElement {
             itemTitle: "清理不再需要的安装包"
-            picture: "../img/toolWidget/deb.png"
+            picture: "../img/toolWidget/deb-min.png"
             detailstr: "不再需要的安装包,让系统更瘦"
             flags: "clear_package"
             attributes: [
@@ -185,7 +185,7 @@ Item {
         anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
         Image {
             id: refreshArrow
-            source: "../img/toolWidget/trace.png"
+            source: "../img/toolWidget/deb-max.png"
 //            width: 50; height: 50
             Behavior on rotation { NumberAnimation { duration: 200 } }
         }

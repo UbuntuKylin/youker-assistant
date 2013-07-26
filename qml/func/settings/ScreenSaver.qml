@@ -20,319 +20,39 @@ import SessionType 0.1
 import QtDesktop 0.1
 import "../common" as Common
 
-Rectangle {
-    id: screensaverpage
-    property bool on: true
+Item {
     width: parent.width
     height: 475
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
-    property SessionDispatcher dis: sessiondispatcher
-    property int cursor_size: 24
-    property string default_theme: ""
-    property string default_icon_theme: ""
-    property string default_cursor_theme: ""
-
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
-
-    //OK工具栏
-//    Common.OkToolBar {
-//        id: oktoolBar
-////        visible: idenfer ? true : false
-//        visible: false
-//        height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//        buttonLabel: qsTr("确定")
-//        onButtonClicked: {
-//            console.log("oktoolbar clicked...");
-//        }
-//    }
-
-
     Component.onCompleted: {
-//        console.log("------55555---------");
-        screensaverpage.cursor_size = themespinbox.value;
-        screensaverpage.default_theme = sessiondispatcher.get_theme_qt();
-        screensaverpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        screensaverpage.default_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-//        console.log(screensaverpage.default_theme);
-//        console.log(screensaverpage.default_icon_theme);
-//        console.log(screensaverpage.default_cursor_theme);
-//        console.log(screensaverpage.cursor_size);
-
-
-//        var syslist = sessiondispatcher.get_themes_qt();
-//        syslist.unshift(screensaverpage.default_theme);
-//        choices1.clear();
-//        for(var i=0; i < syslist.length; i++) {
-//            choices1.append({"text": syslist[i]});
-//            if (i!=0 && syslist[i] == screensaverpage.default_theme)
-//                choices1.remove(i);
-//        }
-
-//        var iconlist = sessiondispatcher.get_icon_themes_qt();
-//        iconlist.unshift(screensaverpage.default_icon_themeg);
-//        choices2.clear();
-//        for(var j=0; j < iconlist.length; j++) {
-//            choices2.append({"text": iconlist[j]});
-//            if (j!=0 && iconlist[j] == screensaverpage.default_icon_theme)
-//                choices2.remove(j);
-//        }
-
-//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-//        cursorlist.unshift(screensaverpage.default_cursor_theme);
-//        choices3.clear();
-//        for(var k=0; k < cursorlist.length; k++) {
-//            choices3.append({"text": cursorlist[k]});
-//            if (k!=0 && cursorlist[k] == screensaverpage.default_cursor_theme)
-//                choices3.remove(k);
-//        }
-
-        var syslist = sessiondispatcher.get_themes_qt();
-        var current_theme = sessiondispatcher.get_theme_qt();
-        syslist.unshift(current_theme);
-        choices1.clear();
-        for(var i=0; i < syslist.length; i++) {
-            choices1.append({"text": syslist[i]});
-            if (i!=0 && syslist[i] == current_theme)
-                choices1.remove(i);
-        }
-
-        var iconlist = sessiondispatcher.get_icon_themes_qt();
-        var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        iconlist.unshift(current_icon_theme);
-        choices2.clear();
-        for(var j=0; j < iconlist.length; j++) {
-            choices2.append({"text": iconlist[j]});
-            if (j!=0 && iconlist[j] == current_icon_theme)
-                choices2.remove(j);
-        }
-
-        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-        cursorlist.unshift(current_cursor_theme);
-        choices3.clear();
-        for(var k=0; k < cursorlist.length; k++) {
-            choices3.append({"text": cursorlist[k]});
-            if (k!=0 && cursorlist[k] == current_cursor_theme)
-                choices3.remove(k);
-        }
-
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "theme") {
-                console.log("-----------------");
-//                sessiondispatcher.set_theme_qt(syscombo.selectedText);
-//                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-//                console.log(current_theme.text);
-//                console.log(syscombo.selectedText);
-//                console.log(current_icon_theme.text);
-//                console.log(iconcombo.selectedText);
-//                console.log(current_cursor_theme.text);
-//                console.log(cursorcombo.selectedText);
-                //default:ubuntukylin-theme
-                if (screensaverpage.default_theme != syscombo.selectedText) {
-                    console.log("111");
-                    screensaverpage.default_theme = syscombo.selectedText;
-                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
-                }
-                else
-                    console.log("222");
-                //default:ubuntukylin-icon-theme
-                if (screensaverpage.default_icon_theme != iconcombo.selectedText) {
-                    console.log("333");
-                    screensaverpage.default_icon_theme = iconcombo.selectedText;
-                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                }
-                else
-                    console.log("444");
-                //default:DMZ-White
-                if (screensaverpage.default_cursor_theme != cursorcombo.selectedText) {
-                    console.log("555");
-                    screensaverpage.default_cursor_theme = cursorcombo.selectedText;
-                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-                }
-                else
-                    console.log("666");
-                //default:24
-                if (screensaverpage.cursor_size != themespinbox.value) {
-                    screensaverpage.cursor_size = themespinbox.value;
-                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
-                }
-//                console.log("*********************88");
-//                console.log(current_theme.text);
-//                console.log(syscombo.selectedText);
-//                console.log(current_icon_theme.text);
-//                console.log(iconcombo.selectedText);
-//                console.log(current_cursor_theme.text);
-//                console.log(cursorcombo.selectedText);
-//                console.log(screensaverpage.cursor_size);
-//                console.log(themespinbox.value);
-
-            }
-
-//                console.log(themespinbox.value);
-//                console.log(themelabel.text);
-        }
-    }
-    ListModel {
-        id: choices0
-        ListElement { text: "" }
-    }
-    ListModel {
-        id: choices1
-        ListElement { text: "kobe999" }
-    }
-    ListModel {
-        id: choices2
-        ListElement { text: "kobe888" }
-    }
-    ListModel {
-        id: choices3
-        ListElement { text: "kobe777" }
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
 
-
-    Label {
-        id: theme
-        text: qsTr("主题设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
+    Image {
+        id: titleimage
         anchors {
-            top: parent.top
-            topMargin: 10
             left: parent.left
-            leftMargin: 15
+            leftMargin: 2
         }
+        source: "../../img/skin/note-bg.png"
     }
-
-    Column {
-        spacing: 20
+    Text {
         anchors {
-//            top: parent.top
-//            topMargin: 20
-            top: theme.bottom
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
+            left: parent.left
+            leftMargin: 50
+            top: parent.top
+            topMargin: titleimage.height/2 - 7
         }
-
-//        anchors.horizontalCenter: parent.horizontalCenter
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            Label {
-                id: systhemelabel
-                width: 110
-                text: qsTr("系统主题:")
-                font {
-                    family: screensaverpage.fontName
-                    pointSize: screensaverpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: syscombo
-                model: choices1
-                width: cursorthemelabel.width
-
-                onSelectedTextChanged: console.log(selectedText)
-            }
-//            Label {
-//                id: current_theme
-//                text: sessiondispatcher.get_theme_qt()
-//                width: cursorthemelabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-        }
-
-        Row {
-            Label {
-                id: iconthemelabel
-                width: 110
-                text: qsTr("图标主题:")
-                font {
-                    family: screensaverpage.fontName
-                    pointSize: screensaverpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: iconcombo
-                model: choices2
-                width: cursorthemelabel.width
-                onSelectedTextChanged: console.log(selectedText)
-            }
-//            Label {
-//                id: current_icon_theme
-//                text: sessiondispatcher.get_icon_theme_qt()
-//                width: cursorthemelabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-        }
-
-        Row {
-            Label {
-                id: cursorthemelabel
-                width: 110
-                text: qsTr("cursor主题:")
-                font {
-                    family: screensaverpage.fontName
-                    pointSize: screensaverpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: cursorcombo
-                model: choices3
-                width: cursorthemelabel.width
-                onSelectedTextChanged: console.log(selectedText)
-            }
-//            Label {
-//                id: current_cursor_theme
-//                text: sessiondispatcher.get_cursor_theme_qt()
-//                width: cursorthemelabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-        }
-
-        Row {
-            Label {
-                id: trashlabel
-                width: 110
-                text: qsTr("cursor大小:")
-                font {
-                    family: screensaverpage.fontName
-                    pointSize: screensaverpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            SpinBox {
-                id: themespinbox
-                width: trashlabel.width
-//                width: 97
-                minimumValue: 0//32
-                maximumValue: 64
-                value: sessiondispatcher.get_cursor_size_qt()
-//                value: 48
-            }
-        }
-    }//Column
-
+        text: "屏幕保护程序功能正在研发中,敬请期待......"
+        font.pixelSize: 12
+        color: "#383838"
+    }
 }
+
 
 
 //import QtQuick 1.1

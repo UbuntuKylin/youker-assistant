@@ -45,152 +45,59 @@ Rectangle {
     property string desktop_font: "Helvetica"
     property string titlebar_font: "Helvetica"
     property string monospace_font: "Helvetica"
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
+    property string actiontitle: "标题栏字体设置"
+    property string actiontext: "根据您的喜好设置标题栏字体"
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
 
     Component.onCompleted: {
-        titlebarfontpage.current_font = sessiondispatcher.get_font_qt();
-        titlebarfontpage.document_font = sessiondispatcher.get_document_font_qt();
         //        titlebarfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         titlebarfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
-        titlebarfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "fonts") {
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "TitlebarFont") {
             }
         }
     }
 
-    Label {
-        id: fonts
-        text: qsTr("字体设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
-        anchors {
-            top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 15
-        }
+    Column {
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: titlebarfontpage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: titlebarfontpage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
     }
 
     Column {
         spacing: 20
         anchors {
-//            top: parent.top
-//            topMargin: 20
-            top: fonts.bottom
-            topMargin: 20
+            top: parent.top
+            topMargin: 120
+//            left: parent.left
+//            leftMargin: 60
             horizontalCenter: parent.horizontalCenter
         }
 
 //        anchors.horizontalCenter: parent.horizontalCenter
 
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            Label {
-                id: fontslabel
-                width: 110
-                text: qsTr("字体设置:")
-                font {
-                    family: titlebarfontpage.fontName
-                    pointSize: titlebarfontpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_font_qt()
-                text: titlebarfontpage.current_font
-                width: fontslabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("font");
-            }
-        }
-
-        Row {
-            Label {
-                id: desktopfontlabel
-                width: 110
-                text: qsTr("桌面字体:")
-                font {
-                    family: titlebarfontpage.fontName
-                    pointSize: titlebarfontpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_desktop_font_qt()
-                text: "an error"
-                width: desktopfontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("desktopfont");
-            }
-        }
-
-        Row {
-            Label {
-                id: documentfontlabel
-                width: 110
-                text: qsTr("文档字体:")
-                font {
-                    family: titlebarfontpage.fontName
-                    pointSize: titlebarfontpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_document_font_qt()
-                text: titlebarfontpage.document_font
-                width: documentfontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("documentfont");
-            }
-        }
-
-        Row {
-            Label {
-                id: monospacefontlabel
-                width: 110
-                text: qsTr("monospace字体:")
-                font {
-                    family: titlebarfontpage.fontName
-                    pointSize: titlebarfontpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-//                text: sessiondispatcher.get_monospace_font_qt()
-                text: titlebarfontpage.monospace_font
-                width: monospacefontlabel.width
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Button {
-                text: "设置"
-                onClicked: sessiondispatcher.show_font_dialog("monospacefont");
-            }
-        }
 
         Row {
             Label {
@@ -215,26 +122,6 @@ Rectangle {
             }
         }
 
-        Row {
-            Label {
-                id: fontzoomlabel
-                width: 110
-                text: qsTr("字体大小:")
-                font {
-                    family: titlebarfontpage.fontName
-                    pointSize: titlebarfontpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            SpinBox {
-                id: fontzoomspinbox
-                width: 97
-                minimumValue: 0
-                maximumValue: 64
-                value: sessiondispatcher.get_font_zoom_qt()
-//                value: 48
-            }
-        }
 
     }//Column
 

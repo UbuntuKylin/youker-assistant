@@ -32,9 +32,7 @@ class IhuApplication : public QApplication
 public:
     IhuApplication(int &argc, char **argv);
     virtual ~IhuApplication();
-    bool setupdialog();
     bool setup();
-//    void set_root();
 private:
     QDeclarativeView *viewer;
 };

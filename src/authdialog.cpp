@@ -1,103 +1,40 @@
 #include "authdialog.h"
 #include "ui_authdialog.h"
-#include <QDebug>
-//#include <QMouseEvent>
-//#include <QDeclarativeView>
-//#include <QApplication>
-//#include <QDir>
-//#include <QtGui/QApplication>
-//#include <QtDeclarative/QDeclarativeView>
-//#include <QtDeclarative/QDeclarativeEngine>
-//#include <QtDeclarative/QDeclarativeComponent>
-//#include <QtDeclarative/QDeclarativeContext>
-//#include <QtDeclarative/QDeclarativeItem>
-//#include <QMetaObject>
-//#include <QDeclarativeContext>
-//#include <QDesktopWidget>
-//#include <QGraphicsObject>
-//#include <QDialog>
-//#include <QProcess>
-
 AuthDialog::AuthDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AuthDialog)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
+    ui->btn_close->installEventFilter(this);
+    ui->btn_min->installEventFilter(this);
+    ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
+    ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
     passwd = "";
+
+//    ui->lineEdit->setEchoMode(QLineEdit::Password);
     ui->lineEdit->setFocus();
-//    this->view = new QDeclarativeView(this);
-//    this->view->setSource(QUrl("../qml/MyDialog.qml"));
 
-//    this->addWidget(this->view);
-//    this->layout = new QBoxLayout(QBoxLayout::TopToBottom, this->view);
-
-
-//    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
-//    this->view->setStyleSheet("background:transparent");
-//    this->setAttribute(Qt::WA_TranslucentBackground);
-//    this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
-//    QObject::connect(this->view->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
-
-
+    QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
+    QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));
 }
-
-//AuthDialog::AuthDialog(QWidget *parent) :
-//    QDialog(parent)
-//{
-////    Qt::WindowFlags flags = Qt::Dialog;
-////    flags |= Qt::WindowMinimizeButtonHint;
-////    this->setWindowFlags(flags);
-////    this->setAttribute(Qt::WA_TranslucentBackground);
-////    this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->view = new QDeclarativeView(this);
-//    this->view->setSource(QUrl("../qml/MyDialog.qml"));
-
-
-//    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
-//    this->view->setStyleSheet("background:transparent");
-//    this->setAttribute(Qt::WA_TranslucentBackground);
-//    this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->view->rootContext()->setContextProperty("dialogwindow", this->view);
-//    QObject::connect(this->view->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
-
-////    passwd = "";
-//}
 
 AuthDialog::~AuthDialog()
 {
     delete ui;
 }
 
-
-
-void AuthDialog::on_quitBtn_clicked()
+void AuthDialog::on_closeButton_clicked()
 {
-    QDialog::reject();
+//    QDialog::reject();
+    close();
+    QDialog::destroy(true);
+    exit(0);
 }
 
-void AuthDialog::on_okBtn_clicked()
+void AuthDialog::on_okButton_clicked()
 {
-    QDialog::accept();
+    passwd = ui->lineEdit->text();
 }
-//void AuthDialog::mousePressEvent(QMouseEvent *event)
-//{
-//    if(event->button() == Qt::LeftButton) {
-//        qDebug() << "mouse press event";
-//    }
-////    if (event->button() == Qt::LeftButton) {
-////        dragPosition = event->globalPos() - frameGeometry().topLeft();
-////        event->accept();
-////    }
-////    qDebug() << "mouse press event";
-//}
-
-//void AuthDialog::mouseMoveEvent(QMouseEvent *event)
-//{
-//    if (event->buttons() & Qt::LeftButton) {
-////        move(event->globalPos()-dragPosition);
-//        event->accept();
-//        qDebug() << "mouse moving";
-//    }
-//    qDebug() << "mouse move event";
-//}

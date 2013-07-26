@@ -20,6 +20,7 @@ import SessionType 0.1
 import QtDesktop 0.1
 import "../common" as Common
 
+
 Rectangle {
     id: desktopbackgroundpage
     property bool on: true
@@ -34,121 +35,31 @@ Rectangle {
     property string default_icon_theme: ""
     property string default_cursor_theme: ""
 
-    Common.Border {
-        id: leftborder
+    property string actiontitle: "图标主题设置"
+    property string actiontext: "更换图标主题(更换桌面壁纸正在研发中......)"
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
-
-    //OK工具栏
-//    Common.OkToolBar {
-//        id: oktoolBar
-////        visible: idenfer ? true : false
-//        visible: false
-//        height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//        buttonLabel: qsTr("确定")
-//        onButtonClicked: {
-//            console.log("oktoolbar clicked...");
-//        }
-//    }
-
-
     Component.onCompleted: {
-//        console.log("------55555---------");
-        desktopbackgroundpage.cursor_size = themespinbox.value;
-        desktopbackgroundpage.default_theme = sessiondispatcher.get_theme_qt();
-        desktopbackgroundpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        desktopbackgroundpage.default_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-//        console.log(desktopbackgroundpage.default_theme);
-//        console.log(desktopbackgroundpage.default_icon_theme);
-//        console.log(desktopbackgroundpage.default_cursor_theme);
-//        console.log(desktopbackgroundpage.cursor_size);
-
-
-//        var syslist = sessiondispatcher.get_themes_qt();
-//        syslist.unshift(desktopbackgroundpage.default_theme);
-//        choices1.clear();
-//        for(var i=0; i < syslist.length; i++) {
-//            choices1.append({"text": syslist[i]});
-//            if (i!=0 && syslist[i] == desktopbackgroundpage.default_theme)
-//                choices1.remove(i);
-//        }
-
-//        var iconlist = sessiondispatcher.get_icon_themes_qt();
-//        iconlist.unshift(desktopbackgroundpage.default_icon_themeg);
-//        choices2.clear();
-//        for(var j=0; j < iconlist.length; j++) {
-//            choices2.append({"text": iconlist[j]});
-//            if (j!=0 && iconlist[j] == desktopbackgroundpage.default_icon_theme)
-//                choices2.remove(j);
-//        }
-
-//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-//        cursorlist.unshift(desktopbackgroundpage.default_cursor_theme);
-//        choices3.clear();
-//        for(var k=0; k < cursorlist.length; k++) {
-//            choices3.append({"text": cursorlist[k]});
-//            if (k!=0 && cursorlist[k] == desktopbackgroundpage.default_cursor_theme)
-//                choices3.remove(k);
-//        }
-
-        var syslist = sessiondispatcher.get_themes_qt();
-        var current_theme = sessiondispatcher.get_theme_qt();
-        syslist.unshift(current_theme);
-        choices1.clear();
-        for(var i=0; i < syslist.length; i++) {
-            choices1.append({"text": syslist[i]});
-            if (i!=0 && syslist[i] == current_theme)
-                choices1.remove(i);
-        }
-
         var iconlist = sessiondispatcher.get_icon_themes_qt();
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
         iconlist.unshift(current_icon_theme);
-        choices2.clear();
+        choices.clear();
         for(var j=0; j < iconlist.length; j++) {
-            choices2.append({"text": iconlist[j]});
+            choices.append({"text": iconlist[j]});
             if (j!=0 && iconlist[j] == current_icon_theme)
-                choices2.remove(j);
-        }
-
-        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-        cursorlist.unshift(current_cursor_theme);
-        choices3.clear();
-        for(var k=0; k < cursorlist.length; k++) {
-            choices3.append({"text": cursorlist[k]});
-            if (k!=0 && cursorlist[k] == current_cursor_theme)
-                choices3.remove(k);
+                choices.remove(j);
         }
 
     }
-
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "theme") {
-                console.log("-----------------");
-//                sessiondispatcher.set_theme_qt(syscombo.selectedText);
-//                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-//                console.log(current_theme.text);
-//                console.log(syscombo.selectedText);
-//                console.log(current_icon_theme.text);
-//                console.log(iconcombo.selectedText);
-//                console.log(current_cursor_theme.text);
-//                console.log(cursorcombo.selectedText);
-                //default:ubuntukylin-theme
-                if (desktopbackgroundpage.default_theme != syscombo.selectedText) {
-                    console.log("111");
-                    desktopbackgroundpage.default_theme = syscombo.selectedText;
-                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
-                }
-                else
-                    console.log("222");
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "DesktopBackground") {
+
                 //default:ubuntukylin-icon-theme
                 if (desktopbackgroundpage.default_icon_theme != iconcombo.selectedText) {
                     console.log("333");
@@ -157,182 +68,386 @@ Rectangle {
                 }
                 else
                     console.log("444");
-                //default:DMZ-White
-                if (desktopbackgroundpage.default_cursor_theme != cursorcombo.selectedText) {
-                    console.log("555");
-                    desktopbackgroundpage.default_cursor_theme = cursorcombo.selectedText;
-                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-                }
-                else
-                    console.log("666");
-                //default:24
-                if (desktopbackgroundpage.cursor_size != themespinbox.value) {
-                    desktopbackgroundpage.cursor_size = themespinbox.value;
-                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
-                }
-//                console.log("*********************88");
-//                console.log(current_theme.text);
-//                console.log(syscombo.selectedText);
-//                console.log(current_icon_theme.text);
-//                console.log(iconcombo.selectedText);
-//                console.log(current_cursor_theme.text);
-//                console.log(cursorcombo.selectedText);
-//                console.log(desktopbackgroundpage.cursor_size);
-//                console.log(themespinbox.value);
-
             }
 
-//                console.log(themespinbox.value);
-//                console.log(themelabel.text);
         }
     }
+    Column {
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: desktopbackgroundpage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: desktopbackgroundpage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
+    }
+
+
     ListModel {
-        id: choices0
+        id: choices
         ListElement { text: "" }
     }
-    ListModel {
-        id: choices1
-        ListElement { text: "kobe999" }
-    }
-    ListModel {
-        id: choices2
-        ListElement { text: "kobe888" }
-    }
-    ListModel {
-        id: choices3
-        ListElement { text: "kobe777" }
-    }
 
-
-    Label {
-        id: theme
-        text: qsTr("主题设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
+    Row {
+        spacing: 10
         anchors {
             top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 15
+            topMargin: 120
+//            left: parent.left
+//            leftMargin: 60
+            horizontalCenter: parent.horizontalCenter
+        }
+        Text {
+            id: iconthemelabel
+            text: "图标主题"
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        ComboBox {
+            id: iconcombo
+            model: choices
+            onSelectedTextChanged: console.log(selectedText)
         }
     }
 
-    Column {
-        spacing: 20
-        anchors {
-//            top: parent.top
-//            topMargin: 20
-            top: theme.bottom
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
-        }
-
-//        anchors.horizontalCenter: parent.horizontalCenter
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            Label {
-                id: systhemelabel
-                width: 110
-                text: qsTr("系统主题:")
-                font {
-                    family: desktopbackgroundpage.fontName
-                    pointSize: desktopbackgroundpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: syscombo
-                model: choices1
-                width: cursorthemelabel.width
-
-                onSelectedTextChanged: console.log(selectedText)
-            }
-//            Label {
-//                id: current_theme
-//                text: sessiondispatcher.get_theme_qt()
-//                width: cursorthemelabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-        }
-
-        Row {
-            Label {
-                id: iconthemelabel
-                width: 110
-                text: qsTr("图标主题:")
-                font {
-                    family: desktopbackgroundpage.fontName
-                    pointSize: desktopbackgroundpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: iconcombo
-                model: choices2
-                width: cursorthemelabel.width
-                onSelectedTextChanged: console.log(selectedText)
-            }
-//            Label {
-//                id: current_icon_theme
-//                text: sessiondispatcher.get_icon_theme_qt()
-//                width: cursorthemelabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-        }
-
-        Row {
-            Label {
-                id: cursorthemelabel
-                width: 110
-                text: qsTr("cursor主题:")
-                font {
-                    family: desktopbackgroundpage.fontName
-                    pointSize: desktopbackgroundpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: cursorcombo
-                model: choices3
-                width: cursorthemelabel.width
-                onSelectedTextChanged: console.log(selectedText)
-            }
-//            Label {
-//                id: current_cursor_theme
-//                text: sessiondispatcher.get_cursor_theme_qt()
-//                width: cursorthemelabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-        }
-
-        Row {
-            Label {
-                id: trashlabel
-                width: 110
-                text: qsTr("cursor大小:")
-                font {
-                    family: desktopbackgroundpage.fontName
-                    pointSize: desktopbackgroundpage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            SpinBox {
-                id: themespinbox
-                width: trashlabel.width
-//                width: 97
-                minimumValue: 0//32
-                maximumValue: 64
-                value: sessiondispatcher.get_cursor_size_qt()
-//                value: 48
-            }
-        }
-    }//Column
-
 }
+
+
+
+//Rectangle {
+//    id: desktopbackgroundpage
+//    property bool on: true
+//    width: parent.width
+//    height: 475
+//    property string fontName: "Helvetica"
+//    property int fontSize: 12
+//    property color fontColor: "black"
+//    property SessionDispatcher dis: sessiondispatcher
+//    property int cursor_size: 24
+//    property string default_theme: ""
+//    property string default_icon_theme: ""
+//    property string default_cursor_theme: ""
+
+//    Common.Border {
+//        id: leftborder
+//    }
+//    Common.Border {
+//        id: roightborder
+//        anchors.right: parent.right
+//    }
+
+//    //OK工具栏
+////    Common.OkToolBar {
+////        id: oktoolBar
+//////        visible: idenfer ? true : false
+////        visible: false
+////        height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+////        buttonLabel: qsTr("确定")
+////        onButtonClicked: {
+////            console.log("oktoolbar clicked...");
+////        }
+////    }
+
+
+//    Component.onCompleted: {
+////        console.log("------55555---------");
+//        desktopbackgroundpage.cursor_size = themespinbox.value;
+//        desktopbackgroundpage.default_theme = sessiondispatcher.get_theme_qt();
+//        desktopbackgroundpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
+//        desktopbackgroundpage.default_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+////        console.log(desktopbackgroundpage.default_theme);
+////        console.log(desktopbackgroundpage.default_icon_theme);
+////        console.log(desktopbackgroundpage.default_cursor_theme);
+////        console.log(desktopbackgroundpage.cursor_size);
+
+
+////        var syslist = sessiondispatcher.get_themes_qt();
+////        syslist.unshift(desktopbackgroundpage.default_theme);
+////        choices1.clear();
+////        for(var i=0; i < syslist.length; i++) {
+////            choices1.append({"text": syslist[i]});
+////            if (i!=0 && syslist[i] == desktopbackgroundpage.default_theme)
+////                choices1.remove(i);
+////        }
+
+////        var iconlist = sessiondispatcher.get_icon_themes_qt();
+////        iconlist.unshift(desktopbackgroundpage.default_icon_themeg);
+////        choices2.clear();
+////        for(var j=0; j < iconlist.length; j++) {
+////            choices2.append({"text": iconlist[j]});
+////            if (j!=0 && iconlist[j] == desktopbackgroundpage.default_icon_theme)
+////                choices2.remove(j);
+////        }
+
+////        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+////        cursorlist.unshift(desktopbackgroundpage.default_cursor_theme);
+////        choices3.clear();
+////        for(var k=0; k < cursorlist.length; k++) {
+////            choices3.append({"text": cursorlist[k]});
+////            if (k!=0 && cursorlist[k] == desktopbackgroundpage.default_cursor_theme)
+////                choices3.remove(k);
+////        }
+
+//        var syslist = sessiondispatcher.get_themes_qt();
+//        var current_theme = sessiondispatcher.get_theme_qt();
+//        syslist.unshift(current_theme);
+//        choices1.clear();
+//        for(var i=0; i < syslist.length; i++) {
+//            choices1.append({"text": syslist[i]});
+//            if (i!=0 && syslist[i] == current_theme)
+//                choices1.remove(i);
+//        }
+
+//        var iconlist = sessiondispatcher.get_icon_themes_qt();
+//        var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
+//        iconlist.unshift(current_icon_theme);
+//        choices2.clear();
+//        for(var j=0; j < iconlist.length; j++) {
+//            choices2.append({"text": iconlist[j]});
+//            if (j!=0 && iconlist[j] == current_icon_theme)
+//                choices2.remove(j);
+//        }
+
+//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+//        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+//        cursorlist.unshift(current_cursor_theme);
+//        choices3.clear();
+//        for(var k=0; k < cursorlist.length; k++) {
+//            choices3.append({"text": cursorlist[k]});
+//            if (k!=0 && cursorlist[k] == current_cursor_theme)
+//                choices3.remove(k);
+//        }
+
+//    }
+
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "theme") {
+//                console.log("-----------------");
+////                sessiondispatcher.set_theme_qt(syscombo.selectedText);
+////                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+////                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+////                console.log(current_theme.text);
+////                console.log(syscombo.selectedText);
+////                console.log(current_icon_theme.text);
+////                console.log(iconcombo.selectedText);
+////                console.log(current_cursor_theme.text);
+////                console.log(cursorcombo.selectedText);
+//                //default:ubuntukylin-theme
+//                if (desktopbackgroundpage.default_theme != syscombo.selectedText) {
+//                    console.log("111");
+//                    desktopbackgroundpage.default_theme = syscombo.selectedText;
+//                    sessiondispatcher.set_theme_qt(syscombo.selectedText);
+//                }
+//                else
+//                    console.log("222");
+//                //default:ubuntukylin-icon-theme
+//                if (desktopbackgroundpage.default_icon_theme != iconcombo.selectedText) {
+//                    console.log("333");
+//                    desktopbackgroundpage.default_icon_theme = iconcombo.selectedText;
+//                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//                }
+//                else
+//                    console.log("444");
+//                //default:DMZ-White
+//                if (desktopbackgroundpage.default_cursor_theme != cursorcombo.selectedText) {
+//                    console.log("555");
+//                    desktopbackgroundpage.default_cursor_theme = cursorcombo.selectedText;
+//                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+//                }
+//                else
+//                    console.log("666");
+//                //default:24
+//                if (desktopbackgroundpage.cursor_size != themespinbox.value) {
+//                    desktopbackgroundpage.cursor_size = themespinbox.value;
+//                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
+//                }
+////                console.log("*********************88");
+////                console.log(current_theme.text);
+////                console.log(syscombo.selectedText);
+////                console.log(current_icon_theme.text);
+////                console.log(iconcombo.selectedText);
+////                console.log(current_cursor_theme.text);
+////                console.log(cursorcombo.selectedText);
+////                console.log(desktopbackgroundpage.cursor_size);
+////                console.log(themespinbox.value);
+
+//            }
+
+////                console.log(themespinbox.value);
+////                console.log(themelabel.text);
+//        }
+//    }
+//    ListModel {
+//        id: choices0
+//        ListElement { text: "" }
+//    }
+//    ListModel {
+//        id: choices1
+//        ListElement { text: "kobe999" }
+//    }
+//    ListModel {
+//        id: choices2
+//        ListElement { text: "kobe888" }
+//    }
+//    ListModel {
+//        id: choices3
+//        ListElement { text: "kobe777" }
+//    }
+
+
+//    Label {
+//        id: theme
+//        text: qsTr("主题设置>")
+//        height: 30
+//        font.bold: true
+//        font.family: "Ubuntu"
+//        elide: Text.ElideRight
+//        font.pointSize: 20
+//        anchors {
+//            top: parent.top
+//            topMargin: 10
+//            left: parent.left
+//            leftMargin: 15
+//        }
+//    }
+
+//    Column {
+//        spacing: 20
+//        anchors {
+////            top: parent.top
+////            topMargin: 20
+//            top: theme.bottom
+//            topMargin: 20
+//            horizontalCenter: parent.horizontalCenter
+//        }
+
+////        anchors.horizontalCenter: parent.horizontalCenter
+
+//        Row {
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            Label {
+//                id: systhemelabel
+//                width: 110
+//                text: qsTr("系统主题:")
+//                font {
+//                    family: desktopbackgroundpage.fontName
+//                    pointSize: desktopbackgroundpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            ComboBox {
+//                id: syscombo
+//                model: choices1
+//                width: cursorthemelabel.width
+
+//                onSelectedTextChanged: console.log(selectedText)
+//            }
+////            Label {
+////                id: current_theme
+////                text: sessiondispatcher.get_theme_qt()
+////                width: cursorthemelabel.width
+////                anchors.verticalCenter: parent.verticalCenter
+////            }
+//        }
+
+//        Row {
+//            Label {
+//                id: iconthemelabel
+//                width: 110
+//                text: qsTr("图标主题:")
+//                font {
+//                    family: desktopbackgroundpage.fontName
+//                    pointSize: desktopbackgroundpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            ComboBox {
+//                id: iconcombo
+//                model: choices2
+//                width: cursorthemelabel.width
+//                onSelectedTextChanged: console.log(selectedText)
+//            }
+////            Label {
+////                id: current_icon_theme
+////                text: sessiondispatcher.get_icon_theme_qt()
+////                width: cursorthemelabel.width
+////                anchors.verticalCenter: parent.verticalCenter
+////            }
+//        }
+
+//        Row {
+//            Label {
+//                id: cursorthemelabel
+//                width: 110
+//                text: qsTr("cursor主题:")
+//                font {
+//                    family: desktopbackgroundpage.fontName
+//                    pointSize: desktopbackgroundpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            ComboBox {
+//                id: cursorcombo
+//                model: choices3
+//                width: cursorthemelabel.width
+//                onSelectedTextChanged: console.log(selectedText)
+//            }
+////            Label {
+////                id: current_cursor_theme
+////                text: sessiondispatcher.get_cursor_theme_qt()
+////                width: cursorthemelabel.width
+////                anchors.verticalCenter: parent.verticalCenter
+////            }
+//        }
+
+//        Row {
+//            Label {
+//                id: trashlabel
+//                width: 110
+//                text: qsTr("cursor大小:")
+//                font {
+//                    family: desktopbackgroundpage.fontName
+//                    pointSize: desktopbackgroundpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            SpinBox {
+//                id: themespinbox
+//                width: trashlabel.width
+////                width: 97
+//                minimumValue: 0//32
+//                maximumValue: 64
+//                value: sessiondispatcher.get_cursor_size_qt()
+////                value: 48
+//            }
+//        }
+//    }//Column
+
+//}
+
+
+
+
+
+
+
+
+
+
 
 
 //import QtQuick 1.1

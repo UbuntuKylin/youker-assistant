@@ -21,6 +21,225 @@ import SessionType 0.1
 import QtDesktop 0.1
 import "../common" as Common
 
+//Rectangle {
+//    id: touchpadsetpage
+//    property bool on: true
+//    width: parent.width
+//    height: 475
+//    color: "transparent"
+//    property string fontName: "Helvetica"
+//    property int fontSize: 12
+//    property color fontColor: "black"
+//    property SessionDispatcher dis: sessiondispatcher
+//    property string touchscrolling_mode: ""
+
+//    Component.onCompleted: {
+//        touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();//edge-scrolling
+////        console.log("888888888");
+////        console.log(touchpadsetpage.touchscrolling_mode);
+//        if (sessiondispatcher.get_touchpad_enable_qt())
+//            touchpadswitcher.switchedOn = true;
+//        else
+//            touchpadswitcher.switchedOn = false;
+
+//        if (sessiondispatcher.get_touchscrolling_use_horizontal_qt())
+//            horizontalswitcher.switchedOn = true;
+//        else
+//            horizontalswitcher.switchedOn = false;
+//    }
+
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onButton2Clicked: {
+//            if (settigsDetails.setTitle == "touchpad") {
+////                console.log(touchpadlabel.text);
+//                if (edge.checked == true) {
+//                    console.log("123");
+//                    sessiondispatcher.set_touchscrolling_mode_edge_qt();
+//                }
+//                else if (twofinger.checked == true) {
+//                    console.log("1234");
+//                    sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+//                }
+//            }
+//        }
+//    }
+////------------------------------------------------------------------------
+
+//    Image {     //背景图片
+//        id: background
+//        anchors.fill: parent
+//        source: "../../img/skin/bg-left.png"
+//    }
+
+//    Image {     //左上角的图案
+//        id: leftpic
+//        anchors{
+//            left: parent.left
+//            top:parent.top
+//            leftMargin: 30
+//            topMargin: 30
+//        }
+//        source: "../../img/icons/arrow.png"
+//    }
+
+//    Column{
+//        id:leftwz
+//        spacing: 10
+//        anchors{
+//            left:leftpic.left
+//            top:parent.top
+//            leftMargin: 30
+//            topMargin: 30
+//        }
+//        Text {
+//            text: qsTr("触摸板设置")
+//            font.bold:true
+//            font.pointSize: 11
+//        }
+//        Text {
+//            color: "grey"
+//            text: qsTr("通过调整您触摸板的相关位置，使操作更加便捷。")
+//            font.pointSize: 10
+//        }
+//    }
+
+//    Text{
+//        id:switchwz
+//        anchors{
+//            left:parent.left
+//            top:leftwz.bottom
+//            leftMargin: 30
+//            topMargin: 30
+//        }
+//        text: qsTr("开关设置")
+//        font.bold:true
+//        font.pointSize: 10
+
+//    }
+////上下分割线
+//    Rectangle{id:topline1 ; x:switchwz.x+65; y:switchwz.y+10 ;width:parent.width ; height:1;color:"#b9c5cc"}
+//    Rectangle{id:bottomline1 ; x:switchwz.x+65;y:switchwz.y+12 ; width:parent.width ; height:1;color:"#fafcfe"}
+
+//    Row{        //开关设置项
+//        id:switchsz
+//        spacing: 50
+//        anchors{
+//            left:parent.left
+//            top:switchwz.top
+//            leftMargin: 50
+//            topMargin: 40
+//        }
+//        Text{
+//            color: "grey"
+//            text: qsTr("启用/禁用触摸板：")
+//            font.pointSize: 10
+//        }
+//        Common.Switch {
+//            width: touchpadlabel.width
+//            onSwitched: {
+//                if (touchpadswitcher.switchedOn) {
+////                    console.log("触摸板开关on---------------");
+//                    sessiondispatcher.set_touchpad_enable_qt(true);
+//                }
+//                else if(!touchpadswitcher.switchedOn) {
+////                    console.log("触摸板开关off---------------");
+//                    sessiondispatcher.set_touchpad_enable_qt(false);
+//                }
+//            }
+//        }
+
+//    }
+
+//    Text{
+//        id:scrollbarwz
+//        anchors{
+//            left:parent.left
+//            top:switchsz.bottom
+//            leftMargin: 30
+//            topMargin: 40
+//        }
+//        text: qsTr("滚动条设置")
+//        font.bold:true
+//        font.pointSize: 10
+//    }
+////上下分割线
+//    Rectangle{id:topline2 ; x:scrollbarwz.x+80; y:scrollbarwz.y+10 ;width:parent.width ; height:1;color:"#b9c5cc"}
+//    Rectangle{id:bottomline2 ; x:scrollbarwz.x+80;y:scrollbarwz.y+12 ; width:parent.width ; height:1;color:"#fafcfe"}
+
+//    Column{         //滑动条设置项
+//        id:scrollbarsz
+//        spacing:15
+//        anchors{
+//            left:parent.left
+//            top:scrollbarwz.bottom
+//            leftMargin: 50
+//            topMargin: 20
+//        }
+//        Row{
+//            spacing: 25
+//            Text{
+//                color: "grey"
+//                text: qsTr("触摸板滚动条类型：")
+//                font.pointSize: 10
+//            }
+//            CheckBox {
+//                text: "edge模式"
+//                onClicked: console.log(edge.checked)
+//            }
+//            CheckBox {
+//                text: "twofinger模式"
+//                onClicked: console.log(twofinger.checked)
+//            }
+
+//        }
+//        Row{        //开关设置项
+//            spacing: 25
+//            Text{
+//                color: "grey"
+//                text: qsTr("触摸板横向滚动条：")
+//                font.pointSize: 10
+//            }
+//            Common.Switch {
+//                width: touchpadlabel.width
+//                onSwitched: {
+//                    if (touchpadswitcher.switchedOn) {
+//    //                    console.log("触摸板开关on---------------");
+//                        sessiondispatcher.set_touchpad_enable_qt(true);
+//                    }
+//                    else if(!touchpadswitcher.switchedOn) {
+//    //                    console.log("触摸板开关off---------------");
+//                        sessiondispatcher.set_touchpad_enable_qt(false);
+//                    }
+//                }
+//            }
+
+//        }
+//        Row{
+//            spacing: 25
+//            Text{
+//                color: "grey"
+//                text: qsTr("触摸板滚动条出发方式：")
+//                font.pointSize: 10
+//            }
+//            CheckBox {
+//                text: "edge模式"
+//                onClicked: console.log(edge.checked)
+//            }
+//            CheckBox {
+//                text: "twofinger模式"
+//                onClicked: console.log(twofinger.checked)
+//            }
+
+//        }
+//    }
+
+//}
+
+
+
+
 Rectangle {
     id: touchpadsetpage
     property bool on: true
@@ -31,12 +250,12 @@ Rectangle {
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
     property string touchscrolling_mode: ""
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
+    property string actiontitle: "触摸板设置"
+    property string actiontext: "根据您的使用习惯设置触摸板模式"
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
 
     Component.onCompleted: {
@@ -57,9 +276,8 @@ Rectangle {
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "touchpad") {
-//                console.log(touchpadlabel.text);
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "TouchpadSet") {
                 if (edge.checked == true) {
                     console.log("123");
                     sessiondispatcher.set_touchscrolling_mode_edge_qt();
@@ -72,30 +290,34 @@ Rectangle {
         }
     }
 
-    Label {
-        id: touchpad
-        text: qsTr("触摸板设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
-        anchors {
-            top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 15
-        }
+    Column {
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: touchpadsetpage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: touchpadsetpage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
     }
 
     Column {
         spacing: 20
         anchors {
-            top: touchpad.bottom
-            topMargin: 20
+            top: parent.top
+            topMargin: 120
+//            left: parent.left
+//            leftMargin: 60
             horizontalCenter: parent.horizontalCenter
         }
-
 //        anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
@@ -164,16 +386,17 @@ Rectangle {
             GroupBox {
                 title: qsTr("触摸板滚动模式:")
                 adjustToContentSize: true
-                ButtonRow {
+                Common.ButtonRow {
                     exclusive: true//控制是否联动
-                    CheckBox {
+                    spacing: 80
+                    Common.CheckBox {
                         id:edge
-                        text: "edge模式"
+                        titleName: "edge模式"
                         onClicked: console.log(edge.checked)
                     }
-                    CheckBox {
+                    Common.CheckBox {
                         id: twofinger
-                        text: "twofinger模式"
+                        titleName: "twofinger模式"
                         onClicked: console.log(twofinger.checked)
                     }
                 }
@@ -181,8 +404,21 @@ Rectangle {
         }
 
     }//Column
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

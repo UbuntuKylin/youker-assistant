@@ -52,8 +52,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <QDialog>
-
-//#include "authdialog.h"
 int main(int argc, char** argv)
 {
 //    qmlRegisterType<Person>("People",1,0,"Person");

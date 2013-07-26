@@ -55,13 +55,13 @@ Rectangle {
         ListElement {
             icon: "../img/icons/deepclear.png"
             name: "深度清理"
-            flag: "AdvanceSet"
+            flag: "DeepClear"
         }
 
         ListElement {
             icon: "../img/icons/systemreduce.png"
             name: "系统瘦身"
-            flag: "DashTheme"
+            flag: "SlimSystem"
         }
 
     }
@@ -216,7 +216,7 @@ Rectangle {
                   onExited: btnImg2.source = ""
 
                   onClicked: {
-                      sessiondispatcher.send_dialog_msg("modeless");
+                      sessiondispatcher.send_message_dialog();
                   }
             }
         }

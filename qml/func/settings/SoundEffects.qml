@@ -25,32 +25,24 @@ Rectangle {
     id: soundeffectspage
     property bool on: true
     width: parent.width
+    color:"transparent"
     height: 475
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
     property string default_sound: ""
-
-//    property Dispatcher dis: mydispather
-
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
+    property string actiontitle: "声音效果设置"
+    property string actiontext: "单击一下列表中的程序事件，然后选择要应用的声音。您可以更改系统和程序事件的声音方案。"
 
     Component.onCompleted: {
+
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
         else
             soundswitcher.switchedOn = false;
-
-
         soundeffectspage.default_sound = sessiondispatcher.get_sound_theme_qt();
-        var soundlist = sessiondispatcher.get_themes_qt();
+        var soundlist = sessiondispatcher.get_sound_themes_qt();
         var current_sound = sessiondispatcher.get_sound_theme_qt();
         soundlist.unshift(current_sound);
         choices.clear();
@@ -59,19 +51,13 @@ Rectangle {
             if (i!=0 && soundlist[i] == current_sound)
                 choices.remove(i);
         }
-
-//        var musiclist = sessiondispatcher.get_sound_themes_qt();
-//        choices.clear();
-//        for(var i=0; i < musiclist.length; i++) {
-//            choices.append({"text": musiclist[i]});
-//        }
     }
 
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "sound") {
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "SoundEffects") {
                 if (soundeffectspage.default_sound != soundcombo.selectedText) {
                     console.log("111");
                     soundeffectspage.default_sound = soundcombo.selectedText;
@@ -88,34 +74,194 @@ Rectangle {
         ListElement { text: "" }
     }
 
-    Label {
-        id: sound
-        text: qsTr("声音设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
+    Image {     //背景图片
+        id: background
+        anchors.fill: parent
+        source: "../../img/skin/bg-left.png"
+    }
+
+    Column {
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: soundeffectspage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: soundeffectspage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
+    }
+
+    Column{     //程序事件及选择框
+        id:chooseyy
+        spacing: 10
         anchors {
             top: parent.top
-            topMargin: 10
+            topMargin: 120
             left: parent.left
-            leftMargin: 15
+            leftMargin: 60
+        }
+        Text{
+            text: qsTr("程序事件：")
+            font.bold:true
+            font.pointSize: 10
+        }
+        Rectangle{
+            border.color: "#b9c5cc"
+            width: 550; height: 190
+            clip:true
+            ListModel{
+                id:lmodel
+                ListElement{name:"test1"}
+                ListElement{name:"test2"}
+                ListElement{name:"test3"}
+                ListElement{name:"test4"}
+            }
+            Component{
+                id:cdelegat
+                Rectangle{
+                    id:wrapper
+                    width: 530; height: 30
+                    color: "white"
+//                    color:ListView.isCurrentItem?"lightgrey":"white"
+                    Text{
+                        id:listtext
+                        anchors.verticalCenter: parent.verticalCenter
+                        text:name+":"+name
+                    }
+                    MouseArea{
+                        anchors.fill:parent
+                        hoverEnabled: true
+                        onEntered: {wrapper.color="lightgrey"}
+                        onPressed: {wrapper.color="lightgrey"}
+//                        onReleased: {wrapper.color="lightgrey"}
+                        onExited: {wrapper.color="white"}
+                        onClicked: {console.log("a.....")}
+                    }
+
+                }
+            }
+            ListView{
+                id:lisv
+                anchors.fill: parent
+                model:lmodel
+                delegate: cdelegat
+//              highlight: Rectangle{color: "lightsteelblue"}
+            }
+
+            Rectangle{
+                id:scrollbar
+                anchors.right: parent.right
+                anchors.rightMargin: 8
+                height: parent.height
+                width:5
+                color: "lightgrey"
+            }
+            Rectangle{
+                id: button
+                anchors.right: parent.right
+                anchors.rightMargin: 5
+                width: 12
+                y: lisv.visibleArea.yPosition * scrollbar.height
+                height: lisv.visibleArea.heightRatio * scrollbar.height;
+                radius: 3
+                smooth: true
+                color: "white"
+                border.color: "lightgrey"
+                Column{
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    spacing: 2
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                }
+                MouseArea {
+                    id: mousearea
+                    anchors.fill: button
+                    drag.target: button
+                    drag.axis: Drag.YAxis
+                    drag.minimumY: 0
+                    drag.maximumY: scrollbar.height - button.height
+                    onMouseYChanged: {
+                        lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
+                    }
+                }
+            }
         }
     }
 
     Column {
-        spacing: 20
+        spacing: 5
         anchors {
-            top: sound.bottom
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
+            top: parent.top
+            topMargin: 350
+            left: parent.left
+            leftMargin: 60
+        }
+        Text {
+            text: "声音"
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
         }
 
-//        anchors.horizontalCenter: parent.horizontalCenter
+        Row {
+            spacing: 10
+            ComboBox {
+                id: comboBox
+                width: 345
+            }
+
+            Common.Button {
+                width: 95
+                height: 30
+                hoverimage: "listen.png"
+                onClicked: {
+
+                }
+            }
+            Common.Button {
+                width: 95
+                height: 30
+                hoverimage: "browser.png"
+                onClicked: {
+
+                }
+            }
+        }
+    }
+
+    Rectangle{id:topline ; x:0; y: 420; width:parent.width ; height:1; color:"#b9c5cc"}
+    Rectangle{id:bottomline ; x:0;y:422 ;width:parent.width ; height:1; color:"#fafcfe"}
+
+
 
         Row {
-            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
+            anchors {
+                top: parent.top
+                topMargin: 280
+                left: parent.left
+                leftMargin: 620
+//                horizontalCenter: parent.horizontalCenter
+            }
             Label {
                 id: soundlabel
                 width: 110
@@ -124,11 +270,10 @@ Rectangle {
                     family: soundeffectspage.fontName
                     pointSize: soundeffectspage.fontSize
                 }
-                anchors.verticalCenter: parent.verticalCenter
+//                anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
                 id: soundswitcher
-                width: soundlabel.width
                 onSwitched: {
                     if (soundswitcher.switchedOn) {
                         console.log("系统登录音乐on---------------");
@@ -143,6 +288,12 @@ Rectangle {
         }
 
         Row {
+            anchors {
+                top: parent.top
+                topMargin: 320
+                left: parent.left
+                leftMargin: 620
+            }
             Label {
                 id: soundthemelabel
                 width: 110
@@ -151,7 +302,7 @@ Rectangle {
                     family: soundeffectspage.fontName
                     pointSize: soundeffectspage.fontSize
                 }
-                anchors.verticalCenter: parent.verticalCenter
+//                anchors.verticalCenter: parent.verticalCenter
             }
             ComboBox {
                 id: soundcombo
@@ -159,20 +310,293 @@ Rectangle {
                 width: soundthemelabel.width
 //                onSelectedTextChanged: console.log(selectedText)
             }
-//            Label {
-//                id: music_theme
-//                text: sessiondispatcher.get_sound_theme_qt()
-//                width: soundthemelabel.width
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
         }
 
 
+//    Column{     //声音的选择、试听、浏览
+//        id:confirmyy
+//        spacing: 15
+//        anchors {
+//            top: parent.top
+//            topMargin: 350
+//            left: parent.left
+//            leftMargin: 60
+//        }
+//        Text{
+//            text: qsTr("声音：")
+//            font.bold:true
+//            font.pointSize: 10
+//        }
+//        Row{
+//            spacing: 25
+//            Rectangle{
+//                id:sychoose
+//                width: 270
+//                height: 20
+//                border.color: "#b9c5cc"
+//                radius: 3
+//                smooth: true
+//                MouseArea{
+//                    anchors.fill: parent
+//                    hoverEnabled: true
+//                    onEntered: {sychoose.color="lightgrey"}
+//                    onPressed: {sychoose.color="lightgrey"}
+//                    onExited: {sychoose.color="white"}
+//                    onClicked: {
+//                        console.log("wate add....")
+//                    }
+//                }
+//            }
+//             Rectangle{
+//                 width:stimage.width; height:stimage.height
+//                 Image {
+//                     id:stimage
+//                     source: "../../img/icons/shiting1.png"
+//                 }
+//                 MouseArea{
+//                     anchors.fill: parent
+//                     hoverEnabled: true
+//                     onEntered: {stimage.source="../../img/icons/shiting2.png"}
+//                     onPressed: {stimage.source="../../img/icons/shiting2.png"}
+//                     onExited: {stimage.source="../../img/icons/shiting1.png"}
+//                     onClicked: {
+//                         console.log("wate add....")
+//                     }
+//                 }
+//              }
+//             Rectangle{
+//                 width:stimage.width; height:stimage.height
+//                 Image {
+//                     id:llimage
+//                     source: "../../img/icons/liulan.png"
+//                 }
+//                 MouseArea{
+//                     anchors.fill: parent
+//                     onClicked: {
+//                         console.log("wate add....")
+//                     }
+//                 }
+//              }
+//        }
+//    }
+////上下分割线
+//    Rectangle{id:topline ; x:0; y:confirmyy.y+90 ; width:parent.width ; height:1; color:"#b9c5cc"}
+//    Rectangle{id:bottomline ; x:0;y:confirmyy.y+92 ;width:parent.width ; height:1; color:"#fafcfe"}
 
+//    Row{
+//        anchors.right: parent.right
+//        anchors.top:bottomline.top
+//        anchors.rightMargin: 80
+//        anchors.topMargin: 5
+//        Rectangle{
+//            width:qrimage.width; height:qrimage.height
+//            Image {
+//                id:qrimage
+//                source: "../../img/icons/shiting1.png"
+//            }
+//            MouseArea{
+//                anchors.fill: parent
+//                hoverEnabled: true
+//                onEntered: {qrimage.source="../../img/icons/shiting2.png"}
+//                onPressed: {qrimage.source="../../img/icons/shiting2.png"}
+//                onExited: {qrimage.source="../../img/icons/shiting1.png"}
+//                onClicked: {
+//                    console.log("wate add....")
+//                }
+//            }
 
-    }//Column
+//        }
+//        Rectangle{
+//            width:qximage.width; height:qximage.height
+//            Image {
+//                id:qximage
+//                source: "../../img/icons/shiting1.png"
+//            }
+//            MouseArea{
+//                anchors.fill: parent
+//                hoverEnabled: true
+//                onEntered: {qximage.source="../../img/icons/shiting2.png"}
+//                onPressed: {qximage.source="../../img/icons/shiting2.png"}
+//                onExited: {qximage.source="../../img/icons/shiting1.png"}
+//                onClicked: {
+//                    console.log("wate add....")
+//                }
+//            }
+//        }
+//    }
 
 }
+//------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+//Rectangle {
+//    id: soundeffectspage
+//    property bool on: true
+//    width: parent.width
+//    height: 475
+//    property string fontName: "Helvetica"
+//    property int fontSize: 12
+//    property color fontColor: "black"
+//    property SessionDispatcher dis: sessiondispatcher
+//    property string default_sound: ""
+
+////    property Dispatcher dis: mydispather
+
+//    Common.Border {
+//        id: leftborder
+//    }
+//    Common.Border {
+//        id: roightborder
+//        anchors.right: parent.right
+//    }
+
+//    Component.onCompleted: {
+//        if (sessiondispatcher.get_login_music_enable_qt())
+//            soundswitcher.switchedOn = true;
+//        else
+//            soundswitcher.switchedOn = false;
+
+
+//        soundeffectspage.default_sound = sessiondispatcher.get_sound_theme_qt();
+//        var soundlist = sessiondispatcher.get_sound_themes_qt();
+//        var current_sound = sessiondispatcher.get_sound_theme_qt();
+//        soundlist.unshift(current_sound);
+//        choices.clear();
+//        for(var i=0; i < soundlist.length; i++) {
+//            choices.append({"text": soundlist[i]});
+//            if (i!=0 && soundlist[i] == current_sound)
+//                choices.remove(i);
+//        }
+
+//        var musiclist = sessiondispatcher.get_sound_themes_qt();
+//        choices.clear();
+//        for(var i=0; i < musiclist.length; i++) {
+//            choices.append({"text": musiclist[i]});
+//        }
+//    }
+
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "sound") {
+//                if (soundeffectspage.default_sound != soundcombo.selectedText) {
+//                    console.log("111");
+//                    soundeffectspage.default_sound = soundcombo.selectedText;
+//                    sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+//                }
+//                else
+//                    console.log("222");
+//            }
+//        }
+//    }
+
+//    ListModel {
+//        id: choices
+//        ListElement { text: "" }
+//    }
+
+//    Label {
+//        id: sound
+//        text: qsTr("声音设置>")
+//        height: 30
+//        font.bold: true
+//        font.family: "Ubuntu"
+//        elide: Text.ElideRight
+//        font.pointSize: 20
+//        anchors {
+//            top: parent.top
+//            topMargin: 10
+//            left: parent.left
+//            leftMargin: 15
+//        }
+//    }
+
+//    Column {
+//        spacing: 20
+//        anchors {
+//            top: sound.bottom
+//            topMargin: 20
+//            horizontalCenter: parent.horizontalCenter
+//        }
+
+////        anchors.horizontalCenter: parent.horizontalCenter
+
+//        Row {
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            Label {
+//                id: soundlabel
+//                width: 110
+//                text: qsTr("系统登录音乐:")
+//                font {
+//                    family: soundeffectspage.fontName
+//                    pointSize: soundeffectspage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Common.Switch {
+//                id: soundswitcher
+////                width: soundlabel.width
+//                onSwitched: {
+//                    if (soundswitcher.switchedOn) {
+//                        console.log("系统登录音乐on---------------");
+//                        sessiondispatcher.set_login_music_enable_qt(true);
+//                    }
+//                    else if(!soundswitcher.switchedOn) {
+//                        console.log("系统登录音乐off---------------");
+//                        sessiondispatcher.set_login_music_enable_qt(false);
+//                    }
+//                }
+//            }
+//        }
+
+//        Row {
+//            Label {
+//                id: soundthemelabel
+//                width: 110
+//                text: qsTr("音乐主题:")
+//                font {
+//                    family: soundeffectspage.fontName
+//                    pointSize: soundeffectspage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            ComboBox {
+//                id: soundcombo
+//                model: choices
+//                width: soundthemelabel.width
+////                onSelectedTextChanged: console.log(selectedText)
+//            }
+////            Label {
+////                id: music_theme
+////                text: sessiondispatcher.get_sound_theme_qt()
+////                width: soundthemelabel.width
+////                anchors.verticalCenter: parent.verticalCenter
+////            }
+//        }
+
+//    }//Column
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //import QtQuick 1.1

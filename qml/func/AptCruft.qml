@@ -80,7 +80,7 @@ Item {
             root.sub_num -= num;
             mainModel.clear();
             mainModel.append({"itemTitle": "清理Apt",
-                             "picture": "../img/toolWidget/apt.png",
+                             "picture": "../img/toolWidget/apt-min.png",
                              "detailstr": "清理Apt可以节省磁盘空间",
                              "flags": "clear_apt",
                             "attributes":
@@ -127,7 +127,7 @@ Item {
         id: mainModel
         ListElement {
             itemTitle: "清理Apt"
-            picture: "../img/toolWidget/apt.png"
+            picture: "../img/toolWidget/apt-min.png"
             detailstr: "清理Apt可以节省磁盘空间"
             flags: "clear_apt"
             attributes: [
@@ -155,7 +155,7 @@ Item {
         anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
         Image {
             id: refreshArrow
-            source: "../img/toolWidget/clear-pic.png"
+            source: "../img/toolWidget/apt.png"
 //            width: 50; height: 50
             Behavior on rotation { NumberAnimation { duration: 200 } }
         }

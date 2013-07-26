@@ -20,158 +20,39 @@ import SessionType 0.1
 import QtDesktop 0.1
 import "../common" as Common
 
-Rectangle {
-    id: dashthemepage
-    property bool on: true
+Item {
     width: parent.width
     height: 475
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
-
-    property SessionDispatcher dis: sessiondispatcher
-    property int launcher_size: 24
-
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
-
     Component.onCompleted: {
-        dashthemepage.launcher_size = unityspinbox.value;
-
-        if (sessiondispatcher.get_launcher_autohide_qt())
-            launcherswitcher.switchedOn = true;
-        else
-            launcherswitcher.switchedOn = false;
-
-        if (sessiondispatcher.get_launcher_have_showdesktopicon_qt())
-            showdesktopswitcher.switchedOn = true;
-        else
-            showdesktopswitcher.switchedOn = false;
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "unity") {
-//                console.log(launcherlabel.text);
-                if (dashthemepage.launcher_size != unityspinbox.value) {
-                    dashthemepage.launcher_size = unityspinbox.value;
-                    sessiondispatcher.set_launcher_icon_size_qt(unityspinbox.value);
-                }
-            }
-        }
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
 
-    Label {
-        id: unity
-        text: qsTr("Unity设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
+    Image {
+        id: titleimage
         anchors {
-            top: parent.top
-            topMargin: 10
             left: parent.left
-            leftMargin: 15
+            leftMargin: 2
         }
+        source: "../../img/skin/note-bg.png"
     }
-
-    Column {
-        spacing: 20
+    Text {
         anchors {
-            top: unity.bottom
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
+            left: parent.left
+            leftMargin: 50
+            top: parent.top
+            topMargin: titleimage.height/2 - 7
         }
-
-//        anchors.horizontalCenter: parent.horizontalCenter
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            Label {
-                id: launcherlabel
-                width: 210
-                text: qsTr("Launcher自动隐藏:")
-                font {
-                    family: dashthemepage.fontName
-                    pointSize: dashthemepage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: launcherswitcher
-                width: launcherlabel.width
-                onSwitched: {
-                    if (launcherswitcher.switchedOn) {
-                        console.log("Launcher自动隐藏on---------------");
-                        sessiondispatcher.set_launcher_autohide_qt(true);
-                    }
-                    else if(!launcherswitcher.switchedOn) {
-                        console.log("Launcher自动隐藏off---------------");
-                        sessiondispatcher.set_launcher_autohide_qt(false);
-                    }
-                }
-            }
-        }
-
-        Row {
-            Label {
-                id: iconsizelabel
-                width: 210
-                text: qsTr("Launcher图标大小:")
-                font {
-                    family: dashthemepage.fontName
-                    pointSize: dashthemepage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            SpinBox {
-                id: unityspinbox
-                width: 97
-                minimumValue: 32
-                maximumValue: 64
-                value: sessiondispatcher.get_launcher_icon_size_qt()
-            }
-        }
-
-        Row {
-            Label {
-                id: showdesktoplabel
-                width: 210
-                text: qsTr("Launcher图标显示在桌面上:")
-                font {
-                    family: dashthemepage.fontName
-                    pointSize: dashthemepage.fontSize
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: showdesktopswitcher
-                width: showdesktoplabel.width
-                onSwitched: {
-                    if (showdesktopswitcher.switchedOn) {
-                        console.log("图标显示在桌面上on---------------");
-                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(true);
-                    }
-                    else if(!showdesktopswitcher.switchedOn) {
-                        console.log("图标显示在桌面上off---------------");
-                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(false);
-                    }
-                }
-            }
-        }
-
-    }//Column
-
+        text: "Dash功能正在研发中,敬请期待......"
+        font.pixelSize: 12
+        color: "#383838"
+    }
 }
+
 
 
 //import QtQuick 1.1

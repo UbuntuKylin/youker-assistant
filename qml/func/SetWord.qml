@@ -43,11 +43,22 @@ Rectangle {
         source: ""
     }
 
+    Connections {
+        target: topBar
+        //按下返回按钮
+        onButtonClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+        //按下确定按钮
+//        onButton2Clicked: {
+//            console.log("111111111111");
+//            console.log(settigsDetails.setTitle);
+//            console.log("222222222222");
+//        }
+    }
 
     Connections {
         target: toolBar
         //按下返回按钮
-        onButton1Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+        onQuitBtnClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
         //按下确定按钮
 //        onButton2Clicked: {
 //            console.log("111111111111");
@@ -98,7 +109,7 @@ Rectangle {
             console.log("wordset clicked....");
             //屏幕坏点检测
             if (flag == "CheckScreen")
-                sessiondispatcher.send_dialog_msg("modal");
+                sessiondispatcher.send_checkscreen_dialog();
             else
                 iconClicked();
 //            if (setbtn_flag == "onekey") {

@@ -93,7 +93,7 @@ Item {
         anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
         Image {
             id: refreshArrow
-            source: "../img/toolWidget/trace.png"
+            source: "../img/toolWidget/history-max.png"
             Behavior on rotation { NumberAnimation { duration: 200 } }
         }
         Column {
@@ -196,7 +196,7 @@ Item {
                      if (systemdispatcher.get_history_flag())
                         root.state = "HistoryWork";
                      else
-                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录扫描项，请确认！");
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！");
 //                     history_signal("HistoryWork");
                  }
                  else if (btn_flag == "history_work") {
@@ -204,7 +204,7 @@ Item {
                      if (systemdispatcher.get_history_flag())
                         systemdispatcher.clean_history_records_qt();
                      else
-                         sessiondispatcher.send_warningdialog_msg("对不起，您没有选中历史记录清理项，请确认！");
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录清理项，请确认！");
                  }
             }
         }
@@ -222,7 +222,7 @@ Item {
             id: clearModel
             ListElement {
                 title: "清理历史记录"
-                picture: "../img/toolWidget/historytrace.png"
+                picture: "../img/toolWidget/history-min.png"
                 detailstr: "清理Firefox地址栏历史记录"
                 flag: "history"
             }

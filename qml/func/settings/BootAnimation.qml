@@ -32,67 +32,256 @@ Rectangle {
 //    property SessionDispatcher dis: sessiondispatcher
     property SystemDispatcher dis: systemdispatcher
     property string image_path: ""
-    Common.Border {
-        id: leftborder
+    property string actiontitle: "开机动画设置"
+    property string actiontext: "选择一张图片使起成为您的开机动画背景图片（建议使用尺寸与系统显示分辨率一致的图片）"
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
-
     Component.onCompleted: {
 
     }
-
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "bootanimation") {
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "BootAnimation") {
                 systemdispatcher.custom_plymouth_qt(bootimagepage.image_path);
             }
         }
     }
-
-    Label {
-        id: touchpad
-        text: qsTr("开机动画设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
-        anchors {
-            top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 15
-        }
-    }
-    Button {
+    Column {
+        spacing: 10
         anchors.top: parent.top
-        anchors.left: touchpad.right
-        anchors.leftMargin: 30
-        text: "选择图片"
-        onClicked: {
-            bootimagepage.image_path = systemdispatcher.show_file_dialog();
-            bootimage.source = bootimagepage.image_path;
-        }
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: bootimagepage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: bootimagepage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
     }
 
     Image {
-        id: bootimage
-        width: 200
-        height: 200
-        anchors.top: touchpad.bottom
-        anchors.topMargin: 50
-//        fillMode: Image.TileHorizontally
-        source: ""
-        anchors.horizontalCenter: parent.horizontalCenter
-        smooth: true
+        id: previewzone
+        source: "../../img/icons/previewzone.png"
+        anchors {
+            top: parent.top
+            topMargin: 150
+            left: parent.left
+            leftMargin: 60
+        }
     }
 
 
+    Row {
+        anchors {
+            top: previewzone.bottom
+            topMargin: 20
+            left: parent.left
+            leftMargin: 60
+        }
+
+        spacing: 10
+        Label {
+            text: "点击预览按钮选择图片"
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Common.Button {
+            width: 95
+            height: 35
+            hoverimage: "preview.png"
+            onClicked: {
+                bootimagepage.image_path = systemdispatcher.show_file_dialog();
+                bootimage.source = bootimagepage.image_path;
+            }
+        }
+
+    }
+
+
+
+    Image {
+        id: bootimage
+        width: 180
+        height: 125
+        anchors {
+            top: parent.top
+            topMargin: 166
+            left: parent.left
+            leftMargin: 73
+        }
+//        fillMode: Image.TileHorizontally
+        source: ""
+        smooth: true
+    }
+
+    Text {
+        id: chooselabel
+        anchors {
+            top: parent.top
+            topMargin: 150
+            left: bootimage.right
+            leftMargin: 100
+        }
+        text: "可选开机动画"
+        font.bold: true
+        font.pixelSize: 14
+        color: "#383838"
+    }
+
+    ListModel {
+        id: mainModel
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+        ListElement {
+            itemTitle: "111"
+        }
+        ListElement {
+            itemTitle: "222"
+        }
+    }
+
+    ScrollArea {
+//        frame:false
+        width: 400
+        height: 200
+        anchors {
+//            top: parent.top
+//            topMargin: 166
+            top: chooselabel.bottom
+            topMargin: 5
+            left: bootimage.right
+            leftMargin: 100
+        }
+
+        Item {
+            id: subItemsRect
+            property int itemHeight: 40
+            width: 380
+            //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
+            height: 24 * itemHeight
+            clip: true
+            opacity: 1
+            Behavior on height {
+                SequentialAnimation {
+                    NumberAnimation { duration: 100; easing.type: Easing.InOutQuad }
+                }
+            }
+//            ListView {
+//                id: listView
+//                height: parent.height
+//                model: mainModel
+//                delegate:
+//                    Text {
+//                        text: itemTitle
+//                    }
+
+////                cacheBuffer: 1000
+//                opacity: 1
+//                spacing: 10
+//                snapMode: ListView.NoSnap
+//                boundsBehavior: Flickable.DragOverBounds
+//                currentIndex: 0
+//                preferredHighlightBegin: 0
+//                preferredHighlightEnd: preferredHighlightBegin
+//                highlightRangeMode: ListView.StrictlyEnforceRange
+//            }
+
+            Column {
+                width: parent.width
+                Repeater {
+                    id: subItemRepeater
+                    model: mainModel
+                    width: parent.width
+                    Common.NameListItem {
+                        id: subListItem
+                        height: subItemsRect.itemHeight
+                        width: parent.width
+                        text: itemTitle
+                        bgImage: ""
+                        onClicked: {}
+                    }
+                }//Repeater
+            }//Column
+        }//子项Item
+    }//ScrollArea
 }
 
 

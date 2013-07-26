@@ -30,17 +30,16 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
-
+    property string actiontitle: "桌面图标显示设置"
+    property string actiontext: "控制如网络、垃圾箱、根文件夹等图标在桌面上的显示"
 //    property Dispatcher dis: mydispather
 
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
 
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
+    }
 
     Component.onCompleted: {
         if (sessiondispatcher.get_show_desktop_icons_qt())
@@ -72,35 +71,39 @@ Rectangle {
     Connections {
         target: toolBar
         //按下确定按钮
-        onButton2Clicked: {
-            if (settigsDetails.setTitle == "desktopicon")
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "DesktopIcon")
                 console.log(desktopiconlabel.text);
         }
     }
 
-    Label {
-        id: desktop
-        text: qsTr("桌面图标设置>")
-        height: 30
-        font.bold: true
-        font.family: "Ubuntu"
-        elide: Text.ElideRight
-        font.pointSize: 20
-        anchors {
-            top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 15
-        }
+    Column {
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 44
+        anchors.left: parent.left
+        anchors.leftMargin: 80
+        Text {
+             text: desktopiconpage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: desktopiconpage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
     }
+
 
     Column {
         spacing: 20
         anchors {
-//            top: parent.top
-//            topMargin: 20
-            top: desktop.bottom
-            topMargin: 20
+            top: parent.top
+            topMargin: 120
+//            left: parent.left
+//            leftMargin: 60
             horizontalCenter: parent.horizontalCenter
         }
 
@@ -110,7 +113,7 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             Label {
                 id: desktopiconlabel
-                width: 110
+                width: 170
                 text: qsTr("由文件管理器处理桌面:")
                 font {
                     family: desktopiconpage.fontName
@@ -138,7 +141,7 @@ Rectangle {
         Row {
             Label {
                 id: homefolderlabel
-                width: 110
+                width: 170
                 text: qsTr("根文件夹:")
                 font {
                     family: desktopiconpage.fontName
@@ -165,7 +168,7 @@ Rectangle {
         Row {
             Label {
                 id: networklabel
-                width: 110
+                width: 170
                 text: qsTr("网络:")
                 font {
                     family: desktopiconpage.fontName
@@ -192,7 +195,7 @@ Rectangle {
         Row {
             Label {
                 id: trashlabel
-                width: 110
+                width: 170
                 text: qsTr("垃圾:")
                 font {
                     family: desktopiconpage.fontName
@@ -220,7 +223,7 @@ Rectangle {
         Row {
             Label {
                 id: devicelabel
-                width: 110
+                width: 170
                 text: qsTr("设备:")
                 font {
                     family: desktopiconpage.fontName

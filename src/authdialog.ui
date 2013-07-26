@@ -6,50 +6,154 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>373</width>
-    <height>130</height>
+    <width>329</width>
+    <height>195</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="quitBtn">
+  <widget class="QPushButton" name="closeButton">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>90</y>
-     <width>99</width>
-     <height>27</height>
+     <x>230</x>
+     <y>156</y>
+     <width>94</width>
+     <height>29</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/quit.png);</string>
+   </property>
    <property name="text">
-    <string> 取消</string>
+    <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="okBtn">
+  <widget class="QPushButton" name="okButton">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>90</y>
-     <width>99</width>
-     <height>27</height>
+     <x>120</x>
+     <y>156</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="btn_close">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>6</y>
+     <width>26</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>确定</string>
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="btn_min">
+   <property name="geometry">
+    <rect>
+     <x>33</x>
+     <y>6</y>
+     <width>26</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="avatar_2">
+   <property name="geometry">
+    <rect>
+     <x>14</x>
+     <y>85</y>
+     <width>305</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;提示：&lt;span style=&quot; font-size:9pt;&quot;&gt;请输入当前用户 密码，确保优客助手正常使用。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>14</x>
+     <y>51</y>
+     <width>58</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>用户密码</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>30</y>
-     <width>251</width>
-     <height>27</height>
+     <x>74</x>
+     <y>44</y>
+     <width>241</width>
+     <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>输入当前用户密码</string>
+   </property>
   </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>329</width>
+     <height>195</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/dialog-bg.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>closeButton</zorder>
+  <zorder>okButton</zorder>
+  <zorder>btn_close</zorder>
+  <zorder>btn_min</zorder>
+  <zorder>avatar_2</zorder>
+  <zorder>label</zorder>
+  <zorder>lineEdit</zorder>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>okButton</tabstop>
+  <tabstop>closeButton</tabstop>
+  <tabstop>lineEdit</tabstop>
+ </tabstops>
+ <resources>
+  <include location="pixmap.qrc"/>
+ </resources>
  <connections/>
 </ui>

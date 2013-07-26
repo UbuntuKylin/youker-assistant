@@ -1,46 +1,34 @@
-/*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 3.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 #ifndef MODALDIALOG_H
 #define MODALDIALOG_H
 
 #include <QDialog>
 #include "quibo.h"
+namespace Ui {
+class ModalDialog;
+}
 
-class QGridLayout;
-class QHBoxLayout;
-class QPushButton;
-class QSpacerItem;
-class QLabel;
 class ModalDialog : public QDialog
 {
-      Q_OBJECT
-    public:
-      ModalDialog(QWidget *parent = 0);
-    private:
-      QSpacerItem *spacerItem;
-      QGridLayout *gridLayout;
-      QHBoxLayout *hboxLayout;
-      QPushButton *okButton;
-      QPushButton *cancelButton;
-      QLabel      *textlabel;
-      QLabel      *titlelabel;
+    Q_OBJECT
+    
+public:
+    explicit ModalDialog(QWidget *parent = 0);
+    ~ModalDialog();
+    void monitor_check();
+    
+private:
+    Ui::ModalDialog *ui;
+    QPoint dragPos;
+    QUIBO *qtui;
 
-      QUIBO *qtui;
-
-public slots:
-      void monitor_check();
+private slots:
+    void on_closeButton_clicked();
+    void on_okButton_clicked();
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);
 };
+
 #endif // MODALDIALOG_H

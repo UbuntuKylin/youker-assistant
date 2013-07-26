@@ -20,7 +20,7 @@
 #include <QtDBus>
 #include <QObject>
 #include <QString>
-#include "modelessdialog.h"
+#include "messagedialog.h"
 #include "warningdialog.h"
 #include <QDesktopWidget>
 #include <QDeclarativeContext>
@@ -91,17 +91,41 @@ void SessionDispatcher::get_system_message_qt() {
     }
 }
 
-
-void SessionDispatcher::send_dialog_msg(QString mode) {
-    qDebug() << "3333333333333333";
-//    emit receive_dialog_msg();
-    create_dialog(mode);
-    qDebug() << "44444444444444444";
+//----------------message dialog--------------------
+void SessionDispatcher::send_message_dialog() {
+    create_messagedialog();
 }
-
-void SessionDispatcher::send_warningdialog_msg(QString msg) {
-    create_warningdialog(msg);
+void SessionDispatcher::create_messagedialog() {
+    MessageDialog *dialog = new MessageDialog();
+    dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
+    dialog->show();
 }
+//------------------------------------
+
+//----------------checkscreen dialog--------------------
+void SessionDispatcher::send_checkscreen_dialog()
+{
+    create_checkscreendialog();
+}
+void SessionDispatcher::create_checkscreendialog() {
+    ModalDialog *dialog = new ModalDialog;
+    dialog->setModal(true);
+    dialog->show();
+}
+//------------------------------------
+
+//----------------warning dialog--------------------
+void SessionDispatcher::send_warningdialog_msg(QString title, QString content) {
+    create_warningdialog(title, content);
+}
+void SessionDispatcher::create_warningdialog(QString title, QString content) {
+
+    WarningDialog *dialog = new WarningDialog(title, content);
+    dialog->exec();
+//    dialog->setModal(true);
+//    dialog->show();
+}
+//------------------------------------
 
 void SessionDispatcher::set_str(QString str)
 {
@@ -131,36 +155,27 @@ QString SessionDispatcher::show_signal(QString msg) {
     return msg;
 }
 
-void SessionDispatcher::create_dialog(QString mode) {
-    if (mode == "modal") {
-//        qDebug() << "555555555555";
-        ModalDialog *dialog = new ModalDialog;
-//        qDebug() << "6666666666666";
-//        qDebug() << "77777777777";
-        dialog->setModal(true);
-        dialog->show();
-//        qDebug() << "888888888888888";
-    }
-    else if (mode == "modeless") {
-//        qDebug() << "555555555555";
-        ModelessDialog *dialog = new ModelessDialog;
-        dialog->show();
-        dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
-//        qDebug() << "6666666666666";
-    }
+//void SessionDispatcher::create_dialog(QString mode) {
+//    if (mode == "modal") {
+////        qDebug() << "555555555555";
+//        ModalDialog *dialog = new ModalDialog;
+////        qDebug() << "6666666666666";
+////        qDebug() << "77777777777";
+//        dialog->setModal(true);
+//        dialog->show();
+////        qDebug() << "888888888888888";
+//    }
+//    else if (mode == "modeless") {
+////        qDebug() << "555555555555";
+//        ModelessDialog *dialog = new ModelessDialog;
+//        dialog->show();
+//        dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
+////        qDebug() << "6666666666666";
+//    }
 
-}
+//}
 
-void SessionDispatcher::create_warningdialog(QString msg) {
 
-    WarningDialog *dialog = new WarningDialog(msg);
-//    qDebug() << "77777777777";
-    dialog->exec();
-//    dialog->setModal(true);
-//    dialog->show();
-//    qDebug() << "888888888888888";
-
-}
 
 
 bool SessionDispatcher::set_launcher(bool flag) {

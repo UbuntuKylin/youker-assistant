@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/pixmap">
+        <file>image/dialog-bg.png</file>
+        <file>image/message.png</file>
+        <file>image/youker-assistant.png</file>
+        <file>image/ok.png</file>
+        <file>image/quit.png</file>
+        <file>image/closeBtn.png</file>
+        <file>image/closeBtn-hover.png</file>
+        <file>image/minBtn.png</file>
+        <file>image/minBtn-hover.png</file>
+    </qresource>
+</RCC>

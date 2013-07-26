@@ -15,123 +15,166 @@
  */
 
 import QtQuick 1.1
-//import RegisterMyType 0.1
 import SessionType 0.1
-import SystemType 0.1
+//import SystemType 0.1
 import QtDesktop 0.1
 import "../common" as Common
-Rectangle {
-    id: lancherpage
-    property bool on: true
+
+Item {
     width: parent.width
     height: 475
-//    property Dispatcher dis: mydispather
-    Common.Border {
-        id: leftborder
-    }
-    Common.Border {
-        id: roightborder
-        anchors.right: parent.right
-    }
-
     Component.onCompleted: {
-//        choices.clear();
-//        choices.append({"text": mydispather.get_themes()[0]});
-//        choices.append({"text": mydispather.get_themes()[1]});
-//        choices.append({"text": mydispather.get_themes()[2]});
-//        choices.append({"text": mydispather.get_themes()[3]});
-
-//        streamModel.sync();
     }
 
-    ListModel {
-        id: choices
-        ListElement { text: "wallpaper" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
+    //背景
+    Image {
+        source: "../../img/skin/bg-left.png"
+        anchors.fill: parent
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onButton2Clicked: {
-//            console.log("111111111111");
-//            console.log(settigsDetails.setTitle);
-            if (settigsDetails.setTitle == "wallpaper")
-                console.log(wallpaperlabel.text);
-//            console.log("222222222222");
+    Image {
+        id: titleimage
+        anchors {
+            left: parent.left
+            leftMargin: 2
         }
+        source: "../../img/skin/note-bg.png"
     }
-
-    Column {
-        spacing: 20
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        Row {
-            Label {
-                id: wallpaperlabel
-                width: 110
-                text: qsTr("ps9-model")
-            }
-            ComboBox {
-                id: combobox
-                model: choices;
-                width: parent.width;
-//                KeyNavigation.tab: t1
-//                KeyNavigation.backtab: button2
-//                onSelectedIndexChanged: console.log(selectedText)
-            }
-            Button {
-                id: button1
-                text: qsTr("确定")
-                width: 96
-                tooltip:"This is an interesting tool tip"
-                //                KeyNavigation.tab: button2
-                //                KeyNavigation.backtab: frame.tabBar
-                onClicked: {
-
-                }
-            }
+    Text {
+        anchors {
+            left: parent.left
+            leftMargin: 50
+            top: parent.top
+            topMargin: titleimage.height/2 - 7
         }
-        Row {
-            Label {
-                id: modelabel1
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox2
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel3
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox4
-                x: 110
-            }
-        }
-        Row {
-            Label {
-                id: modelabel5
-                width: 110
-                text: qsTr("模式:")
-            }
-            ComboBox {
-                id: combobox6
-                x: 110
-            }
-        }
-
-
-    }//Column
-
+        text: "深度清理功能正在研发中,敬请期待......"
+        font.pixelSize: 12
+        color: "#383838"
+    }
 }
+
+
+
+//import QtQuick 1.1
+////import RegisterMyType 0.1
+//import SessionType 0.1
+//import SystemType 0.1
+//import QtDesktop 0.1
+//import "../common" as Common
+//import "../common" as Common
+//Rectangle {
+//    id: lancherpage
+//    property bool on: true
+//    width: parent.width
+//    height: 460
+////    property Dispatcher dis: mydispather
+
+//    Common.Border {
+//        id: leftborder
+//    }
+//    Common.Border {
+//        id: roightborder
+//        anchors.right: parent.right
+//    }
+
+//    Component.onCompleted: {
+////        choices.clear();
+////        choices.append({"text": mydispather.get_themes()[0]});
+////        choices.append({"text": mydispather.get_themes()[1]});
+////        choices.append({"text": mydispather.get_themes()[2]});
+////        choices.append({"text": mydispather.get_themes()[3]});
+
+////        streamModel.sync();
+//    }
+
+//    ListModel {
+//        id: choices
+//        ListElement { text: "theme" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
+//    }
+
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onButton2Clicked: {
+////            console.log("111111111111");
+////            console.log(settigsDetails.setTitle);
+//            if (settigsDetails.setTitle == "theme")
+//                console.log(themelabel.text);
+////            console.log("222222222222");
+//        }
+//    }
+
+//    Column {
+//        spacing: 20
+//        anchors.horizontalCenter: parent.horizontalCenter
+
+//        Row {
+//            Label {
+//                id:themelabel
+//                width: 110
+//                text: qsTr("ps1-model")
+//            }
+//            ComboBox {
+//                id: combobox
+//                model: choices;
+//                width: parent.width;
+////                KeyNavigation.tab: t1
+////                KeyNavigation.backtab: button2
+////                onSelectedIndexChanged: console.log(selectedText)
+//            }
+//            Button {
+//                id: button1
+//                text: qsTr("确定")
+//                width: 96
+//                tooltip:"This is an interesting tool tip"
+//                //                KeyNavigation.tab: button2
+//                //                KeyNavigation.backtab: frame.tabBar
+//                onClicked: {
+
+//                }
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel1
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox2
+//                x: 110
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel3
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox4
+//                x: 110
+//            }
+//        }
+//        Row {
+//            Label {
+//                id: modelabel5
+//                width: 110
+//                text: qsTr("模式:")
+//            }
+//            ComboBox {
+//                id: combobox6
+//                x: 110
+//            }
+//        }
+
+
+//    }//Column
+
+//}
 
 
 
