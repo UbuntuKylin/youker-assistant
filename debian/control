@@ -14,6 +14,7 @@ Homepage: https://launchpad.net/youker-assistant
 Package: youker-assistant
 Architecture: any
 Depends: ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         youker-assistant-daemon,
 Description: Help users to manage system better
  'Youker Assistant' is aimed at helping all users to manage their linux system conveniently.
