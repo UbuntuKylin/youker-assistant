@@ -49,11 +49,6 @@ public:
     Q_INVOKABLE QString get_str();
     QString notify_str;
 
-    //password
-    Q_INVOKABLE void set_passwd(QString pwd);
-    Q_INVOKABLE QString get_passwd();
-    QString passwd;
-
     //----get system message
     QMap<QString, QVariant> myinfo;
     Q_INVOKABLE void get_system_message_qt();

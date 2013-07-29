@@ -57,30 +57,9 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 //    QObject::connect(systemiface,SIGNAL(not_exist(QString)),this,SLOT(handler_not_exist(QString)));
 
 
-
-//    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("pc_message");
-
     notify_str = "";
     history_flag = false;
-//    if (reply.isValid()) {
-//        QMap<QString, QVariant> value = reply.value();
-//        myinfo = value;
-////        qDebug() << myinfo;
-//    }
-//    else {
-//        qDebug() << "get pc_message failed!";
-//    }
 
-
-
-
-//    qDebug() << "ps111";
-//    QDBusReply<QStringList> reply1 = systemiface->call("scan_apt_cruft");
-//    qDebug() <<  reply1.value();
-//    qDebug() << "ps222";
-//    QDBusReply<QStringList> reply2 = systemiface->call("scan_softwarecenter_cruft");
-//    qDebug() << reply2.value();
-//    qDebug() << "ps333";
 }
 
 
@@ -186,8 +165,6 @@ QString SystemDispatcher::show_file_dialog() {
     qDebug() << "000000000000000000";
     qDebug() << fileName;
     return fileName;
-
-
 //    QFontDialog *dialog = new QFontDialog;
 //    bool ok;
 //    QFont font = QFontDialog::getFont(&ok, QFont("Times", 12),dialog);
@@ -232,7 +209,6 @@ void SystemDispatcher::scan_cache_cruft_qt() {
 }
 QStringList SystemDispatcher::get_apt_data()
 {
-//    qDebug() << apt_center["apt"];
     qDebug() << "-------------------";
     qDebug() << apt_center["apt"].toStringList();
     return apt_center["apt"].toStringList();
@@ -433,9 +409,6 @@ int SystemDispatcher::get_the_record_qt(QString mode) {
     QDBusReply<int> reply = systemiface->call("get_the_record", mode);
     if (reply.isValid()) {
         int value = reply.value();
-//        qDebug() << "value start";
-//        qDebug() << value;
-//        qDebug() << "value end";
         return value;
     }
     else {
@@ -496,16 +469,13 @@ QMap(("cookies", QVariant(QString, "admaster.com.cn<2_2>2<1_1>alimama.com<2_2>1<
 QMap<QString, QVariant> SystemDispatcher::scan_by_one_key_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("scan_by_one_key");
     if (reply.isValid()) {
-        qDebug() << "aaaaaaaaaaaaa";
-        qDebug() << reply.value()["cookies"];
-
-        qDebug() << "bbbbbbbbbbb";
-        qDebug() << reply.value()["history"];
-        qDebug() << "cccccccccccc";
-        QString aa = reply.value()["unneed"].toString();
-        qDebug() <<aa;
-        qDebug() << "dddddddddddd";
-        qDebug() <<aa.split("<1_1>");
+//        qDebug() << reply.value()["cookies"];
+//        qDebug() << reply.value()["history"];
+//        qDebug() << "cccccccccccc";
+//        QString aa = reply.value()["unneed"].toString();
+//        qDebug() <<aa;
+//        qDebug() << "dddddddddddd";
+//        qDebug() <<aa.split("<1_1>");
 //        QVariant(QString, "linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
 //        <1_1>linux-headers-3.8.0-19-generic<2_2>Linux kernel headers for version 3.8.0 on 32 bit x86 SMP<2_2>11802624
 //        <1_1>linux-headers-generic<2_2>Generic Linux kernel headers<2_2>33792")
@@ -513,6 +483,5 @@ QMap<QString, QVariant> SystemDispatcher::scan_by_one_key_qt() {
     }
     else {
         qDebug() << "scan_by_one_key failed!";
-//        return "search_the_same has error";
     }
 }

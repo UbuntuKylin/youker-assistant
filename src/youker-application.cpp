@@ -112,32 +112,22 @@ bool IhuApplication::setup()
 
 
     IhuApplication::setApplicationName("Youker Assistant");
-//    QDeclarativeView *view = new QDeclarativeView;
     viewer = new QDeclarativeView;
-
     viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));//0720
     viewer->setSource(QUrl::fromLocalFile("main.qml"));//0720
-
 //    viewer->setSource(QUrl("../qml/main.qml"));//0720
     viewer->rootContext()->setContextProperty("mainwindow", viewer);
     viewer->setStyleSheet("background:transparent");
     viewer->setAttribute(Qt::WA_TranslucentBackground);
     viewer->setWindowFlags(Qt::FramelessWindowHint);
-//    QPainter p(this);
-//    p.setCompositionMode( QPainter::CompositionMode_Clear ); p.fillRect( 10, 10, 300, 300, Qt::SolidPattern );
 
     QPalette palette;
     palette.setColor(QPalette::Base, Qt::transparent);
     viewer->setPalette(palette);
-//    viewer->setWindowTitle("98love");
     viewer->setAutoFillBackground(false);
     viewer->setWindowOpacity(10);
-
     QObject::connect(viewer->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
-//    viewer->rootContext()->setContextProperty("WindowControl",viewer);
 
-//    QObject *rootObject = dynamic_cast<QObject *>(view->rootObject());
-//    QObject::connect(rootObject, SIGNAL(dataRequired()), )
 
     QDesktopWidget* desktop = QApplication::desktop();
     QSize size = viewer->sizeHint();
@@ -150,16 +140,6 @@ bool IhuApplication::setup()
     viewer->move(centerW, centerH);
     viewer->show();
 
-
-//        QStringList dataList;
-//        dataList.append("Item 1");
-//        dataList.append("Item 2");
-//        dataList.append("Item 3");
-//        dataList.append("Item 4");
-//        QDeclarativeView *viewer = new QDeclarativeView;
-//        QDeclarativeContext *ctxt = viewer->rootContext();
-//        ctxt->setContextProperty("myModel", QVariant::fromValue(dataList));
-//        viewer->setSource(QUrl("../qml/func/BrowserHistory.qml"));
     return true;
 }
 

@@ -34,48 +34,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
-
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
-//    QObject::connect(sessioniface,SIGNAL(receive_dialog_msg()), this, SLOT(create_dialog()));
-//    QDBusReply<QStringList> reply = sessioniface->call("get_themes");
-//    if (reply.isValid()) {
-//        QStringList value = reply.value();
-
-//        qDebug() << value;
-//    }
-//    else {
-//        qDebug() << "get thems msg failed!";
-//    }
-
-
-//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");
-//    if (reply.isValid()) {
-//        QMap<QString, QVariant> value = reply.value();
-//        myinfo = value;
-////        qDebug() << myinfo;
-//    }
-//    else {
-//        qDebug() << "get pc_message failed!";
-//    }
-
     notify_str = "";
-    passwd = "";
-
-
-
-//    QDBusReply<QString> reply1 = sessioniface->call("get_theme");
-//    qDebug() << "12345677654321";
-//    qDebug() << reply1.value();
-//    qDebug() << "7654321";
-
-}
-
-void SessionDispatcher::set_passwd(QString pwd) {
-    passwd = pwd;
-}
-
-QString SessionDispatcher::get_passwd() {
-    return passwd;
 }
 
 
