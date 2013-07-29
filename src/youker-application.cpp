@@ -37,7 +37,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#define BUFSIZE 1024
+
+extern QString passwd;
+
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {
@@ -68,7 +70,9 @@ bool IhuApplication::setup()
 {
     AuthDialog *dialog = new AuthDialog;
     dialog->exec();
-    QString pwd = dialog->passwd;
+    qDebug() << "passwd111";
+    qDebug() << passwd;
+    qDebug() << "passwd222";
 
     int value = 0;
     QString str = "";
@@ -82,7 +86,7 @@ bool IhuApplication::setup()
     if (value == 0) {
         qDebug() << "1234567";
         QProcess *process_system = new QProcess;
-        process_system->start("/usr/bin/youkersystem " + pwd);
+        process_system->start("/usr/bin/youkersystem " + passwd);
     }
     else
         qDebug() << "123456789";

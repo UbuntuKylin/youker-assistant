@@ -1,5 +1,9 @@
 #include "authdialog.h"
 #include "ui_authdialog.h"
+#include <QDebug>
+
+QString passwd;
+
 AuthDialog::AuthDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AuthDialog)
@@ -12,9 +16,8 @@ AuthDialog::AuthDialog(QWidget *parent) :
     ui->btn_min->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
-    passwd = "";
 
-//    ui->lineEdit->setEchoMode(QLineEdit::Password);
+    ui->lineEdit->setEchoMode(QLineEdit::Password);
     ui->lineEdit->setFocus();
 
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));

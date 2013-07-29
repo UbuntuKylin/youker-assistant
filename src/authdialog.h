@@ -34,7 +34,6 @@ class AuthDialog : public QDialog
 public:
     explicit AuthDialog(QWidget *parent = 0);
     ~AuthDialog();
-    QString passwd;
 
 private slots:
     void on_closeButton_clicked();

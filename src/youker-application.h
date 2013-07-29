@@ -25,7 +25,6 @@
 //#include <QtWidgets>
 #include <QBoxLayout>
 #include <QStackedWidget>
-
 class IhuApplication : public QApplication
 {
     Q_OBJECT
