@@ -54,7 +54,7 @@ Rectangle {
             if (settigsDetails.setTitle == "WidgetTheme") {
 //                console.log("-----------------");
 //                console.log(widgetthemepage.cur_theme);
-                sessiondispatcher.set_theme_qt(syscombo.selectedText);
+                sessiondispatcher.set_theme_qt(widgetthemepage.cur_theme);
             }
         }
     }

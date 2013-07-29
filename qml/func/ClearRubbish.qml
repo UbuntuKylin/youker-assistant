@@ -155,7 +155,7 @@ Item {
         }
         Tab {
 
-            title: qsTr("清理不需要到deb包")
+            title: qsTr("清理不需要的deb包")
             contentMargin: 20
             PackageModel {
                 id: packagemodel
