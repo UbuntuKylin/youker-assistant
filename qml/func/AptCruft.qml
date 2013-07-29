@@ -175,6 +175,22 @@ Item {
                 color: "#7a7a7a"
             }
         }
+
+        //status picture
+        Image {
+            id: statusImage
+            source: "../img/toolWidget/unfinish.png"
+            fillMode: "PreserveAspectFit"
+            smooth: true
+            anchors {
+//                        top: parent.top; topMargin: 110
+//                        left: parent.left; leftMargin: 650
+                right: label.left
+                rightMargin: 20
+                verticalCenter: parent.verticalCenter
+            }
+        }
+
         Label {
             id: label
             visible: false
@@ -183,6 +199,8 @@ Item {
             anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
         }
+
+
 
         Common.Button {
             id: bitButton
@@ -262,6 +280,7 @@ Item {
                         verticalCenter: parent.verticalCenter
                     }
                     Text {
+                        id: mytext
                         text: itemTitle
                         font.pointSize: 11
                         color: "black"
@@ -272,6 +291,7 @@ Item {
                         color: "gray"
                     }
                 }
+
 
                 Image {
                     id: arrow
@@ -348,7 +368,7 @@ Item {
 
                     }//Repeater
                 }//Column
-            }//子项Item
+            }
         }
     }//Component
 
@@ -382,24 +402,24 @@ Item {
     }//ScrollArea
     //----------------------------
 
-    //status picture
-    Image {
-        id: statusImage
-        source: "../img/toolWidget/unfinish.png"
-        fillMode: "PreserveAspectFit"
-        smooth: true
-        anchors {
-            top: parent.top; topMargin: 110
-            left: parent.left; leftMargin: 650
-        }
-    }
+//    //status picture
+//    Image {
+//        id: statusImage
+//        source: "../img/toolWidget/unfinish.png"
+//        fillMode: "PreserveAspectFit"
+//        smooth: true
+//        anchors {
+//            top: parent.top; topMargin: 110
+//            left: parent.left; leftMargin: 650
+//        }
+//    }
 
     states: [
         State {
             name: "AptWork"
              PropertyChanges { target: label; visible: true; text: "apt扫描完成"}
 //            PropertyChanges { target: bitButton; text: "开始清理" }
-             PropertyChanges { target: bitButton; hoverimage: "scan-ing.png" }
+             PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
             PropertyChanges { target: root; btn_flag: "apt_work" }
         },
 

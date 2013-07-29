@@ -205,6 +205,22 @@ Item {
                 color: "#7a7a7a"
             }
         }
+
+        //status picture
+        Image {
+            id: statusImage
+            source: "../img/toolWidget/unfinish.png"
+            fillMode: "PreserveAspectFit"
+            smooth: true
+            anchors {
+//                        top: parent.top; topMargin: 110
+//                        left: parent.left; leftMargin: 650
+                right: label.left
+                rightMargin: 20
+                verticalCenter: parent.verticalCenter
+            }
+        }
+
         Label {
             id: label
             visible: false
@@ -413,30 +429,30 @@ Item {
     }//ScrollArea
     //----------------------------
 
-    //status picture
-    Image {
-        id: statusImage
-        source: "../img/toolWidget/unfinish.png"
-        fillMode: "PreserveAspectFit"
-        smooth: true
-        anchors {
-            top: parent.top; topMargin: 120
-            left: parent.left; leftMargin: 650
-        }
-    }
+//    //status picture
+//    Image {
+//        id: statusImage
+//        source: "../img/toolWidget/unfinish.png"
+//        fillMode: "PreserveAspectFit"
+//        smooth: true
+//        anchors {
+//            top: parent.top; topMargin: 120
+//            left: parent.left; leftMargin: 650
+//        }
+//    }
 
     states: [
         State {
             name: "UnneedWork"
             PropertyChanges { target: label; visible: true; text: "unneed扫描完成"}
 //            PropertyChanges { target: bitButton; text: "开始清理" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-ing.png" }
+            PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
             PropertyChanges { target: root; btn_flag: "package_work" }
         },
         State {
             name: "UnneedWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; text: "开始扫描" }
+//            PropertyChanges { target: bitButton; text: "开始扫描" }
             PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}

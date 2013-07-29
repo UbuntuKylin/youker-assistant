@@ -25,11 +25,11 @@ Rectangle {
     scale: 0.0
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     //竖列高度和宽度
-//    width: 78
-//    height: 82
+    width: 78
+    height: 82
     //横列高度和宽度
-    width: 120
-    height: 78
+//    width: 120
+//    height: 78
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
     function iconClicked() {
@@ -39,43 +39,44 @@ Rectangle {
     }
 
     //竖列
-//    Column {
+    Column {
+        anchors.fill: parent
+        anchors.topMargin: 7
+        spacing: 5
+        Image {
+            id: seticon
+            source: icon
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Text {
+            id: btnText
+            anchors.horizontalCenter: parent.horizontalCenter
+            color: "green"
+            text: qsTr(name)
+        }
+    }
+    //横列
+//    Row {
 //        anchors.fill: parent
 //        anchors.topMargin: 7
 //        Image {
 //            id: seticon
 //            source: icon
-//            anchors.horizontalCenter: parent.horizontalCenter
+//            //横列
+//            anchors.verticalCenter: parent.verticalCenter
+//            //竖列
+////            anchors.horizontalCenter: parent.horizontalCenter
 //        }
 //        Text {
 //            id: btnText
-//            anchors.horizontalCenter: parent.horizontalCenter
+//            //横列
+//            anchors.verticalCenter: parent.verticalCenter
+//            //竖列
+////            anchors.horizontalCenter: parent.horizontalCenter
 //            color: "green"
 //            text: qsTr(name)
 //        }
 //    }
-    //横列
-    Row {
-        anchors.fill: parent
-        anchors.topMargin: 7
-        Image {
-            id: seticon
-            source: icon
-            //横列
-            anchors.verticalCenter: parent.verticalCenter
-            //竖列
-//            anchors.horizontalCenter: parent.horizontalCenter
-        }
-        Text {
-            id: btnText
-            //横列
-            anchors.verticalCenter: parent.verticalCenter
-            //竖列
-//            anchors.horizontalCenter: parent.horizontalCenter
-            color: "green"
-            text: qsTr(name)
-        }
-    }
 
     Image {
         id: btnImg

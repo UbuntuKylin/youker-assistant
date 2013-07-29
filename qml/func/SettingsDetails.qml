@@ -102,6 +102,16 @@ import "settings" as Settings
              visible: false
          }
 
+
+         LargestFile {
+             id: largestfilepage
+             visible: false
+         }
+         SamenameFile {
+             id: samenamefilepage
+             visible: false
+         }
+
          states: [
              State {
                  name: "WidgetTheme"; when: settigsDetails.setTitle == "WidgetTheme"
@@ -121,6 +131,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "DesktopBackground"; when: settigsDetails.setTitle == "DesktopBackground"
@@ -140,6 +152,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "DesktopIcon"; when: settigsDetails.setTitle == "DesktopIcon"
@@ -159,6 +173,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "MousePointer"; when: settigsDetails.setTitle == "MousePointer"
@@ -178,6 +194,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "SoundEffects"; when: settigsDetails.setTitle == "SoundEffects"
@@ -197,6 +215,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "BootAnimation"; when: settigsDetails.setTitle == "BootAnimation"
@@ -216,6 +236,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "ScreenSaver"; when: settigsDetails.setTitle == "ScreenSaver"
@@ -235,6 +257,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "LauncherTheme"; when: settigsDetails.setTitle == "LauncherTheme"
@@ -254,6 +278,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "DashTheme"; when: settigsDetails.setTitle == "DashTheme"
@@ -273,6 +299,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "DefaultFont"; when: settigsDetails.setTitle == "DefaultFont"
@@ -292,9 +320,11 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
-                 name: "DucumentFont"; when: settigsDetails.setTitle == "DucumentFont"
+                 name: "DocumentFont"; when: settigsDetails.setTitle == "DocumentFont"
                  PropertyChanges { target: documentfontpage; x: 0; visible: true }
                  PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
@@ -311,6 +341,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "TitlebarFont"; when: settigsDetails.setTitle == "TitlebarFont"
@@ -330,6 +362,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "TouchpadSet"; when: settigsDetails.setTitle == "TouchpadSet"
@@ -349,6 +383,8 @@ import "settings" as Settings
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "AdvanceSet"; when: settigsDetails.setTitle == "AdvanceSet"
@@ -368,6 +404,8 @@ import "settings" as Settings
                  PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "DeepClear"; when: settigsDetails.setTitle == "DeepClear"
@@ -387,6 +425,8 @@ import "settings" as Settings
                  PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              },
              State {
                  name: "SlimSystem"; when: settigsDetails.setTitle == "SlimSystem"
@@ -406,6 +446,50 @@ import "settings" as Settings
                  PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
                  PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "LargestFile"; when: settigsDetails.setTitle == "LargestFile"
+                 PropertyChanges { target: largestfilepage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: samenamefilepage; visible:false/*x: -(parent.width * 1.5)*/ }
+             },
+             State {
+                 name: "SamenameFile"; when: settigsDetails.setTitle == "SamenameFile"
+                 PropertyChanges { target: samenamefilepage; x: 0; visible: true }
+                 PropertyChanges { target: desktopbackgroundpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: desktopiconpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: mousepointerpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: soundeffectspage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: bootanimationpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: screensaverpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: launcherthemepage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: dashthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: defaultfontpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: documentfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: titlebarfontpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: touchpadsetpage; visible:false/*; x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: widgetthemepage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: deepclearpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: advancesetpage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: slimsystempage; visible:false/*x: -(parent.width * 1.5)*/ }
+                 PropertyChanges { target: largestfilepage; visible:false/*x: -(parent.width * 1.5)*/ }
              }
          ]
 

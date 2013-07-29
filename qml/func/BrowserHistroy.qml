@@ -267,7 +267,7 @@ Item {
             name: "HistoryWork"
              PropertyChanges { target: label; visible: true; text: "history扫描完成"}
 //            PropertyChanges { target: bitButton; text: "开始清理" }
-             PropertyChanges { target: bitButton; hoverimage: "scan-ing.png" }
+             PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
             PropertyChanges { target: root; btn_flag: "history_work" }
         },
         State {

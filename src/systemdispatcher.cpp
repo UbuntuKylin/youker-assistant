@@ -173,6 +173,17 @@ QString SystemDispatcher::show_file_dialog() {
 //    dialog->show();
 }
 
+
+QStringList SystemDispatcher::scan_of_large_qt(QString abspath) {
+    QDBusReply<QStringList> reply = systemiface->call("scan_of_large", abspath);
+    return reply.value();
+}
+
+QStringList SystemDispatcher::scan_of_same_qt(QString abspath) {
+    QDBusReply<QStringList> reply = systemiface->call("scan_of_same", abspath);
+    return reply.value();
+}
+
 int SystemDispatcher::scan_history_records_qt() {
     QDBusReply<int> reply = systemiface->call("scan_history_records");
     return reply.value();
@@ -384,6 +395,50 @@ void SystemDispatcher::clear_onekey_args2() {
 }
 QStringList SystemDispatcher::get_onekey_args2() {
     return onekey_args2;
+}
+
+
+void SystemDispatcher::set_largestfile_args(QString str) {
+    largestfile_args.append(str);
+}
+void SystemDispatcher::del_largestfile_args(QString str) {
+    QStringList bake;
+    int len = largestfile_args.length();
+    for (int i=0; i< len; i++) {
+        if (largestfile_args[i] != str)
+            bake.append(largestfile_args[i]);
+    }
+    largestfile_args.clear();
+    largestfile_args = bake;
+//    package_args.replaceInStrings(QString(str), QString(""));
+}
+void SystemDispatcher::clear_largestfile_args() {
+    largestfile_args.clear();
+}
+QStringList SystemDispatcher::get_largestfile_args() {
+    return largestfile_args;
+}
+
+
+void SystemDispatcher::set_samenamefile_args(QString str) {
+    samenamefile_args.append(str);
+}
+void SystemDispatcher::del_samenamefile_args(QString str) {
+    QStringList bake;
+    int len = samenamefile_args.length();
+    for (int i=0; i< len; i++) {
+        if (samenamefile_args[i] != str)
+            bake.append(samenamefile_args[i]);
+    }
+    samenamefile_args.clear();
+    samenamefile_args = bake;
+//    package_args.replaceInStrings(QString(str), QString(""));
+}
+void SystemDispatcher::clear_samenamefile_args() {
+    samenamefile_args.clear();
+}
+QStringList SystemDispatcher::get_samenamefile_args() {
+    return samenamefile_args;
 }
 //--------------------
 

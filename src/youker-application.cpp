@@ -103,6 +103,7 @@ bool IhuApplication::setup()
         qDebug() << "6789";
         QProcess *process_session = new QProcess;
         process_session->start("/usr/bin/youkersession");
+        qDebug() << "56789";
     }
     else
         qDebug() << "67890";

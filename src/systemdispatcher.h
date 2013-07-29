@@ -57,6 +57,8 @@ public:
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
 
 
+    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
+    Q_INVOKABLE QStringList scan_of_large_qt(QString abspath);
     Q_INVOKABLE int scan_history_records_qt();
     Q_INVOKABLE void clean_history_records_qt();
     Q_INVOKABLE QStringList scan_cookies_records_qt();
@@ -136,6 +138,19 @@ public:
     Q_INVOKABLE void del_onekey_args2(QString str);
     Q_INVOKABLE void clear_onekey_args2();
     Q_INVOKABLE QStringList get_onekey_args2();
+
+    QStringList largestfile_args;
+    Q_INVOKABLE void set_largestfile_args(QString str);
+    Q_INVOKABLE void del_largestfile_args(QString str);
+    Q_INVOKABLE void clear_largestfile_args();
+    Q_INVOKABLE QStringList get_largestfile_args();
+
+    QStringList samenamefile_args;
+    Q_INVOKABLE void set_samenamefile_args(QString str);
+    Q_INVOKABLE void del_samenamefile_args(QString str);
+    Q_INVOKABLE void clear_samenamefile_args();
+    Q_INVOKABLE QStringList get_samenamefile_args();
+
 //-------------
 
 

@@ -169,7 +169,7 @@ Item {
                             spacing: 5
                             SetWord {wordname: "更改默认字体设置"; width: 110; flag: "DefaultFont"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "更改文档字体设置"; width: 110; flag: "DucumentFont"}
+                            SetWord {wordname: "更改文档字体设置"; width: 110; flag: "DocumentFont"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
                             SetWord {wordname: "更改窗口标题栏字体设置"; width: 140; flag: "TitlebarFont"}
                         }
