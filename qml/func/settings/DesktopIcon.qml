@@ -73,7 +73,7 @@ Rectangle {
         //按下确定按钮
         onOkBtnClicked: {
             if (settigsDetails.setTitle == "DesktopIcon")
-//                console.log(desktopiconlabel.text);
+                console.log("DesktopIcon ok");
         }
     }
 
