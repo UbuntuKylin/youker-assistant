@@ -25,7 +25,7 @@ Rectangle {
     width: parent.width
     height: 475
     property string actiontitle: "窗口主题设置"
-    property string actiontext: "单击某个主题立即更改 窗口主题，您可以点击右侧按钮选择想要的排序方式。"
+    property string actiontext: "单击某个主题立即更改窗口主题"
     property string cur_theme: ""
     property SessionDispatcher dis: sessiondispatcher
     property bool listorgrid: false

@@ -27,7 +27,7 @@ Item {
     property string btn_text: "开始扫描"
 //    property string title: "清理浏览器Cookies"
 //    property string description: "清理浏览器Cookies可以保障系统安全"
-    property string title: "清理登录信息,保护个人隐私"
+    property string title: "清理浏览器登录信息,保护个人隐私"
     property string description: "清理上网时留下的登录信息,目前仅支持Firefox浏览器"
     property string btn_flag: "cookies_scan"
     property SystemDispatcher dis: systemdispatcher

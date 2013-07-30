@@ -91,7 +91,7 @@ Item {
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
     //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
-                            SetWord {wordname: "更改桌面背景"; width: 80; flag: "DesktopBackground"}
+                            SetWord {wordname: "更改图标主题"; width: 80; flag: "DesktopBackground"}//更改桌面背景
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
     //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
@@ -109,9 +109,9 @@ Item {
     //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
                             SetWord {wordname: "更改开机动画"; width: 80; flag: "BootAnimation"}
                             //左右分割条
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-    //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
-                            SetWord {wordname: "更改屏幕保护程序"; width: 100; flag: "ScreenSaver"}
+//                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+//    //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
+//                            SetWord {wordname: "更改屏幕保护程序"; width: 100; flag: "ScreenSaver"}
                         }
                     }
                 }
@@ -139,8 +139,8 @@ Item {
                             anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "自定义launcher主题"; width: 120; flag: "LauncherTheme"}
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "自定义dash主题"; width: 90; flag: "DashTheme"}
+//                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+//                            SetWord {wordname: "自定义dash主题"; width: 90; flag: "DashTheme"}
                         }
                     }
                 }
@@ -199,8 +199,8 @@ Item {
                             anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: " 更改触摸板设置"; width: 100; flag: "TouchpadSet"}
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "高级选项"; width: 55; flag: "AdvanceSet"}
+//                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+//                            SetWord {wordname: "高级选项"; width: 55; flag: "AdvanceSet"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
                             SetWord {wordname: "检测屏幕坏点"; width: 90; flag: "CheckScreen"}
                         }

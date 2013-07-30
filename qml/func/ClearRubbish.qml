@@ -24,12 +24,9 @@ import "common" as Common
 Item {
     id: clearmode
     width: parent.width
-    height: 475//460
-//    property Dispatcher dis: mydispather
+    height: 475
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
-
-
     ListModel {
         id: choices
         ListElement { text: "kobe333" }
@@ -38,61 +35,18 @@ Item {
         ListElement { text: "baby" }
     }
 
-//    Image {
-//        id: titleimage
-//        anchors {
-//            left: parent.left
-//            leftMargin: 2
-//        }
-//        source: "../img/skin/note-bg.png"
-//    }
-//    Text {
-//        anchors {
-//            left: parent.left
-//            leftMargin: 50
-//            top: parent.top
-//            topMargin: titleimage.height/2 - 7
-//        }
-//        text: "您可以根据扫描结果,选择性地清理相关内容。"
-//        font.pixelSize: 12
-//        color: "#383838"
-//    }
-
     TabFrame {
         id:frame
         //position decides the tabBar's location ,when is "South", the tabBar on Sourth, and when is "North", the tabBar on North
-        position: "North"  //tabPositionGroup.checkedButton == r2 ? "South" : "North"
-//        KeyNavigation.tab:button1
-//        KeyNavigation.backtab: button2
+        position: "North"
         width: parent.width
         height: parent.height
-//        height: parent.height - titleimage.height
-//        anchors.top: titleimage.bottom
         onCurrentChanged: {}
-
-
-//        Tab {
-//            title: qsTr("一键清理")
-//            contentMargin: 20
-//            FastclearModel {
-//                id: screen
-//            }
-
-//        }
-//        Tab {
-//            id:mytab
-//            title: qsTr("清理垃圾")
-//            contentMargin: 20
-//            RubbishModel {
-//                id: rubbishitem
-//            }
-//        }
         Tab {
             title: qsTr("一键清理")
             contentMargin: 20
             FastclearModel {
                 id: fastitem
-//                height: 435 - titleimage.height
             }
         }
         Tab {
@@ -100,14 +54,7 @@ Item {
             contentMargin: 20
             AptCruft {
                 id: aptitem
-//                height: 435 - titleimage.height
             }
-//            //背景
-//            Image {
-//                source: "../img/skin/bg-left.png"
-//                anchors.fill: aptitem
-//            }
-
         }
         Tab {
 
@@ -115,40 +62,22 @@ Item {
             contentMargin: 20
             SoftwareCruft {
                 id: softwareitem
-//                height: 435 - titleimage.height
             }
-//            //背景
-//            Image {
-//                source: "../img/skin/bg-left.png"
-//                anchors.fill: parent
-//            }
         }
         Tab {
-            title: qsTr("浏览器历史记录")
+            title: qsTr("历史记录")
             contentMargin: 20
             BrowserHistroy {
                 id: historyitem
-//                height: 435 - titleimage.height
             }
-//            //背景
-//            Image {
-//                source: "../img/skin/bg-left.png"
-//                anchors.fill: parent
-//            }
         }
         Tab {
 
-            title: qsTr("浏览器Cookies")
+            title: qsTr("Cookies")
             contentMargin: 20
             BrowserCookies {
                 id: cookiesitem
-//                height: 435 - titleimage.height
             }
-//            //背景
-//            Image {
-//                source: "../img/skin/bg-left.png"
-//                anchors.fill: parent
-//            }
         }
         Tab {
 
@@ -156,14 +85,7 @@ Item {
             contentMargin: 20
             PackageModel {
                 id: packagemodel
-//                height: 435 - titleimage.height
             }
-//            //背景
-//            Image {
-//                source: "../img/skin/bg-left.png"
-//                anchors.fill: parent
-//            }
-
         }
         Tab {
             title: qsTr("文件排序")
@@ -171,8 +93,6 @@ Item {
             LargestFile {
                 id: largestitem
             }
-
-
         }
         Tab {
             title: qsTr("同名文件")
@@ -181,34 +101,6 @@ Item {
                 id: samenameitem
             }
         }
-//        Tab {
-//            title: qsTr("测试旋转")
-//            contentMargin: 20
-//            RotateModel {
-////                id: pluginlist
-//            }
-//        }
-//        Tab {
-//            title: qsTr("测试垃圾")
-//            contentMargin: 20
-//            RubbishModelTest {
-////                id: pluginlist
-//            }
-//        }
-//        Tab {
-//            title: qsTr("测试痕迹")
-//            contentMargin: 20
-//            TracesModelTest {
-////                id: pluginlist
-//            }
-//        }
-//        Tab {
-//            title: qsTr("测试插件")
-//            contentMargin: 20
-//            PluginModelTest {
-////                id: pluginlist
-//            }
-//        }
     }
 }
 

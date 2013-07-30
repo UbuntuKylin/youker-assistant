@@ -30,6 +30,7 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
+    property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
     property string actiontitle: "触摸板设置"
     property string actiontext: "通过调整您触摸板的相关设置，使操作更加便捷。"
@@ -40,6 +41,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
         touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();//edge-scrolling
 //        console.log("888888888");
 //        console.log(touchpadsetpage.touchscrolling_mode);
@@ -60,12 +62,22 @@ Rectangle {
         onOkBtnClicked: {
             if (settigsDetails.setTitle == "TouchpadSet") {
                 if (edge.checked == true) {
-                    console.log("123");
+//                    console.log("123");
                     sessiondispatcher.set_touchscrolling_mode_edge_qt();
                 }
                 else if (twofinger.checked == true) {
-                    console.log("1234");
+//                    console.log("1234");
                     sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+                }
+
+
+                if (overlay.checked == true) {
+                    console.log("123");
+                    sessiondispatcher.set_scrollbars_mode_overlay_qt();
+                }
+                else if (legacy.checked == true) {
+                    console.log("1234");
+                    sessiondispatcher.set_scrollbars_mode_legacy_qt();
                 }
             }
         }
@@ -198,13 +210,13 @@ Rectangle {
                 spacing: 80
                 Common.CheckBox {
                     id:edge
-                    titleName: "edge模式"
+                    titleName: "边沿模式"//"edge模式"
                     flag: "radio"
                     onClicked: console.log(edge.checked)
                 }
                 Common.CheckBox {
                     id: twofinger
-                    titleName: "twofinger模式"
+                    titleName: "双击模式"//"twofinger模式"
                     flag: "radio"
                     onClicked: console.log(twofinger.checked)
                 }
@@ -248,43 +260,45 @@ Rectangle {
 
 
 
-//    Row {
-//        id: workmode
-//        spacing: 40
-//        anchors{
-//            left: parent.left
-//            leftMargin: 60
-//            top: horizontalscroll.bottom
-//            topMargin: 10
+    Row {
+        id: workmode
+        spacing: 40
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: horizontalscroll.bottom
+            topMargin: 10
 
-//        }
-//        Label {
-//            width: 110
-//            text: "触摸板滚动条触发方式:"
-//            font.pixelSize: 12
-//            color: "#7a7a7a"
+        }
+        Label {
+            width: 110
+            text: "触摸板滚动条触发方式:"
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+//        GroupBox {
 //            anchors.verticalCenter: parent.verticalCenter
-//        }
-////        GroupBox {
-////            anchors.verticalCenter: parent.verticalCenter
-////                title: qsTr("触摸板滚动模式:")
-////            adjustToContentSize: true
-//            Common.ButtonRow {
-//                exclusive: true//控制是否联动
-//                spacing: 80
-//                Common.CheckBox {
-//                    id:edge1
-//                    titleName: "edge模式"
-//                    onClicked: console.log(edge.checked)
-//                }
-//                Common.CheckBox {
-//                    id: twofinger1
-//                    titleName: "twofinger模式"
-//                    onClicked: console.log(twofinger.checked)
-//                }
-////            }
-//        }
-//    }
+//                title: qsTr("触摸板滚动条触发方式:")
+//            adjustToContentSize: true
+            Common.ButtonRow {
+                exclusive: true//控制是否联动
+                spacing: 100
+                Common.CheckBox {
+                    id:overlay
+                    titleName: "overlay模式"
+                    flag: "radio"
+                    onClicked: console.log(overlay.checked)
+                }
+                Common.CheckBox {
+                    id: legacy
+                    titleName: "legacy模式"
+                    flag: "radio"
+                    onClicked: console.log(legacy.checked)
+                }
+//            }
+        }
+    }
 
 
 }

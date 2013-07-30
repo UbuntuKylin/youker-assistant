@@ -25,7 +25,7 @@ Item {
     width: parent.width
     height: 435//420//340
     property string btn_text: "开始扫描"
-    property string title: "清理上网记录,保护个人隐私"
+    property string title: "清理浏览器上网记录,保护个人隐私"
     property string description: "清理上网时留下的历史记录,目前仅支持Firefox浏览器"
     property string btn_flag: "history_scan"
 
@@ -221,7 +221,7 @@ Item {
         ListModel {
             id: clearModel
             ListElement {
-                title: "清理历史记录"
+                title: "清理浏览器历史记录"
                 picture: "../img/toolWidget/history-min.png"
                 detailstr: "清理Firefox地址栏历史记录"
                 flag: "history"

@@ -36,7 +36,7 @@ Rectangle {
     property string default_cursor_theme: ""
 
     property string actiontitle: "图标主题设置"
-    property string actiontext: "更换图标主题(更换桌面壁纸正在研发中......)"
+    property string actiontext: "选中您想设置的图标主题,点击确定按钮进行更换确认."
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
