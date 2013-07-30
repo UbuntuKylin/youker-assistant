@@ -234,19 +234,33 @@ Item {
         Bars.ToolBar {
             id: toolBar
             visible: false
-            height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+            height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("确定")
             onQuitBtnClicked: {}
             onOkBtnClicked: {}
         }
 
-        states: State {
-            name: "DetailedView"
-            PropertyChanges { target: views; x: -parent.width }
-            PropertyChanges { target: toolBar; visible: true }
-            PropertyChanges { target: topBar; visible: true }
-        }
+//        states: State {
+//            name: "DetailedView"
+//            PropertyChanges { target: views; x: -parent.width }
+//            PropertyChanges { target: toolBar; visible: true }
+//            PropertyChanges { target: topBar; visible: true }
+//        }
+        states: [
+            State {
+                name: "DetailedView"
+                PropertyChanges { target: views; x: -parent.width }
+                PropertyChanges { target: toolBar; visible: true }
+                PropertyChanges { target: topBar; visible: true }
+            },
+            State {
+                name: "DetailedView1"
+                PropertyChanges { target: views; x: -parent.width }
+                PropertyChanges { target: toolBar; visible: false }
+                PropertyChanges { target: topBar; visible: true }
+            }
+        ]
 
         transitions: Transition {
             NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }

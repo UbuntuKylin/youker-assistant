@@ -30,8 +30,6 @@ Item {
     property SystemDispatcher dis2: systemdispatcher
 
 
-
-
     ListModel {
         id: choices
         ListElement { text: "kobe333" }
@@ -98,7 +96,7 @@ Item {
             }
         }
         Tab {
-            title: qsTr("清理apt缓存")
+            title: qsTr("包管理缓存")
             contentMargin: 20
             AptCruft {
                 id: aptitem
@@ -113,7 +111,7 @@ Item {
         }
         Tab {
 
-            title: qsTr("清理软件中心缓存")
+            title: qsTr("软件中心缓存")
             contentMargin: 20
             SoftwareCruft {
                 id: softwareitem
@@ -126,8 +124,7 @@ Item {
 //            }
         }
         Tab {
-
-            title: qsTr("清理浏览器历史记录")
+            title: qsTr("浏览器历史记录")
             contentMargin: 20
             BrowserHistroy {
                 id: historyitem
@@ -141,7 +138,7 @@ Item {
         }
         Tab {
 
-            title: qsTr("清理浏览器Cookies")
+            title: qsTr("浏览器Cookies")
             contentMargin: 20
             BrowserCookies {
                 id: cookiesitem
@@ -155,7 +152,7 @@ Item {
         }
         Tab {
 
-            title: qsTr("清理不需要的deb包")
+            title: qsTr("包卸载")
             contentMargin: 20
             PackageModel {
                 id: packagemodel
@@ -168,20 +165,22 @@ Item {
 //            }
 
         }
-//        Tab {
-//            title: qsTr("测试隐藏框")
-//            contentMargin: 20
-//            Panel {
-//                anchors.fill:parent
-//            }
-//        }
-//        Tab {
-//            title: qsTr("测试列表")
-//            contentMargin: 20
-//            ItemListModel {
-////                id: pluginlist
-//            }
-//        }
+        Tab {
+            title: qsTr("文件排序")
+            contentMargin: 20
+            LargestFile {
+                id: largestitem
+            }
+
+
+        }
+        Tab {
+            title: qsTr("同名文件")
+            contentMargin: 20
+            SamenameFile {
+                id: samenameitem
+            }
+        }
 //        Tab {
 //            title: qsTr("测试旋转")
 //            contentMargin: 20

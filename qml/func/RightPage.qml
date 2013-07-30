@@ -31,7 +31,7 @@ Rectangle {
     ListModel {
         id: clearModel
         ListElement {
-            icon: "../img/icons/themeset.png"
+            icon: "../img/icons/checkscreen.png"
 //            name: "主题"
 //            flag: "theme"
             name: "坏点检测"

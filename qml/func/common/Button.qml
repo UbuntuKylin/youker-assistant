@@ -41,10 +41,46 @@ Item {
         hoverEnabled: true
 //        id: signaltest
 //        anchors.fill: parent
-        onEntered: btnImg.source = "../../img/toolWidget/menu_hover.png"
-        onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"
+
+//        onEntered: btnImg.source = "../../img/toolWidget/menu_hover.png"
+//        onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"
+//        //要判断松开是鼠标位置
+//        onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
+//        onExited: btnImg.source = ""
+
+        onEntered: {
+            if (hoverimage == "return.png")
+                btnImg.source = "../../img/icons/return-hover.png"
+            else if (hoverimage == "sort.png")
+                btnImg.source = "../../img/icons/sort-hover.png"
+            else if (hoverimage == "selectpic.png")
+                btnImg.source = "../../img/icons/selectpic-hover.png"
+            else
+                btnImg.source = "../../img/toolWidget/menu_hover.png"
+        }
+        onPressed: {
+            if (hoverimage == "return.png")
+                btnImg.source = "../../img/icons/return-hover.png"
+            else if (hoverimage == "sort.png")
+                btnImg.source = "../../img/icons/sort-hover.png"
+            else if (hoverimage == "selectpic.png")
+                btnImg.source = "../../img/icons/selectpic-hover.png"
+            else
+                btnImg.source = "../../img/toolWidget/menu_press.png"
+
+        }
         //要判断松开是鼠标位置
-        onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
+        onReleased: {
+            if (hoverimage == "return.png")
+                btnImg.source = "../../img/icons/return.png"
+            else if (hoverimage == "sort.png")
+                btnImg.source = "../../img/icons/sort.png"
+            else if (hoverimage == "selectpic.png")
+                btnImg.source = "../../img/icons/selectpic.png"
+            else
+                btnImg.source = "../../img/toolWidget/menu_hover.png"
+        }
+
         onExited: btnImg.source = ""
 
 

@@ -28,17 +28,19 @@ Rectangle {
     property string actiontext: "单击某个主题立即更改 窗口主题，您可以点击右侧按钮选择想要的排序方式。"
     property string cur_theme: ""
     property SessionDispatcher dis: sessiondispatcher
-//    property bool listorgrid: false
+    property bool listorgrid: false
+    property int num: 0
 
     Component.onCompleted: {
         var syslist = sessiondispatcher.get_themes_qt();
+        widgetthemepage.num = syslist.length;
         widgetthemepage.cur_theme = sessiondispatcher.get_theme_qt();
         syslist.unshift(widgetthemepage.cur_theme);
 //        var current_theme = sessiondispatcher.get_theme_qt();
 //        syslist.unshift(current_theme);
         themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
-            themeModel.append({"icon": "../../img/icons/systemsound.png", "name": syslist[i]});
+            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
             if (i!=0 && syslist[i] == widgetthemepage.cur_theme)
                 themeModel.remove(i);
 //            if (i!=0 && syslist[i] == current_theme)
@@ -47,17 +49,17 @@ Rectangle {
     }
 
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "WidgetTheme") {
-//                console.log("-----------------");
-//                console.log(widgetthemepage.cur_theme);
-                sessiondispatcher.set_theme_qt(widgetthemepage.cur_theme);
-            }
-        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "WidgetTheme") {
+////                console.log("-----------------");
+////                console.log(widgetthemepage.cur_theme);
+//                sessiondispatcher.set_theme_qt(widgetthemepage.cur_theme);
+//            }
+//        }
+//    }
 
     ListModel {
         id: themeModel
@@ -86,22 +88,26 @@ Rectangle {
 
              Column {
                  anchors.fill: parent
-                 spacing: 5
+                 spacing: 10
                  Image {
                      id: seticon
                      source: icon
                      anchors.top: parent.top
                      anchors.topMargin: 5
-                     width: griditem.width - 20
-                     height: griditem.height - 30
+//                     width: griditem.width - 20
+//                     height: griditem.height - 30
+                     width: 120
+                     height: 120
                      anchors.horizontalCenter: parent.horizontalCenter
                  }
                  Text {
                      id: btnText
                      height: 20
                      anchors.horizontalCenter: parent.horizontalCenter
-                     color: "green"
-                     text: qsTr(name)
+                     text: name
+                     font.bold: true
+                     font.pixelSize: 12
+                     color: "#383838"
                  }
              }
 
@@ -123,8 +129,10 @@ Rectangle {
                  onExited: btnImg.source = ""
                  onClicked: {
                      //kobe:选中项深色块移动
-                     iconClicked();
+//                     iconClicked();
                      griditem.GridView.view.currentIndex = index;
+                     console.log(name);
+                     sessiondispatcher.set_theme_qt(name);
                  }
              }
          }
@@ -136,6 +144,7 @@ Rectangle {
 //         Item {
 //             id: listitem
 ////             width: themegrid.cellWidth; height: themegrid.cellHeight
+//             width: 120; height: 120
 
 //             function listiconClicked() {
 //                 widgetthemepage.cur_theme = name;
@@ -183,14 +192,61 @@ Rectangle {
 //     }
 
 
+//     Row {
+//         id: titlerow
+//         spacing: 80
+//         anchors {
+//            top: parent.top
+//            topMargin: 44
+//            left: parent.left
+//            leftMargin: 80
+//         }
+//         width: parent.width
+//         Column {
+//             id: titlecolumn
+////             width: parent.width
+//             Text {
+//                  text: widgetthemepage.actiontitle
+//                  font.bold: true
+//                  font.pixelSize: 14
+//                  color: "#383838"
+//              }
+//              Text {
+//                  text: widgetthemepage.actiontext
+//                  font.pixelSize: 12
+//                  color: "#7a7a7a"
+//              }
+//         }
+//        Common.Button {
+//            width: 23
+//            height: 23
+//            hoverimage: "sort.png"
+////            anchors {
+////               left: titlecolumn.right
+////               leftMargin: 200
+////            }
+//            onClicked: {
+//                if (widgetthemepage.listorgrid == true) {
+//                    console.log("111");
+//                    widgetthemepage.listorgrid = false;
+//                }
+//                else {
+//                    widgetthemepage.listorgrid = true;
+//                    console.log("222");
+//                }
+//            }
+//        }
+//     }
+
      Column {
-         spacing: 10
+         id: titlecolumn
          anchors {
             top: parent.top
             topMargin: 44
             left: parent.left
             leftMargin: 80
          }
+//             width: parent.width
          Text {
               text: widgetthemepage.actiontitle
               font.bold: true
@@ -204,31 +260,15 @@ Rectangle {
           }
      }
 
-//     Common.Button {
-//         anchors.top: parent.top
-//         anchors.right: parent.right
-//         width: 120
-//         height: 39
-//         hoverimage: "scan-start.png"
-//         onClicked: {
-//             if (widgetthemepage.listorgrid == true) {
-//                 console.log("111");
-//                 widgetthemepage.listorgrid = false;
-//             }
-//             else {
-//                 widgetthemepage.listorgrid = true;
-//                 console.log("222");
-//             }
-//         }
-//     }
 
 
      GridView {
          id: themegrid
+//         visible: true
          anchors {
              fill: parent
              top: parent.top
-             topMargin: 120
+             topMargin: 100
              left: parent.left
              leftMargin: 60
          }
@@ -240,30 +280,50 @@ Rectangle {
          highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
      }
 
-//     ListView {
-//         id: themelist
+//     ScrollArea {
+//         id: scroolarea
+//         visible: false
+//         frame:false
+//         width: parent.width - 60 //因为左边移位了60
+//         height: 320
 //         anchors {
-//             fill: parent
-//             top: parent.top
-//             topMargin: 120
+//             top: titlerow.bottom
+//             topMargin: 10
 //             left: parent.left
 //             leftMargin: 60
 //         }
-//         width: parent.width
-//         height: parent.height
-//         model: themeModel
-//         delegate: themelistDelegate
-////         focus: true
-//         cacheBuffer: 1000
-//         x: -(parent.width * 1.5)
-//     }
-
-
+//         Item {
+//             width:parent.width
+//             height: widgetthemepage.num * 120
+//             ListView {
+//                 id: themelist
+//                 width: parent.width
+//                 height: parent.height
+//                 model: themeModel
+//                 delegate: themelistDelegate
+//                 focus: true
+//                 cacheBuffer: 1000
+//        //         x: -(parent.width * 1.5)
+////                 visible: false
+//                 opacity: 1
+//                 spacing: 10
+//                 snapMode: ListView.NoSnap
+//                 boundsBehavior: Flickable.DragOverBounds
+//                 currentIndex: 0
+//                 preferredHighlightBegin: 0
+//                 preferredHighlightEnd: preferredHighlightBegin
+//                 highlightRangeMode: ListView.StrictlyEnforceRange
+//             }
+//         }//Item
+//     }//ScrollArea
 //     states: [
 //         State {
 //             name: "ListView"; when: widgetthemepage.listorgrid == true
-//             PropertyChanges { target: themelist; x: 0 }
-//             PropertyChanges { target: themegrid; x: -(parent.width * 1.5) }
+////             PropertyChanges { target: themelist; x: 0 }
+////             PropertyChanges { target: themelist; visible: true }
+//             PropertyChanges { target: scroolarea; visible: true }
+////             PropertyChanges { target: themegrid; x: -(parent.width * 1.5) }
+//             PropertyChanges { target: themegrid; visible: false}
 //         }
 //     ]
 //     transitions: [
@@ -271,8 +331,7 @@ Rectangle {
 //             NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
 //         }
 //     ]
-
-     Item { id: foreground; anchors.fill: parent }
+//     Item { id: foreground; anchors.fill: parent }
  }
 
 

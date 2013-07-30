@@ -26,8 +26,8 @@ Item {
     width: parent.width
     height: 435//420//340
     property string btn_text: "开始扫描"
-    property string title: "清理Software"
-    property string description: "清理Software可以节省磁盘空间"
+    property string title: "软件中心缓存深度清理"
+    property string description: "深度清理软件中心缓存,节省磁盘空间"
     property string btn_flag: "software_scan"
     property SystemDispatcher dis: systemdispatcher
     property ListModel listmodel: mainModel
@@ -81,9 +81,9 @@ Item {
 //            console.log(systemdispatcher.get_software_args());
             root.sub_num -= num;
             mainModel.clear();
-            mainModel.append({"itemTitle": "清理Software",
+            mainModel.append({"itemTitle": "软件中心缓存清理",
                              "picture": "../img/toolWidget/software-min.png",
-                             "detailstr": "清理Software可以节省磁盘空间",
+                             "detailstr": "用户可以根据扫描结果选择性地清理软件中心缓存",
                              "flags": "clear_software",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -98,9 +98,9 @@ Item {
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "清理Software"
+            itemTitle: "软件中心缓存清理"
             picture: "../img/toolWidget/software-min.png"
-            detailstr: "清理Software可以节省磁盘空间"
+            detailstr: "用户可以根据扫描结果选择性地清理软件中心缓存"
             flags: "clear_software"
             attributes: [
                 ListElement { subItemTitle: "" }

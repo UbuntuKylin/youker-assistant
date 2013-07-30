@@ -38,116 +38,53 @@ Item {
             source: "../img/skin/bg-left.png"
             anchors.fill: parent
         }
-
-
         Item {
             id: views
             width: parent.width
             height: parent.height
             ListModel {
-                id: clearModel
+                id: funcmodel
                 ListElement {
-                    icon: "../img/icons/themeset.png"
-                    name: "主题设置"
-                    flag: "WidgetTheme"
-                }
-                ListElement {
-                    icon: "../img/icons/systemsound.png"
-                    name: "图标美化"
-                    flag: "DesktopIcon"
+                    icon: "../img/icons/checkscreen.png"
+                    name: "坏点检测"
+                    flag: "CheckScreen"
                 }
                 ListElement {
                     icon: "../img/icons/bootanimation.png"
                     name: "开机动画"
                     flag: "BootAnimation"
                 }
-                ListElement {
-                    icon: "../img/icons/systemsound.png"
-                    name: "声音"
-                    flag: "SoundEffects"
-                }
-                ListElement {
-                    icon: "../img/icons/bootanimation.png"
-                    name: "字体设置"
-                    flag: "DefaultFont"
-                }
-                ListElement {
-                    icon: "../img/toolWidget/computerclinic.png"
-                    name: "鼠标指针"
-                    flag: "MousePointer"
-                }
-                ListElement {
-                    icon: "../img/toolWidget/computerclinic.png"
-                    name: "最大文件"
-                    flag: "LargestFile"
-                }
-                ListElement {
-                    icon: "../img/toolWidget/computerclinic.png"
-                    name: "同名文件"
-                    flag: "SamenameFile"
-                }
+
 //                ListElement {
-//                    icon: "../img/icons/systemreduce.png"
-//                    name: "触摸板"
-//                    flag: "touchpad"
+//                    icon: "../img/icons/largestfile.png"
+//                    name: "最大文件"
+//                    flag: "LargestFile"
 //                }
 //                ListElement {
-//                    icon: "../img/icons/deepclear.png"
-//                    name: "Unity"
-//                    flag: "unity"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/iconbeauty.png"
-//                    name: "桌面图标"
-//                    flag: "desktopicon"
-//                }
-//                ListElement {
-//                    icon: "../img/toolWidget/optimalacceleration.png"
-//                    name: "壁纸"
-//                    flag: "wallpaper"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/iconbeauty.png"
-//                    name: "窗口"
-//                    flag: "window"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/iconbeauty.png"
-//                    name: "滑动条"
-//                    flag: "scrollbar"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/bootanimation.png"
-//                    name: "开机动画"
-//                    flag: "bootanimation"
+//                    icon: "../img/icons/samename.png"
+//                    name: "同名文件"
+//                    flag: "SamenameFile"
 //                }
             }
 
-//            Common.Border {
-//                id: leftborder
-////                width: 2
-////                height: parent.height
-//            }
-//            Common.Border {
-//                id: roightborder
-////                width: 2
-////                height: parent.height
-//                anchors.right: parent.right
-//            }
 
             Label {
                 id: label
-                text: qsTr("默认工具箱")
-                height: 30
+                text: "默认工具箱"
                 font.bold: true
-                font.family: "Ubuntu"
-                elide: Text.ElideRight
-                font.pointSize: 20
+                font.pixelSize: 16
+                color: "#383838"
+
+//                height: 30
+//                font.bold: true
+//                font.family: "Ubuntu"
+//                elide: Text.ElideRight
+//                font.pointSize: 20
                 anchors {
                     top: parent.top
-                    topMargin: 10
+                    topMargin: 30
                     left: parent.left
-                    leftMargin: 15
+                    leftMargin: 35
                 }
             }
 
@@ -159,10 +96,10 @@ Item {
                     top: label.bottom
                     topMargin: 10
                     left: parent.left
-                    leftMargin: 15
+                    leftMargin: 30
                 }
 
-                model: clearModel
+                model: funcmodel
                 delegate: SettingsDelegate {}
                 cacheBuffer: 1000
                 //竖列
@@ -186,7 +123,7 @@ Item {
         Bars.ToolBar {
             id: toolBar
             visible: false
-            height: 40; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+            height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("确定")
 //            onButton1Clicked: {}

@@ -30,6 +30,11 @@ Rectangle {
         settigsDetails.setTitle = scaleMe.flag;
 //        console.log(settigsDetails.setTitle);
     }
+    function iconClicked1() {
+        scaleMe.state = "Details1";
+        settigsDetails.setTitle = scaleMe.flag;
+//        console.log(settigsDetails.setTitle);
+    }
 
     Text {
         text: wordname
@@ -46,7 +51,8 @@ Rectangle {
     Connections {
         target: topBar
         //按下返回按钮
-        onButtonClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+//        onButtonClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+        onButtonClicked: if (scaleMe.state == 'Details' || scaleMe.state == 'Details1') scaleMe.state = 'Original'
         //按下确定按钮
 //        onButton2Clicked: {
 //            console.log("111111111111");
@@ -76,6 +82,11 @@ Rectangle {
             name: "Details"
             PropertyChanges { target: scaleMe; scale: 1 }
             PropertyChanges { target: setting_widget; state: "DetailedView" }//展示细节页面,出现工具栏
+        },
+        State {
+            name: "Details1"
+            PropertyChanges { target: scaleMe; scale: 1 }
+            PropertyChanges { target: setting_widget; state: "DetailedView1" }//展示细节页面,只出现上面的返回按钮
         }
     ]
     transitions: [
@@ -110,6 +121,8 @@ Rectangle {
             //屏幕坏点检测
             if (flag == "CheckScreen")
                 sessiondispatcher.send_checkscreen_dialog();
+            else if (flag == "WidgetTheme" || flag == "DesktopIcon" || flag == "DocumentFont" || flag == "TitlebarFont")
+                iconClicked1();
             else
                 iconClicked();
 //            if (setbtn_flag == "onekey") {

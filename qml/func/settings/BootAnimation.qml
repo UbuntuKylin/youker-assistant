@@ -70,53 +70,43 @@ Rectangle {
          }
     }
 
-    Image {
-        id: previewzone
-        source: "../../img/icons/previewzone.png"
+    Column {
         anchors {
             top: parent.top
             topMargin: 150
             left: parent.left
             leftMargin: 60
         }
-    }
-
-
-    Row {
-        anchors {
-            top: previewzone.bottom
-            topMargin: 20
-            left: parent.left
-            leftMargin: 60
+        spacing: 30
+        Image {
+            id: previewzone
+            source: "../../img/icons/previewzone.png"
+//            anchors {
+//                top: parent.top
+//                topMargin: 150
+//                left: parent.left
+//                leftMargin: 60
+//            }
         }
-
-        spacing: 10
-        Label {
-            text: "点击预览按钮选择图片"
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-
         Common.Button {
-            width: 95
+            width: 134
             height: 35
-            hoverimage: "preview.png"
+            hoverimage: "selectpic.png"
+            anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 bootimagepage.image_path = systemdispatcher.show_file_dialog();
                 bootimage.source = bootimagepage.image_path;
             }
         }
-
     }
-
-
 
     Image {
         id: bootimage
-        width: 180
-        height: 125
+        //165x114
+        width: 165
+        height: 114
+//        width: 180
+//        height: 125
         anchors {
             top: parent.top
             topMargin: 166

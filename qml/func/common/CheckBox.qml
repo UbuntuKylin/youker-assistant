@@ -32,6 +32,7 @@ Item {
 //    property Component checksomeone: defaultStyle.checksomeone
 
     property color backgroundColor: "#fff";
+    property string flag: ""
 
     // Common API
     signal clicked
@@ -64,5 +65,5 @@ Item {
         onClicked:checkbox.clicked()
     }
 
-    DefaultStyle.CheckBoxStyle { id: defaultStyle }
+    DefaultStyle.CheckBoxStyle { id: defaultStyle; styleflag: checkbox.flag }
 }

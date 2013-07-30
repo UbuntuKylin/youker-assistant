@@ -8,13 +8,12 @@ inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
 inst2.files += ../youker-assistant.desktop
 inst2.path = /usr/share/applications
-inst3.files += ./libstyleplugin.so
-inst3.path = /usr/lib/i386-linux-gnu/qt4/imports/QtDesktop/plugin/
+#inst3.files += ./libstyleplugin.so
+#inst3.path = /usr/lib/i386-linux-gnu/qt4/imports/QtDesktop/plugin/
 target.source += $$TARGET
 target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
-    inst3 \
     target
 
 # Additional import path used to resolve QML modules in Creator's code model

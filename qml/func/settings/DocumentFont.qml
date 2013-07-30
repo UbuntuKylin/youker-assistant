@@ -58,14 +58,14 @@ Rectangle {
         //        documentfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "DocumentFont") {
-            }
-        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "DocumentFont") {
+//            }
+//        }
+//    }
 
     Column {
         spacing: 10
@@ -124,17 +124,17 @@ Rectangle {
 
     }//Column
 
-    Button {
-        text: "显示字体设置框"
-        onClicked: sessiondispatcher.show_font_dialog();
-    }
+//    Button {
+//        text: "显示字体设置框"
+//        onClicked: sessiondispatcher.show_font_dialog();
+//    }
 
-    Button {
-        text: "显示颜色设置框"
-        anchors.left: parent.left
-        anchors.leftMargin: 100
-        onClicked: sessiondispatcher.show_color_dialog();
-    }
+//    Button {
+//        text: "显示颜色设置框"
+//        anchors.left: parent.left
+//        anchors.leftMargin: 100
+//        onClicked: sessiondispatcher.show_color_dialog();
+//    }
 }
 
 

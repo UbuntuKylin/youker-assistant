@@ -31,8 +31,19 @@ Item {
          width: parent.width; height: parent.height + 14; y: -7
      }
 
+     Rectangle{id: splitbar; x:2; width:parent.width - 4 ; height:1; color:"#b9c5cc"}
+
      Row {
-         anchors.right: parent.right; anchors.rightMargin: 5; y: 3; height: 32; spacing: 30
+         spacing: 30
+         height: 32
+         anchors {
+             right: parent.right
+             rightMargin: 5
+             top: splitbar.bottom
+             topMargin: 10
+         }
+
+//         anchors.right: parent.right; anchors.rightMargin: 5; y: 3; height: 32; spacing: 30
          Common.Button {
              id: okBtn
              hoverimage: "../../img/icons/ok.png"

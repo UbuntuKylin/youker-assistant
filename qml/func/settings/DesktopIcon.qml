@@ -68,14 +68,14 @@ Rectangle {
             deviceswitcher.switchedOn = false;
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "DesktopIcon")
-                console.log("DesktopIcon ok");
-        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "DesktopIcon")
+//                console.log("DesktopIcon ok");
+//        }
+//    }
 
     Column {
         spacing: 10
@@ -142,7 +142,7 @@ Rectangle {
             Label {
                 id: homefolderlabel
                 width: 170
-                text: qsTr("根文件夹:")
+                text: qsTr("家文件夹:")
                 font {
                     family: desktopiconpage.fontName
                     pointSize: desktopiconpage.fontSize

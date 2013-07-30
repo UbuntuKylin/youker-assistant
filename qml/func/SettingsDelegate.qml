@@ -135,7 +135,11 @@ Rectangle {
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
-            iconClicked();
+            //屏幕坏点检测
+            if (flag == "CheckScreen")
+                sessiondispatcher.send_checkscreen_dialog();
+            else
+                iconClicked();
             //kobe:选中项深色块移动
             scaleMe.GridView.view.currentIndex = index;
         }

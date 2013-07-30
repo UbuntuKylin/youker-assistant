@@ -27,7 +27,7 @@ Item {
     width: parent.width
     height: 435//420//340
     property string btn_text: "开始扫描"
-    property string title: "卸载不必要的安装程序"
+    property string title: "卸载不必要的程序"
     property string description: "清理软件安装过程中安装的依赖程序，提高系统性能"
     property string btn_flag: "package_scan"
     property SystemDispatcher dis: systemdispatcher
@@ -81,9 +81,9 @@ Item {
             mainModel.clear();
             console.log("unneed........................");
             console.log(systemdispatcher.get_package_args());
-            mainModel.append({"itemTitle": "卸载不必要的安装程序",
+            mainModel.append({"itemTitle": "卸载不必要的程序",
                              "picture": "../img/toolWidget/deb-min.png",
-                             "detailstr": "卸载不再需要的安装程序,让系统更瘦",
+                             "detailstr": "用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦",
                              "flags": "clear_cookies",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -99,9 +99,9 @@ Item {
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "清理不再需要的安装包"
+            itemTitle: "卸载不必要的程序"
             picture: "../img/toolWidget/deb-min.png"
-            detailstr: "不再需要的安装包,让系统更瘦"
+            detailstr: "用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦"
             flags: "clear_package"
             attributes: [
                 ListElement { subItemTitle: "" }

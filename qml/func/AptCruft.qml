@@ -23,8 +23,8 @@ Item {
     width: parent.width
     height: 435//420//340
     property string btn_text: "开始扫描"
-    property string title: "清理Apt"
-    property string description: "清理Apt可以节省磁盘空间"
+    property string title: "包管理深度清理"
+    property string description: "深度清理包管理残留的deb包,节省磁盘空间"
     property string btn_flag: "apt_scan"
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
@@ -79,9 +79,9 @@ Item {
             }
             root.sub_num -= num;
             mainModel.clear();
-            mainModel.append({"itemTitle": "清理Apt",
+            mainModel.append({"itemTitle": "包管理清理",
                              "picture": "../img/toolWidget/apt-min.png",
-                             "detailstr": "清理Apt可以节省磁盘空间",
+                             "detailstr": "用户可以根据扫描结果选择性地清理包管理残留包",
                              "flags": "clear_apt",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -126,9 +126,9 @@ Item {
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "清理Apt"
+            itemTitle: "包管理清理"
             picture: "../img/toolWidget/apt-min.png"
-            detailstr: "清理Apt可以节省磁盘空间"
+            detailstr: "用户可以根据扫描结果选择性地清理包管理残留包"
             flags: "clear_apt"
             attributes: [
                 ListElement { subItemTitle: "" }

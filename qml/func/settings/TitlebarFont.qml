@@ -58,14 +58,14 @@ Rectangle {
         titlebarfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "TitlebarFont") {
-            }
-        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "TitlebarFont") {
+//            }
+//        }
+//    }
 
     Column {
         spacing: 10
@@ -125,17 +125,17 @@ Rectangle {
 
     }//Column
 
-    Button {
-        text: "显示字体设置框"
-        onClicked: sessiondispatcher.show_font_dialog();
-    }
+//    Button {
+//        text: "显示字体设置框"
+//        onClicked: sessiondispatcher.show_font_dialog();
+//    }
 
-    Button {
-        text: "显示颜色设置框"
-        anchors.left: parent.left
-        anchors.leftMargin: 100
-        onClicked: sessiondispatcher.show_color_dialog();
-    }
+//    Button {
+//        text: "显示颜色设置框"
+//        anchors.left: parent.left
+//        anchors.leftMargin: 100
+//        onClicked: sessiondispatcher.show_color_dialog();
+//    }
 }
 
 

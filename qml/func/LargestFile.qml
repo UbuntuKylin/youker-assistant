@@ -25,7 +25,7 @@ import "common" as Common
 Item {
     id:root
     width: parent.width
-    height: 475
+    height: 435//475
     property string btn_text: "开始扫描"
     property string title: "清理最大文件"
     property string description: "清理用户指定目录下的最大文件，节省磁盘空间"
