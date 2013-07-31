@@ -221,10 +221,10 @@ Item {
         ListModel {
             id: clearModel
             ListElement {
-                title: "清理浏览器历史记录"
-                picture: "../img/toolWidget/history-min.png"
+                titlename: "清理浏览器历史记录"
+                picturename: "../img/toolWidget/history-min.png"
                 detailstr: "清理Firefox地址栏历史记录"
-                flag: "history"
+                clearflag: "history"
             }
         }
 
@@ -235,7 +235,7 @@ Item {
             anchors.top: parent.top
 //                    anchors.topMargin: titlebar.height + 45
             model: clearModel
-            delegate: FastDelegate {pagenum: root.keypage}
+            delegate: FastDelegate {pagenum: root.keypage}//"history"
             cacheBuffer: 1000
         }
     }

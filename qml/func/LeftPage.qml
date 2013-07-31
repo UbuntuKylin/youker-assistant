@@ -249,28 +249,28 @@ Rectangle {
                 ListModel {
                     id: clearModel
                     ListElement {
-                        title: "清理垃圾"
-                        picture: "../img/toolWidget/brush.png"
+                        titlename: "清理垃圾"
+                        picturename: "../img/toolWidget/brush.png"
                         detailstr: "清理系统中的垃圾文件，释放磁盘空间"
-                        flag: "cache"
+                        clearflag: "cache"
                     }
                     ListElement {
-                        title: "清理历史记录"
-                        picture: "../img/toolWidget/history.png"
+                        titlename: "清理历史记录"
+                        picturename: "../img/toolWidget/history.png"
                         detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
-                        flag: "history"
+                        clearflag: "history"
                     }
                     ListElement {
-                        title: "清理Cookies"
-                        picture: "../img/toolWidget/cookies.png"
+                        titlename: "清理Cookies"
+                        picturename: "../img/toolWidget/cookies.png"
                         detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
-                        flag: "cookies"
+                        clearflag: "cookies"
                     }
                     ListElement {
-                        title: "卸载不必要的安装程序"
-                        picture: "../img/toolWidget/deb.png"
+                        titlename: "卸载不必要的程序"
+                        picturename: "../img/toolWidget/deb.png"
                         detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
-                        flag: "unneed"
+                        clearflag: "unneed"
                     }
                 }
 
@@ -281,7 +281,7 @@ Rectangle {
                     anchors.top: parent.top
 //                    anchors.topMargin: titlebar.height + 45
                     model: clearModel
-                    delegate: FastDelegate {pagenum: leftbar.onekeypage}
+                    delegate: FastDelegate {pagenum: leftbar.onekeypage} //"first"
                     cacheBuffer: 1000
                 }
             }

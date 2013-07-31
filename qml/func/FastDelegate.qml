@@ -73,213 +73,234 @@ import QtDesktop 0.1
                 Common.CheckBox {
                     id: checkbox
 //                    checked: true
+                    //清理历史记录时，chechbox默认为true，首页一键清理和系统清理页面的一键清理默认都为false
                     checked: (pagenum == "history") ? true : false
 //                    width: 30
                     anchors.verticalCenter: parent.verticalCenter
                     onCheckedChanged: {
                         //kobe: wait for adding function
                         if (checkbox.checked) {
+                            //----------------首页一键清理----------------
                             if (pagenum == "first") {
-                                console.log("fisrt check fastdelegate...........");
-                                if (flag == "cache") {
+//                                console.log("首页一键清理 checked true...........");
+//                                console.log(clearflag);
+//                                console.log(titlename);
+                                if (clearflag == "cache") {
+                                    console.log("ture cache is...........");
+                                    console.log(clearflag);
                                     var rubbishlist = systemdispatcher.get_onekey_args();
                                     console.log("ok change............");
                                     var word_flag = "false";
                                     for (var i=0; i<rubbishlist.length; i++) {
-                                        if (rubbishlist[i] == flag) {
+                                        if (rubbishlist[i] == clearflag) {
                                             word_flag = "true";
                                             break;
                                         }
                                     }
                                     if (word_flag == "false") {
                                         console.log("no word_flag");
-                                        systemdispatcher.set_onekey_args(flag);
-                    //                    console.log(systemdispatcher.get_package_args());
+                                        systemdispatcher.set_onekey_args(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                     else
                                         console.log("have word_flag");
                                 }
-                                else if (flag == "history") {
+                                else if (clearflag == "history") {
                                     var historylist = systemdispatcher.get_onekey_args();
                                     console.log("ok change............");
                                     var word_flag1 = "false";
                                     for (var j=0; j<historylist.length; j++) {
-                                        if (historylist[j] == flag) {
+                                        if (historylist[j] == clearflag) {
                                             word_flag1 = "true";
                                             break;
                                         }
                                     }
                                     if (word_flag1 == "false") {
                                         console.log("no word_flag");
-                                        systemdispatcher.set_onekey_args(flag);
-                    //                    console.log(systemdispatcher.get_package_args());
+                                        systemdispatcher.set_onekey_args(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                     else
                                         console.log("have word_flag");
                                 }
-                                else if (flag == "cookies") {
+                                else if (clearflag == "cookies") {
                                     var cookieslist = systemdispatcher.get_onekey_args();
                                     console.log("ok change............");
                                     var word_flag2 = "false";
                                     for (var k=0; k<cookieslist.length; k++) {
-                                        if (cookieslist[k] == flag) {
+                                        if (cookieslist[k] == clearflag) {
                                             word_flag2 = "true";
                                             break;
                                         }
                                     }
                                     if (word_flag2 == "false") {
                                         console.log("no word_flag");
-                                        systemdispatcher.set_onekey_args(flag);
-                    //                    console.log(systemdispatcher.get_package_args());
+                                        systemdispatcher.set_onekey_args(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                     else
                                         console.log("have word_flag");
                                 }
-                                else if (flag == "unneed") {
+                                else if (clearflag == "unneed") {
                                     var mylist = systemdispatcher.get_onekey_args();
                                     console.log("ok change............");
                                     var word_flag3 = "false";
                                     for (var q=0; q<mylist.length; q++) {
-                                        if (mylist[q] == flag) {
+                                        if (mylist[q] == clearflag) {
                                             word_flag3 = "true";
                                             break;
                                         }
                                     }
                                     if (word_flag3 == "false") {
                                         console.log("no word_flag");
-                                        systemdispatcher.set_onekey_args(flag);
-                    //                    console.log(systemdispatcher.get_package_args());
+                                        systemdispatcher.set_onekey_args(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                     else
                                         console.log("have word_flag");
                                 }
-                                console.log(flag);
+                                console.log("-------test first------");
+                                console.log(clearflag);
                                 console.log(systemdispatcher.get_onekey_args());
                             }
+
+                            //----------------系统清理页面的一键清理----------------
                             else if (pagenum == "second") {
                                 console.log("second check...........");
-                                if (flag == "cache") {
+                                if (clearflag == "cache") {
                                     var rubbishlist2 = systemdispatcher.get_onekey_args2();
                                     console.log("ok change............");
                                     var second_flag = "false";
                                     for (var x=0; x<rubbishlist2.length; x++) {
-                                        if (rubbishlist2[x] == flag) {
+                                        if (rubbishlist2[x] == clearflag) {
                                             second_flag = "true";
                                             break;
                                         }
                                     }
                                     if (second_flag == "false") {
                                         console.log("no word_flag");
-                                        systemdispatcher.set_onekey_args2(flag);
-                    //                    console.log(systemdispatcher.get_package_args());
+                                        systemdispatcher.set_onekey_args2(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                     else
                                         console.log("have word_flag");
                                 }
-                                else if (flag == "history") {
+                                else if (clearflag == "history") {
                                     var historylist2 = systemdispatcher.get_onekey_args2();
                                     console.log("ok change............");
                                     var second_flag2 = "false";
                                     for (var y=0; y<historylist2.length; y++) {
-                                        if (historylist2[y] == flag) {
+                                        if (historylist2[y] == clearflag) {
                                             second_flag2 = "true";
                                             break;
                                         }
                                     }
                                     if (second_flag2 == "false") {
                                         console.log("no word_flag");
-                                        systemdispatcher.set_onekey_args2(flag);
-                    //                    console.log(systemdispatcher.get_package_args());
+                                        systemdispatcher.set_onekey_args2(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                     else
                                         console.log("have word_flag");
                                 }
-                                else if (flag == "cookies") {
+                                else if (clearflag == "cookies") {
                                     var cookieslist2 = systemdispatcher.get_onekey_args2();
                                     console.log("ok change............");
                                     var second_flag3 = "false";
                                     for (var z=0; z<cookieslist2.length; z++) {
-                                        if (cookieslist2[z] == flag) {
+                                        if (cookieslist2[z] == clearflag) {
                                             second_flag3 = "true";
                                             break;
                                         }
                                     }
                                     if (second_flag3 == "false") {
                                         console.log("no word_flag");
-                                        systemdispatcher.set_onekey_args2(flag);
-                    //                    console.log(systemdispatcher.get_package_args());
+                                        systemdispatcher.set_onekey_args2(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                     else
                                         console.log("have word_flag");
                                 }
-                                else if (flag == "unneed") {
+                                else if (clearflag == "unneed") {
                                     var mylist2 = systemdispatcher.get_onekey_args2();
                                     console.log("ok change............");
                                     var second_flag4 = "false";
                                     for (var w=0; w<mylist2.length; w++) {
-                                        if (mylist2[w] == flag) {
+                                        if (mylist2[w] == clearflag) {
                                             second_flag4 = "true";
                                             break;
                                         }
                                     }
                                     if (second_flag4 == "false") {
                                         console.log("no word_flag");
-                                        systemdispatcher.set_onekey_args2(flag);
-                    //                    console.log(systemdispatcher.get_package_args());
+                                        systemdispatcher.set_onekey_args2(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                     else
                                         console.log("have word_flag");
                                 }
-                                console.log(flag);
+                                console.log("-------test second------");
+                                console.log(clearflag);
                                 console.log(systemdispatcher.get_onekey_args2());
                             }
+
+                            //----------------清理历史记录----------------
                             else if (pagenum == "history") {
                                 console.log("111");
                                 systemdispatcher.set_history_flag(true);
                             }
 
-//                            console.log(flag);
 //                            console.log(systemdispatcher.get_onekey_args());
 
                         }
+
+
+
                         else if (!checkbox.checked) {
-                            console.log("no change fastdelegate...........");
+//                            console.log("首页一键清理 checked false...........");
+                            //----------------首页一键清理----------------
                             if (pagenum == "first") {
                                 console.log("fisrt no check...........");
-                                if (flag == "cache") {
-                                    systemdispatcher.del_onekey_args(flag);
+//                                console.log(clearflag);
+                                if (clearflag == "cache") {
+                                    console.log("false cache is...........");
+                                    console.log(clearflag);
+                                    systemdispatcher.del_onekey_args(clearflag);
                                 }
-                                else if (flag == "history") {
-                                    systemdispatcher.del_onekey_args(flag);
+                                else if (clearflag == "history") {
+                                    systemdispatcher.del_onekey_args(clearflag);
                                 }
-                               else if (flag == "cookies") {
+                               else if (clearflag == "cookies") {
 
-                                    systemdispatcher.del_onekey_args(flag);
+                                    systemdispatcher.del_onekey_args(clearflag);
                                 }
-                                else if (flag == "unneed") {
-                                    systemdispatcher.del_onekey_args(flag);
+                                else if (clearflag == "unneed") {
+                                    systemdispatcher.del_onekey_args(clearflag);
                                 }
-                                console.log(flag);
+                                console.log(clearflag);
                                 console.log(systemdispatcher.get_onekey_args());
                             }
+                            //----------------系统清理页面的一键清理----------------c
                             else if (pagenum == "second") {
                                 console.log("second no check...........");
-                                if (flag == "cache") {
-                                    systemdispatcher.del_onekey_args2(flag);
+                                if (clearflag == "cache") {
+                                    systemdispatcher.del_onekey_args2(clearflag);
                                 }
-                                else if (flag == "history") {
-                                    systemdispatcher.del_onekey_args2(flag);
+                                else if (clearflag == "history") {
+                                    systemdispatcher.del_onekey_args2(clearflag);
                                 }
-                               else if (flag == "cookies") {
+                               else if (clearflag == "cookies") {
 
-                                    systemdispatcher.del_onekey_args2(flag);
+                                    systemdispatcher.del_onekey_args2(clearflag);
                                 }
-                                else if (flag == "unneed") {
-                                    systemdispatcher.del_onekey_args2(flag);
+                                else if (clearflag == "unneed") {
+                                    systemdispatcher.del_onekey_args2(clearflag);
                                 }
-                                console.log(flag);
+                                console.log(clearflag);
                                 console.log(systemdispatcher.get_onekey_args2());
                             }
+
+                            //----------------清理历史记录----------------
                             else if (pagenum == "history") {
                                 console.log("222");
                                 systemdispatcher.set_history_flag(false);
@@ -346,7 +367,7 @@ import QtDesktop 0.1
                 Image {
                     id: clearImage
                     width: 40; height: 42
-                    source: picture
+                    source: picturename
                     anchors {
                         left: checkbox.right; leftMargin: 15
                         verticalCenter: parent.verticalCenter
@@ -361,7 +382,7 @@ import QtDesktop 0.1
                         verticalCenter: parent.verticalCenter
                     }
                     Text {
-                        text: title
+                        text: titlename
                         font.bold: true
                         font.pixelSize: 14
                         color: "#383838"
