@@ -19,7 +19,10 @@ Rectangle {
         onFinishCleanWorkSecond: {
             console.log("begin LeftPage Second onOneKeyFinishCleanWork..............");
             console.log(msg);
-            if (msg == "h") {
+            if (msg == "") {
+                fastmode.state = "StatusEmpty";
+            }
+            else if (msg == "h") {
                 fastmode.state = "StatusH";
             }
             else if (msg == "k") {
@@ -173,7 +176,7 @@ Rectangle {
                         titlename: "清理Cookies"
                         picturename: "../img/toolWidget/firefox.png"
                         detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
-                        flag: "cookies"
+                        clearflag: "cookies"
                     }
                     ListElement {
                         titlename: "卸载不必要的程序"
@@ -356,6 +359,13 @@ Rectangle {
 
 
     states: [
+        State {
+            name: "StatusEmpty"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/unfinish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/unfinish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/unfinish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/unfinish.png"}
+        },
         State {
             name: "StatusH"
             PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}

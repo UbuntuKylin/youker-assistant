@@ -391,7 +391,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("根目录:")
+                    text: qsTr("家目录:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 50

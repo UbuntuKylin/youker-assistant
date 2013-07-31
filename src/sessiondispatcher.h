@@ -95,6 +95,7 @@ public:
     /*-------------------fonts of beauty-------------------*/
     Q_INVOKABLE void show_font_dialog(QString flag);
     Q_INVOKABLE void show_color_dialog();
+    Q_INVOKABLE QString show_folder_dialog();
 
 
     Q_INVOKABLE QString get_font_qt();

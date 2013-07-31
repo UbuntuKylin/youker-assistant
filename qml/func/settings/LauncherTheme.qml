@@ -31,8 +31,8 @@ Rectangle {
 
     property SessionDispatcher dis: sessiondispatcher
     property int launcher_size: 24
-    property string actiontitle: "Launcher设置"
-    property string actiontext: "Launcher"
+    property string actiontitle: "启动器设置"
+    property string actiontext: "用户可以根据需要设置启动器的自动隐藏功能和启动器上图标的显示尺寸。"
 
 
     //背景
@@ -90,31 +90,53 @@ Rectangle {
     }
 
 
-    Column {
-        spacing: 20
-        anchors {
+    Row {
+        id: settitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
             top: parent.top
             topMargin: 120
-//            left: parent.left
-//            leftMargin: 60
-            horizontalCenter: parent.horizontalCenter
-        }
 
+        }
+        spacing: 5
+        Text{
+            text: "启动器设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+
+    Column {
+        spacing: 20
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: settitle.bottom
+            topMargin: 10
+
+        }
         Row {
-            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 20
             Label {
                 id: launcherlabel
-                width: 210
-                text: qsTr("Launcher自动隐藏:")
-                font {
-                    family: launcherthemepage.fontName
-                    pointSize: launcherthemepage.fontSize
-                }
+                width: 150
+                text: "启动器自动隐藏:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
                 id: launcherswitcher
-                width: launcherlabel.width
+//                width: launcherlabel.width
                 onSwitched: {
                     if (launcherswitcher.switchedOn) {
                         console.log("Launcher自动隐藏on---------------");
@@ -129,14 +151,13 @@ Rectangle {
         }
 
         Row {
+            spacing: 20
             Label {
                 id: iconsizelabel
-                width: 210
-                text: qsTr("Launcher图标大小:")
-                font {
-                    family: launcherthemepage.fontName
-                    pointSize: launcherthemepage.fontSize
-                }
+                width: 150
+                text: "启动器上的图标大小:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             SpinBox {
@@ -149,19 +170,18 @@ Rectangle {
         }
 
         Row {
+            spacing: 20
             Label {
                 id: showdesktoplabel
-                width: 210
-                text: qsTr("Launcher图标显示在桌面上:")
-                font {
-                    family: launcherthemepage.fontName
-                    pointSize: launcherthemepage.fontSize
-                }
+                width: 150
+                text: "桌面图标显示在启动器上:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
                 id: showdesktopswitcher
-                width: showdesktoplabel.width
+//                width: showdesktoplabel.width
                 onSwitched: {
                     if (showdesktopswitcher.switchedOn) {
                         console.log("图标显示在桌面上on---------------");

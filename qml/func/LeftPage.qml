@@ -31,7 +31,10 @@ Rectangle {
         onFinishCleanWorkMain: {
             console.log("begin LeftPage Main onOneKeyFinishCleanWork..............");
             console.log(systemdispatcher.get_onekey_args());
-            if (msg == "h") {
+            if (msg == "") {
+                leftbar.state = "StatusEmpty";
+            }
+            else if (msg == "h") {
                 leftbar.state = "StatusH";
             }
             else if (msg == "k") {
@@ -330,6 +333,13 @@ Rectangle {
 
 
     states: [
+        State {
+            name: "StatusEmpty"
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/unfinish.png"}
+            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/unfinish.png"}
+            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/unfinish.png"}
+            PropertyChanges { target: cachestatus; source: "../img/toolWidget/unfinish.png"}
+        },
         State {
             name: "StatusH"
             PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}

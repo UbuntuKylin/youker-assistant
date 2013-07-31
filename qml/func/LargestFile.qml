@@ -50,11 +50,14 @@ Item {
 //    property alias expandedItemCount: subItemRepeater.count
     property bool expanded: true //kobe:子项扩展默认打开
 
+    property string directory: ""
+
     signal largestfile_signal(string largestfile_msg);
     onLargestfile_signal: {
         if (largestfile_msg == "LargestFileWork") {
             //get data of largestfile
-            var largestfile_data = systemdispatcher.scan_of_large_qt("/home/kobe");
+//            var largestfile_data = systemdispatcher.scan_of_large_qt("/home/kobe");
+            var largestfile_data = systemdispatcher.scan_of_large_qt(root.directory);
             root.sub_num = largestfile_data.length;
             systemdispatcher.clear_largestfile_args();
             subModel.clear();
@@ -66,8 +69,8 @@ Item {
                     num++;
                 }
                 else {
-                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2] + "字节"});
-                    systemdispatcher.set_largestfile_args(splitlist[0]);
+                    subModel.append({"itemTitle": splitlist[0] + "字节", "desc": splitlist[1]});
+                    systemdispatcher.set_largestfile_args(splitlist[1]);
                 }
             }
             root.sub_num -= num;
@@ -104,7 +107,7 @@ Item {
 
     ListModel {
         id: subModel
-        ListElement {itemTitle: ""; desc: ""; number: ""}
+        ListElement {itemTitle: ""; desc: ""}
     }
 
 
@@ -175,6 +178,18 @@ Item {
             }
         }
 
+
+        Button {
+            id: selectBtn
+            text: "选择路径"
+            onClicked: {
+                console.log("select path.....");
+                root.directory = sessiondispatcher.show_folder_dialog();
+                console.log("the path is.....");
+                console.log(root.directory);
+            }
+        }
+
         //status picture
         Image {
             id: statusImage
@@ -211,8 +226,12 @@ Item {
             onClicked: {
                  if (btn_flag == "largestfile_scan") {
                      console.log("largestfile_scan---------------");
-                     root.state = "LargestFileWork";
-                     largestfile_signal("LargestFileWork");
+                     if (root.directory == "")
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请选择！");
+                     else {
+                         root.state = "LargestFileWork";
+                         largestfile_signal("LargestFileWork");
+                     }
                  }
                  else if (btn_flag == "largestfile_work") {
                      console.log("largestfile_work---------------");
@@ -347,7 +366,7 @@ Item {
 //                            text: subItemTitle
                             text: itemTitle
                             descript: desc
-                            size_num: number
+//                            size_num: number
                             checkbox_status: root.check_flag
 //                            bgImage: "../../img/icons/list_subitem.png"
                             bgImage: ""

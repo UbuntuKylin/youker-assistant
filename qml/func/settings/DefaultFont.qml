@@ -56,6 +56,8 @@ Rectangle {
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
         //        defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
+//        console.log("sessiondispatcher.get_desktop_font_qt() is ......");
+//        console.log(sessiondispatcher.get_desktop_font_qt());
     }
 
     Connections {
@@ -86,27 +88,49 @@ Rectangle {
          }
     }
 
-    Column {
-        spacing: 20
-        anchors {
+
+    Row {
+        id: settitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
             top: parent.top
             topMargin: 120
-//            left: parent.left
-//            leftMargin: 60
-            horizontalCenter: parent.horizontalCenter
+
         }
-//        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 5
+        Text{
+            text: "字体设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+
+    Column {
+        spacing: 20
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: settitle.bottom
+            topMargin: 10
+        }
 
         Row {
             anchors.horizontalCenter: parent.horizontalCenter
             Label {
                 id: fontslabel
                 width: 130
-                text: qsTr("字体设置:")
-                font {
-                    family: defaultfontpage.fontName
-                    pointSize: defaultfontpage.fontSize
-                }
+                text: "当前字体:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Text {
@@ -117,7 +141,7 @@ Rectangle {
             }
 
             Button {
-                text: "设置"
+                text: "更换字体"
                 onClicked: sessiondispatcher.show_font_dialog("font");
             }
         }
@@ -126,11 +150,9 @@ Rectangle {
             Label {
                 id: desktopfontlabel
                 width: 130
-                text: qsTr("桌面字体:")
-                font {
-                    family: defaultfontpage.fontName
-                    pointSize: defaultfontpage.fontSize
-                }
+                text: "当前桌面字体:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Text {
@@ -140,7 +162,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Button {
-                text: "设置"
+                text: "更换字体"
                 onClicked: sessiondispatcher.show_font_dialog("desktopfont");
             }
         }
@@ -150,11 +172,9 @@ Rectangle {
             Label {
                 id: monospacefontlabel
                 width: 130
-                text: qsTr("monospace字体:")
-                font {
-                    family: defaultfontpage.fontName
-                    pointSize: defaultfontpage.fontSize
-                }
+                text: "当前等宽字体:"  //monospace
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Text {
@@ -164,7 +184,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Button {
-                text: "设置"
+                text: "更换字体"
                 onClicked: sessiondispatcher.show_font_dialog("monospacefont");
             }
         }
@@ -174,11 +194,9 @@ Rectangle {
             Label {
                 id: fontzoomlabel
                 width: 130
-                text: qsTr("字体大小:")
-                font {
-                    family: defaultfontpage.fontName
-                    pointSize: defaultfontpage.fontSize
-                }
+                text: "字体大小:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             SpinBox {

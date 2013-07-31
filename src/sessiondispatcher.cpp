@@ -27,6 +27,7 @@
 #include <QFontDialog>
 #include <QColorDialog>
 #include <QColor>
+#include <QFileDialog>
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -347,16 +348,7 @@ bool SessionDispatcher::set_font_zoom_qt(double zoom) {
 
 
 void SessionDispatcher::show_font_dialog(QString flag) {
-//    QFontDialog *dialog = new QFontDialog;
-//    bool ok;
-//    QFont font = QFontDialog::getFont(&ok, QFont("Times", 12),dialog);
-//    dialog->setFont(font);
-//    qDebug()<<font.key();
-//    dialog->show();
-
-
     bool ok;
-//    const QFont& font = QFontDialog::getFont(&ok, get_font_qt());
     const QFont& font = QFontDialog::getFont(&ok, 0);
     if(ok)
     {
@@ -367,11 +359,9 @@ void SessionDispatcher::show_font_dialog(QString flag) {
 //        qDebug() << font.pointSize();//11
 //        qDebug() << QString(font.pointSize());//11
         QString fontsize = QString("%1").arg(font.pointSize());
-//        qDebug() << fontsize;//11
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
         qDebug() << fontstyle;
         set_font_qt(fontstyle);//set font
-//        displayTextEdit->setFont(font);
     }
     else
         qDebug() << "Quit-----------";
@@ -399,6 +389,15 @@ void SessionDispatcher::show_color_dialog() {
         qDebug() << "Quit-----------";
 
 }
+
+
+QString SessionDispatcher::show_folder_dialog() {
+    QString dir = QFileDialog::getExistingDirectory(0, tr("打开文件夹"), "/home",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    qDebug() << dir;
+    return dir;
+}
+
 /*-----------------------------scrollbars of beauty-----------------------------*/
 bool SessionDispatcher::set_scrollbars_mode_overlay_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_scrollbars_mode_overlay");

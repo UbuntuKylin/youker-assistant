@@ -53,10 +53,12 @@ Item {
 
     Text {
         text: checkbox.titleName
+        font.pixelSize: 12
+        color: "#383838"
         anchors.left: parent.left
         anchors.leftMargin: 15
         anchors.verticalCenter: parent.verticalCenter
-        color: "black"
+//        color: "black"
     }
     ButtonBehavior {
         id: behavior

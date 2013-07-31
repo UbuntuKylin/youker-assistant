@@ -97,28 +97,49 @@ Rectangle {
     }
 
 
-    Column {
-        spacing: 20
-        anchors {
+
+    //------------------
+    Row {
+        id: settitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
             top: parent.top
             topMargin: 120
-//            left: parent.left
-//            leftMargin: 60
-            horizontalCenter: parent.horizontalCenter
+
         }
+        spacing: 5
+        Text{
+            text: "桌面图标显示控制"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-//        anchors.horizontalCenter: parent.horizontalCenter
 
+    Column {
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: settitle.bottom
+            topMargin: 10
+        }
+        spacing: 20
         Row {
-            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 20
             Label {
                 id: desktopiconlabel
                 width: 170
-                text: qsTr("由文件管理器处理桌面:")
-                font {
-                    family: desktopiconpage.fontName
-                    pointSize: desktopiconpage.fontSize
-                }
+                text: "由文件管理器处理桌面:"
+                font.pixelSize: 12
+                color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
@@ -139,14 +160,17 @@ Rectangle {
         }
 
         Row {
+            spacing: 20
             Label {
                 id: homefolderlabel
                 width: 170
-                text: qsTr("家文件夹:")
-                font {
-                    family: desktopiconpage.fontName
-                    pointSize: desktopiconpage.fontSize
-                }
+                text: "家文件夹:"
+                font.pixelSize: 12
+                color: "#383838"
+//                font {
+//                    family: desktopiconpage.fontName
+//                    pointSize: desktopiconpage.fontSize
+//                }
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
@@ -166,14 +190,13 @@ Rectangle {
         }
 
         Row {
+            spacing: 20
             Label {
                 id: networklabel
                 width: 170
-                text: qsTr("网络:")
-                font {
-                    family: desktopiconpage.fontName
-                    pointSize: desktopiconpage.fontSize
-                }
+                text: "网络:"
+                font.pixelSize: 12
+                color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
@@ -193,14 +216,13 @@ Rectangle {
         }
 
         Row {
+            spacing: 20
             Label {
                 id: trashlabel
                 width: 170
-                text: qsTr("垃圾:")
-                font {
-                    family: desktopiconpage.fontName
-                    pointSize: desktopiconpage.fontSize
-                }
+                text: "垃圾箱:"
+                font.pixelSize: 12
+                color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
@@ -221,14 +243,13 @@ Rectangle {
 
 
         Row {
+            spacing: 20
             Label {
                 id: devicelabel
                 width: 170
-                text: qsTr("设备:")
-                font {
-                    family: desktopiconpage.fontName
-                    pointSize: desktopiconpage.fontSize
-                }
+                text: "设备:"
+                font.pixelSize: 12
+                color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Switch {
@@ -248,6 +269,166 @@ Rectangle {
         }
 
     }//Column
+    //------------------
+
+
+
+
+
+
+
+
+//    Column {
+//        spacing: 20
+//        anchors {
+//            top: parent.top
+//            topMargin: 120
+////            left: parent.left
+////            leftMargin: 60
+//            horizontalCenter: parent.horizontalCenter
+//        }
+
+////        anchors.horizontalCenter: parent.horizontalCenter
+
+//        Row {
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            Label {
+//                id: desktopiconlabel
+//                width: 170
+//                text: qsTr("由文件管理器处理桌面:")
+//                font {
+//                    family: desktopiconpage.fontName
+//                    pointSize: desktopiconpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Common.Switch {
+//                id: iconswitcher
+//                width: desktopiconlabel.width
+//                onSwitched: {
+//                    if (iconswitcher.switchedOn) {
+//                        console.log("桌面图标on---------------");
+//                        sessiondispatcher.set_show_desktop_icons_qt(true);
+//                    }
+//                    else if(!iconswitcher.switchedOn) {
+//                        console.log("桌面图标off---------------");
+//                        sessiondispatcher.set_show_desktop_icons_qt(false);
+//                    }
+//                }
+//            }
+
+//        }
+
+//        Row {
+//            Label {
+//                id: homefolderlabel
+//                width: 170
+//                text: qsTr("家文件夹:")
+//                font {
+//                    family: desktopiconpage.fontName
+//                    pointSize: desktopiconpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Common.Switch {
+//                id: folderswitcher
+////                width: parent.width
+//                onSwitched: {
+//                    if (folderswitcher.switchedOn) {
+//                        console.log("根文件夹on---------------");
+//                        sessiondispatcher.set_show_homefolder_qt(true);
+//                    }
+//                    else if(!folderswitcher.switchedOn) {
+//                        console.log("根文件夹off---------------");
+//                        sessiondispatcher.set_show_homefolder_qt(false);
+//                    }
+//                }
+//            }
+//        }
+
+//        Row {
+//            Label {
+//                id: networklabel
+//                width: 170
+//                text: qsTr("网络:")
+//                font {
+//                    family: desktopiconpage.fontName
+//                    pointSize: desktopiconpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Common.Switch {
+//                id: networkswitcher
+////                width: parent.width
+//                onSwitched: {
+//                    if (networkswitcher.switchedOn) {
+//                        console.log("网络on---------------");
+//                        sessiondispatcher.set_show_network_qt(true);
+//                    }
+//                    else if(!networkswitcher.switchedOn) {
+//                        console.log("网络off---------------");
+//                        sessiondispatcher.set_show_network_qt(false);
+//                    }
+//                }
+//            }
+//        }
+
+//        Row {
+//            Label {
+//                id: trashlabel
+//                width: 170
+//                text: qsTr("垃圾:")
+//                font {
+//                    family: desktopiconpage.fontName
+//                    pointSize: desktopiconpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Common.Switch {
+//                id: trashswitcher
+////                width: parent.width
+//                onSwitched: {
+//                    if (trashswitcher.switchedOn) {
+//                        console.log("垃圾on---------------");
+//                        sessiondispatcher.set_show_trash_qt(true);
+//                    }
+//                    else if(!trashswitcher.switchedOn) {
+//                        console.log("垃圾off---------------");
+//                        sessiondispatcher.set_show_trash_qt(false);
+//                    }
+//                }
+//            }
+//        }
+
+
+//        Row {
+//            Label {
+//                id: devicelabel
+//                width: 170
+//                text: qsTr("设备:")
+//                font {
+//                    family: desktopiconpage.fontName
+//                    pointSize: desktopiconpage.fontSize
+//                }
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Common.Switch {
+//                id: deviceswitcher
+////                width: parent.width
+//                onSwitched: {
+//                    if (deviceswitcher.switchedOn) {
+//                        console.log("设备on---------------");
+//                        sessiondispatcher.set_show_devices_qt(true);
+//                    }
+//                    else if(!deviceswitcher.switchedOn) {
+//                        console.log("设备off---------------");
+//                        sessiondispatcher.set_show_devices_qt(false);
+//                    }
+//                }
+//            }
+//        }
+
+//    }//Column
 
 }
 

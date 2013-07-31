@@ -94,13 +94,13 @@ Item {
                 id: largestitem
             }
         }
-        Tab {
-            title: qsTr("同名文件")
-            contentMargin: 20
-            SamenameFile {
-                id: samenameitem
-            }
-        }
+//        Tab {
+//            title: qsTr("同名文件")
+//            contentMargin: 20
+//            SamenameFile {
+//                id: samenameitem
+//            }
+//        }
     }
 }
 

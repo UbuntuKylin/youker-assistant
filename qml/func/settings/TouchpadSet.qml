@@ -196,7 +196,7 @@ Rectangle {
         }
         Label {
             width: 110
-            text: "触摸板滚动条类型:"
+            text: "触摸板滚动触发方式:"
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -210,13 +210,13 @@ Rectangle {
                 spacing: 80
                 Common.CheckBox {
                     id:edge
-                    titleName: "边沿模式"//"edge模式"
+                    titleName: "边缘触发"//"edge模式"
                     flag: "radio"
                     onClicked: console.log(edge.checked)
                 }
                 Common.CheckBox {
                     id: twofinger
-                    titleName: "双击模式"//"twofinger模式"
+                    titleName: "双指触发"//"twofinger模式"
                     flag: "radio"
                     onClicked: console.log(twofinger.checked)
                 }
@@ -272,7 +272,7 @@ Rectangle {
         }
         Label {
             width: 110
-            text: "触摸板滚动条触发方式:"
+            text: "滚动条类型:"
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -286,13 +286,13 @@ Rectangle {
                 spacing: 100
                 Common.CheckBox {
                     id:overlay
-                    titleName: "overlay模式"
+                    titleName: "特色类型" //overlay模式
                     flag: "radio"
                     onClicked: console.log(overlay.checked)
                 }
                 Common.CheckBox {
                     id: legacy
-                    titleName: "legacy模式"
+                    titleName: "标准类型"  //legacy模式
                     flag: "radio"
                     onClicked: console.log(legacy.checked)
                 }
