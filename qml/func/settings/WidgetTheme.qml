@@ -25,8 +25,9 @@ Rectangle {
     width: parent.width
     height: 475
     property string actiontitle: "窗口主题设置"
-    property string actiontext: "单击某个主题立即更改窗口主题"
-    property string cur_theme: ""
+    property string actiontext: "选中您想设置的主题，点击确定按钮更换主题。"
+    property string init_theme: ""
+    property string selected_theme: ""
     property SessionDispatcher dis: sessiondispatcher
     property bool listorgrid: false
     property int num: 0
@@ -34,32 +35,32 @@ Rectangle {
     Component.onCompleted: {
         var syslist = sessiondispatcher.get_themes_qt();
         widgetthemepage.num = syslist.length;
-        widgetthemepage.cur_theme = sessiondispatcher.get_theme_qt();
-        syslist.unshift(widgetthemepage.cur_theme);
-//        var current_theme = sessiondispatcher.get_theme_qt();
-//        syslist.unshift(current_theme);
+        widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
+        syslist.unshift(widgetthemepage.init_theme);
         themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
             themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
-            if (i!=0 && syslist[i] == widgetthemepage.cur_theme)
+            if (i!=0 && syslist[i] == widgetthemepage.init_theme)
                 themeModel.remove(i);
-//            if (i!=0 && syslist[i] == current_theme)
-//                themeModel.remove(i);
         }
     }
 
 
-//    Connections {
-//        target: toolBar
-//        //按下确定按钮
-//        onOkBtnClicked: {
-//            if (settigsDetails.setTitle == "WidgetTheme") {
-////                console.log("-----------------");
-////                console.log(widgetthemepage.cur_theme);
-//                sessiondispatcher.set_theme_qt(widgetthemepage.cur_theme);
-//            }
-//        }
-//    }
+    Connections {
+        target: toolBar
+        //按下确定按钮
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "WidgetTheme") {
+//                console.log("-----------------");
+//                console.log(widgetthemepage.selected_theme);
+//                console.log(widgetthemepage.init_theme);
+                if (widgetthemepage.selected_theme == "")
+                    sessiondispatcher.set_theme_qt(widgetthemepage.init_theme);
+                else
+                    sessiondispatcher.set_theme_qt(widgetthemepage.selected_theme);
+            }
+        }
+    }
 
     ListModel {
         id: themeModel
@@ -82,9 +83,9 @@ Rectangle {
              id: griditem
              width: themegrid.cellWidth; height: themegrid.cellHeight
 
-             function iconClicked() {
-                 widgetthemepage.cur_theme = name;
-             }
+//             function iconClicked() {
+//                 widgetthemepage.init_theme = name;
+//             }
 
              Column {
                  anchors.fill: parent
@@ -131,8 +132,9 @@ Rectangle {
                      //kobe:选中项深色块移动
 //                     iconClicked();
                      griditem.GridView.view.currentIndex = index;
-                     console.log(name);
-                     sessiondispatcher.set_theme_qt(name);
+                     widgetthemepage.selected_theme = name;
+//                     console.log(name);
+//                     sessiondispatcher.set_theme_qt(name);
                  }
              }
          }

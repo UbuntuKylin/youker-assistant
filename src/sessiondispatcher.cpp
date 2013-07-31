@@ -307,10 +307,15 @@ bool SessionDispatcher::set_font_qt(QString font) {
     return reply.value();
 }
 QString SessionDispatcher::get_desktop_font_qt() {
-    QDBusReply<void> reply = sessioniface->call("get_desktop_font");
+    QDBusReply<QString> reply = sessioniface->call("get_desktop_font");
+    return reply.value();
 }
 bool SessionDispatcher::set_desktop_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_desktop_font", font);
+    return reply.value();
+}
+bool SessionDispatcher::set_desktop_font_qt_default() {
+    QDBusReply<bool> reply = sessioniface->call("set_desktop_font", "Ubuntu 11");
     return reply.value();
 }
 QString SessionDispatcher::get_document_font_qt() {
@@ -362,6 +367,7 @@ void SessionDispatcher::show_font_dialog(QString flag) {
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
         qDebug() << fontstyle;
         set_font_qt(fontstyle);//set font
+        emit finishSetFont(flag); //font_style
     }
     else
         qDebug() << "Quit-----------";

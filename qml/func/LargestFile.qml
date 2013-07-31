@@ -27,8 +27,8 @@ Item {
     width: parent.width
     height: 435//475
     property string btn_text: "开始扫描"
-    property string title: "清理最大文件"
-    property string description: "清理用户指定目录下的最大文件，节省磁盘空间"
+    property string title: "快速找出最占用磁盘空间的大文件"
+    property string description: "删除占用磁盘空间的无用大文件，释放更多磁盘空间。"
     property string btn_flag: "largestfile_scan"
     property SystemDispatcher dis: systemdispatcher
     property ListModel listmodel: mainModel
@@ -76,9 +76,9 @@ Item {
             root.sub_num -= num;
             mainModel.clear();
             console.log(systemdispatcher.get_largestfile_args());
-            mainModel.append({"itemTitle": "系统瘦身",
+            mainModel.append({"itemTitle": "清理最大文件",
                              "picture": "../img/toolWidget/deb-min.png",
-                             "detailstr": "清理最大文件,让系统更瘦",
+                             "detailstr": "清理用户指定目录下的最大文件，节省磁盘空间",
                              "flags": "clear_largestfile",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -94,9 +94,9 @@ Item {
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "系统瘦身"
+            itemTitle: "清理最大文件"
             picture: "../img/toolWidget/deb-min.png"
-            detailstr: "清理最大文件,让系统更瘦"
+            detailstr: "清理用户指定目录下的最大文件，节省磁盘空间"
             flags: "clear_largestfile"
             attributes: [
                 ListElement { subItemTitle: "" }
@@ -155,11 +155,15 @@ Item {
         width: parent.width
 //        height: 50
         anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
-        Image {
+//        Image {
+//            id: refreshArrow
+//            source: "../img/toolWidget/find.gif"
+////            width: 50; height: 50
+//            Behavior on rotation { NumberAnimation { duration: 200 } }
+//        }
+        AnimatedImage {
             id: refreshArrow
-            source: "../img/toolWidget/deb-max.png"
-//            width: 50; height: 50
-            Behavior on rotation { NumberAnimation { duration: 200 } }
+            source: "../img/toolWidget/find.gif"
         }
         Column {
             anchors.verticalCenter: parent.verticalCenter
@@ -178,18 +182,6 @@ Item {
             }
         }
 
-
-        Button {
-            id: selectBtn
-            text: "选择路径"
-            onClicked: {
-                console.log("select path.....");
-                root.directory = sessiondispatcher.show_folder_dialog();
-                console.log("the path is.....");
-                console.log(root.directory);
-            }
-        }
-
         //status picture
         Image {
             id: statusImage
@@ -197,8 +189,6 @@ Item {
             fillMode: "PreserveAspectFit"
             smooth: true
             anchors {
-//                        top: parent.top; topMargin: 110
-//                        left: parent.left; leftMargin: 650
                 right: label.left
                 rightMargin: 20
                 verticalCenter: parent.verticalCenter
@@ -213,7 +203,6 @@ Item {
             anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
         }
-
         Common.Button {
             id: bitButton
             width: 120
@@ -227,7 +216,7 @@ Item {
                  if (btn_flag == "largestfile_scan") {
                      console.log("largestfile_scan---------------");
                      if (root.directory == "")
-                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请选择！");
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击‘选择路径’按钮选择！");
                      else {
                          root.state = "LargestFileWork";
                          largestfile_signal("LargestFileWork");
@@ -306,6 +295,41 @@ Item {
                     }
                 }
 
+
+//                Button {
+//                    id: selectBtn
+//                    text: "选择路径"
+//                    anchors {
+//                        left: clearImage.right
+//                        verticalCenter: parent.verticalCenter
+//                        leftMargin: 650
+//                    }
+//                    onClicked: {
+//                        console.log("select path.....");
+//                        root.directory = sessiondispatcher.show_folder_dialog();
+//                        console.log("the path is.....");
+//                        console.log(root.directory);
+//                    }
+//                }
+
+
+                Common.Button {
+                    id: selectBtn
+                    anchors {
+                        left: clearImage.right
+                        verticalCenter: parent.verticalCenter
+                        leftMargin: 600
+                    }
+                    hoverimage: "browser-green.png"
+                    width: 95
+                    height: 30
+                    onClicked: {
+                        console.log("select path.....");
+                        root.directory = sessiondispatcher.show_folder_dialog();
+                        console.log("the path is.....");
+                        console.log(root.directory);
+                    }
+                }
 
                 Image {
                     id: arrow

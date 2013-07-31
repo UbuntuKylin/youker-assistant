@@ -29,6 +29,7 @@ class SessionDispatcher : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QNOTIFY finishSetFont)
 public:
     explicit SessionDispatcher(QObject *parent = 0);
 
@@ -101,6 +102,7 @@ public:
     Q_INVOKABLE QString get_font_qt();
     bool set_font_qt(QString font);
     Q_INVOKABLE QString get_desktop_font_qt();
+    Q_INVOKABLE bool set_desktop_font_qt_default();//when is null ,we set a default value
     bool set_desktop_font_qt(QString font);
     Q_INVOKABLE QString get_document_font_qt();
     bool set_document_font_qt(QString font);
@@ -109,7 +111,7 @@ public:
     Q_INVOKABLE QString get_window_title_font_qt();
     bool set_window_title_font_qt(QString font);
     Q_INVOKABLE double get_font_zoom_qt();
-    bool set_font_zoom_qt(double zoom);
+    Q_INVOKABLE bool set_font_zoom_qt(double zoom);
 //    Q_INVOKABLE QString get_font_qt();
 //    Q_INVOKABLE bool set_font_qt(QString font);
 //    Q_INVOKABLE QString get_desktop_font_qt();
@@ -152,7 +154,7 @@ public:
     Q_INVOKABLE void set_sound_theme_qt(QString theme);
     
 signals:
-
+    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
 public slots:
     QString show_signal(QString msg);
 private:

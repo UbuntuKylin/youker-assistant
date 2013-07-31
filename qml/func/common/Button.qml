@@ -18,6 +18,7 @@ Item {
     id: btn
     signal clicked
 //    property string text
+//    property string text : ""
     property string hoverimage: "scan-start.png"
     BorderImage {
         id: buttonImage
@@ -89,6 +90,7 @@ Item {
     }
 //    Text {
 //        color: "white"
+////        visible: (btn.text == "") ? false : true
 //        anchors.centerIn: buttonImage; font.bold: true; font.pixelSize: 15
 //        text: btn.text; style: Text.Raised; styleColor: "black"
 //    }

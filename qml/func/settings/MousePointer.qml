@@ -60,12 +60,12 @@ Rectangle {
             if (settigsDetails.setTitle == "MousePointer") {
 
                 if (mousepointerpage.default_cursor_theme != cursorcombo.selectedText) {
-//                    console.log("555");
+                    console.log("555");
                     mousepointerpage.default_cursor_theme = cursorcombo.selectedText;
                     sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
                 }
                 else
-//                    console.log("666");
+                    console.log("666");
                 //default:24
                 if (mousepointerpage.cursor_size != themespinbox.value) {
                     mousepointerpage.cursor_size = themespinbox.value;
@@ -100,60 +100,80 @@ Rectangle {
         ListElement { text: "" }
     }
 
+
     Row {
-        spacing: 10
-        anchors {
+        id: settitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
             top: parent.top
             topMargin: 120
-//            left: parent.left
-//            leftMargin: 60
-            horizontalCenter: parent.horizontalCenter
-        }
-        Text {
-            id: cursorthemelabel
-            text: "鼠标指针主题"
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
-            anchors.verticalCenter: parent.verticalCenter
-        }
 
-        ComboBox {
-            id: cursorcombo
-            model: choices
-//            width: cursorthemelabel.width
-            onSelectedTextChanged: console.log(selectedText)
+        }
+        spacing: 5
+        Text{
+            text: "鼠标设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
         }
     }
 
-    Row {
-        spacing: 10
-        anchors {
-            top: parent.top
-            topMargin: 160
-//            left: parent.left
-//            leftMargin: 60
-            horizontalCenter: parent.horizontalCenter
+
+    Column {
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: settitle.bottom
+            topMargin: 10
         }
-        Text {
-            id: trashlabel
-            text: "鼠标指针大小"
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
-            anchors.verticalCenter: parent.verticalCenter
+        spacing: 20
+        Row {
+            spacing: 20
+            Text {
+                id: cursorthemelabel
+                text: "鼠标指针主题"
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            ComboBox {
+                id: cursorcombo
+                model: choices
+                width: 150
+    //            width: cursorthemelabel.width
+                onSelectedTextChanged: console.log(selectedText)
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
 
-        SpinBox {
-            id: themespinbox
-//            width: trashlabel.width
-//                width: 97
-            minimumValue: 0//32
-            maximumValue: 64
-            value: sessiondispatcher.get_cursor_size_qt()
-            anchors.verticalCenter: parent.verticalCenter
-//                value: 48
+        Row {
+            spacing: 20
+            Text {
+                id: trashlabel
+                text: "鼠标指针大小"
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            SpinBox {
+                id: themespinbox
+    //            width: trashlabel.width
+    //                width: 97
+                minimumValue: 0//32
+                maximumValue: 64
+                value: sessiondispatcher.get_cursor_size_qt()
+                anchors.verticalCenter: parent.verticalCenter
+    //                value: 48
+            }
         }
     }
 

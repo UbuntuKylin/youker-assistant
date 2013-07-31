@@ -22,7 +22,7 @@ import "../common" as Common
 
 
 Rectangle {
-    id: desktopbackgroundpage
+    id: desktopiconsetpage
     property bool on: true
     width: parent.width
     height: 475
@@ -35,8 +35,8 @@ Rectangle {
     property string default_icon_theme: ""
     property string default_cursor_theme: ""
 
-    property string actiontitle: "图标主题设置"
-    property string actiontext: "选中您想设置的图标主题,点击确定按钮进行更换确认."
+    property string actiontitle: "桌面图标设置"
+    property string actiontext: "您可以设置桌面图标主题和控制一些图标是否显示在桌面上。"
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -53,6 +53,31 @@ Rectangle {
                 choices.remove(j);
         }
 
+
+        if (sessiondispatcher.get_show_desktop_icons_qt())
+            iconswitcher.switchedOn = true;
+        else
+            iconswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_show_homefolder_qt())
+            folderswitcher.switchedOn = true;
+        else
+            folderswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_show_network_qt())
+            networkswitcher.switchedOn = true;
+        else
+            networkswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_show_trash_qt())
+            trashswitcher.switchedOn = true;
+        else
+            trashswitcher.switchedOn = false;
+
+        if (sessiondispatcher.get_show_devices_qt())
+            deviceswitcher.switchedOn = true;
+        else
+            deviceswitcher.switchedOn = false;
     }
     Connections {
         target: toolBar
@@ -61,9 +86,9 @@ Rectangle {
             if (settigsDetails.setTitle == "DesktopBackground") {
 
                 //default:ubuntukylin-icon-theme
-                if (desktopbackgroundpage.default_icon_theme != iconcombo.selectedText) {
+                if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
                     console.log("333");
-                    desktopbackgroundpage.default_icon_theme = iconcombo.selectedText;
+                    desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
                     sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
                 }
                 else
@@ -72,6 +97,11 @@ Rectangle {
 
         }
     }
+
+    ListModel {
+        id: choices
+        ListElement { text: "" }
+    }
     Column {
         spacing: 10
         anchors.top: parent.top
@@ -79,47 +109,364 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 80
         Text {
-             text: desktopbackgroundpage.actiontitle
+             text: desktopiconsetpage.actiontitle
              font.bold: true
              font.pixelSize: 14
              color: "#383838"
          }
          Text {
-             text: desktopbackgroundpage.actiontext
+             text: desktopiconsetpage.actiontext
              font.pixelSize: 12
              color: "#7a7a7a"
          }
     }
 
 
-    ListModel {
-        id: choices
-        ListElement { text: "" }
+    Row {
+        id: settitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
+            top: parent.top
+            topMargin: 120
+
+        }
+        spacing: 5
+        Text{
+            text: "图标主题设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
     }
 
     Row {
-        spacing: 10
-        anchors {
-            top: parent.top
-            topMargin: 120
-//            left: parent.left
-//            leftMargin: 60
-            horizontalCenter: parent.horizontalCenter
+        id: themeline
+        spacing: 40
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: settitle.bottom
+            topMargin: 10
+
         }
         Text {
             id: iconthemelabel
             text: "图标主题"
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
+            font.pixelSize: 12
+            color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
         }
         ComboBox {
             id: iconcombo
             model: choices
+            width: 200
             onSelectedTextChanged: console.log(selectedText)
         }
     }
+
+    Row {
+        id: icontitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
+            top: themeline.bottom
+            topMargin: 30
+
+        }
+        spacing: 5
+        Text{
+            text: "桌面图标显示控制"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:678
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+
+    Column {
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: icontitle.bottom
+            topMargin: 10
+        }
+        spacing: 10
+        Row {
+            spacing: 20
+            Label {
+                id: desktopiconlabel
+                width: 170
+                text: "由文件管理器处理桌面:"
+                font.pixelSize: 12
+                color: "#383838"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: iconswitcher
+                width: desktopiconlabel.width
+                onSwitched: {
+                    if (iconswitcher.switchedOn) {
+                        console.log("桌面图标on---------------");
+                        sessiondispatcher.set_show_desktop_icons_qt(true);
+                    }
+                    else if(!iconswitcher.switchedOn) {
+                        console.log("桌面图标off---------------");
+                        sessiondispatcher.set_show_desktop_icons_qt(false);
+                    }
+                }
+            }
+
+        }
+
+        Row {
+            spacing: 20
+            Label {
+                id: homefolderlabel
+                width: 170
+                text: "家文件夹:"
+                font.pixelSize: 12
+                color: "#383838"
+//                font {
+//                    family: desktopiconpage.fontName
+//                    pointSize: desktopiconpage.fontSize
+//                }
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: folderswitcher
+//                width: parent.width
+                onSwitched: {
+                    if (folderswitcher.switchedOn) {
+                        console.log("根文件夹on---------------");
+                        sessiondispatcher.set_show_homefolder_qt(true);
+                    }
+                    else if(!folderswitcher.switchedOn) {
+                        console.log("根文件夹off---------------");
+                        sessiondispatcher.set_show_homefolder_qt(false);
+                    }
+                }
+            }
+        }
+
+        Row {
+            spacing: 20
+            Label {
+                id: networklabel
+                width: 170
+                text: "网络:"
+                font.pixelSize: 12
+                color: "#383838"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: networkswitcher
+//                width: parent.width
+                onSwitched: {
+                    if (networkswitcher.switchedOn) {
+                        console.log("网络on---------------");
+                        sessiondispatcher.set_show_network_qt(true);
+                    }
+                    else if(!networkswitcher.switchedOn) {
+                        console.log("网络off---------------");
+                        sessiondispatcher.set_show_network_qt(false);
+                    }
+                }
+            }
+        }
+
+        Row {
+            spacing: 20
+            Label {
+                id: trashlabel
+                width: 170
+                text: "回收站:"
+                font.pixelSize: 12
+                color: "#383838"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: trashswitcher
+//                width: parent.width
+                onSwitched: {
+                    if (trashswitcher.switchedOn) {
+                        console.log("垃圾on---------------");
+                        sessiondispatcher.set_show_trash_qt(true);
+                    }
+                    else if(!trashswitcher.switchedOn) {
+                        console.log("垃圾off---------------");
+                        sessiondispatcher.set_show_trash_qt(false);
+                    }
+                }
+            }
+        }
+
+
+        Row {
+            spacing: 20
+            Label {
+                id: devicelabel
+                width: 170
+                text: "移动设备:"
+                font.pixelSize: 12
+                color: "#383838"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: deviceswitcher
+//                width: parent.width
+                onSwitched: {
+                    if (deviceswitcher.switchedOn) {
+                        console.log("设备on---------------");
+                        sessiondispatcher.set_show_devices_qt(true);
+                    }
+                    else if(!deviceswitcher.switchedOn) {
+                        console.log("设备off---------------");
+                        sessiondispatcher.set_show_devices_qt(false);
+                    }
+                }
+            }
+        }
+
+    }//Column
+
+
+//    Row {
+//        id: scrollstyle
+//        spacing: 40
+//        anchors{
+//            left: parent.left
+//            leftMargin: 60
+//            top: scrolltitle.bottom
+//            topMargin: 10
+//        }
+//        Label {
+//            width: 110
+//            text: "触摸板滚动触发方式:"
+//            font.pixelSize: 12
+//            color: "#7a7a7a"
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+////        GroupBox {
+////            anchors.verticalCenter: parent.verticalCenter
+////                title: qsTr("触摸板滚动模式:")
+////            adjustToContentSize: true
+//            Common.ButtonRow {
+//                exclusive: true//控制是否联动
+//                spacing: 80
+//                Common.CheckBox {
+//                    id:edge
+//                    titleName: "边缘触发"//"edge模式"
+//                    flag: "radio"
+//                    onClicked: console.log(edge.checked)
+//                }
+//                Common.CheckBox {
+//                    id: twofinger
+//                    titleName: "双指触发"//"twofinger模式"
+//                    flag: "radio"
+//                    onClicked: console.log(twofinger.checked)
+//                }
+////            }
+//        }
+//    }
+
+
+//    Row {
+//        id: horizontalscroll
+//        spacing: 40
+//        anchors{
+//            left: parent.left
+//            leftMargin: 60
+//            top: scrollstyle.bottom
+//            topMargin: 10
+
+//        }
+//        Label {
+//            width: 110
+//            text: qsTr("触摸板横向滚动条:")
+//            font.pixelSize: 12
+//            color: "#7a7a7a"
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+//        Common.Switch {
+//            id: horizontalswitcher
+//            width: 110
+//            onSwitched: {
+//                if (horizontalswitcher.switchedOn) {
+//                    console.log("水平on---------------");
+//                    sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
+//                }
+//                else if(!horizontalswitcher.switchedOn) {
+//                    console.log("水平off---------------");
+//                    sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
+//                }
+//            }
+//        }
+//    }
+
+
+
+//    Row {
+//        id: workmode
+//        spacing: 40
+//        anchors{
+//            left: parent.left
+//            leftMargin: 60
+//            top: horizontalscroll.bottom
+//            topMargin: 10
+
+//        }
+//        Label {
+//            width: 110
+//            text: "滚动条类型:"
+//            font.pixelSize: 12
+//            color: "#7a7a7a"
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+////        GroupBox {
+////            anchors.verticalCenter: parent.verticalCenter
+////                title: qsTr("触摸板滚动条触发方式:")
+////            adjustToContentSize: true
+//            Common.ButtonRow {
+//                exclusive: true//控制是否联动
+//                spacing: 100
+//                Common.CheckBox {
+//                    id:overlay
+//                    titleName: "特色类型" //overlay模式
+//                    flag: "radio"
+//                    onClicked: console.log(overlay.checked)
+//                }
+//                Common.CheckBox {
+//                    id: legacy
+//                    titleName: "标准类型"  //legacy模式
+//                    flag: "radio"
+//                    onClicked: console.log(legacy.checked)
+//                }
+////            }
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
 
 }
 

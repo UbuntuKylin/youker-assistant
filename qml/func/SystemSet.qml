@@ -91,13 +91,13 @@ Item {
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
     //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
-                            SetWord {wordname: "更改图标主题"; width: 80; flag: "DesktopBackground"}//更改桌面背景
+                            SetWord {wordname: "更改图标配置"; width: 80; flag: "DesktopiconSet"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
     //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
-                            SetWord {wordname: "更改桌面图标"; width: 80; flag: "DesktopIcon"}
-                            //左右分割条
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+//                            SetWord {wordname: "更改桌面图标"; width: 80; flag: "DesktopIcon"}
+//                            //左右分割条
+//                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
     //                        Rectangle {height: 20; width: 1; color: "#fafcfe" }
                             SetWord {wordname: "更改鼠标指针"; width: 80; flag: "MousePointer"}
                             //左右分割条
@@ -138,7 +138,7 @@ Item {
                             anchors.bottom: unity.bottom
                             anchors.bottomMargin: 10
                             spacing: 5
-                            SetWord {wordname: "自定义launcher主题"; width: 120; flag: "LauncherTheme"}
+                            SetWord {wordname: "自定义启动器"; width: 120; flag: "LauncherTheme"}
 //                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
 //                            SetWord {wordname: "自定义dash主题"; width: 90; flag: "DashTheme"}
                         }

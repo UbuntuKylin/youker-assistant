@@ -121,7 +121,7 @@ Rectangle {
             //屏幕坏点检测
             if (flag == "CheckScreen")
                 sessiondispatcher.send_checkscreen_dialog();
-            else if (flag == "WidgetTheme" || flag == "DesktopIcon" || flag == "DocumentFont" || flag == "TitlebarFont")
+            else if (flag == "DocumentFont" || flag == "TitlebarFont")
                 iconClicked1();
             else
                 iconClicked();

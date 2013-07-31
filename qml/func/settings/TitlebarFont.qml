@@ -67,6 +67,17 @@ Rectangle {
 //        }
 //    }
 
+
+    //信号绑定，绑定qt的信号finishSetFont，该信号emit时触发onFinishSetFont
+    Connections
+    {
+        target: sessiondispatcher
+        onFinishSetFont: {
+            if (font_style == "titlebarfont")
+                titlefont.text = sessiondispatcher.get_font_qt();
+        }
+    }
+
     Column {
         spacing: 10
         anchors.top: parent.top
@@ -86,38 +97,60 @@ Rectangle {
          }
     }
 
-    Column {
-        spacing: 20
-        anchors {
+
+    Row {
+        id: settitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
             top: parent.top
             topMargin: 120
-//            left: parent.left
-//            leftMargin: 60
-            horizontalCenter: parent.horizontalCenter
+
         }
+        spacing: 5
+        Text{
+            text: "标题栏字体设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
 
-//        anchors.horizontalCenter: parent.horizontalCenter
-
-
+    Column {
+        spacing: 20
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: settitle.bottom
+            topMargin: 10
+        }
         Row {
+            spacing: 10
             Label {
                 id: windowtitlefontlabel
                 width: 110
-                text: qsTr("标题栏字体:")
-                font {
-                    family: titlebarfontpage.fontName
-                    pointSize: titlebarfontpage.fontSize
-                }
+                text: "当前标题栏字体:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Text {
+                id: titlefont
 //                text: sessiondispatcher.get_window_title_font_qt()
                 text: titlebarfontpage.titlebar_font
-                width: windowtitlefontlabel.width
+                width: 200
                 anchors.verticalCenter: parent.verticalCenter
             }
-            Button {
-                text: "设置"
+            Common.Button {
+                hoverimage: "changefont.png"
+                width: 124
+                height: 30
                 onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
             }
         }

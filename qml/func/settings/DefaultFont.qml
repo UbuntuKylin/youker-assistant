@@ -51,21 +51,40 @@ Rectangle {
         source: "../../img/skin/bg-left.png"
         anchors.fill: parent
     }
-
     Component.onCompleted: {
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
-        //        defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
+        defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
-//        console.log("sessiondispatcher.get_desktop_font_qt() is ......");
-//        console.log(sessiondispatcher.get_desktop_font_qt());
+        if (sessiondispatcher.get_desktop_font_qt() == "") {
+            sessiondispatcher.set_desktop_font_qt_default();
+            defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
+        }
     }
-
     Connections {
         target: toolBar
         //按下确定按钮
         onOkBtnClicked: {
             if (settigsDetails.setTitle == "DefaultFont") {
+                console.log(fontzoomspinbox.value);
+//                sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);
             }
+        }
+    }
+
+
+    //信号绑定，绑定qt的信号finishSetFont，该信号emit时触发onFinishSetFont
+    Connections
+    {
+        target: sessiondispatcher
+        onFinishSetFont: {
+            console.log("33333333333333");
+            console.log(font_style)
+            if (font_style == "font")
+                sysfont.text = sessiondispatcher.get_font_qt();
+            else if (font_style == "desktopfont")
+                desktopfont.text = sessiondispatcher.get_font_qt();
+            else if (font_style == "monospacefont")
+                monofont.text = sessiondispatcher.get_font_qt();
         }
     }
 
@@ -124,7 +143,8 @@ Rectangle {
         }
 
         Row {
-            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 10
             Label {
                 id: fontslabel
                 width: 130
@@ -134,19 +154,23 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Text {
-//                text: sessiondispatcher.get_font_qt()
-                text: defaultfontpage.current_font
-                width: fontslabel.width
+                id: sysfont
+                text: sessiondispatcher.get_font_qt()
+//                text: defaultfontpage.current_font
+                width: 200
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            Button {
-                text: "更换字体"
+            Common.Button {
+                hoverimage: "changefont.png"
+                width: 124
+                height: 30
                 onClicked: sessiondispatcher.show_font_dialog("font");
             }
         }
 
         Row {
+            spacing: 10
             Label {
                 id: desktopfontlabel
                 width: 130
@@ -156,19 +180,22 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Text {
-//                text: sessiondispatcher.get_desktop_font_qt()
-                text: "an error"
-                width: desktopfontlabel.width
+                id: desktopfont
+                text: sessiondispatcher.get_desktop_font_qt()
+                width: 200
                 anchors.verticalCenter: parent.verticalCenter
             }
-            Button {
-                text: "更换字体"
+            Common.Button {
+                hoverimage: "changefont.png"
+                width: 124
+                height: 30
                 onClicked: sessiondispatcher.show_font_dialog("desktopfont");
             }
         }
 
 
         Row {
+            spacing: 10
             Label {
                 id: monospacefontlabel
                 width: 130
@@ -178,13 +205,16 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Text {
-//                text: sessiondispatcher.get_monospace_font_qt()
-                text: defaultfontpage.monospace_font
-                width: monospacefontlabel.width
+                id: monofont
+                text: sessiondispatcher.get_monospace_font_qt()
+//                text: defaultfontpage.monospace_font
+                width: 200
                 anchors.verticalCenter: parent.verticalCenter
             }
-            Button {
-                text: "更换字体"
+            Common.Button {
+                hoverimage: "changefont.png"
+                width: 124
+                height: 30
                 onClicked: sessiondispatcher.show_font_dialog("monospacefont");
             }
         }
@@ -194,7 +224,7 @@ Rectangle {
             Label {
                 id: fontzoomlabel
                 width: 130
-                text: "字体大小:"
+                text: "全局字体缩放:"
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter

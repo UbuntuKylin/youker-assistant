@@ -40,7 +40,7 @@ Rectangle {
         ListElement {
             icon: "../img/icons/iconbeauty.png"
             name: "桌面图标"
-            flag: "DesktopIcon"
+            flag: "DesktopiconSet"
         }
         ListElement {
             icon: "../img/icons/bootanimation.png"
@@ -53,15 +53,15 @@ Rectangle {
             flag: "SoundEffects"
         }
         ListElement {
-            icon: "../img/icons/deepclear.png"
-            name: "深度清理"
-            flag: "DeepClear"
+            icon: "../img/icons/mouse.png"
+            name: "鼠标指针"
+            flag: "MousePointer"
         }
 
         ListElement {
-            icon: "../img/icons/systemreduce.png"
-            name: "系统瘦身"
-            flag: "SlimSystem"
+            icon: "../img/icons/mouse.png"
+            name: "触摸板"
+            flag: "TouchpadSet"
         }
 
     }

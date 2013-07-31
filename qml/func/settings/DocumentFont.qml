@@ -67,6 +67,17 @@ Rectangle {
 //        }
 //    }
 
+
+    //信号绑定，绑定qt的信号finishSetFont，该信号emit时触发onFinishSetFont
+    Connections
+    {
+        target: sessiondispatcher
+        onFinishSetFont: {
+            if (font_style == "documentfont")
+                docufont.text = sessiondispatcher.get_font_qt();
+        }
+    }
+
     Column {
         spacing: 10
         anchors.top: parent.top
@@ -86,38 +97,65 @@ Rectangle {
          }
     }
 
-    Column {
-        spacing: 20
-        anchors {
+
+    Row {
+        id: settitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
             top: parent.top
             topMargin: 120
-//            left: parent.left
-//            leftMargin: 60
-            horizontalCenter: parent.horizontalCenter
+
+        }
+        spacing: 5
+        Text{
+            text: "文档字体设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+    Column {
+        spacing: 20
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: settitle.bottom
+            topMargin: 10
         }
 
-//        anchors.horizontalCenter: parent.horizontalCenter
-
-
         Row {
+            spacing: 10
             Label {
                 id: documentfontlabel
                 width: 110
-                text: qsTr("文档字体:")
-                font {
-                    family: documentfontpage.fontName
-                    pointSize: documentfontpage.fontSize
-                }
+                text: "当前文档字体:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
+//                font {
+//                    family: documentfontpage.fontName
+//                    pointSize: documentfontpage.fontSize
+//                }
                 anchors.verticalCenter: parent.verticalCenter
             }
             Text {
+                id: docufont
 //                text: sessiondispatcher.get_document_font_qt()
                 text: documentfontpage.document_font
-                width: documentfontlabel.width
+                width: 200
                 anchors.verticalCenter: parent.verticalCenter
             }
-            Button {
-                text: "设置"
+            Common.Button {
+                hoverimage: "changefont.png"
+                width: 124
+                height: 30
                 onClicked: sessiondispatcher.show_font_dialog("documentfont");
             }
         }
