@@ -130,6 +130,8 @@ Rectangle {
                 pageStack.push(homepage);
             }
             else if (text == "clearrubbish") {
+//                systemdispatcher.show_passwd_dialog();
+//                console.log("after show_passwd_dialog...............");
                 menulogo.send("clearrubbish");
                 pageStack.push(clearrubbish);
             }

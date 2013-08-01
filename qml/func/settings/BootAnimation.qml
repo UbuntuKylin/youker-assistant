@@ -47,7 +47,8 @@ Rectangle {
         //按下确定按钮
         onOkBtnClicked: {
             if (settigsDetails.setTitle == "BootAnimation") {
-                systemdispatcher.custom_plymouth_qt(bootimagepage.image_path);
+//                systemdispatcher.custom_plymouth_qt(bootimagepage.image_path);
+                systemdispatcher.custom_plymouth_bg_qt(bootimagepage.image_path);
             }
         }
     }

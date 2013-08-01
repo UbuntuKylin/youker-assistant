@@ -21,6 +21,14 @@
 #include <QObject>
 #include <QString>
 #include <QFileDialog>
+
+
+#include <QFile>
+#include <QDataStream>
+#include <iostream>
+#include "authdialog.h"
+extern QString passwd;
+
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -155,11 +163,49 @@ void SystemDispatcher::check_screen_break_point() {
 }
 
 
+//-----------------------sound------------------------
+QStringList SystemDispatcher::get_sounds_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("get_sounds");
+    return reply.value();
+}
+void SystemDispatcher::replace_sound_file_qt(QString origfile, QString targetfile) {
+    QDBusReply<void> reply = systemiface->call("replace_sound_file", origfile, targetfile);
+}
+void SystemDispatcher::restore_sound_file_qt(QString targetfile) {
+    QDBusReply<void> reply = systemiface->call("restore_sound_file", targetfile);
+}
+void SystemDispatcher::restore_all_sound_file_qt(QString soundtheme) {
+    QDBusReply<void> reply = systemiface->call("restore_all_sound_file", soundtheme);
+}
+
+//-----------------------------------------------
+//-----------------------others------------------------
+void SystemDispatcher::custom_plymouth_bg_qt(QString plymouthName) {
+    QDBusReply<void> reply = systemiface->call("custom_plymouth_bg", plymouthName);
+}
+void SystemDispatcher::add_new_plymouth_qt(QString customBG, QString plymouthName) {
+    QDBusReply<void> reply = systemiface->call("add_new_plymouth", customBG, plymouthName);
+}
+QStringList SystemDispatcher::get_existing_plymouth_list_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("get_existing_plymouth_list");
+    return reply.value();
+}
+void SystemDispatcher::plymouth_init_check_qt() {
+    QDBusReply<void> reply = systemiface->call("plymouth_init_check");
+}
+
+//-----------------------------------------------
+
+
+
+
+
+
 //------------------------------------------------------
 //开机动画
-void SystemDispatcher::custom_plymouth_qt(QString imagepath) {
-    QDBusReply<void> reply = systemiface->call("custom_plymouth", imagepath);
-}
+//void SystemDispatcher::custom_plymouth_qt(QString imagepath) {
+//    QDBusReply<void> reply = systemiface->call("custom_plymouth", imagepath);
+//}
 QString SystemDispatcher::show_file_dialog() {
     QString fileName = QFileDialog::getOpenFileName(0, tr("选择开机动画"), "", tr("Image Files (*.png *.jpg *.bmp)"));
     qDebug() << "000000000000000000";
@@ -539,4 +585,42 @@ QMap<QString, QVariant> SystemDispatcher::scan_by_one_key_qt() {
     else {
         qDebug() << "scan_by_one_key failed!";
     }
+}
+
+
+void SystemDispatcher::show_passwd_dialog() {
+    AuthDialog *dialog = new AuthDialog;
+    dialog->exec();
+    qDebug() << "passwd111";
+    qDebug() << passwd;
+    qDebug() << "passwd222";
+
+
+//    FILE *pF = fopen( "filename", "w"  );
+//    QFile file("/home/file.dat");
+//    if (file.exists())
+//    {
+//        qDebug() << "read passwd exists.......";
+////            return true;
+//    }
+//    else
+//        qDebug() << "read passwd doesn't exists.......";
+//    file.open(QIODevice::WriteOnly);
+////    QDataStream stream(&file);
+////    stream.setVersion(9);
+////    stream << passwd;
+//    file.close();
+
+
+//    QFile file("/home/file.dat");
+//    if(!file.open(QIODevice::WriteOnly))
+//    {
+//        qDebug() << "read passwd error.......";
+////        std::cerr<<qPrintable(file.errorString())<<std::endl;
+////        return -1;
+//    }
+//    QDataStream stream(&file);
+//    stream.setVersion(9);
+//    stream << passwd;
+//    file.close();
 }

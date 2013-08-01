@@ -48,8 +48,12 @@ public:
 
 
     //---------------------------------
+    //password
+    Q_INVOKABLE void show_passwd_dialog();
+
+
     //开机动画
-    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
+//    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
     Q_INVOKABLE QString show_file_dialog();
 
 //    Q_INVOKABLE void clean_by_one_key_qt(QStringList strlist);
@@ -78,7 +82,19 @@ public:
     //---------------------------------
 
 
+    //-----------------------sound------------------------
+    Q_INVOKABLE QStringList get_sounds_qt();
+    Q_INVOKABLE void replace_sound_file_qt(QString origfile, QString targetfile);
+    Q_INVOKABLE void restore_sound_file_qt(QString targetfile);
+    Q_INVOKABLE void restore_all_sound_file_qt(QString soundtheme);
+    //-----------------------------------------------
+    //-----------------------others------------------------
+    Q_INVOKABLE void custom_plymouth_bg_qt(QString plymouthName);
+    Q_INVOKABLE void add_new_plymouth_qt(QString customBG, QString plymouthName);
+    Q_INVOKABLE QStringList get_existing_plymouth_list_qt();
+    Q_INVOKABLE void plymouth_init_check_qt();
 
+    //-----------------------------------------------
 
 
 

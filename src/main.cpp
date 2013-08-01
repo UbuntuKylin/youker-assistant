@@ -42,6 +42,7 @@
 #include <QDeclarativeView>
 #include <QtDeclarative>
 #include "quibo.h"
+#include "qmlaudio.h"
 #include <QTextCodec>
 #include <QProcess>
 
@@ -69,6 +70,7 @@ int main(int argc, char** argv)
 
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
+    qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
 
 //    system("ps -ef | grep youker-assistant-session-daemon | grep -v grep | wc -l");
 //    system("ps -ef | grep youker-assistant-system-daemon | grep -v grep | wc -l");

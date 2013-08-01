@@ -1,6 +1,7 @@
 TEMPLATE = app
 TARGET = youker-assistant
-QT += declarative dbus widgets
+QT += core gui phonon declarative dbus widgets
+
 DEPENDPATH += $$PWD/
 INCLUDEPATH += $$PWD/
 
@@ -28,7 +29,8 @@ HEADERS += youker-application.h \
     authdialog.h \
     modaldialog.h \
     warningdialog.h \
-    messagedialog.h
+    messagedialog.h \
+    qmlaudio.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -39,7 +41,8 @@ SOURCES += main.cpp \
     authdialog_event.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
-    messagedialog.cpp
+    messagedialog.cpp \
+    qmlaudio.cpp
 
 
 OTHER_FILES += youker-assistant/ihu.png

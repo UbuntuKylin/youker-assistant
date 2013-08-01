@@ -8,6 +8,7 @@ Build-Depends: debhelper (>= 9),
                qtchooser,
                libqt4-dev,
                qt4-default,
+               libphonon-dev,
 Standards-Version: 3.9.4
 Homepage: https://launchpad.net/youker-assistant
 
@@ -16,5 +17,6 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
          youker-assistant-daemon,
+         libphonon-dev,
 Description: Help users to manage system better
  It is aimed at helping all users to manage their linux system conveniently.
