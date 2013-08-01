@@ -45,7 +45,7 @@ QML_FILES = \
 QML_DIRS = \
         custom \
 	private \
-        images 
+        plugin
 
 qmlfiles.files = $$QML_FILES
 qmlfiles.sources = $$QML_FILES
