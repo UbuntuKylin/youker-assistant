@@ -28,6 +28,7 @@
 #include <iostream>
 #include "authdialog.h"
 extern QString passwd;
+extern QString music_path;
 
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
@@ -68,6 +69,15 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     notify_str = "";
     history_flag = false;
 
+}
+
+
+void SystemDispatcher::get_music_path(QString musicpath) {
+    qDebug() << "musicpath test 111";
+    qDebug() << musicpath;
+    music_path = musicpath;
+    qDebug() << music_path;
+    qDebug() << "musicpath test 222";
 }
 
 
@@ -216,7 +226,7 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
         return bootfileName;
     }
     else if (flag == "soundeffects") {
-        QString musicfileName = QFileDialog::getOpenFileName(0, tr("选择音乐"), "", tr("Music Files (*.wav *.mp3 *.wma)"));
+        QString musicfileName = QFileDialog::getOpenFileName(0, tr("选择音乐"), "", tr("Music Files (*.ogg *.wav *.mp3 *.wma)"));
 //        emit addBootImage();
         return musicfileName;
     }

@@ -52,6 +52,9 @@ public:
     //password
     Q_INVOKABLE void show_passwd_dialog();
 
+    //get music path
+    Q_INVOKABLE void get_music_path(QString musicpath);
+
 
     //开机动画
 //    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);

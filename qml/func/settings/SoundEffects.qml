@@ -23,14 +23,408 @@ import "../common" as Common
 
 import AudioType 0.1
 
+Rectangle {
+    id: soundeffectspage
+    property bool on: true
+    width: parent.width
+    color:"transparent"
+    height: 475
+    property int soundz:0
+    property int play_pause:0
+    property string fontName: "Helvetica"
+    property int fontSize: 12
+    property color fontColor: "black"
+    property SessionDispatcher dis: sessiondispatcher
+    property string default_sound: ""
+    property string actiontitle: "声音效果设置"
+    property string actiontext: "选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的播放、更换和还原。"
+
+    property string selectedmusic: ""
+
+    Component.onCompleted: {
+
+        if (sessiondispatcher.get_login_music_enable_qt())
+            soundswitcher.switchedOn = true;
+        else
+            soundswitcher.switchedOn = false;
+        soundeffectspage.default_sound = sessiondispatcher.get_sound_theme_qt();
+        var soundlist = sessiondispatcher.get_sound_themes_qt();
+        var current_sound = sessiondispatcher.get_sound_theme_qt();
+        soundlist.unshift(current_sound);
+        choices.clear();
+        for(var i=0; i < soundlist.length; i++) {
+            choices.append({"themetext": soundlist[i]});
+            if (i!=0 && soundlist[i] == current_sound)
+                choices.remove(i);
+        }
+        musicmodel.clear();
+        var musiclist=systemdispatcher.get_sounds_qt();
+        for(var l=0; l < musiclist.length; l++) {
+            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+        }
+    }
+
+    Connections {
+        target: toolBar
+        //按下确定按钮
+        onOkBtnClicked: {
+            if (settigsDetails.setTitle == "SoundEffects") {
+                if (soundeffectspage.default_sound != soundcombo.selectedText) {
+                    console.log("111");
+                    soundeffectspage.default_sound = soundcombo.selectedText;
+                    sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+                }
+                else
+                    console.log("222");
+            }
+        }
+    }
+
+
+    ListModel {
+        id: choices
+        ListElement { themetext: "" }
+    }
+    ListModel {
+        id: musicmodel
+        ListElement { musicname: ""; musicimage: "" }
+    }
+
+    Image {     //背景图片
+        id: background
+        anchors.fill: parent
+        source: "../../img/skin/bg-left.png"
+    }
+
+    QmlAudio{
+        id: song;
+    }
+
+    Column {
+        spacing: 10
+        anchors{
+            top: parent.top;topMargin: 44
+            left: parent.left;leftMargin: 80
+        }
+        Text {
+             text: soundeffectspage.actiontitle
+             font.bold: true
+             font.pixelSize: 14
+             color: "#383838"
+         }
+         Text {
+             text: soundeffectspage.actiontext
+             font.pixelSize: 12
+             color: "#7a7a7a"
+         }
+    }
+
+    Column{     //声音主题
+        id:soundtheme
+        spacing: 10
+        anchors {
+            top: parent.top;topMargin: 120
+            left: parent.left;leftMargin: 60
+        }
+        Text{
+            text: qsTr("声音主题：")
+            font.bold:true;color: "#383838"
+            font.pointSize: 10
+        }
+        Row{
+            spacing: 10
+            ComboBox {
+                id: iconcombo
+                width : 345
+                model: choices
+                onSelectedTextChanged: soundeffectspage.default_sound = selectedText
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Button {
+                width: 95;height: 30
+                hoverimage: "ok.png"
+                onClicked: {
+                    musicmodel.clear();
+                    var musiclist=systemdispatcher.get_sounds_qt();
+                    console.log(musiclist);
+                    for(var l=0; l < musiclist.length; l++) {
+                        musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+                    }
+                }
+            }
+
+        }
+
+    }
+
+
+    Column{     //程序事件及选择框
+        id:chooseyy
+        spacing: 10
+        anchors {
+            top: parent.top
+            topMargin: 185
+            left: parent.left
+            leftMargin: 60
+        }
+        Text{
+            text: qsTr("程序事件：")
+            font.bold:true
+            color: "#383838"
+            font.pointSize: 10
+        }
+        Rectangle{
+            border.color: "#b9c5cc"
+            width: 550; height: 200
+            clip:true
+
+            Component{
+                id:cdelegat
+                Item{
+                    id:wrapper
+                    width: 530; height: 30
+                    Image {
+                        id:pickcher
+                        source: musicimage
+                        anchors {
+                            left: parent.left
+                            leftMargin: 10
+                            verticalCenter: parent.verticalCenter
+                        }
+                    }
+                    Text{
+                        id:listtext
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: "grey"
+                        anchors.left: pickcher.right
+                        anchors.leftMargin: 5
+                        text: musicname
+                    }
+                    Row{
+                        spacing: 20
+                        anchors{
+                            right: parent.right
+                            rightMargin: 40
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                        z:soundz
+                        Rectangle{
+                            width: play.width;height: play.height
+                            Image {id:play;source: "../../img/icons/play.png"}
+                            MouseArea{
+                                anchors.fill:parent
+                                onClicked: {
+                                    console.log("lixiaing...........");
+                                    systemdispatcher.get_music_path("/usr/share/youker-assistant-daemon/sound-theme/" + soundeffectspage.default_sound + "/stereo/" + musicname);
+                                    if(play_pause==0){
+                                        console.log("lixiaing111...........");
+                                        song.play();
+                                        play_pause=1;
+                                    }
+                                    else if(play_pause == 1)
+                                    {
+                                        console.log("lixiaing222...........");
+                                        song.pause();
+                                        play_pause=0;
+                                    }
+                                }
+                            }
+                        }
+                        Rectangle{
+                            width: next.width;height: next.height
+                            Image {id:next;source: "../../img/icons/folder.png"}
+                            MouseArea{
+                                anchors.fill:parent
+                                onClicked: {
+                                    soundeffectspage.selectedmusic = systemdispatcher.show_file_dialog("soundeffects");
+//                                    systemdispatcher.get_music_path(soundeffectspage.selectedmusic);
+                                    systemdispatcher.get_music_path("/home/kobe/下载/qc.mp3");
+                                    systemdispatcher.replace_sound_file(soundeffectspage.selectedmusic, musicname);
+                                }
+                            }
+                        }
+                        Rectangle{
+                            width: revoke.width;height: revoke.height
+                            Image {id:revoke;source: "../../img/icons/revoke.png"}
+                            MouseArea{
+                                anchors.fill:parent
+                                onClicked: {
+                                    systemdispatcher.restore_sound_file(musicname);
+                                }
+                            }
+                        }
+                    }
+                    Image {
+                        id: btnImg
+                        anchors.fill: parent
+                        source: ""
+                    }
+                    MouseArea{
+                        anchors.fill:listtext
+                        hoverEnabled: true
+                        onEntered: btnImg.source = "../../img/toolWidget/menu_hover.png"
+                        onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"
+                        onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
+                        onExited: {btnImg.source = "";soundz=0}
+                        onClicked: {
+                            soundz=1
+                            wrapper.ListView.view.currentIndex = index;
+                        }
+                    }
+
+                }
+            }
+            ListView{
+                id:lisv
+                anchors.fill: parent
+                model:musicmodel
+                delegate: cdelegat
+                highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue";radius:5 }
+                focus:true
+            }
+
+            Rectangle{
+                id:scrollbar
+                anchors.right: parent.right
+                anchors.rightMargin: 8
+                height: parent.height
+                width:5
+                color: "lightgrey"
+            }
+            Rectangle{
+                id: button
+                anchors.right: parent.right
+                anchors.rightMargin: 5
+                width: 12
+                y: lisv.visibleArea.yPosition * scrollbar.height
+                height: lisv.visibleArea.heightRatio * scrollbar.height;
+                radius: 3
+                smooth: true
+                color: "white"
+                border.color: "lightgrey"
+                Column{
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    spacing: 2
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                }
+                MouseArea {
+                    id: mousearea
+                    anchors.fill: button
+                    drag.target: button
+                    drag.axis: Drag.YAxis
+                    drag.minimumY: 0
+                    drag.maximumY: scrollbar.height - button.height
+                    onMouseYChanged: {
+                        lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
+                    }
+                }
+            }
+        }
+    }
+
+//左右分割线
+    Rectangle{id:leftline ; x:650; y: 0; width:1 ; height:425; color:"#b9c5cc"}
+    Rectangle{id:rightline ; x:652; y:0 ; width:1 ; height:425; color:"#fafcfe"}
+
+    Row{
+        spacing: 5
+        anchors{
+            left: parent.left
+            top:parent.top
+            leftMargin: 665
+            topMargin: 25
+        }
+        Image {
+            source: "../../img/icons/listen-pen.png"
+        }
+        Column{
+            spacing: 5
+            Text{
+                text:qsTr("自定义声音主题")
+                color: "#383838"
+                font.pointSize: 10
+                font.bold: true
+            }
+            Text{
+                text:qsTr("您能根据喜好组合")
+                font.pointSize: 10
+                color: "#7a7a7a"
+            }
+            Text{
+                text:qsTr("成专属声音主题")
+                font.pointSize: 10
+                color: "#7a7a7a"
+            }
+        }
+
+    }
+    Rectangle{id:topline ; x:652; y: 115; width:parent.width ; height:1; color:"#b9c5cc"}
+    Rectangle{id:bottomline ; x:652;y:116 ;width:parent.width ; height:1; color:"#fafcfe"}
+
+    Column
+    {
+        anchors {
+            top: parent.top
+            topMargin: 130
+            left: parent.left
+            leftMargin: 665
+        }
+        spacing: 20
+        Text {
+            text:qsTr("声音设置:")
+            color: "#383838"
+            font.pointSize: 10
+            font.bold: true
+        }
+        Row {
+            spacing: 20
+            Text{
+                text:qsTr("系统登录:")
+                font.pointSize: 10
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: soundswitcher
+                onSwitched: {
+                    if (soundswitcher.switchedOn) {
+                        console.log("系统登录音乐on---------------");
+                        sessiondispatcher.set_login_music_enable_qt(true);
+                    }
+                    else if(!soundswitcher.switchedOn) {
+                        console.log("系统登录音乐off---------------");
+                        sessiondispatcher.set_login_music_enable_qt(false);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
 //Rectangle {
 //    id: soundeffectspage
 //    property bool on: true
 //    width: parent.width
 //    color:"transparent"
 //    height: 475
-//    property int soundz:0
-//    property int play_pause:0
 //    property string fontName: "Helvetica"
 //    property int fontSize: 12
 //    property color fontColor: "black"
@@ -55,23 +449,6 @@ import AudioType 0.1
 //            if (i!=0 && soundlist[i] == current_sound)
 //                choices.remove(i);
 //        }
-
-////        var soundlist = new Array()
-////        soundlist.push("音乐2");
-////        soundlist.push("Ubuntukylin默认");
-////        var current_sound = "Ubuntukylin默认";
-
-////        soundlist.unshift(current_sound);
-////        choices.clear();
-////        choices.append({"text": soundlist[0]});
-////        choices.append({"text": soundlist[1]});
-
-
-////        for(var i=0; i < soundlist.length; i++) {
-////            choices.append({"text": soundlist[i]});
-////            if (i!=0 && soundlist[i] == current_sound)
-////                choices.remove(i);
-////        }
 //    }
 
 //    Connections {
@@ -90,7 +467,6 @@ import AudioType 0.1
 //        }
 //    }
 
-
 //    ListModel {
 //        id: choices
 //        ListElement { text: "" }
@@ -100,10 +476,6 @@ import AudioType 0.1
 //        id: background
 //        anchors.fill: parent
 //        source: "../../img/skin/bg-left.png"
-//    }
-
-//    QmlAudio{
-//        id: song;
 //    }
 
 //    Column {
@@ -125,56 +497,12 @@ import AudioType 0.1
 //         }
 //    }
 
-//    Column{     //声音主题
-//        id:soundtheme
-//        spacing: 10
-//        anchors {
-//            top: parent.top
-//            topMargin: 120
-//            left: parent.left
-//            leftMargin: 60
-//        }
-//        Text{
-//            text: qsTr("声音主题：")
-//            font.bold:true
-//            font.pointSize: 10
-//        }
-//        Row{
-//            spacing: 10
-//            ComboBox {
-//                id: iconcombo
-//                width : 345
-//                model: choices
-//                onSelectedTextChanged: console.log(selectedText)
-
-//            }
-//            Common.Button {
-//                width: 95
-//                height: 30
-//                hoverimage: "saveas.png"
-//                onClicked: {
-
-//                }
-//            }
-//            Common.Button {
-//                width: 95
-//                height: 30
-//                hoverimage: "delete.png"
-//                onClicked: {
-
-//                }
-//            }
-//        }
-
-//    }
-
-
-//    Column{     //程序事件及选择框
+//    Column{//程序事件及选择框
 //        id:chooseyy
 //        spacing: 10
 //        anchors {
 //            top: parent.top
-//            topMargin: 185
+//            topMargin: 120
 //            left: parent.left
 //            leftMargin: 60
 //        }
@@ -185,102 +513,35 @@ import AudioType 0.1
 //        }
 //        Rectangle{
 //            border.color: "#b9c5cc"
-//            width: 550; height: 125
+//            width: 550; height: 190
 //            clip:true
 //            ListModel{
-//                id:ukmodel
-//                ListElement{name:"UbuntuKylin";image:"../../img/icons/book.png";onclicked:"UbuntuKylin";playclicked:"UbuntuKylin播放";nextclicked:"UbuntuKylin下一首";revokesclicked:"UbuntuKylin重播"}
-//                ListElement{name:"UbuntuKylin登录"; image:"../../img/icons/broadcast.png";onclicked:"UbuntuKylin登录";playclicked:"登录的播放";nextclicked:"登录的下一首";revokesclicked:"登录的重播"}
-//                ListElement{name:"UbuntuKylin注销"; image:"../../img/icons/broadcast.png"; onclicked:"UbuntuKylin注销";playclicked:"注销的播放";nextclicked:"注销的下一首";revokesclicked:"注销的重播"}
-//                ListElement{name:"退出UbuntuKylin";image:"../../img/icons/broadcast.png"; onclicked:"退出UbuntuKylin";playclicked:"退出的播放";nextclicked:"退出的下一首";revokesclicked:"退出的重播"}
-//                ListElement{name:"关键性停止";image:"../../img/icons/broadcast.png"; onclicked:"关键性停止";playclicked:"停止的播放";nextclicked:"停止的下一首";revokesclicked:"停止的重播"}
-//                ListElement{name:"感叹号";image:"../../img/icons/broadcast.png"; onclicked:"感叹号";playclicked:"感叹号播放";nextclicked:"感叹号下一首";revokesclicked:"感叹号重播"}
+//                id:lmodel
+//                ListElement{name:"test1"}
+//                ListElement{name:"test2"}
+//                ListElement{name:"test3"}
+//                ListElement{name:"test4"}
 //            }
-//            ListModel{
-//                id:sound2modle
-//                ListElement{name:"音乐2";image:"../../img/icons/book.png";onclicked:"音乐2";playclicked:"音乐2播放";nextclicked:"音乐2下一首";revokesclicked:"音乐2重播"}
-//                ListElement{name:"音乐2的登录"; image:"../../img/icons/broadcast.png";onclicked:"音乐2的登录";playclicked:"音乐2的登录播放";nextclicked:"音乐2的登录下一首";revokesclicked:"音乐2的登录重播"}
-//                ListElement{name:"音乐2的注销"; image:"../../img/icons/broadcast.png"; onclicked:"音乐2的注销";playclicked:"音乐2的注销播放";nextclicked:"音乐2的注销下一首";revokesclicked:"音乐2的注销重播"}
-//                ListElement{name:"退出音乐2";image:"../../img/icons/broadcast.png"; onclicked:"退出音乐2";playclicked:"退出音乐2播放";nextclicked:"退出音乐2下一首";revokesclicked:"退出音乐2重播"}
-//                ListElement{name:"关键性停止音乐2";image:"../../img/icons/broadcast.png"; onclicked:"关键性停止音乐2";playclicked:"关键性停止音乐2播放";nextclicked:"关键性停止音乐2下一首";revokesclicked:"关键性停止音乐2重播"}
-//                ListElement{name:"感叹号";image:"../../img/icons/broadcast.png"; onclicked:"感叹号";playclicked:"感叹号播放";nextclicked:"感叹号下一首";revokesclicked:"感叹号重播"}
-//            }
-
 //            Component{
 //                id:cdelegat
-//                Item{
+//                Rectangle{
 //                    id:wrapper
 //                    width: 530; height: 30
-//                    Image {
-//                        id:pickcher
-//                        source: image
-//                        anchors.verticalCenter: parent.verticalCenter
-//                    }
+//                    color: "white"
+////                    color:ListView.isCurrentItem?"lightgrey":"white"
 //                    Text{
 //                        id:listtext
 //                        anchors.verticalCenter: parent.verticalCenter
-//                        color: "grey"
-//                        anchors.left: pickcher.right
-//                        anchors.leftMargin: 5
-//                        text:name
-//                    }
-//                    Row{
-//                        spacing: 10
-//                        anchors{
-//                            right: parent.right
-//                            rightMargin: 40
-//                            verticalCenter: parent.verticalCenter
-//                        }
-
-//                        z:soundz
-//                        Rectangle{
-//                            width: play.width;height: play.height
-//                            Image {id:play;source: "../../img/icons/play.png"}
-//                            MouseArea{
-//                                anchors.fill:parent
-//                                onClicked: {
-//                                    console.log(playclicked)
-//                                }
-//                            }
-//                        }
-//                        Rectangle{
-//                            width: next.width;height: next.height
-//                            Image {id:next;source: "../../img/icons/next.png"}
-//                            MouseArea{
-//                                anchors.fill:parent
-//                                onClicked: {
-//                                    console.log(nextclicked)
-//                                }
-//                            }
-//                        }
-//                        Rectangle{
-//                            width: revoke.width;height: revoke.height
-//                            Image {id:revoke;source: "../../img/icons/revoke.png"}
-//                            MouseArea{
-//                                anchors.fill:parent
-//                                onClicked: {
-//                                    console.log(revokesclicked)
-//                                }
-//                            }
-//                        }
-//                    }
-//                    Image {
-//                        id: btnImg
-//                        anchors.fill: parent
-//                        source: ""
+//                        text:name+":"+name
 //                    }
 //                    MouseArea{
 //                        anchors.fill:parent
 //                        hoverEnabled: true
-//                        onEntered: btnImg.source = "../../img/toolWidget/menu_hover.png"
-//                        onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"
-//                        onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
-//                        onExited: {btnImg.source = "";soundz=0}
-//                        onClicked: {
-//                            console.log(onclicked)
-//                            soundz=1
-//                            wrapper.ListView.view.currentIndex = index;
-//                        }
+//                        onEntered: {wrapper.color="lightgrey"}
+//                        onPressed: {wrapper.color="lightgrey"}
+////                        onReleased: {wrapper.color="lightgrey"}
+//                        onExited: {wrapper.color="white"}
+//                        onClicked: {console.log("a.....")}
 //                    }
 
 //                }
@@ -288,17 +549,9 @@ import AudioType 0.1
 //            ListView{
 //                id:lisv
 //                anchors.fill: parent
-////                model:ukmodel
-//                model: {
-//                    if (iconcombo.selectedText == "音乐2")
-//                        sound2modle
-//                    else if(iconcombo.selectedText == "Ubuntukylin默认")
-//                        ukmodel
-//                }
-
+//                model:lmodel
 //                delegate: cdelegat
-//                highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue";radius:5 }
-//                focus:true
+////              highlight: Rectangle{color: "lightsteelblue"}
 //            }
 
 //            Rectangle{
@@ -352,7 +605,6 @@ import AudioType 0.1
 //        }
 //    }
 
-
 //    Column {
 //        spacing: 5
 //        anchors {
@@ -380,8 +632,7 @@ import AudioType 0.1
 //                height: 30
 //                hoverimage: "listen.png"
 //                onClicked: {
-//                        if(play_pause==0){ song.play();play_pause=1;}
-//                        else if(play_pause==1){song.pause();play_pause=0;}
+
 //                }
 //            }
 //            Common.Button {
@@ -389,15 +640,14 @@ import AudioType 0.1
 //                height: 30
 //                hoverimage: "browser.png"
 //                onClicked: {
-//                    song.stop()
-//                    song.play();play_pause=1
+
 //                }
 //            }
 //        }
 //    }
 
-//    Rectangle{id:topline ; x:0; y: 420; width:parent.width ; height:1; color:"#b9c5cc"}
-//    Rectangle{id:bottomline ; x:0;y:422 ;width:parent.width ; height:1; color:"#fafcfe"}
+////    Rectangle{id:topline ; x:0; y: 420; width:parent.width ; height:1; color:"#b9c5cc"}
+////    Rectangle{id:bottomline ; x:0;y:422 ;width:parent.width ; height:1; color:"#fafcfe"}
 
 
 
@@ -460,303 +710,6 @@ import AudioType 0.1
 //            }
 //        }
 //}
-
-
-
-
-
-
-Rectangle {
-    id: soundeffectspage
-    property bool on: true
-    width: parent.width
-    color:"transparent"
-    height: 475
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
-    property SessionDispatcher dis: sessiondispatcher
-    property string default_sound: ""
-    property string actiontitle: "声音效果设置"
-    property string actiontext: "单击一下列表中的程序事件，然后选择要应用的声音。您可以更改系统和程序事件的声音方案。"
-
-    Component.onCompleted: {
-
-        if (sessiondispatcher.get_login_music_enable_qt())
-            soundswitcher.switchedOn = true;
-        else
-            soundswitcher.switchedOn = false;
-        soundeffectspage.default_sound = sessiondispatcher.get_sound_theme_qt();
-        var soundlist = sessiondispatcher.get_sound_themes_qt();
-        var current_sound = sessiondispatcher.get_sound_theme_qt();
-        soundlist.unshift(current_sound);
-        choices.clear();
-        for(var i=0; i < soundlist.length; i++) {
-            choices.append({"text": soundlist[i]});
-            if (i!=0 && soundlist[i] == current_sound)
-                choices.remove(i);
-        }
-    }
-
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "SoundEffects") {
-                if (soundeffectspage.default_sound != soundcombo.selectedText) {
-                    console.log("111");
-                    soundeffectspage.default_sound = soundcombo.selectedText;
-                    sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
-                }
-                else
-                    console.log("222");
-            }
-        }
-    }
-
-    ListModel {
-        id: choices
-        ListElement { text: "" }
-    }
-
-    Image {     //背景图片
-        id: background
-        anchors.fill: parent
-        source: "../../img/skin/bg-left.png"
-    }
-
-    Column {
-        spacing: 10
-        anchors.top: parent.top
-        anchors.topMargin: 44
-        anchors.left: parent.left
-        anchors.leftMargin: 80
-        Text {
-             text: soundeffectspage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
-         Text {
-             text: soundeffectspage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
-    }
-
-    Column{//程序事件及选择框
-        id:chooseyy
-        spacing: 10
-        anchors {
-            top: parent.top
-            topMargin: 120
-            left: parent.left
-            leftMargin: 60
-        }
-        Text{
-            text: qsTr("程序事件：")
-            font.bold:true
-            font.pointSize: 10
-        }
-        Rectangle{
-            border.color: "#b9c5cc"
-            width: 550; height: 190
-            clip:true
-            ListModel{
-                id:lmodel
-                ListElement{name:"test1"}
-                ListElement{name:"test2"}
-                ListElement{name:"test3"}
-                ListElement{name:"test4"}
-            }
-            Component{
-                id:cdelegat
-                Rectangle{
-                    id:wrapper
-                    width: 530; height: 30
-                    color: "white"
-//                    color:ListView.isCurrentItem?"lightgrey":"white"
-                    Text{
-                        id:listtext
-                        anchors.verticalCenter: parent.verticalCenter
-                        text:name+":"+name
-                    }
-                    MouseArea{
-                        anchors.fill:parent
-                        hoverEnabled: true
-                        onEntered: {wrapper.color="lightgrey"}
-                        onPressed: {wrapper.color="lightgrey"}
-//                        onReleased: {wrapper.color="lightgrey"}
-                        onExited: {wrapper.color="white"}
-                        onClicked: {console.log("a.....")}
-                    }
-
-                }
-            }
-            ListView{
-                id:lisv
-                anchors.fill: parent
-                model:lmodel
-                delegate: cdelegat
-//              highlight: Rectangle{color: "lightsteelblue"}
-            }
-
-            Rectangle{
-                id:scrollbar
-                anchors.right: parent.right
-                anchors.rightMargin: 8
-                height: parent.height
-                width:5
-                color: "lightgrey"
-            }
-            Rectangle{
-                id: button
-                anchors.right: parent.right
-                anchors.rightMargin: 5
-                width: 12
-                y: lisv.visibleArea.yPosition * scrollbar.height
-                height: lisv.visibleArea.heightRatio * scrollbar.height;
-                radius: 3
-                smooth: true
-                color: "white"
-                border.color: "lightgrey"
-                Column{
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 2
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                }
-                MouseArea {
-                    id: mousearea
-                    anchors.fill: button
-                    drag.target: button
-                    drag.axis: Drag.YAxis
-                    drag.minimumY: 0
-                    drag.maximumY: scrollbar.height - button.height
-                    onMouseYChanged: {
-                        lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
-                    }
-                }
-            }
-        }
-    }
-
-    Column {
-        spacing: 5
-        anchors {
-            top: parent.top
-            topMargin: 350
-            left: parent.left
-            leftMargin: 60
-        }
-        Text {
-            text: "声音"
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
-        }
-
-        Row {
-            spacing: 10
-            ComboBox {
-                id: comboBox
-                width: 345
-            }
-
-            Common.Button {
-                width: 95
-                height: 30
-                hoverimage: "listen.png"
-                onClicked: {
-
-                }
-            }
-            Common.Button {
-                width: 95
-                height: 30
-                hoverimage: "browser.png"
-                onClicked: {
-
-                }
-            }
-        }
-    }
-
-//    Rectangle{id:topline ; x:0; y: 420; width:parent.width ; height:1; color:"#b9c5cc"}
-//    Rectangle{id:bottomline ; x:0;y:422 ;width:parent.width ; height:1; color:"#fafcfe"}
-
-
-
-        Row {
-//            anchors.horizontalCenter: parent.horizontalCenter
-            anchors {
-                top: parent.top
-                topMargin: 280
-                left: parent.left
-                leftMargin: 620
-//                horizontalCenter: parent.horizontalCenter
-            }
-            Label {
-                id: soundlabel
-                width: 110
-                text: qsTr("系统登录音乐:")
-                font {
-                    family: soundeffectspage.fontName
-                    pointSize: soundeffectspage.fontSize
-                }
-//                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: soundswitcher
-                onSwitched: {
-                    if (soundswitcher.switchedOn) {
-                        console.log("系统登录音乐on---------------");
-                        sessiondispatcher.set_login_music_enable_qt(true);
-                    }
-                    else if(!soundswitcher.switchedOn) {
-                        console.log("系统登录音乐off---------------");
-                        sessiondispatcher.set_login_music_enable_qt(false);
-                    }
-                }
-            }
-        }
-
-        Row {
-            anchors {
-                top: parent.top
-                topMargin: 320
-                left: parent.left
-                leftMargin: 620
-            }
-            Label {
-                id: soundthemelabel
-                width: 110
-                text: qsTr("音乐主题:")
-                font {
-                    family: soundeffectspage.fontName
-                    pointSize: soundeffectspage.fontSize
-                }
-//                anchors.verticalCenter: parent.verticalCenter
-            }
-            ComboBox {
-                id: soundcombo
-                model: choices
-                width: soundthemelabel.width
-//                onSelectedTextChanged: console.log(selectedText)
-            }
-        }
-}
 
 
 
