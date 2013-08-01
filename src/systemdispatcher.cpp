@@ -186,6 +186,10 @@ void SystemDispatcher::custom_plymouth_bg_qt(QString plymouthName) {
 void SystemDispatcher::add_new_plymouth_qt(QString customBG, QString plymouthName) {
     QDBusReply<void> reply = systemiface->call("add_new_plymouth", customBG, plymouthName);
 }
+void SystemDispatcher::send_boot_signal() {
+    emit addBootImage();
+}
+
 QStringList SystemDispatcher::get_existing_plymouth_list_qt() {
     QDBusReply<QStringList> reply = systemiface->call("get_existing_plymouth_list");
     return reply.value();
@@ -206,11 +210,16 @@ void SystemDispatcher::plymouth_init_check_qt() {
 //void SystemDispatcher::custom_plymouth_qt(QString imagepath) {
 //    QDBusReply<void> reply = systemiface->call("custom_plymouth", imagepath);
 //}
-QString SystemDispatcher::show_file_dialog() {
-    QString fileName = QFileDialog::getOpenFileName(0, tr("选择开机动画"), "", tr("Image Files (*.png *.jpg *.bmp)"));
-    qDebug() << "000000000000000000";
-    qDebug() << fileName;
-    return fileName;
+QString SystemDispatcher::show_file_dialog(QString flag) {
+    if (flag == "bootanimation") {
+        QString bootfileName = QFileDialog::getOpenFileName(0, tr("选择开机动画"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+        return bootfileName;
+    }
+    else if (flag == "soundeffects") {
+        QString musicfileName = QFileDialog::getOpenFileName(0, tr("选择音乐"), "", tr("Music Files (*.wav *.mp3 *.wma)"));
+//        emit addBootImage();
+        return musicfileName;
+    }
 //    QFontDialog *dialog = new QFontDialog;
 //    bool ok;
 //    QFont font = QFontDialog::getFont(&ok, QFont("Times", 12),dialog);

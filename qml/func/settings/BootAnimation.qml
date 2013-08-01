@@ -33,24 +33,58 @@ Rectangle {
     property SystemDispatcher dis: systemdispatcher
     property string image_path: ""
     property string actiontitle: "开机动画设置"
-    property string actiontext: "选择一张图片使起成为您的开机动画背景图片（建议使用尺寸与系统显示分辨率一致的图片）"
+    property string actiontext: "点击“自定义图片”按钮选择您需要添加到列表中的图片，在列表中选中您要设置的图片名称，点击“确定”按钮完成设置。"
+    property int num: 0
+    property string selectedimage: ""
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
         anchors.fill: parent
     }
     Component.onCompleted: {
+        systemdispatcher.plymouth_init_check_qt();
 
+
+        var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
+        bootimagepage.num = plymouth_list.length;
+        mainModel.clear();
+        for(var i=0; i < plymouth_list.length; i++) {
+            mainModel.append({"itemTitle": plymouth_list[i]});
+        }
+        bootimagepage.selectedimage = plymouth_list[0];
     }
+
+    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
+    Connections
+    {
+        target: systemdispatcher
+        onAddBootImage: {
+            systemdispatcher.plymouth_init_check_qt();
+            var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
+            console.log("abaababab.........");
+//            console.log(plymouth_list);
+            bootimagepage.num = plymouth_list.length;
+            console.log(bootimagepage.num);
+            mainModel.clear();
+            for(var i=0; i < plymouth_list.length; i++) {
+                mainModel.append({"itemTitle": plymouth_list[i]});
+            }
+            bootimagepage.selectedimage = plymouth_list[0];
+        }
+    }
+
+
+
     Connections {
         target: toolBar
         //按下确定按钮
         onOkBtnClicked: {
             if (settigsDetails.setTitle == "BootAnimation") {
-//                systemdispatcher.custom_plymouth_qt(bootimagepage.image_path);
-                systemdispatcher.custom_plymouth_bg_qt(bootimagepage.image_path);
+                console.log(bootimagepage.selectedimage);
+                systemdispatcher.custom_plymouth_bg_qt(bootimagepage.selectedimage);
             }
         }
+
     }
     Column {
         spacing: 10
@@ -74,7 +108,7 @@ Rectangle {
     Column {
         anchors {
             top: parent.top
-            topMargin: 150
+            topMargin: 120
             left: parent.left
             leftMargin: 60
         }
@@ -82,12 +116,6 @@ Rectangle {
         Image {
             id: previewzone
             source: "../../img/icons/previewzone.png"
-//            anchors {
-//                top: parent.top
-//                topMargin: 150
-//                left: parent.left
-//                leftMargin: 60
-//            }
         }
         Common.Button {
             width: 134
@@ -95,22 +123,25 @@ Rectangle {
             hoverimage: "selectpic.png"
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
-                bootimagepage.image_path = systemdispatcher.show_file_dialog();
+                bootimagepage.image_path = systemdispatcher.show_file_dialog("bootanimation");
                 bootimage.source = bootimagepage.image_path;
+                var imagename = bootimagepage.image_path;
+                imagename = imagename.substr(imagename.lastIndexOf("/") + 1, imagename.length - imagename.lastIndexOf("/"));
+                systemdispatcher.add_new_plymouth_qt(bootimagepage.image_path, imagename);
+                systemdispatcher.send_boot_signal();
             }
         }
     }
 
     Image {
         id: bootimage
-        //165x114
         width: 165
         height: 114
 //        width: 180
 //        height: 125
         anchors {
             top: parent.top
-            topMargin: 166
+            topMargin: 136
             left: parent.left
             leftMargin: 73
         }
@@ -123,7 +154,7 @@ Rectangle {
         id: chooselabel
         anchors {
             top: parent.top
-            topMargin: 150
+            topMargin: 120
             left: bootimage.right
             leftMargin: 100
         }
@@ -136,145 +167,179 @@ Rectangle {
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
-        }
-        ListElement {
-            itemTitle: "111"
-        }
-        ListElement {
-            itemTitle: "222"
+            itemTitle: ""
         }
     }
 
-    ScrollArea {
-//        frame:false
-        width: 400
-        height: 200
+
+    Rectangle{
+        border.color: "#b9c5cc"
+        width: 460; height: 250
+        clip:true
         anchors {
-//            top: parent.top
-//            topMargin: 166
             top: chooselabel.bottom
             topMargin: 5
             left: bootimage.right
             leftMargin: 100
         }
+        Component{
+            id:cdelegat
+            Item{
+                id:wrapper
+                width: 460; height: 30
+                Text{
+                    id:listtext
+                    anchors {
+                        left: parent.left
+                        leftMargin: 10
+                        verticalCenter: parent.verticalCenter
+                    }
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    text:itemTitle
+                }
+                Image {
+                    id: btnImg
+                    anchors.fill: parent
+                    source: ""
+                }
+                MouseArea{
+                    anchors.fill:parent
+                    hoverEnabled: true
+                    onClicked: {
+                        wrapper.ListView.view.currentIndex = index;
+                        bootimagepage.selectedimage = itemTitle;
+                    }
+                }
 
-        Item {
-            id: subItemsRect
-            property int itemHeight: 40
-            width: 380
-            //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
-            height: 24 * itemHeight
-            clip: true
-            opacity: 1
-            Behavior on height {
-                SequentialAnimation {
-                    NumberAnimation { duration: 100; easing.type: Easing.InOutQuad }
+            }
+        }
+        ListView{
+            id:lisv
+            anchors.fill: parent
+            model: mainModel
+            delegate: cdelegat
+            highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
+            focus:true
+        }
+
+        Rectangle{
+            id:scrollbar
+            anchors.right: parent.right
+            anchors.rightMargin: 8
+            height: parent.height
+            width:5
+            color: "lightgrey"
+        }
+        Rectangle{
+            id: button
+            anchors.right: parent.right
+            anchors.rightMargin: 5
+            width: 12
+            y: lisv.visibleArea.yPosition * scrollbar.height
+            height: lisv.visibleArea.heightRatio * scrollbar.height;
+            radius: 3
+            smooth: true
+            color: "white"
+            border.color: "lightgrey"
+            Column{
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: 2
+                Rectangle{
+                    width: 8;height: 1
+                    color: "lightgrey"
+                }
+                Rectangle{
+                    width: 8;height: 1
+                    color: "lightgrey"
+                }
+                Rectangle{
+                    width: 8;height: 1
+                    color: "lightgrey"
                 }
             }
-//            ListView {
-//                id: listView
-//                height: parent.height
-//                model: mainModel
-//                delegate:
-//                    Text {
-//                        text: itemTitle
-//                    }
+            MouseArea {
+                id: mousearea
+                anchors.fill: button
+                drag.target: button
+                drag.axis: Drag.YAxis
+                drag.minimumY: 0
+                drag.maximumY: scrollbar.height - button.height
+                onMouseYChanged: {
+                    lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
+                }
+            }
+        }
+    }
 
-////                cacheBuffer: 1000
-//                opacity: 1
-//                spacing: 10
-//                snapMode: ListView.NoSnap
-//                boundsBehavior: Flickable.DragOverBounds
-//                currentIndex: 0
-//                preferredHighlightBegin: 0
-//                preferredHighlightEnd: preferredHighlightBegin
-//                highlightRangeMode: ListView.StrictlyEnforceRange
+
+
+//    ScrollArea {
+////        frame:false
+//        width: 400
+//        height: 200
+//        anchors {
+////            top: parent.top
+////            topMargin: 166
+//            top: chooselabel.bottom
+//            topMargin: 5
+//            left: bootimage.right
+//            leftMargin: 100
+//        }
+
+//        Item {
+//            id: subItemsRect
+//            property int itemHeight: 40
+//            width: 380
+//            //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
+//            height: bootimagepage.num * itemHeight
+//            clip: true
+//            opacity: 1
+//            Behavior on height {
+//                SequentialAnimation {
+//                    NumberAnimation { duration: 100; easing.type: Easing.InOutQuad }
+//                }
 //            }
+////            ListView {
+////                id: listView
+////                height: parent.height
+////                model: mainModel
+////                delegate:
+////                    Text {
+////                        text: itemTitle
+////                    }
 
-            Column {
-                width: parent.width
-                Repeater {
-                    id: subItemRepeater
-                    model: mainModel
-                    width: parent.width
-                    Common.NameListItem {
-                        id: subListItem
-                        height: subItemsRect.itemHeight
-                        width: parent.width
-                        text: itemTitle
-                        bgImage: ""
-                        onClicked: {}
-                    }
-                }//Repeater
-            }//Column
-        }//子项Item
-    }//ScrollArea
+//////                cacheBuffer: 1000
+////                opacity: 1
+////                spacing: 10
+////                snapMode: ListView.NoSnap
+////                boundsBehavior: Flickable.DragOverBounds
+////                currentIndex: 0
+////                preferredHighlightBegin: 0
+////                preferredHighlightEnd: preferredHighlightBegin
+////                highlightRangeMode: ListView.StrictlyEnforceRange
+////            }
+
+//            Column {
+//                width: parent.width
+//                Repeater {
+//                    id: subItemRepeater
+//                    model: mainModel
+//                    width: parent.width
+//                    Common.NameListItem {
+//                        id: subListItem
+//                        height: subItemsRect.itemHeight
+////                        width: parent.width
+//                        text: itemTitle
+//                        bgImage: ""
+//                        onClicked: {}
+//                    }
+//                }//Repeater
+//            }//Column
+//        }//子项Item
+//    }//ScrollArea
 }
-
 
 
 

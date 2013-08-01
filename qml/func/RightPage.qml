@@ -59,7 +59,7 @@ Rectangle {
         }
 
         ListElement {
-            icon: "../img/icons/mouse.png"
+            icon: "../img/icons/touchpad.png"
             name: "触摸板"
             flag: "TouchpadSet"
         }

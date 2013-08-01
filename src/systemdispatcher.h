@@ -27,6 +27,7 @@
 class SystemDispatcher : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QNOTIFY addBootImage)
     Q_PROPERTY(QNOTIFY myStringChanged)
     Q_PROPERTY(QNOTIFY finishCleanWork)
     Q_PROPERTY(QNOTIFY finishCleanWorkMain)
@@ -54,7 +55,7 @@ public:
 
     //开机动画
 //    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
-    Q_INVOKABLE QString show_file_dialog();
+    Q_INVOKABLE QString show_file_dialog(QString flag);
 
 //    Q_INVOKABLE void clean_by_one_key_qt(QStringList strlist);
     Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
@@ -91,6 +92,7 @@ public:
     //-----------------------others------------------------
     Q_INVOKABLE void custom_plymouth_bg_qt(QString plymouthName);
     Q_INVOKABLE void add_new_plymouth_qt(QString customBG, QString plymouthName);
+    Q_INVOKABLE void send_boot_signal();
     Q_INVOKABLE QStringList get_existing_plymouth_list_qt();
     Q_INVOKABLE void plymouth_init_check_qt();
 
@@ -179,6 +181,7 @@ public:
     Q_INVOKABLE QMap<QString, QVariant> scan_by_one_key_qt();
 
 signals:
+    void addBootImage();
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain

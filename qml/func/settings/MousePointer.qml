@@ -64,8 +64,8 @@ Rectangle {
                     mousepointerpage.default_cursor_theme = cursorcombo.selectedText;
                     sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
                 }
-                else
-                    console.log("666");
+//                else
+//                    console.log("666");
                 //default:24
                 if (mousepointerpage.cursor_size != themespinbox.value) {
                     mousepointerpage.cursor_size = themespinbox.value;
