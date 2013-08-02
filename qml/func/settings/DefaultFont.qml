@@ -37,13 +37,13 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
 
-//    property int cursor_size: 24
     property SessionDispatcher dis: sessiondispatcher
     property string current_font: "Helvetica"
-    property string document_font: "Helvetica"
     property string desktop_font: "Helvetica"
-    property string titlebar_font: "Helvetica"
     property string monospace_font: "Helvetica"
+    property bool current_font_flag: false
+    property bool desktop_font_flag: false
+    property bool monospace_font_flag: false
     property string actiontitle: "默认字体设置"
     property string actiontext: "根据您的喜好设置系统默认字体"
     //背景
@@ -52,9 +52,21 @@ Rectangle {
         anchors.fill: parent
     }
     Component.onCompleted: {
+        defaultfontpage.current_font_flag = false;
+        defaultfontpage.desktop_font_flag = false;
+        defaultfontpage.monospace_font_flag = false;
+
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
         defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
+
+
+//        console.log(".....111....");
+//        console.log(defaultfontpage.current_font);
+//        console.log(defaultfontpage.desktop_font);
+//        console.log(defaultfontpage.monospace_font);
+//        console.log(".....222....");
+
         if (sessiondispatcher.get_desktop_font_qt() == "") {
             sessiondispatcher.set_desktop_font_qt_default();
             defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
@@ -65,8 +77,8 @@ Rectangle {
         //按下确定按钮
         onOkBtnClicked: {
             if (settigsDetails.setTitle == "DefaultFont") {
-                console.log(fontzoomspinbox.value);
-//                sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);
+//                console.log(fontzoomspinbox.value);
+                sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);
             }
         }
     }
@@ -77,14 +89,32 @@ Rectangle {
     {
         target: sessiondispatcher
         onFinishSetFont: {
-            console.log("33333333333333");
+            console.log("onFinishSetFont.........");
             console.log(font_style)
-            if (font_style == "font")
+            if (font_style == "font") {
+                defaultfontpage.current_font_flag = true;
                 sysfont.text = sessiondispatcher.get_font_qt();
-            else if (font_style == "desktopfont")
-                desktopfont.text = sessiondispatcher.get_font_qt();
-            else if (font_style == "monospacefont")
-                monofont.text = sessiondispatcher.get_font_qt();
+            }
+            else if (font_style == "desktopfont") {
+                defaultfontpage.desktop_font_flag = true;
+                desktopfont.text = sessiondispatcher.get_desktop_font_qt();
+            }
+            else if (font_style == "monospacefont") {
+                defaultfontpage.monospace_font_flag = true;
+                monofont.text = sessiondispatcher.get_monospace_font_qt();
+            }
+            else if (font_style == "font_default") {
+                defaultfontpage.current_font_flag = false;
+                sysfont.text = sessiondispatcher.get_font_qt();
+            }
+            else if (font_style == "desktopfont_default") {
+                defaultfontpage.desktop_font_flag = false;
+                desktopfont.text = sessiondispatcher.get_desktop_font_qt()
+            }
+            else if (font_style == "monospacefont_default") {
+                defaultfontpage.monospace_font_flag = false;
+                monofont.text = sessiondispatcher.get_monospace_font_qt();
+            }
         }
     }
 
@@ -143,7 +173,6 @@ Rectangle {
         }
 
         Row {
-//            anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
             Label {
                 id: fontslabel
@@ -162,10 +191,29 @@ Rectangle {
             }
 
             Common.Button {
+                id: fontBtn
+                anchors.left: parent.left
+                anchors.leftMargin: 470
                 hoverimage: "changefont.png"
                 width: 124
                 height: 30
                 onClicked: sessiondispatcher.show_font_dialog("font");
+            }
+            Common.Button {
+                hoverimage: "use.png"
+                width: 124
+                height: 30
+                anchors.left: fontBtn.right
+                anchors.leftMargin: 10
+                onClicked: {
+                    if(defaultfontpage.current_font_flag == true) {
+//                        defaultfontpage.current_font_flag = false;
+                        sessiondispatcher.set_font_qt_default(defaultfontpage.current_font);
+                        sessiondispatcher.restore_default_font_signal("font_default");
+                    }
+                    else
+                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！");
+                }
             }
         }
 
@@ -186,10 +234,29 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
+                id: desktopfontBtn
+                anchors.left: parent.left
+                anchors.leftMargin: 470
                 hoverimage: "changefont.png"
                 width: 124
                 height: 30
                 onClicked: sessiondispatcher.show_font_dialog("desktopfont");
+            }
+            Common.Button {
+                anchors.left: desktopfontBtn.right
+                anchors.leftMargin: 10
+                hoverimage: "use.png"
+                width: 124
+                height: 30
+                onClicked: {
+                    if(defaultfontpage.desktop_font_flag == true) {
+//                        defaultfontpage.desktop_font_flag = false;
+                        sessiondispatcher.set_desktop_font_qt_default(defaultfontpage.desktop_font);
+                        sessiondispatcher.restore_default_font_signal("desktopfont_default");
+                    }
+                    else
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！");
+                }
             }
         }
 
@@ -212,10 +279,29 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
+                id: monofontBtn
+                anchors.left: parent.left
+                anchors.leftMargin: 470
                 hoverimage: "changefont.png"
                 width: 124
                 height: 30
                 onClicked: sessiondispatcher.show_font_dialog("monospacefont");
+            }
+            Common.Button {
+                anchors.left: monofontBtn.right
+                anchors.leftMargin: 10
+                hoverimage: "use.png"
+                width: 124
+                height: 30
+                onClicked: {
+                    if(defaultfontpage.monospace_font_flag == true) {
+//                        defaultfontpage.monospace_font_flag = false;
+                        sessiondispatcher.set_monospace_font_qt_default(defaultfontpage.monospace_font);
+                        sessiondispatcher.restore_default_font_signal("monospacefont_default");
+                    }
+                    else
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！");
+                }
             }
         }
 

@@ -43,7 +43,7 @@ Rectangle {
 
 
     Component.onCompleted: {
-        launcherthemepage.launcher_size = unityspinbox.value;
+        launcherthemepage.launcher_size = slider.value;
 
         if (sessiondispatcher.get_launcher_autohide_qt())
             launcherswitcher.switchedOn = true;
@@ -62,9 +62,9 @@ Rectangle {
         onOkBtnClicked: {
             if (settigsDetails.setTitle == "LauncherTheme") {
 //                console.log(launcherlabel.text);
-                if (launcherthemepage.launcher_size != unityspinbox.value) {
-                    launcherthemepage.launcher_size = unityspinbox.value;
-                    sessiondispatcher.set_launcher_icon_size_qt(unityspinbox.value);
+                if (launcherthemepage.launcher_size != slider.value) {
+                    launcherthemepage.launcher_size = slider.value;
+                    sessiondispatcher.set_launcher_icon_size_qt(slider.value);
                 }
             }
         }
@@ -160,12 +160,29 @@ Rectangle {
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
-            SpinBox {
-                id: unityspinbox
-                width: 97
-                minimumValue: 32
-                maximumValue: 64
+//            SpinBox {
+//                id: unityspinbox
+//                width: 97
+//                minimumValue: 32
+//                maximumValue: 64
+//                value: sessiondispatcher.get_launcher_icon_size_qt()
+//            }
+
+            Slider {
+                id: slider
                 value: sessiondispatcher.get_launcher_icon_size_qt()
+                maximumValue: 64
+                minimumValue: 32
+                tickmarksEnabled: true
+                stepSize: 1
+                animated: true
+            }
+            Text {
+                id: displaynum
+                text: slider.value
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
 

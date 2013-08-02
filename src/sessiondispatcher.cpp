@@ -302,6 +302,10 @@ QString SessionDispatcher::get_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_font");
     return reply.value();
 }
+bool SessionDispatcher::set_font_qt_default(QString font) {
+    QDBusReply<bool> reply = sessioniface->call("set_font", font);
+    return reply.value();
+}
 bool SessionDispatcher::set_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_font", font);
     return reply.value();
@@ -322,6 +326,10 @@ QString SessionDispatcher::get_document_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_document_font");
     return reply.value();
 }
+bool SessionDispatcher::set_document_font_qt_default(QString font) {
+    QDBusReply<bool> reply = sessioniface->call("set_document_font", font);
+    return reply.value();
+}
 bool SessionDispatcher::set_document_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_document_font", font);
     return reply.value();
@@ -330,12 +338,20 @@ QString SessionDispatcher::get_monospace_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_monospace_font");
     return reply.value();
 }
+bool SessionDispatcher::set_monospace_font_qt_default(QString font) {
+    QDBusReply<bool> reply = sessioniface->call("set_monospace_font", font);
+    return reply.value();
+}
 bool SessionDispatcher::set_monospace_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_monospace_font", font);
     return reply.value();
 }
 QString SessionDispatcher::get_window_title_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_window_title_font");
+    return reply.value();
+}
+bool SessionDispatcher::set_window_title_font_qt_default(QString font) {
+    QDBusReply<bool> reply = sessioniface->call("set_window_title_font", font);
     return reply.value();
 }
 bool SessionDispatcher::set_window_title_font_qt(QString font) {
@@ -351,6 +367,9 @@ bool SessionDispatcher::set_font_zoom_qt(double zoom) {
     return reply.value();
 }
 
+void SessionDispatcher::restore_default_font_signal(QString flag) {
+    emit finishSetFont(flag); //font_style
+}
 
 void SessionDispatcher::show_font_dialog(QString flag) {
     bool ok;
@@ -366,7 +385,17 @@ void SessionDispatcher::show_font_dialog(QString flag) {
         QString fontsize = QString("%1").arg(font.pointSize());
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
         qDebug() << fontstyle;
-        set_font_qt(fontstyle);//set font
+        if(flag == "font")
+            set_font_qt(fontstyle);//set font
+        else if(flag == "desktopfont")
+            set_desktop_font_qt(fontstyle);//set desktopfont
+        else if(flag == "monospacefont")
+            set_monospace_font_qt(fontstyle);//set monospacefont
+        else if(flag == "documentfont")
+            set_document_font_qt(fontstyle);//set documentfont
+        else if(flag == "titlebarfont")
+            set_window_title_font_qt(fontstyle);//set titlebarfont
+
         emit finishSetFont(flag); //font_style
     }
     else

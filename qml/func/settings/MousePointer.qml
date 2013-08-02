@@ -30,8 +30,6 @@ Rectangle {
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
     property int cursor_size: 24
-    property string default_theme: ""
-    property string default_icon_theme: ""
     property string default_cursor_theme: ""
 
     property string actiontitle: "鼠标设置"
@@ -42,8 +40,10 @@ Rectangle {
         anchors.fill: parent
     }
     Component.onCompleted: {
+        mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
         var cursorlist = sessiondispatcher.get_cursor_themes_qt();
         var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+        mousepointerpage.default_cursor_theme = current_cursor_theme;
         cursorlist.unshift(current_cursor_theme);
         choices.clear();
         for(var k=0; k < cursorlist.length; k++) {
@@ -59,18 +59,38 @@ Rectangle {
         onOkBtnClicked: {
             if (settigsDetails.setTitle == "MousePointer") {
 
+//                console.log("333");
+//                console.log(mousepointerpage.default_cursor_theme);
+//                console.log(cursorcombo.selectedText);
+//                console.log("444");
+
+
                 if (mousepointerpage.default_cursor_theme != cursorcombo.selectedText) {
-                    console.log("555");
+//                    console.log("555");
                     mousepointerpage.default_cursor_theme = cursorcombo.selectedText;
+//                    console.log(cursorcombo.selectedText);
                     sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
                 }
-//                else
-//                    console.log("666");
+                else
+                    console.log("666");
                 //default:24
-                if (mousepointerpage.cursor_size != themespinbox.value) {
-                    mousepointerpage.cursor_size = themespinbox.value;
-                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
-                }
+
+//                console.log("777");
+//                console.log(mousepointerpage.cursor_size);
+//                console.log(themespinbox.value);
+//                console.log("888");
+
+//                if (mousepointerpage.cursor_size != themespinbox.value) {
+//                    mousepointerpage.cursor_size = themespinbox.value;
+//                    console.log(themespinbox.value);
+////                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
+//                }
+
+                if(smallstyle.checked == true)
+                    sessiondispatcher.set_cursor_size_qt(24);
+                else if(bigstyle.checked == true)
+                    sessiondispatcher.set_cursor_size_qt(36);
+
             }
 
         }
@@ -164,17 +184,36 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            SpinBox {
-                id: themespinbox
-    //            width: trashlabel.width
-    //                width: 97
-                minimumValue: 0//32
-                maximumValue: 64
-                value: sessiondispatcher.get_cursor_size_qt()
-                anchors.verticalCenter: parent.verticalCenter
-    //                value: 48
+            Common.ButtonRow {
+                exclusive: true//控制是否联动
+                spacing: 60
+                Common.CheckBox {
+                    id: smallstyle
+                    checked: false
+                    titleName: "小号"
+                    flag: "radio"
+                    onClicked: console.log(smallstyle.checked) //24
+                }
+                Common.CheckBox {
+                    id: bigstyle
+                    titleName: "大号"
+                    flag: "radio"
+                    onClicked: console.log(bigstyle.checked) //36
+                }
             }
+//            SpinBox {
+//                id: themespinbox
+//    //            width: trashlabel.width
+//    //                width: 97
+//                minimumValue: 0//32
+//                maximumValue: 64
+//                value: sessiondispatcher.get_cursor_size_qt()
+//                anchors.verticalCenter: parent.verticalCenter
+//    //                value: 48
+//            }
         }
+
+
     }
 
 }

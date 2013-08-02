@@ -40,11 +40,8 @@ Rectangle {
 
 //    property int cursor_size: 24
     property SessionDispatcher dis: sessiondispatcher
-    property string current_font: "Helvetica"
     property string document_font: "Helvetica"
-    property string desktop_font: "Helvetica"
-    property string titlebar_font: "Helvetica"
-    property string monospace_font: "Helvetica"
+    property bool document_font_flag: false
     property string actiontitle: "文档字体设置"
     property string actiontext: "根据您的喜好设置文档字体"
     //背景
@@ -54,8 +51,8 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        documentfontpage.document_font_flag = false;
         documentfontpage.document_font = sessiondispatcher.get_document_font_qt();
-        //        documentfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
     }
 
 //    Connections {
@@ -73,10 +70,17 @@ Rectangle {
     {
         target: sessiondispatcher
         onFinishSetFont: {
-            if (font_style == "documentfont")
-                docufont.text = sessiondispatcher.get_font_qt();
+            if (font_style == "documentfont") {
+                documentfontpage.document_font_flag = true;
+                docufont.text = sessiondispatcher.get_document_font_qt();
+            }
+            else if (font_style == "documentfont_default") {
+                documentfontpage.document_font_flag = false;
+                docufont.text = sessiondispatcher.get_document_font_qt();
+            }
         }
     }
+
 
     Column {
         spacing: 10
@@ -115,7 +119,7 @@ Rectangle {
             color: "#383838"
         }
         Rectangle{
-            width:700
+            width:680
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -153,10 +157,28 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
+                id: docufontBtn
+                anchors.left: parent.left
+                anchors.leftMargin: 470
                 hoverimage: "changefont.png"
                 width: 124
                 height: 30
                 onClicked: sessiondispatcher.show_font_dialog("documentfont");
+            }
+            Common.Button {
+                anchors.left: docufontBtn.right
+                anchors.leftMargin: 10
+                hoverimage: "use.png"
+                width: 124
+                height: 30
+                onClicked: {
+                    if(documentfontpage.document_font_flag == true) {
+                        sessiondispatcher.set_document_font_qt_default(documentfontpage.document_font);
+                        sessiondispatcher.restore_default_font_signal("documentfont_default");
+                    }
+                    else
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！");
+                }
             }
         }
 
