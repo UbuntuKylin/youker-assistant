@@ -18,7 +18,7 @@ import QtQuick 1.1
 //import RegisterMyType 0.1
 import SessionType 0.1
 import SystemType 0.1
-import QtDesktop 0.1
+//import QtDesktop 0.1
 import "common" as Common
 
 Item {
@@ -27,82 +27,152 @@ Item {
     height: 475
     property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis2: systemdispatcher
-    ListModel {
-        id: choices
-        ListElement { text: "kobe333" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
+    Image {     //背景图片
+        id: background
+        anchors.fill: parent
+        source: "../img/skin/bg-left.png"
     }
-
-    TabFrame {
-        id:frame
-        //position decides the tabBar's location ,when is "South", the tabBar on Sourth, and when is "North", the tabBar on North
-        position: "North"
-        width: parent.width
-        height: parent.height
-        onCurrentChanged: {}
-        Tab {
+//    state: fastitem_z
+    Common.Tabs {
+        id: tabs
+        width: parent.width; height: 435
+        Common.Tab {
             title: qsTr("一键清理")
-            contentMargin: 20
+            anchors.fill: parent
             FastclearModel {
                 id: fastitem
             }
         }
-        Tab {
-            title: qsTr("包管理缓存")
-            contentMargin: 20
-            AptCruft {
-                id: aptitem
-            }
+        Common.Tab {
+            title:qsTr("包管理缓存")
+            anchors.fill: parent
+            AptCruft{
+               id: aptitem
+           }
         }
-        Tab {
-
-            title: qsTr("软件中心缓存")
-            contentMargin: 20
+        Common.Tab {
+            title:qsTr("软件中心缓存")
+            anchors.fill: parent
             SoftwareCruft {
                 id: softwareitem
             }
+
         }
-        Tab {
-            title: qsTr("历史记录")
-            contentMargin: 20
+        Common.Tab {
+            title:qsTr("历史记录")
+            anchors.fill: parent
             BrowserHistroy {
                 id: historyitem
             }
         }
-        Tab {
-
-            title: qsTr("Cookies")
-            contentMargin: 20
+        Common.Tab {
+            title:qsTr("Cookies")
+            anchors.fill: parent
             BrowserCookies {
                 id: cookiesitem
             }
         }
-        Tab {
-
-            title: qsTr("包卸载")
-            contentMargin: 20
+        Common.Tab {
+            title:qsTr("包卸载")
+            anchors.fill: parent
             PackageModel {
                 id: packagemodel
             }
         }
-        Tab {
-            title: qsTr("文件排序")
-            contentMargin: 20
+        Common.Tab{
+            title:qsTr("文件排序")
+            anchors.fill: parent
             LargestFile {
                 id: largestitem
             }
         }
-//        Tab {
-//            title: qsTr("同名文件")
-//            contentMargin: 20
-//            SamenameFile {
-//                id: samenameitem
-//            }
-//        }
     }
 }
+
+
+
+//Item {
+//    id: clearmode
+//    width: parent.width
+//    height: 475
+//    property SessionDispatcher dis1: sessiondispatcher
+//    property SystemDispatcher dis2: systemdispatcher
+//    ListModel {
+//        id: choices
+//        ListElement { text: "kobe333" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
+//    }
+
+//    TabFrame {
+//        id:frame
+//        //position decides the tabBar's location ,when is "South", the tabBar on Sourth, and when is "North", the tabBar on North
+//        position: "North"
+//        width: parent.width
+//        height: parent.height
+//        onCurrentChanged: {}
+//        Tab {
+//            title: qsTr("一键清理")
+//            contentMargin: 20
+//            FastclearModel {
+//                id: fastitem
+//            }
+//        }
+//        Tab {
+//            title: qsTr("包管理缓存")
+//            contentMargin: 20
+//            AptCruft {
+//                id: aptitem
+//            }
+//        }
+//        Tab {
+
+//            title: qsTr("软件中心缓存")
+//            contentMargin: 20
+//            SoftwareCruft {
+//                id: softwareitem
+//            }
+//        }
+//        Tab {
+//            title: qsTr("历史记录")
+//            contentMargin: 20
+//            BrowserHistroy {
+//                id: historyitem
+//            }
+//        }
+//        Tab {
+
+//            title: qsTr("Cookies")
+//            contentMargin: 20
+//            BrowserCookies {
+//                id: cookiesitem
+//            }
+//        }
+//        Tab {
+
+//            title: qsTr("包卸载")
+//            contentMargin: 20
+//            PackageModel {
+//                id: packagemodel
+//            }
+//        }
+//        Tab {
+//            title: qsTr("文件排序")
+//            contentMargin: 20
+//            LargestFile {
+//                id: largestitem
+//            }
+//        }
+////        Tab {
+////            title: qsTr("同名文件")
+////            contentMargin: 20
+////            SamenameFile {
+////                id: samenameitem
+////            }
+////        }
+//    }
+//}
 
 
 

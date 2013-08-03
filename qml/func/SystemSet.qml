@@ -198,7 +198,7 @@ Item {
                             anchors.bottom: sysimage.bottom
                             anchors.bottomMargin: 10
                             spacing: 5
-                            SetWord {wordname: " 更改触摸板设置"; width: 100; flag: "TouchpadSet"}
+                            SetWord {wordname: "更改触摸板设置"; width: 100; flag: "TouchpadSet"}
 //                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
 //                            SetWord {wordname: "高级选项"; width: 55; flag: "AdvanceSet"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }

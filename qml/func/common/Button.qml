@@ -56,6 +56,8 @@ Item {
                 btnImg.source = "../../img/icons/sort-hover.png"
             else if (hoverimage == "selectpic.png")
                 btnImg.source = "../../img/icons/selectpic-hover.png"
+            else if (hoverimage == "use.png")
+                btnImg.source = "../../img/icons/use-hover.png"
             else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
         }
@@ -66,6 +68,8 @@ Item {
                 btnImg.source = "../../img/icons/sort-hover.png"
             else if (hoverimage == "selectpic.png")
                 btnImg.source = "../../img/icons/selectpic-hover.png"
+            else if (hoverimage == "use.png")
+                btnImg.source = "../../img/icons/use-hover.png"
             else
                 btnImg.source = "../../img/toolWidget/menu_press.png"
 
@@ -78,6 +82,8 @@ Item {
                 btnImg.source = "../../img/icons/sort.png"
             else if (hoverimage == "selectpic.png")
                 btnImg.source = "../../img/icons/selectpic.png"
+            else if (hoverimage == "use.png")
+                btnImg.source = "../../img/icons/use.png"
             else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
         }

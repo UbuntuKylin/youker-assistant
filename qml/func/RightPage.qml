@@ -32,8 +32,6 @@ Rectangle {
         id: clearModel
         ListElement {
             icon: "../img/icons/checkscreen.png"
-//            name: "主题"
-//            flag: "theme"
             name: "坏点检测"
             flag: "CheckScreen"
         }
@@ -94,35 +92,18 @@ Rectangle {
             SetBtn {iconName: "set.png"; setbtn_flag: "set"}
             SetBtn {iconName: "message.png"; setbtn_flag: "message"}
         }
-        Column {
-            spacing: 10
+
+        Text {
             anchors {
-//                left: parent.left; leftMargin: 10
                 top: setrow.bottom
-                topMargin: 10
+                topMargin: 30
                 horizontalCenter: parent.horizontalCenter
             }
-//            Label {
-//                id: hareware
-//                text: qsTr("<h1>Youker Assistant</h1>")
-//                font.family: "楷体"
-//            }
-            Text {
-                text: "UbuntuKylin Team"
+            text: "UbuntuKylin Team"
 //                wrapMode: Text.WordWrap
-                font.pointSize: 12
-                color: "#318d11"
-            }
-            Text {
-                text: "Lv 8"
-                font.pointSize: 12
-                color: "#318d11"
-            }
-            Text {
-                text: "经验值领先了88%的用户"
-                font.pointSize: 12
-                color: "#318d11"
-            }
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
         }
     }
     //上下分割条
@@ -130,46 +111,34 @@ Rectangle {
     Rectangle {id: splitbar2; y: 272; width: parent.width; height: 1; color: "#fafcfe" }
     //-------------------
 
-    GridView {
-        id: gridView
-        height: parent.height
+
+    Column {
         width: parent.width
+        height: 200
         anchors {
             top: splitbar2.bottom
             topMargin: 5
             left: parent.left
             leftMargin: 5
         }
-        model: clearModel
-        delegate: ToolsDelegate {}
-        cellWidth: (parent.width-2)/3
-        cellHeight: cellWidth
-//                        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
-        focus: true
+        Item {
+            id: views
+            width: parent.width
+            height: parent.height
+            GridView {
+                id: gridView
+                height: parent.height
+                width: parent.width
+                anchors.top: parent.top
+//                    anchors.topMargin: titlebar.height + 45
+                model: clearModel
+                delegate: ToolsDelegate {}
+                cellWidth: (parent.width-20)/3; cellHeight: cellWidth
+                cacheBuffer: 1000
+                focus: true
+            }
+        }
     }
-//    Rectangle {
-//        anchors {top: splitbar.bottom; topMargin: 20; left: parent.left; leftMargin: 10 }
-//        width: 250
-//        height: 300
-//        Item {
-//            id: views
-//            width: parent.width ////ListView不会随鼠标上下移动
-//            height: parent.height
-////            height: 250
-//            GridView {
-//                id: gridView
-//                anchors.fill: parent
-//                height: parent.height
-//                width: parent.width
-//                model: clearModel
-//                anchors.top: parent.top
-//                delegate: ToolsDelegate {}
-////                cellWidth: (parent.width-2)/3; cellHeight: 80//cellWidth
-//                cellWidth: 80; cellHeight: 80
-//                focus: true
-//            }
-//        }
-//    }
 
     Row {
         id: versionrow
@@ -245,3 +214,145 @@ Rectangle {
 //                           }
 //                       }
 }//右边栏Rectangle
+
+
+
+
+//ok ps
+//Rectangle {
+//    id: leftbar
+//    width: screen.width - 600; height: 460
+
+
+//    //背景
+//    Image {
+//        source: "../img/skin/bg-left.png"
+//        anchors.fill: parent
+//    }
+//    Column {
+//        anchors.fill: parent
+//        spacing: 10
+
+//        Image {
+//            id: logoimage
+//            anchors {
+//                top: parent.top
+//                topMargin: 20
+//                horizontalCenter: parent.horizontalCenter
+//            }
+//            source: "../img/icons/admin.png"
+//        }
+//        Row {
+//            id: setrow
+//            anchors {
+//                horizontalCenter: parent.horizontalCenter
+//                top: logoimage.bottom
+//                topMargin: 1
+//            }
+//            SetBtn {iconName: "set.png"; setbtn_flag: "set"}
+//            SetBtn {iconName: "message.png"; setbtn_flag: "message"}
+//        }
+
+//        Text {
+//            id: companyname
+//            anchors {
+//                top: setrow.bottom
+//                topMargin: 30
+//                horizontalCenter: parent.horizontalCenter
+//            }
+//            text: "UbuntuKylin Team"
+//    //                wrapMode: Text.WordWrap
+//            font.bold: true
+//            font.pixelSize: 14
+//            color: "#383838"
+//        }
+//        Rectangle {
+//            id: splitbar1
+//            anchors {
+//                top: companyname.bottom
+//                topMargin: 30
+//                horizontalCenter: parent.horizontalCenter
+//            }
+//            width: parent.width
+//            height: 1
+//            color: "#b9c5cc"
+//        }
+
+//        Column {
+//            anchors {top: splitbar1.bottom; topMargin: 20; left: parent.left; leftMargin: 5 }
+//            Item {
+//                id: views
+//                width: leftbar.width ////ListView不会随鼠标上下移动
+////                width:leftbar.width -10 //ListView会随鼠标上下移动
+//                height:leftbar.height -logoimage.height - setrow.height - companyname.height- 10*2 - 20 -10
+////                anchors.top: itemtip.bottom
+////                anchors.topMargin: 30
+
+//                ListModel {
+//                    id: clearModel
+//                    ListElement {
+//                        icon: "../img/icons/checkscreen.png"
+//                        name: "坏点检测"
+//                        flag: "CheckScreen"
+//                    }
+//                    ListElement {
+//                        icon: "../img/icons/iconbeauty.png"
+//                        name: "桌面图标"
+//                        flag: "DesktopiconSet"
+//                    }
+//                    ListElement {
+//                        icon: "../img/icons/bootanimation.png"
+//                        name: "开机动画"
+//                        flag: "BootAnimation"
+//                    }
+//                    ListElement {
+//                        icon: "../img/icons/systemsound.png"
+//                        name: "系统声音"
+//                        flag: "SoundEffects"
+//                    }
+//                    ListElement {
+//                        icon: "../img/icons/mouse.png"
+//                        name: "鼠标指针"
+//                        flag: "MousePointer"
+//                    }
+
+//                    ListElement {
+//                        icon: "../img/icons/touchpad.png"
+//                        name: "触摸板"
+//                        flag: "TouchpadSet"
+//                    }
+
+//                }
+
+//                GridView {
+//                    id: listView
+//                    height: parent.height
+//                    width: parent.width
+//                    anchors.top: parent.top
+////                    anchors.topMargin: titlebar.height + 45
+//                    model: clearModel
+//                    delegate: ToolsDelegate {}
+//                    cellWidth: (parent.width-20)/3
+//                    cellHeight: cellWidth
+//                    cacheBuffer: 1000
+//                }
+
+////                ListView {
+////                    id: listView
+////                    height: 200//parent.height
+////                    width: parent.width
+////                    anchors.top: parent.top
+//////                    anchors.topMargin: titlebar.height + 45
+////                    model: clearModel
+////                    delegate: ToolsDelegate {}
+//////                    cellWidth: (parent.width-2)/3; cellHeight: cellWidth
+//////                    delegate: FastDelegateTest {} //"first"
+////                    cacheBuffer: 1000
+////                }
+//            }
+
+//        }//Column
+
+//    }//Column
+
+//}//坐边栏Rectangle

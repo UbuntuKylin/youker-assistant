@@ -184,75 +184,126 @@ Rectangle {
         }
     }
 
-
-    Row {
-        id: scrollstyle
-        spacing: 40
+    Column {
+        spacing: 20
         anchors{
             left: parent.left
             leftMargin: 60
             top: scrolltitle.bottom
             topMargin: 10
         }
-        Label {
-            width: 110
-            text: "触摸板滚动触发方式:"
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-//        GroupBox {
-//            anchors.verticalCenter: parent.verticalCenter
-//                title: qsTr("触摸板滚动模式:")
-//            adjustToContentSize: true
-            Common.ButtonRow {
-                exclusive: true//控制是否联动
-                spacing: 80
-                Common.CheckBox {
-                    id:edge
-                    titleName: "边缘触发"//"edge模式"
-                    flag: "radio"
-                    onClicked: console.log(edge.checked)
-                }
-                Common.CheckBox {
-                    id: twofinger
-                    titleName: "双指触发"//"twofinger模式"
-                    flag: "radio"
-                    onClicked: console.log(twofinger.checked)
-                }
+
+        Row {
+            id: workmode
+            spacing: 40
+//            anchors{
+//                left: parent.left
+//                leftMargin: 60
+//                top: scrolltitle.bottom
+//                topMargin: 10
+
 //            }
+            Label {
+                width: 110
+                text: "滚动条类型:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+    //        GroupBox {
+    //            anchors.verticalCenter: parent.verticalCenter
+    //                title: qsTr("触摸板滚动条触发方式:")
+    //            adjustToContentSize: true
+                Common.ButtonRow {
+                    exclusive: true//控制是否联动
+                    spacing: 100
+                    Common.CheckBox {
+                        id:overlay
+                        titleName: "特色类型" //overlay模式
+                        flag: "radio"
+                        onClicked: console.log(overlay.checked)
+                    }
+                    Common.CheckBox {
+                        id: legacy
+                        titleName: "标准类型"  //legacy模式
+                        flag: "radio"
+                        onClicked: console.log(legacy.checked)
+                    }
+    //            }
+            }
         }
-    }
 
 
-    Row {
-        id: horizontalscroll
-        spacing: 40
-        anchors{
-            left: parent.left
-            leftMargin: 60
-            top: scrollstyle.bottom
-            topMargin: 10
 
+        Row {
+            id: scrollstyle
+            spacing: 40
+//            anchors{
+//                left: parent.left
+//                leftMargin: 60
+//                top: workmode.bottom
+//                topMargin: 10
+//            }
+            Label {
+                width: 110
+                text: "触摸板滚动触发方式:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+    //        GroupBox {
+    //            anchors.verticalCenter: parent.verticalCenter
+    //                title: qsTr("触摸板滚动模式:")
+    //            adjustToContentSize: true
+                Common.ButtonRow {
+                    exclusive: true//控制是否联动
+                    spacing: 100
+                    Common.CheckBox {
+                        id:edge
+                        titleName: "边缘触发"//"edge模式"
+                        flag: "radio"
+                        onClicked: console.log(edge.checked)
+                    }
+                    Common.CheckBox {
+                        id: twofinger
+                        titleName: "双指触发"//"twofinger模式"
+                        flag: "radio"
+                        onClicked: console.log(twofinger.checked)
+                    }
+    //            }
+            }
         }
-        Label {
-            width: 110
-            text: qsTr("触摸板横向滚动条:")
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        Common.Switch {
-            id: horizontalswitcher
-            width: 110
-            onSwitched: {
-                if (horizontalswitcher.switchedOn) {
-                    console.log("水平on---------------");
-                    sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
-                }
-                else if(!horizontalswitcher.switchedOn) {
-                    console.log("水平off---------------");
-                    sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
+
+
+        Row {
+            id: horizontalscroll
+            spacing: 40
+//            anchors{
+//                left: parent.left
+//                leftMargin: 60
+//                top: scrollstyle.bottom
+//                topMargin: 10
+
+//            }
+            Label {
+                width: 110
+                text: qsTr("触摸板横向滚动条:")
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: horizontalswitcher
+                width: 110
+                onSwitched: {
+                    if (horizontalswitcher.switchedOn) {
+                        console.log("水平on---------------");
+                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
+                    }
+                    else if(!horizontalswitcher.switchedOn) {
+                        console.log("水平off---------------");
+                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
+                    }
                 }
             }
         }
@@ -260,45 +311,7 @@ Rectangle {
 
 
 
-    Row {
-        id: workmode
-        spacing: 40
-        anchors{
-            left: parent.left
-            leftMargin: 60
-            top: horizontalscroll.bottom
-            topMargin: 10
 
-        }
-        Label {
-            width: 110
-            text: "滚动条类型:"
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-//        GroupBox {
-//            anchors.verticalCenter: parent.verticalCenter
-//                title: qsTr("触摸板滚动条触发方式:")
-//            adjustToContentSize: true
-            Common.ButtonRow {
-                exclusive: true//控制是否联动
-                spacing: 100
-                Common.CheckBox {
-                    id:overlay
-                    titleName: "特色类型" //overlay模式
-                    flag: "radio"
-                    onClicked: console.log(overlay.checked)
-                }
-                Common.CheckBox {
-                    id: legacy
-                    titleName: "标准类型"  //legacy模式
-                    flag: "radio"
-                    onClicked: console.log(legacy.checked)
-                }
-//            }
-        }
-    }
 
 
 }

@@ -29,6 +29,8 @@ Rectangle {
     property string get_msg: ""
 
 
+    signal send_dynamic_picture(string str);
+
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
 //    Connections
 //    {
@@ -114,6 +116,7 @@ Rectangle {
             if (setbtn_flag == "onekey") {
                 console.log("onekey clicked....");
                 console.log(systemdispatcher.get_onekey_args());
+                send_dynamic_picture("onekey");
                 systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
             }
             else if (setbtn_flag == "smallonekey") {

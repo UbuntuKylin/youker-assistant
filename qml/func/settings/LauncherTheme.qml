@@ -42,6 +42,14 @@ Rectangle {
     }
 
 
+    ListModel {
+        id: choices
+        ListElement { text: "theme" }
+        ListElement { text: "lixiang" }
+        ListElement { text: "ps" }
+        ListElement { text: "baby" }
+    }
+
     Component.onCompleted: {
         launcherthemepage.launcher_size = slider.value;
 
@@ -173,7 +181,7 @@ Rectangle {
                 value: sessiondispatcher.get_launcher_icon_size_qt()
                 maximumValue: 64
                 minimumValue: 32
-                tickmarksEnabled: true
+//                tickmarksEnabled: true
                 stepSize: 1
                 animated: true
             }
@@ -210,7 +218,13 @@ Rectangle {
                     }
                 }
             }
+            Common.ComboBox {
+                model: choices
+            }
         }
+
+
+
 
     }//Column
 

@@ -150,51 +150,56 @@ Rectangle {
 
             }//Row
 
-            Item {
-                id: views
-                width: parent.width ////ListView不会随鼠标上下移动
-    //                width:fastmode.width -10 //ListView会随鼠标上下移动
-                height: fastmode.height - refreshArrow.height - 10*2 - 20 -10
+
+            Column {
                 anchors.top: parent.top
                 anchors.topMargin: 110
+                Item {
+                    id: views
+                    width: parent.width ////ListView不会随鼠标上下移动
+        //                width:fastmode.width -10 //ListView会随鼠标上下移动
+                    height: fastmode.height - refreshArrow.height - 10*2 - 20 -10
+//                    anchors.top: parent.top
+//                    anchors.topMargin: 110
 
-                ListModel {
-                    id: clearModel
-                    ListElement {
-                        titlename: "清理垃圾"
-                        picturename: "../img/toolWidget/brush.png"
-                        detailstr: "清理系统中的垃圾文件，释放磁盘空间"
-                        clearflag: "cache"
+                    ListModel {
+                        id: clearModel
+                        ListElement {
+                            titlename: "清理垃圾"
+                            picturename: "../img/toolWidget/brush.png"
+                            detailstr: "清理系统中的垃圾文件，释放磁盘空间"
+                            clearflag: "cache"
+                        }
+                        ListElement {
+                            titlename: "清理历史记录"
+                            picturename: "../img/toolWidget/eraser.png"
+                            detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
+                            clearflag: "history"
+                        }
+                        ListElement {
+                            titlename: "清理Cookies"
+                            picturename: "../img/toolWidget/firefox.png"
+                            detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
+                            clearflag: "cookies"
+                        }
+                        ListElement {
+                            titlename: "卸载不必要的程序"
+                            picturename: "../img/toolWidget/deb.png"
+                            detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
+                            clearflag: "unneed"
+                        }
                     }
-                    ListElement {
-                        titlename: "清理历史记录"
-                        picturename: "../img/toolWidget/eraser.png"
-                        detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
-                        clearflag: "history"
-                    }
-                    ListElement {
-                        titlename: "清理Cookies"
-                        picturename: "../img/toolWidget/firefox.png"
-                        detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
-                        clearflag: "cookies"
-                    }
-                    ListElement {
-                        titlename: "卸载不必要的程序"
-                        picturename: "../img/toolWidget/deb.png"
-                        detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
-                        clearflag: "unneed"
-                    }
-                }
 
-                ListView {
-                    id: listView
-                    height: parent.height
-                    width: parent.width
-                    anchors.top: parent.top
-    //                    anchors.topMargin: titlebar.height + 45
-                    model: clearModel
-                    delegate: FastDelegate {pagenum: fastmode.onekeypage}//"second"
-                    cacheBuffer: 1000
+                    ListView {
+                        id: listView
+                        height: parent.height
+                        width: parent.width
+                        anchors.top: parent.top
+        //                    anchors.topMargin: titlebar.height + 45
+                        model: clearModel
+                        delegate: FastDelegate {pagenum: fastmode.onekeypage}//"second"
+                        cacheBuffer: 1000
+                    }
                 }
             }
 

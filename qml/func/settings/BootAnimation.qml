@@ -18,7 +18,6 @@ import QtQuick 1.1
 //import RegisterMyType 0.1
 //import SessionType 0.1
 import SystemType 0.1
-import QtDesktop 0.1
 import "../common" as Common
 
 Rectangle {
@@ -27,6 +26,8 @@ Rectangle {
     width: parent.width
     height: 475
     property string fontName: "Helvetica"
+    property int scrollbar_z:0
+    property int lisv_height: 250
     property int fontSize: 12
     property color fontColor: "black"
 //    property SessionDispatcher dis: sessiondispatcher
@@ -52,6 +53,11 @@ Rectangle {
             mainModel.append({"itemTitle": plymouth_list[i]});
         }
         bootimagepage.selectedimage = plymouth_list[0];
+        if(30*plymouth_list.length<=lisv_height)
+        {
+            scrollbar_z=-1
+        }
+        else scrollbar_z=1
     }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -186,7 +192,7 @@ Rectangle {
             id:cdelegat
             Item{
                 id:wrapper
-                width: 460; height: 30
+                width: 440; height: 30
                 Text{
                     id:listtext
                     anchors {
@@ -219,7 +225,7 @@ Rectangle {
             anchors.fill: parent
             model: mainModel
             delegate: cdelegat
-            highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
+            highlight: Rectangle{width: 440;height: 30 ; color: "lightsteelblue"}
             focus:true
         }
 
@@ -228,6 +234,7 @@ Rectangle {
             anchors.right: parent.right
             anchors.rightMargin: 8
             height: parent.height
+            z:scrollbar_z
             width:5
             color: "lightgrey"
         }
@@ -236,6 +243,7 @@ Rectangle {
             anchors.right: parent.right
             anchors.rightMargin: 5
             width: 12
+            z:scrollbar_z
             y: lisv.visibleArea.yPosition * scrollbar.height
             height: lisv.visibleArea.heightRatio * scrollbar.height;
             radius: 3
@@ -272,73 +280,6 @@ Rectangle {
             }
         }
     }
-
-
-
-//    ScrollArea {
-////        frame:false
-//        width: 400
-//        height: 200
-//        anchors {
-////            top: parent.top
-////            topMargin: 166
-//            top: chooselabel.bottom
-//            topMargin: 5
-//            left: bootimage.right
-//            leftMargin: 100
-//        }
-
-//        Item {
-//            id: subItemsRect
-//            property int itemHeight: 40
-//            width: 380
-//            //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
-//            height: bootimagepage.num * itemHeight
-//            clip: true
-//            opacity: 1
-//            Behavior on height {
-//                SequentialAnimation {
-//                    NumberAnimation { duration: 100; easing.type: Easing.InOutQuad }
-//                }
-//            }
-////            ListView {
-////                id: listView
-////                height: parent.height
-////                model: mainModel
-////                delegate:
-////                    Text {
-////                        text: itemTitle
-////                    }
-
-//////                cacheBuffer: 1000
-////                opacity: 1
-////                spacing: 10
-////                snapMode: ListView.NoSnap
-////                boundsBehavior: Flickable.DragOverBounds
-////                currentIndex: 0
-////                preferredHighlightBegin: 0
-////                preferredHighlightEnd: preferredHighlightBegin
-////                highlightRangeMode: ListView.StrictlyEnforceRange
-////            }
-
-//            Column {
-//                width: parent.width
-//                Repeater {
-//                    id: subItemRepeater
-//                    model: mainModel
-//                    width: parent.width
-//                    Common.NameListItem {
-//                        id: subListItem
-//                        height: subItemsRect.itemHeight
-////                        width: parent.width
-//                        text: itemTitle
-//                        bgImage: ""
-//                        onClicked: {}
-//                    }
-//                }//Repeater
-//            }//Column
-//        }//子项Item
-//    }//ScrollArea
 }
 
 

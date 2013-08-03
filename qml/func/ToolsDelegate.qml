@@ -23,9 +23,7 @@ import "common" as Common
 Rectangle {
     id: scaleMe
     scale: 0.0
-
     property SessionDispatcher dis1: sessiondispatcher
-
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     width: 78
     height: 82

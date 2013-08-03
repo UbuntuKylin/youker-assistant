@@ -24,6 +24,7 @@ Rectangle {
     id: leftbar
     width: 600; height: 460
     property string onekeypage: "first"
+
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
@@ -81,6 +82,9 @@ Rectangle {
             }
 
 
+            refreshArrow0.visible = true;
+            refreshArrow.visible = false;
+
 //            if (msg == "one key") {
 //                console.log("StatusOver..............");
 //                leftbar.state = "StatusOver";
@@ -118,14 +122,19 @@ Rectangle {
             id: myrow
             spacing: 10
             anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
-//            Image {
-//                id: refreshArrow
-//                source: "../img/toolWidget/clear-logo.gif"
-////                width: 120; height: 120
-//                Behavior on rotation { NumberAnimation { duration: 200 } }
-//            }
+            Image {
+                id: refreshArrow0
+                visible: true
+                source: "../img/toolWidget/clear-logo.gif"
+                width: 120
+                height: 118
+                Behavior on rotation { NumberAnimation { duration: 200 } }
+            }
             AnimatedImage {
                 id: refreshArrow
+                visible: false
+                width: 120
+                height: 118
                 source: "../img/toolWidget/clear-logo.gif"
             }
 
@@ -175,6 +184,12 @@ Rectangle {
                     }
                     width: 186
                     height: 45
+                    onSend_dynamic_picture: {
+                        if (str == "onekey") {
+                            refreshArrow0.visible = false;
+                            refreshArrow.visible = true;
+                        }
+                    }
                 }
             }
 
@@ -245,7 +260,8 @@ Rectangle {
                 id: views
                 width: parent.width ////ListView不会随鼠标上下移动
 //                width:leftbar.width -10 //ListView会随鼠标上下移动
-                height: leftbar.height - refreshArrow.height - itemtip.height - 10*2 - 20 -10
+//                height: leftbar.height - refreshArrow.height - itemtip.height - 10*2 - 20 -10
+                height: leftbar.height - 118 - itemtip.height - 10*2 - 20 -10
                 anchors.top: itemtip.bottom
                 anchors.topMargin: 30
 
