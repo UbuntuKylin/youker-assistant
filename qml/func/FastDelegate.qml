@@ -19,43 +19,7 @@ import QtDesktop 0.1
 
         //kobe: 'flag' comes from ListModel in FastclearModel.qml
         Component.onCompleted: {
-//            if (checkbox.checked) {
-//                if (flag == "rubbish") {
-//                    var rubbish_str = sessiondispatcher.get_str();
-//                    if (rubbish_str.indexOf("r") < 0)
-//                        sessiondispatcher.set_str("r");
-//                }
-//                else if (flag == "history") {
-//                    var history_str = sessiondispatcher.get_str();
-//                    if (history_str.indexOf("h") < 0)
-//                        sessiondispatcher.set_str("h");
-//                }
-//                else if (flag == "cookie") {
-//                    var cookie_str = sessiondispatcher.get_str();
-//                    if (cookie_str.indexOf("c") < 0)
-//                        sessiondispatcher.set_str("c");
-//                }
-//                else if (flag == "plugin") {
-//                    var plugin_str = sessiondispatcher.get_str();
-//                    if (plugin_str.indexOf("p") < 0)
-//                        sessiondispatcher.set_str("p");
-//                }
 
-//                if (flag == "rubbish") {
-//                    systemdispatcher.set_onekey_args("rubbish");
-//                }
-//                else if (flag == "history") {
-//                    systemdispatcher.set_onekey_args("history");
-//                }
-//                else if (flag == "cookie") {
-//                    systemdispatcher.set_onekey_args("cookie");
-//                }
-//                else if (flag == "package") {
-//                    systemdispatcher.set_onekey_args("package");
-//                }
-//                console.log("OMG........");
-//                console.log(systemdispatcher.get_onekey_args());
-//            }
         }
 
         Item {
@@ -74,7 +38,8 @@ import QtDesktop 0.1
                     id: checkbox
 //                    checked: true
                     //清理历史记录时，chechbox默认为true，首页一键清理和系统清理页面的一键清理默认都为false
-                    checked: (pagenum == "history") ? true : false
+//                    checked: (pagenum == "history") ? true : false
+                    checked: true    //将所有选项都check
 //                    width: 30
                     anchors.verticalCenter: parent.verticalCenter
                     onCheckedChanged: {
