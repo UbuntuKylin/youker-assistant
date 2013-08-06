@@ -18,7 +18,6 @@ import QtQuick 1.1
 //import RegisterMyType 0.1
 import SessionType 0.1
 //import SystemType 0.1
-import QtDesktop 0.1
 import "../common" as Common
 
 Rectangle {
@@ -137,7 +136,7 @@ Rectangle {
 
         }
         spacing: 40
-        Label {
+        Common.Label {
             width: 110
             text: "启用/禁用触摸板:"
             font.pixelSize: 12
@@ -203,7 +202,7 @@ Rectangle {
 //                topMargin: 10
 
 //            }
-            Label {
+            Common.Label {
                 width: 110
                 text: "滚动条类型:"
                 font.pixelSize: 12
@@ -244,7 +243,7 @@ Rectangle {
 //                top: workmode.bottom
 //                topMargin: 10
 //            }
-            Label {
+            Common.Label {
                 width: 110
                 text: "触摸板滚动触发方式:"
                 font.pixelSize: 12
@@ -285,7 +284,7 @@ Rectangle {
 //                topMargin: 10
 
 //            }
-            Label {
+            Common.Label {
                 width: 110
                 text: qsTr("触摸板横向滚动条:")
                 font.pixelSize: 12

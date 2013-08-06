@@ -68,6 +68,7 @@ int main(int argc, char** argv)
     qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");
     qmlRegisterType<QWheelArea>("WheelAreaType", 0, 1, "WheelArea");
     qmlRegisterType<QtMenu>("MenuType", 0, 1, "Menu");
+    qmlRegisterUncreatableType<QtMenuBase>("MenuBaseType", 0, 1, "NativeMenuBase", QLatin1String("Do not create objects of type NativeMenuBase"));
 
 //    system("ps -ef | grep youker-assistant-session-daemon | grep -v grep | wc -l");
 //    system("ps -ef | grep youker-assistant-system-daemon | grep -v grep | wc -l");

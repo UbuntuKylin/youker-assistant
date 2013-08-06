@@ -17,7 +17,6 @@
 import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
-import QtDesktop 0.1
 import "../common" as Common
 
 Rectangle {
@@ -124,7 +123,7 @@ Rectangle {
         }
         Row {
             spacing: 20
-            Label {
+            Common.Label {
                 id: launcherlabel
                 width: 150
                 text: "启动器自动隐藏:"
@@ -150,7 +149,7 @@ Rectangle {
 
         Row {
             spacing: 20
-            Label {
+            Common.Label {
                 id: iconsizelabel
                 width: 150
                 text: "启动器上的图标大小:"
@@ -188,7 +187,7 @@ Rectangle {
 
         Row {
             spacing: 20
-            Label {
+            Common.Label {
                 id: showdesktoplabel
                 width: 150
                 text: "桌面图标显示在启动器上:"
