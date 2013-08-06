@@ -19,52 +19,40 @@ Rectangle {
             console.log("begin LeftPage Second onOneKeyFinishCleanWork..............");
             console.log(msg);
             if (msg == "") {
-                fastmode.state = "StatusEmpty";
+                onekeybtn.enabled=true;
             }
             else if (msg == "h") {
-                fastmode.state = "StatusH";
+                historystatus.state = "StatusH";
+                onekeybtn.enabled=true;
             }
             else if (msg == "k") {
-                fastmode.state = "StatusK";
+               cookiestatus.state = "StatusK";
+                onekeybtn.enabled=true;
             }
             else if (msg == "u") {
-                fastmode.state = "StatusU";
+                unneedstatus.state = "StatusU";
+                onekeybtn.enabled=true;
             }
             else if (msg == "c") {
-                fastmode.state = "StatusC";
+                cachestatus.state = "StatusC";
+                onekeybtn.enabled=true;
             }
-            else if (msg == "hk") {
-                fastmode.state = "StatusHK";
+
+            else if (msg == "he") {
+                historystatus.state = "StatusH1";
+                onekeybtn.enabled=true;
             }
-            else if (msg == "hu") {
-                fastmode.state = "StatusHU";
+            else if (msg == "ke") {
+                cookiestatus.state = "StatusK1";
+                onekeybtn.enabled=true;
             }
-            else if (msg == "hc") {
-                fastmode.state = "StatusHC";
+            else if (msg == "ue") {
+                unneedstatus.state = "StatusU1";
+                onekeybtn.enabled=true;
             }
-            else if (msg == "ku") {
-                fastmode.state = "StatusKU";
-            }
-            else if (msg == "kc") {
-                fastmode.state = "StatusKC";
-            }
-            else if (msg == "uc") {
-                fastmode.state = "StatusUC";
-            }
-            else if (msg == "hku") {
-                fastmode.state = "StatusHKU";
-            }
-            else if (msg == "hkc") {
-                fastmode.state = "StatusHKC";
-            }
-            else if (msg == "huc") {
-                fastmode.state = "StatusHUC";
-            }
-            else if (msg == "kuc") {
-                fastmode.state = "StatusKUC";
-            }
-            else if (msg == "hkuc") {
-                fastmode.state = "StatusOver";
+            else if (msg == "ce") {
+                cachestatus.state = "StatusC1";
+                onekeybtn.enabled=true;
             }
         }
     }
@@ -332,6 +320,17 @@ Rectangle {
                 top: parent.top; topMargin: 100
                 left: parent.left; leftMargin: 550
             }
+            states: [
+                    State {
+                    name: "StatusC"
+                    PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+                },
+
+                    State {
+                    name: "StatusC1"
+                    PropertyChanges { target: cachestatus; source: "../img/toolWidget/open.png"}
+                }
+            ]
         }
         Image {
             id: historystatus
@@ -340,6 +339,17 @@ Rectangle {
                 top: parent.top; topMargin: 164
                 left: parent.left; leftMargin: 550
             }
+            states: [
+                    State {
+                    name: "StatusH"
+                    PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+                },
+
+                    State {
+                    name: "StatusH1"
+                    PropertyChanges { target: historystatus; source: "../img/toolWidget/open.png"}
+                }
+            ]
         }
         Image {
             id: cookiestatus
@@ -348,6 +358,17 @@ Rectangle {
                 top: parent.top; topMargin: 228
                 left: parent.left; leftMargin: 550
             }
+            states: [
+                    State {
+                    name: "StatusK"
+                    PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+                },
+
+                    State {
+                    name: "StatusK1"
+                    PropertyChanges { target: cookiestatus; source: "../img/toolWidget/open.png"}
+                }
+            ]
         }
         Image {
             id: unneedstatus
@@ -356,117 +377,112 @@ Rectangle {
                 top: parent.top; topMargin: 290
                 left: parent.left; leftMargin: 550
             }
+            states: [
+                    State {
+                    name: "StatusU"
+                    PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+                },
+
+                    State {
+                    name: "StatusU1"
+                    PropertyChanges { target: unneedstatus; source: "../img/toolWidget/open.png"}
+                }
+
+            ]
         }
 
 
     }//Row
 
 
-    states: [
-        State {
-            name: "StatusEmpty"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/unfinish.png"}
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/unfinish.png"}
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/unfinish.png"}
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/unfinish.png"}
-        },
-        State {
-            name: "StatusH"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusK"
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusU"
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-
-        },
-        State {
-            name: "StatusC"
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusHK"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusHU"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusHC"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusKU"
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusKC"
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusUC"
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusHKU"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusHKC"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusHUC"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusKUC"
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-        },
-        State {
-            name: "StatusOver"
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-        }
-    ]
 //    states: [
 //        State {
-//            name: "StatusOne"
-//            PropertyChanges { target: rubbishstatus1; source: "../img/toolWidget/finish.png"}
+//            name: "StatusEmpty"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/unfinish.png"}
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/unfinish.png"}
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/unfinish.png"}
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/unfinish.png"}
 //        },
 //        State {
-//            name: "StatusTwo"
-//            PropertyChanges { target: historystatus1; source: "../img/toolWidget/finish.png"}
+//            name: "StatusH"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
 //        },
 //        State {
-//            name: "StatusThree"
-//            PropertyChanges { target: cookiestatus1; source: "../img/toolWidget/finish.png"}
+//            name: "StatusK"
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
 //        },
 //        State {
-//            name: "StatusFour"
-//            PropertyChanges { target: unneedstatus1; source: "../img/toolWidget/finish.png"}
+//            name: "StatusU"
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+
+//        },
+//        State {
+//            name: "StatusC"
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusHK"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusHU"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusHC"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusKU"
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusKC"
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusUC"
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusHKU"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusHKC"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusHUC"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusKUC"
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//        },
+//        State {
+//            name: "StatusOver"
+//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
 //        }
 //    ]
+
 
 
 }//坐边栏Rectangle
