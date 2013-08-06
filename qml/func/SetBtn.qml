@@ -30,34 +30,30 @@ Rectangle {
 
 
     signal send_dynamic_picture(string str);
+    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork,按钮恢复使能
+    Connections{
+         target: systemdispatcher
+         onFinishCleanWorkMain: {
+                        console.log("testing..............");
+                        if (msg == "") {
+                             menulogo.enabled=true;
+                         }
+                         else if (msg == "h") {
+                             menulogo.enabled=true;
+                         }
+                         else if (msg == "k") {
+                             menulogo.enabled=true;
+                         }
+                         else if (msg == "u") {
+                             menulogo.enabled=true;
+                         }
+                         else if (msg == "c") {
+                             menulogo.enabled=true;
+                         }
 
-    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
-//    Connections
-//    {
-//        target: systemdispatcher
-//        onFinishCleanWorkMain: {
-//            console.log("begin setBtn onOneKeyFinishCleanWork..............");
-////            if (setbtn_flag == "onekey") {
-//                console.log(msg);
-////                menulogo.get_msg = msg;
-//                if (msg == "history") {
-//                    menulogo.state = "StatusOne";
-//                }
-//                else if (msg == "cookies") {
-//                    menulogo.state = "StatusTwo";
-//                }
-//                else if (msg == "unneed") {
-//                    menulogo.state = "StatusThree";
-//                }
-//                else if (msg == "cache") {
-//                    menulogo.state = "StatusFour";
-//                }
-//                else if (msg == "one key") {
-//                    menulogo.state = "StatusFive";
-//                }
-////            }
-//        }
-//    }
+            }
+     }
+
 
     Image {
         id: toolImg
@@ -114,26 +110,18 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (setbtn_flag == "onekey") {
-
-                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-                    send_dynamic_picture("onekey");
-                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                }
-                else {
-                    systemdispatcher.setup();
-                    send_dynamic_picture("onekey");
-                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                }
-
-
-//                console.log("onekey clicked....");
-//                console.log(systemdispatcher.get_onekey_args());
-//                send_dynamic_picture("onekey");
-//                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                console.log("onekey clicked....");
+                console.log(systemdispatcher.get_onekey_args());
+                send_dynamic_picture("onekey");
+                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                menulogo.enabled=false;
             }
             else if (setbtn_flag == "smallonekey") {
                 console.log("smallonekey clicked....");
                 systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
+                btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                menulogo.enabled=false;
             }
             else if (setbtn_flag == "set")
                 console.log("set clicked....");
