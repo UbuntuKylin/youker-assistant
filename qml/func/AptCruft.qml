@@ -167,6 +167,7 @@ Item {
                 text: root.title
                 font.bold: true
                 font.pixelSize: 14
+                color: "#383838"
             }
             Text {
                 text: root.description

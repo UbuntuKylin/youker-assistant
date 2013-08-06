@@ -148,7 +148,6 @@ Item {
             }
         }
         Common.Tab {
-
             title: qsTr("包卸载")
             contentMargin: 20
             PackageModel {

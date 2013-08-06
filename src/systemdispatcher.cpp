@@ -21,7 +21,7 @@
 #include <QObject>
 #include <QString>
 #include <QFileDialog>
-
+#include <QDir>
 
 #include <QFile>
 #include <QDataStream>
@@ -115,7 +115,15 @@ void SystemDispatcher::judge_process(QString flagstr, QString pwd) {
 }
 
 void SystemDispatcher::setup() {
-    QString filename = "/tmp/youker.txt";
+
+    QString homepath = QDir::homePath();
+    QString filename = homepath + "/.youker";
+    qDebug() << "111111111111111111111111111111";
+    qDebug() << filename;
+    QByteArray tans = filename.toLatin1();
+    const char *file_name = tans.data();
+    qDebug() << file_name;
+    qDebug() << "22222222222222222222222";
     QFileInfo info(filename);
     if(info.exists()) {
         qDebug() << "passwd01";
@@ -137,7 +145,8 @@ void SystemDispatcher::setup() {
             QByteArray ba = passwd.toLatin1();
             const char *mypd = ba.data();
             FILE *fp;
-            if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
+//            if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
+            if((fp=fopen(file_name, "w")) == NULL)
             {
                 qDebug() << "open password file error when exist!";
             }
@@ -153,7 +162,8 @@ void SystemDispatcher::setup() {
         QByteArray ba = passwd.toLatin1();
         const char *mypd = ba.data();
         FILE *fp;
-        if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
+//        if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
+        if((fp=fopen(file_name, "w")) == NULL)
         {
             qDebug() << "open password file error when no exist!";
         }

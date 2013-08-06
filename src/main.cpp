@@ -54,7 +54,6 @@ int main(int argc, char** argv)
 //    创建对象使用来。
 //    qmlRegisterType<DispatcherQml>("RegisterMyType", 0, 1, "Dispatcher");
 
-
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));

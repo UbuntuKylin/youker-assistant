@@ -20,7 +20,7 @@ Item {
         for (var i = 0; i < stack.children.length; ++i) {
             stack.children[i].visible = (i == current ? true : false)
         }
-    }
+    }   
 
     Component {
         id: tabcomp

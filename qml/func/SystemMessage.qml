@@ -242,10 +242,9 @@ Rectangle {
                     text: qsTr("处理器:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x:120
                     text: sessiondispatcher.get_value("cpu")
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -257,10 +256,9 @@ Rectangle {
                     text: qsTr("内存:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x: 120
                     text: sessiondispatcher.get_value("ram")
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -287,10 +285,9 @@ Rectangle {
                     text: qsTr("主机名:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x:120
                     text: sessiondispatcher.get_value("hostname")
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -302,10 +299,9 @@ Rectangle {
                     text: qsTr("平台:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x: 120
                     text: sessiondispatcher.get_value("platform")
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -317,10 +313,9 @@ Rectangle {
                     text: qsTr("发行版:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x: 120
                     text: sessiondispatcher.get_value("distribution")
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -332,10 +327,9 @@ Rectangle {
                     text: qsTr("桌面环境:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x:120
                     text: sessiondispatcher.get_value("desktopenvironment")
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -347,10 +341,9 @@ Rectangle {
                     text: qsTr("语言:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x: 120
                     text: sessiondispatcher.get_value("language")
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -378,10 +371,9 @@ Rectangle {
                     text: qsTr("当前用户:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x:120
                     text: sessiondispatcher.get_value("currrent_user")
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -390,13 +382,12 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("家目录:")
+                    text: qsTr("用户主目录:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    width: 50
+                    width: 60
                 }
                 Text {
-                    x:120
                     text: sessiondispatcher.get_value("home_path")
                     font.pixelSize: 12
                     color: "#7a7a7a"
