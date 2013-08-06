@@ -19,7 +19,6 @@
 import QtQuick 1.1
 //import SessionType 0.1
 import SystemType 0.1
-import QtDesktop 0.1
 import "common" as Common
 import "bars" as Bars
 Item {
@@ -54,21 +53,10 @@ Item {
                     name: "开机动画"
                     flag: "BootAnimation"
                 }
-
-//                ListElement {
-//                    icon: "../img/icons/largestfile.png"
-//                    name: "最大文件"
-//                    flag: "LargestFile"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/samename.png"
-//                    name: "同名文件"
-//                    flag: "SamenameFile"
-//                }
             }
 
 
-            Label {
+            Common.Label {
                 id: label
                 text: "默认工具箱"
                 font.bold: true

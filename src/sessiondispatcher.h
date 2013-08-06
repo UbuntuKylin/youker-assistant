@@ -34,6 +34,7 @@ public:
     explicit SessionDispatcher(QObject *parent = 0);
 
     QDBusInterface *sessioniface;
+    Q_INVOKABLE QString get_session_daemon_qt();
 
     Q_INVOKABLE void send_message_dialog();
     void create_messagedialog();

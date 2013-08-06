@@ -15,11 +15,8 @@
  */
 
 import QtQuick 1.1
-//import Ubuntu.Components 0.1
-//import RegisterMyType 0.1
 import SessionType 0.1
 import SystemType 0.1
-import QtDesktop 0.1
 import "common" as Common
 
 //右边栏
@@ -150,7 +147,7 @@ Rectangle {
             leftMargin: 20
         }
 
-        Label {
+        Common.Label {
             id: helplabel
             text: "论坛求助"
             font.pixelSize: 12
@@ -170,7 +167,7 @@ Rectangle {
                   }
             }
         }
-        Label {
+        Common.Label {
             id: versionlabel
             text: "新版本特性"
             font.pixelSize: 12

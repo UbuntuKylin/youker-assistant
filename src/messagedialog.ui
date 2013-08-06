@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="okButton">
    <property name="geometry">
     <rect>
-     <x>224</x>
-     <y>156</y>
+     <x>120</x>
+     <y>157</y>
      <width>94</width>
      <height>29</height>
     </rect>
@@ -55,61 +55,91 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="displaylabel3">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>105</y>
-     <width>311</width>
-     <height>31</height>
+     <x>30</x>
+     <y>50</y>
+     <width>24</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/feature1.png);</string>
    </property>
    <property name="text">
-    <string>为用户展示当前机器和系统信息</string>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
+    <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="displaylabel2">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>70</y>
-     <width>311</width>
-     <height>31</height>
+     <x>30</x>
+     <y>80</y>
+     <width>24</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/feature2.png);</string>
    </property>
    <property name="text">
-    <string>支持常见的各种系统美化设置</string>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
+    <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="displaylabel1">
+  <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>35</y>
-     <width>311</width>
-     <height>31</height>
+     <x>30</x>
+     <y>110</y>
+     <width>24</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/feature3.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>54</y>
+     <width>221</width>
+     <height>16</height>
+    </rect>
    </property>
    <property name="text">
     <string>支持一键清理和选择性系统清理</string>
    </property>
-   <property name="pixmap">
-    <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>84</y>
+     <width>201</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>支持常见的各种系统美化设置</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>114</y>
+     <width>221</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>为用户展示当前机器和系统信息</string>
    </property>
   </widget>
   <widget class="QFrame" name="frame">
@@ -122,7 +152,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/dialog-bg.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/dialog-feature.png);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -135,15 +165,16 @@
   <zorder>okButton</zorder>
   <zorder>btn_close</zorder>
   <zorder>btn_min</zorder>
-  <zorder>displaylabel3</zorder>
-  <zorder>displaylabel2</zorder>
-  <zorder>displaylabel1</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_6</zorder>
  </widget>
  <tabstops>
   <tabstop>okButton</tabstop>
  </tabstops>
- <resources>
-  <include location="pixmap.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

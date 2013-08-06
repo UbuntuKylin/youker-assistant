@@ -114,10 +114,22 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (setbtn_flag == "onekey") {
-                console.log("onekey clicked....");
-                console.log(systemdispatcher.get_onekey_args());
-                send_dynamic_picture("onekey");
-                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+
+                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    send_dynamic_picture("onekey");
+                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                }
+                else {
+                    systemdispatcher.setup();
+                    send_dynamic_picture("onekey");
+                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                }
+
+
+//                console.log("onekey clicked....");
+//                console.log(systemdispatcher.get_onekey_args());
+//                send_dynamic_picture("onekey");
+//                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
             }
             else if (setbtn_flag == "smallonekey") {
                 console.log("smallonekey clicked....");

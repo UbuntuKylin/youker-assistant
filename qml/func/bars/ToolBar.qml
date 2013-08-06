@@ -52,7 +52,7 @@ Item {
          }
          Common.Button {
              id: quitBtn
-             hoverimage: "../../img/icons/quit.png"
+             hoverimage: "../../img/icons/back.png"
              width: 94; height: 29
              onClicked: toolbar.quitBtnClicked()
          }

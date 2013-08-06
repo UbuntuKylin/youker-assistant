@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -130,15 +133,26 @@ Rectangle {
                 pageStack.push(homepage);
             }
             else if (text == "clearrubbish") {
-//                systemdispatcher.show_passwd_dialog();
-//                console.log("after show_passwd_dialog...............");
-                menulogo.send("clearrubbish");
-                pageStack.push(clearrubbish);
+                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    menulogo.send("clearrubbish");
+                    pageStack.push(clearrubbish);
+                }
+                else {
+                    systemdispatcher.setup();
+                    menulogo.send("clearrubbish");
+                    pageStack.push(clearrubbish);
+                }
             }
             else if (text == "systemset") {
-                menulogo.send("systemset");
-//                pageStack.pop(systemset);
-                pageStack.push(systemset);
+                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    menulogo.send("systemset");
+                    pageStack.push(systemset);
+                }
+                else {
+                    systemdispatcher.setup();
+                    menulogo.send("systemset");
+                    pageStack.push(systemset);
+                }
             }
 
             else if (text == "systemmessage") {
@@ -146,8 +160,15 @@ Rectangle {
                 pageStack.push(systemmessage);
             }
             else if (text == "functioncollection") {
-                menulogo.send("functioncollection");
-                pageStack.push(functioncollection);
+                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    menulogo.send("functioncollection");
+                    pageStack.push(functioncollection);
+                }
+                else {
+                    systemdispatcher.setup();
+                    menulogo.send("functioncollection");
+                    pageStack.push(functioncollection);
+                }
             }
         }
     }

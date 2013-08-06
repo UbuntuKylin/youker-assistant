@@ -17,7 +17,6 @@
 import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
-import QtDesktop 0.1
 import "../common" as Common
 
 
@@ -163,7 +162,7 @@ Rectangle {
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
         }
-        ComboBox {
+        Common.ComboBox {
             id: iconcombo
             model: choices
             width: 200
@@ -206,7 +205,7 @@ Rectangle {
         spacing: 10
         Row {
             spacing: 20
-            Label {
+            Common.Label {
                 id: desktopiconlabel
                 width: 170
                 text: "由文件管理器处理桌面:"
@@ -233,7 +232,7 @@ Rectangle {
 
         Row {
             spacing: 20
-            Label {
+            Common.Label {
                 id: homefolderlabel
                 width: 170
                 text: "家文件夹:"
@@ -263,7 +262,7 @@ Rectangle {
 
         Row {
             spacing: 20
-            Label {
+            Common.Label {
                 id: networklabel
                 width: 170
                 text: "网络:"
@@ -289,7 +288,7 @@ Rectangle {
 
         Row {
             spacing: 20
-            Label {
+            Common.Label {
                 id: trashlabel
                 width: 170
                 text: "回收站:"
@@ -316,7 +315,7 @@ Rectangle {
 
         Row {
             spacing: 20
-            Label {
+            Common.Label {
                 id: devicelabel
                 width: 170
                 text: "移动设备:"

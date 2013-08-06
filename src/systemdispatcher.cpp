@@ -71,6 +71,95 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 
 }
 
+QString SystemDispatcher::get_system_daemon_qt() {
+    QDBusReply<QString> reply = systemiface->call("get_system_daemon");
+    return reply.value();
+}
+
+QString SystemDispatcher::get_dbus_method_value() {
+    passwordiface = new QDBusInterface("com.ubuntukylin.Password",
+                               "/",
+                                "com.ubuntukylin.Password",
+                               QDBusConnection::systemBus());
+//    qDebug() << passwordiface->property("DaemonVersion");//QVariant(QString, "0.6.29")
+    QDBusReply<QString> reply = passwordiface->call("auth_password");
+    qDebug() << reply.value();
+    return reply.value();
+}
+
+void SystemDispatcher::judge_process(QString flagstr, QString pwd) {
+    int value = 0;
+    QString str = "";
+    FILE *stream;
+    char buf[64];
+    memset(buf, '\0', sizeof(buf));
+    QString cmd = "ps -ef | grep " + flagstr + " | grep -v grep | wc -l";
+    QByteArray ba = cmd.toLatin1();
+    const char *str_cmd = ba.data();
+//    stream = popen("ps -ef | grep " + str_flag + " | grep -v grep | wc -l", "r" );
+    stream = popen(str_cmd, "r" );
+    fread(buf, sizeof(char), sizeof(buf), stream);
+    str = QString(buf);
+    value = str.toInt();
+    if (value == 0) {
+        qDebug() << "1234567";
+        QProcess *process = new QProcess;
+        qDebug() << "002";
+        process->start("/usr/bin/" + flagstr + " " + pwd);
+    }
+    else
+        qDebug() << "123456789";
+    pclose(stream);
+}
+
+void SystemDispatcher::setup() {
+    QString filename = "/tmp/youker.txt";
+    QFileInfo info(filename);
+    if(info.exists()) {
+        qDebug() << "passwd01";
+        QFile file(filename);
+        QString pwd = "";
+        if (file.open(QIODevice::ReadOnly)) {
+            qDebug() << "passwd001";
+            pwd = QString(file.readAll()).replace("\n","");
+            qDebug() << pwd;
+        }
+        judge_process("youkerpassword", pwd);
+        QString pass_value = get_dbus_method_value();
+        if (pass_value == "UbuntuKylin")
+            judge_process("youkersystem", pwd);
+        else {
+            AuthDialog *dialog = new AuthDialog;
+            dialog->exec();
+            qDebug() << passwd;
+            QByteArray ba = passwd.toLatin1();
+            const char *mypd = ba.data();
+            FILE *fp;
+            if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
+            {
+                qDebug() << "open password file error when exist!";
+            }
+            fputs(mypd,fp);
+            fclose(fp);
+            judge_process("youkersystem", passwd);
+        }
+    }
+    else {
+        qDebug() << "passwd02";
+        AuthDialog *dialog = new AuthDialog;
+        dialog->exec();
+        QByteArray ba = passwd.toLatin1();
+        const char *mypd = ba.data();
+        FILE *fp;
+        if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
+        {
+            qDebug() << "open password file error when no exist!";
+        }
+        fputs(mypd,fp);
+        fclose(fp);
+        judge_process("youkersystem", passwd);
+    }
+}
 
 void SystemDispatcher::get_music_path(QString musicpath) {
     qDebug() << "musicpath test 111";
@@ -485,32 +574,6 @@ QStringList SystemDispatcher::get_largestfile_args() {
 }
 
 
-void SystemDispatcher::set_samenamefile_args(QString str) {
-    samenamefile_args.append(str);
-}
-void SystemDispatcher::del_samenamefile_args(QString str) {
-    QStringList bake;
-    int len = samenamefile_args.length();
-    for (int i=0; i< len; i++) {
-        if (samenamefile_args[i] != str)
-            bake.append(samenamefile_args[i]);
-    }
-    samenamefile_args.clear();
-    samenamefile_args = bake;
-//    package_args.replaceInStrings(QString(str), QString(""));
-}
-void SystemDispatcher::clear_samenamefile_args() {
-    samenamefile_args.clear();
-}
-QStringList SystemDispatcher::get_samenamefile_args() {
-    return samenamefile_args;
-}
-//--------------------
-
-
-
-
-
 
 
 //QMap<QString, QStringList> SystemDispatcher::search_the_same_file(QString path) {
@@ -614,32 +677,4 @@ void SystemDispatcher::show_passwd_dialog() {
     qDebug() << passwd;
     qDebug() << "passwd222";
 
-
-//    FILE *pF = fopen( "filename", "w"  );
-//    QFile file("/home/file.dat");
-//    if (file.exists())
-//    {
-//        qDebug() << "read passwd exists.......";
-////            return true;
-//    }
-//    else
-//        qDebug() << "read passwd doesn't exists.......";
-//    file.open(QIODevice::WriteOnly);
-////    QDataStream stream(&file);
-////    stream.setVersion(9);
-////    stream << passwd;
-//    file.close();
-
-
-//    QFile file("/home/file.dat");
-//    if(!file.open(QIODevice::WriteOnly))
-//    {
-//        qDebug() << "read passwd error.......";
-////        std::cerr<<qPrintable(file.errorString())<<std::endl;
-////        return -1;
-//    }
-//    QDataStream stream(&file);
-//    stream.setVersion(9);
-//    stream << passwd;
-//    file.close();
 }

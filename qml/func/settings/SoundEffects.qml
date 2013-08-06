@@ -15,10 +15,8 @@
  */
 
 import QtQuick 1.1
-//import RegisterMyType 0.1
 import SessionType 0.1
 //import SystemType 0.1
-import QtDesktop 0.1
 import "../common" as Common
 
 import AudioType 0.1
@@ -150,7 +148,7 @@ Rectangle {
         }
         Row{
             spacing: 10
-            ComboBox {
+            Common.ComboBox {
                 id: iconcombo
                 width : 345
                 model: choices

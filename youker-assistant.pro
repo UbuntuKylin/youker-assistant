@@ -1,3 +1,3 @@
 TEMPLATE = subdirs
 
-SUBDIRS += src qml components
+SUBDIRS += src qml

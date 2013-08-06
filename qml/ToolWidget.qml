@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -17,7 +20,6 @@
 import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
-import QtDesktop 0.1
 //import "func/common" as Common
 //import "func"
 

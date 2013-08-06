@@ -9,5 +9,9 @@
         <file>image/closeBtn-hover.png</file>
         <file>image/minBtn.png</file>
         <file>image/minBtn-hover.png</file>
+        <file>image/dialog-feature.png</file>
+        <file>image/feature1.png</file>
+        <file>image/feature2.png</file>
+        <file>image/feature3.png</file>
     </qresource>
 </RCC>

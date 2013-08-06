@@ -17,7 +17,6 @@
 import QtQuick 1.1
 //import SessionType 0.1
 //import SystemType 0.1
-import QtDesktop 0.1
 import "common" as Common
 //坐边栏
 Rectangle {
@@ -198,7 +197,7 @@ Rectangle {
 
         Column {
             anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 20 }
-            Label {
+            Common.Label {
                 id: itemtip
 //                text: qsTr("<h1>一键清理项目</h1>")
                 text: "一键清理项目"

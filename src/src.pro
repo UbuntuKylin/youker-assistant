@@ -9,8 +9,6 @@ inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
 inst2.files += ../youker-assistant.desktop
 inst2.path = /usr/share/applications
-#inst3.files += ./libstyleplugin.so
-#inst3.path = /usr/lib/i386-linux-gnu/qt4/imports/QtDesktop/plugin/
 target.source += $$TARGET
 target.path = /usr/bin
 INSTALLS += inst1 \
@@ -18,8 +16,7 @@ INSTALLS += inst1 \
     target
 
 # Additional import path used to resolve QML modules in Creator's code model
-#QML_IMPORT_PATH = /usr/lib/i386-linux-gnu/qt4/imports/Qt/labs/components/plugin
-QML_IMPORT_PATH = /usr/lib/i386-linux-gnu/qt4/imports/QtDesktop/plugin
+#QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 HEADERS += youker-application.h \
@@ -30,7 +27,14 @@ HEADERS += youker-application.h \
     modaldialog.h \
     warningdialog.h \
     messagedialog.h \
-    qmlaudio.h
+    qmlaudio.h \
+    qrangemodel.h \
+    qrangemodel_p.h \
+    qstyleitem.h \
+    qwheelarea.h \
+    qtmenu.h \
+    qtmenuitem.h \
+    qtoplevelwindow.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -42,10 +46,13 @@ SOURCES += main.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
     messagedialog.cpp \
-    qmlaudio.cpp
-
-
-OTHER_FILES += youker-assistant/ihu.png
+    qmlaudio.cpp \
+    qrangemodel.cpp \
+    qstyleitem.cpp \
+    qwheelarea.cpp \
+    qtmenu.cpp \
+    qtmenuitem.cpp \
+    qtoplevelwindow.cpp
 
 RESOURCES += pixmap.qrc
 

@@ -39,6 +39,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     notify_str = "";
 }
 
+QString SessionDispatcher::get_session_daemon_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_session_daemon");
+    return reply.value();
+}
 
 void SessionDispatcher::get_system_message_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");

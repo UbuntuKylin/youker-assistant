@@ -15,7 +15,6 @@
  */
 
 import QtQuick 1.1
-//import RegisterMyType 0.1
 import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
@@ -123,6 +122,15 @@ Rectangle {
             //屏幕坏点检测
             if (flag == "CheckScreen")
                 sessiondispatcher.send_checkscreen_dialog();
+            else if (flag == "BootAnimation" || flag == "SoundEffects") {
+                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    iconClicked();
+                }
+                else {
+                    systemdispatcher.setup();
+                    iconClicked();
+                }
+            }
             else
                 iconClicked();
             //kobe:选中项深色块移动

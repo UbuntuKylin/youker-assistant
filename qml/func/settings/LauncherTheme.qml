@@ -41,15 +41,6 @@ Rectangle {
         anchors.fill: parent
     }
 
-
-    ListModel {
-        id: choices
-        ListElement { text: "theme" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
-    }
-
     Component.onCompleted: {
         launcherthemepage.launcher_size = slider.value;
 
@@ -130,7 +121,6 @@ Rectangle {
             leftMargin: 60
             top: settitle.bottom
             topMargin: 10
-
         }
         Row {
             spacing: 20
@@ -176,15 +166,17 @@ Rectangle {
 //                value: sessiondispatcher.get_launcher_icon_size_qt()
 //            }
 
-            Slider {
+            Common.Slider {
                 id: slider
                 value: sessiondispatcher.get_launcher_icon_size_qt()
+                width: 150
                 maximumValue: 64
                 minimumValue: 32
 //                tickmarksEnabled: true
                 stepSize: 1
                 animated: true
             }
+
             Text {
                 id: displaynum
                 text: slider.value
@@ -218,14 +210,7 @@ Rectangle {
                     }
                 }
             }
-            Common.ComboBox {
-                model: choices
-            }
         }
-
-
-
-
     }//Column
 
 }

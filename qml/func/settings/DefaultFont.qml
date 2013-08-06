@@ -14,10 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
-//import RegisterMyType 0.1
 import SessionType 0.1
 //import SystemType 0.1
-import QtDesktop 0.1
+//import QtDesktop 0.1
 import "../common" as Common
 
 
@@ -174,7 +173,7 @@ Rectangle {
 
         Row {
             spacing: 10
-            Label {
+            Common.Label {
                 id: fontslabel
                 width: 130
                 text: "当前字体:"
@@ -219,7 +218,7 @@ Rectangle {
 
         Row {
             spacing: 10
-            Label {
+            Common.Label {
                 id: desktopfontlabel
                 width: 130
                 text: "当前桌面字体:"
@@ -263,7 +262,7 @@ Rectangle {
 
         Row {
             spacing: 10
-            Label {
+            Common.Label {
                 id: monospacefontlabel
                 width: 130
                 text: "当前等宽字体:"  //monospace
@@ -307,7 +306,7 @@ Rectangle {
 
 
         Row {
-            Label {
+            Common.Label {
                 id: fontzoomlabel
                 width: 130
                 text: "全局字体缩放:"
@@ -315,7 +314,7 @@ Rectangle {
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
-            SpinBox {
+            Common.SpinBox {
                 id: fontzoomspinbox
                 width: 97
                 minimumValue: 0

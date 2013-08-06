@@ -1,11 +1,8 @@
 import QtQuick 1.1
+
 Item {
-    property string title:""
-    Image {
-        id: myimage
-        source: ""
-    }
+    id:tab
+    anchors.fill: parent
+    property string title
+    property int contentMargin
 }
-
-
-

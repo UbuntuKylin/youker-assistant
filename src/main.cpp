@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -13,22 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-
-//#include <QtGui/QGuiApplication>
-//#include "qtquick2applicationviewer/qtquick2applicationviewer.h"
-//#include "dispatcher.h"
-
-//#include <QObject>
-//#include <QString>
-//#include <QStringList>
-//#include <QQmlParserStatus>
-//#include <QQmlListProperty>
-//#include <QQmlExtensionPlugin>
-//#include <QQmlComponent>
-//#include <QDir>
-//#include <QDebug>
-//#include <unistd.h>
 
 // Qt
 #include <QApplication>
@@ -53,6 +40,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <QDialog>
+
+#include "qrangemodel.h"
+#include "qstyleitem.h"
+#include "qwheelarea.h"
+#include "qtmenu.h"
 int main(int argc, char** argv)
 {
 //    qmlRegisterType<Person>("People",1,0,"Person");
@@ -71,6 +63,11 @@ int main(int argc, char** argv)
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
+
+    qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
+    qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");
+    qmlRegisterType<QWheelArea>("WheelAreaType", 0, 1, "WheelArea");
+    qmlRegisterType<QtMenu>("MenuType", 0, 1, "Menu");
 
 //    system("ps -ef | grep youker-assistant-session-daemon | grep -v grep | wc -l");
 //    system("ps -ef | grep youker-assistant-system-daemon | grep -v grep | wc -l");

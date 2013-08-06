@@ -38,6 +38,9 @@
 #include <stdio.h>
 #include <string.h>
 
+
+#include <QtDBus>
+
 extern QString passwd;
 
 IhuApplication::IhuApplication(int &argc, char **argv)
@@ -53,12 +56,12 @@ inline bool isRunningInstalled() {
 
 inline QString getAppDirectory() {
     if (isRunningInstalled()) {
-        qDebug() << "111";
+        qDebug() << "1111111";
         qDebug() << QCoreApplication::applicationDirPath();
         return QString("/usr/share/youker-assistant/qml/");
 //        return QString("/usr/share/youker-assistant/qml/main.qml");//0720
     } else {
-        qDebug() << "222";
+        qDebug() << "22222222";
 //        qDebug() << QCoreApplication::applicationDirPath() + "/../qml/main.qml";
 //        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");//0720
         return QString(QCoreApplication::applicationDirPath() + "/../qml/");
@@ -66,49 +69,218 @@ inline QString getAppDirectory() {
 }
 
 
+//QString IhuApplication::get_dbus_method_value() {
+//    system1iface = new QDBusInterface("com.ubuntukylin.Password",
+//                               "/",
+//                                "com.ubuntukylin.Password",
+//                               QDBusConnection::systemBus());
+////    qDebug() << system1iface->property("DaemonVersion");//QVariant(QString, "0.6.29")
+//    QDBusReply<QString> reply = system1iface->call("auth_password");
+//    qDebug() << reply.value();
+//    return reply.value();
+//}
+
+//void IhuApplication::judge_process(QString flagstr, QString pwd) {
+//    int value = 0;
+//    QString str = "";
+//    FILE *stream;
+//    char buf[64];
+//    memset(buf, '\0', sizeof(buf));
+//    QString cmd = "ps -ef | grep " + flagstr + " | grep -v grep | wc -l";
+//    QByteArray ba = cmd.toLatin1();
+//    const char *str_cmd = ba.data();
+////    stream = popen("ps -ef | grep " + str_flag + " | grep -v grep | wc -l", "r" );
+//    stream = popen(str_cmd, "r" );
+//    fread(buf, sizeof(char), sizeof(buf), stream);
+//    str = QString(buf);
+//    value = str.toInt();
+//    if (value == 0) {
+//        qDebug() << "1234567";
+//        QProcess *process = new QProcess;
+//        if (flagstr == "youkersession") {
+//            qDebug() << "001";
+//            process->start("/usr/bin/" + flagstr);
+//        }
+//        else {
+//            qDebug() << "002";
+//            process->start("/usr/bin/" + flagstr + " " + pwd);
+//        }
+//    }
+//    else
+//        qDebug() << "123456789";
+//    pclose(stream);
+//}
+
 bool IhuApplication::setup()
 {
-    AuthDialog *dialog = new AuthDialog;
-    dialog->exec();
-    qDebug() << "passwd111";
-    qDebug() << passwd;
-    qDebug() << "passwd222";
 
-    int value = 0;
-    QString str = "";
-    FILE *stream_system;
-    char buf[64];
-    memset(buf, '\0', sizeof(buf));
-    stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
-    fread(buf, sizeof(char), sizeof(buf), stream_system);
-    str = QString(buf);
-    value = str.toInt();
-    if (value == 0) {
-        qDebug() << "1234567";
-        QProcess *process_system = new QProcess;
-        process_system->start("/usr/bin/youkersystem " + passwd);
+    bool debug_flag = false;
+    if (!debug_flag) {
+        int value = 0;
+        QString str = "";
+        char buf[64];
+        memset(buf, '\0', sizeof(buf));
+        FILE *stream_session;
+        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
+        fread(buf, sizeof(char), sizeof(buf), stream_session);
+        str = QString(buf);
+        value = str.toInt();
+        if (value == 0) {
+            qDebug() << "6789";
+            QProcess *process_session = new QProcess;
+            process_session->start("/usr/bin/youkersession");
+            qDebug() << "56789";
+        }
+        else
+            qDebug() << "67890";
+        memset(buf, '\0', sizeof(buf));
+        pclose(stream_session);
     }
-    else
-        qDebug() << "123456789";
-    pclose(stream_system);
+    else {
+        AuthDialog *dialog = new AuthDialog;
+        dialog->exec();
+        qDebug() << "passwd111";
+        qDebug() << passwd;
+        qDebug() << "passwd222";
+
+        int value = 0;
+        QString str = "";
+        FILE *stream_system;
+        char buf[64];
+        memset(buf, '\0', sizeof(buf));
+        stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
+        fread(buf, sizeof(char), sizeof(buf), stream_system);
+        str = QString(buf);
+        value = str.toInt();
+        if (value == 0) {
+            qDebug() << "1234567";
+            QProcess *process_system = new QProcess;
+            process_system->start("/usr/bin/youkersystem " + passwd);
+        }
+        else
+            qDebug() << "123456789";
+        pclose(stream_system);
 
 
-    FILE *stream_session;
-    memset(buf, '\0', sizeof(buf));
-    stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
-    fread(buf, sizeof(char), sizeof(buf), stream_session);
-    str = QString(buf);
-    value = str.toInt();
-    if (value == 0) {
-        qDebug() << "6789";
-        QProcess *process_session = new QProcess;
-        process_session->start("/usr/bin/youkersession");
-        qDebug() << "56789";
+        FILE *stream_session;
+        memset(buf, '\0', sizeof(buf));
+        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
+        fread(buf, sizeof(char), sizeof(buf), stream_session);
+        str = QString(buf);
+        value = str.toInt();
+        if (value == 0) {
+            qDebug() << "6789";
+            QProcess *process_session = new QProcess;
+            process_session->start("/usr/bin/youkersession");
+            qDebug() << "56789";
+        }
+        else
+            qDebug() << "67890";
+        memset(buf, '\0', sizeof(buf));
+        pclose(stream_session);
     }
-    else
-        qDebug() << "67890";
-    memset(buf, '\0', sizeof(buf));
-    pclose(stream_session);
+
+
+
+//    QString filename = "/tmp/youker.txt";
+//    QFileInfo info(filename);
+//    if(info.exists()) {
+//        qDebug() << "passwd01";
+//        QFile file(filename);
+//        QString pwd = "";
+//        if (file.open(QIODevice::ReadOnly)) {
+//            qDebug() << "passwd001";
+//            pwd = QString(file.readAll()).replace("\n","");
+//            qDebug() << pwd;
+//        }
+//        judge_process("youkerpassword", pwd);
+//        QString pass_value = get_dbus_method_value();
+//        if (pass_value == "UbuntuKylin") {
+//            judge_process("youkersystem", pwd);
+//            judge_process("youkersession", pwd);
+//        }
+//        else {
+//            AuthDialog *dialog = new AuthDialog;
+//            dialog->exec();
+//            qDebug() << passwd;
+//            QByteArray ba = passwd.toLatin1();
+//            const char *mypd = ba.data();
+//            FILE *fp;
+//            if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
+//            {
+//                qDebug() << "open password file error!";
+//            }
+//            fputs(mypd,fp);
+//            fclose(fp);
+//            judge_process("youkersystem", passwd);
+//            judge_process("youkersession", passwd);
+//        }
+//    }
+//    else {
+//        qDebug() << "passwd02";
+//        AuthDialog *dialog = new AuthDialog;
+//        dialog->exec();
+//        qDebug() << "passwd111";
+//        qDebug() << passwd;
+//        qDebug() << "passwd222";
+//        QByteArray ba = passwd.toLatin1();
+//        const char *mypd = ba.data();
+//        FILE *fp;
+//        if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
+//        {
+//            qDebug() << "error";
+//        }
+//        fputs(mypd,fp);
+//        fclose(fp);
+//        judge_process("youkersystem", passwd);
+//        judge_process("youkersession", passwd);
+//    }
+
+
+
+
+
+
+
+//    int a = system("/home/kobe/ps");
+//    qDebug() << "a->";
+//    qDebug() << a;
+
+//    int value = 0;
+//    QString str = "";
+//    FILE *stream_system;
+//    char buf[64];
+//    memset(buf, '\0', sizeof(buf));
+//    stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
+//    fread(buf, sizeof(char), sizeof(buf), stream_system);
+//    str = QString(buf);
+//    value = str.toInt();
+//    if (value == 0) {
+//        qDebug() << "1234567";
+//        QProcess *process_system = new QProcess;
+//        process_system->start("/usr/bin/youkersystem " + passwd);
+//    }
+//    else
+//        qDebug() << "123456789";
+//    pclose(stream_system);
+
+
+//    FILE *stream_session;
+//    memset(buf, '\0', sizeof(buf));
+//    stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
+//    fread(buf, sizeof(char), sizeof(buf), stream_session);
+//    str = QString(buf);
+//    value = str.toInt();
+//    if (value == 0) {
+//        qDebug() << "6789";
+//        QProcess *process_session = new QProcess;
+//        process_session->start("/usr/bin/youkersession");
+//        qDebug() << "56789";
+//    }
+//    else
+//        qDebug() << "67890";
+//    memset(buf, '\0', sizeof(buf));
+//    pclose(stream_session);
 
 
 

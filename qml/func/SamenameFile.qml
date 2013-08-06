@@ -16,8 +16,6 @@
 
 
 import QtQuick 1.1
-import QtDesktop 0.1
-//import RegisterMyType 0.1
 //import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
@@ -190,7 +188,7 @@ Item {
             }
         }
 
-        Label {
+        Common.Label {
             id: label
             visible: false
             text: ""
@@ -368,7 +366,7 @@ Item {
     }//Component
 
 
-    ScrollArea {
+    Common.ScrollArea {
         frame:false
         anchors.top: titlebar.bottom
         anchors.topMargin: 30

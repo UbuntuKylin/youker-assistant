@@ -17,7 +17,6 @@
 #define SYSTEMDISPATCHER_H
 
 #include <QObject>
-#include <QObject>
 #include <QDBusInterface>
 #include <QDBusConnection>
 #include <QApplication>
@@ -47,10 +46,14 @@ public:
 
     Q_INVOKABLE void check_screen_break_point();
 
+    Q_INVOKABLE QString get_system_daemon_qt();
 
     //---------------------------------
     //password
     Q_INVOKABLE void show_passwd_dialog();
+    Q_INVOKABLE void setup();
+    QString get_dbus_method_value();
+    void judge_process(QString flagstr, QString pwd);
 
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);
@@ -114,9 +117,11 @@ public:
 //    QMap<QString, QVariant> myinfo;
     QMap<QString, QVariant> apt_center;
     QDBusInterface *systemiface;
+    QDBusInterface *passwordiface;
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE QString get_str();
     QString notify_str;
+
 
 //-------------
     bool history_flag;
@@ -165,12 +170,6 @@ public:
     Q_INVOKABLE void del_largestfile_args(QString str);
     Q_INVOKABLE void clear_largestfile_args();
     Q_INVOKABLE QStringList get_largestfile_args();
-
-    QStringList samenamefile_args;
-    Q_INVOKABLE void set_samenamefile_args(QString str);
-    Q_INVOKABLE void del_samenamefile_args(QString str);
-    Q_INVOKABLE void clear_samenamefile_args();
-    Q_INVOKABLE QStringList get_samenamefile_args();
 
 //-------------
 
