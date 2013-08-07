@@ -127,7 +127,8 @@ Rectangle {
                 pageStack.push(desktopiconsetpage);
             else if (flag == "BootAnimation") {
                 console.log("BootAnimation clicked....");
-                systemdispatcher.setup();
+                if(systemdispatcher.get_system_daemon_qt() != "SystemDaemon")
+                    systemdispatcher.setup();
                 var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
                 if (component_boot.status == Component.Ready) {
                     pageStack.push(component_boot);
@@ -135,7 +136,8 @@ Rectangle {
             }
             else if (flag == "SoundEffects") {
                 console.log("SoundEffects clicked....");
-                systemdispatcher.setup();
+                if(systemdispatcher.get_system_daemon_qt() != "SystemDaemon")
+                    systemdispatcher.setup();
                 var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
                 if (component_sound.status == Component.Ready) {
                     pageStack.push(component_sound);

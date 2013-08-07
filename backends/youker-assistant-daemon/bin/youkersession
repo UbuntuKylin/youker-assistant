@@ -1,0 +1,12 @@
+#!/bin/bash
+ROOT_PATH=`dirname $0`
+if [ -e "/usr/share/youker-assistant-daemon" ];then 
+	#ROOT_PATH="/usr/share/youker-assistant-daemon"
+    ROOT_PATH="/usr/lib/python2.7/dist-packages/youker-assistant-daemon"
+    python $ROOT_PATH/src/youker-assistant-sessiondbus.py
+else   
+    cd $ROOT_PATH
+    python ../src/youker-assistant-sessiondbus.py
+fi
+
+

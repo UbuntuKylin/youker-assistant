@@ -27,6 +27,13 @@
 #include <QDataStream>
 #include <iostream>
 #include "authdialog.h"
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 extern QString passwd;
 extern QString music_path;
 
@@ -78,17 +85,6 @@ QString SystemDispatcher::get_system_daemon_qt() {
     return reply.value();
 }
 
-QString SystemDispatcher::get_dbus_method_value() {
-    passwordiface = new QDBusInterface("com.ubuntukylin.Password",
-                               "/",
-                                "com.ubuntukylin.Password",
-                               QDBusConnection::systemBus());
-//    qDebug() << passwordiface->property("DaemonVersion");//QVariant(QString, "0.6.29")
-    QDBusReply<QString> reply = passwordiface->call("auth_password");
-    qDebug() << reply.value();
-    return reply.value();
-}
-
 void SystemDispatcher::judge_process(QString flagstr, QString pwd) {
     int value = 0;
     QString str = "";
@@ -126,11 +122,25 @@ void SystemDispatcher::setup() {
         if (file.open(QIODevice::ReadOnly)) {
             pwd = QString(file.readAll()).replace("\n","");
         }
-        judge_process("youkerpassword", pwd);
-        QString pass_value = get_dbus_method_value();
-        if (pass_value == "UbuntuKylin")
+        qDebug() << "1111111111111111";
+        QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
+        QByteArray ba1 = cmd1.toLatin1();
+        const char *transpd = ba1.data();
+        int bb = system(transpd);
+        qDebug() << bb;
+        if (bb == 0) {
+            qDebug() << "4444444444444444yes";
+//            QString cmd2 = "/usr/bin/youkerpassword " + pwd;
+            QString cmd2 = "echo " + pwd + " | sudo -S rm /usr/bin/youker.txt";
+            QByteArray ba2 = cmd2.toLatin1();
+            const char *transpd2 = ba2.data();
+            int bb1 = system(transpd2);
+            qDebug() << bb1;
+            qDebug() << "4444444444444444over";
             judge_process("youkersystem", pwd);
+        }
         else {
+            qDebug() << "55555555555555555no";
             AuthDialog *dialog = new AuthDialog("提示：密码已更改，请重新输入正确密码，保证优客助手的正常使用。");
             dialog->exec();
             qDebug() << passwd;
@@ -147,6 +157,7 @@ void SystemDispatcher::setup() {
         }
     }
     else {
+        qDebug() << "66666666666666666";
         AuthDialog *dialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
         dialog->exec();
         QByteArray ba = passwd.toLatin1();

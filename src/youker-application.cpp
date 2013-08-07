@@ -115,6 +115,7 @@ bool IhuApplication::setup()
 {
 
     bool debug_flag = false;
+    //debug source
     if (!debug_flag) {
         int value = 0;
         QString str = "";
@@ -136,6 +137,7 @@ bool IhuApplication::setup()
         memset(buf, '\0', sizeof(buf));
         pclose(stream_session);
     }
+    //run deb package
     else {
         AuthDialog *dialog = new AuthDialog;
         dialog->exec();
@@ -181,60 +183,6 @@ bool IhuApplication::setup()
     }
 
 
-
-//    QString filename = "/tmp/youker.txt";
-//    QFileInfo info(filename);
-//    if(info.exists()) {
-//        qDebug() << "passwd01";
-//        QFile file(filename);
-//        QString pwd = "";
-//        if (file.open(QIODevice::ReadOnly)) {
-//            qDebug() << "passwd001";
-//            pwd = QString(file.readAll()).replace("\n","");
-//            qDebug() << pwd;
-//        }
-//        judge_process("youkerpassword", pwd);
-//        QString pass_value = get_dbus_method_value();
-//        if (pass_value == "UbuntuKylin") {
-//            judge_process("youkersystem", pwd);
-//            judge_process("youkersession", pwd);
-//        }
-//        else {
-//            AuthDialog *dialog = new AuthDialog;
-//            dialog->exec();
-//            qDebug() << passwd;
-//            QByteArray ba = passwd.toLatin1();
-//            const char *mypd = ba.data();
-//            FILE *fp;
-//            if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
-//            {
-//                qDebug() << "open password file error!";
-//            }
-//            fputs(mypd,fp);
-//            fclose(fp);
-//            judge_process("youkersystem", passwd);
-//            judge_process("youkersession", passwd);
-//        }
-//    }
-//    else {
-//        qDebug() << "passwd02";
-//        AuthDialog *dialog = new AuthDialog;
-//        dialog->exec();
-//        qDebug() << "passwd111";
-//        qDebug() << passwd;
-//        qDebug() << "passwd222";
-//        QByteArray ba = passwd.toLatin1();
-//        const char *mypd = ba.data();
-//        FILE *fp;
-//        if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
-//        {
-//            qDebug() << "error";
-//        }
-//        fputs(mypd,fp);
-//        fclose(fp);
-//        judge_process("youkersystem", passwd);
-//        judge_process("youkersession", passwd);
-//    }
 
 
 

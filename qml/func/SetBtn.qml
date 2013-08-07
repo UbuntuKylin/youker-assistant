@@ -110,7 +110,8 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (setbtn_flag == "onekey") {
-                systemdispatcher.setup();
+                if(systemdispatcher.get_system_daemon_qt() != "SystemDaemon")
+                    systemdispatcher.setup();
                 console.log("onekey clicked....");
                 console.log(systemdispatcher.get_onekey_args());
                 send_dynamic_picture("onekey");

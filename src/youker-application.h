@@ -36,10 +36,6 @@ public:
     IhuApplication(int &argc, char **argv);
     virtual ~IhuApplication();
     bool setup();
-//    QString get_dbus_method_value();
-//    void judge_process(QString flagstr, QString pwd);
-
-//    QDBusInterface *system1iface;
 private:
     QDeclarativeView *viewer;
 };

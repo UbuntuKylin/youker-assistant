@@ -52,7 +52,6 @@ public:
     //password
     Q_INVOKABLE void show_passwd_dialog();
     Q_INVOKABLE void setup();
-    QString get_dbus_method_value();
     void judge_process(QString flagstr, QString pwd);
 
     //get music path

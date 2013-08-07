@@ -153,10 +153,12 @@ Rectangle {
             else if (text == "systemset") {
                 sessiondispatcher.set_page_num(3);
                 if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    console.log("777777777777777777777");
                     menulogo.send("systemset");
                     pageStack.push(systemset);
                 }
                 else {
+                    console.log("8888888888888888888");
                     systemdispatcher.setup();
                     menulogo.send("systemset");
                     pageStack.push(systemset);
