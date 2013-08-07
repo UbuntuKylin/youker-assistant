@@ -18,7 +18,7 @@ import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
 import "../common" as Common
-
+import "../bars" as Bars
 import AudioType 0.1
 Rectangle {
     id: soundeffectspage
@@ -52,6 +52,7 @@ Rectangle {
 
     Component.onCompleted: {
 
+        console.log("sound......................................");
         soundeffectspage.init_sound_flag = false;
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
@@ -79,21 +80,21 @@ Rectangle {
             scrollbar_z = 1;
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "SoundEffects") {
-                if (soundeffectspage.default_sound != soundcombo.selectedText) {
-                    console.log("111");
-                    soundeffectspage.default_sound = soundcombo.selectedText;
-                    sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
-                }
-                else
-                    console.log("222");
-            }
-        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "SoundEffects") {
+//                if (soundeffectspage.default_sound != soundcombo.selectedText) {
+//                    console.log("111");
+//                    soundeffectspage.default_sound = soundcombo.selectedText;
+//                    sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+//                }
+//                else
+//                    console.log("222");
+//            }
+//        }
+//    }
 
 
     ListModel {
@@ -450,6 +451,53 @@ Rectangle {
                     }
                 }
             }
+        }
+    }
+
+    //顶层工具栏
+    Bars.TopBar {
+        id: topBar
+        width: 28
+        height: 26
+        anchors.top: parent.top
+        anchors.topMargin: 40
+        anchors.left: parent.left
+        anchors.leftMargin: 40
+        opacity: 0.9
+        onButtonClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+    }
+    //底层工具栏
+    Bars.ToolBar {
+        id: toolBar
+        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+        onQuitBtnClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+        onOkBtnClicked: {
+            console.log("sound ok");
+            if (soundeffectspage.default_sound != soundcombo.selectedText) {
+                console.log("111");
+                soundeffectspage.default_sound = soundcombo.selectedText;
+                sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+            }
+            else
+                console.log("222");
         }
     }
 }

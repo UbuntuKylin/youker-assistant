@@ -21,18 +21,19 @@ import "common" as Common
 
 Rectangle {
     id: scaleMe
-    scale: 0.0
+//    scale: 0.0
+    scale: 1
     property SessionDispatcher dis1: sessiondispatcher
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     width: 78
     height: 82
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
-    function iconClicked() {
-        scaleMe.state = "Details";
-        settigsDetails.setTitle = flag;
-//        console.log(settigsDetails.setTitle);
-    }
+//    function iconClicked() {
+//        scaleMe.state = "Details";
+//        settigsDetails.setTitle = flag;
+////        console.log(settigsDetails.setTitle);
+//    }
 
     Column {
         anchors.fill: parent
@@ -57,57 +58,57 @@ Rectangle {
         source: ""
     }
 
-    Connections {
-        target: topBar
-        //按下返回按钮
-        onButtonClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
-        //按下确定按钮
-//        onButton2Clicked: {
-//            console.log("111111111111");
-//            console.log(settigsDetails.setTitle);
-//            console.log("222222222222");
-//        }
-    }
+//    Connections {
+//        target: topBar
+//        //按下返回按钮
+//        onButtonClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+//        //按下确定按钮
+////        onButton2Clicked: {
+////            console.log("111111111111");
+////            console.log(settigsDetails.setTitle);
+////            console.log("222222222222");
+////        }
+//    }
 
-    Connections {
-        target: toolBar
-        //按下返回按钮
-        onQuitBtnClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
-        //按下确定按钮
-//        onButton2Clicked: {
-//            console.log("111111111111");
-//            console.log(settigsDetails.setTitle);
-//            console.log("222222222222");
-//        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下返回按钮
+//        onQuitBtnClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+//        //按下确定按钮
+////        onButton2Clicked: {
+////            console.log("111111111111");
+////            console.log(settigsDetails.setTitle);
+////            console.log("222222222222");
+////        }
+//    }
 
-    states: [
+/*    states: [
         State {
             name: "Original"; when: seticon.status == Image.Ready
             PropertyChanges { target: scaleMe; scale: 1 }
-        },
+        }*//*,
         State {
             name: "Details"
             PropertyChanges { target: scaleMe; scale: 1 }
             PropertyChanges { target: tools_widget; state: "DetailedView" }//展示细节页面,出现工具栏
-        }
-    ]
-    transitions: [
-        Transition {
-            from: "Original"; to: "Details"
-            ParentAnimation {
-                via: foreground
-                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-            }
-        },
-        Transition {
-            from: "Details"; to: "Original"
-            ParentAnimation {
-                via: foreground
-                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-            }
-        }
-    ]
+        }*/
+//    ]
+//    transitions: [
+//        Transition {
+//            from: "Original"; to: "Details"
+//            ParentAnimation {
+//                via: foreground
+//                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+//            }
+//        },
+//        Transition {
+//            from: "Details"; to: "Original"
+//            ParentAnimation {
+//                via: foreground
+//                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+//            }
+//        }
+//    ]
 
     MouseArea {
         id: signaltest
@@ -122,17 +123,30 @@ Rectangle {
             //屏幕坏点检测
             if (flag == "CheckScreen")
                 sessiondispatcher.send_checkscreen_dialog();
-            else if (flag == "BootAnimation" || flag == "SoundEffects") {
-                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-                    iconClicked();
-                }
-                else {
-                    systemdispatcher.setup();
-                    iconClicked();
+            else if (flag == "DesktopiconSet")
+                pageStack.push(desktopiconsetpage);
+            else if (flag == "BootAnimation") {
+                console.log("BootAnimation clicked....");
+                systemdispatcher.setup();
+                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
+                if (component_boot.status == Component.Ready) {
+                    pageStack.push(component_boot);
                 }
             }
-            else
-                iconClicked();
+            else if (flag == "SoundEffects") {
+                console.log("SoundEffects clicked....");
+                systemdispatcher.setup();
+                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
+                if (component_sound.status == Component.Ready) {
+                    pageStack.push(component_sound);
+                }
+            }
+            else if (flag == "MousePointer")
+                pageStack.push(mousepointerpage);
+            else if (flag == "TouchpadSet")
+                pageStack.push(touchpadsetpage);
+
+
             //kobe:选中项深色块移动
 //            scaleMe.GridView.view.currentIndex = index;
         }

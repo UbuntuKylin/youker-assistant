@@ -4,7 +4,7 @@
 
 QString passwd;
 
-AuthDialog::AuthDialog(QWidget *parent) :
+AuthDialog::AuthDialog(QString msg, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AuthDialog)
 {
@@ -19,6 +19,10 @@ AuthDialog::AuthDialog(QWidget *parent) :
 
     ui->lineEdit->setEchoMode(QLineEdit::Password);
     ui->lineEdit->setFocus();
+
+    //QLabel自动换行
+    ui->msg_label->setWordWrap(true);
+    ui->msg_label->setText(msg);
 
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));

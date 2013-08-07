@@ -19,7 +19,7 @@ import QtQuick 1.1
 //import SessionType 0.1
 import SystemType 0.1
 import "../common" as Common
-
+import "../bars" as Bars
 Rectangle {
     id: bootimagepage
     property bool on: true
@@ -43,9 +43,8 @@ Rectangle {
         anchors.fill: parent
     }
     Component.onCompleted: {
+        console.log("boot......................................");
         systemdispatcher.plymouth_init_check_qt();
-
-
         var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
         bootimagepage.num = plymouth_list.length;
         mainModel.clear();
@@ -81,17 +80,17 @@ Rectangle {
 
 
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "BootAnimation") {
-                console.log(bootimagepage.selectedimage);
-                systemdispatcher.custom_plymouth_bg_qt(bootimagepage.selectedimage);
-            }
-        }
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "BootAnimation") {
+//                console.log(bootimagepage.selectedimage);
+//                systemdispatcher.custom_plymouth_bg_qt(bootimagepage.selectedimage);
+//            }
+//        }
 
-    }
+//    }
     Column {
         spacing: 10
         anchors.top: parent.top
@@ -278,6 +277,54 @@ Rectangle {
                     lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
                 }
             }
+        }
+    }
+
+
+
+    //顶层工具栏
+    Bars.TopBar {
+        id: topBar
+        width: 28
+        height: 26
+        anchors.top: parent.top
+        anchors.topMargin: 40
+        anchors.left: parent.left
+        anchors.leftMargin: 40
+        opacity: 0.9
+        onButtonClicked: {
+            var num = sessiondispatcher.get_page_num();
+            console.log("aaaaaaaaa->");
+            console.log(num);
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+    }
+    //底层工具栏
+    Bars.ToolBar {
+        id: toolBar
+        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+        onQuitBtnClicked: {
+            var num = sessiondispatcher.get_page_num();
+            console.log("bbbbbbbbbbb->");
+            console.log(num);
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+        onOkBtnClicked: {
+            console.log("boot ok");
+            console.log(bootimagepage.selectedimage);
+            systemdispatcher.custom_plymouth_bg_qt(bootimagepage.selectedimage);
         }
     }
 }

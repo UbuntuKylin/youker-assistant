@@ -425,12 +425,12 @@ Rectangle {
 ////                       }
 //                }//右边栏Rectangle
             }//左右布局Row
-            SettingsDetails {
-                id: settigsDetails
-                width: parent.width
-                anchors.left: views.right
-                height: parent.height
-            }
+//            SettingsDetails {
+//                id: settigsDetails
+//                width: parent.width
+//                anchors.left: views.right
+//                height: parent.height
+//            }
             Item { id: foreground; anchors.fill: parent }
             //左右分割条
             Rectangle {id: midsplitbar1; x: 600; height: screen.height; width: 1; color: "#b9c5cc" }
@@ -440,40 +440,40 @@ Rectangle {
 
 
         //顶层工具栏
-        Bars.TopBar {
-            id: topBar
-            visible: false
-            width: 28
-            height: 26
-            anchors.top: parent.top
-            anchors.topMargin: 40
-            anchors.left: parent.left
-            anchors.leftMargin: 40
-            opacity: 0.9
-            onButtonClicked: {}
-        }
+//        Bars.TopBar {
+//            id: topBar
+//            visible: false
+//            width: 28
+//            height: 26
+//            anchors.top: parent.top
+//            anchors.topMargin: 40
+//            anchors.left: parent.left
+//            anchors.leftMargin: 40
+//            opacity: 0.9
+//            onButtonClicked: {}
+//        }
 
-        //工具栏
-        Bars.ToolBar {
-            id: toolBar
-            visible: false
-            height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("返回")
-//            button2Label: qsTr("确定")
-            onQuitBtnClicked: {}
-            onOkBtnClicked: {}
-        }
+//        //工具栏
+//        Bars.ToolBar {
+//            id: toolBar
+//            visible: false
+//            height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+////            button1Label: qsTr("返回")
+////            button2Label: qsTr("确定")
+//            onQuitBtnClicked: {}
+//            onOkBtnClicked: {}
+//        }
 
-        states: State {
-            name: "DetailedView"
-            PropertyChanges { target: views; x: -parent.width }
-            PropertyChanges { target: toolBar; visible: true }
-            PropertyChanges { target: topBar; visible: true }
-        }
+//        states: State {
+//            name: "DetailedView"
+//            PropertyChanges { target: views; x: -parent.width }
+//            PropertyChanges { target: toolBar; visible: true }
+//            PropertyChanges { target: topBar; visible: true }
+//        }
 
-        transitions: Transition {
-            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
-        }
+//        transitions: Transition {
+//            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
+//        }
     }//Rectangle:tools_widget
 }//Rectangle:screen
 

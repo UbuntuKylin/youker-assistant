@@ -21,7 +21,8 @@ import "common" as Common
 
 Rectangle {
     id: scaleMe
-    scale: 0.0
+//    scale: 0.0
+    scale: 1
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     //竖列高度和宽度
     width: 78
@@ -31,11 +32,11 @@ Rectangle {
 //    height: 78
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
-    function iconClicked() {
-        scaleMe.state = "Details";
-        settigsDetails.setTitle = flag;
-//        console.log(settigsDetails.setTitle);
-    }
+//    function iconClicked() {
+//        scaleMe.state = "Details";
+//        settigsDetails.setTitle = flag;
+////        console.log(settigsDetails.setTitle);
+//    }
 
     //竖列
     Column {
@@ -84,45 +85,45 @@ Rectangle {
     }
 
 
-    Connections {
-        target: toolBar
-        //按下返回按钮
-        onQuitBtnClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
-        //按下确定按钮
-//        onButton2Clicked: {
-//            console.log("111111111111");
-//            console.log(settigsDetails.setTitle);
-//            console.log("222222222222");
-//        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下返回按钮
+//        onQuitBtnClicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Original'
+//        //按下确定按钮
+////        onButton2Clicked: {
+////            console.log("111111111111");
+////            console.log(settigsDetails.setTitle);
+////            console.log("222222222222");
+////        }
+//    }
 
-    states: [
-        State {
-            name: "Original"; when: seticon.status == Image.Ready
-            PropertyChanges { target: scaleMe; scale: 1 }
-        },
-        State {
-            name: "Details"
-            PropertyChanges { target: scaleMe; scale: 1 }
-            PropertyChanges { target: setting_widget; state: "DetailedView" }//展示细节页面,出现工具栏
-        }
-    ]
-    transitions: [
-        Transition {
-            from: "Original"; to: "Details"
-            ParentAnimation {
-                via: foreground
-                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-            }
-        },
-        Transition {
-            from: "Details"; to: "Original"
-            ParentAnimation {
-                via: foreground
-                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-            }
-        }
-    ]
+//    states: [
+//        State {
+//            name: "Original"; when: seticon.status == Image.Ready
+//            PropertyChanges { target: scaleMe; scale: 1 }
+//        },
+//        State {
+//            name: "Details"
+//            PropertyChanges { target: scaleMe; scale: 1 }
+//            PropertyChanges { target: setting_widget; state: "DetailedView" }//展示细节页面,出现工具栏
+//        }
+//    ]
+//    transitions: [
+//        Transition {
+//            from: "Original"; to: "Details"
+//            ParentAnimation {
+//                via: foreground
+//                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+//            }
+//        },
+//        Transition {
+//            from: "Details"; to: "Original"
+//            ParentAnimation {
+//                via: foreground
+//                NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
+//            }
+//        }
+//    ]
 
     MouseArea {
         id: signaltest
@@ -137,8 +138,15 @@ Rectangle {
             //屏幕坏点检测
             if (flag == "CheckScreen")
                 sessiondispatcher.send_checkscreen_dialog();
-            else
-                iconClicked();
+            else if (flag == "BootAnimation") {
+                console.log("BootAnimation clicked....");
+                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
+                if (component_boot.status == Component.Ready) {
+                    pageStack.push(component_boot);
+                }
+            }
+//            else
+//                iconClicked();
             //kobe:选中项深色块移动
             scaleMe.GridView.view.currentIndex = index;
         }

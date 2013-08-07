@@ -18,7 +18,7 @@ import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
 import "../common" as Common
-
+import "../bars" as Bars
 Rectangle {
     id: mousepointerpage
     property bool on: true
@@ -52,48 +52,48 @@ Rectangle {
         }
 
     }
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "MousePointer") {
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "MousePointer") {
 
-//                console.log("333");
-//                console.log(mousepointerpage.default_cursor_theme);
-//                console.log(cursorcombo.selectedText);
-//                console.log("444");
+////                console.log("333");
+////                console.log(mousepointerpage.default_cursor_theme);
+////                console.log(cursorcombo.selectedText);
+////                console.log("444");
 
 
-                if (mousepointerpage.default_cursor_theme != cursorcombo.selectedText) {
-//                    console.log("555");
-                    mousepointerpage.default_cursor_theme = cursorcombo.selectedText;
-//                    console.log(cursorcombo.selectedText);
-                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-                }
-                else
-                    console.log("666");
-                //default:24
-
-//                console.log("777");
-//                console.log(mousepointerpage.cursor_size);
-//                console.log(themespinbox.value);
-//                console.log("888");
-
-//                if (mousepointerpage.cursor_size != themespinbox.value) {
-//                    mousepointerpage.cursor_size = themespinbox.value;
-//                    console.log(themespinbox.value);
-////                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
+//                if (mousepointerpage.default_cursor_theme != cursorcombo.selectedText) {
+////                    console.log("555");
+//                    mousepointerpage.default_cursor_theme = cursorcombo.selectedText;
+////                    console.log(cursorcombo.selectedText);
+//                    sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
 //                }
+//                else
+//                    console.log("666");
+//                //default:24
 
-                if(smallstyle.checked == true)
-                    sessiondispatcher.set_cursor_size_qt(24);
-                else if(bigstyle.checked == true)
-                    sessiondispatcher.set_cursor_size_qt(36);
+////                console.log("777");
+////                console.log(mousepointerpage.cursor_size);
+////                console.log(themespinbox.value);
+////                console.log("888");
 
-            }
+////                if (mousepointerpage.cursor_size != themespinbox.value) {
+////                    mousepointerpage.cursor_size = themespinbox.value;
+////                    console.log(themespinbox.value);
+//////                    sessiondispatcher.set_cursor_size_qt(themespinbox.value);
+////                }
 
-        }
-    }
+//                if(smallstyle.checked == true)
+//                    sessiondispatcher.set_cursor_size_qt(24);
+//                else if(bigstyle.checked == true)
+//                    sessiondispatcher.set_cursor_size_qt(36);
+
+//            }
+
+//        }
+//    }
     Column {
         spacing: 10
         anchors.top: parent.top
@@ -213,6 +213,58 @@ Rectangle {
         }
 
 
+    }
+    //顶层工具栏
+    Bars.TopBar {
+        id: topBar
+        width: 28
+        height: 26
+        anchors.top: parent.top
+        anchors.topMargin: 40
+        anchors.left: parent.left
+        anchors.leftMargin: 40
+        opacity: 0.9
+        onButtonClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+    }
+    //底层工具栏
+    Bars.ToolBar {
+        id: toolBar
+        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+        onQuitBtnClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+        onOkBtnClicked: {
+            console.log("mouser ok");
+            if (mousepointerpage.default_cursor_theme != cursorcombo.selectedText) {
+//                    console.log("555");
+                mousepointerpage.default_cursor_theme = cursorcombo.selectedText;
+//                    console.log(cursorcombo.selectedText);
+                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+            }
+            else
+                console.log("666");
+
+            if(smallstyle.checked == true)
+                sessiondispatcher.set_cursor_size_qt(24);
+            else if(bigstyle.checked == true)
+                sessiondispatcher.set_cursor_size_qt(36);
+        }
     }
 
 }

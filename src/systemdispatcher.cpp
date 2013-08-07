@@ -98,7 +98,6 @@ void SystemDispatcher::judge_process(QString flagstr, QString pwd) {
     QString cmd = "ps -ef | grep " + flagstr + " | grep -v grep | wc -l";
     QByteArray ba = cmd.toLatin1();
     const char *str_cmd = ba.data();
-//    stream = popen("ps -ef | grep " + str_flag + " | grep -v grep | wc -l", "r" );
     stream = popen(str_cmd, "r" );
     fread(buf, sizeof(char), sizeof(buf), stream);
     str = QString(buf);
@@ -118,34 +117,26 @@ void SystemDispatcher::setup() {
 
     QString homepath = QDir::homePath();
     QString filename = homepath + "/.youker";
-    qDebug() << "111111111111111111111111111111";
-    qDebug() << filename;
     QByteArray tans = filename.toLatin1();
     const char *file_name = tans.data();
-    qDebug() << file_name;
-    qDebug() << "22222222222222222222222";
     QFileInfo info(filename);
     if(info.exists()) {
-        qDebug() << "passwd01";
         QFile file(filename);
         QString pwd = "";
         if (file.open(QIODevice::ReadOnly)) {
-            qDebug() << "passwd001";
             pwd = QString(file.readAll()).replace("\n","");
-            qDebug() << pwd;
         }
         judge_process("youkerpassword", pwd);
         QString pass_value = get_dbus_method_value();
         if (pass_value == "UbuntuKylin")
             judge_process("youkersystem", pwd);
         else {
-            AuthDialog *dialog = new AuthDialog;
+            AuthDialog *dialog = new AuthDialog("提示：密码已更改，请重新输入正确密码，保证优客助手的正常使用。");
             dialog->exec();
             qDebug() << passwd;
             QByteArray ba = passwd.toLatin1();
             const char *mypd = ba.data();
             FILE *fp;
-//            if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
             if((fp=fopen(file_name, "w")) == NULL)
             {
                 qDebug() << "open password file error when exist!";
@@ -156,13 +147,11 @@ void SystemDispatcher::setup() {
         }
     }
     else {
-        qDebug() << "passwd02";
-        AuthDialog *dialog = new AuthDialog;
+        AuthDialog *dialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
         dialog->exec();
         QByteArray ba = passwd.toLatin1();
         const char *mypd = ba.data();
         FILE *fp;
-//        if((fp=fopen("/tmp/youker.txt", "w")) == NULL)
         if((fp=fopen(file_name, "w")) == NULL)
         {
             qDebug() << "open password file error when no exist!";

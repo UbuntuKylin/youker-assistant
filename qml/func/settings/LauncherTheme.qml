@@ -18,7 +18,7 @@ import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
 import "../common" as Common
-
+import "../bars" as Bars
 Rectangle {
     id: launcherthemepage
     property bool on: true
@@ -54,19 +54,19 @@ Rectangle {
             showdesktopswitcher.switchedOn = false;
     }
 
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "LauncherTheme") {
-//                console.log(launcherlabel.text);
-                if (launcherthemepage.launcher_size != slider.value) {
-                    launcherthemepage.launcher_size = slider.value;
-                    sessiondispatcher.set_launcher_icon_size_qt(slider.value);
-                }
-            }
-        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "LauncherTheme") {
+////                console.log(launcherlabel.text);
+//                if (launcherthemepage.launcher_size != slider.value) {
+//                    launcherthemepage.launcher_size = slider.value;
+//                    sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+//                }
+//            }
+//        }
+//    }
 
     Column {
         spacing: 10
@@ -212,6 +212,49 @@ Rectangle {
         }
     }//Column
 
+    //顶层工具栏
+    Bars.TopBar {
+        id: topBar
+        width: 28
+        height: 26
+        anchors.top: parent.top
+        anchors.topMargin: 40
+        anchors.left: parent.left
+        anchors.leftMargin: 40
+        opacity: 0.9
+        onButtonClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+    }
+    //底层工具栏
+    Bars.ToolBar {
+        id: toolBar
+        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+        onQuitBtnClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+        onOkBtnClicked: {
+            if (launcherthemepage.launcher_size != slider.value) {
+                console.log("launcher ok");
+                launcherthemepage.launcher_size = slider.value;
+                sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+            }
+        }
+    }
 }
 
 

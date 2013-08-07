@@ -18,7 +18,7 @@ import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
 import "../common" as Common
-
+import "../bars" as Bars
 
 //Gtk:GtkFontButton
 
@@ -68,6 +68,7 @@ Rectangle {
     {
         target: sessiondispatcher
         onFinishSetFont: {
+            console.log("titlebar font ok");
             if (font_style == "titlebarfont") {
                 titlebarfontpage.titlebar_font_flag = true;
                 titlefont.text = sessiondispatcher.get_window_title_font_qt();
@@ -188,6 +189,44 @@ Rectangle {
 //        anchors.leftMargin: 100
 //        onClicked: sessiondispatcher.show_color_dialog();
 //    }
+
+    //顶层工具栏
+    Bars.TopBar {
+        id: topBar
+        width: 28
+        height: 26
+        anchors.top: parent.top
+        anchors.topMargin: 40
+        anchors.left: parent.left
+        anchors.leftMargin: 40
+        opacity: 0.9
+        onButtonClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+    }
+    //底层工具栏
+    Bars.ToolBar {
+        id: toolBar
+        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+        onQuitBtnClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+        onOkBtnClicked: {}
+    }
 }
 
 

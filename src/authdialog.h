@@ -32,7 +32,7 @@ class AuthDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit AuthDialog(QWidget *parent = 0);
+    explicit AuthDialog(QString msg = "", QWidget *parent = 0);
     ~AuthDialog();
 
 private slots:

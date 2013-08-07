@@ -71,7 +71,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="avatar_2">
+  <widget class="QLabel" name="msg_label">
    <property name="geometry">
     <rect>
      <x>14</x>
@@ -84,7 +84,7 @@
     <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;提示：&lt;span style=&quot; font-size:9pt;&quot;&gt;请输入当前用户 密码，确保优客助手正常使用。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string/>
    </property>
    <property name="pixmap">
     <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
@@ -143,7 +143,7 @@
   <zorder>okButton</zorder>
   <zorder>btn_close</zorder>
   <zorder>btn_min</zorder>
-  <zorder>avatar_2</zorder>
+  <zorder>msg_label</zorder>
   <zorder>label</zorder>
   <zorder>lineEdit</zorder>
  </widget>

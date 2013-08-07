@@ -19,7 +19,7 @@ import QtQuick 1.1
 import "../common" as Common
 Item {
      id: topbar
-     property string arrow: 'return.png'   //'../../img/icons/return.png'
+     property string arrow: "../../img/icons/return.png"
 //     property string actiontitle: ""
 //     property string actiontext: ""
      signal buttonClicked

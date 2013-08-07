@@ -164,6 +164,63 @@ Item {
                         FunctionCollection {dis: systemdispatcher}
                     }
 
+
+
+
+
+                    //systemset-pages
+
+                    Common.Page {
+                        id: widgetthemepage
+                        visible: false
+                        Settings.WidgetTheme {}
+                    }
+                    Common.Page {
+                        id: desktopiconsetpage
+                        visible: false
+                        Settings.DesktopiconSet {}
+                    }
+                    Common.Page {
+                        id: mousepointerpage
+                        visible: false
+                        Settings.MousePointer {}
+                    }
+
+//                    Common.Page {
+//                        id: soundeffectspage
+//                        visible: false
+//                        Settings.SoundEffects {}
+//                    }
+//                    Common.Page {
+//                        id: bootanimationpage
+//                        visible: false
+//                        Settings.BootAnimation {}
+//                    }
+                    Common.Page {
+                        id: launcherthemepage
+                        visible: false
+                        Settings.LauncherTheme {}
+                    }
+                    Common.Page {
+                        id: defaultfontpage
+                        visible: false
+                        Settings.DefaultFont {}
+                    }
+                    Common.Page {
+                        id: documentfontpage
+                        visible: false
+                        Settings.DocumentFont {}
+                    }
+                    Common.Page {
+                        id: titlebarfontpage
+                        visible: false
+                        Settings.TitlebarFont {}
+                    }
+                    Common.Page {
+                        id: touchpadsetpage
+                        visible: false
+                        Settings.TouchpadSet {}
+                    }
                 }
             }
 //---------------------------------------

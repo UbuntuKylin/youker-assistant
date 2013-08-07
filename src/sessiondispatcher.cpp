@@ -37,6 +37,16 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                QDBusConnection::sessionBus());
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
     notify_str = "";
+    page_num = 0;
+}
+
+
+void SessionDispatcher::set_page_num(int num) {
+    page_num = num;
+}
+
+int SessionDispatcher::get_page_num() {
+    return page_num;
 }
 
 QString SessionDispatcher::get_session_daemon_qt() {

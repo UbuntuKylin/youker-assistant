@@ -18,7 +18,7 @@ import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
 import "../common" as Common
-
+import "../bars" as Bars
 
 Rectangle {
     id: desktopiconsetpage
@@ -78,24 +78,24 @@ Rectangle {
         else
             deviceswitcher.switchedOn = false;
     }
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "DesktopBackground") {
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "DesktopBackground") {
 
-                //default:ubuntukylin-icon-theme
-                if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
-                    console.log("333");
-                    desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
-                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                }
-                else
-                    console.log("444");
-            }
+//                //default:ubuntukylin-icon-theme
+//                if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
+//                    console.log("333");
+//                    desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
+//                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//                }
+//                else
+//                    console.log("444");
+//            }
 
-        }
-    }
+//        }
+//    }
 
     ListModel {
         id: choices
@@ -462,7 +462,53 @@ Rectangle {
 
 
 
-
+    //顶层工具栏
+    Bars.TopBar {
+        id: topBar
+        width: 28
+        height: 26
+        anchors.top: parent.top
+        anchors.topMargin: 40
+        anchors.left: parent.left
+        anchors.leftMargin: 40
+        opacity: 0.9
+        onButtonClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+    }
+    //底层工具栏
+    Bars.ToolBar {
+        id: toolBar
+        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+        onQuitBtnClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+        onOkBtnClicked: {
+            console.log("dekstop ok");
+            //default:ubuntukylin-icon-theme
+            if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
+                console.log("333");
+                desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
+                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+            }
+            else
+                console.log("444");
+        }
+    }
 
 
 

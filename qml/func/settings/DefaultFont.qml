@@ -19,7 +19,7 @@ import SessionType 0.1
 //import QtDesktop 0.1
 import "../common" as Common
 
-
+import "../bars" as Bars
 //Gtk:GtkFontButton
 
 //     http://www.doc88.com/p-313626987748.html
@@ -71,16 +71,16 @@ Rectangle {
             defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         }
     }
-    Connections {
-        target: toolBar
-        //按下确定按钮
-        onOkBtnClicked: {
-            if (settigsDetails.setTitle == "DefaultFont") {
-//                console.log(fontzoomspinbox.value);
-                sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);
-            }
-        }
-    }
+//    Connections {
+//        target: toolBar
+//        //按下确定按钮
+//        onOkBtnClicked: {
+//            if (settigsDetails.setTitle == "DefaultFont") {
+////                console.log(fontzoomspinbox.value);
+//                sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);
+//            }
+//        }
+//    }
 
 
     //信号绑定，绑定qt的信号finishSetFont，该信号emit时触发onFinishSetFont
@@ -337,6 +337,47 @@ Rectangle {
 //        anchors.leftMargin: 100
 //        onClicked: sessiondispatcher.show_color_dialog();
 //    }
+
+    //顶层工具栏
+    Bars.TopBar {
+        id: topBar
+        width: 28
+        height: 26
+        anchors.top: parent.top
+        anchors.topMargin: 40
+        anchors.left: parent.left
+        anchors.leftMargin: 40
+        opacity: 0.9
+        onButtonClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+    }
+    //底层工具栏
+    Bars.ToolBar {
+        id: toolBar
+        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+//            button1Label: qsTr("返回")
+//            button2Label: qsTr("确定")
+        onQuitBtnClicked: {
+            var num = sessiondispatcher.get_page_num();
+            if (num == 0)
+                pageStack.push(homepage)
+            else if (num == 3)
+                pageStack.push(systemset)
+            else if (num == 4)
+                pageStack.push(functioncollection)
+        }
+        onOkBtnClicked: {
+            console.log("default font ok");
+            sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);}
+    }
+
 }
 
 

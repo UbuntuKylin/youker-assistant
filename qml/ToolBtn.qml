@@ -56,7 +56,7 @@ Rectangle {
         source: ""
     }
 
-    signal send(string a)
+    signal send(string a);
     MouseArea {
         id: signaltest
         hoverEnabled: true
@@ -129,10 +129,17 @@ Rectangle {
             //kobe:选中项深色块移动
 //            menulogo.GridView.view.currentIndex = index;
             if (text == "homepage") {
+                sessiondispatcher.set_page_num(0);
                 menulogo.send("homepage");
                 pageStack.push(homepage);
             }
+            else if (text == "systemmessage") {
+                sessiondispatcher.set_page_num(1);
+                menulogo.send("systemmessage");
+                pageStack.push(systemmessage);
+            }
             else if (text == "clearrubbish") {
+                sessiondispatcher.set_page_num(2);
                 if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
                     menulogo.send("clearrubbish");
                     pageStack.push(clearrubbish);
@@ -144,6 +151,7 @@ Rectangle {
                 }
             }
             else if (text == "systemset") {
+                sessiondispatcher.set_page_num(3);
                 if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
                     menulogo.send("systemset");
                     pageStack.push(systemset);
@@ -154,12 +162,8 @@ Rectangle {
                     pageStack.push(systemset);
                 }
             }
-
-            else if (text == "systemmessage") {
-                menulogo.send("systemmessage");
-                pageStack.push(systemmessage);
-            }
             else if (text == "functioncollection") {
+                sessiondispatcher.set_page_num(4);
                 if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
                     menulogo.send("functioncollection");
                     pageStack.push(functioncollection);

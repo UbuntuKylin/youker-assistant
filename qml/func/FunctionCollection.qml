@@ -98,35 +98,35 @@ Item {
                 focus: true
             }
 
-            SettingsDetails {
-                id: settigsDetails
-                width: parent.width
-                anchors.left: views.right
-                height: parent.height
-            }
+//            SettingsDetails {
+//                id: settigsDetails
+//                width: parent.width
+//                anchors.left: views.right
+//                height: parent.height
+//            }
             Item { id: foreground; anchors.fill: parent }
         }
 
 //        //工具栏
-        Bars.ToolBar {
-            id: toolBar
-            visible: false
-            height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("返回")
-//            button2Label: qsTr("确定")
-//            onButton1Clicked: {}
-//            onButton2Clicked: {}
-        }
+//        Bars.ToolBar {
+//            id: toolBar
+//            visible: false
+//            height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+////            button1Label: qsTr("返回")
+////            button2Label: qsTr("确定")
+////            onButton1Clicked: {}
+////            onButton2Clicked: {}
+//        }
 
-        states: State {
-            name: "DetailedView"
-            PropertyChanges { target: views; x: -parent.width }
-            PropertyChanges { target: toolBar; visible: true }
-        }
+//        states: State {
+//            name: "DetailedView"
+//            PropertyChanges { target: views; x: -parent.width }
+//            PropertyChanges { target: toolBar; visible: true }
+//        }
 
-        transitions: Transition {
-            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
-        }
+//        transitions: Transition {
+//            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
+//        }
     }
 }
 

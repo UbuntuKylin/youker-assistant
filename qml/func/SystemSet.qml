@@ -206,39 +206,39 @@ Item {
                     }
                 }
             }
-            SettingsDetails {
-                id: settigsDetails
-                width: parent.width
-                anchors.left: views.right
-                height: parent.height
-            }
+//            SettingsDetails {
+//                id: settigsDetails
+//                width: parent.width
+//                anchors.left: views.right
+//                height: parent.height
+//            }
             Item { id: foreground; anchors.fill: parent }
         }
 
-        //顶层工具栏
-        Bars.TopBar {
-            id: topBar
-            visible: false
-            width: 28
-            height: 26
-            anchors.top: parent.top
-            anchors.topMargin: 40
-            anchors.left: parent.left
-            anchors.leftMargin: 40
-            opacity: 0.9
-            onButtonClicked: {}
-        }
+////        顶层工具栏
+//        Bars.TopBar {
+//            id: topBar
+//            visible: false
+//            width: 28
+//            height: 26
+//            anchors.top: parent.top
+//            anchors.topMargin: 40
+//            anchors.left: parent.left
+//            anchors.leftMargin: 40
+//            opacity: 0.9
+//            onButtonClicked: {}
+//        }
 
-        //底层工具栏
-        Bars.ToolBar {
-            id: toolBar
-            visible: false
-            height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("返回")
-//            button2Label: qsTr("确定")
-            onQuitBtnClicked: {}
-            onOkBtnClicked: {}
-        }
+//        //底层工具栏
+//        Bars.ToolBar {
+//            id: toolBar
+//            visible: false
+//            height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
+////            button1Label: qsTr("返回")
+////            button2Label: qsTr("确定")
+//            onQuitBtnClicked: {}
+//            onOkBtnClicked: {}
+//        }
 
 //        states: State {
 //            name: "DetailedView"
@@ -246,24 +246,24 @@ Item {
 //            PropertyChanges { target: toolBar; visible: true }
 //            PropertyChanges { target: topBar; visible: true }
 //        }
-        states: [
-            State {
-                name: "DetailedView"
-                PropertyChanges { target: views; x: -parent.width }
-                PropertyChanges { target: toolBar; visible: true }
-                PropertyChanges { target: topBar; visible: true }
-            },
-            State {
-                name: "DetailedView1"
-                PropertyChanges { target: views; x: -parent.width }
-                PropertyChanges { target: toolBar; visible: false }
-                PropertyChanges { target: topBar; visible: true }
-            }
-        ]
+//        states: [
+//            State {
+//                name: "DetailedView"
+//                PropertyChanges { target: views; x: -parent.width }
+//                PropertyChanges { target: toolBar; visible: true }
+//                PropertyChanges { target: topBar; visible: true }
+//            },
+//            State {
+//                name: "DetailedView1"
+//                PropertyChanges { target: views; x: -parent.width }
+//                PropertyChanges { target: toolBar; visible: false }
+//                PropertyChanges { target: topBar; visible: true }
+//            }
+//        ]
 
-        transitions: Transition {
-            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
-        }
+//        transitions: Transition {
+//            NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.InOutQuad }
+//        }
     }
 }
 

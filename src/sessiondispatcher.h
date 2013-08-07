@@ -46,6 +46,11 @@ public:
     Q_INVOKABLE void send_warningdialog_msg(QString title, QString content);
     void create_warningdialog(QString title, QString content);
 
+
+    Q_INVOKABLE void set_page_num(int num);
+    Q_INVOKABLE int get_page_num();
+    int page_num;
+
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE void del_str(QString str);
     Q_INVOKABLE QString get_str();
