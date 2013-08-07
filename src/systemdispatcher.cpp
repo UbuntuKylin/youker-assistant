@@ -74,7 +74,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 
 
     notify_str = "";
-    history_flag = false;
+    history_flag = true;
     onekey_args << "cache" << "history" << "cookies" << "unneed";
     onekey_args2 << "cache" << "history" << "cookies" << "unneed";
 
