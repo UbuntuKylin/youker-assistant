@@ -328,7 +328,7 @@ Rectangle {
 
                     State {
                     name: "StatusC1"
-                    PropertyChanges { target: cachestatus; source: "../img/toolWidget/open.png"}
+                    PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
                 }
             ]
         }
@@ -347,7 +347,7 @@ Rectangle {
 
                     State {
                     name: "StatusH1"
-                    PropertyChanges { target: historystatus; source: "../img/toolWidget/open.png"}
+                    PropertyChanges { target: historystatus; source: "../img/toolWidget/exception.png"}
                 }
             ]
         }
@@ -366,7 +366,7 @@ Rectangle {
 
                     State {
                     name: "StatusK1"
-                    PropertyChanges { target: cookiestatus; source: "../img/toolWidget/open.png"}
+                    PropertyChanges { target: cookiestatus; source: "../img/toolWidget/exception.png"}
                 }
             ]
         }
@@ -385,7 +385,7 @@ Rectangle {
 
                     State {
                     name: "StatusU1"
-                    PropertyChanges { target: unneedstatus; source: "../img/toolWidget/open.png"}
+                    PropertyChanges { target: unneedstatus; source: "../img/toolWidget/exception.png"}
                 }
 
             ]
