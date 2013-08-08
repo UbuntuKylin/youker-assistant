@@ -162,7 +162,6 @@ public:
     /*-------------------sound of beauty-------------------*/
     Q_INVOKABLE void set_login_music_enable_qt(bool flag);
     Q_INVOKABLE bool get_login_music_enable_qt();
-    Q_INVOKABLE QStringList get_sound_themes_qt();
     Q_INVOKABLE QString get_sound_theme_qt();
     Q_INVOKABLE void set_sound_theme_qt(QString theme);
     

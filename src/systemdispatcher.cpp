@@ -55,6 +55,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     //over
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
     //status
@@ -90,17 +91,26 @@ QString SystemDispatcher::get_system_daemon_qt_default() {
     return reply.value();
 }
 
-void SystemDispatcher::judge_process(QString flagstr, QString pwd) {
+bool SystemDispatcher::judge_process(QString flagstr, QString pwd) {
     QString system_value = get_system_daemon_qt_default();
     qDebug() << "SystemDaemon00000";
     qDebug() << system_value;
-    if (system_value == "SystemDaemon")
+    if (system_value == "SystemDaemon") {
         qDebug() << "SystemDaemon11111";
+        return true;
+    }
     else {
         QProcess *process = new QProcess;
         qDebug() << "SystemDaemon22222";
         process->start("/usr/bin/" + flagstr + " " + pwd);
         qDebug() << "SystemDaemon33333";
+        return false;
+//        QString sys_cmd = "/usr/bin/" + flagstr + " " + pwd;
+//        QByteArray ba = sys_cmd.toLatin1();
+//        const char *cmd = ba.data();
+//        qDebug() << cmd;
+//        int bb = system(cmd);
+//        qDebug() << bb;
     }
 
 
@@ -127,13 +137,14 @@ void SystemDispatcher::judge_process(QString flagstr, QString pwd) {
 //    pclose(stream);
 }
 
-void SystemDispatcher::setup() {
+bool SystemDispatcher::setup() {
 
     QString homepath = QDir::homePath();
     QString filename = homepath + "/.youker";
     QByteArray tans = filename.toLatin1();
     const char *file_name = tans.data();
     QFileInfo info(filename);
+    bool value;
     if(info.exists()) {
         QFile file(filename);
         QString pwd = "";
@@ -155,7 +166,10 @@ void SystemDispatcher::setup() {
             int bb1 = system(transpd2);
             qDebug() << bb1;
             qDebug() << "4444444444444444over";
-            judge_process("youkersystem", pwd);
+            value =  judge_process("youkersystem", pwd);
+            qDebug() << value;
+            qDebug() << "4444444--1";
+            return value;
         }
         else {
             qDebug() << "55555555555555555no";
@@ -171,7 +185,10 @@ void SystemDispatcher::setup() {
             }
             fputs(mypd,fp);
             fclose(fp);
-            judge_process("youkersystem", passwd);
+            value = judge_process("youkersystem", passwd);
+            qDebug() << value;
+            qDebug() << "4444444--2";
+            return value;
         }
     }
     else {
@@ -187,7 +204,10 @@ void SystemDispatcher::setup() {
         }
         fputs(mypd,fp);
         fclose(fp);
-        judge_process("youkersystem", passwd);
+        value = judge_process("youkersystem", passwd);
+        qDebug() << value;
+        qDebug() << "4444444--3";
+        return value;
     }
 }
 
@@ -242,6 +262,11 @@ void SystemDispatcher::handler_clear_rubbish_main_onekey(QString msg)
 {
      emit finishCleanWorkMain(msg);
 }
+
+void SystemDispatcher::handler_clear_rubbish_main_error(QString msg)
+{
+     emit finishCleanWorkMainError(msg);
+}
 void SystemDispatcher::handler_clear_rubbish_second_onekey(QString msg)
 {
      emit finishCleanWorkSecond(msg);
@@ -293,6 +318,10 @@ void SystemDispatcher::check_screen_break_point() {
 
 
 //-----------------------sound------------------------
+QStringList SystemDispatcher::get_sound_themes_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("get_sound_themes");
+    return reply.value();
+}
 QStringList SystemDispatcher::get_sounds_qt() {
     QDBusReply<QStringList> reply = systemiface->call("get_sounds");
     return reply.value();
@@ -430,10 +459,15 @@ QStringList SystemDispatcher::scan_softwarecenter_cruft_qt() {
 //    qDebug() << "bb";
 //}
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
-//    qDebug() << "aa";
+    qDebug() << "aa";
     qDebug() << strlist;
     QDBusReply<void> reply = systemiface->call("clean_by_main_one_key", strlist);
-//    qDebug() << "bb";
+    if (reply.isValid()) {
+        qDebug() << "bb";
+    }
+    else {
+        qDebug() << "cc";
+    }
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
 //    qDebug() << "aa";

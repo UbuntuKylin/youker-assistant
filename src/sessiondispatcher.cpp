@@ -526,10 +526,6 @@ bool SessionDispatcher::get_login_music_enable_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_login_music_enable");
     return reply.value();
 }
-QStringList SessionDispatcher::get_sound_themes_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_sound_themes");
-    return reply.value();
-}
 
 QString SessionDispatcher::get_sound_theme_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_sound_theme");

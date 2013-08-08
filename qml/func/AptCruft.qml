@@ -222,8 +222,10 @@ Item {
                  if (btn_flag == "apt_scan") {
                      console.log("apt_scan---------------");
                      apt_signal("AptWork");
-                     if(root.null_flag == true)
+                     if(root.null_flag == true) {
                         root.state = "AptWorkEmpty";
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                     }
                      else if(root.null_flag == false)
                         root.state = "AptWork";
                  }

@@ -250,8 +250,10 @@ Item {
                  if (btn_flag == "cookies_scan") {
                      console.log("cookies_scan---------------");
                      cookies_signal("CookiesWork");
-                     if(root.null_flag == true)
+                     if(root.null_flag == true) {
                         root.state = "CookiesWorkEmpty";
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                     }
                      else if(root.null_flag == false)
                         root.state = "CookiesWork";
                  }

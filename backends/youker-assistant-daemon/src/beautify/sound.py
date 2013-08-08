@@ -146,5 +146,5 @@ if __name__ == '__main__':
 # 	sss.set_login_music_enable(False)
 #   print sss.get_sound_themes()
 #	print sss.get_sound_theme()
-	print sss.get_sounds()
+#	print sss.get_sounds()
 # sss.set_sound_theme('freedesktop')

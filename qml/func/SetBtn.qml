@@ -34,22 +34,28 @@ Rectangle {
     Connections{
          target: systemdispatcher
          onFinishCleanWorkMain: {
-                        console.log("testing..............");
-                        if (msg == "") {
-                             menulogo.enabled=true;
-                         }
-                         else if (msg == "h") {
-                             menulogo.enabled=true;
-                         }
-                         else if (msg == "k") {
-                             menulogo.enabled=true;
-                         }
-                         else if (msg == "u") {
-                             menulogo.enabled=true;
-                         }
-                         else if (msg == "c") {
-                             menulogo.enabled=true;
-                         }
+            console.log("testing..............");
+             console.log(msg);
+            if (msg == "") {
+                console.log("testing null..............");
+                 menulogo.enabled=true;
+             }
+             else if (msg == "h") {
+                console.log("testing h..............");
+                 menulogo.enabled=true;
+             }
+             else if (msg == "k") {
+                console.log("testing k..............");
+                 menulogo.enabled=true;
+             }
+             else if (msg == "u") {
+                console.log("testing. u.............");
+                 menulogo.enabled=true;
+             }
+             else if (msg == "c") {
+                console.log("testing. c.............");
+                 menulogo.enabled=true;
+             }
 
             }
      }
@@ -110,14 +116,42 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (setbtn_flag == "onekey") {
-                if(systemdispatcher.get_system_daemon_qt() != "SystemDaemon")
-                    systemdispatcher.setup();
-                console.log("onekey clicked....");
-                console.log(systemdispatcher.get_onekey_args());
-                send_dynamic_picture("onekey");
-                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
-                menulogo.enabled=false;
+                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    console.log("111");
+                    console.log("onekey clicked....");
+                    console.log(systemdispatcher.get_onekey_args());
+                    console.log("222");
+                    send_dynamic_picture("onekey");
+                    console.log("333");
+                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                    console.log("444");
+                    btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                    console.log("555");
+//                    menulogo.enabled=false;
+                }
+                else {
+                    console.log("666");
+                    var value4 = systemdispatcher.setup();
+                    console.log("value4->");
+                    console.log(value4);
+                    if(value4) {
+                        console.log("777");
+                        send_dynamic_picture("onekey");
+                        systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                        btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                        menulogo.enabled=false;
+                    }
+                    else {
+                        console.log("888");
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                    }
+                }
+//                console.log("onekey clicked....");
+//                console.log(systemdispatcher.get_onekey_args());
+//                send_dynamic_picture("onekey");
+//                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+//                btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+//                menulogo.enabled=false;
             }
             else if (setbtn_flag == "smallonekey") {
                 console.log("smallonekey clicked....");

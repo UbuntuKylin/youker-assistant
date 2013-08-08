@@ -68,7 +68,11 @@ class SystemDaemon(PolicyKitService):
         return "SystemDaemon"
 
     # -------------------------sound-------------------------
-    
+    # get sound themes
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_sound_themes(self):
+        return self.soundconf.get_sound_themes()
+
     # get sound files in current sound theme
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_sounds(self):

@@ -127,20 +127,48 @@ Rectangle {
                 pageStack.push(desktopiconsetpage);
             else if (flag == "BootAnimation") {
                 console.log("BootAnimation clicked....");
-                if(systemdispatcher.get_system_daemon_qt() != "SystemDaemon")
-                    systemdispatcher.setup();
-                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
-                if (component_boot.status == Component.Ready) {
-                    pageStack.push(component_boot);
+                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
+                    if (component_boot.status == Component.Ready) {
+                        pageStack.push(component_boot);
+                    }
+                }
+                else {
+                    var value5 = systemdispatcher.setup();
+                    console.log("value5->");
+                    console.log(value5);
+                    if(value5) {
+                        var component_boot1 = Qt.createComponent("./settings/BootAnimation.qml");
+                        if (component_boot1.status == Component.Ready) {
+                            pageStack.push(component_boot1);
+                        }
+                    }
+                    else {
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                    }
                 }
             }
             else if (flag == "SoundEffects") {
                 console.log("SoundEffects clicked....");
-                if(systemdispatcher.get_system_daemon_qt() != "SystemDaemon")
-                    systemdispatcher.setup();
-                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
-                if (component_sound.status == Component.Ready) {
-                    pageStack.push(component_sound);
+                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+                    var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
+                    if (component_sound.status == Component.Ready) {
+                        pageStack.push(component_sound);
+                    }
+                }
+                else {
+                    var value6 = systemdispatcher.setup();
+                    console.log("value6->");
+                    console.log(value6);
+                    if(value6) {
+                        var component_sound1 = Qt.createComponent("./settings/SoundEffects.qml");
+                        if (component_sound1.status == Component.Ready) {
+                            pageStack.push(component_sound1);
+                        }
+                    }
+                    else {
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                    }
                 }
             }
             else if (flag == "MousePointer")

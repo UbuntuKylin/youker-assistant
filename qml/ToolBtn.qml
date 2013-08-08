@@ -145,9 +145,16 @@ Rectangle {
                     pageStack.push(clearrubbish);
                 }
                 else {
-                    systemdispatcher.setup();
-                    menulogo.send("clearrubbish");
-                    pageStack.push(clearrubbish);
+                    var value1 = systemdispatcher.setup();
+                    console.log("value1->");
+                    console.log(value1);
+                    if(value1) {
+                        menulogo.send("clearrubbish");
+                        pageStack.push(clearrubbish);
+                    }
+                    else {
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                    }
                 }
             }
             else if (text == "systemset") {
@@ -159,9 +166,16 @@ Rectangle {
                 }
                 else {
                     console.log("8888888888888888888");
-                    systemdispatcher.setup();
-                    menulogo.send("systemset");
-                    pageStack.push(systemset);
+                    var value2 = systemdispatcher.setup();
+                    console.log("value2->");
+                    console.log(value2);
+                    if(value2) {
+                        menulogo.send("systemset");
+                        pageStack.push(systemset);
+                    }
+                    else {
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                    }
                 }
             }
             else if (text == "functioncollection") {
@@ -171,9 +185,16 @@ Rectangle {
                     pageStack.push(functioncollection);
                 }
                 else {
-                    systemdispatcher.setup();
-                    menulogo.send("functioncollection");
-                    pageStack.push(functioncollection);
+                    var value3 = systemdispatcher.setup();
+                    console.log("value3->");
+                    console.log(value3);
+                    if(value3) {
+                        menulogo.send("functioncollection");
+                        pageStack.push(functioncollection);
+                    }
+                    else {
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                    }
                 }
             }
         }

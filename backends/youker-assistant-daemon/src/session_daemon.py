@@ -425,9 +425,9 @@ class SessionDaemon(PolicyKitService):
         return self.soundconf.get_login_music_enable()
 
     # get sound themes
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def get_sound_themes(self):
-        return self.soundconf.get_sound_themes()
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def get_sound_themes(self):
+    #    return self.soundconf.get_sound_themes()
 
     # get current sound theme
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')

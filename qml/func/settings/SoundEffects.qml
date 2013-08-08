@@ -51,7 +51,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-
         console.log("sound......................................");
         soundeffectspage.init_sound_flag = false;
         if (sessiondispatcher.get_login_music_enable_qt())
@@ -60,7 +59,7 @@ Rectangle {
             soundswitcher.switchedOn = false;
         soundeffectspage.default_sound = sessiondispatcher.get_sound_theme_qt();
         soundeffectspage.init_sound = soundeffectspage.default_sound;
-        var soundlist = sessiondispatcher.get_sound_themes_qt();
+        var soundlist = systemdispatcher.get_sound_themes_qt();
         var current_sound = sessiondispatcher.get_sound_theme_qt();
         soundlist.unshift(current_sound);
         choices.clear();
@@ -80,7 +79,7 @@ Rectangle {
             scrollbar_z = 1;
     }
 
-//    Connections {
+//    Connections {strlist
 //        target: toolBar
 //        //按下确定按钮
 //        onOkBtnClicked: {
@@ -284,7 +283,7 @@ Rectangle {
                                     wrapper.ListView.view.currentIndex = index;
                                     soundeffectspage.selectedmusic = systemdispatcher.show_file_dialog("soundeffects");
                                     systemdispatcher.get_music_path(soundeffectspage.selectedmusic);
-                                    systemdispatcher.replace_sound_file(soundeffectspage.selectedmusic, musicname);
+                                    systemdispatcher.replace_sound_file_qt(soundeffectspage.selectedmusic, split_music_name(musicname));
                                 }
                             }
                         }
@@ -295,7 +294,7 @@ Rectangle {
                                 anchors.fill:parent
                                 onClicked: {
                                     wrapper.ListView.view.currentIndex = index;
-                                    systemdispatcher.restore_sound_file(musicname);
+                                    systemdispatcher.restore_sound_file_qt(split_music_name(musicname));
                                 }
                             }
                         }

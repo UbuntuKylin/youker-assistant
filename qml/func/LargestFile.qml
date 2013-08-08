@@ -262,8 +262,10 @@ Item {
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
                 else {
                     console.log("largestfile_work---------------");
-                    if(root.null_flag == true)
+                    if(root.null_flag == true) {
                        root.state = "LargestFileWorkEmpty";
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                    }
                     else if(root.null_flag == false) {
                         console.log(systemdispatcher.get_largestfile_args());
                         systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");

@@ -30,6 +30,7 @@ class SystemDispatcher : public QObject
     Q_PROPERTY(QNOTIFY myStringChanged)
     Q_PROPERTY(QNOTIFY finishCleanWork)
     Q_PROPERTY(QNOTIFY finishCleanWorkMain)
+    Q_PROPERTY(QNOTIFY finishCleanWorkMainError)
     Q_PROPERTY(QNOTIFY finishCleanWorkSecond)
 //    Q_PROPERTY(QNOTIFY finishCleanaptWork)
 //    Q_PROPERTY(QNOTIFY finishCleansoftwareWork)
@@ -52,8 +53,8 @@ public:
     //---------------------------------
     //password
     Q_INVOKABLE void show_passwd_dialog();
-    Q_INVOKABLE void setup();
-    void judge_process(QString flagstr, QString pwd);
+    Q_INVOKABLE bool setup();
+    bool judge_process(QString flagstr, QString pwd);
 
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);
@@ -90,6 +91,7 @@ public:
 
 
     //-----------------------sound------------------------
+    Q_INVOKABLE QStringList get_sound_themes_qt();
     Q_INVOKABLE QStringList get_sounds_qt();
     Q_INVOKABLE void replace_sound_file_qt(QString origfile, QString targetfile);
     Q_INVOKABLE void restore_sound_file_qt(QString targetfile);
@@ -187,6 +189,7 @@ signals:
     void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
+    void finishCleanWorkMainError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
     void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
 //    void finishCleanaptWork(QString msg);
 //    void finishCleansoftwareWork(QString msg);
@@ -198,6 +201,7 @@ signals:
 public slots:
     void handler_clear_rubbish(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);
+    void handler_clear_rubbish_main_error(QString msg);
     void handler_clear_rubbish_second_onekey(QString msg);
     void handler_scan_rubbish(QString msg);
 //    QString show_signal(QString msg);

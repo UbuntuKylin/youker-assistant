@@ -66,6 +66,11 @@ Rectangle {
             refreshArrow.visible = false;
 
         }
+
+        onFinishCleanWorkMainError: {
+            console.log("begin LeftPage Main onOneKeyFinishCleanWork Error..............");
+            console.log(msg);
+        }
     }
 
 

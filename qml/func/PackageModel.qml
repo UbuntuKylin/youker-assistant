@@ -251,8 +251,10 @@ Item {
                  if (btn_flag == "package_scan") {
                      console.log("package_scan---------------");
                      unneed_signal("UnneedWork");
-                     if(root.null_flag == true)
+                     if(root.null_flag == true) {
                         root.state = "UnneedWorkEmpty";
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                     }
                      else if(root.null_flag == false)
                         root.state = "UnneedWork";
                  }
@@ -472,7 +474,7 @@ Item {
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         }
     ]
 }

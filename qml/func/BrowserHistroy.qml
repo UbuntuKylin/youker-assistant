@@ -206,8 +206,10 @@ Item {
                      console.log("history_scan---------------");
                      if (systemdispatcher.get_history_flag()) {
                         history_bnt_signal("HistoryWork");
-                         if(root.null_flag == true)
+                         if(root.null_flag == true) {
                             root.state = "HistoryWorkEmpty";
+                             sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                         }
                          else if(root.null_flag == false)
                             root.state = "HistoryWork";
                      }

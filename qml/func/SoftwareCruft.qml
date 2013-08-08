@@ -233,8 +233,10 @@ Item {
                  if (btn_flag == "software_scan") {
                      console.log("software_scan---------------");
                      software_signal("SoftwareWork");
-                     if(root.null_flag == true)
+                     if(root.null_flag == true) {
                         root.state = "SoftwareWorkEmpty";
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                     }
                      else if(root.null_flag == false)
                         root.state = "SoftwareWork";
                  }
