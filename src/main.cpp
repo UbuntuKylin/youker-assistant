@@ -32,7 +32,7 @@
 #include "qmlaudio.h"
 #include <QTextCodec>
 #include <QProcess>
-
+#include <QDebug>
 
 #include <sys/types.h>
 #include <unistd.h>
@@ -123,15 +123,16 @@ int main(int argc, char** argv)
 //    process_system->start("sudo /usr/bin/youker-assistant-system-daemon");
 
     IhuApplication application(argc, argv);
-
-
-//    if (!application.setupdialog()) {
-//        return 0;
-//    }
-
-    if (!application.setup()) {
+    qDebug() << "main 00000";
+    SessionDispatcher *session = new SessionDispatcher();
+    QString session_value = session->get_session_daemon_qt();
+    qDebug() << session_value;
+    qDebug() << "main 11111";
+    if (!application.setup(session_value)) {
         return 0;
     }
+    delete session;
+    qDebug() << "main 22222";
     return application.exec();
 
 //    QApplication app(argc, argv);

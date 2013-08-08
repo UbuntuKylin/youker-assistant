@@ -46,7 +46,7 @@ Item {
     property int subItemFontSize: headerItemFontSize-2
     property color subItemFontColor: "black"
     property bool check_flag: true
-
+    property bool null_flag: false
 
     property int itemHeight: 40
 //    property alias expandedItemCount: subItemRepeater.count
@@ -59,7 +59,10 @@ Item {
         if (unneed_msg == "UnneedWork") {
             //get data of unneed
             var unneed_data = systemdispatcher.scan_unneed_packages_qt();
-
+            if (unneed_data == "")
+                root.null_flag = true;
+            else
+                root.null_flag = false;
             root.sub_num = unneed_data.length;
             systemdispatcher.clear_package_args();
             subModel.clear();
@@ -171,6 +174,11 @@ Item {
     Image {
         source: "../img/skin/bg-onekey.png"
         anchors.fill: parent
+//        anchors {
+//            fill: parent
+//            left: parent.left
+//            leftMargin: -2
+//        }
     }
 
 
@@ -242,8 +250,11 @@ Item {
                 //package cruft
                  if (btn_flag == "package_scan") {
                      console.log("package_scan---------------");
-                     root.state = "UnneedWork";
                      unneed_signal("UnneedWork");
+                     if(root.null_flag == true)
+                        root.state = "UnneedWorkEmpty";
+                     else if(root.null_flag == false)
+                        root.state = "UnneedWork";
                  }
                  else if (btn_flag == "package_work") {
                      console.log("package_work---------------");
@@ -455,6 +466,13 @@ Item {
             PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "UnneedWorkEmpty"
+            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
+            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: root; btn_flag: "package_scan" }
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
         }
     ]
 }

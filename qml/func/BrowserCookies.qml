@@ -46,7 +46,7 @@ Item {
     property int subItemFontSize: headerItemFontSize-2
     property color subItemFontColor: "black"
     property bool check_flag: true
-
+    property bool null_flag: false
 
     property int itemHeight: 40
 //    property alias expandedItemCount: subItemRepeater.count
@@ -60,6 +60,10 @@ Item {
 
             //get data of cookies
             var cookies_data = systemdispatcher.scan_cookies_records_qt();
+            if (cookies_data == "")
+                root.null_flag = true;
+            else
+                root.null_flag = false;
             console.log("****************************8");
             console.log(cookies_data);
             root.sub_num = cookies_data.length;
@@ -169,6 +173,11 @@ Item {
     Image {
         source: "../img/skin/bg-onekey.png"
         anchors.fill: parent
+//        anchors {
+//            fill: parent
+//            left: parent.left
+//            leftMargin: -2
+//        }
     }
 
 
@@ -240,8 +249,11 @@ Item {
                 //broswer cookies
                  if (btn_flag == "cookies_scan") {
                      console.log("cookies_scan---------------");
-                     root.state = "CookiesWork";
                      cookies_signal("CookiesWork");
+                     if(root.null_flag == true)
+                        root.state = "CookiesWorkEmpty";
+                     else if(root.null_flag == false)
+                        root.state = "CookiesWork";
                  }
                  else if (btn_flag == "cookies_work") {
                      console.log("cookies_work---------------");
@@ -450,6 +462,13 @@ Item {
             name: "CookiesWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
 //            PropertyChanges { target: bitButton; text: "开始扫描" }
+            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: root; btn_flag: "cookies_scan" }
+            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "CookiesWorkEmpty"
+            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}

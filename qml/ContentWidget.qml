@@ -149,7 +149,7 @@ Item {
                         id: clearrubbish
                         visible: false
         //                title: "clearrubbish by kobe"
-                        ClearRubbish {dis1: sessiondispatcher; dis2: systemdispatcher}
+                        ClearRubbish {}
                     }
                     Common.Page {
                         id: systemset

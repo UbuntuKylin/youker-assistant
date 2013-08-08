@@ -333,6 +333,7 @@ Rectangle {
     //底层工具栏
     Bars.ToolBar {
         id: toolBar
+        showok: false
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("确定")

@@ -111,31 +111,42 @@ inline QString getAppDirectory() {
 //    pclose(stream);
 //}
 
-bool IhuApplication::setup()
+bool IhuApplication::setup(QString str)
 {
 
     bool debug_flag = false;
     //debug source
     if (!debug_flag) {
-        int value = 0;
-        QString str = "";
-        char buf[64];
-        memset(buf, '\0', sizeof(buf));
-        FILE *stream_session;
-        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
-        fread(buf, sizeof(char), sizeof(buf), stream_session);
-        str = QString(buf);
-        value = str.toInt();
-        if (value == 0) {
-            qDebug() << "6789";
+        if (str == "SessionDaemon") {
+            qDebug() << "SessionDaemon6789";
+        }
+        else {
+            qDebug() << "SessionDaemon5678";
             QProcess *process_session = new QProcess;
             process_session->start("/usr/bin/youkersession");
             qDebug() << "56789";
         }
-        else
-            qDebug() << "67890";
-        memset(buf, '\0', sizeof(buf));
-        pclose(stream_session);
+
+
+//        int value = 0;
+//        QString str = "";
+//        char buf[64];
+//        memset(buf, '\0', sizeof(buf));
+//        FILE *stream_session;
+//        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
+//        fread(buf, sizeof(char), sizeof(buf), stream_session);
+//        str = QString(buf);
+//        value = str.toInt();
+//        if (value == 0) {
+//            qDebug() << "6789";
+//            QProcess *process_session = new QProcess;
+//            process_session->start("/usr/bin/youkersession");
+//            qDebug() << "56789";
+//        }
+//        else
+//            qDebug() << "67890";
+//        memset(buf, '\0', sizeof(buf));
+//        pclose(stream_session);
     }
     //run deb package
     else {

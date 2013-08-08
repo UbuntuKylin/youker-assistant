@@ -51,6 +51,8 @@ public:
     Q_INVOKABLE int get_page_num();
     int page_num;
 
+    Q_INVOKABLE QString get_home_path();
+
     Q_INVOKABLE void set_str(QString str);
     Q_INVOKABLE void del_str(QString str);
     Q_INVOKABLE QString get_str();

@@ -153,6 +153,8 @@ Rectangle {
 //                text: sessiondispatcher.get_document_font_qt()
                 text: documentfontpage.document_font
                 width: 200
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
@@ -218,6 +220,7 @@ Rectangle {
     //底层工具栏
     Bars.ToolBar {
         id: toolBar
+        showok: false
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("确定")

@@ -160,6 +160,15 @@ Rectangle {
                 width: 95;height: 30
                 hoverimage: "ok.png"
                 onClicked: {
+                    console.log("sound ok");
+                    if (soundeffectspage.default_sound != soundcombo.selectedText) {
+                        console.log("111");
+                        soundeffectspage.default_sound = soundcombo.selectedText;
+                        sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+                    }
+                    else
+                        console.log("222");
+
                     soundeffectspage.init_sound_flag = true;
                     musicmodel.clear();
                     var musiclist=systemdispatcher.get_sounds_qt();
@@ -252,7 +261,8 @@ Rectangle {
                                 anchors.fill:parent
                                 onClicked: {
                                     wrapper.ListView.view.currentIndex = index;
-                                    systemdispatcher.get_music_path("/usr/share/youker-assistant-daemon/sound-theme/" + soundeffectspage.default_sound + "/stereo/" + musicname);
+                                    systemdispatcher.get_music_path(musicname);
+//                                    systemdispatcher.get_music_path("/usr/share/youker-assistant-daemon/sound-theme/" + soundeffectspage.default_sound + "/stereo/" + musicname);
                                     if(play_pause==0){
                                         song.play();
                                         play_pause=1;
@@ -477,6 +487,7 @@ Rectangle {
     //底层工具栏
     Bars.ToolBar {
         id: toolBar
+        showok: false
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("确定")
@@ -490,14 +501,14 @@ Rectangle {
                 pageStack.push(functioncollection)
         }
         onOkBtnClicked: {
-            console.log("sound ok");
-            if (soundeffectspage.default_sound != soundcombo.selectedText) {
-                console.log("111");
-                soundeffectspage.default_sound = soundcombo.selectedText;
-                sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
-            }
-            else
-                console.log("222");
+//            console.log("sound ok");
+//            if (soundeffectspage.default_sound != soundcombo.selectedText) {
+//                console.log("111");
+//                soundeffectspage.default_sound = soundcombo.selectedText;
+//                sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+//            }
+//            else
+//                console.log("222");
         }
     }
 }

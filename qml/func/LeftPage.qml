@@ -72,6 +72,7 @@ Rectangle {
     //背景
     Image {
         source: "../img/skin/bg-left.png"
+//        source: "../img/skin/bg-right.png"
         anchors.fill: parent
     }
     Column {
@@ -114,7 +115,7 @@ Rectangle {
                     id: text1
                     width: 69
 //                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
-                    text: qsTr("       一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉某项")
+                    text: qsTr("     一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉某项")
                     font.pixelSize: 12
                     color: "#7a7a7a"
 //                    font.pointSize: 13

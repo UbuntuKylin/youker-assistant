@@ -22,7 +22,7 @@ Item {
 //     property alias button1Label: "button1.text"
 //     property alias button2Label: "button2.text"
 //     property alias button2Visible: button2.visible
-
+     property bool showok: true
      signal quitBtnClicked
      signal okBtnClicked
 
@@ -46,6 +46,7 @@ Item {
 //         anchors.right: parent.right; anchors.rightMargin: 5; y: 3; height: 32; spacing: 30
          Common.Button {
              id: okBtn
+             visible: toolbar.showok
              hoverimage: "../../img/icons/ok.png"
              width: 94; height: 29
              onClicked: toolbar.okBtnClicked()

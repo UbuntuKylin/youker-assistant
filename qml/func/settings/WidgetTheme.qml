@@ -24,7 +24,7 @@ Rectangle {
     width: parent.width
     height: 475
     property string actiontitle: "窗口主题设置"
-    property string actiontext: "选中您想设置的主题，点击确定按钮更换主题。"
+    property string actiontext: "选中您想设置的主题，点击确定按钮更换主题；第一个主题为系统当前使用的主题。"
     property string init_theme: ""
     property string selected_theme: ""
     property SessionDispatcher dis: sessiondispatcher

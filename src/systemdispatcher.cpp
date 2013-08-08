@@ -85,28 +85,46 @@ QString SystemDispatcher::get_system_daemon_qt() {
     return reply.value();
 }
 
+QString SystemDispatcher::get_system_daemon_qt_default() {
+    QDBusReply<QString> reply = systemiface->call("get_system_daemon");
+    return reply.value();
+}
+
 void SystemDispatcher::judge_process(QString flagstr, QString pwd) {
-    int value = 0;
-    QString str = "";
-    FILE *stream;
-    char buf[64];
-    memset(buf, '\0', sizeof(buf));
-    QString cmd = "ps -ef | grep " + flagstr + " | grep -v grep | wc -l";
-    QByteArray ba = cmd.toLatin1();
-    const char *str_cmd = ba.data();
-    stream = popen(str_cmd, "r" );
-    fread(buf, sizeof(char), sizeof(buf), stream);
-    str = QString(buf);
-    value = str.toInt();
-    if (value == 0) {
-        qDebug() << "1234567";
+    QString system_value = get_system_daemon_qt_default();
+    qDebug() << "SystemDaemon00000";
+    qDebug() << system_value;
+    if (system_value == "SystemDaemon")
+        qDebug() << "SystemDaemon11111";
+    else {
         QProcess *process = new QProcess;
-        qDebug() << "002";
+        qDebug() << "SystemDaemon22222";
         process->start("/usr/bin/" + flagstr + " " + pwd);
+        qDebug() << "SystemDaemon33333";
     }
-    else
-        qDebug() << "123456789";
-    pclose(stream);
+
+
+//    int value = 0;
+//    QString str = "";
+//    FILE *stream;
+//    char buf[64];
+//    memset(buf, '\0', sizeof(buf));
+//    QString cmd = "ps -ef | grep " + flagstr + " | grep -v grep | wc -l";
+//    QByteArray ba = cmd.toLatin1();
+//    const char *str_cmd = ba.data();
+//    stream = popen(str_cmd, "r" );
+//    fread(buf, sizeof(char), sizeof(buf), stream);
+//    str = QString(buf);
+//    value = str.toInt();
+//    if (value == 0) {
+//        qDebug() << "1234567";
+//        QProcess *process = new QProcess;
+//        qDebug() << "002";
+//        process->start("/usr/bin/" + flagstr + " " + pwd);
+//    }
+//    else
+//        qDebug() << "123456789";
+//    pclose(stream);
 }
 
 void SystemDispatcher::setup() {

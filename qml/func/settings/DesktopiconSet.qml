@@ -30,9 +30,9 @@ Rectangle {
     property color fontColor: "black"
     property SessionDispatcher dis: sessiondispatcher
     property int cursor_size: 24
-    property string default_theme: ""
     property string default_icon_theme: ""
-    property string default_cursor_theme: ""
+    property string init_icon_theme: ""
+    property bool init_icon_theme_flag: false
 
     property string actiontitle: "桌面图标设置"
     property string actiontext: "您可以设置桌面图标主题和控制一些图标是否显示在桌面上。"
@@ -42,6 +42,9 @@ Rectangle {
         anchors.fill: parent
     }
     Component.onCompleted: {
+        desktopiconsetpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
+        desktopiconsetpage.init_icon_theme = desktopiconsetpage.default_icon_theme;
+        desktopiconsetpage.init_icon_theme_flag = false;
         var iconlist = sessiondispatcher.get_icon_themes_qt();
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
         iconlist.unshift(current_icon_theme);
@@ -168,6 +171,38 @@ Rectangle {
             width: 200
             onSelectedTextChanged: console.log(selectedText)
         }
+        Common.Button {
+            id: okBtn
+            width: 95;height: 30
+            anchors.left: parent.left
+            anchors.leftMargin: 470
+            hoverimage: "ok.png"
+            onClicked: {
+                desktopiconsetpage.init_icon_theme_flag = true;
+                if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
+                    console.log("333");
+                    desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
+                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+                }
+                else
+                    console.log("444");
+            }
+        }
+        Common.Button {
+            hoverimage: "use.png"
+            anchors.left: okBtn.right
+            anchors.leftMargin: 38
+            width: 124
+            height: 30
+            onClicked: {
+                if(desktopiconsetpage.init_icon_theme_flag == true) {
+                    desktopiconsetpage.init_icon_theme_flag;
+                    sessiondispatcher.set_icon_theme_qt(desktopiconsetpage.init_icon_theme);
+                }
+                else
+                    sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的图标主题已经为默认设置！");
+            }
+        }
     }
 
     Row {
@@ -235,7 +270,7 @@ Rectangle {
             Common.Label {
                 id: homefolderlabel
                 width: 170
-                text: "家文件夹:"
+                text: "我的文档:"
                 font.pixelSize: 12
                 color: "#383838"
 //                font {
@@ -485,6 +520,7 @@ Rectangle {
     //底层工具栏
     Bars.ToolBar {
         id: toolBar
+        showok: false
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("确定")
@@ -500,13 +536,13 @@ Rectangle {
         onOkBtnClicked: {
             console.log("dekstop ok");
             //default:ubuntukylin-icon-theme
-            if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
-                console.log("333");
-                desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
-                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-            }
-            else
-                console.log("444");
+//            if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
+//                console.log("333");
+//                desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
+//                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//            }
+//            else
+//                console.log("444");
         }
     }
 

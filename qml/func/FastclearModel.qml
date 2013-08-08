@@ -4,7 +4,6 @@ import SystemType 0.1
 import "common" as Common
 Rectangle {
     id: fastmode
-//    width: 650; height: 435
     width: parent.width
     height: 435
     property string onekeypage: "second"
@@ -62,34 +61,38 @@ Rectangle {
     Image {
         source: "../img/skin/bg-onekey.png"
         anchors.fill: parent
+//        anchors {
+//            fill: parent
+//            left: parent.left
+//            leftMargin: -2
+//        }
     }
 
     //上下分割条
-    Rectangle {id: splitbar1; x: 2; y: 80; width: 650-2; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar2; x: 2; y: 82; width: 650-2; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar1; x: 2; y: 80; width: parent.width-2; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar2; x: 2; y: 82; width: parent.width-2; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar3; x: 2; y: 140; width: 650-2; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar4; x: 2; y: 142; width: 650-2; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar3; x: 2; y: 140; width: parent.width-2; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar4; x: 2; y: 142; width: parent.width-2; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar5; x: 2; y: 204; width: 650-2; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar6; x: 2; y: 206; width: 650-2; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar5; x: 2; y: 204; width: parent.width-2; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar6; x: 2; y: 206; width: parent.width-2; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar7; x: 2; y: 268; width: 650-2; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar8; x: 2; y: 270; width: 650-2; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar7; x: 2; y: 268; width: parent.width-2; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar8; x: 2; y: 270; width: parent.width-2; height: 1; color: "#fafcfe" }
 
-    Rectangle {x: 652; y: 140; width: 200-8; height: 1; color: "#b9c5cc" }
-    Rectangle {x: 654; y: 142; width: 200-8; height: 1; color: "#fafcfe" }
-    //-------------------
+//    Rectangle {x: 652; y: 140; width: 200-8; height: 1; color: "#b9c5cc" }
+//    Rectangle {x: 654; y: 142; width: 200-8; height: 1; color: "#fafcfe" }
+//    //-------------------
 
-    //左右分割条
-    Rectangle {x: 650; height: parent.height; width: 1; color: "#b9c5cc" }
-    Rectangle {x: 652; height: parent.height; width: 1; color: "#fafcfe" }
+//    //左右分割条
+//    Rectangle {x: 650; height: parent.height; width: 1; color: "#b9c5cc" }
+//    Rectangle {x: 652; height: parent.height; width: 1; color: "#fafcfe" }
 
-    Row {
+//    Row {
 
         Column {
-//            anchors.fill: parent
-            width: 650
+            width: parent.width
             Row {
                 id: myrow
                 spacing: 10
@@ -129,7 +132,7 @@ Rectangle {
                     iconName: "onekey.png"
                     setbtn_flag: "smallonekey"
                     anchors {
-                        left: parent.left; leftMargin: 480
+                        left: parent.left; leftMargin: 680
                     }
                     width: 120
                     height: 39
@@ -190,126 +193,90 @@ Rectangle {
                 }
             }
 
-        }//Column
+//        }//Column
 
 
-        Rectangle {
-            width: parent.width - 650
-            anchors {
-               left: parent.left
-               leftMargin: 650
-            }
-//            Image {
-//                id: titleimage
-//                anchors {
-//                    left: parent.left
-//                    leftMargin: 2
-//                }
-//                source: "../img/skin/note-bg.png"
+//        Rectangle {
+//            width: parent.width - 650
+//            anchors {
+//               left: parent.left
+//               leftMargin: 650
 //            }
-//            Text {
-//                anchors {
-//                    left: parent.left
-//                    leftMargin: 50
-//                    top: parent.top
-//                    topMargin: titleimage.height/2 - 7
-//                }
-//                text: "正在研发测试中..."
-//                font.pixelSize: 12
-//                color: "#383838"
-//            }
-
-            Row {
-                spacing: 20
-                Column {
-                    spacing: 15
-                    anchors {
-                        top: parent.top
-                        topMargin: 30
-                        left: parent.left
-                        leftMargin: 10
-                    }
-                    Image {
-                        id: clearpic
-                        source: "../img/toolWidget/clear-pic.png"
-                    }
-                    Image {
-                        id: startpic
-                        source: "../img/toolWidget/open.png"
-                    }
-                }
-
-                Column {
-                    spacing: 5
-                    anchors {
-                        top: parent.top
-                        topMargin: 30
+//            Row {
+//                spacing: 20
+//                Column {
+//                    spacing: 15
+//                    anchors {
+//                        top: parent.top
+//                        topMargin: 30
 //                        left: parent.left
 //                        leftMargin: 10
-                    }
-                    Text {
-                        id: titletext
-                        text: "定时清理"
-                        font.bold: true
-                        font.pixelSize: 14
-                        color: "#383838"
-                    }
-                    Text {
-                        id: text1
-                        text: "定时清理帮您清理电脑"
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                    Text {
-                        id: text2
-                        text: "中的垃圾和痕迹,让您的"
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                    Text {
-                        id: text3
-                        text: "系统运行更加流畅!"
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                }
-
-
-
-//                Text {
-//                    id: nextclear
-//                    text: "距离下次清理"
-//                    font.bold: true
-//                    font.pixelSize: 14
-//                    color: "#383838"
+//                    }
+//                    Image {
+//                        id: clearpic
+//                        source: "../img/toolWidget/clear-pic.png"
+//                    }
+//                    Image {
+//                        id: startpic
+//                        source: "../img/toolWidget/open.png"
+//                    }
+//                }
+//                Column {
+//                    spacing: 5
+//                    anchors {
+//                        top: parent.top
+//                        topMargin: 30
+//                    }
+//                    Text {
+//                        id: titletext
+//                        text: "定时清理"
+//                        font.bold: true
+//                        font.pixelSize: 14
+//                        color: "#383838"
+//                    }
+//                    Text {
+//                        id: text1
+//                        text: "定时清理帮您清理电脑"
+//                        font.pixelSize: 12
+//                        color: "#7a7a7a"
+//                    }
+//                    Text {
+//                        id: text2
+//                        text: "中的垃圾和痕迹,让您的"
+//                        font.pixelSize: 12
+//                        color: "#7a7a7a"
+//                    }
+//                    Text {
+//                        id: text3
+//                        text: "系统运行更加流畅!"
+//                        font.pixelSize: 12
+//                        color: "#7a7a7a"
+//                    }
 //                }
 
-
-                Image {
-                    id: titleimage
-                    anchors {
-                        top: parent.top
-                        topMargin: 145
-                        left: parent.left
-                        leftMargin: 2
-                    }
-                    source: "../img/skin/note-bg.png"
-                }
-                Text {
-                    anchors {
-                        left: parent.left
-                        leftMargin: 50
-                        top: parent.top
-                        topMargin: 158//titleimage.height/2 - 7
-                    }
-                    text: "正在研发测试中..."
-                    font.pixelSize: 12
-                    color: "#383838"
-                }
-            }
-
-
-        }
+//                Image {
+//                    id: titleimage
+//                    anchors {
+//                        top: parent.top
+//                        topMargin: 145
+//                        left: parent.left
+//                        leftMargin: 2
+//                    }
+//                    source: "../img/skin/note-bg.png"
+//                }
+//                Text {
+//                    anchors {
+//                        left: parent.left
+//                        leftMargin: 50
+//                        top: parent.top
+//                        topMargin: 158//titleimage.height/2 - 7
+//                    }
+//                    text: "正在研发测试中..."
+//                    font.pixelSize: 12
+//                    color: "#383838"
+//                }
+//            }
+//        }
 
 
 
@@ -318,7 +285,7 @@ Rectangle {
             source: "../img/toolWidget/unfinish.png"
             anchors {
                 top: parent.top; topMargin: 100
-                left: parent.left; leftMargin: 550
+                left: parent.left; leftMargin: 700
             }
             states: [
                     State {
@@ -337,7 +304,7 @@ Rectangle {
             source: "../img/toolWidget/unfinish.png"
             anchors {
                 top: parent.top; topMargin: 164
-                left: parent.left; leftMargin: 550
+                left: parent.left; leftMargin: 700
             }
             states: [
                     State {
@@ -356,7 +323,7 @@ Rectangle {
             source: "../img/toolWidget/unfinish.png"
             anchors {
                 top: parent.top; topMargin: 228
-                left: parent.left; leftMargin: 550
+                left: parent.left; leftMargin: 700
             }
             states: [
                     State {
@@ -375,7 +342,7 @@ Rectangle {
             source: "../img/toolWidget/unfinish.png"
             anchors {
                 top: parent.top; topMargin: 290
-                left: parent.left; leftMargin: 550
+                left: parent.left; leftMargin: 700
             }
             states: [
                     State {
@@ -485,8 +452,7 @@ Rectangle {
 
 
 
-}//坐边栏Rectangle
-
+}
 
 
 //Item {

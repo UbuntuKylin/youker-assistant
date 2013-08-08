@@ -42,20 +42,21 @@ Item {
     property int subItemFontSize: headerItemFontSize-2
     property color subItemFontColor: "black"
     property bool check_flag: true
-
+    property bool null_flag: false
 
     property int itemHeight: 40
 //    property alias expandedItemCount: subItemRepeater.count
     property bool expanded: true //kobe:子项扩展默认打开
-
-
-
     signal apt_signal(string apt_msg);
     onApt_signal: {
         if (apt_msg == "AptWork") {
             //get data of cookies
             console.log("apt_msg == AptWork");
             var apt_data = systemdispatcher.scan_apt_cruft_qt();
+            if (apt_data == "")
+                root.null_flag = true;
+            else
+                root.null_flag = false;
 //            console.log("1");
 //            console.log(apt_data);
             root.sub_num = apt_data.length;
@@ -80,7 +81,7 @@ Item {
             mainModel.clear();
             mainModel.append({"itemTitle": "包管理清理",
                              "picture": "../img/toolWidget/apt-min.png",
-                             "detailstr": "用户可以根据扫描结果选择性地清理包管理残留包",
+                             "detailstr": "用户可以根据扫描结果选择性地清理包管理残留包,缓存路径为:/var/cache/apt/archives/",
                              "flags": "clear_apt",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -140,10 +141,15 @@ Item {
         ListElement {itemTitle: ""; desc: ""; number: ""}
     }
 
-//    //背景
+    //背景
     Image {
         source: "../img/skin/bg-onekey.png"
         anchors.fill: parent
+//        anchors {
+//            fill: parent
+//            left: parent.left
+//            leftMargin: -2
+//        }
     }
     //titlebar
     Row {
@@ -216,7 +222,10 @@ Item {
                  if (btn_flag == "apt_scan") {
                      console.log("apt_scan---------------");
                      apt_signal("AptWork");
-                     root.state = "AptWork";
+                     if(root.null_flag == true)
+                        root.state = "AptWorkEmpty";
+                     else if(root.null_flag == false)
+                        root.state = "AptWork";
                  }
                  else if (btn_flag == "apt_work") {
                        console.log("apt_work---------------");
@@ -347,6 +356,7 @@ Item {
                         width: subItemsRect.width
                         /*Common.*/ListItem {
                             id: subListItem
+                            split_status: true
                             width: root.width
                             height: subItemsRect.itemHeight
 //                            text: subItemTitle
@@ -427,6 +437,13 @@ Item {
             name: "AptWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
 //            PropertyChanges { target: bitButton; text: "开始扫描111" }
+            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: root; btn_flag: "apt_scan" }
+            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "AptWorkEmpty"
+            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
             PropertyChanges { target: root; btn_flag: "apt_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}

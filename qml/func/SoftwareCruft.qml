@@ -46,19 +46,28 @@ Item {
     property color subItemFontColor: "black"
     property bool check_flag: true
 
-
     property int itemHeight: 40
 //    property alias expandedItemCount: subItemRepeater.count
     property bool expanded: true //kobe:子项扩展默认打开
 
+    property bool null_flag: false
 
+    function remove_last_name(str)
+    {
+        var need_str = str;
+        need_str = need_str.substr(0, need_str.lastIndexOf("/"));
+        return need_str;
+    }
 
     signal software_signal(string software_msg);
     onSoftware_signal: {
         if (software_msg == "SoftwareWork") {
             //get data of cookies
             var software_data = systemdispatcher.scan_softwarecenter_cruft_qt();
-
+            if (software_data == "")
+                root.null_flag = true;
+            else
+                root.null_flag = false;
             root.sub_num = software_data.length;
             systemdispatcher.clear_software_args();
             subModel.clear();
@@ -81,7 +90,7 @@ Item {
             mainModel.clear();
             mainModel.append({"itemTitle": "软件中心缓存清理",
                              "picture": "../img/toolWidget/software-min.png",
-                             "detailstr": "用户可以根据扫描结果选择性地清理软件中心缓存",
+                                 "detailstr": "用户可以根据扫描结果选择性地清理软件中心缓存,缓存路径为:" + sessiondispatcher.get_home_path() + "/.cache/software-center/",
                              "flags": "clear_software",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -147,6 +156,11 @@ Item {
     Image {
         source: "../img/skin/bg-onekey.png"
         anchors.fill: parent
+//        anchors {
+//            fill: parent
+//            left: parent.left
+//            leftMargin: -2
+//        }
     }
 
 
@@ -218,8 +232,11 @@ Item {
                 //software cruft
                  if (btn_flag == "software_scan") {
                      console.log("software_scan---------------");
-                     root.state = "SoftwareWork";
                      software_signal("SoftwareWork");
+                     if(root.null_flag == true)
+                        root.state = "SoftwareWorkEmpty";
+                     else if(root.null_flag == false)
+                        root.state = "SoftwareWork";
                  }
                  else if (btn_flag == "software_work") {
                      console.log("software_work---------------");
@@ -348,6 +365,7 @@ Item {
                         width: subItemsRect.width
                         /*Common.*/ListItem {
                             id: subListItem
+                            split_status: true
                             width: root.width
                             height: subItemsRect.itemHeight
 //                            text: subItemTitle
@@ -427,6 +445,13 @@ Item {
             name: "SoftwareWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
 //            PropertyChanges { target: bitButton; text: "开始扫描" }
+            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: root; btn_flag: "software_scan" }
+            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "SoftwareWorkEmpty"
+            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
             PropertyChanges { target: root; btn_flag: "software_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}

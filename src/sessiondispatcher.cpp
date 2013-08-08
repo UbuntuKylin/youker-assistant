@@ -40,6 +40,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     page_num = 0;
 }
 
+QString SessionDispatcher::get_home_path() {
+    QString homepath = QDir::homePath();
+    return homepath;
+}
 
 void SessionDispatcher::set_page_num(int num) {
     page_num = num;

@@ -18,6 +18,7 @@ Item {
     property bool selectable: false
     property int textIndent: 0
     property bool checkbox_status: true
+    property bool split_status: false
 
     property string btn_flag: "one_key_scan"
 
@@ -27,6 +28,13 @@ Item {
     height: 64
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
+
+    function get_last_name(str)
+    {
+        var need_str = str;
+        need_str = need_str.substr(need_str.lastIndexOf("/") + 1, need_str.length - need_str.lastIndexOf("/"));
+        return need_str;
+    }
 
     BorderImage {
         id: background
@@ -190,7 +198,8 @@ Item {
         }
         color: container.fontColor
         elide: Text.ElideRight
-        text: container.text
+//        text: get_last_name(container.text)
+        text: container.split_status ? get_last_name(container.text) : container.text
         verticalAlignment: Text.AlignVCenter
     }
 

@@ -184,14 +184,19 @@ Rectangle {
 
             //左右布局
             Row {
-//                anchors.fill: parent
+                anchors.fill: parent
+                spacing: 0
                 //坐边栏
                 LeftPage {
                     id: leftbar
+                    anchors.left: parent.left
+                    anchors.leftMargin: -2
                     width: 600; height: screen.height
                 }
                RightPage {
                     id: rightbar
+                    anchors.left: leftbar.right
+                    anchors.leftMargin: 0
                     width: screen.width - 600; height: screen.height
                 }
 

@@ -40,9 +40,11 @@ Rectangle {
     property string current_font: "Helvetica"
     property string desktop_font: "Helvetica"
     property string monospace_font: "Helvetica"
+    property double zoom: 1.0
     property bool current_font_flag: false
     property bool desktop_font_flag: false
     property bool monospace_font_flag: false
+    property bool zoom_flag: false
     property string actiontitle: "默认字体设置"
     property string actiontext: "根据您的喜好设置系统默认字体"
     //背景
@@ -54,10 +56,12 @@ Rectangle {
         defaultfontpage.current_font_flag = false;
         defaultfontpage.desktop_font_flag = false;
         defaultfontpage.monospace_font_flag = false;
+        defaultfontpage.zoom_flag = false;
 
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
         defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
+        defaultfontpage.zoom = sessiondispatcher.get_font_zoom_qt();
 
 
 //        console.log(".....111....");
@@ -163,6 +167,7 @@ Rectangle {
 
 
     Column {
+        id: fontcolumn
         spacing: 20
         anchors{
             left: parent.left
@@ -186,6 +191,8 @@ Rectangle {
                 text: sessiondispatcher.get_font_qt()
 //                text: defaultfontpage.current_font
                 width: 200
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
 
@@ -230,6 +237,8 @@ Rectangle {
                 id: desktopfont
                 text: sessiondispatcher.get_desktop_font_qt()
                 width: 200
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
@@ -275,6 +284,8 @@ Rectangle {
                 text: sessiondispatcher.get_monospace_font_qt()
 //                text: defaultfontpage.monospace_font
                 width: 200
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
@@ -305,26 +316,123 @@ Rectangle {
         }
 
 
-        Row {
-            Common.Label {
-                id: fontzoomlabel
-                width: 130
-                text: "全局字体缩放:"
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.SpinBox {
-                id: fontzoomspinbox
-                width: 97
-                minimumValue: 0
-                maximumValue: 64
-                value: sessiondispatcher.get_font_zoom_qt()
-//                value: 48
-            }
-        }
+//        Row {
+//            Common.Label {
+//                id: fontzoomlabel
+//                width: 130
+//                text: "全局字体缩放:"
+//                font.pixelSize: 12
+//                color: "#7a7a7a"
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Common.SpinBox {
+//                id: fontzoomspinbox
+//                width: 97
+//                minimumValue: 0
+//                maximumValue: 64
+//                value: sessiondispatcher.get_font_zoom_qt()
+////                value: 48
+//            }
+//        }
 
     }//Column
+
+
+
+
+
+    Row {
+        id: zoomtitle
+        anchors{
+            left: parent.left
+            leftMargin: 40
+            top: fontcolumn.bottom
+            topMargin: 30
+        }
+        spacing: 5
+        Text{
+            text: "缩放设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+    Row {
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: zoomtitle.bottom
+            topMargin: 10
+        }
+        Common.Label {
+            id: fontzoomlabel
+            width: 130
+            text: "全局字体缩放:"
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+//        Common.SpinBox {
+//            id: fontzoomspinbox
+//            width: 97
+//            minimumValue: 0
+//            maximumValue: 64
+//            value: sessiondispatcher.get_font_zoom_qt()
+////                value: 48
+//        }
+        Common.Slider {
+            id: slider
+            minimumValue: 0.1
+            maximumValue: 2
+            width: 150
+            value: sessiondispatcher.get_font_zoom_qt()
+            stepSize: 0.1
+            animated: true
+        }
+        Text {
+            id: displaynum
+            text: slider.value
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+
+        Common.Button {
+            id: okBtn
+            width: 95;height: 30
+            anchors.left: parent.left
+            anchors.leftMargin: 470
+            hoverimage: "ok.png"
+            onClicked: {
+                sessiondispatcher.set_font_zoom_qt(slider.value);
+            }
+        }
+        Common.Button {
+            hoverimage: "use.png"
+            anchors.left: okBtn.right
+            anchors.leftMargin: 38
+            width: 124
+            height: 30
+            onClicked: {
+                if(defaultfontpage.zoom_flag == true) {
+                    defaultfontpage.zoom_flag = false;
+                    sessiondispatcher.set_font_zoom_qt(defaultfontpage.zoom);
+                }
+                else
+                    sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！");
+            }
+        }
+    }
+
+
+
 
 //    Button {
 //        text: "显示字体设置框"
@@ -361,6 +469,7 @@ Rectangle {
     //底层工具栏
     Bars.ToolBar {
         id: toolBar
+        showok: false
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("确定")
@@ -374,8 +483,8 @@ Rectangle {
                 pageStack.push(functioncollection)
         }
         onOkBtnClicked: {
-            console.log("default font ok");
-            sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);}
+            /*console.log("default font ok");
+            sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);*/}
     }
 
 }

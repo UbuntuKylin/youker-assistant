@@ -91,6 +91,7 @@ Rectangle {
         }
 
         Text {
+            id: teamname
             anchors {
                 top: setrow.bottom
                 topMargin: 30
@@ -102,10 +103,22 @@ Rectangle {
             font.pixelSize: 14
             color: "#383838"
         }
+        Text {
+            anchors {
+                top: teamname.bottom
+                topMargin: 10
+                horizontalCenter: parent.horizontalCenter
+            }
+            text: "优客助手"
+//                wrapMode: Text.WordWrap
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
+        }
     }
     //上下分割条
-    Rectangle {id: splitbar1; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar2; y: 272; width: parent.width; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar2; x: 2; y: 272; width: parent.width; height: 1; color: "#fafcfe" }
     //-------------------
 
 
@@ -139,7 +152,7 @@ Rectangle {
 
     Row {
         id: versionrow
-        spacing: 40
+        spacing: 30
         anchors {
             bottom: parent.bottom
             bottomMargin: 10

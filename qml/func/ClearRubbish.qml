@@ -19,144 +19,65 @@ import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 
-//Item {
-//    id: clearmode
-//    width: parent.width
-//    height: 475
-//    property SessionDispatcher dis1: sessiondispatcher
-//    property SystemDispatcher dis2: systemdispatcher
-//    Image {     //背景图片
-//        id: background
-//        anchors.fill: parent
-//        source: "../img/skin/bg-middle-tab.png"
-//    }
-////    state: fastitem_z
-//    Common.Tabs {
-//        id: tabs
-//        width: parent.width; height: 435
-//        Common.Tab {
-//            title: qsTr("一键清理")
-//            anchors.fill: parent
-//            FastclearModel {
-//                id: fastitem
-//            }
-//        }
-//        Common.Tab {
-//            title:qsTr("包管理缓存")
-//            anchors.fill: parent
-//            AptCruft{
-//               id: aptitem
-//           }
-//        }
-//        Common.Tab {
-//            title:qsTr("软件中心缓存")
-//            anchors.fill: parent
-//            SoftwareCruft {
-//                id: softwareitem
-//            }
-
-//        }
-//        Common.Tab {
-//            title:qsTr("历史记录")
-//            anchors.fill: parent
-//            BrowserHistroy {
-//                id: historyitem
-//            }
-//        }
-//        Common.Tab {
-//            title:qsTr("Cookies")
-//            anchors.fill: parent
-//            BrowserCookies {
-//                id: cookiesitem
-//            }
-//        }
-//        Common.Tab {
-//            title:qsTr("包卸载")
-//            anchors.fill: parent
-//            PackageModel {
-//                id: packagemodel
-//            }
-//        }
-//        Common.Tab{
-//            title:qsTr("文件排序")
-//            anchors.fill: parent
-//            LargestFile {
-//                id: largestitem
-//            }
-//        }
-//    }
-//}
-
-
-
 Item {
     id: clearmode
     width: parent.width
     height: 475
-    property SessionDispatcher dis1: sessiondispatcher
-    property SystemDispatcher dis2: systemdispatcher
-    ListModel {
-        id: choices
-        ListElement { text: "kobe333" }
-        ListElement { text: "lixiang" }
-        ListElement { text: "ps" }
-        ListElement { text: "baby" }
+    Image {     //背景图片
+        id: background
+        anchors.fill: parent
+        source: "../img/skin/bg-middle-tab.png"
     }
 
-    Common.TabFrame {
-        id:frame
-        //position decides the tabBar's location ,when is "South", the tabBar on Sourth, and when is "North", the tabBar on North
-        position: "North"
-        width: parent.width
-        height: parent.height
-        onCurrentChanged: {}
+    Common.Tabs {
+        id: tabs
+        width: parent.width; height: 435
         Common.Tab {
             title: qsTr("一键清理")
-            contentMargin: 20
+            anchors.fill: parent
             FastclearModel {
                 id: fastitem
             }
         }
-        Common.Tab {
-            title: qsTr("包管理缓存")
-            contentMargin: 20
-            AptCruft {
-                id: aptitem
-            }
+        Common.TabPage {
+            title:qsTr("包管理缓存")
+            anchors.fill: parent
+            AptCruft{
+               id: aptitem
+           }
         }
-        Common.Tab {
-
-            title: qsTr("软件中心缓存")
-            contentMargin: 20
+        Common.TabPage {
+            title:qsTr("软件中心缓存")
+            anchors.fill: parent
             SoftwareCruft {
                 id: softwareitem
             }
+
         }
-        Common.Tab {
-            title: qsTr("历史记录")
-            contentMargin: 20
+        Common.TabPage {
+            title:qsTr("历史记录")
+            anchors.fill: parent
             BrowserHistroy {
                 id: historyitem
             }
         }
-        Common.Tab {
-
-            title: qsTr("Cookies")
-            contentMargin: 20
+        Common.TabPage {
+            title:qsTr("Cookies")
+            anchors.fill: parent
             BrowserCookies {
                 id: cookiesitem
             }
         }
-        Common.Tab {
-            title: qsTr("包卸载")
-            contentMargin: 20
+        Common.TabPage {
+            title:qsTr("包卸载")
+            anchors.fill: parent
             PackageModel {
                 id: packagemodel
             }
         }
-        Common.Tab {
-            title: qsTr("文件排序")
-            contentMargin: 20
+        Common.TabPage{
+            title:qsTr("文件排序")
+            anchors.fill: parent
             LargestFile {
                 id: largestitem
             }
@@ -166,118 +87,78 @@ Item {
 
 
 
-//import QtQuick 2.0
-//import Ubuntu.Components 0.1
-//import Ubuntu.Components.ListItems 0.1 as ListItem
-//import RegisterMyType 0.1
-//import "common" as Common
-//MainView {
+//Item {
+//    id: clearmode
 //    width: parent.width
-//    height: 460
-//    property Dispatcher dis: mydispather
-//    Tabs {
-//        id: tabs
-//        Tab {
-//            id: fastTab
+//    height: 475
+//    property SessionDispatcher dis1: sessiondispatcher
+//    property SystemDispatcher dis2: systemdispatcher
+//    ListModel {
+//        id: choices
+//        ListElement { text: "kobe333" }
+//        ListElement { text: "lixiang" }
+//        ListElement { text: "ps" }
+//        ListElement { text: "baby" }
+//    }
+
+//    Common.TabFrame {
+//        id:frame
+//        //position decides the tabBar's location ,when is "South", the tabBar on Sourth, and when is "North", the tabBar on North
+//        position: "North"
+//        width: parent.width
+//        height: parent.height
+//        onCurrentChanged: {}
+
+//        Common.Tab {
 //            title: qsTr("一键清理")
-//            iconSource: "../img/icons/kysoft.png"
-//            page: Loader {
-//                parent: fastTab
-//                anchors.fill: parent
-
-//                source: (tabs.selectedTab === fastTab) ? Qt.resolvedUrl("FastclearModel.qml") : ""
+//            contentMargin: 20
+//            FastclearModel {
+//                id: fastitem
 //            }
 //        }
-
-//        Tab {
-//            id: externalTab
-//            title: qsTr("清理垃圾")
-//            iconSource: "../img/icons/kysoft.png"
-//            page: Loader {
-//                parent: externalTab
-//                anchors.fill: parent
-//                source: (tabs.selectedTab === externalTab) ? Qt.resolvedUrl("RubbishModel.qml") : ""
+//        Common.Tab {
+//            title: qsTr("包管理缓存")
+//            contentMargin: 20
+//            AptCruft {
+//                id: aptitem
 //            }
 //        }
+//        Common.Tab {
 
-//        Tab {
-//            id: pluginTab
-//            title: qsTr("清理插件")
-//            page: Page {
-
-//                //垃圾清理自定义标题栏
-//                Common.TitleBar {
-//                    id: titleBar; width: parent.width; height: 45; opacity: 0.9
-//                    btn_text: "开始扫描"
-//                    title: "清理电脑中的插件"
-//                    description:  "清理插件可以给系统和浏览器“减负”，减少干扰，提供系统和浏览器速度"
-//                    btn_flag: "package"
-//                }
-
-
-////                Common.TitleBar {
-////                    id: titleBar
-////                    width: parent.width
-////                    height: 45
-////                    opacity: 0.9
-////                    btn_text: "开始扫描"
-////                    title: "清理电脑中的插件"
-////                    description:  "清理插件可以给系统和浏览器“减负”，减少干扰，提供系统和浏览器速度"
-////                    btn_flag: "package"
-////                }
-
-////                Rectangle {
-////                    anchors.fill: parent
-////                    Column {
-////                        anchors {
-////                            fill: parent
-////                            top: parent.top
-////                            topMargin: 10
-////                            left: parent.left
-////                            leftMargin: 30
-////                        }
-////                        Text {
-////                            text: "清理电脑中的插件"
-////                            font.pointSize: 11
-////                            color: "black"
-////                        }
-////                        Text {
-////                            text:  "清理插件可以给系统和浏览器“减负”，减少干扰，提供系统和浏览器速度"
-////                            font.pointSize: 9
-////                            color: "gray"
-////                        }
-////                    }
-////                    Button {
-////                        id: pluginBtn
-////                        width: 90
-////                        color: "gray"
-////                        anchors {
-////                            top: parent.top
-////                            topMargin: 10
-////                            left: parent.left
-////                            leftMargin: 700
-////                        }
-////                        text: "开始扫描"
-////                        onClicked: {
-////                            //kobe: wait for adding function
-////                        }
-////                    }
-////                }
+//            title: qsTr("软件中心缓存")
+//            contentMargin: 20
+//            SoftwareCruft {
+//                id: softwareitem
 //            }
 //        }
-
-
-//        Tab {
-//            id: tracesTab
-//            title: qsTr("清理痕迹")
-//            iconSource: "../img/icons/kysoft.png"
-//            page: Loader {
-//                parent: tracesTab
-//                anchors.fill: parent
-////                (tabs.selectedTab == tracesTab) ? mydispather.set_str("tracesmodel") : ""
-//                source: (tabs.selectedTab === tracesTab) ? Qt.resolvedUrl("TracesModel.qml") : ""
+//        Common.Tab {
+//            title: qsTr("历史记录")
+//            contentMargin: 20
+//            BrowserHistroy {
+//                id: historyitem
 //            }
+//        }
+//        Common.Tab {
 
+//            title: qsTr("Cookies")
+//            contentMargin: 20
+//            BrowserCookies {
+//                id: cookiesitem
+//            }
+//        }
+//        Common.Tab {
+//            title: qsTr("包卸载")
+//            contentMargin: 20
+//            PackageModel {
+//                id: packagemodel
+//            }
+//        }
+//        Common.Tab {
+//            title: qsTr("文件排序")
+//            contentMargin: 20
+//            LargestFile {
+//                id: largestitem
+//            }
 //        }
 //    }
 //}

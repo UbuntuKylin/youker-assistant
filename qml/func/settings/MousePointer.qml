@@ -32,7 +32,7 @@ Rectangle {
     property string default_cursor_theme: ""
 
     property string actiontitle: "鼠标设置"
-    property string actiontext: "更换鼠标指针主题和大小"
+    property string actiontext: "更换鼠标指针主题和大小，更改设置后点击“确定”按钮进行确认。"
     //背景
     Image {
         source: "../../img/skin/bg-left.png"

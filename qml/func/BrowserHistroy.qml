@@ -30,6 +30,7 @@ Item {
     property string work_result: ""
 
     property string keypage: "history"
+    property int num: 0
 
     //母项字体
     property string headerItemFontName: "Helvetica"
@@ -37,12 +38,19 @@ Item {
     property color headerItemFontColor: "black"
 
     property bool check_flag: true
+    property bool null_flag: false
 
-
-    signal history_bnt_signal(string msg);
+    signal history_bnt_signal(string history_msg);
     onHistory_bnt_signal: {
-        console.log(msg);
-        root.state = "HistoryWork";
+        if (history_msg == "HistoryWork") {
+            console.log(history_msg);
+            root.num = systemdispatcher.scan_history_records_qt();
+            if (root.num == 0)
+                root.null_flag = true;
+            else
+                root.null_flag = false;
+//            root.state = "HistoryWork";
+        }
     }
 
 
@@ -80,6 +88,11 @@ Item {
     Image {
         source: "../img/skin/bg-onekey.png"
         anchors.fill: parent
+//        anchors {
+//            fill: parent
+//            left: parent.left
+//            leftMargin: -2
+//        }
     }
 
 
@@ -191,8 +204,13 @@ Item {
                 //broswer history
                  if (btn_flag == "history_scan") {
                      console.log("history_scan---------------");
-                     if (systemdispatcher.get_history_flag())
-                        root.state = "HistoryWork";
+                     if (systemdispatcher.get_history_flag()) {
+                        history_bnt_signal("HistoryWork");
+                         if(root.null_flag == true)
+                            root.state = "HistoryWorkEmpty";
+                         else if(root.null_flag == false)
+                            root.state = "HistoryWork";
+                     }
                      else
                          sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！");
 //                     history_signal("HistoryWork");
@@ -263,7 +281,7 @@ Item {
     states: [
         State {
             name: "HistoryWork"
-             PropertyChanges { target: label; visible: true; text: "history扫描完成"}
+            PropertyChanges { target: label; visible: true; text: "history扫描完成:" + root.num + "条记录"}
 //            PropertyChanges { target: bitButton; text: "开始清理" }
              PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
             PropertyChanges { target: root; btn_flag: "history_work" }
@@ -272,6 +290,13 @@ Item {
             name: "HistoryWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
 //            PropertyChanges { target: bitButton; text: "开始扫描" }
+            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: root; btn_flag: "history_scan" }
+            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+        },
+        State {
+            name: "HistoryWorkEmpty"
+            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
             PropertyChanges { target: root; btn_flag: "history_scan" }
             PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}

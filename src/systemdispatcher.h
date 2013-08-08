@@ -47,6 +47,7 @@ public:
     Q_INVOKABLE void check_screen_break_point();
 
     Q_INVOKABLE QString get_system_daemon_qt();
+    QString get_system_daemon_qt_default();
 
     //---------------------------------
     //password

@@ -59,20 +59,20 @@ Rectangle {
 
     }
 
-    Row {
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.right: parent.right
-        anchors.rightMargin: 10
-        spacing: 5
-        Image {
-            source: "./img/icons/tool-hover.png"
-        }
-        Text {
-            color: "white"
-            font.pixelSize: 12
-            text: qsTr("我的工具箱")
-        }
-    }
+//    Row {
+//        anchors.verticalCenter: parent.verticalCenter
+//        anchors.right: parent.right
+//        anchors.rightMargin: 10
+//        spacing: 5
+//        Image {
+//            source: "./img/icons/tool-hover.png"
+//        }
+//        Text {
+//            color: "white"
+//            font.pixelSize: 12
+//            text: qsTr("我的工具箱")
+//        }
+//    }
 
     MouseArea {
           id: mouseRegion
