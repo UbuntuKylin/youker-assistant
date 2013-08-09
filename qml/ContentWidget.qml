@@ -143,7 +143,7 @@ Item {
                         id: systemmessage
                         visible: false
         //                title: "search by kobe"
-                        SystemMessage {dis: sessiondispatcher/*; dis2: systemdispatcher*/}
+                        SystemMessage {}
                     }
                     Common.Page {
                         id: clearrubbish

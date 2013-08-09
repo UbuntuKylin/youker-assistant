@@ -22,6 +22,7 @@
 #include <QString>
 #include "messagedialog.h"
 #include "warningdialog.h"
+#include "restartdialog.h"
 #include <QDesktopWidget>
 #include <QDeclarativeContext>
 #include <QFontDialog>
@@ -94,6 +95,18 @@ void SessionDispatcher::create_checkscreendialog() {
 //------------------------------------
 
 //----------------warning dialog--------------------
+void SessionDispatcher::send_restartdialog_msg() {
+    create_restartdialog();
+}
+void SessionDispatcher::create_restartdialog() {
+
+    RestartDialog *dialog = new RestartDialog();
+    dialog->exec();
+//    dialog->setModal(true);
+//    dialog->show();
+}
+
+
 void SessionDispatcher::send_warningdialog_msg(QString title, QString content) {
     create_warningdialog(title, content);
 }
@@ -164,15 +177,14 @@ bool SessionDispatcher::set_launcher(bool flag) {
 
 QStringList SessionDispatcher::get_themes() {
     QDBusReply<QStringList> reply = sessioniface->call("get_sys_themes");
-    if (reply.isValid()) {
-        QStringList value = reply.value();
-//        myinfo = value;
-        qDebug() << value;
-        return reply.value();
-    }
-    else {
-        qDebug() << "get thems msg1 failed!";
-    }
+    return reply.value();
+//    if (reply.isValid()) {
+//        QStringList value = reply.value();
+//        return reply.value();
+//    }
+//    else {
+//        qDebug() << "get thems msg1 failed!";
+//    }
 }
 
 

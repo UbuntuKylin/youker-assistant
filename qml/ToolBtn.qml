@@ -153,7 +153,7 @@ Rectangle {
                         pageStack.push(clearrubbish);
                     }
                     else {
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                        sessiondispatcher.send_restartdialog_msg();
                     }
                 }
             }
@@ -174,7 +174,7 @@ Rectangle {
                         pageStack.push(systemset);
                     }
                     else {
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                        sessiondispatcher.send_restartdialog_msg();
                     }
                 }
             }
@@ -193,7 +193,7 @@ Rectangle {
                         pageStack.push(functioncollection);
                     }
                     else {
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                        sessiondispatcher.send_restartdialog_msg();
                     }
                 }
             }

@@ -28,10 +28,10 @@ Item {
         anchors.fill: parent
         source: "../img/skin/bg-middle-tab.png"
     }
-
     Common.Tabs {
         id: tabs
         width: parent.width; height: 435
+
         Common.Tab {
             title: qsTr("一键清理")
             anchors.fill: parent

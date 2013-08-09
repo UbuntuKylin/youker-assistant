@@ -33,7 +33,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 
+#include <errno.h>
+#include <sys/wait.h>
 extern QString passwd;
 extern QString music_path;
 
@@ -91,7 +94,76 @@ QString SystemDispatcher::get_system_daemon_qt_default() {
     return reply.value();
 }
 
-bool SystemDispatcher::judge_process(QString flagstr, QString pwd) {
+//bool SystemDispatcher::judge_process(QString flagstr, QString pwd) {
+//    QString system_value = get_system_daemon_qt_default();
+//    qDebug() << "SystemDaemon00000";
+//    qDebug() << system_value;
+//    if (system_value == "SystemDaemon") {
+//        qDebug() << "SystemDaemon11111";
+//        return true;
+//    }
+//    else {
+//        QProcess *process = new QProcess;
+//        qDebug() << "SystemDaemon22222";
+//        process->start("/usr/bin/" + flagstr + " " + pwd);
+//        qDebug() << "SystemDaemon33333";
+
+
+
+////        QString sys_cmd = "/usr/bin/" + flagstr + " " + pwd;
+////        QByteArray ba = sys_cmd.toLatin1();
+////        const char *cmd = ba.data();
+////        char command[124];
+////        FILE *fp;
+////        /*将要执行的命令写入buf*/
+////        snprintf(command, sizeof(command), cmd);
+////        /*执行预先设定的命令，并读出该命令的标准输出*/
+////        fp = popen(command, "r");
+////        if(NULL == fp)
+////        {
+////            perror("popen执行失败！");
+////            pclose(fp);
+////            exit(1);
+////        }
+////        else
+////            qDebug() << "success.............";
+////        pclose(fp);
+
+
+//        return false;
+////        QString sys_cmd = "/usr/bin/" + flagstr + " " + pwd;
+////        QByteArray ba = sys_cmd.toLatin1();
+////        const char *cmd = ba.data();
+////        qDebug() << cmd;
+////        int bb = system(cmd);
+////        qDebug() << bb;
+//    }
+
+
+////    int value = 0;
+////    QString str = "";
+////    FILE *stream;
+////    char buf[64];
+////    memset(buf, '\0', sizeof(buf));
+////    QString cmd = "ps -ef | grep " + flagstr + " | grep -v grep | wc -l";
+////    QByteArray ba = cmd.toLatin1();
+////    const char *str_cmd = ba.data();
+////    stream = popen(str_cmd, "r" );
+////    fread(buf, sizeof(char), sizeof(buf), stream);
+////    str = QString(buf);
+////    value = str.toInt();
+////    if (value == 0) {
+////        qDebug() << "1234567";
+////        QProcess *process = new QProcess;
+////        qDebug() << "002";
+////        process->start("/usr/bin/" + flagstr + " " + pwd);
+////    }
+////    else
+////        qDebug() << "123456789";
+////    pclose(stream);
+//}
+
+bool SystemDispatcher::judge_process(/*QString flagstr, QString pwd*/) {
     QString system_value = get_system_daemon_qt_default();
     qDebug() << "SystemDaemon00000";
     qDebug() << system_value;
@@ -100,41 +172,16 @@ bool SystemDispatcher::judge_process(QString flagstr, QString pwd) {
         return true;
     }
     else {
+        qDebug() << "SystemDaemon222";
+//        int value = system("/usr/bin/youkersystem");
         QProcess *process = new QProcess;
-        qDebug() << "SystemDaemon22222";
-        process->start("/usr/bin/" + flagstr + " " + pwd);
-        qDebug() << "SystemDaemon33333";
+        process->start("/usr/bin/youkersystem");
+        qDebug() << "SystemDaemon333";
+//        qDebug() << value;
         return false;
-//        QString sys_cmd = "/usr/bin/" + flagstr + " " + pwd;
-//        QByteArray ba = sys_cmd.toLatin1();
-//        const char *cmd = ba.data();
-//        qDebug() << cmd;
-//        int bb = system(cmd);
-//        qDebug() << bb;
+
     }
 
-
-//    int value = 0;
-//    QString str = "";
-//    FILE *stream;
-//    char buf[64];
-//    memset(buf, '\0', sizeof(buf));
-//    QString cmd = "ps -ef | grep " + flagstr + " | grep -v grep | wc -l";
-//    QByteArray ba = cmd.toLatin1();
-//    const char *str_cmd = ba.data();
-//    stream = popen(str_cmd, "r" );
-//    fread(buf, sizeof(char), sizeof(buf), stream);
-//    str = QString(buf);
-//    value = str.toInt();
-//    if (value == 0) {
-//        qDebug() << "1234567";
-//        QProcess *process = new QProcess;
-//        qDebug() << "002";
-//        process->start("/usr/bin/" + flagstr + " " + pwd);
-//    }
-//    else
-//        qDebug() << "123456789";
-//    pclose(stream);
 }
 
 bool SystemDispatcher::setup() {
@@ -166,7 +213,8 @@ bool SystemDispatcher::setup() {
             int bb1 = system(transpd2);
             qDebug() << bb1;
             qDebug() << "4444444444444444over";
-            value =  judge_process("youkersystem", pwd);
+//            value =  judge_process("youkersystem", pwd);
+            value =  judge_process();
             qDebug() << value;
             qDebug() << "4444444--1";
             return value;
@@ -185,7 +233,8 @@ bool SystemDispatcher::setup() {
             }
             fputs(mypd,fp);
             fclose(fp);
-            value = judge_process("youkersystem", passwd);
+//            value = judge_process("youkersystem", passwd);
+            value = judge_process();
             qDebug() << value;
             qDebug() << "4444444--2";
             return value;
@@ -204,7 +253,8 @@ bool SystemDispatcher::setup() {
         }
         fputs(mypd,fp);
         fclose(fp);
-        value = judge_process("youkersystem", passwd);
+//        value = judge_process("youkersystem", passwd);
+        value = judge_process();
         qDebug() << value;
         qDebug() << "4444444--3";
         return value;

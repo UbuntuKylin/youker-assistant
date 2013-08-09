@@ -34,7 +34,8 @@ HEADERS += youker-application.h \
     qwheelarea.h \
     qtmenu.h \
     qtmenuitem.h \
-    qtoplevelwindow.h
+    qtoplevelwindow.h \
+    restartdialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -52,7 +53,8 @@ SOURCES += main.cpp \
     qwheelarea.cpp \
     qtmenu.cpp \
     qtmenuitem.cpp \
-    qtoplevelwindow.cpp
+    qtoplevelwindow.cpp \
+    restartdialog.cpp
 
 RESOURCES += pixmap.qrc
 
@@ -61,4 +63,5 @@ FORMS += \
     authdialog.ui \
     modaldialog.ui \
     warningdialog.ui \
-    messagedialog.ui
+    messagedialog.ui \
+    restartdialog.ui

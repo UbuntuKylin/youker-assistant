@@ -34,7 +34,7 @@ Item {
 
         //背景
         Image {
-            source: "../img/skin/bg-left.png"
+            source: "../img/skin/bg-middle.png"
             anchors.fill: parent
         }
         Item {

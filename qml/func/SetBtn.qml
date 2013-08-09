@@ -143,7 +143,7 @@ Rectangle {
                     }
                     else {
                         console.log("888");
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                        sessiondispatcher.send_restartdialog_msg();
                     }
                 }
 //                console.log("onekey clicked....");

@@ -45,6 +45,8 @@ public:
 //    void create_dialog(QString mode);
     Q_INVOKABLE void send_warningdialog_msg(QString title, QString content);
     void create_warningdialog(QString title, QString content);
+    Q_INVOKABLE void send_restartdialog_msg();
+    void create_restartdialog();
 
 
     Q_INVOKABLE void set_page_num(int num);

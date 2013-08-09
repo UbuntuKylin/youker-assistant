@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=youker-assistant-systemdaemon
+Name[zh_CN]=优客助手服务
+Comment=youker-assistant-systemdaemon
+Exec=/usr/bin/youkersystem
+Icon=youker-assistant.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Graphics;RasterGraphics;Viewer;

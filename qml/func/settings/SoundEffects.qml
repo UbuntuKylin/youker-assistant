@@ -160,10 +160,10 @@ Rectangle {
                 hoverimage: "ok.png"
                 onClicked: {
                     console.log("sound ok");
-                    if (soundeffectspage.default_sound != soundcombo.selectedText) {
+                    if (soundeffectspage.default_sound != iconcombo.selectedText) {
                         console.log("111");
-                        soundeffectspage.default_sound = soundcombo.selectedText;
-                        sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
+                        soundeffectspage.default_sound = iconcombo.selectedText;
+                        sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
                     }
                     else
                         console.log("222");
@@ -187,7 +187,7 @@ Rectangle {
                 width: 124
                 height: 30
                 onClicked: {
-                    if (soundeffectspage.init_sound_flag == ture) {
+                    if (soundeffectspage.init_sound_flag == true) {
                         soundeffectspage.init_sound_flag = false;
                         systemdispatcher.restore_all_sound_file_qt(soundeffectspage.init_sound);
                     }

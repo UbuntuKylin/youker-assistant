@@ -54,7 +54,7 @@ public:
     //password
     Q_INVOKABLE void show_passwd_dialog();
     Q_INVOKABLE bool setup();
-    bool judge_process(QString flagstr, QString pwd);
+    bool judge_process(/*QString flagstr, QString pwd*/);
 
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);

@@ -50,7 +50,7 @@ import SessionType 0.1
 //                                console.log(clearflag);
 //                                console.log(titlename);
                                 if (clearflag == "cache") {
-                                    console.log("ture cache is...........");
+                                    console.log("true cache is...........");
                                     console.log(clearflag);
                                     var rubbishlist = systemdispatcher.get_onekey_args();
                                     console.log("ok change............");

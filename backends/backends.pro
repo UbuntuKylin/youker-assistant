@@ -10,12 +10,14 @@ inst4.files += ../backends/youker-assistant-daemon/data/youker-assistant-daemon.
 inst4.path = /etc/dbus-1/system.d/
 inst5.files += ../backends/youker-assistant-daemon/data/com.youker_assistant.daemon.service
 inst5.path = /usr/share/dbus-1/system-services/
-inst6.files += ../backends/youker-assistant-daemon/src/beautify/res/autostart/
-inst6.path = /usr/share/youker-assistant-daemon/
-inst7.files += ../backends/youker-assistant-daemon/src/beautify/res/plymouth/
+inst6.files += ../backends/youker-assistant-daemon/data/youker-assistant-daemon.desktop
+inst6.path = /etc/xdg/autostart/
+inst7.files += ../backends/youker-assistant-daemon/src/beautify/res/autostart/
 inst7.path = /usr/share/youker-assistant-daemon/
 inst8.files += ../backends/youker-assistant-daemon/src/beautify/res/plymouth/
 inst8.path = /usr/share/youker-assistant-daemon/
+inst9.files += ../backends/youker-assistant-daemon/src/beautify/res/plymouth/
+inst9.path = /usr/share/youker-assistant-daemon/
 
 INSTALLS += inst1 \
     inst2 \
@@ -24,4 +26,5 @@ INSTALLS += inst1 \
     inst5 \
     inst6 \
     inst7 \
-    inst8
+    inst8 \
+    inst9

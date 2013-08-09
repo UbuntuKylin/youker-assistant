@@ -28,7 +28,7 @@ Item {
         anchors.fill: parent
         //背景
         Image {
-            source: "../img/skin/bg-left.png"
+            source: "../img/skin/bg-bottom-tab.png"
             anchors.fill: parent
         }
         Item {
@@ -42,6 +42,7 @@ Item {
                     left: parent.left
                     leftMargin: 2
                 }
+                width: parent.width - 4
                 source: "../img/skin/note-bg.png"
             }
             Text {
