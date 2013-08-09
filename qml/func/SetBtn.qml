@@ -125,7 +125,7 @@ Rectangle {
                     console.log("333");
                     systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
                     console.log("444");
-                    btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                    btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
                     console.log("555");
 //                    menulogo.enabled=false;
                 }
@@ -138,7 +138,7 @@ Rectangle {
                         console.log("777");
                         send_dynamic_picture("onekey");
                         systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                        btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
                         menulogo.enabled=false;
                     }
                     else {

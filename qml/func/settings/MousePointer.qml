@@ -100,12 +100,24 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Text {
-             text: mousepointerpage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
+        Row {
+            spacing: 50
+            Text {
+                 text: mousepointerpage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: mousepointerpage.actiontext
              font.pixelSize: 12
@@ -264,7 +276,12 @@ Rectangle {
                 sessiondispatcher.set_cursor_size_qt(24);
             else if(bigstyle.checked == true)
                 sessiondispatcher.set_cursor_size_qt(36);
+            statusImage.visible = true;
         }
+        Timer {
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: statusImage.visible = false
+             }
     }
 
 }

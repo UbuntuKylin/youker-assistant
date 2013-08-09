@@ -41,7 +41,7 @@ Rectangle {
     property string titlebar_font: "Helvetica"
     property bool titlebar_font_flag: false
     property string actiontitle: "标题栏字体设置"
-    property string actiontext: "根据您的喜好设置标题栏字体"
+    property string actiontext: "根据您的喜好设置标题栏字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -86,12 +86,24 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Text {
-             text: titlebarfontpage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
+        Row {
+            spacing: 50
+            Text {
+                 text: titlebarfontpage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: titlebarfontpage.actiontext
              font.pixelSize: 12
@@ -170,11 +182,16 @@ Rectangle {
                     if(titlebarfontpage.titlebar_font_flag == true) {
                         sessiondispatcher.set_window_title_font_qt_default(titlebarfontpage.titlebar_font);
                         sessiondispatcher.restore_default_font_signal("titlebarfont_default");
+                        statusImage.visible = true;
                     }
                     else
                         sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的窗体标题栏字体已经为默认字体！");
                 }
             }
+            Timer {
+                     interval: 5000; running: true; repeat: true
+                     onTriggered: statusImage.visible = false
+                 }
         }
 
 

@@ -110,12 +110,24 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Text {
-             text: desktopiconsetpage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
+        Row{
+            spacing: 50
+            Text {
+                 text: desktopiconsetpage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: desktopiconsetpage.actiontext
              font.pixelSize: 12
@@ -183,6 +195,7 @@ Rectangle {
                     console.log("333");
                     desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
                     sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+                    statusImage.visible = true;
                 }
                 else
                     console.log("444");
@@ -198,11 +211,16 @@ Rectangle {
                 if(desktopiconsetpage.init_icon_theme_flag == true) {
                     desktopiconsetpage.init_icon_theme_flag;
                     sessiondispatcher.set_icon_theme_qt(desktopiconsetpage.init_icon_theme);
+                    statusImage.visible = true;
                 }
                 else
                     sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的图标主题已经为默认设置！");
             }
         }
+        Timer {
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: statusImage.visible = false
+             }
     }
 
     Row {

@@ -41,7 +41,7 @@ Rectangle {
     property string document_font: "Helvetica"
     property bool document_font_flag: false
     property string actiontitle: "文档字体设置"
-    property string actiontext: "根据您的喜好设置文档字体"
+    property string actiontext: "根据您的喜好设置文档字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -87,12 +87,24 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Text {
-             text: documentfontpage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
+        Row {
+            spacing: 50
+            Text {
+                 text: documentfontpage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: documentfontpage.actiontext
              font.pixelSize: 12
@@ -176,11 +188,16 @@ Rectangle {
                     if(documentfontpage.document_font_flag == true) {
                         sessiondispatcher.set_document_font_qt_default(documentfontpage.document_font);
                         sessiondispatcher.restore_default_font_signal("documentfont_default");
+                        statusImage.visible = true;
                     }
                     else
                         sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！");
                 }
             }
+            Timer {
+                     interval: 5000; running: true; repeat: true
+                     onTriggered: statusImage.visible = false
+                 }
         }
 
     }//Column

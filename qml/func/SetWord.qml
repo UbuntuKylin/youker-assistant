@@ -128,18 +128,20 @@ Rectangle {
             else if (flag == "MousePointer")
                 pageStack.push(mousepointerpage);
             else if (flag == "SoundEffects") {
-                console.log("SoundEffects clicked....");
-                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
-                if (component_sound.status == Component.Ready) {
-                    pageStack.push(component_sound);
-                }
+                pageStack.push(soundeffectspage);
+//                console.log("SoundEffects clicked....");
+//                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
+//                if (component_sound.status == Component.Ready) {
+//                    pageStack.push(component_sound);
+//                }
             }
             else if (flag == "BootAnimation") {
-                console.log("BootAnimation clicked....");
-                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
-                if (component_boot.status == Component.Ready) {
-                    pageStack.push(component_boot);
-                }
+                pageStack.push(bootanimationpage);
+//                console.log("BootAnimation clicked....");
+//                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
+//                if (component_boot.status == Component.Ready) {
+//                    pageStack.push(component_boot);
+//                }
             }
             else if (flag == "LauncherTheme")
                 pageStack.push(launcherthemepage);

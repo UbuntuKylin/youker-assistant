@@ -420,7 +420,7 @@ void SystemDispatcher::plymouth_init_check_qt() {
 //}
 QString SystemDispatcher::show_file_dialog(QString flag) {
     if (flag == "bootanimation") {
-        QString bootfileName = QFileDialog::getOpenFileName(0, tr("选择开机动画"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+        QString bootfileName = QFileDialog::getOpenFileName(0, tr("选择开机动画"), "", tr("Image Files (*.png)"));
         return bootfileName;
     }
     else if (flag == "soundeffects") {

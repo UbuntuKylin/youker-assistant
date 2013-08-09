@@ -74,12 +74,24 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Text {
-             text: launcherthemepage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
+        Row {
+            spacing: 50
+            Text {
+                 text: launcherthemepage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: launcherthemepage.actiontext
              font.pixelSize: 12
@@ -252,8 +264,14 @@ Rectangle {
                 console.log("launcher ok");
                 launcherthemepage.launcher_size = slider.value;
                 sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+                statusImage.visible = true;
             }
         }
+
+        Timer {
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: statusImage.visible = false
+             }
     }
 }
 

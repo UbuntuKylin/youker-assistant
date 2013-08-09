@@ -186,16 +186,18 @@ Item {
                         Settings.MousePointer {}
                     }
 
-//                    Common.Page {
-//                        id: soundeffectspage
-//                        visible: false
-//                        Settings.SoundEffects {}
-//                    }
-//                    Common.Page {
-//                        id: bootanimationpage
-//                        visible: false
-//                        Settings.BootAnimation {}
-//                    }
+                    Common.Page {
+                        id: soundeffectspage
+                        visible: false
+                        Settings.SoundEffects {}
+                    }
+                    Common.Page {
+                        id: bootanimationpage
+                        visible: false
+                        Settings.BootAnimation {}
+                    }
+
+
                     Common.Page {
                         id: launcherthemepage
                         visible: false

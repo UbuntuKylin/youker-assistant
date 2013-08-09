@@ -38,7 +38,7 @@ Rectangle {
     property string init_sound: ""
     property bool init_sound_flag: false
     property string actiontitle: "声音效果设置"
-    property string actiontext: "选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的播放、更换和还原。"
+    property string actiontext: "选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。"
 
     property string selectedmusic: ""
 
@@ -121,12 +121,25 @@ Rectangle {
             top: parent.top;topMargin: 44
             left: parent.left;leftMargin: 80
         }
-        Text {
-             text: soundeffectspage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
+        Row {
+            spacing: 50
+
+            Text {
+                 text: soundeffectspage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: soundeffectspage.actiontext
              font.pixelSize: 12
@@ -164,6 +177,7 @@ Rectangle {
                         console.log("111");
                         soundeffectspage.default_sound = iconcombo.selectedText;
                         sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
+                        statusImage.visible = true;
                     }
                     else
                         console.log("222");
@@ -190,11 +204,17 @@ Rectangle {
                     if (soundeffectspage.init_sound_flag == true) {
                         soundeffectspage.init_sound_flag = false;
                         systemdispatcher.restore_all_sound_file_qt(soundeffectspage.init_sound);
+                        statusImage.visible = true;
                     }
                     else
                         sessiondispatcher.send_warningdialog_msg("友情提示：","当前主题已经为默认主题!");
                 }
             }
+
+            Timer {
+                     interval: 5000; running: true; repeat: true
+                     onTriggered: statusImage.visible = false
+                 }
 
         }
 
@@ -210,11 +230,37 @@ Rectangle {
             left: parent.left
             leftMargin: 60
         }
-        Text{
-            text: qsTr("程序事件：")
-            font.bold:true
-            color: "#383838"
-            font.pointSize: 10
+        Row {
+            spacing: 340
+            Text{
+                text: "程序事件："
+                font.bold:true
+                color: "#383838"
+                font.pointSize: 10
+            }
+            Row {
+                anchors.verticalCenter: parent.verticalCenter
+                spacing: 10
+                Text {
+                    id: listen
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    text: "试听"
+                }
+                Text {
+                    id: select
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    text: "替换"
+                }
+                Text {
+                    id: revoke
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    text: "还原"
+                }
+            }
+
         }
         Rectangle{
             border.color: "#b9c5cc"

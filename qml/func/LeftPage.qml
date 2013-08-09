@@ -49,7 +49,15 @@ Rectangle {
                 cachestatus.state = "StatusC";
             }
 
-            else if (msg == "he") {
+            refreshArrow0.visible = true;
+            refreshArrow.visible = false;
+
+        }
+
+        onFinishCleanWorkMainError: {
+            console.log("begin LeftPage Main onOneKeyFinishCleanWork Error..............");
+            console.log(msg);
+            if (msg == "he") {
                 historystatus.state = "StatusH1";
             }
             else if (msg == "ke") {
@@ -61,15 +69,6 @@ Rectangle {
             else if (msg == "ce") {
                 cachestatus.state = "StatusC1";
             }
-
-            refreshArrow0.visible = true;
-            refreshArrow.visible = false;
-
-        }
-
-        onFinishCleanWorkMainError: {
-            console.log("begin LeftPage Main onOneKeyFinishCleanWork Error..............");
-            console.log(msg);
         }
     }
 
@@ -77,7 +76,6 @@ Rectangle {
     //背景
     Image {
         source: "../img/skin/bg-left.png"
-//        source: "../img/skin/bg-right.png"
         anchors.fill: parent
     }
     Column {

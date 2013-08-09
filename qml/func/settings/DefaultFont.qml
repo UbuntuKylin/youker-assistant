@@ -46,7 +46,7 @@ Rectangle {
     property bool monospace_font_flag: false
     property bool zoom_flag: false
     property string actiontitle: "默认字体设置"
-    property string actiontext: "根据您的喜好设置系统默认字体"
+    property string actiontext: "根据您的喜好设置系统默认字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -127,12 +127,24 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Text {
-             text: defaultfontpage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
+        Row {
+            spacing: 50
+            Text {
+                 text: defaultfontpage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: defaultfontpage.actiontext
              font.pixelSize: 12
@@ -216,6 +228,7 @@ Rectangle {
 //                        defaultfontpage.current_font_flag = false;
                         sessiondispatcher.set_font_qt_default(defaultfontpage.current_font);
                         sessiondispatcher.restore_default_font_signal("font_default");
+                        statusImage.visible = true;
                     }
                     else
                         sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！");
@@ -261,6 +274,7 @@ Rectangle {
 //                        defaultfontpage.desktop_font_flag = false;
                         sessiondispatcher.set_desktop_font_qt_default(defaultfontpage.desktop_font);
                         sessiondispatcher.restore_default_font_signal("desktopfont_default");
+                        statusImage.visible = true;
                     }
                     else
                         sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！");
@@ -308,6 +322,7 @@ Rectangle {
 //                        defaultfontpage.monospace_font_flag = false;
                         sessiondispatcher.set_monospace_font_qt_default(defaultfontpage.monospace_font);
                         sessiondispatcher.restore_default_font_signal("monospacefont_default");
+                        statusImage.visible = true;
                     }
                     else
                         sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！");
@@ -412,6 +427,7 @@ Rectangle {
             hoverimage: "ok.png"
             onClicked: {
                 sessiondispatcher.set_font_zoom_qt(slider.value);
+                statusImage.visible = true;
             }
         }
         Common.Button {
@@ -424,6 +440,7 @@ Rectangle {
                 if(defaultfontpage.zoom_flag == true) {
                     defaultfontpage.zoom_flag = false;
                     sessiondispatcher.set_font_zoom_qt(defaultfontpage.zoom);
+                    statusImage.visible = true;
                 }
                 else
                     sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！");
@@ -486,6 +503,10 @@ Rectangle {
             /*console.log("default font ok");
             sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);*/}
     }
+    Timer {
+             interval: 5000; running: true; repeat: true
+             onTriggered: statusImage.visible = false
+         }
 
 }
 

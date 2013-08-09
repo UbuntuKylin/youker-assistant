@@ -24,7 +24,7 @@ Rectangle {
     width: parent.width
     height: 475
     property string actiontitle: "窗口主题设置"
-    property string actiontext: "选中您想设置的主题，点击确定按钮更换主题；第一个主题为系统当前使用的主题。"
+    property string actiontext: "选中您想设置的主题，点击确定按钮更换主题；优客助手启动时页面上的第一个主题为系统当前使用的主题。"
     property string init_theme: ""
     property string selected_theme: ""
     property SessionDispatcher dis: sessiondispatcher
@@ -32,6 +32,7 @@ Rectangle {
     property int num: 0
 
     Component.onCompleted: {
+        statusImage.visible = false;
         var syslist = sessiondispatcher.get_themes_qt();
         widgetthemepage.num = syslist.length;
         widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
@@ -44,6 +45,11 @@ Rectangle {
         }
     }
 
+    function change_status() {
+        console.log("11111111111111");
+        statusImage.visible = false;
+        console.log("222222222222222");
+    }
 
 //    Connections {
 //        target: toolBar
@@ -247,13 +253,24 @@ Rectangle {
             left: parent.left
             leftMargin: 80
          }
-//             width: parent.width
-         Text {
-              text: widgetthemepage.actiontitle
-              font.bold: true
-              font.pixelSize: 14
-              color: "#383838"
-          }
+         Row {
+             spacing: 50
+             Text {
+                  text: widgetthemepage.actiontitle
+                  font.bold: true
+                  font.pixelSize: 14
+                  color: "#383838"
+              }
+             //status picture
+             Image {
+                 id: statusImage
+                 visible: false
+                 source: "../../img/toolWidget/finish.png"
+                 fillMode: "PreserveAspectFit"
+                 smooth: true
+                 anchors.verticalCenter: parent.verticalCenter
+             }
+         }
           Text {
               text: widgetthemepage.actiontext
               font.pixelSize: 12
@@ -320,9 +337,16 @@ Rectangle {
              console.log("widgettheme ok");
              if (widgetthemepage.selected_theme == "")
                  sessiondispatcher.set_theme_qt(widgetthemepage.init_theme);
-             else
+             else {
                  sessiondispatcher.set_theme_qt(widgetthemepage.selected_theme);
+                 statusImage.visible = true;
+             }
          }
+
+         Timer {
+                  interval: 5000; running: true; repeat: true
+                  onTriggered: statusImage.visible = false
+              }
      }
 //     ScrollArea {
 //         id: scroolarea
