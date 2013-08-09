@@ -46,6 +46,7 @@ class Others:
 			shutil.copy(defaultplymouthfile, existingDir + plymouthName + '/default.plymouth')
 			# modify config file
 			fileHandle = open(existingDir + plymouthName + '/default.plymouth', 'a')
+			fileHandle.write('ImageDir=/lib/plymouth/themes/' + plymouthName + '\n')
 			fileHandle.write('ScriptFile=/lib/plymouth/themes/' + plymouthName + '/youker.script')
 			fileHandle.close()
 			
@@ -91,7 +92,7 @@ class Others:
 
 if __name__ == '__main__':
 	ooo = Others()
-	print ooo.get_existing_plymouth_list()
-# 	ooo.add_new_plymouth('/home/shine/haha.png', 'testhahabg')
-# 	ooo.custom_plymouth_bg('testhahabg')
+# 	print ooo.get_existing_plymouth_list()
+# 	ooo.add_new_plymouth('/home/shine/heihei.png', 'hoho')
+	ooo.custom_plymouth_bg('hoho')
 # 	ooo.plymouth_init_check()
