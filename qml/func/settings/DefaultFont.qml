@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -49,7 +52,7 @@ Rectangle {
     property string actiontext: "根据您的喜好设置系统默认字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
     //背景
     Image {
-        source: "../../img/skin/bg-left.png"
+        source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
     Component.onCompleted: {

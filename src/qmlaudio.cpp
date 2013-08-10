@@ -1,4 +1,18 @@
-
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include "qmlaudio.h"
 #include <QObject>
 #include <phonon>
@@ -7,9 +21,6 @@ QString music_path;
 QmlAudio::QmlAudio(QDeclarativeItem *parent) : QDeclarativeItem(parent)
 {
 
-//    qDebug() << music_path;
-//    audioObject = Phonon::createPlayer(Phonon::MusicCategory,
-//                                       Phonon::MediaSource(music_path));
 }
 
  void QmlAudio::setSong(const QUrl & songUrl)
@@ -19,25 +30,18 @@ QmlAudio::QmlAudio(QDeclarativeItem *parent) : QDeclarativeItem(parent)
 
 void QmlAudio::play()
 {
-    qDebug() << "test for playing.....";
     qDebug() << music_path;
     audioObject = Phonon::createPlayer(Phonon::MusicCategory,
                                        Phonon::MediaSource(music_path));
-    qDebug() << "test for playing111.....";
     audioObject->play();
-    qDebug() << "test for playing222.....";
 
 }
 
 void QmlAudio::pause()
 {
-//    audioObject = Phonon::createPlayer(Phonon::MusicCategory,
-//                                       Phonon::MediaSource(music_path));
     audioObject->pause();
 }
 void QmlAudio::stop()
 {
-//    audioObject = Phonon::createPlayer(Phonon::MusicCategory,
-//                                       Phonon::MediaSource(music_path));
     audioObject->stop();
 }

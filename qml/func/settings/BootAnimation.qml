@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -39,7 +42,7 @@ Rectangle {
     property string selectedimage: ""
     //背景
     Image {
-        source: "../../img/skin/bg-left.png"
+        source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
     Component.onCompleted: {

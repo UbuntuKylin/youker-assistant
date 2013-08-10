@@ -1,15 +1,25 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include "restartdialog.h"
 #include "ui_restartdialog.h"
 #include <QMouseEvent>
-//#include <sys/types.h>
-//#include <unistd.h>
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
-//#include <stdio.h>
 
-//#include <errno.h>
-//#include <sys/wait.h>
 RestartDialog::RestartDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::RestartDialog)

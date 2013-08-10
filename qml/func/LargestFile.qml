@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -295,9 +298,13 @@ Item {
     //分割条
     Rectangle {
         id: splitbar
-        anchors.top: titlebar.bottom
-        anchors.topMargin: 18
-        width: parent.width-2
+        anchors {
+            top: titlebar.bottom
+            topMargin: 18
+            left: parent.left
+            leftMargin: 2
+        }
+        width: parent.width - 4
         height: 1
         color: "#b9c5cc"
     }

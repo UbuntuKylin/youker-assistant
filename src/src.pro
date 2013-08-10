@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = youker-assistant
-QT += core gui phonon declarative dbus widgets
+QT += core gui phonon declarative dbus
 
 DEPENDPATH += $$PWD/
 INCLUDEPATH += $$PWD/
@@ -35,7 +35,18 @@ HEADERS += youker-application.h \
     qtmenu.h \
     qtmenuitem.h \
     qtoplevelwindow.h \
-    restartdialog.h
+    restartdialog.h \
+    qcursorarea.h \
+    qtooltiparea.h \
+    qtmenubar.h \
+    qwindowitem.h \
+    qtsplitterbase.h \
+    settings.h \
+    qdeclarativelinearlayout.h \
+    qdeclarativefolderlistmodel.h \
+    qdeclarativelayout.h \
+    qdeclarativelayoutengine.h \
+    qdesktopitem.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -54,7 +65,18 @@ SOURCES += main.cpp \
     qtmenu.cpp \
     qtmenuitem.cpp \
     qtoplevelwindow.cpp \
-    restartdialog.cpp
+    restartdialog.cpp \
+    qcursorarea.cpp \
+    qtooltiparea.cpp \
+    qtmenubar.cpp \
+    qwindowitem.cpp \
+    qtsplitterbase.cpp \
+    settings.cpp \
+    qdeclarativelinearlayout.cpp \
+    qdeclarativefolderlistmodel.cpp \
+    qdeclarativelayout.cpp \
+    qdeclarativelayoutengine.cpp \
+    qdesktopitem.cpp
 
 RESOURCES += pixmap.qrc
 

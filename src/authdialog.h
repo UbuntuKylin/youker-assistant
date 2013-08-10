@@ -2,7 +2,7 @@
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
  * Authors:
- *	Zhang Chao	zctgbhu@163.com
+ *  Kobe Lee    kobe24_lixiang@126.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

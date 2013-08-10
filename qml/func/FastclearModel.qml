@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 import QtQuick 1.1
 //import SessionType 0.1
 import SystemType 0.1
@@ -69,17 +87,17 @@ Rectangle {
     }
 
     //上下分割条
-    Rectangle {id: splitbar1; x: 2; y: 80; width: parent.width-2; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar2; x: 2; y: 82; width: parent.width-2; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar1; x: 2; y: 80; width: parent.width-4; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar2; x: 2; y: 82; width: parent.width-4; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar3; x: 2; y: 140; width: parent.width-2; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar4; x: 2; y: 142; width: parent.width-2; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar3; x: 2; y: 140; width: parent.width-4; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar4; x: 2; y: 142; width: parent.width-4; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar5; x: 2; y: 204; width: parent.width-2; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar6; x: 2; y: 206; width: parent.width-2; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar5; x: 2; y: 204; width: parent.width-4; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar6; x: 2; y: 206; width: parent.width-4; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar7; x: 2; y: 268; width: parent.width-2; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar8; x: 2; y: 270; width: parent.width-2; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar7; x: 2; y: 268; width: parent.width-4; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar8; x: 2; y: 270; width: parent.width-4; height: 1; color: "#fafcfe" }
 
 //    Rectangle {x: 652; y: 140; width: 200-8; height: 1; color: "#b9c5cc" }
 //    Rectangle {x: 654; y: 142; width: 200-8; height: 1; color: "#fafcfe" }

@@ -21,7 +21,7 @@ import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
 import "./func/common" as Common
-import "./func/settings" as Settings
+import "./func/settings" as SysSettings
 import "func"
 //Rectangle {
 Item {
@@ -173,55 +173,55 @@ Item {
                     Common.Page {
                         id: widgetthemepage
                         visible: false
-                        Settings.WidgetTheme {}
+                        SysSettings.WidgetTheme {}
                     }
                     Common.Page {
                         id: desktopiconsetpage
                         visible: false
-                        Settings.DesktopiconSet {}
+                        SysSettings.DesktopiconSet {}
                     }
                     Common.Page {
                         id: mousepointerpage
                         visible: false
-                        Settings.MousePointer {}
+                        SysSettings.MousePointer {}
                     }
 
                     Common.Page {
                         id: soundeffectspage
                         visible: false
-                        Settings.SoundEffects {}
+                        SysSettings.SoundEffects {}
                     }
                     Common.Page {
                         id: bootanimationpage
                         visible: false
-                        Settings.BootAnimation {}
+                        SysSettings.BootAnimation {}
                     }
 
 
                     Common.Page {
                         id: launcherthemepage
                         visible: false
-                        Settings.LauncherTheme {}
+                        SysSettings.LauncherTheme {}
                     }
                     Common.Page {
                         id: defaultfontpage
                         visible: false
-                        Settings.DefaultFont {}
+                        SysSettings.DefaultFont {}
                     }
                     Common.Page {
                         id: documentfontpage
                         visible: false
-                        Settings.DocumentFont {}
+                        SysSettings.DocumentFont {}
                     }
                     Common.Page {
                         id: titlebarfontpage
                         visible: false
-                        Settings.TitlebarFont {}
+                        SysSettings.TitlebarFont {}
                     }
                     Common.Page {
                         id: touchpadsetpage
                         visible: false
-                        Settings.TouchpadSet {}
+                        SysSettings.TouchpadSet {}
                     }
                 }
             }
