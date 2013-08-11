@@ -45,7 +45,6 @@
 // not available
 
 import QtQuick 1.1
-//import "." 1.0
 import "UIConstants.js" as UI
 
 import "PageStatus.js" as PageStatus

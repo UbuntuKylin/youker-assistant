@@ -44,7 +44,6 @@
 //the site is:https://github.com/M4rtinK/modrana/tree/master/modules/gui_modules/gui_qml/ic/qtc
 
 import QtQuick 1.1
-//import "." 1.0
 import "PageStack.js" as Engine
 import "PageStatus.js" as PageStatus
 import "PageOrientation.js" as PageOrientation

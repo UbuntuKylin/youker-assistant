@@ -19,13 +19,10 @@
 
 #ifndef SYSTEMAPPLICATION_H
 #define SYSTEMAPPLICATION_H
-
-//#include <QtQuick/QQuickView>
 #include <QDeclarativeView>
 #include <QApplication>
 #include <QMouseEvent>
 #include "QPoint"
-//#include <QtWidgets>
 #include <QBoxLayout>
 #include <QStackedWidget>
 
@@ -42,22 +39,4 @@ public:
 private:
     QDeclarativeView *viewer;
 };
-
-
-
-//class IhuApplication : public QStackedWidget
-//{
-//    Q_OBJECT
-//public:
-//    explicit IhuApplication(QWidget *parent = 0);
-//    ~IhuApplication();
-//    void mouseMoveEvent(QMouseEvent*event);
-//    void mousePressEvent(QMouseEvent*event);
-
-
-//private:
-//    QDeclarativeView *m_view;
-//    QBoxLayout *hlayout;
-//    QPoint dragPosition;
-//};
 #endif // SYSTEMAPPLICATION_H

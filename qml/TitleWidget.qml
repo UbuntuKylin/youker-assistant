@@ -23,17 +23,6 @@ Rectangle {
     color: "transparent"
 //    opacity: 0.3
 
-//    Text {
-//        anchors.top: parent.top
-//        anchors.topMargin: 4
-//        anchors.right: parent.right
-//        anchors.rightMargin: 14
-//        color: "black"
-//        font.bold: true
-//        text: qsTr("系统助手 0.1.0")
-//    }
-
-
     MouseArea {
           id: mouseRegion
           anchors.fill: parent;
@@ -57,7 +46,6 @@ Rectangle {
 
         SysBtn {
             iconName: "sys_button_close.png"
-//            iconName: "closeBtn.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -67,7 +55,6 @@ Rectangle {
         }
         SysBtn {
             iconName: "sys_button_min.png"
-//            iconName: "minBtn.png"
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -79,18 +66,8 @@ Rectangle {
             iconName: "title_bar_menu.png"
             MouseArea {
                 anchors.fill: parent
-                acceptedButtons : Qt.LeftButton//Qt.RightButton
-//                property variant clickPos: "1,1"
-//                onPressed: {
-//                    clickPos  = Qt.point(mouse.x,mouse.y)
-//                }
-//                  onClicked: menu.showPopup(clickPos.x, clickPos.y)
-//                onClicked: menu.showPopup(row.x, row.y+20)
-//
+                acceptedButtons : Qt.LeftButton
             }
         }
-
-//        SysBtn {iconName: "sys_button_max.png"}
-
     }
 }

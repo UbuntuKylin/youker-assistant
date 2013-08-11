@@ -32,8 +32,6 @@ Rectangle {
     {
         target: systemdispatcher
         onFinishCleanWorkMain: {
-            console.log("begin LeftPage Main onOneKeyFinishCleanWork..............");
-            console.log(systemdispatcher.get_onekey_args());
             if (msg == "") {
                 leftbar.state = "StatusEmpty";
             }
@@ -58,8 +56,6 @@ Rectangle {
         }
 
         onFinishCleanWorkMainError: {
-            console.log("begin LeftPage Main onOneKeyFinishCleanWork Error..............");
-            console.log(msg);
             if (msg == "he") {
                 historystatus.state = "StatusH1";
             }
@@ -113,31 +109,20 @@ Rectangle {
                     font.bold: true
                     font.pixelSize: 14
                     color: "#383838"
-//                    font.pointSize: 13
-//                    font.pixelSize: 12
-    //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
                 }
                 Text {
                     id: text1
                     width: 69
-//                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
                     text: qsTr("     一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉某项")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-//                    font.pointSize: 13
-//                    font.pixelSize: 12
-    //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
                 }
                 Text {
                     id: text2
                     width: 69
-//                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
                     text: qsTr("内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理。")
                     font.pixelSize: 12
                     color: "#7a7a7a"
-//                    font.pointSize: 13
-//                    font.pixelSize: 12
-    //                        anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
                 }
                 SetBtn {
                     id: firstonekey
@@ -165,67 +150,15 @@ Rectangle {
             anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 20 }
             Common.Label {
                 id: itemtip
-//                text: qsTr("<h1>一键清理项目</h1>")
                 text: "一键清理项目"
-//                font.family: "楷体"
                 font.bold: true
                 font.pixelSize: 14
                 color: "#008000"
-    //            anchors { top: refreshArrow.bottom; topMargin: 10; left: parent.left; leftMargin: 5 }
             }
-//            ScrollArea {
-//                frame:false
-//                width:leftbar.width -10 //因为左边移位了10
-//                //leftbar.height - refreshArrow.height - refreshArrow顶部距离10 - refreshArrow底部距离10 - 顶部距离20 -顶部距离10
-//                height: leftbar.height - refreshArrow.height - itemtip.height - 10*2 - 20 -10
-//                anchors.top: itemtip.bottom
-//                anchors.topMargin: 10
-//                Item {
-//                    width:parent.width
-//                    height:330
-//                    Component {
-//                        id: statusDelegate
-//                        Row {
-//                            Text {
-//                                text: title
-//                            }
-//                        }
-//                    }
-//                    ListModel {
-//                        id: streamModel
-//                        ListElement {
-//                            title: ""
-//                        }
-//                    }
-
-//                    //垃圾清理显示内容
-//                    ListView {
-//                        id: listView
-//                        height: parent.height
-//                        width: parent.width
-//                        model: streamModel
-//                        delegate: statusDelegate
-//                        cacheBuffer: 1000
-//                        opacity: 1
-//                        spacing: 10
-//                        snapMode: ListView.NoSnap
-//        //                            cacheBuffer: parent.height
-//                        boundsBehavior: Flickable.DragOverBounds
-//                        currentIndex: 0
-//                        preferredHighlightBegin: 0
-//                        preferredHighlightEnd: preferredHighlightBegin
-//                        highlightRangeMode: ListView.StrictlyEnforceRange
-//                    }
-//                }//Item
-//            }//ScrollArea
-
-
 
             Item {
                 id: views
                 width: parent.width ////ListView不会随鼠标上下移动
-//                width:leftbar.width -10 //ListView会随鼠标上下移动
-//                height: leftbar.height - refreshArrow.height - itemtip.height - 10*2 - 20 -10
                 height: leftbar.height - 118 - itemtip.height - 10*2 - 20 -10
                 anchors.top: itemtip.bottom
                 anchors.topMargin: 30
@@ -360,94 +293,3 @@ Rectangle {
     }//Column
 
 }//坐边栏Rectangle
-
-//    states: [
-//        State {
-//            name: "StatusEmpty"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/unfinish.png"}
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/unfinish.png"}
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/unfinish.png"}
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/unfinish.png"}
-//        },
-//        State {
-//            name: "StatusH"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusK"
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusU"
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-
-//        },
-//        State {
-//            name: "StatusC"
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusHK"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusHU"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusHC"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusKU"
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusKC"
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusUC"
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusHKU"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusHKC"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusHUC"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusKUC"
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//        },
-//        State {
-//            name: "StatusOver"
-//            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-//            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//        }
-//    ]
-
-
-//}//坐边栏Rectangle
