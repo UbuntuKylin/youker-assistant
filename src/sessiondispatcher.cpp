@@ -67,7 +67,6 @@ void SessionDispatcher::get_system_message_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         myinfo = value;
-//        qDebug() << myinfo;
     }
     else {
         qDebug() << "get pc_message failed!";
@@ -145,33 +144,9 @@ QString SessionDispatcher::get_value(QString key)
 }
 
 QString SessionDispatcher::show_signal(QString msg) {
-    qDebug() << "*****signal******";
     qDebug() << msg;
     return msg;
 }
-
-//void SessionDispatcher::create_dialog(QString mode) {
-//    if (mode == "modal") {
-////        qDebug() << "555555555555";
-//        ModalDialog *dialog = new ModalDialog;
-////        qDebug() << "6666666666666";
-////        qDebug() << "77777777777";
-//        dialog->setModal(true);
-//        dialog->show();
-////        qDebug() << "888888888888888";
-//    }
-//    else if (mode == "modeless") {
-////        qDebug() << "555555555555";
-//        ModelessDialog *dialog = new ModelessDialog;
-//        dialog->show();
-//        dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
-////        qDebug() << "6666666666666";
-//    }
-
-//}
-
-
-
 
 bool SessionDispatcher::set_launcher(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_launcher_autohide", flag);
@@ -193,12 +168,6 @@ QStringList SessionDispatcher::get_themes() {
 
 void SessionDispatcher::set_theme(QString theme) {
     QDBusReply<void> reply = sessioniface->call("set_sys_theme", theme);
-}
-
-
-void SessionDispatcher::new_object_test() {
-//    delete this->qtui;
-//    this->qtui = new QUIBO();
 }
 
 /*-----------------------------desktop of beauty-----------------------------*/
@@ -284,8 +253,6 @@ bool SessionDispatcher::get_launcher_have_showdesktopicon_qt() {
 /*-----------------------------theme of beauty-----------------------------*/
 QStringList SessionDispatcher::get_themes_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_themes");
-//    qDebug() << "1234567890";
-//    qDebug() << reply.value();
     return reply.value();
 }
 
@@ -409,12 +376,6 @@ void SessionDispatcher::show_font_dialog(QString flag) {
     const QFont& font = QFontDialog::getFont(&ok, 0);
     if(ok)
     {
-        qDebug() << "OK-----------";
-//        qDebug() << font.family(); //"Ubuntu"
-//        qDebug() << font.styleName();//"Light"
-//        qDebug() << font.pointSizeF();//11
-//        qDebug() << font.pointSize();//11
-//        qDebug() << QString(font.pointSize());//11
         QString fontsize = QString("%1").arg(font.pointSize());
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
         qDebug() << fontstyle;
@@ -431,21 +392,9 @@ void SessionDispatcher::show_font_dialog(QString flag) {
 
         emit finishSetFont(flag); //font_style
     }
-    else
-        qDebug() << "Quit-----------";
-
 }
 
 void SessionDispatcher::show_color_dialog() {
-//    QColorDialog *dialog = new QColorDialog;
-//    QColor color;
-//    color = QColorDialog::getColor(Qt::green, dialog, "Select Color", QColorDialog::DontUseNativeDialog);
-//    dialog->setPalette(QPalette(color));
-//    dialog->show();
-
-
-//    QPalette palette = displayTextEdit->palette();
-//    const QColor& color = QColorDialog::getColor(palette.color(QPalette::Base), this);
     const QColor& color = QColorDialog::getColor(Qt::white, 0);
     if(color.isValid())
     {

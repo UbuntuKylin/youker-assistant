@@ -71,7 +71,6 @@ public:
     Q_INVOKABLE bool set_launcher(bool);
     Q_INVOKABLE QStringList get_themes();
     Q_INVOKABLE void set_theme(QString theme);
-    Q_INVOKABLE void new_object_test();
 
     /*-------------------desktop of beauty-------------------*/
     Q_INVOKABLE bool set_show_desktop_icons_qt(bool flag);
