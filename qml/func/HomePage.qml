@@ -21,14 +21,7 @@ import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 import "bars" as Bars
-/*
-{'desktopenvironment': 'Unity', 'update_time': 'The package information was last updated 4 hours ago.',
-'hostname': 'kobe-3570R-370R-470R-450R-510R', 'language': 'zh_CN.UTF-8', 'platform': 'i686',
-'cache_packages': '346 cache packages can be cleaned.', 'ram': '1.8 GB', 'currrent_user': 'kobe',
-'cache_flag': True, 'shell': '/bin/bash', 'cache_size': '33.4 MB thumbnails cache can be cleaned.',
-'distribution': 'Ubuntu 13.04 raring',
-'home_path': '/home/kobe', 'cpu': 'Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz'}
-*/
+
 Rectangle {
     id: screen; width: parent.width; height: 475
     property SessionDispatcher dis1: sessiondispatcher

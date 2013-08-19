@@ -33,30 +33,19 @@ def nothing(*args):
 
 class DbusProxy:
     INTERFACE = "com.ubuntukylin_tools.daemon"
-    print '0'
     try:
-        print '1'
         __system_bus = dbus.SystemBus()
-        print '2'
         __object = __system_bus.get_object('com.ubuntukylin_tools.daemon', '/')
-        print '3'
     except Exception, e:
         #log.error(e)
-        print '1111'
-        print e
         __object = None
 
     def __getattr__(self, name):
         global SHOWED
-        print '4'
-        print name
         try:
-            print '5'
             return self.__object.get_dbus_method(name, dbus_interface=self.INTERFACE)
         except Exception, e:
             #log.error(e)
-            print '2222'
-            print e
             if not SHOWED:
                 SHOWED = True
                 return show_message

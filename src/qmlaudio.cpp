@@ -30,6 +30,7 @@ QmlAudio::QmlAudio(QDeclarativeItem *parent) : QDeclarativeItem(parent)
 
 void QmlAudio::play()
 {
+    qDebug() << "hahaaaaaaaaaaaaa->";
     qDebug() << music_path;
     audioObject = Phonon::createPlayer(Phonon::MusicCategory,
                                        Phonon::MediaSource(music_path));

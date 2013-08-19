@@ -31,20 +31,7 @@ Rectangle {
     {
         target: systemdispatcher
         onFinishCleanWorkSecond: {
-            console.log("begin LeftPage Second onOneKeyFinishCleanWork..............");
-            console.log(msg);
             if (msg == "") {
-                onekeybtn.enabled=true;
-            }
-            else if (msg == "h") {
-                console.log("new test123..............");
-                historystatus.state = "StatusH";
-                onekeybtn.enabled=true;
-                console.log("new test1211..............");
-            }
-            else if (msg == "k") {
-               console.log("new test22..............");
-               cookiestatus.state = "StatusK";
                 onekeybtn.enabled=true;
             }
             else if (msg == "u") {
@@ -58,18 +45,40 @@ Rectangle {
 
         }
 
-        onFinishCleanWorkMainError: {
+        onFinishCleanWorkSecondError: {
+            if (msg == "ue") {
+                unneedstatus.state = "StatusU1";
+            }
+            else if (msg == "ce") {
+                cachestatus.state = "StatusC1";
+            }
+        }
+    }
+
+
+    Connections
+    {
+        target: sessiondispatcher
+        onFinishCleanWorkSecond: {
+            if (msg == "") {
+                onekeybtn.enabled=true;
+            }
+            else if (msg == "h") {
+                historystatus.state = "StatusH";
+                onekeybtn.enabled=true;
+            }
+            else if (msg == "k") {
+               cookiestatus.state = "StatusK";
+                onekeybtn.enabled=true;
+            }
+
+        }
+        onFinishCleanWorkSecondError: {
             if (msg == "he") {
                 historystatus.state = "StatusH1";
             }
             else if (msg == "ke") {
                cookiestatus.state = "StatusK1";
-            }
-            else if (msg == "ue") {
-                unneedstatus.state = "StatusU1";
-            }
-            else if (msg == "ce") {
-                cachestatus.state = "StatusC1";
             }
         }
     }
@@ -152,15 +161,11 @@ Rectangle {
                         }
                         else
                             onekeybtn.check_flag=true;
-                            console.log("this is a test***********");
-                            select.state="middlestate";
-                            console.log("this is a test123123123***********");
-
-
-                            if(checkboxe.checked&&checkboxe2.checked&&checkboxe3.checked&&checkboxe4.checked)
-                            {
-                                select.state="middlestate1";
-                            }
+//                            select.state="middlestate";
+//                            if(checkboxe.checked&&checkboxe2.checked&&checkboxe3.checked&&checkboxe4.checked)
+//                            {
+//                                select.state="middlestate1";
+//                            }
 
                     }
                 }
@@ -200,21 +205,21 @@ Rectangle {
                                 checkboxe4.checked=chek.checked;
                             }
                         }
-                        Image {
-                            id:select
-                            source: "../img/toolWidget/unfinish.png"
-                            states: [
-                                State {
-                                    name: "middlestate"
-                                    PropertyChanges { target: select; source: "../img/toolWidget/finish.png"  }
-                                },
+//                        Image {
+//                            id:select
+//                            source: "../img/toolWidget/unfinish.png"
+//                            states: [
+//                                State {
+//                                    name: "middlestate"
+//                                    PropertyChanges { target: select; source: "../img/toolWidget/finish.png"  }
+//                                },
 
-                                State {
-                                    name: "middlestate1"
-                                    PropertyChanges { target: select; source: "../img/toolWidget/exception.png"  }
-                                }
-                            ]
-                        }
+//                                State {
+//                                    name: "middlestate1"
+//                                    PropertyChanges { target: select; source: "../img/toolWidget/exception.png"  }
+//                                }
+//                            ]
+//                        }
                     }
                     Column {
                         anchors.top: parent.top
@@ -646,147 +651,5 @@ Rectangle {
                 }//Item
             }//Column
 //------end new layout
-//-----------begin orig---------
-//            Column {
-//                anchors.top: parent.top
-//                anchors.topMargin: 110
-//                Item {
-//                    id: views
-//                    width: parent.width ////ListView不会随鼠标上下移动
-//        //                width:fastmode.width -10 //ListView会随鼠标上下移动
-//                    height: fastmode.height - refreshArrow.height - 10*2 - 20 -10
-
-//                    ListModel {
-//                        id: clearModel
-//                        ListElement {
-//                            titlename: "清理垃圾"
-//                            picturename: "../img/toolWidget/brush.png"
-//                            detailstr: "清理系统中的垃圾文件，释放磁盘空间"
-//                            clearflag: "cache"
-//                        }
-//                        ListElement {
-//                            titlename: "清理历史记录"
-//                            picturename: "../img/toolWidget/eraser.png"
-//                            detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
-//                            clearflag: "history"
-//                        }
-//                        ListElement {
-//                            titlename: "清理Cookies"
-//                            picturename: "../img/toolWidget/firefox.png"
-//                            detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
-//                            clearflag: "cookies"
-//                        }
-//                        ListElement {
-//                            titlename: "卸载不必要的程序"
-//                            picturename: "../img/toolWidget/deb.png"
-//                            detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
-//                            clearflag: "unneed"
-//                        }
-//                    }
-
-//                    ListView {
-//                        id: listView
-//                        height: parent.height
-//                        width: parent.width
-//                        anchors.top: parent.top
-//                        model: clearModel
-//                        delegate: FastDelegate {pagenum: fastmode.onekeypage}//"second"
-//                        cacheBuffer: 1000
-//                    }
-//                }
-//            }//Column
-
-//-----------end orig---
-
-
-//        Image {
-//            id: cachestatus
-//            source: "../img/toolWidget/unfinish.png"
-//            anchors {
-//                top: parent.top; topMargin: 100
-//                left: parent.left; leftMargin: 700
-//            }
-//            states: [
-//                    State {
-//                    name: "StatusC"
-//                    PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-//                },
-
-//                    State {
-//                    name: "StatusC1"
-//                    PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
-//                }
-//            ]
-//        }
-//        Image {
-//            id: historystatus
-//            source: "../img/toolWidget/unfinish.png"
-//            anchors {
-//                top: parent.top; topMargin: 164
-//                left: parent.left; leftMargin: 700
-//            }
-//            states: [
-//                    State {
-//                    name: "StatusH"
-//                    PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-//                },
-
-//                    State {
-//                    name: "StatusH1"
-//                    PropertyChanges { target: historystatus; source: "../img/toolWidget/exception.png"}
-//                }
-//            ]
-//        }
-//        Image {
-//            id: cookiestatus
-//            source: "../img/toolWidget/unfinish.png"
-//            anchors {
-//                top: parent.top; topMargin: 228
-//                left: parent.left; leftMargin: 700
-//            }
-//            states: [
-//                    State {
-//                    name: "StatusK"
-//                    PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-//                },
-
-//                    State {
-//                    name: "StatusK1"
-//                    PropertyChanges { target: cookiestatus; source: "../img/toolWidget/exception.png"}
-//                }
-//            ]
-//        }
-//        Image {
-//            id: unneedstatus
-//            source: "../img/toolWidget/unfinish.png"
-//            anchors {
-//                top: parent.top; topMargin: 290
-//                left: parent.left; leftMargin: 700
-//            }
-//            states: [
-//                    State {
-//                    name: "StatusU"
-//                    PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-//                },
-
-//                    State {
-//                    name: "StatusU1"
-//                    PropertyChanges { target: unneedstatus; source: "../img/toolWidget/exception.png"}
-//                }
-
-//            ]
-//        }
-//            states: [
-//                State {
-//                    name: "middlestate"
-//                    PropertyChanges { target: select; source: "../img/toolWidget/finish.png"  }
-//                },
-
-//                State {
-//                    name: "middlestate1"
-//                    PropertyChanges { target: select; source: "../img/toolWidget/exception.png"  }
-//                }
-//            ]
-
     }//Row
 }

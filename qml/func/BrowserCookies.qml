@@ -58,9 +58,6 @@ Item {
     signal cookies_signal(string cookies_msg);
     onCookies_signal: {
         if (cookies_msg == "CookiesWork") {
-            console.log("1111111");
-            console.log(cookies_msg);
-
             //get data of cookies
 //            var cookies_data = systemdispatcher.scan_cookies_records_qt();
             var cookies_data = sessiondispatcher.scan_cookies_records_qt();
@@ -68,8 +65,6 @@ Item {
                 root.null_flag = true;
             else
                 root.null_flag = false;
-            console.log("****************************8");
-            console.log(cookies_data);
             root.sub_num = cookies_data.length;
             console.log(root.sub_num);
             systemdispatcher.clear_cookies_args();
@@ -139,12 +134,9 @@ Item {
 
 //         }
         onFinishCleanWork: {
-            console.log("test1111111111");
-            console.log(msg);//apt software   package   history   cookies
+//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "cookies_work") {
-                console.log("test2222222222222");
                 if (msg == "cookies") {
-                    console.log("test3333333333");
                     root.work_result = msg;
                     root.state = "CookiesWorkFinish";
                 }
@@ -232,12 +224,8 @@ Item {
                         root.state = "CookiesWork";
                  }
                  else if (btn_flag == "cookies_work") {
-                     console.log("123123");
-                     console.log(systemdispatcher.get_cookies_args());
-                     console.log("456456");
 //                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
                      sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
-                     console.log("678678");
                  }
             }
         }

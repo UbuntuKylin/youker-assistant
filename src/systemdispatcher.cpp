@@ -162,6 +162,8 @@ bool SystemDispatcher::setup() {
 
 void SystemDispatcher::get_music_path(QString musicpath) {
     music_path = musicpath;
+    qDebug() << "get_music_path is ->";
+    qDebug() << music_path;
 }
 
 void SystemDispatcher::set_history_flag(bool flag) {
@@ -330,10 +332,10 @@ QStringList SystemDispatcher::get_center_data() {
 //}
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
-    QDBusReply<void> reply = systemiface->call("clean_by_main_one_key", strlist);
+    systemiface->call("clean_by_main_one_key", strlist);
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
-    QDBusReply<void> reply = systemiface->call("clean_by_second_one_key", strlist);
+    systemiface->call("clean_by_second_one_key", strlist);
 }
 //------------------------------------------------------
 

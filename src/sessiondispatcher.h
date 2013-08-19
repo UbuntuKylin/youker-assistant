@@ -35,6 +35,12 @@ class SessionDispatcher : public QObject
     Q_PROPERTY(QNOTIFY finishSetFont)
     Q_PROPERTY(QNOTIFY finishScanWork)
     Q_PROPERTY(QNOTIFY finishCleanWork)
+
+
+    Q_PROPERTY(QNOTIFY finishCleanWorkMain)
+    Q_PROPERTY(QNOTIFY finishCleanWorkMainError)
+    Q_PROPERTY(QNOTIFY finishCleanWorkSecond)
+    Q_PROPERTY(QNOTIFY finishCleanWorkSecondError)
 public:
     explicit SessionDispatcher(QObject *parent = 0);
 
@@ -46,6 +52,8 @@ public:
     Q_INVOKABLE void clean_history_records_qt();
 //    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
 //    Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
+    Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
+    Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
 
 
     Q_INVOKABLE int scan_history_records_qt();
@@ -191,10 +199,22 @@ signals:
     void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
     void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
+
+
+    void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
+    void finishCleanWorkMainError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
+    void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
+    void finishCleanWorkSecondError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
 public slots:
     QString show_signal(QString msg);
     void handler_scan_rubbish(QString msg);
     void handler_clear_rubbish(QString msg);
+
+
+    void handler_clear_rubbish_main_onekey(QString msg);
+    void handler_clear_rubbish_main_error(QString msg);
+    void handler_clear_rubbish_second_onekey(QString msg);
+    void handler_clear_rubbish_second_error(QString msg);
 private:
 //    QUIBO *qtui;
 };

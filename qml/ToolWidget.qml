@@ -57,7 +57,7 @@ Rectangle {
 
     states: [
         State {
-            name: "Home"/*; when: (menulogo.text == "homepage")*/
+            name: "Home"
             PropertyChanges { target: home_tool; iconName:  "homepage-active.png"}
             PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
@@ -66,7 +66,7 @@ Rectangle {
 
         },
         State {
-            name: "Clear"/*; when: (menulogo.text == "clearrubbish")*/
+            name: "Clear"
             PropertyChanges { target: home_tool; iconName:  "homepage.png"}
             PropertyChanges { target: clear_tool; iconName:  "systemclear-active.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
@@ -74,7 +74,7 @@ Rectangle {
             PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
         },
         State {
-            name: "Beauty"/*; when: (menulogo.text == "systemset")*/
+            name: "Beauty"
             PropertyChanges { target: home_tool; iconName:  "homepage.png"}
             PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty-active.png"}
@@ -82,7 +82,7 @@ Rectangle {
             PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
         },
         State {
-            name: "Message"/*; when: (menulogo.text == "systemmessage")*/
+            name: "Message"
             PropertyChanges { target: home_tool; iconName:  "homepage.png"}
             PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}
@@ -90,7 +90,7 @@ Rectangle {
             PropertyChanges { target: function_tool; iconName:  "functioncollection.png"}
         },
         State {
-            name: "Function"/*; when: (menulogo.text == "functioncollection")*/
+            name: "Function"
             PropertyChanges { target: home_tool; iconName:  "homepage.png"}
             PropertyChanges { target: clear_tool; iconName:  "systemclear.png"}
             PropertyChanges { target: beauty_tool; iconName:  "systembeauty.png"}

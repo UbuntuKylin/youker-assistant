@@ -44,10 +44,36 @@ Rectangle {
             if (msg == "") {
                  menulogo.enabled=true;
              }
+             else if (msg == "u") {
+                 menulogo.enabled=true;
+             }
+             else if (msg == "c") {
+                 menulogo.enabled=true;
+             }
+
+        }
+    }
+    Connections{
+         target: sessiondispatcher
+         onFinishCleanWorkMain: {
+             console.log(msg);
+            if (msg == "") {
+                 menulogo.enabled=true;
+             }
              else if (msg == "h") {
                  menulogo.enabled=true;
              }
              else if (msg == "k") {
+                 menulogo.enabled=true;
+             }
+        }
+    }
+
+    Connections
+    {
+        target: systemdispatcher
+        onFinishCleanWorkSecond: {
+            if (msg == "") {
                  menulogo.enabled=true;
              }
              else if (msg == "u") {
@@ -59,7 +85,22 @@ Rectangle {
 
         }
     }
+    Connections
+    {
+        target: sessiondispatcher
+        onFinishCleanWorkSecond: {
+            if (msg == "") {
+                 menulogo.enabled=true;
+             }
+            else if (msg == "h") {
+                menulogo.enabled=true;
+            }
+            else if (msg == "k") {
+                menulogo.enabled=true;
+            }
 
+        }
+    }
 
     Image {
         id: toolImg
@@ -95,43 +136,17 @@ Rectangle {
             if(check_flag)
             {
                 if (setbtn_flag == "onekey") {
-                    if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-                        send_dynamic_picture("onekey");
-                        systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
-                        menulogo.enabled=false;
-                    }
-                    else {
-                        var value4 = systemdispatcher.setup();
-                        if(value4) {
-                            send_dynamic_picture("onekey");
-                            systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                            btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
-                            menulogo.enabled=false;
-                        }
-                        else {
-                            sessiondispatcher.send_restartdialog_msg();
-                        }
-                    }
+                    send_dynamic_picture("onekey");
+                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                    sessiondispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                    btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
+                    menulogo.enabled=false;
                 }
                 else if (setbtn_flag == "smallonekey") {
-//                    if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-//                        systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args2());
-//                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
-//                        menulogo.enabled=false;
-//                    }
-//                    else{
-//                    var value4 = systemdispatcher.setup();
-//                        if(value4) {
-                        systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
+                    sessiondispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
+//                    systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
                         btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
                         menulogo.enabled=false;
-//                        }
-//                        else {
-//                            sessiondispatcher.send_restartdialog_msg();
-//                        }
-//                    }
-
                 }
                 else if (setbtn_flag == "set")
                     console.log("set clicked....");
