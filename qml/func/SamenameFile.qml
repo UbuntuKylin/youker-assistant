@@ -215,7 +215,7 @@ Item {
                  else if (btn_flag == "samenamefile_work") {
                      console.log("samenamefile_work---------------");
                      console.log(systemdispatcher.get_samenamefile_args());
-                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_samenamefile_args(), "samenamefile");
+//                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_samenamefile_args(), "samenamefile");
                  }
             }
         }

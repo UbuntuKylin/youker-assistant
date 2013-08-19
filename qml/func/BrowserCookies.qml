@@ -126,7 +126,8 @@ Item {
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
-        target: systemdispatcher
+        target: sessiondispatcher
+//        target: systemdispatcher
 //         onFinishScanWork: {
 //             console.log("begin onFinishScanWork..............");
         //             if (btn_flag == "cookies_scan") {
@@ -138,9 +139,12 @@ Item {
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
+            console.log("test1111111111");
+            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "cookies_work") {
+                console.log("test2222222222222");
                 if (msg == "cookies") {
+                    console.log("test3333333333");
                     root.work_result = msg;
                     root.state = "CookiesWorkFinish";
                 }
@@ -228,8 +232,12 @@ Item {
                         root.state = "CookiesWork";
                  }
                  else if (btn_flag == "cookies_work") {
+                     console.log("123123");
                      console.log(systemdispatcher.get_cookies_args());
-                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+                     console.log("456456");
+//                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+                     console.log("678678");
                  }
             }
         }

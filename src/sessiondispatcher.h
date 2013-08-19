@@ -34,11 +34,18 @@ class SessionDispatcher : public QObject
 
     Q_PROPERTY(QNOTIFY finishSetFont)
     Q_PROPERTY(QNOTIFY finishScanWork)
+    Q_PROPERTY(QNOTIFY finishCleanWork)
 public:
     explicit SessionDispatcher(QObject *parent = 0);
 
     QDBusInterface *sessioniface;
     Q_INVOKABLE QString get_session_daemon_qt();
+
+
+    Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
+    Q_INVOKABLE void clean_history_records_qt();
+//    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
+//    Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
 
 
     Q_INVOKABLE int scan_history_records_qt();
@@ -183,9 +190,11 @@ public:
 signals:
     void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
     void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
+    void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
 public slots:
     QString show_signal(QString msg);
     void handler_scan_rubbish(QString msg);
+    void handler_clear_rubbish(QString msg);
 private:
 //    QUIBO *qtui;
 };

@@ -37,7 +37,7 @@ import time
 import cleaner
 from cleaner import common
 
-from policykit import PolicyKitService
+from server import PolicyKitService
 from beautify.desktop import Desktop
 from beautify.unity import Unity
 from beautify.theme import Theme
@@ -53,6 +53,8 @@ PATH = "/"
 #PATH = "/com/ubuntukylin_assistant/daemon"
 TIMEFORMAT = "%H:%M:%S"
 
+UK_ACTION_YOUKER = 'com.ubuntukylin_tools.daemon.youker'
+
 class SessionDaemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
         self.sysconf = Sysinfo()
@@ -67,12 +69,66 @@ class SessionDaemon(PolicyKitService):
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
         self.daemoncache = cleaner.CleanTheCache()
+        #self.daemonclean = cleaner.FunctionOfClean()
 
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
 
 #---------------------------------------------------------------------
+    def clean_complete_msg(self, para):
+        self.clean_complete(para)
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_complete(self, msg):
+        pass
+    def clean_error_msg(self, para):
+        self.clean_error(para)
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_error(self, msg):
+        pass
+    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    #def clean_cookies_records(self, cruftlist, sender=None):
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    def clean_cookies_records(self, cruftlist):
+        #self._check_permission(sender, UK_ACTION_YOUKER)
+        daemoncookies = cleaner.CleanTheCookies()
+        try:
+            daemoncookies.clean_the_cruftlist(cruftlist)
+        except Exception, e:
+            #print 'aaaaaaaaaaa'
+            self.clean_error_msg('cookies')
+        else:
+            #print 'bbbbbbbbb'
+            self.clean_complete_msg('cookies')
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def clean_history_records(self):
+        #self._check_permission(sender, UK_ACTION_YOUKER)
+        daemonhistory = cleaner.CleanTheHistory()
+        try:
+            daemonhistory.clean_the_cruftlist()
+        except Exception, e:
+            self.clean_error_msg('history')
+        else:
+            self.clean_complete_msg('history')
+
+    #@dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
+    #def clean_file_cruft(self, cruftlist, flagstr):
+    #    try:
+    #        self.daemonclean.clean_the_file(cruftlist)
+    #    except Exception, e:
+    #        self.clean_error_msg(flagstr)
+    #    else:
+    #        self.clean_complete_msg(flagstr)
+    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    #def clean_package_cruft(self, cruftlist):
+    #    try:
+    #        self.daemonclean.clean_the_package(cruftlist)
+    #    except Exception, e:
+    #        self.clean_error_msg('package')
+    #    else:
+    #        self.clean_complete_msg('package')
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_history_records(self):
         daemonhistory = cleaner.CleanTheHistory()

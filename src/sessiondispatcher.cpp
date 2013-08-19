@@ -41,10 +41,39 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                QDBusConnection::sessionBus());
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
+    QObject::connect(sessioniface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     notify_str = "";
     page_num = 0;
 
 }
+
+void SessionDispatcher::handler_clear_rubbish(QString msg)
+{
+    qDebug() << "signal coming1111111111111111";
+     emit finishCleanWork(msg);
+    qDebug() << "signal coming2222222222222";
+}
+void SessionDispatcher::clean_cookies_records_qt(QStringList strlist) {
+//    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
+    qDebug() << "1111";
+    qDebug() << strlist;
+    sessioniface->call("clean_cookies_records", strlist);
+    qDebug() << "222222";
+}
+void SessionDispatcher::clean_history_records_qt() {
+//    QDBusReply<void> reply = systemiface->call("clean_history_records");
+    sessioniface->call("clean_history_records");
+}
+
+
+//void SessionDispatcher::clean_package_cruft_qt(QStringList strlist) {
+////    QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
+//    sessioniface->call("clean_package_cruft", strlist);
+//}
+//void SessionDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
+////    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist, str);
+//    sessioniface->call("clean_file_cruft", strlist, str);
+//}
 
 void SessionDispatcher::handler_scan_rubbish(QString msg)
 {

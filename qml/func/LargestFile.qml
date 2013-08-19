@@ -219,6 +219,7 @@ Item {
                     else if(root.null_flag == false) {
                         console.log(systemdispatcher.get_largestfile_args());
                         systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                         root.state = "LargestFileWorkFinish";
                     }
                 }

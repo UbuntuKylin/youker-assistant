@@ -310,16 +310,16 @@ class Daemon(PolicyKitService):
     #            else:
     #                self.not_exist_msg(cruft)
     ### input-''   output-''
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    def clean_history_records(self, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
-        daemonhistory = cleaner.CleanTheHistory()
-        try:
-            daemonhistory.clean_the_cruftlist()
-        except Exception, e:
-            self.clean_error_msg('history')
-        else:
-            self.clean_complete_msg('history')
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    #def clean_history_records(self, sender=None):
+    #    self._check_permission(sender, UK_ACTION_YOUKER)
+    #    daemonhistory = cleaner.CleanTheHistory()
+    #    try:
+    #        daemonhistory.clean_the_cruftlist()
+    #    except Exception, e:
+    #        self.clean_error_msg('history')
+    #    else:
+    #        self.clean_complete_msg('history')
          
 
     # the function of clean the cookies records
@@ -332,16 +332,16 @@ class Daemon(PolicyKitService):
     #    return tmp_list
 
     ### input-['domain','dom...]   output-''
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def clean_cookies_records(self, cruftlist, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
-        daemoncookies = cleaner.CleanTheCookies()
-        try:
-            daemoncookies.clean_the_cruftlist(cruftlist)
-        except Exception, e:
-            self.clean_error_msg('cookies')
-        else:
-            self.clean_complete_msg('cookies')
+    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    #def clean_cookies_records(self, cruftlist, sender=None):
+    #    self._check_permission(sender, UK_ACTION_YOUKER)
+    #    daemoncookies = cleaner.CleanTheCookies()
+    #    try:
+    #        daemoncookies.clean_the_cruftlist(cruftlist)
+    #    except Exception, e:
+    #        self.clean_error_msg('cookies')
+    #    else:
+    #        self.clean_complete_msg('cookies')
 
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]

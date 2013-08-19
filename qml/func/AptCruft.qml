@@ -216,6 +216,7 @@ Item {
                  else if (btn_flag == "apt_work") {
                        console.log(systemdispatcher.get_apt_args());
                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
+//                     sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
                  }
             }
         }

@@ -277,29 +277,36 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
 //    return reply.value();
 //}
 
-int SystemDispatcher::scan_history_records_qt() {
-    QDBusReply<int> reply = systemiface->call("scan_history_records");
-    return reply.value();
-}
-void SystemDispatcher::clean_history_records_qt() {
-    QDBusReply<void> reply = systemiface->call("clean_history_records");
-}
+//int SystemDispatcher::scan_history_records_qt() {
+//    QDBusReply<int> reply = systemiface->call("scan_history_records");
+//    return reply.value();
+//}
+//void SystemDispatcher::clean_history_records_qt() {
+////    QDBusReply<void> reply = systemiface->call("clean_history_records");
+//    systemiface->call("clean_history_records");
+//}
 //QStringList SystemDispatcher::scan_cookies_records_qt() {
 //    QDBusReply<QStringList> reply = systemiface->call("scan_cookies_records");
 //    return reply.value();
 //}
-void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
-    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
-}
+//void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
+////    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
+//    qDebug() << "1111";
+//    qDebug() << strlist;
+//    systemiface->call("clean_cookies_records", strlist);
+//    qDebug() << "222222";
+//}
 //QStringList SystemDispatcher::scan_unneed_packages_qt() {
 //    QDBusReply<QStringList> reply = systemiface->call("scan_unneed_packages");
 //    return reply.value();
 //}
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
-    QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
+//    QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
+    systemiface->call("clean_package_cruft", strlist);
 }
 void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
-    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist, str);
+//    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist, str);
+    systemiface->call("clean_file_cruft", strlist, str);
 }
 void SystemDispatcher::scan_cache_cruft_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("scan_cache_cruft");

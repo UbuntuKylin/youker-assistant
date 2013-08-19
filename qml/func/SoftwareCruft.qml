@@ -230,6 +230,7 @@ Item {
                  }
                  else if (btn_flag == "software_work") {
                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
+//                     sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
                  }
             }
         }
