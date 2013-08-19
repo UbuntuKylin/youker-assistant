@@ -18,7 +18,7 @@
  */
 
 import QtQuick 1.1
-//import SessionType 0.1
+import SessionType 0.1
 //import SystemType 0.1
 import "common" as Common
 //坐边栏
@@ -140,6 +140,16 @@ Rectangle {
                             refreshArrow.visible = true;
                         }
                     }
+//如果没有选中任何清理项，提示警告框！
+                    onClicked: {
+                        if(!(checkboxe.checked||checkboxe2.checked||checkboxe3.checked||checkboxe4.checked))
+                        {
+                            firstonekey.check_flag=false;
+//                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
+                        }
+                        else
+                            firstonekey.check_flag=true;
+                    }
                 }
             }
 
@@ -148,148 +158,591 @@ Rectangle {
 
         Column {
             anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 20 }
-            Common.Label {
-                id: itemtip
-                text: "一键清理项目"
-                font.bold: true
-                font.pixelSize: 14
-                color: "#008000"
-            }
-
-            Item {
-                id: views
-                width: parent.width ////ListView不会随鼠标上下移动
-                height: leftbar.height - 118 - itemtip.height - 10*2 - 20 -10
-                anchors.top: itemtip.bottom
-                anchors.topMargin: 30
-
-                ListModel {
-                    id: clearModel
-                    ListElement {
-                        titlename: "清理垃圾"
-                        picturename: "../img/toolWidget/brush.png"
-                        detailstr: "清理系统中的垃圾文件，释放磁盘空间"
-                        clearflag: "cache"
-                    }
-                    ListElement {
-                        titlename: "清理历史记录"
-                        picturename: "../img/toolWidget/history.png"
-                        detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
-                        clearflag: "history"
-                    }
-                    ListElement {
-                        titlename: "清理Cookies"
-                        picturename: "../img/toolWidget/cookies.png"
-                        detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
-                        clearflag: "cookies"
-                    }
-                    ListElement {
-                        titlename: "卸载不必要的程序"
-                        picturename: "../img/toolWidget/deb.png"
-                        detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
-                        clearflag: "unneed"
-                    }
+            spacing:25
+            Row{
+                spacing: 10
+                Common.Label {
+                    id: itemtip
+                    text: "一键清理项目"
+                    font.bold: true
+                    font.pixelSize: 14
+                    color: "#008000"
                 }
-
-                ListView {
-                    id: listView
-                    height: parent.height
-                    width: parent.width
-                    anchors.top: parent.top
-//                    anchors.topMargin: titlebar.height + 45
-                    model: clearModel
-                    delegate: FastDelegate {pagenum: leftbar.onekeypage} //"first"
-                    cacheBuffer: 1000
+                Common.CheckBox {
+                    id:chek
+                    checked:true    //将所有选项都check
+                    anchors.verticalCenter: parent.verticalCenter
+                    onCheckedChanged: {
+                        checkboxe.checked=chek.checked;
+                        checkboxe2.checked=chek.checked;
+                        checkboxe3.checked=chek.checked;
+                        checkboxe4.checked=chek.checked;
+                    }
                 }
             }
 
+            //---------------------------
+                        Item {
+                        property SessionDispatcher dis: sessiondispatcher
+                        width: parent.width //clearDelegate.ListView.view.width
+                        height:45 //65
+
+                        Item {
+                            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+                            id: scaleMe
+                            //checkbox, picture and words
+                            Row {
+                                id: lineLayout
+                                spacing: 10
+                                anchors {
+                                    fill: parent
+                                    left: parent.left
+                                    leftMargin: 50
+                                }
+                                Common.CheckBox {
+                                    id: checkboxe
+                                    checked:true    //将所有选项都check
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    onCheckedChanged: {
+                                        if (checkboxe.checked) {
+                                                    var rubbishlist = systemdispatcher.get_onekey_args();
+                                                    var word_flag = "false";
+                                                    for (var i=0; i<rubbishlist.length; i++) {
+                                                        if (rubbishlist[i] == "cache") {
+                                                            word_flag = "true";
+                                                            break;
+                                                        }
+                                                    }
+                                                    if (word_flag == "false") {
+                                                        console.log("no word_flag1");
+                                                        systemdispatcher.set_onekey_args("cache");
+                                                        console.log(systemdispatcher.get_package_args());
+                                                    }
+                                        }
+                                        else if (!checkboxe.checked) {
+                                                systemdispatcher.del_onekey_args("cache");
+                                                console.log(systemdispatcher.get_onekey_args());
+                                            }
+                                    }
+                                }
+                                Image {
+                                    id: clearImage1
+                                    width: 40; height: 42
+                                    source:"../img/toolWidget/brush.png" //picturename
+                                    anchors {
+                                        left: checkboxe.right; leftMargin: 15
+                                        verticalCenter: parent.verticalCenter
+                                    }
+
+                                }
+
+                                Column {
+                                    spacing: 5
+                                    anchors {
+                                        left: clearImage1.right; leftMargin: 15
+                                        verticalCenter: parent.verticalCenter
+                                    }
+                                    Text {
+                                        text: "清理垃圾"//titlename
+                                        font.bold: true
+                                        font.pixelSize: 14
+                                        color: "#383838"
+                                    }
+                                    Text {
+                                        text: "清理系统中的垃圾文件，释放磁盘空间"//detailstr
+                                        font.pixelSize: 12
+                                        color: "#7a7a7a"
+                                    }
+                                }
+                            }
+                            Image {
+                                id: cachestatus
+                                source: "../img/toolWidget/unfinish.png"
+                                anchors {
+                                    top: itemtip.bottom; topMargin: 20
+                                    left: parent.left; leftMargin: 500
+                                }
+                                states: [
+                                        State {
+                                        name: "StatusC"
+                                        PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+                                    },
+
+                                        State {
+                                        name: "StatusC1"
+                                        PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
+                                    }
+
+                                ]
+                            }
+
+                            Rectangle {  //分割条
+                                width: parent.width; height: 1
+                                anchors { top: lineLayout.bottom; topMargin: 5}
+                                color: "gray"
+                            }
+                        }
+                        }
+
+            //----------------------------
+                        Item {
+                        property SessionDispatcher dis: sessiondispatcher
+                        width: parent.width//clearDelegate.ListView.view.width
+                        height: 45//65
+
+                        Item {
+                            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+                            id: scaleMe1
+                            //checkbox, picture and words
+                            Row {
+                                id: lineLayout1
+                                spacing: 10
+                                anchors {
+                                    fill: parent
+                                    left: parent.left
+                                    leftMargin: 50
+                                }
+                               Common.CheckBox {
+                                    id: checkboxe2
+                                    checked:true    //将所有选项都check
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    onCheckedChanged: {
+                                        if (checkboxe2.checked) {
+                                                    var historylist = systemdispatcher.get_onekey_args();
+                                                    var word_flag1 = "false";
+                                                    for (var j=0; j<historylist.length; j++) {
+                                                        if (historylist[j] == "history") {
+                                                            word_flag1 = "true";
+                                                            break;
+                                                        }
+                                                    }
+                                                    if (word_flag1 == "false") {
+                                                        console.log("no word_flag2");
+                                                        systemdispatcher.set_onekey_args("history");
+                                                        console.log(systemdispatcher.get_package_args());
+                                                    }
+                                        }
+                                        else if (!checkboxe2.checked) {
+                                                systemdispatcher.del_onekey_args("history");
+                                                console.log(systemdispatcher.get_onekey_args());
+                                            }
+                                    }
+                                }
 
 
-            //status picture
-            Image {
-                id: cachestatus
-                source: "../img/toolWidget/unfinish.png"
-                anchors {
-                    top: itemtip.bottom; topMargin: 20
-                    left: parent.left; leftMargin: 500
-//                    left: parent.right; leftMargin: 400
-                }
-                states: [
-                        State {
-                        name: "StatusC"
-                        PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-                    },
+                            Image {
+                                id: clearImage2
+                                width: 40; height: 42
+                                source: "../img/toolWidget/history.png"//picturename
+                                anchors {
+                                    left: checkboxe.right; leftMargin: 15
+                                    verticalCenter: parent.verticalCenter
+                                }
+                            }
 
-                        State {
-                        name: "StatusC1"
-                        PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
-                    }
+                            Column {
+                                spacing: 5
+                                anchors {
+                                    left: clearImage2.right; leftMargin: 15
+                                    verticalCenter: parent.verticalCenter
+                                }
+                                Text {
+                                    text: "清理历史记录"//titlename
+                                    font.bold: true
+                                    font.pixelSize: 14
+                                    color: "#383838"
+                                }
+                                Text {
+                                    text: "清理上网时留下的历史记录，保护您的个人隐私"//detailstr
+                                    font.pixelSize: 12
+                                    color: "#7a7a7a"
+                                }
+                            }
+                           }
+                            Image {
+                                id: historystatus
+                                source: "../img/toolWidget/unfinish.png"
+                                anchors {
+                                    top: cachestatus.bottom; topMargin: 45
+                                    left: parent.left; leftMargin: 500
+                                }
+                                states: [
+                                        State {
+                                        name: "StatusH"
+                                        PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+                                    },
 
-                ]
-            }
-            Image {
-                id: historystatus
-                source: "../img/toolWidget/unfinish.png"
-                anchors {
-                    top: cachestatus.bottom; topMargin: 45
-                    left: parent.left; leftMargin: 500
-                }
-                states: [
-                        State {
-                        name: "StatusH"
-                        PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
-                    },
+                                        State {
+                                        name: "StatusH1"
+                                        PropertyChanges { target: historystatus; source: "../img/toolWidget/exception.png"}
+                                    }
 
-                        State {
-                        name: "StatusH1"
-                        PropertyChanges { target: historystatus; source: "../img/toolWidget/exception.png"}
-                    }
+                                ]
+                            }
 
-                ]
-            }
-            Image {
-                id: cookiestatus
-                source: "../img/toolWidget/unfinish.png"
-                anchors {
-                    top: historystatus.bottom; topMargin: 45
-                    left: parent.left; leftMargin: 500
-                }
-                states: [
-                        State {
-                        name: "StatusK"
-                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
-                    },
+                            Rectangle {  //分割条
+                                width: parent.width; height: 1
+                                anchors { top: lineLayout.bottom; topMargin: 5}
+                                color: "gray"
+                            }
 
-                        State {
-                        name: "StatusK1"
-                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/exception.png"}
-                    }
+                        }
+                      }
+            //----------------------------
+                        Item {
+                        property SessionDispatcher dis: sessiondispatcher
+                        width: parent.width//clearDelegate.ListView.view.width
+                        height: 45//65
 
-                ]
-            }
-            Image {
-                id: unneedstatus
-                source: "../img/toolWidget/unfinish.png"
-                anchors {
-                    top: cookiestatus.bottom; topMargin: 45
-                    left: parent.left; leftMargin: 500
-                }
-                states: [
-                        State {
-                        name: "StatusU"
-                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
-                    },
-
-                        State {
-                        name: "StatusU1"
-                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/exception.png"}
-                    }
-
-                ]
-            }
+                        Item {
+                            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+                            id: scaleMe2
+                            //checkbox, picture and words
+                            Row {
+                                id: lineLayout2
+                                spacing: 10
+                                anchors {
+                                    fill: parent
+                                    left: parent.left
+                                    leftMargin: 50
+                                }
+                               Common.CheckBox {
+                                    id: checkboxe3
+                                    checked:true    //将所有选项都check
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    onCheckedChanged: {
+                                        if (checkboxe3.checked) {
+                                                    var cookieslist = systemdispatcher.get_onekey_args();
+                                                    var word_flag2 = "false";
+                                                    for (var k=0; k<cookieslist.length; k++) {
+                                                        if (cookieslist[k] == "cookies") {
+                                                            word_flag2 = "true";
+                                                            break;
+                                                        }
+                                                    }
+                                                    if (word_flag2 == "false") {
+                                                        console.log("no word_flag3");
+                                                        systemdispatcher.set_onekey_args("cookies");
+                                                        console.log(systemdispatcher.get_package_args());
+                                                    }
+                                        }
+                                        else if (!checkboxe3.checked) {
+                                                systemdispatcher.del_onekey_args("cookies");
+                                                console.log(systemdispatcher.get_onekey_args());
+                                            }
+                                    }
+                                }
 
 
-        }//Column
-    }//Column
+                            Image {
+                                id: clearImage3
+                                width: 40; height: 42
+                                source: "../img/toolWidget/cookies.png"//picturename
+                                anchors {
+                                    left: checkboxe.right; leftMargin: 15
+                                    verticalCenter: parent.verticalCenter
+                                }
 
-}//坐边栏Rectangle
+                            }
+
+                            Column {
+                                spacing: 5
+                                anchors {
+                                    left: clearImage2.right; leftMargin: 15
+                                    verticalCenter: parent.verticalCenter
+                                }
+                                Text {
+                                    text: "清理Cookies"//titlename
+                                    font.bold: true
+                                    font.pixelSize: 14
+                                    color: "#383838"
+                                }
+                                Text {
+                                    text: "清理上网时产生的Cookies，还浏览器一片天空"//detailstr
+                                    font.pixelSize: 12
+                                    color: "#7a7a7a"
+                                }
+                            }
+                           }
+
+                            Image {
+                                id: cookiestatus
+                                source: "../img/toolWidget/unfinish.png"
+                                anchors {
+                                    top: historystatus.bottom; topMargin: 45
+                                    left: parent.left; leftMargin: 500
+                                }
+                                states: [
+                                        State {
+                                        name: "StatusK"
+                                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+                                    },
+
+                                        State {
+                                        name: "StatusK1"
+                                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/exception.png"}
+                                    }
+
+                                ]
+                            }
+
+                            Rectangle {  //分割条
+                                width: parent.width; height: 1
+                                anchors { top: lineLayout.bottom; topMargin: 5}
+                                color: "gray"
+                            }
+
+                        }
+                      }
+            //----------------------------
+                        Item {
+                        property SessionDispatcher dis: sessiondispatcher
+                        width: parent.width//clearDelegate.ListView.view.width
+                        height: 45//65
+
+                        Item {
+                            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+                            id: scaleMe3
+                            //checkbox, picture and words
+                            Row {
+                                id: lineLayout3
+                                spacing: 10
+                                anchors {
+                                    fill: parent
+                                    left: parent.left
+                                    leftMargin: 50
+                                }
+                               Common.CheckBox {
+                                    id: checkboxe4
+                                    checked:true    //将所有选项都check
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    onCheckedChanged: {
+                                        if (checkboxe4.checked) {
+                                                    var mylist = systemdispatcher.get_onekey_args();
+                                                    var word_flag3 = "false";
+                                                    for (var q=0; q<mylist.length; q++) {
+                                                        if (mylist[q] == "unneed") {
+                                                            word_flag3 = "true";
+                                                            break;
+                                                        }
+                                                    }
+                                                    if (word_flag3 == "false") {
+                                                        console.log("no word_flag4");
+                                                        systemdispatcher.set_onekey_args("unneed");
+                                                        console.log(systemdispatcher.get_package_args());
+                                                    }
+                                        }
+                                        else if (!checkboxe4.checked) {
+                                                systemdispatcher.del_onekey_args("unneed");
+                                                console.log(systemdispatcher.get_onekey_args());
+                                            }
+                                    }
+                                }
+
+
+                            Image {
+                                id: clearImage4
+                                width: 40; height: 42
+                                source: "../img/toolWidget/deb.png"//picturename
+                                anchors {
+                                    left: checkboxe.right; leftMargin: 15
+                                    verticalCenter: parent.verticalCenter
+                                }
+
+                            }
+
+                            Column {
+                                spacing: 5
+                                anchors {
+                                    left: clearImage2.right; leftMargin: 15
+                                    verticalCenter: parent.verticalCenter
+                                }
+                                Text {
+                                    text: "卸载不必要的程序"//titlename
+                                    font.bold: true
+                                    font.pixelSize: 14
+                                    color: "#383838"
+                                }
+                                Text {
+                                    text: "清理软件安装过程中安装的依赖程序，提高系统性能"//detailstr
+                                    font.pixelSize: 12
+                                    color: "#7a7a7a"
+                                }
+                            }
+                          }
+
+                            Image {
+                                id: unneedstatus
+                                source: "../img/toolWidget/unfinish.png"
+                                anchors {
+                                    top: cookiestatus.bottom; topMargin: 45
+                                    left: parent.left; leftMargin: 500
+                                }
+                                states: [
+                                        State {
+                                        name: "StatusU"
+                                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+                                    },
+
+                                        State {
+                                        name: "StatusU1"
+                                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/exception.png"}
+                                    }
+
+                                ]
+                            }
+
+                            Rectangle {  //分割条
+                                width: parent.width; height: 1
+                                anchors { top: lineLayout.bottom; topMargin: 5}
+                                color: "gray"
+                            }
+
+                        }
+                      }
+            //----------------------------
+                    }//Column
+                }//Column
+
+            }//坐边栏Rectangle
+
+
+
+
+//            Item {
+//                id: views
+//                width: parent.width ////ListView不会随鼠标上下移动
+//                height: leftbar.height - 118 - itemtip.height - 10*2 - 20 -10
+//                anchors.top: itemtip.bottom
+//                anchors.topMargin: 30
+
+//                ListModel {
+//                    id: clearModel
+//                    ListElement {
+//                        titlename: "清理垃圾"
+//                        picturename: "../img/toolWidget/brush.png"
+//                        detailstr: "清理系统中的垃圾文件，释放磁盘空间"
+//                        clearflag: "cache"
+//                    }
+//                    ListElement {
+//                        titlename: "清理历史记录"
+//                        picturename: "../img/toolWidget/history.png"
+//                        detailstr: "清理上网时留下的历史记录，保护您的个人隐私"
+//                        clearflag: "history"
+//                    }
+//                    ListElement {
+//                        titlename: "清理Cookies"
+//                        picturename: "../img/toolWidget/cookies.png"
+//                        detailstr: "清理上网时产生的Cookies，还浏览器一片天空"
+//                        clearflag: "cookies"
+//                    }
+//                    ListElement {
+//                        titlename: "卸载不必要的程序"
+//                        picturename: "../img/toolWidget/deb.png"
+//                        detailstr: "清理软件安装过程中安装的依赖程序，提高系统性能"
+//                        clearflag: "unneed"
+//                    }
+//                }
+
+//                ListView {
+//                    id: listView
+//                    height: parent.height
+//                    width: parent.width
+//                    anchors.top: parent.top
+////                    anchors.topMargin: titlebar.height + 45
+//                    model: clearModel
+//                    delegate: FastDelegate {pagenum: leftbar.onekeypage} //"first"
+//                    cacheBuffer: 1000
+//                }
+//            }
+
+
+
+//            //status picture
+//            Image {
+//                id: cachestatus
+//                source: "../img/toolWidget/unfinish.png"
+//                anchors {
+//                    top: itemtip.bottom; topMargin: 20
+//                    left: parent.left; leftMargin: 500
+////                    left: parent.right; leftMargin: 400
+//                }
+//                states: [
+//                        State {
+//                        name: "StatusC"
+//                        PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//                    },
+
+//                        State {
+//                        name: "StatusC1"
+//                        PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
+//                    }
+
+//                ]
+//            }
+//            Image {
+//                id: historystatus
+//                source: "../img/toolWidget/unfinish.png"
+//                anchors {
+//                    top: cachestatus.bottom; topMargin: 45
+//                    left: parent.left; leftMargin: 500
+//                }
+//                states: [
+//                        State {
+//                        name: "StatusH"
+//                        PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//                    },
+
+//                        State {
+//                        name: "StatusH1"
+//                        PropertyChanges { target: historystatus; source: "../img/toolWidget/exception.png"}
+//                    }
+
+//                ]
+//            }
+//            Image {
+//                id: cookiestatus
+//                source: "../img/toolWidget/unfinish.png"
+//                anchors {
+//                    top: historystatus.bottom; topMargin: 45
+//                    left: parent.left; leftMargin: 500
+//                }
+//                states: [
+//                        State {
+//                        name: "StatusK"
+//                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//                    },
+
+//                        State {
+//                        name: "StatusK1"
+//                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/exception.png"}
+//                    }
+
+//                ]
+//            }
+//            Image {
+//                id: unneedstatus
+//                source: "../img/toolWidget/unfinish.png"
+//                anchors {
+//                    top: cookiestatus.bottom; topMargin: 45
+//                    left: parent.left; leftMargin: 500
+//                }
+//                states: [
+//                        State {
+//                        name: "StatusU"
+//                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//                    },
+
+//                        State {
+//                        name: "StatusU1"
+//                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/exception.png"}
+//                    }
+
+//                ]
+//            }
+
+
+//        }//Column
+//    }//Column
+
+//}//坐边栏Rectangle
