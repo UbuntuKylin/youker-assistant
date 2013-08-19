@@ -20,5 +20,6 @@ Depends: ${shlibs:Depends},
          libphonon-dev,
          python,
          python-dbus,
+         python-support (>= 0.90),
 Description: It is a system assistant tool.
  aimed at helping all users to manage their linux system conveniently.
