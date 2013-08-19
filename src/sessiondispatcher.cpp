@@ -40,9 +40,52 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
+    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
     notify_str = "";
     page_num = 0;
+
 }
+
+void SessionDispatcher::handler_scan_rubbish(QString msg)
+{
+    emit finishScanWork(msg);
+}
+void SessionDispatcher::exit_qt()
+{
+    sessioniface->call("exit");
+}
+
+int SessionDispatcher::scan_history_records_qt() {
+    QDBusReply<int> reply = sessioniface->call("scan_history_records");
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_of_same", abspath);
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_of_large_qt(QString abspath) {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", abspath);
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_cookies_records_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_records");
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_unneed_packages_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_unneed_packages");
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_apt_cruft_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_apt_cruft");
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
+    return reply.value();
+}
+
+
+
 
 QString SessionDispatcher::get_home_path() {
     QString homepath = QDir::homePath();

@@ -23,7 +23,7 @@ import shutil
 import logging
 import tempfile
 import subprocess
-
+import re
 from subprocess import PIPE
 import apt
 import apt_pkg
@@ -34,7 +34,10 @@ from gi.repository import GObject
 
 import time
 
-from session_policykit import PolicyKitService
+import cleaner
+from cleaner import common
+
+from policykit import PolicyKitService
 from beautify.desktop import Desktop
 from beautify.unity import Unity
 from beautify.theme import Theme
@@ -60,9 +63,80 @@ class SessionDaemon(PolicyKitService):
         self.soundconf = Sound()
         #self.othersconf = Others()
 
+        self.daemonsame = cleaner.SearchTheSame()
+        self.daemonlarge = cleaner.ManageTheLarge()
+        self.daemonunneed = cleaner.CleanTheUnneed()
+        self.daemoncache = cleaner.CleanTheCache()
+
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
+
+#---------------------------------------------------------------------
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def scan_history_records(self):
+        daemonhistory = cleaner.CleanTheHistory()
+        tmp_list = daemonhistory.get_scan_resault()
+        self.scan_complete_msg('history')
+        return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
+
+    # the function of search the same file below path
+    ### input-'path'  output-['filea<2_2>filea','fileb<2_2>fileb'....]
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    def scan_of_same(self, path):
+        tmp_list = self.daemonsame.get_scan_resault(path)
+        self.scan_complete_msg('same')
+        return tmp_list
+
+    # the function of sort the hundred files below path betown big to small
+    ### input-'path'  output-['size<2_2>biggestfile<2_2>filestyle', 'size...]
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    def scan_of_large(self, path):
+        tmp_list = self.daemonlarge.get_scan_resault(path)
+        self.scan_complete_msg('large')
+        return tmp_list
+    # the function of clean the cookies records
+    ### input-''   output-['domain<2_2>number', 'dom...]
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def scan_cookies_records(self):
+        daemoncookies = cleaner.CleanTheCookies()
+        tmp_list = daemoncookies.get_scan_resault()
+        self.scan_complete_msg('cookies')
+        return tmp_list
+    # the function of scan the unneedpackages
+    ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def scan_unneed_packages(self):
+        tmp_list = self.daemonunneed.get_scan_resault()
+        self.scan_complete_msg('unneed')
+        return tmp_list
+    # the function of scan the apt cache
+    ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def scan_apt_cruft(self):
+        tmp_dic = self.daemoncache.get_scan_resault()
+        self.scan_complete_msg('apt')
+        return tmp_dic['apt'].split('<1_1>')
+    # the function of scan the softwarecenter cache
+    ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def scan_softwarecenter_cruft(self):
+        tmp_dic = self.daemoncache.get_scan_resault()
+        self.scan_complete_msg('softwarecenter')
+        return tmp_dic['softwarecenter'].split('<1_1>')
+
+    # a dbus method which means scan complete
+    @dbus.service.signal(INTERFACE, signature='s')
+    def scan_complete(self, msg):
+        pass
+
+    def scan_complete_msg(self, para):
+        self.scan_complete(para)
+#---------------------------------------------------------------------
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def exit(self):
+        self.mainloop.quit()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_session_daemon(self):

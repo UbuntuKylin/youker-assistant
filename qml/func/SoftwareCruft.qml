@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 import "common" as Common
@@ -66,7 +66,8 @@ Item {
     onSoftware_signal: {
         if (software_msg == "SoftwareWork") {
             //get data of cookies
-            var software_data = systemdispatcher.scan_softwarecenter_cruft_qt();
+//            var software_data = systemdispatcher.scan_softwarecenter_cruft_qt();
+            var software_data = sessiondispatcher.scan_softwarecenter_cruft_qt();
             if (software_data == "")
                 root.null_flag = true;
             else

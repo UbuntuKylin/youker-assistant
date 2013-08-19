@@ -104,16 +104,25 @@ int main(int argc, char** argv)
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-
     registerTypes();
 
+    int b = system("/usr/bin/youkersession &");
+    qDebug() << b;
+    qDebug() << "SessionDaemon222";
+    int a = system("/usr/bin/youkersystem");
+    qDebug() << "a->";
+    qDebug() << a;
+
     IhuApplication application(argc, argv);
-    SessionDispatcher *session = new SessionDispatcher();
-    QString session_value = session->get_session_daemon_qt();
-    qDebug() << session_value;
-    if (!application.setup(session_value)) {
+//    SessionDispatcher *session = new SessionDispatcher();
+//    int a = system("/usr/bin/youkersystem");
+//    qDebug() << "a->";
+//    qDebug() << a;
+//    QString session_value = session->get_session_daemon_qt();
+//    qDebug() << session_value;
+    if (!application.setup(/*session_value*/)) {
         return 0;
     }
-    delete session;
+//    delete session;
     return application.exec();
 }

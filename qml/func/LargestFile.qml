@@ -19,7 +19,7 @@
 
 
 import QtQuick 1.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 
@@ -56,7 +56,8 @@ Item {
 
 
     function refresh_page() {
-        var largestfile_data = systemdispatcher.scan_of_large_qt(root.directory);
+//        var largestfile_data = systemdispatcher.scan_of_large_qt(root.directory);
+        var largestfile_data = sessiondispatcher.scan_of_large_qt(root.directory);
         if (largestfile_data == "")
             root.null_flag = true;
         else

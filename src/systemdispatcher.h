@@ -47,6 +47,7 @@ public:
 //    Q_INVOKABLE QString get_value(QString);
     Q_INVOKABLE int get_add_value();
     Q_INVOKABLE void send_btn_msg(QString);
+    Q_INVOKABLE void exit_qt();
 
     Q_INVOKABLE void check_screen_break_point();
 
@@ -72,13 +73,13 @@ public:
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
 
 
-    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
-    Q_INVOKABLE QStringList scan_of_large_qt(QString abspath);
+//    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
+//    Q_INVOKABLE QStringList scan_of_large_qt(QString abspath);
     Q_INVOKABLE int scan_history_records_qt();
     Q_INVOKABLE void clean_history_records_qt();
-    Q_INVOKABLE QStringList scan_cookies_records_qt();
+//    Q_INVOKABLE QStringList scan_cookies_records_qt();
     Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
-    Q_INVOKABLE QStringList scan_unneed_packages_qt();
+//    Q_INVOKABLE QStringList scan_unneed_packages_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
 //    Q_INVOKABLE QMap<QString, QVariant> scan_cache_cruft_qt();
@@ -88,8 +89,8 @@ public:
     Q_INVOKABLE QStringList get_apt_data();
     Q_INVOKABLE QStringList get_center_data();
 
-    Q_INVOKABLE QStringList scan_apt_cruft_qt();
-    Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
+//    Q_INVOKABLE QStringList scan_apt_cruft_qt();
+//    Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
     //---------------------------------
 
 

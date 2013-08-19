@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 Item {
@@ -55,7 +55,8 @@ Item {
         if (apt_msg == "AptWork") {
             //get data of cookies
             console.log("apt_msg == AptWork");
-            var apt_data = systemdispatcher.scan_apt_cruft_qt();
+//            var apt_data = systemdispatcher.scan_apt_cruft_qt();
+            var apt_data = sessiondispatcher.scan_apt_cruft_qt();
             if (apt_data == "")
                 root.null_flag = true;
             else

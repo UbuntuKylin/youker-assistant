@@ -1,6 +1,7 @@
 youker-assistant (0.1.5-0ubuntu1) raring; urgency=low
 
   * 0.1-Release.
+  * Add policykit.
 
  -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 12 Aug 2013 11:38:12 +0800
 

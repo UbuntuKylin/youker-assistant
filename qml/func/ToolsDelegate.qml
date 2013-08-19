@@ -78,45 +78,53 @@ Rectangle {
                 pageStack.push(desktopiconsetpage);
             else if (flag == "BootAnimation") {
                 console.log("BootAnimation clicked....");
-                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-                    var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
-                    if (component_boot.status == Component.Ready) {
-                        pageStack.push(component_boot);
-                    }
+                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
+                if (component_boot.status == Component.Ready) {
+                    pageStack.push(component_boot);
                 }
-                else {
-                    var value5 = systemdispatcher.setup();
-                    if(value5) {
-                        var component_boot1 = Qt.createComponent("./settings/BootAnimation.qml");
-                        if (component_boot1.status == Component.Ready) {
-                            pageStack.push(component_boot1);
-                        }
-                    }
-                    else {
-                        sessiondispatcher.send_restartdialog_msg();
-                    }
-                }
+//                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+//                    var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
+//                    if (component_boot.status == Component.Ready) {
+//                        pageStack.push(component_boot);
+//                    }
+//                }
+//                else {
+//                    var value5 = systemdispatcher.setup();
+//                    if(value5) {
+//                        var component_boot1 = Qt.createComponent("./settings/BootAnimation.qml");
+//                        if (component_boot1.status == Component.Ready) {
+//                            pageStack.push(component_boot1);
+//                        }
+//                    }
+//                    else {
+//                        sessiondispatcher.send_restartdialog_msg();
+//                    }
+//                }
             }
             else if (flag == "SoundEffects") {
                 console.log("SoundEffects clicked....");
-                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-                    var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
-                    if (component_sound.status == Component.Ready) {
-                        pageStack.push(component_sound);
-                    }
+                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
+                if (component_sound.status == Component.Ready) {
+                    pageStack.push(component_sound);
                 }
-                else {
-                    var value6 = systemdispatcher.setup();
-                    if(value6) {
-                        var component_sound1 = Qt.createComponent("./settings/SoundEffects.qml");
-                        if (component_sound1.status == Component.Ready) {
-                            pageStack.push(component_sound1);
-                        }
-                    }
-                    else {
-                        sessiondispatcher.send_restartdialog_msg();
-                    }
-                }
+//                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+//                    var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
+//                    if (component_sound.status == Component.Ready) {
+//                        pageStack.push(component_sound);
+//                    }
+//                }
+//                else {
+//                    var value6 = systemdispatcher.setup();
+//                    if(value6) {
+//                        var component_sound1 = Qt.createComponent("./settings/SoundEffects.qml");
+//                        if (component_sound1.status == Component.Ready) {
+//                            pageStack.push(component_sound1);
+//                        }
+//                    }
+//                    else {
+//                        sessiondispatcher.send_restartdialog_msg();
+//                    }
+//                }
             }
             else if (flag == "MousePointer")
                 pageStack.push(mousepointerpage);

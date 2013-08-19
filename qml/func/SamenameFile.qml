@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 
@@ -53,7 +53,8 @@ Item {
     onSamenamefile_signal: {
         if (samenamefile_msg == "SamenameFileWork") {
             //get data of largestfile
-            var samenamefile_data = systemdispatcher.scan_of_same_qt("/home/kobe");
+//            var samenamefile_data = systemdispatcher.scan_of_same_qt("/home/kobe");
+            var samenamefile_data = sessiondispatcher.scan_of_same_qt("/home/kobe");
             root.sub_num = samenamefile_data.length;
             systemdispatcher.clear_samenamefile_args();
             subModel.clear();

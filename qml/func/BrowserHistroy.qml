@@ -18,7 +18,7 @@
  */
 import QtQuick 1.1
 import SessionType 0.1
-//import SystemType 0.1
+import SystemType 0.1
 import "common" as Common
 
 Item {
@@ -47,7 +47,8 @@ Item {
     onHistory_bnt_signal: {
         if (history_msg == "HistoryWork") {
             console.log(history_msg);
-            root.num = systemdispatcher.scan_history_records_qt();
+//            root.num = systemdispatcher.scan_history_records_qt();
+            root.num = sessiondispatcher.scan_history_records_qt();
             if (root.num == 0)
                 root.null_flag = true;
             else

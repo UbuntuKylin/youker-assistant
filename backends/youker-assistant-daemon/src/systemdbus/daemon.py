@@ -31,24 +31,29 @@ import dbus.service
 import dbus.mainloop.glib
 from gi.repository import GObject
 
+import apt
+import apt_pkg
+
+from server import PolicyKitService
+from policykit import UK_ACTION_YOUKER
+
+
 import time
 
 
 import cleaner
 from cleaner import common
-from system_policykit import PolicyKitService
-#from sysinfo import Sysinfo
 from beautify.sound import Sound
 from beautify.others import Others
 
-log = logging.getLogger('SystemDaemon')
+log = logging.getLogger('Daemon')
 
-INTERFACE = "com.ubuntukylin.Ihu"
+INTERFACE = "com.ubuntukylin_tools.daemon"
 PATH = "/"
 #PATH = "/com/ubuntukylin_assistant/daemon"
 TIMEFORMAT = "%H:%M:%S"
 
-class SystemDaemon(PolicyKitService):
+class Daemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
         #self.sysconf = Sysinfo()
         self.otherconf = Others()
@@ -63,14 +68,30 @@ class SystemDaemon(PolicyKitService):
         PolicyKitService.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def exit(self):
+        self.mainloop.quit()
+
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    #def get_user_cache(self):
+    #    return "KOBE"
+
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='s', sender_keyword='sender')
+    #def set_source_enable(self, sender=None):
+    #    self._check_permission(sender, UK_ACTION_YOUKER)
+    #    return "LIXIANG"
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
         return "SystemDaemon"
 
     # -------------------------sound-------------------------
     # get sound themes
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as', sender_keyword='sender')
+    #def get_sound_themes(self, sender=None):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_sound_themes(self):
+        #self._check_permission(sender, UK_ACTION_YOUKER)
         return self.soundconf.get_sound_themes()
 
     # get sound files in current sound theme
@@ -134,21 +155,6 @@ class SystemDaemon(PolicyKitService):
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_complete(self, msg):
         pass
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_complete_apt(self, msg):
-    #    pass
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_complete_software(self, msg):
-    #    pass
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_complete_history(self, msg):
-    #    pass
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_complete_cookies(self, msg):
-    #    pass
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_complete_package(self, msg):
-    #    pass
 
     # a dbus method which means an error occurred with main one key
     @dbus.service.signal(INTERFACE, signature='s')
@@ -165,19 +171,11 @@ class SystemDaemon(PolicyKitService):
     def clean_error(self, msg):
         pass
 
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def pc_msg(self, msg):
-    #    pass
-
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    #def pc_message(self):
-    #    self.test_signal('lixinag')
-    #    return self.sysconf.get_sys_msg()
-
     # the function of clean cruft by main one key
     ###input-['history', 'cach....] output-''
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    def clean_by_main_one_key(self, mode_list):
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def clean_by_main_one_key(self, mode_list, sender=None):
+        self._check_permission(sender, UK_ACTION_YOUKER)
         flag_str = ''
         tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = {}
@@ -220,11 +218,11 @@ class SystemDaemon(PolicyKitService):
             else:
                 self.clean_complete_main_msg('c')
 
-
     # the function of clean cruft by second one key
     ###input-['history', 'cach....] output-''
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    def clean_by_second_one_key(self, mode_list):
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def clean_by_second_one_key(self, mode_list, sender=None):
+        self._check_permission(sender, UK_ACTION_YOUKER)
         flag_str = ''
         tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = self.daemononekey.get_scan_resault(tmp_mode_list)
@@ -268,19 +266,19 @@ class SystemDaemon(PolicyKitService):
 
     # the function of search the same file below path
     ### input-'path'  output-['filea<2_2>filea','fileb<2_2>fileb'....]
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
-    def scan_of_same(self, path):
-        tmp_list = self.daemonsame.get_scan_resault(path)
-        self.scan_complete_msg('same')
-        return tmp_list
+    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    #def scan_of_same(self, path):
+    #    tmp_list = self.daemonsame.get_scan_resault(path)
+    #    self.scan_complete_msg('same')
+    #    return tmp_list
 
     # the function of sort the hundred files below path betown big to small
     ### input-'path'  output-['size<2_2>biggestfile<2_2>filestyle', 'size...]
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
-    def scan_of_large(self, path):
-        tmp_list = self.daemonlarge.get_scan_resault(path)
-        self.scan_complete_msg('large')
-        return tmp_list
+    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    #def scan_of_large(self, path):
+    #    tmp_list = self.daemonlarge.get_scan_resault(path)
+    #    self.scan_complete_msg('large')
+    #    return tmp_list
 
     # the function of clean the history records
     ### input-''   output-['id<2_2>url<2_2>title<2_2>visitcount', 'id...]
@@ -290,12 +288,12 @@ class SystemDaemon(PolicyKitService):
     #    return daemonhistory.get_scan_resault()
 
     # the function of clean the history records count
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
-    def scan_history_records(self):
-        daemonhistory = cleaner.CleanTheHistory()
-        tmp_list = daemonhistory.get_scan_resault()
-        self.scan_complete_msg('history')
-        return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    #def scan_history_records(self):
+    #    daemonhistory = cleaner.CleanTheHistory()
+    #    tmp_list = daemonhistory.get_scan_resault()
+    #    self.scan_complete_msg('history')
+    #    return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
 
     ### input-['id','id', 'i...]   output-''
     #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
@@ -312,8 +310,9 @@ class SystemDaemon(PolicyKitService):
     #            else:
     #                self.not_exist_msg(cruft)
     ### input-''   output-''
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def clean_history_records(self):
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    def clean_history_records(self, sender=None):
+        self._check_permission(sender, UK_ACTION_YOUKER)
         daemonhistory = cleaner.CleanTheHistory()
         try:
             daemonhistory.clean_the_cruftlist()
@@ -325,16 +324,17 @@ class SystemDaemon(PolicyKitService):
 
     # the function of clean the cookies records
     ### input-''   output-['domain<2_2>number', 'dom...]
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_cookies_records(self):
-        daemoncookies = cleaner.CleanTheCookies()
-        tmp_list = daemoncookies.get_scan_resault()
-        self.scan_complete_msg('cookies')
-        return tmp_list
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def scan_cookies_records(self):
+    #    daemoncookies = cleaner.CleanTheCookies()
+    #    tmp_list = daemoncookies.get_scan_resault()
+    #    self.scan_complete_msg('cookies')
+    #    return tmp_list
 
     ### input-['domain','dom...]   output-''
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    def clean_cookies_records(self, cruftlist):
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def clean_cookies_records(self, cruftlist, sender=None):
+        self._check_permission(sender, UK_ACTION_YOUKER)
         daemoncookies = cleaner.CleanTheCookies()
         try:
             daemoncookies.clean_the_cruftlist(cruftlist)
@@ -345,11 +345,11 @@ class SystemDaemon(PolicyKitService):
 
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_unneed_packages(self):
-        tmp_list = self.daemonunneed.get_scan_resault()
-        self.scan_complete_msg('unneed')
-        return tmp_list
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def scan_unneed_packages(self):
+    #    tmp_list = self.daemonunneed.get_scan_resault()
+    #    self.scan_complete_msg('unneed')
+    #    return tmp_list
 
     # the function of scan the cache
     ### input-''  output-'{'apt': 'filepath<2_2>size<1_1>filep...', 
@@ -360,24 +360,25 @@ class SystemDaemon(PolicyKitService):
 
     # the function of scan the apt cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_apt_cruft(self):
-        tmp_dic = self.daemoncache.get_scan_resault()
-        self.scan_complete_msg('apt')
-        return tmp_dic['apt'].split('<1_1>')
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def scan_apt_cruft(self):
+    #    tmp_dic = self.daemoncache.get_scan_resault()
+    #    self.scan_complete_msg('apt')
+    #    return tmp_dic['apt'].split('<1_1>')
 
     # the function of scan the softwarecenter cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_softwarecenter_cruft(self):
-        tmp_dic = self.daemoncache.get_scan_resault()
-        self.scan_complete_msg('softwarecenter')
-        return tmp_dic['softwarecenter'].split('<1_1>')
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def scan_softwarecenter_cruft(self):
+    #    tmp_dic = self.daemoncache.get_scan_resault()
+    #    self.scan_complete_msg('softwarecenter')
+    #    return tmp_dic['softwarecenter'].split('<1_1>')
 
     # the function of clean files
     ### input-['filepath', 'file...]   output-''
-    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
-    def clean_file_cruft(self, cruftlist, flagstr):
+    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
+    def clean_file_cruft(self, cruftlist, flagstr, sender=None):
+        self._check_permission(sender, UK_ACTION_YOUKER)
         try:
             self.daemonclean.clean_the_file(cruftlist)
         except Exception, e:
@@ -387,8 +388,9 @@ class SystemDaemon(PolicyKitService):
 
     # the function of clean packages
     ### input-['packagename', 'pack...]   output-''
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    def clean_package_cruft(self, cruftlist):
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def clean_package_cruft(self, cruftlist, sender=None):
+        self._check_permission(sender, UK_ACTION_YOUKER)
         try:
             self.daemonclean.clean_the_package(cruftlist)
         except Exception, e:
@@ -438,3 +440,8 @@ class SystemDaemon(PolicyKitService):
 
     #def test_signal(self, msg):
     #    self.pc_msg(msg)
+if __name__ == '__main__':
+    dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+    mainloop = GObject.MainLoop()
+    Daemon(dbus.SystemBus(), mainloop)
+    mainloop.run()

@@ -18,7 +18,7 @@
  */
 
 import QtQuick 1.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 
@@ -60,7 +60,8 @@ Item {
     onUnneed_signal: {
         if (unneed_msg == "UnneedWork") {
             //get data of unneed
-            var unneed_data = systemdispatcher.scan_unneed_packages_qt();
+//            var unneed_data = systemdispatcher.scan_unneed_packages_qt();
+            var unneed_data = sessiondispatcher.scan_unneed_packages_qt();
             if (unneed_data == "")
                 root.null_flag = true;
             else

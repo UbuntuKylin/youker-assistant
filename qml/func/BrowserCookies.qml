@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 
@@ -62,7 +62,8 @@ Item {
             console.log(cookies_msg);
 
             //get data of cookies
-            var cookies_data = systemdispatcher.scan_cookies_records_qt();
+//            var cookies_data = systemdispatcher.scan_cookies_records_qt();
+            var cookies_data = sessiondispatcher.scan_cookies_records_qt();
             if (cookies_data == "")
                 root.null_flag = true;
             else

@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 ### BEGIN LICENSE
+# Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
 # Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -23,7 +24,7 @@ import dbus.mainloop.glib
 
 from gi.repository import GObject
 
-VERSION = "0.1.1"
+VERSION = "0.1"
 
 if __name__ == '__main__':
     parser = optparse.OptionParser(prog="youker-assistant-session-daemon",
@@ -38,10 +39,10 @@ if __name__ == '__main__':
         logging.basicConfig(level=logging.DEBUG)
 
     #TODO make it exist when timeout
-    from session_daemon import SessionDaemon
+    from sessiondbus.daemon import SessionDaemon
     print("The sessiondbus server is running..........")
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = GObject.MainLoop()
-    b = SessionDaemon(dbus.SessionBus(), mainloop)
+    SessionDaemon(dbus.SessionBus(), mainloop)
     #GObject.timeout_add(9000, a.construct_msg)
     mainloop.run()

@@ -17,6 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
+import SessionType 0.1
+import SystemType 0.1
 Rectangle {
     height: 20
     width: parent.width
@@ -49,6 +51,8 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    systemdispatcher.exit_qt();
+                    sessiondispatcher.exit_qt();
                     Qt.quit();
                 }
             }

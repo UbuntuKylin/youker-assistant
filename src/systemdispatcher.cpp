@@ -46,9 +46,9 @@ extern QString music_path;
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
-    systemiface = new QDBusInterface("com.ubuntukylin.Ihu",
+    systemiface = new QDBusInterface("com.ubuntukylin_tools.daemon",
                                "/",
-                               "com.ubuntukylin.Ihu",
+                               "com.ubuntukylin_tools.daemon",
                                QDBusConnection::systemBus());
 
     //绑定到底层清理完毕后发送到信号函数clear_browser
@@ -56,13 +56,18 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
-    QObject::connect(systemiface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
+//    QObject::connect(systemiface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
 
     notify_str = "";
     history_flag = true;
     onekey_args << "cache" << "history" << "cookies" << "unneed";
     onekey_args2 << "cache" << "history" << "cookies" << "unneed";
 
+}
+
+void SystemDispatcher::exit_qt()
+{
+    systemiface->call("exit");
 }
 
 QString SystemDispatcher::get_system_daemon_qt() {
@@ -262,15 +267,15 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
     }
 }
 
-QStringList SystemDispatcher::scan_of_large_qt(QString abspath) {
-    QDBusReply<QStringList> reply = systemiface->call("scan_of_large", abspath);
-    return reply.value();
-}
+//QStringList SystemDispatcher::scan_of_large_qt(QString abspath) {
+//    QDBusReply<QStringList> reply = systemiface->call("scan_of_large", abspath);
+//    return reply.value();
+//}
 
-QStringList SystemDispatcher::scan_of_same_qt(QString abspath) {
-    QDBusReply<QStringList> reply = systemiface->call("scan_of_same", abspath);
-    return reply.value();
-}
+//QStringList SystemDispatcher::scan_of_same_qt(QString abspath) {
+//    QDBusReply<QStringList> reply = systemiface->call("scan_of_same", abspath);
+//    return reply.value();
+//}
 
 int SystemDispatcher::scan_history_records_qt() {
     QDBusReply<int> reply = systemiface->call("scan_history_records");
@@ -279,17 +284,17 @@ int SystemDispatcher::scan_history_records_qt() {
 void SystemDispatcher::clean_history_records_qt() {
     QDBusReply<void> reply = systemiface->call("clean_history_records");
 }
-QStringList SystemDispatcher::scan_cookies_records_qt() {
-    QDBusReply<QStringList> reply = systemiface->call("scan_cookies_records");
-    return reply.value();
-}
+//QStringList SystemDispatcher::scan_cookies_records_qt() {
+//    QDBusReply<QStringList> reply = systemiface->call("scan_cookies_records");
+//    return reply.value();
+//}
 void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
     QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
 }
-QStringList SystemDispatcher::scan_unneed_packages_qt() {
-    QDBusReply<QStringList> reply = systemiface->call("scan_unneed_packages");
-    return reply.value();
-}
+//QStringList SystemDispatcher::scan_unneed_packages_qt() {
+//    QDBusReply<QStringList> reply = systemiface->call("scan_unneed_packages");
+//    return reply.value();
+//}
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
     QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
 }
@@ -308,14 +313,14 @@ QStringList SystemDispatcher::get_center_data() {
     return apt_center["softwarecenter"].toStringList();
 }
 
-QStringList SystemDispatcher::scan_apt_cruft_qt() {
-    QDBusReply<QStringList> reply = systemiface->call("scan_apt_cruft");
-    return reply.value();
-}
-QStringList SystemDispatcher::scan_softwarecenter_cruft_qt() {
-    QDBusReply<QStringList> reply = systemiface->call("scan_softwarecenter_cruft");
-    return reply.value();
-}
+//QStringList SystemDispatcher::scan_apt_cruft_qt() {
+//    QDBusReply<QStringList> reply = systemiface->call("scan_apt_cruft");
+//    return reply.value();
+//}
+//QStringList SystemDispatcher::scan_softwarecenter_cruft_qt() {
+//    QDBusReply<QStringList> reply = systemiface->call("scan_softwarecenter_cruft");
+//    return reply.value();
+//}
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
     QDBusReply<void> reply = systemiface->call("clean_by_main_one_key", strlist);

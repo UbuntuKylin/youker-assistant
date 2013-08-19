@@ -89,24 +89,28 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (setbtn_flag == "onekey") {
-                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-                    send_dynamic_picture("onekey");
-                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                    btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
-                    menulogo.enabled=false;
-                }
-                else {
-                    var value4 = systemdispatcher.setup();
-                    if(value4) {
-                        send_dynamic_picture("onekey");
-                        systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
-                        menulogo.enabled=false;
-                    }
-                    else {
-                        sessiondispatcher.send_restartdialog_msg();
-                    }
-                }
+                send_dynamic_picture("onekey");
+                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
+                menulogo.enabled=false;
+//                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+//                    send_dynamic_picture("onekey");
+//                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+//                    btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
+//                    menulogo.enabled=false;
+//                }
+//                else {
+//                    var value4 = systemdispatcher.setup();
+//                    if(value4) {
+//                        send_dynamic_picture("onekey");
+//                        systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+//                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
+//                        menulogo.enabled=false;
+//                    }
+//                    else {
+//                        sessiondispatcher.send_restartdialog_msg();
+//                    }
+//                }
             }
             else if (setbtn_flag == "smallonekey") {
                 systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());

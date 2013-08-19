@@ -68,58 +68,76 @@ inline QString getAppDirectory() {
     }
 }
 
-bool IhuApplication::setup(QString str)
+bool IhuApplication::setup(/*QString str*/)
 {
-
-    bool debug_flag = false;
-    //debug source
-    if (!debug_flag) {
-        if (str == "SessionDaemon") {
-            qDebug() << "SessionDaemon";
-        }
-        else {
-            QProcess *process_session = new QProcess;
-            process_session->start("/usr/bin/youkersession");
-        }
-    }
-    //run deb package
-    else {
-        AuthDialog *dialog = new AuthDialog;
-        dialog->exec();
-
-        int value = 0;
-        QString str = "";
-        FILE *stream_system;
-        char buf[64];
-        memset(buf, '\0', sizeof(buf));
-        stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
-        fread(buf, sizeof(char), sizeof(buf), stream_system);
-        str = QString(buf);
-        value = str.toInt();
-        if (value == 0) {
-            QProcess *process_system = new QProcess;
-            process_system->start("/usr/bin/youkersystem " + passwd);
-        }
-        pclose(stream_system);
+//    if (str == "SessionDaemon") {
+//        qDebug() << "SessionDaemon000";
+//    }
+//    else {
+//        qDebug() << "SessionDaemon111";
+////        QProcess *process_session = new QProcess;
+////        process_session->start("/usr/bin/youkersession");
+//        int b = system("/usr/bin/youkersession &");
+//        qDebug() << b;
+//        qDebug() << "SessionDaemon222";
+//    }
 
 
-        FILE *stream_session;
-        memset(buf, '\0', sizeof(buf));
-        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
-        fread(buf, sizeof(char), sizeof(buf), stream_session);
-        str = QString(buf);
-        value = str.toInt();
-        if (value == 0) {
-            qDebug() << "6789";
-            QProcess *process_session = new QProcess;
-            process_session->start("/usr/bin/youkersession");
-            qDebug() << "56789";
-        }
-        else
-            qDebug() << "67890";
-        memset(buf, '\0', sizeof(buf));
-        pclose(stream_session);
-    }
+
+
+//    bool debug_flag = false;
+//    //debug source
+//    if (!debug_flag) {
+//        if (str == "SessionDaemon") {
+//            qDebug() << "SessionDaemon000";
+//        }
+//        else {
+//            qDebug() << "SessionDaemon111";
+////            QProcess *process_session = new QProcess;
+////            process_session->start("/usr/bin/youkersession");
+//            int b = system("/usr/bin/youkersession");
+//            qDebug() << b;
+//            qDebug() << "SessionDaemon222";
+//        }
+//    }
+//    //run deb package
+//    else {
+//        AuthDialog *dialog = new AuthDialog;
+//        dialog->exec();
+
+//        int value = 0;
+//        QString str = "";
+//        FILE *stream_system;
+//        char buf[64];
+//        memset(buf, '\0', sizeof(buf));
+//        stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
+//        fread(buf, sizeof(char), sizeof(buf), stream_system);
+//        str = QString(buf);
+//        value = str.toInt();
+//        if (value == 0) {
+//            QProcess *process_system = new QProcess;
+//            process_system->start("/usr/bin/youkersystem " + passwd);
+//        }
+//        pclose(stream_system);
+
+
+//        FILE *stream_session;
+//        memset(buf, '\0', sizeof(buf));
+//        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
+//        fread(buf, sizeof(char), sizeof(buf), stream_session);
+//        str = QString(buf);
+//        value = str.toInt();
+//        if (value == 0) {
+//            qDebug() << "6789";
+//            QProcess *process_session = new QProcess;
+//            process_session->start("/usr/bin/youkersession");
+//            qDebug() << "56789";
+//        }
+//        else
+//            qDebug() << "67890";
+//        memset(buf, '\0', sizeof(buf));
+//        pclose(stream_session);
+//    }
 
     IhuApplication::setApplicationName("Youker Assistant");
     viewer = new QDeclarativeView;
