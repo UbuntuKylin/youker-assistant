@@ -4,11 +4,11 @@
  "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
 <policyconfig>
 
-  <vendor>UbuntuKylin Team</vendor>
+  <vendor>Youker Assistant</vendor>
   <vendor_url>http://ubuntukylin.com</vendor_url>
-  <icon_name>youker assistamt</icon_name>
+  <icon_name>youkersystem</icon_name>
 
-  <action id="com.ubuntukylin.daemon.youker">
+  <action id="com.ubuntukylin_tools.daemon.youker">
     <_description>
       system level settings
     </_description>
