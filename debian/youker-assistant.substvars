@@ -1,2 +1,0 @@
-shlibs:Depends=libc6 (>= 2.1.3), libc6 (>= 2.3.6-6~), libgcc1 (>= 1:4.1.1), libphonon4 (>= 4:4.2.0), libqt4-dbus (>= 4:4.5.3), libqt4-declarative (>= 4:4.7.0~rc1), libqtcore4 (>= 4:4.7.0~beta1), libqtgui4 (>= 4:4.8.0), libstdc++6 (>= 4.1.1), phonon
-misc:Depends=
