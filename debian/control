@@ -23,4 +23,8 @@ Depends: libphonon-dev,
          ${misc:Depends},
          ${shlibs:Depends},
 Description: It is a system assistant tool developed by UbuntuKylin Team.
- Helps all users manage their linux system conveniently.
+ Helps all users manage their linux system conveniently. 
+ In this 0.1 Release, it provides three features: 
+ show system information, customize the system UI,
+ and clean the system garbage. More features are 
+ developing for its future release.

@@ -1,0 +1,4 @@
+#!/bin/bash
+#ROOT_PATH=`dirname $0`
+ROOT_PATH="/usr/lib/python2.7/dist-packages/youker-assistant-daemon"
+python $ROOT_PATH/src/youker-assistant-sessiondbus.py
