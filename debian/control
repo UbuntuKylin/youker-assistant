@@ -1,25 +1,27 @@
 Source: youker-assistant
-Section: gnome
+Section: misc
 Priority: optional
 Maintainer: UbuntuKylin Team <ubuntukylin-members@list.launchpad.net>
 Build-Depends: debhelper (>= 9),
                dh-translations,
-               pkg-config,
-               qtchooser,
-               libqt4-dev,
-               qt4-default,
                libphonon-dev,
+               libqt4-dev,
+               pkg-config,
                python (>= 2.6.6-3~),
+               qt4-default,
+               qtchooser,
 Standards-Version: 3.9.4
 Homepage: https://launchpad.net/youker-assistant
+Vcs-Bzr: https://code.launchpad.net/~ubuntukylin-members/youker-assistant/trunk
 
 Package: youker-assistant
 Architecture: any
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         libphonon-dev,
+Multi-Arch: same
+Depends: libphonon-dev,
          python,
          python-dbus,
          python-support (>= 0.90),
-Description: It is a system assistant tool.
- aimed at helping all users to manage their linux system conveniently.
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: It is a system assistant tool developed by UbuntuKylin Team.
+ Helps all users manage their linux system conveniently.
