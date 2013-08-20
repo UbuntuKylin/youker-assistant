@@ -18,6 +18,7 @@
 
 import sys, os
 import psutil
+import time
 import subprocess
 
 class MonitorBall:
@@ -54,6 +55,34 @@ class MonitorBall:
 		value = mem.free
 		return self.bytes2human(value, symbol)
 
+	# get network flow, return (up, down)
+	def get_network_flow(self, symbol = "k"):
+		network_before = psutil.network_io_counters()
+		sent_before = network_before.bytes_sent
+		recv_before = network_before.bytes_recv
+ 		time.sleep(1)
+ 		network_after = psutil.network_io_counters()
+		sent_after = network_after.bytes_sent
+		recv_after = network_after.bytes_recv
+		
+		byte_up = sent_after - sent_before
+		byte_down = recv_after - recv_before
+		
+		if(symbol == "b"):
+			return (byte_up, byte_down)
+		elif(symbol == "k"):
+			k_up = float(byte_up) / 1024
+			ups = str(k_up)
+ 			ups = ups[0:ups.find(".") + 2]
+ 			
+			k_down = float(byte_down) / 1024
+			downs = str(k_down)
+ 			downs = downs[0:downs.find(".") + 2]
+			
+			return (float(ups), float(downs))
+		else:
+			return None
+
 	# byte to human by symbol
 	def bytes2human(self, value, symbol):
 		if symbol == "k":
@@ -70,10 +99,11 @@ class MonitorBall:
 
 if __name__ == "__main__":
 	mmm = MonitorBall()
+	print mmm.get_network_flow()
 # 	mmm.cleanup_memory()
 # 	print mmm.get_cpu_percent()
 # 	print mmm.get_cpu_percent(True)
 # 	print mmm.get_cpu_percent()
- 	print mmm.get_free_memory("m")
+#  	print mmm.get_free_memory("m")
 #  	print mmm.get_used_memory("g")
-  	print mmm.get_total_memory("g")
+# 	print mmm.get_total_memory("g")

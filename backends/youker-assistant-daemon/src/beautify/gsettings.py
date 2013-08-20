@@ -26,7 +26,7 @@ def get(schema,path,key,type):
         gs = gio.Settings(schema,path)
         return gs.__getattribute__('get_' + type)(key)
     except:
-        log.debug("gsettings.get: can't find value for %s" % gs)
+        logger.debug("gsettings.get: can't find value for %s" % gs)
         return None
 
 def set(schema,path,key,type,value):
@@ -35,7 +35,7 @@ def set(schema,path,key,type,value):
         gs.__getattribute__('set_' + type)(key,value)
         return True
     except:
-        log.debug("gsettings.set: can't find value for %s" % gs)
+        logger.debug("gsettings.set: can't find value for %s" % gs)
         return False
 
 def get_schema(schema):

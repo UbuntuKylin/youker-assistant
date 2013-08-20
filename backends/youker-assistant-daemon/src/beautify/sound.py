@@ -27,6 +27,10 @@ class Sound:
 	def __init__(self):
 		self.homedir = utils.get_home_dir()
 
+	# sometimes need set homedir manual fe:the backend run by root dbus
+	def set_homedir(self, homedir):
+		self.homedir = homedir
+
 	# enable the login music
 	def set_login_music_enable(self, flag):
 		configdir = self.homedir + '/.config/autostart'
