@@ -73,7 +73,7 @@ class AptProcess(apb.InstallProgress):
     def error(self, errorstr):
         # global_event.emit("action-error", (self.pkg_name, errorstr))
         # log("error: %s" % errorstr)
-        print 'ERROR la !!!'
+        print 'ERROR :' + errorstr
 
     def start_update(self):
         '''Start update.'''
@@ -89,8 +89,8 @@ class AptProcess(apb.InstallProgress):
 class AptDaemon:
 	def __init__(self):
 		self.ca = apt.Cache()
-		# self.ca.update()
-		self.ca.open()
+# 		self.ca.update()
+# 		self.ca.open()
 		self.pkgList = []
 		self.pkgNameList = []
 		for pkg in self.ca:
@@ -101,16 +101,37 @@ class AptDaemon:
 		return self.ca[pkgname]
 
 	def install_pkg(self, pkgname):
+		self.ca.open()
 		pkg = self.get_pkg_by_name(pkgname)
 		pkg.mark_install()
-		self.ca.commit(FetchProcess(), AptProcess())
-		# self.ca.commit()
+		
+		try: 
+			self.ca.commit(FetchProcess(), AptProcess())
+		except Exception, e:
+			print e
+			print "install err"
 
 	def uninstall_pkg(self, pkgname):
+		self.ca.open()
 		pkg = self.get_pkg_by_name(pkgname)
 		pkg.mark_delete()
-		# self.ca.commit(apt.progress.TextFetchProgress(), apt.progress.InstallProgress())
-		self.ca.commit(None, AptProcess())
+		
+		try:
+			self.ca.commit(None, AptProcess())
+		except Exception, e:
+			print e
+			print "uninstall err"
+
+	def update_pkg(self, pkgname):
+		self.ca.open()
+		pkg = self.get_pkg_by_name(pkgname)
+		pkg.mark_update()
+		
+		try:
+			self.ca.commit(FetchProcess(), AptProcess())
+		except Exception, e:
+			print e
+			print "update err"
 
 	def get_pkgs_name_list(self):
 		return self.pkgNameList
@@ -127,13 +148,35 @@ class AptDaemon:
 
 if __name__ == "__main__":
 	ad = AptDaemon()
+	while True:
+		print "\ninput your command: "
+		cmd = raw_input()
+		if cmd == "l":
+			for name in ad.pkgNameList:
+				print name + "\n"
+		elif cmd == "i":
+			print "input pkgName to install: "
+			pkgName = raw_input()
+			ad.install_pkg(pkgName)
+		elif cmd == "n":
+			print "input pkgName to uninstall: "
+			pkgName = raw_input()
+			ad.uninstall_pkg(pkgName)
+		elif cmd == "u":
+			print "input pkgName to update: "
+			pkgName = raw_input()
+			ad.update_pkg(pkgName)
+		else:
+			print "nothing..."
+
+	print ad.get_pkg_by_name('gedit')
 	# pnl = ad.getpkglist()
 	# print len(pnl)
-	name1 = ad.search_pkgs_name('wesnoth-1.10-core')
-	print name1
+# 	name1 = ad.search_pkgs_name('wesnoth-1.10-core')
+# 	print name1
 	# print 'aaa' + str(1)
 # 	ad.install_pkg(name1)
-	ad.uninstall_pkg(name1)
+# 	ad.uninstall_pkg(name1)
 	# p = ad.get_pkg_by_name(name1)
 	# print p.id
 	# c = AptCache()
