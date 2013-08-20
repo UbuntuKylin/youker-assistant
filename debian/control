@@ -16,7 +16,6 @@ Vcs-Bzr: https://code.launchpad.net/~ubuntukylin-members/youker-assistant/trunk
 
 Package: youker-assistant
 Architecture: any
-Multi-Arch: same
 Depends: libphonon-dev,
          python,
          python-dbus,
