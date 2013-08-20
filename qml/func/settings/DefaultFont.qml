@@ -89,6 +89,7 @@ Rectangle {
                 defaultfontpage.monospace_font_flag = true;
                 monofont.text = sessiondispatcher.get_monospace_font_qt();
             }
+
             else if (font_style == "font_default") {
                 defaultfontpage.current_font_flag = false;
                 sysfont.text = sessiondispatcher.get_font_qt();
@@ -383,6 +384,8 @@ Rectangle {
             onClicked: {
                 sessiondispatcher.set_font_zoom_qt(slider.value);
                 statusImage.visible = true;
+                if (defaultfontpage.zoom != sessiondispatcher.get_font_zoom_qt())
+                    defaultfontpage.zoom_flag = true
             }
         }
         Common.Button {
@@ -395,6 +398,7 @@ Rectangle {
                 if(defaultfontpage.zoom_flag == true) {
                     defaultfontpage.zoom_flag = false;
                     sessiondispatcher.set_font_zoom_qt(defaultfontpage.zoom);
+                    slider.value = defaultfontpage.zoom;
                     statusImage.visible = true;
                 }
                 else

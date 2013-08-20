@@ -312,6 +312,7 @@ Rectangle {
                                     wrapper.ListView.view.currentIndex = index;
                                     soundeffectspage.selectedmusic = systemdispatcher.show_file_dialog("soundeffects");
                                     systemdispatcher.get_music_path(soundeffectspage.selectedmusic);
+                                    systemdispatcher.set_homedir_qt();
                                     systemdispatcher.replace_sound_file_qt(soundeffectspage.selectedmusic, split_music_name(musicname));
                                 }
                             }
