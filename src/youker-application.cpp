@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -56,83 +59,70 @@ inline bool isRunningInstalled() {
 
 inline QString getAppDirectory() {
     if (isRunningInstalled()) {
-        qDebug() << "1111111";
         qDebug() << QCoreApplication::applicationDirPath();
         return QString("/usr/share/youker-assistant/qml/");
-//        return QString("/usr/share/youker-assistant/qml/main.qml");//0720
+//        return QString("/usr/share/youker-assistant/qml/main.qml");
     } else {
-        qDebug() << "22222222";
-//        qDebug() << QCoreApplication::applicationDirPath() + "/../qml/main.qml";
 //        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");//0720
         return QString(QCoreApplication::applicationDirPath() + "/../qml/");
     }
 }
 
+bool IhuApplication::setup(/*QString str*/)
+{
+//    if (str == "SessionDaemon") {
+//        qDebug() << "SessionDaemon000";
+//    }
+//    else {
+//        qDebug() << "SessionDaemon111";
+////        QProcess *process_session = new QProcess;
+////        process_session->start("/usr/bin/youkersession");
+//        int b = system("/usr/bin/youkersession &");
+//        qDebug() << b;
+//        qDebug() << "SessionDaemon222";
+//    }
 
-//QString IhuApplication::get_dbus_method_value() {
-//    system1iface = new QDBusInterface("com.ubuntukylin.Password",
-//                               "/",
-//                                "com.ubuntukylin.Password",
-//                               QDBusConnection::systemBus());
-////    qDebug() << system1iface->property("DaemonVersion");//QVariant(QString, "0.6.29")
-//    QDBusReply<QString> reply = system1iface->call("auth_password");
-//    qDebug() << reply.value();
-//    return reply.value();
-//}
 
-//void IhuApplication::judge_process(QString flagstr, QString pwd) {
-//    int value = 0;
-//    QString str = "";
-//    FILE *stream;
-//    char buf[64];
-//    memset(buf, '\0', sizeof(buf));
-//    QString cmd = "ps -ef | grep " + flagstr + " | grep -v grep | wc -l";
-//    QByteArray ba = cmd.toLatin1();
-//    const char *str_cmd = ba.data();
-////    stream = popen("ps -ef | grep " + str_flag + " | grep -v grep | wc -l", "r" );
-//    stream = popen(str_cmd, "r" );
-//    fread(buf, sizeof(char), sizeof(buf), stream);
-//    str = QString(buf);
-//    value = str.toInt();
-//    if (value == 0) {
-//        qDebug() << "1234567";
-//        QProcess *process = new QProcess;
-//        if (flagstr == "youkersession") {
-//            qDebug() << "001";
-//            process->start("/usr/bin/" + flagstr);
+
+
+//    bool debug_flag = false;
+//    //debug source
+//    if (!debug_flag) {
+//        if (str == "SessionDaemon") {
+//            qDebug() << "SessionDaemon000";
 //        }
 //        else {
-//            qDebug() << "002";
-//            process->start("/usr/bin/" + flagstr + " " + pwd);
+//            qDebug() << "SessionDaemon111";
+////            QProcess *process_session = new QProcess;
+////            process_session->start("/usr/bin/youkersession");
+//            int b = system("/usr/bin/youkersession");
+//            qDebug() << b;
+//            qDebug() << "SessionDaemon222";
 //        }
 //    }
-//    else
-//        qDebug() << "123456789";
-//    pclose(stream);
-//}
-
-bool IhuApplication::setup(QString str)
-{
-
-    bool debug_flag = false;
-    //debug source
-    if (!debug_flag) {
-        if (str == "SessionDaemon") {
-            qDebug() << "SessionDaemon6789";
-        }
-        else {
-            qDebug() << "SessionDaemon5678";
-            QProcess *process_session = new QProcess;
-            process_session->start("/usr/bin/youkersession");
-            qDebug() << "56789";
-        }
-
+//    //run deb package
+//    else {
+//        AuthDialog *dialog = new AuthDialog;
+//        dialog->exec();
 
 //        int value = 0;
 //        QString str = "";
+//        FILE *stream_system;
 //        char buf[64];
 //        memset(buf, '\0', sizeof(buf));
+//        stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
+//        fread(buf, sizeof(char), sizeof(buf), stream_system);
+//        str = QString(buf);
+//        value = str.toInt();
+//        if (value == 0) {
+//            QProcess *process_system = new QProcess;
+//            process_system->start("/usr/bin/youkersystem " + passwd);
+//        }
+//        pclose(stream_system);
+
+
 //        FILE *stream_session;
+//        memset(buf, '\0', sizeof(buf));
 //        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
 //        fread(buf, sizeof(char), sizeof(buf), stream_session);
 //        str = QString(buf);
@@ -147,101 +137,7 @@ bool IhuApplication::setup(QString str)
 //            qDebug() << "67890";
 //        memset(buf, '\0', sizeof(buf));
 //        pclose(stream_session);
-    }
-    //run deb package
-    else {
-        AuthDialog *dialog = new AuthDialog;
-        dialog->exec();
-        qDebug() << "passwd111";
-        qDebug() << passwd;
-        qDebug() << "passwd222";
-
-        int value = 0;
-        QString str = "";
-        FILE *stream_system;
-        char buf[64];
-        memset(buf, '\0', sizeof(buf));
-        stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
-        fread(buf, sizeof(char), sizeof(buf), stream_system);
-        str = QString(buf);
-        value = str.toInt();
-        if (value == 0) {
-            qDebug() << "1234567";
-            QProcess *process_system = new QProcess;
-            process_system->start("/usr/bin/youkersystem " + passwd);
-        }
-        else
-            qDebug() << "123456789";
-        pclose(stream_system);
-
-
-        FILE *stream_session;
-        memset(buf, '\0', sizeof(buf));
-        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
-        fread(buf, sizeof(char), sizeof(buf), stream_session);
-        str = QString(buf);
-        value = str.toInt();
-        if (value == 0) {
-            qDebug() << "6789";
-            QProcess *process_session = new QProcess;
-            process_session->start("/usr/bin/youkersession");
-            qDebug() << "56789";
-        }
-        else
-            qDebug() << "67890";
-        memset(buf, '\0', sizeof(buf));
-        pclose(stream_session);
-    }
-
-
-
-
-
-
-
-
-
-//    int a = system("/home/kobe/ps");
-//    qDebug() << "a->";
-//    qDebug() << a;
-
-//    int value = 0;
-//    QString str = "";
-//    FILE *stream_system;
-//    char buf[64];
-//    memset(buf, '\0', sizeof(buf));
-//    stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
-//    fread(buf, sizeof(char), sizeof(buf), stream_system);
-//    str = QString(buf);
-//    value = str.toInt();
-//    if (value == 0) {
-//        qDebug() << "1234567";
-//        QProcess *process_system = new QProcess;
-//        process_system->start("/usr/bin/youkersystem " + passwd);
 //    }
-//    else
-//        qDebug() << "123456789";
-//    pclose(stream_system);
-
-
-//    FILE *stream_session;
-//    memset(buf, '\0', sizeof(buf));
-//    stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
-//    fread(buf, sizeof(char), sizeof(buf), stream_session);
-//    str = QString(buf);
-//    value = str.toInt();
-//    if (value == 0) {
-//        qDebug() << "6789";
-//        QProcess *process_session = new QProcess;
-//        process_session->start("/usr/bin/youkersession");
-//        qDebug() << "56789";
-//    }
-//    else
-//        qDebug() << "67890";
-//    memset(buf, '\0', sizeof(buf));
-//    pclose(stream_session);
-
-
 
     IhuApplication::setApplicationName("Youker Assistant");
     viewer = new QDeclarativeView;

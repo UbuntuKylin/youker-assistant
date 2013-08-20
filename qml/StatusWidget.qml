@@ -27,11 +27,6 @@ Rectangle {
     property string updateTime: "2012-06-01"
     property string status: "检查更新"
 
-//    Image {
-//        id: bgImg
-//        anchors.fill: parent
-//        source: "./img/skin/titlebar.png"
-//    }
     Row {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
@@ -46,33 +41,7 @@ Rectangle {
             font.pixelSize: 12
             text: qsTr("主程序版本:" + version)
         }
-//        Text {
-//            color: "white"
-//            font.pointSize: 10
-//            text: qsTr("备用木马库:" + updateTime)
-//        }
-//        Text {
-//            color: "white"
-//            font.pointSize: 10
-//            text: qsTr(status)
-//        }
-
     }
-
-//    Row {
-//        anchors.verticalCenter: parent.verticalCenter
-//        anchors.right: parent.right
-//        anchors.rightMargin: 10
-//        spacing: 5
-//        Image {
-//            source: "./img/icons/tool-hover.png"
-//        }
-//        Text {
-//            color: "white"
-//            font.pixelSize: 12
-//            text: qsTr("我的工具箱")
-//        }
-//    }
 
     MouseArea {
           id: mouseRegion

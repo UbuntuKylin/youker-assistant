@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -22,6 +25,7 @@
 #include <QString>
 #include "messagedialog.h"
 #include "warningdialog.h"
+#include "restartdialog.h"
 #include <QDesktopWidget>
 #include <QDeclarativeContext>
 #include <QFontDialog>
@@ -36,9 +40,81 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
+    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
+    QObject::connect(sessioniface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     notify_str = "";
     page_num = 0;
+
 }
+
+void SessionDispatcher::handler_clear_rubbish(QString msg)
+{
+    qDebug() << "signal coming1111111111111111";
+     emit finishCleanWork(msg);
+    qDebug() << "signal coming2222222222222";
+}
+void SessionDispatcher::clean_cookies_records_qt(QStringList strlist) {
+//    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
+    qDebug() << "1111";
+    qDebug() << strlist;
+    sessioniface->call("clean_cookies_records", strlist);
+    qDebug() << "222222";
+}
+void SessionDispatcher::clean_history_records_qt() {
+//    QDBusReply<void> reply = systemiface->call("clean_history_records");
+    sessioniface->call("clean_history_records");
+}
+
+
+//void SessionDispatcher::clean_package_cruft_qt(QStringList strlist) {
+////    QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
+//    sessioniface->call("clean_package_cruft", strlist);
+//}
+//void SessionDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
+////    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist, str);
+//    sessioniface->call("clean_file_cruft", strlist, str);
+//}
+
+void SessionDispatcher::handler_scan_rubbish(QString msg)
+{
+    emit finishScanWork(msg);
+}
+void SessionDispatcher::exit_qt()
+{
+    sessioniface->call("exit");
+}
+
+int SessionDispatcher::scan_history_records_qt() {
+    QDBusReply<int> reply = sessioniface->call("scan_history_records");
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_of_same", abspath);
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_of_large_qt(QString abspath) {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", abspath);
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_cookies_records_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_records");
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_unneed_packages_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_unneed_packages");
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_apt_cruft_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_apt_cruft");
+    return reply.value();
+}
+QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
+    return reply.value();
+}
+
+
+
 
 QString SessionDispatcher::get_home_path() {
     QString homepath = QDir::homePath();
@@ -63,7 +139,6 @@ void SessionDispatcher::get_system_message_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         myinfo = value;
-//        qDebug() << myinfo;
     }
     else {
         qDebug() << "get pc_message failed!";
@@ -94,6 +169,18 @@ void SessionDispatcher::create_checkscreendialog() {
 //------------------------------------
 
 //----------------warning dialog--------------------
+void SessionDispatcher::send_restartdialog_msg() {
+    create_restartdialog();
+}
+void SessionDispatcher::create_restartdialog() {
+
+    RestartDialog *dialog = new RestartDialog();
+    dialog->exec();
+//    dialog->setModal(true);
+//    dialog->show();
+}
+
+
 void SessionDispatcher::send_warningdialog_msg(QString title, QString content) {
     create_warningdialog(title, content);
 }
@@ -129,33 +216,9 @@ QString SessionDispatcher::get_value(QString key)
 }
 
 QString SessionDispatcher::show_signal(QString msg) {
-    qDebug() << "*****signal******";
     qDebug() << msg;
     return msg;
 }
-
-//void SessionDispatcher::create_dialog(QString mode) {
-//    if (mode == "modal") {
-////        qDebug() << "555555555555";
-//        ModalDialog *dialog = new ModalDialog;
-////        qDebug() << "6666666666666";
-////        qDebug() << "77777777777";
-//        dialog->setModal(true);
-//        dialog->show();
-////        qDebug() << "888888888888888";
-//    }
-//    else if (mode == "modeless") {
-////        qDebug() << "555555555555";
-//        ModelessDialog *dialog = new ModelessDialog;
-//        dialog->show();
-//        dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
-////        qDebug() << "6666666666666";
-//    }
-
-//}
-
-
-
 
 bool SessionDispatcher::set_launcher(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_launcher_autohide", flag);
@@ -164,26 +227,19 @@ bool SessionDispatcher::set_launcher(bool flag) {
 
 QStringList SessionDispatcher::get_themes() {
     QDBusReply<QStringList> reply = sessioniface->call("get_sys_themes");
-    if (reply.isValid()) {
-        QStringList value = reply.value();
-//        myinfo = value;
-        qDebug() << value;
-        return reply.value();
-    }
-    else {
-        qDebug() << "get thems msg1 failed!";
-    }
+    return reply.value();
+//    if (reply.isValid()) {
+//        QStringList value = reply.value();
+//        return reply.value();
+//    }
+//    else {
+//        qDebug() << "get thems msg1 failed!";
+//    }
 }
 
 
 void SessionDispatcher::set_theme(QString theme) {
     QDBusReply<void> reply = sessioniface->call("set_sys_theme", theme);
-}
-
-
-void SessionDispatcher::new_object_test() {
-//    delete this->qtui;
-//    this->qtui = new QUIBO();
 }
 
 /*-----------------------------desktop of beauty-----------------------------*/
@@ -269,8 +325,6 @@ bool SessionDispatcher::get_launcher_have_showdesktopicon_qt() {
 /*-----------------------------theme of beauty-----------------------------*/
 QStringList SessionDispatcher::get_themes_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_themes");
-//    qDebug() << "1234567890";
-//    qDebug() << reply.value();
     return reply.value();
 }
 
@@ -394,12 +448,6 @@ void SessionDispatcher::show_font_dialog(QString flag) {
     const QFont& font = QFontDialog::getFont(&ok, 0);
     if(ok)
     {
-        qDebug() << "OK-----------";
-//        qDebug() << font.family(); //"Ubuntu"
-//        qDebug() << font.styleName();//"Light"
-//        qDebug() << font.pointSizeF();//11
-//        qDebug() << font.pointSize();//11
-//        qDebug() << QString(font.pointSize());//11
         QString fontsize = QString("%1").arg(font.pointSize());
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
         qDebug() << fontstyle;
@@ -416,21 +464,9 @@ void SessionDispatcher::show_font_dialog(QString flag) {
 
         emit finishSetFont(flag); //font_style
     }
-    else
-        qDebug() << "Quit-----------";
-
 }
 
 void SessionDispatcher::show_color_dialog() {
-//    QColorDialog *dialog = new QColorDialog;
-//    QColor color;
-//    color = QColorDialog::getColor(Qt::green, dialog, "Select Color", QColorDialog::DontUseNativeDialog);
-//    dialog->setPalette(QPalette(color));
-//    dialog->show();
-
-
-//    QPalette palette = displayTextEdit->palette();
-//    const QColor& color = QColorDialog::getColor(palette.color(QPalette::Base), this);
     const QColor& color = QColorDialog::getColor(Qt::white, 0);
     if(color.isValid())
     {

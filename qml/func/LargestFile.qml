@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -16,7 +19,7 @@
 
 
 import QtQuick 1.1
-//import SessionType 0.1
+import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 
@@ -53,7 +56,8 @@ Item {
 
 
     function refresh_page() {
-        var largestfile_data = systemdispatcher.scan_of_large_qt(root.directory);
+//        var largestfile_data = systemdispatcher.scan_of_large_qt(root.directory);
+        var largestfile_data = sessiondispatcher.scan_of_large_qt(root.directory);
         if (largestfile_data == "")
             root.null_flag = true;
         else
@@ -87,48 +91,6 @@ Item {
                              {"subItemTitle": "Cookies4"}]
                          })
     }
-
-//    signal largestfile_signal(string largestfile_msg);
-//    onLargestfile_signal: {
-//        if (largestfile_msg == "LargestFileWork") {
-//            //get data of largestfile
-////            var largestfile_data = systemdispatcher.scan_of_large_qt("/home/kobe");
-//            var largestfile_data = systemdispatcher.scan_of_large_qt(root.directory);
-//            if (largestfile_data == "")
-//                root.null_flag = true;
-//            else
-//                root.null_flag = false;
-//            root.sub_num = largestfile_data.length;
-//            systemdispatcher.clear_largestfile_args();
-//            subModel.clear();
-//            var num = 0;
-//            for (var i=0; i< largestfile_data.length; i++) {
-////                console.log(unneed_data[i]);//linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
-//                var splitlist = largestfile_data[i].split("<2_2>");
-//                if (splitlist[0] == "") {
-//                    num++;
-//                }
-//                else {
-//                    subModel.append({"itemTitle": splitlist[0] + "字节", "desc": splitlist[1]});
-//                    systemdispatcher.set_largestfile_args(splitlist[1]);
-//                }
-//            }
-//            root.sub_num -= num;
-//            mainModel.clear();
-//            console.log(systemdispatcher.get_largestfile_args());
-//            mainModel.append({"itemTitle": "清理最大文件",
-//                             "picture": "../img/toolWidget/deb-min.png",
-//                             "detailstr": "清理用户指定目录下的最大文件，节省磁盘空间",
-//                             "flags": "clear_largestfile",
-//                            "attributes":
-//                                 [{"subItemTitle": "Cookies1"},
-//                                 {"subItemTitle": "Cookies2"},
-//                                 {"subItemTitle": "Cookies3"},
-//                                 {"subItemTitle": "Cookies4"}]
-//                             })
-//        }
-//    }
-
 
 
     ListModel {
@@ -167,13 +129,9 @@ Item {
 
 //         }
         onFinishCleanWork: {
-//            console.log("33333333333333");
 //            console.log(msg);//apt software   package   history   cookies
-//            console.log(btn_flag);
             if (btn_flag == "largestfile_work") {
                 if (msg == "largestfile") {
-                    console.log("******Clear Signal handler received  Start package_work******");
-    //                 console.log(msg);
                     root.work_result = msg;
                     root.state = "LargestFileWorkFinish";
                 }
@@ -183,13 +141,8 @@ Item {
 
 //    //背景
     Image {
-        source: "../img/skin/bg-onekey.png"
+        source: "../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
-//        anchors {
-//            fill: parent
-//            left: parent.left
-//            leftMargin: -2
-//        }
     }
 
 
@@ -212,8 +165,6 @@ Item {
         }
         Column {
             anchors.verticalCenter: parent.verticalCenter
-//            anchors.left: parent.left
-//            anchors.leftMargin: 30
             spacing: 10
             Text {
                 text: root.title
@@ -261,7 +212,6 @@ Item {
                 if (root.directory == "")
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
                 else {
-                    console.log("largestfile_work---------------");
                     if(root.null_flag == true) {
                        root.state = "LargestFileWorkEmpty";
                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
@@ -269,50 +219,27 @@ Item {
                     else if(root.null_flag == false) {
                         console.log(systemdispatcher.get_largestfile_args());
                         systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                         root.state = "LargestFileWorkFinish";
                     }
                 }
-//                 if (btn_flag == "largestfile_scan") {
-//                     console.log("largestfile_scan---------------");
-//                     if (root.directory == "")
-//                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
-//                     else {
-//                         largestfile_signal("LargestFileWork");
-//                         if(root.null_flag == true)
-//                            root.state = "LargestFileWorkEmpty";
-//                         else if(root.null_flag == false)
-//                            root.state = "LargestFileWork";
-//                     }
-//                 }
-//                 else if (btn_flag == "largestfile_work") {
-//                     console.log("largestfile_work---------------");
-//                     console.log(systemdispatcher.get_largestfile_args());
-//                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-//                 }
             }
         }
     }
     //分割条
     Rectangle {
         id: splitbar
-        anchors.top: titlebar.bottom
-        anchors.topMargin: 18
-        width: parent.width-2
+        anchors {
+            top: titlebar.bottom
+            topMargin: 18
+            left: parent.left
+            leftMargin: 2
+        }
+        width: parent.width - 4
         height: 1
         color: "#b9c5cc"
     }
 
-//    ItemListModel {
-//        id: pluginlist
-//        anchors.top: titlebar.bottom
-//        anchors.topMargin: 20
-//        height: parent.height -titlebar.height - 40
-//        listmodel: root.listmodel
-//        submodel: root.submodel
-//        num: root.sub_num
-//        btn_flag: root.btn_flag
-//    }
-    //----------------------------
     Component {
         id: listViewDelegate
         Item {
@@ -431,7 +358,7 @@ Item {
                         model: subModel
 //                        model: mysubmodel
                         width: subItemsRect.width
-                        /*Common.*/ListItem {
+                        ListItem {
                             id: subListItem
                             width: root.width
                             height: subItemsRect.itemHeight
@@ -486,48 +413,19 @@ Item {
             }
         }//Item
     }//ScrollArea
-    //----------------------------
 
-//    //status picture
-//    Image {
-//        id: statusImage
-//        source: "../img/toolWidget/unfinish.png"
-//        fillMode: "PreserveAspectFit"
-//        smooth: true
-//        anchors {
-//            top: parent.top; topMargin: 120
-//            left: parent.left; leftMargin: 650
-//        }
-//    }
 
     states: [
-//        State {
-//            name: "LargestFileWork"
-//            PropertyChanges { target: label; visible: true; text: "largestfile扫描完成"}
-////            PropertyChanges { target: bitButton; text: "开始清理" }
-//            PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
-//            PropertyChanges { target: root; btn_flag: "largestfile_work" }
-//        },
         State {
             name: "LargestFileWorkAgain"
-//            PropertyChanges { target: label; visible: false}
-//            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
-//            PropertyChanges { target: root; btn_flag: "largestfile_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/unfinish.png"}
         },
         State {
             name: "LargestFileWorkFinish"
-//            PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-//            PropertyChanges { target: bitButton; text: "开始扫描" }
-//            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
-//            PropertyChanges { target: root; btn_flag: "largestfile_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         },
         State {
             name: "LargestFileWorkEmpty"
-//            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
-//            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
-//            PropertyChanges { target: root; btn_flag: "largestfile_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         }
     ]

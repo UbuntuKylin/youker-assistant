@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -28,10 +31,10 @@ Item {
         anchors.fill: parent
         source: "../img/skin/bg-middle-tab.png"
     }
-
     Common.Tabs {
         id: tabs
         width: parent.width; height: 435
+
         Common.Tab {
             title: qsTr("一键清理")
             anchors.fill: parent

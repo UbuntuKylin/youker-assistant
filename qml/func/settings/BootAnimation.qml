@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -15,7 +18,6 @@
  */
 
 import QtQuick 1.1
-//import RegisterMyType 0.1
 //import SessionType 0.1
 import SystemType 0.1
 import "../common" as Common
@@ -33,13 +35,13 @@ Rectangle {
 //    property SessionDispatcher dis: sessiondispatcher
     property SystemDispatcher dis: systemdispatcher
     property string image_path: ""
-    property string actiontitle: "开机动画设置"
+    property string actiontitle: "开机动画设置(目前仅支持png图片格式，不支持以中文命名的图片)"
     property string actiontext: "点击“自定义图片”按钮选择您需要添加到列表中的图片，在列表中选中您要设置的图片名称，点击“确定”按钮完成设置。"
     property int num: 0
     property string selectedimage: ""
     //背景
     Image {
-        source: "../../img/skin/bg-left.png"
+        source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
     Component.onCompleted: {
@@ -66,10 +68,7 @@ Rectangle {
         onAddBootImage: {
             systemdispatcher.plymouth_init_check_qt();
             var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
-            console.log("abaababab.........");
-//            console.log(plymouth_list);
             bootimagepage.num = plymouth_list.length;
-            console.log(bootimagepage.num);
             mainModel.clear();
             for(var i=0; i < plymouth_list.length; i++) {
                 mainModel.append({"itemTitle": plymouth_list[i]});
@@ -78,31 +77,30 @@ Rectangle {
         }
     }
 
-
-
-//    Connections {
-//        target: toolBar
-//        //按下确定按钮
-//        onOkBtnClicked: {
-//            if (settigsDetails.setTitle == "BootAnimation") {
-//                console.log(bootimagepage.selectedimage);
-//                systemdispatcher.custom_plymouth_bg_qt(bootimagepage.selectedimage);
-//            }
-//        }
-
-//    }
     Column {
         spacing: 10
         anchors.top: parent.top
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Text {
-             text: bootimagepage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
+        Row {
+            spacing: 50
+            Text {
+                 text: bootimagepage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: bootimagepage.actiontext
              font.pixelSize: 12
@@ -294,8 +292,6 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            console.log("aaaaaaaaa->");
-            console.log(num);
             if (num == 0)
                 pageStack.push(homepage)
             else if (num == 3)
@@ -308,12 +304,8 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("返回")
-//            button2Label: qsTr("确定")
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            console.log("bbbbbbbbbbb->");
-            console.log(num);
             if (num == 0)
                 pageStack.push(homepage)
             else if (num == 3)
@@ -322,174 +314,12 @@ Rectangle {
                 pageStack.push(functioncollection)
         }
         onOkBtnClicked: {
-            console.log("boot ok");
-            console.log(bootimagepage.selectedimage);
             systemdispatcher.custom_plymouth_bg_qt(bootimagepage.selectedimage);
+            statusImage.visible = true;
         }
+        Timer {
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: statusImage.visible = false
+             }
     }
 }
-
-
-
-//Rectangle {
-//    id: lancherpage
-//    property bool on: true
-//    width: parent.width
-//    height: 460
-//    property Dispatcher dis: mydispather
-//    Column {
-//        spacing: 20
-//        anchors.top: parent.top
-//        anchors.topMargin: 30
-//        anchors.left: parent.left
-//        anchors.leftMargin: 30
-
-//        Row {
-//            Label {
-//                id: hidelabel
-//                width: 110
-//                text: qsTr("自动隐藏:")
-//            }
-//            CheckBox {
-//                id: enabledCheck
-//                text: qsTr("开启")
-//                checked: false
-//                onCheckedChanged: {}
-//                onClicked: {
-////                    enabledCheck.checked = !enabledCheck.checked;
-////                    if (enabledCheck.checked == true) {
-//////                        enabledCheck.checked = false;
-////                        enabledCheck.text = qsTr("关闭");
-////                    }
-////                    else if (enabledCheck.checked == false){
-//////                        enabledCheck.checked = true;
-////                        enabledCheck.text = qsTr("开启");
-////                    }
-//                }
-//            }
-
-////            Common.Switch {
-////                id: themeSwitch
-////                anchors.right: parent.right
-////                height: parent.height
-////                spacing: 8
-////                textOn: qsTr("On")
-////                textOff: qsTr("Off")
-////                fontColor: "#666666"
-////                onSwitched: lancherpage.on = position
-//////                id: switchLauncher
-////////                checked: false
-//////                x: 130
-////////                onClicked: {
-////////                    //kobe: wait for adding function
-////////                    mydispather.set_launcher(switchLauncher.checked)
-////////                }
-////            }
-//        }
-
-//        Row {
-//            Label {
-//                id: sizelabel
-//                width: 110
-//                text: qsTr("图标大小:")
-//            }
-//            Slider {
-//                id: slider
-//                x: 130
-////                function formatValue(v) { return v.toFixed(2) }
-//                minimumValue: 0
-//                maximumValue: 100
-//                value: 0
-////                live: true
-////                onTouched: {
-////                    console.log(slider.value)
-////                }
-//            }
-//        }
-
-//        Row {
-//            Label {
-//                id: locationlabel
-//                width: 110
-//                text: qsTr("位置:")
-//            }
-//            RadioButton {
-//                id: radioleft
-//                x: 130
-////                text: "靠左"
-//            }
-//        }
-
-//        Row {
-//            Label {
-//                id: inputlabel1
-//                width: 110
-//                text: qsTr("输入用户名:")
-//            }
-//            TextField {
-//                id: textfield1
-//                placeholderText: qsTr("put your username")
-//                echoMode: TextInput.Normal
-////                hasClearButton: true
-//                width: 200
-//                onTextChanged: {
-//                    //kobe: wait for adding function
-//                    console.log(textfield1.text)
-//                }
-//            }
-//        }
-
-//        Row {
-//            Label {
-//                id: inputlabel2
-//                width: 110
-//                text: qsTr("输入密码:")
-//            }
-//            TextField {
-//                id: textfield2
-//                placeholderText: qsTr("put your password")
-////                hasClearButton: true
-//                echoMode: TextInput.Password
-//                width: 200
-//                onTextChanged: {
-//                    //kobe: wait for adding function
-//                    console.log(textfield2.text)
-//                }
-
-//            }
-//        }
-
-//        Row {
-//            Label {
-//                id: progresslabel
-//                width: 110
-//                text: qsTr("进度显示:")
-//            }
-//            ProgressBar {
-//                id: progressbar
-////                indeterminate: true
-//                value: 24
-//                minimumValue: 0
-//                maximumValue: 100
-
-//            }
-//        }
-
-//        Row {
-//            Label {
-//                id: modelabel
-//                width: 110
-//                text: qsTr("模式:")
-//            }
-//            ComboBox {
-//                id: combobox
-//                x: 110
-////                titel1: "111111111"
-////                titel2: "222222222"
-////                titel3: "333333333"
-////                flags: "launcher"
-//            }
-
-//        }
-//    }
-//}

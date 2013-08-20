@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=com.ubuntukylin.Ihu
-Exec=/usr/share/youker-assistant-daemon/src/youker-assistant-systemdbus.py
-User=root

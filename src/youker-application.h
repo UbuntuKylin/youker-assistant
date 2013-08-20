@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -16,13 +19,10 @@
 
 #ifndef SYSTEMAPPLICATION_H
 #define SYSTEMAPPLICATION_H
-
-//#include <QtQuick/QQuickView>
 #include <QDeclarativeView>
 #include <QApplication>
 #include <QMouseEvent>
 #include "QPoint"
-//#include <QtWidgets>
 #include <QBoxLayout>
 #include <QStackedWidget>
 
@@ -35,26 +35,8 @@ class IhuApplication : public QApplication
 public:
     IhuApplication(int &argc, char **argv);
     virtual ~IhuApplication();
-    bool setup(QString str);
+    bool setup(/*QString str*/);
 private:
     QDeclarativeView *viewer;
 };
-
-
-
-//class IhuApplication : public QStackedWidget
-//{
-//    Q_OBJECT
-//public:
-//    explicit IhuApplication(QWidget *parent = 0);
-//    ~IhuApplication();
-//    void mouseMoveEvent(QMouseEvent*event);
-//    void mousePressEvent(QMouseEvent*event);
-
-
-//private:
-//    QDeclarativeView *m_view;
-//    QBoxLayout *hlayout;
-//    QPoint dragPosition;
-//};
 #endif // SYSTEMAPPLICATION_H

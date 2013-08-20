@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -27,38 +30,35 @@ Rectangle {
     property string setbtn_flag: "onekey"
 
     property string get_msg: ""
+    property bool check_flag: true
 
+    signal clicked();   //如果没有选中任何清理项，提示警告框！first page
+    signal clicked1();   //如果没有选中任何清理项，提示警告框！second page
 
     signal send_dynamic_picture(string str);
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork,按钮恢复使能
     Connections{
          target: systemdispatcher
          onFinishCleanWorkMain: {
-            console.log("testing..............");
              console.log(msg);
             if (msg == "") {
-                console.log("testing null..............");
                  menulogo.enabled=true;
              }
              else if (msg == "h") {
-                console.log("testing h..............");
                  menulogo.enabled=true;
              }
              else if (msg == "k") {
-                console.log("testing k..............");
                  menulogo.enabled=true;
              }
              else if (msg == "u") {
-                console.log("testing. u.............");
                  menulogo.enabled=true;
              }
              else if (msg == "c") {
-                console.log("testing. c.............");
                  menulogo.enabled=true;
              }
 
-            }
-     }
+        }
+    }
 
 
     Image {
@@ -75,32 +75,8 @@ Rectangle {
     MouseArea {
         hoverEnabled: true
         anchors.fill: parent
-//        onEntered: {
-////            btnImg.source = "../img/toolWidget/menu_hover.png"
-//            if (menulogo.setbtn_flag == "onekey")
-//                btnImg.source = "../img/icons/onekeyBtn-hover.png"
-//            else if (menulogo.setbtn_flag == "set")
-//                btnImg.source = "../img/icons/set-hover.png"
-//            else if (menulogo.setbtn_flag == "message")
-//                btnImg.source = "../img/icons/message-hover.png"
-//        }
-//        onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
-//        //要判断松开是鼠标位置
-//        onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
-//        onExited: btnImg.source = ""
-//        onClicked: {
-//            if (setbtn_flag == "onekey") {
-//                console.log("onekey clicked....");
-////                systemdispatcher.scan_by_one_key_qt();
-//            }
-//            else if (setbtn_flag == "set")
-//                console.log("set clicked....");
-//            else if (setbtn_flag == "message")
-//                console.log("message clicked....");
-//        }
 
         onEntered: {
-//            btnImg.source = "../img/toolWidget/menu_hover.png"
             if (menulogo.setbtn_flag == "onekey")
                 btnImg.source = "../img/icons/onekeyBtn-hover.png"
             else if (menulogo.setbtn_flag == "smallonekey")
@@ -115,82 +91,57 @@ Rectangle {
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
-            if (setbtn_flag == "onekey") {
-                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-                    console.log("111");
-                    console.log("onekey clicked....");
-                    console.log(systemdispatcher.get_onekey_args());
-                    console.log("222");
-                    send_dynamic_picture("onekey");
-                    console.log("333");
-                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                    console.log("444");
-                    btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
-                    console.log("555");
-//                    menulogo.enabled=false;
-                }
-                else {
-                    console.log("666");
-                    var value4 = systemdispatcher.setup();
-                    console.log("value4->");
-                    console.log(value4);
-                    if(value4) {
-                        console.log("777");
+            menulogo.clicked();    //如果没有选中任何清理项，提示警告框,发出信号...
+            if(check_flag)
+            {
+                if (setbtn_flag == "onekey") {
+                    if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
                         send_dynamic_picture("onekey");
                         systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                        btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
                         menulogo.enabled=false;
                     }
                     else {
-                        console.log("888");
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","服务正在启动，请点击“确定”按钮后再次执行您的操作！");
+                        var value4 = systemdispatcher.setup();
+                        if(value4) {
+                            send_dynamic_picture("onekey");
+                            systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                            btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
+                            menulogo.enabled=false;
+                        }
+                        else {
+                            sessiondispatcher.send_restartdialog_msg();
+                        }
                     }
                 }
-//                console.log("onekey clicked....");
-//                console.log(systemdispatcher.get_onekey_args());
-//                send_dynamic_picture("onekey");
-//                systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-//                btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
-//                menulogo.enabled=false;
+                else if (setbtn_flag == "smallonekey") {
+//                    if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
+//                        systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args2());
+//                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
+//                        menulogo.enabled=false;
+//                    }
+//                    else{
+//                    var value4 = systemdispatcher.setup();
+//                        if(value4) {
+                        systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
+                        btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                        menulogo.enabled=false;
+//                        }
+//                        else {
+//                            sessiondispatcher.send_restartdialog_msg();
+//                        }
+//                    }
+
+                }
+                else if (setbtn_flag == "set")
+                    console.log("set clicked....");
+                else if (setbtn_flag == "message")
+                    console.log("message clicked....");
             }
-            else if (setbtn_flag == "smallonekey") {
-                console.log("smallonekey clicked....");
-                systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
-                btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
-                menulogo.enabled=false;
-            }
-            else if (setbtn_flag == "set")
-                console.log("set clicked....");
-            else if (setbtn_flag == "message")
-                console.log("message clicked....");
+            else
+                sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
         }
 
 
-
     }
-
-
-
-//    states: [
-//        State {
-//            name: "StatusOne"
-//            PropertyChanges { target: toolImg; source: "../img/icons/onekey1.png"}
-//        },
-//        State {
-//            name: "StatusTwo"
-//            PropertyChanges { target: toolImg; source: "../img/icons/onekey3.png"}
-//        },
-//        State {
-//            name: "StatusThree"
-//            PropertyChanges { target: toolImg; source: "../img/icons/onekey5.png"}
-//        },
-//        State {
-//            name: "StatusFour"
-//            PropertyChanges { target: toolImg; source: "../img/icons/onekey7.png"}
-//        },
-//        State {
-//            name: "StatusFive"
-//            PropertyChanges { target: toolImg; source: "../img/icons/onekeyover.png"}
-//        }
-//    ]
 }

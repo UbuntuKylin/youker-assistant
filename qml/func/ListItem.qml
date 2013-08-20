@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 import QtQuick 1.1
 import "common" as Common
 Item {
@@ -51,36 +69,9 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: 30
         onCheckedChanged: {
-//            if (checkbox.checked) {
-//                var mylist = systemdispatcher.get_package_args();
-//                console.log("ok change............");
-//                var word_flag = "false";
-//                for (var i=0; i<mylist.length; i++) {
-//                    if (mylist[i] == container.text) {
-//                        word_flag = "true";
-//                        break;
-//                    }
-//                }
-//                if (word_flag == "false") {
-//                    console.log("no word_flag");
-//                    systemdispatcher.set_package_args(container.text);
-////                    console.log(systemdispatcher.get_package_args());
-//                }
-//                else
-//                    console.log("have word_flag");
-//            }
-//            else if (!checkbox.checked) {
-//                console.log("no change...........");
-////                console.log(systemdispatcher.get_package_args());
-//                systemdispatcher.del_package_args(container.text);
-////                console.log(container.text);
-////                console.log(systemdispatcher.get_package_args());
-//            }
-
             if (checkbox.checked) {
                 if (btn_flag == "apt_work" || btn_flag == "apt_scan") {
                     var aptlist = systemdispatcher.get_apt_args();
-                    console.log("ok change............");
                     var word_flag = "false";
                     for (var i=0; i<aptlist.length; i++) {
                         if (aptlist[i] == container.text) {
@@ -89,16 +80,11 @@ Item {
                         }
                     }
                     if (word_flag == "false") {
-                        console.log("no word_flag");
                         systemdispatcher.set_apt_args(container.text);
-    //                    console.log(systemdispatcher.get_package_args());
                     }
-                    else
-                        console.log("have word_flag");
                 }
                 else if (btn_flag == "software_work" || btn_flag == "software_scan") {
                     var softwarelist = systemdispatcher.get_software_args();
-                    console.log("ok change............");
                     var word_flag1 = "false";
                     for (var j=0; j<softwarelist.length; j++) {
                         if (softwarelist[j] == container.text) {
@@ -107,18 +93,11 @@ Item {
                         }
                     }
                     if (word_flag1 == "false") {
-                        console.log("no word_flag");
                         systemdispatcher.set_software_args(container.text);
-    //                    console.log(systemdispatcher.get_package_args());
                     }
-                    else
-                        console.log("have word_flag");
-                    console.log(container.text);
-                    console.log(systemdispatcher.get_software_args());
                 }
                 else if (btn_flag == "cookies_work" || btn_flag == "cookies_scan") {
                     var cookieslist = systemdispatcher.get_cookies_args();
-                    console.log("ok change............");
                     var word_flag2 = "false";
                     for (var k=0; k<cookieslist.length; k++) {
                         if (cookieslist[k] == container.text) {
@@ -127,16 +106,11 @@ Item {
                         }
                     }
                     if (word_flag2 == "false") {
-                        console.log("no word_flag");
                         systemdispatcher.set_cookies_args(container.text);
-    //                    console.log(systemdispatcher.get_package_args());
                     }
-                    else
-                        console.log("have word_flag");
                 }
                 else if (btn_flag == "package_work" || btn_flag == "package_scan") {
                     var mylist = systemdispatcher.get_package_args();
-                    console.log("ok change............");
                     var word_flag3 = "false";
                     for (var q=0; q<mylist.length; q++) {
                         if (mylist[q] == container.text) {
@@ -145,35 +119,22 @@ Item {
                         }
                     }
                     if (word_flag3 == "false") {
-                        console.log("no word_flag");
                         systemdispatcher.set_package_args(container.text);
-    //                    console.log(systemdispatcher.get_package_args());
                     }
-                    else
-                        console.log("have word_flag");
-                    console.log(container.text);
-                    console.log(systemdispatcher.get_package_args());
                 }
             }
             else if (!checkbox.checked) {
-                console.log("no change...........");
-//                console.log(systemdispatcher.get_package_args());
                 if (btn_flag == "apt_work" || btn_flag == "apt_scan") {
                     systemdispatcher.del_apt_args(container.text);
                 }
                 else if (btn_flag == "software_work" || btn_flag == "software_scan") {
                     systemdispatcher.del_software_args(container.text);
-                    console.log(container.text);
-                    console.log(systemdispatcher.get_software_args());
                 }
                else if (btn_flag == "cookies_work" || btn_flag == "cookies_scan") {
-
                     systemdispatcher.del_cookies_args(container.text);
                 }
                 else if (btn_flag == "package_work" || btn_flag == "package_scan") {
                     systemdispatcher.del_package_args(container.text);
-                    console.log(container.text);
-                    console.log(systemdispatcher.get_package_args());
                 }
 
             }

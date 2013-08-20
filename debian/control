@@ -1,7 +1,7 @@
 Source: youker-assistant
 Section: gnome
 Priority: optional
-Maintainer: Ubuntu Kylin Team <ubuntukylin-members@list.launchpad.net>
+Maintainer: UbuntuKylin Team <ubuntukylin-members@list.launchpad.net>
 Build-Depends: debhelper (>= 9),
                dh-translations,
                pkg-config,
@@ -20,5 +20,5 @@ Depends: ${shlibs:Depends},
          libphonon-dev,
          python,
          python-dbus,
-Description: Help users to manage system better
- It is aimed at helping all users to manage their linux system conveniently.
+Description: It is a system assistant tool.
+ aimed at helping all users to manage their linux system conveniently.

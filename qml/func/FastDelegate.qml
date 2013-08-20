@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 import QtQuick 1.1
 import "common" as Common
 import SessionType 0.1
@@ -46,14 +64,8 @@ import SessionType 0.1
                         if (checkbox.checked) {
                             //----------------首页一键清理----------------
                             if (pagenum == "first") {
-//                                console.log("首页一键清理 checked true...........");
-//                                console.log(clearflag);
-//                                console.log(titlename);
                                 if (clearflag == "cache") {
-                                    console.log("ture cache is...........");
-                                    console.log(clearflag);
                                     var rubbishlist = systemdispatcher.get_onekey_args();
-                                    console.log("ok change............");
                                     var word_flag = "false";
                                     for (var i=0; i<rubbishlist.length; i++) {
                                         if (rubbishlist[i] == clearflag) {
@@ -66,12 +78,9 @@ import SessionType 0.1
                                         systemdispatcher.set_onekey_args(clearflag);
                                         console.log(systemdispatcher.get_package_args());
                                     }
-                                    else
-                                        console.log("have word_flag");
                                 }
                                 else if (clearflag == "history") {
                                     var historylist = systemdispatcher.get_onekey_args();
-                                    console.log("ok change............");
                                     var word_flag1 = "false";
                                     for (var j=0; j<historylist.length; j++) {
                                         if (historylist[j] == clearflag) {
@@ -84,12 +93,9 @@ import SessionType 0.1
                                         systemdispatcher.set_onekey_args(clearflag);
                                         console.log(systemdispatcher.get_package_args());
                                     }
-                                    else
-                                        console.log("have word_flag");
                                 }
                                 else if (clearflag == "cookies") {
                                     var cookieslist = systemdispatcher.get_onekey_args();
-                                    console.log("ok change............");
                                     var word_flag2 = "false";
                                     for (var k=0; k<cookieslist.length; k++) {
                                         if (cookieslist[k] == clearflag) {
@@ -102,12 +108,9 @@ import SessionType 0.1
                                         systemdispatcher.set_onekey_args(clearflag);
                                         console.log(systemdispatcher.get_package_args());
                                     }
-                                    else
-                                        console.log("have word_flag");
                                 }
                                 else if (clearflag == "unneed") {
                                     var mylist = systemdispatcher.get_onekey_args();
-                                    console.log("ok change............");
                                     var word_flag3 = "false";
                                     for (var q=0; q<mylist.length; q++) {
                                         if (mylist[q] == clearflag) {
@@ -120,20 +123,13 @@ import SessionType 0.1
                                         systemdispatcher.set_onekey_args(clearflag);
                                         console.log(systemdispatcher.get_package_args());
                                     }
-                                    else
-                                        console.log("have word_flag");
                                 }
-                                console.log("-------test first------");
-                                console.log(clearflag);
-                                console.log(systemdispatcher.get_onekey_args());
                             }
 
                             //----------------系统清理页面的一键清理----------------
                             else if (pagenum == "second") {
-                                console.log("second check...........");
                                 if (clearflag == "cache") {
                                     var rubbishlist2 = systemdispatcher.get_onekey_args2();
-                                    console.log("ok change............");
                                     var second_flag = "false";
                                     for (var x=0; x<rubbishlist2.length; x++) {
                                         if (rubbishlist2[x] == clearflag) {
@@ -146,12 +142,9 @@ import SessionType 0.1
                                         systemdispatcher.set_onekey_args2(clearflag);
                                         console.log(systemdispatcher.get_package_args());
                                     }
-                                    else
-                                        console.log("have word_flag");
                                 }
                                 else if (clearflag == "history") {
                                     var historylist2 = systemdispatcher.get_onekey_args2();
-                                    console.log("ok change............");
                                     var second_flag2 = "false";
                                     for (var y=0; y<historylist2.length; y++) {
                                         if (historylist2[y] == clearflag) {
@@ -160,16 +153,12 @@ import SessionType 0.1
                                         }
                                     }
                                     if (second_flag2 == "false") {
-                                        console.log("no word_flag");
                                         systemdispatcher.set_onekey_args2(clearflag);
                                         console.log(systemdispatcher.get_package_args());
                                     }
-                                    else
-                                        console.log("have word_flag");
                                 }
                                 else if (clearflag == "cookies") {
                                     var cookieslist2 = systemdispatcher.get_onekey_args2();
-                                    console.log("ok change............");
                                     var second_flag3 = "false";
                                     for (var z=0; z<cookieslist2.length; z++) {
                                         if (cookieslist2[z] == clearflag) {
@@ -178,12 +167,9 @@ import SessionType 0.1
                                         }
                                     }
                                     if (second_flag3 == "false") {
-                                        console.log("no word_flag");
                                         systemdispatcher.set_onekey_args2(clearflag);
                                         console.log(systemdispatcher.get_package_args());
                                     }
-                                    else
-                                        console.log("have word_flag");
                                 }
                                 else if (clearflag == "unneed") {
                                     var mylist2 = systemdispatcher.get_onekey_args2();
@@ -196,25 +182,16 @@ import SessionType 0.1
                                         }
                                     }
                                     if (second_flag4 == "false") {
-                                        console.log("no word_flag");
                                         systemdispatcher.set_onekey_args2(clearflag);
                                         console.log(systemdispatcher.get_package_args());
                                     }
-                                    else
-                                        console.log("have word_flag");
                                 }
-                                console.log("-------test second------");
-                                console.log(clearflag);
-                                console.log(systemdispatcher.get_onekey_args2());
                             }
 
                             //----------------清理历史记录----------------
                             else if (pagenum == "history") {
-                                console.log("111");
                                 systemdispatcher.set_history_flag(true);
                             }
-
-//                            console.log(systemdispatcher.get_onekey_args());
 
                         }
 
@@ -224,11 +201,7 @@ import SessionType 0.1
 //                            console.log("首页一键清理 checked false...........");
                             //----------------首页一键清理----------------
                             if (pagenum == "first") {
-                                console.log("fisrt no check...........");
-//                                console.log(clearflag);
                                 if (clearflag == "cache") {
-                                    console.log("false cache is...........");
-                                    console.log(clearflag);
                                     systemdispatcher.del_onekey_args(clearflag);
                                 }
                                 else if (clearflag == "history") {
@@ -266,66 +239,9 @@ import SessionType 0.1
 
                             //----------------清理历史记录----------------
                             else if (pagenum == "history") {
-                                console.log("222");
                                 systemdispatcher.set_history_flag(false);
                             }
-            //                console.log(systemdispatcher.get_package_args());
-
-//                            console.log(flag);
-//                            console.log(systemdispatcher.get_onekey_args());
                         }
-
-
-
-
-
-//                        if (checkbox.checked) {
-//                            if (flag == "rubbish") {
-//                                var rubbish_str = sessiondispatcher.get_str();
-//                                if (rubbish_str.indexOf("r") < 0)
-//                                    sessiondispatcher.set_str("r");
-//                            }
-//                            else if (flag == "history") {
-//                                var history_str = sessiondispatcher.get_str();
-//                                if (history_str.indexOf("h") < 0)
-//                                    sessiondispatcher.set_str("h");
-//                            }
-//                            else if (flag == "cookie") {
-//                                var cookie_str = sessiondispatcher.get_str();
-//                                if (cookie_str.indexOf("c") < 0)
-//                                    sessiondispatcher.set_str("c");
-//                            }
-//                            else if (flag == "plugin") {
-//                                var plugin_str = sessiondispatcher.get_str();
-//                                if (plugin_str.indexOf("p") < 0)
-//                                    sessiondispatcher.set_str("p");
-//                            }
-////                            console.log("is checked");
-//                        }
-//                        else if (!checkbox.checked) {
-//                            if (flag == "rubbish") {
-//                                var rubbish_str1 = sessiondispatcher.get_str();
-//                                if (rubbish_str1.indexOf("r") > -1) {
-//                                    sessiondispatcher.del_str("r");
-//                                }
-//                            }
-//                            else if (flag == "history") {
-//                                var history_str1 = sessiondispatcher.get_str();
-//                                if (history_str1.indexOf("h") > -1)
-//                                    sessiondispatcher.del_str("h");
-//                            }
-//                            else if (flag == "cookie") {
-//                                var cookie_str1 = sessiondispatcher.get_str();
-//                                if (cookie_str1.indexOf("c") > -1)
-//                                    sessiondispatcher.del_str("c");
-//                            }
-//                            else if (flag == "plugin") {
-//                                var plugin_str1 = sessiondispatcher.get_str();
-//                                if (plugin_str1.indexOf("p") > -1)
-//                                    sessiondispatcher.del_str("p");
-//                            }
-////                            console.log("is not checked");
-//                        }
                     }
                 }
                 Image {
@@ -365,198 +281,6 @@ import SessionType 0.1
             }
         }
 
-//        MouseArea {
-//            anchors.fill: clearDelegate
-//            onClicked: itemClicked()
-//        }
     }
 //}
 
-
-
-//Component {
-//    Item {
-//        id: clearDelegate
-//        width: parent.width//clearDelegate.ListView.view.width
-//        height: 65
-
-//        function itemClicked() {
-//            rotateDetails.title = "kobe111";
-//            rotateDetails.description = "lixiang111";
-//            scaleMe.state = "Details";
-//        }
-
-//        Item {
-//            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-//            id: scaleMe
-//            //checkbox, picture and words
-//            Row {
-//                id: lineLayout
-//                spacing: 10
-//                anchors {
-//                    fill: parent
-//                    left: parent.left
-//                    leftMargin: 50
-//                }
-//                CheckBox {
-//                    id: checkbox
-//                    checked: true
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    onCheckedChanged: {
-//                        //kobe: wait for adding function
-//                    }
-//                }
-//                Image {
-//                    id: clearImage
-//                    width: 47; height: 47
-//                    source: picture
-//                    anchors {
-//                        left: checkbox.right; leftMargin: 15
-//                        verticalCenter: parent.verticalCenter
-//                    }
-
-//                }
-
-//                Column {
-//                    spacing: 5
-//                    anchors {
-//                        left: clearImage.right; leftMargin: 15
-//                        verticalCenter: parent.verticalCenter
-//                    }
-//                    Text {
-//                        text: title
-//                        font.pointSize: 11
-//                        color: "black"
-//                    }
-//                    Text {
-//                        text: detailstr
-//                        font.pointSize: 9
-//                        color: "gray"
-//                    }
-//                }
-//            }
-//            ListItem.ThinDivider {} //分割条  can be used as header for list
-
-//            Connections {
-//                target: toolBar
-//                onButton2Clicked: if (scaleMe.state == 'Details' ) scaleMe.state = 'Show'
-//            }
-
-//            states: [
-//                State {
-//                    name: "Show"; when: thumb.status == Image.Ready
-//                    PropertyChanges { target: scaleMe; scale: 1 }
-//                },
-//                State {
-//                    name: "Details"
-//                    PropertyChanges { target: scaleMe; scale: 1 }
-//                    PropertyChanges { target: background; state: "DetailedView" }
-//                }
-//            ]
-//            transitions: [
-//                Transition {
-//                    from: "Show"; to: "Details"
-//                    ParentAnimation {
-//                        via: foreground
-//                        NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-//                    }
-//                },
-//                Transition {
-//                    from: "Details"; to: "Show"
-//                    ParentAnimation {
-//                        via: foreground
-//                        NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.InOutQuad }
-//                    }
-//                }
-//            ]
-//        }
-
-//        MouseArea {
-//            anchors.fill: clearDelegate
-//            onClicked: itemClicked()
-//        }
-//        //点击不同的项时移动焦点颜色
-//    //    MouseArea {
-//    //        anchors.fill: clearDelegate
-//    //        onClicked: {
-//    //            clearDelegate.ListView.view.currentIndex = index
-//    //        }
-//    //    }
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-//Component {
-//    Item {
-//        id: clearDelegate
-//        width: parent.width//clearDelegate.ListView.view.width
-//        height: 65
-//        //checkbox, picture and words
-//        Row {
-//            id: lineLayout
-//            spacing: 10
-//            anchors {
-//                fill: parent
-//                left: parent.left
-//                leftMargin: 50
-//            }
-
-//            CheckBox {
-//                id: checkbox
-//                checked: true
-//                anchors.verticalCenter: parent.verticalCenter
-//                onCheckedChanged: {
-//                    //kobe: wait for adding function
-//                }
-//            }
-
-//            Image {
-//                id: clearImage
-//                width: 47; height: 47
-//                source: picture
-//                anchors {
-//                    left: checkbox.right; leftMargin: 15
-//                    verticalCenter: parent.verticalCenter
-//                }
-
-//            }
-
-//            Column {
-//                spacing: 5
-//                anchors {
-//                    left: clearImage.right; leftMargin: 15
-//                    verticalCenter: parent.verticalCenter
-//                }
-//                Text {
-//                    text: title
-//                    font.pointSize: 11
-//                    color: "black"
-//                }
-//                Text {
-//                    text: detailstr
-//                    font.pointSize: 9
-//                    color: "gray"
-//                }
-//            }
-//        }
-//        ListItem.ThinDivider {} //分割条  can be used as header for list
-
-//        //点击不同的项时移动焦点颜色
-//    //    MouseArea {
-//    //        anchors.fill: clearDelegate
-//    //        onClicked: {
-//    //            clearDelegate.ListView.view.currentIndex = index
-//    //        }
-//    //    }
-//    }
-//}
