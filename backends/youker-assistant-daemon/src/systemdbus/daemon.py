@@ -180,25 +180,25 @@ class Daemon(PolicyKitService):
         tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = {}
         cruft_dic = self.daemononekey.get_scan_resault(tmp_mode_list)
-        if 'history' in cruft_dic:
-            history_cruft_list = cruft_dic['history']
-            daemonhistory = cleaner.CleanTheHistory()
-            try:
-                daemonhistory.clean_the_cruftlist()
-            except Exception, e:
-                self.clean_error_main_msg('he')
-            else:
-                self.clean_complete_main_msg('h')
+        #if 'history' in cruft_dic:
+        #    history_cruft_list = cruft_dic['history']
+        #    daemonhistory = cleaner.CleanTheHistory()
+        #    try:
+        #        daemonhistory.clean_the_cruftlist()
+        #    except Exception, e:
+        #        self.clean_error_main_msg('he')
+        #    else:
+        #        self.clean_complete_main_msg('h')
 
-        if 'cookies' in cruft_dic:
-            cookies_cruft_list = cruft_dic['cookies']
-            daemoncookies = cleaner.CleanTheCookies()
-            try:
-                daemoncookies.clean_the_cruftlist(cookies_cruft_list)
-            except Exception, e:
-                self.clean_error_main_msg('ke')
-            else:
-                self.clean_complete_main_msg('k')
+        #if 'cookies' in cruft_dic:
+        #    cookies_cruft_list = cruft_dic['cookies']
+        #    daemoncookies = cleaner.CleanTheCookies()
+        #    try:
+        #        daemoncookies.clean_the_cruftlist(cookies_cruft_list)
+        #    except Exception, e:
+        #        self.clean_error_main_msg('ke')
+        #    else:
+        #        self.clean_complete_main_msg('k')
 
         if 'unneed' in cruft_dic:
             unneed_cruft_list = cruft_dic['unneed']
@@ -226,25 +226,25 @@ class Daemon(PolicyKitService):
         flag_str = ''
         tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = self.daemononekey.get_scan_resault(tmp_mode_list)
-        if 'history' in cruft_dic:
-            history_cruft_list = cruft_dic['history']
-            daemonhistory = cleaner.CleanTheHistory()
-            try:
-                daemonhistory.clean_the_cruftlist()
-            except Exception, e:
-                self.clean_error_second_msg('he')
-            else:
-                self.clean_complete_second_msg('h')
+        #if 'history' in cruft_dic:
+        #    history_cruft_list = cruft_dic['history']
+        #    daemonhistory = cleaner.CleanTheHistory()
+        #    try:
+        #        daemonhistory.clean_the_cruftlist()
+        #    except Exception, e:
+        #        self.clean_error_second_msg('he')
+        #    else:
+        #        self.clean_complete_second_msg('h')
 
-        if 'cookies' in cruft_dic:
-            cookies_cruft_list = cruft_dic['cookies']
-            daemoncookies = cleaner.CleanTheCookies()
-            try:
-                daemoncookies.clean_the_cruftlist(cookies_cruft_list)
-            except Exception, e:
-                self.clean_error_second_msg('ke')
-            else:
-                self.clean_complete_second_msg('k')
+        #if 'cookies' in cruft_dic:
+        #    cookies_cruft_list = cruft_dic['cookies']
+        #    daemoncookies = cleaner.CleanTheCookies()
+        #    try:
+        #        daemoncookies.clean_the_cruftlist(cookies_cruft_list)
+        #    except Exception, e:
+        #        self.clean_error_second_msg('ke')
+        #    else:
+        #        self.clean_complete_second_msg('k')
 
         if 'unneed' in cruft_dic:
             unneed_cruft_list = cruft_dic['unneed']

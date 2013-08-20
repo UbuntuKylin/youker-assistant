@@ -54,8 +54,6 @@ Item {
     onApt_signal: {
         if (apt_msg == "AptWork") {
             //get data of cookies
-            console.log("apt_msg == AptWork");
-//            var apt_data = systemdispatcher.scan_apt_cruft_qt();
             var apt_data = sessiondispatcher.scan_apt_cruft_qt();
             if (apt_data == "")
                 root.null_flag = true;
@@ -105,7 +103,6 @@ Item {
 //                 titleBar.state = "AptWork";
 ////                 console.log("******End******");
 //             }
-
 //         }
         onFinishCleanWork: {
 //            console.log(msg);//apt software   package   history   cookies
@@ -216,7 +213,6 @@ Item {
                  else if (btn_flag == "apt_work") {
                        console.log(systemdispatcher.get_apt_args());
                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
-//                     sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
                  }
             }
         }

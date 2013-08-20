@@ -42,29 +42,53 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
     QObject::connect(sessioniface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+
+    QObject::connect(sessioniface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
+    QObject::connect(sessioniface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
+    QObject::connect(sessioniface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
+    QObject::connect(sessioniface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
     notify_str = "";
     page_num = 0;
 
 }
 
+void SessionDispatcher::handler_clear_rubbish_main_onekey(QString msg)
+{
+     emit finishCleanWorkMain(msg);
+}
+
+void SessionDispatcher::handler_clear_rubbish_main_error(QString msg)
+{
+     emit finishCleanWorkMainError(msg);
+}
+void SessionDispatcher::handler_clear_rubbish_second_onekey(QString msg)
+{
+     emit finishCleanWorkSecond(msg);
+}
+
+void SessionDispatcher::handler_clear_rubbish_second_error(QString msg)
+{
+     emit finishCleanWorkSecondError(msg);
+}
 void SessionDispatcher::handler_clear_rubbish(QString msg)
 {
-    qDebug() << "signal coming1111111111111111";
      emit finishCleanWork(msg);
-    qDebug() << "signal coming2222222222222";
 }
 void SessionDispatcher::clean_cookies_records_qt(QStringList strlist) {
 //    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
-    qDebug() << "1111";
-    qDebug() << strlist;
     sessioniface->call("clean_cookies_records", strlist);
-    qDebug() << "222222";
 }
 void SessionDispatcher::clean_history_records_qt() {
 //    QDBusReply<void> reply = systemiface->call("clean_history_records");
     sessioniface->call("clean_history_records");
 }
 
+void SessionDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
+    sessioniface->call("clean_by_main_one_key", strlist);
+}
+void SessionDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
+    sessioniface->call("clean_by_second_one_key", strlist);
+}
 
 //void SessionDispatcher::clean_package_cruft_qt(QStringList strlist) {
 ////    QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);

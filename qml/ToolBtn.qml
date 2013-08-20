@@ -122,58 +122,16 @@ Rectangle {
                 sessiondispatcher.set_page_num(2);
                 menulogo.send("clearrubbish");
                 pageStack.push(clearrubbish);
-//                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-//                    menulogo.send("clearrubbish");
-//                    pageStack.push(clearrubbish);
-//                }
-//                else {
-//                    var value1 = systemdispatcher.setup();
-//                    if(value1) {
-//                        menulogo.send("clearrubbish");
-//                        pageStack.push(clearrubbish);
-//                    }
-//                    else {
-//                        sessiondispatcher.send_restartdialog_msg();
-//                    }
-//                }
             }
             else if (text == "systemset") {
                 sessiondispatcher.set_page_num(3);
                 menulogo.send("systemset");
                 pageStack.push(systemset);
-//                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-//                    menulogo.send("systemset");
-//                    pageStack.push(systemset);
-//                }
-//                else {
-//                    var value2 = systemdispatcher.setup();
-//                    if(value2) {
-//                        menulogo.send("systemset");
-//                        pageStack.push(systemset);
-//                    }
-//                    else {
-//                        sessiondispatcher.send_restartdialog_msg();
-//                    }
-//                }
             }
             else if (text == "functioncollection") {
                 sessiondispatcher.set_page_num(4);
                 menulogo.send("functioncollection");
                 pageStack.push(functioncollection);
-//                if(systemdispatcher.get_system_daemon_qt() == "SystemDaemon") {
-//                    menulogo.send("functioncollection");
-//                    pageStack.push(functioncollection);
-//                }
-//                else {
-//                    var value3 = systemdispatcher.setup();
-//                    if(value3) {
-//                        menulogo.send("functioncollection");
-//                        pageStack.push(functioncollection);
-//                    }
-//                    else {
-//                        sessiondispatcher.send_restartdialog_msg();
-//                    }
-//                }
             }
         }
     }

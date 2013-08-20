@@ -1,5 +1,36 @@
 youker-assistant (0.1.5-0ubuntu1) saucy; urgency=low
 
-  * Initial release. (LP: #1203958)
+  * 0.1-Release.
+  * Add policykit.
 
- -- Jack Yu <jackyu@ubuntukylin.com>  Mon, 18 Aug 2013 11:38:12 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 19 Aug 2013 18:30:33 +0800
+
+youker-assistant (0.1.4-0ubuntu1) raring; urgency=low
+
+  * Remove libstyleplugin.so and add our components.
+  * Merge youker-assistant and youker-assistant-daemon into one project.
+  * Finish the method of get password.
+  * Modify the start method of systemdbus.
+  * Add Timer to prompt information.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 09 Aug 2013 16:41:16 +0800
+
+youker-assistant (0.1.3-0ubuntu1) raring; urgency=low
+
+  * Finish the basic beauty of Clear pages and Set pages.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Thu, 01 Aug 2013 18:33:08 +0800
+
+youker-assistant (0.1.2-0ubuntu1) raring; urgency=low
+
+  * Modify some systemset pages.
+  * systemdbus and sessiondbus start when the program run.
+  * Modify Rubbish Clear functions.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 26 Jul 2013 18:23:15 +0800
+
+youker-assistant (0.1.1-0ubuntu1) raring; urgency=low
+
+  * Initial release.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Tue, 02 Jul 2013 08:57:14 +0800
