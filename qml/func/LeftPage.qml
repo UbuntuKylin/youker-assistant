@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -63,6 +66,7 @@ Rectangle {
             }
             else if (msg == "h") {
                 historystatus.state = "StatusH";
+                console.log("new test11..............");
             }
             else if (msg == "k") {
                cookiestatus.state = "StatusK";
@@ -89,8 +93,8 @@ Rectangle {
         source: "../img/skin/bg-left.png"
         anchors.fill: parent
     }
-    Column {
-        anchors.fill: parent
+//    Column {
+//        anchors.fill: parent
         Row {
             id: myrow
             spacing: 10
@@ -141,7 +145,6 @@ Rectangle {
                     iconName: "onekeyBtn.png"
                     setbtn_flag: "onekey"
                     anchors {
-                        top: text2.bottom; topMargin: 10
                         left: parent.left; leftMargin: 100
                     }
                     width: 186
@@ -154,7 +157,7 @@ Rectangle {
                     }
 //如果没有选中任何清理项，提示警告框！
                     onClicked: {
-                        if(!(checkboxe.checked||checkboxe2.checked||checkboxe3.checked||checkboxe4.checked))
+                        if(!(checkboxe1.checked||checkboxe2.checked||checkboxe3.checked||checkboxe4.checked))
                         {
                             firstonekey.check_flag=false;
 //                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
@@ -180,117 +183,100 @@ Rectangle {
                     font.pixelSize: 14
                     color: "#008000"
                 }
-                Common.CheckBox {
-                    id:chek
-                    checked:true    //将所有选项都check
-                    anchors.verticalCenter: parent.verticalCenter
-                    onCheckedChanged: {
-                        checkboxe.checked=chek.checked;
-                        checkboxe2.checked=chek.checked;
-                        checkboxe3.checked=chek.checked;
-                        checkboxe4.checked=chek.checked;
-                    }
-                }
             }
+            Column {
+                anchors.left: parent.left
+                anchors.leftMargin: 45
+                spacing:25
 
             //---------------------------
                         Item {
-                        property SessionDispatcher dis: sessiondispatcher
-                        width: parent.width //clearDelegate.ListView.view.width
-                        height:45 //65
+                            property SessionDispatcher dis: sessiondispatcher
+                            width: parent.width //clearDelegate.ListView.view.width
+                            height:45 //65
 
-                        Item {
-                            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-                            id: scaleMe
-                            //checkbox, picture and words
-                            Row {
-                                id: lineLayout
-                                spacing: 10
-                                anchors {
-                                    fill: parent
-                                    left: parent.left
-                                    leftMargin: 50
-                                }
-                                Common.CheckBox {
-                                    id: checkboxe
-                                    checked:true    //将所有选项都check
+                            Item {
+                                Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+                                id: scaleMe
+                                //checkbox, picture and words
+                                Row {
+                                    id: lineLayout
+                                    spacing: 15
                                     anchors.verticalCenter: parent.verticalCenter
-                                    onCheckedChanged: {
-                                        if (checkboxe.checked) {
-                                                    var rubbishlist = systemdispatcher.get_onekey_args();
-                                                    var word_flag = "false";
-                                                    for (var i=0; i<rubbishlist.length; i++) {
-                                                        if (rubbishlist[i] == "cache") {
-                                                            word_flag = "true";
-                                                            break;
+                                    Common.CheckBox {
+                                        id: checkboxe1
+                                        checked:true    //将所有选项都check
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        onCheckedChanged: {
+                                            if (checkboxe1.checked) {
+                                                        var rubbishlist = systemdispatcher.get_onekey_args();
+                                                        var word_flag = "false";
+                                                        for (var i=0; i<rubbishlist.length; i++) {
+                                                            if (rubbishlist[i] == "cache") {
+                                                                word_flag = "true";
+                                                                break;
+                                                            }
                                                         }
-                                                    }
-                                                    if (word_flag == "false") {
-                                                        systemdispatcher.set_onekey_args("cache");
-                                                    }
-                                        }
-                                        else if (!checkboxe.checked) {
-                                                systemdispatcher.del_onekey_args("cache");
+                                                        if (word_flag == "false") {
+                                                            console.log("no word_flag1");
+                                                            systemdispatcher.set_onekey_args("cache");
+                                                            console.log(systemdispatcher.get_package_args());
+                                                        }
                                             }
+                                            else if (!checkboxe1.checked) {
+                                                    systemdispatcher.del_onekey_args("cache");
+                                                    console.log(systemdispatcher.get_onekey_args());
+                                                }
+                                        }
+                                    }
+                                    Image {
+                                        id: clearImage1
+                                        width: 40; height: 42
+                                        source:"../img/toolWidget/brush.png" //picturename
+                                    }
+
+                                    Column {
+                                        spacing: 5
+                                        Text {
+                                            text: "清理垃圾"//titlename
+                                            font.bold: true
+                                            font.pixelSize: 14
+                                            color: "#383838"
+                                        }
+                                        Text {
+                                            text: "清理系统中的垃圾文件，释放磁盘空间"//detailstr
+                                            font.pixelSize: 12
+                                            color: "#7a7a7a"
+                                        }
                                     }
                                 }
                                 Image {
-                                    id: clearImage1
-                                    width: 40; height: 42
-                                    source:"../img/toolWidget/brush.png" //picturename
+                                    id: cachestatus
+                                    source: "../img/toolWidget/unfinish.png"
                                     anchors {
-                                        left: checkboxe.right; leftMargin: 15
-                                        verticalCenter: parent.verticalCenter
+//                                        top: itemtip.bottom; topMargin: 20
+                                        left: parent.left; leftMargin: 450
                                     }
+                                    states: [
+                                            State {
+                                            name: "StatusC"
+                                            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+                                        },
 
+                                            State {
+                                            name: "StatusC1"
+                                            PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
+                                        }
+
+                                    ]
                                 }
 
-                                Column {
-                                    spacing: 5
-                                    anchors {
-                                        left: clearImage1.right; leftMargin: 15
-                                        verticalCenter: parent.verticalCenter
-                                    }
-                                    Text {
-                                        text: "清理垃圾"//titlename
-                                        font.bold: true
-                                        font.pixelSize: 14
-                                        color: "#383838"
-                                    }
-                                    Text {
-                                        text: "清理系统中的垃圾文件，释放磁盘空间"//detailstr
-                                        font.pixelSize: 12
-                                        color: "#7a7a7a"
-                                    }
+                                Rectangle {  //分割条
+                                    width: parent.width; height: 1
+                                    anchors { top: lineLayout.bottom; topMargin: 5}
+                                    color: "gray"
                                 }
                             }
-                            Image {
-                                id: cachestatus
-                                source: "../img/toolWidget/unfinish.png"
-                                anchors {
-                                    top: itemtip.bottom; topMargin: 20
-                                    left: parent.left; leftMargin: 500
-                                }
-                                states: [
-                                        State {
-                                        name: "StatusC"
-                                        PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
-                                    },
-
-                                        State {
-                                        name: "StatusC1"
-                                        PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
-                                    }
-
-                                ]
-                            }
-
-                            Rectangle {  //分割条
-                                width: parent.width; height: 1
-                                anchors { top: lineLayout.bottom; topMargin: 5}
-                                color: "gray"
-                            }
-                        }
                         }
 
             //----------------------------
@@ -305,12 +291,8 @@ Rectangle {
                             //checkbox, picture and words
                             Row {
                                 id: lineLayout1
-                                spacing: 10
-                                anchors {
-                                    fill: parent
-                                    left: parent.left
-                                    leftMargin: 50
-                                }
+                                spacing: 15
+                                anchors.verticalCenter: parent.verticalCenter
                                Common.CheckBox {
                                     id: checkboxe2
                                     checked:true    //将所有选项都check
@@ -326,11 +308,14 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag1 == "false") {
+                                                        console.log("no word_flag2");
                                                         systemdispatcher.set_onekey_args("history");
+                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe2.checked) {
                                                 systemdispatcher.del_onekey_args("history");
+                                                console.log(systemdispatcher.get_onekey_args());
                                             }
                                     }
                                 }
@@ -340,18 +325,10 @@ Rectangle {
                                 id: clearImage2
                                 width: 40; height: 42
                                 source: "../img/toolWidget/history.png"//picturename
-                                anchors {
-                                    left: checkboxe.right; leftMargin: 15
-                                    verticalCenter: parent.verticalCenter
-                                }
                             }
 
                             Column {
                                 spacing: 5
-                                anchors {
-                                    left: clearImage2.right; leftMargin: 15
-                                    verticalCenter: parent.verticalCenter
-                                }
                                 Text {
                                     text: "清理历史记录"//titlename
                                     font.bold: true
@@ -369,8 +346,8 @@ Rectangle {
                                 id: historystatus
                                 source: "../img/toolWidget/unfinish.png"
                                 anchors {
-                                    top: cachestatus.bottom; topMargin: 45
-                                    left: parent.left; leftMargin: 500
+//                                    top: cachestatus.bottom; topMargin: 45
+                                    left: parent.left; leftMargin: 450
                                 }
                                 states: [
                                         State {
@@ -386,11 +363,11 @@ Rectangle {
                                 ]
                             }
 
-                            Rectangle {  //分割条
-                                width: parent.width; height: 1
-                                anchors { top: lineLayout.bottom; topMargin: 5}
-                                color: "gray"
-                            }
+//                            Rectangle {  //分割条
+//                                width: parent.width; height: 1
+//                                anchors { top: lineLayout.bottom; topMargin: 5}
+//                                color: "gray"
+//                            }
 
                         }
                       }
@@ -406,12 +383,8 @@ Rectangle {
                             //checkbox, picture and words
                             Row {
                                 id: lineLayout2
-                                spacing: 10
-                                anchors {
-                                    fill: parent
-                                    left: parent.left
-                                    leftMargin: 50
-                                }
+                                spacing: 15
+                                anchors.verticalCenter: parent.verticalCenter
                                Common.CheckBox {
                                     id: checkboxe3
                                     checked:true    //将所有选项都check
@@ -427,11 +400,14 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag2 == "false") {
+                                                        console.log("no word_flag3");
                                                         systemdispatcher.set_onekey_args("cookies");
+                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe3.checked) {
                                                 systemdispatcher.del_onekey_args("cookies");
+                                                console.log(systemdispatcher.get_onekey_args());
                                             }
                                     }
                                 }
@@ -441,19 +417,10 @@ Rectangle {
                                 id: clearImage3
                                 width: 40; height: 42
                                 source: "../img/toolWidget/cookies.png"//picturename
-                                anchors {
-                                    left: checkboxe.right; leftMargin: 15
-                                    verticalCenter: parent.verticalCenter
-                                }
-
                             }
 
                             Column {
                                 spacing: 5
-                                anchors {
-                                    left: clearImage2.right; leftMargin: 15
-                                    verticalCenter: parent.verticalCenter
-                                }
                                 Text {
                                     text: "清理Cookies"//titlename
                                     font.bold: true
@@ -472,8 +439,8 @@ Rectangle {
                                 id: cookiestatus
                                 source: "../img/toolWidget/unfinish.png"
                                 anchors {
-                                    top: historystatus.bottom; topMargin: 45
-                                    left: parent.left; leftMargin: 500
+//                                    top: historystatus.bottom; topMargin: 45
+                                    left: parent.left; leftMargin: 450
                                 }
                                 states: [
                                         State {
@@ -489,11 +456,11 @@ Rectangle {
                                 ]
                             }
 
-                            Rectangle {  //分割条
-                                width: parent.width; height: 1
-                                anchors { top: lineLayout.bottom; topMargin: 5}
-                                color: "gray"
-                            }
+//                            Rectangle {  //分割条
+//                                width: parent.width; height: 1
+//                                anchors { top: lineLayout.bottom; topMargin: 5}
+//                                color: "gray"
+//                            }
 
                         }
                       }
@@ -509,12 +476,8 @@ Rectangle {
                             //checkbox, picture and words
                             Row {
                                 id: lineLayout3
-                                spacing: 10
-                                anchors {
-                                    fill: parent
-                                    left: parent.left
-                                    leftMargin: 50
-                                }
+                                spacing: 15
+                                anchors.verticalCenter: parent.verticalCenter
                                Common.CheckBox {
                                     id: checkboxe4
                                     checked:true    //将所有选项都check
@@ -530,11 +493,14 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag3 == "false") {
+                                                        console.log("no word_flag4");
                                                         systemdispatcher.set_onekey_args("unneed");
+                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe4.checked) {
                                                 systemdispatcher.del_onekey_args("unneed");
+                                                console.log(systemdispatcher.get_onekey_args());
                                             }
                                     }
                                 }
@@ -544,19 +510,10 @@ Rectangle {
                                 id: clearImage4
                                 width: 40; height: 42
                                 source: "../img/toolWidget/deb.png"//picturename
-                                anchors {
-                                    left: checkboxe.right; leftMargin: 15
-                                    verticalCenter: parent.verticalCenter
-                                }
-
                             }
 
                             Column {
                                 spacing: 5
-                                anchors {
-                                    left: clearImage2.right; leftMargin: 15
-                                    verticalCenter: parent.verticalCenter
-                                }
                                 Text {
                                     text: "卸载不必要的程序"//titlename
                                     font.bold: true
@@ -575,8 +532,8 @@ Rectangle {
                                 id: unneedstatus
                                 source: "../img/toolWidget/unfinish.png"
                                 anchors {
-                                    top: cookiestatus.bottom; topMargin: 45
-                                    left: parent.left; leftMargin: 500
+//                                    top: cookiestatus.bottom; topMargin: 45
+                                    left: parent.left; leftMargin: 450
                                 }
                                 states: [
                                         State {
@@ -592,16 +549,29 @@ Rectangle {
                                 ]
                             }
 
-                            Rectangle {  //分割条
-                                width: parent.width; height: 1
-                                anchors { top: lineLayout.bottom; topMargin: 5}
-                                color: "gray"
-                            }
+//                            Rectangle {  //分割条
+//                                width: parent.width; height: 1
+//                                anchors { top: lineLayout.bottom; topMargin: 5}
+//                                color: "gray"
+//                            }
 
                         }
                       }
             //----------------------------
-                    }//Column
-                }//Column
 
-            }//坐边栏Rectangle
+        }//Column
+    }//Column
+        Common.CheckBox {
+            id:chek
+            x:115
+            y:169
+            checked:true    //将所有选项都check
+            onCheckedChanged: {
+                checkboxe1.checked = chek.checked;
+                checkboxe2.checked = chek.checked;
+                checkboxe3.checked = chek.checked;
+                checkboxe4.checked = chek.checked;
+            }
+        }
+
+}//坐边栏Rectangle

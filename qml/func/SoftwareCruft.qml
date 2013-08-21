@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -74,7 +77,7 @@ Item {
             subModel.clear();
             var num = 0;
             for (var i=0; i< software_data.length; i++) {
-            //  /home/kobe/.cache/software-center/piston-helper<2_2>3026257
+//                console.log(software_data[i]);//  /home/kobe/.cache/software-center/piston-helper<2_2>3026257
                 var splitlist = software_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -125,13 +128,18 @@ Item {
     {
         target: systemdispatcher
 //         onFinishScanWork: {
+//             console.log("begin onFinishScanWork..............");
         //             if (btn_flag == "software_scan") {
+        //                 console.log("****** software_scan Signal handler received  Start******");
+        ////                 console.log(msg);
         //                 titleBar.work_result = msg;
         //                 titleBar.state = "SoftwareWork";
+        ////                 console.log("******End******");
         //             }
 
 //         }
         onFinishCleanWork: {
+//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "software_work") {
                 if (msg == "software") {
                     root.work_result = msg;
@@ -175,6 +183,10 @@ Item {
                 color: "#7a7a7a"
             }
         }
+    }
+    Row{
+        anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
+        spacing: 20
 
         //status picture
         Image {
@@ -182,21 +194,13 @@ Item {
             source: "../img/toolWidget/unfinish.png"
             fillMode: "PreserveAspectFit"
             smooth: true
-            anchors {
-//                        top: parent.top; topMargin: 110
-//                        left: parent.left; leftMargin: 650
-                right: label.left
-                rightMargin: 20
-                verticalCenter: parent.verticalCenter
-            }
+            anchors.verticalCenter: parent.verticalCenter
         }
 
         Common.Label {
             id: label
             visible: false
             text: ""
-            anchors.right: bitButton.left
-            anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -206,8 +210,6 @@ Item {
             height: 39
             hoverimage: "scan-start.png"
 //            text: root.btn_text
-            anchors.right: parent.right
-            anchors.rightMargin: 50
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 //software cruft
@@ -257,60 +259,57 @@ Item {
                 x: 5; y: 2
                 width: root.width
                 height: root.itemHeight
-                spacing: 10
-                Image {
-                    id: clearImage
-                    fillMode: "PreserveAspectFit"
-                    height: parent.height*0.9
-                    source: picture
-                    smooth: true
+                spacing: 170
+                Row{
+                    spacing: 15
+                    Image {
+                        id: clearImage
+                        fillMode: "PreserveAspectFit"
+                        height: parent.height*0.9
+                        source: picture
+                        smooth: true
+                    }
+
+                    Column {
+                        id: status_update_content
+                        spacing: 5
+                        anchors.verticalCenter: parent.verticalCenter
+                        Text {
+                            text: itemTitle
+                            font.pointSize: 11
+                            color: "black"
+                        }
+                        Text {
+                            text: detailstr
+                            font.pointSize: 9
+                            color: "gray"
+                        }
+                    }
                 }
 
-                Column {
-                    id: status_update_content
-                    spacing: 5
-                    anchors {
-                        left: clearImage.right; leftMargin: 15
-                        verticalCenter: parent.verticalCenter
-                    }
-                    Text {
-                        text: itemTitle
-                        font.pointSize: 11
-                        color: "black"
-                    }
-                    Text {
-                        text: detailstr
-                        font.pointSize: 9
-                        color: "gray"
-                    }
-                }
-
-                Image {
-                    id: arrow
-                    fillMode: "PreserveAspectFit"
+            }//母项Row
+            Image {
+                id: arrow
+                fillMode: "PreserveAspectFit"
 //                    height: parent.height*0.3
-                    height: 28
-                    width: 26
-                    source: root.arrow
-                    //当鼠标点击后,箭头图片旋转90度
+                height: 28
+                width: 26
+                x:740
+                y:15
+                source: root.arrow
+                //当鼠标点击后,箭头图片旋转90度
 //                    rotation: expanded ? 90 : 0
-                    rotation: expanded ? 0 : -180
-                    smooth: true
-                    anchors {
-                        left: clearImage.right
-                        verticalCenter: parent.verticalCenter
-                        leftMargin: 750
-                    }
-                }
-
+                rotation: expanded ? 0 : -180
+                smooth: true
                 MouseArea {
                     id: mouseRegion
-                    anchors.fill: status_update_content
+                    anchors.fill: parent
                     onPressed: {
+//                        console.log(root.width)
                         expanded = !expanded
                     }
                 }
-            }//母项Row
+            }
 
             //子项
             Item {
@@ -353,7 +352,7 @@ Item {
 
                             btn_flag: root.btn_flag
 
-                            onClicked: {}
+                            onClicked: {/*console.log(number)*/}
                         }
 
                     }//Repeater

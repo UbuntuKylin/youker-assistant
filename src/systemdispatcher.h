@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -32,6 +35,7 @@ class SystemDispatcher : public QObject
     Q_PROPERTY(QNOTIFY finishCleanWorkMain)
     Q_PROPERTY(QNOTIFY finishCleanWorkMainError)
     Q_PROPERTY(QNOTIFY finishCleanWorkSecond)
+    Q_PROPERTY(QNOTIFY finishCleanWorkSecondError)
 //    Q_PROPERTY(QNOTIFY finishCleanaptWork)
 //    Q_PROPERTY(QNOTIFY finishCleansoftwareWork)
 //    Q_PROPERTY(QNOTIFY finishCleanhistoryWork)
@@ -41,7 +45,7 @@ class SystemDispatcher : public QObject
 //    Q_PROPERTY(QString myString READ myString WRITE setmyString NOTIFY myStringChanged)
 public:
     explicit SystemDispatcher(QObject *parent = 0);
-    QString split_music_format(QString music_name);
+//    Q_INVOKABLE QString get_value(QString);
     Q_INVOKABLE int get_add_value();
     Q_INVOKABLE void send_btn_msg(QString);
     Q_INVOKABLE void exit_qt();
@@ -60,7 +64,6 @@ public:
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);
     Q_INVOKABLE void set_homedir_qt();
-    Q_INVOKABLE void set_user_homedir_qt();
 
     //开机动画
 //    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
@@ -193,6 +196,7 @@ signals:
     void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
     void finishCleanWorkMainError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
     void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
+    void finishCleanWorkSecondError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
 //    void finishCleanaptWork(QString msg);
 //    void finishCleansoftwareWork(QString msg);
 //    void finishCleanhistoryWork(QString msg);
@@ -205,6 +209,7 @@ public slots:
     void handler_clear_rubbish_main_onekey(QString msg);
     void handler_clear_rubbish_main_error(QString msg);
     void handler_clear_rubbish_second_onekey(QString msg);
+    void handler_clear_rubbish_second_error(QString msg);
     void handler_scan_rubbish(QString msg);
 //    QString show_signal(QString msg);
 //    void setmyString(QString aString);

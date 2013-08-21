@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -13,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
@@ -143,7 +147,7 @@ Rectangle {
 
     Row {
         id: themeline
-        spacing: 40
+        spacing: 170
         anchors{
             left: parent.left
             leftMargin: 60
@@ -151,54 +155,59 @@ Rectangle {
             topMargin: 10
 
         }
-        Text {
-            id: iconthemelabel
-            text: "图标主题"
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        Common.ComboBox {
-            id: iconcombo
-            model: choices
-            width: 200
-            onSelectedTextChanged: console.log(selectedText)
-        }
-        Common.Button {
-            id: okBtn
-            width: 95;height: 30
-            anchors.left: parent.left
-            anchors.leftMargin: 470
-            hoverimage: "ok.png"
-            onClicked: {
-                desktopiconsetpage.init_icon_theme_flag = true;
-                if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
-                    desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
-                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                    statusImage.visible = true;
-                }
+        Row{
+            spacing: 40
+            Text {
+                id: iconthemelabel
+                text: "图标主题"
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.ComboBox {
+                id: iconcombo
+                model: choices
+                width: 200
+                onSelectedTextChanged: console.log(selectedText)
             }
         }
-        Common.Button {
-            hoverimage: "use.png"
-            anchors.left: okBtn.right
-            anchors.leftMargin: 38
-            width: 124
-            height: 30
-            onClicked: {
-                if(desktopiconsetpage.init_icon_theme_flag == true) {
-                    desktopiconsetpage.init_icon_theme_flag;
-                    sessiondispatcher.set_icon_theme_qt(desktopiconsetpage.init_icon_theme);
-                    statusImage.visible = true;
+        Row{
+            spacing: 38
+            Common.Button {
+                id: okBtn
+                width: 95;height: 30
+                hoverimage: "ok.png"
+                onClicked: {
+                    desktopiconsetpage.init_icon_theme_flag = true;
+                    if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
+                        console.log("333");
+                        desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
+                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+                        statusImage.visible = true;
+                    }
+                    else
+                        console.log("444");
                 }
-                else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的图标主题已经为默认设置！");
             }
+            Common.Button {
+                hoverimage: "use.png"
+                width: 124
+                height: 30
+                onClicked: {
+                    if(desktopiconsetpage.init_icon_theme_flag == true) {
+                        desktopiconsetpage.init_icon_theme_flag;
+                        sessiondispatcher.set_icon_theme_qt(desktopiconsetpage.init_icon_theme);
+                        statusImage.visible = true;
+                    }
+                    else
+                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的图标主题已经为默认设置！");
+                }
+            }
+            Timer {
+                     interval: 5000; running: true; repeat: true
+                     onTriggered: statusImage.visible = false
+                 }
         }
-        Timer {
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: statusImage.visible = false
-             }
     }
 
     Row {
@@ -393,6 +402,15 @@ Rectangle {
                 pageStack.push(functioncollection)
         }
         onOkBtnClicked: {
+//            console.log("dekstop ok");
+            //default:ubuntukylin-icon-theme
+//            if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
+//                console.log("333");
+//                desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
+//                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//            }
+//            else
+//                console.log("444");
         }
     }
 }

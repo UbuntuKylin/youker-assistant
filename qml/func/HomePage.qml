@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -55,14 +58,14 @@ Rectangle {
                 //坐边栏
                 LeftPage {
                     id: leftbar
-                    anchors.left: parent.left
-                    anchors.leftMargin: -2
+//                    anchors.left: parent.left
+//                    anchors.leftMargin: -2
                     width: 600; height: screen.height
                 }
                RightPage {
                     id: rightbar
-                    anchors.left: leftbar.right
-                    anchors.leftMargin: 0
+//                    anchors.left: leftbar.right
+//                    anchors.leftMargin: 0
                     width: screen.width - 600; height: screen.height
                 }
             }//左右布局Row

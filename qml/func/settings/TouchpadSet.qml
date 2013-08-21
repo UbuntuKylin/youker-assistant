@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -13,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 1.1
 //import RegisterMyType 0.1
 import SessionType 0.1
@@ -41,6 +45,8 @@ Rectangle {
     Component.onCompleted: {
         touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
         touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();//edge-scrolling
+//        console.log("888888888");
+//        console.log(touchpadsetpage.touchscrolling_mode);
         if (sessiondispatcher.get_touchpad_enable_qt())
             touchpadswitcher.switchedOn = true;
         else
@@ -118,9 +124,11 @@ Rectangle {
             width: 110
             onSwitched: {
                 if (touchpadswitcher.switchedOn) {
+                    console.log("触摸板开关on---------------");
                     sessiondispatcher.set_touchpad_enable_qt(true);
                 }
                 else if(!touchpadswitcher.switchedOn) {
+                    console.log("触摸板开关off---------------");
                     sessiondispatcher.set_touchpad_enable_qt(false);
                 }
             }
@@ -181,13 +189,13 @@ Rectangle {
                         id:overlay
                         titleName: "特色类型" //overlay模式
                         flag: "radio"
-                        onClicked: {}
+                        onClicked: console.log(overlay.checked)
                     }
                     Common.CheckBox {
                         id: legacy
                         titleName: "标准类型"  //legacy模式
                         flag: "radio"
-                        onClicked: {}
+                        onClicked: console.log(legacy.checked)
                     }
     //            }
             }
@@ -216,13 +224,13 @@ Rectangle {
                         id:edge
                         titleName: "边缘触发"//"edge模式"
                         flag: "radio"
-                        onClicked: {}
+                        onClicked: console.log(edge.checked)
                     }
                     Common.CheckBox {
                         id: twofinger
                         titleName: "双指触发"//"twofinger模式"
                         flag: "radio"
-                        onClicked: {}
+                        onClicked: console.log(twofinger.checked)
                     }
     //            }
             }

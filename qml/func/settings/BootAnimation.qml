@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -13,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 1.1
 //import SessionType 0.1
 import SystemType 0.1
@@ -41,6 +45,7 @@ Rectangle {
         anchors.fill: parent
     }
     Component.onCompleted: {
+        console.log("boot......................................");
         systemdispatcher.plymouth_init_check_qt();
         var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
         bootimagepage.num = plymouth_list.length;
@@ -48,7 +53,7 @@ Rectangle {
         for(var i=0; i < plymouth_list.length; i++) {
             mainModel.append({"itemTitle": plymouth_list[i]});
         }
-        bootimagepage.selectedimage = plymouth_list[0];
+//        bootimagepage.selectedimage = plymouth_list[0];
         if(30*plymouth_list.length<=lisv_height)
         {
             scrollbar_z=-1

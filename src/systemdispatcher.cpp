@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -53,6 +56,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
 //    QObject::connect(systemiface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
 
     notify_str = "";
@@ -60,6 +64,11 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     onekey_args << "cache" << "history" << "cookies" << "unneed";
     onekey_args2 << "cache" << "history" << "cookies" << "unneed";
 
+}
+
+void SystemDispatcher::handler_clear_rubbish_second_error(QString msg)
+{
+     emit finishCleanWorkSecondError(msg);
 }
 
 void SystemDispatcher::exit_qt()
@@ -79,12 +88,16 @@ QString SystemDispatcher::get_system_daemon_qt_default() {
 
 bool SystemDispatcher::judge_process(/*QString flagstr, QString pwd*/) {
     QString system_value = get_system_daemon_qt_default();
+    qDebug() << system_value;
     if (system_value == "SystemDaemon") {
+        qDebug() << "SystemDaemon11111";
         return true;
     }
     else {
+        qDebug() << "SystemDaemon222";
         QProcess *process = new QProcess;
         process->start("/usr/bin/youkersystem");
+        qDebug() << "SystemDaemon333";
         return false;
 
     }
@@ -109,17 +122,20 @@ bool SystemDispatcher::setup() {
         QByteArray ba1 = cmd1.toLatin1();
         const char *transpd = ba1.data();
         int bb = system(transpd);
+        qDebug() << bb;
         if (bb == 0) {
             QString cmd2 = "echo " + pwd + " | sudo -S rm /usr/bin/youker.txt";
             QByteArray ba2 = cmd2.toLatin1();
             const char *transpd2 = ba2.data();
             int bb1 = system(transpd2);
+            qDebug() << bb1;
             value =  judge_process();
             return value;
         }
         else {
             AuthDialog *dialog = new AuthDialog("提示：密码已更改，请重新输入正确密码，保证优客助手的正常使用。");
             dialog->exec();
+            qDebug() << passwd;
             QByteArray ba = passwd.toLatin1();
             const char *mypd = ba.data();
             FILE *fp;
@@ -152,16 +168,13 @@ bool SystemDispatcher::setup() {
 
 void SystemDispatcher::get_music_path(QString musicpath) {
     music_path = musicpath;
+    qDebug() << "get_music_path is ->";
+    qDebug() << music_path;
 }
 
 void SystemDispatcher::set_homedir_qt() {
     QString homedir = QDir::homePath();
     systemiface->call("set_homedir", homedir);
-}
-
-void SystemDispatcher::set_user_homedir_qt() {
-    QString homedir = QDir::homePath();
-    systemiface->call("set_user_homedir", homedir);
 }
 
 void SystemDispatcher::set_history_flag(bool flag) {
@@ -255,12 +268,6 @@ void SystemDispatcher::plymouth_init_check_qt() {
 
 //-----------------------------------------------
 
-QString SystemDispatcher::split_music_format(QString music_name) {
-    QString str = music_name;
-    int index = str.lastIndexOf('.');
-    QString need_str = str.mid(index, music_name.length());
-    return need_str;
-}
 
 QString SystemDispatcher::show_file_dialog(QString flag) {
     if (flag == "bootanimation") {
@@ -268,22 +275,8 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
         return bootfileName;
     }
     else if (flag == "soundeffects") {
-
         QString musicfileName = QFileDialog::getOpenFileName(0, tr("选择音乐"), "", tr("Music Files (*.ogg *.wav *.mp3 *.wma)"));
-        QString format = split_music_format(musicfileName);
-        QString songfile = "/tmp/song" + format;
-        QFileInfo info(songfile);
-        if(info.exists()) {
-            QFile fileTemp(songfile);
-            fileTemp.remove();
-        }
-        if(!QFile::copy(musicfileName, songfile))
-        {
-            qDebug() << "copy failed";
-            return musicfileName;
-        }
-        qDebug() << "copy successfully";
-        return songfile;
+        return musicfileName;
     }
 }
 
@@ -311,7 +304,10 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
 //}
 //void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
 ////    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
+//    qDebug() << "1111";
+//    qDebug() << strlist;
 //    systemiface->call("clean_cookies_records", strlist);
+//    qDebug() << "222222";
 //}
 //QStringList SystemDispatcher::scan_unneed_packages_qt() {
 //    QDBusReply<QStringList> reply = systemiface->call("scan_unneed_packages");
@@ -374,6 +370,8 @@ void SystemDispatcher::clear_apt_args() {
     apt_args.clear();
 }
 QStringList SystemDispatcher::get_apt_args() {
+    qDebug () << "qt-valve";
+    qDebug() << apt_args;
     return apt_args;
 }
 
@@ -506,6 +504,7 @@ QStringList SystemDispatcher::get_largestfile_args() {
 ////    if (reply.isValid()) {
 ////        QMap<QString, QStringList> value = reply.value();
 //////        myinfo = value;
+////        qDebug() << value;
 ////    }
 ////    else {
 ////        qDebug() << "get same file failed!";
@@ -521,6 +520,7 @@ int SystemDispatcher::get_the_record_qt(QString mode) {
 //        return value;
 //    }
 //    else {
+//        qDebug() << "get record number failed!";
 //        return 0;
 //    }
 }
@@ -534,9 +534,12 @@ QMap<QString, QVariant> SystemDispatcher::search_same_files(QString path) {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("search_the_same", path);
     return reply.value();
 //    if (reply.isValid()) {
+//        qDebug() << "aaaaaaaaaaaaa";
+//        qDebug() << reply.value();
 //        return reply.value();
 //    }
 //    else {
+//        qDebug() << "search_the_same failed!";
 ////        return "search_the_same has error";
 //    }
 }
@@ -546,9 +549,11 @@ QStringList SystemDispatcher::search_largest_file(QString path) {
     return reply.value();
 //    if (reply.isValid()) {
 //        QStringList value = reply.value();
+//        qDebug() << value;
 //        return reply.value();
 //    }
 //    else {
+//        qDebug() << "search_the_large failed!";
 ////        return "search_the_large has error";
 //    }
 }
@@ -571,11 +576,20 @@ QMap<QString, QVariant> SystemDispatcher::scan_by_one_key_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("scan_by_one_key");
     return reply.value();
 //    if (reply.isValid()) {
+//        qDebug() << reply.value()["cookies"];
+//        qDebug() << reply.value()["history"];
+//        qDebug() << "cccccccccccc";
 //        QString aa = reply.value()["unneed"].toString();
+//        qDebug() <<aa;
+//        qDebug() << "dddddddddddd";
+//        qDebug() <<aa.split("<1_1>");
 //        QVariant(QString, "linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
 //        <1_1>linux-headers-3.8.0-19-generic<2_2>Linux kernel headers for version 3.8.0 on 32 bit x86 SMP<2_2>11802624
 //        <1_1>linux-headers-generic<2_2>Generic Linux kernel headers<2_2>33792")
 //        return reply.value();
+//    }
+//    else {
+//        qDebug() << "scan_by_one_key failed!";
 //    }
 }
 
@@ -583,4 +597,7 @@ QMap<QString, QVariant> SystemDispatcher::scan_by_one_key_qt() {
 void SystemDispatcher::show_passwd_dialog() {
     AuthDialog *dialog = new AuthDialog;
     dialog->exec();
+//    qDebug() << "passwd111";
+//    qDebug() << passwd;
+//    qDebug() << "passwd222";
 }

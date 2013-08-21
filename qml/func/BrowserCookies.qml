@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -63,11 +66,12 @@ Item {
             else
                 root.null_flag = false;
             root.sub_num = cookies_data.length;
+            console.log(root.sub_num);
             systemdispatcher.clear_cookies_args();
             subModel.clear();
             var num = 0;
             for (var i=0; i< cookies_data.length; i++) {
-                //sina.com.cn<2_2>10
+                console.log(cookies_data[i]);//sina.com.cn<2_2>10
                 var splitlist = cookies_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -120,13 +124,17 @@ Item {
         target: sessiondispatcher
 //        target: systemdispatcher
 //         onFinishScanWork: {
+//             console.log("begin onFinishScanWork..............");
         //             if (btn_flag == "cookies_scan") {
+        //                 console.log("******cookies_scan Signal handler received  Start******");
+        ////                 console.log(msg);
         ////                 titleBar.work_result = msg;
         //                 titleBar.state = "CookiesWork";
         //             }
 
 //         }
         onFinishCleanWork: {
+//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "cookies_work") {
                 if (msg == "cookies") {
                     root.work_result = msg;
@@ -170,28 +178,23 @@ Item {
                 color: "#7a7a7a"
             }
         }
-
+    }
+    Row{
+        anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
+        spacing: 20
         //status picture
         Image {
             id: statusImage
             source: "../img/toolWidget/unfinish.png"
             fillMode: "PreserveAspectFit"
             smooth: true
-            anchors {
-//                        top: parent.top; topMargin: 110
-//                        left: parent.left; leftMargin: 650
-                right: label.left
-                rightMargin: 20
-                verticalCenter: parent.verticalCenter
-            }
+            anchors.verticalCenter: parent.verticalCenter
         }
 
         Common.Label {
             id: label
             visible: false
             text: ""
-            anchors.right: bitButton.left
-            anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -200,9 +203,6 @@ Item {
             width: 120
             height: 39
             hoverimage: "scan-start.png"
-//            text: root.btn_text
-            anchors.right: parent.right
-            anchors.rightMargin: 50
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 //broswer cookies
@@ -252,62 +252,56 @@ Item {
                 x: 5; y: 2
                 width: root.width
                 height: root.itemHeight
-                spacing: 10
-                Image {
-                    id: clearImage
-                    fillMode: "PreserveAspectFit"
-                    height: parent.height*0.9
-                    source: picture
-                    smooth: true
-                }
-
-                Column {
-                    id: status_update_content
-                    spacing: 5
-                    anchors {
-                        left: clearImage.right; leftMargin: 15
-                        verticalCenter: parent.verticalCenter
+                spacing: 180
+                Row{
+                    spacing: 15
+                    Image {
+                        id: clearImage
+                        fillMode: "PreserveAspectFit"
+                        height: parent.height*0.9
+                        source: picture
+                        smooth: true
                     }
-                    Text {
-                        text: itemTitle
-                        font.pointSize: 11
-                        color: "black"
-                    }
-                    Text {
-                        text: detailstr
-                        font.pointSize: 9
-                        color: "gray"
-                    }
-                }
 
-
-                Image {
-                    id: arrow
-                    fillMode: "PreserveAspectFit"
-//                    height: parent.height*0.3
-                    height: 28
-                    width: 26
-                    source: root.arrow
-                    //当鼠标点击后,箭头图片旋转90度
-//                    rotation: expanded ? 90 : 0
-                    rotation: expanded ? 0 : -180
-                    smooth: true
-                    anchors {
-                        left: clearImage.right
-                        verticalCenter: parent.verticalCenter
-                        leftMargin: 750
-                    }
-                }
-
-                MouseArea {
-                    id: mouseRegion
-                    anchors.fill: status_update_content
-                    onPressed: {
-                        expanded = !expanded
+                    Column {
+                        id: status_update_content
+                        spacing: 5
+                        anchors.verticalCenter: parent.verticalCenter
+                        Text {
+                            text: itemTitle
+                            font.pointSize: 11
+                            color: "black"
+                        }
+                        Text {
+                            text: detailstr
+                            font.pointSize: 9
+                            color: "gray"
+                        }
                     }
                 }
             }//母项Row
-
+            Image {
+                id: arrow
+                fillMode: "PreserveAspectFit"
+//                    height: parent.height*0.3
+                height: 28
+                width: 26
+                x:740
+                y:15
+                source: root.arrow
+                //当鼠标点击后,箭头图片旋转90度
+//                    rotation: expanded ? 90 : 0
+                rotation: expanded ? 0 : -180
+                smooth: true
+                MouseArea {
+                    id: mouseRegion
+                    anchors.fill: parent
+                    onPressed: {
+//                        console.log(root.width)
+                        expanded = !expanded
+                    }
+                }
+            }
             //子项
             Item {
                 id: subItemsRect
@@ -350,7 +344,7 @@ Item {
 
                             btn_flag: root.btn_flag
 
-                            onClicked: {}
+                            onClicked: {/*console.log(number)*/}
                         }
 
                     }//Repeater

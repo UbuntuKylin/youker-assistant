@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -13,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 1.1
 import SessionType 0.1
 //import SystemType 0.1
@@ -45,7 +49,9 @@ Rectangle {
     }
 
     function change_status() {
+        console.log("11111111111111");
         statusImage.visible = false;
+        console.log("222222222222222");
     }
     ListModel {
         id: themeModel
@@ -78,8 +84,8 @@ Rectangle {
                  Image {
                      id: seticon
                      source: icon
-                     anchors.top: parent.top
-                     anchors.topMargin: 5
+//                     anchors.top: parent.top
+//                     anchors.topMargin: 5
 //                     width: griditem.width - 20
 //                     height: griditem.height - 30
                      width: 120
@@ -118,6 +124,7 @@ Rectangle {
 //                     iconClicked();
                      griditem.GridView.view.currentIndex = index;
                      widgetthemepage.selected_theme = name;
+//                     console.log(name);
 //                     sessiondispatcher.set_theme_qt(name);
                  }
              }
@@ -212,6 +219,7 @@ Rectangle {
                  pageStack.push(functioncollection)
          }
          onOkBtnClicked: {
+             console.log("widgettheme ok");
              if (widgetthemepage.selected_theme == "")
                  sessiondispatcher.set_theme_qt(widgetthemepage.init_theme);
              else {

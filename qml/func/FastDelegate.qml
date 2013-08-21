@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -42,7 +45,7 @@ import SessionType 0.1
             //checkbox, picture and words
             Row {
                 id: lineLayout
-                spacing: 10
+                spacing: 15
                 anchors {
                     fill: parent
                     left: parent.left
@@ -60,7 +63,7 @@ import SessionType 0.1
                         //kobe: wait for adding function
                         if (checkbox.checked) {
                             //----------------首页一键清理----------------
-                            if (pagenum == "first") {
+                            if (clearDelegate.pagenum == "first") {
                                 if (clearflag == "cache") {
                                     var rubbishlist = systemdispatcher.get_onekey_args();
                                     var word_flag = "false";
@@ -71,7 +74,9 @@ import SessionType 0.1
                                         }
                                     }
                                     if (word_flag == "false") {
+                                        console.log("no word_flag");
                                         systemdispatcher.set_onekey_args(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                 }
                                 else if (clearflag == "history") {
@@ -84,7 +89,9 @@ import SessionType 0.1
                                         }
                                     }
                                     if (word_flag1 == "false") {
+                                        console.log("no word_flag");
                                         systemdispatcher.set_onekey_args(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                 }
                                 else if (clearflag == "cookies") {
@@ -97,7 +104,9 @@ import SessionType 0.1
                                         }
                                     }
                                     if (word_flag2 == "false") {
+                                        console.log("no word_flag");
                                         systemdispatcher.set_onekey_args(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                 }
                                 else if (clearflag == "unneed") {
@@ -110,13 +119,15 @@ import SessionType 0.1
                                         }
                                     }
                                     if (word_flag3 == "false") {
+                                        console.log("no word_flag");
                                         systemdispatcher.set_onekey_args(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                 }
                             }
 
                             //----------------系统清理页面的一键清理----------------
-                            else if (pagenum == "second") {
+                            else if (clearDelegate.pagenum == "second") {
                                 if (clearflag == "cache") {
                                     var rubbishlist2 = systemdispatcher.get_onekey_args2();
                                     var second_flag = "false";
@@ -127,7 +138,9 @@ import SessionType 0.1
                                         }
                                     }
                                     if (second_flag == "false") {
+                                        console.log("no word_flag");
                                         systemdispatcher.set_onekey_args2(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                 }
                                 else if (clearflag == "history") {
@@ -141,6 +154,7 @@ import SessionType 0.1
                                     }
                                     if (second_flag2 == "false") {
                                         systemdispatcher.set_onekey_args2(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                 }
                                 else if (clearflag == "cookies") {
@@ -154,10 +168,12 @@ import SessionType 0.1
                                     }
                                     if (second_flag3 == "false") {
                                         systemdispatcher.set_onekey_args2(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                 }
                                 else if (clearflag == "unneed") {
                                     var mylist2 = systemdispatcher.get_onekey_args2();
+                                    console.log("ok change............");
                                     var second_flag4 = "false";
                                     for (var w=0; w<mylist2.length; w++) {
                                         if (mylist2[w] == clearflag) {
@@ -167,12 +183,13 @@ import SessionType 0.1
                                     }
                                     if (second_flag4 == "false") {
                                         systemdispatcher.set_onekey_args2(clearflag);
+                                        console.log(systemdispatcher.get_package_args());
                                     }
                                 }
                             }
 
                             //----------------清理历史记录----------------
-                            else if (pagenum == "history") {
+                            else if (clearDelegate.pagenum == "history") {
                                 systemdispatcher.set_history_flag(true);
                             }
 
@@ -181,8 +198,9 @@ import SessionType 0.1
 
 
                         else if (!checkbox.checked) {
+//                            console.log("首页一键清理 checked false...........");
                             //----------------首页一键清理----------------
-                            if (pagenum == "first") {
+                            if (clearDelegate.pagenum == "first") {
                                 if (clearflag == "cache") {
                                     systemdispatcher.del_onekey_args(clearflag);
                                 }
@@ -196,9 +214,12 @@ import SessionType 0.1
                                 else if (clearflag == "unneed") {
                                     systemdispatcher.del_onekey_args(clearflag);
                                 }
+                                console.log(clearflag);
+                                console.log(systemdispatcher.get_onekey_args());
                             }
                             //----------------系统清理页面的一键清理----------------c
-                            else if (pagenum == "second") {
+                            else if (clearDelegate.pagenum == "second") {
+                                console.log("second no check...........");
                                 if (clearflag == "cache") {
                                     systemdispatcher.del_onekey_args2(clearflag);
                                 }
@@ -212,10 +233,12 @@ import SessionType 0.1
                                 else if (clearflag == "unneed") {
                                     systemdispatcher.del_onekey_args2(clearflag);
                                 }
+                                console.log(clearflag);
+                                console.log(systemdispatcher.get_onekey_args2());
                             }
 
                             //----------------清理历史记录----------------
-                            else if (pagenum == "history") {
+                            else if (clearDelegate.pagenum == "history") {
                                 systemdispatcher.set_history_flag(false);
                             }
                         }
@@ -225,19 +248,12 @@ import SessionType 0.1
                     id: clearImage
                     width: 40; height: 42
                     source: picturename
-                    anchors {
-                        left: checkbox.right; leftMargin: 15
-                        verticalCenter: parent.verticalCenter
-                    }
-
+                    anchors.verticalCenter: parent.verticalCenter
                 }
 
                 Column {
                     spacing: 5
-                    anchors {
-                        left: clearImage.right; leftMargin: 15
-                        verticalCenter: parent.verticalCenter
-                    }
+                    anchors.verticalCenter: parent.verticalCenter
                     Text {
                         text: titlename
                         font.bold: true

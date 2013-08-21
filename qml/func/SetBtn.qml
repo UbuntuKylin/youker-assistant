@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -37,6 +40,7 @@ Rectangle {
     Connections{
          target: systemdispatcher
          onFinishCleanWorkMain: {
+             console.log(msg);
             if (msg == "") {
                  menulogo.enabled=true;
              }
@@ -52,6 +56,7 @@ Rectangle {
     Connections{
          target: sessiondispatcher
          onFinishCleanWorkMain: {
+             console.log(msg);
             if (msg == "") {
                  menulogo.enabled=true;
              }
@@ -132,18 +137,16 @@ Rectangle {
             {
                 if (setbtn_flag == "onekey") {
                     send_dynamic_picture("onekey");
-                    systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
                     sessiondispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
                     btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
                     menulogo.enabled=false;
                 }
                 else if (setbtn_flag == "smallonekey") {
-                    systemdispatcher.set_user_homedir_qt();
                     sessiondispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
-                    systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
-                    btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
-                    menulogo.enabled=false;
+//                    systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
+                        btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
+                        menulogo.enabled=false;
                 }
                 else if (setbtn_flag == "set")
                     console.log("set clicked....");

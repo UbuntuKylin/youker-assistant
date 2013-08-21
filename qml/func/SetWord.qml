@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -51,6 +54,7 @@ Rectangle {
                 pageStack.push(mousepointerpage);
             else if (flag == "SoundEffects") {
                 pageStack.push(soundeffectspage);
+//                console.log("SoundEffects clicked....");
 //                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
 //                if (component_sound.status == Component.Ready) {
 //                    pageStack.push(component_sound);
@@ -58,6 +62,7 @@ Rectangle {
             }
             else if (flag == "BootAnimation") {
                 pageStack.push(bootanimationpage);
+//                console.log("BootAnimation clicked....");
 //                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
 //                if (component_boot.status == Component.Ready) {
 //                    pageStack.push(component_boot);

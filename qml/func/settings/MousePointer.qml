@@ -1,6 +1,9 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -160,15 +163,15 @@ Rectangle {
                 Common.CheckBox {
                     id: smallstyle
                     checked: false
-                    titleName: "小号"//24
+                    titleName: "小号"
                     flag: "radio"
-                    onClicked: {}
+                    onClicked: console.log(smallstyle.checked) //24
                 }
                 Common.CheckBox {
                     id: bigstyle
-                    titleName: "大号"//36
+                    titleName: "大号"
                     flag: "radio"
-                    onClicked: {}
+                    onClicked: console.log(bigstyle.checked) //36
                 }
             }
         }
