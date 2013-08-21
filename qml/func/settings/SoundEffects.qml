@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -54,7 +51,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        console.log("sound......................................");
         soundeffectspage.init_sound_flag = false;
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
@@ -168,7 +164,6 @@ Rectangle {
                     soundeffectspage.init_sound_flag = true;
                     musicmodel.clear();
                     var musiclist=systemdispatcher.get_sounds_qt();
-                    console.log(musiclist);
                     for(var l=0; l < musiclist.length; l++) {
                         musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
                     }
@@ -523,14 +518,6 @@ Rectangle {
                 pageStack.push(functioncollection)
         }
         onOkBtnClicked: {
-//            console.log("sound ok");
-//            if (soundeffectspage.default_sound != soundcombo.selectedText) {
-//                console.log("111");
-//                soundeffectspage.default_sound = soundcombo.selectedText;
-//                sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
-//            }
-//            else
-//                console.log("222");
         }
     }
 }

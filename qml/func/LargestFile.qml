@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -16,7 +13,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 
 import QtQuick 1.1
 import SessionType 0.1
@@ -67,7 +63,7 @@ Item {
         subModel.clear();
         var num = 0;
         for (var i=0; i< largestfile_data.length; i++) {
-//                console.log(unneed_data[i]);//linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
+        //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
             var splitlist = largestfile_data[i].split("<2_2>");
             if (splitlist[0] == "") {
                 num++;
@@ -79,7 +75,6 @@ Item {
         }
         root.sub_num -= num;
         mainModel.clear();
-        console.log(systemdispatcher.get_largestfile_args());
         mainModel.append({"itemTitle": "清理最大文件",
                          "picture": "../img/toolWidget/deb-min.png",
                          "detailstr": "清理用户指定目录下的最大文件，节省磁盘空间",
@@ -120,16 +115,12 @@ Item {
         target: systemdispatcher
 //         onFinishScanWork: {
         //             if (btn_flag == "package_scan") {
-        //                 console.log("******package_scan Signal handler received  Start******");
-        ////                 console.log("33333333333333");
-        ////                 console.log(msg);
         //                 titleBar.work_result = msg;
         //                 titleBar.state = "UnneedWork";
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "largestfile_work") {
                 if (msg == "largestfile") {
                     root.work_result = msg;
@@ -217,7 +208,6 @@ Item {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                     }
                     else if(root.null_flag == false) {
-                        console.log(systemdispatcher.get_largestfile_args());
                         systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
 //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                         root.state = "LargestFileWorkFinish";
@@ -371,7 +361,7 @@ Item {
 
                             btn_flag: root.btn_flag
 
-                            onClicked: {/*console.log(number)*/}
+                            onClicked: {}
                         }
 
                     }//Repeater

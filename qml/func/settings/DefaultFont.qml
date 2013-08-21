@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -75,8 +72,6 @@ Rectangle {
     {
         target: sessiondispatcher
         onFinishSetFont: {
-            console.log("onFinishSetFont.........");
-            console.log(font_style)
             if (font_style == "font") {
                 defaultfontpage.current_font_flag = true;
                 sysfont.text = sessiondispatcher.get_font_qt();
@@ -441,9 +436,7 @@ Rectangle {
             else if (num == 4)
                 pageStack.push(functioncollection)
         }
-        onOkBtnClicked: {
-            /*console.log("default font ok");
-            sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);*/}
+        onOkBtnClicked: {}
     }
     Timer {
              interval: 5000; running: true; repeat: true

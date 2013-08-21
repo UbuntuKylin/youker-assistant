@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -64,7 +61,6 @@ Item {
             subModel.clear();
             var num = 0;
             for (var i=0; i< apt_data.length; i++) {
-//                console.log(apt_data[i]);//sina.com.cn<2_2>10
                 var splitlist = apt_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -95,17 +91,12 @@ Item {
     {
         target: systemdispatcher
 //         onFinishScanWork: {
-//             console.log("begin onFinishScanWork..............");
 //             if (btn_flag == "apt_scan") {
-//                 console.log("******apt_scan Signal handler received  Start******");
-////                 console.log(msg);
 //                 titleBar.work_result = msg;
 //                 titleBar.state = "AptWork";
-////                 console.log("******End******");
 //             }
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "apt_work") {
                 if (msg == "apt") {
                     root.work_result = msg;
@@ -211,7 +202,6 @@ Item {
                         root.state = "AptWork";
                  }
                  else if (btn_flag == "apt_work") {
-                       console.log(systemdispatcher.get_apt_args());
                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
                  }
             }
@@ -299,7 +289,6 @@ Item {
                     id: mouseRegion
                     anchors.fill: status_update_content
                     onPressed: {
-//                        console.log(root.width)
                         expanded = !expanded
                     }
                 }
@@ -344,7 +333,7 @@ Item {
                             fontColor: root.subItemFontColor
                             textIndent: 20
                             btn_flag: root.btn_flag
-                            onClicked: {/*console.log(number)*/}
+                            onClicked: {}
                         }
 
                     }//Repeater

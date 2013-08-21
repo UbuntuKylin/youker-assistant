@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -16,7 +13,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 #include <QApplication>
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
@@ -65,12 +61,6 @@
 
 void registerTypes()
 {
-    //    qmlRegisterType<Person>("People",1,0,"Person");
-        //通过qmlRegisterType<Person>("People",1,0,"Person");
-    //    向QML中导出Person类，这个类在People包中，在QML中需要使用Person类的
-    //    话就必须包含People包，通过import People 1.0来包含，之后就可以使用Person
-    //    创建对象使用来。
-    //    qmlRegisterType<DispatcherQml>("RegisterMyType", 0, 1, "Dispatcher");
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
@@ -106,23 +96,16 @@ int main(int argc, char** argv)
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
     registerTypes();
 
-    int b = system("/usr/bin/youkersession &");
-    qDebug() << b;
-    qDebug() << "SessionDaemon222";
-    int a = system("/usr/bin/youkersystem");
-    qDebug() << "a->";
-    qDebug() << a;
+    int value_session = system("/usr/bin/youkersession &");
+    if (value_session != 0)
+        qDebug() << "SessionDaemon Failed!";
+    int value_system = system("/usr/bin/youkersystem");
+    if (value_system != 0)
+        qDebug() << "SystemDaemon Failed!";
 
     IhuApplication application(argc, argv);
-//    SessionDispatcher *session = new SessionDispatcher();
-//    int a = system("/usr/bin/youkersystem");
-//    qDebug() << "a->";
-//    qDebug() << a;
-//    QString session_value = session->get_session_daemon_qt();
-//    qDebug() << session_value;
-    if (!application.setup(/*session_value*/)) {
+    if (!application.setup()) {
         return 0;
     }
-//    delete session;
     return application.exec();
 }

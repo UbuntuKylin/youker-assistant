@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -66,7 +63,6 @@ Rectangle {
             }
             else if (msg == "h") {
                 historystatus.state = "StatusH";
-                console.log("new test11..............");
             }
             else if (msg == "k") {
                cookiestatus.state = "StatusK";
@@ -230,14 +226,11 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag == "false") {
-                                                        console.log("no word_flag1");
                                                         systemdispatcher.set_onekey_args("cache");
-                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe.checked) {
                                                 systemdispatcher.del_onekey_args("cache");
-                                                console.log(systemdispatcher.get_onekey_args());
                                             }
                                     }
                                 }
@@ -333,14 +326,11 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag1 == "false") {
-                                                        console.log("no word_flag2");
                                                         systemdispatcher.set_onekey_args("history");
-                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe2.checked) {
                                                 systemdispatcher.del_onekey_args("history");
-                                                console.log(systemdispatcher.get_onekey_args());
                                             }
                                     }
                                 }
@@ -437,14 +427,11 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag2 == "false") {
-                                                        console.log("no word_flag3");
                                                         systemdispatcher.set_onekey_args("cookies");
-                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe3.checked) {
                                                 systemdispatcher.del_onekey_args("cookies");
-                                                console.log(systemdispatcher.get_onekey_args());
                                             }
                                     }
                                 }
@@ -543,14 +530,11 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag3 == "false") {
-                                                        console.log("no word_flag4");
                                                         systemdispatcher.set_onekey_args("unneed");
-                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe4.checked) {
                                                 systemdispatcher.del_onekey_args("unneed");
-                                                console.log(systemdispatcher.get_onekey_args());
                                             }
                                     }
                                 }

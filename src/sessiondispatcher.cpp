@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -240,7 +237,6 @@ QString SessionDispatcher::get_value(QString key)
 }
 
 QString SessionDispatcher::show_signal(QString msg) {
-    qDebug() << msg;
     return msg;
 }
 
@@ -252,13 +248,6 @@ bool SessionDispatcher::set_launcher(bool flag) {
 QStringList SessionDispatcher::get_themes() {
     QDBusReply<QStringList> reply = sessioniface->call("get_sys_themes");
     return reply.value();
-//    if (reply.isValid()) {
-//        QStringList value = reply.value();
-//        return reply.value();
-//    }
-//    else {
-//        qDebug() << "get thems msg1 failed!";
-//    }
 }
 
 
@@ -474,7 +463,6 @@ void SessionDispatcher::show_font_dialog(QString flag) {
     {
         QString fontsize = QString("%1").arg(font.pointSize());
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
-        qDebug() << fontstyle;
         if(flag == "font")
             set_font_qt(fontstyle);//set font
         else if(flag == "desktopfont")
@@ -494,12 +482,10 @@ void SessionDispatcher::show_color_dialog() {
     const QColor& color = QColorDialog::getColor(Qt::white, 0);
     if(color.isValid())
     {
-        qDebug() << "OK-----------";
-//        palette.setColor(QPalette::Base, color);
-//        displayTextEdit->setPalette(palette);
+        qDebug() << "OK";
     }
     else
-        qDebug() << "Quit-----------";
+        qDebug() << "Quit";
 
 }
 
@@ -507,7 +493,6 @@ void SessionDispatcher::show_color_dialog() {
 QString SessionDispatcher::show_folder_dialog() {
     QString dir = QFileDialog::getExistingDirectory(0, tr("打开文件夹"), "/home",
                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    qDebug() << dir;
     return dir;
 }
 

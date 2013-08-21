@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -60,7 +57,7 @@ Item {
             subModel.clear();
             var num = 0;
             for (var i=0; i< samenamefile_data.length; i++) {
-//                console.log(unneed_data[i]);//linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
+            //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
                 var splitlist = samenamefile_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -72,7 +69,6 @@ Item {
             }
             root.sub_num -= num;
             mainModel.clear();
-            console.log(systemdispatcher.get_samenamefile_args());
             mainModel.append({"itemTitle": "系统瘦身",
                              "picture": "../img/toolWidget/deb-min.png",
                              "detailstr": "清理同名文件,让系统更瘦",
@@ -115,20 +111,14 @@ Item {
         target: systemdispatcher
 //         onFinishScanWork: {
         //             if (btn_flag == "package_scan") {
-        //                 console.log("******package_scan Signal handler received  Start******");
-        ////                 console.log("33333333333333");
-        ////                 console.log(msg);
         //                 titleBar.work_result = msg;
         //                 titleBar.state = "UnneedWork";
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "samenamefile_work") {
                 if (msg == "samenamefile") {
-                    console.log("******Clear Signal handler received  Start package_work******");
-    //                 console.log(msg);
                     root.work_result = msg;
                     root.state = "SamenameFileWorkFinish";
                 }
@@ -208,13 +198,10 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                  if (btn_flag == "samenamefile_scan") {
-                     console.log("samenamefile_scan---------------");
                      root.state = "LargestFileWork";
                      samenamefile_signal("SamenameFileWork");
                  }
                  else if (btn_flag == "samenamefile_work") {
-                     console.log("samenamefile_work---------------");
-                     console.log(systemdispatcher.get_samenamefile_args());
 //                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_samenamefile_args(), "samenamefile");
                  }
             }
@@ -297,7 +284,6 @@ Item {
                     id: mouseRegion
                     anchors.fill: status_update_content
                     onPressed: {
-//                        console.log(root.width)
                         expanded = !expanded
                     }
                 }
@@ -345,7 +331,7 @@ Item {
 
                             btn_flag: root.btn_flag
 
-                            onClicked: {/*console.log(number)*/}
+                            onClicked: {}
                         }
 
                     }//Repeater
