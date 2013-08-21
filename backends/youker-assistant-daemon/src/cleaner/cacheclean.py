@@ -14,10 +14,13 @@ class CacheClean():
         #print aptcachelist
         return aptcachelist
 
-    def get_softwarecenter_cache(self):
+    def get_softwarecenter_cache(self, homedir):
         centercachelist = []
-        softwarecenter_cache = '~/.cache/software-center/'
-        full_path = os.path.expanduser(softwarecenter_cache)
+        if homedir:
+            softwarecenter_cache = '%s/.cache/software-center' % homedir
+        else:
+            softwarecenter_cache = os.path.expanduser('~/.cache/software-center/')
+        full_path = softwarecenter_cache
         for one in os.listdir(full_path):
             tmp_path = full_path + one
             if os.path.isdir(tmp_path):

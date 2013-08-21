@@ -60,6 +60,7 @@ public:
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);
     Q_INVOKABLE void set_homedir_qt();
+    Q_INVOKABLE void set_user_homedir_qt();
 
     //开机动画
 //    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);

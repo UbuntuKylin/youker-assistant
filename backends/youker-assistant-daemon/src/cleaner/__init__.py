@@ -43,6 +43,9 @@ class OneKeyClean():
         self.objunneed = CleanTheUnneed()
         self.objcache = CleanTheCache()
 
+    def get_user_homedir(self, homedir):
+        self.homedir = homedir
+
     def get_scan_resault(self, mode_list):
         resault_dic = {}
         flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
@@ -51,7 +54,7 @@ class OneKeyClean():
         ### the part of history
         if flag_dic['history']:
             history_list = []
-            objhistory = CleanTheHistory()
+            objhistory = CleanTheHistory(self.homedir)
             tmp_history_list = objhistory.get_scan_resault()
             #tmp_history_str = '<1_1>'.join(tmp_history_list)
             for record in tmp_history_list:
@@ -63,7 +66,7 @@ class OneKeyClean():
         ### the part of cookies
         if flag_dic['cookies']:
             cookies_list = []
-            objcookies = CleanTheCookies()
+            objcookies = CleanTheCookies(self.homedir)
             tmp_cookies_list = objcookies.get_scan_resault()
             for record in tmp_cookies_list:
                 resaultcookies = record.split('<2_2>')[0]
@@ -85,7 +88,7 @@ class OneKeyClean():
         ### the part of cache
         if flag_dic['cache']:
             cache_list = []
-            tmp_cache_dic = self.objcache.get_scan_resault()
+            tmp_cache_dic = self.objcache.get_scan_resault(self.homedir)
             for k in tmp_cache_dic:
                 tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
                 for one in tmp_cache_list:
@@ -139,8 +142,8 @@ class ManageTheLarge():
         
 # the functions of clean the history
 class CleanTheHistory():
-    def __init__(self):
-        self.objh = historyclean.HistoryClean()
+    def __init__(self, homedir = ''):
+        self.objh = historyclean.HistoryClean(homedir)
 
     def get_scan_resault(self):
         idurlcount = self.objh.scan_the_records()
@@ -155,8 +158,8 @@ class CleanTheHistory():
 
 # the function of clean the cookies
 class CleanTheCookies():
-    def __init__(self):
-        self.objc = cookiesclean.CookiesClean()
+    def __init__(self, homedir = ''):
+        self.objc = cookiesclean.CookiesClean(homedir)
 
     def get_scan_resault(self):
         domaincount = self.objc.scan_the_records()
@@ -186,10 +189,10 @@ class CleanTheCache():
     def __init__(self):
         self.objc = cacheclean.CacheClean()
 
-    def get_scan_resault(self):
+    def get_scan_resault(self, homedir = ''):
         resault_dic = {}
         tmp_apt_str = '<1_1>'.join(self.objc.get_apt_cache())
-        tmp_center_str = '<1_1>'.join(self.objc.get_softwarecenter_cache())
+        tmp_center_str = '<1_1>'.join(self.objc.get_softwarecenter_cache(homedir))
         resault_dic['apt'] = tmp_apt_str
         resault_dic['softwarecenter'] = tmp_center_str
         #print resault_dic

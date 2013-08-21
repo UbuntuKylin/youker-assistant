@@ -42,7 +42,6 @@ import time
 
 
 import cleaner
-from cleaner import common
 from beautify.sound import Sound
 from beautify.others import Others
 
@@ -75,6 +74,10 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def set_homedir(self, homedir):
         self.soundconf.set_homedir(homedir)
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_user_homedir(self, homedir):
+        self.daemononekey.get_user_homedir(homedir)
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     #def get_user_cache(self):
     #    return "KOBE"
