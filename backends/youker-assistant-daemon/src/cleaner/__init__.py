@@ -52,13 +52,13 @@ class OneKeyClean():
         for mode in mode_list:
             flag_dic['%s' % mode] = True
         ### the part of unneed
-        #if flag_dic['unneed']:
-        #    unneed_list = []
-        #    tmp_unneed_list = self.objunneed.get_scan_resault()
-        #    for record in tmp_unneed_list:
-        #        resaultunneed = record.split('<2_2>')[0]
-        #        unneed_list.append(resaultunneed)
-        #    resault_dic['unneed'] = unneed_list
+        if flag_dic['unneed']:
+            unneed_list = []
+            tmp_unneed_list = self.objunneed.get_scan_resault()
+            for record in tmp_unneed_list:
+                resaultunneed = record.split('<2_2>')[0]
+                unneed_list.append(resaultunneed)
+            resault_dic['unneed'] = unneed_list
         ### the part of cache
         if flag_dic['cache']:
             cache_list = []
@@ -69,6 +69,7 @@ class OneKeyClean():
                     resaultcache = one.split('<2_2>')[0]
                     cache_list.append(resaultcache)
             resault_dic['cache'] = cache_list
+        return resault_dic
 
 
     def get_scan_resault(self, mode_list):
@@ -101,14 +102,14 @@ class OneKeyClean():
             del objcookies
 
         ### the part of unneed
-        if flag_dic['unneed']:
-            unneed_list = []
-            tmp_unneed_list = self.objunneed.get_scan_resault()
-            for record in tmp_unneed_list:
-                resaultunneed = record.split('<2_2>')[0]
-                unneed_list.append(resaultunneed)
+        #if flag_dic['unneed']:
+        #    unneed_list = []
+        #    tmp_unneed_list = self.objunneed.get_scan_resault()
+        #    for record in tmp_unneed_list:
+        #        resaultunneed = record.split('<2_2>')[0]
+        #        unneed_list.append(resaultunneed)
             #tmp_unneed_str = '<1_1>'.join(tmp_unneed_list)
-            resault_dic['unneed'] = unneed_list
+        #    resault_dic['unneed'] = unneed_list
 
         ### the part of cache
         #if flag_dic['cache']:
