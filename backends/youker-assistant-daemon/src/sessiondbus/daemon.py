@@ -35,7 +35,6 @@ from gi.repository import GObject
 import time
 
 import cleaner
-from cleaner import common
 
 from server import PolicyKitService
 from beautify.desktop import Desktop
