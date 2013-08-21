@@ -44,7 +44,7 @@ class SystemDispatcher : public QObject
 //    Q_PROPERTY(QString myString READ myString WRITE setmyString NOTIFY myStringChanged)
 public:
     explicit SystemDispatcher(QObject *parent = 0);
-//    Q_INVOKABLE QString get_value(QString);
+    QString split_music_format(QString music_name);
     Q_INVOKABLE int get_add_value();
     Q_INVOKABLE void send_btn_msg(QString);
     Q_INVOKABLE void exit_qt();

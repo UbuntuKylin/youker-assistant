@@ -72,6 +72,9 @@ class Daemon(PolicyKitService):
     def exit(self):
         self.mainloop.quit()
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_homedir(self, homedir):
+        self.soundconf.set_homedir(homedir)
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     #def get_user_cache(self):
     #    return "KOBE"

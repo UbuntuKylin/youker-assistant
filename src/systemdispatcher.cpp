@@ -262,6 +262,12 @@ void SystemDispatcher::plymouth_init_check_qt() {
 
 //-----------------------------------------------
 
+QString SystemDispatcher::split_music_format(QString music_name) {
+    QString str = music_name;
+    int index = str.lastIndexOf('.');
+    QString need_str = str.mid(index, music_name.length());
+    return need_str;
+}
 
 QString SystemDispatcher::show_file_dialog(QString flag) {
     if (flag == "bootanimation") {
@@ -269,8 +275,24 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
         return bootfileName;
     }
     else if (flag == "soundeffects") {
+
         QString musicfileName = QFileDialog::getOpenFileName(0, tr("选择音乐"), "", tr("Music Files (*.ogg *.wav *.mp3 *.wma)"));
-        return musicfileName;
+        QString format = split_music_format(musicfileName);
+        QString songfile = "/tmp/song" + format;
+//        qDebug() << "songfile->";
+//        qDebug() << songfile;
+        QFileInfo info(songfile);
+        if(info.exists()) {
+            QFile fileTemp(songfile);
+            fileTemp.remove();
+        }
+        if(!QFile::copy(musicfileName, songfile))
+        {
+            qDebug() << "copy failed";
+            return musicfileName;
+        }
+        qDebug() << "copy successfully";
+        return songfile;
     }
 }
 
