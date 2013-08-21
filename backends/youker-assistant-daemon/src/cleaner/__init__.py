@@ -46,6 +46,31 @@ class OneKeyClean():
     def get_user_homedir(self, homedir):
         self.homedir = homedir
 
+    def get_scan_result_system(self, mode_list):
+        resault_dic = {}
+        flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
+        for mode in mode_list:
+            flag_dic['%s' % mode] = True
+        ### the part of unneed
+        #if flag_dic['unneed']:
+        #    unneed_list = []
+        #    tmp_unneed_list = self.objunneed.get_scan_resault()
+        #    for record in tmp_unneed_list:
+        #        resaultunneed = record.split('<2_2>')[0]
+        #        unneed_list.append(resaultunneed)
+        #    resault_dic['unneed'] = unneed_list
+        ### the part of cache
+        if flag_dic['cache']:
+            cache_list = []
+            tmp_cache_dic = self.objcache.get_scan_resault(self.homedir)
+            for k in tmp_cache_dic:
+                tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
+                for one in tmp_cache_list:
+                    resaultcache = one.split('<2_2>')[0]
+                    cache_list.append(resaultcache)
+            resault_dic['cache'] = cache_list
+
+
     def get_scan_resault(self, mode_list):
         resault_dic = {}
         flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
@@ -54,7 +79,7 @@ class OneKeyClean():
         ### the part of history
         if flag_dic['history']:
             history_list = []
-            objhistory = CleanTheHistory(self.homedir)
+            objhistory = CleanTheHistory()
             tmp_history_list = objhistory.get_scan_resault()
             #tmp_history_str = '<1_1>'.join(tmp_history_list)
             for record in tmp_history_list:
@@ -66,7 +91,7 @@ class OneKeyClean():
         ### the part of cookies
         if flag_dic['cookies']:
             cookies_list = []
-            objcookies = CleanTheCookies(self.homedir)
+            objcookies = CleanTheCookies()
             tmp_cookies_list = objcookies.get_scan_resault()
             for record in tmp_cookies_list:
                 resaultcookies = record.split('<2_2>')[0]
@@ -86,15 +111,15 @@ class OneKeyClean():
             resault_dic['unneed'] = unneed_list
 
         ### the part of cache
-        if flag_dic['cache']:
-            cache_list = []
-            tmp_cache_dic = self.objcache.get_scan_resault(self.homedir)
-            for k in tmp_cache_dic:
-                tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
-                for one in tmp_cache_list:
-                    resaultcache = one.split('<2_2>')[0]
-                    cache_list.append(resaultcache)
-            resault_dic['cache'] = cache_list
+        #if flag_dic['cache']:
+        #    cache_list = []
+        #    tmp_cache_dic = self.objcache.get_scan_resault(self.homedir)
+        #    for k in tmp_cache_dic:
+        #        tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
+        #        for one in tmp_cache_list:
+        #            resaultcache = one.split('<2_2>')[0]
+        #            cache_list.append(resaultcache)
+        #    resault_dic['cache'] = cache_list
 
         # the part of same
         #tmp_same_list = self.objsame.get_scan_resault()
@@ -119,9 +144,7 @@ class SearchTheSame():
 
     def get_scan_resault(self, path):
         self.path = path
-        print 'aaaaaaaaaaa'
         self.objs.search_by_style(self.path)
-        print 'dddddddddddddddd'
         samefile_list = self.objs.adjust_the_dic()
         #pprint.pprint(samefile_list)
         return samefile_list
@@ -142,8 +165,8 @@ class ManageTheLarge():
         
 # the functions of clean the history
 class CleanTheHistory():
-    def __init__(self, homedir = ''):
-        self.objh = historyclean.HistoryClean(homedir)
+    def __init__(self):
+        self.objh = historyclean.HistoryClean()
 
     def get_scan_resault(self):
         idurlcount = self.objh.scan_the_records()
@@ -158,8 +181,8 @@ class CleanTheHistory():
 
 # the function of clean the cookies
 class CleanTheCookies():
-    def __init__(self, homedir = ''):
-        self.objc = cookiesclean.CookiesClean(homedir)
+    def __init__(self):
+        self.objc = cookiesclean.CookiesClean()
 
     def get_scan_resault(self):
         domaincount = self.objc.scan_the_records()

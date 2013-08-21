@@ -68,7 +68,7 @@ class SessionDaemon(PolicyKitService):
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
         self.daemoncache = cleaner.CleanTheCache()
-        #self.daemonclean = cleaner.FunctionOfClean()
+        self.daemonclean = cleaner.FunctionOfClean()
         self.daemononekey = cleaner.OneKeyClean()
 
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
@@ -142,6 +142,14 @@ class SessionDaemon(PolicyKitService):
                 self.clean_error_main_msg('ke')
             else:
                 self.clean_complete_main_msg('k')
+        if 'unneed' in cruft_dic:
+            unneed_cruft_list = cruft_dic['unneed']
+            try:
+                self.daemonclean.clean_the_package(unneed_cruft_list)
+            except Exception, e:
+                self.clean_error_main_msg('ue')
+            else:
+                self.clean_complete_main_msg('u')
 
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def clean_by_second_one_key(self, mode_list):
@@ -167,7 +175,14 @@ class SessionDaemon(PolicyKitService):
                 self.clean_error_second_msg('ke')
             else:
                 self.clean_complete_second_msg('k')
-
+        if 'unneed' in cruft_dic:
+            unneed_cruft_list = cruft_dic['unneed']
+            try:
+                self.daemonclean.clean_the_package(unneed_cruft_list)
+            except Exception, e:
+                self.clean_error_second_msg('ue')
+            else:
+                self.clean_complete_second_msg('u')
 
 
     #@dbus.service.method(INTERFACE, in_signature='ass', out_signature='')

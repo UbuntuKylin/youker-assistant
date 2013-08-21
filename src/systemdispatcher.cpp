@@ -177,6 +177,12 @@ void SystemDispatcher::set_homedir_qt() {
     systemiface->call("set_homedir", homedir);
 }
 
+void SystemDispatcher::set_user_homedir_qt() {
+    QString homedir = QDir::homePath();
+    systemiface->call("set_user_homedir", homedir);
+}
+
+
 void SystemDispatcher::set_history_flag(bool flag) {
     history_flag = flag;
 }

@@ -185,7 +185,7 @@ class Daemon(PolicyKitService):
         flag_str = ''
         tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = {}
-        cruft_dic = self.daemononekey.get_scan_resault(tmp_mode_list)
+        cruft_dic = self.daemononekey.get_scan_result_system(tmp_mode_list)
         #if 'history' in cruft_dic:
         #    history_cruft_list = cruft_dic['history']
         #    daemonhistory = cleaner.CleanTheHistory()
@@ -206,14 +206,14 @@ class Daemon(PolicyKitService):
         #    else:
         #        self.clean_complete_main_msg('k')
 
-        if 'unneed' in cruft_dic:
-            unneed_cruft_list = cruft_dic['unneed']
-            try:
-                self.daemonclean.clean_the_package(unneed_cruft_list)
-            except Exception, e:
-                self.clean_error_main_msg('ue')
-            else:
-                self.clean_complete_main_msg('u')
+        #if 'unneed' in cruft_dic:
+        #    unneed_cruft_list = cruft_dic['unneed']
+        #    try:
+        #        self.daemonclean.clean_the_package(unneed_cruft_list)
+        #    except Exception, e:
+        #        self.clean_error_main_msg('ue')
+        #    else:
+        #        self.clean_complete_main_msg('u')
 
         if 'cache' in cruft_dic:
             cache_cruft_list = cruft_dic['cache']
@@ -252,14 +252,14 @@ class Daemon(PolicyKitService):
         #    else:
         #        self.clean_complete_second_msg('k')
 
-        if 'unneed' in cruft_dic:
-            unneed_cruft_list = cruft_dic['unneed']
-            try:
-                self.daemonclean.clean_the_package(unneed_cruft_list)
-            except Exception, e:
-                self.clean_error_second_msg('ue')
-            else:
-                self.clean_complete_second_msg('u')
+        #if 'unneed' in cruft_dic:
+        #    unneed_cruft_list = cruft_dic['unneed']
+        #    try:
+        #        self.daemonclean.clean_the_package(unneed_cruft_list)
+        #    except Exception, e:
+        #        self.clean_error_second_msg('ue')
+        #    else:
+        #        self.clean_complete_second_msg('u')
 
         if 'cache' in cruft_dic:
             cache_cruft_list = cruft_dic['cache']
