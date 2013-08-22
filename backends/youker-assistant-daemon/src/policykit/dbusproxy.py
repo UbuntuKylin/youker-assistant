@@ -19,23 +19,26 @@
 import dbus
 import logging
 
-#log = logging.getLogger("DbusProxy")
+log = logging.getLogger("DbusProxy")
 
+INTERFACE = 'com.ubuntukylin_tools.daemon'
+PATH = '/'
 SHOWED = False
 
 def show_message(*args):
-    from gui.dialogs import ErrorDialog
-    message = 'Youker Assisant systemdaemon has error.'
-    ErrorDialog(message=message).launch()
+    from dialogs import ErrorDialog
+    title = 'Daemon start failed'
+    message = ('Youker Assisant systemdaemon didn\'t start correctly.\n'
+                'If you want to help developers debugging, try to run "<b>sudo /usr/share/youker-assistant-daemon/src/youkersystem-daemon</b>" in a terminal.')
+    ErrorDialog(title=title, message=message).launch()
 
 def nothing(*args):
     return None
 
 class DbusProxy:
-    INTERFACE = "com.ubuntukylin_tools.daemon"
     try:
         __system_bus = dbus.SystemBus()
-        __object = __system_bus.get_object('com.ubuntukylin_tools.daemon', '/')
+        __object = __system_bus.get_object(INTERFACE, PATH)
     except Exception, e:
         #log.error(e)
         __object = None
@@ -55,7 +58,10 @@ class DbusProxy:
     def get_object(self):
         return self.__object
 
-proxy = DbusProxy()
+def init_dbus(dbus_iface=INTERFACE, dbus_path=PATH):
+    '''init dbus'''
+    proxy = DbusProxy()
+    return proxy
 
 if __name__ == '__main__':
-    print proxy
+    print init_dbus()

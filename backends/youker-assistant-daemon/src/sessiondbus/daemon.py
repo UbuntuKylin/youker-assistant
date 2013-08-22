@@ -52,8 +52,6 @@ PATH = "/"
 #PATH = "/com/ubuntukylin_assistant/daemon"
 TIMEFORMAT = "%H:%M:%S"
 
-UK_ACTION_YOUKER = 'com.ubuntukylin_tools.daemon.youker'
-
 class SessionDaemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
         self.sysconf = Sysinfo()
@@ -90,7 +88,6 @@ class SessionDaemon(PolicyKitService):
     #def clean_cookies_records(self, cruftlist, sender=None):
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def clean_cookies_records(self, cruftlist):
-        #self._check_permission(sender, UK_ACTION_YOUKER)
         daemoncookies = cleaner.CleanTheCookies()
         try:
             daemoncookies.clean_the_cruftlist(cruftlist)
@@ -103,7 +100,6 @@ class SessionDaemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def clean_history_records(self):
-        #self._check_permission(sender, UK_ACTION_YOUKER)
         daemonhistory = cleaner.CleanTheHistory()
         try:
             daemonhistory.clean_the_cruftlist()
