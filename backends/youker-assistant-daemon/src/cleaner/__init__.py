@@ -46,7 +46,7 @@ class OneKeyClean():
     def get_user_homedir(self, homedir):
         self.homedir = homedir
 
-    def get_scan_result_system(self, mode_list):
+    def get_scan_resault_system(self, mode_list):
         resault_dic = {}
         flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
         for mode in mode_list:

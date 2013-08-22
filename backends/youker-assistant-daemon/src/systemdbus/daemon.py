@@ -185,7 +185,7 @@ class Daemon(PolicyKitService):
         flag_str = ''
         tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = {}
-        cruft_dic = self.daemononekey.get_scan_result_system(tmp_mode_list)
+        cruft_dic = self.daemononekey.get_scan_resault_system(tmp_mode_list)
         #if 'history' in cruft_dic:
         #    history_cruft_list = cruft_dic['history']
         #    daemonhistory = cleaner.CleanTheHistory()
