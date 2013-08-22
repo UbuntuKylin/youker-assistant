@@ -168,7 +168,7 @@ Rectangle {
                 id: iconcombo
                 model: choices
                 width: 200
-                onSelectedTextChanged: console.log(selectedText)
+                onSelectedTextChanged: {/*console.log(selectedText)*/}
             }
         }
         Row{
@@ -180,13 +180,10 @@ Rectangle {
                 onClicked: {
                     desktopiconsetpage.init_icon_theme_flag = true;
                     if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
-                        console.log("333");
                         desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
                         sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
                         statusImage.visible = true;
                     }
-                    else
-                        console.log("444");
                 }
             }
             Common.Button {
@@ -402,15 +399,11 @@ Rectangle {
                 pageStack.push(functioncollection)
         }
         onOkBtnClicked: {
-//            console.log("dekstop ok");
             //default:ubuntukylin-icon-theme
 //            if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
-//                console.log("333");
 //                desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
 //                sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
 //            }
-//            else
-//                console.log("444");
         }
     }
 }

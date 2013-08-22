@@ -38,7 +38,6 @@ Rectangle {
 //    function iconClicked() {
 //        scaleMe.state = "Details";
 //        settigsDetails.setTitle = flag;
-////        console.log(settigsDetails.setTitle);
 //    }
 
     //竖列

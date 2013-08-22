@@ -77,7 +77,7 @@ Item {
             subModel.clear();
             var num = 0;
             for (var i=0; i< software_data.length; i++) {
-//                console.log(software_data[i]);//  /home/kobe/.cache/software-center/piston-helper<2_2>3026257
+            //  /home/kobe/.cache/software-center/piston-helper<2_2>3026257
                 var splitlist = software_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -128,18 +128,13 @@ Item {
     {
         target: systemdispatcher
 //         onFinishScanWork: {
-//             console.log("begin onFinishScanWork..............");
         //             if (btn_flag == "software_scan") {
-        //                 console.log("****** software_scan Signal handler received  Start******");
-        ////                 console.log(msg);
         //                 titleBar.work_result = msg;
         //                 titleBar.state = "SoftwareWork";
-        ////                 console.log("******End******");
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "software_work") {
                 if (msg == "software") {
                     root.work_result = msg;
@@ -187,7 +182,6 @@ Item {
     Row{
         anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
         spacing: 20
-
         //status picture
         Image {
             id: statusImage
@@ -305,7 +299,6 @@ Item {
                     id: mouseRegion
                     anchors.fill: parent
                     onPressed: {
-//                        console.log(root.width)
                         expanded = !expanded
                     }
                 }
@@ -352,7 +345,7 @@ Item {
 
                             btn_flag: root.btn_flag
 
-                            onClicked: {/*console.log(number)*/}
+                            onClicked: {}
                         }
 
                     }//Repeater

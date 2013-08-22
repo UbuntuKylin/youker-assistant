@@ -75,8 +75,6 @@ Rectangle {
     {
         target: sessiondispatcher
         onFinishSetFont: {
-            console.log("onFinishSetFont.........");
-            console.log(font_style)
             if (font_style == "font") {
                 defaultfontpage.current_font_flag = true;
                 sysfont.text = sessiondispatcher.get_font_qt();
@@ -445,9 +443,7 @@ Rectangle {
             else if (num == 4)
                 pageStack.push(functioncollection)
         }
-        onOkBtnClicked: {
-            /*console.log("default font ok");
-            sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);*/}
+        onOkBtnClicked: {}
     }
     Timer {
              interval: 5000; running: true; repeat: true

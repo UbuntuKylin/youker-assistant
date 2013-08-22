@@ -45,7 +45,6 @@ Rectangle {
         anchors.fill: parent
     }
     Component.onCompleted: {
-        console.log("boot......................................");
         systemdispatcher.plymouth_init_check_qt();
         var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
         bootimagepage.num = plymouth_list.length;

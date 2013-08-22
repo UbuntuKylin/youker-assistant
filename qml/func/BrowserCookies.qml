@@ -66,12 +66,11 @@ Item {
             else
                 root.null_flag = false;
             root.sub_num = cookies_data.length;
-            console.log(root.sub_num);
             systemdispatcher.clear_cookies_args();
             subModel.clear();
             var num = 0;
             for (var i=0; i< cookies_data.length; i++) {
-                console.log(cookies_data[i]);//sina.com.cn<2_2>10
+                //sina.com.cn<2_2>10
                 var splitlist = cookies_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -124,17 +123,13 @@ Item {
         target: sessiondispatcher
 //        target: systemdispatcher
 //         onFinishScanWork: {
-//             console.log("begin onFinishScanWork..............");
         //             if (btn_flag == "cookies_scan") {
-        //                 console.log("******cookies_scan Signal handler received  Start******");
-        ////                 console.log(msg);
         ////                 titleBar.work_result = msg;
         //                 titleBar.state = "CookiesWork";
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "cookies_work") {
                 if (msg == "cookies") {
                     root.work_result = msg;
@@ -297,7 +292,6 @@ Item {
                     id: mouseRegion
                     anchors.fill: parent
                     onPressed: {
-//                        console.log(root.width)
                         expanded = !expanded
                     }
                 }
@@ -344,7 +338,7 @@ Item {
 
                             btn_flag: root.btn_flag
 
-                            onClicked: {/*console.log(number)*/}
+                            onClicked: {}
                         }
 
                     }//Repeater

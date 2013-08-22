@@ -35,7 +35,6 @@ Rectangle {
 //    function iconClicked() {
 //        scaleMe.state = "Details";
 //        settigsDetails.setTitle = flag;
-////        console.log(settigsDetails.setTitle);
 //    }
 
     Column {
@@ -77,14 +76,12 @@ Rectangle {
             else if (flag == "DesktopiconSet")
                 pageStack.push(desktopiconsetpage);
             else if (flag == "BootAnimation") {
-                console.log("BootAnimation clicked....");
                 var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
                 if (component_boot.status == Component.Ready) {
                     pageStack.push(component_boot);
                 }
             }
             else if (flag == "SoundEffects") {
-                console.log("SoundEffects clicked....");
                 var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
                 if (component_sound.status == Component.Ready) {
                     pageStack.push(component_sound);

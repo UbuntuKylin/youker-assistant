@@ -46,7 +46,6 @@ Item {
     signal history_bnt_signal(string history_msg);
     onHistory_bnt_signal: {
         if (history_msg == "HistoryWork") {
-            console.log(history_msg);
 //            root.num = systemdispatcher.scan_history_records_qt();
             root.num = sessiondispatcher.scan_history_records_qt();
             if (root.num == 0)
@@ -64,22 +63,15 @@ Item {
         target: sessiondispatcher
 //        target: systemdispatcher
 //         onFinishScanWork: {
-//             console.log("begin onFinishScanWork..............");
         //             if (btn_flag == "history_scan") {
-        //                 console.log("******history_scan Signal handler received  Start******");
-        ////                 console.log(msg);
         //                 titleBar.work_result = msg;
         //                 titleBar.state = "HistoryWork";
-        ////                 console.log("******End******");
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "history_work") {
                 if (msg == "history") {
-                    console.log("******Clear Signal handler received  Start history_work******");
-    //                 console.log(msg);
                     root.work_result = msg;
                     root.state = "HistoryWorkFinish";
                 }

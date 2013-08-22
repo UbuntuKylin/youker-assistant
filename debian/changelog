@@ -2,8 +2,9 @@ youker-assistant (0.1.5-0ubuntu1) saucy; urgency=low
 
   * 0.1-Release.
   * Add policykit.
+  * Make bootimage success.
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 19 Aug 2013 18:30:33 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Thu, 22 Aug 2013 11:25:15 +0800
 
 youker-assistant (0.1.4-0ubuntu1) raring; urgency=low
 
