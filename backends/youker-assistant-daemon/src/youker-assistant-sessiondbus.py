@@ -43,6 +43,6 @@ if __name__ == '__main__':
     print("The sessiondbus server is running..........")
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = GObject.MainLoop()
-    SessionDaemon(dbus.SessionBus(), mainloop)
-    #GObject.timeout_add(9000, a.construct_msg)
+    SessionDaemon(mainloop)
+    #SessionDaemon(dbus.SessionBus(), mainloop)
     mainloop.run()
