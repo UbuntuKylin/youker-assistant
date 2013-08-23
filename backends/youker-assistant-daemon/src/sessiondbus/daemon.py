@@ -50,9 +50,7 @@ PATH = "/"
 #PATH = "/com/ubuntukylin_assistant/daemon"
 TIMEFORMAT = "%H:%M:%S"
 
-#class SessionDaemon(PolicyKitService):
 class SessionDaemon(dbus.service.Object):
-    #def __init__ (self, bus, mainloop):
     def __init__ (self, mainloop):
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
@@ -71,7 +69,6 @@ class SessionDaemon(dbus.service.Object):
 
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, PATH)
-        #PolicyKitService.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
 
 #---------------------------------------------------------------------

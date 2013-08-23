@@ -44,5 +44,4 @@ if __name__ == '__main__':
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = GObject.MainLoop()
     SessionDaemon(mainloop)
-    #SessionDaemon(dbus.SessionBus(), mainloop)
     mainloop.run()

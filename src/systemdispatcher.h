@@ -45,7 +45,6 @@ class SystemDispatcher : public QObject
 //    Q_PROPERTY(QString myString READ myString WRITE setmyString NOTIFY myStringChanged)
 public:
     explicit SystemDispatcher(QObject *parent = 0);
-//    Q_INVOKABLE QString get_value(QString);
     Q_INVOKABLE int get_add_value();
     Q_INVOKABLE void send_btn_msg(QString);
     Q_INVOKABLE void exit_qt();
@@ -58,16 +57,12 @@ public:
     //---------------------------------
     //password
     Q_INVOKABLE void show_passwd_dialog();
-    Q_INVOKABLE bool setup();
-    bool judge_process(/*QString flagstr, QString pwd*/);
 
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);
     Q_INVOKABLE void set_homedir_qt();
     Q_INVOKABLE void set_user_homedir_qt();
 
-    //开机动画
-//    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
     Q_INVOKABLE QString show_file_dialog(QString flag);
 
 //    Q_INVOKABLE void clean_by_one_key_qt(QStringList strlist);
@@ -113,16 +108,12 @@ public:
     //-----------------------------------------------
 
 
-
-
 //    Q_INVOKABLE QMap<QString, QStringList> search_the_same_file(QString path);
     Q_INVOKABLE int get_the_record_qt(QString mode);
     Q_INVOKABLE void clean_the_browser_qt(QString mode);
     Q_INVOKABLE QMap<QString, QVariant> search_same_files(QString path);
     Q_INVOKABLE QStringList search_largest_file(QString path);
 
-    //custom_plymouth
-//    QMap<QString, QVariant> myinfo;
     QMap<QString, QVariant> apt_center;
     QDBusInterface *systemiface;
     QDBusInterface *passwordiface;
@@ -182,11 +173,6 @@ public:
 //-------------
 
 
-//    Q_INVOKABLE QString get_str(QString str);
-//    Q_INVOKABLE QMap <int, QString> data;
-//    Q_INVOKABLE QString getMyString();
-
-
     /*-------------------one key scan-------------------*/
     Q_INVOKABLE QMap<QString, QVariant> scan_by_one_key_qt();
 
@@ -213,8 +199,6 @@ public slots:
     void handler_clear_rubbish_second_error(QString msg);
     void handler_scan_rubbish(QString msg);
 //    QString show_signal(QString msg);
-//    void setmyString(QString aString);
-//    QString myString();
 private:
     
 };
