@@ -16,21 +16,12 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-import thread
-import logging
-
-from gi.repository import GObject, Gtk, Gdk, Pango
-from policykit.dbusproxy import proxy
-
-log = logging.getLogger('app')
+from policykit.dbusproxy import init_dbus
 
 class StartDaemon():
     def __init__(self):
+        proxy = init_dbus()
         proxy.get_system_daemon()
-        #self.preload_proxy_cache()
-
-    #def preload_proxy_cache(self):
-    #    proxy.get_user_cache()
 
 if __name__ == '__main__':
     StartDaemon()

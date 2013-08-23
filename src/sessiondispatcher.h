@@ -220,26 +220,3 @@ private:
 };
 
 #endif // SESSIONDISPATCHER_H
-/*
-a 	ARRAY 数组
-b 	BOOLEAN 布尔值
-d 	DOUBLE IEEE 754双精度浮点数
-g 	SIGNATURE 类型签名
-i 	INT32 32位有符号整数
-n 	INT16 16位有符号整数
-o 	OBJECT_PATH 对象路径
-q 	UINT16 16位无符号整数
-s 	STRING 零结尾的UTF-8字符串
-t 	UINT64 64位无符号整数
-u 	UINT32 32位无符号整数
-v 	VARIANT 可以放任意数据类型的容器，数据中包含类型信息。例如glib中的GValue。
-x 	INT64 64位有符号整数
-y 	BYTE 8位无符号整数
-() 	定义结构时使用。例如"(i(ii))"
-{} 	定义键－值对时使用。例如"a{us}"
-
-a表示数组，数组元素的类型由a后面的标记决定。例如：
-    "as"是字符串数组。
-    数组"a(i(ii))"的元素是一个结构。用括号将成员的类型括起来就表示结构了，结构可以嵌套。
-    数组"a{sv}"的元素是一个键－值对。"{sv}"表示键类型是字符串，值类型是VARIANT。
-*/

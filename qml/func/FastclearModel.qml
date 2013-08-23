@@ -25,6 +25,8 @@ Rectangle {
     width: parent.width
     height: 435
     property string onekeypage: "second"
+    property int num: 4
+    property int check_num: num
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
@@ -251,6 +253,10 @@ Rectangle {
                                         checked:true    //将所有选项都check
                                         anchors.verticalCenter: parent.verticalCenter
                                         onCheckedChanged: {
+                                            if(checkboxe.checked)
+                                                fastmode.check_num=fastmode.check_num+1;
+                                            else fastmode.check_num=fastmode.check_num-1;
+
                                             if (checkboxe.checked) {
                                                         var rubbishlist = systemdispatcher.get_onekey_args2();
                                                         var word_flag = "false";
@@ -338,6 +344,10 @@ Rectangle {
                                     checked:true    //将所有选项都check
                                     anchors.verticalCenter: parent.verticalCenter
                                     onCheckedChanged: {
+                                        if(checkboxe2.checked)
+                                            fastmode.check_num=fastmode.check_num+1;
+                                        else fastmode.check_num=fastmode.check_num-1;
+
                                         if (checkboxe2.checked) {
                                                     var historylist = systemdispatcher.get_onekey_args2();
                                                     var word_flag1 = "false";
@@ -427,6 +437,10 @@ Rectangle {
                                     checked:true    //将所有选项都check
                                     anchors.verticalCenter: parent.verticalCenter
                                     onCheckedChanged: {
+                                        if(checkboxe3.checked)
+                                            fastmode.check_num=fastmode.check_num+1;
+                                        else fastmode.check_num=fastmode.check_num-1;
+
                                         if (checkboxe3.checked) {
                                                     var cookieslist = systemdispatcher.get_onekey_args2();
                                                     var word_flag2 = "false";
@@ -518,6 +532,10 @@ Rectangle {
                                     checked:true    //将所有选项都check
                                     anchors.verticalCenter: parent.verticalCenter
                                     onCheckedChanged: {
+                                        if(checkboxe4.checked)
+                                            fastmode.check_num=fastmode.check_num+1;
+                                        else fastmode.check_num=fastmode.check_num-1;
+
                                         if (checkboxe4.checked) {
                                                     var mylist = systemdispatcher.get_onekey_args2();
                                                     var word_flag3 = "false";
@@ -595,17 +613,25 @@ Rectangle {
 //            }//Column
 //------end new layout
     }//Row
-            Common.CheckBox {
-                id:chek
-                x:116
-                y:92
-                checked:true    //将所有选项都check
+    Common.MainCheckBox {
+        id:chek
+        x:116
+        y:92
+        checked:"true"    //将所有选项都check
 //                            background: red
-                onCheckedChanged: {
-                    checkboxe.checked=chek.checked;
-                    checkboxe2.checked=chek.checked;
-                    checkboxe3.checked=chek.checked;
-                    checkboxe4.checked=chek.checked;
-                }
-            }
+        onCheckedboolChanged: {
+            checkboxe.checked = chek.checkedbool;
+            checkboxe2.checked = chek.checkedbool;
+            checkboxe3.checked = chek.checkedbool;
+            checkboxe4.checked = chek.checkedbool;
+        }
+    }
+    onCheck_numChanged: {
+        if(check_num==0)
+            chek.checked="false"
+        else if(check_num==num)
+            chek.checked="true"
+        else
+            chek.checked="mid"
+    }
 }

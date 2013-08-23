@@ -30,26 +30,19 @@ import dbus
 import dbus.service
 import dbus.mainloop.glib
 from gi.repository import GObject
-
 import apt
 import apt_pkg
-
 from server import PolicyKitService
 from policykit import UK_ACTION_YOUKER
-
-
 import time
-
-
 import cleaner
 from beautify.sound import Sound
 from beautify.others import Others
 
 log = logging.getLogger('Daemon')
 
-INTERFACE = "com.ubuntukylin_tools.daemon"
-PATH = "/"
-#PATH = "/com/ubuntukylin_assistant/daemon"
+INTERFACE = 'com.ubuntukylin_tools.daemon'
+PATH = '/'
 TIMEFORMAT = "%H:%M:%S"
 
 class Daemon(PolicyKitService):

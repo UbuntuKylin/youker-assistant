@@ -36,7 +36,6 @@ import time
 
 import cleaner
 
-from server import PolicyKitService
 from beautify.desktop import Desktop
 from beautify.unity import Unity
 from beautify.theme import Theme
@@ -53,9 +52,8 @@ PATH = "/"
 TIMEFORMAT = "%H:%M:%S"
 
 UK_ACTION_YOUKER = 'com.ubuntukylin_tools.daemon.youker'
-
-class SessionDaemon(PolicyKitService):
-    def __init__ (self, bus, mainloop):
+class SessionDaemon(dbus.service.Object):
+    def __init__ (self, mainloop):
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
         self.unityconf = Unity()
@@ -71,8 +69,8 @@ class SessionDaemon(PolicyKitService):
         self.daemonclean = cleaner.FunctionOfClean()
         self.daemononekey = cleaner.OneKeyClean()
 
-        bus_name = dbus.service.BusName(INTERFACE, bus=bus)
-        PolicyKitService.__init__(self, bus_name, PATH)
+        bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
+        dbus.service.Object.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
 
 #---------------------------------------------------------------------

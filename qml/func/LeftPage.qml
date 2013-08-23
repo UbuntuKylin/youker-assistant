@@ -26,6 +26,8 @@ Rectangle {
     id: leftbar
     width: 600; height: 460
     property string onekeypage: "first"
+    property int num:4     //checkbox num
+    property int check_num: num
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
@@ -219,6 +221,10 @@ Rectangle {
                                         checked:true    //将所有选项都check
                                         anchors.verticalCenter: parent.verticalCenter
                                         onCheckedChanged: {
+                                            if(checkboxe1.checked)
+                                                leftbar.check_num=leftbar.check_num+1;
+                                            else leftbar.check_num=leftbar.check_num-1;
+
                                             if (checkboxe1.checked) {
                                                         var rubbishlist = systemdispatcher.get_onekey_args();
                                                         var word_flag = "false";
@@ -306,6 +312,10 @@ Rectangle {
                                     checked:true    //将所有选项都check
                                     anchors.verticalCenter: parent.verticalCenter
                                     onCheckedChanged: {
+                                        if(checkboxe2.checked)
+                                            leftbar.check_num=leftbar.check_num+1;
+                                        else leftbar.check_num=leftbar.check_num-1;
+
                                         if (checkboxe2.checked) {
                                                     var historylist = systemdispatcher.get_onekey_args();
                                                     var word_flag1 = "false";
@@ -395,6 +405,10 @@ Rectangle {
                                     checked:true    //将所有选项都check
                                     anchors.verticalCenter: parent.verticalCenter
                                     onCheckedChanged: {
+                                        if(checkboxe3.checked)
+                                            leftbar.check_num=leftbar.check_num+1;
+                                        else leftbar.check_num=leftbar.check_num-1;
+
                                         if (checkboxe3.checked) {
                                                     var cookieslist = systemdispatcher.get_onekey_args();
                                                     var word_flag2 = "false";
@@ -485,6 +499,10 @@ Rectangle {
                                     checked:true    //将所有选项都check
                                     anchors.verticalCenter: parent.verticalCenter
                                     onCheckedChanged: {
+                                        if(checkboxe4.checked)
+                                            leftbar.check_num=leftbar.check_num+1;
+                                        else leftbar.check_num=leftbar.check_num-1;
+
                                         if (checkboxe4.checked) {
                                                     var mylist = systemdispatcher.get_onekey_args();
                                                     var word_flag3 = "false";
@@ -560,17 +578,25 @@ Rectangle {
 
         }//Column
     }//Column
-        Common.CheckBox {
-            id:chek
-            x:115
-            y:169
-            checked:true    //将所有选项都check
-            onCheckedChanged: {
-                checkboxe1.checked = chek.checked;
-                checkboxe2.checked = chek.checked;
-                checkboxe3.checked = chek.checked;
-                checkboxe4.checked = chek.checked;
-            }
+    Common.MainCheckBox {
+        id:chek
+        x:115
+        y:169
+        checked:"true"    //将所有选项都check
+        onCheckedboolChanged: {
+            checkboxe1.checked = chek.checkedbool;
+            checkboxe2.checked = chek.checkedbool;
+            checkboxe3.checked = chek.checkedbool;
+            checkboxe4.checked = chek.checkedbool;
         }
+    }
+    onCheck_numChanged: {
+        if(check_num==0)
+            chek.checked="false"
+        else if(check_num==leftbar.num)
+            chek.checked="true"
+        else
+            chek.checked="mid"
+    }
 
 }//坐边栏Rectangle

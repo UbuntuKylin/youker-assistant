@@ -1,1 +1,1 @@
-UK_ACTION_YOUKER = 'com.ubuntukylin_tools.daemon.youker'
+UK_ACTION_YOUKER = 'com.ubuntukylin_tools.daemon'
