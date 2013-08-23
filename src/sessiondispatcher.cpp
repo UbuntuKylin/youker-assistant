@@ -75,11 +75,9 @@ void SessionDispatcher::handler_clear_rubbish(QString msg)
      emit finishCleanWork(msg);
 }
 void SessionDispatcher::clean_cookies_records_qt(QStringList strlist) {
-//    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
     sessioniface->call("clean_cookies_records", strlist);
 }
 void SessionDispatcher::clean_history_records_qt() {
-//    QDBusReply<void> reply = systemiface->call("clean_history_records");
     sessioniface->call("clean_history_records");
 }
 
@@ -240,7 +238,6 @@ QString SessionDispatcher::get_value(QString key)
 }
 
 QString SessionDispatcher::show_signal(QString msg) {
-    qDebug() << msg;
     return msg;
 }
 
@@ -263,7 +260,7 @@ QStringList SessionDispatcher::get_themes() {
 
 
 void SessionDispatcher::set_theme(QString theme) {
-    QDBusReply<void> reply = sessioniface->call("set_sys_theme", theme);
+    sessioniface->call("set_sys_theme", theme);
 }
 
 /*-----------------------------desktop of beauty-----------------------------*/
@@ -357,7 +354,7 @@ QString SessionDispatcher::get_theme_qt() {
     return reply.value();
 }
 void SessionDispatcher::set_theme_qt(QString theme) {
-    QDBusReply<void> reply = sessioniface->call("set_theme", theme);
+    sessioniface->call("set_theme", theme);
 }
 
 QStringList SessionDispatcher::get_icon_themes_qt() {
@@ -370,7 +367,7 @@ QString SessionDispatcher::get_icon_theme_qt() {
 }
 
 void SessionDispatcher::set_icon_theme_qt(QString theme) {
-    QDBusReply<void> reply = sessioniface->call("set_icon_theme", theme);
+    sessioniface->call("set_icon_theme", theme);
 }
 
 QStringList SessionDispatcher::get_cursor_themes_qt() {
@@ -382,14 +379,14 @@ QString SessionDispatcher::get_cursor_theme_qt() {
     return reply.value();
 }
 void SessionDispatcher::set_cursor_theme_qt(QString theme) {
-    QDBusReply<void> reply = sessioniface->call("set_cursor_theme", theme);
+    sessioniface->call("set_cursor_theme", theme);
 }
 int SessionDispatcher::get_cursor_size_qt() {
     QDBusReply<int> reply = sessioniface->call("get_cursor_size");
     return reply.value();
 }
 void SessionDispatcher::set_cursor_size_qt(int size) {
-    QDBusReply<void> reply = sessioniface->call("set_cursor_size", size);
+    sessioniface->call("set_cursor_size", size);
 }
 
 
@@ -474,7 +471,6 @@ void SessionDispatcher::show_font_dialog(QString flag) {
     {
         QString fontsize = QString("%1").arg(font.pointSize());
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
-        qDebug() << fontstyle;
         if(flag == "font")
             set_font_qt(fontstyle);//set font
         else if(flag == "desktopfont")
@@ -507,7 +503,6 @@ void SessionDispatcher::show_color_dialog() {
 QString SessionDispatcher::show_folder_dialog() {
     QString dir = QFileDialog::getExistingDirectory(0, tr("打开文件夹"), "/home",
                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    qDebug() << dir;
     return dir;
 }
 
@@ -580,7 +575,7 @@ bool SessionDispatcher::get_menus_have_icons_qt() {
 
 /*-----------------------------sound of beauty-----------------------------*/
 void SessionDispatcher::set_login_music_enable_qt(bool flag) {
-    QDBusReply<bool> reply = sessioniface->call("set_login_music_enable", flag);
+    sessioniface->call("set_login_music_enable", flag);
 }
 bool SessionDispatcher::get_login_music_enable_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_login_music_enable");
@@ -592,5 +587,5 @@ QString SessionDispatcher::get_sound_theme_qt() {
     return reply.value();
 }
 void SessionDispatcher::set_sound_theme_qt(QString theme) {
-    QDBusReply<bool> reply = sessioniface->call("set_sound_theme", theme);
+    sessioniface->call("set_sound_theme", theme);
 }

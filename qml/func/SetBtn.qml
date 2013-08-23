@@ -40,7 +40,6 @@ Rectangle {
     Connections{
          target: systemdispatcher
          onFinishCleanWorkMain: {
-             console.log(msg);
             if (msg == "") {
                  menulogo.enabled=true;
              }
@@ -56,7 +55,6 @@ Rectangle {
     Connections{
          target: sessiondispatcher
          onFinishCleanWorkMain: {
-             console.log(msg);
             if (msg == "") {
                  menulogo.enabled=true;
              }

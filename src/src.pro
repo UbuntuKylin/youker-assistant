@@ -45,7 +45,7 @@ HEADERS += youker-application.h \
     qdeclarativelinearlayout.h \
     qdeclarativefolderlistmodel.h \
     qdeclarativelayout.h \
-    qdeclarativelayoutengine.h \
+    qdeclarativelayoutengine_p.h \
     qdesktopitem.h
 
 SOURCES += main.cpp \

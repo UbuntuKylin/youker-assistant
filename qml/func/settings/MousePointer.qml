@@ -142,7 +142,7 @@ Rectangle {
                 model: choices
                 width: 150
     //            width: cursorthemelabel.width
-                onSelectedTextChanged: console.log(selectedText)
+                onSelectedTextChanged: {/*console.log(selectedText)*/}
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
@@ -163,15 +163,15 @@ Rectangle {
                 Common.CheckBox {
                     id: smallstyle
                     checked: false
-                    titleName: "小号"
+                    titleName: "小号"//24
                     flag: "radio"
-                    onClicked: console.log(smallstyle.checked) //24
+                    onClicked: {}
                 }
                 Common.CheckBox {
                     id: bigstyle
-                    titleName: "大号"
+                    titleName: "大号"//36
                     flag: "radio"
-                    onClicked: console.log(bigstyle.checked) //36
+                    onClicked: {}
                 }
             }
         }

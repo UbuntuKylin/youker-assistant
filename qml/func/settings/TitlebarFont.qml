@@ -62,7 +62,6 @@ Rectangle {
     {
         target: sessiondispatcher
         onFinishSetFont: {
-            console.log("titlebar font ok");
             if (font_style == "titlebarfont") {
                 titlebarfontpage.titlebar_font_flag = true;
                 titlefont.text = sessiondispatcher.get_window_title_font_qt();

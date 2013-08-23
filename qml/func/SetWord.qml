@@ -54,7 +54,6 @@ Rectangle {
                 pageStack.push(mousepointerpage);
             else if (flag == "SoundEffects") {
                 pageStack.push(soundeffectspage);
-//                console.log("SoundEffects clicked....");
 //                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
 //                if (component_sound.status == Component.Ready) {
 //                    pageStack.push(component_sound);
@@ -62,7 +61,6 @@ Rectangle {
             }
             else if (flag == "BootAnimation") {
                 pageStack.push(bootanimationpage);
-//                console.log("BootAnimation clicked....");
 //                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
 //                if (component_boot.status == Component.Ready) {
 //                    pageStack.push(component_boot);

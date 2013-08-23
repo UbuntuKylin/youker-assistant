@@ -66,7 +66,6 @@ Rectangle {
                 docufont.text = sessiondispatcher.get_document_font_qt();
             }
             else if (font_style == "documentfont_default") {
-                console.log("document font ok");
                 documentfontpage.document_font_flag = false;
                 docufont.text = sessiondispatcher.get_document_font_qt();
             }

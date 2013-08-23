@@ -11,11 +11,20 @@ inst4.path = /usr/share/dbus-1/system-services/
 inst5.files += ../backends/youker-assistant-daemon/data/youker-assistant-daemon.conf
 inst5.path = /etc/dbus-1/system.d/
 inst6.files += ../backends/youker-assistant-daemon/src/
-inst6.path = /usr/lib/python2.7/dist-packages/youker-assistant-daemon/
+inst6.path = /usr/share/youker-assistant-daemon/
+inst7.files += ../backends/youker-assistant-daemon/data/beautify/autostart/
+inst7.path = /usr/share/youker-assistant-daemon/
+inst8.files += ../backends/youker-assistant-daemon/data/beautify/plymouth/
+inst8.path = /usr/share/youker-assistant-daemon/
+inst9.files += ../backends/youker-assistant-daemon/data/beautify/sound-theme/
+inst9.path = /usr/share/youker-assistant-daemon/
 
 INSTALLS += inst1 \
     inst2 \
     inst3 \
     inst4 \
     inst5 \
-    inst6
+    inst6 \
+    inst7 \
+    inst8 \
+    inst9

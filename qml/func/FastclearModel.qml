@@ -253,14 +253,11 @@ Rectangle {
                                                             }
                                                         }
                                                         if (word_flag == "false") {
-                                                            console.log("no word_flag1");
                                                             systemdispatcher.set_onekey_args2("cache");
-                                                            console.log(systemdispatcher.get_package_args());
                                                         }
                                             }
                                             else if (!checkboxe.checked) {
                                                     systemdispatcher.del_onekey_args2("cache");
-                                                    console.log(systemdispatcher.get_onekey_args2());
                                                 }
                                         }
                                     }
@@ -339,8 +336,6 @@ Rectangle {
 
                                         if (checkboxe2.checked) {
                                                     var historylist = systemdispatcher.get_onekey_args2();
-                                                    console.log("this is a test!!!!!!!")
-                                                    console.log(systemdispatcher.get_onekey_args2());
                                                     var word_flag1 = "false";
                                                     for (var j=0; j<historylist.length; j++) {
                                                         if (historylist[j] == "history") {
@@ -349,14 +344,11 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag1 == "false") {
-                                                        console.log("no word_flag2");
                                                         systemdispatcher.set_onekey_args2("history");
-                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe2.checked) {
                                                 systemdispatcher.del_onekey_args2("history");
-                                                console.log(systemdispatcher.get_onekey_args2());
                                             }
                                     }
                                 }
@@ -445,14 +437,11 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag2 == "false") {
-                                                        console.log("no word_flag3");
                                                         systemdispatcher.set_onekey_args2("cookies");
-                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe3.checked) {
                                                 systemdispatcher.del_onekey_args2("cookies");
-                                                console.log(systemdispatcher.get_onekey_args2());
                                             }
                                     }
                                 }
@@ -543,14 +532,11 @@ Rectangle {
                                                         }
                                                     }
                                                     if (word_flag3 == "false") {
-                                                        console.log("no word_flag4");
                                                         systemdispatcher.set_onekey_args2("unneed");
-                                                        console.log(systemdispatcher.get_package_args());
                                                     }
                                         }
                                         else if (!checkboxe4.checked) {
                                                 systemdispatcher.del_onekey_args2("unneed");
-                                                console.log(systemdispatcher.get_onekey_args2());
                                             }
                                     }
                                 }
