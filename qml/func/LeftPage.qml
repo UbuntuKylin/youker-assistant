@@ -41,29 +41,6 @@ Rectangle {
             else if (msg == "c") {
                 cachestatus.state = "StatusC";
             }
-
-            refreshArrow0.visible = true;
-            refreshArrow.visible = false;
-
-        }
-
-        onFinishCleanWorkMainError: {
-            if (msg == "ue") {
-                unneedstatus.state = "StatusU1";
-            }
-            else if (msg == "ce") {
-                cachestatus.state = "StatusC1";
-            }
-        }
-    }
-
-    Connections
-    {
-        target: sessiondispatcher
-        onFinishCleanWorkMain: {
-            if (msg == "") {
-                leftbar.state = "StatusEmpty";
-            }
             else if (msg == "h") {
                 historystatus.state = "StatusH";
             }
@@ -77,7 +54,13 @@ Rectangle {
         }
 
         onFinishCleanWorkMainError: {
-            if (msg == "he") {
+            if (msg == "ue") {
+                unneedstatus.state = "StatusU1";
+            }
+            else if (msg == "ce") {
+                cachestatus.state = "StatusC1";
+            }
+            else if (msg == "he") {
                 historystatus.state = "StatusH1";
             }
             else if (msg == "ke") {
@@ -85,6 +68,35 @@ Rectangle {
             }
         }
     }
+
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onFinishCleanWorkMain: {
+//            if (msg == "") {
+//                leftbar.state = "StatusEmpty";
+//            }
+//            else if (msg == "h") {
+//                historystatus.state = "StatusH";
+//            }
+//            else if (msg == "k") {
+//               cookiestatus.state = "StatusK";
+//            }
+
+//            refreshArrow0.visible = true;
+//            refreshArrow.visible = false;
+
+//        }
+
+//        onFinishCleanWorkMainError: {
+//            if (msg == "he") {
+//                historystatus.state = "StatusH1";
+//            }
+//            else if (msg == "ke") {
+//               cookiestatus.state = "StatusK1";
+//            }
+//        }
+//    }
 
 
     //背景

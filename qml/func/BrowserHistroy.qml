@@ -60,8 +60,8 @@ Item {
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
-        target: sessiondispatcher
-//        target: systemdispatcher
+//        target: sessiondispatcher
+        target: systemdispatcher
 //         onFinishScanWork: {
         //             if (btn_flag == "history_scan") {
         //                 titleBar.work_result = msg;
@@ -152,8 +152,9 @@ Item {
                  }
                  else if (btn_flag == "history_work") {
                      if (systemdispatcher.get_history_flag()) {
-                         sessiondispatcher.clean_history_records_qt();
-//                        systemdispatcher.clean_history_records_qt();
+//                         sessiondispatcher.clean_history_records_qt();
+                         systemdispatcher.set_user_homedir_qt();
+                         systemdispatcher.clean_history_records_qt();
                      }
                      else
                          sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录清理项，请确认！");

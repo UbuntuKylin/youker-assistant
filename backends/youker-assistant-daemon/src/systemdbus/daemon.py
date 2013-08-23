@@ -77,7 +77,7 @@ class Daemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def set_user_homedir(self, homedir):
-        self.daemononekey.get_user_homedir(homedir)
+        cleaner.get_user_homedir(homedir)
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     #def get_user_cache(self):
     #    return "KOBE"
@@ -181,30 +181,32 @@ class Daemon(PolicyKitService):
     ###input-['history', 'cach....] output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
     def clean_by_main_one_key(self, mode_list, sender=None):
+        #mode_list = ['history', 'cookies', 'cache', 'unneed']
         self._check_permission(sender, UK_ACTION_YOUKER)
         flag_str = ''
-        tmp_mode_list = self.dbusstring_to_string(mode_list)
+        #tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = {}
-        cruft_dic = self.daemononekey.get_scan_resault_system(tmp_mode_list)
-        #if 'history' in cruft_dic:
-        #    history_cruft_list = cruft_dic['history']
-        #    daemonhistory = cleaner.CleanTheHistory()
-        #    try:
-        #        daemonhistory.clean_the_cruftlist()
-        #    except Exception, e:
-        #        self.clean_error_main_msg('he')
-        #    else:
-        #        self.clean_complete_main_msg('h')
+        cruft_dic = self.daemononekey.get_scan_resault(mode_list)
+        if 'history' in cruft_dic:
+            history_cruft_list = cruft_dic['history']
+            daemonhistory = cleaner.CleanTheHistory()
+            try:
+                daemonhistory.clean_the_cruftlist()
+            except Exception, e:
+                print e
+                self.clean_error_main_msg('he')
+            else:
+                self.clean_complete_main_msg('h')
 
-        #if 'cookies' in cruft_dic:
-        #    cookies_cruft_list = cruft_dic['cookies']
-        #    daemoncookies = cleaner.CleanTheCookies()
-        #    try:
-        #        daemoncookies.clean_the_cruftlist(cookies_cruft_list)
-        #    except Exception, e:
-        #        self.clean_error_main_msg('ke')
-        #    else:
-        #        self.clean_complete_main_msg('k')
+        if 'cookies' in cruft_dic:
+            cookies_cruft_list = cruft_dic['cookies']
+            daemoncookies = cleaner.CleanTheCookies()
+            try:
+                daemoncookies.clean_the_cruftlist(cookies_cruft_list)
+            except Exception, e:
+                self.clean_error_main_msg('ke')
+            else:
+                self.clean_complete_main_msg('k')
 
         if 'unneed' in cruft_dic:
             unneed_cruft_list = cruft_dic['unneed']
@@ -230,27 +232,29 @@ class Daemon(PolicyKitService):
     def clean_by_second_one_key(self, mode_list, sender=None):
         self._check_permission(sender, UK_ACTION_YOUKER)
         flag_str = ''
-        tmp_mode_list = self.dbusstring_to_string(mode_list)
-        cruft_dic = self.daemononekey.get_scan_resault_system(tmp_mode_list)
-        #if 'history' in cruft_dic:
-        #    history_cruft_list = cruft_dic['history']
-        #    daemonhistory = cleaner.CleanTheHistory()
-        #    try:
-        #        daemonhistory.clean_the_cruftlist()
-        #    except Exception, e:
-        #        self.clean_error_second_msg('he')
-        #    else:
-        #        self.clean_complete_second_msg('h')
+        #mode_list = ['history', 'cookies', 'cache', 'unneed']
+        #tmp_mode_list = self.dbusstring_to_string(mode_list)
+        cruft_dic = self.daemononekey.get_scan_resault(mode_list)
+        if 'history' in cruft_dic:
+            history_cruft_list = cruft_dic['history']
+            daemonhistory = cleaner.CleanTheHistory()
+            try:
+                daemonhistory.clean_the_cruftlist()
+            except Exception, e:
+                self.clean_error_second_msg('he')
+            else:
+                self.clean_complete_second_msg('h')
 
-        #if 'cookies' in cruft_dic:
-        #    cookies_cruft_list = cruft_dic['cookies']
-        #    daemoncookies = cleaner.CleanTheCookies()
-        #    try:
-        #        daemoncookies.clean_the_cruftlist(cookies_cruft_list)
-        #    except Exception, e:
-        #        self.clean_error_second_msg('ke')
-        #    else:
-        #        self.clean_complete_second_msg('k')
+        if 'cookies' in cruft_dic:
+            cookies_cruft_list = cruft_dic['cookies']
+            daemoncookies = cleaner.CleanTheCookies()
+            try:
+                daemoncookies.clean_the_cruftlist(cookies_cruft_list)
+            except Exception, e:
+                print e
+                self.clean_error_second_msg('ke')
+            else:
+                self.clean_complete_second_msg('k')
 
         if 'unneed' in cruft_dic:
             unneed_cruft_list = cruft_dic['unneed']
@@ -316,16 +320,16 @@ class Daemon(PolicyKitService):
     #            else:
     #                self.not_exist_msg(cruft)
     ### input-''   output-''
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    #def clean_history_records(self, sender=None):
-    #    self._check_permission(sender, UK_ACTION_YOUKER)
-    #    daemonhistory = cleaner.CleanTheHistory()
-    #    try:
-    #        daemonhistory.clean_the_cruftlist()
-    #    except Exception, e:
-    #        self.clean_error_msg('history')
-    #    else:
-    #        self.clean_complete_msg('history')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    def clean_history_records(self, sender=None):
+        self._check_permission(sender, UK_ACTION_YOUKER)
+        daemonhistory = cleaner.CleanTheHistory()
+        try:
+            daemonhistory.clean_the_cruftlist()
+        except Exception, e:
+            self.clean_error_msg('history')
+        else:
+            self.clean_complete_msg('history')
          
 
     # the function of clean the cookies records
@@ -338,16 +342,16 @@ class Daemon(PolicyKitService):
     #    return tmp_list
 
     ### input-['domain','dom...]   output-''
-    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    #def clean_cookies_records(self, cruftlist, sender=None):
-    #    self._check_permission(sender, UK_ACTION_YOUKER)
-    #    daemoncookies = cleaner.CleanTheCookies()
-    #    try:
-    #        daemoncookies.clean_the_cruftlist(cruftlist)
-    #    except Exception, e:
-    #        self.clean_error_msg('cookies')
-    #    else:
-    #        self.clean_complete_msg('cookies')
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def clean_cookies_records(self, cruftlist, sender=None):
+        self._check_permission(sender, UK_ACTION_YOUKER)
+        daemoncookies = cleaner.CleanTheCookies()
+        try:
+            daemoncookies.clean_the_cruftlist(cruftlist)
+        except Exception, e:
+            self.clean_error_msg('cookies')
+        else:
+            self.clean_complete_msg('cookies')
 
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]

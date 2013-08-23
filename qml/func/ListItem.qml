@@ -122,6 +122,21 @@ Item {
                         systemdispatcher.set_package_args(container.text);
                     }
                 }
+
+
+                else if (btn_flag == "largestfile_work") {
+                    var filelist = systemdispatcher.get_largestfile_args();
+                    var word_flag4 = "false";
+                    for (var t=0; t<filelist.length; t++) {
+                        if (filelist[t] == container.descript) {
+                            word_flag4 = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag4 == "false") {
+                        systemdispatcher.set_largestfile_args(container.descript);
+                    }
+                }
             }
             else if (!checkbox.checked) {
                 if (btn_flag == "apt_work" || btn_flag == "apt_scan") {
@@ -135,6 +150,9 @@ Item {
                 }
                 else if (btn_flag == "package_work" || btn_flag == "package_scan") {
                     systemdispatcher.del_package_args(container.text);
+                }
+                else if (btn_flag == "largestfile_work") {
+                    systemdispatcher.del_largestfile_args(container.descript);
                 }
 
             }

@@ -17,7 +17,7 @@ class CacheClean():
     def get_softwarecenter_cache(self, homedir):
         centercachelist = []
         if homedir:
-            softwarecenter_cache = '%s/.cache/software-center' % homedir
+            softwarecenter_cache = '%s/.cache/software-center/' % homedir
         else:
             softwarecenter_cache = os.path.expanduser('~/.cache/software-center/')
         full_path = softwarecenter_cache

@@ -78,9 +78,9 @@ public:
 //    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
 //    Q_INVOKABLE QStringList scan_of_large_qt(QString abspath);
 //    Q_INVOKABLE int scan_history_records_qt();
-//    Q_INVOKABLE void clean_history_records_qt();
+    Q_INVOKABLE void clean_history_records_qt();
 //    Q_INVOKABLE QStringList scan_cookies_records_qt();
-//    Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
+    Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
 //    Q_INVOKABLE QStringList scan_unneed_packages_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);

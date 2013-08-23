@@ -344,6 +344,8 @@ Item {
                             width: root.width
                             height: subItemsRect.itemHeight
 //                            text: subItemTitle
+//                            text: desc
+//                            descript: itemTitle
                             text: itemTitle
                             descript: desc
 //                            size_num: number

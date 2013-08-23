@@ -120,8 +120,8 @@ Item {
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
-        target: sessiondispatcher
-//        target: systemdispatcher
+//        target: sessiondispatcher
+        target: systemdispatcher
 //         onFinishScanWork: {
         //             if (btn_flag == "cookies_scan") {
         ////                 titleBar.work_result = msg;
@@ -211,8 +211,9 @@ Item {
                         root.state = "CookiesWork";
                  }
                  else if (btn_flag == "cookies_work") {
-//                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
-                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+                     systemdispatcher.set_user_homedir_qt();
+                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+//                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
                  }
             }
         }

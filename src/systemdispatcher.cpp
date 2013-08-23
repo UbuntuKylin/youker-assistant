@@ -291,18 +291,18 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
 //    QDBusReply<int> reply = systemiface->call("scan_history_records");
 //    return reply.value();
 //}
-//void SystemDispatcher::clean_history_records_qt() {
-////    QDBusReply<void> reply = systemiface->call("clean_history_records");
-//    systemiface->call("clean_history_records");
-//}
+void SystemDispatcher::clean_history_records_qt() {
+//    QDBusReply<void> reply = systemiface->call("clean_history_records");
+    systemiface->call("clean_history_records");
+}
 //QStringList SystemDispatcher::scan_cookies_records_qt() {
 //    QDBusReply<QStringList> reply = systemiface->call("scan_cookies_records");
 //    return reply.value();
 //}
-//void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
-////    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
-//    systemiface->call("clean_cookies_records", strlist);
-//}
+void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
+//    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
+    systemiface->call("clean_cookies_records", strlist);
+}
 //QStringList SystemDispatcher::scan_unneed_packages_qt() {
 //    QDBusReply<QStringList> reply = systemiface->call("scan_unneed_packages");
 //    return reply.value();

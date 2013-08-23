@@ -42,27 +42,6 @@ Rectangle {
                 cachestatus.state = "StatusC";
                 onekeybtn.enabled=true;
             }
-
-        }
-
-        onFinishCleanWorkSecondError: {
-            if (msg == "ue") {
-                unneedstatus.state = "StatusU1";
-            }
-            else if (msg == "ce") {
-                cachestatus.state = "StatusC1";
-            }
-        }
-    }
-
-
-    Connections
-    {
-        target: sessiondispatcher
-        onFinishCleanWorkSecond: {
-            if (msg == "") {
-                onekeybtn.enabled=true;
-            }
             else if (msg == "h") {
                 historystatus.state = "StatusH";
                 onekeybtn.enabled=true;
@@ -73,8 +52,15 @@ Rectangle {
             }
 
         }
+
         onFinishCleanWorkSecondError: {
-            if (msg == "he") {
+            if (msg == "ue") {
+                unneedstatus.state = "StatusU1";
+            }
+            else if (msg == "ce") {
+                cachestatus.state = "StatusC1";
+            }
+            else if (msg == "he") {
                 historystatus.state = "StatusH1";
             }
             else if (msg == "ke") {
@@ -82,6 +68,34 @@ Rectangle {
             }
         }
     }
+
+
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onFinishCleanWorkSecond: {
+//            if (msg == "") {
+//                onekeybtn.enabled=true;
+//            }
+//            else if (msg == "h") {
+//                historystatus.state = "StatusH";
+//                onekeybtn.enabled=true;
+//            }
+//            else if (msg == "k") {
+//               cookiestatus.state = "StatusK";
+//                onekeybtn.enabled=true;
+//            }
+
+//        }
+//        onFinishCleanWorkSecondError: {
+//            if (msg == "he") {
+//                historystatus.state = "StatusH1";
+//            }
+//            else if (msg == "ke") {
+//               cookiestatus.state = "StatusK1";
+//            }
+//        }
+//    }
 
 
     //背景

@@ -49,23 +49,29 @@ Rectangle {
              else if (msg == "c") {
                  menulogo.enabled=true;
              }
+            else if (msg == "h") {
+                menulogo.enabled=true;
+            }
+            else if (msg == "k") {
+                menulogo.enabled=true;
+            }
 
         }
     }
-    Connections{
-         target: sessiondispatcher
-         onFinishCleanWorkMain: {
-            if (msg == "") {
-                 menulogo.enabled=true;
-             }
-             else if (msg == "h") {
-                 menulogo.enabled=true;
-             }
-             else if (msg == "k") {
-                 menulogo.enabled=true;
-             }
-        }
-    }
+//    Connections{
+//         target: sessiondispatcher
+//         onFinishCleanWorkMain: {
+//            if (msg == "") {
+//                 menulogo.enabled=true;
+//             }
+//             else if (msg == "h") {
+//                 menulogo.enabled=true;
+//             }
+//             else if (msg == "k") {
+//                 menulogo.enabled=true;
+//             }
+//        }
+//    }
 
     Connections
     {
@@ -80,16 +86,6 @@ Rectangle {
              else if (msg == "c") {
                  menulogo.enabled=true;
              }
-
-        }
-    }
-    Connections
-    {
-        target: sessiondispatcher
-        onFinishCleanWorkSecond: {
-            if (msg == "") {
-                 menulogo.enabled=true;
-             }
             else if (msg == "h") {
                 menulogo.enabled=true;
             }
@@ -99,6 +95,22 @@ Rectangle {
 
         }
     }
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onFinishCleanWorkSecond: {
+//            if (msg == "") {
+//                 menulogo.enabled=true;
+//             }
+//            else if (msg == "h") {
+//                menulogo.enabled=true;
+//            }
+//            else if (msg == "k") {
+//                menulogo.enabled=true;
+//            }
+
+//        }
+//    }
 
     Image {
         id: toolImg
@@ -137,14 +149,14 @@ Rectangle {
                     send_dynamic_picture("onekey");
                     systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                    sessiondispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+//                    sessiondispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
                     btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
                     menulogo.enabled=false;
                 }
                 else if (setbtn_flag == "smallonekey") {
                     systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
-                    sessiondispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
+//                    sessiondispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
                     btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
                     menulogo.enabled=false;
                 }
