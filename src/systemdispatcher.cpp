@@ -376,8 +376,8 @@ void SystemDispatcher::clear_apt_args() {
     apt_args.clear();
 }
 QStringList SystemDispatcher::get_apt_args() {
-    qDebug () << "qt-valve";
-    qDebug() << apt_args;
+//    qDebug () << "qt-valve";
+//    qDebug() << apt_args;
     return apt_args;
 }
 

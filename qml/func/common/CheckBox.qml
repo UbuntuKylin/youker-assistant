@@ -38,6 +38,7 @@ Item {
     signal clicked
     property alias pressed: behavior.pressed
     property alias checked: behavior.checked
+//    property string checked_mid:
 
     Loader {
         id: backgroundComponent
