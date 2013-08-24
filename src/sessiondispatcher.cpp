@@ -41,61 +41,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                QDBusConnection::sessionBus());
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
-    QObject::connect(sessioniface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
-
-    QObject::connect(sessioniface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
-    QObject::connect(sessioniface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
-    QObject::connect(sessioniface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
-    QObject::connect(sessioniface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
-    notify_str = "";
     page_num = 0;
-
 }
-
-void SessionDispatcher::handler_clear_rubbish_main_onekey(QString msg)
-{
-     emit finishCleanWorkMain(msg);
-}
-
-void SessionDispatcher::handler_clear_rubbish_main_error(QString msg)
-{
-     emit finishCleanWorkMainError(msg);
-}
-void SessionDispatcher::handler_clear_rubbish_second_onekey(QString msg)
-{
-     emit finishCleanWorkSecond(msg);
-}
-
-void SessionDispatcher::handler_clear_rubbish_second_error(QString msg)
-{
-     emit finishCleanWorkSecondError(msg);
-}
-void SessionDispatcher::handler_clear_rubbish(QString msg)
-{
-     emit finishCleanWork(msg);
-}
-void SessionDispatcher::clean_cookies_records_qt(QStringList strlist) {
-    sessioniface->call("clean_cookies_records", strlist);
-}
-void SessionDispatcher::clean_history_records_qt() {
-    sessioniface->call("clean_history_records");
-}
-
-void SessionDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
-    sessioniface->call("clean_by_main_one_key", strlist);
-}
-void SessionDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
-    sessioniface->call("clean_by_second_one_key", strlist);
-}
-
-//void SessionDispatcher::clean_package_cruft_qt(QStringList strlist) {
-////    QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
-//    sessioniface->call("clean_package_cruft", strlist);
-//}
-//void SessionDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
-////    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist, str);
-//    sessioniface->call("clean_file_cruft", strlist, str);
-//}
 
 void SessionDispatcher::handler_scan_rubbish(QString msg)
 {
@@ -134,9 +81,6 @@ QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
     return reply.value();
 }
-
-
-
 
 QString SessionDispatcher::get_home_path() {
     QString homepath = QDir::homePath();
@@ -214,22 +158,6 @@ void SessionDispatcher::create_warningdialog(QString title, QString content) {
 //    dialog->show();
 }
 //------------------------------------
-
-void SessionDispatcher::set_str(QString str)
-{
-    notify_str += str;
-}
-
-void SessionDispatcher::del_str(QString str)
-{
-    notify_str.replace(QString(str), QString(""));
-}
-
-QString SessionDispatcher::get_str()
-{
-    return notify_str;
-}
-
 
 QString SessionDispatcher::get_value(QString key)
 {

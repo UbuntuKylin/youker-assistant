@@ -35,7 +35,7 @@ Rectangle {
         target: systemdispatcher
         onFinishCleanWorkMain: {
             if (msg == "") {
-                leftbar.state = "StatusEmpty";
+
             }
             else if (msg == "u") {
                 unneedstatus.state = "StatusU";
@@ -70,36 +70,6 @@ Rectangle {
             }
         }
     }
-
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onFinishCleanWorkMain: {
-//            if (msg == "") {
-//                leftbar.state = "StatusEmpty";
-//            }
-//            else if (msg == "h") {
-//                historystatus.state = "StatusH";
-//            }
-//            else if (msg == "k") {
-//               cookiestatus.state = "StatusK";
-//            }
-
-//            refreshArrow0.visible = true;
-//            refreshArrow.visible = false;
-
-//        }
-
-//        onFinishCleanWorkMainError: {
-//            if (msg == "he") {
-//                historystatus.state = "StatusH1";
-//            }
-//            else if (msg == "ke") {
-//               cookiestatus.state = "StatusK1";
-//            }
-//        }
-//    }
-
 
     //背景
     Image {
