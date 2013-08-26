@@ -19,6 +19,7 @@ Architecture: any
 Depends: libphonon4,
          phonon-backend-gstreamer,
          liboil0.3,
+         python-psutil,
          python,
          python-dbus,
          python-support (>= 0.90),

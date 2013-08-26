@@ -38,7 +38,7 @@ import time
 import cleaner
 from beautify.sound import Sound
 from beautify.others import Others
-from app-collections.monitor-ball.monitor_ball import MonitorBall
+from appcollections.monitorball.monitor_ball import MonitorBall
 
 log = logging.getLogger('Daemon')
 
@@ -51,7 +51,7 @@ class Daemon(PolicyKitService):
         #self.sysconf = Sysinfo()
         self.otherconf = Others()
         self.soundconf = Sound()
-		self.ballconf = MonitorBall()
+        self.ballconf = MonitorBall()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -137,34 +137,34 @@ class Daemon(PolicyKitService):
     # -------------------------monitorball-------------------------
 
     # get cpu percent
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='f')
-	def get_cpu_percent(self):
-		self.ballconf.get_cpu_percent()
-
-	# get total memory
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
+    def get_cpu_percent(self):
+        return self.ballconf.get_cpu_percent()
+        
+    # get total memory
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
-	def get_total_memory(self):
-		self.ballconf.get_total_memory()
+    def get_total_memory(self):
+        return self.ballconf.get_total_memory()
 
-	# get used memory
+    # get used memory
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
-	def get_used_memory(self):
-		self.ballconf.get_used_memory()
+    def get_used_memory(self):
+        return self.ballconf.get_used_memory()
 
-	# get free memory
+    # get free memory
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
-	def get_free_memory(self):
-		self.ballconf.get_free_memory()
+    def get_free_memory(self):
+        return self.ballconf.get_free_memory()
 
-	# get network flow, return (up, down)
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='af')
-	def get_network_flow(self):
-		self.ballconf.get_network_flow()
+    # get network flow, return (up, down)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='ad')
+    def get_network_flow(self):
+        return self.ballconf.get_network_flow()
 
-	# clean up memory
+    # clean up memory
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-	def cleanup_memory(self):
-		self.ballconf.cleanup_memory()
+    def cleanup_memory(self):
+        self.ballconf.cleanup_memory()
 
     # -------------------------monitorball end-------------------------
 
