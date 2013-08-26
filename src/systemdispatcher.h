@@ -29,22 +29,14 @@
 class SystemDispatcher : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QNOTIFY addBootImage)
-    Q_PROPERTY(QNOTIFY myStringChanged)
-    Q_PROPERTY(QNOTIFY finishCleanWork)
-    Q_PROPERTY(QNOTIFY finishCleanWorkMain)
-    Q_PROPERTY(QNOTIFY finishCleanWorkMainError)
-    Q_PROPERTY(QNOTIFY finishCleanWorkSecond)
-//    Q_PROPERTY(QNOTIFY finishCleanaptWork)
-//    Q_PROPERTY(QNOTIFY finishCleansoftwareWork)
-//    Q_PROPERTY(QNOTIFY finishCleanhistoryWork)
-//    Q_PROPERTY(QNOTIFY finishCleancookiesWork)
-//    Q_PROPERTY(QNOTIFY finishCleanpackageWork)
-    Q_PROPERTY(QNOTIFY finishScanWork)
-//    Q_PROPERTY(QString myString READ myString WRITE setmyString NOTIFY myStringChanged)
+//    Q_PROPERTY(QNOTIFY addBootImage)
+//    Q_PROPERTY(QNOTIFY finishCleanWork)
+//    Q_PROPERTY(QNOTIFY finishCleanWorkMain)
+//    Q_PROPERTY(QNOTIFY finishCleanWorkMainError)
+//    Q_PROPERTY(QNOTIFY finishCleanWorkSecond)
+//    Q_PROPERTY(QNOTIFY finishCleanWorkSecondError)
 public:
     explicit SystemDispatcher(QObject *parent = 0);
-//    Q_INVOKABLE QString get_value(QString);
     Q_INVOKABLE int get_add_value();
     Q_INVOKABLE void send_btn_msg(QString);
     Q_INVOKABLE void exit_qt();
@@ -57,40 +49,24 @@ public:
     //---------------------------------
     //password
     Q_INVOKABLE void show_passwd_dialog();
-    Q_INVOKABLE bool setup();
-    bool judge_process(/*QString flagstr, QString pwd*/);
 
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);
+    Q_INVOKABLE void set_homedir_qt();
+    Q_INVOKABLE void set_user_homedir_qt();
 
-
-    //开机动画
-//    Q_INVOKABLE void custom_plymouth_qt(QString imagepath);
     Q_INVOKABLE QString show_file_dialog(QString flag);
 
-//    Q_INVOKABLE void clean_by_one_key_qt(QStringList strlist);
     Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
-
-
-//    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
-//    Q_INVOKABLE QStringList scan_of_large_qt(QString abspath);
-//    Q_INVOKABLE int scan_history_records_qt();
-//    Q_INVOKABLE void clean_history_records_qt();
-//    Q_INVOKABLE QStringList scan_cookies_records_qt();
-//    Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
-//    Q_INVOKABLE QStringList scan_unneed_packages_qt();
+    Q_INVOKABLE void clean_history_records_qt();
+    Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
-//    Q_INVOKABLE QMap<QString, QVariant> scan_cache_cruft_qt();
 
-
-    Q_INVOKABLE void scan_cache_cruft_qt();
     Q_INVOKABLE QStringList get_apt_data();
     Q_INVOKABLE QStringList get_center_data();
 
-//    Q_INVOKABLE QStringList scan_apt_cruft_qt();
-//    Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
     //---------------------------------
 
 
@@ -110,24 +86,14 @@ public:
 
     //-----------------------------------------------
 
-
-
-
-//    Q_INVOKABLE QMap<QString, QStringList> search_the_same_file(QString path);
     Q_INVOKABLE int get_the_record_qt(QString mode);
     Q_INVOKABLE void clean_the_browser_qt(QString mode);
     Q_INVOKABLE QMap<QString, QVariant> search_same_files(QString path);
     Q_INVOKABLE QStringList search_largest_file(QString path);
 
-    //custom_plymouth
-//    QMap<QString, QVariant> myinfo;
     QMap<QString, QVariant> apt_center;
     QDBusInterface *systemiface;
     QDBusInterface *passwordiface;
-    Q_INVOKABLE void set_str(QString str);
-    Q_INVOKABLE QString get_str();
-    QString notify_str;
-
 
 //-------------
     bool history_flag;
@@ -180,39 +146,23 @@ public:
 //-------------
 
 
-//    Q_INVOKABLE QString get_str(QString str);
-//    Q_INVOKABLE QMap <int, QString> data;
-//    Q_INVOKABLE QString getMyString();
-
-
     /*-------------------one key scan-------------------*/
     Q_INVOKABLE QMap<QString, QVariant> scan_by_one_key_qt();
 
 signals:
     void addBootImage();
-    void myStringChanged(QString str);//绑定到QML的Handler：onMyStringChanged
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
     void finishCleanWorkMainError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
     void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
-//    void finishCleanaptWork(QString msg);
-//    void finishCleansoftwareWork(QString msg);
-//    void finishCleanhistoryWork(QString msg);
-//    void finishCleancookiesWork(QString msg);
-//    void finishCleanpackageWork(QString msg);
-    void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
+    void finishCleanWorkSecondError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
 
 public slots:
     void handler_clear_rubbish(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);
     void handler_clear_rubbish_main_error(QString msg);
     void handler_clear_rubbish_second_onekey(QString msg);
-    void handler_scan_rubbish(QString msg);
-//    QString show_signal(QString msg);
-//    void setmyString(QString aString);
-//    QString myString();
-private:
-    
+    void handler_clear_rubbish_second_error(QString msg);
 };
 
 #endif // SYSTEMDISPATCHER_H

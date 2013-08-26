@@ -46,7 +46,6 @@ Item {
     signal history_bnt_signal(string history_msg);
     onHistory_bnt_signal: {
         if (history_msg == "HistoryWork") {
-            console.log(history_msg);
 //            root.num = systemdispatcher.scan_history_records_qt();
             root.num = sessiondispatcher.scan_history_records_qt();
             if (root.num == 0)
@@ -61,25 +60,18 @@ Item {
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
-        target: sessiondispatcher
-//        target: systemdispatcher
+//        target: sessiondispatcher
+        target: systemdispatcher
 //         onFinishScanWork: {
-//             console.log("begin onFinishScanWork..............");
         //             if (btn_flag == "history_scan") {
-        //                 console.log("******history_scan Signal handler received  Start******");
-        ////                 console.log(msg);
         //                 titleBar.work_result = msg;
         //                 titleBar.state = "HistoryWork";
-        ////                 console.log("******End******");
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "history_work") {
                 if (msg == "history") {
-                    console.log("******Clear Signal handler received  Start history_work******");
-    //                 console.log(msg);
                     root.work_result = msg;
                     root.state = "HistoryWorkFinish";
                 }
@@ -124,12 +116,14 @@ Item {
                 color: "#7a7a7a"
             }
         }
+    }
+    Row{
+        anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
+        spacing: 20
         Common.Label {
             id: label
             visible: false
             text: ""
-            anchors.right: bitButton.left
-            anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -139,8 +133,6 @@ Item {
             height: 39
             hoverimage: "scan-start.png"
 //            text: root.btn_text
-            anchors.right: parent.right
-            anchors.rightMargin: 50
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 //broswer history
@@ -160,8 +152,9 @@ Item {
                  }
                  else if (btn_flag == "history_work") {
                      if (systemdispatcher.get_history_flag()) {
-                         sessiondispatcher.clean_history_records_qt();
-//                        systemdispatcher.clean_history_records_qt();
+//                         sessiondispatcher.clean_history_records_qt();
+                         systemdispatcher.set_user_homedir_qt();
+                         systemdispatcher.clean_history_records_qt();
                      }
                      else
                          sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录清理项，请确认！");

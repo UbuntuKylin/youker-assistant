@@ -39,13 +39,14 @@ Item {
     property bool split_status: false
 
     property string btn_flag: "one_key_scan"
-
+    signal change_num(bool check_status)
     signal clicked
 
     width: 360
     height: 64
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
+    onCheckbox_statusChanged: {checkbox.checked=checkbox_status}
 
     function get_last_name(str)
     {
@@ -64,11 +65,12 @@ Item {
     Common.CheckBox {
         id: checkbox
 //        width: 30
-        checked: container.checkbox_status ? true : false
+        checked: true
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 30
         onCheckedChanged: {
+            container.change_num(checkbox.checked);
             if (checkbox.checked) {
                 if (btn_flag == "apt_work" || btn_flag == "apt_scan") {
                     var aptlist = systemdispatcher.get_apt_args();
@@ -122,6 +124,21 @@ Item {
                         systemdispatcher.set_package_args(container.text);
                     }
                 }
+
+
+                else if (btn_flag == "largestfile_work") {
+                    var filelist = systemdispatcher.get_largestfile_args();
+                    var word_flag4 = "false";
+                    for (var t=0; t<filelist.length; t++) {
+                        if (filelist[t] == container.descript) {
+                            word_flag4 = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag4 == "false") {
+                        systemdispatcher.set_largestfile_args(container.descript);
+                    }
+                }
             }
             else if (!checkbox.checked) {
                 if (btn_flag == "apt_work" || btn_flag == "apt_scan") {
@@ -135,6 +152,9 @@ Item {
                 }
                 else if (btn_flag == "package_work" || btn_flag == "package_scan") {
                     systemdispatcher.del_package_args(container.text);
+                }
+                else if (btn_flag == "largestfile_work") {
+                    systemdispatcher.del_largestfile_args(container.descript);
                 }
 
             }

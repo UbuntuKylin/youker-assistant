@@ -45,7 +45,6 @@ Rectangle {
         anchors.fill: parent
     }
     Component.onCompleted: {
-        console.log("boot......................................");
         systemdispatcher.plymouth_init_check_qt();
         var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
         bootimagepage.num = plymouth_list.length;
@@ -53,7 +52,7 @@ Rectangle {
         for(var i=0; i < plymouth_list.length; i++) {
             mainModel.append({"itemTitle": plymouth_list[i]});
         }
-        bootimagepage.selectedimage = plymouth_list[0];
+//        bootimagepage.selectedimage = plymouth_list[0];
         if(30*plymouth_list.length<=lisv_height)
         {
             scrollbar_z=-1

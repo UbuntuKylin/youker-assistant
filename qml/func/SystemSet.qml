@@ -84,11 +84,11 @@ Item {
     //                        font.pointSize: 12
                             font.pixelSize: 14
                             color: "#383838"
-                            anchors.top: personal.top
+//                            anchors.top: personal.top
                         }
                         Row {
-                            anchors.bottom: personal.bottom
-                            anchors.bottomMargin: 10
+//                            anchors.bottom: personal.bottom
+//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "更改窗口主题"; width: 80; flag: "WidgetTheme"}
                             //左右分割条
@@ -122,11 +122,11 @@ Item {
                             font.bold: true
                             font.pixelSize: 14
                             color: "#383838"
-                            anchors.top: unity.top
+//                            anchors.top: unity.top
                         }
                         Row {
-                            anchors.bottom: unity.bottom
-                            anchors.bottomMargin: 10
+//                            anchors.bottom: unity.bottom
+//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "自定义启动器"; width: 120; flag: "LauncherTheme"}
                         }
@@ -149,11 +149,11 @@ Item {
     //                        font.pointSize: 12
                             font.pixelSize: 14
                             color: "#383838"
-                            anchors.top: fontimage.top
+//                            anchors.top: fontimage.top
                         }
                         Row {
-                            anchors.bottom: fontimage.bottom
-                            anchors.bottomMargin: 10
+//                            anchors.bottom: fontimage.bottom
+//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "更改默认字体设置"; width: 110; flag: "DefaultFont"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
@@ -180,11 +180,11 @@ Item {
     //                        font.pointSize: 12
                             font.pixelSize: 14
                             color: "#383838"
-                            anchors.top: sysimage.top
+//                            anchors.top: sysimage.top
                         }
                         Row {
-                            anchors.bottom: sysimage.bottom
-                            anchors.bottomMargin: 10
+//                            anchors.bottom: sysimage.bottom
+//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "更改触摸板设置"; width: 100; flag: "TouchpadSet"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }

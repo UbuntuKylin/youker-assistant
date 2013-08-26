@@ -21,9 +21,11 @@ from common import get_mozilla_path
 
 
 class CookiesClean():
-    def __init__(self):
+    def __init__(self, homedir):
         self.filename = 'cookies.sqlite'
-        path = get_mozilla_path()
+        print '--------------------'
+        print homedir
+        path = get_mozilla_path(homedir)
         self.browser_conn = sqlite3.connect(path + self.filename)
         self.browser_cur = self.browser_conn.cursor()
 

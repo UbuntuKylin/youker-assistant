@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -40,8 +37,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
-
 #include <QtDBus>
 
 extern QString passwd;
@@ -63,87 +58,18 @@ inline QString getAppDirectory() {
         return QString("/usr/share/youker-assistant/qml/");
 //        return QString("/usr/share/youker-assistant/qml/main.qml");
     } else {
-//        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");//0720
+//        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");
         return QString(QCoreApplication::applicationDirPath() + "/../qml/");
     }
 }
 
-bool IhuApplication::setup(/*QString str*/)
+bool IhuApplication::setup()
 {
-//    if (str == "SessionDaemon") {
-//        qDebug() << "SessionDaemon000";
-//    }
-//    else {
-//        qDebug() << "SessionDaemon111";
-////        QProcess *process_session = new QProcess;
-////        process_session->start("/usr/bin/youkersession");
-//        int b = system("/usr/bin/youkersession &");
-//        qDebug() << b;
-//        qDebug() << "SessionDaemon222";
-//    }
-
-
-
-
-//    bool debug_flag = false;
-//    //debug source
-//    if (!debug_flag) {
-//        if (str == "SessionDaemon") {
-//            qDebug() << "SessionDaemon000";
-//        }
-//        else {
-//            qDebug() << "SessionDaemon111";
-////            QProcess *process_session = new QProcess;
-////            process_session->start("/usr/bin/youkersession");
-//            int b = system("/usr/bin/youkersession");
-//            qDebug() << b;
-//            qDebug() << "SessionDaemon222";
-//        }
-//    }
-//    //run deb package
-//    else {
-//        AuthDialog *dialog = new AuthDialog;
-//        dialog->exec();
-
-//        int value = 0;
-//        QString str = "";
-//        FILE *stream_system;
-//        char buf[64];
-//        memset(buf, '\0', sizeof(buf));
-//        stream_system = popen("ps -ef | grep youkersystem | grep -v grep | wc -l", "r" );
-//        fread(buf, sizeof(char), sizeof(buf), stream_system);
-//        str = QString(buf);
-//        value = str.toInt();
-//        if (value == 0) {
-//            QProcess *process_system = new QProcess;
-//            process_system->start("/usr/bin/youkersystem " + passwd);
-//        }
-//        pclose(stream_system);
-
-
-//        FILE *stream_session;
-//        memset(buf, '\0', sizeof(buf));
-//        stream_session = popen("ps -ef | grep youkersession | grep -v grep | wc -l", "r" );
-//        fread(buf, sizeof(char), sizeof(buf), stream_session);
-//        str = QString(buf);
-//        value = str.toInt();
-//        if (value == 0) {
-//            qDebug() << "6789";
-//            QProcess *process_session = new QProcess;
-//            process_session->start("/usr/bin/youkersession");
-//            qDebug() << "56789";
-//        }
-//        else
-//            qDebug() << "67890";
-//        memset(buf, '\0', sizeof(buf));
-//        pclose(stream_session);
-//    }
-
     IhuApplication::setApplicationName("Youker Assistant");
     viewer = new QDeclarativeView;
-    viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));//0720
-    viewer->setSource(QUrl::fromLocalFile("main.qml"));//0720
-//    viewer->setSource(QUrl("../qml/main.qml"));//0720
+    viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+    viewer->setSource(QUrl::fromLocalFile("main.qml"));
+//    viewer->setSource(QUrl("../qml/main.qml"));
     viewer->rootContext()->setContextProperty("mainwindow", viewer);
     viewer->setStyleSheet("background:transparent");
     viewer->setAttribute(Qt::WA_TranslucentBackground);

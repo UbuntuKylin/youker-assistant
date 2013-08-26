@@ -67,7 +67,7 @@ Item {
         subModel.clear();
         var num = 0;
         for (var i=0; i< largestfile_data.length; i++) {
-//                console.log(unneed_data[i]);//linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
+        //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
             var splitlist = largestfile_data[i].split("<2_2>");
             if (splitlist[0] == "") {
                 num++;
@@ -79,7 +79,6 @@ Item {
         }
         root.sub_num -= num;
         mainModel.clear();
-        console.log(systemdispatcher.get_largestfile_args());
         mainModel.append({"itemTitle": "清理最大文件",
                          "picture": "../img/toolWidget/deb-min.png",
                          "detailstr": "清理用户指定目录下的最大文件，节省磁盘空间",
@@ -120,16 +119,12 @@ Item {
         target: systemdispatcher
 //         onFinishScanWork: {
         //             if (btn_flag == "package_scan") {
-        //                 console.log("******package_scan Signal handler received  Start******");
-        ////                 console.log("33333333333333");
-        ////                 console.log(msg);
         //                 titleBar.work_result = msg;
         //                 titleBar.state = "UnneedWork";
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "largestfile_work") {
                 if (msg == "largestfile") {
                     root.work_result = msg;
@@ -152,7 +147,7 @@ Item {
         spacing: 20
         width: parent.width
 //        height: 50
-        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 20 }
 //        Image {
 //            id: refreshArrow
 //            source: "../img/toolWidget/find.gif"
@@ -178,26 +173,24 @@ Item {
                 color: "#7a7a7a"
             }
         }
+    }
 
         //status picture
+    Row{
+        anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
+        spacing: 20
         Image {
             id: statusImage
             source: "../img/toolWidget/unfinish.png"
             fillMode: "PreserveAspectFit"
             smooth: true
-            anchors {
-                right: label.left
-                rightMargin: 20
-                verticalCenter: parent.verticalCenter
-            }
+            anchors.verticalCenter: parent.verticalCenter
         }
 
         Common.Label {
             id: label
             visible: false
             text: ""
-            anchors.right: bitButton.left
-            anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
         }
         Common.Button {
@@ -205,8 +198,6 @@ Item {
             width: 120
             height: 39
             hoverimage: "clear-start.png"
-            anchors.right: parent.right
-            anchors.rightMargin: 50
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if (root.directory == "")
@@ -217,7 +208,6 @@ Item {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                     }
                     else if(root.null_flag == false) {
-                        console.log(systemdispatcher.get_largestfile_args());
                         systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
 //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                         root.state = "LargestFileWorkFinish";
@@ -256,77 +246,73 @@ Item {
                 x: 5; y: 2
                 width: root.width
                 height: root.itemHeight
-                spacing: 10
-                Image {
-                    id: clearImage
-                    fillMode: "PreserveAspectFit"
-                    height: parent.height*0.9
-                    source: picture
-                    smooth: true
-                }
+                spacing: 360
+                Row{
+                    spacing: 15
+                    Image {
+                        id: clearImage
+                        fillMode: "PreserveAspectFit"
+                        height: parent.height*0.9
+                        source: picture
+                        smooth: true
+                    }
 
-                Column {
-                    id: status_update_content
-                    spacing: 5
-                    anchors {
-                        left: clearImage.right; leftMargin: 15
-                        verticalCenter: parent.verticalCenter
-                    }
-                    Text {
-                        text: itemTitle
-                        font.pointSize: 11
-                        color: "black"
-                    }
-                    Text {
-                        text: detailstr
-                        font.pointSize: 9
-                        color: "gray"
+                    Column {
+                        id: status_update_content
+                        spacing: 5
+                        anchors.verticalCenter: parent.verticalCenter
+                        Text {
+                            text: itemTitle
+                            font.pointSize: 11
+                            color: "black"
+                        }
+                        Text {
+                            text: detailstr
+                            font.pointSize: 9
+                            color: "gray"
+                        }
                     }
                 }
-                Common.Button {
-                    id: selectBtn
-                    anchors {
-                        left: clearImage.right
-                        verticalCenter: parent.verticalCenter
-                        leftMargin: 600
+                Row{
+                    spacing: 40
+                    anchors.verticalCenter: parent.verticalCenter
+                    Common.Button {
+                        id: selectBtn
+                        anchors.verticalCenter: parent.verticalCenter
+                        hoverimage: "browser-green.png"
+                        width: 95
+                        height: 30
+                        onClicked: {
+                            root.directory = sessiondispatcher.show_folder_dialog();
+                            if (root.directory != "") {
+                                refresh_page();
+                                root.state = "LargestFileWorkAgain";
+                            }
+                        }
                     }
-                    hoverimage: "browser-green.png"
-                    width: 95
-                    height: 30
-                    onClicked: {
-                        root.directory = sessiondispatcher.show_folder_dialog();
-                        if (root.directory != "") {
-                            refresh_page();
-                            root.state = "LargestFileWorkAgain";
+
+                    Image {
+                        id: arrow
+                        fillMode: "PreserveAspectFit"
+    //                    height: parent.height*0.3
+                        height: 28
+                        width: 26
+                        source: root.arrow
+                        //当鼠标点击后,箭头图片旋转90度
+    //                    rotation: expanded ? 90 : 0
+                        rotation: expanded ? 0 : -180
+                        smooth: true
+                        anchors.verticalCenter: parent.verticalCenter
+                        MouseArea {
+                            id: mouseRegion
+                            anchors.fill: parent
+                            onPressed: {
+                                expanded = !expanded
+                            }
                         }
                     }
                 }
 
-                Image {
-                    id: arrow
-                    fillMode: "PreserveAspectFit"
-//                    height: parent.height*0.3
-                    height: 28
-                    width: 26
-                    source: root.arrow
-                    //当鼠标点击后,箭头图片旋转90度
-//                    rotation: expanded ? 90 : 0
-                    rotation: expanded ? 0 : -180
-                    smooth: true
-                    anchors {
-                        left: clearImage.right
-                        verticalCenter: parent.verticalCenter
-                        leftMargin: 750
-                    }
-                }
-
-                MouseArea {
-                    id: mouseRegion
-                    anchors.fill: status_update_content
-                    onPressed: {
-                        expanded = !expanded
-                    }
-                }
             }//母项Row
 
             //子项
@@ -358,6 +344,8 @@ Item {
                             width: root.width
                             height: subItemsRect.itemHeight
 //                            text: subItemTitle
+//                            text: desc
+//                            descript: itemTitle
                             text: itemTitle
                             descript: desc
 //                            size_num: number
@@ -371,7 +359,7 @@ Item {
 
                             btn_flag: root.btn_flag
 
-                            onClicked: {/*console.log(number)*/}
+                            onClicked: {}
                         }
 
                     }//Repeater

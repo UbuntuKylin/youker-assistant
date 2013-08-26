@@ -70,55 +70,53 @@ Rectangle {
     }
 
     //-------------------
-    Column {
-        anchors.fill: parent
-        spacing: 10
-        Image {
-            id: logoimage
-            anchors {
-                top: parent.top
-                topMargin: 20
-                horizontalCenter: parent.horizontalCenter
-            }
-            source: "../img/icons/admin.png"
-        }
-        Row {
-            id: setrow
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                top: logoimage.bottom
-                topMargin: 1
-            }
-            SetBtn {iconName: "set.png"; setbtn_flag: "set"}
-            SetBtn {iconName: "message.png"; setbtn_flag: "message"}
-        }
 
-        Text {
-            id: teamname
-            anchors {
-                top: setrow.bottom
-                topMargin: 30
-                horizontalCenter: parent.horizontalCenter
-            }
-            text: "UbuntuKylin Team"
-//                wrapMode: Text.WordWrap
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
+    Image {
+        id: logoimage
+        anchors {
+            top: parent.top
+            topMargin: 20
+            horizontalCenter: parent.horizontalCenter
         }
-        Text {
-            anchors {
-                top: teamname.bottom
-                topMargin: 10
-                horizontalCenter: parent.horizontalCenter
-            }
-            text: "优客助手"
-//                wrapMode: Text.WordWrap
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
-        }
+        source: "../img/icons/admin.png"
     }
+    Row {
+        id: setrow
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            top: logoimage.bottom
+            topMargin: 1
+        }
+        SetBtn {iconName: "set.png"; setbtn_flag: "set"}
+        SetBtn {iconName: "message.png"; setbtn_flag: "message"}
+    }
+
+    Text {
+        id: teamname
+        anchors {
+            top: setrow.bottom
+            topMargin: 30
+            horizontalCenter: parent.horizontalCenter
+        }
+        text: "UbuntuKylin Team"
+//                wrapMode: Text.WordWrap
+        font.bold: true
+        font.pixelSize: 14
+        color: "#383838"
+    }
+    Text {
+        anchors {
+            top: teamname.bottom
+            topMargin: 10
+            horizontalCenter: parent.horizontalCenter
+        }
+        text: "优客助手"
+//                wrapMode: Text.WordWrap
+        font.bold: true
+        font.pixelSize: 14
+        color: "#383838"
+    }
+
     //上下分割条
     Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }
     Rectangle {id: splitbar2; x: 2; y: 272; width: parent.width; height: 1; color: "#fafcfe" }
@@ -182,6 +180,11 @@ Rectangle {
                       Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php")
                   }
             }
+            Image {
+                id: btnImg1
+                anchors.fill: helplabel
+                source: ""
+            }
         }
         Common.Label {
             id: versionlabel
@@ -201,17 +204,12 @@ Rectangle {
                       sessiondispatcher.send_message_dialog();
                   }
             }
-        }
+            Image {
+                id: btnImg2
+                anchors.fill: versionlabel
+                source: ""
+            }
 
-        Image {
-            id: btnImg1
-            anchors.fill: helplabel
-            source: ""
-        }
-        Image {
-            id: btnImg2
-            anchors.fill: versionlabel
-            source: ""
         }
     }
 

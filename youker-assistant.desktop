@@ -2,6 +2,7 @@
 Name=youker-assistant
 Name[zh_CN]=优客助手
 Comment=youker-assistant
+Keywords=Settings;Cleaning;Customization
 Exec=/usr/bin/youker-assistant
 Icon=youker-assistant.png
 StartupNotify=true

@@ -62,7 +62,6 @@ Rectangle {
     {
         target: sessiondispatcher
         onFinishSetFont: {
-            console.log("titlebar font ok");
             if (font_style == "titlebarfont") {
                 titlebarfontpage.titlebar_font_flag = true;
                 titlefont.text = sessiondispatcher.get_window_title_font_qt();
@@ -130,66 +129,71 @@ Rectangle {
         }
     }
 
-    Column {
-        spacing: 20
+
+    Row {
+        id:te
+        spacing: 10
         anchors{
             left: parent.left
             leftMargin: 60
             top: settitle.bottom
+            topMargin: 15
+        }
+        Common.Label {
+            id: windowtitlefontlabel
+            width: 110
+            text: "当前标题栏字体:"
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        Text {
+            id: titlefont
+//                text: sessiondispatcher.get_window_title_font_qt()
+            text: titlebarfontpage.titlebar_font
+            width: 200
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+    Row{
+        anchors{
+            left: te.left
+            leftMargin: 470
+            top: settitle.bottom
             topMargin: 10
         }
-        Row {
-            spacing: 10
-            Common.Label {
-                id: windowtitlefontlabel
-                width: 110
-                text: "当前标题栏字体:"
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-                id: titlefont
-//                text: sessiondispatcher.get_window_title_font_qt()
-                text: titlebarfontpage.titlebar_font
-                width: 200
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Button {
-                id: titlefontBtn
-                anchors.left: parent.left
-                anchors.leftMargin: 470
-                hoverimage: "changefont.png"
-                width: 124
-                height: 30
-                onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
-            }
-            Common.Button {
-                anchors.left: titlefontBtn.right
-                anchors.leftMargin: 10
-                hoverimage: "use.png"
-                width: 124
-                height: 30
-                onClicked: {
-                    if(titlebarfontpage.titlebar_font_flag == true) {
-                        sessiondispatcher.set_window_title_font_qt_default(titlebarfontpage.titlebar_font);
-                        sessiondispatcher.restore_default_font_signal("titlebarfont_default");
-                        statusImage.visible = true;
-                    }
-                    else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的窗体标题栏字体已经为默认字体！");
-                }
-            }
-            Timer {
-                     interval: 5000; running: true; repeat: true
-                     onTriggered: statusImage.visible = false
-                 }
+        spacing: 10
+        Common.Button {
+            id: titlefontBtn
+            hoverimage: "changefont.png"
+            width: 124
+            height: 30
+            onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
         }
-
-
-    }//Column
+        Common.Button {
+//                anchors.left: titlefontBtn.right
+//                anchors.leftMargin: 10
+            hoverimage: "use.png"
+            width: 124
+            height: 30
+            onClicked: {
+                if(titlebarfontpage.titlebar_font_flag == true) {
+                    sessiondispatcher.set_window_title_font_qt_default(titlebarfontpage.titlebar_font);
+                    sessiondispatcher.restore_default_font_signal("titlebarfont_default");
+                    statusImage.visible = true;
+                }
+                else
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的窗体标题栏字体已经为默认字体！");
+            }
+        }
+        Timer {
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: statusImage.visible = false
+             }
+    }
 
     //顶层工具栏
     Bars.TopBar {

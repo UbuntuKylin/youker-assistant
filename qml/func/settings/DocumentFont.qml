@@ -66,7 +66,6 @@ Rectangle {
                 docufont.text = sessiondispatcher.get_document_font_qt();
             }
             else if (font_style == "documentfont_default") {
-                console.log("document font ok");
                 documentfontpage.document_font_flag = false;
                 docufont.text = sessiondispatcher.get_document_font_qt();
             }
@@ -130,66 +129,69 @@ Rectangle {
         }
     }
 
-    Column {
-        spacing: 20
+
+    Row {
+        id:re
+        spacing: 10
         anchors{
             left: parent.left
             leftMargin: 60
             top: settitle.bottom
+            topMargin: 15
+        }
+        Common.Label {
+            id: documentfontlabel
+            width: 110
+            text: "当前文档字体:"
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        Text {
+            id: docufont
+//                text: sessiondispatcher.get_document_font_qt()
+            text: documentfontpage.document_font
+            width: 200
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+    Row{
+        anchors{
+            left: re.left
+            leftMargin: 470
+            top: settitle.bottom
             topMargin: 10
         }
-
-        Row {
-            spacing: 10
-            Common.Label {
-                id: documentfontlabel
-                width: 110
-                text: "当前文档字体:"
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Text {
-                id: docufont
-//                text: sessiondispatcher.get_document_font_qt()
-                text: documentfontpage.document_font
-                width: 200
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Button {
-                id: docufontBtn
-                anchors.left: parent.left
-                anchors.leftMargin: 470
-                hoverimage: "changefont.png"
-                width: 124
-                height: 30
-                onClicked: sessiondispatcher.show_font_dialog("documentfont");
-            }
-            Common.Button {
-                anchors.left: docufontBtn.right
-                anchors.leftMargin: 10
-                hoverimage: "use.png"
-                width: 124
-                height: 30
-                onClicked: {
-                    if(documentfontpage.document_font_flag == true) {
-                        sessiondispatcher.set_document_font_qt_default(documentfontpage.document_font);
-                        sessiondispatcher.restore_default_font_signal("documentfont_default");
-                        statusImage.visible = true;
-                    }
-                    else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！");
-                }
-            }
-            Timer {
-                     interval: 5000; running: true; repeat: true
-                     onTriggered: statusImage.visible = false
-                 }
+        spacing: 10
+        Common.Button {
+            id: docufontBtn
+            hoverimage: "changefont.png"
+            width: 124
+            height: 30
+            onClicked: sessiondispatcher.show_font_dialog("documentfont");
         }
+        Common.Button {
+            hoverimage: "use.png"
+            width: 124
+            height: 30
+            onClicked: {
+                if(documentfontpage.document_font_flag == true) {
+                    sessiondispatcher.set_document_font_qt_default(documentfontpage.document_font);
+                    sessiondispatcher.restore_default_font_signal("documentfont_default");
+                    statusImage.visible = true;
+                }
+                else
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！");
+            }
+        }
+        Timer {
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: statusImage.visible = false
+             }
+    }
 
-    }//Column
 
     //顶层工具栏
     Bars.TopBar {

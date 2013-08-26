@@ -41,63 +41,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                QDBusConnection::sessionBus());
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
-    QObject::connect(sessioniface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
-
-    QObject::connect(sessioniface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
-    QObject::connect(sessioniface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
-    QObject::connect(sessioniface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
-    QObject::connect(sessioniface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
-    notify_str = "";
     page_num = 0;
-
 }
-
-void SessionDispatcher::handler_clear_rubbish_main_onekey(QString msg)
-{
-     emit finishCleanWorkMain(msg);
-}
-
-void SessionDispatcher::handler_clear_rubbish_main_error(QString msg)
-{
-     emit finishCleanWorkMainError(msg);
-}
-void SessionDispatcher::handler_clear_rubbish_second_onekey(QString msg)
-{
-     emit finishCleanWorkSecond(msg);
-}
-
-void SessionDispatcher::handler_clear_rubbish_second_error(QString msg)
-{
-     emit finishCleanWorkSecondError(msg);
-}
-void SessionDispatcher::handler_clear_rubbish(QString msg)
-{
-     emit finishCleanWork(msg);
-}
-void SessionDispatcher::clean_cookies_records_qt(QStringList strlist) {
-//    QDBusReply<void> reply = systemiface->call("clean_cookies_records", strlist);
-    sessioniface->call("clean_cookies_records", strlist);
-}
-void SessionDispatcher::clean_history_records_qt() {
-//    QDBusReply<void> reply = systemiface->call("clean_history_records");
-    sessioniface->call("clean_history_records");
-}
-
-void SessionDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
-    sessioniface->call("clean_by_main_one_key", strlist);
-}
-void SessionDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
-    sessioniface->call("clean_by_second_one_key", strlist);
-}
-
-//void SessionDispatcher::clean_package_cruft_qt(QStringList strlist) {
-////    QDBusReply<void> reply = systemiface->call("clean_package_cruft", strlist);
-//    sessioniface->call("clean_package_cruft", strlist);
-//}
-//void SessionDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
-////    QDBusReply<void> reply = systemiface->call("clean_file_cruft", strlist, str);
-//    sessioniface->call("clean_file_cruft", strlist, str);
-//}
 
 void SessionDispatcher::handler_scan_rubbish(QString msg)
 {
@@ -136,9 +81,6 @@ QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
     return reply.value();
 }
-
-
-
 
 QString SessionDispatcher::get_home_path() {
     QString homepath = QDir::homePath();
@@ -217,22 +159,6 @@ void SessionDispatcher::create_warningdialog(QString title, QString content) {
 }
 //------------------------------------
 
-void SessionDispatcher::set_str(QString str)
-{
-    notify_str += str;
-}
-
-void SessionDispatcher::del_str(QString str)
-{
-    notify_str.replace(QString(str), QString(""));
-}
-
-QString SessionDispatcher::get_str()
-{
-    return notify_str;
-}
-
-
 QString SessionDispatcher::get_value(QString key)
 {
     QVariant tt = myinfo.value(key);
@@ -240,7 +166,6 @@ QString SessionDispatcher::get_value(QString key)
 }
 
 QString SessionDispatcher::show_signal(QString msg) {
-    qDebug() << msg;
     return msg;
 }
 
@@ -263,7 +188,7 @@ QStringList SessionDispatcher::get_themes() {
 
 
 void SessionDispatcher::set_theme(QString theme) {
-    QDBusReply<void> reply = sessioniface->call("set_sys_theme", theme);
+    sessioniface->call("set_sys_theme", theme);
 }
 
 /*-----------------------------desktop of beauty-----------------------------*/
@@ -357,7 +282,7 @@ QString SessionDispatcher::get_theme_qt() {
     return reply.value();
 }
 void SessionDispatcher::set_theme_qt(QString theme) {
-    QDBusReply<void> reply = sessioniface->call("set_theme", theme);
+    sessioniface->call("set_theme", theme);
 }
 
 QStringList SessionDispatcher::get_icon_themes_qt() {
@@ -370,7 +295,7 @@ QString SessionDispatcher::get_icon_theme_qt() {
 }
 
 void SessionDispatcher::set_icon_theme_qt(QString theme) {
-    QDBusReply<void> reply = sessioniface->call("set_icon_theme", theme);
+    sessioniface->call("set_icon_theme", theme);
 }
 
 QStringList SessionDispatcher::get_cursor_themes_qt() {
@@ -382,14 +307,14 @@ QString SessionDispatcher::get_cursor_theme_qt() {
     return reply.value();
 }
 void SessionDispatcher::set_cursor_theme_qt(QString theme) {
-    QDBusReply<void> reply = sessioniface->call("set_cursor_theme", theme);
+    sessioniface->call("set_cursor_theme", theme);
 }
 int SessionDispatcher::get_cursor_size_qt() {
     QDBusReply<int> reply = sessioniface->call("get_cursor_size");
     return reply.value();
 }
 void SessionDispatcher::set_cursor_size_qt(int size) {
-    QDBusReply<void> reply = sessioniface->call("set_cursor_size", size);
+    sessioniface->call("set_cursor_size", size);
 }
 
 
@@ -474,7 +399,6 @@ void SessionDispatcher::show_font_dialog(QString flag) {
     {
         QString fontsize = QString("%1").arg(font.pointSize());
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
-        qDebug() << fontstyle;
         if(flag == "font")
             set_font_qt(fontstyle);//set font
         else if(flag == "desktopfont")
@@ -507,7 +431,6 @@ void SessionDispatcher::show_color_dialog() {
 QString SessionDispatcher::show_folder_dialog() {
     QString dir = QFileDialog::getExistingDirectory(0, tr("打开文件夹"), "/home",
                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    qDebug() << dir;
     return dir;
 }
 
@@ -580,7 +503,7 @@ bool SessionDispatcher::get_menus_have_icons_qt() {
 
 /*-----------------------------sound of beauty-----------------------------*/
 void SessionDispatcher::set_login_music_enable_qt(bool flag) {
-    QDBusReply<bool> reply = sessioniface->call("set_login_music_enable", flag);
+    sessioniface->call("set_login_music_enable", flag);
 }
 bool SessionDispatcher::get_login_music_enable_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_login_music_enable");
@@ -592,5 +515,5 @@ QString SessionDispatcher::get_sound_theme_qt() {
     return reply.value();
 }
 void SessionDispatcher::set_sound_theme_qt(QString theme) {
-    QDBusReply<bool> reply = sessioniface->call("set_sound_theme", theme);
+    sessioniface->call("set_sound_theme", theme);
 }

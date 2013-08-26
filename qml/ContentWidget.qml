@@ -46,9 +46,9 @@ Item {
         width: parent.width
         height: titlebar.height + toolwidget.height
         color: "transparent"
-        Column {
-            id: layout1
-            anchors.fill: parent
+//        Column {
+//            id: layout1
+//            anchors.fill: parent
             //标题栏
             TitleWidget {
                 id: titlebar
@@ -165,6 +165,6 @@ Item {
                     }
                 }
             }
-        }
+//        }
     }
 }

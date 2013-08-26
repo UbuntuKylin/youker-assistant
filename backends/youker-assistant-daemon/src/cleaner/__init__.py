@@ -33,7 +33,13 @@ import common
 import cacheclean
 
 #test path
-path = '/home/kylin/ubuntu-tweak/'
+#path = '/home/kylin/ubuntu-tweak/'
+HOMEDIR = ''
+
+def get_user_homedir(homedir):
+    global HOMEDIR
+    HOMEDIR = homedir
+
 
 # clean up by one key
 class OneKeyClean():
@@ -43,7 +49,37 @@ class OneKeyClean():
         self.objunneed = CleanTheUnneed()
         self.objcache = CleanTheCache()
 
+    def get_user_homedir(self, homedir):
+        self.homedir = homedir
+
+    def get_scan_resault_system(self, mode_list):
+        resault_dic = {}
+        flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
+        for mode in mode_list:
+            flag_dic['%s' % mode] = True
+        ### the part of unneed
+        if flag_dic['unneed']:
+            unneed_list = []
+            tmp_unneed_list = self.objunneed.get_scan_resault()
+            for record in tmp_unneed_list:
+                resaultunneed = record.split('<2_2>')[0]
+                unneed_list.append(resaultunneed)
+            resault_dic['unneed'] = unneed_list
+        ### the part of cache
+        if flag_dic['cache']:
+            cache_list = []
+            tmp_cache_dic = self.objcache.get_scan_resault(self.homedir)
+            for k in tmp_cache_dic:
+                tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
+                for one in tmp_cache_list:
+                    resaultcache = one.split('<2_2>')[0]
+                    cache_list.append(resaultcache)
+            resault_dic['cache'] = cache_list
+        return resault_dic
+
+
     def get_scan_resault(self, mode_list):
+        global HOMEDIR
         resault_dic = {}
         flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
         for mode in mode_list:
@@ -52,7 +88,7 @@ class OneKeyClean():
         if flag_dic['history']:
             history_list = []
             objhistory = CleanTheHistory()
-            tmp_history_list = objhistory.get_scan_resault()
+            tmp_history_list = objhistory.get_scan_resault(HOMEDIR)
             #tmp_history_str = '<1_1>'.join(tmp_history_list)
             for record in tmp_history_list:
                 resaulthistory = record.split('<2_2>')[0]
@@ -64,7 +100,7 @@ class OneKeyClean():
         if flag_dic['cookies']:
             cookies_list = []
             objcookies = CleanTheCookies()
-            tmp_cookies_list = objcookies.get_scan_resault()
+            tmp_cookies_list = objcookies.get_scan_resault(HOMEDIR)
             for record in tmp_cookies_list:
                 resaultcookies = record.split('<2_2>')[0]
                 cookies_list.append(resaultcookies)
@@ -85,7 +121,7 @@ class OneKeyClean():
         ### the part of cache
         if flag_dic['cache']:
             cache_list = []
-            tmp_cache_dic = self.objcache.get_scan_resault()
+            tmp_cache_dic = self.objcache.get_scan_resault(HOMEDIR)
             for k in tmp_cache_dic:
                 tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
                 for one in tmp_cache_list:
@@ -116,11 +152,8 @@ class SearchTheSame():
 
     def get_scan_resault(self, path):
         self.path = path
-        print 'aaaaaaaaaaa'
         self.objs.search_by_style(self.path)
-        print 'dddddddddddddddd'
         samefile_list = self.objs.adjust_the_dic()
-        #pprint.pprint(samefile_list)
         return samefile_list
 
 # the functions of manage the large files
@@ -140,36 +173,46 @@ class ManageTheLarge():
 # the functions of clean the history
 class CleanTheHistory():
     def __init__(self):
-        self.objh = historyclean.HistoryClean()
+        pass
+        #self.objh = historyclean.HistoryClean()
 
-    def get_scan_resault(self):
-        idurlcount = self.objh.scan_the_records()
-        #print idurlcount
+    def get_scan_resault(self, homedir = ''):
+        print "history's %s" % homedir
+        objhg = historyclean.HistoryClean(homedir)
+        idurlcount = objhg.scan_the_records()
         return idurlcount
 
     def clean_the_cruftlist(self):
-        self.objh.clean_all_records()
+        global HOMEDIR
+        objhc = historyclean.HistoryClean(HOMEDIR)
+        objhc.clean_all_records()
 
     def __del__(self):
-        del self.objh
+        pass
+        #del self.objh
 
 # the function of clean the cookies
 class CleanTheCookies():
     def __init__(self):
-        self.objc = cookiesclean.CookiesClean()
+        pass
+        #self.objc = cookiesclean.CookiesClean()
 
-    def get_scan_resault(self):
-        domaincount = self.objc.scan_the_records()
-        #print domaincount
+    def get_scan_resault(self, homedir = ''):
+        print "cookies's %s" % homedir
+        objcg = cookiesclean.CookiesClean(homedir)
+        domaincount = objcg.scan_the_records()
         return domaincount
 
     def clean_the_cruftlist(self, cruftlist):
+        global HOMEDIR
         flag = None
+        objcc = cookiesclean.CookiesClean(HOMEDIR)
         for cruft in cruftlist:
-            flag = self.objc.clean_the_records(cruft)
+            flag = objcc.clean_the_records(cruft)
 
     def __del__(self):
-        del self.objc
+        pass
+        #del self.objc
 
 # the function of scan the unneedpackages
 class CleanTheUnneed():
@@ -186,13 +229,13 @@ class CleanTheCache():
     def __init__(self):
         self.objc = cacheclean.CacheClean()
 
-    def get_scan_resault(self):
+    def get_scan_resault(self, homedir = ''):
         resault_dic = {}
         tmp_apt_str = '<1_1>'.join(self.objc.get_apt_cache())
-        tmp_center_str = '<1_1>'.join(self.objc.get_softwarecenter_cache())
+        print "softwarecenter's %s" % homedir
+        tmp_center_str = '<1_1>'.join(self.objc.get_softwarecenter_cache(homedir))
         resault_dic['apt'] = tmp_apt_str
         resault_dic['softwarecenter'] = tmp_center_str
-        #print resault_dic
         return resault_dic
 
 # the function of clean cruft files and cruft packages

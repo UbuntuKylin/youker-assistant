@@ -34,14 +34,19 @@ def get_cache_list():
     cache = apt.Cache()
     return cache
 
-def get_mozilla_path():
+def get_mozilla_path(homedir):
     count = 0
     tmp_pro_section = []
-    app_path = '~/.mozilla/firefox'
+    print 'ccccccccccccccc'
+    print homedir
+    if homedir:
+        app_path = '%s/.mozilla/firefox' % homedir
+    else:
+        app_path = os.path.expanduser('~/.mozilla/firefox')
     flag_pro_section = ''
     final_path = ''
 
-    profiles_path = os.path.expanduser('%s/profiles.ini' % app_path)
+    profiles_path = '%s/profiles.ini' % app_path
     if os.path.exists(profiles_path):
         cfg = ConfigParser.ConfigParser()
         cfg.read(profiles_path)

@@ -58,14 +58,14 @@ Rectangle {
                 //坐边栏
                 LeftPage {
                     id: leftbar
-                    anchors.left: parent.left
-                    anchors.leftMargin: -2
+//                    anchors.left: parent.left
+//                    anchors.leftMargin: -2
                     width: 600; height: screen.height
                 }
                RightPage {
                     id: rightbar
-                    anchors.left: leftbar.right
-                    anchors.leftMargin: 0
+//                    anchors.left: leftbar.right
+//                    anchors.leftMargin: 0
                     width: screen.width - 600; height: screen.height
                 }
             }//左右布局Row

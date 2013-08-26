@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -35,7 +32,7 @@ class IhuApplication : public QApplication
 public:
     IhuApplication(int &argc, char **argv);
     virtual ~IhuApplication();
-    bool setup(/*QString str*/);
+    bool setup();
 private:
     QDeclarativeView *viewer;
 };

@@ -49,9 +49,7 @@ Rectangle {
     }
 
     function change_status() {
-        console.log("11111111111111");
         statusImage.visible = false;
-        console.log("222222222222222");
     }
     ListModel {
         id: themeModel
@@ -84,8 +82,8 @@ Rectangle {
                  Image {
                      id: seticon
                      source: icon
-                     anchors.top: parent.top
-                     anchors.topMargin: 5
+//                     anchors.top: parent.top
+//                     anchors.topMargin: 5
 //                     width: griditem.width - 20
 //                     height: griditem.height - 30
                      width: 120
@@ -124,7 +122,6 @@ Rectangle {
 //                     iconClicked();
                      griditem.GridView.view.currentIndex = index;
                      widgetthemepage.selected_theme = name;
-//                     console.log(name);
 //                     sessiondispatcher.set_theme_qt(name);
                  }
              }
@@ -219,7 +216,6 @@ Rectangle {
                  pageStack.push(functioncollection)
          }
          onOkBtnClicked: {
-             console.log("widgettheme ok");
              if (widgetthemepage.selected_theme == "")
                  sessiondispatcher.set_theme_qt(widgetthemepage.init_theme);
              else {

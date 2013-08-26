@@ -31,30 +31,13 @@
 class SessionDispatcher : public QObject
 {
     Q_OBJECT
-
-    Q_PROPERTY(QNOTIFY finishSetFont)
-    Q_PROPERTY(QNOTIFY finishScanWork)
-    Q_PROPERTY(QNOTIFY finishCleanWork)
-
-
-    Q_PROPERTY(QNOTIFY finishCleanWorkMain)
-    Q_PROPERTY(QNOTIFY finishCleanWorkMainError)
-    Q_PROPERTY(QNOTIFY finishCleanWorkSecond)
-    Q_PROPERTY(QNOTIFY finishCleanWorkSecondError)
+//    Q_PROPERTY(QNOTIFY finishSetFont)
+//    Q_PROPERTY(QNOTIFY finishScanWork)
 public:
     explicit SessionDispatcher(QObject *parent = 0);
 
     QDBusInterface *sessioniface;
     Q_INVOKABLE QString get_session_daemon_qt();
-
-
-    Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
-    Q_INVOKABLE void clean_history_records_qt();
-//    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
-//    Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
-    Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
-    Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
-
 
     Q_INVOKABLE int scan_history_records_qt();
     Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
@@ -71,7 +54,6 @@ public:
     Q_INVOKABLE void send_checkscreen_dialog();
     void create_checkscreendialog();
 
-//    void create_dialog(QString mode);
     Q_INVOKABLE void send_warningdialog_msg(QString title, QString content);
     void create_warningdialog(QString title, QString content);
     Q_INVOKABLE void send_restartdialog_msg();
@@ -83,11 +65,6 @@ public:
     int page_num;
 
     Q_INVOKABLE QString get_home_path();
-
-    Q_INVOKABLE void set_str(QString str);
-    Q_INVOKABLE void del_str(QString str);
-    Q_INVOKABLE QString get_str();
-    QString notify_str;
 
     //----get system message
     QMap<QString, QVariant> myinfo;
@@ -155,18 +132,6 @@ public:
     bool set_window_title_font_qt(QString font);
     Q_INVOKABLE double get_font_zoom_qt();
     Q_INVOKABLE bool set_font_zoom_qt(double zoom);
-//    Q_INVOKABLE QString get_font_qt();
-//    Q_INVOKABLE bool set_font_qt(QString font);
-//    Q_INVOKABLE QString get_desktop_font_qt();
-//    Q_INVOKABLE bool set_desktop_font_qt(QString font);
-//    Q_INVOKABLE QString get_document_font_qt();
-//    Q_INVOKABLE bool set_document_font_qt(QString font);
-//    Q_INVOKABLE QString get_monospace_font_qt();
-//    Q_INVOKABLE bool set_monospace_font_qt(QString font);
-//    Q_INVOKABLE QString get_window_title_font_qt();
-//    Q_INVOKABLE bool set_window_title_font_qt(QString font);
-//    Q_INVOKABLE double get_font_zoom_qt();
-//    Q_INVOKABLE bool set_font_zoom_qt(double zoom);
 
     /*-------------------scrollbars of beauty-------------------*/
     Q_INVOKABLE bool set_scrollbars_mode_overlay_qt();
@@ -198,48 +163,9 @@ public:
 signals:
     void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
     void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
-    void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
-
-
-    void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
-    void finishCleanWorkMainError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
-    void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
-    void finishCleanWorkSecondError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
 public slots:
     QString show_signal(QString msg);
     void handler_scan_rubbish(QString msg);
-    void handler_clear_rubbish(QString msg);
-
-
-    void handler_clear_rubbish_main_onekey(QString msg);
-    void handler_clear_rubbish_main_error(QString msg);
-    void handler_clear_rubbish_second_onekey(QString msg);
-    void handler_clear_rubbish_second_error(QString msg);
-private:
-//    QUIBO *qtui;
 };
 
 #endif // SESSIONDISPATCHER_H
-/*
-a 	ARRAY 数组
-b 	BOOLEAN 布尔值
-d 	DOUBLE IEEE 754双精度浮点数
-g 	SIGNATURE 类型签名
-i 	INT32 32位有符号整数
-n 	INT16 16位有符号整数
-o 	OBJECT_PATH 对象路径
-q 	UINT16 16位无符号整数
-s 	STRING 零结尾的UTF-8字符串
-t 	UINT64 64位无符号整数
-u 	UINT32 32位无符号整数
-v 	VARIANT 可以放任意数据类型的容器，数据中包含类型信息。例如glib中的GValue。
-x 	INT64 64位有符号整数
-y 	BYTE 8位无符号整数
-() 	定义结构时使用。例如"(i(ii))"
-{} 	定义键－值对时使用。例如"a{us}"
-
-a表示数组，数组元素的类型由a后面的标记决定。例如：
-    "as"是字符串数组。
-    数组"a(i(ii))"的元素是一个结构。用括号将成员的类型括起来就表示结构了，结构可以嵌套。
-    数组"a{sv}"的元素是一个键－值对。"{sv}"表示键类型是字符串，值类型是VARIANT。
-*/

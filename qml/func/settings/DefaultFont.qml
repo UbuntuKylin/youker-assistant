@@ -75,8 +75,6 @@ Rectangle {
     {
         target: sessiondispatcher
         onFinishSetFont: {
-            console.log("onFinishSetFont.........");
-            console.log(font_style)
             if (font_style == "font") {
                 defaultfontpage.current_font_flag = true;
                 sysfont.text = sessiondispatcher.get_font_qt();
@@ -89,6 +87,7 @@ Rectangle {
                 defaultfontpage.monospace_font_flag = true;
                 monofont.text = sessiondispatcher.get_monospace_font_qt();
             }
+
             else if (font_style == "font_default") {
                 defaultfontpage.current_font_flag = false;
                 sysfont.text = sessiondispatcher.get_font_qt();
@@ -172,143 +171,147 @@ Rectangle {
         }
 
         Row {
-            spacing: 10
-            Common.Label {
-                id: fontslabel
-                width: 130
-                text: "当前字体:"
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
+            spacing: 130
+            Row{
+                spacing: 10
+                Common.Label {
+                    id: fontslabel
+                    width: 130
+                    text: "当前字体:"
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Text {
+                    id: sysfont
+                    text: sessiondispatcher.get_font_qt()
+        //                text: defaultfontpage.current_font
+                    width: 200
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
-            Text {
-                id: sysfont
-                text: sessiondispatcher.get_font_qt()
-//                text: defaultfontpage.current_font
-                width: 200
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Common.Button {
-                id: fontBtn
-                anchors.left: parent.left
-                anchors.leftMargin: 470
-                hoverimage: "changefont.png"
-                width: 124
-                height: 30
-                onClicked: sessiondispatcher.show_font_dialog("font");
-            }
-            Common.Button {
-                hoverimage: "use.png"
-                width: 124
-                height: 30
-                anchors.left: fontBtn.right
-                anchors.leftMargin: 10
-                onClicked: {
-                    if(defaultfontpage.current_font_flag == true) {
-//                        defaultfontpage.current_font_flag = false;
-                        sessiondispatcher.set_font_qt_default(defaultfontpage.current_font);
-                        sessiondispatcher.restore_default_font_signal("font_default");
-                        statusImage.visible = true;
+            Row{
+                spacing: 10
+                Common.Button {
+                    id: fontBtn
+                    hoverimage: "changefont.png"
+                    width: 124
+                    height: 30
+                    onClicked: sessiondispatcher.show_font_dialog("font");
+                }
+                Common.Button {
+                    hoverimage: "use.png"
+                    width: 124
+                    height: 30
+                    onClicked: {
+                        if(defaultfontpage.current_font_flag == true) {
+    //                        defaultfontpage.current_font_flag = false;
+                            sessiondispatcher.set_font_qt_default(defaultfontpage.current_font);
+                            sessiondispatcher.restore_default_font_signal("font_default");
+                            statusImage.visible = true;
+                        }
+                        else
+                            sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！");
                     }
-                    else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！");
                 }
             }
         }
 
         Row {
-            spacing: 10
-            Common.Label {
-                id: desktopfontlabel
-                width: 130
-                text: "当前桌面字体:"
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
+            spacing: 130
+            Row{
+                spacing: 10
+                Common.Label {
+                    id: desktopfontlabel
+                    width: 130
+                    text: "当前桌面字体:"
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Text {
+                    id: desktopfont
+                    text: sessiondispatcher.get_desktop_font_qt()
+                    width: 200
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
-            Text {
-                id: desktopfont
-                text: sessiondispatcher.get_desktop_font_qt()
-                width: 200
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Button {
-                id: desktopfontBtn
-                anchors.left: parent.left
-                anchors.leftMargin: 470
-                hoverimage: "changefont.png"
-                width: 124
-                height: 30
-                onClicked: sessiondispatcher.show_font_dialog("desktopfont");
-            }
-            Common.Button {
-                anchors.left: desktopfontBtn.right
-                anchors.leftMargin: 10
-                hoverimage: "use.png"
-                width: 124
-                height: 30
-                onClicked: {
-                    if(defaultfontpage.desktop_font_flag == true) {
-//                        defaultfontpage.desktop_font_flag = false;
-                        sessiondispatcher.set_desktop_font_qt_default(defaultfontpage.desktop_font);
-                        sessiondispatcher.restore_default_font_signal("desktopfont_default");
-                        statusImage.visible = true;
+            Row{
+                spacing: 10
+                Common.Button {
+                    id: desktopfontBtn
+                    hoverimage: "changefont.png"
+                    width: 124
+                    height: 30
+                    onClicked: sessiondispatcher.show_font_dialog("desktopfont");
+                }
+                Common.Button {
+                    hoverimage: "use.png"
+                    width: 124
+                    height: 30
+                    onClicked: {
+                        if(defaultfontpage.desktop_font_flag == true) {
+    //                        defaultfontpage.desktop_font_flag = false;
+                            sessiondispatcher.set_desktop_font_qt_default(defaultfontpage.desktop_font);
+                            sessiondispatcher.restore_default_font_signal("desktopfont_default");
+                            statusImage.visible = true;
+                        }
+                        else
+                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！");
                     }
-                    else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！");
                 }
             }
         }
 
-
         Row {
-            spacing: 10
-            Common.Label {
-                id: monospacefontlabel
-                width: 130
-                text: "当前等宽字体:"  //monospace
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
+            spacing: 130
+            Row{
+                spacing: 10
+                Common.Label {
+                    id: monospacefontlabel
+                    width: 130
+                    text: "当前等宽字体:"  //monospace
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Text {
+                    id: monofont
+                    text: sessiondispatcher.get_monospace_font_qt()
+    //                text: defaultfontpage.monospace_font
+                    width: 200
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
-            Text {
-                id: monofont
-                text: sessiondispatcher.get_monospace_font_qt()
-//                text: defaultfontpage.monospace_font
-                width: 200
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Button {
-                id: monofontBtn
-                anchors.left: parent.left
-                anchors.leftMargin: 470
-                hoverimage: "changefont.png"
-                width: 124
-                height: 30
-                onClicked: sessiondispatcher.show_font_dialog("monospacefont");
-            }
-            Common.Button {
-                anchors.left: monofontBtn.right
-                anchors.leftMargin: 10
-                hoverimage: "use.png"
-                width: 124
-                height: 30
-                onClicked: {
-                    if(defaultfontpage.monospace_font_flag == true) {
-//                        defaultfontpage.monospace_font_flag = false;
-                        sessiondispatcher.set_monospace_font_qt_default(defaultfontpage.monospace_font);
-                        sessiondispatcher.restore_default_font_signal("monospacefont_default");
-                        statusImage.visible = true;
+            Row{
+                spacing: 10
+                Common.Button {
+                    id: monofontBtn
+                    hoverimage: "changefont.png"
+                    width: 124
+                    height: 30
+                    onClicked: sessiondispatcher.show_font_dialog("monospacefont");
+                }
+                Common.Button {
+                    hoverimage: "use.png"
+                    width: 124
+                    height: 30
+                    onClicked: {
+                        if(defaultfontpage.monospace_font_flag == true) {
+    //                        defaultfontpage.monospace_font_flag = false;
+                            sessiondispatcher.set_monospace_font_qt_default(defaultfontpage.monospace_font);
+                            sessiondispatcher.restore_default_font_signal("monospacefont_default");
+                            statusImage.visible = true;
+                        }
+                        else
+                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！");
                     }
-                    else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！");
                 }
             }
         }
@@ -348,57 +351,60 @@ Rectangle {
             top: zoomtitle.bottom
             topMargin: 10
         }
-        Common.Label {
-            id: fontzoomlabel
-            width: 130
-            text: "全局字体缩放:"
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        Common.Slider {
-            id: slider
-            minimumValue: 0.1
-            maximumValue: 2
-            width: 150
-            value: sessiondispatcher.get_font_zoom_qt()
-            stepSize: 0.1
-            animated: true
-        }
-        Text {
-            id: displaynum
-            text: slider.value
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-
-
-        Common.Button {
-            id: okBtn
-            width: 95;height: 30
-            anchors.left: parent.left
-            anchors.leftMargin: 470
-            hoverimage: "ok.png"
-            onClicked: {
-                sessiondispatcher.set_font_zoom_qt(slider.value);
-                statusImage.visible = true;
+        spacing: 185
+        Row{
+            Common.Label {
+                id: fontzoomlabel
+                width: 130
+                text: "全局字体缩放:"
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Slider {
+                id: slider
+                minimumValue: 0.1
+                maximumValue: 2
+                width: 150
+                value: sessiondispatcher.get_font_zoom_qt()
+                stepSize: 0.1
+                animated: true
+            }
+            Text {
+                id: displaynum
+                text: slider.value
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
-        Common.Button {
-            hoverimage: "use.png"
-            anchors.left: okBtn.right
-            anchors.leftMargin: 38
-            width: 124
-            height: 30
-            onClicked: {
-                if(defaultfontpage.zoom_flag == true) {
-                    defaultfontpage.zoom_flag = false;
-                    sessiondispatcher.set_font_zoom_qt(defaultfontpage.zoom);
+        Row{
+            spacing: 38
+            Common.Button {
+                id: okBtn
+                width: 95;height: 30
+                hoverimage: "ok.png"
+                onClicked: {
+                    sessiondispatcher.set_font_zoom_qt(slider.value);
                     statusImage.visible = true;
+                    if (defaultfontpage.zoom != sessiondispatcher.get_font_zoom_qt())
+                        defaultfontpage.zoom_flag = true
                 }
-                else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！");
+            }
+            Common.Button {
+                hoverimage: "use.png"
+                width: 124
+                height: 30
+                onClicked: {
+                    if(defaultfontpage.zoom_flag == true) {
+                        defaultfontpage.zoom_flag = false;
+                        sessiondispatcher.set_font_zoom_qt(defaultfontpage.zoom);
+                        slider.value = defaultfontpage.zoom;
+                        statusImage.visible = true;
+                    }
+                    else
+                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！");
+                }
             }
         }
     }
@@ -437,9 +443,7 @@ Rectangle {
             else if (num == 4)
                 pageStack.push(functioncollection)
         }
-        onOkBtnClicked: {
-            /*console.log("default font ok");
-            sessiondispatcher.set_font_zoom_qt(fontzoomspinbox.value);*/}
+        onOkBtnClicked: {}
     }
     Timer {
              interval: 5000; running: true; repeat: true
