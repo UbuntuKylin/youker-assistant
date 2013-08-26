@@ -44,7 +44,7 @@ extern QString passwd;
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {
-
+    tray = new Tray();
 }
 inline bool isRunningInstalled() {
     static bool installed = (QCoreApplication::applicationDirPath() ==
@@ -94,6 +94,24 @@ bool IhuApplication::setup()
     viewer->move(centerW, centerH);
     viewer->show();
 
+
+
+
+    viewer_float = new QDeclarativeView;
+    viewer_float->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+    viewer_float->setSource(QUrl::fromLocalFile("floatmain.qml"));
+//    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
+    viewer_float->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    QObject *rootObject = dynamic_cast<QObject*>(viewer_float->rootObject());
+    QObject::connect(tray, SIGNAL(showFloat()), rootObject, SLOT(show_float_frame()));
+    viewer_float->rootContext()->setContextProperty("fmainwindow", viewer_float);
+    viewer_float->setStyleSheet("background:transparent");
+    viewer_float->setAttribute(Qt::WA_TranslucentBackground);
+    viewer_float->setWindowFlags(Qt::FramelessWindowHint);
+    QDesktopWidget* fdesktop = QApplication::desktop();
+    viewer_float->move(fdesktop->width(), 0);
+    viewer_float->show();
+
     return true;
 }
 
@@ -101,6 +119,12 @@ IhuApplication::~IhuApplication()
 {
     if (viewer) {
         delete viewer;
+    }
+    if (viewer_float) {
+        delete viewer_float;
+    }
+    if (tray) {
+        delete tray;
     }
 }
 

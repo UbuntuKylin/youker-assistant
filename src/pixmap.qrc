@@ -13,5 +13,6 @@
         <file>image/feature1.png</file>
         <file>image/feature2.png</file>
         <file>image/feature3.png</file>
+        <file>image/icon.png</file>
     </qresource>
 </RCC>
