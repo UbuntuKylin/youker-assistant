@@ -215,14 +215,13 @@ class Daemon(PolicyKitService):
         flag_str = ''
         #tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = {}
-        cruft_dic = self.daemononekey.get_scan_resault(mode_list)
+        cruft_dic = self.daemononekey.get_scan_result(mode_list)
         if 'history' in cruft_dic:
             history_cruft_list = cruft_dic['history']
             daemonhistory = cleaner.CleanTheHistory()
             try:
                 daemonhistory.clean_the_cruftlist()
             except Exception, e:
-                print e
                 self.clean_error_main_msg('he')
             else:
                 self.clean_complete_main_msg('h')
@@ -266,7 +265,7 @@ class Daemon(PolicyKitService):
         flag_str = ''
         #mode_list = ['history', 'cookies', 'cache', 'unneed']
         #tmp_mode_list = self.dbusstring_to_string(mode_list)
-        cruft_dic = self.daemononekey.get_scan_resault(mode_list)
+        cruft_dic = self.daemononekey.get_scan_result(mode_list)
         if 'history' in cruft_dic:
             history_cruft_list = cruft_dic['history']
             daemonhistory = cleaner.CleanTheHistory()
@@ -283,7 +282,6 @@ class Daemon(PolicyKitService):
             try:
                 daemoncookies.clean_the_cruftlist(cookies_cruft_list)
             except Exception, e:
-                print e
                 self.clean_error_second_msg('ke')
             else:
                 self.clean_complete_second_msg('k')

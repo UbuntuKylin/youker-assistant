@@ -37,8 +37,6 @@ def get_cache_list():
 def get_mozilla_path(homedir):
     count = 0
     tmp_pro_section = []
-    print 'ccccccccccccccc'
-    print homedir
     if homedir:
         app_path = '%s/.mozilla/firefox' % homedir
     else:
