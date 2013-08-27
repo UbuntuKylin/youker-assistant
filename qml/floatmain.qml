@@ -16,6 +16,11 @@ Rectangle {
             page.visible = true;
     }
 
+    BorderImage {
+        source: "./img/skin/bg-right.png"
+        width: parent.width; height: parent.height
+        border { left: 4; top: 4; right: 4; bottom: 4 }
+    }
 
 //    Column {
 //        id: myco
@@ -54,65 +59,43 @@ Rectangle {
 //        anchors.centerIn: parent
 //        width: 110; height: 150
 //    }
-    Contents {
-        id: search
-        visible: true
-        opacity: 1
-        anchors.centerIn: parent
-    }
-
-
-    //--------------------下边隐藏说明栏---------------------
-    BorderImage {
-        id: sidebar
-        source: "./img/icons/unselect.png"
-        anchors.top: search.bottom
-        width: parent.width
-        height:show ? 140 : 10
-        Behavior on width { NumberAnimation { easing.type: Easing.OutSine ; duration: 250 } }
-        property bool show: false
-////        border.left: 0;
-////        border.right: 26;
-//        border.left: 26;
-//        border.right: 0;
-        MouseArea {
-            id:mouseArea
-            anchors.fill: parent
-            onClicked: sidebar.show = !sidebar.show
+    Column {
+        anchors.horizontalCenter: parent.horizontalCenter
+        Contents {
+            id: search
+            visible: true
+            opacity: 1
+    //        anchors.centerIn: parent
         }
-        Column {
-            id: panel1
-            opacity: sidebar.show ? 1 : 0
-            Behavior on opacity { NumberAnimation { easing.type:Easing.InCubic; duration: 600} }
 
-            scale: sidebar.show ? 1 : 0
-            Behavior on scale { NumberAnimation { easing.type:Easing.InCubic; duration: 200 } }
-            transformOrigin: Item.Top
+        ContentsView {
+            id: view
+            visible: true
 
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.margins: 12
-            spacing:12
-
-            Image {
-                width: 47
-                height: 47
-                source: "./img/icons/book.png"
-            }
-            Text {
-                text: "UbuntuKylin Team"
-                width: parent.width - 12
-            }
-            Text {
-                text: qsTr("系统助手")
-                width: parent.width - 12
-            }
-            Text {
-                text: qsTr("第一期工程 20130601")
-                width: parent.width - 12
-            }
         }
     }
+
+    MouseArea {
+        anchors.fill: parent
+        property variant clickPos: "1,1"
+        onPressed: {
+            clickPos  = Qt.point(mouse.x,mouse.y)
+        }
+        onPositionChanged: {
+            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+            fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
+                              fmainwindow.pos.y+delta.y)
+        }
+        onClicked: {
+        }
+    }
+
     //------------------------------------------------
+
+//    MouseArea {
+//        anchors.fill: parent
+//        onClicked: {
+//            sidebar.visible != sidebar.visible;
+//        }
+//    }
 }

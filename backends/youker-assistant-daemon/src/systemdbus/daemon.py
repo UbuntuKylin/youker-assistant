@@ -306,7 +306,9 @@ class Daemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_history_records(self, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         daemonhistory = cleaner.CleanTheHistory()
         try:
             daemonhistory.clean_the_cruftlist()
@@ -318,7 +320,9 @@ class Daemon(PolicyKitService):
     ### input-['domain','dom...]   output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
     def clean_cookies_records(self, cruftlist, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         daemoncookies = cleaner.CleanTheCookies()
         try:
             daemoncookies.clean_the_cruftlist(cruftlist)
@@ -331,7 +335,9 @@ class Daemon(PolicyKitService):
     ### input-['filepath', 'file...]   output-''
     @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
     def clean_file_cruft(self, cruftlist, flagstr, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         try:
             self.daemonclean.clean_the_file(cruftlist)
         except Exception, e:
@@ -343,7 +349,9 @@ class Daemon(PolicyKitService):
     ### input-['packagename', 'pack...]   output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
     def clean_package_cruft(self, cruftlist, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         try:
             self.daemonclean.clean_the_package(cruftlist)
         except Exception, e:
