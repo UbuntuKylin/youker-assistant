@@ -38,6 +38,7 @@ import time
 import cleaner
 from beautify.sound import Sound
 from beautify.others import Others
+from appcollections.monitorball.monitor_ball import MonitorBall
 
 log = logging.getLogger('Daemon')
 
@@ -50,6 +51,7 @@ class Daemon(PolicyKitService):
         #self.sysconf = Sysinfo()
         self.otherconf = Others()
         self.soundconf = Sound()
+        self.ballconf = MonitorBall()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -131,6 +133,40 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def plymouth_init_check(self):
         self.otherconf.plymouth_init_check()
+    
+    # -------------------------monitorball-------------------------
+
+    # get cpu percent
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
+    def get_cpu_percent(self):
+        return self.ballconf.get_cpu_percent()
+        
+    # get total memory
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_total_memory(self):
+        return self.ballconf.get_total_memory()
+
+    # get used memory
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_used_memory(self):
+        return self.ballconf.get_used_memory()
+
+    # get free memory
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_free_memory(self):
+        return self.ballconf.get_free_memory()
+
+    # get network flow, return (up, down)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_network_flow(self):
+        return self.ballconf.get_network_flow()
+
+    # clean up memory
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def cleanup_memory(self):
+        self.ballconf.cleanup_memory()
+
+    # -------------------------monitorball end-------------------------
 
     # a dbus method which means scan complete
     @dbus.service.signal(INTERFACE, signature='s')
@@ -179,14 +215,13 @@ class Daemon(PolicyKitService):
         flag_str = ''
         #tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = {}
-        cruft_dic = self.daemononekey.get_scan_resault(mode_list)
+        cruft_dic = self.daemononekey.get_scan_result(mode_list)
         if 'history' in cruft_dic:
             history_cruft_list = cruft_dic['history']
             daemonhistory = cleaner.CleanTheHistory()
             try:
                 daemonhistory.clean_the_cruftlist()
             except Exception, e:
-                print e
                 self.clean_error_main_msg('he')
             else:
                 self.clean_complete_main_msg('h')
@@ -230,7 +265,7 @@ class Daemon(PolicyKitService):
         flag_str = ''
         #mode_list = ['history', 'cookies', 'cache', 'unneed']
         #tmp_mode_list = self.dbusstring_to_string(mode_list)
-        cruft_dic = self.daemononekey.get_scan_resault(mode_list)
+        cruft_dic = self.daemononekey.get_scan_result(mode_list)
         if 'history' in cruft_dic:
             history_cruft_list = cruft_dic['history']
             daemonhistory = cleaner.CleanTheHistory()
@@ -247,7 +282,6 @@ class Daemon(PolicyKitService):
             try:
                 daemoncookies.clean_the_cruftlist(cookies_cruft_list)
             except Exception, e:
-                print e
                 self.clean_error_second_msg('ke')
             else:
                 self.clean_complete_second_msg('k')
@@ -272,7 +306,9 @@ class Daemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_history_records(self, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         daemonhistory = cleaner.CleanTheHistory()
         try:
             daemonhistory.clean_the_cruftlist()
@@ -284,7 +320,9 @@ class Daemon(PolicyKitService):
     ### input-['domain','dom...]   output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
     def clean_cookies_records(self, cruftlist, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         daemoncookies = cleaner.CleanTheCookies()
         try:
             daemoncookies.clean_the_cruftlist(cruftlist)
@@ -297,7 +335,9 @@ class Daemon(PolicyKitService):
     ### input-['filepath', 'file...]   output-''
     @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
     def clean_file_cruft(self, cruftlist, flagstr, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         try:
             self.daemonclean.clean_the_file(cruftlist)
         except Exception, e:
@@ -309,7 +349,9 @@ class Daemon(PolicyKitService):
     ### input-['packagename', 'pack...]   output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
     def clean_package_cruft(self, cruftlist, sender=None):
-        self._check_permission(sender, UK_ACTION_YOUKER)
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         try:
             self.daemonclean.clean_the_package(cruftlist)
         except Exception, e:

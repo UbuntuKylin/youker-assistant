@@ -11,7 +11,6 @@ class CacheClean():
         apt_cache = '/var/cache/apt/archives'
         aptcachelist = map(lambda filename: '%s/%s<2_2>%s' % (apt_cache, filename, str(os.path.getsize('%s/%s' % (apt_cache, filename)))), filter(lambda filestr: filestr.endswith('deb'), os.listdir(apt_cache)))
         deb_num = len(aptcachelist)
-        #print aptcachelist
         return aptcachelist
 
     def get_softwarecenter_cache(self, homedir):
@@ -28,7 +27,6 @@ class CacheClean():
                 centercachelist.append('%s<2_2>%s' % (tmp_path, str(size)))
             else:
                 centercachelist.append('%s<2_2>%s' % (tmp_path, str(os.path.getsize(tmp_path))))
-        #print centercachelist
         return centercachelist
 
 if __name__ == "__main__":

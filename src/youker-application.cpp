@@ -44,7 +44,7 @@ extern QString passwd;
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {
-
+    tray = new Tray();
 }
 inline bool isRunningInstalled() {
     static bool installed = (QCoreApplication::applicationDirPath() ==
@@ -94,6 +94,40 @@ bool IhuApplication::setup()
     viewer->move(centerW, centerH);
     viewer->show();
 
+
+
+
+    viewer_float = new QDeclarativeView;
+    viewer_float->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+    viewer_float->setSource(QUrl::fromLocalFile("floatmain.qml"));
+//    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
+    viewer_float->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    QObject *rootObject = dynamic_cast<QObject*>(viewer_float->rootObject());
+    QObject::connect(tray, SIGNAL(showFloat()), rootObject, SLOT(show_float_frame()));
+    viewer_float->rootContext()->setContextProperty("fmainwindow", viewer_float);
+    viewer_float->setStyleSheet("background:transparent");
+    viewer_float->setAttribute(Qt::WA_TranslucentBackground);
+    viewer_float->setWindowFlags(Qt::FramelessWindowHint);
+    QDesktopWidget* fdesktop = QApplication::desktop();
+    viewer_float->move(fdesktop->width(), 0);
+    viewer_float->show();
+
+
+//    viewer_widget = new QDeclarativeView;
+//    viewer_widget->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+//    viewer_widget->setSource(QUrl::fromLocalFile("viewmain.qml"));
+////    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
+////    viewer_widget->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+////    QObject *rootview = dynamic_cast<QObject*>(viewer_widget->rootObject());
+////    QObject::connect(viewer_float, SIGNAL(showWidget()), rootview, SLOT(show_float_view()));
+//    viewer_widget->rootContext()->setContextProperty("vmainwindow", viewer_widget);
+//    viewer_widget->setStyleSheet("background:transparent");
+//    viewer_widget->setAttribute(Qt::WA_TranslucentBackground);
+//    viewer_widget->setWindowFlags(Qt::FramelessWindowHint);
+//    QDesktopWidget* vdesktop = QApplication::desktop();
+//    viewer_widget->move(vdesktop->width(), vdesktop->height()/2);
+//    viewer_widget->show();
+
     return true;
 }
 
@@ -101,6 +135,12 @@ IhuApplication::~IhuApplication()
 {
     if (viewer) {
         delete viewer;
+    }
+    if (viewer_float) {
+        delete viewer_float;
+    }
+    if (tray) {
+        delete tray;
     }
 }
 

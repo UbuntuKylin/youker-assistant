@@ -76,8 +76,6 @@ class DiskAnalyse():
             tmp = list(con)
             tmp[0] = str(tmp[0])
             final_list_str.append('<2_2>'.join(tmp))
-        #print '+++++++++++++++++++++++++++++++'
-        #print self.final_list_str
         self.final_list = []
         return final_list_str
 
