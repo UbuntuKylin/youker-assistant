@@ -142,22 +142,22 @@ class Daemon(PolicyKitService):
         return self.ballconf.get_cpu_percent()
         
     # get total memory
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_total_memory(self):
         return self.ballconf.get_total_memory()
 
     # get used memory
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_used_memory(self):
         return self.ballconf.get_used_memory()
 
     # get free memory
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_free_memory(self):
         return self.ballconf.get_free_memory()
 
     # get network flow, return (up, down)
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='ad')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_network_flow(self):
         return self.ballconf.get_network_flow()
 

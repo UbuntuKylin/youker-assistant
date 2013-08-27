@@ -162,6 +162,36 @@ void SystemDispatcher::restore_all_sound_file_qt(QString soundtheme) {
 }
 
 //-----------------------------------------------
+
+//-----------------------monitorball------------------------
+//-----------------------sound------------------------
+double SystemDispatcher::get_cpu_percent_qt() {
+    QDBusReply<double> reply = systemiface->call("get_cpu_percent");
+    return reply.value();
+}
+QString SystemDispatcher::get_total_memory_qt() {
+    QDBusReply<QString> reply = systemiface->call("get_total_memory");
+    return reply.value();
+}
+QString SystemDispatcher::get_used_memory_qt() {
+    QDBusReply<QString> reply = systemiface->call("get_used_memory");
+    return reply.value();
+}
+QString SystemDispatcher::get_free_memory_qt() {
+    QDBusReply<QString> reply = systemiface->call("get_free_memory");
+    return reply.value();
+}
+QStringList SystemDispatcher::get_network_flow_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("get_network_flow");
+    return reply.value();
+}
+void SystemDispatcher::cleanup_memory_qt() {
+    systemiface->call("cleanup_memory_q");
+}
+//-----------------------------------------------
+
+//-----------------------------------------------
+
 //-----------------------others------------------------
 void SystemDispatcher::custom_plymouth_bg_qt(QString plymouthName) {
     systemiface->call("custom_plymouth_bg", plymouthName);

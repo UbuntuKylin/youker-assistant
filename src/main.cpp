@@ -45,7 +45,6 @@
 #include "qtsplitterbase.h"
 #include "qdeclarativelinearlayout.h"
 #include "settings.h"
-
 #include <QDeclarativeExtensionPlugin>
 #include <QtScript/QScriptValue>
 #include <QtCore/QTimer>

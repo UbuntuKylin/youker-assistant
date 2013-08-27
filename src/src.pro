@@ -46,7 +46,8 @@ HEADERS += youker-application.h \
     qdeclarativefolderlistmodel.h \
     qdeclarativelayout.h \
     qdeclarativelayoutengine_p.h \
-    qdesktopitem.h
+    qdesktopitem.h \
+    tray.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -76,7 +77,8 @@ SOURCES += main.cpp \
     qdeclarativefolderlistmodel.cpp \
     qdeclarativelayout.cpp \
     qdeclarativelayoutengine.cpp \
-    qdesktopitem.cpp
+    qdesktopitem.cpp \
+    tray.cpp
 
 RESOURCES += pixmap.qrc
 
@@ -86,4 +88,5 @@ FORMS += \
     modaldialog.ui \
     warningdialog.ui \
     messagedialog.ui \
-    restartdialog.ui
+    restartdialog.ui \
+    tray.ui

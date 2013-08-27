@@ -22,7 +22,7 @@
 #include "QPoint"
 #include <QBoxLayout>
 #include <QStackedWidget>
-
+#include "tray.h"
 
 #include <QDBusInterface>
 #include <QDBusConnection>
@@ -35,5 +35,7 @@ public:
     bool setup();
 private:
     QDeclarativeView *viewer;
+    QDeclarativeView *viewer_float;
+    Tray *tray;
 };
 #endif // SYSTEMAPPLICATION_H
