@@ -84,126 +84,11 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error(self, msg):
         pass
-    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    #def clean_cookies_records(self, cruftlist, sender=None):
-    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    #def clean_cookies_records(self, cruftlist):
-        #self._check_permission(sender, UK_ACTION_YOUKER)
-    #    daemoncookies = cleaner.CleanTheCookies()
-    #    try:
-    #        daemoncookies.clean_the_cruftlist(cruftlist)
-    #    except Exception, e:
-            #print 'aaaaaaaaaaa'
-    #        self.clean_error_msg('cookies')
-    #    else:
-            #print 'bbbbbbbbb'
-    #        self.clean_complete_msg('cookies')
-
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    #def clean_history_records(self):
-        #self._check_permission(sender, UK_ACTION_YOUKER)
-    #    daemonhistory = cleaner.CleanTheHistory()
-    #    try:
-    #        daemonhistory.clean_the_cruftlist()
-    #    except Exception, e:
-    #        self.clean_error_msg('history')
-    #    else:
-    #        self.clean_complete_msg('history')
-
-    def dbusstring_to_string(self, string):
-        tmp_string = str(string)
-        patt = "u'[\S]+'"
-        tmp_list = re.findall(patt, tmp_string)
-        return [ok.split("'")[1] for ok in tmp_list]
-
-    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    #def clean_by_main_one_key(self, mode_list):
-    #    flag_str = ''
-    #    tmp_mode_list = self.dbusstring_to_string(mode_list)
-    #    cruft_dic = {}
-    #    cruft_dic = self.daemononekey.get_scan_resault(tmp_mode_list)
-    #    if 'history' in cruft_dic:
-    #        history_cruft_list = cruft_dic['history']
-    #        daemonhistory = cleaner.CleanTheHistory()
-    #        try:
-    #            daemonhistory.clean_the_cruftlist()
-    #        except Exception, e:
-    #            self.clean_error_main_msg('he')
-    #        else:
-    #            self.clean_complete_main_msg('h')
-    #    if 'cookies' in cruft_dic:
-    #        cookies_cruft_list = cruft_dic['cookies']
-    #        daemoncookies = cleaner.CleanTheCookies()
-    #        try:
-    #            daemoncookies.clean_the_cruftlist(cookies_cruft_list)
-    #        except Exception, e:
-    #            self.clean_error_main_msg('ke')
-    #        else:
-    #            self.clean_complete_main_msg('k')
-    #    if 'unneed' in cruft_dic:
-    #        unneed_cruft_list = cruft_dic['unneed']
-    #        try:
-    #            self.daemonclean.clean_the_package(unneed_cruft_list)
-    #        except Exception, e:
-    #            self.clean_error_main_msg('ue')
-    #        else:
-    #            self.clean_complete_main_msg('u')
-
-    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    #def clean_by_second_one_key(self, mode_list):
-    #    flag_str = ''
-    #    tmp_mode_list = self.dbusstring_to_string(mode_list)
-    #    cruft_dic = {}
-    #    cruft_dic = self.daemononekey.get_scan_resault(tmp_mode_list)
-    #    if 'history' in cruft_dic:
-    #        history_cruft_list = cruft_dic['history']
-    #        daemonhistory = cleaner.CleanTheHistory()
-    #        try:
-    #            daemonhistory.clean_the_cruftlist()
-    #        except Exception, e:
-    #            self.clean_error_second_msg('he')
-    #        else:
-    #            self.clean_complete_second_msg('h')
-    #    if 'cookies' in cruft_dic:
-    #        cookies_cruft_list = cruft_dic['cookies']
-    #        daemoncookies = cleaner.CleanTheCookies()
-    #        try:
-    #            daemoncookies.clean_the_cruftlist(cookies_cruft_list)
-    #        except Exception, e:
-    #            self.clean_error_second_msg('ke')
-    #        else:
-    #            self.clean_complete_second_msg('k')
-    #    if 'unneed' in cruft_dic:
-    #        unneed_cruft_list = cruft_dic['unneed']
-    #        try:
-    #            self.daemonclean.clean_the_package(unneed_cruft_list)
-    #        except Exception, e:
-    #            self.clean_error_second_msg('ue')
-    #        else:
-    #            self.clean_complete_second_msg('u')
-
-
-    #@dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
-    #def clean_file_cruft(self, cruftlist, flagstr):
-    #    try:
-    #        self.daemonclean.clean_the_file(cruftlist)
-    #    except Exception, e:
-    #        self.clean_error_msg(flagstr)
-    #    else:
-    #        self.clean_complete_msg(flagstr)
-    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    #def clean_package_cruft(self, cruftlist):
-    #    try:
-    #        self.daemonclean.clean_the_package(cruftlist)
-    #    except Exception, e:
-    #        self.clean_error_msg('package')
-    #    else:
-    #        self.clean_complete_msg('package')
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_history_records(self):
         daemonhistory = cleaner.CleanTheHistory()
-        tmp_list = daemonhistory.get_scan_resault()
+        tmp_list = daemonhistory.get_scan_result()
         self.scan_complete_msg('history')
         return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
 
@@ -211,7 +96,7 @@ class SessionDaemon(dbus.service.Object):
     ### input-'path'  output-['filea<2_2>filea','fileb<2_2>fileb'....]
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
     def scan_of_same(self, path):
-        tmp_list = self.daemonsame.get_scan_resault(path)
+        tmp_list = self.daemonsame.get_scan_result(path)
         self.scan_complete_msg('same')
         return tmp_list
 
@@ -219,7 +104,7 @@ class SessionDaemon(dbus.service.Object):
     ### input-'path'  output-['size<2_2>biggestfile<2_2>filestyle', 'size...]
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
     def scan_of_large(self, path):
-        tmp_list = self.daemonlarge.get_scan_resault(path)
+        tmp_list = self.daemonlarge.get_scan_result(path)
         self.scan_complete_msg('large')
         return tmp_list
     # the function of clean the cookies records
@@ -227,28 +112,28 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_cookies_records(self):
         daemoncookies = cleaner.CleanTheCookies()
-        tmp_list = daemoncookies.get_scan_resault()
+        tmp_list = daemoncookies.get_scan_result()
         self.scan_complete_msg('cookies')
         return tmp_list
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_unneed_packages(self):
-        tmp_list = self.daemonunneed.get_scan_resault()
+        tmp_list = self.daemonunneed.get_scan_result()
         self.scan_complete_msg('unneed')
         return tmp_list
     # the function of scan the apt cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_apt_cruft(self):
-        tmp_dic = self.daemoncache.get_scan_resault()
+        tmp_dic = self.daemoncache.get_scan_result()
         self.scan_complete_msg('apt')
         return tmp_dic['apt'].split('<1_1>')
     # the function of scan the softwarecenter cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_softwarecenter_cruft(self):
-        tmp_dic = self.daemoncache.get_scan_resault()
+        tmp_dic = self.daemoncache.get_scan_result()
         self.scan_complete_msg('softwarecenter')
         return tmp_dic['softwarecenter'].split('<1_1>')
 

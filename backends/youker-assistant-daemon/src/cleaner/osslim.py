@@ -34,10 +34,6 @@ class OsSlim():
             pkg.mark_delete()
         #self.cache.commit(install_progress=apt.progress.base.InstallProgress())
         flag = self.cache.commit(fprogress, iprogress)
-        if flag:
-            print 'Yes'
-        else:
-            print 'No'
 
 if __name__ == '__main__':
     obj = OsSlim()
