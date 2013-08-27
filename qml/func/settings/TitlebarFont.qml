@@ -168,7 +168,8 @@ Rectangle {
         spacing: 10
         Common.Button {
             id: titlefontBtn
-            hoverimage: "changefont.png"
+//            hoverimage: "changefont.png"
+            text:"更换字体"
             width: 124
             height: 30
             onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
@@ -176,7 +177,11 @@ Rectangle {
         Common.Button {
 //                anchors.left: titlefontBtn.right
 //                anchors.leftMargin: 10
-            hoverimage: "use.png"
+//            hoverimage: "use.png"
+            text:"使用默认设置"
+            color1: "#57bffc"
+            color2: "#2384c8"
+            bordercolor: "#31a0ee"
             width: 124
             height: 30
             onClicked: {

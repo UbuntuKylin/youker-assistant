@@ -196,13 +196,18 @@ Rectangle {
                 spacing: 10
                 Common.Button {
                     id: fontBtn
-                    hoverimage: "changefont.png"
+//                    hoverimage: "changefont.png"
+                    text:"更换字体"
                     width: 124
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("font");
                 }
                 Common.Button {
-                    hoverimage: "use.png"
+//                    hoverimage: "use.png"
+                    text:"使用默认设置"
+                    color1: "#57bffc"
+                    color2: "#2384c8"
+                    bordercolor: "#31a0ee"
                     width: 124
                     height: 30
                     onClicked: {
@@ -244,13 +249,18 @@ Rectangle {
                 spacing: 10
                 Common.Button {
                     id: desktopfontBtn
-                    hoverimage: "changefont.png"
+//                    hoverimage: "changefont.png"
+                    text:"更换字体"
                     width: 124
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("desktopfont");
                 }
                 Common.Button {
-                    hoverimage: "use.png"
+//                    hoverimage: "use.png"
+                    text:"使用默认设置"
+                    color1: "#57bffc"
+                    color2: "#2384c8"
+                    bordercolor: "#31a0ee"
                     width: 124
                     height: 30
                     onClicked: {
@@ -293,13 +303,18 @@ Rectangle {
                 spacing: 10
                 Common.Button {
                     id: monofontBtn
-                    hoverimage: "changefont.png"
+//                    hoverimage: "changefont.png"
+                    text:"更换字体"
                     width: 124
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("monospacefont");
                 }
                 Common.Button {
-                    hoverimage: "use.png"
+//                    hoverimage: "use.png"
+                    text:"使用默认设置"
+                    color1: "#57bffc"
+                    color2: "#2384c8"
+                    bordercolor: "#31a0ee"
                     width: 124
                     height: 30
                     onClicked: {
@@ -383,7 +398,8 @@ Rectangle {
             Common.Button {
                 id: okBtn
                 width: 95;height: 30
-                hoverimage: "ok.png"
+//                hoverimage: "ok.png"
+                text:"确定"
                 onClicked: {
                     sessiondispatcher.set_font_zoom_qt(slider.value);
                     statusImage.visible = true;
@@ -392,7 +408,11 @@ Rectangle {
                 }
             }
             Common.Button {
-                hoverimage: "use.png"
+//                hoverimage: "use.png"
+                text:"使用默认设置"
+                color1: "#57bffc"
+                color2: "#2384c8"
+                bordercolor: "#31a0ee"
                 width: 124
                 height: 30
                 onClicked: {

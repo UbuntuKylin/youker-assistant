@@ -45,13 +45,18 @@ Item {
          Common.Button {
              id: okBtn
              visible: toolbar.showok
-             hoverimage: "../../img/icons/ok.png"
+//             hoverimage: "../../img/icons/ok.png"
+             text:"确认"
              width: 94; height: 29
              onClicked: toolbar.okBtnClicked()
          }
          Common.Button {
              id: quitBtn
-             hoverimage: "../../img/icons/back.png"
+//             hoverimage: "../../img/icons/back.png"
+             text:"返回"
+             color1: "#d4d4d4"
+             color2: "#b5b5b5"
+             bordercolor:"#bebebe"
              width: 94; height: 29
              onClicked: toolbar.quitBtnClicked()
          }

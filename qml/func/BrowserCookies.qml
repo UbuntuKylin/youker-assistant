@@ -68,7 +68,9 @@ Item {
             }
 
             root.coo_sub_num -= num;
-            sub_num:coo_sub_num
+            sub_num=coo_sub_num
+            if(sub_num!=0)
+                check_flag=true;
             mainModel.clear();
             mainModel.append({"itemTitle": "清理Cookies ( 发现" + root.coo_sub_num + "处记录 )",
                              "picture": "../img/toolWidget/cookies.png",
@@ -188,7 +190,10 @@ Item {
             id: bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
+//            hoverimage: "scan-start.png"
+            text:"开始扫描"
+            bold:true
+            textsize: 12
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag)
@@ -383,20 +388,20 @@ Item {
         State {
             name: "CookiesWork"
              PropertyChanges { target: label; visible: true; text: "cookies扫描完成"}
-             PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
+             PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; btn_flag: "cookies_work" }
         },
         State {
             name: "CookiesWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         },
         State {
             name: "CookiesWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         }

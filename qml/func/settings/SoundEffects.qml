@@ -156,7 +156,8 @@ Rectangle {
             }
             Common.Button {
                 width: 95;height: 30
-                hoverimage: "ok.png"
+//                hoverimage: "ok.png"
+                text:"确定"
                 onClicked: {
                     if (soundeffectspage.default_sound != iconcombo.selectedText) {
                         soundeffectspage.default_sound = iconcombo.selectedText;
@@ -178,7 +179,11 @@ Rectangle {
                 }
             }
             Common.Button {
-                hoverimage: "use.png"
+//                hoverimage: "use.png"
+                text:"使用默认设置"
+                color1: "#57bffc"
+                color2: "#2384c8"
+                bordercolor: "#31a0ee"
                 width: 124
                 height: 30
                 onClicked: {

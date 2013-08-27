@@ -123,10 +123,13 @@ Rectangle {
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
-                SetBtn {
+                Common.Button{
                     id: firstonekey
-                    iconName: "onekeyBtn.png"
+//                    iconName: "onekeyBtn.png"
                     setbtn_flag: "onekey"
+                    text:"一键清理"
+                    bold:true
+                    textsize: 15
                     anchors {
                         left: parent.left; leftMargin: 100
                     }

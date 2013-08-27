@@ -175,6 +175,20 @@ Rectangle {
                 }
             }
         }
+//        Rectangle{
+//            id:ball
+//            width: 100;height: 100
+//            border.color: "grey"
+//            radius:50
+//            smooth:true
+//            gradient: Gradient{
+//                GradientStop{position: 0.0; color: "transparent"}
+//                GradientStop{position: 0.5; color: "transparent"}
+//                GradientStop{position: 0.51; color: "green"}
+//                GradientStop{position: 1.0; color: "green"}
+//            }
+//        }
+
     }
     //顶层工具栏
     Bars.TopBar {

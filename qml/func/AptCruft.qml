@@ -65,6 +65,8 @@ Item {
             }
             root.apt_sub_num -= num;
             apt_num=apt_sub_num
+            if(apt_num!=0)
+                check_flag=true;
             apt_mainModel.clear();
             apt_mainModel.append({"itemTitle": "包管理清理",
                              "picture": "../img/toolWidget/apt-min.png",
@@ -177,8 +179,10 @@ Item {
             id: apt_bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.btn_text
+//            hoverimage: "scan-start.png"
+            text:"开始扫描"
+            bold:true
+            textsize: 12
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(apt_check_flag)
@@ -368,21 +372,21 @@ Item {
         State {
             name: "AptWork"
              PropertyChanges { target: apt_label; visible: true; text: "apt扫描完成"}
-             PropertyChanges { target: apt_bitButton; hoverimage: "clear-start.png" }
+             PropertyChanges { target: apt_bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; apt_btn_flag: "apt_work" }
         },
 
         State {
             name: "AptWorkFinish"
             PropertyChanges { target: apt_label; visible: true; text: root.apt_work_result + "清理完毕！" }
-            PropertyChanges { target: apt_bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage; source: "../img/toolWidget/finish.png"}
         },
         State {
             name: "AptWorkEmpty"
             PropertyChanges { target: apt_label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: apt_bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage; source: "../img/toolWidget/finish.png"}
         }

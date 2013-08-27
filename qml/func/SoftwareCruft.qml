@@ -72,6 +72,8 @@ Item {
             }
             root.sof_sub_num -= num;
             sof_num=sof_sub_num
+            if(sof_num!=0)
+                check_flag=true;
             sof_mainModel.clear();
             sof_mainModel.append({"itemTitle": "软件中心缓存清理",
                              "picture": "../img/toolWidget/software-min.png",
@@ -192,8 +194,10 @@ Item {
             id: sof_bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.sof_btn_text
+//            hoverimage: "scan-start.png"
+            text:"开始扫描"
+            bold:true
+            textsize: 12
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.sof_check_flag)
@@ -388,20 +392,20 @@ Item {
         State {
             name: "SoftwareWork"
              PropertyChanges { target: sof_label; visible: true; text: "software扫描完成"}
-             PropertyChanges { target: sof_bitButton; hoverimage: "clear-start.png" }
+             PropertyChanges { target: sof_bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; sof_btn_flag: "software_work" }
         },
         State {
             name: "SoftwareWorkFinish"
             PropertyChanges { target: sof_label; visible: true; text: root.sof_work_result + "清理完毕！" }
-            PropertyChanges { target: sof_bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
             PropertyChanges { target: sof_statusImage; source: "../img/toolWidget/finish.png"}
         },
         State {
             name: "SoftwareWorkEmpty"
             PropertyChanges { target: sof_label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: sof_bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
             PropertyChanges { target: sof_statusImage; source: "../img/toolWidget/finish.png"}
         }

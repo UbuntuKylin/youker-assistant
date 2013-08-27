@@ -131,8 +131,10 @@ Item {
             id: bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.btn_text
+//            hoverimage: "scan-start.png"
+            text:"开始扫描"
+            bold:true
+            textsize: 12
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 //broswer history
@@ -223,20 +225,20 @@ Item {
         State {
             name: "HistoryWork"
             PropertyChanges { target: label; visible: true; text: "history扫描完成:" + root.num + "条记录"}
-             PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
+             PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; btn_flag: "history_work" }
         },
         State {
             name: "HistoryWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "history_scan" }
             PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
         },
         State {
             name: "HistoryWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "history_scan" }
             PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
         }

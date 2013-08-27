@@ -68,6 +68,8 @@ Item {
             }
             root.pac_sub_num -= num;
             sub_num= pac_sub_num
+            if(sub_num!=0)
+                check_flag=true;
             mainModel.clear();
             mainModel.append({"itemTitle": "卸载不必要的程序",
                              "picture": "../img/toolWidget/deb-min.png",
@@ -185,8 +187,10 @@ Item {
             id: bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.btn_text
+//            hoverimage: "scan-start.png"
+            text:"开始扫描"
+            bold:true
+            textsize: 12
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag)
@@ -381,20 +385,20 @@ Item {
         State {
             name: "UnneedWork"
             PropertyChanges { target: label; visible: true; text: "unneed扫描完成"}
-            PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; btn_flag: "package_work" }
         },
         State {
             name: "UnneedWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         },
         State {
             name: "UnneedWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         }

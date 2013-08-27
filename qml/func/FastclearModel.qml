@@ -162,10 +162,13 @@ Rectangle {
     Row{
         anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
         spacing: 20
-        SetBtn {
+        Common.Button {
             id: onekeybtn
-            iconName: "onekey.png"
+//            iconName: "onekey.png"
             setbtn_flag: "smallonekey"
+            text:"一键清理"
+            bold:true
+            textsize: 12
             width: 120
             height: 39
 ////如果没有选中任何清理项，提示警告框！
