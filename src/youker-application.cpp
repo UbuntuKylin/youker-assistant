@@ -112,6 +112,22 @@ bool IhuApplication::setup()
     viewer_float->move(fdesktop->width(), 0);
     viewer_float->show();
 
+
+//    viewer_widget = new QDeclarativeView;
+//    viewer_widget->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+//    viewer_widget->setSource(QUrl::fromLocalFile("viewmain.qml"));
+////    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
+////    viewer_widget->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+////    QObject *rootview = dynamic_cast<QObject*>(viewer_widget->rootObject());
+////    QObject::connect(viewer_float, SIGNAL(showWidget()), rootview, SLOT(show_float_view()));
+//    viewer_widget->rootContext()->setContextProperty("vmainwindow", viewer_widget);
+//    viewer_widget->setStyleSheet("background:transparent");
+//    viewer_widget->setAttribute(Qt::WA_TranslucentBackground);
+//    viewer_widget->setWindowFlags(Qt::FramelessWindowHint);
+//    QDesktopWidget* vdesktop = QApplication::desktop();
+//    viewer_widget->move(vdesktop->width(), vdesktop->height()/2);
+//    viewer_widget->show();
+
     return true;
 }
 

@@ -36,6 +36,7 @@ public:
 private:
     QDeclarativeView *viewer;
     QDeclarativeView *viewer_float;
+    QDeclarativeView *viewer_widget;
     Tray *tray;
 };
 #endif // SYSTEMAPPLICATION_H

@@ -1,14 +1,16 @@
 import QtQuick 1.1
 import SystemType 0.1
+import "./func/common" as Common
 Rectangle {
     id: page
-    width: 114; height: 154
+    width: 124; height: 114
     color: "#7bffffff"
 //    radius:5
 
     SystemDispatcher {
         id: systemdispatcher
     }
+    signal showWidget();
     function show_float_frame() {
         if (page.visible == true)
             page.visible = false;
@@ -22,80 +24,60 @@ Rectangle {
         border { left: 4; top: 4; right: 4; bottom: 4 }
     }
 
-//    Column {
-//        id: myco
-//        Image {
-//            id: refreshArrow
-//            source: "./img/toolWidget/hardware.png"
-////            anchors { top: lineLayout.top; topMargin: 10; left: parent.left; leftMargin: 45 }
-//            width: 47; height: 47
-//            Behavior on rotation { NumberAnimation { duration: 200 } }
-//        }
-//        Text {
-//            id: text0
-//            width: 69
-//            text: qsTr("硬件信息:")
-//            font.bold: true
-//            font.pointSize: 13
-//            font.pixelSize: 12
-////            anchors { top: lineLayout.top; topMargin: refreshArrow.height/2; left: parent.left; leftMargin: 45 + refreshArrow.width }
-//        }
-//    }
-
-//    MouseArea {
-//        anchors.fill: parent
-//        acceptedButtons : Qt.RightButton
-//        onClicked: {
-//            if (page.visible == true)
-//                page.visible = false;
-//            page.focus = false;
-//        }
-//    }
 //    Style {
 //        color: "gray"
 //        transformOrigin: "Center"
 //        opacity: 0.97
 //        visible: true
 //        anchors.centerIn: parent
-//        width: 110; height: 150
+//        width: 110; height: 50
 //    }
     Column {
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 5
+        spacing: 2
         Contents {
             id: search
             visible: true
             opacity: 1
-    //        anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            MouseArea {
+                anchors.fill: search
+                acceptedButtons : Qt.RightButton
+                onClicked: {
+                    if (page.visible == true)
+                        page.visible = false;
+                    page.focus = false;
+                }
+            }
+            MouseArea {
+                anchors.fill: search
+                property variant clickPos: "1,1"
+                onPressed: {
+                    clickPos  = Qt.point(mouse.x,mouse.y)
+                }
+                onPositionChanged: {
+                    var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+                    fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
+                                      fmainwindow.pos.y+delta.y)
+                }
+                onClicked: {
+                }
+                onDoubleClicked: {
+                }
+            }
         }
-
-        ContentsView {
-            id: view
-            visible: true
-
+        Common.Button {
+            id: accelerateBtn
+            width: 60
+            height: 19
+            anchors.horizontalCenter: parent.horizontalCenter
+            hoverimage: "move.png"
+            onClicked: {
+                systemdispatcher.cleanup_memory_qt();
+            }
         }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        property variant clickPos: "1,1"
-        onPressed: {
-            clickPos  = Qt.point(mouse.x,mouse.y)
-        }
-        onPositionChanged: {
-            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-            fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
-                              fmainwindow.pos.y+delta.y)
-        }
-        onClicked: {
-        }
-    }
 
-    //------------------------------------------------
-
-//    MouseArea {
-//        anchors.fill: parent
-//        onClicked: {
-//            sidebar.visible != sidebar.visible;
-//        }
-//    }
 }
