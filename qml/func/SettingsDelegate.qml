@@ -108,7 +108,7 @@ Rectangle {
             }
             else if(flag == "FcitxConfigtool")
             {
-                pageStack.push(fcitxConfigtoolpage);
+//                pageStack.push(fcitxConfigtoolpage);//kobe08
 
 //                scaleMe.emitFcitxRefresh();
 

@@ -174,15 +174,12 @@ Item {
         }
 
 
-
         Common.Button {
             id: apt_bitButton
             width: 120
             height: 39
-//            hoverimage: "scan-start.png"
-            text:"开始扫描"
-            bold:true
-            textsize: 12
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(apt_check_flag)
@@ -205,6 +202,36 @@ Item {
                      sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
             }
         }
+//        Common.Button {
+//            id: apt_bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(apt_check_flag)
+//                {
+//                //apt cruft
+//                 if (apt_btn_flag == "apt_scan") {
+//                     apt_signal("AptWork");
+//                     if(root.apt_null_flag == true) {
+//                        root.state = "AptWorkEmpty";
+//                        sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                     }
+//                     else if(root.apt_null_flag == false)
+//                        root.state = "AptWork";
+//                 }
+//                 else if (apt_btn_flag == "apt_work") {
+//                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
+//                 }
+//                }
+//                else
+//                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
+//            }
+//        }
     }
     //分割条
     Rectangle {

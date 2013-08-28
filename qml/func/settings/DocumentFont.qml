@@ -165,20 +165,18 @@ Rectangle {
             topMargin: 10
         }
         spacing: 10
+
         Common.Button {
             id: docufontBtn
-//            hoverimage: "changefont.png"
-            text:"更换字体"
+            hoverimage: "blue4.png"
+            text: "更换字体"
             width: 124
             height: 30
             onClicked: sessiondispatcher.show_font_dialog("documentfont");
         }
         Common.Button {
-//            hoverimage: "use.png"
-            text:"使用默认设置"
-            color1: "#57bffc"
-            color2: "#2384c8"
-            bordercolor: "#31a0ee"
+            hoverimage: "blue2.png"
+            text: "使用默认设置"
             width: 124
             height: 30
             onClicked: {
@@ -191,6 +189,32 @@ Rectangle {
                     sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！");
             }
         }
+//        Common.Button {
+//            id: docufontBtn
+////            hoverimage: "changefont.png"
+//            text:"更换字体"
+//            width: 124
+//            height: 30
+//            onClicked: sessiondispatcher.show_font_dialog("documentfont");
+//        }
+//        Common.Button {
+////            hoverimage: "use.png"
+//            text:"使用默认设置"
+//            color1: "#57bffc"
+//            color2: "#2384c8"
+//            bordercolor: "#31a0ee"
+//            width: 124
+//            height: 30
+//            onClicked: {
+//                if(documentfontpage.document_font_flag == true) {
+//                    sessiondispatcher.set_document_font_qt_default(documentfontpage.document_font);
+//                    sessiondispatcher.restore_default_font_signal("documentfont_default");
+//                    statusImage.visible = true;
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！");
+//            }
+//        }
         Timer {
                  interval: 5000; running: true; repeat: true
                  onTriggered: statusImage.visible = false

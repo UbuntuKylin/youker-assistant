@@ -123,13 +123,41 @@ Rectangle {
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
+//                SetBtn {
+//                    id: firstonekey
+////                    iconName: "onekeyBtn.png"
+//                    iconName: "green3.png"
+//                    setbtn_flag: "onekey"
+//                    text: "一键清理"
+//                    anchors {
+//                        left: parent.left; leftMargin: 100
+//                    }
+//                    width: 186
+//                    height: 45
+//                    onSend_dynamic_picture: {
+//                        if (str == "onekey") {
+//                            refreshArrow0.visible = false;
+//                            refreshArrow.visible = true;
+//                        }
+//                    }
+////如果没有选中任何清理项，提示警告框！
+//                    onClicked: {
+//                        if(!(checkboxe1.checked||checkboxe2.checked||checkboxe3.checked||checkboxe4.checked))
+//                        {
+//                            firstonekey.check_flag=false;
+////                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
+//                        }
+//                        else
+//                            firstonekey.check_flag=true;
+//                    }
+//                }
                 Common.Button{
                     id: firstonekey
-//                    iconName: "onekeyBtn.png"
+                    hoverimage: "green3.png"
                     setbtn_flag: "onekey"
                     text:"一键清理"
-                    bold:true
-                    textsize: 15
+//                    bold:true
+//                    textsize: 15
                     anchors {
                         left: parent.left; leftMargin: 100
                     }

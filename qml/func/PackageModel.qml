@@ -187,10 +187,8 @@ Item {
             id: bitButton
             width: 120
             height: 39
-//            hoverimage: "scan-start.png"
-            text:"开始扫描"
-            bold:true
-            textsize: 12
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag)
@@ -214,6 +212,37 @@ Item {
                 console.log(root.sub_num)
             }
         }
+//        Common.Button {
+//            id: bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(root.check_flag)
+//                {
+//                //package cruft
+//                 if (btn_flag == "package_scan") {
+//                     unneed_signal("UnneedWork");
+//                     if(root.null_flag == true) {
+//                        root.state = "UnneedWorkEmpty";
+//                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                     }
+//                     else if(root.null_flag == false)
+//                        root.state = "UnneedWork";
+//                 }
+//                 else if (btn_flag == "package_work") {
+//                     systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+//                 }
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+//                console.log(root.sub_num)
+//            }
+//        }
     }
 
     //分割条

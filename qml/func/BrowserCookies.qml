@@ -190,10 +190,8 @@ Item {
             id: bitButton
             width: 120
             height: 39
-//            hoverimage: "scan-start.png"
-            text:"开始扫描"
-            bold:true
-            textsize: 12
+            text: root.btn_text
+            hoverimage: "green1.png"
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag)
@@ -219,6 +217,39 @@ Item {
                 console.log(root.sub_num)
             }
         }
+//        Common.Button {
+//            id: bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(root.check_flag)
+//                {
+//                //broswer cookies
+//                 if (btn_flag == "cookies_scan") {
+//                     cookies_signal("CookiesWork");
+//                     if(root.null_flag == true) {
+//                        root.state = "CookiesWorkEmpty";
+//                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                     }
+//                     else if(root.null_flag == false)
+//                        root.state = "CookiesWork";
+//                 }
+//                 else if (btn_flag == "cookies_work") {
+//                     systemdispatcher.set_user_homedir_qt();
+//                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+////                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+//                 }
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+//                console.log(root.sub_num)
+//            }
+//        }
     }
     //分割条
     Rectangle {

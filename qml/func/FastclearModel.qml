@@ -162,13 +162,37 @@ Rectangle {
     Row{
         anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
         spacing: 20
+//        SetBtn {
+//            id: onekeybtn
+////            iconName: "onekey.png"
+//            iconName: "green1.png"
+//            setbtn_flag: "smallonekey"
+//            text: "一键清理"
+//            width: 120
+//            height: 39
+//////如果没有选中任何清理项，提示警告框！
+//            onClicked: {
+//                if(!(checkboxe.checked||checkboxe2.checked||checkboxe3.checked||checkboxe4.checked))
+//                {
+//                    onekeybtn.check_flag=false;
+
+////                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
+//                }
+//                else
+//                    onekeybtn.check_flag=true;
+////                            select.state="middlestate";
+////                            if(checkboxe.checked&&checkboxe2.checked&&checkboxe3.checked&&checkboxe4.checked)
+////                            {
+////                                select.state="middlestate1";
+////                            }
+
+//            }
+//        }
         Common.Button {
             id: onekeybtn
-//            iconName: "onekey.png"
+            hoverimage: "green1.png"
             setbtn_flag: "smallonekey"
             text:"一键清理"
-            bold:true
-            textsize: 12
             width: 120
             height: 39
 ////如果没有选中任何清理项，提示警告框！

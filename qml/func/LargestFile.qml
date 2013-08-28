@@ -27,7 +27,7 @@ Item {
     id:root
     width: parent.width
     height: 435//475
-    property string btn_text: "开始扫描"
+    property string btn_text: "开始清理"
     property string title: "快速找出最占用磁盘空间的大文件"
     property string description: "删除占用磁盘空间的无用大文件，释放更多磁盘空间。"
     property string btn_flag: "largestfile_work"
@@ -206,32 +206,56 @@ Item {
             id: bitButton
             width: 120
             height: 39
-//            hoverimage: "clear-start.png"
-            text:"开始清理"
-            textsize: 12
-            bold:true
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-                if(root.check_flag)
-                {
-                    if (root.directory == "")
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
-                    else {
-                        if(root.null_flag == true) {
-                           root.state = "LargestFileWorkEmpty";
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
-                        }
-                        else if(root.null_flag == false) {
-                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-    //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-                            root.state = "LargestFileWorkFinish";
-                        }
+                if (root.directory == "")
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
+                else {
+                    if(root.null_flag == true) {
+                       root.state = "LargestFileWorkEmpty";
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                    }
+                    else if(root.null_flag == false) {
+                        systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+                        root.state = "LargestFileWorkFinish";
                     }
                 }
-                else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
             }
         }
+
+//        Common.Button {
+//            id: bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "clear-start.png"
+//            text:"开始清理"
+//            textsize: 12
+//            bold:true
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(root.check_flag)
+//                {
+//                    if (root.directory == "")
+//                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
+//                    else {
+//                        if(root.null_flag == true) {
+//                           root.state = "LargestFileWorkEmpty";
+//                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                        }
+//                        else if(root.null_flag == false) {
+//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//    //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//                            root.state = "LargestFileWorkFinish";
+//                        }
+//                    }
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+//            }
+//        }
     }
     //分割条
     Rectangle {
@@ -303,29 +327,45 @@ Item {
                     Common.Button {
                         id: selectBtn
                         anchors.verticalCenter: parent.verticalCenter
-//                        hoverimage: "browser-green.png"
-                        text:"浏览"
-                        color1: "#acdbf9"
-                        color2: "#7cb9e5"
-                        bordercolor: "#89b5d0"
-                        textsize: 11
+                        hoverimage: "blue1.png"
+                        text: "浏览..."
                         width: 95
                         height: 30
                         onClicked: {
-                            console.log(check_num);
-                            if(root.check_flag)
-                            {
-                                console.log(root.check_flag);
-                                root.directory = sessiondispatcher.show_folder_dialog();
-                                if (root.directory != "") {
-                                    refresh_page();
-                                    root.state = "LargestFileWorkAgain";
-                                }
+                            root.directory = sessiondispatcher.show_folder_dialog();
+                            if (root.directory != "") {
+                                refresh_page();
+                                root.state = "LargestFileWorkAgain";
                             }
-                            else
-                                sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要浏览的项，请确认！");
                         }
                     }
+
+//                    Common.Button {
+//                        id: selectBtn
+//                        anchors.verticalCenter: parent.verticalCenter
+////                        hoverimage: "browser-green.png"
+//                        text:"浏览"
+//                        color1: "#acdbf9"
+//                        color2: "#7cb9e5"
+//                        bordercolor: "#89b5d0"
+//                        textsize: 11
+//                        width: 95
+//                        height: 30
+//                        onClicked: {
+//                            console.log(check_num);
+//                            if(root.check_flag)
+//                            {
+//                                console.log(root.check_flag);
+//                                root.directory = sessiondispatcher.show_folder_dialog();
+//                                if (root.directory != "") {
+//                                    refresh_page();
+//                                    root.state = "LargestFileWorkAgain";
+//                                }
+//                            }
+//                            else
+//                                sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要浏览的项，请确认！");
+//                        }
+//                    }
 
                     Image {
                         id: arrow

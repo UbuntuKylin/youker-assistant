@@ -73,6 +73,7 @@ Rectangle {
             height: 19
             anchors.horizontalCenter: parent.horizontalCenter
             //hoverimage: "move.png"
+            text: "一键加速"
             onClicked: {
                 systemdispatcher.cleanup_memory_qt();
             }

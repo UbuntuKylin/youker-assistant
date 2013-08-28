@@ -176,8 +176,8 @@ Rectangle {
             Common.Button {
                 id: okBtn
                 width: 95;height: 30
-//                hoverimage: "ok.png"
-                text:"确定"
+                hoverimage: "green2.png"
+                text: "确定"
                 onClicked: {
                     desktopiconsetpage.init_icon_theme_flag = true;
                     if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
@@ -188,11 +188,8 @@ Rectangle {
                 }
             }
             Common.Button {
-//                hoverimage: "use.png"
-                text:"使用默认设置"
-                color1: "#57bffc"
-                color2: "#2384c8"
-                bordercolor: "#31a0ee"
+                hoverimage: "blue2.png"
+                text: "使用默认设置"
                 width: 124
                 height: 30
                 onClicked: {
@@ -205,6 +202,38 @@ Rectangle {
                         sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的图标主题已经为默认设置！");
                 }
             }
+//            Common.Button {
+//                id: okBtn
+//                width: 95;height: 30
+////                hoverimage: "ok.png"
+//                text:"确定"
+//                onClicked: {
+//                    desktopiconsetpage.init_icon_theme_flag = true;
+//                    if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
+//                        desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
+//                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//                        statusImage.visible = true;
+//                    }
+//                }
+//            }
+//            Common.Button {
+////                hoverimage: "use.png"
+//                text:"使用默认设置"
+//                color1: "#57bffc"
+//                color2: "#2384c8"
+//                bordercolor: "#31a0ee"
+//                width: 124
+//                height: 30
+//                onClicked: {
+//                    if(desktopiconsetpage.init_icon_theme_flag == true) {
+//                        desktopiconsetpage.init_icon_theme_flag;
+//                        sessiondispatcher.set_icon_theme_qt(desktopiconsetpage.init_icon_theme);
+//                        statusImage.visible = true;
+//                    }
+//                    else
+//                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的图标主题已经为默认设置！");
+//                }
+//            }
             Timer {
                      interval: 5000; running: true; repeat: true
                      onTriggered: statusImage.visible = false

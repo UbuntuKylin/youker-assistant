@@ -29,6 +29,7 @@ Item {
     property string sof_title: "软件中心缓存深度清理"
     property string sof_description: "深度清理软件中心缓存,节省磁盘空间"
     property string sof_btn_flag: "software_scan"
+    property string btn_text: "开始扫描"
     property SystemDispatcher dis: systemdispatcher
     property int sof_sub_num: 0
     property string sof_work_result: ""
@@ -190,14 +191,13 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
 
+
         Common.Button {
             id: sof_bitButton
             width: 120
             height: 39
-//            hoverimage: "scan-start.png"
-            text:"开始扫描"
-            bold:true
-            textsize: 12
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.sof_check_flag)
@@ -222,6 +222,38 @@ Item {
                 console.log(root.sub_num)
             }
         }
+//        Common.Button {
+//            id: sof_bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(root.sof_check_flag)
+//                {
+//                //software cruft
+//                 if (sof_btn_flag == "software_scan") {
+//                     software_signal("SoftwareWork");
+//                     if(root.sof_null_flag == true) {
+//                        root.state = "SoftwareWorkEmpty";
+//                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                     }
+//                     else if(root.sof_null_flag == false)
+//                        root.state = "SoftwareWork";
+//                 }
+//                 else if (sof_btn_flag == "software_work") {
+//                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
+////                     sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
+//                 }
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+//                console.log(root.sub_num)
+//            }
+//        }
     }
     //分割条
     Rectangle {
