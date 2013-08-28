@@ -184,14 +184,24 @@ Rectangle {
                     Common.CheckBox {
                         id:overlay
                         titleName: "特色类型" //overlay模式
+                        checked: (touchpadsetpage.scrollbars_mode == "overlay-auto") ? true : false
                         flag: "radio"
-                        onClicked: {}
+                        onClicked: {
+                            if (overlay.checked == true) {
+                                sessiondispatcher.set_scrollbars_mode_overlay_qt();
+                            }
+                        }
                     }
                     Common.CheckBox {
                         id: legacy
                         titleName: "标准类型"  //legacy模式
+                        checked: (touchpadsetpage.scrollbars_mode == "normal") ? true : false
                         flag: "radio"
-                        onClicked: {}
+                        onClicked: {
+                            if (legacy.checked == true) {
+                                sessiondispatcher.set_scrollbars_mode_legacy_qt();
+                            }
+                        }
                     }
     //            }
             }
@@ -219,14 +229,24 @@ Rectangle {
                     Common.CheckBox {
                         id:edge
                         titleName: "边缘触发"//"edge模式"
+                        checked: (touchpadsetpage.touchscrolling_mode == "edge-scrolling") ? true : false
                         flag: "radio"
-                        onClicked: {}
+                        onClicked: {
+                            if (edge.checked == true) {
+                                sessiondispatcher.set_touchscrolling_mode_edge_qt();
+                            }
+                        }
                     }
                     Common.CheckBox {
                         id: twofinger
                         titleName: "双指触发"//"twofinger模式"
+                        checked: (touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") ? true : false
                         flag: "radio"
-                        onClicked: {}
+                        onClicked: {
+                            if (twofinger.checked == true) {
+                                sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+                            }
+                        }
                     }
     //            }
             }
@@ -294,19 +314,19 @@ Rectangle {
             else if (num == 4)
                 pageStack.push(functioncollection)
         }
-        onOkBtnClicked: {
-            if (edge.checked == true) {
-                sessiondispatcher.set_touchscrolling_mode_edge_qt();
-            }
-            else if (twofinger.checked == true) {
-                sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
-            }
-            if (overlay.checked == true) {
-                sessiondispatcher.set_scrollbars_mode_overlay_qt();
-            }
-            else if (legacy.checked == true) {
-                sessiondispatcher.set_scrollbars_mode_legacy_qt();
-            }
-        }
+//        onOkBtnClicked: {
+//            if (edge.checked == true) {
+//                sessiondispatcher.set_touchscrolling_mode_edge_qt();
+//            }
+//            else if (twofinger.checked == true) {
+//                sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+//            }
+//            if (overlay.checked == true) {
+//                sessiondispatcher.set_scrollbars_mode_overlay_qt();
+//            }
+//            else if (legacy.checked == true) {
+//                sessiondispatcher.set_scrollbars_mode_legacy_qt();
+//            }
+//        }
     }
 }

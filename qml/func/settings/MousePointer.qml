@@ -162,13 +162,16 @@ Rectangle {
                 spacing: 60
                 Common.CheckBox {
                     id: smallstyle
-                    checked: false
+                    checked: (mousepointerpage.cursor_size == "24") ? true : false
+//                    checked: (sessiondispatcher.get_cursor_size_qt() == "24") ? true : false
                     titleName: "小号"//24
                     flag: "radio"
                     onClicked: {}
                 }
                 Common.CheckBox {
                     id: bigstyle
+                    checked: (mousepointerpage.cursor_size == "36") ? true : false
+//                    checked: (sessiondispatcher.get_cursor_size_qt() == "36") ? true : false
                     titleName: "大号"//36
                     flag: "radio"
                     onClicked: {}
