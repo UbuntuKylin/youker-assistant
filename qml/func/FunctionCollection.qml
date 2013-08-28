@@ -54,6 +54,11 @@ Item {
                     name: "开机动画"
                     flag: "BootAnimation"
                 }
+                ListElement {
+                    icon: "../img/icons/fcitx.png"
+                    name: "输入法配置"
+                    flag: "FcitxConfigtool"
+                  }
             }
 
 

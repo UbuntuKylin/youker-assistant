@@ -72,7 +72,7 @@ Rectangle {
             width: 60
             height: 19
             anchors.horizontalCenter: parent.horizontalCenter
-            hoverimage: "move.png"
+            //hoverimage: "move.png"
             onClicked: {
                 systemdispatcher.cleanup_memory_qt();
             }
