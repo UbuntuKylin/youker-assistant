@@ -72,7 +72,8 @@ FocusScope {
                     }
                     Text {
                         id:upload
-                        text: "focusScope.up_speed" + "K/s";
+//                        text: "focusScope.up_speed" + "K/s";
+                        text: "NA K/s";
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -86,7 +87,8 @@ FocusScope {
                     }
                     Text {
                         id:download
-                        text: "focusScope.down_speed" + "K/s";
+//                        text: "focusScope.down_speed" + "K/s";
+                        text: "NA K/s";
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
