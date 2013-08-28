@@ -20,6 +20,7 @@
 import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
+import FcitxCfgWizard 0.1
 import "./func/common" as Common
 import "./func/settings" as SysSettings
 import "func"
@@ -39,7 +40,9 @@ Item {
     SystemDispatcher {
         id: systemdispatcher
     }
-
+    FcitxCfgWizard {
+        id: fcitxcfgwizard
+    }
 
     Rectangle {
         id: rectangle1
@@ -162,6 +165,22 @@ Item {
                         id: touchpadsetpage
                         visible: false
                         SysSettings.TouchpadSet {}
+                    }
+                    //
+                    Common.Page {
+                        id: fcitxConfigtoolpage
+                        visible: false
+                        SysSettings.FcitxConfigtool{}
+                    }
+                    Common.Page {
+                        id: fcitxConfigtoolFontpage
+                        visible: false
+                        SysSettings.FcitxConfigtoolFont{}
+                    }
+                    Common.Page {
+                        id: fcitxConfigtoolKeypage
+                        visible: false
+                        SysSettings.FcitxConfigtoolKey{}
                     }
                 }
             }

@@ -1,7 +1,6 @@
 import QtQuick 1.1
 import SystemType 0.1
 import "./func/common" as Common
-
 Rectangle {
     id: page
     width: 124; height: 114
@@ -73,8 +72,7 @@ Rectangle {
             width: 60
             height: 19
             anchors.horizontalCenter: parent.horizontalCenter
-//            hoverimage: "move.png"
-            text:"一键加速"
+            //hoverimage: "move.png"
             onClicked: {
                 systemdispatcher.cleanup_memory_qt();
             }
