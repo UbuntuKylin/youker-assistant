@@ -1,4 +1,5 @@
 import QtQuick 1.1
+
 FocusScope {
     id: focusScope
     width: 120; height: 80
@@ -11,9 +12,9 @@ FocusScope {
     property string memory_size: "0"
     Component.onCompleted: {
         focusScope.cpu_value = systemdispatcher.get_cpu_percent_qt();
-        var speed = systemdispatcher.get_network_flow_qt();
-        focusScope.up_speed = speed[0];
-        focusScope.down_speed = speed[1];
+//        var speed = systemdispatcher.get_network_flow_qt();
+//        focusScope.up_speed = speed[0];
+//        focusScope.down_speed = speed[1];
         focusScope.used_memory = systemdispatcher.get_used_memory_qt();
         focusScope.free_memory = systemdispatcher.get_free_memory_qt();
         focusScope.memory_size = systemdispatcher.get_total_memory_qt();
@@ -35,10 +36,28 @@ FocusScope {
                     anchors.centerIn: parent
                 }
                 gradient: Gradient{
-                    GradientStop{position: 0.0; color: "transparent"}
-                    GradientStop{position: 1.0 - focusScope.cpu_value * 0.01; color: "transparent"}
-                    GradientStop{position: (focusScope.cpu_value <= 0) ? 0.0 : (1.0 - focusScope.cpu_value * 0.01 + 0.01); color: "green"}
-                    GradientStop{position: 1.0; color: "green"}
+                    GradientStop{position: 0.0; color: (focusScope.cpu_value == 100) ? "red" : "transparent"}
+
+                    GradientStop{position: 1.0 - focusScope.cpu_value * 0.01; color: (focusScope.cpu_value == 100) ? "red" : "transparent"}
+                    GradientStop{position: (focusScope.cpu_value <= 0) ? 0.0 : (1.0 - focusScope.cpu_value * 0.01 + 0.01);
+                        color: {
+                            if(focusScope.cpu_value > 60)
+                                "red"
+                            else if (focusScope.cpu_value == 0)
+                                "transparent"
+                            else
+                                "green"
+                        }
+                    }
+                    GradientStop{position: 1.0; color: {
+                            if (focusScope.cpu_value == 0)
+                                "transparent"
+                            else if (focusScope.cpu_value == 100)
+                                "red"
+                            else
+                                "green"
+                        }
+                    }
                 }
             }
 
@@ -53,7 +72,7 @@ FocusScope {
                     }
                     Text {
                         id:upload
-                        text: focusScope.up_speed + "K/s";
+                        text: "focusScope.up_speed" + "K/s";
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -67,7 +86,7 @@ FocusScope {
                     }
                     Text {
                         id:download
-                        text: focusScope.down_speed + "K/s";
+                        text: "focusScope.down_speed" + "K/s";
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -96,9 +115,9 @@ FocusScope {
         interval: 5000; running: true; repeat: true
         onTriggered: {
             focusScope.cpu_value = systemdispatcher.get_cpu_percent_qt();
-            var speed = systemdispatcher.get_network_flow_qt();
-            focusScope.up_speed = speed[0];
-            focusScope.down_speed = speed[1];
+//            var speed = systemdispatcher.get_network_flow_qt();
+//            focusScope.up_speed = speed[0];
+//            focusScope.down_speed = speed[1];
             focusScope.used_memory = systemdispatcher.get_used_memory_qt();
             focusScope.free_memory = systemdispatcher.get_free_memory_qt();
         }
