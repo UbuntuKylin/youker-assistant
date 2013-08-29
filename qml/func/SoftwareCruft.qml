@@ -176,11 +176,17 @@ Item {
         spacing: 20
 
         //status picture
-        Image {
+//        Image {
+//            id: sof_statusImage
+//            source: "../img/toolWidget/unfinish.png"
+//            fillMode: "PreserveAspectFit"
+//            smooth: true
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+        Common.StatusImage {
             id: sof_statusImage
-            source: "../img/toolWidget/unfinish.png"
-            fillMode: "PreserveAspectFit"
-            smooth: true
+            iconName: "yellow.png"
+            text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -432,14 +438,14 @@ Item {
             PropertyChanges { target: sof_label; visible: true; text: root.sof_work_result + "清理完毕！" }
             PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: sof_statusImage; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "SoftwareWorkEmpty"
             PropertyChanges { target: sof_label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: sof_statusImage; iconName: "green.png"; text: "已完成"}
         }
     ]
 }

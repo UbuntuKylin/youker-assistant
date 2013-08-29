@@ -231,9 +231,18 @@ Item {
 
 
 
-    Image {
+//    Image {
+//        id: historystatus
+//        source: "../img/toolWidget/unfinish.png"
+//        anchors {
+//            top: parent.top; topMargin: 120
+//            left: parent.left; leftMargin: 650
+//        }
+//    }
+    Common.StatusImage {
         id: historystatus
-        source: "../img/toolWidget/unfinish.png"
+        iconName: "yellow.png"
+        text: "未完成"
         anchors {
             top: parent.top; topMargin: 120
             left: parent.left; leftMargin: 650
@@ -267,14 +276,14 @@ Item {
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "history_scan" }
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: historystatus; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "HistoryWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "history_scan" }
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: historystatus; iconName: "green.png"; text: "已完成"}
         }
     ]
 }
