@@ -1,71 +1,56 @@
-/*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 3.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import QtQuick 1.1
 import SystemType 0.1
 import "./func/common" as Common
-Rectangle {
-    id: page
-    width: 124; height: 114
-    color: "#7bffffff"
-//    radius:5
-
-    SystemDispatcher {
-        id: systemdispatcher
+Rectangle{
+    id:root
+    width:275
+//    height: 170
+    height: 260
+//    color: "transparent"
+    color:"transparent"
+    property double cpu_value: 0.0
+    Component.onCompleted: {
+        root.cpu_value = systemdispatcher.get_cpu_percent_qt();
     }
-    signal showWidget();
-    function show_float_frame() {
-        if (page.visible == true)
-            page.visible = false;
-        else if (page.visible == false)
-            page.visible = true;
-    }
-
-    BorderImage {
-        source: "./img/skin/bg-right.png"
-        width: parent.width; height: parent.height
-        border { left: 4; top: 4; right: 4; bottom: 4 }
-    }
-
-//    Style {
-//        color: "gray"
-//        transformOrigin: "Center"
-//        opacity: 0.97
-//        visible: true
-//        anchors.centerIn: parent
-//        width: 110; height: 50
+//    Smallfloat{
+//        id:smallf
+//        onFloatshow: {console.log("11111111111111111111111111")}
 //    }
-    Column {
-        anchors.top: parent.top
-        anchors.topMargin: 5
-        spacing: 2
+
+    Image {
+        id: background
+        source: "./img/skin/accelerate-bg.png"
+    }
+    Rectangle {
+        id: page
+        width: 228; height: 142
+        anchors{
+            left: parent.left
+            leftMargin: 35
+            top: parent.top
+            topMargin: 30
+        }
+        color: "transparent"
+    //    radius:5
+        SystemDispatcher {
+            id: systemdispatcher
+        }
+        signal showWidget();
+
+    //    Style {
+    //        color: "gray"
+    //        transformOrigin: "Center"
+    //        opacity: 0.97
+    //        visible: true
+    //        anchors.centerIn: parent
+    //        width: 110; height: 50
+    //    }
+
         Contents {
             id: search
             visible: true
             opacity: 1
             anchors.horizontalCenter: parent.horizontalCenter
-            MouseArea {
-                anchors.fill: search
-                acceptedButtons : Qt.RightButton
-                onClicked: {
-                    if (page.visible == true)
-                        page.visible = false;
-                    page.focus = false;
-                }
-            }
             MouseArea {
                 anchors.fill: search
                 property variant clickPos: "1,1"
@@ -83,18 +68,54 @@ Rectangle {
                 }
             }
         }
-        Common.Button {
-            id: accelerateBtn
-            width: 60
-            height: 19
-            anchors.horizontalCenter: parent.horizontalCenter
-            //hoverimage: "move.png"
-            text: "一键加速"
-            onClicked: {
-                systemdispatcher.cleanup_memory_qt();
+
+    }
+    Rectangle{
+        id:ball
+        width: 66;height: 66
+//        border.color: "grey"
+        radius:50
+        smooth:true
+        anchors{
+            left: parent.left
+            leftMargin: 6
+            top:parent.top
+            topMargin: 6
+        }
+        Text {
+            id: cpu
+            text: root.cpu_value + "%";
+            anchors.centerIn: parent
+        }
+        gradient: Gradient{
+            GradientStop{position: 0.0; color: (root.cpu_value == 100) ? "red" : "transparent"}
+
+            GradientStop{position: 1.0 - root.cpu_value * 0.01; color: (root.cpu_value == 100) ? "red" : "transparent"}
+            GradientStop{position: (root.cpu_value <= 0) ? 0.0 : (1.0 - root.cpu_value * 0.01 + 0.01);
+                color: {
+                    if(root.cpu_value > 60)
+                        "red"
+                    else if (root.cpu_value == 0)
+                        "transparent"
+                    else
+                        "green"
+                }
+            }
+            GradientStop{position: 1.0; color: {
+                    if (root.cpu_value == 0)
+                        "transparent"
+                    else if (root.cpu_value == 100)
+                        "red"
+                    else
+                        "green"
+                }
             }
         }
     }
-
-
+    Timer {
+        interval: 5000; running: true; repeat: true
+        onTriggered: {
+            root.cpu_value = systemdispatcher.get_cpu_percent_qt();
+        }
+    }
 }

@@ -103,7 +103,7 @@ bool IhuApplication::setup()
 //    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
     viewer_float->setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QObject *rootObject = dynamic_cast<QObject*>(viewer_float->rootObject());
-    QObject::connect(tray, SIGNAL(showFloat()), rootObject, SLOT(show_float_frame()));
+//    QObject::connect(tray, SIGNAL(showFloat()), rootObject, SLOT(show_float_frame()));
     viewer_float->rootContext()->setContextProperty("fmainwindow", viewer_float);
     viewer_float->setStyleSheet("background:transparent");
     viewer_float->setAttribute(Qt::WA_TranslucentBackground);
@@ -111,6 +111,22 @@ bool IhuApplication::setup()
     QDesktopWidget* fdesktop = QApplication::desktop();
     viewer_float->move(fdesktop->width(), 0);
     viewer_float->show();
+
+
+    viewer_small = new QDeclarativeView;
+    viewer_small->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+    viewer_small->setSource(QUrl::fromLocalFile("Smallfloat.qml"));
+//    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
+    viewer_small->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    QObject *srootObject = dynamic_cast<QObject*>(viewer_small->rootObject());
+    QObject::connect(tray, SIGNAL(showFloat()), srootObject, SLOT(show_float_frame()));
+    viewer_small->rootContext()->setContextProperty("smallwindow", viewer_small);
+    viewer_small->setStyleSheet("background:transparent");
+    viewer_small->setAttribute(Qt::WA_TranslucentBackground);
+    viewer_small->setWindowFlags(Qt::FramelessWindowHint);
+    QDesktopWidget* sdesktop = QApplication::desktop();
+    viewer_small->move(sdesktop->width(), 0);
+    viewer_small->show();
 
 
 //    viewer_widget = new QDeclarativeView;
@@ -142,5 +158,7 @@ IhuApplication::~IhuApplication()
     if (tray) {
         delete tray;
     }
+    if (viewer_small)
+        delete viewer_small;
 }
 

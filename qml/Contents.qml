@@ -1,143 +1,174 @@
-/*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 3.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import QtQuick 1.1
+import SystemType 0.1
+import "./func/common" as Common
 
 FocusScope {
     id: focusScope
-    width: 120; height: 80
+    width: parent.width
+    height: parent.height
+    anchors{
+        top:parent.top
+        left: parent.left
+    }
     focus:true
-    property double cpu_value: 0.0
+    property string speedtext:"你难道正在骑蜗牛"
+    property string proposaltext:"建议立即加速"
+    property bool detail_flag: false
     property string up_speed: "0"
     property string down_speed: "0"
-    property string used_memory: "0"
-    property string free_memory: "0"
-    property string memory_size: "0"
+//    property string used_memory: "0"
+//    property string free_memory: "0"
+//    property string memory_size: "0"
     Component.onCompleted: {
-        focusScope.cpu_value = systemdispatcher.get_cpu_percent_qt();
 //        var speed = systemdispatcher.get_network_flow_qt();
 //        focusScope.up_speed = speed[0];
 //        focusScope.down_speed = speed[1];
-        focusScope.used_memory = systemdispatcher.get_used_memory_qt();
-        focusScope.free_memory = systemdispatcher.get_free_memory_qt();
-        focusScope.memory_size = systemdispatcher.get_total_memory_qt();
+//        focusScope.used_memory = systemdispatcher.get_used_memory_qt();
+//        focusScope.free_memory = systemdispatcher.get_free_memory_qt();
+//        focusScope.memory_size = systemdispatcher.get_total_memory_qt();
     }
 
     Rectangle {
+        id:rec
+        anchors.fill: parent
+        color: "transparent"
+        z:2
+        Column{
+            id:colu
+            anchors{
+    //                horizontalCenter: parent.horizontalCenter
+                left: parent.left
+                leftMargin: 40
+                top:parent.top
+                topMargin: 20
+            }
+            spacing: 8
+            Text{
+                text:speedtext
+            }
+            Text{
+                text:proposaltext
+            }
+            Common.Button {
+                id: accelerateBtn
+                width: 120
+                height: 28
+
+    //                anchors.horizontalCenter: parent.horizontalCenter
+    //                anchors.top:search.bottom
+    //                anchors.topMargin: 10
+    //            hoverimage: "move.png"
+                text:"一键加速"
+                onClicked: {
+                    systemdispatcher.cleanup_memory_qt();
+//                    console.log("11111111111111")
+                }
+            }
+        }
+
         Row {
-            id: myrow
-            spacing: 5
-            Rectangle{
-                id:ball
-                width: 50;height: 50
-                border.color: "grey"
-                radius:50
-                smooth:true
-                Text {
-                    id: cpu
-                    text: focusScope.cpu_value + "%";
-                    anchors.centerIn: parent
-                }
-                gradient: Gradient{
-                    GradientStop{position: 0.0; color: (focusScope.cpu_value == 100) ? "red" : "transparent"}
+            spacing: 35
+            anchors{
+                left: parent.left
+                leftMargin: 28
+                top:parent.top
+                topMargin: 122
+            }
+            Text {
+                id:upload
+                text: focusScope.up_speed + "K/s";
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
 
-                    GradientStop{position: 1.0 - focusScope.cpu_value * 0.01; color: (focusScope.cpu_value == 100) ? "red" : "transparent"}
-                    GradientStop{position: (focusScope.cpu_value <= 0) ? 0.0 : (1.0 - focusScope.cpu_value * 0.01 + 0.01);
-                        color: {
-                            if(focusScope.cpu_value > 60)
-                                "red"
-                            else if (focusScope.cpu_value == 0)
-                                "transparent"
-                            else
-                                "green"
+            Text {
+                id:download
+                text: focusScope.down_speed + "K/s";
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
+
+            Rectangle{width: 8;height: 20;color: "transparent"}
+            Text{
+                id:detail
+                text:"详情"
+                font.bold:true
+                font.pointSize: 9
+                color: "grey"
+                Image {
+                    id: btnImg
+                    anchors.fill: parent
+                    source: ""
+                }
+                MouseArea{
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onEntered: btnImg.source = "./img/toolWidget/menu_hover.png"
+                    onPressed: btnImg.source = "./img/toolWidget/menu_press.png"
+                    //要判断松开是鼠标位置
+                    onReleased: btnImg.source = "./img/toolWidget/menu_hover.png"
+                    onExited: btnImg.source = ""
+                    onClicked: {
+                        if(detail_flag==false){
+                            page.height=page.height+90;
+                            detail_flag=true;
+                            detailed.opacity=1
                         }
-                    }
-                    GradientStop{position: 1.0; color: {
-                            if (focusScope.cpu_value == 0)
-                                "transparent"
-                            else if (focusScope.cpu_value == 100)
-                                "red"
-                            else
-                                "green"
+                        else{
+                            page.height=page.height-90;
+                            detail_flag=false;
+                            detailed.opacity=0
                         }
                     }
                 }
             }
 
-            Column {
-                anchors.verticalCenter: parent.verticalCenter
-                spacing: 10
-                Row {
-                    Image {
-                        source: "./img/icons/upload.png"
-                        width: 16
-                        height: 16
-                    }
-                    Text {
-                        id:upload
-//                        text: "focusScope.up_speed" + "K/s";
-                        text: "NA K/s";
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                }
-
-                Row {
-                    Image {
-                        source: "./img/icons/download.png"
-                        width: 16
-                        height: 16
-                    }
-                    Text {
-                        id:download
-//                        text: "focusScope.down_speed" + "K/s";
-                        text: "NA K/s";
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                }
-            }
         }
 
-        Text {
-            id: title
-            anchors.top: myrow.bottom
-            anchors.topMargin: 2
-//            anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 9
-            text: "内存总量|" +  "已用内存|" + "可释放内存";
+    }
+    Rectangle{
+        id:detailed
+        width: 228
+        height: 90
+        color: "lightblue"
+        anchors{
+            top:parent.top
+            topMargin: 142
         }
-        Text {
-            id: memory
-            anchors.top: title.bottom
-            anchors.topMargin: 2
-//            anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 10
-            text: focusScope.memory_size + "M     " + focusScope.used_memory + "M     " + focusScope.free_memory + "M";
+        opacity: 0
+        Text{
+            id:detailedtext
+            anchors.centerIn: parent
+            text:"详细显示的内容，待扩展"
         }
     }
+
+//        Text {
+//            id: title
+//            anchors.top: myrow.bottom
+//            anchors.topMargin: 2
+////            anchors.horizontalCenter: parent.horizontalCenter
+//            font.pixelSize: 9
+//            text: "内存总量|" +  "已用内存|" + "可释放内存";
+//        }
+//        Text {
+//            id: memory
+//            anchors.top: title.bottom
+//            anchors.topMargin: 2
+////            anchors.horizontalCenter: parent.horizontalCenter
+//            font.pixelSize: 10
+//            text: focusScope.memory_size + "M     " + focusScope.used_memory + "M     " + focusScope.free_memory + "M";
+//        }
+
     Timer {
         interval: 5000; running: true; repeat: true
         onTriggered: {
-            focusScope.cpu_value = systemdispatcher.get_cpu_percent_qt();
+//            focusScope.cpu_value = systemdispatcher.get_cpu_percent_qt();
 //            var speed = systemdispatcher.get_network_flow_qt();
 //            focusScope.up_speed = speed[0];
 //            focusScope.down_speed = speed[1];
-            focusScope.used_memory = systemdispatcher.get_used_memory_qt();
-            focusScope.free_memory = systemdispatcher.get_free_memory_qt();
+//            focusScope.used_memory = systemdispatcher.get_used_memory_qt();
+//            focusScope.free_memory = systemdispatcher.get_free_memory_qt();
         }
     }
 }
