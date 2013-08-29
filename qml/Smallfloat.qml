@@ -10,7 +10,7 @@ Rectangle {
     property string up_speed: "0"
     property string down_speed: "0"
     property double cpu_value: 0.0
-    signal floatshow()
+    signal send_signal_to_large;
 
     Component.onCompleted: {
         sfloat.cpu_value = systemdispatcher.get_cpu_percent_qt();
@@ -99,7 +99,7 @@ Rectangle {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                sfloat.floatshow();
+                send_signal_to_large();
             }
         }
     }
@@ -129,7 +129,6 @@ Rectangle {
         onDoubleClicked: {
         }
     }
-//    onFloatshow: {console.log("11111111111111111111111111")}
     Timer {
         interval: 5000; running: true; repeat: true
         onTriggered: {

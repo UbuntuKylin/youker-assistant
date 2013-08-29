@@ -14,31 +14,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SYSTEMAPPLICATION_H
-#define SYSTEMAPPLICATION_H
-#include <QDeclarativeView>
-#include <QApplication>
-#include <QMouseEvent>
-#include "QPoint"
-#include <QBoxLayout>
-#include <QStackedWidget>
-#include "tray.h"
-#include "handler.h"
-#include <QDBusInterface>
-#include <QDBusConnection>
-class IhuApplication : public QApplication
+#ifndef HANDLER_H
+#define HANDLER_H
+
+#include <QObject>
+#include <QVariant>
+class Handler : public QObject
 {
     Q_OBJECT
-public:
-    IhuApplication(int &argc, char **argv);
-    virtual ~IhuApplication();
-    bool setup();
-private:
-    QDeclarativeView *viewer;
-    QDeclarativeView *viewer_float;
-    QDeclarativeView *viewer_small;
-    QDeclarativeView *viewer_widget;
-    Tray *tray;
-    Handler *handler;
+public slots:
+    void signalHandler() {
+        emit trans_signal_between_qml();
+    }
+
+signals:
+    void trans_signal_between_qml();
 };
-#endif // SYSTEMAPPLICATION_H
+
+#endif // HANDLER_H

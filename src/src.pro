@@ -52,7 +52,8 @@ HEADERS += youker-application.h \
     fcitxcfgwizard.h \
     qtkeytrans.h \
     qtkeytransdata.h \
-    fcitxwarndialog.h
+    fcitxwarndialog.h \
+    handler.h
 
 SOURCES += main.cpp \
     youker-application.cpp \

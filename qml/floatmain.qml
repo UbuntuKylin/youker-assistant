@@ -17,6 +17,20 @@ Rectangle{
 //        onFloatshow: {console.log("11111111111111111111111111")}
 //    }
 
+//    signal show_in_qt;
+    function show_large_widget() {
+        if (root.visible == true)
+            root.visible = false;
+        else if (root.visible == false) {
+//            show_in_qt();
+            root.visible = true;
+        }
+    }
+    function show_large_frame() {
+        if (root.visible == true)
+            root.visible = false;
+    }
+
     Image {
         id: background
         source: "./img/skin/accelerate-bg.png"
