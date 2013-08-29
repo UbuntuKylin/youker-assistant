@@ -18,6 +18,8 @@ import SystemType 0.1
 Item {
     id: btn
     signal clicked
+    signal exited
+    signal entered
 //    property string text
     property string text : ""
     property string hoverimage: "green1.png"
@@ -116,6 +118,7 @@ Item {
 //        onExited: btnImg.source = ""
 
         onEntered: {
+            btn.entered();
             if (hoverimage == "green1.png") {
                 btnImg.source = "../../img/icons/green1-hover.png"
                 if(setbtn_flag=="smallonekey")
@@ -234,7 +237,11 @@ Item {
 //                btnImg.source = "../../img/toolWidget/menu_hover.png"
         }
 
-        onExited: btnImg.source = ""
+        onExited: {
+            btn.exited();
+            btnImg.source = ""
+        }
+
         onClicked: {
             btn.clicked();
 

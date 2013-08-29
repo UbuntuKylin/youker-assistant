@@ -1,22 +1,7 @@
-/*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 3.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import QtQuick 1.1
 import SystemType 0.1
 import SessionType 0.1
+import FcitxCfgWizard 0.1
 import "../common" as Common
 import "../bars" as Bars
 import "../../func"  as Func
@@ -84,8 +69,6 @@ Rectangle {
               rightFcitxModelindex++;
         }
         console.log(leftNum+rightNum);//524
-        leftFcitxModelindex =0;
-        rightFcitxModelindex = 0;
         return returnUnneed_list;
 
     }
@@ -107,13 +90,17 @@ Rectangle {
 //            onRefreshFcitxtool: console.log("555555");
 //        }
 
-
     function refreshFcitxtool(){
-        console.log("123456789")
+        pageStack.push(functioncollection);
+        console.log("123456789");
         leftFcitxModel.clear();
         rightFcitxModel.clear();
         leftFcitxModelindex = 0;
         rightFcitxModelindex = 0;
+        if(leftNum >= 2)
+            downBtn.enabled =true;
+        leftNum = 0;
+        rightNum = 0;
         var unneed_data = fcitxcfgwizard.get_im_list();
         if (unneed_data == "" || unneed_data.length == 0)
             unneed_data = fcitxcfgwizard.get_im_list();
@@ -130,14 +117,13 @@ Rectangle {
                 rightFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
             }
         }
-
 }
     Component.onCompleted: {
         console.log("component......................................");
-        leftFcitxModelindex = 0;
-        rightFcitxModelindex = 0;
         leftFcitxModel.clear();
         rightFcitxModel.clear();
+        leftFcitxModelindex = 0;
+        rightFcitxModelindex = 0;
         var unneed_data = fcitxcfgwizard.get_im_list();
         if (unneed_data == "" || unneed_data.length == 0)
             unneed_data = fcitxcfgwizard.get_im_list();
@@ -552,7 +538,7 @@ Text {
         left: parent.left
         leftMargin: 80
     }
-    text: "第一个输入法将是待用状态。通常您需要把键盘或键盘-布局名称放在第一个位置"
+    text: qsTr("提示:'+'可以将可用输入法加入当前输入法,'-'删除当前选中输入法,'▲'和'▼'改变选中输入法的位置")
     font.bold: true
     font.pixelSize: 12
     color: "#7a7a7a"
@@ -670,16 +656,25 @@ Common.Button{
         console.log("down......................")
         if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
         {
-            downBtn.enabled = false
+            downBtn.enabled = false;
+            console.log("a")
+            console.log(leftFcitxModelindex);
+            console.log(leftNum);
         }
         if(leftFcitxModelindex<leftNum-1)
         {
-            upBtn.enabled = true
+            upBtn.enabled = true;
             leftFcitxModel.move(leftFcitxModelindex,leftFcitxModelindex+1,1)
             leftFcitxModelindex=leftFcitxModelindex+1;
+            console.log("b")
+            console.log(leftFcitxModelindex);
+            console.log(leftNum);
             if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
             {
                 downBtn.enabled = false
+                console.log("c")
+                console.log(leftFcitxModelindex);
+                console.log(leftNum);
             }
         }
     }
@@ -718,9 +713,8 @@ Common.Button{
 //            button3Label: qsTr("下一步")
         onCancelBtnClicked: {
             fcitxcfgwizard.send_fcitx_ok_warn();
-            pageStack.push(functioncollection)
-            refreshFcitxtool()
-//           setting.emitFcitxRefresh()
+ //           refreshFcitxtool()
+
         }
 
         onGobackBtnClicked: {
