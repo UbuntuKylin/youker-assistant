@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <QApplication>
-#include "fcitxcfgwizard.h" kobe08
+#include "fcitxcfgwizard.h" //kobe08
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
 #include "youker-application.h"

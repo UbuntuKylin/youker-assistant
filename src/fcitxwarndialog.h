@@ -22,7 +22,7 @@ signals:
     void fcitxWarntest();
 public slots:
     void on_okButton_clicked();
-    void text();
+//    void text();
 
 private:
     Ui::FcitxWarnDialog *ui;
