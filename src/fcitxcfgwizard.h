@@ -40,6 +40,8 @@ public:
 
 private:
     FcitxQtConnection *m_connection;
+    FcitxWarnDialog *fcitxWarnSig;
+    QDeclarativeView *view;
     FcitxQtInputMethodProxy *m_improxy;
     QString m_separator;
 
@@ -68,8 +70,10 @@ private:
     char *m_skin_type;
     boolean m_cloud_enable;
 
-private:
+private slots:
     bool connected();
+    void handler_okBtn_fcitx_warn();
+private:
     bool is_connected_ok();
     bool get_fcitx_cfg_value(char *cd_path_prefix, char *cd_file_name,
         char *c_path_prefix, char *c_file_name, char *groupName, const char *optionName,
@@ -135,11 +139,8 @@ public:
 private:
     char* deal_R_L_diff(char *key_str);
 public:
-    Q_INVOKABLE QString get_fcitx_hot_key_string(unsigned int qtcode, unsigned int mod);
-    QDeclarativeView *view;
+    Q_INVOKABLE QString get_fcitx_hot_key_string(unsigned int qtcode, unsigned int mod);   
 
-public slots:
-    void handler_okBtn_fcitx_warn();
 private:
     void set_trigger_key();
     void set_prev_page_key();

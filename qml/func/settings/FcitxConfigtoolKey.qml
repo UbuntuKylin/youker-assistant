@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 3.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import QtQuick 1.1
 import SystemType 0.1
 import SessionType 0.1
@@ -31,6 +15,12 @@ Rectangle {
     property string defaultChangeMethod: ""
     property string eventABC:""
     property int hotkyScrollBetweenIndex: 0
+    property string methodBtn1Tmp: ""
+    property string methodBtn2Tmp:""
+    property string prevpageBtn1Tmp: ""
+    property string prevpageBtn2Tmp: ""
+    property string nextpageBtn1Tmp: ""
+    property string nextpageBtn2Tmp: ""
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -49,6 +39,7 @@ Rectangle {
              font.bold: true
              font.pixelSize: 14
              color: "#383838"
+
          }
          Text {
              text: fcitxconfigtoolKey.actiontext
@@ -58,6 +49,7 @@ Rectangle {
     }
 
     function refreshFcitxKey(){
+        pageStack.push(functioncollection);
         fcitxChangeModel.clear();
         skinModel.clear();
         //get_trigger_key========================================================
@@ -192,7 +184,7 @@ Rectangle {
         //get_skin_list and current_skin=================================================
         var getSkinList = fcitxcfgwizard.get_all_skin_type()
         var getCurrentSkin = fcitxcfgwizard.get_skin_type()
-        getSkinList.unshift(getCurrentSkin);   //js
+        getSkinList.unshift(getCurrentSkin);   //js将数组第一个添加unshift进来的
         skinModel.clear();
         for(var i=0;i<getSkinList.length;i++)
        {
@@ -229,15 +221,25 @@ Rectangle {
                 width:200
                 height:30
                 onClicked: {
-                    methodBtn1.forceActiveFocus();
-                    console.log("methodBtn1")
+                    methodBtn1.forceActiveFocus();                   
+                    methodBtn1.text = "请按下要设置的组合键";
+                    console.log("methodBtn1");
                 }
-
+                onEntered:{
+                    methodBtn1Tmp = methodBtn1.text
+                    console.log(methodBtn1Tmp)
+                }
+                onExited: {
+                    methodBtn1.text = methodBtn1Tmp
+                    console.log(methodBtn1.text)
+                }
                 Keys.onPressed: {
                     console.log(event.modifiers);
                     console.log(event.nativeModifiers);
                     methodBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                    methodBtn1Tmp = methodBtn1.text;
                 }
+
 
             }
 
@@ -253,32 +255,23 @@ Rectangle {
                 height:30
                 onClicked: {
                     methodBtn2.forceActiveFocus();
+                    methodBtn2.text = "请按下要设置的组合键"
                     console.log("methodBtn2")
                 }
-
+                onEntered:{
+                    methodBtn2Tmp = methodBtn2.text
+                    console.log(methodBtn2Tmp)
+                }
+                onExited: {
+                    methodBtn2.text = methodBtn2Tmp
+                    console.log(methodBtn1.text)
+                }
                 Keys.onPressed: {
-// 　　　　　　　　　　　  eventABC =               //如何将event.key转换成对应字符
-                    //  methodBtn1.text ="";
-                    //console.log(event.key);
                     console.log(event.modifiers);
                     console.log(event.nativeModifiers);
                     methodBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                    methodBtn2Tmp = methodBtn2.text
                 }
-            }
-        }
-        Row{
-            Text {
-                id: hotkyScroll
-
-                text: qsTr("启用热键输入法之间滚动")
-            }
-            Common.CheckBox{
-                id:enableHotKeyBox
-                anchors.verticalCenter: hotkyScroll.verticalCenter
-                anchors.left: hotkyScroll.right
-                anchors.leftMargin: 170
-                titleName: ""
-                onClicked: console.log("启用热键输入法之间滚动")
             }
         }
         //Prev Page
@@ -297,13 +290,22 @@ Rectangle {
                 height:30
                 onClicked: {
                     prevPageBtn1.forceActiveFocus();
+                    prevPageBtn1.text = "请按下要设置的组合键"
                     console.log("methodBtn1")
                 }
-
+                onEntered:{
+                    prevpageBtn1Tmp = prevPageBtn1.text
+                    console.log(methodBtn2Tmp)
+                }
+                onExited: {
+                    prevPageBtn1.text = prevpageBtn1Tmp
+                    console.log(methodBtn1.text)
+                }
                 Keys.onPressed: {
                     console.log(event.modifiers);
                     console.log(event.nativeModifiers);
                     prevPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                    prevpageBtn1Tmp = prevPageBtn1.text;
                 }
             }
             Common.Button{
@@ -316,13 +318,22 @@ Rectangle {
                 height:30
                 onClicked: {
                     prevPageBtn2.forceActiveFocus();
-                    console.log("methodBtn1")
+                    prevPageBtn2.text = "请按下要设置的组合键";
+                    console.log("methodBtn1");
                 }
-
+                onEntered:{
+                    prevpageBtn2Tmp = prevPageBtn2.text;
+                    console.log(methodBtn2Tmp);
+                }
+                onExited: {
+                    prevPageBtn2.text = prevpageBtn2Tmp;
+                    console.log(methodBtn1.text);
+                }
                 Keys.onPressed: {
                     console.log(event.modifiers);
                     console.log(event.nativeModifiers);
                     prevPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                    prevpageBtn2Tmp = prevPageBtn2.text;
                 }
             }
         }
@@ -342,13 +353,22 @@ Rectangle {
                 height:30
                 onClicked: {
                     nextPageBtn1.forceActiveFocus();
+                    nextPageBtn1.text = "请按下要设置的组合键";
                     console.log("methodBtn1")
                 }
-
+                onEntered:{
+                    nextpageBtn1Tmp = nextPageBtn1.text;
+                    console.log(methodBtn2Tmp);
+                }
+                onExited: {
+                    nextPageBtn1.text = nextpageBtn1Tmp;
+                    console.log(methodBtn1.text);
+                }
                 Keys.onPressed: {
                     console.log(event.modifiers);
                     console.log(event.nativeModifiers);
                     nextPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                    nextpageBtn1Tmp = nextPageBtn1.text;
                 }
             }
             Common.Button{
@@ -361,16 +381,52 @@ Rectangle {
                 height:30
                 onClicked: {
                     nextPageBtn2.forceActiveFocus();
+                    nextPageBtn2.text = "请按下要设置的组合键";
                     console.log("methodBtn1")
                 }
-
+                onEntered:{
+                    nextpageBtn2Tmp = nextPageBtn2.text;
+                    console.log(methodBtn2Tmp);
+                }
+                onExited: {
+                    nextPageBtn2.text = nextpageBtn2Tmp;
+                    console.log(methodBtn1.text);
+                }
                 Keys.onPressed: {
                     console.log(event.modifiers);
                     console.log(event.nativeModifiers);
                     nextPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                    nextpageBtn2Tmp = nextPageBtn2.text;
                 }
             }
 
+        }
+        Row{
+            //选择皮肤
+            ListModel {
+                id: skinModel
+                ListElement {skinTitle: "";}
+            }
+            Text{
+                id:skinchoose
+                text:qsTr("皮肤选择")
+            }
+
+            Common.ComboBox {
+                anchors{
+                    left:skinchoose.left
+                    leftMargin: 332
+
+                }
+                id: skinCombo
+                model: skinModel
+                width: 405
+                onSelectedTextChanged: {
+                    console.log(selectedText);
+//                    skinCombo.selectedText
+                }
+
+            }
         }
         //Scroll between input Method
         ListModel {
@@ -399,34 +455,22 @@ Rectangle {
 
             }
         }
+
         Row{
-            //选择皮肤
-            ListModel {
-                id: skinModel
-                ListElement {skinTitle: "";}
+            Text {
+                id: hotkyScroll
+
+                text: qsTr("启用输入法间切换")
             }
-            Text{
-                id:skinchoose
-                text:qsTr("皮肤选择")
-            }
-
-            Common.ComboBox {
-                anchors{
-                    left:skinchoose.left
-                    leftMargin: 331
-
-                }
-                id: skinCombo
-                model: skinModel
-                width: 405
-                onSelectedTextChanged: {
-                    console.log(selectedText);
-//                    skinCombo.selectedText
-                }
-
+            Common.CheckBox{
+                id:enableHotKeyBox
+                anchors.verticalCenter: hotkyScroll.verticalCenter
+                anchors.left: hotkyScroll.right
+                anchors.leftMargin: 213
+                titleName: ""
+                onClicked: console.log("启用输入法间切换")
             }
         }
-
         //启用热键输入法之间滚动
 
         //启用云拼音
@@ -478,7 +522,6 @@ Rectangle {
 //            button2Label: qsTr("应用")
         onCancelBtnClicked: {
             sessiondispatcher.send_warningdialog_msg("友情提示：", "是否确定取消设置！");
-            pageStack.push(functioncollection)
             refreshFcitxKey();
         }
 

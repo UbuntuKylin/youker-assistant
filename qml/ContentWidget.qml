@@ -20,7 +20,7 @@
 import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
-//import FcitxCfgWizard 0.1      kobe08
+import FcitxCfgWizard 0.1    //  kobe08
 import "./func/common" as Common
 import "./func/settings" as SysSettings
 import "func"
@@ -40,9 +40,9 @@ Item {
     SystemDispatcher {
         id: systemdispatcher
     }
-//    FcitxCfgWizard {kobe08
-//        id: fcitxcfgwizard
-//    }
+    FcitxCfgWizard {//kobe08
+        id: fcitxcfgwizard
+    }
 
     Rectangle {
         id: rectangle1
@@ -167,21 +167,21 @@ Item {
                         SysSettings.TouchpadSet {}
                     }
                     //
-//                    Common.Page {kobe08
-//                        id: fcitxConfigtoolpage
-//                        visible: false
-//                        SysSettings.FcitxConfigtool{}
-//                    }
-//                    Common.Page {
-//                        id: fcitxConfigtoolFontpage
-//                        visible: false
-//                        SysSettings.FcitxConfigtoolFont{}
-//                    }
-//                    Common.Page {
-//                        id: fcitxConfigtoolKeypage
-//                        visible: false
-//                        SysSettings.FcitxConfigtoolKey{}
-//                    }
+                    Common.Page {//kobe08
+                        id: fcitxConfigtoolpage
+                        visible: false
+                        SysSettings.FcitxConfigtool{}
+                    }
+                    Common.Page {
+                        id: fcitxConfigtoolFontpage
+                        visible: false
+                        SysSettings.FcitxConfigtoolFont{}
+                    }
+                    Common.Page {
+                        id: fcitxConfigtoolKeypage
+                        visible: false
+                        SysSettings.FcitxConfigtoolKey{}
+                    }
                 }
             }
 //        }

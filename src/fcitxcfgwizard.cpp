@@ -69,6 +69,7 @@ FcitxCfgWizard::FcitxCfgWizard(QObject *parent) :
     m_connection->setAutoReconnect(true);
     m_connection->startConnection();
 
+    fcitxWarnSig = new FcitxWarnDialog();
 
 //    viewer_float = new QDeclarativeView;
 //    viewer_float->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
@@ -85,18 +86,18 @@ FcitxCfgWizard::FcitxCfgWizard(QObject *parent) :
 //    viewer_float->move(fdesktop->width(), 0);
 //    viewer_float->show();
 
+    //connect FcitxConfigtool.qml
+//    view = new QDeclarativeView;
+//    view->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+//    view->setSource(QUrl::fromLocalFile("FcitxConfigtool.qml"));
+////    view->setSource(QUrl("../qml/func/settings/FcitxConfigtool.qml"));
+//    view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+//    QObject *rootObject = dynamic_cast<QObject*>(view->rootObject());
+//    QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObject, SLOT(refreshFcitxtool()));
 
-    FcitxWarnDialog *fcitxWarnSig = new FcitxWarnDialog();
 
-    view = new QDeclarativeView;
-    view->setSource(QUrl("../qml/func/settings/FcitxConfigtool.qml"));
-    view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-    QObject *rootObject = dynamic_cast<QObject*>(view->rootObject());
- //   QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObject, SLOT(refreshFcitxtool()));
-
-       connect(fcitxWarnSig, SIGNAL(fcitxWarntest()),SLOT(handler_okBtn_fcitx_warn()));
-
-    connect(m_connection, SIGNAL(connected()),SLOT(connected()));
+//    connect(fcitxWarnSig, SIGNAL(fcitxWarntest()),SLOT(handler_okBtn_fcitx_warn()));//测试信号
+//    connect(m_connection, SIGNAL(connected()),SLOT(connected()));
 }
 
 
@@ -114,6 +115,7 @@ FcitxCfgWizard::~FcitxCfgWizard()
 
 bool FcitxCfgWizard::connected()
 {
+    qDebug() << "connected";
     if (!m_connection->isConnected())
         return false;
 
@@ -764,12 +766,12 @@ void FcitxCfgWizard::all_cfg_save()
 //=========================================================================
 QString FcitxCfgWizard::show_font_dialog()
 {
+ //   emit sigText();
     bool ok;
     const QFont &font = QFontDialog::getFont(&ok, 0);
     if(ok)
         return font.family();
-
-    return "";
+    return font.family();
 }
 
 //qt控件貌似（？不确定，先这么做了）没法返回右shiht、右ctrl、右alt键，
@@ -825,11 +827,44 @@ void FcitxCfgWizard::send_fcitx_ok_warn()
 }
 void FcitxCfgWizard::create_fcitx_ok_warn()
 {
-    FcitxWarnDialog *app = new FcitxWarnDialog;
-    app->exec();
+ //   FcitxWarnDialog *app = new FcitxWarnDialog;
+      fcitxWarnSig->exec();
 }
 
 void FcitxCfgWizard::handler_okBtn_fcitx_warn(){
 
-    qDebug()<<"handler_okBtn_fcitx_warn";
+
+//    //connect FcitxConfigtoolFont.qml
+//     view = new QDeclarativeView;
+//     view->setSource(QUrl("../qml/func/settings/FcitxConfigtoolFont.qml"));
+//     view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+//     QObject *rootObjectFont = dynamic_cast<QObject*>(view->rootObject());
+//     QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObjectFont, SLOT(refreshFcitxFont()));
+
+//     //connect FcitxConfigtoolKey.qml
+//      view = new QDeclarativeView;
+//      view->setSource(QUrl("../qml/func/settings/FcitxConfigtoolKey.qml"));
+//      view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+//      QObject *rootObjectKey = dynamic_cast<QObject*>(view->rootObject());
+//      QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObjectKey, SLOT(refreshFcitxKey()));
+
+//        delete fcitxWarnSig;
+
+}
+
+inline bool isRunningInstalled() {
+    static bool installed = (QCoreApplication::applicationDirPath() ==
+                             QDir(("/usr/bin")).canonicalPath());
+    return installed;
+}
+
+inline QString getAppDirectory() {
+    if (isRunningInstalled()) {
+        qDebug() << QCoreApplication::applicationDirPath();
+        return QString("/usr/share/youker-assistant/qml/");
+//        return QString("/usr/share/youker-assistant/qml/main.qml");
+    } else {
+//        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");
+        return QString(QCoreApplication::applicationDirPath() + "/../qml/func/settings/");
+    }
 }

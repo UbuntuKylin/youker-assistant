@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 3.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import QtQuick 1.1
 import SystemType 0.1
 import SessionType 0.1
@@ -71,10 +55,12 @@ Rectangle {
 //    }
 
     function refreshFcitxFont(){
+        pageStack.push(functioncollection)
         //set font==========================================================
         var setFont = fcitxcfgwizard.get_font();
         fontStyleBtn.text = setFont;
-
+        if(fontStyleBtn.text == "")
+            fontStyleBtn.text = "Normal";
         console.log(qsTr(setFont));
 
 
@@ -307,7 +293,6 @@ Rectangle {
 //            button2Label: qsTr("继续")
         onCancelBtnClicked: {
             sessiondispatcher.send_warningdialog_msg("友情提示：", "是否确定取消！");
-                pageStack.push(functioncollection)
                 refreshFcitxFont()
 
   //             setting.emitFcitxRefresh()
