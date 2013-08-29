@@ -38,8 +38,10 @@ Item {
                  {
                     if (msg == "") {
                         btn.enabled=true;
-                        if (setbtn_flag == "onekey")
-                            btnImg.source = "../img/icons/green3.png"
+                        if (setbtn_flag == "onekey") {
+                            btnImg.source = "../../img/icons/green3.png"
+                            displaytext.text = "一键清理";
+                        }
                      }
                     else if (msg == "u") {
                          btn.enabled=true;
@@ -65,6 +67,7 @@ Item {
                 if (msg == "") {
                      btn.enabled=true;
                     btnImg.source = "../img/icons/onekey.png"
+                    displaytext.text = "一键清理";
                  }
                  else if (msg == "u") {
                      btn.enabled=true;
@@ -242,14 +245,27 @@ Item {
                 sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
         }
     }
+    Image {
+        id: testbtn
+        source: "../../img/icons/arrowhead.png"
+        visible: (setbtn_flag == "onekey") ? true : false
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+    }
     Text {
         id: displaytext
         color: "white"
 //        visible: (btn.text == "") ? false : true
         anchors.centerIn: buttonImage
-        font.bold: true
+//        font.bold: true
+        font.family: "Helvetica"
         font.pixelSize: 16
-        text: btn.text; style: Text.Raised; styleColor: "black"
+        text: btn.text
+        style: Text.Sunken
+//        style: Text.Raised
+//        styleColor: "black"
+        styleColor: "#AAAAAA"
     }
     states: [
         State {
