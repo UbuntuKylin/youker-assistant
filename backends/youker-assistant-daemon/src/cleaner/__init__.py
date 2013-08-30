@@ -19,8 +19,8 @@ import os
 import sys
 import apt
 import apt_pkg
-import pprint
 import shutil
+import commands
 from apt.progress import InstallProgress, TextFetchProgress
 
 
@@ -252,6 +252,16 @@ class FunctionOfClean():
             if pkg.is_installed:
                 pkg.mark_delete()
         cache.commit(TextFetchProgress(), TextInstallProgress())
+
+    def uninstall_the_package(self, cruftlist):
+        program = 'apt-get'
+        mode = 'remove'
+        for cruft in cruftlist:
+            cmd = '%s %s -y %s' % (program, mode, cruft)
+            (status, output) = commands.getstatusoutput(cmd)
+            if status:
+                raise Exception(output)
+
         
 
 class TextInstallProgress(InstallProgress):

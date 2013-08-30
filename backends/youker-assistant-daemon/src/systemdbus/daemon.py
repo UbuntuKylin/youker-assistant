@@ -359,6 +359,19 @@ class Daemon(PolicyKitService):
         else:
             self.clean_complete_msg('package')
 
+    # the function of uninstall packages
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def uninstall_package_cruft(self, cruftlist, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
+        try:
+            self.daemonclean.uninstall_the_package(cruftlist)
+        except Exception, e:
+            self.clean_error_msg('package')
+        else:
+            self.clean_complete_msg('package')
+
     def dbusstring_to_string(self, string):
         tmp_string = str(string)
         patt = "u'[\S]+'"
