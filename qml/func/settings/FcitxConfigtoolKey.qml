@@ -49,7 +49,6 @@ Rectangle {
     }
 
     function refreshFcitxKey(){
-        pageStack.push(functioncollection);
         fcitxChangeModel.clear();
         skinModel.clear();
         //get_trigger_key========================================================
@@ -75,8 +74,6 @@ Rectangle {
         //get_im_switch_key
         var getEnableHotKeybool =fcitxcfgwizard.get_im_switch_key();
         enableHotKeyBox.checked = getEnableHotKeybool;
-
-
 
         //set_im_switch_hot_key=======================================================
           var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
@@ -112,7 +109,7 @@ Rectangle {
         //get_skin_list and current_skin=================================================
         var getSkinList = fcitxcfgwizard.get_all_skin_type()
         var getCurrentSkin = fcitxcfgwizard.get_skin_type()
-        getSkinList.unshift(getCurrentSkin);   //js
+        getSkinList.unshift(getCurrentSkin);
         skinModel.clear();
         for(var i=0;i<getSkinList.length;i++)
        {
@@ -121,9 +118,13 @@ Rectangle {
                 skinModel.remove(i);
         }
     }
-
+    Connections {
+            target: fcitxcfgwizard
+            onRefreshFcitxSig: {
+                refreshFcitxKey();
+            }
+        }
     Component.onCompleted: {
-        console.log("wuxiaoyi");
         fcitxChangeModel.clear();
         skinModel.clear();
         //get_trigger_key========================================================
@@ -147,8 +148,6 @@ Rectangle {
         //get_im_switch_key
         var getEnableHotKeybool =fcitxcfgwizard.get_im_switch_key();
         enableHotKeyBox.checked = getEnableHotKeybool;
-
-
 
         //set_im_switch_hot_key=======================================================
           var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
@@ -195,7 +194,6 @@ Rectangle {
 
     }
 
-
     Column{
         anchors{
             top:parent.top
@@ -206,202 +204,174 @@ Rectangle {
         spacing: 15
         //Trigger Input Method
         Row{
+            spacing: 179
             Text{
                 id:inputMethod
                 text:qsTr("切换激活/非激活输入法")
             }
-            Common.Button{
-                id:methodBtn1
-                //focus:true
+            Row{
+                spacing: 5
+                Common.Button{
+                    id:methodBtn1
+                    //focus:true
 
-//                text:""
-                //hoverimage: "button_normal.png"
-                anchors.left: inputMethod.right
-                anchors.leftMargin: 179
-                width:200
-                height:30
-                onClicked: {
-                    methodBtn1.forceActiveFocus();                   
-                    methodBtn1.text = "请按下要设置的组合键";
-                    console.log("methodBtn1");
-                }
-                onEntered:{
-                    methodBtn1Tmp = methodBtn1.text
-                    console.log(methodBtn1Tmp)
-                }
-                onExited: {
-                    methodBtn1.text = methodBtn1Tmp
-                    console.log(methodBtn1.text)
-                }
-                Keys.onPressed: {
-                    console.log(event.modifiers);
-                    console.log(event.nativeModifiers);
-                    methodBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                    methodBtn1Tmp = methodBtn1.text;
-                }
+    //                text:""
+                    //hoverimage: "button_normal.png"
+                    width:200
+                    height:30
+                    onClicked: {
+                        methodBtn1.forceActiveFocus();
+                        methodBtn1.text = "请按下要设置的组合键";
+                        console.log("methodBtn1");
+                    }
+                    onEntered:{
+                        methodBtn1Tmp = methodBtn1.text
+                        console.log(methodBtn1Tmp)
+                    }
+                    onExited: {
+                        methodBtn1.text = methodBtn1Tmp
+                        console.log(methodBtn1.text)
+                    }
+                    Keys.onPressed: {
+                        console.log(event.modifiers);
+                        console.log(event.nativeModifiers);
+                        methodBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        methodBtn1Tmp = methodBtn1.text;
+                    }
 
 
-            }
+                }
 
-            Common.Button{
-                id:methodBtn2
-                //focus:true
+                Common.Button{
+                    id:methodBtn2
+                    //focus:true
 
-                //hoverimage:"button_normal.png"
-//                text:"Empty"
-                anchors.left: methodBtn1.right
-                anchors.leftMargin: 5
-                width:200
-                height:30
-                onClicked: {
-                    methodBtn2.forceActiveFocus();
-                    methodBtn2.text = "请按下要设置的组合键"
-                    console.log("methodBtn2")
-                }
-                onEntered:{
-                    methodBtn2Tmp = methodBtn2.text
-                    console.log(methodBtn2Tmp)
-                }
-                onExited: {
-                    methodBtn2.text = methodBtn2Tmp
-                    console.log(methodBtn1.text)
-                }
-                Keys.onPressed: {
-                    console.log(event.modifiers);
-                    console.log(event.nativeModifiers);
-                    methodBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                    methodBtn2Tmp = methodBtn2.text
-                }
+                    //hoverimage:"button_normal.png"
+    //                text:"Empty"
+                    width:200
+                    height:30
+                    onClicked: {
+                        methodBtn2.forceActiveFocus();
+                        methodBtn2.text = "请按下要设置的组合键"
+                        console.log("methodBtn2")
+                    }
+                    onEntered:{
+                        methodBtn2Tmp = methodBtn2.text
+                        console.log(methodBtn2Tmp)
+                    }
+                    onExited: {
+                        methodBtn2.text = methodBtn2Tmp
+                        console.log(methodBtn1.text)
+                    }
+                    Keys.onPressed: {
+                        console.log(event.modifiers);
+                        console.log(event.nativeModifiers);
+                        methodBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        methodBtn2Tmp = methodBtn2.text
+                    }
+                 }
             }
         }
         //Prev Page
         Row{
+            spacing: 287
             Text {
                 id: prevPage
                 text: qsTr("上一页")
             }
-            Common.Button{
-                id:prevPageBtn1
-                //hoverimage: "button_normal.png"
-//                text:"-"
-                anchors.left: prevPage.right
-                anchors.leftMargin: 287
-                width:200
-                height:30
-                onClicked: {
-                    prevPageBtn1.forceActiveFocus();
-                    prevPageBtn1.text = "请按下要设置的组合键"
-                    console.log("methodBtn1")
+            Row{
+                spacing: 5
+                Common.Button{
+                    id:prevPageBtn1
+                    width:200
+                    height:30
+                    onClicked: {
+                        prevPageBtn1.forceActiveFocus();
+                        prevPageBtn1.text = "请按下要设置的组合键"
+                    }
+                    onEntered:{
+                        prevpageBtn1Tmp = prevPageBtn1.text
+                    }
+                    onExited: {
+                        prevPageBtn1.text = prevpageBtn1Tmp
+                    }
+                    Keys.onPressed: {
+                        prevPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        prevpageBtn1Tmp = prevPageBtn1.text;
+                    }
                 }
-                onEntered:{
-                    prevpageBtn1Tmp = prevPageBtn1.text
-                    console.log(methodBtn2Tmp)
-                }
-                onExited: {
-                    prevPageBtn1.text = prevpageBtn1Tmp
-                    console.log(methodBtn1.text)
-                }
-                Keys.onPressed: {
-                    console.log(event.modifiers);
-                    console.log(event.nativeModifiers);
-                    prevPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                    prevpageBtn1Tmp = prevPageBtn1.text;
-                }
-            }
-            Common.Button{
-                id:prevPageBtn2
-                //hoverimage: "button_normal.png"
-//                text:"UP"
-                anchors.left: prevPageBtn1.right
-                anchors.leftMargin: 5
-                width:200
-                height:30
-                onClicked: {
-                    prevPageBtn2.forceActiveFocus();
-                    prevPageBtn2.text = "请按下要设置的组合键";
-                    console.log("methodBtn1");
-                }
-                onEntered:{
-                    prevpageBtn2Tmp = prevPageBtn2.text;
-                    console.log(methodBtn2Tmp);
-                }
-                onExited: {
-                    prevPageBtn2.text = prevpageBtn2Tmp;
-                    console.log(methodBtn1.text);
-                }
-                Keys.onPressed: {
-                    console.log(event.modifiers);
-                    console.log(event.nativeModifiers);
-                    prevPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                    prevpageBtn2Tmp = prevPageBtn2.text;
+                Common.Button{
+                    id:prevPageBtn2
+                    width:200
+                    height:30
+                    onClicked: {
+                        prevPageBtn2.forceActiveFocus();
+                        prevPageBtn2.text = "请按下要设置的组合键";
+                    }
+                    onEntered:{
+                        prevpageBtn2Tmp = prevPageBtn2.text;
+                    }
+                    onExited: {
+                        prevPageBtn2.text = prevpageBtn2Tmp;
+                    }
+                    Keys.onPressed: {
+                        prevPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        prevpageBtn2Tmp = prevPageBtn2.text;
+                    }
                 }
             }
         }
         //Next Page
         Row{
+            spacing: 287
             Text {
                 id: nextPage
                 text: qsTr("下一页")
             }
-            Common.Button{
-                id:nextPageBtn1
-                //hoverimage: "button_normal.png"
-//                text:"="
-                anchors.left: nextPage.right
-                anchors.leftMargin: 287
-                width:200
-                height:30
-                onClicked: {
-                    nextPageBtn1.forceActiveFocus();
-                    nextPageBtn1.text = "请按下要设置的组合键";
-                    console.log("methodBtn1")
+            Row{
+                spacing: 5
+                Common.Button{
+                    id:nextPageBtn1
+                    width:200
+                    height:30
+                    onClicked: {
+                        nextPageBtn1.forceActiveFocus();
+                        nextPageBtn1.text = "请按下要设置的组合键";
+                    }
+                    onEntered:{
+                        nextpageBtn1Tmp = nextPageBtn1.text;
+                    }
+                    onExited: {
+                        nextPageBtn1.text = nextpageBtn1Tmp;
+                    }
+                    Keys.onPressed: {
+                        nextPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        nextpageBtn1Tmp = nextPageBtn1.text;
+                    }
                 }
-                onEntered:{
-                    nextpageBtn1Tmp = nextPageBtn1.text;
-                    console.log(methodBtn2Tmp);
+                Common.Button{
+                    id:nextPageBtn2
+                    width:200
+                    height:30
+                    onClicked: {
+                        nextPageBtn2.forceActiveFocus();
+                        nextPageBtn2.text = "请按下要设置的组合键";
+                    }
+                    onEntered:{
+                        nextpageBtn2Tmp = nextPageBtn2.text;
+                    }
+                    onExited: {
+                        nextPageBtn2.text = nextpageBtn2Tmp;
+                    }
+                    Keys.onPressed: {
+                        nextPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        nextpageBtn2Tmp = nextPageBtn2.text;
+                    }
                 }
-                onExited: {
-                    nextPageBtn1.text = nextpageBtn1Tmp;
-                    console.log(methodBtn1.text);
-                }
-                Keys.onPressed: {
-                    console.log(event.modifiers);
-                    console.log(event.nativeModifiers);
-                    nextPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                    nextpageBtn1Tmp = nextPageBtn1.text;
-                }
-            }
-            Common.Button{
-                id:nextPageBtn2
-                //hoverimage: "button_normal.png"
-//                text:"DOWN"
-                anchors.left: nextPageBtn1.right
-                anchors.leftMargin: 5
-                width:200
-                height:30
-                onClicked: {
-                    nextPageBtn2.forceActiveFocus();
-                    nextPageBtn2.text = "请按下要设置的组合键";
-                    console.log("methodBtn1")
-                }
-                onEntered:{
-                    nextpageBtn2Tmp = nextPageBtn2.text;
-                    console.log(methodBtn2Tmp);
-                }
-                onExited: {
-                    nextPageBtn2.text = nextpageBtn2Tmp;
-                    console.log(methodBtn1.text);
-                }
-                Keys.onPressed: {
-                    console.log(event.modifiers);
-                    console.log(event.nativeModifiers);
-                    nextPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                    nextpageBtn2Tmp = nextPageBtn2.text;
-                }
-            }
-
+             }
         }
         Row{
+            spacing: 272
             //选择皮肤
             ListModel {
                 id: skinModel
@@ -413,68 +383,56 @@ Rectangle {
             }
 
             Common.ComboBox {
-                anchors{
-                    left:skinchoose.left
-                    leftMargin: 332
-
-                }
                 id: skinCombo
                 model: skinModel
                 width: 405
                 onSelectedTextChanged: {
-                    console.log(selectedText);
+//                    console.log(selectedText);
 //                    skinCombo.selectedText
                 }
-
             }
         }
         //Scroll between input Method
-        ListModel {
-            id: fcitxChangeModel
-            ListElement { text: "" }
-        }
-
         Row{
-            Text{
-                id:scrollBetween
-                text:qsTr("输入法切换")
+            spacing: 256
+            ListModel {
+                id: fcitxChangeModel
+                ListElement { text: "" }
             }
-            Common.ComboBox {
-                anchors{
-                    verticalCenter: scrollBetween.verticalCenter
-                    left: scrollBetween.right
-                    leftMargin: 256
+                Text{
+                    id:scrollBetween
+                    text:qsTr("输入法切换")
                 }
-                id: scrollBetweenCombo            
-                    model: fcitxChangeModel
-                    width: 405
-                    onSelectedTextChanged: {
-                        hotkyScrollBetweenIndex = scrollBetweenCombo.selectedIndex;
-                        console.log(hotkyScrollBetweenIndex);
+                Common.ComboBox {
+                    anchors{
+                        verticalCenter: scrollBetween.verticalCenter
                     }
-
+                    id: scrollBetweenCombo
+                        model: fcitxChangeModel
+                        width: 405
+                        onSelectedTextChanged: {
+                            hotkyScrollBetweenIndex = scrollBetweenCombo.selectedIndex;
+                            console.log(hotkyScrollBetweenIndex);
+                        }
+                    }
             }
-        }
 
         Row{
+            spacing: 213
             Text {
                 id: hotkyScroll
-
                 text: qsTr("启用输入法间切换")
             }
             Common.CheckBox{
                 id:enableHotKeyBox
                 anchors.verticalCenter: hotkyScroll.verticalCenter
-                anchors.left: hotkyScroll.right
-                anchors.leftMargin: 213
                 titleName: ""
-                onClicked: console.log("启用输入法间切换")
             }
         }
-        //启用热键输入法之间滚动
 
         //启用云拼音
 //        Row{
+//        spacing: 258
 //            Text {
 //                id: cloudPinyin
 
@@ -482,15 +440,11 @@ Rectangle {
 //            }
 //            Common.CheckBox{
 //                anchors.verticalCenter: cloudPinyin.verticalCenter
-//                anchors.left: cloudPinyin.right
-//                anchors.leftMargin: 258
 //                titleName: ""
 //                onClicked: console.log("启用云拼音")
 //            }
 //        }
-
 }
-
     //顶层工具栏
     Bars.TopBar {
         id: topBar
@@ -521,10 +475,8 @@ Rectangle {
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("应用")
         onCancelBtnClicked: {
-            sessiondispatcher.send_warningdialog_msg("友情提示：", "是否确定取消设置！");
-            refreshFcitxKey();
+            fcitxcfgwizard.send_fcitx_ok_warn();
         }
-
         onGobackBtnClicked: {
             console.log("上一步");
             pageStack.push(fcitxConfigtoolFontpage);//静态添加页面
@@ -546,7 +498,6 @@ Rectangle {
             fcitxcfgwizard.set_im_switch_hot_key(hotkyScrollBetweenIndex,false);
             fcitxcfgwizard.set_im_switch_key(enableHotKeyBox.checked,false);
             fcitxcfgwizard.all_cfg_save()
-
             pageStack.push(functioncollection);
         }
 

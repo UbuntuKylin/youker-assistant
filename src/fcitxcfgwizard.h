@@ -32,29 +32,28 @@
 class FcitxCfgWizard : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QNOTIFY Fcitxwarn)
+    Q_PROPERTY(QNOTIFY test)
 
 public:
     explicit FcitxCfgWizard(QObject *parent = 0);
     ~FcitxCfgWizard();
-
+signals:void refreshFcitxSig();
 private:
     FcitxQtConnection *m_connection;
     FcitxWarnDialog *fcitxWarnSig;
     QDeclarativeView *view;
     FcitxQtInputMethodProxy *m_improxy;
     QString m_separator;
-
 private:
-
     QStringList m_im_list;
     //注意：因为fcitx提供的库的缘故，这里必须采用malloc动态内存
     //因为fcitx库内部会调用到realloc，如果采用固定数组会出异常
     char *m_string;
-
+    //QString m_string;
     char *m_font;
+    //QString m_font;
     int m_candidate_word_number;
-    int m_font_size;
+    int m_font_size ;
     //布尔必须采用fcitx库里提供的boolean，而不能直接使用bool类型
     //否则读取/写入失败
     boolean m_vertical_list;
@@ -72,11 +71,11 @@ private:
 
 private slots:
     bool connected();
-    void handler_okBtn_fcitx_warn();
+    void emitrefreshFcitxSig();
 private:
     bool is_connected_ok();
     bool get_fcitx_cfg_value(char *cd_path_prefix, char *cd_file_name,
-        char *c_path_prefix, char *c_file_name, char *groupName, const char *optionName,
+        char *c_path_prefix, char *c_file_name, char *groupName,  const char *optionName,
         void *ret_value);
     bool set_fcitx_cfg_value(char *cd_path_prefix, char *cd_file_name,
         char *c_path_prefix, char *c_file_name, char *groupName, const char *optionName,

@@ -14,7 +14,7 @@ target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
     target
-LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
+LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils -Wno-write-strings
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH =

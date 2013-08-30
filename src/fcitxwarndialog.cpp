@@ -9,7 +9,6 @@ FcitxWarnDialog::FcitxWarnDialog(QWidget *parent) :
     ui(new Ui::FcitxWarnDialog)
 {
     ui->setupUi(this);
-
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
@@ -17,10 +16,8 @@ FcitxWarnDialog::FcitxWarnDialog(QWidget *parent) :
     ui->btn_min->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
-//    FcitxCfgWizard *app = new FcitxCfgWizard() ;
-
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(accept()));
- //   connect(this,SIGNAL(fcitxWarntest()),app,SLOT(handler_okBtn_fcitx_warn()));
+
 }
 
 FcitxWarnDialog::~FcitxWarnDialog()
