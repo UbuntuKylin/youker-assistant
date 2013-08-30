@@ -36,13 +36,14 @@ Item {
     Connections{
          target: systemdispatcher
              onFinishCleanWorkMain: {
-                 if(setbtn_flag =="onekey")
+                 if(setbtn_flag =="onekey"||setbtn_flag=="smallonekey")
                  {
                     if (msg == "") {
                         btn.enabled=true;
-                        btnImg.source = "../../img/icons/green3.png"
-                        btn.hoverimage = "green3.png"
-                        displaytext.text = "一键清理";
+                        if (setbtn_flag == "onekey") {
+                            btnImg.source = "../../img/icons/green3.png"
+                            displaytext.text = "一键清理";
+                        }
                      }
                     else if (msg == "u") {
                          btn.enabled=true;
@@ -63,12 +64,11 @@ Item {
     {
         target: systemdispatcher
         onFinishCleanWorkSecond: {
-            if(setbtn_flag=="smallonekey")
+            if(setbtn_flag =="onekey"||setbtn_flag=="smallonekey")
             {
                 if (msg == "") {
-                    btn.enabled=true;
-                    btnImg.source = "../../img/icons/green1.png"
-                    btn.hoverimage = "green3.png"
+                     btn.enabled=true;
+                    btnImg.source = "../img/icons/onekey.png"
                     displaytext.text = "一键清理";
                  }
                  else if (msg == "u") {
@@ -141,16 +141,8 @@ Item {
                 if(setbtn_flag =="onekey")
                     displaytext.text = "一键清理";
             }
-            else if (hoverimage == "green4.png") {
-                btnImg.source = "../../img/icons/green3-hover.png"
-                btn.hoverimage = "green3.png"
-                if(setbtn_flag =="onekey")
-                    displaytext.text = "一键清理";
-            }
-            else {
-                console.log(hoverimage)
+            else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
-            }
 //            if (hoverimage == "return.png")
 //                btnImg.source = "../../img/icons/return-hover.png"
 //            else if (hoverimage == "sort.png")
@@ -179,12 +171,6 @@ Item {
                 btnImg.source = "../../img/icons/blue4-hover.png"
             else if (hoverimage == "green3.png")
                 btnImg.source = "../../img/icons/green3-hover.png"
-//            else if (hoverimage == "green4.png") {
-//                btnImg.source = "../../img/icons/green3-hover.png"
-//                btn.hoverimage = "green3-hover.png"
-//                if(setbtn_flag =="onekey")
-//                    displaytext.text = "一键清理";
-//            }
             else
                 btnImg.source = "../../img/toolWidget/menu_press.png"
 //            if (hoverimage == "return.png")
@@ -217,12 +203,6 @@ Item {
                 btnImg.source = "../../img/icons/blue4.png"
             else if (hoverimage == "green3.png")
                 btnImg.source = "../../img/icons/green3.png"
-//            else if (hoverimage == "green4.png") {
-//                btnImg.source = "../../img/icons/green3.png"
-//                btn.hoverimage = "green3.png"
-//                if(setbtn_flag =="onekey")
-//                    displaytext.text = "一键清理";
-//            }
             else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
 //            if (hoverimage == "return.png")
@@ -257,8 +237,6 @@ Item {
                     displaytext.text = "清理完毕"
 //                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
                     btn.text="清理完毕";
-                    btnImg.source = "../../img/icons/green4.png"
-                    btn.hoverimage = "green4.png"
                     btn.enabled=false;
                 }
                 else if (setbtn_flag == "smallonekey") {
@@ -274,14 +252,14 @@ Item {
                 sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
         }
     }
-//    Image {
-//        id: testbtn
-//        source: "../../img/icons/arrowhead.png"
-//        visible: (setbtn_flag == "onekey") ? true : false
-//        anchors.verticalCenter: parent.verticalCenter
-//        anchors.left: parent.left
-//        anchors.leftMargin: 10
-//    }
+    Image {
+        id: testbtn
+        source: "../../img/icons/arrowhead.png"
+        visible: (setbtn_flag == "onekey") ? true : false
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+    }
     Text {
         id: displaytext
         color: "white"
