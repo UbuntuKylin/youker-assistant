@@ -25,7 +25,7 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
-
+#include "transmit.h"
 class SystemDispatcher : public QObject
 {
     Q_OBJECT
@@ -77,7 +77,8 @@ public:
     Q_INVOKABLE QString get_total_memory_qt();
     Q_INVOKABLE QString get_used_memory_qt();
     Q_INVOKABLE QString get_free_memory_qt();
-    Q_INVOKABLE QStringList get_network_flow_qt();
+//    Q_INVOKABLE QStringList get_network_flow_qt();
+    Q_INVOKABLE void get_network_flow_qt();
     Q_INVOKABLE void cleanup_memory_qt();
     //-----------------------------------------------
 
@@ -97,7 +98,7 @@ public:
 
     QMap<QString, QVariant> apt_center;
     QDBusInterface *systemiface;
-    QDBusInterface *passwordiface;
+    Transmit *tansmit;
 
 //-------------
     bool history_flag;

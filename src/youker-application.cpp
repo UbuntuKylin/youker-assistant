@@ -100,7 +100,7 @@ bool IhuApplication::setup()
 
     viewer_float = new QDeclarativeView;
     viewer_float->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
-    viewer_float->setSource(QUrl::fromLocalFile("floatmain.qml"));
+    viewer_float->setSource(QUrl::fromLocalFile("SuspensionFrame.qml"));
     viewer_float->setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QObject *rootObject = dynamic_cast<QObject*>(viewer_float->rootObject());
     QObject::connect(handler, SIGNAL(trans_signal_between_qml()), rootObject, SLOT(show_large_widget()));
@@ -116,7 +116,7 @@ bool IhuApplication::setup()
 
     viewer_small = new QDeclarativeView;
     viewer_small->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
-    viewer_small->setSource(QUrl::fromLocalFile("Smallfloat.qml"));
+    viewer_small->setSource(QUrl::fromLocalFile("MonitorBall.qml"));
     viewer_small->setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QObject *srootObject = dynamic_cast<QObject*>(viewer_small->rootObject());
     QObject::connect(srootObject, SIGNAL(send_signal_to_large()), handler, SLOT(signalHandler()));

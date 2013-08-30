@@ -30,7 +30,7 @@
 #include <QDataStream>
 #include <iostream>
 #include "authdialog.h"
-
+#include "KThread.h"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -46,18 +46,17 @@ extern QString music_path;
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
+    tansmit = new Transmit();
     systemiface = new QDBusInterface("com.ubuntukylin_tools.daemon",
                                "/",
                                "com.ubuntukylin_tools.daemon",
                                QDBusConnection::systemBus());
-
     //绑定到底层清理完毕后发送到信号函数clear_browser
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
-
     history_flag = true;
     onekey_args << "cache" << "history" << "cookies" << "unneed";
     onekey_args2 << "cache" << "history" << "cookies" << "unneed";
@@ -181,12 +180,18 @@ QString SystemDispatcher::get_free_memory_qt() {
     QDBusReply<QString> reply = systemiface->call("get_free_memory");
     return reply.value();
 }
-QStringList SystemDispatcher::get_network_flow_qt() {
-    QDBusReply<QStringList> reply = systemiface->call("get_network_flow");
-    return reply.value();
+//QStringList SystemDispatcher::get_network_flow_qt() {
+//    QDBusReply<QStringList> reply = systemiface->call("get_network_flow");
+//    return reply.value();
+//}
+
+void SystemDispatcher::get_network_flow_qt() {
+    KThread *thread = new KThread(systemiface, tansmit);
+    thread->start();
 }
+
 void SystemDispatcher::cleanup_memory_qt() {
-    systemiface->call("cleanup_memory_q");
+    systemiface->call("cleanup_memory");
 }
 //-----------------------------------------------
 
