@@ -9,6 +9,7 @@ Rectangle{
 //    color: "transparent"
     color:"transparent"
     property double cpu_value: 0.0
+    property bool detail_flag: false
     visible: false
 
     property string up_speed: "0"
@@ -69,6 +70,18 @@ Rectangle{
         SystemDispatcher {
             id: systemdispatcher
         }
+        MouseArea {
+            anchors.fill: parent
+            property variant clickPos: "1,1"
+            onPressed: {
+                clickPos  = Qt.point(mouse.x,mouse.y)
+            }
+            onPositionChanged: {
+                var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+                fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
+                                  fmainwindow.pos.y+delta.y)
+            }
+        }
 
     //    Style {
     //        color: "gray"
@@ -79,26 +92,156 @@ Rectangle{
     //        width: 110; height: 50
     //    }
 
-
-        Contents {
+        Rectangle {
             id: search
+            anchors{
+                top:parent.top
+                left:parent.left
+            }
             visible: true
             opacity: 1
-            anchors.horizontalCenter: parent.horizontalCenter
-            up_speed: root.up_speed
-            down_speed: root.down_speed
-            MouseArea {
-                anchors.fill: search
-                property variant clickPos: "1,1"
-                onPressed: {
-                    clickPos  = Qt.point(mouse.x,mouse.y)
+//            MouseArea {
+//                anchors.fill: parent
+//                property variant clickPos: "1,1"
+//                onPressed: {
+//                    clickPos  = Qt.point(mouse.x,mouse.y)
+//                    console.log("1111111111111111")
+//                }
+//                onPositionChanged: {
+//                    var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+//                    fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
+//                                      fmainwindow.pos.y+delta.y)
+//                }
+//            }
+            Rectangle {
+                id:rec
+                anchors.fill: parent
+                color: "transparent"
+//                z:2
+                Column{
+                    id:colu
+                    anchors{
+            //                horizontalCenter: parent.horizontalCenter
+                        left: parent.left
+                        leftMargin: 45
+                        top:parent.top
+                        topMargin: 5
+                    }
+                    spacing: 8
+                    Text {
+                        text: "试试点击屏幕右上角浮动框的右边矩形..."
+                        font.pixelSize: 10
+                        color: "#7a7a7a"
+                    }
+
+                    Text{
+                        text: (root.cpu_value < 50) ? "系统运行流畅" : "系统运行缓慢"
+                    }
+                    Text{
+                        text: (root.cpu_value < 50) ? "无需进行加速" : "建议您立即加速"
+                    }
+                    Common.Button {
+                        id: accelerateBtn
+                        width: 120
+                        height: 28
+                        text:"一键加速"
+                        onClicked: {
+                            systemdispatcher.cleanup_memory_qt();
+                        }
+                    }
                 }
-                onPositionChanged: {
-                    var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-                    fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
-                                      fmainwindow.pos.y+delta.y)
+
+                Row {
+                    spacing: 35
+                    anchors{
+                        left: parent.left
+                        leftMargin: 28
+                        top:parent.top
+                        topMargin: 122
+                    }
+                    Text {
+                        id:upload
+                        text: root.up_speed + "K/s"
+        //                text: "K/s"
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                    }
+
+                    Text {
+                        id:download
+                        text: root.down_speed + "K/s"
+        //                text: "K/s"
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                    }
+
+                    Rectangle{width: 8;height: 20;color: "transparent"}
+                    Text{
+                        id:detail
+                        text:"详情"
+                        font.bold:true
+                        font.pointSize: 9
+                        color: "grey"
+                        Image {
+                            id: btnImg
+                            anchors.fill: parent
+                            source: ""
+                        }
+                        MouseArea{
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onEntered: btnImg.source = "./img/toolWidget/menu_hover.png"
+                            onPressed: btnImg.source = "./img/toolWidget/menu_press.png"
+                            //要判断松开是鼠标位置
+                            onReleased: btnImg.source = "./img/toolWidget/menu_hover.png"
+                            onExited: btnImg.source = ""
+                            onClicked: {
+                                if(detail_flag==false){
+                                    page.height=page.height+90;
+                                    detail_flag=true;
+                                    detailed.opacity=1
+                                }
+                                else{
+                                    page.height=page.height-90;
+                                    detail_flag=false;
+                                    detailed.opacity=0
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+            Rectangle{
+                id:detailed
+                width: 228
+                height: 90
+                color: "lightblue"
+                anchors{
+                    top:parent.top
+                    topMargin: 142
+                }
+                opacity: 0
+                Text{
+                    id:detailedtext
+                    anchors.centerIn: parent
+                    text:"详细显示的内容，待扩展"
                 }
             }
+//            MouseArea {
+//                anchors.fill: parent
+//                property variant clickPos: "1,1"
+//                onPressed: {
+//                    clickPos  = Qt.point(mouse.x,mouse.y)
+//                    console.log("1111111111111111")
+//                }
+//                onPositionChanged: {
+//                    var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+//                    fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
+//                                      fmainwindow.pos.y+delta.y)
+//                }
+//            }
         }
 
     }
@@ -144,16 +287,30 @@ Rectangle{
             }
         }
     }
+
     Timer {
         interval: 5000; running: true; repeat: true
         onTriggered: {
             root.cpu_value = systemdispatcher.get_cpu_percent_qt();
             tansmitData(root.cpu_value, "10", "20");
-            //            var speed = systemdispatcher.get_network_flow_qt();
-            //            focusScope.up_speed = speed[0];
-            //            focusScope.down_speed = speed[1];
-            //            focusScope.used_memory = systemdispatcher.get_used_memory_qt();
-            //            focusScope.free_memory = systemdispatcher.get_free_memory_qt();
+//            root.cpu_value =
+
+            //            statustext.text = {
+            //                if(root.cpu_value < 10)
+            //                    "系统运行流畅"
+            //                else if(root.cpu_value > 10 && root.cpu_value < 30)
+            //                    "系统运行正常"
+            //                if(root.cpu_value > 30)
+            //                    "系统运行缓慢"
+            //            }
+
+
+
+//            var speed = systemdispatcher.get_network_flow_qt();
+//            focusScope.up_speed = speed[0];
+//            focusScope.down_speed = speed[1];
+//            focusScope.used_memory = systemdispatcher.get_used_memory_qt();
+//            focusScope.free_memory = systemdispatcher.get_free_memory_qt();
         }
     }
 }
