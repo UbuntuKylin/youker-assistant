@@ -6,6 +6,7 @@ FocusScope {
     id: focusScope
     width: parent.width
     height: parent.height
+    property double cpu: 0.0
     anchors{
         top:parent.top
         left: parent.left
@@ -20,6 +21,9 @@ FocusScope {
 //    property string free_memory: "0"
 //    property string memory_size: "0"
     Component.onCompleted: {
+        focusScope.cpu = systemdispatcher.get_cpu_percent_qt();
+        console.log("11111111111111111111111");
+        console.log(focusScope.cpu);
 //        var speed = systemdispatcher.get_network_flow_qt();
 //        focusScope.up_speed = speed[0];
 //        focusScope.down_speed = speed[1];
@@ -38,30 +42,30 @@ FocusScope {
             anchors{
     //                horizontalCenter: parent.horizontalCenter
                 left: parent.left
-                leftMargin: 40
+                leftMargin: 45
                 top:parent.top
-                topMargin: 20
+                topMargin: 5
             }
             spacing: 8
+            Text {
+                text: "试试点击屏幕右上角浮动框的右边矩形..."
+                font.pixelSize: 10
+                color: "#7a7a7a"
+            }
+
             Text{
-                text:speedtext
+                text: (focusScope.cpu < 50) ? "系统运行流畅" : "系统运行缓慢"
             }
             Text{
-                text:proposaltext
+                text: (focusScope.cpu < 50) ? "无需进行加速" : "建议您立即加速"
             }
             Common.Button {
                 id: accelerateBtn
                 width: 120
                 height: 28
-
-    //                anchors.horizontalCenter: parent.horizontalCenter
-    //                anchors.top:search.bottom
-    //                anchors.topMargin: 10
-    //            hoverimage: "move.png"
                 text:"一键加速"
                 onClicked: {
                     systemdispatcher.cleanup_memory_qt();
-//                    console.log("11111111111111")
                 }
             }
         }
@@ -76,14 +80,16 @@ FocusScope {
             }
             Text {
                 id:upload
-                text: focusScope.up_speed + "K/s";
+                text: focusScope.up_speed + "K/s"
+//                text: "K/s"
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
 
             Text {
                 id:download
-                text: focusScope.down_speed + "K/s";
+                text: focusScope.down_speed + "K/s"
+//                text: "K/s"
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
@@ -143,26 +149,25 @@ FocusScope {
         }
     }
 
-//        Text {
-//            id: title
-//            anchors.top: myrow.bottom
-//            anchors.topMargin: 2
-////            anchors.horizontalCenter: parent.horizontalCenter
-//            font.pixelSize: 9
-//            text: "内存总量|" +  "已用内存|" + "可释放内存";
-//        }
-//        Text {
-//            id: memory
-//            anchors.top: title.bottom
-//            anchors.topMargin: 2
-////            anchors.horizontalCenter: parent.horizontalCenter
-//            font.pixelSize: 10
-//            text: focusScope.memory_size + "M     " + focusScope.used_memory + "M     " + focusScope.free_memory + "M";
-//        }
+
 
     Timer {
         interval: 5000; running: true; repeat: true
         onTriggered: {
+            focusScope.cpu = systemdispatcher.get_cpu_percent_qt();
+//            focusScope.cpu =
+
+            //            statustext.text = {
+            //                if(focusScope.cpu < 10)
+            //                    "系统运行流畅"
+            //                else if(focusScope.cpu > 10 && focusScope.cpu < 30)
+            //                    "系统运行正常"
+            //                if(focusScope.cpu > 30)
+            //                    "系统运行缓慢"
+            //            }
+
+
+
 //            focusScope.cpu_value = systemdispatcher.get_cpu_percent_qt();
 //            var speed = systemdispatcher.get_network_flow_qt();
 //            focusScope.up_speed = speed[0];

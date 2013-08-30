@@ -9,15 +9,35 @@ Rectangle{
 //    color: "transparent"
     color:"transparent"
     property double cpu_value: 0.0
+    visible: false
+
+    property string up_speed: "0"
+    property string down_speed: "0"
+    //    property string used_memory: "0"
+    //    property string free_memory: "0"
+    //    property string memory_size: "0"
+
+    signal tansmitData(double cpu, string up, string down);
+
     Component.onCompleted: {
         root.cpu_value = systemdispatcher.get_cpu_percent_qt();
+        tansmitData(root.cpu_value, "10", "20");
+        //        var speed = systemdispatcher.get_network_flow_qt();
+        //        focusScope.up_speed = speed[0];
+        //        focusScope.down_speed = speed[1];
+        //        focusScope.used_memory = systemdispatcher.get_used_memory_qt();
+        //        focusScope.free_memory = systemdispatcher.get_free_memory_qt();
+        //        focusScope.memory_size = systemdispatcher.get_total_memory_qt();
     }
-//    Smallfloat{
-//        id:smallf
-//        onFloatshow: {console.log("11111111111111111111111111")}
-//    }
 
 //    signal show_in_qt;
+
+//    function receive_data(value, up, down) {
+//        root.cpu_value = value;
+//        root.up_speed = up;
+//        root.down_speed = down;
+//    }
+
     function show_large_widget() {
         if (root.visible == true)
             root.visible = false;
@@ -49,7 +69,6 @@ Rectangle{
         SystemDispatcher {
             id: systemdispatcher
         }
-        signal showWidget();
 
     //    Style {
     //        color: "gray"
@@ -60,11 +79,14 @@ Rectangle{
     //        width: 110; height: 50
     //    }
 
+
         Contents {
             id: search
             visible: true
             opacity: 1
             anchors.horizontalCenter: parent.horizontalCenter
+            up_speed: root.up_speed
+            down_speed: root.down_speed
             MouseArea {
                 anchors.fill: search
                 property variant clickPos: "1,1"
@@ -75,10 +97,6 @@ Rectangle{
                     var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
                     fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
                                       fmainwindow.pos.y+delta.y)
-                }
-                onClicked: {
-                }
-                onDoubleClicked: {
                 }
             }
         }
@@ -130,6 +148,12 @@ Rectangle{
         interval: 5000; running: true; repeat: true
         onTriggered: {
             root.cpu_value = systemdispatcher.get_cpu_percent_qt();
+            tansmitData(root.cpu_value, "10", "20");
+            //            var speed = systemdispatcher.get_network_flow_qt();
+            //            focusScope.up_speed = speed[0];
+            //            focusScope.down_speed = speed[1];
+            //            focusScope.used_memory = systemdispatcher.get_used_memory_qt();
+            //            focusScope.free_memory = systemdispatcher.get_free_memory_qt();
         }
     }
 }

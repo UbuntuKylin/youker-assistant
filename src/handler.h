@@ -26,9 +26,13 @@ public slots:
     void signalHandler() {
         emit trans_signal_between_qml();
     }
+    void getData(double value, QString up, QString down) {
+        emit send_data(QVariant(value), QVariant(up), QVariant(down));
+    }
 
 signals:
     void trans_signal_between_qml();
+    void send_data(QVariant value, QVariant up, QVariant down);
 };
 
 #endif // HANDLER_H

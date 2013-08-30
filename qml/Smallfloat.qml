@@ -7,13 +7,22 @@ Rectangle {
     height: 35
     color: "transparent"
     radius: 5
-    property string up_speed: "0"
-    property string down_speed: "0"
+    property string up_speed: "10"
+    property string down_speed: "20"
     property double cpu_value: 0.0
     signal send_signal_to_large;
 
+
+    function receive_data(value, up, down) {
+        sfloat.cpu_value = value;
+        sfloat.up_speed = up;
+        sfloat.down_speed = down;
+    }
+
+//    signal tansmitData(double cpu, string up, string down);
     Component.onCompleted: {
-        sfloat.cpu_value = systemdispatcher.get_cpu_percent_qt();
+//        sfloat.cpu_value = systemdispatcher.get_cpu_percent_qt();
+//        tansmitData(sfloat.cpu_value, "10", "20");
 //        var speed = systemdispatcher.get_network_flow_qt();
 //        sfloat.up_speed = speed[0];
 //        sfloat.down_speed = speed[1];
@@ -21,7 +30,7 @@ Rectangle {
     SystemDispatcher {
         id: systemdispatcher
     }
-    signal showWidget();
+
     function show_float_frame() {
         if (sfloat.visible == true)
             sfloat.visible = false;
@@ -42,13 +51,15 @@ Rectangle {
         spacing: 3
         Text {
             id:upload
-            text: sfloat.up_speed + "K/s";
+            text: sfloat.up_speed + "K/s"
+//            text: "K/s"
             font.pixelSize: 10
             color: "#7a7a7a"
         }
         Text {
             id:download
-            text: sfloat.down_speed + "K/s";
+            text: sfloat.down_speed + "K/s"
+//            text: "K/s";
             font.pixelSize: 10
             color: "#7a7a7a"
         }
@@ -132,7 +143,8 @@ Rectangle {
     Timer {
         interval: 5000; running: true; repeat: true
         onTriggered: {
-            sfloat.cpu_value = systemdispatcher.get_cpu_percent_qt();
+//            sfloat.cpu_value = systemdispatcher.get_cpu_percent_qt();
+//            tansmitData(sfloat.cpu_value, "10", "20");
 //            var speed = systemdispatcher.get_network_flow_qt();
 //            sfloat.up_speed = speed[0];
 //            sfloat.down_speed = speed[1];
