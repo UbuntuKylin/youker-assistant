@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = youker-assistant
-QT += core gui phonon declarative dbus
+QT += core gui phonon declarative dbus thread
 
 DEPENDPATH += $$PWD/
 INCLUDEPATH += $$PWD/
@@ -53,7 +53,8 @@ HEADERS += youker-application.h \
     qtkeytrans.h \
     qtkeytransdata.h \
     fcitxwarndialog.h \
-    handler.h
+    handler.h \
+    KThread.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -87,7 +88,8 @@ SOURCES += main.cpp \
     tray.cpp \
     fcitxcfgwizard.cpp \
     qtkeytrans.cpp \
-    fcitxwarndialog.cpp
+    fcitxwarndialog.cpp \
+    KThread.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
