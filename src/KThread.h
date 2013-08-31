@@ -12,7 +12,7 @@
 class KThread : public QThread
 {
 public:
-    KThread(QDBusInterface *systemiface=0, Transmit *transmit=0);
+    KThread(QDBusInterface *systemiface=0, Transmit *transmit=0, QString method="", QStringList arglist={}, QString flag="");
     ~KThread();
     void stop();
     QDBusInterface *iface;
@@ -21,6 +21,9 @@ protected:
     void run();
 signals:
 //    void sendToQml(QString list);
-//    void finished();
+private:
+    QStringList list;
+    QString method_name;
+    QString file_flag;
 };
 #endif // KTHREAD_H

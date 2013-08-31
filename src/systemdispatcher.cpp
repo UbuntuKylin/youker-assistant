@@ -43,6 +43,8 @@
 extern QString passwd;
 extern QString music_path;
 
+extern QStringList speedlist;
+
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -60,6 +62,19 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     history_flag = true;
     onekey_args << "cache" << "history" << "cookies" << "unneed";
     onekey_args2 << "cache" << "history" << "cookies" << "unneed";
+}
+
+QStringList SystemDispatcher::getStringList()
+{
+    return speedlist;
+}
+QString SystemDispatcher::getStringUp()
+{
+    return speedlist[0];
+}
+QString SystemDispatcher::getStringDown()
+{
+    return speedlist[1];
 }
 
 void SystemDispatcher::handler_clear_rubbish_second_error(QString msg)
@@ -186,7 +201,7 @@ QString SystemDispatcher::get_free_memory_qt() {
 //}
 
 void SystemDispatcher::get_network_flow_qt() {
-    KThread *thread = new KThread(systemiface, tansmit);
+    KThread *thread = new KThread(systemiface, tansmit, "get_network_flow");
     thread->start();
 }
 
@@ -233,18 +248,30 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
 }
 
 void SystemDispatcher::clean_history_records_qt() {
-    systemiface->call("clean_history_records");
+//    systemiface->call("clean_history_records");
+
+    KThread *thread = new KThread(systemiface, tansmit, "clean_history_records");
+    thread->start();
 }
 
 void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
-    systemiface->call("clean_cookies_records", strlist);
+//    systemiface->call("clean_cookies_records", strlist);
+
+    KThread *thread = new KThread(systemiface, tansmit, "clean_cookies_records", strlist);
+    thread->start();
 }
 
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
-    systemiface->call("clean_package_cruft", strlist);
+//    systemiface->call("clean_package_cruft", strlist);
+
+    KThread *thread = new KThread(systemiface, tansmit, "clean_package_cruft_qt", strlist);
+    thread->start();
 }
 void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
-    systemiface->call("clean_file_cruft", strlist, str);
+//    systemiface->call("clean_file_cruft", strlist, str);
+
+    KThread *thread = new KThread(systemiface, tansmit, "clean_file_cruft_qt", strlist, str);
+    thread->start();
 }
 
 QStringList SystemDispatcher::get_apt_data()
@@ -256,10 +283,15 @@ QStringList SystemDispatcher::get_center_data() {
 }
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
-    systemiface->call("clean_by_main_one_key", strlist);
+//    systemiface->call("clean_by_main_one_key", strlist);
+    KThread *thread = new KThread(systemiface, tansmit, "clean_by_main_one_key", strlist);
+    thread->start();
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
-    systemiface->call("clean_by_second_one_key", strlist);
+//    systemiface->call("clean_by_second_one_key", strlist);
+
+    KThread *thread = new KThread(systemiface, tansmit, "clean_by_second_one_key", strlist);
+    thread->start();
 }
 //------------------------------------------------------
 

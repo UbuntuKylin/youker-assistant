@@ -252,14 +252,14 @@ Item {
                 sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
         }
     }
-    Image {
-        id: testbtn
-        source: "../../img/icons/arrowhead.png"
-        visible: (setbtn_flag == "onekey") ? true : false
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-    }
+//    Image {
+//        id: testbtn
+//        source: "../../img/icons/arrowhead.png"
+//        visible: (setbtn_flag == "onekey") ? true : false
+//        anchors.verticalCenter: parent.verticalCenter
+//        anchors.left: parent.left
+//        anchors.leftMargin: 10
+//    }
     Text {
         id: displaytext
         color: "white"
