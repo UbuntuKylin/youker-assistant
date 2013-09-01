@@ -88,7 +88,6 @@ a表示数组，数组元素的类型由a后面的标记决定。例如：
 
 void registerTypes()
 {
-    qmlRegisterType<Transmit>("TransmitType", 0, 1, "Transmit");
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");//kobe08

@@ -358,10 +358,8 @@ Item {
 //                        width: 95
 //                        height: 30
 //                        onClicked: {
-//                            console.log(check_num);
 //                            if(root.check_flag)
 //                            {
-//                                console.log(root.check_flag);
 //                                root.directory = sessiondispatcher.show_folder_dialog();
 //                                if (root.directory != "") {
 //                                    refresh_page();
@@ -449,7 +447,6 @@ Item {
                             onChange_num: {
                                 if(sub_num!=0)
                                 {
-//                                    console.log(check_status);
                                     if(check_status==true)
                                         check_num=check_num+1;
                                     else
@@ -465,8 +462,6 @@ Item {
                                     check_flag=true;
                                 else
                                     check_flag=false;
-                                console.log(check_num);
-
                             }
                         }
 

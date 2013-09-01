@@ -509,7 +509,6 @@ Rectangle {
 //                        onClicked: {
 //                            if (overlay.checked == true) {
 //                                sessiondispatcher.set_scrollbars_mode_overlay_qt();
-//                                console.log(sessiondispatcher.get_scrollbars_mode_qt());
 //                            }
 //                        }
 //                    }
@@ -521,7 +520,6 @@ Rectangle {
 //                        onClicked: {
 //                            if (legacy.checked == true) {
 //                                sessiondispatcher.set_scrollbars_mode_legacy_qt();
-//                                console.log(sessiondispatcher.get_scrollbars_mode_qt());
 //                            }
 //                        }
 //                    }
@@ -556,7 +554,6 @@ Rectangle {
 //                        onClicked: {
 //                            if (edge.checked == true) {
 //                                sessiondispatcher.set_touchscrolling_mode_edge_qt();
-//                                console.log(sessiondispatcher.get_touchscrolling_mode_qt());
 //                            }
 //                        }
 //                    }
@@ -568,7 +565,6 @@ Rectangle {
 //                        onClicked: {
 //                            if (twofinger.checked == true) {
 //                                sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
-//                                console.log(sessiondispatcher.get_touchscrolling_mode_qt());
 //                            }
 //                        }
 //                    }

@@ -178,7 +178,6 @@ Rectangle {
                 anchors.verticalCenter: listh.verticalCenter
                 titleName: ""
                 onCheckedChanged: {
-//                        console.log(verticalList.checked) ;
                 }
             }
         }
@@ -196,8 +195,6 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            console.log("aaaaaaaaa->");
-            console.log(num);
             if (num == 0)
                 pageStack.push(homepage)
             else if (num == 3)
@@ -218,7 +215,6 @@ Rectangle {
             pageStack.push(fcitxConfigtoolpage);//静态添加页面
         }
         onContinueBtnClicked: {
-            console.log("continue ok");
             pageStack.push(fcitxConfigtoolKeypage);//静态添加页面
             fcitxcfgwizard.set_font(fontStyleBtn.text,false);
             fcitxcfgwizard.set_candidate_word_number(candidateWordNumber.value,false);

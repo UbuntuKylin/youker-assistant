@@ -222,19 +222,14 @@ Rectangle {
                     onClicked: {
                         methodBtn1.forceActiveFocus();
                         methodBtn1.text = "请按下要设置的组合键";
-                        console.log("methodBtn1");
                     }
                     onEntered:{
                         methodBtn1Tmp = methodBtn1.text
-                        console.log(methodBtn1Tmp)
                     }
                     onExited: {
                         methodBtn1.text = methodBtn1Tmp
-                        console.log(methodBtn1.text)
                     }
                     Keys.onPressed: {
-                        console.log(event.modifiers);
-                        console.log(event.nativeModifiers);
                         methodBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
                         methodBtn1Tmp = methodBtn1.text;
                     }
@@ -253,19 +248,14 @@ Rectangle {
                     onClicked: {
                         methodBtn2.forceActiveFocus();
                         methodBtn2.text = "请按下要设置的组合键"
-                        console.log("methodBtn2")
                     }
                     onEntered:{
                         methodBtn2Tmp = methodBtn2.text
-                        console.log(methodBtn2Tmp)
                     }
                     onExited: {
                         methodBtn2.text = methodBtn2Tmp
-                        console.log(methodBtn1.text)
                     }
                     Keys.onPressed: {
-                        console.log(event.modifiers);
-                        console.log(event.nativeModifiers);
                         methodBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
                         methodBtn2Tmp = methodBtn2.text
                     }
@@ -387,7 +377,6 @@ Rectangle {
                 model: skinModel
                 width: 405
                 onSelectedTextChanged: {
-//                    console.log(selectedText);
 //                    skinCombo.selectedText
                 }
             }
@@ -412,7 +401,6 @@ Rectangle {
                         width: 405
                         onSelectedTextChanged: {
                             hotkyScrollBetweenIndex = scrollBetweenCombo.selectedIndex;
-                            console.log(hotkyScrollBetweenIndex);
                         }
                     }
             }
@@ -441,7 +429,6 @@ Rectangle {
 //            Common.CheckBox{
 //                anchors.verticalCenter: cloudPinyin.verticalCenter
 //                titleName: ""
-//                onClicked: console.log("启用云拼音")
 //            }
 //        }
 }
@@ -457,8 +444,6 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            console.log("aaaaaaaaa->");
-            console.log(num);
             if (num == 0)
                 pageStack.push(homepage)
             else if (num == 3)
@@ -478,13 +463,11 @@ Rectangle {
             fcitxcfgwizard.send_fcitx_ok_warn();
         }
         onGobackBtnClicked: {
-            console.log("上一步");
             pageStack.push(fcitxConfigtoolFontpage);//静态添加页面
 
         }
         onFinishBtnClicked: {
             //接后台应用接口
-            console.log(" 应用");
             fcitxcfgwizard.set_trigger_key_first(methodBtn1.text,false);
             fcitxcfgwizard.set_trigger_key_second(methodBtn2.text,false);
             fcitxcfgwizard.set_prev_page_key_first(prevPageBtn1.text,false);

@@ -86,6 +86,13 @@ class Daemon(PolicyKitService):
     def get_system_daemon(self):
         return "SystemDaemon"
 
+    @dbus.service.signal(INTERFACE, signature='as')
+    def get_speed(self, speed):
+        pass
+
+    def get_network_speed(self, speed):
+        self.get_speed(speed)
+
     # -------------------------sound-------------------------
     # get sound themes
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -157,9 +164,10 @@ class Daemon(PolicyKitService):
         return self.ballconf.get_free_memory()
 
     # get network flow, return (up, down)
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def get_network_flow(self):
-        return self.ballconf.get_network_flow()
+        speed_network = self.ballconf.get_network_flow()
+        self.get_network_speed(speed_network)
 
     # clean up memory
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')

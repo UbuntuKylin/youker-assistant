@@ -48,7 +48,6 @@ extern QStringList speedlist;
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
-    tansmit = new Transmit();
     systemiface = new QDBusInterface("com.ubuntukylin_tools.daemon",
                                "/",
                                "com.ubuntukylin_tools.daemon",
@@ -59,6 +58,8 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
+    QObject::connect(systemiface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
+
     history_flag = true;
     onekey_args << "cache" << "history" << "cookies" << "unneed";
     onekey_args2 << "cache" << "history" << "cookies" << "unneed";
@@ -146,6 +147,10 @@ void SystemDispatcher::handler_clear_rubbish_second_onekey(QString msg)
      emit finishCleanWorkSecond(msg);
 }
 
+void SystemDispatcher::handler_network_speed(QStringList speed) {
+    emit finishGetNetworkSpeed(speed);
+}
+
 void SystemDispatcher::send_btn_msg(QString str)
 {
     systemiface->call("test_fastclear", str);
@@ -195,13 +200,9 @@ QString SystemDispatcher::get_free_memory_qt() {
     QDBusReply<QString> reply = systemiface->call("get_free_memory");
     return reply.value();
 }
-//QStringList SystemDispatcher::get_network_flow_qt() {
-//    QDBusReply<QStringList> reply = systemiface->call("get_network_flow");
-//    return reply.value();
-//}
 
 void SystemDispatcher::get_network_flow_qt() {
-    KThread *thread = new KThread(systemiface, tansmit, "get_network_flow");
+    KThread *thread = new KThread(systemiface, "get_network_flow");
     thread->start();
 }
 
@@ -250,27 +251,27 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
 void SystemDispatcher::clean_history_records_qt() {
 //    systemiface->call("clean_history_records");
 
-    KThread *thread = new KThread(systemiface, tansmit, "clean_history_records");
+    KThread *thread = new KThread(systemiface, "clean_history_records");
     thread->start();
 }
 
 void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
 //    systemiface->call("clean_cookies_records", strlist);
 
-    KThread *thread = new KThread(systemiface, tansmit, "clean_cookies_records", strlist);
+    KThread *thread = new KThread(systemiface, "clean_cookies_records", strlist);
     thread->start();
 }
 
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
 //    systemiface->call("clean_package_cruft", strlist);
 
-    KThread *thread = new KThread(systemiface, tansmit, "clean_package_cruft_qt", strlist);
+    KThread *thread = new KThread(systemiface, "clean_package_cruft_qt", strlist);
     thread->start();
 }
 void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
 //    systemiface->call("clean_file_cruft", strlist, str);
 
-    KThread *thread = new KThread(systemiface, tansmit, "clean_file_cruft_qt", strlist, str);
+    KThread *thread = new KThread(systemiface, "clean_file_cruft_qt", strlist, str);
     thread->start();
 }
 
@@ -284,13 +285,13 @@ QStringList SystemDispatcher::get_center_data() {
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
 //    systemiface->call("clean_by_main_one_key", strlist);
-    KThread *thread = new KThread(systemiface, tansmit, "clean_by_main_one_key", strlist);
+    KThread *thread = new KThread(systemiface, "clean_by_main_one_key", strlist);
     thread->start();
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
 //    systemiface->call("clean_by_second_one_key", strlist);
 
-    KThread *thread = new KThread(systemiface, tansmit, "clean_by_second_one_key", strlist);
+    KThread *thread = new KThread(systemiface, "clean_by_second_one_key", strlist);
     thread->start();
 }
 //------------------------------------------------------

@@ -103,12 +103,10 @@ Rectangle {
     Connections {
             target: fcitxcfgwizard
             onRefreshFcitxSig: {
-//                console.log("5555555555555555566666666666666");
                 refreshFcitxtool();
             }
         }
     Component.onCompleted: {
-//        console.log("component......................................");
         leftFcitxModel.clear();
         rightFcitxModel.clear();
         leftFcitxModelindex = 0;
@@ -229,7 +227,6 @@ Rectangle {
                     anchors.fill:parent
                     hoverEnabled: true
                     onClicked: {
-                        console.log(index)
                         upBtn.enabled = true
                       wrapper.ListView.view.currentIndex = index; //?
                         leftFcitxModelindex = wrapper.ListView.view.currentIndex;
@@ -375,7 +372,6 @@ Rectangle {
                         onClicked: {
 //                            okBtn.enabled = true;
 //                            okBtn.hoverimage = "list_item_active.png";
-                            console.log(index);
                             wrapper.ListView.view.currentIndex = index; //?
                             state = "lightsteelblueColor";
                             rightFcitxModelindex = index;
@@ -480,9 +476,6 @@ Rectangle {
             //hoverimage: "list_item_active.png"
             text:"+"
             onClicked: {
-                console.log("add......................")
-                console.log("okBtn........................")
-                console.log(rightFcitxModel.get(rightFcitxModelindex).itemTitle)
                 leftFcitxModel.append({"itemTitle":rightFcitxModel.get(rightFcitxModelindex).itemTitle,
                                        "uniqueName" :rightFcitxModel.get(rightFcitxModelindex).uniqueName,
                                        "langClde" :rightFcitxModel.get(rightFcitxModelindex).langClde})
@@ -502,8 +495,6 @@ Rectangle {
             height:20
             text: "－"
             onClicked: {
-                console.log(leftFcitxModelindex)
-                console.log(leftFcitxModel.get(leftFcitxModelindex).itemTitle)
                 rightFcitxModel.append({"itemTitle":leftFcitxModel.get(leftFcitxModelindex).itemTitle,
                                        "uniqueName" :leftFcitxModel.get(leftFcitxModelindex).uniqueName,
                                         "langClde" :leftFcitxModel.get(leftFcitxModelindex).langClde})

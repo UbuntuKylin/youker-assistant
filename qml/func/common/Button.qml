@@ -401,10 +401,6 @@ Item {
 //            anchors.fill: parent
 //            hoverEnabled: true
 //            onEntered:{
-////                console.log(btn.width)
-////                console.log(btnrec.width)
-////                console.log(mouseRegion.width)
-////                console.log(btnImg.width)
 //                btnImg.source = "../../img/toolWidget/menu_hover.png"
 //            }
 //            onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"

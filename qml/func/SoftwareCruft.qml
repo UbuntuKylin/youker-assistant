@@ -61,7 +61,7 @@ Item {
             sof_subModel.clear();
             var num = 0;
             for (var i=0; i< software_data.length; i++) {
-//                console.log(software_data[i]);//  /home/kobe/.cache/software-center/piston-helper<2_2>3026257
+            //  /home/kobe/.cache/software-center/piston-helper<2_2>3026257
                 var splitlist = software_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -115,18 +115,13 @@ Item {
     {
         target: systemdispatcher
 //         onFinishScanWork: {
-//             console.log("begin onFinishScanWork..............");
         //             if (sof_btn_flag == "software_scan") {
-        //                 console.log("****** software_scan Signal handler received  Start******");
-        ////                 console.log(msg);
         //                 sof_titlebar.work_result = msg;
         //                 sof_titlebar.state = "SoftwareWork";
-        ////                 console.log("******End******");
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (sof_btn_flag == "software_work") {
                 if (msg == "software") {
                     root.sof_work_result = msg;
@@ -225,7 +220,6 @@ Item {
                 }
                 else
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
-                console.log(root.sub_num)
             }
         }
 //        Common.Button {
@@ -257,7 +251,6 @@ Item {
 //                }
 //                else
 //                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
-//                console.log(root.sub_num)
 //            }
 //        }
     }
@@ -337,7 +330,6 @@ Item {
 //                    id: mouseRegion
 //                    anchors.fill: parent
 //                    onPressed: {
-////                        console.log(root.width)
 //                        expanded = !expanded
 //                    }
 //                }
@@ -384,7 +376,7 @@ Item {
 
 //                            btn_flag: root.sof_btn_flag
 
-//                            onClicked: {/*console.log(number)*/}
+//                            onClicked: {}
 //                        }
 
 //                    }//Repeater

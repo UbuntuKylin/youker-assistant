@@ -1,10 +1,8 @@
 #include <QDebug>
 #include "KThread.h"
-//QStringList speedlist;
-KThread::KThread(QDBusInterface *systemiface, Transmit *transmit , QString method, QStringList arglist, QString flag):QThread()
+KThread::KThread(QDBusInterface *systemiface, QString method, QStringList arglist, QString flag):QThread()
 {
     iface = systemiface;
-    trans = transmit;
     method_name = method;
     list = arglist;
     file_flag = flag;
@@ -16,8 +14,7 @@ KThread::~KThread()
 void KThread::run()
 {
     if(method_name == "get_network_flow") {
-        QDBusReply<QStringList> reply = iface->call(method_name);
-        trans->start_to_tansmit(reply.value());
+        iface->call(method_name);
     }
     else if(method_name == "clean_by_main_one_key") {
         iface->call("clean_by_main_one_key", list);

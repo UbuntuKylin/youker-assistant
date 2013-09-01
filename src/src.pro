@@ -54,8 +54,7 @@ HEADERS += youker-application.h \
     qtkeytransdata.h \
     fcitxwarndialog.h \
     handler.h \
-    KThread.h \
-    transmit.h
+    KThread.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -90,8 +89,7 @@ SOURCES += main.cpp \
     fcitxcfgwizard.cpp \
     qtkeytrans.cpp \
     fcitxwarndialog.cpp \
-    KThread.cpp \
-    transmit.cpp
+    KThread.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
