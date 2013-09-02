@@ -254,13 +254,18 @@ class FunctionOfClean():
         cache.commit(TextFetchProgress(), TextInstallProgress())
 
     def uninstall_the_package(self, cruftlist):
+        if not cruftlist:
+            return
         program = 'apt-get'
         mode = 'remove'
+        cache = common.get_cache_list()
         for cruft in cruftlist:
-            cmd = '%s %s -y %s' % (program, mode, cruft)
-            (status, output) = commands.getstatusoutput(cmd)
-            if status:
-                raise Exception(output)
+            pkg = cache[cruft]
+            if pkg.is_installed:
+                cmd = '%s %s -y %s' % (program, mode, cruft)
+                (status, output) = commands.getstatusoutput(cmd)
+                if status:
+                    raise Exception(output)
 
         
 
