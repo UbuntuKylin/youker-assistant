@@ -71,6 +71,9 @@ Rectangle {
             bottom:parent.bottom
             bottomMargin: 2
         }
+        Image {
+            source: "./img/skin/blister-small.png"
+        }
         Text {
             id: cpu
             text: sfloat.memory_ratio + "%";

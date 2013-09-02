@@ -13,26 +13,24 @@ Build-Depends: debhelper (>= 9),
                qtchooser,
 Standards-Version: 3.9.4
 Homepage: https://launchpad.net/youker-assistant
-Vcs-Bzr: https://code.launchpad.net/~ubuntukylin-members/youker-assistant/trunk
+Vcs-Browser: https://code.launchpad.net/~ubuntukylin-members/youker-assistant/trunk
+Vcs-Bzr: lp:youker-assistant
 
 Package: youker-assistant
 Architecture: any
-Depends: libphonon4,
-         phonon-backend-gstreamer,
-         liboil0.3,
-         python-psutil,
-         python,
+Depends: phonon-backend-gstreamer,
          python-dbus,
-         python-support (>= 0.90),
+         python-psutil,
          ${misc:Depends},
+         ${python:Depends},
          ${shlibs:Depends},
-Description: System Assistant Tool developed by UbuntuKylin Team
- Youker Assistant is a powerful GUI tool, for users who want to use
- and manage their systems easily. It would be welcome by most common
- or nonprofessional Linux users.
- .
- It offers a pleasant and modern experience, with intuitive graphical
- components. It was written using Qt 4.8, QML and Python. In this 0.1
- Release, it provides three features: show system information, customize
- the system UI, and clean the system garbage. More features are
- developing for its future release.
+Description: Integrated tool to aid in routine system maintenance tasks
+ Youker Assistant is a tool designed to help Ubuntu and UbuntuKylin 
+ desktop users manage and maintain many aspects of their working 
+ environment conveniently in a single application, providing a consistent
+ user experience.
+ . 
+ Features currently included:
+  * Detecting and displaying general system information
+  * Unity user interface customization
+  * System garbage cleaning

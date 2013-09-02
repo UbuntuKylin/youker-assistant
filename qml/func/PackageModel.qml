@@ -393,6 +393,7 @@ Item {
                 model: mainModel
                 delegate: Cleardelegate{
                     sub_num:root.pac_sub_num;sub_model: subModel ;btn_flag:root.btn_flag
+                    delegate_flag: false
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}
                 }

@@ -13,6 +13,7 @@ Item {
     property ListModel sub_model
     property int sub_num
 
+    property bool delegate_flag: false
     //子项字体
     property string subItemFontName: "Helvetica"
     property int subItemFontSize: 10
@@ -124,6 +125,7 @@ Item {
 
                 ListItem {
                     id: subListItem
+                    split_status: listViewDelegate.delegate_flag
                     width: subItemsRect.width
                     height: subItemsRect.itemHeight
 //                            text: subItemTitle

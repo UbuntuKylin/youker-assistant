@@ -66,7 +66,7 @@ Item {
             root.apt_sub_num -= num;
             apt_num=apt_sub_num
             if(apt_num!=0)
-                check_flag=true;
+                apt_check_flag=true;
             apt_mainModel.clear();
             apt_mainModel.append({"itemTitle": "包管理清理",
                              "picture": "../img/toolWidget/apt-min.png",
@@ -385,6 +385,7 @@ Item {
                 model: apt_mainModel
                 delegate: Cleardelegate{
                     sub_num: apt_sub_num;sub_model: apt_subModel;btn_flag: apt_btn_flag
+                    delegate_flag: true
                     onSubpressed: {root.apt_num=hMark}
                     onCheckchanged: {root.apt_check_flag=checkchange}
                   }

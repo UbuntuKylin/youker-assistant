@@ -401,6 +401,7 @@ Item {
                 model: sof_mainModel
                 delegate: Cleardelegate{
                     sub_num: sof_sub_num;sub_model: sof_subModel;btn_flag: sof_btn_flag
+                    delegate_flag: true
                     onSubpressed: {root.sof_num=hMark}
                     onCheckchanged: {root.sof_check_flag=checkchange}
                 }

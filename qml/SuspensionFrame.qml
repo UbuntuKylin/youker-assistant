@@ -279,6 +279,7 @@ Rectangle{
             topMargin: 6
         }
         Image {
+            id: ballImage
             source: "./img/skin/blister-big.png"
         }
         Text {
@@ -291,19 +292,24 @@ Rectangle{
             GradientStop{position: 1.0 - root.ratio * 0.01; color: (root.ratio == 100) ? "#ff2f00" : "transparent"}
             GradientStop{position: (root.ratio <= 0) ? 0.0 : (1.0 - root.ratio * 0.01 + 0.01);
                 color: {
-                    if(root.ratio > 60)
+                    if(root.ratio > 60) {
+                        ballImage.source = "./img/skin/blister-bigwarn.png";
                         "#ff2f00"
+                    }
                     else if (root.ratio == 0)
                         "transparent"
-                    else
+                    else {
+                        ballImage.source = "./img/skin/blister-big.png";
                         "#00b0ff"
+                    }
                 }
             }
             GradientStop{position: 1.0; color: {
                     if (root.ratio == 0)
                         "transparent"
-                    else if (root.ratio > 60)
+                    else if (root.ratio > 60) {
                         "#ff1900"
+                    }
                     else
                         "#006eff"
                 }
