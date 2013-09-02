@@ -4,7 +4,7 @@ import "./func/common" as Common
 Rectangle {
     id:sfloat
     width: 83
-    height: 35
+    height: 48
     color: "transparent"
     radius: 5
     property string up_speed: "0"
@@ -39,8 +39,8 @@ Rectangle {
     }
     Column{
         anchors{
-            top:parent.top
-            topMargin: 2
+            bottom:parent.bottom
+            bottomMargin: 6
             left: parent.left
             leftMargin: 22
         }
@@ -60,16 +60,16 @@ Rectangle {
     }
     Rectangle{
         id:ball
-        width: 30;height: 30
+        width: 31;height: 31
 //        border.color: "grey"
         radius:2
         z:1
         smooth:true
         anchors{
             right: parent.right
-            rightMargin: 2
-            top:parent.top
-            topMargin: 1
+            rightMargin: 1
+            bottom:parent.bottom
+            bottomMargin: 2
         }
         Text {
             id: cpu
@@ -78,26 +78,26 @@ Rectangle {
             anchors.centerIn: parent
         }
         gradient: Gradient{
-            GradientStop{position: 0.0; color: (sfloat.memory_ratio == 100) ? "red" : "transparent"}
+            GradientStop{position: 0.0; color: (sfloat.memory_ratio == 100) ? "#ff2400" : "transparent"}
 
-            GradientStop{position: 1.0 - sfloat.memory_ratio * 0.01; color: (sfloat.memory_ratio == 100) ? "red" : "transparent"}
+            GradientStop{position: 1.0 - sfloat.memory_ratio * 0.01; color: (sfloat.memory_ratio == 100) ? "#ff2400" : "transparent"}
             GradientStop{position: (sfloat.memory_ratio <= 0) ? 0.0 : (1.0 - sfloat.memory_ratio * 0.01 + 0.01);
                 color: {
                     if(sfloat.memory_ratio > 60)
-                        "red"
+                        "#ff2400"
                     else if (sfloat.memory_ratio == 0)
                         "transparent"
                     else
-                        "green"
+                        "#0084ff"
                 }
             }
             GradientStop{position: 1.0; color: {
                     if (sfloat.memory_ratio == 0)
                         "transparent"
                     else if (sfloat.memory_ratio == 100)
-                        "red"
+                        "#ff2400"
                     else
-                        "green"
+                        "#0084ff"
                 }
             }
         }
