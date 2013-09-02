@@ -318,7 +318,7 @@ Rectangle{
     }
 
     Timer {
-        interval: 5000; running: true; repeat: true
+        interval: 2000; running: true; repeat: true
         onTriggered: {
             updateData();
         }
