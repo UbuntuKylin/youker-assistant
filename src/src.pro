@@ -100,4 +100,6 @@ FORMS += \
     messagedialog.ui \
     restartdialog.ui \
     tray.ui \
-    fcitxwarndialog.ui
+    fcitxwarndialog.ui \
+    monitorball.ui \
+    suspensionframe.ui

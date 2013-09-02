@@ -21,7 +21,8 @@ import apt
 import apt_pkg
 import shutil
 import commands
-from apt.progress import InstallProgress, TextFetchProgress
+from apt.progress.base import InstallProgress
+from apt.progress.text import AcquireProgress
 
 
 import historyclean
@@ -251,7 +252,7 @@ class FunctionOfClean():
             pkg = cache[cruft]
             if pkg.is_installed:
                 pkg.mark_delete()
-        cache.commit(TextFetchProgress(), TextInstallProgress())
+        cache.commit(AcquireProgress(), TextInstallProgress())
 
     def uninstall_the_package(self, cruftlist):
         if not cruftlist:
