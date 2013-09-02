@@ -141,7 +141,7 @@ Rectangle{
                 }
 
                 Row {
-                    spacing: 25
+                    spacing: 36
                     anchors{
                         left: parent.left
                         leftMargin: 28
@@ -272,31 +272,34 @@ Rectangle{
             top:parent.top
             topMargin: 6
         }
+        Image {
+            source: "./img/skin/blister-big.png"
+        }
         Text {
             id: cpu
             text: root.ratio  + "%";
             anchors.centerIn: parent
         }
         gradient: Gradient{
-            GradientStop{position: 0.0; color: (root.ratio == 100) ? "red" : "transparent"}
-            GradientStop{position: 1.0 - root.ratio * 0.01; color: (root.ratio == 100) ? "red" : "transparent"}
+            GradientStop{position: 0.0; color: (root.ratio == 100) ? "#ff2f00" : "transparent"}
+            GradientStop{position: 1.0 - root.ratio * 0.01; color: (root.ratio == 100) ? "#ff2f00" : "transparent"}
             GradientStop{position: (root.ratio <= 0) ? 0.0 : (1.0 - root.ratio * 0.01 + 0.01);
                 color: {
                     if(root.ratio > 60)
-                        "red"
+                        "#ff2f00"
                     else if (root.ratio == 0)
                         "transparent"
                     else
-                        "green"
+                        "#00b0ff"
                 }
             }
             GradientStop{position: 1.0; color: {
                     if (root.ratio == 0)
                         "transparent"
                     else if (root.ratio == 100)
-                        "red"
+                        "#ff1900"
                     else
-                        "green"
+                        "#006eff"
                 }
             }
         }
