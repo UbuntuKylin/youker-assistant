@@ -17,7 +17,11 @@ void KThread::run()
         iface->call(method_name);
     }
     else if(method_name == "clean_by_main_one_key") {
+//        qDebug() << "bbbbbbbbbbb";
+//        qDebug() << KThread::currentThreadId();
         iface->call("clean_by_main_one_key", list);
+//        QThread::sleep(10);
+//        qDebug() << "ccccccccc";
     }
 
     else if(method_name == "clean_by_second_one_key") {

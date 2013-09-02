@@ -270,8 +270,12 @@ QStringList SystemDispatcher::get_center_data() {
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
 //    systemiface->call("clean_by_main_one_key", strlist);
+//    qDebug() << "1111111";
     KThread *thread = new KThread(systemiface, "clean_by_main_one_key", strlist);
+//    qDebug() << KThread::currentThreadId();
+//    qDebug() << "222222";
     thread->start();
+//    qDebug() << "3333333";
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
 //    systemiface->call("clean_by_second_one_key", strlist);

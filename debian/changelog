@@ -1,11 +1,12 @@
-youker-assistant (0.2.0-0ubuntu1) saucy; urgency=low
+youker-assistant (0.1.6-0ubuntu1) saucy; urgency=low
 
   * Modify Class SystemDispatcher and SessionDispatcher.
   * Add watch file into debian folder.
   * Resolve status of onekey button(LP: #1216236 ).
   * Add monitorball code into systemdbus daemon.
+  * Optimize the status button.
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Sat, 24 Aug 2013 14:47:02 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 02 Sep 2013 17:17:45 +0800
 
 youker-assistant (0.1.5-0ubuntu1) saucy; urgency=low
 

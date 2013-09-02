@@ -94,7 +94,7 @@ Rectangle {
             GradientStop{position: 1.0; color: {
                     if (sfloat.memory_ratio == 0)
                         "transparent"
-                    else if (sfloat.memory_ratio == 100)
+                    else if (sfloat.memory_ratio > 60)
                         "#ff2400"
                     else
                         "#0084ff"

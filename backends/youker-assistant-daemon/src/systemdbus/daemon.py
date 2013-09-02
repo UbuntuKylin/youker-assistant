@@ -251,6 +251,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_main_msg('ce')
             else:
                 self.clean_complete_main_msg('c')
+        self.clean_complete_main_msg('o')
 
     # the function of clean cruft by second one key
     ###input-['history', 'cach....] output-''
@@ -301,6 +302,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_second_msg('ce')
             else:
                 self.clean_complete_second_msg('c')
+        self.clean_complete_second_msg('o')
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_history_records(self, sender=None):

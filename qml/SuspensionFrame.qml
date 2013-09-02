@@ -16,6 +16,9 @@ Rectangle{
     property string memory_size: "0"
     property double ratio: 0.0
 
+    SystemDispatcher {
+        id: systemdispatcher
+    }
     signal tansmitData(double cpu, string up, string down);
 
     function updateData() {
@@ -25,6 +28,17 @@ Rectangle{
         root.ratio = root.used_memory /systemdispatcher.get_total_memory_qt();
         root.ratio = Math.round(root.ratio*100)/100 * 100
         systemdispatcher.get_network_flow_qt();
+    }
+    function show_large_widget() {
+        if (root.visible == true)
+            root.visible = false;
+        else if (root.visible == false) {
+            root.visible = true;
+        }
+    }
+    function show_large_frame() {
+        if (root.visible == true)
+            root.visible = false;
     }
 
     Connections
@@ -39,18 +53,6 @@ Rectangle{
 
     Component.onCompleted: {
         updateData();
-    }
-
-    function show_large_widget() {
-        if (root.visible == true)
-            root.visible = false;
-        else if (root.visible == false) {
-            root.visible = true;
-        }
-    }
-    function show_large_frame() {
-        if (root.visible == true)
-            root.visible = false;
     }
 
     Image {
@@ -68,9 +70,7 @@ Rectangle{
         }
         color: "transparent"
     //    radius:5
-        SystemDispatcher {
-            id: systemdispatcher
-        }
+
         MouseArea {
             anchors.fill: parent
             property variant clickPos: "1,1"
@@ -140,63 +140,6 @@ Rectangle{
                     }
                 }
 
-                Row {
-                    spacing: 36
-                    anchors{
-                        left: parent.left
-                        leftMargin: 28
-                        top:parent.top
-                        topMargin: 122
-                    }
-                    Text {
-                        id:download
-                        text: root.down_speed + "K/s"
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                    Text {
-                        id:upload
-                        text: root.up_speed + "K/s"
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                    Rectangle{width: 8;height: 20;color: "transparent"}
-                    Text{
-                        id:detail
-                        text:"详情"
-                        font.bold:true
-                        font.pointSize: 9
-                        color: "grey"
-                        Image {
-                            id: btnImg
-                            anchors.fill: parent
-                            source: ""
-                        }
-                        MouseArea{
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onEntered: btnImg.source = "./img/toolWidget/menu_hover.png"
-                            onPressed: btnImg.source = "./img/toolWidget/menu_press.png"
-                            //要判断松开是鼠标位置
-                            onReleased: btnImg.source = "./img/toolWidget/menu_hover.png"
-                            onExited: btnImg.source = ""
-                            onClicked: {
-                                if(detail_flag==false){
-                                    page.height=page.height+90;
-                                    detail_flag=true;
-                                    detailed.opacity=1
-                                }
-                                else{
-                                    page.height=page.height-90;
-                                    detail_flag=false;
-                                    detailed.opacity=0
-                                }
-                            }
-                        }
-                    }
-
-                }
-
             }
             Rectangle{
                 id:detailed
@@ -261,6 +204,69 @@ Rectangle{
         }
 
     }
+
+
+    //speed row
+    Text {
+        id:download
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top:parent.top
+            topMargin: 152
+        }
+        text: root.down_speed + "K/s"
+        font.pixelSize: 12
+        color: "#7a7a7a"
+    }
+    Text {
+        id:upload
+        anchors{
+            left: parent.left
+            leftMargin: 125
+            top:parent.top
+            topMargin: 152
+        }
+        text: root.up_speed + "K/s"
+        font.pixelSize: 12
+        color: "#7a7a7a"
+    }
+    Rectangle{width: 8;height: 20;color: "transparent"}
+    Text{
+        id:detail
+        anchors{
+            right: parent.right
+            rightMargin: 20
+            top:parent.top
+            topMargin: 152
+        }
+        text:"详情"
+        font.bold:true
+        font.pointSize: 9
+        color: "grey"
+        Image {
+            id: btnImg
+            anchors.fill: parent
+            source: ""
+        }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                if(detail_flag==false){
+                    page.height=page.height+90;
+                    detail_flag=true;
+                    detailed.opacity=1
+                }
+                else{
+                    page.height=page.height-90;
+                    detail_flag=false;
+                    detailed.opacity=0
+                }
+            }
+        }
+    }
+
+
     Rectangle{
         id:ball
         width: 66;height: 66
@@ -296,7 +302,7 @@ Rectangle{
             GradientStop{position: 1.0; color: {
                     if (root.ratio == 0)
                         "transparent"
-                    else if (root.ratio == 100)
+                    else if (root.ratio > 60)
                         "#ff1900"
                     else
                         "#006eff"
