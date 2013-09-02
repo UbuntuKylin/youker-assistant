@@ -250,13 +250,12 @@ void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
 //    systemiface->call("clean_package_cruft", strlist);
 
-    KThread *thread = new KThread(systemiface, "clean_package_cruft_qt", strlist);
+    KThread *thread = new KThread(systemiface, "clean_package_cruft", strlist);
     thread->start();
 }
 void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
 //    systemiface->call("clean_file_cruft", strlist, str);
-
-    KThread *thread = new KThread(systemiface, "clean_file_cruft_qt", strlist, str);
+    KThread *thread = new KThread(systemiface, "clean_file_cruft", strlist, str);
     thread->start();
 }
 

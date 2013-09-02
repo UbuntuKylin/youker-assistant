@@ -74,7 +74,7 @@ Item {
             root.sof_sub_num -= num;
             sof_num=sof_sub_num
             if(sof_num!=0)
-                check_flag=true;
+                sof_check_flag=true;
             sof_mainModel.clear();
             sof_mainModel.append({"itemTitle": "软件中心缓存清理",
                              "picture": "../img/toolWidget/software-min.png",
@@ -215,7 +215,6 @@ Item {
                  }
                  else if (sof_btn_flag == "software_work") {
                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
-//                     sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
                  }
                 }
                 else
