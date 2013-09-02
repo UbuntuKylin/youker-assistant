@@ -44,11 +44,9 @@ log = logging.getLogger('Daemon')
 
 INTERFACE = 'com.ubuntukylin_tools.daemon'
 PATH = '/'
-TIMEFORMAT = "%H:%M:%S"
 
 class Daemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
-        #self.sysconf = Sysinfo()
         self.otherconf = Others()
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
@@ -73,14 +71,6 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def set_user_homedir(self, homedir):
         cleaner.get_user_homedir(homedir)
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    #def get_user_cache(self):
-    #    return "KOBE"
-
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='s', sender_keyword='sender')
-    #def set_source_enable(self, sender=None):
-    #    self._check_permission(sender, UK_ACTION_YOUKER)
-    #    return "LIXIANG"
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
@@ -361,20 +351,8 @@ class Daemon(PolicyKitService):
         if not status:
             return
         try:
-            self.daemonclean.clean_the_package(cruftlist)
-        except Exception, e:
-            self.clean_error_msg('package')
-        else:
-            self.clean_complete_msg('package')
-
-    # the function of uninstall packages
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def uninstall_package_cruft(self, cruftlist, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            return
-        try:
             self.daemonclean.uninstall_the_package(cruftlist)
+            #self.daemonclean.clean_the_package(cruftlist)
         except Exception, e:
             self.clean_error_msg('package')
         else:

@@ -42,15 +42,10 @@ from beautify.theme import Theme
 from beautify.system import System
 from beautify.sound import Sound
 from sysinfo import Sysinfo
-#from beautify.others import Others
-
 log = logging.getLogger('SessionDaemon')
 
 INTERFACE = "com.ubuntukylin.IhuSession"
 PATH = "/"
-#PATH = "/com/ubuntukylin_assistant/daemon"
-TIMEFORMAT = "%H:%M:%S"
-
 UK_ACTION_YOUKER = 'com.ubuntukylin_tools.daemon.youker'
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
@@ -60,8 +55,6 @@ class SessionDaemon(dbus.service.Object):
         self.themeconf = Theme()
         self.systemconf = System()
         self.soundconf = Sound()
-        #self.othersconf = Others()
-
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -72,18 +65,6 @@ class SessionDaemon(dbus.service.Object):
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
-
-#---------------------------------------------------------------------
-    def clean_complete_msg(self, para):
-        self.clean_complete(para)
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_complete(self, msg):
-        pass
-    def clean_error_msg(self, para):
-        self.clean_error(para)
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_error(self, msg):
-        pass
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_history_records(self):
@@ -137,36 +118,13 @@ class SessionDaemon(dbus.service.Object):
         self.scan_complete_msg('softwarecenter')
         return tmp_dic['softwarecenter'].split('<1_1>')
 
-    # a dbus method which means scan complete
+    # a dbus method which means scan complete by kobe
     @dbus.service.signal(INTERFACE, signature='s')
     def scan_complete(self, msg):
         pass
 
     def scan_complete_msg(self, para):
         self.scan_complete(para)
-
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_error_main(self, msg):
-        pass
-    def clean_error_main_msg(self, para):
-        self.clean_error_main(para)
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_complete_main(self, msg):
-        pass
-    def clean_complete_main_msg(self, para):
-        self.clean_complete_main(para)
-
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_complete_second(self, msg):
-        pass
-    def clean_complete_second_msg(self, para):
-        self.clean_complete_second(para)
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_error_second(self, msg):
-        pass
-    def clean_error_second_msg(self, para):
-        self.clean_error_second(para)
-#---------------------------------------------------------------------
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def exit(self):
@@ -176,50 +134,6 @@ class SessionDaemon(dbus.service.Object):
     def get_session_daemon(self):
         return "SessionDaemon"
 
-    # provide a dbus signal template by kobe
-    @dbus.service.signal(INTERFACE, signature='s')
-    def test1(self, contents):
-        pass
-
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clear_rubbish(self, msg):
-        #print msg
-        pass
-
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clear_browser(self, msg):
-        #print msg
-        pass
-
-    # provide a dbus method template by kobe
-    @dbus.service.method(INTERFACE,
-                        in_signature='ii', out_signature='i')
-    def test_add(self, num1, num2):
-        print("receive:", num1, num2)
-        return num1 + num2
-
-    @dbus.service.method(INTERFACE,
-                        in_signature='ii', out_signature='i')
-    def test_del(self, num1, num2):
-        print("receive:", num1, num2)
-        return num1 - num2
-
-    @dbus.service.method(INTERFACE, in_signature='s')
-    def test_fastclear(self, bb):
-        print bb
-        self.clear_msg(bb)
-        #self.clear_rubbish(bb)
-
-    def construct_msg(self):
-        timeStamp = time.strftime(TIMEFORMAT)
-        self.clear_rubbish(timeStamp)
-        #self.msg_signal(["1111",timeStamp,"This is the content","1 2 3"])
-        return True
-    def clear_msg(self, bb):
-        self.clear_rubbish(bb)
-
-    def clear_browser_msg(self):
-        self.clear_browser()
     # -------------------------system message-------------------------
     @dbus.service.signal(INTERFACE, signature='s')
     def pc_msg(self, msg):
@@ -227,7 +141,7 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_system_message(self):
-        self.test_signal('lixinag')
+        self.test_signal('Kobe Lee')
         return self.sysconf.get_sys_msg()
 
     def test_signal(self, msg):
@@ -246,7 +160,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def get_show_desktop_icons(self):
         return self.desktopconf.get_show_desktop_icons()
-
 
     # show home folder
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
@@ -531,11 +444,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def get_login_music_enable(self):
         return self.soundconf.get_login_music_enable()
-
-    # get sound themes
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    #def get_sound_themes(self):
-    #    return self.soundconf.get_sound_themes()
 
     # get current sound theme
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')

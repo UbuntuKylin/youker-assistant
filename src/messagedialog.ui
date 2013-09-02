@@ -23,10 +23,11 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/ok.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>确定</string>
    </property>
   </widget>
   <widget class="QLabel" name="btn_close">
