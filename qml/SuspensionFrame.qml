@@ -273,16 +273,13 @@ Rectangle{
             topMargin: 6
         }
         Image {
-            source: "./img/skin/accelerate-bg-1.png"
+            source: "./img/skin/blister-big.png"
         }
         Text {
             id: cpu
             text: root.ratio  + "%";
             anchors.centerIn: parent
         }
-//        Image {
-//            source: "./img/skin/accelerate-bg-1.png"
-//        }
         gradient: Gradient{
             GradientStop{position: 0.0; color: (root.ratio == 100) ? "#ff2f00" : "transparent"}
             GradientStop{position: 1.0 - root.ratio * 0.01; color: (root.ratio == 100) ? "#ff2f00" : "transparent"}
