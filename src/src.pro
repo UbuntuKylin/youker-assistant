@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = youker-assistant
-QT += core gui phonon declarative dbus thread
+QT += core gui phonon declarative dbus
 
 DEPENDPATH += $$PWD/
 INCLUDEPATH += $$PWD/
