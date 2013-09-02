@@ -152,12 +152,6 @@ public:
     /*-------------------one key scan-------------------*/
     Q_INVOKABLE QMap<QString, QVariant> scan_by_one_key_qt();
 
-
-
-    Q_INVOKABLE QStringList getStringList();
-    Q_INVOKABLE QString getStringUp();
-    Q_INVOKABLE QString getStringDown();
-
 signals:
     void addBootImage();
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork

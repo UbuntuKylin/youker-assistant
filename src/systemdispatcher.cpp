@@ -43,8 +43,6 @@
 extern QString passwd;
 extern QString music_path;
 
-extern QStringList speedlist;
-
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -63,19 +61,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     history_flag = true;
     onekey_args << "cache" << "history" << "cookies" << "unneed";
     onekey_args2 << "cache" << "history" << "cookies" << "unneed";
-}
-
-QStringList SystemDispatcher::getStringList()
-{
-    return speedlist;
-}
-QString SystemDispatcher::getStringUp()
-{
-    return speedlist[0];
-}
-QString SystemDispatcher::getStringDown()
-{
-    return speedlist[1];
 }
 
 void SystemDispatcher::handler_clear_rubbish_second_error(QString msg)
