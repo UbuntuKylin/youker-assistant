@@ -45,7 +45,7 @@ from sysinfo import Sysinfo
 log = logging.getLogger('SessionDaemon')
 
 INTERFACE = "com.ubuntukylin.IhuSession"
-PATH = "/"
+UKPATH = "/"
 UK_ACTION_YOUKER = 'com.ubuntukylin_tools.daemon.youker'
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
@@ -63,7 +63,7 @@ class SessionDaemon(dbus.service.Object):
         self.daemononekey = cleaner.OneKeyClean()
 
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
-        dbus.service.Object.__init__(self, bus_name, PATH)
+        dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')

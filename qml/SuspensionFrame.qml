@@ -188,7 +188,7 @@ Rectangle{
                     }
                     Row {
                         Text{
-                            text:"可释放内存："
+                            text:"空闲内存："
                             font.bold: true
                             font.pixelSize: 12
                             color: "#383838"

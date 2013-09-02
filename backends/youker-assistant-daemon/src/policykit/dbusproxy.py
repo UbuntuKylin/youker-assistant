@@ -23,7 +23,7 @@ import logging
 log = logging.getLogger("DbusProxy")
 
 INTERFACE = 'com.ubuntukylin_tools.daemon'
-PATH = '/'
+UKPATH = '/'
 SHOWED = False
 
 def show_message(*args):
@@ -39,7 +39,7 @@ def nothing(*args):
 class DbusProxy:
     try:
         __system_bus = dbus.SystemBus()
-        __object = __system_bus.get_object(INTERFACE, PATH)
+        __object = __system_bus.get_object(INTERFACE, UKPATH)
     except Exception, e:
         #log.error(e)
         __object = None
@@ -64,7 +64,7 @@ class AccessDeniedException(dbus.DBusException):
 
     _dbus_error_name = 'com.ubuntukylin_tools.daemon.AccessDeniedException'
 
-def init_dbus(dbus_iface=INTERFACE, dbus_path=PATH):
+def init_dbus(dbus_iface=INTERFACE, dbus_path=UKPATH):
     '''init dbus'''
     proxy = DbusProxy()
     return proxy

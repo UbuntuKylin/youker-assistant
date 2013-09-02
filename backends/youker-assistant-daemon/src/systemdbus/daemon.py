@@ -43,7 +43,7 @@ from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('Daemon')
 
 INTERFACE = 'com.ubuntukylin_tools.daemon'
-PATH = '/'
+UKPATH = '/'
 
 class Daemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
@@ -57,7 +57,7 @@ class Daemon(PolicyKitService):
         self.daemononekey = cleaner.OneKeyClean()
         self.daemoncache = cleaner.CleanTheCache()
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
-        PolicyKitService.__init__(self, bus_name, PATH)
+        PolicyKitService.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
