@@ -157,6 +157,11 @@ class Daemon(PolicyKitService):
     def get_free_memory(self):
         return self.ballconf.get_free_memory()
 
+    # get network flow total, return (up, down)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_network_flow_total(self):
+        return self.ballconf.get_network_flow_total()
+
     # get network flow, return (up, down)
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def get_network_flow(self):
