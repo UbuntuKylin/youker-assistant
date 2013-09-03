@@ -41,7 +41,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 private slots:
     void on_descBtn_clicked();
-    void get_sysc_data(QStringList speed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
+    void get_sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
     void on_fastBtn_clicked();
 };
 

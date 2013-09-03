@@ -191,6 +191,11 @@ void SystemDispatcher::get_network_flow_qt() {
     thread->start();
 }
 
+QStringList SystemDispatcher::get_network_flow_total_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("get_network_flow_total");
+    return reply.value();
+}
+
 void SystemDispatcher::cleanup_memory_qt() {
     systemiface->call("cleanup_memory");
 }

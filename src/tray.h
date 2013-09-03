@@ -59,6 +59,7 @@ private:
     double total_size;
     QString ratio;
     QStringList speed;
+    QStringList total_speed;
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
@@ -73,7 +74,7 @@ public slots:
     void start_to_accelerate();
 signals:
     void showFloat();
-    void sysc_data(QStringList speed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
+    void sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
 };
 
 #endif

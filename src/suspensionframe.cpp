@@ -23,6 +23,9 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowOpacity(1.0);
+    ui->msglabel->setText("试试鼠标左键双击屏幕右上角监控球...");
+    ui->title1->setText("电脑运行缓慢");
+    ui->title2->setText("建议一键加速");
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
@@ -34,9 +37,9 @@ SuspensionFrame::~SuspensionFrame()
     delete ui;
 }
 
-void SuspensionFrame::get_sysc_data(QStringList speed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio) {
-    ui->uplabel->setText(speed[0] + "K/s");
-    ui->downlabel->setText(speed[1] + "K/s");
+void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio) {
+    ui->uplabel->setText(upspeed + "K/s");
+    ui->downlabel->setText(downspeed + "K/s");
     ui->ratiolabel->setText(ratio + "%");
 //    qDebug() << "2222222222->";
 //    qDebug() << cpu_ratio;
@@ -59,7 +62,7 @@ void SuspensionFrame::mouseMoveEvent(QMouseEvent *event)
     if (event->buttons() & Qt::LeftButton )
     {
         move(event->globalPos() - dragPos);
-//        setWindowOpacity(0.5);
+        setWindowOpacity(0.5);
     }
     event->accept();
 
@@ -69,7 +72,7 @@ void SuspensionFrame::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
-//        setWindowOpacity(1);
+        setWindowOpacity(1);
     }
     event->accept();
 }

@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE QString get_used_memory_qt();
     Q_INVOKABLE QString get_free_memory_qt();
 //    Q_INVOKABLE QStringList get_network_flow_qt();
+    Q_INVOKABLE QStringList get_network_flow_total_qt();
     Q_INVOKABLE void get_network_flow_qt();
     Q_INVOKABLE void cleanup_memory_qt();
     //-----------------------------------------------

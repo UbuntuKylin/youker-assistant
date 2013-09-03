@@ -52,32 +52,6 @@
     <string>详情</string>
    </property>
   </widget>
-  <widget class="QLabel" name="title1">
-   <property name="geometry">
-    <rect>
-     <x>76</x>
-     <y>61</y>
-     <width>181</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;电脑运行缓慢&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="title2">
-   <property name="geometry">
-    <rect>
-     <x>76</x>
-     <y>84</y>
-     <width>181</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;建议一键加速&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="fastBtn">
    <property name="geometry">
     <rect>
@@ -93,19 +67,6 @@ font: 10pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
     <string>一键加速</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="msglabel">
-   <property name="geometry">
-    <rect>
-     <x>96</x>
-     <y>37</y>
-     <width>161</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;试试双击屏幕右上角的监控球&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="ratiolabel">
@@ -140,16 +101,66 @@ font: 10pt &quot;文泉驿微米黑&quot;;</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
+   <zorder>msglabel</zorder>
+   <zorder>msglabel</zorder>
+  </widget>
+  <widget class="QLabel" name="msglabel">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>40</y>
+     <width>181</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 8pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;试试鼠标左键双击屏幕右上角监控球...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="title1">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>65</y>
+     <width>171</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;电脑运行缓慢&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="title2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>87</y>
+     <width>171</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;建议一键加速&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
   </widget>
   <zorder>frame</zorder>
   <zorder>downlabel</zorder>
   <zorder>uplabel</zorder>
   <zorder>descBtn</zorder>
+  <zorder>fastBtn</zorder>
+  <zorder>ratiolabel</zorder>
+  <zorder>msglabel</zorder>
   <zorder>title1</zorder>
   <zorder>title2</zorder>
-  <zorder>fastBtn</zorder>
-  <zorder>msglabel</zorder>
-  <zorder>ratiolabel</zorder>
  </widget>
  <resources/>
  <connections/>

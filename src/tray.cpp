@@ -37,12 +37,13 @@ Tray::Tray(QWidget *parent)
     ratio = QString::number(size, 'f', 2);
     double trans = ratio.toDouble() * 100;
     ratio = QString::number(trans,'f',0);
-    dispather->get_network_flow_qt();
+//    dispather->get_network_flow_qt();
+    total_speed = dispather->get_network_flow_total_qt();
 
     this->setWindowOpacity(1.0);
     icon = QIcon(":/pixmap/image/icon.png");
     this->createTray();
-    connect(dispather, SIGNAL(finishGetNetworkSpeed(QStringList)), this, SLOT(obtain_network_speed(QStringList)));
+//    connect(dispather, SIGNAL(finishGetNetworkSpeed(QStringList)), this, SLOT(obtain_network_speed(QStringList)));
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
@@ -51,13 +52,14 @@ Tray::Tray(QWidget *parent)
 
     frame = new SuspensionFrame;
     frame->hide();
-    connect(this, SIGNAL(sysc_data(QStringList,QString,int,QString, QString)), frame, SLOT(get_sysc_data(QStringList,QString,int,QString, QString)));
+    connect(this, SIGNAL(sysc_data(QString, QString,QString,int,QString, QString)), frame, SLOT(get_sysc_data(QString,QString,QString,int,QString, QString)));
+//    connect(this, SIGNAL(sysc_data(QStringList,QString,int,QString, QString)), frame, SLOT(get_sysc_data(QStringList,QString,int,QString, QString)));
     connect(frame, SIGNAL(accelerate_memory()), this, SLOT(start_to_accelerate()));
 
     QTimer *timer = new QTimer(this);
-//    timer->setInterval(30000);
+    timer->setInterval(3000);
     connect(timer,SIGNAL(timeout()),this,SLOT(updateData()));
-    timer->start(3000);
+    timer->start();
 }
 
 Tray::~Tray()
@@ -67,15 +69,28 @@ Tray::~Tray()
 }
 
 void Tray::obtain_network_speed(QStringList speed_value) {
-    speed = speed_value;
-    this->uplabel->setText(speed[0] + "K/s");
-    this->downlabel->setText(speed[1] + "K/s");
-    this->ratiolabel->setText(ratio + "%");
-    emit sysc_data(speed, ratio, used_memory, free_memory, cpu_value);
+//    speed = speed_value;
+//    this->uplabel->setText(speed[0] + "K/s");
+//    this->downlabel->setText(speed[1] + "K/s");
+//    this->ratiolabel->setText(ratio + "%");
+////    emit sysc_data(speed, ratio, used_memory, free_memory, cpu_value);
 }
 
 void Tray::updateData() {
-    dispather->get_network_flow_qt();
+//    dispather->get_network_flow_qt();
+    QStringList current_speed = dispather->get_network_flow_total_qt();
+    double up_before = total_speed[0].toDouble();
+    double down_before = total_speed[1].toDouble();
+    double up_now = current_speed[0].toDouble();
+    double down_now = current_speed[1].toDouble();
+    total_speed = current_speed;
+    double up_final = up_now - up_before;
+    double down_final = down_now - down_before;
+
+    up_speed = QString::number(up_final,'f',0);
+    down_speed = QString::number(down_final,'f',0);
+
+
     double trans_cpu = dispather->get_cpu_percent_qt();
     cpu_value = QString::number(trans_cpu, 'f', 0);
     used_memory = dispather->get_used_memory_qt().toDouble();
@@ -84,6 +99,12 @@ void Tray::updateData() {
     ratio = QString::number(size, 'f', 2);
     double trans = ratio.toDouble() * 100;
     ratio = QString::number(trans,'f',0);
+
+    emit sysc_data(up_speed, down_speed, ratio, used_memory, free_memory, cpu_value);
+
+    this->uplabel->setText(up_speed + "K/s");
+    this->downlabel->setText(down_speed + "K/s");
+    this->ratiolabel->setText(ratio + "%");
 }
 
 void Tray::start_to_accelerate() {
@@ -156,7 +177,7 @@ void Tray::mouseMoveEvent(QMouseEvent *event)
     if (event->buttons() & Qt::LeftButton )
     {
         move(event->globalPos() - dragPos);
-//        setWindowOpacity(0.5);
+        setWindowOpacity(0.5);
     }
     event->accept();
 
@@ -167,7 +188,7 @@ void Tray::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
-//        setWindowOpacity(1);
+        setWindowOpacity(1);
     }
     event->accept();
 }
