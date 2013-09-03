@@ -162,9 +162,13 @@ class ManageTheLarge():
     def __init__(self):
         self.objl = diskanalyse.DiskAnalyse()
 
+    def get_user_size(self, size):
+        tmpsize = size
+        self.filesize = tmpsize * 1024 * 1024
+
     def get_scan_result(self, path):
         self.path = path
-        self.objl.hundred_large_files(self.path)
+        self.objl.hundred_large_files(self.path, self.filesize)
         self.objl.type_of_file()
         largefile_dic = self.objl.adjust_the_list()
         return largefile_dic
