@@ -25,7 +25,6 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
-
 class SystemDispatcher : public QObject
 {
     Q_OBJECT
@@ -77,7 +76,8 @@ public:
     Q_INVOKABLE QString get_total_memory_qt();
     Q_INVOKABLE QString get_used_memory_qt();
     Q_INVOKABLE QString get_free_memory_qt();
-    Q_INVOKABLE QStringList get_network_flow_qt();
+//    Q_INVOKABLE QStringList get_network_flow_qt();
+    Q_INVOKABLE void get_network_flow_qt();
     Q_INVOKABLE void cleanup_memory_qt();
     //-----------------------------------------------
 
@@ -97,7 +97,6 @@ public:
 
     QMap<QString, QVariant> apt_center;
     QDBusInterface *systemiface;
-    QDBusInterface *passwordiface;
 
 //-------------
     bool history_flag;
@@ -160,6 +159,7 @@ signals:
     void finishCleanWorkMainError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
     void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
     void finishCleanWorkSecondError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
+    void finishGetNetworkSpeed(QStringList speed);
 
 public slots:
     void handler_clear_rubbish(QString msg);
@@ -167,6 +167,7 @@ public slots:
     void handler_clear_rubbish_main_error(QString msg);
     void handler_clear_rubbish_second_onekey(QString msg);
     void handler_clear_rubbish_second_error(QString msg);
+    void handler_network_speed(QStringList speed);
 };
 
 #endif // SYSTEMDISPATCHER_H

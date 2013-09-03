@@ -325,7 +325,7 @@ Rectangle {
 
 //                        z:soundz
                         Rectangle{
-                            width: play.width;height: play.height
+                            width: play.width;height: play.height; color: "transparent"
                             Image {id:play;source: "../../img/icons/play.png"}
                             MouseArea{
                                 anchors.fill:parent
@@ -346,7 +346,7 @@ Rectangle {
                             }
                         }
                         Rectangle{
-                            width: next.width;height: next.height
+                            width: next.width;height: next.height; color: "transparent"
                             Image {id:next;source: "../../img/icons/folder.png"}
                             MouseArea{
                                 anchors.fill:parent
@@ -360,7 +360,7 @@ Rectangle {
                             }
                         }
                         Rectangle{
-                            width: revoke.width;height: revoke.height
+                            width: revoke.width;height: revoke.height; color: "transparent"
                             Image {id:revoke;source: "../../img/icons/revoke.png"}
                             MouseArea{
                                 anchors.fill:parent

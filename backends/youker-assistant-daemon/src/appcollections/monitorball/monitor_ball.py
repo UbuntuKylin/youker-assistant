@@ -16,7 +16,6 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-import sys, os
 import psutil
 import time
 import subprocess
@@ -55,13 +54,34 @@ class MonitorBall:
 		value = mem.free
 		return self.bytes2human(value, symbol)
 
+	# get network total flow, return (up, down)
+	def get_network_flow_total(self, symbol = "k"):
+		network = psutil.network_io_counters()
+		sent = network.bytes_sent
+		recv = network.bytes_recv
+		
+		if(symbol == "b"):
+			return (sent, recv)
+		elif(symbol == "k"):
+			k_up = float(sent) / 1024
+			ups = str(k_up)
+			ups = ups[0:ups.find(".") + 2]
+			
+			k_down = float(recv) / 1024
+			downs = str(k_down)
+			downs = downs[0:downs.find(".") + 2]
+			
+			return (ups, downs)
+		else:
+			return None
+
 	# get network flow, return (up, down)
 	def get_network_flow(self, symbol = "k"):
 		network_before = psutil.network_io_counters()
 		sent_before = network_before.bytes_sent
 		recv_before = network_before.bytes_recv
- 		time.sleep(1)
- 		network_after = psutil.network_io_counters()
+		time.sleep(1)
+		network_after = psutil.network_io_counters()
 		sent_after = network_after.bytes_sent
 		recv_after = network_after.bytes_recv
 		
@@ -73,11 +93,11 @@ class MonitorBall:
 		elif(symbol == "k"):
 			k_up = float(byte_up) / 1024
 			ups = str(k_up)
- 			ups = ups[0:ups.find(".") + 2]
- 			
+			ups = ups[0:ups.find(".") + 2]
+			
 			k_down = float(byte_down) / 1024
 			downs = str(k_down)
- 			downs = downs[0:downs.find(".") + 2]
+			downs = downs[0:downs.find(".") + 2]
 			
 			return (ups, downs)
 		else:
@@ -92,14 +112,16 @@ class MonitorBall:
 		elif symbol == "g":
 			valuef = float(value) / 1024 / 1024 / 1024
 			values = str(valuef)
- 			value = values[0:values.find(".") + 2]
+			value = values[0:values.find(".") + 2]
 		else:
 			pass
 		return str(value)
 
 if __name__ == "__main__":
 	mmm = MonitorBall()
-	print mmm.get_network_flow()
+# 	print mmm.get_network_flow()
+	print mmm.get_network_flow_total()
+	print mmm.get_network_flow_total("b")
 # 	mmm.cleanup_memory()
 # 	print mmm.get_cpu_percent()
 # 	print mmm.get_cpu_percent(True)

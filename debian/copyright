@@ -12,13 +12,11 @@ Copyright: Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
            Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
 License: GPL-3
 
-Files: src/q*
+Files: qml/func/common/Dial.qml qml/func/common/private/Slider.qml qml/func/common/RangeModel.js qml/func/common/RangeModel.qml src/qrangemodel.cpp src/qcomboboxqmladapter.cpp src/qtmenu.cpp src/qdeclarativefolderlistmodel.h src/qtooltiparea.cpp src/qtsplitterbase.h src/qtmenu.h src/qcursorarea.h src/qwindowitem.h src/qrangemodel.h src/qtoplevelwindow.cpp src/qwheelarea.cpp src/qdesktopitem.h src/qcursorarea.cpp src/qtsplitterbase.cpp src/qrangemodel_p.h src/qtooltiparea.h src/qcomboboxqmladapter.h src/qdesktopitem.cpp src/qtoplevelwindow.h src/qwheelarea.h src/qdeclarativefolderlistmodel.cpp 
 Copyright: Copyright (C) 2011 Nokia Corporation and/or its subsidiary(-ies).
 License: LGPL-2.1
 
-Files: src/qtkeytrans.cpp
-       src/qtkeytrans.h
-       src/qtkeytransdata.h
+Files: src/qtkeytrans.cpp src/qtkeytrans.h src/qtkeytransdata.h
 Copyright: Copyright (C) 2012~2012 by CSSlayer
 License: GPL-2+
 
@@ -27,6 +25,10 @@ Copyright: Copyright (C) 2008 Fluendo Embedded S.L.
            Copyright (C) 2010 TualatriX <tualatrix@gmail.com>
            Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
 License: GPL-2+
+
+Files: src/qdeclarativelayout.h src/qstyleitem.h src/qdeclarativelinearlayout.cpp src/settings.cpp src/qwindowitem.cpp src/settings.h src/qdeclarativelayoutengine.cpp src/qdeclarativelayoutengine_p.h src/qtmenubar.cpp src/qtmenuitem.h src/qdeclarativelayout.cpp src/qtmenubar.h src/qtmenuitem.cpp src/qstyleitem.cpp src/qdeclarativelinearlayout.h qml/func/common/Page.qml qml/func/common/PageStack.qml qml/func/common/UIConstants.js qml/func/common/PageStack.js
+Copyright: Copyright (C) 2010-2011 Nokia Corporation and/or its subsidiary(-ies).
+License: BSD-3-clause
 
 License: LGPL-2.1
  This file may be used under the terms of the GNU Lesser
@@ -60,3 +62,31 @@ License: GPL-3
  .
  On Debian/Ubuntu systems, the full text of the GPL v3 can be found in
  `/usr/share/common-licenses/GPL-3'
+ 
+License: BSD-3-clause
+ Redistribution and use of this software in source and binary forms,
+ with or without modification, are permitted provided that the following
+ conditions are met:
+ .
+ Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ .
+ Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ Neither the name of Yahoo! Inc. nor the names of YUI's contributors may
+ be used to endorse or promote products derived from this software
+ without specific prior written permission of Yahoo! Inc.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+ OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

@@ -43,12 +43,10 @@ from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('Daemon')
 
 INTERFACE = 'com.ubuntukylin_tools.daemon'
-PATH = '/'
-TIMEFORMAT = "%H:%M:%S"
+UKPATH = '/'
 
 class Daemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
-        #self.sysconf = Sysinfo()
         self.otherconf = Others()
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
@@ -59,7 +57,7 @@ class Daemon(PolicyKitService):
         self.daemononekey = cleaner.OneKeyClean()
         self.daemoncache = cleaner.CleanTheCache()
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
-        PolicyKitService.__init__(self, bus_name, PATH)
+        PolicyKitService.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
@@ -73,18 +71,17 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def set_user_homedir(self, homedir):
         cleaner.get_user_homedir(homedir)
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    #def get_user_cache(self):
-    #    return "KOBE"
-
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='s', sender_keyword='sender')
-    #def set_source_enable(self, sender=None):
-    #    self._check_permission(sender, UK_ACTION_YOUKER)
-    #    return "LIXIANG"
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
         return "SystemDaemon"
+
+    @dbus.service.signal(INTERFACE, signature='as')
+    def get_speed(self, speed):
+        pass
+
+    def get_network_speed(self, speed):
+        self.get_speed(speed)
 
     # -------------------------sound-------------------------
     # get sound themes
@@ -156,10 +153,16 @@ class Daemon(PolicyKitService):
     def get_free_memory(self):
         return self.ballconf.get_free_memory()
 
-    # get network flow, return (up, down)
+    # get network flow total, return (up, down)
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_network_flow_total(self):
+        return self.ballconf.get_network_flow_total()
+
+    # get network flow, return (up, down)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def get_network_flow(self):
-        return self.ballconf.get_network_flow()
+        speed_network = self.ballconf.get_network_flow()
+        self.get_network_speed(speed_network)
 
     # clean up memory
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
@@ -253,6 +256,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_main_msg('ce')
             else:
                 self.clean_complete_main_msg('c')
+        self.clean_complete_main_msg('o')
 
     # the function of clean cruft by second one key
     ###input-['history', 'cach....] output-''
@@ -303,6 +307,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_second_msg('ce')
             else:
                 self.clean_complete_second_msg('c')
+        self.clean_complete_second_msg('o')
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_history_records(self, sender=None):
@@ -353,20 +358,8 @@ class Daemon(PolicyKitService):
         if not status:
             return
         try:
-            self.daemonclean.clean_the_package(cruftlist)
-        except Exception, e:
-            self.clean_error_msg('package')
-        else:
-            self.clean_complete_msg('package')
-
-    # the function of uninstall packages
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def uninstall_package_cruft(self, cruftlist, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            return
-        try:
             self.daemonclean.uninstall_the_package(cruftlist)
+            #self.daemonclean.clean_the_package(cruftlist)
         except Exception, e:
             self.clean_error_msg('package')
         else:

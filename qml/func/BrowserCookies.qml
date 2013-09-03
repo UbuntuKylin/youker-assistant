@@ -51,12 +51,11 @@ Item {
             else
                 root.null_flag = false;
             root.coo_sub_num = cookies_data.length;
-            console.log(root.coo_sub_num);
             systemdispatcher.clear_cookies_args();
             subModel.clear();
             var num = 0;
             for (var i=0; i< cookies_data.length; i++) {
-                console.log(cookies_data[i]);//sina.com.cn<2_2>10
+                //sina.com.cn<2_2>10
                 var splitlist = cookies_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -112,17 +111,13 @@ Item {
 //        target: sessiondispatcher
         target: systemdispatcher
 //         onFinishScanWork: {
-//             console.log("begin onFinishScanWork..............");
         //             if (btn_flag == "cookies_scan") {
-        //                 console.log("******cookies_scan Signal handler received  Start******");
-        ////                 console.log(msg);
         ////                 titleBar.work_result = msg;
         //                 titleBar.state = "CookiesWork";
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "cookies_work") {
                 if (msg == "cookies") {
                     root.work_result = msg;
@@ -220,7 +215,6 @@ Item {
                 }
                 else
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
-                console.log(root.sub_num)
             }
         }
 //        Common.Button {
@@ -405,6 +399,7 @@ Item {
                 model: mainModel
                 delegate: Cleardelegate{
                     sub_num:root.coo_sub_num;sub_model:subModel;btn_flag:root.btn_flag;
+                    delegate_flag: false
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}
                 }

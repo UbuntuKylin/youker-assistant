@@ -3,8 +3,6 @@
         <file>image/dialog-bg.png</file>
         <file>image/message.png</file>
         <file>image/youker-assistant.png</file>
-        <file>image/ok.png</file>
-        <file>image/quit.png</file>
         <file>image/closeBtn.png</file>
         <file>image/closeBtn-hover.png</file>
         <file>image/minBtn.png</file>
@@ -14,5 +12,12 @@
         <file>image/feature2.png</file>
         <file>image/feature3.png</file>
         <file>image/icon.png</file>
+        <file>image/ok.png</file>
+        <file>image/quit.png</file>
+        <file>image/accelerate-bg.png</file>
+        <file>image/accelerate-bg0.png</file>
+        <file>image/blister-big.png</file>
+        <file>image/blister-bigwarn.png</file>
+        <file>image/blister-small.png</file>
     </qresource>
 </RCC>

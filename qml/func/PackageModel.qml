@@ -56,7 +56,7 @@ Item {
             subModel.clear();
             var num = 0;
             for (var i=0; i< unneed_data.length; i++) {
-//                console.log(unneed_data[i]);//linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
+            //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
                 var splitlist = unneed_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
@@ -112,16 +112,12 @@ Item {
         target: systemdispatcher
 //         onFinishScanWork: {
         //             if (btn_flag == "package_scan") {
-        //                 console.log("******package_scan Signal handler received  Start******");
-        ////                 console.log("33333333333333");
-        ////                 console.log(msg);
         //                 titleBar.work_result = msg;
         //                 titleBar.state = "UnneedWork";
         //             }
 
 //         }
         onFinishCleanWork: {
-//            console.log(msg);//apt software   package   history   cookies
             if (btn_flag == "package_work") {
                 if (msg == "package") {
                     root.work_result = msg;
@@ -215,7 +211,6 @@ Item {
                 }
                 else
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
-                console.log(root.sub_num)
             }
         }
 //        Common.Button {
@@ -246,7 +241,6 @@ Item {
 //                }
 //                else
 //                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
-//                console.log(root.sub_num)
 //            }
 //        }
     }
@@ -326,7 +320,6 @@ Item {
 //                    id: mouseRegion
 //                    anchors.fill: parent
 //                    onPressed: {
-////                        console.log(root.width)
 //                        expanded = !expanded
 //                    }
 //                }
@@ -374,7 +367,7 @@ Item {
 
 //                            btn_flag: root.btn_flag
 
-//                            onClicked: {/*console.log(number)*/}
+//                            onClicked: {}
 //                        }
 
 //                    }//Repeater
@@ -400,6 +393,7 @@ Item {
                 model: mainModel
                 delegate: Cleardelegate{
                     sub_num:root.pac_sub_num;sub_model: subModel ;btn_flag:root.btn_flag
+                    delegate_flag: false
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}
                 }

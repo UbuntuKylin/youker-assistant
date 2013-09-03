@@ -4,24 +4,29 @@ import "./func/common" as Common
 Rectangle {
     id:sfloat
     width: 83
-    height: 35
+    height: 48
     color: "transparent"
     radius: 5
     property string up_speed: "0"
     property string down_speed: "0"
-    property double cpu_value: 0.0
+    property double memory_ratio: 0.0
     signal send_signal_to_large;
 
+
+    function receive_data(value, up, down) {
+        sfloat.memory_ratio = value;
+        sfloat.up_speed = up;
+        sfloat.down_speed = down;
+    }
+
     Component.onCompleted: {
-        sfloat.cpu_value = systemdispatcher.get_cpu_percent_qt();
-//        var speed = systemdispatcher.get_network_flow_qt();
-//        sfloat.up_speed = speed[0];
-//        sfloat.down_speed = speed[1];
+        sfloat.memory_ratio = systemdispatcher.get_used_memory_qt()/systemdispatcher.get_total_memory_qt();
+        sfloat.memory_ratio = Math.round(sfloat.memory_ratio*100)/100 * 100
     }
     SystemDispatcher {
         id: systemdispatcher
     }
-    signal showWidget();
+
     function show_float_frame() {
         if (sfloat.visible == true)
             sfloat.visible = false;
@@ -34,65 +39,68 @@ Rectangle {
     }
     Column{
         anchors{
-            top:parent.top
-            topMargin: 2
+            bottom:parent.bottom
+            bottomMargin: 6
             left: parent.left
             leftMargin: 22
         }
         spacing: 3
         Text {
             id:upload
-            text: sfloat.up_speed + "K/s";
+            text: sfloat.up_speed + "K/s"
             font.pixelSize: 10
             color: "#7a7a7a"
         }
         Text {
             id:download
-            text: sfloat.down_speed + "K/s";
+            text: sfloat.down_speed + "K/s"
             font.pixelSize: 10
             color: "#7a7a7a"
         }
     }
     Rectangle{
         id:ball
-        width: 30;height: 30
+        width: 31;height: 31
 //        border.color: "grey"
         radius:2
         z:1
         smooth:true
         anchors{
             right: parent.right
-            rightMargin: 2
-            top:parent.top
-            topMargin: 1
+            rightMargin: 1
+            bottom:parent.bottom
+            bottomMargin: 2
+        }
+        Image {
+            source: "./img/skin/blister-small.png"
         }
         Text {
             id: cpu
-            text: sfloat.cpu_value + "%";
+            text: sfloat.memory_ratio + "%";
             font.pointSize: 8
             anchors.centerIn: parent
         }
         gradient: Gradient{
-            GradientStop{position: 0.0; color: (sfloat.cpu_value == 100) ? "red" : "transparent"}
+            GradientStop{position: 0.0; color: (sfloat.memory_ratio == 100) ? "#ff2400" : "transparent"}
 
-            GradientStop{position: 1.0 - sfloat.cpu_value * 0.01; color: (sfloat.cpu_value == 100) ? "red" : "transparent"}
-            GradientStop{position: (sfloat.cpu_value <= 0) ? 0.0 : (1.0 - sfloat.cpu_value * 0.01 + 0.01);
+            GradientStop{position: 1.0 - sfloat.memory_ratio * 0.01; color: (sfloat.memory_ratio == 100) ? "#ff2400" : "transparent"}
+            GradientStop{position: (sfloat.memory_ratio <= 0) ? 0.0 : (1.0 - sfloat.memory_ratio * 0.01 + 0.01);
                 color: {
-                    if(sfloat.cpu_value > 60)
-                        "red"
-                    else if (sfloat.cpu_value == 0)
+                    if(sfloat.memory_ratio > 60)
+                        "#ff2400"
+                    else if (sfloat.memory_ratio == 0)
                         "transparent"
                     else
-                        "green"
+                        "#0084ff"
                 }
             }
             GradientStop{position: 1.0; color: {
-                    if (sfloat.cpu_value == 0)
+                    if (sfloat.memory_ratio == 0)
                         "transparent"
-                    else if (sfloat.cpu_value == 100)
-                        "red"
+                    else if (sfloat.memory_ratio > 60)
+                        "#ff2400"
                     else
-                        "green"
+                        "#0084ff"
                 }
             }
         }
@@ -123,19 +131,6 @@ Rectangle {
             var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
             smallwindow.pos = Qt.point(smallwindow.pos.x+delta.x,
                               smallwindow.pos.y+delta.y)
-        }
-        onClicked: {
-        }
-        onDoubleClicked: {
-        }
-    }
-    Timer {
-        interval: 5000; running: true; repeat: true
-        onTriggered: {
-            sfloat.cpu_value = systemdispatcher.get_cpu_percent_qt();
-//            var speed = systemdispatcher.get_network_flow_qt();
-//            sfloat.up_speed = speed[0];
-//            sfloat.down_speed = speed[1];
         }
     }
 }

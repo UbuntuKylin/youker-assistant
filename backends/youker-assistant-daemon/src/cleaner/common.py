@@ -29,8 +29,10 @@ def get_dir_size(path):
 
 def get_cache_list():
     cache = None
-    apt_pkg.InitConfig()
-    apt_pkg.InitSystem()
+    #apt_pkg.InitConfig()
+    #apt_pkg.InitSystem()
+    apt_pkg.init_config()
+    apt_pkg.init_system()
     cache = apt.Cache()
     return cache
 

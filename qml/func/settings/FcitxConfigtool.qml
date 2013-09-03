@@ -7,6 +7,7 @@ import "../bars" as Bars
 import "../../func"  as Func
 
 Rectangle {
+
     id:fcitxconfigtool
     width: parent.width
     height: 475
@@ -73,26 +74,7 @@ Rectangle {
 
     }
 
-//    Func.SettingsDelegate{
-//        id:setting
-//        onEmitFcitxRefresh:{
-//            console.log("fcitxconfigtool8888888888");
-//            fcitxconfigtool.refreshFcitxtool();
-//            console.log("fcitxconfigtool9999999999");
-//        }
-//    }
-//    Loader {
-//            id: pageLoader
-//            source: "../../func/SettingsDelegate.qml"
-//        }
-//    Connections {
-//            target: pageLoader.item
-//            onRefreshFcitxtool: console.log("555555");
-//        }
-
     function refreshFcitxtool(){
-        pageStack.push(functioncollection);
-        console.log("123456789");
         leftFcitxModel.clear();
         rightFcitxModel.clear();
         leftFcitxModelindex = 0;
@@ -102,24 +84,29 @@ Rectangle {
         leftNum = 0;
         rightNum = 0;
         var unneed_data = fcitxcfgwizard.get_im_list();
-        if (unneed_data == "" || unneed_data.length == 0)
-            unneed_data = fcitxcfgwizard.get_im_list();
         for (var i=0; i< unneed_data.length; i++) {
             var chooseList = unneed_data[i].split(m_separator);
-
             if(chooseList[3]=="true")
             {
                 leftNum++;
                 leftFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
             }
             else{
+
                 rightNum++;
                 rightFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
             }
         }
+
+     pageStack.push(functioncollection);
 }
+    Connections {
+            target: fcitxcfgwizard
+            onRefreshFcitxSig: {
+                refreshFcitxtool();
+            }
+        }
     Component.onCompleted: {
-        console.log("component......................................");
         leftFcitxModel.clear();
         rightFcitxModel.clear();
         leftFcitxModelindex = 0;
@@ -129,11 +116,6 @@ Rectangle {
             unneed_data = fcitxcfgwizard.get_im_list();
         for (var i=0; i< unneed_data.length; i++) {
             var chooseList = unneed_data[i].split(m_separator);
-//            console.log("11111111111111");
-//            console.log(unneed_data[i]);
-//            console.log("22222222222222");
-//            console.log(chooseList[3]);
-//            console.log("33333333333333");
             if(chooseList[3]=="true")
             {
                 leftNum++;
@@ -144,19 +126,8 @@ Rectangle {
                 rightFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
             }
         }
-
-
     }
-    //信号绑定，绑定qt的信号onFcitxWarn
-//    Connections
-//    {
-//        target: fcitxcfgwizard
-//        onFcitxWarn:
-//            console.log("111111111111111111111111111111111111111111111111qwertyuiopp");
-//  //          pageStack.push(functioncollection);
 
-//         }
-    //提示
     Text {
         id:currentMethod
         anchors {
@@ -252,16 +223,10 @@ Rectangle {
                     color: "#7a7a7a"
                     text:langClde
                 }
-//                Image {
-//                    id: btnImg
-//                    anchors.fill: parent
-//                    source: ""
-//                }
                 MouseArea{
                     anchors.fill:parent
                     hoverEnabled: true
                     onClicked: {
-                        console.log(index)
                         upBtn.enabled = true
                       wrapper.ListView.view.currentIndex = index; //?
                         leftFcitxModelindex = wrapper.ListView.view.currentIndex;
@@ -401,14 +366,12 @@ Rectangle {
                         color: "#7a7a7a"
                         text:langClde
                     }
-
                     MouseArea{
                         anchors.fill:parent
                         hoverEnabled: true
                         onClicked: {
 //                            okBtn.enabled = true;
 //                            okBtn.hoverimage = "list_item_active.png";
-                            console.log(index);
                             wrapper.ListView.view.currentIndex = index; //?
                             state = "lightsteelblueColor";
                             rightFcitxModelindex = index;
@@ -478,209 +441,133 @@ Rectangle {
                 }
             }
         }
-
-//        Common.CheckBox{
-//            id:chooseCurrentLanguageBox
-//            anchors{
-//                top:rightRectangle.Bottom
-//                topMargin: 10
-//            }
-//                titleName: "只显示本地语言"
-//                onClicked: console.log("只显示本地语言")
-//            }
-//            Row{
-//                Common.Button{
-//                    id:okBtn
-//                    width:60
-//                    height:20
-//                    enabled: false
-//                    hoverimage: ""
-//                    text:"ok"
-//                    onClicked:{
-//                        console.log("okBtn........................")
-//                        console.log(rightFcitxModel.get(rightFcitxModelindex).itemTitle)
-//                        leftFcitxModel.append({"itemTitle":rightFcitxModel.get(rightFcitxModelindex).itemTitle,
-//                                               "uniqueName" :rightFcitxModel.get(rightFcitxModelindex).uniqueName,
-//                                                "langClde" :rightFcitxModel.get(rightFcitxModelindex).langClde})
-//                        rightFcitxModel.remove(rightFcitxModelindex);
-//                        //rightColum.z = -1;
-//                        leftNum++;
-//                        rightNum--;
-////                        okBtn.enabled = false;
-////                        cancelBtn.enabled = false;
-//                        cutBtn.enabled = true;
-//                        if((leftFcitxModelindex==0)&&(leftNum>1))
-//                            downBtn.enabled = true;
-//                    }
-//                }
-//                Common.Button{
-//                    id:cancelBtn
-//                    width:60
-//                    height:20
-//                    hoverimage: "list_item_active.png"
-//                    text:"cancel"
-//                    onClicked: {
-//                        console.log("cancelBtn........................")
-//                        rightColum.z = -1;
-//                        okBtn.enabled = false;
-//                        cancelBtn.enabled = false;
-//                    }
-//                }
-//            }
     }
-
-//提示
-Text {
-    id:prompt
-    anchors {
-        top: parent.top
-        topMargin: 400
-        left: parent.left
-        leftMargin: 80
-    }
-    text: qsTr("提示:'+'可以将可用输入法加入当前输入法,'-'删除当前选中输入法,'▲'和'▼'改变选中输入法的位置")
-    font.bold: true
-    font.pixelSize: 12
-    color: "#7a7a7a"
-}
-Row{
-    spacing: 5
-    anchors{        
-//     top:parent.top
-//     topMargin: 190
-//     left: parent.left
-//     leftMargin:410
-        left: parent.left
-        leftMargin: 80;
-        top:leftRectangle.bottom
-        topMargin: 10
-
-    }
-Common.Button{
-    id:addBtn
-    width:60
-    height:20
-    //hoverimage: "list_item_active.png"
-    text:"+"
-    onClicked: {
-        console.log("add......................")
-        console.log("okBtn........................")
-        console.log(rightFcitxModel.get(rightFcitxModelindex).itemTitle)
-        leftFcitxModel.append({"itemTitle":rightFcitxModel.get(rightFcitxModelindex).itemTitle,
-                               "uniqueName" :rightFcitxModel.get(rightFcitxModelindex).uniqueName,
-                               "langClde" :rightFcitxModel.get(rightFcitxModelindex).langClde})
-        rightFcitxModel.remove(rightFcitxModelindex);
-        leftNum++;
-        rightNum--;
-
-        cutBtn.enabled = true;
-        if((leftFcitxModelindex==0)&&(leftNum>1))
-        downBtn.enabled = true;
-
-    }
-}
-Common.Button{
-    id:cutBtn
-//    anchors.top: addBtn.bottom
-//    anchors.topMargin: 20
-    width:60
-    height:20
-    //hoverimage: "list_item_active.png"
-    text: "－"
-    onClicked: {
-        console.log(leftFcitxModelindex)
-        console.log(leftFcitxModel.get(leftFcitxModelindex).itemTitle)
-        rightFcitxModel.append({"itemTitle":leftFcitxModel.get(leftFcitxModelindex).itemTitle,
-                               "uniqueName" :leftFcitxModel.get(leftFcitxModelindex).uniqueName,
-                                "langClde" :leftFcitxModel.get(leftFcitxModelindex).langClde})
-        leftFcitxModel.remove(leftFcitxModelindex);
-        leftNum--;
-        rightNum++;
-
-        if((leftFcitxModelindex==leftNum)&&(leftFcitxModelindex!=0))
-        {
-            leftFcitxModelindex--;
-        }
-        if(leftFcitxModelindex==0)
-        {
-            leftFcitxModelindex =0;
-        }
-        if(leftNum==0)
-        {
-            cutBtn.enabled = false;
-            upBtn.enabled = false;
-            downBtn.enabled = false;
-        }
-
-        console.log(leftFcitxModelindex)
-
-
-    }
-}
-Common.Button{
-    id:upBtn
-    width:60
-    height:20
-    //hoverimage: "list_item_active.png"
-    enabled: false
-    text:"▲"
-    onClicked: {
-        console.log("up......................")
-        if(leftFcitxModelindex==0)
-        {
-            upBtn.enabled = false
-        }
-        if(leftFcitxModelindex>0)
-        {
-            downBtn.enabled = true
-            leftFcitxModel.move(leftFcitxModelindex,leftFcitxModelindex-1,1)
-            leftFcitxModelindex=leftFcitxModelindex-1;
-            if((leftFcitxModelindex==0)||(leftNum == 0))
-            {
-                upBtn.enabled = false
+        //提示
+        Text {
+            id:prompt
+            anchors {
+                top: parent.top
+                topMargin: 400
+                left: parent.left
+                leftMargin: 80
             }
-
+            text: qsTr("提示:'+'可以将可用输入法加入当前输入法,'-'删除当前选中输入法,'▲'和'▼'改变选中输入法的位置")
+            font.bold: true
+            font.pixelSize: 12
+            color: "#7a7a7a"
         }
+        Row{
+            spacing: 5
+            anchors{
+        //     top:parent.top
+        //     topMargin: 190
+        //     left: parent.left
+        //     leftMargin:410
+                left: parent.left
+                leftMargin: 80;
+                top:leftRectangle.bottom
+                topMargin: 10
 
-    }
-}
-Common.Button{
-    id:downBtn
-//    anchors.top: addBtn.bottom
-//    anchors.topMargin: 20
-    width:60
-    height:20
-    //hoverimage: "list_item_active.png"
-    text: "▼"
-    onClicked: {
-        console.log("down......................")
-        if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
-        {
-            downBtn.enabled = false;
-            console.log("a")
-            console.log(leftFcitxModelindex);
-            console.log(leftNum);
+            }
+        Common.Button{
+            id:addBtn
+            width:60
+            height:20
+            //hoverimage: "list_item_active.png"
+            text:"+"
+            onClicked: {
+                leftFcitxModel.append({"itemTitle":rightFcitxModel.get(rightFcitxModelindex).itemTitle,
+                                       "uniqueName" :rightFcitxModel.get(rightFcitxModelindex).uniqueName,
+                                       "langClde" :rightFcitxModel.get(rightFcitxModelindex).langClde})
+                rightFcitxModel.remove(rightFcitxModelindex);
+                leftNum++;
+                rightNum--;
+
+                cutBtn.enabled = true;
+                if((leftFcitxModelindex==0)&&(leftNum>1))
+                downBtn.enabled = true;
+
+            }
         }
-        if(leftFcitxModelindex<leftNum-1)
-        {
-            upBtn.enabled = true;
-            leftFcitxModel.move(leftFcitxModelindex,leftFcitxModelindex+1,1)
-            leftFcitxModelindex=leftFcitxModelindex+1;
-            console.log("b")
-            console.log(leftFcitxModelindex);
-            console.log(leftNum);
-            if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
-            {
-                downBtn.enabled = false
-                console.log("c")
-                console.log(leftFcitxModelindex);
-                console.log(leftNum);
+        Common.Button{
+            id:cutBtn
+            width:60
+            height:20
+            text: "－"
+            onClicked: {
+                rightFcitxModel.append({"itemTitle":leftFcitxModel.get(leftFcitxModelindex).itemTitle,
+                                       "uniqueName" :leftFcitxModel.get(leftFcitxModelindex).uniqueName,
+                                        "langClde" :leftFcitxModel.get(leftFcitxModelindex).langClde})
+                leftFcitxModel.remove(leftFcitxModelindex);
+                leftNum--;
+                rightNum++;
+
+                if((leftFcitxModelindex==leftNum)&&(leftFcitxModelindex!=0))
+                {
+                    leftFcitxModelindex--;
+                }
+                if(leftFcitxModelindex==0)
+                {
+                    leftFcitxModelindex =0;
+                }
+                if(leftNum==0)
+                {
+                    cutBtn.enabled = false;
+                    upBtn.enabled = false;
+                    downBtn.enabled = false;
+                }
+            }
+        }
+        Common.Button{
+            id:upBtn
+            width:60
+            height:20
+            enabled: false
+            text:"▲"
+            onClicked: {
+                if(leftFcitxModelindex==0)
+                {
+                    upBtn.enabled = false
+                }
+                if(leftFcitxModelindex>0)
+                {
+                    downBtn.enabled = true
+                    leftFcitxModel.move(leftFcitxModelindex,leftFcitxModelindex-1,1)
+                    leftFcitxModelindex=leftFcitxModelindex-1;
+                    if((leftFcitxModelindex==0)||(leftNum == 0))
+                    {
+                        upBtn.enabled = false
+                    }
+
+                }
+
+            }
+        }
+        Common.Button{
+            id:downBtn
+            width:60
+            height:20
+            text: "▼"
+            onClicked: {
+                if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
+                {
+                    downBtn.enabled = false;
+                }
+                if(leftFcitxModelindex<leftNum-1)
+                {
+                    upBtn.enabled = true;
+                    leftFcitxModel.move(leftFcitxModelindex,leftFcitxModelindex+1,1)
+                    leftFcitxModelindex=leftFcitxModelindex+1;
+
+                    if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
+                    {
+                        downBtn.enabled = false
+
+                    }
+                }
             }
         }
     }
-}
-
-}
     //顶层工具栏
     Bars.TopBar {
         id: topBar
@@ -693,8 +580,6 @@ Common.Button{
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            console.log("aaaaaaaaa->");
-            console.log(num);
             if (num == 0)
                 pageStack.push(homepage)
             else if (num == 3)
@@ -713,18 +598,12 @@ Common.Button{
 //            button3Label: qsTr("下一步")
         onCancelBtnClicked: {
             fcitxcfgwizard.send_fcitx_ok_warn();
- //           refreshFcitxtool()
-
         }
-
         onGobackBtnClicked: {
                 pageStack.push(functioncollection)
-
         }
         onContinueBtnClicked: {         
-            console.log("continue ok");
             pageStack.push(fcitxConfigtoolFontpage);//静态添加页
-//            console.log(returnUnneed_data());
             fcitxcfgwizard.set_im_list(returnUnneed_data(),false);
 
         }

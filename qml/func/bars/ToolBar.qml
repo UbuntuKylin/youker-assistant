@@ -32,11 +32,11 @@ Item {
      Rectangle{id: splitbar; x:2; width:parent.width - 4 ; height:1; color:"#b9c5cc"}
 
      Row {
-         spacing: 30
+         spacing: 19
          height: 32
          anchors {
              right: parent.right
-             rightMargin: 5
+             rightMargin: 37
              top: splitbar.bottom
              topMargin: 10
          }

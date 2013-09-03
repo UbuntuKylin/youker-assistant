@@ -6,7 +6,7 @@ import "../bars" as Bars
 import "../" as Func
 
 Rectangle {
-    id:fcitxconfigtool
+    id:fcitxconfigtoolFont
     width: parent.width
     height: 475
 
@@ -33,37 +33,22 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 80
         Text {
-             text: fcitxconfigtool.actiontitle
+             text: fcitxconfigtoolFont.actiontitle
              font.bold: true
              font.pixelSize: 14
              color: "#383838"
          }
          Text {
-             text: fcitxconfigtool.actiontext
+             text: fcitxconfigtoolFont.actiontext
              font.pixelSize: 12
              color: "#7a7a7a"
          }
     }
 
-//    Func.SettingsDelegate{
-//        id:setting
-//        onEmitFcitxRefresh:{
-//            console.log("fcitxconfigtool8888888888");
-//            fcitxconfigtool.refreshFcitxFont();
-//            console.log("fcitxconfigtool9999999999");
-//        }
-//    }
-
     function refreshFcitxFont(){
-        pageStack.push(functioncollection)
-        //set font==========================================================
+        //set font============================================================
         var setFont = fcitxcfgwizard.get_font();
         fontStyleBtn.text = setFont;
-        if(fontStyleBtn.text == "")
-            fontStyleBtn.text = "Normal";
-        console.log(qsTr(setFont));
-
-
         //get candidate_word_numbe============================================
         var getFontcandidateWord =fcitxcfgwizard.get_candidate_word_number();
         candidateWordNumber.value = getFontcandidateWord;
@@ -74,15 +59,16 @@ Rectangle {
         var getVerticalList = fcitxcfgwizard.get_vertical_list();
         verticalList.checked = getVerticalList
     }
-
+    Connections {
+            target: fcitxcfgwizard
+            onRefreshFcitxSig: {
+                refreshFcitxFont();
+            }
+        }
     Component.onCompleted: {
-        //set font==========================================================
+        //set font============================================================
         var setFont = fcitxcfgwizard.get_font();
         fontStyleBtn.text = setFont;
-
-        console.log(qsTr(setFont));
-
-
         //get candidate_word_numbe============================================
         var getFontcandidateWord =fcitxcfgwizard.get_candidate_word_number();
         candidateWordNumber.value = getFontcandidateWord;
@@ -94,18 +80,9 @@ Rectangle {
         verticalList.checked = getVerticalList
         //通过后台接口可以默认添加窗口中内容
     }
-//    //信号绑定，绑定qt的信号finishSetFont，该信号emit时触发onFinishSetFont
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onFinishSetFont: {
-//            console.log("onFinishSetFont.........");
-//            fontStyleBtn.text = fontFamily;
-//              }
-//    }
     //设置内容
     Column{
-        spacing: 20
+        spacing: 15
         smooth: true
         anchors{
             top:parent.top
@@ -115,6 +92,7 @@ Rectangle {
         }
         //font
        Row{
+           spacing: 218
            Text {
                id: font
                text: qsTr("字体")
@@ -123,143 +101,87 @@ Rectangle {
                 id: fontStyleBtn
                 smooth:true
                 width: 250;height: 30
-                anchors.left: parent.left
-                anchors.leftMargin: 250
-               //hoverimage: "button_normal.png"
-//               text: "Sans"
+                anchors.verticalCenter: font.verticalCenter
                onClicked: {
                    fontStyleBtn.text = fcitxcfgwizard.show_font_dialog();
                }
            }
-//           Common.Button {
-//               id: clearStyleBtn
-//               width: 150;height: 30
-//               anchors.left: fontStyleBtn.right
-//               anchors.leftMargin:30
-//               hoverimage: "button_normal.png"
-//               text: " 清除字体设置"
-//               onClicked: {
-//                   fontStyleBtn.text = "Normal";
-//               }
-//           }
 
        }
         //候选词
         Row{
+            spacing: 172
             Text {
                 id: number
                 text: qsTr("候选词个数")
             }
-            Common.Slider {
-                id: candidateWordNumber
-                anchors.left: number.right
-                anchors.leftMargin: 172
-                minimumValue: 1
-                maximumValue: 10
-                width: 250
-//                value: 　　　　　　　　　　　//要从后台获取
-                stepSize: 1
-                animated: true
-                onValueChanged: {
-                    console.log(candidateWordNumber.value)
-                    displaynum.text = candidateWordNumber.value;
-//
+            Row{
+                spacing: 10
+                Common.Slider {
+                    id: candidateWordNumber
+                    anchors.verticalCenter: parent.verticalCenter
+                    minimumValue: 1
+                    maximumValue: 10
+                    width: 250
+                    stepSize: 1
+                    animated: true
+                }
+                Text {
+                    id: displaynum
+                    text: candidateWordNumber.value
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+//                    anchors.left: candidateWordNumber.right
+//                    anchors.leftMargin: 10
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
-            Text {
-                id: displaynum
-                text: candidateWordNumber.value
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.left: candidateWordNumber.right
-                anchors.leftMargin: 10
-                anchors.verticalCenter: parent.verticalCenter
-            }
 
-
-//            Common.Button {
-//                id: numOkBtn
-//                width: 95;height: 30
-//                anchors.left: parent.left
-//                anchors.leftMargin: 470
-//                hoverimage: "ok.png"
-//                onClicked: {
-//                    console.log("设置候选词个数为:");
-//                    console.log(sliderNum.value);
-//                }
-//            }
-//            Common.Button {
-//                hoverimage: "use.png"
-//                anchors.left: numOkBtn.right
-//                anchors.leftMargin: 38
-//                width: 124
-//                height: 30
-//                onClicked: {
-////                    if() {
-
-//                       // 设置候选词个数为默认状态
-////                    }
-////                    else
-//                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！");
-//                }
-//            }
         }
 
         //fontsize
         Row{
+            spacing: 187
             Text {
                 id: fontSize
                 text: qsTr("字体大小")
-
             }
-            Common.Slider {
-                id: sliderFontSize
-                anchors.left: fontSize.right
-                anchors.leftMargin:187
-                minimumValue: 0
-                maximumValue: 72
-                width: 250
- //               value: sessiondispatcher.  通过dbus从后排获取
-                stepSize: 1
-                animated: true
-                onValueChanged: {
-                    console.log(sliderFontSize.value)
+            Row{
+                spacing: 10
+                Common.Slider {
+                    id: sliderFontSize
+                    anchors.verticalCenter: parent.verticalCenter
+                    minimumValue: 0
+                    maximumValue: 72
+                    width: 250
+                    stepSize: 1
+                    animated: true
+                }
+                Text {
+                    id: displayFontSize
+                    text: sliderFontSize.value
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
-            Text {
-                id: displayFontSize
-                text: sliderFontSize.value
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.left: sliderFontSize.right
-                anchors.leftMargin: 10
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
         }
-
-
-
-
         //竖排候选词列表
         Row{
+            spacing: 145
             Text {
-                id: list
+                id:listh
                 text: qsTr("竖排候选词列表")
             }
             Common.CheckBox{
                 id:verticalList
-                anchors.left: list.right
-                anchors.leftMargin: 147
-                anchors.verticalCenter: list.verticalCenter
+                anchors.verticalCenter: listh.verticalCenter
                 titleName: ""
                 onCheckedChanged: {
-                        console.log(verticalList.checked) ;
                 }
             }
         }
 }
-
 
     //顶层工具栏
     Bars.TopBar {
@@ -273,8 +195,6 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            console.log("aaaaaaaaa->");
-            console.log(num);
             if (num == 0)
                 pageStack.push(homepage)
             else if (num == 3)
@@ -287,24 +207,14 @@ Rectangle {
     Bars.FcitxBar {
         id: toolBar
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("退出")
-//            button2Label: qsTr("完成")
-//            button1Label: qsTr("返回")
-//            button2Label: qsTr("继续")
         onCancelBtnClicked: {
-            sessiondispatcher.send_warningdialog_msg("友情提示：", "是否确定取消！");
-                refreshFcitxFont()
-
-  //             setting.emitFcitxRefresh()
-
+            fcitxcfgwizard.send_fcitx_ok_warn();
         }
 
         onGobackBtnClicked: {
-            console.log("上一步");
             pageStack.push(fcitxConfigtoolpage);//静态添加页面
         }
         onContinueBtnClicked: {
-            console.log("continue ok");
             pageStack.push(fcitxConfigtoolKeypage);//静态添加页面
             fcitxcfgwizard.set_font(fontStyleBtn.text,false);
             fcitxcfgwizard.set_candidate_word_number(candidateWordNumber.value,false);

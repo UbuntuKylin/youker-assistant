@@ -13,6 +13,7 @@ Item {
     property ListModel sub_model
     property int sub_num
 
+    property bool delegate_flag: false
     //子项字体
     property string subItemFontName: "Helvetica"
     property int subItemFontSize: 10
@@ -92,16 +93,12 @@ Item {
                 id: mouseRegion
                 anchors.fill: parent
                     onPressed: {
-//                        console.log(root.width)
                            expanded = !expanded
                         if(heightMark==listViewDelegate.sub_num)
                             heightMark=0;
                         else
                             heightMark=listViewDelegate.sub_num;
                         listViewDelegate.subpressed(heightMark);
-                        console.log(heightMark)
-                        console.log(expanded)
-
                     }
             }
         }
@@ -128,6 +125,7 @@ Item {
 
                 ListItem {
                     id: subListItem
+                    split_status: listViewDelegate.delegate_flag
                     width: subItemsRect.width
                     height: subItemsRect.itemHeight
 //                            text: subItemTitle
@@ -142,7 +140,7 @@ Item {
                     fontColor: listViewDelegate.subItemFontColor
                     textIndent: 20
                     btn_flag: listViewDelegate.btn_flag
-                    onClicked: {/*console.log(number)*/}
+                    onClicked: {}
                     onChange_num: {
                         if(check_status==true)
                             check_num=check_num+1;
@@ -158,8 +156,6 @@ Item {
                             listViewDelegate.checkchanged(true);
                         else
                             listViewDelegate.checkchanged(false);
-                        console.log(check_num);
-
                     }
                 }
             }

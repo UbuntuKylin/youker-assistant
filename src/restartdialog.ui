@@ -36,10 +36,11 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/ok.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>确定</string>
    </property>
   </widget>
   <widget class="QLabel" name="displaylabel">
@@ -55,7 +56,7 @@
     <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;您系统上的优客助手是第一次启动相关服务，请点击“确认”按钮关闭，然后重启优客助手。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string/>
    </property>
    <property name="pixmap">
     <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>

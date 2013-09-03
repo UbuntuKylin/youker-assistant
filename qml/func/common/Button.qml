@@ -40,9 +40,10 @@ Item {
                  {
                     if (msg == "") {
                         btn.enabled=true;
-                        btnImg.source = "../../img/icons/green3.png"
-                        btn.hoverimage = "green3.png"
-                        displaytext.text = "一键清理";
+                        if (setbtn_flag == "onekey") {
+                            btnImg.source = "../../img/icons/green3.png"
+                            displaytext.text = "一键清理";
+                        }
                      }
                     else if (msg == "u") {
                          btn.enabled=true;
@@ -56,6 +57,10 @@ Item {
                     else if (msg == "k") {
                         btn.enabled=true;
                     }
+                    else if (msg == "o") {
+                        btn.enabled=true;
+                        displaytext.text = "再次清理"
+                    }
                  }
           }
     }
@@ -66,9 +71,8 @@ Item {
             if(setbtn_flag=="smallonekey")
             {
                 if (msg == "") {
-                    btn.enabled=true;
+                     btn.enabled=true;
                     btnImg.source = "../../img/icons/green1.png"
-                    btn.hoverimage = "green3.png"
                     displaytext.text = "一键清理";
                  }
                  else if (msg == "u") {
@@ -82,6 +86,10 @@ Item {
                 }
                 else if (msg == "k") {
                     btn.enabled=true;
+                }
+                else if (msg == "o") {
+                    btn.enabled=true;
+                    displaytext.text = "再次清理"
                 }
             }
         }
@@ -121,8 +129,8 @@ Item {
             btn.entered();
             if (hoverimage == "green1.png") {
                 btnImg.source = "../../img/icons/green1-hover.png"
-                if(setbtn_flag=="smallonekey")
-                    displaytext.text = "一键清理";
+//                if(setbtn_flag=="smallonekey")
+//                    displaytext.text = "再次清理";
             }
             else if (hoverimage == "blue1.png")
                 btnImg.source = "../../img/icons/blue1-hover.png"
@@ -138,19 +146,11 @@ Item {
                 btnImg.source = "../../img/icons/blue4-hover.png"
             else if (hoverimage == "green3.png") {
                 btnImg.source = "../../img/icons/green3-hover.png"
-                if(setbtn_flag =="onekey")
-                    displaytext.text = "一键清理";
+//                if(setbtn_flag =="onekey")
+//                    displaytext.text = "再次清理";
             }
-            else if (hoverimage == "green4.png") {
-                btnImg.source = "../../img/icons/green3-hover.png"
-                btn.hoverimage = "green3.png"
-                if(setbtn_flag =="onekey")
-                    displaytext.text = "一键清理";
-            }
-            else {
-                console.log(hoverimage)
+            else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
-            }
 //            if (hoverimage == "return.png")
 //                btnImg.source = "../../img/icons/return-hover.png"
 //            else if (hoverimage == "sort.png")
@@ -179,12 +179,6 @@ Item {
                 btnImg.source = "../../img/icons/blue4-hover.png"
             else if (hoverimage == "green3.png")
                 btnImg.source = "../../img/icons/green3-hover.png"
-//            else if (hoverimage == "green4.png") {
-//                btnImg.source = "../../img/icons/green3-hover.png"
-//                btn.hoverimage = "green3-hover.png"
-//                if(setbtn_flag =="onekey")
-//                    displaytext.text = "一键清理";
-//            }
             else
                 btnImg.source = "../../img/toolWidget/menu_press.png"
 //            if (hoverimage == "return.png")
@@ -217,12 +211,6 @@ Item {
                 btnImg.source = "../../img/icons/blue4.png"
             else if (hoverimage == "green3.png")
                 btnImg.source = "../../img/icons/green3.png"
-//            else if (hoverimage == "green4.png") {
-//                btnImg.source = "../../img/icons/green3.png"
-//                btn.hoverimage = "green3.png"
-//                if(setbtn_flag =="onekey")
-//                    displaytext.text = "一键清理";
-//            }
             else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
 //            if (hoverimage == "return.png")
@@ -254,19 +242,17 @@ Item {
                     send_dynamic_picture("onekey");
                     systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                    displaytext.text = "清理完毕"
+//                    displaytext.text = "清理完毕"
 //                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
-                    btn.text="清理完毕";
-                    btnImg.source = "../../img/icons/green4.png"
-                    btn.hoverimage = "green4.png"
+//                    btn.text="清理完毕";
                     btn.enabled=false;
                 }
                 else if (setbtn_flag == "smallonekey") {
                     systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
 //                        btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
-                    displaytext.text = "清理完毕"
-                    btn.text="清理完毕";
+//                    displaytext.text = "清理完毕"
+//                    btn.text="清理完毕";
                     btn.enabled=false;
                 }
             }
@@ -423,10 +409,6 @@ Item {
 //            anchors.fill: parent
 //            hoverEnabled: true
 //            onEntered:{
-////                console.log(btn.width)
-////                console.log(btnrec.width)
-////                console.log(mouseRegion.width)
-////                console.log(btnImg.width)
 //                btnImg.source = "../../img/toolWidget/menu_hover.png"
 //            }
 //            onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"

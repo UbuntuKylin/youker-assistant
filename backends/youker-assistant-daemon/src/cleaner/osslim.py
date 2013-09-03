@@ -1,13 +1,14 @@
 import sys
 import apt
 import apt_pkg
-from apt.progress import InstallProgress
+from apt.progress.base import InstallProgress
+from apt.progress.text import AcquireProgress
 
 import common
 
 class TextInstallProgress(InstallProgress):
     def __init__(self):
-        apt.progress.InstallProgress.__init__(self)
+        InstallProgress.__init__(self)
 
     def error(self, errorstr):
         print ("got dpkg error: '%s'" % errorstr)
@@ -28,7 +29,7 @@ class OsSlim():
 
     def clean_spare_packages(self):
         fprogress = apt.progress.TextFetchProgress()
-        iprogress = TextInstallProgress()
+        fprogress = AcquireProgress()
 
         for pkg in self.spare_packages:
             pkg.mark_delete()

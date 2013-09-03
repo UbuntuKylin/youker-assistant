@@ -14,7 +14,7 @@ target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
     target
-LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
+LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils -Wno-write-strings
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH =
@@ -53,7 +53,8 @@ HEADERS += youker-application.h \
     qtkeytrans.h \
     qtkeytransdata.h \
     fcitxwarndialog.h \
-    handler.h
+    handler.h \
+    KThread.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -87,7 +88,8 @@ SOURCES += main.cpp \
     tray.cpp \
     fcitxcfgwizard.cpp \
     qtkeytrans.cpp \
-    fcitxwarndialog.cpp
+    fcitxwarndialog.cpp \
+    KThread.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -98,4 +100,6 @@ FORMS += \
     messagedialog.ui \
     restartdialog.ui \
     tray.ui \
-    fcitxwarndialog.ui
+    fcitxwarndialog.ui \
+    monitorball.ui \
+    suspensionframe.ui

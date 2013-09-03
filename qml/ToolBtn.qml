@@ -24,14 +24,24 @@ Rectangle {
     color: "transparent"
     property string iconName: "homepage.png"
     property string text: "homepage"
-    Column {
-        anchors.fill: parent
-        Image {
-            id: seticon
-            source: "./img/toolWidget/" + iconName
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
+    property string showtext: "首页"
+//    Column {
+//        anchors.fill: parent
+//        Image {
+//            id: seticon
+//            source: "./img/toolWidget/" + iconName
+//            anchors.horizontalCenter: parent.horizontalCenter
+//        }
+//    }
+
+    Image {
+        id: seticon
+        source: "./img/toolWidget/" + iconName
+        anchors.horizontalCenter: parent.horizontalCenter
     }
+
+
+
     Image {
         id: btnImg
         anchors.fill: parent
@@ -131,5 +141,21 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
+    }
+
+
+    Text {
+        id: displaytext
+        color: "white"
+//        anchors.centerIn: seticon
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: seticon.left
+        anchors.leftMargin: (menulogo.text == "homepage") ? 60: 45
+//        font.family: "Helvetica"
+        font.family: "Arial"
+        font.pixelSize: 14
+        text: menulogo.showtext
+        style: Text.Sunken
+        styleColor: "#AAAAAA"
     }
 }

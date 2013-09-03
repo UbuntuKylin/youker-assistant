@@ -58,6 +58,9 @@
 #include <qdeclarativeview.h>
 #include <QImage>
 
+
+#include "KThread.h"
+
 /*
 a 	ARRAY 数组
 b 	BOOLEAN 布尔值

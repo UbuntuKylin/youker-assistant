@@ -28,37 +28,18 @@
 #include "fcitx-utils/utils.h"
 #include "fcitxwarndialog.h"
 
-#include <QDeclarativeView>
-#include <QApplication>
-#include <QDebug>
-#include <QDir>
-#include <QtGui/QApplication>
-#include <QtDeclarative/QDeclarativeView>
-#include <QtDeclarative/QDeclarativeEngine>
-#include <QtDeclarative/QDeclarativeComponent>
-#include <QtDeclarative/QDeclarativeContext>
-#include <QtDeclarative/QDeclarativeItem>
-#include <QMetaObject>
-#include <QDeclarativeContext>
-#include <QDesktopWidget>
-#include <QGraphicsObject>
-#include <QDialog>
-#include <QProcess>
-#include "authdialog.h"
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <QtDBus>
-
 #include <string.h>
 #include "qtkeytrans.h"
+#include "tray.h"
 
 FcitxCfgWizard::FcitxCfgWizard(QObject *parent) :
     QObject(parent)
 {
     FcitxQtInputMethodItem::registerMetaType();
+
+//    QByteArray ba = m_string_q.toLatin1();
+//    m_string = ba.data();
+
 
     m_separator = "<5|13)";
     m_string = (char *)malloc(32);
@@ -69,38 +50,15 @@ FcitxCfgWizard::FcitxCfgWizard(QObject *parent) :
     m_connection->setAutoReconnect(true);
     m_connection->startConnection();
 
-    fcitxWarnSig = new FcitxWarnDialog();
-
-//    viewer_float = new QDeclarativeView;
-//    viewer_float->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
-//    viewer_float->setSource(QUrl::fromLocalFile("floatmain.qml"));
-////    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
-//    viewer_float->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-//    QObject *rootObject = dynamic_cast<QObject*>(viewer_float->rootObject());
-//    QObject::connect(tray, SIGNAL(showFloat()), rootObject, SLOT(show_float_frame()));
-//    viewer_float->rootContext()->setContextProperty("fmainwindow", viewer_float);
-//    viewer_float->setStyleSheet("background:transparent");
-//    viewer_float->setAttribute(Qt::WA_TranslucentBackground);
-//    viewer_float->setWindowFlags(Qt::FramelessWindowHint);
-//    QDesktopWidget* fdesktop = QApplication::desktop();
-//    viewer_float->move(fdesktop->width(), 0);
-//    viewer_float->show();
-
-    //connect FcitxConfigtool.qml
-//    view = new QDeclarativeView;
-//    view->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
-//    view->setSource(QUrl::fromLocalFile("FcitxConfigtool.qml"));
-////    view->setSource(QUrl("../qml/func/settings/FcitxConfigtool.qml"));
-//    view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-//    QObject *rootObject = dynamic_cast<QObject*>(view->rootObject());
+//    //connect FcitxConfigtool.qml
+//    QDeclarativeView *view_tool = new QDeclarativeView;
+//    view_tool->setSource(QUrl("../qml/func/settings/FcitxConfigtool.qml"));
+//    view_tool->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+//    QObject *rootObject = dynamic_cast<QObject*>(view_tool->rootObject());
 //    QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObject, SLOT(refreshFcitxtool()));
+    connect(m_connection, SIGNAL(connected()),SLOT(connected()));
 
-
-//    connect(fcitxWarnSig, SIGNAL(fcitxWarntest()),SLOT(handler_okBtn_fcitx_warn()));//测试信号
-//    connect(m_connection, SIGNAL(connected()),SLOT(connected()));
 }
-
-
 
 FcitxCfgWizard::~FcitxCfgWizard()
 {
@@ -111,11 +69,11 @@ FcitxCfgWizard::~FcitxCfgWizard()
     delete m_connection;
     if (m_improxy)
         delete m_improxy;
+    delete fcitxWarnSig;
 }
 
 bool FcitxCfgWizard::connected()
 {
-    qDebug() << "connected";
     if (!m_connection->isConnected())
         return false;
 
@@ -129,7 +87,6 @@ bool FcitxCfgWizard::connected()
 
     if (m_improxy == NULL || !m_improxy->isValid())
         return false;
-
     return true;
 }
 
@@ -162,7 +119,6 @@ QStringList FcitxCfgWizard::get_im_list()
         //qDebug() << tmp;
     }
 
-    //Debug
     //this->set_im_list(ret_value);
 
     m_im_list = ret_value;
@@ -218,7 +174,7 @@ bool FcitxCfgWizard::set_im_list(QStringList im_list, bool real_save)
  * @return：返回为true表示获取成功，反之获取失败
  */
 bool FcitxCfgWizard::get_fcitx_cfg_value(char *cd_path_prefix, char *cd_file_name,
-    char *c_path_prefix, char *c_file_name, char *groupName, const char *optionName,
+    char *c_path_prefix, char *c_file_name, char *groupName,  const char *optionName,
     void *ret_value)
 {
     FILE *c_fp;
@@ -375,7 +331,7 @@ QString FcitxCfgWizard::get_font()
     if (get_fcitx_cfg_value("configdesc", "fcitx-classic-ui.desc", "conf",
         "fcitx-classic-ui.config", "ClassicUI", "Font", &m_font))
     {
-        qDebug() << "lenky get_font():" << m_font;
+//        qDebug() << "lenky get_font():" << m_font;
         return m_font;
     }
 
@@ -397,7 +353,7 @@ int FcitxCfgWizard::get_candidate_word_number()
     if (get_fcitx_cfg_value("configdesc", "config.desc", "", "config", "Output",
         "CandidateWordNumber", &m_candidate_word_number))
     {
-        qDebug() << "lenky get_candidate_word_number():" << m_candidate_word_number;
+//        qDebug() << "lenky get_candidate_word_number():" << m_candidate_word_number;
         return m_candidate_word_number;
     }
 
@@ -419,7 +375,7 @@ int FcitxCfgWizard::get_font_size()
     if (get_fcitx_cfg_value("configdesc", "fcitx-classic-ui.desc", "conf",
         "fcitx-classic-ui.config", "ClassicUI", "FontSize", &m_font_size))
     {
-        qDebug() << "lenky get_font_size():" << m_font_size;
+//        qDebug() << "lenky get_font_size():" << m_font_size;
         return m_font_size;
     }
 
@@ -441,7 +397,7 @@ bool FcitxCfgWizard::get_vertical_list()
     if (get_fcitx_cfg_value("configdesc", "fcitx-classic-ui.desc", "conf",
         "fcitx-classic-ui.config", "ClassicUI", "VerticalList", &m_vertical_list))
     {
-        qDebug() << "lenky get_vertical_list():" << m_vertical_list;
+//        qDebug() << "lenky get_vertical_list():" << m_vertical_list;
         return m_vertical_list;
     }
 
@@ -482,7 +438,7 @@ QString FcitxCfgWizard::get_trigger_key_second()
         else
             return m_trigger_key.hotkey[1].desc;
     }
-    qDebug() << "lenky get_trigger_key_second():" << m_trigger_key.hotkey[1].desc;
+//    qDebug() << "lenky get_trigger_key_second():" << m_trigger_key.hotkey[1].desc;
     return "Empty";
 }
 
@@ -522,7 +478,7 @@ QString FcitxCfgWizard::get_prev_page_key_first()
         else
             return m_prev_page_key.hotkey[0].desc;
     }
-    qDebug() << "lenky get_prev_page_key_first():" << m_prev_page_key.hotkey[0].desc;
+//    qDebug() << "lenky get_prev_page_key_first():" << m_prev_page_key.hotkey[0].desc;
     return "Empty";
 }
 
@@ -629,7 +585,7 @@ int FcitxCfgWizard::get_im_switch_hot_key()
     if (get_fcitx_cfg_value("configdesc", "config.desc", "", "config", "Hotkey",
         "IMSwitchHotkey", &m_im_switch_hot_key))
     {
-        qDebug() << "lenky get_im_switch_hot_key():" << m_im_switch_hot_key;
+//        qDebug() << "lenky get_im_switch_hot_key():" << m_im_switch_hot_key;
         return m_im_switch_hot_key;
     }
 
@@ -653,7 +609,7 @@ bool FcitxCfgWizard::get_im_switch_key()
     if (get_fcitx_cfg_value("configdesc", "config.desc", "", "config", "Hotkey",
         "IMSwitchKey", &m_im_switch_key))
     {
-        qDebug() << "lenky get_im_switch_hot_key():" << m_im_switch_key;
+//        qDebug() << "lenky get_im_switch_hot_key():" << m_im_switch_key;
         return m_im_switch_key;
     }
 
@@ -677,7 +633,7 @@ QString FcitxCfgWizard::get_skin_type()
     if (get_fcitx_cfg_value("configdesc", "fcitx-classic-ui.desc", "conf",
         "fcitx-classic-ui.config", "ClassicUI", "SkinType", &m_skin_type))
     {
-        qDebug() << "lenky get_font():" << m_skin_type;
+//        qDebug() << "lenky get_font():" << m_skin_type;
         return m_skin_type;
     }
     return "";
@@ -815,56 +771,24 @@ QString FcitxCfgWizard::get_fcitx_hot_key_string(unsigned int qtcode, unsigned i
         return "";
 
     ret_value = deal_R_L_diff(ret_value);
-    qDebug() << ret_value;
+//    qDebug() << ret_value;
 
     return ret_value;
 }
-
 
 void FcitxCfgWizard::send_fcitx_ok_warn()
 {
     create_fcitx_ok_warn();
 }
+
 void FcitxCfgWizard::create_fcitx_ok_warn()
 {
- //   FcitxWarnDialog *app = new FcitxWarnDialog;
+      fcitxWarnSig = new FcitxWarnDialog();
+      connect(fcitxWarnSig,SIGNAL(fcitxWarntest()),this,SLOT(emitrefreshFcitxSig()));
       fcitxWarnSig->exec();
 }
 
-void FcitxCfgWizard::handler_okBtn_fcitx_warn(){
-
-
-//    //connect FcitxConfigtoolFont.qml
-//     view = new QDeclarativeView;
-//     view->setSource(QUrl("../qml/func/settings/FcitxConfigtoolFont.qml"));
-//     view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-//     QObject *rootObjectFont = dynamic_cast<QObject*>(view->rootObject());
-//     QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObjectFont, SLOT(refreshFcitxFont()));
-
-//     //connect FcitxConfigtoolKey.qml
-//      view = new QDeclarativeView;
-//      view->setSource(QUrl("../qml/func/settings/FcitxConfigtoolKey.qml"));
-//      view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-//      QObject *rootObjectKey = dynamic_cast<QObject*>(view->rootObject());
-//      QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObjectKey, SLOT(refreshFcitxKey()));
-
-//        delete fcitxWarnSig;
-
-}
-
-inline bool isRunningInstalled() {
-    static bool installed = (QCoreApplication::applicationDirPath() ==
-                             QDir(("/usr/bin")).canonicalPath());
-    return installed;
-}
-
-inline QString getAppDirectory() {
-    if (isRunningInstalled()) {
-        qDebug() << QCoreApplication::applicationDirPath();
-        return QString("/usr/share/youker-assistant/qml/");
-//        return QString("/usr/share/youker-assistant/qml/main.qml");
-    } else {
-//        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");
-        return QString(QCoreApplication::applicationDirPath() + "/../qml/func/settings/");
-    }
+void FcitxCfgWizard::emitrefreshFcitxSig()
+{
+    emit refreshFcitxSig();
 }
