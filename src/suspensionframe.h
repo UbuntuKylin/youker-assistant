@@ -17,7 +17,7 @@
 #define SUSPENSIONFRAME_H
 
 #include <QWidget>
-
+#include <QtGui>
 namespace Ui {
 class SuspensionFrame;
 }
@@ -32,6 +32,17 @@ public:
     
 private:
     Ui::SuspensionFrame *ui;
+    QPoint dragPos;
+signals:
+    void accelerate_memory();
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+private slots:
+    void on_descBtn_clicked();
+    void get_sysc_data(QStringList speed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
+    void on_fastBtn_clicked();
 };
 
 #endif // SUSPENSIONFRAME_H

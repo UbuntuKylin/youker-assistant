@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
-    <height>350</height>
+    <width>84</width>
+    <height>48</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,6 +16,77 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
+  <widget class="QLabel" name="uplabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>12</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 7pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>10K/s</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="downlabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>27</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 7pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>20K/s</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ratiolabel">
+   <property name="geometry">
+    <rect>
+     <x>54</x>
+     <y>19</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 9pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>80%</string>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>84</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/accelerate-bg0.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>uplabel</zorder>
+  <zorder>downlabel</zorder>
+  <zorder>ratiolabel</zorder>
  </widget>
  <resources/>
  <connections/>

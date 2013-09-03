@@ -54,7 +54,8 @@ HEADERS += youker-application.h \
     qtkeytransdata.h \
     fcitxwarndialog.h \
     handler.h \
-    KThread.h
+    KThread.h \
+    suspensionframe.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -89,7 +90,8 @@ SOURCES += main.cpp \
     fcitxcfgwizard.cpp \
     qtkeytrans.cpp \
     fcitxwarndialog.cpp \
-    KThread.cpp
+    KThread.cpp \
+    suspensionframe.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -101,5 +103,4 @@ FORMS += \
     restartdialog.ui \
     tray.ui \
     fcitxwarndialog.ui \
-    monitorball.ui \
     suspensionframe.ui

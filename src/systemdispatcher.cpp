@@ -168,7 +168,6 @@ void SystemDispatcher::restore_all_sound_file_qt(QString soundtheme) {
 //-----------------------------------------------
 
 //-----------------------monitorball------------------------
-//-----------------------sound------------------------
 double SystemDispatcher::get_cpu_percent_qt() {
     QDBusReply<double> reply = systemiface->call("get_cpu_percent");
     return reply.value();
@@ -187,6 +186,7 @@ QString SystemDispatcher::get_free_memory_qt() {
 }
 
 void SystemDispatcher::get_network_flow_qt() {
+//    systemiface->call("get_network_flow");
     KThread *thread = new KThread(systemiface, "get_network_flow");
     thread->start();
 }
@@ -269,12 +269,9 @@ QStringList SystemDispatcher::get_center_data() {
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
 //    systemiface->call("clean_by_main_one_key", strlist);
-//    qDebug() << "1111111";
     KThread *thread = new KThread(systemiface, "clean_by_main_one_key", strlist);
 //    qDebug() << KThread::currentThreadId();
-//    qDebug() << "222222";
     thread->start();
-//    qDebug() << "3333333";
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
 //    systemiface->call("clean_by_second_one_key", strlist);
