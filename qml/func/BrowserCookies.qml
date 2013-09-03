@@ -68,7 +68,9 @@ Item {
             }
 
             root.coo_sub_num -= num;
-            sub_num:coo_sub_num
+            sub_num=coo_sub_num
+            if(sub_num!=0)
+                check_flag=true;
             mainModel.clear();
             mainModel.append({"itemTitle": "清理Cookies ( 发现" + root.coo_sub_num + "处记录 )",
                              "picture": "../img/toolWidget/cookies.png",
@@ -169,11 +171,17 @@ Item {
         anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
         spacing: 20
         //status picture
-        Image {
+//        Image {
+//            id: statusImage
+//            source: "../img/toolWidget/unfinish.png"
+//            fillMode: "PreserveAspectFit"
+//            smooth: true
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+        Common.StatusImage {
             id: statusImage
-            source: "../img/toolWidget/unfinish.png"
-            fillMode: "PreserveAspectFit"
-            smooth: true
+            iconName: "yellow.png"
+            text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -188,7 +196,8 @@ Item {
             id: bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
+            text: root.btn_text
+            hoverimage: "green1.png"
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag)
@@ -214,6 +223,39 @@ Item {
                 console.log(root.sub_num)
             }
         }
+//        Common.Button {
+//            id: bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(root.check_flag)
+//                {
+//                //broswer cookies
+//                 if (btn_flag == "cookies_scan") {
+//                     cookies_signal("CookiesWork");
+//                     if(root.null_flag == true) {
+//                        root.state = "CookiesWorkEmpty";
+//                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                     }
+//                     else if(root.null_flag == false)
+//                        root.state = "CookiesWork";
+//                 }
+//                 else if (btn_flag == "cookies_work") {
+//                     systemdispatcher.set_user_homedir_qt();
+//                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+////                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+//                 }
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+//                console.log(root.sub_num)
+//            }
+//        }
     }
     //分割条
     Rectangle {
@@ -383,22 +425,22 @@ Item {
         State {
             name: "CookiesWork"
              PropertyChanges { target: label; visible: true; text: "cookies扫描完成"}
-             PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
+             PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; btn_flag: "cookies_work" }
         },
         State {
             name: "CookiesWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
-            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "CookiesWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
-            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
         }
     ]
 }

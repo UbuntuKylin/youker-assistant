@@ -42,18 +42,40 @@ Item {
          }
 
 //         anchors.right: parent.right; anchors.rightMargin: 5; y: 3; height: 32; spacing: 30
+
          Common.Button {
              id: okBtn
              visible: toolbar.showok
-             hoverimage: "../../img/icons/ok.png"
+             hoverimage: "green2.png"//../../img/icons/
+             text: "确定"
              width: 94; height: 29
              onClicked: toolbar.okBtnClicked()
          }
          Common.Button {
              id: quitBtn
-             hoverimage: "../../img/icons/back.png"
+             hoverimage: "gray1.png"//../../img/icons/
+             text: "返回"
              width: 94; height: 29
              onClicked: toolbar.quitBtnClicked()
          }
+
+         //         Common.Button {
+//             id: okBtn
+//             visible: toolbar.showok
+////             hoverimage: "../../img/icons/ok.png"
+//             text:"确认"
+//             width: 94; height: 29
+//             onClicked: toolbar.okBtnClicked()
+//         }
+//         Common.Button {
+//             id: quitBtn
+////             hoverimage: "../../img/icons/back.png"
+//             text:"返回"
+//             color1: "#d4d4d4"
+//             color2: "#b5b5b5"
+//             bordercolor:"#bebebe"
+//             width: 94; height: 29
+//             onClicked: toolbar.quitBtnClicked()
+//         }
      }
 }

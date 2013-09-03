@@ -194,8 +194,8 @@ Item {
             id: bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.btn_text
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.right: parent.right
             anchors.rightMargin: 50
             anchors.verticalCenter: parent.verticalCenter
@@ -209,6 +209,27 @@ Item {
                  }
             }
         }
+//        Common.Button {
+//            id: bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.right: parent.right
+//            anchors.rightMargin: 50
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                 if (btn_flag == "samenamefile_scan") {
+//                     root.state = "LargestFileWork";
+//                     samenamefile_signal("SamenameFileWork");
+//                 }
+//                 else if (btn_flag == "samenamefile_work") {
+////                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_samenamefile_args(), "samenamefile");
+//                 }
+//            }
+//        }
     }
     //分割条
     Rectangle {
@@ -375,13 +396,13 @@ Item {
         State {
             name: "SamenameFileWork"
             PropertyChanges { target: label; visible: true; text: "samenamefile扫描完成"}
-            PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; btn_flag: "samenamefile_work" }
         },
         State {
             name: "SamenameFileWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "samenamefile_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         }

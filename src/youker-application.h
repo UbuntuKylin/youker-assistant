@@ -22,8 +22,8 @@
 #include "QPoint"
 #include <QBoxLayout>
 #include <QStackedWidget>
-
-
+#include "tray.h"
+#include "handler.h"
 #include <QDBusInterface>
 #include <QDBusConnection>
 class IhuApplication : public QApplication
@@ -35,5 +35,10 @@ public:
     bool setup();
 private:
     QDeclarativeView *viewer;
+    QDeclarativeView *viewer_float;
+    QDeclarativeView *viewer_small;
+    QDeclarativeView *viewer_widget;
+    Tray *tray;
+    Handler *handler;
 };
 #endif // SYSTEMAPPLICATION_H

@@ -68,6 +68,8 @@ Item {
             }
             root.pac_sub_num -= num;
             sub_num= pac_sub_num
+            if(sub_num!=0)
+                check_flag=true;
             mainModel.clear();
             mainModel.append({"itemTitle": "卸载不必要的程序",
                              "picture": "../img/toolWidget/deb-min.png",
@@ -166,11 +168,17 @@ Item {
     Row{
         anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
         spacing: 20
-        Image {
+//        Image {
+//            id: statusImage
+//            source: "../img/toolWidget/unfinish.png"
+//            fillMode: "PreserveAspectFit"
+//            smooth: true
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+        Common.StatusImage {
             id: statusImage
-            source: "../img/toolWidget/unfinish.png"
-            fillMode: "PreserveAspectFit"
-            smooth: true
+            iconName: "yellow.png"
+            text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -185,8 +193,8 @@ Item {
             id: bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.btn_text
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag)
@@ -210,6 +218,37 @@ Item {
                 console.log(root.sub_num)
             }
         }
+//        Common.Button {
+//            id: bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(root.check_flag)
+//                {
+//                //package cruft
+//                 if (btn_flag == "package_scan") {
+//                     unneed_signal("UnneedWork");
+//                     if(root.null_flag == true) {
+//                        root.state = "UnneedWorkEmpty";
+//                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                     }
+//                     else if(root.null_flag == false)
+//                        root.state = "UnneedWork";
+//                 }
+//                 else if (btn_flag == "package_work") {
+//                     systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+//                 }
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+//                console.log(root.sub_num)
+//            }
+//        }
     }
 
     //分割条
@@ -381,22 +420,22 @@ Item {
         State {
             name: "UnneedWork"
             PropertyChanges { target: label; visible: true; text: "unneed扫描完成"}
-            PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; btn_flag: "package_work" }
         },
         State {
             name: "UnneedWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "UnneedWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
         }
     ]
 }

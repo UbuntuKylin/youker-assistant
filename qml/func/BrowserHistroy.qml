@@ -131,8 +131,8 @@ Item {
             id: bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.btn_text
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 //broswer history
@@ -161,6 +161,42 @@ Item {
                  }
             }
         }
+//        Common.Button {
+//            id: bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                //broswer history
+//                 if (btn_flag == "history_scan") {
+//                     if (systemdispatcher.get_history_flag()) {
+//                        history_bnt_signal("HistoryWork");
+//                         if(root.null_flag == true) {
+//                            root.state = "HistoryWorkEmpty";
+//                             sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                         }
+//                         else if(root.null_flag == false)
+//                            root.state = "HistoryWork";
+//                     }
+//                     else
+//                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！");
+////                     history_signal("HistoryWork");
+//                 }
+//                 else if (btn_flag == "history_work") {
+//                     if (systemdispatcher.get_history_flag()) {
+////                         sessiondispatcher.clean_history_records_qt();
+//                         systemdispatcher.set_user_homedir_qt();
+//                         systemdispatcher.clean_history_records_qt();
+//                     }
+//                     else
+//                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录清理项，请确认！");
+//                 }
+//            }
+//        }
 
     }//Row
 
@@ -195,9 +231,18 @@ Item {
 
 
 
-    Image {
+//    Image {
+//        id: historystatus
+//        source: "../img/toolWidget/unfinish.png"
+//        anchors {
+//            top: parent.top; topMargin: 120
+//            left: parent.left; leftMargin: 650
+//        }
+//    }
+    Common.StatusImage {
         id: historystatus
-        source: "../img/toolWidget/unfinish.png"
+        iconName: "yellow.png"
+        text: "未完成"
         anchors {
             top: parent.top; topMargin: 120
             left: parent.left; leftMargin: 650
@@ -223,22 +268,22 @@ Item {
         State {
             name: "HistoryWork"
             PropertyChanges { target: label; visible: true; text: "history扫描完成:" + root.num + "条记录"}
-             PropertyChanges { target: bitButton; hoverimage: "clear-start.png" }
+             PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; btn_flag: "history_work" }
         },
         State {
             name: "HistoryWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "history_scan" }
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: historystatus; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "HistoryWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "history_scan" }
-            PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: historystatus; iconName: "green.png"; text: "已完成"}
         }
     ]
 }

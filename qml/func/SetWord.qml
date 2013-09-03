@@ -28,20 +28,30 @@ Rectangle {
     property string flag: ""
 
     Text {
+        id:textname
+        anchors.centerIn: parent
         text: wordname
         font.pointSize: 10
         color: "#318d11"
     }
 
-    Image {
+    Rectangle {
         id: btnImg
-        anchors.fill: parent
-        source: ""
+        anchors.top: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: textname.width
+        height: 1
+        color: "transparent"
     }
 
     MouseArea {
         hoverEnabled: true
         anchors.fill: parent
+        onEntered: btnImg.color = "#318d11"
+        onPressed: btnImg.color = "#318d11"
+        //要判断松开是鼠标位置
+        onReleased: btnImg.color = "#318d11"
+        onExited: btnImg.color = "transparent"
         onClicked: {
             //屏幕坏点检测
             if (flag == "CheckScreen")

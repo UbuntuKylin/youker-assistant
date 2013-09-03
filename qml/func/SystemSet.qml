@@ -76,10 +76,10 @@ Item {
                         source: "../img/icons/themeset.png"
                     }
                     Column {
-                        spacing: 10
+                        spacing: 7
                         Text {
                             id: personaltext
-                            text: "个性化"
+                            text: " 个性化"
                             font.bold: true
     //                        font.pointSize: 12
                             font.pixelSize: 14
@@ -90,19 +90,19 @@ Item {
 //                            anchors.bottom: personal.bottom
 //                            anchors.bottomMargin: 10
                             spacing: 5
-                            SetWord {wordname: "更改窗口主题"; width: 80; flag: "WidgetTheme"}
+                            SetWord {wordname: "更改窗口主题"; width: 90; flag: "WidgetTheme"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "更改图标配置"; width: 80; flag: "DesktopiconSet"}
+                            SetWord {wordname: "更改图标配置"; width: 90; flag: "DesktopiconSet"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "更改鼠标指针"; width: 80; flag: "MousePointer"}
+                            SetWord {wordname: "更改鼠标指针"; width: 90; flag: "MousePointer"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "更改声音效果"; width: 80; flag: "SoundEffects"}
+                            SetWord {wordname: "更改声音效果"; width: 90; flag: "SoundEffects"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "更改开机动画"; width: 80; flag: "BootAnimation"}
+                            SetWord {wordname: "更改开机动画"; width: 90; flag: "BootAnimation"}
                         }
                     }
                 }
@@ -115,10 +115,10 @@ Item {
                         source: "../img/icons/unity.png"
                     }
                     Column {
-                        spacing: 10
+                        spacing: 7
                         Text {
                             id: unitytext
-                            text: "Unity"
+                            text: " Unity"
                             font.bold: true
                             font.pixelSize: 14
                             color: "#383838"
@@ -128,7 +128,7 @@ Item {
 //                            anchors.bottom: unity.bottom
 //                            anchors.bottomMargin: 10
                             spacing: 5
-                            SetWord {wordname: "自定义启动器"; width: 120; flag: "LauncherTheme"}
+                            SetWord {wordname: "自定义启动器"; width: 90; flag: "LauncherTheme"}
                         }
                     }
                 }
@@ -141,10 +141,10 @@ Item {
                         source: "../img/icons/font.png"
                     }
                     Column {
-                        spacing: 10
+                        spacing: 7
                         Text {
                             id: fonttext
-                            text: "字体"
+                            text: " 字体"
                             font.bold: true
     //                        font.pointSize: 12
                             font.pixelSize: 14
@@ -155,11 +155,11 @@ Item {
 //                            anchors.bottom: fontimage.bottom
 //                            anchors.bottomMargin: 10
                             spacing: 5
-                            SetWord {wordname: "更改默认字体设置"; width: 110; flag: "DefaultFont"}
+                            SetWord {wordname: "更改默认字体设置"; width: 120; flag: "DefaultFont"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "更改文档字体设置"; width: 110; flag: "DocumentFont"}
+                            SetWord {wordname: "更改文档字体设置"; width: 120; flag: "DocumentFont"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "更改窗口标题栏字体设置"; width: 140; flag: "TitlebarFont"}
+                            SetWord {wordname: "更改窗口标题栏字体设置"; width: 160; flag: "TitlebarFont"}
                         }
                     }
                 }
@@ -172,10 +172,10 @@ Item {
                         source: "../img/icons/systemset.png"
                     }
                     Column {
-                        spacing: 10
+                        spacing: 7
                         Text {
                             id: systext
-                            text: "系统选项"
+                            text: " 系统选项"
                             font.bold: true
     //                        font.pointSize: 12
                             font.pixelSize: 14
@@ -186,9 +186,9 @@ Item {
 //                            anchors.bottom: sysimage.bottom
 //                            anchors.bottomMargin: 10
                             spacing: 5
-                            SetWord {wordname: "更改触摸板设置"; width: 100; flag: "TouchpadSet"}
+                            SetWord {wordname: "更改触摸板设置"; width: 105; flag: "TouchpadSet"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc" }
-                            SetWord {wordname: "检测屏幕坏点"; width: 90; flag: "CheckScreen"}
+                            SetWord {wordname: "检测屏幕坏点"; width: 95; flag: "CheckScreen"}
                         }
                     }
                 }

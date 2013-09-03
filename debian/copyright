@@ -6,6 +6,49 @@ Source: https://launchpad.net/youker-assistant
 Files: *
 Copyright: 2013, National University of Defense Technology(NUDT) & Kylin Ltd.
 License: GPL-3
+
+Files: backends/youker-assistant-daemon/src/policykit/*
+Copyright: Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
+           Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+License: GPL-3
+
+Files: src/q*
+Copyright: Copyright (C) 2011 Nokia Corporation and/or its subsidiary(-ies).
+License: LGPL-2.1
+
+Files: src/qtkeytrans.cpp
+       src/qtkeytrans.h
+       src/qtkeytransdata.h
+Copyright: Copyright (C) 2012~2012 by CSSlayer
+License: GPL-2+
+
+Files: backends/youker-assistant-daemon/src/systemdbus/server.py
+Copyright: Copyright (C) 2008 Fluendo Embedded S.L.
+           Copyright (C) 2010 TualatriX <tualatrix@gmail.com>
+           Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+License: GPL-2+
+
+License: LGPL-2.1
+ This file may be used under the terms of the GNU Lesser
+ General Public License version 2.1 as published by the Free Software
+ Foundation and appearing in the file LICENSE.LGPL included in the
+ packaging of this file.  Please review the following information to
+ ensure the GNU Lesser General Public License version 2.1 requirements
+ will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ .
+ On Debian systems, the complete text of the LGPL-2.1 license can be found in
+ `/usr/share/common-licenses/LGPL-2.1`.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of
+ the License, or (at your option) any later version.
+ .
+ On Debian and Ubuntu systems, a copy of the GNU General Public License version
+ 2 may be found in the file /usr/share/common-licenses/GPL-2.
+
+License: GPL-3
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License version 3 as
  published by the Free Software Foundation.

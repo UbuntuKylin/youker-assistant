@@ -29,12 +29,6 @@
 class SystemDispatcher : public QObject
 {
     Q_OBJECT
-//    Q_PROPERTY(QNOTIFY addBootImage)
-//    Q_PROPERTY(QNOTIFY finishCleanWork)
-//    Q_PROPERTY(QNOTIFY finishCleanWorkMain)
-//    Q_PROPERTY(QNOTIFY finishCleanWorkMainError)
-//    Q_PROPERTY(QNOTIFY finishCleanWorkSecond)
-//    Q_PROPERTY(QNOTIFY finishCleanWorkSecondError)
 public:
     explicit SystemDispatcher(QObject *parent = 0);
     Q_INVOKABLE int get_add_value();
@@ -77,6 +71,16 @@ public:
     Q_INVOKABLE void restore_sound_file_qt(QString targetfile);
     Q_INVOKABLE void restore_all_sound_file_qt(QString soundtheme);
     //-----------------------------------------------
+
+    //-----------------------sound------------------------
+    Q_INVOKABLE double get_cpu_percent_qt();
+    Q_INVOKABLE QString get_total_memory_qt();
+    Q_INVOKABLE QString get_used_memory_qt();
+    Q_INVOKABLE QString get_free_memory_qt();
+    Q_INVOKABLE QStringList get_network_flow_qt();
+    Q_INVOKABLE void cleanup_memory_qt();
+    //-----------------------------------------------
+
     //-----------------------others------------------------
     Q_INVOKABLE void custom_plymouth_bg_qt(QString plymouthName);
     Q_INVOKABLE void add_new_plymouth_qt(QString customBG, QString plymouthName);

@@ -27,7 +27,7 @@ Item {
     id:root
     width: parent.width
     height: 435//475
-    property string btn_text: "开始扫描"
+    property string btn_text: "开始清理"
     property string title: "快速找出最占用磁盘空间的大文件"
     property string description: "删除占用磁盘空间的无用大文件，释放更多磁盘空间。"
     property string btn_flag: "largestfile_work"
@@ -36,6 +36,8 @@ Item {
     property ListModel submodel: subModel
     property int sub_num: 0
     property string work_result: ""
+    property int lar_num: sub_num
+    property int check_num:sub_num
     //箭头图标
     property string arrow: '../img/icons/arrow.png'
     //母项字体
@@ -56,6 +58,8 @@ Item {
 
 
     function refresh_page() {
+        sub_num=0;
+        check_num=0
 //        var largestfile_data = systemdispatcher.scan_of_large_qt(root.directory);
         var largestfile_data = sessiondispatcher.scan_of_large_qt(root.directory);
         if (largestfile_data == "")
@@ -78,6 +82,11 @@ Item {
             }
         }
         root.sub_num -= num;
+        lar_num=sub_num;
+        check_num=sub_num;
+        if(check_num!=0)
+            check_flag=true;
+
         mainModel.clear();
         mainModel.append({"itemTitle": "清理最大文件",
                          "picture": "../img/toolWidget/deb-min.png",
@@ -179,11 +188,17 @@ Item {
     Row{
         anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 40 }
         spacing: 20
-        Image {
+//        Image {
+//            id: statusImage
+//            source: "../img/toolWidget/unfinish.png"
+//            fillMode: "PreserveAspectFit"
+//            smooth: true
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+        Common.StatusImage {
             id: statusImage
-            source: "../img/toolWidget/unfinish.png"
-            fillMode: "PreserveAspectFit"
-            smooth: true
+            iconName: "yellow.png"
+            text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -197,7 +212,8 @@ Item {
             id: bitButton
             width: 120
             height: 39
-            hoverimage: "clear-start.png"
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if (root.directory == "")
@@ -215,6 +231,37 @@ Item {
                 }
             }
         }
+
+//        Common.Button {
+//            id: bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "clear-start.png"
+//            text:"开始清理"
+//            textsize: 12
+//            bold:true
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(root.check_flag)
+//                {
+//                    if (root.directory == "")
+//                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
+//                    else {
+//                        if(root.null_flag == true) {
+//                           root.state = "LargestFileWorkEmpty";
+//                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                        }
+//                        else if(root.null_flag == false) {
+//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//    //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//                            root.state = "LargestFileWorkFinish";
+//                        }
+//                    }
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+//            }
+//        }
     }
     //分割条
     Rectangle {
@@ -246,9 +293,16 @@ Item {
                 x: 5; y: 2
                 width: root.width
                 height: root.itemHeight
-                spacing: 360
+                spacing: 335
                 Row{
                     spacing: 15
+                    Common.MainCheckBox{
+                        id:check
+                        checked:"true"
+                        anchors.verticalCenter: parent.verticalCenter
+                        onCheckedChanged: {
+                        }
+                    }
                     Image {
                         id: clearImage
                         fillMode: "PreserveAspectFit"
@@ -279,7 +333,8 @@ Item {
                     Common.Button {
                         id: selectBtn
                         anchors.verticalCenter: parent.verticalCenter
-                        hoverimage: "browser-green.png"
+                        hoverimage: "blue1.png"
+                        text: "浏览..."
                         width: 95
                         height: 30
                         onClicked: {
@@ -290,6 +345,33 @@ Item {
                             }
                         }
                     }
+
+//                    Common.Button {
+//                        id: selectBtn
+//                        anchors.verticalCenter: parent.verticalCenter
+////                        hoverimage: "browser-green.png"
+//                        text:"浏览"
+//                        color1: "#acdbf9"
+//                        color2: "#7cb9e5"
+//                        bordercolor: "#89b5d0"
+//                        textsize: 11
+//                        width: 95
+//                        height: 30
+//                        onClicked: {
+//                            console.log(check_num);
+//                            if(root.check_flag)
+//                            {
+//                                console.log(root.check_flag);
+//                                root.directory = sessiondispatcher.show_folder_dialog();
+//                                if (root.directory != "") {
+//                                    refresh_page();
+//                                    root.state = "LargestFileWorkAgain";
+//                                }
+//                            }
+//                            else
+//                                sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要浏览的项，请确认！");
+//                        }
+//                    }
 
                     Image {
                         id: arrow
@@ -308,6 +390,10 @@ Item {
                             anchors.fill: parent
                             onPressed: {
                                 expanded = !expanded
+                                if(lar_num==sub_num)
+                                    lar_num=0;
+                                else
+                                    lar_num=sub_num;
                             }
                         }
                     }
@@ -349,7 +435,7 @@ Item {
                             text: itemTitle
                             descript: desc
 //                            size_num: number
-                            checkbox_status: root.check_flag
+                            checkbox_status: check.checkedbool
 //                            bgImage: "../../img/icons/list_subitem.png"
                             bgImage: ""
                             fontName: root.subItemFontName
@@ -360,6 +446,28 @@ Item {
                             btn_flag: root.btn_flag
 
                             onClicked: {}
+                            onChange_num: {
+                                if(sub_num!=0)
+                                {
+//                                    console.log(check_status);
+                                    if(check_status==true)
+                                        check_num=check_num+1;
+                                    else
+                                        check_num=check_num-1;
+                                    if(check_num ==0&&check.checked!="false")
+                                        check.checked="false";
+                                    else if(check_num ==sub_num&&check.checked!= "true")
+                                        check.checked="true";
+                                    else
+                                        check.checked="mid";
+                                }
+                                if(check.checked=="true"||check_num>0)
+                                    check_flag=true;
+                                else
+                                    check_flag=false;
+                                console.log(check_num);
+
+                            }
                         }
 
                     }//Repeater
@@ -377,7 +485,7 @@ Item {
         width: parent.width
         Item {
             width: parent.width
-            height: (root.sub_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
+            height: (root.lar_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
             //垃圾清理显示内容
             ListView {
                 id: listView
@@ -401,15 +509,15 @@ Item {
     states: [
         State {
             name: "LargestFileWorkAgain"
-            PropertyChanges { target: statusImage; source: "../img/toolWidget/unfinish.png"}
+            PropertyChanges { target: statusImage; iconName: "yellow.png"; text: "未完成"}
         },
         State {
             name: "LargestFileWorkFinish"
-            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "LargestFileWorkEmpty"
-            PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
         }
     ]
 }

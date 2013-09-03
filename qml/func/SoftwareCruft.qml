@@ -29,6 +29,7 @@ Item {
     property string sof_title: "软件中心缓存深度清理"
     property string sof_description: "深度清理软件中心缓存,节省磁盘空间"
     property string sof_btn_flag: "software_scan"
+    property string btn_text: "开始扫描"
     property SystemDispatcher dis: systemdispatcher
     property int sof_sub_num: 0
     property string sof_work_result: ""
@@ -72,6 +73,8 @@ Item {
             }
             root.sof_sub_num -= num;
             sof_num=sof_sub_num
+            if(sof_num!=0)
+                check_flag=true;
             sof_mainModel.clear();
             sof_mainModel.append({"itemTitle": "软件中心缓存清理",
                              "picture": "../img/toolWidget/software-min.png",
@@ -173,11 +176,17 @@ Item {
         spacing: 20
 
         //status picture
-        Image {
+//        Image {
+//            id: sof_statusImage
+//            source: "../img/toolWidget/unfinish.png"
+//            fillMode: "PreserveAspectFit"
+//            smooth: true
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+        Common.StatusImage {
             id: sof_statusImage
-            source: "../img/toolWidget/unfinish.png"
-            fillMode: "PreserveAspectFit"
-            smooth: true
+            iconName: "yellow.png"
+            text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -188,12 +197,13 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
 
+
         Common.Button {
             id: sof_bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.sof_btn_text
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.sof_check_flag)
@@ -218,6 +228,38 @@ Item {
                 console.log(root.sub_num)
             }
         }
+//        Common.Button {
+//            id: sof_bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(root.sof_check_flag)
+//                {
+//                //software cruft
+//                 if (sof_btn_flag == "software_scan") {
+//                     software_signal("SoftwareWork");
+//                     if(root.sof_null_flag == true) {
+//                        root.state = "SoftwareWorkEmpty";
+//                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                     }
+//                     else if(root.sof_null_flag == false)
+//                        root.state = "SoftwareWork";
+//                 }
+//                 else if (sof_btn_flag == "software_work") {
+//                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
+////                     sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
+//                 }
+//                }
+//                else
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+//                console.log(root.sub_num)
+//            }
+//        }
     }
     //分割条
     Rectangle {
@@ -388,22 +430,22 @@ Item {
         State {
             name: "SoftwareWork"
              PropertyChanges { target: sof_label; visible: true; text: "software扫描完成"}
-             PropertyChanges { target: sof_bitButton; hoverimage: "clear-start.png" }
+             PropertyChanges { target: sof_bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; sof_btn_flag: "software_work" }
         },
         State {
             name: "SoftwareWorkFinish"
             PropertyChanges { target: sof_label; visible: true; text: root.sof_work_result + "清理完毕！" }
-            PropertyChanges { target: sof_bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: sof_statusImage; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "SoftwareWorkEmpty"
             PropertyChanges { target: sof_label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: sof_bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: sof_statusImage; iconName: "green.png"; text: "已完成"}
         }
     ]
 }

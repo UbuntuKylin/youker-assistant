@@ -79,7 +79,7 @@ class MonitorBall:
 			downs = str(k_down)
  			downs = downs[0:downs.find(".") + 2]
 			
-			return (float(ups), float(downs))
+			return (ups, downs)
 		else:
 			return None
 

@@ -65,6 +65,8 @@ Item {
             }
             root.apt_sub_num -= num;
             apt_num=apt_sub_num
+            if(apt_num!=0)
+                check_flag=true;
             apt_mainModel.clear();
             apt_mainModel.append({"itemTitle": "包管理清理",
                              "picture": "../img/toolWidget/apt-min.png",
@@ -156,11 +158,17 @@ Item {
         spacing: 20
 
         //status picture
-        Image {
+//        Image {
+//            id: apt_statusImage
+//            source: "../img/toolWidget/unfinish.png"
+//            fillMode: "PreserveAspectFit"
+//            smooth: true
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+        Common.StatusImage {
             id: apt_statusImage
-            source: "../img/toolWidget/unfinish.png"
-            fillMode: "PreserveAspectFit"
-            smooth: true
+            iconName: "yellow.png"
+            text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -172,13 +180,12 @@ Item {
         }
 
 
-
         Common.Button {
             id: apt_bitButton
             width: 120
             height: 39
-            hoverimage: "scan-start.png"
-//            text: root.btn_text
+            hoverimage: "green1.png"
+            text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(apt_check_flag)
@@ -201,6 +208,36 @@ Item {
                      sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
             }
         }
+//        Common.Button {
+//            id: apt_bitButton
+//            width: 120
+//            height: 39
+////            hoverimage: "scan-start.png"
+//            text:"开始扫描"
+//            bold:true
+//            textsize: 12
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(apt_check_flag)
+//                {
+//                //apt cruft
+//                 if (apt_btn_flag == "apt_scan") {
+//                     apt_signal("AptWork");
+//                     if(root.apt_null_flag == true) {
+//                        root.state = "AptWorkEmpty";
+//                        sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                     }
+//                     else if(root.apt_null_flag == false)
+//                        root.state = "AptWork";
+//                 }
+//                 else if (apt_btn_flag == "apt_work") {
+//                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
+//                 }
+//                }
+//                else
+//                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
+//            }
+//        }
     }
     //分割条
     Rectangle {
@@ -368,23 +405,23 @@ Item {
         State {
             name: "AptWork"
              PropertyChanges { target: apt_label; visible: true; text: "apt扫描完成"}
-             PropertyChanges { target: apt_bitButton; hoverimage: "clear-start.png" }
+             PropertyChanges { target: apt_bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; apt_btn_flag: "apt_work" }
         },
 
         State {
             name: "AptWorkFinish"
             PropertyChanges { target: apt_label; visible: true; text: root.apt_work_result + "清理完毕！" }
-            PropertyChanges { target: apt_bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
-            PropertyChanges { target: apt_statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: apt_statusImage; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "AptWorkEmpty"
             PropertyChanges { target: apt_label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: apt_bitButton; hoverimage: "scan-start.png" }
+            PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
-            PropertyChanges { target: apt_statusImage; source: "../img/toolWidget/finish.png"}
+            PropertyChanges { target: apt_statusImage; iconName: "green.png"; text: "已完成"}
         }
     ]
 }

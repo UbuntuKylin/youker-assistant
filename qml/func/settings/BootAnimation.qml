@@ -39,6 +39,7 @@ Rectangle {
     property string actiontext: "点击“自定义图片”按钮选择您需要添加到列表中的图片，在列表中选中您要设置的图片名称，点击“确定”按钮完成设置。"
     property int num: 0
     property string selectedimage: ""
+
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -119,10 +120,12 @@ Rectangle {
             id: previewzone
             source: "../../img/icons/previewzone.png"
         }
+
         Common.Button {
             width: 134
             height: 35
-            hoverimage: "selectpic.png"
+            hoverimage: "blue3.png"
+            text: "自定义图片"
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 bootimagepage.image_path = systemdispatcher.show_file_dialog("bootanimation");
@@ -133,6 +136,25 @@ Rectangle {
                 systemdispatcher.send_boot_signal();
             }
         }
+//        Common.Button {
+//            width: 134
+//            height: 35
+//            text: "自定义图片"
+//            color1: "#57bffc"
+//            color2: "#2384c8"
+//            bordercolor: "#31a0ee"
+//            bold:true
+//            textsize: 12
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            onClicked: {
+//                bootimagepage.image_path = systemdispatcher.show_file_dialog("bootanimation");
+//                bootimage.source = bootimagepage.image_path;
+//                var imagename = bootimagepage.image_path;
+//                imagename = imagename.substr(imagename.lastIndexOf("/") + 1, imagename.length - imagename.lastIndexOf("/"));
+//                systemdispatcher.add_new_plymouth_qt(bootimagepage.image_path, imagename);
+//                systemdispatcher.send_boot_signal();
+//            }
+//        }
     }
 
     Image {

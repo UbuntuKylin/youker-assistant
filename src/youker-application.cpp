@@ -44,6 +44,8 @@ extern QString passwd;
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {
+    tray = new Tray();
+    handler = new Handler();
 
 }
 inline bool isRunningInstalled() {
@@ -94,6 +96,61 @@ bool IhuApplication::setup()
     viewer->move(centerW, centerH);
     viewer->show();
 
+
+
+
+    viewer_small = new QDeclarativeView;
+    viewer_small->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+    viewer_small->setSource(QUrl::fromLocalFile("Smallfloat.qml"));
+//    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
+    viewer_small->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    QObject *srootObject = dynamic_cast<QObject*>(viewer_small->rootObject());
+    QObject::connect(srootObject, SIGNAL(send_signal_to_large()), handler, SLOT(signalHandler()));
+    QObject::connect(tray, SIGNAL(showFloat()), srootObject, SLOT(show_float_frame()));
+    viewer_small->rootContext()->setContextProperty("smallwindow", viewer_small);
+    viewer_small->setStyleSheet("background:transparent");
+    viewer_small->setAttribute(Qt::WA_TranslucentBackground);
+    viewer_small->setWindowFlags(Qt::FramelessWindowHint);
+    QDesktopWidget* sdesktop = QApplication::desktop();
+    viewer_small->move(sdesktop->width(), 0);
+    viewer_small->show();
+
+    viewer_float = new QDeclarativeView;
+    viewer_float->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+    viewer_float->setSource(QUrl::fromLocalFile("floatmain.qml"));
+//    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
+    viewer_float->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    QObject *rootObject = dynamic_cast<QObject*>(viewer_float->rootObject());
+//    QObject::connect(tray, SIGNAL(showFloat()), rootObject, SLOT(show_float_frame()));
+    QObject::connect(handler, SIGNAL(trans_signal_between_qml()), rootObject, SLOT(show_large_widget()));
+    QObject::connect(tray, SIGNAL(showFloat()), rootObject, SLOT(show_large_frame()));
+    viewer_float->rootContext()->setContextProperty("fmainwindow", viewer_float);
+    viewer_float->setStyleSheet("background:transparent");
+    viewer_float->setAttribute(Qt::WA_TranslucentBackground);
+    viewer_float->setWindowFlags(Qt::FramelessWindowHint);
+    QDesktopWidget* fdesktop = QApplication::desktop();
+    viewer_float->move(fdesktop->width(), 0);
+    viewer_float->show();
+
+
+
+
+
+//    viewer_widget = new QDeclarativeView;
+//    viewer_widget->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+//    viewer_widget->setSource(QUrl::fromLocalFile("viewmain.qml"));
+////    viewer_float->setSource(QUrl("../qml/floatmain.qml"));
+////    viewer_widget->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+////    QObject *rootview = dynamic_cast<QObject*>(viewer_widget->rootObject());
+////    QObject::connect(viewer_float, SIGNAL(showWidget()), rootview, SLOT(show_float_view()));
+//    viewer_widget->rootContext()->setContextProperty("vmainwindow", viewer_widget);
+//    viewer_widget->setStyleSheet("background:transparent");
+//    viewer_widget->setAttribute(Qt::WA_TranslucentBackground);
+//    viewer_widget->setWindowFlags(Qt::FramelessWindowHint);
+//    QDesktopWidget* vdesktop = QApplication::desktop();
+//    viewer_widget->move(vdesktop->width(), vdesktop->height()/2);
+//    viewer_widget->show();
+
     return true;
 }
 
@@ -102,5 +159,13 @@ IhuApplication::~IhuApplication()
     if (viewer) {
         delete viewer;
     }
+    if (viewer_float) {
+        delete viewer_float;
+    }
+    if (tray) {
+        delete tray;
+    }
+    if (viewer_small)
+        delete viewer_small;
 }
 

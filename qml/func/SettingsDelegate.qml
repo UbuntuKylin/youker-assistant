@@ -106,6 +106,13 @@ Rectangle {
 //                    pageStack.push(component_boot);
 //                }
             }
+            else if(flag == "FcitxConfigtool")
+            {
+                pageStack.push(fcitxConfigtoolpage);//kobe08
+
+//                scaleMe.emitFcitxRefresh();
+
+            }
 //            else
 //                iconClicked();
             //kobe:选中项深色块移动

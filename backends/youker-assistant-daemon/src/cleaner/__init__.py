@@ -19,8 +19,8 @@ import os
 import sys
 import apt
 import apt_pkg
-import pprint
 import shutil
+import commands
 from apt.progress import InstallProgress, TextFetchProgress
 
 
@@ -52,35 +52,35 @@ class OneKeyClean():
     def get_user_homedir(self, homedir):
         self.homedir = homedir
 
-    def get_scan_resault_system(self, mode_list):
-        resault_dic = {}
+    def get_scan_result_system(self, mode_list):
+        result_dic = {}
         flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
         for mode in mode_list:
             flag_dic['%s' % mode] = True
         ### the part of unneed
         if flag_dic['unneed']:
             unneed_list = []
-            tmp_unneed_list = self.objunneed.get_scan_resault()
+            tmp_unneed_list = self.objunneed.get_scan_result()
             for record in tmp_unneed_list:
-                resaultunneed = record.split('<2_2>')[0]
-                unneed_list.append(resaultunneed)
-            resault_dic['unneed'] = unneed_list
+                resultunneed = record.split('<2_2>')[0]
+                unneed_list.append(resultunneed)
+            result_dic['unneed'] = unneed_list
         ### the part of cache
         if flag_dic['cache']:
             cache_list = []
-            tmp_cache_dic = self.objcache.get_scan_resault(self.homedir)
+            tmp_cache_dic = self.objcache.get_scan_result(self.homedir)
             for k in tmp_cache_dic:
                 tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
                 for one in tmp_cache_list:
-                    resaultcache = one.split('<2_2>')[0]
-                    cache_list.append(resaultcache)
-            resault_dic['cache'] = cache_list
-        return resault_dic
+                    resultcache = one.split('<2_2>')[0]
+                    cache_list.append(resultcache)
+            result_dic['cache'] = cache_list
+        return result_dic
 
 
-    def get_scan_resault(self, mode_list):
+    def get_scan_result(self, mode_list):
         global HOMEDIR
-        resault_dic = {}
+        result_dic = {}
         flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
         for mode in mode_list:
             flag_dic['%s' % mode] = True
@@ -88,61 +88,61 @@ class OneKeyClean():
         if flag_dic['history']:
             history_list = []
             objhistory = CleanTheHistory()
-            tmp_history_list = objhistory.get_scan_resault(HOMEDIR)
+            tmp_history_list = objhistory.get_scan_result(HOMEDIR)
             #tmp_history_str = '<1_1>'.join(tmp_history_list)
             for record in tmp_history_list:
-                resaulthistory = record.split('<2_2>')[0]
-                history_list.append(resaulthistory)
-            resault_dic['history'] = history_list
+                resulthistory = record.split('<2_2>')[0]
+                history_list.append(resulthistory)
+            result_dic['history'] = history_list
             del objhistory
 
         ### the part of cookies
         if flag_dic['cookies']:
             cookies_list = []
             objcookies = CleanTheCookies()
-            tmp_cookies_list = objcookies.get_scan_resault(HOMEDIR)
+            tmp_cookies_list = objcookies.get_scan_result(HOMEDIR)
             for record in tmp_cookies_list:
-                resaultcookies = record.split('<2_2>')[0]
-                cookies_list.append(resaultcookies)
+                resultcookies = record.split('<2_2>')[0]
+                cookies_list.append(resultcookies)
             #tmp_cookies_str = '<1_1>'.join(tmp_cookies_list)
-            resault_dic['cookies'] = cookies_list
+            result_dic['cookies'] = cookies_list
             del objcookies
 
         ### the part of unneed
         if flag_dic['unneed']:
             unneed_list = []
-            tmp_unneed_list = self.objunneed.get_scan_resault()
+            tmp_unneed_list = self.objunneed.get_scan_result()
             for record in tmp_unneed_list:
-                resaultunneed = record.split('<2_2>')[0]
-                unneed_list.append(resaultunneed)
+                resultunneed = record.split('<2_2>')[0]
+                unneed_list.append(resultunneed)
             #tmp_unneed_str = '<1_1>'.join(tmp_unneed_list)
-            resault_dic['unneed'] = unneed_list
+            result_dic['unneed'] = unneed_list
 
         ### the part of cache
         if flag_dic['cache']:
             cache_list = []
-            tmp_cache_dic = self.objcache.get_scan_resault(HOMEDIR)
+            tmp_cache_dic = self.objcache.get_scan_result(HOMEDIR)
             for k in tmp_cache_dic:
                 tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
                 for one in tmp_cache_list:
-                    resaultcache = one.split('<2_2>')[0]
-                    cache_list.append(resaultcache)
-            resault_dic['cache'] = cache_list
+                    resultcache = one.split('<2_2>')[0]
+                    cache_list.append(resultcache)
+            result_dic['cache'] = cache_list
 
         # the part of same
-        #tmp_same_list = self.objsame.get_scan_resault()
+        #tmp_same_list = self.objsame.get_scan_result()
         #tmp_same_str = '<1_1>'.join(tmp_same_list)
-        #self.resault_dic['same'] = tmp_same_str
+        #self.result_dic['same'] = tmp_same_str
 
         # the part of large
-        #tmp_large_list = self.objlarge.get_scan_resault()
+        #tmp_large_list = self.objlarge.get_scan_result()
         #tmp_large_str = '<1_1>'.join(tmp_large_list)
-        #self.resault_dic['large'] = tmp_large_str
+        #self.result_dic['large'] = tmp_large_str
 
-        #for k in self.resault_dic:
+        #for k in self.result_dic:
         #    print k
-        #    print self.resault_dic[k]
-        return resault_dic
+        #    print self.result_dic[k]
+        return result_dic
 
 
 # the functions of search the same files
@@ -150,7 +150,7 @@ class SearchTheSame():
     def __init__(self):
         self.objs = searchsame.SearchSame()
 
-    def get_scan_resault(self, path):
+    def get_scan_result(self, path):
         self.path = path
         self.objs.search_by_style(self.path)
         samefile_list = self.objs.adjust_the_dic()
@@ -161,13 +161,11 @@ class ManageTheLarge():
     def __init__(self):
         self.objl = diskanalyse.DiskAnalyse()
 
-    def get_scan_resault(self, path):
+    def get_scan_result(self, path):
         self.path = path
         self.objl.hundred_large_files(self.path)
         self.objl.type_of_file()
         largefile_dic = self.objl.adjust_the_list()
-        #pprint.pprint(largefile_dic)
-        #print len(largefile_dic)
         return largefile_dic
         
 # the functions of clean the history
@@ -176,8 +174,7 @@ class CleanTheHistory():
         pass
         #self.objh = historyclean.HistoryClean()
 
-    def get_scan_resault(self, homedir = ''):
-        print "history's %s" % homedir
+    def get_scan_result(self, homedir = ''):
         objhg = historyclean.HistoryClean(homedir)
         idurlcount = objhg.scan_the_records()
         return idurlcount
@@ -197,8 +194,7 @@ class CleanTheCookies():
         pass
         #self.objc = cookiesclean.CookiesClean()
 
-    def get_scan_resault(self, homedir = ''):
-        print "cookies's %s" % homedir
+    def get_scan_result(self, homedir = ''):
         objcg = cookiesclean.CookiesClean(homedir)
         domaincount = objcg.scan_the_records()
         return domaincount
@@ -219,9 +215,8 @@ class CleanTheUnneed():
     def __init__(self):
         self.objc = osslim.OsSlim()
 
-    def get_scan_resault(self):
+    def get_scan_result(self):
         namesummarysize = self.objc.get_spare_packages()
-        #print namesummarysize
         return namesummarysize
 
 # the function of scan the cache
@@ -229,14 +224,13 @@ class CleanTheCache():
     def __init__(self):
         self.objc = cacheclean.CacheClean()
 
-    def get_scan_resault(self, homedir = ''):
-        resault_dic = {}
+    def get_scan_result(self, homedir = ''):
+        result_dic = {}
         tmp_apt_str = '<1_1>'.join(self.objc.get_apt_cache())
-        print "softwarecenter's %s" % homedir
         tmp_center_str = '<1_1>'.join(self.objc.get_softwarecenter_cache(homedir))
-        resault_dic['apt'] = tmp_apt_str
-        resault_dic['softwarecenter'] = tmp_center_str
-        return resault_dic
+        result_dic['apt'] = tmp_apt_str
+        result_dic['softwarecenter'] = tmp_center_str
+        return result_dic
 
 # the function of clean cruft files and cruft packages
 class FunctionOfClean():
@@ -246,7 +240,6 @@ class FunctionOfClean():
     def clean_the_file(self, cruftlist):
         for cruft in cruftlist:
             if cruft:
-                print 'cleaning %s' % cruft
                 if os.path.isdir(cruft):
                     shutil.rmtree(cruft)
                 else:
@@ -259,6 +252,16 @@ class FunctionOfClean():
             if pkg.is_installed:
                 pkg.mark_delete()
         cache.commit(TextFetchProgress(), TextInstallProgress())
+
+    def uninstall_the_package(self, cruftlist):
+        program = 'apt-get'
+        mode = 'remove'
+        for cruft in cruftlist:
+            cmd = '%s %s -y %s' % (program, mode, cruft)
+            (status, output) = commands.getstatusoutput(cmd)
+            if status:
+                raise Exception(output)
+
         
 
 class TextInstallProgress(InstallProgress):
@@ -271,23 +274,3 @@ class TextInstallProgress(InstallProgress):
         def error(self, errorstr):
             pass
 
-
-if __name__ == "__main__":
-    objtest1 = SearchTheSame()
-    objtest1.get_scan_resault(path)
-    #objtest2 = ManageTheLarge()
-    #objtest2.get_scan_resault(path)
-    #objtest3 = CleanTheHistory()
-    #objtest3.get_scan_resault()
-    #del objtest3
-    #objtest4 = CleanTheCookies()
-    #objtest4.get_scan_resault()
-    #objtest4.clean_the_cruftlist(['win4000.com'])
-    #objtest4.get_scan_resault()
-    #del objtest4
-    #objtest5 = OneKeyClean()
-    #objtest5.get_scan_resault(['cookies','history'])
-    #objtest6 = CleanTheUnneed()
-    #objtest6.get_scan_resault()
-    #objtest7 = CleanTheCache()
-    #objtest7.get_scan_resault()

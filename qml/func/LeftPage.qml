@@ -123,10 +123,41 @@ Rectangle {
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
-                SetBtn {
+//                SetBtn {
+//                    id: firstonekey
+////                    iconName: "onekeyBtn.png"
+//                    iconName: "green3.png"
+//                    setbtn_flag: "onekey"
+//                    text: "一键清理"
+//                    anchors {
+//                        left: parent.left; leftMargin: 100
+//                    }
+//                    width: 186
+//                    height: 45
+//                    onSend_dynamic_picture: {
+//                        if (str == "onekey") {
+//                            refreshArrow0.visible = false;
+//                            refreshArrow.visible = true;
+//                        }
+//                    }
+////如果没有选中任何清理项，提示警告框！
+//                    onClicked: {
+//                        if(!(checkboxe1.checked||checkboxe2.checked||checkboxe3.checked||checkboxe4.checked))
+//                        {
+//                            firstonekey.check_flag=false;
+////                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
+//                        }
+//                        else
+//                            firstonekey.check_flag=true;
+//                    }
+//                }
+                Common.Button{
                     id: firstonekey
-                    iconName: "onekeyBtn.png"
+                    hoverimage: "green3.png"
                     setbtn_flag: "onekey"
+                    text:"一键清理"
+//                    bold:true
+//                    textsize: 15
                     anchors {
                         left: parent.left; leftMargin: 100
                     }
@@ -234,9 +265,10 @@ Rectangle {
                                         }
                                     }
                                 }
-                                Image {
+                                Common.StatusImage {
                                     id: cachestatus
-                                    source: "../img/toolWidget/unfinish.png"
+                                    iconName: "yellow.png"
+                                    text: "未完成"
                                     anchors {
 //                                        top: itemtip.bottom; topMargin: 20
                                         left: parent.left; leftMargin: 450
@@ -244,16 +276,36 @@ Rectangle {
                                     states: [
                                             State {
                                             name: "StatusC"
-                                            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+                                            PropertyChanges { target: cachestatus; iconName: "green.png"; text: "已完成"}
                                         },
 
                                             State {
                                             name: "StatusC1"
-                                            PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
+                                            PropertyChanges { target: cachestatus; iconName: "red.png"; text: "出现异常"}
                                         }
-
                                     ]
                                 }
+
+//                                Image {
+//                                    id: cachestatus
+//                                    source: "../img/toolWidget/unfinish.png"
+//                                    anchors {
+////                                        top: itemtip.bottom; topMargin: 20
+//                                        left: parent.left; leftMargin: 450
+//                                    }
+//                                    states: [
+//                                            State {
+//                                            name: "StatusC"
+//                                            PropertyChanges { target: cachestatus; source: "../img/toolWidget/finish.png"}
+//                                        },
+
+//                                            State {
+//                                            name: "StatusC1"
+//                                            PropertyChanges { target: cachestatus; source: "../img/toolWidget/exception.png"}
+//                                        }
+
+//                                    ]
+//                                }
 
                                 Rectangle {  //分割条
                                     width: parent.width; height: 1
@@ -327,26 +379,46 @@ Rectangle {
                                 }
                             }
                            }
-                            Image {
+                            Common.StatusImage {
                                 id: historystatus
-                                source: "../img/toolWidget/unfinish.png"
+                                iconName: "yellow.png"
+                                text: "未完成"
                                 anchors {
-//                                    top: cachestatus.bottom; topMargin: 45
                                     left: parent.left; leftMargin: 450
                                 }
                                 states: [
                                         State {
                                         name: "StatusH"
-                                        PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+                                        PropertyChanges { target: historystatus; iconName: "green.png"; text: "已完成"}
                                     },
 
                                         State {
                                         name: "StatusH1"
-                                        PropertyChanges { target: historystatus; source: "../img/toolWidget/exception.png"}
+                                        PropertyChanges { target: historystatus; iconName: "red.png"; text: "出现异常"}
                                     }
 
                                 ]
                             }
+//                            Image {
+//                                id: historystatus
+//                                source: "../img/toolWidget/unfinish.png"
+//                                anchors {
+////                                    top: cachestatus.bottom; topMargin: 45
+//                                    left: parent.left; leftMargin: 450
+//                                }
+//                                states: [
+//                                        State {
+//                                        name: "StatusH"
+//                                        PropertyChanges { target: historystatus; source: "../img/toolWidget/finish.png"}
+//                                    },
+
+//                                        State {
+//                                        name: "StatusH1"
+//                                        PropertyChanges { target: historystatus; source: "../img/toolWidget/exception.png"}
+//                                    }
+
+//                                ]
+//                            }
 
 //                            Rectangle {  //分割条
 //                                width: parent.width; height: 1
@@ -421,26 +493,46 @@ Rectangle {
                             }
                            }
 
-                            Image {
+                            Common.StatusImage {
                                 id: cookiestatus
-                                source: "../img/toolWidget/unfinish.png"
+                                iconName: "yellow.png"
+                                text: "未完成"
                                 anchors {
-//                                    top: historystatus.bottom; topMargin: 45
                                     left: parent.left; leftMargin: 450
                                 }
                                 states: [
                                         State {
                                         name: "StatusK"
-                                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+                                        PropertyChanges { target: cookiestatus; iconName: "green.png"; text: "已完成"}
                                     },
 
                                         State {
                                         name: "StatusK1"
-                                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/exception.png"}
+                                        PropertyChanges { target: cookiestatus; iconName: "red.png"; text: "出现异常"}
                                     }
 
                                 ]
                             }
+//                            Image {
+//                                id: cookiestatus
+//                                source: "../img/toolWidget/unfinish.png"
+//                                anchors {
+////                                    top: historystatus.bottom; topMargin: 45
+//                                    left: parent.left; leftMargin: 450
+//                                }
+//                                states: [
+//                                        State {
+//                                        name: "StatusK"
+//                                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/finish.png"}
+//                                    },
+
+//                                        State {
+//                                        name: "StatusK1"
+//                                        PropertyChanges { target: cookiestatus; source: "../img/toolWidget/exception.png"}
+//                                    }
+
+//                                ]
+//                            }
 
 //                            Rectangle {  //分割条
 //                                width: parent.width; height: 1
@@ -515,26 +607,45 @@ Rectangle {
                             }
                           }
 
-                            Image {
+                            Common.StatusImage {
                                 id: unneedstatus
-                                source: "../img/toolWidget/unfinish.png"
+                                iconName: "yellow.png"
+                                text: "未完成"
                                 anchors {
-//                                    top: cookiestatus.bottom; topMargin: 45
                                     left: parent.left; leftMargin: 450
                                 }
                                 states: [
                                         State {
                                         name: "StatusU"
-                                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+                                        PropertyChanges { target: unneedstatus; iconName: "green.png"; text: "已完成"}
                                     },
 
                                         State {
                                         name: "StatusU1"
-                                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/exception.png"}
+                                        PropertyChanges { target: unneedstatus; iconName: "red.png"; text: "出现异常"}
                                     }
-
                                 ]
                             }
+//                            Image {
+//                                id: unneedstatus
+//                                source: "../img/toolWidget/unfinish.png"
+//                                anchors {
+////                                    top: cookiestatus.bottom; topMargin: 45
+//                                    left: parent.left; leftMargin: 450
+//                                }
+//                                states: [
+//                                        State {
+//                                        name: "StatusU"
+//                                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/finish.png"}
+//                                    },
+
+//                                        State {
+//                                        name: "StatusU1"
+//                                        PropertyChanges { target: unneedstatus; source: "../img/toolWidget/exception.png"}
+//                                    }
+
+//                                ]
+//                            }
 
 //                            Rectangle {  //分割条
 //                                width: parent.width; height: 1

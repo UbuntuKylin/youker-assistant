@@ -156,7 +156,8 @@ Rectangle {
             }
             Common.Button {
                 width: 95;height: 30
-                hoverimage: "ok.png"
+                hoverimage: "green2.png"
+                text: "确定"
                 onClicked: {
                     if (soundeffectspage.default_sound != iconcombo.selectedText) {
                         soundeffectspage.default_sound = iconcombo.selectedText;
@@ -178,7 +179,8 @@ Rectangle {
                 }
             }
             Common.Button {
-                hoverimage: "use.png"
+                hoverimage: "blue2.png"
+                text: "使用默认设置"
                 width: 124
                 height: 30
                 onClicked: {
@@ -191,6 +193,48 @@ Rectangle {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","当前主题已经为默认主题!");
                 }
             }
+//            Common.Button {
+//                width: 95;height: 30
+////                hoverimage: "ok.png"
+//                text:"确定"
+//                onClicked: {
+//                    if (soundeffectspage.default_sound != iconcombo.selectedText) {
+//                        soundeffectspage.default_sound = iconcombo.selectedText;
+//                        sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
+//                        statusImage.visible = true;
+//                    }
+
+//                    soundeffectspage.init_sound_flag = true;
+//                    musicmodel.clear();
+//                    var musiclist=systemdispatcher.get_sounds_qt();
+//                    for(var l=0; l < musiclist.length; l++) {
+//                        musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+//                    }
+//                    if(30*musiclist.length<=chooseyy_height)
+//                    {
+//                        scrollbar_z=-1
+//                    }
+//                    else scrollbar_z=1
+//                }
+//            }
+//            Common.Button {
+////                hoverimage: "use.png"
+//                text:"使用默认设置"
+//                color1: "#57bffc"
+//                color2: "#2384c8"
+//                bordercolor: "#31a0ee"
+//                width: 124
+//                height: 30
+//                onClicked: {
+//                    if (soundeffectspage.init_sound_flag == true) {
+//                        soundeffectspage.init_sound_flag = false;
+//                        systemdispatcher.restore_all_sound_file_qt(soundeffectspage.init_sound);
+//                        statusImage.visible = true;
+//                    }
+//                    else
+//                        sessiondispatcher.send_warningdialog_msg("友情提示：","当前主题已经为默认主题!");
+//                }
+//            }
 
             Timer {
                      interval: 5000; running: true; repeat: true

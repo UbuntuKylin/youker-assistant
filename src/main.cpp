@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <QApplication>
+#include "fcitxcfgwizard.h" //kobe08
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
 #include "youker-application.h"
@@ -45,7 +46,6 @@
 #include "qtsplitterbase.h"
 #include "qdeclarativelinearlayout.h"
 #include "settings.h"
-
 #include <QDeclarativeExtensionPlugin>
 #include <QtScript/QScriptValue>
 #include <QtCore/QTimer>
@@ -87,6 +87,7 @@ void registerTypes()
 {
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
+    qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");//kobe08
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
     qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");

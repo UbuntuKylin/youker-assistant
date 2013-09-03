@@ -14,6 +14,7 @@ target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
     target
+LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH =
@@ -46,7 +47,13 @@ HEADERS += youker-application.h \
     qdeclarativefolderlistmodel.h \
     qdeclarativelayout.h \
     qdeclarativelayoutengine_p.h \
-    qdesktopitem.h
+    qdesktopitem.h \
+    tray.h \
+    fcitxcfgwizard.h \
+    qtkeytrans.h \
+    qtkeytransdata.h \
+    fcitxwarndialog.h \
+    handler.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -76,8 +83,11 @@ SOURCES += main.cpp \
     qdeclarativefolderlistmodel.cpp \
     qdeclarativelayout.cpp \
     qdeclarativelayoutengine.cpp \
-    qdesktopitem.cpp
-
+    qdesktopitem.cpp \
+    tray.cpp \
+    fcitxcfgwizard.cpp \
+    qtkeytrans.cpp \
+    fcitxwarndialog.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -86,4 +96,6 @@ FORMS += \
     modaldialog.ui \
     warningdialog.ui \
     messagedialog.ui \
-    restartdialog.ui
+    restartdialog.ui \
+    tray.ui \
+    fcitxwarndialog.ui

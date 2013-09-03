@@ -19,6 +19,7 @@
 
 import QtQuick 1.1
 import "../common" as Common
+//import "../../func" as Func
 Item {
      id: topbar
      property string arrow: "../../img/icons/return.png"
@@ -31,6 +32,13 @@ Item {
          width: 28; height: 26
          onClicked: topbar.buttonClicked()
      }
+//     Func.SetBtn{
+//         id: backBtn
+//         setbtn_flag: topbar.arrow
+//         iconName:topbar.arrow
+//         width: 28; height: 26
+//         onClicked: topbar.buttonClicked()
+//     }
 
 //     Row {
 //         spacing: 10
