@@ -64,29 +64,6 @@
     <string>80%</string>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>84</width>
-     <height>48</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/accelerate-bg0.png);</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-  </widget>
-  <zorder>frame</zorder>
-  <zorder>uplabel</zorder>
-  <zorder>downlabel</zorder>
-  <zorder>ratiolabel</zorder>
  </widget>
  <resources/>
  <connections/>

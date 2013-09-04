@@ -30,6 +30,7 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 80);
+    ratio_sus = 0;
 }
 
 SuspensionFrame::~SuspensionFrame()
@@ -38,9 +39,13 @@ SuspensionFrame::~SuspensionFrame()
 }
 
 void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio) {
+    ratio_sus = ratio.toInt();
     ui->uplabel->setText(upspeed + "K/s");
     ui->downlabel->setText(downspeed + "K/s");
     ui->ratiolabel->setText(ratio + "%");
+//    this->drawLine();
+    update_draw();
+    update();
 //    qDebug() << "2222222222->";
 //    qDebug() << cpu_ratio;
 //    qDebug() << used_memory;
@@ -85,4 +90,72 @@ void SuspensionFrame::on_descBtn_clicked()
 void SuspensionFrame::on_fastBtn_clicked()
 {
     emit accelerate_memory();
+}
+//void SuspensionFrame::drawLine(const QSize&newSize)
+void SuspensionFrame::update_draw()
+{
+    QPainter painter(&wheel);   //wheel作为画图对象？
+//    QPainter paint(&blister);
+    painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
+    wheel.fill(Qt::transparent);
+    blister.load("../qml/img/skin/blister-big.png");
+    //线性渐变
+    QLinearGradient linearGradient(76,10,76,76);
+    //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
+    painter.setPen(Qt::transparent);
+    QString color1;
+    QString color2;
+    QString color3;
+
+    color1=(ratio_sus == 100) ? "#ff2f00" : "transparent";
+    if (ratio_sus == 0)
+    {
+        color2="transparent";
+        color3="transparent";
+    }
+    else if(ratio_sus > 60) {
+        color2="#ff2f00";
+        color3="#ff1900";
+        blister.load("../qml/img/skin/blister-bigwarn.png");
+    }
+    else {
+        color2="#00b0ff";
+        color3="#006eff";
+        blister.load("../qml/img/skin/blister-big.png");
+    }
+
+    linearGradient.setColorAt(0.0,color1);
+    linearGradient.setColorAt( 1.0 - ratio_sus * 0.01,color1);
+    linearGradient.setColorAt((ratio_sus <= 0) ? 0.0 : (1.0 - ratio_sus * 0.01 + 0.01),color2);
+    linearGradient.setColorAt(1.0,color3);
+    painter.setBrush(QBrush(linearGradient));
+    painter.drawEllipse(7,7,65,65);
+
+}
+QSize SuspensionFrame::sizeHint()const
+{
+    return QSize(height(),height());
+}
+void SuspensionFrame::resizeEvent(QResizeEvent*event)
+{
+    wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
+    wheel.fill(palette().background().color());
+//    drawLine(event->size());
+    update_draw();
+    update();
+}
+void SuspensionFrame::paintEvent(QPaintEvent* event)
+{
+    QPainter painter(this);
+    QStyleOption opt;
+
+    QPixmap background;
+    background.load("../qml/img/skin/accelerate-bg.png");
+    painter.drawPixmap(0,0, background);
+
+    opt.init(this);
+    painter.drawImage(0,0,wheel);
+
+    painter.drawPixmap(7,7, blister);
+    style()->drawPrimitive(QStyle::PE_Widget,&opt,&painter,this);
 }
