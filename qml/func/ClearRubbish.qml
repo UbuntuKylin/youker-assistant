@@ -79,7 +79,7 @@ Item {
             }
         }
         Common.TabPage{
-            title:qsTr("文件排序")
+            title:qsTr("大文件清理")
             anchors.fill: parent
             LargestFile {
                 id: largestitem
