@@ -23,7 +23,7 @@ class DiskAnalyse():
         self.final_list_str = []
         self.final_list = []
 
-    def hundred_large_files(self, path, size):
+    def hundred_large_files(self, size, path):
         mypath = path
         if not os.path.exists(mypath):
             raise Exception("make a mistake")
