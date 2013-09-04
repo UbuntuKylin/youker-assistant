@@ -87,6 +87,10 @@ QString SessionDispatcher::get_home_path() {
     return homepath;
 }
 
+void SessionDispatcher::setsize_for_large_qt(int size) {
+    sessioniface->call("setsize_for_large", size);
+}
+
 void SessionDispatcher::set_page_num(int num) {
     page_num = num;
 }

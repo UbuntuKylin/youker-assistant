@@ -64,6 +64,7 @@ public:
     Q_INVOKABLE int get_page_num();
     int page_num;
 
+    Q_INVOKABLE void setsize_for_large_qt(int size);
     Q_INVOKABLE QString get_home_path();
 
     //----get system message
