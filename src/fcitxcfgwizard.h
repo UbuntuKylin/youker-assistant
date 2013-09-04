@@ -32,7 +32,6 @@
 class FcitxCfgWizard : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QNOTIFY test)
 
 public:
     explicit FcitxCfgWizard(QObject *parent = 0);
@@ -74,11 +73,11 @@ private slots:
     void emitrefreshFcitxSig();
 private:
     bool is_connected_ok();
-    bool get_fcitx_cfg_value(char *cd_path_prefix, char *cd_file_name,
-        char *c_path_prefix, char *c_file_name, char *groupName,  const char *optionName,
+    bool get_fcitx_cfg_value(const char *cd_path_prefix, const char *cd_file_name,
+        const char *c_path_prefix, const char *c_file_name, const char *groupName,  const char *optionName,
         void *ret_value);
-    bool set_fcitx_cfg_value(char *cd_path_prefix, char *cd_file_name,
-        char *c_path_prefix, char *c_file_name, char *groupName, const char *optionName,
+    bool set_fcitx_cfg_value(const char *cd_path_prefix, const char *cd_file_name,
+        const char *c_path_prefix, const char *c_file_name, const char *groupName, const char *optionName,
         void *set_value);
 
     void save_q_string_2_m_string(QString q_string, char **m_string);

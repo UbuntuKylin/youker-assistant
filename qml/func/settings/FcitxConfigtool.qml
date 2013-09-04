@@ -11,18 +11,15 @@ Rectangle {
     id:fcitxconfigtool
     width: parent.width
     height: 475
-    property string actiontitle: "小企鹅输入法配置"
-    property string actiontext: "可以设置自己喜欢的输入方式，点击＂下一步＂继续设置，点击＂取消＂取消当前设置并返回。"
+    property string actiontitle: "小企鹅输入法列表配置"
+    property string actiontext: "可以设置自己喜欢的输入方式，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。"
     property string selectedimage: ""
     property int leftFcitxModelindex: 0
     property int rightFcitxModelindex: 0
-    property int leftScrollbar_z:-1    //设置滑动条是否隐藏
-    property int rightScrollbar_z:0
-    property int scrollbar_z: -1
     property int leftNum: 0
     property int rightNum:0
     property string m_separator: "<5|13)"
-    signal emitFcitxRefresh;
+    property int hotkyScrollBetweenIndex: 0
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -52,7 +49,7 @@ Rectangle {
     function returnUnneed_data()
     {
         var returnUnneed_list = new Array
-        leftFcitxModelindex =0;
+        leftFcitxModelindex = 0;
         rightFcitxModelindex = 0;
         for(var i=0;i<leftNum;i++)
         {
@@ -69,7 +66,7 @@ Rectangle {
                                    rightFcitxModel.get(rightFcitxModelindex).langClde+m_separator+"flase")
               rightFcitxModelindex++;
         }
-        console.log(leftNum+rightNum);//524
+//        console.log(leftNum+rightNum);//524
         return returnUnneed_list;
 
     }
@@ -77,25 +74,56 @@ Rectangle {
     function refreshFcitxtool(){
         leftFcitxModel.clear();
         rightFcitxModel.clear();
+        fcitxChangeModel.clear();
         leftFcitxModelindex = 0;
         rightFcitxModelindex = 0;
-        if(leftNum >= 2)
-            downBtn.enabled =true;
-        leftNum = 0;
-        rightNum = 0;
         var unneed_data = fcitxcfgwizard.get_im_list();
+        if (unneed_data == "" || unneed_data.length == 0)
+        unneed_data = fcitxcfgwizard.get_im_list();
         for (var i=0; i< unneed_data.length; i++) {
-            var chooseList = unneed_data[i].split(m_separator);
-            if(chooseList[3]=="true")
-            {
-                leftNum++;
-                leftFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
-            }
-            else{
+        var chooseList = unneed_data[i].split(m_separator);
+        if(chooseList[3]=="true")
+        {
+            leftNum++;
+            leftFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
+        }
+        else{
+            rightNum++;
+            rightFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
+        }
+        }
+        //get_im_switch_key
+        var getEnableHotKeybool =fcitxcfgwizard.get_im_switch_key();
+        enableHotKeyBox.checked = getEnableHotKeybool;
 
-                rightNum++;
-                rightFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
-            }
+        var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
+        if(getHotkyScrollBetween==0)
+        {
+            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
+            fcitxChangeModel.append({"text": "ALT_SHIFT"});
+            fcitxChangeModel.append({"text": "CTRL_SUPER"});
+            fcitxChangeModel.append({"text": "ALT_SUPER"});
+        }
+        if(getHotkyScrollBetween==1)
+        {
+            fcitxChangeModel.append({"text": "ALT_SHIFT"});
+            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
+            fcitxChangeModel.append({"text": "CTRL_SUPER"});
+            fcitxChangeModel.append({"text": "ALT_SUPER"});
+        }
+        if(getHotkyScrollBetween==2)
+        {
+            fcitxChangeModel.append({"text": "CTRL_SUPER"});
+            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
+            fcitxChangeModel.append({"text": "ALT_SHIFT"});
+            fcitxChangeModel.append({"text": "ALT_SUPER"});
+        }
+        if(getHotkyScrollBetween==3)
+        {
+            fcitxChangeModel.append({"text": "ALT_SUPER"});
+            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
+            fcitxChangeModel.append({"text": "ALT_SHIFT"});
+            fcitxChangeModel.append({"text": "CTRL_SUPER"});
         }
 
      pageStack.push(functioncollection);
@@ -106,33 +134,68 @@ Rectangle {
                 refreshFcitxtool();
             }
         }
+
     Component.onCompleted: {
-        leftFcitxModel.clear();
-        rightFcitxModel.clear();
-        leftFcitxModelindex = 0;
-        rightFcitxModelindex = 0;
-        var unneed_data = fcitxcfgwizard.get_im_list();
-        if (unneed_data == "" || unneed_data.length == 0)
-            unneed_data = fcitxcfgwizard.get_im_list();
-        for (var i=0; i< unneed_data.length; i++) {
-            var chooseList = unneed_data[i].split(m_separator);
-            if(chooseList[3]=="true")
-            {
-                leftNum++;
-                leftFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
+                leftFcitxModel.clear();
+                rightFcitxModel.clear();
+                fcitxChangeModel.clear();
+                leftFcitxModelindex = 0;
+                rightFcitxModelindex = 0;
+                var unneed_data = fcitxcfgwizard.get_im_list();
+                if (unneed_data == "" || unneed_data.length == 0)
+                unneed_data = fcitxcfgwizard.get_im_list();
+                for (var i=0; i< unneed_data.length; i++) {
+                var chooseList = unneed_data[i].split(m_separator);
+                if(chooseList[3]=="true")
+                {
+                    leftNum++;
+                    leftFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
+                }
+                else{
+                    rightNum++;
+                    rightFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
+                }
+                }
+                //get_im_switch_key
+                var getEnableHotKeybool =fcitxcfgwizard.get_im_switch_key();
+                enableHotKeyBox.checked = getEnableHotKeybool;
+
+                var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
+                if(getHotkyScrollBetween==0)
+                {
+                    fcitxChangeModel.append({"text": "CTRL_SHIFT"});
+                    fcitxChangeModel.append({"text": "ALT_SHIFT"});
+                    fcitxChangeModel.append({"text": "CTRL_SUPER"});
+                    fcitxChangeModel.append({"text": "ALT_SUPER"});
+                }
+                if(getHotkyScrollBetween==1)
+                {
+                    fcitxChangeModel.append({"text": "ALT_SHIFT"});
+                    fcitxChangeModel.append({"text": "CTRL_SHIFT"});
+                    fcitxChangeModel.append({"text": "CTRL_SUPER"});
+                    fcitxChangeModel.append({"text": "ALT_SUPER"});
+                }
+                if(getHotkyScrollBetween==2)
+                {
+                    fcitxChangeModel.append({"text": "CTRL_SUPER"});
+                    fcitxChangeModel.append({"text": "CTRL_SHIFT"});
+                    fcitxChangeModel.append({"text": "ALT_SHIFT"});
+                    fcitxChangeModel.append({"text": "ALT_SUPER"});
+                }
+                if(getHotkyScrollBetween==3)
+                {
+                    fcitxChangeModel.append({"text": "ALT_SUPER"});
+                    fcitxChangeModel.append({"text": "CTRL_SHIFT"});
+                    fcitxChangeModel.append({"text": "ALT_SHIFT"});
+                    fcitxChangeModel.append({"text": "CTRL_SUPER"});
+                }
             }
-            else{
-                rightNum++;
-                rightFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
-            }
-        }
-    }
 
     Text {
         id:currentMethod
         anchors {
             top: parent.top
-            topMargin: 100
+            topMargin: 110
             left: parent.left
             leftMargin: 80
         }
@@ -145,7 +208,7 @@ Rectangle {
         id:choseMethod
         anchors {
             top: parent.top
-            topMargin: 100
+            topMargin: 110
             left: parent.left
             leftMargin: 475
         }
@@ -177,11 +240,11 @@ Rectangle {
     Rectangle{
         id:leftRectangle
         border.color: "#b9c5cc"
-        width: 350; height: 240
+        width: 300; height: 230
         clip:true    //?
         anchors {
             top: parent.top
-            topMargin: 120
+            topMargin: 130
             left: parent.left
             leftMargin: 80
         }
@@ -316,7 +379,7 @@ Rectangle {
         id:rightColum
         anchors {
             top: parent.top
-            topMargin: 120
+            topMargin: 130
             left: parent.left
             leftMargin: 475
         }
@@ -324,7 +387,7 @@ Rectangle {
         Rectangle{
             id:rightRectangle
             border.color: "#b9c5cc"
-            width: 350; height: 240
+            width: 300; height: 230
             clip:true
             Component{
                 id:rightDelegat
@@ -343,37 +406,34 @@ Rectangle {
                         color: "#7a7a7a"
                         text:itemTitle
                     }
-                    Text{
-                        id:listtext2
-                        anchors {
-                            left: listtext.right
-                            leftMargin: 10
-                            verticalCenter: parent.verticalCenter
-                        }
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                        text:uniqueName
-                    }
-                    Text{
-                        width: 20
-                        id:listtext3
-                        anchors {
-                            left: listtext2.right
-                            leftMargin: 10
-                            verticalCenter: parent.verticalCenter
-                        }
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                        text:langClde
-                    }
+//                    Text{
+//                        id:listtext2
+//                        anchors {
+//                            left: listtext.right
+//                            leftMargin: 10
+//                            verticalCenter: parent.verticalCenter
+//                        }
+//                        font.pixelSize: 12
+//                        color: "#7a7a7a"
+//                        text:uniqueName
+//                    }
+//                    Text{
+//                        width: 20
+//                        id:listtext3
+//                        anchors {
+//                            left: listtext2.right
+//                            leftMargin: 10
+//                            verticalCenter: parent.verticalCenter
+//                        }
+//                        font.pixelSize: 12
+//                        color: "#7a7a7a"
+//                        text:langClde
+//                    }
                     MouseArea{
                         anchors.fill:parent
                         hoverEnabled: true
                         onClicked: {
-//                            okBtn.enabled = true;
-//                            okBtn.hoverimage = "list_item_active.png";
                             wrapper.ListView.view.currentIndex = index; //?
-                            state = "lightsteelblueColor";
                             rightFcitxModelindex = index;
 
                         }
@@ -404,9 +464,9 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.rightMargin: 0
                 width: 10
+                height:30
                 y: rightLisv.visibleArea.yPosition * rightscrollbar.height    //?
-                height: 10*(rightLisv.visibleArea.heightRatio * rightscrollbar.height); //?
-//                height:20
+         //       height: 10*(rightLisv.visibleArea.heightRatio * rightscrollbar.height); //?
                 radius: 3
                 smooth: true
                 color: "white"
@@ -436,45 +496,88 @@ Rectangle {
                     drag.minimumY: 0
                     drag.maximumY: rightscrollbar.height - rightbutton.height/10
                     onMouseYChanged: {
+                        console.log(rightbutton.y)
+                        console.log(rightLisv.visibleArea.yPosition)
+                        console.log(rightLisv.contentY)
+                        console.log(rightscrollbar.height)
+                        console.log(rightLisv.contentHeight)
                         rightLisv.contentY = rightbutton.y / rightscrollbar.height * rightLisv.contentHeight //?
                     }
                 }
             }
         }
     }
+    //Scroll between input Method
+    Row{
+        spacing: 75
+        anchors {
+            top: parent.top
+            topMargin: 370
+            left: parent.left
+            leftMargin: 80
+        }
+        ListModel {
+            id: fcitxChangeModel
+            ListElement { text: "" }
+        }
+
+        Common.CheckBox{
+            id:enableHotKeyBox
+            anchors.verticalCenter: parent.verticalCenter
+            titleName: "输入法切换"
+//            Text{
+//                id:scrollBetween
+//                text:qsTr("输入法切换")
+//            }
+        }
+            Common.ComboBox {
+                anchors{
+                    verticalCenter: parent.verticalCenter
+                }
+                id: scrollBetweenCombo
+                    model: fcitxChangeModel
+                    width: 130
+                    height: 25
+                    onSelectedTextChanged: {
+                            hotkyScrollBetweenIndex = scrollBetweenCombo.selectedIndex;
+
+                    }
+            }
+         }
+
+
+
         //提示
         Text {
             id:prompt
             anchors {
                 top: parent.top
-                topMargin: 400
+                topMargin: 398
                 left: parent.left
                 leftMargin: 80
             }
-            text: qsTr("提示:'+'可以将可用输入法加入当前输入法,'-'删除当前选中输入法,'▲'和'▼'改变选中输入法的位置")
+            text: qsTr("提示:'<<'可以将可用输入法加入当前输入法,'>>'删除当前选中输入法,'▲'和'▼'改变当前输入法的位置")
             font.bold: true
             font.pixelSize: 12
             color: "#7a7a7a"
         }
-        Row{
-            spacing: 5
+        //ctrl_key
+        Column{
+            spacing: 20
             anchors{
-        //     top:parent.top
-        //     topMargin: 190
-        //     left: parent.left
-        //     leftMargin:410
-                left: parent.left
-                leftMargin: 80;
-                top:leftRectangle.bottom
-                topMargin: 10
+             top:parent.top
+             topMargin: 162
+             left: parent.left
+             leftMargin:405
 
             }
         Common.Button{
             id:addBtn
-            width:60
-            height:20
-            //hoverimage: "list_item_active.png"
-            text:"+"
+            width:49
+            height:27
+            hoverimage: "blue5.png"
+            text:"<<"
+            fontcolor: "#6a97b4"
             onClicked: {
                 leftFcitxModel.append({"itemTitle":rightFcitxModel.get(rightFcitxModelindex).itemTitle,
                                        "uniqueName" :rightFcitxModel.get(rightFcitxModelindex).uniqueName,
@@ -491,9 +594,11 @@ Rectangle {
         }
         Common.Button{
             id:cutBtn
-            width:60
-            height:20
-            text: "－"
+            width:49
+            height:27
+            text: ">>"
+            fontcolor: "#6a97b4"
+            hoverimage: "blue5.png"
             onClicked: {
                 rightFcitxModel.append({"itemTitle":leftFcitxModel.get(leftFcitxModelindex).itemTitle,
                                        "uniqueName" :leftFcitxModel.get(leftFcitxModelindex).uniqueName,
@@ -520,10 +625,12 @@ Rectangle {
         }
         Common.Button{
             id:upBtn
-            width:60
-            height:20
+            width:49
+            height:27
             enabled: false
             text:"▲"
+            fontcolor: "#6a97b4"
+            hoverimage: "blue5.png"
             onClicked: {
                 if(leftFcitxModelindex==0)
                 {
@@ -545,9 +652,11 @@ Rectangle {
         }
         Common.Button{
             id:downBtn
-            width:60
-            height:20
+            width:49
+            height:27
             text: "▼"
+            fontcolor: "#6a97b4"
+            hoverimage: "blue5.png"
             onClicked: {
                 if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
                 {
@@ -605,6 +714,8 @@ Rectangle {
         onContinueBtnClicked: {         
             pageStack.push(fcitxConfigtoolFontpage);//静态添加页
             fcitxcfgwizard.set_im_list(returnUnneed_data(),false);
+            fcitxcfgwizard.set_im_switch_hot_key(hotkyScrollBetweenIndex,false);
+            fcitxcfgwizard.set_im_switch_key(enableHotKeyBox.checked,false);
 
         }
     }

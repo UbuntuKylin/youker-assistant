@@ -77,7 +77,6 @@ void Tray::obtain_network_speed(QStringList speed_value) {
 }
 
 void Tray::updateData() {
-//    dispather->get_network_flow_qt();
     QStringList current_speed = dispather->get_network_flow_total_qt();
     double up_before = total_speed[0].toDouble();
     double down_before = total_speed[1].toDouble();

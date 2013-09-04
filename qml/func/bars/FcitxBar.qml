@@ -47,8 +47,10 @@ Item {
          Common.Button {
              id: cancelBtn
              visible: toolbar.showok
-             //hoverimage: "list_item_active.png"
+             hoverimage: "gray1.png"//../../img/icons/
              text: "取消"
+             fontcolor:"#929292"
+             fontsize: 13
              width: 94; height: 29
              onClicked:
              {
@@ -59,15 +61,19 @@ Item {
          Common.Button {
             id: gobackBtn
             visible: toolbar.showok
-           // hoverimage: "list_item_active.png"
+            hoverimage: "gray1.png"//../../img/icons/
             text: "上一步"
+            fontcolor:"#929292"
+            fontsize: 13
             width: 94; height: 29
             onClicked: toolbar.gobackBtnClicked()
          }
          Common.Button {
              id: continueBtn
-           //  hoverimage: "list_item_active.png"
+             hoverimage: "gray1.png"//../../img/icons/
              text: "下一步"
+             fontcolor:"#929292"
+             fontsize: 13
              width: 94; height: 29
              onClicked: toolbar.continueBtnClicked()
          }
