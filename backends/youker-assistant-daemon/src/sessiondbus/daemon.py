@@ -66,6 +66,10 @@ class SessionDaemon(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def setsize_for_large(self, size):
+        self.daemonlarge.get_user_size(size)
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_history_records(self):
         daemonhistory = cleaner.CleanTheHistory()

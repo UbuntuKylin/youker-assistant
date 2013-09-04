@@ -72,10 +72,6 @@ class Daemon(PolicyKitService):
     def set_user_homedir(self, homedir):
         cleaner.get_user_homedir(homedir)
 
-    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
-    def set_user_size(self, size):
-        self.daemonlarge.get_user_size(self, size)
-
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
         return "SystemDaemon"
