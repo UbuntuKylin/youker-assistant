@@ -23,6 +23,8 @@ Item {
 //    property string text
     property string text : ""
     property string hoverimage: "green1.png"
+    property string fontcolor: "white"
+    property int fontsize: 16
 
 
     //-----------------------------------------------
@@ -36,7 +38,7 @@ Item {
     Connections{
          target: systemdispatcher
              onFinishCleanWorkMain: {
-                 if(setbtn_flag =="onekey")
+                 if(setbtn_flag =="onekey"||setbtn_flag=="smallonekey")
                  {
                     if (msg == "") {
                         btn.enabled=true;
@@ -57,10 +59,6 @@ Item {
                     else if (msg == "k") {
                         btn.enabled=true;
                     }
-                    else if (msg == "o") {
-                        btn.enabled=true;
-                        displaytext.text = "再次清理"
-                    }
                  }
           }
     }
@@ -68,11 +66,11 @@ Item {
     {
         target: systemdispatcher
         onFinishCleanWorkSecond: {
-            if(setbtn_flag=="smallonekey")
+            if(setbtn_flag =="onekey"||setbtn_flag=="smallonekey")
             {
                 if (msg == "") {
                      btn.enabled=true;
-                    btnImg.source = "../../img/icons/green1.png"
+                    btnImg.source = "../img/icons/onekey.png"
                     displaytext.text = "一键清理";
                  }
                  else if (msg == "u") {
@@ -86,10 +84,6 @@ Item {
                 }
                 else if (msg == "k") {
                     btn.enabled=true;
-                }
-                else if (msg == "o") {
-                    btn.enabled=true;
-                    displaytext.text = "再次清理"
                 }
             }
         }
@@ -129,8 +123,8 @@ Item {
             btn.entered();
             if (hoverimage == "green1.png") {
                 btnImg.source = "../../img/icons/green1-hover.png"
-//                if(setbtn_flag=="smallonekey")
-//                    displaytext.text = "再次清理";
+                if(setbtn_flag=="smallonekey")
+                    displaytext.text = "一键清理";
             }
             else if (hoverimage == "blue1.png")
                 btnImg.source = "../../img/icons/blue1-hover.png"
@@ -146,8 +140,8 @@ Item {
                 btnImg.source = "../../img/icons/blue4-hover.png"
             else if (hoverimage == "green3.png") {
                 btnImg.source = "../../img/icons/green3-hover.png"
-//                if(setbtn_flag =="onekey")
-//                    displaytext.text = "再次清理";
+                if(setbtn_flag =="onekey")
+                    displaytext.text = "一键清理";
             }
             else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
@@ -242,17 +236,17 @@ Item {
                     send_dynamic_picture("onekey");
                     systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-//                    displaytext.text = "清理完毕"
+                    displaytext.text = "清理完毕"
 //                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
-//                    btn.text="清理完毕";
+                    btn.text="清理完毕";
                     btn.enabled=false;
                 }
                 else if (setbtn_flag == "smallonekey") {
                     systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
 //                        btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
-//                    displaytext.text = "清理完毕"
-//                    btn.text="清理完毕";
+                    displaytext.text = "清理完毕"
+                    btn.text="清理完毕";
                     btn.enabled=false;
                 }
             }
@@ -270,12 +264,12 @@ Item {
 //    }
     Text {
         id: displaytext
-        color: "white"
+        color: fontcolor
 //        visible: (btn.text == "") ? false : true
         anchors.centerIn: buttonImage
 //        font.bold: true
         font.family: "Helvetica"
-        font.pixelSize: 16
+        font.pixelSize: fontsize
         text: btn.text
         style: Text.Sunken
 //        style: Text.Raised
