@@ -22,7 +22,6 @@ import apt_pkg
 import shutil
 import commands
 from apt.progress.base import InstallProgress
-from apt.progress.text import AcquireProgress
 
 
 import historyclean
@@ -166,9 +165,10 @@ class ManageTheLarge():
         tmpsize = size
         self.filesize = tmpsize * 1024 * 1024
 
-    def get_scan_result(self, path):
+    def get_scan_result(self, size, path):
         self.path = path
-        self.objl.hundred_large_files(self.path, self.filesize)
+        finalsize = size * 1024 * 1024
+        self.objl.hundred_large_files(finalsize, self.path)
         self.objl.type_of_file()
         largefile_dic = self.objl.adjust_the_list()
         return largefile_dic
@@ -251,12 +251,15 @@ class FunctionOfClean():
                     os.remove(cruft)
 
     def clean_the_package(self, cruftlist):
+        if not cruftlist:
+            return
         cache = common.get_cache_list()
+        cache.open()
         for cruft in cruftlist:
             pkg = cache[cruft]
             if pkg.is_installed:
                 pkg.mark_delete()
-        cache.commit(AcquireProgress(), TextInstallProgress())
+        cache.commit(None, MyInstallProgress())
 
     def uninstall_the_package(self, cruftlist):
         if not cruftlist:
@@ -274,7 +277,7 @@ class FunctionOfClean():
 
         
 
-class TextInstallProgress(InstallProgress):
+class MyInstallProgress(InstallProgress):
         def __init__(self):
             InstallProgress.__init__(self)
 

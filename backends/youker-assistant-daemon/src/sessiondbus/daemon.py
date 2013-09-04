@@ -66,10 +66,6 @@ class SessionDaemon(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
-    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
-    def setsize_for_large(self, size):
-        self.daemonlarge.get_user_size(size)
-
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_history_records(self):
         daemonhistory = cleaner.CleanTheHistory()
@@ -87,9 +83,9 @@ class SessionDaemon(dbus.service.Object):
 
     # the function of sort the hundred files below path betown big to small
     ### input-'path'  output-['size<2_2>biggestfile<2_2>filestyle', 'size...]
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
-    def scan_of_large(self, path):
-        tmp_list = self.daemonlarge.get_scan_result(path)
+    @dbus.service.method(INTERFACE, in_signature='is', out_signature='as')
+    def scan_of_large(self, size, path):
+        tmp_list = self.daemonlarge.get_scan_result(size, path)
         self.scan_complete_msg('large')
         return tmp_list
     # the function of clean the cookies records

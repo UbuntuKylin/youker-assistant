@@ -55,13 +55,13 @@ Item {
     property bool null_flag: false
 
     property string directory: ""
+    property int size: 0
 
 
     function refresh_page() {
         sub_num=0;
         check_num=0
-//        var largestfile_data = systemdispatcher.scan_of_large_qt(root.directory);
-        var largestfile_data = sessiondispatcher.scan_of_large_qt(root.directory);
+        var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
         if (largestfile_data == "")
             root.null_flag = true;
         else
@@ -225,6 +225,7 @@ Item {
             width: 95
             height: 30
             onClicked: {
+                root.size = size_text.text;
                 root.directory = sessiondispatcher.show_folder_dialog();
                 if (root.directory != "") {
                     refresh_page();

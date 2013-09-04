@@ -61,8 +61,8 @@ QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
     QDBusReply<QStringList> reply = sessioniface->call("scan_of_same", abspath);
     return reply.value();
 }
-QStringList SessionDispatcher::scan_of_large_qt(QString abspath) {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", abspath);
+QStringList SessionDispatcher::scan_of_large_qt(int size, QString abspath) {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);
     return reply.value();
 }
 QStringList SessionDispatcher::scan_cookies_records_qt() {
