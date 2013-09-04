@@ -181,7 +181,7 @@ Rectangle {
             Common.Label {
                 id: showdesktoplabel
                 width: 150
-                text: "桌面图标显示在启动器上:"
+                text: "显示桌面图标:"//桌面图标显示在启动器上
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
