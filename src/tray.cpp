@@ -108,7 +108,7 @@ void Tray::updateData() {
     this->ratiolabel->setText(ratio + "%");
 
     ratio_sus = ratio.toInt();
-    update_draw();
+//    update_draw();
     update();
 }
 
@@ -207,9 +207,29 @@ void Tray::mouseDoubleClickEvent(QMouseEvent *event) {
     }
 }
 
-void Tray::update_draw()
+QSize Tray::sizeHint()const
 {
-    QPainter painter(&wheel);   //wheel作为画图对象？
+    return QSize(height(),height());
+}
+void Tray::resizeEvent(QResizeEvent*event)
+{
+    wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
+    wheel.fill(palette().background().color());
+//    drawLine(event->size());
+//    update_draw();
+    update();
+}
+void Tray::paintEvent(QPaintEvent* event)
+{
+    QPainter painter(this);
+    QStyleOption opt;
+
+    QPixmap background;
+    background.load(":/pixmap/image/accelerate-bg0.png");
+    painter.drawPixmap(0,0, background);
+
+
+//    QPainter painter(&wheel);   //wheel作为画图对象？
 //    QPainter paint(&blister);
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);
@@ -246,27 +266,6 @@ void Tray::update_draw()
     painter.setBrush(QBrush(linearGradient));
     painter.drawRoundRect(51,14,30,30,5,5);
 
-}
-QSize Tray::sizeHint()const
-{
-    return QSize(height(),height());
-}
-void Tray::resizeEvent(QResizeEvent*event)
-{
-    wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
-    wheel.fill(palette().background().color());
-//    drawLine(event->size());
-    update_draw();
-    update();
-}
-void Tray::paintEvent(QPaintEvent* event)
-{
-    QPainter painter(this);
-    QStyleOption opt;
-
-    QPixmap background;
-    background.load(":/pixmap/image/accelerate-bg0.png");
-    painter.drawPixmap(0,0, background);
 
     opt.init(this);
     painter.drawImage(0,0,wheel);

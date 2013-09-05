@@ -66,7 +66,7 @@ private:
     QSize initSize;
     QImage wheel;
     QPixmap blister;
-    void update_draw();
+//    void update_draw();
     int ratio_sus;
 protected:
     void mousePressEvent(QMouseEvent *event);
