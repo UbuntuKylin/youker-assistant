@@ -28,7 +28,7 @@ Tray::Tray(QWidget *parent)
     setupUi(this);
     dispather = new SystemDispatcher;
 
-    ratio_sus = 80;
+    ratio_sus = 0;
     double trans_cpu = dispather->get_cpu_percent_qt();
     cpu_value = QString::number(trans_cpu, 'f', 0);
     used_memory = dispather->get_used_memory_qt().toDouble();
@@ -213,7 +213,7 @@ void Tray::update_draw()
 //    QPainter paint(&blister);
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);
-    blister.load("../qml/img/skin/blister-small.png");
+    blister.load(":/pixmap/image/blister-small.png");
     //线性渐变
     QLinearGradient linearGradient(66,14,66,44);
     //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
@@ -231,12 +231,12 @@ void Tray::update_draw()
     else if(ratio_sus > 60) {
         color2="#ff2f00";
         color3="#ff1900";
-        blister.load("../qml/img/skin/blister-small.png");
+        blister.load(":/pixmap/image/blister-small.png");
     }
     else {
         color2="#00b0ff";
         color3="#006eff";
-        blister.load("../qml/img/skin/blister-small.png");
+        blister.load(":/pixmap/image/blister-small.png");
     }
 
     linearGradient.setColorAt(0.0,color1);
@@ -265,7 +265,7 @@ void Tray::paintEvent(QPaintEvent* event)
     QStyleOption opt;
 
     QPixmap background;
-    background.load("../qml/img/skin/accelerate-bg0.png");
+    background.load(":/pixmap/image/accelerate-bg0.png");
     painter.drawPixmap(0,0, background);
 
     opt.init(this);

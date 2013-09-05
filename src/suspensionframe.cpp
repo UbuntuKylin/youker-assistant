@@ -98,7 +98,7 @@ void SuspensionFrame::update_draw()
 //    QPainter paint(&blister);
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);
-    blister.load("../qml/img/skin/blister-big.png");
+    blister.load(":/pixmap/image/blister-big.png");
     //线性渐变
     QLinearGradient linearGradient(76,10,76,76);
     //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
@@ -116,12 +116,12 @@ void SuspensionFrame::update_draw()
     else if(ratio_sus > 60) {
         color2="#ff2f00";
         color3="#ff1900";
-        blister.load("../qml/img/skin/blister-bigwarn.png");
+        blister.load(":/pixmap/image/blister-bigwarn.png");
     }
     else {
         color2="#00b0ff";
         color3="#006eff";
-        blister.load("../qml/img/skin/blister-big.png");
+        blister.load(":/pixmap/image/blister-big.png");
     }
 
     linearGradient.setColorAt(0.0,color1);
@@ -150,7 +150,7 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
     QStyleOption opt;
 
     QPixmap background;
-    background.load("../qml/img/skin/accelerate-bg.png");
+    background.load(":/pixmap/image/accelerate-bg.png");
     painter.drawPixmap(0,0, background);
 
     opt.init(this);

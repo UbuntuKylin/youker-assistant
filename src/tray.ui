@@ -61,7 +61,7 @@
     <string notr="true">font: 9pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>80%</string>
+    <string>0%</string>
    </property>
   </widget>
  </widget>
