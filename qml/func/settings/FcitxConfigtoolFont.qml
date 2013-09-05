@@ -10,8 +10,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: "小企鹅输入法字体配置"
-    property string actiontext: "可以设置自己喜欢的字体风格，点击＂下一步＂继续设置，点击＂取消＂取消当前设置并返回。"
+    property string actiontitle: "小企鹅输入法习惯配置"
+    property string actiontext: "可以设置自己喜欢的输入习惯，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。"
     property int scanModelIndex:1
     property int scrollbar_z: 1
     property int defaultCandidateWord:0     //恢复默认时用到
