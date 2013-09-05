@@ -56,7 +56,6 @@ Rectangle {
             returnUnneed_list.push(leftFcitxModel.get(leftFcitxModelindex).itemTitle+m_separator+
                                    leftFcitxModel.get(leftFcitxModelindex).uniqueName+m_separator+
                                    leftFcitxModel.get(leftFcitxModelindex).langClde+m_separator+"true")
-
           leftFcitxModelindex++;
         }
         for(var i=0;i<rightNum;i++)
@@ -64,8 +63,10 @@ Rectangle {
             returnUnneed_list.push(rightFcitxModel.get(rightFcitxModelindex).itemTitle+m_separator+
                                    rightFcitxModel.get(rightFcitxModelindex).uniqueName+m_separator+
                                    rightFcitxModel.get(rightFcitxModelindex).langClde+m_separator+"flase")
-              rightFcitxModelindex++;
+            rightFcitxModelindex++;
         }
+        leftFcitxModelindex = 0;
+        rightFcitxModelindex = 0;
 //        console.log(leftNum+rightNum);//524
         return returnUnneed_list;
 
@@ -77,6 +78,8 @@ Rectangle {
         fcitxChangeModel.clear();
         leftFcitxModelindex = 0;
         rightFcitxModelindex = 0;
+        leftNum = 0;
+        rightNum = 0;
         var unneed_data = fcitxcfgwizard.get_im_list();
         if (unneed_data == "" || unneed_data.length == 0)
         unneed_data = fcitxcfgwizard.get_im_list();
@@ -374,7 +377,18 @@ Rectangle {
         }
     }
 
-    //右边框
+  //  右边框
+    Rectangle{
+        anchors{
+            top:parent.top
+            topMargin: 129
+            left:parent.left
+            leftMargin: 475
+        }
+        width:300
+        height:2
+        color:"#e4f2fb"
+    }
     Column{
         id:rightColum
         anchors {

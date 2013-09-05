@@ -9,8 +9,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: "小企鹅输入法快捷键/云输入/皮肤配置"
-    property string actiontext: "可以设置自己喜欢的方式，点击＂下一步＂继续设置，点击＂取消＂取消当前设置并返回,点击“应用”按钮完成输入法设置。"
+    property string actiontitle: "小企鹅输入法外观配置"
+    property string actiontext: "可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置"
     property int flagCheck: 1
     property int flag_i: 0
     property string h_fcitxSkinImage: ""
@@ -360,9 +360,54 @@ Rectangle {
             left:parent.left
             leftMargin: 65
         }
-       color:"white"
+        color:"white"
         width: 680
         height: 190
+
+        Rectangle{
+            anchors{
+                top:parent.top
+                topMargin: 0
+                left:parent.left
+                leftMargin: 0
+            }
+            width:680
+            height:1
+            color:"#b9c5cc"
+        }
+        Rectangle{
+            anchors{
+                top:parent.top
+                topMargin: 190
+                left:parent.left
+                leftMargin: 0
+            }
+            width:680
+            height:1
+            color:"#b9c5cc"
+        }
+        Rectangle{
+            anchors{
+                top:parent.top
+                topMargin: 0
+                left:parent.left
+                leftMargin: 0
+            }
+            width:1
+            height:190
+            color:"#b9c5cc"
+        }
+        Rectangle{
+            anchors{
+                top:parent.top
+                topMargin: 0
+                left:parent.left
+                leftMargin: 680
+            }
+            width:1
+            height:190
+            color:"#b9c5cc"
+        }
         Row{
             anchors{
                 top:parent.top
