@@ -30,6 +30,9 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
+    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
+
 }
 
 void SudoDispatcher::exit_qt()
@@ -42,7 +45,15 @@ QString SudoDispatcher::get_sudo_daemon_qt() {
     return reply.value();
 }
 
-<<<<<<< TREE
+void SudoDispatcher::handler_clear_rubbish(QString msg)
+{
+     emit finishCleanWork(msg);
+}
+
+void SudoDispatcher::handler_clear_rubbish_error(QString msg)
+{
+     emit finishCleanWorkError(msg);
+}
 //bool SudoDispatcher::trans_password(QString flagstr, QString pwd) {
 //    QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
 //    QByteArray ba1 = cmd1.toLatin1();
@@ -65,13 +76,6 @@ QString SudoDispatcher::get_sudo_daemon_qt() {
 //    }
 //    return false;
 //}
-=======
-void SudoDispatcher::trans_password(QString flagstr, QString pwd) {
-    qDebug() << pwd;
-    QProcess *process = new QProcess;
-    process->start("/usr/bin/" + flagstr + " " + pwd);
-}
->>>>>>> MERGE-SOURCE
 
 bool SudoDispatcher::show_passwd_dialog() {
     AuthDialog *dialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
@@ -82,7 +86,4 @@ bool SudoDispatcher::show_passwd_dialog() {
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
     sudoiface->call("clean_package_cruft", strlist);
-
-//    KThread *thread = new KThread(systemiface, "clean_package_cruft", strlist);
-//    thread->start();
 }

@@ -55,14 +55,11 @@ bool AuthDialog::trans_password(QString flagstr, QString pwd) {
     QByteArray ba1 = cmd1.toLatin1();
     const char *transpd = ba1.data();
     int bb = system(transpd);
-    qDebug() << bb;
     if (bb == 0) {
-        qDebug() << "yes";
         QString cmd2 = "echo " + pwd + " | sudo -S rm /usr/bin/youker.txt";
         QByteArray ba2 = cmd2.toLatin1();
         const char *transpd2 = ba2.data();
-        int bb1 = system(transpd2);
-        qDebug() << bb1;
+        system(transpd2);
         QProcess *process = new QProcess;
         process->start("/usr/bin/" + flagstr + " " + pwd);
         return true;

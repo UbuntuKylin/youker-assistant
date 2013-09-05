@@ -110,14 +110,14 @@ Item {
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
-        target: systemdispatcher
-//         onFinishScanWork: {
-        //             if (btn_flag == "package_scan") {
-        //                 titleBar.work_result = msg;
-        //                 titleBar.state = "UnneedWork";
-        //             }
+        target: sudodispatcher
+        onFinishCleanWorkError: {
+            if (btn_flag == "package_work") {
+                titleBar.work_result = msg;
+                titleBar.state = "UnneedWorkError";
+            }
 
-//         }
+         }
         onFinishCleanWork: {
             if (btn_flag == "package_work") {
                 if (msg == "package") {
@@ -195,7 +195,6 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                    console.log("11111111");
                     if(root.check_flag)
                     {
                         //package cruft
@@ -216,7 +215,6 @@ Item {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
                 }
                 else {
-                    console.log("2222222222");
                     sudodispatcher.show_passwd_dialog();
                 }
             }
@@ -424,6 +422,13 @@ Item {
             PropertyChanges { target: label; visible: true; text: "unneed扫描完成"}
             PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; btn_flag: "package_work" }
+        },
+        State {
+            name: "UnneedWorkError"
+            PropertyChanges { target: label; visible: true; text: "清理出现异常"}
+            PropertyChanges { target: bitButton; text:"开始扫描" }
+            PropertyChanges { target: root; btn_flag: "package_scan" }
+            PropertyChanges { target: statusImage; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "UnneedWorkFinish"

@@ -36,8 +36,12 @@ public:
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     QDBusInterface *sudoiface;
 signals:
+    void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
+    void finishCleanWorkError(QString msg);
 
 public slots:
+    void handler_clear_rubbish(QString msg);
+    void handler_clear_rubbish_error(QString msg);
 private:
 //    bool trans_password(QString flagstr, QString pwd);
 };
