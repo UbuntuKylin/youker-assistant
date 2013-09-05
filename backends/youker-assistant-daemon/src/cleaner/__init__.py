@@ -31,6 +31,7 @@ import diskanalyse
 import osslim
 import common
 import cacheclean
+import oldkernel
 
 #test path
 #path = '/home/kylin/ubuntu-tweak/'
@@ -223,6 +224,15 @@ class CleanTheUnneed():
     def get_scan_result(self):
         namesummarysize = self.objc.get_spare_packages()
         return namesummarysize
+
+# the function of clean old kernel
+class CleanTheOldkernel():
+    def __init__(self):
+        self.objc = oldkernel.OldKernel()
+
+    def get_scan_result(self):
+        namesize = self.objc.get_old_kernel()
+        return namesize
 
 # the function of scan the cache
 class CleanTheCache():
