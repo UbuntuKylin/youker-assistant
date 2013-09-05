@@ -45,6 +45,8 @@ public:
     QSystemTrayIcon *trayIcon;
     QMenu *trayMenu;
     QAction *actionShow, *actionQuit;
+
+    virtual QSize sizeHint()const;
 private:
     QPoint dragPos;
     SuspensionFrame *frame;
@@ -60,11 +62,20 @@ private:
     QString ratio;
     QStringList speed;
     QStringList total_speed;
+
+    QSize initSize;
+    QImage wheel;
+    QPixmap blister;
+    void update_draw();
+    int ratio_sus;
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseDoubleClickEvent(QMouseEvent *event);
+
+    void paintEvent(QPaintEvent* event);
+    void resizeEvent(QResizeEvent* event);
 
 public slots:
     void handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason);

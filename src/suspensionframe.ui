@@ -79,30 +79,8 @@ font: 10pt &quot;文泉驿微米黑&quot;;</string>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;0%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
-  </widget>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>265</width>
-     <height>173</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/accelerate-bg.png);
-font: 10pt &quot;文泉驿微米黑&quot;;</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <zorder>msglabel</zorder>
-   <zorder>msglabel</zorder>
   </widget>
   <widget class="QLabel" name="msglabel">
    <property name="geometry">
@@ -152,15 +130,6 @@ font: 10pt &quot;文泉驿微米黑&quot;;</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;建议一键加速&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <zorder>frame</zorder>
-  <zorder>downlabel</zorder>
-  <zorder>uplabel</zorder>
-  <zorder>descBtn</zorder>
-  <zorder>fastBtn</zorder>
-  <zorder>ratiolabel</zorder>
-  <zorder>msglabel</zorder>
-  <zorder>title1</zorder>
-  <zorder>title2</zorder>
  </widget>
  <resources/>
  <connections/>

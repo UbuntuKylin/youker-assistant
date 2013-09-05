@@ -62,6 +62,10 @@ Item {
         sub_num=0;
         check_num=0
         var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
+        console.log("111111");
+        console.log(root.size);
+        console.log(root.directory);
+        console.log(largestfile_data);
         if (largestfile_data == "")
             root.null_flag = true;
         else
@@ -71,7 +75,6 @@ Item {
         subModel.clear();
         var num = 0;
         for (var i=0; i< largestfile_data.length; i++) {
-        //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
             var splitlist = largestfile_data[i].split("<2_2>");
             if (splitlist[0] == "") {
                 num++;
@@ -204,7 +207,7 @@ Item {
                 IntValidator{
                     id: intval
                     bottom: 1
-                    top: 2048000
+                    top: 20480
                 }
                 text: "1"
                 validator: intval
@@ -230,7 +233,7 @@ Item {
                 if (root.directory != "") {
                     refresh_page();
                     root.state = "LargestFileWorkAgain";
-                    arrow.visible = true;
+//                    arrow.visible = true;
                 }
             }
         }
@@ -336,7 +339,7 @@ Item {
     //                    height: parent.height*0.3
                         height: 28
                         width: 26
-                        visible: false
+//                        visible: false
                         source: root.arrow
                         //当鼠标点击后,箭头图片旋转90度
     //                    rotation: expanded ? 90 : 0
