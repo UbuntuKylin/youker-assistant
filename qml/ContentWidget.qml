@@ -23,6 +23,7 @@ import SystemType 0.1
 import FcitxCfgWizard 0.1    //  kobe08
 import "./func/common" as Common
 import "./func/settings" as SysSettings
+import "./func/software" as SoftWare
 import "func"
 //Rectangle {
 Item {
@@ -114,6 +115,95 @@ Item {
         //                title: "allfunction by kobe"
                         FunctionCollection {dis: systemdispatcher}
                     }
+                    Common.Page {
+                        id: softwarerecommend
+                        visible: false
+                        SoftWareRecommend {}
+                    }
+
+                    //SoftWare-pages
+                    Common.Page {
+                        id: adobeflashpage
+                        visible: false
+                        SoftWare.AdobeFlash {}
+                    }
+                    Common.Page {
+                        id: chromiumpage
+                        visible: false
+                        SoftWare.Chromium {}
+                    }
+                    Common.Page {
+                        id: eclipseqtpage
+                        visible: false
+                        SoftWare.EclipseQt {}
+                    }
+                    Common.Page {
+                        id: ircpage
+                        visible: false
+                        SoftWare.Irc {}
+                    }
+                    Common.Page {
+                        id: kuaipanpage
+                        visible: false
+                        SoftWare.Kuaipan {}
+                    }
+                    Common.Page {
+                        id: kugoumusicpage
+                        visible: false
+                        SoftWare.KugouMusic {}
+                    }
+                    Common.Page {
+                        id: lotuspage
+                        visible: false
+                        SoftWare.Lotus {}
+                    }
+                    Common.Page {
+                        id: ppspage
+                        visible: false
+                        SoftWare.Pps {}
+                    }
+                    Common.Page {
+                        id: qbittorrentpage
+                        visible: false
+                        SoftWare.QbitTorrent {}
+                    }
+                    Common.Page {
+                        id: stardictpage
+                        visible: false
+                        SoftWare.StarDict {}
+                    }
+                    Common.Page {
+                        id: vicpage
+                        visible: false
+                        SoftWare.Vic {}
+                    }
+                    Common.Page {
+                        id: virtualboxpage
+                        visible: false
+                        SoftWare.VirtualBox {}
+                    }
+                    Common.Page {
+                        id: wineqqpage
+                        visible: false
+                        SoftWare.Wineqq {}
+                    }
+                    Common.Page {
+                        id: wpspage
+                        visible: false
+                        SoftWare.Wps {}
+                    }
+                    Common.Page {
+                        id: xchatpage
+                        visible: false
+                        SoftWare.XChat {}
+                    }
+                    Common.Page {
+                        id: xunleipage
+                        visible: false
+                        SoftWare.XunLei {}
+                    }
+
+
                     //systemset-pages
                     Common.Page {
                         id: widgetthemepage
