@@ -40,7 +40,6 @@
 
 #include <errno.h>
 #include <sys/wait.h>
-extern QString passwd;
 extern QString music_path;
 
 SystemDispatcher::SystemDispatcher(QObject *parent) :

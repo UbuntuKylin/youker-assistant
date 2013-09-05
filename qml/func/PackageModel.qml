@@ -20,6 +20,7 @@
 import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
+import SudoType 0.1
 import "common" as Common
 
 Item {
@@ -193,24 +194,29 @@ Item {
             text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-                if(root.check_flag)
-                {
-                //package cruft
-                 if (btn_flag == "package_scan") {
-                     unneed_signal("UnneedWork");
-                     if(root.null_flag == true) {
-                        root.state = "UnneedWorkEmpty";
-                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
-                     }
-                     else if(root.null_flag == false)
-                        root.state = "UnneedWork";
-                 }
-                 else if (btn_flag == "package_work") {
-                     systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
-                 }
+                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+                    if(root.check_flag)
+                    {
+                        //package cruft
+                        if (btn_flag == "package_scan") {
+                            unneed_signal("UnneedWork");
+                            if(root.null_flag == true) {
+                                root.state = "UnneedWorkEmpty";
+                                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                            }
+                            else if(root.null_flag == false)
+                                root.state = "UnneedWork";
+                            }
+                            else if (btn_flag == "package_work") {
+                                systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+                        }
+                    }
+                    else
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
                 }
-                else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+                else {
+                    sudodispatcher.show_passwd_dialog();
+                }
             }
         }
 //        Common.Button {

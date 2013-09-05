@@ -50,6 +50,7 @@ Rectangle {
                 onClicked: {
                     systemdispatcher.exit_qt();
                     sessiondispatcher.exit_qt();
+                    sudodispatcher.exit_qt();
                     Qt.quit();
                 }
             }

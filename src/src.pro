@@ -24,6 +24,7 @@ HEADERS += youker-application.h \
     quibo.h \
     systemdispatcher.h \
     sessiondispatcher.h \
+    sudodispatcher.h \
     authdialog.h \
     modaldialog.h \
     warningdialog.h \
@@ -62,6 +63,7 @@ SOURCES += main.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
+    sudodispatcher.cpp \
     authdialog.cpp \
     authdialog_event.cpp \
     modaldialog.cpp \

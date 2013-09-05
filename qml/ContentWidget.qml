@@ -20,6 +20,7 @@
 import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
+import SudoType 0.1
 import FcitxCfgWizard 0.1    //  kobe08
 import "./func/common" as Common
 import "./func/settings" as SysSettings
@@ -41,7 +42,10 @@ Item {
     SystemDispatcher {
         id: systemdispatcher
     }
-    FcitxCfgWizard {//kobe08
+    SudoDispatcher {
+        id: sudodispatcher
+    }
+    FcitxCfgWizard {
         id: fcitxcfgwizard
     }
 

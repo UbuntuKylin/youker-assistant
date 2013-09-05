@@ -59,6 +59,6 @@ void AuthDialog::on_closeButton_clicked()
 void AuthDialog::on_okButton_clicked()
 {
     passwd = ui->lineEdit->text();
-    if (passwd == "")
-        exit(0);
+//    if (passwd == "")
+//        exit(0);
 }
