@@ -25,6 +25,7 @@ import tempfile
 import subprocess
 import re
 
+import cleaner
 from subprocess import PIPE
 import dbus
 import dbus.service
@@ -41,6 +42,7 @@ class SudoDaemon(PolicyKitService):
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
+        self.daemonclean = cleaner.FunctionOfClean()
 
     @dbus.service.signal(INTERFACE, signature='s')
     def work_finish(self, msg):
@@ -49,6 +51,16 @@ class SudoDaemon(PolicyKitService):
     def start_to_emit_signal(self, msg):
         self.work_finish(msg)
 
+    # a dbus method which means clean complete
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_complete(self, msg):
+        pass
+
+    # a dbus method which means an error occurred
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_error(self, msg):
+        pass
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_sudo_daemon(self):
         return "SudoDaemon"
@@ -56,3 +68,21 @@ class SudoDaemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def exit(self):
         self.mainloop.quit()
+
+
+    # the function of clean packages
+    ### input-['packagename', 'pack...]   output-''
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    def clean_package_cruft(self, cruftlist):
+        try:
+            self.daemonclean.clean_the_package(cruftlist)
+        except Exception, e:
+            self.clean_error_msg('package')
+        else:
+            self.clean_complete_msg('package')
+
+    def clean_complete_msg(self, para):
+        self.clean_complete(para)
+
+    def clean_error_msg(self, para):
+        self.clean_error(para)

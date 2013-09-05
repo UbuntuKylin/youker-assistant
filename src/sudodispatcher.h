@@ -33,6 +33,7 @@ public:
     Q_INVOKABLE void exit_qt();
     Q_INVOKABLE void show_passwd_dialog();
     Q_INVOKABLE QString get_sudo_daemon_qt();
+    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     QDBusInterface *sudoiface;
 signals:
 

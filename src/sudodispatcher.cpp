@@ -63,6 +63,7 @@ QString SudoDispatcher::get_sudo_daemon_qt() {
 }
 
 void SudoDispatcher::trans_password(QString flagstr, QString pwd) {
+    qDebug() << pwd;
     QProcess *process = new QProcess;
     process->start("/usr/bin/" + flagstr + " " + pwd);
 }
@@ -71,4 +72,11 @@ void SudoDispatcher::show_passwd_dialog() {
     AuthDialog *dialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
     dialog->exec();
     trans_password("youkersudo", passwd);
+}
+
+void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
+    sudoiface->call("clean_package_cruft", strlist);
+
+//    KThread *thread = new KThread(systemiface, "clean_package_cruft", strlist);
+//    thread->start();
 }
