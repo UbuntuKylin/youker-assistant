@@ -195,6 +195,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+                    console.log("11111111");
                     if(root.check_flag)
                     {
                         //package cruft
@@ -208,13 +209,14 @@ Item {
                                 root.state = "UnneedWork";
                             }
                             else if (btn_flag == "package_work") {
-                                systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+                                sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
                         }
                     }
                     else
                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
                 }
                 else {
+                    console.log("2222222222");
                     sudodispatcher.show_passwd_dialog();
                 }
             }

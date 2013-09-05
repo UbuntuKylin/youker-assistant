@@ -42,6 +42,7 @@ QString SudoDispatcher::get_sudo_daemon_qt() {
     return reply.value();
 }
 
+<<<<<<< TREE
 //bool SudoDispatcher::trans_password(QString flagstr, QString pwd) {
 //    QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
 //    QByteArray ba1 = cmd1.toLatin1();
@@ -64,10 +65,24 @@ QString SudoDispatcher::get_sudo_daemon_qt() {
 //    }
 //    return false;
 //}
+=======
+void SudoDispatcher::trans_password(QString flagstr, QString pwd) {
+    qDebug() << pwd;
+    QProcess *process = new QProcess;
+    process->start("/usr/bin/" + flagstr + " " + pwd);
+}
+>>>>>>> MERGE-SOURCE
 
 bool SudoDispatcher::show_passwd_dialog() {
     AuthDialog *dialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
     dialog->exec();
 //    bool value = trans_password("youkersudo", passwd);
 //    return value;
+}
+
+void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
+    sudoiface->call("clean_package_cruft", strlist);
+
+//    KThread *thread = new KThread(systemiface, "clean_package_cruft", strlist);
+//    thread->start();
 }

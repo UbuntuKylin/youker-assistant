@@ -171,11 +171,6 @@ class Daemon(PolicyKitService):
 
     # -------------------------monitorball end-------------------------
 
-    # a dbus method which means scan complete
-    @dbus.service.signal(INTERFACE, signature='s')
-    def scan_complete(self, msg):
-        pass
-
     # a dbus method which means clean complete by main one key 
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_complete_main(self, msg):
@@ -352,27 +347,24 @@ class Daemon(PolicyKitService):
 
     # the function of clean packages
     ### input-['packagename', 'pack...]   output-''
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def clean_package_cruft(self, cruftlist, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            return
-        try:
-            self.daemonclean.uninstall_the_package(cruftlist)
-            #self.daemonclean.clean_the_package(cruftlist)
-        except Exception, e:
-            self.clean_error_msg('package')
-        else:
-            self.clean_complete_msg('package')
+    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    #def clean_package_cruft(self, cruftlist, sender=None):
+    #    status = self._check_permission(sender, UK_ACTION_YOUKER)
+    #    if not status:
+    #        return
+    #    try:
+    #        self.daemonclean.uninstall_the_package(cruftlist)
+    #        #self.daemonclean.clean_the_package(cruftlist)
+    #    except Exception, e:
+    #        self.clean_error_msg('package')
+    #    else:
+    #        self.clean_complete_msg('package')
 
     def dbusstring_to_string(self, string):
         tmp_string = str(string)
         patt = "u'[\S]+'"
         tmp_list = re.findall(patt, tmp_string)
         return [ok.split("'")[1] for ok in tmp_list]
-
-    def scan_complete_msg(self, para):
-        self.scan_complete(para)
 
     def clean_complete_main_msg(self, para):
         self.clean_complete_main(para)
