@@ -44,7 +44,7 @@ void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString 
     ui->downlabel->setText(downspeed + "K/s");
     ui->ratiolabel->setText(ratio + "%");
 //    this->drawLine();
-    update_draw();
+//    update_draw();
     update();
 //    qDebug() << "2222222222->";
 //    qDebug() << cpu_ratio;
@@ -91,14 +91,34 @@ void SuspensionFrame::on_fastBtn_clicked()
 {
     emit accelerate_memory();
 }
-//void SuspensionFrame::drawLine(const QSize&newSize)
-void SuspensionFrame::update_draw()
+
+QSize SuspensionFrame::sizeHint()const
 {
-    QPainter painter(&wheel);   //wheel作为画图对象？
+    return QSize(height(),height());
+}
+void SuspensionFrame::resizeEvent(QResizeEvent*event)
+{
+    wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
+    wheel.fill(palette().background().color());
+//    drawLine(event->size());
+//    update_draw();
+    update();
+}
+void SuspensionFrame::paintEvent(QPaintEvent* event)
+{
+    QPainter painter(this);
+    QStyleOption opt;
+
+    QPixmap background;
+    background.load(":/pixmap/image/accelerate-bg.png");
+    painter.drawPixmap(0,0, background);
+
+
+//    QPainter painter(&wheel);   //wheel作为画图对象？
 //    QPainter paint(&blister);
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);
-    blister.load("../qml/img/skin/blister-big.png");
+    blister.load(":/pixmap/image/blister-big.png");
     //线性渐变
     QLinearGradient linearGradient(76,10,76,76);
     //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
@@ -116,12 +136,12 @@ void SuspensionFrame::update_draw()
     else if(ratio_sus > 60) {
         color2="#ff2f00";
         color3="#ff1900";
-        blister.load("../qml/img/skin/blister-bigwarn.png");
+        blister.load(":/pixmap/image/blister-bigwarn.png");
     }
     else {
         color2="#00b0ff";
         color3="#006eff";
-        blister.load("../qml/img/skin/blister-big.png");
+        blister.load(":/pixmap/image/blister-big.png");
     }
 
     linearGradient.setColorAt(0.0,color1);
@@ -131,27 +151,6 @@ void SuspensionFrame::update_draw()
     painter.setBrush(QBrush(linearGradient));
     painter.drawEllipse(7,7,65,65);
 
-}
-QSize SuspensionFrame::sizeHint()const
-{
-    return QSize(height(),height());
-}
-void SuspensionFrame::resizeEvent(QResizeEvent*event)
-{
-    wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
-    wheel.fill(palette().background().color());
-//    drawLine(event->size());
-    update_draw();
-    update();
-}
-void SuspensionFrame::paintEvent(QPaintEvent* event)
-{
-    QPainter painter(this);
-    QStyleOption opt;
-
-    QPixmap background;
-    background.load("../qml/img/skin/accelerate-bg.png");
-    painter.drawPixmap(0,0, background);
 
     opt.init(this);
     painter.drawImage(0,0,wheel);
