@@ -31,14 +31,14 @@ class SudoDispatcher : public QObject
 public:
     explicit SudoDispatcher(QObject *parent = 0);
     Q_INVOKABLE void exit_qt();
-    Q_INVOKABLE void show_passwd_dialog();
+    Q_INVOKABLE bool show_passwd_dialog();
     Q_INVOKABLE QString get_sudo_daemon_qt();
     QDBusInterface *sudoiface;
 signals:
 
 public slots:
 private:
-    void trans_password(QString flagstr, QString pwd);
+//    bool trans_password(QString flagstr, QString pwd);
 };
 
 #endif // SUDODISPATCHER_H

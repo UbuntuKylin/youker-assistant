@@ -16,14 +16,15 @@
 #include "authdialog.h"
 #include "ui_authdialog.h"
 #include <QDebug>
-
-QString passwd;
+#include <QProcessEnvironment>
+//QString passwd;
 
 AuthDialog::AuthDialog(QString msg, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AuthDialog)
 {
     ui->setupUi(this);
+    passwd = "";
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
@@ -39,13 +40,34 @@ AuthDialog::AuthDialog(QString msg, QWidget *parent) :
     ui->msg_label->setWordWrap(true);
     ui->msg_label->setText(msg);
 
-    QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
+//    QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));
 }
 
 AuthDialog::~AuthDialog()
 {
     delete ui;
+}
+
+
+bool AuthDialog::trans_password(QString flagstr, QString pwd) {
+    QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
+    QByteArray ba1 = cmd1.toLatin1();
+    const char *transpd = ba1.data();
+    int bb = system(transpd);
+    qDebug() << bb;
+    if (bb == 0) {
+        qDebug() << "yes";
+        QString cmd2 = "echo " + pwd + " | sudo -S rm /usr/bin/youker.txt";
+        QByteArray ba2 = cmd2.toLatin1();
+        const char *transpd2 = ba2.data();
+        int bb1 = system(transpd2);
+        qDebug() << bb1;
+        QProcess *process = new QProcess;
+        process->start("/usr/bin/" + flagstr + " " + pwd);
+        return true;
+    }
+    return false;
 }
 
 void AuthDialog::on_closeButton_clicked()
@@ -59,6 +81,11 @@ void AuthDialog::on_closeButton_clicked()
 void AuthDialog::on_okButton_clicked()
 {
     passwd = ui->lineEdit->text();
-//    if (passwd == "")
-//        exit(0);
+    if(trans_password("youkersudo", passwd))
+        this->accept();
+    else {
+        ui->lineEdit->clear();
+        ui->lineEdit->setFocus();
+        ui->msg_label->setText("提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。");
+    }
 }

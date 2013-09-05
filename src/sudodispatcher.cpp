@@ -18,30 +18,10 @@
  */
 #include "sudodispatcher.h"
 #include <QDebug>
-#include <QVariant>
 #include <QProcessEnvironment>
 #include <QtDBus>
-#include <QObject>
-#include <QString>
-#include <QFileDialog>
-#include <QDir>
-
-#include <QFile>
-#include <QDataStream>
-#include <iostream>
 #include "authdialog.h"
-#include "KThread.h"
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdio.h>
-
-#include <errno.h>
-#include <sys/wait.h>
-
-extern QString passwd;
+//extern QString passwd;
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
     QObject(parent)
@@ -62,13 +42,32 @@ QString SudoDispatcher::get_sudo_daemon_qt() {
     return reply.value();
 }
 
-void SudoDispatcher::trans_password(QString flagstr, QString pwd) {
-    QProcess *process = new QProcess;
-    process->start("/usr/bin/" + flagstr + " " + pwd);
-}
+//bool SudoDispatcher::trans_password(QString flagstr, QString pwd) {
+//    QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
+//    QByteArray ba1 = cmd1.toLatin1();
+//    const char *transpd = ba1.data();
+//    int bb = system(transpd);
+//    qDebug() << bb;
+//    if (bb == 0) {
+//        qDebug() << "yes";
+//        QString cmd2 = "echo " + pwd + " | sudo -S rm /usr/bin/youker.txt";
+//        QByteArray ba2 = cmd2.toLatin1();
+//        const char *transpd2 = ba2.data();
+//        int bb1 = system(transpd2);
+//        qDebug() << bb1;
+//        QProcess *process = new QProcess;
+//        process->start("/usr/bin/" + flagstr + " " + pwd);
+//        return true;
+//    }
+//    else {
+//        qDebug() << "no";
+//    }
+//    return false;
+//}
 
-void SudoDispatcher::show_passwd_dialog() {
+bool SudoDispatcher::show_passwd_dialog() {
     AuthDialog *dialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
     dialog->exec();
-    trans_password("youkersudo", passwd);
+//    bool value = trans_password("youkersudo", passwd);
+//    return value;
 }
