@@ -91,7 +91,7 @@ void registerTypes()
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<SudoDispatcher>("SudoType", 0, 1, "SudoDispatcher");
-    qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");//kobe08
+    qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
     qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");

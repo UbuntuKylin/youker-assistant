@@ -34,6 +34,7 @@ public:
     Q_INVOKABLE bool show_passwd_dialog();
     Q_INVOKABLE QString get_sudo_daemon_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
+    Q_INVOKABLE void bind_signals_after_dbus_start();
     QDBusInterface *sudoiface;
 signals:
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork

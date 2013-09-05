@@ -40,8 +40,6 @@ Item {
     property bool check_flag:true
     property bool null_flag: false
 
-
-
     signal unneed_signal(string unneed_msg);
     onUnneed_signal: {
         if (unneed_msg == "UnneedWork") {
@@ -195,6 +193,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+                    sudodispatcher.bind_signals_after_dbus_start();
                     if(root.check_flag)
                     {
                         //package cruft

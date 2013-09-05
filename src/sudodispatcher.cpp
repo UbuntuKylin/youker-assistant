@@ -30,14 +30,22 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
-    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
-    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
-
+//    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+//    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
 }
 
 void SudoDispatcher::exit_qt()
 {
     sudoiface->call("exit");
+}
+
+void SudoDispatcher::bind_signals_after_dbus_start() {
+    sudoiface = new QDBusInterface("com.ubuntukylin.Ihu",
+                               "/",
+                               "com.ubuntukylin.Ihu",
+                               QDBusConnection::systemBus());
+    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
