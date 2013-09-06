@@ -22,6 +22,7 @@ Item {
      id: toolbar
 
      property bool showok: true
+     signal gobackHomeClicked
      signal cancelBtnClicked
      signal finishBtnClicked
      signal gobackBtnClicked
@@ -44,6 +45,15 @@ Item {
          }
 
 //         anchors.right: parent.right; anchors.rightMargin: 5; y: 3; height: 32; spacing: 30
+         Common.Button {
+             id: gobackHome
+             hoverimage: "gray1.png"//../../img/icons/
+             text: "返回主页"
+             fontcolor:"#929292"
+             fontsize: 13
+             width: 94; height: 29
+             onClicked: toolbar.gobackHomeClicked()
+         }
          Common.Button {
              id: cancelBtn
              visible: toolbar.showok

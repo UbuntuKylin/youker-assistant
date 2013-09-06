@@ -420,29 +420,29 @@ Rectangle {
                         color: "#7a7a7a"
                         text:itemTitle
                     }
-//                    Text{
-//                        id:listtext2
-//                        anchors {
-//                            left: listtext.right
-//                            leftMargin: 10
-//                            verticalCenter: parent.verticalCenter
-//                        }
-//                        font.pixelSize: 12
-//                        color: "#7a7a7a"
-//                        text:uniqueName
-//                    }
-//                    Text{
-//                        width: 20
-//                        id:listtext3
-//                        anchors {
-//                            left: listtext2.right
-//                            leftMargin: 10
-//                            verticalCenter: parent.verticalCenter
-//                        }
-//                        font.pixelSize: 12
-//                        color: "#7a7a7a"
-//                        text:langClde
-//                    }
+                    Text{
+                        id:listtext2
+                        anchors {
+                            left: listtext.right
+                            leftMargin: 10
+                            verticalCenter: parent.verticalCenter
+                        }
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                        text:uniqueName
+                    }
+                    Text{
+                        width: 20
+                        id:listtext3
+                        anchors {
+                            left: listtext2.right
+                            leftMargin: 10
+                            verticalCenter: parent.verticalCenter
+                        }
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                        text:langClde
+                    }
                     MouseArea{
                         anchors.fill:parent
                         hoverEnabled: true
@@ -461,7 +461,6 @@ Rectangle {
                 delegate: rightDelegat
                 highlightMoveSpeed: 9999999
                 highlight: Rectangle{width: 350;height: 30 ; color: "lightsteelblue"}
-                    
             }
 
             Rectangle{
@@ -479,8 +478,8 @@ Rectangle {
                 anchors.rightMargin: 0
                 width: 10
                 height:30
-                y: rightLisv.visibleArea.yPosition * rightscrollbar.height    //?
-         //       height: 10*(rightLisv.visibleArea.heightRatio * rightscrollbar.height); //?
+                y: rightLisv.visibleArea.yPosition* rightscrollbar.height    //?
+         //       height: rightLisv.visibleArea.heightRatio * rightscrollbar.height; //?
                 radius: 3
                 smooth: true
                 color: "white"
@@ -510,12 +509,14 @@ Rectangle {
                     drag.minimumY: 0
                     drag.maximumY: rightscrollbar.height - rightbutton.height/10
                     onMouseYChanged: {
-                        console.log(rightbutton.y)
-                        console.log(rightLisv.visibleArea.yPosition)
-                        console.log(rightLisv.contentY)
-                        console.log(rightscrollbar.height)
-                        console.log(rightLisv.contentHeight)
-                        rightLisv.contentY = rightbutton.y / rightscrollbar.height * rightLisv.contentHeight //?
+//                        console.log(rightbutton.y)
+//                        console.log(rightLisv.visibleArea.yPosition)
+//                        console.log(rightLisv.contentY)
+//                        console.log(rightscrollbar.height)
+//                        console.log(rightLisv.contentHeight)
+//                        console.log(rightLisv.visibleArea.heightRatio)
+                        rightLisv.contentY = (rightbutton.y / (rightscrollbar.height)* rightLisv.contentHeight)
+
                     }
                 }
             }

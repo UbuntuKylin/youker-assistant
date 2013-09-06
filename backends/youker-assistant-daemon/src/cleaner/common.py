@@ -21,6 +21,18 @@ import apt
 import apt_pkg
 
 
+def confirm_filesize_unit(size):
+    unit_list = ['B', 'KB', 'MB', 'GB', 'TB']
+    flag = 0
+    while True:
+        if size > 512:
+            size /= 1024.0
+            flag += 1
+        else:                                                                            break
+    tmp = "%.2f" % size
+    finalsize = tmp + unit_list[flag]
+    return finalsize
+
 def get_dir_size(path):
     size = 0L
     for root, dirs, files in os.walk(path):
@@ -74,10 +86,10 @@ def get_mozilla_path(homedir):
                 else:
                     final_path = os.path.expanduser('%s/%s/' % (app_path, cfg.get(flag_pro_section, 'Path')))
             else:
-                print 'profile.ini has error!'
+                raise Exception('profile.ini has error!')
         else:
             pass
     else:
-        final_path = 'Can not find the file!'
+        raise Exception('Can not find the file!')
     return final_path
 

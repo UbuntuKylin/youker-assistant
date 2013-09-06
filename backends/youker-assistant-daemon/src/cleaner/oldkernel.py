@@ -21,7 +21,7 @@ class OldKernel():
                     if re.match(self.FLAG, pkg.name):
                         version = pkg.installedVersion[:-3]
                         if apt_pkg.version_compare(version, self.current_version) < 0:
-                            tmp_oldkernel_list = [pkg.name, str(pkg.installedSize)]
+                            tmp_oldkernel_list = [pkg.name, common.confirm_filesize_unit(pkg.installedSize)]
                             final_oldkernel_list.append('<2_2>'.join(tmp_oldkernel_list))
         return final_oldkernel_list
 

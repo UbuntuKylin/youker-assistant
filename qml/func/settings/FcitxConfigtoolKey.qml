@@ -28,13 +28,25 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Text {
-             text: fcitxconfigtoolKey.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
+        Row{
+            spacing: 50
+            Text {
+                 text: fcitxconfigtoolKey.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
 
-         }
+             }
+            //status picture
+            Image {
+                id: statusImage
+                visible: false
+                source: "../../img/toolWidget/finish.png"
+                fillMode: "PreserveAspectFit"
+                smooth: true
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
          Text {
              text: fcitxconfigtoolKey.actiontext
              font.pixelSize: 12
@@ -44,6 +56,9 @@ Rectangle {
 
     function refreshFcitxKey(){
         skinModel.clear();
+//        refreshSkinModel.clear()
+//        skinCombo.model = refreshSkinModel
+//        refreshSkinModel.append({"skinTitel": "11111111111"})
         //set font============================================================
         var setFont = fcitxcfgwizard.get_font();
         fontStyleBtn.text = setFont;
@@ -51,10 +66,9 @@ Rectangle {
         var getFontSize = fcitxcfgwizard.get_font_size();
         sliderFontSize.value = getFontSize;
 
-        //get_skin_list and current_skin======================================
+        //get_skin_list and current_skin=================================================
         var getSkinList = fcitxcfgwizard.get_all_skin_type()
         var getCurrentSkin = fcitxcfgwizard.get_skin_type()
-
         if(getCurrentSkin != "default")
         {
             enableSkinBox.checked = true
@@ -73,7 +87,6 @@ Rectangle {
             if(i!=0&&(getSkinList[i] == getCurrentSkin))
                 skinModel.remove(i);
         }
-
         //load_skin_image====================================================
         if(getCurrentSkin == "default")
         {
@@ -96,7 +109,11 @@ Rectangle {
         }
 
   }
-
+    //选择皮肤
+    ListModel {
+        id: skinModel
+        ListElement {skinTitle: ""}
+    }
 
     Connections {
             target: fcitxcfgwizard
@@ -189,11 +206,6 @@ Rectangle {
             left: parent.left
             leftMargin: 65
         }
-        //选择皮肤
-        ListModel {
-            id: skinModel
-            ListElement {skinTitle: "";}
-        }
         Common.CheckBox{
             id:enableSkinBox
             anchors.verticalCenter: parent.verticalCenter
@@ -228,18 +240,23 @@ Rectangle {
             width: 130
             height: 25
             onSelectedTextChanged: {
-                if(skinCombo.selectedText != "default")
+                if(skinCombo.selectedText == "default")
                 {
+                    enableSkinBox.checked = false;
+                    flagCheck = 0;
+
+                }
+                else{
                     enableSkinBox.checked = true;
                     flagCheck = 1;
                 }
+
                 //load_skin_image====================================================
-                if(skinCombo.selectedText == "default")
+                 if(skinCombo.selectedText == "default")
                 {
                     h_fcitxSkinImage = "../../img/skin/h_default.png"
                     v_fcitxSkinImage = "../../img/skin/v_default.png"
-                    enableSkinBox.checked = false;
-                    flagCheck = 0;
+
                 }
                 else if(skinCombo.selectedText == "dark")
                 {
@@ -252,7 +269,7 @@ Rectangle {
                     v_fcitxSkinImage = "../../img/skin/v_classic.png"
                 }
                 else{
-                    h_fcitxSkinImage = ""
+                    h_fcitxSkinImage = "../../img/skin/fcitxSkin_not.png"
                     v_fcitxSkinImage = ""
                 }
            }
@@ -274,8 +291,8 @@ Rectangle {
             onCheckedChanged: {
                 if(enableHotKeyBox.checked == false)
                 {
-                    sliderFontSize.value = 20;
-                    fontStyleBtn.text = "Sans 10";
+                    sliderFontSize.value = 12;
+                    fontStyleBtn.text = "Sans";
                 }
             }
         }
@@ -296,11 +313,12 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     minimumValue: 0
                     maximumValue: 72
+                    value:12
                     width: 150
                     stepSize: 1
                     animated: true
                     onValueChanged: {
-                        if(sliderFontSize.value != 20)
+                        if(sliderFontSize.value != 12)
                         {
                             enableHotKeyBox.checked = true;
                         }
@@ -336,7 +354,7 @@ Rectangle {
             id: fontStyleBtn
             smooth:true
             width: 160;height: 25
-            hoverimage: "fcitxfont.png"//../../img/icons/
+            hoverimage: "fcitxFont.png"//../../img/icons/
             fontcolor:"#929292"
             fontsize: 13
             anchors.verticalCenter: font.verticalCenter
@@ -344,7 +362,7 @@ Rectangle {
                fontStyleBtn.text = fcitxcfgwizard.show_font_dialog();
            }
            onTextChanged: {
-               if(fontStyleBtn.text != "Sans 10" )
+               if(fontStyleBtn.text != "Sans" )
                {
                    enableHotKeyBox = true;
                }
@@ -408,6 +426,7 @@ Rectangle {
             height:190
             color:"#b9c5cc"
         }
+
         Row{
             anchors{
                 top:parent.top
@@ -420,7 +439,6 @@ Rectangle {
             id: fcitxVimage
             source: v_fcitxSkinImage
             smooth: true
-            anchors.verticalCenter: parent.verticalCenter
         }
         Image {
             id: fcitxHimage
@@ -429,6 +447,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
         }
       }
+
     }
 
     //顶层工具栏
@@ -458,6 +477,9 @@ Rectangle {
 //            button1Label: qsTr("退出")
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("应用")
+        onGobackHomeClicked: {
+            pageStack.push(functioncollection);
+        }
         onCancelBtnClicked: {
             fcitxcfgwizard.send_fcitx_ok_warn();
         }
@@ -471,8 +493,12 @@ Rectangle {
             fcitxcfgwizard.set_font_size(sliderFontSize.value,false);
             fcitxcfgwizard.set_skin_type(skinCombo.selectedText, false);
             fcitxcfgwizard.all_cfg_save()
-            pageStack.push(functioncollection);
+            statusImage.visible = true;
         }
+        Timer {
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: statusImage.visible = false
+             }
 
     }
 
