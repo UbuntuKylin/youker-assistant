@@ -26,10 +26,10 @@ Item {
     id: screen; width: parent.width; height: 475
 //需要时常变动的变量
     property string image_flag:""
-    property string recommendone_image: "../img/icons/irc.png"
-    property string recommendtwo_image: "../img/icons/chromium.png"
-    property string recommendthree_image: "../img/icons/kugou.png"
-    property string recommendoneimage_image: recommendone_image
+    property string recommendone_image: "../img/skin/qq-small.png"
+    property string recommendtwo_image: "../img/skin/qt-small.png"
+    property string recommendthree_image: "../img/skin/wps-small.png"
+    property string recommendoneimage_image: "../img/skin/qq.png"
     property string recommendimage_text: "Winasd     asfsaff:asdfasdfa 2012 asd"
         //背景
     Image {
@@ -50,6 +50,10 @@ Item {
             anchors.fill:parent
             source: recommendoneimage_image
         }
+        Image{
+            anchors.fill:parent
+            source: "../img/skin/linecolor.png"
+        }
         MouseArea{
             anchors.fill: parent
             onClicked: {
@@ -60,8 +64,7 @@ Item {
         Rectangle{
             width: parent.width;height: 30
             anchors.bottom: parent.bottom
-            opacity: 0.7
-            color: "grey"
+            color: "transparent"
             Text{
                 anchors{
                     left: parent.left
@@ -105,7 +108,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     imagframe.y=colum.y+recommendone.y
-                    recommendoneimage_image=recommendone_image
+                    recommendoneimage_image="../img/skin/qq.png"
                 }
             }
         }
@@ -120,7 +123,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     imagframe.y=colum.y+recommendtwo.y
-                    recommendoneimage_image=recommendtwo_image
+                    recommendoneimage_image="../img/skin/qt.png"
                 }
             }
         }
@@ -135,7 +138,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     imagframe.y=colum.y+recommendthree.y
-                    recommendoneimage_image=recommendthree_image
+                    recommendoneimage_image="../img/skin/wps.png"
                 }
             }
         }
@@ -143,8 +146,8 @@ Item {
 
     Image {
         id: imagframe
-        source: "../img/icons/Pps.png"
-        x:colum.x;y:colum.y
+        source: "../img/skin/frame.png"
+        x:colum.x-13;y:colum.y
         opacity: 0.8
     }
 
@@ -158,9 +161,10 @@ Item {
             leftMargin: 25
         }
         clip:true
-        border.color: "#b9c5cc"
-        color: "#eeeeee"
+        border.color: "#9aa2af"
+        color: "#e6ebfe"
         Rectangle{
+            id:rec
             width: parent.width-1;height: 31
             anchors{
                 top:parent.top
@@ -168,38 +172,47 @@ Item {
                 left: parent.left
                 leftMargin: 1
             }
-            color: "lightgrey"
+            gradient: Gradient{
+                GradientStop{position: 0.0; color: "#e2e2e2"}
+                GradientStop{position: 1.0; color: "#dedede"}
+            }
             Row{
                 anchors.centerIn: parent
                 spacing: 50
-                Common.Button{
-                    id:recommended_top
-                    width:110;height: 25
+                Text {
                     text:"推荐金榜单"
-                    hoverimage:"blue1.png"
-                    onClicked: {
-                        fontcolor="white"
-                        hoverimage="blue1.png"
-                        download_top.fontcolor="grey"
-                        download_top.hoverimage="gray1-hover.png"
-                    }
+                    color: "#6b6f70"
+                    font.pixelSize: 14
                 }
-                Common.Button{
-                    id:download_top
-                    width: 110;height: 25
-                    text:"下载排行榜"
-                    fontcolor: "grey"
-                    hoverimage:"gray1-hover.png"
-                    onClicked: {
-                        fontcolor="white"
-                        hoverimage="blue1.png"
-                        recommended_top.fontcolor="grey"
-                        recommended_top.hoverimage="gray1-hover.png"
-                    }
-                }
+//                Common.Button{
+//                    id:recommended_top
+//                    width:110;height: 25
+//                    text:"推荐金榜单"
+//                    hoverimage:"blue1.png"
+//                    onClicked: {
+//                        fontcolor="white"
+//                        hoverimage="blue1.png"
+//                        download_top.fontcolor="grey"
+//                        download_top.hoverimage="gray1-hover.png"
+//                    }
+//                }
+//                Common.Button{
+//                    id:download_top
+//                    width: 110;height: 25
+//                    text:"下载排行榜"
+//                    fontcolor: "grey"
+//                    hoverimage:"gray1-hover.png"
+//                    onClicked: {
+//                        fontcolor="white"
+//                        hoverimage="blue1.png"
+//                        recommended_top.fontcolor="grey"
+//                        recommended_top.hoverimage="gray1-hover.png"
+//                    }
+//                }
             }
         }
-
+        Rectangle{id: splitbar1; anchors{top:rec.bottom;left: parent.left;leftMargin: 1 }width:parent.width-1 ; height:1; color:"#b8bdc3"}
+        Rectangle{id: splitbar2; anchors{top:splitbar1.bottom;left: parent.left;leftMargin: 1  }width:parent.width-1 ; height:1; color:"#ebf0f6"}
         Item {
             width: views.width
             height: 180

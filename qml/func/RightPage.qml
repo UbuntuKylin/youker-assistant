@@ -29,9 +29,9 @@ Rectangle {
     property SessionDispatcher dis1: sessiondispatcher
 
 //推荐软件的三张图片
-    property string image1: "../img/icons/irc.png"
-    property string image2: "../img/icons/chromium.png"
-    property string image3: "../img/icons/kugou.png"
+    property string image1: "../img/skin/qq0.png"
+    property string image2: "../img/skin/qt0.png"
+    property string image3: "../img/skin/wps0.png"
 
 //    property SystemDispatcher dis2: systemdispatcher
     ListModel {
@@ -76,24 +76,15 @@ Rectangle {
 
     //-------------------
 
-    Image {
-        id: logoimage
-        anchors {
-            top: parent.top
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
+    Column{
+        anchors{
+            left: parent.left
+            leftMargin: 15
+            top:parent.top
+            topMargin: 10
         }
-        source: "../img/icons/admin.png"
-    }
-    Row {
-        id: setrow
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: logoimage.bottom
-            topMargin: 1
-        }
-        SetBtn {iconName: "set.png"; setbtn_flag: "set"}
-        SetBtn {iconName: "message.png"; setbtn_flag: "message"}
+
+
     }
 
     Item{
@@ -101,12 +92,12 @@ Rectangle {
         width: mage.width;height: mage.height
         anchors {
             top: parent.top
-            topMargin: 160
+            topMargin: 105
             horizontalCenter: parent.horizontalCenter
         }
         Image {
             id: mage
-            source: "../img/icons/kugou.png"
+            source: image1
         }
         MouseArea{
             anchors.fill: parent
@@ -114,36 +105,77 @@ Rectangle {
                 pageStack.push(softwarerecommend);
             }
         }
+        Common.ButtonRow {
+            exclusive: true//控制是否联动
+            spacing: 7
+            anchors{
+                bottom:mage.bottom
+                bottomMargin: 20
+                left: parent.left
+                leftMargin: 20
+            }
+            Common.CheckBox {
+                id:image_one
+                checked: true
+                flag: "flowradio"
+                onClicked: {
+                    if (image_one.checked == true) {
+                        mage.source=image1
+                    }
+                }
+            }
+            Common.CheckBox {
+                id: image_two
+                checked: false
+                flag: "flowradio"
+                onClicked: {
+                    if (image_two.checked == true) {
+                        mage.source=image2
+                    }
+                }
+            }
+            Common.CheckBox {
+                id: image_three
+                checked: false
+                flag: "flowradio"
+                onClicked: {
+                    if (image_three.checked == true) {
+                        mage.source=image3
+                    }
+                }
+            }
+        }
+        Row{
+            anchors{
+                bottom:mage.bottom
+                bottomMargin: 15
+                left: parent.left
+                leftMargin: 15
+            }
+            spacing: 5
+            Common.Button{
+                id:button1
+                hoverimage: "radiobox.png"
+                onClicked: {
+                    mage.source="../img/icons/kugou.png"
+                }
+            }
+            Common.Button{
+                id:button2
+                hoverimage: "radiobox.png"
+                onClicked: {
+                    mage.source="../img/icons/kugou.png"
+                }
+            }
+            Common.Button{
+                id:button3
+                hoverimage: "radiobox.png"
+                onClicked: {
+                    mage.source="../img/icons/kugou.png"
+                }
+            }
+        }
     }
-//    Row{
-//        anchors{
-//            top:software.bottom
-//            topMargin: 10
-//            horizontalCenter: parent.horizontalCenter
-//        }
-//        spacing: 5
-//        Common.Button{
-//            id:button1
-//            hoverimage: "radiobox.png"
-//            onClicked: {
-//                mage.source="../img/icons/kugou.png"
-//            }
-//        }
-//        Common.Button{
-//            id:button2
-//            hoverimage: "radiobox.png"
-//            onClicked: {
-//                mage.source="../img/icons/kugou.png"
-//            }
-//        }
-//        Common.Button{
-//            id:button3
-//            hoverimage: "radiobox.png"
-//            onClicked: {
-//                mage.source="../img/icons/kugou.png"
-//            }
-//        }
-//    }
 
 //    Text {
 //        id: teamname

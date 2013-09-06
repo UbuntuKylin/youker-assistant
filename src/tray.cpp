@@ -226,7 +226,7 @@ void Tray::paintEvent(QPaintEvent* event)
 
     QPixmap background;
     background.load(":/pixmap/image/accelerate-bg0.png");
-    painter.drawPixmap(0,0, background);
+    painter.drawPixmap(0,13, background);
 
 
 //    QPainter painter(&wheel);   //wheel作为画图对象？
@@ -248,9 +248,9 @@ void Tray::paintEvent(QPaintEvent* event)
         color2="transparent";
         color3="transparent";
     }
-    else if(ratio_sus > 60) {
-        color2="#ff2f00";
-        color3="#ff1900";
+    else if(ratio_sus > 80) {
+        color2="#d13625";
+        color3="#d13625";
         blister.load(":/pixmap/image/blister-small.png");
     }
     else {
@@ -270,6 +270,6 @@ void Tray::paintEvent(QPaintEvent* event)
     opt.init(this);
     painter.drawImage(0,0,wheel);
 
-    painter.drawPixmap(0,0, blister);
+    painter.drawPixmap(0,13, blister);
     style()->drawPrimitive(QStyle::PE_Widget,&opt,&painter,this);
 }
