@@ -22,16 +22,25 @@ import QtQuick 1.1
 import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
+import "../../func" as Func
 Rectangle {
     id: adobeflash
     property bool on: true
-//需要时常变动的变量
-    property string software_name: "Qafa1asd"
-    property string software_information: "asdasd:asdfsa12   afasf:1231M  asfs:2013-9-1"
-    property string software_image: "../../img/icons/bug.png"
-    property string software_introduction: "腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
-    property string introduction_image1: "../../img/skin/HighContrast.png"
-    property string introduction_image2: "../../img/skin/Radiance.png"
+////需要时常变动的变量
+//    property string software_name: "Qafa1asd"
+//    property string software_information:"asdasd:asdfsa12   afasf:1231M  asfs:2013-9-1"
+//    property string software_image: "../../img/icons/bug.png"
+//    property string software_introduction:  "腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+//    property string introduction_image1:  "../../img/skin/HighContrast.png"
+//    property string introduction_image2: "../../img/skin/Radiance.png"
+
+    //需要时常变动的变量
+        property string software_name: content.delegate_name
+        property string software_information: content.delegate_information
+        property string software_image: content.delegate_image
+        property string software_introduction: content.delegate_introduction
+        property string introduction_image1: content.introduction_image1
+        property string introduction_image2: content.introduction_image2
     width: parent.width
     height: 475
 
@@ -83,6 +92,7 @@ Rectangle {
         Image {
             id: softwareimage
             source: software_image
+//            source: softwaredelegate.delegate_image
             anchors{
                 left: parent.left
                 leftMargin: 20
@@ -99,12 +109,15 @@ Rectangle {
             Text{
                 id:softwarename
                 text:software_name
-//                font.bold: true
+//                text:softwaredelegate.delegate_name
+
                 font.pixelSize: 18
             }
             Text {
                 id: softwareinformation
                 text: software_information
+//                text:softwaredelegate.delegate_information
+
                 font.pixelSize: 14
             }
         }
@@ -164,6 +177,7 @@ Rectangle {
             }
             font.pixelSize: 13
             text: software_introduction
+//            text:softwaredelegate.delegate_introduction
             wrapMode: Text.WrapAnywhere
         }
         Row{
@@ -176,10 +190,12 @@ Rectangle {
             Image {
                 id: introductionimage1
                 source: introduction_image1
+//                source: softwaredelegate.introduction_image1
             }
             Image {
                 id: introductionimage2
                 source: introduction_image2
+//                source: softwaredelegate.introduction_image2
             }
         }
     }

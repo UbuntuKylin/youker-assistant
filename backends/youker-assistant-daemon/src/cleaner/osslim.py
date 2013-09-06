@@ -16,7 +16,7 @@ class OsSlim():
             for pkg in cache:
                 if pkg.is_auto_removable and not pkg.name.startswith('linux'):
                 #if pkg.is_installed and pkg.name.startswith('linux-headers'):
-                    tmp_packages_list = [pkg.name, pkg.summary, str(pkg.installedSize)]
+                    tmp_packages_list = [pkg.name, pkg.summary, common.confirm_filesize_unit(pkg.installedSize)]
                     spare_packages_list.append('<2_2>'.join(tmp_packages_list))
         return spare_packages_list
 

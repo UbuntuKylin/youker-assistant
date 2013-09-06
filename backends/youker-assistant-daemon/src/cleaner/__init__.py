@@ -117,7 +117,7 @@ class ManageTheLarge():
         self.path = path
         finalsize = size * 1024 * 1024
         self.objl.hundred_large_files(finalsize, self.path)
-        self.objl.type_of_file()
+        #self.objl.type_of_file()
         largefile_dic = self.objl.adjust_the_list()
         return largefile_dic
         

@@ -21,6 +21,18 @@ import apt
 import apt_pkg
 
 
+def confirm_filesize_unit(size):
+    unit_list = ['B', 'KB', 'MB', 'GB', 'TB']
+    flag = 0
+    while True:
+        if size > 512:
+            size /= 1024.0
+            flag += 1
+        else:                                                                            break
+    tmp = "%.2f" % size
+    finalsize = tmp + unit_list[flag]
+    return finalsize
+
 def get_dir_size(path):
     size = 0L
     for root, dirs, files in os.walk(path):

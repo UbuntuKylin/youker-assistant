@@ -727,7 +727,7 @@ QString FcitxCfgWizard::show_font_dialog()
     const QFont &font = QFontDialog::getFont(&ok, 0);
     if(ok)
         return font.family();
-    return "Sans 10";
+    return "Sans";
 }
 
 //qt控件貌似（？不确定，先这么做了）没法返回右shiht、右ctrl、右alt键，
