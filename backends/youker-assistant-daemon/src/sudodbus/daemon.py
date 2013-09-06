@@ -32,6 +32,9 @@ import dbus.service
 import dbus.mainloop.glib
 from gi.repository import GObject
 from server import PolicyKitService
+from softwarecenter.apt_daemon import FetchProcess
+from softwarecenter.apt_daemon import AptProcess
+from softwarecenter.apt_daemon import AptDaemon
 log = logging.getLogger('SudoDaemon')
 
 INTERFACE = "com.ubuntukylin.Ihu"
@@ -43,6 +46,7 @@ class SudoDaemon(PolicyKitService):
         PolicyKitService.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
         self.daemonclean = cleaner.FunctionOfClean()
+        self.daemonApt = AptDaemon(self)
 
     @dbus.service.signal(INTERFACE, signature='s')
     def work_finish(self, msg):
@@ -86,3 +90,67 @@ class SudoDaemon(PolicyKitService):
 
     def clean_error_msg(self, para):
         self.clean_error(para)
+
+    # -------------------------software-center-------------------------
+
+    # install package sa:software_fetch_signal() and software_apt_signal()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def install_pkg(self, pkgName):
+        self.daemonApt.install_pkg(pkgName)
+
+    # uninstall package sa:software_apt_signal()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def uninstall_pkg(self, pkgName):
+        self.daemonApt.uninstall_pkg(pkgName)
+
+    # update package sa:software_fetch_signal() and software_apt_signal() 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def update_pkg(self, pkgName):
+        self.daemonApt.update_pkg(pkgName)
+
+    # check packages status by pkgNameList sa:software_check_status_signal()
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    def check_pkgs_status(self, pkgNameList):
+        self.daemonApt.check_pkgs_status(pkgNameList)
+
+    # package download status signal
+    '''parm mean
+        type:
+            start:start download
+            stop:all work is finish
+            done:all items download finished
+            fail:download failed
+            fetch:one item download finished
+            pulse:download status, this msg given a string like dict
+        msg:
+            a message of type, sometimes is None
+    '''
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def software_fetch_signal(self, type, msg):
+        pass
+
+    # package install/update/remove signal
+    '''parm mean
+        type:
+            start:start work
+            stop:work finish
+            error:got a error
+            pulse:work status, this msg given a string like dict
+        msg:
+            a message of type, sometimes is None
+    '''
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def software_apt_signal(self, type, msg):
+        pass
+
+    # get packages status signal
+    '''parm mean
+        dict{packageName, packageStatus}
+        packageStatus:
+            i:installed
+            u:installed and can update
+            n:notinstall
+    '''
+    @dbus.service.signal(INTERFACE, signature='a{sv}')
+    def software_check_status_signal(self, statusDict):
+        pass

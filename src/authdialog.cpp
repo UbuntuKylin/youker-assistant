@@ -32,6 +32,11 @@ AuthDialog::AuthDialog(QString msg, QWidget *parent) :
     ui->btn_min->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
+    ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+    ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
+
 
     ui->lineEdit->setEchoMode(QLineEdit::Password);
     ui->lineEdit->setFocus();
@@ -72,7 +77,7 @@ void AuthDialog::on_closeButton_clicked()
 //    QDialog::reject();
     close();
     QDialog::destroy(true);
-    exit(0);
+//    exit(0);
 }
 
 void AuthDialog::on_okButton_clicked()

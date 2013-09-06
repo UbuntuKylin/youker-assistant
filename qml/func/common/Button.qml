@@ -151,6 +151,10 @@ Item {
 //                if(setbtn_flag =="onekey")
 //                    displaytext.text = "再次清理";
             }
+            else if(hoverimage == "fcitxKey.png")
+                  btnImg.source = "../../img/icons/fcitxKey-hover.png"
+            else if(hoverimage == "fcitxFont.png")
+                  btnImg.source = "../../img/icons/fcitxFont-hover.png"
             else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
 //            if (hoverimage == "return.png")
