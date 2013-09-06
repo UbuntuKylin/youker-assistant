@@ -25,12 +25,22 @@ import "software" as Software
 
 Rectangle {
     id: softwaredelegate
+
+////传给软件推荐二级界面的值
+//    property string delegate_name: "Qafa1asd"
+//    property string delegate_information: "asdasd:asdfsa12   afasf:1231M  asfs:2013-9-1"
+//    property string delegate_image: "../../img/icons/bug.png"
+//    property string delegate_introduction: "腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+//    property string introduction_image1: "../../img/skin/HighContrast.png"
+//    property string introduction_image2: "../../img/skin/Radiance.png"
+
     scale: 1
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     width: 167
     height: 79
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
+//    Software.AdobeFlash{width: 0;height: 0; opacity: 0}
     Image {
         id: seticon
         source: icon
@@ -54,41 +64,150 @@ Rectangle {
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
-            if (flag == "AdobeFlash")
-                pageStack.push(adobeflashpage);
-            else if (flag == "Chromium")
-            {
-
-                pageStack.push(adobeflashpage);
-            }
-            else if (flag == "EclipseQt")
-                pageStack.push(adobeflashpage);
-            else if (flag == "Irc")
-                pageStack.push(adobeflashpage);
-            else if (flag == "Kuaipan")
-                pageStack.push(adobeflashpage);
-            else if (flag == "KugouMusic")
-                pageStack.push(adobeflashpage);
-            else if (flag == "Lotus")
-                pageStack.push(adobeflashpage);
-            else if (flag == "Pps")
-                pageStack.push(adobeflashpage);
-            else if (flag == "QbitTorrent")
-                pageStack.push(adobeflashpage);
-            else if (flag == "StarDict")
-                pageStack.push(adobeflashpage);
-            else if (flag == "Vic")
-                pageStack.push(adobeflashpage);
-            else if (flag == "VirtualBox")
-                pageStack.push(adobeflashpage);
-            else if (flag == "Wineqq")
-                pageStack.push(adobeflashpage);
-            else if (flag == "Wps")
-                pageStack.push(adobeflashpage);
-            else if (flag == "XChat")
-                pageStack.push(adobeflashpage);
-            else if (flag == "XunLei")
-                pageStack.push(adobeflashpage);
+            if (flag == "AdobeFlash"){
+                    content.delegate_name= "Q11111"
+                    content.delegate_information= "1111111111111   1111:11111  11111:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "Chromium"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "EclipseQt"){
+                    content.delegate_name= "Q333333"
+                    content.delegate_information= "33333333   333333:33333  333333:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "Irc"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "Kuaipan"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "KugouMusic"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "Lotus"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "Pps"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "QbitTorrent"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "StarDict"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "Vic"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "VirtualBox"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "Wineqq"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "Wps"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "XChat"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
+            else if (flag == "XunLei"){
+                    content.delegate_name= "Q222222"
+                    content.delegate_information= "222222222   22222:2222  2222:2013-9-1"
+                    content.delegate_image= "../../img/icons/bug.png"
+                    content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
+                    content.introduction_image1= "../../img/skin/HighContrast.png"
+                    content.introduction_image2= "../../img/skin/Radiance.png"
+                    pageStack.push(adobeflashpage);
+                }
 //            softwaredelegate.GridView.view.currentIndex = index;
         }
     }
