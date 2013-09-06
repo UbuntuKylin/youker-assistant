@@ -31,6 +31,8 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 80);
     ratio_sus = 0;
+    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
 }
 
 SuspensionFrame::~SuspensionFrame()

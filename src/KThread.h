@@ -12,6 +12,7 @@ class KThread : public QThread
 {
 public:
     KThread(QDBusInterface *systemiface=0, QString method="", QStringList arglist={}, QString flag="");
+//    KThread(QDBusInterface *systemiface=0, QString method="", const QStringList &arglist="kobe, lixiang", QString flag="");
     ~KThread();
     void stop();
     QDBusInterface *iface;
