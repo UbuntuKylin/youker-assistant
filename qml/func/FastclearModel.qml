@@ -25,7 +25,7 @@ Rectangle {
     width: parent.width
     height: 435
     property string onekeypage: "second"
-    property int num: 4
+    property int num: 3
     property int check_num: num
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -40,12 +40,6 @@ Rectangle {
                     historystatus.visible = false;
                 if (cookiestatus.visible == true)
                     cookiestatus.visible = false;
-                if (unneedstatus.visible == true)
-                    unneedstatus.visible = false;
-                onekeybtn.enabled=true;
-            }
-            else if (msg == "u") {
-                unneedstatus.state = "StatusU";
                 onekeybtn.enabled=true;
             }
             else if (msg == "c") {
@@ -64,10 +58,7 @@ Rectangle {
         }
 
         onFinishCleanWorkSecondError: {
-            if (msg == "ue") {
-                unneedstatus.state = "StatusU1";
-            }
-            else if (msg == "ce") {
+            if (msg == "ce") {
                 cachestatus.state = "StatusC1";
             }
             else if (msg == "he") {
@@ -101,10 +92,6 @@ Rectangle {
 
     Rectangle {id: splitbar7; x: 2; y: 304; width: parent.width-4; height: 1; color: "#b9c5cc" }
     Rectangle {id: splitbar8; x: 2; y: 306; width: parent.width-4; height: 1; color: "#fafcfe" }
-
-    Rectangle {id: splitbar9; x: 2; y: 374; width: parent.width-4; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar10; x: 2; y: 376; width: parent.width-4; height: 1; color: "#fafcfe" }
-
 
 //    Row {
 
@@ -151,7 +138,6 @@ Rectangle {
             height: 39
 ////如果没有选中任何清理项，提示警告框！
             onClicked: {
-
                 if(checkboxe.checked) {
                     cachestatus.visible = true;
                     cachestatus.state = "StatusCF";
@@ -170,15 +156,8 @@ Rectangle {
                 }
                 else
                     cookiestatus.visible = false;
-                if(checkboxe4.checked) {
-                    unneedstatus.visible = true;
-                    unneedstatus.state = "StatusUF";
-                }
-                else
-                    unneedstatus.visible = false;
 
-
-                if(!(checkboxe.checked||checkboxe2.checked||checkboxe3.checked||checkboxe4.checked))
+                if(!(checkboxe.checked||checkboxe2.checked||checkboxe3.checked))
                 {
                     onekeybtn.check_flag=false;
 
@@ -519,105 +498,6 @@ Rectangle {
 
                         }
                       }
-            //----------------------------
-                        Item {
-                        property SessionDispatcher dis: sessiondispatcher
-                        width: parent.width//clearDelegate.ListView.view.width
-                        height: 45//65
-
-                        Item {
-                            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-                            id: scaleMe3
-                            //checkbox, picture and words
-                            Row {
-                                id: lineLayout3
-                                spacing: 15
-                                anchors.verticalCenter: parent.verticalCenter
-                               Common.CheckBox {
-                                    id: checkboxe4
-                                    checked:true    //将所有选项都check
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    onCheckedChanged: {
-                                        if(checkboxe4.checked)
-                                            fastmode.check_num=fastmode.check_num+1;
-                                        else fastmode.check_num=fastmode.check_num-1;
-
-                                        if (checkboxe4.checked) {
-                                                    var mylist = systemdispatcher.get_onekey_args2();
-                                                    var word_flag3 = "false";
-                                                    for (var q=0; q<mylist.length; q++) {
-                                                        if (mylist[q] == "unneed") {
-                                                            word_flag3 = "true";
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (word_flag3 == "false") {
-                                                        systemdispatcher.set_onekey_args2("unneed");
-                                                    }
-                                        }
-                                        else if (!checkboxe4.checked) {
-                                                systemdispatcher.del_onekey_args2("unneed");
-                                            }
-                                    }
-                                }
-
-
-                            Image {
-                                id: clearImage4
-                                width: 40; height: 42
-                                source: "../img/toolWidget/deb.png"//picturename
-
-                            }
-
-                            Column {
-                                spacing: 5
-                                Text {
-                                    text: "卸载不必要的程序"//titlename
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
-                                }
-                                Text {
-                                    text: "清理软件安装过程中安装的依赖程序，提高系统性能"//detailstr
-                                    font.pixelSize: 12
-                                    color: "#7a7a7a"
-                                }
-                            }
-                          }
-
-                            Common.StatusImage {
-                                id: unneedstatus
-                                visible: false
-                                iconName: "yellow.png"
-                                text: "未完成"
-                                anchors {
-                                    left: parent.left; leftMargin: 500
-                                }
-                                states: [
-                                        State {
-                                        name: "StatusU"
-                                        PropertyChanges { target: unneedstatus; iconName: "green.png"; text: "已完成"}
-                                    },
-
-                                        State {
-                                        name: "StatusU1"
-                                        PropertyChanges { target: unneedstatus; iconName: "red.png"; text: "出现异常"}
-                                    },
-                                    State {
-                                        name: "StatusUF"
-                                        PropertyChanges { target: unneedstatus; iconName: "yellow.png"; text: "未完成"}
-                                    }
-                                ]
-                            }
-
-                            Rectangle {  //分割条
-                                width: parent.width; height: 1
-                                anchors { top: unneedstatus.bottom; topMargin: 5}
-                                color: "gray"
-                            }
-
-                        }
-                      }
                    }//Column
                 }//Item
 //            }//Column
@@ -633,7 +513,6 @@ Rectangle {
             checkboxe.checked = chek.checkedbool;
             checkboxe2.checked = chek.checkedbool;
             checkboxe3.checked = chek.checkedbool;
-            checkboxe4.checked = chek.checkedbool;
         }
     }
     onCheck_numChanged: {

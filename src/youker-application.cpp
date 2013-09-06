@@ -39,8 +39,6 @@
 #include <string.h>
 #include <QtDBus>
 
-extern QString passwd;
-
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {

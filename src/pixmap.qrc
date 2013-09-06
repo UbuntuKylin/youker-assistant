@@ -19,5 +19,7 @@
         <file>image/blister-big.png</file>
         <file>image/blister-bigwarn.png</file>
         <file>image/blister-small.png</file>
+        <file>image/ok-hover.png</file>
+        <file>image/quit-hover.png</file>
     </qresource>
 </RCC>

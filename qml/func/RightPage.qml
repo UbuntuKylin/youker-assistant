@@ -27,6 +27,12 @@ Rectangle {
     id: rightbar
     width: screen.width - 600; height: 460
     property SessionDispatcher dis1: sessiondispatcher
+
+//推荐软件的三张图片
+    property string image1: "../img/icons/irc.png"
+    property string image2: "../img/icons/chromium.png"
+    property string image3: "../img/icons/kugou.png"
+
 //    property SystemDispatcher dis2: systemdispatcher
     ListModel {
         id: clearModel
@@ -61,7 +67,6 @@ Rectangle {
             name: "触摸板"
             flag: "TouchpadSet"
         }
-
     }
     //背景
     Image {
@@ -91,31 +96,80 @@ Rectangle {
         SetBtn {iconName: "message.png"; setbtn_flag: "message"}
     }
 
-    Text {
-        id: teamname
+    Item{
+        id:software
+        width: mage.width;height: mage.height
         anchors {
-            top: setrow.bottom
-            topMargin: 30
+            top: parent.top
+            topMargin: 160
             horizontalCenter: parent.horizontalCenter
         }
-        text: "UbuntuKylin Team"
-//                wrapMode: Text.WordWrap
-        font.bold: true
-        font.pixelSize: 14
-        color: "#383838"
-    }
-    Text {
-        anchors {
-            top: teamname.bottom
-            topMargin: 10
-            horizontalCenter: parent.horizontalCenter
+        Image {
+            id: mage
+            source: "../img/icons/kugou.png"
         }
-        text: "优客助手"
-//                wrapMode: Text.WordWrap
-        font.bold: true
-        font.pixelSize: 14
-        color: "#383838"
+        MouseArea{
+            anchors.fill: parent
+            onClicked:  {
+                pageStack.push(softwarerecommend);
+            }
+        }
     }
+//    Row{
+//        anchors{
+//            top:software.bottom
+//            topMargin: 10
+//            horizontalCenter: parent.horizontalCenter
+//        }
+//        spacing: 5
+//        Common.Button{
+//            id:button1
+//            hoverimage: "radiobox.png"
+//            onClicked: {
+//                mage.source="../img/icons/kugou.png"
+//            }
+//        }
+//        Common.Button{
+//            id:button2
+//            hoverimage: "radiobox.png"
+//            onClicked: {
+//                mage.source="../img/icons/kugou.png"
+//            }
+//        }
+//        Common.Button{
+//            id:button3
+//            hoverimage: "radiobox.png"
+//            onClicked: {
+//                mage.source="../img/icons/kugou.png"
+//            }
+//        }
+//    }
+
+//    Text {
+//        id: teamname
+//        anchors {
+//            top: setrow.bottom
+//            topMargin: 30
+//            horizontalCenter: parent.horizontalCenter
+//        }
+//        text: "UbuntuKylin Team"
+////                wrapMode: Text.WordWrap
+//        font.bold: true
+//        font.pixelSize: 14
+//        color: "#383838"
+//    }
+//    Text {
+//        anchors {
+//            top: teamname.bottom
+//            topMargin: 10
+//            horizontalCenter: parent.horizontalCenter
+//        }
+//        text: "优客助手"
+////                wrapMode: Text.WordWrap
+//        font.bold: true
+//        font.pixelSize: 14
+//        color: "#383838"
+//    }
 
     //上下分割条
     Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }

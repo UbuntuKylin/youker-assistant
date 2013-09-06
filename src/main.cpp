@@ -17,6 +17,7 @@
 #include "fcitxcfgwizard.h" //kobe08
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
+#include "sudodispatcher.h"
 #include "youker-application.h"
 #include <QDeclarativeEngine>
 #include <QDeclarativeView>
@@ -60,7 +61,6 @@
 
 
 #include "KThread.h"
-
 /*
 a 	ARRAY 数组
 b 	BOOLEAN 布尔值
@@ -90,7 +90,8 @@ void registerTypes()
 {
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
-    qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");//kobe08
+    qmlRegisterType<SudoDispatcher>("SudoType", 0, 1, "SudoDispatcher");
+    qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
     qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");
@@ -116,12 +117,17 @@ void registerTypes()
 }
 
 
+
 int main(int argc, char** argv)
 {
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+
+
+
+
     registerTypes();
 
     int value_session = system("/usr/bin/youkersession &");

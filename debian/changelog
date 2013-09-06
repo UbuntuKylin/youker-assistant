@@ -1,3 +1,10 @@
+youker-assistant (0.2.0-0ubuntu1) saucy; urgency=low
+
+  * Modify the MonitorBall from QML to QT.
+  * Add recommendation about top software.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 06 Sep 2013 09:17:56 +0800
+
 youker-assistant (0.1.6-0ubuntu1) saucy; urgency=low
 
   * Modify Class SystemDispatcher and SessionDispatcher.

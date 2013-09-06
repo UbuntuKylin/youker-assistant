@@ -26,7 +26,7 @@ Rectangle {
     id: leftbar
     width: 600; height: 460
     property string onekeypage: "first"
-    property int num:4     //checkbox num
+    property int num:3     //checkbox num
     property int check_num: num
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -41,11 +41,6 @@ Rectangle {
                     historystatus.visible = false;
                 if (cookiestatus.visible == true)
                     cookiestatus.visible = false;
-                if (unneedstatus.visible == true)
-                    unneedstatus.visible = false;
-            }
-            else if (msg == "u") {
-                unneedstatus.state = "StatusU";
             }
             else if (msg == "c") {
                 cachestatus.state = "StatusC";
@@ -63,10 +58,7 @@ Rectangle {
         }
 
         onFinishCleanWorkMainError: {
-            if (msg == "ue") {
-                unneedstatus.state = "StatusU1";
-            }
-            else if (msg == "ce") {
+            if (msg == "ce") {
                 cachestatus.state = "StatusC1";
             }
             else if (msg == "he") {
@@ -119,7 +111,7 @@ Rectangle {
                 Text {
                     id: text1
                     width: 69
-                    text: qsTr("     一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉某项")
+                    text: qsTr("     一键清理将会直接清理掉下面三个勾选项的内容,如果您不想直接清理掉某项")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -166,15 +158,8 @@ Rectangle {
                         }
                         else
                             cookiestatus.visible = false;
-                        if(checkboxe4.checked) {
-                            unneedstatus.visible = true;
-                            unneedstatus.state = "StatusUF";
-                        }
-                        else
-                            unneedstatus.visible = false;
 
-
-                        if(!(checkboxe1.checked||checkboxe2.checked||checkboxe3.checked||checkboxe4.checked))
+                        if(!(checkboxe1.checked||checkboxe2.checked||checkboxe3.checked))
                         {
                             firstonekey.check_flag=false;
 //                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
@@ -190,8 +175,8 @@ Rectangle {
 
 
         Column {
-            anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 20 }
-            spacing:25
+            anchors { top: myrow.bottom; topMargin: 30; left: parent.left; leftMargin: 20 }
+            spacing:45
             Row{
                 spacing: 10
                 Common.Label {
@@ -205,7 +190,7 @@ Rectangle {
             Column {
                 anchors.left: parent.left
                 anchors.leftMargin: 45
-                spacing:25
+                spacing:30
 
             //---------------------------
                         Item {
@@ -485,111 +470,17 @@ Rectangle {
                             }
                         }
                       }
-            //----------------------------
-                        Item {
-                        property SessionDispatcher dis: sessiondispatcher
-                        width: parent.width//clearDelegate.ListView.view.width
-                        height: 45//65
-
-                        Item {
-                            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-                            id: scaleMe3
-                            //checkbox, picture and words
-                            Row {
-                                id: lineLayout3
-                                spacing: 15
-                                anchors.verticalCenter: parent.verticalCenter
-                               Common.CheckBox {
-                                    id: checkboxe4
-                                    checked:true    //将所有选项都check
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    onCheckedChanged: {
-                                        if(checkboxe4.checked)
-                                            leftbar.check_num=leftbar.check_num+1;
-                                        else leftbar.check_num=leftbar.check_num-1;
-
-                                        if (checkboxe4.checked) {
-                                                    var mylist = systemdispatcher.get_onekey_args();
-                                                    var word_flag3 = "false";
-                                                    for (var q=0; q<mylist.length; q++) {
-                                                        if (mylist[q] == "unneed") {
-                                                            word_flag3 = "true";
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (word_flag3 == "false") {
-                                                        systemdispatcher.set_onekey_args("unneed");
-                                                    }
-                                        }
-                                        else if (!checkboxe4.checked) {
-                                                systemdispatcher.del_onekey_args("unneed");
-                                            }
-                                    }
-                                }
-
-
-                            Image {
-                                id: clearImage4
-                                width: 40; height: 42
-                                source: "../img/toolWidget/deb.png"//picturename
-                            }
-
-                            Column {
-                                spacing: 5
-                                Text {
-                                    text: "卸载不必要的程序"//titlename
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
-                                }
-                                Text {
-                                    text: "清理软件安装过程中安装的依赖程序，提高系统性能"//detailstr
-                                    font.pixelSize: 12
-                                    color: "#7a7a7a"
-                                }
-                            }
-                          }
-
-                            Common.StatusImage {
-                                id: unneedstatus
-                                visible: false
-                                iconName: "yellow.png"
-                                text: "未完成"
-                                anchors {
-                                    left: parent.left; leftMargin: 450
-                                }
-                                states: [
-                                        State {
-                                        name: "StatusU"
-                                        PropertyChanges { target: unneedstatus; iconName: "green.png"; text: "已完成"}
-                                    },
-
-                                        State {
-                                        name: "StatusU1"
-                                        PropertyChanges { target: unneedstatus; iconName: "red.png"; text: "出现异常"}
-                                    },
-                                        State {
-                                        name: "StatusUF"
-                                        PropertyChanges { target: unneedstatus; iconName: "yellow.png"; text: "未完成"}
-                                    }
-                                ]
-                            }
-                        }
-                      }
-            //----------------------------
-
         }//Column
     }//Column
     Common.MainCheckBox {
         id:chek
         x:115
-        y:169
+        y:179
         checked:"true"    //将所有选项都check
         onCheckedboolChanged: {
             checkboxe1.checked = chek.checkedbool;
             checkboxe2.checked = chek.checkedbool;
             checkboxe3.checked = chek.checkedbool;
-            checkboxe4.checked = chek.checkedbool;
         }
     }
     onCheck_numChanged: {
