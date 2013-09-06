@@ -111,7 +111,7 @@ Rectangle {
                 Text {
                     id: text1
                     width: 69
-                    text: qsTr("     一键清理将会直接清理掉下面四个勾选项的内容,如果您不想直接清理掉某项")
+                    text: qsTr("     一键清理将会直接清理掉下面三个勾选项的内容,如果您不想直接清理掉某项")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -175,8 +175,8 @@ Rectangle {
 
 
         Column {
-            anchors { top: myrow.bottom; topMargin: 20; left: parent.left; leftMargin: 20 }
-            spacing:25
+            anchors { top: myrow.bottom; topMargin: 30; left: parent.left; leftMargin: 20 }
+            spacing:45
             Row{
                 spacing: 10
                 Common.Label {
@@ -190,7 +190,7 @@ Rectangle {
             Column {
                 anchors.left: parent.left
                 anchors.leftMargin: 45
-                spacing:25
+                spacing:30
 
             //---------------------------
                         Item {
@@ -475,7 +475,7 @@ Rectangle {
     Common.MainCheckBox {
         id:chek
         x:115
-        y:169
+        y:179
         checked:"true"    //将所有选项都check
         onCheckedboolChanged: {
             checkboxe1.checked = chek.checkedbool;

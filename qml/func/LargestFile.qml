@@ -129,6 +129,14 @@ Item {
     Connections
     {
         target: systemdispatcher
+        onFinishCleanWorkError: {
+            if (btn_flag == "largestfile_work") {
+                if (msg == "largestfile") {
+                    root.work_result = msg;
+                    root.state = "LargestFileWorkError";
+                }
+            }
+         }
         onFinishCleanWork: {
             if (btn_flag == "largestfile_work") {
                 if (msg == "largestfile") {
@@ -468,6 +476,10 @@ Item {
         State {
             name: "LargestFileWorkAgain"
             PropertyChanges { target: statusImage; iconName: "yellow.png"; text: "未完成"}
+        },
+        State {
+            name: "LargestFileWorkError"
+            PropertyChanges { target: statusImage; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "LargestFileWorkFinish"

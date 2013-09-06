@@ -28,6 +28,8 @@ MessageDialog::MessageDialog(QWidget *parent) :
     ui->btn_min->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
+    ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     //QLabel自动换行
 //    ui->displaylabel->setWordWrap(true);
 //    ui->displaylabel->setAlignment(Qt::AlignTop);
