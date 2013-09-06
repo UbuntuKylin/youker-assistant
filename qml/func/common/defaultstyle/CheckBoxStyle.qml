@@ -20,7 +20,16 @@ QtObject {
             BorderImage {
                 anchors.fill: parent
 //                source: "../../../img/icons/checkbox-0.png"
-                source: (styleflag == "radio") ? "../../../img/icons/radiobox.png" : "../../../img/icons/checkbox-0.png"
+                source: {
+                    if(styleflag == "radio")
+                         "../../../img/icons/radiobox.png";
+                    else if(styleflag == "flowradio")
+                        "../../../img/icons/flowradio-01.png";
+                    else
+                        "../../../img/icons/checkbox-0.png";
+                }
+
+//                source: (styleflag == "radio") ? "../../../img/icons/radiobox.png" : "../../../img/icons/checkbox-0.png"
                 smooth: true
                 border.left: 6; border.top: 3
                 border.right: 6; border.bottom: 3
@@ -31,7 +40,15 @@ QtObject {
     property Component checkmark: Component {
         Image {
 //            source: "../../../img/icons/checkbox.png"
-            source: (styleflag == "radio") ? "../../../img/icons/radiobox-check.png" : "../../../img/icons/checkbox.png"
+            source: {
+                if(styleflag == "radio")
+                     "../../../img/icons/radiobox-check.png";
+                else if(styleflag == "flowradio")
+                    "../../../img/icons/flowradio-02.png";
+                else
+                    "../../../img/icons/checkbox.png";
+            }
+//            source: (styleflag == "radio") ? "../../../img/icons/radiobox-check.png" : "../../../img/icons/checkbox.png"
 //            anchors.verticalCenterOffset: 1
 //            anchors.horizontalCenterOffset: 1
             anchors.centerIn: parent

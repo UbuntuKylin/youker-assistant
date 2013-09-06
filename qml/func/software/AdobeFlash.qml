@@ -26,14 +26,6 @@ import "../../func" as Func
 Rectangle {
     id: adobeflash
     property bool on: true
-////需要时常变动的变量
-//    property string software_name: "Qafa1asd"
-//    property string software_information:"asdasd:asdfsa12   afasf:1231M  asfs:2013-9-1"
-//    property string software_image: "../../img/icons/bug.png"
-//    property string software_introduction:  "腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
-//    property string introduction_image1:  "../../img/skin/HighContrast.png"
-//    property string introduction_image2: "../../img/skin/Radiance.png"
-
     //需要时常变动的变量
         property string software_name: content.delegate_name
         property string software_information: content.delegate_information
@@ -51,7 +43,10 @@ Rectangle {
     }
     Rectangle{
         width: parent.width-2;height: 36
-        color: "lightgrey"
+        gradient: Gradient{
+            GradientStop{position: 0.0; color: "#e2e2e2"}
+            GradientStop{position: 1.0; color: "#dedede"}
+        }
         anchors{
             top:parent.top
             left: parent.left
@@ -146,10 +141,11 @@ Rectangle {
             left: parent.left
             leftMargin: 25
         }
-        color: "#eeeeee"
         clip:true
-        border.color: "#b9c5cc"
+        border.color: "#9aa2af"
+        color: "#e6ebfe"
         Rectangle{
+            id:rec
             width: parent.width-1;height: 31
             anchors{
                 top:parent.top
@@ -157,7 +153,10 @@ Rectangle {
                 left: parent.left
                 leftMargin: 1
             }
-            color: "lightgrey"
+            gradient: Gradient{
+                GradientStop{position: 0.0; color: "#e2e2e2"}
+                GradientStop{position: 1.0; color: "#dedede"}
+            }
             Text {
                 anchors.centerIn: parent
                 text:"软件介绍"
@@ -166,6 +165,8 @@ Rectangle {
                 font.pixelSize: 14
             }
         }
+        Rectangle{id: splitbar1; anchors{top:rec.bottom;left: parent.left;leftMargin: 1 }width:parent.width-1 ; height:1; color:"#b8bdc3"}
+        Rectangle{id: splitbar2; anchors{top:splitbar1.bottom;left: parent.left;leftMargin: 1  }width:parent.width-1 ; height:1; color:"#ebf0f6"}
         Text {
             id: softwareintroduction
             width: parent.width-30

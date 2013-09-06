@@ -63,7 +63,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/pixmap/image/ok.png);
-font: 10pt &quot;文泉驿微米黑&quot;;</string>
+font: 8pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
     <string>一键加速</string>
@@ -78,8 +78,11 @@ font: 10pt &quot;文泉驿微米黑&quot;;</string>
      <height>17</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font: 12pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;0%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="msglabel">

@@ -31,7 +31,8 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 80);
     ratio_sus = 0;
-    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+//    ui->ratiolabel->setStyleSheet();
+    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);color: white; font-size: 12px}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
 }
 
@@ -135,15 +136,15 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
         color2="transparent";
         color3="transparent";
     }
-    else if(ratio_sus > 60) {
-        color2="#ff2f00";
-        color3="#ff1900";
-        blister.load(":/pixmap/image/blister-bigwarn.png");
+    else if(ratio_sus > 80) {
+        color2="#d13625";
+        color3="#d5311e";
+//        blister.load(":/pixmap/image/blister-bigwarn.png");
     }
     else {
         color2="#00b0ff";
         color3="#006eff";
-        blister.load(":/pixmap/image/blister-big.png");
+//        blister.load(":/pixmap/image/blister-big.png");
     }
 
     linearGradient.setColorAt(0.0,color1);
