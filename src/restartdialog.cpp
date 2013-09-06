@@ -27,6 +27,8 @@ RestartDialog::RestartDialog(QWidget *parent) :
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
+    ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     //QLabel自动换行
     ui->displaylabel->setWordWrap(true);
     ui->displaylabel->setText("您系统上的优客助手是第一次启动相关服务，请点击“确认”按钮关闭，然后重启优客助手。");
