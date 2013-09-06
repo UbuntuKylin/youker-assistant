@@ -1,6 +1,6 @@
 #include <QDebug>
 #include "KThread.h"
-//KThread::KThread(QDBusInterface *systemiface, QString method, const QStringList &arglist, QString flag):QThread()
+
 KThread::KThread(QDBusInterface *systemiface, QString method, QStringList arglist, QString flag):QThread()
 {
     iface = systemiface;
@@ -8,6 +8,7 @@ KThread::KThread(QDBusInterface *systemiface, QString method, QStringList arglis
     list = arglist;
     file_flag = flag;
 }
+
 KThread::~KThread()
 {
     stop();

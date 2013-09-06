@@ -252,8 +252,6 @@ void SystemDispatcher::clean_history_records_qt() {
 
 void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
 //    systemiface->call("clean_cookies_records", strlist);
-//    QStringList *mylist = new QStringList(strlist);
-//    KThread *thread = new KThread(systemiface, "clean_cookies_records", mylist);
     KThread *thread = new KThread(systemiface, "clean_cookies_records", strlist);
     thread->start();
 }
