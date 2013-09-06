@@ -1,6 +1,6 @@
 import os
 from common import get_dir_size
-
+from common import confirm_filesize_unit
 
 
 class CacheClean():
@@ -9,8 +9,8 @@ class CacheClean():
 
     def get_apt_cache(self):
         apt_cache = '/var/cache/apt/archives'
-        aptcachelist = map(lambda filename: '%s/%s<2_2>%s' % (apt_cache, filename, str(os.path.getsize('%s/%s' % (apt_cache, filename)))), filter(lambda filestr: filestr.endswith('deb'), os.listdir(apt_cache)))
-        deb_num = len(aptcachelist)
+        #aptcachelist = map(lambda filename: '%s/%s<2_2>%s' % (apt_cache, filename, str(os.path.getsize('%s/%s' % (apt_cache, filename)))), filter(lambda filestr: filestr.endswith('deb'), os.listdir(apt_cache)))
+        aptcachelist = ['%s/%s<2_2>%s' % (apt_cache,filename, confirm_filesize_unit(os.path.getsize('%s/%s' % (apt_cache, filename)))) for filename in os.listdir(apt_cache) if filename.endswith('deb')]
         return aptcachelist
 
     def get_softwarecenter_cache(self, homedir):
@@ -24,9 +24,9 @@ class CacheClean():
             tmp_path = full_path + one
             if os.path.isdir(tmp_path):
                 size = get_dir_size(tmp_path)
-                centercachelist.append('%s<2_2>%s' % (tmp_path, str(size)))
+                centercachelist.append('%s<2_2>%s' % (tmp_path, confirm_filesize_unit(size)))
             else:
-                centercachelist.append('%s<2_2>%s' % (tmp_path, str(os.path.getsize(tmp_path))))
+                centercachelist.append('%s<2_2>%s' % (tmp_path, confirm_filesize_unit(os.path.getsize(tmp_path))))
         return centercachelist
 
 if __name__ == "__main__":

@@ -18,6 +18,8 @@
 import os
 import os.path
 
+import common
+
 class DiskAnalyse():
     def __init__(self):
         self.final_list_str = []
@@ -33,18 +35,18 @@ class DiskAnalyse():
                 filepath = os.path.join(rootpath, filename)
                 if os.path.islink(filepath):
                     continue
-                filetuple = (os.path.getsize(filepath), filepath)
-                if not self.final_list and filetuple[0] >= size:
-                    self.final_list.append(filetuple)
+                filelist = [os.path.getsize(filepath), filepath]
+                if not self.final_list and filelist[0] >= size:
+                    self.final_list.append(filelist)
                     flag = False
                 else:
                     for index, values in enumerate(self.final_list):
-                        if filetuple > values:
-                            self.final_list.insert(index, filetuple)
+                        if filelist > values:
+                            self.final_list.insert(index, filelist)
                             flag = False
                             break
-                    if flag and filetuple[0] >= size :
-                        self.final_list.append(filetuple)
+                    if flag and filelist[0] >= size :
+                        self.final_list.append(filelist)
 
     def type_of_file(self):
         code = ['.py', '.cpp', 'pl', '.cpp', '.c']
@@ -70,9 +72,8 @@ class DiskAnalyse():
 
     def adjust_the_list(self):
         final_list_str = []
-        for con in self.final_list:
-            tmp = list(con)
-            tmp[0] = str(tmp[0])
+        for tmp in self.final_list:
+            tmp[0] = common.confirm_filesize_unit(tmp[0])
             final_list_str.append('<2_2>'.join(tmp))
         self.final_list = []
         return final_list_str
