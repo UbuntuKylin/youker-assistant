@@ -111,7 +111,7 @@ class SudoDaemon(PolicyKitService):
     # check packages status by pkgNameList sa:software_check_status_signal()
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def check_pkgs_status(self, pkgNameList):
-        self.daemonApt.check_pkgs_status(pkgNameList)
+        self.daemonApt.check_pkgs_status_rtn_list(pkgNameList)
 
     # package download status signal
     '''parm mean
@@ -151,6 +151,6 @@ class SudoDaemon(PolicyKitService):
             u:installed and can update
             n:notinstall
     '''
-    @dbus.service.signal(INTERFACE, signature='a{sv}')
-    def software_check_status_signal(self, statusDict):
+    @dbus.service.signal(INTERFACE, signature='as')
+    def software_check_status_signal(self, statusList):
         pass
