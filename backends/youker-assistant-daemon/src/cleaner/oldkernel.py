@@ -10,13 +10,6 @@ class OldKernel():
     FLAG = '(\w+-)*[.\d]+-\d+[\D]*'
     def __init__(self):
         self.current_version = '-'.join(os.uname()[2].split('-')[:2])
-        print self.current_version
-
-    #def update_cache_list(self, init = False):
-    #    if init:
-    #        apt_pkg.init()
-    #        #self.cache = apt_pkg.Cache()
-    #        self.cache = apt.Cache()
 
     def get_old_kernel(self):
         #pkgs = self.cache.packages
@@ -31,8 +24,6 @@ class OldKernel():
                             tmp_oldkernel_list = [pkg.name, str(pkg.installedSize)]
                             final_oldkernel_list.append('<2_2>'.join(tmp_oldkernel_list))
         return final_oldkernel_list
-                    #version = pkg.section
-                    #print version
 
 if __name__ == "__main__":
     objo = OldKernel()

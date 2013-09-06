@@ -205,12 +205,10 @@ class Daemon(PolicyKitService):
     ###input-['history', 'cach....] output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
     def clean_by_main_one_key(self, mode_list, sender=None):
-        #mode_list = ['history', 'cookies', 'cache', 'unneed']
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
             self.clean_complete_main_msg('')
             return
-        flag_str = ''
         #tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = {}
         cruft_dic = self.daemononekey.get_scan_result(mode_list)
@@ -234,15 +232,6 @@ class Daemon(PolicyKitService):
             else:
                 self.clean_complete_main_msg('k')
 
-        if 'unneed' in cruft_dic:
-            unneed_cruft_list = cruft_dic['unneed']
-            try:
-                self.daemonclean.clean_the_package(unneed_cruft_list)
-            except Exception, e:
-                self.clean_error_main_msg('ue')
-            else:
-                self.clean_complete_main_msg('u')
-
         if 'cache' in cruft_dic:
             cache_cruft_list = cruft_dic['cache']
             try:
@@ -261,8 +250,6 @@ class Daemon(PolicyKitService):
         if not status:
             self.clean_complete_second_msg('')
             return
-        flag_str = ''
-        #mode_list = ['history', 'cookies', 'cache', 'unneed']
         #tmp_mode_list = self.dbusstring_to_string(mode_list)
         cruft_dic = self.daemononekey.get_scan_result(mode_list)
         if 'history' in cruft_dic:
@@ -284,15 +271,6 @@ class Daemon(PolicyKitService):
                 self.clean_error_second_msg('ke')
             else:
                 self.clean_complete_second_msg('k')
-
-        if 'unneed' in cruft_dic:
-            unneed_cruft_list = cruft_dic['unneed']
-            try:
-                self.daemonclean.clean_the_package(unneed_cruft_list)
-            except Exception, e:
-                self.clean_error_second_msg('ue')
-            else:
-                self.clean_complete_second_msg('u')
 
         if 'cache' in cruft_dic:
             cache_cruft_list = cruft_dic['cache']
@@ -344,21 +322,6 @@ class Daemon(PolicyKitService):
             self.clean_error_msg(flagstr)
         else:
             self.clean_complete_msg(flagstr)
-
-    # the function of clean packages
-    ### input-['packagename', 'pack...]   output-''
-    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    #def clean_package_cruft(self, cruftlist, sender=None):
-    #    status = self._check_permission(sender, UK_ACTION_YOUKER)
-    #    if not status:
-    #        return
-    #    try:
-    #        self.daemonclean.uninstall_the_package(cruftlist)
-    #        #self.daemonclean.clean_the_package(cruftlist)
-    #    except Exception, e:
-    #        self.clean_error_msg('package')
-    #    else:
-    #        self.clean_complete_msg('package')
 
     def dbusstring_to_string(self, string):
         tmp_string = str(string)
