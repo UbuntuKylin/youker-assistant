@@ -51,6 +51,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                QDBusConnection::systemBus());
     //绑定到底层清理完毕后发送到信号函数clear_browser
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
@@ -58,8 +59,13 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
 
     history_flag = true;
-    onekey_args << "cache" << "history" << "cookies" << "unneed";
-    onekey_args2 << "cache" << "history" << "cookies" << "unneed";
+    onekey_args << "cache" << "history" << "cookies";
+    onekey_args2 << "cache" << "history" << "cookies";
+}
+
+void SystemDispatcher::handler_clear_rubbish_error(QString msg)
+{
+     emit finishCleanWorkError(msg);
 }
 
 void SystemDispatcher::handler_clear_rubbish_second_error(QString msg)

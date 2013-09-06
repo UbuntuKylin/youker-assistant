@@ -156,6 +156,7 @@ public:
 signals:
     void addBootImage();
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
+    void finishCleanWorkError(QString msg);
     void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
     void finishCleanWorkMainError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
     void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
@@ -164,6 +165,7 @@ signals:
 
 public slots:
     void handler_clear_rubbish(QString msg);
+    void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);
     void handler_clear_rubbish_main_error(QString msg);
     void handler_clear_rubbish_second_onekey(QString msg);

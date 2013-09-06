@@ -121,6 +121,14 @@ Item {
         //             }
 
 //         }
+        onFinishCleanWorkError: {
+            if (sof_btn_flag == "software_work") {
+                if (msg == "software") {
+                    root.sof_work_result = msg;
+                    root.state = "SoftwareWorkError";
+                }
+            }
+         }
         onFinishCleanWork: {
             if (sof_btn_flag == "software_work") {
                 if (msg == "software") {
@@ -424,6 +432,13 @@ Item {
              PropertyChanges { target: sof_label; visible: true; text: "software扫描完成"}
              PropertyChanges { target: sof_bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; sof_btn_flag: "software_work" }
+        },
+        State {
+            name: "SoftwareWorkError"
+            PropertyChanges { target: sof_label; visible: true; text: "清理出现异常"}
+            PropertyChanges { target: sof_bitButton; text:"开始扫描" }
+            PropertyChanges { target: root; sof_btn_flag: "software_scan" }
+            PropertyChanges { target: sof_statusImage; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "SoftwareWorkFinish"
