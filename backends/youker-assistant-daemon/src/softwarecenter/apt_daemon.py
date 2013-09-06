@@ -18,7 +18,6 @@
 
 import apt
 import apt.progress.base as apb
-from sudodbus.daemon import SudoDaemon
 
 class FetchProcess(apb.AcquireProgress):
 	'''Fetch Process'''
@@ -173,8 +172,23 @@ class AptDaemon:
 			else:
 				pkgStatusDict[pkgName] = "n"
 
-		self.sudoDaemon.software_check_status_signal(pkgStatusDict)
 		return pkgStatusDict
+
+	# check packages status by pkgNameList, i = installed u = can update n = notinstall
+	def check_pkgs_status_rtn_list(self, pkgNameList):
+		self.ca.open()
+		pkgStatusList = []
+		for pkgName in pkgNameList:
+			pkg = self.get_pkg_by_name(pkgName)
+			if(pkg.is_installed):
+				if(pkg.is_upgradable):
+					pkgStatusList.append(pkgName + ":u")
+				else:
+					pkgStatusList.append(pkgName + ":i")
+			else:
+					pkgStatusList.append(pkgName + ":n")
+
+		self.sudoDaemon.software_check_status_signal(pkgStatusList)
 
 # 	def get_pkgs_name_list(self):
 # 		return self.pkgNameList
@@ -190,9 +204,10 @@ class AptDaemon:
 # 			return rtns
 
 if __name__ == "__main__":
-	ad = AptDaemon()
+	ad = AptDaemon(None)
 	
 # 	print ad.check_pkgs_status(["gedit", "cairo-dock", "unity"])
+	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity"])
 	
 	while True:
 		print "\ninput your command: "
