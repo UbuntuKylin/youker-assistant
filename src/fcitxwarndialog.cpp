@@ -71,6 +71,6 @@ bool FcitxWarnDialog::eventFilter(QObject *obj, QEvent *event)
 void FcitxWarnDialog::on_okButton_clicked()
 {
     emit fcitxWarntest();
-    qDebug()<<"emit fcitxWarn";
+  //  qDebug()<<"emit fcitxWarn";
     accept();
 }
