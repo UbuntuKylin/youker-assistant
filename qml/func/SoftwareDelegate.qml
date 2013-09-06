@@ -21,6 +21,7 @@ import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
+import "software" as Software
 
 Rectangle {
     id: softwaredelegate
@@ -56,35 +57,38 @@ Rectangle {
             if (flag == "AdobeFlash")
                 pageStack.push(adobeflashpage);
             else if (flag == "Chromium")
-                pageStack.push(chromiumpage);
+            {
+
+                pageStack.push(adobeflashpage);
+            }
             else if (flag == "EclipseQt")
-                pageStack.push(eclipseqtpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "Irc")
-                pageStack.push(ircpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "Kuaipan")
-                pageStack.push(kuaipanpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "KugouMusic")
-                pageStack.push(kugoumusicpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "Lotus")
-                pageStack.push(lotuspage);
+                pageStack.push(adobeflashpage);
             else if (flag == "Pps")
-                pageStack.push(ppspage);
+                pageStack.push(adobeflashpage);
             else if (flag == "QbitTorrent")
-                pageStack.push(qbittorrentpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "StarDict")
-                pageStack.push(stardictpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "Vic")
-                pageStack.push(vicpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "VirtualBox")
-                pageStack.push(virtualboxpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "Wineqq")
-                pageStack.push(wineqqpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "Wps")
-                pageStack.push(wpspage);
+                pageStack.push(adobeflashpage);
             else if (flag == "XChat")
-                pageStack.push(xchatpage);
+                pageStack.push(adobeflashpage);
             else if (flag == "XunLei")
-                pageStack.push(xunleipage);
+                pageStack.push(adobeflashpage);
 //            softwaredelegate.GridView.view.currentIndex = index;
         }
     }

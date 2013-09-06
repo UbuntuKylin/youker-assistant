@@ -24,18 +24,187 @@ import "common" as Common
 import "bars" as Bars
 Item {
     id: screen; width: parent.width; height: 475
-    Rectangle {
-        id: setting_widget
-        anchors.fill: parent
+//需要时常变动的变量
+    property string image_flag:""
+    property string recommendone_image: "../img/icons/irc.png"
+    property string recommendtwo_image: "../img/icons/chromium.png"
+    property string recommendthree_image: "../img/icons/kugou.png"
+    property string recommendoneimage_image: recommendone_image
+    property string recommendimage_text: "Winasd     asfsaff:asdfasdfa 2012 asd"
         //背景
-        Image {
-            source: "../img/skin/bg-middle.png"
-            anchors.fill: parent
+    Image {
+        source: "../img/skin/bg-middle.png"
+        anchors.fill: parent
+    }
+    Item {
+        id: recommendimage
+        width: 560
+        height: 210
+        anchors{
+            left: parent.left
+            leftMargin: 25
+            top:parent.top
+            topMargin: 25
         }
+        Image {
+            anchors.fill:parent
+            source: recommendoneimage_image
+        }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                console.log("pageStack.push(image_flag);")
+//                pageStack.push(image_flag);
+            }
+        }
+        Rectangle{
+            width: parent.width;height: 30
+            anchors.bottom: parent.bottom
+            opacity: 0.7
+            color: "grey"
+            Text{
+                anchors{
+                    left: parent.left
+                    leftMargin: 15
+                    verticalCenter: parent.verticalCenter
+                }
+                color: "white"
+                text:recommendimage_text
+            }
+            Common.Button{
+                width: 80;height: 26
+                anchors{
+                    verticalCenter:parent.verticalCenter
+                    right:parent.right
+                    rightMargin: 15
+                }
+                text:"安装"
+                onClicked: {
+                    console.log("下载下载下载下载下载下载")
+                }
+            }
+        }
+    }
+    Column{
+        id:colum
+        anchors{
+            top:parent.top
+            topMargin: 25
+            right: parent.right
+            rightMargin: 25
+        }
+        spacing: 5
         Item {
-            id: views
-            width: parent.width
-            height: parent.height
+            id: recommendone
+            width:imageone.width;height: imageone.height
+            Image {
+                id:imageone
+                source: recommendone_image
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    imagframe.y=colum.y+recommendone.y
+                    recommendoneimage_image=recommendone_image
+                }
+            }
+        }
+        Item{
+            id: recommendtwo
+            width:imagetwo.width;height: imagetwo.height
+            Image {
+                id:imagetwo
+                source: recommendtwo_image
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    imagframe.y=colum.y+recommendtwo.y
+                    recommendoneimage_image=recommendtwo_image
+                }
+            }
+        }
+        Item{
+            id: recommendthree
+            width:imagethree.width;height: imagethree.height
+            Image {
+                id:imagethree
+                source: recommendthree_image
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    imagframe.y=colum.y+recommendthree.y
+                    recommendoneimage_image=recommendthree_image
+                }
+            }
+        }
+    }
+
+    Image {
+        id: imagframe
+        source: "../img/icons/Pps.png"
+        x:colum.x;y:colum.y
+        opacity: 0.8
+    }
+
+    Rectangle {
+        id: views
+        width: parent.width-50
+        height: 227
+        anchors{
+            bottom:parent.bottom
+            left: parent.left
+            leftMargin: 25
+        }
+        clip:true
+        border.color: "#b9c5cc"
+        color: "#eeeeee"
+        Rectangle{
+            width: parent.width-1;height: 31
+            anchors{
+                top:parent.top
+                topMargin: 1
+                left: parent.left
+                leftMargin: 1
+            }
+            color: "lightgrey"
+            Row{
+                anchors.centerIn: parent
+                spacing: 50
+                Common.Button{
+                    id:recommended_top
+                    width:110;height: 25
+                    text:"推荐金榜单"
+                    hoverimage:"blue1.png"
+                    onClicked: {
+                        fontcolor="white"
+                        hoverimage="blue1.png"
+                        download_top.fontcolor="grey"
+                        download_top.hoverimage="gray1-hover.png"
+                    }
+                }
+                Common.Button{
+                    id:download_top
+                    width: 110;height: 25
+                    text:"下载排行榜"
+                    fontcolor: "grey"
+                    hoverimage:"gray1-hover.png"
+                    onClicked: {
+                        fontcolor="white"
+                        hoverimage="blue1.png"
+                        recommended_top.fontcolor="grey"
+                        recommended_top.hoverimage="gray1-hover.png"
+                    }
+                }
+            }
+        }
+
+        Item {
+            width: views.width
+            height: 180
+            anchors.bottom: parent.bottom
+            clip:true
             ListModel {
                 id: funcmodel
                 ListElement {
@@ -109,18 +278,17 @@ Item {
                 width: parent.width
                 anchors {
                     top: parent.top
-                    topMargin: 10
                     left: parent.left
-                    leftMargin: 30
+                    leftMargin: 20
                 }
                 model: funcmodel
                 delegate: SoftwareDelegate {}
                 cacheBuffer: 1000
-                cellWidth: (parent.width-2)/4; cellHeight: cellWidth
-//                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+                cellWidth: (parent.width-8)/4; cellHeight: 90
+    //                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
                 focus: true
             }
-            Item { id: foreground; anchors.fill: parent }
         }
     }
+
 }
