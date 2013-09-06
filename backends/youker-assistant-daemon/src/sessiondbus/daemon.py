@@ -74,6 +74,13 @@ class SessionDaemon(dbus.service.Object):
         self.scan_complete_msg('history')
         return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def scan_system_history(self):
+        daemonsystem = cleaner.CleanSystemHistory()
+        url = daemonsystem.get_scan_result()
+        self.scan_complete_msg('system')
+        return len(url)
+
     # the function of search the same file below path
     ### input-'path'  output-['filea<2_2>filea','fileb<2_2>fileb'....]
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')

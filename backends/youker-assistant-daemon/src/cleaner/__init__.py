@@ -32,6 +32,7 @@ import osslim
 import common
 import cacheclean
 import oldkernel
+import systemhistory
 
 HOMEDIR = ''
 
@@ -121,7 +122,7 @@ class ManageTheLarge():
         largefile_dic = self.objl.adjust_the_list()
         return largefile_dic
         
-# the functions of clean the history
+# the functions of clean the browser history
 class CleanTheHistory():
     def __init__(self):
         pass
@@ -140,6 +141,16 @@ class CleanTheHistory():
     def __del__(self):
         pass
         #del self.objh
+
+# the function of clean the system history
+class CleanSystemHistory():
+    def __init__(self):
+        pass
+
+    def get_scan_result(self, homedir = ''):
+        objhg = systemhistory.SystemHistory()
+        url = objhg.scan_the_xml(homedir)
+        return url
 
 # the function of clean the cookies
 class CleanTheCookies():
