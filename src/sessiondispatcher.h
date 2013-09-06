@@ -166,6 +166,7 @@ signals:
     void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
 public slots:
     QString show_signal(QString msg);
+//    QString show_signal(QStringList msg);
     void handler_scan_rubbish(QString msg);
 };
 
