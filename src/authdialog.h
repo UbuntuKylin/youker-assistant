@@ -31,6 +31,7 @@ class AuthDialog : public QDialog
 public:
     explicit AuthDialog(QString msg = "", QWidget *parent = 0);
     ~AuthDialog();
+    bool trans_password(QString flagstr, QString pwd);
 
 private slots:
     void on_closeButton_clicked();
@@ -41,6 +42,7 @@ private:
 
 //    void setView();
     QPoint dragPos;
+    QString passwd;
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);

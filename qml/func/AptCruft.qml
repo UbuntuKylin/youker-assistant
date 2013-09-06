@@ -92,6 +92,14 @@ Item {
 //                 titleBar.state = "AptWork";
 //             }
 //         }
+        onFinishCleanWorkError: {
+            if (apt_btn_flag == "apt_work") {
+                if (msg == "apt") {
+                    root.apt_work_result = msg;
+                    root.state = "AptWorkError";
+                }
+            }
+         }
         onFinishCleanWork: {
             if (apt_btn_flag == "apt_work") {
                 if (msg == "apt") {
@@ -409,7 +417,13 @@ Item {
              PropertyChanges { target: apt_bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; apt_btn_flag: "apt_work" }
         },
-
+        State {
+            name: "AptWorkError"
+            PropertyChanges { target: apt_label; visible: true; text: "清理出现异常"}
+            PropertyChanges { target: bitButton; text:"开始扫描" }
+            PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
+            PropertyChanges { target: apt_statusImage; iconName: "red.png"; text: "出现异常"}
+        },
         State {
             name: "AptWorkFinish"
             PropertyChanges { target: apt_label; visible: true; text: root.apt_work_result + "清理完毕！" }

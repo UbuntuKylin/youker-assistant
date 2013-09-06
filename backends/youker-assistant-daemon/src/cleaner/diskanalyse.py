@@ -23,7 +23,7 @@ class DiskAnalyse():
         self.final_list_str = []
         self.final_list = []
 
-    def hundred_large_files(self, path):
+    def hundred_large_files(self, size, path):
         mypath = path
         if not os.path.exists(mypath):
             raise Exception("make a mistake")
@@ -34,7 +34,7 @@ class DiskAnalyse():
                 if os.path.islink(filepath):
                     continue
                 filetuple = (os.path.getsize(filepath), filepath)
-                if not self.final_list:
+                if not self.final_list and filetuple[0] >= size:
                     self.final_list.append(filetuple)
                     flag = False
                 else:
@@ -43,10 +43,8 @@ class DiskAnalyse():
                             self.final_list.insert(index, filetuple)
                             flag = False
                             break
-                    if flag and len(self.final_list) <= 100:
+                    if flag and filetuple[0] >= size :
                         self.final_list.append(filetuple)
-                    if len(self.final_list) > 100:
-                        self.final_list.pop()
 
     def type_of_file(self):
         code = ['.py', '.cpp', 'pl', '.cpp', '.c']

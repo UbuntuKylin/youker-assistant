@@ -259,7 +259,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("触摸板横向滚动条:")
+                text: qsTr("触摸板横向滚动:")
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter

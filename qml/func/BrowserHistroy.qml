@@ -69,6 +69,14 @@ Item {
         //             }
 
 //         }
+        onFinishCleanWorkError: {
+            if (btn_flag == "history_work") {
+                if (msg == "history") {
+                    root.work_result = msg;
+                    root.state = "HistoryWorkError";
+                }
+            }
+         }
         onFinishCleanWork: {
             if (btn_flag == "history_work") {
                 if (msg == "history") {
@@ -270,6 +278,13 @@ Item {
             PropertyChanges { target: label; visible: true; text: "history扫描完成:" + root.num + "条记录"}
              PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; btn_flag: "history_work" }
+        },
+        State {
+            name: "HistoryWorkError"
+            PropertyChanges { target: label; visible: true; text: "清理出现异常"}
+            PropertyChanges { target: bitButton; text:"开始扫描" }
+            PropertyChanges { target: root; btn_flag: "history_scan" }
+            PropertyChanges { target: historystatus; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "HistoryWorkFinish"

@@ -10,8 +10,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: "小企鹅输入法字体配置"
-    property string actiontext: "可以设置自己喜欢的字体风格，点击＂下一步＂继续设置，点击＂取消＂取消当前设置并返回。"
+    property string actiontitle: "小企鹅输入法习惯配置"
+    property string actiontext: "可以设置自己喜欢的输入习惯，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。"
     property int scanModelIndex:1
     property int scrollbar_z: 1
     property int defaultCandidateWord:0     //恢复默认时用到
@@ -19,6 +19,13 @@ Rectangle {
     property int defaultFontStyle:0
     property int scanModelindex: 1
     property string fontFamily: ""
+    property string methodBtn1Tmp: ""
+    property string methodBtn2Tmp:""
+    property string prevpageBtn1Tmp: ""
+    property string prevpageBtn2Tmp: ""
+    property string nextpageBtn1Tmp: ""
+    property string nextpageBtn2Tmp: ""
+    property string methodBtn1Buff: ""
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -46,18 +53,32 @@ Rectangle {
     }
 
     function refreshFcitxFont(){
-        //set font============================================================
-        var setFont = fcitxcfgwizard.get_font();
-        fontStyleBtn.text = setFont;
+        //get_vertical_list===================================================
+        var getVerticalList = fcitxcfgwizard.get_vertical_list();
+        verticalstyle.checked = getVerticalList
+
         //get candidate_word_numbe============================================
         var getFontcandidateWord =fcitxcfgwizard.get_candidate_word_number();
         candidateWordNumber.value = getFontcandidateWord;
-        //get font size=======================================================
-        var getFontSize = fcitxcfgwizard.get_font_size();
-        sliderFontSize.value = getFontSize;
-        //get_vertical_list===================================================
-        var getVerticalList = fcitxcfgwizard.get_vertical_list();
-        verticalList.checked = getVerticalList
+
+        //get_trigger_key========================================================
+        var getMethodBtn1 = fcitxcfgwizard.get_trigger_key_first();
+        methodBtn1.text = getMethodBtn1;
+
+        var getMethodBtn2 = fcitxcfgwizard.get_trigger_key_second();
+        methodBtn2.text = getMethodBtn2
+
+        //get_prev_page_key======================================================
+        var getPrevPageBtn1 = fcitxcfgwizard.get_prev_page_key_first();
+        prevPageBtn1.text = getPrevPageBtn1;
+        var getPrevPageBtn2 = fcitxcfgwizard.get_prev_page_key_second();
+        prevPageBtn2.text = getPrevPageBtn2
+
+        //get_next_page_key=======================================================
+        var getNextpageBtn1 = fcitxcfgwizard.get_next_page_key_first();
+        nextPageBtn1.text = getNextpageBtn1;
+        var getNextpageBtn2 = fcitxcfgwizard.get_next_page_key_second();
+        nextPageBtn2.text = getNextpageBtn2;
     }
     Connections {
             target: fcitxcfgwizard
@@ -66,54 +87,106 @@ Rectangle {
             }
         }
     Component.onCompleted: {
-        //set font============================================================
-        var setFont = fcitxcfgwizard.get_font();
-        fontStyleBtn.text = setFont;
+
+        //get_vertical_list===================================================
+        var getVerticalList = fcitxcfgwizard.get_vertical_list();
+        verticalstyle.checked = getVerticalList
+
         //get candidate_word_numbe============================================
         var getFontcandidateWord =fcitxcfgwizard.get_candidate_word_number();
         candidateWordNumber.value = getFontcandidateWord;
-        //get font size=======================================================
-        var getFontSize = fcitxcfgwizard.get_font_size();
-        sliderFontSize.value = getFontSize;
-        //get_vertical_list===================================================
-        var getVerticalList = fcitxcfgwizard.get_vertical_list();
-        verticalList.checked = getVerticalList
-        //通过后台接口可以默认添加窗口中内容
+
+        //get_trigger_key========================================================
+        var getMethodBtn1 = fcitxcfgwizard.get_trigger_key_first();
+        methodBtn1.text = getMethodBtn1;
+
+        var getMethodBtn2 = fcitxcfgwizard.get_trigger_key_second();
+        methodBtn2.text = getMethodBtn2
+
+        //get_prev_page_key======================================================
+        var getPrevPageBtn1 = fcitxcfgwizard.get_prev_page_key_first();
+        prevPageBtn1.text = getPrevPageBtn1;
+        var getPrevPageBtn2 = fcitxcfgwizard.get_prev_page_key_second();
+        prevPageBtn2.text = getPrevPageBtn2
+
+        //get_next_page_key=======================================================
+        var getNextpageBtn1 = fcitxcfgwizard.get_next_page_key_first();
+        nextPageBtn1.text = getNextpageBtn1;
+        var getNextpageBtn2 = fcitxcfgwizard.get_next_page_key_second();
+        nextPageBtn2.text = getNextpageBtn2;
     }
-    //设置内容
+
+    Row{
+        anchors{
+            left: parent.left
+            leftMargin: 40
+            top: parent.top
+            topMargin: 120
+
+        }
+        spacing: 5
+        Text{
+            text: "显示设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+    //显示设置
     Column{
-        spacing: 15
+        spacing: 10
         smooth: true
         anchors{
             top:parent.top
-            topMargin: 110
+            topMargin: 160
             left:parent.left
-            leftMargin: 80
+            leftMargin: 65
         }
-        //font
-       Row{
-           spacing: 218
-           Text {
-               id: font
-               text: qsTr("字体")
-           }
-           Common.Button {
-                id: fontStyleBtn
-                smooth:true
-                width: 250;height: 30
-                anchors.verticalCenter: font.verticalCenter
-               onClicked: {
-                   fontStyleBtn.text = fcitxcfgwizard.show_font_dialog();
-               }
-           }
+        Row{
+            spacing: 30
+            Text {
+                id:listh
+//                font.bold: true
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                text: qsTr("候选词列表:")
+            }
+            Common.ButtonRow {
+                exclusive: true//控制是否联动
+                spacing: 80
+                anchors.centerIn: listh.Center
+                Common.CheckBox {
+                    id: levelstyle
+                    checked: (fcitxcfgwizard.get_vertical_list() == false) ? true : false
+                    titleName: "横向显示"
+                    flag: "radio"
+                    onClicked: {}
+                }
+                Common.CheckBox {
+                    id: verticalstyle
+                    checked: (fcitxcfgwizard.get_vertical_list() == ture) ? true : false
+                    titleName: "竖向显示"
+                    flag: "radio"
+                    onClicked: {}
+                }
+            }
+        }
 
-       }
         //候选词
         Row{
-            spacing: 172
+            spacing: 30
             Text {
-                id: number
+                id: numberText
+                font.pixelSize: 12
+                color: "#7a7a7a"
                 text: qsTr("候选词个数")
+                anchors.verticalCenter: parent.verticalCenter
             }
             Row{
                 spacing: 10
@@ -122,7 +195,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     minimumValue: 1
                     maximumValue: 10
-                    width: 250
+                    width: 140
                     stepSize: 1
                     animated: true
                 }
@@ -131,57 +204,219 @@ Rectangle {
                     text: candidateWordNumber.value
                     font.pixelSize: 12
                     color: "#7a7a7a"
-//                    anchors.left: candidateWordNumber.right
-//                    anchors.leftMargin: 10
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
+        }
+    }
+   //快捷键设置
+    Row{
+        anchors{
+            left: parent.left
+            leftMargin: 40
+            top: parent.top
+            topMargin: 250
 
         }
+        spacing: 5
+        Text{
+            text: "快捷键设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        Rectangle{
+            width:690
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+    Column{
+            spacing: 10
+            smooth: true
+            anchors{
+                top:parent.top
+                topMargin: 280
+                left:parent.left
+                leftMargin: 65
+        }
 
-        //fontsize
         Row{
-            spacing: 187
-            Text {
-                id: fontSize
-                text: qsTr("字体大小")
+            spacing: 32
+            Text{
+                id:inputMethod
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                text:qsTr("切换激活/非激活输入法:")
+                anchors.verticalCenter: parent.verticalCenter
             }
             Row{
-                spacing: 10
-                Common.Slider {
-                    id: sliderFontSize
-                    anchors.verticalCenter: parent.verticalCenter
-                    minimumValue: 0
-                    maximumValue: 72
-                    width: 250
-                    stepSize: 1
-                    animated: true
+                spacing: 5
+                Common.Button{
+                    id:methodBtn1
+                    hoverimage: "fcitxKey.png"//../../img/icons/
+                    fontcolor:"#929292"
+                    fontsize: 13
+                    width:200
+                    height:30
+                    onClicked: {
+                        methodBtn1.forceActiveFocus();
+                        methodBtn1.text = "请按下要设置的组合键";
+                    }
+                    onEntered:{
+                        methodBtn1Tmp = methodBtn1.text
+                    }
+                    onExited: {
+                        methodBtn1.text = methodBtn1Tmp
+                    }
+                    Keys.onPressed: {
+                        methodBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        methodBtn1Tmp = methodBtn1.text;
+                    }
                 }
-                Text {
-                    id: displayFontSize
-                    text: sliderFontSize.value
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    anchors.verticalCenter: parent.verticalCenter
-                }
+                Common.Button{
+                    id:methodBtn2
+                    hoverimage: "fcitxKey.png"//../../img/icons/
+                    fontcolor:"#929292"
+                    fontsize: 13
+                    width:200
+                    height:30
+                    onClicked: {
+                        methodBtn2.forceActiveFocus();
+                        methodBtn2.text = "请按下要设置的组合键"
+                    }
+                    onEntered:{
+                        methodBtn2Tmp = methodBtn2.text
+                    }
+                    onExited: {
+                        methodBtn2.text = methodBtn2Tmp
+                    }
+                    Keys.onPressed: {
+                        methodBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        methodBtn2Tmp = methodBtn2.text
+                    }
+                 }
             }
         }
-        //竖排候选词列表
+        //Prev Page
         Row{
-            spacing: 145
+            spacing: 120
             Text {
-                id:listh
-                text: qsTr("竖排候选词列表")
+                id: prevPage
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                text: qsTr("上一页:")
+                anchors.verticalCenter: parent.verticalCenter
             }
-            Common.CheckBox{
-                id:verticalList
-                anchors.verticalCenter: listh.verticalCenter
-                titleName: ""
-                onCheckedChanged: {
+            Row{
+                spacing: 5
+                Common.Button{
+                    id:prevPageBtn1
+                    width:200
+                    height:30
+                    hoverimage: "fcitxKey.png"//../../img/icons/
+                    fontcolor:"#929292"
+                    fontsize: 13
+                    onClicked: {
+                        prevPageBtn1.forceActiveFocus();
+                        prevPageBtn1.text = "请按下要设置的组合键"
+                    }
+                    onEntered:{
+                        prevpageBtn1Tmp = prevPageBtn1.text
+                    }
+                    onExited: {
+                        prevPageBtn1.text = prevpageBtn1Tmp
+                    }
+                    Keys.onPressed: {
+                        prevPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        prevpageBtn1Tmp = prevPageBtn1.text;
+                    }
+                }
+                Common.Button{
+                    id:prevPageBtn2
+                    width:200
+                    height:30
+                    hoverimage: "fcitxKey.png"//../../img/icons/
+                    fontcolor:"#929292"
+                    fontsize: 13
+                    onClicked: {
+                        prevPageBtn2.forceActiveFocus();
+                        prevPageBtn2.text = "请按下要设置的组合键";
+                    }
+                    onEntered:{
+                        prevpageBtn2Tmp = prevPageBtn2.text;
+                    }
+                    onExited: {
+                        prevPageBtn2.text = prevpageBtn2Tmp;
+                    }
+                    Keys.onPressed: {
+                        prevPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        prevpageBtn2Tmp = prevPageBtn2.text;
+                    }
                 }
             }
         }
-}
+        //Next Page
+        Row{
+            spacing: 120
+            Text {
+                id: nextPage
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                text: qsTr("下一页:")
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Row{
+                spacing: 5
+                Common.Button{
+                    id:nextPageBtn1
+                    width:200
+                    height:30
+                    hoverimage: "fcitxKey.png"//../../img/icons/
+                    fontcolor:"#929292"
+                    fontsize: 13
+                    onClicked: {
+                        nextPageBtn1.forceActiveFocus();
+                        nextPageBtn1.text = "请按下要设置的组合键";
+                    }
+                    onEntered:{
+                        nextpageBtn1Tmp = nextPageBtn1.text;
+                    }
+                    onExited: {
+                        nextPageBtn1.text = nextpageBtn1Tmp;
+                    }
+                    Keys.onPressed: {
+                        nextPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        nextpageBtn1Tmp = nextPageBtn1.text;
+                    }
+                }
+                Common.Button{
+                    id:nextPageBtn2
+                    width:200
+                    height:30
+                    hoverimage: "fcitxKey.png"//../../img/icons/
+                    fontcolor:"#929292"
+                    fontsize: 13
+                    onClicked: {
+                        nextPageBtn2.forceActiveFocus();
+                        nextPageBtn2.text = "请按下要设置的组合键";
+                    }
+                    onEntered:{
+                        nextpageBtn2Tmp = nextPageBtn2.text;
+                    }
+                    onExited: {
+                        nextPageBtn2.text = nextpageBtn2Tmp;
+                    }
+                    Keys.onPressed: {
+                        nextPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                        nextpageBtn2Tmp = nextPageBtn2.text;
+                    }
+                }
+             }
+        }
+    }
 
     //顶层工具栏
     Bars.TopBar {
@@ -216,11 +451,16 @@ Rectangle {
         }
         onContinueBtnClicked: {
             pageStack.push(fcitxConfigtoolKeypage);//静态添加页面
-            fcitxcfgwizard.set_font(fontStyleBtn.text,false);
-            fcitxcfgwizard.set_candidate_word_number(candidateWordNumber.value,false);
-            fcitxcfgwizard.set_font_size(sliderFontSize.value,false);
-            fcitxcfgwizard.set_vertical_list(verticalList.checked,false);
 
+            fcitxcfgwizard.set_candidate_word_number(candidateWordNumber.value,false);
+            fcitxcfgwizard.set_vertical_list(verticalstyle.checked,false);
+
+            fcitxcfgwizard.set_trigger_key_first(methodBtn1.text,false);
+            fcitxcfgwizard.set_trigger_key_second(methodBtn2.text,false);
+            fcitxcfgwizard.set_prev_page_key_first(prevPageBtn1.text,false);
+            fcitxcfgwizard.set_prev_page_key_second(prevPageBtn2.text,false);
+            fcitxcfgwizard.set_next_page_key_first(nextPageBtn1.text,false);
+            fcitxcfgwizard.set_next_page_key_second(nextPageBtn2.text,false);
         }
     }
 }

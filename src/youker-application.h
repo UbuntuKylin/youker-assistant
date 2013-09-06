@@ -35,9 +35,9 @@ public:
     bool setup();
 private:
     QDeclarativeView *viewer;
-    QDeclarativeView *viewer_float;
-    QDeclarativeView *viewer_small;
-    QDeclarativeView *viewer_widget;
+//    QDeclarativeView *viewer_float;
+//    QDeclarativeView *viewer_small;
+//    QDeclarativeView *viewer_widget;
     Tray *tray;
     Handler *handler;
 };

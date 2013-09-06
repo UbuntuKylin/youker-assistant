@@ -22,7 +22,6 @@ import apt_pkg
 import shutil
 import commands
 from apt.progress.base import InstallProgress
-from apt.progress.text import AcquireProgress
 
 
 import historyclean
@@ -32,9 +31,8 @@ import diskanalyse
 import osslim
 import common
 import cacheclean
+import oldkernel
 
-#test path
-#path = '/home/kylin/ubuntu-tweak/'
 HOMEDIR = ''
 
 def get_user_homedir(homedir):
@@ -45,44 +43,16 @@ def get_user_homedir(homedir):
 # clean up by one key
 class OneKeyClean():
     def __init__(self):
-        #self.objsame = SearchTheSame(path)
-        #self.objlarge = ManageTheLarge(path)
         self.objunneed = CleanTheUnneed()
         self.objcache = CleanTheCache()
 
     def get_user_homedir(self, homedir):
         self.homedir = homedir
 
-    def get_scan_result_system(self, mode_list):
-        result_dic = {}
-        flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
-        for mode in mode_list:
-            flag_dic['%s' % mode] = True
-        ### the part of unneed
-        if flag_dic['unneed']:
-            unneed_list = []
-            tmp_unneed_list = self.objunneed.get_scan_result()
-            for record in tmp_unneed_list:
-                resultunneed = record.split('<2_2>')[0]
-                unneed_list.append(resultunneed)
-            result_dic['unneed'] = unneed_list
-        ### the part of cache
-        if flag_dic['cache']:
-            cache_list = []
-            tmp_cache_dic = self.objcache.get_scan_result(self.homedir)
-            for k in tmp_cache_dic:
-                tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
-                for one in tmp_cache_list:
-                    resultcache = one.split('<2_2>')[0]
-                    cache_list.append(resultcache)
-            result_dic['cache'] = cache_list
-        return result_dic
-
-
     def get_scan_result(self, mode_list):
         global HOMEDIR
         result_dic = {}
-        flag_dic = {'history': False, 'cookies': False, 'unneed': False, 'cache': False}
+        flag_dic = {'history': False, 'cookies': False, 'cache': False}
         for mode in mode_list:
             flag_dic['%s' % mode] = True
         ### the part of history
@@ -109,16 +79,6 @@ class OneKeyClean():
             result_dic['cookies'] = cookies_list
             del objcookies
 
-        ### the part of unneed
-        if flag_dic['unneed']:
-            unneed_list = []
-            tmp_unneed_list = self.objunneed.get_scan_result()
-            for record in tmp_unneed_list:
-                resultunneed = record.split('<2_2>')[0]
-                unneed_list.append(resultunneed)
-            #tmp_unneed_str = '<1_1>'.join(tmp_unneed_list)
-            result_dic['unneed'] = unneed_list
-
         ### the part of cache
         if flag_dic['cache']:
             cache_list = []
@@ -130,19 +90,6 @@ class OneKeyClean():
                     cache_list.append(resultcache)
             result_dic['cache'] = cache_list
 
-        # the part of same
-        #tmp_same_list = self.objsame.get_scan_result()
-        #tmp_same_str = '<1_1>'.join(tmp_same_list)
-        #self.result_dic['same'] = tmp_same_str
-
-        # the part of large
-        #tmp_large_list = self.objlarge.get_scan_result()
-        #tmp_large_str = '<1_1>'.join(tmp_large_list)
-        #self.result_dic['large'] = tmp_large_str
-
-        #for k in self.result_dic:
-        #    print k
-        #    print self.result_dic[k]
         return result_dic
 
 
@@ -162,9 +109,14 @@ class ManageTheLarge():
     def __init__(self):
         self.objl = diskanalyse.DiskAnalyse()
 
-    def get_scan_result(self, path):
+    def get_user_size(self, size):
+        tmpsize = size
+        self.filesize = tmpsize * 1024 * 1024
+
+    def get_scan_result(self, size, path):
         self.path = path
-        self.objl.hundred_large_files(self.path)
+        finalsize = size * 1024 * 1024
+        self.objl.hundred_large_files(finalsize, self.path)
         self.objl.type_of_file()
         largefile_dic = self.objl.adjust_the_list()
         return largefile_dic
@@ -220,6 +172,15 @@ class CleanTheUnneed():
         namesummarysize = self.objc.get_spare_packages()
         return namesummarysize
 
+# the function of clean old kernel
+class CleanTheOldkernel():
+    def __init__(self):
+        self.objc = oldkernel.OldKernel()
+
+    def get_scan_result(self):
+        namesize = self.objc.get_old_kernel()
+        return namesize
+
 # the function of scan the cache
 class CleanTheCache():
     def __init__(self):
@@ -247,30 +208,16 @@ class FunctionOfClean():
                     os.remove(cruft)
 
     def clean_the_package(self, cruftlist):
-        cache = common.get_cache_list()
-        for cruft in cruftlist:
-            pkg = cache[cruft]
-            if pkg.is_installed:
-                pkg.mark_delete()
-        cache.commit(AcquireProgress(), TextInstallProgress())
+        if cruftlist:
+            cache = common.get_cache_list()
+            cache.open()
+            for cruft in cruftlist:
+                pkg = cache[cruft]
+                if pkg.is_installed:
+                    pkg.mark_delete()
+            cache.commit(None, MyInstallProgress())
 
-    def uninstall_the_package(self, cruftlist):
-        if not cruftlist:
-            return
-        program = 'apt-get'
-        mode = 'remove'
-        cache = common.get_cache_list()
-        for cruft in cruftlist:
-            pkg = cache[cruft]
-            if pkg.is_installed:
-                cmd = '%s %s -y %s' % (program, mode, cruft)
-                (status, output) = commands.getstatusoutput(cmd)
-                if status:
-                    raise Exception(output)
-
-        
-
-class TextInstallProgress(InstallProgress):
+class MyInstallProgress(InstallProgress):
         def __init__(self):
             InstallProgress.__init__(self)
 

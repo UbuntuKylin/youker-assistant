@@ -41,7 +41,7 @@ public:
 
     Q_INVOKABLE int scan_history_records_qt();
     Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
-    Q_INVOKABLE QStringList scan_of_large_qt(QString abspath);
+    Q_INVOKABLE QStringList scan_of_large_qt(int size, QString abspath);
     Q_INVOKABLE QStringList scan_cookies_records_qt();
     Q_INVOKABLE QStringList scan_unneed_packages_qt();
     Q_INVOKABLE QStringList scan_apt_cruft_qt();
@@ -64,6 +64,7 @@ public:
     Q_INVOKABLE int get_page_num();
     int page_num;
 
+    Q_INVOKABLE void setsize_for_large_qt(int size);
     Q_INVOKABLE QString get_home_path();
 
     //----get system message

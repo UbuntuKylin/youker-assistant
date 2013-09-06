@@ -58,6 +58,7 @@ class SessionDaemon(dbus.service.Object):
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
+        self.daemonoldkernel = cleaner.CleanTheOldkernel()
         self.daemoncache = cleaner.CleanTheCache()
         self.daemonclean = cleaner.FunctionOfClean()
         self.daemononekey = cleaner.OneKeyClean()
@@ -83,9 +84,9 @@ class SessionDaemon(dbus.service.Object):
 
     # the function of sort the hundred files below path betown big to small
     ### input-'path'  output-['size<2_2>biggestfile<2_2>filestyle', 'size...]
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
-    def scan_of_large(self, path):
-        tmp_list = self.daemonlarge.get_scan_result(path)
+    @dbus.service.method(INTERFACE, in_signature='is', out_signature='as')
+    def scan_of_large(self, size, path):
+        tmp_list = self.daemonlarge.get_scan_result(size, path)
         self.scan_complete_msg('large')
         return tmp_list
     # the function of clean the cookies records
@@ -102,6 +103,12 @@ class SessionDaemon(dbus.service.Object):
     def scan_unneed_packages(self):
         tmp_list = self.daemonunneed.get_scan_result()
         self.scan_complete_msg('unneed')
+        return tmp_list
+    # the function of scan the oldkernel
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def scan_old_kernel(self):
+        tmp_list = self.daemonoldkernel.get_scan_result()
+        self.scan_complete_msg('oldkernel')
         return tmp_list
     # the function of scan the apt cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]

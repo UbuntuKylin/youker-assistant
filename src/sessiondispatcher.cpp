@@ -61,8 +61,8 @@ QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
     QDBusReply<QStringList> reply = sessioniface->call("scan_of_same", abspath);
     return reply.value();
 }
-QStringList SessionDispatcher::scan_of_large_qt(QString abspath) {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", abspath);
+QStringList SessionDispatcher::scan_of_large_qt(int size, QString abspath) {
+    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);
     return reply.value();
 }
 QStringList SessionDispatcher::scan_cookies_records_qt() {
@@ -85,6 +85,10 @@ QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
 QString SessionDispatcher::get_home_path() {
     QString homepath = QDir::homePath();
     return homepath;
+}
+
+void SessionDispatcher::setsize_for_large_qt(int size) {
+    sessioniface->call("setsize_for_large", size);
 }
 
 void SessionDispatcher::set_page_num(int num) {

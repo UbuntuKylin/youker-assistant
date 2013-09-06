@@ -14,7 +14,7 @@ KThread::~KThread()
 void KThread::run()
 {
     if(method_name == "get_network_flow") {
-        iface->call(method_name);
+        iface->call("get_network_flow");
     }
     else if(method_name == "clean_by_main_one_key") {
 //        qDebug() << KThread::currentThreadId();

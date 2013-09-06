@@ -56,7 +56,7 @@ FcitxCfgWizard::FcitxCfgWizard(QObject *parent) :
 //    view_tool->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 //    QObject *rootObject = dynamic_cast<QObject*>(view_tool->rootObject());
 //    QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObject, SLOT(refreshFcitxtool()));
-    connect(m_connection, SIGNAL(connected()),SLOT(connected()));
+      connect(m_connection, SIGNAL(connected()),SLOT(connected()));
 
 }
 
@@ -173,8 +173,8 @@ bool FcitxCfgWizard::set_im_list(QStringList im_list, bool real_save)
  * @param ret_value：取得的配置值
  * @return：返回为true表示获取成功，反之获取失败
  */
-bool FcitxCfgWizard::get_fcitx_cfg_value(char *cd_path_prefix, char *cd_file_name,
-    char *c_path_prefix, char *c_file_name, char *groupName,  const char *optionName,
+bool FcitxCfgWizard::get_fcitx_cfg_value(const char *cd_path_prefix, const char *cd_file_name,
+    const char *c_path_prefix, const char *c_file_name, const char *groupName,  const char *optionName,
     void *ret_value)
 {
     FILE *c_fp;
@@ -242,8 +242,8 @@ err:
  * @param ret_value：设置的配置值
  * @return：返回为true表示设置成功，反之获取失败
  */
-bool FcitxCfgWizard::set_fcitx_cfg_value(char *cd_path_prefix, char *cd_file_name,
-    char *c_path_prefix, char *c_file_name, char *groupName, const char *optionName,
+bool FcitxCfgWizard::set_fcitx_cfg_value(const char *cd_path_prefix, const char *cd_file_name,
+    const char *c_path_prefix, const char *c_file_name, const char *groupName, const char *optionName,
     void *set_value)
 {
     FILE *c_fp;
@@ -727,7 +727,7 @@ QString FcitxCfgWizard::show_font_dialog()
     const QFont &font = QFontDialog::getFont(&ok, 0);
     if(ok)
         return font.family();
-    return font.family();
+    return "Sans 10";
 }
 
 //qt控件貌似（？不确定，先这么做了）没法返回右shiht、右ctrl、右alt键，
@@ -765,7 +765,10 @@ QString FcitxCfgWizard::get_fcitx_hot_key_string(unsigned int qtcode, unsigned i
     int sym;
     unsigned int state;
     char *ret_value;
-
+    if((qtcode == 16777216)&&(mod==0))
+    {
+        return "Empty";
+    }
     keyQtToSym(qtcode, (Qt::KeyboardModifiers)mod, sym, state);
     if ((ret_value = FcitxHotkeyGetKeyString((FcitxKeySym)sym, state)) == NULL)
         return "";

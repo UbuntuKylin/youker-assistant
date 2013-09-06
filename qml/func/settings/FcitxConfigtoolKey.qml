@@ -9,18 +9,12 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: "小企鹅输入法快捷键/云输入/皮肤配置"
-    property string actiontext: "可以设置自己喜欢的方式，点击＂下一步＂继续设置，点击＂取消＂取消当前设置并返回,点击“应用”按钮完成输入法设置。"
-    property string selectedimage: ""
-    property string defaultChangeMethod: ""
-    property string eventABC:""
-    property int hotkyScrollBetweenIndex: 0
-    property string methodBtn1Tmp: ""
-    property string methodBtn2Tmp:""
-    property string prevpageBtn1Tmp: ""
-    property string prevpageBtn2Tmp: ""
-    property string nextpageBtn1Tmp: ""
-    property string nextpageBtn2Tmp: ""
+    property string actiontitle: "小企鹅输入法外观配置"
+    property string actiontext: "可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置"
+    property int flagCheck: 1
+    property int flag_i: 0
+    property string h_fcitxSkinImage: ""
+    property string v_fcitxSkinImage: ""
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -49,140 +43,28 @@ Rectangle {
     }
 
     function refreshFcitxKey(){
-        fcitxChangeModel.clear();
         skinModel.clear();
-        //get_trigger_key========================================================
-        var getMethodBtn1 = fcitxcfgwizard.get_trigger_key_first();
+        //set font============================================================
+        var setFont = fcitxcfgwizard.get_font();
+        fontStyleBtn.text = setFont;
+        //get font size=======================================================
+        var getFontSize = fcitxcfgwizard.get_font_size();
+        sliderFontSize.value = getFontSize;
 
-        methodBtn1.text = getMethodBtn1;
-
-        var getMethodBtn2 = fcitxcfgwizard.get_trigger_key_second();
-        methodBtn2.text = getMethodBtn2
-
-        //get_prev_page_key======================================================
-        var getPrevPageBtn1 = fcitxcfgwizard.get_prev_page_key_first();
-        prevPageBtn1.text = getPrevPageBtn1;
-        var getPrevPageBtn2 = fcitxcfgwizard.get_prev_page_key_second();
-        prevPageBtn2.text = getPrevPageBtn2
-
-        //get_next_page_key=======================================================
-        var getNextpageBtn1 = fcitxcfgwizard.get_next_page_key_first();
-        nextPageBtn1.text = getNextpageBtn1;
-        var getNextpageBtn2 = fcitxcfgwizard.get_next_page_key_second();
-        nextPageBtn2.text = getNextpageBtn2;
-
-        //get_im_switch_key
-        var getEnableHotKeybool =fcitxcfgwizard.get_im_switch_key();
-        enableHotKeyBox.checked = getEnableHotKeybool;
-
-        //set_im_switch_hot_key=======================================================
-          var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
-        if(getHotkyScrollBetween==0)
-        {
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
-        }
-        if(getHotkyScrollBetween==1)
-        {
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
-        }
-        if(getHotkyScrollBetween==2)
-        {
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
-        }
-        if(getHotkyScrollBetween==3)
-        {
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-        }
-
-        //get_skin_list and current_skin=================================================
+        //get_skin_list and current_skin======================================
         var getSkinList = fcitxcfgwizard.get_all_skin_type()
         var getCurrentSkin = fcitxcfgwizard.get_skin_type()
-        getSkinList.unshift(getCurrentSkin);
-        skinModel.clear();
-        for(var i=0;i<getSkinList.length;i++)
-       {
-            skinModel.append({"skinTitle": getSkinList[i]});
-            if(i!=0&&(getSkinList[i] == getCurrentSkin))
-                skinModel.remove(i);
-        }
-    }
-    Connections {
-            target: fcitxcfgwizard
-            onRefreshFcitxSig: {
-                refreshFcitxKey();
-            }
-        }
-    Component.onCompleted: {
-        fcitxChangeModel.clear();
-        skinModel.clear();
-        //get_trigger_key========================================================
-        var getMethodBtn1 = fcitxcfgwizard.get_trigger_key_first();
-        methodBtn1.text = getMethodBtn1;
-        var getMethodBtn2 = fcitxcfgwizard.get_trigger_key_second();
-        methodBtn2.text = getMethodBtn2
 
-        //get_prev_page_key======================================================
-        var getPrevPageBtn1 = fcitxcfgwizard.get_prev_page_key_first();
-        prevPageBtn1.text = getPrevPageBtn1;
-        var getPrevPageBtn2 = fcitxcfgwizard.get_prev_page_key_second();
-        prevPageBtn2.text = getPrevPageBtn2
-
-        //get_next_page_key=======================================================
-        var getNextpageBtn1 = fcitxcfgwizard.get_next_page_key_first();
-        nextPageBtn1.text = getNextpageBtn1;
-        var getNextpageBtn2 = fcitxcfgwizard.get_next_page_key_second();
-        nextPageBtn2.text = getNextpageBtn2;
-
-        //get_im_switch_key
-        var getEnableHotKeybool =fcitxcfgwizard.get_im_switch_key();
-        enableHotKeyBox.checked = getEnableHotKeybool;
-
-        //set_im_switch_hot_key=======================================================
-          var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
-        if(getHotkyScrollBetween==0)
+        if(getCurrentSkin != "default")
         {
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
+            enableSkinBox.checked = true
+            flagCheck = 1;
         }
-        if(getHotkyScrollBetween==1)
+        else
         {
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
+            enableSkinBox.checked = false;
+            flagCheck = 0;
         }
-        if(getHotkyScrollBetween==2)
-        {
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
-        }
-        if(getHotkyScrollBetween==3)
-        {
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-        }
-
-        //get_skin_list and current_skin=================================================
-        var getSkinList = fcitxcfgwizard.get_all_skin_type()
-        var getCurrentSkin = fcitxcfgwizard.get_skin_type()
         getSkinList.unshift(getCurrentSkin);   //js将数组第一个添加unshift进来的
         skinModel.clear();
         for(var i=0;i<getSkinList.length;i++)
@@ -192,246 +74,363 @@ Rectangle {
                 skinModel.remove(i);
         }
 
+        //load_skin_image====================================================
+        if(getCurrentSkin == "default")
+        {
+            h_fcitxSkinImage = "../../img/skin/h_default.png"
+            v_fcitxSkinImage = "../../img/skin/v_default.png"
+        }
+        else if(getCurrentSkin == "dark")
+        {
+            h_fcitxSkinImage = "../../img/skin/h_dark.png"
+            v_fcitxSkinImage = "../../img/skin/v_dark.png"
+        }
+        else if(getCurrentSkin == "classic")
+        {
+            h_fcitxSkinImage = "../../img/skin/h_classic.png"
+            v_fcitxSkinImage = "../../img/skin/v_classic.png"
+        }
+        else{
+            h_fcitxSkinImage = ""
+            v_fcitxSkinImage = ""
+        }
+
+  }
+
+
+    Connections {
+            target: fcitxcfgwizard
+            onRefreshFcitxSig: {
+                refreshFcitxKey();
+            }
+        }
+
+    Component.onCompleted: {
+        skinModel.clear();
+        //set font============================================================
+        var setFont = fcitxcfgwizard.get_font();
+        fontStyleBtn.text = setFont;
+        //get font size=======================================================
+        var getFontSize = fcitxcfgwizard.get_font_size();
+        sliderFontSize.value = getFontSize;
+
+        //get_skin_list and current_skin=================================================
+        var getSkinList = fcitxcfgwizard.get_all_skin_type()
+        var getCurrentSkin = fcitxcfgwizard.get_skin_type()
+        if(getCurrentSkin != "default")
+        {
+            enableSkinBox.checked = true
+            flagCheck = 1;
+        }
+        else
+        {
+            enableSkinBox.checked = false;
+            flagCheck = 0;
+        }
+        getSkinList.unshift(getCurrentSkin);   //js将数组第一个添加unshift进来的
+        skinModel.clear();
+        for(var i=0;i<getSkinList.length;i++)
+       {
+            skinModel.append({"skinTitle": getSkinList[i]});
+            if(i!=0&&(getSkinList[i] == getCurrentSkin))
+                skinModel.remove(i);
+        }
+        //load_skin_image====================================================
+        if(getCurrentSkin == "default")
+        {
+            h_fcitxSkinImage = "../../img/skin/h_default.png"
+            v_fcitxSkinImage = "../../img/skin/v_default.png"
+        }
+        else if(getCurrentSkin == "dark")
+        {
+            h_fcitxSkinImage = "../../img/skin/h_dark.png"
+            v_fcitxSkinImage = "../../img/skin/v_dark.png"
+        }
+        else if(getCurrentSkin == "classic")
+        {
+            h_fcitxSkinImage = "../../img/skin/h_classic.png"
+            v_fcitxSkinImage = "../../img/skin/v_classic.png"
+        }
+        else{
+            h_fcitxSkinImage = ""
+            v_fcitxSkinImage = ""
+        }
     }
 
-    Column{
+
+    //分割线
+    Row{
         anchors{
-            top:parent.top
-            topMargin: 110
-            left:parent.left
-            leftMargin: 80
+            left: parent.left
+            leftMargin: 40
+            top: parent.top
+            topMargin: 120
         }
-        spacing: 15
-        //Trigger Input Method
-        Row{
-            spacing: 179
-            Text{
-                id:inputMethod
-                text:qsTr("切换激活/非激活输入法")
-            }
-            Row{
-                spacing: 5
-                Common.Button{
-                    id:methodBtn1
-                    //focus:true
+        spacing: 5
+        Text{
+            text: "皮肤设置"
+            font.bold: true
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Rectangle{
+            width:700
+            height:1
+            color:"#b9c5cc"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+    //使用皮肤
+    Row{
+        spacing: 75
+        anchors {
+            top: parent.top
+            topMargin: 150
+            left: parent.left
+            leftMargin: 65
+        }
+        //选择皮肤
+        ListModel {
+            id: skinModel
+            ListElement {skinTitle: "";}
+        }
+        Common.CheckBox{
+            id:enableSkinBox
+            anchors.verticalCenter: parent.verticalCenter
+            titleName: "使用皮肤"
+            onCheckedChanged: {
+                if(flagCheck == 1)
+                {
+                    if(enableSkinBox.checked == false)
+                    {
+                        var getSkinList = fcitxcfgwizard.get_all_skin_type()
+                        for(var i=0;i<getSkinList.length;i++)
+                       {
+                            if(getSkinList[i] == "default")
+                            {
+                                flag_i = i;
+                                break;
+                            }
+                        }
+                        if(fcitxcfgwizard.get_skin_type()=="default")
+                                {
+                                    flag_i = 0;
+                                }
 
-    //                text:""
-                    //hoverimage: "button_normal.png"
-                    width:200
-                    height:30
-                    onClicked: {
-                        methodBtn1.forceActiveFocus();
-                        methodBtn1.text = "请按下要设置的组合键";
+                        skinCombo.selectedIndex = flag_i;
                     }
-                    onEntered:{
-                        methodBtn1Tmp = methodBtn1.text
-                    }
-                    onExited: {
-                        methodBtn1.text = methodBtn1Tmp
-                    }
-                    Keys.onPressed: {
-                        methodBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        methodBtn1Tmp = methodBtn1.text;
-                    }
-
-
                 }
-
-                Common.Button{
-                    id:methodBtn2
-                    //focus:true
-
-                    //hoverimage:"button_normal.png"
-    //                text:"Empty"
-                    width:200
-                    height:30
-                    onClicked: {
-                        methodBtn2.forceActiveFocus();
-                        methodBtn2.text = "请按下要设置的组合键"
-                    }
-                    onEntered:{
-                        methodBtn2Tmp = methodBtn2.text
-                    }
-                    onExited: {
-                        methodBtn2.text = methodBtn2Tmp
-                    }
-                    Keys.onPressed: {
-                        methodBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        methodBtn2Tmp = methodBtn2.text
-                    }
-                 }
             }
         }
-        //Prev Page
+        Common.ComboBox {
+            id: skinCombo
+            model: skinModel
+            width: 130
+            height: 25
+            onSelectedTextChanged: {
+                if(skinCombo.selectedText != "default")
+                {
+                    enableSkinBox.checked = true;
+                    flagCheck = 1;
+                }
+                //load_skin_image====================================================
+                if(skinCombo.selectedText == "default")
+                {
+                    h_fcitxSkinImage = "../../img/skin/h_default.png"
+                    v_fcitxSkinImage = "../../img/skin/v_default.png"
+                    enableSkinBox.checked = false;
+                    flagCheck = 0;
+                }
+                else if(skinCombo.selectedText == "dark")
+                {
+                    h_fcitxSkinImage = "../../img/skin/h_dark.png"
+                    v_fcitxSkinImage = "../../img/skin/v_dark.png"
+                }
+                else if(skinCombo.selectedText == "classic")
+                {
+                    h_fcitxSkinImage = "../../img/skin/h_classic.png"
+                    v_fcitxSkinImage = "../../img/skin/v_classic.png"
+                }
+                else{
+                    h_fcitxSkinImage = ""
+                    v_fcitxSkinImage = ""
+                }
+           }
+        }
+     }
+    //更换字体
+    Row{
+        spacing: 75
+        anchors {
+            top: parent.top
+            topMargin: 180
+            left: parent.left
+            leftMargin: 65
+        }
+        Common.CheckBox{
+            id:enableHotKeyBox
+            anchors.verticalCenter: parent.verticalCenter
+            titleName: "更换字体"
+            onCheckedChanged: {
+                if(enableHotKeyBox.checked == false)
+                {
+                    sliderFontSize.value = 20;
+                    fontStyleBtn.text = "Sans 10";
+                }
+            }
+        }
+        //fontsize
         Row{
-            spacing: 287
+            spacing: 10
             Text {
-                id: prevPage
-                text: qsTr("上一页")
+                id: fontSize
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+                text: qsTr("大小")
             }
             Row{
-                spacing: 5
-                Common.Button{
-                    id:prevPageBtn1
-                    width:200
-                    height:30
-                    onClicked: {
-                        prevPageBtn1.forceActiveFocus();
-                        prevPageBtn1.text = "请按下要设置的组合键"
-                    }
-                    onEntered:{
-                        prevpageBtn1Tmp = prevPageBtn1.text
-                    }
-                    onExited: {
-                        prevPageBtn1.text = prevpageBtn1Tmp
-                    }
-                    Keys.onPressed: {
-                        prevPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        prevpageBtn1Tmp = prevPageBtn1.text;
-                    }
-                }
-                Common.Button{
-                    id:prevPageBtn2
-                    width:200
-                    height:30
-                    onClicked: {
-                        prevPageBtn2.forceActiveFocus();
-                        prevPageBtn2.text = "请按下要设置的组合键";
-                    }
-                    onEntered:{
-                        prevpageBtn2Tmp = prevPageBtn2.text;
-                    }
-                    onExited: {
-                        prevPageBtn2.text = prevpageBtn2Tmp;
-                    }
-                    Keys.onPressed: {
-                        prevPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        prevpageBtn2Tmp = prevPageBtn2.text;
-                    }
-                }
-            }
-        }
-        //Next Page
-        Row{
-            spacing: 287
-            Text {
-                id: nextPage
-                text: qsTr("下一页")
-            }
-            Row{
-                spacing: 5
-                Common.Button{
-                    id:nextPageBtn1
-                    width:200
-                    height:30
-                    onClicked: {
-                        nextPageBtn1.forceActiveFocus();
-                        nextPageBtn1.text = "请按下要设置的组合键";
-                    }
-                    onEntered:{
-                        nextpageBtn1Tmp = nextPageBtn1.text;
-                    }
-                    onExited: {
-                        nextPageBtn1.text = nextpageBtn1Tmp;
-                    }
-                    Keys.onPressed: {
-                        nextPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        nextpageBtn1Tmp = nextPageBtn1.text;
-                    }
-                }
-                Common.Button{
-                    id:nextPageBtn2
-                    width:200
-                    height:30
-                    onClicked: {
-                        nextPageBtn2.forceActiveFocus();
-                        nextPageBtn2.text = "请按下要设置的组合键";
-                    }
-                    onEntered:{
-                        nextpageBtn2Tmp = nextPageBtn2.text;
-                    }
-                    onExited: {
-                        nextPageBtn2.text = nextpageBtn2Tmp;
-                    }
-                    Keys.onPressed: {
-                        nextPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        nextpageBtn2Tmp = nextPageBtn2.text;
-                    }
-                }
-             }
-        }
-        Row{
-            spacing: 272
-            //选择皮肤
-            ListModel {
-                id: skinModel
-                ListElement {skinTitle: "";}
-            }
-            Text{
-                id:skinchoose
-                text:qsTr("皮肤选择")
-            }
-
-            Common.ComboBox {
-                id: skinCombo
-                model: skinModel
-                width: 405
-                onSelectedTextChanged: {
-//                    skinCombo.selectedText
-                }
-            }
-        }
-        //Scroll between input Method
-        Row{
-            spacing: 256
-            ListModel {
-                id: fcitxChangeModel
-                ListElement { text: "" }
-            }
-                Text{
-                    id:scrollBetween
-                    text:qsTr("输入法切换")
-                }
-                Common.ComboBox {
-                    anchors{
-                        verticalCenter: scrollBetween.verticalCenter
-                    }
-                    id: scrollBetweenCombo
-                        model: fcitxChangeModel
-                        width: 405
-                        onSelectedTextChanged: {
-                            hotkyScrollBetweenIndex = scrollBetweenCombo.selectedIndex;
+                spacing: 10
+                Common.Slider {
+                    id: sliderFontSize
+                    anchors.verticalCenter: parent.verticalCenter
+                    minimumValue: 0
+                    maximumValue: 72
+                    width: 150
+                    stepSize: 1
+                    animated: true
+                    onValueChanged: {
+                        if(sliderFontSize.value != 20)
+                        {
+                            enableHotKeyBox.checked = true;
                         }
                     }
-            }
-
-        Row{
-            spacing: 213
-            Text {
-                id: hotkyScroll
-                text: qsTr("启用输入法间切换")
-            }
-            Common.CheckBox{
-                id:enableHotKeyBox
-                anchors.verticalCenter: hotkyScroll.verticalCenter
-                titleName: ""
+                }
+                Text {
+                    id: displayFontSize
+                    text: sliderFontSize.value
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
         }
+     }
+    //font
+   Row{
+       spacing: 10
+       anchors {
+           top: parent.top
+           topMargin: 180
+           left: parent.left
+           leftMargin: 400
+       }
+       Text {
+           id: font
+           font.pixelSize: 12
+           color: "#7a7a7a"
+           anchors.verticalCenter: parent.verticalCenter
+           text: qsTr("字体设置")
+       }
+       Common.Button {
+            id: fontStyleBtn
+            smooth:true
+            width: 160;height: 25
+            hoverimage: "fcitxfont.png"//../../img/icons/
+            fontcolor:"#929292"
+            fontsize: 13
+            anchors.verticalCenter: font.verticalCenter
+           onClicked: {
+               fontStyleBtn.text = fcitxcfgwizard.show_font_dialog();
+           }
+           onTextChanged: {
+               if(fontStyleBtn.text != "Sans 10" )
+               {
+                   enableHotKeyBox = true;
+               }
+           }
+       }
+   }
 
-        //启用云拼音
-//        Row{
-//        spacing: 258
-//            Text {
-//                id: cloudPinyin
 
-//                text: qsTr("启用云拼音")
-//            }
-//            Common.CheckBox{
-//                anchors.verticalCenter: cloudPinyin.verticalCenter
-//                titleName: ""
-//            }
-//        }
-}
+    Rectangle{
+        anchors{
+            top:parent.top
+            topMargin: 220
+            left:parent.left
+            leftMargin: 65
+        }
+        color:"white"
+        width: 680
+        height: 190
+
+        Rectangle{
+            anchors{
+                top:parent.top
+                topMargin: 0
+                left:parent.left
+                leftMargin: 0
+            }
+            width:680
+            height:1
+            color:"#b9c5cc"
+        }
+        Rectangle{
+            anchors{
+                top:parent.top
+                topMargin: 190
+                left:parent.left
+                leftMargin: 0
+            }
+            width:680
+            height:1
+            color:"#b9c5cc"
+        }
+        Rectangle{
+            anchors{
+                top:parent.top
+                topMargin: 0
+                left:parent.left
+                leftMargin: 0
+            }
+            width:1
+            height:190
+            color:"#b9c5cc"
+        }
+        Rectangle{
+            anchors{
+                top:parent.top
+                topMargin: 0
+                left:parent.left
+                leftMargin: 680
+            }
+            width:1
+            height:190
+            color:"#b9c5cc"
+        }
+        Row{
+            anchors{
+                top:parent.top
+                topMargin: 15
+                left:parent.left
+                leftMargin: 20
+            }
+        spacing: 30
+        Image {
+            id: fcitxVimage
+            source: v_fcitxSkinImage
+            smooth: true
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        Image {
+            id: fcitxHimage
+            source: h_fcitxSkinImage
+            smooth: true
+            anchors.verticalCenter: parent.verticalCenter
+        }
+      }
+    }
+
     //顶层工具栏
     Bars.TopBar {
         id: topBar
@@ -468,18 +467,9 @@ Rectangle {
         }
         onFinishBtnClicked: {
             //接后台应用接口
-            fcitxcfgwizard.set_trigger_key_first(methodBtn1.text,false);
-            fcitxcfgwizard.set_trigger_key_second(methodBtn2.text,false);
-            fcitxcfgwizard.set_prev_page_key_first(prevPageBtn1.text,false);
-            fcitxcfgwizard.set_prev_page_key_second(prevPageBtn2.text,false);
-            fcitxcfgwizard.set_next_page_key_first(nextPageBtn1.text,false);
-            fcitxcfgwizard.set_next_page_key_second(nextPageBtn2.text,false);
-
-            //fcitxcfgwizard.set_skin_type(skinCombo.selectedText,false);
+            fcitxcfgwizard.set_font(fontStyleBtn.text,false);
+            fcitxcfgwizard.set_font_size(sliderFontSize.value,false);
             fcitxcfgwizard.set_skin_type(skinCombo.selectedText, false);
-
-            fcitxcfgwizard.set_im_switch_hot_key(hotkyScrollBetweenIndex,false);
-            fcitxcfgwizard.set_im_switch_key(enableHotKeyBox.checked,false);
             fcitxcfgwizard.all_cfg_save()
             pageStack.push(functioncollection);
         }
@@ -487,6 +477,3 @@ Rectangle {
     }
 
 }
-
-
-

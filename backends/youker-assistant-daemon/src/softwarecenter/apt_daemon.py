@@ -17,137 +17,183 @@
 ### END LICENSE
 
 import apt
-import apt_pkg
-import sys, os
 import apt.progress.base as apb
+from sudodbus.daemon import SudoDaemon
 
 class FetchProcess(apb.AcquireProgress):
 	'''Fetch Process'''
-	def __init__(self):
+	def __init__(self, sudoDaemon):
 		apb.AcquireProgress.__init__(self)
+		self.sudoDaemon = sudoDaemon
 
 	def done(self, item):
-		print 'done la done la !!!'
+		print 'all items download finished'
+		self.sudoDaemon.software_fetch_signal("done", None)
 
 	def fail(self, item):
-		print 'fail la fail la !!!'
+		print 'download failed'
+		self.sudoDaemon.software_fetch_signal("fail", None)
 
 	def fetch(self, item):
-		print 'fetch la fetch la !!!'
+		print 'one item download finished'
+		self.sudoDaemon.software_fetch_signal("fetch", None)
 
 	def ims_hit(self, item):
-		print 'ims_hit la !!!'
+		print 'ims_hit'
 
 	def media_change(self, media, drive):
-		print 'media change la !!!'
+		print 'media_change'
 
 	def pulse(self, owner):
-# 		print 'pulse pulse pluse ...', owner
-		print 'current_bytes: ', self.current_bytes
-		print 'current_cps: ', self.current_cps
-		print 'current_items: ', self.current_items
-		print 'elapsed_time: ', self.elapsed_time
-		print 'fetched_bytes: ', self.fetched_bytes
-		print 'last_bytes: ', self.last_bytes
-		print 'total_bytes: ', self.total_bytes
-		print 'total_items: ', self.total_items
+# 		print 'owner: ', owner
+# 		print 'current_cps: ', self.current_cps
+# 		print 'elapsed_time: ', self.elapsed_time
+# 		print 'fetched_bytes: ', self.fetched_bytes
+# 		print 'last_bytes: ', self.last_bytes
+		self.sudoDaemon.software_fetch_signal("pulse", 
+											"download_bytes:" + self.current_bytes
+											+ ",total_bytes:" + self.total_bytes
+											+ ",download_items:" + self.current_items
+											+ ",total_items:" + self.total_items)
 
 	def start(self):
-		print 'fetch progress is start ...'
+		# Reset all our values.
+		self.current_bytes = 0.0
+		self.current_cps = 0.0
+		self.current_items = 0
+		self.elapsed_time = 0
+		self.fetched_bytes = 0.0
+		self.last_bytes = 0.0
+		self.total_bytes = 0.0
+		self.total_items = 0
+		print 'fetch progress start ...'
+		self.sudoDaemon.software_fetch_signal("start", None)
 
 	def stop(self):
-		print 'fetch progress is stop ...'
+		print 'fetch progress stop ...'
+		self.sudoDaemon.software_fetch_signal("stop", None)
 
 
 class AptProcess(apb.InstallProgress):
-    '''Install progress'''
-    def __init__(self):
-        apb.InstallProgress.__init__(self)
+	'''Apt progress'''
+	def __init__(self, sudoDaemon):
+		apb.InstallProgress.__init__(self)
+		self.sudoDaemon = sudoDaemon
 
-    def conffile(self, current, new):
-        # global_event.emit("action-conffile", (current, new))
+	def conffile(self, current, new):
+		print 'there is a conffile question'
 
-        # log("conffile: %s %s" % (current, new))
-        print 'conffile wo ca!'
-        
-    def error(self, errorstr):
-        # global_event.emit("action-error", (self.pkg_name, errorstr))
-        # log("error: %s" % errorstr)
-        print 'ERROR :' + errorstr
+	def error(self, pkg, errormsg):
+		self.sudoDaemon.software_apt_signal("error", None)
 
-    def start_update(self):
-        '''Start update.'''
-        # log("start action...")
-        print 'kai shi le kaishile !!!'
-        
-    def status_change(self, pkg, percent, status):
-        '''Progress status change.'''
-        # global_event.emit("action-update", (self.pkg_name, self.action_type, int(percent), status))
-        # log((self.pkg_name, self.action_type, int(percent), status))
-        print '\n' + str(int(percent)) + "%  zhuangtai: " + status
+	def start_update(self):
+		print 'apt process start work'
+		self.sudoDaemon.software_apt_signal("start", None)
+
+	def finish_update(self):
+		print 'apt process finished'
+		self.sudoDaemon.software_apt_signal("stop", None)
+
+	def status_change(self, pkg, percent, status):
+		print str(int(percent)) + "%  status : " + status
+		self.sudoDaemon.software_apt_signal("pulse", "percent:" + str(int(percent)) + ",status:" + status)
 
 class AptDaemon:
-	def __init__(self):
+	def __init__(self, sudoDaemon):
+		self.sudoDaemon = sudoDaemon
 		self.ca = apt.Cache()
-# 		self.ca.update()
-# 		self.ca.open()
-		self.pkgList = []
-		self.pkgNameList = []
-		for pkg in self.ca:
-			self.pkgList.append(pkg)
-			self.pkgNameList.append(pkg.name)
-
-	def get_pkg_by_name(self, pkgname):
-		return self.ca[pkgname]
-
-	def install_pkg(self, pkgname):
 		self.ca.open()
-		pkg = self.get_pkg_by_name(pkgname)
+# 		self.pkgNameList = []
+# 		for pkg in self.ca:
+# 			self.pkgNameList.append(pkg.name)
+
+	# get package by pkgName
+	def get_pkg_by_name(self, pkgName):
+		return self.ca[pkgName]
+
+	# install package
+	def install_pkg(self, pkgName):
+		self.ca.open()
+		pkg = self.get_pkg_by_name(pkgName)
 		pkg.mark_install()
 		
 		try: 
-			self.ca.commit(FetchProcess(), AptProcess())
+			self.ca.commit(FetchProcess(self.sudoDaemon), AptProcess(self.sudoDaemon))
 		except Exception, e:
 			print e
 			print "install err"
 
-	def uninstall_pkg(self, pkgname):
+	# uninstall package
+	def uninstall_pkg(self, pkgName):
 		self.ca.open()
-		pkg = self.get_pkg_by_name(pkgname)
+		pkg = self.get_pkg_by_name(pkgName)
 		pkg.mark_delete()
 		
 		try:
-			self.ca.commit(None, AptProcess())
+			self.ca.commit(None, AptProcess(self.sudoDaemon))
 		except Exception, e:
 			print e
 			print "uninstall err"
 
-	def update_pkg(self, pkgname):
+	# update package
+	def update_pkg(self, pkgName):
 		self.ca.open()
-		pkg = self.get_pkg_by_name(pkgname)
+		pkg = self.get_pkg_by_name(pkgName)
 		pkg.mark_update()
 		
 		try:
-			self.ca.commit(FetchProcess(), AptProcess())
+			self.ca.commit(FetchProcess(self.sudoDaemon), AptProcess(self.sudoDaemon))
 		except Exception, e:
 			print e
 			print "update err"
 
-	def get_pkgs_name_list(self):
-		return self.pkgNameList
-
-	def search_pkgs_name(self, pkgname):
-		if pkgname in self.pkgNameList:
-			return pkgname
+	# check package status by pkgName, i = installed u = can update n = notinstall
+	def check_pkg_status(self, pkgName):
+		self.ca.open()
+		pkg = self.get_pkg_by_name(pkgName)
+		if(pkg.is_installed):
+			if(pkg.is_upgradable):
+				return "u"
+			else:
+				return "i"
 		else:
-			rtns = []
-			for name in self.pkgNameList:
-				if name.find(pkgname) >= 0:
-					rtns.append(name)
-			return rtns
+			return "n"
+
+	# check packages status by pkgNameList, i = installed u = can update n = notinstall
+	def check_pkgs_status(self, pkgNameList):
+		self.ca.open()
+		pkgStatusDict = {}
+		for pkgName in pkgNameList:
+			pkg = self.get_pkg_by_name(pkgName)
+			if(pkg.is_installed):
+				if(pkg.is_upgradable):
+					pkgStatusDict[pkgName] = "u"
+				else:
+					pkgStatusDict[pkgName] = "i"
+			else:
+				pkgStatusDict[pkgName] = "n"
+
+		self.sudoDaemon.software_check_status_signal(pkgStatusDict)
+		return pkgStatusDict
+
+# 	def get_pkgs_name_list(self):
+# 		return self.pkgNameList
+# 
+# 	def search_pkgs_name(self, pkgName):
+# 		if pkgName in self.pkgNameList:
+# 			return pkgName
+# 		else:
+# 			rtns = []
+# 			for name in self.pkgNameList:
+# 				if name.find(pkgName) >= 0:
+# 					rtns.append(name)
+# 			return rtns
 
 if __name__ == "__main__":
 	ad = AptDaemon()
+	
+# 	print ad.check_pkgs_status(["gedit", "cairo-dock", "unity"])
+	
 	while True:
 		print "\ninput your command: "
 		cmd = raw_input()
@@ -166,10 +212,14 @@ if __name__ == "__main__":
 			print "input pkgName to update: "
 			pkgName = raw_input()
 			ad.update_pkg(pkgName)
+		elif cmd == "c":
+			print "input pkgName to check status: "
+			pkgName = raw_input()
+			print ad.check_pkg_status(pkgName)
 		else:
 			print "nothing..."
 
-	print ad.get_pkg_by_name('gedit')
+# 	print ad.get_pkg_by_name('gedit')
 	# pnl = ad.getpkglist()
 	# print len(pnl)
 # 	name1 = ad.search_pkgs_name('wesnoth-1.10-core')

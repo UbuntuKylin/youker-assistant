@@ -29,6 +29,9 @@
 #include <QtGui>
 #include <QAction>
 #include "ui_tray.h"
+#include "suspensionframe.h"
+
+#include "systemdispatcher.h"
 
 class Tray: public QWidget, private Ui::Tray
 {
@@ -43,12 +46,46 @@ public:
     QMenu *trayMenu;
     QAction *actionShow, *actionQuit;
 
+    virtual QSize sizeHint()const;
+private:
+    QPoint dragPos;
+    SuspensionFrame *frame;
+    SystemDispatcher *dispather;
+
+    QString cpu_value;
+    QString up_speed;
+    QString down_speed;
+    double used_memory;
+    QString free_memory;
+    int memory_size;
+    double total_size;
+    QString ratio;
+    QStringList speed;
+    QStringList total_speed;
+
+    QSize initSize;
+    QImage wheel;
+    QPixmap blister;
+//    void update_draw();
+    int ratio_sus;
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseDoubleClickEvent(QMouseEvent *event);
+
+    void paintEvent(QPaintEvent* event);
+    void resizeEvent(QResizeEvent* event);
+
 public slots:
     void handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason);
     void showOrHide();
-
+    void obtain_network_speed(QStringList speed);
+    void updateData();
+    void start_to_accelerate();
 signals:
     void showFloat();
+    void sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
 };
 
 #endif

@@ -61,7 +61,6 @@ Rectangle {
             name: "触摸板"
             flag: "TouchpadSet"
         }
-
     }
     //背景
     Image {
@@ -91,31 +90,46 @@ Rectangle {
         SetBtn {iconName: "message.png"; setbtn_flag: "message"}
     }
 
-    Text {
-        id: teamname
+    SetBtn {
+        iconName: "kugou.png"
         anchors {
             top: setrow.bottom
             topMargin: 30
             horizontalCenter: parent.horizontalCenter
         }
-        text: "UbuntuKylin Team"
-//                wrapMode: Text.WordWrap
-        font.bold: true
-        font.pixelSize: 14
-        color: "#383838"
-    }
-    Text {
-        anchors {
-            top: teamname.bottom
-            topMargin: 10
-            horizontalCenter: parent.horizontalCenter
+        width: 60
+        height: 50
+        setbtn_flag: "kugou"
+        onClicked:  {
+            pageStack.push(softwarerecommend);
         }
-        text: "优客助手"
-//                wrapMode: Text.WordWrap
-        font.bold: true
-        font.pixelSize: 14
-        color: "#383838"
     }
+
+//    Text {
+//        id: teamname
+//        anchors {
+//            top: setrow.bottom
+//            topMargin: 30
+//            horizontalCenter: parent.horizontalCenter
+//        }
+//        text: "UbuntuKylin Team"
+////                wrapMode: Text.WordWrap
+//        font.bold: true
+//        font.pixelSize: 14
+//        color: "#383838"
+//    }
+//    Text {
+//        anchors {
+//            top: teamname.bottom
+//            topMargin: 10
+//            horizontalCenter: parent.horizontalCenter
+//        }
+//        text: "优客助手"
+////                wrapMode: Text.WordWrap
+//        font.bold: true
+//        font.pixelSize: 14
+//        color: "#383838"
+//    }
 
     //上下分割条
     Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }

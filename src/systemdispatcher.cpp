@@ -40,7 +40,6 @@
 
 #include <errno.h>
 #include <sys/wait.h>
-extern QString passwd;
 extern QString music_path;
 
 SystemDispatcher::SystemDispatcher(QObject *parent) :
@@ -52,6 +51,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                QDBusConnection::systemBus());
     //绑定到底层清理完毕后发送到信号函数clear_browser
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
@@ -59,8 +59,13 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
 
     history_flag = true;
-    onekey_args << "cache" << "history" << "cookies" << "unneed";
-    onekey_args2 << "cache" << "history" << "cookies" << "unneed";
+    onekey_args << "cache" << "history" << "cookies";
+    onekey_args2 << "cache" << "history" << "cookies";
+}
+
+void SystemDispatcher::handler_clear_rubbish_error(QString msg)
+{
+     emit finishCleanWorkError(msg);
 }
 
 void SystemDispatcher::handler_clear_rubbish_second_error(QString msg)
@@ -168,7 +173,6 @@ void SystemDispatcher::restore_all_sound_file_qt(QString soundtheme) {
 //-----------------------------------------------
 
 //-----------------------monitorball------------------------
-//-----------------------sound------------------------
 double SystemDispatcher::get_cpu_percent_qt() {
     QDBusReply<double> reply = systemiface->call("get_cpu_percent");
     return reply.value();
@@ -187,8 +191,14 @@ QString SystemDispatcher::get_free_memory_qt() {
 }
 
 void SystemDispatcher::get_network_flow_qt() {
+//    systemiface->call("get_network_flow");
     KThread *thread = new KThread(systemiface, "get_network_flow");
     thread->start();
+}
+
+QStringList SystemDispatcher::get_network_flow_total_qt() {
+    QDBusReply<QStringList> reply = systemiface->call("get_network_flow_total");
+    return reply.value();
 }
 
 void SystemDispatcher::cleanup_memory_qt() {
@@ -269,12 +279,9 @@ QStringList SystemDispatcher::get_center_data() {
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
 //    systemiface->call("clean_by_main_one_key", strlist);
-//    qDebug() << "1111111";
     KThread *thread = new KThread(systemiface, "clean_by_main_one_key", strlist);
 //    qDebug() << KThread::currentThreadId();
-//    qDebug() << "222222";
     thread->start();
-//    qDebug() << "3333333";
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
 //    systemiface->call("clean_by_second_one_key", strlist);

@@ -14,7 +14,7 @@ target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
     target
-LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils -Wno-write-strings
+LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH =
@@ -24,6 +24,7 @@ HEADERS += youker-application.h \
     quibo.h \
     systemdispatcher.h \
     sessiondispatcher.h \
+    sudodispatcher.h \
     authdialog.h \
     modaldialog.h \
     warningdialog.h \
@@ -54,13 +55,15 @@ HEADERS += youker-application.h \
     qtkeytransdata.h \
     fcitxwarndialog.h \
     handler.h \
-    KThread.h
+    KThread.h \
+    suspensionframe.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
+    sudodispatcher.cpp \
     authdialog.cpp \
     authdialog_event.cpp \
     modaldialog.cpp \
@@ -89,7 +92,8 @@ SOURCES += main.cpp \
     fcitxcfgwizard.cpp \
     qtkeytrans.cpp \
     fcitxwarndialog.cpp \
-    KThread.cpp
+    KThread.cpp \
+    suspensionframe.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -101,5 +105,4 @@ FORMS += \
     restartdialog.ui \
     tray.ui \
     fcitxwarndialog.ui \
-    monitorball.ui \
     suspensionframe.ui
