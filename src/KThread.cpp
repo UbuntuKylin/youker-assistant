@@ -1,6 +1,6 @@
 #include <QDebug>
 #include "KThread.h"
-//KThread::KThread(QDBusInterface *systemiface, QString method, const QStringList &arglist, QString flag):QThread()
+
 KThread::KThread(QDBusInterface *systemiface, QString method, QStringList arglist, QString flag):QThread()
 {
     iface = systemiface;
@@ -8,6 +8,7 @@ KThread::KThread(QDBusInterface *systemiface, QString method, QStringList arglis
     list = arglist;
     file_flag = flag;
 }
+
 KThread::~KThread()
 {
     stop();
@@ -18,7 +19,6 @@ void KThread::run()
         iface->call("get_network_flow");
     }
     else if(method_name == "clean_by_main_one_key") {
-        qDebug() << list;
 //        qDebug() << KThread::currentThreadId();
         iface->call("clean_by_main_one_key", list);
 //        QThread::sleep(10);

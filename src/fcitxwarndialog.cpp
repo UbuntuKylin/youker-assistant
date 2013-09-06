@@ -16,6 +16,12 @@ FcitxWarnDialog::FcitxWarnDialog(QWidget *parent) :
     ui->btn_min->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
+
+    ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+    ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
+
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(accept()));
 
 }
@@ -71,6 +77,6 @@ bool FcitxWarnDialog::eventFilter(QObject *obj, QEvent *event)
 void FcitxWarnDialog::on_okButton_clicked()
 {
     emit fcitxWarntest();
-    qDebug()<<"emit fcitxWarn";
+  //  qDebug()<<"emit fcitxWarn";
     accept();
 }
