@@ -43,9 +43,13 @@ public:
     Q_INVOKABLE void uninstall_pkg_qt(QString pkgName);
     Q_INVOKABLE void update_pkg_qt(QString pkgName);
     Q_INVOKABLE void check_pkgs_status_qt(QStringList pkgNameList);
+    Q_INVOKABLE QStringList get_args();
 signals:
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkError(QString msg);
+    void finishSoftwareFetch(QString type, QString msg);
+    void finishSoftwareApt(QString type, QString msg);
+    void finishSoftwareCheckStatus(QMap<QString, QVariant> statusDict);
 
 public slots:
     void handler_clear_rubbish(QString msg);

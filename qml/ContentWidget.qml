@@ -270,7 +270,7 @@ Item {
                         SysSettings.TouchpadSet {}
                     }
                     //
-                    Common.Page {//kobe08
+                    Common.Page {
                         id: fcitxConfigtoolpage
                         visible: false
                         SysSettings.FcitxConfigtool{}

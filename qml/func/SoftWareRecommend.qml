@@ -20,6 +20,7 @@
 import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
+import SudoType 0.1
 import "common" as Common
 import "bars" as Bars
 Item {
@@ -31,6 +32,28 @@ Item {
     property string recommendthree_image: "../img/icons/kugou.png"
     property string recommendoneimage_image: recommendone_image
     property string recommendimage_text: "Winasd     asfsaff:asdfasdfa 2012 asd"
+
+    Component.onCompleted: {
+//        sudodispatcher.check_pkgs_status_qt(pkgNameList);
+    }
+    //信号绑定，绑定qt的信号
+//    Connections
+//    {
+//        target: sudodispatcher
+//        onFinishSoftwareFetch: {
+//            console.log(type);
+//            console.log(msg);
+//        }
+//        onFinishSoftwareApt: {
+//            console.log(type);
+//            console.log(msg);
+//        }
+//        onFinishSoftwareCheckStatus: {
+//            console.log("Software statusDict->");
+//            console.log(statusDict);
+//        }
+//    }
+
         //背景
     Image {
         source: "../img/skin/bg-middle.png"

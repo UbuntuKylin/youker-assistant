@@ -21,6 +21,7 @@
 #include <QProcessEnvironment>
 #include <QtDBus>
 #include "authdialog.h"
+#include <QMap>
 //extern QString passwd;
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
@@ -71,6 +72,7 @@ void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg)
     qDebug() << "get software_fetch_signal.....";
     qDebug() << type;
     qDebug() << msg;
+    emit finishSoftwareFetch(type, msg);
 }
 
 void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
@@ -78,12 +80,15 @@ void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
     qDebug() << "get software_apt_signal.....";
     qDebug() << type;
     qDebug() << msg;
+    emit finishSoftwareApt(type, msg);
 }
 
 void SudoDispatcher::handler_software_check_status_signal(QMap<QString, QVariant> statusDict)
+//void SudoDispatcher::handler_software_check_status_signal(QString statusDict)
 {
     qDebug() << "get software_check_status_signal.....";
     qDebug() << statusDict;
+//    emit finishSoftwareCheckStatus(statusDict);
 }
 //bool SudoDispatcher::trans_password(QString flagstr, QString pwd) {
 //    QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
@@ -119,6 +124,12 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
     sudoiface->call("clean_package_cruft", strlist);
 }
 
+QStringList SudoDispatcher::get_args() {
+    QStringList pkgNameList;
+    pkgNameList << "qtcreator" << "qtcreator-plugin-ubuntu";
+    return pkgNameList;
+}
+
 // -------------------------software-center-------------------------
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
     sudoiface->call("install_pkg", pkgName);
@@ -130,5 +141,9 @@ void SudoDispatcher::update_pkg_qt(QString pkgName) {
     sudoiface->call("update_pkg", pkgName);
 }
 void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
-    sudoiface->call("check_pkgs_status", pkgNameList);
+//    pkgNameList << "qtcreator" << "qtcreator-plugin-ubuntu";
+    QDBusReply<QMap<QString, QVariant> > reply = sudoiface->call("check_pkgs_status", pkgNameList);
+    qDebug() << "lllll->";
+    qDebug() << reply.value();
+    //QMap(("qtcreator", QVariant(QString, "i") ) ( "qtcreator-plugin-ubuntu" ,  QVariant(QString, "n") ) )
 }
