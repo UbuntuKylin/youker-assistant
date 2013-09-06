@@ -33,6 +33,7 @@ import common
 import cacheclean
 import oldkernel
 import systemhistory
+import dashhistory
 
 HOMEDIR = ''
 
@@ -151,6 +152,13 @@ class CleanSystemHistory():
         objhg = systemhistory.SystemHistory()
         url = objhg.scan_the_xml(homedir)
         return url
+
+# the function of clean the dash history
+class CleanDashHistory():
+    def get_scan_result(self, homedir = ''):
+        objhg = dashhistory.DashHistory(homedir)
+        num = objhg.scan_the_records()
+        return num
 
 # the function of clean the cookies
 class CleanTheCookies():

@@ -86,10 +86,10 @@ def get_mozilla_path(homedir):
                 else:
                     final_path = os.path.expanduser('%s/%s/' % (app_path, cfg.get(flag_pro_section, 'Path')))
             else:
-                print 'profile.ini has error!'
+                raise Exception('profile.ini has error!')
         else:
             pass
     else:
-        final_path = 'Can not find the file!'
+        raise Exception('Can not find the file!')
     return final_path
 
