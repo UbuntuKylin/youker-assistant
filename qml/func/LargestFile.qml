@@ -62,10 +62,6 @@ Item {
         sub_num=0;
         check_num=0
         var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
-        console.log("111111");
-        console.log(root.size);
-        console.log(root.directory);
-        console.log(largestfile_data);
         if (largestfile_data == "")
             root.null_flag = true;
         else

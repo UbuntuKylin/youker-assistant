@@ -31,11 +31,18 @@ class SudoDispatcher : public QObject
 public:
     explicit SudoDispatcher(QObject *parent = 0);
     Q_INVOKABLE void exit_qt();
-    Q_INVOKABLE bool show_passwd_dialog();
+    Q_INVOKABLE void show_passwd_dialog();
     Q_INVOKABLE QString get_sudo_daemon_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void bind_signals_after_dbus_start();
     QDBusInterface *sudoiface;
+
+
+    // -------------------------software-center-------------------------
+    Q_INVOKABLE void install_pkg_qt(QString pkgName);
+    Q_INVOKABLE void uninstall_pkg_qt(QString pkgName);
+    Q_INVOKABLE void update_pkg_qt(QString pkgName);
+    Q_INVOKABLE void check_pkgs_status_qt(QStringList pkgNameList);
 signals:
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkError(QString msg);
@@ -43,6 +50,9 @@ signals:
 public slots:
     void handler_clear_rubbish(QString msg);
     void handler_clear_rubbish_error(QString msg);
+    void handler_software_fetch_signal(QString type, QString msg);
+    void handler_software_apt_signal(QString type, QString msg);
+    void handler_software_check_status_signal(QMap<QString, QVariant> statusDict);
 private:
 //    bool trans_password(QString flagstr, QString pwd);
 };

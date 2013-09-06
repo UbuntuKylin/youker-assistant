@@ -46,6 +46,9 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
                                QDBusConnection::systemBus());
     QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
+    QObject::connect(sudoiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handler_software_fetch_signal(QString,QString)));
+    QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handler_software_apt_signal(QString,QString)));
+    QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QMap<QString, QVariant>)),this,SLOT(handler_software_check_status_signal(QMap<QString, QVariant>)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
@@ -61,6 +64,26 @@ void SudoDispatcher::handler_clear_rubbish(QString msg)
 void SudoDispatcher::handler_clear_rubbish_error(QString msg)
 {
      emit finishCleanWorkError(msg);
+}
+
+void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg)
+{
+    qDebug() << "get software_fetch_signal.....";
+    qDebug() << type;
+    qDebug() << msg;
+}
+
+void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
+{
+    qDebug() << "get software_apt_signal.....";
+    qDebug() << type;
+    qDebug() << msg;
+}
+
+void SudoDispatcher::handler_software_check_status_signal(QMap<QString, QVariant> statusDict)
+{
+    qDebug() << "get software_check_status_signal.....";
+    qDebug() << statusDict;
 }
 //bool SudoDispatcher::trans_password(QString flagstr, QString pwd) {
 //    QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
@@ -85,7 +108,7 @@ void SudoDispatcher::handler_clear_rubbish_error(QString msg)
 //    return false;
 //}
 
-bool SudoDispatcher::show_passwd_dialog() {
+void SudoDispatcher::show_passwd_dialog() {
     AuthDialog *dialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
     dialog->exec();
 //    bool value = trans_password("youkersudo", passwd);
@@ -94,4 +117,18 @@ bool SudoDispatcher::show_passwd_dialog() {
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
     sudoiface->call("clean_package_cruft", strlist);
+}
+
+// -------------------------software-center-------------------------
+void SudoDispatcher::install_pkg_qt(QString pkgName) {
+    sudoiface->call("install_pkg", pkgName);
+}
+void SudoDispatcher::uninstall_pkg_qt(QString pkgName) {
+    sudoiface->call("uninstall_pkg", pkgName);
+}
+void SudoDispatcher::update_pkg_qt(QString pkgName) {
+    sudoiface->call("update_pkg", pkgName);
+}
+void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
+    sudoiface->call("check_pkgs_status", pkgNameList);
 }

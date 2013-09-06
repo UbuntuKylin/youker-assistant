@@ -276,7 +276,7 @@ Item {
 //    }
     Text {
         id: displaytext
-        color: "white"
+        color: btn.fontcolor
 //        visible: (btn.text == "") ? false : true
         anchors.centerIn: buttonImage
 //        font.bold: true
