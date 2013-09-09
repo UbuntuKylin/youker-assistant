@@ -46,12 +46,16 @@ Item {
     signal history_bnt_signal(string history_msg);
     onHistory_bnt_signal: {
         if (history_msg == "HistoryWork") {
-//            root.num = systemdispatcher.scan_history_records_qt();
             root.num = sessiondispatcher.scan_history_records_qt();
-            if (root.num == 0)
+            if (root.num == 0) {
                 root.null_flag = true;
-            else
+                if(historystatus.visible == true)
+                    historystatus.visible = false;
+            }
+            else {
                 root.null_flag = false;
+                historystatus.visible = true;
+            }
 //            root.state = "HistoryWork";
         }
     }
@@ -60,7 +64,6 @@ Item {
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
-//        target: sessiondispatcher
         target: systemdispatcher
 //         onFinishScanWork: {
         //             if (btn_flag == "history_scan") {
@@ -151,15 +154,20 @@ Item {
                             root.state = "HistoryWorkEmpty";
                              sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                          }
-                         else if(root.null_flag == false)
+                         else if(root.null_flag == false) {
                             root.state = "HistoryWork";
+                             historystatus.visible = true;
+                         }
                      }
-                     else
+                     else {
+                         historystatus.visible = false;
                          sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！");
+                     }
 //                     history_signal("HistoryWork");
                  }
                  else if (btn_flag == "history_work") {
                      if (systemdispatcher.get_history_flag()) {
+                         historystatus.visible = true;
 //                         sessiondispatcher.clean_history_records_qt();
                          systemdispatcher.set_user_homedir_qt();
                          systemdispatcher.clean_history_records_qt();
@@ -249,6 +257,7 @@ Item {
 //    }
     Common.StatusImage {
         id: historystatus
+        visible: false
         iconName: "yellow.png"
         text: "未完成"
         anchors {

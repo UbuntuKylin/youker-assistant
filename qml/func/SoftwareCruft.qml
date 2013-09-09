@@ -52,10 +52,15 @@ Item {
             //get data of cookies
 //            var software_data = systemdispatcher.scan_softwarecenter_cruft_qt();
             var software_data = sessiondispatcher.scan_softwarecenter_cruft_qt();
-            if (software_data == "")
+            if (software_data == "") {
                 root.sof_null_flag = true;
-            else
+                if(sof_statusImage.visible == true)
+                    sof_statusImage.visible = false;
+            }
+            else {
                 root.sof_null_flag = false;
+                sof_statusImage.visible == true
+            }
             root.sof_sub_num = software_data.length;
             systemdispatcher.clear_software_args();
             sof_subModel.clear();
@@ -188,6 +193,7 @@ Item {
 //        }
         Common.StatusImage {
             id: sof_statusImage
+            visible: false
             iconName: "yellow.png"
             text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
@@ -432,27 +438,28 @@ Item {
              PropertyChanges { target: sof_label; visible: true; text: "software扫描完成"}
              PropertyChanges { target: sof_bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; sof_btn_flag: "software_work" }
+            PropertyChanges { target: sof_statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
         State {
             name: "SoftwareWorkError"
             PropertyChanges { target: sof_label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: sof_bitButton; text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; iconName: "red.png"; text: "出现异常"}
+            PropertyChanges { target: sof_statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "SoftwareWorkFinish"
             PropertyChanges { target: sof_label; visible: true; text: root.sof_work_result + "清理完毕！" }
             PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: sof_statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "SoftwareWorkEmpty"
             PropertyChanges { target: sof_label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: sof_statusImage; visible: false}
         }
     ]
 }

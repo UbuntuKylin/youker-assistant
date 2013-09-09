@@ -286,6 +286,7 @@ class Daemon(PolicyKitService):
     def clean_history_records(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
+            self.clean_complete_msg('')
             return
         daemonhistory = cleaner.CleanTheHistory()
         try:
@@ -300,6 +301,7 @@ class Daemon(PolicyKitService):
     def clean_cookies_records(self, cruftlist, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
+            self.clean_complete_msg('')
             return
         daemoncookies = cleaner.CleanTheCookies()
         try:
@@ -315,6 +317,7 @@ class Daemon(PolicyKitService):
     def clean_file_cruft(self, cruftlist, flagstr, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
+            self.clean_complete_msg('')
             return
         try:
             self.daemonclean.clean_the_file(cruftlist)
