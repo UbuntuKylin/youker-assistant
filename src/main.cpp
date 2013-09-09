@@ -15,6 +15,7 @@
  */
 #include <QApplication>
 #include "fcitxcfgwizard.h" //kobe08
+#include "toolkits.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
 #include "sudodispatcher.h"
@@ -88,6 +89,7 @@ a表示数组，数组元素的类型由a后面的标记决定。例如：
 
 void registerTypes()
 {
+    qmlRegisterType<Toolkits>("ToolkitsType", 0, 1, "Toolkits");
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<SudoDispatcher>("SudoType", 0, 1, "SudoDispatcher");

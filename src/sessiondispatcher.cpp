@@ -40,6 +40,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
     QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
+//    QObject::connect(sessioniface,SIGNAL(pc_msg(QStringList)),this,SLOT(show_signal(QStringList)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
     page_num = 0;
 }
@@ -172,6 +173,12 @@ QString SessionDispatcher::get_value(QString key)
 QString SessionDispatcher::show_signal(QString msg) {
     return msg;
 }
+
+//QString SessionDispatcher::show_signal(QStringList msg) {
+//    qDebug() << "111111111";
+//    qDebug() << msg;
+//    return msg;
+//}
 
 bool SessionDispatcher::set_launcher(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_launcher_autohide", flag);

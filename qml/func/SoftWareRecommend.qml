@@ -37,9 +37,9 @@ Item {
 //        sudodispatcher.check_pkgs_status_qt(pkgNameList);
     }
     //信号绑定，绑定qt的信号
-//    Connections
-//    {
-//        target: sudodispatcher
+    Connections
+    {
+        target: sudodispatcher
 //        onFinishSoftwareFetch: {
 //            console.log(type);
 //            console.log(msg);
@@ -48,11 +48,11 @@ Item {
 //            console.log(type);
 //            console.log(msg);
 //        }
-//        onFinishSoftwareCheckStatus: {
-//            console.log("Software statusDict->");
-//            console.log(statusDict);
-//        }
-//    }
+        onFinishSoftwareCheckStatus: {
+            console.log("Software statusDict->");
+            console.log(statusDict);
+        }
+    }
 
         //背景
     Image {
@@ -106,7 +106,8 @@ Item {
                 }
                 text:"安装"
                 onClicked: {
-                    console.log("下载下载下载下载下载下载")
+                    console.log("下载下载下载下载下载下载");
+                    sudodispatcher.show_progress_dialog();
                 }
             }
         }

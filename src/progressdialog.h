@@ -13,36 +13,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#ifndef PROGRESSDIALOG_H
+#define PROGRESSDIALOG_H
 
-import QtQuick 1.1
-import ToolkitsType 0.1
+#include <QDialog>
 
-Rectangle {
-    width: 850
-    height: 600
-    id: main
-    objectName: "main"
-    anchors.fill: parent
-    Toolkits{id: toolkits}
-    Image {
-        id: bgImg
-        anchors.fill: parent
-        source: "./img/skin/bg.png"
-    }
-    radius: 4
-//    color: "black"
-//    opacity: 0.85
-    opacity: 1.0
-
-    Column {
-        id: layout
-        anchors.fill: parent
-        spacing: 0
-        ContentWidget{
-            id: contentwidget
-        }
-        StatusWidget{
-            id: statuswidget
-        }
-    }
+namespace Ui {
+class ProgressDialog;
 }
+
+class ProgressDialog : public QDialog
+{
+    Q_OBJECT
+    
+public:
+    explicit ProgressDialog(QString msg = "", QWidget *parent = 0);
+    ~ProgressDialog();
+    
+private:
+    Ui::ProgressDialog *ui;
+};
+
+#endif // PROGRESSDIALOG_H

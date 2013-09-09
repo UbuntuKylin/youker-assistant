@@ -25,17 +25,21 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
+#include "authdialog.h"
 class SudoDispatcher : public QObject
 {
     Q_OBJECT
 public:
     explicit SudoDispatcher(QObject *parent = 0);
+    ~SudoDispatcher();
     Q_INVOKABLE void exit_qt();
     Q_INVOKABLE void show_passwd_dialog();
+    Q_INVOKABLE void show_progress_dialog();
     Q_INVOKABLE QString get_sudo_daemon_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void bind_signals_after_dbus_start();
     QDBusInterface *sudoiface;
+    AuthDialog *authdialog;
 
 
     // -------------------------software-center-------------------------
@@ -49,14 +53,16 @@ signals:
     void finishCleanWorkError(QString msg);
     void finishSoftwareFetch(QString type, QString msg);
     void finishSoftwareApt(QString type, QString msg);
-    void finishSoftwareCheckStatus(QMap<QString, QVariant> statusDict);
+//    void finishSoftwareCheckStatus(QMap<QString, QVariant> statusDict);
+    void finishSoftwareCheckStatus(QStringList statusDict);
 
 public slots:
     void handler_clear_rubbish(QString msg);
     void handler_clear_rubbish_error(QString msg);
     void handler_software_fetch_signal(QString type, QString msg);
     void handler_software_apt_signal(QString type, QString msg);
-    void handler_software_check_status_signal(QMap<QString, QVariant> statusDict);
+//    void handler_software_check_status_signal(QMap<QString, QVariant> statusDict);
+    void handler_software_check_status_signal(QStringList statusDict);
 private:
 //    bool trans_password(QString flagstr, QString pwd);
 };

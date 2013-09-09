@@ -164,8 +164,8 @@ import QtQuick 1.1
 
 Rectangle {
     id: menulogo
-    width: 58
-    height: 29
+    width: 39
+    height: 43
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
     property string iconName: ""
@@ -187,7 +187,12 @@ Rectangle {
         hoverEnabled: true
         anchors.fill: parent
 
-        onEntered: btnImg.source = "../img/toolWidget/menu_hover.png"
+        onEntered: {
+            if (menulogo.setbtn_flag == "set")
+                btnImg.source = "../img/icons/set-hover.png"
+            else if (menulogo.setbtn_flag == "message")
+                btnImg.source = "../img/icons/message-hover.png"
+        }
         onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
         //要判断松开是鼠标位置
         onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
@@ -197,6 +202,7 @@ Rectangle {
             if (setbtn_flag == "set")
                 console.log("set clicked....");
             else if (setbtn_flag == "message")
+                toolkits.alertMSG("testtesttest", mainwindow.pos.x, mainwindow.pos.y);
                 console.log("message clicked....");
         }
     }
