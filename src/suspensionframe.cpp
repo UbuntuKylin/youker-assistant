@@ -39,7 +39,7 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->descBtn->setText("详细");
 
     QPalette pal = ui->descBtn->palette();
-    pal.setColor(QPalette::Button,"#1790c9");
+    pal.setColor(QPalette::Button,"#00b0ff");
     ui->descBtn->setPalette(pal);
     ui->descBtn->setAutoFillBackground(true);
     ui->descBtn->setFlat(true);
@@ -158,7 +158,7 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
         color2="transparent";
         color3="transparent";
     }
-    else if(ratio_sus > 55) {
+    else if(ratio_sus > 80) {
         color2="#d13625";
         color3="#d5311e";
         ui->title1->setText("电脑运行缓慢");
