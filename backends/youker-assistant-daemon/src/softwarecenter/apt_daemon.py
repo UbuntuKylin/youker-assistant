@@ -45,6 +45,10 @@ class FetchProcess(apb.AcquireProgress):
 
 	def pulse(self, owner):
 # 		print 'owner: ', owner
+# 		print '############bytes : ', self.current_bytes
+# 		print '@@@@@@@@@@@@total : ', self.total_bytes
+# 		print '%%%%%%%%%%%%item : ', self.current_items
+# 		print '$$$$$$$$$$$$items : ', self.total_items 
 # 		print 'current_cps: ', self.current_cps
 # 		print 'elapsed_time: ', self.elapsed_time
 # 		print 'fetched_bytes: ', self.fetched_bytes
@@ -105,6 +109,10 @@ class AptDaemon:
 # 		self.pkgNameList = []
 # 		for pkg in self.ca:
 # 			self.pkgNameList.append(pkg.name)
+
+	# apt-get update
+	def apt_get_update(self):
+		self.ca.update(fetch_progress=FetchProcess(self.sudoDaemon))
 
 	# get package by pkgName
 	def get_pkg_by_name(self, pkgName):
@@ -207,7 +215,8 @@ if __name__ == "__main__":
 	ad = AptDaemon(None)
 	
 # 	print ad.check_pkgs_status(["gedit", "cairo-dock", "unity"])
-	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity"])
+# 	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity"])
+	ad.apt_get_update()
 	
 	while True:
 		print "\ninput your command: "
