@@ -185,7 +185,7 @@ Rectangle {
                 height: 30
                 onClicked: {
                     if (soundeffectspage.init_sound_flag == true) {
-                        soundeffectspage.init_sound_flag = false;
+                        soundeffectspage.init_somainwindowund_flag = false;
                         systemdispatcher.restore_all_sound_file_qt(soundeffectspage.init_sound);
                         statusImage.visible = true;
                     }

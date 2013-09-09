@@ -81,6 +81,7 @@ Rectangle{
                 var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
                 fmainwindow.pos = Qt.point(fmainwindow.pos.x+delta.x,
                                   fmainwindow.pos.y+delta.y)
+
             }
         }
 
