@@ -281,7 +281,7 @@ Item {
         anchors.centerIn: buttonImage
 //        font.bold: true
         font.family: "Helvetica"
-        font.pixelSize: 16
+        font.pixelSize: fontsize
         text: btn.text
         style: Text.Sunken
 //        style: Text.Raised
