@@ -25,17 +25,21 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
+#include "authdialog.h"
 class SudoDispatcher : public QObject
 {
     Q_OBJECT
 public:
     explicit SudoDispatcher(QObject *parent = 0);
+    ~SudoDispatcher();
     Q_INVOKABLE void exit_qt();
     Q_INVOKABLE void show_passwd_dialog();
+    Q_INVOKABLE void show_progress_dialog();
     Q_INVOKABLE QString get_sudo_daemon_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void bind_signals_after_dbus_start();
     QDBusInterface *sudoiface;
+    AuthDialog *authdialog;
 
 
     // -------------------------software-center-------------------------
