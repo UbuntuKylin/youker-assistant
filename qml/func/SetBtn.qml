@@ -202,6 +202,7 @@ Rectangle {
             if (setbtn_flag == "set")
                 console.log("set clicked....");
             else if (setbtn_flag == "message")
+                toolkits.alertMSG("testtesttest", mainwindow.pos.x, mainwindow.pos.y);
                 console.log("message clicked....");
         }
     }

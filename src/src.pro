@@ -57,7 +57,9 @@ HEADERS += youker-application.h \
     handler.h \
     KThread.h \
     suspensionframe.h \
-    progressdialog.h
+    progressdialog.h \
+    alertdialog.h \
+    toolkits.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -95,7 +97,9 @@ SOURCES += main.cpp \
     fcitxwarndialog.cpp \
     KThread.cpp \
     suspensionframe.cpp \
-    progressdialog.cpp
+    progressdialog.cpp \
+    alertdialog.cpp \
+    toolkits.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -108,4 +112,5 @@ FORMS += \
     tray.ui \
     fcitxwarndialog.ui \
     suspensionframe.ui \
-    progressdialog.ui
+    progressdialog.ui \
+    alertdialog.ui

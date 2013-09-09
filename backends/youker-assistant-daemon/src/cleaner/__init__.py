@@ -127,7 +127,6 @@ class ManageTheLarge():
 class CleanTheHistory():
     def __init__(self):
         pass
-        #self.objh = historyclean.HistoryClean()
 
     def get_scan_result(self, homedir = ''):
         objhg = historyclean.HistoryClean(homedir)
@@ -141,17 +140,19 @@ class CleanTheHistory():
 
     def __del__(self):
         pass
-        #del self.objh
 
 # the function of clean the system history
 class CleanSystemHistory():
-    def __init__(self):
-        pass
-
     def get_scan_result(self, homedir = ''):
         objhg = systemhistory.SystemHistory()
         url = objhg.scan_the_xml(homedir)
         return url
+
+    def clean_the_cruftlist(self):
+        global HOMEDIR
+        objhc = systemhistory.SystemHistory()
+        objhc.clean_the_xml(HOMEDIR)
+
 
 # the function of clean the dash history
 class CleanDashHistory():

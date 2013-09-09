@@ -44,7 +44,6 @@ IhuApplication::IhuApplication(int &argc, char **argv)
 {
     tray = new Tray();
     handler = new Handler();
-
 }
 inline bool isRunningInstalled() {
     static bool installed = (QCoreApplication::applicationDirPath() ==
@@ -180,4 +179,3 @@ IhuApplication::~IhuApplication()
 //    if (viewer_small)
 //        delete viewer_small;
 }
-
