@@ -309,6 +309,19 @@ class Daemon(PolicyKitService):
         else:
             self.clean_complete_msg('system')
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    def clean_dash_history(self, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
+        daemondash = cleaner.CleanDashHistory()
+        try:
+            daemondash.clean_the_cruftlist()
+        except Exception, e:
+            self.clean_error_msg('dash')
+        else:
+            self.clean_complete_msg('dash')
+
     ### input-['domain','dom...]   output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
     def clean_cookies_records(self, cruftlist, sender=None):
