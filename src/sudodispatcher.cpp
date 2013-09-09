@@ -20,7 +20,7 @@
 #include <QDebug>
 #include <QProcessEnvironment>
 #include <QtDBus>
-#include "authdialog.h"
+#include "progressdialog.h"
 #include <QMap>
 //extern QString passwd;
 
@@ -33,6 +33,12 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                QDBusConnection::systemBus());
 //    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
+}
+
+SudoDispatcher::~SudoDispatcher()
+{
+    if (authdialog)
+        delete authdialog;
 }
 
 void SudoDispatcher::exit_qt()
@@ -115,10 +121,17 @@ void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict
 //}
 
 void SudoDispatcher::show_passwd_dialog() {
-    AuthDialog *dialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
-    dialog->exec();
+    authdialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
+    authdialog->exec();
 //    bool value = trans_password("youkersudo", passwd);
 //    return value;
+}
+
+void SudoDispatcher::show_progress_dialog() {
+//    ProgressDialog progressdialog;
+//    progressdialog.exec();
+    ProgressDialog progressdialog("正在下载...");
+    progressdialog.exec();
 }
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {

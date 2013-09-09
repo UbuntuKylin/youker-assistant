@@ -106,7 +106,10 @@ Item {
                 }
                 text:"安装"
                 onClicked: {
-                    console.log("下载下载下载下载下载下载")
+                    console.log("下载下载下载下载下载下载");
+//                    sudodispatcher.show_progress_dialog();
+                    console.log(mainwindow.pos.x);
+                    console.log(mainwindow.pos.y);
                 }
             }
         }

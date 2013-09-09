@@ -44,10 +44,15 @@ Item {
         if (apt_msg == "AptWork") {
             //get data of cookies
             var apt_data = sessiondispatcher.scan_apt_cruft_qt();
-            if (apt_data == "")
+            if (apt_data == "") {
                 root.apt_null_flag = true;
-            else
+                if(apt_statusImage.visible == true)
+                    apt_statusImage.visible = false;
+            }
+            else {
                 root.apt_null_flag = false;
+                apt_statusImage.visible = true;
+            }
             root.apt_sub_num = apt_data.length;
             systemdispatcher.clear_apt_args();
             apt_subModel.clear();
@@ -175,6 +180,7 @@ Item {
 //        }
         Common.StatusImage {
             id: apt_statusImage
+            visible: false
             iconName: "yellow.png"
             text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
@@ -416,27 +422,28 @@ Item {
              PropertyChanges { target: apt_label; visible: true; text: "apt扫描完成"}
              PropertyChanges { target: apt_bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; apt_btn_flag: "apt_work" }
+            PropertyChanges { target: apt_statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
         State {
             name: "AptWorkError"
             PropertyChanges { target: apt_label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: bitButton; text:"开始扫描" }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
-            PropertyChanges { target: apt_statusImage; iconName: "red.png"; text: "出现异常"}
+            PropertyChanges { target: apt_statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "AptWorkFinish"
             PropertyChanges { target: apt_label; visible: true; text: root.apt_work_result + "清理完毕！" }
             PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
-            PropertyChanges { target: apt_statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: apt_statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "AptWorkEmpty"
             PropertyChanges { target: apt_label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
-            PropertyChanges { target: apt_statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: apt_statusImage;  visible: false}
         }
     ]
 }

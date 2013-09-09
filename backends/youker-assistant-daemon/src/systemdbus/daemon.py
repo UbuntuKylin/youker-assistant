@@ -286,6 +286,7 @@ class Daemon(PolicyKitService):
     def clean_history_records(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
+            self.clean_complete_msg('')
             return
         daemonhistory = cleaner.CleanTheHistory()
         try:
@@ -295,11 +296,25 @@ class Daemon(PolicyKitService):
         else:
             self.clean_complete_msg('history')
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    def clean_system_history(self, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
+        daemonsystem = cleaner.CleanSystemHistory()
+        try:
+            daemonsystem.clean_the_cruftlist()
+        except Exception, e:
+            self.clean_error_msg('system')
+        else:
+            self.clean_complete_msg('system')
+
     ### input-['domain','dom...]   output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
     def clean_cookies_records(self, cruftlist, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
+            self.clean_complete_msg('')
             return
         daemoncookies = cleaner.CleanTheCookies()
         try:
@@ -315,6 +330,7 @@ class Daemon(PolicyKitService):
     def clean_file_cruft(self, cruftlist, flagstr, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
+            self.clean_complete_msg('')
             return
         try:
             self.daemonclean.clean_the_file(cruftlist)

@@ -56,7 +56,10 @@ HEADERS += youker-application.h \
     fcitxwarndialog.h \
     handler.h \
     KThread.h \
-    suspensionframe.h
+    suspensionframe.h \
+    progressdialog.h \
+    alertdialog.h \
+    toolkits.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -93,7 +96,10 @@ SOURCES += main.cpp \
     qtkeytrans.cpp \
     fcitxwarndialog.cpp \
     KThread.cpp \
-    suspensionframe.cpp
+    suspensionframe.cpp \
+    progressdialog.cpp \
+    alertdialog.cpp \
+    toolkits.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -105,4 +111,6 @@ FORMS += \
     restartdialog.ui \
     tray.ui \
     fcitxwarndialog.ui \
-    suspensionframe.ui
+    suspensionframe.ui \
+    progressdialog.ui \
+    alertdialog.ui

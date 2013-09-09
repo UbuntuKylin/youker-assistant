@@ -46,10 +46,15 @@ Item {
             //get data of unneed
 //            var unneed_data = systemdispatcher.scan_unneed_packages_qt();
             var unneed_data = sessiondispatcher.scan_unneed_packages_qt();
-            if (unneed_data == "")
+            if (unneed_data == "") {
                 root.null_flag = true;
-            else
+                if(statusImage.visible == true)
+                    statusImage.visible = false;
+            }
+            else {
                 root.null_flag = false;
+                statusImage.visible = true;
+            }
             root.pac_sub_num = unneed_data.length;
             systemdispatcher.clear_package_args();
             subModel.clear();
@@ -172,6 +177,7 @@ Item {
 //        }
         Common.StatusImage {
             id: statusImage
+            visible: false
             iconName: "yellow.png"
             text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
@@ -421,27 +427,28 @@ Item {
             PropertyChanges { target: label; visible: true; text: "unneed扫描完成"}
             PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; btn_flag: "package_work" }
+            PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
         State {
             name: "UnneedWorkError"
             PropertyChanges { target: label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: bitButton; text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; iconName: "red.png"; text: "出现异常"}
+            PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "UnneedWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "UnneedWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: statusImage; visible: false}
         }
     ]
 }

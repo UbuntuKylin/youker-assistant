@@ -76,16 +76,71 @@ Rectangle {
 
     //-------------------
 
-    Column{
+    SetBtn {
+        id: setBtn
+        iconName: "set.png"
+        setbtn_flag: "set"
         anchors{
             left: parent.left
-            leftMargin: 15
+            leftMargin: 26
             top:parent.top
-            topMargin: 10
+            topMargin: 30
         }
-
-
     }
+    Image {
+        id: adminImage
+        source: "../img/icons/admin.png"
+        anchors{
+            left: parent.left
+            leftMargin: 26 + 39
+            top:parent.top
+            topMargin: 15
+        }
+    }
+    SetBtn {
+        iconName: "message.png"
+        setbtn_flag: "message"
+        anchors{
+            left: adminImage.right
+//            leftMargin: 15
+            top:parent.top
+            topMargin: 30
+        }
+    }
+//    Item {
+//        anchors{
+//            left: parent.left
+//            leftMargin: 15
+////            horizontalCenter:parent.horizontalCenter
+//            top:parent.top
+//            topMargin: 10
+//        }
+//        Row {
+//            SetBtn {
+//                iconName: "set.png"
+//                setbtn_flag: "set"
+//            }
+//            Image {
+//                source: "../img/icons/admin.png"
+//            }
+//            SetBtn {
+//                iconName: "message.png"
+//                setbtn_flag: "message"
+//            }
+//        }
+//    }
+
+
+//    Column{
+//        anchors{
+//            left: parent.left
+//            leftMargin: 15
+//            top:parent.top
+//            topMargin: 10
+//        }
+
+
+//    }
 
     Item{
         id:software
@@ -102,6 +157,9 @@ Rectangle {
         MouseArea{
             anchors.fill: parent
             onClicked:  {
+                console.log(mainwindow.pos.x);
+                console.log(mainwindow.pos.y);
+//                sudodispatcher.show_progress_dialog();
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                     sudodispatcher.bind_signals_after_dbus_start();
                     sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
