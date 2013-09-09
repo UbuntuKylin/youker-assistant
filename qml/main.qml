@@ -15,6 +15,7 @@
  */
 
 import QtQuick 1.1
+import ToolkitsType 0.1
 
 Rectangle {
     width: 850
@@ -22,6 +23,7 @@ Rectangle {
     id: main
     objectName: "main"
     anchors.fill: parent
+    Toolkits{id: toolkits}
     Image {
         id: bgImg
         anchors.fill: parent

@@ -24,8 +24,10 @@
 #include <QStackedWidget>
 #include "tray.h"
 #include "handler.h"
+#include "alertdialog.h"
 #include <QDBusInterface>
 #include <QDBusConnection>
+#include <QtGui>
 class IhuApplication : public QApplication
 {
     Q_OBJECT

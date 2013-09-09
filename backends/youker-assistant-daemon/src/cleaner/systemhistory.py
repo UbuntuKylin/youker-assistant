@@ -38,3 +38,12 @@ class SystemHistory():
 
         return hreflist
 
+    def clean_the_xml(self, homedir):
+        xml_path = '%s/.local/share/' % homedir
+        full_path = xml_path + 'recently-used.xbel'
+
+        tree = ElementTree.parse(full_path)
+        root = tree.getroot()
+        root .clear()
+
+        tree.write(full_path, encoding="UTF-8", xml_declaration=None, default_namespace=None, method="xml")

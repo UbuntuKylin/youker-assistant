@@ -113,6 +113,16 @@ class SudoDaemon(PolicyKitService):
     def check_pkgs_status(self, pkgNameList):
         self.daemonApt.check_pkgs_status_rtn_list(pkgNameList)
 
+    # check one package status by pkgName
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
+    def check_pkg_status(self, pkgName):
+        return self.daemonApt.check_pkg_status(pkgName)
+
+    # apt-get update sa:software_fetch_signal()
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def apt_get_update(self):
+        self.daemonApt.apt_get_update()
+
     # package download status signal
     '''parm mean
         type:
