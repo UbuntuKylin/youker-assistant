@@ -161,6 +161,11 @@ class CleanDashHistory():
         num = objhg.scan_the_records()
         return num
 
+    def clean_the_cruftlist(self):
+        global HOMEDIR
+        objhc = dashhistory.DashHistory(HOMEDIR)
+        objhc.clean_the_records()
+
 # the function of clean the cookies
 class CleanTheCookies():
     def __init__(self):
