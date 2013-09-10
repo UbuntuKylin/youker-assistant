@@ -17,7 +17,7 @@
 #define PROGRESSDIALOG_H
 
 #include <QDialog>
-
+#include <QtGui>
 namespace Ui {
 class ProgressDialog;
 }
@@ -27,13 +27,18 @@ class ProgressDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit ProgressDialog(QString msg = "", QWidget *parent = 0);
+    explicit ProgressDialog(QWidget *parent = 0);
     ~ProgressDialog();
 public slots:
-    void setValue(int value);
+    void setValue(QString type, QString msg);
     
 private:
     Ui::ProgressDialog *ui;
+    QPoint dragPos;
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
 };
 
 #endif // PROGRESSDIALOG_H

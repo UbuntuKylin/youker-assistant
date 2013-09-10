@@ -253,13 +253,13 @@ Item {
                     flag: "Chromium"
                 }
                 ListElement {
-                    icon: "../img/icons/irc.png"
-                    flag: "EclipseQt"
+                    icon: "../img/icons/eclipse.png"
+                    flag: "Eclipse"
                   }
                 ListElement {
-                    icon: "../img/icons/irc.png"
-                    flag: "Irc"
-                }
+                    icon: "../img/icons/qt.png"
+                    flag: "Qtcreator"
+                  }
                 ListElement {
                     icon: "../img/icons/kuaipan.png"
                     flag: "Kuaipan"
@@ -293,11 +293,11 @@ Item {
                     flag: "VirtualBox"
                   }
                 ListElement {
-                    icon: "../img/icons/virtualbox.png"
+                    icon: "../img/icons/qq.png"
                     flag: "Wineqq"
                 }
                 ListElement {
-                    icon: "../img/icons/xchat.png"
+                    icon: "../img/icons/wps.png"
                     flag: "Wps"
                 }
                 ListElement {

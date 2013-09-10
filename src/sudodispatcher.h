@@ -64,7 +64,7 @@ signals:
     void finishSoftwareCheckStatus(QStringList statusDict);
 
 
-    void getValue(int value);
+    void getValue(QString type, QString msg);
 
 public slots:
     void handler_clear_rubbish(QString msg);

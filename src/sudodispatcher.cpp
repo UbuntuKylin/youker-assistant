@@ -22,6 +22,7 @@
 #include <QtDBus>
 //#include "progressdialog.h"
 #include <QMap>
+#include "KThread.h"
 //extern QString passwd;
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
@@ -31,7 +32,7 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
-    progressdialog = new ProgressDialog("正在下载...");
+    progressdialog = new ProgressDialog;
 //    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
 }
@@ -40,6 +41,8 @@ SudoDispatcher::~SudoDispatcher()
 {
     if (authdialog)
         delete authdialog;
+    if(progressdialog)
+        delete progressdialog;
 }
 
 void SudoDispatcher::exit_qt()
@@ -57,8 +60,7 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(sudoiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handler_software_fetch_signal(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handler_software_apt_signal(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handler_software_check_status_signal(QStringList)));
-
-//    QObject::connect(sudoiface,SIGNAL(getValue(int)),progressdialog, SLOT(setValue(int)));
+    QObject::connect(this,SIGNAL(getValue(QString,QString)),progressdialog, SLOT(setValue(QString,QString)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
@@ -81,7 +83,10 @@ void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg)
     qDebug() << "get software_fetch_signal.....";
     qDebug() << type;
     qDebug() << msg;
-    emit finishSoftwareFetch(type, msg);
+    if(!type.isEmpty()) {
+        emit getValue(type, msg);
+    }
+//    emit finishSoftwareFetch(type, msg);
 }
 
 void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
@@ -89,59 +94,32 @@ void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
     qDebug() << "get software_apt_signal.....";
     qDebug() << type;
     qDebug() << msg;
-    emit finishSoftwareApt(type, msg);
+    if(!type.isEmpty()) {
+        emit getValue(type, msg);
+    }
+//    emit finishSoftwareApt(type, msg);
 }
 
 //void SudoDispatcher::handler_software_check_status_signal(QMap<QString, QVariant> statusDict)
 void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict)
 {
 //    qDebug() << "get software_check_status_signal.....";
-//    qDebug() << statusDict;
+    qDebug() << statusDict;
 //    status_dict = statusDict;
-    emit finishSoftwareCheckStatus(statusDict);
+//    emit finishSoftwareCheckStatus(statusDict);
 }
-
-//QString SudoDispatcher::get_value(QString key)
-//{
-//    QVariant tt = status_dict.value(key);
-//    return tt.toString();
-//    return "kobe";
-//}
-//bool SudoDispatcher::trans_password(QString flagstr, QString pwd) {
-//    QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
-//    QByteArray ba1 = cmd1.toLatin1();
-//    const char *transpd = ba1.data();
-//    int bb = system(transpd);
-//    qDebug() << bb;
-//    if (bb == 0) {
-//        qDebug() << "yes";
-//        QString cmd2 = "echo " + pwd + " | sudo -S rm /usr/bin/youker.txt";
-//        QByteArray ba2 = cmd2.toLatin1();
-//        const char *transpd2 = ba2.data();
-//        int bb1 = system(transpd2);
-//        qDebug() << bb1;
-//        QProcess *process = new QProcess;
-//        process->start("/usr/bin/" + flagstr + " " + pwd);
-//        return true;
-//    }
-//    else {
-//        qDebug() << "no";
-//    }
-//    return false;
-//}
 
 void SudoDispatcher::show_passwd_dialog() {
     authdialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
     authdialog->exec();
-//    bool value = trans_password("youkersudo", passwd);
-//    return value;
 }
 
 void SudoDispatcher::show_progress_dialog() {
 //    ProgressDialog progressdialog;
 //    progressdialog.exec();
 //    ProgressDialog progressdialog("正在下载...");
-    progressdialog->exec();
+//    progressdialog->exec();
+    progressdialog->show();
 }
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
@@ -157,14 +135,27 @@ QStringList SudoDispatcher::get_args() {
 // -------------------------software-center-------------------------
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
     qDebug() << "start to install";
-    sudoiface->call("install_pkg", pkgName);
+    qDebug() << pkgName;
+    QStringList strlist;
+    strlist << "Kobe" << "Lee";
+    KThread *thread = new KThread(sudoiface, "install_pkg", strlist, pkgName);
+    thread->start();
+//    sudoiface->call("install_pkg", pkgName);
 }
 void SudoDispatcher::uninstall_pkg_qt(QString pkgName) {
 
-    sudoiface->call("uninstall_pkg", pkgName);
+//    sudoiface->call("uninstall_pkg", pkgName);
+    QStringList strlist;
+    strlist << "Kobe" << "Lee";
+    KThread *thread = new KThread(sudoiface, "uninstall_pkg", strlist, pkgName);
+    thread->start();
 }
 void SudoDispatcher::update_pkg_qt(QString pkgName) {
-    sudoiface->call("update_pkg", pkgName);
+    QStringList strlist;
+    strlist << "Kobe" << "Lee";
+    KThread *thread = new KThread(sudoiface, "update_pkg", strlist, pkgName);
+    thread->start();
+//    sudoiface->call("update_pkg", pkgName);
 }
 void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
 //    pkgNameList << "qtcreator" << "qtcreator-plugin-ubuntu";
