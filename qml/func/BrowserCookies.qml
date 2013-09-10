@@ -136,6 +136,7 @@ Item {
                 if (msg == "cookies") {
                     root.work_result = msg;
                     root.state = "CookiesWorkFinish";
+                    cookies_signal("CookiesWork");
                 }
             }
         }

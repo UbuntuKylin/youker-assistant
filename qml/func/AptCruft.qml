@@ -110,6 +110,7 @@ Item {
                 if (msg == "apt") {
                     root.apt_work_result = msg;
                     root.state = "AptWorkFinish";
+                    apt_signal("AptWork");
                 }
             }
         }

@@ -56,6 +56,7 @@ Item {
 
     property string directory: ""
     property int size: 0
+    property int deleget_arrow :0
 
 
     function refresh_page() {
@@ -63,9 +64,15 @@ Item {
         check_num=0
         var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
         if (largestfile_data == "")
+        {
             root.null_flag = true;
+            deleget_arrow =0;
+        }
         else
+        {
             root.null_flag = false;
+            deleget_arrow =1;
+        }
         root.sub_num = largestfile_data.length;
         systemdispatcher.clear_largestfile_args();
         subModel.clear();
@@ -138,6 +145,7 @@ Item {
                 if (msg == "largestfile") {
                     root.work_result = msg;
                     root.state = "LargestFileWorkFinish";
+                    refresh_page();
                 }
             }
         }
@@ -255,16 +263,20 @@ Item {
                     if(size_text.text == "")
                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小，请在绿色框中输入数字！");
                     else if (root.directory == "")
+                    {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
+                        deleget_arrow =0;
+                    }
                     else {
                         if(root.null_flag == true) {
                            root.state = "LargestFileWorkEmpty";
                             sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                         }
                         else if(root.null_flag == false) {
+                            console.log(systemdispatcher.get_largestfile_args());
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-        //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                             root.state = "LargestFileWorkFinish";
+//                            refresh_page();
                         }
                     }
                 }
@@ -518,7 +530,7 @@ Item {
                 height: parent.height
                 model: mainModel
                 delegate: Cleardelegate{
-                    sub_num:root.lar_num;sub_model:subModel;btn_flag:root.btn_flag;
+                    sub_num:root.lar_num;sub_model:subModel;btn_flag:root.btn_flag;arrow_display:deleget_arrow;
                     delegate_flag: false
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}

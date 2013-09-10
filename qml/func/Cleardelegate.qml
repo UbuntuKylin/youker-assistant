@@ -179,7 +179,7 @@ Item {
                             listViewDelegate.checkchanged(true);
                         else
                             listViewDelegate.checkchanged(false);
-                        console.log(check_num)
+//                        console.log(systemdispatcher.get_largestfile_args());
                     }
                 }
             }

@@ -140,6 +140,7 @@ Item {
                 if (msg == "software") {
                     root.sof_work_result = msg;
                     root.state = "SoftwareWorkFinish";
+                    software_signal("SoftwareWork");
                 }
             }
         }

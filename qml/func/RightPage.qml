@@ -217,50 +217,57 @@ Rectangle {
                 {
                     mage_source=image2;
                     image_two.checked=true;
+                    image_three.checked=false;
+                    image_one.checked=false;
                 }
                 else if(mage_source==image2)
                 {
                     mage_source=image3;
                     image_three.checked=true;
+                    image_one.checked=false;
+                    image_two.checked=false;
+
                 }
                 else if(mage_source==image3)
                 {
                     mage_source=image1;
                     image_one.checked=true;
+                    image_three.checked=false;
+                    image_two.checked=false;
                 }
             }
         }
 
-        Row{
-            anchors{
-                bottom:mage.bottom
-                bottomMargin: 15
-                left: parent.left
-                leftMargin: 15
-            }
-            spacing: 5
-            Common.Button{
-                id:button1
-                hoverimage: "radiobox.png"
-                onClicked: {
-                    mage.source="../img/icons/kugou.png"
-                }
-            }
-            Common.Button{
-                id:button2
-                hoverimage: "radiobox.png"
-                onClicked: {
-                    mage.source="../img/icons/kugou.png"
-                }
-            }
-            Common.Button{
-                id:button3
-                hoverimage: "radiobox.png"
-                onClicked: {
-                    mage.source="../img/icons/kugou.png"
-                }
-            }
-        }
+//        Row{
+//            anchors{
+//                bottom:mage.bottom
+//                bottomMargin: 15
+//                left: parent.left
+//                leftMargin: 15
+//            }
+//            spacing: 5
+//            Common.Button{
+//                id:button1
+//                hoverimage: "radiobox.png"
+//                onClicked: {
+//                    mage.source="../img/icons/kugou.png"
+//                }
+//            }
+//            Common.Button{
+//                id:button2
+//                hoverimage: "radiobox.png"
+//                onClicked: {
+//                    mage.source="../img/icons/kugou.png"
+//                }
+//            }
+//            Common.Button{
+//                id:button3
+//                hoverimage: "radiobox.png"
+//                onClicked: {
+//                    mage.source="../img/icons/kugou.png"
+//                }
+//            }
+//        }
     }
 
 //    Text {

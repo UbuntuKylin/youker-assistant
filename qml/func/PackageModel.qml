@@ -127,6 +127,7 @@ Item {
                 if (msg == "package") {
                     root.work_result = msg;
                     root.state = "UnneedWorkFinish";
+                    unneed_signal("UnneedWork");
                 }
             }
         }
