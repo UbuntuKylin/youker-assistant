@@ -32,6 +32,7 @@ Rectangle {
     property string image1: "../img/skin/qq0.png"
     property string image2: "../img/skin/qt0.png"
     property string image3: "../img/skin/wps0.png"
+    property string mage_source: image1
 
 //    property SystemDispatcher dis2: systemdispatcher
     ListModel {
@@ -152,7 +153,7 @@ Rectangle {
         }
         Image {
             id: mage
-            source: image1
+            source: mage_source
         }
         MouseArea{
             anchors.fill: parent
@@ -184,7 +185,7 @@ Rectangle {
                 flag: "flowradio"
                 onClicked: {
                     if (image_one.checked == true) {
-                        mage.source=image1
+                        mage_source=image1
                     }
                 }
             }
@@ -194,7 +195,7 @@ Rectangle {
                 flag: "flowradio"
                 onClicked: {
                     if (image_two.checked == true) {
-                        mage.source=image2
+                        mage_source=image2
                     }
                 }
             }
@@ -204,11 +205,32 @@ Rectangle {
                 flag: "flowradio"
                 onClicked: {
                     if (image_three.checked == true) {
-                        mage.source=image3
+                        mage_source=image3
                     }
                 }
             }
         }
+        Timer{
+            interval: 3000;running: true;repeat: true
+            onTriggered: {
+                if(mage_source==image1)
+                {
+                    mage_source=image2;
+                    image_two.checked=true;
+                }
+                else if(mage_source==image2)
+                {
+                    mage_source=image3;
+                    image_three.checked=true;
+                }
+                else if(mage_source==image3)
+                {
+                    mage_source=image1;
+                    image_one.checked=true;
+                }
+            }
+        }
+
         Row{
             anchors{
                 bottom:mage.bottom

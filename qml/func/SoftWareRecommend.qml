@@ -321,9 +321,57 @@ Item {
                 model: funcmodel
                 delegate: SoftwareDelegate {}
                 cacheBuffer: 1000
-                cellWidth: (parent.width-8)/4; cellHeight: 90
+                cellWidth: 190; cellHeight: 90
     //                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
                 focus: true
+            }
+            Rectangle{
+                id:scrollbar
+                anchors.right: parent.right
+                anchors.rightMargin: 8
+                height: parent.height-5
+                width:5
+                color: "lightgrey"
+            }
+            Rectangle{
+                id: button
+                anchors.right: parent.right
+                anchors.rightMargin: 5
+                width: 12
+                y: gridView.visibleArea.yPosition * scrollbar.height
+                height: gridView.visibleArea.heightRatio * scrollbar.height;
+                radius: 3
+                smooth: true
+                color: "white"
+                border.color: "lightgrey"
+                Column{
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    spacing: 2
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                    Rectangle{
+                        width: 8;height: 1
+                        color: "lightgrey"
+                    }
+                }
+                MouseArea {
+                    id: mousearea
+                    anchors.fill: button
+                    drag.target: button
+                    drag.axis: Drag.YAxis
+                    drag.minimumY: 0
+                    drag.maximumY: scrollbar.height - button.height
+                    onMouseYChanged: {
+                        gridView.contentY = button.y / scrollbar.height * gridView.contentHeight
+                    }
+                }
             }
         }
     }

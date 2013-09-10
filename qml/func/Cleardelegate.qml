@@ -146,9 +146,9 @@ Item {
                             check_num=check_num+1;
                         else
                             check_num=check_num-1;
-                        if(sub_num!=0&&check_num ==0&&check.checked!="false")
+                        if(sub_num!=0&&check_num ==0/*&&check.checked!="false"*/)
                             check.checked="false";
-                        else if(sub_num!=0&&check_num ==sub_num&&check.checked!= "true")
+                        else if(sub_num!=0&&check_num ==sub_num/*&&check.checked!= "true"*/)
                             check.checked="true";
                         else if(sub_num!=0)
                             check.checked="mid";
