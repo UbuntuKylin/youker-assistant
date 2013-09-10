@@ -54,7 +54,6 @@ HEADERS += youker-application.h \
     qtkeytrans.h \
     qtkeytransdata.h \
     fcitxwarndialog.h \
-    handler.h \
     KThread.h \
     suspensionframe.h \
     progressdialog.h \

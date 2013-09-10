@@ -43,8 +43,8 @@ public:
     AuthDialog *authdialog;
     ProgressDialog *progressdialog;
 
-//    QMap<QString, QVariant> status_dict;
-//    Q_INVOKABLE QString get_value(QString);
+    QMap<QString, QString> status_dict;
+    Q_INVOKABLE QString get_value(QString);
 
 
     // -------------------------software-center-------------------------
@@ -59,7 +59,7 @@ signals:
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkError(QString msg);
     void finishSoftwareFetch(QString type, QString msg);
-    void finishSoftwareApt(QString type, QString msg);
+    void finishSoftwareApt(QString type);
 //    void finishSoftwareCheckStatus(QMap<QString, QVariant> statusDict);
     void finishSoftwareCheckStatus(QStringList statusDict);
 

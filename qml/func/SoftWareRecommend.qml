@@ -26,12 +26,14 @@ import "bars" as Bars
 Item {
     id: screen; width: parent.width; height: 475
 //需要时常变动的变量
-    property string image_flag:""
+    property string image_flag:"qq"
     property string recommendone_image: "../img/skin/qq-small.png"
     property string recommendtwo_image: "../img/skin/qt-small.png"
     property string recommendthree_image: "../img/skin/wps-small.png"
     property string recommendoneimage_image: "../img/skin/qq.png"
-    property string recommendimage_text: "Winasd     asfsaff:asdfasdfa 2012 asd"
+    property string recommendimage_text: "WineQQ,Linux系统上最好用的QQ版本。"
+    property string status_value: "n"
+    property string status_value2: "n"
 
     Component.onCompleted: {
 //        sudodispatcher.check_pkgs_status_qt(pkgNameList);
@@ -89,6 +91,8 @@ Item {
             anchors.bottom: parent.bottom
             color: "transparent"
             Text{
+                id: desc_text
+                visible: (screen.image_flag == "qt") ? false : true
                 anchors{
                     left: parent.left
                     leftMargin: 15
@@ -98,16 +102,115 @@ Item {
                 text:recommendimage_text
             }
             Common.Button{
+                id: ecliseBtn
+                visible: (screen.image_flag == "qt") ? true : false
+                width: 80;height: 26
+                anchors{
+                    left: parent.left
+                    leftMargin: 15
+                    verticalCenter: parent.verticalCenter
+                }
+                text: {
+                    if(screen.status_value2 == "i")
+                        "卸载"
+                    else if(screen.status_value2 == "n")
+                        "安装"
+                    else if(screen.status_value2 == "u")
+                        "升级"
+                }
+                onClicked: {
+                    console.log("eclipse clicked....");
+//                    screen.status_value2 = sudodispatcher.check_pkg_status_qt("eclipse");
+//                    if(screen.status_value2 == "n") {
+//                        console.log("start to install....");
+//                        sudodispatcher.show_progress_dialog();
+//                        sudodispatcher.install_pkg_qt("qq");
+//                    }
+//                    else if(screen.status_value2 == "i") {
+//                        console.log("is installed already, start to uninstall....");
+//                        sudodispatcher.show_progress_dialog();
+//                        sudodispatcher.uninstall_pkg_qt("eclipse");
+//                    }
+//                    else if(screen.status_value2 == "u") {
+//                        console.log("is installed already, start to update....");
+//                        sudodispatcher.show_progress_dialog();
+//                        sudodispatcher.update_pkg_qt("eclipse");
+//                    }
+                }
+            }
+            Common.Button{
                 width: 80;height: 26
                 anchors{
                     verticalCenter:parent.verticalCenter
                     right:parent.right
                     rightMargin: 15
                 }
-                text:"安装"
+                text: {
+                    if(screen.status_value == "i")
+                        "卸载"
+                    else if(screen.status_value == "n")
+                        "安装"
+                    else if(screen.status_value == "u")
+                        "升级"
+                }
                 onClicked: {
-                    console.log("下载下载下载下载下载下载");
-//                    sudodispatcher.show_progress_dialog();
+                    if(screen.image_flag == "qq") {
+                        console.log("qq clicked....");
+//                        screen.status_value = sudodispatcher.check_pkg_status_qt("qq");
+//                        if(screen.status_value == "n") {
+//                            console.log("start to install....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.install_pkg_qt("qq");
+//                        }
+//                        else if(screen.status_value == "i") {
+//                            console.log("is installed already, start to uninstall....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.uninstall_pkg_qt("qq");
+//                        }
+//                        else if(screen.status_value == "u") {
+//                            console.log("is installed already, start to update....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.update_pkg_qt("qq");
+//                        }
+                    }
+                    else if(screen.image_flag == "qt") {
+                        console.log("qt clicked....");
+//                        screen.status_value = sudodispatcher.check_pkg_status_qt("qtcreator");
+//                        if(screen.status_value == "n") {
+//                            console.log("start to install....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.install_pkg_qt("qtcreator");
+//                        }
+//                        else if(screen.status_value == "i") {
+//                            console.log("is installed already, start to uninstall....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.uninstall_pkg_qt("qtcreator");
+//                        }
+//                        else if(screen.status_value == "u") {
+//                            console.log("is installed already, start to update....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.update_pkg_qt("qtcreator");
+//                        }
+                    }
+                    else if(screen.image_flag == "wps") {
+                        console.log("wps clicked....");
+//                        screen.status_value = sudodispatcher.check_pkg_status_qt("wps");
+//                        if(screen.status_value == "n") {
+//                            console.log("start to install....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.install_pkg_qt("wps");
+//                        }
+//                        else if(screen.status_value == "i") {
+//                            console.log("is installed already, start to uninstall....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.uninstall_pkg_qt("wps");
+//                        }
+//                        else if(screen.status_value == "u") {
+//                            console.log("is installed already, start to update....");
+//                            sudodispatcher.show_progress_dialog();
+//                            sudodispatcher.update_pkg_qt("wps");
+//                        }
+                    }
                 }
             }
         }
@@ -131,8 +234,11 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    imagframe.y=colum.y+recommendone.y
-                    recommendoneimage_image="../img/skin/qq.png"
+                    screen.status_value = sudodispatcher.get_value("ubiquity");
+                    screen.image_flag = "qq";
+                    screen.recommendimage_text = "WineQQ,Linux系统上最好用的QQ版本。";
+                    imagframe.y=colum.y+recommendone.y;
+                    recommendoneimage_image="../img/skin/qq.png";
                 }
             }
         }
@@ -146,8 +252,11 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    imagframe.y=colum.y+recommendtwo.y
-                    recommendoneimage_image="../img/skin/qt.png"
+                    screen.status_value = sudodispatcher.get_value("qtcreator");
+                    screen.status_value2 = sudodispatcher.get_value("ubiquity");
+                    screen.image_flag = "qt";
+                    imagframe.y=colum.y+recommendtwo.y;
+                    recommendoneimage_image="../img/skin/qt.png";
                 }
             }
         }
@@ -161,8 +270,11 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    imagframe.y=colum.y+recommendthree.y
-                    recommendoneimage_image="../img/skin/wps.png"
+                    screen.status_value = sudodispatcher.get_value("ubiquity");
+                    screen.image_flag = "wps";
+                    screen.recommendimage_text = "WPS,Linux系统上最好用的办公软件。";
+                    imagframe.y=colum.y+recommendthree.y;
+                    recommendoneimage_image="../img/skin/wps.png";
                 }
             }
         }
@@ -208,31 +320,6 @@ Item {
                     color: "#6b6f70"
                     font.pixelSize: 14
                 }
-//                Common.Button{
-//                    id:recommended_top
-//                    width:110;height: 25
-//                    text:"推荐金榜单"
-//                    hoverimage:"blue1.png"
-//                    onClicked: {
-//                        fontcolor="white"
-//                        hoverimage="blue1.png"
-//                        download_top.fontcolor="grey"
-//                        download_top.hoverimage="gray1-hover.png"
-//                    }
-//                }
-//                Common.Button{
-//                    id:download_top
-//                    width: 110;height: 25
-//                    text:"下载排行榜"
-//                    fontcolor: "grey"
-//                    hoverimage:"gray1-hover.png"
-//                    onClicked: {
-//                        fontcolor="white"
-//                        hoverimage="blue1.png"
-//                        recommended_top.fontcolor="grey"
-//                        recommended_top.hoverimage="gray1-hover.png"
-//                    }
-//                }
             }
         }
         Rectangle{id: splitbar1; anchors{top:rec.bottom;left: parent.left;leftMargin: 1 }width:parent.width-1 ; height:1; color:"#b8bdc3"}
@@ -249,8 +336,16 @@ Item {
                     flag: "AdobeFlash"
                 }
                 ListElement {
-                    icon: "../img/icons/chromium.png"
-                    flag: "Chromium"
+                    icon: "../img/icons/lotus.png"
+                    flag: "Lotus"
+                }
+                ListElement {
+                    icon: "../img/icons/qq.png"
+                    flag: "Wineqq"
+                }
+                ListElement {
+                    icon: "../img/icons/wps.png"
+                    flag: "Wps"
                 }
                 ListElement {
                     icon: "../img/icons/eclipse.png"
@@ -261,6 +356,10 @@ Item {
                     flag: "Qtcreator"
                   }
                 ListElement {
+                    icon: "../img/icons/chromium.png"
+                    flag: "Chromium"
+                }
+                ListElement {
                     icon: "../img/icons/kuaipan.png"
                     flag: "Kuaipan"
                 }
@@ -268,10 +367,6 @@ Item {
                     icon: "../img/icons/kugou.png"
                     flag: "KugouMusic"
                   }
-                ListElement {
-                    icon: "../img/icons/lotus.png"
-                    flag: "Lotus"
-                }
                 ListElement {
                     icon: "../img/icons/Pps.png"
                     flag: "Pps"
@@ -292,14 +387,6 @@ Item {
                     icon: "../img/icons/virtualbox.png"
                     flag: "VirtualBox"
                   }
-                ListElement {
-                    icon: "../img/icons/qq.png"
-                    flag: "Wineqq"
-                }
-                ListElement {
-                    icon: "../img/icons/wps.png"
-                    flag: "Wps"
-                }
                 ListElement {
                     icon: "../img/icons/xchat.png"
                     flag: "XChat"
@@ -322,7 +409,6 @@ Item {
                 delegate: SoftwareDelegate {}
                 cacheBuffer: 1000
                 cellWidth: 190; cellHeight: 90
-    //                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
                 focus: true
             }
             Rectangle{

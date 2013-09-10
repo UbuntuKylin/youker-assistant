@@ -80,7 +80,7 @@ protected:
 public slots:
     void handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason);
     void showOrHide();
-    void obtain_network_speed(QStringList speed);
+//    void obtain_network_speed(QStringList speed);
     void updateData();
     void start_to_accelerate();
 signals:

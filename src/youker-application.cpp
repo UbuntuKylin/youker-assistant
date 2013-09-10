@@ -31,7 +31,6 @@
 #include <QGraphicsObject>
 #include <QDialog>
 #include <QProcess>
-#include "authdialog.h"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -43,7 +42,7 @@ IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {
     tray = new Tray();
-    handler = new Handler();
+//    handler = new Handler();
 }
 inline bool isRunningInstalled() {
     static bool installed = (QCoreApplication::applicationDirPath() ==

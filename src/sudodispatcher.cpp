@@ -96,21 +96,24 @@ void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
     qDebug() << msg;
     if(!type.isEmpty()) {
         emit getValue(type, msg);
-    }
-//    emit finishSoftwareApt(type, msg);
+        if (type == "apt_stop")
+            emit finishSoftwareApt(type);
+    } 
 }
 
 //void SudoDispatcher::handler_software_check_status_signal(QMap<QString, QVariant> statusDict)
 void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict)
 {
-//    qDebug() << "get software_check_status_signal.....";
-    qDebug() << statusDict;
-//    status_dict = statusDict;
+    for(int i=0; i< statusDict.size(); i++) {
+        QStringList value = statusDict[i].split(":");
+        status_dict.insert(value[0], value[1]);
+    }
+//    qDebug() << status_dict;
 //    emit finishSoftwareCheckStatus(statusDict);
 }
 
 void SudoDispatcher::show_passwd_dialog() {
-    authdialog = new AuthDialog("提示：请输入当前用户登录密码，保证优客助手的正常使用。");
+    authdialog = new AuthDialog("提示：请输入当前用户登录密码，然后重新点击该区域，保证优客助手的正常使用。");
     authdialog->exec();
 }
 
@@ -128,8 +131,19 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
 
 QStringList SudoDispatcher::get_args() {
     QStringList pkgNameList;
-    pkgNameList << "qtcreator" << "qtcreator-plugin-ubuntu"<< "ubiquity";
+//    pkgNameList << "ubiquity" <<  "chromium-bsu" << "eclipse" <<"qtcreator" << \
+//                   "kuaipan" << "kugou"<< "lotus" << "pps" << "qbittorrent" << \
+//                   "stardict" << "vic" << "virtualbox" << "qq" << "wps" << "xchat" << "xunlei";
+    pkgNameList << "ubiquity" <<  "ubiquity" << "eclipse" <<"qtcreator" << \
+                   "ubiquity" << "ubiquity"<< "ubiquity" << "ubiquity" << "ubiquity" << \
+                   "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity";
     return pkgNameList;
+}
+
+QString SudoDispatcher::get_value(QString key)
+{
+    QVariant tt = status_dict.value(key);
+    return tt.toString();
 }
 
 // -------------------------software-center-------------------------
@@ -158,12 +172,7 @@ void SudoDispatcher::update_pkg_qt(QString pkgName) {
 //    sudoiface->call("update_pkg", pkgName);
 }
 void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
-//    pkgNameList << "qtcreator" << "qtcreator-plugin-ubuntu";
     sudoiface->call("check_pkgs_status", pkgNameList);
-//    QDBusReply<QMap<QString, QVariant> > reply = sudoiface->call("check_pkgs_status", pkgNameList);
-//    qDebug() << "lllll->";
-//    qDebug() << reply.value();
-    //QMap(("qtcreator", QVariant(QString, "i") ) ( "qtcreator-plugin-ubuntu" ,  QVariant(QString, "n") ) )
 }
 
 QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {

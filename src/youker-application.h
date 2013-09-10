@@ -23,7 +23,7 @@
 #include <QBoxLayout>
 #include <QStackedWidget>
 #include "tray.h"
-#include "handler.h"
+//#include "handler.h"
 #include "alertdialog.h"
 #include <QDBusInterface>
 #include <QDBusConnection>
@@ -41,6 +41,6 @@ private:
 //    QDeclarativeView *viewer_small;
 //    QDeclarativeView *viewer_widget;
     Tray *tray;
-    Handler *handler;
+//    Handler *handler;
 };
 #endif // SYSTEMAPPLICATION_H
