@@ -34,16 +34,11 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
 //    ui->ratiolabel->setStyleSheet();
 //    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);color: white; font-size: 12px}"
 //                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
-//    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/accelerate.png);");
-    ui->descBtn->setFlat(true);
+
+    ui->descBtn->setStyleSheet("QPushButton {border:0px;color:#1790c9}");
     ui->descBtn->setText("详细");
-
-    QPalette pal = ui->descBtn->palette();
-    pal.setColor(QPalette::Button,"#00b0ff");
-    ui->descBtn->setPalette(pal);
-    ui->descBtn->setAutoFillBackground(true);
     ui->descBtn->setFlat(true);
-
+    ui->descBtn->setFocusPolicy(Qt::NoFocus);
 
     this->resize(265, 173);
 }

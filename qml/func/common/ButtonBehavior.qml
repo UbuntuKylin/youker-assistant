@@ -6,8 +6,8 @@ Item {
     signal clicked
     property bool pressed: false
     property alias containsMouse: mouseArea.containsMouse
-    property bool checkable: false
-    property bool checked: false
+    property bool checkable: true
+    property bool checked: true
     property bool triState: false
 
     onCheckableChanged: { if(!checkable) checked = false }

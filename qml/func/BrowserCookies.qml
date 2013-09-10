@@ -39,6 +39,7 @@ Item {
     property int sub_num:coo_sub_num
     property bool check_flag: true
     property bool null_flag: false
+    property int deleget_arrow :0
 
     signal cookies_signal(string cookies_msg);
     onCookies_signal: {
@@ -216,15 +217,20 @@ Item {
                      cookies_signal("CookiesWork");
                      if(root.null_flag == true) {
                         root.state = "CookiesWorkEmpty";
+                         deleget_arrow=0;
                          sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                      }
                      else if(root.null_flag == false)
+                     {
                         root.state = "CookiesWork";
+                         deleget_arrow=1;
+                     }
                  }
                  else if (btn_flag == "cookies_work") {
                      systemdispatcher.set_user_homedir_qt();
                      systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
 //                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+                     deleget_arrow=1;
                  }
                 }
                 else
@@ -412,7 +418,7 @@ Item {
                 height: parent.height
                 model: mainModel
                 delegate: Cleardelegate{
-                    sub_num:root.coo_sub_num;sub_model:subModel;btn_flag:root.btn_flag;
+                    sub_num:root.coo_sub_num;sub_model:subModel;btn_flag:root.btn_flag;arrow_display:deleget_arrow;
                     delegate_flag: false
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}

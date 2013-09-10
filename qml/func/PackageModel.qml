@@ -39,6 +39,7 @@ Item {
     property string work_result: ""
     property bool check_flag:true
     property bool null_flag: false
+    property int deleget_arrow :0
 
     signal unneed_signal(string unneed_msg);
     onUnneed_signal: {
@@ -207,13 +208,18 @@ Item {
                             unneed_signal("UnneedWork");
                             if(root.null_flag == true) {
                                 root.state = "UnneedWorkEmpty";
+                                deleget_arrow=0;
                                 sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                             }
                             else if(root.null_flag == false)
+                            {
                                 root.state = "UnneedWork";
+                                deleget_arrow=1;
                             }
-                            else if (btn_flag == "package_work") {
-                                sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+                        }
+                        else if (btn_flag == "package_work") {
+                            sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+                            deleget_arrow=1;
                         }
                     }
                     else
@@ -403,7 +409,7 @@ Item {
                 height: parent.height
                 model: mainModel
                 delegate: Cleardelegate{
-                    sub_num:root.pac_sub_num;sub_model: subModel ;btn_flag:root.btn_flag
+                    sub_num:root.pac_sub_num;sub_model: subModel ;btn_flag:root.btn_flag;arrow_display:deleget_arrow;
                     delegate_flag: false
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}

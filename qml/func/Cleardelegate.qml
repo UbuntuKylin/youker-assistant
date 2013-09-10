@@ -12,6 +12,7 @@ Item {
     property string btn_flag
     property ListModel sub_model
     property int sub_num
+    property int arrow_display: 0
 
     property bool delegate_flag: false
     //子项字体
@@ -26,6 +27,7 @@ Item {
 
     property int check_num:sub_num
     property bool maincheck: false
+    property int arrow_num: 0
     width: parent.width
 
     Item {
@@ -75,7 +77,6 @@ Item {
                 }
             }
         }
-
         Image {
             id: arrow
             fillMode: "PreserveAspectFit"
@@ -83,8 +84,9 @@ Item {
             height: 28
             width: 26
             x:740
-            y:15
+            y:15          
             source: listViewDelegate.arrow
+            opacity: arrow_display
             //当鼠标点击后,箭头图片旋转90度
 //                    rotation: expanded ? 90 : 0
             rotation: expanded ? 0 : -180
@@ -93,12 +95,33 @@ Item {
                 id: mouseRegion
                 anchors.fill: parent
                     onPressed: {
-                           expanded = !expanded
-                        if(heightMark==listViewDelegate.sub_num)
-                            heightMark=0;
-                        else
-                            heightMark=listViewDelegate.sub_num;
+                        expanded = !expanded
+                        console.log(expanded)
                         listViewDelegate.subpressed(heightMark);
+                        if(heightMark==listViewDelegate.sub_num)
+                        {
+                            check.checkedbool=false;
+                            check.checked="true";
+                            heightMark=0;
+                        }
+                        else
+                        {
+                            if(sub_num>0){
+                                if(check.checked=="true")
+                                {
+                                    check.checkedbool=true;
+                                    check_num=sub_num;
+                                    check.checked=="true"
+                                }
+                                else if(check.checked=="false")
+                                {
+                                    check_num=sub_num-1;
+                                    check.checkedbool=false;
+                                    check.checked=="false"
+                                }
+                            }
+                            heightMark=listViewDelegate.sub_num;
+                        }
                     }
             }
         }
@@ -146,16 +169,17 @@ Item {
                             check_num=check_num+1;
                         else
                             check_num=check_num-1;
-                        if(sub_num!=0&&check_num ==0/*&&check.checked!="false"*/)
+                        if(sub_num!=0&&check_num ==0&&heightMark!=0/*&&check.checked!="false"*/)
                             check.checked="false";
-                        else if(sub_num!=0&&check_num ==sub_num/*&&check.checked!= "true"*/)
+                        else if(sub_num!=0&&check_num ==sub_num&&heightMark!=0/*&&check.checked!= "true"*/)
                             check.checked="true";
-                        else if(sub_num!=0)
+                        else if(sub_num!=0&&heightMark!=0)
                             check.checked="mid";
                         if(check.checked=="true"||listViewDelegate.check_num>0)
                             listViewDelegate.checkchanged(true);
                         else
                             listViewDelegate.checkchanged(false);
+                        console.log(check_num)
                     }
                 }
             }

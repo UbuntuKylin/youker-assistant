@@ -36,6 +36,7 @@ Item {
     property int sof_num:sof_sub_num
     property bool sof_null_flag: false
     property bool sof_check_flag:true
+    property int deleget_arrow :0
 
 
 
@@ -222,13 +223,18 @@ Item {
                      software_signal("SoftwareWork");
                      if(root.sof_null_flag == true) {
                         root.state = "SoftwareWorkEmpty";
+                         deleget_arrow=0;
                          sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                      }
                      else if(root.sof_null_flag == false)
+                     {
                         root.state = "SoftwareWork";
+                         deleget_arrow=1;
+                     }
                  }
                  else if (sof_btn_flag == "software_work") {
                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
+                     deleget_arrow=1;
                  }
                 }
                 else
@@ -414,7 +420,7 @@ Item {
                 height: parent.height
                 model: sof_mainModel
                 delegate: Cleardelegate{
-                    sub_num: sof_sub_num;sub_model: sof_subModel;btn_flag: sof_btn_flag
+                    sub_num: sof_sub_num;sub_model: sof_subModel;btn_flag: sof_btn_flag;arrow_display:deleget_arrow;
                     delegate_flag: true
                     onSubpressed: {root.sof_num=hMark}
                     onCheckchanged: {root.sof_check_flag=checkchange}

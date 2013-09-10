@@ -61,7 +61,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 10pt &quot;文泉驿微米黑&quot;;</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -277,6 +277,21 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; &quot;&gt;内存占用率：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
+  <zorder>descBtn</zorder>
+  <zorder>downlabel</zorder>
+  <zorder>uplabel</zorder>
+  <zorder>fastBtn</zorder>
+  <zorder>ratiolabel</zorder>
+  <zorder>title1</zorder>
+  <zorder>title2</zorder>
+  <zorder>title1_2</zorder>
+  <zorder>ratiolabel_2</zorder>
+  <zorder>title1_3</zorder>
+  <zorder>title1_4</zorder>
+  <zorder>title1_5</zorder>
+  <zorder>memory_1</zorder>
+  <zorder>memory_2</zorder>
+  <zorder>title1_6</zorder>
  </widget>
  <resources/>
  <connections/>

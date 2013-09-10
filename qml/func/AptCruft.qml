@@ -37,7 +37,7 @@ Item {
     property bool apt_check_flag: true
     property bool apt_null_flag: false
     property int apt_num: apt_sub_num
-
+    property int deleget_arrow :0
 
     signal apt_signal(string apt_msg);
     onApt_signal: {
@@ -209,13 +209,18 @@ Item {
                      apt_signal("AptWork");
                      if(root.apt_null_flag == true) {
                         root.state = "AptWorkEmpty";
+                         deleget_arrow=0;
                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                      }
                      else if(root.apt_null_flag == false)
+                     {
                         root.state = "AptWork";
+                         deleget_arrow=1;
+                     }
                  }
                  else if (apt_btn_flag == "apt_work") {
                      systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
+                     deleget_arrow=1;
                  }
                 }
                 else
@@ -398,7 +403,7 @@ Item {
                 height: parent.height
                 model: apt_mainModel
                 delegate: Cleardelegate{
-                    sub_num: apt_sub_num;sub_model: apt_subModel;btn_flag: apt_btn_flag
+                    sub_num: apt_sub_num;sub_model: apt_subModel;btn_flag: apt_btn_flag;arrow_display:deleget_arrow;
                     delegate_flag: true
                     onSubpressed: {root.apt_num=hMark}
                     onCheckchanged: {root.apt_check_flag=checkchange}
