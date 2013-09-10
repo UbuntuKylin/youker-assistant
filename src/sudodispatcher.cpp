@@ -20,7 +20,7 @@
 #include <QDebug>
 #include <QProcessEnvironment>
 #include <QtDBus>
-#include "progressdialog.h"
+//#include "progressdialog.h"
 #include <QMap>
 //extern QString passwd;
 
@@ -31,6 +31,7 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
+    progressdialog = new ProgressDialog("正在下载...");
 //    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
 }
@@ -55,8 +56,9 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(sudoiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handler_software_fetch_signal(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handler_software_apt_signal(QString,QString)));
-//    QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QMap<QString, QVariant>)),this,SLOT(handler_software_check_status_signal(QMap<QString, QVariant>)));
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handler_software_check_status_signal(QStringList)));
+
+//    QObject::connect(sudoiface,SIGNAL(getValue(int)),progressdialog, SLOT(setValue(int)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
@@ -93,10 +95,18 @@ void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
 //void SudoDispatcher::handler_software_check_status_signal(QMap<QString, QVariant> statusDict)
 void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict)
 {
-    qDebug() << "get software_check_status_signal.....";
-    qDebug() << statusDict;
+//    qDebug() << "get software_check_status_signal.....";
+//    qDebug() << statusDict;
+//    status_dict = statusDict;
     emit finishSoftwareCheckStatus(statusDict);
 }
+
+//QString SudoDispatcher::get_value(QString key)
+//{
+//    QVariant tt = status_dict.value(key);
+//    return tt.toString();
+//    return "kobe";
+//}
 //bool SudoDispatcher::trans_password(QString flagstr, QString pwd) {
 //    QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
 //    QByteArray ba1 = cmd1.toLatin1();
@@ -130,8 +140,8 @@ void SudoDispatcher::show_passwd_dialog() {
 void SudoDispatcher::show_progress_dialog() {
 //    ProgressDialog progressdialog;
 //    progressdialog.exec();
-    ProgressDialog progressdialog("正在下载...");
-    progressdialog.exec();
+//    ProgressDialog progressdialog("正在下载...");
+    progressdialog->exec();
 }
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
@@ -140,15 +150,17 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
 
 QStringList SudoDispatcher::get_args() {
     QStringList pkgNameList;
-    pkgNameList << "qtcreator" << "qtcreator-plugin-ubuntu";
+    pkgNameList << "qtcreator" << "qtcreator-plugin-ubuntu"<< "ubiquity";
     return pkgNameList;
 }
 
 // -------------------------software-center-------------------------
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
+    qDebug() << "start to install";
     sudoiface->call("install_pkg", pkgName);
 }
 void SudoDispatcher::uninstall_pkg_qt(QString pkgName) {
+
     sudoiface->call("uninstall_pkg", pkgName);
 }
 void SudoDispatcher::update_pkg_qt(QString pkgName) {
@@ -161,4 +173,13 @@ void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
 //    qDebug() << "lllll->";
 //    qDebug() << reply.value();
     //QMap(("qtcreator", QVariant(QString, "i") ) ( "qtcreator-plugin-ubuntu" ,  QVariant(QString, "n") ) )
+}
+
+QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
+    QDBusReply<QString> reply = sudoiface->call("check_pkg_status", pkgName);
+    return reply.value();
+}
+
+void SudoDispatcher::apt_get_update_qt() {
+    sudoiface->call("apt_get_update");
 }

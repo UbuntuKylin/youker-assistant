@@ -33,12 +33,13 @@ Item {
     height: parent.height - 30  //去掉StatusWidget所占用的高度30
 
 //传给软件推荐二级界面的值
-    property string delegate_name: "Qafa1asd"
-    property string delegate_information: "asdasd:asdfsa12   afasf:1231M  asfs:2013-9-1"
+    property string delegate_name: "ubiquity"
+    property string delegate_information: "Ubiquity is the install-program 2013-9-1"
     property string delegate_image: "../../img/icons/bug.png"
     property string delegate_introduction: "腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
     property string introduction_image1: "../../img/skin/HighContrast.png"
     property string introduction_image2: "../../img/skin/Radiance.png"
+    property string install_status: "n"
 
 
 //    radius: 10

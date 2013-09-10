@@ -33,6 +33,37 @@ Rectangle {
 //    property string delegate_introduction: "腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
 //    property string introduction_image1: "../../img/skin/HighContrast.png"
 //    property string introduction_image2: "../../img/skin/Radiance.png"
+//    property string mystatus1: ""
+//    property string mystatus2: ""
+//    property string mystatus3: ""
+
+
+
+    //信号绑定，绑定qt的信号
+    Connections
+    {
+        target: sudodispatcher
+        onFinishSoftwareFetch: {
+            console.log(type);
+            console.log(msg);
+        }
+        onFinishSoftwareApt: {
+            console.log(type);
+            console.log(msg);
+        }
+        onFinishSoftwareCheckStatus: {
+//            console.log("Software statusDict->");
+//            var statusdata = statusDict;
+//            for (var i=0; i< statusdata.length; i++) {
+////                var splitlist = statusdata[i].split(":");
+//                console.log(statusdata[i]);
+//            }
+//            mystatus1 = statusDict[0];
+//            mystatus2 = statusDict[1];
+//            mystatus3 = statusDict[2];
+        }
+    }
+
 
     scale: 1
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
@@ -65,12 +96,19 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (flag == "AdobeFlash"){
-                    content.delegate_name= "Q11111"
+//                    sudodispatcher.
+            console.log("clicked adobeflash->");
+                content.install_status = sudodispatcher.check_pkg_status_qt("ubiquity");
+//                console.log(softwaredelegate.mystatus1);
+//                console.log(softwaredelegate.mystatus2);
+//                console.log(softwaredelegate.mystatus3);
+                    content.delegate_name= "ubiquity";//softwaredelegate.mystatus3;
                     content.delegate_information= "1111111111111   1111:11111  11111:2013-9-1"
                     content.delegate_image= "../../img/icons/bug.png"
                     content.delegate_introduction="腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
                     content.introduction_image1= "../../img/skin/HighContrast.png"
                     content.introduction_image2= "../../img/skin/Radiance.png"
+
                     pageStack.push(adobeflashpage);
                 }
             else if (flag == "Chromium"){

@@ -153,7 +153,7 @@ Item {
     //titlebar
     Row {
         id: titlebar
-        spacing: 20
+        spacing: 10
         width: parent.width
 //        height: 50
         anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 20 }
@@ -239,6 +239,37 @@ Item {
                     root.state = "LargestFileWorkAgain";
 //                    arrow.visible = true;
                 }
+            }
+        }
+
+        Common.Button {
+            id: bitButton
+            width: 120
+            height: 39
+            hoverimage: "green1.png"
+            text: root.btn_text
+            anchors.verticalCenter: parent.verticalCenter
+            onClicked: {
+                console.log(root.check_flag);
+                if(root.check_flag) {
+                    if(size_text.text == "")
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小，请在绿色框中输入数字！");
+                    else if (root.directory == "")
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
+                    else {
+                        if(root.null_flag == true) {
+                           root.state = "LargestFileWorkEmpty";
+                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                        }
+                        else if(root.null_flag == false) {
+                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+        //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+                            root.state = "LargestFileWorkFinish";
+                        }
+                    }
+                }
+                else
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
             }
         }
     }
@@ -505,40 +536,40 @@ Item {
         }//Item
     }//ScrollArea
 
-    Common.Button {
-        id: bitButton
-        width: 120
-        height: 39
-        hoverimage: "green1.png"
-        text: root.btn_text
-//        anchors.verticalCenter: parent.verticalCenter
-        anchors.top: titlebar.bottom
-        anchors.topMargin: 30
-        anchors.right: parent.right
-        anchors.rightMargin: 50
-        onClicked: {
-            console.log(root.check_flag);
-            if(root.check_flag) {
-                if(size_text.text == "")
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小，请在绿色框中输入数字！");
-                else if (root.directory == "")
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
-                else {
-                    if(root.null_flag == true) {
-                       root.state = "LargestFileWorkEmpty";
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
-                    }
-                    else if(root.null_flag == false) {
-                        systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-    //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-                        root.state = "LargestFileWorkFinish";
-                    }
-                }
-            }
-            else
-                sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
-        }
-    }
+//    Common.Button {
+//        id: bitButton
+//        width: 120
+//        height: 39
+//        hoverimage: "green1.png"
+//        text: root.btn_text
+////        anchors.verticalCenter: parent.verticalCenter
+//        anchors.top: titlebar.bottom
+//        anchors.topMargin: 30
+//        anchors.right: parent.right
+//        anchors.rightMargin: 100
+//        onClicked: {
+//            console.log(root.check_flag);
+//            if(root.check_flag) {
+//                if(size_text.text == "")
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小，请在绿色框中输入数字！");
+//                else if (root.directory == "")
+//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
+//                else {
+//                    if(root.null_flag == true) {
+//                       root.state = "LargestFileWorkEmpty";
+//                        sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                    }
+//                    else if(root.null_flag == false) {
+//                        systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//    //                        sessiondispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//                        root.state = "LargestFileWorkFinish";
+//                    }
+//                }
+//            }
+//            else
+//                sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
+//        }
+//    }
 
 
     states: [

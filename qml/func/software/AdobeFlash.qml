@@ -27,14 +27,22 @@ Rectangle {
     id: adobeflash
     property bool on: true
     //需要时常变动的变量
-        property string software_name: content.delegate_name
-        property string software_information: content.delegate_information
-        property string software_image: content.delegate_image
-        property string software_introduction: content.delegate_introduction
-        property string introduction_image1: content.introduction_image1
-        property string introduction_image2: content.introduction_image2
+    property string software_name: content.delegate_name
+    property string software_information: content.delegate_information
+    property string software_image: content.delegate_image
+    property string software_introduction: content.delegate_introduction
+    property string introduction_image1: content.introduction_image1
+    property string introduction_image2: content.introduction_image2
+    property string installed_status: content.install_status
+//    property string appname: ""
     width: parent.width
     height: 475
+
+    function split_string(statusdata) {
+        var splitlist = statusdata.split(":");
+        adobeflash.appname = splitlist[0];
+        adobeflash.installed_status = splitlist[1];
+    }
 
     //背景
     Image {
@@ -127,6 +135,16 @@ Rectangle {
             fontsize: 20
             onClicked: {
                 console.log("立即下载")
+                split_string(software_name);
+                console.log(adobeflash.installed_status);
+//                console.log(adobeflash.appname);
+                if(adobeflash.installed_status == "n") {
+                    console.log("start to install....");
+                    sudodispatcher.install_pkg_qt(adobeflash.software_name);
+                    sudodispatcher.show_progress_dialog();
+                }
+                else if(adobeflash.installed_status == "i")
+                    console.log("is installed already....");
             }
         }
 

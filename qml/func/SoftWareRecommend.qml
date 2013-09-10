@@ -36,10 +36,10 @@ Item {
     Component.onCompleted: {
 //        sudodispatcher.check_pkgs_status_qt(pkgNameList);
     }
-    //信号绑定，绑定qt的信号
-    Connections
-    {
-        target: sudodispatcher
+//    //信号绑定，绑定qt的信号
+//    Connections
+//    {
+//        target: sudodispatcher
 //        onFinishSoftwareFetch: {
 //            console.log(type);
 //            console.log(msg);
@@ -48,11 +48,11 @@ Item {
 //            console.log(type);
 //            console.log(msg);
 //        }
-        onFinishSoftwareCheckStatus: {
-            console.log("Software statusDict->");
-            console.log(statusDict);
-        }
-    }
+//        onFinishSoftwareCheckStatus: {
+//            console.log("Software statusDict->");
+//            console.log(statusDict);
+//        }
+//    }
 
         //背景
     Image {
@@ -80,7 +80,7 @@ Item {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                console.log("pageStack.push(image_flag);")
+//                console.log("pageStack.push(image_flag);")
 //                pageStack.push(image_flag);
             }
         }
@@ -108,8 +108,6 @@ Item {
                 onClicked: {
                     console.log("下载下载下载下载下载下载");
 //                    sudodispatcher.show_progress_dialog();
-                    console.log(mainwindow.pos.x);
-                    console.log(mainwindow.pos.y);
                 }
             }
         }

@@ -21,6 +21,7 @@
         <file>image/blister-small.png</file>
         <file>image/ok-hover.png</file>
         <file>image/quit-hover.png</file>
-        <file>image/progress.png</file>
+        <file>image/accelerate.png</file>
+        <file>image/memory.png</file>
     </qresource>
 </RCC>
