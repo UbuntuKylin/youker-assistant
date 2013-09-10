@@ -29,6 +29,8 @@ class ProgressDialog : public QDialog
 public:
     explicit ProgressDialog(QString msg = "", QWidget *parent = 0);
     ~ProgressDialog();
+public slots:
+    void setValue(int value);
     
 private:
     Ui::ProgressDialog *ui;

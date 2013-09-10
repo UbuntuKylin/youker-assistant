@@ -35,3 +35,7 @@ ProgressDialog::~ProgressDialog()
 {
     delete ui;
 }
+
+void ProgressDialog::setValue(int value) {
+    ui->progressBar->setValue(value);
+}
