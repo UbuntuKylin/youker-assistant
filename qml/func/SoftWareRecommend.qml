@@ -124,6 +124,7 @@ Item {
                 onClicked: {
                     if(screen.image_flag == "qt") {
                         content.delegate_name= "eclipse"
+                        content.delegate_appname = "Eclipse开发平台"
                         content.delegate_information= "Eclipse"
                         content.delegate_image= "../img/logo/eclipse.jpg"
                         content.delegate_introduction="Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）。"
@@ -162,6 +163,7 @@ Item {
                 onClicked: {
                     if(screen.image_flag == "qq") {
                         content.delegate_name= "Wineqq"
+                        content.delegate_appname = "WineQQ安装程序"
                         content.delegate_information= "QQ"
                         content.delegate_image= "../img/logo/qq.jpg"
                         content.delegate_introduction="借助wine模拟运行的腾讯QQ 2012客户端，选自longene项目。"
@@ -187,6 +189,7 @@ Item {
                     }
                     else if(screen.image_flag == "qt") {
                         content.delegate_name= "qtcreator"
+                        content.delegate_appname = "Qt集成开发环境"
                         content.delegate_information= "Qt"
                         content.delegate_image= "../img/logo/qtcreator.jpg"
                         content.delegate_introduction="Qt Creator是跨平台的 Qt IDE， Qt Creator 是 Qt 被 Nokia 收购后推出的一款新的轻量级集成开发环境（IDE）。此 IDE 能够跨平台运行，支持的系统包括 Linux（32 位及 64 位）、Mac OS X 以及 Windows。"
@@ -212,6 +215,7 @@ Item {
                     }
                     else if(screen.image_flag == "wps") {
                             content.delegate_name= "wps"
+                            content.delegate_appname = "WPS办公软件"
                             content.delegate_information= "WPS"
                             content.delegate_image= "../img/logo/wps.jpg"
                             content.delegate_introduction="由珠海金山办公软件有限公司与CCN联合实验室合作推出<WPS for UbuntuKylin>系列办公软件，并由珠海金山办公软件有限公司授权UbuntuKylin开源操作系统个人用户作为最终用户免费下载、安装和使 用。经测试，该版本在12.04和13.04上均可使用。"

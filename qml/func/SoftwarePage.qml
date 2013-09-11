@@ -28,6 +28,7 @@ Rectangle {
     property bool on: true
     //需要时常变动的变量
     property string software_name: content.delegate_name
+    property string software_appname: content.delegate_appname
     property string software_information: content.delegate_information
     property string software_image: content.delegate_image
     property string software_introduction: content.delegate_introduction
@@ -37,23 +38,33 @@ Rectangle {
     width: parent.width
     height: 475
 
+    function show_text(showtext) {
+        if(showtext == "i")
+            return "立即卸载";
+        else if(showtext == "n")
+            return "立即安装";
+        else if(showtext == "u")
+            return "立即升级";
+        else
+            return "N/A";
+    }
 
-        //信号绑定，绑定qt的信号
-        Connections
-        {
-            target: sudodispatcher
-            onFinishSoftwareApt: {
-                if(type == "apt_stop") {
-                    software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-                    if(software.installed_status == "i")
-                        actionBtn.text = "立即卸载";
-                    else if(software.installed_status == "n")
-                        actionBtn.text = "立即安装";
-                    else if(software.installed_status == "u")
-                        actionBtn.text = "立即升级";
-                }
+    //信号绑定，绑定qt的信号
+    Connections
+    {
+        target: sudodispatcher
+        onFinishSoftwareApt: {
+            if(type == "apt_stop") {
+                software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                if(software.installed_status == "i")
+                    actionBtn.text = "立即卸载";
+                else if(software.installed_status == "n")
+                    actionBtn.text = "立即安装";
+                else if(software.installed_status == "u")
+                    actionBtn.text = "立即升级";
             }
         }
+    }
 //    function split_string(statusdata) {
 //        var splitlist = statusdata.split(":");
 //        software.appname = splitlist[0];
@@ -125,7 +136,7 @@ Rectangle {
             spacing: 10
             Text{
                 id:softwarename
-                text:software.software_name
+                text:software.software_appname
                 font.pixelSize: 18
             }
             Text {
@@ -142,15 +153,7 @@ Rectangle {
                 rightMargin: 100
                 verticalCenter: parent.verticalCenter
             }
-            text: {
-                if(software.installed_status == "i")
-                    "立即卸载"
-                else if(software.installed_status == "n")
-                    "立即安装"
-                else if(software.installed_status == "u")
-                    "立即升级"
-            }
-
+            text: software.show_text(software.installed_status)
             fontsize: 20
             onClicked: {
                 software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);

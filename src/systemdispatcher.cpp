@@ -250,6 +250,16 @@ void SystemDispatcher::clean_history_records_qt() {
     thread->start();
 }
 
+void SystemDispatcher::clean_system_history_qt() {
+    KThread *thread = new KThread(systemiface, "clean_system_history");
+    thread->start();
+}
+
+void SystemDispatcher::clean_dash_history_qt() {
+    KThread *thread = new KThread(systemiface, "clean_dash_history");
+    thread->start();
+}
+
 void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
 //    systemiface->call("clean_cookies_records", strlist);
     KThread *thread = new KThread(systemiface, "clean_cookies_records", strlist);

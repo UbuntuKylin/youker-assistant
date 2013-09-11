@@ -33,6 +33,7 @@ Item {
 
 //传给软件推荐二级界面的值
     property string delegate_name: "ubiquity"
+    property string delegate_appname: "Ubuntu安装程序"
     property string delegate_information: "Ubiquity is the install-program 2013-09-09"
     property string delegate_image: ""
     property string delegate_introduction: ""

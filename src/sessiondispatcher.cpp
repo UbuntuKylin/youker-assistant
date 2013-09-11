@@ -58,6 +58,14 @@ int SessionDispatcher::scan_history_records_qt() {
     QDBusReply<int> reply = sessioniface->call("scan_history_records");
     return reply.value();
 }
+int SessionDispatcher::scan_system_history_qt() {
+    QDBusReply<int> reply = sessioniface->call("scan_system_history");
+    return reply.value();
+}
+int SessionDispatcher::scan_dash_history_qt() {
+    QDBusReply<int> reply = sessioniface->call("scan_dash_history");
+    return reply.value();
+}
 QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
     QDBusReply<QStringList> reply = sessioniface->call("scan_of_same", abspath);
     return reply.value();
