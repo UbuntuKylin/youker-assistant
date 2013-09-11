@@ -40,6 +40,8 @@ public:
     Q_INVOKABLE QString get_session_daemon_qt();
 
     Q_INVOKABLE int scan_history_records_qt();
+    Q_INVOKABLE int scan_system_history_qt();
+    Q_INVOKABLE int scan_dash_history_qt();
     Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
     Q_INVOKABLE QStringList scan_of_large_qt(int size, QString abspath);
     Q_INVOKABLE QStringList scan_cookies_records_qt();

@@ -69,13 +69,13 @@ Tray::~Tray()
         delete frame;
 }
 
-void Tray::obtain_network_speed(QStringList speed_value) {
+//void Tray::obtain_network_speed(QStringList speed_value) {
 //    speed = speed_value;
 //    this->uplabel->setText(speed[0] + "K/s");
 //    this->downlabel->setText(speed[1] + "K/s");
 //    this->ratiolabel->setText(ratio + "%");
 ////    emit sysc_data(speed, ratio, used_memory, free_memory, cpu_value);
-}
+//}
 
 void Tray::updateData() {
 //    dispather->get_network_flow_qt();

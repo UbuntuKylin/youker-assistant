@@ -26,6 +26,7 @@
 #include <QString>
 #include <QDeclarativeView>
 #include "authdialog.h"
+#include "progressdialog.h"
 class SudoDispatcher : public QObject
 {
     Q_OBJECT
@@ -40,6 +41,10 @@ public:
     Q_INVOKABLE void bind_signals_after_dbus_start();
     QDBusInterface *sudoiface;
     AuthDialog *authdialog;
+    ProgressDialog *progressdialog;
+
+    QMap<QString, QString> status_dict;
+    Q_INVOKABLE QString get_value(QString);
 
 
     // -------------------------software-center-------------------------
@@ -47,14 +52,19 @@ public:
     Q_INVOKABLE void uninstall_pkg_qt(QString pkgName);
     Q_INVOKABLE void update_pkg_qt(QString pkgName);
     Q_INVOKABLE void check_pkgs_status_qt(QStringList pkgNameList);
+    Q_INVOKABLE QString check_pkg_status_qt(QString pkgName);
+    Q_INVOKABLE void apt_get_update_qt();
     Q_INVOKABLE QStringList get_args();
 signals:
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkError(QString msg);
     void finishSoftwareFetch(QString type, QString msg);
-    void finishSoftwareApt(QString type, QString msg);
+    void finishSoftwareApt(QString type);
 //    void finishSoftwareCheckStatus(QMap<QString, QVariant> statusDict);
     void finishSoftwareCheckStatus(QStringList statusDict);
+
+
+    void getValue(QString type, QString msg);
 
 public slots:
     void handler_clear_rubbish(QString msg);

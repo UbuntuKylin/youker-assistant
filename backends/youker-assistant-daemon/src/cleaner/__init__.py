@@ -67,23 +67,28 @@ class OneKeyClean():
                 resulthistory = record.split('<2_2>')[0]
                 history_list.append(resulthistory)
             result_dic['history'] = history_list
+            result_dic['historydata'] = str(len(history_list))
             del objhistory
 
         ### the part of cookies
         if flag_dic['cookies']:
             cookies_list = []
+            cookiesdata = 0
             objcookies = CleanTheCookies()
             tmp_cookies_list = objcookies.get_scan_result(HOMEDIR)
             for record in tmp_cookies_list:
                 resultcookies = record.split('<2_2>')[0]
+                cookiesdata += int(record.split('<2_2>')[1])
                 cookies_list.append(resultcookies)
             #tmp_cookies_str = '<1_1>'.join(tmp_cookies_list)
             result_dic['cookies'] = cookies_list
+            result_dic['cookiesdata'] = str(cookiesdata)
             del objcookies
 
         ### the part of cache
         if flag_dic['cache']:
             cache_list = []
+            cachedata = 0
             tmp_cache_dic = self.objcache.get_scan_result(HOMEDIR)
             for k in tmp_cache_dic:
                 tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
@@ -91,7 +96,14 @@ class OneKeyClean():
                     resultcache = one.split('<2_2>')[0]
                     cache_list.append(resultcache)
             result_dic['cache'] = cache_list
-
+            for one in cache_list:
+                size = 0
+                if os.path.isdir(one):
+                    size = common.get_dir_size(one)
+                else:
+                    size = os.path.getsize(one)
+                cachedata += size
+            result_dic['cachedata'] = common.confirm_filesize_unit(cachedata)
         return result_dic
 
 
@@ -160,6 +172,11 @@ class CleanDashHistory():
         objhg = dashhistory.DashHistory(homedir)
         num = objhg.scan_the_records()
         return num
+
+    def clean_the_cruftlist(self):
+        global HOMEDIR
+        objhc = dashhistory.DashHistory(HOMEDIR)
+        objhc.clean_the_records()
 
 # the function of clean the cookies
 class CleanTheCookies():

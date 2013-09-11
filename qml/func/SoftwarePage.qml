@@ -20,25 +20,60 @@
 import QtQuick 1.1
 //import SessionType 0.1
 import SystemType 0.1
-import "../common" as Common
-import "../bars" as Bars
-import "../../func" as Func
+import "./common" as Common
+import "./bars" as Bars
+import "../func" as Func
 Rectangle {
-    id: adobeflash
+    id: software
     property bool on: true
     //需要时常变动的变量
-        property string software_name: content.delegate_name
-        property string software_information: content.delegate_information
-        property string software_image: content.delegate_image
-        property string software_introduction: content.delegate_introduction
-        property string introduction_image1: content.introduction_image1
-        property string introduction_image2: content.introduction_image2
+    property string software_name: content.delegate_name
+    property string software_appname: content.delegate_appname
+    property string software_information: content.delegate_information
+    property string software_image: content.delegate_image
+    property string software_introduction: content.delegate_introduction
+    property string introduction_image1: content.introduction_image1
+    property string introduction_image2: content.introduction_image2
+    property string installed_status: content.install_status
     width: parent.width
     height: 475
 
+    function show_text(showtext) {
+        if(showtext == "i")
+            return "立即卸载";
+        else if(showtext == "n")
+            return "立即安装";
+        else if(showtext == "u")
+            return "立即升级";
+        else
+            return "N/A";
+    }
+
+    //信号绑定，绑定qt的信号
+    Connections
+    {
+        target: sudodispatcher
+        onFinishSoftwareApt: {
+            if(type == "apt_stop") {
+                software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                if(software.installed_status == "i")
+                    actionBtn.text = "立即卸载";
+                else if(software.installed_status == "n")
+                    actionBtn.text = "立即安装";
+                else if(software.installed_status == "u")
+                    actionBtn.text = "立即升级";
+            }
+        }
+    }
+//    function split_string(statusdata) {
+//        var splitlist = statusdata.split(":");
+//        software.appname = splitlist[0];
+//        software.installed_status = splitlist[1];
+//    }
+
     //背景
     Image {
-        source: "../../img/skin/bg-bottom-tab.png"
+        source: "../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
     Rectangle{
@@ -85,9 +120,7 @@ Rectangle {
         }
         border.color: "lightgrey"
         Image {
-            id: softwareimage
-            source: software_image
-//            source: softwaredelegate.delegate_image
+            source: software.software_image
             anchors{
                 left: parent.left
                 leftMargin: 20
@@ -103,30 +136,42 @@ Rectangle {
             spacing: 10
             Text{
                 id:softwarename
-                text:software_name
-//                text:softwaredelegate.delegate_name
-
+                text:software.software_appname
                 font.pixelSize: 18
             }
             Text {
                 id: softwareinformation
-                text: software_information
-//                text:softwaredelegate.delegate_information
-
+                text: software.software_information
                 font.pixelSize: 14
             }
         }
         Common.Button{
+            id: actionBtn
             width:145;height: 43
             anchors{
                 right:parent.right
-                rightMargin: 125
+                rightMargin: 100
                 verticalCenter: parent.verticalCenter
             }
-            text:"立即下载"
+            text: software.show_text(software.installed_status)
             fontsize: 20
             onClicked: {
-                console.log("立即下载")
+                software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                if(software.installed_status == "n") {
+                    console.log("start to install....");
+                    sudodispatcher.show_progress_dialog();
+                    sudodispatcher.install_pkg_qt(software.software_name);
+                }
+                else if(software.installed_status == "i") {
+                    console.log("is installed already, start to uninstall....");
+                    sudodispatcher.show_progress_dialog();
+                    sudodispatcher.uninstall_pkg_qt(software.software_name);
+                }
+                else if(software.installed_status == "u") {
+                    console.log("is installed already, start to update....");
+                    sudodispatcher.show_progress_dialog();
+                    sudodispatcher.update_pkg_qt(software.software_name);
+                }
             }
         }
 

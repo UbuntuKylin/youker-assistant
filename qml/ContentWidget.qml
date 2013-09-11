@@ -24,7 +24,6 @@ import SudoType 0.1
 import FcitxCfgWizard 0.1    //  kobe08
 import "./func/common" as Common
 import "./func/settings" as SysSettings
-import "./func/software" as SoftWare
 import "func"
 //Rectangle {
 Item {
@@ -33,12 +32,14 @@ Item {
     height: parent.height - 30  //去掉StatusWidget所占用的高度30
 
 //传给软件推荐二级界面的值
-    property string delegate_name: "Qafa1asd"
-    property string delegate_information: "asdasd:asdfsa12   afasf:1231M  asfs:2013-9-1"
-    property string delegate_image: "../../img/icons/bug.png"
-    property string delegate_introduction: "腾讯QQ（统一简称“QQ”）是腾讯公司开发的一款基于Internet的即时通信（IM）软件。腾讯QQ支持在线聊天、视频电话、点对点断点续传文件、共享文件、网络硬盘、自定义面板、QQ邮箱等多种功能，并可与移动通讯终端等多种通讯方式相连."
-    property string introduction_image1: "../../img/skin/HighContrast.png"
-    property string introduction_image2: "../../img/skin/Radiance.png"
+    property string delegate_name: "ubiquity"
+    property string delegate_appname: "Ubuntu安装程序"
+    property string delegate_information: "Ubiquity is the install-program 2013-09-09"
+    property string delegate_image: ""
+    property string delegate_introduction: ""
+    property string introduction_image1: ""
+    property string introduction_image2: ""
+    property string install_status: "n"
 
 
 //    radius: 10
@@ -136,84 +137,9 @@ Item {
 
                     //SoftWare-pages
                     Common.Page {
-                        id: adobeflashpage
+                        id: softwarepage
                         visible: false
-                        SoftWare.AdobeFlash {}
-                    }
-                    Common.Page {
-                        id: chromiumpage
-                        visible: false
-                        SoftWare.Chromium {}
-                    }
-                    Common.Page {
-                        id: eclipseqtpage
-                        visible: false
-                        SoftWare.EclipseQt {}
-                    }
-                    Common.Page {
-                        id: ircpage
-                        visible: false
-                        SoftWare.Irc {}
-                    }
-                    Common.Page {
-                        id: kuaipanpage
-                        visible: false
-                        SoftWare.Kuaipan {}
-                    }
-                    Common.Page {
-                        id: kugoumusicpage
-                        visible: false
-                        SoftWare.KugouMusic {}
-                    }
-                    Common.Page {
-                        id: lotuspage
-                        visible: false
-                        SoftWare.Lotus {}
-                    }
-                    Common.Page {
-                        id: ppspage
-                        visible: false
-                        SoftWare.Pps {}
-                    }
-                    Common.Page {
-                        id: qbittorrentpage
-                        visible: false
-                        SoftWare.QbitTorrent {}
-                    }
-                    Common.Page {
-                        id: stardictpage
-                        visible: false
-                        SoftWare.StarDict {}
-                    }
-                    Common.Page {
-                        id: vicpage
-                        visible: false
-                        SoftWare.Vic {}
-                    }
-                    Common.Page {
-                        id: virtualboxpage
-                        visible: false
-                        SoftWare.VirtualBox {}
-                    }
-                    Common.Page {
-                        id: wineqqpage
-                        visible: false
-                        SoftWare.Wineqq {}
-                    }
-                    Common.Page {
-                        id: wpspage
-                        visible: false
-                        SoftWare.Wps {}
-                    }
-                    Common.Page {
-                        id: xchatpage
-                        visible: false
-                        SoftWare.XChat {}
-                    }
-                    Common.Page {
-                        id: xunleipage
-                        visible: false
-                        SoftWare.XunLei {}
+                        SoftwarePage {}
                     }
 
 

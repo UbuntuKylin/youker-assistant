@@ -39,6 +39,15 @@ void KThread::run()
     else if(method_name == "clean_file_cruft") {
         iface->call("clean_file_cruft", list, file_flag);
     }
+    else if(method_name == "install_pkg") {
+        iface->call("install_pkg", file_flag);
+    }
+    else if(method_name == "uninstall_pkg") {
+        iface->call("uninstall_pkg", file_flag);
+    }
+    else if(method_name == "update_pkg") {
+        iface->call("update_pkg", file_flag);
+    }
 }
 void KThread::stop()
 {

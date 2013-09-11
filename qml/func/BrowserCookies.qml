@@ -39,6 +39,7 @@ Item {
     property int sub_num:coo_sub_num
     property bool check_flag: true
     property bool null_flag: false
+    property int deleget_arrow :0
 
     signal cookies_signal(string cookies_msg);
     onCookies_signal: {
@@ -46,10 +47,15 @@ Item {
             //get data of cookies
 //            var cookies_data = systemdispatcher.scan_cookies_records_qt();
             var cookies_data = sessiondispatcher.scan_cookies_records_qt();
-            if (cookies_data == "")
+            if (cookies_data == "") {
                 root.null_flag = true;
-            else
+                if(statusImage.visible == true)
+                    statusImage.visible = false;
+            }
+            else {
                 root.null_flag = false;
+                statusImage.visible = true;
+            }
             root.coo_sub_num = cookies_data.length;
             systemdispatcher.clear_cookies_args();
             subModel.clear();
@@ -130,6 +136,7 @@ Item {
                 if (msg == "cookies") {
                     root.work_result = msg;
                     root.state = "CookiesWorkFinish";
+                    cookies_signal("CookiesWork");
                 }
             }
         }
@@ -183,6 +190,7 @@ Item {
 //        }
         Common.StatusImage {
             id: statusImage
+            visible: false
             iconName: "yellow.png"
             text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
@@ -210,15 +218,20 @@ Item {
                      cookies_signal("CookiesWork");
                      if(root.null_flag == true) {
                         root.state = "CookiesWorkEmpty";
+                         deleget_arrow=0;
                          sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
                      }
                      else if(root.null_flag == false)
+                     {
                         root.state = "CookiesWork";
+                         deleget_arrow=1;
+                     }
                  }
                  else if (btn_flag == "cookies_work") {
                      systemdispatcher.set_user_homedir_qt();
                      systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
 //                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
+                     deleget_arrow=1;
                  }
                 }
                 else
@@ -406,7 +419,7 @@ Item {
                 height: parent.height
                 model: mainModel
                 delegate: Cleardelegate{
-                    sub_num:root.coo_sub_num;sub_model:subModel;btn_flag:root.btn_flag;
+                    sub_num:root.coo_sub_num;sub_model:subModel;btn_flag:root.btn_flag;arrow_display:deleget_arrow;
                     delegate_flag: false
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}
@@ -430,27 +443,28 @@ Item {
              PropertyChanges { target: label; visible: true; text: "cookies扫描完成"}
              PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; btn_flag: "cookies_work" }
+            PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
         State {
             name: "CookiesWorkError"
             PropertyChanges { target: label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: bitButton; text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
-            PropertyChanges { target: statusImage; iconName: "red.png"; text: "出现异常"}
+            PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "CookiesWorkFinish"
             PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
-            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "CookiesWorkEmpty"
             PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
-            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: statusImage; visible: false}
         }
     ]
 }

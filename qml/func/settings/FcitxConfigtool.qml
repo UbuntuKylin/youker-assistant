@@ -478,7 +478,7 @@ Rectangle {
                 anchors.rightMargin: 0
                 width: 10
                 height:30
-                y: rightLisv.visibleArea.yPosition*( rightscrollbar.height-rightbutton.height+rightLisv.visibleArea.heightRatio * (rightscrollbar.height-30) )   //?
+                y: rightLisv.visibleArea.yPosition* (rightscrollbar.height-rightbutton.height)   //?
          //       height: rightLisv.visibleArea.heightRatio * rightscrollbar.height; //?
                 radius: 3
                 smooth: true
@@ -515,8 +515,7 @@ Rectangle {
 //                        console.log(rightscrollbar.height)
 //                        console.log(rightLisv.contentHeight)
 //                        console.log(rightLisv.visibleArea.heightRatio)
-                        rightLisv.contentY = (rightbutton.y / (rightscrollbar.height-rightbutton.height+rightLisv.visibleArea.heightRatio * (rightscrollbar.height-30))
-                                              * rightLisv.contentHeight)
+                        rightLisv.contentY = (rightbutton.y / (rightscrollbar.height-30+(rightLisv.visibleArea.heightRatio * (rightscrollbar.height-30)))* rightLisv.contentHeight)
 
                     }
                 }

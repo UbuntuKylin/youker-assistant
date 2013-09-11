@@ -23,17 +23,24 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowOpacity(1.0);
-    ui->msglabel->setText("试试鼠标左键双击屏幕右上角监控球...");
-    ui->title1->setText("电脑运行缓慢");
-    ui->title2->setText("建议一键加速");
+//    ui->msglabel->setText("试试鼠标左键双击屏幕右上角监控球...");
+    ui->title1->setText("系统运行流畅");
+    ui->title2->setText("无需进行加速");
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 80);
     ratio_sus = 0;
 //    ui->ratiolabel->setStyleSheet();
-    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);color: white; font-size: 12px}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+//    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);color: white; font-size: 12px}"
+//                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+
+    ui->descBtn->setStyleSheet("QPushButton {border:0px;color:#1790c9}");
+    ui->descBtn->setText("详细");
+    ui->descBtn->setFlat(true);
+    ui->descBtn->setFocusPolicy(Qt::NoFocus);
+
+    this->resize(265, 173);
 }
 
 SuspensionFrame::~SuspensionFrame()
@@ -43,9 +50,16 @@ SuspensionFrame::~SuspensionFrame()
 
 void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio) {
     ratio_sus = ratio.toInt();
+//    used_memory_sus=used_memory;
+//    free_memory_sus=free_memory.toInt();
+//    cpu_ratio_sus=cpu_ratio.toInt();
     ui->uplabel->setText(upspeed + "K/s");
     ui->downlabel->setText(downspeed + "K/s");
     ui->ratiolabel->setText(ratio + "%");
+    ui->ratiolabel_2->setText(cpu_ratio + "%");
+    ui->memory_1->setText(tr("%1").arg(used_memory)+"M");
+    ui->memory_2->setText(free_memory+"M");
+
 //    this->drawLine();
 //    update_draw();
     update();
@@ -87,7 +101,10 @@ void SuspensionFrame::mouseReleaseEvent(QMouseEvent *event)
 
 void SuspensionFrame::on_descBtn_clicked()
 {
-
+    if(this->height()  == 173)
+        this->resize(265, 288);
+    else if(this->height()  == 288)
+        this->resize(265, 173);
 }
 
 void SuspensionFrame::on_fastBtn_clicked()
@@ -111,11 +128,11 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
     QStyleOption opt;
-
+    QPixmap memory;
     QPixmap background;
     background.load(":/pixmap/image/accelerate-bg.png");
+    memory.load(":/pixmap/image/memory.png");
     painter.drawPixmap(0,0, background);
-
 
 //    QPainter painter(&wheel);   //wheel作为画图对象？
 //    QPainter paint(&blister);
@@ -139,11 +156,15 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
     else if(ratio_sus > 80) {
         color2="#d13625";
         color3="#d5311e";
+        ui->title1->setText("电脑运行缓慢");
+        ui->title2->setText("建议一键加速");
 //        blister.load(":/pixmap/image/blister-bigwarn.png");
     }
     else {
         color2="#00b0ff";
         color3="#006eff";
+        ui->title1->setText("系统运行流畅");
+        ui->title2->setText("无需进行加速");
 //        blister.load(":/pixmap/image/blister-big.png");
     }
 
@@ -157,6 +178,8 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
 
     opt.init(this);
     painter.drawImage(0,0,wheel);
+//    memory.scaled()
+    painter.drawPixmap(44,231,memory,0,0,memory.width()*(ratio_sus* 0.01),memory.height());
 
     painter.drawPixmap(7,7, blister);
     style()->drawPrimitive(QStyle::PE_Widget,&opt,&painter,this);

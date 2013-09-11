@@ -40,6 +40,9 @@ private:
     QPixmap blister;
 //    void update_draw();
     int ratio_sus;
+//    int used_memory_sus;
+//    int free_memory_sus;
+//    int cpu_ratio_sus;
 signals:
     void accelerate_memory();
 protected:

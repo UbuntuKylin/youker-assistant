@@ -28,7 +28,7 @@ class DiskAnalyse():
     def hundred_large_files(self, size, path):
         mypath = path
         if not os.path.exists(mypath):
-            raise Exception("make a mistake")
+            raise Exception("Diskanalyse: path did not exist")
         for rootpath, dirnames, filenames in os.walk(mypath):
             for filename in filenames:
                 flag = True

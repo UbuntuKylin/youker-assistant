@@ -32,6 +32,7 @@ Rectangle {
     property string image1: "../img/skin/qq0.png"
     property string image2: "../img/skin/qt0.png"
     property string image3: "../img/skin/wps0.png"
+    property string mage_source: image1
 
 //    property SystemDispatcher dis2: systemdispatcher
     ListModel {
@@ -152,20 +153,20 @@ Rectangle {
         }
         Image {
             id: mage
-            source: image1
+            source: mage_source
         }
         MouseArea{
             anchors.fill: parent
             onClicked:  {
-                sudodispatcher.show_progress_dialog();
-//                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-//                    sudodispatcher.bind_signals_after_dbus_start();
-//                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
-//                    pageStack.push(softwarerecommend);
-//                }
-//                else {
-//                    sudodispatcher.show_passwd_dialog();
-//                }
+//                sudodispatcher.show_progress_dialog();
+                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+                    sudodispatcher.bind_signals_after_dbus_start();
+                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                    pageStack.push(softwarerecommend);
+                }
+                else {
+                    sudodispatcher.show_passwd_dialog();
+                }
 
             }
         }
@@ -184,7 +185,7 @@ Rectangle {
                 flag: "flowradio"
                 onClicked: {
                     if (image_one.checked == true) {
-                        mage.source=image1
+                        mage_source=image1
                     }
                 }
             }
@@ -194,7 +195,7 @@ Rectangle {
                 flag: "flowradio"
                 onClicked: {
                     if (image_two.checked == true) {
-                        mage.source=image2
+                        mage_source=image2
                     }
                 }
             }
@@ -204,41 +205,69 @@ Rectangle {
                 flag: "flowradio"
                 onClicked: {
                     if (image_three.checked == true) {
-                        mage.source=image3
+                        mage_source=image3
                     }
                 }
             }
         }
-        Row{
-            anchors{
-                bottom:mage.bottom
-                bottomMargin: 15
-                left: parent.left
-                leftMargin: 15
-            }
-            spacing: 5
-            Common.Button{
-                id:button1
-                hoverimage: "radiobox.png"
-                onClicked: {
-                    mage.source="../img/icons/kugou.png"
+        Timer{
+            interval: 3000;running: true;repeat: true
+            onTriggered: {
+                if(mage_source==image1)
+                {
+                    mage_source=image2;
+                    image_two.checked=true;
+                    image_three.checked=false;
+                    image_one.checked=false;
                 }
-            }
-            Common.Button{
-                id:button2
-                hoverimage: "radiobox.png"
-                onClicked: {
-                    mage.source="../img/icons/kugou.png"
+                else if(mage_source==image2)
+                {
+                    mage_source=image3;
+                    image_three.checked=true;
+                    image_one.checked=false;
+                    image_two.checked=false;
+
                 }
-            }
-            Common.Button{
-                id:button3
-                hoverimage: "radiobox.png"
-                onClicked: {
-                    mage.source="../img/icons/kugou.png"
+                else if(mage_source==image3)
+                {
+                    mage_source=image1;
+                    image_one.checked=true;
+                    image_three.checked=false;
+                    image_two.checked=false;
                 }
             }
         }
+
+//        Row{
+//            anchors{
+//                bottom:mage.bottom
+//                bottomMargin: 15
+//                left: parent.left
+//                leftMargin: 15
+//            }
+//            spacing: 5
+//            Common.Button{
+//                id:button1
+//                hoverimage: "radiobox.png"
+//                onClicked: {
+//                    mage.source="../img/icons/kugou.png"
+//                }
+//            }
+//            Common.Button{
+//                id:button2
+//                hoverimage: "radiobox.png"
+//                onClicked: {
+//                    mage.source="../img/icons/kugou.png"
+//                }
+//            }
+//            Common.Button{
+//                id:button3
+//                hoverimage: "radiobox.png"
+//                onClicked: {
+//                    mage.source="../img/icons/kugou.png"
+//                }
+//            }
+//        }
     }
 
 //    Text {
