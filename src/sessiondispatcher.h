@@ -50,16 +50,14 @@ public:
     Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
     Q_INVOKABLE void exit_qt();
 
-    Q_INVOKABLE void send_message_dialog();
-    void create_messagedialog();
+    Q_INVOKABLE void send_message_dialog(int window_x, int window_y);
+    void create_messagedialog(int window_x, int window_y);
 
-    Q_INVOKABLE void send_checkscreen_dialog();
-    void create_checkscreendialog();
+    Q_INVOKABLE void send_checkscreen_dialog(int window_x, int window_y);
+    void create_checkscreendialog(int window_x, int window_y);
 
-    Q_INVOKABLE void send_warningdialog_msg(QString title, QString content);
-    void create_warningdialog(QString title, QString content);
-    Q_INVOKABLE void send_restartdialog_msg();
-    void create_restartdialog();
+    Q_INVOKABLE void send_warningdialog_msg(QString title, QString content, int window_x, int window_y);
+    void create_warningdialog(QString title, QString content, int window_x, int window_y);
 
 
     Q_INVOKABLE void set_page_num(int num);
@@ -170,6 +168,15 @@ public slots:
     QString show_signal(QString msg);
 //    QString show_signal(QStringList msg);
     void handler_scan_rubbish(QString msg);
+private:
+    int mainwindow_width;
+    int mainwindow_height;
+    int alert_width;
+    int alert_height;
+    //本次alert的x坐标
+    int alert_x;
+    //保额次alert的y坐标
+    int alert_y;
 };
 
 #endif // SESSIONDISPATCHER_H

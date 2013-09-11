@@ -25,7 +25,6 @@
 #include <QString>
 #include "messagedialog.h"
 #include "warningdialog.h"
-#include "restartdialog.h"
 #include <QDesktopWidget>
 #include <QDeclarativeContext>
 #include <QFontDialog>
@@ -43,6 +42,11 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 //    QObject::connect(sessioniface,SIGNAL(pc_msg(QStringList)),this,SLOT(show_signal(QStringList)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
     page_num = 0;
+
+    this->mainwindow_width = 850;
+    this->mainwindow_height = 600;
+    this->alert_width = 329;
+    this->alert_height = 195;
 }
 
 void SessionDispatcher::handler_scan_rubbish(QString msg)
@@ -125,47 +129,43 @@ void SessionDispatcher::get_system_message_qt() {
 }
 
 //----------------message dialog--------------------
-void SessionDispatcher::send_message_dialog() {
-    create_messagedialog();
+void SessionDispatcher::send_message_dialog(int window_x, int window_y) {
+    create_messagedialog(window_x, window_y);
 }
-void SessionDispatcher::create_messagedialog() {
+void SessionDispatcher::create_messagedialog(int window_x, int window_y) {
     MessageDialog *dialog = new MessageDialog();
-    dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    dialog->move(this->alert_x, this->alert_y);
+//    dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
     dialog->show();
 }
 //------------------------------------
 
 //----------------checkscreen dialog--------------------
-void SessionDispatcher::send_checkscreen_dialog()
+void SessionDispatcher::send_checkscreen_dialog(int window_x, int window_y)
 {
-    create_checkscreendialog();
+    create_checkscreendialog(window_x, window_y);
 }
-void SessionDispatcher::create_checkscreendialog() {
+void SessionDispatcher::create_checkscreendialog(int window_x, int window_y) {
     ModalDialog *dialog = new ModalDialog;
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    dialog->move(this->alert_x, this->alert_y);
     dialog->setModal(true);
     dialog->show();
 }
 //------------------------------------
 
-//----------------warning dialog--------------------
-void SessionDispatcher::send_restartdialog_msg() {
-    create_restartdialog();
+void SessionDispatcher::send_warningdialog_msg(QString title, QString content, int window_x, int window_y) {
+    create_warningdialog(title, content, window_x, window_y);
 }
-void SessionDispatcher::create_restartdialog() {
-
-    RestartDialog *dialog = new RestartDialog();
-    dialog->exec();
-//    dialog->setModal(true);
-//    dialog->show();
-}
-
-
-void SessionDispatcher::send_warningdialog_msg(QString title, QString content) {
-    create_warningdialog(title, content);
-}
-void SessionDispatcher::create_warningdialog(QString title, QString content) {
+void SessionDispatcher::create_warningdialog(QString title, QString content, int window_x, int window_y) {
 
     WarningDialog *dialog = new WarningDialog(title, content);
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    dialog->move(this->alert_x, this->alert_y);
     dialog->exec();
 //    dialog->setModal(true);
 //    dialog->show();

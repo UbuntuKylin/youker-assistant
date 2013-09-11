@@ -55,7 +55,7 @@ Rectangle {
         onClicked: {
             //屏幕坏点检测
             if (flag == "CheckScreen")
-                sessiondispatcher.send_checkscreen_dialog();
+                sessiondispatcher.send_checkscreen_dialog(mainwindow.pos.x, mainwindow.pos.y);
             else if (flag == "WidgetTheme")
                 pageStack.push(widgetthemepage);
             else if (flag == "DesktopiconSet")

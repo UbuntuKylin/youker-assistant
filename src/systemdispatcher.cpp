@@ -57,10 +57,18 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
     QObject::connect(systemiface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
+    QObject::connect(systemiface,SIGNAL(clean_data_main(QString,QString)),this,SLOT(handler_clean_data_main(QString, QString)));
+    QObject::connect(systemiface,SIGNAL(clean_data_second(QString,QString)),this,SLOT(handler_clean_data_second(QString,QString)));
 
     history_flag = true;
     onekey_args << "cache" << "history" << "cookies";
     onekey_args2 << "cache" << "history" << "cookies";
+    tmplist << "Kobe" << "Lee";
+
+    this->mainwindow_width = 850;
+    this->mainwindow_height = 600;
+    this->alert_width = 329;
+    this->alert_height = 195;
 }
 
 void SystemDispatcher::handler_clear_rubbish_error(QString msg)
@@ -141,6 +149,12 @@ void SystemDispatcher::handler_network_speed(QStringList speed) {
     emit finishGetNetworkSpeed(speed);
 }
 
+void SystemDispatcher::handler_clean_data_main(QString type, QString msg) {
+    emit finishCleanDataMain(type, msg);
+}
+void SystemDispatcher::handler_clean_data_second(QString type, QString msg) {
+    emit finishCleanDataSecond(type, msg);
+}
 void SystemDispatcher::send_btn_msg(QString str)
 {
     systemiface->call("test_fastclear", str);
@@ -192,7 +206,7 @@ QString SystemDispatcher::get_free_memory_qt() {
 
 void SystemDispatcher::get_network_flow_qt() {
 //    systemiface->call("get_network_flow");
-    KThread *thread = new KThread(systemiface, "get_network_flow");
+    KThread *thread = new KThread(systemiface, "get_network_flow", tmplist);
     thread->start();
 }
 
@@ -245,18 +259,17 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
 
 void SystemDispatcher::clean_history_records_qt() {
 //    systemiface->call("clean_history_records");
-
-    KThread *thread = new KThread(systemiface, "clean_history_records");
+    KThread *thread = new KThread(systemiface, "clean_history_records", tmplist);
     thread->start();
 }
 
 void SystemDispatcher::clean_system_history_qt() {
-    KThread *thread = new KThread(systemiface, "clean_system_history");
+    KThread *thread = new KThread(systemiface, "clean_system_history", tmplist);
     thread->start();
 }
 
 void SystemDispatcher::clean_dash_history_qt() {
-    KThread *thread = new KThread(systemiface, "clean_dash_history");
+    KThread *thread = new KThread(systemiface, "clean_dash_history", tmplist);
     thread->start();
 }
 
@@ -473,7 +486,10 @@ QMap<QString, QVariant> SystemDispatcher::scan_by_one_key_qt() {
 }
 
 
-void SystemDispatcher::show_passwd_dialog() {
+void SystemDispatcher::show_passwd_dialog(int window_x, int window_y) {
     AuthDialog *dialog = new AuthDialog;
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    dialog->move(this->alert_x, this->alert_y);
     dialog->exec();
 }

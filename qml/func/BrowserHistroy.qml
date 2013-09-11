@@ -57,7 +57,7 @@ Item {
 //                if(browserstatus.visible == true) {
                     browserstatus.visible = false;
                     browserstatus.state = "BrowserWorkEmpty";
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
 //                }
             }
             else {
@@ -76,7 +76,7 @@ Item {
 //                if(systemstatus.visible == true){
                     systemstatus.visible = false;
                     systemstatus.state = "OpenWorkEmpty";
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
 //                }
             }
             else {
@@ -98,7 +98,7 @@ Item {
                     systemstatus.visible = false;
                 browserstatus.state = "BrowserWorkEmpty";
                 systemstatus.state = "OpenWorkEmpty";
-                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 browserstatus.state="BrowserWork";
@@ -202,7 +202,7 @@ Item {
                      if(!checkboxe1.checked && !checkboxe2.checked) {
                          browserstatus.visible = false;
                          systemstatus.visible = false;
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！");
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else {
                          if(checkboxe1.checked && !checkboxe2.checked)
@@ -213,7 +213,7 @@ Item {
                              history_bnt_signal("AllWork");
 //                          if(root.null_flag == true) {
 //                             root.state = "HistoryWorkEmpty";
-//                              sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                              sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
 //                          }
 //                          else if(root.null_flag == false) {
 //                             root.state = "HistoryWork";
@@ -223,7 +223,7 @@ Item {
                  }
                 else if (btn_flag == "history_work") {
                      if(!checkboxe1.checked && !checkboxe2.checked)
-                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中记录清理项，请确认！");
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中记录清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                     else {
                          systemdispatcher.set_user_homedir_qt();
                         if(checkboxe1.checked) {

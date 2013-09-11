@@ -37,7 +37,6 @@ HEADERS += youker-application.h \
     qtmenu.h \
     qtmenuitem.h \
     qtoplevelwindow.h \
-    restartdialog.h \
     qcursorarea.h \
     qtooltiparea.h \
     qtmenubar.h \
@@ -78,7 +77,6 @@ SOURCES += main.cpp \
     qtmenu.cpp \
     qtmenuitem.cpp \
     qtoplevelwindow.cpp \
-    restartdialog.cpp \
     qcursorarea.cpp \
     qtooltiparea.cpp \
     qtmenubar.cpp \

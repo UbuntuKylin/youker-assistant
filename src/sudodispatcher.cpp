@@ -33,6 +33,13 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
     progressdialog = new ProgressDialog;
+    strlist << "Kobe" << "Lee";
+
+    this->mainwindow_width = 850;
+    this->mainwindow_height = 600;
+    this->alert_width = 292;
+    this->alert_width_bg = 329;
+    this->alert_height = 54;
 //    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
 }
@@ -112,16 +119,23 @@ void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict
 //    emit finishSoftwareCheckStatus(statusDict);
 }
 
-void SudoDispatcher::show_passwd_dialog() {
+void SudoDispatcher::show_passwd_dialog(int window_x, int window_y) {
     authdialog = new AuthDialog("提示：请输入当前用户登录密码，然后重新点击该区域，保证优客助手的正常使用。");
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    authdialog->move(this->alert_x, this->alert_y);
     authdialog->exec();
 }
 
-void SudoDispatcher::show_progress_dialog(/*int window_x, int window_y*/) {
+void SudoDispatcher::show_progress_dialog(int window_x, int window_y) {
 //    ProgressDialog progressdialog;
 //    progressdialog.exec();
 //    progressdialog = new ProgressDialog (window_x, window_y);
 //    progressdialog->exec();
+
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    progressdialog->move(this->alert_x, this->alert_y);
     progressdialog->show();
 }
 
@@ -150,8 +164,6 @@ QString SudoDispatcher::get_value(QString key)
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
     qDebug() << "start to install";
     qDebug() << pkgName;
-    QStringList strlist;
-    strlist << "Kobe" << "Lee";
     KThread *thread = new KThread(sudoiface, "install_pkg", strlist, pkgName);
     thread->start();
 //    sudoiface->call("install_pkg", pkgName);
@@ -159,14 +171,10 @@ void SudoDispatcher::install_pkg_qt(QString pkgName) {
 void SudoDispatcher::uninstall_pkg_qt(QString pkgName) {
 
 //    sudoiface->call("uninstall_pkg", pkgName);
-    QStringList strlist;
-    strlist << "Kobe" << "Lee";
     KThread *thread = new KThread(sudoiface, "uninstall_pkg", strlist, pkgName);
     thread->start();
 }
 void SudoDispatcher::update_pkg_qt(QString pkgName) {
-    QStringList strlist;
-    strlist << "Kobe" << "Lee";
     KThread *thread = new KThread(sudoiface, "update_pkg", strlist, pkgName);
     thread->start();
 //    sudoiface->call("update_pkg", pkgName);

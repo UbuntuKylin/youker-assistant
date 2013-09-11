@@ -17,15 +17,11 @@
 #include "ui_progressdialog.h"
 #include <QDebug>
 #include <QMouseEvent>
-ProgressDialog::ProgressDialog(/*int parent_x, int parent_y, */QWidget *parent) :
+ProgressDialog::ProgressDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ProgressDialog)
 {
     ui->setupUi(this);
-//    this->mainwindow_width = 850;
-//    this->mainwindow_height = 600;
-//    this->alert_width = 200;
-//    this->alert_height = 75;
     this->setAttribute(Qt::WA_DeleteOnClose);
 //    this->setWindowFlags(Qt::FramelessWindowHint);
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
@@ -33,10 +29,6 @@ ProgressDialog::ProgressDialog(/*int parent_x, int parent_y, */QWidget *parent) 
     ui->label->setStyleSheet("QLabel {color: green; font-size: 12px}");
     ui->progressBar->setStyleSheet("QProgressBar {border: 1px solid grey;border-radius: 2px;text-align: center;}"
                                     "QProgressBar::chunk {background-color: #6be2fa;width: 10px;}");
-
-//    this->alert_x = parent_x + (mainwindow_width / 2) - (alert_width  / 2);
-//    this->alert_y = parent_y + mainwindow_height - 200;
-//    this->move(this->alert_x, this->alert_y);
     QDesktopWidget* desktop = QApplication::desktop();
     move((desktop->width() - this->width())/2, (desktop->height() - this->height())/2);
 }

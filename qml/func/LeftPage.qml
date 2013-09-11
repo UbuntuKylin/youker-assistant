@@ -41,6 +41,12 @@ Rectangle {
                     historystatus.visible = false;
                 if (cookiestatus.visible == true)
                     cookiestatus.visible = false;
+                if (cachedes.visible == true)
+                    cachedes.visible = false;
+                if (historydes.visible == true)
+                    historydes.visible = false;
+                if (cookiedes.visible == true)
+                    cookiedes.visible = false;
             }
             else if (msg == "c") {
                 cachestatus.state = "StatusC";
@@ -61,12 +67,35 @@ Rectangle {
         onFinishCleanWorkMainError: {
             if (msg == "ce") {
                 cachestatus.state = "StatusC1";
+                if (cachedes.visible == true)
+                    cachedes.visible = false;
             }
             else if (msg == "he") {
                 historystatus.state = "StatusH1";
+                if (historydes.visible == true)
+                    historydes.visible = false;
             }
             else if (msg == "ke") {
                cookiestatus.state = "StatusK1";
+                if (cookiedes.visible == true)
+                    cookiedes.visible = false;
+            }
+        }
+        onFinishCleanDataMain: {
+            console.log("onFinishCleanDataMain->");
+            console.log(type);
+            console.log(msg);
+            if (msg == "c") {
+                cachedes.text = msg;
+                cachedes.visible = true;
+            }
+            else if (msg == "h") {
+                historydes.text = msg;
+                historydes.visible = true;
+            }
+            else if (msg == "k") {
+                cookiedes.text = msg;
+                cookiedes.visible = true;
             }
         }
     }
@@ -242,11 +271,19 @@ Rectangle {
 
                                     Column {
                                         spacing: 5
-                                        Text {
-                                            text: "清理垃圾"//titlename
-                                            font.bold: true
-                                            font.pixelSize: 14
-                                            color: "#383838"
+                                        Row {
+                                            spacing: 20
+                                            Text {
+                                                text: "清理垃圾"//titlename
+                                                font.bold: true
+                                                font.pixelSize: 14
+                                                color: "#383838"
+                                            }
+                                            Text {
+                                                id: cachedes
+                                                text: ""
+                                                visible: false
+                                            }
                                         }
                                         Text {
                                             text: "清理系统中的垃圾文件，释放磁盘空间"//detailstr
@@ -339,11 +376,19 @@ Rectangle {
 
                             Column {
                                 spacing: 5
-                                Text {
-                                    text: "清理历史记录"//titlename
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
+                                Row {
+                                    spacing: 20
+                                    Text {
+                                        text: "清理历史记录"//titlename
+                                        font.bold: true
+                                        font.pixelSize: 14
+                                        color: "#383838"
+                                    }
+                                    Text {
+                                        id: historydes
+                                        text: ""
+                                        visible: false
+                                    }
                                 }
                                 Text {
                                     text: "清理上网时留下的历史记录，保护您的个人隐私"//detailstr
@@ -430,11 +475,19 @@ Rectangle {
 
                             Column {
                                 spacing: 5
-                                Text {
-                                    text: "清理Cookies"//titlename
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
+                                Row {
+                                    spacing: 20
+                                    Text {
+                                        text: "清理Cookies"//titlename
+                                        font.bold: true
+                                        font.pixelSize: 14
+                                        color: "#383838"
+                                    }
+                                    Text {
+                                        id: cookiedes
+                                        text: ""
+                                        visible: false
+                                    }
                                 }
                                 Text {
                                     text: "清理上网时产生的Cookies，还浏览器一片天空"//detailstr

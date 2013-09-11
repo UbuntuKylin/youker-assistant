@@ -165,7 +165,7 @@ Rectangle {
                     pageStack.push(softwarerecommend);
                 }
                 else {
-                    sudodispatcher.show_passwd_dialog();
+                    sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 }
 
             }
@@ -380,7 +380,7 @@ Rectangle {
                   onExited: btnImg2.source = ""
 
                   onClicked: {
-                      sessiondispatcher.send_message_dialog();
+                      sessiondispatcher.send_message_dialog(mainwindow.pos.x, mainwindow.pos.y);
                   }
             }
             Image {

@@ -34,8 +34,8 @@ public:
     explicit SudoDispatcher(QObject *parent = 0);
     ~SudoDispatcher();
     Q_INVOKABLE void exit_qt();
-    Q_INVOKABLE void show_passwd_dialog();
-    Q_INVOKABLE void show_progress_dialog(/*int window_x, int window_y*/);
+    Q_INVOKABLE void show_passwd_dialog(int window_x, int window_y);
+    Q_INVOKABLE void show_progress_dialog(int window_x, int window_y);
     Q_INVOKABLE QString get_sudo_daemon_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void bind_signals_after_dbus_start();
@@ -75,6 +75,16 @@ public slots:
     void handler_software_check_status_signal(QStringList statusDict);
 private:
 //    bool trans_password(QString flagstr, QString pwd);
+    QStringList strlist;
+    int mainwindow_width;
+    int mainwindow_height;
+    int alert_width;
+    int alert_height;
+    int alert_width_bg;
+    //本次alert的x坐标
+    int alert_x;
+    //保额次alert的y坐标
+    int alert_y;
 };
 
 #endif // SUDODISPATCHER_H

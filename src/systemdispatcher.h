@@ -41,7 +41,7 @@ public:
 
     //---------------------------------
     //password
-    Q_INVOKABLE void show_passwd_dialog();
+    Q_INVOKABLE void show_passwd_dialog(int window_x, int window_y);
 
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);
@@ -164,6 +164,8 @@ signals:
     void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
     void finishCleanWorkSecondError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
     void finishGetNetworkSpeed(QStringList speed);
+    void finishCleanDataMain(QString type, QString msg);
+    void finishCleanDataSecond(QString type, QString msg);
 
 public slots:
     void handler_clear_rubbish(QString msg);
@@ -173,6 +175,18 @@ public slots:
     void handler_clear_rubbish_second_onekey(QString msg);
     void handler_clear_rubbish_second_error(QString msg);
     void handler_network_speed(QStringList speed);
+    void handler_clean_data_main(QString type, QString msg);
+    void handler_clean_data_second(QString type, QString msg);
+private:
+    QStringList tmplist;
+    int mainwindow_width;
+    int mainwindow_height;
+    int alert_width;
+    int alert_height;
+    //本次alert的x坐标
+    int alert_x;
+    //保额次alert的y坐标
+    int alert_y;
 };
 
 #endif // SYSTEMDISPATCHER_H
