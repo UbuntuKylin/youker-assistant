@@ -35,8 +35,18 @@ Item {
     property string status_value: "n"
     property string status_value2: "n"
 
+    function show_text(showtext) {
+        if(showtext == "i")
+            return "卸载";
+        else if(showtext == "n")
+            return "安装";
+        else if(showtext == "u")
+            return "升级";
+        else
+            return "N/A";
+    }
+
     Component.onCompleted: {
-//        sudodispatcher.check_pkgs_status_qt(pkgNameList);
     }
 //    //信号绑定，绑定qt的信号
 //    Connections
@@ -110,16 +120,19 @@ Item {
                     leftMargin: 15
                     verticalCenter: parent.verticalCenter
                 }
-                text: {
-                    if(screen.status_value2 == "i")
-                        "卸载"
-                    else if(screen.status_value2 == "n")
-                        "安装"
-                    else if(screen.status_value2 == "u")
-                        "升级"
-                }
+                text: "详情"//screen.show_text(screen.status_value2)
                 onClicked: {
-                    console.log("eclipse clicked....");
+                    if(screen.image_flag == "qt") {
+                        content.delegate_name= "eclipse"
+                        content.delegate_information= "Eclipse"
+                        content.delegate_image= "../img/logo/eclipse.jpg"
+                        content.delegate_introduction="Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）。"
+                        content.introduction_image1= "../img/character/eclipse-01.png"
+                        content.introduction_image2= "../img/character/eclipse-02.png"
+                        content.install_status = sudodispatcher.get_value("eclipse");
+                    }
+                    pageStack.push(softwarepage);
+
 //                    screen.status_value2 = sudodispatcher.check_pkg_status_qt("eclipse");
 //                    if(screen.status_value2 == "n") {
 //                        console.log("start to install....");
@@ -145,17 +158,16 @@ Item {
                     right:parent.right
                     rightMargin: 15
                 }
-                text: {
-                    if(screen.status_value == "i")
-                        "卸载"
-                    else if(screen.status_value == "n")
-                        "安装"
-                    else if(screen.status_value == "u")
-                        "升级"
-                }
+                text: "详情"//screen.show_text(screen.status_value)
                 onClicked: {
                     if(screen.image_flag == "qq") {
-                        console.log("qq clicked....");
+                        content.delegate_name= "Wineqq"
+                        content.delegate_information= "QQ"
+                        content.delegate_image= "../img/logo/qq.jpg"
+                        content.delegate_introduction="借助wine模拟运行的腾讯QQ 2012客户端，选自longene项目。"
+                        content.introduction_image1= "../img/character/qq-01.png"
+                        content.introduction_image2= "../img/character/qq-02.png"
+                        content.install_status = sudodispatcher.get_value("ubiquity");
 //                        screen.status_value = sudodispatcher.check_pkg_status_qt("qq");
 //                        if(screen.status_value == "n") {
 //                            console.log("start to install....");
@@ -174,7 +186,13 @@ Item {
 //                        }
                     }
                     else if(screen.image_flag == "qt") {
-                        console.log("qt clicked....");
+                        content.delegate_name= "qtcreator"
+                        content.delegate_information= "Qt"
+                        content.delegate_image= "../img/logo/qtcreator.jpg"
+                        content.delegate_introduction="Qt Creator是跨平台的 Qt IDE， Qt Creator 是 Qt 被 Nokia 收购后推出的一款新的轻量级集成开发环境（IDE）。此 IDE 能够跨平台运行，支持的系统包括 Linux（32 位及 64 位）、Mac OS X 以及 Windows。"
+                        content.introduction_image1= "../img/character/qtcreator-01.png"
+                        content.introduction_image2= "../img/character/qtcreator-02.png"
+                        content.install_status = sudodispatcher.get_value("qtcreator");
 //                        screen.status_value = sudodispatcher.check_pkg_status_qt("qtcreator");
 //                        if(screen.status_value == "n") {
 //                            console.log("start to install....");
@@ -193,7 +211,13 @@ Item {
 //                        }
                     }
                     else if(screen.image_flag == "wps") {
-                        console.log("wps clicked....");
+                            content.delegate_name= "wps"
+                            content.delegate_information= "WPS"
+                            content.delegate_image= "../img/logo/wps.jpg"
+                            content.delegate_introduction="由珠海金山办公软件有限公司与CCN联合实验室合作推出<WPS for UbuntuKylin>系列办公软件，并由珠海金山办公软件有限公司授权UbuntuKylin开源操作系统个人用户作为最终用户免费下载、安装和使 用。经测试，该版本在12.04和13.04上均可使用。"
+                            content.introduction_image1= "../img/character/wps-01.png"
+                            content.introduction_image2= "../img/character/wps-02.png"
+                            content.install_status = sudodispatcher.get_value("ubiquity");
 //                        screen.status_value = sudodispatcher.check_pkg_status_qt("wps");
 //                        if(screen.status_value == "n") {
 //                            console.log("start to install....");
@@ -211,6 +235,7 @@ Item {
 //                            sudodispatcher.update_pkg_qt("wps");
 //                        }
                     }
+                    pageStack.push(softwarepage);
                 }
             }
         }
@@ -234,7 +259,7 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    screen.status_value = sudodispatcher.get_value("ubiquity");
+//                    screen.status_value = sudodispatcher.get_value("ubiquity");
                     screen.image_flag = "qq";
                     screen.recommendimage_text = "WineQQ,Linux系统上最好用的QQ版本。";
                     imagframe.y=colum.y+recommendone.y;
@@ -252,8 +277,8 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    screen.status_value = sudodispatcher.get_value("qtcreator");
-                    screen.status_value2 = sudodispatcher.get_value("ubiquity");
+//                    screen.status_value = sudodispatcher.get_value("qtcreator");
+//                    screen.status_value2 = sudodispatcher.get_value("ubiquity");
                     screen.image_flag = "qt";
                     imagframe.y=colum.y+recommendtwo.y;
                     recommendoneimage_image="../img/skin/qt.png";
@@ -270,7 +295,7 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    screen.status_value = sudodispatcher.get_value("ubiquity");
+//                    screen.status_value = sudodispatcher.get_value("ubiquity");
                     screen.image_flag = "wps";
                     screen.recommendimage_text = "WPS,Linux系统上最好用的办公软件。";
                     imagframe.y=colum.y+recommendthree.y;
