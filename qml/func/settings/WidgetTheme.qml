@@ -70,7 +70,7 @@ Rectangle {
          id: themegridDelegate
          Item {
              id: griditem
-             width: themegrid.cellWidth; height: themegrid.cellHeight
+             width: 120; height: 120
 
 //             function iconClicked() {
 //                 widgetthemepage.init_theme = name;
@@ -174,7 +174,7 @@ Rectangle {
              left: parent.left
              leftMargin: 60
          }
-         cellWidth: 120; cellHeight: 120
+         cellWidth: 156; cellHeight: 156
          model: themeModel
          delegate: themegridDelegate
          focus: true

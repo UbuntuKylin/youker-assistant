@@ -227,10 +227,12 @@ Item {
                     else {
                          systemdispatcher.set_user_homedir_qt();
                         if(checkboxe1.checked) {
+//                            console.log("checkboxe1"+"  "+checkboxe1.checked)
                             browserstatus.visible = true;
                             systemdispatcher.clean_history_records_qt();
                         }
-                        else if(checkboxe2.checked) {
+                        if(checkboxe2.checked) {
+//                            console.log("checkboxe2"+"  "+checkboxe2.checked)
                             systemstatus.visible = true;
                             systemdispatcher.clean_system_history_qt();
                         }
@@ -343,7 +345,7 @@ Item {
                     states: [
                         State {
                             name: "BrowserWork"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: "history扫描完成:" + browserstatus_num + "条记录"}
+                            PropertyChanges { target: browserstatus_label; visible: true; text: "(扫描到"+ browserstatus_num + "条记录)"}
                             PropertyChanges { target: bitButton; text:"开始清理"}
                             PropertyChanges { target: root; btn_flag: "history_work" }
                             PropertyChanges { target: browserstatus; iconName: "yellow.png"; text: "未完成"}
@@ -357,7 +359,7 @@ Item {
                         },
                         State {
                             name: "BrowserWorkFinish"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + "清理完毕！" }
+                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + "(已清理"+ browserstatus_num + "条记录)" }
                             PropertyChanges { target: bitButton; text:"开始扫描"}
                             PropertyChanges { target: root; btn_flag: "history_scan" }
                             PropertyChanges { target: browserstatus; visible: true; iconName: "green.png"; text: "已完成"}
@@ -444,7 +446,7 @@ Item {
                 states: [
                     State {
                         name: "OpenWork"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: "history扫描完成:" + systemstatus_num + "条记录"}
+                        PropertyChanges { target: systemstatus_label; visible: true; text: "(扫描到"+ systemstatus_num + "条记录)"}
                         PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
                         PropertyChanges { target: root; btn_flag: "history_work" }
                         PropertyChanges { target: systemstatus; iconName: "yellow.png"; text: "未完成"}
@@ -458,7 +460,7 @@ Item {
                     },
                     State {
                         name: "OpenWorkFinish"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + "清理完毕！" }
+                        PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + "(已清理"+ systemstatus_num + "条记录)"}
                         PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
                         PropertyChanges { target: root; btn_flag: "history_scan" }
                         PropertyChanges { target: systemstatus; iconName: "green.png"; text: "已完成"}
