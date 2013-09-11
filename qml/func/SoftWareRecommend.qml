@@ -290,7 +290,7 @@ Item {
         Rectangle{id: splitbar2; anchors{top:splitbar1.bottom;left: parent.left;leftMargin: 1  }width:parent.width-1 ; height:1; color:"#ebf0f6"}
         Item {
             width: views.width
-            height: 180
+            height: 194
             anchors.bottom: parent.bottom
             clip:true
             ListModel {
@@ -362,10 +362,11 @@ Item {
             }
             GridView {
                 id: gridView
-                height: parent.height
+                height: parent.height-12
                 width: parent.width
                 anchors {
                     top: parent.top
+                    topMargin: 12
                     left: parent.left
                     leftMargin: 20
                 }
@@ -378,18 +379,19 @@ Item {
             Rectangle{
                 id:scrollbar
                 anchors.right: parent.right
-                anchors.rightMargin: 8
-                height: parent.height-5
-                width:5
+                anchors.rightMargin: 4
+                height: parent.height-1
+                width:11
                 color: "lightgrey"
             }
             Rectangle{
                 id: button
                 anchors.right: parent.right
                 anchors.rightMargin: 5
-                width: 12
-                y: gridView.visibleArea.yPosition * scrollbar.height
-                height: gridView.visibleArea.heightRatio * scrollbar.height;
+                width: 10
+                y: gridView.visibleArea.yPosition * (scrollbar.height+(gridView.visibleArea.heightRatio * scrollbar.height))
+//                height: gridView.visibleArea.heightRatio * scrollbar.height;
+                height: 45
                 radius: 3
                 smooth: true
                 color: "white"
@@ -419,7 +421,7 @@ Item {
                     drag.minimumY: 0
                     drag.maximumY: scrollbar.height - button.height
                     onMouseYChanged: {
-                        gridView.contentY = button.y / scrollbar.height * gridView.contentHeight
+                        gridView.contentY = button.y / (scrollbar.height+gridView.visibleArea.heightRatio * scrollbar.height-20) * gridView.contentHeight
                     }
                 }
             }

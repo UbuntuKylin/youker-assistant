@@ -405,17 +405,18 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.rightMargin: 8
                 height: parent.height
-                width:5
+                width:4
                 color: "lightgrey"
             }
             Rectangle{
                 id: button
                 anchors.right: parent.right
                 anchors.rightMargin: 5
-                width: 12
+                width: 10
                 z:scrollbar_z
-                y: lisv.visibleArea.yPosition * scrollbar.height
-                height: lisv.visibleArea.heightRatio * scrollbar.height;
+                y: lisv.visibleArea.yPosition * (scrollbar.height+button.height)
+//                height: lisv.visibleArea.heightRatio * scrollbar.height;
+                height:45
                 radius: 3
                 smooth: true
                 color: "white"
@@ -445,7 +446,7 @@ Rectangle {
                     drag.minimumY: 0
                     drag.maximumY: scrollbar.height - button.height
                     onMouseYChanged: {
-                        lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
+                        lisv.contentY = button.y / (scrollbar.height+lisv.visibleArea.heightRatio * (scrollbar.height-lisv.visibleArea.heightRatio * scrollbar.height))* lisv.contentHeight
                     }
                 }
             }

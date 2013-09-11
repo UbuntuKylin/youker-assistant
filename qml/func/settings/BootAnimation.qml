@@ -253,14 +253,14 @@ Rectangle {
             anchors.rightMargin: 8
             height: parent.height
             z:scrollbar_z
-            width:5
+            width:4
             color: "lightgrey"
         }
         Rectangle{
             id: button
             anchors.right: parent.right
             anchors.rightMargin: 5
-            width: 12
+            width: 10
             z:scrollbar_z
             y: lisv.visibleArea.yPosition * scrollbar.height
             height: lisv.visibleArea.heightRatio * scrollbar.height;

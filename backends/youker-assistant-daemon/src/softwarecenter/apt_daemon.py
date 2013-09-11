@@ -27,15 +27,15 @@ class FetchProcess(apb.AcquireProgress):
 
 	def done(self, item):
 		print 'all items download finished'
-		self.sudoDaemon.software_fetch_signal("down_done", "")
+		self.sudoDaemon.software_fetch_signal("done", None)
 
 	def fail(self, item):
 		print 'download failed'
-		self.sudoDaemon.software_fetch_signal("down_fail", "")
+		self.sudoDaemon.software_fetch_signal("fail", None)
 
 	def fetch(self, item):
 		print 'one item download finished'
-		self.sudoDaemon.software_fetch_signal("down_fetch", "")
+		self.sudoDaemon.software_fetch_signal("fetch", None)
 
 	def ims_hit(self, item):
 		print 'ims_hit'
@@ -53,7 +53,7 @@ class FetchProcess(apb.AcquireProgress):
 # 		print 'elapsed_time: ', self.elapsed_time
 # 		print 'fetched_bytes: ', self.fetched_bytes
 # 		print 'last_bytes: ', self.last_bytes
-		self.sudoDaemon.software_fetch_signal("down_pulse", 
+		self.sudoDaemon.software_fetch_signal("pulse", 
 											"download_bytes:" + self.current_bytes
 											+ ",total_bytes:" + self.total_bytes
 											+ ",download_items:" + self.current_items
@@ -70,11 +70,11 @@ class FetchProcess(apb.AcquireProgress):
 		self.total_bytes = 0.0
 		self.total_items = 0
 		print 'fetch progress start ...'
-		self.sudoDaemon.software_fetch_signal("down_start", "")
+		self.sudoDaemon.software_fetch_signal("start", None)
 
 	def stop(self):
 		print 'fetch progress stop ...'
-		self.sudoDaemon.software_fetch_signal("down_stop", "")
+		self.sudoDaemon.software_fetch_signal("stop", None)
 
 
 class AptProcess(apb.InstallProgress):
@@ -87,19 +87,19 @@ class AptProcess(apb.InstallProgress):
 		print 'there is a conffile question'
 
 	def error(self, pkg, errormsg):
-		self.sudoDaemon.software_apt_signal("apt_error", "")
+		self.sudoDaemon.software_apt_signal("error", None)
 
 	def start_update(self):
 		print 'apt process start work'
-		self.sudoDaemon.software_apt_signal("apt_start", "")
+		self.sudoDaemon.software_apt_signal("start", None)
 
 	def finish_update(self):
 		print 'apt process finished'
-		self.sudoDaemon.software_apt_signal("apt_stop", "")
+		self.sudoDaemon.software_apt_signal("stop", None)
 
 	def status_change(self, pkg, percent, status):
 		print str(int(percent)) + "%  status : " + status
-		self.sudoDaemon.software_apt_signal("apt_pulse", "percent:" + str(int(percent)) + ",status:" + status)
+		self.sudoDaemon.software_apt_signal("pulse", "percent:" + str(int(percent)) + ",status:" + status)
 
 class AptDaemon:
 	def __init__(self, sudoDaemon):
@@ -216,7 +216,7 @@ if __name__ == "__main__":
 	
 # 	print ad.check_pkgs_status(["gedit", "cairo-dock", "unity"])
 # 	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity"])
-#	ad.apt_get_update()
+	ad.apt_get_update()
 	
 	while True:
 		print "\ninput your command: "
