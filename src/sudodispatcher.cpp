@@ -117,10 +117,10 @@ void SudoDispatcher::show_passwd_dialog() {
     authdialog->exec();
 }
 
-void SudoDispatcher::show_progress_dialog() {
+void SudoDispatcher::show_progress_dialog(/*int window_x, int window_y*/) {
 //    ProgressDialog progressdialog;
 //    progressdialog.exec();
-//    ProgressDialog progressdialog("正在下载...");
+//    progressdialog = new ProgressDialog (window_x, window_y);
 //    progressdialog->exec();
     progressdialog->show();
 }
@@ -133,7 +133,7 @@ QStringList SudoDispatcher::get_args() {
     QStringList pkgNameList;
 //    pkgNameList << "ubiquity" <<  "chromium-bsu" << "eclipse" <<"qtcreator" << \
 //                   "kuaipan" << "kugou"<< "lotus" << "pps" << "qbittorrent" << \
-//                   "stardict" << "vic" << "virtualbox" << "qq" << "wps" << "xchat" << "xunlei";
+//                   "stardict" << "vlc" << "virtualbox" << "qq" << "wps" << "xchat" << "xunlei";
     pkgNameList << "ubiquity" <<  "ubiquity" << "eclipse" <<"qtcreator" << \
                    "ubiquity" << "ubiquity"<< "ubiquity" << "ubiquity" << "ubiquity" << \
                    "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity";

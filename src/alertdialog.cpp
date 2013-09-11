@@ -9,8 +9,9 @@ AlertDialog::AlertDialog(QWidget *parent) :
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     connect(ui->alertBG,SIGNAL(clicked()),this,SLOT(hide()));
-    ui->alertBG->setStyleSheet("QPushButton{background-image:url('image/alert.png');border:0px;padding-top:-10px;}");
+    ui->alertBG->setStyleSheet("QPushButton{background-image:url(':/pixmap/image/alert.png');border:0px;padding-top:-10px;}");
     ui->alertBG->setFocusPolicy(Qt::NoFocus);
+//    this->hide();
 }
 
 AlertDialog::~AlertDialog()

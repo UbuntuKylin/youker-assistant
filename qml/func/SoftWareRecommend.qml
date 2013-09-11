@@ -48,23 +48,23 @@ Item {
 
     Component.onCompleted: {
     }
-//    //信号绑定，绑定qt的信号
-//    Connections
-//    {
-//        target: sudodispatcher
+    //信号绑定，绑定qt的信号
+    Connections
+    {
+        target: sudodispatcher
 //        onFinishSoftwareFetch: {
 //            console.log(type);
 //            console.log(msg);
 //        }
-//        onFinishSoftwareApt: {
-//            console.log(type);
-//            console.log(msg);
-//        }
+        onFinishSoftwareApt: {
+            if(type == "apt_stop")
+                toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
+        }
 //        onFinishSoftwareCheckStatus: {
 //            console.log("Software statusDict->");
 //            console.log(statusDict);
 //        }
-//    }
+    }
 
         //背景
     Image {
@@ -133,23 +133,6 @@ Item {
                         content.install_status = sudodispatcher.get_value("eclipse");
                     }
                     pageStack.push(softwarepage);
-
-//                    screen.status_value2 = sudodispatcher.check_pkg_status_qt("eclipse");
-//                    if(screen.status_value2 == "n") {
-//                        console.log("start to install....");
-//                        sudodispatcher.show_progress_dialog();
-//                        sudodispatcher.install_pkg_qt("qq");
-//                    }
-//                    else if(screen.status_value2 == "i") {
-//                        console.log("is installed already, start to uninstall....");
-//                        sudodispatcher.show_progress_dialog();
-//                        sudodispatcher.uninstall_pkg_qt("eclipse");
-//                    }
-//                    else if(screen.status_value2 == "u") {
-//                        console.log("is installed already, start to update....");
-//                        sudodispatcher.show_progress_dialog();
-//                        sudodispatcher.update_pkg_qt("eclipse");
-//                    }
                 }
             }
             Common.Button{
@@ -170,22 +153,6 @@ Item {
                         content.introduction_image1= "../img/character/qq-01.png"
                         content.introduction_image2= "../img/character/qq-02.png"
                         content.install_status = sudodispatcher.get_value("ubiquity");
-//                        screen.status_value = sudodispatcher.check_pkg_status_qt("qq");
-//                        if(screen.status_value == "n") {
-//                            console.log("start to install....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.install_pkg_qt("qq");
-//                        }
-//                        else if(screen.status_value == "i") {
-//                            console.log("is installed already, start to uninstall....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.uninstall_pkg_qt("qq");
-//                        }
-//                        else if(screen.status_value == "u") {
-//                            console.log("is installed already, start to update....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.update_pkg_qt("qq");
-//                        }
                     }
                     else if(screen.image_flag == "qt") {
                         content.delegate_name= "qtcreator"
@@ -196,22 +163,6 @@ Item {
                         content.introduction_image1= "../img/character/qtcreator-01.png"
                         content.introduction_image2= "../img/character/qtcreator-02.png"
                         content.install_status = sudodispatcher.get_value("qtcreator");
-//                        screen.status_value = sudodispatcher.check_pkg_status_qt("qtcreator");
-//                        if(screen.status_value == "n") {
-//                            console.log("start to install....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.install_pkg_qt("qtcreator");
-//                        }
-//                        else if(screen.status_value == "i") {
-//                            console.log("is installed already, start to uninstall....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.uninstall_pkg_qt("qtcreator");
-//                        }
-//                        else if(screen.status_value == "u") {
-//                            console.log("is installed already, start to update....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.update_pkg_qt("qtcreator");
-//                        }
                     }
                     else if(screen.image_flag == "wps") {
                             content.delegate_name= "wps"
@@ -222,22 +173,6 @@ Item {
                             content.introduction_image1= "../img/character/wps-01.png"
                             content.introduction_image2= "../img/character/wps-02.png"
                             content.install_status = sudodispatcher.get_value("ubiquity");
-//                        screen.status_value = sudodispatcher.check_pkg_status_qt("wps");
-//                        if(screen.status_value == "n") {
-//                            console.log("start to install....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.install_pkg_qt("wps");
-//                        }
-//                        else if(screen.status_value == "i") {
-//                            console.log("is installed already, start to uninstall....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.uninstall_pkg_qt("wps");
-//                        }
-//                        else if(screen.status_value == "u") {
-//                            console.log("is installed already, start to update....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.update_pkg_qt("wps");
-//                        }
                     }
                     pageStack.push(softwarepage);
                 }
@@ -409,8 +344,8 @@ Item {
                     flag: "StarDict"
                 }
                 ListElement {
-                    icon: "../img/icons/vic.png"
-                    flag: "Vic"
+                    icon: "../img/icons/vlc.png"
+                    flag: "Vlc"
                 }
                 ListElement {
                     icon: "../img/icons/virtualbox.png"

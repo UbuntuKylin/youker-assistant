@@ -181,11 +181,11 @@ Rectangle {
                 content.introduction_image2= "../img/character/stardict-02.png"
                 content.install_status = sudodispatcher.get_value("ubiquity");
             }
-            else if (flag == "Vic"){
-                content.delegate_name= "vic"
+            else if (flag == "Vlc"){
+                content.delegate_name= "vlc"
                 content.delegate_appname = "Vlc播放器"
-                content.delegate_information= "Vic"
-                content.delegate_image= "../img/logo/vic.jpg"
+                content.delegate_information= "Vlc"
+                content.delegate_image= "../img/logo/vlc.jpg"
                 content.delegate_introduction="vlc是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及DVD、音频CD、VCD及各类流媒体协议。"
                 content.introduction_image1= "../img/character/vlc-01.png"
                 content.introduction_image2= "../img/character/vlc-02.png"

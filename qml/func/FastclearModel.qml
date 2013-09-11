@@ -54,7 +54,9 @@ Rectangle {
                cookiestatus.state = "StatusK";
                 onekeybtn.enabled=true;
             }
-
+            else if (msg == "o") {
+                toolkits.alertMSG("一键清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+            }
         }
 
         onFinishCleanWorkSecondError: {

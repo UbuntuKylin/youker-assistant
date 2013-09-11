@@ -27,7 +27,7 @@ class ProgressDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit ProgressDialog(QWidget *parent = 0);
+    explicit ProgressDialog(/*int parent_x, int parent_y, */QWidget *parent = 0);
     ~ProgressDialog();
 public slots:
     void setValue(QString type, QString msg);
@@ -35,6 +35,14 @@ public slots:
 private:
     Ui::ProgressDialog *ui;
     QPoint dragPos;
+//    int mainwindow_width;
+//    int mainwindow_height;
+//    int alert_width;
+//    int alert_height;
+//    //本次alert的x坐标
+//    int alert_x;
+//    //保额次alert的y坐标
+//    int alert_y;
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);

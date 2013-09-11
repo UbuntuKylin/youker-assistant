@@ -35,7 +35,7 @@ public:
     ~SudoDispatcher();
     Q_INVOKABLE void exit_qt();
     Q_INVOKABLE void show_passwd_dialog();
-    Q_INVOKABLE void show_progress_dialog();
+    Q_INVOKABLE void show_progress_dialog(/*int window_x, int window_y*/);
     Q_INVOKABLE QString get_sudo_daemon_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void bind_signals_after_dbus_start();

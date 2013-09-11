@@ -51,10 +51,11 @@ Rectangle {
             else if (msg == "k") {
                cookiestatus.state = "StatusK";
             }
-
+            else if (msg == "o") {
+                toolkits.alertMSG("一键清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+            }
             refreshArrow0.visible = true;
             refreshArrow.visible = false;
-
         }
 
         onFinishCleanWorkMainError: {

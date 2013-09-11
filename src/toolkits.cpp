@@ -16,7 +16,8 @@ Toolkits::Toolkits(QObject *parent) :
     this->alertGOE = new QGraphicsOpacityEffect();
     this->alertBG->setGraphicsEffect(alertGOE);
     this->ao = 0.0;
-    this->alertBG->show();
+//    this->alertBG->show();
+    this->alertBG->hide();
 }
 
 //启动alert提示
@@ -41,7 +42,7 @@ void Toolkits::updateAlert(){
     if(this->ay <= (this->alert_y - 150)){
         this->alertTimer->stop();
         //5秒后自动关闭alert提示框
-        this->alertDelayTimer->start(5000);
+        this->alertDelayTimer->start(3000);
     }else{
         this->ay -= 3;
         this->alertBG->move(this->alert_x,this->ay);
