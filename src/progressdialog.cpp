@@ -50,9 +50,9 @@ void ProgressDialog::setValue(QString type, QString msg) {
         if(!msg.isEmpty()) {
             if(msg.contains("download_bytes") && msg.contains("total_bytes")) {
                 QStringList process_value = msg.split(",");
-                if (process_value.size() == 3) {
-                    QStringList download_items = process_value.at(2).split(":");
-                    ui->label->setText("正在下载:" + download_items.at(1));
+                if (process_value.size() == 4) {
+//                    QStringList download_items = process_value.at(2).split(":");
+                    ui->label->setText("正在下载安装包...");
                     QStringList download_bytes = process_value.at(0).split(":");
                     double download_bytes_value = download_bytes.at(1).toDouble();
                     QStringList total_bytes = process_value.at(1).split(":");
