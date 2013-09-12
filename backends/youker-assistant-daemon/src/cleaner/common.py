@@ -30,7 +30,7 @@ def confirm_filesize_unit(size):
             flag += 1
         else:                                                                            break
     tmp = "%.2f" % size
-    finalsize = tmp + ' ' + unit_list[flag]
+    finalsize = tmp + unit_list[flag]
     return finalsize
 
 def get_dir_size(path):
