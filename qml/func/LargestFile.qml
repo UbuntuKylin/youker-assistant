@@ -67,11 +67,14 @@ Item {
         {
             root.null_flag = true;
             deleget_arrow =0;
+            if(statusImage.visible == true)
+                statusImage.visible = false;
         }
         else
         {
             root.null_flag = false;
             deleget_arrow =1;
+            statusImage.visible = true;
         }
         root.sub_num = largestfile_data.length;
         systemdispatcher.clear_largestfile_args();
@@ -225,13 +228,13 @@ Item {
                 validator: intval
             }
         }
-        Common.StatusImage {
-            id: statusImage
-            visible: false
-            iconName: "yellow.png"
-            text: "未完成"
-            anchors.verticalCenter: parent.verticalCenter
-        }
+//        Common.StatusImage {
+//            id: statusImage
+//            visible: false
+//            iconName: "yellow.png"
+//            text: "未完成"
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
         Common.Button {
             id: selectBtn
             anchors.verticalCenter: parent.verticalCenter
@@ -283,6 +286,19 @@ Item {
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y)
             }
         }
+    }
+    Common.StatusImage {
+        id: statusImage
+        anchors{
+            top:parent.top
+            topMargin: 142
+            left: parent.left
+            leftMargin:610
+        }
+
+        visible: false
+        iconName: "yellow.png"
+        text: "未完成"
     }
 
     //分割条
@@ -521,7 +537,7 @@ Item {
         anchors.left:parent.left
         anchors.leftMargin: 27
         height: root.height -titlebar.height - 50
-        width: parent.width
+        width: parent.width - 27
         Item {
             width: parent.width
             height: (root.sub_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
