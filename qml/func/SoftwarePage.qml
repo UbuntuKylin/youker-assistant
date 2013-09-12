@@ -172,6 +172,9 @@ Rectangle {
                     sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     sudodispatcher.update_pkg_qt(software.software_name);
                 }
+                else{
+                    console.log("Sorry ,there is no package.")
+                }
             }
         }
 

@@ -145,12 +145,10 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
 
 QStringList SudoDispatcher::get_args() {
     QStringList pkgNameList;
-//    pkgNameList << "ubiquity" <<  "chromium-bsu" << "eclipse" <<"qtcreator" << \
-//                   "kuaipan" << "kugou"<< "lotus" << "pps" << "qbittorrent" << \
-//                   "stardict" << "vlc" << "virtualbox" << "qq" << "wps" << "xchat" << "xunlei";
-    pkgNameList << "ubiquity" <<  "ubiquity" << "eclipse" <<"qtcreator" << \
-                   "ubiquity" << "ubiquity"<< "ubiquity" << "ubiquity" << "ubiquity" << \
-                   "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity" << "ubiquity";
+    pkgNameList << "eclipse" << "qtcreator"<< "wps-office" << "wine-qq2012-longeneteam" << \
+                   "flashplugin-downloader" <<  "lotus" << "kuaipan" <<"vlc" << \
+                   "chromium-bsu" << "kugou" << "ppstream" << "qbittorrent" << \
+                   "virtualbox" << "stardict" << "xchat" << "wine-thunder";
     return pkgNameList;
 }
 
