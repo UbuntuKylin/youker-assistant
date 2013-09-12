@@ -67,7 +67,7 @@ Item {
                     num++;
                 }
                 else {
-                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2] + "字节"});
+                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2]});
                     systemdispatcher.set_package_args(splitlist[0]);
                 }
             }
@@ -145,7 +145,7 @@ Item {
         id: titlebar
         spacing: 20
         width: parent.width
-        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 27}
         Image {
             id: refreshArrow
             source: "../img/toolWidget/deb-max.png"
@@ -210,7 +210,7 @@ Item {
                             if(root.null_flag == true) {
                                 root.state = "UnneedWorkEmpty";
                                 deleget_arrow=0;
-                                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                             }
                             else if(root.null_flag == false)
                             {
@@ -224,10 +224,10 @@ Item {
                         }
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else {
-                    sudodispatcher.show_passwd_dialog();
+                    sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }
@@ -274,7 +274,7 @@ Item {
         }
         width: parent.width - 4
         height: 1
-        color: "#b9c5cc"
+        color: "#d8e0e6"
     }
 
 //    Component {
@@ -399,6 +399,8 @@ Item {
         frame:false
         anchors.top: titlebar.bottom
         anchors.topMargin: 30
+        anchors.left:parent.left
+        anchors.leftMargin: 27
         height: root.height -titlebar.height - 50
         width: parent.width
         Item {

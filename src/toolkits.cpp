@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include "toolkits.h"
 
 Toolkits::Toolkits(QObject *parent) :
@@ -16,7 +31,8 @@ Toolkits::Toolkits(QObject *parent) :
     this->alertGOE = new QGraphicsOpacityEffect();
     this->alertBG->setGraphicsEffect(alertGOE);
     this->ao = 0.0;
-    this->alertBG->show();
+//    this->alertBG->show();
+    this->alertBG->hide();
 }
 
 //启动alert提示
@@ -41,7 +57,7 @@ void Toolkits::updateAlert(){
     if(this->ay <= (this->alert_y - 150)){
         this->alertTimer->stop();
         //5秒后自动关闭alert提示框
-        this->alertDelayTimer->start(5000);
+        this->alertDelayTimer->start(3000);
     }else{
         this->ay -= 3;
         this->alertBG->move(this->alert_x,this->ay);

@@ -23,12 +23,12 @@ ProgressDialog::ProgressDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);
-    this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->label->setStyleSheet("QLabel {color: green; font-size: 12px}");
     ui->progressBar->setStyleSheet("QProgressBar {border: 1px solid grey;border-radius: 2px;text-align: center;}"
-                                    "QProgressBar::chunk {background-color: #05B8CC;width: 10px;}");
+                                    "QProgressBar::chunk {background-color: #6be2fa;width: 10px;}");
     QDesktopWidget* desktop = QApplication::desktop();
     move((desktop->width() - this->width())/2, (desktop->height() - this->height())/2);
 }
@@ -39,20 +39,39 @@ ProgressDialog::~ProgressDialog()
 }
 
 void ProgressDialog::setValue(QString type, QString msg) {
-    qDebug() << "kobe msg->";
-    qDebug() << type;
-    qDebug() << msg;
+    if(this->isHidden())
+        this->show();
     if(type == "down_start") {
         ui->label->setText("开始下载");
+        ui->progressBar->setValue(0);
     }
     else if(type == "down_pulse"){
-        ui->label->setText("正在下载:" + msg);
+        ui->label->setText("正在下载");
+        if(!msg.isEmpty()) {
+            if(msg.contains("download_bytes") && msg.contains("total_bytes")) {
+                QStringList process_value = msg.split(",");
+                if (process_value.size() == 3) {
+                    QStringList download_items = process_value.at(2).split(":");
+                    ui->label->setText("正在下载:" + download_items.at(1));
+                    QStringList download_bytes = process_value.at(0).split(":");
+                    double download_bytes_value = download_bytes.at(1).toDouble();
+                    QStringList total_bytes = process_value.at(1).split(":");
+                    double total_bytes_value = total_bytes.at(1).toDouble();
+                    double percent = download_bytes_value / total_bytes_value;
+                    QString ratio = QString::number(percent, 'f', 2);
+                    double trans = ratio.toDouble() * 100;
+                    ratio = QString::number(trans,'f',0);
+                    ui->progressBar->setValue(ratio.toInt());
+                }
+            }
+        }
     }
     else if(type == "down_stop") {
         ui->label->setText("下载完成");
     }
     else if(type == "apt_start"){
         ui->label->setText("开始");
+        ui->progressBar->setValue(0);
     }
     else if(type == "apt_pulse"){
         if(!msg.isEmpty()) {
@@ -63,9 +82,6 @@ void ProgressDialog::setValue(QString type, QString msg) {
                     int value = status_value.at(1).toInt();
                     QStringList action_value = process_value.at(1).split(":");
                     QString act = action_value.at(1);
-                    qDebug() << "------------------";
-                    qDebug() << value;
-                    qDebug() << act;
                     ui->label->setText("正在进行:" + act);
                     ui->progressBar->setValue(value);
                 }
@@ -74,7 +90,9 @@ void ProgressDialog::setValue(QString type, QString msg) {
     }
     else if(type == "apt_stop") {
         ui->label->setText("完成");
-//        this->close();
+        ui->progressBar->setValue(0);
+        ui->label->setText("开始");
+        this->hide();
     }
 }
 

@@ -48,23 +48,23 @@ Item {
 
     Component.onCompleted: {
     }
-//    //信号绑定，绑定qt的信号
-//    Connections
-//    {
-//        target: sudodispatcher
+    //信号绑定，绑定qt的信号
+    Connections
+    {
+        target: sudodispatcher
 //        onFinishSoftwareFetch: {
 //            console.log(type);
 //            console.log(msg);
 //        }
-//        onFinishSoftwareApt: {
-//            console.log(type);
-//            console.log(msg);
-//        }
+        onFinishSoftwareApt: {
+            if(type == "apt_stop")
+                toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
+        }
 //        onFinishSoftwareCheckStatus: {
 //            console.log("Software statusDict->");
 //            console.log(statusDict);
 //        }
-//    }
+    }
 
         //背景
     Image {
@@ -124,8 +124,8 @@ Item {
                 onClicked: {
                     if(screen.image_flag == "qt") {
                         content.delegate_name= "eclipse"
-                        content.delegate_appname = "Eclipse开发平台"
-                        content.delegate_information= "Eclipse"
+                        content.delegate_appname = "Eclipse平台"
+                        content.delegate_information= "可扩展平台、JAVA IDE 开发工具"
                         content.delegate_image= "../img/logo/eclipse.jpg"
                         content.delegate_introduction="Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）。"
                         content.introduction_image1= "../img/character/eclipse-01.png"
@@ -133,23 +133,6 @@ Item {
                         content.install_status = sudodispatcher.get_value("eclipse");
                     }
                     pageStack.push(softwarepage);
-
-//                    screen.status_value2 = sudodispatcher.check_pkg_status_qt("eclipse");
-//                    if(screen.status_value2 == "n") {
-//                        console.log("start to install....");
-//                        sudodispatcher.show_progress_dialog();
-//                        sudodispatcher.install_pkg_qt("qq");
-//                    }
-//                    else if(screen.status_value2 == "i") {
-//                        console.log("is installed already, start to uninstall....");
-//                        sudodispatcher.show_progress_dialog();
-//                        sudodispatcher.uninstall_pkg_qt("eclipse");
-//                    }
-//                    else if(screen.status_value2 == "u") {
-//                        console.log("is installed already, start to update....");
-//                        sudodispatcher.show_progress_dialog();
-//                        sudodispatcher.update_pkg_qt("eclipse");
-//                    }
                 }
             }
             Common.Button{
@@ -162,82 +145,34 @@ Item {
                 text: "详情"//screen.show_text(screen.status_value)
                 onClicked: {
                     if(screen.image_flag == "qq") {
-                        content.delegate_name= "Wineqq"
+                        content.delegate_name= "wine-qq2012-longeneteam"
                         content.delegate_appname = "WineQQ安装程序"
-                        content.delegate_information= "QQ"
+                        content.delegate_information= "Wine 1.5.18 patched for qq2012 Beta3"
                         content.delegate_image= "../img/logo/qq.jpg"
                         content.delegate_introduction="借助wine模拟运行的腾讯QQ 2012客户端，选自longene项目。"
                         content.introduction_image1= "../img/character/qq-01.png"
                         content.introduction_image2= "../img/character/qq-02.png"
-                        content.install_status = sudodispatcher.get_value("ubiquity");
-//                        screen.status_value = sudodispatcher.check_pkg_status_qt("qq");
-//                        if(screen.status_value == "n") {
-//                            console.log("start to install....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.install_pkg_qt("qq");
-//                        }
-//                        else if(screen.status_value == "i") {
-//                            console.log("is installed already, start to uninstall....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.uninstall_pkg_qt("qq");
-//                        }
-//                        else if(screen.status_value == "u") {
-//                            console.log("is installed already, start to update....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.update_pkg_qt("qq");
-//                        }
+                        content.install_status = sudodispatcher.get_value("wine-qq2012-longeneteam");
                     }
                     else if(screen.image_flag == "qt") {
                         content.delegate_name= "qtcreator"
-                        content.delegate_appname = "Qt集成开发环境"
-                        content.delegate_information= "Qt"
+                        content.delegate_appname = "Qt平台"
+                        content.delegate_information= "lightweight integrated development environment (IDE) for Qt"
                         content.delegate_image= "../img/logo/qtcreator.jpg"
                         content.delegate_introduction="Qt Creator是跨平台的 Qt IDE， Qt Creator 是 Qt 被 Nokia 收购后推出的一款新的轻量级集成开发环境（IDE）。此 IDE 能够跨平台运行，支持的系统包括 Linux（32 位及 64 位）、Mac OS X 以及 Windows。"
                         content.introduction_image1= "../img/character/qtcreator-01.png"
                         content.introduction_image2= "../img/character/qtcreator-02.png"
                         content.install_status = sudodispatcher.get_value("qtcreator");
-//                        screen.status_value = sudodispatcher.check_pkg_status_qt("qtcreator");
-//                        if(screen.status_value == "n") {
-//                            console.log("start to install....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.install_pkg_qt("qtcreator");
-//                        }
-//                        else if(screen.status_value == "i") {
-//                            console.log("is installed already, start to uninstall....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.uninstall_pkg_qt("qtcreator");
-//                        }
-//                        else if(screen.status_value == "u") {
-//                            console.log("is installed already, start to update....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.update_pkg_qt("qtcreator");
-//                        }
                     }
                     else if(screen.image_flag == "wps") {
-                            content.delegate_name= "wps"
-                            content.delegate_appname = "WPS办公软件"
-                            content.delegate_information= "WPS"
-                            content.delegate_image= "../img/logo/wps.jpg"
-                            content.delegate_introduction="由珠海金山办公软件有限公司与CCN联合实验室合作推出<WPS for UbuntuKylin>系列办公软件，并由珠海金山办公软件有限公司授权UbuntuKylin开源操作系统个人用户作为最终用户免费下载、安装和使 用。经测试，该版本在12.04和13.04上均可使用。"
-                            content.introduction_image1= "../img/character/wps-01.png"
-                            content.introduction_image2= "../img/character/wps-02.png"
-                            content.install_status = sudodispatcher.get_value("ubiquity");
-//                        screen.status_value = sudodispatcher.check_pkg_status_qt("wps");
-//                        if(screen.status_value == "n") {
-//                            console.log("start to install....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.install_pkg_qt("wps");
-//                        }
-//                        else if(screen.status_value == "i") {
-//                            console.log("is installed already, start to uninstall....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.uninstall_pkg_qt("wps");
-//                        }
-//                        else if(screen.status_value == "u") {
-//                            console.log("is installed already, start to update....");
-//                            sudodispatcher.show_progress_dialog();
-//                            sudodispatcher.update_pkg_qt("wps");
-//                        }
+                        content.delegate_name= "wps-office"
+                        content.delegate_appname = "WPS办公软件"
+                        content.delegate_information= "WPS Office"
+                        content.delegate_image= "../img/logo/wps.jpg"
+                        content.delegate_introduction="由珠海金山办公软件有限公司与CCN联合实验室合作推出<WPS for UbuntuKylin>系列办公软件，并由珠海金山办公软件有限公司授权UbuntuKylin开源操作系统个人用户作为最终用户免费下载、安装和使 用。经测试，该版本在12.04和13.04上均可使用。"
+                        content.introduction_image1= "../img/character/wps-01.png"
+                        content.introduction_image2= "../img/character/wps-02.png"
+                        content.install_status = sudodispatcher.get_value("wps-office");
                     }
                     pageStack.push(softwarepage);
                 }
@@ -409,8 +344,8 @@ Item {
                     flag: "StarDict"
                 }
                 ListElement {
-                    icon: "../img/icons/vic.png"
-                    flag: "Vic"
+                    icon: "../img/icons/vlc.png"
+                    flag: "Vlc"
                 }
                 ListElement {
                     icon: "../img/icons/virtualbox.png"

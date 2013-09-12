@@ -190,7 +190,7 @@ Rectangle {
                         statusImage.visible = true;
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","当前主题已经为默认主题!");
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","当前主题已经为默认主题!", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
 //            Common.Button {

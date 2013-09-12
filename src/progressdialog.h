@@ -35,6 +35,7 @@ public slots:
 private:
     Ui::ProgressDialog *ui;
     QPoint dragPos;
+
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);

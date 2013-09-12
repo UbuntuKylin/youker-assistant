@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/dialog-feature.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/progress-bg.png);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>

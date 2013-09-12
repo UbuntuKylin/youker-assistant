@@ -57,7 +57,7 @@ Item {
 //                if(browserstatus.visible == true) {
                     browserstatus.visible = false;
                     browserstatus.state = "BrowserWorkEmpty";
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
 //                }
             }
             else {
@@ -76,7 +76,7 @@ Item {
 //                if(systemstatus.visible == true){
                     systemstatus.visible = false;
                     systemstatus.state = "OpenWorkEmpty";
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
 //                }
             }
             else {
@@ -89,7 +89,7 @@ Item {
         else if (history_msg == "AllWork") {
             browserstatus_num = sessiondispatcher.scan_history_records_qt()
             systemstatus_num = sessiondispatcher.scan_system_history_qt();
-            console.log("AllWork"+"  "+(browserstatus_num + systemstatus_num));
+//            console.log("AllWork"+"  "+(browserstatus_num + systemstatus_num));
             if (browserstatus_num + systemstatus_num == 0) {
                 root.null_flag = true;
                 if(browserstatus.visible == true)
@@ -98,7 +98,7 @@ Item {
                     systemstatus.visible = false;
                 browserstatus.state = "BrowserWorkEmpty";
                 systemstatus.state = "OpenWorkEmpty";
-                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 browserstatus.state="BrowserWork";
@@ -159,7 +159,7 @@ Item {
         id: titlebar
         spacing: 20
         width: parent.width
-        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 27 }
         Image {
             id: refreshArrow
             source: "../img/toolWidget/history-max.png"
@@ -202,7 +202,7 @@ Item {
                      if(!checkboxe1.checked && !checkboxe2.checked) {
                          browserstatus.visible = false;
                          systemstatus.visible = false;
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！");
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else {
                          if(checkboxe1.checked && !checkboxe2.checked)
@@ -213,7 +213,7 @@ Item {
                              history_bnt_signal("AllWork");
 //                          if(root.null_flag == true) {
 //                             root.state = "HistoryWorkEmpty";
-//                              sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+//                              sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
 //                          }
 //                          else if(root.null_flag == false) {
 //                             root.state = "HistoryWork";
@@ -223,17 +223,37 @@ Item {
                  }
                 else if (btn_flag == "history_work") {
                      if(!checkboxe1.checked && !checkboxe2.checked)
-                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中记录清理项，请确认！");
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中记录清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                     else {
                          systemdispatcher.set_user_homedir_qt();
-                        if(checkboxe1.checked) {
-                            browserstatus.visible = true;
-                            systemdispatcher.clean_history_records_qt();
-                        }
-                        else if(checkboxe2.checked) {
-                            systemstatus.visible = true;
-                            systemdispatcher.clean_system_history_qt();
-                        }
+
+                         if(checkboxe1.checked) {
+                             browserstatus.visible = true;
+                             if(checkboxe2.checked) {
+                                 systemstatus.visible = true;
+                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("all"));
+                             }
+                             else
+                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("history"));
+                         }
+                         else {
+                             if(checkboxe2.checked) {
+                                 systemstatus.visible = true;
+                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("system"));
+                             }
+                             else
+                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("null"));
+                         }
+//                        if(checkboxe1.checked) {
+////                            console.log("checkboxe1"+"  "+checkboxe1.checked)
+//                            browserstatus.visible = true;
+//                            systemdispatcher.clean_history_records_qt();
+//                        }
+//                        if(checkboxe2.checked) {
+////                            console.log("checkboxe2"+"  "+checkboxe2.checked)
+//                            systemstatus.visible = true;
+//                            systemdispatcher.clean_system_history_qt();
+//                        }
                      }
                 }
             }
@@ -343,7 +363,7 @@ Item {
                     states: [
                         State {
                             name: "BrowserWork"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: "history扫描完成:" + browserstatus_num + "条记录"}
+                            PropertyChanges { target: browserstatus_label; visible: true; text: "(扫描到"+ browserstatus_num + "条记录)"}
                             PropertyChanges { target: bitButton; text:"开始清理"}
                             PropertyChanges { target: root; btn_flag: "history_work" }
                             PropertyChanges { target: browserstatus; iconName: "yellow.png"; text: "未完成"}
@@ -357,7 +377,7 @@ Item {
                         },
                         State {
                             name: "BrowserWorkFinish"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + "清理完毕！" }
+                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + "(已清理"+ browserstatus_num + "条记录)" }
                             PropertyChanges { target: bitButton; text:"开始扫描"}
                             PropertyChanges { target: root; btn_flag: "history_scan" }
                             PropertyChanges { target: browserstatus; visible: true; iconName: "green.png"; text: "已完成"}
@@ -444,7 +464,7 @@ Item {
                 states: [
                     State {
                         name: "OpenWork"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: "history扫描完成:" + systemstatus_num + "条记录"}
+                        PropertyChanges { target: systemstatus_label; visible: true; text: "(扫描到"+ systemstatus_num + "条记录)"}
                         PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
                         PropertyChanges { target: root; btn_flag: "history_work" }
                         PropertyChanges { target: systemstatus; iconName: "yellow.png"; text: "未完成"}
@@ -458,7 +478,7 @@ Item {
                     },
                     State {
                         name: "OpenWorkFinish"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + "清理完毕！" }
+                        PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + "(已清理"+ systemstatus_num + "条记录)"}
                         PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
                         PropertyChanges { target: root; btn_flag: "history_scan" }
                         PropertyChanges { target: systemstatus; iconName: "green.png"; text: "已完成"}
@@ -529,7 +549,7 @@ Item {
         }
         width: parent.width - 4
         height: 1
-        color: "#b9c5cc"
+        color: "#d8e0e6"
     }
 
 //    states: [

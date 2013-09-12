@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include <QDebug>
 #include "KThread.h"
 
@@ -23,12 +38,14 @@ void KThread::run()
         iface->call("clean_by_main_one_key", list);
 //        QThread::sleep(10);
     }
-
     else if(method_name == "clean_by_second_one_key") {
         iface->call("clean_by_second_one_key", list);
     }
     else if(method_name == "clean_history_records") {
-        iface->call("clean_history_records");
+        iface->call("clean_history_records", list);
+    }
+    else if(method_name == "") {
+        iface->call("clean_system_historclean_system_historyy");
     }
     else if(method_name == "clean_cookies_records") {
         iface->call("clean_cookies_records", list);

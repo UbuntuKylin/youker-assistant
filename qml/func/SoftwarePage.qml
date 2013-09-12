@@ -159,18 +159,21 @@ Rectangle {
                 software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                 if(software.installed_status == "n") {
                     console.log("start to install....");
-                    sudodispatcher.show_progress_dialog();
+                    sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     sudodispatcher.install_pkg_qt(software.software_name);
                 }
                 else if(software.installed_status == "i") {
                     console.log("is installed already, start to uninstall....");
-                    sudodispatcher.show_progress_dialog();
+                    sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     sudodispatcher.uninstall_pkg_qt(software.software_name);
                 }
                 else if(software.installed_status == "u") {
                     console.log("is installed already, start to update....");
-                    sudodispatcher.show_progress_dialog();
+                    sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     sudodispatcher.update_pkg_qt(software.software_name);
+                }
+                else{
+                    console.log("Sorry ,there is no package.")
                 }
             }
         }

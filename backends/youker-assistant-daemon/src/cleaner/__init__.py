@@ -91,18 +91,20 @@ class OneKeyClean():
             cachedata = 0
             tmp_cache_dic = self.objcache.get_scan_result(HOMEDIR)
             for k in tmp_cache_dic:
-                tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
-                for one in tmp_cache_list:
-                    resultcache = one.split('<2_2>')[0]
-                    cache_list.append(resultcache)
+                if tmp_cache_dic[k]:
+                    tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
+                    for one in tmp_cache_list:
+                        resultcache = one.split('<2_2>')[0]
+                        cache_list.append(resultcache)
             result_dic['cache'] = cache_list
-            for one in cache_list:
-                size = 0
-                if os.path.isdir(one):
-                    size = common.get_dir_size(one)
-                else:
-                    size = os.path.getsize(one)
-                cachedata += size
+            if cache_list:
+                for one in cache_list:
+                    size = 0
+                    if os.path.isdir(one):
+                        size = common.get_dir_size(one)
+                    else:
+                        size = os.path.getsize(one)
+                    cachedata += size
             result_dic['cachedata'] = common.confirm_filesize_unit(cachedata)
         return result_dic
 

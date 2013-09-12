@@ -186,7 +186,7 @@ Rectangle {
                     statusImage.visible = true;
                 }
                 else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！");
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
 //        Common.Button {

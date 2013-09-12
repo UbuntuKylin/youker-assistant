@@ -216,7 +216,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！");
+                            sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
 
@@ -295,7 +295,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！");
+                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
 
@@ -374,7 +374,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！");
+                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
 //                Common.Button {
@@ -496,7 +496,7 @@ Rectangle {
                         statusImage.visible = true;
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！");
+                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
 

@@ -29,7 +29,7 @@ Item {
     property string btn_text: "开始清理"
     property string title: "快速找出最占用磁盘空间的大文件"
     property string description: "删除占用磁盘空间的无用大文件，释放更多磁盘空间。"
-    property string scope_desc: "搜索文件的大小范围为1M--20480M"
+    property string scope_desc: "文件的大小范围为1M--20480M，暂不支持中文路径。"
     property string btn_flag: "largestfile_work"
     property SystemDispatcher dis: systemdispatcher
     property ListModel listmodel: mainModel
@@ -83,7 +83,7 @@ Item {
                 num++;
             }
             else {
-                subModel.append({"itemTitle": splitlist[0] + "字节", "desc": splitlist[1], "number": ""});
+                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": ""});
                 systemdispatcher.set_largestfile_args(splitlist[1]);
             }
         }
@@ -164,7 +164,7 @@ Item {
         spacing: 10
         width: parent.width
 //        height: 50
-        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 20 }
+        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 27}
         Image {
             id: refreshArrow
             visible: true
@@ -261,19 +261,18 @@ Item {
                 console.log(root.check_flag);
                 if(root.check_flag) {
                     if(size_text.text == "")
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小，请在绿色框中输入数字！");
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小，请在绿色框中输入数字！", mainwindow.pos.x, mainwindow.pos.y);
                     else if (root.directory == "")
                     {
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！");
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！", mainwindow.pos.x, mainwindow.pos.y);
                         deleget_arrow =0;
                     }
                     else {
                         if(root.null_flag == true) {
                            root.state = "LargestFileWorkEmpty";
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else if(root.null_flag == false) {
-                            console.log(systemdispatcher.get_largestfile_args());
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                             root.state = "LargestFileWorkFinish";
 //                            refresh_page();
@@ -281,7 +280,7 @@ Item {
                     }
                 }
                 else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y)
             }
         }
     }
@@ -297,7 +296,7 @@ Item {
         }
         width: parent.width - 4
         height: 1
-        color: "#b9c5cc"
+        color: "#d8e0e6"
     }
 
 //    Component {
@@ -519,6 +518,8 @@ Item {
         frame:false
         anchors.top: titlebar.bottom
         anchors.topMargin: 30
+        anchors.left:parent.left
+        anchors.leftMargin: 27
         height: root.height -titlebar.height - 50
         width: parent.width
         Item {

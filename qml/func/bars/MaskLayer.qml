@@ -1,7 +1,8 @@
-#ifndef KTHREAD_H
-#define KTHREAD_H
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    kobe24_lixiang@126.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,27 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <QThread>
-#include <QObject>
-#include <QApplication>
-#include <QString>
 
-#include <QtDBus>
-#include <QDBusInterface>
-#include <QDBusConnection>
-
-class KThread : public QThread
-{
-public:
-    KThread(QDBusInterface *systemiface=0, QString method="", QStringList arglist={}, QString flag="");
-    ~KThread();
-    void stop();
-    QDBusInterface *iface;
-protected:
-    void run();
-private:
-    QStringList list;
-    QString method_name;
-    QString file_flag;
-};
-#endif // KTHREAD_H
+import QtQuick 1.1
+Rectangle {
+    id: masklayer
+    width: parent.width; height: 475
+    color: "gray"
+    //背景
+//    Image {
+//        source: "../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
+    AnimatedImage {
+        width: 16
+        height: 16
+        source: "../../img/icons/move.gif"
+        anchors.centerIn: parent
+    }
+}

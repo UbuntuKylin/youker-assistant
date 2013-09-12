@@ -40,6 +40,12 @@ Rectangle {
                     historystatus.visible = false;
                 if (cookiestatus.visible == true)
                     cookiestatus.visible = false;
+                if (cachedes.visible == true)
+                    cachedes.visible = false;
+                if (historydes.visible == true)
+                    historydes.visible = false;
+                if (cookiedes.visible == true)
+                    cookiedes.visible = false;
                 onekeybtn.enabled=true;
             }
             else if (msg == "c") {
@@ -54,18 +60,40 @@ Rectangle {
                cookiestatus.state = "StatusK";
                 onekeybtn.enabled=true;
             }
-
+            else if (msg == "o") {
+                toolkits.alertMSG("一键清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+            }
         }
 
         onFinishCleanWorkSecondError: {
             if (msg == "ce") {
                 cachestatus.state = "StatusC1";
+                if (cachedes.visible == true)
+                    cachedes.visible = false;
             }
             else if (msg == "he") {
                 historystatus.state = "StatusH1";
+                if (historydes.visible == true)
+                    historydes.visible = false;
             }
             else if (msg == "ke") {
                cookiestatus.state = "StatusK1";
+                if (cookiedes.visible == true)
+                    cookiedes.visible = false;
+            }
+        }
+        onFinishCleanDataSecond: {
+            if (type == "c") {
+                cachedes.visible = true;
+                cachedes.text = "（共清理掉" + msg + "垃圾）";
+            }
+            else if (type == "h") {
+                historydes.visible = true;
+                historydes.text = "（共清理掉" + msg + "条历史记录）";
+            }
+            else if (type == "k") {
+                cookiedes.visible = true;
+                cookiedes.text = "（共清理掉" + msg + "条Cookies）";
             }
         }
     }
@@ -78,20 +106,20 @@ Rectangle {
     }
 
     //上下分割条
-    Rectangle {id: splitbar1; x: 2; y: 80; width: parent.width-4; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar2; x: 2; y: 82; width: parent.width-4; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar1; x: 2; y: 80; width: parent.width-4; height: 1; color: "#d8e0e6" }
+//    Rectangle {id: splitbar2; x: 2; y: 82; width: parent.width-4; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar11; x: 2; y: 110; width: parent.width-4; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar12; x: 2; y: 112; width: parent.width-4; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar11; x: 2; y: 110; width: parent.width-4; height: 1; color: "#d8e0e6" }
+//    Rectangle {id: splitbar12; x: 2; y: 112; width: parent.width-4; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar3; x: 2; y: 166; width: parent.width-4; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar4; x: 2; y: 168; width: parent.width-4; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar3; x: 2; y: 166; width: parent.width-4; height: 1; color: "#d8e0e6" }
+//    Rectangle {id: splitbar4; x: 2; y: 168; width: parent.width-4; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar5; x: 2; y: 234; width: parent.width-4; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar6; x: 2; y: 236; width: parent.width-4; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar5; x: 2; y: 234; width: parent.width-4; height: 1; color: "#d8e0e6" }
+//    Rectangle {id: splitbar6; x: 2; y: 236; width: parent.width-4; height: 1; color: "#fafcfe" }
 
-    Rectangle {id: splitbar7; x: 2; y: 304; width: parent.width-4; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar8; x: 2; y: 306; width: parent.width-4; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar7; x: 2; y: 304; width: parent.width-4; height: 1; color: "#d8e0e6" }
+//    Rectangle {id: splitbar8; x: 2; y: 306; width: parent.width-4; height: 1; color: "#fafcfe" }
 
 //    Row {
 
@@ -255,11 +283,20 @@ Rectangle {
 
                                     Column {
                                         spacing: 5
-                                        Text {
-                                            text: "清理垃圾"//titlename
-                                            font.bold: true
-                                            font.pixelSize: 14
-                                            color: "#383838"
+                                        Row {
+                                            spacing: 20
+                                            Text {
+                                                text: "清理垃圾"//titlename
+                                                font.bold: true
+                                                font.pixelSize: 14
+                                                color: "#383838"
+                                            }
+                                            Text {
+                                                id: cachedes
+                                                color: "green"
+                                                text: ""
+                                                visible: false
+                                            }
                                         }
                                         Text {
                                             text: "清理系统中的垃圾文件，释放磁盘空间"//detailstr
@@ -352,11 +389,20 @@ Rectangle {
 
                             Column {
                                 spacing: 5
-                                Text {
-                                    text: "清理历史记录"//titlename
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
+                                Row{
+                                    spacing: 20
+                                    Text {
+                                        text: "清理历史记录"//titlename
+                                        font.bold: true
+                                        font.pixelSize: 14
+                                        color: "#383838"
+                                    }
+                                    Text {
+                                        id: historydes
+                                        color: "green"
+                                        text: ""
+                                        visible: false
+                                    }
                                 }
                                 Text {
                                     text: "清理上网时留下的历史记录，保护您的个人隐私"//detailstr
@@ -450,11 +496,20 @@ Rectangle {
 
                             Column {
                                 spacing: 5
-                                Text {
-                                    text: "清理Cookies"//titlename
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
+                                Row {
+                                    spacing: 20
+                                    Text {
+                                        text: "清理Cookies"//titlename
+                                        font.bold: true
+                                        font.pixelSize: 14
+                                        color: "#383838"
+                                    }
+                                    Text {
+                                        id: cookiedes
+                                        color: "green"
+                                        text: ""
+                                        visible: false
+                                    }
                                 }
                                 Text {
                                     text: "清理上网时产生的Cookies，还浏览器一片天空"//detailstr

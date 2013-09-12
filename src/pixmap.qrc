@@ -23,5 +23,8 @@
         <file>image/quit-hover.png</file>
         <file>image/accelerate.png</file>
         <file>image/memory.png</file>
+        <file>image/alert.png</file>
+        <file>image/progress-bar.png</file>
+        <file>image/progress-bg.png</file>
     </qresource>
 </RCC>

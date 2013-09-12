@@ -155,7 +155,7 @@ Item {
         spacing: 20
         width: parent.width
 //        height: 50
-        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 27 }
         Image {
             id: refreshArrow
             source: "../img/toolWidget/trace.png"
@@ -219,7 +219,7 @@ Item {
                      if(root.null_flag == true) {
                         root.state = "CookiesWorkEmpty";
                          deleget_arrow=0;
-                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else if(root.null_flag == false)
                      {
@@ -235,7 +235,7 @@ Item {
                  }
                 }
                 else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
 //        Common.Button {
@@ -283,7 +283,7 @@ Item {
         }
         width: parent.width - 4
         height: 1
-        color: "#b9c5cc"
+        color: "#d8e0e6"
     }
 
 //    Component {
@@ -408,6 +408,8 @@ Item {
         frame:false
         anchors.top: titlebar.bottom
         anchors.topMargin: 30
+        anchors.left:parent.left
+        anchors.leftMargin: 27
         height: root.height -titlebar.height - 50
         width: parent.width
         Item {

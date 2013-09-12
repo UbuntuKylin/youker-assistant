@@ -73,12 +73,12 @@ Item {
                     num++;
                 }
                 else {
-                    sof_subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "字节"});
+                    sof_subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
                     systemdispatcher.set_software_args(splitlist[0]);
                 }
             }
             root.sof_sub_num -= num;
-            sof_num=sof_sub_num
+            sof_num = sof_sub_num;
             if(sof_num!=0)
                 sof_check_flag=true;
             sof_mainModel.clear();
@@ -159,7 +159,7 @@ Item {
         spacing: 20
         width: parent.width
 //        height: 50
-        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 27 }
         Image {
             id: refreshArrow
             source: "../img/toolWidget/software-max.png"
@@ -225,7 +225,7 @@ Item {
                      if(root.sof_null_flag == true) {
                         root.state = "SoftwareWorkEmpty";
                          deleget_arrow=0;
-                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
+                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else if(root.sof_null_flag == false)
                      {
@@ -239,7 +239,7 @@ Item {
                  }
                 }
                 else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
+                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
 //        Common.Button {
@@ -285,7 +285,7 @@ Item {
         }
         width: parent.width - 4
         height: 1
-        color: "#b9c5cc"
+        color: "#d8e0e6"
     }
 
 //    Component {
@@ -410,6 +410,8 @@ Item {
         frame:false
         anchors.top: sof_titlebar.bottom
         anchors.topMargin: 30
+        anchors.left:parent.left
+        anchors.leftMargin: 27
         height: root.height -sof_titlebar.height - 50
         width: parent.width
         Item {

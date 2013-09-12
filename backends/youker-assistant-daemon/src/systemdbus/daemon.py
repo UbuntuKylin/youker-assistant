@@ -176,8 +176,8 @@ class Daemon(PolicyKitService):
     def clean_complete_main(self, msg):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_data_main(self, msg):
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def clean_data_main(self, category, msg):
         pass
 
     # a dbus method which means clean complete by second one key 
@@ -185,8 +185,8 @@ class Daemon(PolicyKitService):
     def clean_complete_second(self, msg):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_data_second(self, msg):
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def clean_data_second(self, category, msg):
         pass
 
     # a dbus method which means clean complete
@@ -228,7 +228,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_main_msg('he')
             else:
                 self.clean_complete_main_msg('h')
-                sefl.clean_data_main_msg(cruft_dic['historydata'])
+                self.clean_data_main_msg('h', cruft_dic['historydata'])
 
         if 'cookies' in cruft_dic:
             cookies_cruft_list = cruft_dic['cookies']
@@ -239,7 +239,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_main_msg('ke')
             else:
                 self.clean_complete_main_msg('k')
-                sefl.clean_data_main_msg(cruft_dic['cookiesdata'])
+                self.clean_data_main_msg('k', cruft_dic['cookiesdata'])
 
         if 'cache' in cruft_dic:
             cache_cruft_list = cruft_dic['cache']
@@ -249,7 +249,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_main_msg('ce')
             else:
                 self.clean_complete_main_msg('c')
-                sefl.clean_data_main_msg(cruft_dic['cachedata'])
+                self.clean_data_main_msg('c', cruft_dic['cachedata'])
         self.clean_complete_main_msg('o')
 
     # the function of clean cruft by second one key
@@ -271,7 +271,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_second_msg('he')
             else:
                 self.clean_complete_second_msg('h')
-                sefl.clean_data_second_msg(cruft_dic['historydata'])
+                self.clean_data_second_msg('h', cruft_dic['historydata'])
 
         if 'cookies' in cruft_dic:
             cookies_cruft_list = cruft_dic['cookies']
@@ -282,7 +282,7 @@ class Daemon(PolicyKitService):
                 self.clean_error_second_msg('ke')
             else:
                 self.clean_complete_second_msg('k')
-                sefl.clean_data_second_msg(cruft_dic['cookiesdata'])
+                self.clean_data_second_msg('k', cruft_dic['cookiesdata'])
 
         if 'cache' in cruft_dic:
             cache_cruft_list = cruft_dic['cache']
@@ -292,35 +292,47 @@ class Daemon(PolicyKitService):
                 self.clean_error_second_msg('ce')
             else:
                 self.clean_complete_second_msg('c')
-                sefl.clean_data_second_msg(cruft_dic['cachedata'])
+                self.clean_data_second_msg('c', cruft_dic['cachedata'])
         self.clean_complete_second_msg('o')
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    def clean_history_records(self, sender=None):
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def clean_history_records(self, mode_list, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
             self.clean_complete_msg('')
             return
-        daemonhistory = cleaner.CleanTheHistory()
-        try:
-            daemonhistory.clean_the_cruftlist()
-        except Exception, e:
-            self.clean_error_msg('history')
-        else:
-            self.clean_complete_msg('history')
+        judge_dic = {'history': False, 'system': False}
+        for mode in mode_list:
+            judge_dic['%s' % mode] = True
+        if judge_dic['history']:
+            daemonhistory = cleaner.CleanTheHistory()
+            try:
+                daemonhistory.clean_the_cruftlist()
+            except Exception, e:
+                self.clean_error_msg('history')
+            else:
+                self.clean_complete_msg('history')
+        if judge_dic['system']:
+            daemonsystem = cleaner.CleanSystemHistory()
+            try:
+                daemonsystem.clean_the_cruftlist()
+            except Exception, e:
+                self.clean_error_msg('system')
+            else:
+                self.clean_complete_msg('system')
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    def clean_system_history(self, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            return
-        daemonsystem = cleaner.CleanSystemHistory()
-        try:
-            daemonsystem.clean_the_cruftlist()
-        except Exception, e:
-            self.clean_error_msg('system')
-        else:
-            self.clean_complete_msg('system')
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    #def clean_system_history(self, sender=None):
+    #    status = self._check_permission(sender, UK_ACTION_YOUKER)
+    #    if not status:
+    #        return
+    #    daemonsystem = cleaner.CleanSystemHistory()
+    #    try:
+    #        daemonsystem.clean_the_cruftlist()
+    #    except Exception, e:
+    #        self.clean_error_msg('system')
+    #    else:
+    #        self.clean_complete_msg('system')
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_dash_history(self, sender=None):
@@ -374,14 +386,14 @@ class Daemon(PolicyKitService):
     def clean_complete_main_msg(self, para):
         self.clean_complete_main(para)
 
-    def clean_data_main_msg(self, para):
-        self.clean_data_main(para)
+    def clean_data_main_msg(self, category, para):
+        self.clean_data_main(category, para)
 
     def clean_complete_second_msg(self, para):
         self.clean_complete_second(para)
 
-    def clean_data_second_msg(self, para):
-        self.clean_data_second(para)
+    def clean_data_second_msg(self, category, para):
+        self.clean_data_second(category, para)
 
     def clean_complete_msg(self, para):
         self.clean_complete(para)
