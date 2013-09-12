@@ -42,10 +42,13 @@ void KThread::run()
         iface->call("clean_by_second_one_key", list);
     }
     else if(method_name == "clean_history_records") {
-        iface->call("clean_history_records", list);
+        qDebug() << "11111111";
+//        qDebug() << list;
+        iface->call("clean_history_records");
     }
     else if(method_name == "clean_system_history") {
-        iface->call("clean_system_history", file_flag);
+        qDebug() << "2222222222";
+        iface->call("clean_system_history");
     }
     else if(method_name == "clean_cookies_records") {
         iface->call("clean_cookies_records", list);

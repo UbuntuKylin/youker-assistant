@@ -17,6 +17,7 @@
 #include "ui_authdialog.h"
 #include <QDebug>
 #include <QProcessEnvironment>
+#include <QTimer>
 //QString passwd;
 
 AuthDialog::AuthDialog(QString msg, QWidget *parent) :
@@ -80,12 +81,21 @@ void AuthDialog::on_closeButton_clicked()
     QDialog::destroy(true);
 //    exit(0);
 }
+void AuthDialog::sleep_to_call_server() {
+    this->accept();
+}
 
 void AuthDialog::on_okButton_clicked()
 {
     passwd = ui->lineEdit->text();
-    if(trans_password("youkersudo", passwd))
-        this->accept();
+    if(trans_password("youkersudo", passwd)) {
+        ui->msg_label->setText("正在启动服务，请稍等！");
+        QTimer *timer = new QTimer(this);
+        timer->setInterval(1000);
+        connect(timer,SIGNAL(timeout()),this,SLOT(sleep_to_call_server()));
+        timer->start();
+//        this->accept();
+    }
     else {
         ui->lineEdit->clear();
         ui->lineEdit->setFocus();

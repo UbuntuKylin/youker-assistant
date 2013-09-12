@@ -50,6 +50,8 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                "com.ubuntukylin_tools.daemon",
                                QDBusConnection::systemBus());
     //绑定到底层清理完毕后发送到信号函数clear_browser
+    QObject::connect(systemiface,SIGNAL(clean_complete_trace(QString)),this,SLOT(handler_clear_trace(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_error_trace(QString)),this,SLOT(handler_clear_trace_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
@@ -72,6 +74,14 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     this->mainwindow_height = 600;
     this->alert_width = 329;
     this->alert_height = 195;
+}
+
+void SystemDispatcher::handler_clear_trace(QString msg) {
+    emit finishCleanTrace(msg);
+}
+
+void SystemDispatcher::handler_clear_trace_error(QString msg) {
+    emit finishCleanTraceError(msg);
 }
 
 void SystemDispatcher::handler_clear_rubbish_error(QString msg)
@@ -269,15 +279,14 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
         return "/ubuntukylin";
 }
 
-void SystemDispatcher::clean_history_records_qt(QStringList strlist) {
-    systemiface->call("clean_history_records", strlist);
-    qDebug() << "11111111111111";
-//    KThread *thread = new KThread(systemiface, "clean_history_records", strlist);
-//    thread->start();
+void SystemDispatcher::clean_history_records_qt(/*QStringList strlist*/) {
+//    systemiface->call("clean_history_records", strlist);
+    KThread *thread = new KThread(systemiface, "clean_history_records", tmplist);
+    thread->start();
 }
 
-void SystemDispatcher::clean_system_history_qt(QString flag) {
-    KThread *thread = new KThread(systemiface, "clean_system_history", tmplist, flag);
+void SystemDispatcher::clean_system_history_qt(/*QString flag*/) {
+    KThread *thread = new KThread(systemiface, "clean_system_history", tmplist);
     thread->start();
 }
 

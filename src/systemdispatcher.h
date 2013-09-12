@@ -52,8 +52,8 @@ public:
 
     Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
-    Q_INVOKABLE void clean_history_records_qt(QStringList strlist);
-    Q_INVOKABLE void clean_system_history_qt(QString flag);
+    Q_INVOKABLE void clean_history_records_qt(/*QStringList strlist*/);
+    Q_INVOKABLE void clean_system_history_qt(/*QString flag*/);
     Q_INVOKABLE void clean_dash_history_qt();
     Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
@@ -161,6 +161,8 @@ public:
 
 signals:
     void addBootImage();
+    void finishCleanTrace(QString msg);
+    void finishCleanTraceError(QString msg);
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkError(QString msg);
     void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
@@ -172,6 +174,8 @@ signals:
     void finishCleanDataSecond(QString type, QString msg);
 
 public slots:
+    void handler_clear_trace(QString msg);
+    void handler_clear_trace_error(QString msg);
     void handler_clear_rubbish(QString msg);
     void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);

@@ -200,6 +200,7 @@ Item {
             text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
+//                sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                     sudodispatcher.bind_signals_after_dbus_start();
                     if(root.check_flag)

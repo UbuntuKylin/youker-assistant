@@ -120,7 +120,7 @@ void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict
 }
 
 void SudoDispatcher::show_passwd_dialog(int window_x, int window_y) {
-    authdialog = new AuthDialog("提示：请输入当前用户登录密码，然后重新点击该区域，保证优客助手的正常使用。");
+    authdialog = new AuthDialog("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。");
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     authdialog->move(this->alert_x, this->alert_y);

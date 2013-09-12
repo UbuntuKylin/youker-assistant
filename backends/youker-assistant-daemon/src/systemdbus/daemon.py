@@ -194,6 +194,10 @@ class Daemon(PolicyKitService):
     def clean_complete(self, msg):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_complete_trace(self, msg):
+        pass
+
     # a dbus method which means an error occurred with main one key
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error_main(self, msg):
@@ -208,7 +212,9 @@ class Daemon(PolicyKitService):
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error(self, msg):
         pass
-
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_error_trace(self, msg):
+        pass
     # the function of clean cruft by main one key
     ###input-['history', 'cach....] output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
@@ -295,51 +301,50 @@ class Daemon(PolicyKitService):
                 self.clean_data_second_msg('c', cruft_dic['cachedata'])
         self.clean_complete_second_msg('o')
 
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def clean_history_records(self, mode_list, sender=None):
+    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    #def clean_history_records(self, mode_list, sender=None):
+    #    status = self._check_permission(sender, UK_ACTION_YOUKER)
+    #    if not status:
+    #        self.clean_complete_msg_trace('')
+    #        return
+    #    judge_dic = {'history': False, 'system': False}
+    #    for mode in mode_list:
+    #        judge_dic['%s' % mode] = True
+    #    if judge_dic['history']:
+    #        daemonhistory = cleaner.CleanTheHistory()
+    #        try:
+    #            daemonhistory.clean_the_cruftlist()
+    #        except Exception, e:
+    #            self.clean_error_msg_trace('h')
+    #        else:
+    #            self.clean_complete_msg_trace('h')
+    #    if judge_dic['system']:
+    #        daemonsystem = cleaner.CleanSystemHistory()
+    #        try:
+    #            daemonsystem.clean_the_cruftlist()
+    #        except Exception, e:
+    #            self.clean_error_msg_trace('s')
+    #        else:
+    #            self.clean_complete_msg_trace('s')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    def clean_history_records(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
             self.clean_complete_msg('')
             return
-        judge_dic = {'history': False, 'system': False}
-        for mode in mode_list:
-            judge_dic['%s' % mode] = True
-        if judge_dic['history']:
-            daemonhistory = cleaner.CleanTheHistory()
-            try:
-                daemonhistory.clean_the_cruftlist()
-            except Exception, e:
-                self.clean_error_msg('history')
-            else:
-                self.clean_complete_msg('history')
-        if judge_dic['system']:
-            daemonsystem = cleaner.CleanSystemHistory()
-            try:
-                daemonsystem.clean_the_cruftlist()
-            except Exception, e:
-                self.clean_error_msg('system')
-            else:
-                self.clean_complete_msg('system')
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    #def clean_history_records(self, sender=None):
-    #    status = self._check_permission(sender, UK_ACTION_YOUKER)
-    #    if not status:
-    #        self.clean_complete_msg('')
-    #        return
-    #    daemonhistory = cleaner.CleanTheHistory()
-    #    try:
-    #        daemonhistory.clean_the_cruftlist()
-    #    except Exception, e:
-    #        self.clean_error_msg('history')
-    #    else:
-    #        self.clean_complete_msg('history')
+        daemonhistory = cleaner.CleanTheHistory()
+        try:
+            daemonhistory.clean_the_cruftlist()
+        except Exception, e:
+            self.clean_error_msg('history')
+        else:
+            self.clean_complete_msg('history')
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
-    def clean_system_history(self, ktype, sender=None):
-        if(ktype == "yes"):
-            status = self._check_permission(sender, UK_ACTION_YOUKER)
-            if not status:
-                return
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    def clean_system_history(self, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return
         daemonsystem = cleaner.CleanSystemHistory()
         try:
             daemonsystem.clean_the_cruftlist()
@@ -412,8 +417,14 @@ class Daemon(PolicyKitService):
     def clean_complete_msg(self, para):
         self.clean_complete(para)
 
+    def clean_complete_msg_trace(self, para):
+        self.clean_complete_trace(para)
+
     def clean_error_msg(self, para):
         self.clean_error(para)
+
+    def clean_error_msg_trace(self, para):
+        self.clean_error_trace(para)
 
     def clean_error_main_msg(self, para):
         self.clean_error_main(para)
