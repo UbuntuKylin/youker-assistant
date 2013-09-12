@@ -411,7 +411,7 @@ Item {
         anchors.left:parent.left
         anchors.leftMargin: 27
         height: root.height -titlebar.height - 50
-        width: parent.width
+        width: parent.width -27
         Item {
             width: parent.width
             height: (root.sub_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display

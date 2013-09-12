@@ -97,7 +97,6 @@ Item {
                     onPressed: {
                         expanded = !expanded
                         console.log(expanded)
-                        listViewDelegate.subpressed(heightMark);
                         if(heightMark==listViewDelegate.sub_num)
                         {
                             check.checkedbool=false;
@@ -122,6 +121,7 @@ Item {
                             }
                             heightMark=listViewDelegate.sub_num;
                         }
+                        listViewDelegate.subpressed(heightMark);
                     }
             }
         }
