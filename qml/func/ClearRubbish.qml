@@ -36,7 +36,7 @@ Item {
         width: parent.width; height: 435
 
         Common.Tab {
-            title: qsTr("一键清理")
+            title: qsTr("一键清理")           
             anchors.fill: parent
             FastclearModel {
                 id: fastitem

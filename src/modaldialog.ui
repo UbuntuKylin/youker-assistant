@@ -86,7 +86,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;点击鼠标左键进行换色操作，右键退出。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string/>
    </property>
    <property name="pixmap">
     <pixmap resource="pixmap.qrc">:/pixmap/image/message.png</pixmap>
