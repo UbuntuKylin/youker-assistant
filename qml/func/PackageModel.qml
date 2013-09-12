@@ -67,7 +67,7 @@ Item {
                     num++;
                 }
                 else {
-                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2] + "字节"});
+                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2]});
                     systemdispatcher.set_package_args(splitlist[0]);
                 }
             }

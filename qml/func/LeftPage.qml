@@ -82,20 +82,17 @@ Rectangle {
             }
         }
         onFinishCleanDataMain: {
-            console.log("onFinishCleanDataMain->");
-            console.log(type);
-            console.log(msg);
-            if (msg == "c") {
-                cachedes.text = msg;
+            if (type == "c") {
                 cachedes.visible = true;
+                cachedes.text = "（共清理掉" + msg + "垃圾）";
             }
-            else if (msg == "h") {
-                historydes.text = msg;
+            else if (type == "h") {
                 historydes.visible = true;
+                historydes.text = "（共清理掉" + msg + "条历史记录）";
             }
-            else if (msg == "k") {
-                cookiedes.text = msg;
+            else if (type == "k") {
                 cookiedes.visible = true;
+                cookiedes.text = "（共清理掉" + msg + "条Cookies）";
             }
         }
     }
@@ -281,6 +278,7 @@ Rectangle {
                                             }
                                             Text {
                                                 id: cachedes
+                                                color: "green"
                                                 text: ""
                                                 visible: false
                                             }
@@ -386,6 +384,7 @@ Rectangle {
                                     }
                                     Text {
                                         id: historydes
+                                        color: "green"
                                         text: ""
                                         visible: false
                                     }
@@ -485,6 +484,7 @@ Rectangle {
                                     }
                                     Text {
                                         id: cookiedes
+                                        color: "green"
                                         text: ""
                                         visible: false
                                     }

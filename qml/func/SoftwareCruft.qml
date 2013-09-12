@@ -73,12 +73,12 @@ Item {
                     num++;
                 }
                 else {
-                    sof_subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "字节"});
+                    sof_subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
                     systemdispatcher.set_software_args(splitlist[0]);
                 }
             }
             root.sof_sub_num -= num;
-            sof_num=sof_sub_num
+            sof_num = sof_sub_num;
             if(sof_num!=0)
                 sof_check_flag=true;
             sof_mainModel.clear();

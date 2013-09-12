@@ -44,8 +44,8 @@ void KThread::run()
     else if(method_name == "clean_history_records") {
         iface->call("clean_history_records");
     }
-    else if(method_name == "clean_system_history") {
-        iface->call("clean_system_history");
+    else if(method_name == "") {
+        iface->call("clean_system_historclean_system_historyy");
     }
     else if(method_name == "clean_cookies_records") {
         iface->call("clean_cookies_records", list);

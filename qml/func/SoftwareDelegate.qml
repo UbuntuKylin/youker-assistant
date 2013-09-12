@@ -81,6 +81,8 @@ Rectangle {
         onClicked: {
             if (flag == "AdobeFlash"){
                 content.install_status = sudodispatcher.check_pkg_status_qt("flashplugin-downloader");
+                console.log("111111111111");
+                console.log(content.install_status);
                 content.delegate_name= "flashplugin-downloader";
                 content.delegate_appname = "AdobeFlash插件"
                 content.delegate_information= "Adobe Flash Player plugin installer"
@@ -89,6 +91,9 @@ Rectangle {
                 content.introduction_image1= "../img/character/flash-01.png"
                 content.introduction_image2= "../img/character/flash-02.png"
                 content.install_status = sudodispatcher.get_value("flashplugin-downloader");
+                console.log("222222222222");
+                console.log(content.install_status);
+//                software.show_text(software.installed_status)
             }
             else if (flag == "Chromium"){
                 content.delegate_name= "chromium-bsu"
@@ -121,14 +126,14 @@ Rectangle {
                 content.install_status = sudodispatcher.get_value("qtcreator");
             }
             else if (flag == "Kuaipan"){
-                content.delegate_name= "kuaipan"
+                content.delegate_name= "ubiquity"
                 content.delegate_appname = "金山快盘"
                 content.delegate_information= "金山快盘"
                 content.delegate_image= "../img/logo/kuaipan.jpg"
                 content.delegate_introduction="UbuntuKylin团队与金山公司联合开发的“Linux版网盘客户端”，具备文件同步、备份和共享功能。"
                 content.introduction_image1= "../img/character/kugou-01.png"
                 content.introduction_image2= "../img/character/kugou-02.png"
-                content.install_status = sudodispatcher.get_value("kuaipan");
+                content.install_status = sudodispatcher.get_value("ubiquity");
             }
             else if (flag == "KugouMusic"){
                 content.delegate_name= "kugou"

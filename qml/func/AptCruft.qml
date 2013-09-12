@@ -24,7 +24,7 @@ import "common" as Common
 Item {
     id:root
     width: parent.width
-    height: 435//420//340
+    height: 435
     property string btn_text: "开始扫描"
     property string apt_title: "包管理深度清理"
     property string apt_description: "深度清理包管理残留的deb包,节省磁盘空间"
@@ -64,7 +64,7 @@ Item {
                     num++;
                 }
                 else {
-                    apt_subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "字节"});
+                    apt_subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
                     systemdispatcher.set_apt_args(splitlist[0]);
                 }
             }
