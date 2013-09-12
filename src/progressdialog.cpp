@@ -29,6 +29,8 @@ ProgressDialog::ProgressDialog(QWidget *parent) :
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->label->setStyleSheet("QLabel {color: green; font-size: 12px}");
+//    ui->label_2->setStyleSheet("QLabel {color: black; font-size: 12px}");
+
 //    ui->progressBar->setStyleSheet("QProgressBar {border: 1px solid grey;border-radius: 2px;text-align: center;}"
 //                                    "QProgressBar::chunk {background-color: #6be2fa;width: 10px;}");
     QDesktopWidget* desktop = QApplication::desktop();
@@ -43,6 +45,8 @@ ProgressDialog::~ProgressDialog()
 
 void ProgressDialog::reset_status() {
     ratio_sus=0;
+    ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+    update();
     ui->label->setText("开始");
     this->hide();
 }
@@ -53,6 +57,7 @@ void ProgressDialog::setValue(QString type, QString msg) {
     if(type == "down_start") {
         ui->label->setText("开始下载");
 //        ui->progressBar->setValue(0);
+        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
         ratio_sus=1;
 
 
@@ -75,6 +80,7 @@ void ProgressDialog::setValue(QString type, QString msg) {
                     ratio = QString::number(trans,'f',0);
 //                    ui->progressBar->setValue(ratio.toInt());
                     ratio_sus=ratio.toInt();
+                    ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
 //                        qDebug() << ratio_sus;
 
 
@@ -85,10 +91,12 @@ void ProgressDialog::setValue(QString type, QString msg) {
     else if(type == "down_stop") {
         ui->label->setText("下载完成");
         ratio_sus=0;
+        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
     }
     else if(type == "apt_start"){
         ui->label->setText("开始");
 //        ui->progressBar->setValue(0);
+        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
         ratio_sus=1;
 
     }
@@ -104,6 +112,7 @@ void ProgressDialog::setValue(QString type, QString msg) {
                     ui->label->setText("正在进行:" + act);
 //                    ui->progressBar->setValue(value);
                     ratio_sus=value;
+                    ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
 //                    qDebug() << ratio_sus;
 //                    update();
                 }
@@ -113,26 +122,24 @@ void ProgressDialog::setValue(QString type, QString msg) {
     else if(type == "apt_stop") {
         ui->label->setText("完成");
 //        ui->progressBar->setValue(0);
-        ratiovalue=100;
+        ratio_sus=100;
+        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
         update();
 //        sleep(2000);
         QTimer *timer = new QTimer(this);
         timer->setInterval(2000);
         connect(timer,SIGNAL(timeout()),this,SLOT(reset_status()));
         timer->start();
-
-
+        ratio_sus=100;
+        update();
 //        ratio_sus=0;
 //        ui->label->setText("开始");
 //        this->hide();
     }
 
-    if(ratiovalue!=ratio_sus)
-    {
-        ratiovalue=ratio_sus;
-        qDebug() << ratiovalue;
+
+        qDebug() << ratio_sus;
         update();
-    }
 }
 
 
@@ -174,7 +181,7 @@ QSize ProgressDialog::sizeHint()const
 void ProgressDialog::resizeEvent(QResizeEvent*event)
 {
     qDebug() << "1111111111111111111111111111111111111111111111";
-    qDebug() << ratiovalue;
+    qDebug() << ratio_sus;
     update();
 }
 void ProgressDialog::paintEvent(QPaintEvent* event)
@@ -195,7 +202,7 @@ void ProgressDialog::paintEvent(QPaintEvent* event)
     opt.init(this);
     painter.drawPixmap(10,30,progress_bar1);
 
-//    painter.drawPixmap(10,30,progress_bar2,0,0,progress_bar2.width()*(ratiovalue*0.01),progress_bar2.height());
-    painter.drawPixmap(10,30,progress_bar2.width()*(ratiovalue*0.01),progress_bar2.height(),progress_bar2);
+//    painter.drawPixmap(10,30,progress_bar2,0,0,progress_bar2.width()*(ratio_sus*0.01),progress_bar2.height());
+    painter.drawPixmap(10,30,progress_bar2.width()*(ratio_sus*0.01),progress_bar2.height(),progress_bar2);
     style()->drawPrimitive(QStyle::PE_Widget,&opt,&painter,this);
 }

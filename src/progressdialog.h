@@ -38,7 +38,6 @@ private:
     QPoint dragPos;
 
     int ratio_sus=0;
-    int ratiovalue=1;
     QSize initSize;
 
 protected:
