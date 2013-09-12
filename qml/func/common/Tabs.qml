@@ -60,7 +60,7 @@ Item {
                         color: "#abc2c2"
                     }
                     BorderImage {  //tab选项图片
-                        anchors { fill: parent; leftMargin: 0.5; topMargin: 0; rightMargin: 0.5}
+                        anchors { fill: parent; leftMargin: 1; topMargin: 0; rightMargin: 1}
     //                    border { left: 7; right: 7}
                         source: tabWidget.current == index? "../../img/icons/tab-active.png" : ""
                     }
