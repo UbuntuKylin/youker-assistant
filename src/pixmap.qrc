@@ -26,5 +26,7 @@
         <file>image/alert.png</file>
         <file>image/progress-bar.png</file>
         <file>image/progress-bg.png</file>
+        <file>image/progress-bar2.png</file>
+        <file>image/progress-bar1.png</file>
     </qresource>
 </RCC>
