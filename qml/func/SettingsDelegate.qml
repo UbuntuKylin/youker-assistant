@@ -108,11 +108,22 @@ Rectangle {
             }
             else if(flag == "FcitxConfigtool")
             {
-                pageStack.push(fcitxConfigtoolpage);//kobe08
+                pageStack.push(fcitxConfigtoolpage);
 
 //                scaleMe.emitFcitxRefresh();
 
             }
+            else if(flag == "SoftWare") {
+                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+                    sudodispatcher.bind_signals_after_dbus_start();
+                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                    pageStack.push(softwarerecommend);
+                }
+                else {
+                    sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                }
+            }
+
 //            else
 //                iconClicked();
             //kobe:选中项深色块移动

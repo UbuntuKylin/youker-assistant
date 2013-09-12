@@ -59,6 +59,11 @@ Item {
                     name: "输入法配置"
                     flag: "FcitxConfigtool"
                   }
+                ListElement {
+                    icon: "../img/icons/software.png"
+                    name: "软件推荐"
+                    flag: "SoftWare"
+                  }
             }
 
 

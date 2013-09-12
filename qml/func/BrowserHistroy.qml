@@ -453,7 +453,7 @@ Item {
                 Image {
                     id: clearImage2
                     width: 40; height: 42
-                    source: "../img/toolWidget/history.png"//picturename
+                    source: "../img/toolWidget/systemtrace.png"
                 }
                 Column {
                     spacing: 5

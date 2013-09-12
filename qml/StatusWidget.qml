@@ -20,8 +20,8 @@ Rectangle {
     width: parent.width
     height: 30//28
     color: "transparent"
-    property string version: "0.1"
-    property string updateTime: "2012-06-01"
+    property string version: "0.2"
+    property string updateTime: "2013-09-12"
     property string status: "检查更新"
 
     Row {

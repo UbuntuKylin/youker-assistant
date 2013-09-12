@@ -92,16 +92,16 @@ Item {
                             spacing: 5
                             SetWord {wordname: "更改窗口主题"; width: 90; flag: "WidgetTheme"}
                             //左右分割条
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter}
                             SetWord {wordname: "更改图标配置"; width: 90; flag: "DesktopiconSet"}
                             //左右分割条
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             SetWord {wordname: "更改鼠标指针"; width: 90; flag: "MousePointer"}
                             //左右分割条
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             SetWord {wordname: "更改声音效果"; width: 90; flag: "SoundEffects"}
                             //左右分割条
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             SetWord {wordname: "更改开机动画"; width: 90; flag: "BootAnimation"}
                         }
                     }
@@ -156,9 +156,9 @@ Item {
 //                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "更改默认字体设置"; width: 120; flag: "DefaultFont"}
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             SetWord {wordname: "更改文档字体设置"; width: 120; flag: "DocumentFont"}
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             SetWord {wordname: "更改窗口标题栏字体设置"; width: 160; flag: "TitlebarFont"}
                         }
                     }
@@ -187,7 +187,7 @@ Item {
 //                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "更改触摸板设置"; width: 105; flag: "TouchpadSet"}
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc" }
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             SetWord {wordname: "检测屏幕坏点"; width: 95; flag: "CheckScreen"}
                         }
                     }

@@ -47,7 +47,7 @@ Item {
              id: okBtn
              visible: toolbar.showok
              hoverimage: "green2.png"//../../img/icons/
-             fontcolor:"#929292"
+//             fontcolor:"#929292"
              fontsize: 15
              text: "确定"
              width: 94; height: 29
