@@ -25,21 +25,29 @@ class ProgressDialog;
 class ProgressDialog : public QDialog
 {
     Q_OBJECT
-    
+
 public:
     explicit ProgressDialog(QWidget *parent = 0);
+    virtual QSize sizeHint()const;
     ~ProgressDialog();
 public slots:
     void setValue(QString type, QString msg);
-    
+    void reset_status();
 private:
     Ui::ProgressDialog *ui;
     QPoint dragPos;
+
+    int ratio_sus=0;
+    int ratiovalue=1;
+    QSize initSize;
 
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
+
+    void paintEvent(QPaintEvent* event);
+    void resizeEvent(QResizeEvent* event);
 };
 
 #endif // PROGRESSDIALOG_H
