@@ -79,18 +79,18 @@ Rectangle {
     }
 
     //上下分割条
-    Rectangle {x: 100; y: 90; width: parent.width - 150; height: 1; color: "#b9c5cc" }
-    Rectangle {x: 100; y: 92; width: parent.width - 150; height: 1; color: "#fafcfe" }
+    Rectangle {x: 100; y: 90; width: parent.width - 150; height: 1; color: "#ccdadd" }
+//    Rectangle {x: 100; y: 92; width: parent.width - 150; height: 1; color: "#fafcfe" }
     //-------------------
 
     //上下分割条
-    Rectangle {x: 100; y: 190; width: parent.width - 150; height: 1; color: "#b9c5cc" }
-    Rectangle {x: 100; y: 192; width: parent.width - 150; height: 1; color: "#fafcfe" }
+    Rectangle {x: 100; y: 190; width: parent.width - 150; height: 1; color: "#ccdadd" }
+//    Rectangle {x: 100; y: 192; width: parent.width - 150; height: 1; color: "#fafcfe" }
     //-------------------
 
     //上下分割条
-    Rectangle {x: 100; y: 370; width: parent.width - 150; height: 1; color: "#b9c5cc" }
-    Rectangle {x: 100; y: 372; width: parent.width - 150; height: 1; color: "#fafcfe" }
+    Rectangle {x: 100; y: 370; width: parent.width - 150; height: 1; color: "#ccdadd" }
+//    Rectangle {x: 100; y: 372; width: parent.width - 150; height: 1; color: "#fafcfe" }
     //-------------------
 
     Column {
