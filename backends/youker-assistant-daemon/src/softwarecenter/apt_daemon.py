@@ -53,11 +53,7 @@ class FetchProcess(apb.AcquireProgress):
 # 		print 'elapsed_time: ', self.elapsed_time
 # 		print 'fetched_bytes: ', self.fetched_bytes
 # 		print 'last_bytes: ', self.last_bytes
-		self.sudoDaemon.software_fetch_signal("down_pulse", 
-											"download_bytes:" + self.current_bytes
-											+ ",total_bytes:" + self.total_bytes
-											+ ",download_items:" + self.current_items
-											+ ",total_items:" + self.total_items)
+		self.sudoDaemon.software_fetch_signal("down_pulse","download_bytes:" + str(self.current_bytes) + ",total_bytes:" + str(self.total_bytes) + ",download_items:" + str(self.current_items) + ",total_items:" + str(self.total_items))
 
 	def start(self):
 		# Reset all our values.
@@ -116,7 +112,11 @@ class AptDaemon:
 
 	# get package by pkgName
 	def get_pkg_by_name(self, pkgName):
-		return self.ca[pkgName]
+		try:
+			return self.ca[pkgName]
+		except Exception, e:
+			print e
+			return "ERROR"
 
 	# install package
 	def install_pkg(self, pkgName):
@@ -158,6 +158,8 @@ class AptDaemon:
 	def check_pkg_status(self, pkgName):
 		self.ca.open()
 		pkg = self.get_pkg_by_name(pkgName)
+		if(pkg == "ERROR"):
+			return "ERROR"
 		if(pkg.is_installed):
 			if(pkg.is_upgradable):
 				return "u"
@@ -172,6 +174,8 @@ class AptDaemon:
 		pkgStatusDict = {}
 		for pkgName in pkgNameList:
 			pkg = self.get_pkg_by_name(pkgName)
+			if(pkg == "ERROR"):
+				continue
 			if(pkg.is_installed):
 				if(pkg.is_upgradable):
 					pkgStatusDict[pkgName] = "u"
@@ -188,6 +192,8 @@ class AptDaemon:
 		pkgStatusList = []
 		for pkgName in pkgNameList:
 			pkg = self.get_pkg_by_name(pkgName)
+			if(pkg == "ERROR"):
+				continue
 			if(pkg.is_installed):
 				if(pkg.is_upgradable):
 					pkgStatusList.append(pkgName + ":u")
@@ -196,7 +202,8 @@ class AptDaemon:
 			else:
 					pkgStatusList.append(pkgName + ":n")
 
-		self.sudoDaemon.software_check_status_signal(pkgStatusList)
+# 		self.sudoDaemon.software_check_status_signal(pkgStatusList)
+		return pkgStatusList
 
 # 	def get_pkgs_name_list(self):
 # 		return self.pkgNameList
@@ -215,8 +222,8 @@ if __name__ == "__main__":
 	ad = AptDaemon(None)
 	
 # 	print ad.check_pkgs_status(["gedit", "cairo-dock", "unity"])
-# 	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity"])
-#	ad.apt_get_update()
+	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity", "haha", "hehe"])
+# 	ad.apt_get_update()
 	
 	while True:
 		print "\ninput your command: "
