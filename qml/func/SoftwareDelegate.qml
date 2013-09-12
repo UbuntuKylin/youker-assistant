@@ -81,8 +81,6 @@ Rectangle {
         onClicked: {
             if (flag == "AdobeFlash"){
                 content.install_status = sudodispatcher.check_pkg_status_qt("flashplugin-downloader");
-                console.log("111111111111");
-                console.log(content.install_status);
                 content.delegate_name= "flashplugin-downloader";
                 content.delegate_appname = "AdobeFlash插件"
                 content.delegate_information= "Adobe Flash Player plugin installer"
@@ -91,8 +89,6 @@ Rectangle {
                 content.introduction_image1= "../img/character/flash-01.png"
                 content.introduction_image2= "../img/character/flash-02.png"
                 content.install_status = sudodispatcher.get_value("flashplugin-downloader");
-                console.log("222222222222");
-                console.log(content.install_status);
 //                software.show_text(software.installed_status)
             }
             else if (flag == "Chromium"){

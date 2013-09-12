@@ -320,19 +320,33 @@ class Daemon(PolicyKitService):
                 self.clean_error_msg('system')
             else:
                 self.clean_complete_msg('system')
-
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    #def clean_system_history(self, sender=None):
+    #def clean_history_records(self, sender=None):
     #    status = self._check_permission(sender, UK_ACTION_YOUKER)
     #    if not status:
+    #        self.clean_complete_msg('')
     #        return
-    #    daemonsystem = cleaner.CleanSystemHistory()
+    #    daemonhistory = cleaner.CleanTheHistory()
     #    try:
-    #        daemonsystem.clean_the_cruftlist()
+    #        daemonhistory.clean_the_cruftlist()
     #    except Exception, e:
-    #        self.clean_error_msg('system')
+    #        self.clean_error_msg('history')
     #    else:
-    #        self.clean_complete_msg('system')
+    #        self.clean_complete_msg('history')
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
+    def clean_system_history(self, ktype, sender=None):
+        if(ktype == "yes"):
+            status = self._check_permission(sender, UK_ACTION_YOUKER)
+            if not status:
+                return
+        daemonsystem = cleaner.CleanSystemHistory()
+        try:
+            daemonsystem.clean_the_cruftlist()
+        except Exception, e:
+            self.clean_error_msg('system')
+        else:
+            self.clean_complete_msg('system')
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_dash_history(self, sender=None):

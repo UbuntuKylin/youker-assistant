@@ -66,7 +66,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     tmplist << "Kobe" << "Lee";
     cachelist << "history";
     systemlist << "system";
-    nulllist << "null";
     alllist << "history" << "system";
 
     this->mainwindow_width = 850;
@@ -137,8 +136,6 @@ QStringList SystemDispatcher::get_history_args(QString flag) {
         return systemlist;
     else if(flag == "all")
         return alllist;
-    else if(flag == "null")
-        return nulllist;
 }
 
 void SystemDispatcher::handler_clear_rubbish(QString msg)
@@ -273,13 +270,14 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
 }
 
 void SystemDispatcher::clean_history_records_qt(QStringList strlist) {
-//    systemiface->call("clean_history_records");
-    KThread *thread = new KThread(systemiface, "clean_history_records", strlist);
-    thread->start();
+    systemiface->call("clean_history_records", strlist);
+    qDebug() << "11111111111111";
+//    KThread *thread = new KThread(systemiface, "clean_history_records", strlist);
+//    thread->start();
 }
 
-void SystemDispatcher::clean_system_history_qt() {
-    KThread *thread = new KThread(systemiface, "clean_system_history", tmplist);
+void SystemDispatcher::clean_system_history_qt(QString flag) {
+    KThread *thread = new KThread(systemiface, "clean_system_history", tmplist, flag);
     thread->start();
 }
 

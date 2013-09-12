@@ -53,7 +53,7 @@ public:
     Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
     Q_INVOKABLE void clean_history_records_qt(QStringList strlist);
-    Q_INVOKABLE void clean_system_history_qt();
+    Q_INVOKABLE void clean_system_history_qt(QString flag);
     Q_INVOKABLE void clean_dash_history_qt();
     Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
@@ -103,7 +103,6 @@ public:
     QStringList cachelist;
     QStringList systemlist;
     QStringList alllist;
-    QStringList nulllist;
     Q_INVOKABLE QStringList get_history_args(QString flag);
 
 //-------------

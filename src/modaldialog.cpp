@@ -35,7 +35,7 @@ ModalDialog::ModalDialog(QWidget *parent) :
     //QLabel自动换行
     ui->displaylabel->setWordWrap(true);
 //    ui->displaylabel->setAlignment(Qt::AlignTop);
-
+    ui->displaylabel->setText("点击鼠标左键进行更换颜色检测操作，点击鼠标右键退出检测。");
 
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));

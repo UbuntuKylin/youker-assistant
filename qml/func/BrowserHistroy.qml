@@ -51,33 +51,26 @@ Item {
     onHistory_bnt_signal: {
         if (history_msg == "BrowserWork") {
             browserstatus_num = sessiondispatcher.scan_history_records_qt();
-            console.log("BrowserWork"+"  "+browserstatus_num);
             if (browserstatus_num == 0) {
                 root.null_flag = true;
-//                if(browserstatus.visible == true) {
-                    browserstatus.visible = false;
-                    browserstatus.state = "BrowserWorkEmpty";
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
-//                }
+                browserstatus.visible = false;
+                browserstatus.state = "BrowserWorkEmpty";
+                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 browserstatus.state="BrowserWork";
                 root.null_flag = false;
                 browserstatus.visible = true;
                 checkboxe2.enabled=false;
-
             }
         }
         else if (history_msg == "SystemWork") {
             systemstatus_num = sessiondispatcher.scan_system_history_qt();
-            console.log("SystemWork"+"  "+systemstatus_num);
             if (systemstatus_num == 0) {
                 root.null_flag = true;
-//                if(systemstatus.visible == true){
-                    systemstatus.visible = false;
-                    systemstatus.state = "OpenWorkEmpty";
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
-//                }
+                systemstatus.visible = false;
+                systemstatus.state = "OpenWorkEmpty";
+                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 systemstatus.state ="OpenWork";
@@ -89,7 +82,6 @@ Item {
         else if (history_msg == "AllWork") {
             browserstatus_num = sessiondispatcher.scan_history_records_qt()
             systemstatus_num = sessiondispatcher.scan_system_history_qt();
-//            console.log("AllWork"+"  "+(browserstatus_num + systemstatus_num));
             if (browserstatus_num + systemstatus_num == 0) {
                 root.null_flag = true;
                 if(browserstatus.visible == true)
@@ -110,7 +102,6 @@ Item {
         }
     }
 
-//信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
         target: systemdispatcher
@@ -139,11 +130,11 @@ Item {
                         checkboxe1.enabled=true;
                     }
                 }
-                else if (msg == "history") {
+                if (msg == "history") {
                     browserstatus.state = "BrowserWorkFinish";
                     checkboxe2.enabled=true;
                 }
-                else if (msg == "system") {
+                if (msg == "system") {
                     systemstatus.state = "OpenWorkFinish";
                     checkboxe1.enabled=true;
                 }
@@ -253,28 +244,20 @@ Item {
                              if(checkboxe2.checked) {
                                  systemstatus.visible = true;
                                  systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("all"));
+//                                 systemdispatcher.clean_history_records_qt();
+//                                 systemdispatcher.clean_system_history_qt("no");
                              }
                              else
+//                                 systemdispatcher.clean_history_records_qt();
                                  systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("history"));
                          }
                          else {
                              if(checkboxe2.checked) {
                                  systemstatus.visible = true;
+//                                 systemdispatcher.clean_system_history_qt("yes");
                                  systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("system"));
                              }
-                             else
-                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("null"));
                          }
-//                        if(checkboxe1.checked) {
-////                            console.log("checkboxe1"+"  "+checkboxe1.checked)
-//                            browserstatus.visible = true;
-//                            systemdispatcher.clean_history_records_qt();
-//                        }
-//                        if(checkboxe2.checked) {
-////                            console.log("checkboxe2"+"  "+checkboxe2.checked)
-//                            systemstatus.visible = true;
-//                            systemdispatcher.clean_system_history_qt();
-//                        }
                      }
                 }
             }
