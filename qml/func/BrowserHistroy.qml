@@ -129,6 +129,7 @@ Item {
         onFinishCleanWork: {
             if (btn_flag == "history_work") {
                 if (msg == "") {
+                    resetBtn.visible = true;
                     if (browserstatus.visible == true){
                         browserstatus.visible = false;
                         checkboxe2.enabled=true;
@@ -190,6 +191,25 @@ Item {
         spacing: 20
 
         Common.Button {
+            id: resetBtn
+            width: 95
+            height: 30
+            fontcolor: "#6a97b4"
+            fontsize: 13
+            hoverimage: "blue1.png"
+            text: "重置"
+            visible: false
+            anchors.verticalCenter: parent.verticalCenter
+            onClicked: {
+                resetBtn.visible = false;
+                checkboxe1.enabled=true;
+                checkboxe2.enabled=true;
+                browserstatus.state = "BrowserWorkAGAIN";
+                systemstatus.state = "OpenWorkAGAIN";
+            }
+        }
+
+        Common.Button {
             id: bitButton
             width: 120
             height: 39
@@ -205,6 +225,7 @@ Item {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else {
+                         resetBtn.visible = true;
                          if(checkboxe1.checked && !checkboxe2.checked)
                              history_bnt_signal("BrowserWork");
                          else if(!checkboxe1.checked && checkboxe2.checked)
@@ -225,8 +246,8 @@ Item {
                      if(!checkboxe1.checked && !checkboxe2.checked)
                          sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中记录清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                     else {
+                         resetBtn.visible = false;
                          systemdispatcher.set_user_homedir_qt();
-
                          if(checkboxe1.checked) {
                              browserstatus.visible = true;
                              if(checkboxe2.checked) {
@@ -369,6 +390,12 @@ Item {
                             PropertyChanges { target: browserstatus; iconName: "yellow.png"; text: "未完成"}
                         },
                         State {
+                            name: "BrowserWorkAGAIN"
+                            PropertyChanges { target: browserstatus_label; visible: false}
+                            PropertyChanges { target: bitButton; text:"开始扫描" }
+                            PropertyChanges { target: root; btn_flag: "history_scan" }
+                        },
+                        State {
                             name: "BrowserWorkError"
                             PropertyChanges { target: browserstatus_label; visible: true; text: "清理出现异常"}
                             PropertyChanges { target: bitButton; text:"开始扫描" }
@@ -468,6 +495,12 @@ Item {
                         PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
                         PropertyChanges { target: root; btn_flag: "history_work" }
                         PropertyChanges { target: systemstatus; iconName: "yellow.png"; text: "未完成"}
+                    },
+                    State {
+                        name: "OpenWorkAGAIN"
+                        PropertyChanges { target: systemstatus_label; visible: false}
+                        PropertyChanges { target: bitButton; text:"开始扫描" }
+                        PropertyChanges { target: root; btn_flag: "history_scan" }
                     },
                     State {
                         name: "OpenWorkError"

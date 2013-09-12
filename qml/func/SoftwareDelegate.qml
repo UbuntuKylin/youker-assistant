@@ -131,8 +131,8 @@ Rectangle {
                 content.delegate_information= "金山快盘"
                 content.delegate_image= "../img/logo/kuaipan.jpg"
                 content.delegate_introduction="UbuntuKylin团队与金山公司联合开发的“Linux版网盘客户端”，具备文件同步、备份和共享功能。"
-                content.introduction_image1= "../img/character/kugou-01.png"
-                content.introduction_image2= "../img/character/kugou-02.png"
+                content.introduction_image1= "../img/character/kuaipan-01.png"
+                content.introduction_image2= "../img/character/kuaipan-02.png"
                 content.install_status = sudodispatcher.get_value("ubiquity");
             }
             else if (flag == "KugouMusic"){
