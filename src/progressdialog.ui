@@ -13,19 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QProgressBar" name="progressBar">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>28</y>
-     <width>271</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="value">
-    <number>0</number>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -42,28 +29,19 @@
     <string/>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>292</width>
-     <height>54</height>
+     <x>120</x>
+     <y>32</y>
+     <width>67</width>
+     <height>17</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/progress-bg.png);</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <zorder>frame</zorder>
-  <zorder>progressBar</zorder>
-  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>
