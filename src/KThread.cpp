@@ -42,7 +42,7 @@ void KThread::run()
         iface->call("clean_by_second_one_key", list);
     }
     else if(method_name == "clean_history_records") {
-        iface->call("clean_history_records");
+        iface->call("clean_history_records", list);
     }
     else if(method_name == "") {
         iface->call("clean_system_historclean_system_historyy");

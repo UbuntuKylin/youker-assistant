@@ -64,6 +64,10 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     onekey_args << "cache" << "history" << "cookies";
     onekey_args2 << "cache" << "history" << "cookies";
     tmplist << "Kobe" << "Lee";
+    cachelist << "history";
+    systemlist << "system";
+    nulllist << "null";
+    alllist << "history" << "system";
 
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
@@ -124,6 +128,17 @@ int SystemDispatcher::get_add_value()
     QDBusReply<int> reply = systemiface->call("test_add", 3, 4);
     int tt = reply.value();
     return tt;
+}
+
+QStringList SystemDispatcher::get_history_args(QString flag) {
+    if(flag == "history")
+        return cachelist;
+    else if(flag == "system")
+        return systemlist;
+    else if(flag == "all")
+        return alllist;
+    else if(flag == "null")
+        return nulllist;
 }
 
 void SystemDispatcher::handler_clear_rubbish(QString msg)
@@ -257,9 +272,9 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
         return "/ubuntukylin";
 }
 
-void SystemDispatcher::clean_history_records_qt() {
+void SystemDispatcher::clean_history_records_qt(QStringList strlist) {
 //    systemiface->call("clean_history_records");
-    KThread *thread = new KThread(systemiface, "clean_history_records", tmplist);
+    KThread *thread = new KThread(systemiface, "clean_history_records", strlist);
     thread->start();
 }
 

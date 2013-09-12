@@ -89,7 +89,7 @@ Item {
         else if (history_msg == "AllWork") {
             browserstatus_num = sessiondispatcher.scan_history_records_qt()
             systemstatus_num = sessiondispatcher.scan_system_history_qt();
-            console.log("AllWork"+"  "+(browserstatus_num + systemstatus_num));
+//            console.log("AllWork"+"  "+(browserstatus_num + systemstatus_num));
             if (browserstatus_num + systemstatus_num == 0) {
                 root.null_flag = true;
                 if(browserstatus.visible == true)
@@ -226,16 +226,34 @@ Item {
                          sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中记录清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                     else {
                          systemdispatcher.set_user_homedir_qt();
-                        if(checkboxe1.checked) {
-//                            console.log("checkboxe1"+"  "+checkboxe1.checked)
-                            browserstatus.visible = true;
-                            systemdispatcher.clean_history_records_qt();
-                        }
-                        if(checkboxe2.checked) {
-//                            console.log("checkboxe2"+"  "+checkboxe2.checked)
-                            systemstatus.visible = true;
-                            systemdispatcher.clean_system_history_qt();
-                        }
+
+                         if(checkboxe1.checked) {
+                             browserstatus.visible = true;
+                             if(checkboxe2.checked) {
+                                 systemstatus.visible = true;
+                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("all"));
+                             }
+                             else
+                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("history"));
+                         }
+                         else {
+                             if(checkboxe2.checked) {
+                                 systemstatus.visible = true;
+                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("system"));
+                             }
+                             else
+                                 systemdispatcher.clean_history_records_qt(systemdispatcher.get_history_args("null"));
+                         }
+//                        if(checkboxe1.checked) {
+////                            console.log("checkboxe1"+"  "+checkboxe1.checked)
+//                            browserstatus.visible = true;
+//                            systemdispatcher.clean_history_records_qt();
+//                        }
+//                        if(checkboxe2.checked) {
+////                            console.log("checkboxe2"+"  "+checkboxe2.checked)
+//                            systemstatus.visible = true;
+//                            systemdispatcher.clean_system_history_qt();
+//                        }
                      }
                 }
             }
