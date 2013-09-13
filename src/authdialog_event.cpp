@@ -48,9 +48,10 @@ bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
                 QMouseEvent *me = (QMouseEvent *)event;
                 QLabel *lb = (QLabel *)obj;
                 if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
-                    this->close();
-                    this->destroy();
-                    exit(0);
+                    this->hide();
+//                    this->close();
+//                    this->destroy();
+//                    exit(0);
                 }else{
                     ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
                 }

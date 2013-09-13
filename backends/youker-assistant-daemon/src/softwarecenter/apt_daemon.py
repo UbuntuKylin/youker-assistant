@@ -202,8 +202,8 @@ class AptDaemon:
 			else:
 					pkgStatusList.append(pkgName + ":n")
 
-# 		self.sudoDaemon.software_check_status_signal(pkgStatusList)
-		return pkgStatusList
+ 		self.sudoDaemon.software_check_status_signal(pkgStatusList)
+		#return pkgStatusList
 
 # 	def get_pkgs_name_list(self):
 # 		return self.pkgNameList
@@ -222,7 +222,7 @@ if __name__ == "__main__":
 	ad = AptDaemon(None)
 	
 # 	print ad.check_pkgs_status(["gedit", "cairo-dock", "unity"])
-	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity", "haha", "hehe"])
+#	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity", "haha", "hehe"])
 # 	ad.apt_get_update()
 	
 	while True:

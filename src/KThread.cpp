@@ -68,6 +68,9 @@ void KThread::run()
     else if(method_name == "update_pkg") {
         iface->call("update_pkg", file_flag);
     }
+    else if(method_name == "apt_get_update") {
+        iface->call("apt_get_update");
+    }
 }
 void KThread::stop()
 {

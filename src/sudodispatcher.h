@@ -27,6 +27,7 @@
 #include <QDeclarativeView>
 #include "authdialog.h"
 #include "progressdialog.h"
+#include "updatedialog.h"
 class SudoDispatcher : public QObject
 {
     Q_OBJECT
@@ -36,12 +37,14 @@ public:
     Q_INVOKABLE void exit_qt();
     Q_INVOKABLE void show_passwd_dialog(int window_x, int window_y);
     Q_INVOKABLE void show_progress_dialog(int window_x, int window_y);
+    Q_INVOKABLE void show_update_dialog(int window_x, int window_y);
     Q_INVOKABLE QString get_sudo_daemon_qt();
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void bind_signals_after_dbus_start();
     QDBusInterface *sudoiface;
     AuthDialog *authdialog;
     ProgressDialog *progressdialog;
+    UpdateDialog *updatedialog;
 
     QMap<QString, QString> status_dict;
     Q_INVOKABLE QString get_value(QString);
@@ -73,6 +76,7 @@ public slots:
     void handler_software_apt_signal(QString type, QString msg);
 //    void handler_software_check_status_signal(QMap<QString, QVariant> statusDict);
     void handler_software_check_status_signal(QStringList statusDict);
+    void start_to_update();
 private:
 //    bool trans_password(QString flagstr, QString pwd);
     QStringList strlist;

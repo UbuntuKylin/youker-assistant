@@ -31,10 +31,9 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 80);
     ratio_sus = 0;
-//    ui->ratiolabel->setStyleSheet();
-//    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);color: white; font-size: 12px}"
-//                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
-
+    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/accelerate.png);color: white; font-size: 12px}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/accelerate-hover.png);}"
+                "QPushButton:pressed{border-image:url(:/pixmap/image/accelerate-press.png);}");
     ui->descBtn->setStyleSheet("QPushButton {border:0px;color:#1790c9}");
     ui->descBtn->setText("详细");
     ui->descBtn->setFlat(true);

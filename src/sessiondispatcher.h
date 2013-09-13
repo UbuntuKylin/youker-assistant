@@ -35,7 +35,7 @@ class SessionDispatcher : public QObject
 //    Q_PROPERTY(QNOTIFY finishScanWork)
 public:
     explicit SessionDispatcher(QObject *parent = 0);
-
+    ~SessionDispatcher();
     QDBusInterface *sessioniface;
     Q_INVOKABLE QString get_session_daemon_qt();
 

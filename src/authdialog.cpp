@@ -77,9 +77,9 @@ bool AuthDialog::trans_password(QString flagstr, QString pwd) {
 void AuthDialog::on_closeButton_clicked()
 {
 //    QDialog::reject();
-    close();
-    QDialog::destroy(true);
-//    exit(0);
+//    close();
+//    QDialog::destroy(true);
+    this->hide();
 }
 void AuthDialog::sleep_to_call_server() {
     this->accept();

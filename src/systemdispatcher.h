@@ -30,6 +30,7 @@ class SystemDispatcher : public QObject
     Q_OBJECT
 public:
     explicit SystemDispatcher(QObject *parent = 0);
+    ~SystemDispatcher();
     Q_INVOKABLE int get_add_value();
     Q_INVOKABLE void send_btn_msg(QString);
     Q_INVOKABLE void exit_qt();

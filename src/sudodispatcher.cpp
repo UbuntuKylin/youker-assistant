@@ -24,6 +24,7 @@
 #include <QMap>
 #include "KThread.h"
 //extern QString passwd;
+bool progress_flag;
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
     QObject(parent)
@@ -33,6 +34,7 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
     progressdialog = new ProgressDialog;
+    updatedialog = new UpdateDialog;
     strlist << "Kobe" << "Lee";
 
     this->mainwindow_width = 850;
@@ -50,6 +52,8 @@ SudoDispatcher::~SudoDispatcher()
         delete authdialog;
     if(progressdialog)
         delete progressdialog;
+    if(updatedialog)
+        delete updatedialog;
 }
 
 void SudoDispatcher::exit_qt()
@@ -68,6 +72,7 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handler_software_apt_signal(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handler_software_check_status_signal(QStringList)));
     QObject::connect(this,SIGNAL(getValue(QString,QString)),progressdialog, SLOT(setValue(QString,QString)));
+    QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(start_to_update()));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
@@ -115,6 +120,7 @@ void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict
         QStringList value = statusDict[i].split(":");
         status_dict.insert(value[0], value[1]);
     }
+//    qDebug() << "status_dict";
 //    qDebug() << status_dict;
 //    emit finishSoftwareCheckStatus(statusDict);
 }
@@ -125,6 +131,14 @@ void SudoDispatcher::show_passwd_dialog(int window_x, int window_y) {
     this->alert_y = window_y + mainwindow_height - 400;
     authdialog->move(this->alert_x, this->alert_y);
     authdialog->exec();
+}
+
+void SudoDispatcher::show_update_dialog(int window_x, int window_y) {
+    progress_flag = true;
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    updatedialog->move(this->alert_x, this->alert_y);
+    updatedialog->show();
 }
 
 void SudoDispatcher::show_progress_dialog(int window_x, int window_y) {
@@ -146,7 +160,7 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
 QStringList SudoDispatcher::get_args() {
     QStringList pkgNameList;
     pkgNameList << "eclipse" << "qtcreator"<< "wps-office" << "wine-qq2012-longeneteam" << \
-                   "flashplugin-downloader" <<  "lotus" << "ubiquity" <<"vlc" << \
+                   "flashplugin-downloader" <<  "lotus" << "kuaipan" <<"vlc" << \
                    "chromium-bsu" << "kugou" << "ppstream" << "qbittorrent" << \
                    "virtualbox" << "stardict" << "xchat" << "wine-thunder";
     return pkgNameList;
@@ -187,5 +201,15 @@ QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
 }
 
 void SudoDispatcher::apt_get_update_qt() {
-    sudoiface->call("apt_get_update");
+    qDebug() << "start to update.......";
+    QStringList tmplist;
+    tmplist << "Kobe" << "Lee";
+    KThread *thread = new KThread(sudoiface, "apt_get_update", tmplist);
+    thread->start();
+//    sudoiface->call("apt_get_update");
+}
+
+void SudoDispatcher::start_to_update() {
+    progressdialog->show();
+    apt_get_update_qt();
 }

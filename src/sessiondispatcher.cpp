@@ -49,6 +49,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     this->alert_height = 195;
 }
 
+SessionDispatcher::~SessionDispatcher()
+{
+}
+
 void SessionDispatcher::handler_scan_rubbish(QString msg)
 {
     emit finishScanWork(msg);

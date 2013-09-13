@@ -76,6 +76,10 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     this->alert_height = 195;
 }
 
+SystemDispatcher::~SystemDispatcher()
+{
+}
+
 void SystemDispatcher::handler_clear_trace(QString msg) {
     emit finishCleanTrace(msg);
 }

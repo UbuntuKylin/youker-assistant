@@ -18,12 +18,13 @@
 #include <QDebug>
 #include <QMouseEvent>
 #include<stdio.h>
-
+extern bool progress_flag;
 ProgressDialog::ProgressDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ProgressDialog)
 {
     ui->setupUi(this);
+    progress_flag = false;
     this->setAttribute(Qt::WA_DeleteOnClose);
 //    this->setWindowFlags(Qt::FramelessWindowHint);
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
@@ -59,8 +60,6 @@ void ProgressDialog::setValue(QString type, QString msg) {
 //        ui->progressBar->setValue(0);
         ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
         ratio_sus=1;
-
-
     }
     else if(type == "down_pulse"){
         ui->label->setText("正在下载");
@@ -92,8 +91,13 @@ void ProgressDialog::setValue(QString type, QString msg) {
         ui->label->setText("下载完成");
         ratio_sus=0;
         ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+        if(progress_flag) {
+            progress_flag = true;
+            this->hide();
+        }
     }
     else if(type == "apt_start"){
+        this->show();
         ui->label->setText("开始");
 //        ui->progressBar->setValue(0);
         ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
@@ -180,8 +184,6 @@ QSize ProgressDialog::sizeHint()const
 }
 void ProgressDialog::resizeEvent(QResizeEvent*event)
 {
-    qDebug() << "1111111111111111111111111111111111111111111111";
-    qDebug() << ratio_sus;
     update();
 }
 void ProgressDialog::paintEvent(QPaintEvent* event)

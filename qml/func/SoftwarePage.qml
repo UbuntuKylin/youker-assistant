@@ -35,9 +35,9 @@ Rectangle {
     property string introduction_image1: content.introduction_image1
     property string introduction_image2: content.introduction_image2
     property string installed_status: content.install_status
+    property string tm_status: "n"
     width: parent.width
     height: 475
-
     function show_text(showtext) {
         if(showtext == "i")
             return "立即卸载";
@@ -45,23 +45,36 @@ Rectangle {
             return "立即安装";
         else if(showtext == "u")
             return "立即升级";
-        else
+        else {
             return "N/A";
+        }
     }
-
     //信号绑定，绑定qt的信号
     Connections
     {
         target: sudodispatcher
         onFinishSoftwareApt: {
             if(type == "apt_stop") {
-                software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-                if(software.installed_status == "i")
-                    actionBtn.text = "立即卸载";
-                else if(software.installed_status == "n")
-                    actionBtn.text = "立即安装";
-                else if(software.installed_status == "u")
-                    actionBtn.text = "立即升级";
+                software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                if(software.tm_status == software.installed_status) {
+                    sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                }
+                else {
+                    software.installed_status = software.tm_status;
+                    if(software.installed_status == "i")
+                        actionBtn.text = "立即卸载";
+                    else if(software.installed_status == "n")
+                        actionBtn.text = "立即安装";
+                    else if(software.installed_status == "u")
+                        actionBtn.text = "立即升级";
+                }
+//                software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+//                if(software.installed_status == "i")
+//                    actionBtn.text = "立即卸载";
+//                else if(software.installed_status == "n")
+//                    actionBtn.text = "立即安装";
+//                else if(software.installed_status == "u")
+//                    actionBtn.text = "立即升级";
             }
         }
     }
@@ -174,6 +187,7 @@ Rectangle {
                 }
                 else{
                     console.log("Sorry ,there is no package.")
+                    sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }

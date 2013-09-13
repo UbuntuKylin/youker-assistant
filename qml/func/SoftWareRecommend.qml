@@ -35,17 +35,6 @@ Item {
     property string status_value: "n"
     property string status_value2: "n"
 
-    function show_text(showtext) {
-        if(showtext == "i")
-            return "卸载";
-        else if(showtext == "n")
-            return "安装";
-        else if(showtext == "u")
-            return "升级";
-        else
-            return "N/A";
-    }
-
     Component.onCompleted: {
     }
     //信号绑定，绑定qt的信号
@@ -120,7 +109,7 @@ Item {
                     leftMargin: 15
                     verticalCenter: parent.verticalCenter
                 }
-                text: "详情"//screen.show_text(screen.status_value2)
+                text: "详情"
                 onClicked: {
                     if(screen.image_flag == "qt") {
                         content.delegate_name= "eclipse"
@@ -142,7 +131,7 @@ Item {
                     right:parent.right
                     rightMargin: 15
                 }
-                text: "详情"//screen.show_text(screen.status_value)
+                text: "详情"
                 onClicked: {
                     if(screen.image_flag == "qq") {
                         content.delegate_name= "wine-qq2012-longeneteam"
@@ -198,7 +187,7 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-//                    screen.status_value = sudodispatcher.get_value("ubiquity");
+//                    screen.status_value = sudodispatcher.get_value("qq");
                     screen.image_flag = "qq";
                     screen.recommendimage_text = "WineQQ,Linux系统上最好用的QQ版本。";
                     imagframe.y=colum.y+recommendone.y;
@@ -217,7 +206,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
 //                    screen.status_value = sudodispatcher.get_value("qtcreator");
-//                    screen.status_value2 = sudodispatcher.get_value("ubiquity");
+//                    screen.status_value2 = sudodispatcher.get_value("qq");
                     screen.image_flag = "qt";
                     imagframe.y=colum.y+recommendtwo.y;
                     recommendoneimage_image="../img/skin/qt.png";
@@ -234,7 +223,7 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-//                    screen.status_value = sudodispatcher.get_value("ubiquity");
+//                    screen.status_value = sudodispatcher.get_value("qq");
                     screen.image_flag = "wps";
                     screen.recommendimage_text = "WPS,Linux系统上最好用的办公软件。";
                     imagframe.y=colum.y+recommendthree.y;

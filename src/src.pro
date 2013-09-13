@@ -29,6 +29,7 @@ HEADERS += youker-application.h \
     modaldialog.h \
     warningdialog.h \
     messagedialog.h \
+    updatedialog.h \
     qmlaudio.h \
     qrangemodel.h \
     qrangemodel_p.h \
@@ -70,6 +71,7 @@ SOURCES += main.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
     messagedialog.cpp \
+    updatedialog.cpp \
     qmlaudio.cpp \
     qrangemodel.cpp \
     qstyleitem.cpp \
@@ -105,7 +107,7 @@ FORMS += \
     modaldialog.ui \
     warningdialog.ui \
     messagedialog.ui \
-    restartdialog.ui \
+    updatedialog.ui \
     tray.ui \
     fcitxwarndialog.ui \
     suspensionframe.ui \

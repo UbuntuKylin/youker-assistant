@@ -166,9 +166,11 @@ Rectangle {
                 }
                 else {
                     sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
-                    sudodispatcher.bind_signals_after_dbus_start();
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
-                    pageStack.push(softwarerecommend);
+                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+                        sudodispatcher.bind_signals_after_dbus_start();
+                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                        pageStack.push(softwarerecommend);
+                    }
                 }
             }
         }

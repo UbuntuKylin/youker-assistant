@@ -32,9 +32,9 @@ Item {
     height: parent.height - 30  //去掉StatusWidget所占用的高度30
 
 //传给软件推荐二级界面的值
-    property string delegate_name: "ubiquity"
-    property string delegate_appname: "Ubuntu安装程序"
-    property string delegate_information: "Ubiquity is the install-program 2013-09-09"
+    property string delegate_name: "qq"
+    property string delegate_appname: "WineQQ"
+    property string delegate_information: "QQ 2013-09-09"
     property string delegate_image: ""
     property string delegate_introduction: ""
     property string introduction_image1: ""
