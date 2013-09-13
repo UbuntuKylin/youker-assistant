@@ -187,12 +187,6 @@ QString SessionDispatcher::show_signal(QString msg) {
     return msg;
 }
 
-//QString SessionDispatcher::show_signal(QStringList msg) {
-//    qDebug() << "111111111";
-//    qDebug() << msg;
-//    return msg;
-//}
-
 bool SessionDispatcher::set_launcher(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_launcher_autohide", flag);
     return true;

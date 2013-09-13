@@ -80,9 +80,6 @@ void ProgressDialog::setValue(QString type, QString msg) {
 //                    ui->progressBar->setValue(ratio.toInt());
                     ratio_sus=ratio.toInt();
                     ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
-//                        qDebug() << ratio_sus;
-
-
                 }
             }
         }
@@ -140,10 +137,7 @@ void ProgressDialog::setValue(QString type, QString msg) {
 //        ui->label->setText("开始");
 //        this->hide();
     }
-
-
-        qDebug() << ratio_sus;
-        update();
+    update();
 }
 
 

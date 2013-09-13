@@ -63,9 +63,6 @@ void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString 
 //    this->drawLine();
 //    update_draw();
     update();
-//    qDebug() << cpu_ratio;
-//    qDebug() << used_memory;
-//    qDebug() << free_memory;
 }
 
 void SuspensionFrame::mousePressEvent(QMouseEvent *event)

@@ -47,4 +47,18 @@ Rectangle {
             id: statuswidget
         }
     }
+    Text {
+        anchors {
+            top: parent.top
+            topMargin: 70
+            right: parent.right
+            rightMargin: 35
+        }
+        font.family: "Arial"
+        font.pixelSize: 18
+        style: Text.Sunken
+        styleColor: "#AAAAAA"
+        color: "white"
+        text: "v0.2"
+    }
 }

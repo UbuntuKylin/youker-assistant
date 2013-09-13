@@ -116,7 +116,6 @@ QStringList FcitxCfgWizard::get_im_list()
             tmp += m_separator + "false";
 
         ret_value << tmp;
-        //qDebug() << tmp;
     }
 
     //this->set_im_list(ret_value);
@@ -186,26 +185,26 @@ bool FcitxCfgWizard::get_fcitx_cfg_value(const char *cd_path_prefix, const char 
     if ((cd_fp = FcitxXDGGetFileWithPrefix(cd_path_prefix, cd_file_name, "r", NULL))
         == NULL)
     {
-        qDebug() << QString("Open file(%0/%1) error.").arg(cd_path_prefix)
-            .arg(cd_file_name);
+//        qDebug() << QString("Open file(%0/%1) error.").arg(cd_path_prefix)
+//            .arg(cd_file_name);
         goto err;
     }
 
     if ((cfg_desc = FcitxConfigParseConfigFileDescFp(cd_fp)) == NULL) {
-        qDebug() << "FcitxConfigParseConfigFileDescFp error.";
+//        qDebug() << "FcitxConfigParseConfigFileDescFp error.";
         goto err1;
     }
 
     if ((c_fp = FcitxXDGGetFileWithPrefix(c_path_prefix, c_file_name, "r", NULL))
         == NULL)
     {
-        qDebug() << QString("Open file(%0/%1) error.").arg(c_path_prefix)
-            .arg(c_file_name);
+//        qDebug() << QString("Open file(%0/%1) error.").arg(c_path_prefix)
+//            .arg(c_file_name);
         goto err2;
     }
 
     if ((cfg = FcitxConfigParseConfigFileFp(c_fp, cfg_desc)) == NULL) {
-        qDebug() << "FcitxConfigParseConfigFileFp error.";
+//        qDebug() << "FcitxConfigParseConfigFileFp error.";
         goto err3;
     }
 
@@ -255,26 +254,26 @@ bool FcitxCfgWizard::set_fcitx_cfg_value(const char *cd_path_prefix, const char 
     if ((cd_fp = FcitxXDGGetFileWithPrefix(cd_path_prefix, cd_file_name, "r", NULL))
         == NULL)
     {
-        qDebug() << QString("Open file(%0/%1) error.").arg(cd_path_prefix)
-            .arg(cd_file_name);
+//        qDebug() << QString("Open file(%0/%1) error.").arg(cd_path_prefix)
+//            .arg(cd_file_name);
         goto err;
     }
 
     if ((cfg_desc = FcitxConfigParseConfigFileDescFp(cd_fp)) == NULL) {
-        qDebug() << "FcitxConfigParseConfigFileDescFp error.";
+//        qDebug() << "FcitxConfigParseConfigFileDescFp error.";
         goto err1;
     }
 
     if ((c_fp = FcitxXDGGetFileWithPrefix(c_path_prefix, c_file_name, "r+", NULL))
         == NULL)
     {
-        qDebug() << QString("Open file(%0/%1) error.").arg(c_path_prefix)
-            .arg(c_file_name);
+//        qDebug() << QString("Open file(%0/%1) error.").arg(c_path_prefix)
+//            .arg(c_file_name);
         goto err2;
     }
 
     if ((cfg = FcitxConfigParseConfigFileFp(c_fp, cfg_desc)) == NULL) {
-        qDebug() << "FcitxConfigParseConfigFileFp error.";
+//        qDebug() << "FcitxConfigParseConfigFileFp error.";
         goto err3;
     }
 
@@ -284,7 +283,7 @@ bool FcitxCfgWizard::set_fcitx_cfg_value(const char *cd_path_prefix, const char 
     //把配置值绑定下去，即写入
     rewind(c_fp);
     if (FcitxConfigSaveConfigFileFp(c_fp, &gc, cfg_desc) == false) {
-        qDebug() << "FcitxConfigSaveConfigFileFp error.";
+//        qDebug() << "FcitxConfigSaveConfigFileFp error.";
         //Go Through
     }
 
@@ -424,7 +423,7 @@ QString FcitxCfgWizard::get_trigger_key_first()
         else
             return m_trigger_key.hotkey[0].desc;
     }
-    qDebug() << "lenky get_trigger_key_first():" << m_trigger_key.hotkey[0].desc;
+//    qDebug() << "lenky get_trigger_key_first():" << m_trigger_key.hotkey[0].desc;
     return "Empty";
 }
 

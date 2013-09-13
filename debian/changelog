@@ -2,8 +2,12 @@ youker-assistant (0.2.0-0ubuntu1) saucy; urgency=low
 
   * Modify the MonitorBall from QML to QT.
   * Add recommendation about top software.
+  * Add a module and clean trace about file opened.
+  * Add progressbar to display operation status and progress.
+  * Make it can only start a single program.
+  * Modify all status of clean module.
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 13 Sep 2013 15:40:09 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 13 Sep 2013 16:57:13 +0800
 
 youker-assistant (0.1.6-0ubuntu1) saucy; urgency=low
 

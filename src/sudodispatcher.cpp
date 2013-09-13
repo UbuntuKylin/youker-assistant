@@ -93,9 +93,6 @@ void SudoDispatcher::handler_clear_rubbish_error(QString msg)
 
 void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg)
 {
-    qDebug() << "get software_fetch_signal.....";
-    qDebug() << type;
-    qDebug() << msg;
     if(!type.isEmpty()) {
         emit getValue(type, msg);
     }
@@ -104,9 +101,6 @@ void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg)
 
 void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
 {
-    qDebug() << "get software_apt_signal.....";
-    qDebug() << type;
-    qDebug() << msg;
     if(!type.isEmpty()) {
         emit getValue(type, msg);
         if (type == "apt_stop")
@@ -121,8 +115,6 @@ void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict
         QStringList value = statusDict[i].split(":");
         status_dict.insert(value[0], value[1]);
     }
-//    qDebug() << "status_dict";
-//    qDebug() << status_dict;
 //    emit finishSoftwareCheckStatus(statusDict);
 }
 
@@ -175,8 +167,6 @@ QString SudoDispatcher::get_value(QString key)
 
 // -------------------------software-center-------------------------
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
-    qDebug() << "start to install";
-    qDebug() << pkgName;
     KThread *thread = new KThread(sudoiface, "install_pkg", strlist, pkgName);
     thread->start();
 //    sudoiface->call("install_pkg", pkgName);
@@ -202,7 +192,6 @@ QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
 }
 
 void SudoDispatcher::apt_get_update_qt() {
-    qDebug() << "start to update.......";
     QStringList tmplist;
     tmplist << "Kobe" << "Lee";
     KThread *thread = new KThread(sudoiface, "apt_get_update", tmplist);
