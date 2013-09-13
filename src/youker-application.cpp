@@ -37,7 +37,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <QtDBus>
-
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {

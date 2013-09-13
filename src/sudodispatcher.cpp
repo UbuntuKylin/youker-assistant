@@ -48,13 +48,13 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
 
 SudoDispatcher::~SudoDispatcher()
 {
+    this->exit_qt();
     if (authdialog)
         delete authdialog;
     if(progressdialog)
         delete progressdialog;
     if(updatedialog)
         delete updatedialog;
-    this->exit_qt();
 }
 
 void SudoDispatcher::exit_qt()

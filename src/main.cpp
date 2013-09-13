@@ -122,26 +122,39 @@ void registerTypes()
 
 int main(int argc, char** argv)
 {
-    QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-
-
-
-
-    registerTypes();
-
-    int value_session = system("/usr/bin/youkersession &");
-    if (value_session != 0)
-        qDebug() << "SessionDaemon Failed!";
-    int value_system = system("/usr/bin/youkersystem");
-    if (value_system != 0)
-        qDebug() << "SystemDaemon Failed!";
-
-    IhuApplication application(argc, argv);
-    if (!application.setup()) {
-        return 0;
+    int value = 0;
+    QString str = "";
+    FILE *stream;
+    char buf[64];
+    memset(buf, '\0', sizeof(buf));
+    QString cmd = "ps -ef | grep /usr/bin/youker-assistant | grep -v grep | wc -l";
+    QByteArray ba = cmd.toLatin1();
+    const char *str_cmd = ba.data();
+    stream = popen(str_cmd, "r" );
+    fread(buf, sizeof(char), sizeof(buf), stream);
+    str = QString(buf);
+    value = str.toInt();
+    if (value != 0) {
+        exit(0);
     }
-    return application.exec();
+    else {
+        QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
+        QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
+        QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+        QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+        registerTypes();
+
+        int value_session = system("/usr/bin/youkersession &");
+        if (value_session != 0)
+            qDebug() << "SessionDaemon Failed!";
+        int value_system = system("/usr/bin/youkersystem");
+        if (value_system != 0)
+            qDebug() << "SystemDaemon Failed!";
+
+        IhuApplication application(argc, argv);
+        if (!application.setup()) {
+            return 0;
+        }
+        return application.exec();
+    }
 }

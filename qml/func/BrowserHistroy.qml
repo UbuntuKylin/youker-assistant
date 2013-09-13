@@ -460,7 +460,7 @@ Item {
                 }
                else if (btn_flag2 == "system_work") {
                     if(checkboxe2.checked) {
-                        if(root.null_flag == true) {
+                        if(root.null_flag2 == true) {
                             root.state = "SystemWorkEmpty";
                             sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                         }

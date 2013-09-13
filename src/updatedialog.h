@@ -14,30 +14,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SYSTEMAPPLICATION_H
-#define SYSTEMAPPLICATION_H
-#include <QDeclarativeView>
-#include <QApplication>
-#include <QMouseEvent>
-#include "QPoint"
-#include <QBoxLayout>
-#include <QStackedWidget>
-#include "tray.h"
-#include "alertdialog.h"
-#include <QDBusInterface>
-#include <QDBusConnection>
-#include <QtGui>
-class IhuApplication : public QApplication
+#ifndef UPDATEDIALOG_H
+#define UPDATEDIALOG_H
+
+#include <QDialog>
+//#include <qfiledialog.h>
+namespace Ui {
+class UpdateDialog;
+}
+
+class UpdateDialog : public QDialog
 {
     Q_OBJECT
+    
 public:
-    IhuApplication(int &argc, char **argv);
-    virtual ~IhuApplication();
-    bool setup();
+    explicit UpdateDialog(QWidget *parent = 0);
+    ~UpdateDialog();
+    
 private:
-    QDeclarativeView *viewer;
-    Tray *tray;
+    Ui::UpdateDialog *ui;
+    QPoint dragPos;
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);
 public slots:
-    void show_or_hide();
+    void update_software_source();
+signals:
+    void call_update();
 };
-#endif // SYSTEMAPPLICATION_H
+
+#endif // UPDATEDIALOG_H
