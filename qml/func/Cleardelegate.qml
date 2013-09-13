@@ -11,8 +11,8 @@ Item {
     //需要传值:
     property string btn_flag
     property ListModel sub_model
-    property int sub_num
-    property int arrow_display: 0
+    property int sub_num    //接收清理界面扫描出子项的个数
+    property int arrow_display: 0   //控制清理界面下拉图标显示还是透明的变量
 
     property bool delegate_flag: false
     //子项字体
@@ -25,7 +25,7 @@ Item {
     signal checkchanged(bool checkchange);
 
 
-    property int check_num:sub_num
+    property int check_num:sub_num   //记录子项个数，在确定总checkbox状态时需要的变量
     property bool maincheck: false
     property int arrow_num: 0
     width: parent.width
@@ -95,17 +95,15 @@ Item {
                 id: mouseRegion
                 anchors.fill: parent
                     onPressed: {
-                        expanded = !expanded
+                        expanded = !expanded      //扫描出的子项是否下拉显示的控制变量
                         console.log(expanded)
-                        if(heightMark==listViewDelegate.sub_num)
-                        {
-                            check.checkedbool=false;
+                        if(heightMark==listViewDelegate.sub_num){  //通过对heightMark的赋值来实现子项的下拉显示与收缩不显示
+                            check.checkedbool=false;      //子项收缩时,将总checkbox回到勾选状态
                             check.checked="true";
                             heightMark=0;
                         }
-                        else
-                        {
-                            if(sub_num>0){
+                        else if(heightMark==0){
+                            if(sub_num>0){                //子项下拉显示时，根据总checkbox状态进行赋值控制
                                 if(check.checked=="true")
                                 {
                                     check.checkedbool=true;
@@ -121,7 +119,7 @@ Item {
                             }
                             heightMark=listViewDelegate.sub_num;
                         }
-                        listViewDelegate.subpressed(heightMark);
+                        listViewDelegate.subpressed(heightMark); //将heightMark的值传给清理界面实现对是否下拉显示子项的控制
                     }
             }
         }
@@ -165,17 +163,20 @@ Item {
                     btn_flag: listViewDelegate.btn_flag
                     onClicked: {}
                     onChange_num: {
-                        if(check_status==true)
+                        if(check_status==true)      //已经勾上的子项数量统计,check_num记录
                             check_num=check_num+1;
                         else
                             check_num=check_num-1;
-                        if(sub_num!=0&&check_num ==0&&heightMark!=0/*&&check.checked!="false"*/)
-                            check.checked="false";
-                        else if(sub_num!=0&&check_num ==sub_num&&heightMark!=0/*&&check.checked!= "true"*/)
-                            check.checked="true";
-                        else if(sub_num!=0&&heightMark!=0)
-                            check.checked="mid";
-                        if(check.checked=="true"||listViewDelegate.check_num>0)
+
+                        if(sub_num!=0&&heightMark!=0){  //在扫描出子项并下拉显示了子项的前提下,根据已经勾上的子项个数确定总checkbox处于三种状态中的哪种
+                            if(check_num ==0)
+                                check.checked="false";
+                            else if(check_num ==sub_num)
+                                check.checked="true";
+                            else
+                                check.checked="mid";
+                        }
+                        if(check.checked=="true"||listViewDelegate.check_num>0)   //根据是否有勾选项给清理页面传值判断是否能进行清理工作
                             listViewDelegate.checkchanged(true);
                         else
                             listViewDelegate.checkchanged(false);

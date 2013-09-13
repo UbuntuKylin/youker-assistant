@@ -39,14 +39,14 @@ Item {
     property bool split_status: false
 
     property string btn_flag: "one_key_scan"
-    signal change_num(bool check_status)
+    signal change_num(bool check_status)   //作为子项checkbox，当状态改变时需要通过信号传给父项以进行个数统计
     signal clicked
 
     width: 360
     height: 64
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
-    onCheckbox_statusChanged: {checkbox.checked=checkbox_status}
+    onCheckbox_statusChanged: {checkbox.checked=checkbox_status}  //当父项传进来的check值改变时，强制改变全部子项的check值以进行统一控制
 
     function get_last_name(str)
     {
