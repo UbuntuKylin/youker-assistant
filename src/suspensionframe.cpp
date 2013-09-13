@@ -26,7 +26,8 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
 //    ui->msglabel->setText("试试鼠标左键双击屏幕右上角监控球...");
     ui->title1->setText("系统运行流畅");
     ui->title2->setText("无需进行加速");
-    this->setWindowFlags(Qt::FramelessWindowHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 80);

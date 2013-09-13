@@ -24,6 +24,8 @@ Rectangle {
     objectName: "main"
     anchors.fill: parent
     Toolkits{id: toolkits}
+
+
     Image {
         id: bgImg
         anchors.fill: parent

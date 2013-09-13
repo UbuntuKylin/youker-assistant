@@ -119,14 +119,20 @@ void Tray::start_to_accelerate() {
 
 void Tray::createTray()
 {
-    this->actionShow = new QAction(tr("隐藏/显示"), this);
+
+
+    this->actionQml = new QAction(tr("隐藏/显示主界面"), this);
+    connect(actionQml, SIGNAL(triggered()), this, SLOT(showOrHideQml()));
+    this->actionShow = new QAction(tr("隐藏/显示监控球"), this);
     connect(actionShow, SIGNAL(triggered()), this, SLOT(showOrHide()));
     QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
+
     this->actionQuit = new QAction(tr("E&xit"), this);
     connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
     this->trayMenu = new QMenu(this);
+    this->trayMenu->addAction(actionQml);
     this->trayMenu->addAction(actionShow);
     this->trayMenu->addSeparator();
     this->trayMenu->addAction(actionQuit);
@@ -163,16 +169,29 @@ void Tray::showOrHide()
     }
 }
 
+void Tray::showOrHideQml() {
+    emit show_Qml();
+}
+
 void Tray::mousePressEvent(QMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton)
-    {
+//    if (event->button() == Qt::LeftButton)
+//    {
+//        dragPos = event->globalPos() - frameGeometry().topLeft();
+//        event->accept();
+//    }
+//    else if (event->button() == Qt::RightButton)
+//    {
+//        this->hide();
+//        event->accept();
+//    }
+
+    if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
-        event->accept();
-    }
-    else if (event->button() == Qt::RightButton)
-    {
-        this->hide();
+        if(frame->isHidden())
+            frame->show();
+        else
+            frame->hide();
         event->accept();
     }
 }
@@ -198,14 +217,14 @@ void Tray::mouseReleaseEvent(QMouseEvent *event)
     event->accept();
 }
 
-void Tray::mouseDoubleClickEvent(QMouseEvent *event) {
-    if(event->buttons() == Qt::LeftButton) {
-        if(frame->isHidden())
-            frame->show();
-        else
-            frame->hide();
-    }
-}
+//void Tray::mouseDoubleClickEvent(QMouseEvent *event) {
+//    if(event->buttons() == Qt::LeftButton) {
+//        if(frame->isHidden())
+//            frame->show();
+//        else
+//            frame->hide();
+//    }
+//}
 
 QSize Tray::sizeHint()const
 {

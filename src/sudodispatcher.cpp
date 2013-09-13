@@ -54,6 +54,7 @@ SudoDispatcher::~SudoDispatcher()
         delete progressdialog;
     if(updatedialog)
         delete updatedialog;
+    this->exit_qt();
 }
 
 void SudoDispatcher::exit_qt()

@@ -34,7 +34,6 @@ public:
     Q_INVOKABLE int get_add_value();
     Q_INVOKABLE void send_btn_msg(QString);
     Q_INVOKABLE void exit_qt();
-
     Q_INVOKABLE void check_screen_break_point();
 
     Q_INVOKABLE QString get_system_daemon_qt();

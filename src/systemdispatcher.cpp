@@ -78,6 +78,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 
 SystemDispatcher::~SystemDispatcher()
 {
+    this->exit_qt();
 }
 
 void SystemDispatcher::handler_clear_trace(QString msg) {
@@ -244,6 +245,7 @@ QStringList SystemDispatcher::get_network_flow_total_qt() {
 void SystemDispatcher::cleanup_memory_qt() {
     systemiface->call("cleanup_memory");
 }
+
 //-----------------------------------------------
 
 //-----------------------------------------------

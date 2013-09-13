@@ -42,6 +42,7 @@ IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {
     tray = new Tray();
+    connect(tray,SIGNAL(show_Qml()),this,SLOT(show_or_hide()));
 //    handler = new Handler();
 }
 inline bool isRunningInstalled() {
@@ -59,6 +60,13 @@ inline QString getAppDirectory() {
 //        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");
         return QString(QCoreApplication::applicationDirPath() + "/../qml/");
     }
+}
+
+void IhuApplication::show_or_hide() {
+    if(viewer->isHidden())
+        viewer->show();
+    else
+        viewer->hide();
 }
 
 bool IhuApplication::setup()

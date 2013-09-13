@@ -44,7 +44,7 @@ public:
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayMenu;
-    QAction *actionShow, *actionQuit;
+    QAction *actionShow, *actionQml, *actionQuit;
 
     virtual QSize sizeHint()const;
 private:
@@ -72,7 +72,7 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
-    void mouseDoubleClickEvent(QMouseEvent *event);
+//    void mouseDoubleClickEvent(QMouseEvent *event);
 
     void paintEvent(QPaintEvent* event);
     void resizeEvent(QResizeEvent* event);
@@ -80,10 +80,12 @@ protected:
 public slots:
     void handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason);
     void showOrHide();
+    void showOrHideQml();
 //    void obtain_network_speed(QStringList speed);
     void updateData();
     void start_to_accelerate();
 signals:
+    void show_Qml();
     void showFloat();
     void sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
 };

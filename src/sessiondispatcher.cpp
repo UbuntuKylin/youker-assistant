@@ -51,6 +51,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
 SessionDispatcher::~SessionDispatcher()
 {
+    this->exit_qt();
 }
 
 void SessionDispatcher::handler_scan_rubbish(QString msg)

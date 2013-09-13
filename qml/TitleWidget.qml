@@ -48,10 +48,11 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    systemdispatcher.exit_qt();
-                    sessiondispatcher.exit_qt();
-                    sudodispatcher.exit_qt();
-                    Qt.quit();
+                    mainwindow.hide();
+//                    systemdispatcher.exit_qt();
+//                    sessiondispatcher.exit_qt();
+//                    sudodispatcher.exit_qt();
+//                    Qt.quit();
                 }
             }
         }

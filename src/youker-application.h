@@ -42,5 +42,7 @@ private:
 //    QDeclarativeView *viewer_widget;
     Tray *tray;
 //    Handler *handler;
+public slots:
+    void show_or_hide();
 };
 #endif // SYSTEMAPPLICATION_H
