@@ -39,6 +39,7 @@ log = logging.getLogger('SudoDaemon')
 
 INTERFACE = "com.ubuntukylin.Ihu"
 PATH = "/"
+UK_ACTION_YOUKER = "com.ubuntukylin.Ihu"
 
 class SudoDaemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
@@ -76,8 +77,14 @@ class SudoDaemon(PolicyKitService):
 
     # the function of clean packages
     ### input-['packagename', 'pack...]   output-''
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    def clean_package_cruft(self, cruftlist):
+    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    #def clean_package_cruft(self, cruftlist):
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def clean_package_cruft(self, cruftlist, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.clean_complete_msg('')
+            return
         try:
             self.daemonclean.clean_the_package(cruftlist)
         except Exception, e:

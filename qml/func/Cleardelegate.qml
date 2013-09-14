@@ -84,7 +84,7 @@ Item {
             height: 28
             width: 26
             x:740
-            y:15          
+            y:10//15
             source: listViewDelegate.arrow
             opacity: arrow_display
             //当鼠标点击后,箭头图片旋转90度

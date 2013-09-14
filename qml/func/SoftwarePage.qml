@@ -34,10 +34,23 @@ Rectangle {
     property string software_introduction: content.delegate_introduction
     property string introduction_image1: content.introduction_image1
     property string introduction_image2: content.introduction_image2
-    property string installed_status: content.install_status
+    property string installed_status: content.soft_status
     property string tm_status: "n"
     width: parent.width
     height: 475
+
+    function reset_text(showtext) {
+        if(showtext == "i")
+            return "立即卸载";
+        else if(showtext == "n")
+            return "立即安装";
+        else if(showtext == "u")
+            return "立即升级";
+        else {
+            return "N/A";
+        }
+    }
+
     function show_text(showtext) {
         if(showtext == "i")
             return "立即卸载";
@@ -49,6 +62,15 @@ Rectangle {
             return "N/A";
         }
     }
+
+    Connections
+    {
+        target: sudodispatcher
+        onFinishSoftwareStatus: {
+            software.installed_status = content.soft_status;
+            actionBtn.text = reset_text(software.installed_status);
+        }
+    }
     //信号绑定，绑定qt的信号
     Connections
     {
@@ -56,6 +78,7 @@ Rectangle {
         onFinishSoftwareApt: {
             if(type == "apt_stop") {
                 software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
                 if(software.tm_status == software.installed_status) {
                     sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 }
@@ -131,7 +154,12 @@ Rectangle {
             left: parent.left
             leftMargin: 25
         }
-        border.color: "lightgrey"
+//        border.color: "lightgrey"
+//        color: "#e6ebfe"
+        Image {
+            source: "../img/skin/bg-bottom-tab.png"
+            anchors.fill: parent
+        }
         Image {
             source: software.software_image
             anchors{
@@ -150,12 +178,26 @@ Rectangle {
             Text{
                 id:softwarename
                 text:software.software_appname
-                font.pixelSize: 18
+//                font.pixelSize: 18
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
             }
             Text {
                 id: softwareinformation
                 text: software.software_information
-                font.pixelSize: 14
+//                font.pixelSize: 14
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
+            Text {
+                text: content.delegate_useinfo
+//                font.pixelSize: 14
+                font.pixelSize: 12
+                color: "#7a7a7a"
+//                font.bold: true
+//                font.pixelSize: 14
+//                color: "#008000"
             }
         }
         Common.Button{
@@ -163,7 +205,7 @@ Rectangle {
             width:145;height: 43
             anchors{
                 right:parent.right
-                rightMargin: 100
+                rightMargin: 60
                 verticalCenter: parent.verticalCenter
             }
             text: software.show_text(software.installed_status)

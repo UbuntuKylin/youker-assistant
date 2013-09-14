@@ -111,6 +111,7 @@ void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
 //void SudoDispatcher::handler_software_check_status_signal(QMap<QString, QVariant> statusDict)
 void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict)
 {
+    status_dict.clear();
     for(int i=0; i< statusDict.size(); i++) {
         QStringList value = statusDict[i].split(":");
         status_dict.insert(value[0], value[1]);
@@ -147,7 +148,9 @@ void SudoDispatcher::show_progress_dialog(int window_x, int window_y) {
 }
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
-    sudoiface->call("clean_package_cruft", strlist);
+//    sudoiface->call("clean_package_cruft", strlist);
+    KThread *thread = new KThread(sudoiface, "clean_package_cruft", strlist);
+    thread->start();
 }
 
 QStringList SudoDispatcher::get_args() {
@@ -189,6 +192,10 @@ void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
 QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
     QDBusReply<QString> reply = sudoiface->call("check_pkg_status", pkgName);
     return reply.value();
+}
+
+void SudoDispatcher::send_software_current_status(QString current_status) {
+    emit finishSoftwareStatus(current_status);
 }
 
 void SudoDispatcher::apt_get_update_qt() {

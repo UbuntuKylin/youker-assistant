@@ -132,14 +132,19 @@ Item {
                 if (msg == "software") {
                     root.sof_work_result = msg;
                     root.state = "SoftwareWorkError";
+                    toolkits.alertMSG("清理出现异常！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
          }
         onFinishCleanWork: {
             if (sof_btn_flag == "software_work") {
-                if (msg == "software") {
+                if (msg == "") {
+                    resetBtn.visible = true;
+                }
+                else if (msg == "software") {
                     root.sof_work_result = msg;
                     root.state = "SoftwareWorkFinish";
+                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
                     software_signal("SoftwareWork");
                 }
             }
@@ -201,12 +206,12 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
 
-        Common.Label {
-            id: sof_label
-            visible: false
-            text: ""
-            anchors.verticalCenter: parent.verticalCenter
-        }
+//        Common.Label {
+//            id: sof_label
+//            visible: false
+//            text: ""
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
 
 
         Common.Button {
@@ -217,6 +222,7 @@ Item {
             text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
+                resetBtn.visible = false;
                 if(root.sof_check_flag)
                 {
                 //software cruft
@@ -231,6 +237,7 @@ Item {
                      {
                         root.state = "SoftwareWork";
                          deleget_arrow=1;
+                         toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                  }
                  else if (sof_btn_flag == "software_work") {
@@ -242,6 +249,35 @@ Item {
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
+        SetBtn {
+            id: resetBtn
+            width: 12
+            height: 15
+            iconName: "revoke.png"
+            visible: false
+            anchors.verticalCenter: parent.verticalCenter
+            onClicked: {
+                resetBtn.visible = false;
+                sof_subModel.clear();
+                root.state = "SoftwareWorkAGAIN";
+            }
+        }
+//        Common.Button {
+//            id: resetBtn
+//            width: 95
+//            height: 30
+//            fontcolor: "#6a97b4"
+//            fontsize: 13
+//            hoverimage: "blue1.png"
+//            text: "重置"
+//            visible: false
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                resetBtn.visible = false;
+//                sof_subModel.clear();
+//                root.state = "SoftwareWorkAGAIN";
+//            }
+//        }
 //        Common.Button {
 //            id: sof_bitButton
 //            width: 120
@@ -409,11 +445,11 @@ Item {
     Common.ScrollArea {
         frame:false
         anchors.top: sof_titlebar.bottom
-        anchors.topMargin: 30
+        anchors.topMargin: 20//30
         anchors.left:parent.left
         anchors.leftMargin: 27
-        height: root.height -sof_titlebar.height - 50
-        width: parent.width - 27
+        height: root.height -sof_titlebar.height - 37//50
+        width: parent.width - 27 -2
         Item {
             width: parent.width
             height: (root.sof_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
@@ -444,28 +480,34 @@ Item {
     states: [
         State {
             name: "SoftwareWork"
-             PropertyChanges { target: sof_label; visible: true; text: "software扫描完成"}
+//             PropertyChanges { target: sof_label; visible: true; text: "software扫描完成"}
              PropertyChanges { target: sof_bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; sof_btn_flag: "software_work" }
             PropertyChanges { target: sof_statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
         State {
+            name: "SoftwareWorkAGAIN"
+            PropertyChanges { target: sof_bitButton; text:"开始扫描" }
+            PropertyChanges { target: root; sof_btn_flag: "software_scan" }
+            PropertyChanges { target: sof_statusImage; visible: false }
+        },
+        State {
             name: "SoftwareWorkError"
-            PropertyChanges { target: sof_label; visible: true; text: "清理出现异常"}
+//            PropertyChanges { target: sof_label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: sof_bitButton; text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
             PropertyChanges { target: sof_statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "SoftwareWorkFinish"
-            PropertyChanges { target: sof_label; visible: true; text: root.sof_work_result + "清理完毕！" }
+//            PropertyChanges { target: sof_label; visible: true; text: root.sof_work_result + "清理完毕！" }
             PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
             PropertyChanges { target: sof_statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "SoftwareWorkEmpty"
-            PropertyChanges { target: sof_label; visible: true; text: "扫描内容为空，不再执行清理！" }
+//            PropertyChanges { target: sof_label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: sof_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
             PropertyChanges { target: sof_statusImage; visible: false}

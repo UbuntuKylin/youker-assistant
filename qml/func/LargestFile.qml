@@ -97,9 +97,9 @@ Item {
             check_flag=true;
 
         mainModel.clear();
-        mainModel.append({"itemTitle": "清理最大文件",
+        mainModel.append({"itemTitle": "清理最大文件/文件夹，清理路径为："  + root.directory,
                          "picture": "../img/toolWidget/deb-min.png",
-                         "detailstr": "清理用户指定目录下的最大文件，节省磁盘空间",
+                         "detailstr": "清理用户指定目录下的最大文件，节省磁盘空间。",
                          "flags": "clear_largestfile",
                         "attributes":
                              [{"subItemTitle": "Cookies1"},
@@ -113,9 +113,9 @@ Item {
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "清理最大文件"
+            itemTitle: "清理最大文件/文件夹"
             picture: "../img/toolWidget/deb-min.png"
-            detailstr: "清理用户指定目录下的最大文件，节省磁盘空间"
+            detailstr: "清理用户指定目录下的最大文件，节省磁盘空间。"
             flags: "clear_largestfile"
             attributes: [
                 ListElement { subItemTitle: "" }
@@ -145,9 +145,13 @@ Item {
          }
         onFinishCleanWork: {
             if (btn_flag == "largestfile_work") {
-                if (msg == "largestfile") {
+                if (msg == "") {
+                    root.state = "LargestFileWorkAgain";
+                }
+                else if (msg == "largestfile") {
                     root.work_result = msg;
                     root.state = "LargestFileWorkFinish";
+                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
                     refresh_page();
                 }
             }
@@ -261,10 +265,9 @@ Item {
             text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-                console.log(root.check_flag);
                 if(root.check_flag) {
-                    if(size_text.text == "")
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小，请在绿色框中输入数字！", mainwindow.pos.x, mainwindow.pos.y);
+                    if(size_text.text == "" || size_text.text == 0)
+                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！", mainwindow.pos.x, mainwindow.pos.y);
                     else if (root.directory == "")
                     {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！", mainwindow.pos.x, mainwindow.pos.y);
@@ -277,8 +280,6 @@ Item {
                         }
                         else if(root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-                            root.state = "LargestFileWorkFinish";
-//                            refresh_page();
                         }
                     }
                 }
@@ -287,19 +288,21 @@ Item {
             }
         }
     }
-    Common.StatusImage {
-        id: statusImage
-        anchors{
-            top:parent.top
-            topMargin: 142
-            left: parent.left
-            leftMargin:610
-        }
 
-        visible: false
-        iconName: "yellow.png"
-        text: "未完成"
-    }
+    //kobe
+//    Common.StatusImage {
+//        id: statusImage
+//        anchors{
+//            top:parent.top
+//            topMargin: 142
+//            left: parent.left
+//            leftMargin:610
+//        }
+
+//        visible: false
+//        iconName: "yellow.png"
+//        text: "未完成"
+//    }
 
     //分割条
     Rectangle {
@@ -533,11 +536,11 @@ Item {
     Common.ScrollArea {
         frame:false
         anchors.top: titlebar.bottom
-        anchors.topMargin: 30
+        anchors.topMargin: 20//30
         anchors.left:parent.left
         anchors.leftMargin: 27
-        height: root.height -titlebar.height - 50
-        width: parent.width - 27
+        height: root.height -titlebar.height - 27//50
+        width: parent.width - 27 -2
         Item {
             width: parent.width
             height: (root.sub_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
@@ -563,6 +566,18 @@ Item {
                 highlightRangeMode: ListView.StrictlyEnforceRange
             }
         }//Item
+        Common.StatusImage {
+            id: statusImage
+            anchors{
+                top:parent.top
+                topMargin: 15
+                left: parent.left
+                leftMargin:610
+            }
+            visible: false
+            iconName: "yellow.png"
+            text: "未完成"
+        }
     }//ScrollArea
 
 //    Common.Button {

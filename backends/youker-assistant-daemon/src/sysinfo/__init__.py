@@ -29,6 +29,7 @@ from gettext import gettext as _
 from gettext import ngettext as __
 
 NO_UPDATE_WARNING_DAYS = 7
+FILEPATH = "/etc/lsb-release"
 
 class Sysinfo:
     CACHE_FLAG = ''
@@ -82,10 +83,19 @@ class Sysinfo:
 
     def get_distro(self):
         '''It should be "Ubuntu 10.10 maverick"'''
-        a = platform.dist()[0] 
-        b = platform.dist()[1] 
-        c = platform.dist()[2]
-        d = '-'.join((a,b,c))
+        #FILEPATH
+        with open(FILEPATH, "r") as fsys:
+            for line in fsys:
+                if line.startswith("DISTRIB_DESCRIPTION"):
+                    tmp = line
+        front = tmp.split('"')[1]
+        if front.startswith("UbuntuKylin"):
+            d = front + '-' + platform.dist()[1]
+        else:
+            a = platform.dist()[0] 
+            b = platform.dist()[1] 
+            c = platform.dist()[2]
+            d = '-'.join((a,b,c))
         return d
 
     def get_desktop(self):

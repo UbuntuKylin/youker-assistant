@@ -289,7 +289,7 @@ Rectangle {
         }
         Rectangle{
             border.color: "#b9c5cc"
-            width: 550; height: 200
+            width: 550; height: 205
             clip:true
 
             Component{
@@ -354,8 +354,10 @@ Rectangle {
                                     wrapper.ListView.view.currentIndex = index;
                                     soundeffectspage.selectedmusic = systemdispatcher.show_file_dialog("soundeffects");
                                     systemdispatcher.get_music_path(soundeffectspage.selectedmusic);
-                                    systemdispatcher.set_homedir_qt();
-                                    systemdispatcher.replace_sound_file_qt(soundeffectspage.selectedmusic, split_music_name(musicname));
+                                    console.log("111111111111111->");
+                                    console.log(soundeffectspage.selectedmusic)
+//                                    systemdispatcher.set_homedir_qt();
+//                                    systemdispatcher.replace_sound_file_qt(soundeffectspage.selectedmusic, split_music_name(musicname));
                                 }
                             }
                         }

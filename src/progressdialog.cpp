@@ -93,6 +93,15 @@ void ProgressDialog::setValue(QString type, QString msg) {
             this->hide();
         }
     }
+//    else if(type == "down_done") {
+//        ui->label->setText("全部下载完成");
+//        ratio_sus=0;
+//        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+//        if(progress_flag) {
+//            progress_flag = true;
+//            this->hide();
+//        }
+//    }
     else if(type == "apt_start"){
         this->show();
         ui->label->setText("开始");

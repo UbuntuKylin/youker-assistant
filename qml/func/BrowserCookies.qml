@@ -128,14 +128,19 @@ Item {
                 if (msg == "cookies") {
                     root.work_result = msg;
                     root.state = "CookiesWorkError";
+                    toolkits.alertMSG("清理出现异常！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
          }
         onFinishCleanWork: {
             if (btn_flag == "cookies_work") {
-                if (msg == "cookies") {
+                if (msg == "") {
+                    resetBtn.visible = true;
+                }
+                else if (msg == "cookies") {
                     root.work_result = msg;
                     root.state = "CookiesWorkFinish";
+                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
                     cookies_signal("CookiesWork");
                 }
             }
@@ -196,12 +201,12 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
 
-        Common.Label {
-            id: label
-            visible: false
-            text: ""
-            anchors.verticalCenter: parent.verticalCenter
-        }
+//        Common.Label {
+//            id: label
+//            visible: false
+//            text: ""
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
 
         Common.Button {
             id: bitButton
@@ -211,6 +216,7 @@ Item {
             hoverimage: "green1.png"
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
+                resetBtn.visible = false;
                 if(root.check_flag)
                 {
                 //broswer cookies
@@ -225,6 +231,7 @@ Item {
                      {
                         root.state = "CookiesWork";
                          deleget_arrow=1;
+                         toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                  }
                  else if (btn_flag == "cookies_work") {
@@ -238,6 +245,35 @@ Item {
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
+        SetBtn {
+            id: resetBtn
+            width: 12
+            height: 15
+            iconName: "revoke.png"
+            visible: false
+            anchors.verticalCenter: parent.verticalCenter
+            onClicked: {
+                resetBtn.visible = false;
+                subModel.clear();
+                root.state = "CookiesWorkAGAIN";
+            }
+        }
+//        Common.Button {
+//            id: resetBtn
+//            width: 95
+//            height: 30
+//            fontcolor: "#6a97b4"
+//            fontsize: 13
+//            hoverimage: "blue1.png"
+//            text: "重置"
+//            visible: false
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                resetBtn.visible = false;
+//                subModel.clear();
+//                root.state = "CookiesWorkAGAIN";
+//            }
+//        }
 //        Common.Button {
 //            id: bitButton
 //            width: 120
@@ -407,11 +443,11 @@ Item {
     Common.ScrollArea {
         frame:false
         anchors.top: titlebar.bottom
-        anchors.topMargin: 30
+        anchors.topMargin: 20//30
         anchors.left:parent.left
         anchors.leftMargin: 27
-        height: root.height -titlebar.height - 50
-        width: parent.width -27
+        height: root.height -titlebar.height - 37//50
+        width: parent.width -27 -2
         Item {
             width: parent.width
             height: (root.sub_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
@@ -442,28 +478,34 @@ Item {
     states: [
         State {
             name: "CookiesWork"
-             PropertyChanges { target: label; visible: true; text: "cookies扫描完成"}
+//             PropertyChanges { target: label; visible: true; text: "cookies扫描完成"}
              PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; btn_flag: "cookies_work" }
             PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
         State {
+            name: "CookiesWorkAGAIN"
+            PropertyChanges { target: bitButton; text:"开始扫描" }
+            PropertyChanges { target: root; btn_flag: "cookies_scan" }
+            PropertyChanges { target: statusImage; visible: false }
+        },
+        State {
             name: "CookiesWorkError"
-            PropertyChanges { target: label; visible: true; text: "清理出现异常"}
+//            PropertyChanges { target: label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: bitButton; text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "CookiesWorkFinish"
-            PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
+//            PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "CookiesWorkEmpty"
-            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
+//            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; visible: false}

@@ -119,7 +119,8 @@ Item {
                         content.delegate_introduction="Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）。"
                         content.introduction_image1= "../img/character/eclipse-01.png"
                         content.introduction_image2= "../img/character/eclipse-02.png"
-                        content.install_status = sudodispatcher.get_value("eclipse");
+                        content.soft_status = sudodispatcher.get_value("eclipse");
+                        sudodispatcher.send_software_current_status(content.soft_status);
                     }
                     pageStack.push(softwarepage);
                 }
@@ -141,7 +142,8 @@ Item {
                         content.delegate_introduction="借助wine模拟运行的腾讯QQ 2012客户端，选自longene项目。"
                         content.introduction_image1= "../img/character/qq-01.png"
                         content.introduction_image2= "../img/character/qq-02.png"
-                        content.install_status = sudodispatcher.get_value("wine-qq2012-longeneteam");
+                        content.soft_status = sudodispatcher.get_value("wine-qq2012-longeneteam");
+                        sudodispatcher.send_software_current_status(content.soft_status);
                     }
                     else if(screen.image_flag == "qt") {
                         content.delegate_name= "qtcreator"
@@ -151,7 +153,8 @@ Item {
                         content.delegate_introduction="Qt Creator是跨平台的 Qt IDE， Qt Creator 是 Qt 被 Nokia 收购后推出的一款新的轻量级集成开发环境（IDE）。此 IDE 能够跨平台运行，支持的系统包括 Linux（32 位及 64 位）、Mac OS X 以及 Windows。"
                         content.introduction_image1= "../img/character/qtcreator-01.png"
                         content.introduction_image2= "../img/character/qtcreator-02.png"
-                        content.install_status = sudodispatcher.get_value("qtcreator");
+                        content.soft_status = sudodispatcher.get_value("qtcreator");
+                        sudodispatcher.send_software_current_status(content.soft_status);
                     }
                     else if(screen.image_flag == "wps") {
                         content.delegate_name= "wps-office"
@@ -161,7 +164,8 @@ Item {
                         content.delegate_introduction="由珠海金山办公软件有限公司与CCN联合实验室合作推出<WPS for UbuntuKylin>系列办公软件，并由珠海金山办公软件有限公司授权UbuntuKylin开源操作系统个人用户作为最终用户免费下载、安装和使 用。经测试，该版本在12.04和13.04上均可使用。"
                         content.introduction_image1= "../img/character/wps-01.png"
                         content.introduction_image2= "../img/character/wps-02.png"
-                        content.install_status = sudodispatcher.get_value("wps-office");
+                        content.soft_status = sudodispatcher.get_value("wps-office");
+                        sudodispatcher.send_software_current_status(content.soft_status);
                     }
                     pageStack.push(softwarepage);
                 }

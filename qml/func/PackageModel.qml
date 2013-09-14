@@ -117,16 +117,21 @@ Item {
         target: sudodispatcher
         onFinishCleanWorkError: {
             if (btn_flag == "package_work") {
-                titleBar.work_result = msg;
+//                titleBar.work_result = msg;
                 titleBar.state = "UnneedWorkError";
+                toolkits.alertMSG("清理出现异常！", mainwindow.pos.x, mainwindow.pos.y);
             }
 
          }
         onFinishCleanWork: {
             if (btn_flag == "package_work") {
-                if (msg == "package") {
-                    root.work_result = msg;
+                if (msg == "") {
+                    resetBtn.visible = true;
+                }
+                else if (msg == "package") {
+//                    root.work_result = msg;
                     root.state = "UnneedWorkFinish";
+                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
                     unneed_signal("UnneedWork");
                 }
             }
@@ -184,14 +189,12 @@ Item {
             text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
         }
-
-        Common.Label {
-            id: label
-            visible: false
-            text: ""
-            anchors.verticalCenter: parent.verticalCenter
-        }
-
+//        Common.Label {
+//            id: label
+//            visible: false
+//            text: ""
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
         Common.Button {
             id: bitButton
             width: 120
@@ -203,6 +206,7 @@ Item {
 //                sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                     sudodispatcher.bind_signals_after_dbus_start();
+                    resetBtn.visible = false;
                     if(root.check_flag)
                     {
                         //package cruft
@@ -217,9 +221,12 @@ Item {
                             {
                                 root.state = "UnneedWork";
                                 deleget_arrow=1;
+                                toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
                         else if (btn_flag == "package_work") {
+                            console.log("start to clean......");
+                            console.log(systemdispatcher.get_package_args());
                             sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
                             deleget_arrow=1;
                         }
@@ -232,6 +239,35 @@ Item {
                 }
             }
         }
+        SetBtn {
+            id: resetBtn
+            width: 12
+            height: 15
+            iconName: "revoke.png"
+            visible: false
+            anchors.verticalCenter: parent.verticalCenter
+            onClicked: {
+                resetBtn.visible = false;
+                subModel.clear();
+                root.state = "UnneedWorkAGAIN";
+            }
+        }
+//        Common.Button {
+//            id: resetBtn
+//            width: 95
+//            height: 30
+//            fontcolor: "#6a97b4"
+//            fontsize: 13
+//            hoverimage: "blue1.png"
+//            text: "重置"
+//            visible: false
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                resetBtn.visible = false;
+//                subModel.clear();
+//                root.state = "UnneedWorkAGAIN";
+//            }
+//        }
 //        Common.Button {
 //            id: bitButton
 //            width: 120
@@ -399,11 +435,11 @@ Item {
     Common.ScrollArea {
         frame:false
         anchors.top: titlebar.bottom
-        anchors.topMargin: 30
+        anchors.topMargin: 20//30
         anchors.left:parent.left
         anchors.leftMargin: 27
-        height: root.height -titlebar.height - 50
-        width: parent.width - 27
+        height: root.height -titlebar.height - 37//50
+        width: parent.width - 27 -2
         Item {
             width: parent.width
             height: (root.sub_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
@@ -434,28 +470,34 @@ Item {
     states: [
         State {
             name: "UnneedWork"
-            PropertyChanges { target: label; visible: true; text: "unneed扫描完成"}
+//            PropertyChanges { target: label; visible: true; text: "unneed扫描完成"}
             PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/text:"开始清理" }
             PropertyChanges { target: root; btn_flag: "package_work" }
             PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
         State {
+            name: "UnneedWorkAGAIN"
+            PropertyChanges { target: bitButton; text:"开始扫描" }
+            PropertyChanges { target: root; btn_flag: "package_scan" }
+            PropertyChanges { target: statusImage; visible: false }
+        },
+        State {
             name: "UnneedWorkError"
-            PropertyChanges { target: label; visible: true; text: "清理出现异常"}
+//            PropertyChanges { target: label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: bitButton; text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "UnneedWorkFinish"
-            PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
+//            PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "UnneedWorkEmpty"
-            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
+//            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; visible: false}

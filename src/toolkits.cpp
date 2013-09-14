@@ -57,7 +57,7 @@ void Toolkits::updateAlert(){
     if(this->ay <= (this->alert_y - 150)){
         this->alertTimer->stop();
         //5秒后自动关闭alert提示框
-        this->alertDelayTimer->start(3000);
+        this->alertDelayTimer->start(1000);
     }else{
         this->ay -= 3;
         this->alertBG->move(this->alert_x,this->ay);

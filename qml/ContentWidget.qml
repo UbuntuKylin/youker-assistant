@@ -21,7 +21,7 @@ import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
 import SudoType 0.1
-import FcitxCfgWizard 0.1    //  kobe08
+import FcitxCfgWizard 0.1
 import "./func/common" as Common
 import "./func/settings" as SysSettings
 import "func"
@@ -35,11 +35,12 @@ Item {
     property string delegate_name: "qq"
     property string delegate_appname: "WineQQ"
     property string delegate_information: "QQ 2013-09-09"
+    property string delegate_useinfo: "如果软件安装成功，则可以通过软件的中文/英文名关键子在Dash中搜索并启动软件。"
     property string delegate_image: ""
     property string delegate_introduction: ""
     property string introduction_image1: ""
     property string introduction_image2: ""
-    property string install_status: "n"
+    property string soft_status: "n"
 
 
 //    radius: 10

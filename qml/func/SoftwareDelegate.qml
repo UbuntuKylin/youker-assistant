@@ -80,7 +80,7 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (flag == "AdobeFlash"){
-                content.install_status = sudodispatcher.check_pkg_status_qt("flashplugin-downloader");
+                content.soft_status = sudodispatcher.check_pkg_status_qt("flashplugin-downloader");
                 content.delegate_name= "flashplugin-downloader";
                 content.delegate_appname = "AdobeFlash插件"
                 content.delegate_information= "Adobe Flash Player plugin installer"
@@ -88,7 +88,8 @@ Rectangle {
                 content.delegate_introduction="下载和安装Adobe Flash Player插件。Adobe Flash Player插件支持播放在线媒体和其他动态内容。"
                 content.introduction_image1= "../img/character/flash-01.png"
                 content.introduction_image2= "../img/character/flash-02.png"
-                content.install_status = sudodispatcher.get_value("flashplugin-downloader");
+                content.soft_status = sudodispatcher.get_value("flashplugin-downloader");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Chromium"){
                 content.delegate_name= "chromium-bsu"
@@ -98,7 +99,8 @@ Rectangle {
                 content.delegate_introduction="Chromium-bsu是一个高速的纵向飞行射击游戏。在游戏中你是Chromium B.S.U货运飞船的船长，负责给前线部队提供补给。你的飞船有一小队机器人战斗机，你可以在Chromium飞船的控制室里安全的遥控它们战斗。"
                 content.introduction_image1= "../img/character/Chromium-bsu-01.png"
                 content.introduction_image2= "../img/character/Chromium-bsu-02.png"
-                content.install_status = sudodispatcher.get_value("chromium-bsu");
+                content.soft_status = sudodispatcher.get_value("chromium-bsu");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Eclipse"){
                 content.delegate_name= "eclipse"
@@ -108,7 +110,8 @@ Rectangle {
                 content.delegate_introduction="Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）。"
                 content.introduction_image1= "../img/character/eclipse-01.png"
                 content.introduction_image2= "../img/character/eclipse-02.png"
-                content.install_status = sudodispatcher.get_value("eclipse");
+                content.soft_status = sudodispatcher.get_value("eclipse");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Qtcreator"){
                 content.delegate_name= "qtcreator"
@@ -118,17 +121,19 @@ Rectangle {
                 content.delegate_introduction="Qt Creator是跨平台的 Qt IDE， Qt Creator 是 Qt 被 Nokia 收购后推出的一款新的轻量级集成开发环境（IDE）。此 IDE 能够跨平台运行，支持的系统包括 Linux（32 位及 64 位）、Mac OS X 以及 Windows。"
                 content.introduction_image1= "../img/character/qtcreator-01.png"
                 content.introduction_image2= "../img/character/qtcreator-02.png"
-                content.install_status = sudodispatcher.get_value("qtcreator");
+                content.soft_status = sudodispatcher.get_value("qtcreator");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Kuaipan"){
                 content.delegate_name= "kuaipan"
                 content.delegate_appname = "金山快盘"
                 content.delegate_information= "金山快盘"
                 content.delegate_image= "../img/logo/kuaipan.jpg"
-                content.delegate_introduction="UbuntuKylin团队与金山公司联合开发的“Linux版网盘客户端”，具备文件同步、备份和共享功能。"
+                content.delegate_introduction="UbuntuKylin团队与金山云公司合作，共同开发金山快盘for UbuntuKylin版，为用户的个人文件提供安全可控、跨平台的一站式管理体验。具备文件同步、备份和共享功能！拟于2013年9月底推出Alpha版本，10月底推出Beta版本，12月推出正式版。"
                 content.introduction_image1= "../img/character/kuaipan-01.png"
                 content.introduction_image2= "../img/character/kuaipan-02.png"
-                content.install_status = sudodispatcher.get_value("kuaipan");
+                content.soft_status = sudodispatcher.get_value("kuaipan");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "KugouMusic"){
                 content.delegate_name= "kugou"
@@ -138,7 +143,8 @@ Rectangle {
                 content.delegate_introduction="酷狗音乐在线播放器，支持歌手/歌曲搜索功能。"
                 content.introduction_image1= "../img/character/kugou-01.png"
                 content.introduction_image2= "../img/character/kugou-02.png"
-                content.install_status = sudodispatcher.get_value("kugou");
+                content.soft_status = sudodispatcher.get_value("kugou");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Lotus"){
                 content.delegate_name= "lotus"
@@ -148,7 +154,8 @@ Rectangle {
                 content.delegate_introduction="基于XMPP协议的即时通讯软件，由ubuntukylin团队研发。"
                 content.introduction_image1= "../img/character/lotus-01.png"
                 content.introduction_image2= "../img/character/lotus-02.png"
-                content.install_status = sudodispatcher.get_value("lotus");
+                content.soft_status = sudodispatcher.get_value("lotus");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Pps"){
                 content.delegate_name= "ppstream"
@@ -158,7 +165,8 @@ Rectangle {
                 content.delegate_introduction ="全球华人最喜爱的网络电视，电视 电影 动漫 综艺娱乐，越多人看越流畅！"
                 content.introduction_image1 = "../img/character/pps-01.png"
                 content.introduction_image2 = "../img/character/pps-02.png"
-                content.install_status = sudodispatcher.get_value("ppstream");
+                content.soft_status = sudodispatcher.get_value("ppstream");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "QbitTorrent"){
                 content.delegate_name= "qbittorrent"
@@ -168,7 +176,8 @@ Rectangle {
                 content.delegate_introduction="BitTorrent客户端基于Qt4图形与RASTERBAR的BT协议接口，使用C++编写。它是一个功能丰富的轻量级客户端，与uTorrent非常相似。"
                 content.introduction_image1= "../img/character/qbittorrent-01.png"
                 content.introduction_image2= "../img/character/qbittorrent-02.png"
-                content.install_status = sudodispatcher.get_value("qbittorrent");
+                content.soft_status = sudodispatcher.get_value("qbittorrent");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "StarDict"){
                 content.delegate_name= "stardict"
@@ -178,7 +187,8 @@ Rectangle {
                 content.delegate_introduction="星际译王是用GTK+2.x写成的跨平台的多语言词典。具有通配符匹配、鼠标查词、模糊查找等强大功能。"
                 content.introduction_image1= "../img/character/stardict-01.png"
                 content.introduction_image2= "../img/character/stardict-02.png"
-                content.install_status = sudodispatcher.get_value("stardict");
+                content.soft_status = sudodispatcher.get_value("stardict");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Vlc"){
                 content.delegate_name= "vlc"
@@ -188,7 +198,8 @@ Rectangle {
                 content.delegate_introduction="vlc是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及DVD、音频CD、VCD及各类流媒体协议。"
                 content.introduction_image1= "../img/character/vlc-01.png"
                 content.introduction_image2= "../img/character/vlc-02.png"
-                content.install_status = sudodispatcher.get_value("vlc");
+                content.soft_status = sudodispatcher.get_value("vlc");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "VirtualBox"){
                 content.delegate_name= "virtualbox"
@@ -198,7 +209,8 @@ Rectangle {
                 content.delegate_introduction="VirturlBox是x86虚拟化自由软件，它可以使windows，DOS，BSD以及Linux等大量x86操作系统运行在Linux系统上。"
                 content.introduction_image1= "../img/character/virtualbox-01.png"
                 content.introduction_image2= "../img/character/virtualbox-02.png"
-                content.install_status = sudodispatcher.get_value("virtualbox");
+                content.soft_status = sudodispatcher.get_value("virtualbox");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Wineqq"){
                 content.delegate_name= "wine-qq2012-longeneteam"
@@ -208,7 +220,8 @@ Rectangle {
                 content.delegate_introduction="借助wine模拟运行的腾讯QQ 2012客户端，选自longene项目。"
                 content.introduction_image1= "../img/character/qq-01.png"
                 content.introduction_image2= "../img/character/qq-02.png"
-                content.install_status = sudodispatcher.get_value("wine-qq2012-longeneteam");
+                content.soft_status = sudodispatcher.get_value("wine-qq2012-longeneteam");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Wps"){
                 content.delegate_name= "wps-office"
@@ -218,7 +231,8 @@ Rectangle {
                 content.delegate_introduction="由珠海金山办公软件有限公司与CCN联合实验室合作推出<WPS for UbuntuKylin>系列办公软件，并由珠海金山办公软件有限公司授权UbuntuKylin开源操作系统个人用户作为最终用户免费下载、安装和使 用。经测试，该版本在12.04和13.04上均可使用。"
                 content.introduction_image1= "../img/character/wps-01.png"
                 content.introduction_image2= "../img/character/wps-02.png"
-                content.install_status = sudodispatcher.get_value("wps-office");
+                content.soft_status = sudodispatcher.get_value("wps-office");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "XChat"){
                 content.delegate_name= "xchat"
@@ -228,7 +242,8 @@ Rectangle {
                 content.delegate_introduction="XChat是一个使用GTK+的图形化IRC客户端，它的外观体验类似于Amiga上的AmIRC。XChat支持mIRC扩展DCC RESUME和mIRC颜色代码、多服务器多频道的窗口、对话窗口，以及一个插件API。"
                 content.introduction_image1= "../img/character/xchat-01.png"
                 content.introduction_image2= "../img/character/xchat-02.png"
-                content.install_status = sudodispatcher.get_value("xchat");
+                content.soft_status = sudodispatcher.get_value("xchat");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "XunLei"){
                 content.delegate_name= "wine-thunder"
@@ -238,7 +253,8 @@ Rectangle {
                 content.delegate_introduction="借助wine模拟运行的迅雷客户端。"
                 content.introduction_image1= "../img/character/xunlei-01.png"
                 content.introduction_image2= "../img/character/xunlei-02.png"
-                content.install_status = sudodispatcher.get_value("wine-thunder");
+                content.soft_status = sudodispatcher.get_value("wine-thunder");
+                sudodispatcher.send_software_current_status(content.soft_status);
             }
             pageStack.push(softwarepage);
         }

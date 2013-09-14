@@ -26,7 +26,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 7pt &quot;文泉驿微米黑&quot;;</string>
+    <string notr="true">font: 6pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
     <string>10K/s</string>
@@ -42,7 +42,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 7pt &quot;文泉驿微米黑&quot;;</string>
+    <string notr="true">font: 6pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
     <string>20K/s</string>

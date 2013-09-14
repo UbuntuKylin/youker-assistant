@@ -102,14 +102,19 @@ Item {
                 if (msg == "apt") {
                     root.apt_work_result = msg;
                     root.state = "AptWorkError";
+                    toolkits.alertMSG("清理出现异常！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
          }
         onFinishCleanWork: {
             if (apt_btn_flag == "apt_work") {
-                if (msg == "apt") {
+                if (msg == "") {
+                    resetBtn.visible = true;
+                }
+                else if (msg == "apt") {
                     root.apt_work_result = msg;
                     root.state = "AptWorkFinish";
+                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
                     apt_signal("AptWork");
                 }
             }
@@ -187,12 +192,12 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
 
-        Common.Label {
-            id: apt_label
-            visible: false
-            text: ""
-            anchors.verticalCenter: parent.verticalCenter
-        }
+//        Common.Label {
+//            id: apt_label
+//            visible: false
+//            text: ""
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
 
 
         Common.Button {
@@ -203,6 +208,7 @@ Item {
             text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
+                resetBtn.visible = false;
                 if(apt_check_flag)
                 {
                 //apt cruft
@@ -217,6 +223,7 @@ Item {
                      {
                         root.state = "AptWork";
                          deleget_arrow=1;
+                         toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                  }
                  else if (apt_btn_flag == "apt_work") {
@@ -228,6 +235,37 @@ Item {
                      sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y)
             }
         }
+
+        SetBtn {
+            id: resetBtn
+            width: 12
+            height: 15
+            iconName: "revoke.png"
+            visible: false
+            anchors.verticalCenter: parent.verticalCenter
+            onClicked: {
+                resetBtn.visible = false;
+                apt_subModel.clear();
+                root.state = "AptWorkAGAIN";
+            }
+        }
+
+//        Common.Button {
+//            id: resetBtn
+//            width: 95
+//            height: 30
+//            fontcolor: "#6a97b4"
+//            fontsize: 13
+//            hoverimage: "blue1.png"
+//            text: "重置"
+//            visible: false
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                resetBtn.visible = false;
+//                apt_subModel.clear();
+//                root.state = "AptWorkAGAIN";
+//            }
+//        }
 //        Common.Button {
 //            id: apt_bitButton
 //            width: 120
@@ -392,11 +430,11 @@ Item {
     Common.ScrollArea {
         frame:false
         anchors.top: apt_titlebar.bottom
-        anchors.topMargin: 30
+        anchors.topMargin: 20//30
         anchors.left:parent.left
         anchors.leftMargin: 27
-        height: root.height -apt_titlebar.height - 50
-        width: parent.width - 27
+        height: root.height -apt_titlebar.height - 37//50
+        width: parent.width - 27 -2
         Item {
             width: parent.width
             height: (root.apt_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
@@ -427,28 +465,34 @@ Item {
     states: [
         State {
             name: "AptWork"
-             PropertyChanges { target: apt_label; visible: true; text: "apt扫描完成"}
+//             PropertyChanges { target: apt_label; visible: true; text: "apt扫描完成"}
              PropertyChanges { target: apt_bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
             PropertyChanges { target: root; apt_btn_flag: "apt_work" }
             PropertyChanges { target: apt_statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
         State {
+            name: "AptWorkAGAIN"
+            PropertyChanges { target: apt_bitButton; text:"开始扫描" }
+            PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
+            PropertyChanges { target: apt_statusImage; visible: false }
+        },
+        State {
             name: "AptWorkError"
-            PropertyChanges { target: apt_label; visible: true; text: "清理出现异常"}
-            PropertyChanges { target: bitButton; text:"开始扫描" }
+//            PropertyChanges { target: apt_label; visible: true; text: "清理出现异常"}
+            PropertyChanges { target: apt_bitButton; text:"开始扫描" }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "AptWorkFinish"
-            PropertyChanges { target: apt_label; visible: true; text: root.apt_work_result + "清理完毕！" }
+//            PropertyChanges { target: apt_label; visible: true; text: root.apt_work_result + "清理完毕！" }
             PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "AptWorkEmpty"
-            PropertyChanges { target: apt_label; visible: true; text: "扫描内容为空，不再执行清理！" }
+//            PropertyChanges { target: apt_label; visible: true; text: "扫描内容为空，不再执行清理！" }
             PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage;  visible: false}

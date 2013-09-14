@@ -128,7 +128,8 @@ void Tray::createTray()
     QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
 
-    this->actionQuit = new QAction(tr("E&xit"), this);
+//    this->actionQuit = new QAction(tr("E&xit"), this);
+    this->actionQuit = new QAction(tr("退出"), this);
     connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
     this->trayMenu = new QMenu(this);
@@ -186,12 +187,16 @@ void Tray::mousePressEvent(QMouseEvent *event)
 //        event->accept();
 //    }
 
+//    if (event->button() == Qt::LeftButton) {
+//        dragPos = event->globalPos() - frameGeometry().topLeft();
+//        if(frame->isHidden())
+//            frame->show();
+//        else
+//            frame->hide();
+//        event->accept();
+//    }
     if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
-        if(frame->isHidden())
-            frame->show();
-        else
-            frame->hide();
         event->accept();
     }
 }
@@ -217,14 +222,19 @@ void Tray::mouseReleaseEvent(QMouseEvent *event)
     event->accept();
 }
 
-//void Tray::mouseDoubleClickEvent(QMouseEvent *event) {
-//    if(event->buttons() == Qt::LeftButton) {
-//        if(frame->isHidden())
-//            frame->show();
-//        else
-//            frame->hide();
-//    }
-//}
+void Tray::mouseDoubleClickEvent(QMouseEvent *event) {
+    if(event->buttons() == Qt::RightButton) {
+        this->hide();
+        if(frame->isVisible())
+            frame->hide();
+    }
+    if(event->buttons() == Qt::LeftButton) {
+        if(frame->isHidden())
+            frame->show();
+        else
+            frame->hide();
+    }
+}
 
 QSize Tray::sizeHint()const
 {

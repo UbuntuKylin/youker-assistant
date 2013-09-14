@@ -212,8 +212,9 @@ Item {
                     iconName: "yellow.png"
                     text: "未完成"
                     anchors {
-                        top:parent.top
+//                        top:parent.top
                         left: parent.left; leftMargin: 450
+                        verticalCenter: parent.verticalCenter
                     }
                     states: [
                         State {
@@ -316,8 +317,9 @@ Item {
                 iconName: "yellow.png"
                 text: "未完成"
                 anchors {
-                    top:parent.top
+//                    top:parent.top
                     left: parent.left; leftMargin: 450
+                    verticalCenter: parent.verticalCenter
                 }
                 states: [
                     State {
@@ -365,7 +367,7 @@ Item {
         id:cacherow
         anchors {
             top: titlebar.bottom
-            topMargin: 40
+            topMargin: 50
             right: parent.right
             rightMargin: 50
         }
@@ -411,14 +413,11 @@ Item {
                 }
             }
         }
-        Common.Button {
+        SetBtn {
             id: resetcBtn
-            width: 95
-            height: 30
-            fontcolor: "#6a97b4"
-            fontsize: 13
-            hoverimage: "blue1.png"
-            text: "重置"
+            width: 12
+            height: 15
+            iconName: "revoke.png"
             visible: false
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
@@ -426,11 +425,26 @@ Item {
                 browserstatus.state = "BrowserWorkAGAIN";
             }
         }
+//        Common.Button {
+//            id: resetcBtn
+//            width: 95
+//            height: 30
+//            fontcolor: "#6a97b4"
+//            fontsize: 13
+//            hoverimage: "blue1.png"
+//            text: "重置"
+//            visible: false
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                resetcBtn.visible = false;
+//                browserstatus.state = "BrowserWorkAGAIN";
+//            }
+//        }
     }
     Row {
         anchors {
             top: cacherow.bottom
-            topMargin: 50
+            topMargin: 43
             right: parent.right
             rightMargin: 50
         }
@@ -476,14 +490,11 @@ Item {
                 }
             }
         }
-        Common.Button {
+        SetBtn {
             id: resetsBtn
-            width: 95
-            height: 30
-            fontcolor: "#6a97b4"
-            fontsize: 13
-            hoverimage: "blue1.png"
-            text: "重置"
+            width: 12
+            height: 15
+            iconName: "revoke.png"
             visible: false
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
@@ -491,6 +502,21 @@ Item {
                 systemstatus.state = "SystemWorkAGAIN";
             }
         }
+//        Common.Button {
+//            id: resetsBtn
+//            width: 95
+//            height: 30
+//            fontcolor: "#6a97b4"
+//            fontsize: 13
+//            hoverimage: "blue1.png"
+//            text: "重置"
+//            visible: false
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                resetsBtn.visible = false;
+//                systemstatus.state = "SystemWorkAGAIN";
+//            }
+//        }
     }
     //分割条
     Rectangle {

@@ -48,6 +48,7 @@ public:
 
     QMap<QString, QString> status_dict;
     Q_INVOKABLE QString get_value(QString);
+    Q_INVOKABLE void send_software_current_status(QString current_status);
 
 
     // -------------------------software-center-------------------------
@@ -65,7 +66,7 @@ signals:
     void finishSoftwareApt(QString type);
 //    void finishSoftwareCheckStatus(QMap<QString, QVariant> statusDict);
     void finishSoftwareCheckStatus(QStringList statusDict);
-
+    void finishSoftwareStatus(QString current_status);
 
     void getValue(QString type, QString msg);
 
