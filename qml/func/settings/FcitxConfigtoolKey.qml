@@ -10,7 +10,7 @@ Rectangle {
     height: 475
 
     property string actiontitle: "小企鹅输入法外观配置"
-    property string actiontext: "可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置"
+    property string actiontext: "可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置。"
     property int flagCheck: 1
     property int flag_i: 0
     property string h_fcitxSkinImage: ""
@@ -64,6 +64,8 @@ Rectangle {
         fontStyleBtn.text = setFont;
         //get font size=======================================================
         var getFontSize = fcitxcfgwizard.get_font_size();
+        if(getFontSize == 0)
+            getFontSize = fcitxcfgwizard.get_font_size();
         sliderFontSize.value = getFontSize;
 
         //get_skin_list and current_skin=================================================
@@ -311,7 +313,7 @@ Rectangle {
                 Common.Slider {
                     id: sliderFontSize
                     anchors.verticalCenter: parent.verticalCenter
-                    minimumValue: 0
+                    minimumValue: 1
                     maximumValue: 72
                     value:12
                     width: 150

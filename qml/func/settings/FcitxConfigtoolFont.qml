@@ -185,7 +185,7 @@ Rectangle {
                 id: numberText
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("候选词个数")
+                text: qsTr("候选词个数:")
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{

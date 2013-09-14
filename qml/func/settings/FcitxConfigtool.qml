@@ -571,7 +571,7 @@ Rectangle {
                 left: parent.left
                 leftMargin: 80
             }
-            text: qsTr("提示:'<<'可以将可用输入法加入当前输入法,'>>'删除当前选中输入法,'▲'和'▼'改变当前输入法的位置")
+            text: qsTr("提示:'<<'可以将可用输入法加入当前输入法，'>>'删除当前选中输入法，'▲'和'▼'改变当前输入法的位置。")
             font.bold: true
             font.pixelSize: 12
             color: "#7a7a7a"
