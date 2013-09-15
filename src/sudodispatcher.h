@@ -69,6 +69,8 @@ signals:
     void finishSoftwareStatus(QString current_status);
 
     void getValue(QString type, QString msg);
+    void finishGetSourceStatus(QString cur_status);
+    void callMasklayer();
 
 public slots:
     void handler_clear_rubbish(QString msg);
@@ -78,6 +80,7 @@ public slots:
 //    void handler_software_check_status_signal(QMap<QString, QVariant> statusDict);
     void handler_software_check_status_signal(QStringList statusDict);
     void start_to_update();
+    void get_software_source_progress(QString cur_status);
 private:
 //    bool trans_password(QString flagstr, QString pwd);
     QStringList strlist;

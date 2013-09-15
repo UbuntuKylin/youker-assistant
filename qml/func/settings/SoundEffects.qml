@@ -479,12 +479,14 @@ Rectangle {
                 font.bold: true
             }
             Text{
-                text:qsTr("您能根据喜好组合")
+//                text:qsTr("您能根据喜好组合")
+                text:qsTr("暂不支持中文路径")
                 font.pointSize: 10
                 color: "#7a7a7a"
             }
             Text{
-                text:qsTr("成专属声音主题")
+//                text:qsTr("成专属声音主题")
+                text:qsTr("下的音频文件")
                 font.pointSize: 10
                 color: "#7a7a7a"
             }

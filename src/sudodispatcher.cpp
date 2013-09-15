@@ -74,11 +74,18 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handler_software_check_status_signal(QStringList)));
     QObject::connect(this,SIGNAL(getValue(QString,QString)),progressdialog, SLOT(setValue(QString,QString)));
     QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(start_to_update()));
+
+
+    QObject::connect(progressdialog,SIGNAL(update_software_progress(QString)),this, SLOT(get_software_source_progress(QString)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
     QDBusReply<QString> reply = sudoiface->call("get_sudo_daemon");
     return reply.value();
+}
+
+void SudoDispatcher::get_software_source_progress(QString cur_status) {
+    emit finishGetSourceStatus(cur_status);
 }
 
 void SudoDispatcher::handler_clear_rubbish(QString msg)
@@ -95,6 +102,8 @@ void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg)
 {
     if(!type.isEmpty()) {
         emit getValue(type, msg);
+        if(type == "down_stop")
+            emit finishSoftwareFetch(type, msg);
     }
 //    emit finishSoftwareFetch(type, msg);
 }
@@ -141,6 +150,7 @@ void SudoDispatcher::show_progress_dialog(int window_x, int window_y) {
 //    progressdialog = new ProgressDialog (window_x, window_y);
 //    progressdialog->exec();
 
+    progress_flag = false;
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     progressdialog->move(this->alert_x, this->alert_y);
@@ -207,6 +217,8 @@ void SudoDispatcher::apt_get_update_qt() {
 }
 
 void SudoDispatcher::start_to_update() {
-    progressdialog->show();
+//    progressdialog->show();
+    progressdialog->hide();
+    emit callMasklayer();
     apt_get_update_qt();
 }

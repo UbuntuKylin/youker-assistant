@@ -259,9 +259,12 @@ Item {
 
         Common.Button {
             id: bitButton
-            width: 120
-            height: 39
-            hoverimage: "green1.png"
+            width: 95
+            height: 30
+            hoverimage: "green2.png"
+//            width: 120
+//            height: 39
+//            hoverimage: "green1.png"
             text: root.btn_text
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {

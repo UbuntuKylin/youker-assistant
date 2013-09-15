@@ -65,7 +65,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>11</x>
+     <x>5</x>
      <y>55</y>
      <width>291</width>
      <height>16</height>

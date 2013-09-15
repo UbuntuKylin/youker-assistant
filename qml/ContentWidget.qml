@@ -47,18 +47,18 @@ Item {
 //    color: "lightgray"
 
     property string text: "homepage"
-    SessionDispatcher {
-        id: sessiondispatcher
-    }
-    SystemDispatcher {
-        id: systemdispatcher
-    }
-    SudoDispatcher {
-        id: sudodispatcher
-    }
-    FcitxCfgWizard {
-        id: fcitxcfgwizard
-    }
+//    SessionDispatcher {
+//        id: sessiondispatcher
+//    }
+//    SystemDispatcher {
+//        id: systemdispatcher
+//    }
+//    SudoDispatcher {
+//        id: sudodispatcher
+//    }
+//    FcitxCfgWizard {
+//        id: fcitxcfgwizard
+//    }
 
     Rectangle {
         id: rectangle1

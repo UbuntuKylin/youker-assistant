@@ -47,6 +47,9 @@ protected:
 
     void paintEvent(QPaintEvent* event);
     void resizeEvent(QResizeEvent* event);
+
+signals:
+    void update_software_progress(QString cur_status);
 };
 
 #endif // PROGRESSDIALOG_H

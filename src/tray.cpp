@@ -48,7 +48,7 @@ Tray::Tray(QWidget *parent)
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
-    this->move(desktop->width() - this->width(), 10);
+    this->move(desktop->width() - this->width(), 15);
     this->show();
 
     frame = new SuspensionFrame;

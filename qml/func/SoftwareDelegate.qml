@@ -151,7 +151,7 @@ Rectangle {
                 content.delegate_appname = "莲"
                 content.delegate_information= "instant messenger based on XMPP protocol"
                 content.delegate_image= "../img/logo/lotus.jpg"
-                content.delegate_introduction="基于XMPP协议的即时通讯软件，由ubuntukylin团队研发。"
+                content.delegate_introduction="Lotus是UK团队为UbuntuKylin用户量身打造的企业级“即时通讯工具”，是基于Xmpp协议的IM客户端，使用Qxmpp库，基于Qt开发实现。Lotus——“莲”系你我他，为您带来更多沟通乐趣。"
                 content.introduction_image1= "../img/character/lotus-01.png"
                 content.introduction_image2= "../img/character/lotus-02.png"
                 content.soft_status = sudodispatcher.get_value("lotus");
@@ -162,7 +162,7 @@ Rectangle {
                 content.delegate_appname = "PPS网络播放器"
                 content.delegate_information = "PPStream for GNU/Linux Ubuntu 8.04+ Distro"
                 content.delegate_image = "../img/logo/pps.jpg"
-                content.delegate_introduction ="全球华人最喜爱的网络电视，电视 电影 动漫 综艺娱乐，越多人看越流畅！"
+                content.delegate_introduction ="全球华人最爱的网络电视。电视、影、动漫、综艺娱乐，越多人看越流畅！"
                 content.introduction_image1 = "../img/character/pps-01.png"
                 content.introduction_image2 = "../img/character/pps-02.png"
                 content.soft_status = sudodispatcher.get_value("ppstream");
@@ -173,7 +173,7 @@ Rectangle {
                 content.delegate_appname = "BitTorrent下载工具"
                 content.delegate_information= "bittorrent client based on libtorrent-rasterbar with a Qt4 GUI"
                 content.delegate_image= "../img/logo/qbittorrent.jpg"
-                content.delegate_introduction="BitTorrent客户端基于Qt4图形与RASTERBAR的BT协议接口，使用C++编写。它是一个功能丰富的轻量级客户端，与uTorrent非常相似。"
+                content.delegate_introduction="BitTorrent客户端是基于Qt4图形与RASTERBAR的BT协议接口，使用C++编写。它是一个功能丰富的轻量级客户端，与uTorrent非常相似。"
                 content.introduction_image1= "../img/character/qbittorrent-01.png"
                 content.introduction_image2= "../img/character/qbittorrent-02.png"
                 content.soft_status = sudodispatcher.get_value("qbittorrent");
@@ -217,7 +217,7 @@ Rectangle {
                 content.delegate_appname = "WineQQ安装程序"
                 content.delegate_information= "Wine 1.5.18 patched for qq2012 Beta3"
                 content.delegate_image= "../img/logo/qq.jpg"
-                content.delegate_introduction="借助wine模拟运行的腾讯QQ 2012客户端，选自longene项目。"
+                content.delegate_introduction="QQ2012基于官方Beta3版，支持双击deb包安装、支持全局热键、不会自动离线、文件传输正常、ibus中文输入法正常。"
                 content.introduction_image1= "../img/character/qq-01.png"
                 content.introduction_image2= "../img/character/qq-02.png"
                 content.soft_status = sudodispatcher.get_value("wine-qq2012-longeneteam");
@@ -228,7 +228,7 @@ Rectangle {
                 content.delegate_appname = "WPS办公软件"
                 content.delegate_information= "WPS Office"
                 content.delegate_image= "../img/logo/wps.jpg"
-                content.delegate_introduction="由珠海金山办公软件有限公司与CCN联合实验室合作推出<WPS for UbuntuKylin>系列办公软件，并由珠海金山办公软件有限公司授权UbuntuKylin开源操作系统个人用户作为最终用户免费下载、安装和使 用。经测试，该版本在12.04和13.04上均可使用。"
+                content.delegate_introduction="Ubuntukylin团队与金山公司合作，于13.04开始首先推出WPS for UbuntuKylin 1.0，并于13.10推出WPS for UbuntuKylin1.2。与1.0版本相比，1.2版进行了稳定性提升、BUG修复、同时增加了数据透视表等功能，使您的文档工作更加专业和轻松。"
                 content.introduction_image1= "../img/character/wps-01.png"
                 content.introduction_image2= "../img/character/wps-02.png"
                 content.soft_status = sudodispatcher.get_value("wps-office");

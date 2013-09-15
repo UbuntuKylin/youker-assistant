@@ -1,3 +1,14 @@
+youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
+
+  * Modify the mouse events of MonitorBall.
+  * Add reset button for clear pages.
+  * Add policykit for apt clear in sudodbus.
+  * Fixed the bug about software status and add masklayer.
+  * Rewrite the code of system information.
+  * Add some signals and slots.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Sun, 15 Sep 2013 20:21:11 +0800
+
 youker-assistant (0.2.0-0ubuntu1) saucy; urgency=low
 
   * Modify the MonitorBall from QML to QT.

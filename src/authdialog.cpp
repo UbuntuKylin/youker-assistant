@@ -45,6 +45,8 @@ AuthDialog::AuthDialog(QString msg, QWidget *parent) :
     //QLabel自动换行
     ui->msg_label->setWordWrap(true);
     ui->msg_label->setText(msg);
+//    ui->msg_label->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+//    ui->msg_label->setAlignment(Qt::AlignCenter);
 
 //    QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));

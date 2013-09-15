@@ -62,13 +62,13 @@ void ProgressDialog::setValue(QString type, QString msg) {
         ratio_sus=1;
     }
     else if(type == "down_pulse"){
-        ui->label->setText("正在下载");
+//        ui->label->setText("正在下载");
         if(!msg.isEmpty()) {
             if(msg.contains("download_bytes") && msg.contains("total_bytes")) {
                 QStringList process_value = msg.split(",");
                 if (process_value.size() == 4) {
 //                    QStringList download_items = process_value.at(2).split(":");
-                    ui->label->setText("正在下载安装包...");
+//                    ui->label->setText("正在下载安装包...");
                     QStringList download_bytes = process_value.at(0).split(":");
                     double download_bytes_value = download_bytes.at(1).toDouble();
                     QStringList total_bytes = process_value.at(1).split(":");
@@ -79,19 +79,34 @@ void ProgressDialog::setValue(QString type, QString msg) {
                     ratio = QString::number(trans,'f',0);
 //                    ui->progressBar->setValue(ratio.toInt());
                     ratio_sus=ratio.toInt();
-                    ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+
+                    //-------------------------
+                    if(progress_flag) {
+                        this->hide();
+                        update_software_progress(ratio);
+                    }
+                    //-------------------------
+                    else {
+                        ui->label->setText("正在下载安装包...");
+                        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+                    }
                 }
             }
         }
     }
     else if(type == "down_stop") {
-        ui->label->setText("下载完成");
-        ratio_sus=0;
-        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
         if(progress_flag) {
-            progress_flag = true;
             this->hide();
         }
+        else {
+            ui->label->setText("下载完成");
+            ratio_sus=0;
+            ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+        }
+//        if(progress_flag) {
+//            progress_flag = true;
+//            this->hide();
+//        }
     }
 //    else if(type == "down_done") {
 //        ui->label->setText("全部下载完成");

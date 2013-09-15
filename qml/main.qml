@@ -17,12 +17,30 @@
 import QtQuick 1.1
 import ToolkitsType 0.1
 
+import SessionType 0.1
+import SystemType 0.1
+import SudoType 0.1
+import FcitxCfgWizard 0.1
+
 Rectangle {
+    id: main
     width: 850
     height: 600
-    id: main
     objectName: "main"
     anchors.fill: parent
+    property string version: "0.2.1"
+    SessionDispatcher {
+        id: sessiondispatcher
+    }
+    SystemDispatcher {
+        id: systemdispatcher
+    }
+    SudoDispatcher {
+        id: sudodispatcher
+    }
+    FcitxCfgWizard {
+        id: fcitxcfgwizard
+    }
     Toolkits{id: toolkits}
 
 
@@ -45,6 +63,7 @@ Rectangle {
         }
         StatusWidget{
             id: statuswidget
+            uk_version: main.version
         }
     }
     Text {
@@ -59,6 +78,6 @@ Rectangle {
         style: Text.Sunken
         styleColor: "#AAAAAA"
         color: "white"
-        text: "v0.2"
+        text: main.version
     }
 }
