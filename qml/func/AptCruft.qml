@@ -191,15 +191,6 @@ Item {
             text: "未完成"
             anchors.verticalCenter: parent.verticalCenter
         }
-
-//        Common.Label {
-//            id: apt_label
-//            visible: false
-//            text: ""
-//            anchors.verticalCenter: parent.verticalCenter
-//        }
-
-
         Common.Button {
             id: apt_bitButton
             width: 120
@@ -249,53 +240,6 @@ Item {
                 root.state = "AptWorkAGAIN";
             }
         }
-
-//        Common.Button {
-//            id: resetBtn
-//            width: 95
-//            height: 30
-//            fontcolor: "#6a97b4"
-//            fontsize: 13
-//            hoverimage: "blue1.png"
-//            text: "重置"
-//            visible: false
-//            anchors.verticalCenter: parent.verticalCenter
-//            onClicked: {
-//                resetBtn.visible = false;
-//                apt_subModel.clear();
-//                root.state = "AptWorkAGAIN";
-//            }
-//        }
-//        Common.Button {
-//            id: apt_bitButton
-//            width: 120
-//            height: 39
-////            hoverimage: "scan-start.png"
-//            text:"开始扫描"
-//            bold:true
-//            textsize: 12
-//            anchors.verticalCenter: parent.verticalCenter
-//            onClicked: {
-//                if(apt_check_flag)
-//                {
-//                //apt cruft
-//                 if (apt_btn_flag == "apt_scan") {
-//                     apt_signal("AptWork");
-//                     if(root.apt_null_flag == true) {
-//                        root.state = "AptWorkEmpty";
-//                        sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
-//                     }
-//                     else if(root.apt_null_flag == false)
-//                        root.state = "AptWork";
-//                 }
-//                 else if (apt_btn_flag == "apt_work") {
-//                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_apt_args(), "apt");
-//                 }
-//                }
-//                else
-//                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！")
-//            }
-//        }
     }
     //分割条
     Rectangle {
@@ -310,122 +254,6 @@ Item {
         height: 1
         color: "#d8e0e6"
     }
-
-//    Component {
-//        id: listViewDelegate
-//        Item {
-//            id: delegate
-//            property alias expandedItemCount: subItemRepeater.count
-//            x: 5; y: 2
-//            width: root.width
-//            height: headerItemRect.height + subItemsRect.height
-
-//            //母项
-//            //checkbox, picture and words
-//            Row {
-//                id: headerItemRect
-//                x: 5; y: 2
-//                width: root.width
-//                height: root.itemHeight
-//                spacing: 170
-//                Row{
-//                    spacing: 15
-//                    Image {
-//                        id: clearImage
-//                        fillMode: "PreserveAspectFit"
-//                        height: parent.height*0.9
-//                        source: picture
-//                        smooth: true
-//                    }
-
-//                    Column {
-//                        id: status_update_content
-//                        spacing: 5
-//                        anchors.verticalCenter: parent.verticalCenter
-//                        Text {
-//                            id: mytext
-//                            text: itemTitle
-//                            font.pointSize: 11
-//                            color: "black"
-//                        }
-//                        Text {
-//                            text: detailstr
-//                            font.pointSize: 9
-//                            color: "gray"
-//                        }
-//                    }
-//                }
-//            }//母项Row
-//            Image {
-//                id: arrow
-//                fillMode: "PreserveAspectFit"
-//                height: 28
-//                width: 26
-//                x:740
-//                y:15
-////                    height: parent.height*0.3
-//                source: root.arrow
-//                //当鼠标点击后,箭头图片旋转90度
-////                    rotation: expanded ? 90 : 0
-//                rotation: expanded ? 0 : -180
-//                smooth: true
-//                MouseArea {
-//                    id: mouseRegion
-//                    anchors.fill: parent
-//                    onPressed: {
-//                        expanded = !expanded
-//                    }
-//                }
-//            }
-
-//            //子项
-//            Item {
-//                id: subItemsRect
-//                property int itemHeight: root.itemHeight
-//                y: headerItemRect.height
-//                width: root.width
-//                //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
-//                height: expanded ? delegate.expandedItemCount * itemHeight : 0
-//                clip: true
-//                opacity: 1
-//                Behavior on height {
-//                    SequentialAnimation {
-//                        NumberAnimation { duration: 100; easing.type: Easing.InOutQuad }
-//                    }
-//                }
-
-//                Column {
-//                    width: root.width
-//                    Repeater {
-//                        id: subItemRepeater
-//                        model: apt_subModel
-//                        width: subItemsRect.width
-//                        ListItem {
-//                            id: subListItem
-//                            split_status: true
-//                            width: root.width
-//                            height: subItemsRect.itemHeight
-////                            text: subItemTitle
-//                            text: itemTitle
-//                            descript: desc
-//                            size_num: number
-//                            checkbox_status: root.apt_check_flag
-////                            bgImage: "../../img/icons/list_subitem.png"
-//                            bgImage: ""
-//                            fontName: root.subItemFontName
-//                            fontSize: root.subItemFontSize
-//                            fontColor: root.subItemFontColor
-//                            textIndent: 20
-//                            btn_flag: root.apt_btn_flag
-//                            onClicked: {}
-//                        }
-
-//                    }//Repeater
-//                }//Column
-//            }
-//        }
-//    }//Component
-
 
     Common.ScrollArea {
         frame:false
@@ -465,8 +293,7 @@ Item {
     states: [
         State {
             name: "AptWork"
-//             PropertyChanges { target: apt_label; visible: true; text: "apt扫描完成"}
-             PropertyChanges { target: apt_bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
+             PropertyChanges { target: apt_bitButton; text:"开始清理"}
             PropertyChanges { target: root; apt_btn_flag: "apt_work" }
             PropertyChanges { target: apt_statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
@@ -478,22 +305,19 @@ Item {
         },
         State {
             name: "AptWorkError"
-//            PropertyChanges { target: apt_label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: apt_bitButton; text:"开始扫描" }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "AptWorkFinish"
-//            PropertyChanges { target: apt_label; visible: true; text: root.apt_work_result + "清理完毕！" }
-            PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/text:"开始扫描" }
+            PropertyChanges { target: apt_bitButton; text:"开始扫描" }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "AptWorkEmpty"
-//            PropertyChanges { target: apt_label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: apt_bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
+            PropertyChanges { target: apt_bitButton; text:"开始扫描"}
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage;  visible: false}
         }

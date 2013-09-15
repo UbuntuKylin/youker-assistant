@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <QApplication>
-#include "fcitxcfgwizard.h" //kobe08
+#include "fcitxcfgwizard.h"
 #include "toolkits.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
@@ -28,14 +28,7 @@
 #include <QTextCodec>
 #include <QProcess>
 #include <QDebug>
-
 #include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <QDialog>
-
 #include "qrangemodel.h"
 #include "qstyleitem.h"
 #include "qwheelarea.h"
@@ -58,9 +51,6 @@
 #include <qdeclarativeitem.h>
 #include <qdeclarativeimageprovider.h>
 #include <qdeclarativeview.h>
-#include <QImage>
-
-
 #include "KThread.h"
 /*
 a 	ARRAY 数组
@@ -115,7 +105,6 @@ void registerTypes()
     qmlRegisterUncreatableType<QDeclarativeLayout>("LayoutType", 0, 1, "Layout",
                                                    QLatin1String("Do not create objects of type Layout"));
     qmlRegisterUncreatableType<QDesktopItem>("DesktopType",0,1,"Desktop", QLatin1String("Do not create objects of type Desktop"));
-
 }
 
 

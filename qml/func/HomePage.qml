@@ -65,23 +65,6 @@ Rectangle {
                 anchors.leftMargin: 0
                 width: screen.width - 600; height: screen.height
             }
-//            Row {
-//                anchors.fill: parent
-//                spacing: 0
-//                //坐边栏
-//                LeftPage {
-//                    id: leftbar
-//                    anchors.left: parent.left
-//                    anchors.leftMargin: -2
-//                    width: 600; height: screen.height
-//                }
-//               RightPage {
-//                    id: rightbar
-//                    anchors.left: leftbar.right
-//                    anchors.leftMargin: 0
-//                    width: screen.width - 600; height: screen.height
-//                }
-//            }//左右布局Row
             Item { id: foreground; anchors.fill: parent }
             //左右分割条
             Rectangle {id: midsplitbar1; x: 600; height: screen.height; width: 1; color: "#b9c5cc" }

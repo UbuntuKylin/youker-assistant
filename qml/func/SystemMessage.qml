@@ -19,14 +19,12 @@
 
 import QtQuick 1.1
 import SessionType 0.1
-//import SystemType 0.1
 import "common" as Common
 Rectangle {
     id: home
     anchors.fill: parent
     height: 475
     property SessionDispatcher dis: sessiondispatcher
-//    property SystemDispatcher dis2: systemdispatcher
     signal dialogmsg()
 
     Component.onCompleted: {
@@ -80,19 +78,8 @@ Rectangle {
 
     //上下分割条
     Rectangle {x: 100; y: 90; width: parent.width - 150; height: 1; color: "#ccdadd" }
-//    Rectangle {x: 100; y: 92; width: parent.width - 150; height: 1; color: "#fafcfe" }
-    //-------------------
-
-    //上下分割条
     Rectangle {x: 100; y: 190; width: parent.width - 150; height: 1; color: "#ccdadd" }
-//    Rectangle {x: 100; y: 192; width: parent.width - 150; height: 1; color: "#fafcfe" }
-    //-------------------
-
-    //上下分割条
     Rectangle {x: 100; y: 370; width: parent.width - 150; height: 1; color: "#ccdadd" }
-//    Rectangle {x: 100; y: 372; width: parent.width - 150; height: 1; color: "#fafcfe" }
-    //-------------------
-
     Column {
         anchors {
 //            fill: parent
@@ -268,6 +255,5 @@ Rectangle {
                 }
             }
         }
-
     }
 }

@@ -81,14 +81,10 @@ Item {
                             id: personaltext
                             text: " 个性化"
                             font.bold: true
-    //                        font.pointSize: 12
                             font.pixelSize: 14
                             color: "#383838"
-//                            anchors.top: personal.top
                         }
                         Row {
-//                            anchors.bottom: personal.bottom
-//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "更改窗口主题"; width: 90; flag: "WidgetTheme"}
                             //左右分割条
@@ -146,14 +142,10 @@ Item {
                             id: fonttext
                             text: " 字体"
                             font.bold: true
-    //                        font.pointSize: 12
                             font.pixelSize: 14
                             color: "#383838"
-//                            anchors.top: fontimage.top
                         }
                         Row {
-//                            anchors.bottom: fontimage.bottom
-//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "更改默认字体设置"; width: 120; flag: "DefaultFont"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
@@ -177,14 +169,10 @@ Item {
                             id: systext
                             text: " 系统选项"
                             font.bold: true
-    //                        font.pointSize: 12
                             font.pixelSize: 14
                             color: "#383838"
-//                            anchors.top: sysimage.top
                         }
                         Row {
-//                            anchors.bottom: sysimage.bottom
-//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: "更改触摸板设置"; width: 105; flag: "TouchpadSet"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }

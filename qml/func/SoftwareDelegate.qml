@@ -24,39 +24,12 @@ import "common" as Common
 
 Rectangle {
     id: softwaredelegate
-    //信号绑定，绑定qt的信号
-//    Connections
-//    {
-//        target: sudodispatcher
-//        onFinishSoftwareFetch: {
-//            console.log(type);
-//            console.log(msg);
-//        }
-//        onFinishSoftwareApt: {
-//            console.log(type);
-//            console.log(msg);
-//        }
-//        onFinishSoftwareCheckStatus: {
-//            console.log("Software statusDict->");
-//            var statusdata = statusDict;
-//            for (var i=0; i< statusdata.length; i++) {
-////                var splitlist = statusdata[i].split(":");
-//                console.log(statusdata[i]);
-//            }
-//            mystatus1 = statusDict[0];
-//            mystatus2 = statusDict[1];
-//            mystatus3 = statusDict[2];
-//        }
-//    }
-
-
     scale: 1
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     width: 167
     height: 79
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
-//    Software.AdobeFlash{width: 0;height: 0; opacity: 0}
     Image {
         id: seticon
         source: icon

@@ -18,7 +18,6 @@
  */
 
 import QtQuick 1.1
-//import SessionType 0.1
 import SystemType 0.1
 import "./common" as Common
 import "./bars" as Bars
@@ -120,28 +119,6 @@ Item {
                 root.state = "SofeWareState";
             }
         }
-//        AnimatedImage {
-//            width: 16
-//            height: 16
-//            source: "../img/icons/move.gif"
-//            anchors.centerIn: parent
-//        }
-//        Common.Button {
-//            width: 80;height: 28
-//            hoverimage: "blue1.png"
-//            text: "to soft"
-//            fontcolor: "grey"
-//            fontsize: 14
-//            anchors{
-//                left: parent.left
-//                leftMargin: 80
-//                verticalCenter: parent.verticalCenter
-//            }
-//            onClicked:  {
-//                console.log("want to display softlayer")
-//                root.state = "SofeWareState";
-//            }
-//        }
     }
     Rectangle {
         id: software
@@ -204,13 +181,6 @@ Item {
                         else if(software.installed_status == "u")
                             actionBtn.text = "立即升级";
                     }
-    //                software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-    //                if(software.installed_status == "i")
-    //                    actionBtn.text = "立即卸载";
-    //                else if(software.installed_status == "n")
-    //                    actionBtn.text = "立即安装";
-    //                else if(software.installed_status == "u")
-    //                    actionBtn.text = "立即升级";
                 }
             }
         }
@@ -251,22 +221,6 @@ Item {
                     pageStack.push(softwarerecommend);
                 }
             }
-//            Common.Button {
-//                width: 80;height: 28
-//                hoverimage: "blue1.png"
-//                text: "to layer"
-//                fontcolor: "grey"
-//                fontsize: 14
-//                anchors{
-//                    right: parent.right
-//                    rightMargin: 80
-//                    verticalCenter: parent.verticalCenter
-//                }
-//                onClicked:  {
-//                    console.log("want to display masklayer")
-//                    root.state = "MaskLayerState";
-//                }
-//            }
             Text {
                 anchors.centerIn: parent
                 text:"详细信息"
@@ -285,10 +239,6 @@ Item {
             }
             border.color: "lightgrey"
             color: "#e6ebfe"
-//            Image {
-//                source: "../img/skin/bg-bottom-tab.png"
-//                anchors.fill: parent
-//            }
             Image {
                 source: software.software_image
                 anchors{
@@ -443,286 +393,3 @@ Item {
 //        NumberAnimation { properties: "x"; duration: 1000; easing.type: Easing.InOutQuad }
 //    }
 }
-
-
-
-
-//Rectangle {
-//    id: software
-//    property bool on: true
-//    //需要时常变动的变量
-//    property string software_name: content.delegate_name
-//    property string software_appname: content.delegate_appname
-//    property string software_information: content.delegate_information
-//    property string software_image: content.delegate_image
-//    property string software_introduction: content.delegate_introduction
-//    property string introduction_image1: content.introduction_image1
-//    property string introduction_image2: content.introduction_image2
-//    property string installed_status: content.soft_status
-//    property string tm_status: "n"
-//    width: parent.width
-//    height: 475
-
-//    function reset_text(showtext) {
-//        if(showtext == "i")
-//            return "立即卸载";
-//        else if(showtext == "n")
-//            return "立即安装";
-//        else if(showtext == "u")
-//            return "立即升级";
-//        else {
-//            return "N/A";
-//        }
-//    }
-
-//    function show_text(showtext) {
-//        if(showtext == "i")
-//            return "立即卸载";
-//        else if(showtext == "n")
-//            return "立即安装";
-//        else if(showtext == "u")
-//            return "立即升级";
-//        else {
-//            return "N/A";
-//        }
-//    }
-
-//    Connections
-//    {
-//        target: sudodispatcher
-//        onFinishSoftwareStatus: {
-//            software.installed_status = content.soft_status;
-//            actionBtn.text = reset_text(software.installed_status);
-//        }
-//    }
-//    //信号绑定，绑定qt的信号
-//    Connections
-//    {
-//        target: sudodispatcher
-//        onFinishSoftwareApt: {
-//            if(type == "apt_stop") {
-//                software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-//                sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
-//                if(software.tm_status == software.installed_status) {
-//                    sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
-//                }
-//                else {
-//                    software.installed_status = software.tm_status;
-//                    if(software.installed_status == "i")
-//                        actionBtn.text = "立即卸载";
-//                    else if(software.installed_status == "n")
-//                        actionBtn.text = "立即安装";
-//                    else if(software.installed_status == "u")
-//                        actionBtn.text = "立即升级";
-//                }
-////                software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-////                if(software.installed_status == "i")
-////                    actionBtn.text = "立即卸载";
-////                else if(software.installed_status == "n")
-////                    actionBtn.text = "立即安装";
-////                else if(software.installed_status == "u")
-////                    actionBtn.text = "立即升级";
-//            }
-//        }
-//    }
-////    function split_string(statusdata) {
-////        var splitlist = statusdata.split(":");
-////        software.appname = splitlist[0];
-////        software.installed_status = splitlist[1];
-////    }
-
-//    //背景
-//    Image {
-//        source: "../img/skin/bg-bottom-tab.png"
-//        anchors.fill: parent
-//    }
-//    Rectangle{
-//        width: parent.width-2;height: 36
-//        gradient: Gradient{
-//            GradientStop{position: 0.0; color: "#e2e2e2"}
-//            GradientStop{position: 1.0; color: "#dedede"}
-//        }
-//        anchors{
-//            top:parent.top
-//            left: parent.left
-//            leftMargin: 1
-//        }
-//        Common.Button{
-//            width: 80;height: 28
-//            anchors{
-//                left: parent.left
-//                leftMargin: 8
-//                verticalCenter: parent.verticalCenter
-//            }
-//            hoverimage: "blue1.png"
-//            text:"返回"
-//            fontcolor: "grey"
-//            fontsize: 14
-//            onClicked: {
-//                pageStack.push(softwarerecommend);
-//            }
-//        }
-//        Text {
-//            anchors.centerIn: parent
-//            text:"详细信息"
-//            color:"grey"
-//            font.bold: true
-//            font.pixelSize: 14
-//        }
-//    }
-//    Rectangle{
-//        width: parent.width-50;height: 110
-//        anchors{
-//            top:parent.top
-//            topMargin: 47
-//            left: parent.left
-//            leftMargin: 25
-//        }
-////        border.color: "lightgrey"
-////        color: "#e6ebfe"
-//        Image {
-//            source: "../img/skin/bg-bottom-tab.png"
-//            anchors.fill: parent
-//        }
-//        Image {
-//            source: software.software_image
-//            anchors{
-//                left: parent.left
-//                leftMargin: 20
-//                verticalCenter: parent.verticalCenter
-//            }
-//        }
-//        Column{
-//            anchors{
-//                left: parent.left
-//                leftMargin: 105
-//                verticalCenter: parent.verticalCenter
-//            }
-//            spacing: 10
-//            Text{
-//                id:softwarename
-//                text:software.software_appname
-////                font.pixelSize: 18
-//                font.bold: true
-//                font.pixelSize: 14
-//                color: "#383838"
-//            }
-//            Text {
-//                id: softwareinformation
-//                text: software.software_information
-////                font.pixelSize: 14
-//                font.pixelSize: 12
-//                color: "#7a7a7a"
-//            }
-//            Text {
-//                text: content.delegate_useinfo
-////                font.pixelSize: 14
-//                font.pixelSize: 12
-//                color: "#7a7a7a"
-////                font.bold: true
-////                font.pixelSize: 14
-////                color: "#008000"
-//            }
-//        }
-//        Common.Button{
-//            id: actionBtn
-//            width:145;height: 43
-//            anchors{
-//                right:parent.right
-//                rightMargin: 60
-//                verticalCenter: parent.verticalCenter
-//            }
-//            text: software.show_text(software.installed_status)
-//            fontsize: 20
-//            onClicked: {
-//                software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-//                if(software.installed_status == "n") {
-//                    sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
-//                    sudodispatcher.install_pkg_qt(software.software_name);
-//                }
-//                else if(software.installed_status == "i") {
-//                    sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
-//                    sudodispatcher.uninstall_pkg_qt(software.software_name);
-//                }
-//                else if(software.installed_status == "u") {
-//                    sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
-//                    sudodispatcher.update_pkg_qt(software.software_name);
-//                }
-//                else{
-//                    sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
-//                }
-//            }
-//        }
-
-//    }
-//    Rectangle {
-//        id: views
-//        width: parent.width-50
-//        height: 276
-//        anchors{
-//            bottom:parent.bottom
-//            bottomMargin: 17
-//            left: parent.left
-//            leftMargin: 25
-//        }
-//        clip:true
-//        border.color: "#9aa2af"
-//        color: "#e6ebfe"
-//        Rectangle{
-//            id:rec
-//            width: parent.width-1;height: 31
-//            anchors{
-//                top:parent.top
-//                topMargin: 1
-//                left: parent.left
-//                leftMargin: 1
-//            }
-//            gradient: Gradient{
-//                GradientStop{position: 0.0; color: "#e2e2e2"}
-//                GradientStop{position: 1.0; color: "#dedede"}
-//            }
-//            Text {
-//                anchors.centerIn: parent
-//                text:"软件介绍"
-//                color:"grey"
-//                font.bold: true
-//                font.pixelSize: 14
-//            }
-//        }
-//        Rectangle{id: splitbar1; anchors{top:rec.bottom;left: parent.left;leftMargin: 1 }width:parent.width-1 ; height:1; color:"#b8bdc3"}
-//        Rectangle{id: splitbar2; anchors{top:splitbar1.bottom;left: parent.left;leftMargin: 1  }width:parent.width-1 ; height:1; color:"#ebf0f6"}
-//        Text {
-//            id: softwareintroduction
-//            width: parent.width-30
-//            anchors{
-//                left:parent.left
-//                leftMargin: 15
-//                top:parent.top
-//                topMargin: 46
-//            }
-//            font.pixelSize: 13
-//            text: software_introduction
-////            text:softwaredelegate.delegate_introduction
-//            wrapMode: Text.WrapAnywhere
-//        }
-//        Row{
-//            anchors{
-//                horizontalCenter: parent.horizontalCenter
-//                bottom: parent.bottom
-//                bottomMargin: 20
-//            }
-//            spacing: 80
-//            Image {
-//                id: introductionimage1
-//                source: introduction_image1
-////                source: softwaredelegate.introduction_image1
-//            }
-//            Image {
-//                id: introductionimage2
-//                source: introduction_image2
-////                source: softwaredelegate.introduction_image2
-//            }
-//        }
-//    }
-
-//}

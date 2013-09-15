@@ -17,9 +17,6 @@
 import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
-//import "func/common" as Common
-//import "func"
-
 
 Rectangle {
     id: toolwidget

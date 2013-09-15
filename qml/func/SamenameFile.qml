@@ -209,27 +209,6 @@ Item {
                  }
             }
         }
-//        Common.Button {
-//            id: bitButton
-//            width: 120
-//            height: 39
-////            hoverimage: "scan-start.png"
-//            text:"开始扫描"
-//            bold:true
-//            textsize: 12
-//            anchors.right: parent.right
-//            anchors.rightMargin: 50
-//            anchors.verticalCenter: parent.verticalCenter
-//            onClicked: {
-//                 if (btn_flag == "samenamefile_scan") {
-//                     root.state = "LargestFileWork";
-//                     samenamefile_signal("SamenameFileWork");
-//                 }
-//                 else if (btn_flag == "samenamefile_work") {
-////                     systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_samenamefile_args(), "samenamefile");
-//                 }
-//            }
-//        }
     }
     //分割条
     Rectangle {

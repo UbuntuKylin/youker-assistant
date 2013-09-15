@@ -180,12 +180,10 @@ Item {
                             listViewDelegate.checkchanged(true);
                         else
                             listViewDelegate.checkchanged(false);
-//                        console.log(systemdispatcher.get_largestfile_args());
                     }
                 }
             }
         }//子项Item
     }
-
 }//Component
 

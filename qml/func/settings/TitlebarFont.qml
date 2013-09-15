@@ -19,17 +19,8 @@
 
 import QtQuick 1.1
 import SessionType 0.1
-//import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
-
-//Gtk:GtkFontButton
-
-//     http://www.doc88.com/p-313626987748.html
-//Qt:QFontDialog
-//           http://www.kuqin.com/qtdocument/qfontdialog.html
-//QColorDialog
-//              http://www.kuqin.com/qtdocument/qcolordialog.html
 Rectangle {
     id: titlebarfontpage
     property bool on: true
@@ -191,34 +182,6 @@ Rectangle {
                     sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的窗体标题栏字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
-//        Common.Button {
-//            id: titlefontBtn
-////            hoverimage: "changefont.png"
-//            text:"更换字体"
-//            width: 124
-//            height: 30
-//            onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
-//        }
-//        Common.Button {
-////                anchors.left: titlefontBtn.right
-////                anchors.leftMargin: 10
-////            hoverimage: "use.png"
-//            text:"使用默认设置"
-//            color1: "#57bffc"
-//            color2: "#2384c8"
-//            bordercolor: "#31a0ee"
-//            width: 124
-//            height: 30
-//            onClicked: {
-//                if(titlebarfontpage.titlebar_font_flag == true) {
-//                    sessiondispatcher.set_window_title_font_qt_default(titlebarfontpage.titlebar_font);
-//                    sessiondispatcher.restore_default_font_signal("titlebarfont_default");
-//                    statusImage.visible = true;
-//                }
-//                else
-//                    sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的窗体标题栏字体已经为默认字体！");
-//            }
-//        }
         Timer {
                  interval: 5000; running: true; repeat: true
                  onTriggered: statusImage.visible = false

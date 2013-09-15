@@ -41,18 +41,10 @@ Item {
     Connections
     {
         target: sudodispatcher
-//        onFinishSoftwareFetch: {
-//            console.log(type);
-//            console.log(msg);
-//        }
         onFinishSoftwareApt: {
             if(type == "apt_stop")
                 toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
         }
-//        onFinishSoftwareCheckStatus: {
-//            console.log("Software statusDict->");
-//            console.log(statusDict);
-//        }
     }
 
         //背景
@@ -77,13 +69,6 @@ Item {
         Image{
             anchors.fill:parent
             source: "../img/skin/linecolor.png"
-        }
-        MouseArea{
-            anchors.fill: parent
-            onClicked: {
-//                console.log("pageStack.push(image_flag);")
-//                pageStack.push(image_flag);
-            }
         }
         Rectangle{
             width: parent.width;height: 30
@@ -420,5 +405,4 @@ Item {
             }
         }
     }
-
 }

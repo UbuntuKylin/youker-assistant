@@ -24,22 +24,9 @@
 #include <QObject>
 #include <QString>
 #include <QFileDialog>
-#include <QDir>
-
-#include <QFile>
-#include <QDataStream>
-#include <iostream>
 #include "authdialog.h"
 #include "KThread.h"
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdio.h>
 
-#include <errno.h>
-#include <sys/wait.h>
 extern QString music_path;
 
 SystemDispatcher::SystemDispatcher(QObject *parent) :

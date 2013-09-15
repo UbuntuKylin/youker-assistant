@@ -18,7 +18,6 @@
  */
 
 import QtQuick 1.1
-//import SessionType 0.1
 import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
@@ -32,7 +31,6 @@ Rectangle {
     property int lisv_height: 250
     property int fontSize: 12
     property color fontColor: "black"
-//    property SessionDispatcher dis: sessiondispatcher
     property SystemDispatcher dis: systemdispatcher
     property string image_path: ""
     property string actiontitle: "开机动画设置(目前仅支持png图片格式，不支持以中文命名的图片)"
@@ -136,33 +134,12 @@ Rectangle {
                 systemdispatcher.send_boot_signal();
             }
         }
-//        Common.Button {
-//            width: 134
-//            height: 35
-//            text: "自定义图片"
-//            color1: "#57bffc"
-//            color2: "#2384c8"
-//            bordercolor: "#31a0ee"
-//            bold:true
-//            textsize: 12
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            onClicked: {
-//                bootimagepage.image_path = systemdispatcher.show_file_dialog("bootanimation");
-//                bootimage.source = bootimagepage.image_path;
-//                var imagename = bootimagepage.image_path;
-//                imagename = imagename.substr(imagename.lastIndexOf("/") + 1, imagename.length - imagename.lastIndexOf("/"));
-//                systemdispatcher.add_new_plymouth_qt(bootimagepage.image_path, imagename);
-//                systemdispatcher.send_boot_signal();
-//            }
-//        }
     }
 
     Image {
         id: bootimage
         width: 165
         height: 114
-//        width: 180
-//        height: 125
         anchors {
             top: parent.top
             topMargin: 136
@@ -298,8 +275,6 @@ Rectangle {
             }
         }
     }
-
-
 
     //顶层工具栏
     Bars.TopBar {

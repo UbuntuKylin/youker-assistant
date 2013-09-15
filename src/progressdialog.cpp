@@ -79,13 +79,10 @@ void ProgressDialog::setValue(QString type, QString msg) {
                     ratio = QString::number(trans,'f',0);
 //                    ui->progressBar->setValue(ratio.toInt());
                     ratio_sus=ratio.toInt();
-
-                    //-------------------------
                     if(progress_flag) {
                         this->hide();
                         update_software_progress(ratio);
                     }
-                    //-------------------------
                     else {
                         ui->label->setText("正在下载安装包...");
                         ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");

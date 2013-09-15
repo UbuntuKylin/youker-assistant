@@ -20,7 +20,6 @@
 #include <QDebug>
 #include <QProcessEnvironment>
 #include <QtDBus>
-//#include "progressdialog.h"
 #include <QMap>
 #include "KThread.h"
 //extern QString passwd;

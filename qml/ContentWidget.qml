@@ -65,155 +65,147 @@ Item {
         width: parent.width
         height: titlebar.height + toolwidget.height
         color: "transparent"
-//        Column {
-//            id: layout1
-//            anchors.fill: parent
-            //标题栏
-            TitleWidget {
-                id: titlebar
-                height: 40//20
+        //标题栏
+        TitleWidget {
+            id: titlebar
+            height: 40//20
 //                opacity: 0.3
-            }
-            //功能图标栏
-            ToolWidget {
-                id: toolwidget
-                height: 64//84
-                anchors {
-                    top: titlebar.bottom
-                    topMargin: 18
+        }
+        //功能图标栏
+        ToolWidget {
+            id: toolwidget
+            height: 64//84
+            anchors {
+                top: titlebar.bottom
+                topMargin: 18
 //                    topMargin: 45
-                }
             }
+        }
 
-            Item {
-                id:display_content
-                width: parent.width
-                anchors {
-                    top: titlebar.bottom
-                    topMargin: 59
+        Item {
+            id:display_content
+            width: parent.width
+            anchors {
+                top: titlebar.bottom
+                topMargin: 59
 //                    topMargin: 45
+            }
+            height: parent.height - 104 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
+            property string text: "homepage"
+
+            Common.PageStack {
+                id: pageStack
+                Component.onCompleted: {
+                    pageStack.push(homepage);
                 }
-                height: parent.height - 104 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
-                property string text: "homepage"
+                Common.Page {
+                    id: homepage
+                    visible: false
+                    HomePage {dis1: sessiondispatcher; dis2: systemdispatcher}
+                }
+                Common.Page {
+                    id: systemmessage
+                    visible: false
+                    SystemMessage {}
+                }
+                Common.Page {
+                    id: clearrubbish
+                    visible: false
+                    ClearRubbish {}
+                }
+                Common.Page {
+                    id: systemset
+                    visible: false
+                    SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
+                }
+                Common.Page {
+                    id: functioncollection
+                    visible: false
+                    FunctionCollection {dis: systemdispatcher}
+                }
+                Common.Page {
+                    id: softwarerecommend
+                    visible: false
+                    SoftWareRecommend {}
+                }
 
-                Common.PageStack {
-                    id: pageStack
-                    Component.onCompleted: {
-                        pageStack.push(homepage);
-                    }
-                    Common.Page {
-                        id: homepage
-                        visible: false
-                        HomePage {dis1: sessiondispatcher; dis2: systemdispatcher}
-                    }
-                    Common.Page {
-                        id: systemmessage
-                        visible: false
-        //                title: "search by kobe"
-                        SystemMessage {}
-                    }
-                    Common.Page {
-                        id: clearrubbish
-                        visible: false
-        //                title: "clearrubbish by kobe"
-                        ClearRubbish {}
-                    }
-                    Common.Page {
-                        id: systemset
-                        visible: false
-        //                title: "softwaremanager by kobe"
-                        SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
-                    }
-                    Common.Page {
-                        id: functioncollection
-                        visible: false
-        //                title: "allfunction by kobe"
-                        FunctionCollection {dis: systemdispatcher}
-                    }
-                    Common.Page {
-                        id: softwarerecommend
-                        visible: false
-                        SoftWareRecommend {}
-                    }
-
-                    //SoftWare-pages
-                    Common.Page {
-                        id: softwarepage
-                        visible: false
-                        SoftwarePage {}
-                    }
+                //SoftWare-pages
+                Common.Page {
+                    id: softwarepage
+                    visible: false
+                    SoftwarePage {}
+                }
 
 
-                    //systemset-pages
-                    Common.Page {
-                        id: widgetthemepage
-                        visible: false
-                        SysSettings.WidgetTheme {}
-                    }
-                    Common.Page {
-                        id: desktopiconsetpage
-                        visible: false
-                        SysSettings.DesktopiconSet {}
-                    }
-                    Common.Page {
-                        id: mousepointerpage
-                        visible: false
-                        SysSettings.MousePointer {}
-                    }
+                //systemset-pages
+                Common.Page {
+                    id: widgetthemepage
+                    visible: false
+                    SysSettings.WidgetTheme {}
+                }
+                Common.Page {
+                    id: desktopiconsetpage
+                    visible: false
+                    SysSettings.DesktopiconSet {}
+                }
+                Common.Page {
+                    id: mousepointerpage
+                    visible: false
+                    SysSettings.MousePointer {}
+                }
 
-                    Common.Page {
-                        id: soundeffectspage
-                        visible: false
-                        SysSettings.SoundEffects {}
-                    }
-                    Common.Page {
-                        id: bootanimationpage
-                        visible: false
-                        SysSettings.BootAnimation {}
-                    }
-                    Common.Page {
-                        id: launcherthemepage
-                        visible: false
-                        SysSettings.LauncherTheme {}
-                    }
-                    Common.Page {
-                        id: defaultfontpage
-                        visible: false
-                        SysSettings.DefaultFont {}
-                    }
-                    Common.Page {
-                        id: documentfontpage
-                        visible: false
-                        SysSettings.DocumentFont {}
-                    }
-                    Common.Page {
-                        id: titlebarfontpage
-                        visible: false
-                        SysSettings.TitlebarFont {}
-                    }
-                    Common.Page {
-                        id: touchpadsetpage
-                        visible: false
-                        SysSettings.TouchpadSet {}
-                    }
-                    //
-                    Common.Page {
-                        id: fcitxConfigtoolpage
-                        visible: false
-                        SysSettings.FcitxConfigtool{}
-                    }
-                    Common.Page {
-                        id: fcitxConfigtoolFontpage
-                        visible: false
-                        SysSettings.FcitxConfigtoolFont{}
-                    }
-                    Common.Page {
-                        id: fcitxConfigtoolKeypage
-                        visible: false
-                        SysSettings.FcitxConfigtoolKey{}
-                    }
+                Common.Page {
+                    id: soundeffectspage
+                    visible: false
+                    SysSettings.SoundEffects {}
+                }
+                Common.Page {
+                    id: bootanimationpage
+                    visible: false
+                    SysSettings.BootAnimation {}
+                }
+                Common.Page {
+                    id: launcherthemepage
+                    visible: false
+                    SysSettings.LauncherTheme {}
+                }
+                Common.Page {
+                    id: defaultfontpage
+                    visible: false
+                    SysSettings.DefaultFont {}
+                }
+                Common.Page {
+                    id: documentfontpage
+                    visible: false
+                    SysSettings.DocumentFont {}
+                }
+                Common.Page {
+                    id: titlebarfontpage
+                    visible: false
+                    SysSettings.TitlebarFont {}
+                }
+                Common.Page {
+                    id: touchpadsetpage
+                    visible: false
+                    SysSettings.TouchpadSet {}
+                }
+                //
+                Common.Page {
+                    id: fcitxConfigtoolpage
+                    visible: false
+                    SysSettings.FcitxConfigtool{}
+                }
+                Common.Page {
+                    id: fcitxConfigtoolFontpage
+                    visible: false
+                    SysSettings.FcitxConfigtoolFont{}
+                }
+                Common.Page {
+                    id: fcitxConfigtoolKeypage
+                    visible: false
+                    SysSettings.FcitxConfigtoolKey{}
                 }
             }
-//        }
+        }
     }
 }

@@ -26,8 +26,6 @@ Item {
     width: parent.width
     height: 435//420//340
     property string btn_text: "开始扫描"
-//    property string title: "清理浏览器Cookies"
-//    property string description: "清理浏览器Cookies可以保障系统安全"
     property string title: "清理浏览器登录信息,保护个人隐私"
     property string description: "清理上网时留下的登录信息,目前仅支持Firefox浏览器"
     property string btn_flag: "cookies_scan"
@@ -201,13 +199,6 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
 
-//        Common.Label {
-//            id: label
-//            visible: false
-//            text: ""
-//            anchors.verticalCenter: parent.verticalCenter
-//        }
-
         Common.Button {
             id: bitButton
             width: 120
@@ -237,7 +228,6 @@ Item {
                  else if (btn_flag == "cookies_work") {
                      systemdispatcher.set_user_homedir_qt();
                      systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
-//                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
                      deleget_arrow=1;
                  }
                 }
@@ -258,55 +248,6 @@ Item {
                 root.state = "CookiesWorkAGAIN";
             }
         }
-//        Common.Button {
-//            id: resetBtn
-//            width: 95
-//            height: 30
-//            fontcolor: "#6a97b4"
-//            fontsize: 13
-//            hoverimage: "blue1.png"
-//            text: "重置"
-//            visible: false
-//            anchors.verticalCenter: parent.verticalCenter
-//            onClicked: {
-//                resetBtn.visible = false;
-//                subModel.clear();
-//                root.state = "CookiesWorkAGAIN";
-//            }
-//        }
-//        Common.Button {
-//            id: bitButton
-//            width: 120
-//            height: 39
-////            hoverimage: "scan-start.png"
-//            text:"开始扫描"
-//            bold:true
-//            textsize: 12
-//            anchors.verticalCenter: parent.verticalCenter
-//            onClicked: {
-//                if(root.check_flag)
-//                {
-//                //broswer cookies
-//                 if (btn_flag == "cookies_scan") {
-//                     cookies_signal("CookiesWork");
-//                     if(root.null_flag == true) {
-//                        root.state = "CookiesWorkEmpty";
-//                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！");
-//                     }
-//                     else if(root.null_flag == false)
-//                        root.state = "CookiesWork";
-//                 }
-//                 else if (btn_flag == "cookies_work") {
-//                     systemdispatcher.set_user_homedir_qt();
-//                     systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
-////                     sessiondispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
-//                 }
-//                }
-//                else
-//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！");
-//                console.log(root.sub_num)
-//            }
-//        }
     }
     //分割条
     Rectangle {
@@ -321,124 +262,6 @@ Item {
         height: 1
         color: "#d8e0e6"
     }
-
-//    Component {
-//        id: listViewDelegate
-//        Item {
-//            id: delegate
-//            property alias expandedItemCount: subItemRepeater.count
-//            x: 5; y: 2
-//            width: root.width
-//            height: headerItemRect.height + subItemsRect.height
-
-//            //母项
-//            //checkbox, picture and words
-//            Row {
-//                id: headerItemRect
-//                x: 5; y: 2
-//                width: root.width
-//                height: root.itemHeight
-//                spacing: 180
-//                Row{
-//                    spacing: 15
-//                    Image {
-//                        id: clearImage
-//                        fillMode: "PreserveAspectFit"
-//                        height: parent.height*0.9
-//                        source: picture
-//                        smooth: true
-//                    }
-
-//                    Column {
-//                        id: status_update_content
-//                        spacing: 5
-//                        anchors.verticalCenter: parent.verticalCenter
-//                        Text {
-//                            text: itemTitle
-//                            font.pointSize: 11
-//                            color: "black"
-//                        }
-//                        Text {
-//                            text: detailstr
-//                            font.pointSize: 9
-//                            color: "gray"
-//                        }
-//                    }
-//                }
-//            }//母项Row
-//            Image {
-//                id: arrow
-//                fillMode: "PreserveAspectFit"
-////                    height: parent.height*0.3
-//                height: 28
-//                width: 26
-//                x:740
-//                y:15
-//                source: root.arrow
-//                //当鼠标点击后,箭头图片旋转90度
-////                    rotation: expanded ? 90 : 0
-//                rotation: expanded ? 0 : -180
-//                smooth: true
-//                MouseArea {
-//                    id: mouseRegion
-//                    anchors.fill: parent
-//                    onPressed: {
-////                        console.log(root.width)
-//                        expanded = !expanded
-//                    }
-//                }
-//            }
-//            //子项
-//            Item {
-//                id: subItemsRect
-//                property int itemHeight: root.itemHeight
-//                y: headerItemRect.height
-//                width: root.width
-//                //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
-//                height: expanded ? delegate.expandedItemCount * itemHeight : 0
-//                clip: true
-//                opacity: 1
-//                Behavior on height {
-//                    SequentialAnimation {
-//                        NumberAnimation { duration: 100; easing.type: Easing.InOutQuad }
-//                    }
-//                }
-
-//                Column {
-//                    width: root.width
-//                    Repeater {
-//                        id: subItemRepeater
-////                        model: attributes
-//                        model: subModel
-////                        model: mysubmodel
-//                        width: subItemsRect.width
-//                        ListItem {
-//                            id: subListItem
-//                            width: root.width
-//                            height: subItemsRect.itemHeight
-////                            text: subItemTitle
-//                            text: itemTitle
-//                            descript: desc
-//                            size_num: number
-//                            checkbox_status: root.check_flag
-////                            bgImage: "../../img/icons/list_subitem.png"
-//                            bgImage: ""
-//                            fontName: root.subItemFontName
-//                            fontSize: root.subItemFontSize
-//                            fontColor: root.subItemFontColor
-//                            textIndent: 20
-
-//                            btn_flag: root.btn_flag
-
-//                            onClicked: {/*console.log(number)*/}
-//                        }
-
-//                    }//Repeater
-//                }//Column
-//            }//子项Item
-//        }
-//    }//Component
-
 
     Common.ScrollArea {
         frame:false
@@ -478,8 +301,7 @@ Item {
     states: [
         State {
             name: "CookiesWork"
-//             PropertyChanges { target: label; visible: true; text: "cookies扫描完成"}
-             PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/ text:"开始清理"}
+             PropertyChanges { target: bitButton; text:"开始清理"}
             PropertyChanges { target: root; btn_flag: "cookies_work" }
             PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
         },
@@ -491,22 +313,19 @@ Item {
         },
         State {
             name: "CookiesWorkError"
-//            PropertyChanges { target: label; visible: true; text: "清理出现异常"}
             PropertyChanges { target: bitButton; text:"开始扫描" }
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "CookiesWorkFinish"
-//            PropertyChanges { target: label; visible: true; text: root.work_result + "清理完毕！" }
-            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
+            PropertyChanges { target: bitButton; text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "CookiesWorkEmpty"
-//            PropertyChanges { target: label; visible: true; text: "扫描内容为空，不再执行清理！" }
-            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/ text:"开始扫描"}
+            PropertyChanges { target: bitButton; text:"开始扫描"}
             PropertyChanges { target: root; btn_flag: "cookies_scan" }
             PropertyChanges { target: statusImage; visible: false}
         }

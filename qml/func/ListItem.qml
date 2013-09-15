@@ -161,9 +161,6 @@ Item {
                 }
                 else if (btn_flag == "largestfile_work") {
                     systemdispatcher.del_largestfile_args(container.descript);
-//                    console.log("dddddddddddd");
-//                    console.log(container.descript);
-//                    console.log(systemdispatcher.get_largestfile_args());
                 }
 
             }

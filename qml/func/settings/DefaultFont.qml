@@ -18,16 +18,9 @@
  */
 import QtQuick 1.1
 import SessionType 0.1
-//import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
-//Gtk:GtkFontButton
 
-//     http://www.doc88.com/p-313626987748.html
-//Qt:QFontDialog
-//           http://www.kuqin.com/qtdocument/qfontdialog.html
-//QColorDialog
-//              http://www.kuqin.com/qtdocument/qcolordialog.html
 Rectangle {
     id: defaultfontpage
     property bool on: true
@@ -219,34 +212,6 @@ Rectangle {
                             sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
-
-//                Common.Button {
-//                    id: fontBtn
-////                    hoverimage: "changefont.png"
-//                    text:"更换字体"
-//                    width: 124
-//                    height: 30
-//                    onClicked: sessiondispatcher.show_font_dialog("font");
-//                }
-//                Common.Button {
-////                    hoverimage: "use.png"
-//                    text:"使用默认设置"
-//                    color1: "#57bffc"
-//                    color2: "#2384c8"
-//                    bordercolor: "#31a0ee"
-//                    width: 124
-//                    height: 30
-//                    onClicked: {
-//                        if(defaultfontpage.current_font_flag == true) {
-//    //                        defaultfontpage.current_font_flag = false;
-//                            sessiondispatcher.set_font_qt_default(defaultfontpage.current_font);
-//                            sessiondispatcher.restore_default_font_signal("font_default");
-//                            statusImage.visible = true;
-//                        }
-//                        else
-//                            sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！");
-//                    }
-//                }
             }
         }
 
@@ -298,34 +263,6 @@ Rectangle {
                             sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
-
-//                Common.Button {
-//                    id: desktopfontBtn
-////                    hoverimage: "changefont.png"
-//                    text:"更换字体"
-//                    width: 124
-//                    height: 30
-//                    onClicked: sessiondispatcher.show_font_dialog("desktopfont");
-//                }
-//                Common.Button {
-////                    hoverimage: "use.png"
-//                    text:"使用默认设置"
-//                    color1: "#57bffc"
-//                    color2: "#2384c8"
-//                    bordercolor: "#31a0ee"
-//                    width: 124
-//                    height: 30
-//                    onClicked: {
-//                        if(defaultfontpage.desktop_font_flag == true) {
-//    //                        defaultfontpage.desktop_font_flag = false;
-//                            sessiondispatcher.set_desktop_font_qt_default(defaultfontpage.desktop_font);
-//                            sessiondispatcher.restore_default_font_signal("desktopfont_default");
-//                            statusImage.visible = true;
-//                        }
-//                        else
-//                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！");
-//                    }
-//                }
             }
         }
 
@@ -377,33 +314,6 @@ Rectangle {
                             sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
-//                Common.Button {
-//                    id: monofontBtn
-////                    hoverimage: "changefont.png"
-//                    text:"更换字体"
-//                    width: 124
-//                    height: 30
-//                    onClicked: sessiondispatcher.show_font_dialog("monospacefont");
-//                }
-//                Common.Button {
-////                    hoverimage: "use.png"
-//                    text:"使用默认设置"
-//                    color1: "#57bffc"
-//                    color2: "#2384c8"
-//                    bordercolor: "#31a0ee"
-//                    width: 124
-//                    height: 30
-//                    onClicked: {
-//                        if(defaultfontpage.monospace_font_flag == true) {
-//    //                        defaultfontpage.monospace_font_flag = false;
-//                            sessiondispatcher.set_monospace_font_qt_default(defaultfontpage.monospace_font);
-//                            sessiondispatcher.restore_default_font_signal("monospacefont_default");
-//                            statusImage.visible = true;
-//                        }
-//                        else
-//                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！");
-//                    }
-//                }
             }
         }
 
@@ -499,38 +409,6 @@ Rectangle {
                         sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
-
-//            Common.Button {
-//                id: okBtn
-//                width: 95;height: 30
-////                hoverimage: "ok.png"
-//                text:"确定"
-//                onClicked: {
-//                    sessiondispatcher.set_font_zoom_qt(slider.value);
-//                    statusImage.visible = true;
-//                    if (defaultfontpage.zoom != sessiondispatcher.get_font_zoom_qt())
-//                        defaultfontpage.zoom_flag = true
-//                }
-//            }
-//            Common.Button {
-////                hoverimage: "use.png"
-//                text:"使用默认设置"
-//                color1: "#57bffc"
-//                color2: "#2384c8"
-//                bordercolor: "#31a0ee"
-//                width: 124
-//                height: 30
-//                onClicked: {
-//                    if(defaultfontpage.zoom_flag == true) {
-//                        defaultfontpage.zoom_flag = false;
-//                        sessiondispatcher.set_font_zoom_qt(defaultfontpage.zoom);
-//                        slider.value = defaultfontpage.zoom;
-//                        statusImage.visible = true;
-//                    }
-//                    else
-//                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！");
-//                }
-//            }
         }
     }
 
@@ -574,5 +452,4 @@ Rectangle {
              interval: 5000; running: true; repeat: true
              onTriggered: statusImage.visible = false
          }
-
 }

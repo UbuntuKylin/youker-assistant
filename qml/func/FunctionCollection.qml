@@ -18,16 +18,12 @@
  */
 
 import QtQuick 1.1
-//import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 import "bars" as Bars
 Item {
     id: screen; width: parent.width; height: 475
-//    property SessionDispatcher dis1: sessiondispatcher
     property SystemDispatcher dis: systemdispatcher
-
-
     Rectangle {
         id: setting_widget
         anchors.fill: parent

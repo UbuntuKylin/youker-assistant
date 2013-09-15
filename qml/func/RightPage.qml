@@ -108,41 +108,6 @@ Rectangle {
             topMargin: 30
         }
     }
-//    Item {
-//        anchors{
-//            left: parent.left
-//            leftMargin: 15
-////            horizontalCenter:parent.horizontalCenter
-//            top:parent.top
-//            topMargin: 10
-//        }
-//        Row {
-//            SetBtn {
-//                iconName: "set.png"
-//                setbtn_flag: "set"
-//            }
-//            Image {
-//                source: "../img/icons/admin.png"
-//            }
-//            SetBtn {
-//                iconName: "message.png"
-//                setbtn_flag: "message"
-//            }
-//        }
-//    }
-
-
-//    Column{
-//        anchors{
-//            left: parent.left
-//            leftMargin: 15
-//            top:parent.top
-//            topMargin: 10
-//        }
-
-
-//    }
-
     Item{
         id:software
         width: mage.width;height: mage.height
@@ -241,64 +206,7 @@ Rectangle {
                 }
             }
         }
-
-//        Row{
-//            anchors{
-//                bottom:mage.bottom
-//                bottomMargin: 15
-//                left: parent.left
-//                leftMargin: 15
-//            }
-//            spacing: 5
-//            Common.Button{
-//                id:button1
-//                hoverimage: "radiobox.png"
-//                onClicked: {
-//                    mage.source="../img/icons/kugou.png"
-//                }
-//            }
-//            Common.Button{
-//                id:button2
-//                hoverimage: "radiobox.png"
-//                onClicked: {
-//                    mage.source="../img/icons/kugou.png"
-//                }
-//            }
-//            Common.Button{
-//                id:button3
-//                hoverimage: "radiobox.png"
-//                onClicked: {
-//                    mage.source="../img/icons/kugou.png"
-//                }
-//            }
-//        }
     }
-
-//    Text {
-//        id: teamname
-//        anchors {
-//            top: setrow.bottom
-//            topMargin: 30
-//            horizontalCenter: parent.horizontalCenter
-//        }
-//        text: "UbuntuKylin Team"
-////                wrapMode: Text.WordWrap
-//        font.bold: true
-//        font.pixelSize: 14
-//        color: "#383838"
-//    }
-//    Text {
-//        anchors {
-//            top: teamname.bottom
-//            topMargin: 10
-//            horizontalCenter: parent.horizontalCenter
-//        }
-//        text: "优客助手"
-////                wrapMode: Text.WordWrap
-//        font.bold: true
-//        font.pixelSize: 14
-//        color: "#383838"
-//    }
 
     //上下分割条
     Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }
@@ -395,16 +303,4 @@ Rectangle {
 
         }
     }
-
-    //颜色渐变
-//                    gradient: Gradient{
-//                           GradientStop{
-//                               position: 0.0
-//                               color: "purple"
-//                           }
-//                           GradientStop{
-//                               position: 1.0
-//                               color: "white"
-//                           }
-//                       }
 }//右边栏Rectangle

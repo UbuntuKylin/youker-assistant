@@ -193,49 +193,6 @@ Rectangle {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","当前主题已经为默认主题!", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
-//            Common.Button {
-//                width: 95;height: 30
-////                hoverimage: "ok.png"
-//                text:"确定"
-//                onClicked: {
-//                    if (soundeffectspage.default_sound != iconcombo.selectedText) {
-//                        soundeffectspage.default_sound = iconcombo.selectedText;
-//                        sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
-//                        statusImage.visible = true;
-//                    }
-
-//                    soundeffectspage.init_sound_flag = true;
-//                    musicmodel.clear();
-//                    var musiclist=systemdispatcher.get_sounds_qt();
-//                    for(var l=0; l < musiclist.length; l++) {
-//                        musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
-//                    }
-//                    if(30*musiclist.length<=chooseyy_height)
-//                    {
-//                        scrollbar_z=-1
-//                    }
-//                    else scrollbar_z=1
-//                }
-//            }
-//            Common.Button {
-////                hoverimage: "use.png"
-//                text:"使用默认设置"
-//                color1: "#57bffc"
-//                color2: "#2384c8"
-//                bordercolor: "#31a0ee"
-//                width: 124
-//                height: 30
-//                onClicked: {
-//                    if (soundeffectspage.init_sound_flag == true) {
-//                        soundeffectspage.init_sound_flag = false;
-//                        systemdispatcher.restore_all_sound_file_qt(soundeffectspage.init_sound);
-//                        statusImage.visible = true;
-//                    }
-//                    else
-//                        sessiondispatcher.send_warningdialog_msg("友情提示：","当前主题已经为默认主题!");
-//                }
-//            }
-
             Timer {
                      interval: 5000; running: true; repeat: true
                      onTriggered: statusImage.visible = false
@@ -354,10 +311,8 @@ Rectangle {
                                     wrapper.ListView.view.currentIndex = index;
                                     soundeffectspage.selectedmusic = systemdispatcher.show_file_dialog("soundeffects");
                                     systemdispatcher.get_music_path(soundeffectspage.selectedmusic);
-                                    console.log("111111111111111->");
-                                    console.log(soundeffectspage.selectedmusic)
-//                                    systemdispatcher.set_homedir_qt();
-//                                    systemdispatcher.replace_sound_file_qt(soundeffectspage.selectedmusic, split_music_name(musicname));
+                                    systemdispatcher.set_homedir_qt();
+                                    systemdispatcher.replace_sound_file_qt(soundeffectspage.selectedmusic, split_music_name(musicname));
                                 }
                             }
                         }
@@ -558,8 +513,6 @@ Rectangle {
         id: toolBar
         showok: false
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("返回")
-//            button2Label: qsTr("确定")
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
             if (num == 0)
@@ -570,10 +523,6 @@ Rectangle {
                 pageStack.push(functioncollection)
         }
         onOkBtnClicked: {
-//            if (soundeffectspage.default_sound != soundcombo.selectedText) {
-//                soundeffectspage.default_sound = soundcombo.selectedText;
-//                sessiondispatcher.set_sound_theme_qt(soundcombo.selectedText);
-//            }
         }
     }
 }

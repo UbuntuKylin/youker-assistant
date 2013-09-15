@@ -91,8 +91,6 @@ Rectangle {
                 pageStack.push(mousepointerpage);
             else if (flag == "TouchpadSet")
                 pageStack.push(touchpadsetpage);
-
-
             //kobe:选中项深色块移动
 //            scaleMe.GridView.view.currentIndex = index;
         }

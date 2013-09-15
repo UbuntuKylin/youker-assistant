@@ -25,14 +25,6 @@ Rectangle {
     property string iconName: "homepage.png"
     property string text: "homepage"
     property string showtext: "首页"
-//    Column {
-//        anchors.fill: parent
-//        Image {
-//            id: seticon
-//            source: "./img/toolWidget/" + iconName
-//            anchors.horizontalCenter: parent.horizontalCenter
-//        }
-//    }
 
     Image {
         id: seticon

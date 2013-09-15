@@ -50,9 +50,6 @@ SuspensionFrame::~SuspensionFrame()
 
 void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio) {
     ratio_sus = ratio.toInt();
-//    used_memory_sus=used_memory;
-//    free_memory_sus=free_memory.toInt();
-//    cpu_ratio_sus=cpu_ratio.toInt();
     ui->uplabel->setText(upspeed + "K/s");
     ui->downlabel->setText(downspeed + "K/s");
     ui->ratiolabel->setText(ratio + "%");
