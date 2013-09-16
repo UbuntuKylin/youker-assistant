@@ -171,10 +171,10 @@ Rectangle {
             }
         }
         Row{
-            spacing: 38
+            spacing: 26
             Common.Button {
                 id: okBtn
-                width: 95;height: 30
+                width: 105;height: 30
                 hoverimage: "green2.png"
                 text: "确定"
                 onClicked: {
@@ -188,8 +188,8 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "使用默认设置"
-                width: 124
+                text: "恢复默认"
+                width: 105
                 height: 30
                 onClicked: {
                     if(desktopiconsetpage.init_icon_theme_flag == true) {

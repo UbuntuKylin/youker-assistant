@@ -206,6 +206,7 @@ Item {
             text: root.btn_text
             hoverimage: "green1.png"
             anchors.verticalCenter: parent.verticalCenter
+            fontsize: 15
             onClicked: {
                 resetBtn.visible = false;
                 if(root.check_flag)

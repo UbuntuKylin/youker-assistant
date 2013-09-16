@@ -152,16 +152,16 @@ Rectangle {
     Row{
         anchors{
             left: te.left
-            leftMargin: 470
+            leftMargin: 490
             top: settitle.bottom
             topMargin: 10
         }
-        spacing: 10
+        spacing: 26
         Common.Button {
             id: titlefontBtn
             hoverimage: "blue4.png"
             text: "更换字体"
-            width: 124
+            width: 105
             height: 30
             onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
         }
@@ -169,8 +169,8 @@ Rectangle {
 //                anchors.left: titlefontBtn.right
 //                anchors.leftMargin: 10
             hoverimage: "blue2.png"
-            text: "使用默认设置"
-            width: 124
+            text: "恢复默认"
+            width: 105
             height: 30
             onClicked: {
                 if(titlebarfontpage.titlebar_font_flag == true) {

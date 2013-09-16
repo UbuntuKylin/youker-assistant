@@ -158,7 +158,7 @@ Rectangle {
         spacing: 20
         anchors{
             left: parent.left
-            leftMargin: 60
+            leftMargin: 80
             top: settitle.bottom
             topMargin: 10
         }
@@ -186,20 +186,20 @@ Rectangle {
                 }
             }
             Row{
-                spacing: 10
+                spacing: 26
 
                 Common.Button {
                     id: fontBtn
                     hoverimage: "blue4.png"
                     text: "更换字体"
-                    width: 124
+                    width: 105
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("font");
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "使用默认设置"
-                    width: 124
+                    text: "恢复默认"
+                    width: 105
                     height: 30
                     onClicked: {
                         if(defaultfontpage.current_font_flag == true) {
@@ -237,20 +237,20 @@ Rectangle {
                 }
             }
             Row{
-                spacing: 10
+                spacing: 26
 
                 Common.Button {
                     id: desktopfontBtn
                     hoverimage: "blue4.png"
                     text: "更换字体"
-                    width: 124
+                    width: 105
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("desktopfont");
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "使用默认设置"
-                    width: 124
+                    text: "恢复默认"
+                    width: 105
                     height: 30
                     onClicked: {
                         if(defaultfontpage.desktop_font_flag == true) {
@@ -289,19 +289,19 @@ Rectangle {
                 }
             }
             Row{
-                spacing: 10
+                spacing: 26
                 Common.Button {
                     id: monofontBtn
                     hoverimage: "blue4.png"
                     text: "更换字体"
-                    width: 124
+                    width: 105
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("monospacefont");
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "使用默认设置"
-                    width: 124
+                    text: "恢复默认"
+                    width: 105
                     height: 30
                     onClicked: {
                         if(defaultfontpage.monospace_font_flag == true) {
@@ -348,7 +348,7 @@ Rectangle {
     Row {
         anchors{
             left: parent.left
-            leftMargin: 60
+            leftMargin: 80
             top: zoomtitle.bottom
             topMargin: 10
         }
@@ -380,10 +380,10 @@ Rectangle {
             }
         }
         Row{
-            spacing: 38
+            spacing: 26
             Common.Button {
                 id: okBtn
-                width: 95;height: 30
+                width: 105;height: 30
                 hoverimage: "green2.png"
                 text: "确定"
                 onClicked: {
@@ -395,8 +395,8 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "使用默认设置"
-                width: 124
+                text: "恢复默认"
+                width: 105
                 height: 30
                 onClicked: {
                     if(defaultfontpage.zoom_flag == true) {

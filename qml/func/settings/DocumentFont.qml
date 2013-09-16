@@ -151,24 +151,24 @@ Rectangle {
     Row{
         anchors{
             left: re.left
-            leftMargin: 470
+            leftMargin: 490
             top: settitle.bottom
             topMargin: 10
         }
-        spacing: 10
+        spacing: 26
 
         Common.Button {
             id: docufontBtn
             hoverimage: "blue4.png"
             text: "更换字体"
-            width: 124
+            width: 105
             height: 30
             onClicked: sessiondispatcher.show_font_dialog("documentfont");
         }
         Common.Button {
             hoverimage: "blue2.png"
-            text: "使用默认设置"
-            width: 124
+            text: "恢复默认"
+            width: 105
             height: 30
             onClicked: {
                 if(documentfontpage.document_font_flag == true) {
