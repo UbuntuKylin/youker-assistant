@@ -53,7 +53,7 @@ class DiskAnalyse():
     def adjust_the_list(self, size, path):
         final_str = []
         tmp_list = self.hundred_large_files(size, path)
-        if not tmp_list:
+        if tmp_list:
             for tmp in tmp_list:
                 tmp[0] = common.confirm_filesize_unit(tmp[0])
                 final_str.append('<2_2>'.join(tmp))

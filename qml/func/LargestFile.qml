@@ -65,6 +65,7 @@ Item {
         var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
         if (largestfile_data == "")
         {
+            console.log("null list.............");
             root.null_flag = true;
             deleget_arrow =0;
             if(statusImage.visible == true)

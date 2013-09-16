@@ -4,8 +4,8 @@ Item {
     id: maincheckbox
     property string checked: "true"    //保存总checkbox处于三种状态中的哪种
     property bool checkedbool: true      //总checkbox的bool型值，check通有的属性，在单独点击总checkbox时进行总控制的变量
-    property int minimumWidth: 13//32
-    property int minimumHeight: 13//32
+    property int minimumWidth: 15//32
+    property int minimumHeight: 15//32
     width: minimumWidth
     height: minimumHeight
     Rectangle {

@@ -146,7 +146,6 @@ Item {
             }
             Component{
                 id:ldelegate
-
                 ListItem {
                     id: subListItem
                     split_status: listViewDelegate.delegate_flag

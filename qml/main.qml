@@ -28,7 +28,7 @@ Rectangle {
     height: 600
     objectName: "main"
     anchors.fill: parent
-    property string version: "0.2.1"
+    property string version: "v0.2.1"
     SessionDispatcher {
         id: sessiondispatcher
     }

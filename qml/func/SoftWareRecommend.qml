@@ -98,8 +98,7 @@ Item {
                 onClicked: {
                     if(screen.image_flag == "qt") {
                         content.delegate_name= "eclipse"
-                        content.delegate_appname = "Eclipse平台"
-                        content.delegate_information= "可扩展平台、JAVA IDE 开发工具"
+                        content.delegate_appname = "Eclipse平台(eclipse)"
                         content.delegate_image= "../img/logo/eclipse.jpg"
                         content.delegate_introduction="Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）。"
                         content.introduction_image1= "../img/character/eclipse-01.png"
@@ -121,8 +120,7 @@ Item {
                 onClicked: {
                     if(screen.image_flag == "qq") {
                         content.delegate_name= "wine-qq2012-longeneteam"
-                        content.delegate_appname = "WineQQ安装程序"
-                        content.delegate_information= "Wine 1.5.18 patched for qq2012 Beta3"
+                        content.delegate_appname = "Wine 1.5.18 patched for qq2012 Beta3"
                         content.delegate_image= "../img/logo/qq.jpg"
                         content.delegate_introduction="QQ2012基于官方Beta3版，支持双击deb包安装、支持全局热键、不会自动离线、文件传输正常、ibus中文输入法正常。"
                         content.introduction_image1= "../img/character/qq-01.png"
@@ -132,8 +130,7 @@ Item {
                     }
                     else if(screen.image_flag == "qt") {
                         content.delegate_name= "qtcreator"
-                        content.delegate_appname = "Qt平台"
-                        content.delegate_information= "lightweight integrated development environment (IDE) for Qt"
+                        content.delegate_appname = "Qt平台(qtcreator)"
                         content.delegate_image= "../img/logo/qtcreator.jpg"
                         content.delegate_introduction="Qt Creator是跨平台的 Qt IDE， Qt Creator 是 Qt 被 Nokia 收购后推出的一款新的轻量级集成开发环境（IDE）。此 IDE 能够跨平台运行，支持的系统包括 Linux（32 位及 64 位）、Mac OS X 以及 Windows。"
                         content.introduction_image1= "../img/character/qtcreator-01.png"
@@ -143,8 +140,7 @@ Item {
                     }
                     else if(screen.image_flag == "wps") {
                         content.delegate_name= "wps-office"
-                        content.delegate_appname = "WPS办公软件"
-                        content.delegate_information= "WPS Office"
+                        content.delegate_appname = "WPS For UbuntuKylin(wps-office)"
                         content.delegate_image= "../img/logo/wps.jpg"
                         content.delegate_introduction="Ubuntukylin团队与金山公司合作，于13.04开始首先推出WPS for UbuntuKylin 1.0，并于13.10推出WPS for UbuntuKylin1.2。与1.0版本相比，1.2版进行了稳定性提升、BUG修复、同时增加了数据透视表等功能，使您的文档工作更加专业和轻松。"
                         content.introduction_image1= "../img/character/wps-01.png"

@@ -17,7 +17,7 @@
 #include "ui_progressdialog.h"
 #include <QDebug>
 #include <QMouseEvent>
-#include<stdio.h>
+#include <stdio.h>
 extern bool progress_flag;
 ProgressDialog::ProgressDialog(QWidget *parent) :
     QDialog(parent),
@@ -26,12 +26,10 @@ ProgressDialog::ProgressDialog(QWidget *parent) :
     ui->setupUi(this);
     progress_flag = false;
     this->setAttribute(Qt::WA_DeleteOnClose);
-//    this->setWindowFlags(Qt::FramelessWindowHint);
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->label->setStyleSheet("QLabel {color: green; font-size: 12px}");
 //    ui->label_2->setStyleSheet("QLabel {color: black; font-size: 12px}");
-
 //    ui->progressBar->setStyleSheet("QProgressBar {border: 1px solid grey;border-radius: 2px;text-align: center;}"
 //                                    "QProgressBar::chunk {background-color: #6be2fa;width: 10px;}");
     QDesktopWidget* desktop = QApplication::desktop();
@@ -39,8 +37,7 @@ ProgressDialog::ProgressDialog(QWidget *parent) :
     move((desktop->width() - this->width())/2, (desktop->height() - this->height())/2);
 }
 
-ProgressDialog::~ProgressDialog()
-{
+ProgressDialog::~ProgressDialog() {
     delete ui;
 }
 
@@ -53,8 +50,9 @@ void ProgressDialog::reset_status() {
 }
 
 void ProgressDialog::setValue(QString type, QString msg) {
-    if(this->isHidden())
+    if(this->isHidden()) {
         this->show();
+    }
     if(type == "down_start") {
         ui->label->setText("开始下载");
 //        ui->progressBar->setValue(0);
@@ -62,13 +60,10 @@ void ProgressDialog::setValue(QString type, QString msg) {
         ratio_sus=1;
     }
     else if(type == "down_pulse"){
-//        ui->label->setText("正在下载");
         if(!msg.isEmpty()) {
             if(msg.contains("download_bytes") && msg.contains("total_bytes")) {
                 QStringList process_value = msg.split(",");
                 if (process_value.size() == 4) {
-//                    QStringList download_items = process_value.at(2).split(":");
-//                    ui->label->setText("正在下载安装包...");
                     QStringList download_bytes = process_value.at(0).split(":");
                     double download_bytes_value = download_bytes.at(1).toDouble();
                     QStringList total_bytes = process_value.at(1).split(":");
@@ -100,20 +95,7 @@ void ProgressDialog::setValue(QString type, QString msg) {
             ratio_sus=0;
             ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
         }
-//        if(progress_flag) {
-//            progress_flag = true;
-//            this->hide();
-//        }
     }
-//    else if(type == "down_done") {
-//        ui->label->setText("全部下载完成");
-//        ratio_sus=0;
-//        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
-//        if(progress_flag) {
-//            progress_flag = true;
-//            this->hide();
-//        }
-//    }
     else if(type == "apt_start"){
         this->show();
         ui->label->setText("开始");
@@ -135,8 +117,6 @@ void ProgressDialog::setValue(QString type, QString msg) {
 //                    ui->progressBar->setValue(value);
                     ratio_sus=value;
                     ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
-//                    qDebug() << ratio_sus;
-//                    update();
                 }
             }
         }
@@ -154,55 +134,43 @@ void ProgressDialog::setValue(QString type, QString msg) {
         timer->start();
         ratio_sus=100;
         update();
-//        ratio_sus=0;
-//        ui->label->setText("开始");
-//        this->hide();
     }
     update();
 }
 
 
-void ProgressDialog::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void ProgressDialog::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
-
 }
 
-void ProgressDialog::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void ProgressDialog::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
         setWindowOpacity(0.5);
     }
     event->accept();
-
 }
 
-void ProgressDialog::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void ProgressDialog::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();
 }
 
 
-QSize ProgressDialog::sizeHint()const
-{
+QSize ProgressDialog::sizeHint()const {
     return QSize(height(),height());
 }
-void ProgressDialog::resizeEvent(QResizeEvent*event)
-{
+
+void ProgressDialog::resizeEvent(QResizeEvent* event) {
     update();
 }
-void ProgressDialog::paintEvent(QPaintEvent* event)
-{
+
+void ProgressDialog::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
     QStyleOption opt;
     QPixmap progress_bar1;
@@ -212,13 +180,9 @@ void ProgressDialog::paintEvent(QPaintEvent* event)
     progress_bar1.load(":/pixmap/image/progress-bar1.png");
     progress_bar2.load(":/pixmap/image/progress-bar2.png");
     painter.drawPixmap(0,0, background);
-
     painter.setPen(Qt::transparent);
-
-
     opt.init(this);
     painter.drawPixmap(10,30,progress_bar1);
-
 //    painter.drawPixmap(10,30,progress_bar2,0,0,progress_bar2.width()*(ratio_sus*0.01),progress_bar2.height());
     painter.drawPixmap(10,30,progress_bar2.width()*(ratio_sus*0.01),progress_bar2.height(),progress_bar2);
     style()->drawPrimitive(QStyle::PE_Widget,&opt,&painter,this);

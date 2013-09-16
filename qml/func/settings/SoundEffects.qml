@@ -423,6 +423,8 @@ Rectangle {
             topMargin: 25
         }
         Image {
+            width: 52
+            height: 52
             source: "../../img/icons/listen-pen.png"
         }
         Column{
@@ -433,16 +435,12 @@ Rectangle {
                 font.pointSize: 10
                 font.bold: true
             }
-            Text{
-//                text:qsTr("您能根据喜好组合")
-                text:qsTr("暂不支持中文路径")
-                font.pointSize: 10
-                color: "#7a7a7a"
-            }
-            Text{
-//                text:qsTr("成专属声音主题")
-                text:qsTr("下的音频文件")
-                font.pointSize: 10
+            Text {
+                width: soundeffectspage.width- 665 - 52 - 25
+                text: "暂不支持中文路径下的音频文件。"
+//                text: "您能根据喜好组合成专属声音主题"
+                wrapMode: Text.WrapAnywhere
+                font.pixelSize: 10
                 color: "#7a7a7a"
             }
         }

@@ -30,19 +30,14 @@ MessageDialog::MessageDialog(QWidget *parent) :
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
-    //QLabel自动换行
-//    ui->displaylabel->setWordWrap(true);
-//    ui->displaylabel->setAlignment(Qt::AlignTop);
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
 }
 
-MessageDialog::~MessageDialog()
-{
+MessageDialog::~MessageDialog() {
     delete ui;
 }
 
-bool MessageDialog::eventFilter(QObject *obj, QEvent *event)
-{
+bool MessageDialog::eventFilter(QObject *obj, QEvent *event) {
     if(obj == ui->btn_min){
             if(event->type() == QEvent::Enter){
                 ui->btn_min->setPixmap(QPixmap(":/pixmap/image/minBtn-hover.png"));
@@ -86,31 +81,24 @@ bool MessageDialog::eventFilter(QObject *obj, QEvent *event)
 
 }
 
-void MessageDialog::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void MessageDialog::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
 
 }
 
-void MessageDialog::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void MessageDialog::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
         setWindowOpacity(0.5);
     }
     event->accept();
-
 }
 
-void MessageDialog::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void MessageDialog::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();

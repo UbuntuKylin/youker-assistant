@@ -23,24 +23,19 @@ QmlAudio::QmlAudio(QDeclarativeItem *parent) : QDeclarativeItem(parent)
 
 }
 
- void QmlAudio::setSong(const QUrl & songUrl)
-{
+void QmlAudio::setSong(const QUrl & songUrl) {
     audioObject->setCurrentSource(Phonon::MediaSource(songUrl));
 }
 
-void QmlAudio::play()
-{
+void QmlAudio::play() {
     audioObject = Phonon::createPlayer(Phonon::MusicCategory,
                                        Phonon::MediaSource(music_path));
     audioObject->play();
-
 }
 
-void QmlAudio::pause()
-{
+void QmlAudio::pause() {
     audioObject->pause();
 }
-void QmlAudio::stop()
-{
+void QmlAudio::stop() {
     audioObject->stop();
 }

@@ -23,10 +23,8 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowOpacity(1.0);
-//    ui->msglabel->setText("试试鼠标左键双击屏幕右上角监控球...");
     ui->title1->setText("系统运行流畅");
     ui->title2->setText("无需进行加速");
-//    this->setWindowFlags(Qt::FramelessWindowHint);
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
@@ -39,12 +37,10 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->descBtn->setText("详细");
     ui->descBtn->setFlat(true);
     ui->descBtn->setFocusPolicy(Qt::NoFocus);
-
     this->resize(265, 173);
 }
 
-SuspensionFrame::~SuspensionFrame()
-{
+SuspensionFrame::~SuspensionFrame() {
     delete ui;
 }
 
@@ -56,69 +52,56 @@ void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString 
     ui->ratiolabel_2->setText(cpu_ratio + "%");
     ui->memory_1->setText(tr("%1").arg(used_memory)+"M");
     ui->memory_2->setText(free_memory+"M");
-
-//    this->drawLine();
-//    update_draw();
     update();
 }
 
-void SuspensionFrame::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void SuspensionFrame::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
 
 }
 
-void SuspensionFrame::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void SuspensionFrame::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
         setWindowOpacity(0.5);
     }
     event->accept();
-
 }
 
-void SuspensionFrame::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void SuspensionFrame::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();
 }
 
-void SuspensionFrame::on_descBtn_clicked()
-{
-    if(this->height()  == 173)
+void SuspensionFrame::on_descBtn_clicked() {
+    if(this->height() == 173) {
         this->resize(265, 288);
-    else if(this->height()  == 288)
+    }
+    else if(this->height() == 288) {
         this->resize(265, 173);
+    }
 }
 
-void SuspensionFrame::on_fastBtn_clicked()
-{
+void SuspensionFrame::on_fastBtn_clicked() {
     emit accelerate_memory();
 }
 
-QSize SuspensionFrame::sizeHint()const
-{
+QSize SuspensionFrame::sizeHint()const {
     return QSize(height(),height());
 }
-void SuspensionFrame::resizeEvent(QResizeEvent*event)
-{
+
+void SuspensionFrame::resizeEvent(QResizeEvent*event) {
     wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
     wheel.fill(palette().background().color());
-//    drawLine(event->size());
-//    update_draw();
     update();
 }
-void SuspensionFrame::paintEvent(QPaintEvent* event)
-{
+
+void SuspensionFrame::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
     QStyleOption opt;
     QPixmap memory;
@@ -127,8 +110,6 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
     memory.load(":/pixmap/image/memory.png");
     painter.drawPixmap(0,0, background);
 
-//    QPainter painter(&wheel);   //wheel作为画图对象？
-//    QPainter paint(&blister);
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);
     blister.load(":/pixmap/image/blister-big.png");
@@ -151,7 +132,6 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
         color3="#d5311e";
         ui->title1->setText("电脑运行缓慢");
         ui->title2->setText("建议一键加速");
-//        blister.load(":/pixmap/image/blister-bigwarn.png");
     }
     else {
         color2="#00b0ff";
@@ -167,13 +147,9 @@ void SuspensionFrame::paintEvent(QPaintEvent* event)
     linearGradient.setColorAt(1.0,color3);
     painter.setBrush(QBrush(linearGradient));
     painter.drawEllipse(7,7,65,65);
-
-
     opt.init(this);
     painter.drawImage(0,0,wheel);
-//    memory.scaled()
     painter.drawPixmap(44,231,memory,0,0,memory.width()*(ratio_sus* 0.01),memory.height());
-
     painter.drawPixmap(7,7, blister);
     style()->drawPrimitive(QStyle::PE_Widget,&opt,&painter,this);
 }

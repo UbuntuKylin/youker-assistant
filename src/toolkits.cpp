@@ -36,7 +36,7 @@ Toolkits::Toolkits(QObject *parent) :
 }
 
 //启动alert提示
-void Toolkits::alertMSG(const QString &alertText, int parent_x, int parent_y){
+void Toolkits::alertMSG(const QString &alertText, int parent_x, int parent_y) {
     this->alert_x = parent_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = parent_y + mainwindow_height - 200;
 
@@ -49,7 +49,7 @@ void Toolkits::alertMSG(const QString &alertText, int parent_x, int parent_y){
     this->alertTimer->start(15);
 }
 //alert提示框的步处理
-void Toolkits::updateAlert(){
+void Toolkits::updateAlert()  {
     if(this->ao < 0.90){
         this->ao += 0.02;
         this->alertGOE->setOpacity(this->ao);
@@ -64,7 +64,7 @@ void Toolkits::updateAlert(){
     }
 }
 //隐藏alert提示框
-void Toolkits::hideAlert(){
+void Toolkits::hideAlert() {
     this->alertBG->hide();
     this->alertDelayTimer->stop();
 }

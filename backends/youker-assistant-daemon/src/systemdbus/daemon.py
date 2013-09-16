@@ -194,10 +194,6 @@ class Daemon(PolicyKitService):
     def clean_complete(self, msg):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_complete_trace(self, msg):
-        pass
-
     # a dbus method which means an error occurred with main one key
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error_main(self, msg):
@@ -212,9 +208,7 @@ class Daemon(PolicyKitService):
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error(self, msg):
         pass
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_error_trace(self, msg):
-        pass
+
     # the function of clean cruft by main one key
     ###input-['history', 'cach....] output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
@@ -419,14 +413,8 @@ class Daemon(PolicyKitService):
     def clean_complete_msg(self, para):
         self.clean_complete(para)
 
-    def clean_complete_msg_trace(self, para):
-        self.clean_complete_trace(para)
-
     def clean_error_msg(self, para):
         self.clean_error(para)
-
-    def clean_error_msg_trace(self, para):
-        self.clean_error_trace(para)
 
     def clean_error_main_msg(self, para):
         self.clean_error_main(para)

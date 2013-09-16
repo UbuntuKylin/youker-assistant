@@ -34,7 +34,6 @@ Item {
 //传给软件推荐二级界面的值
     property string delegate_name: "qq"
     property string delegate_appname: "WineQQ"
-    property string delegate_information: "QQ 2013-09-09"
     property string delegate_useinfo: "如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。"
     property string delegate_image: ""
     property string delegate_introduction: ""

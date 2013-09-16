@@ -142,9 +142,9 @@ Rectangle {
         height: 114
         anchors {
             top: parent.top
-            topMargin: 136
+            topMargin: 140
             left: parent.left
-            leftMargin: 73
+            leftMargin: 80
         }
 //        fillMode: Image.TileHorizontally
         source: ""

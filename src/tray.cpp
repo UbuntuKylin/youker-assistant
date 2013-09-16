@@ -44,7 +44,6 @@ Tray::Tray(QWidget *parent)
     this->setWindowOpacity(1.0);
     icon = QIcon(":/pixmap/image/icon.png");
     this->createTray();
-//    connect(dispather, SIGNAL(finishGetNetworkSpeed(QStringList)), this, SLOT(obtain_network_speed(QStringList)));
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
@@ -54,7 +53,6 @@ Tray::Tray(QWidget *parent)
     frame = new SuspensionFrame;
     frame->hide();
     connect(this, SIGNAL(sysc_data(QString, QString,QString,int,QString, QString)), frame, SLOT(get_sysc_data(QString,QString,QString,int,QString, QString)));
-//    connect(this, SIGNAL(sysc_data(QStringList,QString,int,QString, QString)), frame, SLOT(get_sysc_data(QStringList,QString,int,QString, QString)));
     connect(frame, SIGNAL(accelerate_memory()), this, SLOT(start_to_accelerate()));
 
     QTimer *timer = new QTimer(this);
@@ -63,22 +61,13 @@ Tray::Tray(QWidget *parent)
     timer->start();
 }
 
-Tray::~Tray()
-{
-    if(frame)
+Tray::~Tray() {
+    if(frame) {
         delete frame;
+    }
 }
 
-//void Tray::obtain_network_speed(QStringList speed_value) {
-//    speed = speed_value;
-//    this->uplabel->setText(speed[0] + "K/s");
-//    this->downlabel->setText(speed[1] + "K/s");
-//    this->ratiolabel->setText(ratio + "%");
-////    emit sysc_data(speed, ratio, used_memory, free_memory, cpu_value);
-//}
-
 void Tray::updateData() {
-//    dispather->get_network_flow_qt();
     QStringList current_speed = dispather->get_network_flow_total_qt();
     double up_before = total_speed[0].toDouble();
     double down_before = total_speed[1].toDouble();
@@ -91,7 +80,6 @@ void Tray::updateData() {
     up_speed = QString::number(up_final,'f',0);
     down_speed = QString::number(down_final,'f',0);
 
-
     double trans_cpu = dispather->get_cpu_percent_qt();
     cpu_value = QString::number(trans_cpu, 'f', 0);
     used_memory = dispather->get_used_memory_qt().toDouble();
@@ -102,13 +90,10 @@ void Tray::updateData() {
     ratio = QString::number(trans,'f',0);
 
     emit sysc_data(up_speed, down_speed, ratio, used_memory, free_memory, cpu_value);
-
     this->uplabel->setText(up_speed + "K/s");
     this->downlabel->setText(down_speed + "K/s");
     this->ratiolabel->setText(ratio + "%");
-
     ratio_sus = ratio.toInt();
-//    update_draw();
     update();
 }
 
@@ -117,18 +102,13 @@ void Tray::start_to_accelerate() {
     updateData();
 }
 
-void Tray::createTray()
-{
-
-
+void Tray::createTray() {
     this->actionQml = new QAction(tr("隐藏/显示主界面"), this);
     connect(actionQml, SIGNAL(triggered()), this, SLOT(showOrHideQml()));
     this->actionShow = new QAction(tr("隐藏/显示监控球"), this);
     connect(actionShow, SIGNAL(triggered()), this, SLOT(showOrHide()));
     QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
-
-//    this->actionQuit = new QAction(tr("E&xit"), this);
     this->actionQuit = new QAction(tr("退出"), this);
     connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
@@ -145,10 +125,8 @@ void Tray::createTray()
     this->trayIcon->show();
 }
 
-void Tray::handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason)
-{
-    switch(reason)
-    {
+void Tray::handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason) {
+    switch(reason) {
         case QSystemTrayIcon::Trigger:
             this->showOrHide();
             break;
@@ -157,16 +135,14 @@ void Tray::handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
-void Tray::showOrHide()
-{
-//    emit showFloat();
-    if(this->isHidden())
-    {
+void Tray::showOrHide() {
+    if(this->isHidden()) {
         this->show();
     }else {
         this->hide();
-        if(!frame->isHidden())
+        if(!frame->isHidden()) {
             frame->hide();
+        }
     }
 }
 
@@ -174,8 +150,7 @@ void Tray::showOrHideQml() {
     emit show_Qml();
 }
 
-void Tray::mousePressEvent(QMouseEvent *event)
-{
+void Tray::mousePressEvent(QMouseEvent *event) {
 //    if (event->button() == Qt::LeftButton)
 //    {
 //        dragPos = event->globalPos() - frameGeometry().topLeft();
@@ -201,22 +176,16 @@ void Tray::mousePressEvent(QMouseEvent *event)
     }
 }
 
-void Tray::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void Tray::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
         setWindowOpacity(0.5);
     }
     event->accept();
-
 }
 
-
-void Tray::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void Tray::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();
@@ -225,31 +194,31 @@ void Tray::mouseReleaseEvent(QMouseEvent *event)
 void Tray::mouseDoubleClickEvent(QMouseEvent *event) {
     if(event->buttons() == Qt::RightButton) {
         this->hide();
-        if(frame->isVisible())
+        if(frame->isVisible()) {
             frame->hide();
+        }
     }
     if(event->buttons() == Qt::LeftButton) {
-        if(frame->isHidden())
+        if(frame->isHidden()) {
             frame->show();
-        else
+        }
+        else {
             frame->hide();
+        }
     }
 }
 
-QSize Tray::sizeHint()const
-{
+QSize Tray::sizeHint()const {
     return QSize(height(),height());
 }
-void Tray::resizeEvent(QResizeEvent*event)
-{
+
+void Tray::resizeEvent(QResizeEvent*event) {
     wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
     wheel.fill(palette().background().color());
-//    drawLine(event->size());
-//    update_draw();
     update();
 }
-void Tray::paintEvent(QPaintEvent* event)
-{
+
+void Tray::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
     QStyleOption opt;
 
@@ -257,9 +226,6 @@ void Tray::paintEvent(QPaintEvent* event)
     background.load(":/pixmap/image/accelerate-bg0.png");
     painter.drawPixmap(0,0, background);
 
-
-//    QPainter painter(&wheel);   //wheel作为画图对象？
-//    QPainter paint(&blister);
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);
     blister.load(":/pixmap/image/blister-small.png");
@@ -294,7 +260,6 @@ void Tray::paintEvent(QPaintEvent* event)
     linearGradient.setColorAt(1.0,color3);
     painter.setBrush(QBrush(linearGradient));
     painter.drawRoundRect(51,1,30,30,5,5);
-
 
     opt.init(this);
     painter.drawImage(0,0,wheel);

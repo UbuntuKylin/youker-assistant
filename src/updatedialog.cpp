@@ -32,25 +32,20 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
     //QLabel自动换行
     ui->displaylabel->setWordWrap(true);
     ui->displaylabel->setText("没有找到该软件，请尝试更新软件源。");
-//    ui->displaylabel->setAlignment(Qt::AlignTop);
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(update_software_source()));
-//    QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(hide()));
 }
 
-UpdateDialog::~UpdateDialog()
-{
+UpdateDialog::~UpdateDialog() {
     delete ui;
 }
 
 void UpdateDialog::update_software_source() {
     emit call_update();
     this->hide();
-//    this->accept();
 }
 
-bool UpdateDialog::eventFilter(QObject *obj, QEvent *event)
-{
+bool UpdateDialog::eventFilter(QObject *obj, QEvent *event) {
     if(obj == ui->btn_close){
             if(event->type() == QEvent::Enter){
                 ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
@@ -76,31 +71,23 @@ bool UpdateDialog::eventFilter(QObject *obj, QEvent *event)
 
 }
 
-void UpdateDialog::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void UpdateDialog::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
-
 }
 
-void UpdateDialog::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void UpdateDialog::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
         setWindowOpacity(0.5);
     }
     event->accept();
-
 }
 
-void UpdateDialog::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void UpdateDialog::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();

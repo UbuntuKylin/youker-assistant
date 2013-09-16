@@ -29,7 +29,6 @@
 #include <QDeclarativeContext>
 #include <QDesktopWidget>
 #include <QGraphicsObject>
-
 #include <QtDBus>
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
@@ -55,14 +54,15 @@ inline QString getAppDirectory() {
 }
 
 void IhuApplication::show_or_hide() {
-    if(viewer->isHidden())
+    if(viewer->isHidden()) {
         viewer->show();
-    else
+    }
+    else {
         viewer->hide();
+    }
 }
 
-bool IhuApplication::setup()
-{
+bool IhuApplication::setup() {
     IhuApplication::setApplicationName("Youker Assistant");
     viewer = new QDeclarativeView;
     viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
@@ -80,7 +80,6 @@ bool IhuApplication::setup()
     viewer->setWindowOpacity(10);
     QObject::connect(viewer->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
 
-
     QDesktopWidget* desktop = QApplication::desktop();
     QSize size = viewer->sizeHint();
     int width = desktop->width();
@@ -94,8 +93,7 @@ bool IhuApplication::setup()
     return true;
 }
 
-IhuApplication::~IhuApplication()
-{
+IhuApplication::~IhuApplication() {
     if (viewer) {
         delete viewer;
     }

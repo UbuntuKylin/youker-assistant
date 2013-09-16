@@ -22,7 +22,6 @@
 #include <QtDBus>
 #include <QMap>
 #include "KThread.h"
-//extern QString passwd;
 bool progress_flag;
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
@@ -45,19 +44,20 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
 }
 
-SudoDispatcher::~SudoDispatcher()
-{
+SudoDispatcher::~SudoDispatcher() {
     this->exit_qt();
-    if (authdialog)
+    if (authdialog) {
         delete authdialog;
-    if(progressdialog)
+    }
+    if(progressdialog) {
         delete progressdialog;
-    if(updatedialog)
+    }
+    if(updatedialog) {
         delete updatedialog;
+    }
 }
 
-void SudoDispatcher::exit_qt()
-{
+void SudoDispatcher::exit_qt() {
     sudoiface->call("exit");
 }
 
@@ -73,8 +73,6 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handler_software_check_status_signal(QStringList)));
     QObject::connect(this,SIGNAL(getValue(QString,QString)),progressdialog, SLOT(setValue(QString,QString)));
     QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(start_to_update()));
-
-
     QObject::connect(progressdialog,SIGNAL(update_software_progress(QString)),this, SLOT(get_software_source_progress(QString)));
 }
 
@@ -87,38 +85,34 @@ void SudoDispatcher::get_software_source_progress(QString cur_status) {
     emit finishGetSourceStatus(cur_status);
 }
 
-void SudoDispatcher::handler_clear_rubbish(QString msg)
-{
+void SudoDispatcher::handler_clear_rubbish(QString msg) {
      emit finishCleanWork(msg);
 }
 
-void SudoDispatcher::handler_clear_rubbish_error(QString msg)
-{
+void SudoDispatcher::handler_clear_rubbish_error(QString msg) {
      emit finishCleanWorkError(msg);
 }
 
-void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg)
-{
+void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg) {
     if(!type.isEmpty()) {
         emit getValue(type, msg);
-        if(type == "down_stop")
+        if(type == "down_stop") {
             emit finishSoftwareFetch(type, msg);
+        }
     }
 //    emit finishSoftwareFetch(type, msg);
 }
 
-void SudoDispatcher::handler_software_apt_signal(QString type, QString msg)
-{
+void SudoDispatcher::handler_software_apt_signal(QString type, QString msg) {
     if(!type.isEmpty()) {
         emit getValue(type, msg);
-        if (type == "apt_stop")
+        if (type == "apt_stop") {
             emit finishSoftwareApt(type);
+        }
     } 
 }
 
-//void SudoDispatcher::handler_software_check_status_signal(QMap<QString, QVariant> statusDict)
-void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict)
-{
+void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict) {
     status_dict.clear();
     for(int i=0; i< statusDict.size(); i++) {
         QStringList value = statusDict[i].split(":");
@@ -148,7 +142,6 @@ void SudoDispatcher::show_progress_dialog(int window_x, int window_y) {
 //    progressdialog.exec();
 //    progressdialog = new ProgressDialog (window_x, window_y);
 //    progressdialog->exec();
-
     progress_flag = false;
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
@@ -157,7 +150,6 @@ void SudoDispatcher::show_progress_dialog(int window_x, int window_y) {
 }
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
-//    sudoiface->call("clean_package_cruft", strlist);
     KThread *thread = new KThread(sudoiface, "clean_package_cruft", strlist);
     thread->start();
 }
@@ -171,8 +163,7 @@ QStringList SudoDispatcher::get_args() {
     return pkgNameList;
 }
 
-QString SudoDispatcher::get_value(QString key)
-{
+QString SudoDispatcher::get_value(QString key) {
     QVariant tt = status_dict.value(key);
     return tt.toString();
 }
@@ -181,19 +172,18 @@ QString SudoDispatcher::get_value(QString key)
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
     KThread *thread = new KThread(sudoiface, "install_pkg", strlist, pkgName);
     thread->start();
-//    sudoiface->call("install_pkg", pkgName);
 }
-void SudoDispatcher::uninstall_pkg_qt(QString pkgName) {
 
-//    sudoiface->call("uninstall_pkg", pkgName);
+void SudoDispatcher::uninstall_pkg_qt(QString pkgName) {
     KThread *thread = new KThread(sudoiface, "uninstall_pkg", strlist, pkgName);
     thread->start();
 }
+
 void SudoDispatcher::update_pkg_qt(QString pkgName) {
     KThread *thread = new KThread(sudoiface, "update_pkg", strlist, pkgName);
     thread->start();
-//    sudoiface->call("update_pkg", pkgName);
 }
+
 void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
     sudoiface->call("check_pkgs_status", pkgNameList);
 }
@@ -212,11 +202,9 @@ void SudoDispatcher::apt_get_update_qt() {
     tmplist << "Kobe" << "Lee";
     KThread *thread = new KThread(sudoiface, "apt_get_update", tmplist);
     thread->start();
-//    sudoiface->call("apt_get_update");
 }
 
 void SudoDispatcher::start_to_update() {
-//    progressdialog->show();
     progressdialog->hide();
     emit callMasklayer();
     apt_get_update_qt();

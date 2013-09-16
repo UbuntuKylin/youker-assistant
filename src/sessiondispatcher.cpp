@@ -48,17 +48,15 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     this->alert_height = 195;
 }
 
-SessionDispatcher::~SessionDispatcher()
-{
+SessionDispatcher::~SessionDispatcher() {
     this->exit_qt();
 }
 
-void SessionDispatcher::handler_scan_rubbish(QString msg)
-{
+void SessionDispatcher::handler_scan_rubbish(QString msg) {
     emit finishScanWork(msg);
 }
-void SessionDispatcher::exit_qt()
-{
+
+void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
@@ -66,34 +64,42 @@ int SessionDispatcher::scan_history_records_qt() {
     QDBusReply<int> reply = sessioniface->call("scan_history_records");
     return reply.value();
 }
+
 int SessionDispatcher::scan_system_history_qt() {
     QDBusReply<int> reply = sessioniface->call("scan_system_history");
     return reply.value();
 }
+
 int SessionDispatcher::scan_dash_history_qt() {
     QDBusReply<int> reply = sessioniface->call("scan_dash_history");
     return reply.value();
 }
+
 QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
     QDBusReply<QStringList> reply = sessioniface->call("scan_of_same", abspath);
     return reply.value();
 }
+
 QStringList SessionDispatcher::scan_of_large_qt(int size, QString abspath) {
     QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);
     return reply.value();
 }
+
 QStringList SessionDispatcher::scan_cookies_records_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_records");
     return reply.value();
 }
+
 QStringList SessionDispatcher::scan_unneed_packages_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_unneed_packages");
     return reply.value();
 }
+
 QStringList SessionDispatcher::scan_apt_cruft_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_apt_cruft");
     return reply.value();
 }
+
 QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
     return reply.value();
@@ -136,6 +142,7 @@ void SessionDispatcher::get_system_message_qt() {
 void SessionDispatcher::send_message_dialog(int window_x, int window_y) {
     create_messagedialog(window_x, window_y);
 }
+
 void SessionDispatcher::create_messagedialog(int window_x, int window_y) {
     MessageDialog *dialog = new MessageDialog();
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
@@ -144,13 +151,12 @@ void SessionDispatcher::create_messagedialog(int window_x, int window_y) {
 //    dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
     dialog->show();
 }
-//------------------------------------
 
 //----------------checkscreen dialog--------------------
-void SessionDispatcher::send_checkscreen_dialog(int window_x, int window_y)
-{
+void SessionDispatcher::send_checkscreen_dialog(int window_x, int window_y) {
     create_checkscreendialog(window_x, window_y);
 }
+
 void SessionDispatcher::create_checkscreendialog(int window_x, int window_y) {
     ModalDialog *dialog = new ModalDialog;
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
@@ -159,13 +165,12 @@ void SessionDispatcher::create_checkscreendialog(int window_x, int window_y) {
     dialog->setModal(true);
     dialog->show();
 }
-//------------------------------------
 
 void SessionDispatcher::send_warningdialog_msg(QString title, QString content, int window_x, int window_y) {
     create_warningdialog(title, content, window_x, window_y);
 }
-void SessionDispatcher::create_warningdialog(QString title, QString content, int window_x, int window_y) {
 
+void SessionDispatcher::create_warningdialog(QString title, QString content, int window_x, int window_y) {
     WarningDialog *dialog = new WarningDialog(title, content);
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
@@ -174,10 +179,9 @@ void SessionDispatcher::create_warningdialog(QString title, QString content, int
 //    dialog->setModal(true);
 //    dialog->show();
 }
-//------------------------------------
 
-QString SessionDispatcher::get_value(QString key)
-{
+
+QString SessionDispatcher::get_value(QString key) {
     QVariant tt = myinfo.value(key);
     return tt.toString();
 }
@@ -202,7 +206,6 @@ QStringList SessionDispatcher::get_themes() {
 //        qDebug() << "get thems msg1 failed!";
 //    }
 }
-
 
 void SessionDispatcher::set_theme(QString theme) {
     sessioniface->call("set_sys_theme", theme);
@@ -256,7 +259,6 @@ bool SessionDispatcher::get_show_devices_qt() {
     return reply.value();
 }
 
-
 /*-----------------------------unity of beauty-----------------------------*/
 bool SessionDispatcher::set_launcher_autohide_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_launcher_autohide", flag);
@@ -287,7 +289,6 @@ bool SessionDispatcher::get_launcher_have_showdesktopicon_qt() {
     return reply.value();
 }
 
-
 /*-----------------------------theme of beauty-----------------------------*/
 QStringList SessionDispatcher::get_themes_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_themes");
@@ -298,6 +299,7 @@ QString SessionDispatcher::get_theme_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_theme");
     return reply.value();
 }
+
 void SessionDispatcher::set_theme_qt(QString theme) {
     sessioniface->call("set_theme", theme);
 }
@@ -306,6 +308,7 @@ QStringList SessionDispatcher::get_icon_themes_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_icon_themes");
     return reply.value();
 }
+
 QString SessionDispatcher::get_icon_theme_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_icon_theme");
     return reply.value();
@@ -319,13 +322,16 @@ QStringList SessionDispatcher::get_cursor_themes_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_cursor_themes");
     return reply.value();
 }
+
 QString SessionDispatcher::get_cursor_theme_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_cursor_theme");
     return reply.value();
 }
+
 void SessionDispatcher::set_cursor_theme_qt(QString theme) {
     sessioniface->call("set_cursor_theme", theme);
 }
+
 int SessionDispatcher::get_cursor_size_qt() {
     QDBusReply<int> reply = sessioniface->call("get_cursor_size");
     return reply.value();
@@ -334,72 +340,87 @@ void SessionDispatcher::set_cursor_size_qt(int size) {
     sessioniface->call("set_cursor_size", size);
 }
 
-
 /*-----------------------------font of beauty-----------------------------*/
 QString SessionDispatcher::get_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_font");
     return reply.value();
 }
+
 bool SessionDispatcher::set_font_qt_default(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_font", font);
     return reply.value();
 }
+
 bool SessionDispatcher::set_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_font", font);
     return reply.value();
 }
+
 QString SessionDispatcher::get_desktop_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_desktop_font");
     return reply.value();
 }
+
 bool SessionDispatcher::set_desktop_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_desktop_font", font);
     return reply.value();
 }
+
 bool SessionDispatcher::set_desktop_font_qt_default() {
     QDBusReply<bool> reply = sessioniface->call("set_desktop_font", "Ubuntu 11");
     return reply.value();
 }
+
 QString SessionDispatcher::get_document_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_document_font");
     return reply.value();
 }
+
 bool SessionDispatcher::set_document_font_qt_default(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_document_font", font);
     return reply.value();
 }
+
 bool SessionDispatcher::set_document_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_document_font", font);
     return reply.value();
 }
+
 QString SessionDispatcher::get_monospace_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_monospace_font");
     return reply.value();
 }
+
 bool SessionDispatcher::set_monospace_font_qt_default(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_monospace_font", font);
     return reply.value();
 }
+
 bool SessionDispatcher::set_monospace_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_monospace_font", font);
     return reply.value();
 }
+
 QString SessionDispatcher::get_window_title_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_window_title_font");
     return reply.value();
 }
+
 bool SessionDispatcher::set_window_title_font_qt_default(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_window_title_font", font);
     return reply.value();
 }
+
 bool SessionDispatcher::set_window_title_font_qt(QString font) {
     QDBusReply<bool> reply = sessioniface->call("set_window_title_font", font);
     return reply.value();
 }
+
 double SessionDispatcher::get_font_zoom_qt() {
     QDBusReply<double> reply = sessioniface->call("get_font_zoom");
     return reply.value();
 }
+
 bool SessionDispatcher::set_font_zoom_qt(double zoom) {
     QDBusReply<bool> reply = sessioniface->call("set_font_zoom", zoom);
     return reply.value();
@@ -412,8 +433,7 @@ void SessionDispatcher::restore_default_font_signal(QString flag) {
 void SessionDispatcher::show_font_dialog(QString flag) {
     bool ok;
     const QFont& font = QFontDialog::getFont(&ok, 0);
-    if(ok)
-    {
+    if(ok) {
         QString fontsize = QString("%1").arg(font.pointSize());
         QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
         if(flag == "font")
@@ -426,27 +446,12 @@ void SessionDispatcher::show_font_dialog(QString flag) {
             set_document_font_qt(fontstyle);//set documentfont
         else if(flag == "titlebarfont")
             set_window_title_font_qt(fontstyle);//set titlebarfont
-
         emit finishSetFont(flag); //font_style
     }
 }
 
-void SessionDispatcher::show_color_dialog() {
-    const QColor& color = QColorDialog::getColor(Qt::white, 0);
-    if(color.isValid())
-    {
-        qDebug() << "OK-----------";
-//        palette.setColor(QPalette::Base, color);
-//        displayTextEdit->setPalette(palette);
-    }
-    else
-        qDebug() << "Quit-----------";
-
-}
-
-
 QString SessionDispatcher::show_folder_dialog() {
-    QString dir = QFileDialog::getExistingDirectory(0, tr("打开文件夹"), "/home",
+    QString dir = QFileDialog::getExistingDirectory(0, tr("选择文件夹"), QDir::homePath(),
                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     return dir;
 }
@@ -456,10 +461,12 @@ bool SessionDispatcher::set_scrollbars_mode_overlay_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_scrollbars_mode_overlay");
     return reply.value();
 }
+
 bool SessionDispatcher::set_scrollbars_mode_legacy_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_scrollbars_mode_legacy");
     return reply.value();
 }
+
 QString SessionDispatcher::get_scrollbars_mode_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_scrollbars_mode");
     return reply.value();
@@ -470,26 +477,32 @@ bool SessionDispatcher::set_touchpad_enable_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_touchpad_enable", flag);
     return reply.value();
 }
+
 bool SessionDispatcher::get_touchpad_enable_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_touchpad_enable");
     return reply.value();
 }
+
 bool SessionDispatcher::set_touchscrolling_mode_edge_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_touchscrolling_mode_edge");
     return reply.value();
 }
+
 bool SessionDispatcher::set_touchscrolling_mode_twofinger_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_touchscrolling_mode_twofinger");
     return reply.value();
 }
+
 QString SessionDispatcher::get_touchscrolling_mode_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_touchscrolling_mode");
     return reply.value();
 }
+
 bool SessionDispatcher::set_touchscrolling_use_horizontal_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_touchscrolling_use_horizontal", flag);
     return reply.value();
 }
+
 bool SessionDispatcher::get_touchscrolling_use_horizontal_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_touchscrolling_use_horizontal");
     return reply.value();
@@ -500,10 +513,12 @@ bool SessionDispatcher::set_window_button_align_left_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_window_button_align_left");
     return reply.value();
 }
+
 bool SessionDispatcher::set_window_button_align_right_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_window_button_align_right");
     return reply.value();
 }
+
 QString SessionDispatcher::get_window_button_align_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_window_button_align");
     return reply.value();
@@ -513,6 +528,7 @@ bool SessionDispatcher::set_menus_have_icons_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_menus_have_icons", flag);
     return reply.value();
 }
+
 bool SessionDispatcher::get_menus_have_icons_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_menus_have_icons");
     return reply.value();
@@ -522,6 +538,7 @@ bool SessionDispatcher::get_menus_have_icons_qt() {
 void SessionDispatcher::set_login_music_enable_qt(bool flag) {
     sessioniface->call("set_login_music_enable", flag);
 }
+
 bool SessionDispatcher::get_login_music_enable_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_login_music_enable");
     return reply.value();
@@ -531,6 +548,7 @@ QString SessionDispatcher::get_sound_theme_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_sound_theme");
     return reply.value();
 }
+
 void SessionDispatcher::set_sound_theme_qt(QString theme) {
     sessioniface->call("set_sound_theme", theme);
 }

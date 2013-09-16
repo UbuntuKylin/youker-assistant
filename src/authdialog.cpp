@@ -18,7 +18,6 @@
 #include <QDebug>
 #include <QProcessEnvironment>
 #include <QTimer>
-//QString passwd;
 
 AuthDialog::AuthDialog(QString msg, QWidget *parent) :
     QDialog(parent),

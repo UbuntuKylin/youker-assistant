@@ -31,8 +31,6 @@
 class SessionDispatcher : public QObject
 {
     Q_OBJECT
-//    Q_PROPERTY(QNOTIFY finishSetFont)
-//    Q_PROPERTY(QNOTIFY finishScanWork)
 public:
     explicit SessionDispatcher(QObject *parent = 0);
     ~SessionDispatcher();
@@ -112,7 +110,6 @@ public:
     /*-------------------fonts of beauty-------------------*/
     Q_INVOKABLE void restore_default_font_signal(QString flag);
     Q_INVOKABLE void show_font_dialog(QString flag);
-    Q_INVOKABLE void show_color_dialog();
     Q_INVOKABLE QString show_folder_dialog();
 
 
@@ -166,7 +163,6 @@ signals:
     void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
 public slots:
     QString show_signal(QString msg);
-//    QString show_signal(QStringList msg);
     void handler_scan_rubbish(QString msg);
 private:
     int mainwindow_width;

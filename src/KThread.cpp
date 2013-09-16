@@ -24,19 +24,15 @@ KThread::KThread(QDBusInterface *systemiface, QString method, QStringList arglis
     file_flag = flag;
 }
 
-KThread::~KThread()
-{
+KThread::~KThread() {
     stop();
 }
-void KThread::run()
-{
+void KThread::run() {
     if(method_name == "get_network_flow") {
         iface->call("get_network_flow");
     }
     else if(method_name == "clean_by_main_one_key") {
-//        qDebug() << KThread::currentThreadId();
         iface->call("clean_by_main_one_key", list);
-//        QThread::sleep(10);
     }
     else if(method_name == "clean_by_second_one_key") {
         iface->call("clean_by_second_one_key", list);
@@ -72,7 +68,6 @@ void KThread::run()
         iface->call("apt_get_update");
     }
 }
-void KThread::stop()
-{
+void KThread::stop() {
     wait();
 }

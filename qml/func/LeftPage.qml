@@ -137,15 +137,9 @@ Rectangle {
                 }
                 Text {
                     id: text1
-                    width: 69
-                    text: qsTr("     一键清理将会直接清理掉下面三个勾选项的内容,如果您不想直接清理掉某项")
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                }
-                Text {
-                    id: text2
-                    width: 69
-                    text: qsTr("内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理。")
+                    width: leftbar.width-180
+                    text: "        一键清理将会直接清理掉下面三个勾选项的内容,如果您不想直接清理掉某项内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理。"
+                    wrapMode: Text.WrapAnywhere
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -165,7 +159,7 @@ Rectangle {
                             refreshArrow.visible = true;
                         }
                     }
-//如果没有选中任何清理项，提示警告框！
+                //如果没有选中任何清理项，提示警告框！
                     onClicked: {
                         if(checkboxe1.checked) {
                             cachestatus.visible = true;

@@ -34,17 +34,14 @@ WarningDialog::WarningDialog(QString title, QString content,QWidget *parent) :
     ui->displaylabel->setWordWrap(true);
     ui->label->setText(title);
     ui->displaylabel->setText(content);
-//    ui->displaylabel->setAlignment(Qt::AlignTop);
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
 }
 
-WarningDialog::~WarningDialog()
-{
+WarningDialog::~WarningDialog() {
     delete ui;
 }
 
-bool WarningDialog::eventFilter(QObject *obj, QEvent *event)
-{
+bool WarningDialog::eventFilter(QObject *obj, QEvent *event) {
     if(obj == ui->btn_min){
             if(event->type() == QEvent::Enter){
                 ui->btn_min->setPixmap(QPixmap(":/pixmap/image/minBtn-hover.png"));
@@ -88,31 +85,23 @@ bool WarningDialog::eventFilter(QObject *obj, QEvent *event)
 
 }
 
-void WarningDialog::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void WarningDialog::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
-
 }
 
-void WarningDialog::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void WarningDialog::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
         setWindowOpacity(0.5);
     }
     event->accept();
-
 }
 
-void WarningDialog::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void WarningDialog::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();

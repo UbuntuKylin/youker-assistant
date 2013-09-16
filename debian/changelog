@@ -7,7 +7,7 @@ youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
   * Rewrite the code of system information.
   * Add some signals and slots.
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Sun, 15 Sep 2013 20:21:11 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 16 Sep 2013 12:57:02 +0800
 
 youker-assistant (0.2.0-0ubuntu1) saucy; urgency=low
 

@@ -81,12 +81,10 @@ public slots:
     void handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason);
     void showOrHide();
     void showOrHideQml();
-//    void obtain_network_speed(QStringList speed);
     void updateData();
     void start_to_accelerate();
 signals:
     void show_Qml();
-    void showFloat();
     void sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
 };
 

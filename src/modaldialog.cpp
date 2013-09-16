@@ -34,41 +34,34 @@ ModalDialog::ModalDialog(QWidget *parent) :
                 "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
     //QLabel自动换行
     ui->displaylabel->setWordWrap(true);
-//    ui->displaylabel->setAlignment(Qt::AlignTop);
     ui->displaylabel->setText("点击鼠标左键进行更换颜色检测操作，点击鼠标右键退出检测。");
-
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));
     this->qtui = NULL;
-
 }
 
-ModalDialog::~ModalDialog()
-{
+ModalDialog::~ModalDialog() {
     delete ui;
 }
 
-void ModalDialog::on_closeButton_clicked()
-{
+void ModalDialog::on_closeButton_clicked() {
     close();
     QDialog::destroy(true);
 }
 
-void ModalDialog::on_okButton_clicked()
-{
-//    passwd = ui->lineEdit->text();
-//    QDialog::accept();
+void ModalDialog::on_okButton_clicked() {
+    //开始屏幕检测
     monitor_check();
 }
 
 void ModalDialog::monitor_check() {
-    if (this->qtui)
+    if (this->qtui) {
         delete this->qtui;
+    }
     this->qtui = new QUIBO();
 }
 
-bool ModalDialog::eventFilter(QObject *obj, QEvent *event)
-{
+bool ModalDialog::eventFilter(QObject *obj, QEvent *event) {
     if(obj == ui->btn_min){
             if(event->type() == QEvent::Enter){
                 ui->btn_min->setPixmap(QPixmap(":/pixmap/image/minBtn-hover.png"));
@@ -112,31 +105,24 @@ bool ModalDialog::eventFilter(QObject *obj, QEvent *event)
 
 }
 
-void ModalDialog::mousePressEvent(QMouseEvent *event)
-{
+void ModalDialog::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton)
     {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
-
 }
 
-void ModalDialog::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void ModalDialog::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
         setWindowOpacity(0.5);
     }
     event->accept();
-
 }
 
-void ModalDialog::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void ModalDialog::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();

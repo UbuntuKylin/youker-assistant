@@ -35,21 +35,15 @@ public:
     Q_INVOKABLE void send_btn_msg(QString);
     Q_INVOKABLE void exit_qt();
     Q_INVOKABLE void check_screen_break_point();
-
     Q_INVOKABLE QString get_system_daemon_qt();
     QString get_system_daemon_qt_default();
-
-    //---------------------------------
     //password
     Q_INVOKABLE void show_passwd_dialog(int window_x, int window_y);
-
     //get music path
     Q_INVOKABLE void get_music_path(QString musicpath);
     Q_INVOKABLE void set_homedir_qt();
     Q_INVOKABLE void set_user_homedir_qt();
-
     Q_INVOKABLE QString show_file_dialog(QString flag);
-
     Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
     Q_INVOKABLE void clean_history_records_qt(/*QStringList strlist*/);
@@ -58,10 +52,8 @@ public:
     Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
     Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
-
     Q_INVOKABLE QStringList get_apt_data();
     Q_INVOKABLE QStringList get_center_data();
-
     //---------------------------------
 
 
@@ -78,7 +70,6 @@ public:
     Q_INVOKABLE QString get_total_memory_qt();
     Q_INVOKABLE QString get_used_memory_qt();
     Q_INVOKABLE QString get_free_memory_qt();
-//    Q_INVOKABLE QStringList get_network_flow_qt();
     Q_INVOKABLE QStringList get_network_flow_total_qt();
     Q_INVOKABLE void get_network_flow_qt();
     Q_INVOKABLE void cleanup_memory_qt();
@@ -90,22 +81,15 @@ public:
     Q_INVOKABLE void send_boot_signal();
     Q_INVOKABLE QStringList get_existing_plymouth_list_qt();
     Q_INVOKABLE void plymouth_init_check_qt();
-
     //-----------------------------------------------
 
     Q_INVOKABLE int get_the_record_qt(QString mode);
     Q_INVOKABLE void clean_the_browser_qt(QString mode);
     Q_INVOKABLE QMap<QString, QVariant> search_same_files(QString path);
     Q_INVOKABLE QStringList search_largest_file(QString path);
-
     QMap<QString, QVariant> apt_center;
     QDBusInterface *systemiface;
-    QStringList cachelist;
-    QStringList systemlist;
-    QStringList alllist;
-    Q_INVOKABLE QStringList get_history_args(QString flag);
 
-//-------------
     bool history_flag;
     Q_INVOKABLE void set_history_flag(bool flag);
     Q_INVOKABLE bool get_history_flag();
@@ -153,16 +137,11 @@ public:
     Q_INVOKABLE void clear_largestfile_args();
     Q_INVOKABLE QStringList get_largestfile_args();
 
-//-------------
-
-
     /*-------------------one key scan-------------------*/
     Q_INVOKABLE QMap<QString, QVariant> scan_by_one_key_qt();
 
 signals:
     void addBootImage();
-    void finishCleanTrace(QString msg);
-    void finishCleanTraceError(QString msg);
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkError(QString msg);
     void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
@@ -174,8 +153,6 @@ signals:
     void finishCleanDataSecond(QString type, QString msg);
 
 public slots:
-    void handler_clear_trace(QString msg);
-    void handler_clear_trace_error(QString msg);
     void handler_clear_rubbish(QString msg);
     void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);

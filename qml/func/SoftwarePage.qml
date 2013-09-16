@@ -126,7 +126,7 @@ Item {
         //需要时常变动的变量
         property string software_name: content.delegate_name
         property string software_appname: content.delegate_appname
-        property string software_information: content.delegate_information
+//        property string software_information: content.delegate_information
         property string software_image: content.delegate_image
         property string software_introduction: content.delegate_introduction
         property string introduction_image1: content.introduction_image1
@@ -282,12 +282,12 @@ Item {
                     font.pixelSize: 14
                     color: "#383838"
                 }
-                Text {
-                    id: softwareinformation
-                    text: software.software_information
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                }
+//                Text {
+//                    id: softwareinformation
+//                    text: software.software_information
+//                    font.pixelSize: 12
+//                    color: "#7a7a7a"
+//                }
                 Text {
                     text: content.delegate_useinfo
                     font.pixelSize: 12

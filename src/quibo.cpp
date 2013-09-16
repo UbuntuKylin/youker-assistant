@@ -39,12 +39,11 @@ QUIBO::QUIBO(QWidget *parent) :
     this->setWindowState(Qt::WindowFullScreen);
 }
 
-QUIBO::~QUIBO()
-{
+QUIBO::~QUIBO() {
     delete ui;
 }
 
-void QUIBO::mouseReleaseEvent(QMouseEvent *me){
+void QUIBO::mouseReleaseEvent(QMouseEvent *me) {
     if(me->button() == Qt::LeftButton){
         this->changeColor();
     }else if(me->button() == Qt::RightButton){
@@ -53,10 +52,10 @@ void QUIBO::mouseReleaseEvent(QMouseEvent *me){
     }
 }
 
-void QUIBO::myshow(){
+void QUIBO::myshow() {
 }
 
-void QUIBO::changeColor(){
+void QUIBO::changeColor() {
     if(this->cindex >= 7){
         this->close();
     }else{
