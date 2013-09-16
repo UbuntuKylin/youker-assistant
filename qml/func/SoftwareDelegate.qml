@@ -94,13 +94,13 @@ Rectangle {
                 sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Kuaipan"){
-                content.delegate_name= "kuaipan"
+                content.delegate_name= "kuaipan4UK"//ubuntukylin-tools
                 content.delegate_appname = "金山快盘 For UbuntuKylin(kuaipan)"
                 content.delegate_image= "../img/logo/kuaipan.jpg"
                 content.delegate_introduction="UbuntuKylin团队与金山云公司合作，共同开发金山快盘for UbuntuKylin版，为用户的个人文件提供安全可控、跨平台的一站式管理体验。具备文件同步、备份和共享功能！拟于2013年9月底推出Alpha版本，10月底推出Beta版本，12月推出正式版。"
                 content.introduction_image1= "../img/character/kuaipan-01.png"
                 content.introduction_image2= "../img/character/kuaipan-02.png"
-                content.soft_status = sudodispatcher.get_value("kuaipan");
+                content.soft_status = sudodispatcher.get_value("kuaipan4UK");//ubuntukylin-tools
                 sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "KugouMusic"){

@@ -66,6 +66,14 @@ Item {
             anchors.fill:parent
             source: recommendoneimage_image
         }
+        Image {
+            id: statusImage
+            source: "../img/icons/recommend.png"
+            anchors{
+                right:parent.right
+                top: parent.top
+            }
+        }
         Image{
             anchors.fill:parent
             source: "../img/skin/linecolor.png"
@@ -192,7 +200,7 @@ Item {
                 onClicked: {
 //                    screen.status_value = sudodispatcher.get_value("qq");
                     screen.image_flag = "qq";
-                    screen.recommendimage_text = "WineQQ,Linux系统上最好用的QQ版本。";
+                    screen.recommendimage_text = "WineQQ，Linux系统上最好用的QQ版本。";
                     imagframe.y=colum.y+recommendtwo.y;
                     recommendoneimage_image="../img/skin/qq.png";
                 }

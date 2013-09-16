@@ -118,6 +118,7 @@ void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict
         QStringList value = statusDict[i].split(":");
         status_dict.insert(value[0], value[1]);
     }
+//    qDebug() << status_dict;
 //    emit finishSoftwareCheckStatus(statusDict);
 }
 
@@ -157,7 +158,7 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
 QStringList SudoDispatcher::get_args() {
     QStringList pkgNameList;
     pkgNameList << "eclipse" << "qtcreator"<< "wps-office" << "wine-qq2012-longeneteam" << \
-                   "flashplugin-installer" <<  "lotus" << "kuaipan" <<"vlc" << \
+                   "flashplugin-installer" <<  "lotus" << "kuaipan4UK" <<"vlc" << \
                    "chromium-bsu" << "kugou" << "ppstream" << "qbittorrent" << \
                    "virtualbox" << "stardict" << "xchat" << "wine-thunder";
     return pkgNameList;
