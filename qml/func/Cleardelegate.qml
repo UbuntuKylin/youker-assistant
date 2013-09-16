@@ -20,6 +20,9 @@ Item {
     property int subItemFontSize: 10
     property color subItemFontColor: "black"
 
+    //总控开关的初始值
+    property string main_check_value: "true"
+
     //传出的值,控制子列表的伸缩
     signal subpressed(int hMark);
     signal checkchanged(bool checkchange);
@@ -47,7 +50,7 @@ Item {
             spacing: 15
             Common.MainCheckBox{
                 id:check
-                checked:"true"
+                checked: listViewDelegate.main_check_value//"true"
                 anchors.verticalCenter: parent.verticalCenter
                 onCheckedChanged: {
                 }

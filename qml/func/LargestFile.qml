@@ -48,7 +48,7 @@ Item {
     property string subItemFontName: "Helvetica"
     property int subItemFontSize: headerItemFontSize-2
     property color subItemFontColor: "black"
-    property bool check_flag: true
+    property bool check_flag: false//true
     property int itemHeight: 40
 //    property alias expandedItemCount: subItemRepeater.count
     property bool expanded: true //kobe:子项扩展默认打开
@@ -97,7 +97,7 @@ Item {
             check_flag=true;
 
         mainModel.clear();
-        mainModel.append({"itemTitle": "清理最大文件/文件夹，清理路径为："  + root.directory,
+        mainModel.append({"itemTitle": "清理最大文件，清理路径为："  + root.directory,
                          "picture": "../img/toolWidget/deb-min.png",
                          "detailstr": "清理用户指定目录下的最大文件，节省磁盘空间。",
                          "flags": "clear_largestfile",
@@ -276,8 +276,9 @@ Item {
                         }
                     }
                 }
-                else
+                else {
                     sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y)
+                }
             }
         }
     }
@@ -315,6 +316,7 @@ Item {
                 delegate: Cleardelegate{
                     sub_num:root.lar_num;sub_model:subModel;btn_flag:root.btn_flag;arrow_display:deleget_arrow;
                     delegate_flag: false
+                    main_check_value: "false"
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}
                 }
