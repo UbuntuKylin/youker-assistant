@@ -48,7 +48,7 @@ Tray::Tray(QWidget *parent)
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
-    this->move(desktop->width() - this->width(), 15);
+    this->move(desktop->width() - this->width(), 25);
     this->show();
 
     frame = new SuspensionFrame;
@@ -255,7 +255,7 @@ void Tray::paintEvent(QPaintEvent* event)
 
     QPixmap background;
     background.load(":/pixmap/image/accelerate-bg0.png");
-    painter.drawPixmap(0,13, background);
+    painter.drawPixmap(0,0, background);
 
 
 //    QPainter painter(&wheel);   //wheel作为画图对象？
@@ -264,7 +264,7 @@ void Tray::paintEvent(QPaintEvent* event)
     wheel.fill(Qt::transparent);
     blister.load(":/pixmap/image/blister-small.png");
     //线性渐变
-    QLinearGradient linearGradient(66,14,66,44);
+    QLinearGradient linearGradient(66,1,66,31);
     //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
     painter.setPen(Qt::transparent);
     QString color1;
@@ -293,12 +293,12 @@ void Tray::paintEvent(QPaintEvent* event)
     linearGradient.setColorAt((ratio_sus <= 0) ? 0.0 : (1.0 - ratio_sus * 0.01 + 0.01),color2);
     linearGradient.setColorAt(1.0,color3);
     painter.setBrush(QBrush(linearGradient));
-    painter.drawRoundRect(51,14,30,30,5,5);
+    painter.drawRoundRect(51,1,30,30,5,5);
 
 
     opt.init(this);
     painter.drawImage(0,0,wheel);
 
-    painter.drawPixmap(0,13, blister);
+    painter.drawPixmap(0,0, blister);
     style()->drawPrimitive(QStyle::PE_Widget,&opt,&painter,this);
 }
