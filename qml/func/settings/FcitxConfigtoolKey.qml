@@ -131,6 +131,10 @@ Rectangle {
         fontStyleBtn.text = setFont;
         //get font size=======================================================
         var getFontSize = fcitxcfgwizard.get_font_size();
+        if(getFontSize == 0)
+            getFontSize = fcitxcfgwizard.get_font_size();
+        if(getFontSize == 0)
+            getFontSize = 12;
         sliderFontSize.value = getFontSize;
 
         //get_skin_list and current_skin=================================================
