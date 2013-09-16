@@ -363,15 +363,15 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 4
                 height: parent.height-1
-                width:11
+                width:13
                 color: "lightgrey"
             }
             Rectangle{
                 id: button
                 anchors.right: parent.right
                 anchors.rightMargin: 5
-                width: 10
-                y: gridView.visibleArea.yPosition * (scrollbar.height+(gridView.visibleArea.heightRatio * scrollbar.height))
+                width: 12
+                y: gridView.visibleArea.yPosition * (scrollbar.height+257)
 //                height: gridView.visibleArea.heightRatio * scrollbar.height;
                 height: 45
                 radius: 3
@@ -403,7 +403,7 @@ Item {
                     drag.minimumY: 0
                     drag.maximumY: scrollbar.height - button.height
                     onMouseYChanged: {
-                        gridView.contentY = button.y / (scrollbar.height+gridView.visibleArea.heightRatio * scrollbar.height-20) * gridView.contentHeight
+                        gridView.contentY = button.y / (scrollbar.height+257) * gridView.contentHeight
                     }
                 }
             }
