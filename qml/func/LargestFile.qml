@@ -113,7 +113,7 @@ Item {
     ListModel {
         id: mainModel
         ListElement {
-            itemTitle: "清理最大文件/文件夹"
+            itemTitle: "清理最大文件"
             picture: "../img/toolWidget/deb-min.png"
             detailstr: "清理用户指定目录下的最大文件，节省磁盘空间。"
             flags: "clear_largestfile"
@@ -121,7 +121,6 @@ Item {
                 ListElement { subItemTitle: "" }
             ]
         }
-
     }
 
     ListModel {

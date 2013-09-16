@@ -108,39 +108,39 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>54</y>
+     <y>51</y>
      <width>221</width>
-     <height>16</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>支持一键清理和选择性系统清理</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;新增系统监控球，支持一键加速&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>84</y>
+     <y>81</y>
      <width>201</width>
-     <height>16</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>支持常见的各种系统美化设置</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;新增热门实用的软件推荐功能&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>114</y>
+     <y>111</y>
      <width>221</width>
-     <height>16</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>为用户展示当前机器和系统信息</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;新增输入法配置向导&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QFrame" name="frame">
