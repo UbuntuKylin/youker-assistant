@@ -344,6 +344,7 @@ class Daemon(PolicyKitService):
     def clean_system_history(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
+            self.clean_complete_msg('')
             return
         daemonsystem = cleaner.CleanSystemHistory()
         try:
@@ -357,6 +358,7 @@ class Daemon(PolicyKitService):
     def clean_dash_history(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
+            self.clean_complete_msg('')
             return
         daemondash = cleaner.CleanDashHistory()
         try:
