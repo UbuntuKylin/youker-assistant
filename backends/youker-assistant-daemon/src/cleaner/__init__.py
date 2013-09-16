@@ -132,9 +132,9 @@ class ManageTheLarge():
     def get_scan_result(self, size, path):
         self.path = path
         finalsize = size * 1024 * 1024
-        self.objl.hundred_large_files(finalsize, self.path)
+        #self.objl.hundred_large_files(finalsize, self.path)
         #self.objl.type_of_file()
-        largefile_dic = self.objl.adjust_the_list()
+        largefile_dic = self.objl.adjust_the_list(finalsize, self.path)
         return largefile_dic
         
 # the functions of clean the browser history
