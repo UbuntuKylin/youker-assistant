@@ -22,61 +22,42 @@ import common
 
 class DiskAnalyse():
     def __init__(self):
-        self.final_list_str = []
-        self.final_list = []
+        pass
 
     def hundred_large_files(self, size, path):
         mypath = path
-        if not os.path.exists(mypath):
-            raise Exception("Diskanalyse: path did not exist")
-        for rootpath, dirnames, filenames in os.walk(mypath):
-            for filename in filenames:
-                flag = True
-                filepath = os.path.join(rootpath, filename)
-                if os.path.islink(filepath):
-                    continue
-                filelist = [os.path.getsize(filepath), filepath]
-                if not self.final_list and filelist[0] >= size:
-                    self.final_list.append(filelist)
-                    flag = False
-                else:
-                    for index, values in enumerate(self.final_list):
-                        if filelist > values:
-                            self.final_list.insert(index, filelist)
-                            flag = False
-                            break
-                    if flag and filelist[0] >= size :
-                        self.final_list.append(filelist)
+        final_list = []
+        if os.path.exists(mypath):
+            for rootpath, dirnames, filenames in os.walk(mypath):
+                for filename in filenames:
+                    flag = True
+                    filepath = os.path.join(rootpath, filename)
+                    if os.path.islink(filepath):
+                        continue
+                    filelist = [os.path.getsize(filepath), filepath]
+                    if not final_list and filelist[0] >= size:
+                        final_list.append(filelist)
+                        flag = False
+                    else:
+                        for index, values in enumerate(final_list):
+                            if filelist > values:
+                                final_list.insert(index, filelist)
+                                flag = False
+                                break
+                        if flag and filelist[0] >= size :
+                            final_list.append(filelist)
+        else:
+            pass
+        return final_list
 
-    def type_of_file(self):
-        code = ['.py', '.cpp', 'pl', '.cpp', '.c']
-        video = ['.avi', '.mpg', '.mp4', '.swf']
-        music = ['.mp3', '.wav', '.aif', '.au']
-        document = ['.doc', '.txt', '.hlp', '.wps', '.rtf', '.pdf', '.odt']
-        compress = ['.rar','.zip','.gz', '.bz2', '.7z', '.jar']
-        picture = ['.pic', '.gif', '.jpg', '.bmp', '.png', '.ico']
-        for index, content in enumerate(self.final_list):
-            front, behind = os.path.splitext(content[1])
-            if behind in video:
-                self.final_list[index] = content + ('video',)
-            elif behind in music:
-                self.final_list[index] = content + ('music',)
-            elif behind in document:
-                self.final_list[index] = content + ('document',)
-            elif behind in compress:
-                self.final_list[index] = content + ('compress',)
-            elif behind in picture:
-                self.final_list[index] = content + ('picture',)
-            else:
-                self.final_list[index] = content + ('others',)
-
-    def adjust_the_list(self):
-        final_list_str = []
-        for tmp in self.final_list:
-            tmp[0] = common.confirm_filesize_unit(tmp[0])
-            final_list_str.append('<2_2>'.join(tmp))
-        self.final_list = []
-        return final_list_str
+    def adjust_the_list(self, size, path):
+        final_str = []
+        tmp_list = self.hundred_large_files(size, path)
+        if not tmp_list:
+            for tmp in tmp_list:
+                tmp[0] = common.confirm_filesize_unit(tmp[0])
+                final_str.append('<2_2>'.join(tmp))
+        return final_str
 
 
 if __name__ == '__main__':
