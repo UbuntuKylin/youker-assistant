@@ -102,31 +102,31 @@ Rectangle {
         var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
         if(getHotkyScrollBetween==0)
         {
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
+            fcitxChangeModel.append({"text": "CTRL+SHIFT"});
+            fcitxChangeModel.append({"text": "ALT+SHIFT"});
+            fcitxChangeModel.append({"text": "CTRL+SUPER"});
+            fcitxChangeModel.append({"text": "ALT+SUPER"});
         }
         if(getHotkyScrollBetween==1)
         {
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
+            fcitxChangeModel.append({"text": "ALT+SHIFT"});
+            fcitxChangeModel.append({"text": "CTRL+SHIFT"});
+            fcitxChangeModel.append({"text": "CTRL+SUPER"});
+            fcitxChangeModel.append({"text": "ALT+SUPER"});
         }
         if(getHotkyScrollBetween==2)
         {
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
+            fcitxChangeModel.append({"text": "CTRL+SUPER"});
+            fcitxChangeModel.append({"text": "CTRL+SHIFT"});
+            fcitxChangeModel.append({"text": "ALT+SHIFT"});
+            fcitxChangeModel.append({"text": "ALT+SUPER"});
         }
         if(getHotkyScrollBetween==3)
         {
-            fcitxChangeModel.append({"text": "ALT_SUPER"});
-            fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-            fcitxChangeModel.append({"text": "ALT_SHIFT"});
-            fcitxChangeModel.append({"text": "CTRL_SUPER"});
+            fcitxChangeModel.append({"text": "ALT+SUPER"});
+            fcitxChangeModel.append({"text": "CTRL+SHIFT"});
+            fcitxChangeModel.append({"text": "ALT+SHIFT"});
+            fcitxChangeModel.append({"text": "CTRL+SUPER"});
         }
 
      pageStack.push(functioncollection);
@@ -166,31 +166,31 @@ Rectangle {
                 var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
                 if(getHotkyScrollBetween==0)
                 {
-                    fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-                    fcitxChangeModel.append({"text": "ALT_SHIFT"});
-                    fcitxChangeModel.append({"text": "CTRL_SUPER"});
-                    fcitxChangeModel.append({"text": "ALT_SUPER"});
+                    fcitxChangeModel.append({"text": "CTRL+SHIFT"});
+                    fcitxChangeModel.append({"text": "ALT+SHIFT"});
+                    fcitxChangeModel.append({"text": "CTRL+SUPER"});
+                    fcitxChangeModel.append({"text": "ALT+SUPER"});
                 }
                 if(getHotkyScrollBetween==1)
                 {
-                    fcitxChangeModel.append({"text": "ALT_SHIFT"});
-                    fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-                    fcitxChangeModel.append({"text": "CTRL_SUPER"});
-                    fcitxChangeModel.append({"text": "ALT_SUPER"});
+                    fcitxChangeModel.append({"text": "ALT+SHIFT"});
+                    fcitxChangeModel.append({"text": "CTRL+SHIFT"});
+                    fcitxChangeModel.append({"text": "CTRL+SUPER"});
+                    fcitxChangeModel.append({"text": "ALT+SUPER"});
                 }
                 if(getHotkyScrollBetween==2)
                 {
-                    fcitxChangeModel.append({"text": "CTRL_SUPER"});
-                    fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-                    fcitxChangeModel.append({"text": "ALT_SHIFT"});
-                    fcitxChangeModel.append({"text": "ALT_SUPER"});
+                    fcitxChangeModel.append({"text": "CTRL+SUPER"});
+                    fcitxChangeModel.append({"text": "CTRL+SHIFT"});
+                    fcitxChangeModel.append({"text": "ALT+SHIFT"});
+                    fcitxChangeModel.append({"text": "ALT+SUPER"});
                 }
                 if(getHotkyScrollBetween==3)
                 {
-                    fcitxChangeModel.append({"text": "ALT_SUPER"});
-                    fcitxChangeModel.append({"text": "CTRL_SHIFT"});
-                    fcitxChangeModel.append({"text": "ALT_SHIFT"});
-                    fcitxChangeModel.append({"text": "CTRL_SUPER"});
+                    fcitxChangeModel.append({"text": "ALT+SUPER"});
+                    fcitxChangeModel.append({"text": "CTRL+SHIFT"});
+                    fcitxChangeModel.append({"text": "ALT+SHIFT"});
+                    fcitxChangeModel.append({"text": "CTRL+SUPER"});
                 }
             }
 
