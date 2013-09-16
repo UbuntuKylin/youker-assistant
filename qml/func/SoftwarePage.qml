@@ -136,24 +136,38 @@ Item {
         width: parent.width
         height: parent.height
         function reset_text(showtext) {
-            if(showtext == "i")
+            if(showtext == "i") {
+                statusImage.source = "../img/icons/installed.png"
                 return "立即卸载";
-            else if(showtext == "n")
+            }
+            else if(showtext == "n") {
+                statusImage.source = "../img/icons/noinstalled.png"
                 return "立即安装";
-            else if(showtext == "u")
+            }
+            else if(showtext == "u") {
+                statusImage.source = "../img/icons/installed.png"
                 return "立即升级";
+            }
             else {
+                statusImage.source = "../img/icons/noinstalled.png"
                 return "未发现";
             }
         }
         function show_text(showtext) {
-            if(showtext == "i")
+            if(showtext == "i") {
+                statusImage.source = "../img/icons/installed.png"
                 return "立即卸载";
-            else if(showtext == "n")
+            }
+            else if(showtext == "n") {
+                statusImage.source = "../img/icons/noinstalled.png"
                 return "立即安装";
-            else if(showtext == "u")
+            }
+            else if(showtext == "u") {
+                statusImage.source = "../img/icons/installed.png"
                 return "立即升级";
+            }
             else {
+                statusImage.source = "../img/icons/noinstalled.png"
                 return "未发现";
             }
         }
@@ -174,12 +188,18 @@ Item {
                     }
                     else {
                         software.installed_status = software.tm_status;
-                        if(software.installed_status == "i")
+                        if(software.installed_status == "i") {
                             actionBtn.text = "立即卸载";
-                        else if(software.installed_status == "n")
+                            statusImage.source = "../img/icons/installed.png"
+                        }
+                        else if(software.installed_status == "n") {
                             actionBtn.text = "立即安装";
-                        else if(software.installed_status == "u")
+                            statusImage.source = "../img/icons/noinstalled.png"
+                        }
+                        else if(software.installed_status == "u") {
                             actionBtn.text = "立即升级";
+                            statusImage.source = "../img/icons/installed.png"
+                        }
                     }
                 }
             }
@@ -238,7 +258,7 @@ Item {
                 leftMargin: 25
             }
             border.color: "lightgrey"
-            color: "#e6ebfe"
+//            color: "#e6ebfe"
             Image {
                 source: software.software_image
                 anchors{
@@ -279,7 +299,7 @@ Item {
                 width:145;height: 43
                 anchors{
                     right:parent.right
-                    rightMargin: 60
+                    rightMargin: 80
                     verticalCenter: parent.verticalCenter
                 }
                 text: software.show_text(software.installed_status)
@@ -301,6 +321,15 @@ Item {
                     else{
                         sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     }
+                }
+            }
+            Image {
+                id: statusImage
+                source: "../img/icons/noinstalled.png"
+                anchors{
+                    right:parent.right
+                    top: parent.top
+//                    verticalCenter: parent.verticalCenter
                 }
             }
 
