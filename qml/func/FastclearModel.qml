@@ -150,6 +150,7 @@ Rectangle {
             text:"一键清理"
             width: 120
             height: 39
+            fontsize: 15
 ////如果没有选中任何清理项，提示警告框！
             onClicked: {
                 if(checkboxe.checked) {

@@ -374,8 +374,8 @@ Item {
         spacing: 20
         Common.Button {
             id: cacheBtn
-            width: 94
-            height: 29
+            width: 95
+            height: 30
             hoverimage: "green2.png"
             text: root.btn_text
             onClicked: {
@@ -430,8 +430,8 @@ Item {
         spacing: 20
         Common.Button {
             id: sysBtn
-            width: 94
-            height: 29
+            width: 95
+            height: 30
             hoverimage: "green2.png"
             text: root.btn_text
             onClicked: {

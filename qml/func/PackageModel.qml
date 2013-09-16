@@ -195,6 +195,7 @@ Item {
             height: 39
             hoverimage: "green1.png"
             text: root.btn_text
+            fontsize: 15
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
 //                sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);

@@ -146,7 +146,7 @@ Rectangle {
             font.pointSize: 10
         }
         Row{
-            spacing: 10
+            spacing: 19
             Common.ComboBox {
                 id: iconcombo
                 width : 345
@@ -180,8 +180,8 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "使用默认设置"
-                width: 124
+                text: "恢复默认"
+                width: 95
                 height: 30
                 onClicked: {
                     if (soundeffectspage.init_sound_flag == true) {

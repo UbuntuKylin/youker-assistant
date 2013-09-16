@@ -24,7 +24,7 @@ Item {
     property string text : ""
     property string hoverimage: "green1.png"
     property string fontcolor: "white"
-    property int fontsize: 16
+    property int fontsize: 14
 
 
     //-----------------------------------------------

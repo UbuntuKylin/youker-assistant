@@ -148,6 +148,7 @@ Rectangle {
                     hoverimage: "green3.png"
                     setbtn_flag: "onekey"
                     text:"一键清理"
+                    fontsize: 17
                     anchors {
                         left: parent.left; leftMargin: 100
                     }
