@@ -26,12 +26,12 @@ import "bars" as Bars
 Item {
     id: screen; width: parent.width; height: 475
 //需要时常变动的变量
-    property string image_flag:"qq"
-    property string recommendone_image: "../img/skin/qq-small.png"
-    property string recommendtwo_image: "../img/skin/qt-small.png"
-    property string recommendthree_image: "../img/skin/wps-small.png"
-    property string recommendoneimage_image: "../img/skin/qq.png"
-    property string recommendimage_text: "WineQQ,Linux系统上最好用的QQ版本。"
+    property string image_flag:"wps"
+    property string recommendone_image: "../img/skin/wps-small.png"
+    property string recommendtwo_image: "../img/skin/qq-small.png"
+    property string recommendthree_image: "../img/skin/qt-small.png"
+    property string recommendoneimage_image: "../img/skin/wps.png"
+    property string recommendimage_text: "WPS For UbuntuKylin，Linux系统上最好用的办公软件。"
     property string status_value: "n"
     property string status_value2: "n"
 
@@ -118,7 +118,17 @@ Item {
                 }
                 text: "详情"
                 onClicked: {
-                    if(screen.image_flag == "qq") {
+                    if(screen.image_flag == "wps") {
+                        content.delegate_name= "wps-office"
+                        content.delegate_appname = "WPS For UbuntuKylin(wps-office)"
+                        content.delegate_image= "../img/logo/wps.jpg"
+                        content.delegate_introduction="Ubuntukylin团队与金山公司合作，于13.04开始首先推出WPS for UbuntuKylin 1.0，并于13.10推出WPS for UbuntuKylin1.2。与1.0版本相比，1.2版进行了稳定性提升、BUG修复、同时增加了数据透视表等功能，使您的文档工作更加专业和轻松。"
+                        content.introduction_image1= "../img/character/wps-01.png"
+                        content.introduction_image2= "../img/character/wps-02.png"
+                        content.soft_status = sudodispatcher.get_value("wps-office");
+                        sudodispatcher.send_software_current_status(content.soft_status);
+                    }
+                    else if(screen.image_flag == "qq") {
                         content.delegate_name= "wine-qq2012-longeneteam"
                         content.delegate_appname = "Wine 1.5.18 patched for qq2012 Beta3"
                         content.delegate_image= "../img/logo/qq.jpg"
@@ -138,16 +148,6 @@ Item {
                         content.soft_status = sudodispatcher.get_value("qtcreator");
                         sudodispatcher.send_software_current_status(content.soft_status);
                     }
-                    else if(screen.image_flag == "wps") {
-                        content.delegate_name= "wps-office"
-                        content.delegate_appname = "WPS For UbuntuKylin(wps-office)"
-                        content.delegate_image= "../img/logo/wps.jpg"
-                        content.delegate_introduction="Ubuntukylin团队与金山公司合作，于13.04开始首先推出WPS for UbuntuKylin 1.0，并于13.10推出WPS for UbuntuKylin1.2。与1.0版本相比，1.2版进行了稳定性提升、BUG修复、同时增加了数据透视表等功能，使您的文档工作更加专业和轻松。"
-                        content.introduction_image1= "../img/character/wps-01.png"
-                        content.introduction_image2= "../img/character/wps-02.png"
-                        content.soft_status = sudodispatcher.get_value("wps-office");
-                        sudodispatcher.send_software_current_status(content.soft_status);
-                    }
                     pageStack.push(softwarepage);
                 }
             }
@@ -162,7 +162,7 @@ Item {
             rightMargin: 25
         }
         spacing: 5
-        Item {
+        Item{
             id: recommendone
             width:imageone.width;height: imageone.height
             Image {
@@ -173,14 +173,14 @@ Item {
                 anchors.fill: parent
                 onClicked: {
 //                    screen.status_value = sudodispatcher.get_value("qq");
-                    screen.image_flag = "qq";
-                    screen.recommendimage_text = "WineQQ,Linux系统上最好用的QQ版本。";
+                    screen.image_flag = "wps";
+                    screen.recommendimage_text = "WPS,Linux系统上最好用的办公软件。";
                     imagframe.y=colum.y+recommendone.y;
-                    recommendoneimage_image="../img/skin/qq.png";
+                    recommendoneimage_image="../img/skin/wps.png";
                 }
             }
         }
-        Item{
+        Item {
             id: recommendtwo
             width:imagetwo.width;height: imagetwo.height
             Image {
@@ -190,11 +190,11 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-//                    screen.status_value = sudodispatcher.get_value("qtcreator");
-//                    screen.status_value2 = sudodispatcher.get_value("qq");
-                    screen.image_flag = "qt";
+//                    screen.status_value = sudodispatcher.get_value("qq");
+                    screen.image_flag = "qq";
+                    screen.recommendimage_text = "WineQQ,Linux系统上最好用的QQ版本。";
                     imagframe.y=colum.y+recommendtwo.y;
-                    recommendoneimage_image="../img/skin/qt.png";
+                    recommendoneimage_image="../img/skin/qq.png";
                 }
             }
         }
@@ -208,11 +208,11 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-//                    screen.status_value = sudodispatcher.get_value("qq");
-                    screen.image_flag = "wps";
-                    screen.recommendimage_text = "WPS,Linux系统上最好用的办公软件。";
+//                    screen.status_value = sudodispatcher.get_value("qtcreator");
+//                    screen.status_value2 = sudodispatcher.get_value("qq");
+                    screen.image_flag = "qt";
                     imagframe.y=colum.y+recommendthree.y;
-                    recommendoneimage_image="../img/skin/wps.png";
+                    recommendoneimage_image="../img/skin/qt.png";
                 }
             }
         }
@@ -274,65 +274,65 @@ Item {
                     flag: "Kuaipan"
                 }
                 ListElement {
-                    icon: "../img/icons/adobe-flash.png"
-                    flag: "AdobeFlash"
-                }
-                ListElement {
-                    icon: "../img/icons/chromium.png"
-                    flag: "Chromium"
-                }
-                ListElement {
-                    icon: "../img/icons/eclipse.png"
-                    flag: "Eclipse"
-                }
-                ListElement {
+                    icon: "../img/icons/Pps.png"
+                    flag: "Pps"
+                }ListElement {
                     icon: "../img/icons/kugou.png"
                     flag: "KugouMusic"
                 }
                 ListElement {
-                    icon: "../img/icons/lotus.png"
-                    flag: "Lotus"
-                }
-                ListElement {
-                    icon: "../img/icons/Pps.png"
-                    flag: "Pps"
-                }
-                ListElement {
-                    icon: "../img/icons/qt.png"
-                    flag: "Qtcreator"
-                }
-                ListElement {
-                    icon: "../img/icons/qbittorrent.png"
-                    flag: "QbitTorrent"
+                    icon: "../img/icons/xunlei.png"
+                    flag: "XunLei"
                 }
                 ListElement {
                     icon: "../img/icons/stardict.png"
                     flag: "StarDict"
                 }
                 ListElement {
+                    icon: "../img/icons/adobe-flash.png"
+                    flag: "AdobeFlash"
+                }
+                ListElement {
                     icon: "../img/icons/vlc.png"
                     flag: "Vlc"
+                }
+                ListElement {
+                    icon: "../img/icons/chromium.png"
+                    flag: "Chromium"
                 }
                 ListElement {
                     icon: "../img/icons/virtualbox.png"
                     flag: "VirtualBox"
                 }
                 ListElement {
-                    icon: "../img/icons/qq.png"
-                    flag: "Wineqq"
-                }
-                ListElement {
-                    icon: "../img/icons/wps.png"
-                    flag: "Wps"
+                    icon: "../img/icons/qbittorrent.png"
+                    flag: "QbitTorrent"
                 }
                 ListElement {
                     icon: "../img/icons/xchat.png"
                     flag: "XChat"
                 }
                 ListElement {
-                    icon: "../img/icons/xunlei.png"
-                    flag: "XunLei"
+                    icon: "../img/icons/lotus.png"
+                    flag: "Lotus"
                 }
+
+//                ListElement {
+//                    icon: "../img/icons/eclipse.png"
+//                    flag: "Eclipse"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/qt.png"
+//                    flag: "Qtcreator"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/qq.png"
+//                    flag: "Wineqq"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/wps.png"
+//                    flag: "Wps"
+//                }
             }
             GridView {
                 id: gridView

@@ -53,14 +53,14 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (flag == "AdobeFlash"){
-                content.soft_status = sudodispatcher.check_pkg_status_qt("flashplugin-downloader");
-                content.delegate_name= "flashplugin-downloader";
+                content.soft_status = sudodispatcher.check_pkg_status_qt("flashplugin-installer");
+                content.delegate_name= "flashplugin-installer";
                 content.delegate_appname = "Adobe Flash Player插件"
                 content.delegate_image= "../img/logo/adobe-flash.jpg"
                 content.delegate_introduction="下载和安装Adobe Flash Player插件。Adobe Flash Player插件支持播放在线媒体和其他动态内容。"
                 content.introduction_image1= "../img/character/flash-01.png"
                 content.introduction_image2= "../img/character/flash-02.png"
-                content.soft_status = sudodispatcher.get_value("flashplugin-downloader");
+                content.soft_status = sudodispatcher.get_value("flashplugin-installer");
                 sudodispatcher.send_software_current_status(content.soft_status);
             }
             else if (flag == "Chromium"){

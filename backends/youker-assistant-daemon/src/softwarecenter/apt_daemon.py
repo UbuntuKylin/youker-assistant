@@ -146,7 +146,7 @@ class AptDaemon:
 	def update_pkg(self, pkgName):
 		self.ca.open()
 		pkg = self.get_pkg_by_name(pkgName)
-		pkg.mark_update()
+		pkg.mark_upgrade()
 		
 		try:
 			self.ca.commit(FetchProcess(self.sudoDaemon), AptProcess(self.sudoDaemon))
