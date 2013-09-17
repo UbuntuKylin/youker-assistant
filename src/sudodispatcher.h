@@ -48,6 +48,7 @@ public:
 
     QMap<QString, QString> status_dict;
     Q_INVOKABLE QString get_value(QString);
+    Q_INVOKABLE QStringList getUKSoftwareList();
     Q_INVOKABLE void send_software_current_status(QString current_status);
 
 

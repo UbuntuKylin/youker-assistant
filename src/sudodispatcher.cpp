@@ -169,6 +169,12 @@ QString SudoDispatcher::get_value(QString key) {
     return tt.toString();
 }
 
+QStringList SudoDispatcher::getUKSoftwareList() {
+    QStringList softwareList;
+    softwareList << "wps-office" << "lotus" << "kuaipan4UK" << "kugou" << "ppstream";
+    return softwareList;
+}
+
 // -------------------------software-center-------------------------
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
     KThread *thread = new KThread(sudoiface, "install_pkg", strlist, pkgName);

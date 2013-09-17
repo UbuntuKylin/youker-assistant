@@ -38,14 +38,14 @@ Item {
     Component.onCompleted: {
     }
     //信号绑定，绑定qt的信号
-    Connections
-    {
-        target: sudodispatcher
-        onFinishSoftwareApt: {
-            if(type == "apt_stop")
-                toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
-        }
-    }
+//    Connections
+//    {
+//        target: sudodispatcher
+//        onFinishSoftwareApt: {
+//            if(type == "apt_stop")
+//                toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
+//        }
+//    }
 
         //背景
     Image {

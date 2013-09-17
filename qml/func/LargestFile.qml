@@ -263,8 +263,13 @@ Item {
                         sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！", mainwindow.pos.x, mainwindow.pos.y);
                     else if (root.directory == "")
                     {
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！", mainwindow.pos.x, mainwindow.pos.y);
-                        deleget_arrow =0;
+                        if(root.sub_num != 0 && root.null_flag == false) {
+                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+                        }
+                        else {
+                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！", mainwindow.pos.x, mainwindow.pos.y);
+                            deleget_arrow =0;
+                        }
                     }
                     else {
                         if(root.null_flag == true) {

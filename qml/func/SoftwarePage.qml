@@ -37,6 +37,7 @@ Item {
             if(type == "down_stop" && root.source_status_text != "") {
                 root.source_status_text = "";
                 root.state = "SofeWareState";
+//                sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
                 toolkits.alertMSG("软件源更新完成！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
@@ -122,7 +123,7 @@ Item {
     }
     Rectangle {
         id: software
-        property bool on: true
+        property bool in_no: false
         //需要时常变动的变量
         property string software_name: content.delegate_name
         property string software_appname: content.delegate_appname
@@ -185,13 +186,22 @@ Item {
             onFinishSoftwareApt: {
                 if(type == "apt_stop") {
 //                    console.log("000000000000");
-                    software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                    software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+
+                    if(software.in_no) {
+                        //delete software source
+                        console.log("start to delete.....");
+                        software.in_no = false;
+                    }
+
                     if(software.tm_status == software.installed_status) {
 //                        console.log("111111111111111111");
 //                        console.log(software.software_name);
 //                        console.log(software.tm_status);
 //                        console.log(software.installed_status);
+
+                        //start to add software source
                         sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {
@@ -208,6 +218,7 @@ Item {
                             actionBtn.text = "立即升级";
                             statusImage.source = "../img/icons/installed.png"
                         }
+                        toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -319,11 +330,23 @@ Item {
 //                            console.log("test qq");
                         }
                         else {
+                            var softwarelist = sudodispatcher.getUKSoftwareList();
+                            console.log("111111111");
+                            console.log(softwarelist);
+                            for (var i=0; i< softwarelist.length; i++) {
+                                if(softwarelist[i] == software.software_name) {
+                                    console.log("is mine......");
+                                    software.in_no = true;
+                                    break;
+                                }
+                            }
                             sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.install_pkg_qt(software.software_name);
                         }
                     }
                     else if(software.installed_status == "i") {
+                        //add software source
+                        software.in_no = false;
                         sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                         sudodispatcher.uninstall_pkg_qt(software.software_name);
                     }
@@ -332,13 +355,27 @@ Item {
 //                            console.log("test qq222222222");
                         }
                         else {
+                            var softwareList = sudodispatcher.getUKSoftwareList();
+                            console.log("111111111");
+                            console.log(softwareList);
+                            for (var j=0; i< softwareList.length; j++) {
+                                if(softwareList[j] == software.software_name) {
+                                    console.log("is mine 2......");
+                                    software.in_no = true;
+                                    break;
+                                }
+                            }
+//                            software.in_no = true;
                             sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.update_pkg_qt(software.software_name);
                         }
                     }
                     else{
                         if(content.delegate_name == "wine-qq2012-longeneteam") {
-                            Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php")
+                            Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
+                        }
+                        else if(content.delegate_name == "wine-thunder") {
+                            Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
                         }
                         else {
 //                            console.log("222222222222");
