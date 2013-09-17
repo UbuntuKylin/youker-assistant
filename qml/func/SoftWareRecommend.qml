@@ -324,6 +324,10 @@ Item {
                     icon: "../img/icons/lotus.png"
                     flag: "Lotus"
                 }
+                ListElement {
+                    icon: "../img/icons/openfetion.png"
+                    flag: "OpenFetion"
+                }
 
 //                ListElement {
 //                    icon: "../img/icons/eclipse.png"

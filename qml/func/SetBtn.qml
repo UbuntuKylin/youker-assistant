@@ -48,10 +48,22 @@ Rectangle {
                 btnImg.source = "../img/icons/set-hover.png"
             else if (menulogo.setbtn_flag == "message")
                 btnImg.source = "../img/icons/message-hover.png"
+            else if(menulogo.setbtn_flag == "return")
+                btnImg.source = "../img/icons/return-hover.png"
         }
-        onPressed: btnImg.source = "../img/toolWidget/menu_press.png"
+        onPressed: {
+            if(menulogo.setbtn_flag == "return")
+                btnImg.source = "../img/icons/return-hover.png"
+            else
+                btnImg.source = "../img/toolWidget/menu_press.png"
+        }
         //要判断松开是鼠标位置
-        onReleased: btnImg.source = "../img/toolWidget/menu_hover.png"
+        onReleased: {
+            if(menulogo.setbtn_flag == "return")
+                btnImg.source = "../img/icons/return.png"
+            else
+                btnImg.source = "../img/toolWidget/menu_hover.png"
+        }
         onExited: btnImg.source = ""
         onClicked: {
             menulogo.clicked();    //如果没有选中任何清理项，提示警告框,发出信号...

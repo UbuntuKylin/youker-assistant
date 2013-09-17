@@ -298,7 +298,6 @@ Item {
                 leftMargin: 25
             }
             border.color: "lightgrey"
-//            color: "#e6ebfe"
             Image {
                 source: software.software_image
                 anchors{

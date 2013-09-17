@@ -169,9 +169,9 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
 QStringList SudoDispatcher::get_args() {
     QStringList pkgNameList;
     pkgNameList << "eclipse" << "qtcreator"<< "wps-office" << "wine-qq2012-longeneteam" << \
-                   "flashplugin-installer" <<  "lotus" << "kuaipan4UK" <<"vlc" << \
+                   "flashplugin-installer" <<  "lotus" << "kuaipan4uk" <<"vlc" << \
                    "chromium-bsu" << "kugou" << "ppstream" << "qbittorrent" << \
-                   "virtualbox" << "stardict" << "xchat" << "wine-thunder";
+                   "virtualbox" << "stardict" << "xchat" << "wine-thunder" << "openfetion";
     return pkgNameList;
 }
 
@@ -182,7 +182,7 @@ QString SudoDispatcher::get_value(QString key) {
 
 QStringList SudoDispatcher::getUKSoftwareList() {
     QStringList softwareList;
-    softwareList << "wps-office" << "lotus" << "kuaipan4UK" << "kugou" << "ppstream";
+    softwareList << "wps-office" << "lotus" << "kuaipan4uk" << "kugou" << "ppstream";
     return softwareList;
 }
 

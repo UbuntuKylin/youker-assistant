@@ -19,19 +19,43 @@
 
 import QtQuick 1.1
 import "../common" as Common
-//import "../../func" as Func
+import "../../func" as Func
 Item {
      id: topbar
      property string arrow: "../../img/icons/return.png"
 //     property string actiontitle: ""
 //     property string actiontext: ""
+
+
      signal buttonClicked
-     Common.Button {
+//     Common.Button {
+//         id: backBtn
+//         hoverimage: topbar.arrow
+//         width: 28; height: 26
+//         onClicked: topbar.buttonClicked()
+//     }
+
+     Func.SetBtn {
          id: backBtn
-         hoverimage: topbar.arrow
-         width: 28; height: 26
+         width: 28
+         height: 26
+         iconName: "return.png"
+         setbtn_flag: "return"
          onClicked: topbar.buttonClicked()
      }
+//     Image {
+//         id: btnImg
+//         anchors.fill: parent
+//         source: ""
+//     }
+//     MouseArea {
+//         hoverEnabled: true
+//         anchors.fill: backBtn
+//         onEntered: backBtn.hoverimage = "../../img/icons/return-hover.png";
+//         onPressed: backBtn.hoverimage = "../../img/icons/return-hover.png";
+//         //要判断松开是鼠标位置
+//         onReleased: backBtn.hoverimage = "../../img/icons/return.png"
+//     }
 //     Func.SetBtn{
 //         id: backBtn
 //         setbtn_flag: topbar.arrow
