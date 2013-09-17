@@ -17,6 +17,7 @@
 ### END LICENSE
 
 import apt
+import aptsources.sourceslist
 import apt.progress.base as apb
 
 class FetchProcess(apb.AcquireProgress):
@@ -202,7 +203,7 @@ class AptDaemon:
 			else:
 					pkgStatusList.append(pkgName + ":n")
 
- 		self.sudoDaemon.software_check_status_signal(pkgStatusList)
+		self.sudoDaemon.software_check_status_signal(pkgStatusList)
 		#return pkgStatusList
 
 # 	def get_pkgs_name_list(self):
@@ -218,12 +219,38 @@ class AptDaemon:
 # 					rtns.append(name)
 # 			return rtns
 
+	# get all source item in /etc/apt/sources.list
+	def get_sources(self):
+		source = aptsources.sourceslist.SourcesList()
+		return source.list
+
+	# add ubuntukylin source in /etc/apt/sources.list
+	def add_source_ubuntukylin(self):
+		source = aptsources.sourceslist.SourcesList()
+		for item in source.list:
+			if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
+				return
+
+		source.add("deb", "http://archive.ubuntukylin.com/ubuntukylin/", "raring main", "")
+		source.save()
+
+	# remove ubuntukylin source in /etc/apt/sources.list
+	def remove_source_ubuntukylin(self):
+		source = aptsources.sourceslist.SourcesList()
+		sources = source.list
+		for item in sources:
+			if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
+				source.remove(item)
+		source.save()
+
 if __name__ == "__main__":
 	ad = AptDaemon(None)
 	
 # 	print ad.check_pkgs_status(["gedit", "cairo-dock", "unity"])
 #	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity", "haha", "hehe"])
 # 	ad.apt_get_update()
+	ad.add_source_ubuntukylin()
+# 	ad.remove_source_ubuntukylin()
 	
 	while True:
 		print "\ninput your command: "
