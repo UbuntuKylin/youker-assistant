@@ -22,6 +22,7 @@ import SystemType 0.1
 import "./common" as Common
 import "./bars" as Bars
 import "../func" as Func
+//http://www.longene.org/download/linux-2.6.34.tar.bz2
 Item {
     id: root
     width: parent.width
@@ -37,9 +38,11 @@ Item {
             if(type == "down_stop" && root.source_status_text != "") {
                 root.source_status_text = "";
                 root.state = "SofeWareState";
-//                sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
                 toolkits.alertMSG("软件源更新完成！", mainwindow.pos.x, mainwindow.pos.y);
             }
+//            else if(type == "down_fail") {
+//                console.log("down_fail.....");
+//            }
         }
         onCallMasklayer: {
             root.state = "MaskLayerState";
@@ -143,15 +146,30 @@ Item {
             }
             else if(showtext == "n") {
                 statusImage.source = "../img/icons/noinstalled.png"
-                return "立即安装";
+                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                    return "进入网页";
+                }
+                else {
+                    return "立即安装";
+                }
             }
             else if(showtext == "u") {
                 statusImage.source = "../img/icons/installed.png"
-                return "立即升级";
+                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                    return "进入网页";
+                }
+                else {
+                    return "立即升级";
+                }
             }
             else {
                 statusImage.source = "../img/icons/noinstalled.png"
-                return "未发现";
+                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                    return "进入网页";
+                }
+                else {
+                    return "未发现";
+                }
             }
         }
         function show_text(showtext) {
@@ -161,15 +179,30 @@ Item {
             }
             else if(showtext == "n") {
                 statusImage.source = "../img/icons/noinstalled.png"
-                return "立即安装";
+                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                    return "进入网页";
+                }
+                else {
+                    return "立即安装";
+                }
             }
             else if(showtext == "u") {
                 statusImage.source = "../img/icons/installed.png"
-                return "立即升级";
+                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                    return "进入网页";
+                }
+                else {
+                    return "立即升级";
+                }
             }
             else {
                 statusImage.source = "../img/icons/noinstalled.png"
-                return "未发现";
+                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                    return "进入网页";
+                }
+                else {
+                    return "未发现";
+                }
             }
         }
         Connections
@@ -177,35 +210,22 @@ Item {
             target: sudodispatcher
             onFinishSoftwareStatus: {
                 software.installed_status = content.soft_status;
-//                console.log("3333333333333");
-//                console.log(software.installed_status);
-//                console.log(content.soft_status);
                 actionBtn.text = software.reset_text(software.installed_status);
             }
 
             onFinishSoftwareApt: {
                 if(type == "apt_stop") {
-//                    console.log("000000000000");
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
                     software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-
-                    if(software.in_no) {
-                        //delete software source
-                        console.log("start to delete.....");
-                        software.in_no = false;
-                    }
-
                     if(software.tm_status == software.installed_status) {
-//                        console.log("111111111111111111");
-//                        console.log(software.software_name);
-//                        console.log(software.tm_status);
-//                        console.log(software.installed_status);
-
-                        //start to add software source
                         sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {
                         software.installed_status = software.tm_status;
+                        if(software.in_no) {
+                            //delete software source
+                            sudodispatcher.remove_source_ubuntukylin_qt();
+                            software.in_no = false;
+                        }
                         if(software.installed_status == "i") {
                             actionBtn.text = "立即卸载";
                             statusImage.source = "../img/icons/installed.png"
@@ -221,6 +241,9 @@ Item {
                         toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
+//                else if(type == "apt_error") {
+//                    console.log("apt_error........");
+//                }
             }
         }
     //    function split_string(statusdata) {
@@ -327,16 +350,17 @@ Item {
                     software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     if(software.installed_status == "n") {
                         if(content.delegate_name == "wine-qq2012-longeneteam") {
-//                            console.log("test qq");
+                            Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
+                        }
+                        else if(content.delegate_name == "wine-thunder") {
+                            Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
                             var softwarelist = sudodispatcher.getUKSoftwareList();
-                            console.log("111111111");
-                            console.log(softwarelist);
                             for (var i=0; i< softwarelist.length; i++) {
                                 if(softwarelist[i] == software.software_name) {
-                                    console.log("is mine......");
                                     software.in_no = true;
+                                    sudodispatcher.add_source_ubuntukylin_qt();
                                     break;
                                 }
                             }
@@ -352,33 +376,32 @@ Item {
                     }
                     else if(software.installed_status == "u") {
                         if(content.delegate_name == "wine-qq2012-longeneteam") {
-//                            console.log("test qq222222222");
+                            Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
+                        }
+                        else if(content.delegate_name == "wine-thunder") {
+                            Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
                             var softwareList = sudodispatcher.getUKSoftwareList();
-                            console.log("111111111");
-                            console.log(softwareList);
                             for (var j=0; i< softwareList.length; j++) {
                                 if(softwareList[j] == software.software_name) {
-                                    console.log("is mine 2......");
                                     software.in_no = true;
+                                    sudodispatcher.add_source_ubuntukylin_qt();
                                     break;
                                 }
                             }
-//                            software.in_no = true;
                             sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.update_pkg_qt(software.software_name);
                         }
                     }
                     else{
                         if(content.delegate_name == "wine-qq2012-longeneteam") {
-                            Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
+                            Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
                         }
                         else if(content.delegate_name == "wine-thunder") {
-                            Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
+                            Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
-//                            console.log("222222222222");
                             sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
                         }
                     }

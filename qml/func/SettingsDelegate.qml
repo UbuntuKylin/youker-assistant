@@ -116,14 +116,20 @@ Rectangle {
             else if(flag == "SoftWare") {
 //                sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                    sudodispatcher.bind_signals_after_dbus_start();
+                    if(!sudodispatcher.getUKSignalFlag()) {
+                        sudodispatcher.setUKSignalFlag(true);
+                        sudodispatcher.bind_signals_after_dbus_start();
+                    }
                     sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
                     pageStack.push(softwarerecommend);
                 }
                 else {
                     sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                        sudodispatcher.bind_signals_after_dbus_start();
+                        if(!sudodispatcher.getUKSignalFlag()) {
+                            sudodispatcher.setUKSignalFlag(true);
+                            sudodispatcher.bind_signals_after_dbus_start();
+                        }
                         sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
                         pageStack.push(softwarerecommend);
                     }

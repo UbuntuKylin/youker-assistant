@@ -200,7 +200,10 @@ Item {
             onClicked: {
 //                sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                    sudodispatcher.bind_signals_after_dbus_start();
+                    if(!sudodispatcher.getUKSignalFlag()) {
+                        sudodispatcher.setUKSignalFlag(true);
+                        sudodispatcher.bind_signals_after_dbus_start();
+                    }
                     resetBtn.visible = false;
                     if(root.check_flag)
                     {

@@ -49,6 +49,8 @@ public:
     QMap<QString, QString> status_dict;
     Q_INVOKABLE QString get_value(QString);
     Q_INVOKABLE QStringList getUKSoftwareList();
+    Q_INVOKABLE bool getUKSignalFlag();
+    Q_INVOKABLE void setUKSignalFlag(bool flag);
     Q_INVOKABLE void send_software_current_status(QString current_status);
 
 
@@ -60,6 +62,9 @@ public:
     Q_INVOKABLE QString check_pkg_status_qt(QString pkgName);
     Q_INVOKABLE void apt_get_update_qt();
     Q_INVOKABLE QStringList get_args();
+    Q_INVOKABLE void add_source_ubuntukylin_qt();
+    Q_INVOKABLE void remove_source_ubuntukylin_qt();
+
 signals:
     void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
     void finishCleanWorkError(QString msg);
@@ -91,6 +96,7 @@ private:
     int alert_x;
     //保额次alert的y坐标
     int alert_y;
+    bool signalFlag;
 };
 
 #endif // SUDODISPATCHER_H

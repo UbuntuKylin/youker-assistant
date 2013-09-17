@@ -40,6 +40,8 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
     this->alert_width = 292;
     this->alert_width_bg = 329;
     this->alert_height = 54;
+
+    signalFlag = false;
 //    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
 }
@@ -79,6 +81,14 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
 QString SudoDispatcher::get_sudo_daemon_qt() {
     QDBusReply<QString> reply = sudoiface->call("get_sudo_daemon");
     return reply.value();
+}
+
+bool SudoDispatcher::getUKSignalFlag() {
+    return signalFlag;
+}
+
+void SudoDispatcher::setUKSignalFlag(bool flag) {
+    signalFlag = flag;
 }
 
 void SudoDispatcher::get_software_source_progress(QString cur_status) {
@@ -193,6 +203,7 @@ void SudoDispatcher::update_pkg_qt(QString pkgName) {
 
 void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
     sudoiface->call("check_pkgs_status", pkgNameList);
+//    return reply.value();
 }
 
 QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
@@ -209,6 +220,14 @@ void SudoDispatcher::apt_get_update_qt() {
     tmplist << "Kobe" << "Lee";
     KThread *thread = new KThread(sudoiface, "apt_get_update", tmplist);
     thread->start();
+}
+
+void SudoDispatcher::add_source_ubuntukylin_qt() {
+    sudoiface->call("add_source_ubuntukylin");
+}
+
+void SudoDispatcher::remove_source_ubuntukylin_qt() {
+    sudoiface->call("remove_source_ubuntukylin");
 }
 
 void SudoDispatcher::start_to_update() {
