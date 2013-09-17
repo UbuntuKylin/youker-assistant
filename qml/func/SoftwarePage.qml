@@ -176,14 +176,22 @@ Item {
             target: sudodispatcher
             onFinishSoftwareStatus: {
                 software.installed_status = content.soft_status;
+//                console.log("3333333333333");
+//                console.log(software.installed_status);
+//                console.log(content.soft_status);
                 actionBtn.text = software.reset_text(software.installed_status);
             }
 
             onFinishSoftwareApt: {
                 if(type == "apt_stop") {
+//                    console.log("000000000000");
                     software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
                     if(software.tm_status == software.installed_status) {
+//                        console.log("111111111111111111");
+//                        console.log(software.software_name);
+//                        console.log(software.tm_status);
+//                        console.log(software.installed_status);
                         sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {
@@ -307,19 +315,35 @@ Item {
                 onClicked: {
                     software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     if(software.installed_status == "n") {
-                        sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
-                        sudodispatcher.install_pkg_qt(software.software_name);
+                        if(content.delegate_name == "wine-qq2012-longeneteam") {
+//                            console.log("test qq");
+                        }
+                        else {
+                            sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                            sudodispatcher.install_pkg_qt(software.software_name);
+                        }
                     }
                     else if(software.installed_status == "i") {
                         sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                         sudodispatcher.uninstall_pkg_qt(software.software_name);
                     }
                     else if(software.installed_status == "u") {
-                        sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
-                        sudodispatcher.update_pkg_qt(software.software_name);
+                        if(content.delegate_name == "wine-qq2012-longeneteam") {
+//                            console.log("test qq222222222");
+                        }
+                        else {
+                            sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                            sudodispatcher.update_pkg_qt(software.software_name);
+                        }
                     }
                     else{
-                        sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                        if(content.delegate_name == "wine-qq2012-longeneteam") {
+                            Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php")
+                        }
+                        else {
+//                            console.log("222222222222");
+                            sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                        }
                     }
                 }
             }

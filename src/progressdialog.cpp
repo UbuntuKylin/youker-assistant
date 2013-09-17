@@ -60,7 +60,6 @@ void ProgressDialog::setValue(QString type, QString msg) {
         ratio_sus=1;
     }
     else if(type == "down_pulse"){
-        qDebug() << "down_pulse->" + msg;
         if(!msg.isEmpty()) {
             if(msg.contains("download_bytes") && msg.contains("total_bytes")) {
                 QStringList process_value = msg.split(",");
@@ -76,7 +75,6 @@ void ProgressDialog::setValue(QString type, QString msg) {
 //                    ui->progressBar->setValue(ratio.toInt());
                     ratio_sus=ratio.toInt();
                     if(progress_flag) {
-                        qDebug() << "down_pulse hide";
                         this->hide();
                         update_software_progress(ratio);
                     }
@@ -90,7 +88,6 @@ void ProgressDialog::setValue(QString type, QString msg) {
     }
     else if(type == "down_stop") {
         if(progress_flag) {
-            qDebug() << "down_stop hide";
             this->hide();
         }
         else {
@@ -100,7 +97,9 @@ void ProgressDialog::setValue(QString type, QString msg) {
         }
     }
     else if(type == "apt_start"){
-        this->show();
+        if(this->isHidden()) {
+            this->show();
+        }
         ui->label->setText("开始");
 //        ui->progressBar->setValue(0);
         ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
@@ -108,7 +107,6 @@ void ProgressDialog::setValue(QString type, QString msg) {
 
     }
     else if(type == "apt_pulse"){
-        qDebug() << "apt_pulse->" + msg;
         if(!msg.isEmpty()) {
             if(msg.contains(",")) {
                 QStringList process_value = msg.split(",");

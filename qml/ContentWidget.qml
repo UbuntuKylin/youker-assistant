@@ -41,7 +41,6 @@ Item {
     property string introduction_image2: ""
     property string soft_status: "n"
 
-
 //    radius: 10
 //    color: "lightgray"
 
