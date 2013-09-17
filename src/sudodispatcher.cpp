@@ -42,6 +42,7 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
     this->alert_height = 54;
 
     signalFlag = false;
+
 //    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
 }
@@ -203,7 +204,6 @@ void SudoDispatcher::update_pkg_qt(QString pkgName) {
 
 void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
     sudoiface->call("check_pkgs_status", pkgNameList);
-//    return reply.value();
 }
 
 QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
@@ -232,6 +232,7 @@ void SudoDispatcher::remove_source_ubuntukylin_qt() {
 
 void SudoDispatcher::start_to_update() {
     progressdialog->hide();
+    this->add_source_ubuntukylin_qt();
     emit callMasklayer();
     apt_get_update_qt();
 }

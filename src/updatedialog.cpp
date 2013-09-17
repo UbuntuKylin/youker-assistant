@@ -16,7 +16,7 @@
 #include "updatedialog.h"
 #include "ui_updatedialog.h"
 #include <QMouseEvent>
-
+#include <QDebug>
 UpdateDialog::UpdateDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::UpdateDialog)

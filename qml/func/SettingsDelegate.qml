@@ -120,7 +120,9 @@ Rectangle {
                         sudodispatcher.setUKSignalFlag(true);
                         sudodispatcher.bind_signals_after_dbus_start();
                     }
+                    sudodispatcher.add_source_ubuntukylin_qt();
                     sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                    sudodispatcher.remove_source_ubuntukylin_qt();
                     pageStack.push(softwarerecommend);
                 }
                 else {
@@ -130,7 +132,9 @@ Rectangle {
                             sudodispatcher.setUKSignalFlag(true);
                             sudodispatcher.bind_signals_after_dbus_start();
                         }
+                        sudodispatcher.add_source_ubuntukylin_qt();
                         sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                        sudodispatcher.remove_source_ubuntukylin_qt();
                         pageStack.push(softwarerecommend);
                     }
                 }

@@ -145,8 +145,6 @@ Item {
                 }
             }
             else if (!checkbox.checked) {
-//                console.log("lixiang->");
-//                console.log(btn_flag);
                 if (btn_flag == "apt_work") {
                     systemdispatcher.del_apt_args(container.text);
                 }

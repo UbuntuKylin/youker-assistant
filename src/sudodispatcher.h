@@ -45,7 +45,6 @@ public:
     AuthDialog *authdialog;
     ProgressDialog *progressdialog;
     UpdateDialog *updatedialog;
-
     QMap<QString, QString> status_dict;
     Q_INVOKABLE QString get_value(QString);
     Q_INVOKABLE QStringList getUKSoftwareList();
@@ -85,6 +84,7 @@ public slots:
     void handler_software_check_status_signal(QStringList statusDict);
     void start_to_update();
     void get_software_source_progress(QString cur_status);
+//    Q_INVOKABLE void apt_get_update_qt();
 private:
     QStringList strlist;
     int mainwindow_width;

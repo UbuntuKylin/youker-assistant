@@ -36,8 +36,10 @@ Item {
         }
         onFinishSoftwareFetch: {
             if(type == "down_stop" && root.source_status_text != "") {
+                actionBtn.text = software.reset_text(sudodispatcher.check_pkg_status_qt(software.software_name));
                 root.source_status_text = "";
                 root.state = "SofeWareState";
+                sudodispatcher.remove_source_ubuntukylin_qt();
                 toolkits.alertMSG("软件源更新完成！", mainwindow.pos.x, mainwindow.pos.y);
             }
 //            else if(type == "down_fail") {
@@ -126,7 +128,7 @@ Item {
     }
     Rectangle {
         id: software
-        property bool in_no: false
+        property bool checkFlag: false
         //需要时常变动的变量
         property string software_name: content.delegate_name
         property string software_appname: content.delegate_appname
@@ -212,7 +214,6 @@ Item {
                 software.installed_status = content.soft_status;
                 actionBtn.text = software.reset_text(software.installed_status);
             }
-
             onFinishSoftwareApt: {
                 if(type == "apt_stop") {
                     software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
@@ -221,11 +222,8 @@ Item {
                     }
                     else {
                         software.installed_status = software.tm_status;
-                        if(software.in_no) {
-                            //delete software source
-                            sudodispatcher.remove_source_ubuntukylin_qt();
-                            software.in_no = false;
-                        }
+                        //delete software source
+                        sudodispatcher.remove_source_ubuntukylin_qt();
                         if(software.installed_status == "i") {
                             actionBtn.text = "立即卸载";
                             statusImage.source = "../img/icons/installed.png"
@@ -347,7 +345,20 @@ Item {
                 text: software.show_text(software.installed_status)
                 fontsize: 20
                 onClicked: {
-                    software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                    var mylist = sudodispatcher.getUKSoftwareList();
+                    for (var q=0; q< mylist.length; q++) {
+                        if(mylist[q] == software.software_name) {
+                            software.checkFlag  = true;
+                            sudodispatcher.add_source_ubuntukylin_qt();
+                            software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                            sudodispatcher.remove_source_ubuntukylin_qt();
+                            break;
+                        }
+                    }
+                    if(software.checkFlag)
+                        software.checkFlag = false;
+                    else
+                        software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     if(software.installed_status == "n") {
                         if(content.delegate_name == "wine-qq2012-longeneteam") {
                             Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
@@ -359,7 +370,6 @@ Item {
                             var softwarelist = sudodispatcher.getUKSoftwareList();
                             for (var i=0; i< softwarelist.length; i++) {
                                 if(softwarelist[i] == software.software_name) {
-                                    software.in_no = true;
                                     sudodispatcher.add_source_ubuntukylin_qt();
                                     break;
                                 }
@@ -370,7 +380,13 @@ Item {
                     }
                     else if(software.installed_status == "i") {
                         //add software source
-                        software.in_no = false;
+                        var software_list = sudodispatcher.getUKSoftwareList();
+                        for (var k=0; k< software_list.length; k++) {
+                            if(software_list[k] == software.software_name) {
+                                sudodispatcher.add_source_ubuntukylin_qt();
+                                break;
+                            }
+                        }
                         sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
                         sudodispatcher.uninstall_pkg_qt(software.software_name);
                     }
@@ -383,9 +399,8 @@ Item {
                         }
                         else {
                             var softwareList = sudodispatcher.getUKSoftwareList();
-                            for (var j=0; i< softwareList.length; j++) {
+                            for (var j=0; j< softwareList.length; j++) {
                                 if(softwareList[j] == software.software_name) {
-                                    software.in_no = true;
                                     sudodispatcher.add_source_ubuntukylin_qt();
                                     break;
                                 }
