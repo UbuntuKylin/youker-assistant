@@ -16,7 +16,7 @@
 #include <QDebug>
 #include "KThread.h"
 
-KThread::KThread(QDBusInterface *systemiface, QString method, QStringList arglist, QString flag):QThread()
+KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, QString method, QString flag):QThread()
 {
     iface = systemiface;
     method_name = method;

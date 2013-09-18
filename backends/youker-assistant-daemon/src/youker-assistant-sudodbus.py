@@ -22,8 +22,7 @@ import dbus
 import dbus.mainloop.glib
 
 from gi.repository import GObject
-
-VERSION = "0.1.1"
+from common.base import VERSION
 
 if __name__ == '__main__':
     parser = optparse.OptionParser(prog="youker-assistant-sudo-daemon",
@@ -39,7 +38,6 @@ if __name__ == '__main__':
 
     #TODO make it exist when timeout
     from sudodbus.daemon import SudoDaemon
-    print("The sudodbus server is running..........")
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = GObject.MainLoop()
     SudoDaemon(dbus.SystemBus(), mainloop)

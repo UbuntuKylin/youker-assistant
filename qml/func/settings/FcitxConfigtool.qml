@@ -721,7 +721,7 @@ Rectangle {
 //            button2Label: qsTr("上一步")
 //            button3Label: qsTr("下一步")
         onCancelBtnClicked: {
-            fcitxcfgwizard.send_fcitx_ok_warn();
+            fcitxcfgwizard.send_fcitx_ok_warn(mainwindow.x, mainwindow.y);
         }
         onGobackBtnClicked: {
                 pageStack.push(functioncollection)

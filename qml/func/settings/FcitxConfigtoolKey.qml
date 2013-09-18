@@ -487,7 +487,7 @@ Rectangle {
             pageStack.push(functioncollection);
         }
         onCancelBtnClicked: {
-            fcitxcfgwizard.send_fcitx_ok_warn();
+            fcitxcfgwizard.send_fcitx_ok_warn(mainwindow.x, mainwindow.y);
         }
         onGobackBtnClicked: {
             pageStack.push(fcitxConfigtoolFontpage);//静态添加页面

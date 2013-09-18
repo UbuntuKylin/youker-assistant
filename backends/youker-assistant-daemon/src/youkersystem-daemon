@@ -7,8 +7,7 @@ import dbus
 import dbus.mainloop.glib
 
 from gi.repository import GObject
-
-VERSION = "0.1"
+from common.base import VERSION
 
 if __name__ == '__main__':
     parser = optparse.OptionParser(prog="youkersystem-daemon",

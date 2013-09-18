@@ -237,6 +237,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             hoverimage: "blue1.png"
             text: "浏览..."
+            fontcolor: "#318d11"
             width: 95
             height: 30
             onClicked: {

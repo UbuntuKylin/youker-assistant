@@ -128,8 +128,8 @@ public:
 
     Q_INVOKABLE QString show_font_dialog();
 
-    Q_INVOKABLE void send_fcitx_ok_warn();
-    void create_fcitx_ok_warn();
+    Q_INVOKABLE void send_fcitx_ok_warn(int window_x, int window_y);
+    void create_fcitx_ok_warn(int window_x, int window_y);
 
     //
 
@@ -145,6 +145,15 @@ private:
     void set_next_page_key();
     //配置下发，让修改立即生效
     void update_cfg_to_fcitx();
+
+    int mainwindow_width;
+    int mainwindow_height;
+    int alert_width;
+    int alert_height;
+    //本次alert的x坐标
+    int alert_x;
+    //保额次alert的y坐标
+    int alert_y;
 };
 
 #endif // FCITXCFGWIZARD_H

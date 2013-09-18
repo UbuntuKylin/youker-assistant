@@ -58,6 +58,11 @@ FcitxCfgWizard::FcitxCfgWizard(QObject *parent) :
 //    QObject::connect(fcitxWarnSig, SIGNAL(fcitxWarntest()), rootObject, SLOT(refreshFcitxtool()));
       connect(m_connection, SIGNAL(connected()),SLOT(connected()));
 
+
+      this->mainwindow_width = 850;
+      this->mainwindow_height = 600;
+      this->alert_width = 329;
+      this->alert_height = 195;
 }
 
 FcitxCfgWizard::~FcitxCfgWizard()
@@ -778,15 +783,18 @@ QString FcitxCfgWizard::get_fcitx_hot_key_string(unsigned int qtcode, unsigned i
     return ret_value;
 }
 
-void FcitxCfgWizard::send_fcitx_ok_warn()
+void FcitxCfgWizard::send_fcitx_ok_warn(int window_x, int window_y)
 {
-    create_fcitx_ok_warn();
+    create_fcitx_ok_warn(window_x, window_y);
 }
 
-void FcitxCfgWizard::create_fcitx_ok_warn()
+void FcitxCfgWizard::create_fcitx_ok_warn(int window_x, int window_y)
 {
       fcitxWarnSig = new FcitxWarnDialog();
       connect(fcitxWarnSig,SIGNAL(fcitxWarntest()),this,SLOT(emitrefreshFcitxSig()));
+      this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+      this->alert_y = window_y + mainwindow_height - 400;
+      fcitxWarnSig->move(this->alert_x, this->alert_y);
       fcitxWarnSig->exec();
 }
 

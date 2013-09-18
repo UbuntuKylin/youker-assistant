@@ -27,13 +27,13 @@
 class KThread : public QThread
 {
 public:
-    KThread(QDBusInterface *systemiface=0, QString method="", QStringList arglist={}, QString flag="");
+    KThread(QStringList &arglist, QDBusInterface *systemiface=0, QString method="", QString flag="");
     ~KThread();
     void stop();
-    QDBusInterface *iface;
 protected:
     void run();
 private:
+    QDBusInterface *iface;
     QStringList list;
     QString method_name;
     QString file_flag;

@@ -162,7 +162,7 @@ void SudoDispatcher::show_progress_dialog(int window_x, int window_y) {
 }
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
-    KThread *thread = new KThread(sudoiface, "clean_package_cruft", strlist);
+    KThread *thread = new KThread(strlist, sudoiface, "clean_package_cruft");
     thread->start();
 }
 
@@ -188,17 +188,17 @@ QStringList SudoDispatcher::getUKSoftwareList() {
 
 // -------------------------software-center-------------------------
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
-    KThread *thread = new KThread(sudoiface, "install_pkg", strlist, pkgName);
+    KThread *thread = new KThread(strlist, sudoiface, "install_pkg", pkgName);
     thread->start();
 }
 
 void SudoDispatcher::uninstall_pkg_qt(QString pkgName) {
-    KThread *thread = new KThread(sudoiface, "uninstall_pkg", strlist, pkgName);
+    KThread *thread = new KThread(strlist, sudoiface, "uninstall_pkg", pkgName);
     thread->start();
 }
 
 void SudoDispatcher::update_pkg_qt(QString pkgName) {
-    KThread *thread = new KThread(sudoiface, "update_pkg", strlist, pkgName);
+    KThread *thread = new KThread(strlist, sudoiface, "update_pkg", pkgName);
     thread->start();
 }
 
@@ -218,7 +218,7 @@ void SudoDispatcher::send_software_current_status(QString current_status) {
 void SudoDispatcher::apt_get_update_qt() {
     QStringList tmplist;
     tmplist << "Kobe" << "Lee";
-    KThread *thread = new KThread(sudoiface, "apt_get_update", tmplist);
+    KThread *thread = new KThread(tmplist, sudoiface, "apt_get_update");
     thread->start();
 }
 

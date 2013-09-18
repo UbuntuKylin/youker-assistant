@@ -195,7 +195,7 @@ QString SystemDispatcher::get_free_memory_qt() {
 }
 
 void SystemDispatcher::get_network_flow_qt() {
-    KThread *thread = new KThread(systemiface, "get_network_flow", tmplist);
+    KThread *thread = new KThread(tmplist, systemiface, "get_network_flow");
     thread->start();
 }
 
@@ -249,32 +249,32 @@ QString SystemDispatcher::show_file_dialog(QString flag) {
 }
 
 void SystemDispatcher::clean_history_records_qt() {
-    KThread *thread = new KThread(systemiface, "clean_history_records", tmplist);
+    KThread *thread = new KThread(tmplist, systemiface, "clean_history_records");
     thread->start();
 }
 
 void SystemDispatcher::clean_system_history_qt() {
-    KThread *thread = new KThread(systemiface, "clean_system_history", tmplist);
+    KThread *thread = new KThread(tmplist, systemiface, "clean_system_history");
     thread->start();
 }
 
 void SystemDispatcher::clean_dash_history_qt() {
-    KThread *thread = new KThread(systemiface, "clean_dash_history", tmplist);
+    KThread *thread = new KThread(tmplist, systemiface, "clean_dash_history");
     thread->start();
 }
 
 void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
-    KThread *thread = new KThread(systemiface, "clean_cookies_records", strlist);
+    KThread *thread = new KThread(strlist, systemiface, "clean_cookies_records");
     thread->start();
 }
 
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
-    KThread *thread = new KThread(systemiface, "clean_package_cruft", strlist);
+    KThread *thread = new KThread(strlist, systemiface, "clean_package_cruft");
     thread->start();
 }
 
 void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
-    KThread *thread = new KThread(systemiface, "clean_file_cruft", strlist, str);
+    KThread *thread = new KThread(strlist, systemiface, "clean_file_cruft", str);
     thread->start();
 }
 
@@ -287,11 +287,11 @@ QStringList SystemDispatcher::get_center_data() {
 }
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
-    KThread *thread = new KThread(systemiface, "clean_by_main_one_key", strlist);
+    KThread *thread = new KThread(strlist, systemiface, "clean_by_main_one_key");
     thread->start();
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
-    KThread *thread = new KThread(systemiface, "clean_by_second_one_key", strlist);
+    KThread *thread = new KThread(strlist, systemiface, "clean_by_second_one_key");
     thread->start();
 }
 //------------------------------------------------------

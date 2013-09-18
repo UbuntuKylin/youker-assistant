@@ -443,7 +443,7 @@ Rectangle {
         id: toolBar
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onCancelBtnClicked: {
-            fcitxcfgwizard.send_fcitx_ok_warn();
+            fcitxcfgwizard.send_fcitx_ok_warn(mainwindow.x, mainwindow.y);
         }
 
         onGobackBtnClicked: {
