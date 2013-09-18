@@ -229,7 +229,12 @@ Item {
                             statusImage.source = "../img/icons/installed.png"
                         }
                         else if(software.installed_status == "n") {
-                            actionBtn.text = "立即安装";
+                            if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                                actionBtn.text = "进入网页";
+                            }
+                            else {
+                                actionBtn.text = "立即安装";
+                            }
                             statusImage.source = "../img/icons/noinstalled.png"
                         }
                         else if(software.installed_status == "u") {
@@ -278,9 +283,9 @@ Item {
                 fontcolor: "grey"
                 fontsize: 14
                 onClicked: {
-                    sudodispatcher.add_source_ubuntukylin_qt();
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
-                    sudodispatcher.remove_source_ubuntukylin_qt();
+//                    sudodispatcher.add_source_ubuntukylin_qt();
+//                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+//                    sudodispatcher.remove_source_ubuntukylin_qt();
                     pageStack.push(softwarerecommend);
 //                    sudodispatcher.reGetStatusList();
                 }

@@ -9,7 +9,7 @@ youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
   * Fixed the bug about Software signals(LP: #1226389).
   * Modify KThread and add base.py.
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Wed, 18 Sep 2013 09:36:28 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Wed, 18 Sep 2013 16:22:14 +0800
 
 youker-assistant (0.2.0-0ubuntu1) saucy; urgency=low
 
