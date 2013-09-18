@@ -160,7 +160,7 @@ Rectangle {
             id: docufontBtn
             hoverimage: "blue4.png"
             text: "更换字体"
-            fontcolor: "#318d11"
+            fontcolor: "#086794"
             width: 105
             height: 30
             onClicked: sessiondispatcher.show_font_dialog("documentfont");

@@ -278,7 +278,11 @@ Item {
                 fontcolor: "grey"
                 fontsize: 14
                 onClicked: {
+                    sudodispatcher.add_source_ubuntukylin_qt();
+                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                    sudodispatcher.remove_source_ubuntukylin_qt();
                     pageStack.push(softwarerecommend);
+//                    sudodispatcher.reGetStatusList();
                 }
             }
             Text {

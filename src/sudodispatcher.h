@@ -94,6 +94,8 @@ signals:
     void notifySourceStatusToQML(QString cur_status);
     //调用遮罩层
     void callMasklayer();
+    //重新获取所有软件状态
+//    void reGetList();
 
 public slots:
     //后台发来清理不需要的包的正确过程中的信号后响应该函数
@@ -110,6 +112,8 @@ public slots:
     void startUpdateSoftwareSource();
     //得到进度条传来的软件源更新的实时进度
     void getSoftwareSourceUpdateProgress(QString cur_status);
+    //返回软件主页面时重新获取所有软件的状态
+//    void reGetStatusList();
 private:
     QDBusInterface *sudoiface;
     AuthDialog *authdialog;

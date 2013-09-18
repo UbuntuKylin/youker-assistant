@@ -53,7 +53,7 @@ Item {
 //    property alias expandedItemCount: subItemRepeater.count
     property bool expanded: true //kobe:子项扩展默认打开
     property bool null_flag: false
-
+    property string yesOrno: "false"
     property string directory: ""
     property int size: 0
     property int deleget_arrow :0
@@ -65,7 +65,6 @@ Item {
         var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
         if (largestfile_data == "")
         {
-            console.log("null list.............");
             root.null_flag = true;
             deleget_arrow =0;
             if(statusImage.visible == true)
@@ -88,7 +87,8 @@ Item {
             }
             else {
                 subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": ""});
-                systemdispatcher.set_largestfile_args(splitlist[1]);
+                if(root.yesOrno == "true")
+                    systemdispatcher.set_largestfile_args(splitlist[1]);
             }
         }
         root.sub_num -= num;
@@ -237,7 +237,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             hoverimage: "blue1.png"
             text: "浏览..."
-            fontcolor: "#318d11"
+            fontcolor: "#086794"
             width: 95
             height: 30
             onClicked: {
@@ -322,7 +322,7 @@ Item {
                 delegate: Cleardelegate{
                     sub_num:root.lar_num;sub_model:subModel;btn_flag:root.btn_flag;arrow_display:deleget_arrow;
                     delegate_flag: false
-                    main_check_value: "false"
+                    main_check_value: root.yesOrno
                     onSubpressed: {root.sub_num=hMark}
                     onCheckchanged: {root.check_flag=checkchange}
                 }

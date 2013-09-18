@@ -219,8 +219,6 @@ Item {
                             }
                         }
                         else if (btn_flag == "package_work") {
-                            console.log("start to clean......");
-                            console.log(systemdispatcher.get_package_args());
                             sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
                             deleget_arrow=1;
                         }

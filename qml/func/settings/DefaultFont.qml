@@ -190,7 +190,7 @@ Rectangle {
                 Common.Button {
                     id: fontBtn
                     hoverimage: "blue4.png"
-                    fontcolor: "#318d11"
+                    fontcolor: "#086794"
                     text: "更换字体"
                     width: 105
                     height: 30
@@ -243,7 +243,7 @@ Rectangle {
                     id: desktopfontBtn
                     hoverimage: "blue4.png"
                     text: "更换字体"
-                    fontcolor: "#318d11"
+                    fontcolor: "#086794"
                     width: 105
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("desktopfont");
@@ -295,7 +295,7 @@ Rectangle {
                     id: monofontBtn
                     hoverimage: "blue4.png"
                     text: "更换字体"
-                    fontcolor: "#318d11"
+                    fontcolor: "#086794"
                     width: 105
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("monospacefont");

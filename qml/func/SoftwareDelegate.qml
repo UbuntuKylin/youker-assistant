@@ -53,7 +53,6 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             if (flag == "AdobeFlash"){
-//                content.soft_status = sudodispatcher.check_pkg_status_qt("flashplugin-installer");
                 content.delegate_name= "flashplugin-installer";
                 content.delegate_appname = "Adobe Flash Player插件"
                 content.delegate_image= "../img/logo/adobe-flash.jpg"

@@ -84,6 +84,10 @@ QString SudoDispatcher::get_sudo_daemon_qt() {
     return reply.value();
 }
 
+//void SudoDispatcher::reGetStatusList() {
+//    emit reGetList();
+//}
+
 bool SudoDispatcher::getUKSignalFlag() {
     return signalFlag;
 }
@@ -201,7 +205,8 @@ void SudoDispatcher::update_pkg_qt(QString pkgName) {
 }
 
 void SudoDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
-    sudoiface->call("check_pkgs_status", pkgNameList);
+    KThread *thread = new KThread(pkgNameList, sudoiface, "check_pkgs_status");
+    thread->start();
 }
 
 QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {

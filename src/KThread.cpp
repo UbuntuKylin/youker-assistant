@@ -67,6 +67,9 @@ void KThread::run() {
     else if(methodName == "apt_get_update") {
         iface->call("apt_get_update");
     }
+    else if(methodName == "check_pkgs_status") {
+        iface->call("check_pkgs_status", list);
+    }
 }
 void KThread::stop() {
     wait();

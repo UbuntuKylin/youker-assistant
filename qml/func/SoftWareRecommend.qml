@@ -37,7 +37,16 @@ Item {
 
     Component.onCompleted: {
     }
-
+//    Connections
+//    {
+//        target: sudodispatcher
+//        onReGetList: {
+//            sudodispatcher.add_source_ubuntukylin_qt();
+//            sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+//            sudodispatcher.remove_source_ubuntukylin_qt();
+//        }
+//    }
+//
     //背景
     Image {
         source: "../img/skin/bg-middle.png"
