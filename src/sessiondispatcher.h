@@ -35,44 +35,49 @@ public:
     explicit SessionDispatcher(QObject *parent = 0);
     ~SessionDispatcher();
     QDBusInterface *sessioniface;
+    //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_session_daemon_qt();
-
+    //扫描浏览器历史记录
     Q_INVOKABLE int scan_history_records_qt();
+    //扫描系统最近打开文件的历史记录
     Q_INVOKABLE int scan_system_history_qt();
+    //扫描Dash历史记录
     Q_INVOKABLE int scan_dash_history_qt();
+    //扫描同名文件
     Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
+    //扫描大文件
     Q_INVOKABLE QStringList scan_of_large_qt(int size, QString abspath);
+    //扫描cookies
     Q_INVOKABLE QStringList scan_cookies_records_qt();
+    //扫描不需要的deb包
     Q_INVOKABLE QStringList scan_unneed_packages_qt();
+    //扫描apt缓存
     Q_INVOKABLE QStringList scan_apt_cruft_qt();
+    //扫描软件中心缓存
     Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
+    //退出sessiondubs服务
     Q_INVOKABLE void exit_qt();
-
-    Q_INVOKABLE void send_message_dialog(int window_x, int window_y);
-    void create_messagedialog(int window_x, int window_y);
-
-    Q_INVOKABLE void send_checkscreen_dialog(int window_x, int window_y);
-    void create_checkscreendialog(int window_x, int window_y);
-
-    Q_INVOKABLE void send_warningdialog_msg(QString title, QString content, int window_x, int window_y);
-    void create_warningdialog(QString title, QString content, int window_x, int window_y);
-
+    //弹出新特性对话框
+    Q_INVOKABLE void showFeatureDialog(int window_x, int window_y);
+    //弹出屏幕坏点检测对话框
+    Q_INVOKABLE void showCheckscreenDialog(int window_x, int window_y);
+    //弹出警告提示对话框
+    Q_INVOKABLE void showWarningDialog(QString title, QString content, int window_x, int window_y);
 
     Q_INVOKABLE void set_page_num(int num);
     Q_INVOKABLE int get_page_num();
     int page_num;
 
-    Q_INVOKABLE void setsize_for_large_qt(int size);
-    Q_INVOKABLE QString get_home_path();
+    //得到当前登录用户的主目录
+    Q_INVOKABLE QString getHomePath();
 
     //----get system message
-    QMap<QString, QVariant> myinfo;
+    //存放当前系统和桌面信息
+    QMap<QString, QVariant> systemInfo;
+    //得到当前系统和桌面信息
     Q_INVOKABLE void get_system_message_qt();
-    Q_INVOKABLE QString get_value(QString);
-
-    Q_INVOKABLE bool set_launcher(bool);
-    Q_INVOKABLE QStringList get_themes();
-    Q_INVOKABLE void set_theme(QString theme);
+    //通过键得到对应的单个信息的值
+    Q_INVOKABLE QString getSingleInfo(QString);
 
     /*-------------------desktop of beauty-------------------*/
     Q_INVOKABLE bool set_show_desktop_icons_qt(bool flag);
@@ -111,8 +116,6 @@ public:
     Q_INVOKABLE void restore_default_font_signal(QString flag);
     Q_INVOKABLE void show_font_dialog(QString flag);
     Q_INVOKABLE QString show_folder_dialog();
-
-
     Q_INVOKABLE QString get_font_qt();
     Q_INVOKABLE bool set_font_qt_default(QString font);
     bool set_font_qt(QString font);
@@ -159,10 +162,12 @@ public:
     Q_INVOKABLE void set_sound_theme_qt(QString theme);
     
 signals:
-    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
-    void finishScanWork(QString msg);//绑定到QML的Handler：onFinishScanWork
+    //告知QML那种某种类型的字体样式
+    void notifyFontStyleToQML(QString categoryFlag);
+    //扫描完成后发送信号
+    void finishScanWork(QString msg);
 public slots:
-    QString show_signal(QString msg);
+    //扫描完成后触发finishScanWork信号
     void handler_scan_rubbish(QString msg);
 private:
     int mainwindow_width;

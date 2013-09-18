@@ -109,13 +109,10 @@ Item {
         ListElement {itemTitle: ""; desc: ""; number: ""}
     }
 
-
-
-    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
         target: sudodispatcher
-        onFinishCleanWorkError: {
+        onFinishCleanDebError: {
             if (btn_flag == "package_work") {
 //                titleBar.work_result = msg;
                 titleBar.state = "UnneedWorkError";
@@ -123,7 +120,7 @@ Item {
             }
 
          }
-        onFinishCleanWork: {
+        onFinishCleanDeb: {
             if (btn_flag == "package_work") {
                 if (msg == "") {
                     resetBtn.visible = true;
@@ -198,7 +195,6 @@ Item {
             fontsize: 15
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-//                sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                     if(!sudodispatcher.getUKSignalFlag()) {
                         sudodispatcher.setUKSignalFlag(true);
@@ -213,7 +209,7 @@ Item {
                             if(root.null_flag == true) {
                                 root.state = "UnneedWorkEmpty";
                                 deleget_arrow=0;
-                                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                                sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                             }
                             else if(root.null_flag == false)
                             {
@@ -230,10 +226,10 @@ Item {
                         }
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else {
-                    sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }

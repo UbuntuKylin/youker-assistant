@@ -53,7 +53,7 @@ Tray::Tray(QWidget *parent)
     frame = new SuspensionFrame;
     frame->hide();
     connect(this, SIGNAL(sysc_data(QString, QString,QString,int,QString, QString)), frame, SLOT(get_sysc_data(QString,QString,QString,int,QString, QString)));
-    connect(frame, SIGNAL(accelerate_memory()), this, SLOT(start_to_accelerate()));
+    connect(frame, SIGNAL(accelerate_memory()), this, SLOT(startMemoryAccelerate()));
 
     QTimer *timer = new QTimer(this);
     timer->setInterval(3000);
@@ -97,7 +97,7 @@ void Tray::updateData() {
     update();
 }
 
-void Tray::start_to_accelerate() {
+void Tray::startMemoryAccelerate() {
     dispather->cleanup_memory_qt();
     updateData();
 }
@@ -147,7 +147,7 @@ void Tray::showOrHide() {
 }
 
 void Tray::showOrHideQml() {
-    emit show_Qml();
+    emit showOrHideQmlSignal();
 }
 
 void Tray::mousePressEvent(QMouseEvent *event) {
@@ -212,19 +212,19 @@ QSize Tray::sizeHint()const {
     return QSize(height(),height());
 }
 
-void Tray::resizeEvent(QResizeEvent*event) {
+void Tray::resizeEvent(QResizeEvent *event) {
     wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
     wheel.fill(palette().background().color());
     update();
 }
 
-void Tray::paintEvent(QPaintEvent* event) {
+void Tray::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     QStyleOption opt;
 
     QPixmap background;
     background.load(":/pixmap/image/accelerate-bg0.png");
-    painter.drawPixmap(0,0, background);
+    painter.drawPixmap(0, 0, background);
 
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);

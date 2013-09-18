@@ -30,7 +30,6 @@
 #include <QAction>
 #include "ui_tray.h"
 #include "suspensionframe.h"
-
 #include "systemdispatcher.h"
 
 class Tray: public QWidget, private Ui::Tray
@@ -40,10 +39,11 @@ public:
     explicit Tray(QWidget *parent = 0);
     virtual ~Tray();
     QIcon icon;
+    //创建托盘
     void createTray();
-
     QSystemTrayIcon *trayIcon;
     QMenu *trayMenu;
+    //监控球、QML、退出程序三个托盘菜单
     QAction *actionShow, *actionQml, *actionQuit;
 
     virtual QSize sizeHint()const;
@@ -51,7 +51,6 @@ private:
     QPoint dragPos;
     SuspensionFrame *frame;
     SystemDispatcher *dispather;
-
     QString cpu_value;
     QString up_speed;
     QString down_speed;
@@ -62,29 +61,32 @@ private:
     QString ratio;
     QStringList speed;
     QStringList total_speed;
-
     QSize initSize;
     QImage wheel;
     QPixmap blister;
-//    void update_draw();
     int ratio_sus;
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseDoubleClickEvent(QMouseEvent *event);
-
-    void paintEvent(QPaintEvent* event);
-    void resizeEvent(QResizeEvent* event);
+    void paintEvent(QPaintEvent *);
+    void resizeEvent(QResizeEvent *event);
 
 public slots:
     void handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason);
+    //显示/隐藏监控球
     void showOrHide();
+    //显示/隐藏QML主界面
     void showOrHideQml();
+    //小监控球数据更新
     void updateData();
-    void start_to_accelerate();
+    //开始整理内存，一键加速
+    void startMemoryAccelerate();
 signals:
-    void show_Qml();
+    //显示/隐藏QML主界面的信号
+    void showOrHideQmlSignal();
+    //将小监控球实时更新的数据同步到大监控球
     void sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
 };
 

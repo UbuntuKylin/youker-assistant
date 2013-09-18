@@ -34,58 +34,90 @@ class SudoDispatcher : public QObject
 public:
     explicit SudoDispatcher(QObject *parent = 0);
     ~SudoDispatcher();
+    //退出sudodbus服务
     Q_INVOKABLE void exit_qt();
-    Q_INVOKABLE void show_passwd_dialog(int window_x, int window_y);
-    Q_INVOKABLE void show_progress_dialog(int window_x, int window_y);
-    Q_INVOKABLE void show_update_dialog(int window_x, int window_y);
+    //弹出密码输入框
+    Q_INVOKABLE void showPasswdDialog(int window_x, int window_y);
+    //弹出进度条
+    Q_INVOKABLE void showProgressDialog(int window_x, int window_y);
+    //弹出更新软件源对话框
+    Q_INVOKABLE void showUpdateSourceDialog(int window_x, int window_y);
+    //得到sudodbus验证值，可以通过该值验证服务是否正在运行
     Q_INVOKABLE QString get_sudo_daemon_qt();
+    //清理不需要的已经安装的软件
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
+    //绑定信号槽
     Q_INVOKABLE void bind_signals_after_dbus_start();
+    //通过键值得到对应软件的状态
+    Q_INVOKABLE QString getSoftwareStatus(QString);
+    //得到UbuntuKylin软件源里面软件的列表
+    Q_INVOKABLE QStringList getUKSoftwareList();
+    Q_INVOKABLE bool getUKSignalFlag();
+    Q_INVOKABLE void setUKSignalFlag(bool flag);
+    //通知软件的当前状态
+    Q_INVOKABLE void notifySoftwareCurrentStatus(QString current_status);
+
+    // -------------------------software-center-------------------------
+    //安装软件
+    Q_INVOKABLE void install_pkg_qt(QString pkgName);
+    //卸载软件
+    Q_INVOKABLE void uninstall_pkg_qt(QString pkgName);
+    //升级软件
+    Q_INVOKABLE void update_pkg_qt(QString pkgName);
+    //检查软件列表的状态
+    Q_INVOKABLE void check_pkgs_status_qt(QStringList pkgNameList);
+    //检查软件的状态
+    Q_INVOKABLE QString check_pkg_status_qt(QString pkgName);
+    //更新软件源
+    Q_INVOKABLE void apt_get_update_qt();
+    //得到优客助手提供的软件列表
+    Q_INVOKABLE QStringList getAllSoftwareList();
+    //添加UbuntuKylin软件源
+    Q_INVOKABLE void add_source_ubuntukylin_qt();
+    //删除UbuntuKylin软件源
+    Q_INVOKABLE void remove_source_ubuntukylin_qt();
+
+signals:
+    //不需要的debu包清理完毕发送信号
+    void finishCleanDeb(QString msg);
+    //不需要的debu包清理异常发送信号
+    void finishCleanDebError(QString msg);
+    //软件下载过程发送的信号
+    void finishSoftwareFetch(QString type, QString msg);
+    //软件安装、卸载、升级过程发送的信号
+    void finishSoftwareApt(QString type);
+    //将软件状态通过信号告诉QML
+    void sendSoftwareStatus(QString current_status);
+    //将软件操作过程中的状态和进度告诉给进度条去显示
+    void sendDynamicSoftwareProgress(QString type, QString msg);
+    //将软件源更新进度通知给QML
+    void notifySourceStatusToQML(QString cur_status);
+    //调用遮罩层
+    void callMasklayer();
+
+public slots:
+    //后台发来清理不需要的包的正确过程中的信号后响应该函数
+    void handlerClearDeb(QString msg);
+    //后台发来发来清理不需要的包发生错误的信号后响应该函数
+    void handlerClearDebError(QString msg);
+    //软件下载过程发送信号响应该函数
+    void handlerSoftwareFetch(QString type, QString msg);
+    //软件安装、卸载和升级过程发送信号响应该函数
+    void handlerSoftwareApt(QString type, QString msg);
+    //检查软件列表状态过程中发送状态信号响应该函数
+    void handlerGetSoftwareListStatus(QStringList statusDict);
+    //准备开始更新软件源
+    void startUpdateSoftwareSource();
+    //得到进度条传来的软件源更新的实时进度
+    void getSoftwareSourceUpdateProgress(QString cur_status);
+private:
     QDBusInterface *sudoiface;
     AuthDialog *authdialog;
     ProgressDialog *progressdialog;
     UpdateDialog *updatedialog;
+    //存放软件列表的状态
     QMap<QString, QString> status_dict;
-    Q_INVOKABLE QString get_value(QString);
-    Q_INVOKABLE QStringList getUKSoftwareList();
-    Q_INVOKABLE bool getUKSignalFlag();
-    Q_INVOKABLE void setUKSignalFlag(bool flag);
-    Q_INVOKABLE void send_software_current_status(QString current_status);
 
-
-    // -------------------------software-center-------------------------
-    Q_INVOKABLE void install_pkg_qt(QString pkgName);
-    Q_INVOKABLE void uninstall_pkg_qt(QString pkgName);
-    Q_INVOKABLE void update_pkg_qt(QString pkgName);
-    Q_INVOKABLE void check_pkgs_status_qt(QStringList pkgNameList);
-    Q_INVOKABLE QString check_pkg_status_qt(QString pkgName);
-    Q_INVOKABLE void apt_get_update_qt();
-    Q_INVOKABLE QStringList get_args();
-    Q_INVOKABLE void add_source_ubuntukylin_qt();
-    Q_INVOKABLE void remove_source_ubuntukylin_qt();
-
-signals:
-    void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
-    void finishCleanWorkError(QString msg);
-    void finishSoftwareFetch(QString type, QString msg);
-    void finishSoftwareApt(QString type);
-    void finishSoftwareCheckStatus(QStringList statusDict);
-    void finishSoftwareStatus(QString current_status);
-
-    void getValue(QString type, QString msg);
-    void finishGetSourceStatus(QString cur_status);
-    void callMasklayer();
-
-public slots:
-    void handler_clear_rubbish(QString msg);
-    void handler_clear_rubbish_error(QString msg);
-    void handler_software_fetch_signal(QString type, QString msg);
-    void handler_software_apt_signal(QString type, QString msg);
-    void handler_software_check_status_signal(QStringList statusDict);
-    void start_to_update();
-    void get_software_source_progress(QString cur_status);
-//    Q_INVOKABLE void apt_get_update_qt();
-private:
     QStringList strlist;
     int mainwindow_width;
     int mainwindow_height;

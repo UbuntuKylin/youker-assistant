@@ -110,7 +110,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("cpu")
+                    text: sessiondispatcher.getSingleInfo("cpu")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -124,7 +124,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("ram")
+                    text: sessiondispatcher.getSingleInfo("ram")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -152,7 +152,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("hostname")
+                    text: sessiondispatcher.getSingleInfo("hostname")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -166,7 +166,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("platform")
+                    text: sessiondispatcher.getSingleInfo("platform")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -180,7 +180,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("distribution")
+                    text: sessiondispatcher.getSingleInfo("distribution")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -194,7 +194,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("desktopenvironment")
+                    text: sessiondispatcher.getSingleInfo("desktopenvironment")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -208,7 +208,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("language")
+                    text: sessiondispatcher.getSingleInfo("language")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -235,7 +235,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("currrent_user")
+                    text: sessiondispatcher.getSingleInfo("currrent_user")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -249,7 +249,7 @@ Rectangle {
                     width: 60
                 }
                 Text {
-                    text: sessiondispatcher.get_value("home_path")
+                    text: sessiondispatcher.getSingleInfo("home_path")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }

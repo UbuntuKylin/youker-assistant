@@ -154,18 +154,9 @@ class SessionDaemon(dbus.service.Object):
     def get_session_daemon(self):
         return "SessionDaemon"
 
-    # -------------------------system message-------------------------
-    @dbus.service.signal(INTERFACE, signature='s')
-    def pc_msg(self, msg):
-        pass
-
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_system_message(self):
-        self.test_signal('Kobe Lee')
         return self.sysconf.get_sys_msg()
-
-    def test_signal(self, msg):
-        self.pc_msg(msg)
 
     # -------------------------beautify start here-------------------------
 

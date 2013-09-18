@@ -19,52 +19,52 @@
 KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, QString method, QString flag):QThread()
 {
     iface = systemiface;
-    method_name = method;
+    methodName = method;
     list = arglist;
-    file_flag = flag;
+    fileFlag = flag;
 }
 
 KThread::~KThread() {
     stop();
 }
 void KThread::run() {
-    if(method_name == "get_network_flow") {
+    if(methodName == "get_network_flow") {
         iface->call("get_network_flow");
     }
-    else if(method_name == "clean_by_main_one_key") {
+    else if(methodName == "clean_by_main_one_key") {
         iface->call("clean_by_main_one_key", list);
     }
-    else if(method_name == "clean_by_second_one_key") {
+    else if(methodName == "clean_by_second_one_key") {
         iface->call("clean_by_second_one_key", list);
     }
-    else if(method_name == "clean_package_cruft") {
+    else if(methodName == "clean_package_cruft") {
         iface->call("clean_package_cruft", list);
     }
-    else if(method_name == "clean_history_records") {
+    else if(methodName == "clean_history_records") {
         iface->call("clean_history_records");
     }
-    else if(method_name == "clean_system_history") {
+    else if(methodName == "clean_system_history") {
         iface->call("clean_system_history");
     }
-    else if(method_name == "clean_cookies_records") {
+    else if(methodName == "clean_cookies_records") {
         iface->call("clean_cookies_records", list);
     }
-    else if(method_name == "clean_package_cruft") {
+    else if(methodName == "clean_package_cruft") {
         iface->call("clean_package_cruft", list);
     }
-    else if(method_name == "clean_file_cruft") {
-        iface->call("clean_file_cruft", list, file_flag);
+    else if(methodName == "clean_file_cruft") {
+        iface->call("clean_file_cruft", list, fileFlag);
     }
-    else if(method_name == "install_pkg") {
-        iface->call("install_pkg", file_flag);
+    else if(methodName == "install_pkg") {
+        iface->call("install_pkg", fileFlag);
     }
-    else if(method_name == "uninstall_pkg") {
-        iface->call("uninstall_pkg", file_flag);
+    else if(methodName == "uninstall_pkg") {
+        iface->call("uninstall_pkg", fileFlag);
     }
-    else if(method_name == "update_pkg") {
-        iface->call("update_pkg", file_flag);
+    else if(methodName == "update_pkg") {
+        iface->call("update_pkg", fileFlag);
     }
-    else if(method_name == "apt_get_update") {
+    else if(methodName == "apt_get_update") {
         iface->call("apt_get_update");
     }
 }

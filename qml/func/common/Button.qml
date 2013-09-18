@@ -263,7 +263,7 @@ Item {
                 }
             }
             else
-                sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
         }
     }
 //    Image {
@@ -442,7 +442,7 @@ Item {
 //                    }
 //                }
 //                else
-//                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
+//                    sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中清理项，请确认！");
 //            }
 //        }
 //    }

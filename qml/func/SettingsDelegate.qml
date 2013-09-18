@@ -98,7 +98,7 @@ Rectangle {
         onClicked: {
             //屏幕坏点检测
             if (flag == "CheckScreen")
-                sessiondispatcher.send_checkscreen_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
             else if (flag == "BootAnimation") {
                 pageStack.push(bootanimationpage);
 //                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
@@ -114,26 +114,25 @@ Rectangle {
 
             }
             else if(flag == "SoftWare") {
-//                sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                     if(!sudodispatcher.getUKSignalFlag()) {
                         sudodispatcher.setUKSignalFlag(true);
                         sudodispatcher.bind_signals_after_dbus_start();
                     }
                     sudodispatcher.add_source_ubuntukylin_qt();
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
                     sudodispatcher.remove_source_ubuntukylin_qt();
                     pageStack.push(softwarerecommend);
                 }
                 else {
-                    sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
                     if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                         if(!sudodispatcher.getUKSignalFlag()) {
                             sudodispatcher.setUKSignalFlag(true);
                             sudodispatcher.bind_signals_after_dbus_start();
                         }
                         sudodispatcher.add_source_ubuntukylin_qt();
-                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
                         sudodispatcher.remove_source_ubuntukylin_qt();
                         pageStack.push(softwarerecommend);
                     }

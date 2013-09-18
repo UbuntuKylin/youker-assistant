@@ -28,8 +28,6 @@
 #include <QDesktopWidget>
 #include <QDeclarativeContext>
 #include <QFontDialog>
-#include <QColorDialog>
-#include <QColor>
 #include <QFileDialog>
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
@@ -38,10 +36,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
-    QObject::connect(sessioniface,SIGNAL(pc_msg(QString)),this,SLOT(show_signal(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
     page_num = 0;
-
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
     this->alert_width = 329;
@@ -105,13 +101,9 @@ QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
     return reply.value();
 }
 
-QString SessionDispatcher::get_home_path() {
+QString SessionDispatcher::getHomePath() {
     QString homepath = QDir::homePath();
     return homepath;
-}
-
-void SessionDispatcher::setsize_for_large_qt(int size) {
-    sessioniface->call("setsize_for_large", size);
 }
 
 void SessionDispatcher::set_page_num(int num) {
@@ -131,7 +123,7 @@ void SessionDispatcher::get_system_message_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
-        myinfo = value;
+        systemInfo = value;
     }
     else {
         qDebug() << "get pc_message failed!";
@@ -139,11 +131,7 @@ void SessionDispatcher::get_system_message_qt() {
 }
 
 //----------------message dialog--------------------
-void SessionDispatcher::send_message_dialog(int window_x, int window_y) {
-    create_messagedialog(window_x, window_y);
-}
-
-void SessionDispatcher::create_messagedialog(int window_x, int window_y) {
+void SessionDispatcher::showFeatureDialog(int window_x, int window_y) {
     MessageDialog *dialog = new MessageDialog();
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
@@ -153,11 +141,7 @@ void SessionDispatcher::create_messagedialog(int window_x, int window_y) {
 }
 
 //----------------checkscreen dialog--------------------
-void SessionDispatcher::send_checkscreen_dialog(int window_x, int window_y) {
-    create_checkscreendialog(window_x, window_y);
-}
-
-void SessionDispatcher::create_checkscreendialog(int window_x, int window_y) {
+void SessionDispatcher::showCheckscreenDialog(int window_x, int window_y) {
     ModalDialog *dialog = new ModalDialog;
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
@@ -166,11 +150,7 @@ void SessionDispatcher::create_checkscreendialog(int window_x, int window_y) {
     dialog->show();
 }
 
-void SessionDispatcher::send_warningdialog_msg(QString title, QString content, int window_x, int window_y) {
-    create_warningdialog(title, content, window_x, window_y);
-}
-
-void SessionDispatcher::create_warningdialog(QString title, QString content, int window_x, int window_y) {
+void SessionDispatcher::showWarningDialog(QString title, QString content, int window_x, int window_y) {
     WarningDialog *dialog = new WarningDialog(title, content);
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
@@ -181,34 +161,9 @@ void SessionDispatcher::create_warningdialog(QString title, QString content, int
 }
 
 
-QString SessionDispatcher::get_value(QString key) {
-    QVariant tt = myinfo.value(key);
-    return tt.toString();
-}
-
-QString SessionDispatcher::show_signal(QString msg) {
-    return msg;
-}
-
-bool SessionDispatcher::set_launcher(bool flag) {
-    QDBusReply<bool> reply = sessioniface->call("set_launcher_autohide", flag);
-    return true;
-}
-
-QStringList SessionDispatcher::get_themes() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_sys_themes");
-    return reply.value();
-//    if (reply.isValid()) {
-//        QStringList value = reply.value();
-//        return reply.value();
-//    }
-//    else {
-//        qDebug() << "get thems msg1 failed!";
-//    }
-}
-
-void SessionDispatcher::set_theme(QString theme) {
-    sessioniface->call("set_sys_theme", theme);
+QString SessionDispatcher::getSingleInfo(QString key) {
+    QVariant info = systemInfo.value(key);
+    return info.toString();
 }
 
 /*-----------------------------desktop of beauty-----------------------------*/
@@ -427,7 +382,7 @@ bool SessionDispatcher::set_font_zoom_qt(double zoom) {
 }
 
 void SessionDispatcher::restore_default_font_signal(QString flag) {
-    emit finishSetFont(flag); //font_style
+    emit notifyFontStyleToQML(flag); //font_style
 }
 
 void SessionDispatcher::show_font_dialog(QString flag) {
@@ -446,7 +401,7 @@ void SessionDispatcher::show_font_dialog(QString flag) {
             set_document_font_qt(fontstyle);//set documentfont
         else if(flag == "titlebarfont")
             set_window_title_font_qt(fontstyle);//set titlebarfont
-        emit finishSetFont(flag); //font_style
+        emit notifyFontStyleToQML(flag); //font_style
     }
 }
 

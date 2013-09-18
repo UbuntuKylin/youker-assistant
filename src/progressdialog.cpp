@@ -49,7 +49,7 @@ void ProgressDialog::reset_status() {
     this->hide();
 }
 
-void ProgressDialog::setValue(QString type, QString msg) {
+void ProgressDialog::setDynamicSoftwareProgress(QString type, QString msg) {
     if(this->isHidden()) {
         this->show();
     }
@@ -76,7 +76,7 @@ void ProgressDialog::setValue(QString type, QString msg) {
                     ratio_sus=ratio.toInt();
                     if(progress_flag) {
                         this->hide();
-                        update_software_progress(ratio);
+                        softwareSourceUpdateProgressToSudoDispather(ratio);
                     }
                     else {
                         ui->label->setText("正在下载安装包...");
@@ -168,11 +168,11 @@ QSize ProgressDialog::sizeHint()const {
     return QSize(height(),height());
 }
 
-void ProgressDialog::resizeEvent(QResizeEvent* event) {
+void ProgressDialog::resizeEvent(QResizeEvent *) {
     update();
 }
 
-void ProgressDialog::paintEvent(QPaintEvent* event) {
+void ProgressDialog::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     QStyleOption opt;
     QPixmap progress_bar1;

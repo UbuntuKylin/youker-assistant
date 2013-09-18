@@ -261,21 +261,21 @@ Item {
             onClicked: {
                 if(root.check_flag) {
                     if(size_text.text == "" || size_text.text == 0)
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！", mainwindow.pos.x, mainwindow.pos.y);
                     else if (root.directory == "")
                     {
                         if(root.sub_num != 0 && root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                         }
                         else {
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！", mainwindow.pos.x, mainwindow.pos.y);
                             deleget_arrow =0;
                         }
                     }
                     else {
                         if(root.null_flag == true) {
                            root.state = "LargestFileWorkEmpty";
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else if(root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
@@ -283,7 +283,7 @@ Item {
                     }
                 }
                 else {
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y)
+                    sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y)
                 }
             }
         }

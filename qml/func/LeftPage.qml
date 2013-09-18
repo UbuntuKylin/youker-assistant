@@ -184,7 +184,6 @@ Rectangle {
                         if(!(checkboxe1.checked||checkboxe2.checked||checkboxe3.checked))
                         {
                             firstonekey.check_flag=false;
-//                            sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中清理项，请确认！");
                         }
                         else
                             firstonekey.check_flag=true;

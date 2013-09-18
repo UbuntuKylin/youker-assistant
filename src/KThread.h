@@ -33,9 +33,10 @@ public:
 protected:
     void run();
 private:
+    //Dbus接口
     QDBusInterface *iface;
     QStringList list;
-    QString method_name;
-    QString file_flag;
+    QString methodName;
+    QString fileFlag;
 };
 #endif // KTHREAD_H

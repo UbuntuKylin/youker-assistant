@@ -95,13 +95,13 @@ QSize SuspensionFrame::sizeHint()const {
     return QSize(height(),height());
 }
 
-void SuspensionFrame::resizeEvent(QResizeEvent*event) {
+void SuspensionFrame::resizeEvent(QResizeEvent *event) {
     wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
     wheel.fill(palette().background().color());
     update();
 }
 
-void SuspensionFrame::paintEvent(QPaintEvent* event) {
+void SuspensionFrame::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     QStyleOption opt;
     QPixmap memory;

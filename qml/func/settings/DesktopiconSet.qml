@@ -198,7 +198,7 @@ Rectangle {
                         statusImage.visible = true;
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的图标主题已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog("友情提示：", "您系统的图标主题已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
             Timer {

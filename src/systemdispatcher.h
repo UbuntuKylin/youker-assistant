@@ -31,31 +31,33 @@ class SystemDispatcher : public QObject
 public:
     explicit SystemDispatcher(QObject *parent = 0);
     ~SystemDispatcher();
-    Q_INVOKABLE int get_add_value();
-    Q_INVOKABLE void send_btn_msg(QString);
+    //退出systemdbus服务
     Q_INVOKABLE void exit_qt();
-    Q_INVOKABLE void check_screen_break_point();
+    //得到SystemDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_system_daemon_qt();
-    QString get_system_daemon_qt_default();
-    //password
-    Q_INVOKABLE void show_passwd_dialog(int window_x, int window_y);
-    //get music path
-    Q_INVOKABLE void get_music_path(QString musicpath);
+    //得到音乐文件的绝对路径
+    Q_INVOKABLE void getMusicFileAbsolutePath(QString musicpath);
+    //为系统设置来设置登录系统的普通用户的用户目录
     Q_INVOKABLE void set_homedir_qt();
+    //为系统清理来设置登录系统的普通用户的用户目录
     Q_INVOKABLE void set_user_homedir_qt();
-    Q_INVOKABLE QString show_file_dialog(QString flag);
+    //弹出QT的文件选择对话框
+    Q_INVOKABLE QString showSelectFileDialog(QString flag);
+    //首页一键清理
     Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
+    //系统清理页面一键清理
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
-    Q_INVOKABLE void clean_history_records_qt(/*QStringList strlist*/);
-    Q_INVOKABLE void clean_system_history_qt(/*QString flag*/);
+    //清理浏览器历史痕迹
+    Q_INVOKABLE void clean_history_records_qt();
+    //清理系统最近打开文件的记录
+    Q_INVOKABLE void clean_system_history_qt();
+    //清理dash使用记录
     Q_INVOKABLE void clean_dash_history_qt();
+    //清理cookies
     Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
-    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
+    //清理apt缓存、软件中心缓存、最大文件和同名文件
     Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
-    Q_INVOKABLE QStringList get_apt_data();
-    Q_INVOKABLE QStringList get_center_data();
     //---------------------------------
-
 
     //-----------------------sound------------------------
     Q_INVOKABLE QStringList get_sound_themes_qt();
@@ -78,7 +80,8 @@ public:
     //-----------------------others------------------------
     Q_INVOKABLE void custom_plymouth_bg_qt(QString plymouthName);
     Q_INVOKABLE void add_new_plymouth_qt(QString customBG, QString plymouthName);
-    Q_INVOKABLE void send_boot_signal();
+    //添加新的开机动画图片后运行该函数
+    Q_INVOKABLE void readyAddBootImageToList();
     Q_INVOKABLE QStringList get_existing_plymouth_list_qt();
     Q_INVOKABLE void plymouth_init_check_qt();
     //-----------------------------------------------
@@ -87,13 +90,10 @@ public:
     Q_INVOKABLE void clean_the_browser_qt(QString mode);
     Q_INVOKABLE QMap<QString, QVariant> search_same_files(QString path);
     Q_INVOKABLE QStringList search_largest_file(QString path);
-    QMap<QString, QVariant> apt_center;
-    QDBusInterface *systemiface;
 
     bool history_flag;
     Q_INVOKABLE void set_history_flag(bool flag);
     Q_INVOKABLE bool get_history_flag();
-
 
     QStringList apt_args;
     Q_INVOKABLE void set_apt_args(QString str);
@@ -137,17 +137,15 @@ public:
     Q_INVOKABLE void clear_largestfile_args();
     Q_INVOKABLE QStringList get_largestfile_args();
 
-    /*-------------------one key scan-------------------*/
-    Q_INVOKABLE QMap<QString, QVariant> scan_by_one_key_qt();
-
 signals:
-    void addBootImage();
-    void finishCleanWork(QString msg);//绑定到QML的Handler：onFinishCleanWork
+    //添加新的开机动画图片后触发该信号
+    void finishAddBootImage();
+    void finishCleanWork(QString msg);
     void finishCleanWorkError(QString msg);
-    void finishCleanWorkMain(QString msg);//绑定到QML的Handler：onFinishCleanWorkMain
-    void finishCleanWorkMainError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
-    void finishCleanWorkSecond(QString msg);//绑定到QML的Handler：onFinishCleanWorkSecond
-    void finishCleanWorkSecondError(QString msg);//绑定到QML的Handler：onFinishCleanWorkMainError
+    void finishCleanWorkMain(QString msg);
+    void finishCleanWorkMainError(QString msg);
+    void finishCleanWorkSecond(QString msg);
+    void finishCleanWorkSecondError(QString msg);
     void finishGetNetworkSpeed(QStringList speed);
     void finishCleanDataMain(QString type, QString msg);
     void finishCleanDataSecond(QString type, QString msg);
@@ -164,14 +162,7 @@ public slots:
     void handler_clean_data_second(QString type, QString msg);
 private:
     QStringList tmplist;
-    int mainwindow_width;
-    int mainwindow_height;
-    int alert_width;
-    int alert_height;
-    //本次alert的x坐标
-    int alert_x;
-    //保额次alert的y坐标
-    int alert_y;
+    QDBusInterface *systemiface;
 };
 
 #endif // SYSTEMDISPATCHER_H

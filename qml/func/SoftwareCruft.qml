@@ -82,7 +82,7 @@ Item {
             sof_mainModel.clear();
             sof_mainModel.append({"itemTitle": "软件中心缓存清理",
                              "picture": "../img/toolWidget/software-min.png",
-                                 "detailstr": "用户可以根据扫描结果选择性地清理软件中心缓存,缓存路径为:" + sessiondispatcher.get_home_path() + "/.cache/software-center/",
+                                 "detailstr": "用户可以根据扫描结果选择性地清理软件中心缓存,缓存路径为:" + sessiondispatcher.getHomePath() + "/.cache/software-center/",
                              "flags": "clear_software",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -213,7 +213,7 @@ Item {
                      if(root.sof_null_flag == true) {
                         root.state = "SoftwareWorkEmpty";
                          deleget_arrow=0;
-                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                         sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else if(root.sof_null_flag == false)
                      {
@@ -228,7 +228,7 @@ Item {
                  }
                 }
                 else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                    sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
         SetBtn {

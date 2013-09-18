@@ -190,7 +190,7 @@ Rectangle {
                         statusImage.visible = true;
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","当前主题已经为默认主题!", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog("友情提示：","当前主题已经为默认主题!", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
             Timer {
@@ -288,8 +288,7 @@ Rectangle {
                                 anchors.fill:parent
                                 onClicked: {
                                     wrapper.ListView.view.currentIndex = index;
-                                    systemdispatcher.get_music_path(musicname);
-//                                    systemdispatcher.get_music_path("/usr/share/youker-assistant-daemon/sound-theme/" + soundeffectspage.default_sound + "/stereo/" + musicname);
+                                    systemdispatcher.getMusicFileAbsolutePath(musicname);
                                     if(play_pause==0){
                                         song.play();
                                         play_pause=1;
@@ -309,8 +308,8 @@ Rectangle {
                                 anchors.fill:parent
                                 onClicked: {
                                     wrapper.ListView.view.currentIndex = index;
-                                    soundeffectspage.selectedmusic = systemdispatcher.show_file_dialog("soundeffects");
-                                    systemdispatcher.get_music_path(soundeffectspage.selectedmusic);
+                                    soundeffectspage.selectedmusic = systemdispatcher.showSelectFileDialog("soundeffects");
+                                    systemdispatcher.getMusicFileAbsolutePath(soundeffectspage.selectedmusic);
                                     systemdispatcher.set_homedir_qt();
                                     systemdispatcher.replace_sound_file_qt(soundeffectspage.selectedmusic, split_music_name(musicname));
                                 }

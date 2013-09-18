@@ -31,7 +31,7 @@ Item {
     Connections
     {
         target: sudodispatcher
-        onFinishGetSourceStatus: {
+        onNotifySourceStatusToQML: {
             root.source_status_text = "进度: " + cur_status;
         }
         onFinishSoftwareFetch: {
@@ -210,7 +210,7 @@ Item {
         Connections
         {
             target: sudodispatcher
-            onFinishSoftwareStatus: {
+            onSendSoftwareStatus: {
                 software.installed_status = content.soft_status;
                 actionBtn.text = software.reset_text(software.installed_status);
             }
@@ -218,7 +218,7 @@ Item {
                 if(type == "apt_stop") {
                     software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     if(software.tm_status == software.installed_status) {
-                        sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                        sudodispatcher.showUpdateSourceDialog(mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {
                         software.installed_status = software.tm_status;
@@ -373,7 +373,7 @@ Item {
                                     break;
                                 }
                             }
-                            sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                            sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.install_pkg_qt(software.software_name);
                         }
                     }
@@ -386,7 +386,7 @@ Item {
                                 break;
                             }
                         }
-                        sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                        sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                         sudodispatcher.uninstall_pkg_qt(software.software_name);
                     }
                     else if(software.installed_status == "u") {
@@ -404,7 +404,7 @@ Item {
                                     break;
                                 }
                             }
-                            sudodispatcher.show_progress_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                            sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.update_pkg_qt(software.software_name);
                         }
                     }
@@ -416,7 +416,7 @@ Item {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
-                            sudodispatcher.show_update_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                            sudodispatcher.showUpdateSourceDialog(mainwindow.pos.x, mainwindow.pos.y);
                         }
                     }
                 }

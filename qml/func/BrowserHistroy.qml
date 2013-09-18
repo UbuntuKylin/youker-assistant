@@ -49,7 +49,7 @@ Item {
                 root.null_flag = true;
                 browserstatus.visible = false;
                 browserstatus.state = "BrowserWorkEmpty";
-                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                 resetcBtn.visible = false;
             }
             else {
@@ -64,7 +64,7 @@ Item {
                 root.null_flag2 = true;
                 systemstatus.visible = false;
                 systemstatus.state = "SystemWorkEmpty";
-                sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                 resetsBtn.visible = false;
             }
             else {
@@ -382,7 +382,7 @@ Item {
                 if (btn_flag == "history_scan") {
                     if(!checkboxe1.checked) {
                        browserstatus.visible = false;
-                       sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                       sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中历史记录扫描项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {
                         resetcBtn.visible = true;
@@ -393,7 +393,7 @@ Item {
                     if(checkboxe1.checked) {
                         if(root.null_flag == true) {
                             root.state = "BrowserWorkEmpty";
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             resetcBtn.visible = false;
@@ -403,7 +403,7 @@ Item {
                         }
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中记录清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中记录清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }
@@ -438,7 +438,7 @@ Item {
                 if (btn_flag2 == "system_scan") {
                     if(!checkboxe2.checked) {
                        systemstatus.visible = false;
-                       sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中历史记录扫描项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                       sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中历史记录扫描项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {
                         resetsBtn.visible = true;
@@ -449,7 +449,7 @@ Item {
                     if(checkboxe2.checked) {
                         if(root.null_flag2 == true) {
                             root.state = "SystemWorkEmpty";
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             resetsBtn.visible = false;
@@ -459,7 +459,7 @@ Item {
                         }
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选中记录清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中记录清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }

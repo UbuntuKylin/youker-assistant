@@ -31,25 +31,25 @@ public:
     virtual QSize sizeHint()const;
     ~ProgressDialog();
 public slots:
-    void setValue(QString type, QString msg);
+    //将得到的软件操作的进度和状态动态的显示在进度条上面
+    void setDynamicSoftwareProgress(QString type, QString msg);
     void reset_status();
 private:
     Ui::ProgressDialog *ui;
     QPoint dragPos;
-
-    int ratio_sus=0;
+    int ratio_sus;
     QSize initSize;
 
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
-
-    void paintEvent(QPaintEvent* event);
-    void resizeEvent(QResizeEvent* event);
+    void paintEvent(QPaintEvent *);
+    void resizeEvent(QResizeEvent *);
 
 signals:
-    void update_software_progress(QString cur_status);
+    //将进度条上的软件更新状态实时通知给SudoDispather
+    void softwareSourceUpdateProgressToSudoDispather(QString cur_status);
 };
 
 #endif // PROGRESSDIALOG_H

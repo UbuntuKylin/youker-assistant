@@ -20,8 +20,6 @@
 #include <QApplication>
 #include <QMouseEvent>
 #include "QPoint"
-#include <QBoxLayout>
-#include <QStackedWidget>
 #include "tray.h"
 #include "alertdialog.h"
 #include <QDBusInterface>
@@ -35,9 +33,12 @@ public:
     virtual ~IhuApplication();
     bool setup();
 private:
+    //关联QML界面
     QDeclarativeView *viewer;
+    //系统托盘
     Tray *tray;
 public slots:
-    void show_or_hide();
+    //主界面显示和隐藏
+    void showOrHideMainPage();
 };
 #endif // SYSTEMAPPLICATION_H

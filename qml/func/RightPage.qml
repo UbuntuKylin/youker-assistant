@@ -123,26 +123,25 @@ Rectangle {
         MouseArea{
             anchors.fill: parent
             onClicked:  {
-//                sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                     if(!sudodispatcher.getUKSignalFlag()) {
                         sudodispatcher.setUKSignalFlag(true);
                         sudodispatcher.bind_signals_after_dbus_start();
                     }
                     sudodispatcher.add_source_ubuntukylin_qt();
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
                     sudodispatcher.remove_source_ubuntukylin_qt();
                     pageStack.push(softwarerecommend);
                 }
                 else {
-                    sudodispatcher.show_passwd_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
                     if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                         if(!sudodispatcher.getUKSignalFlag()) {
                             sudodispatcher.setUKSignalFlag(true);
                             sudodispatcher.bind_signals_after_dbus_start();
                         }
                         sudodispatcher.add_source_ubuntukylin_qt();
-                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.get_args());
+                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
                         sudodispatcher.remove_source_ubuntukylin_qt();
                         pageStack.push(softwarerecommend);
                     }
@@ -302,7 +301,7 @@ Rectangle {
                   onExited: btnImg2.source = ""
 
                   onClicked: {
-                      sessiondispatcher.send_message_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                      sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
                   }
             }
             Image {

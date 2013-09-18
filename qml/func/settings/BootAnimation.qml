@@ -63,7 +63,7 @@ Rectangle {
     Connections
     {
         target: systemdispatcher
-        onAddBootImage: {
+        onFinishAddBootImage: {
             systemdispatcher.plymouth_init_check_qt();
             var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
             bootimagepage.num = plymouth_list.length;
@@ -126,12 +126,12 @@ Rectangle {
             text: "自定义图片"
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
-                bootimagepage.image_path = systemdispatcher.show_file_dialog("bootanimation");
+                bootimagepage.image_path = systemdispatcher.showSelectFileDialog("bootanimation");
                 bootimage.source = bootimagepage.image_path;
                 var imagename = bootimagepage.image_path;
                 imagename = imagename.substr(imagename.lastIndexOf("/") + 1, imagename.length - imagename.lastIndexOf("/"));
                 systemdispatcher.add_new_plymouth_qt(bootimagepage.image_path, imagename);
-                systemdispatcher.send_boot_signal();
+                systemdispatcher.readyAddBootImageToList();
             }
         }
     }

@@ -34,8 +34,18 @@ IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {
     tray = new Tray();
-    connect(tray,SIGNAL(show_Qml()),this,SLOT(show_or_hide()));
+    connect(tray,SIGNAL(showOrHideQmlSignal()),this,SLOT(showOrHideMainPage()));
 }
+
+IhuApplication::~IhuApplication() {
+    if (viewer) {
+        delete viewer;
+    }
+    if (tray) {
+        delete tray;
+    }
+}
+
 inline bool isRunningInstalled() {
     static bool installed = (QCoreApplication::applicationDirPath() ==
                              QDir(("/usr/bin")).canonicalPath());
@@ -46,14 +56,12 @@ inline QString getAppDirectory() {
     if (isRunningInstalled()) {
         qDebug() << QCoreApplication::applicationDirPath();
         return QString("/usr/share/youker-assistant/qml/");
-//        return QString("/usr/share/youker-assistant/qml/main.qml");
     } else {
-//        return QString(QCoreApplication::applicationDirPath() + "/../qml/main.qml");
         return QString(QCoreApplication::applicationDirPath() + "/../qml/");
     }
 }
 
-void IhuApplication::show_or_hide() {
+void IhuApplication::showOrHideMainPage() {
     if(viewer->isHidden()) {
         viewer->show();
     }
@@ -67,17 +75,10 @@ bool IhuApplication::setup() {
     viewer = new QDeclarativeView;
     viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
     viewer->setSource(QUrl::fromLocalFile("main.qml"));
-//    viewer->setSource(QUrl("../qml/main.qml"));
     viewer->rootContext()->setContextProperty("mainwindow", viewer);
     viewer->setStyleSheet("background:transparent");
     viewer->setAttribute(Qt::WA_TranslucentBackground);
     viewer->setWindowFlags(Qt::FramelessWindowHint);
-
-    QPalette palette;
-    palette.setColor(QPalette::Base, Qt::transparent);
-    viewer->setPalette(palette);
-    viewer->setAutoFillBackground(false);
-    viewer->setWindowOpacity(10);
     QObject::connect(viewer->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
 
     QDesktopWidget* desktop = QApplication::desktop();
@@ -91,13 +92,4 @@ bool IhuApplication::setup() {
     viewer->move(centerW, centerH);
     viewer->show();
     return true;
-}
-
-IhuApplication::~IhuApplication() {
-    if (viewer) {
-        delete viewer;
-    }
-    if (tray) {
-        delete tray;
-    }
 }

@@ -51,11 +51,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     onekey_args << "cache" << "history" << "cookies";
     onekey_args2 << "cache" << "history" << "cookies";
     tmplist << "Kobe" << "Lee";
-
-    this->mainwindow_width = 850;
-    this->mainwindow_height = 600;
-    this->alert_width = 329;
-    this->alert_height = 195;
 }
 
 SystemDispatcher::~SystemDispatcher() {
@@ -79,12 +74,7 @@ QString SystemDispatcher::get_system_daemon_qt() {
     return reply.value();
 }
 
-QString SystemDispatcher::get_system_daemon_qt_default() {
-    QDBusReply<QString> reply = systemiface->call("get_system_daemon");
-    return reply.value();
-}
-
-void SystemDispatcher::get_music_path(QString musicpath) {
+void SystemDispatcher::getMusicFileAbsolutePath(QString musicpath) {
     music_path = musicpath;
 }
 
@@ -105,12 +95,6 @@ void SystemDispatcher::set_history_flag(bool flag) {
 
 bool SystemDispatcher::get_history_flag() {
     return history_flag;
-}
-
-int SystemDispatcher::get_add_value() {
-    QDBusReply<int> reply = systemiface->call("test_add", 3, 4);
-    int tt = reply.value();
-    return tt;
 }
 
 void SystemDispatcher::handler_clear_rubbish(QString msg) {
@@ -139,14 +123,6 @@ void SystemDispatcher::handler_clean_data_main(QString type, QString msg) {
 
 void SystemDispatcher::handler_clean_data_second(QString type, QString msg) {
     emit finishCleanDataSecond(type, msg);
-}
-
-void SystemDispatcher::send_btn_msg(QString str) {
-    systemiface->call("test_fastclear", str);
-}
-
-void SystemDispatcher::check_screen_break_point() {
-    systemiface->call("check_screen");
 }
 
 //-----------------------sound------------------------
@@ -219,8 +195,8 @@ void SystemDispatcher::add_new_plymouth_qt(QString customBG, QString plymouthNam
     systemiface->call("add_new_plymouth", customBG, plymouthName);
 }
 
-void SystemDispatcher::send_boot_signal() {
-    emit addBootImage();
+void SystemDispatcher::readyAddBootImageToList() {
+    emit finishAddBootImage();
 }
 
 QStringList SystemDispatcher::get_existing_plymouth_list_qt() {
@@ -234,7 +210,7 @@ void SystemDispatcher::plymouth_init_check_qt() {
 //-----------------------------------------------
 
 
-QString SystemDispatcher::show_file_dialog(QString flag) {
+QString SystemDispatcher::showSelectFileDialog(QString flag) {
     if (flag == "bootanimation") {
         QString bootfileName = QFileDialog::getOpenFileName(0, tr("选择开机动画"), "", tr("Image Files (*.png)"));
         return bootfileName;
@@ -268,22 +244,9 @@ void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
     thread->start();
 }
 
-void SystemDispatcher::clean_package_cruft_qt(QStringList strlist) {
-    KThread *thread = new KThread(strlist, systemiface, "clean_package_cruft");
-    thread->start();
-}
-
 void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
     KThread *thread = new KThread(strlist, systemiface, "clean_file_cruft", str);
     thread->start();
-}
-
-QStringList SystemDispatcher::get_apt_data() {
-    return apt_center["apt"].toStringList();
-}
-
-QStringList SystemDispatcher::get_center_data() {
-    return apt_center["softwarecenter"].toStringList();
 }
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
@@ -486,17 +449,4 @@ QMap<QString, QVariant> SystemDispatcher::search_same_files(QString path) {
 QStringList SystemDispatcher::search_largest_file(QString path) {
     QDBusReply<QStringList> reply = systemiface->call("search_the_large", path);
     return reply.value();
-}
-
-QMap<QString, QVariant> SystemDispatcher::scan_by_one_key_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("scan_by_one_key");
-    return reply.value();
-}
-
-void SystemDispatcher::show_passwd_dialog(int window_x, int window_y) {
-    AuthDialog *dialog = new AuthDialog;
-    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-    this->alert_y = window_y + mainwindow_height - 400;
-    dialog->move(this->alert_x, this->alert_y);
-    dialog->exec();
 }

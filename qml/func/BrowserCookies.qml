@@ -217,7 +217,7 @@ Item {
                      if(root.null_flag == true) {
                         root.state = "CookiesWorkEmpty";
                          deleget_arrow=0;
-                         sessiondispatcher.send_warningdialog_msg("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                         sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else if(root.null_flag == false)
                      {
@@ -233,7 +233,7 @@ Item {
                  }
                 }
                 else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                    sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
         SetBtn {

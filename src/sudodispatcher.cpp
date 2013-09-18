@@ -43,8 +43,8 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
 
     signalFlag = false;
 
-//    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
-//    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
+//    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handlerClearDeb(QString)));
+//    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
 }
 
 SudoDispatcher::~SudoDispatcher() {
@@ -69,14 +69,14 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
-    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
-    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
-    QObject::connect(sudoiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handler_software_fetch_signal(QString,QString)));
-    QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handler_software_apt_signal(QString,QString)));
-    QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handler_software_check_status_signal(QStringList)));
-    QObject::connect(this,SIGNAL(getValue(QString,QString)),progressdialog, SLOT(setValue(QString,QString)));
-    QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(start_to_update()));
-    QObject::connect(progressdialog,SIGNAL(update_software_progress(QString)),this, SLOT(get_software_source_progress(QString)));
+    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handlerClearDeb(QString)));
+    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
+    QObject::connect(sudoiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handlerSoftwareFetch(QString,QString)));
+    QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handlerSoftwareApt(QString,QString)));
+    QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handlerGetSoftwareListStatus(QStringList)));
+    QObject::connect(this,SIGNAL(sendDynamicSoftwareProgress(QString,QString)),progressdialog, SLOT(setDynamicSoftwareProgress(QString,QString)));
+    QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(startUpdateSoftwareSource()));
+    QObject::connect(progressdialog,SIGNAL(softwareSourceUpdateProgressToSudoDispather(QString)),this, SLOT(getSoftwareSourceUpdateProgress(QString)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
@@ -92,48 +92,46 @@ void SudoDispatcher::setUKSignalFlag(bool flag) {
     signalFlag = flag;
 }
 
-void SudoDispatcher::get_software_source_progress(QString cur_status) {
-    emit finishGetSourceStatus(cur_status);
+void SudoDispatcher::getSoftwareSourceUpdateProgress(QString cur_status) {
+    emit notifySourceStatusToQML(cur_status);
 }
 
-void SudoDispatcher::handler_clear_rubbish(QString msg) {
-     emit finishCleanWork(msg);
+void SudoDispatcher::handlerClearDeb(QString msg) {
+     emit finishCleanDeb(msg);
 }
 
-void SudoDispatcher::handler_clear_rubbish_error(QString msg) {
-     emit finishCleanWorkError(msg);
+void SudoDispatcher::handlerClearDebError(QString msg) {
+     emit finishCleanDebError(msg);
 }
 
-void SudoDispatcher::handler_software_fetch_signal(QString type, QString msg) {
+void SudoDispatcher::handlerSoftwareFetch(QString type, QString msg) {
     if(!type.isEmpty()) {
-        emit getValue(type, msg);
+        emit sendDynamicSoftwareProgress(type, msg);
         if(type == "down_stop") {
             emit finishSoftwareFetch(type, msg);
         }
     }
-//    emit finishSoftwareFetch(type, msg);
 }
 
-void SudoDispatcher::handler_software_apt_signal(QString type, QString msg) {
+void SudoDispatcher::handlerSoftwareApt(QString type, QString msg) {
     if(!type.isEmpty()) {
-        emit getValue(type, msg);
+        emit sendDynamicSoftwareProgress(type, msg);
         if (type == "apt_stop") {
             emit finishSoftwareApt(type);
         }
     } 
 }
 
-void SudoDispatcher::handler_software_check_status_signal(QStringList statusDict) {
+void SudoDispatcher::handlerGetSoftwareListStatus(QStringList statusDict) {
     status_dict.clear();
     for(int i=0; i< statusDict.size(); i++) {
         QStringList value = statusDict[i].split(":");
         status_dict.insert(value[0], value[1]);
     }
 //    qDebug() << status_dict;
-//    emit finishSoftwareCheckStatus(statusDict);
 }
 
-void SudoDispatcher::show_passwd_dialog(int window_x, int window_y) {
+void SudoDispatcher::showPasswdDialog(int window_x, int window_y) {
     authdialog = new AuthDialog("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。");
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
@@ -141,7 +139,7 @@ void SudoDispatcher::show_passwd_dialog(int window_x, int window_y) {
     authdialog->exec();
 }
 
-void SudoDispatcher::show_update_dialog(int window_x, int window_y) {
+void SudoDispatcher::showUpdateSourceDialog(int window_x, int window_y) {
     progress_flag = true;
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
@@ -149,7 +147,7 @@ void SudoDispatcher::show_update_dialog(int window_x, int window_y) {
     updatedialog->show();
 }
 
-void SudoDispatcher::show_progress_dialog(int window_x, int window_y) {
+void SudoDispatcher::showProgressDialog(int window_x, int window_y) {
 //    ProgressDialog progressdialog;
 //    progressdialog.exec();
 //    progressdialog = new ProgressDialog (window_x, window_y);
@@ -166,7 +164,7 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
     thread->start();
 }
 
-QStringList SudoDispatcher::get_args() {
+QStringList SudoDispatcher::getAllSoftwareList() {
     QStringList pkgNameList;
     pkgNameList << "eclipse" << "qtcreator"<< "wps-office" << "wine-qq2012-longeneteam" << \
                    "flashplugin-installer" <<  "lotus" << "kuaipan4uk" <<"vlc" << \
@@ -175,7 +173,7 @@ QStringList SudoDispatcher::get_args() {
     return pkgNameList;
 }
 
-QString SudoDispatcher::get_value(QString key) {
+QString SudoDispatcher::getSoftwareStatus(QString key) {
     QVariant tt = status_dict.value(key);
     return tt.toString();
 }
@@ -211,8 +209,8 @@ QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
     return reply.value();
 }
 
-void SudoDispatcher::send_software_current_status(QString current_status) {
-    emit finishSoftwareStatus(current_status);
+void SudoDispatcher::notifySoftwareCurrentStatus(QString current_status) {
+    emit sendSoftwareStatus(current_status);
 }
 
 void SudoDispatcher::apt_get_update_qt() {
@@ -230,7 +228,7 @@ void SudoDispatcher::remove_source_ubuntukylin_qt() {
     sudoiface->call("remove_source_ubuntukylin");
 }
 
-void SudoDispatcher::start_to_update() {
+void SudoDispatcher::startUpdateSoftwareSource() {
     progressdialog->hide();
     this->add_source_ubuntukylin_qt();
     emit callMasklayer();

@@ -26,20 +26,6 @@ Rectangle {
     Component.onCompleted: {
 
     }
-//    Connections
-//    {
-//        target: sudodispatcher
-//        onFinishGetSourceStatus: {
-//            //cur_status
-//            source_status.text = "正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息: " + cur_status;
-//         }
-//        onFinishSoftwareFetch: {
-//            if(type == "down_stop" && source_status.text != "") {
-//                source_status.text = "";
-//                toolkits.alertMSG("软件源更新完成！", mainwindow.pos.x, mainwindow.pos.y);
-//            }
-//        }
-//    }
     Row {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
@@ -55,18 +41,6 @@ Rectangle {
             text: qsTr("主程序版本:" + uk_version)
         }
     }
-//    Text {
-//        id: source_status
-//        anchors {
-//            right: parent.right
-//            rightMargin: 5
-//            verticalCenter: parent.verticalCenter
-//        }
-//        font.pixelSize: 12
-////        color: "#383838"
-//        color: "red"
-//        text: ""
-//    }
 
     MouseArea {
           id: mouseRegion

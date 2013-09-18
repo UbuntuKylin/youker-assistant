@@ -63,11 +63,10 @@ Rectangle {
         }
     }
 
-    //信号绑定，绑定qt的信号finishSetFont，该信号emit时触发onFinishSetFont
     Connections
     {
         target: sessiondispatcher
-        onFinishSetFont: {
+        onNotifyFontStyleToQML: {
             if (font_style == "font") {
                 defaultfontpage.current_font_flag = true;
                 sysfont.text = sessiondispatcher.get_font_qt();
@@ -210,7 +209,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的当前字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog("友情提示：", "您系统的当前字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -262,7 +261,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前桌面字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog("友情提示：","您系统的当前桌面字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -314,7 +313,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前等宽字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog("友情提示：","您系统的当前等宽字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -409,7 +408,7 @@ Rectangle {
                         statusImage.visible = true;
                     }
                     else
-                        sessiondispatcher.send_warningdialog_msg("友情提示：", "您系统的全局字体缩放已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog("友情提示：", "您系统的全局字体缩放已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }

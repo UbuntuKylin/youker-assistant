@@ -47,11 +47,10 @@ Rectangle {
         documentfontpage.document_font = sessiondispatcher.get_document_font_qt();
     }
 
-    //信号绑定，绑定qt的信号finishSetFont，该信号emit时触发onFinishSetFont
     Connections
     {
         target: sessiondispatcher
-        onFinishSetFont: {
+        onNotifyFontStyleToQML: {
             if (font_style == "documentfont") {
                 documentfontpage.document_font_flag = true;
                 docufont.text = sessiondispatcher.get_document_font_qt();
@@ -178,7 +177,7 @@ Rectangle {
                     statusImage.visible = true;
                 }
                 else
-                    sessiondispatcher.send_warningdialog_msg("友情提示：","您系统的当前文档字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
+                    sessiondispatcher.showWarningDialog("友情提示：","您系统的当前文档字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
         Timer {

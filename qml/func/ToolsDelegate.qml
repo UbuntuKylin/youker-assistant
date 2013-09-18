@@ -72,7 +72,7 @@ Rectangle {
         onClicked: {
             //屏幕坏点检测
             if (flag == "CheckScreen")
-                sessiondispatcher.send_checkscreen_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
             else if (flag == "DesktopiconSet")
                 pageStack.push(desktopiconsetpage);
             else if (flag == "BootAnimation") {
