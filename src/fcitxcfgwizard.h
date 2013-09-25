@@ -58,9 +58,13 @@ private:
     boolean m_vertical_list;
 
     FcitxHotkeys m_trigger_key;
+    FcitxHotkeys pad1;
     FcitxHotkeys m_prev_page_key;
+    FcitxHotkeys pad2;
     FcitxHotkeys m_next_page_key;
+    FcitxHotkeys pad3;
     //枚举类型，直接用int代替
+
     int m_im_switch_hot_key;
     boolean m_im_switch_key;
 

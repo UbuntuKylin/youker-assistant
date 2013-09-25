@@ -97,6 +97,7 @@ Rectangle {
         }
         //get_im_switch_key
         var getEnableHotKeybool =fcitxcfgwizard.get_im_switch_key();
+        console.log(getEnableHotKeybool);
         enableHotKeyBox.checked = getEnableHotKeybool;
 
         var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
@@ -539,6 +540,9 @@ Rectangle {
         Common.CheckBox{
             id:enableHotKeyBox
             anchors.verticalCenter: parent.verticalCenter
+            onCheckedChanged: {
+            }
+
             titleName: "输入法切换"
 //            Text{
 //                id:scrollBetween
@@ -730,6 +734,8 @@ Rectangle {
             pageStack.push(fcitxConfigtoolFontpage);//静态添加页
             fcitxcfgwizard.set_im_list(returnUnneed_data(),false);
             fcitxcfgwizard.set_im_switch_hot_key(hotkyScrollBetweenIndex,false);
+            console.log(hotkyScrollBetweenIndex);
+            console.log(enableHotKeyBox.checked);
             fcitxcfgwizard.set_im_switch_key(enableHotKeyBox.checked,false);
 
         }
