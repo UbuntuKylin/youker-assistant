@@ -599,7 +599,6 @@ int FcitxCfgWizard::get_im_switch_hot_key()
 void FcitxCfgWizard::set_im_switch_hot_key(int hotkey, bool real_save)
 {
     m_im_switch_hot_key = hotkey;
-
     if (real_save) {
         set_fcitx_cfg_value("configdesc", "config.desc", "", "config", "Hotkey",
             "IMSwitchHotkey", &m_im_switch_hot_key);
@@ -714,12 +713,12 @@ void FcitxCfgWizard::all_cfg_save()
     set_candidate_word_number(m_candidate_word_number, true);
     set_font_size(m_font_size, true);
     set_vertical_list(m_vertical_list, true);
-    set_trigger_key();
-    set_prev_page_key();
-    set_next_page_key();
     set_im_switch_hot_key(m_im_switch_hot_key, true);
     set_im_switch_key(m_im_switch_key, true);
     set_skin_type(m_skin_type, true);
+    set_trigger_key();
+    set_prev_page_key();
+    set_next_page_key();
     update_cfg_to_fcitx();
 }
 
