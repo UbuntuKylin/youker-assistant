@@ -29,6 +29,8 @@
 #include <QDeclarativeContext>
 #include <QFontDialog>
 #include <QFileDialog>
+
+#include "KThread.h"
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -37,6 +39,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
+    QObject::connect(sessioniface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
     page_num = 0;
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
@@ -46,6 +49,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
 SessionDispatcher::~SessionDispatcher() {
     this->exit_qt();
+}
+
+void SessionDispatcher::handler_network_speed(QStringList speed) {
+    emit finishGetNetworkSpeed(speed);
 }
 
 void SessionDispatcher::handler_scan_rubbish(QString msg) {
@@ -506,4 +513,37 @@ QString SessionDispatcher::get_sound_theme_qt() {
 
 void SessionDispatcher::set_sound_theme_qt(QString theme) {
     sessioniface->call("set_sound_theme", theme);
+}
+
+//-----------------------monitorball------------------------
+double SessionDispatcher::get_cpu_percent_qt() {
+    QDBusReply<double> reply = sessioniface->call("get_cpu_percent");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_total_memory_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_total_memory");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_used_memory_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_used_memory");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_free_memory_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_free_memory");
+    return reply.value();
+}
+
+void SessionDispatcher::get_network_flow_qt() {
+    QStringList tmplist;
+    tmplist << "Kobe" << "Lee";
+    KThread *thread = new KThread(tmplist, sessioniface, "get_network_flow");
+    thread->start();
+}
+
+QStringList SessionDispatcher::get_network_flow_total_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_network_flow_total");
+    return reply.value();
 }

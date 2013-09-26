@@ -31,7 +31,7 @@
 #include "ui_tray.h"
 #include "suspensionframe.h"
 #include "systemdispatcher.h"
-
+#include "sessiondispatcher.h"
 class Tray: public QWidget, private Ui::Tray
 {
     Q_OBJECT
@@ -51,6 +51,7 @@ private:
     QPoint dragPos;
     SuspensionFrame *frame;
     SystemDispatcher *dispather;
+    SessionDispatcher *sedispather;
     QString cpu_value;
     QString up_speed;
     QString down_speed;

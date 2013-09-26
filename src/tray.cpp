@@ -27,19 +27,18 @@ Tray::Tray(QWidget *parent)
 {
     setupUi(this);
     dispather = new SystemDispatcher;
-
+    sedispather = new SessionDispatcher;
     ratio_sus = 0;
-    double trans_cpu = dispather->get_cpu_percent_qt();
+    double trans_cpu = sedispather->get_cpu_percent_qt();
     cpu_value = QString::number(trans_cpu, 'f', 0);
-    used_memory = dispather->get_used_memory_qt().toDouble();
-    free_memory = dispather->get_free_memory_qt();
-    total_size = dispather->get_total_memory_qt().toDouble();
+    used_memory = sedispather->get_used_memory_qt().toDouble();
+    free_memory = sedispather->get_free_memory_qt();
+    total_size = sedispather->get_total_memory_qt().toDouble();
     double size = used_memory / total_size;
     ratio = QString::number(size, 'f', 2);
     double trans = ratio.toDouble() * 100;
     ratio = QString::number(trans,'f',0);
-//    dispather->get_network_flow_qt();
-    total_speed = dispather->get_network_flow_total_qt();
+    total_speed = sedispather->get_network_flow_total_qt();
 
     this->setWindowOpacity(1.0);
     icon = QIcon(":/pixmap/image/icon.png");
@@ -65,10 +64,16 @@ Tray::~Tray() {
     if(frame) {
         delete frame;
     }
+    if(dispather) {
+        delete dispather;
+    }
+    if(sedispather) {
+        delete sedispather;
+    }
 }
 
 void Tray::updateData() {
-    QStringList current_speed = dispather->get_network_flow_total_qt();
+    QStringList current_speed = sedispather->get_network_flow_total_qt();
     double up_before = total_speed[0].toDouble();
     double down_before = total_speed[1].toDouble();
     double up_now = current_speed[0].toDouble();
@@ -80,10 +85,10 @@ void Tray::updateData() {
     up_speed = QString::number(up_final,'f',0);
     down_speed = QString::number(down_final,'f',0);
 
-    double trans_cpu = dispather->get_cpu_percent_qt();
+    double trans_cpu = sedispather->get_cpu_percent_qt();
     cpu_value = QString::number(trans_cpu, 'f', 0);
-    used_memory = dispather->get_used_memory_qt().toDouble();
-    free_memory = dispather->get_free_memory_qt();
+    used_memory = sedispather->get_used_memory_qt().toDouble();
+    free_memory = sedispather->get_free_memory_qt();
     double size = used_memory / total_size;
     ratio = QString::number(size, 'f', 2);
     double trans = ratio.toDouble() * 100;

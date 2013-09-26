@@ -42,6 +42,7 @@ from beautify.theme import Theme
 from beautify.system import System
 from beautify.sound import Sound
 from sysinfo import Sysinfo
+from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
 
 INTERFACE = "com.ubuntukylin.IhuSession"
@@ -55,6 +56,7 @@ class SessionDaemon(dbus.service.Object):
         self.themeconf = Theme()
         self.systemconf = System()
         self.soundconf = Sound()
+        self.ballconf = MonitorBall()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -467,3 +469,42 @@ class SessionDaemon(dbus.service.Object):
         self.soundconf.set_sound_theme(theme)
 
     # -------------------------beautify end here-------------------------
+
+    # -------------------------monitorball-------------------------
+    # get cpu percent
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
+    def get_cpu_percent(self):
+        return self.ballconf.get_cpu_percent()
+
+    # get total memory
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_total_memory(self):
+        return self.ballconf.get_total_memory()
+
+    # get used memory
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_used_memory(self):
+        return self.ballconf.get_used_memory()
+
+    # get free memory
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_free_memory(self):
+        return self.ballconf.get_free_memory()
+
+    # get network flow total, return (up, down)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_network_flow_total(self):
+        return self.ballconf.get_network_flow_total()
+
+    # get network flow, return (up, down)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def get_network_flow(self):
+        speed_network = self.ballconf.get_network_flow()
+        self.get_network_speed(speed_network)
+
+    @dbus.service.signal(INTERFACE, signature='as')
+    def get_speed(self, speed):
+        pass
+
+    def get_network_speed(self, speed):
+        self.get_speed(speed)

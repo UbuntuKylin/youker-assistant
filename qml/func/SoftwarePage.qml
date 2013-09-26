@@ -126,6 +126,41 @@ Item {
             }
         }
     }
+
+
+    Rectangle {
+        id: masklayer2
+        width: parent.width
+        height: parent.height
+        x: (parent.width * 1.5);
+        //背景
+        Image {
+            source: "../img/skin/bg-middle.png"
+            anchors.fill: parent
+        }
+        AnimatedImage {
+            anchors.centerIn: parent
+            width: 16
+            height: 16
+            source: "../img/icons/move.gif"
+        }
+        SetBtn {
+            id: resetBtn2
+            width: 12
+            height: 15
+            iconName: "revoke.png"
+            anchors {
+                left: parent.left
+                leftMargin: 10
+                top: parent.top
+                topMargin: 10
+            }
+            onClicked: {
+                root.state = "SofeWareState";
+            }
+        }
+    }
+
     Rectangle {
         id: software
         property bool checkFlag: false
@@ -241,6 +276,7 @@ Item {
                             actionBtn.text = "立即升级";
                             statusImage.source = "../img/icons/installed.png"
                         }
+                        root.state = "SofeWareState";
                         toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
@@ -382,6 +418,7 @@ Item {
                                     break;
                                 }
                             }
+                            root.state = "MaskLayerStateApt";
                             sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.install_pkg_qt(software.software_name);
                         }
@@ -395,6 +432,7 @@ Item {
                                 break;
                             }
                         }
+                        root.state = "MaskLayerStateApt";
                         sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                         sudodispatcher.uninstall_pkg_qt(software.software_name);
                     }
@@ -413,6 +451,7 @@ Item {
                                     break;
                                 }
                             }
+                            root.state = "MaskLayerStateApt";
                             sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.update_pkg_qt(software.software_name);
                         }
@@ -518,10 +557,18 @@ Item {
             name: "SofeWareState"
             PropertyChanges { target: software; x: 0 }
             PropertyChanges { target: masklayer; x: (parent.width * 1.5) }
+            PropertyChanges { target: masklayer2; x: (parent.width * 1.5) }
         },
         State {
             name: "MaskLayerState"
             PropertyChanges { target: masklayer; x: 0 }
+            PropertyChanges { target: software; x: (parent.width * 1.5) }
+            PropertyChanges { target: masklayer2; x: (parent.width * 1.5) }
+        },
+        State {
+            name: "MaskLayerStateApt"
+            PropertyChanges { target: masklayer2; x: 0 }
+            PropertyChanges { target: masklayer; x: (parent.width * 1.5) }
             PropertyChanges { target: software; x: (parent.width * 1.5) }
         }
     ]

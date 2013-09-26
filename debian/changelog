@@ -8,8 +8,9 @@ youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
   * Add some signals and slots.
   * Fixed the bug about Software signals(LP: #1226389).
   * Modify KThread and add base.py.
+  * Fixed the bug about the black widget when operate software(LP: #1231408).
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Wed, 18 Sep 2013 16:22:14 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Thu, 26 Sep 2013 20:08:11 +0800
 
 youker-assistant (0.2.0-0ubuntu1) saucy; urgency=low
 

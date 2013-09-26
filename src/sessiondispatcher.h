@@ -160,6 +160,14 @@ public:
     Q_INVOKABLE bool get_login_music_enable_qt();
     Q_INVOKABLE QString get_sound_theme_qt();
     Q_INVOKABLE void set_sound_theme_qt(QString theme);
+
+    /*-------------------monitorball-------------------*/
+    Q_INVOKABLE double get_cpu_percent_qt();
+    Q_INVOKABLE QString get_total_memory_qt();
+    Q_INVOKABLE QString get_used_memory_qt();
+    Q_INVOKABLE QString get_free_memory_qt();
+    Q_INVOKABLE QStringList get_network_flow_total_qt();
+    Q_INVOKABLE void get_network_flow_qt();
     
 signals:
     //告知QML那种某种类型的字体样式
@@ -167,10 +175,12 @@ signals:
     void notifyFontStyleToQML(QString font_style);
     //扫描完成后发送信号
     void finishScanWork(QString msg);
+    void finishGetNetworkSpeed(QStringList speed);
 public slots:
 //    QString show_signal(QString msg);
     //扫描完成后触发finishScanWork信号
     void handler_scan_rubbish(QString msg);
+    void handler_network_speed(QStringList speed);
 private:
     int mainwindow_width;
     int mainwindow_height;
