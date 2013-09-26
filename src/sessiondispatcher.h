@@ -163,10 +163,12 @@ public:
     
 signals:
     //告知QML那种某种类型的字体样式
-    void notifyFontStyleToQML(QString categoryFlag);
+//    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
+    void notifyFontStyleToQML(QString font_style);
     //扫描完成后发送信号
     void finishScanWork(QString msg);
 public slots:
+//    QString show_signal(QString msg);
     //扫描完成后触发finishScanWork信号
     void handler_scan_rubbish(QString msg);
 private:
