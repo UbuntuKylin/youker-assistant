@@ -43,7 +43,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
-//    QObject::connect(systemiface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
     QObject::connect(systemiface,SIGNAL(clean_data_main(QString,QString)),this,SLOT(handler_clean_data_main(QString, QString)));
     QObject::connect(systemiface,SIGNAL(clean_data_second(QString,QString)),this,SLOT(handler_clean_data_second(QString,QString)));
 
@@ -112,10 +111,6 @@ void SystemDispatcher::handler_clear_rubbish_main_error(QString msg) {
 void SystemDispatcher::handler_clear_rubbish_second_onekey(QString msg) {
      emit finishCleanWorkSecond(msg);
 }
-
-//void SystemDispatcher::handler_network_speed(QStringList speed) {
-//    emit finishGetNetworkSpeed(speed);
-//}
 
 void SystemDispatcher::handler_clean_data_main(QString type, QString msg) {
     emit finishCleanDataMain(type, msg);
