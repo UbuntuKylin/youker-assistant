@@ -240,11 +240,12 @@ class FunctionOfClean():
 
     def clean_the_file(self, cruftlist):
         for cruft in cruftlist:
-            if cruft:
-                if os.path.isdir(cruft):
-                    shutil.rmtree(cruft)
+            tmp = cruft.encode("UTF-8")
+            if tmp:
+                if os.path.isdir(tmp):
+                    shutil.rmtree(tmp)
                 else:
-                    os.remove(cruft)
+                    os.remove(tmp)
 
     def clean_the_package(self, cruftlist):
         if cruftlist:
