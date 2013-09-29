@@ -146,7 +146,6 @@ signals:
     void finishCleanWorkMainError(QString msg);
     void finishCleanWorkSecond(QString msg);
     void finishCleanWorkSecondError(QString msg);
-//    void finishGetNetworkSpeed(QStringList speed);
     void finishCleanDataMain(QString type, QString msg);
     void finishCleanDataSecond(QString type, QString msg);
 
@@ -157,7 +156,6 @@ public slots:
     void handler_clear_rubbish_main_error(QString msg);
     void handler_clear_rubbish_second_onekey(QString msg);
     void handler_clear_rubbish_second_error(QString msg);
-//    void handler_network_speed(QStringList speed);
     void handler_clean_data_main(QString type, QString msg);
     void handler_clean_data_second(QString type, QString msg);
 private:

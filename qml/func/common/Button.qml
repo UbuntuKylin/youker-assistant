@@ -46,19 +46,7 @@ Item {
                             btnImg.source = "../../img/icons/green3.png"
                             displaytext.text = "一键清理";
                         }
-                     }
-//                    else if (msg == "u") {
-//                         btn.enabled=true;
-//                    }
-//                    else if (msg == "c") {
-//                         btn.enabled=true;
-//                    }
-//                    else if (msg == "h") {
-//                        btn.enabled=true;
-//                    }
-//                    else if (msg == "k") {
-//                        btn.enabled=true;
-//                    }
+                    }
                     else if (msg == "u" || msg == "c" || msg == "h" || msg == "k") {
                          btn.enabled=true;
                          displaytext.text = "正在清理..."
@@ -80,19 +68,7 @@ Item {
                      btn.enabled=true;
                     btnImg.source = "../../img/icons/green1.png"
                     displaytext.text = "一键清理";
-                 }
-//                 else if (msg == "u") {
-//                     btn.enabled=true;
-//                 }
-//                 else if (msg == "c") {
-//                     btn.enabled=true;
-//                 }
-//                else if (msg == "h") {
-//                    btn.enabled=true;
-//                }
-//                else if (msg == "k") {
-//                    btn.enabled=true;
-//                }
+                }
                 else if (msg == "u" || msg == "c" || msg == "h" || msg == "k") {
                      btn.enabled=true;
                      displaytext.text = "正在清理..."

@@ -160,6 +160,13 @@ class SessionDaemon(dbus.service.Object):
     def get_system_message(self):
         return self.sysconf.get_sys_msg()
 
+    @dbus.service.signal(INTERFACE, signature='as')
+    def get_speed(self, speed):
+        pass
+
+    def get_network_speed(self, speed):
+        self.get_speed(speed)
+
     # -------------------------beautify start here-------------------------
 
     # -------------------------desktop-------------------------
@@ -501,10 +508,3 @@ class SessionDaemon(dbus.service.Object):
     def get_network_flow(self):
         speed_network = self.ballconf.get_network_flow()
         self.get_network_speed(speed_network)
-
-    @dbus.service.signal(INTERFACE, signature='as')
-    def get_speed(self, speed):
-        pass
-
-    def get_network_speed(self, speed):
-        self.get_speed(speed)
