@@ -46,7 +46,7 @@ class SudoDaemon(PolicyKitService):
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
-        self.daemonclean = cleaner.FunctionOfClean()
+        self.daemonclean = cleaner.FunctionOfClean(None)
         self.daemonApt = AptDaemon(self)
 
     @dbus.service.signal(INTERFACE, signature='s')

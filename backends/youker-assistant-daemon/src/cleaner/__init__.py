@@ -60,7 +60,7 @@ class OneKeyClean():
         ### the part of history
         if flag_dic['history']:
             history_list = []
-            objhistory = CleanTheHistory()
+            objhistory = CleanTheHistory(None)
             tmp_history_list = objhistory.get_scan_result(HOMEDIR)
             #tmp_history_str = '<1_1>'.join(tmp_history_list)
             for record in tmp_history_list:
@@ -74,7 +74,7 @@ class OneKeyClean():
         if flag_dic['cookies']:
             cookies_list = []
             cookiesdata = 0
-            objcookies = CleanTheCookies()
+            objcookies = CleanTheCookies(None)
             tmp_cookies_list = objcookies.get_scan_result(HOMEDIR)
             for record in tmp_cookies_list:
                 resultcookies = record.split('<2_2>')[0]
@@ -139,8 +139,8 @@ class ManageTheLarge():
         
 # the functions of clean the browser history
 class CleanTheHistory():
-    def __init__(self):
-        pass
+    def __init__(self, systemdaemon):
+        self.sysdaemon = systemdaemon
 
     def get_scan_result(self, homedir = ''):
         objhg = historyclean.HistoryClean(homedir)
@@ -151,6 +151,18 @@ class CleanTheHistory():
         global HOMEDIR
         objhc = historyclean.HistoryClean(HOMEDIR)
         objhc.clean_all_records()
+
+    def clean_the_cruftlist_for_main(self, historynum):
+        global HOMEDIR
+        objhc = historyclean.HistoryClean(HOMEDIR)
+        objhc.clean_all_records()
+        self.sysdaemon.clean_process_main_msg('%s records has been delete' % historynum)
+
+    def clean_the_cruftlist_for_second(self, historynum):
+        global HOMEDIR
+        objhc = historyclean.HistoryClean(HOMEDIR)
+        objhc.clean_all_records()
+        self.sysdaemon.clean_process_second_msg('%s records has been delete' % historynum)
 
     def __del__(self):
         pass
@@ -182,14 +194,29 @@ class CleanDashHistory():
 
 # the function of clean the cookies
 class CleanTheCookies():
-    def __init__(self):
-        pass
-        #self.objc = cookiesclean.CookiesClean()
+    def __init__(self, systemdaemon):
+        self.sysdaemon = systemdaemon
 
     def get_scan_result(self, homedir = ''):
         objcg = cookiesclean.CookiesClean(homedir)
         domaincount = objcg.scan_the_records()
         return domaincount
+
+    def clean_the_cruftlist_for_main(self, cruftlist):
+        global HOMEDIR
+        flag = None
+        objcc = cookiesclean.CookiesClean(HOMEDIR)
+        for cruft in cruftlist:
+            self.sysdaemon.clean_process_main_msg("cleaning %s's cookies" % cruft)
+            flag = objcc.clean_the_records(cruft)
+
+    def clean_the_cruftlist_for_second(self, cruftlist):
+        global HOMEDIR
+        flag = None
+        objcc = cookiesclean.CookiesClean(HOMEDIR)
+        for cruft in cruftlist:
+            self.sysdaemon.clean_process_second_msg("cleaning %s's cookies" % cruft)
+            flag = objcc.clean_the_records(cruft)
 
     def clean_the_cruftlist(self, cruftlist):
         global HOMEDIR
@@ -235,8 +262,28 @@ class CleanTheCache():
 
 # the function of clean cruft files and cruft packages
 class FunctionOfClean():
-    def __init__(self):
-        pass
+    def __init__(self, systemdaemon):
+        self.sysdaemon = systemdaemon
+
+    def clean_the_file_for_main(self, cruftlist):
+        for cruft in cruftlist:
+            tmp = cruft.encode("UTF-8")
+            self.sysdaemon.clean_process_main_msg("cleaning %s" % tmp)
+            if tmp:
+                if os.path.isdir(tmp):
+                    shutil.rmtree(tmp)
+                else:
+                    os.remove(tmp)
+
+    def clean_the_file_for_second(self, cruftlist):
+        for cruft in cruftlist:
+            tmp = cruft.encode("UTF-8")
+            self.sysdaemon.clean_process_second_msg("cleaning %s" % tmp)
+            if tmp:
+                if os.path.isdir(tmp):
+                    shutil.rmtree(tmp)
+                else:
+                    os.remove(tmp)
 
     def clean_the_file(self, cruftlist):
         for cruft in cruftlist:

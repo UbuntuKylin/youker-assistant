@@ -62,7 +62,7 @@ class SessionDaemon(dbus.service.Object):
         self.daemonunneed = cleaner.CleanTheUnneed()
         self.daemonoldkernel = cleaner.CleanTheOldkernel()
         self.daemoncache = cleaner.CleanTheCache()
-        self.daemonclean = cleaner.FunctionOfClean()
+        self.daemonclean = cleaner.FunctionOfClean(self)
         self.daemononekey = cleaner.OneKeyClean()
 
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
@@ -71,7 +71,7 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_history_records(self):
-        daemonhistory = cleaner.CleanTheHistory()
+        daemonhistory = cleaner.CleanTheHistory(None)
         tmp_list = daemonhistory.get_scan_result()
         self.scan_complete_msg('history')
         return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
@@ -108,7 +108,7 @@ class SessionDaemon(dbus.service.Object):
     ### input-''   output-['domain<2_2>number', 'dom...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_cookies_records(self):
-        daemoncookies = cleaner.CleanTheCookies()
+        daemoncookies = cleaner.CleanTheCookies(None)
         tmp_list = daemoncookies.get_scan_result()
         self.scan_complete_msg('cookies')
         return tmp_list

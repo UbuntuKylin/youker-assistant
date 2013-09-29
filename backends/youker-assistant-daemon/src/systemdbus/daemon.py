@@ -53,7 +53,7 @@ class Daemon(PolicyKitService):
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
-        self.daemonclean = cleaner.FunctionOfClean()
+        self.daemonclean = cleaner.FunctionOfClean(self)
         self.daemononekey = cleaner.OneKeyClean()
         self.daemoncache = cleaner.CleanTheCache()
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
@@ -180,6 +180,10 @@ class Daemon(PolicyKitService):
     def clean_data_main(self, category, msg):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_process_main(self, msg):
+        pass
+
     # a dbus method which means clean complete by second one key 
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_complete_second(self, msg):
@@ -187,6 +191,10 @@ class Daemon(PolicyKitService):
 
     @dbus.service.signal(INTERFACE, signature='ss')
     def clean_data_second(self, category, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_process_second(self, msg):
         pass
 
     # a dbus method which means clean complete
@@ -221,9 +229,9 @@ class Daemon(PolicyKitService):
         cruft_dic = self.daemononekey.get_scan_result(mode_list)
         if 'history' in cruft_dic:
             history_cruft_list = cruft_dic['history']
-            daemonhistory = cleaner.CleanTheHistory()
+            daemonhistory = cleaner.CleanTheHistory(self)
             try:
-                daemonhistory.clean_the_cruftlist()
+                daemonhistory.clean_the_cruftlist_for_main(cruft_dic['historydata'])
             except Exception, e:
                 self.clean_error_main_msg('he')
             else:
@@ -232,9 +240,9 @@ class Daemon(PolicyKitService):
 
         if 'cookies' in cruft_dic:
             cookies_cruft_list = cruft_dic['cookies']
-            daemoncookies = cleaner.CleanTheCookies()
+            daemoncookies = cleaner.CleanTheCookies(self)
             try:
-                daemoncookies.clean_the_cruftlist(cookies_cruft_list)
+                daemoncookies.clean_the_cruftlist_for_main(cookies_cruft_list)
             except Exception, e:
                 self.clean_error_main_msg('ke')
             else:
@@ -244,7 +252,7 @@ class Daemon(PolicyKitService):
         if 'cache' in cruft_dic:
             cache_cruft_list = cruft_dic['cache']
             try:
-                self.daemonclean.clean_the_file(cache_cruft_list)
+                self.daemonclean.clean_the_file_for_main(cache_cruft_list)
             except Exception, e:
                 self.clean_error_main_msg('ce')
             else:
@@ -264,9 +272,9 @@ class Daemon(PolicyKitService):
         cruft_dic = self.daemononekey.get_scan_result(mode_list)
         if 'history' in cruft_dic:
             history_cruft_list = cruft_dic['history']
-            daemonhistory = cleaner.CleanTheHistory()
+            daemonhistory = cleaner.CleanTheHistory(self)
             try:
-                daemonhistory.clean_the_cruftlist()
+                daemonhistory.clean_the_cruftlist_for_second(cruft_dic['historydata'])
             except Exception, e:
                 self.clean_error_second_msg('he')
             else:
@@ -275,9 +283,9 @@ class Daemon(PolicyKitService):
 
         if 'cookies' in cruft_dic:
             cookies_cruft_list = cruft_dic['cookies']
-            daemoncookies = cleaner.CleanTheCookies()
+            daemoncookies = cleaner.CleanTheCookies(self)
             try:
-                daemoncookies.clean_the_cruftlist(cookies_cruft_list)
+                daemoncookies.clean_the_cruftlist_for_second(cookies_cruft_list)
             except Exception, e:
                 self.clean_error_second_msg('ke')
             else:
@@ -287,7 +295,7 @@ class Daemon(PolicyKitService):
         if 'cache' in cruft_dic:
             cache_cruft_list = cruft_dic['cache']
             try:
-                self.daemonclean.clean_the_file(cache_cruft_list)
+                self.daemonclean.clean_the_file_for_second(cache_cruft_list)
             except Exception, e:
                 self.clean_error_second_msg('ce')
             else:
@@ -326,7 +334,7 @@ class Daemon(PolicyKitService):
         if not status:
             self.clean_complete_msg('')
             return
-        daemonhistory = cleaner.CleanTheHistory()
+        daemonhistory = cleaner.CleanTheHistory(None)
         try:
             daemonhistory.clean_the_cruftlist()
         except Exception, e:
@@ -369,7 +377,7 @@ class Daemon(PolicyKitService):
         if not status:
             self.clean_complete_msg('')
             return
-        daemoncookies = cleaner.CleanTheCookies()
+        daemoncookies = cleaner.CleanTheCookies(None)
         try:
             daemoncookies.clean_the_cruftlist(cruftlist)
         except Exception, e:
@@ -404,11 +412,17 @@ class Daemon(PolicyKitService):
     def clean_data_main_msg(self, category, para):
         self.clean_data_main(category, para)
 
+    def clean_process_main_msg(self, para):
+        self.clean_process_main(para)
+
     def clean_complete_second_msg(self, para):
         self.clean_complete_second(para)
 
     def clean_data_second_msg(self, category, para):
         self.clean_data_second(category, para)
+
+    def clean_process_second_msg(self, para):
+        self.clean_process_second(para)
 
     def clean_complete_msg(self, para):
         self.clean_complete(para)
