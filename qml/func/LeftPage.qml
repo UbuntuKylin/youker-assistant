@@ -523,7 +523,7 @@ Rectangle {
     Common.MainCheckBox {
         id:chek
         x:115
-        y:179
+        y:170
         checked:"true"    //将所有选项都check
         onCheckedboolChanged: {
             checkboxe1.checked = chek.checkedbool;
