@@ -57,8 +57,8 @@ Rectangle {
             scrollbar_z=-1
         }
         else scrollbar_z=1
-    }
 
+    }
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
@@ -215,65 +215,90 @@ Rectangle {
 
             }
         }
-        ListView{
-            id:lisv
-            anchors.fill: parent
-            model: mainModel
-            delegate: cdelegat
-            highlight: Rectangle{width: 440;height: 30 ; color: "lightsteelblue"}
-            focus:true
-        }
+        Common.ScrollArea {
+            frame:false
+            anchors{
+                top:parent.top
+                topMargin: 1
+                left:parent.left
+                leftMargin: 1
+            }
+            height: parent.height-1
+            width: parent.width-1
+            Item {
+                width: parent.width
+                height: bootimagepage.num * 30 //列表长度
+                //垃圾清理显示内容
+                ListView{
+                    id:lisv
+                    anchors.fill: parent
+                    model: mainModel
+                    delegate: cdelegat
+                    highlight: Rectangle{width: 440;height: 30 ; color: "lightsteelblue"}
+                    focus:true
+                }
+            }//Item
+        }//ScrollArea
 
-        Rectangle{
-            id:scrollbar
-            anchors.right: parent.right
-            anchors.rightMargin: 8
-            height: parent.height
-            z:scrollbar_z
-            width:4
-            color: "lightgrey"
-        }
-        Rectangle{
-            id: button
-            anchors.right: parent.right
-            anchors.rightMargin: 5
-            width: 10
-            z:scrollbar_z
-            y: lisv.visibleArea.yPosition * scrollbar.height
-            height: lisv.visibleArea.heightRatio * scrollbar.height;
-            radius: 3
-            smooth: true
-            color: "white"
-            border.color: "lightgrey"
-            Column{
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 2
-                Rectangle{
-                    width: 8;height: 1
-                    color: "lightgrey"
-                }
-                Rectangle{
-                    width: 8;height: 1
-                    color: "lightgrey"
-                }
-                Rectangle{
-                    width: 8;height: 1
-                    color: "lightgrey"
-                }
-            }
-            MouseArea {
-                id: mousearea
-                anchors.fill: button
-                drag.target: button
-                drag.axis: Drag.YAxis
-                drag.minimumY: 0
-                drag.maximumY: scrollbar.height - button.height
-                onMouseYChanged: {
-                    lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
-                }
-            }
-        }
+//        ListView{
+//            id:lisv
+//            anchors.fill: parent
+//            model: mainModel
+//            delegate: cdelegat
+//            highlight: Rectangle{width: 440;height: 30 ; color: "lightsteelblue"}
+//            focus:true
+//        }
+
+//        Rectangle{
+//            id:scrollbar
+//            anchors.right: parent.right
+//            anchors.rightMargin: 8
+//            height: parent.height
+//            z:scrollbar_z
+//            width:4
+//            color: "lightgrey"
+//        }
+//        Rectangle{
+//            id: button
+//            anchors.right: parent.right
+//            anchors.rightMargin: 5
+//            width: 10
+//            z:scrollbar_z
+//            y: lisv.visibleArea.yPosition * scrollbar.height
+//            height: lisv.visibleArea.heightRatio * scrollbar.height;
+//            radius: 3
+//            smooth: true
+//            color: "white"
+//            border.color: "lightgrey"
+//            Column{
+//                anchors.verticalCenter: parent.verticalCenter
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                spacing: 2
+//                Rectangle{
+//                    width: 8;height: 1
+//                    color: "lightgrey"
+//                }
+//                Rectangle{
+//                    width: 8;height: 1
+//                    color: "lightgrey"
+//                }
+//                Rectangle{
+//                    width: 8;height: 1
+//                    color: "lightgrey"
+//                }
+//            }
+//            MouseArea {
+//                id: mousearea
+//                anchors.fill: button
+//                drag.target: button
+//                drag.axis: Drag.YAxis
+//                drag.minimumY: 0
+//                drag.maximumY: scrollbar.height - button.height
+//                onMouseYChanged: {
+//                    lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
+//                }
+//            }
+//        }
     }
 
     //顶层工具栏

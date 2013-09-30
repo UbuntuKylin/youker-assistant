@@ -352,6 +352,40 @@ Item {
 //                    flag: "Wps"
 //                }
             }
+
+//            Common.ScrollArea {
+//                frame:false
+//                anchors{
+//                    top:parent.top
+//                    topMargin: 1
+//                    left:parent.left
+//                    leftMargin: 1
+//                }
+//                height: parent.height-1
+//                width: parent.width-1
+//                Item {
+//                    width: parent.width
+//                    height: 14 * 79   //
+//                    //垃圾清理显示内容
+//                    GridView {
+//                        id: gridView
+//                        height: parent.height-12
+//                        width: parent.width
+//                        anchors {
+//                            top: parent.top
+//                            topMargin: 12
+//                            left: parent.left
+//                            leftMargin: 20
+//                        }
+//                        model: funcmodel
+//                        delegate: SoftwareDelegate {}
+//                        cacheBuffer: 1000
+//                        cellWidth: 190; cellHeight: 90
+//                        focus: true
+//                    }
+//                }//Item
+//            }//ScrollArea
+
             GridView {
                 id: gridView
                 height: parent.height-12

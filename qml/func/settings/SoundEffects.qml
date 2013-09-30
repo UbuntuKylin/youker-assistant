@@ -42,6 +42,7 @@ Rectangle {
     property bool init_sound_flag: false
     property string actiontitle: "声音效果设置"
     property string actiontext: "选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。"
+    property int musiclist_num: 0
 
     property string selectedmusic: ""
 
@@ -72,6 +73,7 @@ Rectangle {
         }
         musicmodel.clear();
         var musiclist=systemdispatcher.get_sounds_qt();
+        musiclist_num = musiclist.length;
         for(var l=0; l < musiclist.length; l++) {
             musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
         }
@@ -345,67 +347,92 @@ Rectangle {
 
                 }
             }
-            ListView{
-                id:lisv
-                anchors.fill: parent
-                model:musicmodel
-                delegate: cdelegat
-                highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
-                focus:true
-            }
+            Common.ScrollArea {
+                frame:false
+                anchors{
+                    top:parent.top
+                    topMargin: 1
+                    left:parent.left
+                    leftMargin: 1
+                }
+                height: parent.height-1
+                width: parent.width-1
+                Item {
+                    width: parent.width
+                    height: musiclist_num * 30 //列表长度
+                    //垃圾清理显示内容
+                    ListView{
+                        id:lisv
+                        anchors.fill: parent
+                        model:musicmodel
+                        delegate: cdelegat
+                        highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
+                        focus:true
+                    }
+                }//Item
+            }//ScrollArea
 
 
-            Rectangle{
-                id:scrollbar
-                z:scrollbar_z
-                anchors.right: parent.right
-                anchors.rightMargin: 8
-                height: parent.height
-                width:4
-                color: "lightgrey"
-            }
-            Rectangle{
-                id: button
-                anchors.right: parent.right
-                anchors.rightMargin: 5
-                width: 10
-                z:scrollbar_z
-                y: lisv.visibleArea.yPosition * (scrollbar.height+button.height)
-//                height: lisv.visibleArea.heightRatio * scrollbar.height;
-                height:45
-                radius: 3
-                smooth: true
-                color: "white"
-                border.color: "lightgrey"
-                Column{
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 2
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                }
-                MouseArea {
-                    id: mousearea
-                    anchors.fill: button
-                    drag.target: button
-                    drag.axis: Drag.YAxis
-                    drag.minimumY: 0
-                    drag.maximumY: scrollbar.height - button.height
-                    onMouseYChanged: {
-                        lisv.contentY = button.y / (scrollbar.height+lisv.visibleArea.heightRatio * (scrollbar.height-lisv.visibleArea.heightRatio * scrollbar.height))* lisv.contentHeight
-                    }
-                }
-            }
+//            ListView{
+//                id:lisv
+//                anchors.fill: parent
+//                model:musicmodel
+//                delegate: cdelegat
+//                highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
+//                focus:true
+//            }
+
+//            Rectangle{
+//                id:scrollbar
+//                z:scrollbar_z
+//                anchors.right: parent.right
+//                anchors.rightMargin: 8
+//                height: parent.height
+//                width:4
+//                color: "lightgrey"
+//            }
+//            Rectangle{
+//                id: button
+//                anchors.right: parent.right
+//                anchors.rightMargin: 5
+//                width: 10
+//                z:scrollbar_z
+//                y: lisv.visibleArea.yPosition * (scrollbar.height+button.height)
+////                height: lisv.visibleArea.heightRatio * scrollbar.height;
+//                height:45
+//                radius: 3
+//                smooth: true
+//                color: "white"
+//                border.color: "lightgrey"
+//                Column{
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    spacing: 2
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                }
+//                MouseArea {
+//                    id: mousearea
+//                    anchors.fill: button
+//                    drag.target: button
+//                    drag.axis: Drag.YAxis
+//                    drag.minimumY: 0
+//                    drag.maximumY: scrollbar.height - button.height
+//                    onMouseYChanged: {
+//                        lisv.contentY = button.y / (scrollbar.height+lisv.visibleArea.heightRatio * (scrollbar.height-lisv.visibleArea.heightRatio * scrollbar.height))* lisv.contentHeight
+//                    }
+//                }
+//            }
         }
     }
 

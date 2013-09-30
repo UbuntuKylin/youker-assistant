@@ -317,64 +317,90 @@ Rectangle {
 
             }
         }
-        ListView{
-            id:leftLisv
-            anchors.fill: parent
-            model: leftFcitxModel
-            delegate: leftDelegat
-            highlight: Rectangle{width: 340;height: 30 ; color: "lightsteelblue"}
-            focus:true
-        }
 
-        Rectangle{
-            id:leftScrollbar
-            anchors.right: parent.right
-            anchors.rightMargin: -1
-            height: parent.height
-//            z:scrollbar_z
-            width:11
-            color: "lightgrey"
-        }
-        Rectangle{
-            id: leftButton
-            anchors.right: parent.right
-            anchors.rightMargin: 0
-            width: 10
-            y: leftLisv.visibleArea.yPosition * leftScrollbar.height    //?
-            height: leftLisv.visibleArea.heightRatio * leftScrollbar.height; //?
-            radius: 3
-            smooth: true
-            color: "white"
-            border.color: "lightgrey"
-            Column{
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 2
-                Rectangle{
-                    width: 8;height: 1
-                    color: "lightgrey"
-                }
-                Rectangle{
-                    width: 8;height: 1
-                    color: "lightgrey"
-                }
-                Rectangle{
-                    width: 8;height: 1
-                    color: "lightgrey"
-                }
+        Common.ScrollArea {
+            frame:false
+            anchors{
+                top:parent.top
+                topMargin: 1
+                left:parent.left
+                leftMargin: 1
             }
-            MouseArea {
-                id: mousearea
-                anchors.fill: leftButton
-                drag.target: leftButton
-                drag.axis: Drag.YAxis
-                drag.minimumY: 0
-                drag.maximumY: leftScrollbar.height - leftButton.height
-                onMouseYChanged: {
-                    leftLisv.contentY = leftButton.y / leftScrollbar.height * leftLisv.contentHeight //?
+            height: parent.height-1
+            width: parent.width-1
+            Item {
+                width: parent.width
+                height: leftNum * 30 //列表长度
+                //垃圾清理显示内容
+                ListView{
+                    id:leftLisv
+                    anchors.fill: parent
+                    model: leftFcitxModel
+                    delegate: leftDelegat
+                    highlight: Rectangle{width: 340;height: 30 ; color: "lightsteelblue"}
+                    focus:true
                 }
-            }
-        }
+            }//Item
+        }//ScrollArea
+
+//        ListView{
+//            id:leftLisv
+//            anchors.fill: parent
+//            model: leftFcitxModel
+//            delegate: leftDelegat
+//            highlight: Rectangle{width: 340;height: 30 ; color: "lightsteelblue"}
+//            focus:true
+//        }
+
+//        Rectangle{
+//            id:leftScrollbar
+//            anchors.right: parent.right
+//            anchors.rightMargin: -1
+//            height: parent.height
+////            z:scrollbar_z
+//            width:11
+//            color: "lightgrey"
+//        }
+//        Rectangle{
+//            id: leftButton
+//            anchors.right: parent.right
+//            anchors.rightMargin: 0
+//            width: 10
+//            y: leftLisv.visibleArea.yPosition * leftScrollbar.height    //?
+//            height: leftLisv.visibleArea.heightRatio * leftScrollbar.height; //?
+//            radius: 3
+//            smooth: true
+//            color: "white"
+//            border.color: "lightgrey"
+//            Column{
+//                anchors.verticalCenter: parent.verticalCenter
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                spacing: 2
+//                Rectangle{
+//                    width: 8;height: 1
+//                    color: "lightgrey"
+//                }
+//                Rectangle{
+//                    width: 8;height: 1
+//                    color: "lightgrey"
+//                }
+//                Rectangle{
+//                    width: 8;height: 1
+//                    color: "lightgrey"
+//                }
+//            }
+//            MouseArea {
+//                id: mousearea
+//                anchors.fill: leftButton
+//                drag.target: leftButton
+//                drag.axis: Drag.YAxis
+//                drag.minimumY: 0
+//                drag.maximumY: leftScrollbar.height - leftButton.height
+//                onMouseYChanged: {
+//                    leftLisv.contentY = leftButton.y / leftScrollbar.height * leftLisv.contentHeight //?
+//                }
+//            }
+//        }
     }
 
   //  右边框
@@ -454,72 +480,98 @@ Rectangle {
                     }
                 }
             }
-            ListView{
-                id:rightLisv
-                anchors.fill: parent
-                model: rightFcitxModel
-                delegate: rightDelegat
-                highlightMoveSpeed: 9999999
-                highlight: Rectangle{width: 350;height: 30 ; color: "lightsteelblue"}
-            }
 
-            Rectangle{
-                id:rightscrollbar
-                anchors.right: parent.right
-                anchors.rightMargin: -1
-                height: parent.height
-//                z:scrollbar_z
-                width:11
-                color: "lightgrey"
-            }
-            Rectangle{
-                id: rightbutton
-                anchors.right: parent.right
-                anchors.rightMargin: 0
-                width: 10
-                height:30
-                y: rightLisv.visibleArea.yPosition* (rightscrollbar.height-rightbutton.height)   //?
-         //       height: rightLisv.visibleArea.heightRatio * rightscrollbar.height; //?
-                radius: 3
-                smooth: true
-                color: "white"
-                border.color: "lightgrey"
-                Column{
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 2
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
+            Common.ScrollArea {
+                frame:false
+                anchors{
+                    top:parent.top
+                    topMargin: 1
+                    left:parent.left
+                    leftMargin: 1
                 }
-                MouseArea {
-                    id: rightmousearea
-                    anchors.fill: rightbutton
-                    drag.target: rightbutton
-                    drag.axis: Drag.YAxis
-                    drag.minimumY: 0
-                    drag.maximumY: rightscrollbar.height - rightbutton.height
-                    onMouseYChanged: {
-//                        console.log(rightbutton.y)
-//                        console.log(rightLisv.visibleArea.yPosition)
-//                        console.log(rightLisv.contentY)
-//                        console.log(rightscrollbar.height)
-//                        console.log(rightLisv.contentHeight)
-//                        console.log(rightLisv.visibleArea.heightRatio)
-                        rightLisv.contentY = (rightbutton.y / (rightscrollbar.height-30+(rightLisv.visibleArea.heightRatio * (rightscrollbar.height-30)))* rightLisv.contentHeight)
+                height: parent.height-1
+                width: parent.width-1
+                Item {
+                    width: parent.width
+                    height: rightNum * 30 //列表长度
+                    //垃圾清理显示内容
+                    ListView{
+                        id:rightLisv
+                        anchors.fill: parent
+                        model: rightFcitxModel
+                        delegate: rightDelegat
+                        highlightMoveSpeed: 9999999
+                        highlight: Rectangle{width: 350;height: 30 ; color: "lightsteelblue"}
+                    }
+                }//Item
+            }//ScrollArea
 
-                    }
-                }
-            }
+//            ListView{
+//                id:rightLisv
+//                anchors.fill: parent
+//                model: rightFcitxModel
+//                delegate: rightDelegat
+//                highlightMoveSpeed: 9999999
+//                highlight: Rectangle{width: 350;height: 30 ; color: "lightsteelblue"}
+//            }
+
+//            Rectangle{
+//                id:rightscrollbar
+//                anchors.right: parent.right
+//                anchors.rightMargin: -1
+//                height: parent.height
+////                z:scrollbar_z
+//                width:11
+//                color: "lightgrey"
+//            }
+//            Rectangle{
+//                id: rightbutton
+//                anchors.right: parent.right
+//                anchors.rightMargin: 0
+//                width: 10
+//                height:30
+//                y: rightLisv.visibleArea.yPosition* (rightscrollbar.height-rightbutton.height)   //?
+//         //       height: rightLisv.visibleArea.heightRatio * rightscrollbar.height; //?
+//                radius: 3
+//                smooth: true
+//                color: "white"
+//                border.color: "lightgrey"
+//                Column{
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    spacing: 2
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                }
+//                MouseArea {
+//                    id: rightmousearea
+//                    anchors.fill: rightbutton
+//                    drag.target: rightbutton
+//                    drag.axis: Drag.YAxis
+//                    drag.minimumY: 0
+//                    drag.maximumY: rightscrollbar.height - rightbutton.height
+//                    onMouseYChanged: {
+////                        console.log(rightbutton.y)
+////                        console.log(rightLisv.visibleArea.yPosition)
+////                        console.log(rightLisv.contentY)
+////                        console.log(rightscrollbar.height)
+////                        console.log(rightLisv.contentHeight)
+////                        console.log(rightLisv.visibleArea.heightRatio)
+//                        rightLisv.contentY = (rightbutton.y / (rightscrollbar.height-30+(rightLisv.visibleArea.heightRatio * (rightscrollbar.height-30)))* rightLisv.contentHeight)
+
+//                    }
+//                }
+//            }
         }
     }
     //Scroll between input Method
