@@ -87,33 +87,8 @@ Rectangle {
             }
         }
     Component.onCompleted: {
+                refreshFcitxFont();
 
-        //get_vertical_list===================================================
-        var getVerticalList = fcitxcfgwizard.get_vertical_list();
-        verticalstyle.checked = getVerticalList
-
-        //get candidate_word_numbe============================================
-        var getFontcandidateWord =fcitxcfgwizard.get_candidate_word_number();
-        candidateWordNumber.value = getFontcandidateWord;
-
-        //get_trigger_key========================================================
-        var getMethodBtn1 = fcitxcfgwizard.get_trigger_key_first();
-        methodBtn1.text = getMethodBtn1;
-
-        var getMethodBtn2 = fcitxcfgwizard.get_trigger_key_second();
-        methodBtn2.text = getMethodBtn2
-
-        //get_prev_page_key======================================================
-        var getPrevPageBtn1 = fcitxcfgwizard.get_prev_page_key_first();
-        prevPageBtn1.text = getPrevPageBtn1;
-        var getPrevPageBtn2 = fcitxcfgwizard.get_prev_page_key_second();
-        prevPageBtn2.text = getPrevPageBtn2
-
-        //get_next_page_key=======================================================
-        var getNextpageBtn1 = fcitxcfgwizard.get_next_page_key_first();
-        nextPageBtn1.text = getNextpageBtn1;
-        var getNextpageBtn2 = fcitxcfgwizard.get_next_page_key_second();
-        nextPageBtn2.text = getNextpageBtn2;
     }
 
     Row{

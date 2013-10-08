@@ -3,6 +3,7 @@ import SystemType 0.1
 import SessionType 0.1
 import "../common" as Common
 import "../bars" as Bars
+import "../../func"  as Func
 
 Rectangle {
     id:fcitxconfigtoolKey
@@ -125,61 +126,8 @@ Rectangle {
         }
 
     Component.onCompleted: {
-        skinModel.clear();
-        //set font============================================================
-        var setFont = fcitxcfgwizard.get_font();
-        fontStyleBtn.text = setFont;
-        //get font size=======================================================
-        var getFontSize = fcitxcfgwizard.get_font_size();
-        if(getFontSize == 0)
-            getFontSize = fcitxcfgwizard.get_font_size();
-        if(getFontSize == 0)
-            getFontSize = 12;
-        sliderFontSize.value = getFontSize;
-
-        //get_skin_list and current_skin=================================================
-        var getSkinList = fcitxcfgwizard.get_all_skin_type()
-        var getCurrentSkin = fcitxcfgwizard.get_skin_type()
-        if(getCurrentSkin != "default")
-        {
-            enableSkinBox.checked = true
-            flagCheck = 1;
-        }
-        else
-        {
-            enableSkinBox.checked = false;
-            flagCheck = 0;
-        }
-        getSkinList.unshift(getCurrentSkin);   //js将数组第一个添加unshift进来的
-        skinModel.clear();
-        for(var i=0;i<getSkinList.length;i++)
-       {
-            skinModel.append({"skinTitle": getSkinList[i]});
-            if(i!=0&&(getSkinList[i] == getCurrentSkin))
-                skinModel.remove(i);
-        }
-        //load_skin_image====================================================
-        if(getCurrentSkin == "default")
-        {
-            h_fcitxSkinImage = "../../img/skin/h_default.png"
-            v_fcitxSkinImage = "../../img/skin/v_default.png"
-        }
-        else if(getCurrentSkin == "dark")
-        {
-            h_fcitxSkinImage = "../../img/skin/h_dark.png"
-            v_fcitxSkinImage = "../../img/skin/v_dark.png"
-        }
-        else if(getCurrentSkin == "classic")
-        {
-            h_fcitxSkinImage = "../../img/skin/h_classic.png"
-            v_fcitxSkinImage = "../../img/skin/v_classic.png"
-        }
-        else{
-            h_fcitxSkinImage = ""
-            v_fcitxSkinImage = ""
-        }
+         refreshFcitxKey();
     }
-
 
     //分割线
     Row{

@@ -128,70 +128,17 @@ Rectangle {
             fcitxChangeModel.append({"text": "ALT+SHIFT"});
             fcitxChangeModel.append({"text": "CTRL+SUPER"});
         }
-
-     pageStack.push(functioncollection);
 }
     Connections {
             target: fcitxcfgwizard
             onRefreshFcitxSig: {
                 refreshFcitxtool();
+                pageStack.push(functioncollection);
             }
         }
 
     Component.onCompleted: {
-                leftFcitxModel.clear();
-                rightFcitxModel.clear();
-                fcitxChangeModel.clear();
-                leftFcitxModelindex = 0;
-                rightFcitxModelindex = 0;
-                var unneed_data = fcitxcfgwizard.get_im_list();
-                if (unneed_data == "" || unneed_data.length == 0)
-                unneed_data = fcitxcfgwizard.get_im_list();
-                for (var i=0; i< unneed_data.length; i++) {
-                var chooseList = unneed_data[i].split(m_separator);
-                if(chooseList[3]=="true")
-                {
-                    leftNum++;
-                    leftFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
-                }
-                else{
-                    rightNum++;
-                    rightFcitxModel.append({"itemTitle": chooseList[0],"uniqueName":chooseList[1],"langClde":chooseList[2]});
-                }
-                }
-                //get_im_switch_key
-                var getEnableHotKeybool =fcitxcfgwizard.get_im_switch_key();
-                enableHotKeyBox.checked = getEnableHotKeybool;
-
-                var getHotkyScrollBetween = fcitxcfgwizard.get_im_switch_hot_key()
-                if(getHotkyScrollBetween==0)
-                {
-                    fcitxChangeModel.append({"text": "CTRL+SHIFT"});
-                    fcitxChangeModel.append({"text": "ALT+SHIFT"});
-                    fcitxChangeModel.append({"text": "CTRL+SUPER"});
-                    fcitxChangeModel.append({"text": "ALT+SUPER"});
-                }
-                if(getHotkyScrollBetween==1)
-                {
-                    fcitxChangeModel.append({"text": "ALT+SHIFT"});
-                    fcitxChangeModel.append({"text": "CTRL+SHIFT"});
-                    fcitxChangeModel.append({"text": "CTRL+SUPER"});
-                    fcitxChangeModel.append({"text": "ALT+SUPER"});
-                }
-                if(getHotkyScrollBetween==2)
-                {
-                    fcitxChangeModel.append({"text": "CTRL+SUPER"});
-                    fcitxChangeModel.append({"text": "CTRL+SHIFT"});
-                    fcitxChangeModel.append({"text": "ALT+SHIFT"});
-                    fcitxChangeModel.append({"text": "ALT+SUPER"});
-                }
-                if(getHotkyScrollBetween==3)
-                {
-                    fcitxChangeModel.append({"text": "ALT+SUPER"});
-                    fcitxChangeModel.append({"text": "CTRL+SHIFT"});
-                    fcitxChangeModel.append({"text": "ALT+SHIFT"});
-                    fcitxChangeModel.append({"text": "CTRL+SUPER"});
-                }
+              refreshFcitxtool();
             }
 
     Text {
