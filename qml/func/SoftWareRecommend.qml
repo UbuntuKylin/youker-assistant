@@ -353,104 +353,104 @@ Item {
 //                }
             }
 
-//            Common.ScrollArea {
-//                frame:false
-//                anchors{
-//                    top:parent.top
-//                    topMargin: 1
-//                    left:parent.left
-//                    leftMargin: 1
-//                }
-//                height: parent.height-1
-//                width: parent.width-1
-//                Item {
-//                    width: parent.width
-//                    height: 14 * 79   //
-//                    //垃圾清理显示内容
-//                    GridView {
-//                        id: gridView
-//                        height: parent.height-12
-//                        width: parent.width
-//                        anchors {
-//                            top: parent.top
-//                            topMargin: 12
-//                            left: parent.left
-//                            leftMargin: 20
-//                        }
-//                        model: funcmodel
-//                        delegate: SoftwareDelegate {}
-//                        cacheBuffer: 1000
-//                        cellWidth: 190; cellHeight: 90
-//                        focus: true
-//                    }
-//                }//Item
-//            }//ScrollArea
-
-            GridView {
-                id: gridView
-                height: parent.height-12
-                width: parent.width
-                anchors {
-                    top: parent.top
-                    topMargin: 12
-                    left: parent.left
-                    leftMargin: 20
+            Common.ScrollArea {
+                frame:false
+                anchors{
+                    top:parent.top
+                    topMargin: 1
+                    left:parent.left
+                    leftMargin: 1
                 }
-                model: funcmodel
-                delegate: SoftwareDelegate {}
-                cacheBuffer: 1000
-                cellWidth: 190; cellHeight: 90
-                focus: true
-            }
-            Rectangle{
-                id:scrollbar
-                anchors.right: parent.right
-                anchors.rightMargin: 4
                 height: parent.height-1
-                width:13
-                color: "lightgrey"
-            }
-            Rectangle{
-                id: button
-                anchors.right: parent.right
-                anchors.rightMargin: 5
-                width: 12
-                y: gridView.visibleArea.yPosition * (scrollbar.height + 100) //257
-//                height: gridView.visibleArea.heightRatio * scrollbar.height;
-                height: 45
-                radius: 3
-                smooth: true
-                color: "white"
-                border.color: "lightgrey"
-                Column{
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 2
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
+                width: parent.width-1
+                Item {
+                    width: views.width-20   //列表宽度
+                    height: 4 * 95     //列表长度,前面的数字为列表行数
+                    //垃圾清理显示内容
+                    GridView {
+                        id: gridView
+                        height: parent.height-12
+                        width: parent.width
+                        anchors {
+                            top: parent.top
+                            topMargin: 12
+                            left: parent.left
+                            leftMargin: 20
+                        }
+                        model: funcmodel
+                        delegate: SoftwareDelegate {}
+                        cacheBuffer: 1000
+                        cellWidth: 190; cellHeight: 90
+                        focus: true
                     }
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                    Rectangle{
-                        width: 8;height: 1
-                        color: "lightgrey"
-                    }
-                }
-                MouseArea {
-                    id: mousearea
-                    anchors.fill: button
-                    drag.target: button
-                    drag.axis: Drag.YAxis
-                    drag.minimumY: 0
-                    drag.maximumY: scrollbar.height - button.height
-                    onMouseYChanged: {
-                        gridView.contentY = button.y / (scrollbar.height + 100) * gridView.contentHeight //257
-                    }
-                }
-            }
+                }//Item
+            }//ScrollArea
+
+//            GridView {
+//                id: gridView
+//                height: parent.height-12
+//                width: parent.width
+//                anchors {
+//                    top: parent.top
+//                    topMargin: 12
+//                    left: parent.left
+//                    leftMargin: 20
+//                }
+//                model: funcmodel
+//                delegate: SoftwareDelegate {}
+//                cacheBuffer: 1000
+//                cellWidth: 190; cellHeight: 90
+//                focus: true
+//            }
+//            Rectangle{
+//                id:scrollbar
+//                anchors.right: parent.right
+//                anchors.rightMargin: 4
+//                height: parent.height-1
+//                width:13
+//                color: "lightgrey"
+//            }
+//            Rectangle{
+//                id: button
+//                anchors.right: parent.right
+//                anchors.rightMargin: 5
+//                width: 12
+//                y: gridView.visibleArea.yPosition * (scrollbar.height + 100) //257
+////                height: gridView.visibleArea.heightRatio * scrollbar.height;
+//                height: 45
+//                radius: 3
+//                smooth: true
+//                color: "white"
+//                border.color: "lightgrey"
+//                Column{
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    spacing: 2
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                    Rectangle{
+//                        width: 8;height: 1
+//                        color: "lightgrey"
+//                    }
+//                }
+//                MouseArea {
+//                    id: mousearea
+//                    anchors.fill: button
+//                    drag.target: button
+//                    drag.axis: Drag.YAxis
+//                    drag.minimumY: 0
+//                    drag.maximumY: scrollbar.height - button.height
+//                    onMouseYChanged: {
+//                        gridView.contentY = button.y / (scrollbar.height + 100) * gridView.contentHeight //257
+//                    }
+//                }
+//            }
         }
     }
 }
