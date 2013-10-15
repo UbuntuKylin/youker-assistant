@@ -28,7 +28,8 @@ Rectangle {
     height: 600
     objectName: "main"
     anchors.fill: parent
-    property string version: "v0.2.1"
+    property string version: "v0.2.2"
+    property string bgName: ""
     SessionDispatcher {
         id: sessiondispatcher
     }
@@ -43,11 +44,23 @@ Rectangle {
     }
     Toolkits{id: toolkits}
 
+    Component.onCompleted: {
+        main.bgName = sessiondispatcher.setSkin();
+        bgImg.source = "./img/skin/" + main.bgName + ".png";
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onStartChangeQMLSkin: {
+            bgImg.source = "./img/skin/" + skinName + ".png";
+        }
+    }
 
     Image {
         id: bgImg
         anchors.fill: parent
-        source: "./img/skin/bg.png"
+        source: ""
     }
     radius: 4
 //    color: "black"

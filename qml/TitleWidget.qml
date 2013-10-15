@@ -70,6 +70,9 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 acceptedButtons : Qt.LeftButton
+                onClicked: {
+                    sessiondispatcher.showSkinWidget(mainwindow.pos.x, mainwindow.pos.y);
+                }
             }
         }
     }

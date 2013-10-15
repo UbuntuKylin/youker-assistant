@@ -57,9 +57,6 @@ Rectangle {
 
     function refreshFcitxKey(){
         skinModel.clear();
-//        refreshSkinModel.clear()
-//        skinCombo.model = refreshSkinModel
-//        refreshSkinModel.append({"skinTitel": "11111111111"})
         //set font============================================================
         var setFont = fcitxcfgwizard.get_font();
         fontStyleBtn.text = setFont;

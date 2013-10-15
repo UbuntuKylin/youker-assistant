@@ -27,6 +27,7 @@
 #include <QDeclarativeView>
 #include "quibo.h"
 #include "modaldialog.h"
+#include "skinswidget.h"
 
 class SessionDispatcher : public QObject
 {
@@ -169,6 +170,11 @@ public:
     Q_INVOKABLE QStringList get_network_flow_total_qt();
     Q_INVOKABLE void get_network_flow_qt();
     
+    /*-------------------change skin-------------------*/
+    Q_INVOKABLE QString setSkin();
+    //皮肤对话框
+    Q_INVOKABLE void showSkinWidget(int window_x, int window_y);
+
 signals:
     //告知QML那种某种类型的字体样式
 //    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
@@ -176,11 +182,13 @@ signals:
     //扫描完成后发送信号
     void finishScanWork(QString msg);
     void finishGetNetworkSpeed(QStringList speed);
+    void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
 public slots:
 //    QString show_signal(QString msg);
     //扫描完成后触发finishScanWork信号
     void handler_scan_rubbish(QString msg);
     void handler_network_speed(QStringList speed);
+    void handler_change_skin(QString skinName);
 private:
     int mainwindow_width;
     int mainwindow_height;
@@ -190,6 +198,9 @@ private:
     int alert_x;
     //保额次alert的y坐标
     int alert_y;
+
+    //皮肤对话框对象
+    SkinsWidget *skin_widget;
 };
 
 #endif // SESSIONDISPATCHER_H

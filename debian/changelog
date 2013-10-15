@@ -1,3 +1,9 @@
+youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
+
+  * Change skin.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Tue, 15 Oct 2013 16:53:06 +0800
+
 youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
 
   * Modify the mouse events of MonitorBall.

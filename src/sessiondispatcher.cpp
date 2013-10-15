@@ -31,6 +31,7 @@
 #include <QFileDialog>
 
 #include "KThread.h"
+#include "util.h"
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -45,6 +46,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     this->mainwindow_height = 600;
     this->alert_width = 329;
     this->alert_height = 195;
+
+    skin_widget = new SkinsWidget();
+    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -546,4 +550,35 @@ void SessionDispatcher::get_network_flow_qt() {
 QStringList SessionDispatcher::get_network_flow_total_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_network_flow_total");
     return reply.value();
+}
+
+//-----------------------change skin------------------------
+void SessionDispatcher::handler_change_skin(QString skinName) {
+    //将得到的更换皮肤名字写入配置文件中
+    QString homepath = QDir::homePath();
+    Util::writeInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
+    //发送开始更换QML界面皮肤的信号
+    emit startChangeQMLSkin(skinName);
+}
+
+QString SessionDispatcher::setSkin() {
+    QString homepath = QDir::homePath();
+    QString skinName;
+    bool is_read = Util::readInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
+    if(is_read) {
+        if(skinName.isEmpty()) {
+            skinName = QString("0_bg");
+        }
+    }
+    else {
+        skinName = QString("0_bg");
+    }
+    return skinName;
+}
+
+void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    skin_widget->move(this->alert_x, this->alert_y);
+    skin_widget->show();
 }

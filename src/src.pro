@@ -58,7 +58,11 @@ HEADERS += youker-application.h \
     suspensionframe.h \
     progressdialog.h \
     alertdialog.h \
-    toolkits.h
+    toolkits.h \
+    util.h \
+    skinswidget.h \
+    skingrid.h \
+    pushbutton.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -98,7 +102,11 @@ SOURCES += main.cpp \
     suspensionframe.cpp \
     progressdialog.cpp \
     alertdialog.cpp \
-    toolkits.cpp
+    toolkits.cpp \
+    util.cpp \
+    skinswidget.cpp \
+    skingrid.cpp \
+    pushbutton.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
