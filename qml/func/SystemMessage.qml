@@ -103,7 +103,7 @@ Item {
                 anchors.leftMargin: 20
                 spacing: 10
                 Row {
-                    spacing: 10
+                    spacing: 8
                     Text {
                         text: qsTr("处理器:")
                         font.pixelSize: 12
