@@ -108,114 +108,126 @@ Rectangle {
             topMargin: 30
         }
     }
-    Item{
-        id:software
-        width: mage.width;height: mage.height
+
+    WeatherZone {
+        id: weatherZone
+        width: 208;height: 147
         anchors {
             top: parent.top
             topMargin: 105
             horizontalCenter: parent.horizontalCenter
         }
-        Image {
-            id: mage
-            source: mage_source
-        }
-        MouseArea{
-            anchors.fill: parent
-            onClicked:  {
-                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                    if(!sudodispatcher.getUKSignalFlag()) {
-                        sudodispatcher.setUKSignalFlag(true);
-                        sudodispatcher.bind_signals_after_dbus_start();
-                    }
-                    sudodispatcher.add_source_ubuntukylin_qt();
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
-                    sudodispatcher.remove_source_ubuntukylin_qt();
-                    pageStack.push(softwarerecommend);
-                }
-                else {
-                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
-                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                        if(!sudodispatcher.getUKSignalFlag()) {
-                            sudodispatcher.setUKSignalFlag(true);
-                            sudodispatcher.bind_signals_after_dbus_start();
-                        }
-                        sudodispatcher.add_source_ubuntukylin_qt();
-                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
-                        sudodispatcher.remove_source_ubuntukylin_qt();
-                        pageStack.push(softwarerecommend);
-                    }
-                }
-            }
-        }
-        Common.ButtonRow {
-            exclusive: true//控制是否联动
-            spacing: 7
-            anchors{
-                bottom:mage.bottom
-                bottomMargin: 20
-                left: parent.left
-                leftMargin: 20
-            }
-            Common.CheckBox {
-                id:image_one
-                checked: true
-                flag: "flowradio"
-                onClicked: {
-                    if (image_one.checked == true) {
-                        mage_source=image1
-                    }
-                }
-            }
-            Common.CheckBox {
-                id: image_two
-                checked: false
-                flag: "flowradio"
-                onClicked: {
-                    if (image_two.checked == true) {
-                        mage_source=image2
-                    }
-                }
-            }
-            Common.CheckBox {
-                id: image_three
-                checked: false
-                flag: "flowradio"
-                onClicked: {
-                    if (image_three.checked == true) {
-                        mage_source=image3
-                    }
-                }
-            }
-        }
-        Timer{
-            interval: 3000;running: true;repeat: true
-            onTriggered: {
-                if(mage_source==image1)
-                {
-                    mage_source=image2;
-                    image_two.checked=true;
-                    image_three.checked=false;
-                    image_one.checked=false;
-                }
-                else if(mage_source==image2)
-                {
-                    mage_source=image3;
-                    image_three.checked=true;
-                    image_one.checked=false;
-                    image_two.checked=false;
-
-                }
-                else if(mage_source==image3)
-                {
-                    mage_source=image1;
-                    image_one.checked=true;
-                    image_three.checked=false;
-                    image_two.checked=false;
-                }
-            }
-        }
     }
+
+
+//    Item{
+//        id:software
+//        width: mage.width;height: mage.height
+//        anchors {
+//            top: parent.top
+//            topMargin: 105
+//            horizontalCenter: parent.horizontalCenter
+//        }
+//        Image {
+//            id: mage
+//            source: mage_source
+//        }
+//        MouseArea{
+//            anchors.fill: parent
+//            onClicked:  {
+//                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+//                    if(!sudodispatcher.getUKSignalFlag()) {
+//                        sudodispatcher.setUKSignalFlag(true);
+//                        sudodispatcher.bind_signals_after_dbus_start();
+//                    }
+//                    sudodispatcher.add_source_ubuntukylin_qt();
+//                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+//                    sudodispatcher.remove_source_ubuntukylin_qt();
+//                    pageStack.push(softwarerecommend);
+//                }
+//                else {
+//                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
+//                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+//                        if(!sudodispatcher.getUKSignalFlag()) {
+//                            sudodispatcher.setUKSignalFlag(true);
+//                            sudodispatcher.bind_signals_after_dbus_start();
+//                        }
+//                        sudodispatcher.add_source_ubuntukylin_qt();
+//                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+//                        sudodispatcher.remove_source_ubuntukylin_qt();
+//                        pageStack.push(softwarerecommend);
+//                    }
+//                }
+//            }
+//        }
+//        Common.ButtonRow {
+//            exclusive: true//控制是否联动
+//            spacing: 7
+//            anchors{
+//                bottom:mage.bottom
+//                bottomMargin: 20
+//                left: parent.left
+//                leftMargin: 20
+//            }
+//            Common.CheckBox {
+//                id:image_one
+//                checked: true
+//                flag: "flowradio"
+//                onClicked: {
+//                    if (image_one.checked == true) {
+//                        mage_source=image1
+//                    }
+//                }
+//            }
+//            Common.CheckBox {
+//                id: image_two
+//                checked: false
+//                flag: "flowradio"
+//                onClicked: {
+//                    if (image_two.checked == true) {
+//                        mage_source=image2
+//                    }
+//                }
+//            }
+//            Common.CheckBox {
+//                id: image_three
+//                checked: false
+//                flag: "flowradio"
+//                onClicked: {
+//                    if (image_three.checked == true) {
+//                        mage_source=image3
+//                    }
+//                }
+//            }
+//        }
+//        Timer{
+//            interval: 3000;running: true;repeat: true
+//            onTriggered: {
+//                if(mage_source==image1)
+//                {
+//                    mage_source=image2;
+//                    image_two.checked=true;
+//                    image_three.checked=false;
+//                    image_one.checked=false;
+//                }
+//                else if(mage_source==image2)
+//                {
+//                    mage_source=image3;
+//                    image_three.checked=true;
+//                    image_one.checked=false;
+//                    image_two.checked=false;
+
+//                }
+//                else if(mage_source==image3)
+//                {
+//                    mage_source=image1;
+//                    image_one.checked=true;
+//                    image_three.checked=false;
+//                    image_two.checked=false;
+//                }
+//            }
+//        }
+//    }
 
     //上下分割条
     Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }

@@ -90,7 +90,7 @@ class Sysinfo:
                     tmp = line
         front = tmp.split('"')[1]
         if front.startswith("UbuntuKylin"):
-            d = front + '-' + platform.dist()[1]
+            d = front + '-' + platform.dist()[2]
         else:
             a = platform.dist()[0] 
             b = platform.dist()[1] 

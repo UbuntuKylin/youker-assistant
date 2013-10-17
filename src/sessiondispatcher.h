@@ -175,6 +175,13 @@ public:
     //皮肤对话框
     Q_INVOKABLE void showSkinWidget(int window_x, int window_y);
 
+    /*-------------------weather forecast-------------------*/
+    Q_INVOKABLE QMap<QString, QVariant> get_forecast_weahter_qt();
+    Q_INVOKABLE QMap<QString, QVariant> get_current_weather_qt();
+    Q_INVOKABLE QMap<QString, QVariant> get_current_pm25_qt();
+    Q_INVOKABLE void update_weather_data_qt();
+    Q_INVOKABLE void change_select_city_name_qt(QString cityName);
+
 signals:
     //告知QML那种某种类型的字体样式
 //    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont

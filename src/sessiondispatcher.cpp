@@ -582,3 +582,27 @@ void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
     skin_widget->move(this->alert_x, this->alert_y);
     skin_widget->show();
 }
+
+/*-------------------weather forecast-------------------*/
+QMap<QString, QVariant> SessionDispatcher::get_forecast_weahter_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter");
+    return reply.value();
+}
+
+QMap<QString, QVariant> SessionDispatcher::get_current_weather_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather");
+    return reply.value();
+}
+
+QMap<QString, QVariant> SessionDispatcher::get_current_pm25_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_pm25");
+    return reply.value();
+}
+
+void SessionDispatcher::update_weather_data_qt() {
+    sessioniface->call("update_weather_data");
+}
+
+void SessionDispatcher::change_select_city_name_qt(QString cityName) {
+    sessioniface->call("change_select_city_name", cityName);
+}
