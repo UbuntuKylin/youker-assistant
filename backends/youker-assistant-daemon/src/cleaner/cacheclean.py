@@ -20,13 +20,14 @@ class CacheClean():
         else:
             softwarecenter_cache = os.path.expanduser('~/.cache/software-center/')
         full_path = softwarecenter_cache
-        for one in os.listdir(full_path):
-            tmp_path = full_path + one
-            if os.path.isdir(tmp_path):
-                size = get_dir_size(tmp_path)
-                centercachelist.append('%s<2_2>%s' % (tmp_path, confirm_filesize_unit(size)))
-            else:
-                centercachelist.append('%s<2_2>%s' % (tmp_path, confirm_filesize_unit(os.path.getsize(tmp_path))))
+        if os.path.exists(full_path):
+            for one in os.listdir(full_path):
+                tmp_path = full_path + one
+                if os.path.isdir(tmp_path):
+                    size = get_dir_size(tmp_path)
+                    centercachelist.append('%s<2_2>%s' % (tmp_path, confirm_filesize_unit(size)))
+                else:
+                    centercachelist.append('%s<2_2>%s' % (tmp_path, confirm_filesize_unit(os.path.getsize(tmp_path))))
         return centercachelist
 
 if __name__ == "__main__":
