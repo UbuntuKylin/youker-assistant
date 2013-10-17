@@ -1,8 +1,9 @@
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 
-  * Change skin.
+  * Change skin and add weather forecast information.
+  * Get correct system information(LP: #1240862).
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Tue, 15 Oct 2013 16:53:06 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Thu, 17 Oct 2013 16:55:38 +0800
 
 youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
 
