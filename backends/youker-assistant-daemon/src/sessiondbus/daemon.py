@@ -42,6 +42,7 @@ from beautify.theme import Theme
 from beautify.system import System
 from beautify.sound import Sound
 from sysinfo import Sysinfo
+from weather import WeatherInfo
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
 
@@ -57,6 +58,7 @@ class SessionDaemon(dbus.service.Object):
         self.systemconf = System()
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
+        self.weatherconf = WeatherInfo()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -508,3 +510,29 @@ class SessionDaemon(dbus.service.Object):
     def get_network_flow(self):
         speed_network = self.ballconf.get_network_flow()
         self.get_network_speed(speed_network)
+
+    # -------------------------weather-------------------------
+    # get weather information of six days
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_forecast_weahter(self):
+        return self.weatherconf.get_forecast()
+
+    # get current day's weather
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_current_weather(self):
+        return self.weatherconf.get_set_weather()
+
+    # get current PM2.5
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_current_pm25(self):
+        return self.weatherconf.get_pm_info()
+
+    # update weather data
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def update_weather_data(self):
+        self.weatherconf.update_data()
+
+    # change city name
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def change_select_city_name(self, cityName):
+        self.weatherconf.change_city(cityName)
