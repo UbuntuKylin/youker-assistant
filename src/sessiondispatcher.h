@@ -176,9 +176,9 @@ public:
     Q_INVOKABLE void showSkinWidget(int window_x, int window_y);
 
     /*-------------------weather forecast-------------------*/
-    Q_INVOKABLE QMap<QString, QVariant> get_forecast_weahter_qt();
-    Q_INVOKABLE QMap<QString, QVariant> get_current_weather_qt();
-    Q_INVOKABLE QMap<QString, QVariant> get_current_pm25_qt();
+    Q_INVOKABLE void get_forecast_weahter_qt();
+    Q_INVOKABLE void get_current_weather_qt();
+    Q_INVOKABLE void get_current_pm25_qt();
     Q_INVOKABLE void update_weather_data_qt();
     Q_INVOKABLE void change_select_city_name_qt(QString cityName);
 

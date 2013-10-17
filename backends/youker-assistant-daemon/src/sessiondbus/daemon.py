@@ -42,7 +42,7 @@ from beautify.theme import Theme
 from beautify.system import System
 from beautify.sound import Sound
 from sysinfo import Sysinfo
-from weather import WeatherInfo
+from weather.weatherinfo import WeatherInfo
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
 

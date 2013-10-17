@@ -27,7 +27,9 @@ Rectangle {
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
     Component.onCompleted: {
-//        sessiondispatcher
+//        sessiondispatcher.get_forecast_weahter_qt();
+//        sessiondispatcher.get_current_weather_qt();
+//        sessiondispatcher.get_current_pm25_qt();
     }
     Row {
         Column {

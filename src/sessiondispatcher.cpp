@@ -584,19 +584,101 @@ void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
 }
 
 /*-------------------weather forecast-------------------*/
-QMap<QString, QVariant> SessionDispatcher::get_forecast_weahter_qt() {
+//QMap(("city", QVariant(QString, "长沙") )
+//     ( "date_y" ,  QVariant(QString, "2013年10月17日") )
+//     ( "fchh" ,  QVariant(QString, "11") )
+//     ( "fl1" ,  QVariant(QString, "小于3级") )
+//     ( "fl2" ,  QVariant(QString, "小于3级") )
+//     ( "fl3" ,  QVariant(QString, "小于3级") )
+//     ( "fl4" ,  QVariant(QString, "小于3级") )
+//     ( "fl5" ,  QVariant(QString, "小于3级") )
+//     ( "fl6" ,  QVariant(QString, "小于3级") )
+//     ( "fx1" ,  QVariant(QString, "微风") )
+//     ( "fx2" ,  QVariant(QString, "微风") )
+//     ( "img1" ,  QVariant(QString, "7") )
+//     ( "img10" ,  QVariant(QString, "99") )
+//     ( "img11" ,  QVariant(QString, "1") )
+//     ( "img12" ,  QVariant(QString, "99") )
+//     ( "img2" ,  QVariant(QString, "2") )
+//     ( "img3" ,  QVariant(QString, "7") )
+//     ( "img4" ,  QVariant(QString, "2") )
+//     ( "img5" ,  QVariant(QString, "2") )
+//     ( "img6" ,  QVariant(QString, "1") )
+//     ( "img7" ,  QVariant(QString, "2") )
+//     ( "img8" ,  QVariant(QString, "1") )
+//     ( "img9" ,  QVariant(QString, "2") )
+//     ( "img_single" ,  QVariant(QString, "7") )
+//     ( "img_title1" ,  QVariant(QString, "小雨") )
+//     ( "img_title10" ,  QVariant(QString, "阴") )
+//     ( "img_title11" ,  QVariant(QString, "多云") )
+//     ( "img_title12" ,  QVariant(QString, "多云") )
+//     ( "img_title2" ,  QVariant(QString, "阴") )
+//     ( "img_title3" ,  QVariant(QString, "小雨") )
+//     ( "img_title4" ,  QVariant(QString, "阴") )
+//     ( "img_title5" ,  QVariant(QString, "阴") )
+//     ( "img_title6" ,  QVariant(QString, "多云") )
+//     ( "img_title7" ,  QVariant(QString, "阴") )
+//     ( "img_title8" ,  QVariant(QString, "多云") )
+//     ( "img_title9" ,  QVariant(QString, "阴") )
+//     ( "img_title_single" ,  QVariant(QString, "小雨") )
+//     ( "index" ,  QVariant(QString, "较舒适") )
+//     ( "index48" ,  QVariant(QString, "较舒适") )
+//     ( "index48_d" ,  QVariant(QString, "建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。") )
+//     ( "index_ag" ,  QVariant(QString, "易发") )
+//     ( "index_cl" ,  QVariant(QString, "较不宜") )
+//     ( "index_co" ,  QVariant(QString, "舒适") )
+//     ( "index_d" ,  QVariant(QString, "建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。") )
+//     ( "index_ls" ,  QVariant(QString, "不宜") )
+//     ( "index_tr" ,  QVariant(QString, "适宜") )
+//     ( "index_uv" ,  QVariant(QString, "最弱") )
+//     ( "index_xc" ,  QVariant(QString, "不宜") )
+//     ( "temp1" ,  QVariant(QString, "18℃~13℃") )
+//     ( "temp2" ,  QVariant(QString, "19℃~14℃") )
+//     ( "temp3" ,  QVariant(QString, "22℃~15℃") )
+//     ( "temp4" ,  QVariant(QString, "24℃~16℃") )
+//     ( "temp5" ,  QVariant(QString, "24℃~16℃") )
+//     ( "temp6" ,  QVariant(QString, "24℃~15℃") )
+//     ( "weather1" ,  QVariant(QString, "小雨转阴") )
+//     ( "weather2" ,  QVariant(QString, "小雨转阴") )
+//     ( "weather3" ,  QVariant(QString, "阴转多云") )
+//     ( "weather4" ,  QVariant(QString, "阴转多云") )
+//     ( "weather5" ,  QVariant(QString, "阴") )
+//     ( "weather6" ,  QVariant(QString, "多云") )
+//     ( "wind1" ,  QVariant(QString, "微风") )
+//     ( "wind2" ,  QVariant(QString, "微风") )
+//     ( "wind3" ,  QVariant(QString, "微风") )
+//     ( "wind4" ,  QVariant(QString, "北风小于3级") )
+//     ( "wind5" ,  QVariant(QString, "北风小于3级") )
+//     ( "wind6" ,  QVariant(QString, "北风小于3级") ) )
+void SessionDispatcher::get_forecast_weahter_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter");
-    return reply.value();
+    QMap<QString, QVariant> aa = reply.value();
+    qDebug() << aa;
 }
 
-QMap<QString, QVariant> SessionDispatcher::get_current_weather_qt() {
+//QMap(("SD", QVariant(QString, "83%") )
+//     ( "WD" ,  QVariant(QString, "西北风") )
+//     ( "WS" ,  QVariant(QString, "2级") )
+//     ( "city" ,  QVariant(QString, "长沙") )
+//     ( "img1" ,  QVariant(QString, "d7.gif") )
+//     ( "img2" ,  QVariant(QString, "n2.gif") )
+//     ( "ptime" ,  QVariant(QString, "11:00") )
+//     ( "temp" ,  QVariant(QString, "12") )
+//     ( "temp1" ,  QVariant(QString, "18℃") )
+//     ( "temp2" ,  QVariant(QString, "13℃") )
+//     ( "time" ,  QVariant(QString, "17:00") )
+//     ( "weather" ,  QVariant(QString, "小雨转阴") ) )
+void SessionDispatcher::get_current_weather_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather");
-    return reply.value();
+    QMap<QString, QVariant> aa = reply.value();
+    qDebug() << aa;
 }
 
-QMap<QString, QVariant> SessionDispatcher::get_current_pm25_qt() {
+//QMap(("error", QVariant(QString, "Sorry，您这个小时内的API请求次数用完了，休息一下吧！") ) )
+void SessionDispatcher::get_current_pm25_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_pm25");
-    return reply.value();
+    QMap<QString, QVariant> aa = reply.value();
+    qDebug() << aa;
 }
 
 void SessionDispatcher::update_weather_data_qt() {

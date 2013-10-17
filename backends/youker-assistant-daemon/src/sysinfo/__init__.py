@@ -88,7 +88,7 @@ class Sysinfo:
             for line in fsys:
                 if line.startswith("DISTRIB_DESCRIPTION"):
                     tmp = line
-        front = tmp.split('"')[1]
+        front = tmp.split('"')[2] #(LP: #1240862)
         if front.startswith("UbuntuKylin"):
             d = front + '-' + platform.dist()[2]
         else:
