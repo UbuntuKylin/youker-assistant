@@ -133,7 +133,12 @@ Item {
                     visible: false
                     SoftwarePage {}
                 }
-
+                //WeatherForecast-page
+                Common.Page {
+                    id:weatherpage
+                    visible: false
+                    WeatherForecast {}
+                }
 
                 //systemset-pages
                 Common.Page {

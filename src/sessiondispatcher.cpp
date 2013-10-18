@@ -39,8 +39,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
-    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
-    QObject::connect(sessioniface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
+//    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
+//    QObject::connect(sessioniface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
     page_num = 0;
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
@@ -55,13 +55,14 @@ SessionDispatcher::~SessionDispatcher() {
     this->exit_qt();
 }
 
-void SessionDispatcher::handler_network_speed(QStringList speed) {
-    emit finishGetNetworkSpeed(speed);
-}
+//void SessionDispatcher::handler_network_speed(QStringList speed) {
+//    emit finishGetNetworkSpeed(speed);
+//    qDebug() << "get speed";
+//}
 
-void SessionDispatcher::handler_scan_rubbish(QString msg) {
-    emit finishScanWork(msg);
-}
+//void SessionDispatcher::handler_scan_rubbish(QString msg) {
+//    emit finishScanWork(msg);
+//}
 
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
@@ -652,8 +653,10 @@ void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
 //     ( "wind6" ,  QVariant(QString, "北风小于3级") ) )
 void SessionDispatcher::get_forecast_weahter_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter");
-    QMap<QString, QVariant> aa = reply.value();
-    qDebug() << aa;
+    forecastInfo = reply.value();
+
+
+//    qDebug() << forecastInfo;
 }
 
 //QMap(("SD", QVariant(QString, "83%") )
@@ -670,21 +673,34 @@ void SessionDispatcher::get_forecast_weahter_qt() {
 //     ( "weather" ,  QVariant(QString, "小雨转阴") ) )
 void SessionDispatcher::get_current_weather_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather");
-    QMap<QString, QVariant> aa = reply.value();
-    qDebug() << aa;
+    currentInfo = reply.value();
 }
 
 //QMap(("error", QVariant(QString, "Sorry，您这个小时内的API请求次数用完了，休息一下吧！") ) )
-void SessionDispatcher::get_current_pm25_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_pm25");
-    QMap<QString, QVariant> aa = reply.value();
-    qDebug() << aa;
+//{u'pm2_5': 84, u'area': u'\u957f\u6c99', u'quality': u'\u8f7b\u5ea6\u6c61\u67d3',
+//u'station_code': None, u'time_point': #u'2013-10-18T09:00:00Z',
+//    u'pm2_5_24h': 0, u'position_name': None, u'aqi': 122, u'primary_pollutant': None}
+QString SessionDispatcher::get_current_pm25_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_current_pm25");
+    return reply.value();
 }
 
-void SessionDispatcher::update_weather_data_qt() {
-    sessioniface->call("update_weather_data");
+bool SessionDispatcher::update_weather_data_qt() {
+    QDBusReply<bool> reply = sessioniface->call("update_weather_data");
+    return reply.value();
 }
 
 void SessionDispatcher::change_select_city_name_qt(QString cityName) {
     sessioniface->call("change_select_city_name", cityName);
+}
+
+QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
+    QVariant info = "";
+    if(flag == "forecast") {
+        info = forecastInfo.value(key);
+    }
+    else if(flag == "current") {
+        info = currentInfo.value(key);
+    }
+    return info.toString();
 }

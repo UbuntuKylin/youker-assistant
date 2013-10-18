@@ -78,7 +78,7 @@ public:
     //得到当前系统和桌面信息
     Q_INVOKABLE void get_system_message_qt();
     //通过键得到对应的单个信息的值
-    Q_INVOKABLE QString getSingleInfo(QString);
+    Q_INVOKABLE QString getSingleInfo(QString key);
 
     /*-------------------desktop of beauty-------------------*/
     Q_INVOKABLE bool set_show_desktop_icons_qt(bool flag);
@@ -178,23 +178,26 @@ public:
     /*-------------------weather forecast-------------------*/
     Q_INVOKABLE void get_forecast_weahter_qt();
     Q_INVOKABLE void get_current_weather_qt();
-    Q_INVOKABLE void get_current_pm25_qt();
-    Q_INVOKABLE void update_weather_data_qt();
+    Q_INVOKABLE QString get_current_pm25_qt();
+    Q_INVOKABLE bool update_weather_data_qt();
     Q_INVOKABLE void change_select_city_name_qt(QString cityName);
-
+    QMap<QString, QVariant> forecastInfo;
+    QMap<QString, QVariant> currentInfo;
+    //通过键得到对应的单个信息的值,flag= forecast/current
+    Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 signals:
     //告知QML那种某种类型的字体样式
 //    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
     void notifyFontStyleToQML(QString font_style);
     //扫描完成后发送信号
-    void finishScanWork(QString msg);
-    void finishGetNetworkSpeed(QStringList speed);
+//    void finishScanWork(QString msg);
+//    void finishGetNetworkSpeed(QStringList speed);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
 public slots:
 //    QString show_signal(QString msg);
     //扫描完成后触发finishScanWork信号
-    void handler_scan_rubbish(QString msg);
-    void handler_network_speed(QStringList speed);
+//    void handler_scan_rubbish(QString msg);
+//    void handler_network_speed(QStringList speed);
     void handler_change_skin(QString skinName);
 private:
     int mainwindow_width;

@@ -73,15 +73,15 @@ class WeatherInfo():
     def get_pm_info(self):
         from pycwapi import get_location_from_cityid
         cityName = self.place[1].split(',')[2]
-        print cityName
         self.pm = get_pm(cityName)
         return self.pm
 
     # Update weather and forecast
     def update_data(self):
         self.get_set_weather()
-        self.get_forecast()
-        self.get_pm_info()
+        return True
+        #self.get_forecast()
+        #self.get_pm_info()
 
     def change_city(self, cityName):
         for place in self.places:

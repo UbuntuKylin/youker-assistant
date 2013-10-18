@@ -523,14 +523,14 @@ class SessionDaemon(dbus.service.Object):
         return self.weatherconf.get_set_weather()
 
     # get current PM2.5
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_current_pm25(self):
         return self.weatherconf.get_pm_info()
 
     # update weather data
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def update_weather_data(self):
-        self.weatherconf.update_data()
+        return self.weatherconf.update_data()
 
     # change city name
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
