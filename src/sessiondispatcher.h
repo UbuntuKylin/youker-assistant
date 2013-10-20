@@ -185,6 +185,10 @@ public:
     QMap<QString, QVariant> currentInfo;
     //通过键得到对应的单个信息的值,flag= forecast/current
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
+
+
+    //显示wizard
+    Q_INVOKABLE bool showWizardController();
 signals:
     //告知QML那种某种类型的字体样式
 //    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont

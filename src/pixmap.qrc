@@ -31,6 +31,9 @@
         <file>image/accelerate-hover.png</file>
         <file>image/accelerate-press.png</file>
         <file>image/close.png</file>
+        <file>image/close-hover.png</file>
+        <file>image/close-active.png</file>
+        <file>image/close1.png</file>
     </qresource>
     <qresource prefix="/skin">
         <file>image/7_bg.png</file>

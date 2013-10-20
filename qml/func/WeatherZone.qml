@@ -90,7 +90,8 @@ Rectangle {
                     anchors.fill: preferencesBtn
                     hoverEnabled: true
                     onClicked: {
-                        console.log("配  置")
+                        console.log("配  置");
+                        sessiondispatcher.showWizardController();
                     }
                 }
             }

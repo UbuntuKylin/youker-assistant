@@ -32,6 +32,8 @@
 
 #include "KThread.h"
 #include "util.h"
+#include "wizardcontroller.h"
+
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -704,3 +706,17 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     }
     return info.toString();
 }
+
+
+bool SessionDispatcher::showWizardController() {
+    WizardController * wizardController = new WizardController(0);
+    wizardController-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
+    if(wizardController->exec()==QDialog::Rejected) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+
