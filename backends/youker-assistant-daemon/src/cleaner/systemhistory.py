@@ -30,11 +30,12 @@ class SystemHistory():
 
         full_path = xml_path + 'recently-used.xbel'
 
-        tree = ElementTree.parse(full_path)
-        nodes = tree.findall("bookmark")
         hreflist = []
-        for node in nodes:
-            hreflist.append(node.get('href'))
+        if os.path.exists(full_path):
+            tree = ElementTree.parse(full_path)
+            nodes = tree.findall("bookmark")
+            for node in nodes:
+                hreflist.append(node.get('href'))
 
         return hreflist
 
@@ -42,8 +43,9 @@ class SystemHistory():
         xml_path = '%s/.local/share/' % homedir
         full_path = xml_path + 'recently-used.xbel'
 
-        tree = ElementTree.parse(full_path)
-        root = tree.getroot()
-        root .clear()
+        if os.path.exists(full_path):
+            tree = ElementTree.parse(full_path)
+            root = tree.getroot()
+            root .clear()
 
-        tree.write(full_path, encoding="UTF-8", xml_declaration=None, default_namespace=None, method="xml")
+            tree.write(full_path, encoding="UTF-8", xml_declaration=None, default_namespace=None, method="xml")

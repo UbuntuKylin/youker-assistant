@@ -125,10 +125,6 @@ class ManageTheLarge():
     def __init__(self):
         self.objl = diskanalyse.DiskAnalyse()
 
-    def get_user_size(self, size):
-        tmpsize = size
-        self.filesize = tmpsize * 1024 * 1024
-
     def get_scan_result(self, size, path):
         self.path = path
         finalsize = size * 1024 * 1024
@@ -163,9 +159,6 @@ class CleanTheHistory():
         objhc = historyclean.HistoryClean(HOMEDIR)
         objhc.clean_all_records()
         self.sysdaemon.clean_process_second_msg('%s records has been delete' % historynum)
-
-    def __del__(self):
-        pass
 
 # the function of clean the system history
 class CleanSystemHistory():
@@ -224,10 +217,6 @@ class CleanTheCookies():
         objcc = cookiesclean.CookiesClean(HOMEDIR)
         for cruft in cruftlist:
             flag = objcc.clean_the_records(cruft)
-
-    def __del__(self):
-        pass
-        #del self.objc
 
 # the function of scan the unneedpackages
 class CleanTheUnneed():
