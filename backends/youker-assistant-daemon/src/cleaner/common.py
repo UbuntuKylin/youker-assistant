@@ -89,7 +89,5 @@ def get_mozilla_path(homedir):
                 raise Exception('profile.ini has error!')
         else:
             pass
-    else:
-        raise Exception('Can not find the file!')
     return final_path
 

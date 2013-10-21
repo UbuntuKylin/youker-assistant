@@ -15,6 +15,7 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+import os.path
 import sqlite3
 
 from common import get_mozilla_path
@@ -23,37 +24,39 @@ from common import get_mozilla_path
 class CookiesClean():
     def __init__(self, homedir):
         self.filename = 'cookies.sqlite'
-        path = get_mozilla_path(homedir)
-        self.browser_conn = sqlite3.connect(path + self.filename)
-        self.browser_cur = self.browser_conn.cursor()
-
+        self.path = get_mozilla_path(homedir)
 
     def scan_the_records(self):
         save = []
-        sql_select = 'SELECT baseDomain, count(*) FROM moz_cookies GROUP BY baseDomain'
-        self.browser_cur.execute(sql_select)
-        for eachvisit in self.browser_cur.fetchall():
-            #self.save.append(eachvisit)
-            tmp = list(eachvisit)
-            tmp[-1] = str(tmp[-1])
-            tmp_str = '<2_2>'.join(tmp)
-            save.append(tmp_str)
+        if os.path.exists(self.path):
+            scan_browser_conn = sqlite3.connect(self.path + self.filename)
+            scan_browser_cur = scan_browser_conn.cursor()
+            sql_select = 'SELECT baseDomain, count(*) FROM moz_cookies GROUP BY baseDomain'
+            scan_browser_cur.execute(sql_select)
+            for eachvisit in scan_browser_cur.fetchall():
+                tmp = list(eachvisit)
+                tmp[-1] = str(tmp[-1])
+                tmp_str = '<2_2>'.join(tmp)
+                save.append(tmp_str)
+            scan_browser_cur.close()
+            scan_browser_conn.close()
         return save
 
     def clean_the_records(self, domain):
-        sql_exist = "SELECT * FROM moz_cookies WHERE baseDomain='%s'" % domain
-        self.browser_cur.execute(sql_exist)
-        if self.browser_cur.fetchone():
-            sql_delete = "DELETE FROM moz_cookies WHERE baseDomain='%s'" % domain
-            self.browser_cur.execute(sql_delete)
-            self.browser_conn.commit()
+        if os.path.exists(self.path):
+            clean_browser_conn = sqlite3.connect(self.path + self.filename)
+            clean_browser_cur = clean_browser_conn.cursor()
+            sql_exist = "SELECT * FROM moz_cookies WHERE baseDomain='%s'" % domain
+            clean_browser_cur.execute(sql_exist)
+            if clean_browser_cur.fetchone():
+                sql_delete = "DELETE FROM moz_cookies WHERE baseDomain='%s'" % domain
+                clean_browser_cur.execute(sql_delete)
+                clean_browser_conn.commit()
+            clean_browser_cur.close()
+            clean_browser_conn.close()
             return True
         else:
             return False
-
-    def __del__(self):
-        self.browser_cur.close()
-        self.browser_conn.close()
 
 if __name__ == "__main__":
     objc = CookiesClean()
