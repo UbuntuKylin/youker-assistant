@@ -29,7 +29,7 @@ class WizardController : public QWizard
     Q_OBJECT
     
 public:
-    explicit WizardController(QWidget *parent = 0);
+    explicit WizardController(int rate = 60, QWidget *parent = 0);
     ~WizardController();
 
 protected:
@@ -42,6 +42,11 @@ protected slots:
     void addLocation();
     void delLocation();
     void ChangedBackGround();
+    void setSpinValue(int value);
+    void writeSpinValue();
+
+signals:
+    void transConfValue(QString key, QString value);
 
 private:
     Ui::WizardController *ui;
@@ -49,6 +54,7 @@ private:
     QAbstractButton *backButton;
     QAbstractButton *nextButton;
     QAbstractButton *finishButton;
+    int spinValue;
 };
 
 #endif // WIZARDCONTROLLER_H

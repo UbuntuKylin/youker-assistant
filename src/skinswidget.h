@@ -19,7 +19,7 @@
 
 #include <QWidget>
 #include <QtGui>
-#include "pushbutton.h"
+//#include "pushbutton.h"
 #include "skingrid.h"
 class SkinsWidget : public QWidget
 {
@@ -28,6 +28,7 @@ public:
     explicit SkinsWidget(QWidget *parent = 0);
 
 protected:
+    bool eventFilter(QObject *obj, QEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
@@ -60,7 +61,8 @@ private:
     bool mouse_press;
     QLabel *title_label;
     QLabel *title_icon_label;
-    PushButton *close_button;
+//    PushButton *close_button;
+    QLabel *close_button;
     int page_count;
     int page_count_point;
     int current_page;

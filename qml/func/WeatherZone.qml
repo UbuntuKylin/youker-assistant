@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -27,6 +24,9 @@ Rectangle {
     color: "transparent"
 
     Component.onCompleted: {
+
+
+
         sessiondispatcher.get_current_weather_qt();
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
         ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + " 发布";
@@ -36,6 +36,9 @@ Rectangle {
         tempText.text = "当前温度：" + sessiondispatcher.getSingleWeatherInfo("temp", "current") + "℃";
         temperatureRangeText.text = "温度范围：" + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");;
         humidityText.text = "湿度：" + sessiondispatcher.getSingleWeatherInfo("SD", "current");
+
+        sessiondispatcher.read_conf_data_qt();
+
     }
     Text {
         id: locationText
@@ -90,8 +93,8 @@ Rectangle {
                     anchors.fill: preferencesBtn
                     hoverEnabled: true
                     onClicked: {
-                        console.log("配  置");
-                        sessiondispatcher.showWizardController();
+                        sessiondispatcher.read_conf_data_qt();
+//                        sessiondispatcher.showWizardController();
                     }
                 }
             }

@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -707,9 +704,32 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     return info.toString();
 }
 
+void SessionDispatcher::read_conf_data_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("read_conf_data");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        confData = value;
+//        qDebug() << confData;
+    }
+    else {
+        qDebug() << "get confData failed!";
+    }
+}
+
+void SessionDispatcher::write_conf_data_qt(QString key, QString value) {
+    if(key == "refresh_rate" || key == "placechosen") {
+        int intValue = value.toInt();
+        sessioniface->call("write_conf_data", key, intValue);
+    }
+    else {
+        sessioniface->call("write_conf_data", key, value);
+    }
+}
+
 
 bool SessionDispatcher::showWizardController() {
-    WizardController * wizardController = new WizardController(0);
+    WizardController *wizardController = new WizardController(confData["refresh_rate"].toInt(), 0);
+    connect(wizardController, SIGNAL(transConfValue(QString, QString)), this, SLOT(write_conf_data_qt(QString,QString)));
     wizardController-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
     if(wizardController->exec()==QDialog::Rejected) {
         return false;

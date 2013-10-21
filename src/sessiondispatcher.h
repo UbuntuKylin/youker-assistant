@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
- * Authors:
- *  Kobe Lee    kobe24_lixiang@126.com
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -186,6 +183,9 @@ public:
     //通过键得到对应的单个信息的值,flag= forecast/current
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 
+    //读取天气配置文件
+    QMap<QString, QVariant> confData;
+    Q_INVOKABLE void read_conf_data_qt();
 
     //显示wizard
     Q_INVOKABLE bool showWizardController();
@@ -203,6 +203,8 @@ public slots:
 //    void handler_scan_rubbish(QString msg);
 //    void handler_network_speed(QStringList speed);
     void handler_change_skin(QString skinName);
+    //设置天气配置文件
+    void write_conf_data_qt(QString key, QString value);
 private:
     int mainwindow_width;
     int mainwindow_height;

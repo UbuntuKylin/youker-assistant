@@ -87,7 +87,7 @@ class Settings:
     def set_value(self, setting, value):
         value = '' if value is None else value
         value = str(value) if type(value) is types.ListType else value
-        print "Settings: setting '%s'='%s'" % (setting, value)
+        #print "Settings: setting '%s'='%s'" % (setting, value)
         setting_name = Settings.INFO[setting][INFO_SETTING]
         try:
             setting_type = Settings.INFO[setting][INFO_TYPE]

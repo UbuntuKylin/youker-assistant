@@ -27,7 +27,7 @@
 #include <QBitmap>
 #include <QPainter>
 
-WizardController::WizardController(QWidget *parent) :
+WizardController::WizardController(int rate, QWidget *parent) :
     QWizard(parent),
     ui(new Ui::WizardController)
 {
@@ -40,8 +40,8 @@ WizardController::WizardController(QWidget *parent) :
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     setWizardStyle(NStyles);//此风格没有分割线
 
-    ui->btn_close->setPixmap(QPixmap(":/pixmap/image/close1.png"));
-    ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/close1.png"));
+    ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
+    ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
     ui->wizardLabel->setStyleSheet("QLabel {border:1px;color:#1790c9;font-size: 14px}");
     ui->wizardLabel_2->setStyleSheet("QLabel {border:1px;color:#1790c9;font-size: 14px}");
 
@@ -56,11 +56,20 @@ WizardController::WizardController(QWidget *parent) :
     finishButton = button(QWizard::FinishButton);
     finishButton->setStyleSheet("QPushButton {color: #000000; font-size: 12px}");
 
+    spinValue = rate;
+    connect(finishButton, SIGNAL(clicked()),this, SLOT(writeSpinValue()));
+
     connect(this,SIGNAL(currentIdChanged(int)),this,SLOT(ChangedBackGround()));
 
 
     ui->btn_close->installEventFilter(this);
     ui->btn_close_2->installEventFilter(this);
+
+
+    ui->spinBox->setRange(0, 60);
+    ui->spinBox->setSingleStep(5);
+    ui->spinBox->setValue(rate);
+    QObject::connect(ui->spinBox,SIGNAL(valueChanged(int)),this,SLOT(setSpinValue(int)));
 
     connect(ui->addBtn,SIGNAL(clicked()),this,SLOT(addLocation()));
     connect(ui->delBtn,SIGNAL(clicked()),this,SLOT(delLocation()));
@@ -69,6 +78,15 @@ WizardController::WizardController(QWidget *parent) :
 WizardController::~WizardController()
 {
     delete ui;
+}
+
+void WizardController::setSpinValue(int value) {
+    spinValue = value;
+}
+
+void WizardController::writeSpinValue() {
+    QString strValue = QString::number(spinValue, 10);
+    emit transConfValue("refresh_rate", strValue);
 }
 
 void WizardController::addLocation() {
@@ -83,18 +101,18 @@ void WizardController::delLocation() {
 bool WizardController::eventFilter(QObject *obj, QEvent *event) {
     if(obj == ui->btn_close){
             if(event->type() == QEvent::Enter){
-                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/close-hover.png"));
+                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
             }else if(event->type() == QEvent::Leave){
-                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/close1.png"));
+                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
             }else if(event->type() == QEvent::MouseButtonPress){
-                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/close-hover.png"));
+                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
             }else if(event->type() == QEvent::MouseButtonRelease){
                 QMouseEvent *me = (QMouseEvent *)event;
                 QLabel *lb = (QLabel *)obj;
                 if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
                     this->close();
                 }else{
-                    ui->btn_close->setPixmap(QPixmap(":/pixmap/image/close1.png"));
+                    ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
                 }
             } else {
                 return QObject::eventFilter(obj, event);
@@ -102,18 +120,18 @@ bool WizardController::eventFilter(QObject *obj, QEvent *event) {
         }
     if(obj == ui->btn_close_2){
         if(event->type() == QEvent::Enter){
-            ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/close-hover.png"));
+            ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
         }else if(event->type() == QEvent::Leave){
-            ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/close1.png"));
+            ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
         }else if(event->type() == QEvent::MouseButtonPress){
-            ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/close-hover.png"));
+            ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
         }else if(event->type() == QEvent::MouseButtonRelease){
             QMouseEvent *me = (QMouseEvent *)event;
             QLabel *lb = (QLabel *)obj;
             if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
                 this->close();
             }else{
-                ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/close1.png"));
+                ui->btn_close_2->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
             }
         } else {
             return QObject::eventFilter(obj, event);

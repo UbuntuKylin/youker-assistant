@@ -2,10 +2,6 @@
 # -*- coding: utf-8 -*-
 ### BEGIN LICENSE
 # Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd
-# Authors: Zhang Zhao vaguedream@hotmail.com
-#          Kobe Lee kobe24_lixiang@126.com
-#          wyan yiwuhehe@163.com
-#          binghe kylinhebing@163.com
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
@@ -39,4 +35,3 @@ PROJECT_ROOT_DIRECTORY = os.path.abspath(
     os.path.dirname(os.path.dirname(os.path.realpath(sys.argv[0]))))
 DATA_PATH = os.path.join(PROJECT_ROOT_DIRECTORY, "data")
 ICON_PATH = os.path.join(PROJECT_ROOT_DIRECTORY, "icons")
-CHN_CITY_LIST_FILE = os.path.join(PROJECT_ROOT_DIRECTORY, 'src/location.txt')

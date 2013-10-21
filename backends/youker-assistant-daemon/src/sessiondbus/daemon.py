@@ -536,3 +536,13 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def change_select_city_name(self, cityName):
         self.weatherconf.change_city(cityName)
+
+    # read conf data
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def read_conf_data(self):
+        return self.weatherconf.read_conf_data()
+
+    # write conf data
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='')
+    def write_conf_data(self, key, value):
+        self.weatherconf.write_conf_data(key, value)
