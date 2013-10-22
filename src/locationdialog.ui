@@ -6,59 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>159</height>
+    <width>329</width>
+    <height>195</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="searchBtn">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>60</y>
-     <width>99</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>查找</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="quitBtn">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>110</y>
-     <width>99</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>取消</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="okBtn">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>110</y>
-     <width>99</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>确定</string>
-   </property>
-  </widget>
   <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>60</y>
-     <width>231</width>
-     <height>27</height>
+     <y>86</y>
+     <width>211</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="editable">
@@ -69,15 +30,105 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
-     <width>351</width>
-     <height>17</height>
+     <y>40</y>
+     <width>251</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>输入城市中文名或者拼音进行查找</string>
+    <string>请输入城市中文名或者拼音进行查找</string>
    </property>
   </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>329</width>
+     <height>195</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/dialog-bg.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="okBtn">
+   <property name="geometry">
+    <rect>
+     <x>216</x>
+     <y>157</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>确定</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="quitBtn">
+   <property name="geometry">
+    <rect>
+     <x>101</x>
+     <y>157</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/quit.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="btn_close">
+   <property name="geometry">
+    <rect>
+     <x>8</x>
+     <y>6</y>
+     <width>26</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="searchBtn">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>87</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/quit.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>查找</string>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>comboBox</zorder>
+  <zorder>label</zorder>
+  <zorder>okBtn</zorder>
+  <zorder>quitBtn</zorder>
+  <zorder>btn_close</zorder>
+  <zorder>searchBtn</zorder>
  </widget>
  <resources/>
  <connections/>

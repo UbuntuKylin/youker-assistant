@@ -62,7 +62,6 @@ private:
     QString newCityId;
     QSettings *pSettings;
 //    QString location;
-    QStringList newList;
 };
 
 #endif // WIZARDDIALOG_H

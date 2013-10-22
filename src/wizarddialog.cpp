@@ -41,8 +41,14 @@ WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
 
     ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
-    ui->addBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/user-defined.png);color: #43a2db; font-size: 14px}"
-                                        "QPushButton:hover{border-image:url(:/pixmap/image/user-defined-hover.png);color: #43a2db; font-size: 14px}");
+    ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+    ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+    ui->addBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+    ui->delBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
 
     spinValue = 0;
     newCityName = "";
@@ -140,8 +146,8 @@ QString WizardDialog::get_id_from_cityname(QString cityName) {
     }
     else {
         QMessageBox::warning(NULL,
-                             tr("Warning"),
-                             tr("\"%1\" has been deleted or removed!").arg("location.txt"),
+                             tr("警告"),
+                             tr("没有找到城市配置文件！"),
                              QMessageBox::Ok);
     }
 }
@@ -155,7 +161,7 @@ void WizardDialog::addLocation() {
 void WizardDialog::delLocation() {
     QString currentStr = ui->listWidget->currentItem()->text();
     QStringList listName = pSettings->value("weather/places").toStringList();
-//    QStringList newList;
+    QStringList newList;
     int size;
     size = listName.size();
     for(int i =0; i<size; ++i) {
@@ -166,23 +172,26 @@ void WizardDialog::delLocation() {
     if(newList.size()==0)
     {
       ui->delBtn->setEnabled(false);
+      ui->listWidget->clear();
+      pSettings->setValue("weather/places", newList);
+      pSettings->setValue("weather/cityId", "");
+      pSettings->sync();
     }
-    ui->listWidget->clear();
-    qDebug() << "aaaaaaaaa";
-    qDebug() << newList;
-    pSettings->setValue("weather/places", newList);
-    for(int j=0; j<newList.size(); ++j)
-    {
-        qDebug() << newList.at(j);
-        ui->listWidget->insertItem(j, newList.at(j));
+    else {
+        ui->listWidget->clear();
+        pSettings->setValue("weather/places", newList);
+        for(int j=0; j<newList.size(); ++j)
+        {
+            qDebug() << newList.at(j);
+            ui->listWidget->insertItem(j, newList.at(j));
+        }
+        QListWidgetItem *currentitem;
+        currentitem = ui->listWidget->item(0);
+        ui->listWidget->setCurrentItem(currentitem);
+        QString cityId = get_id_from_cityname(ui->listWidget->currentItem()->text());
+        pSettings->setValue("weather/cityId", cityId);
+        pSettings->sync();
     }
-    QListWidgetItem *currentitem;
-    currentitem = ui->listWidget->item(0);
-    ui->listWidget->setCurrentItem(currentitem);
-    QString cur_text = ui->listWidget->currentItem()->text();
-    QString myid = get_id_from_cityname(cur_text);
-    pSettings->setValue("weather/cityId", myid);
-    pSettings->sync();
 }
 
 

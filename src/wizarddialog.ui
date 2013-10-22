@@ -7,39 +7,23 @@
     <x>0</x>
     <y>0</y>
     <width>529</width>
-    <height>365</height>
+    <height>210</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="addBtn">
+  <widget class="QLabel" name="titleLabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>320</y>
-     <width>105</width>
-     <height>31</height>
+     <x>230</x>
+     <y>7</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:#43a2db</string>
-   </property>
-   <property name="text">
-    <string>&amp;添加...</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="wizardLabel_2">
-   <property name="geometry">
-    <rect>
-     <x>29</x>
-     <y>23</y>
-     <width>461</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#43a2db</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>天气配置</string>
@@ -52,9 +36,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>60</y>
-     <width>81</width>
-     <height>31</height>
+     <y>38</y>
+     <width>111</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -64,42 +48,26 @@
     </size>
    </property>
    <property name="text">
-    <string>更新时间：</string>
+    <string>自动更新周期：</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
-     <x>107</x>
-     <y>64</y>
-     <width>61</width>
+     <x>20</x>
+     <y>63</y>
+     <width>91</width>
      <height>27</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="delBtn">
+  <widget class="QLabel" name="locationLabel">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>320</y>
-     <width>105</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#43a2db</string>
-   </property>
-   <property name="text">
-    <string>&amp;删除...</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelCreate_3">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>90</y>
-     <width>41</width>
-     <height>31</height>
+     <x>265</x>
+     <y>37</y>
+     <width>51</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -115,20 +83,20 @@
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>120</y>
-     <width>491</width>
-     <height>191</height>
+     <x>266</x>
+     <y>60</y>
+     <width>241</width>
+     <height>91</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="labelCreate_2">
+  <widget class="QLabel" name="minuteLabel">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>60</y>
+     <x>120</x>
+     <y>66</y>
      <width>41</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -141,27 +109,11 @@
     <string>分钟</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="okBtn">
-   <property name="geometry">
-    <rect>
-     <x>407</x>
-     <y>320</y>
-     <width>105</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:#43a2db</string>
-   </property>
-   <property name="text">
-    <string>&amp;确定...</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="btn_close">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
+     <y>7</y>
      <width>20</width>
      <height>20</height>
     </rect>
@@ -182,22 +134,146 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="quitBtn">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>320</y>
-     <width>105</width>
-     <height>31</height>
+     <x>0</x>
+     <y>0</y>
+     <width>529</width>
+     <height>210</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:#43a2db</string>
+    <string notr="true">border-image: url(:/pixmap/image/dialog-bg.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <zorder>minuteLabel_2</zorder>
+  </widget>
+  <widget class="QPushButton" name="addBtn">
+   <property name="geometry">
+    <rect>
+     <x>268</x>
+     <y>172</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>&amp;取消...</string>
+    <string>添加城市</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="delBtn">
+   <property name="geometry">
+    <rect>
+     <x>413</x>
+     <y>172</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>删除城市</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="quitBtn">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>172</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>返回</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="okBtn">
+   <property name="geometry">
+    <rect>
+     <x>128</x>
+     <y>172</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>完成</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="minuteLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>22</x>
+     <y>97</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>21</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>风速单位：蒲福级</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="minuteLabel_3">
+   <property name="geometry">
+    <rect>
+     <x>23</x>
+     <y>126</y>
+     <width>161</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>21</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>数据来源：中国气象局</string>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>titleLabel</zorder>
+  <zorder>timelabel</zorder>
+  <zorder>spinBox</zorder>
+  <zorder>locationLabel</zorder>
+  <zorder>listWidget</zorder>
+  <zorder>minuteLabel</zorder>
+  <zorder>btn_close</zorder>
+  <zorder>addBtn</zorder>
+  <zorder>delBtn</zorder>
+  <zorder>quitBtn</zorder>
+  <zorder>okBtn</zorder>
+  <zorder>minuteLabel_2</zorder>
+  <zorder>minuteLabel_3</zorder>
  </widget>
  <resources/>
  <connections/>

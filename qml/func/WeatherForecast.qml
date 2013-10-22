@@ -249,6 +249,7 @@ Item {
                 //晚上
                 var result1n = sessiondispatcher.getSingleWeatherInfo("img1", "forecast");
                 var result2n = sessiondispatcher.getSingleWeatherInfo("img2", "forecast");
+
                 if (result1n == "99") {
                     img1.source = "../img/weather/n" + result2n + ".gif";
                 }
@@ -318,7 +319,7 @@ Item {
                 else {
                     img9.source = "../img/weather/n" + result9n + ".gif";
                 }
-                if (result10 == "99") {
+                if (result10n == "99") {
                     img10.source = "../img/weather/d" + result9n + ".gif";
                 }
                 else {
