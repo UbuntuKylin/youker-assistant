@@ -513,36 +513,36 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------weather-------------------------
     # get weather information of six days
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def get_forecast_weahter(self):
-        return self.weatherconf.get_forecast()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
+    def get_forecast_weahter(self, cityId):
+        return self.weatherconf.get_forecast(cityId)
 
     # get current day's weather
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def get_current_weather(self):
-        return self.weatherconf.get_set_weather()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
+    def get_current_weather(self, cityId):
+        return self.weatherconf.get_set_weather(cityId)
 
     # get current PM2.5
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def get_current_pm25(self):
-        return self.weatherconf.get_pm_info()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
+    def get_current_pm25(self, cityId):
+        return self.weatherconf.get_pm_info(cityId)
 
     # update weather data
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
-    def update_weather_data(self):
-        return self.weatherconf.update_data()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def update_weather_data(self, cityId):
+        return self.weatherconf.update_data(cityId)
 
     # change city name
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def change_select_city_name(self, cityName):
-        self.weatherconf.change_city(cityName)
+    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    #def change_select_city_name(self, cityName):
+    #    self.weatherconf.change_city(cityName)
 
     # read conf data
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def read_conf_data(self):
-        return self.weatherconf.read_conf_data()
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    #def read_conf_data(self):
+    #    return self.weatherconf.read_conf_data()
 
     # write conf data
-    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='')
-    def write_conf_data(self, key, value):
-        self.weatherconf.write_conf_data(key, value)
+    #@dbus.service.method(INTERFACE, in_signature='ss', out_signature='')
+    #def write_conf_data(self, key, value):
+    #    self.weatherconf.write_conf_data(key, value)

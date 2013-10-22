@@ -23,6 +23,7 @@ bool Util::writeInit(QString path, QString user_key, QString user_value)
     }
     else {
         QSettings *config = new QSettings(path, QSettings::IniFormat);
+        config->setIniCodec("UTF-8");
         config->beginGroup("config");
         config->setValue(user_key, user_value);
         config->endGroup();
@@ -37,6 +38,7 @@ bool Util::readInit(QString path, QString user_key, QString &user_value) {
     }
     else {
         QSettings *config = new QSettings(path, QSettings::IniFormat);
+        config->setIniCodec("UTF-8");
         user_value = config->value(QString("config/") + user_key).toString();
         return true;
     }

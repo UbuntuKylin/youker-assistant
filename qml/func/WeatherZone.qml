@@ -37,7 +37,8 @@ Rectangle {
         temperatureRangeText.text = "温度范围：" + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");;
         humidityText.text = "湿度：" + sessiondispatcher.getSingleWeatherInfo("SD", "current");
 
-        sessiondispatcher.read_conf_data_qt();
+//        sessiondispatcher.read_conf_data_qt();
+//        sessiondispatcher.list_city_names_qt("changsha");
 
     }
     Text {
@@ -50,7 +51,7 @@ Rectangle {
     }
     Text {
         id: ptimeText
-        text: "08:00" + " 发布"
+        text: "发布时间"
         font.bold: true
         font.pixelSize: 14
         color: "#383838"
@@ -93,8 +94,8 @@ Rectangle {
                     anchors.fill: preferencesBtn
                     hoverEnabled: true
                     onClicked: {
-                        sessiondispatcher.read_conf_data_qt();
-//                        sessiondispatcher.showWizardController();
+//                        sessiondispatcher.read_conf_data_qt();
+                        sessiondispatcher.showWizardController();
                     }
                 }
             }
@@ -128,37 +129,37 @@ Rectangle {
             spacing: 5
             Text {
                 id: weatherText
-                text: "晴"
+                text: "未知"
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
             Text {
                 id: pmText
-                text: "空气质量指数：30 良好"
+                text: "空气质量指数：未知"
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
             Text {
                 id: tempText
-                text: "温度：14℃"
+                text: "温度：未知"
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
             Text {
                 id: humidityText
-                text: "湿度：40%"
+                text: "湿度：未知"
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
             Text {
                 id: temperatureRangeText
-                text: "温度范围：14-18"
+                text: "温度范围：未知"
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
             Text {
                 id: windText
-                text: "北风4级"
+                text: "风力未知"
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }

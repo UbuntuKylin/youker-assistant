@@ -29,7 +29,7 @@
 
 #include "KThread.h"
 #include "util.h"
-#include "wizardcontroller.h"
+#include "wizarddialog.h"
 
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
@@ -46,11 +46,19 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     this->alert_width = 329;
     this->alert_height = 195;
 
+    //-----------------1022
+    mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
+    mSettings->setIniCodec("UTF-8");
+//    initFilterConfigFile();
+
     skin_widget = new SkinsWidget();
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
+    mSettings->sync();
+    if (mSettings != NULL)
+        delete mSettings;
     this->exit_qt();
 }
 
@@ -651,7 +659,8 @@ void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
 //     ( "wind5" ,  QVariant(QString, "北风小于3级") )
 //     ( "wind6" ,  QVariant(QString, "北风小于3级") ) )
 void SessionDispatcher::get_forecast_weahter_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter");
+    initFilterConfigFile();
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
     forecastInfo = reply.value();
 
 
@@ -671,7 +680,8 @@ void SessionDispatcher::get_forecast_weahter_qt() {
 //     ( "time" ,  QVariant(QString, "17:00") )
 //     ( "weather" ,  QVariant(QString, "小雨转阴") ) )
 void SessionDispatcher::get_current_weather_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather");
+    initFilterConfigFile();
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
     currentInfo = reply.value();
 }
 
@@ -680,12 +690,14 @@ void SessionDispatcher::get_current_weather_qt() {
 //u'station_code': None, u'time_point': #u'2013-10-18T09:00:00Z',
 //    u'pm2_5_24h': 0, u'position_name': None, u'aqi': 122, u'primary_pollutant': None}
 QString SessionDispatcher::get_current_pm25_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_current_pm25");
+    initFilterConfigFile();
+    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
     return reply.value();
 }
 
 bool SessionDispatcher::update_weather_data_qt() {
-    QDBusReply<bool> reply = sessioniface->call("update_weather_data");
+    initFilterConfigFile();
+    QDBusReply<bool> reply = sessioniface->call("update_weather_data", initCityId);
     return reply.value();
 }
 
@@ -704,34 +716,40 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     return info.toString();
 }
 
-void SessionDispatcher::read_conf_data_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("read_conf_data");
-    if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
-        confData = value;
-//        qDebug() << confData;
-    }
-    else {
-        qDebug() << "get confData failed!";
-    }
-}
+//void SessionDispatcher::read_conf_data_qt() {
+//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("read_conf_data");
+//    if (reply.isValid()) {
+//        QMap<QString, QVariant> value = reply.value();
+//        confData = value;
+////        qDebug() << confData;
+//    }
+//    else {
+//        qDebug() << "get confData failed!";
+//    }
+//}
 
-void SessionDispatcher::write_conf_data_qt(QString key, QString value) {
-    if(key == "refresh_rate" || key == "placechosen") {
-        int intValue = value.toInt();
-        sessioniface->call("write_conf_data", key, intValue);
-    }
-    else {
-        sessioniface->call("write_conf_data", key, value);
-    }
-}
+//void SessionDispatcher::write_conf_data_qt(QString key, QString value) {
+//    if(key == "refresh_rate" || key == "placechosen") {
+//        int intValue = value.toInt();
+//        sessioniface->call("write_conf_data", key, intValue);
+//    }
+//    else {
+//        sessioniface->call("write_conf_data", key, value);
+//    }
+//}
 
+//QStringList SessionDispatcher::list_city_names_qt(QString cityName) {
+//    QDBusReply<QStringList> reply = sessioniface->call("list_city_names", cityName);
+//    QStringList listCity = reply.value();
+//    qDebug() << listCity;
+//    return listCity;
+//}
 
 bool SessionDispatcher::showWizardController() {
-    WizardController *wizardController = new WizardController(confData["refresh_rate"].toInt(), 0);
-    connect(wizardController, SIGNAL(transConfValue(QString, QString)), this, SLOT(write_conf_data_qt(QString,QString)));
-    wizardController-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
-    if(wizardController->exec()==QDialog::Rejected) {
+    WizardDialog *wizardDialog = new WizardDialog(mSettings, 0);
+//    connect(wizardDialog, SIGNAL(transConfValue(QString, QString)), this, SLOT(write_conf_data_qt(QString,QString)));
+    wizardDialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
+    if(wizardDialog->exec()==QDialog::Rejected) {
         return false;
     }
     else {
@@ -740,3 +758,18 @@ bool SessionDispatcher::showWizardController() {
 }
 
 
+
+
+
+//start filter config file
+void SessionDispatcher::initFilterConfigFile()
+{
+    mSettings->beginGroup("weather");
+    initCityId = mSettings->value("cityId").toString();
+    mSettings->endGroup();
+    mSettings->sync();
+}
+
+void SessionDispatcher::updateStorageInfo()
+{
+}

@@ -25,7 +25,8 @@ import json
 
 from base import PROJECT_ROOT_DIRECTORY, WEATHER_URL, WEATHER_URL1, WEATHER_URL2
 
-CHN_CITY_LIST_FILE = os.path.join(PROJECT_ROOT_DIRECTORY, 'src/location.txt')
+#CHN_CITY_LIST_FILE = os.path.join(PROJECT_ROOT_DIRECTORY, 'src/location.txt')
+CHN_CITY_LIST_FILE = '/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt'
 
 def read_from_url(url):
     # returns weather info by json_string

@@ -14,25 +14,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WIZARDCONTROLLER_H
-#define WIZARDCONTROLLER_H
+#ifndef WIZARDDIALOG_H
+#define WIZARDDIALOG_H
 
-#include <QWizard>
+#include <QDialog>
 #include <QPoint>
 
 class QSettings;
-
 namespace Ui {
-class WizardController;
+class WizardDialog;
 }
 
-class WizardController : public QWizard
+class WizardDialog : public QDialog
 {
     Q_OBJECT
     
 public:
-    explicit WizardController(QSettings *mSettings = 0, QWidget *parent = 0);
-    ~WizardController();
+    explicit WizardDialog(QSettings *mSettings = 0, QWidget *parent = 0);
+    ~WizardDialog();
+    
 
     void loadConf();
     QString get_id_from_cityname(QString cityName);
@@ -46,7 +46,6 @@ protected:
 protected slots:
     void addLocation();
     void delLocation();
-    void ChangedBackGround();
     void setSpinValue(int value);
     void writeWeatherConf();
     void setLocation(QString cityName, QString cityId);
@@ -55,11 +54,8 @@ signals:
     void transConfValue(QString key, QString value);
 
 private:
-    Ui::WizardController *ui;
+    Ui::WizardDialog *ui;
     QPoint dragPos;
-    QAbstractButton *backButton;
-    QAbstractButton *nextButton;
-    QAbstractButton *finishButton;
     int spinValue;
     QStringList cityList;
     QString newCityName;
@@ -69,4 +65,4 @@ private:
     QStringList newList;
 };
 
-#endif // WIZARDCONTROLLER_H
+#endif // WIZARDDIALOG_H

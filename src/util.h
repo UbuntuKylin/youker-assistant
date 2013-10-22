@@ -16,7 +16,8 @@
 #ifndef UTIL_H
 #define UTIL_H
 #include <QtGui>
-
+const QString YOUKER_COMPANY_SETTING = "Ubuntukylin";
+const QString YOUKER_SETTING_FILE_NAME_SETTING = "youker-assistant";
 class Util
 {
 

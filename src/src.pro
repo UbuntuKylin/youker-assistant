@@ -63,7 +63,8 @@ HEADERS += youker-application.h \
     skinswidget.h \
     skingrid.h \
     pushbutton.h \
-    wizardcontroller.h
+    locationdialog.h \
+    wizarddialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -108,7 +109,8 @@ SOURCES += main.cpp \
     skinswidget.cpp \
     skingrid.cpp \
     pushbutton.cpp \
-    wizardcontroller.cpp
+    locationdialog.cpp \
+    wizarddialog.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -123,4 +125,5 @@ FORMS += \
     suspensionframe.ui \
     progressdialog.ui \
     alertdialog.ui \
-    wizardcontroller.ui
+    locationdialog.ui \
+    wizarddialog.ui

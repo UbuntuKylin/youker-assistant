@@ -26,6 +26,8 @@
 #include "modaldialog.h"
 #include "skinswidget.h"
 
+class QSettings;
+
 class SessionDispatcher : public QObject
 {
     Q_OBJECT
@@ -184,11 +186,16 @@ public:
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 
     //读取天气配置文件
-    QMap<QString, QVariant> confData;
-    Q_INVOKABLE void read_conf_data_qt();
+//    QMap<QString, QVariant> confData;
+//    Q_INVOKABLE void read_conf_data_qt();
 
+    //列出城市名字
+//    Q_INVOKABLE QStringList list_city_names_qt(QString cityName);
     //显示wizard
     Q_INVOKABLE bool showWizardController();
+
+    void initFilterConfigFile();
+    void updateStorageInfo();
 signals:
     //告知QML那种某种类型的字体样式
 //    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
@@ -204,7 +211,7 @@ public slots:
 //    void handler_network_speed(QStringList speed);
     void handler_change_skin(QString skinName);
     //设置天气配置文件
-    void write_conf_data_qt(QString key, QString value);
+//    void write_conf_data_qt(QString key, QString value);
 private:
     int mainwindow_width;
     int mainwindow_height;
@@ -217,6 +224,9 @@ private:
 
     //皮肤对话框对象
     SkinsWidget *skin_widget;
+
+    QSettings * mSettings;
+    QString initCityId;
 };
 
 #endif // SESSIONDISPATCHER_H

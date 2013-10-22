@@ -19,12 +19,15 @@ import os, sys
 import pycwapi
 from pm25 import *
 from settings import Settings
+from pycwapi import get_location_from_cityid
 from base import VERSION, PROJECT_ROOT_DIRECTORY
-CHN_CITY_LIST_FILE = os.path.join(PROJECT_ROOT_DIRECTORY, 'weather/location.txt')
+#CHN_CITY_LIST_FILE = os.path.join(PROJECT_ROOT_DIRECTORY, 'weather/location.txt')
+
+CHN_CITY_LIST_FILE = '/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt'
 
 class WeatherInfo():
     def __init__(self):
-        from pycwapi import get_location_from_cityid
+        #from pycwapi import get_location_from_cityid
         self.settings = Settings()
         self.settings.prepare_settings_store()
         self.city_id = self.settings.get_value("city_id")
@@ -61,27 +64,31 @@ class WeatherInfo():
             self.place = self.places[self.placechosen]
 
     # Get forecast
-    def get_forecast(self):
-        self.forecast_data = pycwapi.get_weather_from_nmc(self.city_id, 1)
+    def get_forecast(self, cityId):
+        cityIdStr = str(cityId)
+        self.forecast_data = pycwapi.get_weather_from_nmc(cityIdStr, 1)
         return self.forecast_data
 
     # Get and set weather
-    def get_set_weather(self):
-        self.weather_data = pycwapi.get_weather_from_nmc(self.city_id, 0)
+    def get_set_weather(self, cityId):
+        cityIdStr = str(cityId)
+        self.weather_data = pycwapi.get_weather_from_nmc(cityIdStr, 0)
         if self.weather_data is not None:
             self.ptime = self.weather_data['ptime']
             return self.weather_data
 
     # Get PM2.5 information from website
-    def get_pm_info(self):
-        from pycwapi import get_location_from_cityid
-        cityName = self.place[1].split(',')[2]
+    def get_pm_info(self, cityId):
+        cityIdStr = str(cityId)
+        cityName = get_location_from_cityid(cityIdStr)
+        cityName = cityName.split(',')[2]
+        # kobe: get_pm() comes from pm25 module
         self.pm = get_pm(cityName)
         return self.pm
 
     # Update weather and forecast
-    def update_data(self):
-        self.get_set_weather()
+    def update_data(self, cityId):
+        self.get_set_weather(cityId)
         return True
         #self.get_forecast()
         #self.get_pm_info()
@@ -100,28 +107,28 @@ class WeatherInfo():
         self.settings.set_value("city_id", self.city_id)
         self.update_data()
 
-    def read_conf_data(self):
-        self.confData['city_id'] = self.settings.get_value("city_id")
-        self.confData['refresh_rate'] = self.settings.get_value("refresh_rate")
-        self.confData['places'] = self.settings.get_value("places")
-        self.confData['placechosen'] = self.settings.get_value("placechosen")
-        return self.confData
+    #def read_conf_data(self):
+    #    self.confData['city_id'] = self.settings.get_value("city_id")
+    #    self.confData['refresh_rate'] = self.settings.get_value("refresh_rate")
+    #    self.confData['places'] = self.settings.get_value("places")
+    #    self.confData['placechosen'] = self.settings.get_value("placechosen")
+    #    return self.confData
 
-    def write_conf_data(self, key, value):
-        self.settings.set_value(key, value)
+    #def write_conf_data(self, key, value):
+    #    self.settings.set_value(key, value)
 
-    def list_city_names(self, cityName):
-        new_text = cityName.lower().replace(' ', '')
-        self.cityList = []
-        f = open(CHN_CITY_LIST_FILE, 'r')
-        self.dist = {}
-        for line in f.readlines():
-            if new_text in line:
-                keys = line.split(':')[0]
-                values = line.split(':')[1]
-                self.cityList.append([keys])
-                self.dist[keys] = values
-        return self.cityList
+    #def list_city_names(self, cityName):
+    #    new_text = cityName.lower().replace(' ', '')
+    #    self.cityList = []
+    #    f = open(CHN_CITY_LIST_FILE, 'r')
+    #    self.dist = {}
+    #    for line in f.readlines():
+    #        if new_text in line:
+    #            keys = line.split(':')[0]
+    #            values = line.split(':')[1]
+    #            self.cityList.append([keys])
+    #            self.dist[keys] = values
+    #    return self.cityList
 
 if __name__ == "__main__":
     wi = WeatherInfo()
