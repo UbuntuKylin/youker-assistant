@@ -16,15 +16,16 @@
 #ifndef UTIL_H
 #define UTIL_H
 #include <QtGui>
-const QString YOUKER_COMPANY_SETTING = "Ubuntukylin";
-const QString YOUKER_SETTING_FILE_NAME_SETTING = "youker-assistant";
+//const QString YOUKER_COMPANY_SETTING = "Ubuntukylin";
+//const QString YOUKER_SETTING_FILE_NAME_SETTING = "youker-assistant";
 class Util
 {
 
 public:
 
-    static bool writeInit(QString path, QString user_key, QString user_value);
-    static bool readInit(QString path, QString user_key, QString &user_value);
+//    static bool writeInit(QString path, QString user_key, QString user_value);
+//    static bool readInit(QString path, QString user_key, QString &user_value);
+    static QString get_id_from_cityname(QString cityName);
 
 };
 

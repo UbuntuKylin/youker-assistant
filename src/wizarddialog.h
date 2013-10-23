@@ -35,7 +35,7 @@ public:
     
 
     void loadConf();
-    QString get_id_from_cityname(QString cityName);
+//    QString get_id_from_cityname(QString cityName);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);

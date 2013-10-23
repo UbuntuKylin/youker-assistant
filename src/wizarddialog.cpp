@@ -30,7 +30,7 @@
 #include <QSettings>
 
 #include "locationdialog.h"
-
+#include "util.h"
 WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::WizardDialog)
@@ -125,32 +125,32 @@ void WizardDialog::writeWeatherConf() {
     this->accept();
 }
 
-QString WizardDialog::get_id_from_cityname(QString cityName) {
-    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt");
-    if(locationFile.exists() && locationFile.open(QFile::ReadOnly)) {
-        QTextStream in(&locationFile);
-        QString line;
-        QString location;
-        QString cityId;
-        while(!in.atEnd())
-        {
-           line = in.readLine();
-           location = line.split(':')[0];
-           if (cityName == location) {
-               cityId = line.split(':')[1];
-               break;
-           }
-        }
-        locationFile.close();
-        return cityId;
-    }
-    else {
-        QMessageBox::warning(NULL,
-                             tr("警告"),
-                             tr("没有找到城市配置文件！"),
-                             QMessageBox::Ok);
-    }
-}
+//QString WizardDialog::get_id_from_cityname(QString cityName) {
+//    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt");
+//    if(locationFile.exists() && locationFile.open(QFile::ReadOnly)) {
+//        QTextStream in(&locationFile);
+//        QString line;
+//        QString location;
+//        QString cityId;
+//        while(!in.atEnd())
+//        {
+//           line = in.readLine();
+//           location = line.split(':')[0];
+//           if (cityName == location) {
+//               cityId = line.split(':')[1];
+//               break;
+//           }
+//        }
+//        locationFile.close();
+//        return cityId;
+//    }
+//    else {
+//        QMessageBox::warning(NULL,
+//                             tr("警告"),
+//                             tr("没有找到城市配置文件！"),
+//                             QMessageBox::Ok);
+//    }
+//}
 
 void WizardDialog::addLocation() {
     LocationDialog *locationDialog = new LocationDialog();
@@ -188,9 +188,17 @@ void WizardDialog::delLocation() {
         QListWidgetItem *currentitem;
         currentitem = ui->listWidget->item(0);
         ui->listWidget->setCurrentItem(currentitem);
-        QString cityId = get_id_from_cityname(ui->listWidget->currentItem()->text());
-        pSettings->setValue("weather/cityId", cityId);
-        pSettings->sync();
+        QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
+        if (cityId == "") {
+            QMessageBox::warning(NULL,
+                                 tr("警告"),
+                                 tr("没有找到城市配置文件！"),
+                                 QMessageBox::Ok);
+        }
+        else {
+            pSettings->setValue("weather/cityId", cityId);
+            pSettings->sync();
+        }
     }
 }
 

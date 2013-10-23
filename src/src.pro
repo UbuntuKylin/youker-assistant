@@ -62,7 +62,9 @@ HEADERS += youker-application.h \
     skinswidget.h \
     skingrid.h \
     locationdialog.h \
-    wizarddialog.h
+    wizarddialog.h \
+    changecitydialog.h \
+    util.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -106,7 +108,9 @@ SOURCES += main.cpp \
     skinswidget.cpp \
     skingrid.cpp \
     locationdialog.cpp \
-    wizarddialog.cpp
+    wizarddialog.cpp \
+    changecitydialog.cpp \
+    util.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -122,4 +126,5 @@ FORMS += \
     progressdialog.ui \
     alertdialog.ui \
     locationdialog.ui \
-    wizarddialog.ui
+    wizarddialog.ui \
+    changecitydialog.ui

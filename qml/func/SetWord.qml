@@ -53,6 +53,9 @@ Rectangle {
             //屏幕坏点检测
             if (flag == "CheckScreen")
                 sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
+            else if (flag == "ChangeCity") {
+                sessiondispatcher.showChangeCityDialog(/*mainwindow.pos.x, mainwindow.pos.y*/);
+            }
             else if (flag == "WidgetTheme")
                 pageStack.push(widgetthemepage);
             else if (flag == "DesktopiconSet")

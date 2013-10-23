@@ -196,6 +196,10 @@ public:
 //    Q_INVOKABLE QStringList list_city_names_qt(QString cityName);
     //显示wizard
     Q_INVOKABLE bool showWizardController();
+    //显示更改城市对话框
+    Q_INVOKABLE bool showChangeCityDialog(/*int window_x, int window_y*/);
+    Q_INVOKABLE int getLengthOfCityList();
+
 
     void initFilterConfigFile();
     void updateStorageInfo();

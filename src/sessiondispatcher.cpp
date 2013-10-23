@@ -29,6 +29,7 @@
 
 #include "KThread.h"
 #include "wizarddialog.h"
+#include "changecitydialog.h"
 
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
@@ -45,7 +46,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     this->alert_width = 329;
     this->alert_height = 195;
 
-    //-----------------1022
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
 //    initFilterConfigFile();
@@ -769,7 +769,27 @@ bool SessionDispatcher::showWizardController() {
 }
 
 
+bool SessionDispatcher::showChangeCityDialog(/*int window_x, int window_y*/) {
+    ChangeCityDialog *cityDialog = new ChangeCityDialog(mSettings);
+    cityDialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
+//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+//    this->alert_y = window_y + mainwindow_height - 400;
+//    cityDialog->move(this->alert_x, this->alert_y);
+    if(cityDialog->exec()==QDialog::Rejected) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 
+int SessionDispatcher::getLengthOfCityList() {
+    mSettings->beginGroup("weather");
+    QStringList cityList = mSettings->value("places").toStringList();
+    mSettings->endGroup();
+    mSettings->sync();
+    return cityList.size();
+}
 
 
 //start filter config file

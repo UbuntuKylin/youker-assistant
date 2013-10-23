@@ -23,10 +23,17 @@ Rectangle {
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
 
+    function resetChangeCityBtn() {
+        var len = sessiondispatcher.getLengthOfCityList();
+        if(len <= 1) {
+            changeCityBtn.visible = false;
+        }
+        else {
+            changeCityBtn.visible = true;
+        }
+    }
+
     Component.onCompleted: {
-
-
-
         sessiondispatcher.get_current_weather_qt();
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
         ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + " 发布";
@@ -40,6 +47,8 @@ Rectangle {
 //        sessiondispatcher.read_conf_data_qt();
 //        sessiondispatcher.list_city_names_qt("changsha");
 
+        resetChangeCityBtn();
+
     }
     Text {
         id: locationText
@@ -48,6 +57,15 @@ Rectangle {
         font.pixelSize: 14
         color: "#383838"
         anchors.left: parent.left
+    }
+    SetWord {
+        id: changeCityBtn
+        visible: false
+        anchors.left: locationText.right
+        wordname: "[更换城市]"
+        width: 80
+        height: 20
+        flag: "ChangeCity"
     }
     Text {
         id: ptimeText
