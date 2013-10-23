@@ -18,8 +18,8 @@
 import os, sys
 import pycwapi
 from pm25 import *
-from settings import Settings
-from pycwapi import get_location_from_cityid
+#from settings import Settings
+from pycwapi import get_location_from_cityid, get_id_from_cityname
 from base import VERSION, PROJECT_ROOT_DIRECTORY
 #CHN_CITY_LIST_FILE = os.path.join(PROJECT_ROOT_DIRECTORY, 'weather/location.txt')
 
@@ -27,85 +27,83 @@ CHN_CITY_LIST_FILE = '/usr/lib/python2.7/dist-packages/youker-assistant-daemon/s
 
 class WeatherInfo():
     def __init__(self):
-        #from pycwapi import get_location_from_cityid
-        self.settings = Settings()
-        self.settings.prepare_settings_store()
-        self.city_id = self.settings.get_value("city_id")
-        #print self.city_id #101250101
-        self.temp = self.settings.get_value("show_temperature")
-        #print self.temp #True
-        self.rate = self.settings.get_value("refresh_rate")
-        #print self.rate #30
-        self.city_change_flag = False
-        if self.rate in (False, None):
-            default_value = 60
-            self.settings.set_value("refresh_rate", default_value)
-            self.rate = default_value
-        self.weather_data={}
-        self.forecast_data={}
-        self.place = None
-        self.pm = {}
-        self.confData = {}
-        self.cityList = []
-        self.places = str(self.settings.get_value("places"))
-        #print self.places #[['101250101', '\xe6\xb9\x96\xe5\x8d\x97,\xe9\x95\xbf\xe6\xb2\x99,\xe9\x95\xbf\xe6\xb2\x99']]
-        self.placechosen = self.settings.get_value("placechosen")
-        #print self.placechosen #0
-        self.actualization_time = 0
-        self.pm25_flag = False
+        #self.settings = Settings()
+        #self.settings.prepare_settings_store()
+        #self.city_id = self.settings.get_value("city_id")
+        #self.temp = self.settings.get_value("show_temperature")
+        #self.rate = self.settings.get_value("refresh_rate")
+        #self.city_change_flag = False
+        #if self.rate in (False, None):
+        #    default_value = 60
+        #    self.settings.set_value("refresh_rate", default_value)
+        #    self.rate = default_value
+        self.weatherData={}
+        self.forecastData={}
+        #self.place = None
+        self.pmData = {}
+        #self.confData = {}
+        #self.cityList = []
+        #self.places = str(self.settings.get_value("places"))
+        #self.placechosen = self.settings.get_value("placechosen")
+        #self.actualization_time = 0
+        #self.pm25_flag = False
 
 
-        if self.city_id in (False, None, '[]', ''):
-            print 'cityid is none'
-        else:
-            self.places = eval(self.places)
-            if self.placechosen >= len(self.places):
-                self.placechosen = 0
-            self.place = self.places[self.placechosen]
+        #if self.city_id in (False, None, '[]', ''):
+        #    print 'cityid is none'
+        #else:
+        #    self.places = eval(self.places)
+        #    if self.placechosen >= len(self.places):
+        #        self.placechosen = 0
+        #    self.place = self.places[self.placechosen]
 
-    # Get forecast
-    def get_forecast(self, cityId):
+    # Get weahter forecast
+    def getWeatherForecast(self, cityId):
         cityIdStr = str(cityId)
-        self.forecast_data = pycwapi.get_weather_from_nmc(cityIdStr, 1)
-        return self.forecast_data
+        self.forecastData = pycwapi.get_weather_from_nmc(cityIdStr, 1)
+        return self.forecastData
 
-    # Get and set weather
-    def get_set_weather(self, cityId):
+    # Get current weather
+    def getCurrentWeather(self, cityId):
         cityIdStr = str(cityId)
-        self.weather_data = pycwapi.get_weather_from_nmc(cityIdStr, 0)
-        if self.weather_data is not None:
-            self.ptime = self.weather_data['ptime']
-            return self.weather_data
+        self.weatherData = pycwapi.get_weather_from_nmc(cityIdStr, 0)
+        if self.weatherData is not None:
+            self.ptime = self.weatherData['ptime']
+            return self.weatherData
 
     # Get PM2.5 information from website
-    def get_pm_info(self, cityId):
+    def getPM25Info(self, cityId):
         cityIdStr = str(cityId)
         cityName = get_location_from_cityid(cityIdStr)
         cityName = cityName.split(',')[2]
         # kobe: get_pm() comes from pm25 module
-        self.pm = get_pm(cityName)
-        return self.pm
+        self.pmData = get_pm(cityName)
+        return self.pmData
 
     # Update weather and forecast
-    def update_data(self, cityId):
-        self.get_set_weather(cityId)
+    def updateCurrentWeather(self, cityId):
+        self.getCurrentWeather(cityId)
         return True
         #self.get_forecast()
         #self.get_pm_info()
 
-    def change_city(self, cityName):
-        for place in self.places:
-            if (place[1] == cityName):
-                self.placechosen = self.places.index(place)
-                break
+    def getCityId(self, cityName):
+        cityNameStr = str(cityName)
+        return get_id_from_cityname(cityNameStr)
 
-        if self.placechosen >= len(self.places):
-            self.placechosen = 0
-        self.place = self.places[self.placechosen]
-        self.settings.set_value("placechosen", self.placechosen)
-        self.city_id = self.places[self.placechosen][0]
-        self.settings.set_value("city_id", self.city_id)
-        self.update_data()
+    #def change_city(self, cityName):
+    #    for place in self.places:
+    #        if (place[1] == cityName):
+    #            self.placechosen = self.places.index(place)
+    #            break
+
+    #    if self.placechosen >= len(self.places):
+    #        self.placechosen = 0
+    #    self.place = self.places[self.placechosen]
+    #    self.settings.set_value("placechosen", self.placechosen)
+    #    self.city_id = self.places[self.placechosen][0]
+    #    self.settings.set_value("city_id", self.city_id)
+    #    self.update_data()
 
     #def read_conf_data(self):
     #    self.confData['city_id'] = self.settings.get_value("city_id")
@@ -132,7 +130,5 @@ class WeatherInfo():
 
 if __name__ == "__main__":
     wi = WeatherInfo()
-    #data = wi.get_forecast();
-    data = wi.get_set_weather()
-    #data = wi.get_pm_info()
+    data = wi.getCurrentWeather()
     print data

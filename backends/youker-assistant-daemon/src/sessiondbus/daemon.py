@@ -515,22 +515,27 @@ class SessionDaemon(dbus.service.Object):
     # get weather information of six days
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
     def get_forecast_weahter(self, cityId):
-        return self.weatherconf.get_forecast(cityId)
+        return self.weatherconf.getWeatherForecast(cityId)
 
     # get current day's weather
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
     def get_current_weather(self, cityId):
-        return self.weatherconf.get_set_weather(cityId)
+        return self.weatherconf.getCurrentWeather(cityId)
 
     # get current PM2.5
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def get_current_pm25(self, cityId):
-        return self.weatherconf.get_pm_info(cityId)
+        return self.weatherconf.getPM25Info(cityId)
 
     # update weather data
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
     def update_weather_data(self, cityId):
-        return self.weatherconf.update_data(cityId)
+        return self.weatherconf.updateCurrentWeather(cityId)
+
+    # get cityid from cityname
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
+    def get_city_id(self, cityName):
+        return self.weatherconf.getCityId(cityName)
 
     # change city name
     #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')

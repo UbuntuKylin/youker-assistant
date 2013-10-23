@@ -91,6 +91,18 @@ def get_location_from_cityid(cityid):
             break
     return location
 
+def get_id_from_cityname(cityName):
+    cityId = ''
+    f = open(CHN_CITY_LIST_FILE, 'r')
+    for line in f.readlines():
+        location = line.split(':')[0]
+        location = location.split(',')[2]
+        if (cityName == location):
+            cityId = line.split(':')[1]
+            break
+    f.close()
+    return cityId
+
 if __name__ == "__main__":
     weatherinfo = get_weather_from_nmc('101281601', 0)
     cities = get_cities_from_localfile('长沙')

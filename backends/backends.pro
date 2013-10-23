@@ -20,9 +20,6 @@ inst9.files += ../backends/youker-assistant-daemon/data/beautify/plymouth/
 inst9.path = /usr/share/youker-assistant-daemon/
 inst10.files += ../backends/youker-assistant-daemon/data/beautify/sound-theme/
 inst10.path = /usr/share/youker-assistant-daemon/
-inst11.files += ../backends/youker-assistant-daemon/data/weather.gschema.xml
-inst11.path = usr/share/glib-2.0/schemas/
-
 
 INSTALLS += inst1 \
     inst2 \
@@ -33,5 +30,4 @@ INSTALLS += inst1 \
     inst7 \
     inst8 \
     inst9 \
-    inst10 \
-    inst11
+    inst10
