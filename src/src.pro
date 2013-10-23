@@ -59,10 +59,8 @@ HEADERS += youker-application.h \
     progressdialog.h \
     alertdialog.h \
     toolkits.h \
-    util.h \
     skinswidget.h \
     skingrid.h \
-    pushbutton.h \
     locationdialog.h \
     wizarddialog.h
 
@@ -105,10 +103,8 @@ SOURCES += main.cpp \
     progressdialog.cpp \
     alertdialog.cpp \
     toolkits.cpp \
-    util.cpp \
     skinswidget.cpp \
     skingrid.cpp \
-    pushbutton.cpp \
     locationdialog.cpp \
     wizarddialog.cpp
 RESOURCES += pixmap.qrc

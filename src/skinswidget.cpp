@@ -15,14 +15,16 @@
  */
 
 #include "skinswidget.h"
-#include "util.h"
 #include <QDebug>
-
-SkinsWidget::SkinsWidget(QWidget *parent)
+//#include <QSettings>
+SkinsWidget::SkinsWidget(/*QSettings *mSettings, */QWidget *parent)
     :QWidget(parent)
 {
     this->resize(620, 445);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+
+//    pSettings = mSettings;
+
     mouse_press = false;
     skinName = QString("");
     is_change = false;
@@ -329,18 +331,18 @@ void SkinsWidget::verifyToUseSkin(QString skinName) {
 void SkinsWidget::paintEvent(QPaintEvent *) {
     if(!is_change) {
         QString homepath = QDir::homePath();
-        bool is_read = Util::readInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
-        if(is_read) {
-            if(skinName.isEmpty()) {
-                skinName = QString(":/skin/image/0_big");
-            }
-            else {
-                skinName = ":/skin/image/" + skinName;
-            }
-        }
-        else {
-            skinName = QString(":/skin/image/0_big");
-        }
+//        bool is_read = Util::readInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
+//        if(is_read) {
+//            if(skinName.isEmpty()) {
+//                skinName = QString(":/skin/image/0_big");
+//            }
+//            else {
+//                skinName = ":/skin/image/" + skinName;
+//            }
+//        }
+//        else {
+//            skinName = QString(":/skin/image/0_big");
+//        }
 
     }
     QPainter painter(this);

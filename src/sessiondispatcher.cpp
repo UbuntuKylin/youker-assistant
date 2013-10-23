@@ -28,7 +28,6 @@
 #include <QFileDialog>
 
 #include "KThread.h"
-#include "util.h"
 #include "wizarddialog.h"
 
 SessionDispatcher::SessionDispatcher(QObject *parent) :
@@ -51,7 +50,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     mSettings->setIniCodec("UTF-8");
 //    initFilterConfigFile();
 
-    skin_widget = new SkinsWidget();
+    skin_widget = new SkinsWidget(/*mSettings*/);
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 }
 
@@ -563,25 +562,37 @@ QStringList SessionDispatcher::get_network_flow_total_qt() {
 //-----------------------change skin------------------------
 void SessionDispatcher::handler_change_skin(QString skinName) {
     //将得到的更换皮肤名字写入配置文件中
-    QString homepath = QDir::homePath();
-    Util::writeInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
-    //发送开始更换QML界面皮肤的信号
+//    QString homepath = QDir::homePath();
+//    Util::writeInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
+    mSettings->setValue("skin/background", skinName);
+    mSettings->sync();
+//    //发送开始更换QML界面皮肤的信号
     emit startChangeQMLSkin(skinName);
 }
 
 QString SessionDispatcher::setSkin() {
-    QString homepath = QDir::homePath();
     QString skinName;
-    bool is_read = Util::readInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
-    if(is_read) {
-        if(skinName.isEmpty()) {
-            skinName = QString("0_bg");
-        }
-    }
-    else {
+    mSettings->beginGroup("skin");
+    skinName = mSettings->value("background").toString();
+    mSettings->endGroup();
+    mSettings->sync();
+    if(skinName.isEmpty()) {
         skinName = QString("0_bg");
     }
     return skinName;
+
+//    QString homepath = QDir::homePath();
+//    QString skinName;
+//    bool is_read = Util::readInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
+//    if(is_read) {
+    //        if(skinName.isEmpty()) {
+    //            skinName = QString("0_bg");
+//        }
+//    }
+//    else {
+//        skinName = QString("0_bg");
+//    }
+//    return skinName;
 }
 
 void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
