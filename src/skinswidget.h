@@ -19,14 +19,13 @@
 
 #include <QWidget>
 #include <QtGui>
-//#include "pushbutton.h"
 #include "skingrid.h"
-//class QSettings;
+class QSettings;
 class SkinsWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SkinsWidget(/*QSettings *mSettings = 0, */QWidget *parent = 0);
+    explicit SkinsWidget(QSettings *mSettings = 0, QWidget *parent = 0);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
@@ -48,7 +47,7 @@ private:
     void initBottomBar();//上一页下一页按钮区域
     void selectShowNumber(int left_number, int previous_total_page, int tip_index);
 
-//    QSettings *pSettings;
+    QSettings *pSettings;
 
     QString skinName;
     bool is_change;
@@ -63,7 +62,6 @@ private:
     bool mouse_press;
     QLabel *title_label;
     QLabel *title_icon_label;
-//    PushButton *close_button;
     QLabel *close_button;
     int page_count;
     int page_count_point;

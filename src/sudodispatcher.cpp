@@ -222,17 +222,16 @@ void SudoDispatcher::apt_get_update_qt() {
     thread->start();
 }
 
-void SudoDispatcher::add_source_ubuntukylin_qt() {
-    sudoiface->call("add_source_ubuntukylin");
-}
+//void SudoDispatcher::add_source_ubuntukylin_qt() {
+//    sudoiface->call("add_source_ubuntukylin");
+//}
 
-void SudoDispatcher::remove_source_ubuntukylin_qt() {
-    sudoiface->call("remove_source_ubuntukylin");
-}
+//void SudoDispatcher::remove_source_ubuntukylin_qt() {
+//    sudoiface->call("remove_source_ubuntukylin");
+//}
 
 void SudoDispatcher::startUpdateSoftwareSource() {
     progressdialog->hide();
-    this->add_source_ubuntukylin_qt();
     emit callMasklayer();
     apt_get_update_qt();
 }

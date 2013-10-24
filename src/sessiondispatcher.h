@@ -26,9 +26,6 @@
 #include "modaldialog.h"
 #include "skinswidget.h"
 
-const QString YOUKER_COMPANY_SETTING = "Ubuntukylin";
-const QString YOUKER_SETTING_FILE_NAME_SETTING = "youker-assistant";
-
 class QSettings;
 
 class SessionDispatcher : public QObject

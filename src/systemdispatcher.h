@@ -22,6 +22,10 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
+
+const QString SOURCE_LIST = "/etc/apt/sources1.list";
+const QString LSB_RELEASE = "/etc/lsb-release";
+
 class SystemDispatcher : public QObject
 {
     Q_OBJECT
@@ -133,6 +137,11 @@ public:
     Q_INVOKABLE void del_largestfile_args(QString str);
     Q_INVOKABLE void clear_largestfile_args();
     Q_INVOKABLE QStringList get_largestfile_args();
+
+    //添加软件推荐源
+    void add_source_ubuntukylin_qt();
+    //获取当前系统的版本代号：如raring、saucy
+    QString readOSVersion();
 
 signals:
     //添加新的开机动画图片后触发该信号

@@ -30,6 +30,10 @@
 #include <QDesktopWidget>
 #include <QGraphicsObject>
 #include <QtDBus>
+//#include <QMessageBox>
+//#include <QFile>
+//#include <QIODevice>
+
 IhuApplication::IhuApplication(int &argc, char **argv)
     : QApplication(argc, argv), viewer(0)
 {
@@ -72,6 +76,7 @@ void IhuApplication::showOrHideMainPage() {
 
 bool IhuApplication::setup() {
     IhuApplication::setApplicationName("Youker Assistant");
+
     viewer = new QDeclarativeView;
     viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
     viewer->setSource(QUrl::fromLocalFile("main.qml"));

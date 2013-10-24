@@ -152,7 +152,6 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <zorder>minuteLabel_2</zorder>
   </widget>
   <widget class="QPushButton" name="addBtn">
    <property name="geometry">
@@ -222,7 +221,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string>完成</string>
    </property>
   </widget>
-  <widget class="QLabel" name="minuteLabel_2">
+  <widget class="QLabel" name="windLabel">
    <property name="geometry">
     <rect>
      <x>22</x>
@@ -241,7 +240,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string>风速单位：蒲福级</string>
    </property>
   </widget>
-  <widget class="QLabel" name="minuteLabel_3">
+  <widget class="QLabel" name="comLabel">
    <property name="geometry">
     <rect>
      <x>23</x>
@@ -272,8 +271,8 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>delBtn</zorder>
   <zorder>quitBtn</zorder>
   <zorder>okBtn</zorder>
-  <zorder>minuteLabel_2</zorder>
-  <zorder>minuteLabel_3</zorder>
+  <zorder>windLabel</zorder>
+  <zorder>comLabel</zorder>
  </widget>
  <resources/>
  <connections/>

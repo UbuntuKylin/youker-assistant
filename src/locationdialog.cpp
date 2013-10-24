@@ -58,12 +58,12 @@ void LocationDialog::changeSelectCity(QString currentName) {
 
 QStringList LocationDialog::list_city_names(QString inputText) {
     QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt");
+    QStringList listCity;
     if(locationFile.exists() && locationFile.open(QFile::ReadOnly)) {
         QTextStream in(&locationFile);
         QString line;
         QString keys;
         QString values;
-        QStringList listCity;
         while(!in.atEnd())
         {
            line = in.readLine();
@@ -76,15 +76,8 @@ QStringList LocationDialog::list_city_names(QString inputText) {
            }
         }
         locationFile.close();
-        return listCity;
     }
-    else {
-        QMessageBox::warning(NULL,
-                             tr("警告"),
-                             tr("没有找到城市配置文件！"),
-                             QMessageBox::Ok);
-    }
-
+    return listCity;
 }
 
 void LocationDialog::on_searchBtn_clicked()

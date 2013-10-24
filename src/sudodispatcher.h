@@ -69,10 +69,10 @@ public:
     Q_INVOKABLE void apt_get_update_qt();
     //得到优客助手提供的软件列表
     Q_INVOKABLE QStringList getAllSoftwareList();
-    //添加UbuntuKylin软件源
-    Q_INVOKABLE void add_source_ubuntukylin_qt();
-    //删除UbuntuKylin软件源
-    Q_INVOKABLE void remove_source_ubuntukylin_qt();
+//    //添加UbuntuKylin软件源
+//    Q_INVOKABLE void add_source_ubuntukylin_qt();
+//    //删除UbuntuKylin软件源
+//    Q_INVOKABLE void remove_source_ubuntukylin_qt();
 
 signals:
     //不需要的debu包清理完毕发送信号

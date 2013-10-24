@@ -25,6 +25,10 @@
 #include <QDBusInterface>
 #include <QDBusConnection>
 #include <QtGui>
+
+//const QString SOURCE_LIST = "/etc/apt/sources1.list";
+//const QString LSB_RELEASE = "/etc/lsb-release";
+
 class IhuApplication : public QApplication
 {
     Q_OBJECT

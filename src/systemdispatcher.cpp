@@ -47,10 +47,38 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     onekey_args << "cache" << "history" << "cookies";
     onekey_args2 << "cache" << "history" << "cookies";
     tmplist << "Kobe" << "Lee";
+
+    //判断是否添加了源
+    add_source_ubuntukylin_qt();
 }
 
 SystemDispatcher::~SystemDispatcher() {
     this->exit_qt();
+}
+
+void SystemDispatcher::add_source_ubuntukylin_qt() {
+    QString version = readOSVersion();
+    systemiface->call("add_source_ubuntukylin", version);
+}
+
+QString SystemDispatcher::readOSVersion() {
+    QFile lsbFile(LSB_RELEASE);
+    if(lsbFile.exists() && lsbFile.open(QFile::ReadOnly)) {
+        QTextStream in(&lsbFile);
+        QString line;
+        QString version;
+        while(!in.atEnd())
+        {
+           line = in.readLine();
+           if(line.contains("DISTRIB_CODENAME")) {
+               version = line.split("=").at(1);
+               lsbFile.close();
+               return version;
+           }
+        }
+        lsbFile.close();
+    }
+    return "raring";
 }
 
 void SystemDispatcher::handler_clear_rubbish_error(QString msg) {

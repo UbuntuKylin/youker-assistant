@@ -16,17 +16,17 @@
 
 #include "skinswidget.h"
 #include <QDebug>
-//#include <QSettings>
-SkinsWidget::SkinsWidget(/*QSettings *mSettings, */QWidget *parent)
+#include <QSettings>
+SkinsWidget::SkinsWidget(QSettings *mSettings, QWidget *parent)
     :QWidget(parent)
 {
     this->resize(620, 445);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
 
-//    pSettings = mSettings;
+    pSettings = mSettings;
+    skinName = QString("");
 
     mouse_press = false;
-    skinName = QString("");
     is_change = false;
     current_page = 1;
     tip_list<<tr("皮肤1")<<tr("皮肤2")<<tr("皮肤3")<<tr("皮肤4")<<tr("皮肤5")<<
@@ -49,9 +49,7 @@ SkinsWidget::SkinsWidget(/*QSettings *mSettings, */QWidget *parent)
 void SkinsWidget::initTitleBar() {
     title_label = new QLabel();
     title_icon_label = new QLabel();
-//    close_button = new PushButton();
     close_button = new QLabel();
-
     QPixmap title_pixmap(":/pixmap/image/youker-assistant.png");
     title_icon_label->setPixmap(title_pixmap);
     title_icon_label->setFixedSize(16, 16);
@@ -59,10 +57,7 @@ void SkinsWidget::initTitleBar() {
 
     title_label->setFixedHeight(30);
     title_label->setText(tr("优客皮肤中心"));
-
-//    close_button->loadPixmap(":/pixmap/image/close.png");
     close_button->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
-//    close_button->setToolTip(tr("关闭"));
 
     titleLayout = new QHBoxLayout();
     titleLayout->addWidget(close_button, 0, Qt::AlignVCenter);
@@ -71,11 +66,8 @@ void SkinsWidget::initTitleBar() {
     titleLayout->addWidget(title_label, 0, Qt::AlignVCenter);
     titleLayout->setSpacing(5);
     titleLayout->setContentsMargins(10, 0, 5, 0);
-
     title_label->setStyleSheet("color:white;");
-
     close_button->installEventFilter(this);
-//    connect(close_button, SIGNAL(clicked()), this, SLOT(hide()));
 }
 
 void SkinsWidget::initSkinsCenter() {
@@ -330,20 +322,12 @@ void SkinsWidget::verifyToUseSkin(QString skinName) {
 
 void SkinsWidget::paintEvent(QPaintEvent *) {
     if(!is_change) {
-        QString homepath = QDir::homePath();
-//        bool is_read = Util::readInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
-//        if(is_read) {
-//            if(skinName.isEmpty()) {
-//                skinName = QString(":/skin/image/0_big");
-//            }
-//            else {
-//                skinName = ":/skin/image/" + skinName;
-//            }
-//        }
-//        else {
-//            skinName = QString(":/skin/image/0_big");
-//        }
-
+        //初始化皮肤对画框的皮肤
+        pSettings->beginGroup("skin");
+        skinName = pSettings->value("background").toString();
+        skinName = QString(":/skin/image/") + skinName;
+        pSettings->endGroup();
+        pSettings->sync();
     }
     QPainter painter(this);
     painter.drawPixmap(rect(), QPixmap(skinName));

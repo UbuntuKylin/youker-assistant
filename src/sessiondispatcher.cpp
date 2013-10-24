@@ -30,6 +30,7 @@
 #include "KThread.h"
 #include "wizarddialog.h"
 #include "changecitydialog.h"
+#include "util.h"
 
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
@@ -52,7 +53,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     //初始化QSetting配置文件
     initConfigFile();
 
-    skin_widget = new SkinsWidget(/*mSettings*/);
+    skin_widget = new SkinsWidget(mSettings);
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 }
 
