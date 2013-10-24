@@ -19,10 +19,12 @@ import SessionType 0.1
 import "common" as Common
 
 Rectangle {
+    id: weahterzone
     width: 208;height: 147
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
 
+    //设置[更换城市]按钮是否显示
     function resetChangeCityBtn() {
         var len = sessiondispatcher.getLengthOfCityList();
         if(len <= 1) {
@@ -33,22 +35,41 @@ Rectangle {
         }
     }
 
-    Component.onCompleted: {
-        sessiondispatcher.get_current_weather_qt();
+    //设置天气数据到QML界面上
+    function resetCurrentWeather() {
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
         ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + " 发布";
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
         windText.text = sessiondispatcher.getSingleWeatherInfo("WD", "current") + sessiondispatcher.getSingleWeatherInfo("WS", "current");
-        pmText.text = "空气质量指数：" + sessiondispatcher.get_current_pm25_qt()
+        var pmData = sessiondispatcher.get_current_pm25_qt();
+        if (pmData == "N/A") {
+            pmData = "未知";
+        }
+        pmText.text = "空气质量指数：" + pmData;
         tempText.text = "当前温度：" + sessiondispatcher.getSingleWeatherInfo("temp", "current") + "℃";
         temperatureRangeText.text = "温度范围：" + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");;
         humidityText.text = "湿度：" + sessiondispatcher.getSingleWeatherInfo("SD", "current");
+    }
 
-//        sessiondispatcher.read_conf_data_qt();
-//        sessiondispatcher.list_city_names_qt("changsha");
+    Connections
+    {
+        target: sessiondispatcher
+        onStartChangeQMLCity: {
+            sessiondispatcher.get_current_weather_qt();
+            weahterzone.resetCurrentWeather();
+            weahterzone.resetChangeCityBtn();
+        }
+        onStartUpdateRateTime: {
+            updateTime.interval = 1000 * rate;
+        }
+    }
 
-        resetChangeCityBtn();
-
+    Component.onCompleted: {
+        var rate = sessiondispatcher.get_current_rate();
+        updateTime.interval = 1000 * rate;
+        sessiondispatcher.get_current_weather_qt();
+        weahterzone.resetCurrentWeather();
+        weahterzone.resetChangeCityBtn();
     }
     Text {
         id: locationText
@@ -97,7 +118,11 @@ Rectangle {
                     anchors.fill: forecastBtn
                     hoverEnabled: true
                     onClicked: {
-                        sessiondispatcher.get_current_weather_qt();
+                        //1、获取六天天气预报数据
+                        sessiondispatcher.get_forecast_weahter_qt();
+                        //2、开始给天气预报界面发送更新数据信号
+                        sessiondispatcher.update_forecast_weather();
+                        //3、加载天气预报界面
                         pageStack.push(weatherpage);
                     }
                 }
@@ -112,7 +137,6 @@ Rectangle {
                     anchors.fill: preferencesBtn
                     hoverEnabled: true
                     onClicked: {
-//                        sessiondispatcher.read_conf_data_qt();
                         sessiondispatcher.showWizardController();
                     }
                 }
@@ -129,14 +153,7 @@ Rectangle {
                     hoverEnabled: true
                     onClicked: {
                         if(sessiondispatcher.update_weather_data_qt()) {
-                            locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
-                            ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + " 发布";
-                            weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
-                            windText.text = sessiondispatcher.getSingleWeatherInfo("WD", "current") + sessiondispatcher.getSingleWeatherInfo("WS", "current");
-                            pmText.text = "空气质量指数：" + sessiondispatcher.get_current_pm25_qt()
-                            tempText.text = "当前温度：" + sessiondispatcher.getSingleWeatherInfo("temp", "current") + "℃";
-                            temperatureRangeText.text = "温度范围：" + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");;
-                            humidityText.text = "湿度：" + sessiondispatcher.getSingleWeatherInfo("SD", "current");
+                            weahterzone.resetCurrentWeather();
                             toolkits.alertMSG("更新完毕！", mainwindow.pos.x, mainwindow.pos.y);
                         }
                     }
@@ -183,11 +200,14 @@ Rectangle {
             }
         }
     }
-//        Timer{
-//            interval: 3000;running: true;repeat: true
-//            onTriggered: {
-//            }
-//        }
+        Timer{
+            id: updateTime
+            interval: 60 * 1000;running: true;repeat: true
+            onTriggered: {
+                sessiondispatcher.get_current_weather_qt();
+                weahterzone.resetCurrentWeather();
+            }
+        }
 }
 
 

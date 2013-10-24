@@ -93,6 +93,7 @@ void ChangeCityDialog::writeWeatherConf() {
     //    QString strValue = QString::number(spinValue, 10);
     //    pSettings->setValue("weather/rate", strValue);
     //    pSettings->sync();
+        emit readyToUpdateWeather();
         this->accept();
     }
 }

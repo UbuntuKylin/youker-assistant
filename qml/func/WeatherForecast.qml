@@ -19,86 +19,19 @@ import "common" as Common
 import "bars" as Bars
 Item {
     id: weatherpage; width: parent.width; height: 475
-    //QMap(("city", QVariant(QString, "长沙") )
-    //     ( "date_y" ,  QVariant(QString, "2013年10月17日") )
-    //     ( "fchh" ,  QVariant(QString, "11") )
-    //     ( "fl1" ,  QVariant(QString, "小于3级") )
-    //     ( "fl2" ,  QVariant(QString, "小于3级") )
-    //     ( "fl3" ,  QVariant(QString, "小于3级") )
-    //     ( "fl4" ,  QVariant(QString, "小于3级") )
-    //     ( "fl5" ,  QVariant(QString, "小于3级") )
-    //     ( "fl6" ,  QVariant(QString, "小于3级") )
-    //     ( "fx1" ,  QVariant(QString, "微风") )
-    //     ( "fx2" ,  QVariant(QString, "微风") )
-    //     ( "img1" ,  QVariant(QString, "7") )
-    //     ( "img10" ,  QVariant(QString, "99") )
-    //     ( "img11" ,  QVariant(QString, "1") )
-    //     ( "img12" ,  QVariant(QString, "99") )
-    //     ( "img2" ,  QVariant(QString, "2") )
-    //     ( "img3" ,  QVariant(QString, "7") )
-    //     ( "img4" ,  QVariant(QString, "2") )
-    //     ( "img5" ,  QVariant(QString, "2") )
-    //     ( "img6" ,  QVariant(QString, "1") )
-    //     ( "img7" ,  QVariant(QString, "2") )
-    //     ( "img8" ,  QVariant(QString, "1") )
-    //     ( "img9" ,  QVariant(QString, "2") )
-    //     ( "img_single" ,  QVariant(QString, "7") )
-    //     ( "img_title1" ,  QVariant(QString, "小雨") )
-    //     ( "img_title10" ,  QVariant(QString, "阴") )
-    //     ( "img_title11" ,  QVariant(QString, "多云") )
-    //     ( "img_title12" ,  QVariant(QString, "多云") )
-    //     ( "img_title2" ,  QVariant(QString, "阴") )
-    //     ( "img_title3" ,  QVariant(QString, "小雨") )
-    //     ( "img_title4" ,  QVariant(QString, "阴") )
-    //     ( "img_title5" ,  QVariant(QString, "阴") )
-    //     ( "img_title6" ,  QVariant(QString, "多云") )
-    //     ( "img_title7" ,  QVariant(QString, "阴") )
-    //     ( "img_title8" ,  QVariant(QString, "多云") )
-    //     ( "img_title9" ,  QVariant(QString, "阴") )
-    //     ( "img_title_single" ,  QVariant(QString, "小雨") )
-    //     ( "index" ,  QVariant(QString, "较舒适") )
-    //     ( "index48" ,  QVariant(QString, "较舒适") )
-    //     ( "index48_d" ,  QVariant(QString, "建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。") )
-    //     ( "index_ag" ,  QVariant(QString, "易发") )
-    //     ( "index_cl" ,  QVariant(QString, "较不宜") )
-    //     ( "index_co" ,  QVariant(QString, "舒适") )
-    //     ( "index_d" ,  QVariant(QString, "建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。") )
-    //     ( "index_ls" ,  QVariant(QString, "不宜") )
-    //     ( "index_tr" ,  QVariant(QString, "适宜") )
-    //     ( "index_uv" ,  QVariant(QString, "最弱") )
-    //     ( "index_xc" ,  QVariant(QString, "不宜") )
-    //     ( "temp1" ,  QVariant(QString, "18℃~13℃") )
-    //     ( "temp2" ,  QVariant(QString, "19℃~14℃") )
-    //     ( "temp3" ,  QVariant(QString, "22℃~15℃") )
-    //     ( "temp4" ,  QVariant(QString, "24℃~16℃") )
-    //     ( "temp5" ,  QVariant(QString, "24℃~16℃") )
-    //     ( "temp6" ,  QVariant(QString, "24℃~15℃") )
-    //     ( "weather1" ,  QVariant(QString, "小雨转阴") )
-    //     ( "weather2" ,  QVariant(QString, "小雨转阴") )
-    //     ( "weather3" ,  QVariant(QString, "阴转多云") )
-    //     ( "weather4" ,  QVariant(QString, "阴转多云") )
-    //     ( "weather5" ,  QVariant(QString, "阴") )
-    //     ( "weather6" ,  QVariant(QString, "多云") )
-    //     ( "wind1" ,  QVariant(QString, "微风") )
-    //     ( "wind2" ,  QVariant(QString, "微风") )
-    //     ( "wind3" ,  QVariant(QString, "微风") )
-    //     ( "wind4" ,  QVariant(QString, "北风小于3级") )
-    //     ( "wind5" ,  QVariant(QString, "北风小于3级") )
-    //     ( "wind6" ,  QVariant(QString, "北风小于3级") ) )
     Rectangle {
         id: weather_widget
         anchors.fill: parent
         property string actiontitle: "未来六天天气预报"
         property string actiontext: "获取中国气象局的六天天气预报数据，为用户出行提供参考。"
-//        color: "white"
 
-        Component.onCompleted: {
+        //设置六天天气预报数据显示在QML界面上
+        function initWeatherForcast() {
             var dayNames = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
             var Stamp = new Date();
             var dateTime = (Stamp.getMonth() + 1) +"月"+Stamp.getDate()+ "日";
             var num = Stamp.getDay();
             week1.text = dateTime + " " + dayNames[num];
-
             var alterNum;
             for(var i = num+1; i<num+6; i++) {
                 if(i == num+1) {
@@ -143,8 +76,6 @@ Item {
                 }
             }
 
-
-            sessiondispatcher.get_forecast_weahter_qt();
             var updateTime = sessiondispatcher.getSingleWeatherInfo("fchh", "forecast");
             weather_widget.actiontitle = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "未来六天天气预报" + "，预报时间：" + sessiondispatcher.getSingleWeatherInfo("date_y", "forecast") + updateTime + "时";
             //将字符串类型的时间转成整形
@@ -342,8 +273,6 @@ Item {
                     img12.source = "../img/weather/d" + result12n + ".gif";
                 }
             }
-
-
             temp1.text = sessiondispatcher.getSingleWeatherInfo("temp1", "forecast");
             temp2.text = sessiondispatcher.getSingleWeatherInfo("temp2", "forecast");
             temp3.text = sessiondispatcher.getSingleWeatherInfo("temp3", "forecast");
@@ -362,6 +291,19 @@ Item {
             wind4.text = sessiondispatcher.getSingleWeatherInfo("wind4", "forecast");
             wind5.text = sessiondispatcher.getSingleWeatherInfo("wind5", "forecast");
             wind6.text = sessiondispatcher.getSingleWeatherInfo("wind6", "forecast");
+        }
+
+        Connections
+        {
+            target: sessiondispatcher
+            onStartUpdateForecastWeahter: {
+                weather_widget.initWeatherForcast();
+            }
+        }
+
+        Component.onCompleted: {
+            sessiondispatcher.get_forecast_weahter_qt();
+            weather_widget.initWeatherForcast();
         }
         //背景
         Image {

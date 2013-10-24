@@ -52,6 +52,8 @@ protected slots:
 
 signals:
     void transConfValue(QString key, QString value);
+    void readyToUpdateRateTime(int rate);//更新天气自动更新的周期信号
+    void readyToUpdateWeatherForWizard();
 
 private:
     Ui::WizardDialog *ui;

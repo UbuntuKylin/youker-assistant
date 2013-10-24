@@ -112,6 +112,7 @@ void WizardDialog::setLocation(QString cityName, QString cityId) {
     pSettings->setValue("weather/places", listName);
     pSettings->setValue("weather/cityId", newCityId);
     pSettings->sync();
+    emit readyToUpdateWeatherForWizard();
 }
 
 void WizardDialog::setSpinValue(int value) {
@@ -122,6 +123,7 @@ void WizardDialog::writeWeatherConf() {
     QString strValue = QString::number(spinValue, 10);
     pSettings->setValue("weather/rate", strValue);
     pSettings->sync();
+    emit readyToUpdateRateTime(spinValue);
     this->accept();
 }
 

@@ -48,7 +48,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
-//    initFilterConfigFile();
+
+    //初始化QSetting配置文件
+    initConfigFile();
 
     skin_widget = new SkinsWidget(/*mSettings*/);
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
@@ -562,8 +564,6 @@ QStringList SessionDispatcher::get_network_flow_total_qt() {
 //-----------------------change skin------------------------
 void SessionDispatcher::handler_change_skin(QString skinName) {
     //将得到的更换皮肤名字写入配置文件中
-//    QString homepath = QDir::homePath();
-//    Util::writeInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
     mSettings->setValue("skin/background", skinName);
     mSettings->sync();
 //    //发送开始更换QML界面皮肤的信号
@@ -574,25 +574,13 @@ QString SessionDispatcher::setSkin() {
     QString skinName;
     mSettings->beginGroup("skin");
     skinName = mSettings->value("background").toString();
-    mSettings->endGroup();
-    mSettings->sync();
     if(skinName.isEmpty()) {
         skinName = QString("0_bg");
+        mSettings->setValue("background", skinName);
     }
+    mSettings->endGroup();
+    mSettings->sync();
     return skinName;
-
-//    QString homepath = QDir::homePath();
-//    QString skinName;
-//    bool is_read = Util::readInit(QString(homepath + "/youker.ini"), QString("skin"), skinName);
-//    if(is_read) {
-    //        if(skinName.isEmpty()) {
-    //            skinName = QString("0_bg");
-//        }
-//    }
-//    else {
-//        skinName = QString("0_bg");
-//    }
-//    return skinName;
 }
 
 void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
@@ -603,113 +591,49 @@ void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
 }
 
 /*-------------------weather forecast-------------------*/
-//QMap(("city", QVariant(QString, "长沙") )
-//     ( "date_y" ,  QVariant(QString, "2013年10月17日") )
-//     ( "fchh" ,  QVariant(QString, "11") )
-//     ( "fl1" ,  QVariant(QString, "小于3级") )
-//     ( "fl2" ,  QVariant(QString, "小于3级") )
-//     ( "fl3" ,  QVariant(QString, "小于3级") )
-//     ( "fl4" ,  QVariant(QString, "小于3级") )
-//     ( "fl5" ,  QVariant(QString, "小于3级") )
-//     ( "fl6" ,  QVariant(QString, "小于3级") )
-//     ( "fx1" ,  QVariant(QString, "微风") )
-//     ( "fx2" ,  QVariant(QString, "微风") )
-//     ( "img1" ,  QVariant(QString, "7") )
-//     ( "img10" ,  QVariant(QString, "99") )
-//     ( "img11" ,  QVariant(QString, "1") )
-//     ( "img12" ,  QVariant(QString, "99") )
-//     ( "img2" ,  QVariant(QString, "2") )
-//     ( "img3" ,  QVariant(QString, "7") )
-//     ( "img4" ,  QVariant(QString, "2") )
-//     ( "img5" ,  QVariant(QString, "2") )
-//     ( "img6" ,  QVariant(QString, "1") )
-//     ( "img7" ,  QVariant(QString, "2") )
-//     ( "img8" ,  QVariant(QString, "1") )
-//     ( "img9" ,  QVariant(QString, "2") )
-//     ( "img_single" ,  QVariant(QString, "7") )
-//     ( "img_title1" ,  QVariant(QString, "小雨") )
-//     ( "img_title10" ,  QVariant(QString, "阴") )
-//     ( "img_title11" ,  QVariant(QString, "多云") )
-//     ( "img_title12" ,  QVariant(QString, "多云") )
-//     ( "img_title2" ,  QVariant(QString, "阴") )
-//     ( "img_title3" ,  QVariant(QString, "小雨") )
-//     ( "img_title4" ,  QVariant(QString, "阴") )
-//     ( "img_title5" ,  QVariant(QString, "阴") )
-//     ( "img_title6" ,  QVariant(QString, "多云") )
-//     ( "img_title7" ,  QVariant(QString, "阴") )
-//     ( "img_title8" ,  QVariant(QString, "多云") )
-//     ( "img_title9" ,  QVariant(QString, "阴") )
-//     ( "img_title_single" ,  QVariant(QString, "小雨") )
-//     ( "index" ,  QVariant(QString, "较舒适") )
-//     ( "index48" ,  QVariant(QString, "较舒适") )
-//     ( "index48_d" ,  QVariant(QString, "建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。") )
-//     ( "index_ag" ,  QVariant(QString, "易发") )
-//     ( "index_cl" ,  QVariant(QString, "较不宜") )
-//     ( "index_co" ,  QVariant(QString, "舒适") )
-//     ( "index_d" ,  QVariant(QString, "建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。") )
-//     ( "index_ls" ,  QVariant(QString, "不宜") )
-//     ( "index_tr" ,  QVariant(QString, "适宜") )
-//     ( "index_uv" ,  QVariant(QString, "最弱") )
-//     ( "index_xc" ,  QVariant(QString, "不宜") )
-//     ( "temp1" ,  QVariant(QString, "18℃~13℃") )
-//     ( "temp2" ,  QVariant(QString, "19℃~14℃") )
-//     ( "temp3" ,  QVariant(QString, "22℃~15℃") )
-//     ( "temp4" ,  QVariant(QString, "24℃~16℃") )
-//     ( "temp5" ,  QVariant(QString, "24℃~16℃") )
-//     ( "temp6" ,  QVariant(QString, "24℃~15℃") )
-//     ( "weather1" ,  QVariant(QString, "小雨转阴") )
-//     ( "weather2" ,  QVariant(QString, "小雨转阴") )
-//     ( "weather3" ,  QVariant(QString, "阴转多云") )
-//     ( "weather4" ,  QVariant(QString, "阴转多云") )
-//     ( "weather5" ,  QVariant(QString, "阴") )
-//     ( "weather6" ,  QVariant(QString, "多云") )
-//     ( "wind1" ,  QVariant(QString, "微风") )
-//     ( "wind2" ,  QVariant(QString, "微风") )
-//     ( "wind3" ,  QVariant(QString, "微风") )
-//     ( "wind4" ,  QVariant(QString, "北风小于3级") )
-//     ( "wind5" ,  QVariant(QString, "北风小于3级") )
-//     ( "wind6" ,  QVariant(QString, "北风小于3级") ) )
 void SessionDispatcher::get_forecast_weahter_qt() {
-    initFilterConfigFile();
+    getCityIdInfo();
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
     forecastInfo = reply.value();
-
-
-//    qDebug() << forecastInfo;
 }
 
-//QMap(("SD", QVariant(QString, "83%") )
-//     ( "WD" ,  QVariant(QString, "西北风") )
-//     ( "WS" ,  QVariant(QString, "2级") )
-//     ( "city" ,  QVariant(QString, "长沙") )
-//     ( "img1" ,  QVariant(QString, "d7.gif") )
-//     ( "img2" ,  QVariant(QString, "n2.gif") )
-//     ( "ptime" ,  QVariant(QString, "11:00") )
-//     ( "temp" ,  QVariant(QString, "12") )
-//     ( "temp1" ,  QVariant(QString, "18℃") )
-//     ( "temp2" ,  QVariant(QString, "13℃") )
-//     ( "time" ,  QVariant(QString, "17:00") )
-//     ( "weather" ,  QVariant(QString, "小雨转阴") ) )
+
 void SessionDispatcher::get_current_weather_qt() {
-    initFilterConfigFile();
+    getCityIdInfo();
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
     currentInfo = reply.value();
 }
 
-//QMap(("error", QVariant(QString, "Sorry，您这个小时内的API请求次数用完了，休息一下吧！") ) )
-//{u'pm2_5': 84, u'area': u'\u957f\u6c99', u'quality': u'\u8f7b\u5ea6\u6c61\u67d3',
-//u'station_code': None, u'time_point': #u'2013-10-18T09:00:00Z',
-//    u'pm2_5_24h': 0, u'position_name': None, u'aqi': 122, u'primary_pollutant': None}
 QString SessionDispatcher::get_current_pm25_qt() {
-    initFilterConfigFile();
+    getCityIdInfo();
     QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
     return reply.value();
 }
 
+int SessionDispatcher::get_current_rate() {
+    mSettings->beginGroup("weather");
+    int rate = 60;
+//    QString rateStr = mSettings->value("rate").toString();
+//    if(rateStr.isEmpty()) {
+//        mSettings->setValue("rate", "60");
+//    }
+//    else {
+//        rate = rateStr.toInt();
+//    }
+    rate = mSettings->value("rate").toInt();
+    mSettings->endGroup();
+    mSettings->sync();
+    return rate;
+}
+
 bool SessionDispatcher::update_weather_data_qt() {
-    initFilterConfigFile();
+    getCityIdInfo();
     QDBusReply<bool> reply = sessioniface->call("update_weather_data", initCityId);
     return reply.value();
+}
+
+void SessionDispatcher::update_forecast_weather() {
+    emit startUpdateForecastWeahter();
 }
 
 void SessionDispatcher::change_select_city_name_qt(QString cityName) {
@@ -727,38 +651,10 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     return info.toString();
 }
 
-//void SessionDispatcher::read_conf_data_qt() {
-//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("read_conf_data");
-//    if (reply.isValid()) {
-//        QMap<QString, QVariant> value = reply.value();
-//        confData = value;
-////        qDebug() << confData;
-//    }
-//    else {
-//        qDebug() << "get confData failed!";
-//    }
-//}
-
-//void SessionDispatcher::write_conf_data_qt(QString key, QString value) {
-//    if(key == "refresh_rate" || key == "placechosen") {
-//        int intValue = value.toInt();
-//        sessioniface->call("write_conf_data", key, intValue);
-//    }
-//    else {
-//        sessioniface->call("write_conf_data", key, value);
-//    }
-//}
-
-//QStringList SessionDispatcher::list_city_names_qt(QString cityName) {
-//    QDBusReply<QStringList> reply = sessioniface->call("list_city_names", cityName);
-//    QStringList listCity = reply.value();
-//    qDebug() << listCity;
-//    return listCity;
-//}
-
 bool SessionDispatcher::showWizardController() {
     WizardDialog *wizardDialog = new WizardDialog(mSettings, 0);
-//    connect(wizardDialog, SIGNAL(transConfValue(QString, QString)), this, SLOT(write_conf_data_qt(QString,QString)));
+    connect(wizardDialog, SIGNAL(readyToUpdateRateTime(int)), this, SLOT(handler_change_rate(int)));
+    connect(wizardDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
     wizardDialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
     if(wizardDialog->exec()==QDialog::Rejected) {
         return false;
@@ -768,10 +664,14 @@ bool SessionDispatcher::showWizardController() {
     }
 }
 
+void SessionDispatcher::handler_change_rate(int rate) {
+    emit startUpdateRateTime(rate);
+}
 
 bool SessionDispatcher::showChangeCityDialog(/*int window_x, int window_y*/) {
     ChangeCityDialog *cityDialog = new ChangeCityDialog(mSettings);
     cityDialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
+    connect(cityDialog, SIGNAL(readyToUpdateWeather()), this, SLOT(handler_change_city()));
 //    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
 //    this->alert_y = window_y + mainwindow_height - 400;
 //    cityDialog->move(this->alert_x, this->alert_y);
@@ -783,6 +683,10 @@ bool SessionDispatcher::showChangeCityDialog(/*int window_x, int window_y*/) {
     }
 }
 
+void SessionDispatcher::handler_change_city() {
+    emit startChangeQMLCity();
+}
+
 int SessionDispatcher::getLengthOfCityList() {
     mSettings->beginGroup("weather");
     QStringList cityList = mSettings->value("places").toStringList();
@@ -791,16 +695,42 @@ int SessionDispatcher::getLengthOfCityList() {
     return cityList.size();
 }
 
-
-//start filter config file
-void SessionDispatcher::initFilterConfigFile()
-{
+void SessionDispatcher::initConfigFile() {
     mSettings->beginGroup("weather");
-    initCityId = mSettings->value("cityId").toString();
+    QString cityId = mSettings->value("cityId").toString();
+    //cityId为空时，赋默认值为：101250101
+    if(cityId.isEmpty()) {
+        cityId = QString("101250101");
+        mSettings->setValue("cityId", cityId);
+    }
+    QStringList places = mSettings->value("places").toStringList();
+    //places为空时，赋默认值为：湖南,长沙,长沙
+    if(places.isEmpty()) {
+        places = QStringList("湖南,长沙,长沙");
+        mSettings->setValue("places", places);
+    }
+    QString rate = mSettings->value("rate").toString();
+    //rate为空时，赋默认值为：60
+    if(rate.isEmpty()) {
+        rate = QString("60");
+        mSettings->setValue("rate", rate);
+    }
+    mSettings->endGroup();
+
+    mSettings->beginGroup("skin");
+    QString backGround = mSettings->value("background").toString();
+    //backGround为空时，赋默认值为：0_bg
+    if(backGround.isEmpty()) {
+        backGround = QString("0_bg");
+        mSettings->setValue("background", backGround);
+    }
     mSettings->endGroup();
     mSettings->sync();
 }
 
-void SessionDispatcher::updateStorageInfo()
-{
+void SessionDispatcher::getCityIdInfo() {
+    mSettings->beginGroup("weather");
+    initCityId = mSettings->value("cityId").toString();
+    mSettings->endGroup();
+    mSettings->sync();
 }

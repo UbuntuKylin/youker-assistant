@@ -30,6 +30,8 @@ protected:
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     bool eventFilter(QObject *obj, QEvent *event);
+signals:
+    void readyToUpdateWeather();
 };
 
 #endif // CHANGECITYDIALOG_H

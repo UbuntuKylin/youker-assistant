@@ -181,7 +181,12 @@ public:
     Q_INVOKABLE void get_forecast_weahter_qt();
     Q_INVOKABLE void get_current_weather_qt();
     Q_INVOKABLE QString get_current_pm25_qt();
+    //得到配置文件中的更新周期
+    Q_INVOKABLE int get_current_rate();
+    //更新当天天气
     Q_INVOKABLE bool update_weather_data_qt();
+    //更新六天天气预报
+    Q_INVOKABLE void update_forecast_weather();
     Q_INVOKABLE void change_select_city_name_qt(QString cityName);
     QMap<QString, QVariant> forecastInfo;
     QMap<QString, QVariant> currentInfo;
@@ -199,10 +204,8 @@ public:
     //显示更改城市对话框
     Q_INVOKABLE bool showChangeCityDialog(/*int window_x, int window_y*/);
     Q_INVOKABLE int getLengthOfCityList();
-
-
-    void initFilterConfigFile();
-    void updateStorageInfo();
+    void initConfigFile();
+    void getCityIdInfo();
 signals:
     //告知QML那种某种类型的字体样式
 //    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
@@ -211,6 +214,9 @@ signals:
 //    void finishScanWork(QString msg);
 //    void finishGetNetworkSpeed(QStringList speed);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
+    void startChangeQMLCity();//发送开始更换QML城市
+    void startUpdateForecastWeahter();//发送开始更换六天天气预报
+    void startUpdateRateTime(int rate);//发送开始更换天气自动更新周期时间
 public slots:
 //    QString show_signal(QString msg);
     //扫描完成后触发finishScanWork信号
@@ -219,6 +225,11 @@ public slots:
     void handler_change_skin(QString skinName);
     //设置天气配置文件
 //    void write_conf_data_qt(QString key, QString value);
+    //更换城市槽函数
+    void handler_change_city();
+    //更换自动更新天气周期槽函数
+    void handler_change_rate(int rate);
+
 private:
     int mainwindow_width;
     int mainwindow_height;

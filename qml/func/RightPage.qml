@@ -262,7 +262,7 @@ Rectangle {
 
     Row {
         id: versionrow
-        spacing: 30
+        spacing: 25
         anchors {
             bottom: parent.bottom
             bottomMargin: 10
@@ -319,6 +319,29 @@ Rectangle {
                 source: ""
             }
 
+        }
+        Common.Label {
+            id: buglabel
+            text: "Bug提交"
+            font.pixelSize: 12
+            color: "#318d11"
+            MouseArea {
+                  anchors.fill: buglabel
+                  hoverEnabled: true
+                  onEntered: btnImg3.source = "../img/toolWidget/menu_hover.png"
+                  onPressed: btnImg3.source = "../img/toolWidget/menu_press.png"
+                  //要判断松开是鼠标位置
+                  onReleased: btnImg3.source = "../img/toolWidget/menu_hover.png"
+                  onExited: btnImg3.source = ""
+                  onClicked: {
+                      Qt.openUrlExternally("https://bugs.launchpad.net/youker-assistant")
+                  }
+            }
+            Image {
+                id: btnImg3
+                anchors.fill: buglabel
+                source: ""
+            }
         }
     }
 }//右边栏Rectangle
