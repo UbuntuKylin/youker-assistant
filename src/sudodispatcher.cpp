@@ -246,6 +246,21 @@ QString SudoDispatcher::getSingleInfo(QString key) {
     return info;
 }
 
+void SudoDispatcher::getAppList() {
+    QFile appFile(APP_LIST_FILE);
+    if(appFile.exists()) {
+        appList = config->value(QString("app-list/AppList")).toStringList();
+        config->sync();
+        emit sendAppListToQML(appList);
+    }
+    else {
+        QMessageBox::warning(NULL,
+                             tr("警告"),
+                             tr("没有找到软件列表文件！"),
+                             QMessageBox::Ok);
+    }
+}
+
 void SudoDispatcher::getAppInfo(QString flag) {
     QFile appFile(APP_LIST_FILE);
     if(appFile.exists()) {

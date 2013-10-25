@@ -77,12 +77,15 @@ public:
 //    Q_INVOKABLE void add_source_ubuntukylin_qt();
 //    //删除UbuntuKylin软件源
 //    Q_INVOKABLE void remove_source_ubuntukylin_qt();
+    //得到所有app的列表
+    Q_INVOKABLE void getAppList();
     //发送标记，根据标记准备显示对应app的页面信息
     Q_INVOKABLE void ready_show_app_page(QString flag);
     //得到对应app的信息
     Q_INVOKABLE void getAppInfo(QString flag);
     //通过键得到对应的单个信息的值
     Q_INVOKABLE QString getSingleInfo(QString key);
+
 
 signals:
     //不需要的debu包清理完毕发送信号
@@ -106,6 +109,8 @@ signals:
 
     //准备显示对应app的页面信息的信号
     void sendAppInfo(QString flag);
+    //发送软件列表给QML去显示
+    void sendAppListToQML(QStringList appList);
 
 
 public slots:
@@ -136,6 +141,8 @@ private:
     //存放app的信息
     QMap<QString, QString> appInfo;
     QSettings *config;
+    //存放软件列表
+    QStringList appList;
 
     QStringList strlist;
     int mainwindow_width;

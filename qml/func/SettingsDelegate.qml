@@ -119,6 +119,8 @@ Rectangle {
                     }
                     //获取所有软件的状态
                     sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                    //得到所有软件列表
+                    sudodispatcher.getAppList();
                     pageStack.push(softwarerecommend);
                 }
                 else {
@@ -128,8 +130,11 @@ Rectangle {
                             sudodispatcher.setUKSignalFlag(true);
                             sudodispatcher.bind_signals_after_dbus_start();
                         }
+
                         //获取所有软件的状态
                         sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                        //得到所有软件列表
+                        sudodispatcher.getAppList();
                         pageStack.push(softwarerecommend);
                     }
                 }

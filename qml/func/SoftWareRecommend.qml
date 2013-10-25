@@ -35,16 +35,7 @@ Item {
 
     Component.onCompleted: {
     }
-//    Connections
-//    {
-//        target: sudodispatcher
-//        onReGetList: {
-//            sudodispatcher.add_source_ubuntukylin_qt();
-//            sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
-//            sudodispatcher.remove_source_ubuntukylin_qt();
-//        }
-//    }
-//
+
     //背景
     Image {
         source: "../img/skin/bg-middle.png"
@@ -102,18 +93,7 @@ Item {
                 }
                 text: "详情"
                 onClicked: {
-//                    if(screen.image_flag == "qt") {
-//                        content.delegate_name= "eclipse"
-//                        content.delegate_appname = "Eclipse平台(eclipse)"
-//                        content.delegate_image= "../img/logo/eclipse.jpg"
-//                        content.delegate_introduction="Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）。"
-//                        content.introduction_image1= "../img/character/eclipse-01.png"
-//                        content.introduction_image2= "../img/character/eclipse-02.png"
-////                        content.soft_status = sudodispatcher.getSoftwareStatus("eclipse");
-//                        content.soft_status = sudodispatcher.check_pkg_status_qt("eclipse");
-//                        sudodispatcher.notifySoftwareCurrentStatus(content.soft_status);
-//                    }
-                    sudodispatcher.ready_show_app_page("Eclipse");
+                    sudodispatcher.ready_show_app_page("eclipse");
                     pageStack.push(softwarepage);
                 }
             }
@@ -126,47 +106,14 @@ Item {
                 }
                 text: "详情"
                 onClicked: {
-//                    if(screen.image_flag == "wps") {
-//                        content.delegate_name= "wps-office"
-//                        content.delegate_appname = "WPS For UbuntuKylin(wps-office)"
-//                        content.delegate_image= "../img/logo/wps.jpg"
-//                        content.delegate_introduction="Ubuntukylin团队与金山公司合作，于13.04开始首先推出WPS for UbuntuKylin 1.0，并于13.10推出WPS for UbuntuKylin1.2。与1.0版本相比，1.2版进行了稳定性提升、BUG修复、同时增加了数据透视表等功能，使您的文档工作更加专业和轻松。"
-//                        content.introduction_image1= "../img/character/wps-01.png"
-//                        content.introduction_image2= "../img/character/wps-02.png"
-////                        content.soft_status = sudodispatcher.getSoftwareStatus("wps-office");
-//                        content.soft_status = sudodispatcher.check_pkg_status_qt("wps-office");
-//                        sudodispatcher.notifySoftwareCurrentStatus(content.soft_status);
-//                    }
-//                    else if(screen.image_flag == "qq") {
-//                        content.delegate_name= "wine-qq2012-longeneteam"
-//                        content.delegate_appname = "Wine 1.5.18 patched for qq2012 Beta3"
-//                        content.delegate_image= "../img/logo/qq.jpg"
-//                        content.delegate_introduction="QQ2012基于官方Beta3版，支持双击deb包安装、支持全局热键、不会自动离线、文件传输正常、ibus中文输入法正常。"
-//                        content.introduction_image1= "../img/character/qq-01.png"
-//                        content.introduction_image2= "../img/character/qq-02.png"
-////                        content.soft_status = sudodispatcher.getSoftwareStatus("wine-qq2012-longeneteam");
-//                        content.soft_status = sudodispatcher.check_pkg_status_qt("wine-qq2012-longeneteam");
-//                        sudodispatcher.notifySoftwareCurrentStatus(content.soft_status);
-//                    }
-//                    else if(screen.image_flag == "qt") {
-//                        content.delegate_name= "qtcreator"
-//                        content.delegate_appname = "Qt平台(qtcreator)"
-//                        content.delegate_image= "../img/logo/qtcreator.jpg"
-//                        content.delegate_introduction="Qt Creator是跨平台的 Qt IDE， Qt Creator 是 Qt 被 Nokia 收购后推出的一款新的轻量级集成开发环境（IDE）。此 IDE 能够跨平台运行，支持的系统包括 Linux（32 位及 64 位）、Mac OS X 以及 Windows。"
-//                        content.introduction_image1= "../img/character/qtcreator-01.png"
-//                        content.introduction_image2= "../img/character/qtcreator-02.png"
-////                        content.soft_status = sudodispatcher.getSoftwareStatus("qtcreator");
-//                        content.soft_status = sudodispatcher.check_pkg_status_qt("qtcreator");
-//                        sudodispatcher.notifySoftwareCurrentStatus(content.soft_status);
-//                    }
                     if(screen.image_flag == "wps") {
-                        sudodispatcher.ready_show_app_page("Wps");
+                        sudodispatcher.ready_show_app_page("wps");
                     }
                     else if(screen.image_flag == "qq") {
-                        sudodispatcher.ready_show_app_page("Wineqq");
+                        sudodispatcher.ready_show_app_page("wineqq");
                     }
                     else if(screen.image_flag == "qt") {
-                        sudodispatcher.ready_show_app_page("Qtcreator");
+                        sudodispatcher.ready_show_app_page("qtcreator");
                     }
                     pageStack.push(softwarepage);
                 }
@@ -192,7 +139,6 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-//                    screen.status_value = sudodispatcher.getSoftwareStatus("qq");
                     screen.image_flag = "wps";
                     screen.recommendimage_text = "WPS,Linux系统上最好用的办公软件。";
                     imagframe.y=colum.y+recommendone.y;
@@ -210,7 +156,6 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-//                    screen.status_value = sudodispatcher.getSoftwareStatus("qq");
                     screen.image_flag = "qq";
                     screen.recommendimage_text = "WineQQ，Linux系统上最好用的QQ版本。";
                     imagframe.y=colum.y+recommendtwo.y;
@@ -228,8 +173,6 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-//                    screen.status_value = sudodispatcher.getSoftwareStatus("qtcreator");
-//                    screen.status_value2 = sudodispatcher.getSoftwareStatus("qq");
                     screen.image_flag = "qt";
                     imagframe.y=colum.y+recommendthree.y;
                     recommendoneimage_image="../img/skin/qt.png";
@@ -254,6 +197,20 @@ Item {
             left: parent.left
             leftMargin: 25
         }
+
+        //收到软件列表信息后添加到QML界面上
+        Connections
+        {
+            target: sudodispatcher
+            onSendAppListToQML: {
+                funcmodel.clear();
+                var num = 0;
+                for (var i=0; i< appList.length; i++) {
+                    funcmodel.append({"icon": "../img/icons/" + appList[i] + ".png", "flag": appList[i]});
+                }
+            }
+        }
+
         clip:true
         border.color: "#9aa2af"
         color: "#e6ebfe"
@@ -287,76 +244,10 @@ Item {
             height: 194
             anchors.bottom: parent.bottom
             clip:true
+
             ListModel {
                 id: funcmodel
-                ListElement {
-                    icon: "../img/icons/kuaipan.png"
-                    flag: "Kuaipan"
-                }
-                ListElement {
-                    icon: "../img/icons/Pps.png"
-                    flag: "Pps"
-                }ListElement {
-                    icon: "../img/icons/kugou.png"
-                    flag: "KugouMusic"
-                }
-                ListElement {
-                    icon: "../img/icons/xunlei.png"
-                    flag: "XunLei"
-                }
-                ListElement {
-                    icon: "../img/icons/stardict.png"
-                    flag: "StarDict"
-                }
-                ListElement {
-                    icon: "../img/icons/adobe-flash.png"
-                    flag: "AdobeFlash"
-                }
-                ListElement {
-                    icon: "../img/icons/vlc.png"
-                    flag: "Vlc"
-                }
-                ListElement {
-                    icon: "../img/icons/chromium.png"
-                    flag: "Chromium"
-                }
-                ListElement {
-                    icon: "../img/icons/virtualbox.png"
-                    flag: "VirtualBox"
-                }
-                ListElement {
-                    icon: "../img/icons/qbittorrent.png"
-                    flag: "QbitTorrent"
-                }
-                ListElement {
-                    icon: "../img/icons/xchat.png"
-                    flag: "XChat"
-                }
-                ListElement {
-                    icon: "../img/icons/lotus.png"
-                    flag: "Lotus"
-                }
-                ListElement {
-                    icon: "../img/icons/openfetion.png"
-                    flag: "OpenFetion"
-                }
-
-//                ListElement {
-//                    icon: "../img/icons/eclipse.png"
-//                    flag: "Eclipse"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/qt.png"
-//                    flag: "Qtcreator"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/qq.png"
-//                    flag: "Wineqq"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/wps.png"
-//                    flag: "Wps"
-//                }
+                ListElement {icon: ""; flag: ""}
             }
 
             Common.ScrollArea {
@@ -391,72 +282,6 @@ Item {
                     }
                 }//Item
             }//ScrollArea
-
-//            GridView {
-//                id: gridView
-//                height: parent.height-12
-//                width: parent.width
-//                anchors {
-//                    top: parent.top
-//                    topMargin: 12
-//                    left: parent.left
-//                    leftMargin: 20
-//                }
-//                model: funcmodel
-//                delegate: SoftwareDelegate {}
-//                cacheBuffer: 1000
-//                cellWidth: 190; cellHeight: 90
-//                focus: true
-//            }
-//            Rectangle{
-//                id:scrollbar
-//                anchors.right: parent.right
-//                anchors.rightMargin: 4
-//                height: parent.height-1
-//                width:13
-//                color: "lightgrey"
-//            }
-//            Rectangle{
-//                id: button
-//                anchors.right: parent.right
-//                anchors.rightMargin: 5
-//                width: 12
-//                y: gridView.visibleArea.yPosition * (scrollbar.height + 100) //257
-////                height: gridView.visibleArea.heightRatio * scrollbar.height;
-//                height: 45
-//                radius: 3
-//                smooth: true
-//                color: "white"
-//                border.color: "lightgrey"
-//                Column{
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    spacing: 2
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                }
-//                MouseArea {
-//                    id: mousearea
-//                    anchors.fill: button
-//                    drag.target: button
-//                    drag.axis: Drag.YAxis
-//                    drag.minimumY: 0
-//                    drag.maximumY: scrollbar.height - button.height
-//                    onMouseYChanged: {
-//                        gridView.contentY = button.y / (scrollbar.height + 100) * gridView.contentHeight //257
-//                    }
-//                }
-//            }
         }
     }
 }

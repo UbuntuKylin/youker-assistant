@@ -164,16 +164,8 @@ Item {
     Rectangle {
         id: software
         property bool checkFlag: false
-        //需要时常变动的变量
         property string useinfo: "如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。"
         property string software_name: ""
-//        property string software_name: content.delegate_name
-//        property string software_appname: content.delegate_appname
-//        property string software_information: content.delegate_information
-//        property string software_image: content.delegate_image
-//        property string software_introduction: content.delegate_introduction
-//        property string introduction_image1: content.introduction_image1
-//        property string introduction_image2: content.introduction_image2
         property string installed_status: "n"
         property string tm_status: "n"
         width: parent.width
@@ -264,11 +256,6 @@ Item {
                 introductionimage2.source = sudodispatcher.getSingleInfo("image2");
             }
 
-
-//            onSendSoftwareStatus: {
-//                software.installed_status = content.soft_status;
-//                actionBtn.text = software.reset_text(software.installed_status);
-//            }
             onFinishSoftwareApt: {
                 if(type == "apt_stop") {
                     //获取软件操作后的新状态
@@ -339,9 +326,9 @@ Item {
                 fontcolor: "grey"
                 fontsize: 14
                 onClicked: {
-//                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                    //返回软件主页面时重新获取所有软件的状态
+                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
                     pageStack.push(softwarerecommend);
-//                    sudodispatcher.reGetStatusList();
                 }
             }
             Text {
@@ -364,7 +351,6 @@ Item {
             Image {
                 id: imageId
                 source: ""
-//                source: software.software_image
                 anchors{
                     left: parent.left
                     leftMargin: 20
@@ -381,18 +367,10 @@ Item {
                 Text{
                     id:softwarename
                     text: ""
-//                    text:software.software_appname
-    //                font.pixelSize: 18
                     font.bold: true
                     font.pixelSize: 14
                     color: "#383838"
                 }
-//                Text {
-//                    id: softwareinformation
-//                    text: software.software_information
-//                    font.pixelSize: 12
-//                    color: "#7a7a7a"
-//                }
                 Text {
                     text: software.useinfo
                     font.pixelSize: 12
@@ -442,7 +420,6 @@ Item {
                         }
                     }
                     else if(software.installed_status == "i") {
-                        //add software source
                         var software_list = sudodispatcher.getUKSoftwareList();
                         for (var k=0; k< software_list.length; k++) {
                             if(software_list[k] == software.software_name) {
@@ -543,8 +520,6 @@ Item {
                 }
                 font.pixelSize: 13
                 text: ""
-//                text: software.software_introduction
-    //            text:softwaredelegate.delegate_introduction
                 wrapMode: Text.WrapAnywhere
             }
             Row{
@@ -557,14 +532,10 @@ Item {
                 Image {
                     id: introductionimage1
                     source: ""
-//                    source: introduction_image1
-    //                source: softwaredelegate.introduction_image1
                 }
                 Image {
                     id: introductionimage2
                     source: ""
-//                    source: introduction_image2
-    //                source: softwaredelegate.introduction_image2
                 }
             }
         }
