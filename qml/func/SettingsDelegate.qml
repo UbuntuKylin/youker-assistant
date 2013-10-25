@@ -111,12 +111,13 @@ Rectangle {
 
             }
             else if(flag == "SoftWare") {
+                //进入软件推荐的入口
                 if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
                     if(!sudodispatcher.getUKSignalFlag()) {
                         sudodispatcher.setUKSignalFlag(true);
                         sudodispatcher.bind_signals_after_dbus_start();
                     }
-
+                    //获取所有软件的状态
                     sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
                     pageStack.push(softwarerecommend);
                 }
@@ -127,6 +128,7 @@ Rectangle {
                             sudodispatcher.setUKSignalFlag(true);
                             sudodispatcher.bind_signals_after_dbus_start();
                         }
+                        //获取所有软件的状态
                         sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
                         pageStack.push(softwarerecommend);
                     }

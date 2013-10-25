@@ -30,14 +30,14 @@ Item {
     height: parent.height - 30  //去掉StatusWidget所占用的高度30
 
 //传给软件推荐二级界面的值
-    property string delegate_name: "qq"
-    property string delegate_appname: "WineQQ"
-    property string delegate_useinfo: "如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。"
-    property string delegate_image: ""
-    property string delegate_introduction: ""
-    property string introduction_image1: ""
-    property string introduction_image2: ""
-    property string soft_status: "n"
+//    property string delegate_name: "qq"
+//    property string delegate_appname: "WineQQ"
+//    property string delegate_useinfo: "如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。"
+//    property string delegate_image: ""
+//    property string delegate_introduction: ""
+//    property string introduction_image1: ""
+//    property string introduction_image2: ""
+//    property string soft_status: "n"
 
 //    radius: 10
 //    color: "lightgray"

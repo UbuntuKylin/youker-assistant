@@ -45,6 +45,7 @@
 //    }
 //}
 
+
 QString Util::get_id_from_cityname(QString cityName) {
     QString cityId = "";
     QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt");

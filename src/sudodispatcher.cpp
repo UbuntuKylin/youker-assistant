@@ -19,6 +19,8 @@
 #include <QtDBus>
 #include <QMap>
 #include "KThread.h"
+#include <QMessageBox>
+
 bool progress_flag;
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
@@ -39,6 +41,9 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
     this->alert_height = 54;
 
     signalFlag = false;
+
+    config = new QSettings(APP_LIST_FILE, QSettings::IniFormat);
+    config->setIniCodec("UTF-8");
 
 //    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handlerClearDeb(QString)));
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
@@ -123,6 +128,7 @@ void SudoDispatcher::handlerSoftwareApt(QString type, QString msg) {
     } 
 }
 
+//得到所有软件的状态
 void SudoDispatcher::handlerGetSoftwareListStatus(QStringList statusDict) {
     status_dict.clear();
     for(int i=0; i< statusDict.size(); i++) {
@@ -174,6 +180,7 @@ QStringList SudoDispatcher::getAllSoftwareList() {
     return pkgNameList;
 }
 
+//从状态列表中得到指定的某个软件的状态
 QString SudoDispatcher::getSoftwareStatus(QString key) {
     QVariant tt = status_dict.value(key);
     return tt.toString();
@@ -211,9 +218,9 @@ QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
     return reply.value();
 }
 
-void SudoDispatcher::notifySoftwareCurrentStatus(QString current_status) {
-    emit sendSoftwareStatus(current_status);
-}
+//void SudoDispatcher::notifySoftwareCurrentStatus(QString current_status) {
+//    emit sendSoftwareStatus(current_status);
+//}
 
 void SudoDispatcher::apt_get_update_qt() {
     QStringList tmplist;
@@ -229,6 +236,34 @@ void SudoDispatcher::apt_get_update_qt() {
 //void SudoDispatcher::remove_source_ubuntukylin_qt() {
 //    sudoiface->call("remove_source_ubuntukylin");
 //}
+
+void SudoDispatcher::ready_show_app_page(QString flag) {
+    emit sendAppInfo(flag);
+}
+
+QString SudoDispatcher::getSingleInfo(QString key) {
+    QString info = appInfo.value(key);
+    return info;
+}
+
+void SudoDispatcher::getAppInfo(QString flag) {
+    QFile appFile(APP_LIST_FILE);
+    if(appFile.exists()) {
+        appInfo["name"] = config->value(flag + QString("/name")).toString();
+        appInfo["appname"] = config->value(flag + QString("/appname")).toString();
+        appInfo["image"] = config->value(flag + QString("/image")).toString();
+        appInfo["introduction"] = config->value(flag + QString("/introduction")).toString();
+        appInfo["image1"] = config->value(flag + QString("/image1")).toString();
+        appInfo["image2"] = config->value(flag + QString("/image2")).toString();
+        config->sync();
+    }
+    else {
+        QMessageBox::warning(NULL,
+                             tr("警告"),
+                             tr("没有找到软件列表文件！"),
+                             QMessageBox::Ok);
+    }
+}
 
 void SudoDispatcher::startUpdateSoftwareSource() {
     progressdialog->hide();

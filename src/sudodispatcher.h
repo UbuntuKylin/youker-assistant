@@ -25,6 +25,10 @@
 #include "authdialog.h"
 #include "progressdialog.h"
 #include "updatedialog.h"
+class QSettings;
+
+const QString APP_LIST_FILE = "/usr/share/youker-assistant/qml/applist.ini";
+
 class SudoDispatcher : public QObject
 {
     Q_OBJECT
@@ -51,8 +55,8 @@ public:
     Q_INVOKABLE QStringList getUKSoftwareList();
     Q_INVOKABLE bool getUKSignalFlag();
     Q_INVOKABLE void setUKSignalFlag(bool flag);
-    //通知软件的当前状态
-    Q_INVOKABLE void notifySoftwareCurrentStatus(QString current_status);
+//    通知软件的当前状态
+//    Q_INVOKABLE void notifySoftwareCurrentStatus(QString current_status);
 
     // -------------------------software-center-------------------------
     //安装软件
@@ -73,6 +77,12 @@ public:
 //    Q_INVOKABLE void add_source_ubuntukylin_qt();
 //    //删除UbuntuKylin软件源
 //    Q_INVOKABLE void remove_source_ubuntukylin_qt();
+    //发送标记，根据标记准备显示对应app的页面信息
+    Q_INVOKABLE void ready_show_app_page(QString flag);
+    //得到对应app的信息
+    Q_INVOKABLE void getAppInfo(QString flag);
+    //通过键得到对应的单个信息的值
+    Q_INVOKABLE QString getSingleInfo(QString key);
 
 signals:
     //不需要的debu包清理完毕发送信号
@@ -84,7 +94,7 @@ signals:
     //软件安装、卸载、升级过程发送的信号
     void finishSoftwareApt(QString type);
     //将软件状态通过信号告诉QML
-    void sendSoftwareStatus(QString current_status);
+//    void sendSoftwareStatus(QString current_status);
     //将软件操作过程中的状态和进度告诉给进度条去显示
     void sendDynamicSoftwareProgress(QString type, QString msg);
     //将软件源更新进度通知给QML
@@ -93,6 +103,10 @@ signals:
     void callMasklayer();
     //重新获取所有软件状态
 //    void reGetList();
+
+    //准备显示对应app的页面信息的信号
+    void sendAppInfo(QString flag);
+
 
 public slots:
     //后台发来清理不需要的包的正确过程中的信号后响应该函数
@@ -118,6 +132,10 @@ private:
     UpdateDialog *updatedialog;
     //存放软件列表的状态
     QMap<QString, QString> status_dict;
+
+    //存放app的信息
+    QMap<QString, QString> appInfo;
+    QSettings *config;
 
     QStringList strlist;
     int mainwindow_width;

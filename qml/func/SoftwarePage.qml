@@ -34,6 +34,9 @@ Item {
         }
         onFinishSoftwareFetch: {
             if(type == "down_stop" && root.source_status_text != "") {
+                //软件源更新完成后，重新获取所有软件的状态
+                sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                //软件源更新完成后，重新该软件的单个状态
                 actionBtn.text = software.reset_text(sudodispatcher.check_pkg_status_qt(software.software_name));
                 root.source_status_text = "";
                 root.state = "SofeWareState";
@@ -162,14 +165,16 @@ Item {
         id: software
         property bool checkFlag: false
         //需要时常变动的变量
-        property string software_name: content.delegate_name
-        property string software_appname: content.delegate_appname
+        property string useinfo: "如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。"
+        property string software_name: ""
+//        property string software_name: content.delegate_name
+//        property string software_appname: content.delegate_appname
 //        property string software_information: content.delegate_information
-        property string software_image: content.delegate_image
-        property string software_introduction: content.delegate_introduction
-        property string introduction_image1: content.introduction_image1
-        property string introduction_image2: content.introduction_image2
-        property string installed_status: content.soft_status
+//        property string software_image: content.delegate_image
+//        property string software_introduction: content.delegate_introduction
+//        property string introduction_image1: content.introduction_image1
+//        property string introduction_image2: content.introduction_image2
+        property string installed_status: "n"
         property string tm_status: "n"
         width: parent.width
         height: parent.height
@@ -180,7 +185,7 @@ Item {
             }
             else if(showtext == "n") {
                 statusImage.source = "../img/icons/noinstalled.png"
-                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return "进入网页";
                 }
                 else {
@@ -189,7 +194,7 @@ Item {
             }
             else if(showtext == "u") {
                 statusImage.source = "../img/icons/installed.png"
-                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return "进入网页";
                 }
                 else {
@@ -198,7 +203,7 @@ Item {
             }
             else {
                 statusImage.source = "../img/icons/noinstalled.png"
-                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return "进入网页";
                 }
                 else {
@@ -213,7 +218,7 @@ Item {
             }
             else if(showtext == "n") {
                 statusImage.source = "../img/icons/noinstalled.png"
-                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return "进入网页";
                 }
                 else {
@@ -222,7 +227,7 @@ Item {
             }
             else if(showtext == "u") {
                 statusImage.source = "../img/icons/installed.png"
-                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return "进入网页";
                 }
                 else {
@@ -231,7 +236,7 @@ Item {
             }
             else {
                 statusImage.source = "../img/icons/noinstalled.png"
-                if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return "进入网页";
                 }
                 else {
@@ -242,25 +247,44 @@ Item {
         Connections
         {
             target: sudodispatcher
-            onSendSoftwareStatus: {
-                software.installed_status = content.soft_status;
+            //收到app的信号，开始显示对应app的页面信息
+            onSendAppInfo: {
+                sudodispatcher.getAppInfo(flag);
+                //得到app在源里面的名字
+                software.software_name = sudodispatcher.getSingleInfo("name");
+                //得到该软件的初始状态
+                software.installed_status = sudodispatcher.getSoftwareStatus(software.software_name);
+                //根据得到的初始状态来设置按钮的文字显示
                 actionBtn.text = software.reset_text(software.installed_status);
+                //页面赋值
+                softwarename.text = sudodispatcher.getSingleInfo("appname");
+                softwareintroduction.text = sudodispatcher.getSingleInfo("introduction");
+                imageId.source = sudodispatcher.getSingleInfo("image");
+                introductionimage1.source = sudodispatcher.getSingleInfo("image1");
+                introductionimage2.source = sudodispatcher.getSingleInfo("image2");
             }
+
+
+//            onSendSoftwareStatus: {
+//                software.installed_status = content.soft_status;
+//                actionBtn.text = software.reset_text(software.installed_status);
+//            }
             onFinishSoftwareApt: {
                 if(type == "apt_stop") {
+                    //获取软件操作后的新状态
                     software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                    //如果软件操作后的新状态和进入该页面时的初始状态相同，说明此时操作是没有成功的，提醒用户更新源
                     if(software.tm_status == software.installed_status) {
                         sudodispatcher.showUpdateSourceDialog(mainwindow.pos.x, mainwindow.pos.y);
                     }
-                    else {
+                    else {//如果软件操作后的新状态和进入该页面时的初始状态不同，说明操作是成功的，把当前状态赋值给初始状态的变量
                         software.installed_status = software.tm_status;
-                        //delete software source
                         if(software.installed_status == "i") {
                             actionBtn.text = "立即卸载";
                             statusImage.source = "../img/icons/installed.png"
                         }
                         else if(software.installed_status == "n") {
-                            if(content.delegate_name == "wine-qq2012-longeneteam" || content.delegate_name == "wine-thunder") {
+                            if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                                 actionBtn.text = "进入网页";
                             }
                             else {
@@ -338,7 +362,9 @@ Item {
             }
             border.color: "lightgrey"
             Image {
-                source: software.software_image
+                id: imageId
+                source: ""
+//                source: software.software_image
                 anchors{
                     left: parent.left
                     leftMargin: 20
@@ -354,7 +380,8 @@ Item {
                 spacing: 10
                 Text{
                     id:softwarename
-                    text:software.software_appname
+                    text: ""
+//                    text:software.software_appname
     //                font.pixelSize: 18
                     font.bold: true
                     font.pixelSize: 14
@@ -367,7 +394,7 @@ Item {
 //                    color: "#7a7a7a"
 //                }
                 Text {
-                    text: content.delegate_useinfo
+                    text: software.useinfo
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -396,10 +423,10 @@ Item {
                     else
                         software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     if(software.installed_status == "n") {
-                        if(content.delegate_name == "wine-qq2012-longeneteam") {
+                        if(software.software_name == "wine-qq2012-longeneteam") {
                             Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
                         }
-                        else if(content.delegate_name == "wine-thunder") {
+                        else if(software.software_name == "wine-thunder") {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
@@ -427,10 +454,10 @@ Item {
                         sudodispatcher.uninstall_pkg_qt(software.software_name);
                     }
                     else if(software.installed_status == "u") {
-                        if(content.delegate_name == "wine-qq2012-longeneteam") {
+                        if(software.software_name == "wine-qq2012-longeneteam") {
                             Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
                         }
-                        else if(content.delegate_name == "wine-thunder") {
+                        else if(software.software_name == "wine-thunder") {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
@@ -446,10 +473,10 @@ Item {
                         }
                     }
                     else{
-                        if(content.delegate_name == "wine-qq2012-longeneteam") {
+                        if(software.software_name == "wine-qq2012-longeneteam") {
                             Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
                         }
-                        else if(content.delegate_name == "wine-thunder") {
+                        else if(software.software_name == "wine-thunder") {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
@@ -515,7 +542,8 @@ Item {
                     topMargin: 46
                 }
                 font.pixelSize: 13
-                text: software.software_introduction
+                text: ""
+//                text: software.software_introduction
     //            text:softwaredelegate.delegate_introduction
                 wrapMode: Text.WrapAnywhere
             }
@@ -528,12 +556,14 @@ Item {
                 spacing: 80
                 Image {
                     id: introductionimage1
-                    source: introduction_image1
+                    source: ""
+//                    source: introduction_image1
     //                source: softwaredelegate.introduction_image1
                 }
                 Image {
                     id: introductionimage2
-                    source: introduction_image2
+                    source: ""
+//                    source: introduction_image2
     //                source: softwaredelegate.introduction_image2
                 }
             }
@@ -565,6 +595,13 @@ Item {
 //        NumberAnimation { properties: "x"; duration: 1000; easing.type: Easing.InOutQuad }
 //    }
 }
+
+
+
+
+
+
+
 
 
 
