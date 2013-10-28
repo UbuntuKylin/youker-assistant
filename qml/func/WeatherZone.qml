@@ -66,7 +66,7 @@ Rectangle {
         if (pmData == "N/A") {
             pmData = "未知";
         }
-        pmText.text = "空气质量指数：" + pmData;
+        pmText.text = "空气质量：" + pmData;
         tempText.text = "当前温度：" + sessiondispatcher.getSingleWeatherInfo("temp", "current") + "℃";
         temperatureRangeText.text = "温度范围：" + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");;
         humidityText.text = "湿度：" + sessiondispatcher.getSingleWeatherInfo("SD", "current");

@@ -13,6 +13,51 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+//import QtQuick 1.1
+//import SessionType 0.1
+//import "common" as Common
+//import "./bars" as Bars
+//Item {
+//    id: home; width: parent.width; height: 475
+//    Rectangle {
+//        anchors.fill: parent
+//        //背景
+//        Image {
+//            source: "../img/skin/bg-bottom-tab.png"
+//            anchors.fill: parent
+//        }
+
+//        Component.onCompleted: {
+
+//        }
+//        Column {
+//            anchors.centerIn: parent
+//            spacing: 5
+//            Text {
+//                text: "kobe"
+//                color: "#318d11"
+//                wrapMode: Text.WrapAnywhere
+//                font.pixelSize: 12
+//                anchors.horizontalCenter: parent.horizontalCenter
+//            }
+
+//            Bars.Progress {
+//                id: progress
+//                value: 80
+//                background: "../../img/skin/progress-bg.png"
+//                color: "#383838"
+//                secondColor: "#318d11"
+//            }
+//        }
+//    }
+//}
+
+
+
+
+
+
+
 
 import QtQuick 1.1
 import SessionType 0.1

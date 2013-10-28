@@ -56,7 +56,6 @@ HEADERS += youker-application.h \
     fcitxwarndialog.h \
     KThread.h \
     suspensionframe.h \
-    progressdialog.h \
     alertdialog.h \
     toolkits.h \
     skinswidget.h \
@@ -102,7 +101,6 @@ SOURCES += main.cpp \
     fcitxwarndialog.cpp \
     KThread.cpp \
     suspensionframe.cpp \
-    progressdialog.cpp \
     alertdialog.cpp \
     toolkits.cpp \
     skinswidget.cpp \

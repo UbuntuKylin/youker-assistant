@@ -23,7 +23,7 @@
 #include <QString>
 #include <QDeclarativeView>
 #include "authdialog.h"
-#include "progressdialog.h"
+//#include "progressdialog.h"
 #include "updatedialog.h"
 class QSettings;
 
@@ -40,7 +40,7 @@ public:
     //弹出密码输入框
     Q_INVOKABLE void showPasswdDialog(int window_x, int window_y);
     //弹出进度条
-    Q_INVOKABLE void showProgressDialog(int window_x, int window_y);
+//    Q_INVOKABLE void showProgressDialog(int window_x, int window_y);
     //弹出更新软件源对话框
     Q_INVOKABLE void showUpdateSourceDialog(int window_x, int window_y);
     //得到sudodbus验证值，可以通过该值验证服务是否正在运行
@@ -73,6 +73,8 @@ public:
     Q_INVOKABLE void apt_get_update_qt();
     //获取所有软件的的可执行程序的名字列表，此名字对应着源里面的安装程序的名字，用该名字可以获取软件状态
     Q_INVOKABLE QStringList getAllSoftwareExecNameList();
+    //得到下载或者是操作过程中发送过来的数据，在显示在进度条上之前处理优化下，返回要显示的文字
+    QString dealProgressData(QString type, QString msg);
 //    //添加UbuntuKylin软件源
 //    Q_INVOKABLE void add_source_ubuntukylin_qt();
 //    //删除UbuntuKylin软件源
@@ -100,8 +102,10 @@ signals:
 //    void sendSoftwareStatus(QString current_status);
     //将软件操作过程中的状态和进度告诉给进度条去显示
     void sendDynamicSoftwareProgress(QString type, QString msg);
+    //将软件操作过程中的状态和进度告诉给进度条去显示
+    void sendDynamicSoftwareProgressQML(QString type, QString info, int ratio_sus);//1028
     //将软件源更新进度通知给QML
-    void notifySourceStatusToQML(QString cur_status);
+    void notifySourceStatusToQML(QString download_items, QString total_items);
     //调用遮罩层
     void callMasklayer();
     //重新获取所有软件状态
@@ -126,14 +130,14 @@ public slots:
     void handlerGetSoftwareListStatus(QStringList statusDict);
     //准备开始更新软件源
     void startUpdateSoftwareSource();
-    //得到进度条传来的软件源更新的实时进度
-    void getSoftwareSourceUpdateProgress(QString cur_status);
+//    得到进度条传来的软件源更新的实时进度
+//    void getSoftwareSourceUpdateProgress(QString cur_status);
     //返回软件主页面时重新获取所有软件的状态
 //    void reGetStatusList();
 private:
     QDBusInterface *sudoiface;
     AuthDialog *authdialog;
-    ProgressDialog *progressdialog;
+//    ProgressDialog *progressdialog;
     UpdateDialog *updatedialog;
     //存放软件列表的状态
     QMap<QString, QString> status_dict;
@@ -143,6 +147,10 @@ private:
     QSettings *config;
     //存放软件列表
     QStringList appList;
+    //存放进度数据
+    int ratio_sus;
+    //判断是软件源更新还是软件操作，如果是软件源更新，则为true;如果是软件操作，则为默认的false
+    bool progressFlag;
 
     QStringList strlist;
     int mainwindow_width;

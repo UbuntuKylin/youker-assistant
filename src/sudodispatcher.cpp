@@ -21,7 +21,7 @@
 #include "KThread.h"
 #include <QMessageBox>
 
-bool progressFlag;//判断是软件源更新还是软件操作，如果是软件源更新，则为true，qt的进度条隐藏;如果是软件操作，则为默认的false，qt的进度条显示
+//bool progressFlag;//判断是软件源更新还是软件操作，如果是软件源更新，则为true，qt的进度条隐藏;如果是软件操作，则为默认的false，qt的进度条显示
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
     QObject(parent)
@@ -30,7 +30,7 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
-    progressdialog = new ProgressDialog;
+//    progressdialog = new ProgressDialog;
     updatedialog = new UpdateDialog;
     strlist << "Kobe" << "Lee";
 
@@ -45,6 +45,9 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
     config = new QSettings(APP_LIST_FILE, QSettings::IniFormat);
     config->setIniCodec("UTF-8");
 
+    progressFlag = false;
+    ratio_sus = 0;
+
 //    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handlerClearDeb(QString)));
 //    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
 }
@@ -54,9 +57,9 @@ SudoDispatcher::~SudoDispatcher() {
     if (authdialog) {
         delete authdialog;
     }
-    if(progressdialog) {
-        delete progressdialog;
-    }
+//    if(progressdialog) {
+//        delete progressdialog;
+//    }
     if(updatedialog) {
         delete updatedialog;
     }
@@ -76,9 +79,9 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(sudoiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handlerSoftwareFetch(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handlerSoftwareApt(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handlerGetSoftwareListStatus(QStringList)));
-    QObject::connect(this,SIGNAL(sendDynamicSoftwareProgress(QString,QString)),progressdialog, SLOT(setDynamicSoftwareProgress(QString,QString)));
+//    QObject::connect(this,SIGNAL(sendDynamicSoftwareProgress(QString,QString)),progressdialog, SLOT(setDynamicSoftwareProgress(QString,QString)));
     QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(startUpdateSoftwareSource()));
-    QObject::connect(progressdialog,SIGNAL(softwareSourceUpdateProgressToSudoDispather(QString)),this, SLOT(getSoftwareSourceUpdateProgress(QString)));
+//    QObject::connect(progressdialog,SIGNAL(softwareSourceUpdateProgressToSudoDispather(QString)),this, SLOT(getSoftwareSourceUpdateProgress(QString)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
@@ -98,9 +101,9 @@ void SudoDispatcher::setUKSignalFlag(bool flag) {
     signalFlag = flag;
 }
 
-void SudoDispatcher::getSoftwareSourceUpdateProgress(QString cur_status) {
-    emit notifySourceStatusToQML(cur_status);
-}
+//void SudoDispatcher::getSoftwareSourceUpdateProgress(QString cur_status) {
+//    emit notifySourceStatusToQML(cur_status);
+//}
 
 void SudoDispatcher::handlerClearDeb(QString msg) {
      emit finishCleanDeb(msg);
@@ -110,12 +113,106 @@ void SudoDispatcher::handlerClearDebError(QString msg) {
      emit finishCleanDebError(msg);
 }
 
+//得到下载或者是操作过程中发送过来的数据，在显示在进度条上之前处理优化下
+QString SudoDispatcher::dealProgressData(QString type, QString msg) {
+    QString info = "";
+    if(type == "down_start") {
+//        ui->label->setText("开始下载");
+////        ui->progressBar->setValue(0);
+//        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+        ratio_sus = 0;
+    }
+    else if(type == "down_pulse"){
+        if(!msg.isEmpty()) {
+            if(msg.contains("download_bytes") && msg.contains("total_bytes")) {
+                QStringList process_value = msg.split(",");
+                if (process_value.size() == 4) {
+                    QStringList download_bytes = process_value.at(0).split(":");
+                    double download_bytes_value = download_bytes.at(1).toDouble();
+                    QStringList total_bytes = process_value.at(1).split(":");
+                    double total_bytes_value = total_bytes.at(1).toDouble();
+                    double percent = download_bytes_value / total_bytes_value;
+                    QString cur_status = QString::number(percent, 'f', 2);
+                    double trans = cur_status.toDouble() * 100;
+                    cur_status = QString::number(trans,'f',0);
+                    ratio_sus = cur_status.toInt();
+                    if(progressFlag) {//更新软件源的下载
+                        QString download_items = process_value.at(2).split(":").at(1);
+                        QString total_items = process_value.at(3).split(":").at(1);
+                        emit notifySourceStatusToQML(download_items, total_items);
+                    }
+                }
+            }
+        }
+    }
+    else if(type == "down_stop") {
+        //软件源更新下载完毕后，把progressFlag置为false
+        if(progressFlag) {
+            progressFlag = false;
+        }
+        ratio_sus = 100;
+//        if(progressFlag) {//更新软件源的下载，此时如果下载完成，则代码整个更新的过程已经结束，需要把进度条隐藏了。
+//            this->hide();
+//        }
+//        else {//软件操作的下载，此时下载完成，并不是整个操作过程的结束，所以进度条不能隐藏。
+//            ui->label->setText("下载完成");
+//            ratio_sus=0;
+//            ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+//        }
+    }
+    else if(type == "apt_start"){
+        ratio_sus = 0;
+//        if(this->isHidden()) {
+//            this->show();
+//        }
+//        ui->label->setText("开始");
+////        ui->progressBar->setValue(0);
+//        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+//        ratio_sus=1;
+
+    }
+    else if(type == "apt_pulse"){
+        if(!msg.isEmpty()) {
+            if(msg.contains(",")) {
+                QStringList process_value = msg.split(",");
+                if (process_value.size() == 2) {
+                    QStringList status_value = process_value.at(0).split(":");
+                    int value = status_value.at(1).toInt();
+                    QStringList action_value = process_value.at(1).split(":");
+                    info = action_value.at(1);
+//                    ui->label->setText("正在进行:" + act);
+                    ratio_sus = value;
+//                    ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+                }
+            }
+        }
+    }
+    else if(type == "apt_stop") {
+        ratio_sus = 100;
+//        ui->label->setText("完成");
+////        ui->progressBar->setValue(0);
+//        ratio_sus=100;
+//        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
+//        update();
+////        sleep(2000);
+//        QTimer *timer = new QTimer(this);
+//        timer->setInterval(2000);
+//        connect(timer,SIGNAL(timeout()),this,SLOT(reset_status()));
+//        timer->start();
+//        ratio_sus=100;
+//        update();
+    }
+    return info;
+//    update();
+}
 
 //下载
 void SudoDispatcher::handlerSoftwareFetch(QString type, QString msg) {
     if(!type.isEmpty()) {
+        QString info = dealProgressData(type, msg);
         //下载过程中把数据给进度条
-        emit sendDynamicSoftwareProgress(type, msg);
+//        emit sendDynamicSoftwareProgress(type, msg);
+        emit sendDynamicSoftwareProgressQML(type, info, ratio_sus);
         //下载完成
         if(type == "down_stop") {
             emit finishSoftwareFetch(type, msg);
@@ -126,8 +223,10 @@ void SudoDispatcher::handlerSoftwareFetch(QString type, QString msg) {
 //apt操作
 void SudoDispatcher::handlerSoftwareApt(QString type, QString msg) {
     if(!type.isEmpty()) {
+        QString info = dealProgressData(type, msg);
         //操作过程中把数据给进度条
-        emit sendDynamicSoftwareProgress(type, msg);
+//        emit sendDynamicSoftwareProgress(type, msg);
+        emit sendDynamicSoftwareProgressQML(type, info, ratio_sus);
         //操作完成
         if (type == "apt_stop") {
             emit finishSoftwareApt(type);
@@ -161,13 +260,13 @@ void SudoDispatcher::showUpdateSourceDialog(int window_x, int window_y) {
     updatedialog->show();
 }
 
-void SudoDispatcher::showProgressDialog(int window_x, int window_y) {
-    progressFlag = false;//此时让qt的进度条显示
-    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-    this->alert_y = window_y + mainwindow_height - 400;
-    progressdialog->move(this->alert_x, this->alert_y);
-    progressdialog->show();
-}
+//void SudoDispatcher::showProgressDialog(int window_x, int window_y) {
+//    progressFlag = false;//此时让qt的进度条显示
+//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+//    this->alert_y = window_y + mainwindow_height - 400;
+//    progressdialog->move(this->alert_x, this->alert_y);
+//    progressdialog->show();
+//}
 
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
     KThread *thread = new KThread(strlist, sudoiface, "clean_package_cruft");
@@ -291,7 +390,7 @@ void SudoDispatcher::getAppInfo(QString flag) {
 }
 
 void SudoDispatcher::startUpdateSoftwareSource() {
-    progressdialog->hide();
+//    progressdialog->hide();
     emit callMasklayer();
     apt_get_update_qt();
 }

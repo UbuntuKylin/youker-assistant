@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "progressdialog.h"
-#include "ui_progressdialog.h"
+//#include "ui_progressdialog.h"
 #include <QDebug>
 #include <QMouseEvent>
 #include <stdio.h>
