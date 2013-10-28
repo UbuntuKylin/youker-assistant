@@ -52,7 +52,7 @@ public:
     //通过键值得到对应软件的状态
     Q_INVOKABLE QString getSoftwareStatus(QString);
     //得到UbuntuKylin软件源里面软件的列表
-    Q_INVOKABLE QStringList getUKSoftwareList();
+//    Q_INVOKABLE QStringList getUKSoftwareList();
     Q_INVOKABLE bool getUKSignalFlag();
     Q_INVOKABLE void setUKSignalFlag(bool flag);
 //    通知软件的当前状态
@@ -71,14 +71,14 @@ public:
     Q_INVOKABLE QString check_pkg_status_qt(QString pkgName);
     //更新软件源
     Q_INVOKABLE void apt_get_update_qt();
-    //得到优客助手提供的软件列表
-    Q_INVOKABLE QStringList getAllSoftwareList();
+    //获取所有软件的的可执行程序的名字列表，此名字对应着源里面的安装程序的名字，用该名字可以获取软件状态
+    Q_INVOKABLE QStringList getAllSoftwareExecNameList();
 //    //添加UbuntuKylin软件源
 //    Q_INVOKABLE void add_source_ubuntukylin_qt();
 //    //删除UbuntuKylin软件源
 //    Q_INVOKABLE void remove_source_ubuntukylin_qt();
-    //得到所有app的列表
-    Q_INVOKABLE void getAppList();
+    //得到所有app的列表，根据列表的名字可以显示所有软件机器logo到推荐界面上
+    Q_INVOKABLE void getAppListForDisPlay();
     //发送标记，根据标记准备显示对应app的页面信息
     Q_INVOKABLE void ready_show_app_page(QString flag);
     //得到对应app的信息

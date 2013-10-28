@@ -118,9 +118,9 @@ Rectangle {
                         sudodispatcher.bind_signals_after_dbus_start();
                     }
                     //获取所有软件的状态
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
                     //得到所有软件列表
-                    sudodispatcher.getAppList();
+                    sudodispatcher.getAppListForDisPlay();
                     pageStack.push(softwarerecommend);
                 }
                 else {
@@ -132,9 +132,9 @@ Rectangle {
                         }
 
                         //获取所有软件的状态
-                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
                         //得到所有软件列表
-                        sudodispatcher.getAppList();
+                        sudodispatcher.getAppListForDisPlay();
                         pageStack.push(softwarerecommend);
                     }
                 }

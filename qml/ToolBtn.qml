@@ -48,57 +48,102 @@ Rectangle {
         //鼠标放上时
         onEntered: {
             if (text == "homepage") {
-                btnImg.source = "./img/toolWidget/homepage-hover.png"
+                btnImg.source = "./img/toolWidget/0001.png"
             }
             else if (text == "clearrubbish") {
-                btnImg.source = "./img/toolWidget/systemclear-hover.png"
+                btnImg.source = "./img/toolWidget/0002.png"
             }
             else if (text == "systemset") {
-                btnImg.source = "./img/toolWidget/systembeauty-hover.png"
+                btnImg.source = "./img/toolWidget/0003.png"
             }
             else if (text == "systemmessage") {
-                btnImg.source = "./img/toolWidget/systemmessage-hover.png"
+                btnImg.source = "./img/toolWidget/0004.png"
             }
             else if (text == "functioncollection") {
-                btnImg.source = "./img/toolWidget/functioncollection-hover.png"
+                btnImg.source = "./img/toolWidget/0005.png"
             }
+//            if (text == "homepage") {
+//                btnImg.source = "./img/toolWidget/homepage-hover.png"
+//            }
+//            else if (text == "clearrubbish") {
+//                btnImg.source = "./img/toolWidget/systemclear-hover.png"
+//            }
+//            else if (text == "systemset") {
+//                btnImg.source = "./img/toolWidget/systembeauty-hover.png"
+//            }
+//            else if (text == "systemmessage") {
+//                btnImg.source = "./img/toolWidget/systemmessage-hover.png"
+//            }
+//            else if (text == "functioncollection") {
+//                btnImg.source = "./img/toolWidget/functioncollection-hover.png"
+//            }
         }
         //鼠标按下时
         onPressed: {
             if (text == "homepage") {
-                btnImg.source = "./img/toolWidget/homepage-hover.png"
+                btnImg.source = "./img/toolWidget/0001.png"
             }
             else if (text == "clearrubbish") {
-                btnImg.source = "./img/toolWidget/systemclear-hover.png"
+                btnImg.source = "./img/toolWidget/0002.png"
             }
             else if (text == "systemset") {
-                btnImg.source = "./img/toolWidget/systembeauty-hover.png"
+                btnImg.source = "./img/toolWidget/0003.png"
             }
             else if (text == "systemmessage") {
-                btnImg.source = "./img/toolWidget/systemmessage-hover.png"
+                btnImg.source = "./img/toolWidget/0004.png"
             }
             else if (text == "functioncollection") {
-                btnImg.source = "./img/toolWidget/functioncollection-hover.png"
+                btnImg.source = "./img/toolWidget/0005.png"
             }
+//            if (text == "homepage") {
+//                btnImg.source = "./img/toolWidget/homepage-hover.png"
+//            }
+//            else if (text == "clearrubbish") {
+//                btnImg.source = "./img/toolWidget/systemclear-hover.png"
+//            }
+//            else if (text == "systemset") {
+//                btnImg.source = "./img/toolWidget/systembeauty-hover.png"
+//            }
+//            else if (text == "systemmessage") {
+//                btnImg.source = "./img/toolWidget/systemmessage-hover.png"
+//            }
+//            else if (text == "functioncollection") {
+//                btnImg.source = "./img/toolWidget/functioncollection-hover.png"
+//            }
         }
         //要判断松开是鼠标位置
         //鼠标按下松开时
         onReleased: {
             if (text == "homepage") {
-                btnImg.source = "./img/toolWidget/homepage.png"
+                btnImg.source = "./img/toolWidget/001.png"
             }
             else if (text == "clearrubbish") {
-                btnImg.source = "./img/toolWidget/systemclear.png"
+                btnImg.source = "./img/toolWidget/002.png"
             }
             else if (text == "systemset") {
-                btnImg.source = "./img/toolWidget/systembeauty.png"
+                btnImg.source = "./img/toolWidget/003.png"
             }
             else if (text == "systemmessage") {
-                btnImg.source = "./img/toolWidget/systemmessage.png"
+                btnImg.source = "./img/toolWidget/004.png"
             }
             else if (text == "functioncollection") {
-                btnImg.source = "./img/toolWidget/functioncollection.png"
+                btnImg.source = "./img/toolWidget/005.png"
             }
+//            if (text == "homepage") {
+//                btnImg.source = "./img/toolWidget/homepage.png"
+//            }
+//            else if (text == "clearrubbish") {
+//                btnImg.source = "./img/toolWidget/systemclear.png"
+//            }
+//            else if (text == "systemset") {
+//                btnImg.source = "./img/toolWidget/systembeauty.png"
+//            }
+//            else if (text == "systemmessage") {
+//                btnImg.source = "./img/toolWidget/systemmessage.png"
+//            }
+//            else if (text == "functioncollection") {
+//                btnImg.source = "./img/toolWidget/functioncollection.png"
+//            }
         }
         //鼠标按下松开再移开时
         onExited: btnImg.source = ""
@@ -134,7 +179,6 @@ Rectangle {
             }
         }
     }
-
 
     Text {
         id: displaytext

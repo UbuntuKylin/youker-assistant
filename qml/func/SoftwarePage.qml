@@ -32,10 +32,11 @@ Item {
         onNotifySourceStatusToQML: {
             root.source_status_text = "进度: " + cur_status;
         }
+        //下载完成
         onFinishSoftwareFetch: {
             if(type == "down_stop" && root.source_status_text != "") {
                 //软件源更新完成后，重新获取所有软件的状态
-                sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
                 //软件源更新完成后，重新该软件的单个状态
                 actionBtn.text = software.reset_text(sudodispatcher.check_pkg_status_qt(software.software_name));
                 root.source_status_text = "";
@@ -163,7 +164,7 @@ Item {
 
     Rectangle {
         id: software
-        property bool checkFlag: false
+//        property bool checkFlag: false
         property string useinfo: "如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。"
         property string software_name: ""
         property string installed_status: "n"
@@ -249,13 +250,14 @@ Item {
                 //根据得到的初始状态来设置按钮的文字显示
                 actionBtn.text = software.reset_text(software.installed_status);
                 //页面赋值
-                softwarename.text = sudodispatcher.getSingleInfo("appname");
-                softwareintroduction.text = sudodispatcher.getSingleInfo("introduction");
-                imageId.source = sudodispatcher.getSingleInfo("image");
+                softwarename.text = sudodispatcher.getSingleInfo("title");
+                softwareintroduction.text = sudodispatcher.getSingleInfo("description");
+                imageId.source = sudodispatcher.getSingleInfo("logo");
                 introductionimage1.source = sudodispatcher.getSingleInfo("image1");
                 introductionimage2.source = sudodispatcher.getSingleInfo("image2");
             }
 
+            //操作完成
             onFinishSoftwareApt: {
                 if(type == "apt_stop") {
                     //获取软件操作后的新状态
@@ -327,7 +329,7 @@ Item {
                 fontsize: 14
                 onClicked: {
                     //返回软件主页面时重新获取所有软件的状态
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
+                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
                     pageStack.push(softwarerecommend);
                 }
             }
@@ -388,18 +390,24 @@ Item {
                 text: software.show_text(software.installed_status)
                 fontsize: 20
                 onClicked: {
-                    var mylist = sudodispatcher.getUKSoftwareList();
-                    for (var q=0; q< mylist.length; q++) {
-                        if(mylist[q] == software.software_name) {
-                            software.checkFlag  = true;
-                            software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-                            break;
-                        }
-                    }
-                    if(software.checkFlag)
-                        software.checkFlag = false;
-                    else
-                        software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                    software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+
+
+
+
+
+//                    var mylist = sudodispatcher.getUKSoftwareList();
+//                    for (var q=0; q< mylist.length; q++) {
+//                        if(mylist[q] == software.software_name) {
+//                            software.checkFlag  = true;
+//                            software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+//                            break;
+//                        }
+//                    }
+//                    if(software.checkFlag)
+//                        software.checkFlag = false;
+//                    else
+//                        software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     if(software.installed_status == "n") {
                         if(software.software_name == "wine-qq2012-longeneteam") {
                             Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
@@ -408,24 +416,24 @@ Item {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
-                            var softwarelist = sudodispatcher.getUKSoftwareList();
-                            for (var i=0; i< softwarelist.length; i++) {
-                                if(softwarelist[i] == software.software_name) {
-                                    break;
-                                }
-                            }
+//                            var softwarelist = sudodispatcher.getUKSoftwareList();
+//                            for (var i=0; i< softwarelist.length; i++) {
+//                                if(softwarelist[i] == software.software_name) {
+//                                    break;
+//                                }
+//                            }
                             root.state = "MaskLayerStateApt";
                             sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.install_pkg_qt(software.software_name);
                         }
                     }
                     else if(software.installed_status == "i") {
-                        var software_list = sudodispatcher.getUKSoftwareList();
-                        for (var k=0; k< software_list.length; k++) {
-                            if(software_list[k] == software.software_name) {
-                                break;
-                            }
-                        }
+//                        var software_list = sudodispatcher.getUKSoftwareList();
+//                        for (var k=0; k< software_list.length; k++) {
+//                            if(software_list[k] == software.software_name) {
+//                                break;
+//                            }
+//                        }
                         root.state = "MaskLayerStateApt";
                         sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                         sudodispatcher.uninstall_pkg_qt(software.software_name);
@@ -438,12 +446,12 @@ Item {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
-                            var softwareList = sudodispatcher.getUKSoftwareList();
-                            for (var j=0; j< softwareList.length; j++) {
-                                if(softwareList[j] == software.software_name) {
-                                    break;
-                                }
-                            }
+//                            var softwareList = sudodispatcher.getUKSoftwareList();
+//                            for (var j=0; j< softwareList.length; j++) {
+//                                if(softwareList[j] == software.software_name) {
+//                                    break;
+//                                }
+//                            }
                             root.state = "MaskLayerStateApt";
                             sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);
                             sudodispatcher.update_pkg_qt(software.software_name);

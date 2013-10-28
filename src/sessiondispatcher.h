@@ -185,8 +185,11 @@ public:
     //更新六天天气预报
     Q_INVOKABLE void update_forecast_weather();
     Q_INVOKABLE void change_select_city_name_qt(QString cityName);
+    //初始化weathericons
+    void initWeatherIcons();
     QMap<QString, QVariant> forecastInfo;
     QMap<QString, QVariant> currentInfo;
+    QMap<QString, QString> weatherIcon;
     //通过键得到对应的单个信息的值,flag= forecast/current
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 

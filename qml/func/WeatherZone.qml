@@ -37,6 +37,27 @@ Rectangle {
 
     //设置天气数据到QML界面上
     function resetCurrentWeather() {
+        var ptime = sessiondispatcher.getSingleWeatherInfo("ptime", "current");//eg: 08:00
+        var need_str = ptime.substr(0, ptime.lastIndexOf(":"));//eg: 08
+        //将字符串类型的时间转成整形
+        var pIntTime = parseInt(need_str, 10);//eg: 8
+//        console.log("111111111111");
+//        console.log(pIntTime);
+        if(pIntTime > 7 && pIntTime < 20) {
+            var img1 = sessiondispatcher.getSingleWeatherInfo("img1", "current");
+            weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img1, "weathericon")
+//            console.log("1111111111");
+//            console.log(sessiondispatcher.getSingleWeatherInfo(img1, "weathericon"));
+        }
+        else {
+//            weatherIcon.source = sessiondispatcher.getSingleWeatherInfo("img2", "current");
+            var img2 = sessiondispatcher.getSingleWeatherInfo("img2", "current");
+            weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img2, "weathericon")
+//            console.log("2222222");
+//            console.log(sessiondispatcher.getSingleWeatherInfo(img2, "weathericon"));
+        }
+
+
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
         ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + " 发布";
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
@@ -98,15 +119,16 @@ Rectangle {
     }
     Row {
         anchors.top: parent.top
-        anchors.topMargin: 30
+        anchors.topMargin: 25
         spacing: 20
         Column {
             id: leftrow
-            spacing: 5
+            spacing: 3
             Image {
                 id: weatherIcon
-                width: 48; height: 48
-                source: "../img/weather/d0.gif"
+                width: 64; height: 64
+                source: ""
+//                source: "../img/weather/d0.gif"
             }
             Common.Label {
                 id: forecastBtn

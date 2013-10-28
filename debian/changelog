@@ -3,8 +3,9 @@ youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
   * Change skin and add weather forecast information.
   * Get correct system information(LP: #1240862).
   * Get software list and software information dynamically.
+  * Start sudodbus server at the same time to scan package cruft(LP: #1242498).
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 25 Oct 2013 14:38:00 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 28 Oct 2013 09:40:36 +0800
 
 youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
 

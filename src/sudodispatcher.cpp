@@ -21,7 +21,7 @@
 #include "KThread.h"
 #include <QMessageBox>
 
-bool progress_flag;
+bool progressFlag;//判断是软件源更新还是软件操作，如果是软件源更新，则为true，qt的进度条隐藏;如果是软件操作，则为默认的false，qt的进度条显示
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
     QObject(parent)
@@ -110,18 +110,25 @@ void SudoDispatcher::handlerClearDebError(QString msg) {
      emit finishCleanDebError(msg);
 }
 
+
+//下载
 void SudoDispatcher::handlerSoftwareFetch(QString type, QString msg) {
     if(!type.isEmpty()) {
+        //下载过程中把数据给进度条
         emit sendDynamicSoftwareProgress(type, msg);
+        //下载完成
         if(type == "down_stop") {
             emit finishSoftwareFetch(type, msg);
         }
     }
 }
 
+//apt操作
 void SudoDispatcher::handlerSoftwareApt(QString type, QString msg) {
     if(!type.isEmpty()) {
+        //操作过程中把数据给进度条
         emit sendDynamicSoftwareProgress(type, msg);
+        //操作完成
         if (type == "apt_stop") {
             emit finishSoftwareApt(type);
         }
@@ -147,7 +154,7 @@ void SudoDispatcher::showPasswdDialog(int window_x, int window_y) {
 }
 
 void SudoDispatcher::showUpdateSourceDialog(int window_x, int window_y) {
-    progress_flag = true;
+    progressFlag = true;//此时让qt的进度条隐藏
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     updatedialog->move(this->alert_x, this->alert_y);
@@ -155,11 +162,7 @@ void SudoDispatcher::showUpdateSourceDialog(int window_x, int window_y) {
 }
 
 void SudoDispatcher::showProgressDialog(int window_x, int window_y) {
-//    ProgressDialog progressdialog;
-//    progressdialog.exec();
-//    progressdialog = new ProgressDialog (window_x, window_y);
-//    progressdialog->exec();
-    progress_flag = false;
+    progressFlag = false;//此时让qt的进度条显示
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     progressdialog->move(this->alert_x, this->alert_y);
@@ -171,26 +174,17 @@ void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
     thread->start();
 }
 
-QStringList SudoDispatcher::getAllSoftwareList() {
-    QStringList pkgNameList;
-    pkgNameList << "eclipse" << "qtcreator"<< "wps-office" << "wine-qq2012-longeneteam" << \
-                   "flashplugin-installer" <<  "lotus" << "kuaipan4uk" <<"vlc" << \
-                   "chromium-bsu" << "kugou" << "ppstream" << "qbittorrent" << \
-                   "virtualbox" << "stardict" << "xchat" << "wine-thunder" << "openfetion";
-    return pkgNameList;
-}
-
 //从状态列表中得到指定的某个软件的状态
 QString SudoDispatcher::getSoftwareStatus(QString key) {
     QVariant tt = status_dict.value(key);
     return tt.toString();
 }
 
-QStringList SudoDispatcher::getUKSoftwareList() {
-    QStringList softwareList;
-    softwareList << "wps-office" << "lotus" << "kuaipan4uk" << "kugou" << "ppstream";
-    return softwareList;
-}
+//QStringList SudoDispatcher::getUKSoftwareList() {
+//    QStringList softwareList;
+//    softwareList << "wps-office" << "lotus" << "kuaipan4uk" << "kugou" << "ppstream";
+//    return softwareList;
+//}
 
 // -------------------------software-center-------------------------
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
@@ -246,7 +240,23 @@ QString SudoDispatcher::getSingleInfo(QString key) {
     return info;
 }
 
-void SudoDispatcher::getAppList() {
+//获取所有软件的的可执行程序的名字列表，此名字对应着源里面的安装程序的名字，用该名字可以获取软件状态
+QStringList SudoDispatcher::getAllSoftwareExecNameList() {
+//    QStringList pkgNameList;
+//    pkgNameList << "eclipse" << "qtcreator"<< "wps-office" << "wine-qq2012-longeneteam" << \
+//                   "flashplugin-installer" <<  "lotus" << "kuaipan4uk" <<"vlc" << \
+//                   "chromium-bsu" << "kugou" << "ppstream" << "qbittorrent" << \
+//                   "virtualbox" << "stardict" << "xchat" << "wine-thunder" << "openfetion";
+//    return pkgNameList;
+
+    QStringList execNameList = config->value(QString("app-list/AllExecList")).toStringList();
+    config->sync();
+    return execNameList;
+
+}
+
+//得到所有app的列表，根据列表的名字可以显示所有软件机器logo到推荐界面上
+void SudoDispatcher::getAppListForDisPlay() {
     QFile appFile(APP_LIST_FILE);
     if(appFile.exists()) {
         appList = config->value(QString("app-list/AppList")).toStringList();
@@ -265,9 +275,9 @@ void SudoDispatcher::getAppInfo(QString flag) {
     QFile appFile(APP_LIST_FILE);
     if(appFile.exists()) {
         appInfo["name"] = config->value(flag + QString("/name")).toString();
-        appInfo["appname"] = config->value(flag + QString("/appname")).toString();
-        appInfo["image"] = config->value(flag + QString("/image")).toString();
-        appInfo["introduction"] = config->value(flag + QString("/introduction")).toString();
+        appInfo["title"] = config->value(flag + QString("/title")).toString();
+        appInfo["logo"] = config->value(flag + QString("/logo")).toString();
+        appInfo["description"] = config->value(flag + QString("/description")).toString();
         appInfo["image1"] = config->value(flag + QString("/image1")).toString();
         appInfo["image2"] = config->value(flag + QString("/image2")).toString();
         config->sync();

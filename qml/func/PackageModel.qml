@@ -225,7 +225,39 @@ Item {
                 }
                 else {
                     sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
+
+
+                    if(!sudodispatcher.getUKSignalFlag()) {
+                        sudodispatcher.setUKSignalFlag(true);
+                        sudodispatcher.bind_signals_after_dbus_start();
+                    }
+                    resetBtn.visible = false;
+                    if(root.check_flag)
+                    {
+                        //package cruft
+                        if (btn_flag == "package_scan") {
+                            unneed_signal("UnneedWork");
+                            if(root.null_flag == true) {
+                                root.state = "UnneedWorkEmpty";
+                                deleget_arrow=0;
+                                sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                            }
+                            else if(root.null_flag == false)
+                            {
+                                root.state = "UnneedWork";
+                                deleget_arrow=1;
+                                toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
+                            }
+                        }
+                        else if (btn_flag == "package_work") {
+                            sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+                            deleget_arrow=1;
+                        }
+                    }
+                    else
+                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
                 }
+
             }
         }
         SetBtn {
