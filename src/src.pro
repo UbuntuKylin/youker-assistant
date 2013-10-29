@@ -14,6 +14,7 @@ target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
     target
+include(../qtsingleapplication/src/qtsingleapplication.pri)
 LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 
 # Additional import path used to resolve QML modules in Creator's code model

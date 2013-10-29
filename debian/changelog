@@ -4,8 +4,9 @@ youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
   * Get correct system information(LP: #1240862).
   * Get software list and software information dynamically.
   * Start sudodbus server at the same time to scan package cruft(LP: #1242498).
+  * Use qtsingleapplication by F.J Kong (kroodylove).
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 28 Oct 2013 09:40:36 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Tue, 29 Oct 2013 08:40:27 +0800
 
 youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
 

@@ -51,6 +51,7 @@
 #include <qdeclarativeimageprovider.h>
 #include <qdeclarativeview.h>
 #include "KThread.h"
+#include <QtSingleApplication>
 
 
 void registerTypes() {
@@ -83,21 +84,10 @@ void registerTypes() {
 
 int main(int argc, char** argv)
 {
-    int num = 0;
-    QProcess *process = new QProcess();
-    QStringList *args = new QStringList();
-    args->append("aux");
-    process->start("ps", *args);
-    process->waitForFinished();
-    while(process->canReadLine()) {
-        QString tmp = process->readLine();
-        if(tmp.endsWith("youker-assistant\n")) {
-            num += 1;
-        }
-        if(num > 1) {
-            exit(0);
-        }
-    }
+    QtSingleApplication app(argc, argv);
+    if (app.isRunning())
+        return 0;
+
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
