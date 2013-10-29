@@ -66,7 +66,7 @@ Rectangle {
         if (pmData == "N/A") {
             pmData = "未知";
         }
-        pmText.text = "空气质量：" + pmData;
+        pmText.text = "空气质量指数：" + pmData;
         tempText.text = "当前温度：" + sessiondispatcher.getSingleWeatherInfo("temp", "current") + "℃";
         temperatureRangeText.text = "温度范围：" + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");;
         humidityText.text = "湿度：" + sessiondispatcher.getSingleWeatherInfo("SD", "current");
@@ -126,7 +126,7 @@ Rectangle {
             spacing: 3
             Image {
                 id: weatherIcon
-                width: 64; height: 64
+                width: 48; height: 48
                 source: ""
 //                source: "../img/weather/d0.gif"
             }

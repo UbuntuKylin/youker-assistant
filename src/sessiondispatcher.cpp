@@ -56,7 +56,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     skin_widget = new SkinsWidget(mSettings);
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 
-    initWeatherIcons();
+//    initWeatherIcons();
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -594,76 +594,76 @@ void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
 }
 
 /*-------------------weather forecast-------------------*/
-void SessionDispatcher::initWeatherIcons() {
-    //"../img/weather/d0.gif"
-    weatherIcon.insert("d0.gif", "../img/weather/day/sunny.png");
-    weatherIcon.insert("d1.gif", "../img/weather/day/fewclouds.png");
-    weatherIcon.insert("d2.gif", "../img/weather/day/fewclouds.png");
-    weatherIcon.insert("d3.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d4.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d5.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d6.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d7.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d8.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d9.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d10.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d11.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d12.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d13.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d14.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d15.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d16.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d17.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d18.gif", "../img/weather/day/fog.png");
-    weatherIcon.insert("d19.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d20.gif", "../img/weather/day/fog.png");
-    weatherIcon.insert("d21.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d22.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d23.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d24.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d25.gif", "../img/weather/day/heavyrain.png");
-    weatherIcon.insert("d26.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d27.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d28.gif", "../img/weather/day/bigsnow.png");
-    weatherIcon.insert("d29.gif", "../img/weather/day/fog.png");
-    weatherIcon.insert("d30.gif", "../img/weather/day/fog.png");
-    weatherIcon.insert("d31.gif", "../img/weather/day/fog.png");
-    weatherIcon.insert("d53.gif", "../img/weather/day/fog.png");
+//void SessionDispatcher::initWeatherIcons() {
+//    //"../img/weather/d0.gif"
+//    weatherIcon.insert("d0.gif", "../img/weather/day/sunny.png");
+//    weatherIcon.insert("d1.gif", "../img/weather/day/fewclouds.png");
+//    weatherIcon.insert("d2.gif", "../img/weather/day/fewclouds.png");
+//    weatherIcon.insert("d3.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d4.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d5.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d6.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d7.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d8.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d9.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d10.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d11.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d12.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d13.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d14.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d15.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d16.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d17.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d18.gif", "../img/weather/day/fog.png");
+//    weatherIcon.insert("d19.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d20.gif", "../img/weather/day/fog.png");
+//    weatherIcon.insert("d21.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d22.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d23.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d24.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d25.gif", "../img/weather/day/heavyrain.png");
+//    weatherIcon.insert("d26.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d27.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d28.gif", "../img/weather/day/bigsnow.png");
+//    weatherIcon.insert("d29.gif", "../img/weather/day/fog.png");
+//    weatherIcon.insert("d30.gif", "../img/weather/day/fog.png");
+//    weatherIcon.insert("d31.gif", "../img/weather/day/fog.png");
+//    weatherIcon.insert("d53.gif", "../img/weather/day/fog.png");
 
-    weatherIcon.insert("n0.gif", "../img/weather/night/sunny.png");
-    weatherIcon.insert("n1.gif", "../img/weather/night/fewclouds.png");
-    weatherIcon.insert("n2.gif", "../img/weather/night/fewclouds.png");
-    weatherIcon.insert("n3.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n4.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n5.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n6.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n7.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n8.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n9.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n10.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n11.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n12.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n13.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n14.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n15.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n16.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n17.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n18.gif", "../img/weather/night/fog.png");
-    weatherIcon.insert("n19.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n20.gif", "../img/weather/night/fog.png");
-    weatherIcon.insert("n21.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n22.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n23.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n24.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n25.gif", "../img/weather/night/heavyrain.png");
-    weatherIcon.insert("n26.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n27.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n28.gif", "../img/weather/night/bigsnow.png");
-    weatherIcon.insert("n29.gif", "../img/weather/night/fog.png");
-    weatherIcon.insert("n30.gif", "../img/weather/night/fog.png");
-    weatherIcon.insert("n31.gif", "../img/weather/night/fog.png");
-    weatherIcon.insert("n53.gif", "../img/weather/night/fog.png");
-}
+//    weatherIcon.insert("n0.gif", "../img/weather/night/sunny.png");
+//    weatherIcon.insert("n1.gif", "../img/weather/night/fewclouds.png");
+//    weatherIcon.insert("n2.gif", "../img/weather/night/fewclouds.png");
+//    weatherIcon.insert("n3.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n4.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n5.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n6.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n7.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n8.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n9.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n10.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n11.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n12.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n13.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n14.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n15.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n16.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n17.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n18.gif", "../img/weather/night/fog.png");
+//    weatherIcon.insert("n19.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n20.gif", "../img/weather/night/fog.png");
+//    weatherIcon.insert("n21.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n22.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n23.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n24.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n25.gif", "../img/weather/night/heavyrain.png");
+//    weatherIcon.insert("n26.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n27.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n28.gif", "../img/weather/night/bigsnow.png");
+//    weatherIcon.insert("n29.gif", "../img/weather/night/fog.png");
+//    weatherIcon.insert("n30.gif", "../img/weather/night/fog.png");
+//    weatherIcon.insert("n31.gif", "../img/weather/night/fog.png");
+//    weatherIcon.insert("n53.gif", "../img/weather/night/fog.png");
+//}
 
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
@@ -728,7 +728,8 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
         info = currentInfo.value(key);
     }
     else if(flag == "weathericon") {
-        info = weatherIcon.value(key);
+//        info = weatherIcon.value(key);
+        info = "../img/weather/" + key;
     }
     return info.toString();
 }
