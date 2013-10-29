@@ -61,31 +61,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="btn_close">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>7</y>
-     <width>20</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>20</width>
-     <height>20</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>20</width>
-     <height>20</height>
-    </size>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
@@ -139,13 +114,26 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string>完成</string>
    </property>
   </widget>
+  <widget class="QLabel" name="btn_close">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>7</y>
+     <width>26</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>frame</zorder>
   <zorder>titleLabel</zorder>
   <zorder>locationLabel</zorder>
   <zorder>listWidget</zorder>
-  <zorder>btn_close</zorder>
   <zorder>quitBtn</zorder>
   <zorder>okBtn</zorder>
+  <zorder>btn_close</zorder>
  </widget>
  <resources/>
  <connections/>

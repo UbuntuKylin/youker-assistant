@@ -796,7 +796,10 @@ void SessionDispatcher::initConfigFile() {
     QStringList places = mSettings->value("places").toStringList();
     //places为空时，赋默认值为：湖南,长沙,长沙
     if(places.isEmpty()) {
-        places = QStringList("湖南,长沙,长沙");
+//        places = QStringList("湖南,长沙,长沙");
+        places.append("湖南,长沙,长沙");
+        places.append("北京,北京,北京");
+        places.append("上海,上海,上海");
         mSettings->setValue("places", places);
     }
     QString rate = mSettings->value("rate").toString();

@@ -626,6 +626,8 @@ Item {
         State {
             name: "MaskLayerStateApt"
             PropertyChanges { target: masklayer2; x: 0 }
+            PropertyChanges { target: progressTitle; text: "软件操作进度" }
+            PropertyChanges { target: progress; value: 0 }
             PropertyChanges { target: masklayer; x: (parent.width * 1.5) }
             PropertyChanges { target: software; x: (parent.width * 1.5) }
         }

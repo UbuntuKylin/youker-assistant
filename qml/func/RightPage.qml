@@ -270,78 +270,103 @@ Rectangle {
             leftMargin: 20
         }
 
-        Common.Label {
+        SetWord {
             id: helplabel
-            text: "论坛求助"
-            font.pixelSize: 12
-            color: "#318d11"
-            MouseArea {
-                  anchors.fill: helplabel
-
-                  hoverEnabled: true
-                  onEntered: btnImg1.source = "../img/toolWidget/menu_hover.png"
-                  onPressed: btnImg1.source = "../img/toolWidget/menu_press.png"
-                  //要判断松开是鼠标位置
-                  onReleased: btnImg1.source = "../img/toolWidget/menu_hover.png"
-                  onExited: btnImg1.source = ""
-
-                  onClicked: {
-                      Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php")
-                  }
-            }
-            Image {
-                id: btnImg1
-                anchors.fill: helplabel
-                source: ""
-            }
+//            anchors.horizontalCenter: parent.horizontalCenter
+            wordname: "论坛求助"
+            width: 50
+            height: 20
+            flag: "BBS"
         }
-        Common.Label {
+        SetWord {
             id: versionlabel
-            text: "新版本特性"
-            font.pixelSize: 12
-            color: "#318d11"
-            MouseArea {
-                  anchors.fill: versionlabel
-                  hoverEnabled: true
-                  onEntered: btnImg2.source = "../img/toolWidget/menu_hover.png"
-                  onPressed: btnImg2.source = "../img/toolWidget/menu_press.png"
-                  //要判断松开是鼠标位置
-                  onReleased: btnImg2.source = "../img/toolWidget/menu_hover.png"
-                  onExited: btnImg2.source = ""
-
-                  onClicked: {
-                      sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
-                  }
-            }
-            Image {
-                id: btnImg2
-                anchors.fill: versionlabel
-                source: ""
-            }
-
+//            anchors.horizontalCenter: parent.horizontalCenter
+            wordname: "新版本特性"
+            width: 60
+            height: 20
+            flag: "VersionFeature"
         }
-        Common.Label {
+        SetWord {
             id: buglabel
-            text: "Bug提交"
-            font.pixelSize: 12
-            color: "#318d11"
-            MouseArea {
-                  anchors.fill: buglabel
-                  hoverEnabled: true
-                  onEntered: btnImg3.source = "../img/toolWidget/menu_hover.png"
-                  onPressed: btnImg3.source = "../img/toolWidget/menu_press.png"
-                  //要判断松开是鼠标位置
-                  onReleased: btnImg3.source = "../img/toolWidget/menu_hover.png"
-                  onExited: btnImg3.source = ""
-                  onClicked: {
-                      Qt.openUrlExternally("https://bugs.launchpad.net/youker-assistant")
-                  }
-            }
-            Image {
-                id: btnImg3
-                anchors.fill: buglabel
-                source: ""
-            }
+//            anchors.horizontalCenter: parent.horizontalCenter
+            wordname: "Bug提交"
+            width: 40
+            height: 20
+            flag: "BUG"
         }
+
+//        Common.Label {
+//            id: helplabel
+//            text: "论坛求助"
+//            font.pixelSize: 12
+//            color: "#318d11"
+//            MouseArea {
+//                  anchors.fill: helplabel
+
+//                  hoverEnabled: true
+//                  onEntered: btnImg1.source = "../img/toolWidget/menu_hover.png"
+//                  onPressed: btnImg1.source = "../img/toolWidget/menu_press.png"
+//                  //要判断松开是鼠标位置
+//                  onReleased: btnImg1.source = "../img/toolWidget/menu_hover.png"
+//                  onExited: btnImg1.source = ""
+
+//                  onClicked: {
+//                      Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php")
+//                  }
+//            }
+//            Image {
+//                id: btnImg1
+//                anchors.fill: helplabel
+//                source: ""
+//            }
+//        }
+//        Common.Label {
+//            id: versionlabel
+//            text: "新版本特性"
+//            font.pixelSize: 12
+//            color: "#318d11"
+//            MouseArea {
+//                  anchors.fill: versionlabel
+//                  hoverEnabled: true
+//                  onEntered: btnImg2.source = "../img/toolWidget/menu_hover.png"
+//                  onPressed: btnImg2.source = "../img/toolWidget/menu_press.png"
+//                  //要判断松开是鼠标位置
+//                  onReleased: btnImg2.source = "../img/toolWidget/menu_hover.png"
+//                  onExited: btnImg2.source = ""
+
+//                  onClicked: {
+//                      sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
+//                  }
+//            }
+//            Image {
+//                id: btnImg2
+//                anchors.fill: versionlabel
+//                source: ""
+//            }
+
+//        }
+//        Common.Label {
+//            id: buglabel
+//            text: "Bug提交"
+//            font.pixelSize: 12
+//            color: "#318d11"
+//            MouseArea {
+//                  anchors.fill: buglabel
+//                  hoverEnabled: true
+//                  onEntered: btnImg3.source = "../img/toolWidget/menu_hover.png"
+//                  onPressed: btnImg3.source = "../img/toolWidget/menu_press.png"
+//                  //要判断松开是鼠标位置
+//                  onReleased: btnImg3.source = "../img/toolWidget/menu_hover.png"
+//                  onExited: btnImg3.source = ""
+//                  onClicked: {
+//                      Qt.openUrlExternally("https://bugs.launchpad.net/youker-assistant")
+//                  }
+//            }
+//            Image {
+//                id: btnImg3
+//                anchors.fill: buglabel
+//                source: ""
+//            }
+//        }
     }
 }//右边栏Rectangle

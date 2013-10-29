@@ -37,7 +37,6 @@ private slots:
     void on_closeButton_clicked();
     void on_okButton_clicked();
     void sleep_to_call_server();
-
 private:
     Ui::AuthDialog *ui;
 

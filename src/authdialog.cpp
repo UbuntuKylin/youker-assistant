@@ -18,6 +18,7 @@
 #include <QDebug>
 #include <QProcessEnvironment>
 #include <QTimer>
+#include <QMessageBox>
 
 AuthDialog::AuthDialog(QString msg, QWidget *parent) :
     QDialog(parent),
@@ -48,14 +49,13 @@ AuthDialog::AuthDialog(QString msg, QWidget *parent) :
 //    ui->msg_label->setAlignment(Qt::AlignCenter);
 
 //    QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(accept()));
-    QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));
+//    QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));
 }
 
 AuthDialog::~AuthDialog()
 {
     delete ui;
 }
-
 
 bool AuthDialog::trans_password(QString flagstr, QString pwd) {
     QString cmd1 = "echo " + pwd + " | sudo -S touch /usr/bin/youker.txt";
@@ -77,10 +77,12 @@ bool AuthDialog::trans_password(QString flagstr, QString pwd) {
 
 void AuthDialog::on_closeButton_clicked()
 {
-//    QDialog::reject();
-//    close();
-//    QDialog::destroy(true);
-    this->hide();
+//    this->hide();
+    this->close();
+    QMessageBox::warning(NULL,
+                         tr("警告"),
+                         tr("服务没有启动，相关功能将无法正常使用！"),
+                         QMessageBox::Ok);
 }
 void AuthDialog::sleep_to_call_server() {
     this->accept();

@@ -143,49 +143,51 @@ Rectangle {
                 source: ""
 //                source: "../img/weather/d0.gif"
             }
-            Common.Label {
+
+            SetWord {
                 id: forecastBtn
-                text: "预  报"
-                font.pixelSize: 14
-                color: "#318d11"
                 anchors.horizontalCenter: parent.horizontalCenter
-                MouseArea {
-                    anchors.fill: forecastBtn
-                    hoverEnabled: true
-                    onClicked: {
-                        //1、获取六天天气预报数据
-                        sessiondispatcher.get_forecast_weahter_qt();
-                        //2、开始给天气预报界面发送更新数据信号
-                        sessiondispatcher.update_forecast_weather();
-                        //3、加载天气预报界面
-                        pageStack.push(weatherpage);
-                    }
-                }
+                wordname: "预  报"
+                width: 40
+                height: 20
+                flag: "WeatherForecast"
             }
-            Common.Label {
+            SetWord {
                 id: preferencesBtn
-                text: "配  置"
-                font.pixelSize: 14
-                color: "#318d11"
                 anchors.horizontalCenter: parent.horizontalCenter
-                MouseArea {
-                    anchors.fill: preferencesBtn
-                    hoverEnabled: true
-                    onClicked: {
-                        sessiondispatcher.showWizardController();
-                    }
-                }
+                wordname: "配  置"
+                width: 40
+                height: 20
+                flag: "WeatherPreference"
             }
-//            ERROR:dbus.service:Unable to append ({u'pm2_5': 0, u'area': u'\u957f\u6c99', u'quality': u'\u8f7b\u5ea6\u6c61\u67d3', u'station_code': None, u'time_point': u'2013-10-18T09:00:00Z', u'pm2_5_24h': 0, u'position_name': None, u'aqi': 122, u'primary_pollutant': None},) to message with signature a{sv}: <type 'exceptions.TypeError'>: Don't know which D-Bus type to use to encode type "NoneType"
-            Common.Label {
-                id: updateBtn
-                text: "更  新"
-                font.pixelSize: 14
-                color: "#318d11"
+            Rectangle {
+                width: 40
+                height: 20
+                color: "transparent"
                 anchors.horizontalCenter: parent.horizontalCenter
+                Text {
+                    id:textname
+                    anchors.centerIn: parent
+                    text: "更  新"
+                    font.pointSize: 10
+                    color: "#318d11"
+                }
+                Rectangle {
+                    id: btnImg
+                    anchors.top: parent.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: textname.width
+                    height: 1
+                    color: "transparent"
+                }
                 MouseArea {
-                    anchors.fill: updateBtn
                     hoverEnabled: true
+                    anchors.fill: parent
+                    onEntered: btnImg.color = "#318d11"
+                    onPressed: btnImg.color = "#318d11"
+                    //要判断松开是鼠标位置
+                    onReleased: btnImg.color = "#318d11"
+                    onExited: btnImg.color = "transparent"
                     onClicked: {
                         if(sessiondispatcher.update_weather_data_qt()) {
                             weahterzone.resetCurrentWeather();
@@ -195,6 +197,59 @@ Rectangle {
                     }
                 }
             }
+
+//            Common.Label {
+//                id: forecastBtn
+//                text: "预  报"
+//                font.pixelSize: 14
+//                color: "#318d11"
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                MouseArea {
+//                    anchors.fill: forecastBtn
+//                    hoverEnabled: true
+//                    onClicked: {
+//                        //1、获取六天天气预报数据
+//                        sessiondispatcher.get_forecast_weahter_qt();
+//                        //2、开始给天气预报界面发送更新数据信号
+//                        sessiondispatcher.update_forecast_weather();
+//                        //3、加载天气预报界面
+//                        pageStack.push(weatherpage);
+//                    }
+//                }
+//            }
+//            Common.Label {
+//                id: preferencesBtn
+//                text: "配  置"
+//                font.pixelSize: 14
+//                color: "#318d11"
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                MouseArea {
+//                    anchors.fill: preferencesBtn
+//                    hoverEnabled: true
+//                    onClicked: {
+//                        sessiondispatcher.showWizardController();
+//                    }
+//                }
+//            }
+////            ERROR:dbus.service:Unable to append ({u'pm2_5': 0, u'area': u'\u957f\u6c99', u'quality': u'\u8f7b\u5ea6\u6c61\u67d3', u'station_code': None, u'time_point': u'2013-10-18T09:00:00Z', u'pm2_5_24h': 0, u'position_name': None, u'aqi': 122, u'primary_pollutant': None},) to message with signature a{sv}: <type 'exceptions.TypeError'>: Don't know which D-Bus type to use to encode type "NoneType"
+//            Common.Label {
+//                id: updateBtn
+//                text: "更  新"
+//                font.pixelSize: 14
+//                color: "#318d11"
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                MouseArea {
+//                    anchors.fill: updateBtn
+//                    hoverEnabled: true
+//                    onClicked: {
+//                        if(sessiondispatcher.update_weather_data_qt()) {
+//                            weahterzone.resetCurrentWeather();
+//                            weahterzone.resetChangeCityBtn();
+//                            toolkits.alertMSG("更新完毕！", mainwindow.pos.x, mainwindow.pos.y);
+//                        }
+//                    }
+//                }
+//            }
         }
         Column {
             spacing: 5

@@ -99,7 +99,6 @@ Item {
                 anchors.fill: parent
                     onPressed: {
                         expanded = !expanded      //扫描出的子项是否下拉显示的控制变量
-                        console.log(expanded)
                         if(heightMark==listViewDelegate.sub_num){  //通过对heightMark的赋值来实现子项的下拉显示与收缩不显示
                             check.checkedbool=false;      //子项收缩时,将总checkbox回到勾选状态
                             check.checked="true";

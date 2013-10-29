@@ -20,7 +20,7 @@
 #include <QMap>
 #include "KThread.h"
 #include <QMessageBox>
-
+#include "authdialog.h"
 //bool progressFlag;//判断是软件源更新还是软件操作，如果是软件源更新，则为true，qt的进度条隐藏;如果是软件操作，则为默认的false，qt的进度条显示
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
@@ -30,6 +30,7 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
+
 //    progressdialog = new ProgressDialog;
     updatedialog = new UpdateDialog;
     strlist << "Kobe" << "Lee";
@@ -48,18 +49,18 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
     progressFlag = false;
     ratio_sus = 0;
 
-//    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handlerClearDeb(QString)));
-//    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
+////    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handlerClearDeb(QString)));
+////    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
 }
 
 SudoDispatcher::~SudoDispatcher() {
     this->exit_qt();
-    if (authdialog) {
-        delete authdialog;
-    }
-//    if(progressdialog) {
-//        delete progressdialog;
+//    if (authdialog) {
+//        delete authdialog;
 //    }
+////    if(progressdialog) {
+////        delete progressdialog;
+////    }
     if(updatedialog) {
         delete updatedialog;
     }
@@ -117,9 +118,6 @@ void SudoDispatcher::handlerClearDebError(QString msg) {
 QString SudoDispatcher::dealProgressData(QString type, QString msg) {
     QString info = "";
     if(type == "down_start") {
-//        ui->label->setText("开始下载");
-////        ui->progressBar->setValue(0);
-//        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
         ratio_sus = 0;
     }
     else if(type == "down_pulse"){
@@ -151,24 +149,9 @@ QString SudoDispatcher::dealProgressData(QString type, QString msg) {
             progressFlag = false;
         }
         ratio_sus = 100;
-//        if(progressFlag) {//更新软件源的下载，此时如果下载完成，则代码整个更新的过程已经结束，需要把进度条隐藏了。
-//            this->hide();
-//        }
-//        else {//软件操作的下载，此时下载完成，并不是整个操作过程的结束，所以进度条不能隐藏。
-//            ui->label->setText("下载完成");
-//            ratio_sus=0;
-//            ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
-//        }
     }
     else if(type == "apt_start"){
         ratio_sus = 0;
-//        if(this->isHidden()) {
-//            this->show();
-//        }
-//        ui->label->setText("开始");
-////        ui->progressBar->setValue(0);
-//        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
-//        ratio_sus=1;
 
     }
     else if(type == "apt_pulse"){
@@ -180,30 +163,15 @@ QString SudoDispatcher::dealProgressData(QString type, QString msg) {
                     int value = status_value.at(1).toInt();
                     QStringList action_value = process_value.at(1).split(":");
                     info = action_value.at(1);
-//                    ui->label->setText("正在进行:" + act);
                     ratio_sus = value;
-//                    ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
                 }
             }
         }
     }
     else if(type == "apt_stop") {
         ratio_sus = 100;
-//        ui->label->setText("完成");
-////        ui->progressBar->setValue(0);
-//        ratio_sus=100;
-//        ui->label_2->setText(tr("%1").arg(ratio_sus)+"%");
-//        update();
-////        sleep(2000);
-//        QTimer *timer = new QTimer(this);
-//        timer->setInterval(2000);
-//        connect(timer,SIGNAL(timeout()),this,SLOT(reset_status()));
-//        timer->start();
-//        ratio_sus=100;
-//        update();
     }
     return info;
-//    update();
 }
 
 //下载
@@ -231,7 +199,7 @@ void SudoDispatcher::handlerSoftwareApt(QString type, QString msg) {
         if (type == "apt_stop") {
             emit finishSoftwareApt(type);
         }
-    } 
+    }
 }
 
 //得到所有软件的状态
@@ -245,7 +213,8 @@ void SudoDispatcher::handlerGetSoftwareListStatus(QStringList statusDict) {
 }
 
 void SudoDispatcher::showPasswdDialog(int window_x, int window_y) {
-    authdialog = new AuthDialog("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。");
+    AuthDialog *authdialog = new AuthDialog("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。");
+//    authdialog = new AuthDialog("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。");
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     authdialog->move(this->alert_x, this->alert_y);

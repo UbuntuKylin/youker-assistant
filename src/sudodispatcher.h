@@ -22,7 +22,7 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
-#include "authdialog.h"
+//#include "authdialog.h"
 //#include "progressdialog.h"
 #include "updatedialog.h"
 class QSettings;
@@ -136,7 +136,7 @@ public slots:
 //    void reGetStatusList();
 private:
     QDBusInterface *sudoiface;
-    AuthDialog *authdialog;
+//    AuthDialog *authdialog;
 //    ProgressDialog *progressdialog;
     UpdateDialog *updatedialog;
     //存放软件列表的状态

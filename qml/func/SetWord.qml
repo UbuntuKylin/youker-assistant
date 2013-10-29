@@ -53,9 +53,35 @@ Rectangle {
             //屏幕坏点检测
             if (flag == "CheckScreen")
                 sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
+
+            //weather
             else if (flag == "ChangeCity") {
                 sessiondispatcher.showChangeCityDialog(/*mainwindow.pos.x, mainwindow.pos.y*/);
             }
+            else if (flag == "WeatherForecast") {
+                //1、获取六天天气预报数据
+                sessiondispatcher.get_forecast_weahter_qt();
+                //2、开始给天气预报界面发送更新数据信号
+                sessiondispatcher.update_forecast_weather();
+                //3、加载天气预报界面
+                pageStack.push(weatherpage);
+            }
+            else if (flag == "WeatherPreference") {
+                sessiondispatcher.showWizardController();
+            }
+            //bbs help
+            else if (flag == "BBS") {
+                Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
+            }
+            //new version feature
+            else if (flag == "VersionFeature") {
+                sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
+            }
+            //report bug
+            else if(flag == "BUG") {
+                Qt.openUrlExternally("https://bugs.launchpad.net/youker-assistant");
+            }
+
             else if (flag == "WidgetTheme")
                 pageStack.push(widgetthemepage);
             else if (flag == "DesktopiconSet")
