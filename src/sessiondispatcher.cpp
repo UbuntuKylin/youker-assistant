@@ -63,6 +63,7 @@ SessionDispatcher::~SessionDispatcher() {
     mSettings->sync();
     if (mSettings != NULL)
         delete mSettings;
+
     this->exit_qt();
 }
 
@@ -677,10 +678,16 @@ void SessionDispatcher::get_forecast_weahter_qt() {
 //     ( "temp" ,  QVariant(QString, "14") ) ( "temp1" ,  QVariant(QString, "25℃") )
 //     ( "temp2" ,  QVariant(QString, "15℃") ) ( "time" ,  QVariant(QString, "08:00") )
 //     ( "weather" ,  QVariant(QString, "多云转阴") ) )
-void SessionDispatcher::get_current_weather_qt() {
+bool SessionDispatcher::get_current_weather_qt() {
     getCityIdInfo();
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
     currentInfo = reply.value();
+    if(currentInfo.isEmpty()) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 
 QString SessionDispatcher::get_current_pm25_qt() {

@@ -35,26 +35,32 @@ Rectangle {
         }
     }
 
+    //当启动时没有网络的时候，设置默认界面
+    function setDefaultWeather() {
+        weatherIcon.source = "../img/weather/d0.gif"
+        locationText.text = "无法获取天气数据，";
+        ptimeText.text = "请检查网络。";
+        weatherText.text = "天气";
+        windText.text = "风力";
+        pmText.text = "空气质量指数";
+        tempText.text = "当前温度（℃）";
+        temperatureRangeText.text = "温度范围";
+        humidityText.text = "湿度";
+    }
+
     //设置天气数据到QML界面上
     function resetCurrentWeather() {
         var ptime = sessiondispatcher.getSingleWeatherInfo("ptime", "current");//eg: 08:00
         var need_str = ptime.substr(0, ptime.lastIndexOf(":"));//eg: 08
         //将字符串类型的时间转成整形
         var pIntTime = parseInt(need_str, 10);//eg: 8
-//        console.log("111111111111");
-//        console.log(pIntTime);
         if(pIntTime > 7 && pIntTime < 20) {
             var img1 = sessiondispatcher.getSingleWeatherInfo("img1", "current");
             weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img1, "weathericon")
-//            console.log("1111111111");
-//            console.log(sessiondispatcher.getSingleWeatherInfo(img1, "weathericon"));
         }
         else {
-//            weatherIcon.source = sessiondispatcher.getSingleWeatherInfo("img2", "current");
             var img2 = sessiondispatcher.getSingleWeatherInfo("img2", "current");
             weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img2, "weathericon")
-//            console.log("2222222");
-//            console.log(sessiondispatcher.getSingleWeatherInfo(img2, "weathericon"));
         }
 
 
@@ -75,11 +81,14 @@ Rectangle {
     Connections
     {
         target: sessiondispatcher
+        //用户修改了城市时更新
         onStartChangeQMLCity: {
-            sessiondispatcher.get_current_weather_qt();
-            weahterzone.resetCurrentWeather();
-            weahterzone.resetChangeCityBtn();
+            if(sessiondispatcher.get_current_weather_qt()) {
+                weahterzone.resetCurrentWeather();
+                weahterzone.resetChangeCityBtn();
+            }
         }
+        //自动更新时间到了的时候更新
         onStartUpdateRateTime: {
             updateTime.interval = 1000 * rate;
         }
@@ -88,9 +97,13 @@ Rectangle {
     Component.onCompleted: {
         var rate = sessiondispatcher.get_current_rate();
         updateTime.interval = 1000 * rate;
-        sessiondispatcher.get_current_weather_qt();
-        weahterzone.resetCurrentWeather();
-        weahterzone.resetChangeCityBtn();
+        if(sessiondispatcher.get_current_weather_qt()) {
+            weahterzone.resetCurrentWeather();
+            weahterzone.resetChangeCityBtn();
+        }
+        else {
+            weahterzone.setDefaultWeather();
+        }
     }
     Text {
         id: locationText
@@ -123,7 +136,7 @@ Rectangle {
         spacing: 20
         Column {
             id: leftrow
-            spacing: 3
+            spacing: 5
             Image {
                 id: weatherIcon
                 width: 48; height: 48
@@ -176,6 +189,7 @@ Rectangle {
                     onClicked: {
                         if(sessiondispatcher.update_weather_data_qt()) {
                             weahterzone.resetCurrentWeather();
+                            weahterzone.resetChangeCityBtn();
                             toolkits.alertMSG("更新完毕！", mainwindow.pos.x, mainwindow.pos.y);
                         }
                     }
@@ -226,8 +240,10 @@ Rectangle {
             id: updateTime
             interval: 60 * 1000;running: true;repeat: true
             onTriggered: {
-                sessiondispatcher.get_current_weather_qt();
-                weahterzone.resetCurrentWeather();
+                if(sessiondispatcher.get_current_weather_qt()) {
+                    weahterzone.resetCurrentWeather();
+                    weahterzone.resetChangeCityBtn();
+                }
             }
         }
 }

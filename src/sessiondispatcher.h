@@ -176,7 +176,7 @@ public:
 
     /*-------------------weather forecast-------------------*/
     Q_INVOKABLE void get_forecast_weahter_qt();
-    Q_INVOKABLE void get_current_weather_qt();
+    Q_INVOKABLE bool get_current_weather_qt();
     Q_INVOKABLE QString get_current_pm25_qt();
     //得到配置文件中的更新周期
     Q_INVOKABLE int get_current_rate();
