@@ -553,12 +553,12 @@ QString SessionDispatcher::get_free_memory_qt() {
     return reply.value();
 }
 
-void SessionDispatcher::get_network_flow_qt() {
-    QStringList tmplist;
-    tmplist << "Kobe" << "Lee";
-    KThread *thread = new KThread(tmplist, sessioniface, "get_network_flow");
-    thread->start();
-}
+//void SessionDispatcher::get_network_flow_qt() {
+//    QStringList tmplist;
+//    tmplist << "Kobe" << "Lee";
+//    KThread *thread = new KThread(tmplist, sessioniface, "get_network_flow");
+//    thread->start();
+//}
 
 QStringList SessionDispatcher::get_network_flow_total_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_network_flow_total");

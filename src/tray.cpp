@@ -67,11 +67,20 @@ Tray::~Tray() {
 
 void Tray::updateData() {
     QStringList current_speed = sedispather->get_network_flow_total_qt();
-    double up_before = total_speed[0].toDouble();
-    double down_before = total_speed[1].toDouble();
-    double up_now = current_speed[0].toDouble();
-    double down_now = current_speed[1].toDouble();
-    total_speed = current_speed;
+    double up_before = 0.0;
+    double down_before = 0.0;
+    if(!total_speed.isEmpty()) {
+        up_before = total_speed[0].toDouble();
+        down_before = total_speed[1].toDouble();
+    }
+    double up_now = 0.0;
+    double down_now = 0.0;
+    if(!current_speed.isEmpty()) {
+        up_now = current_speed[0].toDouble();
+        down_now = current_speed[1].toDouble();
+        total_speed = current_speed;
+    }
+
     double up_final = up_now - up_before;
     double down_final = down_now - down_before;
 

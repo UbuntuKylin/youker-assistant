@@ -139,8 +139,8 @@ int main(int argc, char** argv)
     dialog.setWindowFlags(Qt::FramelessWindowHint);
     IhuApplication application;
     QTimer timer;
-    QObject::connect(&timer, SIGNAL(timeout()), &dialog, SLOT(accept()));
-    timer.start(5000);
+    QObject::connect(&timer, SIGNAL(timeout()), &dialog, SLOT(hide()));
+    timer.start(3000);
     dialog.exec();//在主窗口显示之前启动界面退出
     if (!application.setup()) {
         return 0;

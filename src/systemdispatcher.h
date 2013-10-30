@@ -68,13 +68,8 @@ public:
     Q_INVOKABLE void restore_all_sound_file_qt(QString soundtheme);
     //-----------------------------------------------
 
-    //-----------------------sound------------------------
-    Q_INVOKABLE double get_cpu_percent_qt();
-    Q_INVOKABLE QString get_total_memory_qt();
-    Q_INVOKABLE QString get_used_memory_qt();
-    Q_INVOKABLE QString get_free_memory_qt();
-    Q_INVOKABLE QStringList get_network_flow_total_qt();
-    Q_INVOKABLE void get_network_flow_qt();
+    //-----------------------monitorball------------------------
+    //一键加速
     Q_INVOKABLE void cleanup_memory_qt();
     //-----------------------------------------------
 
