@@ -28,10 +28,10 @@ KThread::~KThread() {
     stop();
 }
 void KThread::run() {
-    if(methodName == "get_network_flow") {
-        iface->call("get_network_flow");
-    }
-    else if(methodName == "clean_by_main_one_key") {
+//    if(methodName == "get_network_flow") {
+//        iface->call("get_network_flow");
+//    }
+    if(methodName == "clean_by_main_one_key") {
         iface->call("clean_by_main_one_key", list);
     }
     else if(methodName == "clean_by_second_one_key") {
