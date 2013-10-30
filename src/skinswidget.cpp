@@ -44,6 +44,10 @@ SkinsWidget::SkinsWidget(QSettings *mSettings, QWidget *parent)
     mainLayout->setContentsMargins(0, 0, 0, 0);
     setLayout(mainLayout);
     this->showSkin(QString::number(current_page, 10));
+
+
+    QDesktopWidget* desktop = QApplication::desktop();
+    move((desktop->width() - this->width())/2, (desktop->height() - this->height())/2);
 }
 
 void SkinsWidget::initTitleBar() {

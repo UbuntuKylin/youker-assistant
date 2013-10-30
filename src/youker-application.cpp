@@ -34,12 +34,20 @@
 //#include <QFile>
 //#include <QIODevice>
 
-IhuApplication::IhuApplication(int &argc, char **argv)
-    : QApplication(argc, argv), viewer(0)
+
+
+IhuApplication::IhuApplication(QObject *parent)
+    : QObject(parent), viewer(0)
 {
     tray = new Tray();
     connect(tray,SIGNAL(showOrHideQmlSignal()),this,SLOT(showOrHideMainPage()));
 }
+//IhuApplication::IhuApplication(int &argc, char **argv)
+//    : QApplication(argc, argv), viewer(0)
+//{
+//    tray = new Tray();
+//    connect(tray,SIGNAL(showOrHideQmlSignal()),this,SLOT(showOrHideMainPage()));
+//}
 
 IhuApplication::~IhuApplication() {
     if (viewer) {
@@ -75,7 +83,7 @@ void IhuApplication::showOrHideMainPage() {
 }
 
 bool IhuApplication::setup() {
-    IhuApplication::setApplicationName("Youker Assistant");
+//    IhuApplication::setApplicationName("Youker Assistant");
 
     viewer = new QDeclarativeView;
     viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));

@@ -84,25 +84,36 @@ void registerTypes() {
 
 int main(int argc, char** argv)
 {
-//    QtSingleApplication app(argc, argv);
-//    if (app.isRunning())
-//        return 0;
+    QtSingleApplication app(argc, argv);
+    if (app.isRunning())
+        return 0;
 
-    int num = 0;
-    QProcess *process = new QProcess();
-    QStringList *args = new QStringList();
-    args->append("aux");
-    process->start("ps", *args);
-    process->waitForFinished();
-    while(process->canReadLine()) {
-        QString tmp = process->readLine();
-        if(tmp.endsWith("youker-assistant\n")) {
-            num += 1;
-        }
-        if(num > 1) {
-            exit(0);
-        }
-    }
+//    int num = 0;
+//    QProcess *process = new QProcess();
+//    QStringList *args = new QStringList();
+//    args->append("aux");
+//    process->start("ps", *args);
+//    process->waitForFinished();
+//    while(process->canReadLine()) {
+//        QString tmp = process->readLine();
+//        if(tmp.endsWith("youker-assistant\n")) {
+//            num += 1;
+//        }
+//        if(num > 1) {
+//            exit(0);
+//        }
+//    }
+
+//    QSharedMemory mem("YoukerAssistant");//以系统exe名称为参数，定义共享内存mem
+//    if(!mem.create(1))//创建共享内存mem，如果该共享内存已存在，则弹出提示对话框，并退出
+//    {
+////        QMessageBox::information(0,QObject::tr("Warning"),QObject::tr("An instance is running"));
+//        QMessageBox::warning(NULL,
+//                             QObject::tr("警告"),
+//                             QObject::tr("没有找到软件列表文件！"),
+//                             QMessageBox::Ok);
+//        return 0;
+//    }
 
 
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
@@ -118,11 +129,13 @@ int main(int argc, char** argv)
     if (value_system != 0)
         qDebug() << "SystemDaemon Failed!";
 
-    IhuApplication application(argc, argv);
+//    IhuApplication application(argc, argv);
+    IhuApplication application;
     if (!application.setup()) {
         return 0;
     }
-    return application.exec();
+//    return application.exec();
+    return app.exec();
 }
 
 

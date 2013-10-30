@@ -29,11 +29,13 @@
 //const QString SOURCE_LIST = "/etc/apt/sources1.list";
 //const QString LSB_RELEASE = "/etc/lsb-release";
 
-class IhuApplication : public QApplication
+#include <QObject>
+
+class IhuApplication : public QObject
 {
     Q_OBJECT
 public:
-    IhuApplication(int &argc, char **argv);
+    explicit IhuApplication(QObject *parent = 0);
     virtual ~IhuApplication();
     bool setup();
 private:
@@ -45,4 +47,22 @@ public slots:
     //主界面显示和隐藏
     void showOrHideMainPage();
 };
+
+
+//class IhuApplication : public QApplication
+//{
+//    Q_OBJECT
+//public:
+//    IhuApplication(int &argc, char **argv);
+//    virtual ~IhuApplication();
+//    bool setup();
+//private:
+//    //关联QML界面
+//    QDeclarativeView *viewer;
+//    //系统托盘
+//    Tray *tray;
+//public slots:
+//    //主界面显示和隐藏
+//    void showOrHideMainPage();
+//};
 #endif // SYSTEMAPPLICATION_H

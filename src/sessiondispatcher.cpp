@@ -587,10 +587,10 @@ QString SessionDispatcher::setSkin() {
     return skinName;
 }
 
-void SessionDispatcher::showSkinWidget(int window_x, int window_y) {
-    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-    this->alert_y = window_y + mainwindow_height - 400;
-    skin_widget->move(this->alert_x, this->alert_y);
+void SessionDispatcher::showSkinWidget(/*int window_x, int window_y*/) {
+//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+//    this->alert_y = window_y + mainwindow_height - 400;
+//    skin_widget->move(this->alert_x, this->alert_y);
     skin_widget->show();
 }
 
