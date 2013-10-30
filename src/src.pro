@@ -64,8 +64,7 @@ HEADERS += youker-application.h \
     locationdialog.h \
     wizarddialog.h \
     changecitydialog.h \
-    util.h \
-    startapplication.h
+    util.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -110,8 +109,7 @@ SOURCES += main.cpp \
     locationdialog.cpp \
     wizarddialog.cpp \
     changecitydialog.cpp \
-    util.cpp \
-    startapplication.cpp
+    util.cpp
 RESOURCES += pixmap.qrc
 
 FORMS += \
