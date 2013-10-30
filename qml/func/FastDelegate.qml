@@ -18,7 +18,6 @@ import "common" as Common
 import SessionType 0.1
 Item {
     id: clearDelegate
-    property SessionDispatcher dis: sessiondispatcher
     property string pagenum: ""
     width: parent.width//clearDelegate.ListView.view.width
     height: 65

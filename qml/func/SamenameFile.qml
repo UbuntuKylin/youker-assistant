@@ -26,7 +26,6 @@ Item {
     property string title: "清理同名文件"
     property string description: "清理用户指定目录下的同名文件，节省磁盘空间"
     property string btn_flag: "samenamefile_scan"
-    property SystemDispatcher dis: systemdispatcher
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
     property int sub_num: 0

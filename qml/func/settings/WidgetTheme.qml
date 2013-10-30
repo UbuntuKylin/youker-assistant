@@ -26,7 +26,6 @@ Rectangle {
     property string actiontext: "选中您想设置的主题，点击确定按钮更换主题；优客助手启动时页面上的第一个主题为系统当前使用的主题。"
     property string init_theme: ""
     property string selected_theme: ""
-    property SessionDispatcher dis: sessiondispatcher
     property bool listorgrid: false
     property int num: 0
 

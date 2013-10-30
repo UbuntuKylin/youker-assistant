@@ -28,7 +28,6 @@ Item {
     property string description: "删除占用磁盘空间的无用大文件，释放更多磁盘空间。"
     property string scope_desc: "文件的大小范围为1M--20480M，暂不支持中文路径。"
     property string btn_flag: "largestfile_work"
-    property SystemDispatcher dis: systemdispatcher
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
     property int sub_num: 0

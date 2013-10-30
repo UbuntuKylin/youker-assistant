@@ -27,7 +27,6 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-    property SessionDispatcher dis: sessiondispatcher
     property int cursor_size: 24
     property string default_cursor_theme: ""
 

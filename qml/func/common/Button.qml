@@ -303,7 +303,6 @@ Item {
 
 //    SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
 ////    color: "transparent"
-//    property SystemDispatcher dis: systemdispatcher
 ////    property string iconName: "onekeyBtn.png"
 //    property string setbtn_flag: ""
 

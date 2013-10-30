@@ -86,7 +86,7 @@ Item {
                 Common.Page {
                     id: homepage
                     visible: false
-                    HomePage {dis1: sessiondispatcher; dis2: systemdispatcher}
+                    HomePage {}
                 }
                 Common.Page {
                     id: systemmessage
@@ -101,12 +101,12 @@ Item {
                 Common.Page {
                     id: systemset
                     visible: false
-                    SystemSet {dis1: sessiondispatcher; dis2: systemdispatcher}
+                    SystemSet {}
                 }
                 Common.Page {
                     id: functioncollection
                     visible: false
-                    FunctionCollection {dis: systemdispatcher}
+                    FunctionCollection {}
                 }
                 Common.Page {
                     id: softwarerecommend

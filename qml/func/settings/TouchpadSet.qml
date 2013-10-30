@@ -27,7 +27,6 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-    property SessionDispatcher dis: sessiondispatcher
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
     property string actiontitle: "触摸板设置"

@@ -28,7 +28,6 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
 
-    property SessionDispatcher dis: sessiondispatcher
     property int launcher_size: 24
     property string actiontitle: "启动器设置"
     property string actiontext: "用户可以根据需要设置启动器的自动隐藏功能和启动器上图标的显示尺寸；拖动滑动条，点击“确定”按钮完成大小设置。"

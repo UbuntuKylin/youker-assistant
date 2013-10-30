@@ -23,15 +23,12 @@ import "common" as Common
 Rectangle {
     id: rightbar
     width: screen.width - 600; height: 460
-    property SessionDispatcher dis1: sessiondispatcher
 
 //推荐软件的三张图片
     property string image1: "../img/skin/qq0.png"
     property string image2: "../img/skin/qt0.png"
     property string image3: "../img/skin/wps0.png"
     property string mage_source: image1
-
-//    property SystemDispatcher dis2: systemdispatcher
     ListModel {
         id: clearModel
         ListElement {

@@ -20,7 +20,6 @@ import "common" as Common
 import "bars" as Bars
 Item {
     id: screen; width: parent.width; height: 475
-    property SystemDispatcher dis: systemdispatcher
     Rectangle {
         id: setting_widget
         anchors.fill: parent
