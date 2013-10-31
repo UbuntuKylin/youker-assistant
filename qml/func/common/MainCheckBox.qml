@@ -6,6 +6,9 @@ Item {
     property bool checkedbool: true      //总checkbox的bool型值，check通有的属性，在单独点击总checkbox时进行总控制的变量
     property int minimumWidth: 15//32
     property int minimumHeight: 15//32
+
+    signal sendMainStatus(bool status);
+
     width: minimumWidth
     height: minimumHeight
     Rectangle {
@@ -47,7 +50,6 @@ Item {
         {
             simage.source="../../img/icons/checkbox.png";
             checkedbool=true;
-
         }
         else if(checked=="mid")
             simage.source="../../img/icons/checkbox-2.png"
@@ -56,6 +58,7 @@ Item {
             simage.source=""
             checkedbool=false;
         }
+
     }
 }
 

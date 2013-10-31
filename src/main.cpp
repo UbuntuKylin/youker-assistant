@@ -124,28 +124,55 @@ int main(int argc, char** argv)
 
 
 
-
-
     int value_session = system("/usr/bin/youkersession &");
     if (value_session != 0)
         qDebug() << "SessionDaemon Failed!";
     int value_system = system("/usr/bin/youkersystem");
     if (value_system != 0)
         qDebug() << "SystemDaemon Failed!";
-    QDialog dialog;//定义一个启动显示窗口
+    //定义一个启动显示窗口
+    QDialog dialog;
     dialog.setStyleSheet(QString::fromUtf8("background-image: url(:/pixmap/image/feature.png);"));
     QDesktopWidget* desktop = QApplication::desktop();
-    dialog.setGeometry(QRect((desktop->width() - 513)/2, (desktop->height() - 417)/2, 513, 417));//设置启动窗口的坐标及尺寸大小
+    dialog.setGeometry(QRect((desktop->width() - 400)/2, (desktop->height() - 400)/2, 400, 400));//设置启动窗口的坐标及尺寸大小
     dialog.setWindowFlags(Qt::FramelessWindowHint);
+
     IhuApplication application;
+    application.setup();
+
     QTimer timer;
     QObject::connect(&timer, SIGNAL(timeout()), &dialog, SLOT(hide()));
     timer.start(3000);
+
     dialog.exec();//在主窗口显示之前启动界面退出
-    if (!application.setup()) {
-        return 0;
-    }//启动界面结束后显示主窗口
+
+    //启动界面结束后显示主窗口
+    application.showQMLWidget();
     return app.exec();
+
+
+
+
+//    int value_session = system("/usr/bin/youkersession &");
+//    if (value_session != 0)
+//        qDebug() << "SessionDaemon Failed!";
+//    int value_system = system("/usr/bin/youkersystem");
+//    if (value_system != 0)
+//        qDebug() << "SystemDaemon Failed!";
+//    QDialog dialog;//定义一个启动显示窗口
+//    dialog.setStyleSheet(QString::fromUtf8("background-image: url(:/pixmap/image/feature.png);"));
+//    QDesktopWidget* desktop = QApplication::desktop();
+//    dialog.setGeometry(QRect((desktop->width() - 400)/2, (desktop->height() - 400)/2, 400, 400));//设置启动窗口的坐标及尺寸大小
+//    dialog.setWindowFlags(Qt::FramelessWindowHint);
+//    IhuApplication application;
+//    QTimer timer;
+//    QObject::connect(&timer, SIGNAL(timeout()), &dialog, SLOT(hide()));
+//    timer.start(3000);
+//    dialog.exec();//在主窗口显示之前启动界面退出
+//    if (!application.setup()) {
+//        return 0;
+//    }//启动界面结束后显示主窗口
+//    return app.exec();
 
 
 

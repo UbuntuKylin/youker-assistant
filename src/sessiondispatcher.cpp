@@ -827,3 +827,8 @@ void SessionDispatcher::getCityIdInfo() {
     mSettings->endGroup();
     mSettings->sync();
 }
+
+
+void SessionDispatcher::change_maincheckbox_status(QString status) {
+    emit startChangeMaincheckboxStatus(status);
+}

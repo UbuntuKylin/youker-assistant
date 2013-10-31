@@ -39,6 +39,7 @@
 IhuApplication::IhuApplication(QObject *parent)
     : QObject(parent), viewer(0)
 {
+    viewer = new QDeclarativeView;
     tray = new Tray();
     connect(tray,SIGNAL(showOrHideQmlSignal()),this,SLOT(showOrHideMainPage()));
 }
@@ -82,10 +83,7 @@ void IhuApplication::showOrHideMainPage() {
     }
 }
 
-bool IhuApplication::setup() {
-//    IhuApplication::setApplicationName("Youker Assistant");
-
-    viewer = new QDeclarativeView;
+void IhuApplication::setup() {
     viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
     viewer->setSource(QUrl::fromLocalFile("main.qml"));
     viewer->rootContext()->setContextProperty("mainwindow", viewer);
@@ -93,7 +91,9 @@ bool IhuApplication::setup() {
     viewer->setAttribute(Qt::WA_TranslucentBackground);
     viewer->setWindowFlags(Qt::FramelessWindowHint);
     QObject::connect(viewer->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
+}
 
+void IhuApplication::showQMLWidget() {
     QDesktopWidget* desktop = QApplication::desktop();
     QSize size = viewer->sizeHint();
     int width = desktop->width();
@@ -104,5 +104,4 @@ bool IhuApplication::setup() {
     int centerH = (height/2) - (mh/2);
     viewer->move(centerW, centerH);
     viewer->show();
-    return true;
 }

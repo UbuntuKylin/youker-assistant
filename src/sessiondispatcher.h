@@ -206,6 +206,9 @@ public:
     Q_INVOKABLE int getLengthOfCityList();
     void initConfigFile();
     void getCityIdInfo();
+
+    //改变主checkbox的状态
+    Q_INVOKABLE void change_maincheckbox_status(QString status);
 signals:
     //告知QML那种某种类型的字体样式
 //    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
@@ -217,6 +220,8 @@ signals:
     void startChangeQMLCity();//发送开始更换QML城市
     void startUpdateForecastWeahter();//发送开始更换六天天气预报
     void startUpdateRateTime(int rate);//发送开始更换天气自动更新周期时间
+    //改变主checkbox的状态
+    void startChangeMaincheckboxStatus(QString status);
 public slots:
 //    QString show_signal(QString msg);
     //扫描完成后触发finishScanWork信号

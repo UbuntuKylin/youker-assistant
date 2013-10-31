@@ -37,7 +37,8 @@ class IhuApplication : public QObject
 public:
     explicit IhuApplication(QObject *parent = 0);
     virtual ~IhuApplication();
-    bool setup();
+    void setup();
+    void showQMLWidget();
 private:
     //关联QML界面
     QDeclarativeView *viewer;
