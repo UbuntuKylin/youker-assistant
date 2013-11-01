@@ -53,12 +53,17 @@
 #include "KThread.h"
 #include <QtSingleApplication>
 
+#include "processmanager.h"//1101
+
 
 void registerTypes() {
     qmlRegisterType<Toolkits>("ToolkitsType", 0, 1, "Toolkits");
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<SudoDispatcher>("SudoType", 0, 1, "SudoDispatcher");
+
+    qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");//1101
+
     qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");

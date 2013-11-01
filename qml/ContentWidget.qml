@@ -120,6 +120,12 @@ Item {
                     visible: false
                     SoftwarePage {}
                 }
+                //ProcessManager page
+                Common.Page {
+                    id: processmanagerpage
+                    visible: false
+                    ProcessManager {}
+                }
                 //WeatherForecast-page
                 Common.Page {
                     id:weatherpage

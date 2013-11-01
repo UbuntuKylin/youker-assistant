@@ -139,6 +139,9 @@ Rectangle {
                     }
                 }
             }
+            else if(flag == "ProcessManager") {
+                pageStack.push(processmanagerpage);
+            }
 
 //            else
 //                iconClicked();

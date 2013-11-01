@@ -54,13 +54,14 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     skin_widget = new SkinsWidget(mSettings);
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
+
+//    processManager = new ProcessManager();
 }
 
 SessionDispatcher::~SessionDispatcher() {
     mSettings->sync();
     if (mSettings != NULL)
         delete mSettings;
-
     this->exit_qt();
 }
 
@@ -136,6 +137,11 @@ void SessionDispatcher::get_system_message_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         systemInfo = value;
+        //把当前登录的用户名存放到QSetting配置文件中，方便任务管理器使用
+        mSettings->beginGroup("user");
+        mSettings->setValue("currentName", systemInfo["currrent_user"].toString());
+        mSettings->endGroup();
+        mSettings->sync();
     }
     else {
         qDebug() << "get pc_message failed!";

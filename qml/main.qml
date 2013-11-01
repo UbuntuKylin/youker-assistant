@@ -21,6 +21,7 @@ import SessionType 0.1
 import SystemType 0.1
 import SudoType 0.1
 import FcitxCfgWizard 0.1
+import ProcessType 0.1//1101
 
 Rectangle {
     id: main
@@ -42,7 +43,12 @@ Rectangle {
     FcitxCfgWizard {
         id: fcitxcfgwizard
     }
-    Toolkits{id: toolkits}
+    Toolkits{
+        id: toolkits
+    }
+    ProcessManager {//1101
+        id: processmanager
+    }
 
     Component.onCompleted: {
         main.bgName = sessiondispatcher.setSkin();
