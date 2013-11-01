@@ -16,39 +16,21 @@
 
 #include "youker-application.h"
 #include <QDeclarativeView>
-#include <QApplication>
 #include <QDebug>
-#include <QDir>
-#include <QtGui/QApplication>
-#include <QtDeclarative/QDeclarativeView>
 #include <QtDeclarative/QDeclarativeEngine>
-#include <QtDeclarative/QDeclarativeComponent>
-#include <QtDeclarative/QDeclarativeContext>
-#include <QtDeclarative/QDeclarativeItem>
 #include <QMetaObject>
 #include <QDeclarativeContext>
 #include <QDesktopWidget>
 #include <QGraphicsObject>
 #include <QtDBus>
-//#include <QMessageBox>
-//#include <QFile>
-//#include <QIODevice>
 
-
-
-IhuApplication::IhuApplication(QObject *parent)
-    : QObject(parent), viewer(0)
+IhuApplication::IhuApplication(QWidget *parent)
+    : QWidget(parent), viewer(0)
 {
     viewer = new QDeclarativeView;
     tray = new Tray();
     connect(tray,SIGNAL(showOrHideQmlSignal()),this,SLOT(showOrHideMainPage()));
 }
-//IhuApplication::IhuApplication(int &argc, char **argv)
-//    : QApplication(argc, argv), viewer(0)
-//{
-//    tray = new Tray();
-//    connect(tray,SIGNAL(showOrHideQmlSignal()),this,SLOT(showOrHideMainPage()));
-//}
 
 IhuApplication::~IhuApplication() {
     if (viewer) {

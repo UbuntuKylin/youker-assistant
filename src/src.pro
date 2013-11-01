@@ -122,7 +122,6 @@ FORMS += \
     tray.ui \
     fcitxwarndialog.ui \
     suspensionframe.ui \
-    progressdialog.ui \
     alertdialog.ui \
     locationdialog.ui \
     wizarddialog.ui \

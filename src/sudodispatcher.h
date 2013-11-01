@@ -22,8 +22,6 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
-//#include "authdialog.h"
-//#include "progressdialog.h"
 #include "updatedialog.h"
 class QSettings;
 
@@ -39,8 +37,6 @@ public:
     Q_INVOKABLE void exit_qt();
     //弹出密码输入框
     Q_INVOKABLE void showPasswdDialog(int window_x, int window_y);
-    //弹出进度条
-//    Q_INVOKABLE void showProgressDialog(int window_x, int window_y);
     //弹出更新软件源对话框
     Q_INVOKABLE void showUpdateSourceDialog(int window_x, int window_y);
     //得到sudodbus验证值，可以通过该值验证服务是否正在运行
@@ -51,12 +47,9 @@ public:
     Q_INVOKABLE void bind_signals_after_dbus_start();
     //通过键值得到对应软件的状态
     Q_INVOKABLE QString getSoftwareStatus(QString);
-    //得到UbuntuKylin软件源里面软件的列表
-//    Q_INVOKABLE QStringList getUKSoftwareList();
     Q_INVOKABLE bool getUKSignalFlag();
     Q_INVOKABLE void setUKSignalFlag(bool flag);
-//    通知软件的当前状态
-//    Q_INVOKABLE void notifySoftwareCurrentStatus(QString current_status);
+
 
     // -------------------------software-center-------------------------
     //安装软件
@@ -75,10 +68,6 @@ public:
     Q_INVOKABLE QStringList getAllSoftwareExecNameList();
     //得到下载或者是操作过程中发送过来的数据，在显示在进度条上之前处理优化下，返回要显示的文字
     QString dealProgressData(QString type, QString msg);
-//    //添加UbuntuKylin软件源
-//    Q_INVOKABLE void add_source_ubuntukylin_qt();
-//    //删除UbuntuKylin软件源
-//    Q_INVOKABLE void remove_source_ubuntukylin_qt();
     //得到所有app的列表，根据列表的名字可以显示所有软件机器logo到推荐界面上
     Q_INVOKABLE void getAppListForDisPlay();
     //发送标记，根据标记准备显示对应app的页面信息
@@ -98,8 +87,6 @@ signals:
     void finishSoftwareFetch(QString type, QString msg);
     //软件安装、卸载、升级过程发送的信号
     void finishSoftwareApt(QString type);
-    //将软件状态通过信号告诉QML
-//    void sendSoftwareStatus(QString current_status);
     //将软件操作过程中的状态和进度告诉给进度条去显示
     void sendDynamicSoftwareProgress(QString type, QString msg);
     //将软件操作过程中的状态和进度告诉给进度条去显示
@@ -108,8 +95,6 @@ signals:
     void notifySourceStatusToQML(QString download_items, QString total_items);
     //调用遮罩层
     void callMasklayer();
-    //重新获取所有软件状态
-//    void reGetList();
 
     //准备显示对应app的页面信息的信号
     void sendAppInfo(QString flag);
@@ -130,14 +115,9 @@ public slots:
     void handlerGetSoftwareListStatus(QStringList statusDict);
     //准备开始更新软件源
     void startUpdateSoftwareSource();
-//    得到进度条传来的软件源更新的实时进度
-//    void getSoftwareSourceUpdateProgress(QString cur_status);
-    //返回软件主页面时重新获取所有软件的状态
-//    void reGetStatusList();
+
 private:
     QDBusInterface *sudoiface;
-//    AuthDialog *authdialog;
-//    ProgressDialog *progressdialog;
     UpdateDialog *updatedialog;
     //存放软件列表的状态
     QMap<QString, QString> status_dict;

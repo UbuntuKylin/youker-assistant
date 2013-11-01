@@ -194,6 +194,35 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
+
+//            Rectangle {
+//                id: highlight
+
+//                property int widthDest: 100//((progressbar.width * (value - minimum)) / (maximum - minimum) - 6)
+
+//                height: highlight.widthDest
+//                Behavior on height { SmoothedAnimation { velocity: 1200 } }
+//                width: 20
+
+////                height: highlight.widthDest
+////                Behavior on height { SmoothedAnimation { velocity: 1200 } }
+
+////                anchors { left: parent.left; top: parent.top; bottom: parent.bottom; margins: 3 }
+//                radius: 1
+
+//       //         width: progressbar.height
+//       //         height:progressbar.width
+//                gradient: Gradient {
+//                    GradientStop { id: gradient1; position: 0.0; color: "#086794" }
+//                    GradientStop { id: gradient2; position: 1.0; color: "#318d11" }
+//                }
+//                smooth:true
+//                rotation: 90
+//                //旋转的中心点
+//                transformOrigin: "Center"
+
+//            }
+
             Bars.Progress {
                 id: progress
                 value: 0

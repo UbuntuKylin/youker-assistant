@@ -32,10 +32,7 @@ class WizardDialog : public QDialog
 public:
     explicit WizardDialog(QSettings *mSettings = 0, QWidget *parent = 0);
     ~WizardDialog();
-    
-
     void loadConf();
-//    QString get_id_from_cityname(QString cityName);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
@@ -63,7 +60,6 @@ private:
     QString newCityName;
     QString newCityId;
     QSettings *pSettings;
-//    QString location;
 };
 
 #endif // WIZARDDIALOG_H

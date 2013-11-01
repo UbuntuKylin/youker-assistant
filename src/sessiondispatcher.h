@@ -167,7 +167,6 @@ public:
     Q_INVOKABLE QString get_used_memory_qt();
     Q_INVOKABLE QString get_free_memory_qt();
     Q_INVOKABLE QStringList get_network_flow_total_qt();
-//    Q_INVOKABLE void get_network_flow_qt();
     
     /*-------------------change skin-------------------*/
     Q_INVOKABLE QString setSkin();
@@ -185,20 +184,12 @@ public:
     //更新六天天气预报
     Q_INVOKABLE void update_forecast_weather();
     Q_INVOKABLE void change_select_city_name_qt(QString cityName);
-    //初始化weathericons
-//    void initWeatherIcons();
+
     QMap<QString, QVariant> forecastInfo;
     QMap<QString, QVariant> currentInfo;
-//    QMap<QString, QString> weatherIcon;
     //通过键得到对应的单个信息的值,flag= forecast/current
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 
-    //读取天气配置文件
-//    QMap<QString, QVariant> confData;
-//    Q_INVOKABLE void read_conf_data_qt();
-
-    //列出城市名字
-//    Q_INVOKABLE QStringList list_city_names_qt(QString cityName);
     //显示wizard
     Q_INVOKABLE bool showWizardController();
     //显示更改城市对话框
@@ -210,12 +201,7 @@ public:
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);
 signals:
-    //告知QML那种某种类型的字体样式
-//    void finishSetFont(QString font_style);//绑定到QML的Handler：onFinishSetFont
     void notifyFontStyleToQML(QString font_style);
-    //扫描完成后发送信号
-//    void finishScanWork(QString msg);
-//    void finishGetNetworkSpeed(QStringList speed);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
     void startChangeQMLCity();//发送开始更换QML城市
     void startUpdateForecastWeahter();//发送开始更换六天天气预报
@@ -223,13 +209,7 @@ signals:
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
 public slots:
-//    QString show_signal(QString msg);
-    //扫描完成后触发finishScanWork信号
-//    void handler_scan_rubbish(QString msg);
-//    void handler_network_speed(QStringList speed);
     void handler_change_skin(QString skinName);
-    //设置天气配置文件
-//    void write_conf_data_qt(QString key, QString value);
     //更换城市槽函数
     void handler_change_city();
     //更换自动更新天气周期槽函数

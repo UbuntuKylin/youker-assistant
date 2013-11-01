@@ -40,7 +40,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
 //    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
-//    QObject::connect(sessioniface,SIGNAL(get_speed(QStringList)),this,SLOT(handler_network_speed(QStringList)));
     page_num = 0;
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
@@ -55,8 +54,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     skin_widget = new SkinsWidget(mSettings);
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
-
-//    initWeatherIcons();
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -66,15 +63,6 @@ SessionDispatcher::~SessionDispatcher() {
 
     this->exit_qt();
 }
-
-//void SessionDispatcher::handler_network_speed(QStringList speed) {
-//    emit finishGetNetworkSpeed(speed);
-//    qDebug() << "get speed";
-//}
-
-//void SessionDispatcher::handler_scan_rubbish(QString msg) {
-//    emit finishScanWork(msg);
-//}
 
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
@@ -553,13 +541,6 @@ QString SessionDispatcher::get_free_memory_qt() {
     return reply.value();
 }
 
-//void SessionDispatcher::get_network_flow_qt() {
-//    QStringList tmplist;
-//    tmplist << "Kobe" << "Lee";
-//    KThread *thread = new KThread(tmplist, sessioniface, "get_network_flow");
-//    thread->start();
-//}
-
 QStringList SessionDispatcher::get_network_flow_total_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_network_flow_total");
     return reply.value();
@@ -587,84 +568,9 @@ QString SessionDispatcher::setSkin() {
     return skinName;
 }
 
-void SessionDispatcher::showSkinWidget(/*int window_x, int window_y*/) {
-//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-//    this->alert_y = window_y + mainwindow_height - 400;
-//    skin_widget->move(this->alert_x, this->alert_y);
+void SessionDispatcher::showSkinWidget() {
     skin_widget->show();
 }
-
-/*-------------------weather forecast-------------------*/
-//void SessionDispatcher::initWeatherIcons() {
-//    //"../img/weather/d0.gif"
-//    weatherIcon.insert("d0.gif", "../img/weather/day/sunny.png");
-//    weatherIcon.insert("d1.gif", "../img/weather/day/fewclouds.png");
-//    weatherIcon.insert("d2.gif", "../img/weather/day/fewclouds.png");
-//    weatherIcon.insert("d3.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d4.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d5.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d6.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d7.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d8.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d9.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d10.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d11.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d12.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d13.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d14.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d15.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d16.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d17.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d18.gif", "../img/weather/day/fog.png");
-//    weatherIcon.insert("d19.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d20.gif", "../img/weather/day/fog.png");
-//    weatherIcon.insert("d21.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d22.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d23.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d24.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d25.gif", "../img/weather/day/heavyrain.png");
-//    weatherIcon.insert("d26.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d27.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d28.gif", "../img/weather/day/bigsnow.png");
-//    weatherIcon.insert("d29.gif", "../img/weather/day/fog.png");
-//    weatherIcon.insert("d30.gif", "../img/weather/day/fog.png");
-//    weatherIcon.insert("d31.gif", "../img/weather/day/fog.png");
-//    weatherIcon.insert("d53.gif", "../img/weather/day/fog.png");
-
-//    weatherIcon.insert("n0.gif", "../img/weather/night/sunny.png");
-//    weatherIcon.insert("n1.gif", "../img/weather/night/fewclouds.png");
-//    weatherIcon.insert("n2.gif", "../img/weather/night/fewclouds.png");
-//    weatherIcon.insert("n3.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n4.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n5.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n6.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n7.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n8.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n9.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n10.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n11.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n12.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n13.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n14.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n15.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n16.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n17.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n18.gif", "../img/weather/night/fog.png");
-//    weatherIcon.insert("n19.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n20.gif", "../img/weather/night/fog.png");
-//    weatherIcon.insert("n21.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n22.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n23.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n24.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n25.gif", "../img/weather/night/heavyrain.png");
-//    weatherIcon.insert("n26.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n27.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n28.gif", "../img/weather/night/bigsnow.png");
-//    weatherIcon.insert("n29.gif", "../img/weather/night/fog.png");
-//    weatherIcon.insert("n30.gif", "../img/weather/night/fog.png");
-//    weatherIcon.insert("n31.gif", "../img/weather/night/fog.png");
-//    weatherIcon.insert("n53.gif", "../img/weather/night/fog.png");
-//}
 
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
@@ -672,12 +578,6 @@ void SessionDispatcher::get_forecast_weahter_qt() {
     forecastInfo = reply.value();
 }
 
-//QMap(("SD", QVariant(QString, "59%") ) ( "WD" ,  QVariant(QString, "南风") ) ( "WS" ,  QVariant(QString, "1级") )
-//     ( "city" ,  QVariant(QString, "长沙") ) ( "img1" ,  QVariant(QString, "d1.gif") )
-//     ( "img2" ,  QVariant(QString, "n2.gif") ) ( "ptime" ,  QVariant(QString, "08:00") )
-//     ( "temp" ,  QVariant(QString, "14") ) ( "temp1" ,  QVariant(QString, "25℃") )
-//     ( "temp2" ,  QVariant(QString, "15℃") ) ( "time" ,  QVariant(QString, "08:00") )
-//     ( "weather" ,  QVariant(QString, "多云转阴") ) )
 bool SessionDispatcher::get_current_weather_qt() {
     getCityIdInfo();
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
@@ -699,13 +599,6 @@ QString SessionDispatcher::get_current_pm25_qt() {
 int SessionDispatcher::get_current_rate() {
     mSettings->beginGroup("weather");
     int rate = 60;
-//    QString rateStr = mSettings->value("rate").toString();
-//    if(rateStr.isEmpty()) {
-//        mSettings->setValue("rate", "60");
-//    }
-//    else {
-//        rate = rateStr.toInt();
-//    }
     rate = mSettings->value("rate").toInt();
     mSettings->endGroup();
     mSettings->sync();
@@ -735,7 +628,6 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
         info = currentInfo.value(key);
     }
     else if(flag == "weathericon") {
-//        info = weatherIcon.value(key);
         info = "../img/weather/" + key;
     }
     return info.toString();
@@ -758,13 +650,10 @@ void SessionDispatcher::handler_change_rate(int rate) {
     emit startUpdateRateTime(rate);
 }
 
-bool SessionDispatcher::showChangeCityDialog(/*int window_x, int window_y*/) {
+bool SessionDispatcher::showChangeCityDialog() {
     ChangeCityDialog *cityDialog = new ChangeCityDialog(mSettings);
     cityDialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
     connect(cityDialog, SIGNAL(readyToUpdateWeather()), this, SLOT(handler_change_city()));
-//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-//    this->alert_y = window_y + mainwindow_height - 400;
-//    cityDialog->move(this->alert_x, this->alert_y);
     if(cityDialog->exec()==QDialog::Rejected) {
         return false;
     }

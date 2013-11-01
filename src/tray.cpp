@@ -158,25 +158,6 @@ void Tray::showOrHideQml() {
 }
 
 void Tray::mousePressEvent(QMouseEvent *event) {
-//    if (event->button() == Qt::LeftButton)
-//    {
-//        dragPos = event->globalPos() - frameGeometry().topLeft();
-//        event->accept();
-//    }
-//    else if (event->button() == Qt::RightButton)
-//    {
-//        this->hide();
-//        event->accept();
-//    }
-
-//    if (event->button() == Qt::LeftButton) {
-//        dragPos = event->globalPos() - frameGeometry().topLeft();
-//        if(frame->isHidden())
-//            frame->show();
-//        else
-//            frame->hide();
-//        event->accept();
-//    }
     if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
