@@ -7,8 +7,9 @@ youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
   * Change the progressbar from Qt to QML.
   * Use qtsingleapplication by F.J Kong (kroodylove).
   * Solve the SIGSEGV crash when the program exit(LP: #1235073).
+  * Add Splash screen.
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Tue, 29 Oct 2013 16:38:16 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 01 Nov 2013 10:24:05 +0800
 
 youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
 

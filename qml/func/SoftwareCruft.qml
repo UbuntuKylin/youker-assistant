@@ -27,7 +27,6 @@ Item {
     property string sof_description: "深度清理软件中心缓存,节省磁盘空间"
     property string sof_btn_flag: "software_scan"
     property string btn_text: "开始扫描"
-    property SystemDispatcher dis: systemdispatcher
     property int sof_sub_num: 0
     property string sof_work_result: ""
     property int sof_num:sof_sub_num

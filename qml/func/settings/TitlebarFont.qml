@@ -28,7 +28,6 @@ Rectangle {
     property color fontColor: "black"
 
 //    property int cursor_size: 24
-    property SessionDispatcher dis: sessiondispatcher
     property string titlebar_font: "Helvetica"
     property bool titlebar_font_flag: false
     property string actiontitle: "标题栏字体设置"

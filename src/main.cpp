@@ -88,43 +88,11 @@ int main(int argc, char** argv)
     if (app.isRunning())
         return 0;
 
-//    int num = 0;
-//    QProcess *process = new QProcess();
-//    QStringList *args = new QStringList();
-//    args->append("aux");
-//    process->start("ps", *args);
-//    process->waitForFinished();
-//    while(process->canReadLine()) {
-//        QString tmp = process->readLine();
-//        if(tmp.endsWith("youker-assistant\n")) {
-//            num += 1;
-//        }
-//        if(num > 1) {
-//            exit(0);
-//        }
-//    }
-
-//    QSharedMemory mem("YoukerAssistant");//以系统exe名称为参数，定义共享内存mem
-//    if(!mem.create(1))//创建共享内存mem，如果该共享内存已存在，则弹出提示对话框，并退出
-//    {
-////        QMessageBox::information(0,QObject::tr("Warning"),QObject::tr("An instance is running"));
-//        QMessageBox::warning(NULL,
-//                             QObject::tr("警告"),
-//                             QObject::tr("没有找到软件列表文件！"),
-//                             QMessageBox::Ok);
-//        return 0;
-//    }
-
-
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
     registerTypes();
-
-
-
-
 
     int value_session = system("/usr/bin/youkersession &");
     if (value_session != 0)
@@ -132,48 +100,19 @@ int main(int argc, char** argv)
     int value_system = system("/usr/bin/youkersystem");
     if (value_system != 0)
         qDebug() << "SystemDaemon Failed!";
-    QDialog dialog;//定义一个启动显示窗口
-    dialog.setStyleSheet(QString::fromUtf8("background-image: url(:/pixmap/image/feature.png);"));
-    QDesktopWidget* desktop = QApplication::desktop();
-    dialog.setGeometry(QRect((desktop->width() - 513)/2, (desktop->height() - 417)/2, 513, 417));//设置启动窗口的坐标及尺寸大小
-    dialog.setWindowFlags(Qt::FramelessWindowHint);
+    QSplashScreen splash(QPixmap(":/pixmap/image/feature.png"));
+    splash.setDisabled(true);
+    splash.show();
+    splash.showMessage(QObject::tr("优客助手正在启动中...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);
+    //同时创建主视图对象
     IhuApplication application;
-    QTimer timer;
-    QObject::connect(&timer, SIGNAL(timeout()), &dialog, SLOT(accept()));
-    timer.start(5000);
-    dialog.exec();//在主窗口显示之前启动界面退出
-    if (!application.setup()) {
-        return 0;
-    }//启动界面结束后显示主窗口
+    splash.showMessage(QObject::tr("正在加载模块数据...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);
+    //数据处理
+    application.setup();
+    //显示主界面，并结束启动画面
+    application.showQMLWidget();
+    splash.finish(&application);
     return app.exec();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    int value_session = system("/usr/bin/youkersession &");
-//    if (value_session != 0)
-//        qDebug() << "SessionDaemon Failed!";
-//    int value_system = system("/usr/bin/youkersystem");
-//    if (value_system != 0)
-//        qDebug() << "SystemDaemon Failed!";
-
-////    IhuApplication application(argc, argv);
-//    IhuApplication application;
-//    if (!application.setup()) {
-//        return 0;
-//    }
-////    return application.exec();
-//    return app.exec();
 }
 
 

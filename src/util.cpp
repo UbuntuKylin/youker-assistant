@@ -16,35 +16,6 @@
 
 #include "util.h"
 #include <QFileDialog>
-#include <QMessageBox>
-//bool Util::writeInit(QString path, QString user_key, QString user_value)
-//{
-//    if(path.isEmpty() || user_key.isEmpty()) {
-//        return false;
-//    }
-//    else {
-//        QSettings *config = new QSettings(path, QSettings::IniFormat);
-//        config->setIniCodec("UTF-8");
-//        config->beginGroup("config");
-//        config->setValue(user_key, user_value);
-//        config->endGroup();
-//        return true;
-//    }
-//}
-
-//bool Util::readInit(QString path, QString user_key, QString &user_value) {
-//    user_value = QString("");
-//    if(path.isEmpty() || user_key.isEmpty()) {
-//        return false;
-//    }
-//    else {
-//        QSettings *config = new QSettings(path, QSettings::IniFormat);
-//        config->setIniCodec("UTF-8");
-//        user_value = config->value(QString("config/") + user_key).toString();
-//        return true;
-//    }
-//}
-
 
 QString Util::get_id_from_cityname(QString cityName) {
     QString cityId = "";
@@ -66,10 +37,4 @@ QString Util::get_id_from_cityname(QString cityName) {
 
     }
     return cityId;
-//    else {
-//        QMessageBox::warning(NULL,
-//                             tr("警告"),
-//                             tr("没有找到城市配置文件！"),
-//                             QMessageBox::Ok);
-//    }
 }

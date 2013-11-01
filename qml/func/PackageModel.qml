@@ -28,7 +28,6 @@ Item {
     property string title: "卸载不必要的程序"
     property string description: "清理软件安装过程中安装的依赖程序，提高系统性能"
     property string btn_flag: "package_scan"
-    property SystemDispatcher dis: systemdispatcher
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
     property int pac_sub_num: 0

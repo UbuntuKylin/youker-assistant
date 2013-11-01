@@ -110,13 +110,13 @@ Item {
                                 {
                                     check.checkedbool=true;
                                     check_num=sub_num;
-                                    check.checked=="true"
+                                    check.checked ="true"
                                 }
                                 else if(check.checked=="false")
                                 {
                                     check_num=sub_num-1;
                                     check.checkedbool=false;
-                                    check.checked=="false"
+                                    check.checked ="false"
                                 }
                             }
                             heightMark=listViewDelegate.sub_num;
@@ -154,6 +154,7 @@ Item {
                     text: itemTitle
                     descript: desc
                     size_num: number
+                    //根据主checkbox的状态来更改所有子checkbox的状态：true、false
                     checkbox_status: check.checkedbool
 //                            bgImage: "../../img/icons/list_subitem.png"
                     bgImage: ""

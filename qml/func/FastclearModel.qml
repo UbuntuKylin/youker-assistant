@@ -210,7 +210,6 @@ Rectangle {
                         anchors.leftMargin: 45
                         spacing:25
                         Item {
-                            property SessionDispatcher dis: sessiondispatcher
                             width: parent.width //clearDelegate.ListView.view.width
                             height:45 //65
 
@@ -314,7 +313,6 @@ Rectangle {
 
             //----------------------------
                         Item {
-                        property SessionDispatcher dis: sessiondispatcher
                         width: parent.width//clearDelegate.ListView.view.width
                         height: 45//65
 
@@ -420,7 +418,6 @@ Rectangle {
                       }
             //----------------------------
                         Item {
-                        property SessionDispatcher dis: sessiondispatcher
                         width: parent.width//clearDelegate.ListView.view.width
                         height: 45//65
 

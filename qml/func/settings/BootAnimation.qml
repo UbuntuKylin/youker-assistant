@@ -28,7 +28,6 @@ Rectangle {
     property int lisv_height: 250
     property int fontSize: 12
     property color fontColor: "black"
-    property SystemDispatcher dis: systemdispatcher
     property string image_path: ""
     property string actiontitle: "开机动画设置(目前仅支持png图片格式，不支持以中文命名的图片)"
     property string actiontext: "点击“自定义图片”按钮选择您需要添加到列表中的图片，在列表中选中您要设置的图片名称，点击“确定”按钮完成设置。"

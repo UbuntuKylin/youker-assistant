@@ -67,6 +67,7 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: 30
         onCheckedChanged: {
+            //单个checkbox状态改变时，先将状态通过信号change_num()传递给BrowserCookies.qml
             container.change_num(checkbox.checked);
             if (checkbox.checked) {
 //                if (btn_flag == "apt_work" || btn_flag == "apt_scan") {

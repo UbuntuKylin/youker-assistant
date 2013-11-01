@@ -41,42 +41,6 @@ void ChangeCityDialog::init() {
     QListWidgetItem *currentitem;
     currentitem = ui->listWidget->item(0);
     ui->listWidget->setCurrentItem(currentitem);
-
-
-
-//    QString currentStr = ui->listWidget->currentItem()->text();
-//    QStringList listName = pSettings->value("weather/places").toStringList();
-//    QStringList newList;
-//    int size;
-//    size = listName.size();
-//    for(int i =0; i<size; ++i) {
-//        if(listName.at(i) != currentStr) {
-//            newList.append(listName.at(i));
-//        }
-//    }
-//    if(newList.size()==0)
-//    {
-//      ui->delBtn->setEnabled(false);
-//      ui->listWidget->clear();
-//      pSettings->setValue("weather/places", newList);
-//      pSettings->setValue("weather/cityId", "");
-//      pSettings->sync();
-//    }
-//    else {
-//        ui->listWidget->clear();
-//        pSettings->setValue("weather/places", newList);
-//        for(int j=0; j<newList.size(); ++j)
-//        {
-//            qDebug() << newList.at(j);
-//            ui->listWidget->insertItem(j, newList.at(j));
-//        }
-//        QListWidgetItem *currentitem;
-//        currentitem = ui->listWidget->item(0);
-//        ui->listWidget->setCurrentItem(currentitem);
-//        QString cityId = get_id_from_cityname(ui->listWidget->currentItem()->text());
-//        pSettings->setValue("weather/cityId", cityId);
-//        pSettings->sync();
-//    }
 }
 
 void ChangeCityDialog::writeWeatherConf() {
@@ -90,9 +54,6 @@ void ChangeCityDialog::writeWeatherConf() {
     else {
         pSettings->setValue("weather/cityId", cityId);
         pSettings->sync();
-    //    QString strValue = QString::number(spinValue, 10);
-    //    pSettings->setValue("weather/rate", strValue);
-    //    pSettings->sync();
         emit readyToUpdateWeather();
         this->accept();
     }

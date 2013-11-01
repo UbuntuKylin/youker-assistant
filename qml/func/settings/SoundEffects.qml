@@ -33,7 +33,6 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-    property SessionDispatcher dis: sessiondispatcher
     property string default_sound: ""
     property string init_sound: ""
     property bool init_sound_flag: false

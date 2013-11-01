@@ -28,7 +28,6 @@ Item {
     property string apt_btn_flag: "apt_scan"
     property ListModel listmodel: apt_mainModel
     property ListModel apt_submodel: apt_subModel
-    property SystemDispatcher dis: systemdispatcher
     property int apt_sub_num: 0
     property string apt_work_result: ""
     property bool apt_check_flag: true

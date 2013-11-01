@@ -137,7 +137,6 @@ class Daemon(PolicyKitService):
         self.otherconf.plymouth_init_check()
     
     # -------------------------monitorball-------------------------
-
     # clean up memory
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def cleanup_memory(self):

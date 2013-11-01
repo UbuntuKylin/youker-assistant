@@ -21,8 +21,6 @@ import "bars" as Bars
 
 Rectangle {
     id: screen; width: parent.width; height: 475
-    property SessionDispatcher dis1: sessiondispatcher
-    property SystemDispatcher dis2: systemdispatcher
     signal dialogmsg()
     function openFile(file) {
          var component = Qt.createComponent(file)

@@ -260,7 +260,6 @@ Item {
         }
         //----------------------------
         Item {
-        property SessionDispatcher dis: sessiondispatcher
         width: parent.width//clearDelegate.ListView.view.width
         height: 45//65
 

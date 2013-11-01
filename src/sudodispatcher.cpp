@@ -21,7 +21,6 @@
 #include "KThread.h"
 #include <QMessageBox>
 #include "authdialog.h"
-//bool progressFlag;//判断是软件源更新还是软件操作，如果是软件源更新，则为true，qt的进度条隐藏;如果是软件操作，则为默认的false，qt的进度条显示
 
 SudoDispatcher::SudoDispatcher(QObject *parent) :
     QObject(parent)
@@ -31,7 +30,6 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
 
-//    progressdialog = new ProgressDialog;
     updatedialog = new UpdateDialog;
     strlist << "Kobe" << "Lee";
 
@@ -48,19 +46,10 @@ SudoDispatcher::SudoDispatcher(QObject *parent) :
 
     progressFlag = false;
     ratio_sus = 0;
-
-////    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handlerClearDeb(QString)));
-////    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
 }
 
 SudoDispatcher::~SudoDispatcher() {
     this->exit_qt();
-//    if (authdialog) {
-//        delete authdialog;
-//    }
-////    if(progressdialog) {
-////        delete progressdialog;
-////    }
     if(updatedialog) {
         delete updatedialog;
     }
@@ -80,19 +69,13 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(sudoiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handlerSoftwareFetch(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handlerSoftwareApt(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handlerGetSoftwareListStatus(QStringList)));
-//    QObject::connect(this,SIGNAL(sendDynamicSoftwareProgress(QString,QString)),progressdialog, SLOT(setDynamicSoftwareProgress(QString,QString)));
     QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(startUpdateSoftwareSource()));
-//    QObject::connect(progressdialog,SIGNAL(softwareSourceUpdateProgressToSudoDispather(QString)),this, SLOT(getSoftwareSourceUpdateProgress(QString)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
     QDBusReply<QString> reply = sudoiface->call("get_sudo_daemon");
     return reply.value();
 }
-
-//void SudoDispatcher::reGetStatusList() {
-//    emit reGetList();
-//}
 
 bool SudoDispatcher::getUKSignalFlag() {
     return signalFlag;
@@ -101,10 +84,6 @@ bool SudoDispatcher::getUKSignalFlag() {
 void SudoDispatcher::setUKSignalFlag(bool flag) {
     signalFlag = flag;
 }
-
-//void SudoDispatcher::getSoftwareSourceUpdateProgress(QString cur_status) {
-//    emit notifySourceStatusToQML(cur_status);
-//}
 
 void SudoDispatcher::handlerClearDeb(QString msg) {
      emit finishCleanDeb(msg);
@@ -179,7 +158,6 @@ void SudoDispatcher::handlerSoftwareFetch(QString type, QString msg) {
     if(!type.isEmpty()) {
         QString info = dealProgressData(type, msg);
         //下载过程中把数据给进度条
-//        emit sendDynamicSoftwareProgress(type, msg);
         emit sendDynamicSoftwareProgressQML(type, info, ratio_sus);
         //下载完成
         if(type == "down_stop") {
@@ -193,7 +171,6 @@ void SudoDispatcher::handlerSoftwareApt(QString type, QString msg) {
     if(!type.isEmpty()) {
         QString info = dealProgressData(type, msg);
         //操作过程中把数据给进度条
-//        emit sendDynamicSoftwareProgress(type, msg);
         emit sendDynamicSoftwareProgressQML(type, info, ratio_sus);
         //操作完成
         if (type == "apt_stop") {
@@ -214,7 +191,6 @@ void SudoDispatcher::handlerGetSoftwareListStatus(QStringList statusDict) {
 
 void SudoDispatcher::showPasswdDialog(int window_x, int window_y) {
     AuthDialog *authdialog = new AuthDialog("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。");
-//    authdialog = new AuthDialog("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。");
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     authdialog->move(this->alert_x, this->alert_y);
@@ -229,14 +205,6 @@ void SudoDispatcher::showUpdateSourceDialog(int window_x, int window_y) {
     updatedialog->show();
 }
 
-//void SudoDispatcher::showProgressDialog(int window_x, int window_y) {
-//    progressFlag = false;//此时让qt的进度条显示
-//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-//    this->alert_y = window_y + mainwindow_height - 400;
-//    progressdialog->move(this->alert_x, this->alert_y);
-//    progressdialog->show();
-//}
-
 void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
     KThread *thread = new KThread(strlist, sudoiface, "clean_package_cruft");
     thread->start();
@@ -247,12 +215,6 @@ QString SudoDispatcher::getSoftwareStatus(QString key) {
     QVariant tt = status_dict.value(key);
     return tt.toString();
 }
-
-//QStringList SudoDispatcher::getUKSoftwareList() {
-//    QStringList softwareList;
-//    softwareList << "wps-office" << "lotus" << "kuaipan4uk" << "kugou" << "ppstream";
-//    return softwareList;
-//}
 
 // -------------------------software-center-------------------------
 void SudoDispatcher::install_pkg_qt(QString pkgName) {
@@ -280,24 +242,12 @@ QString SudoDispatcher::check_pkg_status_qt(QString pkgName) {
     return reply.value();
 }
 
-//void SudoDispatcher::notifySoftwareCurrentStatus(QString current_status) {
-//    emit sendSoftwareStatus(current_status);
-//}
-
 void SudoDispatcher::apt_get_update_qt() {
     QStringList tmplist;
     tmplist << "Kobe" << "Lee";
     KThread *thread = new KThread(tmplist, sudoiface, "apt_get_update");
     thread->start();
 }
-
-//void SudoDispatcher::add_source_ubuntukylin_qt() {
-//    sudoiface->call("add_source_ubuntukylin");
-//}
-
-//void SudoDispatcher::remove_source_ubuntukylin_qt() {
-//    sudoiface->call("remove_source_ubuntukylin");
-//}
 
 void SudoDispatcher::ready_show_app_page(QString flag) {
     emit sendAppInfo(flag);
@@ -310,13 +260,6 @@ QString SudoDispatcher::getSingleInfo(QString key) {
 
 //获取所有软件的的可执行程序的名字列表，此名字对应着源里面的安装程序的名字，用该名字可以获取软件状态
 QStringList SudoDispatcher::getAllSoftwareExecNameList() {
-//    QStringList pkgNameList;
-//    pkgNameList << "eclipse" << "qtcreator"<< "wps-office" << "wine-qq2012-longeneteam" << \
-//                   "flashplugin-installer" <<  "lotus" << "kuaipan4uk" <<"vlc" << \
-//                   "chromium-bsu" << "kugou" << "ppstream" << "qbittorrent" << \
-//                   "virtualbox" << "stardict" << "xchat" << "wine-thunder" << "openfetion";
-//    return pkgNameList;
-
     QStringList execNameList = config->value(QString("app-list/AllExecList")).toStringList();
     config->sync();
     return execNameList;
@@ -359,7 +302,6 @@ void SudoDispatcher::getAppInfo(QString flag) {
 }
 
 void SudoDispatcher::startUpdateSoftwareSource() {
-//    progressdialog->hide();
     emit callMasklayer();
     apt_get_update_qt();
 }

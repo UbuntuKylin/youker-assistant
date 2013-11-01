@@ -31,7 +31,6 @@ Toolkits::Toolkits(QObject *parent) :
     this->alertGOE = new QGraphicsOpacityEffect();
     this->alertBG->setGraphicsEffect(alertGOE);
     this->ao = 0.0;
-//    this->alertBG->show();
     this->alertBG->hide();
 }
 

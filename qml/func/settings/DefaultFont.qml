@@ -27,7 +27,6 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
 
-    property SessionDispatcher dis: sessiondispatcher
     property string current_font: "Helvetica"
     property string desktop_font: "Helvetica"
     property string monospace_font: "Helvetica"
