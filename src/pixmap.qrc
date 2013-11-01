@@ -30,6 +30,7 @@
         <file>image/progress-bar1.png</file>
         <file>image/accelerate-hover.png</file>
         <file>image/accelerate-press.png</file>
+        <file>image/feature.png</file>
     </qresource>
     <qresource prefix="/skin">
         <file>image/7_bg.png</file>
