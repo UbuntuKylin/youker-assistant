@@ -15,80 +15,189 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
-import ProcessType 0.1//1101
+import ProcessType 0.1
 import "common" as Common
-import "bars" as Bars
-Item {
-    id: screen; width: parent.width; height: 475
-    Rectangle {
-        id: setting_widget
-        anchors.fill: parent
-        //背景
-        Image {
-            source: "../img/skin/bg-bottom-tab.png"
-            anchors.fill: parent
-        }
-        Item {
-            id: views
-            width: parent.width
-            height: parent.height
 
-            Image {
-                id: titleimage
-                anchors {
-                    left: parent.left
-                    leftMargin: 2
-                }
-                width: parent.width - 4
-                source: "../img/skin/note-bg.png"
+Rectangle {
+    width: parent.width
+    height: 475
+    SystemPalette {id: syspal}
+    //背景
+    Image {
+        source: "../img/skin/bg-bottom-tab.png"
+        anchors.fill: parent
+    }
+
+    //更新进程列表
+    function updateProcessList() {
+        largeModel.clear();//清空largeModel
+        processmanager.clearMap();//清空qt中保存的进程序号和进程号组合的map
+        var list = processmanager.getProcess();
+        for (var i=0 ; i < list.length ; i++) {
+            var splitlist = list[i].split(";");
+            if(splitlist.length !== 6) {
+                continue;
             }
-            Text {
-                anchors {
-                    left: parent.left
-                    leftMargin: 50
-                    top: parent.top
-                    topMargin: titleimage.height/2 - 7
+            else {
+                var num = i.toString();
+                var id = splitlist[1];
+                largeModel.append({"number": num, "user": splitlist[0], "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "command": splitlist[5]});
+                processmanager.updateMap(num, id);//更新qt中保存的进程序号和进程号组合的map
+            }
+        }
+        largeModel.append({"number": "i", "user": "kobe", "pid": "pid", "pcpu": "cpu", "pmem": "mem", "started": "time", "command": "test for TableView"});
+    }
+
+    Image {
+        id: titleimage
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        width: parent.width - 4
+        source: "../img/skin/note-bg.png"
+    }
+    Text {
+        anchors {
+            left: parent.left
+            leftMargin: 50
+            top: parent.top
+            topMargin: titleimage.height/2 - 7
+        }
+        text: "任务管理器帮助您结束一些您想关闭的进程。"
+        font.pixelSize: 12
+        color: "#383838"
+    }
+    Row {
+        anchors {
+            right: parent.right
+            rightMargin: 30
+            top: parent.top
+            topMargin: 5
+        }
+        spacing: 10
+        Common.Button {
+            id: listBtn
+            width: 100
+            height: 30
+            text: "刷新"
+            hoverimage: "green1.png"
+            fontsize: 15
+            onClicked: {
+                updateProcessList();
+                toolkits.alertMSG("刷新完毕！", mainwindow.pos.x, mainwindow.pos.y);
+            }
+        }
+        Common.Button {
+            id: killBtn
+            width: 100
+            height: 30
+            text: "结束进程"
+            hoverimage: "green1.png"
+            fontsize: 15
+            onClicked: {
+                //根据鼠标激活的序号来获取对应的进程号
+                var currentId = processmanager.getProcessId(tableView.currentIndex.toString());
+                if(currentId.length !== 0) {
+                    if(processmanager.killProcess(currentId)) {
+                        toolkits.alertMSG("结束进程操作成功！", mainwindow.pos.x, mainwindow.pos.y);
+                        updateProcessList();
+                    }
+                    else {
+                        toolkits.alertMSG("结束进程操作失败！", mainwindow.pos.x, mainwindow.pos.y);
+                    }
                 }
-                text: "任务管理器正在研发中，敬请期待......"
-                font.pixelSize: 12
+                else {
+                    toolkits.alertMSG("没有选择将要结束的进程！", mainwindow.pos.x, mainwindow.pos.y);
+                }
+            }
+        }
+    }
+
+    ListModel {
+        id: largeModel
+        Component.onCompleted: {
+            updateProcessList();
+        }
+    }
+
+    Common.TableView {
+        id: tableView
+        model: largeModel
+        anchors {
+            top: titleimage.bottom
+            left: parent.left
+        }
+        anchors.margins: 5
+        width: parent.width - 10
+        height: parent.height - titleimage.height - 5*2
+//        frame: false
+        //标题栏内容列表
+        Common.TableColumn {
+            role: "number"
+            title: "序号"
+            width: 40
+        }
+        Common.TableColumn {
+            role: "user"
+            title: "用户"
+            width: 80
+        }
+        Common.TableColumn {
+            role: "pid"
+            title: "ID"
+            width: 80
+        }
+        Common.TableColumn {
+            role: "pcpu"
+            title: "%CPU"
+            width: 80
+        }
+        Common.TableColumn {
+            role: "pmem"
+            title: "%内存"
+            width: 80
+        }
+        Common.TableColumn {
+            role: "started"
+            title: "启动时间"
+            width: 80
+        }
+        Common.TableColumn {
+            role: "command"
+            title: "进程名"
+            width: parent.width - 80*5 - 40
+        }
+
+        //标题栏美化
+        headerDelegate: BorderImage{
+            source: "../img/skin/progress-bg.png"
+            border{left:2;right:2;top:2;bottom:2}
+            Text {
+                text: itemValue
+                anchors.centerIn:parent
+                font.bold: true
+                font.pixelSize: 14
                 color: "#383838"
             }
+        }
 
-
-            Column {
-                anchors {
-                    top: titleimage.bottom
-                    topMargin: 40
-                    left: parent.left
-                    leftMargin: 30
-                }
-                spacing: 10
-                Common.Button {
-                    id: listBtn
-                    width: 120
-                    height: 39
-                    text: "列出进程"
-                    hoverimage: "green1.png"
-//                    anchors.verticalCenter: parent.verticalCenter
-                    fontsize: 15
-                    onClicked: {
-                        processmanager.getProcess();
-                    }
-                }
-                Common.Button {
-                    id: killBtn
-                    width: 120
-                    height: 39
-                    text: "杀掉进程"
-                    hoverimage: "green1.png"
-//                    anchors.verticalCenter: parent.verticalCenter
-                    fontsize: 15
-                    onClicked: {
-
-                    }
-                }
+        //选中项
+        rowDelegate: Rectangle {
+            color: itemSelected ? "#448" : (itemAlternateBackground ? "#eee" : "#fff")
+            border.color:"#ccc"
+            border.width: 1
+            BorderImage{
+                id:selected
+                anchors.fill: parent
+                source: "../img/skin/progress-bg.png"
+                visible: itemSelected
+                border{left:2;right:2;top:2;bottom:2}
+//                SequentialAnimation {
+//                    running: true; loops: Animation.Infinite
+//                    NumberAnimation { target:selected; property: "opacity"; to: 1.0; duration: 900}
+//                    NumberAnimation { target:selected; property: "opacity"; to: 0.5; duration: 900}
+//                }
             }
         }
     }
