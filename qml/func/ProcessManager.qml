@@ -201,4 +201,11 @@ Rectangle {
             }
         }
     }
+    //每隔5秒自动刷新
+    Timer {
+        interval: 5000; running: true; repeat: true
+        onTriggered: {
+            updateProcessList();
+        }
+    }
 }
