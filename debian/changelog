@@ -1,3 +1,9 @@
+youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
+
+  * Add processmanager.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 04 Nov 2013 16:08:03 +0800
+
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 
   * Change skin and add weather forecast information.

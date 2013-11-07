@@ -118,6 +118,8 @@ int main(int argc, char** argv)
     application.showQMLWidget();
     splash.finish(&application);
     return app.exec();
+//    ProcessManager *p = new ProcessManager();
+//    p->getProcess();
 }
 
 

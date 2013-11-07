@@ -19,6 +19,8 @@ import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
 
+import ProcessType 0.1//1101
+
 Rectangle {
     id: scaleMe
 //    scale: 0.0
@@ -140,6 +142,7 @@ Rectangle {
                 }
             }
             else if(flag == "ProcessManager") {
+//                processmanager.getProcess();
                 pageStack.push(processmanagerpage);
             }
 
