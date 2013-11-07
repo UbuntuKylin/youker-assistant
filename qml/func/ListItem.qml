@@ -31,16 +31,18 @@ Item {
     property string bgImagePressed: '../img/icons/list_item_pressed.png'
     property bool selected: false
     property bool selectable: false
-    property int textIndent: 0
+//    property int textIndent: 0
     property bool checkbox_status: true
     property bool split_status: false
 
     property string btn_flag: "one_key_scan"
-    signal change_num(bool check_status)   //作为子项checkbox，当状态改变时需要通过信号传给父项以进行个数统计
+
+    property string browserFlag//浏览器标记
+    signal change_num(bool check_status, string browser_flag)   //作为子项checkbox，当状态改变时需要通过信号传给父项以进行个数统计
     signal clicked
 
-    width: 360
-    height: 64
+    width: 850
+    height: 40
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
     onCheckbox_statusChanged: {checkbox.checked=checkbox_status}  //当父项传进来的check值改变时，强制改变全部子项的check值以进行统一控制
@@ -68,7 +70,7 @@ Item {
         anchors.leftMargin: 30
         onCheckedChanged: {
             //单个checkbox状态改变时，先将状态通过信号change_num()传递给BrowserCookies.qml
-            container.change_num(checkbox.checked);
+            container.change_num(checkbox.checked, container.browserFlag);
             if (checkbox.checked) {
 //                if (btn_flag == "apt_work" || btn_flag == "apt_scan") {
                 if (btn_flag == "apt_work") {

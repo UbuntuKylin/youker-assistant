@@ -35,18 +35,20 @@ Item {
     property int check_num: sub_num   //记录子项个数，在确定总checkbox状态时需要的变量
 
     signal subpressed(int hMark);
-    signal sendMainStatus(bool status);
+    signal sendMainStatus(bool status, string flag);
+
+    property string flag //判断是firefox还是chromium
 
     Connections {
         target: sessiondispatcher
-        //得到信号，改变主checkbox的状态
+        //子chechbox改变后，得到信号，改变主checkbox的状态
         onStartChangeMaincheckboxStatus: {
             check.checked = status;
         }
     }
 
     Row {
-        id: chrominum
+        id: chromium
         width: parent.width
         spacing: 15
         Common.MainCheckBox{
@@ -54,12 +56,11 @@ Item {
             checked: "true"
             anchors.verticalCenter: parent.verticalCenter
             onCheckedChanged: {
-                console.log(check.checkedbool);
-                itemtitle.sendMainStatus(check.checkedbool);
+                itemtitle.sendMainStatus(check.checkedbool, itemtitle.flag);
             }
         }
         Image {
-            id: chrominumImage
+            id: chromiumImage
             fillMode: "PreserveAspectFit"
             height: parent.height*0.9
             source: itemtitle.imageSource
@@ -67,7 +68,7 @@ Item {
         }
 
         Column {
-            id: chrominumColumn
+            id: chromiumColumn
             spacing: 5
             anchors.verticalCenter: parent.verticalCenter
             Text {
@@ -84,7 +85,7 @@ Item {
         }
 
         Image {
-            id: chrominumarrow
+            id: chromiumarrow
             fillMode: "PreserveAspectFit"
             height: 28
             width: 26
@@ -167,7 +168,7 @@ Item {
 //    }
 
 //    Row {
-//        id: chrominum
+//        id: chromium
 //        width: parent.width
 //        spacing: 15
 //        Common.MainCheckBox{
@@ -179,7 +180,7 @@ Item {
 //            }
 //        }
 //        Image {
-//            id: chrominumImage
+//            id: chromiumImage
 //            fillMode: "PreserveAspectFit"
 //            height: parent.height*0.9
 //            source: itemtitle.imageSource
@@ -187,7 +188,7 @@ Item {
 //        }
 
 //        Column {
-//            id: chrominumColumn
+//            id: chromiumColumn
 //            spacing: 5
 //            anchors.verticalCenter: parent.verticalCenter
 //            Text {
@@ -204,7 +205,7 @@ Item {
 //        }
 
 //        Image {
-//            id: chrominumarrow
+//            id: chromiumarrow
 //            fillMode: "PreserveAspectFit"
 //            height: 28
 //            width: 26

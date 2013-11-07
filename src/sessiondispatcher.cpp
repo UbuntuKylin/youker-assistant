@@ -727,3 +727,8 @@ void SessionDispatcher::getCityIdInfo() {
 void SessionDispatcher::change_maincheckbox_status(QString status) {
     emit startChangeMaincheckboxStatus(status);
 }
+
+
+void SessionDispatcher::tellNullToListTitle(QString emptyFlag, bool status) {
+    emit getNullFlag(emptyFlag, status);
+}
