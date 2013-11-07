@@ -53,3 +53,33 @@ wpp:金山wps幻灯片
 et:金山wps表格
 chromium:开源chrome浏览器
 chrome:闭源chrome浏览器
+init --user:用户初始化进程
+upstart-event-bridge:基于事件的启动系统进程
+window-stack-bridge:平视显示器进程
+bamfdaemon:窗口匹配库
+hud-service:平视显示器服务
+at-spi-bus-launcher:at-spi2-core系统进程
+unity-panel-service:unity桌面
+upstart-file-bridge:文件服务
+upstart-dbus-bridge --daemon --system:systemdbus服务
+upstart-dbus-bridge --daemon --session:sessiondbus服务
+compiz:由OpenGL驱动的运行于X Window System上的混合窗口管理器
+evolution-source-registry:Evolution注册表管理
+evolution-calendar-factory:Evolution日程管理
+gtk-window-decorator:GTK窗口装饰进程
+zeitgeist-fts:记录用户的活动和事件的服务
+QQ.exe:Wine版QQ通讯软件
+wineserver:用来运行Windows程序的平台Wine
+services.exe:Windows服务进程
+winedevice.exe MountMgr:Wine使用的Windows驱动程序
+plugplay.exe:随插即用进程
+explorer.exe:Wine使用的Windows资源管理器
+TXPlatform.exe:WineQQ使用的腾讯即时通讯客户端相关程序，用于阻止同一个QQ号在同一台电脑上登陆2次和支持外部添加功能
+unity-webapps-service:使用Unity桌面的Web应用程序集成服务
+unity-webapps-context-daemon Launchpad:Launchpad平台
+QQPetAgent.exe:QQ宠物的运行程序
+QQExternal.exe:QQ弹出广告程序
+rpcss.exe:Windows的RPC端口映射进程
+gnome-pty-helper:gnome帮手
+unity-scope-home:Unity Dash进程
+unity-files-daemon:Unity文件守护进程

@@ -35,13 +35,13 @@ Rectangle {
         var list = processmanager.getProcess();
         for (var i=0 ; i < list.length ; i++) {
             var splitlist = list[i].split(";");
-            if(splitlist.length !== 6) {
+            if(splitlist.length !== 7) {
                 continue;
             }
             else {
                 var num = i.toString();
                 var id = splitlist[1];
-                largeModel.append({"user": splitlist[0], "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "content": "ubuntukylin", "command": splitlist[5]});
+                largeModel.append({"user": splitlist[0], "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "content": splitlist[5], "command": splitlist[6]});
                 processmanager.updateMap(num, id);//更新qt中保存的进程序号和进程号组合的map
             }
         }
