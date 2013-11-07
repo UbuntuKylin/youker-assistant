@@ -73,6 +73,10 @@ class Daemon(PolicyKitService):
     def set_user_homedir(self, homedir):
         cleaner.get_user_homedir(homedir)
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_homedir_sysdaemon(self, homedir):
+        cleaner.common.get_homedir_sysdaemon(homedir)
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
         return "SystemDaemon"
@@ -155,6 +159,14 @@ class Daemon(PolicyKitService):
 
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_process_main(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def deb_exists_firefox(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def deb_exists_chromium(self, msg):
         pass
 
     # a dbus method which means clean complete by second one key 
@@ -358,6 +370,34 @@ class Daemon(PolicyKitService):
         else:
             self.clean_complete_msg('cookies')
 
+    @dbus.service.method(INTERFACE, in_signature = 'as', out_signature = '', sender_keyword = 'sender')
+    def cookies_clean_record_function(self, flag, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.clean_complete_msg('')
+            return
+        daemoncookies = cleaner.CleanTheCookies(None)
+        try:
+            daemoncookies.clean_one_cookies_cruft(flag[0], flag[1])
+        except Exception, e:
+            self.clean_error_msg('cookies')
+        else:
+            self.clean_complete_msg('cookies')
+
+    @dbus.service.method(INTERFACE, in_signature = 's', out_signature = '', sender_keyword = 'sender')
+    def cookies_clean_records_function(self, flag, sender = None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.clean_complete_msg('')
+            return
+        daemoncookies = cleaner.CleanTheCookies(None)
+        try:
+            daemoncookies.clean_all_cookies_crufts(flag)
+        except Exception, e:
+            self.clean_error_msg('cookies')
+        else:
+            self.clean_complete_msg('cookies')
+
     # the function of clean files
     ### input-['filepath', 'file...]   output-''
     @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
@@ -387,6 +427,12 @@ class Daemon(PolicyKitService):
 
     def clean_process_main_msg(self, para):
         self.clean_process_main(para)
+
+    def deb_exists_firefox_msg(self, para):
+        self.deb_exists_firefox(para)
+
+    def deb_exists_chromium_msg(self, para):
+        self.deb_exists_chromium(para)
 
     def clean_complete_second_msg(self, para):
         self.clean_complete_second(para)

@@ -42,6 +42,43 @@ class CookiesClean():
             scan_browser_conn.close()
         return save
 
+    def scan_cookies_records(self, filepath, tablename, keyname):
+        result = []
+        if os.path.exists(filepath):
+            scan_browser_conn = sqlite3.connect(filepath)
+            scan_browser_cur = scan_browser_conn.cursor()
+            sql_select = 'SELECT %s, count(*) FROM %s GROUP BY %s' % (keyname, tablename, keyname)
+            scan_browser_cur.execute(sql_select)
+            allvisit = scan_browser_cur.fetchall()
+            scan_browser_cur.close()
+            scan_browser_conn.close()
+            result = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in allvisit]
+            return result
+
+    def clean_cookies_record(self, filepath, tablename, keyname, domain):
+        if os.path.exists(filepath):
+            clean_browser_conn = sqlite3.connect(filepath)
+            clean_browser_cur = clean_browser_conn.cursor()
+            #sql_exist = "SELECT * FROM %s WHERE %s='%s'" % (tablename, keyname, domain)
+            #clean_browser_cur.execute(sql_exist)
+            #if clean_browser_cur.fetchone():
+            sql_delete = "DELETE FROM %s WHERE %s='%s'" % (tablename, keyname, domain)
+            clean_browser_cur.execute(sql_delete)
+            clean_browser_conn.commit()
+            clean_browser_cur.close()
+            clean_browser_conn.close()
+
+    def clean_all_records(self, filename, tablename, keyname):
+        if os.path.exists(filename):
+            clean_browser_conn = sqlite3.connect(filename)
+            clean_browser_cur = clean_browser_conn.cursor()
+            sql_delete = "DELETE FROM %s" % tablename
+            clean_browser_cur.execute(sql_delete)
+            clean_browser_conn.commit()
+            clean_browser_cur.close()
+            clean_browser_conn.close()
+
+
     def clean_the_records(self, domain):
         if os.path.exists(self.path):
             clean_browser_conn = sqlite3.connect(self.path + self.filename)
