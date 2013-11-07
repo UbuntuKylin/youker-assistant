@@ -20,6 +20,7 @@ import ConfigParser
 import apt
 import apt_pkg
 
+HOMEDIR = ''
 
 def confirm_filesize_unit(size):
     unit_list = ['B', 'KB', 'MB', 'GB', 'TB']
@@ -47,6 +48,57 @@ def get_cache_list():
     apt_pkg.init_system()
     cache = apt.Cache()
     return cache
+
+def get_homedir_sysdaemon(homedir):
+    global HOMEDIR
+    HOMEDIR = homedir
+
+def return_homedir_sysdaemon():
+    global HOMEDIR
+    return HOMEDIR
+
+def return_homedir_sesdaemon():
+    return os.path.expanduser('~')
+
+def analytical_profiles_file(homedir):
+    count = 0
+    tmp_pro_section = []
+    flag_pro_section = ''
+    final_path = ''
+
+    app_path = '%s/.mozilla/firefox' % homedir
+    profiles_path = '%s/profiles.ini' % app_path
+    if os.path.exists(profiles_path):
+        cfg = ConfigParser.ConfigParser()
+        cfg.read(profiles_path)
+        complete_section = cfg.sections()
+        for section in complete_section:
+            if section.startswith('Profile'):
+                tmp_pro_section.append(section)
+                complete_option = cfg.options(section)
+                try:
+                    cfg.getint(section, 'Default') == 1
+                except Exception, e:
+                    pass
+                else:
+                    flag_pro_section = section
+                count += 1
+        if cfg.getint('General', 'StartWithLastProfile'):
+            if count == 1:
+                if cfg.getint(tmp_pro_section[0], 'IsRelative') == 0:
+                    final_path = cfg.get(tmp_pro_section[0], 'Path')
+                else:
+                    final_path = os.path.expanduser('%s/%s/' % (app_path, cfg.get(tmp_pro_section[0], 'Path')))
+            elif count > 1 :
+                if cfg.getint(flag_pro_section, 'IsRelative') == 0:
+                    final_path = cfg.get(flag_pro_section, 'Path')
+                else:
+                    final_path = os.path.expanduser('%s/%s/' % (app_path, cfg.get(flag_pro_section, 'Path')))
+            else:
+                pass
+        else:
+            pass
+    return final_path
 
 def get_mozilla_path(homedir):
     count = 0

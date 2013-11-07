@@ -21,7 +21,9 @@
 #include <QDebug>
 #include <QProcess>
 #include "yprocess.h"
+#include "util.h"
 #include <QMap>
+#include <QFile>
 
 class QSettings;
 class ProcessManager : public QObject
@@ -30,7 +32,9 @@ class ProcessManager : public QObject
 public:
     explicit ProcessManager(QObject *parent = 0);
     ~ProcessManager();
-    
+
+    QMap<QString,QString> *memos;
+    void readMemoFile();
 //    Q_INVOKABLE QList<YProcess> getProcess();
     //得到当前登录用户的所有进程列表
     Q_INVOKABLE QStringList getProcess();

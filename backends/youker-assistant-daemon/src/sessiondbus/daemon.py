@@ -110,10 +110,16 @@ class SessionDaemon(dbus.service.Object):
     ### input-''   output-['domain<2_2>number', 'dom...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_cookies_records(self):
-        daemoncookies = cleaner.CleanTheCookies(None)
+        daemoncookies = cleaner.CleanTheCookies(self)
         tmp_list = daemoncookies.get_scan_result()
         self.scan_complete_msg('cookies')
         return tmp_list
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    def cookies_scan_function(self, flag):
+        daemoncookies = cleaner.CleanTheCookies(self)
+        crufts_list = daemoncookies.get_cookies_crufts(flag)
+        return crufts_list
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -146,9 +152,23 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.signal(INTERFACE, signature='s')
     def scan_complete(self, msg):
         pass
+    
+    @dbus.service.signal(INTERFACE, signature='s')
+    def deb_exists_firefox(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def deb_exists_chromium(self, msg):
+        pass
 
     def scan_complete_msg(self, para):
         self.scan_complete(para)
+
+    def deb_exists_firefox_msg(self, para):
+        self.deb_exists_firefox(para)
+
+    def deb_exists_chromium_msg(self, para):
+        self.deb_exists_chromium(para)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def exit(self):

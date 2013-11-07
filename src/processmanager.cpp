@@ -15,20 +15,34 @@
  */
 
 #include "processmanager.h"
-#include "util.h"
-#include <QDebug>
 
 ProcessManager::ProcessManager(QObject *parent) :
     QObject(parent)
 {
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
+
+    memos = new QMap<QString,QString>();
+    readMemoFile();
 }
 
 ProcessManager::~ProcessManager() {
     mSettings->sync();
     if (mSettings != NULL)
         delete mSettings;
+}
+
+void ProcessManager::readMemoFile(){
+    QFile *memoFile = new QFile("/usr/share/youker-assistant-daemon/processmanager/processmemo");
+    if(memoFile->open(QIODevice::ReadOnly)){
+        QTextStream in(memoFile);
+        while(!in.atEnd()){
+            QString line = in.readLine();
+            QStringList tmp = line.split(":");
+            memos->insert(tmp.at(0), tmp.at(1));
+        }
+        memoFile->close();
+    }
 }
 
 //QList<YProcess> ProcessManager::getProcess(){
@@ -110,7 +124,7 @@ QStringList ProcessManager::getProcess(){
     mSettings->endGroup();
     mSettings->sync();
 
-    QString cmd = tr("ps -u %1 -o user,pid,%cpu,%mem,start,command").arg(currrentName);
+    QString cmd = tr("ps -u %1 -o user,pid,%cpu,%mem,start,ucmd,command").arg(currrentName);
 
     QProcess *p = new QProcess();
     p->start(cmd);
@@ -149,9 +163,24 @@ QStringList ProcessManager::getProcess(){
         tmps.remove(0, spaceIndex);
         tmps = tmps.trimmed();
 
+        spaceIndex = tmps.indexOf(" ");
+        yp->cmd = tmps.mid(0, spaceIndex);
+        tmps.remove(0, spaceIndex);
+        tmps = tmps.trimmed();
+
         yp->command = tmps;
-        str = tr("%1;%2;%3;%4;%5;%6").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->command);
+
+        foreach (QString key, memos->keys()) {
+            if(yp->command.indexOf(key) != -1){
+                yp->memo = memos->value(key);
+            }
+        }
+
+        str = tr("%1;%2;%3;%4;%5;%6;%7").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->memo).arg(yp->command);
         processList.append(str);
+
+
+//        qDebug()<<yp->command;
     }
     return processList;
 }
