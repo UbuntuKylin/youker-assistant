@@ -55,7 +55,8 @@ Item {
 //        console.log(null_flag);
 //    }
     function getDataOfFirefox() {
-        var cookies_data = sessiondispatcher.scan_cookies_records_qt();
+//        var cookies_data = sessiondispatcher.scan_cookies_records_qt();
+        var cookies_data = sessiondispatcher.cookies_scan_function_qt("f");
         if (cookies_data === "") {
             //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
             if(root.null_flag == true) {

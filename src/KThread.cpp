@@ -46,6 +46,12 @@ void KThread::run() {
     else if(methodName == "clean_cookies_records") {
         iface->call("clean_cookies_records", list);
     }
+    else if(methodName == "cookies_clean_record_function") {
+        iface->call("clean_cookies_records", list);
+    }
+    else if(methodName == "cookies_clean_records_function") {
+        iface->call("cookies_clean_records_function", fileFlag);
+    }
     else if(methodName == "clean_package_cruft") {
         iface->call("clean_package_cruft", list);
     }

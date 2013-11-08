@@ -99,6 +99,11 @@ QStringList SessionDispatcher::scan_cookies_records_qt() {
     return reply.value();
 }
 
+QStringList SessionDispatcher::cookies_scan_function_qt(QString flag) {
+    QDBusReply<QStringList> reply = sessioniface->call("cookies_scan_function", flag);
+    return reply.value();
+}
+
 QStringList SessionDispatcher::scan_unneed_packages_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_unneed_packages");
     return reply.value();

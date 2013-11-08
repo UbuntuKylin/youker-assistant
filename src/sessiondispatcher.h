@@ -49,6 +49,10 @@ public:
     Q_INVOKABLE QStringList scan_of_large_qt(int size, QString abspath);
     //扫描cookies
     Q_INVOKABLE QStringList scan_cookies_records_qt();
+
+    //扫描firefox和chromium的cookies
+    Q_INVOKABLE QStringList cookies_scan_function_qt(QString flag);
+
     //扫描不需要的deb包
     Q_INVOKABLE QStringList scan_unneed_packages_qt();
     //扫描apt缓存

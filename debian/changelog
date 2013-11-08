@@ -1,8 +1,9 @@
 youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
 
   * Add processmanager.
+  * Add Google Chromium Cookies cleaner.
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 04 Nov 2013 16:08:03 +0800
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 08 Nov 2013 10:54:03 +0800
 
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 
