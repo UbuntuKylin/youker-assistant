@@ -36,7 +36,7 @@ Item {
     property bool null_flag: false
     property bool null_flag2: false
     property int deleget_arrow: 0
-    property int deleget_arrowc: 0
+    property int deleget_arrow2: 0
     property bool expanded: false
     property bool expanded2: false
     property bool delegate_flag: false
@@ -400,7 +400,7 @@ Item {
                     itemTitle: "清理Chromium保存的Cookies"
                     detailstr: "清理Chromium浏览器自动保存的登录信息(Cookies)"
                     sub_num: root.chromiumNum
-                    arrow_display: root.deleget_arrowc
+                    arrow_display: root.deleget_arrow2
                     flag: "chromium"
                     btnFlag: root.btn_flag2
                     nullFlag: root.null_flag2
@@ -423,7 +423,7 @@ Item {
 
                             if(status == "reset") {//点击重置按钮，清空数据
                                 chromiumModel.clear();
-                                root.deleget_arrowc=0;//传递给ListTitle.qml去隐藏伸展按钮
+                                root.deleget_arrow2=0;//传递给ListTitle.qml去隐藏伸展按钮
                                 if(systemListView.visible == true) {
                                     systemListView.visible = false;
                                 }
@@ -444,12 +444,12 @@ Item {
     //                                        chromiumTitle.state = "CookiesWorkEmptyC";
 //                                            console.log("iiiiiiiiiii");
                                             sessiondispatcher.tellNullToListTitle("chromium", true);
-                                            root.deleget_arrowc=0;
+                                            root.deleget_arrow2=0;
                                             sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
                                         }
                                         else if(root.null_flag2 == false)
                                         {
-                                            root.deleget_arrowc=1;
+                                            root.deleget_arrow2=1;
 //                                            console.log("pppppppppppp");
                                             sessiondispatcher.tellNullToListTitle("chromium", false);
     //                                        toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
