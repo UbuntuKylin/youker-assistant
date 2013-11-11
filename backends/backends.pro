@@ -20,6 +20,8 @@ inst9.files += ../backends/youker-assistant-daemon/data/beautify/plymouth/
 inst9.path = /usr/share/youker-assistant-daemon/
 inst10.files += ../backends/youker-assistant-daemon/data/beautify/sound-theme/
 inst10.path = /usr/share/youker-assistant-daemon/
+inst11.files += ../backends/youker-assistant-daemon/data/processmanager/
+inst11.path = /usr/share/youker-assistant-daemon/
 
 INSTALLS += inst1 \
     inst2 \
@@ -30,4 +32,5 @@ INSTALLS += inst1 \
     inst7 \
     inst8 \
     inst9 \
-    inst10
+    inst10 \
+    inst11

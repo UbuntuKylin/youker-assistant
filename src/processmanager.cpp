@@ -26,7 +26,7 @@ ProcessManager::ProcessManager(QObject *parent) :
     readMemoFile();
 }
 
-ProcessManager::~ProcessManager() {
+ProcessManager::~ProcessManager(){
     mSettings->sync();
     if (mSettings != NULL)
         delete mSettings;
@@ -45,78 +45,10 @@ void ProcessManager::readMemoFile(){
     }
 }
 
-//QList<YProcess> ProcessManager::getProcess(){
-
-
-//    mSettings->beginGroup("user");
-//    QString currrentName = mSettings->value("currentName").toString();
-//    if(currrentName.isEmpty()) {
-//        currrentName = QString("root");
-//    }
-//    mSettings->endGroup();
-//    mSettings->sync();
-
-//    QString cmd = tr("ps -u %1 -o user,pid,%cpu,%mem,start,command").arg(currrentName);
-
-//    QProcess *p = new QProcess();
-////    p->start("ps -u lixiang -o user,pid,%cpu,%mem,start,command");
-//    p->start(cmd);
-//    p->waitForFinished();
-
-//    QList<YProcess> *yplist = new QList<YProcess>();
-//    p->readLine();  //throw the first line
-//    qDebug() << "-----------------access process list-------------------";
-//    QStringList processList;
-//    QString str;
-//    while(p->canReadLine()){
-//        str.clear();
-//        YProcess *yp = new YProcess();
-//        QString tmps = p->readLine();
-
-//        int spaceIndex = tmps.indexOf(" ");
-//        yp->user = tmps.mid(0, spaceIndex);
-//        tmps.remove(0, spaceIndex);
-//        tmps = tmps.trimmed();
-
-//        spaceIndex = tmps.indexOf(" ");
-//        yp->pid = tmps.mid(0, spaceIndex);
-//        tmps.remove(0, spaceIndex);
-//        tmps = tmps.trimmed();
-
-//        spaceIndex = tmps.indexOf(" ");
-//        yp->pcpu = tmps.mid(0, spaceIndex);
-//        tmps.remove(0, spaceIndex);
-//        tmps = tmps.trimmed();
-
-//        spaceIndex = tmps.indexOf(" ");
-//        yp->pmem = tmps.mid(0, spaceIndex);
-//        tmps.remove(0, spaceIndex);
-//        tmps = tmps.trimmed();
-
-//        spaceIndex = tmps.indexOf(" ");
-//        yp->started = tmps.mid(0, spaceIndex);
-//        tmps.remove(0, spaceIndex);
-//        tmps = tmps.trimmed();
-
-//        yp->command = tmps;
-
-//        yplist->append(*yp);
-//        str = tr("%1;%2;%3;%4;%5;%6").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->command);
-//        processList.append(str);
-////        qDebug() << yp->user;
-////        qDebug() << yp->pcpu;
-////        qDebug() << yp->pmem;
-////        qDebug() << yp->started;
-////        qDebug() << yp->command;
-//    }
-//    return *yplist;
-//}
-
-
 QStringList ProcessManager::getProcess(){
     mSettings->beginGroup("user");
     QString currrentName = mSettings->value("currentName").toString();
-    if(currrentName.isEmpty()) {
+    if(currrentName.isEmpty()){
         currrentName = QString("root");
     }
     mSettings->endGroup();
@@ -168,7 +100,7 @@ QStringList ProcessManager::getProcess(){
 
         yp->command = tmps;
 
-        foreach (QString key, memos->keys()) {
+        foreach (QString key, memos->keys()){
             if(yp->command.indexOf(key) != -1){
                 yp->memo = memos->value(key);
             }
@@ -176,9 +108,6 @@ QStringList ProcessManager::getProcess(){
 
         str = tr("%1;%2;%3;%4;%5;%6;%7").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->memo).arg(yp->command);
         processList.append(str);
-
-
-//        qDebug()<<yp->command;
     }
     return processList;
 }
@@ -230,7 +159,7 @@ QStringList ProcessManager::getProcessAdvance(){
 
         yp->command = tmps;
 
-        foreach (QString key, memos->keys()) {
+        foreach (QString key, memos->keys()){
             if(yp->command.indexOf(key) != -1){
                 yp->memo = memos->value(key);
             }
@@ -238,13 +167,9 @@ QStringList ProcessManager::getProcessAdvance(){
 
         str = tr("%1;%2;%3;%4;%5;%6;%7").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->memo).arg(yp->command);
         processList.append(str);
-
-
-//        qDebug()<<yp->command;
     }
     return processList;
 }
-
 
 bool ProcessManager::killProcess(QString pid){
     QProcess *p = new QProcess();
@@ -252,17 +177,17 @@ bool ProcessManager::killProcess(QString pid){
     return p->waitForFinished();
 }
 
-void ProcessManager::clearMap() {
+void ProcessManager::clearMap(){
     processMap.clear();
 }
 
-void ProcessManager::updateMap(QString num, QString id) {
+void ProcessManager::updateMap(QString num, QString id){
     processMap.insert(num, id);
 }
 
-QString ProcessManager::getProcessId(QString currentIndex) {
+QString ProcessManager::getProcessId(QString currentIndex){
     QString currentId;
-    if(processMap.contains(currentIndex)) {
+    if(processMap.contains(currentIndex)){
         currentId = processMap.value(currentIndex);
     }
     return currentId;

@@ -56,6 +56,11 @@ public:
     Q_INVOKABLE void clean_dash_history_qt();
     //清理cookies
     Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
+    //清理firefox或者choromium的单个cookie
+    Q_INVOKABLE void cookies_clean_record_function_qt(QString flag, QString website);
+    //清理firefox或者choromium的所有cookies
+    Q_INVOKABLE void cookies_clean_records_function_qt(QString flag);
+
     //清理apt缓存、软件中心缓存、最大文件和同名文件
     Q_INVOKABLE void clean_file_cruft_qt(QStringList strlist, QString str);
     //---------------------------------

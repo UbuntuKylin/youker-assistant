@@ -35,17 +35,17 @@ Rectangle {
         var list = processmanager.getProcess();
         for (var i=0 ; i < list.length ; i++) {
             var splitlist = list[i].split(";");
-            if(splitlist.length !== 6) {
+            if(splitlist.length !== 7) {
                 continue;
             }
             else {
                 var num = i.toString();
                 var id = splitlist[1];
-                largeModel.append({"number": num, "user": splitlist[0], "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "command": splitlist[5]});
+                largeModel.append({"user": splitlist[0], "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "content": splitlist[5], "command": splitlist[6]});
                 processmanager.updateMap(num, id);//更新qt中保存的进程序号和进程号组合的map
             }
         }
-        largeModel.append({"number": "i", "user": "kobe", "pid": "pid", "pcpu": "cpu", "pmem": "mem", "started": "time", "command": "test for TableView"});
+        largeModel.append({"user": "kobe", "pid": "pid", "pcpu": "cpu", "pmem": "mem", "started": "time", "content": "ubuntukylin", "command": "test for TableView"});
     }
 
     Image {
@@ -133,30 +133,30 @@ Rectangle {
         height: parent.height - titleimage.height - 5*2
 //        frame: false
         //标题栏内容列表
-        Common.TableColumn {
-            role: "number"
-            title: "序号"
-            width: 40
-        }
+//        Common.TableColumn {
+//            role: "number"
+//            title: "序号"
+//            width: 40
+//        }
         Common.TableColumn {
             role: "user"
             title: "用户"
-            width: 80
+            width: 60
         }
         Common.TableColumn {
             role: "pid"
             title: "ID"
-            width: 80
+            width: 50
         }
         Common.TableColumn {
             role: "pcpu"
-            title: "%CPU"
-            width: 80
+            title: "CPU占用%"
+            width: 70
         }
         Common.TableColumn {
             role: "pmem"
-            title: "%内存"
-            width: 80
+            title: "内存占用%"
+            width: 70
         }
         Common.TableColumn {
             role: "started"
@@ -164,9 +164,14 @@ Rectangle {
             width: 80
         }
         Common.TableColumn {
+            role: "content"
+            title: "进程说明"
+            width: 150
+        }
+        Common.TableColumn {
             role: "command"
             title: "进程名"
-            width: parent.width - 80*5 - 40
+            width: parent.width - 60 - 70*2 - 50 - 80 - 150 - 30
         }
 
         //标题栏美化
@@ -176,8 +181,8 @@ Rectangle {
             Text {
                 text: itemValue
                 anchors.centerIn:parent
-                font.bold: true
-                font.pixelSize: 14
+//                font.bold: true
+                font.pixelSize: 12
                 color: "#383838"
             }
         }
@@ -201,11 +206,11 @@ Rectangle {
             }
         }
     }
-    //每隔5秒自动刷新
-    Timer {
-        interval: 5000; running: true; repeat: true
-        onTriggered: {
-            updateProcessList();
-        }
-    }
+    //每隔10秒自动刷新
+//    Timer {
+//        interval: 10000; running: true; repeat: true
+//        onTriggered: {
+//            updateProcessList();
+//        }
+//    }
 }

@@ -161,7 +161,7 @@ Item {
                     fontName: listViewDelegate.subItemFontName
                     fontSize: listViewDelegate.subItemFontSize
                     fontColor: listViewDelegate.subItemFontColor
-                    textIndent: 20
+//                    textIndent: 20
                     btn_flag: listViewDelegate.btn_flag
                     onClicked: {}
                     onChange_num: {

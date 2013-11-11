@@ -49,6 +49,10 @@ public:
     Q_INVOKABLE QStringList scan_of_large_qt(int size, QString abspath);
     //扫描cookies
     Q_INVOKABLE QStringList scan_cookies_records_qt();
+
+    //扫描firefox和chromium的cookies
+    Q_INVOKABLE QStringList cookies_scan_function_qt(QString flag);
+
     //扫描不需要的deb包
     Q_INVOKABLE QStringList scan_unneed_packages_qt();
     //扫描apt缓存
@@ -200,6 +204,8 @@ public:
 
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);
+
+    Q_INVOKABLE void tellNullToListTitle(QString emptyFlag, bool status);//BrowserCookies中扫描内容为空时，告诉ListTitle.qml
 signals:
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
@@ -208,6 +214,8 @@ signals:
     void startUpdateRateTime(int rate);//发送开始更换天气自动更新周期时间
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
+    //BrowserCookies中扫描内容为空时，告诉ListTitle.qml
+    void getNullFlag(QString emptyFlag, bool status);
 public slots:
     void handler_change_skin(QString skinName);
     //更换城市槽函数
