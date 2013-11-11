@@ -57,7 +57,7 @@ public:
     //清理cookies
     Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
     //清理firefox或者choromium的单个cookie
-    Q_INVOKABLE void cookies_clean_record_function_qt(QStringList strlist);
+    Q_INVOKABLE void cookies_clean_record_function_qt(QString flag, QString website);
     //清理firefox或者choromium的所有cookies
     Q_INVOKABLE void cookies_clean_records_function_qt(QString flag);
 

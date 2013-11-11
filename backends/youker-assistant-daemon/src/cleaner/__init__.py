@@ -41,6 +41,9 @@ def get_user_homedir(homedir):
     global HOMEDIR
     HOMEDIR = homedir
 
+def return_homedir_sysdaemon():
+    global HOMEDIR
+    return HOMEDIR
 
 # clean up by one key
 class OneKeyClean():
@@ -196,7 +199,7 @@ class CleanTheCookies():
         return domaincount
 
     def get_cookies_crufts(self, flag):
-        homedir = return_homedir_sesdaemon()
+        homedir = common.return_homedir_sesdaemon()
         objcg = cookiesclean.CookiesClean(homedir)
         crufts_list = []
 
@@ -210,7 +213,7 @@ class CleanTheCookies():
                 self.daemon_obj.deb_exists_firefox("no")
         if flag in "c":
             filepathc = "%s/.config/chromium/Default/Cookies" % homedir
-            if os.path.exists(filepathf):
+            if os.path.exists(filepath):
                 self.daemon_obj.deb_exists_chromium("yes")
                 pamc = [filepathc, 'cookies', 'host_key']
                 crufts_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
@@ -220,7 +223,7 @@ class CleanTheCookies():
         return crufts_list
 
     def clean_one_cookies_cruft(self, flag, domain):
-        homedir = return_homedir_sesdaemon()
+        homedir = return_homedir_sysdaemon()
         objcc = cookiesclean.CookiesClean(homedir)
 
         if flag in "f":
@@ -233,7 +236,7 @@ class CleanTheCookies():
             objcc.clean_cookies_record(pamf[0], pamf[1], pamf[2], pamf[3])
             
     def clean_all_cookies_crufts(self, flag):
-        homedir = return_homedir_sesdaemon()
+        homedir = return_homedir_sysdaemon()
         objcc = cookiesclean.CookiesClean(homedir)
 
         if flag in "f":

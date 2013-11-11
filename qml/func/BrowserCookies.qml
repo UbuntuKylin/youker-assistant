@@ -45,6 +45,7 @@ Item {
     property bool mainStatus1: true//存放firefox主checkbox的状态
     property bool mainStatus2: true//存放chromium主checkbox的状态
 
+
 //    onNull_flag2Changed: {
 //        console.log("flag2 change..");
 //        console.log(null_flag2);
@@ -55,9 +56,12 @@ Item {
 //        console.log(null_flag);
 //    }
     function getDataOfFirefox() {
+        console.log("kobe.........1");
 //        var cookies_data = sessiondispatcher.scan_cookies_records_qt();
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("f");
+        console.log(cookies_data);
         if (cookies_data === "") {
+            console.log("kobe.........2");
             //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
             if(root.null_flag == true) {
                 root.null_flag = false;
@@ -67,6 +71,7 @@ Item {
 //                statusImage.visible = false;
         }
         else {
+            console.log("kobe.........3");
             //如果扫描到的数据不为空，把空标记置为false，未完成的状态图标显示。
             if(root.null_flag == false) {
                 root.null_flag = true;
@@ -96,7 +101,7 @@ Item {
     }
 
     function getDataOfChromium() {
-        var cookies_data = sessiondispatcher.scan_apt_cruft_qt();
+        var cookies_data = sessiondispatcher.cookies_scan_function_qt("c");
         if (cookies_data === "") {
             //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
             if(root.null_flag2 == true) {
@@ -135,6 +140,20 @@ Item {
         }
     }
 
+    signal cookies_signal(string cookies_msg);
+    //获取cookies：包括两种情况，一是扫描时获取，二是清理完毕后重新获取
+    onCookies_signal: {
+        if (cookies_msg == "CookiesWork") {
+            //get data of firefox cookies
+            console.log("kobe.........");
+            root.getDataOfFirefox();
+        }
+        else if (cookies_msg == "CookiesWorkC") {
+            //get data of chromium cookies
+            root.getDataOfChromium();
+        }
+    }
+
     //委托
     Component{
         id: firefoxDelegate
@@ -147,6 +166,11 @@ Item {
             btn_flag: root.btn_flag
             bgImage: ""
             browserFlag: "firefox"
+            onClicked: {
+                console.log("wahahaha");
+                cookies_signal("CookiesWork");
+                console.log("pppppppppppp")
+            }
         }
     }
     Component{
@@ -160,6 +184,9 @@ Item {
             btn_flag: root.btn_flag
             bgImage: ""
             browserFlag: "chromium"
+            onClicked: {
+                cookies_signal("CookiesWorkC");
+            }
         }
     }
     //数据
@@ -169,18 +196,7 @@ Item {
     ListModel {
         id: chromiumModel
     }
-    signal cookies_signal(string cookies_msg);
-    //获取cookies：包括两种情况，一是扫描时获取，二是清理完毕后重新获取
-    onCookies_signal: {
-        if (cookies_msg == "CookiesWork") {
-            //get data of firefox cookies
-            root.getDataOfFirefox();
-        }
-        else if (cookies_msg == "CookiesWorkC") {
-            //get data of chromium cookies
-            root.getDataOfChromium();
-        }
-    }
+
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
@@ -357,7 +373,8 @@ Item {
                                         if(root.expanded == true) {
                                             root.expanded = false;
                                         }
-    //                                    systemdispatcher.set_user_homedir_qt();
+                                        systemdispatcher.set_user_homedir_qt();
+                                        systemdispatcher.cookies_clean_records_function_qt("f");
     //                                    systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
 //                                        root.deleget_arrow=1;
                                     }
@@ -440,9 +457,17 @@ Item {
                                     }
                                     else if (root.btn_flag2 == "cookies_workc") {
                                         console.log("clean---c......");
-    //                                    systemdispatcher.set_user_homedir_qt();
+                                        root.deleget_arrow2=0;
+                                        if(systemListView.visible == true) {
+                                            systemListView.visible = false;
+                                        }
+                                        if(root.expanded2 == true) {
+                                            root.expanded2 = false;
+                                        }
+                                        systemdispatcher.set_user_homedir_qt();
+                                        systemdispatcher.cookies_clean_records_function_qt("c");
     //                                    systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
-                                        root.deleget_arrowc=1;
+//                                        root.deleget_arrowc=1;
                                     }
                                 }
                                 else

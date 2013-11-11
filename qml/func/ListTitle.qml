@@ -208,13 +208,13 @@ Item {
 //                    itemtitle.expanded = false;
 //                    resetBtn.visible = false;
                     itemtitle.sendBrowserType(itemtitle.flag, "cookies_work");
-                    itemtitle.state = "CookiesWorkFinish";
+//                    itemtitle.state = "CookiesWorkFinish";
 //                    itemtitle.arrow_display = 0;//清理完毕后隐藏箭头图标
 //                    itemtitle.expanded = false;
                 }
                 else if(itemtitle.btnFlag == "cookies_workc") {
                     itemtitle.sendBrowserType(itemtitle.flag, "cookies_workc");
-                    itemtitle.state = "CookiesWorkFinishC";
+//                    itemtitle.state = "CookiesWorkFinishC";
                 }
             }
         }

@@ -41,6 +41,22 @@ Item {
     onSelectedChanged: selected ? state = 'selected' : state = ''
     onCheckbox_statusChanged: {checkbox.checked=checkbox_status}  //当父项传进来的check值改变时，强制改变全部子项的check值以进行统一控制
 
+
+    Connections
+    {
+        target: systemdispatcher
+        onFinishCleanWork: {
+//            if (btnFlag == "cookies_work") {
+                if (msg == "") {
+                    console.log("clean failed....");
+                }
+                else if (msg == "cookies") {
+                    console.log("clean success....");
+                    container.clicked();
+                }
+        }
+    }
+
     function get_last_name(str)
     {
         var need_str = str;
@@ -96,13 +112,17 @@ Item {
         height: 20
         onClicked: {
             console.log(itemText.text);
+            console.log(container.browserFlag);
+            systemdispatcher.set_user_homedir_qt();
+            systemdispatcher.cookies_clean_record_function_qt(container.browserFlag, itemText.text);
+
         }
     }
 
     MouseArea {
         id: mouseArea
         anchors.fill: itemText
-        onClicked: container.clicked();
+//        onClicked: container.clicked();
         onReleased: selectable && !selected ? selected = true : selected = false
     }
 

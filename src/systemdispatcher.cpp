@@ -234,7 +234,9 @@ void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
     thread->start();
 }
 
-void SystemDispatcher::cookies_clean_record_function_qt(QStringList strlist) {
+void SystemDispatcher::cookies_clean_record_function_qt(QString flag, QString website) {
+    QStringList strlist;
+    strlist << flag << website;
     KThread *thread = new KThread(strlist, systemiface, "cookies_clean_record_function");
     thread->start();
 }
