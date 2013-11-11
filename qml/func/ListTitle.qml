@@ -120,6 +120,7 @@ Item {
             if (btnFlag == "cookies_work") {
                 if (msg == "") {
                     resetBtn.visible = true;
+                    toolkits.alertMSG("清理中断了！", mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else if (msg == "cookies") {
 //                    root.work_result = msg;

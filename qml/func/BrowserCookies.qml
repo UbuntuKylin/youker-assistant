@@ -212,10 +212,13 @@ Item {
 //         }
         onFinishCleanWork: {
             if (btn_flag == "cookies_work") {
-                if (msg == "cookies") {
+                if (msg == "") {
+//                    root.deleget_arrow = 1;//清理中断时，显示伸缩箭头
+                }
+                else if (msg == "cookies") {
                     //清理完毕后重新获取cookies
                     root.cookies_signal("CookiesWork");
-//                    root.deleget_arrow = 0;//清理完毕后隐藏箭头图标
+                    root.deleget_arrow = 0;//清理完毕后隐藏箭头图标
 //                    root.expanded = false;
                 }
             }
@@ -366,7 +369,6 @@ Item {
                                     }
                                     else if (root.btn_flag == "cookies_work") {
                                         console.log("clean---f......");
-                                        root.deleget_arrow=0;
                                         if(yourselfListView.visible == true) {
                                             yourselfListView.visible = false;
                                         }
