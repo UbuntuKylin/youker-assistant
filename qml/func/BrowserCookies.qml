@@ -60,7 +60,9 @@ Item {
 //        var cookies_data = sessiondispatcher.scan_cookies_records_qt();
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("f");
         console.log(cookies_data);
-        if (cookies_data === "") {
+        console.log(cookies_data.length);
+
+        if (cookies_data.length === 0) {
             console.log("kobe.........2");
             //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
             if(root.null_flag == true) {
@@ -102,7 +104,7 @@ Item {
 
     function getDataOfChromium() {
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("c");
-        if (cookies_data === "") {
+        if (cookies_data.length === 0) {
             //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
             if(root.null_flag2 == true) {
                 root.null_flag2 = false;
@@ -212,10 +214,13 @@ Item {
 //         }
         onFinishCleanWork: {
             if (btn_flag == "cookies_work") {
-                if (msg == "cookies") {
+                if (msg == "") {
+//                    root.deleget_arrow = 1;//清理中断时，显示伸缩箭头
+                }
+                else if (msg == "cookies") {
                     //清理完毕后重新获取cookies
                     root.cookies_signal("CookiesWork");
-//                    root.deleget_arrow = 0;//清理完毕后隐藏箭头图标
+                    root.deleget_arrow = 0;//清理完毕后隐藏箭头图标
 //                    root.expanded = false;
                 }
             }
@@ -366,7 +371,6 @@ Item {
                                     }
                                     else if (root.btn_flag == "cookies_work") {
                                         console.log("clean---f......");
-                                        root.deleget_arrow=0;
                                         if(yourselfListView.visible == true) {
                                             yourselfListView.visible = false;
                                         }
