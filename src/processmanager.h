@@ -38,6 +38,8 @@ public:
 //    Q_INVOKABLE QList<YProcess> getProcess();
     //得到当前登录用户的所有进程列表
     Q_INVOKABLE QStringList getProcess();
+    //得到所有进程的列表
+    Q_INVOKABLE QStringList getProcessAdvance();
     //根据进程号杀掉进程
     Q_INVOKABLE bool killProcess(QString pid);
     //清空进程序号和进程号组合的map

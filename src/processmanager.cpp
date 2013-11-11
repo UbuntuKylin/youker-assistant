@@ -114,8 +114,6 @@ void ProcessManager::readMemoFile(){
 
 
 QStringList ProcessManager::getProcess(){
-
-
     mSettings->beginGroup("user");
     QString currrentName = mSettings->value("currentName").toString();
     if(currrentName.isEmpty()) {
@@ -125,6 +123,68 @@ QStringList ProcessManager::getProcess(){
     mSettings->sync();
 
     QString cmd = tr("ps -u %1 -o user,pid,%cpu,%mem,start,ucmd,command").arg(currrentName);
+
+    QProcess *p = new QProcess();
+    p->start(cmd);
+    p->waitForFinished();
+
+    p->readLine();  //throw the first line
+    QStringList processList;
+    QString str;
+    while(p->canReadLine()){
+        str.clear();
+        YProcess *yp = new YProcess();
+        QString tmps = p->readLine();
+
+        int spaceIndex = tmps.indexOf(" ");
+        yp->user = tmps.mid(0, spaceIndex);
+        tmps.remove(0, spaceIndex);
+        tmps = tmps.trimmed();
+
+        spaceIndex = tmps.indexOf(" ");
+        yp->pid = tmps.mid(0, spaceIndex);
+        tmps.remove(0, spaceIndex);
+        tmps = tmps.trimmed();
+
+        spaceIndex = tmps.indexOf(" ");
+        yp->pcpu = tmps.mid(0, spaceIndex);
+        tmps.remove(0, spaceIndex);
+        tmps = tmps.trimmed();
+
+        spaceIndex = tmps.indexOf(" ");
+        yp->pmem = tmps.mid(0, spaceIndex);
+        tmps.remove(0, spaceIndex);
+        tmps = tmps.trimmed();
+
+        spaceIndex = tmps.indexOf(" ");
+        yp->started = tmps.mid(0, spaceIndex);
+        tmps.remove(0, spaceIndex);
+        tmps = tmps.trimmed();
+
+        spaceIndex = tmps.indexOf(" ");
+        yp->cmd = tmps.mid(0, spaceIndex);
+        tmps.remove(0, spaceIndex);
+        tmps = tmps.trimmed();
+
+        yp->command = tmps;
+
+        foreach (QString key, memos->keys()) {
+            if(yp->command.indexOf(key) != -1){
+                yp->memo = memos->value(key);
+            }
+        }
+
+        str = tr("%1;%2;%3;%4;%5;%6;%7").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->memo).arg(yp->command);
+        processList.append(str);
+
+
+//        qDebug()<<yp->command;
+    }
+    return processList;
+}
+
+QStringList ProcessManager::getProcessAdvance(){
+    QString cmd = "ps ax -o user,pid,%cpu,%mem,start,ucmd,command";
 
     QProcess *p = new QProcess();
     p->start(cmd);
