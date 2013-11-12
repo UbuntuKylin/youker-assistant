@@ -190,7 +190,7 @@ void SudoDispatcher::handlerGetSoftwareListStatus(QStringList statusDict) {
 }
 
 void SudoDispatcher::showPasswdDialog(int window_x, int window_y) {
-    AuthDialog *authdialog = new AuthDialog("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。");
+    AuthDialog *authdialog = new AuthDialog(QObject::tr("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。"));
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     authdialog->move(this->alert_x, this->alert_y);
@@ -276,8 +276,8 @@ void SudoDispatcher::getAppListForDisPlay() {
     }
     else {
         QMessageBox::warning(NULL,
-                             tr("警告"),
-                             tr("没有找到软件列表文件！"),
+                             QObject::tr("警告"),
+                             QObject::tr("没有找到软件列表文件！"),
                              QMessageBox::Ok);
     }
 }
@@ -295,8 +295,8 @@ void SudoDispatcher::getAppInfo(QString flag) {
     }
     else {
         QMessageBox::warning(NULL,
-                             tr("警告"),
-                             tr("没有找到软件列表文件！"),
+                             QObject::tr("警告"),
+                             QObject::tr("没有找到软件列表文件！"),
                              QMessageBox::Ok);
     }
 }

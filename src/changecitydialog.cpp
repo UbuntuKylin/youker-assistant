@@ -47,8 +47,8 @@ void ChangeCityDialog::writeWeatherConf() {
     QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
     if(cityId == "") {
         QMessageBox::warning(NULL,
-                             tr("警告"),
-                             tr("没有找到城市配置文件！"),
+                             QObject::tr("警告"),
+                             QObject::tr("没有找到城市配置文件！"),
                              QMessageBox::Ok);
     }
     else {

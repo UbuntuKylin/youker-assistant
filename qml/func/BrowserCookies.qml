@@ -448,13 +448,8 @@ Item {
     //                                        chromiumTitle.state = "CookiesWorkEmptyC";
 //                                            console.log("iiiiiiiiiii");
                                             sessiondispatcher.tellNullToListTitle("chromium", true);
-<<<<<<< TREE
-                                            root.deleget_arrowc=0;
-                                            sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
-=======
                                             root.deleget_arrow2=0;
-                                            sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
->>>>>>> MERGE-SOURCE
+                                            sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
                                         }
                                         else if(root.null_flag2 == false)
                                         {

@@ -125,17 +125,13 @@ Item {
                 else if (msg == "cookies") {
 //                    root.work_result = msg;
 
-                    toolkits.alertMSG("清理完毕111！", mainwindow.pos.x, mainwindow.pos.y);
-                    itemtitle.state = "CookiesWorkFinish";
-<<<<<<< TREE
                     toolkits.alertMSG(qsTr("清理完毕！"), mainwindow.pos.x, mainwindow.pos.y);
-=======
+                    itemtitle.state = "CookiesWorkFinish";
 //                    console.log("11111");
 //                    scanBtn.text = "开始扫描";
 //                    itemtitle.btnFlag = "cookies_scan";
 //                    resetBtn.visible = false;
 //                    console.log("222222");
->>>>>>> MERGE-SOURCE
                     //清理完毕后重新获取cookies
 //                    root.cookies_signal("CookiesWork");
                 }

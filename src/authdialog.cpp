@@ -80,8 +80,8 @@ void AuthDialog::on_closeButton_clicked()
 //    this->hide();
     this->close();
     QMessageBox::warning(NULL,
-                         tr("警告"),
-                         tr("服务没有启动，相关功能将无法正常使用！"),
+                         QObject::tr("警告"),
+                         QObject::tr("服务没有启动，相关功能将无法正常使用！"),
                          QMessageBox::Ok);
 }
 void AuthDialog::sleep_to_call_server() {
@@ -92,7 +92,7 @@ void AuthDialog::on_okButton_clicked()
 {
     passwd = ui->lineEdit->text();
     if(trans_password("youkersudo", passwd)) {
-        ui->msg_label->setText("正在启动服务，请稍等！");
+        ui->msg_label->setText(QObject::tr("正在启动服务，请稍等！"));
         QTimer *timer = new QTimer(this);
         timer->setInterval(1000);
         connect(timer,SIGNAL(timeout()),this,SLOT(sleep_to_call_server()));
@@ -102,6 +102,6 @@ void AuthDialog::on_okButton_clicked()
     else {
         ui->lineEdit->clear();
         ui->lineEdit->setFocus();
-        ui->msg_label->setText("提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。");
+        ui->msg_label->setText(QObject::tr("提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。"));
     }
 }

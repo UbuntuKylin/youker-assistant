@@ -18,22 +18,22 @@
         <location filename="../qml/func/AptCruft.qml" line="311"/>
         <location filename="../qml/func/AptCruft.qml" line="317"/>
         <source>开始扫描</source>
-        <translation type="unfinished">start scan</translation>
+        <translation>startscan</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="26"/>
         <source>包管理深度清理</source>
-        <translation type="unfinished"></translation>
+        <translation>clean package deeply</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="27"/>
         <source>深度清理包管理残留的deb包,节省磁盘空间</source>
-        <translation type="unfinished"></translation>
+        <translation>clean the residual deb package, save disk space.</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="72"/>
         <source>包管理清理</source>
-        <translation type="unfinished"></translation>
+        <translation>package manager clean</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="74"/>
@@ -43,54 +43,54 @@
     <message>
         <location filename="../qml/func/AptCruft.qml" line="101"/>
         <source>清理出现异常！</source>
-        <translation type="unfinished"></translation>
+        <translation>clean exception</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="113"/>
         <source>清理完毕！</source>
-        <translation type="unfinished"></translation>
+        <translation>clean over</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="187"/>
         <location filename="../qml/func/AptCruft.qml" line="295"/>
         <source>未完成</source>
-        <translation type="unfinished"></translation>
+        <translation>unfinish</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="208"/>
         <location filename="../qml/func/AptCruft.qml" line="223"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation>friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="208"/>
         <source>扫描内容为空，不再执行清理！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">result is empty, no longer perform cleanup</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="214"/>
         <source>扫描完成！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">scan over</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="223"/>
         <source>对不起，您没有选择需要清理的项，请确认！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sorry, you don&apos;t choose the clean option, please confirm</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="293"/>
         <source>开始清理</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">start clean</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="307"/>
         <source>出现异常</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">exception happened</translation>
     </message>
     <message>
         <location filename="../qml/func/AptCruft.qml" line="313"/>
         <source>已完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">over</translation>
     </message>
 </context>
 <context>
@@ -103,33 +103,41 @@
     <message utf8="true">
         <location filename="../src/authdialog.ui" line="30"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message utf8="true">
         <location filename="../src/authdialog.ui" line="47"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message utf8="true">
         <location filename="../src/authdialog.ui" line="105"/>
         <source>用户密码</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">password</translation>
     </message>
     <message utf8="true">
         <location filename="../src/authdialog.ui" line="121"/>
         <source>输入当前用户密码</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">input password of the current user</translation>
     </message>
     <message>
-        <location filename="../src/authdialog.cpp" line="83"/>
         <location filename="../src/authdialog_event.cpp" line="56"/>
         <source>è­¦å</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authdialog.cpp" line="84"/>
         <location filename="../src/authdialog_event.cpp" line="57"/>
         <source>æå¡æ²¡æå¯å¨ï¼ç¸å³åè½å°æ æ³æ­£å¸¸ä½¿ç¨ï¼</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/authdialog.cpp" line="95"/>
+        <source>æ­£å¨å¯å¨æå¡ï¼è¯·ç¨ç­ï¼</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/authdialog.cpp" line="105"/>
+        <source>æç¤ºï¼å¯ç éè¯¯ï¼è¯·éæ°è¾å¥å½åç¨æ·ç»å½å¯ç ï¼ä¿è¯ä¼å®¢å©æçæ­£å¸¸ä½¿ç¨ã</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -161,7 +169,7 @@
     <message>
         <location filename="../qml/func/BrowserCookies.qml" line="26"/>
         <source>开始扫描</source>
-        <translation type="unfinished">start scan</translation>
+        <translation type="unfinished">startscan</translation>
     </message>
     <message>
         <location filename="../qml/func/BrowserCookies.qml" line="27"/>
@@ -174,47 +182,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/func/BrowserCookies.qml" line="311"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="313"/>
         <source>清理Firefox保存的Cookies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/func/BrowserCookies.qml" line="312"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="314"/>
         <source>清理Firefox浏览器自动保存的登录信息(Cookies)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/func/BrowserCookies.qml" line="360"/>
-        <location filename="../qml/func/BrowserCookies.qml" line="385"/>
-        <location filename="../qml/func/BrowserCookies.qml" line="450"/>
-        <location filename="../qml/func/BrowserCookies.qml" line="476"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="362"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="387"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="452"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="478"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
-        <location filename="../qml/func/BrowserCookies.qml" line="360"/>
-        <location filename="../qml/func/BrowserCookies.qml" line="450"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="362"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="452"/>
         <source>扫描内容为空，不再执行清理！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">result is empty, no longer perform cleanup</translation>
     </message>
     <message>
-        <location filename="../qml/func/BrowserCookies.qml" line="367"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="369"/>
         <source>扫描完成！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">scan over</translation>
     </message>
     <message>
-        <location filename="../qml/func/BrowserCookies.qml" line="385"/>
-        <location filename="../qml/func/BrowserCookies.qml" line="476"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="387"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="478"/>
         <source>对不起，您没有选择需要清理的项，请确认！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sorry, you don&apos;t choose the clean option, please confirm</translation>
     </message>
     <message>
-        <location filename="../qml/func/BrowserCookies.qml" line="402"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="404"/>
         <source>清理Chromium保存的Cookies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/func/BrowserCookies.qml" line="403"/>
+        <location filename="../qml/func/BrowserCookies.qml" line="405"/>
         <source>清理Chromium浏览器自动保存的登录信息(Cookies)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -232,7 +240,7 @@
         <location filename="../qml/func/BrowserHistroy.qml" line="345"/>
         <location filename="../qml/func/BrowserHistroy.qml" line="352"/>
         <source>开始扫描</source>
-        <translation type="unfinished">start scan</translation>
+        <translation type="unfinished">startscan</translation>
     </message>
     <message>
         <location filename="../qml/func/BrowserHistroy.qml" line="26"/>
@@ -254,7 +262,7 @@
         <location filename="../qml/func/BrowserHistroy.qml" line="448"/>
         <location filename="../qml/func/BrowserHistroy.qml" line="458"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/BrowserHistroy.qml" line="49"/>
@@ -264,7 +272,7 @@
         <location filename="../qml/func/BrowserHistroy.qml" line="392"/>
         <location filename="../qml/func/BrowserHistroy.qml" line="448"/>
         <source>扫描内容为空，不再执行清理！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">result is empty, no longer perform cleanup</translation>
     </message>
     <message>
         <location filename="../qml/func/BrowserHistroy.qml" line="187"/>
@@ -282,7 +290,7 @@
         <location filename="../qml/func/BrowserHistroy.qml" line="314"/>
         <location filename="../qml/func/BrowserHistroy.qml" line="326"/>
         <source>未完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">unfinish</translation>
     </message>
     <message>
         <location filename="../qml/func/BrowserHistroy.qml" line="219"/>
@@ -302,7 +310,7 @@
         <location filename="../qml/func/BrowserHistroy.qml" line="220"/>
         <location filename="../qml/func/BrowserHistroy.qml" line="324"/>
         <source>开始清理</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">start clean</translation>
     </message>
     <message>
         <location filename="../qml/func/BrowserHistroy.qml" line="233"/>
@@ -314,7 +322,7 @@
         <location filename="../qml/func/BrowserHistroy.qml" line="236"/>
         <location filename="../qml/func/BrowserHistroy.qml" line="340"/>
         <source>出现异常</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">exception happened</translation>
     </message>
     <message>
         <location filename="../qml/func/BrowserHistroy.qml" line="240"/>
@@ -328,7 +336,7 @@
         <location filename="../qml/func/BrowserHistroy.qml" line="347"/>
         <location filename="../qml/func/BrowserHistroy.qml" line="354"/>
         <source>已完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">over</translation>
     </message>
     <message>
         <location filename="../qml/func/BrowserHistroy.qml" line="291"/>
@@ -394,21 +402,11 @@
     <message utf8="true">
         <location filename="../src/changecitydialog.ui" line="97"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message utf8="true">
         <location filename="../src/changecitydialog.ui" line="114"/>
         <source>完成</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/changecitydialog.cpp" line="50"/>
-        <source>è­¦å</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/changecitydialog.cpp" line="51"/>
-        <source>æ²¡ææ¾å°åå¸éç½®æä»¶ï¼</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -493,7 +491,7 @@
         <location filename="../qml/func/settings/DefaultFont.qml" line="312"/>
         <location filename="../qml/func/settings/DefaultFont.qml" line="407"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/settings/DefaultFont.qml" line="208"/>
@@ -533,7 +531,7 @@
     <message>
         <location filename="../qml/func/settings/DefaultFont.qml" line="386"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message>
         <location filename="../qml/func/settings/DefaultFont.qml" line="407"/>
@@ -566,7 +564,7 @@
     <message>
         <location filename="../qml/func/settings/DesktopiconSet.qml" line="175"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message>
         <location filename="../qml/func/settings/DesktopiconSet.qml" line="187"/>
@@ -576,7 +574,7 @@
     <message>
         <location filename="../qml/func/settings/DesktopiconSet.qml" line="197"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/settings/DesktopiconSet.qml" line="197"/>
@@ -645,7 +643,7 @@
     <message>
         <location filename="../qml/func/settings/DocumentFont.qml" line="176"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/settings/DocumentFont.qml" line="176"/>
@@ -715,21 +713,21 @@
         <location filename="../qml/func/FastclearModel.qml" line="497"/>
         <location filename="../qml/func/FastclearModel.qml" line="513"/>
         <source>未完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">unfinish</translation>
     </message>
     <message>
         <location filename="../qml/func/FastclearModel.qml" line="293"/>
         <location filename="../qml/func/FastclearModel.qml" line="397"/>
         <location filename="../qml/func/FastclearModel.qml" line="504"/>
         <source>已完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">over</translation>
     </message>
     <message>
         <location filename="../qml/func/FastclearModel.qml" line="298"/>
         <location filename="../qml/func/FastclearModel.qml" line="402"/>
         <location filename="../qml/func/FastclearModel.qml" line="509"/>
         <source>出现异常</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">exception happened</translation>
     </message>
     <message>
         <location filename="../qml/func/FastclearModel.qml" line="367"/>
@@ -757,7 +755,7 @@
     <message>
         <location filename="../qml/func/bars/FcitxBar.qml" line="48"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message>
         <location filename="../qml/func/bars/FcitxBar.qml" line="62"/>
@@ -914,7 +912,7 @@
     <message>
         <location filename="../qml/func/bars/FcitxThreeBar.qml" line="59"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message>
         <location filename="../qml/func/bars/FcitxThreeBar.qml" line="68"/>
@@ -937,12 +935,12 @@
     <message utf8="true">
         <location filename="../src/fcitxwarndialog.ui" line="30"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message utf8="true">
         <location filename="../src/fcitxwarndialog.ui" line="47"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message utf8="true">
         <location filename="../src/fcitxwarndialog.ui" line="73"/>
@@ -988,7 +986,7 @@
     <message>
         <location filename="../qml/func/LargestFile.qml" line="26"/>
         <source>开始清理</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">start clean</translation>
     </message>
     <message>
         <location filename="../qml/func/LargestFile.qml" line="27"/>
@@ -1018,7 +1016,7 @@
     <message>
         <location filename="../qml/func/LargestFile.qml" line="150"/>
         <source>清理完毕！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">clean over</translation>
     </message>
     <message>
         <location filename="../qml/func/LargestFile.qml" line="203"/>
@@ -1036,7 +1034,7 @@
         <location filename="../qml/func/LargestFile.qml" line="274"/>
         <location filename="../qml/func/LargestFile.qml" line="282"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/LargestFile.qml" line="260"/>
@@ -1051,29 +1049,29 @@
     <message>
         <location filename="../qml/func/LargestFile.qml" line="274"/>
         <source>扫描内容为空，不再执行清理！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">result is empty, no longer perform cleanup</translation>
     </message>
     <message>
         <location filename="../qml/func/LargestFile.qml" line="282"/>
         <source>对不起，您没有选择需要清理的项，请确认！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sorry, you don&apos;t choose the clean option, please confirm</translation>
     </message>
     <message>
         <location filename="../qml/func/LargestFile.qml" line="346"/>
         <location filename="../qml/func/LargestFile.qml" line="353"/>
         <source>未完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">unfinish</translation>
     </message>
     <message>
         <location filename="../qml/func/LargestFile.qml" line="357"/>
         <source>出现异常</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">exception happened</translation>
     </message>
     <message>
         <location filename="../qml/func/LargestFile.qml" line="361"/>
         <location filename="../qml/func/LargestFile.qml" line="365"/>
         <source>已完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">over</translation>
     </message>
 </context>
 <context>
@@ -1172,21 +1170,21 @@
         <location filename="../qml/func/LeftPage.qml" line="492"/>
         <location filename="../qml/func/LeftPage.qml" line="508"/>
         <source>未完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">unfinish</translation>
     </message>
     <message>
         <location filename="../qml/func/LeftPage.qml" line="295"/>
         <location filename="../qml/func/LeftPage.qml" line="399"/>
         <location filename="../qml/func/LeftPage.qml" line="499"/>
         <source>已完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">over</translation>
     </message>
     <message>
         <location filename="../qml/func/LeftPage.qml" line="300"/>
         <location filename="../qml/func/LeftPage.qml" line="404"/>
         <location filename="../qml/func/LeftPage.qml" line="504"/>
         <source>出现异常</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">exception happened</translation>
     </message>
     <message>
         <location filename="../qml/func/LeftPage.qml" line="369"/>
@@ -1222,7 +1220,7 @@
     <message>
         <location filename="../qml/func/ListTitle.qml" line="115"/>
         <source>清理出现异常！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">clean exception</translation>
     </message>
     <message>
         <location filename="../qml/func/ListTitle.qml" line="123"/>
@@ -1232,23 +1230,23 @@
     <message>
         <location filename="../qml/func/ListTitle.qml" line="128"/>
         <source>清理完毕！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">clean over</translation>
     </message>
     <message>
-        <location filename="../qml/func/ListTitle.qml" line="193"/>
-        <location filename="../qml/func/ListTitle.qml" line="283"/>
+        <location filename="../qml/func/ListTitle.qml" line="199"/>
         <location filename="../qml/func/ListTitle.qml" line="289"/>
         <location filename="../qml/func/ListTitle.qml" line="295"/>
         <location filename="../qml/func/ListTitle.qml" line="301"/>
-        <location filename="../qml/func/ListTitle.qml" line="313"/>
-        <location filename="../qml/func/ListTitle.qml" line="319"/>
-        <location filename="../qml/func/ListTitle.qml" line="326"/>
+        <location filename="../qml/func/ListTitle.qml" line="307"/>
+        <location filename="../qml/func/ListTitle.qml" line="320"/>
+        <location filename="../qml/func/ListTitle.qml" line="327"/>
+        <location filename="../qml/func/ListTitle.qml" line="334"/>
         <source>开始扫描</source>
-        <translation type="unfinished">start scan</translation>
+        <translation type="unfinished">startscan</translation>
     </message>
     <message>
-        <location filename="../qml/func/ListTitle.qml" line="269"/>
-        <location filename="../qml/func/ListTitle.qml" line="276"/>
+        <location filename="../qml/func/ListTitle.qml" line="275"/>
+        <location filename="../qml/func/ListTitle.qml" line="282"/>
         <source>全部清理</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1268,28 +1266,16 @@
     <message utf8="true">
         <location filename="../src/locationdialog.ui" line="75"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message utf8="true">
         <location filename="../src/locationdialog.ui" line="92"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message utf8="true">
         <location filename="../src/locationdialog.ui" line="122"/>
         <source>查找</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/locationdialog.cpp" line="112"/>
-        <location filename="../src/locationdialog.cpp" line="125"/>
-        <source>è­¦å</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/locationdialog.cpp" line="113"/>
-        <location filename="../src/locationdialog.cpp" line="126"/>
-        <source>è¯·è¾å¥åéçåå¸åå­åç¹å»æ¥æ¾æé®è¿è¡æ¥æ¾ï¼</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1303,7 +1289,7 @@
     <message utf8="true">
         <location filename="../src/messagedialog.ui" line="30"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message utf8="true">
         <location filename="../src/messagedialog.ui" line="117"/>
@@ -1331,12 +1317,12 @@
     <message utf8="true">
         <location filename="../src/modaldialog.ui" line="30"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message utf8="true">
         <location filename="../src/modaldialog.ui" line="47"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message utf8="true">
         <location filename="../src/modaldialog.ui" line="105"/>
@@ -1387,7 +1373,7 @@
         <location filename="../qml/func/PackageModel.qml" line="347"/>
         <location filename="../qml/func/PackageModel.qml" line="353"/>
         <source>开始扫描</source>
-        <translation type="unfinished">start scan</translation>
+        <translation type="unfinished">startscan</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="28"/>
@@ -1408,18 +1394,18 @@
     <message>
         <location filename="../qml/func/PackageModel.qml" line="115"/>
         <source>清理出现异常！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">clean exception</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="127"/>
         <source>清理完毕！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">clean over</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="182"/>
         <location filename="../qml/func/PackageModel.qml" line="331"/>
         <source>未完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">unfinish</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="208"/>
@@ -1427,51 +1413,52 @@
         <location filename="../qml/func/PackageModel.qml" line="242"/>
         <location filename="../qml/func/PackageModel.qml" line="257"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="208"/>
         <location filename="../qml/func/PackageModel.qml" line="242"/>
         <source>扫描内容为空，不再执行清理！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">result is empty, no longer perform cleanup</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="214"/>
         <location filename="../qml/func/PackageModel.qml" line="248"/>
         <source>扫描完成！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">scan over</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="223"/>
         <location filename="../qml/func/PackageModel.qml" line="257"/>
         <source>对不起，您没有选择需要清理的项，请确认！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sorry, you don&apos;t choose the clean option, please confirm</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="329"/>
         <source>开始清理</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">start clean</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="343"/>
         <source>出现异常</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">exception happened</translation>
     </message>
     <message>
         <location filename="../qml/func/PackageModel.qml" line="349"/>
         <source>已完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">over</translation>
     </message>
 </context>
 <context>
     <name>ProcessManager</name>
     <message>
-        <location filename="../src/processmanager.cpp" line="127"/>
+        <location filename="../src/processmanager.cpp" line="57"/>
         <source>ps -u %1 -o user,pid,%cpu,%mem,start,ucmd,command</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/processmanager.cpp" line="179"/>
+        <location filename="../src/processmanager.cpp" line="109"/>
+        <location filename="../src/processmanager.cpp" line="168"/>
         <source>%1;%2;%3;%4;%5;%6;%7</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1547,100 +1534,40 @@
     </message>
 </context>
 <context>
-    <name>QUIBO</name>
+    <name>QObject</name>
     <message>
-        <location filename="../src/quibo.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RightPage</name>
-    <message>
-        <location filename="../qml/func/RightPage.qml" line="36"/>
-        <source>坏点检测</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/func/RightPage.qml" line="37"/>
-        <source>桌面图标</source>
+        <location filename="../src/authdialog.cpp" line="83"/>
+        <location filename="../src/changecitydialog.cpp" line="50"/>
+        <location filename="../src/locationdialog.cpp" line="112"/>
+        <location filename="../src/locationdialog.cpp" line="125"/>
+        <location filename="../src/sudodispatcher.cpp" line="279"/>
+        <location filename="../src/sudodispatcher.cpp" line="298"/>
+        <location filename="../src/wizarddialog.cpp" line="169"/>
+        <source>è­¦å</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/func/RightPage.qml" line="38"/>
-        <source>开机动画</source>
+        <location filename="../src/authdialog.cpp" line="84"/>
+        <source>æå¡æ²¡æå¯å¨ï¼ç¸å³åè½å°æ æ³æ­£å¸¸ä½¿ç¨ï¼</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/func/RightPage.qml" line="39"/>
-        <source>系统声音</source>
+        <location filename="../src/changecitydialog.cpp" line="51"/>
+        <location filename="../src/wizarddialog.cpp" line="170"/>
+        <source>æ²¡ææ¾å°åå¸éç½®æä»¶ï¼</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/func/RightPage.qml" line="40"/>
-        <source>鼠标指针</source>
+        <location filename="../src/locationdialog.cpp" line="113"/>
+        <location filename="../src/locationdialog.cpp" line="126"/>
+        <source>è¯·è¾å¥åéçåå¸åå­åç¹å»æ¥æ¾æé®è¿è¡æ¥æ¾ï¼</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../qml/func/RightPage.qml" line="41"/>
-        <source>触摸板</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SamenameFile</name>
-    <message>
-        <location filename="../qml/func/SamenameFile.qml" line="25"/>
-        <location filename="../qml/func/SamenameFile.qml" line="380"/>
-        <source>开始扫描</source>
-        <translation type="unfinished">start scan</translation>
-    </message>
-    <message>
-        <location filename="../qml/func/SamenameFile.qml" line="26"/>
-        <source>清理同名文件</source>
-        <translation type="unfinished">clean same file</translation>
-    </message>
-    <message>
-        <location filename="../qml/func/SamenameFile.qml" line="27"/>
-        <source>清理用户指定目录下的同名文件，节省磁盘空间</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/func/SamenameFile.qml" line="71"/>
-        <source>系统瘦身</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/func/SamenameFile.qml" line="73"/>
-        <source>清理同名文件,让系统更瘦</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/func/SamenameFile.qml" line="373"/>
-        <source>扫描完成</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/func/SamenameFile.qml" line="374"/>
-        <source>开始清理</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/func/SamenameFile.qml" line="379"/>
-        <source>清理完毕！</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SessionDispatcher</name>
     <message>
         <location filename="../src/sessiondispatcher.cpp" line="432"/>
         <source>éæ©æä»¶å¤¹</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>SkinsWidget</name>
     <message>
         <location filename="../src/skinswidget.cpp" line="32"/>
         <source>ç®è¤1</source>
@@ -1716,6 +1643,137 @@
         <source>æ«é¡µ</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/sudodispatcher.cpp" line="193"/>
+        <source>æç¤ºï¼è¯·è¾å¥å½åç¨æ·ç»å½å¯ç å¯å¨æå¡ï¼ä¿è¯ä¼å®¢å©æçæ­£å¸¸ä½¿ç¨ã</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/sudodispatcher.cpp" line="280"/>
+        <location filename="../src/sudodispatcher.cpp" line="299"/>
+        <source>æ²¡ææ¾å°è½¯ä»¶åè¡¨æä»¶ï¼</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/systemdispatcher.cpp" line="205"/>
+        <source>éæ©å¼æºå¨ç»</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/systemdispatcher.cpp" line="205"/>
+        <source>Image Files (*.png)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/systemdispatcher.cpp" line="209"/>
+        <source>éæ©é³ä¹</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/systemdispatcher.cpp" line="209"/>
+        <source>Music Files (*.ogg *.wav *.mp3 *.wma)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tray.cpp" line="113"/>
+        <source>éè/æ¾ç¤ºä¸»çé¢</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tray.cpp" line="115"/>
+        <source>éè/æ¾ç¤ºçæ§ç</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tray.cpp" line="119"/>
+        <source>éåº</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QUIBO</name>
+    <message>
+        <location filename="../src/quibo.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RightPage</name>
+    <message>
+        <location filename="../qml/func/RightPage.qml" line="36"/>
+        <source>坏点检测</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/RightPage.qml" line="37"/>
+        <source>桌面图标</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/RightPage.qml" line="38"/>
+        <source>开机动画</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/RightPage.qml" line="39"/>
+        <source>系统声音</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/RightPage.qml" line="40"/>
+        <source>鼠标指针</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/RightPage.qml" line="41"/>
+        <source>触摸板</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SamenameFile</name>
+    <message>
+        <location filename="../qml/func/SamenameFile.qml" line="25"/>
+        <location filename="../qml/func/SamenameFile.qml" line="380"/>
+        <source>开始扫描</source>
+        <translation type="unfinished">startscan</translation>
+    </message>
+    <message>
+        <location filename="../qml/func/SamenameFile.qml" line="26"/>
+        <source>清理同名文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/SamenameFile.qml" line="27"/>
+        <source>清理用户指定目录下的同名文件，节省磁盘空间</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/SamenameFile.qml" line="71"/>
+        <source>系统瘦身</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/SamenameFile.qml" line="73"/>
+        <source>清理同名文件,让系统更瘦</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/SamenameFile.qml" line="373"/>
+        <source>扫描完成</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/func/SamenameFile.qml" line="374"/>
+        <source>开始清理</source>
+        <translation type="unfinished">start clean</translation>
+    </message>
+    <message>
+        <location filename="../qml/func/SamenameFile.qml" line="379"/>
+        <source>清理完毕！</source>
+        <translation type="unfinished">clean over</translation>
+    </message>
 </context>
 <context>
     <name>SoftWareRecommend</name>
@@ -1759,7 +1817,7 @@
         <location filename="../qml/func/SoftwareCruft.qml" line="313"/>
         <location filename="../qml/func/SoftwareCruft.qml" line="319"/>
         <source>开始扫描</source>
-        <translation type="unfinished">start scan</translation>
+        <translation type="unfinished">startscan</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="79"/>
@@ -1774,49 +1832,49 @@
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="129"/>
         <source>清理出现异常！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">clean exception</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="141"/>
         <source>清理完毕！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">clean over</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="191"/>
         <location filename="../qml/func/SoftwareCruft.qml" line="297"/>
         <source>未完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">unfinish</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="212"/>
         <location filename="../qml/func/SoftwareCruft.qml" line="227"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="212"/>
         <source>扫描内容为空，不再执行清理！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">result is empty, no longer perform cleanup</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="227"/>
         <source>对不起，您没有选择需要清理的项，请确认！</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sorry, you don&apos;t choose the clean option, please confirm</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="295"/>
         <source>开始清理</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">start clean</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="309"/>
         <source>出现异常</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">exception happened</translation>
     </message>
     <message>
         <location filename="../qml/func/SoftwareCruft.qml" line="315"/>
         <source>已完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">over</translation>
     </message>
 </context>
 <context>
@@ -1950,7 +2008,7 @@
     <message>
         <location filename="../qml/func/settings/SoundEffects.qml" line="158"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message>
         <location filename="../qml/func/settings/SoundEffects.qml" line="181"/>
@@ -1960,7 +2018,7 @@
     <message>
         <location filename="../qml/func/settings/SoundEffects.qml" line="191"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/settings/SoundEffects.qml" line="191"/>
@@ -2013,7 +2071,7 @@
     <message>
         <location filename="../qml/func/common/StatusImage.qml" line="23"/>
         <source>未完成</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">unfinish</translation>
     </message>
 </context>
 <context>
@@ -2021,21 +2079,6 @@
     <message>
         <location filename="../qml/StatusWidget.qml" line="25"/>
         <source>检查更新</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SudoDispatcher</name>
-    <message>
-        <location filename="../src/sudodispatcher.cpp" line="279"/>
-        <location filename="../src/sudodispatcher.cpp" line="298"/>
-        <source>è­¦å</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/sudodispatcher.cpp" line="280"/>
-        <location filename="../src/sudodispatcher.cpp" line="299"/>
-        <source>æ²¡ææ¾å°è½¯ä»¶åè¡¨æä»¶ï¼</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2104,29 +2147,6 @@
     <message>
         <location filename="../src/suspensionframe.cpp" line="53"/>
         <source>%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SystemDispatcher</name>
-    <message>
-        <location filename="../src/systemdispatcher.cpp" line="205"/>
-        <source>Image Files (*.png)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/systemdispatcher.cpp" line="205"/>
-        <source>éæ©å¼æºå¨ç»</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/systemdispatcher.cpp" line="209"/>
-        <source>Music Files (*.ogg *.wav *.mp3 *.wma)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/systemdispatcher.cpp" line="209"/>
-        <source>éæ©é³ä¹</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2312,7 +2332,7 @@
     <message>
         <location filename="../qml/func/settings/TitlebarFont.qml" line="177"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
     <message>
         <location filename="../qml/func/settings/TitlebarFont.qml" line="177"/>
@@ -2325,7 +2345,7 @@
     <message>
         <location filename="../qml/func/bars/ToolBar.qml" line="49"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message>
         <location filename="../qml/func/bars/ToolBar.qml" line="58"/>
@@ -2426,21 +2446,6 @@
         <source>0%</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../src/tray.cpp" line="113"/>
-        <source>éè/æ¾ç¤ºä¸»çé¢</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/tray.cpp" line="115"/>
-        <source>éè/æ¾ç¤ºçæ§ç</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/tray.cpp" line="119"/>
-        <source>éåº</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>UpdateDialog</name>
@@ -2452,7 +2457,7 @@
     <message utf8="true">
         <location filename="../src/updatedialog.ui" line="43"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message utf8="true">
         <location filename="../src/updatedialog.ui" line="75"/>
@@ -2462,6 +2467,11 @@
     <message utf8="true">
         <location filename="../src/updatedialog.ui" line="92"/>
         <source>取消</source>
+        <translation type="unfinished">cancel</translation>
+    </message>
+    <message>
+        <location filename="../src/updatedialog.cpp" line="34"/>
+        <source>æ²¡ææ¾å°è¯¥è½¯ä»¶ï¼è¯·å°è¯æ´æ°è½¯ä»¶æºã</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2475,12 +2485,12 @@
     <message utf8="true">
         <location filename="../src/warningdialog.ui" line="30"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ok</translation>
     </message>
     <message utf8="true">
         <location filename="../src/warningdialog.ui" line="88"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">friendly reminder</translation>
     </message>
 </context>
 <context>
@@ -2758,16 +2768,6 @@
     <message utf8="true">
         <location filename="../src/wizarddialog.ui" line="259"/>
         <source>数据来源：中国气象局</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/wizarddialog.cpp" line="169"/>
-        <source>è­¦å</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/wizarddialog.cpp" line="170"/>
-        <source>æ²¡ææ¾å°åå¸éç½®æä»¶ï¼</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
