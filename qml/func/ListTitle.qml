@@ -124,8 +124,18 @@ Item {
                 }
                 else if (msg == "cookies") {
 //                    root.work_result = msg;
+
+                    toolkits.alertMSG("清理完毕111！", mainwindow.pos.x, mainwindow.pos.y);
                     itemtitle.state = "CookiesWorkFinish";
+<<<<<<< TREE
                     toolkits.alertMSG(qsTr("清理完毕！"), mainwindow.pos.x, mainwindow.pos.y);
+=======
+//                    console.log("11111");
+//                    scanBtn.text = "开始扫描";
+//                    itemtitle.btnFlag = "cookies_scan";
+//                    resetBtn.visible = false;
+//                    console.log("222222");
+>>>>>>> MERGE-SOURCE
                     //清理完毕后重新获取cookies
 //                    root.cookies_signal("CookiesWork");
                 }
@@ -307,11 +317,13 @@ Item {
             PropertyChanges { target: scanBtn; text:"开始扫描"}
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scan" }
 //            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: resetBtn; visible: false}
         },
         State {
             name: "CookiesWorkFinishC"
             PropertyChanges { target: scanBtn; text:qsTr("开始扫描")}
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
+            PropertyChanges { target: resetBtn; visible: false}
 //            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
