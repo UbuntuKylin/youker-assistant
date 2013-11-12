@@ -252,7 +252,7 @@ Item {
                 top: parent.top
                 topMargin: titleimage.height/2 - 7
             }
-            text: "您可以查看相关信息，随时了解系统情况。"
+            text: qsTr("您可以查看相关信息，随时了解系统情况。")
             font.pixelSize: 12
             color: "#383838"
         }

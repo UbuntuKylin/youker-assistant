@@ -36,8 +36,8 @@ Rectangle {
     property string default_sound: ""
     property string init_sound: ""
     property bool init_sound_flag: false
-    property string actiontitle: "声音效果设置"
-    property string actiontext: "选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。"
+    property string actiontitle: qsTr("声音效果设置")
+    property string actiontext: qsTr("选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。")
     property int musiclist_num: 0
 
     property string selectedmusic: ""
@@ -155,7 +155,7 @@ Rectangle {
             Common.Button {
                 width: 95;height: 30
                 hoverimage: "green2.png"
-                text: "确定"
+                text: qsTr("确定")
                 onClicked: {
                     if (soundeffectspage.default_sound != iconcombo.selectedText) {
                         soundeffectspage.default_sound = iconcombo.selectedText;
@@ -178,7 +178,7 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "恢复默认"
+                text: qsTr("恢复默认")
                 width: 95
                 height: 30
                 onClicked: {
@@ -188,7 +188,7 @@ Rectangle {
                         statusImage.visible = true;
                     }
                     else
-                        sessiondispatcher.showWarningDialog("友情提示：","当前主题已经为默认主题!", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("当前主题已经为默认主题!"), mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
             Timer {
@@ -213,7 +213,7 @@ Rectangle {
         Row {
             spacing: 340
             Text{
-                text: "程序事件："
+                text: qsTr("程序事件：")
                 font.bold:true
                 color: "#383838"
                 font.pointSize: 10
@@ -225,19 +225,19 @@ Rectangle {
                     id: listen
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: "试听"
+                    text: qsTr("试听")
                 }
                 Text {
                     id: select
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: "替换"
+                    text: qsTr("替换")
                 }
                 Text {
                     id: revoke
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: "还原"
+                    text: qsTr("还原")
                 }
             }
 
@@ -459,7 +459,7 @@ Rectangle {
             }
             Text {
                 width: soundeffectspage.width- 665 - 52 - 25
-                text: "暂不支持中文路径下的音频文件。"
+                text: qsTr("暂不支持中文路径下的音频文件。")
 //                text: "您能根据喜好组合成专属声音主题"
                 wrapMode: Text.WrapAnywhere
                 font.pixelSize: 10

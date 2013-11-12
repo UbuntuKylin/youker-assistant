@@ -29,8 +29,8 @@ Rectangle {
     property color fontColor: "black"
 
     property int launcher_size: 24
-    property string actiontitle: "启动器设置"
-    property string actiontext: "用户可以根据需要设置启动器的自动隐藏功能和启动器上图标的显示尺寸；拖动滑动条，点击“确定”按钮完成大小设置。"
+    property string actiontitle: qsTr("启动器设置")
+    property string actiontext: qsTr("用户可以根据需要设置启动器的自动隐藏功能和启动器上图标的显示尺寸；拖动滑动条，点击“确定”按钮完成大小设置。")
 
 
     //背景
@@ -96,7 +96,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "启动器设置"
+            text: qsTr("启动器设置")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -123,7 +123,7 @@ Rectangle {
             Common.Label {
                 id: launcherlabel
                 width: 150
-                text: "启动器自动隐藏:"
+                text: qsTr("启动器自动隐藏:")
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -147,7 +147,7 @@ Rectangle {
             Common.Label {
                 id: iconsizelabel
                 width: 150
-                text: "启动器上的图标大小:"
+                text: qsTr("启动器上的图标大小:")
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -177,7 +177,7 @@ Rectangle {
             Common.Label {
                 id: showdesktoplabel
                 width: 150
-                text: "显示桌面图标:"//桌面图标显示在启动器上
+                text: qsTr("显示桌面图标:")//桌面图标显示在启动器上
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter

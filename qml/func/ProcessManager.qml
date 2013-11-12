@@ -64,7 +64,7 @@ Rectangle {
             top: parent.top
             topMargin: titleimage.height/2 - 7
         }
-        text: "任务管理器帮助您结束一些您想关闭的进程。"
+        text: qsTr("任务管理器帮助您结束一些您想关闭的进程。")
         font.pixelSize: 12
         color: "#383838"
     }
@@ -80,19 +80,19 @@ Rectangle {
             id: listBtn
             width: 100
             height: 30
-            text: "刷新"
+            text: qsTr("刷新")
             hoverimage: "green1.png"
             fontsize: 15
             onClicked: {
                 updateProcessList();
-                toolkits.alertMSG("刷新完毕！", mainwindow.pos.x, mainwindow.pos.y);
+                toolkits.alertMSG(qsTr("刷新完毕！"), mainwindow.pos.x, mainwindow.pos.y);
             }
         }
         Common.Button {
             id: killBtn
             width: 100
             height: 30
-            text: "结束进程"
+            text: qsTr("结束进程")
             hoverimage: "green1.png"
             fontsize: 15
             onClicked: {
@@ -100,15 +100,15 @@ Rectangle {
                 var currentId = processmanager.getProcessId(tableView.currentIndex.toString());
                 if(currentId.length !== 0) {
                     if(processmanager.killProcess(currentId)) {
-                        toolkits.alertMSG("结束进程操作成功！", mainwindow.pos.x, mainwindow.pos.y);
+                        toolkits.alertMSG(qsTr("结束进程操作成功！"), mainwindow.pos.x, mainwindow.pos.y);
                         updateProcessList();
                     }
                     else {
-                        toolkits.alertMSG("结束进程操作失败！", mainwindow.pos.x, mainwindow.pos.y);
+                        toolkits.alertMSG(qsTr("结束进程操作失败！"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
                 else {
-                    toolkits.alertMSG("没有选择将要结束的进程！", mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("没有选择将要结束的进程！"), mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }
@@ -140,37 +140,37 @@ Rectangle {
 //        }
         Common.TableColumn {
             role: "user"
-            title: "用户"
+            title: qsTr("用户")
             width: 60
         }
         Common.TableColumn {
             role: "pid"
-            title: "ID"
+            title: qsTr("ID")
             width: 50
         }
         Common.TableColumn {
             role: "pcpu"
-            title: "CPU占用%"
+            title: qsTr("CPU占用%")
             width: 70
         }
         Common.TableColumn {
             role: "pmem"
-            title: "内存占用%"
+            title: qsTr("内存占用%")
             width: 70
         }
         Common.TableColumn {
             role: "started"
-            title: "启动时间"
+            title: qsTr("启动时间")
             width: 80
         }
         Common.TableColumn {
             role: "content"
-            title: "进程说明"
+            title: qsTr("进程说明")
             width: 150
         }
         Common.TableColumn {
             role: "command"
-            title: "进程名"
+            title: qsTr("进程名")
             width: parent.width - 60 - 70*2 - 50 - 80 - 150 - 30
         }
 

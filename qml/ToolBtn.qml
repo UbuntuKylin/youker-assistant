@@ -24,7 +24,7 @@ Rectangle {
     color: "transparent"
     property string iconName: "homepage.png"
     property string text: "homepage"
-    property string showtext: "首页"
+    property string showtext: qsTr("首页")
 
     Image {
         id: seticon

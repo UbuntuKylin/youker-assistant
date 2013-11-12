@@ -23,9 +23,9 @@ Item {
     id:root
     width: parent.width
     height: 435
-    property string btn_text: "开始扫描"
-    property string title: "清理浏览器登录信息,保护个人隐私"
-    property string description: "清理上网时留下的登录信息,目前仅支持Firefox浏览器"
+    property string btn_text: qsTr("开始扫描")
+    property string title: qsTr("清理浏览器登录信息,保护个人隐私")
+    property string description: qsTr("清理上网时留下的登录信息,目前仅支持Firefox浏览器")
     property string btn_flag: "cookies_scan"
     property string btn_flag2: "cookies_scanc"
 //    property string work_result: ""
@@ -308,8 +308,8 @@ Item {
                 ListTitle {
                     id: firefoxTitle
                     imageSource: "../img/toolWidget/cookies.png"
-                    itemTitle: "清理Firefox保存的Cookies"
-                    detailstr: "清理Firefox浏览器自动保存的登录信息(Cookies)"
+                    itemTitle: qsTr("清理Firefox保存的Cookies")
+                    detailstr: qsTr("清理Firefox浏览器自动保存的登录信息(Cookies)")
                     sub_num: root.firefoxNum
                     arrow_display: root.deleget_arrow
                     flag: "firefox"
@@ -357,14 +357,14 @@ Item {
 //                                            console.log("yyyyyy");
                                             sessiondispatcher.tellNullToListTitle("firefox", true);
                                             root.deleget_arrow=0;
-                                            sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                                            sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
                                         }
                                         else if(root.null_flag == false)
                                         {
 //                                            console.log("uuuuuu");
                                             sessiondispatcher.tellNullToListTitle("firefox", false);
                                             root.deleget_arrow = 1;
-                                            toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
+                                            toolkits.alertMSG(qsTr("扫描完成！"), mainwindow.pos.x, mainwindow.pos.y);
                                         }
                                     }
                                     else if (root.btn_flag == "cookies_work") {
@@ -382,7 +382,7 @@ Item {
                                     }
                                 }
                                 else
-                                    sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                                    sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
                     }
@@ -399,8 +399,8 @@ Item {
                 ListTitle {
                     id: chromiumTitle
                     imageSource: "../img/toolWidget/cookies.png"
-                    itemTitle: "清理Chromium保存的Cookies"
-                    detailstr: "清理Chromium浏览器自动保存的登录信息(Cookies)"
+                    itemTitle: qsTr("清理Chromium保存的Cookies")
+                    detailstr: qsTr("清理Chromium浏览器自动保存的登录信息(Cookies)")
                     sub_num: root.chromiumNum
                     arrow_display: root.deleget_arrowc
                     flag: "chromium"
@@ -447,7 +447,7 @@ Item {
 //                                            console.log("iiiiiiiiiii");
                                             sessiondispatcher.tellNullToListTitle("chromium", true);
                                             root.deleget_arrowc=0;
-                                            sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                                            sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
                                         }
                                         else if(root.null_flag2 == false)
                                         {
@@ -473,7 +473,7 @@ Item {
                                     }
                                 }
                                 else
-                                    sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                                    sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
                     }

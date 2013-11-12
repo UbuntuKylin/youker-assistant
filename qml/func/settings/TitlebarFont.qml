@@ -30,8 +30,8 @@ Rectangle {
 //    property int cursor_size: 24
     property string titlebar_font: "Helvetica"
     property bool titlebar_font_flag: false
-    property string actiontitle: "标题栏字体设置"
-    property string actiontext: "根据您的喜好设置标题栏字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
+    property string actiontitle: qsTr("标题栏字体设置")
+    property string actiontext: qsTr("根据您的喜好设置标题栏字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。")
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -101,7 +101,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "标题栏字体设置"
+            text: qsTr("标题栏字体设置")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -127,7 +127,7 @@ Rectangle {
         Common.Label {
             id: windowtitlefontlabel
             width: 110
-            text: "当前标题栏字体:"
+            text: qsTr("当前标题栏字体:")
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -154,7 +154,7 @@ Rectangle {
         Common.Button {
             id: titlefontBtn
             hoverimage: "blue4.png"
-            text: "更换字体"
+            text: qsTr("更换字体")
             fontcolor: "#086794"
             width: 105
             height: 30
@@ -164,7 +164,7 @@ Rectangle {
 //                anchors.left: titlefontBtn.right
 //                anchors.leftMargin: 10
             hoverimage: "blue2.png"
-            text: "恢复默认"
+            text: qsTr("恢复默认")
             width: 105
             height: 30
             onClicked: {
@@ -174,7 +174,7 @@ Rectangle {
                     statusImage.visible = true;
                 }
                 else
-                    sessiondispatcher.showWarningDialog("友情提示：","您系统的窗体标题栏字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
+                    sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("您系统的窗体标题栏字体已经为默认字体！"), mainwindow.pos.x, mainwindow.pos.y);
             }
         }
         Timer {

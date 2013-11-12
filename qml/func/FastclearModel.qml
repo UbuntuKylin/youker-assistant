@@ -58,7 +58,7 @@ Rectangle {
                 onekeybtn.enabled=true;
             }
             else if (msg == "o") {
-                toolkits.alertMSG("一键清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+                toolkits.alertMSG(qsTr("一键清理完毕！"), mainwindow.pos.x, mainwindow.pos.y);
             }
         }
 
@@ -82,15 +82,15 @@ Rectangle {
         onFinishCleanDataSecond: {
             if (type == "c") {
                 cachedes.visible = true;
-                cachedes.text = "（共清理掉" + msg + "垃圾）";
+                cachedes.text = qsTr("（共清理掉") + msg + qsTr("垃圾）");
             }
             else if (type == "h") {
                 historydes.visible = true;
-                historydes.text = "（共清理掉" + msg + "条历史记录）";
+                historydes.text = qsTr("（共清理掉") + msg + qsTr("条历史记录）");
             }
             else if (type == "k") {
                 cookiedes.visible = true;
-                cookiedes.text = "（共清理掉" + msg + "条Cookies）";
+                cookiedes.text = qsTr("（共清理掉") + msg + qsTr("条Cookies）");
             }
         }
     }
@@ -144,7 +144,7 @@ Rectangle {
             id: onekeybtn
             hoverimage: "green1.png"
             setbtn_flag: "smallonekey"
-            text:"一键清理"
+            text:qsTr("一键清理")
             width: 120
             height: 39
             fontsize: 15
@@ -259,7 +259,7 @@ Rectangle {
                                         Row {
                                             spacing: 20
                                             Text {
-                                                text: "清理垃圾"//titlename
+                                                text: qsTr("清理垃圾")//titlename
                                                 font.bold: true
                                                 font.pixelSize: 14
                                                 color: "#383838"
@@ -272,7 +272,7 @@ Rectangle {
                                             }
                                         }
                                         Text {
-                                            text: "清理系统中的垃圾文件，释放磁盘空间"//detailstr
+                                            text: qsTr("清理系统中的垃圾文件，释放磁盘空间")//detailstr
                                             font.pixelSize: 12
                                             color: "#7a7a7a"
                                         }
@@ -283,23 +283,23 @@ Rectangle {
                                     id: cachestatus
                                     visible: false
                                     iconName: "yellow.png"
-                                    text: "未完成"
+                                    text: qsTr("未完成")
                                     anchors {
                                         left: parent.left; leftMargin: 500
                                     }
                                     states: [
                                             State {
                                             name: "StatusC"
-                                            PropertyChanges { target: cachestatus; iconName: "green.png"; text: "已完成"}
+                                            PropertyChanges { target: cachestatus; iconName: "green.png"; text: qsTr("已完成")}
                                         },
 
                                             State {
                                             name: "StatusC1"
-                                            PropertyChanges { target: cachestatus; iconName: "red.png"; text: "出现异常"}
+                                            PropertyChanges { target: cachestatus; iconName: "red.png"; text: qsTr("出现异常")}
                                         },
                                         State {
                                             name: "StatusCF"
-                                            PropertyChanges { target: cachestatus; iconName: "yellow.png"; text: "未完成"}
+                                            PropertyChanges { target: cachestatus; iconName: "yellow.png"; text: qsTr("未完成")}
                                         }
                                     ]
                                 }
@@ -364,7 +364,7 @@ Rectangle {
                                 Row{
                                     spacing: 20
                                     Text {
-                                        text: "清理历史记录"//titlename
+                                        text: qsTr("清理历史记录")//titlename
                                         font.bold: true
                                         font.pixelSize: 14
                                         color: "#383838"
@@ -377,7 +377,7 @@ Rectangle {
                                     }
                                 }
                                 Text {
-                                    text: "清理上网时留下的历史记录，保护您的个人隐私"//detailstr
+                                    text: qsTr("清理上网时留下的历史记录，保护您的个人隐私")//detailstr
                                     font.pixelSize: 12
                                     color: "#7a7a7a"
                                 }
@@ -387,23 +387,23 @@ Rectangle {
                                 id: historystatus
                                 visible: false
                                 iconName: "yellow.png"
-                                text: "未完成"
+                                text: qsTr("未完成")
                                 anchors {
                                     left: parent.left; leftMargin: 500
                                 }
                                 states: [
                                         State {
                                         name: "StatusH"
-                                        PropertyChanges { target: historystatus; iconName: "green.png"; text: "已完成"}
+                                        PropertyChanges { target: historystatus; iconName: "green.png"; text: qsTr("已完成")}
                                     },
 
                                         State {
                                         name: "StatusH1"
-                                        PropertyChanges { target: historystatus; iconName: "red.png"; text: "出现异常"}
+                                        PropertyChanges { target: historystatus; iconName: "red.png"; text: qsTr("出现异常")}
                                     },
                                     State {
                                         name: "StatusHF"
-                                        PropertyChanges { target: historystatus; iconName: "yellow.png"; text: "未完成"}
+                                        PropertyChanges { target: historystatus; iconName: "yellow.png"; text: qsTr("未完成")}
                                     }
                                 ]
                             }
@@ -470,7 +470,7 @@ Rectangle {
                                 Row {
                                     spacing: 20
                                     Text {
-                                        text: "清理Cookies"//titlename
+                                        text: qsTr("清理Cookies")//titlename
                                         font.bold: true
                                         font.pixelSize: 14
                                         color: "#383838"
@@ -483,7 +483,7 @@ Rectangle {
                                     }
                                 }
                                 Text {
-                                    text: "清理上网时产生的Cookies，还浏览器一片天空"//detailstr
+                                    text: qsTr("清理上网时产生的Cookies，还浏览器一片天空")//detailstr
                                     font.pixelSize: 12
                                     color: "#7a7a7a"
                                 }
@@ -494,23 +494,23 @@ Rectangle {
                                 id: cookiestatus
                                 visible: false
                                 iconName: "yellow.png"
-                                text: "未完成"
+                                text: qsTr("未完成")
                                 anchors {
                                     left: parent.left; leftMargin: 500
                                 }
                                 states: [
                                         State {
                                         name: "StatusK"
-                                        PropertyChanges { target: cookiestatus; iconName: "green.png"; text: "已完成"}
+                                        PropertyChanges { target: cookiestatus; iconName: "green.png"; text: qsTr("已完成")}
                                     },
 
                                         State {
                                         name: "StatusK1"
-                                        PropertyChanges { target: cookiestatus; iconName: "red.png"; text: "出现异常"}
+                                        PropertyChanges { target: cookiestatus; iconName: "red.png"; text: qsTr("出现异常")}
                                     },
                                     State {
                                         name: "StatusKF"
-                                        PropertyChanges { target: cookiestatus; iconName: "yellow.png"; text: "未完成"}
+                                        PropertyChanges { target: cookiestatus; iconName: "yellow.png"; text: qsTr("未完成")}
                                     }
 
                                 ]

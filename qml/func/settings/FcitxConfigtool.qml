@@ -11,8 +11,8 @@ Rectangle {
     id:fcitxconfigtool
     width: parent.width
     height: 475
-    property string actiontitle: "小企鹅输入法列表配置"
-    property string actiontext: "可以设置自己喜欢的输入方式，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。"
+    property string actiontitle: qsTr("小企鹅输入法列表配置")
+    property string actiontext: qsTr("可以设置自己喜欢的输入方式，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。")
     property string selectedimage: ""
     property int leftFcitxModelindex: 0
     property int rightFcitxModelindex: 0
@@ -149,7 +149,7 @@ Rectangle {
             left: parent.left
             leftMargin: 80
         }
-        text: "当前的输入法"
+        text: qsTr("当前的输入法")
         font.bold: true
         font.pixelSize: 12
         color: "#7a7a7a"
@@ -162,7 +162,7 @@ Rectangle {
             left: parent.left
             leftMargin: 475
         }
-        text: "可用的输入法"
+        text: qsTr("可用的输入法")
         font.bold: true
         font.pixelSize: 12
         color: "#7a7a7a"

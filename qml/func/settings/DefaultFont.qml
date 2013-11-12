@@ -35,8 +35,8 @@ Rectangle {
     property bool desktop_font_flag: false
     property bool monospace_font_flag: false
     property bool zoom_flag: false
-    property string actiontitle: "默认字体设置"
-    property string actiontext: "根据您的喜好设置系统默认字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
+    property string actiontitle: qsTr("默认字体设置")
+    property string actiontext: qsTr("根据您的喜好设置系统默认字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。")
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -134,7 +134,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "字体设置"
+            text: qsTr("字体设置")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -165,7 +165,7 @@ Rectangle {
                 Common.Label {
                     id: fontslabel
                     width: 130
-                    text: "当前字体:"
+                    text: qsTr("当前字体:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -187,14 +187,14 @@ Rectangle {
                     id: fontBtn
                     hoverimage: "blue4.png"
                     fontcolor: "#086794"
-                    text: "更换字体"
+                    text: qsTr("更换字体")
                     width: 105
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("font");
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "恢复默认"
+                    text: qsTr("恢复默认")
                     width: 105
                     height: 30
                     onClicked: {
@@ -205,7 +205,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.showWarningDialog("友情提示：", "您系统的当前字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("您系统的当前字体已经为默认字体！"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -218,7 +218,7 @@ Rectangle {
                 Common.Label {
                     id: desktopfontlabel
                     width: 130
-                    text: "当前桌面字体:"
+                    text: qsTr("当前桌面字体:")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -238,7 +238,7 @@ Rectangle {
                 Common.Button {
                     id: desktopfontBtn
                     hoverimage: "blue4.png"
-                    text: "更换字体"
+                    text: qsTr("更换字体")
                     fontcolor: "#086794"
                     width: 105
                     height: 30
@@ -246,7 +246,7 @@ Rectangle {
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "恢复默认"
+                    text: qsTr("恢复默认")
                     width: 105
                     height: 30
                     onClicked: {
@@ -257,7 +257,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.showWarningDialog("友情提示：","您系统的当前桌面字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("您系统的当前桌面字体已经为默认字体！"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -270,7 +270,7 @@ Rectangle {
                 Common.Label {
                     id: monospacefontlabel
                     width: 130
-                    text: "当前等宽字体:"  //monospace
+                    text: qsTr("当前等宽字体:")  //monospace
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -290,7 +290,7 @@ Rectangle {
                 Common.Button {
                     id: monofontBtn
                     hoverimage: "blue4.png"
-                    text: "更换字体"
+                    text: qsTr("更换字体")
                     fontcolor: "#086794"
                     width: 105
                     height: 30
@@ -298,7 +298,7 @@ Rectangle {
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "恢复默认"
+                    text: qsTr("恢复默认")
                     width: 105
                     height: 30
                     onClicked: {
@@ -309,7 +309,7 @@ Rectangle {
                             statusImage.visible = true;
                         }
                         else
-                            sessiondispatcher.showWarningDialog("友情提示：","您系统的当前等宽字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("您系统的当前等宽字体已经为默认字体！"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -331,7 +331,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "缩放设置"
+            text: qsTr("缩放设置")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -355,7 +355,7 @@ Rectangle {
             Common.Label {
                 id: fontzoomlabel
                 width: 130
-                text: "全局字体缩放:"
+                text: qsTr("全局字体缩放:")
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -383,7 +383,7 @@ Rectangle {
                 id: okBtn
                 width: 105;height: 30
                 hoverimage: "green2.png"
-                text: "确定"
+                text: qsTr("确定")
                 onClicked: {
                     sessiondispatcher.set_font_zoom_qt(slider.value);
                     statusImage.visible = true;
@@ -393,7 +393,7 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "恢复默认"
+                text: qsTr("恢复默认")
                 width: 105
                 height: 30
                 onClicked: {
@@ -404,7 +404,7 @@ Rectangle {
                         statusImage.visible = true;
                     }
                     else
-                        sessiondispatcher.showWarningDialog("友情提示：", "您系统的全局字体缩放已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("您系统的全局字体缩放已经为默认设置！"), mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }

@@ -33,7 +33,7 @@ Item {
 //            console.log("receive update data....");
 //            console.log(cur_status);
 
-            root.source_status_text = "进度: 共" + total_items + "个项目需要更新，正在更新第" + download_items + "个";
+            root.source_status_text = qsTr("进度: 共") + total_items + qsTr("个项目需要更新，正在更新第") + download_items + qsTr("个");
         }
         //下载完成
         onFinishSoftwareFetch: {
@@ -67,23 +67,23 @@ Item {
             //得到数据，显示在进度条上
             onSendDynamicSoftwareProgressQML: {
                 if(type == "down_start") {
-                    progressTitle.text = "开始下载";
+                    progressTitle.text = qsTr("开始下载");
                     progress.value = 0;
                 }
                 else if(type == "down_pulse"){
-                    progressTitle.text = "正在下载安装包...";
+                    progressTitle.text = qsTr("正在下载安装包...");
                     progress.value = ratio_sus;
                 }
                 else if(type == "down_stop") {
-                    progressTitle.text = "下载完成";
+                    progressTitle.text = qsTr("下载完成");
                     progress.value = 100;
                 }
                 else if(type == "apt_start"){
-                    progressTitle.text = "开始";
+                    progressTitle.text = qsTr("开始");
                     progress.value = 0;
                 }
                 else if(type == "apt_pulse"){
-                    progressTitle.text = "正在进行: " + info;
+                    progressTitle.text = qsTr("正在进行: ") + info;
                     progress.value = ratio_sus;
                 }
                 else if(type == "apt_stop") {
@@ -102,7 +102,7 @@ Item {
         Text {
             id: title1
             anchors.centerIn: parent
-            text: "如果太长时间没有更新完毕，可能是网络问题，可以点击左上角的返回按钮退出该界面。"
+            text: qsTr("如果太长时间没有更新完毕，可能是网络问题，可以点击左上角的返回按钮退出该界面。")
             font.pixelSize: 12
             color: "#7a7a7a"
             font.family: "Arial"
@@ -116,7 +116,7 @@ Item {
                 bottomMargin: 10
                 horizontalCenter: parent.horizontalCenter
             }
-            text: "正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息"
+            text: qsTr("正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息")
             font.pixelSize: 14
             color: "#383838"
             font.family: "Arial"
@@ -187,7 +187,7 @@ Item {
             }
             Text {
                 id: progressTitle
-                text: "软件操作进度"
+                text: qsTr("软件操作进度")
                 color: "#318d11"
                 wrapMode: Text.WrapAnywhere
                 font.pixelSize: 12
@@ -254,7 +254,7 @@ Item {
     Rectangle {
         id: software
 //        property bool checkFlag: false
-        property string useinfo: "如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。"
+        property string useinfo: qsTr("如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。")
         property string software_name: ""
         property string installed_status: "n"
         property string tm_status: "n"
@@ -263,66 +263,66 @@ Item {
         function reset_text(showtext) {
             if(showtext == "i") {
                 statusImage.source = "../img/icons/installed.png"
-                return "立即卸载";
+                return qsTr("立即卸载");
             }
             else if(showtext == "n") {
                 statusImage.source = "../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return "进入网页";
+                    return qsTr("进入网页");
                 }
                 else {
-                    return "立即安装";
+                    return qsTr("立即安装");
                 }
             }
             else if(showtext == "u") {
                 statusImage.source = "../img/icons/installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return "进入网页";
+                    return qsTr("进入网页");
                 }
                 else {
-                    return "立即升级";
+                    return qsTr("立即升级");
                 }
             }
             else {
                 statusImage.source = "../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return "进入网页";
+                    return qsTr("进入网页");
                 }
                 else {
-                    return "未发现";
+                    return qsTr("未发现");
                 }
             }
         }
         function show_text(showtext) {
             if(showtext == "i") {
                 statusImage.source = "../img/icons/installed.png"
-                return "立即卸载";
+                return qsTr("立即卸载");
             }
             else if(showtext == "n") {
                 statusImage.source = "../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return "进入网页";
+                    return qsTr("进入网页");
                 }
                 else {
-                    return "立即安装";
+                    return qsTr("立即安装");
                 }
             }
             else if(showtext == "u") {
                 statusImage.source = "../img/icons/installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return "进入网页";
+                    return qsTr("进入网页");
                 }
                 else {
-                    return "立即升级";
+                    return qsTr("立即升级");
                 }
             }
             else {
                 statusImage.source = "../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return "进入网页";
+                    return qsTr("进入网页");
                 }
                 else {
-                    return "未发现";
+                    return qsTr("未发现");
                 }
             }
         }
@@ -358,24 +358,24 @@ Item {
                     else {//如果软件操作后的新状态和进入该页面时的初始状态不同，说明操作是成功的，把当前状态赋值给初始状态的变量
                         software.installed_status = software.tm_status;
                         if(software.installed_status == "i") {
-                            actionBtn.text = "立即卸载";
+                            actionBtn.text = qsTr("立即卸载");
                             statusImage.source = "../img/icons/installed.png"
                         }
                         else if(software.installed_status == "n") {
                             if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                                actionBtn.text = "进入网页";
+                                actionBtn.text = qsTr("进入网页");
                             }
                             else {
-                                actionBtn.text = "立即安装";
+                                actionBtn.text = qsTr("立即安装");
                             }
                             statusImage.source = "../img/icons/noinstalled.png"
                         }
                         else if(software.installed_status == "u") {
-                            actionBtn.text = "立即升级";
+                            actionBtn.text = qsTr("立即升级");
                             statusImage.source = "../img/icons/installed.png"
                         }
                         root.state = "SofeWareState";
-                        toolkits.alertMSG("软件操作完成！", mainwindow.pos.x, mainwindow.pos.y);
+                        toolkits.alertMSG(qsTr("软件操作完成！"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
 //                else if(type == "apt_error") {
@@ -598,7 +598,7 @@ Item {
                 }
                 Text {
                     anchors.centerIn: parent
-                    text:"软件介绍"
+                    text:qsTr("软件介绍")
                     color:"grey"
                     font.bold: true
                     font.pixelSize: 14

@@ -29,39 +29,54 @@ Rectangle {
     property string image2: "../img/skin/qt0.png"
     property string image3: "../img/skin/wps0.png"
     property string mage_source: image1
+
+    //更新列表
+    function updateList() {
+        clearModel.clear();//清空
+        clearModel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("坏点检测"), "flag": "CheckScreen"});
+        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("桌面图标"), "flag": "DesktopiconSet"});
+        clearModel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("开机动画"), "flag": "BootAnimation"});
+        clearModel.append({"icon": "../img/icons/systemsound.png", "name": qsTr("系统声音"), "flag": "SoundEffects"});
+        clearModel.append({"icon": "../img/icons/mouse.png", "name": qsTr("鼠标指针"), "flag": "MousePointer"});
+        clearModel.append({"icon": "../img/icons/touchpad.png", "name": qsTr("触摸板"), "flag": "TouchpadSet"});
+    }
+
     ListModel {
         id: clearModel
-        ListElement {
-            icon: "../img/icons/checkscreen.png"
-            name: "坏点检测"
-            flag: "CheckScreen"
+        Component.onCompleted: {
+            rightbar.updateList();
         }
-        ListElement {
-            icon: "../img/icons/iconbeauty.png"
-            name: "桌面图标"
-            flag: "DesktopiconSet"
-        }
-        ListElement {
-            icon: "../img/icons/bootanimation.png"
-            name: "开机动画"
-            flag: "BootAnimation"
-        }
-        ListElement {
-            icon: "../img/icons/systemsound.png"
-            name: "系统声音"
-            flag: "SoundEffects"
-        }
-        ListElement {
-            icon: "../img/icons/mouse.png"
-            name: "鼠标指针"
-            flag: "MousePointer"
-        }
+//        ListElement {
+//            icon: "../img/icons/checkscreen.png"
+//            name: "坏点检测"
+//            flag: "CheckScreen"
+//        }
+//        ListElement {
+//            icon: "../img/icons/iconbeauty.png"
+//            name: "桌面图标"
+//            flag: "DesktopiconSet"
+//        }
+//        ListElement {
+//            icon: "../img/icons/bootanimation.png"
+//            name: "开机动画"
+//            flag: "BootAnimation"
+//        }
+//        ListElement {
+//            icon: "../img/icons/systemsound.png"
+//            name: "系统声音"
+//            flag: "SoundEffects"
+//        }
+//        ListElement {
+//            icon: "../img/icons/mouse.png"
+//            name: "鼠标指针"
+//            flag: "MousePointer"
+//        }
 
-        ListElement {
-            icon: "../img/icons/touchpad.png"
-            name: "触摸板"
-            flag: "TouchpadSet"
-        }
+//        ListElement {
+//            icon: "../img/icons/touchpad.png"
+//            name: "触摸板"
+//            flag: "TouchpadSet"
+//        }
     }
     //背景
     Image {

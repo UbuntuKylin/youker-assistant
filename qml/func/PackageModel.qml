@@ -24,9 +24,9 @@ Item {
     id:root
     width: parent.width
     height: 435//420//340
-    property string btn_text: "开始扫描"
-    property string title: "卸载不必要的程序"
-    property string description: "清理软件安装过程中安装的依赖程序，提高系统性能"
+    property string btn_text: qsTr("开始扫描")
+    property string title: qsTr("卸载不必要的程序")
+    property string description: qsTr("清理软件安装过程中安装的依赖程序，提高系统性能")
     property string btn_flag: "package_scan"
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
@@ -72,9 +72,9 @@ Item {
             if(sub_num!=0)
                 check_flag=true;
             mainModel.clear();
-            mainModel.append({"itemTitle": "卸载不必要的程序",
+            mainModel.append({"itemTitle": qsTr("卸载不必要的程序"),
                              "picture": "../img/toolWidget/deb-min.png",
-                             "detailstr": "用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦",
+                             "detailstr": qsTr("用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦"),
                              "flags": "clear_cookies",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -89,20 +89,20 @@ Item {
 
     ListModel {
         id: mainModel
-        ListElement {
-            itemTitle: "卸载不必要的程序"
-            picture: "../img/toolWidget/deb-min.png"
-            detailstr: "用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦"
-            flags: "clear_package"
-            attributes: [
-                ListElement { subItemTitle: "" }
-            ]
-        }
+//        ListElement {
+//            itemTitle: "卸载不必要的程序"
+//            picture: "../img/toolWidget/deb-min.png"
+//            detailstr: "用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦"
+//            flags: "clear_package"
+//            attributes: [
+//                ListElement { subItemTitle: "" }
+//            ]
+//        }
     }
 
     ListModel {
         id: subModel
-        ListElement {itemTitle: ""; desc: ""; number: ""}
+//        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
 
     Connections
@@ -112,7 +112,7 @@ Item {
             if (btn_flag == "package_work") {
 //                titleBar.work_result = msg;
                 titleBar.state = "UnneedWorkError";
-                toolkits.alertMSG("清理出现异常！", mainwindow.pos.x, mainwindow.pos.y);
+                toolkits.alertMSG(qsTr("清理出现异常！"), mainwindow.pos.x, mainwindow.pos.y);
             }
 
          }
@@ -124,7 +124,7 @@ Item {
                 else if (msg == "package") {
 //                    root.work_result = msg;
                     root.state = "UnneedWorkFinish";
-                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("清理完毕！"), mainwindow.pos.x, mainwindow.pos.y);
                     unneed_signal("UnneedWork");
                 }
             }
@@ -179,7 +179,7 @@ Item {
             id: statusImage
             visible: false
             iconName: "yellow.png"
-            text: "未完成"
+            text: qsTr("未完成")
             anchors.verticalCenter: parent.verticalCenter
         }
         Common.Button {
@@ -205,13 +205,13 @@ Item {
                             if(root.null_flag == true) {
                                 root.state = "UnneedWorkEmpty";
                                 deleget_arrow=0;
-                                sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                                sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                             else if(root.null_flag == false)
                             {
                                 root.state = "UnneedWork";
                                 deleget_arrow=1;
-                                toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
+                                toolkits.alertMSG(qsTr("扫描完成！"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
                         else if (btn_flag == "package_work") {
@@ -220,7 +220,7 @@ Item {
                         }
                     }
                     else
-                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else {
                     sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
@@ -239,13 +239,13 @@ Item {
                             if(root.null_flag == true) {
                                 root.state = "UnneedWorkEmpty";
                                 deleget_arrow=0;
-                                sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                                sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                             else if(root.null_flag == false)
                             {
                                 root.state = "UnneedWork";
                                 deleget_arrow=1;
-                                toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
+                                toolkits.alertMSG(qsTr("扫描完成！"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
                         else if (btn_flag == "package_work") {
@@ -254,7 +254,7 @@ Item {
                         }
                     }
                     else
-                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
                 }
 
             }
@@ -326,31 +326,31 @@ Item {
     states: [
         State {
             name: "UnneedWork"
-            PropertyChanges { target: bitButton; text:"开始清理" }
+            PropertyChanges { target: bitButton; text:qsTr("开始清理") }
             PropertyChanges { target: root; btn_flag: "package_work" }
-            PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
+            PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: qsTr("未完成")}
         },
         State {
             name: "UnneedWorkAGAIN"
-            PropertyChanges { target: bitButton; text:"开始扫描" }
+            PropertyChanges { target: bitButton; text:qsTr("开始扫描") }
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; visible: false }
         },
         State {
             name: "UnneedWorkError"
-            PropertyChanges { target: bitButton; text:"开始扫描" }
+            PropertyChanges { target: bitButton; text:qsTr("开始扫描") }
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
+            PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: qsTr("出现异常")}
         },
         State {
             name: "UnneedWorkFinish"
-            PropertyChanges { target: bitButton; text:"开始扫描" }
+            PropertyChanges { target: bitButton; text:qsTr("开始扫描") }
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: qsTr("已完成")}
         },
         State {
             name: "UnneedWorkEmpty"
-            PropertyChanges { target: bitButton; text:"开始扫描"}
+            PropertyChanges { target: bitButton; text:qsTr("开始扫描")}
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; visible: false}
         }

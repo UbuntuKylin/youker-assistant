@@ -30,7 +30,7 @@ SkinsWidget::SkinsWidget(QSettings *mSettings, QWidget *parent)
     is_change = false;
     current_page = 1;
     tip_list<<tr("皮肤1")<<tr("皮肤2")<<tr("皮肤3")<<tr("皮肤4")<<tr("皮肤5")<<
-        tr("皮肤6")<<tr("皮肤7")<<tr("皮肤8")<<tr("皮肤9")<<tr("皮肤10");
+           tr("皮肤6")<<tr("皮肤7")<<tr("皮肤8")<<tr("皮肤9")<<tr("皮肤10");
     this->initTitleBar();
     this->initSkinsCenter();
     this->initBottomBar();

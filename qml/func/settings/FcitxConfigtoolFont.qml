@@ -10,8 +10,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: "小企鹅输入法习惯配置"
-    property string actiontext: "可以设置自己喜欢的输入习惯，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。"
+    property string actiontitle: qsTr("小企鹅输入法习惯配置")
+    property string actiontext: qsTr("可以设置自己喜欢的输入习惯，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。")
     property int scanModelIndex:1
     property int scrollbar_z: 1
     property int defaultCandidateWord:0     //恢复默认时用到
@@ -101,7 +101,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "显示设置"
+            text: qsTr("显示设置")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -139,14 +139,14 @@ Rectangle {
                 Common.CheckBox {
                     id: levelstyle
                     checked: (fcitxcfgwizard.get_vertical_list() == false) ? true : false
-                    titleName: "横向显示"
+                    titleName: qsTr("横向显示")
                     flag: "radio"
                     onClicked: {}
                 }
                 Common.CheckBox {
                     id: verticalstyle
                     checked: (fcitxcfgwizard.get_vertical_list() == ture) ? true : false
-                    titleName: "竖向显示"
+                    titleName: qsTr("竖向显示")
                     flag: "radio"
                     onClicked: {}
                 }
@@ -195,7 +195,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "快捷键设置"
+            text: qsTr("快捷键设置")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -238,7 +238,7 @@ Rectangle {
                     height:30
                     onClicked: {
                         methodBtn1.forceActiveFocus();
-                        methodBtn1.text = "请按下要设置的组合键";
+                        methodBtn1.text = qsTr("请按下要设置的组合键");
                     }
                     onEntered:{
                         methodBtn1Tmp = methodBtn1.text
@@ -260,7 +260,7 @@ Rectangle {
                     height:30
                     onClicked: {
                         methodBtn2.forceActiveFocus();
-                        methodBtn2.text = "请按下要设置的组合键"
+                        methodBtn2.text = qsTr("请按下要设置的组合键");
                     }
                     onEntered:{
                         methodBtn2Tmp = methodBtn2.text
@@ -296,7 +296,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         prevPageBtn1.forceActiveFocus();
-                        prevPageBtn1.text = "请按下要设置的组合键"
+                        prevPageBtn1.text = qsTr("请按下要设置的组合键");
                     }
                     onEntered:{
                         prevpageBtn1Tmp = prevPageBtn1.text
@@ -318,7 +318,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         prevPageBtn2.forceActiveFocus();
-                        prevPageBtn2.text = "请按下要设置的组合键";
+                        prevPageBtn2.text = qsTr("请按下要设置的组合键");
                     }
                     onEntered:{
                         prevpageBtn2Tmp = prevPageBtn2.text;
@@ -354,7 +354,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         nextPageBtn1.forceActiveFocus();
-                        nextPageBtn1.text = "请按下要设置的组合键";
+                        nextPageBtn1.text = qsTr("请按下要设置的组合键");
                     }
                     onEntered:{
                         nextpageBtn1Tmp = nextPageBtn1.text;
@@ -376,7 +376,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         nextPageBtn2.forceActiveFocus();
-                        nextPageBtn2.text = "请按下要设置的组合键";
+                        nextPageBtn2.text = qsTr("请按下要设置的组合键");
                     }
                     onEntered:{
                         nextpageBtn2Tmp = nextPageBtn2.text;

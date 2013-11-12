@@ -39,9 +39,9 @@ WizardController::WizardController(QSettings *mSettings, QWidget *parent) :
     pSettings = mSettings;
 
     this->setOption(QWizard::NoCancelButton);
-    this->setButtonText(QWizard::BackButton,tr("&返回"));
-    this->setButtonText(QWizard::NextButton,tr("&继续"));
-    this->setButtonText(QWizard::FinishButton,tr("&完成"));
+    this->setButtonText(QWizard::BackButton,"&返回");
+    this->setButtonText(QWizard::NextButton,"&继续");
+    this->setButtonText(QWizard::FinishButton,"&完成");
     this->setWindowFlags(Qt::FramelessWindowHint);//去掉标题栏
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     setWizardStyle(NStyles);//此风格没有分割线

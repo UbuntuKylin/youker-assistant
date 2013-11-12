@@ -10,8 +10,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: "小企鹅输入法外观配置"
-    property string actiontext: "可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置。"
+    property string actiontitle: qsTr("小企鹅输入法外观配置")
+    property string actiontext: qsTr("可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置。")
     property int flagCheck: 1
     property int flag_i: 0
     property string h_fcitxSkinImage: ""
@@ -136,7 +136,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "皮肤设置"
+            text: qsTr("皮肤设置")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -160,7 +160,7 @@ Rectangle {
         Common.CheckBox{
             id:enableSkinBox
             anchors.verticalCenter: parent.verticalCenter
-            titleName: "使用皮肤"
+            titleName: qsTr("使用皮肤")
             onCheckedChanged: {
                 if(flagCheck == 1)
                 {
@@ -238,7 +238,7 @@ Rectangle {
         Common.CheckBox{
             id:enableHotKeyBox
             anchors.verticalCenter: parent.verticalCenter
-            titleName: "更换字体"
+            titleName: qsTr("更换字体")
             onCheckedChanged: {
                 if(enableHotKeyBox.checked == false)
                 {

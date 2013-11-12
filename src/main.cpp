@@ -55,6 +55,8 @@
 
 #include "processmanager.h"//1101
 
+#include <QTranslator>
+
 
 void registerTypes() {
     qmlRegisterType<Toolkits>("ToolkitsType", 0, 1, "Toolkits");
@@ -97,6 +99,27 @@ int main(int argc, char** argv)
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+
+
+//    QString locale = QLocale::system().name();
+//    qDebug() << locale;
+//    QTranslator translator;
+//    bool success = translator.load( QString("displayChinese_") + locale);
+//    app.installTranslator(&translator);
+
+//    translator.load(":/translate/i18_zh_CN.qm");
+
+//    QTranslator translator;
+//    if(!translator.load("youker_"+QLocale::system().name()+".qm",
+//                            "://Translation/"))
+//        qDebug()<<"main() cannot load translation file"<<"youker_"+QLocale::system().name()+".qm";
+//    else
+//        indicator.installTranslator(&translator);
+//    QTranslator qtTranslator;
+//    qtTranslator.load("qt_" + QLocale::system().name(),
+//            QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+
+
     registerTypes();
 
     int value_session = system("/usr/bin/youkersession &");
@@ -108,10 +131,10 @@ int main(int argc, char** argv)
     QSplashScreen splash(QPixmap(":/pixmap/image/feature.png"));
     splash.setDisabled(true);
     splash.show();
-    splash.showMessage(QObject::tr("优客助手正在启动中...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);
+    splash.showMessage("优客助手正在启动中....", Qt::AlignHCenter|Qt::AlignBottom, Qt::black);
     //同时创建主视图对象
     IhuApplication application;
-    splash.showMessage(QObject::tr("正在加载模块数据...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);
+    splash.showMessage("正在加载模块数据....", Qt::AlignHCenter|Qt::AlignBottom, Qt::black);
     //数据处理
     application.setup();
     //显示主界面，并结束启动画面

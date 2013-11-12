@@ -14,3 +14,11 @@ install_resources.files = .
 INSTALLS = install_resources
 
 RESOURCES +=
+
+lupdate_only{
+    SOURCES = *.qml \
+              func/*.qml \
+              func/bars/*.qml \
+              func/common/*.qml \
+              func/settings/*.qml
+}

@@ -30,43 +30,56 @@ Item {
             source: "../img/skin/bg-middle.png"
             anchors.fill: parent
         }
+        //更新列表
+        function updateList() {
+            funcmodel.clear();//清空
+            funcmodel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("坏点检测"), "flag": "CheckScreen"});
+            funcmodel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("开机动画"), "flag": "BootAnimation"});
+            funcmodel.append({"icon": "../img/icons/fcitx.png", "name": qsTr("输入法配置"), "flag": "FcitxConfigtool"});
+            funcmodel.append({"icon": "../img/icons/software.png", "name": qsTr("软件推荐"), "flag": "SoftWare"});
+            funcmodel.append({"icon": "../img/icons/processmanager.png", "name": qsTr("任务管理器"), "flag": "ProcessManager"});
+        }
+
         Item {
             id: views
             width: parent.width
             height: parent.height
             ListModel {
                 id: funcmodel
-                ListElement {
-                    icon: "../img/icons/checkscreen.png"
-                    name: "坏点检测"
-                    flag: "CheckScreen"
+                Component.onCompleted: {
+                    setting_widget.updateList();
                 }
-                ListElement {
-                    icon: "../img/icons/bootanimation.png"
-                    name: "开机动画"
-                    flag: "BootAnimation"
-                }
-                ListElement {
-                    icon: "../img/icons/fcitx.png"
-                    name: "输入法配置"
-                    flag: "FcitxConfigtool"
-                }
-                ListElement {
-                    icon: "../img/icons/software.png"
-                    name: "软件推荐"
-                    flag: "SoftWare"
-                }
-                ListElement {
-                    icon: "../img/icons/processmanager.png"
-                    name: "任务管理器"
-                    flag: "ProcessManager"
-                }
+//                ListElement {
+//                    icon: "../img/icons/checkscreen.png"
+//                    name: "坏点检测"
+//                    flag: "CheckScreen"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/bootanimation.png"
+//                    name: "开机动画"
+//                    flag: "BootAnimation"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/fcitx.png"
+//                    name: "输入法配置"
+//                    flag: "FcitxConfigtool"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/software.png"
+//                    name: "软件推荐"
+//                    flag: "SoftWare"
+//                }
+//                ListElement {
+//                    icon: "../img/icons/processmanager.png"
+//                    name: "任务管理器"
+//                    flag: "ProcessManager"
+//                }
             }
 
 
             Common.Label {
                 id: label
-                text: "默认工具箱"
+                text: qsTr("默认工具箱")
                 font.bold: true
                 font.pixelSize: 16
                 color: "#383838"

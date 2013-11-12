@@ -112,7 +112,7 @@ Item {
                 if (msg == "cookies") {
 //                    root.work_result = msg;
                     itemtitle.state = "CookiesWorkError";
-                    toolkits.alertMSG("清理出现异常！", mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("清理出现异常！"), mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
          }
@@ -120,12 +120,12 @@ Item {
             if (btnFlag == "cookies_work") {
                 if (msg == "") {
                     resetBtn.visible = true;
-                    toolkits.alertMSG("清理中断了！", mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("清理中断了！"), mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else if (msg == "cookies") {
 //                    root.work_result = msg;
                     itemtitle.state = "CookiesWorkFinish";
-                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("清理完毕！"), mainwindow.pos.x, mainwindow.pos.y);
                     //清理完毕后重新获取cookies
 //                    root.cookies_signal("CookiesWork");
                 }
@@ -190,7 +190,7 @@ Item {
             width: 95
             height: 30
             hoverimage: "green2.png"
-            text: "开始扫描"
+            text: qsTr("开始扫描")
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(itemtitle.btnFlag == "cookies_scan") {
@@ -266,39 +266,39 @@ Item {
     states: [
         State {
             name: "CookiesWork"
-            PropertyChanges { target: scanBtn; text:"全部清理"}
+            PropertyChanges { target: scanBtn; text:qsTr("全部清理")}
             PropertyChanges { target: itemtitle; btnFlag: "cookies_work" }
 //            PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
             PropertyChanges { target: resetBtn; visible: true }
         },
         State {
             name: "CookiesWorkC"
-            PropertyChanges { target: scanBtn; text:"全部清理"}
+            PropertyChanges { target: scanBtn; text:qsTr("全部清理")}
             PropertyChanges { target: itemtitle; btnFlag: "cookies_workc" }
 //            PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
             PropertyChanges { target: resetBtn; visible: true }
         },
         State {
             name: "CookiesWorkAGAIN"
-            PropertyChanges { target: scanBtn; text:"开始扫描" }
+            PropertyChanges { target: scanBtn; text:qsTr("开始扫描") }
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scan" }
 //            PropertyChanges { target: statusImage; visible: false }
         },
         State {
             name: "CookiesWorkAGAINC"
-            PropertyChanges { target: scanBtn; text:"开始扫描" }
+            PropertyChanges { target: scanBtn; text:qsTr("开始扫描") }
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
 //            PropertyChanges { target: statusImage; visible: false }
         },
         State {
             name: "CookiesWorkError"
-            PropertyChanges { target: scanBtn; text:"开始扫描" }
+            PropertyChanges { target: scanBtn; text:qsTr("开始扫描") }
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scan" }
 //            PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
         State {
             name: "CookiesWorkErrorC"
-            PropertyChanges { target: scanBtn; text:"开始扫描" }
+            PropertyChanges { target: scanBtn; text:qsTr("开始扫描") }
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
 //            PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
         },
@@ -310,20 +310,20 @@ Item {
         },
         State {
             name: "CookiesWorkFinishC"
-            PropertyChanges { target: scanBtn; text:"开始扫描"}
+            PropertyChanges { target: scanBtn; text:qsTr("开始扫描")}
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
 //            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: "已完成"}
         },
         State {
             name: "CookiesWorkEmpty"
-            PropertyChanges { target: scanBtn; text:"开始扫描"}
+            PropertyChanges { target: scanBtn; text:qsTr("开始扫描")}
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scan" }
 //            PropertyChanges { target: statusImage; visible: false}
             PropertyChanges { target: resetBtn; visible: false}
         },
         State {
             name: "CookiesWorkEmptyC"
-            PropertyChanges { target: scanBtn; text:"开始扫描"}
+            PropertyChanges { target: scanBtn; text:qsTr("开始扫描")}
             PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
 //            PropertyChanges { target: statusImage; visible: false}
             PropertyChanges { target: resetBtn; visible: false}

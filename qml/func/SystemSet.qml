@@ -50,7 +50,7 @@ Item {
                     top: parent.top
                     topMargin: titleimage.height/2 - 7
                 }
-                text: "您可以定制属于自己的视觉效果和声音。"
+                text: qsTr("您可以定制属于自己的视觉效果和声音。")
                 font.pixelSize: 12
                 color: "#383838"
             }
@@ -74,26 +74,26 @@ Item {
                         spacing: 7
                         Text {
                             id: personaltext
-                            text: " 个性化"
+                            text: qsTr(" 个性化")
                             font.bold: true
                             font.pixelSize: 14
                             color: "#383838"
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: "更改窗口主题"; width: 90; flag: "WidgetTheme"}
+                            SetWord {wordname: qsTr("更改窗口主题"); width: 90; flag: "WidgetTheme"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter}
-                            SetWord {wordname: "更改图标配置"; width: 90; flag: "DesktopiconSet"}
+                            SetWord {wordname: qsTr("更改图标配置"); width: 90; flag: "DesktopiconSet"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改鼠标指针"; width: 90; flag: "MousePointer"}
+                            SetWord {wordname: qsTr("更改鼠标指针"); width: 90; flag: "MousePointer"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改声音效果"; width: 90; flag: "SoundEffects"}
+                            SetWord {wordname: qsTr("更改声音效果"); width: 90; flag: "SoundEffects"}
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改开机动画"; width: 90; flag: "BootAnimation"}
+                            SetWord {wordname: qsTr("更改开机动画"); width: 90; flag: "BootAnimation"}
                         }
                     }
                 }
@@ -109,7 +109,7 @@ Item {
                         spacing: 7
                         Text {
                             id: unitytext
-                            text: " Unity"
+                            text: qsTr(" Unity")
                             font.bold: true
                             font.pixelSize: 14
                             color: "#383838"
@@ -119,7 +119,7 @@ Item {
 //                            anchors.bottom: unity.bottom
 //                            anchors.bottomMargin: 10
                             spacing: 5
-                            SetWord {wordname: "自定义启动器"; width: 90; flag: "LauncherTheme"}
+                            SetWord {wordname: qsTr("自定义启动器"); width: 90; flag: "LauncherTheme"}
                         }
                     }
                 }
@@ -135,18 +135,18 @@ Item {
                         spacing: 7
                         Text {
                             id: fonttext
-                            text: " 字体"
+                            text: qsTr(" 字体")
                             font.bold: true
                             font.pixelSize: 14
                             color: "#383838"
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: "更改默认字体设置"; width: 120; flag: "DefaultFont"}
+                            SetWord {wordname: qsTr("更改默认字体设置"); width: 120; flag: "DefaultFont"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改文档字体设置"; width: 120; flag: "DocumentFont"}
+                            SetWord {wordname: qsTr("更改文档字体设置"); width: 120; flag: "DocumentFont"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改窗口标题栏字体设置"; width: 160; flag: "TitlebarFont"}
+                            SetWord {wordname: qsTr("更改窗口标题栏字体设置"); width: 160; flag: "TitlebarFont"}
                         }
                     }
                 }
@@ -162,16 +162,16 @@ Item {
                         spacing: 7
                         Text {
                             id: systext
-                            text: " 系统选项"
+                            text: qsTr(" 系统选项")
                             font.bold: true
                             font.pixelSize: 14
                             color: "#383838"
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: "更改触摸板设置"; width: 105; flag: "TouchpadSet"}
+                            SetWord {wordname: qsTr("更改触摸板设置"); width: 105; flag: "TouchpadSet"}
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "检测屏幕坏点"; width: 95; flag: "CheckScreen"}
+                            SetWord {wordname: qsTr("检测屏幕坏点"); width: 95; flag: "CheckScreen"}
                         }
                     }
                 }

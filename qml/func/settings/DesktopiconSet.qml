@@ -32,8 +32,8 @@ Rectangle {
     property string init_icon_theme: ""
     property bool init_icon_theme_flag: false
 
-    property string actiontitle: "桌面图标设置"
-    property string actiontext: "您可以设置桌面图标主题和控制一些图标是否显示在桌面上。"
+    property string actiontitle: qsTr("桌面图标设置")
+    property string actiontext: qsTr("您可以设置桌面图标主题和控制一些图标是否显示在桌面上。")
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -127,7 +127,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "图标主题设置"
+            text: qsTr("图标主题设置")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -154,7 +154,7 @@ Rectangle {
             spacing: 40
             Text {
                 id: iconthemelabel
-                text: "图标主题"
+                text: qsTr("图标主题")
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -172,7 +172,7 @@ Rectangle {
                 id: okBtn
                 width: 105;height: 30
                 hoverimage: "green2.png"
-                text: "确定"
+                text: qsTr("确定")
                 onClicked: {
                     desktopiconsetpage.init_icon_theme_flag = true;
                     if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
@@ -184,7 +184,7 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "恢复默认"
+                text: qsTr("恢复默认")
                 width: 105
                 height: 30
                 onClicked: {
@@ -194,7 +194,7 @@ Rectangle {
                         statusImage.visible = true;
                     }
                     else
-                        sessiondispatcher.showWarningDialog("友情提示：", "您系统的图标主题已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("您系统的图标主题已经为默认设置！"), mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
             Timer {
@@ -215,7 +215,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "桌面图标显示控制"
+            text: qsTr("桌面图标显示控制")
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -242,7 +242,7 @@ Rectangle {
             Common.Label {
                 id: desktopiconlabel
                 width: 170
-                text: "由文件管理器处理桌面:"
+                text: qsTr("由文件管理器处理桌面:")
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -267,7 +267,7 @@ Rectangle {
             Common.Label {
                 id: homefolderlabel
                 width: 170
-                text: "我的文档:"
+                text: qsTr("我的文档:")
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -291,7 +291,7 @@ Rectangle {
             Common.Label {
                 id: networklabel
                 width: 170
-                text: "网络:"
+                text: qsTr("网络:")
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -315,7 +315,7 @@ Rectangle {
             Common.Label {
                 id: trashlabel
                 width: 170
-                text: "回收站:"
+                text: qsTr("回收站:")
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -340,7 +340,7 @@ Rectangle {
             Common.Label {
                 id: devicelabel
                 width: 170
-                text: "移动设备:"
+                text: qsTr("移动设备:")
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter

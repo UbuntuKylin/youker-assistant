@@ -22,9 +22,9 @@ Item {
     id:root
     width: parent.width
     height: 435
-    property string btn_text: "开始扫描"
-    property string apt_title: "包管理深度清理"
-    property string apt_description: "深度清理包管理残留的deb包,节省磁盘空间"
+    property string btn_text: qsTr("开始扫描")
+    property string apt_title: qsTr("包管理深度清理")
+    property string apt_description: qsTr("深度清理包管理残留的deb包,节省磁盘空间")
     property string apt_btn_flag: "apt_scan"
     property ListModel listmodel: apt_mainModel
     property ListModel apt_submodel: apt_subModel
@@ -69,9 +69,9 @@ Item {
             if(apt_num!=0)
                 apt_check_flag=true;
             apt_mainModel.clear();
-            apt_mainModel.append({"itemTitle": "包管理清理",
+            apt_mainModel.append({"itemTitle": qsTr("包管理清理"),
                              "picture": "../img/toolWidget/apt-min.png",
-                             "detailstr": "用户可以根据扫描结果选择性地清理包管理残留包,缓存路径为:/var/cache/apt/archives/",
+                             "detailstr": qsTr("用户可以根据扫描结果选择性地清理包管理残留包,缓存路径为:/var/cache/apt/archives/"),
                              "flags": "clear_apt",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -98,7 +98,7 @@ Item {
                 if (msg == "apt") {
                     root.apt_work_result = msg;
                     root.state = "AptWorkError";
-                    toolkits.alertMSG("清理出现异常！", mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("清理出现异常！"), mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
          }
@@ -110,7 +110,7 @@ Item {
                 else if (msg == "apt") {
                     root.apt_work_result = msg;
                     root.state = "AptWorkFinish";
-                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("清理完毕！"), mainwindow.pos.x, mainwindow.pos.y);
                     apt_signal("AptWork");
                 }
             }
@@ -119,20 +119,20 @@ Item {
 
     ListModel {
         id: apt_mainModel
-        ListElement {
-            itemTitle: "包管理清理"
-            picture: "../img/toolWidget/apt-min.png"
-            detailstr: "用户可以根据扫描结果选择性地清理包管理残留包"
-            flags: "clear_apt"
-            attributes: [
-                ListElement { subItemTitle: "" }
-            ]
-        }
+//        ListElement {
+//            itemTitle: "包管理清理"
+//            picture: "../img/toolWidget/apt-min.png"
+//            detailstr: "用户可以根据扫描结果选择性地清理包管理残留包"
+//            flags: "clear_apt"
+//            attributes: [
+//                ListElement { subItemTitle: "" }
+//            ]
+//        }
     }
 
     ListModel {
         id: apt_subModel
-        ListElement {itemTitle: ""; desc: ""; number: ""}
+//        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
 
     //背景
@@ -184,7 +184,7 @@ Item {
             id: apt_statusImage
             visible: false
             iconName: "yellow.png"
-            text: "未完成"
+            text: qsTr("未完成")
             anchors.verticalCenter: parent.verticalCenter
         }
         Common.Button {
@@ -205,13 +205,13 @@ Item {
                      if(root.apt_null_flag == true) {
                         root.state = "AptWorkEmpty";
                          deleget_arrow=0;
-                        sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else if(root.apt_null_flag == false)
                      {
                         root.state = "AptWork";
                          deleget_arrow=1;
-                         toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
+                         toolkits.alertMSG(qsTr("扫描完成！"), mainwindow.pos.x, mainwindow.pos.y);
                      }
                  }
                  else if (apt_btn_flag == "apt_work") {
@@ -220,7 +220,7 @@ Item {
                  }
                 }
                 else
-                     sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y)
+                     sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y)
             }
         }
 
@@ -290,31 +290,31 @@ Item {
     states: [
         State {
             name: "AptWork"
-             PropertyChanges { target: apt_bitButton; text:"开始清理"}
+             PropertyChanges { target: apt_bitButton; text:qsTr("开始清理")}
             PropertyChanges { target: root; apt_btn_flag: "apt_work" }
-            PropertyChanges { target: apt_statusImage; visible: true; iconName: "yellow.png"; text: "未完成"}
+            PropertyChanges { target: apt_statusImage; visible: true; iconName: "yellow.png"; text: qsTr("未完成")}
         },
         State {
             name: "AptWorkAGAIN"
-            PropertyChanges { target: apt_bitButton; text:"开始扫描" }
+            PropertyChanges { target: apt_bitButton; text:qsTr("开始扫描") }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage; visible: false }
         },
         State {
             name: "AptWorkError"
-            PropertyChanges { target: apt_bitButton; text:"开始扫描" }
+            PropertyChanges { target: apt_bitButton; text:qsTr("开始扫描") }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
-            PropertyChanges { target: apt_statusImage; visible: true; iconName: "red.png"; text: "出现异常"}
+            PropertyChanges { target: apt_statusImage; visible: true; iconName: "red.png"; text: qsTr("出现异常")}
         },
         State {
             name: "AptWorkFinish"
-            PropertyChanges { target: apt_bitButton; text:"开始扫描" }
+            PropertyChanges { target: apt_bitButton; text:qsTr("开始扫描") }
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
-            PropertyChanges { target: apt_statusImage; visible: true; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: apt_statusImage; visible: true; iconName: "green.png"; text: qsTr("已完成")}
         },
         State {
             name: "AptWorkEmpty"
-            PropertyChanges { target: apt_bitButton; text:"开始扫描"}
+            PropertyChanges { target: apt_bitButton; text:qsTr("开始扫描")}
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
             PropertyChanges { target: apt_statusImage;  visible: false}
         }
