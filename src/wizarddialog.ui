@@ -16,9 +16,9 @@
   <widget class="QLabel" name="titleLabel">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>180</x>
      <y>7</y>
-     <width>71</width>
+     <width>171</width>
      <height>21</height>
     </rect>
    </property>
@@ -26,7 +26,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>天气配置</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weather Configuration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -37,7 +37,7 @@
     <rect>
      <x>20</x>
      <y>38</y>
-     <width>111</width>
+     <width>171</width>
      <height>21</height>
     </rect>
    </property>
@@ -48,7 +48,7 @@
     </size>
    </property>
    <property name="text">
-    <string>自动更新周期：</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBox">
@@ -66,7 +66,7 @@
     <rect>
      <x>265</x>
      <y>37</y>
-     <width>51</width>
+     <width>71</width>
      <height>21</height>
     </rect>
    </property>
@@ -77,7 +77,7 @@
     </size>
    </property>
    <property name="text">
-    <string>地点：</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Location:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
@@ -95,7 +95,7 @@
     <rect>
      <x>120</x>
      <y>66</y>
-     <width>41</width>
+     <width>61</width>
      <height>21</height>
     </rect>
    </property>
@@ -106,7 +106,7 @@
     </size>
    </property>
    <property name="text">
-    <string>分钟</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;minute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="btn_close">
@@ -167,7 +167,7 @@
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>添加城市</string>
+    <string>Add City</string>
    </property>
   </widget>
   <widget class="QPushButton" name="delBtn">
@@ -184,7 +184,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>删除城市</string>
+    <string>Delete City</string>
    </property>
   </widget>
   <widget class="QPushButton" name="quitBtn">
@@ -201,7 +201,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>返回</string>
+    <string>Back</string>
    </property>
   </widget>
   <widget class="QPushButton" name="okBtn">
@@ -218,7 +218,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>完成</string>
+    <string>Finish</string>
    </property>
   </widget>
   <widget class="QLabel" name="windLabel">
@@ -226,7 +226,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <rect>
      <x>22</x>
      <y>97</y>
-     <width>141</width>
+     <width>241</width>
      <height>21</height>
     </rect>
    </property>
@@ -237,7 +237,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     </size>
    </property>
    <property name="text">
-    <string>风速单位：蒲福级</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wind speed unit: Beaufort number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="comLabel">
@@ -245,7 +245,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <rect>
      <x>23</x>
      <y>126</y>
-     <width>161</width>
+     <width>241</width>
      <height>21</height>
     </rect>
    </property>
@@ -256,7 +256,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     </size>
    </property>
    <property name="text">
-    <string>数据来源：中国气象局</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: China Meteorological Administration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <zorder>frame</zorder>

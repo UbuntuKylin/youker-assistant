@@ -110,13 +110,13 @@ void Tray::startMemoryAccelerate() {
 }
 
 void Tray::createTray() {
-    this->actionQml = new QAction(QObject::tr("隐藏/显示主界面"), this);
+    this->actionQml = new QAction(tr("hide/show main widget"), this);//隐藏/显示主界面
     connect(actionQml, SIGNAL(triggered()), this, SLOT(showOrHideQml()));
-    this->actionShow = new QAction(QObject::tr("隐藏/显示监控球"), this);
+    this->actionShow = new QAction(tr("hide/show monitor ball"), this);//隐藏/显示监控球
     connect(actionShow, SIGNAL(triggered()), this, SLOT(showOrHide()));
     QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
-    this->actionQuit = new QAction(QObject::tr("退出"), this);
+    this->actionQuit = new QAction(tr("exit"), this);//退出
     connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
     this->trayMenu = new QMenu(this);

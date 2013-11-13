@@ -11,8 +11,8 @@ Rectangle {
     id:fcitxconfigtool
     width: parent.width
     height: 475
-    property string actiontitle: qsTr("小企鹅输入法列表配置")
-    property string actiontext: qsTr("可以设置自己喜欢的输入方式，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。")
+    property string actiontitle: qsTr("Fcitx list configuration")//小企鹅输入法列表配置
+    property string actiontext: qsTr("Set the input mode you like, click 'next' to continue setup, click 'Cancel' cancel the current settings and return.")//可以设置自己喜欢的输入方式，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。
     property string selectedimage: ""
     property int leftFcitxModelindex: 0
     property int rightFcitxModelindex: 0
@@ -149,7 +149,7 @@ Rectangle {
             left: parent.left
             leftMargin: 80
         }
-        text: qsTr("当前的输入法")
+        text: qsTr("Current input method")//当前的输入法
         font.bold: true
         font.pixelSize: 12
         color: "#7a7a7a"
@@ -162,7 +162,7 @@ Rectangle {
             left: parent.left
             leftMargin: 475
         }
-        text: qsTr("可用的输入法")
+        text: qsTr("Available input method")//可用的输入法
         font.bold: true
         font.pixelSize: 12
         color: "#7a7a7a"
@@ -170,21 +170,21 @@ Rectangle {
 
     ListModel {
         id: leftFcitxModel
-        ListElement {
-            itemTitle: "";
-            uniqueName:"";
-            langClde:""
-        }
+//        ListElement {
+//            itemTitle: "";
+//            uniqueName:"";
+//            langClde:""
+//        }
     }
 
 
     ListModel {
         id: rightFcitxModel
-        ListElement {
-            itemTitle: "";
-            uniqueName:"";
-            langClde:""
-        }
+//        ListElement {
+//            itemTitle: "";
+//            uniqueName:"";
+//            langClde:""
+//        }
     }
     //左边框
     Rectangle{
@@ -532,7 +532,7 @@ Rectangle {
         }
         ListModel {
             id: fcitxChangeModel
-            ListElement { text: "" }
+//            ListElement { text: "" }
         }
 
         Common.CheckBox{
@@ -541,7 +541,7 @@ Rectangle {
             onCheckedChanged: {
             }
 
-            titleName: "输入法切换"
+            titleName: qsTr("Switch input method")//输入法切换
 //            Text{
 //                id:scrollBetween
 //                text:qsTr("输入法切换")
@@ -573,7 +573,7 @@ Rectangle {
                 left: parent.left
                 leftMargin: 80
             }
-            text: qsTr("提示:'<<'可以将可用输入法加入当前输入法，'>>'删除当前选中输入法，'▲'和'▼'改变当前输入法的位置。")
+            text: qsTr("Tip: '<<' add available input method, '>>'delete the currently selected input method, '▲ ▼'change the current position.")//提示:'<<'可以将可用输入法加入当前输入法，'>>'删除当前选中输入法，'▲'和'▼'改变当前输入法的位置。
             font.bold: true
             font.pixelSize: 12
             color: "#7a7a7a"

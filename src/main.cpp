@@ -52,20 +52,15 @@
 #include <qdeclarativeview.h>
 #include "KThread.h"
 #include <QtSingleApplication>
-
-#include "processmanager.h"//1101
-
+#include "processmanager.h"
 #include <QTranslator>
-
 
 void registerTypes() {
     qmlRegisterType<Toolkits>("ToolkitsType", 0, 1, "Toolkits");
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<SudoDispatcher>("SudoType", 0, 1, "SudoDispatcher");
-
-    qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");//1101
-
+    qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");
     qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
@@ -91,58 +86,59 @@ void registerTypes() {
 
 int main(int argc, char** argv)
 {
+    //单程序运行处理
     QtSingleApplication app(argc, argv);
     if (app.isRunning())
         return 0;
 
+    //编码处理
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 
+    QString locale = QLocale::system().name();
+//    if(locale != "zh_CN") {
+    //加载Qt和QML文件的国际化
+    QTranslator translator;
+    if(!translator.load("youker-assistant_" + locale + ".qm",
+                        ":/translate/translation/"))
+        qDebug() << "Load translation file："<< "youker-assistant_" + locale + ".qm" << " failed!";
+    else
+        app.installTranslator(&translator);
 
-//    QString locale = QLocale::system().name();
-//    qDebug() << locale;
-//    QTranslator translator;
-//    bool success = translator.load( QString("displayChinese_") + locale);
-//    app.installTranslator(&translator);
+    //加载Qt对话框默认的国际化
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + locale,
+                      QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    app.installTranslator(&qtTranslator);
+//    }
 
-//    translator.load(":/translate/i18_zh_CN.qm");
-
-//    QTranslator translator;
-//    if(!translator.load("youker_"+QLocale::system().name()+".qm",
-//                            "://Translation/"))
-//        qDebug()<<"main() cannot load translation file"<<"youker_"+QLocale::system().name()+".qm";
-//    else
-//        indicator.installTranslator(&translator);
-//    QTranslator qtTranslator;
-//    qtTranslator.load("qt_" + QLocale::system().name(),
-//            QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-
-
+    //注册QML模块
     registerTypes();
 
+    //启动sessiondbus和systemdbus服务
     int value_session = system("/usr/bin/youkersession &");
     if (value_session != 0)
         qDebug() << "SessionDaemon Failed!";
     int value_system = system("/usr/bin/youkersystem");
     if (value_system != 0)
         qDebug() << "SystemDaemon Failed!";
+
+    //启动画面
     QSplashScreen splash(QPixmap(":/pixmap/image/feature.png"));
     splash.setDisabled(true);
     splash.show();
-    splash.showMessage("优客助手正在启动中....", Qt::AlignHCenter|Qt::AlignBottom, Qt::black);
+    splash.showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
     //同时创建主视图对象
     IhuApplication application;
-    splash.showMessage("正在加载模块数据....", Qt::AlignHCenter|Qt::AlignBottom, Qt::black);
+    splash.showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
     application.setup();
     //显示主界面，并结束启动画面
     application.showQMLWidget();
     splash.finish(&application);
     return app.exec();
-//    ProcessManager *p = new ProcessManager();
-//    p->getProcess();
 }
 
 

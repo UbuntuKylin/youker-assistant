@@ -429,7 +429,8 @@ void SessionDispatcher::show_font_dialog(QString flag) {
 }
 
 QString SessionDispatcher::show_folder_dialog() {
-    QString dir = QFileDialog::getExistingDirectory(0, QObject::tr("选择文件夹"), QDir::homePath(),
+    //选择文件夹
+    QString dir = QFileDialog::getExistingDirectory(0, tr("choose folder"), QDir::homePath(),
                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     return dir;
 }

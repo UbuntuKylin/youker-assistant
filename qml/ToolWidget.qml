@@ -31,19 +31,20 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 5
         spacing: 0
-        ToolBtn {id: home_tool; iconName: "001.png"; text: "homepage"; showtext:"首页"; onSend: toolwidget.state = "Home"}
+        //首页 系统信息  系统清理  系统美化  功能大全
+        ToolBtn {id: home_tool; iconName: "001.png"; text: "homepage"; showtext:qsTr("HomePage"); onSend: toolwidget.state = "Home"}
         Rectangle {id: splitbar1; height: 38; width: 1; color: "#086794" }
         Rectangle {id: splitbar5; height: 38; width: 1; color: "#45a6d4" }
-        ToolBtn {id: message_tool;iconName: "002.png"; text: "systemmessage"; showtext:"系统信息"; onSend: toolwidget.state = "Message"}
+        ToolBtn {id: message_tool;iconName: "002.png"; text: "systemmessage"; showtext:qsTr("SystemMessage"); onSend: toolwidget.state = "Message"}
         Rectangle {id: splitbar2; height: 38; width: 1; color: "#086794" }
         Rectangle {id: splitbar6; height: 38; width: 1; color: "#45a6d4" }
-        ToolBtn {id: clear_tool; iconName: "003.png"; text: "clearrubbish"; showtext:"系统清理"; onSend: toolwidget.state = "Clear"}
+        ToolBtn {id: clear_tool; iconName: "003.png"; text: "clearrubbish"; showtext:qsTr("SystemClear"); onSend: toolwidget.state = "Clear"}
         Rectangle {id: splitbar3; height: 38; width: 1; color: "#086794" }
         Rectangle {id: splitbar7; height: 38; width: 1; color: "#45a6d4" }
-        ToolBtn {id: beauty_tool;iconName: "004.png";text: "systemset"; showtext:"系统美化"; onSend: toolwidget.state = "Beauty"}
+        ToolBtn {id: beauty_tool;iconName: "004.png";text: "systemset"; showtext:qsTr("SystemBeauty"); onSend: toolwidget.state = "Beauty"}
         Rectangle {id: splitbar4; height: 38; width: 1; color: "#086794" }
         Rectangle {id: splitbar8; height: 38; width: 1; color: "#45a6d4" }
-        ToolBtn {id: function_tool;iconName: "005.png"; text: "functioncollection"; showtext:"功能大全"; onSend: toolwidget.state = "Function"}
+        ToolBtn {id: function_tool;iconName: "005.png"; text: "functioncollection"; showtext:qsTr("FunctionCollection"); onSend: toolwidget.state = "Function"}
 //        ToolBtn {id: home_tool; iconName: "homepage.png"; text: "homepage"; showtext:"首页"; onSend: toolwidget.state = "Home"}
 //        Rectangle {id: splitbar1; height: 38; width: 1; color: "#086794" }
 //        Rectangle {id: splitbar5; height: 38; width: 1; color: "#45a6d4" }

@@ -106,7 +106,7 @@ Item {
             verticalCenter: parent.verticalCenter
         }
         hoverimage: "blue1.png"
-        text: qsTr("删除")
+        text: qsTr("Delete")//删除
         fontcolor: "#086794"
         width: 60
         height: 20

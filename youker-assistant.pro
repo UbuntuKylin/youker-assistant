@@ -8,8 +8,10 @@ TEMPLATE = subdirs
 
 SUBDIRS += src qml backends
 
+# i18n setting
 TRANSLATIONS += \
-    Translation/youker-assistant_uk.ts
+    src/translation/youker-assistant_en.ts \
+    src/translation/youker-assistant_zh_CN.ts
 #CONFIG += localize_deployment
 #SYMBIAN_SUPPORTED_LANGUAGES += zh_CN
 #SYMBIAN_LANG.zh_CN = 31

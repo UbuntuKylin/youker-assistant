@@ -33,11 +33,11 @@ Item {
         //更新列表
         function updateList() {
             funcmodel.clear();//清空
-            funcmodel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("坏点检测"), "flag": "CheckScreen"});
-            funcmodel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("开机动画"), "flag": "BootAnimation"});
-            funcmodel.append({"icon": "../img/icons/fcitx.png", "name": qsTr("输入法配置"), "flag": "FcitxConfigtool"});
-            funcmodel.append({"icon": "../img/icons/software.png", "name": qsTr("软件推荐"), "flag": "SoftWare"});
-            funcmodel.append({"icon": "../img/icons/processmanager.png", "name": qsTr("任务管理器"), "flag": "ProcessManager"});
+            funcmodel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("Check Screen"), "flag": "CheckScreen"});//坏点检测
+            funcmodel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("Boot Animation"), "flag": "BootAnimation"});//开机动画
+            funcmodel.append({"icon": "../img/icons/fcitx.png", "name": qsTr("Fcitx Configure"), "flag": "FcitxConfigtool"});//输入法配置
+            funcmodel.append({"icon": "../img/icons/software.png", "name": qsTr("Software Recommend"), "flag": "SoftWare"});//软件推荐
+            funcmodel.append({"icon": "../img/icons/processmanager.png", "name": qsTr("Process Manager"), "flag": "ProcessManager"});//任务管理器
         }
 
         Item {
@@ -79,7 +79,7 @@ Item {
 
             Common.Label {
                 id: label
-                text: qsTr("默认工具箱")
+                text: qsTr("Default toolbox")//默认工具箱
                 font.bold: true
                 font.pixelSize: 16
                 color: "#383838"

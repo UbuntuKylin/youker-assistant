@@ -22,9 +22,9 @@ Item {
     id:root
     width: parent.width
     height: 435//420//340
-    property string btn_text: qsTr("开始扫描")
-    property string title: qsTr("清理历史记录,保护个人隐私")
-    property string description: qsTr("清理浏览器上网记录和系统最近打开文件记录")
+    property string btn_text: qsTr("Start scanning")//开始扫描
+    property string title: qsTr("Clean history, and protect personal privacy")//清理历史记录,保护个人隐私
+    property string description: qsTr("Clean up browser record and system opened documents recently")//清理浏览器上网记录和系统最近打开文件记录
     property string btn_flag: "history_scan"
     property string btn_flag2: "system_scan"
     property string work_result: ""
@@ -46,7 +46,8 @@ Item {
                 root.null_flag = true;
                 browserstatus.visible = false;
                 browserstatus.state = "BrowserWorkEmpty";
-                sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示      扫描内容为空，不再执行清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                 resetcBtn.visible = false;
             }
             else {
@@ -61,7 +62,8 @@ Item {
                 root.null_flag2 = true;
                 systemstatus.visible = false;
                 systemstatus.state = "SystemWorkEmpty";
-                sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示      扫描内容为空，不再执行清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                 resetsBtn.visible = false;
             }
             else {
@@ -184,7 +186,7 @@ Item {
                         Row{
                             spacing: 15
                             Text {
-                                text: qsTr("清理浏览器上网记录")
+                                text: qsTr("Clean up the Internet browser record")//清理浏览器上网记录
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
@@ -197,7 +199,7 @@ Item {
                             }
                         }
                         Text {
-                            text: qsTr("清理上网时留下的历史记录,目前仅支持Firefox浏览器")
+                            text: qsTr("Clean up the Internet histories, currently only supports Firefox browser")//清理上网时留下的历史记录,目前仅支持Firefox浏览器
                             font.pixelSize: 12
                             color: "#7a7a7a"
                         }
@@ -207,7 +209,7 @@ Item {
                     id: browserstatus
                     visible: false
                     iconName: "yellow.png"
-                    text: qsTr("未完成")
+                    text: qsTr("Unfinished")//未完成
                     anchors {
 //                        top:parent.top
                         left: parent.left; leftMargin: 450
@@ -216,38 +218,38 @@ Item {
                     states: [
                         State {
                             name: "BrowserWork"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(扫描到")+ browserstatus_num + qsTr("条记录)")}
-                            PropertyChanges { target: cacheBtn; text:qsTr("开始清理")}
+                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan")+ browserstatus_num + qsTr("records)")}//扫描到     条记录
+                            PropertyChanges { target: cacheBtn; text:qsTr("Start cleaning")}//开始清理
                             PropertyChanges { target: root; btn_flag: "history_work" }
-                            PropertyChanges { target: browserstatus; iconName: "yellow.png"; text: qsTr("未完成")}
+                            PropertyChanges { target: browserstatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
                         },
                         State {
                             name: "BrowserWorkAGAIN"
                             PropertyChanges { target: browserstatus_label; visible: false}
-                            PropertyChanges { target: cacheBtn; text:qsTr("开始扫描") }
+                            PropertyChanges { target: cacheBtn; text:qsTr("Start scanning") }//开始扫描
                             PropertyChanges { target: root; btn_flag: "history_scan" }
                             PropertyChanges { target: browserstatus; visible: false }
                         },
                         State {
                             name: "BrowserWorkError"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("清理出现异常")}
-                            PropertyChanges { target: cacheBtn; text:qsTr("开始扫描") }
+                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("Exception occurred")}//出现异常
+                            PropertyChanges { target: cacheBtn; text:qsTr("Start scanning") }//开始扫描
                             PropertyChanges { target: root; btn_flag: "history_scan" }
-                            PropertyChanges { target: browserstatus; visible: true; iconName: "red.png"; text: qsTr("出现异常")}
+                            PropertyChanges { target: browserstatus; visible: true; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
                         },
                         State {
                             name: "BrowserWorkFinish"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + qsTr("(已清理")+ browserstatus_num + qsTr("条记录)") }
-                            PropertyChanges { target: cacheBtn; text:qsTr("开始扫描")}
+                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ browserstatus_num + qsTr("records)") }//已清理     条记录
+                            PropertyChanges { target: cacheBtn; text:qsTr("Start scanning")}//开始扫描
                             PropertyChanges { target: root; btn_flag: "history_scan" }
-                            PropertyChanges { target: browserstatus; visible: true; iconName: "green.png"; text: qsTr("已完成")}
+                            PropertyChanges { target: browserstatus; visible: true; iconName: "green.png"; text: qsTr("Completed")}//已完成
                         },
                         State {
                             name: "BrowserWorkEmpty"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("扫描内容为空，不再执行清理！") }
-                            PropertyChanges { target: cacheBtn; text:qsTr("开始扫描") }
+                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("Scanning content is empty, no longer to perform cleanup!") }//扫描内容为空，不再执行清理！
+                            PropertyChanges { target: cacheBtn; text:qsTr("Start scanning") }//开始扫描
                             PropertyChanges { target: root; btn_flag: "history_scan" }
-                            PropertyChanges { target: browserstatus; iconName: "green.png"; text: qsTr("已完成")}
+                            PropertyChanges { target: browserstatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
                         }
                     ]
                 }
@@ -288,7 +290,7 @@ Item {
                     Row{
                         spacing: 15
                         Text {
-                            text: qsTr("清理最近打开文件记录")
+                            text: qsTr("Clean the opened documents recently")//清理最近打开文件记录
                             font.bold: true
                             font.pixelSize: 14
                             color: "#383838"
@@ -301,7 +303,7 @@ Item {
                         }
                     }
                     Text {
-                        text: qsTr("清理系统上最近的文件打开记录，保护您的个人隐私")
+                        text: qsTr("Clean the opened documents recently, and protect your privacy")//清理系统上最近的文件打开记录，保护您的个人隐私
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -311,7 +313,7 @@ Item {
                 id: systemstatus
                 visible: false
                 iconName: "yellow.png"
-                text: qsTr("未完成")
+                text: qsTr("Unfinished")//未完成
                 anchors {
 //                    top:parent.top
                     left: parent.left; leftMargin: 450
@@ -320,38 +322,38 @@ Item {
                 states: [
                     State {
                         name: "SystemWork"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(扫描到")+ systemstatus_num + qsTr("条记录)")}
-                        PropertyChanges { target: sysBtn; text:qsTr("开始清理")}
+                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Scan")+ systemstatus_num + qsTr("records)")}//扫描到     条记录
+                        PropertyChanges { target: sysBtn; text:qsTr("Start cleaning")}//开始清理
                         PropertyChanges { target: root; btn_flag2: "system_work" }
-                        PropertyChanges { target: systemstatus; iconName: "yellow.png"; text: qsTr("未完成")}
+                        PropertyChanges { target: systemstatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
                     },
                     State {
                         name: "SystemWorkAGAIN"
                         PropertyChanges { target: systemstatus_label; visible: false}
-                        PropertyChanges { target: sysBtn; text:qsTr("开始扫描") }
+                        PropertyChanges { target: sysBtn; text:qsTr("Start scanning") }//开始扫描
                         PropertyChanges { target: root; btn_flag2: "system_scan" }
                         PropertyChanges { target: systemstatus; visible: false }
                     },
                     State {
                         name: "SystemWorkError"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("清理出现异常")}
-                        PropertyChanges { target: sysBtn; text:qsTr("开始扫描") }
+                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("Exception occurred")}//出现异常
+                        PropertyChanges { target: sysBtn; text:qsTr("Start scanning") }//开始扫描
                         PropertyChanges { target: root; btn_flag2: "system_scan" }
-                        PropertyChanges { target: systemstatus; iconName: "red.png"; text: qsTr("出现异常")}
+                        PropertyChanges { target: systemstatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
                     },
                     State {
                         name: "SystemWorkFinish"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + qsTr("(已清理")+ systemstatus_num + qsTr("条记录)")}
-                        PropertyChanges { target: sysBtn; text:qsTr("开始扫描")}
+                        PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ systemstatus_num + qsTr("records)")}//已清理     条记录
+                        PropertyChanges { target: sysBtn; text:qsTr("Start scanning")}//开始扫描
                         PropertyChanges { target: root; btn_flag2: "system_scan" }
-                        PropertyChanges { target: systemstatus; iconName: "green.png"; text: qsTr("已完成")}
+                        PropertyChanges { target: systemstatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
                     },
                     State {
                         name: "SystemWorkEmpty"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("扫描内容为空，不再执行清理！") }
-                        PropertyChanges { target: sysBtn; text:qsTr("开始扫描") }
+                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("Scanning content is empty, no longer to perform cleanup!") }//扫描内容为空，不再执行清理！
+                        PropertyChanges { target: sysBtn; text:qsTr("Start scanning") }//开始扫描
                         PropertyChanges { target: root; btn_flag2: "system_scan" }
-                        PropertyChanges { target: systemstatus; iconName: "green.png"; text: qsTr("已完成")}
+                        PropertyChanges { target: systemstatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
                     }
                 ]
             }
@@ -378,7 +380,8 @@ Item {
                 if (btn_flag == "history_scan") {
                     if(!checkboxe1.checked) {
                        browserstatus.visible = false;
-                       sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选中历史记录扫描项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                        //友情提示      对不起，您没有选中历史记录扫描项，请确认！
+                       sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to get the history record items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {
                         resetcBtn.visible = true;
@@ -389,7 +392,8 @@ Item {
                     if(checkboxe1.checked) {
                         if(root.null_flag == true) {
                             root.state = "BrowserWorkEmpty";
-                            sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示      扫描内容为空，不再执行清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             resetcBtn.visible = false;
@@ -398,8 +402,10 @@ Item {
                             systemdispatcher.clean_history_records_qt();
                         }
                     }
-                    else
-                        sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选中记录清理项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                    else {
+                        //友情提示      对不起，您没有选中历史记录扫描项，请确认！
+                       sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to get the history record items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
                 }
             }
         }
@@ -434,7 +440,8 @@ Item {
                 if (btn_flag2 == "system_scan") {
                     if(!checkboxe2.checked) {
                        systemstatus.visible = false;
-                       sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选中历史记录扫描项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                        //友情提示      对不起，您没有选中历史记录扫描项，请确认！
+                       sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to get the history record items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {
                         resetsBtn.visible = true;
@@ -445,7 +452,8 @@ Item {
                     if(checkboxe2.checked) {
                         if(root.null_flag2 == true) {
                             root.state = "SystemWorkEmpty";
-                            sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示      扫描内容为空，不再执行清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             resetsBtn.visible = false;
@@ -454,8 +462,10 @@ Item {
                             systemdispatcher.clean_system_history_qt();
                         }
                     }
-                    else
-                        sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选中记录清理项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                    else {
+                        //友情提示      对不起，您没有选中历史记录扫描项，请确认！
+                       sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to get the history record items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
                 }
             }
         }

@@ -22,7 +22,7 @@ Rectangle {
     color: "transparent"
     property string uk_version: ""
     property string updateTime: "2013-09-12"
-    property string status: qsTr("检查更新")
+    property string status: qsTr("check update")//检查更新
     Component.onCompleted: {
 
     }
@@ -38,7 +38,7 @@ Rectangle {
         Text {
             color: "white"
             font.pixelSize: 12
-            text: qsTr("主版本:" + uk_version)
+            text: qsTr("main version:" + uk_version)//主版本:
         }
     }
 

@@ -23,9 +23,9 @@ Item {
     id:root
     width: parent.width
     height: 435
-    property string btn_text: qsTr("开始扫描")
-    property string title: qsTr("清理浏览器登录信息,保护个人隐私")
-    property string description: qsTr("清理上网时留下的登录信息,目前仅支持Firefox浏览器")
+    property string btn_text: qsTr("Start scanning")//开始扫描
+    property string title: qsTr("Clean the login information and protect personal privacy")//清理浏览器登录信息,保护个人隐私
+    property string description: qsTr("Clean up the login information, support Firefox and Chromium browser")//清理上网时留下的登录信息,支持Firefox和Chromium浏览器
     property string btn_flag: "cookies_scan"
     property string btn_flag2: "cookies_scanc"
 //    property string work_result: ""
@@ -132,7 +132,7 @@ Item {
                 num++;
             }
             else {
-                chromiumModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "个Cookie"});
+                chromiumModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "Cookie"});
                 systemdispatcher.set_cookies_args(splitlist[0]);
             }
         }
@@ -310,8 +310,8 @@ Item {
                 ListTitle {
                     id: firefoxTitle
                     imageSource: "../img/toolWidget/cookies.png"
-                    itemTitle: qsTr("清理Firefox保存的Cookies")
-                    detailstr: qsTr("清理Firefox浏览器自动保存的登录信息(Cookies)")
+                    itemTitle: qsTr("Clean Firefox's Cookies")//清理Firefox保存的Cookies
+                    detailstr: qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")//清理Firefox浏览器自动保存的登录信息(Cookies)
                     sub_num: root.firefoxNum
                     arrow_display: root.deleget_arrow
                     flag: "firefox"
@@ -359,14 +359,15 @@ Item {
 //                                            console.log("yyyyyy");
                                             sessiondispatcher.tellNullToListTitle("firefox", true);
                                             root.deleget_arrow=0;
-                                            sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                                            //友情提示      扫描内容为空，不再执行清理！
+                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                                         }
                                         else if(root.null_flag == false)
                                         {
 //                                            console.log("uuuuuu");
                                             sessiondispatcher.tellNullToListTitle("firefox", false);
                                             root.deleget_arrow = 1;
-                                            toolkits.alertMSG(qsTr("扫描完成！"), mainwindow.pos.x, mainwindow.pos.y);
+                                            toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
                                         }
                                     }
                                     else if (root.btn_flag == "cookies_work") {
@@ -384,7 +385,7 @@ Item {
                                     }
                                 }
                                 else
-                                    sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
                     }
@@ -400,9 +401,9 @@ Item {
                 //chromium
                 ListTitle {
                     id: chromiumTitle
-                    imageSource: "../img/toolWidget/cookies.png"
-                    itemTitle: qsTr("清理Chromium保存的Cookies")
-                    detailstr: qsTr("清理Chromium浏览器自动保存的登录信息(Cookies)")
+                    imageSource: "../img/toolWidget/chrome.png"
+                    itemTitle: qsTr("Clean Chromium's Cookies")//清理Chromium保存的Cookies
+                    detailstr: qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")//清理Chromium浏览器自动保存的登录信息(Cookies)
                     sub_num: root.chromiumNum
                     arrow_display: root.deleget_arrow2
                     flag: "chromium"
@@ -449,7 +450,8 @@ Item {
 //                                            console.log("iiiiiiiiiii");
                                             sessiondispatcher.tellNullToListTitle("chromium", true);
                                             root.deleget_arrow2=0;
-                                            sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                                            //友情提示      扫描内容为空，不再执行清理！
+                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                                         }
                                         else if(root.null_flag2 == false)
                                         {
@@ -475,7 +477,7 @@ Item {
                                     }
                                 }
                                 else
-                                    sessiondispatcher.showWarningDialog(qsTr("友情提示："), qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
                     }

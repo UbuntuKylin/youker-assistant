@@ -30,8 +30,8 @@ Rectangle {
 //    property int cursor_size: 24
     property string document_font: "Helvetica"
     property bool document_font_flag: false
-    property string actiontitle: qsTr("文档字体设置")
-    property string actiontext: qsTr("根据您的喜好设置文档字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。")
+    property string actiontitle: qsTr("Document font settings")//文档字体设置
+    property string actiontext: qsTr("According to your preferences set document fonts, click 'default settings' button, can revert the corresponding font to the default font.")//根据您的喜好设置文档字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -102,7 +102,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: qsTr("文档字体设置")
+            text: qsTr("Document font settings")//文档字体设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -128,7 +128,7 @@ Rectangle {
         Common.Label {
             id: documentfontlabel
             width: 110
-            text: qsTr("当前文档字体:")
+            text: qsTr("Current document font:")//当前文档字体:
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -155,7 +155,7 @@ Rectangle {
         Common.Button {
             id: docufontBtn
             hoverimage: "blue4.png"
-            text: qsTr("更换字体")
+            text: qsTr("Change font")//更换字体
             fontcolor: "#086794"
             width: 105
             height: 30
@@ -163,7 +163,7 @@ Rectangle {
         }
         Common.Button {
             hoverimage: "blue2.png"
-            text: qsTr("恢复默认")
+            text: qsTr("Restore default")//恢复默认
             width: 105
             height: 30
             onClicked: {
@@ -172,8 +172,10 @@ Rectangle {
                     sessiondispatcher.restore_default_font_signal("documentfont_default");
                     statusImage.visible = true;
                 }
-                else
-                    sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("您系统的当前文档字体已经为默认字体！"), mainwindow.pos.x, mainwindow.pos.y);
+                else {
+                    //友情提示：      您系统的当前文档字体已经为默认字体！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's current document font is the default!"), mainwindow.pos.x, mainwindow.pos.y);
+                }
             }
         }
         Timer {

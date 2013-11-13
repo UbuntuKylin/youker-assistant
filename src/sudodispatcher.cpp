@@ -190,7 +190,8 @@ void SudoDispatcher::handlerGetSoftwareListStatus(QStringList statusDict) {
 }
 
 void SudoDispatcher::showPasswdDialog(int window_x, int window_y) {
-    AuthDialog *authdialog = new AuthDialog(QObject::tr("提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。"));
+    //提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。
+    AuthDialog *authdialog = new AuthDialog(tr("Tip: please input password of current user to start server, make it work normally."));
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     authdialog->move(this->alert_x, this->alert_y);
@@ -275,9 +276,10 @@ void SudoDispatcher::getAppListForDisPlay() {
         emit sendAppListToQML(appList);
     }
     else {
+        //警告   没有找到软件列表文件！
         QMessageBox::warning(NULL,
-                             QObject::tr("警告"),
-                             QObject::tr("没有找到软件列表文件！"),
+                             tr("Warning"),
+                             tr("No find the softlist file!"),
                              QMessageBox::Ok);
     }
 }
@@ -294,9 +296,10 @@ void SudoDispatcher::getAppInfo(QString flag) {
         config->sync();
     }
     else {
+        //警告   没有找到软件列表文件！
         QMessageBox::warning(NULL,
-                             QObject::tr("警告"),
-                             QObject::tr("没有找到软件列表文件！"),
+                             tr("Warning"),
+                             tr("No find the softlist file!"),
                              QMessageBox::Ok);
     }
 }

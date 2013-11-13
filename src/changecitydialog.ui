@@ -16,9 +16,9 @@
   <widget class="QLabel" name="titleLabel">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>120</x>
      <y>7</y>
-     <width>71</width>
+     <width>91</width>
      <height>21</height>
     </rect>
    </property>
@@ -26,7 +26,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>更换城市</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change City&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -48,7 +48,7 @@
     </size>
    </property>
    <property name="text">
-    <string>城市列表：</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;City List:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
@@ -94,7 +94,7 @@
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>取消</string>
+    <string>Quit</string>
    </property>
   </widget>
   <widget class="QPushButton" name="okBtn">
@@ -111,7 +111,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>完成</string>
+    <string>OK</string>
    </property>
   </widget>
   <widget class="QLabel" name="btn_close">

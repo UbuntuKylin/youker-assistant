@@ -40,7 +40,7 @@
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>确定</string>
+    <string>OK</string>
    </property>
   </widget>
   <widget class="QLabel" name="displaylabel">
@@ -72,7 +72,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     </rect>
    </property>
    <property name="text">
-    <string>服务提醒：</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Service reminder:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="closeButton">
@@ -89,7 +89,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>取消</string>
+    <string>Quit</string>
    </property>
   </widget>
   <widget class="QFrame" name="frame">

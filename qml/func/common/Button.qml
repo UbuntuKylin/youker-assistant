@@ -44,16 +44,16 @@ Item {
                         btn.enabled=true;
                         if (setbtn_flag == "onekey") {
                             btnImg.source = "../../img/icons/green3.png"
-                            displaytext.text = qsTr("一键清理");
+                            displaytext.text = qsTr("A key to clean up");//一键清理
                         }
                     }
                     else if (msg == "u" || msg == "c" || msg == "h" || msg == "k") {
                          btn.enabled=true;
-                         displaytext.text = qsTr("正在清理...");
+                         displaytext.text = qsTr("Cleaning up...");//正在清理...
                     }
                     else if (msg == "o") {
                         btn.enabled=true;
-                        displaytext.text = qsTr("再次清理");
+                        displaytext.text = qsTr("Clean again");//再次清理
                     }
                  }
           }
@@ -67,15 +67,15 @@ Item {
                 if (msg == "") {
                      btn.enabled=true;
                     btnImg.source = "../../img/icons/green1.png"
-                    displaytext.text = qsTr("一键清理");
+                    displaytext.text = qsTr("A key to clean up");//一键清理
                 }
                 else if (msg == "u" || msg == "c" || msg == "h" || msg == "k") {
                      btn.enabled=true;
-                     displaytext.text = qsTr("正在清理...");
+                     displaytext.text = qsTr("Cleaning up...");//正在清理...
                 }
                 else if (msg == "o") {
                     btn.enabled=true;
-                    displaytext.text = qsTr("再次清理");
+                    displaytext.text = qsTr("Clean again");//再次清理
                 }
             }
         }

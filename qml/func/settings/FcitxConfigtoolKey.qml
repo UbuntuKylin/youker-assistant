@@ -10,8 +10,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: qsTr("小企鹅输入法外观配置")
-    property string actiontext: qsTr("可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置。")
+    property string actiontitle: qsTr("Fcitx appearance configuration")//小企鹅输入法外观配置
+    property string actiontext: qsTr("You can set skin you like, click 'Apply' to complete the setup, click 'Previous' to return to the previous interface.")//可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置。
     property int flagCheck: 1
     property int flag_i: 0
     property string h_fcitxSkinImage: ""
@@ -112,7 +112,7 @@ Rectangle {
     //选择皮肤
     ListModel {
         id: skinModel
-        ListElement {skinTitle: ""}
+//        ListElement {skinTitle: ""}
     }
 
     Connections {
@@ -136,7 +136,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: qsTr("皮肤设置")
+            text: qsTr("Skin settings")//皮肤设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -160,7 +160,7 @@ Rectangle {
         Common.CheckBox{
             id:enableSkinBox
             anchors.verticalCenter: parent.verticalCenter
-            titleName: qsTr("使用皮肤")
+            titleName: qsTr("Use skin")//使用皮肤
             onCheckedChanged: {
                 if(flagCheck == 1)
                 {
@@ -238,7 +238,7 @@ Rectangle {
         Common.CheckBox{
             id:enableHotKeyBox
             anchors.verticalCenter: parent.verticalCenter
-            titleName: qsTr("更换字体")
+            titleName: qsTr("Change font")//更换字体
             onCheckedChanged: {
                 if(enableHotKeyBox.checked == false)
                 {
@@ -255,7 +255,7 @@ Rectangle {
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
-                text: qsTr("大小")
+                text: qsTr("Size")//大小
             }
             Row{
                 spacing: 10
@@ -299,7 +299,7 @@ Rectangle {
            font.pixelSize: 12
            color: "#7a7a7a"
            anchors.verticalCenter: parent.verticalCenter
-           text: qsTr("字体设置")
+           text: qsTr("Font settings")//字体设置
        }
        Common.Button {
             id: fontStyleBtn

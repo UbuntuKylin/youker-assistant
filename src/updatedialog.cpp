@@ -31,7 +31,7 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     //QLabel自动换行
     ui->displaylabel->setWordWrap(true);
-    ui->displaylabel->setText(tr("没有找到该软件，请尝试更新软件源。"));
+    ui->displaylabel->setText(tr("No find the software, please try to update softlist."));//没有找到该软件，请尝试更新软件源。
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(update_software_source()));
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(hide()));
 }

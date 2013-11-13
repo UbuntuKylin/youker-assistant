@@ -45,7 +45,7 @@ Item {
              id: cancelBtn
              visible: toolbar.showok
              hoverimage: "gray1.png"//../../img/icons/
-             text: qsTr("取消")
+             text: qsTr("Quit")//取消
              fontcolor:"#929292"
              fontsize: 13
              width: 94; height: 29
@@ -59,7 +59,7 @@ Item {
             id: gobackBtn
             visible: toolbar.showok
             hoverimage: "gray1.png"//../../img/icons/
-            text: qsTr("上一步")
+            text: qsTr("Previous")//上一步
             fontcolor:"#929292"
             fontsize: 13
             width: 94; height: 29
@@ -68,7 +68,7 @@ Item {
          Common.Button {
              id: continueBtn
              hoverimage: "gray1.png"//../../img/icons/
-             text: qsTr("下一步")
+             text: qsTr("Next")//下一步
              fontcolor:"#929292"
              fontsize: 13
              width: 94; height: 29
