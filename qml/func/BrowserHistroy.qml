@@ -218,7 +218,7 @@ Item {
                     states: [
                         State {
                             name: "BrowserWork"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan")+ browserstatus_num + qsTr("records)")}//扫描到     条记录
+                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan")+ browserstatus_num + qsTr("records)")}//（扫描到     条记录）
                             PropertyChanges { target: cacheBtn; text:qsTr("Start cleaning")}//开始清理
                             PropertyChanges { target: root; btn_flag: "history_work" }
                             PropertyChanges { target: browserstatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
@@ -239,7 +239,7 @@ Item {
                         },
                         State {
                             name: "BrowserWorkFinish"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ browserstatus_num + qsTr("records)") }//已清理     条记录
+                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ browserstatus_num + qsTr("records)") }//（已清理     条记录）
                             PropertyChanges { target: cacheBtn; text:qsTr("Start scanning")}//开始扫描
                             PropertyChanges { target: root; btn_flag: "history_scan" }
                             PropertyChanges { target: browserstatus; visible: true; iconName: "green.png"; text: qsTr("Completed")}//已完成

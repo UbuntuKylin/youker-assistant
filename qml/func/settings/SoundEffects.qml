@@ -36,8 +36,8 @@ Rectangle {
     property string default_sound: ""
     property string init_sound: ""
     property bool init_sound_flag: false
-    property string actiontitle: qsTr("声音效果设置")
-    property string actiontext: qsTr("选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。")
+    property string actiontitle: qsTr("Sound effect settings")//声音效果设置
+    property string actiontext: qsTr("Select a sound theme, click 'OK' button; selected music file name in the list box, do something such as audition, substitution and reduction.")//选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。
     property int musiclist_num: 0
 
     property string selectedmusic: ""
@@ -139,7 +139,7 @@ Rectangle {
             left: parent.left;leftMargin: 60
         }
         Text{
-            text: qsTr("声音主题：")
+            text: qsTr("Sound theme:")//声音主题：
             font.bold:true;color: "#383838"
             font.pointSize: 10
         }
@@ -155,7 +155,7 @@ Rectangle {
             Common.Button {
                 width: 95;height: 30
                 hoverimage: "green2.png"
-                text: qsTr("确定")
+                text: qsTr("OK")//确定
                 onClicked: {
                     if (soundeffectspage.default_sound != iconcombo.selectedText) {
                         soundeffectspage.default_sound = iconcombo.selectedText;
@@ -178,7 +178,7 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: qsTr("恢复默认")
+                text: qsTr("Restore default")//恢复默认
                 width: 95
                 height: 30
                 onClicked: {
@@ -187,8 +187,10 @@ Rectangle {
                         systemdispatcher.restore_all_sound_file_qt(soundeffectspage.init_sound);
                         statusImage.visible = true;
                     }
-                    else
-                        sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("当前主题已经为默认主题!"), mainwindow.pos.x, mainwindow.pos.y);
+                    else {
+                        //友情提示：       当前主题已经为默认主题!
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The current theme has been the default theme!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
                 }
             }
             Timer {
@@ -213,7 +215,7 @@ Rectangle {
         Row {
             spacing: 340
             Text{
-                text: qsTr("程序事件：")
+                text: qsTr("Program events:")//程序事件：
                 font.bold:true
                 color: "#383838"
                 font.pointSize: 10
@@ -225,19 +227,19 @@ Rectangle {
                     id: listen
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: qsTr("试听")
+                    text: qsTr("Listen")//试听
                 }
                 Text {
                     id: select
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: qsTr("替换")
+                    text: qsTr("Replace")//替换
                 }
                 Text {
                     id: revoke
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: qsTr("还原")
+                    text: qsTr("Restore")//还原
                 }
             }
 
@@ -452,14 +454,14 @@ Rectangle {
         Column{
             spacing: 5
             Text{
-                text:qsTr("自定义声音主题")
+                text:qsTr("Custom sound theme")//自定义声音主题
                 color: "#383838"
                 font.pointSize: 10
                 font.bold: true
             }
             Text {
                 width: soundeffectspage.width- 665 - 52 - 25
-                text: qsTr("暂不支持中文路径下的音频文件。")
+                text: qsTr("Not to support audio file of the Chinese path.")//暂不支持中文路径下的音频文件。
 //                text: "您能根据喜好组合成专属声音主题"
                 wrapMode: Text.WrapAnywhere
                 font.pixelSize: 10
@@ -481,7 +483,7 @@ Rectangle {
         }
         spacing: 20
         Text {
-            text:qsTr("声音设置:")
+            text:qsTr("Sound settings:")//声音设置:
             color: "#383838"
             font.pointSize: 10
             font.bold: true
@@ -489,7 +491,7 @@ Rectangle {
         Row {
             spacing: 20
             Text{
-                text:qsTr("系统登录:")
+                text:qsTr("System login:")//系统登录:
                 font.pointSize: 10
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter

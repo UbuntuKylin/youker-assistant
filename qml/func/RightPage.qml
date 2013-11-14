@@ -33,12 +33,12 @@ Rectangle {
     //更新列表
     function updateList() {
         clearModel.clear();//清空
-        clearModel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("坏点检测"), "flag": "CheckScreen"});
-        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("桌面图标"), "flag": "DesktopiconSet"});
-        clearModel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("开机动画"), "flag": "BootAnimation"});
-        clearModel.append({"icon": "../img/icons/systemsound.png", "name": qsTr("系统声音"), "flag": "SoundEffects"});
-        clearModel.append({"icon": "../img/icons/mouse.png", "name": qsTr("鼠标指针"), "flag": "MousePointer"});
-        clearModel.append({"icon": "../img/icons/touchpad.png", "name": qsTr("触摸板"), "flag": "TouchpadSet"});
+        clearModel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("Check Screen"), "flag": "CheckScreen"});//坏点检测
+        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("Desktop icon"), "flag": "DesktopiconSet"});//桌面图标
+        clearModel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("Boot Animation"), "flag": "BootAnimation"});//开机动画
+        clearModel.append({"icon": "../img/icons/systemsound.png", "name": qsTr("Sound Effects"), "flag": "SoundEffects"});//系统声音
+        clearModel.append({"icon": "../img/icons/mouse.png", "name": qsTr("Mouse Pointer"), "flag": "MousePointer"});//鼠标指针
+        clearModel.append({"icon": "../img/icons/touchpad.png", "name": qsTr("Touchpad"), "flag": "TouchpadSet"});//触摸板
     }
 
     ListModel {
@@ -285,7 +285,7 @@ Rectangle {
         SetWord {
             id: helplabel
 //            anchors.horizontalCenter: parent.horizontalCenter
-            wordname: "论坛求助"
+            wordname: qsTr("Forum for help")//论坛求助
             width: 50
             height: 20
             flag: "BBS"
@@ -293,7 +293,7 @@ Rectangle {
         SetWord {
             id: versionlabel
 //            anchors.horizontalCenter: parent.horizontalCenter
-            wordname: "新版本特性"
+            wordname: qsTr("New version")//新版本特性
             width: 60
             height: 20
             flag: "VersionFeature"
@@ -301,7 +301,7 @@ Rectangle {
         SetWord {
             id: buglabel
 //            anchors.horizontalCenter: parent.horizontalCenter
-            wordname: "Bug提交"
+            wordname: qsTr("Report bug")//Bug提交
             width: 40
             height: 20
             flag: "BUG"

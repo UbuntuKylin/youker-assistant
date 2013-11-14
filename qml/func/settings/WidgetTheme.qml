@@ -22,8 +22,8 @@ Rectangle {
     id: widgetthemepage
     width: parent.width
     height: 475
-    property string actiontitle: qsTr("窗口主题设置")
-    property string actiontext: qsTr("选中您想设置的主题，点击确定按钮更换主题；优客助手启动时页面上的第一个主题为系统当前使用的主题。")
+    property string actiontitle: qsTr("Window theme settings")//窗口主题设置
+    property string actiontext: qsTr("Choose theme you want, click the 'OK' button to change; by default, the first theme on the page is the current theme.")//选中您想设置的主题，点击确定按钮更换主题；优客助手启动时页面上的第一个主题为系统当前使用的主题。
     property string init_theme: ""
     property string selected_theme: ""
     property bool listorgrid: false

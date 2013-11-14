@@ -22,9 +22,9 @@ Item {
     id:root
     width: parent.width
     height: 435//475
-    property string btn_text: qsTr("开始扫描")
-    property string title: qsTr("清理同名文件")
-    property string description: qsTr("清理用户指定目录下的同名文件，节省磁盘空间")
+    property string btn_text: qsTr("Start scanning")//开始扫描
+    property string title: qsTr("Clean up the file of the same name")//清理同名文件
+    property string description: qsTr("Clear user specified directory files with the same name, save disk space")//清理用户指定目录下的同名文件，节省磁盘空间
     property string btn_flag: "samenamefile_scan"
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
@@ -68,9 +68,10 @@ Item {
             }
             root.sub_num -= num;
             mainModel.clear();
-            mainModel.append({"itemTitle": qsTr("系统瘦身"),
+            //系统瘦身     清理同名文件,让系统更瘦
+            mainModel.append({"itemTitle": qsTr("System slim"),
                              "picture": "../img/toolWidget/deb-min.png",
-                             "detailstr": qsTr("清理同名文件,让系统更瘦"),
+                             "detailstr": qsTr("Clean up the file of the same name, make the system more thin"),
                              "flags": "clear_samenamefile",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -370,14 +371,14 @@ Item {
     states: [
         State {
             name: "SamenameFileWork"
-            PropertyChanges { target: label; visible: true; text: qsTr("扫描完成")}
-            PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/text:qsTr("开始清理") }
+            PropertyChanges { target: label; visible: true; text: qsTr("Scan completed")}//扫描完成
+            PropertyChanges { target: bitButton; /*hoverimage: "clear-start.png"*/text:qsTr("Start cleaning") }//开始清理
             PropertyChanges { target: root; btn_flag: "samenamefile_work" }
         },
         State {
             name: "SamenameFileWorkFinish"
-            PropertyChanges { target: label; visible: true; text: root.work_result + qsTr("清理完毕！") }
-            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:qsTr("开始扫描") }
+            PropertyChanges { target: label; visible: true; text: root.work_result + qsTr("Cleared") }//清理完毕！
+            PropertyChanges { target: bitButton; /*hoverimage: "scan-start.png"*/text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btn_flag: "samenamefile_scan" }
             PropertyChanges { target: statusImage; source: "../img/toolWidget/finish.png"}
         }

@@ -23,7 +23,7 @@ Item {
     id:root
     width: parent.width
     height: 435//475
-    property string btn_text: qsTr("Start cleanin")//开始清理
+    property string btn_text: qsTr("Start cleaning")//开始清理
     property string title: qsTr("Find the most large files which take up disk space quickly")//快速找出最占用磁盘空间的大文件
     property string description: qsTr("Delete unwanted large files, free more disk space.")//删除占用磁盘空间的无用大文件，释放更多磁盘空间。
     property string scope_desc: qsTr("The file size is in the range of 1M--20480M, not to support the Chinese path.")//文件的大小范围为1M--20480M，暂不支持中文路径。

@@ -24,9 +24,9 @@ Item {
     id:root
     width: parent.width
     height: 435//420//340
-    property string btn_text: qsTr("开始扫描")
-    property string title: qsTr("卸载不必要的程序")
-    property string description: qsTr("清理软件安装过程中安装的依赖程序，提高系统性能")
+    property string btn_text: qsTr("Start scanning")//开始扫描
+    property string title: qsTr("Uninstall unnecessary procedures")//卸载不必要的程序
+    property string description: qsTr("Clean installed dependent program, to improve system performance")//清理软件安装过程中安装的依赖程序，提高系统性能
     property string btn_flag: "package_scan"
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
@@ -72,9 +72,10 @@ Item {
             if(sub_num!=0)
                 check_flag=true;
             mainModel.clear();
-            mainModel.append({"itemTitle": qsTr("卸载不必要的程序"),
+            //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
+            mainModel.append({"itemTitle": qsTr("Uninstall unnecessary procedures"),
                              "picture": "../img/toolWidget/deb-min.png",
-                             "detailstr": qsTr("用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦"),
+                             "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin"),
                              "flags": "clear_cookies",
                             "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -112,7 +113,7 @@ Item {
             if (btn_flag == "package_work") {
 //                titleBar.work_result = msg;
                 titleBar.state = "UnneedWorkError";
-                toolkits.alertMSG(qsTr("清理出现异常！"), mainwindow.pos.x, mainwindow.pos.y);
+                toolkits.alertMSG(qsTr("Exception occurred when Clean!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
             }
 
          }
@@ -124,7 +125,7 @@ Item {
                 else if (msg == "package") {
 //                    root.work_result = msg;
                     root.state = "UnneedWorkFinish";
-                    toolkits.alertMSG(qsTr("清理完毕！"), mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     unneed_signal("UnneedWork");
                 }
             }
@@ -179,7 +180,7 @@ Item {
             id: statusImage
             visible: false
             iconName: "yellow.png"
-            text: qsTr("未完成")
+            text: qsTr("Unfinished")//未完成
             anchors.verticalCenter: parent.verticalCenter
         }
         Common.Button {
@@ -205,13 +206,14 @@ Item {
                             if(root.null_flag == true) {
                                 root.state = "UnneedWorkEmpty";
                                 deleget_arrow=0;
-                                sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                                //友情提示：    扫描内容为空，不再执行清理！
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                             else if(root.null_flag == false)
                             {
                                 root.state = "UnneedWork";
                                 deleget_arrow=1;
-                                toolkits.alertMSG(qsTr("扫描完成！"), mainwindow.pos.x, mainwindow.pos.y);
+                                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
                             }
                         }
                         else if (btn_flag == "package_work") {
@@ -219,8 +221,10 @@ Item {
                             deleget_arrow=1;
                         }
                     }
-                    else
-                        sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                    else {
+                        //友情提示：      对不起，您没有选择需要清理的项，请确认！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
                 }
                 else {
                     sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
@@ -239,13 +243,14 @@ Item {
                             if(root.null_flag == true) {
                                 root.state = "UnneedWorkEmpty";
                                 deleget_arrow=0;
-                                sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                                //友情提示：       扫描内容为空，不再执行清理！
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                             else if(root.null_flag == false)
                             {
                                 root.state = "UnneedWork";
                                 deleget_arrow=1;
-                                toolkits.alertMSG(qsTr("扫描完成！"), mainwindow.pos.x, mainwindow.pos.y);
+                                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
                             }
                         }
                         else if (btn_flag == "package_work") {
@@ -253,8 +258,10 @@ Item {
                             deleget_arrow=1;
                         }
                     }
-                    else
-                        sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                    else {
+                        //友情提示：       对不起，您没有选择需要清理的项，请确认！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
                 }
 
             }
@@ -326,31 +333,31 @@ Item {
     states: [
         State {
             name: "UnneedWork"
-            PropertyChanges { target: bitButton; text:qsTr("开始清理") }
+            PropertyChanges { target: bitButton; text:qsTr("Start cleaning") }//开始清理
             PropertyChanges { target: root; btn_flag: "package_work" }
-            PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: qsTr("未完成")}
+            PropertyChanges { target: statusImage; visible: true; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
         },
         State {
             name: "UnneedWorkAGAIN"
-            PropertyChanges { target: bitButton; text:qsTr("开始扫描") }
+            PropertyChanges { target: bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; visible: false }
         },
         State {
             name: "UnneedWorkError"
-            PropertyChanges { target: bitButton; text:qsTr("开始扫描") }
+            PropertyChanges { target: bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: qsTr("出现异常")}
+            PropertyChanges { target: statusImage; visible: true; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
         },
         State {
             name: "UnneedWorkFinish"
-            PropertyChanges { target: bitButton; text:qsTr("开始扫描") }
+            PropertyChanges { target: bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btn_flag: "package_scan" }
-            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: qsTr("已完成")}
+            PropertyChanges { target: statusImage; visible: true; iconName: "green.png"; text: qsTr("Completed")}//已完成
         },
         State {
             name: "UnneedWorkEmpty"
-            PropertyChanges { target: bitButton; text:qsTr("开始扫描")}
+            PropertyChanges { target: bitButton; text:qsTr("Start scanning")}//开始扫描
             PropertyChanges { target: root; btn_flag: "package_scan" }
             PropertyChanges { target: statusImage; visible: false}
         }

@@ -23,10 +23,10 @@ Item {
     id:root
     width: parent.width
     height: 435//420//340
-    property string sof_title: qsTr("软件中心缓存深度清理")
-    property string sof_description: qsTr("深度清理软件中心缓存,节省磁盘空间")
+    property string sof_title: qsTr("Software Center buffer depth cleaning")//软件中心缓存深度清理
+    property string sof_description: qsTr("Deep cleaning software center cache, to save disk space")//深度清理软件中心缓存,节省磁盘空间
     property string sof_btn_flag: "software_scan"
-    property string btn_text: qsTr("开始扫描")
+    property string btn_text: qsTr("Start scanning")//开始扫描
     property int sof_sub_num: 0
     property string sof_work_result: ""
     property int sof_num:sof_sub_num
@@ -76,9 +76,10 @@ Item {
             if(sof_num!=0)
                 sof_check_flag=true;
             sof_mainModel.clear();
-            sof_mainModel.append({"itemTitle": qsTr("软件中心缓存清理"),
+            //软件中心缓存清理     用户可以根据扫描结果选择性地清理软件中心缓存,缓存路径为:
+            sof_mainModel.append({"itemTitle": qsTr("Software Center buffer cleaning"),
                              "picture": "../img/toolWidget/software-min.png",
-                             "detailstr": qsTr("用户可以根据扫描结果选择性地清理软件中心缓存,缓存路径为:") + sessiondispatcher.getHomePath() + "/.cache/software-center/",
+                             "detailstr": qsTr("User can selectively cleaning software center cache according to the scanning result, cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/",
                              "flags": "clear_software",
                              "attributes":
                                  [{"subItemTitle": "Cookies1"},
@@ -126,7 +127,7 @@ Item {
                 if (msg == "software") {
                     root.sof_work_result = msg;
                     root.state = "SoftwareWorkError";
-                    toolkits.alertMSG(qsTr("清理出现异常！"), mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("Exception occurred when Clean!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
          }
@@ -138,7 +139,7 @@ Item {
                 else if (msg == "software") {
                     root.sof_work_result = msg;
                     root.state = "SoftwareWorkFinish";
-                    toolkits.alertMSG(qsTr("清理完毕！"), mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     software_signal("SoftwareWork");
                 }
             }
@@ -188,7 +189,7 @@ Item {
             id: sof_statusImage
             visible: false
             iconName: "yellow.png"
-            text: qsTr("未完成")
+            text: qsTr("Unfinished")//未完成
             anchors.verticalCenter: parent.verticalCenter
         }
         Common.Button {
@@ -209,13 +210,14 @@ Item {
                      if(root.sof_null_flag == true) {
                         root.state = "SoftwareWorkEmpty";
                          deleget_arrow=0;
-                         sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("扫描内容为空，不再执行清理！"), mainwindow.pos.x, mainwindow.pos.y);
+                         //友情提示：         扫描内容为空，不再执行清理！
+                         sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else if(root.sof_null_flag == false)
                      {
                         root.state = "SoftwareWork";
                          deleget_arrow=1;
-                         toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
+                         toolkits.alertMSG("Scan completed!", mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
                      }
                  }
                  else if (sof_btn_flag == "software_work") {
@@ -223,8 +225,10 @@ Item {
                      deleget_arrow=1;
                  }
                 }
-                else
-                    sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("对不起，您没有选择需要清理的项，请确认！"), mainwindow.pos.x, mainwindow.pos.y);
+                else {
+                    //友情提示：           对不起，您没有选择需要清理的项，请确认！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                }
             }
         }
         SetBtn {
@@ -292,31 +296,31 @@ Item {
     states: [
         State {
             name: "SoftwareWork"
-             PropertyChanges { target: sof_bitButton; text:qsTr("开始清理") }
+             PropertyChanges { target: sof_bitButton; text:qsTr("Start cleaning") }//开始清理
             PropertyChanges { target: root; sof_btn_flag: "software_work" }
-            PropertyChanges { target: sof_statusImage; visible: true; iconName: "yellow.png"; text: qsTr("未完成")}
+            PropertyChanges { target: sof_statusImage; visible: true; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
         },
         State {
             name: "SoftwareWorkAGAIN"
-            PropertyChanges { target: sof_bitButton; text:qsTr("开始扫描") }
+            PropertyChanges { target: sof_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
             PropertyChanges { target: sof_statusImage; visible: false }
         },
         State {
             name: "SoftwareWorkError"
-            PropertyChanges { target: sof_bitButton; text:qsTr("开始扫描") }
+            PropertyChanges { target: sof_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; visible: true; iconName: "red.png"; text: qsTr("出现异常")}
+            PropertyChanges { target: sof_statusImage; visible: true; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
         },
         State {
             name: "SoftwareWorkFinish"
-            PropertyChanges { target: sof_bitButton; text:qsTr("开始扫描") }
+            PropertyChanges { target: sof_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
-            PropertyChanges { target: sof_statusImage; visible: true; iconName: "green.png"; text: qsTr("已完成")}
+            PropertyChanges { target: sof_statusImage; visible: true; iconName: "green.png"; text: qsTr("Completed")}//已完成
         },
         State {
             name: "SoftwareWorkEmpty"
-            PropertyChanges { target: sof_bitButton; text:qsTr("开始扫描") }
+            PropertyChanges { target: sof_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
             PropertyChanges { target: sof_statusImage; visible: false}
         }

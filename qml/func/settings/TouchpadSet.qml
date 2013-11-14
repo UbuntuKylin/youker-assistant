@@ -29,8 +29,8 @@ Rectangle {
     property color fontColor: "black"
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
-    property string actiontitle: qsTr("触摸板设置")
-    property string actiontext: qsTr("通过调整您触摸板的相关设置，使操作更加便捷。")
+    property string actiontitle: qsTr("Touchpad settings")//触摸板设置
+    property string actiontext: qsTr("Adjust touchpad settings, make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -81,7 +81,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: qsTr("开关设置")
+            text: qsTr("Switch setting")//开关设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -107,7 +107,7 @@ Rectangle {
         spacing: 40
         Common.Label {
             width: 110
-            text: qsTr("启用/禁用触摸板:")
+            text: qsTr("Enable/disable touchpad:")//启用/禁用触摸板:
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -137,7 +137,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: qsTr("滚动条设置")
+            text: qsTr("Scrollbar settings")//滚动条设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -164,7 +164,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("滚动条类型:")
+                text: qsTr("Scrollbar type:")//滚动条类型:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -178,7 +178,7 @@ Rectangle {
                     spacing: 100
                     Common.CheckBox {
                         id:overlay
-                        titleName: qsTr("特色类型") //overlay模式
+                        titleName: qsTr("overlay") //overlay模式        特色类型
                         checked: (touchpadsetpage.scrollbars_mode == "overlay-auto") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -189,7 +189,7 @@ Rectangle {
                     }
                     Common.CheckBox {
                         id: legacy
-                        titleName: qsTr("标准类型")  //legacy模式
+                        titleName: qsTr("legacy")  //legacy模式       标准类型
                         checked: (touchpadsetpage.scrollbars_mode == "normal") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -209,7 +209,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("触摸板滚动触发方式:")
+//                text: qsTr("触摸板滚动触发方式:")/触摸板滚动触发方式:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -223,7 +223,7 @@ Rectangle {
                     spacing: 100
                     Common.CheckBox {
                         id:edge
-                        titleName: qsTr("边缘触发")//"edge模式"
+                        titleName: qsTr("edge")//"edge模式"        边缘触发
                         checked: (touchpadsetpage.touchscrolling_mode == "edge-scrolling") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -234,7 +234,7 @@ Rectangle {
                     }
                     Common.CheckBox {
                         id: twofinger
-                        titleName: qsTr("双指触发")//"twofinger模式"
+                        titleName: qsTr("twofinger")//"twofinger模式"       双指触发
                         checked: (touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -253,7 +253,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("触摸板横向滚动:")
+                text: qsTr("Scrollbar horizontal scrolling:")//触摸板横向滚动:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter

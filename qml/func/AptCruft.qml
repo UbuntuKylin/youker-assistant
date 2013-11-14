@@ -99,7 +99,7 @@ Item {
                 if (msg == "apt") {
                     root.apt_work_result = msg;
                     root.state = "AptWorkError";
-                    toolkits.alertMSG(qsTr("Clean the abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Exception occurred when Clean!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
          }
@@ -206,7 +206,7 @@ Item {
                      if(root.apt_null_flag == true) {
                         root.state = "AptWorkEmpty";
                          deleget_arrow=0;
-                         //友情提示      扫描内容为空，不再执行清理！
+                         //友情提示：      扫描内容为空，不再执行清理！
                         sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                      }
                      else if(root.apt_null_flag == false)

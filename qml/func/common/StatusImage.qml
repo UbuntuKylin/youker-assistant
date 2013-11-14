@@ -20,7 +20,7 @@ Rectangle {
     width: 49
     height: 20
     property string iconName: "yellow.png"
-    property string text: qsTr("未完成")
+    property string text: qsTr("Unfinished")//未完成
 
     Image {
         id: statusImg

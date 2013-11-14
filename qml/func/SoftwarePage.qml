@@ -32,8 +32,8 @@ Item {
         onNotifySourceStatusToQML: {
 //            console.log("receive update data....");
 //            console.log(cur_status);
-
-            root.source_status_text = qsTr("进度: 共") + total_items + qsTr("个项目需要更新，正在更新第") + download_items + qsTr("个");
+            //进度: 共       个项目需要更新，正在更新的个数为：
+            root.source_status_text = qsTr("Progress:") + total_items + qsTr("itmes needs to be updated, now updating is No.:") + download_items;
         }
         //下载完成
         onFinishSoftwareFetch: {
@@ -44,7 +44,7 @@ Item {
                 actionBtn.text = software.reset_text(sudodispatcher.check_pkg_status_qt(software.software_name));
                 root.source_status_text = "";
                 root.state = "SofeWareState";
-                toolkits.alertMSG("软件源更新完成！", mainwindow.pos.x, mainwindow.pos.y);
+//                toolkits.alertMSG("软件源更新完成！", mainwindow.pos.x, mainwindow.pos.y);/软件源更新完成！
             }
 //            else if(type == "down_fail") {
 //                console.log("down_fail.....");
@@ -67,23 +67,23 @@ Item {
             //得到数据，显示在进度条上
             onSendDynamicSoftwareProgressQML: {
                 if(type == "down_start") {
-                    progressTitle.text = qsTr("开始下载");
+                    progressTitle.text = qsTr("Start download");//开始下载
                     progress.value = 0;
                 }
                 else if(type == "down_pulse"){
-                    progressTitle.text = qsTr("正在下载安装包...");
+                    progressTitle.text = qsTr("Downloading package...");//正在下载安装包...
                     progress.value = ratio_sus;
                 }
                 else if(type == "down_stop") {
-                    progressTitle.text = qsTr("下载完成");
+                    progressTitle.text = qsTr("Download completed");//下载完成
                     progress.value = 100;
                 }
                 else if(type == "apt_start"){
-                    progressTitle.text = qsTr("开始");
+                    progressTitle.text = qsTr("Start");//开始
                     progress.value = 0;
                 }
                 else if(type == "apt_pulse"){
-                    progressTitle.text = qsTr("正在进行: ") + info;
+                    progressTitle.text = qsTr("The ongoing: ") + info;//正在进行:
                     progress.value = ratio_sus;
                 }
                 else if(type == "apt_stop") {
@@ -102,7 +102,7 @@ Item {
         Text {
             id: title1
             anchors.centerIn: parent
-            text: qsTr("如果太长时间没有更新完毕，可能是网络问题，可以点击左上角的返回按钮退出该界面。")
+            text: qsTr("If too long time had not finished, may be a network problem, can click the back button to exit the screen which on the upper left corner.")//如果太长时间没有更新完毕，可能是网络问题，可以点击左上角的返回按钮退出该界面。
             font.pixelSize: 12
             color: "#7a7a7a"
             font.family: "Arial"
@@ -116,7 +116,7 @@ Item {
                 bottomMargin: 10
                 horizontalCenter: parent.horizontalCenter
             }
-            text: qsTr("正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息")
+            text: qsTr("Updating software source, please wait patiently, If it is completed, there will will pop-up prompt information automatically.")//正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息
             font.pixelSize: 14
             color: "#383838"
             font.family: "Arial"
@@ -187,7 +187,7 @@ Item {
             }
             Text {
                 id: progressTitle
-                text: qsTr("软件操作进度")
+                text: qsTr("Software operation schedule")//软件操作进度
                 color: "#318d11"
                 wrapMode: Text.WrapAnywhere
                 font.pixelSize: 12
@@ -254,7 +254,7 @@ Item {
     Rectangle {
         id: software
 //        property bool checkFlag: false
-        property string useinfo: qsTr("如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。")
+        property string useinfo: qsTr("If the software is installed successfully, you can through Chinese/English name to search and start the software in Dash.")//如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。
         property string software_name: ""
         property string installed_status: "n"
         property string tm_status: "n"
@@ -263,66 +263,66 @@ Item {
         function reset_text(showtext) {
             if(showtext == "i") {
                 statusImage.source = "../img/icons/installed.png"
-                return qsTr("立即卸载");
+                return qsTr("Uninstall immediately");//立即卸载
             }
             else if(showtext == "n") {
                 statusImage.source = "../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("进入网页");
+                    return qsTr("Enter the webpage");//进入网页
                 }
                 else {
-                    return qsTr("立即安装");
+                    return qsTr("Install immediately");//立即安装
                 }
             }
             else if(showtext == "u") {
                 statusImage.source = "../img/icons/installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("进入网页");
+                    return qsTr("Enter the webpage");//进入网页
                 }
                 else {
-                    return qsTr("立即升级");
+                    return qsTr("Upgrade immediately");//立即升级
                 }
             }
             else {
                 statusImage.source = "../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("进入网页");
+                    return qsTr("Enter the webpage");//进入网页
                 }
                 else {
-                    return qsTr("未发现");
+                    return qsTr("N/A");//未发现
                 }
             }
         }
         function show_text(showtext) {
             if(showtext == "i") {
                 statusImage.source = "../img/icons/installed.png"
-                return qsTr("立即卸载");
+                return qsTr("Uninstall immediately");//立即卸载
             }
             else if(showtext == "n") {
                 statusImage.source = "../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("进入网页");
+                    return qsTr("Enter the webpage");//进入网页
                 }
                 else {
-                    return qsTr("立即安装");
+                    return qsTr("Install immediately");//立即安装
                 }
             }
             else if(showtext == "u") {
                 statusImage.source = "../img/icons/installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("进入网页");
+                    return qsTr("Enter the webpage");//进入网页
                 }
                 else {
-                    return qsTr("立即升级");
+                    return qsTr("Upgrade immediately");//立即升级
                 }
             }
             else {
                 statusImage.source = "../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("进入网页");
+                    return qsTr("Enter the webpage");//进入网页
                 }
                 else {
-                    return qsTr("未发现");
+                    return qsTr("N/A");//未发现
                 }
             }
         }
@@ -358,24 +358,24 @@ Item {
                     else {//如果软件操作后的新状态和进入该页面时的初始状态不同，说明操作是成功的，把当前状态赋值给初始状态的变量
                         software.installed_status = software.tm_status;
                         if(software.installed_status == "i") {
-                            actionBtn.text = qsTr("立即卸载");
+                            actionBtn.text = qsTr("Uninstall immediately");//立即卸载
                             statusImage.source = "../img/icons/installed.png"
                         }
                         else if(software.installed_status == "n") {
                             if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                                actionBtn.text = qsTr("进入网页");
+                                actionBtn.text = qsTr("Enter the webpage");//进入网页
                             }
                             else {
-                                actionBtn.text = qsTr("立即安装");
+                                actionBtn.text = qsTr("Install immediately");//立即安装
                             }
                             statusImage.source = "../img/icons/noinstalled.png"
                         }
                         else if(software.installed_status == "u") {
-                            actionBtn.text = qsTr("立即升级");
+                            actionBtn.text = qsTr("Upgrade immediately");//立即升级
                             statusImage.source = "../img/icons/installed.png"
                         }
                         root.state = "SofeWareState";
-                        toolkits.alertMSG(qsTr("软件操作完成！"), mainwindow.pos.x, mainwindow.pos.y);
+                        toolkits.alertMSG(qsTr("Software operation completed!"), mainwindow.pos.x, mainwindow.pos.y);//软件操作完成！
                     }
                 }
 //                else if(type == "apt_error") {
@@ -413,7 +413,7 @@ Item {
                     verticalCenter: parent.verticalCenter
                 }
                 hoverimage: "blue1.png"
-                text:"返回"
+                text: qsTr("Return")//返回
                 fontcolor: "grey"
                 fontsize: 14
                 onClicked: {
@@ -424,7 +424,7 @@ Item {
             }
             Text {
                 anchors.centerIn: parent
-                text:"详细信息"
+                text:qsTr("Detailed information")//详细信息
                 color:"grey"
                 font.bold: true
                 font.pixelSize: 14
@@ -598,7 +598,7 @@ Item {
                 }
                 Text {
                     anchors.centerIn: parent
-                    text:qsTr("软件介绍")
+                    text:qsTr("Software introduction")//软件介绍
                     color:"grey"
                     font.bold: true
                     font.pixelSize: 14
@@ -655,7 +655,7 @@ Item {
         State {
             name: "MaskLayerStateApt"
             PropertyChanges { target: masklayer2; x: 0 }
-            PropertyChanges { target: progressTitle; text: "软件操作进度" }
+            PropertyChanges { target: progressTitle; text: qsTr("Software operation schedule") }//软件操作进度
             PropertyChanges { target: progress; value: 0 }
             PropertyChanges { target: masklayer; x: (parent.width * 1.5) }
             PropertyChanges { target: software; x: (parent.width * 1.5) }

@@ -112,7 +112,7 @@ Item {
                 if (msg == "cookies") {
 //                    root.work_result = msg;
                     itemtitle.state = "CookiesWorkError";
-                    toolkits.alertMSG(qsTr("Exception occurred when Clean"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Exception occurred when Clean!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
          }

@@ -16,7 +16,6 @@
 
 import QtQuick 1.1
 import SessionType 0.1
-//import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
 Rectangle {
@@ -30,8 +29,8 @@ Rectangle {
     property int cursor_size: 24
     property string default_cursor_theme: ""
 
-    property string actiontitle: qsTr("鼠标设置")
-    property string actiontext: qsTr("更换鼠标指针主题和大小，更改设置后点击“确定”按钮进行确认。")
+    property string actiontitle: qsTr("Mouse settings")//鼠标设置
+    property string actiontext: qsTr("Replace the mouse pointer theme and size, click 'OK' button to confirm.")//更换鼠标指针主题和大小，更改设置后点击“确定”按钮进行确认。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -101,7 +100,7 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: qsTr("鼠标设置")
+            text: qsTr("Mouse settings")//鼠标设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -127,7 +126,7 @@ Rectangle {
             spacing: 20
             Text {
                 id: cursorthemelabel
-                text: qsTr("鼠标指针主题")
+                text: qsTr("Mouse pointer theme")//鼠标指针主题
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -147,7 +146,7 @@ Rectangle {
             spacing: 20
             Text {
                 id: trashlabel
-                text: qsTr("鼠标指针大小")
+                text: qsTr("Mouse pointer size")//鼠标指针大小
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -160,7 +159,7 @@ Rectangle {
                     id: smallstyle
                     checked: (mousepointerpage.cursor_size == "24") ? true : false
 //                    checked: (sessiondispatcher.get_cursor_size_qt() == "24") ? true : false
-                    titleName: qsTr("小号")//24
+                    titleName: qsTr("Small size")//24   小号
                     flag: "radio"
                     onClicked: {}
                 }
@@ -168,7 +167,7 @@ Rectangle {
                     id: bigstyle
                     checked: (mousepointerpage.cursor_size == "36") ? true : false
 //                    checked: (sessiondispatcher.get_cursor_size_qt() == "36") ? true : false
-                    titleName: qsTr("大号")//36
+                    titleName: qsTr("Big size")//36     大号
                     flag: "radio"
                     onClicked: {}
                 }
