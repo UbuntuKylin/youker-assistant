@@ -206,19 +206,21 @@ class CleanTheCookies():
         if flag in "f":
             filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
             if os.path.exists(filepathf):
-                self.daemon_obj.deb_exists_firefox("yes")
+                #self.daemon_obj.deb_exists_firefox("yes")
                 pamf = [filepathf, 'moz_cookies', 'baseDomain']
                 crufts_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
             else:
-                self.daemon_obj.deb_exists_firefox("no")
+                #self.daemon_obj.deb_exists_firefox("no")
+                return crufts_list
         if flag in "c":
             filepathc = "%s/.config/chromium/Default/Cookies" % homedir
             if os.path.exists(filepathc):
-                self.daemon_obj.deb_exists_chromium("yes")
+                #self.daemon_obj.deb_exists_chromium("yes")
                 pamc = [filepathc, 'cookies', 'host_key']
                 crufts_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
             else:
-                self.daemon_obj.deb_exists_chromium("no")
+                #self.daemon_obj.deb_exists_chromium("no")
+                return crufts_list
 
         return crufts_list
 
