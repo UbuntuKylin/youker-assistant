@@ -37,8 +37,9 @@ WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
 {
     ui->setupUi(this);
     pSettings = mSettings;
-    this->setWindowFlags(Qt::FramelessWindowHint);//去掉标题栏
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
 
     ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
     ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"

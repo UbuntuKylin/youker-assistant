@@ -40,6 +40,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
 //    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
+
+    QObject::connect(sessioniface,SIGNAL(deb_exists_firefox(QString)),this,SLOT(handler_deb_exists_firefox(QString)));
+    QObject::connect(sessioniface,SIGNAL(deb_exists_chromium(QString)),this,SLOT(handler_deb_exists_chromium(QString)));
+
     page_num = 0;
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
@@ -737,4 +741,15 @@ void SessionDispatcher::change_maincheckbox_status(QString status) {
 
 void SessionDispatcher::tellNullToListTitle(QString emptyFlag, bool status) {
     emit getNullFlag(emptyFlag, status);
+}
+
+
+//浏览器判断firefox
+void SessionDispatcher::handler_deb_exists_firefox(QString flag) {
+    emit judge_deb_exists_firefox(flag);
+}
+
+//浏览器判断chromium
+void SessionDispatcher::handler_deb_exists_chromium(QString flag) {
+    emit judge_deb_exists_chromium(flag);
 }

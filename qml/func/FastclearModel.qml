@@ -95,6 +95,14 @@ Rectangle {
         }
     }
 
+    onCheck_numChanged: {
+        if(check_num==0)
+            chek.checked="false"
+        else if(check_num==num)
+            chek.checked="true"
+        else
+            chek.checked="mid"
+    }
 
     //背景
     Image {
@@ -103,11 +111,11 @@ Rectangle {
     }
 
     //上下分割条
-    Rectangle {id: splitbar1; x: 2; y: 80; width: parent.width-4; height: 1; color: "#d8e0e6" }
-    Rectangle {id: splitbar11; x: 2; y: 110; width: parent.width-4; height: 1; color: "#d8e0e6" }
-    Rectangle {id: splitbar3; x: 2; y: 166; width: parent.width-4; height: 1; color: "#d8e0e6" }
-    Rectangle {id: splitbar5; x: 2; y: 234; width: parent.width-4; height: 1; color: "#d8e0e6" }
-    Rectangle {id: splitbar7; x: 2; y: 304; width: parent.width-4; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 2; y: 80; width: parent.width-4; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 25; y: 110; width: parent.width-50; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 25; y: 166; width: parent.width-50; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 25; y: 234; width: parent.width-50; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 25; y: 304; width: parent.width-50; height: 1; color: "#d8e0e6" }
     Row {
         id: myrow
         spacing: 10
@@ -130,7 +138,6 @@ Rectangle {
             Text {
                 id: text
                 width: 69
-//                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
                 text: qsTr("A key to help you to save disk space, clean up the garbage, make the system run more quickly.")//一键帮您节省磁盘空间，清理电脑中的垃圾，让系统运行更加快速。
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -144,7 +151,7 @@ Rectangle {
             id: onekeybtn
             hoverimage: "green1.png"
             setbtn_flag: "smallonekey"
-            text:qsTr("A key to clean up")//一键清理
+            text:qsTr("Clean Quickly")//一键清理
             width: 120
             height: 39
             fontsize: 15
@@ -201,6 +208,15 @@ Rectangle {
                             font.bold: true
                             font.pixelSize: 14
                             color: "#008000"
+                        }
+                        Common.MainCheckBox {
+                            id:chek
+                            checked:"true"    //将所有选项都check
+                            onCheckedboolChanged: {
+                                checkboxe.checked = chek.checkedbool;
+                                checkboxe2.checked = chek.checkedbool;
+                                checkboxe3.checked = chek.checkedbool;
+                            }
                         }
                     }
                     Column {
@@ -529,24 +545,4 @@ Rectangle {
 //            }//Column
 //------end new layout
     }//Row
-    Common.MainCheckBox {
-        id:chek
-        x:116
-        y:92
-        checked:"true"    //将所有选项都check
-//                            background: red
-        onCheckedboolChanged: {
-            checkboxe.checked = chek.checkedbool;
-            checkboxe2.checked = chek.checkedbool;
-            checkboxe3.checked = chek.checkedbool;
-        }
-    }
-    onCheck_numChanged: {
-        if(check_num==0)
-            chek.checked="false"
-        else if(check_num==num)
-            chek.checked="true"
-        else
-            chek.checked="mid"
-    }
 }

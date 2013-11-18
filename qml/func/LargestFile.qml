@@ -24,9 +24,9 @@ Item {
     width: parent.width
     height: 435//475
     property string btn_text: qsTr("Start cleaning")//开始清理
-    property string title: qsTr("Find the most large files which take up disk space quickly")//快速找出最占用磁盘空间的大文件
+    property string title: qsTr("Find large files which take up disk space quickly")//快速找出最占用磁盘空间的大文件
     property string description: qsTr("Delete unwanted large files, free more disk space.")//删除占用磁盘空间的无用大文件，释放更多磁盘空间。
-    property string scope_desc: qsTr("The file size is in the range of 1M--20480M, not to support the Chinese path.")//文件的大小范围为1M--20480M，暂不支持中文路径。
+    property string scope_desc: qsTr("File size in the range of 1M--20480M, no support the Chinese path.")//文件的大小范围为1M--20480M，暂不支持中文路径。
     property string btn_flag: "largestfile_work"
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
@@ -110,23 +110,11 @@ Item {
 
     ListModel {
         id: mainModel
-//        ListElement {
-//            itemTitle: "清理最大文件"
-//            picture: "../img/toolWidget/deb-min.png"
-//            detailstr: "清理用户指定目录下的最大文件，节省磁盘空间。"
-//            flags: "clear_largestfile"
-//            attributes: [
-//                ListElement { subItemTitle: "" }
-//            ]
-//        }
     }
 
     ListModel {
         id: subModel
-//        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
-
-
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
@@ -167,8 +155,7 @@ Item {
         id: titlebar
         spacing: 10
         width: parent.width
-//        height: 50
-        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 27}
+        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 5}
         Image {
             id: refreshArrow
             visible: true
@@ -201,7 +188,7 @@ Item {
             }
         }
         Text {
-            text: qsTr("Please input the file size (M):")//请输入文件大小(M):
+            text: qsTr("Input file size(M):")//请输入文件大小(M):
             font.pixelSize: 12
             color: "#383838"
             anchors.verticalCenter: parent.verticalCenter

@@ -33,11 +33,11 @@ Rectangle {
     //更新列表
     function updateList() {
         clearModel.clear();//清空
-        clearModel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("Check Screen"), "flag": "CheckScreen"});//坏点检测
-        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("Desktop icon"), "flag": "DesktopiconSet"});//桌面图标
-        clearModel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("Boot Animation"), "flag": "BootAnimation"});//开机动画
-        clearModel.append({"icon": "../img/icons/systemsound.png", "name": qsTr("Sound Effects"), "flag": "SoundEffects"});//系统声音
-        clearModel.append({"icon": "../img/icons/mouse.png", "name": qsTr("Mouse Pointer"), "flag": "MousePointer"});//鼠标指针
+        clearModel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("CheckScreen"), "flag": "CheckScreen"});//坏点检测
+        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("DesktopIcon"), "flag": "DesktopiconSet"});//桌面图标
+        clearModel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("BootAnimation"), "flag": "BootAnimation"});//开机动画
+        clearModel.append({"icon": "../img/icons/systemsound.png", "name": qsTr("SoundEffect"), "flag": "SoundEffects"});//系统声音
+        clearModel.append({"icon": "../img/icons/mouse.png", "name": qsTr("MousePointer"), "flag": "MousePointer"});//鼠标指针
         clearModel.append({"icon": "../img/icons/touchpad.png", "name": qsTr("Touchpad"), "flag": "TouchpadSet"});//触摸板
     }
 
@@ -46,37 +46,6 @@ Rectangle {
         Component.onCompleted: {
             rightbar.updateList();
         }
-//        ListElement {
-//            icon: "../img/icons/checkscreen.png"
-//            name: "坏点检测"
-//            flag: "CheckScreen"
-//        }
-//        ListElement {
-//            icon: "../img/icons/iconbeauty.png"
-//            name: "桌面图标"
-//            flag: "DesktopiconSet"
-//        }
-//        ListElement {
-//            icon: "../img/icons/bootanimation.png"
-//            name: "开机动画"
-//            flag: "BootAnimation"
-//        }
-//        ListElement {
-//            icon: "../img/icons/systemsound.png"
-//            name: "系统声音"
-//            flag: "SoundEffects"
-//        }
-//        ListElement {
-//            icon: "../img/icons/mouse.png"
-//            name: "鼠标指针"
-//            flag: "MousePointer"
-//        }
-
-//        ListElement {
-//            icon: "../img/icons/touchpad.png"
-//            name: "触摸板"
-//            flag: "TouchpadSet"
-//        }
     }
     //背景
     Image {
@@ -285,7 +254,7 @@ Rectangle {
         SetWord {
             id: helplabel
 //            anchors.horizontalCenter: parent.horizontalCenter
-            wordname: qsTr("Forum for help")//论坛求助
+            wordname: qsTr("Forum help")//论坛求助
             width: 50
             height: 20
             flag: "BBS"

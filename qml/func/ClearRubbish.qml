@@ -32,7 +32,7 @@ Item {
         id: tabs
         width: parent.width; height: 435
 
-        Common.Tab {
+        Common.TabPage {
             title: qsTr("A key to clean up")//一键清理
             anchors.fill: parent
             FastclearModel {
@@ -40,7 +40,7 @@ Item {
             }
         }
         Common.TabPage {
-            title:qsTr("Package management cache")//包管理缓存
+            title:qsTr("Deb cache")//包管理缓存
             anchors.fill: parent
             AptCruft{
                id: aptitem
@@ -69,14 +69,14 @@ Item {
             }
         }
         Common.TabPage {
-            title:qsTr("Package uninstalled")//包卸载
+            title:qsTr("Deb uninstalled")//包卸载
             anchors.fill: parent
             PackageModel {
                 id: packagemodel
             }
         }
         Common.TabPage{
-            title:qsTr("Large file clean up")//大文件清理
+            title:qsTr("Clean LargeFile ")//大文件清理
             anchors.fill: parent
             LargestFile {
                 id: largestitem

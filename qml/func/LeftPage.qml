@@ -23,7 +23,7 @@ Rectangle {
     id: leftbar
     width: 600; height: 460
     property string onekeypage: "first"
-    property int num:3     //checkbox num
+    property int num: 3     //checkbox num
     property int check_num: num
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -94,6 +94,14 @@ Rectangle {
         }
     }
 
+    onCheck_numChanged: {
+        if(check_num==0)
+            chek.checked="false"
+        else if(check_num==leftbar.num)
+            chek.checked="true"
+        else
+            chek.checked="mid"
+    }
     //背景
     Image {
         source: "../img/skin/bg-left.png"
@@ -126,9 +134,10 @@ Rectangle {
                 id: mycolumn
                 Text {
                     id: text0
-                    width: 69
+                    width: leftbar.width-180
                     text: qsTr("A key to clean common system junk, effectively improve the efficiency of the system")//一键清理系统垃圾，有效提高系统运行效率
                     font.bold: true
+                    wrapMode: Text.WrapAnywhere
                     font.pixelSize: 14
                     color: "#383838"
                 }
@@ -144,7 +153,7 @@ Rectangle {
                     id: firstonekey
                     hoverimage: "green3.png"
                     setbtn_flag: "onekey"
-                    text:qsTr("A key to clean up")//一键清理
+                    text:qsTr("Clean Quickly")//一键清理
                     fontsize: 17
                     anchors {
                         left: parent.left; leftMargin: 100
@@ -203,6 +212,15 @@ Rectangle {
                     font.bold: true
                     font.pixelSize: 14
                     color: "#008000"
+                }
+                Common.MainCheckBox {
+                    id:chek
+                    checked:"true"    //将所有选项都check
+                    onCheckedboolChanged: {
+                        checkboxe1.checked = chek.checkedbool;
+                        checkboxe2.checked = chek.checkedbool;
+                        checkboxe3.checked = chek.checkedbool;
+                    }
                 }
             }
             Column {
@@ -514,23 +532,4 @@ Rectangle {
                       }
         }//Column
     }//Column
-    Common.MainCheckBox {
-        id:chek
-        x:115
-        y:170
-        checked:"true"    //将所有选项都check
-        onCheckedboolChanged: {
-            checkboxe1.checked = chek.checkedbool;
-            checkboxe2.checked = chek.checkedbool;
-            checkboxe3.checked = chek.checkedbool;
-        }
-    }
-    onCheck_numChanged: {
-        if(check_num==0)
-            chek.checked="false"
-        else if(check_num==leftbar.num)
-            chek.checked="true"
-        else
-            chek.checked="mid"
-    }
 }//左边栏Rectangle

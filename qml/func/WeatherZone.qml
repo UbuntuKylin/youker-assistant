@@ -133,7 +133,7 @@ Rectangle {
     Row {
         anchors.top: parent.top
         anchors.topMargin: 25
-        spacing: 20
+        spacing: 15
         Column {
             id: leftrow
             spacing: 5

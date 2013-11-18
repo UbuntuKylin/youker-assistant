@@ -45,6 +45,9 @@ Item {
     property bool mainStatus1: true//存放firefox主checkbox的状态
     property bool mainStatus2: true//存放chromium主checkbox的状态
 
+    property bool hasFirefox//是否有firefox的标记
+    property bool hasChromium//是否有chromium的标记
+
 
 //    onNull_flag2Changed: {
 //        console.log("flag2 change..");
@@ -59,86 +62,134 @@ Item {
         console.log("kobe.........1");
 //        var cookies_data = sessiondispatcher.scan_cookies_records_qt();
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("f");
-        console.log(cookies_data);
-        console.log(cookies_data.length);
+//        console.log(cookies_data);
+//        console.log(cookies_data.length);
+        if(root.hasFirefox == true) {
 
-        if (cookies_data.length === 0) {
-            console.log("kobe.........2");
-            //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
-            if(root.null_flag == true) {
-                root.null_flag = false;
-            }
-            root.null_flag = true;
-//            if(statusImage.visible == true)
-//                statusImage.visible = false;
-        }
-        else {
-            console.log("kobe.........3");
-            //如果扫描到的数据不为空，把空标记置为false，未完成的状态图标显示。
-            if(root.null_flag == false) {
+            if (cookies_data.length === 0) {
+                console.log("kobe.........2");
+                //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
+                if(root.null_flag == true) {
+                    root.null_flag = false;
+                }
                 root.null_flag = true;
-            }
-            root.null_flag = false;
-//            statusImage.visible = true;
-        }
-        root.firefoxNum = cookies_data.length;
-        systemdispatcher.clear_cookies_args();
-        firefoxModel.clear();
-        var num = 0;
-        for (var i=0; i< cookies_data.length; i++) {
-            //sina.com.cn<2_2>10
-            var splitlist = cookies_data[i].split("<2_2>");
-            if (splitlist[0] === "") {
-                num++;
+    //            if(statusImage.visible == true)
+    //                statusImage.visible = false;
             }
             else {
-                firefoxModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "个Cookie"});
-                systemdispatcher.set_cookies_args(splitlist[0]);
+                console.log("kobe.........3");
+                //如果扫描到的数据不为空，把空标记置为false，未完成的状态图标显示。
+                if(root.null_flag == false) {
+                    root.null_flag = true;
+                }
+                root.null_flag = false;
+    //            statusImage.visible = true;
             }
+            root.firefoxNum = cookies_data.length;
+            systemdispatcher.clear_cookies_args();
+            firefoxModel.clear();
+            var num = 0;
+            for (var i=0; i< cookies_data.length; i++) {
+                //sina.com.cn<2_2>10
+                var splitlist = cookies_data[i].split("<2_2>");
+                if (splitlist[0] === "") {
+                    num++;
+                }
+                else {
+                    firefoxModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "个Cookie"});
+                    systemdispatcher.set_cookies_args(splitlist[0]);
+                }
+            }
+            root.firefoxNum -= num;
+            if(root.firefoxNum != 0) {
+                firefox_check_flag=true;
+            }
+
+
+            //--------------------------------
+            if(root.null_flag == true) {
+                sessiondispatcher.tellNullToListTitle("firefox", true);
+                root.deleget_arrow=0;
+                //友情提示      扫描内容为空，不再执行清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+            }
+            else if(root.null_flag == false)
+            {
+                sessiondispatcher.tellNullToListTitle("firefox", false);
+                root.deleget_arrow = 1;
+                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+            }
+            //--------------------------------
         }
-        root.firefoxNum -= num;
-        if(root.firefoxNum != 0) {
-            firefox_check_flag=true;
+        else if(root.hasFirefox == false) {
+            root.deleget_arrow=0;
+            //友情提示
+            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Firefox browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
         }
     }
 
     function getDataOfChromium() {
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("c");
-        if (cookies_data.length === 0) {
-            //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
-            if(root.null_flag2 == true) {
-                root.null_flag2 = false;
-            }
-            root.null_flag2 = true;
-//            if(statusImage.visible == true)
-//                statusImage.visible = false;
-        }
-        else {
-            //如果扫描到的数据不为空，把空标记置为false，未完成的状态图标显示。
-            if(root.null_flag2 == false) {
+        if(root.hasChromium == true) {
+            if (cookies_data.length === 0) {
+                //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
+                if(root.null_flag2 == true) {
+                    root.null_flag2 = false;
+                }
                 root.null_flag2 = true;
-            }
-            root.null_flag2 = false;
-//            statusImage.visible = true;
-        }
-        root.chromiumNum = cookies_data.length;
-        systemdispatcher.clear_cookies_args();
-        chromiumModel.clear();
-        var num = 0;
-        for (var i=0; i< cookies_data.length; i++) {
-            //sina.com.cn<2_2>10
-            var splitlist = cookies_data[i].split("<2_2>");
-            if (splitlist[0] === "") {
-                num++;
+    //            if(statusImage.visible == true)
+    //                statusImage.visible = false;
             }
             else {
-                chromiumModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "Cookie"});
-                systemdispatcher.set_cookies_args(splitlist[0]);
+                //如果扫描到的数据不为空，把空标记置为false，未完成的状态图标显示。
+                if(root.null_flag2 == false) {
+                    root.null_flag2 = true;
+                }
+                root.null_flag2 = false;
+    //            statusImage.visible = true;
             }
+            root.chromiumNum = cookies_data.length;
+            systemdispatcher.clear_cookies_args();
+            chromiumModel.clear();
+            var num = 0;
+            for (var i=0; i< cookies_data.length; i++) {
+                //sina.com.cn<2_2>10
+                var splitlist = cookies_data[i].split("<2_2>");
+                if (splitlist[0] === "") {
+                    num++;
+                }
+                else {
+                    chromiumModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1] + "Cookie"});
+                    systemdispatcher.set_cookies_args(splitlist[0]);
+                }
+            }
+            root.chromiumNum -= num;
+            if(root.chromiumNum != 0) {
+                chromium_check_flag = true;
+            }
+
+            //------------------------------------------
+            if(root.null_flag2 == true) {
+    //                                        chromiumTitle.state = "CookiesWorkEmptyC";
+    //                                            console.log("iiiiiiiiiii");
+                sessiondispatcher.tellNullToListTitle("chromium", true);
+                root.deleget_arrow2=0;
+                //友情提示      扫描内容为空，不再执行清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+            }
+            else if(root.null_flag2 == false)
+            {
+                root.deleget_arrow2=1;
+    //                                            console.log("pppppppppppp");
+                sessiondispatcher.tellNullToListTitle("chromium", false);
+    //                                        toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
+            }
+            //------------------------------------------
         }
-        root.chromiumNum -= num;
-        if(root.chromiumNum != 0) {
-            chromium_check_flag = true;
+        else if(root.hasChromium == false) {
+            root.deleget_arrow2=0;
+            //友情提示
+            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Chromium browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
         }
     }
 
@@ -197,6 +248,32 @@ Item {
     }
     ListModel {
         id: chromiumModel
+    }
+
+    //信号绑定，绑定qt的信号，判断浏览器是否安装了
+    Connections
+    {
+        target: sessiondispatcher
+        onJudge_deb_exists_firefox: {
+            if(flag == "yes") {
+                console.log("firefox is ok");
+                root.hasFirefox = true;
+            }
+            else if(flag == "no") {
+                console.log("firefox is no");
+                root.hasFirefox = false;
+            }
+        }
+        onJudge_deb_exists_chromium: {
+            if(flag == "yes") {
+                console.log("chromium is ok");
+                root.hasChromium = true;
+            }
+            else if(flag == "no") {
+                console.log("chromium is no");
+                root.hasChromium = false;
+            }
+        }
     }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -354,21 +431,21 @@ Item {
                                         console.log("scan---f......");
                                         //开始扫描时获取cookies
                                         cookies_signal("CookiesWork");
-                                        if(root.null_flag == true) {
-    //                                        firefoxTitle.state = "CookiesWorkEmpty";
-//                                            console.log("yyyyyy");
-                                            sessiondispatcher.tellNullToListTitle("firefox", true);
-                                            root.deleget_arrow=0;
-                                            //友情提示      扫描内容为空，不再执行清理！
-                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-                                        }
-                                        else if(root.null_flag == false)
-                                        {
-//                                            console.log("uuuuuu");
-                                            sessiondispatcher.tellNullToListTitle("firefox", false);
-                                            root.deleget_arrow = 1;
-                                            toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-                                        }
+//                                        if(root.null_flag == true) {
+//    //                                        firefoxTitle.state = "CookiesWorkEmpty";
+////                                            console.log("yyyyyy");
+//                                            sessiondispatcher.tellNullToListTitle("firefox", true);
+//                                            root.deleget_arrow=0;
+//                                            //友情提示      扫描内容为空，不再执行清理！
+//                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+//                                        }
+//                                        else if(root.null_flag == false)
+//                                        {
+////                                            console.log("uuuuuu");
+//                                            sessiondispatcher.tellNullToListTitle("firefox", false);
+//                                            root.deleget_arrow = 1;
+//                                            toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+//                                        }
                                     }
                                     else if (root.btn_flag == "cookies_work") {
                                         console.log("clean---f......");
@@ -445,21 +522,21 @@ Item {
                                         console.log("scan---c......");
                                         //开始扫描时获取cookies
                                         cookies_signal("CookiesWorkC");
-                                        if(root.null_flag2 == true) {
-    //                                        chromiumTitle.state = "CookiesWorkEmptyC";
-//                                            console.log("iiiiiiiiiii");
-                                            sessiondispatcher.tellNullToListTitle("chromium", true);
-                                            root.deleget_arrow2=0;
-                                            //友情提示      扫描内容为空，不再执行清理！
-                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-                                        }
-                                        else if(root.null_flag2 == false)
-                                        {
-                                            root.deleget_arrow2=1;
-//                                            console.log("pppppppppppp");
-                                            sessiondispatcher.tellNullToListTitle("chromium", false);
-    //                                        toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
-                                        }
+//                                        if(root.null_flag2 == true) {
+//    //                                        chromiumTitle.state = "CookiesWorkEmptyC";
+////                                            console.log("iiiiiiiiiii");
+//                                            sessiondispatcher.tellNullToListTitle("chromium", true);
+//                                            root.deleget_arrow2=0;
+//                                            //友情提示      扫描内容为空，不再执行清理！
+//                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+//                                        }
+//                                        else if(root.null_flag2 == false)
+//                                        {
+//                                            root.deleget_arrow2=1;
+////                                            console.log("pppppppppppp");
+//                                            sessiondispatcher.tellNullToListTitle("chromium", false);
+//    //                                        toolkits.alertMSG("扫描完成！", mainwindow.pos.x, mainwindow.pos.y);
+//                                        }
                                     }
                                     else if (root.btn_flag2 == "cookies_workc") {
                                         console.log("clean---c......");
