@@ -211,7 +211,7 @@ class CleanTheCookies():
                 crufts_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
             else:
                 #self.daemon_obj.deb_exists_firefox("no")
-                return crufts_list
+                return None
         if flag in "c":
             filepathc = "%s/.config/chromium/Default/Cookies" % homedir
             if os.path.exists(filepathc):
@@ -220,7 +220,7 @@ class CleanTheCookies():
                 crufts_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
             else:
                 #self.daemon_obj.deb_exists_chromium("no")
-                return crufts_list
+                return None
 
         return crufts_list
 
