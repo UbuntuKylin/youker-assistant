@@ -125,15 +125,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
+            id: themetitle
             text: qsTr("Icon theme settings")//图标主题设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: desktopiconsetpage.width - themetitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -215,15 +216,16 @@ Rectangle {
             topMargin: 30
 
         }
-        spacing: 5
         Text{
+            id: showtitle
             text: qsTr("Desktop icon display control")//桌面图标显示控制
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:678
+            width: desktopiconsetpage.width - showtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter

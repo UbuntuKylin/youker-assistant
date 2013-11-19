@@ -48,11 +48,13 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: fcitxconfigtoolKey.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: fcitxconfigtoolKey.width - 80 - 20
+            text: fcitxconfigtoolKey.actiontext
+            wrapMode: Text.WrapAnywhere
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
     function refreshFcitxKey(){
@@ -112,7 +114,6 @@ Rectangle {
     //选择皮肤
     ListModel {
         id: skinModel
-//        ListElement {skinTitle: ""}
     }
 
     Connections {
@@ -134,15 +135,16 @@ Rectangle {
             top: parent.top
             topMargin: 120
         }
-        spacing: 5
         Text{
+            id: skintitle
             text: qsTr("Skin settings")//皮肤设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: fcitxconfigtoolKey.width - skintitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter

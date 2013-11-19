@@ -27,8 +27,10 @@ Rectangle {
     scale: 1
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     //竖列高度和宽度
-    width: 78
-    height: 82
+    width: 100
+    height: 100
+//    width: 78
+//    height: 82
     //横列高度和宽度
 //    width: 120
 //    height: 78
@@ -43,7 +45,7 @@ Rectangle {
     Column {
         anchors.fill: parent
         anchors.topMargin: 7
-        spacing: 5
+        spacing: 15
         Image {
             id: seticon
             source: icon

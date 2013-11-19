@@ -26,7 +26,7 @@ Rectangle {
 
     Text {
         id:textname
-//        anchors.centerIn: parent
+        anchors.centerIn: parent
         text: wordname
         font.pointSize: 10
         color: "#318d11"

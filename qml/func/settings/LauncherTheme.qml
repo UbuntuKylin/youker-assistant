@@ -78,7 +78,9 @@ Rectangle {
             }
         }
          Text {
+             width: launcherthemepage.width - 80 - 20
              text: launcherthemepage.actiontext
+             wrapMode: Text.WrapAnywhere
              font.pixelSize: 12
              color: "#7a7a7a"
          }
@@ -123,7 +125,7 @@ Rectangle {
             Common.Label {
                 id: launcherlabel
                 width: 150
-                text: qsTr("Launcher hidden automatically")//启动器自动隐藏:
+                text: qsTr("Hide Launcher automatically:")//启动器自动隐藏:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter

@@ -95,11 +95,13 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: bootimagepage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: bootimagepage.width - 80 - 20
+            text: bootimagepage.actiontext
+            wrapMode: Text.WrapAnywhere
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
     Column {

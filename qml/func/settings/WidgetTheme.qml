@@ -48,11 +48,6 @@ Rectangle {
     }
     ListModel {
         id: themeModel
-        ListElement {
-            icon: ""
-            name: ""
-            flag: ""
-        }
     }
 
     //背景

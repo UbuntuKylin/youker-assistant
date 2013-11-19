@@ -127,7 +127,7 @@ Item {
                 if (msg == "software") {
                     root.sof_work_result = msg;
                     root.state = "SoftwareWorkError";
-                    toolkits.alertMSG(qsTr("Exception occurred when Clean!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
          }

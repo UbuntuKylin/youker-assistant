@@ -113,7 +113,7 @@ Item {
             if (btn_flag == "package_work") {
 //                titleBar.work_result = msg;
                 titleBar.state = "UnneedWorkError";
-                toolkits.alertMSG(qsTr("Exception occurred when Clean!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
             }
 
          }

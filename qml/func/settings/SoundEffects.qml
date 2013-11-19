@@ -82,11 +82,9 @@ Rectangle {
 
     ListModel {
         id: choices
-        ListElement { themetext: "" }
     }
     ListModel {
         id: musicmodel
-        ListElement { musicname: ""; musicimage: "" }
     }
 
     Image {     //背景图片
@@ -107,7 +105,6 @@ Rectangle {
         }
         Row {
             spacing: 50
-
             Text {
                  text: soundeffectspage.actiontitle
                  font.bold: true
@@ -124,11 +121,13 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: soundeffectspage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: 650 - 80 - 15//左边区域总宽度-左边space-右边space
+            text: soundeffectspage.actiontext
+            wrapMode: Text.WrapAnywhere
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
     Column{     //声音主题
@@ -179,7 +178,7 @@ Rectangle {
             Common.Button {
                 hoverimage: "blue2.png"
                 text: qsTr("Restore default")//恢复默认
-                width: 95
+                width: 105
                 height: 30
                 onClicked: {
                     if (soundeffectspage.init_sound_flag == true) {
@@ -213,8 +212,10 @@ Rectangle {
             leftMargin: 60
         }
         Row {
-            spacing: 340
+            spacing: 270
             Text{
+                id: eventtitle
+                width: 100
                 text: qsTr("Program events:")//程序事件：
                 font.bold:true
                 color: "#383838"
@@ -222,24 +223,27 @@ Rectangle {
             }
             Row {
                 anchors.verticalCenter: parent.verticalCenter
-                spacing: 10
+                spacing: 2
                 Text {
                     id: listen
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: qsTr("Listen")//试听
+                    width: 50
+                    text: qsTr("Listen")//试听Listen
                 }
                 Text {
                     id: select
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: qsTr("Replace")//替换
+                    width: 50
+                    text: qsTr("Replace")//替换Replace
                 }
                 Text {
                     id: revoke
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: qsTr("Restore")//还原
+                    width: 50
+                    text: qsTr("Restore")//还原Restore
                 }
             }
 
@@ -273,7 +277,7 @@ Rectangle {
                         text: split_music_name(musicname)
                     }
                     Row{
-                        spacing: 20
+                        spacing: 40
                         anchors{
                             right: parent.right
                             rightMargin: 40
@@ -454,15 +458,16 @@ Rectangle {
         Column{
             spacing: 5
             Text{
-                text:qsTr("Custom sound theme")//自定义声音主题
+                text:qsTr("Custom SoundTheme")//自定义声音主题
+                width: soundeffectspage.width- 665 - 52 - 15
+                wrapMode: Text.WrapAnywhere
                 color: "#383838"
                 font.pointSize: 10
                 font.bold: true
             }
             Text {
-                width: soundeffectspage.width- 665 - 52 - 25
+                width: soundeffectspage.width- 665 - 52 - 15
                 text: qsTr("Not to support audio file of the Chinese path.")//暂不支持中文路径下的音频文件。
-//                text: "您能根据喜好组合成专属声音主题"
                 wrapMode: Text.WrapAnywhere
                 font.pixelSize: 10
                 color: "#7a7a7a"

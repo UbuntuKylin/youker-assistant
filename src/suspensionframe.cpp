@@ -23,7 +23,7 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowOpacity(1.0);
-    ui->title1->setText(tr("system runs smoothly"));//系统运行流畅
+    ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
     ui->title2->setText(tr("No need for speed"));//无需进行加速
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
@@ -34,7 +34,7 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
                 "QPushButton:hover{border-image:url(:/pixmap/image/accelerate-hover.png);}"
                 "QPushButton:pressed{border-image:url(:/pixmap/image/accelerate-press.png);}");
     ui->descBtn->setStyleSheet("QPushButton {border:0px;color:#1790c9}");
-    ui->descBtn->setText(tr("Detail"));//详细
+    ui->descBtn->setText(tr("Details"));//详细
     ui->descBtn->setFlat(true);
     ui->descBtn->setFocusPolicy(Qt::NoFocus);
     this->resize(265, 173);

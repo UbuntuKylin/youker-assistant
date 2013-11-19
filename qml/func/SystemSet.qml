@@ -60,7 +60,7 @@ Item {
                     top: titleimage.bottom
                     topMargin: 40
                     left: parent.left
-                    leftMargin: 30
+                    leftMargin: 25
                 }
                 spacing: 10
 
