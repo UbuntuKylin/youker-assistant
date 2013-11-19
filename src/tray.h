@@ -77,6 +77,8 @@ public slots:
     void updateData();
     //开始整理内存，一键加速
     void startMemoryAccelerate();
+    //快捷键退出
+    void exit();
 signals:
     //显示/隐藏QML主界面的信号
     void showOrHideQmlSignal();

@@ -45,7 +45,7 @@ Rectangle {
                 processmanager.updateMap(num, id);//更新qt中保存的进程序号和进程号组合的map
             }
         }
-        largeModel.append({"user": "kobe", "pid": "pid", "pcpu": "cpu", "pmem": "mem", "started": "time", "content": "ubuntukylin", "command": "test for TableView"});
+        largeModel.append({"user": "user", "pid": "pid", "pcpu": "cpu", "pmem": "mem", "started": "time", "content": "ubuntukylin", "command": "test for TableView"});
     }
 
     Image {
@@ -100,15 +100,15 @@ Rectangle {
                 var currentId = processmanager.getProcessId(tableView.currentIndex.toString());
                 if(currentId.length !== 0) {
                     if(processmanager.killProcess(currentId)) {
-                        toolkits.alertMSG(qsTr("Kill process successfully!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
+                        toolkits.alertMSG(qsTr("Kill successfully!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
                         updateProcessList();
                     }
                     else {
-                        toolkits.alertMSG(qsTr("Kill process failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
+                        toolkits.alertMSG(qsTr("Kill failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
                     }
                 }
                 else {
-                    toolkits.alertMSG(qsTr("Have no choice about the process!"), mainwindow.pos.x, mainwindow.pos.y);//没有选择将要结束的进程！
+                    toolkits.alertMSG(qsTr("Have no choice!"), mainwindow.pos.x, mainwindow.pos.y);//没有选择将要结束的进程！
                 }
             }
         }
@@ -150,12 +150,12 @@ Rectangle {
         }
         Common.TableColumn {
             role: "pcpu"
-            title: qsTr("Cpu utilization%")//CPU占用%
+            title: qsTr("Cpu%")//CPU占用%
             width: 70
         }
         Common.TableColumn {
             role: "pmem"
-            title: qsTr("Memory utilization%")//内存占用%
+            title: qsTr("Memory%")//内存占用%
             width: 70
         }
         Common.TableColumn {

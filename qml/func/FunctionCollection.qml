@@ -33,11 +33,11 @@ Item {
         //更新列表
         function updateList() {
             funcmodel.clear();//清空
-            funcmodel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("Check Screen"), "flag": "CheckScreen"});//坏点检测
-            funcmodel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("Boot Animation"), "flag": "BootAnimation"});//开机动画
-            funcmodel.append({"icon": "../img/icons/fcitx.png", "name": qsTr("Fcitx Configure"), "flag": "FcitxConfigtool"});//输入法配置
-            funcmodel.append({"icon": "../img/icons/software.png", "name": qsTr("Software Recommend"), "flag": "SoftWare"});//软件推荐
-            funcmodel.append({"icon": "../img/icons/processmanager.png", "name": qsTr("Process Manager"), "flag": "ProcessManager"});//任务管理器
+            funcmodel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("CheckScreen"), "flag": "CheckScreen"});//坏点检测
+            funcmodel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("BootAnimation"), "flag": "BootAnimation"});//开机动画
+            funcmodel.append({"icon": "../img/icons/fcitx.png", "name": qsTr("FcitxConfigure"), "flag": "FcitxConfigtool"});//输入法配置
+            funcmodel.append({"icon": "../img/icons/software.png", "name": qsTr("SoftRecommend"), "flag": "SoftWare"});//软件推荐
+            funcmodel.append({"icon": "../img/icons/processmanager.png", "name": qsTr("ProcessManager"), "flag": "ProcessManager"});//任务管理器
         }
 
         Item {
@@ -49,31 +49,6 @@ Item {
                 Component.onCompleted: {
                     setting_widget.updateList();
                 }
-//                ListElement {
-//                    icon: "../img/icons/checkscreen.png"
-//                    name: "坏点检测"
-//                    flag: "CheckScreen"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/bootanimation.png"
-//                    name: "开机动画"
-//                    flag: "BootAnimation"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/fcitx.png"
-//                    name: "输入法配置"
-//                    flag: "FcitxConfigtool"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/software.png"
-//                    name: "软件推荐"
-//                    flag: "SoftWare"
-//                }
-//                ListElement {
-//                    icon: "../img/icons/processmanager.png"
-//                    name: "任务管理器"
-//                    flag: "ProcessManager"
-//                }
             }
 
 
@@ -106,7 +81,7 @@ Item {
                 delegate: SettingsDelegate {}
                 cacheBuffer: 1000
                 //竖列
-                cellWidth: (parent.width-2)/8; cellHeight: cellWidth
+                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
                 //横列
 //                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
                 highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块

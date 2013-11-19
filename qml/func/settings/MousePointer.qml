@@ -85,7 +85,6 @@ Rectangle {
 
     ListModel {
         id: choices
-        ListElement { text: "" }
     }
 
 
@@ -98,15 +97,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
+            id: mousetitle
             text: qsTr("Mouse settings")//鼠标设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: mousepointerpage.width - mousetitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter

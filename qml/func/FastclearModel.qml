@@ -204,7 +204,7 @@ Rectangle {
                         spacing: 10
                         Common.Label {
                             id: itemtip
-                            text: "A key Clean Items"//一键清理项目
+                            text: qsTr("A key Clean Items")//一键清理项目
                             font.bold: true
                             font.pixelSize: 14
                             color: "#008000"

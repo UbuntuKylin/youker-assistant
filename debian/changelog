@@ -3,8 +3,9 @@ youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
   * Add processmanager.
   * Add Google Chromium Cookies cleaner.
   * Change Chinese to English add add translation.
+  * Adjust components space after it added translation.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 13 Nov 2013 17:49:25 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 19 Nov 2013 11:36:37 +0800
 
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 

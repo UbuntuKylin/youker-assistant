@@ -116,7 +116,9 @@ Rectangle {
             }
         }
          Text {
+             width: defaultfontpage.width - 80 - 20
              text: defaultfontpage.actiontext
+             wrapMode: Text.WrapAnywhere
              font.pixelSize: 12
              color: "#7a7a7a"
          }
@@ -132,15 +134,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
+            id: fonttitle
             text: qsTr("Font settings")//字体设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: defaultfontpage.width - fonttitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -328,22 +331,23 @@ Rectangle {
 
 
     Row {
-        id: zoomtitle
+        id: zoomrow
         anchors{
             left: parent.left
             leftMargin: 40
             top: fontcolumn.bottom
             topMargin: 30
         }
-        spacing: 5
         Text{
+            id: zoomtitle
             text: qsTr("Zoom settings")//缩放设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: defaultfontpage.width - zoomtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -353,7 +357,7 @@ Rectangle {
         anchors{
             left: parent.left
             leftMargin: 80
-            top: zoomtitle.bottom
+            top: zoomrow.bottom
             topMargin: 10
         }
         spacing: 185

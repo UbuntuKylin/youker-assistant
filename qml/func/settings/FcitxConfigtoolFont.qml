@@ -46,7 +46,9 @@ Rectangle {
              color: "#383838"
          }
          Text {
+             width: fcitxconfigtoolFont.width - 80 - 20
              text: fcitxconfigtoolFont.actiontext
+             wrapMode: Text.WrapAnywhere
              font.pixelSize: 12
              color: "#7a7a7a"
          }
@@ -99,15 +101,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
+            id: showtitle
             text: qsTr("Display settings")//显示设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: fcitxconfigtoolFont.width - showtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -134,7 +137,7 @@ Rectangle {
             }
             Common.ButtonRow {
                 exclusive: true//控制是否联动
-                spacing: 80
+                spacing: 120
                 anchors.centerIn: listh.Center
                 Common.CheckBox {
                     id: levelstyle
@@ -193,8 +196,8 @@ Rectangle {
             topMargin: 250
 
         }
-        spacing: 5
         Text{
+            id: keyboardtitle
             text: qsTr("keyboard settings")//快捷键设置
             font.bold: true
             font.pixelSize: 12
@@ -202,7 +205,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
         }
         Rectangle{
-            width:690
+            width: fcitxconfigtoolFont.width - keyboardtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter

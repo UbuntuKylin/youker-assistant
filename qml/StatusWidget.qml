@@ -38,7 +38,7 @@ Rectangle {
         Text {
             color: "white"
             font.pixelSize: 12
-            text: qsTr("main version:" + uk_version)//主版本:
+            text: qsTr("main version:") + uk_version//主版本:
         }
     }
 

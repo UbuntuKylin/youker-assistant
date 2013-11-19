@@ -83,11 +83,13 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: documentfontpage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: documentfontpage.width - 80 - 20
+            text: documentfontpage.actiontext
+            wrapMode: Text.WrapAnywhere
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
 
@@ -100,15 +102,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
+            id: fonttitle
             text: qsTr("Document font settings")//文档字体设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:680
+            width: documentfontpage.width - fonttitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -127,7 +130,7 @@ Rectangle {
         }
         Common.Label {
             id: documentfontlabel
-            width: 110
+            width: 150
             text: qsTr("Current document font:")//当前文档字体:
             font.pixelSize: 12
             color: "#7a7a7a"

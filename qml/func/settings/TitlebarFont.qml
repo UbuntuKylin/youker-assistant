@@ -82,11 +82,13 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: titlebarfontpage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: titlebarfontpage.width - 80 - 20
+            text: titlebarfontpage.actiontext
+            wrapMode: Text.WrapAnywhere
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
 
@@ -101,13 +103,15 @@ Rectangle {
         }
         spacing: 5
         Text{
+            id: fonttitle
             text: qsTr("Titlebar font settings")//标题栏字体设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:680
+            width: titlebarfontpage.width - fonttitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter

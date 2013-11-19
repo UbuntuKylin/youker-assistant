@@ -64,7 +64,9 @@ Rectangle {
              color: "#383838"
          }
          Text {
+             width: touchpadsetpage.width - 80 - 20
              text: touchpadsetpage.actiontext
+             wrapMode: Text.WrapAnywhere
              font.pixelSize: 12
              color: "#7a7a7a"
          }
@@ -81,13 +83,15 @@ Rectangle {
         }
         spacing: 5
         Text{
+            id: switchtitle
             text: qsTr("Switch setting")//开关设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: touchpadsetpage.width - switchtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -127,7 +131,7 @@ Rectangle {
     }
 
     Row {
-        id: scrolltitle
+        id: scrollrow
         anchors{
             left: parent.left
             leftMargin: 40
@@ -137,13 +141,15 @@ Rectangle {
         }
         spacing: 5
         Text{
+            id: scrolltitle
             text: qsTr("Scrollbar settings")//滚动条设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:688
+            width: touchpadsetpage.width - scrolltitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -155,7 +161,7 @@ Rectangle {
         anchors{
             left: parent.left
             leftMargin: 60
-            top: scrolltitle.bottom
+            top: scrollrow.bottom
             topMargin: 10
         }
 
@@ -209,7 +215,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-//                text: qsTr("触摸板滚动触发方式:")/触摸板滚动触发方式:
+                text: qsTr("Touchpad rolling mode:")//触摸板滚动触发方式:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -253,7 +259,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("Scrollbar horizontal scrolling:")//触摸板横向滚动:
+                text: qsTr("Scrollbar horizontal scroll:")//触摸板横向滚动:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
