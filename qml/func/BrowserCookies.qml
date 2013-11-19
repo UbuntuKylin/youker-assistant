@@ -62,8 +62,8 @@ Item {
         console.log("kobe.........1");
 //        var cookies_data = sessiondispatcher.scan_cookies_records_qt();
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("f");
-//        console.log(cookies_data);
-//        console.log(cookies_data.length);
+        console.log(cookies_data);
+        console.log(cookies_data.length);
         if(root.hasFirefox == true) {
 
             if (cookies_data.length === 0) {
@@ -129,7 +129,10 @@ Item {
     }
 
     function getDataOfChromium() {
+        console.log("lixiang.........1");
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("c");
+        console.log(cookies_data);
+        console.log(cookies_data.length);
         if(root.hasChromium == true) {
             if (cookies_data.length === 0) {
                 //如果扫描到的数据为空，把空标记置为true，未完成的状态图标隐藏。
@@ -251,30 +254,30 @@ Item {
     }
 
     //信号绑定，绑定qt的信号，判断浏览器是否安装了
-    Connections
-    {
-        target: sessiondispatcher
-        onJudge_deb_exists_firefox: {
-            if(flag == "yes") {
-                console.log("firefox is ok");
-                root.hasFirefox = true;
-            }
-            else if(flag == "no") {
-                console.log("firefox is no");
-                root.hasFirefox = false;
-            }
-        }
-        onJudge_deb_exists_chromium: {
-            if(flag == "yes") {
-                console.log("chromium is ok");
-                root.hasChromium = true;
-            }
-            else if(flag == "no") {
-                console.log("chromium is no");
-                root.hasChromium = false;
-            }
-        }
-    }
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onJudge_deb_exists_firefox: {
+//            if(flag == "yes") {
+//                console.log("firefox is ok");
+//                root.hasFirefox = true;
+//            }
+//            else if(flag == "no") {
+//                console.log("firefox is no");
+//                root.hasFirefox = false;
+//            }
+//        }
+//        onJudge_deb_exists_chromium: {
+//            if(flag == "yes") {
+//                console.log("chromium is ok");
+//                root.hasChromium = true;
+//            }
+//            else if(flag == "no") {
+//                console.log("chromium is no");
+//                root.hasChromium = false;
+//            }
+//        }
+//    }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections

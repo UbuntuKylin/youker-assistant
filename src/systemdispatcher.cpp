@@ -21,7 +21,6 @@
 #include <QObject>
 #include <QString>
 #include <QFileDialog>
-#include "authdialog.h"
 #include "KThread.h"
 
 extern QString music_path;

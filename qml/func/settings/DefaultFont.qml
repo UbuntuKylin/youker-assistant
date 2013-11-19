@@ -49,9 +49,20 @@ Rectangle {
         defaultfontpage.zoom_flag = false;
 
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
+        //将系统初始的当前字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "currentfont", defaultfontpage.current_font);
+
         defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
+        //将系统初始的当前桌面字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "desktopfont", defaultfontpage.desktop_font);
+
         defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
+        //将系统初始的当前等宽字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "monospacefont", defaultfontpage.monospace_font);
+
         defaultfontpage.zoom = sessiondispatcher.get_font_zoom_qt();
+        //将系统初始的全局字体缩放写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "zoom", defaultfontpage.zoom);
 
         if (sessiondispatcher.get_desktop_font_qt() == "") {
             sessiondispatcher.set_desktop_font_qt_default();

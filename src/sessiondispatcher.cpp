@@ -39,10 +39,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
-//    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_rubbish(QString)));
-
-    QObject::connect(sessioniface,SIGNAL(deb_exists_firefox(QString)),this,SLOT(handler_deb_exists_firefox(QString)));
-    QObject::connect(sessioniface,SIGNAL(deb_exists_chromium(QString)),this,SLOT(handler_deb_exists_chromium(QString)));
 
     page_num = 0;
     this->mainwindow_width = 850;
@@ -58,8 +54,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     skin_widget = new SkinsWidget(mSettings);
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
-
-//    processManager = new ProcessManager();
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -155,6 +149,24 @@ void SessionDispatcher::get_system_message_qt() {
     else {
         qDebug() << "get pc_message failed!";
     }
+}
+
+//把优客助手运行时，系统的默认配置写到配置文件
+void SessionDispatcher::write_default_configure_to_qsetting_file(QString key, QString name, QString value) {
+    mSettings->beginGroup(key);
+    mSettings->setValue(name, value);
+    mSettings->endGroup();
+    mSettings->sync();
+}
+
+//从Qsetting配置文件中读取系统启动时的默认配置
+QString SessionDispatcher::read_default_configure_from_qsetting_file(QString key, QString name) {
+    QString result;
+    mSettings->beginGroup(key);
+    result = mSettings->value(name).toString();
+    mSettings->endGroup();
+    mSettings->sync();
+    return result;
 }
 
 //----------------message dialog--------------------
@@ -744,12 +756,12 @@ void SessionDispatcher::tellNullToListTitle(QString emptyFlag, bool status) {
 }
 
 
-//浏览器判断firefox
-void SessionDispatcher::handler_deb_exists_firefox(QString flag) {
-    emit judge_deb_exists_firefox(flag);
-}
+////浏览器判断firefox
+//void SessionDispatcher::handler_deb_exists_firefox(QString flag) {
+//    emit judge_deb_exists_firefox(flag);
+//}
 
-//浏览器判断chromium
-void SessionDispatcher::handler_deb_exists_chromium(QString flag) {
-    emit judge_deb_exists_chromium(flag);
-}
+////浏览器判断chromium
+//void SessionDispatcher::handler_deb_exists_chromium(QString flag) {
+//    emit judge_deb_exists_chromium(flag);
+//}

@@ -21,8 +21,6 @@ Rectangle {
     height: 30//28
     color: "transparent"
     property string uk_version: ""
-    property string updateTime: "2013-09-12"
-    property string status: qsTr("check update")//检查更新
     Component.onCompleted: {
 
     }

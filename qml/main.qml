@@ -21,7 +21,7 @@ import SessionType 0.1
 import SystemType 0.1
 import SudoType 0.1
 import FcitxCfgWizard 0.1
-import ProcessType 0.1//1101
+import ProcessType 0.1
 
 Rectangle {
     id: main
@@ -76,7 +76,7 @@ Rectangle {
     Column {
         id: layout
         anchors.fill: parent
-        spacing: 0
+        spacing: 3
         ContentWidget{
             id: contentwidget
         }

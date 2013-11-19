@@ -26,7 +26,7 @@
 #include "fcitx-utils/utils.h"
 #include "fcitx-config/hotkey.h"
 #include <QDeclarativeView>
-#include "fcitxwarndialog.h"
+//#include "fcitxwarndialog.h"
 
 
 class FcitxCfgWizard : public QObject
@@ -39,7 +39,7 @@ public:
 signals:void refreshFcitxSig();
 private:
     FcitxQtConnection *m_connection;
-    FcitxWarnDialog *fcitxWarnSig;
+//    FcitxWarnDialog *fcitxWarnSig;
     QDeclarativeView *view;
     FcitxQtInputMethodProxy *m_improxy;
     QString m_separator;

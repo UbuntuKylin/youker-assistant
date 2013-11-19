@@ -28,9 +28,7 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property int cursor_size: 24
-    property string default_icon_theme: ""
-    property string init_icon_theme: ""
-    property bool init_icon_theme_flag: false
+    property string selected_icon_theme: ""//存放用户选择确认后的主题
 
     property string actiontitle: qsTr("Desktop icon settings")//桌面图标设置
     property string actiontext: qsTr("You can set the desktop icon theme and control some icon displayed on the desktop.")//您可以设置桌面图标主题和控制一些图标是否显示在桌面上。
@@ -39,13 +37,15 @@ Rectangle {
         source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
+
+
     Component.onCompleted: {
-        desktopiconsetpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        desktopiconsetpage.init_icon_theme = desktopiconsetpage.default_icon_theme;
-        desktopiconsetpage.init_icon_theme_flag = false;
         var iconlist = sessiondispatcher.get_icon_themes_qt();
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
+        desktopiconsetpage.selected_icon_theme = current_icon_theme;
         iconlist.unshift(current_icon_theme);
+        //将系统初始的图标主题写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("desktopicon", "icontheme", current_icon_theme);
         choices.clear();
         for(var j=0; j < iconlist.length; j++) {
             choices.append({"text": iconlist[j]});
@@ -82,7 +82,6 @@ Rectangle {
 
     ListModel {
         id: choices
-//        ListElement { text: "" }
     }
     Column {
         spacing: 10
@@ -175,12 +174,9 @@ Rectangle {
                 hoverimage: "green2.png"
                 text: qsTr("OK")//确定
                 onClicked: {
-                    desktopiconsetpage.init_icon_theme_flag = true;
-                    if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
-                        desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
-                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                        statusImage.visible = true;
-                    }
+                    desktopiconsetpage.selected_icon_theme = iconcombo.selectedText;
+                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+                    statusImage.visible = true;
                 }
             }
             Common.Button {
@@ -189,14 +185,16 @@ Rectangle {
                 width: 105
                 height: 30
                 onClicked: {
-                    if(desktopiconsetpage.init_icon_theme_flag == true) {
-                        desktopiconsetpage.init_icon_theme_flag;
-                        sessiondispatcher.set_icon_theme_qt(desktopiconsetpage.init_icon_theme);
-                        statusImage.visible = true;
-                    }
-                    else {
+                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("desktopicon", "icontheme");
+                    if(defaulttheme == desktopiconsetpage.selected_icon_theme) {
                         //友情提示：       您系统的图标主题已经为默认设置！
                         sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current icon theme is the default!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
+                    else {
+                        sessiondispatcher.set_icon_theme_qt(defaulttheme);
+                        desktopiconsetpage.selected_icon_theme = defaulttheme;
+                        iconcombo.selectedIndex = 0;
+                        statusImage.visible = true;
                     }
                 }
             }

@@ -206,6 +206,11 @@ public:
     Q_INVOKABLE void change_maincheckbox_status(QString status);
 
     Q_INVOKABLE void tellNullToListTitle(QString emptyFlag, bool status);//BrowserCookies中扫描内容为空时，告诉ListTitle.qml
+
+    //把优客助手运行时，系统的默认配置写到配置文件
+    Q_INVOKABLE void write_default_configure_to_qsetting_file(QString key, QString name, QString value);
+    //从Qsetting配置文件中读取系统启动时的默认配置
+    Q_INVOKABLE QString read_default_configure_from_qsetting_file(QString key, QString name);
 signals:
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
@@ -217,20 +222,20 @@ signals:
     //BrowserCookies中扫描内容为空时，告诉ListTitle.qml
     void getNullFlag(QString emptyFlag, bool status);
 
-    //判断是否有firefox浏览器
-    void judge_deb_exists_firefox(QString flag);
-    //判断是否有chromium浏览器
-    void judge_deb_exists_chromium(QString flag);
+//    //判断是否有firefox浏览器
+//    void judge_deb_exists_firefox(QString flag);
+//    //判断是否有chromium浏览器
+//    void judge_deb_exists_chromium(QString flag);
 public slots:
     void handler_change_skin(QString skinName);
     //更换城市槽函数
     void handler_change_city();
     //更换自动更新天气周期槽函数
     void handler_change_rate(int rate);
-    //判断是否有firefox浏览器
-    void handler_deb_exists_firefox(QString flag);
-    //判断是否有chromium浏览器
-    void handler_deb_exists_chromium(QString flag);
+//    //判断是否有firefox浏览器
+//    void handler_deb_exists_firefox(QString flag);
+//    //判断是否有chromium浏览器
+//    void handler_deb_exists_chromium(QString flag);
 
 private:
     int mainwindow_width;

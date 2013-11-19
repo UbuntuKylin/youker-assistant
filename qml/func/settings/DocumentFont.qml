@@ -41,6 +41,8 @@ Rectangle {
     Component.onCompleted: {
         documentfontpage.document_font_flag = false;
         documentfontpage.document_font = sessiondispatcher.get_document_font_qt();
+        //将系统初始的当前文档字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "documentfont", documentfontpage.document_font);
     }
 
     Connections
