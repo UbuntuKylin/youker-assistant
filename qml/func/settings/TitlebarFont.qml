@@ -39,8 +39,6 @@ Rectangle {
     Component.onCompleted: {
         titlebarfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
         titlebarfontpage.selected_font = titlebarfontpage.titlebar_font;
-        console.log("init.......");
-        console.log(titlebarfontpage.selected_font);
         //将系统初始的标题栏字体写入QSetting配置文件
         sessiondispatcher.write_default_configure_to_qsetting_file("font", "titlebarfont", titlebarfontpage.titlebar_font);
     }
