@@ -114,6 +114,7 @@ Item {
             console.log(container.browserFlag);
             console.log(itemText.text);
             systemdispatcher.set_user_homedir_qt();
+            console.log("kobe111");
             systemdispatcher.cookies_clean_record_function_qt(container.browserFlag, itemText.text);
 
         }

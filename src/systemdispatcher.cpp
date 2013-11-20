@@ -236,13 +236,16 @@ void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
 }
 
 void SystemDispatcher::cookies_clean_record_function_qt(QString flag, QString website) {
+    qDebug() << "kobe222";
     QStringList strlist;
     strlist << flag << website;
+    qDebug() << strlist;
     KThread *thread = new KThread(strlist, systemiface, "cookies_clean_record_function");
     thread->start();
 }
 
 void SystemDispatcher::cookies_clean_records_function_qt(QString flag) {
+    qDebug() << "lixiang222";
     KThread *thread = new KThread(tmplist, systemiface, "cookies_clean_records_function", flag);
     thread->start();
 }

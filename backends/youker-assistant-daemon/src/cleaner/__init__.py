@@ -230,11 +230,11 @@ class CleanTheCookies():
         homedir = return_homedir_sysdaemon()
         objcc = cookiesclean.CookiesClean(homedir)
 
-        if flag in "f":
+        if flag in "firefox":
             filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
             pamf = [filepathf, 'moz_cookies', 'baseDomain', domain]
             objcc.clean_cookies_record(pamf[0], pamf[1], pamf[2], pamf[3])
-        if flag in "c":
+        if flag in "chromium":
             filepathc = "%s/.config/chromium/Default/Cookies" % homedir
             pamc = [filepathc, 'cookies', 'host_key', domain]
             objcc.clean_cookies_record(pamc[0], pamc[1], pamc[2], pamc[3])
@@ -243,11 +243,11 @@ class CleanTheCookies():
         homedir = return_homedir_sysdaemon()
         objcc = cookiesclean.CookiesClean(homedir)
 
-        if flag in "f":
+        if flag in "firefox":
             filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
             pamf = [filepathf, 'moz_cookies', 'baseDomain']
             objcc.clean_all_records(pamf[0], pamf[1], pamf[2])
-        if flag in "c":
+        if flag in "chromium":
             filepathc = "%s/.config/chromium/Default/Cookies" % homedir
             pamc = [filepathc, 'cookies', 'host_key']
             objcc.clean_all_records(pamc[0], pamc[1], pamc[2])
