@@ -111,8 +111,8 @@ Item {
         width: 60
         height: 20
         onClicked: {
-            console.log(itemText.text);
             console.log(container.browserFlag);
+            console.log(itemText.text);
             systemdispatcher.set_user_homedir_qt();
             systemdispatcher.cookies_clean_record_function_qt(container.browserFlag, itemText.text);
 
