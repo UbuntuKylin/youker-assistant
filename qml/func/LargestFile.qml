@@ -349,7 +349,7 @@ Item {
         },
         State {
             name: "LargestFileWorkFinish"
-            PropertyChanges { target: statusImage; iconName: "green.png"; text: qsTr("Exception occurred")}//已完成
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: qsTr("Completed")}//已完成
         },
         State {
             name: "LargestFileWorkEmpty"

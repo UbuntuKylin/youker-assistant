@@ -29,7 +29,6 @@ Item {
     property string bgImagePressed: '../img/icons/list_item_pressed.png'
     property bool selected: false
     property bool selectable: false
-    property bool checkbox_status: true
     property bool split_status: false
     property string btn_flag: "cookies_scan"
     property string browserFlag//浏览器标记
@@ -39,8 +38,6 @@ Item {
     height: 30
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
-    onCheckbox_statusChanged: {checkbox.checked=checkbox_status}  //当父项传进来的check值改变时，强制改变全部子项的check值以进行统一控制
-
 
     Connections
     {
@@ -111,12 +108,8 @@ Item {
         width: 60
         height: 20
         onClicked: {
-            console.log(container.browserFlag);
-            console.log(itemText.text);
             systemdispatcher.set_user_homedir_qt();
-            console.log("kobe111");
             systemdispatcher.cookies_clean_record_function_qt(container.browserFlag, itemText.text);
-
         }
     }
 

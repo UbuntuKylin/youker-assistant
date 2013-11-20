@@ -115,12 +115,11 @@ Rectangle {
                  color: "#383838"
              }
             //status picture
-            Image {
+            Common.StatusImage {
                 id: statusImage
                 visible: false
-                source: "../../img/toolWidget/finish.png"
-                fillMode: "PreserveAspectFit"
-                smooth: true
+                iconName: "green.png"
+                text: qsTr("Completed")//已完成
                 anchors.verticalCenter: parent.verticalCenter
             }
         }

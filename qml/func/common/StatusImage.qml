@@ -25,7 +25,6 @@ Rectangle {
     Image {
         id: statusImg
         anchors.fill: parent
-//        anchors.horizontalCenter: parent.horizontalCenter
         source: "../../img/toolWidget/" + iconName
     }
     Text {
