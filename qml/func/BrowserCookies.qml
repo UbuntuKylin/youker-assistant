@@ -376,16 +376,18 @@ Item {
             id: mycolumn
             Text {
                 id: text0
-                width: 69
+                width: 700
                 text: root.title
+                wrapMode: Text.WrapAnywhere
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
             Text {
                 id: text
-                width: 69
+                width: 700
                 text: root.description
+                wrapMode: Text.WrapAnywhere
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }

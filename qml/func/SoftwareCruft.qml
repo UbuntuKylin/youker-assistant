@@ -90,26 +90,13 @@ Item {
         }
     }
 
-
     ListModel {
         id: sof_mainModel
-//        ListElement {
-//            itemTitle: "软件中心缓存清理"
-//            picture: "../img/toolWidget/software-min.png"
-//            detailstr: "用户可以根据扫描结果选择性地清理软件中心缓存"
-//            flags: "clear_software"
-//            attributes: [
-//                ListElement { subItemTitle: "" }
-//            ]
-//        }
     }
 
     ListModel {
         id: sof_subModel
-//        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
-
-
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
@@ -169,13 +156,17 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 10
             Text {
+                width: 500
                 text: root.sof_title
+                wrapMode: Text.WrapAnywhere
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
             Text {
+                width: 500
                 text: root.sof_description
+                wrapMode: Text.WrapAnywhere
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
@@ -217,7 +208,7 @@ Item {
                      {
                         root.state = "SoftwareWork";
                          deleget_arrow=1;
-                         toolkits.alertMSG("Scan completed!", mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                         toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
                      }
                  }
                  else if (sof_btn_flag == "software_work") {

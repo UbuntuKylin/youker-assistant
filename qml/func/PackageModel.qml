@@ -86,24 +86,12 @@ Item {
         }
     }
 
-
-
     ListModel {
         id: mainModel
-//        ListElement {
-//            itemTitle: "卸载不必要的程序"
-//            picture: "../img/toolWidget/deb-min.png"
-//            detailstr: "用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦"
-//            flags: "clear_package"
-//            attributes: [
-//                ListElement { subItemTitle: "" }
-//            ]
-//        }
     }
 
     ListModel {
         id: subModel
-//        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
 
     Connections
@@ -154,13 +142,17 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 10
             Text {
+                width: 500
                 text: root.title
+                wrapMode: Text.WrapAnywhere
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
             Text {
+                width: 500
                 text: root.description
+                wrapMode: Text.WrapAnywhere
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }

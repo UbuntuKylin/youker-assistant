@@ -120,20 +120,10 @@ Item {
 
     ListModel {
         id: apt_mainModel
-//        ListElement {
-//            itemTitle: "包管理清理"
-//            picture: "../img/toolWidget/apt-min.png"
-//            detailstr: "用户可以根据扫描结果选择性地清理包管理残留包"
-//            flags: "clear_apt"
-//            attributes: [
-//                ListElement { subItemTitle: "" }
-//            ]
-//        }
     }
 
     ListModel {
         id: apt_subModel
-//        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
 
     //背景
@@ -157,13 +147,17 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 10
             Text {
+                width: 500
                 text: root.apt_title
+                wrapMode: Text.WrapAnywhere
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
             Text {
+                width: 500
                 text: root.apt_description
+                wrapMode: Text.WrapAnywhere
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }

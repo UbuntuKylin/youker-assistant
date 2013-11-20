@@ -163,12 +163,16 @@ Item {
             spacing: 5
             anchors.verticalCenter: parent.verticalCenter
             Text {
+                width: 500
                 text: itemtitle.itemTitle
+                wrapMode: Text.WrapAnywhere
                 font.pointSize: 11
                 color: "black"
             }
             Text {
+                width: 500
                 text: itemtitle.detailstr
+                wrapMode: Text.WrapAnywhere
                 font.family: "URW Bookman L"
                 font.pointSize: 9
                 color: "gray"

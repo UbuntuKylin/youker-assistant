@@ -74,6 +74,8 @@ Item {
                 }
                 Text {
                     text: detailstr
+                    width: 600
+                    wrapMode: Text.WrapAnywhere
                     font.family: "URW Bookman L"
                     font.pointSize: 9
                     color: "gray"

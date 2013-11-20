@@ -165,9 +165,6 @@ Rectangle {
 
     ListModel {
         id: mainModel
-        ListElement {
-            itemTitle: ""
-        }
     }
 
 

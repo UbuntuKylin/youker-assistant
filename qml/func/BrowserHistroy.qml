@@ -135,15 +135,17 @@ Item {
             id: mycolumn
             Text {
                 id: text0
-                width: 69
+                width: 700
                 text: root.title
+                wrapMode: Text.WrapAnywhere
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
             Text {
                 id: text
-                width: 69
+                width: 700
+                wrapMode: Text.WrapAnywhere
                 text: root.description
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -187,6 +189,7 @@ Item {
                             spacing: 15
                             Text {
                                 text: qsTr("Clean up the Internet browser record")//清理浏览器上网记录
+                                wrapMode: Text.WrapAnywhere
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
@@ -199,7 +202,9 @@ Item {
                             }
                         }
                         Text {
+                            width: 450
                             text: qsTr("Clean up the Internet histories, currently only supports Firefox browser")//清理上网时留下的历史记录,目前仅支持Firefox浏览器
+                            wrapMode: Text.WrapAnywhere
                             font.pixelSize: 12
                             color: "#7a7a7a"
                         }
@@ -212,7 +217,7 @@ Item {
                     text: qsTr("Unfinished")//未完成
                     anchors {
 //                        top:parent.top
-                        left: parent.left; leftMargin: 450
+                        left: parent.left; leftMargin: 550
                         verticalCenter: parent.verticalCenter
                     }
                     states: [
@@ -291,6 +296,7 @@ Item {
                         spacing: 15
                         Text {
                             text: qsTr("Clean the opened documents recently")//清理最近打开文件记录
+                            wrapMode: Text.WrapAnywhere
                             font.bold: true
                             font.pixelSize: 14
                             color: "#383838"
@@ -303,7 +309,9 @@ Item {
                         }
                     }
                     Text {
+                        width: 450
                         text: qsTr("Clean the opened documents recently, and protect your privacy")//清理系统上最近的文件打开记录，保护您的个人隐私
+                        wrapMode: Text.WrapAnywhere
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -316,7 +324,7 @@ Item {
                 text: qsTr("Unfinished")//未完成
                 anchors {
 //                    top:parent.top
-                    left: parent.left; leftMargin: 450
+                    left: parent.left; leftMargin: 550
                     verticalCenter: parent.verticalCenter
                 }
                 states: [
