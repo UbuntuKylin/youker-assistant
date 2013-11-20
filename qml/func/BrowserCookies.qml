@@ -498,7 +498,8 @@ Item {
                                             root.expanded = false;
                                         }
                                         systemdispatcher.set_user_homedir_qt();
-                                        systemdispatcher.cookies_clean_records_function_qt("f");
+                                        console.log("lixiang111");
+                                        systemdispatcher.cookies_clean_records_function_qt("firefox");
     //                                    systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
 //                                        root.deleget_arrow=1;
                                     }
@@ -590,7 +591,7 @@ Item {
                                             root.expanded2 = false;
                                         }
                                         systemdispatcher.set_user_homedir_qt();
-                                        systemdispatcher.cookies_clean_records_function_qt("c");
+                                        systemdispatcher.cookies_clean_records_function_qt("chromium");
     //                                    systemdispatcher.clean_cookies_records_qt(systemdispatcher.get_cookies_args());
 //                                        root.deleget_arrowc=1;
                                     }
