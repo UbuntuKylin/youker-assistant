@@ -187,6 +187,11 @@ class Daemon(PolicyKitService):
     def clean_complete(self, msg):
         pass
 
+    # a dbus method which means clean single complete
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_single_complete(self, msg):
+        pass
+
     # a dbus method which means an error occurred with main one key
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error_main(self, msg):

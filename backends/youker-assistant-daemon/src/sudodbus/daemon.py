@@ -61,11 +61,6 @@ class SudoDaemon(PolicyKitService):
     def clean_complete(self, msg):
         pass
 
-    # a dbus method which means clean single complete
-    @dbus.service.signal(INTERFACE, signature='s')
-    def clean_single_complete(self, msg):
-        pass
-
     # a dbus method which means an error occurred
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error(self, msg):

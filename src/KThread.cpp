@@ -47,15 +47,10 @@ void KThread::run() {
         iface->call("clean_cookies_records", list);
     }
     else if(methodName == "cookies_clean_record_function") {
-        qDebug() << "kobe333";
-        qDebug() << list;
         iface->call("cookies_clean_record_function", list);
-        qDebug() << "kobe444";
     }
     else if(methodName == "cookies_clean_records_function") {
-        qDebug() << "lixiang333";
         iface->call("cookies_clean_records_function", fileFlag);
-        qDebug() << "lixiang444";
     }
     else if(methodName == "clean_package_cruft") {
         iface->call("clean_package_cruft", list);

@@ -17,10 +17,10 @@
     </message>
     <message>
         <location filename="../../qml/func/AptCruft.qml" line="25"/>
+        <location filename="../../qml/func/AptCruft.qml" line="295"/>
         <location filename="../../qml/func/AptCruft.qml" line="301"/>
         <location filename="../../qml/func/AptCruft.qml" line="307"/>
         <location filename="../../qml/func/AptCruft.qml" line="313"/>
-        <location filename="../../qml/func/AptCruft.qml" line="319"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
@@ -59,44 +59,44 @@
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="188"/>
-        <location filename="../../qml/func/AptCruft.qml" line="297"/>
+        <location filename="../../qml/func/AptCruft.qml" line="182"/>
+        <location filename="../../qml/func/AptCruft.qml" line="291"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="210"/>
-        <location filename="../../qml/func/AptCruft.qml" line="225"/>
+        <location filename="../../qml/func/AptCruft.qml" line="204"/>
+        <location filename="../../qml/func/AptCruft.qml" line="219"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="210"/>
+        <location filename="../../qml/func/AptCruft.qml" line="204"/>
         <source>Scanning content is empty, no longer to perform cleanup!</source>
         <translation>扫描内容为空，不再执行清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="216"/>
+        <location filename="../../qml/func/AptCruft.qml" line="210"/>
         <source>Scan completed!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="225"/>
+        <location filename="../../qml/func/AptCruft.qml" line="219"/>
         <source>Sorry, you have no choice to clean up the items, please confirm!</source>
         <translation>对不起，您没有选择需要清理的项，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="295"/>
+        <location filename="../../qml/func/AptCruft.qml" line="289"/>
         <source>Start cleaning</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="309"/>
+        <location filename="../../qml/func/AptCruft.qml" line="303"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="315"/>
+        <location filename="../../qml/func/AptCruft.qml" line="309"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
@@ -172,12 +172,17 @@
         <translation>点击“自定义图片”按钮选择您需要添加到列表中的图片，在列表中选中您要设置的图片名称，点击“确定”按钮完成设置。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/BootAnimation.qml" line="124"/>
+        <location filename="../../qml/func/settings/BootAnimation.qml" line="93"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/BootAnimation.qml" line="123"/>
         <source>Custom picture</source>
         <translation>自定义图片</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/BootAnimation.qml" line="160"/>
+        <location filename="../../qml/func/settings/BootAnimation.qml" line="159"/>
         <source>Optional boot animation</source>
         <translation>可选开机动画</translation>
     </message>
@@ -189,74 +194,75 @@
         <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="26"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="25"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="27"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="26"/>
         <source>Clean the login information and protect personal privacy</source>
         <translation>清理浏览器登录信息，保护个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="28"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="27"/>
         <source>Clean up the login information, support Firefox and Chromium browser</source>
         <translation>清理上网时留下的登录信息，支持Firefox和Chromium浏览器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="390"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="30"/>
         <source>Clean Firefox&apos;s Cookies</source>
         <translation>清理Firefox保存的Cookies</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="391"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="31"/>
         <source>Clean up automatically saved logon information by Firefox browser(Cookies)</source>
         <translation>清理Firefox浏览器自动保存的登录信息(Cookies)</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="114"/>
-        <location filename="../../qml/func/BrowserCookies.qml" line="127"/>
-        <location filename="../../qml/func/BrowserCookies.qml" line="178"/>
-        <location filename="../../qml/func/BrowserCookies.qml" line="192"/>
-        <location filename="../../qml/func/BrowserCookies.qml" line="465"/>
-        <location filename="../../qml/func/BrowserCookies.qml" line="557"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="58"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="105"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="135"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="182"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="383"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="440"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="114"/>
-        <location filename="../../qml/func/BrowserCookies.qml" line="178"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="105"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="182"/>
         <source>Scanning content is empty, no longer to perform cleanup!</source>
         <translation>扫描内容为空，不再执行清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="120"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="114"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="192"/>
         <source>Scan completed!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="127"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="58"/>
         <source>No Firefox browser installed!</source>
         <translation>没有安装Firefox！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="192"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="135"/>
         <source>No Chromium browser installed!</source>
         <translation>没有安装Chromium！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="465"/>
-        <location filename="../../qml/func/BrowserCookies.qml" line="557"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="383"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="440"/>
         <source>Sorry, you have no choice to clean up the items, please confirm!</source>
         <translation>对不起，您没有选择需要清理的项，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="482"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="33"/>
         <source>Clean Chromium&apos;s Cookies</source>
         <translation>清理Chromium保存的Cookies</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserCookies.qml" line="483"/>
+        <location filename="../../qml/func/BrowserCookies.qml" line="34"/>
         <source>Clean up automatically saved logon information by Chromium browser(Cookies)</source>
         <translation>清理Chromium浏览器自动保存的登录信息(Cookies)</translation>
     </message>
@@ -269,14 +275,14 @@
     </message>
     <message>
         <location filename="../../qml/func/BrowserHistroy.qml" line="25"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="229"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="236"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="243"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="250"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="333"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="340"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="347"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="354"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="234"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="241"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="248"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="255"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="341"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="348"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="355"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="362"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
@@ -293,100 +299,100 @@
     <message>
         <location filename="../../qml/func/BrowserHistroy.qml" line="50"/>
         <location filename="../../qml/func/BrowserHistroy.qml" line="66"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="384"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="396"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="407"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="444"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="456"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="467"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="392"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="404"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="415"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="452"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="464"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="475"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
         <location filename="../../qml/func/BrowserHistroy.qml" line="50"/>
         <location filename="../../qml/func/BrowserHistroy.qml" line="66"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="249"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="353"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="396"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="456"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="254"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="361"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="404"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="464"/>
         <source>Scanning content is empty, no longer to perform cleanup!</source>
         <translation>扫描内容为空，不再执行清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="189"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="191"/>
         <source>Clean up the Internet browser record</source>
         <translation>清理浏览器上网记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="202"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="206"/>
         <source>Clean up the Internet histories, currently only supports Firefox browser</source>
         <translation>清理上网时留下的历史记录，目前仅支持Firefox浏览器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="212"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="224"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="316"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="328"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="217"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="229"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="324"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="336"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="221"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="325"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="226"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="333"/>
         <source>(Scan</source>
         <translation>（扫描到</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="221"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="242"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="325"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="346"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="226"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="247"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="333"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="354"/>
         <source>records)</source>
         <translation>条记录）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="222"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="326"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="227"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="334"/>
         <source>Start cleaning</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="235"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="238"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="339"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="342"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="240"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="243"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="347"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="350"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="242"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="346"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="247"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="354"/>
         <source>(Have cleared</source>
         <translation>（已清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="245"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="252"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="349"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="356"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="250"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="257"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="357"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="364"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="293"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="298"/>
         <source>Clean the opened documents recently</source>
         <translation>清理最近打开文件记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="306"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="313"/>
         <source>Clean the opened documents recently, and protect your privacy</source>
         <translation>清理系统上最近的文件打开记录，保护您的个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="384"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="407"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="444"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="467"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="392"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="415"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="452"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="475"/>
         <source>Sorry, you have no choice to get the history record items, please confirm!</source>
         <translation>对不起，您没有选中历史记录扫描项，请确认！</translation>
     </message>
@@ -527,90 +533,95 @@
         <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="38"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="40"/>
         <source>Default font settings</source>
         <translation>默认字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="39"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="41"/>
         <source>According to your preferences to set the system default font , click the default settings button, can revert the corresponding font to the default font.</source>
         <translation>根据您的喜好设置系统默认字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="139"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="124"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="149"/>
         <source>Font settings</source>
         <translation>字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="171"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="181"/>
         <source>Current font:</source>
         <translation>当前字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="193"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="246"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="300"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="202"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="256"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="311"/>
         <source>Change font</source>
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="200"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="254"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="308"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="406"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="209"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="264"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="319"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="413"/>
         <source>Restore default</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="212"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="266"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="320"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="418"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="216"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="271"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="326"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="420"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="212"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="216"/>
         <source>Your system&apos;s current font is the default font!</source>
         <translation>您系统的当前字体已经为默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="226"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="236"/>
         <source>Current desktop font:</source>
         <translation>当前桌面字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="266"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="271"/>
         <source>Your system&apos;s current desktop font is the default font!</source>
         <translation>您系统的当前桌面字体已经为默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="280"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="291"/>
         <source>Current monospace font:</source>
         <translation>当前等宽字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="320"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="326"/>
         <source>Your system&apos;s current monospace font is the default font!</source>
         <translation>您系统的当前等宽字体已经为默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="343"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="351"/>
         <source>Zoom settings</source>
         <translation>缩放设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="368"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="376"/>
         <source>Global font scaling:</source>
         <translation>全局字体缩放：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="396"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="404"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="418"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="420"/>
         <source>Your system&apos;s current global font scaling is the default!</source>
         <translation>您系统的全局字体缩放已经为默认设置！</translation>
     </message>
@@ -626,72 +637,77 @@
         <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="35"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="33"/>
         <source>Desktop icon settings</source>
         <translation>桌面图标设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="36"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="34"/>
         <source>You can set the desktop icon theme and control some icon displayed on the desktop.</source>
         <translation>您可以设置桌面图标主题和控制一些图标是否显示在桌面上。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="130"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="105"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="128"/>
         <source>Icon theme settings</source>
         <translation>图标主题设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="158"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="156"/>
         <source>Icon theme</source>
         <translation>图标主题</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="176"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="174"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="188"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="183"/>
         <source>Restore default</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="199"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="190"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="199"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="190"/>
         <source>Your system&apos;s current icon theme is the default!</source>
         <translation>您系统的图标主题已经为默认设置！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="221"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="218"/>
         <source>Desktop icon display control</source>
         <translation>桌面图标显示控制</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="249"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="246"/>
         <source>The file manager desktop:</source>
         <translation>由文件管理器处理桌面：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="274"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="271"/>
         <source>My documents:</source>
         <translation>我的文档：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="298"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="295"/>
         <source>Network:</source>
         <translation>网络：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="322"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="319"/>
         <source>Recycle bin:</source>
         <translation>回收站：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="347"/>
+        <location filename="../../qml/func/settings/DesktopiconSet.qml" line="344"/>
         <source>Mobile equipment:</source>
         <translation>移动设备：</translation>
     </message>
@@ -703,38 +719,43 @@
         <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="33"/>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="107"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="34"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="112"/>
         <source>Document font settings</source>
         <translation>文档字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="34"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="35"/>
         <source>According to your preferences set document fonts, click &apos;default settings&apos; button, can revert the corresponding font to the default font.</source>
         <translation>根据您的喜好设置文档字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="134"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="87"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="139"/>
         <source>Current document font:</source>
         <translation>当前文档字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="161"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="166"/>
         <source>Change font</source>
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="169"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="174"/>
         <source>Restore default</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="180"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="182"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="180"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="182"/>
         <source>Your system&apos;s current document font is the default!</source>
         <translation>您系统的当前文档字体已经为默认字体！</translation>
     </message>
@@ -987,27 +1008,32 @@
         <translation>可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="140"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="46"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="139"/>
         <source>Skin settings</source>
         <translation>皮肤设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="165"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="164"/>
         <source>Use skin</source>
         <translation>使用皮肤</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="243"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="242"/>
         <source>Change font</source>
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="260"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="259"/>
         <source>Size</source>
         <translation>大小</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="304"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="303"/>
         <source>Font settings</source>
         <translation>字体设置</translation>
     </message>
@@ -1227,11 +1253,11 @@
     </message>
     <message>
         <location filename="../../qml/func/LargestFile.qml" line="348"/>
-        <location filename="../../qml/func/LargestFile.qml" line="352"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
+        <location filename="../../qml/func/LargestFile.qml" line="352"/>
         <location filename="../../qml/func/LargestFile.qml" line="356"/>
         <source>Completed</source>
         <translation>已完成</translation>
@@ -1241,7 +1267,7 @@
     <name>LauncherTheme</name>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="32"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="101"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="100"/>
         <source>Launcher settings</source>
         <translation>启动器设置</translation>
     </message>
@@ -1251,7 +1277,12 @@
         <translation>用户可以根据需要设置启动器的自动隐藏功能和启动器上图标的显示尺寸；拖动滑动条，点击“确定”按钮完成大小设置。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="128"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="75"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="127"/>
         <source>Hide Launcher automatically:</source>
         <translation>启动器自动隐藏：</translation>
     </message>
@@ -1260,12 +1291,12 @@
         <translation type="obsolete">启动器自动隐藏：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="152"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="151"/>
         <source>Icon size in Launcher:</source>
         <translation>启动器上的图标大小：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="182"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="181"/>
         <source>Display desktop icon:</source>
         <translation>显示桌面图标：</translation>
     </message>
@@ -1381,7 +1412,22 @@
 <context>
     <name>ListItems</name>
     <message>
-        <location filename="../../qml/func/ListItems.qml" line="109"/>
+        <location filename="../../qml/func/ListItems.qml" line="45"/>
+        <source>Cleanup failed!</source>
+        <translation>清理失败！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/ListItems.qml" line="51"/>
+        <source>Cleanup interrupted!</source>
+        <translation>清理中断了！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/ListItems.qml" line="55"/>
+        <source>Cleanup Successfully!</source>
+        <translation>清理成功！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/ListItems.qml" line="110"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
@@ -1393,35 +1439,35 @@
         <translation type="obsolete">清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/ListTitle.qml" line="115"/>
+        <location filename="../../qml/func/ListTitle.qml" line="67"/>
         <source>Exception occurred!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/ListTitle.qml" line="123"/>
+        <location filename="../../qml/func/ListTitle.qml" line="75"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断了！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/ListTitle.qml" line="128"/>
+        <location filename="../../qml/func/ListTitle.qml" line="78"/>
         <source>Cleaned</source>
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/ListTitle.qml" line="199"/>
-        <location filename="../../qml/func/ListTitle.qml" line="289"/>
-        <location filename="../../qml/func/ListTitle.qml" line="295"/>
-        <location filename="../../qml/func/ListTitle.qml" line="301"/>
-        <location filename="../../qml/func/ListTitle.qml" line="307"/>
-        <location filename="../../qml/func/ListTitle.qml" line="320"/>
-        <location filename="../../qml/func/ListTitle.qml" line="327"/>
-        <location filename="../../qml/func/ListTitle.qml" line="334"/>
+        <location filename="../../qml/func/ListTitle.qml" line="130"/>
+        <location filename="../../qml/func/ListTitle.qml" line="203"/>
+        <location filename="../../qml/func/ListTitle.qml" line="208"/>
+        <location filename="../../qml/func/ListTitle.qml" line="213"/>
+        <location filename="../../qml/func/ListTitle.qml" line="218"/>
+        <location filename="../../qml/func/ListTitle.qml" line="229"/>
+        <location filename="../../qml/func/ListTitle.qml" line="235"/>
+        <location filename="../../qml/func/ListTitle.qml" line="241"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/ListTitle.qml" line="275"/>
-        <location filename="../../qml/func/ListTitle.qml" line="282"/>
+        <location filename="../../qml/func/ListTitle.qml" line="191"/>
+        <location filename="../../qml/func/ListTitle.qml" line="197"/>
         <source>All clean</source>
         <translation>全部清理</translation>
     </message>
@@ -1570,7 +1616,7 @@
     <name>MousePointer</name>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="32"/>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="102"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="101"/>
         <source>Mouse settings</source>
         <translation>鼠标设置</translation>
     </message>
@@ -1580,22 +1626,27 @@
         <translation>更换鼠标指针主题和大小，更改设置后点击“确定”按钮进行确认。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="129"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="73"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="128"/>
         <source>Mouse pointer theme</source>
         <translation>鼠标指针主题</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="149"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="148"/>
         <source>Mouse pointer size</source>
         <translation>鼠标指针大小</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="162"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="161"/>
         <source>Small size</source>
         <translation>小号</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="170"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="169"/>
         <source>Big size</source>
         <translation>大号</translation>
     </message>
@@ -1608,10 +1659,10 @@
     </message>
     <message>
         <location filename="../../qml/func/PackageModel.qml" line="27"/>
-        <location filename="../../qml/func/PackageModel.qml" line="342"/>
-        <location filename="../../qml/func/PackageModel.qml" line="348"/>
-        <location filename="../../qml/func/PackageModel.qml" line="354"/>
-        <location filename="../../qml/func/PackageModel.qml" line="360"/>
+        <location filename="../../qml/func/PackageModel.qml" line="334"/>
+        <location filename="../../qml/func/PackageModel.qml" line="340"/>
+        <location filename="../../qml/func/PackageModel.qml" line="346"/>
+        <location filename="../../qml/func/PackageModel.qml" line="352"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
@@ -1636,59 +1687,59 @@
         <translation type="obsolete">清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="116"/>
+        <location filename="../../qml/func/PackageModel.qml" line="104"/>
         <source>Exception occurred!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="128"/>
+        <location filename="../../qml/func/PackageModel.qml" line="116"/>
         <source>Cleaned</source>
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="183"/>
-        <location filename="../../qml/func/PackageModel.qml" line="338"/>
+        <location filename="../../qml/func/PackageModel.qml" line="175"/>
+        <location filename="../../qml/func/PackageModel.qml" line="330"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="210"/>
-        <location filename="../../qml/func/PackageModel.qml" line="226"/>
-        <location filename="../../qml/func/PackageModel.qml" line="247"/>
-        <location filename="../../qml/func/PackageModel.qml" line="263"/>
+        <location filename="../../qml/func/PackageModel.qml" line="202"/>
+        <location filename="../../qml/func/PackageModel.qml" line="218"/>
+        <location filename="../../qml/func/PackageModel.qml" line="239"/>
+        <location filename="../../qml/func/PackageModel.qml" line="255"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="210"/>
-        <location filename="../../qml/func/PackageModel.qml" line="247"/>
+        <location filename="../../qml/func/PackageModel.qml" line="202"/>
+        <location filename="../../qml/func/PackageModel.qml" line="239"/>
         <source>Scanning content is empty, no longer to perform cleanup!</source>
         <translation>扫描内容为空，不再执行清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="216"/>
-        <location filename="../../qml/func/PackageModel.qml" line="253"/>
+        <location filename="../../qml/func/PackageModel.qml" line="208"/>
+        <location filename="../../qml/func/PackageModel.qml" line="245"/>
         <source>Scan completed!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="226"/>
-        <location filename="../../qml/func/PackageModel.qml" line="263"/>
+        <location filename="../../qml/func/PackageModel.qml" line="218"/>
+        <location filename="../../qml/func/PackageModel.qml" line="255"/>
         <source>Sorry, you have no choice to clean up the items, please confirm!</source>
         <translation>对不起，您没有选择需要清理的项，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="336"/>
+        <location filename="../../qml/func/PackageModel.qml" line="328"/>
         <source>Start cleaning</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="350"/>
+        <location filename="../../qml/func/PackageModel.qml" line="342"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="356"/>
+        <location filename="../../qml/func/PackageModel.qml" line="348"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
@@ -1893,51 +1944,42 @@
 <context>
     <name>SamenameFile</name>
     <message>
-        <location filename="../../qml/func/SamenameFile.qml" line="25"/>
-        <location filename="../../qml/func/SamenameFile.qml" line="381"/>
         <source>Start scanning</source>
-        <translation>开始扫描</translation>
+        <translation type="obsolete">开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SamenameFile.qml" line="26"/>
         <source>Clean up the file of the same name</source>
-        <translation>清理同名文件</translation>
+        <translation type="obsolete">清理同名文件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SamenameFile.qml" line="27"/>
         <source>Clear user specified directory files with the same name, save disk space</source>
-        <translation>清理用户指定目录下的同名文件，节省磁盘空间</translation>
+        <translation type="obsolete">清理用户指定目录下的同名文件，节省磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SamenameFile.qml" line="72"/>
         <source>System slim</source>
-        <translation>系统瘦身</translation>
+        <translation type="obsolete">系统瘦身</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SamenameFile.qml" line="74"/>
         <source>Clean up the file of the same name, make the system more thin</source>
-        <translation>清理同名文件,让系统更瘦</translation>
+        <translation type="obsolete">清理同名文件,让系统更瘦</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SamenameFile.qml" line="374"/>
         <source>Scan completed</source>
-        <translation>扫描完成！</translation>
+        <translation type="obsolete">扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SamenameFile.qml" line="375"/>
         <source>Start cleaning</source>
-        <translation>开始清理</translation>
+        <translation type="obsolete">开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SamenameFile.qml" line="380"/>
         <source>Cleared</source>
-        <translation>清理完毕！</translation>
+        <translation type="obsolete">清理完毕！</translation>
     </message>
 </context>
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="437"/>
+        <location filename="../sessiondispatcher.cpp" line="449"/>
         <source>choose folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -2063,10 +2105,10 @@
     </message>
     <message>
         <location filename="../../qml/func/SoftwareCruft.qml" line="29"/>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="305"/>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="311"/>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="317"/>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="323"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="296"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="302"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="308"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="314"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
@@ -2089,49 +2131,54 @@
         <translation>软件中心缓存清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="130"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="117"/>
         <source>Exception occurred!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="142"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="129"/>
         <source>Cleared!</source>
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="192"/>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="301"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="183"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="292"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="214"/>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="230"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="205"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="221"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="214"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="205"/>
         <source>Scanning content is empty, no longer to perform cleanup!</source>
         <translation>扫描内容为空，不再执行清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="230"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="211"/>
+        <source>Scan completed!</source>
+        <translation>扫描完成！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="221"/>
         <source>Sorry, you have no choice to clean up the items, please confirm!</source>
         <translation>对不起，您没有选择需要清理的项，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="299"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="290"/>
         <source>Start cleaning</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="313"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="304"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="319"/>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="310"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
@@ -2294,52 +2341,57 @@
         <translation>选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="141"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="122"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="143"/>
         <source>Sound theme:</source>
         <translation>声音主题：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="157"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="159"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="180"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="179"/>
         <source>Restore default</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="191"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="186"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="191"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="186"/>
         <source>The current theme has been the default theme!</source>
         <translation>当前主题已经为默认主题！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="219"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="220"/>
         <source>Program events:</source>
         <translation>程序事件：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="232"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="233"/>
         <source>Listen</source>
         <translation>试听</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="239"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="240"/>
         <source>Replace</source>
         <translation>替换</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="246"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="247"/>
         <source>Restore</source>
         <translation>还原</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="461"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="462"/>
         <source>Custom SoundTheme</source>
         <translation>自定义声音主题</translation>
     </message>
@@ -2348,17 +2400,17 @@
         <translation type="obsolete">自定义声音主题</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="470"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="471"/>
         <source>Not to support audio file of the Chinese path.</source>
         <translation>暂不支持中文路径下的音频文件。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="491"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="492"/>
         <source>Sound settings:</source>
         <translation>声音设置：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="499"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="500"/>
         <source>System login:</source>
         <translation>系统登录：</translation>
     </message>
@@ -2374,12 +2426,11 @@
 <context>
     <name>StatusWidget</name>
     <message>
-        <location filename="../../qml/StatusWidget.qml" line="25"/>
         <source>check update</source>
-        <translation>检查更新</translation>
+        <translation type="obsolete">检查更新</translation>
     </message>
     <message>
-        <location filename="../../qml/StatusWidget.qml" line="41"/>
+        <location filename="../../qml/StatusWidget.qml" line="39"/>
         <source>main version:</source>
         <translation>主版本：</translation>
     </message>
@@ -2534,22 +2585,22 @@
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="206"/>
+        <location filename="../systemdispatcher.cpp" line="215"/>
         <source>choose boot animation</source>
         <translation>选择开机动画</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="206"/>
+        <location filename="../systemdispatcher.cpp" line="215"/>
         <source>Image Files (*.png)</source>
         <translation>Image Files (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="211"/>
+        <location filename="../systemdispatcher.cpp" line="220"/>
         <source>choose music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="211"/>
+        <location filename="../systemdispatcher.cpp" line="220"/>
         <source>Music Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>Music Files (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
@@ -2775,38 +2826,43 @@
         <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="33"/>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="107"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="31"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="106"/>
         <source>Titlebar font settings</source>
         <translation>标题栏字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="34"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="32"/>
         <source>According to your preferences set titlebar font, by using the &apos;default settings&apos; button, can revert to the default font.</source>
         <translation>根据您的喜好设置标题栏字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="134"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="80"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="133"/>
         <source>Current titlebar font:</source>
         <translation>当前标题栏字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="161"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="159"/>
         <source>Change font</source>
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="171"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="167"/>
         <source>Restore default</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="182"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="177"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="182"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="177"/>
         <source>Your system&apos;s current titlebar font is the default font!</source>
         <translation>您系统的窗体标题栏字体已经为默认字体！</translation>
     </message>
@@ -3273,6 +3329,11 @@
         <location filename="../../qml/func/settings/WidgetTheme.qml" line="26"/>
         <source>Choose theme you want, click the &apos;OK&apos; button to change; by default, the first theme on the page is the current theme.</source>
         <translation>选中您想设置的主题，点击确定按钮更换主题；优客助手启动时页面上的第一个主题为系统当前使用的主题。</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="143"/>
+        <source>Completed</source>
+        <translation>已完成</translation>
     </message>
 </context>
 <context>

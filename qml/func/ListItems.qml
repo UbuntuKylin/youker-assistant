@@ -30,10 +30,8 @@ Item {
     property bool selected: false
     property bool selectable: false
     property bool split_status: false
-//    property string btn_flag: "cookies_scan"
     property string browserFlag//浏览器标记
     signal clicked
-
     width: 850
     height: 30
     clip: true
@@ -44,16 +42,17 @@ Item {
         target: systemdispatcher
         onFinishCleanSingleWorkError: {
             if (msg == "cookies") {
-                console.log("clean failed....");
+                toolkits.alertMSG(qsTr("Cleanup failed!"), mainwindow.pos.x, mainwindow.pos.y);//清理失败！
             }
         }
 
         onFinishCleanSingleWork: {
             if (msg == "") {
-                console.log("give up clean....");
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+
             }
             else if (msg == "cookies") {
-                console.log("clean success....");
+                toolkits.alertMSG(qsTr("Cleanup Successfully!"), mainwindow.pos.x, mainwindow.pos.y);//清理成功！
                 container.clicked();
             }
         }
@@ -121,7 +120,6 @@ Item {
     MouseArea {
         id: mouseArea
         anchors.fill: itemText
-//        onClicked: container.clicked();
         onReleased: selectable && !selected ? selected = true : selected = false
     }
 
