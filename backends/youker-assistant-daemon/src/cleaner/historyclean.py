@@ -17,7 +17,7 @@
 
 import os.path
 import sqlite3
-
+from common import process_pid
 from common import get_mozilla_path
 
 
@@ -44,6 +44,36 @@ class HistoryClean():
             scan_browser_cur.close()
             scan_browser_conn.close()
         return save
+
+    def scan_firefox_history_records(self, filepath):
+        result = []
+        if os.path.exists(filepath):
+            scan_browser_conn = sqlite3.connect(filepath)
+            scan_browser_cur = scan_browser_conn.cursor()
+            sql_select = "SELECT moz_historyvisits.place_id, moz_places.url, count(*) FROM moz_historyvisits, moz_places WHERE moz_historyvisits.place_id=moz_places.id GROUP BY moz_historyvisits.place_id"
+            scan_browser_cur.execute(sql_select)
+            allvisit = scan_browser_cur.fetchall()
+            result = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in allvisit]
+            scan_browser_cur.close()
+            scan_browser_conn.close()
+        return result
+
+    def scan_chromium_history_records(self, filepath):
+        result = []
+        run = process_pid("chromium-browser")
+        if os.path.exists(filepath):
+            if not run:
+                scan_chromium_conn = sqlite3.connect(filepath)
+                scan_chromium_cur = scan_chromium_conn.cursor()
+                sql_select = "SELECT visits.url, urls.url, count(*) FROM visits, urls WHERE visits.url=urls.id GROUP BY visits.url"
+                scan_chromium_cur.execute(sql_select)
+                allvisit = scan_chromium_cur.fetchall()
+                result = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in allvisit]
+                scan_chromium_cur.close()
+                scan_chromium_conn.close()
+            else:
+                pass
+        return result
 
     def clean_the_records(self, history):
         int_history = int(history)
