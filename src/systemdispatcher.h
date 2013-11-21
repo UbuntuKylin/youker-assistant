@@ -146,6 +146,8 @@ public:
 signals:
     //添加新的开机动画图片后触发该信号
     void finishAddBootImage();
+    void finishCleanSingleWork(QString msg);
+    void finishCleanSingleWorkError(QString msg);
     void finishCleanWork(QString msg);
     void finishCleanWorkError(QString msg);
     void finishCleanWorkMain(QString msg);
@@ -156,6 +158,8 @@ signals:
     void finishCleanDataSecond(QString type, QString msg);
 
 public slots:
+    void handler_clear_single_rubbish(QString msg);
+    void handler_clear_single_rubbish_error(QString msg);
     void handler_clear_rubbish(QString msg);
     void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);

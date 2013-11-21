@@ -37,9 +37,7 @@ Item {
     property int deleget_arrow2: 0
     property bool expanded: false
     property bool expanded2: false
-    property bool delegate_flag: false
-    property int check_fnum: firefoxNum   //记录子项个数，在确定总checkbox状态时需要的变量
-    property int check_cnum: chromiumNum   //记录子项个数，在确定总checkbox状态时需要的变量
+    property bool delegate_flag: false//是否切割每行内容
     property bool flag: false//记录是单个清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
 
     //获取firefox的cookies
@@ -82,14 +80,19 @@ Item {
             }
             root.firefoxNum -= num;
             if(root.firefoxNum != 0) {
-                firefox_check_flag=true;
+                root.firefox_check_flag = true;//存在实际有效内容
             }
-
-
+            else {
+                root.firefox_check_flag = false;//无实际有效内容
+            }
             //--------------------------------
-            if(root.null_flag == true) {
-                sessiondispatcher.tellNullToListTitle("firefox", true);
+            if(root.firefox_check_flag == false) {
+//                sessiondispatcher.tellNullToListTitle("firefox", true);
+
+                yourselfListView.visible = false;
+                root.expanded = false;
                 root.deleget_arrow=0;//Firefox的cookies为空时隐藏伸缩图标
+
                 if(root.flag == false) {
                     //友情提示      扫描内容为空，不再执行清理！
                     sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -98,9 +101,8 @@ Item {
                     root.flag = false;
                 }
             }
-            else if(root.null_flag == false)
-            {
-                sessiondispatcher.tellNullToListTitle("firefox", false);
+            else if(root.firefox_check_flag == true) {
+//                sessiondispatcher.tellNullToListTitle("firefox", false);
                 root.deleget_arrow = 1;//Firefox的cookies不为空时显示伸缩图标
                 if(flag == false) {
                     toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
@@ -108,6 +110,12 @@ Item {
                 else {
                     root.flag = false;
                 }
+                //---------------
+                yourselfListView.visible = true;
+                root.expanded = true;
+                root.deleget_arrow = 1;//传递给ListTitle.qml去隐藏伸展按钮
+                scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + 15*4 + 20 + 10;
+                console.log(root.expanded)
             }
             //--------------------------------
         }
@@ -117,7 +125,7 @@ Item {
     function getDataOfChromium() {
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("c");
         if(cookies_data == "None") {//没有安装Chromium
-            root.deleget_arrow2=0;
+            root.deleget_arrow2 = 0;
             //友情提示
             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Chromium browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
         }
@@ -153,14 +161,18 @@ Item {
             }
             root.chromiumNum -= num;
             if(root.chromiumNum != 0) {
-                chromium_check_flag = true;
+                root.chromium_check_flag = true;//存在实际有效内容
+            }
+            else {
+                root.chromium_check_flag = false;//无实际有效内容
             }
 
-
             //------------------------------------------
-            if(root.null_flag2 == true) {
-                sessiondispatcher.tellNullToListTitle("chromium", true);
-                root.deleget_arrow2=0;
+            if(root.chromium_check_flag == false) {
+//                sessiondispatcher.tellNullToListTitle("chromium", true);
+                systemListView.visible = false;
+                root.expanded2 = false;
+                root.deleget_arrow2 = 0;//Firefox的cookies为空时隐藏伸缩图标
                 if(root.flag == false) {
                     //友情提示      扫描内容为空，不再执行清理！
                     sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -169,18 +181,20 @@ Item {
                     root.flag = false;
                 }
             }
-
-
-            else if(root.null_flag2 == false)
+            else if(root.chromium_check_flag == true)
             {
                 root.deleget_arrow2=1;
-                sessiondispatcher.tellNullToListTitle("chromium", false);
+//                sessiondispatcher.tellNullToListTitle("chromium", false);
                 if(root.flag == false) {
                     toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
                 }
                 else {
                     root.flag = false;
                 }
+                systemListView.visible = true;
+                root.expanded2 = true;
+                root.deleget_arrow2 = 1;//传递给ListTitle.qml去隐藏伸展按钮
+                scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + 15*4 + 20 + 10;
             }
             //------------------------------------------
         }
@@ -194,7 +208,7 @@ Item {
             text: itemTitle
             descript: desc
             size_num: number
-            btn_flag: root.btn_flag
+//            btn_flag: root.btn_flag
             bgImage: ""
             browserFlag: "firefox"
             onClicked: {
@@ -209,7 +223,7 @@ Item {
             text: itemTitle
             descript: desc
             size_num: number
-            btn_flag: root.btn_flag
+//            btn_flag: root.btn_flag
             bgImage: ""
             browserFlag: "chromium"
             onClicked: {
@@ -231,18 +245,14 @@ Item {
         target: systemdispatcher
         onFinishCleanWork: {
             if (btn_flag == "cookies_work") {
-                if (msg == "") {
-                }
-                else if (msg == "cookies") {
+                if (msg == "cookies") {
                     //清理完毕后重新获取cookies
                     root.flag = true;
                     root.getDataOfFirefox();
                 }
             }
             if (btn_flag == "cookies_workc") {
-                if (msg == "") {
-                }
-                else if (msg == "cookies") {
+                if (msg == "cookies") {
                     //清理完毕后重新获取cookies
                     root.flag = true;
                     root.getDataOfChromium();
@@ -332,47 +342,39 @@ Item {
                     nullFlag: root.null_flag
                     expanded: root.expanded//expanded为true时，箭头向下，内容展开;expanded为false时，箭头向上，内容收缩
                     onClicked: {
+                        //点击伸缩图标时，说明肯定是有内容的，设置其下内容的隐藏/显示以及高度
                         yourselfListView.visible = !yourselfListView.visible;
-                        root.expanded = !root.expanded;
                         scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + 15*4 + 20 + 10;
                     }
-
                     onSendBrowserType: {
                         if(flag == "firefox") {
                             if(status == "reset") {//点击重置按钮，清空数据
                                 firefoxModel.clear();
-                                root.deleget_arrow=0;//传递给ListTitle.qml去隐藏伸展按钮
-                                if(yourselfListView.visible == true) {
-                                    yourselfListView.visible = false;
-                                }
                                 if(root.expanded == true) {
-                                    root.expanded = false;
+                                    root.expanded = false;//1、先传递给ListTitle.qml的伸缩值设为默认的false
+                                }
+                                root.deleget_arrow = 0;//2、然后传递给ListTitle.qml去隐藏伸展按钮
+                                if(yourselfListView.visible == true) {
+                                    yourselfListView.visible = false;//3、隐藏扩展内容
                                 }
                             }
                             else {
                                 root.btn_flag = status;
-                                if(root.firefox_check_flag)
-                                {
-                                    //broswer cookies
-                                    if (root.btn_flag == "cookies_scan") {
-                                        console.log("scan---f......");
-                                        //开始扫描时获取cookies
-                                        root.getDataOfFirefox();
-                                    }
-                                    else if (root.btn_flag == "cookies_work") {
+                                if (root.btn_flag == "cookies_scan") {
+                                    console.log("scan---f......");
+                                    //开始扫描时获取cookies
+                                    root.getDataOfFirefox();
+                                }
+                                else if (root.btn_flag == "cookies_work") {
+                                    if(root.firefox_check_flag) {
                                         console.log("clean---f......");
-                                        if(yourselfListView.visible == true) {
-                                            yourselfListView.visible = false;
-                                        }
-                                        if(root.expanded == true) {
-                                            root.expanded = false;
-                                        }
+                                        //开始清理cookies
                                         systemdispatcher.set_user_homedir_qt();
                                         systemdispatcher.cookies_clean_records_function_qt("firefox");
                                     }
-                                }
-                                else {
-                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                    else {
+                                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                    }
                                 }
                             }
                         }
@@ -403,41 +405,30 @@ Item {
                         scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + 15*4 + 20 + 10;
                     }
                     onSendBrowserType: {
-                        if(flag == "chromium") {
-                            console.log("chromium");
-
-                            if(status == "reset") {//点击重置按钮，清空数据
-                                chromiumModel.clear();
-                                root.deleget_arrow2=0;//传递给ListTitle.qml去隐藏伸展按钮
-                                if(systemListView.visible == true) {
-                                    systemListView.visible = false;
-                                }
-                                if(root.expanded2 == true) {
-                                    root.expanded2 = false;
-                                }
+                        if(status == "reset") {//点击重置按钮，清空数据
+                            chromiumModel.clear();
+                            if(root.expanded2 == true) {
+                                root.expanded2 = false;//1、先传递给ListTitle.qml的伸缩值设为默认的false
                             }
-                            else {
-                                root.btn_flag2 = status;
+                            root.deleget_arrow2 = 0;//2、然后传递给ListTitle.qml去隐藏伸展按钮
+                            if(systemListView.visible == true) {
+                                systemListView.visible = false;//3、隐藏扩展内容
+                            }
+                        }
+                        else {
+                            root.btn_flag2 = status;
+                            if (root.btn_flag2 == "cookies_scanc") {
+                                console.log("scan---c......");
+                                //开始扫描时获取cookies
+                                root.getDataOfChromium();
+                            }
+                            else if (root.btn_flag2 == "cookies_workc") {
                                 if(root.chromium_check_flag)
                                 {
-                                    //broswer cookies
-                                    if (root.btn_flag2 == "cookies_scanc") {
-                                        console.log("scan---c......");
-                                        //开始扫描时获取cookies
-                                        root.getDataOfChromium();
-                                    }
-                                    else if (root.btn_flag2 == "cookies_workc") {
-                                        console.log("clean---c......");
-                                        root.deleget_arrow2=0;
-                                        if(systemListView.visible == true) {
-                                            systemListView.visible = false;
-                                        }
-                                        if(root.expanded2 == true) {
-                                            root.expanded2 = false;
-                                        }
-                                        systemdispatcher.set_user_homedir_qt();
-                                        systemdispatcher.cookies_clean_records_function_qt("chromium");
-                                    }
+                                    console.log("clean---c......");
+                                    //开始清理cookies
+                                    systemdispatcher.set_user_homedir_qt();
+                                    systemdispatcher.cookies_clean_records_function_qt("chromium");
                                 }
                                 else {
                                     sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);

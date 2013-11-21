@@ -33,6 +33,8 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                "com.ubuntukylin_tools.daemon",
                                QDBusConnection::systemBus());
     //绑定到底层清理完毕后发送到信号函数clear_browser
+    QObject::connect(systemiface,SIGNAL(clean_single_complete(QString)),this,SLOT(handler_clear_single_rubbish(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_single_error(QString)),this,SLOT(handler_clear_single_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
@@ -122,6 +124,14 @@ bool SystemDispatcher::get_history_flag() {
 
 void SystemDispatcher::handler_clear_rubbish(QString msg) {
      emit finishCleanWork(msg);
+}
+
+void SystemDispatcher::handler_clear_single_rubbish(QString msg) {
+    emit finishCleanSingleWork(msg);
+}
+
+void SystemDispatcher::handler_clear_single_rubbish_error(QString msg) {
+    emit finishCleanSingleWorkError(msg);
 }
 
 void SystemDispatcher::handler_clear_rubbish_main_onekey(QString msg) {

@@ -202,6 +202,11 @@ class Daemon(PolicyKitService):
     def clean_error(self, msg):
         pass
 
+    # a dbus method which means an single error occurred
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_single_error(self, msg):
+        pass
+
     # the function of clean cruft by main one key
     ###input-['history', 'cach....] output-''
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
@@ -374,15 +379,15 @@ class Daemon(PolicyKitService):
     def cookies_clean_record_function(self, flag, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
-            self.clean_complete_msg('')
+            self.clean_single_complete_msg('')
             return
         daemoncookies = cleaner.CleanTheCookies(None)
         try:
             daemoncookies.clean_one_cookies_cruft(flag[0], flag[1])
         except Exception, e:
-            self.clean_error_msg('cookies')
+            self.clean_single_error_msg('cookies')
         else:
-            self.clean_complete_msg('cookies')
+            self.clean_single_complete_msg('cookies')
 
     @dbus.service.method(INTERFACE, in_signature = 's', out_signature = '', sender_keyword = 'sender')
     def cookies_clean_records_function(self, flag, sender = None):
@@ -446,8 +451,14 @@ class Daemon(PolicyKitService):
     def clean_complete_msg(self, para):
         self.clean_complete(para)
 
+    def clean_single_complete_msg(self, para):
+        self.clean_single_complete(para)
+
     def clean_error_msg(self, para):
         self.clean_error(para)
+
+    def clean_single_error_msg(self, para):
+        self.clean_single_error(para)
 
     def clean_error_main_msg(self, para):
         self.clean_error_main(para)

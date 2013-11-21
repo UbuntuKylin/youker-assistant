@@ -132,11 +132,9 @@ Item {
             onClicked: {
                 if(itemtitle.btnFlag == "cookies_scan") {
                     itemtitle.sendBrowserType(itemtitle.flag, "cookies_scan");
-
                 }
                 else if(itemtitle.btnFlag == "cookies_scanc") {
                     itemtitle.sendBrowserType(itemtitle.flag, "cookies_scanc");
-
                 }
                 else if(itemtitle.btnFlag == "cookies_work") {
                     itemtitle.sendBrowserType(itemtitle.flag, "cookies_work");
@@ -154,7 +152,6 @@ Item {
             visible: false
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-                itemtitle.expanded = false;
                 resetBtn.visible = false;
                 itemtitle.sendBrowserType(itemtitle.flag, "reset");
                 if(itemtitle.flag == "firefox") {
@@ -178,8 +175,7 @@ Item {
         width: 26
         source: itemtitle.arrowSource
         opacity: itemtitle.arrow_display//这里初始为0,可以初始时将箭头隐藏,以后根据扫描内容确定其值
-//        rotation: itemtitle.expanded ? 0 : -180
-        rotation: itemtitle.expanded ? -180 : 0
+        rotation: itemtitle.expanded ? 0 : -180
         smooth: true
         MouseArea {
             anchors.fill: parent

@@ -30,7 +30,7 @@ Item {
     property bool selected: false
     property bool selectable: false
     property bool split_status: false
-    property string btn_flag: "cookies_scan"
+//    property string btn_flag: "cookies_scan"
     property string browserFlag//浏览器标记
     signal clicked
 
@@ -42,15 +42,20 @@ Item {
     Connections
     {
         target: systemdispatcher
-        onFinishCleanWork: {
-//            if (btnFlag == "cookies_work") {
-                if (msg == "") {
-                    console.log("clean failed....");
-                }
-                else if (msg == "cookies") {
-                    console.log("clean success....");
-                    container.clicked();
-                }
+        onFinishCleanSingleWorkError: {
+            if (msg == "cookies") {
+                console.log("clean failed....");
+            }
+        }
+
+        onFinishCleanSingleWork: {
+            if (msg == "") {
+                console.log("give up clean....");
+            }
+            else if (msg == "cookies") {
+                console.log("clean success....");
+                container.clicked();
+            }
         }
     }
 

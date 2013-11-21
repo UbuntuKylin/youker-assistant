@@ -205,7 +205,7 @@ public:
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);
 
-    Q_INVOKABLE void tellNullToListTitle(QString emptyFlag, bool status);//BrowserCookies中扫描内容为空时，告诉ListTitle.qml
+//    Q_INVOKABLE void tellNullToListTitle(QString emptyFlag, bool status);//BrowserCookies中扫描内容为空时，告诉ListTitle.qml
 
     //把优客助手运行时，系统的默认配置写到配置文件
     Q_INVOKABLE void write_default_configure_to_qsetting_file(QString key, QString name, QString value);
@@ -220,7 +220,7 @@ signals:
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
     //BrowserCookies中扫描内容为空时，告诉ListTitle.qml
-    void getNullFlag(QString emptyFlag, bool status);
+//    void getNullFlag(QString emptyFlag, bool status);
 
 //    //判断是否有firefox浏览器
 //    void judge_deb_exists_firefox(QString flag);

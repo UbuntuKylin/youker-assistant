@@ -751,9 +751,9 @@ void SessionDispatcher::change_maincheckbox_status(QString status) {
 }
 
 
-void SessionDispatcher::tellNullToListTitle(QString emptyFlag, bool status) {
-    emit getNullFlag(emptyFlag, status);
-}
+//void SessionDispatcher::tellNullToListTitle(QString emptyFlag, bool status) {
+//    emit getNullFlag(emptyFlag, status);
+//}
 
 
 ////浏览器判断firefox
