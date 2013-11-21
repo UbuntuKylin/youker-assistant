@@ -175,7 +175,7 @@ Item {
         width: 26
         source: itemtitle.arrowSource
         opacity: itemtitle.arrow_display//这里初始为0,可以初始时将箭头隐藏,以后根据扫描内容确定其值
-        rotation: itemtitle.expanded ? 0 : -180
+        rotation: itemtitle.expanded ? -180 : 0
         smooth: true
         MouseArea {
             anchors.fill: parent

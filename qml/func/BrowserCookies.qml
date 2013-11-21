@@ -370,6 +370,7 @@ Item {
                                 if (root.firefox_btn_flag == "cookies_scan") {
                                     console.log("scan---f......");
                                     //开始扫描时获取cookies
+                                    root.flag = false;
                                     root.getDataOfFirefox();
                                 }
                                 else if (root.firefox_btn_flag == "cookies_work") {
@@ -426,6 +427,7 @@ Item {
                             if (root.chromium_btn_flag == "cookies_scanc") {
                                 console.log("scan---c......");
                                 //开始扫描时获取cookies
+                                root.flag = false;
                                 root.getDataOfChromium();
                             }
                             else if (root.chromium_btn_flag == "cookies_workc") {
