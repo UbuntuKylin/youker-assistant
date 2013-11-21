@@ -72,6 +72,12 @@ class SessionDaemon(dbus.service.Object):
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def history_scan_funciton(self, flag):
+        daemonhistory = cleaner.CleanTheHistory(None)
+        cruft_list = daemonhistory.get_history_crufts(flag)
+        return sum([int(one.split('<2_2>')[-1]) for one in cruft_list])
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_history_records(self):
         daemonhistory = cleaner.CleanTheHistory(None)
         tmp_list = daemonhistory.get_scan_result()

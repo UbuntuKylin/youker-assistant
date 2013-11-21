@@ -146,6 +146,27 @@ class CleanTheHistory():
         idurlcount = objhg.scan_the_records()
         return idurlcount
 
+    def get_history_crufts(self, flag):
+        homedir = common.return_homedir_sesdaemon()
+        objhg = historyclean.HistoryClean(homedir)
+        crufts_list = []
+
+        if flag in "firefox":
+            filepathf = common.analytical_profiles_file(homedir) + '/' + 'places.sqlite'
+            if os.path.exists(filepathf):
+                cruftlist = objhg.scan_firefox_history_records(filepathf)
+            else:
+                crufts_list.append('None')
+                return crufts_list
+        if flag in "chromium":
+            filepathc = "%s/.config/chromium/Default/History" % homedir
+            if os.path.exists(filepathc):
+                cruftlist = objhg.scan_chromium_history_records(filepathc)
+            else:
+                crufts_list.append('None')
+                return crufts_list
+        return crufts_list
+
     def clean_the_cruftlist(self):
         global HOMEDIR
         objhc = historyclean.HistoryClean(HOMEDIR)
@@ -203,7 +224,7 @@ class CleanTheCookies():
         objcg = cookiesclean.CookiesClean(homedir)
         crufts_list = []
 
-        if flag in "f":
+        if flag in "firefox":
             filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
             if os.path.exists(filepathf):
                 #self.daemon_obj.deb_exists_firefox("yes")
@@ -213,7 +234,7 @@ class CleanTheCookies():
                 #self.daemon_obj.deb_exists_firefox("no")
                 crufts_list.append('None')
                 return crufts_list
-        if flag in "c":
+        if flag in "chromium":
             filepathc = "%s/.config/chromium/Default/Cookies" % homedir
             if os.path.exists(filepathc):
                 #self.daemon_obj.deb_exists_chromium("yes")
