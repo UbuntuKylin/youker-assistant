@@ -98,22 +98,21 @@ int main(int argc, char** argv)
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 
     QString locale = QLocale::system().name();
-//    qDebug() << locale;
-//    if(locale == "zh_CN") {
-    //加载Qt和QML文件的国际化
     QTranslator translator;
-    if(!translator.load("youker-assistant_" + locale + ".qm",
-                        ":/translate/translation/"))
-        qDebug() << "Load translation file："<< "youker-assistant_" + locale + ".qm" << " failed!";
-    else
-        app.installTranslator(&translator);
+    if(locale == "zh_CN") {
+        //加载Qt和QML文件的国际化
+        if(!translator.load("youker-assistant_" + locale + ".qm",
+                            ":/translate/translation/"))
+            qDebug() << "Load translation file："<< "youker-assistant_" + locale + ".qm" << " failed!";
+        else
+            app.installTranslator(&translator);
+    }
 
     //加载Qt对话框默认的国际化
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + locale,
                       QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     app.installTranslator(&qtTranslator);
-//    }
 
     //注册QML模块
     registerTypes();
@@ -127,18 +126,20 @@ int main(int argc, char** argv)
         qDebug() << "SystemDaemon Failed!";
 
     //启动画面
-    QSplashScreen splash(QPixmap(":/pixmap/image/feature.png"));
-    splash.setDisabled(true);
-    splash.show();
-    splash.showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
+    QSplashScreen *splash = new QSplashScreen;
+    splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
+    splash->setDisabled(true);
+    splash->show();
+    splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
     //同时创建主视图对象
     IhuApplication application;
-    splash.showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
+    splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
     application.setup();
     //显示主界面，并结束启动画面
     application.showQMLWidget();
-    splash.finish(&application);
+    splash->finish(&application);
+    delete splash;
     return app.exec();
 }
 

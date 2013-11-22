@@ -140,6 +140,8 @@ public:
 
     //添加软件推荐源
     void add_source_ubuntukylin_qt();
+    //添加软件源的确认对话框
+    void confirm_add_ubuntukylin();
     //获取当前系统的版本代号：如raring、saucy
     QString readOSVersion();
 
