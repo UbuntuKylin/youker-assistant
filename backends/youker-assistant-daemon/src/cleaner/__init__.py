@@ -150,26 +150,26 @@ class CleanTheHistory():
         homedir = common.return_homedir_sesdaemon()
         objhg = historyclean.HistoryClean(homedir)
         crufts_list = []
-        judge_list = ['False']
+        judge_list = []
 
         if flag in "firefox":
             filepathf = common.analytical_profiles_file(homedir) + '/' + 'places.sqlite'
             if os.path.exists(filepathf):
-                cruftlist = objhg.scan_firefox_history_records(filepathf)
+                cruft_list = objhg.scan_firefox_history_records(filepathf)
             else:
-                judge_list.append('None')
+                judge_list.append('No')
                 return judge_list
         if flag in "chromium":
             filepathc = "%s/.config/chromium/Default/History" % homedir
             if os.path.exists(filepathc):
                 run = common.process_pid("chromium-browser")
                 if not run:
-                    cruftlist = objhg.scan_chromium_history_records(filepathc)
+                    cruft_list = objhg.scan_chromium_history_records(filepathc)
                 else:
-                    judge_list.pop()
                     judge_list.apend('True')
+                    return judge_list
             else:
-                judge_list.append('None')
+                judge_list.append('No')
                 return judge_list
         return crufts_list
 
