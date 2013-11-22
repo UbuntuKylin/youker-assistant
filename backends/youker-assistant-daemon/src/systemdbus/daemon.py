@@ -337,6 +337,20 @@ class Daemon(PolicyKitService):
         else:
             self.clean_complete_msg('history')
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
+    def history_clean_records_function(self, flag, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.clean_complete_msg('')
+            return
+        daemonhistory = cleaner.CleanTheHistory(None)
+        try:
+            daemonhistory.clean_all_history_crufts(flag)
+        except Exception, e:
+            self.clean_error_msg('history')
+        else:
+            self.clean_complete_msg('history')
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_system_history(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
