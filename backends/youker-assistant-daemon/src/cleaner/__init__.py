@@ -150,22 +150,45 @@ class CleanTheHistory():
         homedir = common.return_homedir_sesdaemon()
         objhg = historyclean.HistoryClean(homedir)
         crufts_list = []
+        judge_list = ['False']
 
         if flag in "firefox":
             filepathf = common.analytical_profiles_file(homedir) + '/' + 'places.sqlite'
             if os.path.exists(filepathf):
                 cruftlist = objhg.scan_firefox_history_records(filepathf)
             else:
-                crufts_list.append('None')
-                return crufts_list
+                judge_list.append('None')
+                return judge_list
         if flag in "chromium":
             filepathc = "%s/.config/chromium/Default/History" % homedir
             if os.path.exists(filepathc):
-                cruftlist = objhg.scan_chromium_history_records(filepathc)
+                run = common.process_pid("chromium-browser")
+                if not run:
+                    cruftlist = objhg.scan_chromium_history_records(filepathc)
+                else:
+                    judge_list.pop()
+                    judge_list.apend('True')
             else:
-                crufts_list.append('None')
-                return crufts_list
+                judge_list.append('None')
+                return judge_list
         return crufts_list
+
+    def clean_all_history_crufts(self, flag):
+        homedir = return_homedir_sysdaemon()
+        objca = historyclean.HistoryClean(homedir)
+        running = False
+
+        if flag in "firefox":
+            filepathf = common.analytical_profiles_file(homedir) + '/' + 'places.sqlite'
+            objca.clean_firefox_all_records(filepathf)
+        if flag in "chromium":
+            run = common.process_pid("chromium-browser")
+            if not run:
+                filepathc = "%s/.config/chromium/Default/History" % homedir
+                objca.clean_chromium_all_records(filepathc)
+            else:
+                running = True
+        return running
 
     def clean_the_cruftlist(self):
         global HOMEDIR
