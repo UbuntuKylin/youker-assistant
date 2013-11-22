@@ -73,8 +73,9 @@ void SessionDispatcher::handler_scan_complete(QString msg) {
     emit finishScanWork(msg);
 }
 
-int SessionDispatcher::scan_history_records_qt() {
-    QDBusReply<int> reply = sessioniface->call("scan_history_records");
+int SessionDispatcher::scan_history_records_qt(QString flag) {
+//    QDBusReply<int> reply = sessioniface->call("scan_history_records");
+    QDBusReply<int> reply = sessioniface->call("history_scan_funciton", flag);
     return reply.value();
 }
 

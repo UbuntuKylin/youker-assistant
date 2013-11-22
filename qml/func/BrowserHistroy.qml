@@ -26,10 +26,12 @@ Item {
     property string title: qsTr("Clean history, and protect personal privacy")//清理历史记录,保护个人隐私
     property string description: qsTr("Clean up browser record and system opened documents recently")//清理浏览器上网记录和系统最近打开文件记录
     property string btn_flag: "history_scan"
+    property string btn_flag3: "chromium_scan"
     property string btn_flag2: "system_scan"
     property string work_result: ""
     property string keypage: "history"
     property int browserstatus_num: 0
+    property int chromium_num: 0
     property int systemstatus_num: 0
     //母项字体
     property string headerItemFontName: "Helvetica"
@@ -37,12 +39,19 @@ Item {
     property color headerItemFontColor: "black"
     property bool check_flag: true
     property bool null_flag: false
+    property bool null_flag3: false
     property bool null_flag2: false
     //获取数据
     function getData(history_msg) {
         if (history_msg == "BrowserWork") {
-            root.browserstatus_num = sessiondispatcher.scan_history_records_qt();
-            if (root.browserstatus_num == 0) {
+            root.browserstatus_num = sessiondispatcher.scan_history_records_qt("firefox");
+            if(root.browserstatus_num == -1) {
+                console.log("firefox is running.........");
+            }
+            else if(root.browserstatus_num == -2) {
+                console.log("firefox is not installed.........");
+            }
+            else if (root.browserstatus_num == 0) {
                 root.null_flag = true;
                 internetBtnRow.state = "BrowserWorkEmpty";
                 //友情提示      扫描内容为空，不再执行清理！
@@ -57,6 +66,31 @@ Item {
                 browserstatus_label.visible = true;
                 internetbackBtn.visible = true;
                 internetrescanBtn.visible = true;
+            }
+        }
+        else if (history_msg == "ChromiumWork") {
+            root.chromium_num = sessiondispatcher.scan_history_records_qt("chromium");
+            if(root.chromium_num == -1) {
+                console.log("chromium is running.........");
+            }
+            else if(root.chromium_num == -2) {
+                console.log("chromium is not installed.........");
+            }
+            else if (root.chromium_num == 0) {
+                root.null_flag3 = true;
+                chromiumBtnRow.state = "ChromiumWorkEmpty";
+                //友情提示      扫描内容为空，不再执行清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+            }
+            else {
+                root.null_flag3 = false;
+                chromiumBtnRow.state = "ChromiumWork";
+                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                chromiumcacheBtn.text = qsTr("Start cleaning");//开始清理
+                root.btn_flag3 = "chromium_work";
+                chromiumstatus_label.visible = true;
+                chromiumbackBtn.visible = true;
+                chromiumrescanBtn.visible = true;
             }
         }
         else if (history_msg == "SystemWork") {
@@ -189,7 +223,7 @@ Item {
             leftMargin: 45
         }
         spacing:30
-        //Internet browser record
+        //Internet browser record of firefox
         Row {
             id: internetRow
             spacing: 15
@@ -203,7 +237,7 @@ Item {
                 Row{
                     spacing: 15
                     Text {
-                        text: qsTr("Clean up the Internet browser record")//清理浏览器上网记录
+                        text: qsTr("Clean up the Internet record of Firefox")//清理firefox上网记录
                         wrapMode: Text.WordWrap
                         font.bold: true
                         font.pixelSize: 14
@@ -217,7 +251,42 @@ Item {
                 }
                 Text {
                     width: 450
-                    text: qsTr("Clean up the Internet histories, currently only supports Firefox browser")//清理上网时留下的历史记录,目前仅支持Firefox浏览器
+                    text: qsTr("Clean up the Internet histories of Firefox browser")//清理Firefox浏览器上网时留下的历史记录
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
+            }
+        }
+
+        //Internet browser record of chromium
+        Row {
+            id: chromiumRow
+            spacing: 15
+            Image {
+                width: 40; height: 42
+                source:"../img/toolWidget/history-min.png"
+            }
+            Column {
+                spacing: 5
+                Row{
+                    spacing: 15
+                    Text {
+                        text: qsTr("Clean up the Internet record of Chromium")//清理Chromium上网记录
+                        wrapMode: Text.WordWrap
+                        font.bold: true
+                        font.pixelSize: 14
+                        color: "#383838"
+                    }
+                    Common.Label {//显示扫描后的结果
+                        id: chromiumstatus_label
+                        visible: false
+                        text: ""
+                    }
+                }
+                Text {
+                    width: 450
+                    text: qsTr("Clean up the Internet histories of Chromium browser")//清理Chromium浏览器上网时留下的历史记录
                     wrapMode: Text.WordWrap
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -270,7 +339,7 @@ Item {
             right: parent.right
             rightMargin: 20
         }
-        spacing:30
+        spacing:40
         Row{
             id: internetBtnRow
             spacing: 20
@@ -280,7 +349,6 @@ Item {
                     id: internetbackBtn
                     visible: false
                     width: 60
-                    height: 29
                     Text {
                         id:internetbackText
                         height: 10
@@ -366,7 +434,7 @@ Item {
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();
-                            systemdispatcher.clean_history_records_qt();
+                            systemdispatcher.clean_history_records_qt("firefox");
                         }
                     }
                 }
@@ -418,6 +486,151 @@ Item {
         }
 
         Row{
+            id: chromiumBtnRow
+            spacing: 20
+            Row {
+                spacing: 20
+                Item {
+                    id: chromiumbackBtn
+                    visible: false
+                    width: 60
+                    Text {
+                        id:chromiumbackText
+                        height: 10
+                        anchors.centerIn: parent
+                        text: qsTr("Go back")//返回
+                        font.pointSize: 10
+                        color: "#318d11"
+                    }
+                    Rectangle {
+                        id: chromiumbtnImg
+                        anchors.top: parent.bottom
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: chromiumbackText.width
+                        height: 1
+                        color: "transparent"
+                    }
+                    MouseArea {
+                        hoverEnabled: true
+                        anchors.fill: parent
+                        onEntered: chromiumbtnImg.color = "#318d11"
+                        onPressed: chromiumbtnImg.color = "#318d11"
+                        onReleased: chromiumbtnImg.color = "#318d11"
+                        onExited: chromiumbtnImg.color = "transparent"
+                        onClicked: {
+                            chromiumBtnRow.state = "ChromiumWorkAGAIN";
+                        }
+                    }
+                }
+                Item {
+                    id: chromiumrescanBtn
+                    visible: false
+                    width: 49
+                    height: 29
+                    Text {
+                        id:chromiumrescanText
+                        height: 10
+                        anchors.centerIn: parent
+                        text: qsTr("Scan again")//重新扫描
+                        font.pointSize: 10
+                        color: "#318d11"
+                    }
+                    Rectangle {
+                        id: chromiumbtnImg2
+                        anchors.top: parent.bottom
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: chromiumrescanText.width
+                        height: 1
+                        color: "transparent"
+                    }
+                    MouseArea {
+                        hoverEnabled: true
+                        anchors.fill: parent
+                        onEntered: chromiumbtnImg2.color = "#318d11"
+                        onPressed: chromiumbtnImg2.color = "#318d11"
+                        onReleased: chromiumbtnImg2.color = "#318d11"
+                        onExited: chromiumbtnImg2.color = "transparent"
+                        onClicked: {
+                            chromiumcacheBtn.text = qsTr("Start scanning");//开始扫描
+                            root.btn_flag3 = "chromium_scan";
+                            chromiumbackBtn.visible = false;
+                            chromiumrescanBtn.visible = false;
+                            chromiumstatus_label.visible = false;
+                            root.getData("ChromiumWork");
+                        }
+                    }
+                }
+            }
+            Common.Button {
+                id: chromiumcacheBtn
+                width: 95
+                height: 30
+                hoverimage: "green2.png"
+                text: root.btn_text
+                onClicked: {
+                    if (root.btn_flag3 == "chromium_scan") {
+                        root.getData("ChromiumWork");
+                    }
+                    else if (root.btn_flag3 == "chromium_work") {
+                        if(root.null_flag3 == true) {
+                            internetBtnRow.state = "ChromiumWorkEmpty";
+                            //友情提示      扫描内容为空，不再执行清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
+                        else {
+                            systemdispatcher.set_user_homedir_qt();
+                            systemdispatcher.clean_history_records_qt("chromium");
+                        }
+                    }
+                }
+            }
+
+            states: [
+                State {
+                    name: "ChromiumWork"
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start cleaning")}//开始清理
+                    PropertyChanges { target: root; btn_flag3: "chromium_work" }
+                    PropertyChanges { target: chromiumstatus_label; visible: true; text: qsTr("(Scan")+ browserstatus_num + qsTr("records)")}//（扫描到     条记录）
+                    PropertyChanges { target: chromiumbackBtn; visible: true}
+                    PropertyChanges { target: chromiumrescanBtn; visible: true}
+                },
+                State {
+                    name: "ChromiumWorkAGAIN"
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag3: "chromium_scan" }
+                    PropertyChanges { target: chromiumstatus_label; visible: false}
+                    PropertyChanges { target: chromiumbackBtn; visible: false}
+                    PropertyChanges { target: chromiumrescanBtn; visible: false}
+                },
+                State {
+                    name: "ChromiumWorkError"
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag3: "chromium_scan" }
+                    PropertyChanges { target: chromiumstatus_label; visible: false}
+                    PropertyChanges { target: chromiumbackBtn; visible: false}
+                    PropertyChanges { target: chromiumrescanBtn; visible: false}
+                },
+                State {
+                    name: "ChromiumWorkFinish"
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning")}//开始扫描
+                    PropertyChanges { target: root; btn_flag3: "chromium_scan" }
+                    PropertyChanges { target: chromiumstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ browserstatus_num + qsTr("records)") }//（已清理     条记录）
+                    PropertyChanges { target: chromiumbackBtn; visible: false}
+                    PropertyChanges { target: chromiumrescanBtn; visible: false}
+
+                },
+                State {
+                    name: "ChromiumWorkEmpty"
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag3: "chromium_scan" }
+                    PropertyChanges { target: chromiumstatus_label; visible: false}
+                    PropertyChanges { target: chromiumbackBtn; visible: false}
+                    PropertyChanges { target: chromiumrescanBtn; visible: false}
+                }
+            ]
+        }
+
+        Row{
             id: fileBtnRow
             spacing: 20
             Row {
@@ -426,7 +639,6 @@ Item {
                     id: filebackBtn
                     visible: false
                     width: 60
-                    height: 29
                     Text {
                         id:filebackText
                         height: 10

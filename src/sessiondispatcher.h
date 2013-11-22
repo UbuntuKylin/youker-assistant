@@ -38,7 +38,7 @@ public:
     //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_session_daemon_qt();
     //扫描浏览器历史记录
-    Q_INVOKABLE int scan_history_records_qt();
+    Q_INVOKABLE int scan_history_records_qt(QString flag);
     //扫描系统最近打开文件的历史记录
     Q_INVOKABLE int scan_system_history_qt();
     //扫描Dash历史记录

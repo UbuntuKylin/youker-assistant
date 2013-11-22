@@ -49,7 +49,7 @@ public:
     //系统清理页面一键清理
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
     //清理浏览器历史痕迹
-    Q_INVOKABLE void clean_history_records_qt();
+    Q_INVOKABLE void clean_history_records_qt(QString flag);
     //清理系统最近打开文件的记录
     Q_INVOKABLE void clean_system_history_qt();
     //清理dash使用记录

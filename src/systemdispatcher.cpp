@@ -232,8 +232,9 @@ QString SystemDispatcher::showSelectFileDialog(QString flag) {
     }
 }
 
-void SystemDispatcher::clean_history_records_qt() {
-    KThread *thread = new KThread(tmplist, systemiface, "clean_history_records");
+void SystemDispatcher::clean_history_records_qt(QString flag) {
+//    KThread *thread = new KThread(tmplist, systemiface, "clean_history_records");
+    KThread *thread = new KThread(tmplist, systemiface, "history_clean_records_function", flag);
     thread->start();
 }
 
