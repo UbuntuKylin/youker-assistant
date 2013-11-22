@@ -178,7 +178,7 @@ Item {
             Text {
                 width: 500
                 text: root.sof_title
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -186,7 +186,7 @@ Item {
             Text {
                 width: 500
                 text: root.sof_description
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
@@ -368,16 +368,22 @@ Item {
             name: "SoftwareWorkError"
             PropertyChanges { target: sof_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "SoftwareWorkFinish"
             PropertyChanges { target: sof_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "SoftwareWorkEmpty"
             PropertyChanges { target: sof_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; sof_btn_flag: "software_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         }
     ]
 }

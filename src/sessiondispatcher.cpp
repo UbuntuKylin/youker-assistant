@@ -39,11 +39,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.IhuSession",
                                QDBusConnection::sessionBus());
-
-
-    //scan_complete
-    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
-
     page_num = 0;
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
@@ -58,6 +53,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     skin_widget = new SkinsWidget(mSettings);
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
+
+
+    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {

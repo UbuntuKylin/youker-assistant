@@ -165,7 +165,7 @@ Item {
             Text {
                 width: 500
                 text: root.apt_title
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -173,7 +173,8 @@ Item {
             Text {
                 width: 500
                 text: root.apt_description
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
+//                wrapMode: Text.WrapAnywhere
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
@@ -355,16 +356,22 @@ Item {
             name: "AptWorkError"
             PropertyChanges { target: apt_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "AptWorkFinish"
             PropertyChanges { target: apt_bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "AptWorkEmpty"
             PropertyChanges { target: apt_bitButton; text:qsTr("Start scanning")}//开始扫描
             PropertyChanges { target: root; apt_btn_flag: "apt_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         }
     ]
 }

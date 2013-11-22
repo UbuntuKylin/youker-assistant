@@ -7,8 +7,9 @@ youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
   * Solve the segmentation fault when users cancel the previous Fcitx configuration(LP: #1252595).
   * Save and restore the default system configuration with QSetting.
   * Clear Cookies of Chromium(LP: #1224871).
+  * Solve wrong status of history cleaning(LP: #1253852).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 21 Nov 2013 11:39:13 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 22 Nov 2013 11:45:09 +0800
 
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 

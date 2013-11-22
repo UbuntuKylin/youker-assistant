@@ -23,6 +23,7 @@ Rectangle {
     property bool on: true
     width: parent.width
     height: 475
+
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
@@ -128,7 +129,7 @@ Rectangle {
          Text {
              width: defaultfontpage.width - 80 - 20
              text: defaultfontpage.actiontext
-             wrapMode: Text.WrapAnywhere
+             wrapMode: Text.WordWrap
              font.pixelSize: 12
              color: "#7a7a7a"
          }

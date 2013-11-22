@@ -100,14 +100,14 @@ Item {
             Text {
                 width: 500
                 text: itemtitle.itemTitle
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.pointSize: 11
                 color: "black"
             }
             Text {
                 width: 500
                 text: itemtitle.detailstr
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.family: "URW Bookman L"
                 font.pointSize: 9
                 color: "gray"

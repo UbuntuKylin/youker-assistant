@@ -104,7 +104,7 @@ Item {
             anchors.centerIn: parent
             width: masklayer.width - 20
             text: qsTr("If too long time had not finished, may be a network problem, can click the back button to exit the screen which on the upper left corner.")//如果太长时间没有更新完毕，可能是网络问题，可以点击左上角的返回按钮退出该界面。
-            wrapMode: Text.WrapAnywhere
+            wrapMode: Text.WordWrap
             font.pixelSize: 12
             color: "#7a7a7a"
             font.family: "Arial"
@@ -120,7 +120,7 @@ Item {
             }
             width: masklayer.width - 20
             text: qsTr("Updating software source, please wait patiently, If it is completed, there will will pop-up prompt information automatically.")//正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息
-            wrapMode: Text.WrapAnywhere
+            wrapMode: Text.WordWrap
             font.pixelSize: 14
             color: "#383838"
             font.family: "Arial"
@@ -193,7 +193,7 @@ Item {
                 id: progressTitle
                 text: qsTr("Software operation schedule")//软件操作进度
                 color: "#318d11"
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 anchors.horizontalCenter: parent.horizontalCenter
             }
@@ -469,7 +469,7 @@ Item {
                 Text {
                     width: 455
                     text: software.useinfo
-                    wrapMode: Text.WrapAnywhere
+                    wrapMode: Text.WordWrap
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }

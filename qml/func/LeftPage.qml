@@ -137,7 +137,7 @@ Rectangle {
                     width: leftbar.width-180
                     text: qsTr("A key to clean common system junk, effectively improve the efficiency of the system")//一键清理系统垃圾，有效提高系统运行效率
                     font.bold: true
-                    wrapMode: Text.WrapAnywhere
+                    wrapMode: Text.WordWrap
                     font.pixelSize: 14
                     color: "#383838"
                 }
@@ -145,7 +145,7 @@ Rectangle {
                     id: text1
                     width: leftbar.width-180
                     text: qsTr("        A key to clean up will be directly removed the following three hook option, if you do not want to directly remove an item, please remove the tick, enter the system clean page for more detailed cleaning.")//        一键清理将会直接清理掉下面三个勾选项的内容,如果您不想直接清理掉某项内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理。
-                    wrapMode: Text.WrapAnywhere
+                    wrapMode: Text.WordWrap
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }

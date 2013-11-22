@@ -170,7 +170,7 @@ Item {
             Text {
                 width: 500
                 text: root.title
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -178,7 +178,7 @@ Item {
             Text {
                 width: 500
                 text: root.description
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
@@ -374,8 +374,8 @@ Item {
             name: "UnneedWork"
             PropertyChanges { target: bitButton; text:qsTr("Start cleaning") }//开始清理
             PropertyChanges { target: root; btn_flag: "package_work" }
-    PropertyChanges { target: backBtn; visible: true}
-    PropertyChanges { target: rescanBtn; visible: true}
+            PropertyChanges { target: backBtn; visible: true}
+            PropertyChanges { target: rescanBtn; visible: true}
         },
         State {
             name: "UnneedWorkAGAIN"
@@ -388,16 +388,22 @@ Item {
             name: "UnneedWorkError"
             PropertyChanges { target: bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btn_flag: "package_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "UnneedWorkFinish"
             PropertyChanges { target: bitButton; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btn_flag: "package_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "UnneedWorkEmpty"
             PropertyChanges { target: bitButton; text:qsTr("Start scanning")}//开始扫描
             PropertyChanges { target: root; btn_flag: "package_scan" }
+            PropertyChanges { target: backBtn; visible: false}
+            PropertyChanges { target: rescanBtn; visible: false}
         }
     ]
 }
