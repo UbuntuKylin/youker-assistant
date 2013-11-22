@@ -126,7 +126,7 @@ Rectangle {
         Text {
             width: 650 - 80 - 15//左边区域总宽度-左边space-右边space
             text: soundeffectspage.actiontext
-            wrapMode: Text.WrapAnywhere
+            wrapMode: Text.WordWrap
             font.pixelSize: 12
             color: "#7a7a7a"
         }
@@ -461,7 +461,7 @@ Rectangle {
             Text{
                 text:qsTr("Custom SoundTheme")//自定义声音主题
                 width: soundeffectspage.width- 665 - 52 - 15
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 color: "#383838"
                 font.pointSize: 10
                 font.bold: true
@@ -469,7 +469,7 @@ Rectangle {
             Text {
                 width: soundeffectspage.width- 665 - 52 - 15
                 text: qsTr("Not to support audio file of the Chinese path.")//暂不支持中文路径下的音频文件。
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.pixelSize: 10
                 color: "#7a7a7a"
             }

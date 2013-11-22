@@ -38,78 +38,92 @@ Item {
     property bool check_flag: true
     property bool null_flag: false
     property bool null_flag2: false
-    signal history_bnt_signal(string history_msg);
-    onHistory_bnt_signal: {
+    //获取数据
+    function getData(history_msg) {
         if (history_msg == "BrowserWork") {
-            browserstatus_num = sessiondispatcher.scan_history_records_qt();
-            if (browserstatus_num == 0) {
+            root.browserstatus_num = sessiondispatcher.scan_history_records_qt();
+            if (root.browserstatus_num == 0) {
                 root.null_flag = true;
-                browserstatus.visible = false;
-                browserstatus.state = "BrowserWorkEmpty";
+                internetBtnRow.state = "BrowserWorkEmpty";
                 //友情提示      扫描内容为空，不再执行清理！
                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-                resetcBtn.visible = false;
             }
             else {
-                browserstatus.state="BrowserWork";
                 root.null_flag = false;
-                browserstatus.visible = true;
+                internetBtnRow.state = "BrowserWork";
+                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                internetcacheBtn.text = qsTr("Start cleaning");//开始清理
+                root.btn_flag = "history_work";
+                browserstatus_label.visible = true;
+                internetbackBtn.visible = true;
+                internetrescanBtn.visible = true;
             }
         }
         else if (history_msg == "SystemWork") {
-            systemstatus_num = sessiondispatcher.scan_system_history_qt();
-            if (systemstatus_num == 0) {
+            root.systemstatus_num = sessiondispatcher.scan_system_history_qt();
+            if (root.systemstatus_num == 0) {
                 root.null_flag2 = true;
-                systemstatus.visible = false;
-                systemstatus.state = "SystemWorkEmpty";
+                fileBtnRow.state = "SystemWorkEmpty";
                 //友情提示      扫描内容为空，不再执行清理！
                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-                resetsBtn.visible = false;
             }
             else {
-                systemstatus.state ="SystemWork";
                 root.null_flag2 = false;
-                systemstatus.visible = true;
+                fileBtnRow.state ="SystemWork";
+                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                syscacheBtn.text = qsTr("Start cleaning");//开始清理
+                root.btn_flag = "system_work";
+                systemstatus_label.visible = true;
+                filebackBtn.visible = true;
+                filerescanBtn.visible = true;
             }
         }
     }
 
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onFinishScanWork: {//扫描完成时收到的信号
+//            if(msg == "history") {//上网记录
+//                internetBtnRow.state = "BrowserWork";
+//            }
+//            else if(msg == "system") {//打开文件记录
+//                fileBtnRow.state = "SystemWork";
+//            }
+//        }
+//    }
     Connections
     {
         target: systemdispatcher
-        onFinishCleanWorkError: {
+        onFinishCleanWorkError: {//清理出错时收到的信号
             if (btn_flag == "history_work") {
                 if (msg == "history") {
-                    browserstatus.state = "BrowserWorkError";
+                    internetBtnRow.state = "BrowserWorkError";
+                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
             else if(btn_flag2 == "system_work") {
                 if (msg == "system") {
-                    systemstatus.state = "SystemWorkError";
+                    fileBtnRow.state = "SystemWorkError";
+                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
          }
-        onFinishCleanWork: {
+        onFinishCleanWork: {//清理成功时收到的信号
             if (btn_flag == "history_work") {
                 if (msg == "") {
-                    resetcBtn.visible = true;
-                    if (browserstatus.visible == true){
-                        browserstatus.visible = false;
-                    }
+                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
                 }
                 else if (msg == "history") {
-                    browserstatus.state = "BrowserWorkFinish";
+                    internetBtnRow.state = "BrowserWorkFinish";
                 }
             }
             else if (btn_flag2 == "system_work") {
                 if (msg == "") {
-                    resetsBtn.visible = true;
-                    if (systemstatus.visible == true){
-                        systemstatus.visible = false;
-                    }
+                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
                 }
                 else if (msg == "system") {
-                    systemstatus.state = "SystemWorkFinish";
+                    fileBtnRow.state = "SystemWorkFinish";
                 }
             }
         }
@@ -137,7 +151,7 @@ Item {
                 id: text0
                 width: 700
                 text: root.title
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -145,348 +159,10 @@ Item {
             Text {
                 id: text
                 width: 700
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 text: root.description
                 font.pixelSize: 12
                 color: "#7a7a7a"
-            }
-        }
-    }
-
-    Column {
-        anchors {
-            top: parent.top
-            topMargin: 140
-            left: parent.left
-            leftMargin: 45
-        }
-        spacing:30
-        Item {
-            width: parent.width
-            height:45 //65
-            Item {
-                Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-                id: scaleMe
-                Row {
-                    id: lineLayout
-                    spacing: 15
-                    anchors.verticalCenter: parent.verticalCenter
-                    Common.CheckBox {
-                        id: checkboxe1
-                        checked:true    //将所有选项都check
-                        anchors.verticalCenter: parent.verticalCenter
-                        onCheckedChanged: {
-                        }
-                    }
-                    Image {
-                        id: clearImage1
-                        width: 40; height: 42
-                        source:"../img/toolWidget/history-min.png"
-                    }
-                    Column {
-                        spacing: 5
-                        Row{
-                            spacing: 15
-                            Text {
-                                text: qsTr("Clean up the Internet browser record")//清理浏览器上网记录
-                                wrapMode: Text.WrapAnywhere
-                                font.bold: true
-                                font.pixelSize: 14
-                                color: "#383838"
-                            }
-                            Common.Label {
-                                id: browserstatus_label
-                                visible: false
-                                text: ""
-        //                        anchors.verticalCenter: parent.verticalCenter
-                            }
-                        }
-                        Text {
-                            width: 450
-                            text: qsTr("Clean up the Internet histories, currently only supports Firefox browser")//清理上网时留下的历史记录,目前仅支持Firefox浏览器
-                            wrapMode: Text.WrapAnywhere
-                            font.pixelSize: 12
-                            color: "#7a7a7a"
-                        }
-                    }
-                }
-                Common.StatusImage {
-                    id: browserstatus
-                    visible: false
-                    iconName: "yellow.png"
-                    text: qsTr("Unfinished")//未完成
-                    anchors {
-//                        top:parent.top
-                        left: parent.left; leftMargin: 550
-                        verticalCenter: parent.verticalCenter
-                    }
-                    states: [
-                        State {
-                            name: "BrowserWork"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan")+ browserstatus_num + qsTr("records)")}//（扫描到     条记录）
-                            PropertyChanges { target: cacheBtn; text:qsTr("Start cleaning")}//开始清理
-                            PropertyChanges { target: root; btn_flag: "history_work" }
-                            PropertyChanges { target: browserstatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
-                        },
-                        State {
-                            name: "BrowserWorkAGAIN"
-                            PropertyChanges { target: browserstatus_label; visible: false}
-                            PropertyChanges { target: cacheBtn; text:qsTr("Start scanning") }//开始扫描
-                            PropertyChanges { target: root; btn_flag: "history_scan" }
-                            PropertyChanges { target: browserstatus; visible: false }
-                        },
-                        State {
-                            name: "BrowserWorkError"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("Exception occurred")}//出现异常
-                            PropertyChanges { target: cacheBtn; text:qsTr("Start scanning") }//开始扫描
-                            PropertyChanges { target: root; btn_flag: "history_scan" }
-                            PropertyChanges { target: browserstatus; visible: true; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
-                        },
-                        State {
-                            name: "BrowserWorkFinish"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ browserstatus_num + qsTr("records)") }//（已清理     条记录）
-                            PropertyChanges { target: cacheBtn; text:qsTr("Start scanning")}//开始扫描
-                            PropertyChanges { target: root; btn_flag: "history_scan" }
-                            PropertyChanges { target: browserstatus; visible: true; iconName: "green.png"; text: qsTr("Completed")}//已完成
-                        },
-                        State {
-                            name: "BrowserWorkEmpty"
-                            PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("Scanning content is empty, no longer to perform cleanup!") }//扫描内容为空，不再执行清理！
-                            PropertyChanges { target: cacheBtn; text:qsTr("Start scanning") }//开始扫描
-                            PropertyChanges { target: root; btn_flag: "history_scan" }
-                            PropertyChanges { target: browserstatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
-                        }
-                    ]
-                }
-                Rectangle {  //分割条
-                    width: parent.width; height: 1
-                    anchors { top: lineLayout.bottom; topMargin: 5}
-                    color: "gray"
-                }
-            }
-        }
-        //----------------------------
-        Item {
-        width: parent.width//clearDelegate.ListView.view.width
-        height: 45//65
-
-        Item {
-            Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-            id: scaleMe1
-            //checkbox, picture and words
-            Row {
-                id: lineLayout1
-                spacing: 15
-                anchors.verticalCenter: parent.verticalCenter
-               Common.CheckBox {
-                    id: checkboxe2
-                    checked:true    //将所有选项都check
-                    anchors.verticalCenter: parent.verticalCenter
-                    onCheckedChanged: {
-                    }
-                }
-                Image {
-                    id: clearImage2
-                    width: 40; height: 42
-                    source: "../img/toolWidget/systemtrace.png"
-                }
-                Column {
-                    spacing: 5
-                    Row{
-                        spacing: 15
-                        Text {
-                            text: qsTr("Clean the opened documents recently")//清理最近打开文件记录
-                            wrapMode: Text.WrapAnywhere
-                            font.bold: true
-                            font.pixelSize: 14
-                            color: "#383838"
-                        }
-                        Common.Label {
-                            id: systemstatus_label
-                            visible: false
-                            text: ""
-        //                    anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
-                    Text {
-                        width: 450
-                        text: qsTr("Clean the opened documents recently, and protect your privacy")//清理系统上最近的文件打开记录，保护您的个人隐私
-                        wrapMode: Text.WrapAnywhere
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                }
-           }
-            Common.StatusImage {
-                id: systemstatus
-                visible: false
-                iconName: "yellow.png"
-                text: qsTr("Unfinished")//未完成
-                anchors {
-//                    top:parent.top
-                    left: parent.left; leftMargin: 550
-                    verticalCenter: parent.verticalCenter
-                }
-                states: [
-                    State {
-                        name: "SystemWork"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Scan")+ systemstatus_num + qsTr("records)")}//扫描到     条记录
-                        PropertyChanges { target: sysBtn; text:qsTr("Start cleaning")}//开始清理
-                        PropertyChanges { target: root; btn_flag2: "system_work" }
-                        PropertyChanges { target: systemstatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
-                    },
-                    State {
-                        name: "SystemWorkAGAIN"
-                        PropertyChanges { target: systemstatus_label; visible: false}
-                        PropertyChanges { target: sysBtn; text:qsTr("Start scanning") }//开始扫描
-                        PropertyChanges { target: root; btn_flag2: "system_scan" }
-                        PropertyChanges { target: systemstatus; visible: false }
-                    },
-                    State {
-                        name: "SystemWorkError"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("Exception occurred")}//出现异常
-                        PropertyChanges { target: sysBtn; text:qsTr("Start scanning") }//开始扫描
-                        PropertyChanges { target: root; btn_flag2: "system_scan" }
-                        PropertyChanges { target: systemstatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
-                    },
-                    State {
-                        name: "SystemWorkFinish"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ systemstatus_num + qsTr("records)")}//已清理     条记录
-                        PropertyChanges { target: sysBtn; text:qsTr("Start scanning")}//开始扫描
-                        PropertyChanges { target: root; btn_flag2: "system_scan" }
-                        PropertyChanges { target: systemstatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
-                    },
-                    State {
-                        name: "SystemWorkEmpty"
-                        PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("Scanning content is empty, no longer to perform cleanup!") }//扫描内容为空，不再执行清理！
-                        PropertyChanges { target: sysBtn; text:qsTr("Start scanning") }//开始扫描
-                        PropertyChanges { target: root; btn_flag2: "system_scan" }
-                        PropertyChanges { target: systemstatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
-                    }
-                ]
-            }
-        }
-      }
-    }
-    //================================
-    Row {
-        id:cacherow
-        anchors {
-            top: titlebar.bottom
-            topMargin: 50
-            right: parent.right
-            rightMargin: 50
-        }
-        spacing: 20
-        Common.Button {
-            id: cacheBtn
-            width: 95
-            height: 30
-            hoverimage: "green2.png"
-            text: root.btn_text
-            onClicked: {
-                if (btn_flag == "history_scan") {
-                    if(!checkboxe1.checked) {
-                       browserstatus.visible = false;
-                        //友情提示      对不起，您没有选中历史记录扫描项，请确认！
-                       sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to get the history record items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                    }
-                    else {
-                        resetcBtn.visible = true;
-                        history_bnt_signal("BrowserWork");
-                    }
-                }
-               else if (btn_flag == "history_work") {
-                    if(checkboxe1.checked) {
-                        if(root.null_flag == true) {
-                            root.state = "BrowserWorkEmpty";
-                            //友情提示      扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-                        }
-                        else {
-                            resetcBtn.visible = false;
-                            systemdispatcher.set_user_homedir_qt();
-                            browserstatus.visible = true;
-                            systemdispatcher.clean_history_records_qt();
-                        }
-                    }
-                    else {
-                        //友情提示      对不起，您没有选中历史记录扫描项，请确认！
-                       sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to get the history record items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                    }
-                }
-            }
-        }
-        SetBtn {
-            id: resetcBtn
-            width: 12
-            height: 15
-            iconName: "revoke.png"
-            visible: false
-            anchors.verticalCenter: parent.verticalCenter
-            onClicked: {
-                resetcBtn.visible = false;
-                browserstatus.state = "BrowserWorkAGAIN";
-            }
-        }
-    }
-    Row {
-        anchors {
-            top: cacherow.bottom
-            topMargin: 43
-            right: parent.right
-            rightMargin: 50
-        }
-        spacing: 20
-        Common.Button {
-            id: sysBtn
-            width: 95
-            height: 30
-            hoverimage: "green2.png"
-            text: root.btn_text
-            onClicked: {
-                if (btn_flag2 == "system_scan") {
-                    if(!checkboxe2.checked) {
-                       systemstatus.visible = false;
-                        //友情提示      对不起，您没有选中历史记录扫描项，请确认！
-                       sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to get the history record items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                    }
-                    else {
-                        resetsBtn.visible = true;
-                        history_bnt_signal("SystemWork");
-                    }
-                }
-               else if (btn_flag2 == "system_work") {
-                    if(checkboxe2.checked) {
-                        if(root.null_flag2 == true) {
-                            root.state = "SystemWorkEmpty";
-                            //友情提示      扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-                        }
-                        else {
-                            resetsBtn.visible = false;
-                            systemdispatcher.set_user_homedir_qt();
-                            systemstatus.visible = true;
-                            systemdispatcher.clean_system_history_qt();
-                        }
-                    }
-                    else {
-                        //友情提示      对不起，您没有选中历史记录扫描项，请确认！
-                       sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to get the history record items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                    }
-                }
-            }
-        }
-        SetBtn {
-            id: resetsBtn
-            width: 12
-            height: 15
-            iconName: "revoke.png"
-            visible: false
-            anchors.verticalCenter: parent.verticalCenter
-            onClicked: {
-                resetsBtn.visible = false;
-                systemstatus.state = "SystemWorkAGAIN";
             }
         }
     }
@@ -502,5 +178,388 @@ Item {
         width: parent.width - 4
         height: 1
         color: "#d8e0e6"
+    }
+
+    //文字显示Column
+    Column {
+        anchors {
+            top: titlebar.bottom
+            topMargin: 50
+            left: parent.left
+            leftMargin: 45
+        }
+        spacing:30
+        //Internet browser record
+        Row {
+            id: internetRow
+            spacing: 15
+            Image {
+                id: clearImage1
+                width: 40; height: 42
+                source:"../img/toolWidget/history-min.png"
+            }
+            Column {
+                spacing: 5
+                Row{
+                    spacing: 15
+                    Text {
+                        text: qsTr("Clean up the Internet browser record")//清理浏览器上网记录
+                        wrapMode: Text.WordWrap
+                        font.bold: true
+                        font.pixelSize: 14
+                        color: "#383838"
+                    }
+                    Common.Label {//显示扫描后的结果
+                        id: browserstatus_label
+                        visible: false
+                        text: ""
+                    }
+                }
+                Text {
+                    width: 450
+                    text: qsTr("Clean up the Internet histories, currently only supports Firefox browser")//清理上网时留下的历史记录,目前仅支持Firefox浏览器
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
+            }
+        }
+
+        //opened documents recently
+        Row {
+            id: fileRow
+            spacing: 15
+            Image {
+                id: clearImage2
+                width: 40; height: 42
+                source: "../img/toolWidget/systemtrace.png"
+            }
+            Column {
+                spacing: 5
+                Row{
+                    spacing: 15
+                    Text {
+                        text: qsTr("Clean the opened documents recently")//清理最近打开文件记录
+                        wrapMode: Text.WordWrap
+                        font.bold: true
+                        font.pixelSize: 14
+                        color: "#383838"
+                    }
+                    Common.Label {
+                        id: systemstatus_label
+                        visible: false
+                        text: ""
+                    }
+                }
+                Text {
+                    width: 450
+                    text: qsTr("Clean the opened documents recently, and protect your privacy")//清理系统上最近的文件打开记录，保护您的个人隐私
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
+            }
+        }
+    }
+
+    //按钮显示Column
+    Column {
+        anchors {
+            top: titlebar.bottom
+            topMargin: 50
+            right: parent.right
+            rightMargin: 20
+        }
+        spacing:30
+        Row{
+            id: internetBtnRow
+            spacing: 20
+            Row {
+                spacing: 20
+                Item {
+                    id: internetbackBtn
+                    visible: false
+                    width: 60
+                    height: 29
+                    Text {
+                        id:internetbackText
+                        height: 10
+                        anchors.centerIn: parent
+                        text: qsTr("Go back")//返回
+                        font.pointSize: 10
+                        color: "#318d11"
+                    }
+                    Rectangle {
+                        id: internetbtnImg
+                        anchors.top: parent.bottom
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: internetbackText.width
+                        height: 1
+                        color: "transparent"
+                    }
+                    MouseArea {
+                        hoverEnabled: true
+                        anchors.fill: parent
+                        onEntered: internetbtnImg.color = "#318d11"
+                        onPressed: internetbtnImg.color = "#318d11"
+                        onReleased: internetbtnImg.color = "#318d11"
+                        onExited: internetbtnImg.color = "transparent"
+                        onClicked: {
+                            internetBtnRow.state = "BrowserWorkAGAIN";
+                        }
+                    }
+                }
+                Item {
+                    id: internetrescanBtn
+                    visible: false
+                    width: 49
+                    height: 29
+                    Text {
+                        id:internetrescanText
+                        height: 10
+                        anchors.centerIn: parent
+                        text: qsTr("Scan again")//重新扫描
+                        font.pointSize: 10
+                        color: "#318d11"
+                    }
+                    Rectangle {
+                        id: internetbtnImg2
+                        anchors.top: parent.bottom
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: internetrescanText.width
+                        height: 1
+                        color: "transparent"
+                    }
+                    MouseArea {
+                        hoverEnabled: true
+                        anchors.fill: parent
+                        onEntered: internetbtnImg2.color = "#318d11"
+                        onPressed: internetbtnImg2.color = "#318d11"
+                        onReleased: internetbtnImg2.color = "#318d11"
+                        onExited: internetbtnImg2.color = "transparent"
+                        onClicked: {
+                            internetcacheBtn.text = qsTr("Start scanning");//开始扫描
+                            root.btn_flag = "history_scan";
+                            internetbackBtn.visible = false;
+                            internetrescanBtn.visible = false;
+                            browserstatus_label.visible = false;
+                            root.getData("BrowserWork");
+                        }
+                    }
+                }
+            }
+            Common.Button {
+                id: internetcacheBtn
+                width: 95
+                height: 30
+                hoverimage: "green2.png"
+                text: root.btn_text
+                onClicked: {
+                    if (root.btn_flag == "history_scan") {
+                        root.getData("BrowserWork");
+                    }
+                    else if (root.btn_flag == "history_work") {
+                        if(root.null_flag == true) {
+                            internetBtnRow.state = "BrowserWorkEmpty";
+                            //友情提示      扫描内容为空，不再执行清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
+                        else {
+                            systemdispatcher.set_user_homedir_qt();
+                            systemdispatcher.clean_history_records_qt();
+                        }
+                    }
+                }
+            }
+
+            states: [
+                State {
+                    name: "BrowserWork"
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start cleaning")}//开始清理
+                    PropertyChanges { target: root; btn_flag: "history_work" }
+                    PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan")+ browserstatus_num + qsTr("records)")}//（扫描到     条记录）
+                    PropertyChanges { target: internetbackBtn; visible: true}
+                    PropertyChanges { target: internetrescanBtn; visible: true}
+                },
+                State {
+                    name: "BrowserWorkAGAIN"
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag: "history_scan" }
+                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: internetbackBtn; visible: false}
+                    PropertyChanges { target: internetrescanBtn; visible: false}
+                },
+                State {
+                    name: "BrowserWorkError"
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag: "history_scan" }
+                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: internetbackBtn; visible: false}
+                    PropertyChanges { target: internetrescanBtn; visible: false}
+                },
+                State {
+                    name: "BrowserWorkFinish"
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning")}//开始扫描
+                    PropertyChanges { target: root; btn_flag: "history_scan" }
+                    PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ browserstatus_num + qsTr("records)") }//（已清理     条记录）
+                    PropertyChanges { target: internetbackBtn; visible: false}
+                    PropertyChanges { target: internetrescanBtn; visible: false}
+
+                },
+                State {
+                    name: "BrowserWorkEmpty"
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag: "history_scan" }
+                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: internetbackBtn; visible: false}
+                    PropertyChanges { target: internetrescanBtn; visible: false}
+                }
+            ]
+        }
+
+        Row{
+            id: fileBtnRow
+            spacing: 20
+            Row {
+                spacing: 20
+                Item {
+                    id: filebackBtn
+                    visible: false
+                    width: 60
+                    height: 29
+                    Text {
+                        id:filebackText
+                        height: 10
+                        anchors.centerIn: parent
+                        text: qsTr("Go back")//返回
+                        font.pointSize: 10
+                        color: "#318d11"
+                    }
+                    Rectangle {
+                        id: filebtnImg
+                        anchors.top: parent.bottom
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: filebackText.width
+                        height: 1
+                        color: "transparent"
+                    }
+                    MouseArea {
+                        hoverEnabled: true
+                        anchors.fill: parent
+                        onEntered: filebtnImg.color = "#318d11"
+                        onPressed: filebtnImg.color = "#318d11"
+                        onReleased: filebtnImg.color = "#318d11"
+                        onExited: filebtnImg.color = "transparent"
+                        onClicked: {
+                            fileBtnRow.state = "SystemWorkAGAIN";
+                        }
+                    }
+                }
+                Item {
+                    id: filerescanBtn
+                    visible: false
+                    width: 49
+                    height: 29
+                    Text {
+                        id:filerescanText
+                        height: 10
+                        anchors.centerIn: parent
+                        text: qsTr("Scan again")//重新扫描
+                        font.pointSize: 10
+                        color: "#318d11"
+                    }
+                    Rectangle {
+                        id: filebtnImg2
+                        anchors.top: parent.bottom
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: filerescanText.width
+                        height: 1
+                        color: "transparent"
+                    }
+                    MouseArea {
+                        hoverEnabled: true
+                        anchors.fill: parent
+                        onEntered: filebtnImg2.color = "#318d11"
+                        onPressed: filebtnImg2.color = "#318d11"
+                        onReleased: filebtnImg2.color = "#318d11"
+                        onExited: filebtnImg2.color = "transparent"
+                        onClicked: {
+                            syscacheBtn.text = qsTr("Start scanning");//开始扫描
+                            root.btn_flag2 = "system_scan";
+                            filebackBtn.visible = false;
+                            filerescanBtn.visible = false;
+                            systemstatus_label.visible = false;
+                            root.getData("SystemWork");
+                        }
+                    }
+                }
+            }
+            Common.Button {
+                id: syscacheBtn
+                width: 95
+                height: 30
+                hoverimage: "green2.png"
+                text: root.btn_text
+                onClicked: {
+                    if (root.btn_flag2 == "system_scan") {
+                        root.getData("SystemWork");
+                    }
+                    else if (root.btn_flag2 == "system_work") {
+                        if(root.null_flag2 == true) {
+                            root.state = "SystemWorkEmpty";
+                            //友情提示      扫描内容为空，不再执行清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
+                        else {
+                            systemdispatcher.set_user_homedir_qt();
+                            systemdispatcher.clean_system_history_qt();
+                        }
+                    }
+                }
+            }
+
+            states: [
+                State {
+                    name: "SystemWork"
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start cleaning")}//开始清理
+                    PropertyChanges { target: root; btn_flag2: "system_work" }
+                    PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Scan")+ systemstatus_num + qsTr("records)")}//扫描到     条记录
+                    PropertyChanges { target: filebackBtn; visible: true}
+                    PropertyChanges { target: filerescanBtn; visible: true}
+                },
+                State {
+                    name: "SystemWorkAGAIN"
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag2: "system_scan" }
+                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: filebackBtn; visible: false}
+                    PropertyChanges { target: filerescanBtn; visible: false}
+                },
+                State {
+                    name: "SystemWorkError"
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag2: "system_scan" }
+                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: filebackBtn; visible: false}
+                    PropertyChanges { target: filerescanBtn; visible: false}
+                },
+                State {
+                    name: "SystemWorkFinish"
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag2: "system_scan" }
+                    PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ systemstatus_num + qsTr("records)")}//已清理     条记录
+                    PropertyChanges { target: filebackBtn; visible: false}
+                    PropertyChanges { target: filerescanBtn; visible: false}
+                },
+                State {
+                    name: "SystemWorkEmpty"
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
+                    PropertyChanges { target: root; btn_flag2: "system_scan" }
+                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: filebackBtn; visible: false}
+                    PropertyChanges { target: filerescanBtn; visible: false}
+                }
+            ]
+        }
     }
 }

@@ -42,7 +42,7 @@ Rectangle {
          Text {
              width: fcitxconfigtool.width - 80 - 20
              text: fcitxconfigtool.actiontext
-             wrapMode: Text.WrapAnywhere
+             wrapMode: Text.WordWrap
              font.pixelSize: 12
              color: "#7a7a7a"
          }

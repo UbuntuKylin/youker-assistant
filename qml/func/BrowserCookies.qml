@@ -286,7 +286,7 @@ Item {
                 id: text0
                 width: 700
                 text: root.title
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -295,7 +295,7 @@ Item {
                 id: text
                 width: 700
                 text: root.description
-                wrapMode: Text.WrapAnywhere
+                wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
@@ -370,6 +370,7 @@ Item {
                                 if (root.firefox_btn_flag == "cookies_scan") {
                                     console.log("scan---f......");
                                     //开始扫描时获取cookies
+                                    root.flag = false;
                                     root.getDataOfFirefox();
                                 }
                                 else if (root.firefox_btn_flag == "cookies_work") {
@@ -426,6 +427,7 @@ Item {
                             if (root.chromium_btn_flag == "cookies_scanc") {
                                 console.log("scan---c......");
                                 //开始扫描时获取cookies
+                                root.flag = false;
                                 root.getDataOfChromium();
                             }
                             else if (root.chromium_btn_flag == "cookies_workc") {

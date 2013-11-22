@@ -98,7 +98,8 @@ int main(int argc, char** argv)
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 
     QString locale = QLocale::system().name();
-//    if(locale != "zh_CN") {
+//    qDebug() << locale;
+//    if(locale == "zh_CN") {
     //加载Qt和QML文件的国际化
     QTranslator translator;
     if(!translator.load("youker-assistant_" + locale + ".qm",

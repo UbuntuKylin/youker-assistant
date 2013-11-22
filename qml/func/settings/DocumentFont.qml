@@ -91,7 +91,7 @@ Rectangle {
         Text {
             width: documentfontpage.width - 80 - 20
             text: documentfontpage.actiontext
-            wrapMode: Text.WrapAnywhere
+            wrapMode: Text.WordWrap
             font.pixelSize: 12
             color: "#7a7a7a"
         }

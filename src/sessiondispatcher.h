@@ -212,6 +212,8 @@ public:
     //从Qsetting配置文件中读取系统启动时的默认配置
     Q_INVOKABLE QString read_default_configure_from_qsetting_file(QString key, QString name);
 signals:
+    void finishScanWork(QString msg);
+
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
     void startChangeQMLCity();//发送开始更换QML城市
@@ -227,6 +229,9 @@ signals:
 //    //判断是否有chromium浏览器
 //    void judge_deb_exists_chromium(QString flag);
 public slots:
+    //扫描完成槽函数
+    void handler_scan_complete(QString msg);
+
     void handler_change_skin(QString skinName);
     //更换城市槽函数
     void handler_change_city();
