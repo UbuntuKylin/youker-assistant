@@ -22,7 +22,7 @@
 #include <QString>
 #include <QFileDialog>
 #include "KThread.h"
-
+#include "sourcedialog.h"
 extern QString music_path;
 
 SystemDispatcher::SystemDispatcher(QObject *parent) :
@@ -57,7 +57,14 @@ SystemDispatcher::~SystemDispatcher() {
     this->exit_qt();
 }
 
+void SystemDispatcher::confirm_add_ubuntukylin() {
+//    SortDialog *dialog = new SortDialog;
+//    dialog->setColumnRange('C','F');
+//    dialog->show();
+}
+
 void SystemDispatcher::add_source_ubuntukylin_qt() {
+    confirm_add_ubuntukylin();
     QString version = readOSVersion();
     systemiface->call("add_source_ubuntukylin", version);
 }
