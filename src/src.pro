@@ -116,6 +116,7 @@ SOURCES += main.cpp \
     processmanager.cpp \
     yprocess.cpp \
     sourcedialog.cpp
+
 RESOURCES += pixmap.qrc
 
 FORMS += \
@@ -131,4 +132,5 @@ FORMS += \
     alertdialog.ui \
     locationdialog.ui \
     wizarddialog.ui \
-    changecitydialog.ui
+    changecitydialog.ui \
+    sourcedialog.ui

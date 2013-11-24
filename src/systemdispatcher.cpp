@@ -23,6 +23,7 @@
 #include <QFileDialog>
 #include "KThread.h"
 #include "sourcedialog.h"
+
 extern QString music_path;
 
 SystemDispatcher::SystemDispatcher(QObject *parent) :
@@ -49,24 +50,44 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     onekey_args2 << "cache" << "history" << "cookies";
     tmplist << "Kobe" << "Lee";
 
+    this->mainwindow_width = 850;
+    this->mainwindow_height = 600;
+    this->alert_width = 292;
+    this->alert_width_bg = 329;
+    this->alert_height = 54;
+
+//    mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
+//    mSettings->setIniCodec("UTF-8");
+
     //判断是否添加了源
-    add_source_ubuntukylin_qt();
+//    add_source_ubuntukylin_qt();
 }
 
 SystemDispatcher::~SystemDispatcher() {
+//    mSettings->sync();
+//    if (mSettings != NULL)
+//        delete mSettings;
     this->exit_qt();
 }
 
-void SystemDispatcher::confirm_add_ubuntukylin() {
-//    SortDialog *dialog = new SortDialog;
-//    dialog->setColumnRange('C','F');
-//    dialog->show();
-}
+//void SystemDispatcher::write_source_to_qsetting() {
+//    mSettings->beginGroup("sourcelist");
+//    mSettings->setValue("ubuntukylin", true);
+//    mSettings->endGroup();
+//    mSettings->sync();
+//}
 
-void SystemDispatcher::add_source_ubuntukylin_qt() {
-    confirm_add_ubuntukylin();
-    QString version = readOSVersion();
-    systemiface->call("add_source_ubuntukylin", version);
+//bool SystemDispatcher::read_source_from_qsetting() {
+//    mSettings->beginGroup("sourcelist");
+//    bool flag = mSettings->value("ubuntukylin").toBool();
+//    mSettings->endGroup();
+//    mSettings->sync();
+//    return flag;
+//}
+
+bool SystemDispatcher::judge_source_ubuntukylin_qt() {
+    QDBusReply<bool> reply = systemiface->call("judge_source_ubuntukylin");
+    return reply.value();
 }
 
 QString SystemDispatcher::readOSVersion() {
@@ -87,6 +108,21 @@ QString SystemDispatcher::readOSVersion() {
         lsbFile.close();
     }
     return "raring";
+}
+
+void SystemDispatcher::add_source_ubuntukylin_qt() {
+    QString version = readOSVersion();
+    systemiface->call("add_source_ubuntukylin", version);
+}
+
+void SystemDispatcher::showAddSourceList(int window_x, int window_y) {
+    //弹出添加软件源的对话框
+    SourceDialog *sourceDialog = new SourceDialog;
+    connect(sourceDialog, SIGNAL(addList()), this, SLOT(add_source_ubuntukylin_qt()));
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    sourceDialog->move(this->alert_x, this->alert_y);
+    sourceDialog->exec();
 }
 
 void SystemDispatcher::handler_clear_rubbish_error(QString msg) {

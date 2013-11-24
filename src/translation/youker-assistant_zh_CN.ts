@@ -288,16 +288,21 @@
     </message>
     <message>
         <location filename="../../qml/func/BrowserHistroy.qml" line="25"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="341"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="386"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="394"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="402"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="411"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="487"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="532"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="540"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="548"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="556"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="413"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="458"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="466"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="474"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="483"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="559"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="604"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="612"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="620"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="629"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="705"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="750"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="758"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="766"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="774"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
@@ -312,58 +317,83 @@
         <translation>清理浏览器上网记录和系统最近打开文件记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="49"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="68"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="365"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="511"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="58"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="83"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="102"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="437"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="583"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="729"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="49"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="68"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="365"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="511"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="58"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="83"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="102"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="437"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="583"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="729"/>
         <source>Scanning content is empty, no longer to perform cleanup!</source>
         <translation>扫描内容为空，不再执行清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="54"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="73"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="63"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="88"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="107"/>
         <source>Scan completed!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="102"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="108"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="136"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="142"/>
         <source>Exception occurred!</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="115"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="123"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="149"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="157"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断了！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="206"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="240"/>
+        <source>Clean up the Internet record of Firefox</source>
+        <translation>清理firefox上网记录</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="255"/>
+        <source>Clean up the Internet histories of Firefox browser</source>
+        <translation>清理Firefox浏览器上网时留下的历史记录</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="276"/>
+        <source>Clean up the Internet record of Chromium</source>
+        <translation>清理Chromium上网记录</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="291"/>
+        <source>Clean up the Internet histories of Chromium browser</source>
+        <translation>清理Chromium浏览器上网时留下的历史记录</translation>
+    </message>
+    <message>
         <source>Clean up the Internet browser record</source>
-        <translation>清理浏览器上网记录</translation>
+        <translation type="obsolete">清理浏览器上网记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="220"/>
         <source>Clean up the Internet histories, currently only supports Firefox browser</source>
-        <translation>清理上网时留下的历史记录，目前仅支持Firefox浏览器</translation>
+        <translation type="obsolete">清理上网时留下的历史记录，目前仅支持Firefox浏览器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="288"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="434"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="360"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="506"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="652"/>
         <source>Go back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="321"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="467"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="393"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="539"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="685"/>
         <source>Scan again</source>
         <translation>重新扫描</translation>
     </message>
@@ -372,24 +402,29 @@
         <translation type="obsolete">未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="380"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="526"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="452"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="598"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="744"/>
         <source>(Scan</source>
         <translation>（扫描到</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="380"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="404"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="526"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="550"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="452"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="476"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="598"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="622"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="744"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="768"/>
         <source>records)</source>
         <translation>条记录）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="55"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="74"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="378"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="524"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="64"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="89"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="108"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="450"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="596"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="742"/>
         <source>Start cleaning</source>
         <translation>开始清理</translation>
     </message>
@@ -398,8 +433,9 @@
         <translation type="obsolete">出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="404"/>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="550"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="476"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="622"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="768"/>
         <source>(Have cleared</source>
         <translation>（已清理</translation>
     </message>
@@ -408,12 +444,12 @@
         <translation type="obsolete">已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="242"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="313"/>
         <source>Clean the opened documents recently</source>
         <translation>清理最近打开文件记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/BrowserHistroy.qml" line="256"/>
+        <location filename="../../qml/func/BrowserHistroy.qml" line="328"/>
         <source>Clean the opened documents recently, and protect your privacy</source>
         <translation>清理系统上最近的文件打开记录，保护您的个人隐私</translation>
     </message>
@@ -1891,12 +1927,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="132"/>
+        <location filename="../main.cpp" line="133"/>
         <source>starting....</source>
         <translation>优客助手正在启动中....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="135"/>
+        <location filename="../main.cpp" line="136"/>
         <source>loading module data....</source>
         <translation>正在加载模块数据....</translation>
     </message>
@@ -2019,7 +2055,7 @@
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="455"/>
+        <location filename="../sessiondispatcher.cpp" line="456"/>
         <source>choose folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -2469,6 +2505,34 @@
     </message>
 </context>
 <context>
+    <name>SourceDialog</name>
+    <message>
+        <location filename="../sourcedialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>软件源对话框</translation>
+    </message>
+    <message>
+        <location filename="../sourcedialog.ui" line="30"/>
+        <source>Quit</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../sourcedialog.ui" line="47"/>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../sourcedialog.ui" line="105"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sourcedialog.cpp" line="23"/>
+        <source>Here you can add UbuntuKylin source to sourcelist, If it doesn&apos;t be added into sourcelist, the recommand software will cannot work. Click &apos;OK&apos; to add it, or click &apos;Quit&apos; to give up!</source>
+        <translation>你可以增加UbuntuKylin软件源到软件源列表中，如果没有被添加到列表中，软件推荐将无法正常使用。点击“确定”按钮去添加软件源，点击“取消”按钮放弃添加！</translation>
+    </message>
+</context>
+<context>
     <name>StatusImage</name>
     <message>
         <location filename="../../qml/func/common/StatusImage.qml" line="23"/>
@@ -2638,22 +2702,22 @@
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="215"/>
+        <location filename="../systemdispatcher.cpp" line="258"/>
         <source>choose boot animation</source>
         <translation>选择开机动画</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="215"/>
+        <location filename="../systemdispatcher.cpp" line="258"/>
         <source>Image Files (*.png)</source>
         <translation>Image Files (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="220"/>
+        <location filename="../systemdispatcher.cpp" line="263"/>
         <source>choose music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="220"/>
+        <location filename="../systemdispatcher.cpp" line="263"/>
         <source>Music Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>Music Files (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>

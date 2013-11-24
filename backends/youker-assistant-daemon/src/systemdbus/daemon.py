@@ -81,13 +81,22 @@ class Daemon(PolicyKitService):
     def get_system_daemon(self):
         return "SystemDaemon"
 
-    # add ubuntukylin source in /etc/apt/sources.list
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def add_source_ubuntukylin(self, version):
+    # judge ubuntukylin source is in /etc/apt/sources.list or not
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def judge_source_ubuntukylin(self):
         source = aptsources.sourceslist.SourcesList()
         for item in source.list:
             if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
-                return
+                return True
+        return False
+
+    # add ubuntukylin source in /etc/apt/sources.list
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def add_source_ubuntukylin(self, version):
+        source = aptsources.sourceslist.SourcesList(())
+        #for item in source.list:
+        #    if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
+        #        return
         osversion = str(version) + (" main")
         source.add("deb", "http://archive.ubuntukylin.com/ubuntukylin/", osversion, "")
         source.save()

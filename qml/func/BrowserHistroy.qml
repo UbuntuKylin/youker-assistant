@@ -247,6 +247,7 @@ Item {
                         id: browserstatus_label
                         visible: false
                         text: ""
+                        color: "#318d11"
                     }
                 }
                 Text {
@@ -282,6 +283,7 @@ Item {
                         id: chromiumstatus_label
                         visible: false
                         text: ""
+                        color: "#318d11"
                     }
                 }
                 Text {
@@ -318,6 +320,7 @@ Item {
                         id: systemstatus_label
                         visible: false
                         text: ""
+                        color: "#318d11"
                     }
                 }
                 Text {
@@ -349,6 +352,7 @@ Item {
                     id: internetbackBtn
                     visible: false
                     width: 60
+                    height: 29
                     Text {
                         id:internetbackText
                         height: 10
@@ -494,6 +498,7 @@ Item {
                     id: chromiumbackBtn
                     visible: false
                     width: 60
+                    height: 29
                     Text {
                         id:chromiumbackText
                         height: 10
@@ -639,6 +644,7 @@ Item {
                     id: filebackBtn
                     visible: false
                     width: 60
+                    height: 29
                     Text {
                         id:filebackText
                         height: 10

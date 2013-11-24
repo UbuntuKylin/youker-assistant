@@ -190,8 +190,8 @@ void SudoDispatcher::handlerGetSoftwareListStatus(QStringList statusDict) {
 }
 
 void SudoDispatcher::showPasswdDialog(int window_x, int window_y) {
-    //提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。
-    AuthDialog *authdialog = new AuthDialog(tr("Tip: please input password of current user to start server, make it work normally."));
+    //弹出输入密码的对话框
+    AuthDialog *authdialog = new AuthDialog(tr("Tip: please input password of current user to start server, make it work normally."));//提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     authdialog->move(this->alert_x, this->alert_y);
