@@ -34,8 +34,8 @@ void KThread::run() {
     else if(methodName == "clean_by_second_one_key") {
         iface->call("clean_by_second_one_key", list);
     }
-    else if(methodName == "clean_history_records") {
-        iface->call("clean_history_records");
+    else if(methodName == "history_clean_records_function") {
+        iface->call("history_clean_records_function", fileFlag);
     }
     else if(methodName == "clean_system_history") {
         iface->call("clean_system_history");

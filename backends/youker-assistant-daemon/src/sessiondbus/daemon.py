@@ -88,14 +88,14 @@ class SessionDaemon(dbus.service.Object):
     def scan_history_records(self):
         daemonhistory = cleaner.CleanTheHistory(None)
         tmp_list = daemonhistory.get_scan_result()
-        #self.scan_complete_msg('history')
+        self.scan_complete_msg('history')
         return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_system_history(self):
         daemonsystem = cleaner.CleanSystemHistory()
         url = daemonsystem.get_scan_result()
-        #self.scan_complete_msg('system')
+        self.scan_complete_msg('system')
         return len(url)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
@@ -109,7 +109,7 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
     def scan_of_same(self, path):
         tmp_list = self.daemonsame.get_scan_result(path)
-        #self.scan_complete_msg('same')
+        self.scan_complete_msg('same')
         return tmp_list
 
     # the function of sort the hundred files below path betown big to small
@@ -117,7 +117,7 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='is', out_signature='as')
     def scan_of_large(self, size, path):
         tmp_list = self.daemonlarge.get_scan_result(size, path)
-        #self.scan_complete_msg('large')
+        self.scan_complete_msg('large')
         return tmp_list
     # the function of clean the cookies records
     ### input-''   output-['domain<2_2>number', 'dom...]
@@ -125,7 +125,7 @@ class SessionDaemon(dbus.service.Object):
     def scan_cookies_records(self):
         daemoncookies = cleaner.CleanTheCookies(self)
         tmp_list = daemoncookies.get_scan_result()
-        #self.scan_complete_msg('cookies')
+        self.scan_complete_msg('cookies')
         return tmp_list
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
@@ -138,33 +138,33 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_unneed_packages(self):
         tmp_list = self.daemonunneed.get_scan_result()
-        #self.scan_complete_msg('unneed')
+        self.scan_complete_msg('unneed')
         return tmp_list
     # the function of scan the oldkernel
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_old_kernel(self):
         tmp_list = self.daemonoldkernel.get_scan_result()
-        #self.scan_complete_msg('oldkernel')
+        self.scan_complete_msg('oldkernel')
         return tmp_list
     # the function of scan the apt cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_apt_cruft(self):
         tmp_dic = self.daemoncache.get_scan_result()
-        #self.scan_complete_msg('apt')
+        self.scan_complete_msg('apt')
         return tmp_dic['apt'].split('<1_1>')
     # the function of scan the softwarecenter cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_softwarecenter_cruft(self):
         tmp_dic = self.daemoncache.get_scan_result()
-        #self.scan_complete_msg('softwarecenter')
+        self.scan_complete_msg('softwarecenter')
         return tmp_dic['softwarecenter'].split('<1_1>')
 
     # a dbus method which means scan complete by kobe
     @dbus.service.signal(INTERFACE, signature='s')
-    #def scan_complete(self, msg):
-    #    pass
+    def scan_complete(self, msg):
+        pass
     
     @dbus.service.signal(INTERFACE, signature='s')
     def deb_exists_firefox(self, msg):
@@ -174,8 +174,8 @@ class SessionDaemon(dbus.service.Object):
     def deb_exists_chromium(self, msg):
         pass
 
-    #def scan_complete_msg(self, para):
-    #    self.scan_complete(para)
+    def scan_complete_msg(self, para):
+        self.scan_complete(para)
 
     def deb_exists_firefox_msg(self, para):
         self.deb_exists_firefox(para)

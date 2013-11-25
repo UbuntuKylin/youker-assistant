@@ -85,6 +85,24 @@ SystemDispatcher::~SystemDispatcher() {
 //    return flag;
 //}
 
+void SystemDispatcher::get_detail_system_message_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_detail_system_message");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        systemInfo = value;
+        qDebug() << "systemInfo->";
+        qDebug() << systemInfo;
+    }
+    else {
+        qDebug() << "get pc_detail_message failed!";
+    }
+}
+
+QString SystemDispatcher::getSingleInfo(QString key) {
+    QVariant info = systemInfo.value(key);
+    return info.toString();
+}
+
 bool SystemDispatcher::judge_source_ubuntukylin_qt() {
     QDBusReply<bool> reply = systemiface->call("judge_source_ubuntukylin");
     return reply.value();

@@ -9,10 +9,13 @@ inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
 inst2.files += ../youker-assistant.desktop
 inst2.path = /usr/share/applications
+inst3.files += ./MyCppModule.so
+inst3.path = /usr/lib/python2.7/dist-packages/
 target.source += $$TARGET
 target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
+    inst3 \
     target
 include(../qtsingleapplication/src/qtsingleapplication.pri)
 LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils

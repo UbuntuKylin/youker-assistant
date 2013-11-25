@@ -37,6 +37,7 @@ from server import PolicyKitService
 from policykit import UK_ACTION_YOUKER
 import time
 import cleaner
+from detailinfo.cpuinfo import DetailInfo
 from beautify.sound import Sound
 from beautify.others import Others
 from appcollections.monitorball.monitor_ball import MonitorBall
@@ -48,6 +49,7 @@ UKPATH = '/'
 
 class Daemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
+        self.infoconf = DetailInfo()
         self.otherconf = Others()
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
@@ -80,6 +82,10 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
         return "SystemDaemon"
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_detail_system_message(self):
+        return self.infoconf.get_sys_msg()
 
     # judge ubuntukylin source is in /etc/apt/sources.list or not
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')

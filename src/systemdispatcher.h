@@ -147,6 +147,14 @@ public:
 //    Q_INVOKABLE bool read_source_from_qsetting();
     //获取当前系统的版本代号：如raring、saucy
     QString readOSVersion();
+
+    //----get system message
+    //存放当前系统和桌面信息
+    QMap<QString, QVariant> systemInfo;
+    //得到当前系统和桌面的详细信息
+    Q_INVOKABLE void get_detail_system_message_qt();
+    //通过键得到对应的单个信息的值
+    Q_INVOKABLE QString getSingleInfo(QString key);
 public slots:
     //添加软件推荐源
     void add_source_ubuntukylin_qt();
