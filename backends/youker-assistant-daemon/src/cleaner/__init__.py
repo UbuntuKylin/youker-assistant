@@ -153,9 +153,9 @@ class CleanTheHistory():
         judge_list = []
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + 'places.sqlite'
+            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
             if os.path.exists(filepathf):
-                cruft_list = objhg.scan_firefox_history_records(filepathf)
+                crufts_list = objhg.scan_firefox_history_records(filepathf)
             else:
                 judge_list.append('No')
                 return judge_list
@@ -164,7 +164,7 @@ class CleanTheHistory():
             if os.path.exists(filepathc):
                 run = common.process_pid("chromium-browser")
                 if not run:
-                    cruft_list = objhg.scan_chromium_history_records(filepathc)
+                    crufts_list = objhg.scan_chromium_history_records(filepathc)
                 else:
                     judge_list.apend('True')
                     return judge_list
@@ -179,7 +179,7 @@ class CleanTheHistory():
         running = False
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + 'places.sqlite'
+            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
             objca.clean_firefox_all_records(filepathf)
         if flag in "chromium":
             run = common.process_pid("chromium-browser")
@@ -248,7 +248,7 @@ class CleanTheCookies():
         crufts_list = []
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
+            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
             if os.path.exists(filepathf):
                 #self.daemon_obj.deb_exists_firefox("yes")
                 pamf = [filepathf, 'moz_cookies', 'baseDomain']
@@ -275,7 +275,7 @@ class CleanTheCookies():
         objcc = cookiesclean.CookiesClean(homedir)
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
+            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
             pamf = [filepathf, 'moz_cookies', 'baseDomain', domain]
             objcc.clean_cookies_record(pamf[0], pamf[1], pamf[2], pamf[3])
         if flag in "chromium":
@@ -288,7 +288,7 @@ class CleanTheCookies():
         objcc = cookiesclean.CookiesClean(homedir)
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
+            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
             pamf = [filepathf, 'moz_cookies', 'baseDomain']
             objcc.clean_all_records(pamf[0], pamf[1], pamf[2])
         if flag in "chromium":
