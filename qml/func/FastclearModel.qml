@@ -226,7 +226,7 @@ Rectangle {
                         anchors.leftMargin: 45
                         spacing:25
                         Item {
-                            width: parent.width //clearDelegate.ListView.view.width
+                            width: parent.width
                             height:45 //65
 
                             Item {
@@ -329,7 +329,7 @@ Rectangle {
 
             //----------------------------
                         Item {
-                        width: parent.width//clearDelegate.ListView.view.width
+                        width: parent.width
                         height: 45//65
 
                         Item {
@@ -434,7 +434,7 @@ Rectangle {
                       }
             //----------------------------
                         Item {
-                        width: parent.width//clearDelegate.ListView.view.width
+                        width: parent.width
                         height: 45//65
 
                         Item {

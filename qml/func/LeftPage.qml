@@ -230,7 +230,7 @@ Rectangle {
 
             //---------------------------
                         Item {
-                            width: parent.width //clearDelegate.ListView.view.width
+                            width: parent.width
                             height:45 //65
 
                             Item {
@@ -333,7 +333,7 @@ Rectangle {
 
             //----------------------------
                         Item {
-                        width: parent.width//clearDelegate.ListView.view.width
+                        width: parent.width
                         height: 45//65
 
                         Item {
@@ -432,7 +432,7 @@ Rectangle {
                       }
             //----------------------------
                         Item {
-                        width: parent.width//clearDelegate.ListView.view.width
+                        width: parent.width
                         height: 45//65
 
                         Item {
