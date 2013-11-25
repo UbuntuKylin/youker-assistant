@@ -46,10 +46,7 @@ Item {
         if (history_msg == "BrowserWork") {
             root.browserstatus_num = sessiondispatcher.scan_history_records_qt("firefox");
             if(root.browserstatus_num == -1) {
-                console.log("firefox is running.........");
-            }
-            else if(root.browserstatus_num == -2) {
-                console.log("firefox is not installed.........");
+                toolkits.alertMSG(qsTr("Firefox not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Firefox！
             }
             else if (root.browserstatus_num == 0) {
                 root.null_flag = true;
@@ -71,10 +68,11 @@ Item {
         else if (history_msg == "ChromiumWork") {
             root.chromium_num = sessiondispatcher.scan_history_records_qt("chromium");
             if(root.chromium_num == -1) {
-                console.log("chromium is running.........");
+                toolkits.alertMSG(qsTr("Chromium not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Chromium！
             }
-            else if(root.chromium_num == -2) {
-                console.log("chromium is not installed.........");
+            else if(root.chromium_num == -99) {
+                //友情提示      扫描内容为空，不再执行清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Chromium is running. If cannot be scanned or cleaned when it is running."), mainwindow.pos.x, mainwindow.pos.y);//Chromium正在运行中。当它正在运行的时候，不能执行扫描或者清理操作。
             }
             else if (root.chromium_num == 0) {
                 root.null_flag3 = true;
@@ -106,7 +104,7 @@ Item {
                 fileBtnRow.state ="SystemWork";
                 toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
                 syscacheBtn.text = qsTr("Start cleaning");//开始清理
-                root.btn_flag = "system_work";
+                root.btn_flag2 = "system_work";
                 systemstatus_label.visible = true;
                 filebackBtn.visible = true;
                 filerescanBtn.visible = true;
