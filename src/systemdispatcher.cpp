@@ -90,8 +90,6 @@ void SystemDispatcher::get_detail_system_message_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         systemInfo = value;
-        qDebug() << "systemInfo->";
-        qDebug() << systemInfo;
     }
     else {
         qDebug() << "get pc_detail_message failed!";

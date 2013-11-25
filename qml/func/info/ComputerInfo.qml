@@ -15,85 +15,26 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
 import SystemType 0.1
-import "common" as Common
+import "../common" as Common
+import "../bars" as Bars
 
 Item {
     id: home; width: parent.width; height: 475
     Rectangle {
         anchors.fill: parent
-        //背景
-        Image {
-            source: "../img/skin/bg-bottom-tab.png"
-            anchors.fill: parent
-        }
-        signal dialogmsg()
+//        //背景
+//        Image {
+//            source: "../../img/skin/bg-bottom-tab.png"
+//            anchors.fill: parent
+//        }
 
         Component.onCompleted: {
-            sessiondispatcher.get_system_message_qt();
-        }
-
-        function openFile(file) {
-             var component = Qt.createComponent(file)
-             if (component.status == Component.Ready)
-                 pageStack.push(component);
-             else
-                 console.log("Error loading component:", component.errorString());
-         }
-
-
-        //desktop logo
-        Image {
-            source: "../img/toolWidget/ubuntukylin.png"
-            anchors {
-                top: parent.top
-                topMargin: 230
-                right: parent.right
-                rightMargin: 70
-            }
-        }
-
-        Image {
-            id: titleimage
-            anchors {
-                left: parent.left
-                leftMargin: 2
-            }
-            width: parent.width - 4
-            source: "../img/skin/note-bg.png"
-        }
-        Text {
-            anchors {
-                left: parent.left
-                leftMargin: 50
-                top: parent.top
-                topMargin: titleimage.height/2 - 7
-            }
-            text: qsTr("You can view the relevant information, and understand the system at any time.")//您可以查看相关信息，随时了解系统情况。
-            font.pixelSize: 12
-            color: "#383838"
-        }
-
-        Common.Button{
-            width: 80
-            height: 26
-            anchors{
-                right:parent.right
-                rightMargin: 15
-                top: parent.top
-                topMargin: 7
-            }
-            text: qsTr("Details")//详情
-            onClicked: {
-                pageStack.push(detailinformation);
-//                systemdispatcher.get_detail_system_message_qt();
-            }
         }
 
         Column {
             anchors {
-                top: titleimage.bottom
+                top: parent.top
                 topMargin: 40
                 left: parent.left
                 leftMargin: 30
@@ -120,13 +61,13 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("CPU:")//处理器:
+                        text: qsTr("ComVendor:")//制造商:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("cpu")
+                        text: systemdispatcher.getSingleInfo("ComVendor")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -134,13 +75,13 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("Memory:")//内存:
+                        text: qsTr("ComProduct:")//电脑型号:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("ram")
+                        text: systemdispatcher.getSingleInfo("ComProduct")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -167,13 +108,13 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("Host name:")//主机名:
+                        text: qsTr("ComVersion:")//电脑版本:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("hostname")
+                        text: systemdispatcher.getSingleInfo("ComVersion")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -181,13 +122,13 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("Platform:")//平台:
+                        text: qsTr("ComSerial:")//序列号:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("platform")
+                        text: systemdispatcher.getSingleInfo("ComSerial")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -195,13 +136,13 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("Distribution:")//发行版:
+                        text: qsTr("node:")//主机名:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("distribution")
+                        text: systemdispatcher.getSingleInfo("node")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -209,13 +150,13 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("Environment:")//桌面环境:
+                        text: qsTr("uptime:")//持续运行时间:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("desktopenvironment")
+                        text: systemdispatcher.getSingleInfo("uptime")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -223,13 +164,13 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("Language:")//语言:
+                        text: qsTr("system:")//操作系统类型:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("language")
+                        text: systemdispatcher.getSingleInfo("system")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -256,13 +197,13 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("User:")//当前用户:
+                        text: qsTr("platform:")//操作系统:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("currrent_user")
+                        text: systemdispatcher.getSingleInfo("platform")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }
@@ -270,13 +211,41 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("Home directory:")//用户主目录:
+                        text: qsTr("architecture:")//系统位数:
                         font.pixelSize: 12
                         color: "#7a7a7a"
                         width: 100
                     }
                     Text {
-                        text: sessiondispatcher.getSingleInfo("home_path")
+                        text: systemdispatcher.getSingleInfo("architecture")
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Text {
+                        text: qsTr("release:")//内核版本:
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                        width: 100
+                    }
+                    Text {
+                        text: systemdispatcher.getSingleInfo("release")
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Text {
+                        text: qsTr("machine:")//内核架构:
+                        font.pixelSize: 12
+                        color: "#7a7a7a"
+                        width: 100
+                    }
+                    Text {
+                        text: systemdispatcher.getSingleInfo("machine")
                         font.pixelSize: 12
                         color: "#7a7a7a"
                     }

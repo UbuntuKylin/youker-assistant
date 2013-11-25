@@ -92,7 +92,11 @@ Item {
                     id: systemmessage
                     visible: false
                     SystemMessage {}
-//                    DetailInformation {}
+                }
+                Common.Page {
+                    id: detailinformation
+                    visible: false
+                    DetailInformation {}
                 }
                 Common.Page {
                     id: clearrubbish
