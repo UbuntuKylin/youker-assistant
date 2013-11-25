@@ -360,7 +360,7 @@ class Daemon(PolicyKitService):
             return
         daemonhistory = cleaner.CleanTheHistory(None)
         try:
-            daemonhistory.clean_all_history_crufts(flag)
+            running = daemonhistory.clean_all_history_crufts(flag)
         except Exception, e:
             self.clean_error_msg('history')
         else:
