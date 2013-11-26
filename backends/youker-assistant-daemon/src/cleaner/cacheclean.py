@@ -13,6 +13,20 @@ class CacheClean():
         aptcachelist = ['%s/%s<2_2>%s' % (apt_cache,filename, confirm_filesize_unit(os.path.getsize('%s/%s' % (apt_cache, filename)))) for filename in os.listdir(apt_cache) if filename.endswith('deb')]
         return aptcachelist
 
+    def scan_apt_cache(self, path):
+        aptcache_list = []
+        if os.path.exists(path):
+            aptcache_list = ['%s/%s' % (path, filename) for filename in os.listdir(path) if filename.endswith('deb')]
+
+        return aptcache_list
+
+    def public_scan_cache(self, path):
+        publiccache_list = []
+        if os.path.exists(path):
+            publiccache_list = ['%s/%s' % (path, filename) for filename in os.listdir(path)]
+
+        return publiccache_list
+
     def get_softwarecenter_cache(self, homedir):
         centercachelist = []
         if homedir:

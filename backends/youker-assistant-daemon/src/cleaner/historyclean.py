@@ -52,8 +52,8 @@ class HistoryClean():
             scan_browser_cur = scan_browser_conn.cursor()
             sql_select = "SELECT moz_historyvisits.place_id, moz_places.url, count(*) FROM moz_historyvisits, moz_places WHERE moz_historyvisits.place_id=moz_places.id GROUP BY moz_historyvisits.place_id"
             scan_browser_cur.execute(sql_select)
-            allvisit = scan_browser_cur.fetchall()
-            result = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in allvisit]
+            result = scan_browser_cur.fetchall()
+            #result = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in allvisit]
             scan_browser_cur.close()
             scan_browser_conn.close()
         return result
@@ -65,8 +65,8 @@ class HistoryClean():
             scan_chromium_cur = scan_chromium_conn.cursor()
             sql_select = "SELECT visits.url, urls.url, count(*) FROM visits, urls WHERE visits.url=urls.id GROUP BY visits.url"
             scan_chromium_cur.execute(sql_select)
-            allvisit = scan_chromium_cur.fetchall()
-            result = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in allvisit]
+            result = scan_chromium_cur.fetchall()
+            #result = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in allvisit]
             scan_chromium_cur.close()
             scan_chromium_conn.close()
 

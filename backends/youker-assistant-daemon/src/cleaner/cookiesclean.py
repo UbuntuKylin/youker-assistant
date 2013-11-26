@@ -49,10 +49,10 @@ class CookiesClean():
             scan_browser_cur = scan_browser_conn.cursor()
             sql_select = 'SELECT %s, count(*) FROM %s GROUP BY %s' % (keyname, tablename, keyname)
             scan_browser_cur.execute(sql_select)
-            allvisit = scan_browser_cur.fetchall()
+            result = scan_browser_cur.fetchall()
             scan_browser_cur.close()
             scan_browser_conn.close()
-            result = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in allvisit]
+            #result = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in allvisit]
             return result
 
     def clean_cookies_record(self, filepath, tablename, keyname, domain):
