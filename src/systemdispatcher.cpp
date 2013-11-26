@@ -85,20 +85,95 @@ SystemDispatcher::~SystemDispatcher() {
 //    return flag;
 //}
 
-void SystemDispatcher::get_detail_system_message_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_detail_system_message");
+//void SystemDispatcher::get_detail_system_message_qt() {
+//    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_detail_system_message");
+//    if (reply.isValid()) {
+//        QMap<QString, QVariant> value = reply.value();
+//        systemInfo = value;
+////        qDebug() << systemInfo;
+//    }
+//    else {
+//        qDebug() << "get pc_detail_message failed!";
+//    }
+//}
+
+void SystemDispatcher::get_computer_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_computer_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
-        systemInfo = value;
-//        qDebug() << systemInfo;
+        computerInfo = value;
     }
     else {
-        qDebug() << "get pc_detail_message failed!";
+        qDebug() << "get computer info failed!";
     }
 }
 
-QString SystemDispatcher::getSingleInfo(QString key) {
-    QVariant info = systemInfo.value(key);
+void SystemDispatcher::get_cpu_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cpu_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        cpuInfo = value;
+    }
+    else {
+        qDebug() << "get cpu info failed!";
+    }
+}
+
+void SystemDispatcher::get_memory_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_memory_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        memoryInfo = value;
+    }
+    else {
+        qDebug() << "get memory info failed!";
+    }
+}
+
+void SystemDispatcher::get_board_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_board_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        boardInfo = value;
+    }
+    else {
+        qDebug() << "get board info failed!";
+    }
+}
+
+void SystemDispatcher::get_monitor_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_monitor_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        monitorInfo = value;
+    }
+    else {
+        qDebug() << "get monitor info failed!";
+    }
+}
+
+QString SystemDispatcher::get_time_value_qt() {
+    QDBusReply<QString> reply = systemiface->call("get_time_value");
+    return reply.value();
+}
+
+QString SystemDispatcher::getSingleInfo(QString key, QString flag) {
+    QVariant info;
+    if(flag == "computer") {
+        info = computerInfo.value(key);
+    }
+    else if(flag == "cpu") {
+        info = cpuInfo.value(key);
+    }
+    else if(flag == "memory") {
+        info = memoryInfo.value(key);
+    }
+    else if(flag == "board") {
+        info = boardInfo.value(key);
+    }
+    else if(flag == "monitor") {
+        info = monitorInfo.value(key);
+    }
     return info.toString();
 }
 

@@ -82,7 +82,10 @@ class Dmi:
 
     def dmi_table(self,fd, base, slen, num, dmiversionmaj, dmiversionmin):
         i=0
-        dm = {}
+        Com = {}
+        Cpu = {}
+        Boa = {}
+        Mem = {}
         if slen == 0 :
             return
 #        fd.seek(base)
@@ -102,7 +105,7 @@ class Dmi:
                 ComProduct = self.dmi_string(data[i:],length,data[i+5],slen-i)
                 ComVersion = self.dmi_string(data[i:],length,data[i+6],slen-i)
                 ComSerial = self.dmi_string(data[i:],length,data[i+7],slen-i)
-                dm["ComVendor"],dm["ComProduct"],dm["ComVersion"],dm["ComSerial"] = ComVendor,ComProduct,ComVersion,ComSerial
+                Com["ComVendor"],Com["ComProduct"],Com["ComVersion"],Com["ComSerial"] = ComVendor,ComProduct,ComVersion,ComSerial
 
             elif choose == 4 :
 #CPU                
@@ -125,21 +128,21 @@ class Dmi:
                     CpuCapacity = str(u)
                     u = data17 << 8 | data16
                     CpuSize = str(u)
-                dm["CpuSlot"],dm["CpuVersion"],dm["CpuVendor"],dm["CpuSerial"],dm["CpuClock"],dm["CpuCapacity"],dm["CpuSize"] = CpuSlot,CpuVersion,CpuVendor,CpuSerial,CpuClock,CpuCapacity,CpuSize
+                Cpu["CpuSlot"],Cpu["CpuVersion"],Cpu["CpuVendor"],Cpu["CpuSerial"],Cpu["CpuClock"],Cpu["CpuCapacity"],Cpu["CpuSize"] = CpuSlot,CpuVersion,CpuVendor,CpuSerial,CpuClock,CpuCapacity,CpuSize
 
             elif choose == 2 :
 #Board Information Block
                 BoaProduct = self.dmi_string(data[i:],length,data[i+5],slen-i)
                 BoaVendor = self.dmi_string(data[i:],length,data[i+4],slen-i)
                 BoaSerial = self.dmi_string(data[i:],length,data[i+7],slen-i)
-                dm["BoaProduct"],dm["BoaVendor"],dm["BoaSerial"] = BoaProduct,BoaVendor,BoaSerial
+                Boa["BoaProduct"],Boa["BoaVendor"],Boa["BoaSerial"] = BoaProduct,BoaVendor,BoaSerial
 
             elif choose == 0 :
 #BIOS
                 BioVendor = self.dmi_string(data[i:],length,data[i+4],slen-i)
                 BioVersion = self.dmi_string(data[i:],length,data[i+5],slen-i)
                 BioRelease = self.dmi_string(data[i:],length,data[i+8],slen-i)
-                dm["BioVendor"],dm["BioVersion"],dm["BioRelease"] = BioVendor,BioVersion,BioRelease
+                Boa["BioVendor"],Boa["BioVersion"],Boa["BioRelease"] = BioVendor,BioVersion,BioRelease
 
             elif choose == 17 :
 #Memory Device
@@ -176,14 +179,14 @@ class Dmi:
                         MemSize = MemSize + '/' + str(size)
                     else:
                         MemSize = str(size)
-                    dm["MemSlot"],dm["MemProduct"],dm["MemVendor"],dm["MemSerial"],dm["MemSize"] = MemSlot,MemProduct,MemVendor,MemSerial,MemSize
+                    Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"] = MemSlot,MemProduct,MemVendor,MemSerial,MemSize
 
             i += self.ctoascii(length)
             while i+4 < slen and (data[i]!= '\0' or data[i+1]!= '\0') :
                 i += 1
             i += 2
             #f.close()
-        return dm
+        return Com,Cpu,Boa,Mem
 
     def scan_dmi(self):
         fp = self.get_efi_systab_smbios()

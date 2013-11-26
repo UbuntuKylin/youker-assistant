@@ -25,8 +25,8 @@ Rectangle {
     color: "transparent"
 
     Component.onCompleted: {
-        systemdispatcher.get_detail_system_message_qt();//获取详细信息
-        var msg = systemdispatcher.getSingleInfo("CpuVendor");
+        systemdispatcher.get_cpu_info_qt();//获取详细信息
+        var msg = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
         var pat1 = new RegExp('Intel');
         var pat2 = new RegExp('AMD');
         var pat3 = new RegExp('Vimicro');
@@ -49,16 +49,16 @@ Rectangle {
 //            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
 //        }
 
-        cpuversionText.text = systemdispatcher.getSingleInfo("CpuVersion");
-        cpuverdorText.text = systemdispatcher.getSingleInfo("CpuVendor");
-        cpuserialText.text = systemdispatcher.getSingleInfo("CpuSerial");
-        slotText.text = systemdispatcher.getSingleInfo("CpuSlot");
-        maxText.text = systemdispatcher.getSingleInfo("CpuCapacity") + "MHz";
-        curText.text = systemdispatcher.getSingleInfo("CpuSize") + "MHz";
-        frontText.text = systemdispatcher.getSingleInfo("CpuClock") + "MHz";
-        coresText.text = systemdispatcher.getSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings") + qsTr("thread");
-        cache1.text = systemdispatcher.getSingleInfo("clflush_size") + "KB";
-        cache2.text = systemdispatcher.getSingleInfo("cache_size") + "KB";
+        cpuversionText.text = systemdispatcher.getSingleInfo("CpuVersion", "cpu");
+        cpuverdorText.text = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
+        cpuserialText.text = systemdispatcher.getSingleInfo("CpuSerial", "cpu");
+        slotText.text = systemdispatcher.getSingleInfo("CpuSlot", "cpu");
+        maxText.text = systemdispatcher.getSingleInfo("CpuCapacity", "cpu") + "MHz";
+        curText.text = systemdispatcher.getSingleInfo("CpuSize", "cpu") + "MHz";
+        frontText.text = systemdispatcher.getSingleInfo("CpuClock", "cpu") + "MHz";
+        coresText.text = systemdispatcher.getSingleInfo("cpu_cores", "cpu") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings", "cpu") + qsTr("thread");
+        cache1.text = systemdispatcher.getSingleInfo("clflush_size", "cpu") + "KB";
+        cache2.text = systemdispatcher.getSingleInfo("cache_size", "cpu") + "KB";
     }
     Column {
         anchors {

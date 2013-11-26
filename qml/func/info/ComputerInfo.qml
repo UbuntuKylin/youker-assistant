@@ -23,22 +23,22 @@ Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
     Component.onCompleted: {
-        systemdispatcher.get_detail_system_message_qt();//获取详细信息
-        logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("ComVendor") + ".jpg";
+        systemdispatcher.get_computer_info_qt();//获取详细信息
+        logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("ComVendor", "computer") + ".jpg";
 
-        comvendorText.text = systemdispatcher.getSingleInfo("ComVendor");
-        comproductText.text = systemdispatcher.getSingleInfo("ComProduct");
-        comversionText.text = systemdispatcher.getSingleInfo("ComVersion");
-        comserialText.text = systemdispatcher.getSingleInfo("ComSerial");
-        nodeText.text = systemdispatcher.getSingleInfo("node");
-        systemText.text = systemdispatcher.getSingleInfo("system");
-        platformText.text = systemdispatcher.getSingleInfo("platform");
-        architectureText.text = systemdispatcher.getSingleInfo("architecture");
-        releaseText.text = systemdispatcher.getSingleInfo("release");
-        machineText.text = systemdispatcher.getSingleInfo("machine");
+        comvendorText.text = systemdispatcher.getSingleInfo("ComVendor", "computer");
+        comproductText.text = systemdispatcher.getSingleInfo("ComProduct", "computer");
+        comversionText.text = systemdispatcher.getSingleInfo("ComVersion", "computer");
+        comserialText.text = systemdispatcher.getSingleInfo("ComSerial", "computer");
+        nodeText.text = systemdispatcher.getSingleInfo("node", "computer");
+        systemText.text = systemdispatcher.getSingleInfo("system", "computer");
+        platformText.text = systemdispatcher.getSingleInfo("platform", "computer");
+        architectureText.text = systemdispatcher.getSingleInfo("architecture", "computer");
+        releaseText.text = systemdispatcher.getSingleInfo("release", "computer");
+        machineText.text = systemdispatcher.getSingleInfo("machine", "computer");
 
 
-        var timeValue = systemdispatcher.getSingleInfo("uptime");
+        var timeValue = systemdispatcher.getSingleInfo("uptime", "computer");
         var valueHour = Math.floor(timeValue/60);//返回小于等于timeValue/60的最大整数
 //        var aa = valueHour.toFixed(0);
         var valueMinute = timeValue % 60;
@@ -251,6 +251,20 @@ Rectangle {
             topMargin: 50
             right: parent.right
             rightMargin: 30
+        }
+    }
+    Timer{
+        interval: 2000*60;running: true;repeat: true
+        onTriggered: {
+            var timeValue = systemdispatcher.get_time_value_qt();
+            var valueHour = Math.floor(timeValue/60);//返回小于等于timeValue/60的最大整数
+            var valueMinute = timeValue % 60;
+            if(valueHour == 0) {
+                uptimeText.text = valueMinute + qsTr(" Minutes");//分钟
+            }
+            else {
+                uptimeText.text = valueHour + qsTr(" Hours ") + valueMinute + qsTr(" Minutes");//小时 分钟
+            }
         }
     }
 }

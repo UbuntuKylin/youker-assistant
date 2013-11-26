@@ -91,14 +91,19 @@ class DetailInfo:
 
 
     def get_sys_msg(self):
-        CLIPS_DICT = {}
-        CLIPS_DICT['node'], CLIPS_DICT['uptime'], CLIPS_DICT['system'], CLIPS_DICT['platform'], CLIPS_DICT['architecture'], CLIPS_DICT['release'], CLIPS_DICT['machine'] = self.get_computer()
-        CLIPS_DICT['vendor'], CLIPS_DICT['cpu_cores'], CLIPS_DICT['cpu_siblings'], CLIPS_DICT['clflush_size'], CLIPS_DICT['cache_size'] = self.get_cpuinfo()
-        CLIPS_DICT.update(self.dmi.scan_dmi())
-        CLIPS_DICT.update(self.get_monitor())
-        print 'CLIPS_DICT->'
-        print CLIPS_DICT
-        return CLIPS_DICT
+#        CLIPS_DICT = {}
+#        CLIPS_DICT['node'], CLIPS_DICT['uptime'], CLIPS_DICT['system'], CLIPS_DICT['platform'], CLIPS_DICT['architecture'], CLIPS_DICT['release'], CLIPS_DICT['machine'] = self.get_computer()
+#        CLIPS_DICT['vendor'], CLIPS_DICT['cpu_cores'], CLIPS_DICT['cpu_siblings'], CLIPS_DICT['clflush_size'], CLIPS_DICT['cache_size'] = self.get_cpuinfo()
+#        CLIPS_DICT.update(self.dmi.scan_dmi())
+#        CLIPS_DICT.update(self.get_monitor())
+#        print 'CLIPS_DICT->'
+#        print CLIPS_DICT
+        self.Com = {}
+        self.Cpu = {}
+        self.Boa = {}
+        self.Mem = {}
+        self.Com,self.Cpu,self.Boa,self.Mem  = self.dmi.scan_dmi()
+        return 
 
     def uptimeinfo(self):
         with open('/proc/uptime') as f:
@@ -116,10 +121,12 @@ class DetailInfo:
                     string = line.split('.')[0]
                     seconds = int(string)
                     minutes = seconds / 60
-                    uptime = str(minutes)		
-        return platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
+                    uptime = str(minutes)
+        self.Com['node'], self.Com['uptime'], self.Com['system'], self.Com['platform'],self.Com['architecture'], self.Com['release'], self.Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
+        print self.Com
+        return self.Com
 
-    def get_cpuinfo(self):
+    def get_cpu(self):
         # CPU
         with open('/proc/cpuinfo') as f:
             for line in f:
@@ -136,7 +143,19 @@ class DetailInfo:
                     elif line.rstrip('\n').startswith('cache size'):
                          cache_size = line.rstrip('\n').split(':')[1]
                          cache_size = filter(str.isdigit,cache_size)
-        return vendor,cpu_cores,cpu_siblings,clflush_size,cache_size
+        self.Cpu['vendor'], self.Cpu['cpu_cores'], self.Cpu['cpu_siblings'], self.Cpu['clflush_size'], self.Cpu['cache_size'] = vendor,cpu_cores,cpu_siblings,clflush_size,cache_size
+        print self.Cpu
+        return self.Cpu
+
+    def get_board(self):
+        #Board and BIOS
+        print self.Boa
+        return self.Boa
+
+    def get_memory(self):
+        #Memory Device
+        print self.Mem
+        return self.Mem
 
     def get_monitor(self):
         #Monitor
@@ -197,8 +216,14 @@ class DetailInfo:
             if tmp:
                 if not ret.get("chip"):
                     ret["Mon_chip"] = tmp[0]
+        print ret
         return ret
 
 if __name__ == "__main__":
     cc = DetailInfo()
     cc.get_sys_msg()
+    cc.get_computer()
+    cc.get_cpu()
+    cc.get_board()
+    cc.get_memory()
+    cc.get_monitor()

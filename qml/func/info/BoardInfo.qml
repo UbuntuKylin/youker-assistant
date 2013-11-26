@@ -23,15 +23,15 @@ Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
     Component.onCompleted: {
-        systemdispatcher.get_detail_system_message_qt();//获取详细信息
-        basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor") + ".jpg";
-        bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor") + ".jpg";
-        productText.text = systemdispatcher.getSingleInfo("BoaProduct");
-        vendorText.text = systemdispatcher.getSingleInfo("BoaVendor");
-        serialText.text = systemdispatcher.getSingleInfo("BoaSerial");
-        biosvendorText.text = systemdispatcher.getSingleInfo("BioVendor");
-        biosversionText.text = systemdispatcher.getSingleInfo("BioVersion");
-        biosreleaseText.text = systemdispatcher.getSingleInfo("BioRelease");
+        systemdispatcher.get_board_info_qt();//获取详细信息
+        basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor", "board") + ".jpg";
+        bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor", "board") + ".jpg";
+        productText.text = systemdispatcher.getSingleInfo("BoaProduct", "board");
+        vendorText.text = systemdispatcher.getSingleInfo("BoaVendor", "board");
+        serialText.text = systemdispatcher.getSingleInfo("BoaSerial", "board");
+        biosvendorText.text = systemdispatcher.getSingleInfo("BioVendor", "board");
+        biosversionText.text = systemdispatcher.getSingleInfo("BioVersion", "board");
+        biosreleaseText.text = systemdispatcher.getSingleInfo("BioRelease", "board");
     }
 
     Column {

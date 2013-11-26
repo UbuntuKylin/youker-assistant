@@ -24,13 +24,13 @@ Rectangle {
     color: "transparent"
 
     Component.onCompleted: {
-        systemdispatcher.get_detail_system_message_qt();//获取详细信息
-        logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("MemVendor").toUpperCase() + ".jpg";
-        slotText.text = systemdispatcher.getSingleInfo("MemSlot");
-        modelText.text = systemdispatcher.getSingleInfo("MemProduct");
-        vendorText.text = systemdispatcher.getSingleInfo("MemVendor");
-        serialText.text = systemdispatcher.getSingleInfo("MemSerial");
-        var sizeValue = systemdispatcher.getSingleInfo("MemSize");
+        systemdispatcher.get_memory_info_qt();//获取详细信息
+        logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("MemVendor", "memory").toUpperCase() + ".jpg";
+        slotText.text = systemdispatcher.getSingleInfo("MemSlot", "memory");
+        modelText.text = systemdispatcher.getSingleInfo("MemProduct", "memory");
+        vendorText.text = systemdispatcher.getSingleInfo("MemVendor", "memory");
+        serialText.text = systemdispatcher.getSingleInfo("MemSerial", "memory");
+        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory");
         sizeValue = sizeValue/1024/1024/1024;
         sizeText.text = sizeValue + "GB";
     }

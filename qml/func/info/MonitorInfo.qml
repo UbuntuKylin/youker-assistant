@@ -24,9 +24,9 @@ Rectangle {
     color: "transparent"
 
     Component.onCompleted: {
-        systemdispatcher.get_detail_system_message_qt();//获取详细信息
-        chipText.text = systemdispatcher.getSingleInfo("Mon_chip");
-        var vendor = systemdispatcher.getSingleInfo("Mon_vendor");
+        systemdispatcher.get_monitor_info_qt();//获取详细信息
+        chipText.text = systemdispatcher.getSingleInfo("Mon_chip", "monitor");
+        var vendor = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
         if(vendor.length !== 0 ) {
             productLabel.visible = true;
             vendorLabel.visible = true;
@@ -37,16 +37,16 @@ Rectangle {
             gammaLabel.visible = true;
             outputLabel.visible = true;
             supportLabel.visible = true;
-            logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("Mon_vendor") + ".jpg";
-            productText.text = systemdispatcher.getSingleInfo("Mon_product");
-            vendorText.text = systemdispatcher.getSingleInfo("Mon_vendor");
-            dateText.text = systemdispatcher.getSingleInfo("Mon_year") + "/" + systemdispatcher.getSingleInfo("Mon_week");
-            sizeText.text = systemdispatcher.getSingleInfo("Mon_size");
-            inText.text = systemdispatcher.getSingleInfo("Mon_in");
-            maxmodeText.text = systemdispatcher.getSingleInfo("Mon_maxmode");
-            gammaText.text = systemdispatcher.getSingleInfo("Mon_gamma");
-            outputText.text = systemdispatcher.getSingleInfo("Mon_output");
-            supportText.text = systemdispatcher.getSingleInfo("Mon_support");
+            logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("Mon_vendor", "monitor") + ".jpg";
+            productText.text = systemdispatcher.getSingleInfo("Mon_product", "monitor");
+            vendorText.text = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
+            dateText.text = systemdispatcher.getSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getSingleInfo("Mon_week", "monitor");
+            sizeText.text = systemdispatcher.getSingleInfo("Mon_size", "monitor");
+            inText.text = systemdispatcher.getSingleInfo("Mon_in", "monitor");
+            maxmodeText.text = systemdispatcher.getSingleInfo("Mon_maxmode", "monitor");
+            gammaText.text = systemdispatcher.getSingleInfo("Mon_gamma", "monitor");
+            outputText.text = systemdispatcher.getSingleInfo("Mon_output", "monitor");
+            supportText.text = systemdispatcher.getSingleInfo("Mon_support", "monitor");
         }
         else {
             productLabel.visible = false;
