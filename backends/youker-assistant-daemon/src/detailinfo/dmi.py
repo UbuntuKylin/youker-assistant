@@ -69,13 +69,13 @@ class Dmi:
         t = self.ctoascii(s)
         while t > 1:
             j = 0
-            while i+j < slen and bp[i + j] != '$':
+            while i+j < slen and bp[i + j] != '\0':
                 j+= 1
             i += j
             i += 1
             t -= 1
         n = 0
-        while i+n < slen and bp[i + n] != '$':
+        while i+n < slen and bp[i + n] != '\0':
             n += 1
         return self.strip(bp[i:i+n])
 
@@ -89,7 +89,7 @@ class Dmi:
 #        buf = fd.read(slen)
         buf = MyCppModule.MyCppFun1(base,slen)
         data = buf
-#        data = buf.replace('$','\0')
+        data = buf.replace('$','\0')
         MemSlot,MemProduct,MemVendor,MemSerial,MemSize = "","","","",""
         while i+4 <= slen :
             typ = data[i]
@@ -130,39 +130,45 @@ class Dmi:
                 data13 = self.ctoascii(data[i+13])
                 data12 = self.ctoascii(data[i+12])
                 u = data13 << 8 | data12
+		print "33333333333333"
+		print data[i+13]
+		print data[i+12]
+		print i
+		print u
                 if u != 0xffff :
                     if u & 0x8000 == 0 :
                         size = 1024 * (u & 0x7fff) * 1024
                     else :
-                        size = 1024 * (u & 0x7fff) 
-                if MemSlot:
-                    MemSlot = MemSlot + '/' + self.dmi_string(data[i:],length,data[i+16],slen-i)
-                else:
-                    MemSlot = self.dmi_string(data[i:],length,data[i+16],slen-i)
-                l = self.ctoascii(length)
-                if l > 26 :
-                    if MemProduct:
-                        MemProduct = MemProduct + '/' + self.dmi_string(data[i:],length,data[i+26],slen-i)
+                        size = 1024 * (u & 0x7fff)
+                if size :
+                    if MemSlot :
+                        MemSlot = MemSlot + '/' + self.dmi_string(data[i:],length,data[i+16],slen-i)
                     else:
-                        MemProduct = self.dmi_string(data[i:],length,data[i+26],slen-i)
-                if l > 23 :
-                    if MemVendor:
-                        MemVendor = MemVendor + '/' + self.dmi_string(data[i:],length,data[i+23],slen-i)
+                        MemSlot = self.dmi_string(data[i:],length,data[i+16],slen-i)
+                    l = self.ctoascii(length)
+                    if l > 26 :
+                        if MemProduct:
+                            MemProduct = MemProduct + '/' + self.dmi_string(data[i:],length,data[i+26],slen-i)
+                        else:
+                            MemProduct = self.dmi_string(data[i:],length,data[i+26],slen-i)
+                    if l > 23 :
+                        if MemVendor:
+                            MemVendor = MemVendor + '/' + self.dmi_string(data[i:],length,data[i+23],slen-i)
+                        else:
+                            MemVendor = self.dmi_string(data[i:],length,data[i+23],slen-i)
+                    if l > 24 :
+                        if MemSerial:
+                            MemSerial = MemSerial + '/' + self.dmi_string(data[i:],length,data[i+24],slen-i)
+                        else:
+                            MemSerial = self.dmi_string(data[i:],length,data[i+24],slen-i)
+                    if MemSize:
+                        MemSize = MemSize + '/' + str(size)
                     else:
-                        MemVendor = self.dmi_string(data[i:],length,data[i+23],slen-i)
-                if l > 24 :
-                    if MemSerial:
-                        MemSerial = MemSerial + '/' + self.dmi_string(data[i:],length,data[i+24],slen-i)
-                    else:
-                        MemSerial = self.dmi_string(data[i:],length,data[i+24],slen-i)
-                if MemSize:
-                    MemSize = MemSize + '/' + str(size)
-                else:
-                    MemSize = str(size)
-                dm["MemSlot"],dm["MemProduct"],dm["MemVendor"],dm["MemSerial"],dm["MemSize"] = MemSlot,MemProduct,MemVendor,MemSerial,MemSize
+                        MemSize = str(size)
+                    dm["MemSlot"],dm["MemProduct"],dm["MemVendor"],dm["MemSerial"],dm["MemSize"] = MemSlot,MemProduct,MemVendor,MemSerial,MemSize
 
             i += self.ctoascii(length)
-            while i+4 < slen and (data[i]!= '$' or data[i+1]!= '$') :
+            while i+4 < slen and (data[i]!= '\0' or data[i+1]!= '\0') :
                 i += 1
             i += 2
             #f.close()
