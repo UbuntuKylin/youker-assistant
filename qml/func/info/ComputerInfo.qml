@@ -25,6 +25,29 @@ Rectangle {
     Component.onCompleted: {
         systemdispatcher.get_detail_system_message_qt();//获取详细信息
         logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("ComVendor") + ".jpg";
+
+        comvendorText.text = systemdispatcher.getSingleInfo("ComVendor");
+        comproductText.text = systemdispatcher.getSingleInfo("ComProduct");
+        comversionText.text = systemdispatcher.getSingleInfo("ComVersion");
+        comserialText.text = systemdispatcher.getSingleInfo("ComSerial");
+        nodeText.text = systemdispatcher.getSingleInfo("node");
+        systemText.text = systemdispatcher.getSingleInfo("system");
+        platformText.text = systemdispatcher.getSingleInfo("platform");
+        architectureText.text = systemdispatcher.getSingleInfo("architecture");
+        releaseText.text = systemdispatcher.getSingleInfo("release");
+        machineText.text = systemdispatcher.getSingleInfo("machine");
+
+
+        var timeValue = systemdispatcher.getSingleInfo("uptime");
+        var valueHour = Math.floor(timeValue/60);//返回小于等于timeValue/60的最大整数
+//        var aa = valueHour.toFixed(0);
+        var valueMinute = timeValue % 60;
+        if(valueHour == 0) {
+            uptimeText.text = valueMinute + qsTr(" Minutes");//分钟
+        }
+        else {
+            uptimeText.text = valueHour + qsTr(" Hours ") + valueMinute + qsTr(" Minutes");//小时 分钟
+        }
     }
 
     Column {
@@ -55,165 +78,165 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Vendor:")//制造商:
-                    font.pixelSize: 12
+                    text: qsTr("Vendor:")//制造商：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: comvendor
-                    text: systemdispatcher.getSingleInfo("ComVendor")
-                    font.pixelSize: 12
+                    id: comvendorText
+                    text: ""//systemdispatcher.getSingleInfo("ComVendor")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Model:")//电脑型号:
-                    font.pixelSize: 12
+                    text: qsTr("Model:")//电脑型号：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: comproduct
-                    text: systemdispatcher.getSingleInfo("ComProduct")
-                    font.pixelSize: 12
+                    id: comproductText
+                    text: ""//systemdispatcher.getSingleInfo("ComProduct")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Version:")//电脑版本:
-                    font.pixelSize: 12
+                    text: qsTr("Version:")//电脑版本：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: comversion
-                    text: systemdispatcher.getSingleInfo("ComVersion")
-                    font.pixelSize: 12
+                    id: comversionText
+                    text: ""//systemdispatcher.getSingleInfo("ComVersion")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Serial:")//序列号:
-                    font.pixelSize: 12
+                    text: qsTr("Serial:")//序列号：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: comserial
-                    text: systemdispatcher.getSingleInfo("ComSerial")
-                    font.pixelSize: 12
+                    id: comserialText
+                    text: ""//systemdispatcher.getSingleInfo("ComSerial")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Hostname:")//主机名:
-                    font.pixelSize: 12
+                    text: qsTr("Hostname:")//主机名：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: node
-                    text: systemdispatcher.getSingleInfo("node")
-                    font.pixelSize: 12
+                    id: nodeText
+                    text: ""//systemdispatcher.getSingleInfo("node")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Running Time:")//持续运行:
-                    font.pixelSize: 12
+                    text: qsTr("Running Time:")//持续运行时间：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: uptime
-                    text: systemdispatcher.getSingleInfo("uptime")
-                    font.pixelSize: 12
+                    id: uptimeText
+                    text: ""//systemdispatcher.getSingleInfo("uptime")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("OS Model:")//操作系统类型:
-                    font.pixelSize: 12
+                    text: qsTr("OS Model:")//操作系统类型：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: system
-                    text: systemdispatcher.getSingleInfo("system")
-                    font.pixelSize: 12
+                    id: systemText
+                    text: ""//systemdispatcher.getSingleInfo("system")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("OS Version:")//操作系统:
-                    font.pixelSize: 12
+                    text: qsTr("OS Version:")//操作系统版本：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: platform
-                    text: systemdispatcher.getSingleInfo("platform")
-                    font.pixelSize: 12
+                    id: platformText
+                    text: ""//systemdispatcher.getSingleInfo("platform")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Kernel Bit:")//系统位数:
-                    font.pixelSize: 12
+                    text: qsTr("Kernel Bit:")//系统位数：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: architecture
-                    text: systemdispatcher.getSingleInfo("architecture")
-                    font.pixelSize: 12
+                    id: architectureText
+                    text: ""//systemdispatcher.getSingleInfo("architecture")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Kernel Release:")//内核版本:
-                    font.pixelSize: 12
+                    text: qsTr("Kernel Release:")//内核版本：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: release
-                    text: systemdispatcher.getSingleInfo("release")
-                    font.pixelSize: 12
+                    id: releaseText
+                    text: ""//systemdispatcher.getSingleInfo("release")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Kernel Architecture:")//内核架构:
-                    font.pixelSize: 12
+                    text: qsTr("Kernel Architecture:")//内核架构：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: machine
-                    text: systemdispatcher.getSingleInfo("machine")
-                    font.pixelSize: 12
+                    id: machineText
+                    text: ""//systemdispatcher.getSingleInfo("machine")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }

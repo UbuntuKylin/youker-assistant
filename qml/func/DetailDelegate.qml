@@ -20,18 +20,30 @@ Item {
     id: delegate
     width: delegate.ListView.view.width; height: 40
     signal sendFlag(string flag);
-    //显示文字
-    Text {
-        text: name
-        color: delegate.ListView.isCurrentItem ? "white" : "black"//选中时字体为白色，未选中时为黑色
-        font {
-            family: "Helvetica"
-            pixelSize: 16
-            bold: true
-        }
+    Row {
+        spacing: 10
         anchors {
             left: parent.left; leftMargin: 15
             verticalCenter: parent.verticalCenter
+        }
+        //显示图片
+        Image {
+            width: 30
+            height: 20
+            source: iconName
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        //显示文字
+        Text {
+            anchors.verticalCenter: parent.verticalCenter
+            text: name
+            color: delegate.ListView.isCurrentItem ? "white" : "black"//选中时字体为白色，未选中时为黑色
+            font {
+                family: "Helvetica"
+                pixelSize: 14
+                bold: true
+            }
+
         }
     }
 

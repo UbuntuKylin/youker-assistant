@@ -52,8 +52,10 @@ class DetailInfo:
 #    CpuVersion		处理器版本
 #    CpuVendor 		制造商
 #    CpuSlot			插槽
-#    model_name      	处理器
-#    cpu_MHz 		cpu主频     
+#    CpuSerial		序列号
+#    CpuCapacity		最大主频
+#    CpuSize			当前主频
+#    CpuClock		前端总线
 #    cpu_cores 		cpu内核数
 #    cpu_siblings 		cpu线程数
 #    clflush_size 		一级缓存
@@ -91,12 +93,21 @@ class DetailInfo:
     def get_sys_msg(self):
         CLIPS_DICT = {}
         CLIPS_DICT['node'], CLIPS_DICT['uptime'], CLIPS_DICT['system'], CLIPS_DICT['platform'], CLIPS_DICT['architecture'], CLIPS_DICT['release'], CLIPS_DICT['machine'] = self.get_computer()
-        CLIPS_DICT['model_name'], CLIPS_DICT['vendor'], CLIPS_DICT['cpu_MHz'], CLIPS_DICT['cpu_cores'], CLIPS_DICT['cpu_siblings'], CLIPS_DICT['clflush_size'], CLIPS_DICT['cache_size'] = self.get_cpuinfo()
+        CLIPS_DICT['vendor'], CLIPS_DICT['cpu_cores'], CLIPS_DICT['cpu_siblings'], CLIPS_DICT['clflush_size'], CLIPS_DICT['cache_size'] = self.get_cpuinfo()
         CLIPS_DICT.update(self.dmi.scan_dmi())
         CLIPS_DICT.update(self.get_monitor())
         print 'CLIPS_DICT->'
         print CLIPS_DICT
         return CLIPS_DICT
+
+    def uptimeinfo(self):
+        with open('/proc/uptime') as f:
+            for line in f:
+                string = line.split('.')[0]
+                seconds = int(string)
+                minutes = seconds / 60
+                upminutes = str(minutes)
+        return upminutes
 
     def get_computer(self):
         #Computer
@@ -105,17 +116,7 @@ class DetailInfo:
                     string = line.split('.')[0]
                     seconds = int(string)
                     minutes = seconds / 60
-                    hours = minutes / 60
-                    days = hours / 24
-                    minutes %= 60
-                    hours %= 24
-                    uptime = ' '
-                    if days > 0:
-                        uptime += (str(days) + "天 ")
-                    if hours > 0:
-                        uptime += (str(hours) + "小时 ")
-                    if minutes > 0:
-                        uptime += (str(minutes) + "分钟")			
+                    uptime = str(minutes)		
         return platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
 
     def get_cpuinfo(self):
@@ -123,21 +124,19 @@ class DetailInfo:
         with open('/proc/cpuinfo') as f:
             for line in f:
                 if line.strip():
-                    if line.rstrip('\n').startswith('model name'):
-                        model_name = line.rstrip('\n').split(':')[1]
-                    elif line.rstrip('\n').startswith('vendor_id'):
+                    if line.rstrip('\n').startswith('vendor_id'):
                          vendor = line.rstrip('\n').split(':')[1]
-                    elif line.rstrip('\n').startswith('cpu MHz'):
-                         cpu_MHz = line.rstrip('\n').split(':')[1]
                     elif line.rstrip('\n').startswith('cpu cores'):
                          cpu_cores = line.rstrip('\n').split(':')[1]
                     elif line.rstrip('\n').startswith('siblings'):
                          cpu_siblings = line.rstrip('\n').split(':')[1]
                     elif line.rstrip('\n').startswith('clflush size'):
                          clflush_size = line.rstrip('\n').split(':')[1]
+                         clflush_size = filter(str.isdigit,clflush_size)
                     elif line.rstrip('\n').startswith('cache size'):
                          cache_size = line.rstrip('\n').split(':')[1]
-        return model_name,vendor,cpu_MHz,cpu_cores,cpu_siblings,clflush_size,cache_size
+                         cache_size = filter(str.isdigit,cache_size)
+        return vendor,cpu_cores,cpu_siblings,clflush_size,cache_size
 
     def get_monitor(self):
         #Monitor

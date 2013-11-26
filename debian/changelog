@@ -9,9 +9,9 @@ youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
   * Clear Cookies of Chromium(LP: #1224871).
   * Solve wrong status of history cleaning(LP: #1253852).
   * Popup a dialog to add UbuntuKylin sourcelist or not.
-  * Add detail info module.
+  * Display detailed information of Computer.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 25 Nov 2013 16:11:51 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 26 Nov 2013 14:56:24 +0800
 
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 

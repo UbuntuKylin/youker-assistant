@@ -90,15 +90,15 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Current Graphics Card:")//当前显卡:
-                    font.pixelSize: 12
+                    text: qsTr("Current Graphics Card:")//当前显卡：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: chipText
                     text: ""//systemdispatcher.getSingleInfo("Mon_chip")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -106,15 +106,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: productLabel
-                    text: qsTr("Monitor:")//显示器:
-                    font.pixelSize: 12
+                    text: qsTr("Monitor:")//显示器：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: productText
                     text: ""//systemdispatcher.getSingleInfo("Mon_product")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -122,15 +122,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: vendorLabel
-                    text: qsTr("Vendor:")//制造商:
-                    font.pixelSize: 12
+                    text: qsTr("Vendor:")//制造商：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: vendorText
                     text: ""//systemdispatcher.getSingleInfo("Mon_vendor")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -138,15 +138,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: dateLabel
-                    text: qsTr("Production Date(year/week):")//生产日期(年/周):
-                    font.pixelSize: 12
+                    text: qsTr("Production Date(year/week):")//生产日期(年/周)：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: dateText
                     text: ""//systemdispatcher.getSingleInfo("Mon_year")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -154,15 +154,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: sizeLabel
-                    text: qsTr("Reading Area:")//可视面积:
-                    font.pixelSize: 12
+                    text: qsTr("Reading Area:")//可视面积：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: sizeText
                     text: ""//systemdispatcher.getSingleInfo("Mon_size")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -170,15 +170,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: inLabel
-                    text: qsTr("Screen Size:")//屏幕尺寸:
-                    font.pixelSize: 12
+                    text: qsTr("Screen Size:")//屏幕尺寸：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: inText
                     text: ""//systemdispatcher.getSingleInfo("Mon_in")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -186,15 +186,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: maxmodeLabel
-                    text: qsTr("Maximum Resolution:")//最大分辨率:
-                    font.pixelSize: 12
+                    text: qsTr("Maximum Resolution:")//最大分辨率：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: maxmodeText
                     text: ""//systemdispatcher.getSingleInfo("Mon_maxmode")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -202,15 +202,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: gammaLabel
-                    text: qsTr("Gamma Value:")//伽马值:
-                    font.pixelSize: 12
+                    text: qsTr("Gamma Value:")//伽马值：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: gammaText
                     text: ""//systemdispatcher.getSingleInfo("Mon_gamma")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -218,15 +218,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: outputLabel
-                    text: qsTr("Current Interface:")//当前接口:
-                    font.pixelSize: 12
+                    text: qsTr("Current Interface:")//当前接口：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: outputText
                     text: ""//systemdispatcher.getSingleInfo("Mon_output")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -234,15 +234,15 @@ Rectangle {
                 spacing: 10
                 Text {
                     id: supportLabel
-                    text: qsTr("Support Interface:")//支持接口:
-                    font.pixelSize: 12
+                    text: qsTr("Support Interface:")//支持接口：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
                     id: supportText
                     text: ""//systemdispatcher.getSingleInfo("Mon_support")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }

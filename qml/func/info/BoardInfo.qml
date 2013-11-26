@@ -26,6 +26,12 @@ Rectangle {
         systemdispatcher.get_detail_system_message_qt();//获取详细信息
         basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor") + ".jpg";
         bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor") + ".jpg";
+        productText.text = systemdispatcher.getSingleInfo("BoaProduct");
+        vendorText.text = systemdispatcher.getSingleInfo("BoaVendor");
+        serialText.text = systemdispatcher.getSingleInfo("BoaSerial");
+        biosvendorText.text = systemdispatcher.getSingleInfo("BioVendor");
+        biosversionText.text = systemdispatcher.getSingleInfo("BioVersion");
+        biosreleaseText.text = systemdispatcher.getSingleInfo("BioRelease");
     }
 
     Column {
@@ -57,42 +63,45 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Motherboard Model:")//主板型号:
-                    font.pixelSize: 12
+                    text: qsTr("Motherboard Model:")//主板型号：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("BoaProduct")
-                    font.pixelSize: 12
+                    id: productText
+                    text: ""//systemdispatcher.getSingleInfo("BoaProduct")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Motherboard Vendor:")//主板产商:
-                    font.pixelSize: 12
+                    text: qsTr("Motherboard Vendor:")//主板产商：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("BoaVendor")
-                    font.pixelSize: 12
+                    id: vendorText
+                    text: ""//systemdispatcher.getSingleInfo("BoaVendor")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Serial:")//序列号:
-                    font.pixelSize: 12
+                    text: qsTr("Serial:")//序列号：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("BoaSerial")
-                    font.pixelSize: 12
+                    id: serialText
+                    text: ""//systemdispatcher.getSingleInfo("BoaSerial")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -119,42 +128,45 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Bios Vendor:")//BIOS产商:
-                    font.pixelSize: 12
+                    text: qsTr("Bios Vendor:")//BIOS产商：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("BioVendor")
-                    font.pixelSize: 12
+                    id: biosvendorText
+                    text: ""//systemdispatcher.getSingleInfo("BioVendor")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Bios Version:")//BIOS版本:
-                    font.pixelSize: 12
+                    text: qsTr("Bios Version:")//BIOS版本：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("BioVersion")
-                    font.pixelSize: 12
+                    id: biosversionText
+                    text: ""//systemdispatcher.getSingleInfo("BioVersion")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Release Date:")//发布日期:
-                    font.pixelSize: 12
+                    text: qsTr("Release Date:")//发布日期：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("BioRelease")
-                    font.pixelSize: 12
+                    id: biosreleaseText
+                    text: ""//systemdispatcher.getSingleInfo("BioRelease")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -177,7 +189,7 @@ Rectangle {
         source: ""
         anchors {
             top: parent.top
-            topMargin: 172
+            topMargin: 200
             right: parent.right
             rightMargin: 30
         }

@@ -109,7 +109,23 @@ class Dmi:
                 CpuSlot = self.dmi_string(data[i:],length,data[i+4],slen-i)
                 CpuVersion = self.dmi_string(data[i:],length,data[i+0x10],slen-i)
                 CpuVendor = self.dmi_string(data[i:],length,data[i+7],slen-i)
-                dm["CpuSlot"],dm["CpuVersion"],dm["CpuVendor"] = CpuSlot,CpuVersion,CpuVendor
+                if length > 0x20 :
+                    CpuSerial = self.dmi_string(data[i:],length,data[i+0x20],slen-i)
+                data12 = self.ctoascii(data[i+0x12])
+                data13 = self.ctoascii(data[i+0x13])
+                data14 = self.ctoascii(data[i+0x14])
+                data15 = self.ctoascii(data[i+0x15])
+                data16 = self.ctoascii(data[i+0x16])
+                data17 = self.ctoascii(data[i+0x17])
+                data18 = self.ctoascii(data[i+0x18])
+                if data18 & 0x40 :
+                    u = data13 << 8 | data12
+                    CpuClock = str(u)
+                    u = data15 << 8 | data14
+                    CpuCapacity = str(u)
+                    u = data17 << 8 | data16
+                    CpuSize = str(u)
+                dm["CpuSlot"],dm["CpuVersion"],dm["CpuVendor"],dm["CpuSerial"],dm["CpuClock"],dm["CpuCapacity"],dm["CpuSize"] = CpuSlot,CpuVersion,CpuVendor,CpuSerial,CpuClock,CpuCapacity,CpuSize
 
             elif choose == 2 :
 #Board Information Block
@@ -130,11 +146,6 @@ class Dmi:
                 data13 = self.ctoascii(data[i+13])
                 data12 = self.ctoascii(data[i+12])
                 u = data13 << 8 | data12
-		print "33333333333333"
-		print data[i+13]
-		print data[i+12]
-		print i
-		print u
                 if u != 0xffff :
                     if u & 0x8000 == 0 :
                         size = 1024 * (u & 0x7fff) * 1024
@@ -192,10 +203,6 @@ class Dmi:
                 if buf[0:4] == "_SM_":
                     smmajver = buf[6]
                     smminver = buf[7]
-                    f = open("/tmp/wb.txt","a+")
-                    print >> f,"000000000"
-                    print >> f,buf
-                    f.close()
                 elif smmajver and buf[0:5] == "_DMI_":
                     buf6 = self.ctoascii(buf[6])
                     buf7 = self.ctoascii(buf[7])
@@ -215,18 +222,6 @@ class Dmi:
                     else:
                         dmimaj = smmajver
                         dmimin = smminver
-                    f = open("/tmp/wb.txt","a+")
-                    print >> f,"11111111111"
-                    print >> f,buf11
-                    print >> f,buf10
-                    print >> f,buf9
-                    print >> f,buf8
-                    print >> f,"22222222"
-                    print >> f,buf
-                    print >> f,num
-                    print >> f,slen
-                    print >> f,base
-                    f.close()
                     return self.dmi_table(fd, base, slen, num, dmimaj,dmimin)
 
 if __name__ == "__main__":

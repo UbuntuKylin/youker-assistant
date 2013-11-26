@@ -48,6 +48,17 @@ Rectangle {
 //        else if(msg.indexOf("VIMICRO") > 0 || msg.indexOf("Vimicro") > 0) {
 //            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
 //        }
+
+        cpuversionText.text = systemdispatcher.getSingleInfo("CpuVersion");
+        cpuverdorText.text = systemdispatcher.getSingleInfo("CpuVendor");
+        cpuserialText.text = systemdispatcher.getSingleInfo("CpuSerial");
+        slotText.text = systemdispatcher.getSingleInfo("CpuSlot");
+        maxText.text = systemdispatcher.getSingleInfo("CpuCapacity") + "MHz";
+        curText.text = systemdispatcher.getSingleInfo("CpuSize") + "MHz";
+        frontText.text = systemdispatcher.getSingleInfo("CpuClock") + "MHz";
+        coresText.text = systemdispatcher.getSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings") + qsTr("thread");
+        cache1.text = systemdispatcher.getSingleInfo("clflush_size") + "KB";
+        cache2.text = systemdispatcher.getSingleInfo("cache_size") + "KB";
     }
     Column {
         anchors {
@@ -78,113 +89,150 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("CPU:")//处理器:
-                    font.pixelSize: 12
+                    text: qsTr("CPU:")//处理器：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("CpuVersion")
-                    font.pixelSize: 12
+                    id: cpuversionText
+                    text: ""//systemdispatcher.getSingleInfo("CpuVersion")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Vendor:")//制造商:
-                    font.pixelSize: 12
+                    text: qsTr("Vendor:")//制造商：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: cpuverdor
-                    text: systemdispatcher.getSingleInfo("CpuVendor")
-                    font.pixelSize: 12
+                    id: cpuverdorText
+                    text: ""//systemdispatcher.getSingleInfo("CpuVendor")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Socket/Slot:")//插座/插槽:
-                    font.pixelSize: 12
+                    text: qsTr("Serial:")//序列号：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("CpuSlot")
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                }
-            }
-//            Row {
-//                spacing: 10
-//                Text {
-//                    text: qsTr("model_name:")//处理器:
-//                    font.pixelSize: 12
-//                    color: "#7a7a7a"
-//                    width: 100
-//                }
-//                Text {
-//                    text: systemdispatcher.getSingleInfo("model_name")
-//                    font.pixelSize: 12
-//                    color: "#7a7a7a"
-//                }
-//            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Maximum Frequency:")//最大主频:
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    width: 120
-                }
-                Text {
-                    text: systemdispatcher.getSingleInfo("cpu_MHz") + "MHz"
-                    font.pixelSize: 12
+                    id: cpuserialText
+                    text: ""//systemdispatcher.getSingleInfo("CpuSerial")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Cores Number:")//核心数目:
-                    font.pixelSize: 12
+                    text: qsTr("Socket/Slot:")//插座/插槽：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings") + qsTr("thread")
-                    font.pixelSize: 12
+                    id: slotText
+                    text: ""//systemdispatcher.getSingleInfo("CpuSlot")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("First-level caching:")//一级缓存:
-                    font.pixelSize: 12
+                    text: qsTr("Maximum Frequency:")//最大主频：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("clflush_size") + "KB"
-                    font.pixelSize: 12
+                    id: maxText
+                    text: ""//systemdispatcher.getSingleInfo("CpuCapacity") + "MHz"
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Second-level caching:")//二级缓存:
-                    font.pixelSize: 12
+                    text: qsTr("Current Frequency:")//当前主频：
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("cache_size") + "KB"
-                    font.pixelSize: 12
+                    id: curText
+                    text: ""//systemdispatcher.getSingleInfo("CpuSize") + "MHz"
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Front-side Bus:")//前端总线：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 120
+                }
+                Text {
+                    id: frontText
+                    text: ""//systemdispatcher.getSingleInfo("CpuClock") + "MHz"
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Cores Number:")//核心数目：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 120
+                }
+                Text {
+                    id: coresText
+                    text: ""//systemdispatcher.getSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings") + qsTr("thread")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("First-level caching:")//一级缓存：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 120
+                }
+                Text {
+                    id: cache1
+                    text: ""//systemdispatcher.getSingleInfo("clflush_size") + "KB"
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Second-level caching:")//二级缓存：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 120
+                }
+                Text {
+                    id: cache2
+                    text: ""//systemdispatcher.getSingleInfo("cache_size") + "KB"
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }

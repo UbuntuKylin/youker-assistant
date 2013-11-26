@@ -31,11 +31,11 @@ Rectangle {
 
     function addList() {
         listModel.clear();//清空
-        listModel.append({"name": qsTr("Computer"), "flag": "computer"});
-        listModel.append({"name": qsTr("CPU"), "flag": "cpu"});
-        listModel.append({"name": qsTr("Board"), "flag": "board"});
-        listModel.append({"name": qsTr("Memory"), "flag": "memory"});
-        listModel.append({"name": qsTr("Monitor"), "flag": "monitor"});
+        listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "../img/icons/mouse.png"});
+        listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "../img/icons/samename.png"});
+        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "../img/icons/themeset.png"});
+        listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "../img/icons/systemsound.png"});
+        listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "../img/icons/unity.png"});
 //        systemdispatcher.get_detail_system_message_qt();//获取详细信息
     }
 
@@ -52,7 +52,11 @@ Rectangle {
         }
         //左边标题栏
         Rectangle {
-            width: 150; height: window.height
+            width: 150; height: window.height - 10
+            anchors {
+                top: parent.top
+                topMargin: 10
+            }
             color: "transparent"
             ListView {
                 focus: true
@@ -226,13 +230,28 @@ Rectangle {
     Component {
         id: returnDelegate
         Item {
-            width: categories.width; height: 60
-            Text {
-                text: qsTr("Back")
-                font { family: "Helvetica"; pixelSize: 16; bold: true }
+            width: categories.width; height: 40
+            Row {
+                spacing: 10
                 anchors {
                     left: parent.left; leftMargin: 15
                     verticalCenter: parent.verticalCenter
+                }
+                Image {
+                    width: 30
+                    height: 20
+                    source: "../img/icons/mouse.png"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: qsTr("Back")
+                    font { family: "Helvetica"; pixelSize: 14; bold: true }
+
+//                    anchors {
+//                        left: parent.left; leftMargin: 15
+//                        verticalCenter: parent.verticalCenter
+//                    }
                 }
             }
             MouseArea {

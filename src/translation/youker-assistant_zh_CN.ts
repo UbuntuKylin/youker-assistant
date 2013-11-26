@@ -173,6 +173,49 @@
     </message>
 </context>
 <context>
+    <name>BoardInfo</name>
+    <message>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="49"/>
+        <source>Basic information</source>
+        <translation>主板基本信息</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="66"/>
+        <source>Motherboard Model:</source>
+        <translation>主板型号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="81"/>
+        <source>Motherboard Vendor:</source>
+        <translation>主板产商：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="96"/>
+        <source>Serial:</source>
+        <translation>序列号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="112"/>
+        <source>Bios information</source>
+        <translation>BIOS信息</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="131"/>
+        <source>Bios Vendor:</source>
+        <translation>BIOS产商：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="146"/>
+        <source>Bios Version:</source>
+        <translation>BIOS版本：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="161"/>
+        <source>Release Date:</source>
+        <translation>发布日期：</translation>
+    </message>
+</context>
+<context>
     <name>BootAnimation</name>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="32"/>
@@ -607,6 +650,148 @@
     </message>
 </context>
 <context>
+    <name>ComputerInfo</name>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="46"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="49"/>
+        <source> Minutes</source>
+        <translation>分钟</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="49"/>
+        <source> Hours </source>
+        <translation>小时</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="64"/>
+        <source>Basic information</source>
+        <translation>电脑基本信息</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="81"/>
+        <source>Vendor:</source>
+        <translation>制造商：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="96"/>
+        <source>Model:</source>
+        <translation>电脑型号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="111"/>
+        <source>Version:</source>
+        <translation>电脑版本：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="126"/>
+        <source>Serial:</source>
+        <translation>序列号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="141"/>
+        <source>Hostname:</source>
+        <translation>主机名：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="156"/>
+        <source>Running Time:</source>
+        <translation>持续运行时间：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="171"/>
+        <source>OS Model:</source>
+        <translation>操作系统类型：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="186"/>
+        <source>OS Version:</source>
+        <translation>操作系统版本：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="201"/>
+        <source>Kernel Bit:</source>
+        <translation>系统位数：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="216"/>
+        <source>Kernel Release:</source>
+        <translation>内核版本：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="231"/>
+        <source>Kernel Architecture:</source>
+        <translation>内核架构：</translation>
+    </message>
+</context>
+<context>
+    <name>CpuInfo</name>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="75"/>
+        <source>CPU information</source>
+        <translation>处理器信息</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="92"/>
+        <source>CPU:</source>
+        <translation>处理器：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="107"/>
+        <source>Vendor:</source>
+        <translation>制造商：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="122"/>
+        <source>Serial:</source>
+        <translation>序列号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="137"/>
+        <source>Socket/Slot:</source>
+        <translation>插座/插槽：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="152"/>
+        <source>Maximum Frequency:</source>
+        <translation>最大主频：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="167"/>
+        <source>Current Frequency:</source>
+        <translation>当前主频：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="182"/>
+        <source>Front-side Bus:</source>
+        <translation>前端总线：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="197"/>
+        <source>Cores Number:</source>
+        <translation>核心数目：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="59"/>
+        <source>cores</source>
+        <translation>核</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="59"/>
+        <source>thread</source>
+        <translation>线程</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="212"/>
+        <source>First-level caching:</source>
+        <translation>一级缓存：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="227"/>
+        <source>Second-level caching:</source>
+        <translation>二级缓存：</translation>
+    </message>
+</context>
+<context>
     <name>DefaultFont</name>
     <message>
         <source>友情提示：</source>
@@ -809,12 +994,12 @@
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="36"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="37"/>
         <source>Board</source>
         <translation>主板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="37"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="36"/>
         <source>Memory</source>
         <translation>内存</translation>
     </message>
@@ -824,7 +1009,7 @@
         <translation>显示器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="231"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="248"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
@@ -1646,6 +1831,39 @@
     </message>
 </context>
 <context>
+    <name>MemoryInfo</name>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="49"/>
+        <source>Memory information</source>
+        <translation>内存信息</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="66"/>
+        <source>Slot Number:</source>
+        <translation>插槽号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="81"/>
+        <source>Memory Model:</source>
+        <translation>内存型号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="96"/>
+        <source>Vendor:</source>
+        <translation>制造商：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="111"/>
+        <source>Serial:</source>
+        <translation>序列号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="126"/>
+        <source>Size:</source>
+        <translation>内存大小：</translation>
+    </message>
+</context>
+<context>
     <name>MessageDialog</name>
     <message>
         <location filename="../messagedialog.ui" line="14"/>
@@ -1727,6 +1945,64 @@
         <location filename="../modaldialog.cpp" line="37"/>
         <source>click leftbutton to change color, click rightbutton to exit</source>
         <translation>点击鼠标左键进行更换颜色检测操作，点击鼠标右键退出检测。</translation>
+    </message>
+</context>
+<context>
+    <name>MonitorInfo</name>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="76"/>
+        <source>Monitor information</source>
+        <translation>显示器信息</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="93"/>
+        <source>Current Graphics Card:</source>
+        <translation>当前显卡：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="109"/>
+        <source>Monitor:</source>
+        <translation>显示器：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="125"/>
+        <source>Vendor:</source>
+        <translation>制造商：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="141"/>
+        <source>Production Date(year/week):</source>
+        <translation>生产日期(年/周)：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="157"/>
+        <source>Reading Area:</source>
+        <translation>可视面积：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="173"/>
+        <source>Screen Size:</source>
+        <translation>屏幕尺寸：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="189"/>
+        <source>Maximum Resolution:</source>
+        <translation>最大分辨率：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="205"/>
+        <source>Gamma Value:</source>
+        <translation>伽马值：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="221"/>
+        <source>Current Interface:</source>
+        <translation>当前接口：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="237"/>
+        <source>Support Interface:</source>
+        <translation>支持接口：</translation>
     </message>
 </context>
 <context>
@@ -2753,22 +3029,22 @@
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="274"/>
+        <location filename="../systemdispatcher.cpp" line="275"/>
         <source>choose boot animation</source>
         <translation>选择开机动画</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="274"/>
+        <location filename="../systemdispatcher.cpp" line="275"/>
         <source>Image Files (*.png)</source>
         <translation>Image Files (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="279"/>
+        <location filename="../systemdispatcher.cpp" line="280"/>
         <source>choose music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="279"/>
+        <location filename="../systemdispatcher.cpp" line="280"/>
         <source>Music Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>Music Files (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
