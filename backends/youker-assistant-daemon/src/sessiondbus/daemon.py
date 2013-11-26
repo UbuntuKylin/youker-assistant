@@ -71,6 +71,12 @@ class SessionDaemon(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def onekey_scan_function(self, mode_list):
+        daemononekey = cleaner.OneKeyClean()
+        total_dic = daemononekey.get_onekey_crufts()
+        self.scan_complete_msg('onekey')
+
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
     def history_scan_funciton(self, flag):
         daemonhistory = cleaner.CleanTheHistory(None)
@@ -150,14 +156,16 @@ class SessionDaemon(dbus.service.Object):
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_apt_cruft(self):
-        tmp_dic = self.daemoncache.get_scan_result()
+        #tmp_dic = self.daemoncache.get_scan_result()
+        tmp_dic = self.daemoncache.get_cache_crufts()
         self.scan_complete_msg('apt')
         return tmp_dic['apt'].split('<1_1>')
     # the function of scan the softwarecenter cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def scan_softwarecenter_cruft(self):
-        tmp_dic = self.daemoncache.get_scan_result()
+        #tmp_dic = self.daemoncache.get_scan_result()
+        tmp_dic = self.daemoncache.get_cache_crufts()
         self.scan_complete_msg('softwarecenter')
         return tmp_dic['softwarecenter'].split('<1_1>')
 
@@ -174,6 +182,10 @@ class SessionDaemon(dbus.service.Object):
     def deb_exists_chromium(self, msg):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='s')
+    def display_scan_process(self, msg):
+        pass
+
     def scan_complete_msg(self, para):
         self.scan_complete(para)
 
@@ -182,6 +194,9 @@ class SessionDaemon(dbus.service.Object):
 
     def deb_exists_chromium_msg(self, para):
         self.deb_exists_chromium(para)
+
+    def display_scan_process_msg(self, para):
+        self.display_scan_process(para)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def exit(self):
