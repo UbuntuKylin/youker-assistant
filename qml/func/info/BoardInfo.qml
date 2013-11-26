@@ -20,35 +20,14 @@ import "../common" as Common
 import "../bars" as Bars
 
 Rectangle {
-    id: home
-    width: parent.width; height: 475
+    id: home; width: parent.width; height: 475
     color: "transparent"
-
     Component.onCompleted: {
         systemdispatcher.get_detail_system_message_qt();//获取详细信息
-        var msg = systemdispatcher.getSingleInfo("CpuVendor");
-        var pat1 = new RegExp('Intel');
-        var pat2 = new RegExp('AMD');
-        var pat3 = new RegExp('Vimicro');
-        if(pat1.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-        }
-        else if(pat2.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/AMD.jpg";
-        }
-        else if(pat3.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
-        }
-//        if(msg.indexOf("Intel") > 0) {
-//            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-//        }
-//        else if(msg.indexOf("AMD") > 0 || msg.indexOf("Amd") > 0) {
-//            logo.source =  "../../img/logo/Manufacturer/AMD.jpg";
-//        }
-//        else if(msg.indexOf("VIMICRO") > 0 || msg.indexOf("Vimicro") > 0) {
-//            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
-//        }
+        basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor") + ".jpg";
+        bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor") + ".jpg";
     }
+
     Column {
         anchors {
             top: parent.top
@@ -60,13 +39,13 @@ Rectangle {
 
         Row {
             Text {
-                id: bartitle
-                text: qsTr("CPU information")//处理器信息
+                id: basictitle
+                text: qsTr("Basic information")//主板基本信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
-            Rectangle {width: home.width - bartitle.width - 30 * 2
+            Rectangle {width: home.width - basictitle.width - 30 * 2
                 anchors.verticalCenter: parent.verticalCenter
                 height: 1; color: "#ccdadd"
             }
@@ -78,13 +57,13 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("CPU:")//处理器:
+                    text: qsTr("Motherboard Model:")//主板型号:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("CpuVersion")
+                    text: systemdispatcher.getSingleInfo("BoaProduct")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -92,14 +71,13 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Vendor:")//制造商:
+                    text: qsTr("Motherboard Vendor:")//主板产商:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    id: cpuverdor
-                    text: systemdispatcher.getSingleInfo("CpuVendor")
+                    text: systemdispatcher.getSingleInfo("BoaVendor")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -107,55 +85,47 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Socket/Slot:")//插座/插槽:
+                    text: qsTr("Serial:")//序列号:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("CpuSlot")
+                    text: systemdispatcher.getSingleInfo("BoaSerial")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
             }
-//            Row {
-//                spacing: 10
-//                Text {
-//                    text: qsTr("model_name:")//处理器:
-//                    font.pixelSize: 12
-//                    color: "#7a7a7a"
-//                    width: 100
-//                }
-//                Text {
-//                    text: systemdispatcher.getSingleInfo("model_name")
-//                    font.pixelSize: 12
-//                    color: "#7a7a7a"
-//                }
-//            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Maximum Frequency:")//最大主频:
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    width: 120
-                }
-                Text {
-                    text: systemdispatcher.getSingleInfo("cpu_MHz") + "MHz"
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                }
+        }
+        Row {
+            Text {
+                id: biostitle
+                text: qsTr("Bios information")//BIOS信息
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
             }
+            Rectangle {
+                id: splitbar
+                width: home.width - biostitle.width - 30 * 2
+                anchors.verticalCenter: parent.verticalCenter
+                height: 1; color: "#ccdadd"
+            }
+        }
+        Column {
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            spacing: 10
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Cores Number:")//核心数目:
+                    text: qsTr("Bios Vendor:")//BIOS产商:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings") + qsTr("thread")
+                    text: systemdispatcher.getSingleInfo("BioVendor")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -163,13 +133,13 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("First-level caching:")//一级缓存:
+                    text: qsTr("Bios Version:")//BIOS版本:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("clflush_size") + "KB"
+                    text: systemdispatcher.getSingleInfo("BioVersion")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -177,13 +147,13 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Second-level caching:")//二级缓存:
+                    text: qsTr("Release Date:")//发布日期:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 120
                 }
                 Text {
-                    text: systemdispatcher.getSingleInfo("cache_size") + "KB"
+                    text: systemdispatcher.getSingleInfo("BioRelease")
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -192,11 +162,22 @@ Rectangle {
     }
     //logo
     Image {
-        id: logo
+        id: basiclogo
         source: ""
         anchors {
             top: parent.top
             topMargin: 50
+            right: parent.right
+            rightMargin: 30
+        }
+    }
+    //logo
+    Image {
+        id: bioslogo
+        source: ""
+        anchors {
+            top: parent.top
+            topMargin: 172
             right: parent.right
             rightMargin: 30
         }

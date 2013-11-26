@@ -19,119 +19,121 @@ import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
 
-Item {
+Rectangle {
     id: home; width: parent.width; height: 475
-    Rectangle {
-        anchors.fill: parent
-//        //背景
-//        Image {
-//            source: "../../img/skin/bg-bottom-tab.png"
-//            anchors.fill: parent
-//        }
+    color: "transparent"
 
-        Component.onCompleted: {
-
+    Component.onCompleted: {
+        systemdispatcher.get_detail_system_message_qt();//获取详细信息
+        logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("MemVendor").toUpperCase() + ".jpg";
+    }
+    Column {
+        anchors {
+            top: parent.top
+            topMargin: 40
+            left: parent.left
+            leftMargin: 30
         }
+        spacing: 20
 
-
-
+        Row {
+            Text {
+                id: titlebar
+                text: qsTr("Memory information")//内存条信息
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
+            }
+            Rectangle {width: home.width - titlebar.width - 30 * 2
+                anchors.verticalCenter: parent.verticalCenter
+                height: 1; color: "#ccdadd"
+            }
+        }
         Column {
-            anchors {
-                top: parent.top
-                topMargin: 40
-                left: parent.left
-                leftMargin: 30
-            }
-            spacing: 20
-
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            spacing: 10
             Row {
-                Text {
-                    id: hardwaretitle
-                    text: qsTr("Hardware information")//硬件信息
-                    font.bold: true
-                    font.pixelSize: 14
-                    color: "#383838"
-                }
-                Rectangle {width: home.width - hardwaretitle.width - 30 * 2
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: 1; color: "#ccdadd"
-                }
-            }
-            Column {
-                anchors.left: parent.left
-                anchors.leftMargin: 20
                 spacing: 10
-                Row {
-                    spacing: 10
-                    Text {
-                        text: qsTr("MemSlot:")//插槽号:
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                        width: 100
-                    }
-                    Text {
-                        text: systemdispatcher.getSingleInfo("MemSlot")
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
+                Text {
+                    text: qsTr("Slot Number:")//插槽号:
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 100
                 }
-                Row {
-                    spacing: 10
-                    Text {
-                        text: qsTr("MemProduct:")//内存型号:
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                        width: 100
-                    }
-                    Text {
-                        text: systemdispatcher.getSingleInfo("MemProduct")
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Text {
-                        text: qsTr("MemVendor:")//制造商:
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                        width: 100
-                    }
-                    Text {
-                        text: systemdispatcher.getSingleInfo("MemVendor")
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Text {
-                        text: qsTr("MemSerial:")//序列号:
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                        width: 100
-                    }
-                    Text {
-                        text: systemdispatcher.getSingleInfo("MemSerial")
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Text {
-                        text: qsTr("MemSize:")//内存大小:
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                        width: 100
-                    }
-                    Text {
-                        text: systemdispatcher.getSingleInfo("MemSize")
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                    }
+                Text {
+                    text: systemdispatcher.getSingleInfo("MemSlot")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
                 }
             }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Memory Model:")//内存型号:
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 100
+                }
+                Text {
+                    text: systemdispatcher.getSingleInfo("MemProduct")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Vendor:")//制造商:
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 100
+                }
+                Text {
+                    text: systemdispatcher.getSingleInfo("MemVendor")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Serial:")//序列号:
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 100
+                }
+                Text {
+                    text: systemdispatcher.getSingleInfo("MemSerial")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Size:")//内存大小:
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    width: 100
+                }
+                Text {
+                    text: systemdispatcher.getSingleInfo("MemSize")
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
+            }
+        }
+    }
+    //logo
+    Image {
+        id: logo
+        source: ""
+        anchors {
+            top: parent.top
+            topMargin: 50
+            right: parent.right
+            rightMargin: 30
         }
     }
 }

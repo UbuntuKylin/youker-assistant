@@ -1,7 +1,21 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import QtQuick 1.1
-import SessionType 0.1
 import SystemType 0.1
-import "common" as Common
 import "./bars" as Bars
 import "./info" as Info
 
@@ -14,14 +28,15 @@ Rectangle {
         anchors.fill: parent
     }
 
+
     function addList() {
         listModel.clear();//清空
         listModel.append({"name": qsTr("Computer"), "flag": "computer"});
         listModel.append({"name": qsTr("CPU"), "flag": "cpu"});
-        listModel.append({"name": qsTr("Board and BIOS"), "flag": "bios"});
+        listModel.append({"name": qsTr("Board"), "flag": "board"});
         listModel.append({"name": qsTr("Memory"), "flag": "memory"});
         listModel.append({"name": qsTr("Monitor"), "flag": "monitor"});
-        systemdispatcher.get_detail_system_message_qt();//获取详细信息
+//        systemdispatcher.get_detail_system_message_qt();//获取详细信息
     }
 
     ListModel {
@@ -38,13 +53,15 @@ Rectangle {
         //左边标题栏
         Rectangle {
             width: 150; height: window.height
-            color: "white" //"#efefef"
+            color: "transparent"
             ListView {
                 focus: true
                 id: categories
                 anchors.fill: parent
                 model: listModel
                 footer: returnDelegate
+                height: parent.height
+                width: parent.width
                 delegate: DetailDelegate {
                     onSendFlag: {
                         if(flag == "computer") {
@@ -53,7 +70,7 @@ Rectangle {
                         else if(flag == "cpu") {
                             window.state = "CPUPage";
                         }
-                        else if(flag == "bios") {
+                        else if(flag == "board") {
                             window.state = "BiosPage";
                         }
                         else if(flag == "memory") {
@@ -65,6 +82,7 @@ Rectangle {
                     }
                 }
                 highlight: Rectangle { width: ListView.view.width - 2; color: "steelblue" }//选中后的深色块
+                highlightMoveSpeed: 9999999
             }
             Bars.ScrollBar {
                 scrollArea: categories; height: categories.height; width: 8
@@ -88,7 +106,7 @@ Rectangle {
 //                x: (parent.width * 1.5)
                 visible: false
             }
-            Info.BiosInfo {
+            Info.BoardInfo {
                 id: biosLayer
                 width: parent.width
                 height: parent.height

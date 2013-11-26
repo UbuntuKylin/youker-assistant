@@ -61,6 +61,7 @@ Item {
                 leftMargin: 2
             }
             width: parent.width - 4
+            height: 41
             source: "../img/skin/note-bg.png"
         }
         Text {
@@ -70,24 +71,31 @@ Item {
                 top: parent.top
                 topMargin: titleimage.height/2 - 7
             }
-            text: qsTr("You can view the relevant information, and understand the system at any time.")//您可以查看相关信息，随时了解系统情况。
+            text: qsTr("You can view the detailed information by clicking the 'view details' button on the right, and see the system at any time.")//您可以通过点击右边的“查看详情”按钮去查看更加详细的信息，随时了解系统情况。
             font.pixelSize: 12
             color: "#383838"
         }
 
-        Common.Button{
-            width: 80
-            height: 26
+        Row {
+            spacing: 0
+            height: 41
             anchors{
                 right:parent.right
                 rightMargin: 15
-                top: parent.top
-                topMargin: 7
+//                top: parent.top
+//                topMargin: 8
             }
-            text: qsTr("Details")//详情
-            onClicked: {
-                pageStack.push(detailinformation);
-//                systemdispatcher.get_detail_system_message_qt();
+            Image {
+                source: "../img/icons/book.png"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            SetWord {
+                id: views
+                anchors.verticalCenter: parent.verticalCenter
+                wordname: qsTr("view details")//查看详情
+                width: 80
+                height: 20
+                flag: "details"
             }
         }
 
