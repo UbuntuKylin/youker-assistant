@@ -277,7 +277,7 @@ Item {
             spacing: 15
             Image {
                 width: 40; height: 42
-                source:"../img/toolWidget/history-min.png"
+                source:"../img/toolWidget/chrominumRecord.png"
             }
             Column {
                 spacing: 5

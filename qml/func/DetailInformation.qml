@@ -31,11 +31,11 @@ Rectangle {
 
     function addList() {
         listModel.clear();//清空
-        listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "../img/icons/mouse.png"});
-        listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "../img/icons/samename.png"});
-        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "../img/icons/themeset.png"});
-        listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "../img/icons/systemsound.png"});
-        listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "../img/icons/unity.png"});
+        listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "../img/sysButton/computer.png"});
+        listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "../img/sysButton/CPU.png"});
+        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "../img/sysButton/memory.png"});
+        listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "../img/sysButton/board.png"});
+        listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "../img/sysButton/monitor.png"});
 //        systemdispatcher.get_detail_system_message_qt();//获取详细信息
     }
 
@@ -240,7 +240,7 @@ Rectangle {
                 Image {
                     width: 30
                     height: 20
-                    source: "../img/icons/mouse.png"
+                    source: "../img/sysButton/reback.png"
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 Text {

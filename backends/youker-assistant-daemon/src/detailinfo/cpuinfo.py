@@ -202,7 +202,7 @@ class DetailInfo:
 
 	    tmp = re.findall("EDID for output (.*)", info)
 	    if tmp:
-	        ret["Mon_support"] = tmp
+	        ret["Mon_support"] = str(tmp)
 
 	    tmp = re.findall("Output (.*).* connected", info)
 	    if tmp:

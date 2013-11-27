@@ -60,6 +60,7 @@ class Dmi:
                 s = s[ :i] + s[i+1: ]
                 i -= 1
             i += 1
+#	print s
         return s
 
     def dmi_string(self, bp, length, s,slen):
@@ -77,6 +78,7 @@ class Dmi:
         n = 0
         while i+n < slen and bp[i + n] != '\0':
             n += 1
+#	print bp[i:i+n]
         return self.strip(bp[i:i+n])
 
 
@@ -86,6 +88,7 @@ class Dmi:
         Cpu = {}
         Boa = {}
         Mem = {}
+	Memnum = 0
         if slen == 0 :
             return
 #        fd.seek(base)
@@ -93,7 +96,7 @@ class Dmi:
         buf = MyCppModule.MyCppFun1(base,slen)
         data = buf
         data = buf.replace('$','\0')
-        MemSlot,MemProduct,MemVendor,MemSerial,MemSize = "","","","",""
+        MemSlot,MemProduct,MemVendor,MemSerial,MemSize,BioVendor = "","","","","",""
         while i+4 <= slen :
             typ = data[i]
             length = data[i+1]
@@ -135,14 +138,18 @@ class Dmi:
                 BoaProduct = self.dmi_string(data[i:],length,data[i+5],slen-i)
                 BoaVendor = self.dmi_string(data[i:],length,data[i+4],slen-i)
                 BoaSerial = self.dmi_string(data[i:],length,data[i+7],slen-i)
+		
                 Boa["BoaProduct"],Boa["BoaVendor"],Boa["BoaSerial"] = BoaProduct,BoaVendor,BoaSerial
 
             elif choose == 0 :
 #BIOS
-                BioVendor = self.dmi_string(data[i:],length,data[i+4],slen-i)
-                BioVersion = self.dmi_string(data[i:],length,data[i+5],slen-i)
-                BioRelease = self.dmi_string(data[i:],length,data[i+8],slen-i)
-                Boa["BioVendor"],Boa["BioVersion"],Boa["BioRelease"] = BioVendor,BioVersion,BioRelease
+		if BioVendor :
+                    BioVendor = BioVendor
+		else :
+                    BioVendor = self.dmi_string(data[i:],length,data[i+4],slen-i)
+                    BioVersion = self.dmi_string(data[i:],length,data[i+5],slen-i)
+                    BioRelease = self.dmi_string(data[i:],length,data[i+8],slen-i)
+                    Boa["BioVendor"],Boa["BioVersion"],Boa["BioRelease"] = BioVendor,BioVersion,BioRelease
 
             elif choose == 17 :
 #Memory Device
@@ -155,6 +162,7 @@ class Dmi:
                     else :
                         size = 1024 * (u & 0x7fff)
                 if size :
+                    Memnum += 1
                     if MemSlot :
                         MemSlot = MemSlot + '/' + self.dmi_string(data[i:],length,data[i+16],slen-i)
                     else:
@@ -179,7 +187,7 @@ class Dmi:
                         MemSize = MemSize + '/' + str(size)
                     else:
                         MemSize = str(size)
-                    Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"] = MemSlot,MemProduct,MemVendor,MemSerial,MemSize
+                    Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemSlot,MemProduct,MemVendor,MemSerial,MemSize,str(Memnum)
 
             i += self.ctoascii(length)
             while i+4 < slen and (data[i]!= '\0' or data[i+1]!= '\0') :
