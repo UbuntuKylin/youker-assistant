@@ -52,7 +52,7 @@ class OneKeyClean():
         self.objcache = CleanTheCache()
 
     def get_onekey_crufts(self, sesobj, mode_list):
-        homedir = return_homedir_sysdaemon()
+        homedir = common.return_homedir_sesdaemon()
         crufts_dic = {}
         total_dic = {}
         flag_dic = {'history': False, 'cookies': False, 'cache': False}
@@ -84,7 +84,7 @@ class OneKeyClean():
             objcg = cookiesclean.CookiesClean(homedir)
             filepathff = common.analytical_profiles_file(homedir) + "cookies.sqlite"
             if os.path.exists(filepathff):
-                pamf = [filepathf, 'moz_cookies', 'baseDomain']
+                pamf = [filepathff, 'moz_cookies', 'baseDomain']
                 tempff_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
                 for oneff in tempff_list:
                     sesobj.display_scan_process(oneff[0])
@@ -92,7 +92,7 @@ class OneKeyClean():
                     cookiessize += oneff[1]
             filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
             if os.path.exists(filepathcc):
-                pamc = [filepathc, 'cookies', 'host_key']
+                pamc = [filepathcc, 'cookies', 'host_key']
                 tempcc_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
                 for onecc in tempcc_list:
                     sesobj.display_scan_process(onecc[0])
@@ -103,13 +103,13 @@ class OneKeyClean():
             cachesize = 0
             objcache = cacheclean.CacheClean()
             apt_path = "/var/cache/apt/archives"
-            temp_apt_list = self.objc.scan_apt_cache(apt_path)
+            temp_apt_list = objcache.scan_apt_cache(apt_path)
             for oneapt in temp_apt_list:
                 sesobj.display_scan_process(oneapt)
                 #sesobj.display_scan_process_msg(oneapt)
                 cachesize += os.path.getsize(oneapt)
-            swcenterpath = '%s/.cache/software-center/' % homedir
-            temp_swcenter_list = self.objc.public_scan_cache(swcenterpath)
+            swcenterpath = '%s/.cache/software-center' % homedir
+            temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
             for oneswcenter in temp_swcenter_list:
                 sesobj.display_scan_process(oneswcenter)
                 #sesobj.display_scan_process_msg(oneswcenter)
@@ -428,7 +428,7 @@ class CleanTheCache():
         result_dic['apt'] = '<1_1>'.join(apt_and_size)
 
         homedir = common.return_homedir_sesdaemon()
-        swcenterpath = '%s/.cache/software-center/' % homedir
+        swcenterpath = '%s/.cache/software-center' % homedir
         temp_swcenter_list = self.objc.public_scan_cache(swcenterpath)
         swcenter_and_size = []
         for line in temp_swcenter_list:
