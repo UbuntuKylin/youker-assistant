@@ -107,7 +107,7 @@ Item {
                             heightMark=0;
                         }
                         else if(heightMark==0){
-                            if(sub_num>0){                //子项下拉显示时，根据总checkbox状态进行赋值控制
+                            if(sub_num>0){//子项下拉显示时，根据总checkbox状态进行赋值控制
                                 if(check.checked=="true")
                                 {
                                     check.checkedbool=true;

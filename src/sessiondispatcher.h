@@ -216,7 +216,8 @@ public:
     //一键清理扫描
     Q_INVOKABLE void onekey_scan_function_qt(QStringList selectedList);
 signals:
-//    void finishScanWork(QString msg);
+    void finishScanWork(QString msg);
+    void isScanning(QString msg);
 
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
@@ -234,7 +235,7 @@ signals:
 //    void judge_deb_exists_chromium(QString flag);
 public slots:
     //扫描完成槽函数
-//    void handler_scan_complete(QString msg);
+    void handler_scan_complete(QString msg);
     //扫描过程的函数
     void handler_scan_process(QString msg);
 

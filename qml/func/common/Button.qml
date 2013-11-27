@@ -34,17 +34,30 @@ Item {
     property bool check_flag: true
 
     signal send_dynamic_picture(string str);
+
+    Connections
+    {
+        target: sessiondispatcher
+        onFinishScanWork: {
+            if(msg == "onekey") {
+                btn.setbtn_flag = "onekey";
+                btnImg.source = "../../img/icons/green3.png"
+                displaytext.text = qsTr("Clean Quickly");//一键清理
+            }
+        }
+    }
+
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork,按钮恢复使能
     Connections{
          target: systemdispatcher
              onFinishCleanWorkMain: {
-                 if(setbtn_flag =="onekey")
+                 if(btn.setbtn_flag =="onekey")
                  {
                     if (msg == "") {
                         btn.enabled=true;
-                        if (setbtn_flag == "onekey") {
+                        if (btn.setbtn_flag == "onekey") {
                             btnImg.source = "../../img/icons/green3.png"
-                            displaytext.text = qsTr("A key to clean up");//一键清理
+                            displaytext.text = qsTr("Clean Quickly");//一键清理
                         }
                     }
                     else if (msg == "u" || msg == "c" || msg == "h" || msg == "k") {
@@ -53,7 +66,9 @@ Item {
                     }
                     else if (msg == "o") {
                         btn.enabled=true;
-                        displaytext.text = qsTr("Clean again");//再次清理
+//                        displaytext.text = qsTr("Clean again");//再次清理
+                        displaytext.text = qsTr("Scan Quickly");//一键扫描
+                        btn.setbtn_flag = "onekeyscan";
                     }
                  }
           }
@@ -62,7 +77,7 @@ Item {
     {
         target: systemdispatcher
         onFinishCleanWorkSecond: {
-            if(setbtn_flag=="smallonekey")
+            if(btn.setbtn_flag=="smallonekey")
             {
                 if (msg == "") {
                      btn.enabled=true;
@@ -225,14 +240,20 @@ Item {
             //----------------
             if(check_flag)
             {
-                if (setbtn_flag == "onekey") {
-                    send_dynamic_picture("onekey");
+                if (btn.setbtn_flag == "onekeyscan") {
+                    send_dynamic_picture("onekeyscan");
                     sessiondispatcher.onekey_scan_function_qt(systemdispatcher.get_onekey_args());
 //                    systemdispatcher.set_user_homedir_qt();
 //                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                    btn.enabled=false;
+//                    btn.enabled=false;
                 }
-                else if (setbtn_flag == "smallonekey") {
+                else if (btn.setbtn_flag == "onekey") {
+                    send_dynamic_picture("onekey");
+                    systemdispatcher.set_user_homedir_qt();
+                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                }
+
+                else if (btn.setbtn_flag == "smallonekey") {
                     systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
                     btn.enabled=false;

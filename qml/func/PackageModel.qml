@@ -28,7 +28,8 @@ Item {
     property string description: qsTr("Clean installed dependent program, to improve system performance")//清理软件安装过程中安装的依赖程序，提高系统性能
     property string btnFlag: "package_scan"//扫描或者清理的标记：package_scan/package_work
     property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
-    property int debNum: 0//扫描后得到的deb的项目总数
+    property int subNum: 0//扫描后得到的deb的项目总数
+    property int debNum: subNum//001
     property int arrowShow: 0//传递给ClearDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
     property bool positionFlag: false//传递给ClearDelegate.qml,为true时伸缩图标指向上方，为false时伸缩图标指向下方
     property bool flag: false//记录是清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
@@ -43,7 +44,7 @@ Item {
             root.resultFlag = false;
         }
         else {
-            root.debNum = unneed_data.length;
+            root.subNum = unneed_data.length;//001
             systemdispatcher.clear_package_args();
             subModel.clear();
             var num = 0;
@@ -58,7 +59,8 @@ Item {
                     systemdispatcher.set_package_args(splitlist[0]);
                 }
             }
-            root.debNum -= num;
+            root.subNum -= num;//001
+            root.debNum = root.subNum;//001
             if(root.debNum != 0) {
                 root.resultFlag = true;//扫描的实际有效内容存在
             }
@@ -335,7 +337,7 @@ Item {
                 height: parent.height
                 model: mainModel
                 delegate: Cleardelegate{
-                    sub_num: root.debNum
+                    sub_num: root.subNum//001
                     sub_model: subModel
                     btn_flag: root.btnFlag
                     arrow_display: root.arrowShow

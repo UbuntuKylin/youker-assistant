@@ -17,7 +17,6 @@ import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
 import "common" as Common
-import "common" as Common
 
 Item {
     id:root
@@ -26,7 +25,9 @@ Item {
     property string sof_title: qsTr("Software Center buffer depth cleaning")//软件中心缓存深度清理
     property string sof_description: qsTr("Deep cleaning software center cache, to save disk space")//深度清理软件中心缓存,节省磁盘空间
     property string btnFlag: "software_scan"//扫描或者清理的标记：software_scan/software_work
-    property int softNum: 0//扫描后得到的software的项目总数
+    property int subNum: 0//扫描后得到的software的项目总数
+    property int softNum: subNum//001
+
     property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
     property int arrowShow: 0//传递给ClearDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
     property bool positionFlag: true//传递给ClearDelegate.qml,为true时伸缩图标指向上方，为false时伸缩图标指向下方
@@ -53,7 +54,7 @@ Item {
             root.resultFlag = false;//扫描内容不存在
         }
         else {
-            root.softNum = software_data.length;
+            root.subNum = software_data.length;//001
             systemdispatcher.clear_software_args();
             subModel.clear();
             var num = 0;
@@ -68,7 +69,8 @@ Item {
                     systemdispatcher.set_software_args(splitlist[0]);
                 }
             }
-            root.softNum -= num;
+            root.subNum -= num;//001
+            root.softNum = root.subNum;//001
             if(root.softNum != 0) {
                 root.resultFlag = true;//扫描的实际有效内容存在
                 mainModel.clear();
@@ -316,7 +318,7 @@ Item {
                 height: parent.height
                 model: mainModel
                 delegate: Cleardelegate{
-                    sub_num: root.softNum
+                    sub_num: root.subNum//001
                     sub_model: subModel
                     btn_flag: root.btnFlag
                     arrow_display: root.arrowShow

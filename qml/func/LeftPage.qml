@@ -25,6 +25,20 @@ Rectangle {
     property string onekeypage: "first"
     property int num: 3     //checkbox num
     property int check_num: num
+    property string flag: "onekeyscan"
+
+    Connections
+    {
+        target: sessiondispatcher
+        onIsScanning: {//扫描过程中收到的信号
+            showText.text = msg;
+        }
+        onFinishScanWork: {
+            if(msg == "onekey") {
+                leftbar.flag = "onekey";
+            }
+        }
+    }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
@@ -56,6 +70,7 @@ Rectangle {
             }
             else if (msg == "o") {
                 toolkits.alertMSG(qsTr("A Key cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
+                leftbar.flag = "onekeyscan";
             }
             refreshArrow0.visible = true;
             refreshArrow.visible = false;
@@ -133,6 +148,11 @@ Rectangle {
                 spacing: 10
                 id: mycolumn
                 Text {
+                    id: showText
+                    width: leftbar.width-180
+                    text: ""
+                }
+                Text {
                     id: text0
                     width: leftbar.width-180
                     text: qsTr("A key to clean common system junk, effectively improve the efficiency of the system")//一键清理系统垃圾，有效提高系统运行效率
@@ -152,8 +172,8 @@ Rectangle {
                 Common.Button{
                     id: firstonekey
                     hoverimage: "green3.png"
-                    setbtn_flag: "onekey"
-                    text:qsTr("Clean Quickly")//一键清理
+                    setbtn_flag: leftbar.flag//onekeyscan:scan      onekey:clean
+                    text:qsTr("Scan Quickly")//一键清理
                     fontsize: 17
                     anchors {
                         left: parent.left; leftMargin: 100
@@ -161,9 +181,12 @@ Rectangle {
                     width: 186
                     height: 45
                     onSend_dynamic_picture: {
-                        if (str == "onekey") {
+                        if (str == "onekeyscan") {
                             refreshArrow0.visible = false;
                             refreshArrow.visible = true;
+                        }
+                        if (str == "onekey") {
+                            showText.text = "";
                         }
                     }
                 //如果没有选中任何清理项，提示警告框！

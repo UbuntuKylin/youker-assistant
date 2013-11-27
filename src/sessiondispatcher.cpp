@@ -55,7 +55,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
-//    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
+    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -69,13 +69,12 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
-//void SessionDispatcher::handler_scan_complete(QString msg) {
-//    emit finishScanWork(msg);
-//}
+void SessionDispatcher::handler_scan_complete(QString msg) {
+    emit finishScanWork(msg);
+}
 
 void SessionDispatcher::handler_scan_process(QString msg) {
-    qDebug() << "1111111";
-    qDebug() << msg;
+    emit isScanning(msg);
 }
 
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {

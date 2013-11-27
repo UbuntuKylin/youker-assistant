@@ -10,8 +10,10 @@ youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
   * Solve wrong status of history cleaning(LP: #1253852).
   * Popup a dialog to add UbuntuKylin sourcelist or not.
   * Display detailed information of Computer.
+  * Display contents when one key scanning.
+  * Add debian/postrm file to remove a folder when it is uninstalled.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 26 Nov 2013 14:56:24 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 27 Nov 2013 18:53:05 +0800
 
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 
