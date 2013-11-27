@@ -222,27 +222,19 @@ Item {
 
         onClicked: {
             btn.clicked();
-
-
-
             //----------------
             if(check_flag)
             {
                 if (setbtn_flag == "onekey") {
                     send_dynamic_picture("onekey");
-                    systemdispatcher.set_user_homedir_qt();
-                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-//                    displaytext.text = "清理完毕"
-//                        btnImg.source = "../img/icons/onekeyover.png"  //首页点击后更换图片的位置7-30
-//                    btn.text="清理完毕";
+                    sessiondispatcher.onekey_scan_function_qt(systemdispatcher.get_onekey_args());
+//                    systemdispatcher.set_user_homedir_qt();
+//                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
                     btn.enabled=false;
                 }
                 else if (setbtn_flag == "smallonekey") {
                     systemdispatcher.set_user_homedir_qt();
                     systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
-//                        btnImg.source = "../img/icons/clear-over.png"  //首页点击后更换图片的位置7-30
-//                    displaytext.text = "清理完毕"
-//                    btn.text="清理完毕";
                     btn.enabled=false;
                 }
             }

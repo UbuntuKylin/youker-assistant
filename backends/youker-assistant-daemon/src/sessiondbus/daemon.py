@@ -71,10 +71,10 @@ class SessionDaemon(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def onekey_scan_function(self, mode_list):
         daemononekey = cleaner.OneKeyClean()
-        total_dic = daemononekey.get_onekey_crufts()
+        total_dic = daemononekey.get_onekey_crufts(self, mode_list)
         self.scan_complete_msg('onekey')
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
