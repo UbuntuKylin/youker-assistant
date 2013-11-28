@@ -13,7 +13,7 @@ youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
   * Display contents when one key scanning.
   * Add debian/postrm file to remove a folder when it is uninstalled.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 28 Nov 2013 17:04:14 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 28 Nov 2013 21:01:35 +0800
 
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 

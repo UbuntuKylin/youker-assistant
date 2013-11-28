@@ -340,7 +340,7 @@ Rectangle {
                     MouseArea{
 //                        anchors.fill:parent
                         height: parent.height
-                        width: 405
+                        width: 360//宽度不能超过360,否则会覆盖试听音乐等等的按钮响应区域
                         hoverEnabled: true
                         onClicked: {
                             wrapper.ListView.view.currentIndex = index;
