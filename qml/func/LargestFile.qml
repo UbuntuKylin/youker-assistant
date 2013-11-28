@@ -102,7 +102,7 @@ Item {
             }
             else if (msg == "largestfile") {
                 root.state = "LargestFileWorkFinish";
-                toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                toolkits.alertMSG(qsTr("Cleaned!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 refresh_page();
             }
         }

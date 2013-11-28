@@ -22,9 +22,7 @@ Item {
     Rectangle {
         id: weather_widget
         anchors.fill: parent
-        property string actiontitle: qsTr("Forecast in the coming 6 days.")//未来六天天气预报
         property string actiontext: qsTr("Access to the China Meteorological Administration six days weather data, provide travel information for users.")//获取中国气象局的六天天气预报数据，为用户出行提供参考。
-
         //设置六天天气预报数据显示在QML界面上
         function initWeatherForcast() {
             //("星期日"),("星期一"),("星期二"),("星期三"),("星期四"),("星期五"),("星期六")
@@ -79,7 +77,7 @@ Item {
 
             var updateTime = sessiondispatcher.getSingleWeatherInfo("fchh", "forecast");
             //未来六天天气预报，预报时间：          时
-            weather_widget.actiontitle = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + qsTr("Forecast in the coming 6 days, the forecast time is：") + sessiondispatcher.getSingleWeatherInfo("date_y", "forecast") + updateTime + qsTr("hour");
+            locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + sessiondispatcher.getSingleWeatherInfo("date_y", "forecast") + updateTime + qsTr("hour release");
             //将字符串类型的时间转成整形
             var updateIntTime = parseInt(updateTime, 10);
             if(updateIntTime >= 6 && updateIntTime < 18) {
@@ -339,16 +337,17 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 80
             Text {
-                 text: weather_widget.actiontitle
+                 id: locationLabel
+                 text: ""
                  font.bold: true
                  font.pixelSize: 14
                  color: "#383838"
-             }
-             Text {
-                 text: weather_widget.actiontext
-                 font.pixelSize: 12
-                 color: "#7a7a7a"
-             }
+            }
+            Text {
+                text: weather_widget.actiontext
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
         }
 
         Column {

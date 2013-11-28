@@ -103,6 +103,6 @@ void AuthDialog::on_okButton_clicked()
     else {
         ui->lineEdit->clear();
         ui->lineEdit->setFocus();
-        ui->msg_label->setText(tr("Tip: password error, please input the correct password again!"));//"提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。"
+        ui->msg_label->setText(tr("Tip: password is wrong, please input the correct password!"));//"提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。"
     }
 }

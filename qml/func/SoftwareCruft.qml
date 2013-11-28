@@ -130,7 +130,7 @@ Item {
                 }
                 else if (msg == "software") {
                     root.state = "SoftwareWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    toolkits.alertMSG(qsTr("Cleaned!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     root.flag = true;
                     root.getData();
                 }

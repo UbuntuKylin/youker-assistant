@@ -55,9 +55,8 @@
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/AptCruft.qml" line="125"/>
         <source>Cleared</source>
-        <translation>清理完毕！</translation>
+        <translation type="obsolete">清理完毕！</translation>
     </message>
     <message>
         <source>Unfinished</source>
@@ -83,6 +82,11 @@
         <location filename="../../qml/func/AptCruft.qml" line="121"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断了！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/AptCruft.qml" line="125"/>
+        <source>Cleaned</source>
+        <translation>清理完毕！</translation>
     </message>
     <message>
         <location filename="../../qml/func/AptCruft.qml" line="185"/>
@@ -164,8 +168,12 @@
     </message>
     <message>
         <location filename="../authdialog.cpp" line="106"/>
-        <source>Tip: password error, please input the correct password again!</source>
+        <source>Tip: password is wrong, please input the correct password!</source>
         <translation>提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。</translation>
+    </message>
+    <message>
+        <source>Tip: password error, please input the correct password again!</source>
+        <translation type="obsolete">提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。</translation>
     </message>
     <message>
         <source>Tip: password is error, please input the correct password again!</source>
@@ -407,7 +415,7 @@
         <location filename="../../qml/func/BrowserHistroy.qml" line="139"/>
         <location filename="../../qml/func/BrowserHistroy.qml" line="145"/>
         <source>Exception occurred!</source>
-        <translation>出现异常</translation>
+        <translation>清理出现异常！</translation>
     </message>
     <message>
         <location filename="../../qml/func/BrowserHistroy.qml" line="152"/>
@@ -1490,9 +1498,8 @@
         <translation>清理用户指定目录下的最大文件，节省磁盘空间。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/LargestFile.qml" line="105"/>
         <source>Cleared!</source>
-        <translation>清理完毕！</translation>
+        <translation type="obsolete">清理完毕！</translation>
     </message>
     <message>
         <source>Please input the file size (M):</source>
@@ -1512,6 +1519,11 @@
         <location filename="../../qml/func/LargestFile.qml" line="27"/>
         <source>File size in the range of 1M--20480M, no support the Chinese path.</source>
         <translation>文件的大小范围为1M--20480M，暂不支持中文路径。</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/LargestFile.qml" line="105"/>
+        <source>Cleaned!</source>
+        <translation>清理完毕！</translation>
     </message>
     <message>
         <location filename="../../qml/func/LargestFile.qml" line="155"/>
@@ -2567,9 +2579,8 @@
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/SoftwareCruft.qml" line="133"/>
         <source>Cleared!</source>
-        <translation>清理完毕！</translation>
+        <translation type="obsolete">清理完毕！</translation>
     </message>
     <message>
         <source>Unfinished</source>
@@ -2595,6 +2606,11 @@
         <location filename="../../qml/func/SoftwareCruft.qml" line="129"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断了！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/SoftwareCruft.qml" line="133"/>
+        <source>Cleaned!</source>
+        <translation>清理完毕！</translation>
     </message>
     <message>
         <location filename="../../qml/func/SoftwareCruft.qml" line="193"/>
@@ -3609,59 +3625,65 @@
 <context>
     <name>WeatherForecast</name>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="25"/>
         <source>Forecast in the coming 6 days.</source>
-        <translation>未来六天天气预报</translation>
+        <translation type="obsolete">未来六天天气预报</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="26"/>
+        <location filename="../../qml/func/WeatherForecast.qml" line="25"/>
         <source>Access to the China Meteorological Administration six days weather data, provide travel information for users.</source>
         <translation>获取中国气象局的六天天气预报数据，为用户出行提供参考。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="31"/>
+        <location filename="../../qml/func/WeatherForecast.qml" line="29"/>
         <source>Sunday</source>
         <translation>星期日</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="31"/>
+        <location filename="../../qml/func/WeatherForecast.qml" line="29"/>
         <source>Monday</source>
         <translation>星期一</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="31"/>
+        <location filename="../../qml/func/WeatherForecast.qml" line="29"/>
         <source>Tuesday</source>
         <translation>星期二</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="31"/>
+        <location filename="../../qml/func/WeatherForecast.qml" line="29"/>
         <source>Wednesday</source>
         <translation>星期三</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="31"/>
+        <location filename="../../qml/func/WeatherForecast.qml" line="29"/>
         <source>Thursday</source>
         <translation>星期四</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="31"/>
+        <location filename="../../qml/func/WeatherForecast.qml" line="29"/>
         <source>Friday</source>
         <translation>星期五</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="31"/>
+        <location filename="../../qml/func/WeatherForecast.qml" line="29"/>
         <source>Saturday</source>
         <translation>星期六</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="82"/>
-        <source>Forecast in the coming 6 days, the forecast time is：</source>
-        <translation>未来六天天气预报，预报时间：</translation>
+        <location filename="../../qml/func/WeatherForecast.qml" line="80"/>
+        <source>hour release</source>
+        <translation>时  发布</translation>
     </message>
     <message>
-        <location filename="../../qml/func/WeatherForecast.qml" line="82"/>
+        <source>  Forecast in the coming 6 days, the forecast time is：</source>
+        <translation type="obsolete">  未来六天天气预报，预报时间：</translation>
+    </message>
+    <message>
+        <source>Forecast in the coming 6 days, the forecast time is：</source>
+        <translation type="obsolete">未来六天天气预报，预报时间：</translation>
+    </message>
+    <message>
         <source>hour</source>
-        <translation>时</translation>
+        <translation type="obsolete">时</translation>
     </message>
 </context>
 <context>

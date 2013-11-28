@@ -122,7 +122,7 @@ Item {
                 }
                 else if (msg == "apt") {
                     root.state = "AptWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     root.flag = true;
                     root.getData();//清理完毕后重新获取数据
                 }
