@@ -371,7 +371,7 @@ class CleanTheCookies():
         flag = None
         objcc = cookiesclean.CookiesClean(HOMEDIR)
         for cruft in cruftlist:
-            self.sysdaemon.clean_process_main_msg("cleaning %s's cookies" % cruft)
+            #self.sysdaemon.clean_process_main_msg("cleaning %s's cookies" % cruft)
             flag = objcc.clean_the_records(cruft)
 
     def clean_the_cruftlist_for_second(self, cruftlist):
@@ -379,7 +379,7 @@ class CleanTheCookies():
         flag = None
         objcc = cookiesclean.CookiesClean(HOMEDIR)
         for cruft in cruftlist:
-            self.sysdaemon.clean_process_second_msg("cleaning %s's cookies" % cruft)
+            #self.sysdaemon.clean_process_second_msg("cleaning %s's cookies" % cruft)
             flag = objcc.clean_the_records(cruft)
 
     def clean_the_cruftlist(self, cruftlist):
