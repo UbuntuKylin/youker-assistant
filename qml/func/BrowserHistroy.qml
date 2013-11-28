@@ -40,6 +40,7 @@ Item {
     property bool null_flag: false
     property bool null_flag3: false
     property bool null_flag2: false
+
     //获取数据
     function getData(history_msg) {
         if (history_msg == "BrowserWork") {
@@ -111,63 +112,45 @@ Item {
         }
     }
 
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onFinishScanWork: {//扫描完成时收到的信号
-//            if(msg == "history") {//上网记录
-//                internetBtnRow.state = "BrowserWork";
-//            }
-//            else if(msg == "system") {//打开文件记录
-//                fileBtnRow.state = "SystemWork";
-//            }
-//        }
-//    }
     Connections
     {
         target: systemdispatcher
         onFinishCleanWorkError: {//清理出错时收到的信号
-            if (root.btn_flag == "history_work") {
-                if (msg == "firefox") {
+            if (msg == "firefox") {
+                if (root.btn_flag == "history_work") {
                     internetBtnRow.state = "BrowserWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
-            else if (root.btn_flag3 == "chromium_work") {
-                if (msg == "chromium") {
+            else if (msg == "chromium") {
+                if (root.btn_flag3 == "chromium_work") {
                     chromiumBtnRow.state = "ChromiumWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
-            else if(root.btn_flag2 == "system_work") {
-                if (msg == "system") {
+            else if (msg == "system") {
+                if(root.btn_flag2 == "system_work") {
                     fileBtnRow.state = "SystemWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
          }
         onFinishCleanWork: {//清理成功时收到的信号
-            if (root.btn_flag == "history_work") {
-                if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-                }
-                else if (msg == "firefox") {
+            if (msg == "") {
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+            }
+            else if (msg == "firefox") {
+                if (root.btn_flag == "history_work") {
                     internetBtnRow.state = "BrowserWorkFinish";
                 }
             }
-            else if (root.btn_flag3 == "chromium_work") {
-                if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-                }
-                else if (msg == "chromium") {
+            else if (msg == "chromium") {
+                if (root.btn_flag3 == "chromium_work") {
                     chromiumBtnRow.state = "ChromiumWorkFinish";
                 }
             }
-            else if (root.btn_flag2 == "system_work") {
-                if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-                }
-                else if (msg == "system") {
+            else if (msg == "system") {
+                if (root.btn_flag2 == "system_work") {
                     fileBtnRow.state = "SystemWorkFinish";
                 }
             }
