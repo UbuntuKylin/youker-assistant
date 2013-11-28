@@ -387,9 +387,9 @@ class Daemon(PolicyKitService):
         try:
             running = daemonhistory.clean_all_history_crufts(flag)
         except Exception, e:
-            self.clean_error_msg('history')
+            self.clean_error_msg(flag)
         else:
-            self.clean_complete_msg('history')
+            self.clean_complete_msg(flag)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_system_history(self, sender=None):
@@ -458,9 +458,9 @@ class Daemon(PolicyKitService):
         try:
             daemoncookies.clean_all_cookies_crufts(flag)
         except Exception, e:
-            self.clean_error_msg('cookies')
+            self.clean_error_msg(flag)
         else:
-            self.clean_complete_msg('cookies')
+            self.clean_complete_msg(flag)
 
     # the function of clean files
     ### input-['filepath', 'file...]   output-''

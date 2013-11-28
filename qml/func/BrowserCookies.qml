@@ -248,14 +248,14 @@ Item {
         target: systemdispatcher
         onFinishCleanWork: {
             if (firefox_btn_flag == "cookies_work") {
-                if (msg == "cookies") {
+                if (msg == "firefox") {
                     //清理完毕后重新获取cookies
                     root.flag = true;
                     root.getDataOfFirefox();
                 }
             }
             else if (chromium_btn_flag == "cookies_workc") {
-                if (msg == "cookies") {
+                if (msg == "chromium") {
                     //清理完毕后重新获取cookies
                     root.flag = true;
                     root.getDataOfChromium();

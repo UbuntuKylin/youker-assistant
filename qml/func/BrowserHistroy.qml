@@ -128,13 +128,13 @@ Item {
         target: systemdispatcher
         onFinishCleanWorkError: {//清理出错时收到的信号
             if (root.btn_flag == "history_work") {
-                if (msg == "history") {
+                if (msg == "firefox") {
                     internetBtnRow.state = "BrowserWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
             else if (root.btn_flag3 == "chromium_work") {
-                if (msg == "history") {
+                if (msg == "chromium") {
                     chromiumBtnRow.state = "ChromiumWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
@@ -151,7 +151,7 @@ Item {
                 if (msg == "") {
                     toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
                 }
-                else if (msg == "history") {
+                else if (msg == "firefox") {
                     internetBtnRow.state = "BrowserWorkFinish";
                 }
             }
@@ -159,7 +159,7 @@ Item {
                 if (msg == "") {
                     toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
                 }
-                else if (msg == "history") {
+                else if (msg == "chromium") {
                     chromiumBtnRow.state = "ChromiumWorkFinish";
                 }
             }

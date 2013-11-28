@@ -62,21 +62,37 @@ Item {
         target: systemdispatcher
         onFinishCleanWorkError: {
             if (btnFlag == "cookies_work") {
-                if (msg == "cookies") {
+                if (msg == "firefox") {
                     itemtitle.state = "CookiesWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
-         }
+            else if (btnFlag == "cookies_workc") {
+                if (msg == "chromium") {
+                    itemtitle.state = "CookiesWorkErrorC";
+                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                }
+            }
+        }
         onFinishCleanWork: {
             if (btnFlag == "cookies_work") {
                 if (msg == "") {
                     resetBtn.visible = true;
                     toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
                 }
-                else if (msg == "cookies") {
+                else if (msg == "firefox") {
                     toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     itemtitle.state = "CookiesWorkFinish";
+                }
+            }
+            else if (btnFlag == "cookies_workc") {
+                if (msg == "") {
+                    resetBtn.visible = true;
+                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                }
+                else if (msg == "chromium") {
+                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    itemtitle.state = "CookiesWorkFinishC";
                 }
             }
         }
