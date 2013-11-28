@@ -36,6 +36,7 @@ Rectangle {
         onFinishScanWork: {
             if(msg == "onekey") {
                 leftbar.flag = "onekey";
+                firstonekey.text = qsTr("Clean Quickly");//一键清理
             }
         }
     }
@@ -58,19 +59,26 @@ Rectangle {
                     historydes.visible = false;
                 if (cookiedes.visible == true)
                     cookiedes.visible = false;
+                firstonekey.text = qsTr("Clean Quickly");//一键清理
             }
+
+
             else if (msg == "c") {
                 cachestatus.state = "StatusC";
+                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "h") {
                 historystatus.state = "StatusH";
+                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "k") {
                cookiestatus.state = "StatusK";
+                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "o") {
                 toolkits.alertMSG(qsTr("A Key cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
                 leftbar.flag = "onekeyscan";
+                firstonekey.text = qsTr("Scan Quickly");//一键扫描
             }
             refreshArrow0.visible = true;
             refreshArrow.visible = false;
@@ -173,7 +181,7 @@ Rectangle {
                     id: firstonekey
                     hoverimage: "green3.png"
                     setbtn_flag: leftbar.flag//onekeyscan:scan      onekey:clean
-                    text:qsTr("Scan Quickly")//一键清理
+                    text:qsTr("Scan Quickly")//一键扫描
                     fontsize: 17
                     anchors {
                         left: parent.left; leftMargin: 100
