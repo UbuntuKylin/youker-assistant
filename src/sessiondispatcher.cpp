@@ -78,13 +78,11 @@ void SessionDispatcher::handler_scan_process(QString msg) {
 }
 
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
-    qDebug() << selectedList;
     sessioniface->call("onekey_scan_function", selectedList);
 }
 
 
 int SessionDispatcher::scan_history_records_qt(QString flag) {
-//    QDBusReply<int> reply = sessioniface->call("scan_history_records");
     QDBusReply<int> reply = sessioniface->call("history_scan_funciton", flag);
     return reply.value();
 }

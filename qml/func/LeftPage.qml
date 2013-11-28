@@ -31,10 +31,13 @@ Rectangle {
     {
         target: sessiondispatcher
         onIsScanning: {//扫描过程中收到的信号
+            showLabel.visible = true;
             showText.text = msg;
         }
         onFinishScanWork: {
             if(msg == "onekey") {
+                refreshArrow0.visible = true;
+                refreshArrow.visible = false;
                 leftbar.flag = "onekey";
                 firstonekey.text = qsTr("Clean Quickly");//一键清理
             }
@@ -96,7 +99,7 @@ Rectangle {
                     historydes.visible = false;
             }
             else if (msg == "ke") {
-               cookiestatus.state = "StatusK1";
+                cookiestatus.state = "StatusK1";
                 if (cookiedes.visible == true)
                     cookiedes.visible = false;
             }
@@ -155,11 +158,7 @@ Rectangle {
             Column {
                 spacing: 10
                 id: mycolumn
-                Text {
-                    id: showText
-                    width: leftbar.width-180
-                    text: ""
-                }
+
                 Text {
                     id: text0
                     width: leftbar.width-180
@@ -177,6 +176,7 @@ Rectangle {
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
+
                 Common.Button{
                     id: firstonekey
                     hoverimage: "green3.png"
@@ -194,6 +194,9 @@ Rectangle {
                             refreshArrow.visible = true;
                         }
                         if (str == "onekey") {
+                            refreshArrow0.visible = false;
+                            refreshArrow.visible = true;
+                            showLabel.visible = false;
                             showText.text = "";
                         }
                     }
@@ -231,9 +234,31 @@ Rectangle {
 
         }//Row
 
+        Row {
+            spacing: 10
+            anchors { top: myrow.bottom; topMargin: 10; left: parent.left; leftMargin: 20 }
+            Text {
+                id: showLabel
+                width: 50
+                visible: false
+                text: qsTr("Scan to:  ")//扫描到：
+            }
+            Text {
+                id: showText
+                width: leftbar.width - 180 - 60
+                text: ""
+                color: "green"
+            }
+        }
+//        Text {
+//            id: showText
+//            anchors { top: myrow.bottom; topMargin: 10; left: parent.left; leftMargin: 20 }
+//            width: leftbar.width-180
+//            text: ""
+//        }
 
         Column {
-            anchors { top: myrow.bottom; topMargin: 30; left: parent.left; leftMargin: 20 }
+            anchors { top: myrow.bottom; topMargin: 50; left: parent.left; leftMargin: 20 }
             spacing:45
             Row{
                 spacing: 10
