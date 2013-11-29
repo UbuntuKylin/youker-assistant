@@ -401,11 +401,13 @@ class CleanTheUnneed():
 # the function of clean old kernel
 class CleanTheOldkernel():
     def __init__(self):
-        self.objc = oldkernel.OldKernel()
+        pass
 
-    def get_scan_result(self):
-        namesize = self.objc.get_old_kernel()
-        return namesize
+    def get_oldkernel_crufts(self):
+        objc = oldkernel.OldKernel()
+        pkgobj_list = objc.scan_oldkernel_package()
+        crufts_list = ["%s<2_2>%s" % (pkg.name, common.confirm_filesize_unit(pkg.installed.size))for pkg in pkgobj_list]
+        return crufts_list
 
 # the function of scan the cache
 class CleanTheCache():
