@@ -148,10 +148,10 @@ class SessionDaemon(dbus.service.Object):
         return tmp_list
     # the function of scan the oldkernel
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_old_kernel(self):
-        tmp_list = self.daemonoldkernel.get_scan_result()
+    def oldkernel_scan_function(self):
+        crufts_list = self.daemonoldkernel.get_oldkernel_crufts()
         self.scan_complete_msg('oldkernel')
-        return tmp_list
+        return crufts_list
     # the function of scan the apt cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
