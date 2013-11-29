@@ -31,6 +31,9 @@ public:
     virtual ~IhuApplication();
     void setup();
     void showQMLWidget();
+
+    void showFontFamily();
+
 private:
     //关联QML界面
     QDeclarativeView *viewer;

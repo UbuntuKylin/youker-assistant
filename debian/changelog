@@ -1,5 +1,11 @@
 youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
 
+  * Overide the Font Dialog with KFontDialog Class.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 29 Nov 2013 17:55:06 +0800
+
+youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
+
   * Add processmanager.
   * Add Google Chromium Cookies cleaner.
   * Change Chinese to English add add translation.

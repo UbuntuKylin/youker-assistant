@@ -32,6 +32,8 @@
 #include "changecitydialog.h"
 #include "util.h"
 
+#include "kfontdialog.h"
+
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -440,6 +442,9 @@ void SessionDispatcher::restore_default_font_signal(QString flag) {
 }
 
 void SessionDispatcher::show_font_dialog(QString flag) {
+
+//    KFontDialog *fontDialog = new KFontDialog();
+//    fontDialog->show();
     bool ok;
     const QFont& font = QFontDialog::getFont(&ok, 0);
     if(ok) {
