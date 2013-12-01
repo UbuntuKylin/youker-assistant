@@ -283,22 +283,26 @@ Item {
                 }
                 else {//sessiondbus服务还没有启动
                     sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
-                    if(!sudodispatcher.getUKSignalFlag()) {
-                        sudodispatcher.setUKSignalFlag(true);
-                        sudodispatcher.bind_signals_after_dbus_start();
-                    }
-                    if (root.btnFlag == "package_scan") {//扫描
-                        root.flag = false;
-                        root.getData();
-                    }
-                    else if (root.btnFlag == "package_work") {//清理
-                        if(root.resultFlag) {//扫描得到的实际内容存在时
-                            sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
-                            root.arrowShow = 1;
-                        }
-                        else {//扫描得到的实际内容不存在时
-                            //友情提示：        对不起，您没有选择需要清理的项，请确认！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+                        if(!sudodispatcher.getUKSignalFlag()) {
+                            if(!sudodispatcher.getUKSignalFlag()) {
+                                sudodispatcher.setUKSignalFlag(true);
+                                sudodispatcher.bind_signals_after_dbus_start();
+                            }
+                            if (root.btnFlag == "package_scan") {//扫描
+                                root.flag = false;
+                                root.getData();
+                            }
+                            else if (root.btnFlag == "package_work") {//清理
+                                if(root.resultFlag) {//扫描得到的实际内容存在时
+                                    sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+                                    root.arrowShow = 1;
+                                }
+                                else {//扫描得到的实际内容不存在时
+                                    //友情提示：        对不起，您没有选择需要清理的项，请确认！
+                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                }
+                            }
                         }
                     }
                 }

@@ -26,6 +26,8 @@ ModalDialog::ModalDialog(QWidget *parent) :
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
     ui->btn_min->installEventFilter(this);
+    ui->okButton->installEventFilter(this);
+    ui->closeButton->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
@@ -99,7 +101,18 @@ bool ModalDialog::eventFilter(QObject *obj, QEvent *event) {
             } else {
                 return QObject::eventFilter(obj, event);
             }
+    }
+    if(obj == ui->okButton || obj == ui->closeButton)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *me = (QMouseEvent *)event;
+            dragPos = me->globalPos() - frameGeometry().topLeft();
+        }else if(event->type() == QEvent::MouseButtonRelease)
+        {
+            setWindowOpacity(1);
         }
+    }
     return QObject::eventFilter(obj, event);
 
 
@@ -116,7 +129,7 @@ void ModalDialog::mousePressEvent(QMouseEvent *event) {
 void ModalDialog::mouseMoveEvent(QMouseEvent *event) {
     if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
-        setWindowOpacity(0.5);
+        setWindowOpacity(1);//0.5
     }
     event->accept();
 }

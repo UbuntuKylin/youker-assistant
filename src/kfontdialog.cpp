@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include "kfontdialog.h"
 #include "ui_kfontdialog.h"
 #include <QMouseEvent>
@@ -8,67 +23,35 @@
 #include <QMessageBox>
 
 extern QString selectedFont;
-/*
- *http://www.vision.ee.ethz.ch/computing/sepp-irix/qt-3.0-mo/qfontdatabase.html
- *https://qt.gitorious.org/qt/qt/source/c48eb6d5d0a299449330dea8a6a59514942c8781:src/gui/dialogs/qfontdialog_p.h#L73
- *http://blog.163.com/shaohj_1999@126/blog/static/63406851201252043139502/
- *http://www.cnblogs.com/venow/archive/2012/10/17/2728299.html
- *
- *
- *
- *families:
- ("Abyssinica SIL", "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL UMing CN",
-"AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", "Bitstream Charter", "Century Schoolbook L",
-"Courier 10 Pitch", "DejaVu Sans", "DejaVu Sans Mono", "DejaVu Serif", "Dingbats", "gargi", "Garuda", "Kedage",
-"Khmer OS", "Khmer OS System", "Liberation Mono", "Liberation Sans", "Liberation Sans Narrow", "Liberation Serif",
-"LKLUG", "Lohit Bengali", "Lohit Gujarati", "Lohit Hindi", "Lohit Punjabi", "Lohit Tamil", "Mallige", "Meera",
-"Monospace", "Mukti Narrow", "Nimbus Mono L", "Nimbus Roman No9 L", "Nimbus Sans L", "OpenSymbol", "ori1Uni",
-"Padauk", "Padauk Book", "Pothana2000", "Rachana", "Rekha", "Saab", "Sans Serif", "Serif", "Standard Symbols L",
-"Symbol", "Tibetan Machine Uni", "Ubuntu", "Ubuntu Condensed", "Ubuntu Mono", "URW Bookman L", "URW Chancery L",
-"URW Gothic L", "URW Palladio L", "Vemana2000", "文泉驿微米黑", "文泉驿正黑", "文泉驿点阵正黑", "文泉驿等宽微米黑",
-"文泉驿等宽正黑")
-
- *styles:
-"Regular","Roman", "Light", "Bold","Medium", "Book", "BoldOblique","Oblique","Normal", "Regular Oblique",
-"斜体", "半粗体 斜体", "轻体 斜体", "粗体 斜体", "意大利体", "普通", "粗体 意大利体", "粗体"
-"Bold Italic",  "Italic", "Regular Italic", "Medium Italic","Light Italic",
-"Bold Condensed", "Regular Condensed Italic", "Bold Condensed Italic", "Regular Condensed",
-"Demi Bold", "Demi Bold Italic","Demi", "Demi Oblique", Book Oblique"
-sizes:
-("6", "7", "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "48", "72")
-*/
 
 KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::KFontDialog)
 {
     ui->setupUi(this);
-
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
+    ui->okBtn->installEventFilter(this);
+    ui->quitBtn->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
-//    families << "Abyssinica SIL" << "AR PL UKai CN" << "AR PL UKai HK" << "AR PL UKai TW" << "AR PL UKai TW MBE" << "AR PL UMing CN" \
-//             << "AR PL UMing HK" << "AR PL UMing TW" << "AR PL UMing TW MBE" << "Bitstream Charter" << "Century Schoolbook L" \
-//             << "Courier 10 Pitch" << "DejaVu Sans" << "DejaVu Sans Mono" << "DejaVu Serif" << "Dingbats" << "gargi" << "Garuda" << "Kedage" \
-//             << "Khmer OS" << "Khmer OS System" << "Liberation Mono" << "Liberation Sans" << "Liberation Sans Narrow" << "Liberation Serif" \
-//             << "LKLUG" << "Lohit Bengali" << "Lohit Gujarati" << "Lohit Hindi" << "Lohit Punjabi" << "Lohit Tamil" << "Mallige" << "Meera" \
-//             << "Monospace" << "Mukti Narrow" << "Nimbus Mono L" << "Nimbus Roman No9 L" << "Nimbus Sans L" << "OpenSymbol" << "ori1Uni" \
-//             << "Padauk" << "Padauk Book" << "Pothana2000" << "Rachana" << "Rekha" << "Saab" << "Sans Serif" << "Serif" << "Standard Symbols L" \
-//             << "Symbol" << "Tibetan Machine Uni" << "Ubuntu" << "Ubuntu Condensed" << "Ubuntu Mono" << "URW Bookman L" << "URW Chancery L" \
-//             << "URW Gothic L" << "URW Palladio L" << "Vemana2000" << "文泉驿微米黑" << "文泉驿正黑" << "文泉驿点阵正黑" << "文泉驿等宽微米黑" << "文泉驿等宽正黑";
-//    styles << "Regular" << "Light" << "Bold" << "Medium" << "Normal" << "Roman" << "Book" << "BoldOblique" \
-//           << "Oblique" << "Regular Oblique" << "Bold Italic" << "Italic" << "Regular Italic" << "Medium Italic" \
-//           << "Light Italic" << "Bold Condensed" << "Regular Condensed Italic" << "Bold Condensed Italic" \
-//           << "Regular Condensed" << "Demi Bold" << "Demi Bold Italic" << "Demi" << "Demi Oblique" << "Book Oblique" \
-//           << "斜体" << "半粗体 斜体" << "轻体 斜体" << "粗体 斜体" << "意大利体" << "普通" << "粗体 意大利体" << "粗体";
-//    sizes << "6" << "7" << "8" << "9" << "10" << "11" << "12" << "14" << "16" << "18" << "20" \
-//          << "22" << "24" << "26" << "28" << "36" << "48" << "72";
+
+    ui->familyEdit->setReadOnly(true);
+    ui->familyEdit->setFocusProxy(ui->familyList);
+    ui->fontLabel->setBuddy(ui->familyList);
+    ui->styleEdit->setReadOnly(true);
+    ui->styleEdit->setFocusProxy(ui->styleList);
+    ui->styleLabel->setBuddy(ui->styleList);
+    ui->sizeEdit->setReadOnly(true);
+    ui->sizeEdit->setFocusProxy(ui->sizeList);
+    ui->sizeLabel->setBuddy(ui->sizeList);
+    ui->sampleEdit->setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored));
+    ui->sampleEdit->setAlignment(Qt::AlignCenter);
     pSettings = mSettings;
     fontFlag = flag;
     getInitFont();//得到初始字体
@@ -87,9 +70,6 @@ KFontDialog::~KFontDialog()
 }
 
 void KFontDialog::getInitFont() {
-    //如果font为空，赋予默认值"Ubuntu"
-    //如果style为空，赋予默认值"Regular"
-    //如果size为空，赋予默认值"11"
     pSettings->beginGroup("font");
     QString fontStr;
     if(fontFlag == "font") {
@@ -115,99 +95,7 @@ void KFontDialog::getInitFont() {
     pSettings->endGroup();
     pSettings->sync();
     ui->curFontText->setText(fontStr);
-//    initfont ="Ubuntu";
-//    initstyle = "Regular";
-//    initsize = "11";
 }
-
-//void KFontDialog::initDialog() {
-//    bool flag = false;//默认配置是否在当前系统字体列表中存在
-//    /*----------------------字体名字初始化----------------------*/
-//    //列出所有字体的名字
-//    QStringList familyNames = fdb.families();
-//    familymodel->setStringList(familyNames);
-//    ui->familyList->setModel(familymodel);
-//    //定位默认字体名字
-//    ui->familyEdit->setText(initfont);
-//    int row = -1;
-//    QModelIndex index;
-//    for(QStringList::Iterator f = familyNames.begin(); f != familyNames.end(); ++f) {
-//        row++;
-//        QString family = *f;
-//        if(initfont == family) {//默认字体名字存在列表中
-//            index = familymodel->index(row);
-//            ui->familyList->setCurrentIndex(index);
-//            flag = true;
-//            break;
-//        }
-//    }
-//    if(flag == false) {//默认字体名字不存在列表中，此时让光标定位在第一个字体名字上面
-//        index = familymodel->index(0);
-//        ui->familyList->setCurrentIndex(index);
-//    }
-
-//    /*----------------------字体风格初始化----------------------*/
-//    if(flag) {
-//        flag = false;
-//    }
-//    //列出系统对应的所有风格
-//    QStringList familystyles = fdb.styles(initfont);
-//    stylemodel->setStringList(familystyles);
-//    ui->styleList->setModel(stylemodel);
-//    //定位默认的字体风格
-//    ui->styleEdit->setText(initstyle);
-//    row = -1;
-//    for(QStringList::Iterator s = familystyles.begin(); s != familystyles.end(); ++s) {
-//        row++;
-//        QString style = *s;
-//        if(initstyle == style) {//默认字体风格存在列表中
-//            index = stylemodel->index(row);
-//            ui->styleList->setCurrentIndex(index);
-//            flag = true;
-//            break;
-//        }
-//    }
-//    if(flag == false) {//默认字体风格不存在列表中，此时让光标定位在第一个风格上面
-//        index = stylemodel->index(0);
-//        ui->styleList->setCurrentIndex(index);
-//    }
-
-//    /*----------------------字体大小初始化----------------------*/
-//    if(flag) {
-//        flag = false;
-//    }
-//    //列出所有字体及其风格对应的所有大小
-//    QList<int> sizes = fdb.pointSizes(initfont, initstyle);
-//    QStringList str_sizes;
-//    for(QList<int>::const_iterator it = sizes.constBegin(); it != sizes.constEnd(); ++it) {
-//        str_sizes.append(QString::number(*it));
-//    }
-//    sizemodel->setStringList(str_sizes);
-//    ui->sizeList->setModel(sizemodel);
-//    //定位默认的字体大小
-//    ui->sizeEdit->setText(initsize);
-//    row = -1;
-//    for(QStringList::Iterator m = str_sizes.begin(); m != str_sizes.end(); ++m) {
-//        row++;
-//        QString size = *m;
-//        if(initsize == size) {//默认字体大小存在列表中
-//            index = sizemodel->index(row);
-//            ui->sizeList->setCurrentIndex(index);
-//            flag = true;
-//            break;
-//        }
-//    }
-//    if(flag == false) {//默认字体大小不存在列表中，此时让光标定位在第一个大小上面
-//        index = sizemodel->index(0);
-//        ui->sizeList->setCurrentIndex(index);
-//    }
-
-//    /*----------------------字体视图显示----------------------*/
-//    updateSampleFont();
-////    QVariant variant = model->data(index, Qt::DisplayRole);  //获取当前选择的项的文本
-////    QString name = variant.toString();
-//}
-
 
 void KFontDialog::initDialog() {
     //列出所有字体的名字
@@ -250,23 +138,13 @@ void KFontDialog::initDialog() {
         index = sizemodel->index(0);
         ui->sizeList->setCurrentIndex(index);
     }
-
-    /*----------------------字体视图显示----------------------*/
-//    updateSampleFont();
-//    QVariant variant = model->data(index, Qt::DisplayRole);  //获取当前选择的项的文本
-//    QString name = variant.toString();
 }
 
-void KFontDialog::updateSampleFont()
-{
-    int pSize = ui->sizeEdit->text().toInt();
-    QFont newFont(fdb.font(ui->familyEdit->text(), ui->styleEdit->text(), pSize));
-    if (newFont != ui->sampleEdit->font()) {
-        ui->sampleEdit->setFont(newFont);
+void KFontDialog::updateSampleFont() {
+    QFont font(fdb.font(ui->familyEdit->text(), ui->styleEdit->text(), ui->sizeEdit->text().toInt()));
+    if (font != ui->sampleEdit->font()) {
+        ui->sampleEdit->setFont(font);
     }
-//    if (ui->familyList->currentText().isEmpty())
-//        ui->sampleEdit->clear();
-//    updateSampleFont(newFont);
 }
 
 void KFontDialog::updateAll(QModelIndex index) {
@@ -280,7 +158,6 @@ void KFontDialog::updateAll(QModelIndex index) {
     //设置光标默认值
     ui->styleList->setCurrentIndex(styleindex);
     ui->styleEdit->setText(ui->styleList->currentIndex().data().toString());
-
 
     //列出所有字体及其风格对应的所有大小
     //更新sizemodel
@@ -314,27 +191,7 @@ void KFontDialog::updateAll(QModelIndex index) {
     }
     QString curStr = ui->familyEdit->text().append(" ").append(ui->styleEdit->text().append(" ").append(ui->sizeEdit->text()));
     ui->curFontText->setText(curStr);
-
     ui->sampleEdit->setText("UbuntuKylin:做最有中国位的操作系统！");
-//    QModelIndex sizeindex;
-////    bool sizeFlag = false;
-//    int row = -1;
-//    QList<int> sizes = fdb.pointSizes(ui->familyEdit->text(), ui->styleEdit->text());
-//    for(QList<int>::const_iterator it = sizes.constBegin(); it != sizes.constEnd(); ++it) {
-//        row++;
-//        if(*it == 11) {
-//            sizeindex = sizemodel->index(row);
-//            ui->sizeList->setCurrentIndex(sizeindex);
-//            ui->sizeEdit->setText(ui->sizeList->currentIndex().data().toString());
-//            sizeFlag = true;
-//            break;
-//        }
-//    }
-//    if(sizeFlag == false) {
-//        sizeindex = sizemodel->index(0);
-//        ui->sizeList->setCurrentIndex(sizeindex);
-//        ui->sizeEdit->setText(ui->sizeList->currentIndex().data().toString());
-//    }
     updateSampleFont();
 }
 
@@ -378,8 +235,6 @@ void KFontDialog::updateStyleandSize(QModelIndex index) {
         ui->curFontText->setText(curStr);
         updateSampleFont();
     }
-
-
 }
 
 void KFontDialog::updateSize(QModelIndex index) {
@@ -392,40 +247,11 @@ void KFontDialog::updateSize(QModelIndex index) {
     }
 }
 
-
-//void KFontDialog::showStyles(QModelIndex index) {
-//    QString font = index.data().toString();
-////    qDebug() << ui->familyList->currentIndex().data().toString();
-//    QStringList familystyles = fdb.styles(font);
-//    QStringListModel *model = new QStringListModel;
-//    model->setStringList(familystyles);
-//    ui->styleList->setModel(model);
-
-//    //定位选择的字体风格
-//    ui->styleEdit->setText(initstyle);
-//    int row = -1;
-//    for(QStringList::Iterator s = familystyles.begin(); s != familystyles.end(); ++s) {
-//        row++;
-//        QString style = *s;
-//        if(initstyle == style) {
-////            QString strValue;
-////            strValue = tr("%1").arg(row);
-////            qDebug() << "5555";
-////            qDebug() << QString(strValue);
-//            QModelIndex index = model->index(row);
-//            ui->styleList->setCurrentIndex(index);
-//            break;
-//        }
-//    }
-//}
-
-void KFontDialog::on_quitBtn_clicked()
-{
+void KFontDialog::on_quitBtn_clicked() {
     this->close();
 }
 
-void KFontDialog::on_okBtn_clicked()
-{
+void KFontDialog::on_okBtn_clicked() {
     if(ui->familyEdit->text().isEmpty()) {
         //提示      你还没有更换字体，请选择字体进行更换！
         QMessageBox::warning(NULL,
@@ -435,26 +261,6 @@ void KFontDialog::on_okBtn_clicked()
     }
     else {
         selectedFont = ui->familyEdit->text().append(" ").append(ui->styleEdit->text().append(" ").append(ui->sizeEdit->text()));
-//        if(fontFlag == "font") {
-//            //font
-//            fontStr = pSettings->value("currentfont").toString();
-//        }
-//        else if(fontFlag == "desktopfont") {
-//            //desktopfont
-//            fontStr = pSettings->value("desktopfont").toString();
-//        }
-//        else if(fontFlag == "monospacefont") {
-//            //monospacefont
-//            fontStr = pSettings->value("monospacefont").toString();
-//        }
-//        else if(fontFlag == "documentfont") {
-//            //documentfont
-//            fontStr = pSettings->value("documentfont").toString();
-//        }
-//        else if(fontFlag == "titlebarfont") {
-//            //titlebarfont
-//            fontStr = pSettings->value("titlebarfont").toString();
-//        }
         this->accept();
     }
 }
@@ -479,7 +285,18 @@ bool KFontDialog::eventFilter(QObject *obj, QEvent *event) {
             } else {
                 return QObject::eventFilter(obj, event);
             }
+    }
+    if(obj == ui->okBtn ||obj == ui->quitBtn)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *me = (QMouseEvent *)event;
+            dragPos = me->globalPos() - frameGeometry().topLeft();
+        }else if(event->type() == QEvent::MouseButtonRelease)
+        {
+            setWindowOpacity(1);
         }
+    }
     return QObject::eventFilter(obj, event);
 }
 
@@ -493,7 +310,7 @@ void KFontDialog::mousePressEvent(QMouseEvent *event) {
 void KFontDialog::mouseMoveEvent(QMouseEvent *event) {
     if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
-        setWindowOpacity(0.5);
+        setWindowOpacity(1);//0.5
     }
     event->accept();
 }

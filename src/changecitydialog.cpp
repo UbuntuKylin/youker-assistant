@@ -15,6 +15,10 @@ ChangeCityDialog::ChangeCityDialog(QSettings *mSettings, QWidget *parent) :
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
+
+    ui->okBtn->installEventFilter(this);
+    ui->quitBtn->installEventFilter(this);
+
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
@@ -80,8 +84,19 @@ bool ChangeCityDialog::eventFilter(QObject *obj, QEvent *event) {
             } else {
                 return QObject::eventFilter(obj, event);
             }
+    }
+    if(obj == ui->okBtn ||obj == ui->quitBtn)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *me = (QMouseEvent *)event;
+            dragPos = me->globalPos() - frameGeometry().topLeft();
+        }else if(event->type() == QEvent::MouseButtonRelease)
+        {
+            setWindowOpacity(1);
         }
-        return QObject::eventFilter(obj, event);
+    }
+    return QObject::eventFilter(obj, event);
 }
 
 void ChangeCityDialog::mousePressEvent(QMouseEvent *event) {
@@ -96,7 +111,7 @@ void ChangeCityDialog::mouseMoveEvent(QMouseEvent *event) {
     if (event->buttons() & Qt::LeftButton )
     {
         move(event->globalPos() - dragPos);
-        setWindowOpacity(0.9);
+        setWindowOpacity(1);//0.9
     }
     event->accept();
 

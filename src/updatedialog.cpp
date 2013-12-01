@@ -26,6 +26,8 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
+    ui->okButton->installEventFilter(this);
+    ui->closeButton->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
@@ -65,10 +67,19 @@ bool UpdateDialog::eventFilter(QObject *obj, QEvent *event) {
             } else {
                 return QObject::eventFilter(obj, event);
             }
+    }
+    if(obj == ui->okButton || obj == ui->closeButton)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *me = (QMouseEvent *)event;
+            dragPos = me->globalPos() - frameGeometry().topLeft();
+        }else if(event->type() == QEvent::MouseButtonRelease)
+        {
+            setWindowOpacity(1);
         }
+    }
     return QObject::eventFilter(obj, event);
-
-
 }
 
 void UpdateDialog::mousePressEvent(QMouseEvent *event) {

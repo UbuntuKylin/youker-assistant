@@ -37,7 +37,7 @@ bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
             } else {
                 return QObject::eventFilter(obj, event);
             }
-        }
+    }
     if(obj == ui->btn_close){
             if(event->type() == QEvent::Enter){
                 ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
@@ -63,37 +63,39 @@ bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
             } else {
                 return QObject::eventFilter(obj, event);
             }
+    }
+    if(obj == ui->okButton ||obj == ui->closeButton)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *me = (QMouseEvent *)event;
+            dragPos = me->globalPos() - frameGeometry().topLeft();
+        }else if(event->type() == QEvent::MouseButtonRelease)
+        {
+            setWindowOpacity(1);
         }
+    }
     return QObject::eventFilter(obj, event);
-
-
 }
 
-void AuthDialog::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void AuthDialog::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
-
 }
 
-void AuthDialog::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void AuthDialog::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
-        setWindowOpacity(0.5);
+        setWindowOpacity(1);//0.5
     }
     event->accept();
 
 }
 
-void AuthDialog::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void AuthDialog::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();

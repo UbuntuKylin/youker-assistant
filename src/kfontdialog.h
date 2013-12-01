@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #ifndef KFONTDIALOG_H
 #define KFONTDIALOG_H
 
@@ -24,16 +40,8 @@ private:
     Ui::KFontDialog *ui;
     QSettings *pSettings;
     QFontDatabase fdb;
-//    QString initfont;
-//    QString initstyle;
-//    QString initsize;
-//    QStringList families;//所有字体名字
-//    QStringList styles;//所有字体风格列表
-//    QStringList sizes;//所有字体大小
     QString fontFlag;//字体标记
     void updateSampleFont();
-//    void updateSampleFont(const QFont &newFont);
-
     QStringListModel *familymodel;
     QStringListModel *stylemodel;
     QStringListModel *sizemodel;
@@ -50,8 +58,6 @@ protected slots:
     void updateStyleandSize(QModelIndex index);
     void updateSize(QModelIndex index);
 
-signals:
-    void updateSizeList();
 private slots:
     void on_quitBtn_clicked();
     void on_okBtn_clicked();
