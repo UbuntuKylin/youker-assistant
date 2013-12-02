@@ -152,24 +152,25 @@ Rectangle {
      }
 
 
-
-     GridView {
-         id: themegrid
-//         visible: true
-         anchors {
-             fill: parent
-             top: parent.top
-             topMargin: 100
-             left: parent.left
-             leftMargin: 60
-         }
-         cellWidth: 156; cellHeight: 156
-         model: themeModel
-         delegate: themegridDelegate
-         focus: true
-         cacheBuffer: 1000
-         highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
-     }
+    Item {
+        width: parent.width - 60*2
+        anchors {
+            top: parent.top
+            topMargin: 100
+            left: parent.left
+            leftMargin: 60
+        }
+        GridView {
+            id: themegrid
+            anchors.fill: parent
+            cellWidth: 156; cellHeight: 156
+            model: themeModel
+            delegate: themegridDelegate
+            focus: true
+            cacheBuffer: 1000
+            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+        }
+    }
 
      //顶层工具栏
      Bars.TopBar {

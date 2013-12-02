@@ -247,7 +247,6 @@ Item {
 
             ListModel {
                 id: funcmodel
-                ListElement {icon: ""; flag: ""}
             }
 
             Common.ScrollArea {
@@ -263,7 +262,6 @@ Item {
                 Item {
                     width: views.width-20   //列表宽度
                     height: 4 * 95     //列表长度,前面的数字为列表行数
-                    //垃圾清理显示内容
                     GridView {
                         id: gridView
                         height: parent.height-12

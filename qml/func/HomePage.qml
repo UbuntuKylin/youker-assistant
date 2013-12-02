@@ -21,7 +21,7 @@ import "bars" as Bars
 
 Rectangle {
     id: screen; width: parent.width; height: 475
-    signal dialogmsg()
+
     function openFile(file) {
          var component = Qt.createComponent(file)
          if (component.status == Component.Ready)

@@ -47,16 +47,16 @@ Item {
     }
     //maincheckbox.checked发生变化时激活该函数
     onCheckedChanged:{
-        if(checked=="true") {
-            simage.source="../../img/icons/checkbox.png";
-            checkedbool=true;
+        if(checked == "true") {
+            simage.source = "../../img/icons/checkbox.png";
+            checkedbool = true;
         }
-        else if(checked=="mid") {
-            simage.source="../../img/icons/checkbox-2.png"
+        else if(checked == "mid") {
+            simage.source = "../../img/icons/checkbox-2.png"
         }
         else if(checked=="false") {
-            simage.source=""
-            checkedbool=false;
+            simage.source = ""
+            checkedbool = false;
         }
     }
 }

@@ -91,11 +91,6 @@ Item {
                 Common.Page {
                     id: systemmessage
                     visible: false
-                    SystemMessage {}
-                }
-                Common.Page {
-                    id: detailinformation
-                    visible: false
                     DetailInformation {}
                 }
                 Common.Page {
