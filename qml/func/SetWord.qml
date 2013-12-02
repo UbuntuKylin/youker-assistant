@@ -70,9 +70,9 @@ Rectangle {
                 sessiondispatcher.showWizardController();
             }
             //view details of system information
-            else if (flag == "details") {
-                pageStack.push(detailinformation);
-            }
+//            else if (flag == "details") {
+//                pageStack.push(detailinformation);
+//            }
 
             //bbs help
             else if (flag == "BBS") {

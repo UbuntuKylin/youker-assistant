@@ -32,6 +32,7 @@ Rectangle {
     function addList() {
         listModel.clear();//清空
         listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "../img/sysButton/computer.png"});
+        listModel.append({"name": qsTr("Desktop"), "flag": "desktop", "iconName": "../img/sysButton/computer.png"});
         listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "../img/sysButton/CPU.png"});
         listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "../img/sysButton/memory.png"});
         listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "../img/sysButton/board.png"});
@@ -71,6 +72,9 @@ Rectangle {
                         if(flag == "computer") {
                             window.state = "ComputerPage";
                         }
+                        else if(flag == "desktop") {
+                            window.state = "DesktopPage";
+                        }
                         else if(flag == "cpu") {
                             window.state = "CPUPage";
                         }
@@ -102,6 +106,13 @@ Rectangle {
                 width: parent.width
                 height: parent.height
                 visible: true
+            }
+            Info.DesktopInfo {
+                id: desktopLayer
+                width: parent.width
+                height: parent.height
+//                x: (parent.width * 1.5)
+                visible: false
             }
             Info.CpuInfo {
                 id: cpuLayer
@@ -266,6 +277,16 @@ Rectangle {
         State {
             name: "ComputerPage"
             PropertyChanges { target: computerLayer; visible: true }
+            PropertyChanges { target: desktopLayer; visible: false }
+            PropertyChanges { target: cpuLayer;  visible: false }
+            PropertyChanges { target: biosLayer; visible: false }
+            PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: monitorLayer; visible: false }
+        },
+        State {
+            name: "DesktopPage"
+            PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: true }
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
@@ -274,6 +295,7 @@ Rectangle {
         State {
             name: "CPUPage"
             PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: false }
             PropertyChanges { target: cpuLayer;  visible: true }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
@@ -282,6 +304,7 @@ Rectangle {
         State {
             name: "BiosPage"
             PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: false }
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: true }
             PropertyChanges { target: memoryLayer; visible: false }
@@ -290,6 +313,7 @@ Rectangle {
         State {
             name: "MemoryPage"
             PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: false }
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: true }
@@ -298,6 +322,7 @@ Rectangle {
         State {
             name: "MonitorPage"
             PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: false }
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }

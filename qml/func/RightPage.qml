@@ -22,7 +22,6 @@ import "common" as Common
 //右边栏
 Rectangle {
     id: rightbar
-    width: screen.width - 600; height: 460
 
 //推荐软件的三张图片
     property string image1: "../img/skin/qq0.png"
@@ -225,13 +224,9 @@ Rectangle {
         Item {
             id: views
             width: parent.width
-            height: parent.height
             GridView {
                 id: gridView
-                height: parent.height
-                width: parent.width
-                anchors.top: parent.top
-//                    anchors.topMargin: titlebar.height + 45
+                anchors.fill: parent
                 model: clearModel
                 delegate: ToolsDelegate {}
                 cellWidth: (parent.width-20)/3; cellHeight: cellWidth
