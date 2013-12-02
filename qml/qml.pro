@@ -20,5 +20,6 @@ lupdate_only{
               func/*.qml \
               func/bars/*.qml \
               func/common/*.qml \
-              func/settings/*.qml
+              func/settings/*.qml \
+              func/info/*.qml
 }

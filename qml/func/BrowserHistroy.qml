@@ -28,7 +28,6 @@ Item {
     property string btn_flag: "history_scan"
     property string btn_flag3: "chromium_scan"
     property string btn_flag2: "system_scan"
-    property string work_result: ""
     property string keypage: "history"
     property int browserstatus_num: 0
     property int chromium_num: 0
@@ -41,6 +40,7 @@ Item {
     property bool null_flag: false
     property bool null_flag3: false
     property bool null_flag2: false
+
     //获取数据
     function getData(history_msg) {
         if (history_msg == "BrowserWork") {
@@ -112,49 +112,45 @@ Item {
         }
     }
 
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onFinishScanWork: {//扫描完成时收到的信号
-//            if(msg == "history") {//上网记录
-//                internetBtnRow.state = "BrowserWork";
-//            }
-//            else if(msg == "system") {//打开文件记录
-//                fileBtnRow.state = "SystemWork";
-//            }
-//        }
-//    }
     Connections
     {
         target: systemdispatcher
         onFinishCleanWorkError: {//清理出错时收到的信号
-            if (btn_flag == "history_work") {
-                if (msg == "history") {
+            if (msg == "firefox") {
+                if (root.btn_flag == "history_work") {
                     internetBtnRow.state = "BrowserWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
-            else if(btn_flag2 == "system_work") {
-                if (msg == "system") {
+            else if (msg == "chromium") {
+                if (root.btn_flag3 == "chromium_work") {
+                    chromiumBtnRow.state = "ChromiumWorkError";
+                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                }
+            }
+            else if (msg == "system") {
+                if(root.btn_flag2 == "system_work") {
                     fileBtnRow.state = "SystemWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
          }
         onFinishCleanWork: {//清理成功时收到的信号
-            if (btn_flag == "history_work") {
-                if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-                }
-                else if (msg == "history") {
+            if (msg == "") {
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+            }
+            else if (msg == "firefox") {
+                if (root.btn_flag == "history_work") {
                     internetBtnRow.state = "BrowserWorkFinish";
                 }
             }
-            else if (btn_flag2 == "system_work") {
-                if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+            else if (msg == "chromium") {
+                if (root.btn_flag3 == "chromium_work") {
+                    chromiumBtnRow.state = "ChromiumWorkFinish";
                 }
-                else if (msg == "system") {
+            }
+            else if (msg == "system") {
+                if (root.btn_flag2 == "system_work") {
                     fileBtnRow.state = "SystemWorkFinish";
                 }
             }
@@ -264,7 +260,7 @@ Item {
             spacing: 15
             Image {
                 width: 40; height: 42
-                source:"../img/toolWidget/history-min.png"
+                source:"../img/toolWidget/chrominumRecord.png"
             }
             Column {
                 spacing: 5
@@ -447,7 +443,7 @@ Item {
                     name: "BrowserWork"
                     PropertyChanges { target: internetcacheBtn; text:qsTr("Start cleaning")}//开始清理
                     PropertyChanges { target: root; btn_flag: "history_work" }
-                    PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan")+ browserstatus_num + qsTr("records)")}//（扫描到     条记录）
+                    PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan")+ root.browserstatus_num + qsTr("records)")}//（扫描到     条记录）
                     PropertyChanges { target: internetbackBtn; visible: true}
                     PropertyChanges { target: internetrescanBtn; visible: true}
                 },
@@ -471,7 +467,7 @@ Item {
                     name: "BrowserWorkFinish"
                     PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning")}//开始扫描
                     PropertyChanges { target: root; btn_flag: "history_scan" }
-                    PropertyChanges { target: browserstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ browserstatus_num + qsTr("records)") }//（已清理     条记录）
+                    PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Have cleared")+ root.browserstatus_num + qsTr("records)") }//（已清理     条记录）
                     PropertyChanges { target: internetbackBtn; visible: false}
                     PropertyChanges { target: internetrescanBtn; visible: false}
 
@@ -593,7 +589,7 @@ Item {
                     name: "ChromiumWork"
                     PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start cleaning")}//开始清理
                     PropertyChanges { target: root; btn_flag3: "chromium_work" }
-                    PropertyChanges { target: chromiumstatus_label; visible: true; text: qsTr("(Scan")+ browserstatus_num + qsTr("records)")}//（扫描到     条记录）
+                    PropertyChanges { target: chromiumstatus_label; visible: true; text: qsTr("(Scan")+ root.chromium_num + qsTr("records)")}//（扫描到     条记录）
                     PropertyChanges { target: chromiumbackBtn; visible: true}
                     PropertyChanges { target: chromiumrescanBtn; visible: true}
                 },
@@ -617,7 +613,7 @@ Item {
                     name: "ChromiumWorkFinish"
                     PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning")}//开始扫描
                     PropertyChanges { target: root; btn_flag3: "chromium_scan" }
-                    PropertyChanges { target: chromiumstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ browserstatus_num + qsTr("records)") }//（已清理     条记录）
+                    PropertyChanges { target: chromiumstatus_label; visible: true; text: qsTr("(Have cleared")+ root.chromium_num + qsTr("records)") }//（已清理     条记录）
                     PropertyChanges { target: chromiumbackBtn; visible: false}
                     PropertyChanges { target: chromiumrescanBtn; visible: false}
 
@@ -739,7 +735,7 @@ Item {
                     name: "SystemWork"
                     PropertyChanges { target: syscacheBtn; text:qsTr("Start cleaning")}//开始清理
                     PropertyChanges { target: root; btn_flag2: "system_work" }
-                    PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Scan")+ systemstatus_num + qsTr("records)")}//扫描到     条记录
+                    PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Scan")+ root.systemstatus_num + qsTr("records)")}//扫描到     条记录
                     PropertyChanges { target: filebackBtn; visible: true}
                     PropertyChanges { target: filerescanBtn; visible: true}
                 },
@@ -747,7 +743,7 @@ Item {
                     name: "SystemWorkAGAIN"
                     PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag2: "system_scan" }
-                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: systemstatus_label; visible: false}
                     PropertyChanges { target: filebackBtn; visible: false}
                     PropertyChanges { target: filerescanBtn; visible: false}
                 },
@@ -755,7 +751,7 @@ Item {
                     name: "SystemWorkError"
                     PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag2: "system_scan" }
-                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: systemstatus_label; visible: false}
                     PropertyChanges { target: filebackBtn; visible: false}
                     PropertyChanges { target: filerescanBtn; visible: false}
                 },
@@ -763,7 +759,7 @@ Item {
                     name: "SystemWorkFinish"
                     PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag2: "system_scan" }
-                    PropertyChanges { target: systemstatus_label; visible: true; text: root.work_result + qsTr("(Have cleared")+ systemstatus_num + qsTr("records)")}//已清理     条记录
+                    PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Have cleared")+ root.systemstatus_num + qsTr("records)")}//已清理     条记录
                     PropertyChanges { target: filebackBtn; visible: false}
                     PropertyChanges { target: filerescanBtn; visible: false}
                 },
@@ -771,7 +767,7 @@ Item {
                     name: "SystemWorkEmpty"
                     PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag2: "system_scan" }
-                    PropertyChanges { target: browserstatus_label; visible: false}
+                    PropertyChanges { target: systemstatus_label; visible: false}
                     PropertyChanges { target: filebackBtn; visible: false}
                     PropertyChanges { target: filerescanBtn; visible: false}
                 }

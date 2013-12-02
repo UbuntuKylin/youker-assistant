@@ -14,6 +14,7 @@ target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
     target
+
 include(../qtsingleapplication/src/qtsingleapplication.pri)
 LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 
@@ -68,7 +69,8 @@ HEADERS += youker-application.h \
     processmanager.h \
     yprocess.h \
     sourcedialog.h \
-    devicemanager.h
+    devicemanager.h \
+    kfontdialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -117,7 +119,8 @@ SOURCES += main.cpp \
     processmanager.cpp \
     yprocess.cpp \
     sourcedialog.cpp \
-    devicemanager.cpp
+    devicemanager.cpp \
+    kfontdialog.cpp
 
 RESOURCES += pixmap.qrc
 
@@ -135,4 +138,5 @@ FORMS += \
     locationdialog.ui \
     wizarddialog.ui \
     changecitydialog.ui \
-    sourcedialog.ui
+    sourcedialog.ui \
+    kfontdialog.ui

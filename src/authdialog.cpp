@@ -31,13 +31,14 @@ AuthDialog::AuthDialog(QString msg, QWidget *parent) :
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
     ui->btn_min->installEventFilter(this);
+    ui->okButton->installEventFilter(this);
+    ui->closeButton->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
-
 
     ui->lineEdit->setEchoMode(QLineEdit::Password);
     ui->lineEdit->setFocus();
@@ -77,13 +78,12 @@ bool AuthDialog::trans_password(QString flagstr, QString pwd) {
 
 void AuthDialog::on_closeButton_clicked()
 {
-//    this->hide();
     this->close();
     //警告      服务没有启动，相关功能将无法正常使用！
-    QMessageBox::warning(NULL,
-                         tr("Warning"),
-                         tr("server doesn't run, some function cannot work normally!"),
-                         QMessageBox::Ok);
+//    QMessageBox::warning(NULL,
+//                         tr("Warning"),
+//                         tr("server doesn't run, some function cannot work normally!"),
+//                         QMessageBox::Ok);
 }
 void AuthDialog::sleep_to_call_server() {
     this->accept();
@@ -103,6 +103,6 @@ void AuthDialog::on_okButton_clicked()
     else {
         ui->lineEdit->clear();
         ui->lineEdit->setFocus();
-        ui->msg_label->setText(tr("Tip: password error, please input the correct password again!"));//"提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。"
+        ui->msg_label->setText(tr("Tip: password is wrong, please input the correct password!"));//"提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。"
     }
 }

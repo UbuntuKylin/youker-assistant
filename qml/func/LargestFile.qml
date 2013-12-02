@@ -14,7 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 import QtQuick 1.1
 import SessionType 0.1
 import SystemType 0.1
@@ -22,49 +21,36 @@ import "common" as Common
 Item {
     id:root
     width: parent.width
-    height: 435//475
-    property string btn_text: qsTr("Start cleaning")//开始清理
+    height: 435
     property string title: qsTr("Find large files which take up disk space quickly")//快速找出最占用磁盘空间的大文件
     property string description: qsTr("Delete unwanted large files, free more disk space.")//删除占用磁盘空间的无用大文件，释放更多磁盘空间。
     property string scope_desc: qsTr("File size in the range of 1M--20480M, no support the Chinese path.")//文件的大小范围为1M--20480M，暂不支持中文路径。
-    property string btn_flag: "largestfile_work"
-    property ListModel listmodel: mainModel
-    property ListModel submodel: subModel
+    property string btnFlag: "largestfile_work"//清理的标记：largestfile_work
     property int sub_num: 0
-    property string work_result: ""
+    property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
     property int lar_num: sub_num
     property int check_num:sub_num
-    //箭头图标
-    property string arrow: '../img/icons/arrow.png'
-    //母项字体
-    property string headerItemFontName: "Helvetica"
-    property int headerItemFontSize: 12
-    property color headerItemFontColor: "black"
-    //子项字体
-    property string subItemFontName: "Helvetica"
-    property int subItemFontSize: headerItemFontSize-2
-    property color subItemFontColor: "black"
     property bool check_flag: false//true
-    property int itemHeight: 40
-//    property alias expandedItemCount: subItemRepeater.count
-    property bool expanded: true //kobe:子项扩展默认打开
     property bool null_flag: false
     property string yesOrno: "false"
     property string directory: ""
     property int size: 0
     property int deleget_arrow :0
 
+    ListModel { id: mainModel }
+    ListModel { id: subModel }
 
+    //获取数据
     function refresh_page() {
         sub_num=0;
         check_num=0
         var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
-        if (largestfile_data == "")
-        {
+        if (largestfile_data.length === 0) {
             root.null_flag = true;
             deleget_arrow =0;
             if(statusImage.visible == true)
                 statusImage.visible = false;
+            root.resultFlag = false;//扫描内容不存在
         }
         else
         {
@@ -98,22 +84,7 @@ Item {
         mainModel.append({"itemTitle": qsTr("Clean up the maximum file, and the pah is:")  + root.directory,
                          "picture": "../img/toolWidget/deb-min.png",
                          "detailstr": qsTr("Clear the maximum file directory in user's appointment to save disk space."),
-                         "flags": "clear_largestfile",
-                        "attributes":
-                             [{"subItemTitle": "Cookies1"},
-                             {"subItemTitle": "Cookies2"},
-                             {"subItemTitle": "Cookies3"},
-                             {"subItemTitle": "Cookies4"}]
-                         })
-    }
-
-
-    ListModel {
-        id: mainModel
-    }
-
-    ListModel {
-        id: subModel
+                         "flags": "clear_largestfile"})
     }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -121,34 +92,27 @@ Item {
     {
         target: systemdispatcher
         onFinishCleanWorkError: {
-            if (btn_flag == "largestfile_work") {
-                if (msg == "largestfile") {
-                    root.work_result = msg;
-                    root.state = "LargestFileWorkError";
-                }
+            if (msg == "largestfile") {
+                root.state = "LargestFileWorkError";
             }
          }
         onFinishCleanWork: {
-            if (btn_flag == "largestfile_work") {
-                if (msg == "") {
-                    root.state = "LargestFileWorkAgain";
-                }
-                else if (msg == "largestfile") {
-                    root.work_result = msg;
-                    root.state = "LargestFileWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
-                    refresh_page();
-                }
+            if (msg == "") {
+                root.state = "LargestFileWorkAgain";
+            }
+            else if (msg == "largestfile") {
+                root.state = "LargestFileWorkFinish";
+                toolkits.alertMSG(qsTr("Cleaned!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                refresh_page();
             }
         }
     }
 
-//    //背景
+    //背景
     Image {
         source: "../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
-
 
     //titlebar
     Row {
@@ -230,7 +194,6 @@ Item {
                 if (root.directory != "") {
                     refresh_page();
                     root.state = "LargestFileWorkAgain";
-//                    arrow.visible = true;
                 }
             }
         }
@@ -240,7 +203,7 @@ Item {
             width: 95
             height: 30
             hoverimage: "green2.png"
-            text: root.btn_text
+            text: qsTr("Start cleaning")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag) {
@@ -293,25 +256,28 @@ Item {
     Common.ScrollArea {
         frame:false
         anchors.top: titlebar.bottom
-        anchors.topMargin: 20//30
+        anchors.topMargin: 20
         anchors.left:parent.left
         anchors.leftMargin: 27
-        height: root.height -titlebar.height - 27//50
+        height: root.height -titlebar.height - 27
         width: parent.width - 27 -2
         Item {
             width: parent.width
-            height: (root.sub_num + 1) * 40 //450 + //this height must be higher than root.height, then the slidebar can display
+            height: (root.sub_num + 1) * 40
             //垃圾清理显示内容
             ListView {
                 id: listView
                 height: parent.height
                 model: mainModel
                 delegate: Cleardelegate{
-                    sub_num:root.lar_num;sub_model:subModel;btn_flag:root.btn_flag;arrow_display:deleget_arrow;
+                    sub_num: root.lar_num
+                    sub_model:subModel
+                    btn_flag: root.btnFlag
+                    arrow_display: deleget_arrow;
                     delegate_flag: false
                     main_check_value: root.yesOrno
-                    onSubpressed: {root.sub_num=hMark}
-                    onCheckchanged: {root.check_flag=checkchange}
+                    onSubpressed: { root.sub_num = hMark }
+                    onCheckchanged: { root.check_flag = checkchange }
                 }
                 cacheBuffer: 1000
                 opacity: 1
@@ -323,7 +289,7 @@ Item {
                 preferredHighlightEnd: preferredHighlightBegin
                 highlightRangeMode: ListView.StrictlyEnforceRange
             }
-        }//Item
+        }
         Common.StatusImage {
             id: statusImage
             anchors{
@@ -336,7 +302,7 @@ Item {
             iconName: "yellow.png"
             text: qsTr("Unfinished")//未完成
         }
-    }//ScrollArea
+    }
 
     states: [
         State {

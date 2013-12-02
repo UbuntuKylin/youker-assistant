@@ -1,5 +1,13 @@
 youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
 
+  * Overide the Font Dialog with KFontDialog Class.
+  * Optimize button events of AuthDialog(LP: #1256183).
+  * Fixed Dialog's movement and hazing when click a button(LP: #1255550).
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 01 Dec 2013 22:31:37 +0800
+
+youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
+
   * Add processmanager.
   * Add Google Chromium Cookies cleaner.
   * Change Chinese to English add add translation.
@@ -9,8 +17,11 @@ youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
   * Clear Cookies of Chromium(LP: #1224871).
   * Solve wrong status of history cleaning(LP: #1253852).
   * Popup a dialog to add UbuntuKylin sourcelist or not.
+  * Display detailed information of Computer.
+  * Display contents when one key scanning.
+  * Add debian/postrm file to remove a folder when it is uninstalled.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 24 Nov 2013 16:17:52 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 28 Nov 2013 21:01:35 +0800
 
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 

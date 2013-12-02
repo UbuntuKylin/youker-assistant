@@ -26,6 +26,7 @@ WarningDialog::WarningDialog(QString title, QString content,QWidget *parent) :
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
     ui->btn_min->installEventFilter(this);
+    ui->okButton->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
@@ -60,7 +61,7 @@ bool WarningDialog::eventFilter(QObject *obj, QEvent *event) {
             } else {
                 return QObject::eventFilter(obj, event);
             }
-        }
+    }
     if(obj == ui->btn_close){
             if(event->type() == QEvent::Enter){
                 ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
@@ -79,7 +80,18 @@ bool WarningDialog::eventFilter(QObject *obj, QEvent *event) {
             } else {
                 return QObject::eventFilter(obj, event);
             }
+    }
+    if(obj == ui->okButton)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *me = (QMouseEvent *)event;
+            dragPos = me->globalPos() - frameGeometry().topLeft();
+        }else if(event->type() == QEvent::MouseButtonRelease)
+        {
+            setWindowOpacity(1);
         }
+    }
     return QObject::eventFilter(obj, event);
 
 

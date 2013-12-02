@@ -5,6 +5,7 @@ Maintainer: UbuntuKylin Team <ubuntukylin-members@list.launchpad.net>
 Build-Depends: debhelper (>= 9),
                dh-translations,
                libphonon-dev,
+               python-dev,
                libqt4-dev,
                fcitx-libs-dev,
                pkg-config,

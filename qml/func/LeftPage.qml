@@ -25,6 +25,24 @@ Rectangle {
     property string onekeypage: "first"
     property int num: 3     //checkbox num
     property int check_num: num
+    property string flag: "onekeyscan"
+
+    Connections
+    {
+        target: sessiondispatcher
+        onIsScanning: {//扫描过程中收到的信号
+            showLabel.visible = true;
+            showText.text = msg;
+        }
+        onFinishScanWork: {
+            if(msg == "onekey") {
+                refreshArrow0.visible = true;
+                refreshArrow.visible = false;
+                leftbar.flag = "onekey";
+                firstonekey.text = qsTr("Clean Quickly");//一键清理
+            }
+        }
+    }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
@@ -44,18 +62,26 @@ Rectangle {
                     historydes.visible = false;
                 if (cookiedes.visible == true)
                     cookiedes.visible = false;
+                firstonekey.text = qsTr("Clean Quickly");//一键清理
             }
+
+
             else if (msg == "c") {
                 cachestatus.state = "StatusC";
+                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "h") {
                 historystatus.state = "StatusH";
+                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "k") {
                cookiestatus.state = "StatusK";
+                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "o") {
                 toolkits.alertMSG(qsTr("A Key cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
+                leftbar.flag = "onekeyscan";
+                firstonekey.text = qsTr("Scan Quickly");//一键扫描
             }
             refreshArrow0.visible = true;
             refreshArrow.visible = false;
@@ -73,7 +99,7 @@ Rectangle {
                     historydes.visible = false;
             }
             else if (msg == "ke") {
-               cookiestatus.state = "StatusK1";
+                cookiestatus.state = "StatusK1";
                 if (cookiedes.visible == true)
                     cookiedes.visible = false;
             }
@@ -132,6 +158,7 @@ Rectangle {
             Column {
                 spacing: 10
                 id: mycolumn
+
                 Text {
                     id: text0
                     width: leftbar.width-180
@@ -149,11 +176,12 @@ Rectangle {
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
+
                 Common.Button{
                     id: firstonekey
                     hoverimage: "green3.png"
-                    setbtn_flag: "onekey"
-                    text:qsTr("Clean Quickly")//一键清理
+                    setbtn_flag: leftbar.flag//onekeyscan:scan      onekey:clean
+                    text:qsTr("Scan Quickly")//一键扫描
                     fontsize: 17
                     anchors {
                         left: parent.left; leftMargin: 100
@@ -161,9 +189,15 @@ Rectangle {
                     width: 186
                     height: 45
                     onSend_dynamic_picture: {
+                        if (str == "onekeyscan") {
+                            refreshArrow0.visible = false;
+                            refreshArrow.visible = true;
+                        }
                         if (str == "onekey") {
                             refreshArrow0.visible = false;
                             refreshArrow.visible = true;
+                            showLabel.visible = false;
+                            showText.text = "";
                         }
                     }
                 //如果没有选中任何清理项，提示警告框！
@@ -200,9 +234,31 @@ Rectangle {
 
         }//Row
 
+        Row {
+            spacing: 10
+            anchors { top: myrow.bottom; topMargin: 10; left: parent.left; leftMargin: 20 }
+            Text {
+                id: showLabel
+                width: 50
+                visible: false
+                text: qsTr("Scan to:  ")//扫描到：
+            }
+            Text {
+                id: showText
+                width: leftbar.width - 180 - 60
+                text: ""
+                color: "green"
+            }
+        }
+//        Text {
+//            id: showText
+//            anchors { top: myrow.bottom; topMargin: 10; left: parent.left; leftMargin: 20 }
+//            width: leftbar.width-180
+//            text: ""
+//        }
 
         Column {
-            anchors { top: myrow.bottom; topMargin: 30; left: parent.left; leftMargin: 20 }
+            anchors { top: myrow.bottom; topMargin: 50; left: parent.left; leftMargin: 20 }
             spacing:45
             Row{
                 spacing: 10
@@ -230,7 +286,7 @@ Rectangle {
 
             //---------------------------
                         Item {
-                            width: parent.width //clearDelegate.ListView.view.width
+                            width: parent.width
                             height:45 //65
 
                             Item {
@@ -333,7 +389,7 @@ Rectangle {
 
             //----------------------------
                         Item {
-                        width: parent.width//clearDelegate.ListView.view.width
+                        width: parent.width
                         height: 45//65
 
                         Item {
@@ -432,7 +488,7 @@ Rectangle {
                       }
             //----------------------------
                         Item {
-                        width: parent.width//clearDelegate.ListView.view.width
+                        width: parent.width
                         height: 45//65
 
                         Item {

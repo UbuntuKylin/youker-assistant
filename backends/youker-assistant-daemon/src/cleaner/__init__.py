@@ -51,8 +51,74 @@ class OneKeyClean():
         self.objunneed = CleanTheUnneed()
         self.objcache = CleanTheCache()
 
-    def get_user_homedir(self, homedir):
-        self.homedir = homedir
+    def get_onekey_crufts(self, sesobj, mode_list):
+        homedir = common.return_homedir_sesdaemon()
+        crufts_dic = {}
+        total_dic = {}
+        flag_dic = {'history': False, 'cookies': False, 'cache': False}
+        for mode in mode_list:
+            flag_dic['%s' % mode] = True
+
+        if flag_dic['history']:
+            historysize = 0
+            objhg = historyclean.HistoryClean(homedir)
+            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+            if os.path.exists(filepathf):
+                tempf_list = objhg.scan_firefox_history_records(filepathf)
+                for onef in tempf_list:
+                    sesobj.display_scan_process(onef[1])
+                    #sesobj.display_scan_process_msg(onef[1])
+                    historysize += onef[2]
+            filepathc = "%s/.config/chromium/Default/History" % homedir
+            if os.path.exists(filepathc):
+                run = common.process_pid("chromium-browser")
+                if not run:
+                    tempc_list = objhg.scan_chromium_history_records(filepathc)
+                    for onec in tempc_list:
+                        sesobj.display_scan_process(onec[1])
+                        #sesobj.display_scan_process_msg(onec[1])
+                        historysize += onec[2]
+            total_dic['history'] = str(historysize)
+        if flag_dic['cookies']:
+            cookiessize = 0
+            objcg = cookiesclean.CookiesClean(homedir)
+            filepathff = common.analytical_profiles_file(homedir) + "cookies.sqlite"
+            if os.path.exists(filepathff):
+                pamf = [filepathff, 'moz_cookies', 'baseDomain']
+                tempff_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
+                for oneff in tempff_list:
+                    sesobj.display_scan_process(oneff[0])
+                    #sesobj.display_scan_process_msg(oneff[0])
+                    cookiessize += oneff[1]
+            filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
+            if os.path.exists(filepathcc):
+                pamc = [filepathcc, 'cookies', 'host_key']
+                tempcc_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
+                for onecc in tempcc_list:
+                    sesobj.display_scan_process(onecc[0])
+                    #sesobj.display_scan_process_msg(onecc[0])
+                    cookiessize += onecc[1]
+            total_dic['cookies'] = str(cookiessize)
+        if flag_dic['cache']:
+            cachesize = 0
+            objcache = cacheclean.CacheClean()
+            apt_path = "/var/cache/apt/archives"
+            temp_apt_list = objcache.scan_apt_cache(apt_path)
+            for oneapt in temp_apt_list:
+                sesobj.display_scan_process(oneapt)
+                #sesobj.display_scan_process_msg(oneapt)
+                cachesize += os.path.getsize(oneapt)
+            swcenterpath = '%s/.cache/software-center' % homedir
+            temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
+            for oneswcenter in temp_swcenter_list:
+                sesobj.display_scan_process(oneswcenter)
+                #sesobj.display_scan_process_msg(oneswcenter)
+                if os.path.isdir(oneswcenter):
+                    cachesize += common.get_dir_size(oneswcenter)
+                else:
+                    cachesize += os.path.getsize(oneswcenter)
+            total_dic['cache'] = common.confirm_filesize_unit(cachesize)
+        return total_dic
 
     def get_scan_result(self, mode_list):
         global HOMEDIR
@@ -153,9 +219,10 @@ class CleanTheHistory():
         judge_list = []
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + 'places.sqlite'
+            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
             if os.path.exists(filepathf):
-                cruft_list = objhg.scan_firefox_history_records(filepathf)
+                temp_list = objhg.scan_firefox_history_records(filepathf)
+                crufts_list = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in temp_list]
             else:
                 judge_list.append('No')
                 return judge_list
@@ -164,7 +231,8 @@ class CleanTheHistory():
             if os.path.exists(filepathc):
                 run = common.process_pid("chromium-browser")
                 if not run:
-                    cruft_list = objhg.scan_chromium_history_records(filepathc)
+                    temp_list = objhg.scan_chromium_history_records(filepathc)
+                    crufts_list = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in temp_list]
                 else:
                     judge_list.apend('True')
                     return judge_list
@@ -179,7 +247,7 @@ class CleanTheHistory():
         running = False
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + 'places.sqlite'
+            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
             objca.clean_firefox_all_records(filepathf)
         if flag in "chromium":
             run = common.process_pid("chromium-browser")
@@ -248,11 +316,12 @@ class CleanTheCookies():
         crufts_list = []
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
+            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
             if os.path.exists(filepathf):
                 #self.daemon_obj.deb_exists_firefox("yes")
                 pamf = [filepathf, 'moz_cookies', 'baseDomain']
-                crufts_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
+                temp_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
+                crufts_list = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in temp_list]
             else:
                 #self.daemon_obj.deb_exists_firefox("no")
                 crufts_list.append('None')
@@ -262,7 +331,8 @@ class CleanTheCookies():
             if os.path.exists(filepathc):
                 #self.daemon_obj.deb_exists_chromium("yes")
                 pamc = [filepathc, 'cookies', 'host_key']
-                crufts_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
+                temp_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
+                crufts_list = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in temp_list]
             else:
                 #self.daemon_obj.deb_exists_chromium("no")
                 crufts_list.append('None')
@@ -275,7 +345,7 @@ class CleanTheCookies():
         objcc = cookiesclean.CookiesClean(homedir)
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
+            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
             pamf = [filepathf, 'moz_cookies', 'baseDomain', domain]
             objcc.clean_cookies_record(pamf[0], pamf[1], pamf[2], pamf[3])
         if flag in "chromium":
@@ -288,7 +358,7 @@ class CleanTheCookies():
         objcc = cookiesclean.CookiesClean(homedir)
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + '/' + "cookies.sqlite"
+            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
             pamf = [filepathf, 'moz_cookies', 'baseDomain']
             objcc.clean_all_records(pamf[0], pamf[1], pamf[2])
         if flag in "chromium":
@@ -301,7 +371,7 @@ class CleanTheCookies():
         flag = None
         objcc = cookiesclean.CookiesClean(HOMEDIR)
         for cruft in cruftlist:
-            self.sysdaemon.clean_process_main_msg("cleaning %s's cookies" % cruft)
+            #self.sysdaemon.clean_process_main_msg("cleaning %s's cookies" % cruft)
             flag = objcc.clean_the_records(cruft)
 
     def clean_the_cruftlist_for_second(self, cruftlist):
@@ -309,7 +379,7 @@ class CleanTheCookies():
         flag = None
         objcc = cookiesclean.CookiesClean(HOMEDIR)
         for cruft in cruftlist:
-            self.sysdaemon.clean_process_second_msg("cleaning %s's cookies" % cruft)
+            #self.sysdaemon.clean_process_second_msg("cleaning %s's cookies" % cruft)
             flag = objcc.clean_the_records(cruft)
 
     def clean_the_cruftlist(self, cruftlist):
@@ -331,11 +401,13 @@ class CleanTheUnneed():
 # the function of clean old kernel
 class CleanTheOldkernel():
     def __init__(self):
-        self.objc = oldkernel.OldKernel()
+        pass
 
-    def get_scan_result(self):
-        namesize = self.objc.get_old_kernel()
-        return namesize
+    def get_oldkernel_crufts(self):
+        objc = oldkernel.OldKernel()
+        pkgobj_list = objc.scan_oldkernel_package()
+        crufts_list = ["%s<2_2>%s" % (pkg.name, common.confirm_filesize_unit(pkg.installed.size))for pkg in pkgobj_list]
+        return crufts_list
 
 # the function of scan the cache
 class CleanTheCache():
@@ -348,6 +420,26 @@ class CleanTheCache():
         tmp_center_str = '<1_1>'.join(self.objc.get_softwarecenter_cache(homedir))
         result_dic['apt'] = tmp_apt_str
         result_dic['softwarecenter'] = tmp_center_str
+        return result_dic
+
+    def get_cache_crufts(self):
+        result_dic = {}
+        apt_path = '/var/cache/apt/archives'
+        temp_apt_list = self.objc.scan_apt_cache(apt_path)
+        apt_and_size = ['%s<2_2>%s' % (filepath, common.confirm_filesize_unit(os.path.getsize(filepath))) for filepath in temp_apt_list]
+        result_dic['apt'] = '<1_1>'.join(apt_and_size)
+
+        homedir = common.return_homedir_sesdaemon()
+        swcenterpath = '%s/.cache/software-center' % homedir
+        temp_swcenter_list = self.objc.public_scan_cache(swcenterpath)
+        swcenter_and_size = []
+        for line in temp_swcenter_list:
+            if os.path.isdir(line):
+                swcenter_and_size.append('%s<2_2>%s' % (line, common.confirm_filesize_unit(common.get_dir_size(line))))
+            else:
+                swcenter_and_size.append('%s<2_2>%s' % (line, common.confirm_filesize_unit(os.path.getsize(line))))
+        result_dic['softwarecenter'] = '<1_1>'.join(swcenter_and_size)
+
         return result_dic
 
 # the function of clean cruft files and cruft packages

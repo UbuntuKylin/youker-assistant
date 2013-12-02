@@ -69,6 +69,11 @@ Rectangle {
             else if (flag == "WeatherPreference") {
                 sessiondispatcher.showWizardController();
             }
+            //view details of system information
+            else if (flag == "details") {
+                pageStack.push(detailinformation);
+            }
+
             //bbs help
             else if (flag == "BBS") {
                 Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");

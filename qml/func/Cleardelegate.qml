@@ -107,7 +107,7 @@ Item {
                             heightMark=0;
                         }
                         else if(heightMark==0){
-                            if(sub_num>0){                //子项下拉显示时，根据总checkbox状态进行赋值控制
+                            if(sub_num>0){//子项下拉显示时，根据总checkbox状态进行赋值控制
                                 if(check.checked=="true")
                                 {
                                     check.checkedbool=true;
@@ -180,10 +180,12 @@ Item {
                             else
                                 check.checked="mid";
                         }
-                        if(check.checked=="true"||listViewDelegate.check_num>0)   //根据是否有勾选项给清理页面传值判断是否能进行清理工作
+                        if(check.checked == "true" || listViewDelegate.check_num > 0) {   //根据是否有勾选项给清理页面传值判断是否能进行清理工作
                             listViewDelegate.checkchanged(true);
-                        else
+                        }
+                        else {
                             listViewDelegate.checkchanged(false);
+                        }
                     }
                 }
             }

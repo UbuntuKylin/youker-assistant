@@ -37,6 +37,7 @@ from server import PolicyKitService
 from policykit import UK_ACTION_YOUKER
 import time
 import cleaner
+from detailinfo.cpuinfo import DetailInfo
 from beautify.sound import Sound
 from beautify.others import Others
 from appcollections.monitorball.monitor_ball import MonitorBall
@@ -48,6 +49,7 @@ UKPATH = '/'
 
 class Daemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
+        self.infoconf = DetailInfo()
         self.otherconf = Others()
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
@@ -59,6 +61,7 @@ class Daemon(PolicyKitService):
         self.daemoncache = cleaner.CleanTheCache()
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, UKPATH)
+        self.infoconf.get_sys_msg()
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
@@ -80,6 +83,34 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
         return "SystemDaemon"
+
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    #def get_detail_system_message(self):
+    #    return self.infoconf.get_sys_msg()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_computer_info(self):
+        return self.infoconf.get_computer()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_cpu_info(self):
+        return self.infoconf.get_cpu()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_board_info(self):
+        return self.infoconf.get_board()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_memory_info(self):
+        return self.infoconf.get_memory()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_monitor_info(self):
+        return self.infoconf.get_monitor()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_time_value(self):
+        return self.infoconf.uptimeinfo()
 
     # judge ubuntukylin source is in /etc/apt/sources.list or not
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
@@ -354,11 +385,11 @@ class Daemon(PolicyKitService):
             return
         daemonhistory = cleaner.CleanTheHistory(None)
         try:
-            daemonhistory.clean_all_history_crufts(flag)
+            running = daemonhistory.clean_all_history_crufts(flag)
         except Exception, e:
-            self.clean_error_msg('history')
+            self.clean_error_msg(flag)
         else:
-            self.clean_complete_msg('history')
+            self.clean_complete_msg(flag)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_system_history(self, sender=None):
@@ -427,9 +458,9 @@ class Daemon(PolicyKitService):
         try:
             daemoncookies.clean_all_cookies_crufts(flag)
         except Exception, e:
-            self.clean_error_msg('cookies')
+            self.clean_error_msg(flag)
         else:
-            self.clean_complete_msg('cookies')
+            self.clean_complete_msg(flag)
 
     # the function of clean files
     ### input-['filepath', 'file...]   output-''

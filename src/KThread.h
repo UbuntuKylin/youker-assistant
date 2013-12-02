@@ -1,5 +1,3 @@
-#ifndef KTHREAD_H
-#define KTHREAD_H
 /*
  * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
@@ -15,6 +13,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#ifndef KTHREAD_H
+#define KTHREAD_H
+
 #include <QThread>
 #include <QObject>
 #include <QApplication>

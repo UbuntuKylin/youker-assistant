@@ -1,10 +1,17 @@
-用源码运行优客助手说明：
-1、如果安装了优客助手deb包，则可以用QtCreator打开工程，直接运行。
-2、如果没有安装优客助手:
-(1):需要安装相应的依赖包
- debhelper (>= 9), dh-translations, libphonon-dev, libqt4-dev, fcitx-libs-dev, pkg-config, python (>= 2.6.6-3~), qt4-default, qtchooser， phonon-backend-gstreamer, python-dbus, python-psutil
+Youker Assistant 
 
-(2):手动拷贝下面的文件到对应的路径下面
+Attention
+=========
+It supports saucy and trusty, but does not support raring.
+
+Depends
+=======
+debhelper (>= 9), dh-translations, libphonon-dev, phonon-dev, libqt4-dev, fcitx-libs-dev, pkg-config, python (>= 2.6.6-3~), qt4-default, qtchooser， phonon-backend-gstreamer, python-dbus, python-psutil
+
+Attention with IDE
+==================
+1、delete 'lib' in line "SUBDIRS += src qml backends lib"
+2、copy files:
 qml/applist.ini   ->  /usr/share/youker-assistant/qml/
 backends/youker-assistant-daemon/data/youkersystem   ->  /usr/bin
 backends/youker-assistant-daemon/data/youkersession   ->  /usr/bin

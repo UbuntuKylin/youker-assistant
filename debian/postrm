@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ "$1" = "purge" ] ; then
+    rm -rf /usr/share/youker-assistant-daemon/
+fi

@@ -56,6 +56,11 @@ WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
     newCityId = "";
 
     ui->btn_close->installEventFilter(this);
+    ui->spinBox->installEventFilter(this);
+    ui->quitBtn->installEventFilter(this);
+    ui->okBtn->installEventFilter(this);
+    ui->addBtn->installEventFilter(this);
+    ui->delBtn->installEventFilter(this);
     ui->spinBox->setRange(0, 60);
     ui->spinBox->setSingleStep(5);
 
@@ -199,8 +204,19 @@ bool WizardDialog::eventFilter(QObject *obj, QEvent *event) {
             } else {
                 return QObject::eventFilter(obj, event);
             }
+    }
+    if(obj == ui->spinBox || obj == ui->quitBtn || obj == ui->okBtn || obj == ui->addBtn || obj == ui->delBtn)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *me = (QMouseEvent *)event;
+            dragPos = me->globalPos() - frameGeometry().topLeft();
+        }else if(event->type() == QEvent::MouseButtonRelease)
+        {
+            setWindowOpacity(1);
         }
-        return QObject::eventFilter(obj, event);
+    }
+    return QObject::eventFilter(obj, event);
 }
 
 void WizardDialog::mousePressEvent(QMouseEvent *event) {
@@ -215,10 +231,9 @@ void WizardDialog::mouseMoveEvent(QMouseEvent *event) {
     if (event->buttons() & Qt::LeftButton )
     {
         move(event->globalPos() - dragPos);
-        setWindowOpacity(0.9);
+        setWindowOpacity(1);//0.9
     }
     event->accept();
-
 }
 
 void WizardDialog::mouseReleaseEvent(QMouseEvent *event) {

@@ -211,8 +211,13 @@ public:
     Q_INVOKABLE void write_default_configure_to_qsetting_file(QString key, QString name, QString value);
     //从Qsetting配置文件中读取系统启动时的默认配置
     Q_INVOKABLE QString read_default_configure_from_qsetting_file(QString key, QString name);
+
+
+    //一键清理扫描
+    Q_INVOKABLE void onekey_scan_function_qt(QStringList selectedList);
 signals:
     void finishScanWork(QString msg);
+    void isScanning(QString msg);
 
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
@@ -231,6 +236,8 @@ signals:
 public slots:
     //扫描完成槽函数
     void handler_scan_complete(QString msg);
+    //扫描过程的函数
+    void handler_scan_process(QString msg);
 
     void handler_change_skin(QString skinName);
     //更换城市槽函数
