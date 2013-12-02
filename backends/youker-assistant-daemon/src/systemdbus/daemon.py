@@ -371,6 +371,19 @@ class Daemon(PolicyKitService):
     #            self.clean_error_msg_trace('s')
     #        else:
     #            self.clean_complete_msg_trace('s')
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def onekey_clean_crufts_function(self, mode_list, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.clean_complete_msg('')
+            return
+        daemononekey = cleaner.OneKeyClean()
+        try:
+            daemononekey.clean_all_onekey_crufts(self, mode_list)
+        except Exception, e:
+            self.clean_error_msg('onekey')
+        else:
+            self.clean_complete_msg('onekey')
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_history_records(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)

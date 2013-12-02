@@ -120,6 +120,42 @@ class OneKeyClean():
             total_dic['cache'] = common.confirm_filesize_unit(cachesize)
         return total_dic
 
+    def clean_all_onekey_crufts(self, sysobj, mode_list):
+        homedir = return_homedir_sysdaemon()
+        flag_dic = {'history': False, 'cookies': False, 'cache': False}
+        for mode in mode_list:
+            flag_dic['%s' % mode] = True
+        if flag_dic['history']:
+            objca = historyclean.HistoryClean(homedir)
+            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+            objca.clean_firefox_all_records(filepathf)
+
+            run = common.process_pid("chromium-browser")
+            if not run:
+                filepathc = "%s/.config/chromium/Default/History" % homedir
+                objca.clean_chromium_all_records(filepathc)
+
+        if flag_dic['cookies']:
+            objcc = cookiesclean.CookiesClean(homedir)
+            filepathfc = common.analytical_profiles_file(homedir) + 'cookies.sqlite'
+            pamfc = [filepathfc, 'moz_cookies', 'baseDomain']
+            objcc.clean_all_records(pamfc[0], pamfc[1], pamfc[2])
+            filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
+            pamcc = [filepathcc, 'cookies', 'host_key']
+            objcc.clean_all_records(pamcc[0], pamcc[1], pamcc[2])
+
+        if flag_dic['cache']:
+            objclean = FunctionOfClean(sysobj)
+            objcache = cacheclean.CacheClean()
+            apt_path = "/var/cache/apt/archives"
+            temp_apt_list = objcache.scan_apt_cache(apt_path)
+            objclean.clean_the_file(temp_apt_list)
+
+            swcenterpath = '%s/.cache/software-center' % homedir
+            temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
+            objclean.clean_the_file(temp_swcenter_list)
+
+
     def get_scan_result(self, mode_list):
         global HOMEDIR
         result_dic = {}
