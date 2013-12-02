@@ -38,7 +38,7 @@ public:
     //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_session_daemon_qt();
     //扫描浏览器历史记录
-    Q_INVOKABLE int scan_history_records_qt();
+    Q_INVOKABLE int scan_history_records_qt(QString flag);
     //扫描系统最近打开文件的历史记录
     Q_INVOKABLE int scan_system_history_qt();
     //扫描Dash历史记录
@@ -205,8 +205,15 @@ public:
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);
 
-    Q_INVOKABLE void tellNullToListTitle(QString emptyFlag, bool status);//BrowserCookies中扫描内容为空时，告诉ListTitle.qml
+//    Q_INVOKABLE void tellNullToListTitle(QString emptyFlag, bool status);//BrowserCookies中扫描内容为空时，告诉ListTitle.qml
+
+    //把优客助手运行时，系统的默认配置写到配置文件
+    Q_INVOKABLE void write_default_configure_to_qsetting_file(QString key, QString name, QString value);
+    //从Qsetting配置文件中读取系统启动时的默认配置
+    Q_INVOKABLE QString read_default_configure_from_qsetting_file(QString key, QString name);
 signals:
+    void finishScanWork(QString msg);
+
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
     void startChangeQMLCity();//发送开始更换QML城市
@@ -215,13 +222,25 @@ signals:
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
     //BrowserCookies中扫描内容为空时，告诉ListTitle.qml
-    void getNullFlag(QString emptyFlag, bool status);
+//    void getNullFlag(QString emptyFlag, bool status);
+
+//    //判断是否有firefox浏览器
+//    void judge_deb_exists_firefox(QString flag);
+//    //判断是否有chromium浏览器
+//    void judge_deb_exists_chromium(QString flag);
 public slots:
+    //扫描完成槽函数
+    void handler_scan_complete(QString msg);
+
     void handler_change_skin(QString skinName);
     //更换城市槽函数
     void handler_change_city();
     //更换自动更新天气周期槽函数
     void handler_change_rate(int rate);
+//    //判断是否有firefox浏览器
+//    void handler_deb_exists_firefox(QString flag);
+//    //判断是否有chromium浏览器
+//    void handler_deb_exists_chromium(QString flag);
 
 private:
     int mainwindow_width;

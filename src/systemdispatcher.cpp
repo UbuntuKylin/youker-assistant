@@ -21,8 +21,8 @@
 #include <QObject>
 #include <QString>
 #include <QFileDialog>
-#include "authdialog.h"
 #include "KThread.h"
+#include "sourcedialog.h"
 
 extern QString music_path;
 
@@ -34,6 +34,8 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                "com.ubuntukylin_tools.daemon",
                                QDBusConnection::systemBus());
     //绑定到底层清理完毕后发送到信号函数clear_browser
+    QObject::connect(systemiface,SIGNAL(clean_single_complete(QString)),this,SLOT(handler_clear_single_rubbish(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_single_error(QString)),this,SLOT(handler_clear_single_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
@@ -48,17 +50,44 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     onekey_args2 << "cache" << "history" << "cookies";
     tmplist << "Kobe" << "Lee";
 
+    this->mainwindow_width = 850;
+    this->mainwindow_height = 600;
+    this->alert_width = 292;
+    this->alert_width_bg = 329;
+    this->alert_height = 54;
+
+//    mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
+//    mSettings->setIniCodec("UTF-8");
+
     //判断是否添加了源
-    add_source_ubuntukylin_qt();
+//    add_source_ubuntukylin_qt();
 }
 
 SystemDispatcher::~SystemDispatcher() {
+//    mSettings->sync();
+//    if (mSettings != NULL)
+//        delete mSettings;
     this->exit_qt();
 }
 
-void SystemDispatcher::add_source_ubuntukylin_qt() {
-    QString version = readOSVersion();
-    systemiface->call("add_source_ubuntukylin", version);
+//void SystemDispatcher::write_source_to_qsetting() {
+//    mSettings->beginGroup("sourcelist");
+//    mSettings->setValue("ubuntukylin", true);
+//    mSettings->endGroup();
+//    mSettings->sync();
+//}
+
+//bool SystemDispatcher::read_source_from_qsetting() {
+//    mSettings->beginGroup("sourcelist");
+//    bool flag = mSettings->value("ubuntukylin").toBool();
+//    mSettings->endGroup();
+//    mSettings->sync();
+//    return flag;
+//}
+
+bool SystemDispatcher::judge_source_ubuntukylin_qt() {
+    QDBusReply<bool> reply = systemiface->call("judge_source_ubuntukylin");
+    return reply.value();
 }
 
 QString SystemDispatcher::readOSVersion() {
@@ -79,6 +108,21 @@ QString SystemDispatcher::readOSVersion() {
         lsbFile.close();
     }
     return "raring";
+}
+
+void SystemDispatcher::add_source_ubuntukylin_qt() {
+    QString version = readOSVersion();
+    systemiface->call("add_source_ubuntukylin", version);
+}
+
+void SystemDispatcher::showAddSourceList(int window_x, int window_y) {
+    //弹出添加软件源的对话框
+    SourceDialog *sourceDialog = new SourceDialog;
+    connect(sourceDialog, SIGNAL(addList()), this, SLOT(add_source_ubuntukylin_qt()));
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    sourceDialog->move(this->alert_x, this->alert_y);
+    sourceDialog->exec();
 }
 
 void SystemDispatcher::handler_clear_rubbish_error(QString msg) {
@@ -123,6 +167,14 @@ bool SystemDispatcher::get_history_flag() {
 
 void SystemDispatcher::handler_clear_rubbish(QString msg) {
      emit finishCleanWork(msg);
+}
+
+void SystemDispatcher::handler_clear_single_rubbish(QString msg) {
+    emit finishCleanSingleWork(msg);
+}
+
+void SystemDispatcher::handler_clear_single_rubbish_error(QString msg) {
+    emit finishCleanSingleWorkError(msg);
 }
 
 void SystemDispatcher::handler_clear_rubbish_main_onekey(QString msg) {
@@ -202,11 +254,13 @@ void SystemDispatcher::plymouth_init_check_qt() {
 
 QString SystemDispatcher::showSelectFileDialog(QString flag) {
     if (flag == "bootanimation") {
-        QString bootfileName = QFileDialog::getOpenFileName(0, tr("选择开机动画"), "", tr("Image Files (*.png)"));
+        //选择开机动画
+        QString bootfileName = QFileDialog::getOpenFileName(0, tr("choose boot animation"), "", tr("Image Files (*.png)"));
         return bootfileName;
     }
     else if (flag == "soundeffects") {
-        QString musicfileName = QFileDialog::getOpenFileName(0, tr("选择音乐"), "", tr("Music Files (*.ogg *.wav *.mp3 *.wma)"));
+        //选择音乐
+        QString musicfileName = QFileDialog::getOpenFileName(0, tr("choose music"), "", tr("Music Files (*.ogg *.wav *.mp3 *.wma)"));
         return musicfileName;
     }
     else {
@@ -214,8 +268,9 @@ QString SystemDispatcher::showSelectFileDialog(QString flag) {
     }
 }
 
-void SystemDispatcher::clean_history_records_qt() {
-    KThread *thread = new KThread(tmplist, systemiface, "clean_history_records");
+void SystemDispatcher::clean_history_records_qt(QString flag) {
+//    KThread *thread = new KThread(tmplist, systemiface, "clean_history_records");
+    KThread *thread = new KThread(tmplist, systemiface, "history_clean_records_function", flag);
     thread->start();
 }
 
@@ -242,6 +297,7 @@ void SystemDispatcher::cookies_clean_record_function_qt(QString flag, QString we
 }
 
 void SystemDispatcher::cookies_clean_records_function_qt(QString flag) {
+    qDebug() << "lixiang222";
     KThread *thread = new KThread(tmplist, systemiface, "cookies_clean_records_function", flag);
     thread->start();
 }

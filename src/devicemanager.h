@@ -14,20 +14,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 1.1
-Rectangle {
-    id: masklayer
-    width: parent.width; height: 475
-    color: "gray"
-    //背景
-//    Image {
-//        source: "../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
-    AnimatedImage {
-        width: 16
-        height: 16
-        source: "../../img/icons/move.gif"
-        anchors.centerIn: parent
-    }
-}
+#ifndef DEVICEMANAGER_H
+#define DEVICEMANAGER_H
+
+#include <QObject>
+#include <QDebug>
+#include <QProcess>
+#include "yprocess.h"
+#include "util.h"
+#include <QMap>
+#include <QFile>
+
+class DeviceManager : public QObject
+{
+    Q_OBJECT
+public:
+    explicit DeviceManager(QObject *parent = 0);
+
+    //得到硬件设备及其驱动信息
+    QStringList getDeviceMsg();
+    
+signals:
+    
+public slots:
+    
+};
+
+#endif // DEVICEMANAGER_H

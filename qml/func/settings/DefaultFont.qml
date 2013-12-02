@@ -23,6 +23,7 @@ Rectangle {
     property bool on: true
     width: parent.width
     height: 475
+
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
@@ -31,32 +32,43 @@ Rectangle {
     property string desktop_font: "Helvetica"
     property string monospace_font: "Helvetica"
     property double zoom: 1.0
-    property bool current_font_flag: false
-    property bool desktop_font_flag: false
-    property bool monospace_font_flag: false
-    property bool zoom_flag: false
-    property string actiontitle: "默认字体设置"
-    property string actiontext: "根据您的喜好设置系统默认字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
+
+    property string selected_current_font: ""//存放用户选择确认后的当前字体
+    property string selected_desktop_font: ""//存放用户选择确认后的桌面字体
+    property string selected_monospace_font: ""//存放用户选择确认后的等宽字体
+    property double selected_zoom //存放用户选择确认后的缩放值
+
+    property string actiontitle: qsTr("Default font settings")//默认字体设置
+    property string actiontext: qsTr("According to your preferences to set the system default font , click the default settings button, can revert the corresponding font to the default font.")//根据您的喜好设置系统默认字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
     Component.onCompleted: {
-        defaultfontpage.current_font_flag = false;
-        defaultfontpage.desktop_font_flag = false;
-        defaultfontpage.monospace_font_flag = false;
-        defaultfontpage.zoom_flag = false;
-
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
-        defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
-        defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
-        defaultfontpage.zoom = sessiondispatcher.get_font_zoom_qt();
+        defaultfontpage.selected_current_font = defaultfontpage.current_font;
+        //将系统初始的当前字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "currentfont", defaultfontpage.current_font);
 
-        if (sessiondispatcher.get_desktop_font_qt() == "") {
+        defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
+        if (defaultfontpage.desktop_font == "") {
             sessiondispatcher.set_desktop_font_qt_default();
             defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         }
+        defaultfontpage.selected_desktop_font = defaultfontpage.desktop_font;
+        //将系统初始的当前桌面字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "desktopfont", defaultfontpage.desktop_font);
+
+        defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
+        defaultfontpage.selected_monospace_font = defaultfontpage.monospace_font;
+        //将系统初始的当前等宽字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "monospacefont", defaultfontpage.monospace_font);
+
+        defaultfontpage.zoom = sessiondispatcher.get_font_zoom_qt();
+        defaultfontpage.selected_zoom = defaultfontpage.zoom;
+        //将系统初始的全局字体缩放写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "zoom", defaultfontpage.zoom);
     }
 
     Connections
@@ -64,29 +76,29 @@ Rectangle {
         target: sessiondispatcher
         onNotifyFontStyleToQML: {
             if (font_style == "font") {
-                defaultfontpage.current_font_flag = true;
                 sysfont.text = sessiondispatcher.get_font_qt();
+                defaultfontpage.selected_current_font = sysfont.text;
             }
             else if (font_style == "desktopfont") {
-                defaultfontpage.desktop_font_flag = true;
                 desktopfont.text = sessiondispatcher.get_desktop_font_qt();
+                defaultfontpage.selected_desktop_font = desktopfont.text;
             }
             else if (font_style == "monospacefont") {
-                defaultfontpage.monospace_font_flag = true;
                 monofont.text = sessiondispatcher.get_monospace_font_qt();
+                defaultfontpage.selected_monospace_font = monofont.text;
             }
 
             else if (font_style == "font_default") {
-                defaultfontpage.current_font_flag = false;
                 sysfont.text = sessiondispatcher.get_font_qt();
+                defaultfontpage.selected_current_font = sysfont.text;
             }
             else if (font_style == "desktopfont_default") {
-                defaultfontpage.desktop_font_flag = false;
-                desktopfont.text = sessiondispatcher.get_desktop_font_qt()
+                desktopfont.text = sessiondispatcher.get_desktop_font_qt();
+                defaultfontpage.selected_desktop_font = desktopfont.text;
             }
             else if (font_style == "monospacefont_default") {
-                defaultfontpage.monospace_font_flag = false;
                 monofont.text = sessiondispatcher.get_monospace_font_qt();
+                defaultfontpage.selected_monospace_font = monofont.text;
             }
         }
     }
@@ -106,17 +118,18 @@ Rectangle {
                  color: "#383838"
              }
             //status picture
-            Image {
+            Common.StatusImage {
                 id: statusImage
                 visible: false
-                source: "../../img/toolWidget/finish.png"
-                fillMode: "PreserveAspectFit"
-                smooth: true
+                iconName: "green.png"
+                text: qsTr("Completed")//已完成
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
          Text {
+             width: defaultfontpage.width - 80 - 20
              text: defaultfontpage.actiontext
+             wrapMode: Text.WordWrap
              font.pixelSize: 12
              color: "#7a7a7a"
          }
@@ -132,15 +145,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
-            text: "字体设置"
+            id: fonttitle
+            text: qsTr("Font settings")//字体设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: defaultfontpage.width - fonttitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -165,7 +179,7 @@ Rectangle {
                 Common.Label {
                     id: fontslabel
                     width: 130
-                    text: "当前字体:"
+                    text: qsTr("Current font:")//当前字体:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -173,7 +187,6 @@ Rectangle {
                 Text {
                     id: sysfont
                     text: sessiondispatcher.get_font_qt()
-        //                text: defaultfontpage.current_font
                     width: 200
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -187,25 +200,28 @@ Rectangle {
                     id: fontBtn
                     hoverimage: "blue4.png"
                     fontcolor: "#086794"
-                    text: "更换字体"
+                    text: qsTr("Change font")//更换字体
                     width: 105
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("font");
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "恢复默认"
+                    text: qsTr("Restore default")//恢复默认
                     width: 105
                     height: 30
                     onClicked: {
-                        if(defaultfontpage.current_font_flag == true) {
-    //                        defaultfontpage.current_font_flag = false;
-                            sessiondispatcher.set_font_qt_default(defaultfontpage.current_font);
+                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "currentfont");
+                        if(defaultfont == defaultfontpage.selected_current_font) {
+                            //友情提示：    您系统的当前字体已经为默认字体！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
+                        else {
+                            sessiondispatcher.set_font_qt_default(defaultfont);
+                            defaultfontpage.selected_current_font = defaultfont;
                             sessiondispatcher.restore_default_font_signal("font_default");
                             statusImage.visible = true;
                         }
-                        else
-                            sessiondispatcher.showWarningDialog("友情提示：", "您系统的当前字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -218,7 +234,7 @@ Rectangle {
                 Common.Label {
                     id: desktopfontlabel
                     width: 130
-                    text: "当前桌面字体:"
+                    text: qsTr("Current desktop font:")//当前桌面字体:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -238,7 +254,7 @@ Rectangle {
                 Common.Button {
                     id: desktopfontBtn
                     hoverimage: "blue4.png"
-                    text: "更换字体"
+                    text: qsTr("Change font")//更换字体
                     fontcolor: "#086794"
                     width: 105
                     height: 30
@@ -246,18 +262,21 @@ Rectangle {
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "恢复默认"
+                    text: qsTr("Restore default")//恢复默认
                     width: 105
                     height: 30
                     onClicked: {
-                        if(defaultfontpage.desktop_font_flag == true) {
-    //                        defaultfontpage.desktop_font_flag = false;
-                            sessiondispatcher.set_desktop_font_qt_default(defaultfontpage.desktop_font);
+                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "desktopfont");
+                        if(defaultfont == defaultfontpage.selected_desktop_font) {
+                            //友情提示： 您系统的当前桌面字体已经为默认字体！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current desktop font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
+                        else {
+                            sessiondispatcher.set_desktop_font_qt_default(defaultfont);
+                            defaultfontpage.selected_desktop_font = defaultfont;
                             sessiondispatcher.restore_default_font_signal("desktopfont_default");
                             statusImage.visible = true;
                         }
-                        else
-                            sessiondispatcher.showWarningDialog("友情提示：","您系统的当前桌面字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -270,7 +289,7 @@ Rectangle {
                 Common.Label {
                     id: monospacefontlabel
                     width: 130
-                    text: "当前等宽字体:"  //monospace
+                    text: qsTr("Current monospace font:")  //monospace   当前等宽字体:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -290,7 +309,7 @@ Rectangle {
                 Common.Button {
                     id: monofontBtn
                     hoverimage: "blue4.png"
-                    text: "更换字体"
+                    text: qsTr("Change font")//更换字体
                     fontcolor: "#086794"
                     width: 105
                     height: 30
@@ -298,18 +317,21 @@ Rectangle {
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: "恢复默认"
+                    text: qsTr("Restore default")//恢复默认
                     width: 105
                     height: 30
                     onClicked: {
-                        if(defaultfontpage.monospace_font_flag == true) {
-    //                        defaultfontpage.monospace_font_flag = false;
-                            sessiondispatcher.set_monospace_font_qt_default(defaultfontpage.monospace_font);
+                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "monospacefont");
+                        if(defaultfont == defaultfontpage.selected_monospace_font) {
+                            //友情提示： 您系统的当前等宽字体已经为默认字体！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's current monospace font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
+                        else {
+                            sessiondispatcher.set_monospace_font_qt_default(defaultfont);
+                            defaultfontpage.selected_monospace_font = defaultfont;
                             sessiondispatcher.restore_default_font_signal("monospacefont_default");
                             statusImage.visible = true;
                         }
-                        else
-                            sessiondispatcher.showWarningDialog("友情提示：","您系统的当前等宽字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }
@@ -317,27 +339,24 @@ Rectangle {
 
     }//Column
 
-
-
-
-
     Row {
-        id: zoomtitle
+        id: zoomrow
         anchors{
             left: parent.left
             leftMargin: 40
             top: fontcolumn.bottom
             topMargin: 30
         }
-        spacing: 5
         Text{
-            text: "缩放设置"
+            id: zoomtitle
+            text: qsTr("Zoom settings")//缩放设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: defaultfontpage.width - zoomtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -347,7 +366,7 @@ Rectangle {
         anchors{
             left: parent.left
             leftMargin: 80
-            top: zoomtitle.bottom
+            top: zoomrow.bottom
             topMargin: 10
         }
         spacing: 185
@@ -355,7 +374,7 @@ Rectangle {
             Common.Label {
                 id: fontzoomlabel
                 width: 130
-                text: "全局字体缩放:"
+                text: qsTr("Global font scaling:")//全局字体缩放:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -383,28 +402,30 @@ Rectangle {
                 id: okBtn
                 width: 105;height: 30
                 hoverimage: "green2.png"
-                text: "确定"
+                text: qsTr("OK")//确定
                 onClicked: {
                     sessiondispatcher.set_font_zoom_qt(slider.value);
+                    defaultfontpage.selected_zoom = slider.value;
                     statusImage.visible = true;
-                    if (defaultfontpage.zoom != sessiondispatcher.get_font_zoom_qt())
-                        defaultfontpage.zoom_flag = true
                 }
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "恢复默认"
+                text: qsTr("Restore default")//恢复默认
                 width: 105
                 height: 30
                 onClicked: {
-                    if(defaultfontpage.zoom_flag == true) {
-                        defaultfontpage.zoom_flag = false;
-                        sessiondispatcher.set_font_zoom_qt(defaultfontpage.zoom);
-                        slider.value = defaultfontpage.zoom;
+                    var defaultvalue = sessiondispatcher.read_default_configure_from_qsetting_file("font", "zoom");
+                    if(defaultvalue == defaultfontpage.selected_zoom) {
+                        //友情提示：       您系统的全局字体缩放已经为默认设置！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current global font scaling is the default!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
+                    else {
+                        sessiondispatcher.set_font_zoom_qt(defaultvalue);
+                        defaultfontpage.selected_zoom = defaultvalue;
+                        slider.value = defaultvalue;
                         statusImage.visible = true;
                     }
-                    else
-                        sessiondispatcher.showWarningDialog("友情提示：", "您系统的全局字体缩放已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
         }

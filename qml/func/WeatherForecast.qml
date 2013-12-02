@@ -22,14 +22,15 @@ Item {
     Rectangle {
         id: weather_widget
         anchors.fill: parent
-        property string actiontitle: "未来六天天气预报"
-        property string actiontext: "获取中国气象局的六天天气预报数据，为用户出行提供参考。"
+        property string actiontitle: qsTr("Forecast in the coming 6 days.")//未来六天天气预报
+        property string actiontext: qsTr("Access to the China Meteorological Administration six days weather data, provide travel information for users.")//获取中国气象局的六天天气预报数据，为用户出行提供参考。
 
         //设置六天天气预报数据显示在QML界面上
         function initWeatherForcast() {
-            var dayNames = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+            //("星期日"),("星期一"),("星期二"),("星期三"),("星期四"),("星期五"),("星期六")
+            var dayNames = new Array(qsTr("Sunday"),qsTr("Monday"),qsTr("Tuesday"),qsTr("Wednesday"),qsTr("Thursday"),qsTr("Friday"),qsTr("Saturday"));
             var Stamp = new Date();
-            var dateTime = (Stamp.getMonth() + 1) +"月"+Stamp.getDate()+ "日";
+            var dateTime = (Stamp.getMonth() + 1) +"月" +Stamp.getDate()+ "日";
             var num = Stamp.getDay();
             week1.text = dateTime + " " + dayNames[num];
             var alterNum;
@@ -77,7 +78,8 @@ Item {
             }
 
             var updateTime = sessiondispatcher.getSingleWeatherInfo("fchh", "forecast");
-            weather_widget.actiontitle = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "未来六天天气预报" + "，预报时间：" + sessiondispatcher.getSingleWeatherInfo("date_y", "forecast") + updateTime + "时";
+            //未来六天天气预报，预报时间：          时
+            weather_widget.actiontitle = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + qsTr("Forecast in the coming 6 days, the forecast time is：") + sessiondispatcher.getSingleWeatherInfo("date_y", "forecast") + updateTime + qsTr("hour");
             //将字符串类型的时间转成整形
             var updateIntTime = parseInt(updateTime, 10);
             if(updateIntTime >= 6 && updateIntTime < 18) {
@@ -363,7 +365,7 @@ Item {
                     spacing: 5
                     Text {
                         id: week1
-                        text: "星期一"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Row {
@@ -379,17 +381,17 @@ Item {
                     }
                     Text {
                         id: temp1
-                        text: "17-13"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: weather1
-                        text: "晴"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: wind1
-                        text: "北风三级"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
@@ -398,7 +400,7 @@ Item {
                     spacing: 5
                     Text {
                         id: week2
-                        text: "星期二"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Row {
@@ -414,17 +416,17 @@ Item {
                     }
                     Text {
                         id: temp2
-                        text: "17-13"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: weather2
-                        text: "晴"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: wind2
-                        text: "北风三级"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
@@ -433,7 +435,7 @@ Item {
                     spacing: 5
                     Text {
                         id: week3
-                        text: "星期三"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Row {
@@ -449,17 +451,17 @@ Item {
                     }
                     Text {
                         id: temp3
-                        text: "17-13"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: weather3
-                        text: "晴"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: wind3
-                        text: "北风三级"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
@@ -471,7 +473,7 @@ Item {
                     spacing: 5
                     Text {
                         id: week4
-                        text: "星期四"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Row {
@@ -487,17 +489,17 @@ Item {
                     }
                     Text {
                         id: temp4
-                        text: "17-13"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: weather4
-                        text: "晴"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: wind4
-                        text: "北风三级"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
@@ -506,7 +508,7 @@ Item {
                     spacing: 5
                     Text {
                         id: week5
-                        text: "星期五"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Row {
@@ -522,17 +524,17 @@ Item {
                     }
                     Text {
                         id: temp5
-                        text: "17-13"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: weather5
-                        text: "晴"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: wind5
-                        text: "北风三级"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
@@ -542,7 +544,7 @@ Item {
                     spacing: 5
                     Text {
                         id: week6
-                        text: "星期六"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Row {
@@ -558,17 +560,17 @@ Item {
                     }
                     Text {
                         id: temp6
-                        text: "17-13"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: weather6
-                        text: "晴"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
                         id: wind6
-                        text: "北风三级"
+                        text: ""
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }

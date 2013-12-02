@@ -32,22 +32,22 @@ Item {
         id: tabs
         width: parent.width; height: 435
 
-        Common.Tab {
-            title: qsTr("一键清理")           
+        Common.TabPage {
+            title: qsTr("A key to clean up")//一键清理
             anchors.fill: parent
             FastclearModel {
                 id: fastitem
             }
         }
         Common.TabPage {
-            title:qsTr("包管理缓存")
+            title:qsTr("Deb cache")//包管理缓存
             anchors.fill: parent
             AptCruft{
                id: aptitem
            }
         }
         Common.TabPage {
-            title:qsTr("软件中心缓存")
+            title:qsTr("Software cache")//软件中心缓存
             anchors.fill: parent
             SoftwareCruft {
                 id: softwareitem
@@ -55,28 +55,28 @@ Item {
 
         }
         Common.TabPage {
-            title:qsTr("历史记录")
+            title:qsTr("Historical records")//历史记录
             anchors.fill: parent
             BrowserHistroy {
                 id: historyitem
             }
         }
         Common.TabPage {
-            title:qsTr("Cookies")
+            title:qsTr("Cookies")//Cookies
             anchors.fill: parent
             BrowserCookies {
                 id: cookiesitem
             }
         }
         Common.TabPage {
-            title:qsTr("包卸载")
+            title:qsTr("Deb uninstalled")//包卸载
             anchors.fill: parent
             PackageModel {
                 id: packagemodel
             }
         }
         Common.TabPage{
-            title:qsTr("大文件清理")
+            title:qsTr("Clean LargeFile ")//大文件清理
             anchors.fill: parent
             LargestFile {
                 id: largestitem

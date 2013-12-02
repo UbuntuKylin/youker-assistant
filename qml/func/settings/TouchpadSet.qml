@@ -29,8 +29,8 @@ Rectangle {
     property color fontColor: "black"
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
-    property string actiontitle: "触摸板设置"
-    property string actiontext: "通过调整您触摸板的相关设置，使操作更加便捷。"
+    property string actiontitle: qsTr("Touchpad settings")//触摸板设置
+    property string actiontext: qsTr("Adjust touchpad settings, make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -64,7 +64,9 @@ Rectangle {
              color: "#383838"
          }
          Text {
+             width: touchpadsetpage.width - 80 - 20
              text: touchpadsetpage.actiontext
+             wrapMode: Text.WordWrap
              font.pixelSize: 12
              color: "#7a7a7a"
          }
@@ -81,13 +83,15 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "开关设置"
+            id: switchtitle
+            text: qsTr("Switch setting")//开关设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: touchpadsetpage.width - switchtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -107,7 +111,7 @@ Rectangle {
         spacing: 40
         Common.Label {
             width: 110
-            text: "启用/禁用触摸板:"
+            text: qsTr("Enable/disable touchpad:")//启用/禁用触摸板:
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -127,7 +131,7 @@ Rectangle {
     }
 
     Row {
-        id: scrolltitle
+        id: scrollrow
         anchors{
             left: parent.left
             leftMargin: 40
@@ -137,13 +141,15 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "滚动条设置"
+            id: scrolltitle
+            text: qsTr("Scrollbar settings")//滚动条设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:688
+            width: touchpadsetpage.width - scrolltitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -155,7 +161,7 @@ Rectangle {
         anchors{
             left: parent.left
             leftMargin: 60
-            top: scrolltitle.bottom
+            top: scrollrow.bottom
             topMargin: 10
         }
 
@@ -164,7 +170,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: "滚动条类型:"
+                text: qsTr("Scrollbar type:")//滚动条类型:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -178,7 +184,7 @@ Rectangle {
                     spacing: 100
                     Common.CheckBox {
                         id:overlay
-                        titleName: "特色类型" //overlay模式
+                        titleName: qsTr("overlay") //overlay模式        特色类型
                         checked: (touchpadsetpage.scrollbars_mode == "overlay-auto") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -189,7 +195,7 @@ Rectangle {
                     }
                     Common.CheckBox {
                         id: legacy
-                        titleName: "标准类型"  //legacy模式
+                        titleName: qsTr("legacy")  //legacy模式       标准类型
                         checked: (touchpadsetpage.scrollbars_mode == "normal") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -209,7 +215,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: "触摸板滚动触发方式:"
+                text: qsTr("Touchpad rolling mode:")//触摸板滚动触发方式:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -223,7 +229,7 @@ Rectangle {
                     spacing: 100
                     Common.CheckBox {
                         id:edge
-                        titleName: "边缘触发"//"edge模式"
+                        titleName: qsTr("edge")//"edge模式"        边缘触发
                         checked: (touchpadsetpage.touchscrolling_mode == "edge-scrolling") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -234,7 +240,7 @@ Rectangle {
                     }
                     Common.CheckBox {
                         id: twofinger
-                        titleName: "双指触发"//"twofinger模式"
+                        titleName: qsTr("twofinger")//"twofinger模式"       双指触发
                         checked: (touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -253,7 +259,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("触摸板横向滚动:")
+                text: qsTr("Scrollbar horizontal scroll:")//触摸板横向滚动:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter

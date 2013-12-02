@@ -252,18 +252,13 @@ Item {
                 top: parent.top
                 topMargin: titleimage.height/2 - 7
             }
-            text: "您可以查看相关信息，随时了解系统情况。"
+            text: qsTr("You can view the relevant information, and understand the system at any time.")//您可以查看相关信息，随时了解系统情况。
             font.pixelSize: 12
             color: "#383838"
         }
 
-        //上下分割条
-        Rectangle {x: 100; y: 90; width: parent.width - 150; height: 1; color: "#ccdadd" }
-        Rectangle {x: 100; y: 190; width: parent.width - 150; height: 1; color: "#ccdadd" }
-        Rectangle {x: 100; y: 370; width: parent.width - 150; height: 1; color: "#ccdadd" }
         Column {
             anchors {
-    //            fill: parent
                 top: titleimage.bottom
                 topMargin: 40
                 left: parent.left
@@ -271,24 +266,30 @@ Item {
             }
             spacing: 20
 
-            Text {
-                id: hardwaretitle
-                text: qsTr("硬件信息")
-                font.bold: true
-                font.pixelSize: 14
-                color: "#383838"
+            Row {
+                Text {
+                    id: hardwaretitle
+                    text: qsTr("Hardware information")//硬件信息
+                    font.bold: true
+                    font.pixelSize: 14
+                    color: "#383838"
+                }
+                Rectangle {width: home.width - hardwaretitle.width - 30 * 2
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: 1; color: "#ccdadd"
+                }
             }
             Column {
                 anchors.left: parent.left
                 anchors.leftMargin: 20
                 spacing: 10
                 Row {
-                    spacing: 8
+                    spacing: 10
                     Text {
-                        text: qsTr("处理器:")
+                        text: qsTr("CPU:")//处理器:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("cpu")
@@ -299,10 +300,10 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("内存:")
+                        text: qsTr("Memory:")//内存:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("ram")
@@ -312,13 +313,18 @@ Item {
                 }
             }
 
-
-            Text {
-                id: desktoptitle
-                text: qsTr("桌面信息")
-                font.bold: true
-                font.pixelSize: 14
-                color: "#383838"
+            Row {
+                Text {
+                    id: desktoptitle
+                    text: qsTr("Desktop information")//桌面信息
+                    font.bold: true
+                    font.pixelSize: 14
+                    color: "#383838"
+                }
+                Rectangle {width: home.width - desktoptitle.width - 30 * 2
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: 1; color: "#ccdadd"
+                }
             }
             Column {
                 anchors.left: parent.left
@@ -327,10 +333,10 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("主机名:")
+                        text: qsTr("Host name:")//主机名:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("hostname")
@@ -341,10 +347,10 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("平台:")
+                        text: qsTr("Platform:")//平台:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("platform")
@@ -355,10 +361,10 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("发行版:")
+                        text: qsTr("Distribution:")//发行版:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("distribution")
@@ -369,10 +375,10 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("桌面环境:")
+                        text: qsTr("Environment:")//桌面环境:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("desktopenvironment")
@@ -383,10 +389,10 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("语言:")
+                        text: qsTr("Language:")//语言:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("language")
@@ -396,12 +402,18 @@ Item {
                 }
             }
 
-            Text {
-                id: usertitle
-                text: qsTr("用户信息")
-                font.bold: true
-                font.pixelSize: 14
-                color: "#383838"
+            Row {
+                Text {
+                    id: usertitle
+                    text: qsTr("User information")//用户信息
+                    font.bold: true
+                    font.pixelSize: 14
+                    color: "#383838"
+                }
+                Rectangle {width: home.width - usertitle.width - 30 * 2
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: 1; color: "#ccdadd"
+                }
             }
             Column {
                 anchors.left: parent.left
@@ -410,10 +422,10 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("当前用户:")
+                        text: qsTr("User:")//当前用户:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("currrent_user")
@@ -424,10 +436,10 @@ Item {
                 Row {
                     spacing: 10
                     Text {
-                        text: qsTr("用户主目录:")
+                        text: qsTr("Home directory:")//用户主目录:
                         font.pixelSize: 12
                         color: "#7a7a7a"
-                        width: 60
+                        width: 100
                     }
                     Text {
                         text: sessiondispatcher.getSingleInfo("home_path")

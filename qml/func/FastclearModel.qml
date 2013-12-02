@@ -58,7 +58,7 @@ Rectangle {
                 onekeybtn.enabled=true;
             }
             else if (msg == "o") {
-                toolkits.alertMSG("一键清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+                toolkits.alertMSG(qsTr("A Key cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
             }
         }
 
@@ -82,19 +82,27 @@ Rectangle {
         onFinishCleanDataSecond: {
             if (type == "c") {
                 cachedes.visible = true;
-                cachedes.text = "（共清理掉" + msg + "垃圾）";
+                cachedes.text = qsTr("(totally cleared") + msg + qsTr("garbage)");//（共清理掉       垃圾）
             }
             else if (type == "h") {
                 historydes.visible = true;
-                historydes.text = "（共清理掉" + msg + "条历史记录）";
+                historydes.text = qsTr("(totally cleared") + msg + qsTr("historical records)");//（共清理掉     条历史记录）
             }
             else if (type == "k") {
                 cookiedes.visible = true;
-                cookiedes.text = "（共清理掉" + msg + "条Cookies）";
+                cookiedes.text = qsTr("(totally cleared") + msg + qsTr("Cookies）");//（共清理掉      条Cookies）
             }
         }
     }
 
+    onCheck_numChanged: {
+        if(check_num==0)
+            chek.checked="false"
+        else if(check_num==num)
+            chek.checked="true"
+        else
+            chek.checked="mid"
+    }
 
     //背景
     Image {
@@ -103,11 +111,11 @@ Rectangle {
     }
 
     //上下分割条
-    Rectangle {id: splitbar1; x: 2; y: 80; width: parent.width-4; height: 1; color: "#d8e0e6" }
-    Rectangle {id: splitbar11; x: 2; y: 110; width: parent.width-4; height: 1; color: "#d8e0e6" }
-    Rectangle {id: splitbar3; x: 2; y: 166; width: parent.width-4; height: 1; color: "#d8e0e6" }
-    Rectangle {id: splitbar5; x: 2; y: 234; width: parent.width-4; height: 1; color: "#d8e0e6" }
-    Rectangle {id: splitbar7; x: 2; y: 304; width: parent.width-4; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 2; y: 80; width: parent.width-4; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 25; y: 110; width: parent.width-50; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 25; y: 166; width: parent.width-50; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 25; y: 234; width: parent.width-50; height: 1; color: "#d8e0e6" }
+    Rectangle {x: 25; y: 304; width: parent.width-50; height: 1; color: "#d8e0e6" }
     Row {
         id: myrow
         spacing: 10
@@ -122,7 +130,7 @@ Rectangle {
             Text {
                 id: text0
                 width: 69
-                text: qsTr("全面清理电脑中的垃圾、缓存和痕迹，只需要一个按键！")
+                text: qsTr("A comprehensive clean-up computer's garbage, cache and trace, only need a key!")//全面清理电脑中的垃圾、缓存和痕迹，只需要一个按键！
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -130,8 +138,7 @@ Rectangle {
             Text {
                 id: text
                 width: 69
-//                    text: qsTr("全面清理垃圾、痕迹、注册表，高效率解决系统清理问题.")
-                text: qsTr("一键帮您节省磁盘空间，清理电脑中的垃圾，让系统运行更加快速。")
+                text: qsTr("A key to help you to save disk space, clean up the garbage, make the system run more quickly.")//一键帮您节省磁盘空间，清理电脑中的垃圾，让系统运行更加快速。
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
@@ -144,7 +151,7 @@ Rectangle {
             id: onekeybtn
             hoverimage: "green1.png"
             setbtn_flag: "smallonekey"
-            text:"一键清理"
+            text:qsTr("Clean Quickly")//一键清理
             width: 120
             height: 39
             fontsize: 15
@@ -197,10 +204,19 @@ Rectangle {
                         spacing: 10
                         Common.Label {
                             id: itemtip
-                            text: "一键清理项目"
+                            text: qsTr("A key Clean Items")//一键清理项目
                             font.bold: true
                             font.pixelSize: 14
                             color: "#008000"
+                        }
+                        Common.MainCheckBox {
+                            id:chek
+                            checked:"true"    //将所有选项都check
+                            onCheckedboolChanged: {
+                                checkboxe.checked = chek.checkedbool;
+                                checkboxe2.checked = chek.checkedbool;
+                                checkboxe3.checked = chek.checkedbool;
+                            }
                         }
                     }
                     Column {
@@ -259,7 +275,7 @@ Rectangle {
                                         Row {
                                             spacing: 20
                                             Text {
-                                                text: "清理垃圾"//titlename
+                                                text: qsTr("Clean up the garbage")//清理垃圾
                                                 font.bold: true
                                                 font.pixelSize: 14
                                                 color: "#383838"
@@ -272,7 +288,7 @@ Rectangle {
                                             }
                                         }
                                         Text {
-                                            text: "清理系统中的垃圾文件，释放磁盘空间"//detailstr
+                                            text: qsTr("Clean up system junk files, free disk space")//清理系统中的垃圾文件，释放磁盘空间
                                             font.pixelSize: 12
                                             color: "#7a7a7a"
                                         }
@@ -283,23 +299,23 @@ Rectangle {
                                     id: cachestatus
                                     visible: false
                                     iconName: "yellow.png"
-                                    text: "未完成"
+                                    text: qsTr("Unfinished")//未完成
                                     anchors {
                                         left: parent.left; leftMargin: 500
                                     }
                                     states: [
                                             State {
                                             name: "StatusC"
-                                            PropertyChanges { target: cachestatus; iconName: "green.png"; text: "已完成"}
+                                            PropertyChanges { target: cachestatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
                                         },
 
                                             State {
                                             name: "StatusC1"
-                                            PropertyChanges { target: cachestatus; iconName: "red.png"; text: "出现异常"}
+                                            PropertyChanges { target: cachestatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
                                         },
                                         State {
                                             name: "StatusCF"
-                                            PropertyChanges { target: cachestatus; iconName: "yellow.png"; text: "未完成"}
+                                            PropertyChanges { target: cachestatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
                                         }
                                     ]
                                 }
@@ -364,7 +380,7 @@ Rectangle {
                                 Row{
                                     spacing: 20
                                     Text {
-                                        text: "清理历史记录"//titlename
+                                        text: qsTr("Clean history")//清理历史记录
                                         font.bold: true
                                         font.pixelSize: 14
                                         color: "#383838"
@@ -377,7 +393,7 @@ Rectangle {
                                     }
                                 }
                                 Text {
-                                    text: "清理上网时留下的历史记录，保护您的个人隐私"//detailstr
+                                    text: qsTr("Clean up the Internet histories, and protect your privacy")//清理上网时留下的历史记录，保护您的个人隐私
                                     font.pixelSize: 12
                                     color: "#7a7a7a"
                                 }
@@ -387,23 +403,23 @@ Rectangle {
                                 id: historystatus
                                 visible: false
                                 iconName: "yellow.png"
-                                text: "未完成"
+                                text: qsTr("Unfinished")//未完成
                                 anchors {
                                     left: parent.left; leftMargin: 500
                                 }
                                 states: [
                                         State {
                                         name: "StatusH"
-                                        PropertyChanges { target: historystatus; iconName: "green.png"; text: "已完成"}
+                                        PropertyChanges { target: historystatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
                                     },
 
                                         State {
                                         name: "StatusH1"
-                                        PropertyChanges { target: historystatus; iconName: "red.png"; text: "出现异常"}
+                                        PropertyChanges { target: historystatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
                                     },
                                     State {
                                         name: "StatusHF"
-                                        PropertyChanges { target: historystatus; iconName: "yellow.png"; text: "未完成"}
+                                        PropertyChanges { target: historystatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
                                     }
                                 ]
                             }
@@ -470,7 +486,7 @@ Rectangle {
                                 Row {
                                     spacing: 20
                                     Text {
-                                        text: "清理Cookies"//titlename
+                                        text: qsTr("Clean Cookies")//清理Cookies
                                         font.bold: true
                                         font.pixelSize: 14
                                         color: "#383838"
@@ -483,7 +499,7 @@ Rectangle {
                                     }
                                 }
                                 Text {
-                                    text: "清理上网时产生的Cookies，还浏览器一片天空"//detailstr
+                                    text: qsTr("Clean up the Internet Cookies, and give a piece of the sky to browser.")//清理上网时产生的Cookies，还浏览器一片天空
                                     font.pixelSize: 12
                                     color: "#7a7a7a"
                                 }
@@ -494,23 +510,23 @@ Rectangle {
                                 id: cookiestatus
                                 visible: false
                                 iconName: "yellow.png"
-                                text: "未完成"
+                                text: qsTr("Unfinished")//未完成
                                 anchors {
                                     left: parent.left; leftMargin: 500
                                 }
                                 states: [
                                         State {
                                         name: "StatusK"
-                                        PropertyChanges { target: cookiestatus; iconName: "green.png"; text: "已完成"}
+                                        PropertyChanges { target: cookiestatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
                                     },
 
                                         State {
                                         name: "StatusK1"
-                                        PropertyChanges { target: cookiestatus; iconName: "red.png"; text: "出现异常"}
+                                        PropertyChanges { target: cookiestatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
                                     },
                                     State {
                                         name: "StatusKF"
-                                        PropertyChanges { target: cookiestatus; iconName: "yellow.png"; text: "未完成"}
+                                        PropertyChanges { target: cookiestatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
                                     }
 
                                 ]
@@ -529,24 +545,4 @@ Rectangle {
 //            }//Column
 //------end new layout
     }//Row
-    Common.MainCheckBox {
-        id:chek
-        x:116
-        y:92
-        checked:"true"    //将所有选项都check
-//                            background: red
-        onCheckedboolChanged: {
-            checkboxe.checked = chek.checkedbool;
-            checkboxe2.checked = chek.checkedbool;
-            checkboxe3.checked = chek.checkedbool;
-        }
-    }
-    onCheck_numChanged: {
-        if(check_num==0)
-            chek.checked="false"
-        else if(check_num==num)
-            chek.checked="true"
-        else
-            chek.checked="mid"
-    }
 }

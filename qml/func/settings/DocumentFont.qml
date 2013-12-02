@@ -29,9 +29,10 @@ Rectangle {
 
 //    property int cursor_size: 24
     property string document_font: "Helvetica"
-    property bool document_font_flag: false
-    property string actiontitle: "文档字体设置"
-    property string actiontext: "根据您的喜好设置文档字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
+    property string selected_font: ""//存放用户选择确认后的字体
+//    property bool document_font_flag: false
+    property string actiontitle: qsTr("Document font settings")//文档字体设置
+    property string actiontext: qsTr("According to your preferences set document fonts, click 'default settings' button, can revert the corresponding font to the default font.")//根据您的喜好设置文档字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -39,8 +40,11 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        documentfontpage.document_font_flag = false;
+//        documentfontpage.document_font_flag = false;
         documentfontpage.document_font = sessiondispatcher.get_document_font_qt();
+        documentfontpage.selected_font = documentfontpage.document_font;
+        //将系统初始的当前文档字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "documentfont", documentfontpage.document_font);
     }
 
     Connections
@@ -48,12 +52,14 @@ Rectangle {
         target: sessiondispatcher
         onNotifyFontStyleToQML: {
             if (font_style == "documentfont") {
-                documentfontpage.document_font_flag = true;
+//                documentfontpage.document_font_flag = true;
                 docufont.text = sessiondispatcher.get_document_font_qt();
+                documentfontpage.selected_font = docufont.text;
             }
             else if (font_style == "documentfont_default") {
-                documentfontpage.document_font_flag = false;
+//                documentfontpage.document_font_flag = false;
                 docufont.text = sessiondispatcher.get_document_font_qt();
+                documentfontpage.selected_font = docufont.text;
             }
         }
     }
@@ -74,20 +80,21 @@ Rectangle {
                  color: "#383838"
              }
             //status picture
-            Image {
+            Common.StatusImage {
                 id: statusImage
                 visible: false
-                source: "../../img/toolWidget/finish.png"
-                fillMode: "PreserveAspectFit"
-                smooth: true
+                iconName: "green.png"
+                text: qsTr("Completed")//已完成
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: documentfontpage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: documentfontpage.width - 80 - 20
+            text: documentfontpage.actiontext
+            wrapMode: Text.WordWrap
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
 
@@ -100,15 +107,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
-            text: "文档字体设置"
+            id: fonttitle
+            text: qsTr("Document font settings")//文档字体设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:680
+            width: documentfontpage.width - fonttitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -127,8 +135,8 @@ Rectangle {
         }
         Common.Label {
             id: documentfontlabel
-            width: 110
-            text: "当前文档字体:"
+            width: 150
+            text: qsTr("Current document font:")//当前文档字体:
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -155,7 +163,7 @@ Rectangle {
         Common.Button {
             id: docufontBtn
             hoverimage: "blue4.png"
-            text: "更换字体"
+            text: qsTr("Change font")//更换字体
             fontcolor: "#086794"
             width: 105
             height: 30
@@ -163,17 +171,22 @@ Rectangle {
         }
         Common.Button {
             hoverimage: "blue2.png"
-            text: "恢复默认"
+            text: qsTr("Restore default")//恢复默认
             width: 105
             height: 30
             onClicked: {
-                if(documentfontpage.document_font_flag == true) {
-                    sessiondispatcher.set_document_font_qt_default(documentfontpage.document_font);
+                //Sans 11
+                var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "documentfont");
+                if(defaultfont == documentfontpage.selected_font) {
+                    //友情提示：      您系统的当前文档字体已经为默认字体！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's current document font is the default!"), mainwindow.pos.x, mainwindow.pos.y);
+                }
+                else {
+                    sessiondispatcher.set_document_font_qt_default(defaultfont);
+                    documentfontpage.selected_font = defaultfont;
                     sessiondispatcher.restore_default_font_signal("documentfont_default");
                     statusImage.visible = true;
                 }
-                else
-                    sessiondispatcher.showWarningDialog("友情提示：","您系统的当前文档字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
         Timer {

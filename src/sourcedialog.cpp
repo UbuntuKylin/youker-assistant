@@ -1,25 +1,42 @@
-/*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 3.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-#include "authdialog.h"
-#include "ui_authdialog.h"
+#include "sourcedialog.h"
+#include "ui_sourcedialog.h"
 #include <QMouseEvent>
-#include <QMessageBox>
-bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
+
+SourceDialog::SourceDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::SourceDialog)
 {
-    if(obj == ui->btn_min){
+    ui->setupUi(this);
+    this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
+    ui->btn_close->installEventFilter(this);
+    ui->btn_min->installEventFilter(this);
+    ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
+    ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
+    ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+    ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
+    //QLabel自动换行
+    ui->displaylabel->setWordWrap(true);
+    ui->displaylabel->setText(tr("Here you can add UbuntuKylin source to sourcelist, If it doesn't be added into sourcelist, the recommand software will cannot work. Click 'OK' to add it, or click 'Quit' to give up!"));//你可以增加UbuntuKylin软件源到软件源列表中，如果没有被添加到列表中，软件推荐将无法正常使用。点击“确定”按钮去添加软件源，点击“取消”按钮放弃添加！
+    QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(handler_OK()));
+    QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));
+}
+
+SourceDialog::~SourceDialog()
+{
+    delete ui;
+}
+
+void SourceDialog::handler_OK() {
+    emit addList();
+    accept();
+}
+
+bool SourceDialog::eventFilter(QObject *obj, QEvent *event) {
+    if(obj == ui->btn_min) {
             if(event->type() == QEvent::Enter){
                 ui->btn_min->setPixmap(QPixmap(":/pixmap/image/minBtn-hover.png"));
             }else if(event->type() == QEvent::Leave){
@@ -38,7 +55,7 @@ bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
                 return QObject::eventFilter(obj, event);
             }
         }
-    if(obj == ui->btn_close){
+    if(obj == ui->btn_close) {
             if(event->type() == QEvent::Enter){
                 ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
             }else if(event->type() == QEvent::Leave){
@@ -49,14 +66,7 @@ bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
                 QMouseEvent *me = (QMouseEvent *)event;
                 QLabel *lb = (QLabel *)obj;
                 if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
-//                    this->hide();
                     this->close();
-                    this->destroy();
-                    //警告  服务没有启动，相关功能将无法正常使用！
-                    QMessageBox::warning(NULL,
-                                         tr("Warning"),
-                                         tr("server doesn't run, some function cannot work normally!"),
-                                         QMessageBox::Ok);
                 }else{
                     ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
                 }
@@ -65,35 +75,25 @@ bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
             }
         }
     return QObject::eventFilter(obj, event);
-
-
 }
 
-void AuthDialog::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void SourceDialog::mousePressEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
-
 }
 
-void AuthDialog::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton )
-    {
+void SourceDialog::mouseMoveEvent(QMouseEvent *event) {
+    if (event->buttons() & Qt::LeftButton ) {
         move(event->globalPos() - dragPos);
         setWindowOpacity(0.5);
     }
     event->accept();
-
 }
 
-void AuthDialog::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-    {
+void SourceDialog::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
         setWindowOpacity(1);
     }
     event->accept();

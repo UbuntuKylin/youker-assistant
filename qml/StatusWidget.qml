@@ -21,8 +21,6 @@ Rectangle {
     height: 30//28
     color: "transparent"
     property string uk_version: ""
-    property string updateTime: "2013-09-12"
-    property string status: "检查更新"
     Component.onCompleted: {
 
     }
@@ -38,7 +36,7 @@ Rectangle {
         Text {
             color: "white"
             font.pixelSize: 12
-            text: qsTr("主程序版本:" + uk_version)
+            text: qsTr("main version:") + uk_version//主版本:
         }
     }
 

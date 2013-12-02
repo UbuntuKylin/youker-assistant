@@ -50,7 +50,7 @@ Item {
                     top: parent.top
                     topMargin: titleimage.height/2 - 7
                 }
-                text: "您可以定制属于自己的视觉效果和声音。"
+                text: qsTr("You can customize your own visual effects and sound.")//您可以定制属于自己的视觉效果和声音。
                 font.pixelSize: 12
                 color: "#383838"
             }
@@ -60,7 +60,7 @@ Item {
                     top: titleimage.bottom
                     topMargin: 40
                     left: parent.left
-                    leftMargin: 30
+                    leftMargin: 25
                 }
                 spacing: 10
 
@@ -72,29 +72,58 @@ Item {
                     }
                     Column {
                         spacing: 7
-                        Text {
-                            id: personaltext
-                            text: " 个性化"
-                            font.bold: true
-                            font.pixelSize: 14
-                            color: "#383838"
+                        Row {
+                            Text {
+                                id: personaltext
+                                text: qsTr(" Individualization")// 个性化
+                                font.bold: true
+                                font.pixelSize: 14
+                                color: "#383838"
+                            }
+                            Text {
+                                id: b1
+                                text: qsTr("Change WindowTheme")
+                                visible: false
+                            }
+                            Text {
+                                id: b2
+                                text: qsTr("Change IconSetting")
+                                visible: false
+                            }
+                            Text {
+                                id: b3
+                                text: qsTr("Change MousePointer")
+                                visible: false
+                            }
+                            Text {
+                                id: b4
+                                text: qsTr("Change SoundEffect")
+                                visible: false
+                            }
+                            Text {
+                                id: b5
+                                text: qsTr("Change BootAnimation")
+                                visible: false
+                            }
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: "更改窗口主题"; width: 90; flag: "WidgetTheme"}
+                            SetWord {wordname: qsTr("Change WindowTheme"); width: b1.width; flag: "WidgetTheme"}//更改窗口主题
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter}
-                            SetWord {wordname: "更改图标配置"; width: 90; flag: "DesktopiconSet"}
+                            SetWord {wordname: qsTr("Change IconSetting"); width: b2.width; flag: "DesktopiconSet"}//更改图标配置
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改鼠标指针"; width: 90; flag: "MousePointer"}
+                            SetWord {wordname: qsTr("Change MousePointer"); width: b3.width; flag: "MousePointer"}//更改鼠标指针
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改声音效果"; width: 90; flag: "SoundEffects"}
+                            SetWord {wordname: qsTr("Change SoundEffect"); width: b4.width; flag: "SoundEffects"}//更改声音效果
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改开机动画"; width: 90; flag: "BootAnimation"}
+                            SetWord {wordname: qsTr("Change BootAnimation"); width: b5.width; flag: "BootAnimation"}//更改开机动画
+
                         }
+
                     }
                 }
 
@@ -107,19 +136,26 @@ Item {
                     }
                     Column {
                         spacing: 7
-                        Text {
-                            id: unitytext
-                            text: " Unity"
-                            font.bold: true
-                            font.pixelSize: 14
-                            color: "#383838"
-//                            anchors.top: unity.top
+                        Row {
+                            Text {
+                                id: unitytext
+                                text: qsTr(" Unity")// Unity
+                                font.bold: true
+                                font.pixelSize: 14
+                                color: "#383838"
+    //                            anchors.top: unity.top
+                            }
+                            Text {
+                                id: b6
+                                text: qsTr("Custom Launcher")
+                                visible: false
+                            }
                         }
                         Row {
 //                            anchors.bottom: unity.bottom
 //                            anchors.bottomMargin: 10
                             spacing: 5
-                            SetWord {wordname: "自定义启动器"; width: 90; flag: "LauncherTheme"}
+                            SetWord {wordname: qsTr("Custom Launcher"); width: b6.width; flag: "LauncherTheme"}//自定义启动器
                         }
                     }
                 }
@@ -133,20 +169,37 @@ Item {
                     }
                     Column {
                         spacing: 7
-                        Text {
-                            id: fonttext
-                            text: " 字体"
-                            font.bold: true
-                            font.pixelSize: 14
-                            color: "#383838"
+                        Row {
+                            Text {
+                                id: fonttext
+                                text: qsTr(" Font")// 字体
+                                font.bold: true
+                                font.pixelSize: 14
+                                color: "#383838"
+                            }
+                            Text {
+                                id: b7
+                                text: qsTr("Change Default Font")
+                                visible: false
+                            }
+                            Text {
+                                id: b8
+                                text: qsTr("Change Document Font")
+                                visible: false
+                            }
+                            Text {
+                                id: b9
+                                text: qsTr("Change Titlebar Font")
+                                visible: false
+                            }
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: "更改默认字体设置"; width: 120; flag: "DefaultFont"}
+                            SetWord {wordname: qsTr("Change Default Font"); width: b7.width; flag: "DefaultFont"}//更改默认字体设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改文档字体设置"; width: 120; flag: "DocumentFont"}
+                            SetWord {wordname: qsTr("Change Document Font"); width: b8.width; flag: "DocumentFont"}//更改文档字体设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "更改窗口标题栏字体设置"; width: 160; flag: "TitlebarFont"}
+                            SetWord {wordname: qsTr("Change Titlebar Font"); width: b9.width; flag: "TitlebarFont"}//更改窗口标题栏字体设置
                         }
                     }
                 }
@@ -160,18 +213,30 @@ Item {
                     }
                     Column {
                         spacing: 7
-                        Text {
-                            id: systext
-                            text: " 系统选项"
-                            font.bold: true
-                            font.pixelSize: 14
-                            color: "#383838"
+                        Row {
+                            Text {
+                                id: systext
+                                text: qsTr(" System options")// 系统选项
+                                font.bold: true
+                                font.pixelSize: 14
+                                color: "#383838"
+                            }
+                            Text {
+                                id: b10
+                                text: qsTr("Change Touchpad")
+                                visible: false
+                            }
+                            Text {
+                                id: b11
+                                text: qsTr("Check Screen")
+                                visible: false
+                            }
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: "更改触摸板设置"; width: 105; flag: "TouchpadSet"}
+                            SetWord {wordname: qsTr("Change Touchpad"); width: b10.width; flag: "TouchpadSet"}//更改触摸板设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: "检测屏幕坏点"; width: 95; flag: "CheckScreen"}
+                            SetWord {wordname: qsTr("Check Screen"); width: b11.width; flag: "CheckScreen"}//检测屏幕坏点
                         }
                     }
                 }

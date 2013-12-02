@@ -57,7 +57,7 @@
      }
      Text {
          anchors.centerIn: parent
-         color: "white"
+         color: "black"
          font.bold: true
          text: Math.floor((value - minimum) / (maximum - minimum) * 100) + '%'
      }

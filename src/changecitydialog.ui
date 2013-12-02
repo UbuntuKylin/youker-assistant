@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>329</width>
-    <height>210</height>
+    <width>421</width>
+    <height>280</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QLabel" name="titleLabel">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>7</y>
-     <width>71</width>
+     <x>170</x>
+     <y>12</y>
+     <width>91</width>
      <height>21</height>
     </rect>
    </property>
@@ -26,7 +26,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>更换城市</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change City&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -36,7 +36,7 @@
    <property name="geometry">
     <rect>
      <x>18</x>
-     <y>37</y>
+     <y>70</y>
      <width>81</width>
      <height>21</height>
     </rect>
@@ -48,16 +48,16 @@
     </size>
    </property>
    <property name="text">
-    <string>城市列表：</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;City List:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>60</y>
-     <width>291</width>
-     <height>91</height>
+     <y>100</y>
+     <width>381</width>
+     <height>101</height>
     </rect>
    </property>
   </widget>
@@ -66,8 +66,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>329</width>
-     <height>210</height>
+     <width>421</width>
+     <height>280</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -83,8 +83,8 @@
   <widget class="QPushButton" name="quitBtn">
    <property name="geometry">
     <rect>
-     <x>112</x>
-     <y>172</y>
+     <x>196</x>
+     <y>231</y>
      <width>94</width>
      <height>29</height>
     </rect>
@@ -94,14 +94,14 @@
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>取消</string>
+    <string>Quit</string>
    </property>
   </widget>
   <widget class="QPushButton" name="okBtn">
    <property name="geometry">
     <rect>
-     <x>216</x>
-     <y>172</y>
+     <x>300</x>
+     <y>231</y>
      <width>94</width>
      <height>29</height>
     </rect>
@@ -111,7 +111,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>完成</string>
+    <string>OK</string>
    </property>
   </widget>
   <widget class="QLabel" name="btn_close">
@@ -127,6 +127,19 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="messageLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>51</y>
+     <width>391</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;By default, there are 3 cities. Click &amp;quot;configure&amp;quot; button to reset city.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
   <zorder>frame</zorder>
   <zorder>titleLabel</zorder>
   <zorder>locationLabel</zorder>
@@ -134,6 +147,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>quitBtn</zorder>
   <zorder>okBtn</zorder>
   <zorder>btn_close</zorder>
+  <zorder>messageLabel</zorder>
  </widget>
  <resources/>
  <connections/>

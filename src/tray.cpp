@@ -110,14 +110,17 @@ void Tray::startMemoryAccelerate() {
 }
 
 void Tray::createTray() {
-    this->actionQml = new QAction(tr("隐藏/显示主界面"), this);
+    this->actionQml = new QAction(tr("Hide/show main widget"), this);//隐藏/显示主界面
     connect(actionQml, SIGNAL(triggered()), this, SLOT(showOrHideQml()));
-    this->actionShow = new QAction(tr("隐藏/显示监控球"), this);
+    this->actionShow = new QAction(tr("Hide/show monitor ball"), this);//隐藏/显示监控球
     connect(actionShow, SIGNAL(triggered()), this, SLOT(showOrHide()));
-    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
-    connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
-    this->actionQuit = new QAction(tr("退出"), this);
+//    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
+//    connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
+
+    this->actionQuit = new QAction(tr("&Exit"), this);//退出
     connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    QShortcut *shortexit = new QShortcut(QKeySequence("Ctrl+E"), this);
+    connect(shortexit, SIGNAL(activated()), this, SLOT(exit()));
 
     this->trayMenu = new QMenu(this);
     this->trayMenu->addAction(actionQml);
@@ -140,6 +143,10 @@ void Tray::handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason) {
         default:
             ;
     }
+}
+
+void Tray::exit() {
+    qApp->quit();
 }
 
 void Tray::showOrHide() {

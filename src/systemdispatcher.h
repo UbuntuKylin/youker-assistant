@@ -22,9 +22,8 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
-
-const QString SOURCE_LIST = "/etc/apt/sources1.list";
-const QString LSB_RELEASE = "/etc/lsb-release";
+#include "util.h"
+//class QSettings;
 
 class SystemDispatcher : public QObject
 {
@@ -49,7 +48,7 @@ public:
     //系统清理页面一键清理
     Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
     //清理浏览器历史痕迹
-    Q_INVOKABLE void clean_history_records_qt();
+    Q_INVOKABLE void clean_history_records_qt(QString flag);
     //清理系统最近打开文件的记录
     Q_INVOKABLE void clean_system_history_qt();
     //清理dash使用记录
@@ -138,14 +137,25 @@ public:
     Q_INVOKABLE void clear_largestfile_args();
     Q_INVOKABLE QStringList get_largestfile_args();
 
-    //添加软件推荐源
-    void add_source_ubuntukylin_qt();
+    //弹出是否添加软件源对话框
+    Q_INVOKABLE void showAddSourceList(int window_x, int window_y);
+    //判断软件源是否已经添加了
+    Q_INVOKABLE bool judge_source_ubuntukylin_qt();
+    //将软件源已经添加了的标记写到QSetting配置文件中
+//    Q_INVOKABLE void write_source_to_qsetting();
+    //QSetting配置文件中读取软件源是否已经添加了的标记
+//    Q_INVOKABLE bool read_source_from_qsetting();
     //获取当前系统的版本代号：如raring、saucy
     QString readOSVersion();
+public slots:
+    //添加软件推荐源
+    void add_source_ubuntukylin_qt();
 
 signals:
     //添加新的开机动画图片后触发该信号
     void finishAddBootImage();
+    void finishCleanSingleWork(QString msg);
+    void finishCleanSingleWorkError(QString msg);
     void finishCleanWork(QString msg);
     void finishCleanWorkError(QString msg);
     void finishCleanWorkMain(QString msg);
@@ -156,6 +166,8 @@ signals:
     void finishCleanDataSecond(QString type, QString msg);
 
 public slots:
+    void handler_clear_single_rubbish(QString msg);
+    void handler_clear_single_rubbish_error(QString msg);
     void handler_clear_rubbish(QString msg);
     void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);
@@ -167,6 +179,17 @@ public slots:
 private:
     QStringList tmplist;
     QDBusInterface *systemiface;
+//    QSettings * mSettings;
+
+    int mainwindow_width;
+    int mainwindow_height;
+    int alert_width;
+    int alert_height;
+    int alert_width_bg;
+    //本次alert的x坐标
+    int alert_x;
+    //保额次alert的y坐标
+    int alert_y;
 };
 
 #endif // SYSTEMDISPATCHER_H

@@ -10,8 +10,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: "小企鹅输入法习惯配置"
-    property string actiontext: "可以设置自己喜欢的输入习惯，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。"
+    property string actiontitle: qsTr("Fcitx habit configure")//小企鹅输入法习惯配置
+    property string actiontext: qsTr("You can set the habit that you like, click 'Next' to continue setup, click 'Cancel' to cancel the current settings and return.")//可以设置自己喜欢的输入习惯，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。
     property int scanModelIndex:1
     property int scrollbar_z: 1
     property int defaultCandidateWord:0     //恢复默认时用到
@@ -46,7 +46,9 @@ Rectangle {
              color: "#383838"
          }
          Text {
+             width: fcitxconfigtoolFont.width - 80 - 20
              text: fcitxconfigtoolFont.actiontext
+             wrapMode: Text.WordWrap
              font.pixelSize: 12
              color: "#7a7a7a"
          }
@@ -99,15 +101,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
-            text: "显示设置"
+            id: showtitle
+            text: qsTr("Display settings")//显示设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: fcitxconfigtoolFont.width - showtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -130,23 +133,23 @@ Rectangle {
 //                font.bold: true
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("候选词列表:")
+                text: qsTr("Candidate word list:")//候选词列表:
             }
             Common.ButtonRow {
                 exclusive: true//控制是否联动
-                spacing: 80
+                spacing: 120
                 anchors.centerIn: listh.Center
                 Common.CheckBox {
                     id: levelstyle
                     checked: (fcitxcfgwizard.get_vertical_list() == false) ? true : false
-                    titleName: "横向显示"
+                    titleName: qsTr("Horizontal display")//横向显示
                     flag: "radio"
                     onClicked: {}
                 }
                 Common.CheckBox {
                     id: verticalstyle
                     checked: (fcitxcfgwizard.get_vertical_list() == ture) ? true : false
-                    titleName: "竖向显示"
+                    titleName: qsTr("Vertical display")//竖向显示
                     flag: "radio"
                     onClicked: {}
                 }
@@ -160,7 +163,7 @@ Rectangle {
                 id: numberText
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("候选词个数:")
+                text: qsTr("Number of candidate words:")//候选词个数:
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -193,16 +196,16 @@ Rectangle {
             topMargin: 250
 
         }
-        spacing: 5
         Text{
-            text: "快捷键设置"
+            id: keyboardtitle
+            text: qsTr("keyboard settings")//快捷键设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
             anchors.verticalCenter: parent.verticalCenter
         }
         Rectangle{
-            width:690
+            width: fcitxconfigtoolFont.width - keyboardtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -224,7 +227,7 @@ Rectangle {
                 id:inputMethod
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text:qsTr("切换激活/非激活输入法:")
+                text:qsTr("Switch the active/non active input method:")//切换激活/非激活输入法:
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -238,7 +241,7 @@ Rectangle {
                     height:30
                     onClicked: {
                         methodBtn1.forceActiveFocus();
-                        methodBtn1.text = "请按下要设置的组合键";
+                        methodBtn1.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
                     }
                     onEntered:{
                         methodBtn1Tmp = methodBtn1.text
@@ -260,7 +263,7 @@ Rectangle {
                     height:30
                     onClicked: {
                         methodBtn2.forceActiveFocus();
-                        methodBtn2.text = "请按下要设置的组合键"
+                        methodBtn2.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
                     }
                     onEntered:{
                         methodBtn2Tmp = methodBtn2.text
@@ -282,7 +285,7 @@ Rectangle {
                 id: prevPage
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("上一页:")
+                text: qsTr("Previous:")//上一页:
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -296,7 +299,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         prevPageBtn1.forceActiveFocus();
-                        prevPageBtn1.text = "请按下要设置的组合键"
+                        prevPageBtn1.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
                     }
                     onEntered:{
                         prevpageBtn1Tmp = prevPageBtn1.text
@@ -318,7 +321,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         prevPageBtn2.forceActiveFocus();
-                        prevPageBtn2.text = "请按下要设置的组合键";
+                        prevPageBtn2.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
                     }
                     onEntered:{
                         prevpageBtn2Tmp = prevPageBtn2.text;
@@ -340,7 +343,7 @@ Rectangle {
                 id: nextPage
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("下一页:")
+                text: qsTr("Next:")//下一页:
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -354,7 +357,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         nextPageBtn1.forceActiveFocus();
-                        nextPageBtn1.text = "请按下要设置的组合键";
+                        nextPageBtn1.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
                     }
                     onEntered:{
                         nextpageBtn1Tmp = nextPageBtn1.text;
@@ -376,7 +379,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         nextPageBtn2.forceActiveFocus();
-                        nextPageBtn2.text = "请按下要设置的组合键";
+                        nextPageBtn2.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
                     }
                     onEntered:{
                         nextpageBtn2Tmp = nextPageBtn2.text;

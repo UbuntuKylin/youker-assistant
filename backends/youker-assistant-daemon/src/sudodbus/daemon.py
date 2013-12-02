@@ -131,14 +131,14 @@ class SudoDaemon(PolicyKitService):
         self.daemonApt.apt_get_update()
 
     # add ubuntukylin source in /etc/apt/sources.list
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def add_source_ubuntukylin(self):
-        self.daemonApt.add_source_ubuntukylin()
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    #def add_source_ubuntukylin(self):
+    #    self.daemonApt.add_source_ubuntukylin()
 
     # remove ubuntukylin source in /etc/apt/sources.list
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def remove_source_ubuntukylin(self):
-        self.daemonApt.remove_source_ubuntukylin()
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    #def remove_source_ubuntukylin(self):
+    #    self.daemonApt.remove_source_ubuntukylin()
 
     # package download status signal
     '''parm mean

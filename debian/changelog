@@ -2,8 +2,15 @@ youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
 
   * Add processmanager.
   * Add Google Chromium Cookies cleaner.
+  * Change Chinese to English add add translation.
+  * Adjust components space after it added translation.
+  * Solve the segmentation fault when users cancel the previous Fcitx configuration(LP: #1252595).
+  * Save and restore the default system configuration with QSetting.
+  * Clear Cookies of Chromium(LP: #1224871).
+  * Solve wrong status of history cleaning(LP: #1253852).
+  * Popup a dialog to add UbuntuKylin sourcelist or not.
 
- -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 08 Nov 2013 10:54:03 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 24 Nov 2013 16:17:52 +0800
 
 youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
 

@@ -11,8 +11,9 @@ ChangeCityDialog::ChangeCityDialog(QSettings *mSettings, QWidget *parent) :
     pSettings = mSettings;
     init();
 
-    this->setWindowFlags(Qt::FramelessWindowHint);//去掉标题栏
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
@@ -46,9 +47,10 @@ void ChangeCityDialog::init() {
 void ChangeCityDialog::writeWeatherConf() {
     QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
     if(cityId == "") {
+        //警告     没有找到城市配置文件！
         QMessageBox::warning(NULL,
-                             tr("警告"),
-                             tr("没有找到城市配置文件！"),
+                             tr("Warning"),
+                             tr("can not find the config file!"),
                              QMessageBox::Ok);
     }
     else {

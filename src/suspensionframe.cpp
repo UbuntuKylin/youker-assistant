@@ -23,8 +23,8 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowOpacity(1.0);
-    ui->title1->setText("系统运行流畅");
-    ui->title2->setText("无需进行加速");
+    ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
+    ui->title2->setText(tr("No need for speed"));//无需进行加速
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
@@ -34,7 +34,7 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
                 "QPushButton:hover{border-image:url(:/pixmap/image/accelerate-hover.png);}"
                 "QPushButton:pressed{border-image:url(:/pixmap/image/accelerate-press.png);}");
     ui->descBtn->setStyleSheet("QPushButton {border:0px;color:#1790c9}");
-    ui->descBtn->setText("详细");
+    ui->descBtn->setText(tr("Details"));//详细
     ui->descBtn->setFlat(true);
     ui->descBtn->setFocusPolicy(Qt::NoFocus);
     this->resize(265, 173);
@@ -130,14 +130,14 @@ void SuspensionFrame::paintEvent(QPaintEvent *) {
     else if(ratio_sus > 80) {
         color2="#d13625";
         color3="#d5311e";
-        ui->title1->setText("电脑运行缓慢");
-        ui->title2->setText("建议一键加速");
+        ui->title1->setText(tr("Computer running slow"));//电脑运行缓慢
+        ui->title2->setText(tr("Proposed a key acceleration"));//建议一键加速
     }
     else {
         color2="#00b0ff";
         color3="#006eff";
-        ui->title1->setText("系统运行流畅");
-        ui->title2->setText("无需进行加速");
+        ui->title1->setText(tr("system runs smoothly"));//系统运行流畅
+        ui->title2->setText(tr("No need for speed"));//无需进行加速
 //        blister.load(":/pixmap/image/blister-big.png");
     }
 

@@ -74,6 +74,8 @@ Item {
                 }
                 Text {
                     text: detailstr
+                    width: 600
+                    wrapMode: Text.WordWrap
                     font.family: "URW Bookman L"
                     font.pointSize: 9
                     color: "gray"
@@ -92,7 +94,7 @@ Item {
             opacity: arrow_display
             //当鼠标点击后,箭头图片旋转90度
 //                    rotation: expanded ? 90 : 0
-            rotation: expanded ? 0 : -180
+            rotation: expanded ? -180 : 0
             smooth: true
             MouseArea {
                 id: mouseRegion

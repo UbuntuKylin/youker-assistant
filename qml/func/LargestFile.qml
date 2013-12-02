@@ -23,10 +23,10 @@ Item {
     id:root
     width: parent.width
     height: 435//475
-    property string btn_text: "开始清理"
-    property string title: "快速找出最占用磁盘空间的大文件"
-    property string description: "删除占用磁盘空间的无用大文件，释放更多磁盘空间。"
-    property string scope_desc: "文件的大小范围为1M--20480M，暂不支持中文路径。"
+    property string btn_text: qsTr("Start cleaning")//开始清理
+    property string title: qsTr("Find large files which take up disk space quickly")//快速找出最占用磁盘空间的大文件
+    property string description: qsTr("Delete unwanted large files, free more disk space.")//删除占用磁盘空间的无用大文件，释放更多磁盘空间。
+    property string scope_desc: qsTr("File size in the range of 1M--20480M, no support the Chinese path.")//文件的大小范围为1M--20480M，暂不支持中文路径。
     property string btn_flag: "largestfile_work"
     property ListModel listmodel: mainModel
     property ListModel submodel: subModel
@@ -94,9 +94,10 @@ Item {
             check_flag=true;
 
         mainModel.clear();
-        mainModel.append({"itemTitle": "清理最大文件，清理路径为："  + root.directory,
+        //清理最大文件，清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
+        mainModel.append({"itemTitle": qsTr("Clean up the maximum file, and the pah is:")  + root.directory,
                          "picture": "../img/toolWidget/deb-min.png",
-                         "detailstr": "清理用户指定目录下的最大文件，节省磁盘空间。",
+                         "detailstr": qsTr("Clear the maximum file directory in user's appointment to save disk space."),
                          "flags": "clear_largestfile",
                         "attributes":
                              [{"subItemTitle": "Cookies1"},
@@ -109,23 +110,11 @@ Item {
 
     ListModel {
         id: mainModel
-        ListElement {
-            itemTitle: "清理最大文件"
-            picture: "../img/toolWidget/deb-min.png"
-            detailstr: "清理用户指定目录下的最大文件，节省磁盘空间。"
-            flags: "clear_largestfile"
-            attributes: [
-                ListElement { subItemTitle: "" }
-            ]
-        }
     }
 
     ListModel {
         id: subModel
-        ListElement {itemTitle: ""; desc: ""; number: ""}
     }
-
-
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
@@ -147,7 +136,7 @@ Item {
                 else if (msg == "largestfile") {
                     root.work_result = msg;
                     root.state = "LargestFileWorkFinish";
-                    toolkits.alertMSG("清理完毕！", mainwindow.pos.x, mainwindow.pos.y);
+                    toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     refresh_page();
                 }
             }
@@ -166,8 +155,7 @@ Item {
         id: titlebar
         spacing: 10
         width: parent.width
-//        height: 50
-        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 27}
+        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 5}
         Image {
             id: refreshArrow
             visible: true
@@ -200,7 +188,7 @@ Item {
             }
         }
         Text {
-            text: "请输入文件大小(M):"
+            text: qsTr("Input file size(M):")//请输入文件大小(M):
             font.pixelSize: 12
             color: "#383838"
             anchors.verticalCenter: parent.verticalCenter
@@ -232,7 +220,7 @@ Item {
             id: selectBtn
             anchors.verticalCenter: parent.verticalCenter
             hoverimage: "blue1.png"
-            text: "浏览..."
+            text: qsTr("Browse...")//浏览...
             fontcolor: "#086794"
             width: 95
             height: 30
@@ -257,21 +245,24 @@ Item {
             onClicked: {
                 if(root.check_flag) {
                     if(size_text.text == "" || size_text.text == 0)
-                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！", mainwindow.pos.x, mainwindow.pos.y);
+                        //友情提示：        对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you have not set the scan file size or value is 0, please reset the number in the green box!"), mainwindow.pos.x, mainwindow.pos.y);
                     else if (root.directory == "")
                     {
                         if(root.sub_num != 0 && root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                         }
                         else {
-                            sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择扫描路径，请点击“浏览”按钮选择！", mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：        对不起，您没有选择扫描路径，请点击“浏览”按钮选择！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you don't choose the scanning path, please click the 'Browse' button to continue!"), mainwindow.pos.x, mainwindow.pos.y);
                             deleget_arrow =0;
                         }
                     }
                     else {
                         if(root.null_flag == true) {
                            root.state = "LargestFileWorkEmpty";
-                            sessiondispatcher.showWarningDialog("友情提示：","扫描内容为空，不再执行清理！", mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示： 扫描内容为空，不再执行清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else if(root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
@@ -279,7 +270,7 @@ Item {
                     }
                 }
                 else {
-                    sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选择需要清理的项，请确认！", mainwindow.pos.x, mainwindow.pos.y)
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y)
                 }
             }
         }
@@ -343,26 +334,26 @@ Item {
             }
             visible: false
             iconName: "yellow.png"
-            text: "未完成"
+            text: qsTr("Unfinished")//未完成
         }
     }//ScrollArea
 
     states: [
         State {
             name: "LargestFileWorkAgain"
-            PropertyChanges { target: statusImage; iconName: "yellow.png"; text: "未完成"}
+            PropertyChanges { target: statusImage; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
         },
         State {
             name: "LargestFileWorkError"
-            PropertyChanges { target: statusImage; iconName: "red.png"; text: "出现异常"}
+            PropertyChanges { target: statusImage; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
         },
         State {
             name: "LargestFileWorkFinish"
-            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: qsTr("Completed")}//已完成
         },
         State {
             name: "LargestFileWorkEmpty"
-            PropertyChanges { target: statusImage; iconName: "green.png"; text: "已完成"}
+            PropertyChanges { target: statusImage; iconName: "green.png"; text: qsTr("Completed")}//已完成
         }
     ]
 }

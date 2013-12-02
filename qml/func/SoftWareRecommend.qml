@@ -29,7 +29,7 @@ Item {
     property string recommendtwo_image: "../img/skin/qq-small.png"
     property string recommendthree_image: "../img/skin/qt-small.png"
     property string recommendoneimage_image: "../img/skin/wps.png"
-    property string recommendimage_text: "WPS For UbuntuKylin，Linux系统上最好用的办公软件。"
+    property string recommendimage_text: qsTr("WPS For UbuntuKylin, the best office software of Linux system.")//WPS For UbuntuKylin，Linux系统上最好用的办公软件。
     property string status_value: "n"
     property string status_value2: "n"
 
@@ -91,7 +91,7 @@ Item {
                     leftMargin: 15
                     verticalCenter: parent.verticalCenter
                 }
-                text: "详情"
+                text: qsTr("Details")//详情
                 onClicked: {
                     sudodispatcher.ready_show_app_page("eclipse");
                     pageStack.push(softwarepage);
@@ -104,7 +104,7 @@ Item {
                     right:parent.right
                     rightMargin: 15
                 }
-                text: "详情"
+                text: qsTr("Details")//详情
                 onClicked: {
                     if(screen.image_flag == "wps") {
                         sudodispatcher.ready_show_app_page("wps");
@@ -140,7 +140,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     screen.image_flag = "wps";
-                    screen.recommendimage_text = "WPS,Linux系统上最好用的办公软件。";
+                    screen.recommendimage_text = qsTr("WPS For UbuntuKylin, the best office software of Linux system.")//WPS For UbuntuKylin，Linux系统上最好用的办公软件。
                     imagframe.y=colum.y+recommendone.y;
                     recommendoneimage_image="../img/skin/wps.png";
                 }
@@ -157,7 +157,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     screen.image_flag = "qq";
-                    screen.recommendimage_text = "WineQQ，Linux系统上最好用的QQ版本。";
+                    screen.recommendimage_text = qsTr("WineQQ, with the best version of Linux system.");//WineQQ，Linux系统上最好用的QQ版本。
                     imagframe.y=colum.y+recommendtwo.y;
                     recommendoneimage_image="../img/skin/qq.png";
                 }
@@ -231,7 +231,7 @@ Item {
                 anchors.centerIn: parent
                 spacing: 50
                 Text {
-                    text:"推荐金榜单"
+                    text:qsTr("Recommendations")//推荐金榜单
                     color: "#6b6f70"
                     font.pixelSize: 14
                 }

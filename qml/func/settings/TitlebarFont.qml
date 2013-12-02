@@ -26,12 +26,10 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-
-//    property int cursor_size: 24
     property string titlebar_font: "Helvetica"
-    property bool titlebar_font_flag: false
-    property string actiontitle: "标题栏字体设置"
-    property string actiontext: "根据您的喜好设置标题栏字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。"
+    property string selected_font: ""//存放用户选择确认后的字体
+    property string actiontitle: qsTr("Titlebar font settings")//标题栏字体设置
+    property string actiontext: qsTr("According to your preferences set titlebar font, by using the 'default settings' button, can revert to the default font.")//根据您的喜好设置标题栏字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -39,21 +37,23 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        titlebarfontpage.titlebar_font_flag = false;
         titlebarfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
+        titlebarfontpage.selected_font = titlebarfontpage.titlebar_font;
+        //将系统初始的标题栏字体写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "titlebarfont", titlebarfontpage.titlebar_font);
     }
 
     Connections
     {
         target: sessiondispatcher
         onNotifyFontStyleToQML: {
-            if (font_style == "titlebarfont") {
-                titlebarfontpage.titlebar_font_flag = true;
+            if (font_style == "titlebarfont") {//弹出字体对话框更改好字体后
                 titlefont.text = sessiondispatcher.get_window_title_font_qt();
+                titlebarfontpage.selected_font = titlefont.text;
             }
-            else if (font_style == "titlebarfont_default") {
-                titlebarfontpage.titlebar_font_flag = false;
+            else if (font_style == "titlebarfont_default") {//恢复默认时
                 titlefont.text = sessiondispatcher.get_window_title_font_qt();
+                titlebarfontpage.selected_font = titlefont.text;
             }
         }
     }
@@ -73,20 +73,21 @@ Rectangle {
                  color: "#383838"
              }
             //status picture
-            Image {
+            Common.StatusImage {
                 id: statusImage
                 visible: false
-                source: "../../img/toolWidget/finish.png"
-                fillMode: "PreserveAspectFit"
-                smooth: true
+                iconName: "green.png"
+                text: qsTr("Completed")//已完成
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: titlebarfontpage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: titlebarfontpage.width - 80 - 20
+            text: titlebarfontpage.actiontext
+            wrapMode: Text.WordWrap
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
 
@@ -101,13 +102,15 @@ Rectangle {
         }
         spacing: 5
         Text{
-            text: "标题栏字体设置"
+            id: fonttitle
+            text: qsTr("Titlebar font settings")//标题栏字体设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:680
+            width: titlebarfontpage.width - fonttitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -127,14 +130,13 @@ Rectangle {
         Common.Label {
             id: windowtitlefontlabel
             width: 110
-            text: "当前标题栏字体:"
+            text: qsTr("Current titlebar font:")//当前标题栏字体:
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
         }
         Text {
             id: titlefont
-//                text: sessiondispatcher.get_window_title_font_qt()
             text: titlebarfontpage.titlebar_font
             width: 200
             font.pixelSize: 12
@@ -154,27 +156,32 @@ Rectangle {
         Common.Button {
             id: titlefontBtn
             hoverimage: "blue4.png"
-            text: "更换字体"
+            text: qsTr("Change font")//更换字体
             fontcolor: "#086794"
             width: 105
             height: 30
             onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
         }
         Common.Button {
-//                anchors.left: titlefontBtn.right
-//                anchors.leftMargin: 10
             hoverimage: "blue2.png"
-            text: "恢复默认"
+            text: qsTr("Restore default")//恢复默认
             width: 105
             height: 30
             onClicked: {
-                if(titlebarfontpage.titlebar_font_flag == true) {
-                    sessiondispatcher.set_window_title_font_qt_default(titlebarfontpage.titlebar_font);
+                var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "titlebarfont");
+                console.log("restore..........");
+                console.log(defaultfont);
+                console.log(titlebarfontpage.selected_font);
+                if(defaultfont == titlebarfontpage.selected_font) {
+                    //友情提示：        您系统的窗体标题栏字体已经为默认字体！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current titlebar font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
+                }
+                else {
+                    sessiondispatcher.set_window_title_font_qt_default(defaultfont);
+                    titlebarfontpage.selected_font = defaultfont;
                     sessiondispatcher.restore_default_font_signal("titlebarfont_default");
                     statusImage.visible = true;
                 }
-                else
-                    sessiondispatcher.showWarningDialog("友情提示：","您系统的窗体标题栏字体已经为默认字体！", mainwindow.pos.x, mainwindow.pos.y);
             }
         }
         Timer {

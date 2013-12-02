@@ -31,12 +31,12 @@
     <rect>
      <x>20</x>
      <y>40</y>
-     <width>251</width>
+     <width>301</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>请输入城市中文名或者拼音进行查找</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name or Pinyin to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QFrame" name="frame">
@@ -72,7 +72,7 @@
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>确定</string>
+    <string>OK</string>
    </property>
   </widget>
   <widget class="QPushButton" name="quitBtn">
@@ -89,7 +89,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>取消</string>
+    <string>Quit</string>
    </property>
   </widget>
   <widget class="QLabel" name="btn_close">
@@ -119,7 +119,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>查找</string>
+    <string>Search</string>
    </property>
   </widget>
   <zorder>frame</zorder>

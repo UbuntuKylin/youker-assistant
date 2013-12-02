@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>WarningDialog</class>
- <widget class="QDialog" name="WarningDialog">
+ <class>SourceDialog</class>
+ <widget class="QDialog" name="SourceDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,10 +13,27 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QPushButton" name="closeButton">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>156</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/quit.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </widget>
   <widget class="QPushButton" name="okButton">
    <property name="geometry">
     <rect>
-     <x>224</x>
+     <x>120</x>
      <y>156</y>
      <width>94</width>
      <height>29</height>
@@ -60,9 +77,9 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
    <property name="geometry">
     <rect>
      <x>8</x>
-     <y>85</y>
+     <y>38</y>
      <width>311</width>
-     <height>51</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -78,14 +95,14 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>6</x>
-     <y>51</y>
-     <width>291</width>
-     <height>16</height>
+     <x>80</x>
+     <y>6</y>
+     <width>171</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QFrame" name="frame">
@@ -108,6 +125,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
   </widget>
   <zorder>frame</zorder>
+  <zorder>closeButton</zorder>
   <zorder>okButton</zorder>
   <zorder>btn_close</zorder>
   <zorder>btn_min</zorder>
@@ -116,6 +134,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
  </widget>
  <tabstops>
   <tabstop>okButton</tabstop>
+  <tabstop>closeButton</tabstop>
  </tabstops>
  <resources>
   <include location="pixmap.qrc"/>

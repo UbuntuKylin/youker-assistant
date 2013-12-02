@@ -34,13 +34,14 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property string default_sound: ""
-    property string init_sound: ""
-    property bool init_sound_flag: false
-    property string actiontitle: "声音效果设置"
-    property string actiontext: "选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。"
+//    property string init_sound: ""
+//    property bool init_sound_flag: false
+    property string actiontitle: qsTr("Sound effect settings")//声音效果设置
+    property string actiontext: qsTr("Select a sound theme, click 'OK' button; selected music file name in the list box, do something such as audition, substitution and reduction.")//选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。
     property int musiclist_num: 0
 
     property string selectedmusic: ""
+    property string selected_sound_theme: ""//存放用户选择确认后的主题
 
 
     function split_music_name(str)
@@ -51,16 +52,18 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        soundeffectspage.init_sound_flag = false;
+//        soundeffectspage.init_sound_flag = false;
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
         else
             soundswitcher.switchedOn = false;
-        soundeffectspage.default_sound = sessiondispatcher.get_sound_theme_qt();
-        soundeffectspage.init_sound = soundeffectspage.default_sound;
+
         var soundlist = systemdispatcher.get_sound_themes_qt();
         var current_sound = sessiondispatcher.get_sound_theme_qt();
+        soundeffectspage.selected_sound_theme = current_sound;
         soundlist.unshift(current_sound);
+        //将系统初始的声音主题写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("soundeffect", "soundtheme", current_sound);
         choices.clear();
         for(var i=0; i < soundlist.length; i++) {
             choices.append({"themetext": soundlist[i]});
@@ -82,11 +85,9 @@ Rectangle {
 
     ListModel {
         id: choices
-        ListElement { themetext: "" }
     }
     ListModel {
         id: musicmodel
-        ListElement { musicname: ""; musicimage: "" }
     }
 
     Image {     //背景图片
@@ -107,7 +108,6 @@ Rectangle {
         }
         Row {
             spacing: 50
-
             Text {
                  text: soundeffectspage.actiontitle
                  font.bold: true
@@ -115,20 +115,21 @@ Rectangle {
                  color: "#383838"
              }
             //status picture
-            Image {
+            Common.StatusImage {
                 id: statusImage
                 visible: false
-                source: "../../img/toolWidget/finish.png"
-                fillMode: "PreserveAspectFit"
-                smooth: true
+                iconName: "green.png"
+                text: qsTr("Completed")//已完成
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: soundeffectspage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: 650 - 80 - 15//左边区域总宽度-左边space-右边space
+            text: soundeffectspage.actiontext
+            wrapMode: Text.WordWrap
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
     Column{     //声音主题
@@ -139,7 +140,7 @@ Rectangle {
             left: parent.left;leftMargin: 60
         }
         Text{
-            text: qsTr("声音主题：")
+            text: qsTr("Sound theme:")//声音主题：
             font.bold:true;color: "#383838"
             font.pointSize: 10
         }
@@ -149,21 +150,18 @@ Rectangle {
                 id: iconcombo
                 width : 345
                 model: choices
-                onSelectedTextChanged: soundeffectspage.default_sound = selectedText
+                onSelectedTextChanged: {}
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
                 width: 95;height: 30
                 hoverimage: "green2.png"
-                text: "确定"
+                text: qsTr("OK")//确定
                 onClicked: {
-                    if (soundeffectspage.default_sound != iconcombo.selectedText) {
-                        soundeffectspage.default_sound = iconcombo.selectedText;
-                        sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
-                        statusImage.visible = true;
-                    }
+                    soundeffectspage.selected_sound_theme = iconcombo.selectedText;
+                    sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
+                    statusImage.visible = true;
 
-                    soundeffectspage.init_sound_flag = true;
                     musicmodel.clear();
                     var musiclist=systemdispatcher.get_sounds_qt();
                     for(var l=0; l < musiclist.length; l++) {
@@ -178,17 +176,21 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "恢复默认"
-                width: 95
+                text: qsTr("Restore default")//恢复默认
+                width: 105
                 height: 30
                 onClicked: {
-                    if (soundeffectspage.init_sound_flag == true) {
-                        soundeffectspage.init_somainwindowund_flag = false;
-                        systemdispatcher.restore_all_sound_file_qt(soundeffectspage.init_sound);
+                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("soundeffect", "soundtheme");
+                    if(defaulttheme == soundeffectspage.selected_sound_theme) {
+                        //友情提示：       当前主题已经为默认主题!
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The current theme has been the default theme!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
+                    else {
+                        systemdispatcher.restore_all_sound_file_qt(defaulttheme);
+                        soundeffectspage.selected_sound_theme = defaulttheme;
+                        iconcombo.selectedIndex = 0;
                         statusImage.visible = true;
                     }
-                    else
-                        sessiondispatcher.showWarningDialog("友情提示：","当前主题已经为默认主题!", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
             Timer {
@@ -211,33 +213,38 @@ Rectangle {
             leftMargin: 60
         }
         Row {
-            spacing: 340
+            spacing: 270
             Text{
-                text: "程序事件："
+                id: eventtitle
+                width: 100
+                text: qsTr("Program events:")//程序事件：
                 font.bold:true
                 color: "#383838"
                 font.pointSize: 10
             }
             Row {
                 anchors.verticalCenter: parent.verticalCenter
-                spacing: 10
+                spacing: 2
                 Text {
                     id: listen
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: "试听"
+                    width: 50
+                    text: qsTr("Listen")//试听Listen
                 }
                 Text {
                     id: select
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: "替换"
+                    width: 50
+                    text: qsTr("Replace")//替换Replace
                 }
                 Text {
                     id: revoke
                     font.pixelSize: 12
                     color: "#7a7a7a"
-                    text: "还原"
+                    width: 50
+                    text: qsTr("Restore")//还原Restore
                 }
             }
 
@@ -271,7 +278,7 @@ Rectangle {
                         text: split_music_name(musicname)
                     }
                     Row{
-                        spacing: 20
+                        spacing: 40
                         anchors{
                             right: parent.right
                             rightMargin: 40
@@ -452,16 +459,17 @@ Rectangle {
         Column{
             spacing: 5
             Text{
-                text:qsTr("自定义声音主题")
+                text:qsTr("Custom SoundTheme")//自定义声音主题
+                width: soundeffectspage.width- 665 - 52 - 15
+                wrapMode: Text.WordWrap
                 color: "#383838"
                 font.pointSize: 10
                 font.bold: true
             }
             Text {
-                width: soundeffectspage.width- 665 - 52 - 25
-                text: "暂不支持中文路径下的音频文件。"
-//                text: "您能根据喜好组合成专属声音主题"
-                wrapMode: Text.WrapAnywhere
+                width: soundeffectspage.width- 665 - 52 - 15
+                text: qsTr("Not to support audio file of the Chinese path.")//暂不支持中文路径下的音频文件。
+                wrapMode: Text.WordWrap
                 font.pixelSize: 10
                 color: "#7a7a7a"
             }
@@ -481,7 +489,7 @@ Rectangle {
         }
         spacing: 20
         Text {
-            text:qsTr("声音设置:")
+            text:qsTr("Sound settings:")//声音设置:
             color: "#383838"
             font.pointSize: 10
             font.bold: true
@@ -489,7 +497,7 @@ Rectangle {
         Row {
             spacing: 20
             Text{
-                text:qsTr("系统登录:")
+                text:qsTr("System login:")//系统登录:
                 font.pointSize: 10
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter

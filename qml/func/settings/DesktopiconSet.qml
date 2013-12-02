@@ -28,24 +28,24 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property int cursor_size: 24
-    property string default_icon_theme: ""
-    property string init_icon_theme: ""
-    property bool init_icon_theme_flag: false
+    property string selected_icon_theme: ""//存放用户选择确认后的主题
 
-    property string actiontitle: "桌面图标设置"
-    property string actiontext: "您可以设置桌面图标主题和控制一些图标是否显示在桌面上。"
+    property string actiontitle: qsTr("Desktop icon settings")//桌面图标设置
+    property string actiontext: qsTr("You can set the desktop icon theme and control some icon displayed on the desktop.")//您可以设置桌面图标主题和控制一些图标是否显示在桌面上。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
+
+
     Component.onCompleted: {
-        desktopiconsetpage.default_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        desktopiconsetpage.init_icon_theme = desktopiconsetpage.default_icon_theme;
-        desktopiconsetpage.init_icon_theme_flag = false;
         var iconlist = sessiondispatcher.get_icon_themes_qt();
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
+        desktopiconsetpage.selected_icon_theme = current_icon_theme;
         iconlist.unshift(current_icon_theme);
+        //将系统初始的图标主题写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("desktopicon", "icontheme", current_icon_theme);
         choices.clear();
         for(var j=0; j < iconlist.length; j++) {
             choices.append({"text": iconlist[j]});
@@ -82,7 +82,6 @@ Rectangle {
 
     ListModel {
         id: choices
-        ListElement { text: "" }
     }
     Column {
         spacing: 10
@@ -99,12 +98,11 @@ Rectangle {
                  color: "#383838"
              }
             //status picture
-            Image {
+            Common.StatusImage {
                 id: statusImage
                 visible: false
-                source: "../../img/toolWidget/finish.png"
-                fillMode: "PreserveAspectFit"
-                smooth: true
+                iconName: "green.png"
+                text: qsTr("Completed")//已完成
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
@@ -125,15 +123,16 @@ Rectangle {
             topMargin: 120
 
         }
-        spacing: 5
         Text{
-            text: "图标主题设置"
+            id: themetitle
+            text: qsTr("Icon theme settings")//图标主题设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:700
+            width: desktopiconsetpage.width - themetitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -154,7 +153,7 @@ Rectangle {
             spacing: 40
             Text {
                 id: iconthemelabel
-                text: "图标主题"
+                text: qsTr("Icon theme")//图标主题
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -172,29 +171,30 @@ Rectangle {
                 id: okBtn
                 width: 105;height: 30
                 hoverimage: "green2.png"
-                text: "确定"
+                text: qsTr("OK")//确定
                 onClicked: {
-                    desktopiconsetpage.init_icon_theme_flag = true;
-                    if (desktopiconsetpage.default_icon_theme != iconcombo.selectedText) {
-                        desktopiconsetpage.default_icon_theme = iconcombo.selectedText;
-                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                        statusImage.visible = true;
-                    }
+                    desktopiconsetpage.selected_icon_theme = iconcombo.selectedText;
+                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+                    statusImage.visible = true;
                 }
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: "恢复默认"
+                text: qsTr("Restore default")//恢复默认
                 width: 105
                 height: 30
                 onClicked: {
-                    if(desktopiconsetpage.init_icon_theme_flag == true) {
-                        desktopiconsetpage.init_icon_theme_flag;
-                        sessiondispatcher.set_icon_theme_qt(desktopiconsetpage.init_icon_theme);
+                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("desktopicon", "icontheme");
+                    if(defaulttheme == desktopiconsetpage.selected_icon_theme) {
+                        //友情提示：       您系统的图标主题已经为默认设置！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current icon theme is the default!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
+                    else {
+                        sessiondispatcher.set_icon_theme_qt(defaulttheme);
+                        desktopiconsetpage.selected_icon_theme = defaulttheme;
+                        iconcombo.selectedIndex = 0;
                         statusImage.visible = true;
                     }
-                    else
-                        sessiondispatcher.showWarningDialog("友情提示：", "您系统的图标主题已经为默认设置！", mainwindow.pos.x, mainwindow.pos.y);
                 }
             }
             Timer {
@@ -213,15 +213,16 @@ Rectangle {
             topMargin: 30
 
         }
-        spacing: 5
         Text{
-            text: "桌面图标显示控制"
+            id: showtitle
+            text: qsTr("Desktop icon display control")//桌面图标显示控制
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
+        //横线
         Rectangle{
-            width:678
+            width: desktopiconsetpage.width - showtitle.width - 40 * 2
             height:1
             color:"#b9c5cc"
             anchors.verticalCenter: parent.verticalCenter
@@ -242,7 +243,7 @@ Rectangle {
             Common.Label {
                 id: desktopiconlabel
                 width: 170
-                text: "由文件管理器处理桌面:"
+                text: qsTr("The file manager desktop:")//由文件管理器处理桌面:
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -267,7 +268,7 @@ Rectangle {
             Common.Label {
                 id: homefolderlabel
                 width: 170
-                text: "我的文档:"
+                text: qsTr("My documents:")//我的文档:
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -291,7 +292,7 @@ Rectangle {
             Common.Label {
                 id: networklabel
                 width: 170
-                text: "网络:"
+                text: qsTr("Network:")//网络:
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -315,7 +316,7 @@ Rectangle {
             Common.Label {
                 id: trashlabel
                 width: 170
-                text: "回收站:"
+                text: qsTr("Recycle bin:")//回收站:
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -340,7 +341,7 @@ Rectangle {
             Common.Label {
                 id: devicelabel
                 width: 170
-                text: "移动设备:"
+                text: qsTr("Mobile equipment:")//移动设备:
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter

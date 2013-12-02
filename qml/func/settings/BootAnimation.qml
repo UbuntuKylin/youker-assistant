@@ -29,8 +29,8 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property string image_path: ""
-    property string actiontitle: "开机动画设置(目前仅支持png图片格式，不支持以中文命名的图片)"
-    property string actiontext: "点击“自定义图片”按钮选择您需要添加到列表中的图片，在列表中选中您要设置的图片名称，点击“确定”按钮完成设置。"
+    property string actiontitle: qsTr("Boot animation settings(Only PNG image format, does not support the Chinese naming pictures currently)")//开机动画设置(目前仅支持png图片格式，不支持以中文命名的图片)
+    property string actiontext: qsTr("Click the 'custom picture' button to select you want to add to the list of pictures, select you want to set the picture name in the list, click 'OK' button to complete the set.")//点击“自定义图片”按钮选择您需要添加到列表中的图片，在列表中选中您要设置的图片名称，点击“确定”按钮完成设置。
     property int num: 0
     property string selectedimage: ""
 
@@ -86,20 +86,21 @@ Rectangle {
                  color: "#383838"
              }
             //status picture
-            Image {
+            Common.StatusImage {
                 id: statusImage
                 visible: false
-                source: "../../img/toolWidget/finish.png"
-                fillMode: "PreserveAspectFit"
-                smooth: true
+                iconName: "green.png"
+                text: qsTr("Completed")//已完成
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: bootimagepage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: bootimagepage.width - 80 - 20
+            text: bootimagepage.actiontext
+            wrapMode: Text.WordWrap
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
     Column {
@@ -119,7 +120,7 @@ Rectangle {
             width: 134
             height: 35
             hoverimage: "blue3.png"
-            text: "自定义图片"
+            text: qsTr("Custom picture")//自定义图片
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 bootimagepage.image_path = systemdispatcher.showSelectFileDialog("bootanimation");
@@ -155,7 +156,7 @@ Rectangle {
             left: bootimage.right
             leftMargin: 100
         }
-        text: "可选开机动画"
+        text: qsTr("Optional boot animation")//可选开机动画
         font.bold: true
         font.pixelSize: 14
         color: "#383838"
@@ -163,9 +164,6 @@ Rectangle {
 
     ListModel {
         id: mainModel
-        ListElement {
-            itemTitle: ""
-        }
     }
 
 

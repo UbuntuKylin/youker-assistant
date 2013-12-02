@@ -29,31 +29,32 @@ Item {
     property string bgImagePressed: '../img/icons/list_item_pressed.png'
     property bool selected: false
     property bool selectable: false
-    property bool checkbox_status: true
     property bool split_status: false
-    property string btn_flag: "cookies_scan"
     property string browserFlag//浏览器标记
     signal clicked
-
     width: 850
     height: 30
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
-    onCheckbox_statusChanged: {checkbox.checked=checkbox_status}  //当父项传进来的check值改变时，强制改变全部子项的check值以进行统一控制
-
 
     Connections
     {
         target: systemdispatcher
-        onFinishCleanWork: {
-//            if (btnFlag == "cookies_work") {
-                if (msg == "") {
-                    console.log("clean failed....");
-                }
-                else if (msg == "cookies") {
-                    console.log("clean success....");
-                    container.clicked();
-                }
+        onFinishCleanSingleWorkError: {
+            if (msg == "cookies") {
+                toolkits.alertMSG(qsTr("Cleanup failed!"), mainwindow.pos.x, mainwindow.pos.y);//清理失败！
+            }
+        }
+
+        onFinishCleanSingleWork: {
+            if (msg == "") {
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+
+            }
+            else if (msg == "cookies") {
+                toolkits.alertMSG(qsTr("Cleanup Successfully!"), mainwindow.pos.x, mainwindow.pos.y);//清理成功！
+                container.clicked();
+            }
         }
     }
 
@@ -106,23 +107,19 @@ Item {
             verticalCenter: parent.verticalCenter
         }
         hoverimage: "blue1.png"
-        text: "删除"
+        text: qsTr("Delete")//删除
         fontcolor: "#086794"
         width: 60
         height: 20
         onClicked: {
-            console.log(itemText.text);
-            console.log(container.browserFlag);
             systemdispatcher.set_user_homedir_qt();
             systemdispatcher.cookies_clean_record_function_qt(container.browserFlag, itemText.text);
-
         }
     }
 
     MouseArea {
         id: mouseArea
         anchors.fill: itemText
-//        onClicked: container.clicked();
         onReleased: selectable && !selected ? selected = true : selected = false
     }
 

@@ -17,14 +17,14 @@
 import QtQuick 1.1
 Rectangle {
     id: statusImage
-    width: 49
+    width: 70
     height: 20
     property string iconName: "yellow.png"
-    property string text: "未完成"
+    property string text: qsTr("Unfinished")//未完成
 
     Image {
         id: statusImg
-//        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.fill: parent
         source: "../../img/toolWidget/" + iconName
     }
     Text {

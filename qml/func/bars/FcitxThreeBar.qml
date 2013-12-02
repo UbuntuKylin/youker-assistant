@@ -46,7 +46,7 @@ Item {
          Common.Button {
              id: gobackHome
              hoverimage: "gray1.png"//../../img/icons/
-             text: "返回主页"
+             text: qsTr("Back Home")//返回主页
              fontcolor:"#929292"
              fontsize: 13
              width: 94; height: 29
@@ -56,7 +56,7 @@ Item {
              id: cancelBtn
              visible: toolbar.showok
              hoverimage: "gray1.png"//../../img/icons/
-             text: "取消"
+             text: qsTr("Quit")//取消
              fontcolor:"#929292"
              fontsize: 13
              width: 94; height: 29
@@ -65,7 +65,7 @@ Item {
          Common.Button {
              id: gobackBtn
              hoverimage: "gray1.png"//../../img/icons/
-             text: "上一步"
+             text: qsTr("Previous")//上一步
              fontcolor:"#929292"
              fontsize: 13
              width: 94; height: 29
@@ -77,7 +77,7 @@ Item {
             hoverimage: "green2.png"//../../img/icons/
             fontsize: 13
             fontcolor:"#ffffff"
-            text: "应用"
+            text: qsTr("Apply")//应用
             width: 94; height: 29
 
             onClicked: toolbar.finishBtnClicked()

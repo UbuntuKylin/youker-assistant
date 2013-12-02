@@ -19,6 +19,8 @@ import os
 import ConfigParser
 import apt
 import apt_pkg
+import psutil
+import re
 
 HOMEDIR = ''
 
@@ -39,6 +41,16 @@ def get_dir_size(path):
     for root, dirs, files in os.walk(path):
         size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
     return size
+
+def process_pid(pname):
+    pid = None
+    processinfo = psutil.get_process_list()
+    for one in processinfo:
+        one_str = str(one)
+        patt = re.compile(pname, re.I)
+        if patt.search(one_str):
+            pid = int(one_str.split('pid=')[1].split(',')[0])
+    return pid
 
 def get_cache_list():
     cache = None

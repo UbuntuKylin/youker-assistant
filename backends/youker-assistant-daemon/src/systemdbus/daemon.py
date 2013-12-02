@@ -81,13 +81,22 @@ class Daemon(PolicyKitService):
     def get_system_daemon(self):
         return "SystemDaemon"
 
-    # add ubuntukylin source in /etc/apt/sources.list
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def add_source_ubuntukylin(self, version):
+    # judge ubuntukylin source is in /etc/apt/sources.list or not
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def judge_source_ubuntukylin(self):
         source = aptsources.sourceslist.SourcesList()
         for item in source.list:
             if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
-                return
+                return True
+        return False
+
+    # add ubuntukylin source in /etc/apt/sources.list
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def add_source_ubuntukylin(self, version):
+        source = aptsources.sourceslist.SourcesList(())
+        #for item in source.list:
+        #    if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
+        #        return
         osversion = str(version) + (" main")
         source.add("deb", "http://archive.ubuntukylin.com/ubuntukylin/", osversion, "")
         source.save()
@@ -187,6 +196,11 @@ class Daemon(PolicyKitService):
     def clean_complete(self, msg):
         pass
 
+    # a dbus method which means clean single complete
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_single_complete(self, msg):
+        pass
+
     # a dbus method which means an error occurred with main one key
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error_main(self, msg):
@@ -200,6 +214,11 @@ class Daemon(PolicyKitService):
     # a dbus method which means an error occurred
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error(self, msg):
+        pass
+
+    # a dbus method which means an single error occurred
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_single_error(self, msg):
         pass
 
     # the function of clean cruft by main one key
@@ -327,6 +346,20 @@ class Daemon(PolicyKitService):
         else:
             self.clean_complete_msg('history')
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
+    def history_clean_records_function(self, flag, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.clean_complete_msg('')
+            return
+        daemonhistory = cleaner.CleanTheHistory(None)
+        try:
+            daemonhistory.clean_all_history_crufts(flag)
+        except Exception, e:
+            self.clean_error_msg('history')
+        else:
+            self.clean_complete_msg('history')
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_system_history(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
@@ -374,15 +407,15 @@ class Daemon(PolicyKitService):
     def cookies_clean_record_function(self, flag, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
-            self.clean_complete_msg('')
+            self.clean_single_complete_msg('')
             return
         daemoncookies = cleaner.CleanTheCookies(None)
         try:
             daemoncookies.clean_one_cookies_cruft(flag[0], flag[1])
         except Exception, e:
-            self.clean_error_msg('cookies')
+            self.clean_single_error_msg('cookies')
         else:
-            self.clean_complete_msg('cookies')
+            self.clean_single_complete_msg('cookies')
 
     @dbus.service.method(INTERFACE, in_signature = 's', out_signature = '', sender_keyword = 'sender')
     def cookies_clean_records_function(self, flag, sender = None):
@@ -446,8 +479,14 @@ class Daemon(PolicyKitService):
     def clean_complete_msg(self, para):
         self.clean_complete(para)
 
+    def clean_single_complete_msg(self, para):
+        self.clean_single_complete(para)
+
     def clean_error_msg(self, para):
         self.clean_error(para)
+
+    def clean_single_error_msg(self, para):
+        self.clean_single_error(para)
 
     def clean_error_main_msg(self, para):
         self.clean_error_main(para)

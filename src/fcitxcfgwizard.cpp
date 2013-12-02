@@ -74,7 +74,7 @@ FcitxCfgWizard::~FcitxCfgWizard()
     delete m_connection;
     if (m_improxy)
         delete m_improxy;
-    delete fcitxWarnSig;
+//    delete fcitxWarnSig;
 }
 
 bool FcitxCfgWizard::connected()
@@ -681,8 +681,7 @@ QStringList FcitxCfgWizard::get_all_skin_type()
     QFileInfoList list;
     QFileInfoList::Iterator list_iter;
     char **skin_path = FcitxXDGGetPathWithPrefix(&len, "skin");
-
-    for (i = 0; i < len; i ++) {
+    for (i = 0; i < len; i++) {
         skin_dir = QDir(skin_path[i]);
         if (!skin_dir.exists())
             continue;
@@ -789,7 +788,7 @@ void FcitxCfgWizard::send_fcitx_ok_warn(int window_x, int window_y)
 
 void FcitxCfgWizard::create_fcitx_ok_warn(int window_x, int window_y)
 {
-      fcitxWarnSig = new FcitxWarnDialog();
+      FcitxWarnDialog *fcitxWarnSig = new FcitxWarnDialog();
       connect(fcitxWarnSig,SIGNAL(fcitxWarntest()),this,SLOT(emitrefreshFcitxSig()));
       this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
       this->alert_y = window_y + mainwindow_height - 400;

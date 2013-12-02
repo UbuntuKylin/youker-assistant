@@ -30,14 +30,14 @@ Item {
         id: header
         anchors{
             left:parent.left
-            leftMargin: 10
+            leftMargin: 5
         }
 
         Repeater {
             model: content.length
             delegate: Rectangle {
                 id: mytab
-                width: 100
+                width: 120//每个tab标题的总宽度
                 height: 36
                 color:"transparent"
 //                color: "#abc2c2"
@@ -46,7 +46,8 @@ Item {
                         bottom: parent.bottom
                         horizontalCenter: parent.horizontalCenter
                     }
-                    width: 90;height: 30
+                    width: 115//每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 120 - 115 = 5,即为tab之间的space
+                    height: 30
                     border.color: "#abc2c2"
                     Image {
                         anchors.fill: parent

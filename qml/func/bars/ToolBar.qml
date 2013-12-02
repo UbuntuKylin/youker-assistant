@@ -46,7 +46,7 @@ Item {
              hoverimage: "green2.png"//../../img/icons/
 //             fontcolor:"#929292"
              fontsize: 15
-             text: "确定"
+             text: qsTr("OK")//确定
              width: 94; height: 29
              onClicked: toolbar.okBtnClicked()
          }
@@ -55,7 +55,7 @@ Item {
              hoverimage: "gray1.png"//../../img/icons/
              fontcolor:"#929292"
              fontsize: 15
-             text: "返回"
+             text: qsTr("Return")//返回
              width: 94; height: 29
              onClicked: toolbar.quitBtnClicked()
          }
