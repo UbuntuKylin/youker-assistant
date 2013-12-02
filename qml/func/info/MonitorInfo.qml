@@ -15,10 +15,17 @@
  */
 
 import QtQuick 1.1
-import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
 
+
+/*
+ Vga_product         显卡型号
+#   Vga_vendor          显卡制造商
+#   Vga_businfo         显卡总线地址
+
+{'Vga_product': ' 2nd Generation Core Processor Family Integrated Graphics Controller',
+'Vga_businfo': ' pci@0000:00:02.0', 'Vga_vendor': ' Intel Corporation', 'Mon_chip': 'Intel(R) HD Graphics 3000'}*/
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
@@ -26,6 +33,9 @@ Rectangle {
     Component.onCompleted: {
         systemdispatcher.get_monitor_info_qt();//获取详细信息
         chipText.text = systemdispatcher.getSingleInfo("Mon_chip", "monitor");
+        chipmodelText.text = systemdispatcher.getSingleInfo("Vga_product", "monitor");
+        chipvendorText.text = systemdispatcher.getSingleInfo("Vga_vendor", "monitor");
+        chipbusText.text = systemdispatcher.getSingleInfo("Vga_businfo", "monitor");
         var vendor = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
         if(vendor.length !== 0 ) {
             productLabel.visible = true;
@@ -66,7 +76,7 @@ Rectangle {
             top: parent.top
             topMargin: 40
             left: parent.left
-            leftMargin: 30
+            leftMargin: 20
         }
         spacing: 20
 
@@ -93,7 +103,7 @@ Rectangle {
                     text: qsTr("Current Graphics Card:")//当前显卡：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: chipText
@@ -102,6 +112,53 @@ Rectangle {
                     color: "#7a7a7a"
                 }
             }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Graphics Card Model:")//显卡型号：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
+                Text {
+                    id: chipmodelText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_product")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Graphics Card Vendor:")//显卡制造商：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
+                Text {
+                    id: chipvendorText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_vendor")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Graphics Card Bus Address:")//显卡总线地址：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
+                Text {
+                    id: chipbusText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_businfo")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+
+
             Row {
                 spacing: 10
                 Text {

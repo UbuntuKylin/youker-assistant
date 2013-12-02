@@ -18,8 +18,10 @@ import "../common" as Common
 Item {
      id: toolbar
      property bool showok: true
+     property bool showrestore: false
      signal quitBtnClicked
      signal okBtnClicked
+     signal restoreBtnClicked
 
      BorderImage {
 //         source: "../../img/icons/tab.png"
@@ -49,6 +51,15 @@ Item {
              text: qsTr("OK")//确定
              width: 94; height: 29
              onClicked: toolbar.okBtnClicked()
+         }
+         Common.Button {
+             id: restoreBtn
+             visible: toolbar.showrestore
+             hoverimage: "blue2.png"
+             text: qsTr("Restore default")//恢复默认
+             width: 105
+             height: 29
+             onClicked: toolbar.restoreBtnClicked()
          }
          Common.Button {
              id: quitBtn

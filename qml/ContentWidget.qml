@@ -142,7 +142,7 @@ Item {
                 Common.Page {
                     id: desktopiconsetpage
                     visible: false
-                    SysSettings.DesktopiconSet {}
+                    SysSettings.DesktopIcon {}
                 }
                 Common.Page {
                     id: mousepointerpage

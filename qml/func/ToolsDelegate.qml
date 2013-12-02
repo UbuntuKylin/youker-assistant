@@ -15,8 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 
 Rectangle {
@@ -69,7 +67,7 @@ Rectangle {
             //屏幕坏点检测
             if (flag == "CheckScreen")
                 sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
-            else if (flag == "DesktopiconSet")
+            else if (flag == "Desktopicon")
                 pageStack.push(desktopiconsetpage);
             else if (flag == "BootAnimation") {
                 var component_boot = Qt.createComponent("./settings/BootAnimation.qml");

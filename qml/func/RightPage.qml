@@ -15,8 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 
 //右边栏
@@ -33,7 +31,7 @@ Rectangle {
     function updateList() {
         clearModel.clear();//清空
         clearModel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("CheckScreen"), "flag": "CheckScreen"});//坏点检测
-        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("DesktopIcon"), "flag": "DesktopiconSet"});//桌面图标
+        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("DesktopIcon"), "flag": "Desktopicon"});//桌面图标
         clearModel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("BootAnimation"), "flag": "BootAnimation"});//开机动画
         clearModel.append({"icon": "../img/icons/systemsound.png", "name": qsTr("SoundEffect"), "flag": "SoundEffects"});//系统声音
         clearModel.append({"icon": "../img/icons/mouse.png", "name": qsTr("MousePointer"), "flag": "MousePointer"});//鼠标指针

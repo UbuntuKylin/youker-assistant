@@ -15,18 +15,12 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "../common" as Common
 
 Rectangle {
-    id: home; width: parent.width; height: 475
+    id: home
+    width: parent.width; height: 475
     color: "transparent"
-    //背景
-    Image {
-        source: "../../img/skin/bg-bottom-tab.png"
-        anchors.fill: parent
-    }
 
     Component.onCompleted: {
         sessiondispatcher.get_system_message_qt();

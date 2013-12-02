@@ -22,15 +22,18 @@ Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
     Component.onCompleted: {
-        systemdispatcher.get_board_info_qt();//获取详细信息
-        basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor", "board") + ".jpg";
-        bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor", "board") + ".jpg";
-        productText.text = systemdispatcher.getSingleInfo("BoaProduct", "board");
-        vendorText.text = systemdispatcher.getSingleInfo("BoaVendor", "board");
-        serialText.text = systemdispatcher.getSingleInfo("BoaSerial", "board");
-        biosvendorText.text = systemdispatcher.getSingleInfo("BioVendor", "board");
-        biosversionText.text = systemdispatcher.getSingleInfo("BioVersion", "board");
-        biosreleaseText.text = systemdispatcher.getSingleInfo("BioRelease", "board");
+        //QMap(("DiskCapacity", QVariant(QString, "320.1 GB") ) ( "DiskFw" ,  QVariant(QString, "0004LVM1") )
+        // ( "DiskName" ,  QVariant(QString, "/dev/sda") ) ( "DiskNum" ,  QVariant(int, 1) )
+        //( "DiskProduct" ,  QVariant(QString, "ST320LT007-9ZV142") )
+        //( "DiskSerial" ,  QVariant(QString, "W0Q62SF7") ) ( "DiskVendor" ,  QVariant(QString, "Seagate") ) )
+        systemdispatcher.get_harddisk_info_qt();//获取详细信息
+        firstlogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("DiskVendor", "harddisk").toUpperCase() + ".jpg";
+        modelText.text = systemdispatcher.getSingleInfo("DiskProduct", "harddisk");
+        vendorText.text = systemdispatcher.getSingleInfo("DiskVendor", "harddisk");
+        capacityText.text = systemdispatcher.getSingleInfo("DiskCapacity", "harddisk");
+        deviceText.text = systemdispatcher.getSingleInfo("DiskName", "harddisk");
+        fwText.text = systemdispatcher.getSingleInfo("DiskFw", "harddisk");
+        serialText.text = systemdispatcher.getSingleInfo("DiskSerial", "harddisk");
     }
 
     Column {
@@ -45,7 +48,7 @@ Rectangle {
         Row {
             Text {
                 id: basictitle
-                text: qsTr("Basic information")//主板基本信息
+                text: qsTr("HardDisk information")//硬盘s信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -62,14 +65,14 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Motherboard Model:")//主板型号：
+                    text: qsTr("HardDisk Model:")//硬盘型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 140
                 }
                 Text {
-                    id: productText
-                    text: ""//systemdispatcher.getSingleInfo("BoaProduct")
+                    id: modelText
+                    text: ""//systemdispatcher.getSingleInfo("DiskProduct")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -77,14 +80,59 @@ Rectangle {
             Row {
                 spacing: 10
                 Text {
-                    text: qsTr("Motherboard Vendor:")//主板产商：
+                    text: qsTr("Motherboard Vendor:")//硬盘厂商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 140
                 }
                 Text {
                     id: vendorText
-                    text: ""//systemdispatcher.getSingleInfo("BoaVendor")
+                    text: ""//systemdispatcher.getSingleInfo("DiskVendor")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("HardDisk Capacity:")//硬盘容量：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 140
+                }
+                Text {
+                    id: capacityText
+                    text: ""//systemdispatcher.getSingleInfo("DiskCapacity")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Device Name:")//设备名称：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 140
+                }
+                Text {
+                    id: deviceText
+                    text: ""//systemdispatcher.getSingleInfo("DiskName")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Fireware:")//固件版本：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 140
+                }
+                Text {
+                    id: fwText
+                    text: ""//systemdispatcher.getSingleInfo("DiskFw")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -95,7 +143,7 @@ Rectangle {
                     text: qsTr("Serial:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 140
                 }
                 Text {
                     id: serialText
@@ -105,75 +153,11 @@ Rectangle {
                 }
             }
         }
-        Row {
-            Text {
-                id: biostitle
-                text: qsTr("Bios information")//BIOS信息
-                font.bold: true
-                font.pixelSize: 14
-                color: "#383838"
-            }
-            Rectangle {
-                id: splitbar
-                width: home.width - biostitle.width - 30 * 2
-                anchors.verticalCenter: parent.verticalCenter
-                height: 1; color: "#ccdadd"
-            }
-        }
-        Column {
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-            spacing: 10
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Bios Vendor:")//BIOS产商：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 120
-                }
-                Text {
-                    id: biosvendorText
-                    text: ""//systemdispatcher.getSingleInfo("BioVendor")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Bios Version:")//BIOS版本：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 120
-                }
-                Text {
-                    id: biosversionText
-                    text: ""//systemdispatcher.getSingleInfo("BioVersion")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Release Date:")//发布日期：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 120
-                }
-                Text {
-                    id: biosreleaseText
-                    text: ""//systemdispatcher.getSingleInfo("BioRelease")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-        }
+
     }
     //logo
     Image {
-        id: basiclogo
+        id: firstlogo
         source: ""
         anchors {
             top: parent.top
@@ -184,7 +168,7 @@ Rectangle {
     }
     //logo
     Image {
-        id: bioslogo
+        id: secondogo
         source: ""
         anchors {
             top: parent.top

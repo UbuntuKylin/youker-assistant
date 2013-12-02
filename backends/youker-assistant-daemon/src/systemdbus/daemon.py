@@ -105,6 +105,14 @@ class Daemon(PolicyKitService):
         return self.infoconf.get_memory()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_harddisk_info(self):
+        return self.infoconf.get_disk()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_networkcard_info(self):
+        return self.infoconf.get_network()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_monitor_info(self):
         return self.infoconf.get_monitor()
 

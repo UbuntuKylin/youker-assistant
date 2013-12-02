@@ -15,7 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
 import "../common" as Common
 import "../bars" as Bars
 
@@ -38,7 +37,6 @@ Rectangle {
         anchors.fill: parent
     }
 
-
     Component.onCompleted: {
         var iconlist = sessiondispatcher.get_icon_themes_qt();
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
@@ -52,7 +50,6 @@ Rectangle {
             if (j!=0 && iconlist[j] == current_icon_theme)
                 choices.remove(j);
         }
-
 
         if (sessiondispatcher.get_show_desktop_icons_qt())
             iconswitcher.switchedOn = true;
@@ -83,6 +80,7 @@ Rectangle {
     ListModel {
         id: choices
     }
+
     Column {
         spacing: 10
         anchors.top: parent.top
@@ -106,13 +104,12 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             text: desktopiconsetpage.actiontext
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            text: desktopiconsetpage.actiontext
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
-
 
     Row {
         id: settitle
@@ -198,9 +195,9 @@ Rectangle {
                 }
             }
             Timer {
-                     interval: 5000; running: true; repeat: true
-                     onTriggered: statusImage.visible = false
-                 }
+                interval: 5000; running: true; repeat: true
+                onTriggered: statusImage.visible = false
+            }
         }
     }
 
@@ -211,7 +208,6 @@ Rectangle {
             leftMargin: 40
             top: themeline.bottom
             topMargin: 30
-
         }
         Text{
             id: showtitle
@@ -228,7 +224,6 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
         }
     }
-
 
     Column {
         anchors{
@@ -260,7 +255,6 @@ Rectangle {
                     }
                 }
             }
-
         }
 
         Row {
@@ -275,7 +269,6 @@ Rectangle {
             }
             Common.Switch {
                 id: folderswitcher
-//                width: parent.width
                 onSwitched: {
                     if (folderswitcher.switchedOn) {
                         sessiondispatcher.set_show_homefolder_qt(true);
@@ -299,7 +292,6 @@ Rectangle {
             }
             Common.Switch {
                 id: networkswitcher
-//                width: parent.width
                 onSwitched: {
                     if (networkswitcher.switchedOn) {
                         sessiondispatcher.set_show_network_qt(true);
@@ -323,7 +315,6 @@ Rectangle {
             }
             Common.Switch {
                 id: trashswitcher
-//                width: parent.width
                 onSwitched: {
                     if (trashswitcher.switchedOn) {
                         sessiondispatcher.set_show_trash_qt(true);
@@ -348,7 +339,6 @@ Rectangle {
             }
             Common.Switch {
                 id: deviceswitcher
-//                width: parent.width
                 onSwitched: {
                     if (deviceswitcher.switchedOn) {
                         sessiondispatcher.set_show_devices_qt(true);
@@ -359,7 +349,6 @@ Rectangle {
                 }
             }
         }
-
     }//Column
 
     //顶层工具栏

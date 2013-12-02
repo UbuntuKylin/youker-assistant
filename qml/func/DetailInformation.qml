@@ -15,7 +15,6 @@
  */
 
 import QtQuick 1.1
-import SystemType 0.1
 import "./bars" as Bars
 import "./info" as Info
 
@@ -36,6 +35,8 @@ Rectangle {
         listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "../img/sysButton/CPU.png"});
         listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "../img/sysButton/memory.png"});
         listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "../img/sysButton/board.png"});
+        listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "../img/sysButton/board.png"});
+        listModel.append({"name": qsTr("NetworkCard"), "flag": "networkcard", "iconName": "../img/sysButton/monitor.png"});
         listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "../img/sysButton/monitor.png"});
 //        systemdispatcher.get_detail_system_message_qt();//获取详细信息
     }
@@ -65,8 +66,8 @@ Rectangle {
                 anchors.fill: parent
                 model: listModel
                 footer: returnDelegate
-                height: parent.height
-                width: parent.width
+//                    height: parent.height
+//                    width: parent.width
                 delegate: DetailDelegate {
                     onSendFlag: {
                         if(flag == "computer") {
@@ -83,6 +84,12 @@ Rectangle {
                         }
                         else if(flag == "memory") {
                             window.state = "MemoryPage";
+                        }
+                        else if(flag == "harddisk") {
+                            window.state = "HarddiskPage";
+                        }
+                        else if(flag == "networkcard") {
+                            window.state = "NetworkPage";
                         }
                         else if(flag == "monitor") {
                             window.state = "MonitorPage";
@@ -130,6 +137,20 @@ Rectangle {
             }
             Info.MemoryInfo {
                 id: memoryLayer
+                width: parent.width
+                height: parent.height
+//                x: (parent.width * 1.5)
+                visible: false
+            }
+            Info.HardDiskInfo {
+                id: hardLayer
+                width: parent.width
+                height: parent.height
+//                x: (parent.width * 1.5)
+                visible: false
+            }
+            Info.NetworkCardInfo {
+                id: networkLayer
                 width: parent.width
                 height: parent.height
 //                x: (parent.width * 1.5)
@@ -281,6 +302,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -290,6 +313,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -299,6 +324,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: true }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -308,6 +335,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: true }
             PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -317,6 +346,30 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: true }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: false }
+            PropertyChanges { target: monitorLayer; visible: false }
+        },
+        State {
+            name: "HarddiskPage"
+            PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: false }
+            PropertyChanges { target: cpuLayer;  visible: false }
+            PropertyChanges { target: biosLayer; visible: false }
+            PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: true }
+            PropertyChanges { target: networkLayer; visible: false }
+            PropertyChanges { target: monitorLayer; visible: false }
+        },
+        State {
+            name: "NetworkPage"
+            PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: false }
+            PropertyChanges { target: cpuLayer;  visible: false }
+            PropertyChanges { target: biosLayer; visible: false }
+            PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: true }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -326,6 +379,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: true }
         }
     ]

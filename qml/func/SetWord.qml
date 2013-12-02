@@ -89,7 +89,7 @@ Rectangle {
 
             else if (flag == "WidgetTheme")
                 pageStack.push(widgetthemepage);
-            else if (flag == "DesktopiconSet")
+            else if (flag == "Desktopicon")
                 pageStack.push(desktopiconsetpage);
             else if (flag == "MousePointer")
                 pageStack.push(mousepointerpage);

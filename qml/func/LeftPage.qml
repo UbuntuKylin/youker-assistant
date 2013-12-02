@@ -15,8 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 
 Rectangle {
@@ -70,19 +68,7 @@ Rectangle {
         target: systemdispatcher
         onFinishCleanWorkMain: {//收到清理后的状态
             if (msg == "") {//在弹出输入密码验证时，点击了取消按钮
-                if (cachestatus.visible == true)
-                    cachestatus.visible = false;
-                if (historystatus.visible == true)
-                    historystatus.visible = false;
-                if (cookiestatus.visible == true)
-                    cookiestatus.visible = false;
-                if (cachedes.visible == true)
-                    cachedes.visible = false;
-                if (historydes.visible == true)
-                    historydes.visible = false;
-                if (cookiedes.visible == true)
-                    cookiedes.visible = false;
-                firstonekey.text = qsTr("Clean Quickly");//一键清理
+                //do nothing
             }
             else if (msg == "c") {
                 cachestatus.state = "GarbageOK";
@@ -144,13 +130,13 @@ Rectangle {
     //子checkbox勾选的个数变化时
     onCheck_numChanged: {
         if(check_num == 0) {//子checkbox勾选的个数为0，主checkbox状态置为"false"
-            chek.checked = "false";
+            mainCheck.checked = "false";
         }
-        else if(check_num==leftbar.num) {//子checkbox全部被勾选时，主checkbox状态置为"true"
-            chek.checked = "true";
+        else if(check_num == leftbar.num) {//子checkbox全部被勾选时，主checkbox状态置为"true"
+            mainCheck.checked = "true";
         }
         else {//存在子checkbox被勾选，但没有全部被勾选时，主checkbox状态置为"mid"
-            chek.checked = "mid";
+            mainCheck.checked = "mid";
         }
     }
     //背景
@@ -215,6 +201,19 @@ Rectangle {
                     }
                     else {
                         if (leftbar.flag == "onekeyscan") {//一键扫描
+                            if (cachestatus.visible == true)
+                                cachestatus.visible = false;
+                            if (historystatus.visible == true)
+                                historystatus.visible = false;
+                            if (cookiestatus.visible == true)
+                                cookiestatus.visible = false;
+                            if (cachedes.visible == true)
+                                cachedes.visible = false;
+                            if (historydes.visible == true)
+                                historydes.visible = false;
+                            if (cookiedes.visible == true)
+                                cookiedes.visible = false;
+
                             staticImage.visible = false;
                             dynamicImage.visible = true;
                             showLabel.visible = false;
@@ -233,29 +232,27 @@ Rectangle {
                 }
             }
         }
-
     }//Row
 
-    Row {
-        spacing: 10
-        anchors { top: myrow.bottom; topMargin: 10; left: parent.left; leftMargin: 20 }
-        Text {
-            id: showLabel
-            width: 50
-            visible: false
-            text: qsTr("Scan to:  ")//扫描到：
-        }
-        Text {
-            id: showText
-            width: leftbar.width - 180 - 60
-            text: ""
-            color: "green"
-        }
-    }
-
     Column {
-        anchors { top: myrow.bottom; topMargin: 50; left: parent.left; leftMargin: 20 }
-        spacing:45
+        id: scanColumn
+        anchors { top: myrow.bottom; topMargin: 10; left: parent.left; leftMargin: 20 }
+        spacing: 20
+        Row {
+            spacing: 10
+            Text {
+                id: showLabel
+                width: 50
+                visible: false
+                text: qsTr("Scan to:  ")//扫描到：
+            }
+            Text {
+                id: showText
+                width: leftbar.width - 180 - 60
+                text: ""
+                color: "green"
+            }
+        }
         Row{
             spacing: 10
             Common.Label {
@@ -266,318 +263,310 @@ Rectangle {
                 color: "#008000"
             }
             Common.MainCheckBox {
-                id:chek
+                id:mainCheck
                 checked:"true"//默认情况将所有选项都勾选上
                 //主checkbox的值改变时，当改变为true，即子checkbox全部勾选上;当改变为false，即子checkbox全部不被勾选
                 onCheckedboolChanged: {
-                    garbageCheck.checked = chek.checkedbool;
-                    historyCheck.checked = chek.checkedbool;
-                    cookiesCheck.checked = chek.checkedbool;
+                    garbageCheck.checked = mainCheck.checkedbool;
+                    historyCheck.checked = mainCheck.checkedbool;
+                    cookiesCheck.checked = mainCheck.checkedbool;
                 }
             }
         }
-        Column {
-            anchors.left: parent.left
-            anchors.leftMargin: 45
-            spacing:30
-        //---------------------------
+    }
+
+    //列表
+    Column {
+        anchors.top: parent.top
+        anchors.topMargin: 250
+        anchors.left: parent.left
+        anchors.leftMargin: 45
+        spacing:30
+        //-------------garbage--------------
+        Item {
+            width: parent.width
+            height:45 //65
             Item {
-                width: parent.width
-                height:45 //65
-                Item {
-                    Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-                    id: scaleMe
-                    //checkbox, picture and words
-                    Row {
-                        id: lineLayout
-                        spacing: 15
+                Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+                //checkbox, picture and words
+                Row {
+                    spacing: 15
+                    anchors.verticalCenter: parent.verticalCenter
+                    Common.CheckBox {
+                        id: garbageCheck
+                        checked:true
                         anchors.verticalCenter: parent.verticalCenter
-                        Common.CheckBox {
-                            id: garbageCheck
-                            checked:true
-                            anchors.verticalCenter: parent.verticalCenter
-                            onCheckedChanged: {
-                                if(garbageCheck.checked) {
-                                    leftbar.check_num = leftbar.check_num + 1;
-                                }
-                                else {
-                                    leftbar.check_num = leftbar.check_num - 1;
-                                }
-                                if (garbageCheck.checked) {
-                                    var rubbishlist = systemdispatcher.get_onekey_args();
-                                    var word_flag = "false";
-                                    for (var i=0; i<rubbishlist.length; i++) {
-                                        if (rubbishlist[i] == "cache") {
-                                            word_flag = "true";
-                                            break;
-                                        }
-                                    }
-                                    if (word_flag == "false") {
-                                        systemdispatcher.set_onekey_args("cache");
+                        onCheckedChanged: {
+                            if(garbageCheck.checked) {
+                                leftbar.check_num = leftbar.check_num + 1;
+                            }
+                            else {
+                                leftbar.check_num = leftbar.check_num - 1;
+                            }
+                            if (garbageCheck.checked) {
+                                var rubbishlist = systemdispatcher.get_onekey_args();
+                                var word_flag = "false";
+                                for (var i=0; i<rubbishlist.length; i++) {
+                                    if (rubbishlist[i] == "cache") {
+                                        word_flag = "true";
+                                        break;
                                     }
                                 }
-                                else if (!garbageCheck.checked) {
-                                    systemdispatcher.del_onekey_args("cache");
+                                if (word_flag == "false") {
+                                    systemdispatcher.set_onekey_args("cache");
                                 }
                             }
+                            else if (!garbageCheck.checked) {
+                                systemdispatcher.del_onekey_args("cache");
+                            }
                         }
-                        Image {
-                            id: clearImage1
-                            width: 40; height: 42
-                            source:"../img/toolWidget/brush.png" //picturename
-                        }
-                        Column {
-                            spacing: 5
-                            Row {
-                                spacing: 20
-                                Text {
-                                    text: qsTr("Clean up the garbage")//清理垃圾
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
-                                }
-                                Text {
-                                    id: cachedes
-                                    color: "green"
-                                    text: ""
-                                    visible: false
-                                }
+                    }
+                    Image {
+                        width: 40; height: 42
+                        source:"../img/toolWidget/brush.png"
+                    }
+                    Column {
+                        spacing: 5
+                        Row {
+                            spacing: 20
+                            Text {
+                                text: qsTr("Clean up the garbage")//清理垃圾
+                                font.bold: true
+                                font.pixelSize: 14
+                                color: "#383838"
                             }
                             Text {
-                                text: qsTr("Clean up system junk files, free disk space")//清理系统中的垃圾文件，释放磁盘空间
-                                font.pixelSize: 12
-                                color: "#7a7a7a"
+                                id: cachedes
+                                color: "green"
+                                text: ""
+                                visible: false
                             }
                         }
-                    }
-                    Common.StatusImage {
-                        id: cachestatus
-                        visible: false
-                        iconName: "yellow.png"
-                        text: qsTr("Unfinished")//未完成
-                        anchors {
-                            left: parent.left; leftMargin: 450
+                        Text {
+                            text: qsTr("Clean up system junk files, free disk space")//清理系统中的垃圾文件，释放磁盘空间
+                            font.pixelSize: 12
+                            color: "#7a7a7a"
                         }
-                        states: [
-                            State {
-                                name: "GarbageOK"
-                                PropertyChanges { target: cachestatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
-                            },
-
-                            State {
-                                name: "GarbageException"
-                                PropertyChanges { target: cachestatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
-                            },
-                            State {
-                                name: "GarbageNO"
-                                PropertyChanges { target: cachestatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
-                            }
-                        ]
-                    }
-                    Rectangle {  //分割条
-                        width: parent.width; height: 1
-                        anchors { top: lineLayout.bottom; topMargin: 5}
-                        color: "gray"
                     }
                 }
+                Common.StatusImage {
+                    id: cachestatus
+                    visible: false
+                    iconName: "yellow.png"
+                    text: qsTr("Unfinished")//未完成
+                    anchors {
+                        left: parent.left; leftMargin: 450
+                    }
+                    states: [
+                        State {
+                            name: "GarbageOK"
+                            PropertyChanges { target: cachestatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
+                        },
+                        State {
+                            name: "GarbageException"
+                            PropertyChanges { target: cachestatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
+                        },
+                        State {
+                            name: "GarbageNO"
+                            PropertyChanges { target: cachestatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
+                        }
+                    ]
+                }
+//                Rectangle {  //分割条
+//                    width: parent.width; height: 1
+//                    anchors { top: lineLayout.bottom; topMargin: 5}
+//                    color: "red"
+//                }
             }
-        //----------------------------
-
-            Item {
+        }
+        //---------------history-------------
+        Item {
             width: parent.width
             height: 45//65
-                Item {
-                    Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-                    id: scaleMe1
-                    //checkbox, picture and words
-                    Row {
-                        id: lineLayout1
-                        spacing: 15
-                        anchors.verticalCenter: parent.verticalCenter
-                        Common.CheckBox {
-                            id: historyCheck
-                            checked:true    //将所有选项都check
-                            anchors.verticalCenter: parent.verticalCenter
-                            onCheckedChanged: {
-                                if(historyCheck.checked) {
-                                    leftbar.check_num = leftbar.check_num+1;
-                                }
-                                else {
-                                    leftbar.check_num = leftbar.check_num-1;
-                                }
-                                if (historyCheck.checked) {
-                                    var historylist = systemdispatcher.get_onekey_args();
-                                    var word_flag1 = "false";
-                                    for (var j=0; j<historylist.length; j++) {
-                                        if (historylist[j] == "history") {
-                                            word_flag1 = "true";
-                                            break;
-                                        }
-                                    }
-                                    if (word_flag1 == "false") {
-                                        systemdispatcher.set_onekey_args("history");
-                                    }
-                                }
-                                else if (!historyCheck.checked) {
-                                    systemdispatcher.del_onekey_args("history");
-                                }
-                            }
-                        }
-                        Image {
-                            id: clearImage2
-                            width: 40; height: 42
-                            source: "../img/toolWidget/history.png"//picturename
-                        }
-                        Column {
-                            spacing: 5
-                            Row {
-                                spacing: 20
-                                Text {
-                                    text: qsTr("Clean history")//清理历史记录
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
-                                }
-                                Text {
-                                    id: historydes
-                                    color: "green"
-                                    text: ""
-                                    visible: false
-                                }
-                            }
-                            Text {
-                                text: qsTr("Clean up the Internet histories, and protect your privacy")//清理上网时留下的历史记录，保护您的个人隐私
-                                font.pixelSize: 12
-                                color: "#7a7a7a"
-                            }
-                        }
-                    }
-                    Common.StatusImage {
-                        id: historystatus
-                        visible: false
-                        iconName: "yellow.png"
-                        text: qsTr("Unfinished")//未完成
-                        anchors {
-                            left: parent.left; leftMargin: 450
-                        }
-                        states: [
-                            State {
-                                name: "HistoryOK"
-                                PropertyChanges { target: historystatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
-                            },
-
-                            State {
-                                name: "HistoryException"
-                                PropertyChanges { target: historystatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
-                            },
-                            State {
-                                name: "HistoryNo"
-                                PropertyChanges { target: historystatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
-                            }
-                        ]
-                    }
-                }
-            }
-        //----------------------------
-
             Item {
-                width: parent.width
-                height: 45//65
-                Item {
-                    Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
-                    id: scaleMe2
-                    //checkbox, picture and words
-                    Row {
-                        id: lineLayout2
-                        spacing: 15
+                Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+                //checkbox, picture and words
+                Row {
+                    spacing: 15
+                    anchors.verticalCenter: parent.verticalCenter
+                    Common.CheckBox {
+                        id: historyCheck
+                        checked:true    //将所有选项都check
                         anchors.verticalCenter: parent.verticalCenter
-                        Common.CheckBox {
-                            id: cookiesCheck
-                            checked:true    //将所有选项都check
-                            anchors.verticalCenter: parent.verticalCenter
-                            onCheckedChanged: {
-                                if(cookiesCheck.checked) {
-                                    leftbar.check_num = leftbar.check_num+1;
-                                }
-                                else {
-                                    leftbar.check_num = leftbar.check_num-1;
-                                }
-                                if (cookiesCheck.checked) {
-                                    var cookieslist = systemdispatcher.get_onekey_args();
-                                    var word_flag2 = "false";
-                                    for (var k=0; k<cookieslist.length; k++) {
-                                        if (cookieslist[k] == "cookies") {
-                                            word_flag2 = "true";
-                                            break;
-                                        }
-                                    }
-                                    if (word_flag2 == "false") {
-                                        systemdispatcher.set_onekey_args("cookies");
+                        onCheckedChanged: {
+                            if(historyCheck.checked) {
+                                leftbar.check_num = leftbar.check_num+1;
+                            }
+                            else {
+                                leftbar.check_num = leftbar.check_num-1;
+                            }
+                            if (historyCheck.checked) {
+                                var historylist = systemdispatcher.get_onekey_args();
+                                var word_flag1 = "false";
+                                for (var j=0; j<historylist.length; j++) {
+                                    if (historylist[j] == "history") {
+                                        word_flag1 = "true";
+                                        break;
                                     }
                                 }
-                                else if (!cookiesCheck.checked) {
-                                    systemdispatcher.del_onekey_args("cookies");
+                                if (word_flag1 == "false") {
+                                    systemdispatcher.set_onekey_args("history");
                                 }
                             }
+                            else if (!historyCheck.checked) {
+                                systemdispatcher.del_onekey_args("history");
+                            }
                         }
-                        Image {
-                            id: clearImage3
-                            width: 40; height: 42
-                            source: "../img/toolWidget/cookies.png"//picturename
-                        }
-                        Column {
-                            spacing: 5
-                            Row {
-                                spacing: 20
-                                Text {
-                                    text: qsTr("Clean Cookies")//清理Cookies
-                                    font.bold: true
-                                    font.pixelSize: 14
-                                    color: "#383838"
-                                }
-                                Text {
-                                    id: cookiedes
-                                    color: "green"
-                                    text: ""
-                                    visible: false
-                                }
+                    }
+                    Image {
+                        width: 40; height: 42
+                        source: "../img/toolWidget/history.png"
+                    }
+                    Column {
+                        spacing: 5
+                        Row {
+                            spacing: 20
+                            Text {
+                                text: qsTr("Clean history")//清理历史记录
+                                font.bold: true
+                                font.pixelSize: 14
+                                color: "#383838"
                             }
                             Text {
-                                text: qsTr("Clean up the Internet Cookies, and give a piece of the sky to browser.")//清理上网时产生的Cookies，还浏览器一片天空
-                                font.pixelSize: 12
-                                color: "#7a7a7a"
+                                id: historydes
+                                color: "green"
+                                text: ""
+                                visible: false
                             }
                         }
-                    }
-                    Common.StatusImage {
-                        id: cookiestatus
-                        visible: false
-                        iconName: "yellow.png"
-                        text: qsTr("Unfinished")//未完成
-                        anchors {
-                            left: parent.left; leftMargin: 450
+                        Text {
+                            text: qsTr("Clean up the Internet histories, and protect your privacy")//清理上网时留下的历史记录，保护您的个人隐私
+                            font.pixelSize: 12
+                            color: "#7a7a7a"
                         }
-                        states: [
-                            State {
-                                name: "CookiesOK"
-                                PropertyChanges { target: cookiestatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
-                            },
-
-                            State {
-                                name: "CookiesException"
-                                PropertyChanges { target: cookiestatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
-                            },
-                            State {
-                                name: "CookiesNO"
-                                PropertyChanges { target: cookiestatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
-                            }
-                        ]
                     }
                 }
+                Common.StatusImage {
+                    id: historystatus
+                    visible: false
+                    iconName: "yellow.png"
+                    text: qsTr("Unfinished")//未完成
+                    anchors {
+                        left: parent.left; leftMargin: 450
+                    }
+                    states: [
+                        State {
+                            name: "HistoryOK"
+                            PropertyChanges { target: historystatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
+                        },
+
+                        State {
+                            name: "HistoryException"
+                            PropertyChanges { target: historystatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
+                        },
+                        State {
+                            name: "HistoryNo"
+                            PropertyChanges { target: historystatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
+                        }
+                    ]
+                }
             }
-        }//Column
+        }
+        //---------------cookies-------------
+        Item {
+            width: parent.width
+            height: 45//65
+            Item {
+                Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
+                //checkbox, picture and words
+                Row {
+                    spacing: 15
+                    anchors.verticalCenter: parent.verticalCenter
+                    Common.CheckBox {
+                        id: cookiesCheck
+                        checked:true    //将所有选项都check
+                        anchors.verticalCenter: parent.verticalCenter
+                        onCheckedChanged: {
+                            if(cookiesCheck.checked) {
+                                leftbar.check_num = leftbar.check_num+1;
+                            }
+                            else {
+                                leftbar.check_num = leftbar.check_num-1;
+                            }
+                            if (cookiesCheck.checked) {
+                                var cookieslist = systemdispatcher.get_onekey_args();
+                                var word_flag2 = "false";
+                                for (var k=0; k<cookieslist.length; k++) {
+                                    if (cookieslist[k] == "cookies") {
+                                        word_flag2 = "true";
+                                        break;
+                                    }
+                                }
+                                if (word_flag2 == "false") {
+                                    systemdispatcher.set_onekey_args("cookies");
+                                }
+                            }
+                            else if (!cookiesCheck.checked) {
+                                systemdispatcher.del_onekey_args("cookies");
+                            }
+                        }
+                    }
+                    Image {
+                        width: 40; height: 42
+                        source: "../img/toolWidget/cookies.png"//picturename
+                    }
+                    Column {
+                        spacing: 5
+                        Row {
+                            spacing: 20
+                            Text {
+                                text: qsTr("Clean Cookies")//清理Cookies
+                                font.bold: true
+                                font.pixelSize: 14
+                                color: "#383838"
+                            }
+                            Text {
+                                id: cookiedes
+                                color: "green"
+                                text: ""
+                                visible: false
+                            }
+                        }
+                        Text {
+                            text: qsTr("Clean up the Internet Cookies, and give a piece of the sky to browser.")//清理上网时产生的Cookies，还浏览器一片天空
+                            font.pixelSize: 12
+                            color: "#7a7a7a"
+                        }
+                    }
+                }
+                Common.StatusImage {
+                    id: cookiestatus
+                    visible: false
+                    iconName: "yellow.png"
+                    text: qsTr("Unfinished")//未完成
+                    anchors {
+                        left: parent.left; leftMargin: 450
+                    }
+                    states: [
+                        State {
+                            name: "CookiesOK"
+                            PropertyChanges { target: cookiestatus; iconName: "green.png"; text: qsTr("Completed")}//已完成
+                        },
+
+                        State {
+                            name: "CookiesException"
+                            PropertyChanges { target: cookiestatus; iconName: "red.png"; text: qsTr("Exception occurred")}//出现异常
+                        },
+                        State {
+                            name: "CookiesNO"
+                            PropertyChanges { target: cookiestatus; iconName: "yellow.png"; text: qsTr("Unfinished")}//未完成
+                        }
+                    ]
+                }
+            }
+        }
     }//Column
-}//左边栏Rectangle
+}
 
 
 
