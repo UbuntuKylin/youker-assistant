@@ -117,7 +117,9 @@ class DetailInfo:
         self.Boa = {}
         self.Mem = {}
         self.Com,self.Cpu,self.Boa,self.Mem  = self.dmi.scan_dmi()
-        self.hw = os.popen("lshw").read()
+        h = os.popen("lshw")
+        self.hw = h.read()
+        h.close()
         return 
 
     def uptimeinfo(self):

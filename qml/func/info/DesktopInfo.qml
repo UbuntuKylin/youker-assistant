@@ -43,7 +43,7 @@ Rectangle {
         }
         spacing: 20
         Row {
-            Text {
+            Common.Label {
                 id: desktoptitle
                 text: qsTr("Desktop information")//桌面信息
                 font.bold: true
@@ -61,100 +61,58 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
-                    text: qsTr("Host name:")//主机名:
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    text: sessiondispatcher.getSingleInfo("hostname")
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Platform:")//平台:
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    text: sessiondispatcher.getSingleInfo("platform")
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Distribution:")//发行版:
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    text: sessiondispatcher.getSingleInfo("distribution")
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Environment:")//桌面环境:
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("desktopenvironment")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Language:")//语言:
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("language")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
 
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("User:")//当前用户:
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("currrent_user")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Home directory:")//用户主目录:
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("home_path")
-                    font.pixelSize: 12
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }

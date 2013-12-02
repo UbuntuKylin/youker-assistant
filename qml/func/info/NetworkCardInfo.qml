@@ -49,7 +49,7 @@ Rectangle {
         spacing: 20
 
         Row {
-            Text {
+            Common.Label {
                 id: basictitle
                 text: qsTr("Network Card information")//网卡信息
                 font.bold: true
@@ -68,7 +68,7 @@ Rectangle {
 
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Network Card Model:")//网卡型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -83,7 +83,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Vendor:")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -98,7 +98,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Bus Address:")//总线地址：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -113,7 +113,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Device Name:")//设备名称：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -128,8 +128,8 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
-                    text: qsTr("Fireware Version:")//固件版本：
+                Common.Label {
+                    text: qsTr("Firmware Version:")//固件版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -143,7 +143,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Mac Address:")//MAC地址：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -158,8 +158,8 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
-                    text: qsTr("Net Size:")//带宽大小：
+                Common.Label {
+                    text: qsTr("Bandwidth Size:")//带宽大小：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -173,8 +173,8 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
-                    text: qsTr("Max Size:")//最大带宽：
+                Common.Label {
+                    text: qsTr("Maximum Bandwidth:")//最大带宽：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -188,8 +188,8 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
-                    text: qsTr("Bit Size:")//网卡位宽：
+                Common.Label {
+                    text: qsTr("NIC-bit Wide:")//网卡位宽：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130

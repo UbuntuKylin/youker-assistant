@@ -16,35 +16,17 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
-import SudoType 0.1
-import FcitxCfgWizard 0.1
 import "./func/common" as Common
 import "./func/settings" as SysSettings
 import "func"
-//Rectangle {
+
 Item {
     id:content
     width: parent.width
     height: parent.height - 30  //去掉StatusWidget所占用的高度30
-//    radius: 10
+//    radius: 1
 //    color: "lightgray"
-
     property string text: "homepage"
-//    SessionDispatcher {
-//        id: sessiondispatcher
-//    }
-//    SystemDispatcher {
-//        id: systemdispatcher
-//    }
-//    SudoDispatcher {
-//        id: sudodispatcher
-//    }
-//    FcitxCfgWizard {
-//        id: fcitxcfgwizard
-//    }
-
     Rectangle {
         id: rectangle1
         width: parent.width
@@ -53,17 +35,15 @@ Item {
         //标题栏
         TitleWidget {
             id: titlebar
-            height: 40//20
-//                opacity: 0.3
+            height: 40
         }
         //功能图标栏
         ToolWidget {
             id: toolwidget
-            height: 64//84
+            height: 64
             anchors {
                 top: titlebar.bottom
                 topMargin: 18
-//                    topMargin: 45
             }
         }
 
@@ -73,7 +53,6 @@ Item {
             anchors {
                 top: titlebar.bottom
                 topMargin: 59
-//                    topMargin: 45
             }
             height: parent.height - 104 //去掉标题栏 + 功能图标栏 + StatusWidget的高度
             property string text: "homepage"

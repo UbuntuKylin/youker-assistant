@@ -43,7 +43,7 @@ Rectangle {
         spacing: 20
 
         Row {
-            Text {
+            Common.Label {
                 id: basictitle
                 text: qsTr("Basic information")//主板基本信息
                 font.bold: true
@@ -61,7 +61,7 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Motherboard Model:")//主板型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -76,7 +76,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Motherboard Vendor:")//主板产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -91,7 +91,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Serial:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -106,7 +106,7 @@ Rectangle {
             }
         }
         Row {
-            Text {
+            Common.Label {
                 id: biostitle
                 text: qsTr("Bios information")//BIOS信息
                 font.bold: true
@@ -126,7 +126,7 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Bios Vendor:")//BIOS产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -141,7 +141,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Bios Version:")//BIOS版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -156,7 +156,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Release Date:")//发布日期：
                     font.pixelSize: 14
                     color: "#7a7a7a"

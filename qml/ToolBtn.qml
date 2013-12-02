@@ -32,8 +32,6 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
-
-
     Image {
         id: btnImg
         anchors.fill: parent
@@ -62,21 +60,6 @@ Rectangle {
             else if (text == "functioncollection") {
                 btnImg.source = "./img/toolWidget/0005.png"
             }
-//            if (text == "homepage") {
-//                btnImg.source = "./img/toolWidget/homepage-hover.png"
-//            }
-//            else if (text == "clearrubbish") {
-//                btnImg.source = "./img/toolWidget/systemclear-hover.png"
-//            }
-//            else if (text == "systemset") {
-//                btnImg.source = "./img/toolWidget/systembeauty-hover.png"
-//            }
-//            else if (text == "systemmessage") {
-//                btnImg.source = "./img/toolWidget/systemmessage-hover.png"
-//            }
-//            else if (text == "functioncollection") {
-//                btnImg.source = "./img/toolWidget/functioncollection-hover.png"
-//            }
         }
         //鼠标按下时
         onPressed: {
@@ -95,21 +78,6 @@ Rectangle {
             else if (text == "functioncollection") {
                 btnImg.source = "./img/toolWidget/0005.png"
             }
-//            if (text == "homepage") {
-//                btnImg.source = "./img/toolWidget/homepage-hover.png"
-//            }
-//            else if (text == "clearrubbish") {
-//                btnImg.source = "./img/toolWidget/systemclear-hover.png"
-//            }
-//            else if (text == "systemset") {
-//                btnImg.source = "./img/toolWidget/systembeauty-hover.png"
-//            }
-//            else if (text == "systemmessage") {
-//                btnImg.source = "./img/toolWidget/systemmessage-hover.png"
-//            }
-//            else if (text == "functioncollection") {
-//                btnImg.source = "./img/toolWidget/functioncollection-hover.png"
-//            }
         }
         //要判断松开是鼠标位置
         //鼠标按下松开时
@@ -129,21 +97,6 @@ Rectangle {
             else if (text == "functioncollection") {
                 btnImg.source = "./img/toolWidget/005.png"
             }
-//            if (text == "homepage") {
-//                btnImg.source = "./img/toolWidget/homepage.png"
-//            }
-//            else if (text == "clearrubbish") {
-//                btnImg.source = "./img/toolWidget/systemclear.png"
-//            }
-//            else if (text == "systemset") {
-//                btnImg.source = "./img/toolWidget/systembeauty.png"
-//            }
-//            else if (text == "systemmessage") {
-//                btnImg.source = "./img/toolWidget/systemmessage.png"
-//            }
-//            else if (text == "functioncollection") {
-//                btnImg.source = "./img/toolWidget/functioncollection.png"
-//            }
         }
         //鼠标按下松开再移开时
         onExited: btnImg.source = ""
@@ -183,11 +136,9 @@ Rectangle {
     Text {
         id: displaytext
         color: "white"
-//        anchors.centerIn: seticon
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: seticon.left
         anchors.leftMargin: (menulogo.text == "homepage") ? 60: 45
-//        font.family: "Helvetica"
         font.family: "Arial"
         font.pixelSize: 14
         text: menulogo.showtext

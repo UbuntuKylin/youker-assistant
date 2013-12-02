@@ -18,14 +18,6 @@ import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
 
-
-/*
- Vga_product         显卡型号
-#   Vga_vendor          显卡制造商
-#   Vga_businfo         显卡总线地址
-
-{'Vga_product': ' 2nd Generation Core Processor Family Integrated Graphics Controller',
-'Vga_businfo': ' pci@0000:00:02.0', 'Vga_vendor': ' Intel Corporation', 'Mon_chip': 'Intel(R) HD Graphics 3000'}*/
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
@@ -81,9 +73,9 @@ Rectangle {
         spacing: 20
 
         Row {
-            Text {
+            Common.Label {
                 id: titlebar
-                text: qsTr("Monitor information")//显示器信息
+                text: qsTr("Monitor And Graphics Card information")//显示器和显卡信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -99,7 +91,7 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Current Graphics Card:")//当前显卡：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -114,7 +106,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Graphics Card Model:")//显卡型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -129,7 +121,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Graphics Card Vendor:")//显卡制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -144,7 +136,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Graphics Card Bus Address:")//显卡总线地址：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -161,7 +153,7 @@ Rectangle {
 
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: productLabel
                     text: qsTr("Monitor:")//显示器：
                     font.pixelSize: 14
@@ -177,7 +169,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: vendorLabel
                     text: qsTr("Vendor:")//制造商：
                     font.pixelSize: 14
@@ -193,7 +185,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: dateLabel
                     text: qsTr("Production Date(year/week):")//生产日期(年/周)：
                     font.pixelSize: 14
@@ -209,7 +201,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: sizeLabel
                     text: qsTr("Reading Area:")//可视面积：
                     font.pixelSize: 14
@@ -225,7 +217,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: inLabel
                     text: qsTr("Screen Size:")//屏幕尺寸：
                     font.pixelSize: 14
@@ -241,7 +233,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: maxmodeLabel
                     text: qsTr("Maximum Resolution:")//最大分辨率：
                     font.pixelSize: 14
@@ -257,7 +249,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: gammaLabel
                     text: qsTr("Gamma Value:")//伽马值：
                     font.pixelSize: 14
@@ -273,7 +265,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: outputLabel
                     text: qsTr("Current Interface:")//当前接口：
                     font.pixelSize: 14
@@ -289,7 +281,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: supportLabel
                     text: qsTr("Support Interface:")//支持接口：
                     font.pixelSize: 14

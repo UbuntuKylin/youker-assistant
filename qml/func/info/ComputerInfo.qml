@@ -58,7 +58,7 @@ Rectangle {
         }
         spacing: 20
         Row {
-            Text {
+            Common.Label {
                 id: titlebar
                 text: qsTr("Basic information")//电脑基本信息
                 font.bold: true
@@ -76,7 +76,7 @@ Rectangle {
             spacing: 15
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Vendor:")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -91,7 +91,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Model:")//电脑型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -106,7 +106,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Version:")//电脑版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -121,7 +121,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Serial:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -136,7 +136,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Hostname:")//主机名：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -151,7 +151,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Running Time:")//持续运行时间：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -166,7 +166,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("OS Model:")//操作系统类型：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -181,7 +181,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("OS Version:")//操作系统版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -196,7 +196,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Kernel Bit:")//系统位数：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -211,7 +211,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Kernel Release:")//内核版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -226,7 +226,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Kernel Architecture:")//内核架构：
                     font.pixelSize: 14
                     color: "#7a7a7a"
