@@ -206,8 +206,8 @@ void SudoDispatcher::showUpdateSourceDialog(int window_x, int window_y) {
     updatedialog->show();
 }
 
-void SudoDispatcher::clean_package_cruft_qt(QStringList strlist) {
-    KThread *thread = new KThread(strlist, sudoiface, "clean_package_cruft");
+void SudoDispatcher::clean_package_cruft_qt(QStringList strlist, QString flag) {
+    KThread *thread = new KThread(strlist, sudoiface, "clean_package_cruft", flag);
     thread->start();
 }
 

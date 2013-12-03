@@ -42,7 +42,7 @@ public:
     //得到sudodbus验证值，可以通过该值验证服务是否正在运行
     Q_INVOKABLE QString get_sudo_daemon_qt();
     //清理不需要的已经安装的软件
-    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
+    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist, QString flag);
     //绑定信号槽
     Q_INVOKABLE void bind_signals_after_dbus_start();
     //通过键值得到对应软件的状态

@@ -129,7 +129,6 @@ Item {
                     }
                 }
 
-
                 else if (btn_flag == "largestfile_work") {
                     var filelist = systemdispatcher.get_largestfile_args();
                     var word_flag4 = "false";
@@ -141,6 +140,20 @@ Item {
                     }
                     if (word_flag4 == "false") {
                         systemdispatcher.set_largestfile_args(container.descript);
+                    }
+                }
+
+                else if (btn_flag == "kernel_work") {
+                    var kernellist = systemdispatcher.get_kernel_args();
+                    var word_flag5 = "false";
+                    for (var y=0; y<kernellist.length; y++) {
+                        if (kernellist[y] == container.text) {
+                            word_flag5 = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag5 == "false") {
+                        systemdispatcher.set_kernel_args(container.text);
                     }
                 }
             }
@@ -156,6 +169,9 @@ Item {
                 }
                 else if (btn_flag == "package_work") {
                     systemdispatcher.del_package_args(container.text);
+                }
+                else if (btn_flag == "kernel_work") {
+                    systemdispatcher.del_kernel_args(container.text);
                 }
                 else if (btn_flag == "largestfile_work") {
                     systemdispatcher.del_largestfile_args(container.descript);

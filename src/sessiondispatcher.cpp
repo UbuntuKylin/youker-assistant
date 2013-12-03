@@ -134,6 +134,11 @@ QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
     return reply.value();
 }
 
+QStringList SessionDispatcher::scan_oldkernel_packages_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("oldkernel_scan_function");
+    return reply.value();
+}
+
 QString SessionDispatcher::getHomePath() {
     QString homepath = QDir::homePath();
     return homepath;

@@ -4,8 +4,9 @@ youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
   * Optimize button events of AuthDialog(LP: #1256183).
   * Fixed Dialog's movement and hazing when click a button(LP: #1255550).
   * Add detailed information of Network Card, HardDisk and Graphics Card.
+  * Add Clean Old Kernel Model.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 02 Dec 2013 19:12:02 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 03 Dec 2013 10:33:55 +0800
 
 youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
 

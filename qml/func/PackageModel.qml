@@ -68,8 +68,11 @@ Item {
             //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
             mainModel.append({"itemTitle": qsTr("Uninstall unnecessary procedures"),
                              "picture": "../img/toolWidget/deb-min.png",
-                             "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin"),
-                             "flags": "clear_cookies"})
+                             "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
+//            mainModel.append({"itemTitle": qsTr("Uninstall unnecessary procedures"),
+//                             "picture": "../img/toolWidget/deb-min.png",
+//                             "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin"),
+//                             "flags": "clear_package"})
         }
 
 
@@ -104,19 +107,19 @@ Item {
     {
         target: sudodispatcher
         onFinishCleanDebError: {//清理出错时收到的信号
-            if (root.btnFlag == "package_work") {
-                if (msg == "package") {
+            if (msg == "package") {
+                if (root.btnFlag == "package_work") {
                     titleBar.state = "UnneedWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
-         }
+        }
         onFinishCleanDeb: {//清理成功时收到的信号
-            if (root.btnFlag == "package_work") {
-                if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-                }
-                else if (msg == "package") {
+            if (msg == "") {
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+            }
+            else if (msg == "package") {
+                if (root.btnFlag == "package_work") {
                     root.state = "UnneedWorkFinish";
                     toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     root.flag = true;
@@ -269,7 +272,7 @@ Item {
                     }
                     else if (root.btnFlag == "package_work") {//清理
                         if(root.resultFlag) {//扫描得到的实际内容存在时
-                            sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+                            sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
                             root.arrowShow = 1;
                         }
                         else {//扫描得到的实际内容不存在时
@@ -292,7 +295,7 @@ Item {
                             }
                             else if (root.btnFlag == "package_work") {//清理
                                 if(root.resultFlag) {//扫描得到的实际内容存在时
-                                    sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args());
+                                    sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
                                     root.arrowShow = 1;
                                 }
                                 else {//扫描得到的实际内容不存在时

@@ -119,6 +119,12 @@ public:
     Q_INVOKABLE void clear_package_args();
     Q_INVOKABLE QStringList get_package_args();
 
+    QStringList kernel_args;
+    Q_INVOKABLE void set_kernel_args(QString str);
+    Q_INVOKABLE void del_kernel_args(QString str);
+    Q_INVOKABLE void clear_kernel_args();
+    Q_INVOKABLE QStringList get_kernel_args();
+
     QStringList onekey_args;
     Q_INVOKABLE void set_onekey_args(QString str);
     Q_INVOKABLE void del_onekey_args(QString str);

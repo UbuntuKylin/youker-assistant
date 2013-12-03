@@ -59,6 +59,9 @@ public:
     Q_INVOKABLE QStringList scan_apt_cruft_qt();
     //扫描软件中心缓存
     Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
+    //扫描旧内核安装包
+    Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
+
     //退出sessiondubs服务
     Q_INVOKABLE void exit_qt();
     //弹出新特性对话框

@@ -43,9 +43,7 @@ Rectangle {
         sessiondispatcher.write_default_configure_to_qsetting_file("widgettheme", "currenttheme", widgetthemepage.init_theme);
     }
 
-    ListModel {
-        id: themeModel
-    }
+    ListModel { id: themeModel }
 
     //背景
     Image {

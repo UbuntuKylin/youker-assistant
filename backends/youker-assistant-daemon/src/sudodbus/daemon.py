@@ -79,8 +79,8 @@ class SudoDaemon(PolicyKitService):
     ### input-['packagename', 'pack...]   output-''
     #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     #def clean_package_cruft(self, cruftlist):
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def clean_package_cruft(self, cruftlist, sender=None):
+    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
+    def clean_package_cruft(self, cruftlist, flag, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
             self.clean_complete_msg('')
@@ -88,9 +88,9 @@ class SudoDaemon(PolicyKitService):
         try:
             self.daemonclean.clean_the_package(cruftlist)
         except Exception, e:
-            self.clean_error_msg('package')
+            self.clean_error_msg(flag)
         else:
-            self.clean_complete_msg('package')
+            self.clean_complete_msg(flag)
 
     def clean_complete_msg(self, para):
         self.clean_complete(para)

@@ -13,101 +13,91 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 1.1
 import "common" as Common
-
+//sudo aptitude search ~i~nlinux-
 Item {
     id:root
     width: parent.width
     height: 435
-    property string sof_title: qsTr("Software Center buffer depth cleaning")//软件中心缓存深度清理
-    property string sof_description: qsTr("Deep cleaning software center cache, to save disk space")//深度清理软件中心缓存,节省磁盘空间
-    property string btnFlag: "software_scan"//扫描或者清理的标记：software_scan/software_work
-    property int subNum: 0//扫描后得到的software的项目总数
-    property int softNum: subNum//001
-
+    property string title: qsTr("Uninstall old kernel packages")//卸载旧内核包
+    property string description: qsTr("Clean old kernel, to free space for system")//清理旧内核，释放系统空间
+    property string btnFlag: "kernel_scan"//扫描或者清理的标记：kernel_scan/kernel_work
     property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
+    property int subNum: 0//扫描后得到的kernel的项目总数
+    property int kernelNum: subNum//001
     property int arrowShow: 0//传递给ClearDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
-    property bool positionFlag: true//传递给ClearDelegate.qml,为true时伸缩图标指向上方，为false时伸缩图标指向下方
+    property bool positionFlag: false//传递给ClearDelegate.qml,为true时伸缩图标指向上方，为false时伸缩图标指向下方
     property bool flag: false//记录是清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
 
-    ListModel {
-        id: mainModel
-    }
-    ListModel {
-        id: subModel
-    }
+    ListModel { id: mainModel }
+    ListModel { id: subModel }
 
-    function remove_last_name(str)
-    {
-        var need_str = str;
-        need_str = need_str.substr(0, need_str.lastIndexOf("/"));
-        return need_str;
-    }
-
-    //得到softcenter缓存
+    //得到old kernel package
     function getData() {
-        var software_data = sessiondispatcher.scan_softwarecenter_cruft_qt();
-        if (software_data.length === 0) {
-            root.resultFlag = false;//扫描内容不存在
+        var kernel_data = sessiondispatcher.scan_oldkernel_packages_qt();
+        if (kernel_data.length === 0) {//扫描内容不存在
+            root.resultFlag = false;
         }
         else {
-            root.subNum = software_data.length;//001
-            systemdispatcher.clear_software_args();
+            root.subNum = kernel_data.length;//001
+            systemdispatcher.clear_kernel_args();
             subModel.clear();
             var num = 0;
-            for (var i=0; i< software_data.length; i++) {
-            //  /home/kobe/.cache/software-center/piston-helper<2_2>3026257
-                var splitlist = software_data[i].split("<2_2>");
+            for (var i=0; i< kernel_data.length; i++) {
+            //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
+                var splitlist = kernel_data[i].split("<2_2>");
                 if (splitlist[0] == "") {
                     num++;
                 }
                 else {
-                    subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
-                    systemdispatcher.set_software_args(splitlist[0]);
+                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2]});
+                    systemdispatcher.set_kernel_args(splitlist[0]);
                 }
             }
             root.subNum -= num;//001
-            root.softNum = root.subNum;//001
-            if(root.softNum != 0) {
+            root.kernelNum = root.subNum;//001
+            if(root.kernelNum != 0) {
                 root.resultFlag = true;//扫描的实际有效内容存在
-                mainModel.clear();
-                //软件中心缓存清理     用户可以根据扫描结果选择性地清理软件中心缓存,缓存路径为:
-                mainModel.append({"itemTitle": qsTr("Software Center buffer cleaning"),
-                                 "picture": "../img/toolWidget/software-min.png",
-                                 "detailstr": qsTr("User can selectively cleaning software center cache according to the scanning result, cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
-//                mainModel.append({"itemTitle": qsTr("Software Center buffer cleaning"),
-//                                 "picture": "../img/toolWidget/software-min.png",
-//                                 "detailstr": qsTr("User can selectively cleaning software center cache according to the scanning result, cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/",
-//                                 "flags": "clear_software"})
             }
             else {
                 root.resultFlag = false;//扫描的实际有效内容不存在
             }
+            mainModel.clear();
+            //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
+            mainModel.append({"itemTitle": qsTr("Uninstall old kernel packages"),
+                             "picture": "../img/toolWidget/deb-min.png",
+                             "detailstr": qsTr("User can selectively clean old kernel packages according to the scan results, to save the system space")})
+//            mainModel.append({"itemTitle": qsTr("Uninstall old kernel packages"),
+//                             "picture": "../img/toolWidget/deb-min.png",
+//                             "detailstr": qsTr("User can selectively clean old kernel packages according to the scan results, to save the system space"),
+//                             "flags": "clear_kernel"})
         }
 
+
         if(root.resultFlag == false) {
-            root.state = "SoftwareWorkEmpty";
+            root.state = "KernelWorkEmpty";
             root.arrowShow = 0;
-            if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+            if(root.flag == false) {
                 //友情提示：      扫描内容为空，不再执行清理！
                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
             }
-            else {//清理software后的重新获取数据，此时不需要显示对话框
+            else {
                 root.flag = false;
             }
         }
         else if(root.resultFlag == true) {
-            if(flag == false) {//点击扫描时的获取数据，此时显示该对话框
+            if(root.flag == false) {
                 toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
             }
-            else {//清理software后的重新获取数据，此时不需要显示对话框
+            else {
                 root.flag = false;
             }
             root.arrowShow = 1;
-            root.state = "SoftwareWork";
+            root.state = "KernelWork";
             actionBtn.text = qsTr("Start cleaning");//开始清理
-            root.btnFlag = "software_work";
+            root.btnFlag = "kernel_work";
             backBtn.visible = true;
             rescanBtn.visible = true;
         }
@@ -115,23 +105,23 @@ Item {
 
     Connections
     {
-        target: systemdispatcher
-        onFinishCleanWorkError: {//清理出错时收到的信号
-            if (root.btnFlag == "software_work") {
-                if (msg == "software") {
-                    root.state = "SoftwareWorkError";
+        target: sudodispatcher
+        onFinishCleanDebError: {//清理出错时收到的信号
+            if (msg == "kernel") {
+                if (root.btnFlag == "kernel_work") {
+                    titleBar.state = "KernelWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
-        }
-        onFinishCleanWork: {//清理成功时收到的信号
-            if (root.btnFlag == "software_work") {
-                if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-                }
-                else if (msg == "software") {
-                    root.state = "SoftwareWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleaned!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+         }
+        onFinishCleanDeb: {//清理成功时收到的信号
+            if (msg == "") {
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+            }
+            else if (msg == "kernel") {
+                if (root.btnFlag == "kernel_work") {
+                    root.state = "KernelWorkFinish";
+                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     root.flag = true;
                     root.getData();
                 }
@@ -150,10 +140,10 @@ Item {
         id: titlebar
         spacing: 20
         width: parent.width
-        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 27 }
+        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 27}
         Image {
             id: refreshArrow
-            source: "../img/toolWidget/software-max.png"
+            source: "../img/toolWidget/deb-max.png"
             Behavior on rotation { NumberAnimation { duration: 200 } }
         }
         Column {
@@ -161,7 +151,7 @@ Item {
             spacing: 10
             Text {
                 width: 500
-                text: root.sof_title
+                text: root.title
                 wrapMode: Text.WordWrap
                 font.bold: true
                 font.pixelSize: 14
@@ -169,7 +159,7 @@ Item {
             }
             Text {
                 width: 500
-                text: root.sof_description
+                text: root.description
                 wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -213,9 +203,9 @@ Item {
                     onClicked: {
                         mainModel.clear();
                         subModel.clear();//内容清空
-                        root.softNum = 0;//隐藏滑动条
+                        root.kernelNum = 0;//隐藏滑动条
                         root.arrowShow = 0;//伸缩图标隐藏
-                        root.state = "SoftwareWorkAGAIN";//按钮的状态恢复初始值
+                        root.state = "KernelWorkAGAIN";//按钮的状态恢复初始值
                     }
                 }
             }
@@ -250,7 +240,7 @@ Item {
                     onExited: btnImg2.color = "transparent"
                     onClicked: {
                         actionBtn.text = qsTr("Start scanning");//开始扫描
-                        root.btnFlag = "software_scan";
+                        root.btnFlag = "kernel_scan";
                         backBtn.visible = false;
                         rescanBtn.visible = false;
                         subModel.clear();//内容清空
@@ -271,18 +261,49 @@ Item {
             fontsize: 15
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-                if (root.btnFlag == "software_scan") {//扫描
-                    root.flag = false;
-                    root.getData();
-                }
-                else if (root.btnFlag == "software_work") {//清理
-                    if(root.resultFlag) {//扫描得到的实际内容存在时
-                        systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_software_args(), "software");
-                        root.arrowShow = 1;
+                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {//sessiondbus服务已经成功启动了
+                    if(!sudodispatcher.getUKSignalFlag()) {
+                        sudodispatcher.setUKSignalFlag(true);
+                        sudodispatcher.bind_signals_after_dbus_start();
                     }
-                    else {//扫描得到的实际内容不存在时
-                        //友情提示：        对不起，您没有选择需要清理的项，请确认！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                    if (root.btnFlag == "kernel_scan") {//扫描
+                        root.flag = false;
+                        root.getData();
+                    }
+                    else if (root.btnFlag == "kernel_work") {//清理
+                        if(root.resultFlag) {//扫描得到的实际内容存在时
+                            sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_kernel_args(), "kernel");
+                            root.arrowShow = 1;
+                        }
+                        else {//扫描得到的实际内容不存在时
+                            //友情提示：        对不起，您没有选择需要清理的项，请确认！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
+                    }
+                }
+                else {//sessiondbus服务还没有启动
+                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
+                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+                        if(!sudodispatcher.getUKSignalFlag()) {
+                            if(!sudodispatcher.getUKSignalFlag()) {
+                                sudodispatcher.setUKSignalFlag(true);
+                                sudodispatcher.bind_signals_after_dbus_start();
+                            }
+                            if (root.btnFlag == "kernel_scan") {//扫描
+                                root.flag = false;
+                                root.getData();
+                            }
+                            else if (root.btnFlag == "kernel_work") {//清理
+                                if(root.resultFlag) {//扫描得到的实际内容存在时
+                                    sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_kernel_args(), "kernel");
+                                    root.arrowShow = 1;
+                                }
+                                else {//扫描得到的实际内容不存在时
+                                    //友情提示：        对不起，您没有选择需要清理的项，请确认！
+                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -309,13 +330,14 @@ Item {
         anchors.topMargin: 20
         anchors.left:parent.left
         anchors.leftMargin: 27
-        height: root.height - titlebar.height - 37
+        height: root.height -titlebar.height - 37
         width: parent.width - 27 -2
         Item {
             width: parent.width
-            height: (root.softNum + 1) * 40
+            height: (root.kernelNum + 1) * 40
             //垃圾清理显示内容
             ListView {
+                id: listView
                 height: parent.height
                 model: mainModel
                 delegate: Cleardelegate{
@@ -324,9 +346,8 @@ Item {
                     btn_flag: root.btnFlag
                     arrow_display: root.arrowShow
                     delegate_flag: root.positionFlag
-                    onSubpressed: {root.softNum = hMark}
-                    //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
-                    onCheckchanged: {root.resultFlag = checkchange}
+                    onSubpressed: { root.kernelNum = hMark }
+                    onCheckchanged: { root.resultFlag = checkchange }
                 }
                 cacheBuffer: 1000
                 opacity: 1
@@ -343,37 +364,37 @@ Item {
 
     states: [
         State {
-            name: "SoftwareWork"
+            name: "KernelWork"
             PropertyChanges { target: actionBtn; text:qsTr("Start cleaning") }//开始清理
-            PropertyChanges { target: root; btnFlag: "software_work" }
+            PropertyChanges { target: root; btnFlag: "kernel_work" }
             PropertyChanges { target: backBtn; visible: true}
             PropertyChanges { target: rescanBtn; visible: true}
         },
         State {
-            name: "SoftwareWorkAGAIN"
+            name: "KernelWorkAGAIN"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "software_scan" }
+            PropertyChanges { target: root; btnFlag: "kernel_scan" }
             PropertyChanges { target: backBtn; visible: false}
             PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
-            name: "SoftwareWorkError"
+            name: "KernelWorkError"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "software_scan" }
+            PropertyChanges { target: root; btnFlag: "kernel_scan" }
             PropertyChanges { target: backBtn; visible: false}
             PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
-            name: "SoftwareWorkFinish"
+            name: "KernelWorkFinish"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "software_scan" }
+            PropertyChanges { target: root; btnFlag: "kernel_scan" }
             PropertyChanges { target: backBtn; visible: false}
             PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
-            name: "SoftwareWorkEmpty"
-            PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "software_scan" }
+            name: "KernelWorkEmpty"
+            PropertyChanges { target: actionBtn; text:qsTr("Start scanning")}//开始扫描
+            PropertyChanges { target: root; btnFlag: "kernel_scan" }
             PropertyChanges { target: backBtn; visible: false}
             PropertyChanges { target: rescanBtn; visible: false}
         }

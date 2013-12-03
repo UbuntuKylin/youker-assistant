@@ -534,6 +534,31 @@ QStringList SystemDispatcher::get_package_args() {
     return package_args;
 }
 
+void SystemDispatcher::set_kernel_args(QString str) {
+    kernel_args.append(str);
+}
+
+void SystemDispatcher::del_kernel_args(QString str) {
+    QStringList bake;
+    int len = kernel_args.length();
+    for (int i=0; i< len; i++) {
+        if (kernel_args[i] != str) {
+            bake.append(kernel_args[i]);
+        }
+    }
+    kernel_args.clear();
+    kernel_args = bake;
+//    kernel_args.replaceInStrings(QString(str), QString(""));
+}
+
+void SystemDispatcher::clear_kernel_args() {
+    kernel_args.clear();
+}
+
+QStringList SystemDispatcher::get_kernel_args() {
+    return kernel_args;
+}
+
 void SystemDispatcher::set_onekey_args(QString str) {
     onekey_args.append(str);
 }
