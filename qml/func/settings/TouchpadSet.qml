@@ -38,7 +38,9 @@ Rectangle {
 
     Component.onCompleted: {
         touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
+        sessiondispatcher.write_default_configure_to_qsetting_file("touchpad", "scrolltype", touchpadsetpage.scrollbars_mode);
         touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();//edge-scrolling
+        sessiondispatcher.write_default_configure_to_qsetting_file("touchpad", "scrollmode", touchpadsetpage.touchscrolling_mode);
         if (sessiondispatcher.get_touchpad_enable_qt()) {
             touchpadswitcher.switchedOn = true;
             sessiondispatcher.write_default_configure_to_qsetting_file("touchpad", "enable", "true");
@@ -207,7 +209,11 @@ Rectangle {
                         flag: "radio"
                         onClicked: {
                             if (overlay.checked == true) {
-                                sessiondispatcher.set_scrollbars_mode_overlay_qt();
+                                if(touchpadsetpage.scrollbars_mode != "overlay-auto") {
+                                    sessiondispatcher.set_scrollbars_mode_overlay_qt();
+                                    touchpadsetpage.scrollbars_mode = "overlay-auto";
+                                    statusImage.visible = true;
+                                }
                             }
                         }
                     }
@@ -218,7 +224,11 @@ Rectangle {
                         flag: "radio"
                         onClicked: {
                             if (legacy.checked == true) {
-                                sessiondispatcher.set_scrollbars_mode_legacy_qt();
+                                if(touchpadsetpage.scrollbars_mode != "normal") {
+                                    sessiondispatcher.set_scrollbars_mode_legacy_qt();
+                                    touchpadsetpage.scrollbars_mode = "normal";
+                                    statusImage.visible = true;
+                                }
                             }
                         }
                     }
@@ -252,7 +262,11 @@ Rectangle {
                         flag: "radio"
                         onClicked: {
                             if (edge.checked == true) {
-                                sessiondispatcher.set_touchscrolling_mode_edge_qt();
+                                if(touchpadsetpage.touchscrolling_mode != "edge-scrolling") {
+                                    sessiondispatcher.set_touchscrolling_mode_edge_qt();
+                                    touchpadsetpage.touchscrolling_mode = "edge-scrolling";
+                                    statusImage.visible = true;
+                                }
                             }
                         }
                     }
@@ -263,7 +277,11 @@ Rectangle {
                         flag: "radio"
                         onClicked: {
                             if (twofinger.checked == true) {
-                                sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+                                if(touchpadsetpage.touchscrolling_mode != "two-finger-scrolling") {
+                                    sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+                                    touchpadsetpage.touchscrolling_mode = "two-finger-scrolling";
+                                    statusImage.visible = true;
+                                }
                             }
                         }
                     }
@@ -337,6 +355,9 @@ Rectangle {
         onRestoreBtnClicked: {
             var defaultenable = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "enable");
             var defaulthorizontal = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "horizontal");
+            var defaulttype = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "scrolltype");
+            var defaultmode = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "scrollmode");
+
             var enableFlag;
             var horizontalFlag;
             if(touchpadswitcher.switchedOn) {
@@ -352,7 +373,7 @@ Rectangle {
                 horizontalFlag = "false";
             }
 
-            if((defaultenable == enableFlag) && (defaulthorizontal == horizontalFlag)) {
+            if((defaultenable == enableFlag) && (defaulthorizontal == horizontalFlag) && (touchpadsetpage.scrollbars_mode == defaulttype) && (touchpadsetpage.touchscrolling_mode == defaultmode)) {
                 //友情提示：        触摸板配置已经为默认配置！
                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Touchpad configure is the default configure!"), mainwindow.pos.x, mainwindow.pos.y);
             }
@@ -376,6 +397,28 @@ Rectangle {
                         horizontalswitcher.switchedOn = false;
                         sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
                     }
+                }
+                if(touchpadsetpage.scrollbars_mode != defaulttype) {
+                    if(defaulttype == "overlay-auto") {
+                        sessiondispatcher.set_scrollbars_mode_overlay_qt();
+                        overlay.checked = true;
+                    }
+                    else if(defaulttype == "normal") {
+                        sessiondispatcher.set_scrollbars_mode_legacy_qt();
+                        legacy.checked = true;
+                    }
+                    touchpadsetpage.scrollbars_mode = defaulttype;
+                }
+                if(touchpadsetpage.touchscrolling_mode != defaultmode) {
+                    if(defaultmode == "edge-scrolling") {
+                        sessiondispatcher.set_touchscrolling_mode_edge_qt();
+                        edge.checked = true;
+                    }
+                    else if(defaultmode == "two-finger-scrolling") {
+                        sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+                        twofinger.checked = true;
+                    }
+                    touchpadsetpage.touchscrolling_mode = defaultmode;
                 }
                 statusImage.visible = true;
             }
