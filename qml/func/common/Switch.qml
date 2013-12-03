@@ -18,9 +18,9 @@ import QtQuick 1.1
 Item {
     id: container
     signal switched(bool position)
-//    property string fontName: "Helvetica"
-//    property int fontSize: 12
-//    property color fontColor: "black"
+    property string fontName: "Helvetica"
+    property int fontSize: 8
+    property color fontColor: "black"
     property string imageOn: '../../img/icons/on.png'
     property string imageOff: '../../img/icons/off.png'
     property bool switchedOn: true
@@ -36,6 +36,19 @@ Item {
         fillMode: Image.PreserveAspectFit
         smooth: true
     }
+    Text {
+//        anchors.centerIn: toggleSwitch
+        anchors.verticalCenter: toggleSwitch.verticalCenter
+        text: switchedOn ? qsTr("已开启") : qsTr("已关闭")
+        color: container.fontColor
+        anchors.left: toggleSwitch.left
+        anchors.leftMargin: switchedOn ? 5: 30
+        font {
+            family: container.fontName
+            pointSize: container.fontSize
+        }
+        verticalAlignment: Text.AlignVCenter
+    }
 //    Row {
 //        id: row
 //        spacing: 8
@@ -44,10 +57,10 @@ Item {
 //            text: qsTr("开启")
 //            height: container.height
 //            color: container.fontColor
-////            font {
-////                family: container.fontName
-////                pointSize: container.fontSize
-////            }
+//            font {
+//                family: container.fontName
+//                pointSize: container.fontSize
+//            }
 //            verticalAlignment: Text.AlignVCenter
 //        }
 //        Image {
@@ -62,10 +75,10 @@ Item {
 //            height: container.height
 //            text: qsTr("关闭")
 //            color: container.fontColor
-////            font {
-////                family: container.fontName
-////                pointSize: container.fontSize
-////            }
+//            font {
+//                family: container.fontName
+//                pointSize: container.fontSize
+//            }
 //            verticalAlignment: Text.AlignVCenter
 //        }
 //    }
@@ -75,6 +88,15 @@ Item {
         onClicked: { switchedOn = !switchedOn; switched(switchedOn) }
     }
 }
+
+
+
+
+
+
+
+
+
 
 
 

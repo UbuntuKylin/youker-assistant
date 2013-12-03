@@ -40,7 +40,7 @@ Rectangle {
                 themeModel.remove(i);
         }
         //将系统初始的标题栏字体写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("widgettheme", "currenttheme", widgetthemepage.init_theme);
+        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "widgettheme", widgetthemepage.init_theme);
     }
 
     ListModel { id: themeModel }
@@ -195,11 +195,11 @@ Rectangle {
             else if (num == 4)
                 pageStack.push(functioncollection)
          }
-         onRestoreBtnClicked: {
-            var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("widgettheme", "currenttheme");
-             if(defaulttheme == widgetthemepage.selected_theme || widgetthemepage.selected_theme == "") {
-                //友情提示：        您系统的当前窗口主题已经为默认主题！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current widget theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);
+        onRestoreBtnClicked: {
+            var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "widgettheme");
+            if(defaulttheme == widgetthemepage.selected_theme || widgetthemepage.selected_theme == "") {
+            //友情提示：        您系统的当前窗口主题已经为默认主题！
+            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current widget theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 sessiondispatcher.set_theme_qt(defaulttheme);

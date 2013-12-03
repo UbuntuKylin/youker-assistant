@@ -26,7 +26,7 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property int cursor_size: 24
-    property string default_cursor_theme: ""
+    property string selected_cursor_theme: ""//存放用户选择确认后的主题
 
     property string actiontitle: qsTr("Mouse settings")//鼠标设置
     property string actiontext: qsTr("Replace the mouse pointer theme and size, click 'OK' button to confirm.")//更换鼠标指针主题和大小，更改设置后点击“确定”按钮进行确认。
@@ -37,9 +37,13 @@ Rectangle {
     }
     Component.onCompleted: {
         mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
+        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursorsize", mousepointerpage.cursor_size);
         var cursorlist = sessiondispatcher.get_cursor_themes_qt();
         var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-        mousepointerpage.default_cursor_theme = current_cursor_theme;
+        //将系统初始的图标主题写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursortheme", current_cursor_theme);
+        showText.text = qsTr("[ Current Cursor Theme is: ") + current_cursor_theme + " ]";
+        mousepointerpage.selected_cursor_theme = current_cursor_theme;
         cursorlist.unshift(current_cursor_theme);
         choices.clear();
         for(var k=0; k < cursorlist.length; k++) {
@@ -64,6 +68,12 @@ Rectangle {
                  font.pixelSize: 14
                  color: "#383838"
              }
+            Text {
+                id: showText
+                text: ""
+                font.pixelSize: 14
+                color: "#318d11"
+            }
             //status picture
             Common.StatusImage {
                 id: statusImage
@@ -112,14 +122,16 @@ Rectangle {
     }
 
 
-    Column {
+    Row {
+        id: themeline
+        spacing: 170
         anchors{
             left: parent.left
             leftMargin: 60
             top: settitle.bottom
             topMargin: 10
+
         }
-        spacing: 20
         Row {
             spacing: 20
             Text {
@@ -139,39 +151,211 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-
-        Row {
-            spacing: 20
-            Text {
-                id: trashlabel
-                text: qsTr("Mouse pointer size")//鼠标指针大小
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Common.ButtonRow {
-                exclusive: true//控制是否联动
-                spacing: 60
-                Common.CheckBox {
-                    id: smallstyle
-                    checked: (mousepointerpage.cursor_size == "24") ? true : false
-//                    checked: (sessiondispatcher.get_cursor_size_qt() == "24") ? true : false
-                    titleName: qsTr("Small size")//24   小号
-                    flag: "radio"
-                    onClicked: {}
+        Row{
+            spacing: 26
+            Common.Button {
+                id: okBtn
+                width: 105;height: 30
+                hoverimage: "green2.png"
+                text: qsTr("OK")//确定
+                onClicked: {
+                    if (mousepointerpage.selected_cursor_theme != cursorcombo.selectedText) {
+                        mousepointerpage.selected_cursor_theme = cursorcombo.selectedText;
+                        sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+                        showText.text = qsTr("[ Current Cursor Theme is: ") + cursorcombo.selectedText + " ]";
+                        statusImage.visible = true;
+                    }
                 }
-                Common.CheckBox {
-                    id: bigstyle
-                    checked: (mousepointerpage.cursor_size == "36") ? true : false
-//                    checked: (sessiondispatcher.get_cursor_size_qt() == "36") ? true : false
-                    titleName: qsTr("Big size")//36     大号
-                    flag: "radio"
-                    onClicked: {}
+            }
+            Common.Button {
+                hoverimage: "blue2.png"
+                text: qsTr("Restore default")//恢复默认
+                width: 105
+                height: 30
+                onClicked: {
+                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursortheme");
+                    if(defaulttheme == mousepointerpage.selected_cursor_theme) {
+                        //友情提示：       您系统的图标主题已经为默认设置！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current cursor theme is the default!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
+                    else {
+                        sessiondispatcher.set_cursor_theme_qt(defaulttheme);
+                        mousepointerpage.selected_cursor_theme = defaulttheme;
+                        showText.text = qsTr("[ Current Cursor Theme is: ") + defaulttheme + " ]";
+                        cursorcombo.selectedIndex = 0;
+                        statusImage.visible = true;
+                    }
                 }
             }
         }
     }
+    Row {
+        spacing: 20
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: themeline.bottom
+            topMargin: 30
+        }
+        Text {
+            id: trashlabel
+            text: qsTr("Cursor pointer size")//鼠标指针大小
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Common.ButtonRow {
+            exclusive: true//控制是否联动
+            spacing: 60
+            Common.CheckBox {
+                id: smallstyle
+                checked: (mousepointerpage.cursor_size == "24") ? true : false
+//                    checked: (sessiondispatcher.get_cursor_size_qt() == "24") ? true : false
+                titleName: qsTr("Small size")//24   小号
+                flag: "radio"
+                onClicked: {
+                    if(smallstyle.checked == true) {
+                        if(mousepointerpage.cursor_size != "24") {
+                            sessiondispatcher.set_cursor_size_qt(24);
+                            mousepointerpage.cursor_size = "24";
+                            statusImage.visible = true;
+                        }
+                    }
+                }
+            }
+            Common.CheckBox {
+                id: bigstyle
+                checked: (mousepointerpage.cursor_size == "36") ? true : false
+//                    checked: (sessiondispatcher.get_cursor_size_qt() == "36") ? true : false
+                titleName: qsTr("Big size")//36     大号
+                flag: "radio"
+                onClicked: {
+                    if(bigstyle.checked == true) {
+                        if(mousepointerpage.cursor_size != "36") {
+                            sessiondispatcher.set_cursor_size_qt(36);
+                            mousepointerpage.cursor_size = "36";
+                            statusImage.visible = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+//    Column {
+//        anchors{
+//            left: parent.left
+//            leftMargin: 60
+//            top: settitle.bottom
+//            topMargin: 10
+//        }
+//        spacing: 20
+//        Row {
+//            spacing: 20
+//            Text {
+//                id: cursorthemelabel
+//                text: qsTr("Mouse pointer theme")//鼠标指针主题
+//                font.pixelSize: 12
+//                color: "#7a7a7a"
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+
+//            Common.ComboBox {
+//                id: cursorcombo
+//                model: choices
+//                width: 150
+//    //            width: cursorthemelabel.width
+//                onSelectedTextChanged: {/*console.log(selectedText)*/}
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Row{
+//                spacing: 26
+//                Common.Button {
+//                    id: okBtn
+//                    width: 105;height: 30
+//                    hoverimage: "green2.png"
+//                    text: qsTr("OK")//确定
+//                    onClicked: {
+//                        if (mousepointerpage.selected_cursor_theme != cursorcombo.selectedText) {
+//                            mousepointerpage.selected_cursor_theme = cursorcombo.selectedText;
+//                            sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+//                            showText.text = qsTr("[ Current Cursor Theme is: ") + cursorcombo.selectedText + " ]";
+//                            statusImage.visible = true;
+//                        }
+//                    }
+//                }
+//                Common.Button {
+//                    hoverimage: "blue2.png"
+//                    text: qsTr("Restore default")//恢复默认
+//                    width: 105
+//                    height: 30
+//                    onClicked: {
+//                        var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursortheme");
+//                        if(defaulttheme == mousepointerpage.selected_cursor_theme) {
+//                            //友情提示：       您系统的图标主题已经为默认设置！
+//                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current cursor theme is the default!"), mainwindow.pos.x, mainwindow.pos.y);
+//                        }
+//                        else {
+//                            sessiondispatcher.set_cursor_theme_qt(defaulttheme);
+//                            mousepointerpage.selected_cursor_theme = defaulttheme;
+//                            showText.text = qsTr("[ Current Cursor Theme is: ") + defaulttheme + " ]";
+//                            cursorcombo.selectedIndex = 0;
+//                            statusImage.visible = true;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+
+//        Row {
+//            spacing: 20
+//            Text {
+//                id: trashlabel
+//                text: qsTr("Cursor pointer size")//鼠标指针大小
+//                font.pixelSize: 12
+//                color: "#7a7a7a"
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+
+//            Common.ButtonRow {
+//                exclusive: true//控制是否联动
+//                spacing: 60
+//                Common.CheckBox {
+//                    id: smallstyle
+//                    checked: (mousepointerpage.cursor_size == "24") ? true : false
+////                    checked: (sessiondispatcher.get_cursor_size_qt() == "24") ? true : false
+//                    titleName: qsTr("Small size")//24   小号
+//                    flag: "radio"
+//                    onClicked: {
+//                        if(smallstyle.checked == true) {
+//                            if(mousepointerpage.cursor_size != "24") {
+//                                sessiondispatcher.set_cursor_size_qt(24);
+//                                mousepointerpage.cursor_size = "24";
+//                                statusImage.visible = true;
+//                            }
+//                        }
+//                    }
+//                }
+//                Common.CheckBox {
+//                    id: bigstyle
+//                    checked: (mousepointerpage.cursor_size == "36") ? true : false
+////                    checked: (sessiondispatcher.get_cursor_size_qt() == "36") ? true : false
+//                    titleName: qsTr("Big size")//36     大号
+//                    flag: "radio"
+//                    onClicked: {
+//                        if(bigstyle.checked == true) {
+//                            if(mousepointerpage.cursor_size != "36") {
+//                                sessiondispatcher.set_cursor_size_qt(36);
+//                                mousepointerpage.cursor_size = "36";
+//                                statusImage.visible = true;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     //顶层工具栏
     Bars.TopBar {
         id: topBar
@@ -195,6 +379,7 @@ Rectangle {
     //底层工具栏
     Bars.ToolBar {
         id: toolBar
+        showok: false
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
 //            button1Label: qsTr("返回")
 //            button2Label: qsTr("确定")
@@ -207,21 +392,21 @@ Rectangle {
             else if (num == 4)
                 pageStack.push(functioncollection)
         }
-        onOkBtnClicked: {
-            if (mousepointerpage.default_cursor_theme != cursorcombo.selectedText) {
-                mousepointerpage.default_cursor_theme = cursorcombo.selectedText;
-                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-            }
+//        onOkBtnClicked: {
+//            if (mousepointerpage.default_cursor_theme != cursorcombo.selectedText) {
+//                mousepointerpage.default_cursor_theme = cursorcombo.selectedText;
+//                sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+//            }
 
-            if(smallstyle.checked == true)
-                sessiondispatcher.set_cursor_size_qt(24);
-            else if(bigstyle.checked == true)
-                sessiondispatcher.set_cursor_size_qt(36);
-            statusImage.visible = true;
-        }
+//            if(smallstyle.checked == true)
+//                sessiondispatcher.set_cursor_size_qt(24);
+//            else if(bigstyle.checked == true)
+//                sessiondispatcher.set_cursor_size_qt(36);
+//            statusImage.visible = true;
+//        }
         Timer {
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: statusImage.visible = false
-             }
+             interval: 5000; running: true; repeat: true
+             onTriggered: statusImage.visible = false
+        }
     }
 }

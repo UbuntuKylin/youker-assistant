@@ -39,15 +39,23 @@ Rectangle {
     Component.onCompleted: {
         touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
         touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();//edge-scrolling
-        if (sessiondispatcher.get_touchpad_enable_qt())
+        if (sessiondispatcher.get_touchpad_enable_qt()) {
             touchpadswitcher.switchedOn = true;
-        else
+            sessiondispatcher.write_default_configure_to_qsetting_file("touchpad", "enable", "true");
+        }
+        else {
             touchpadswitcher.switchedOn = false;
+            sessiondispatcher.write_default_configure_to_qsetting_file("touchpad", "enable", "false");
+        }
 
-        if (sessiondispatcher.get_touchscrolling_use_horizontal_qt())
+        if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
             horizontalswitcher.switchedOn = true;
-        else
+            sessiondispatcher.write_default_configure_to_qsetting_file("touchpad", "horizontal", "true");
+        }
+        else {
             horizontalswitcher.switchedOn = false;
+            sessiondispatcher.write_default_configure_to_qsetting_file("touchpad", "horizontal", "false");
+        }
     }
 
     Column {
@@ -56,19 +64,30 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
+        Row {
+            spacing: 50
+            Text {
+                 text: touchpadsetpage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+             }
+            //status picture
+            Common.StatusImage {
+                id: statusImage
+                visible: false
+                iconName: "green.png"
+                text: qsTr("Completed")//已完成
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
         Text {
-             text: touchpadsetpage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
-         }
-         Text {
-             width: touchpadsetpage.width - 80 - 20
-             text: touchpadsetpage.actiontext
-             wrapMode: Text.WordWrap
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+            width: touchpadsetpage.width - 80 - 20
+            text: touchpadsetpage.actiontext
+            wrapMode: Text.WordWrap
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
     Row {
@@ -304,6 +323,7 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         showok: false
+        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -314,5 +334,55 @@ Rectangle {
             else if (num == 4)
                 pageStack.push(functioncollection)
         }
+        onRestoreBtnClicked: {
+            var defaultenable = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "enable");
+            var defaulthorizontal = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "horizontal");
+            var enableFlag;
+            var horizontalFlag;
+            if(touchpadswitcher.switchedOn) {
+                enableFlag = "true";
+            }
+            else {
+                enableFlag = "false";
+            }
+            if(horizontalswitcher.switchedOn) {
+                horizontalFlag = "true";
+            }
+            else {
+                horizontalFlag = "false";
+            }
+
+            if((defaultenable == enableFlag) && (defaulthorizontal == horizontalFlag)) {
+                //友情提示：        触摸板配置已经为默认配置！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Touchpad configure is the default configure!"), mainwindow.pos.x, mainwindow.pos.y);
+            }
+            else {
+                if(defaultenable != enableFlag) {
+                    if(defaultenable == "true") {
+                        touchpadswitcher.switchedOn = true;
+                        sessiondispatcher.set_touchpad_enable_qt(true);
+                    }
+                    else {
+                        touchpadswitcher.switchedOn = false;
+                        sessiondispatcher.set_touchpad_enable_qt(false);
+                    }
+                }
+                if(defaulthorizontal != horizontalFlag) {
+                    if(defaulthorizontal == "true") {
+                        horizontalswitcher.switchedOn = true;
+                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
+                    }
+                    else {
+                        horizontalswitcher.switchedOn = false;
+                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
+                    }
+                }
+                statusImage.visible = true;
+            }
+        }
+    }
+    Timer {
+         interval: 5000; running: true; repeat: true
+         onTriggered: statusImage.visible = false
     }
 }
