@@ -21,6 +21,18 @@ import "../bars" as Bars
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
+
+    /*
+QMap(("ComProduct", QVariant(QString, "2306AM5") )
+( "ComSerial" ,  QVariant(QString, "R9T3497") )
+( "ComVersion" ,  QVariant(QString, "ThinkPad X230") )
+ ( "Comvendor" ,  QVariant(QString, "LENOVO") )
+( "architecture" ,  QVariant(QString, "32bit") )
+ ( "machine" ,  QVariant(QString, "i686") )
+ ( "node" ,  QVariant(QString, "saucy-ThinkPad-X230") )
+ ( "platform" ,  QVariant(QString, "Linux-3.11.0-12-generic-i686-with-Ubuntu-13.10-saucy") )
+( "release" ,  QVariant(QString, "3.11.0-12-generic") )
+ ( "system" ,  QVariant(QString, "Linux") ) ( "uptime" ,  QVariant(QString, "67") ) ) */
     Component.onCompleted: {
         systemdispatcher.get_computer_info_qt();//获取详细信息
         logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("ComVendor", "computer") + ".jpg";

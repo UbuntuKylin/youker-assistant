@@ -23,13 +23,26 @@ Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
 
+
+    /*
+QMap(("MemInfo", QVariant(QString, "SODIMM DDR3 Synchronous 1333 MHz/DIMM Unknown None 1333 MHz") )
+ ( "MemProduct" ,  QVariant(QString, "M471B5773DH0-CK0  /Not Specified") )
+( "MemSerial" ,  QVariant(QString, "E3BF3250/Not Specified") )
+( "MemSize" ,  QVariant(QString, "2048 MB/No Module Installed") )
+( "MemSlot" ,  QVariant(QString, "BANK 0/BANK 2") )
+ ( "MemVendor" ,  QVariant(QString, "Samsung/Not Specified") )
+ ( "MemWidth" ,  QVariant(QString, "64 bits/Unknown") )
+( "Memnum" ,  QVariant(QString, "2") )
+( "Memtotalsize" ,  QVariant(QString, "16 GB") ) ) */
+
     function show_several_memory(num)
     {
-        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").spit("/");
-        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").spit("/");
-        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").spit("/");
-        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").spit("/");
-        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").spit("/");
+
+        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").split("/");;
+        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").split("/");;
+        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").split("/");;
+        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").split("/");;
+        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").split("/");;
 
         splitbar.visible = true;
         slotLabel2.visible = true;

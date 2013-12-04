@@ -39,7 +39,7 @@ Rectangle {
             gammaLabel.visible = true;
             outputLabel.visible = true;
             supportLabel.visible = true;
-            logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("Mon_vendor", "monitor") + ".jpg";
+            logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("Mon_vendor", "monitor").toUpperCase() + ".jpg";
             productText.text = systemdispatcher.getSingleInfo("Mon_product", "monitor");
             vendorText.text = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
             dateText.text = systemdispatcher.getSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getSingleInfo("Mon_week", "monitor");

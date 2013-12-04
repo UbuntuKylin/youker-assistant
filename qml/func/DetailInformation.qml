@@ -29,14 +29,15 @@ Rectangle {
 
     function addList() {
         listModel.clear();//清空
-        listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "../img/sysButton/computer.png"});
-        listModel.append({"name": qsTr("Desktop"), "flag": "desktop", "iconName": "../img/sysButton/computer.png"});
-        listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "../img/sysButton/CPU.png"});
-        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "../img/sysButton/memory.png"});
-        listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "../img/sysButton/board.png"});
-        listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "../img/sysButton/board.png"});
-        listModel.append({"name": qsTr("NetworkCard"), "flag": "networkcard", "iconName": "../img/sysButton/monitor.png"});
-        listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "../img/sysButton/monitor.png"});
+
+        listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "computer"});
+        listModel.append({"name": qsTr("Desktop"), "flag": "desktop", "iconName": "unity"});
+        listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "cpu"});
+        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "memory"});
+        listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "board"});
+        listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "harddisk"});
+        listModel.append({"name": qsTr("NetworkCard"), "flag": "networkcard", "iconName": "network"});
+        listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "monitor"});
     }
 
     ListModel {
@@ -95,10 +96,10 @@ Rectangle {
                 highlight: Rectangle { width: ListView.view.width - 2; color: "steelblue" }//选中后的深色块
                 highlightMoveSpeed: 9999999
             }
-            Bars.ScrollBar {
-                scrollArea: categories; height: categories.height; width: 8
-                anchors.right: categories.right
-            }
+//            Bars.ScrollBar {
+//                scrollArea: categories; height: categories.height; width: 8
+//                anchors.right: categories.right
+//            }
         }
 
         //右边内容栏
@@ -182,7 +183,7 @@ Rectangle {
 //            }
 //        }
 //    }
-    Rectangle { x: 150; height: window.height; width: 1; color: "#cccccc" }
+    Rectangle { x: 150; height: window.height; width: 1; color: "#1790c9" }
 
     states: [
         State {

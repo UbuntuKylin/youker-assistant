@@ -24,12 +24,12 @@ Rectangle {
 
     function show_several_harddisk(num)
     {
-        var diskmodel = systemdispatcher.getSingleInfo("DiskProduct", "harddisk").spit("/");
-        var diskvendor = systemdispatcher.getSingleInfo("DiskVendor", "harddisk").spit("/");
-        var diskcapacity = systemdispatcher.getSingleInfo("DiskCapacity", "harddisk").spit("/");
-        var diskname = systemdispatcher.getSingleInfo("DiskName", "harddisk").spit("/");
-        var diskfw = systemdispatcher.getSingleInfo("DiskFw", "harddisk").spit("/");
-        var diskserial = systemdispatcher.getSingleInfo("DiskSerial", "harddisk").spit("/");
+        var diskmodel = systemdispatcher.getSingleInfo("DiskProduct", "harddisk").split("/");
+        var diskvendor = systemdispatcher.getSingleInfo("DiskVendor", "harddisk").split("/");
+        var diskcapacity = systemdispatcher.getSingleInfo("DiskCapacity", "harddisk").split("/");
+        var diskname = systemdispatcher.getSingleInfo("DiskName", "harddisk").split("/");
+        var diskfw = systemdispatcher.getSingleInfo("DiskFw", "harddisk").split("/");
+        var diskserial = systemdispatcher.getSingleInfo("DiskSerial", "harddisk").split("/");
 
         splitbar.visible = true;
         modelLabel2.visible = true;

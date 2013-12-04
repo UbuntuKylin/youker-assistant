@@ -102,6 +102,7 @@ void SystemDispatcher::get_computer_info_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         computerInfo = value;
+//        qDebug() << computerInfo;
     }
     else {
         qDebug() << "get computer info failed!";
@@ -124,6 +125,7 @@ void SystemDispatcher::get_memory_info_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         memoryInfo = value;
+//        qDebug() << memoryInfo;
     }
     else {
         qDebug() << "get memory info failed!";

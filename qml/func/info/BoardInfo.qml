@@ -23,8 +23,8 @@ Rectangle {
     color: "transparent"
     Component.onCompleted: {
         systemdispatcher.get_board_info_qt();//获取详细信息
-        basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor", "board") + ".jpg";
-        bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor", "board") + ".jpg";
+        basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor", "board").toUpperCase() + ".jpg";
+        bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor", "board").toUpperCase() + ".jpg";
         productText.text = systemdispatcher.getSingleInfo("BoaProduct", "board");
         vendorText.text = systemdispatcher.getSingleInfo("BoaVendor", "board");
         serialText.text = systemdispatcher.getSingleInfo("BoaSerial", "board");

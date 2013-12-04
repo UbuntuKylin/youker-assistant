@@ -85,7 +85,36 @@ Rectangle {
             uk_version: main.version
         }
     }
+    Row {
+        id: logRow
+        spacing: 10
+        anchors {
+            top: parent.top
+            topMargin: 20
+            right: parent.right
+            rightMargin: 40
+        }
+        Image {
+            width: 64
+            height: 64
+            source: "./img/skin/logo.png"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        Text {
+            id: softName
+            text: qsTr("优客助手")//优客助手        Youker Assistant
+            anchors.verticalCenter: parent.verticalCenter
+            font.family: "Arial"
+            font.bold: true
+            font.pixelSize: (sessiondispatcher.get_locale_version() == "zh_CN") ? 24 : 22
+            style: Text.Sunken
+            styleColor: "#AAAAAA"
+            color: "white"
+        }
+    }
+
     Text {
+        id: versionText
         anchors {
             top: parent.top
             topMargin: 70
@@ -98,5 +127,17 @@ Rectangle {
         styleColor: "#AAAAAA"
         color: "white"
         text: main.version
+
+    }
+    MouseArea {
+        anchors.fill: versionText
+        property variant clickPos: "1,1"
+        onPressed: {
+            clickPos  = Qt.point(mouse.x,mouse.y)
+        }
+        onPositionChanged: {
+            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+            mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
+        }
     }
 }

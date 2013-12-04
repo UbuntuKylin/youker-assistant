@@ -79,6 +79,11 @@ void SessionDispatcher::handler_scan_process(QString msg) {
     emit isScanning(msg);
 }
 
+QString SessionDispatcher::get_locale_version() {
+    QString locale = QLocale::system().name();
+    return locale;
+}
+
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
     sessioniface->call("onekey_scan_function", selectedList);
 }

@@ -28,6 +28,7 @@
         <file>image/accelerate-hover.png</file>
         <file>image/accelerate-press.png</file>
         <file>image/feature.png</file>
+        <file>image/font-bg.png</file>
     </qresource>
     <qresource prefix="/skin">
         <file>image/7_bg.png</file>

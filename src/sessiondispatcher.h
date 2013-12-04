@@ -75,6 +75,8 @@ public:
     Q_INVOKABLE int get_page_num();
     int page_num;
 
+    //得到安装操作系统的语言版本
+    Q_INVOKABLE QString get_locale_version();
     //得到当前登录用户的主目录
     Q_INVOKABLE QString getHomePath();
 

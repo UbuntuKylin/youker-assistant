@@ -39,7 +39,7 @@
   <widget class="QLabel" name="styleLabel">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>244</x>
      <y>60</y>
      <width>71</width>
      <height>17</height>
@@ -52,7 +52,7 @@
   <widget class="QLabel" name="sizeLabel">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>438</x>
      <y>60</y>
      <width>91</width>
      <height>17</height>
@@ -65,7 +65,7 @@
   <widget class="QLineEdit" name="styleEdit">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>244</x>
      <y>80</y>
      <width>171</width>
      <height>27</height>
@@ -75,7 +75,7 @@
   <widget class="QLineEdit" name="sizeEdit">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>438</x>
      <y>80</y>
      <width>51</width>
      <height>27</height>
@@ -95,7 +95,7 @@
   <widget class="QListView" name="styleList">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>244</x>
      <y>120</y>
      <width>171</width>
      <height>161</height>
@@ -105,7 +105,7 @@
   <widget class="QListView" name="sizeList">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>438</x>
      <y>120</y>
      <width>51</width>
      <height>161</height>
@@ -193,8 +193,8 @@
   <widget class="QLabel" name="btn_close">
    <property name="geometry">
     <rect>
-     <x>13</x>
-     <y>10</y>
+     <x>12</x>
+     <y>6</y>
      <width>26</width>
      <height>20</height>
     </rect>
@@ -207,7 +207,7 @@
    <property name="geometry">
     <rect>
      <x>194</x>
-     <y>10</y>
+     <y>6</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -229,7 +229,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/dialog-bg.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/font-bg.png);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
