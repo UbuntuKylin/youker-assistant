@@ -94,12 +94,13 @@ Rectangle {
             firstModel.append({"title": qsTr("Size:"), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});
             firstModel.append({"title": qsTr("Data Width:"), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});
             firstModel.append({"title": qsTr("Memory Info:"), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});
-
+            splitbar1.visible = true;
+            logo1.visible = true;
+            logo1.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("MemVendor", "memory").toUpperCase() + ".jpg";
 
 
 
             home.secondFlag = true;
-            splitbar1.visible = true;
             secondView.visible = true;
             secondModel.clear();
             secondModel.append({"title": qsTr("Slot Number:"), "result": "111"});
@@ -109,9 +110,42 @@ Rectangle {
             secondModel.append({"title": qsTr("Size:"), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});
             secondModel.append({"title": qsTr("Data Width:"), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});
             secondModel.append({"title": qsTr("Memory Info:"), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});
+            splitbar2.visible = true;
+            logo2.visible = true;
+            logo2.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("MemVendor", "memory").toUpperCase() + ".jpg";
 
 
-            listItem.height = (140 + 60) *2;
+            home.thirdFlag = true;
+            thirdView.visible = true;
+            thirdModel.clear();
+            thirdModel.append({"title": qsTr("Serial:"), "result": systemdispatcher.getSingleInfo("MemSerial", "memory")});
+            thirdModel.append({"title": qsTr("Size:"), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});
+            thirdModel.append({"title": qsTr("Data Width:"), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});
+            thirdModel.append({"title": qsTr("Memory Info:"), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});
+            thirdModel.append({"title": qsTr("Slot Number:"), "result": "444"});
+            thirdModel.append({"title": qsTr("Memory Model:"), "result": "555"});
+            thirdModel.append({"title": qsTr("Vendor:"), "result": "666"});
+            splitbar3.visible = true;
+            logo3.visible = true;
+            logo3.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("MemVendor", "memory").toUpperCase() + ".jpg";
+
+
+            home.fourthFlag = true;
+            fourthView.visible = true;
+            fourthModel.clear();
+            fourthModel.append({"title": qsTr("Serial:"), "result": systemdispatcher.getSingleInfo("MemSerial", "memory")});
+            fourthModel.append({"title": qsTr("Size:"), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});
+            fourthModel.append({"title": qsTr("Data Width:"), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});
+            fourthModel.append({"title": qsTr("Memory Info:"), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});
+            fourthModel.append({"title": qsTr("Slot Number:"), "result": "444"});
+            fourthModel.append({"title": qsTr("Memory Model:"), "result": "555"});
+            fourthModel.append({"title": qsTr("Vendor:"), "result": "666"});
+            splitbar4.visible = true;
+            logo4.visible = true;
+            logo4.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("MemVendor", "memory").toUpperCase() + ".jpg";
+
+            //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+            listItem.height = (7*20 + 6*10 + 10*2) *4;
         }
         else if(num >= 2){
             home.show_several_memory(2);
@@ -169,99 +203,134 @@ Rectangle {
         width: 680 - 4
         Item {
             id: listItem
-            width: parent.width   //列表宽度
-            height: 0//500     //列表长度,前面的数字为列表行数
+            width: parent.width
+            height: 0
             Column {
-                spacing: 20
+                spacing: 10
                 anchors {
-//                    top: parent.top
-//                    topMargin: 20
                     left: parent.left
                     leftMargin: 30
                 }
-                ListView {
-                    id: firstView
+                Item {
                     width: parent.width
-                    height: home.firstFlag ? (140 + 60) : 0
-                    model: firstModel
-                    delegate: memoryDelegate
-                    visible: false
-                    spacing: 10
+                    height: home.firstFlag ? (7*20 + 6*10) : 0
+                    ListView {
+                        id: firstView
+                        anchors.fill: parent
+//                        width: parent.width
+//                        height: home.firstFlag ? (7*20 + 6*10) : 0
+                        model: firstModel
+                        delegate: memoryDelegate
+                        visible: false
+                        spacing: 10
+                    }
+                    Image {
+                        id: logo1
+                        visible: false
+                        source: ""
+                        anchors {
+                            right: parent.right
+                            rightMargin: 30
+                        }
+                    }
                 }
 
                 Rectangle {
                     id: splitbar1
-                    width: parent.width
+                    width: 680 - 4 - 30*2
                     height: 1; color: "#ccdadd"
                     visible: false
                 }
-                ListView {
-                    id: secondView
+                Item {
                     width: parent.width
-                    height: home.secondFlag ? 140 : 0
-                    model: secondModel
-                    delegate: memoryDelegate
-                    visible: false
-                    spacing: 10
+                    height: home.secondFlag ? (7*20 + 6*10) : 0
+                    ListView {
+                        id: secondView
+                        anchors.fill: parent
+//                        width: parent.width
+//                        height: home.secondFlag ? (7*20 + 6*10) : 0
+                        model: secondModel
+                        delegate: memoryDelegate
+                        visible: false
+                        spacing: 10
+                    }
+                    Image {
+                        id: logo2
+                        visible: false
+                        source: ""
+                        anchors {
+                            right: parent.right
+                            rightMargin: 30
+                        }
+                    }
                 }
-//                Rectangle {
-//                    id: splitbar2
-//                    width: home.width - 30 * 2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
-//                ListView {
-//                    id: thirdView
-//                    height: home.thirdFlag ? 140 : 0
-//                    model: thirdModel
-//                    delegate: memoryDelegate
-//                    visible: false
-//                }
-//                Rectangle {
-//                    id: splitbar3
-//                    width: home.width - 30 * 2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
-//                ListView {
-//                    id: fourthView
-//                    height: home.fourthFlag ? 140 : 0
-//                    model: fourthModel
-//                    delegate: memoryDelegate
-//                    visible: false
-//                }
-//                Rectangle {
-//                    id: splitbar4
-//                    width: home.width - 30 * 2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
+                Rectangle {
+                    id: splitbar2
+                    width: 680 - 4 - 30*2
+                    height: 1; color: "#ccdadd"
+                    visible: false
+                }
+                Item {
+                    width: parent.width
+                    height: home.thirdFlag ? (7*20 + 6*10) : 0
+                    ListView {
+                        id: thirdView
+                        anchors.fill: parent
+//                        width: parent.width
+//                        height: home.thirdFlag ? (7*20 + 6*10) : 0
+                        model: thirdModel
+                        delegate: memoryDelegate
+                        visible: false
+                        spacing: 10
+                    }
+                    Image {
+                        id: logo3
+                        visible: false
+                        source: ""
+                        anchors {
+                            right: parent.right
+                            rightMargin: 30
+                        }
+                    }
+                }
+                Rectangle {
+                    id: splitbar3
+                    width: 680 - 4 - 30*2
+                    height: 1; color: "#ccdadd"
+                    visible: false
+                }
+                Item {
+                    width: parent.width
+                    height: home.fourthFlag ? (7*20 + 6*10) : 0
+                    ListView {
+                        id: fourthView
+                        anchors.fill: parent
+//                        width: parent.width
+//                        height: home.fourthFlag ? (7*20 + 6*10) : 0
+                        model: fourthModel
+                        delegate: memoryDelegate
+                        visible: false
+                        spacing: 10
+                    }
+                    Image {
+                        id: logo4
+                        visible: false
+                        source: ""
+                        anchors {
+                            right: parent.right
+                            rightMargin: 30
+                        }
+                    }
+                }
+                Rectangle {
+                    id: splitbar4
+                    width: 680 - 4 - 30*2
+                    height: 1; color: "#ccdadd"
+                    visible: false
+                }
             }
         }//Item
     }//ScrollArea
-
-    //logo
-//    Image {
-//        id: logo
-//        source: ""
-//        anchors {
-//            top: parent.top
-//            topMargin: 50
-//            right: parent.right
-//            rightMargin: 30
-//        }
-//    }
-    //logo
-//    Image {
-//        id: logo2
-//        source: ""
-//        anchors {
-//            top: parent.top
-//            topMargin: 300
-//            right: parent.right
-//            rightMargin: 30
-//        }
-//    }
 }
 
 
