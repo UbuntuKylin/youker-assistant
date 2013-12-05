@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>KFontDialog</class>
+ <widget class="QDialog" name="KFontDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>499</width>
+    <height>395</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLineEdit" name="familyEdit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>211</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="fontLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>71</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Font</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="styleLabel">
+   <property name="geometry">
+    <rect>
+     <x>244</x>
+     <y>60</y>
+     <width>71</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Style</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="sizeLabel">
+   <property name="geometry">
+    <rect>
+     <x>438</x>
+     <y>60</y>
+     <width>91</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Size</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="styleEdit">
+   <property name="geometry">
+    <rect>
+     <x>244</x>
+     <y>80</y>
+     <width>171</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="sizeEdit">
+   <property name="geometry">
+    <rect>
+     <x>438</x>
+     <y>80</y>
+     <width>51</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListView" name="familyList">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>211</width>
+     <height>161</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListView" name="styleList">
+   <property name="geometry">
+    <rect>
+     <x>244</x>
+     <y>120</y>
+     <width>171</width>
+     <height>161</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListView" name="sizeList">
+   <property name="geometry">
+    <rect>
+     <x>438</x>
+     <y>120</y>
+     <width>51</width>
+     <height>161</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="sampleLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>290</y>
+     <width>81</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sample</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="sampleEdit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>310</y>
+     <width>371</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="quitBtn">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>310</y>
+     <width>99</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="okBtn">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>350</y>
+     <width>99</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="curFontLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>35</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Current Font:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="curFontText">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>35</y>
+     <width>371</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Font</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="btn_close">
+   <property name="geometry">
+    <rect>
+     <x>12</x>
+     <y>6</y>
+     <width>26</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="titleLabel">
+   <property name="geometry">
+    <rect>
+     <x>194</x>
+     <y>6</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Change Font</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>499</width>
+     <height>395</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/font-bg.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>familyEdit</zorder>
+  <zorder>fontLabel</zorder>
+  <zorder>styleLabel</zorder>
+  <zorder>sizeLabel</zorder>
+  <zorder>styleEdit</zorder>
+  <zorder>sizeEdit</zorder>
+  <zorder>familyList</zorder>
+  <zorder>styleList</zorder>
+  <zorder>sizeList</zorder>
+  <zorder>sampleLabel</zorder>
+  <zorder>sampleEdit</zorder>
+  <zorder>quitBtn</zorder>
+  <zorder>okBtn</zorder>
+  <zorder>curFontLabel</zorder>
+  <zorder>curFontText</zorder>
+  <zorder>btn_close</zorder>
+  <zorder>titleLabel</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

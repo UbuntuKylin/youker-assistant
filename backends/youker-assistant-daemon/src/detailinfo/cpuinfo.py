@@ -15,17 +15,26 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+#from __future__ import print_function
+#from collections import OrderedDict
 import sys
 import os
+#import glob
 import re
 import math
 import binascii
+#from gi.repository import Gtk, GLib
 import platform
+#import time
+#import stat
 import gettext
+#import dmi
 from gettext import gettext as _
 from gettext import ngettext as __
-
+#from dmi import Dmi
 class DetailInfo:
+#    def __init__ (self):
+#        self.dmi = Dmi()
 
 #Computer：			
 #   ComVendor		    制造商
@@ -107,6 +116,12 @@ class DetailInfo:
 #   NetSize             带宽大小
 #   NetCapacity         最大带宽
 #   NetWidth            网卡位宽
+
+    def get_sys_msg(self):
+        h = os.popen("lshw")
+        self.hw = h.read()
+        h.close()
+        return 
 
     def ctoascii(self,buf):
         ch = str(buf)
@@ -351,9 +366,9 @@ class DetailInfo:
         
             tmp = re.findall("Manufacturer:\s*(\w*)\s*Model:\s*(\w*)", info)
             if tmp:
-                if not ret.get("product"):
+                if not ret.get("Mon_product"):
                     ret["Mon_product"] = tmp[0][0] + " " + tmp[0][1]
-                if not ret.get("vendor"):
+                if not ret.get("Mon_vendor"):
                     ret["Mon_vendor"] = tmp[0][0]
 
 	    tmp = re.findall("Year:\s*(\w*)\s*Week:\s*(\w*)", info)
@@ -394,13 +409,144 @@ class DetailInfo:
 
             tmp = re.findall("Chipset: \"(.*)\"", info)
             if tmp:
-                if not ret.get("chip"):
+                if not ret.get("Mon_chip"):
                     ret["Mon_chip"] = tmp[0]
+        vga = self.hw[self.hw.index('*-display\n')+len('*-display\n'):]
+        vga = vga[:vga.index('*-')-1]
+        if vga :
+            tmp = re.findall("product:(.*)",vga)
+            if tmp :
+                ret['Vga_product'] = tmp[0]
+            tmp = re.findall("vendor:(.*)",vga)
+            if tmp :
+                ret['Vga_vendor'] = tmp[0]
+            tmp = re.findall("bus info:(.*)",vga)
+            if tmp :
+                ret['Vga_businfo'] = tmp[0]
+            
         return ret
 
+    def get_disk(self):
+        dis={}
+        disknum = 0
+        disk_manufacturers = [
+        "^ST.+", "Seagate",
+        "^D...-.+", "IBM",
+        "^IBM.+", "IBM",
+        "^HITACHI.+", "Hitachi",
+        "^IC.+", "Hitachi",
+        "^HTS.+", "Hitachi",
+        "^FUJITSU.+", "Fujitsu",
+        "^MP.+", "Fujitsu",
+        "^TOSHIBA.+", "Toshiba",
+        "^MK.+", "Toshiba",
+        "^MAXTOR.+", "Maxtor",
+        "^Pioneer.+", "Pioneer",
+        "^PHILIPS.+", "Philips",
+        "^QUANTUM.+", "Quantum",
+        "FIREBALL.+", "Quantum",
+        "^WDC.+", "Western Digital",
+        "WD.+", "Western Digital",
+        ]
+        DiskProduct,DiskVendor,DiskCapacity,DiskName,DiskFw,DiskSerial = '','','','','',''
+        li =  os.popen("ls /dev/sd?")
+        line = li.read()
+        li.close()
+        li = os.popen("ls /dev/hd?")
+        line += li.read()
+        li.close()
+        if line :
+            line = line.split('\n')
+            for k in line :
+                if k :
+                    disknum  += 1
+                    st = os.popen("hdparm -i %s" % k)
+                    strin = st.read()
+                    st.close()
+                    if DiskName :
+                        DiskName += '/' + k
+                    else :
+                        DiskName = k
+                    tmp = re.findall("Model=(.*), F",strin)
+                    if tmp:
+                        if DiskProduct :
+                            DiskProduct += '/'+tmp[0]
+                        else :
+                            DiskProduct = tmp[0]
+                        i = 0
+                        while i < len(disk_manufacturers):
+                            ven = re.compile(disk_manufacturers[i],re.I)
+                            tm = ven.findall(tmp[0])
+                            if tm :
+                                if DiskVendor :
+                                    DiskVendor += '/' + disk_manufacturers[i+1]
+                                else :
+                                    DiskVendor += disk_manufacturers[i+1]
+                                i = len(disk_manufacturers)
+                            i += 2
+                    tmp = re.findall("FwRev=(.*), ",strin)
+                    if tmp :
+                        if DiskFw :
+                            DiskFw += '/' +tmp[0]
+                        else :
+                            DiskFw = tmp[0]
+                    tmp = re.findall("SerialNo=(.*)",strin)
+                    if tmp :
+                        if DiskSerial :
+                            DiskSerial += '/' +tmp[0]
+                        else :
+                            DiskSerial = tmp[0]
+                    ds = os.popen("fdisk -l %s" % k)
+                    d = ds.read()
+                    ds.close()
+                    tmp = re.findall("%s: (.*)," % k,d)
+                    if tmp:
+                        if DiskCapacity :
+                            DiskCapacity += '/' +tmp[0]
+                        else :
+                            DiskCapacity = tmp[0]
+        dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
+        return dis
+
+    def get_network(self):
+        net = {}
+        NetProduct,NetVendor,NetBusinfo,NetLogicalname,NetVersion,NetSerial,NetSize,NetCapacity,NetWidth = '','','','','','','','',''
+        network = self.hw[self.hw.index('*-network\n')+len('*-network\n'):]
+        network = network[:network.index('*-')-1]
+        if network :
+            tmp = re.findall("product:(.*)",network)
+            if tmp :
+                NetProduct = tmp[0]
+            tmp = re.findall("vendor:(.*)",network)
+            if tmp :
+                NetVendor = tmp[0]
+            tmp = re.findall("bus info:(.*)",network)
+            if tmp :
+                NetBusinfo = tmp[0]
+            tmp = re.findall("logical name:(.*)",network)
+            if tmp :
+                NetLogicalname = tmp[0]
+            tmp = re.findall("version:(.*)",network)
+            if tmp :
+                NetVersion = tmp[0]
+            tmp = re.findall("serial:(.*)",network)
+            if tmp :
+                NetSerial = tmp[0]
+            tmp = re.findall("size:(.*)",network)
+            if tmp :
+                NetSize = tmp[0]
+            tmp = re.findall("capacity:(.*)",network)
+            if tmp :
+                NetCapacity = tmp[0]
+            tmp = re.findall("width:(.*)",network)
+            if tmp :
+                NetWidth = tmp[0]
+        net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetVersion'],net['NetSerial'],net['NetSize'],net['NetCapacity'],net['NetWidth'] = self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetVersion),self.strip(NetSerial),self.strip(NetSize),self.strip(NetCapacity),self.strip(NetWidth)
+        return net
 
 if __name__ == "__main__":
     cc = DetailInfo()
+    cc.get_sys_msg()
     cc.ctoascii('a')
     cc.strip('a')
     cc.get_computer()
@@ -408,3 +554,5 @@ if __name__ == "__main__":
     cc.get_board()
     cc.get_memory()
     cc.get_monitor()
+    cc.get_disk()
+    cc.get_network()

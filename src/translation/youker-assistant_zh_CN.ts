@@ -641,8 +641,9 @@
         <translation>包卸载</translation>
     </message>
     <message>
+        <location filename="../../qml/func/ClearRubbish.qml" line="77"/>
         <source>Old Kernel</source>
-        <translation type="obsolete">旧内核</translation>
+        <translation>旧内核</translation>
     </message>
     <message>
         <location filename="../../qml/func/ClearRubbish.qml" line="84"/>
@@ -661,76 +662,76 @@
 <context>
     <name>ComputerInfo</name>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="46"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="49"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="263"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="266"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="45"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="48"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="262"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="265"/>
         <source> Minutes</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="49"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="266"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="48"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="265"/>
         <source> Hours </source>
         <translation>小时</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="64"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="63"/>
         <source>Basic information</source>
         <translation>电脑基本信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="81"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="80"/>
         <source>Vendor:</source>
         <translation>制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="96"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="95"/>
         <source>Model:</source>
         <translation>电脑型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="111"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="110"/>
         <source>Version:</source>
         <translation>电脑版本：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="126"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="125"/>
         <source>Serial:</source>
         <translation>序列号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="141"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="140"/>
         <source>Hostname:</source>
         <translation>主机名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="156"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="155"/>
         <source>Running Time:</source>
         <translation>持续运行时间：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="171"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="170"/>
         <source>OS Model:</source>
         <translation>操作系统类型：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="186"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="185"/>
         <source>OS Version:</source>
         <translation>操作系统版本：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="201"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="200"/>
         <source>Kernel Bit:</source>
         <translation>系统位数：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="216"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="215"/>
         <source>Kernel Release:</source>
         <translation>内核版本：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="231"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="230"/>
         <source>Kernel Architecture:</source>
         <translation>内核架构：</translation>
     </message>
@@ -1097,40 +1098,42 @@
 <context>
     <name>DetailInformation</name>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="33"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="32"/>
         <source>Computer</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="34"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="33"/>
         <source>Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="35"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="34"/>
         <source>CPU</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="37"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="36"/>
         <source>Board</source>
         <translation>主板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="36"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="35"/>
         <source>Memory</source>
         <translation>内存</translation>
     </message>
     <message>
+        <location filename="../../qml/func/DetailInformation.qml" line="37"/>
         <source>HardDisk</source>
-        <translation type="obsolete">硬盘</translation>
+        <translation>硬盘</translation>
     </message>
     <message>
+        <location filename="../../qml/func/DetailInformation.qml" line="38"/>
         <source>NetworkCard</source>
-        <translation type="obsolete">网卡</translation>
+        <translation>网卡</translation>
     </message>
     <message>
-        <location filename="../../qml/func/DetailInformation.qml" line="40"/>
+        <location filename="../../qml/func/DetailInformation.qml" line="39"/>
         <source>Monitor</source>
         <translation>显示器</translation>
     </message>
@@ -1551,83 +1554,108 @@
 <context>
     <name>HardDiskInfo</name>
     <message>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="101"/>
         <source>HardDisk information</source>
-        <translation type="obsolete">硬盘信息</translation>
+        <translation>硬盘信息</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="118"/>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="216"/>
         <source>HardDisk Model:</source>
-        <translation type="obsolete">硬盘型号：</translation>
+        <translation>硬盘型号：</translation>
     </message>
     <message>
         <source>Motherboard Vendor:</source>
         <translation type="obsolete">硬盘厂商：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="148"/>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="248"/>
         <source>HardDisk Capacity:</source>
-        <translation type="obsolete">硬盘容量：</translation>
+        <translation>硬盘容量：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="133"/>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="232"/>
         <source>HardDisk Vendor:</source>
-        <translation type="obsolete">硬盘厂商：</translation>
+        <translation>硬盘厂商：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="163"/>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="264"/>
         <source>Device Name:</source>
-        <translation type="obsolete">设备名称：</translation>
+        <translation>设备名称：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="178"/>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="280"/>
         <source>Firmware Version:</source>
-        <translation type="obsolete">固件版本：</translation>
+        <translation>固件版本：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="193"/>
+        <location filename="../../qml/func/info/HardDiskInfo.qml" line="296"/>
         <source>Serial:</source>
-        <translation type="obsolete">序列号：</translation>
+        <translation>序列号：</translation>
     </message>
 </context>
 <context>
     <name>KFontDialog</name>
     <message>
+        <location filename="../kfontdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="obsolete">字体对话框</translation>
+        <translation>字体对话框</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.ui" line="36"/>
+        <location filename="../kfontdialog.ui" line="190"/>
         <source>Font</source>
-        <translation type="obsolete">字体</translation>
+        <translation>字体</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.ui" line="49"/>
         <source>Style</source>
-        <translation type="obsolete">风格</translation>
+        <translation>风格</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.ui" line="62"/>
         <source>Size</source>
-        <translation type="obsolete">大小</translation>
+        <translation>大小</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.ui" line="125"/>
         <source>Sample</source>
-        <translation type="obsolete">视图</translation>
+        <translation>视图</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.ui" line="151"/>
         <source>Quit</source>
-        <translation type="obsolete">取消</translation>
+        <translation>取消</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.ui" line="164"/>
         <source>OK</source>
-        <translation type="obsolete">确定</translation>
+        <translation>确定</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.ui" line="177"/>
         <source>Current Font:</source>
-        <translation type="obsolete">当前字体：</translation>
+        <translation>当前字体：</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.ui" line="216"/>
         <source>Change Font</source>
-        <translation type="obsolete">更换字体</translation>
+        <translation>更换字体</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.cpp" line="258"/>
         <source>Tips</source>
-        <translation type="obsolete">提示</translation>
+        <translation>提示</translation>
     </message>
     <message>
+        <location filename="../kfontdialog.cpp" line="259"/>
         <source>You haven&apos;t change the font, please select a font to change it!</source>
-        <translation type="obsolete">你还没有更换字体，请选择字体进行更换！</translation>
+        <translation>你还没有更换字体，请选择字体进行更换！</translation>
     </message>
 </context>
 <context>
@@ -2133,37 +2161,37 @@
 <context>
     <name>MemoryInfo</name>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="102"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="98"/>
         <source>Memory information</source>
         <translation>内存信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="119"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="205"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="115"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="201"/>
         <source>Slot Number:</source>
         <translation>插槽号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="134"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="221"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="130"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="217"/>
         <source>Memory Model:</source>
         <translation>内存型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="149"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="237"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="145"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="233"/>
         <source>Vendor:</source>
         <translation>制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="164"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="253"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="160"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="249"/>
         <source>Serial:</source>
         <translation>序列号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="179"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="269"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="175"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="265"/>
         <source>Size:</source>
         <translation>内存大小：</translation>
     </message>
@@ -2259,73 +2287,76 @@
 <context>
     <name>MonitorInfo</name>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="76"/>
         <source>Monitor information</source>
-        <translation>显示器信息</translation>
+        <translation type="obsolete">显示器信息</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="78"/>
         <source>Monitor And Graphics Card information</source>
-        <translation type="obsolete">显示器和显卡信息</translation>
+        <translation>显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="93"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="95"/>
         <source>Current Graphics Card:</source>
         <translation>当前显卡：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="110"/>
         <source>Graphics Card Model:</source>
-        <translation type="obsolete">显卡型号：</translation>
+        <translation>显卡型号：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="125"/>
         <source>Graphics Card Vendor:</source>
-        <translation type="obsolete">显卡制造商：</translation>
+        <translation>显卡制造商：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="140"/>
         <source>Graphics Card Bus Address:</source>
-        <translation type="obsolete">显卡总线地址：</translation>
+        <translation>显卡总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="109"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="158"/>
         <source>Monitor:</source>
         <translation>显示器：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="125"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="174"/>
         <source>Vendor:</source>
         <translation>制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="141"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="190"/>
         <source>Production Date(year/week):</source>
         <translation>生产日期(年/周)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="157"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="206"/>
         <source>Reading Area:</source>
         <translation>可视面积：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="173"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="222"/>
         <source>Screen Size:</source>
         <translation>屏幕尺寸：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="189"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="238"/>
         <source>Maximum Resolution:</source>
         <translation>最大分辨率：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="205"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="254"/>
         <source>Gamma Value:</source>
         <translation>伽马值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="221"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="270"/>
         <source>Current Interface:</source>
         <translation>当前接口：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="237"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="286"/>
         <source>Support Interface:</source>
         <translation>支持接口：</translation>
     </message>
@@ -2398,44 +2429,54 @@
 <context>
     <name>NetworkCardInfo</name>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="54"/>
         <source>Network Card information</source>
-        <translation type="obsolete">网卡信息</translation>
+        <translation>网卡信息</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="72"/>
         <source>Network Card Model:</source>
-        <translation type="obsolete">网卡型号：</translation>
+        <translation>网卡型号：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="87"/>
         <source>Vendor:</source>
-        <translation type="obsolete">制造商：</translation>
+        <translation>制造商：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="102"/>
         <source>Bus Address:</source>
-        <translation type="obsolete">总线地址：</translation>
+        <translation>总线地址：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="117"/>
         <source>Device Name:</source>
-        <translation type="obsolete">设备名称：</translation>
+        <translation>设备名称：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="132"/>
         <source>Firmware Version:</source>
-        <translation type="obsolete">固件版本：</translation>
+        <translation>固件版本：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="147"/>
         <source>Mac Address:</source>
-        <translation type="obsolete">MAC地址：</translation>
+        <translation>MAC地址：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="162"/>
         <source>Bandwidth Size:</source>
-        <translation type="obsolete">带宽大小：</translation>
+        <translation>带宽大小：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="177"/>
         <source>Maximum Bandwidth:</source>
-        <translation type="obsolete">最大带宽：</translation>
+        <translation>最大带宽：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="192"/>
         <source>NIC-bit Wide:</source>
-        <translation type="obsolete">网卡位宽：</translation>
+        <translation>网卡位宽：</translation>
     </message>
 </context>
 <context>
@@ -2776,7 +2817,7 @@
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="497"/>
+        <location filename="../sessiondispatcher.cpp" line="492"/>
         <source>choose folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -3447,22 +3488,22 @@
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="380"/>
+        <location filename="../systemdispatcher.cpp" line="378"/>
         <source>choose boot animation</source>
         <translation>选择开机动画</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="380"/>
+        <location filename="../systemdispatcher.cpp" line="378"/>
         <source>Image Files (*.png)</source>
         <translation>Image Files (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="385"/>
+        <location filename="../systemdispatcher.cpp" line="383"/>
         <source>choose music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="385"/>
+        <location filename="../systemdispatcher.cpp" line="383"/>
         <source>Music Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>Music Files (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>

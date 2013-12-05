@@ -1,3 +1,11 @@
+youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
+
+  * Overide the Font Dialog with KFontDialog Class.
+  * Add detailed information of Network Card, HardDisk and Graphics Card.
+  * Add Clean Old Kernel Model.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 05 Dec 2013 15:11:18 +0800
+
 youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
 
   * Optimize button events of AuthDialog(LP: #1256183).

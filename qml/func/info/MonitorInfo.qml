@@ -15,7 +15,6 @@
  */
 
 import QtQuick 1.1
-import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
 
@@ -26,6 +25,9 @@ Rectangle {
     Component.onCompleted: {
         systemdispatcher.get_monitor_info_qt();//获取详细信息
         chipText.text = systemdispatcher.getSingleInfo("Mon_chip", "monitor");
+        chipmodelText.text = systemdispatcher.getSingleInfo("Vga_product", "monitor");
+        chipvendorText.text = systemdispatcher.getSingleInfo("Vga_vendor", "monitor");
+        chipbusText.text = systemdispatcher.getSingleInfo("Vga_businfo", "monitor");
         var vendor = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
         if(vendor.length !== 0 ) {
             productLabel.visible = true;
@@ -64,16 +66,16 @@ Rectangle {
     Column {
         anchors {
             top: parent.top
-            topMargin: 40
+            topMargin: 20
             left: parent.left
-            leftMargin: 30
+            leftMargin: 20
         }
         spacing: 20
 
         Row {
-            Text {
+            Common.Label {
                 id: titlebar
-                text: qsTr("Monitor information")//显示器信息
+                text: qsTr("Monitor And Graphics Card information")//显示器和显卡信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -89,11 +91,11 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Current Graphics Card:")//当前显卡：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: chipText
@@ -104,7 +106,54 @@ Rectangle {
             }
             Row {
                 spacing: 10
+                Common.Label {
+                    text: qsTr("Graphics Card Model:")//显卡型号：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
                 Text {
+                    id: chipmodelText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_product")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("Graphics Card Vendor:")//显卡制造商：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
+                Text {
+                    id: chipvendorText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_vendor")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("Graphics Card Bus Address:")//显卡总线地址：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
+                Text {
+                    id: chipbusText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_businfo")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+
+
+            Row {
+                spacing: 10
+                Common.Label {
                     id: productLabel
                     text: qsTr("Monitor:")//显示器：
                     font.pixelSize: 14
@@ -120,7 +169,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: vendorLabel
                     text: qsTr("Vendor:")//制造商：
                     font.pixelSize: 14
@@ -136,7 +185,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: dateLabel
                     text: qsTr("Production Date(year/week):")//生产日期(年/周)：
                     font.pixelSize: 14
@@ -152,7 +201,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: sizeLabel
                     text: qsTr("Reading Area:")//可视面积：
                     font.pixelSize: 14
@@ -168,7 +217,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: inLabel
                     text: qsTr("Screen Size:")//屏幕尺寸：
                     font.pixelSize: 14
@@ -184,7 +233,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: maxmodeLabel
                     text: qsTr("Maximum Resolution:")//最大分辨率：
                     font.pixelSize: 14
@@ -200,7 +249,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: gammaLabel
                     text: qsTr("Gamma Value:")//伽马值：
                     font.pixelSize: 14
@@ -216,7 +265,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: outputLabel
                     text: qsTr("Current Interface:")//当前接口：
                     font.pixelSize: 14
@@ -232,7 +281,7 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: supportLabel
                     text: qsTr("Support Interface:")//支持接口：
                     font.pixelSize: 14

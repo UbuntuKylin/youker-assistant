@@ -32,8 +32,8 @@
 #include "changecitydialog.h"
 #include "util.h"
 
-//#include "kfontdialog.h"
-//QString selectedFont;
+#include "kfontdialog.h"
+QString selectedFont;
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -452,44 +452,44 @@ void SessionDispatcher::restore_default_font_signal(QString flag) {
 }
 
 void SessionDispatcher::show_font_dialog(QString flag) {
-//    KFontDialog *fontDialog = new KFontDialog(mSettings, flag, 0);
-//    fontDialog->exec();
-//    if(!selectedFont.isEmpty()) {
-//        if(flag == "font") {
-//            set_font_qt(selectedFont);//set font
-//        }
-//        else if(flag == "desktopfont") {
-//            set_desktop_font_qt(selectedFont);//set desktopfont
-//        }
-//        else if(flag == "monospacefont") {
-//            set_monospace_font_qt(selectedFont);//set monospacefont
-//        }
-//        else if(flag == "documentfont") {
-//            set_document_font_qt(selectedFont);//set documentfont
-//        }
-//        else if(flag == "titlebarfont") {
-//            set_window_title_font_qt(selectedFont);//set titlebarfont
-//        }
-//        selectedFont.clear();
-//        emit notifyFontStyleToQML(flag); //font_style
-//    }
-    bool ok;
-    const QFont& font = QFontDialog::getFont(&ok, 0);
-    if(ok) {
-        QString fontsize = QString("%1").arg(font.pointSize());
-        QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
-        if(flag == "font")
-            set_font_qt(fontstyle);//set font
-        else if(flag == "desktopfont")
-            set_desktop_font_qt(fontstyle);//set desktopfont
-        else if(flag == "monospacefont")
-            set_monospace_font_qt(fontstyle);//set monospacefont
-        else if(flag == "documentfont")
-            set_document_font_qt(fontstyle);//set documentfont
-        else if(flag == "titlebarfont")
-            set_window_title_font_qt(fontstyle);//set titlebarfont
+    KFontDialog *fontDialog = new KFontDialog(mSettings, flag, 0);
+    fontDialog->exec();
+    if(!selectedFont.isEmpty()) {
+        if(flag == "font") {
+            set_font_qt(selectedFont);//set font
+        }
+        else if(flag == "desktopfont") {
+            set_desktop_font_qt(selectedFont);//set desktopfont
+        }
+        else if(flag == "monospacefont") {
+            set_monospace_font_qt(selectedFont);//set monospacefont
+        }
+        else if(flag == "documentfont") {
+            set_document_font_qt(selectedFont);//set documentfont
+        }
+        else if(flag == "titlebarfont") {
+            set_window_title_font_qt(selectedFont);//set titlebarfont
+        }
+        selectedFont.clear();
         emit notifyFontStyleToQML(flag); //font_style
     }
+//    bool ok;
+//    const QFont& font = QFontDialog::getFont(&ok, 0);
+//    if(ok) {
+//        QString fontsize = QString("%1").arg(font.pointSize());
+//        QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
+//        if(flag == "font")
+//            set_font_qt(fontstyle);//set font
+//        else if(flag == "desktopfont")
+//            set_desktop_font_qt(fontstyle);//set desktopfont
+//        else if(flag == "monospacefont")
+//            set_monospace_font_qt(fontstyle);//set monospacefont
+//        else if(flag == "documentfont")
+//            set_document_font_qt(fontstyle);//set documentfont
+//        else if(flag == "titlebarfont")
+//            set_window_title_font_qt(fontstyle);//set titlebarfont
+//        emit notifyFontStyleToQML(flag); //font_style
+//    }
 }
 
 QString SessionDispatcher::show_folder_dialog() {
