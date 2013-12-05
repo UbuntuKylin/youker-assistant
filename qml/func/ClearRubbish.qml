@@ -73,13 +73,13 @@ Item {
                 id: packagemodel
             }
         }
-        Common.TabPage {
-            title:qsTr("Old Kernel")//旧内核
-            anchors.fill: parent
-            KernelModel {
-                id: kernelmodel
-            }
-        }
+//        Common.TabPage {
+//            title:qsTr("Old Kernel")//旧内核
+//            anchors.fill: parent
+//            KernelModel {
+//                id: kernelmodel
+//            }
+//        }
         Common.TabPage{
             title:qsTr("Clean LargeFile ")//大文件清理
             anchors.fill: parent

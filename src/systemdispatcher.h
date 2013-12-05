@@ -160,16 +160,16 @@ public:
     QMap<QString, QVariant> cpuInfo;
     QMap<QString, QVariant> memoryInfo;
     QMap<QString, QVariant> boardInfo;
-    QMap<QString, QVariant> harddiskInfo;
-    QMap<QString, QVariant> networkcardInfo;
+//    QMap<QString, QVariant> harddiskInfo;
+//    QMap<QString, QVariant> networkcardInfo;
     QMap<QString, QVariant> monitorInfo;
     //得到当前系统和桌面的详细信息
     Q_INVOKABLE void get_computer_info_qt();
     Q_INVOKABLE void get_cpu_info_qt();
     Q_INVOKABLE void get_memory_info_qt();
     Q_INVOKABLE void get_board_info_qt();
-    Q_INVOKABLE void get_harddisk_info_qt();
-    Q_INVOKABLE void get_networkcard_info_qt();
+//    Q_INVOKABLE void get_harddisk_info_qt();
+//    Q_INVOKABLE void get_networkcard_info_qt();
     Q_INVOKABLE void get_monitor_info_qt();
     Q_INVOKABLE QString get_time_value_qt();
 //    Q_INVOKABLE void get_detail_system_message_qt();

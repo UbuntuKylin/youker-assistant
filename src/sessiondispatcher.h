@@ -25,7 +25,7 @@
 #include "quibo.h"
 #include "modaldialog.h"
 #include "skinswidget.h"
-//#include "processmanager.h"
+
 class QSettings;
 
 class SessionDispatcher : public QObject

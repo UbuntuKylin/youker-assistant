@@ -15,26 +15,17 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-#from __future__ import print_function
-#from collections import OrderedDict
 import sys
 import os
-#import glob
 import re
 import math
 import binascii
-#from gi.repository import Gtk, GLib
 import platform
-#import time
-#import stat
 import gettext
-#import dmi
 from gettext import gettext as _
 from gettext import ngettext as __
-#from dmi import Dmi
+
 class DetailInfo:
-#    def __init__ (self):
-#        self.dmi = Dmi()
 
 #Computer：			
 #   ComVendor		    制造商
@@ -117,12 +108,6 @@ class DetailInfo:
 #   NetCapacity         最大带宽
 #   NetWidth            网卡位宽
 
-    def get_sys_msg(self):
-        h = os.popen("lshw")
-        self.hw = h.read()
-        h.close()
-        return 
-
     def ctoascii(self,buf):
         ch = str(buf)
         asci = binascii.b2a_hex(ch)
@@ -168,14 +153,14 @@ class DetailInfo:
                 ComProduct = tmp[0]
             tmp = re.findall("Manufacturer: (.*)",computer)
             if tmp :
-                Comvendor = tmp[0]
+                ComVendor = tmp[0]
             tmp = re.findall("Version: (.*)",computer)
             if tmp :
                 ComVersion = tmp[0]
             tmp = re.findall("Serial Number: (.*)",computer)
             if tmp :
                 ComSerial = tmp[0]
-        Com['ComProduct'],Com['ComVendor'],Com['ComVersion'],Com['ComSerial'] = self.strip(ComProduct),self.strip(Comvendor),self.strip(ComVersion),self.strip(ComSerial)
+        Com['ComProduct'],Com['ComVendor'],Com['ComVersion'],Com['ComSerial'] = self.strip(ComProduct),self.strip(ComVendor),self.strip(ComVersion),self.strip(ComSerial)
         with open('/proc/uptime') as f:
             for line in f:
                     string = line.split('.')[0]
@@ -183,7 +168,6 @@ class DetailInfo:
                     minutes = seconds / 60
                     uptime = str(minutes)
         Com['node'], Com['uptime'], Com['system'], Com['platform'],Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
-        print Com
         return Com
 
     def get_cpu(self):
@@ -232,7 +216,6 @@ class DetailInfo:
                          cache_size = line.rstrip('\n').split(':')[1]
                          cache_size = filter(str.isdigit,cache_size)
         Cpu['cpu_cores'],Cpu['cpu_siblings'],Cpu['clflush_size'],Cpu['cache_size'] = cpu_cores,cpu_siblings,clflush_size,cache_size
-        print Cpu
         return Cpu
 
     def get_board(self):
@@ -266,81 +249,92 @@ class DetailInfo:
             if tmp:
                 BioRelease = tmp[0]
         Boa['BoaProduct'],Boa['BoaVendor'],Boa['BoaSerial'],Boa['BioVendor'],Boa['BioVersion'],Boa['BioRelease'] = self.strip(BoaProduct),self.strip(BoaVendor),self.strip(BoaSerial),self.strip(BioVendor),self.strip(BioVersion),self.strip(BioRelease)
-        print Boa
         return Boa
 
     def get_memory(self):
         #Memory Device
         Mem = {}
-        MemInfo,MemWidth,Memnum,Memtotalsize,MemSlot,MemProduct,MemVendor,MemSerial,MemSize,BioVendor = "","","","","","",'','','',''
+        MemInfo,MemWidth,Memnum,MemSlot,MemProduct,MemVendor,MemSerial,MemSize,BioVendor = "","","","","","",'','',''
         hw = os.popen("dmidecode -t memory")
         memory = hw.read()
         hw.close()
-        memory = memory[memory.index("Physical Memory Array\n")+len("Physical Memory Array\n"):]
+        num = 0
+        memory = memory[memory.index("Memory Device\n")+len("Memory Device\n"):]
         if memory :
-            tmp = re.findall("Number Of Devices: (.*)",memory)
-            if tmp :
-                Memnum = tmp[0]
-            tmp = re.findall("Maximum Capacity: (.*)",memory)
-            if tmp :
-                Memtotalsize = tmp[0]
-            memory = memory[memory.index("Memory Device\n")+len("Memory Device\n"):]
+            mark = re.findall("Data Width: (.*)",memory)
+            if mark :
+                for k in mark :
+                    if not k == 'Unknown':
+                        num += 1
+                        if MemWidth :
+                            MemWidth += '/' + k
+                        else :
+                            MemWidth = k
+            Memnum = str(num)
             tmp = re.findall("Bank Locator: (.*)",memory)
+            i = 0
             if tmp :
-                for k in tmp :
-                    if MemSlot :
-                        MemSlot += '/'+ k
-                    else :
-                        MemSlot = k
+                for k in mark :
+                    i += 1
+                    if not k == 'Unknown':
+                        if MemSlot :
+                            MemSlot += '/'+ tmp[i-1]
+                        else :
+                            MemSlot = tmp[i-1]
             tmp = re.findall("Part Number: (.*)",memory)
+            i = 0
             if tmp :
-                for k in tmp :
-                    if MemProduct :
-                        MemProduct += '/' + k
-                    else :
-                        MemProduct = k
+                for k in mark :
+                    i += 1
+                    if not k == 'Unknown':
+                        if MemProduct :
+                            MemProduct += '/' + tmp[i-1]
+                        else :
+                            MemProduct = tmp[i-1]
             tmp = re.findall("Manufacturer: (.*)",memory)
+            i = 0
             if tmp :
-                for k in tmp :
-                    if MemVendor :
-                        MemVendor += '/' + k
-                    else :
-                        MemVendor = k
+                for k in mark :
+                    i += 1
+                    if not k == 'Unknown':
+                        if MemVendor :
+                            MemVendor += '/' + tmp[i-1]
+                        else :
+                            MemVendor = tmp[i-1]
             tmp = re.findall("Serial Number: (.*)",memory)
+            i = 0
             if tmp :
-                for k in tmp :
-                    if MemSerial :
-                        MemSerial += '/' + k
-                    else :
-                        MemSerial = k
+                for k in mark :
+                    i += 1
+                    if not k == 'Unknown':
+                        if MemSerial :
+                            MemSerial += '/' + tmp[i-1]
+                        else :
+                            MemSerial = tmp[i-1]
             tmp = re.findall("Size: (.*)",memory)
+            i = 0
             if tmp :
-                for k in tmp :
-                    if MemSize :
-                        MemSize += '/' + k
-                    else :
-                        MemSize = k
-            tmp = re.findall("Data Width: (.*)",memory)
-            if tmp :
-                for k in tmp :
-                    if MemWidth :
-                        MemWidth += '/' + k
-                    else :
-                        MemWidth = k
+                for k in mark :
+                    i += 1
+                    if not k == 'Unknown':
+                        if MemSize :
+                            MemSize += '/' + tmp[i-1]
+                        else :
+                            MemSize = tmp[i-1]
             tmp0 = self.strip(re.findall("Form Factor: (.*)",memory))
             tmp1 = self.strip(re.findall("Type: (.*)",memory))
             tmp2 = self.strip(re.findall("Type Detail: (.*)",memory))
             tmp3 = self.strip(re.findall("Speed: (.*)",memory))
             i = 0
             if tmp0 and tmp1 and tmp2 and tmp3 :
-                while i < len(tmp0): 
-                    if MemInfo :
-                        MemInfo += '/' + tmp0[i] + ' ' + tmp1[i] + ' ' + tmp2[i] + ' ' + tmp3[i]
-                    else :
-                        MemInfo = tmp0[i] + ' ' + tmp1[i] + ' ' + tmp2[i] + ' ' + tmp3[i]
+                for k in mark :
                     i += 1
-        Mem["MemInfo"],Mem["MemWidth"],Mem["Memtotalsize"],Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemInfo,self.strip(MemWidth),self.strip(Memtotalsize),self.strip(MemSlot),self.strip(MemProduct),self.strip(MemVendor),self.strip(MemSerial),self.strip(MemSize),self.strip(Memnum)
-        print Mem
+                    if not k == 'Unknown':
+                        if MemInfo :
+                            MemInfo += '/' + tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
+                        else :
+                            MemInfo = tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
+        Mem["MemInfo"],Mem["MemWidth"],Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemInfo,self.strip(MemWidth),self.strip(MemSlot),self.strip(MemProduct),self.strip(MemVendor),self.strip(MemSerial),self.strip(MemSize),self.strip(Memnum)
         return Mem
 
     def get_monitor(self):
@@ -402,145 +396,11 @@ class DetailInfo:
             if tmp:
                 if not ret.get("chip"):
                     ret["Mon_chip"] = tmp[0]
-        vga = self.hw[self.hw.index('*-display\n')+len('*-display\n'):]
-        vga = vga[:vga.index('*-')-1]
-        if vga :
-            tmp = re.findall("product:(.*)",vga)
-            if tmp :
-                ret['Vga_product'] = tmp[0]
-            tmp = re.findall("vendor:(.*)",vga)
-            if tmp :
-                ret['Vga_vendor'] = tmp[0]
-            tmp = re.findall("bus info:(.*)",vga)
-            if tmp :
-                ret['Vga_businfo'] = tmp[0]
-            
-        print ret
         return ret
 
-    def get_disk(self):
-        dis={}
-        disknum = 0
-        disk_manufacturers = [
-        "^ST.+", "Seagate",
-        "^D...-.+", "IBM",
-        "^IBM.+", "IBM",
-        "^HITACHI.+", "Hitachi",
-        "^IC.+", "Hitachi",
-        "^HTS.+", "Hitachi",
-        "^FUJITSU.+", "Fujitsu",
-        "^MP.+", "Fujitsu",
-        "^TOSHIBA.+", "Toshiba",
-        "^MK.+", "Toshiba",
-        "^MAXTOR.+", "Maxtor",
-        "^Pioneer.+", "Pioneer",
-        "^PHILIPS.+", "Philips",
-        "^QUANTUM.+", "Quantum",
-        "FIREBALL.+", "Quantum",
-        "^WDC.+", "Western Digital",
-        "WD.+", "Western Digital",
-        ]
-        DiskProduct,DiskVendor,DiskCapacity,DiskName,DiskFw,DiskSerial = '','','','','',''
-        li =  os.popen("ls /dev/sd?")
-        line = li.read()
-        li.close()
-        li = os.popen("ls /dev/hd?")
-        line += li.read()
-        li.close()
-        if line :
-            line = line.split('\n')
-            for k in line :
-                if k :
-                    disknum  += 1
-                    st = os.popen("hdparm -i %s" % k)
-                    strin = st.read()
-                    st.close()
-                    if DiskName :
-                        DiskName += '/' + k
-                    else :
-                        DiskName = k
-                    tmp = re.findall("Model=(.*), F",strin)
-                    if tmp:
-                        if DiskProduct :
-                            DiskProduct += '/'+tmp[0]
-                        else :
-                            DiskProduct = tmp[0]
-                        i = 0
-                        while i < len(disk_manufacturers):
-                            ven = re.compile(disk_manufacturers[i],re.I)
-                            tm = ven.findall(tmp[0])
-                            if tm :
-                                if DiskVendor :
-                                    DiskVendor += '/' + disk_manufacturers[i+1]
-                                else :
-                                    DiskVendor += disk_manufacturers[i+1]
-                                i = len(disk_manufacturers)
-                            i += 2
-                    tmp = re.findall("FwRev=(.*), ",strin)
-                    if tmp :
-                        if DiskFw :
-                            DiskFw += '/' +tmp[0]
-                        else :
-                            DiskFw = tmp[0]
-                    tmp = re.findall("SerialNo=(.*)",strin)
-                    if tmp :
-                        if DiskSerial :
-                            DiskSerial += '/' +tmp[0]
-                        else :
-                            DiskSerial = tmp[0]
-                    ds = os.popen("fdisk -l %s" % k)
-                    d = ds.read()
-                    ds.close()
-                    tmp = re.findall("%s: (.*)," % k,d)
-                    if tmp:
-                        if DiskCapacity :
-                            DiskCapacity += '/' +tmp[0]
-                        else :
-                            DiskCapacity = tmp[0]
-        dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
-        print dis
-        return dis
-
-    def get_network(self):
-        net = {}
-        NetProduct,NetVendor,NetBusinfo,NetLogicalname,NetVersion,NetSerial,NetSize,NetCapacity,NetWidth = '','','','','','','','',''
-        network = self.hw[self.hw.index('*-network\n')+len('*-network\n'):]
-        network = network[:network.index('*-')-1]
-        if network :
-            tmp = re.findall("product:(.*)",network)
-            if tmp :
-                NetProduct = tmp[0]
-            tmp = re.findall("vendor:(.*)",network)
-            if tmp :
-                NetVendor = tmp[0]
-            tmp = re.findall("bus info:(.*)",network)
-            if tmp :
-                NetBusinfo = tmp[0]
-            tmp = re.findall("logical name:(.*)",network)
-            if tmp :
-                NetLogicalname = tmp[0]
-            tmp = re.findall("version:(.*)",network)
-            if tmp :
-                NetVersion = tmp[0]
-            tmp = re.findall("serial:(.*)",network)
-            if tmp :
-                NetSerial = tmp[0]
-            tmp = re.findall("size:(.*)",network)
-            if tmp :
-                NetSize = tmp[0]
-            tmp = re.findall("capacity:(.*)",network)
-            if tmp :
-                NetCapacity = tmp[0]
-            tmp = re.findall("width:(.*)",network)
-            if tmp :
-                NetWidth = tmp[0]
-        net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetVersion'],net['NetSerial'],net['NetSize'],net['NetCapacity'],net['NetWidth'] = self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetVersion),self.strip(NetSerial),self.strip(NetSize),self.strip(NetCapacity),self.strip(NetWidth)
-        print net
-        return net
 
 if __name__ == "__main__":
     cc = DetailInfo()
-    cc.get_sys_msg()
     cc.ctoascii('a')
     cc.strip('a')
     cc.get_computer()
@@ -548,5 +408,3 @@ if __name__ == "__main__":
     cc.get_board()
     cc.get_memory()
     cc.get_monitor()
-    cc.get_disk()
-    cc.get_network()

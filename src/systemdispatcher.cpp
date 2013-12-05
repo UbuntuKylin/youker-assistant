@@ -143,27 +143,27 @@ void SystemDispatcher::get_board_info_qt() {
     }
 }
 
-void SystemDispatcher::get_harddisk_info_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_harddisk_info");
-    if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
-        harddiskInfo = value;
-    }
-    else {
-        qDebug() << "get harddisk info failed!";
-    }
-}
+//void SystemDispatcher::get_harddisk_info_qt() {
+//    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_harddisk_info");
+//    if (reply.isValid()) {
+//        QMap<QString, QVariant> value = reply.value();
+//        harddiskInfo = value;
+//    }
+//    else {
+//        qDebug() << "get harddisk info failed!";
+//    }
+//}
 
-void SystemDispatcher::get_networkcard_info_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_networkcard_info");
-    if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
-        networkcardInfo = value;
-    }
-    else {
-        qDebug() << "get networkcard info failed!";
-    }
-}
+//void SystemDispatcher::get_networkcard_info_qt() {
+//    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_networkcard_info");
+//    if (reply.isValid()) {
+//        QMap<QString, QVariant> value = reply.value();
+//        networkcardInfo = value;
+//    }
+//    else {
+//        qDebug() << "get networkcard info failed!";
+//    }
+//}
 
 void SystemDispatcher::get_monitor_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_monitor_info");
@@ -195,12 +195,12 @@ QString SystemDispatcher::getSingleInfo(QString key, QString flag) {
     else if(flag == "board") {
         info = boardInfo.value(key);
     }
-    else if(flag == "harddisk") {
-        info = harddiskInfo.value(key);
-    }
-    else if(flag == "networkcard") {
-        info = networkcardInfo.value(key);
-    }
+//    else if(flag == "harddisk") {
+//        info = harddiskInfo.value(key);
+//    }
+//    else if(flag == "networkcard") {
+//        info = networkcardInfo.value(key);
+//    }
     else if(flag == "monitor") {
         info = monitorInfo.value(key);
     }

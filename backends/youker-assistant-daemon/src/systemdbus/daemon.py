@@ -61,7 +61,7 @@ class Daemon(PolicyKitService):
         self.daemoncache = cleaner.CleanTheCache()
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, UKPATH)
-        self.infoconf.get_sys_msg()
+        #self.infoconf.get_sys_msg()
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')

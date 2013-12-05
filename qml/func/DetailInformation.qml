@@ -35,8 +35,8 @@ Rectangle {
         listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "cpu"});
         listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "memory"});
         listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "board"});
-        listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "harddisk"});
-        listModel.append({"name": qsTr("NetworkCard"), "flag": "networkcard", "iconName": "network"});
+//        listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "harddisk"});
+//        listModel.append({"name": qsTr("NetworkCard"), "flag": "networkcard", "iconName": "network"});
         listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "monitor"});
     }
 
@@ -82,12 +82,12 @@ Rectangle {
                         else if(flag == "memory") {
                             window.state = "MemoryPage";
                         }
-                        else if(flag == "harddisk") {
-                            window.state = "HarddiskPage";
-                        }
-                        else if(flag == "networkcard") {
-                            window.state = "NetworkPage";
-                        }
+//                        else if(flag == "harddisk") {
+//                            window.state = "HarddiskPage";
+//                        }
+//                        else if(flag == "networkcard") {
+//                            window.state = "NetworkPage";
+//                        }
                         else if(flag == "monitor") {
                             window.state = "MonitorPage";
                         }
@@ -135,18 +135,18 @@ Rectangle {
                 height: parent.height
                 visible: false
             }
-            Info.HardDiskInfo {
-                id: hardLayer
-                width: parent.width
-                height: parent.height
-                visible: false
-            }
-            Info.NetworkCardInfo {
-                id: networkLayer
-                width: parent.width
-                height: parent.height
-                visible: false
-            }
+//            Info.HardDiskInfo {
+//                id: hardLayer
+//                width: parent.width
+//                height: parent.height
+//                visible: false
+//            }
+//            Info.NetworkCardInfo {
+//                id: networkLayer
+//                width: parent.width
+//                height: parent.height
+//                visible: false
+//            }
             Info.MonitorInfo {
                 id: monitorLayer
                 width: parent.width
@@ -193,8 +193,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
-            PropertyChanges { target: hardLayer; visible: false }
-            PropertyChanges { target: networkLayer; visible: false }
+//            PropertyChanges { target: hardLayer; visible: false }
+//            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -204,8 +204,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
-            PropertyChanges { target: hardLayer; visible: false }
-            PropertyChanges { target: networkLayer; visible: false }
+//            PropertyChanges { target: hardLayer; visible: false }
+//            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -215,8 +215,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: true }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
-            PropertyChanges { target: hardLayer; visible: false }
-            PropertyChanges { target: networkLayer; visible: false }
+//            PropertyChanges { target: hardLayer; visible: false }
+//            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -226,8 +226,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: true }
             PropertyChanges { target: memoryLayer; visible: false }
-            PropertyChanges { target: hardLayer; visible: false }
-            PropertyChanges { target: networkLayer; visible: false }
+//            PropertyChanges { target: hardLayer; visible: false }
+//            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
         State {
@@ -237,32 +237,32 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: true }
-            PropertyChanges { target: hardLayer; visible: false }
-            PropertyChanges { target: networkLayer; visible: false }
+//            PropertyChanges { target: hardLayer; visible: false }
+//            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
         },
-        State {
-            name: "HarddiskPage"
-            PropertyChanges { target: computerLayer; visible: false }
-            PropertyChanges { target: desktopLayer; visible: false }
-            PropertyChanges { target: cpuLayer;  visible: false }
-            PropertyChanges { target: biosLayer; visible: false }
-            PropertyChanges { target: memoryLayer; visible: false }
-            PropertyChanges { target: hardLayer; visible: true }
-            PropertyChanges { target: networkLayer; visible: false }
-            PropertyChanges { target: monitorLayer; visible: false }
-        },
-        State {
-            name: "NetworkPage"
-            PropertyChanges { target: computerLayer; visible: false }
-            PropertyChanges { target: desktopLayer; visible: false }
-            PropertyChanges { target: cpuLayer;  visible: false }
-            PropertyChanges { target: biosLayer; visible: false }
-            PropertyChanges { target: memoryLayer; visible: false }
-            PropertyChanges { target: hardLayer; visible: false }
-            PropertyChanges { target: networkLayer; visible: true }
-            PropertyChanges { target: monitorLayer; visible: false }
-        },
+//        State {
+//            name: "HarddiskPage"
+//            PropertyChanges { target: computerLayer; visible: false }
+//            PropertyChanges { target: desktopLayer; visible: false }
+//            PropertyChanges { target: cpuLayer;  visible: false }
+//            PropertyChanges { target: biosLayer; visible: false }
+//            PropertyChanges { target: memoryLayer; visible: false }
+//            PropertyChanges { target: hardLayer; visible: true }
+//            PropertyChanges { target: networkLayer; visible: false }
+//            PropertyChanges { target: monitorLayer; visible: false }
+//        },
+//        State {
+//            name: "NetworkPage"
+//            PropertyChanges { target: computerLayer; visible: false }
+//            PropertyChanges { target: desktopLayer; visible: false }
+//            PropertyChanges { target: cpuLayer;  visible: false }
+//            PropertyChanges { target: biosLayer; visible: false }
+//            PropertyChanges { target: memoryLayer; visible: false }
+//            PropertyChanges { target: hardLayer; visible: false }
+//            PropertyChanges { target: networkLayer; visible: true }
+//            PropertyChanges { target: monitorLayer; visible: false }
+//        },
         State {
             name: "MonitorPage"
             PropertyChanges { target: computerLayer; visible: false }
@@ -270,8 +270,8 @@ Rectangle {
             PropertyChanges { target: cpuLayer;  visible: false }
             PropertyChanges { target: biosLayer; visible: false }
             PropertyChanges { target: memoryLayer; visible: false }
-            PropertyChanges { target: hardLayer; visible: false }
-            PropertyChanges { target: networkLayer; visible: false }
+//            PropertyChanges { target: hardLayer; visible: false }
+//            PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: true }
         }
     ]

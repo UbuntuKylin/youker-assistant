@@ -29,7 +29,7 @@ Rectangle {
     height: 600
     objectName: "main"
     anchors.fill: parent
-    property string version: "V0.3.1"
+    property string version: "V0.2.4"
     property string bgName: ""
     SessionDispatcher {
         id: sessiondispatcher
@@ -85,33 +85,33 @@ Rectangle {
             uk_version: main.version
         }
     }
-    Row {
-        id: logRow
-        spacing: 10
-        anchors {
-            top: parent.top
-            topMargin: 20
-            right: parent.right
-            rightMargin: 40
-        }
-        Image {
-            width: 64
-            height: 64
-            source: "./img/skin/logo.png"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        Text {
-            id: softName
-            text: qsTr("优客助手")//优客助手        Youker Assistant
-            anchors.verticalCenter: parent.verticalCenter
-            font.family: "Arial"
-            font.bold: true
-            font.pixelSize: (sessiondispatcher.get_locale_version() == "zh_CN") ? 24 : 22
-            style: Text.Sunken
-            styleColor: "#AAAAAA"
-            color: "white"
-        }
-    }
+//    Row {
+//        id: logRow
+//        spacing: 10
+//        anchors {
+//            top: parent.top
+//            topMargin: 20
+//            right: parent.right
+//            rightMargin: 40
+//        }
+//        Image {
+//            width: 64
+//            height: 64
+//            source: "./img/skin/logo.png"
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+//        Text {
+//            id: softName
+//            text: qsTr("优客助手")//优客助手        Youker Assistant
+//            anchors.verticalCenter: parent.verticalCenter
+//            font.family: "Arial"
+//            font.bold: true
+//            font.pixelSize: (sessiondispatcher.get_locale_version() == "zh_CN") ? 24 : 22
+//            style: Text.Sunken
+//            styleColor: "#AAAAAA"
+//            color: "white"
+//        }
+//    }
 
     Text {
         id: versionText
@@ -127,7 +127,6 @@ Rectangle {
         styleColor: "#AAAAAA"
         color: "white"
         text: main.version
-
     }
     MouseArea {
         anchors.fill: versionText
