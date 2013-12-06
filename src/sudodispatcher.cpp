@@ -70,6 +70,9 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handlerSoftwareApt(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handlerGetSoftwareListStatus(QStringList)));
     QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(startUpdateSoftwareSource()));
+
+    //多余包和内核包删除过程信号绑定
+    QObject::connect(sudoiface,SIGNAL(percent_remove_packages(QString)),this,SLOT(handlerRemoveProgress(QString)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
@@ -91,6 +94,12 @@ void SudoDispatcher::handlerClearDeb(QString msg) {
 
 void SudoDispatcher::handlerClearDebError(QString msg) {
      emit finishCleanDebError(msg);
+}
+
+void SudoDispatcher::handlerRemoveProgress(QString msg) {
+    qDebug() << "111";
+    qDebug() << msg;
+    emit sendProgressToQML(msg);
 }
 
 //得到下载或者是操作过程中发送过来的数据，在显示在进度条上之前处理优化下

@@ -101,6 +101,9 @@ signals:
     //发送软件列表给QML去显示
     void sendAppListToQML(QStringList appList);
 
+    //将不需要的包和内核包的卸载进度告诉qml进度条
+    void sendProgressToQML(QString msg);
+
 
 public slots:
     //后台发来清理不需要的包的正确过程中的信号后响应该函数
@@ -116,6 +119,8 @@ public slots:
     //准备开始更新软件源
     void startUpdateSoftwareSource();
 
+    //清理多余包和旧内核包
+    void handlerRemoveProgress(QString msg);
 private:
     QDBusInterface *sudoiface;
     UpdateDialog *updatedialog;
