@@ -40,6 +40,7 @@ KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
+    ui->curFontText->setStyleSheet("color: green");
 
     ui->familyEdit->setReadOnly(true);
     ui->familyEdit->setFocusProxy(ui->familyList);

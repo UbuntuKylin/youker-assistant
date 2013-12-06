@@ -109,6 +109,8 @@ Item {
         onFinishCleanDebError: {//清理出错时收到的信号
             if (msg == "package") {
                 if (root.btnFlag == "package_work") {
+                    //清理过程中发生错误，解禁按钮
+                    actionBtn.enabled = true;
                     titleBar.state = "UnneedWorkError";
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
@@ -116,10 +118,14 @@ Item {
         }
         onFinishCleanDeb: {//清理成功时收到的信号
             if (msg == "") {
+                //清理取消，解禁按钮
+                actionBtn.enabled = true;
                 toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
             }
             else if (msg == "package") {
                 if (root.btnFlag == "package_work") {
+                    //清理成功完成，解禁按钮
+                    actionBtn.enabled = true;
                     root.state = "UnneedWorkFinish";
                     toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     root.flag = true;
@@ -272,6 +278,8 @@ Item {
                     }
                     else if (root.btnFlag == "package_work") {//清理
                         if(root.resultFlag) {//扫描得到的实际内容存在时
+                            //开始清理时，禁用按钮，等到清理完成后解禁
+                            actionBtn.enabled = false;
                             sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
                             root.arrowShow = 1;
                         }
@@ -295,6 +303,8 @@ Item {
                             }
                             else if (root.btnFlag == "package_work") {//清理
                                 if(root.resultFlag) {//扫描得到的实际内容存在时
+                                    //开始清理时，禁用按钮，等到清理完成后解禁
+                                    actionBtn.enabled = false;
                                     sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
                                     root.arrowShow = 1;
                                 }

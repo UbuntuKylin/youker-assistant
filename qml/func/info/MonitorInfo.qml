@@ -158,7 +158,7 @@ Rectangle {
                     text: qsTr("Monitor:")//显示器：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: productText
@@ -174,7 +174,7 @@ Rectangle {
                     text: qsTr("Vendor:")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: vendorText
@@ -190,7 +190,7 @@ Rectangle {
                     text: qsTr("Production Date(year/week):")//生产日期(年/周)：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: dateText
@@ -206,7 +206,7 @@ Rectangle {
                     text: qsTr("Reading Area:")//可视面积：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: sizeText
@@ -222,7 +222,7 @@ Rectangle {
                     text: qsTr("Screen Size:")//屏幕尺寸：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: inText
@@ -238,7 +238,7 @@ Rectangle {
                     text: qsTr("Maximum Resolution:")//最大分辨率：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: maxmodeText
@@ -254,7 +254,7 @@ Rectangle {
                     text: qsTr("Gamma Value:")//伽马值：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: gammaText
@@ -270,7 +270,7 @@ Rectangle {
                     text: qsTr("Current Interface:")//当前接口：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: outputText
@@ -286,7 +286,7 @@ Rectangle {
                     text: qsTr("Support Interface:")//支持接口：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: supportText
