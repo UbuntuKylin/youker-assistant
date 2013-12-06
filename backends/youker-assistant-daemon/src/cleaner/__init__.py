@@ -480,8 +480,8 @@ class CleanTheCache():
 
 # the function of clean cruft files and cruft packages
 class FunctionOfClean():
-    def __init__(self, systemdaemon):
-        self.sysdaemon = systemdaemon
+    def __init__(self, msgdaemon):
+        self.msgdaemon = msgdaemon
 
     def clean_the_file_for_main(self, cruftlist):
         for cruft in cruftlist:
@@ -520,14 +520,16 @@ class FunctionOfClean():
                 pkg = cache[cruft]
                 if pkg.is_installed:
                     pkg.mark_delete()
-            cache.commit(None, MyInstallProgress())
+            iprogress = MyInstallProgress(self.msgdaemon)
+            cache.commit(None, iprogress)
 
 class MyInstallProgress(InstallProgress):
-        def __init__(self):
+        def __init__(self, sudodaemon):
             InstallProgress.__init__(self)
+            self.sudodaemon = sudodaemon
 
         def statusChange(self, pkg, percent, status):
-            pass
+            self.sudo.daemon.percent_remove_packages("percent: %s" % str(int(percent)))
 
         def error(self, errorstr):
             pass

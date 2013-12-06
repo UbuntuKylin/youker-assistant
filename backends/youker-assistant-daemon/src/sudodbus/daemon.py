@@ -61,6 +61,10 @@ class SudoDaemon(PolicyKitService):
     def clean_complete(self, msg):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='s')
+    def percent_remove_packages(self, msg):
+        pass
+
     # a dbus method which means an error occurred
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error(self, msg):
