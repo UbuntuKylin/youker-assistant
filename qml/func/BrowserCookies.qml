@@ -355,6 +355,7 @@ Item {
                         if(flag == "firefox") {
                             if(status == "reset") {//点击重置按钮，清空数据
                                 firefoxModel.clear();
+                                root.firefox_btn_flag = "cookies_scan";//1206
                                 if(root.firefox_expanded == true) {
                                     root.firefox_expanded = false;//1、先传递给ListTitle.qml的伸缩值设为默认的false
                                 }
@@ -400,6 +401,7 @@ Item {
                     imageSource: root.chromiumImage
                     itemTitle: root.chromiumTitle
                     detailstr: root.chromiumDetail
+                    arrow_display: root.chromium_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
                     flag: "chromium"
                     btnFlag: root.chromium_btn_flag
                     nullFlag: root.chromium_null_flag
@@ -412,6 +414,7 @@ Item {
                     onSendBrowserType: {
                         if(status == "reset") {//点击重置按钮，清空数据
                             chromiumModel.clear();
+                            root.chromium_btn_flag = "cookies_scanc";//1206
                             if(root.chromium_expanded == true) {
                                 root.chromium_expanded = false;//1、先传递给ListTitle.qml的伸缩值设为默认的false
                             }
