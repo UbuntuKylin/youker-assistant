@@ -235,6 +235,11 @@ class Daemon(PolicyKitService):
     def clean_complete(self, msg):
         pass
 
+    # a dbus method which means quit clean by clicking the policykit's quit button
+    @dbus.service.signal(INTERFACE, signature='s')
+    def quit_clean(self, msg):
+        pass
+
     # a dbus method which means clean single complete
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_single_complete(self, msg):
@@ -473,7 +478,7 @@ class Daemon(PolicyKitService):
     def cookies_clean_records_function(self, flag, sender = None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
-            self.clean_complete_msg('')
+            self.quit_clean_work(flag)
             return
         daemoncookies = cleaner.CleanTheCookies(None)
         try:
@@ -530,6 +535,9 @@ class Daemon(PolicyKitService):
 
     def clean_complete_msg(self, para):
         self.clean_complete(para)
+
+    def quit_clean_work(self, para):
+        self.quit_clean(para)
 
     def clean_single_complete_msg(self, para):
         self.clean_single_complete(para)

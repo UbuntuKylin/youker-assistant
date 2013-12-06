@@ -37,6 +37,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_single_complete(QString)),this,SLOT(handler_clear_single_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(clean_single_error(QString)),this,SLOT(handler_clear_single_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    QObject::connect(systemiface,SIGNAL(quit_clean(QString)),this,SLOT(handler_quit_clean(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
@@ -291,6 +292,10 @@ void SystemDispatcher::handler_clear_rubbish(QString msg) {
      emit finishCleanWork(msg);
 }
 
+void SystemDispatcher::handler_quit_clean(QString msg) {
+    emit quitCleanWork(msg);
+}
+
 void SystemDispatcher::handler_clear_single_rubbish(QString msg) {
     emit finishCleanSingleWork(msg);
 }
@@ -419,7 +424,6 @@ void SystemDispatcher::cookies_clean_record_function_qt(QString flag, QString we
 }
 
 void SystemDispatcher::cookies_clean_records_function_qt(QString flag) {
-    qDebug() << "lixiang222";
     KThread *thread = new KThread(tmplist, systemiface, "cookies_clean_records_function", flag);
     thread->start();
 }

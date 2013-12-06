@@ -185,6 +185,7 @@ signals:
     void finishCleanSingleWork(QString msg);
     void finishCleanSingleWorkError(QString msg);
     void finishCleanWork(QString msg);
+    void quitCleanWork(QString msg);
     void finishCleanWorkError(QString msg);
     void finishCleanWorkMain(QString msg);
     void finishCleanWorkMainError(QString msg);
@@ -197,6 +198,7 @@ public slots:
     void handler_clear_single_rubbish(QString msg);
     void handler_clear_single_rubbish_error(QString msg);
     void handler_clear_rubbish(QString msg);
+    void handler_quit_clean(QString msg);
     void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);
     void handler_clear_rubbish_main_error(QString msg);
