@@ -58,6 +58,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
+    QObject::connect(sessioniface, SIGNAL(access_weather(QString)), this, SLOT(handler_access_forecast_weather(QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -69,6 +70,11 @@ SessionDispatcher::~SessionDispatcher() {
 
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
+}
+
+void SessionDispatcher::handler_access_forecast_weather(QString msg) {
+    qDebug() << "aaaaaaaaaaaaaaaaa";
+    qDebug() << msg;
 }
 
 void SessionDispatcher::handler_scan_complete(QString msg) {
@@ -650,8 +656,15 @@ void SessionDispatcher::showSkinWidget() {
 
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
-    forecastInfo = reply.value();
+
+    QStringList tmplist;
+    tmplist << "Kobe" << "Lee";
+    KThread *thread = new KThread(tmplist, sessioniface, "get_forecast_weahter", initCityId);
+    thread->start();
+
+
+//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
+//    forecastInfo = reply.value();
 }
 
 bool SessionDispatcher::get_current_weather_qt() {

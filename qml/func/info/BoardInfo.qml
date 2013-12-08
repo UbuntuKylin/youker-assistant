@@ -17,18 +17,23 @@
 import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
+import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
     Component.onCompleted: {
         systemdispatcher.get_board_info_qt();//获取详细信息
-        basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor", "board").toUpperCase() + ".jpg";
-        bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor", "board").toUpperCase() + ".jpg";
+
+        var basicName = systemdispatcher.getSingleInfo("BoaVendor", "board").toUpperCase();
+        var biosName = systemdispatcher.getSingleInfo("BioVendor", "board").toUpperCase();
+        basiclogo.source = InfoGroup.judgeName(basicName) ? ("../../img/logo/Manufacturer/" + basicName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        bioslogo.source = InfoGroup.judgeName(biosName) ? ("../../img/logo/Manufacturer/" + biosName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+
         productText.text = systemdispatcher.getSingleInfo("BoaProduct", "board");
-        vendorText.text = systemdispatcher.getSingleInfo("BoaVendor", "board");
+        vendorText.text = basicName;
         serialText.text = systemdispatcher.getSingleInfo("BoaSerial", "board");
-        biosvendorText.text = systemdispatcher.getSingleInfo("BioVendor", "board");
+        biosvendorText.text = biosName;
         biosversionText.text = systemdispatcher.getSingleInfo("BioVersion", "board");
         biosreleaseText.text = systemdispatcher.getSingleInfo("BioRelease", "board");
     }

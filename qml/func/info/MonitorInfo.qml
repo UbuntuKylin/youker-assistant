@@ -17,6 +17,7 @@
 import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
+import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 475
@@ -39,9 +40,10 @@ Rectangle {
             gammaLabel.visible = true;
             outputLabel.visible = true;
             supportLabel.visible = true;
-            logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("Mon_vendor", "monitor").toUpperCase() + ".jpg";
+            var vendorName = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
+            logo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             productText.text = systemdispatcher.getSingleInfo("Mon_product", "monitor");
-            vendorText.text = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
+            vendorText.text = vendorName;
             dateText.text = systemdispatcher.getSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getSingleInfo("Mon_week", "monitor");
             sizeText.text = systemdispatcher.getSingleInfo("Mon_size", "monitor");
             inText.text = systemdispatcher.getSingleInfo("Mon_in", "monitor");

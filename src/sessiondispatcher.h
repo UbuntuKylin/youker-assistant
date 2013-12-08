@@ -239,6 +239,8 @@ signals:
 //    //判断是否有chromium浏览器
 //    void judge_deb_exists_chromium(QString flag);
 public slots:
+    //获取天气预报槽函数
+    void handler_access_forecast_weather(QString msg);
     //扫描完成槽函数
     void handler_scan_complete(QString msg);
     //扫描过程的函数

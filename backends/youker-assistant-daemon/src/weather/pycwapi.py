@@ -36,6 +36,35 @@ def read_from_url(url):
     f.close()
     return json_string
 
+def get_forecast_weather_from_nmc(location_id):
+    """
+    Fetches forecast weather report from NMC
+
+    Parameters:
+      location_id: City ID for request weather
+
+    Returns:
+      weather_data: a string of weather data that exists in Json feed.
+    """
+
+    weather_data = []
+    url = WEATHER_URL % (location_id)
+    json_string = read_from_url(url)
+    parsed_json = json.loads(json_string)
+    tp_forecast = ('city', 'date_y', 'fchh', 'temp1', 'temp2', 'temp3', 'temp4', 'temp5', 'temp6', \
+    'weather1', 'weather2', 'weather3', 'weather4', 'weather5', 'weather6', \
+    'wind1', 'wind2', 'wind3', 'wind4', 'wind5', 'wind6', \
+    'img1', 'img2', 'img3', 'img4', 'img5', 'img6', 'img7', 'img8', 'img9', 'img10', 'img11', 'img12', 'img_single', \
+    'img_title1', 'img_title2', 'img_title3', 'img_title4', 'img_title5', 'img_title6', \
+    'img_title7', 'img_title8', 'img_title9', 'img_title10', 'img_title11', 'img_title12', 'img_title_single', \
+    'wind1', 'wind2', 'wind3', 'wind4', 'wind5', 'wind6', \
+    'fx1', 'fx2', 'fl1', 'fl2', 'fl3', 'fl4', 'fl5', 'fl6', \
+    'index', 'index_d', 'index48', 'index48_d', 'index_uv', 'index_xc', 'index_tr', 'index_co', 'index_cl', 'index_ls', 'index_ag')
+    for key in tp_forecast:
+        tmp = key + '<1_1>' + parsed_json['weatherinfo'][key]
+        weather_data = weather_data + '<2_2>' + tmp
+    return weather_data
+
 def get_weather_from_nmc(location_id, method = 0):
     """
     Fetches weather report from NMC

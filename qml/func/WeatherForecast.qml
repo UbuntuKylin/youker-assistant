@@ -315,8 +315,8 @@ Item {
         }
 
         Component.onCompleted: {
-            sessiondispatcher.get_forecast_weahter_qt();
-            weather_widget.initWeatherForcast();
+//            sessiondispatcher.get_forecast_weahter_qt();
+//            weather_widget.initWeatherForcast();
         }
         //背景
         Image {

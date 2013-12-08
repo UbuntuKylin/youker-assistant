@@ -4,9 +4,9 @@ youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
   * Add detailed information of Network Card, HardDisk and Graphics Card.
   * Add Clean Old Kernel Model.
   * Add Separator.qml.
-  * Change Logo.
+  * Change Logo and add InfoGroup.js.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 08 Dec 2013 10:39:04 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 08 Dec 2013 21:13:23 +0800
 
 youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
 

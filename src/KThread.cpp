@@ -70,6 +70,9 @@ void KThread::run() {
     else if(methodName == "check_pkgs_status") {
         iface->call("check_pkgs_status", list);
     }
+    else if(methodName == "get_forecast_weahter") {
+        iface->call("get_forecast_weahter", fileFlag);
+    }
 }
 void KThread::stop() {
     wait();

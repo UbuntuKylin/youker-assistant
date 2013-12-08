@@ -169,7 +169,15 @@ class SessionDaemon(dbus.service.Object):
         self.scan_complete_msg('softwarecenter')
         return tmp_dic['softwarecenter'].split('<1_1>')
 
-    # a dbus method which means scan complete by kobe
+    # a dbus signal which means access weather by kobe
+    @dbus.service.signal(INTERFACE, signature='s')
+    def access_weather(self, msg):
+        pass
+
+    def access_weather_msg(self, para):
+        self.access_weather(para)
+
+    # a dbus signal which means scan complete by kobe
     @dbus.service.signal(INTERFACE, signature='s')
     def scan_complete(self, msg):
         pass
@@ -561,9 +569,13 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------weather-------------------------
     # get weather information of six days
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def get_forecast_weahter(self, cityId):
-        return self.weatherconf.getWeatherForecast(cityId)
+        self.access_weather_msg(self.weatherconf.getWeatherForecast(cityId))
+
+    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
+    #def get_forecast_weahter(self, cityId):
+        #return self.weatherconf.getWeatherForecast(cityId)
 
     # get current day's weather
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')

@@ -17,6 +17,7 @@
 import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
+import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 475
@@ -24,9 +25,10 @@ Rectangle {
 
     Component.onCompleted: {
         systemdispatcher.get_computer_info_qt();//获取详细信息
-        logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("ComVendor", "computer").toUpperCase() + ".jpg";
+        var vendorName = systemdispatcher.getSingleInfo("ComVendor", "computer").toUpperCase();
+        logo.source = InfoGroup.judgeName(vendorName) ? ("../../img/logo/Manufacturer/" + vendorName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 
-        comvendorText.text = systemdispatcher.getSingleInfo("ComVendor", "computer");
+        comvendorText.text = vendorName;
         comproductText.text = systemdispatcher.getSingleInfo("ComProduct", "computer");
         comversionText.text = systemdispatcher.getSingleInfo("ComVersion", "computer");
         comserialText.text = systemdispatcher.getSingleInfo("ComSerial", "computer");

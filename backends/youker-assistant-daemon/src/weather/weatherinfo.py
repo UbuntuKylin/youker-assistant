@@ -38,7 +38,8 @@ class WeatherInfo():
         #    self.settings.set_value("refresh_rate", default_value)
         #    self.rate = default_value
         self.weatherData={}
-        self.forecastData={}
+        #self.forecastData={}
+        self.forecastData=[]
         #self.place = None
         self.pmData = {}
         #self.confData = {}
@@ -60,7 +61,8 @@ class WeatherInfo():
     # Get weahter forecast
     def getWeatherForecast(self, cityId):
         cityIdStr = str(cityId)
-        self.forecastData = pycwapi.get_weather_from_nmc(cityIdStr, 1)
+        self.forecastData = pycwapi.get_forecast_weather_from_nmc(cityIdStr)
+        #self.forecastData = pycwapi.get_weather_from_nmc(cityIdStr, 1)
         return self.forecastData
 
     # Get current weather
