@@ -442,7 +442,7 @@ class CleanTheOldkernel():
     def get_oldkernel_crufts(self):
         objc = oldkernel.OldKernel()
         pkgobj_list = objc.scan_oldkernel_package()
-        crufts_list = ["%s<2_2>%s" % (pkg.name, common.confirm_filesize_unit(pkg.installed.size))for pkg in pkgobj_list]
+        crufts_list = ["%s<2_2>%s" % (pkg.name, pkg.installed.summary, common.confirm_filesize_unit(pkg.installed.installed_size))for pkg in pkgobj_list]
         return crufts_list
 
 # the function of scan the cache
@@ -529,7 +529,7 @@ class MyInstallProgress(InstallProgress):
             self.sudodaemon = sudodaemon
 
         def statusChange(self, pkg, percent, status):
-            self.sudo.daemon.percent_remove_packages("percent: %s" % str(int(percent)))
+            self.sudodaemon.percent_remove_packages("percent: %s" % str(int(percent)))
 
         def error(self, errorstr):
             pass
