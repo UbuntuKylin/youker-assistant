@@ -136,7 +136,6 @@ Item {
                 root.firefox_arrow_show = 1;//传递给ListTitle.qml去隐藏伸展按钮
                 scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
             }
-            //--------------------------------
         }
     }
 

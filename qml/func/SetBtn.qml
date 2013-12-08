@@ -27,7 +27,6 @@ Rectangle {
 
     Image {
         id: toolImg
-//        anchors.horizontalCenter: parent.horizontalCenter
         source: "../img/icons/" + iconName
     }
 

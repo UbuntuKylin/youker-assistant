@@ -20,7 +20,6 @@ Rectangle {
     height: 20
     width: parent.width
     color: "transparent"
-//    opacity: 0.3
 
     MouseArea {
           id: mouseRegion

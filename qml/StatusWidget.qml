@@ -47,19 +47,5 @@ Rectangle {
             var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
             mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
         }
-
-
-//        anchors.fill: parent
-//        property variant previousPosition
-//        onPressed: {
-//            previousPosition = Qt.point(mouseX, mouseY)
-//        }
-//        onPositionChanged: {
-//            if (pressedButtons == Qt.LeftButton) {
-//                var dx = mouseX - previousPosition.x
-//                var dy = mouseY - previousPosition.y
-//                mainwindow.pos = Qt.point(mainwindow.pos.x + dx, mainwindow.pos.y + dy)
-//            }
-//        }
     }
 }

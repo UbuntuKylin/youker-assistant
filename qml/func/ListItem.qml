@@ -72,7 +72,6 @@ Item {
             //单个checkbox状态改变时，先将状态通过信号change_num()传递给BrowserCookies.qml
             container.change_num(checkbox.checked, container.browserFlag);
             if (checkbox.checked) {
-//                if (btn_flag == "apt_work" || btn_flag == "apt_scan") {
                 if (btn_flag == "apt_work") {
                     var aptlist = systemdispatcher.get_apt_args();
                     var word_flag = "false";
@@ -86,7 +85,6 @@ Item {
                         systemdispatcher.set_apt_args(container.text);
                     }
                 }
-//                else if (btn_flag == "software_work" || btn_flag == "software_scan") {
                 else if (btn_flag == "software_work") {
                     var softwarelist = systemdispatcher.get_software_args();
                     var word_flag1 = "false";
@@ -100,7 +98,6 @@ Item {
                         systemdispatcher.set_software_args(container.text);
                     }
                 }
-//                else if (btn_flag == "cookies_work" || btn_flag == "cookies_scan") {
                 else if (btn_flag == "cookies_work") {
                     var cookieslist = systemdispatcher.get_cookies_args();
                     var word_flag2 = "false";
@@ -114,7 +111,6 @@ Item {
                         systemdispatcher.set_cookies_args(container.text);
                     }
                 }
-//                else if (btn_flag == "package_work" || btn_flag == "package_scan") {
                 else if (btn_flag == "package_work") {
                     var mylist = systemdispatcher.get_package_args();
                     var word_flag3 = "false";
@@ -232,7 +228,6 @@ Item {
 
     MouseArea {
         id: mouseArea
-//        anchors.fill: parent
         anchors.fill: itemText
         onClicked: container.clicked();
         onReleased: selectable && !selected ? selected = true : selected = false

@@ -30,13 +30,6 @@ Item {
         id: tabs
         width: parent.width; height: 435
 
-//        Common.TabPage {
-//            title: qsTr("A key to clean up")//一键清理
-//            anchors.fill: parent
-//            FastclearModel {
-//                id: fastitem
-//            }
-//        }
         Common.TabPage {
             title:qsTr("Deb cache")//包管理缓存
             anchors.fill: parent

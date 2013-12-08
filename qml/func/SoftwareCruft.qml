@@ -31,12 +31,8 @@ Item {
     property bool positionFlag: true//传递给ClearDelegate.qml,为true时伸缩图标指向上方，为false时伸缩图标指向下方
     property bool flag: false//记录是清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
 
-    ListModel {
-        id: mainModel
-    }
-    ListModel {
-        id: subModel
-    }
+    ListModel { id: mainModel }
+    ListModel { id: subModel }
 
     function remove_last_name(str)
     {
@@ -76,10 +72,6 @@ Item {
                 mainModel.append({"itemTitle": qsTr("Software Center buffer cleaning"),
                                  "picture": "../img/toolWidget/software-min.png",
                                  "detailstr": qsTr("User can selectively cleaning software center cache according to the scanning result, cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
-//                mainModel.append({"itemTitle": qsTr("Software Center buffer cleaning"),
-//                                 "picture": "../img/toolWidget/software-min.png",
-//                                 "detailstr": qsTr("User can selectively cleaning software center cache according to the scanning result, cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/",
-//                                 "flags": "clear_software"})
             }
             else {
                 root.resultFlag = false;//扫描的实际有效内容不存在

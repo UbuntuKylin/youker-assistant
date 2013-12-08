@@ -143,10 +143,6 @@ Item {
                 mainModel.append({"itemTitle": qsTr("Uninstall old kernel packages"),
                                  "picture": "../img/toolWidget/deb-min.png",
                                  "detailstr": qsTr("User can selectively clean old kernel packages according to the scan results, to save the system space")})
-    //            mainModel.append({"itemTitle": qsTr("Uninstall old kernel packages"),
-    //                             "picture": "../img/toolWidget/deb-min.png",
-    //                             "detailstr": qsTr("User can selectively clean old kernel packages according to the scan results, to save the system space"),
-    //                             "flags": "clear_kernel"})
             }
 
 

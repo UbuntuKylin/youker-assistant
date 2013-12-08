@@ -24,8 +24,6 @@ Item {
     id:content
     width: parent.width
     height: parent.height - 30  //去掉StatusWidget所占用的高度30
-//    radius: 1
-//    color: "lightgray"
     property string text: "homepage"
     Rectangle {
         id: rectangle1
@@ -164,7 +162,6 @@ Item {
                     visible: false
                     SysSettings.TouchpadSet {}
                 }
-                //
                 Common.Page {
                     id: fcitxConfigtoolpage
                     visible: false

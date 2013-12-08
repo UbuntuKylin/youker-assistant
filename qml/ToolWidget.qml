@@ -22,7 +22,6 @@ Rectangle {
     height: 84
     color: "transparent"
     state: "Home"
-//    opacity: 0.3
     Row {
         id: tool_line
         anchors.left: parent.left

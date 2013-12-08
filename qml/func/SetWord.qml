@@ -69,10 +69,6 @@ Rectangle {
             else if (flag == "WeatherPreference") {
                 sessiondispatcher.showWizardController();
             }
-            //view details of system information
-//            else if (flag == "details") {
-//                pageStack.push(detailinformation);
-//            }
 
             //bbs help
             else if (flag == "BBS") {
@@ -95,10 +91,6 @@ Rectangle {
                 pageStack.push(mousepointerpage);
             else if (flag == "SoundEffects") {
                 pageStack.push(soundeffectspage);
-//                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
-//                if (component_sound.status == Component.Ready) {
-//                    pageStack.push(component_sound);
-//                }
             }
             else if (flag == "BootAnimation") {
                 pageStack.push(bootanimationpage);

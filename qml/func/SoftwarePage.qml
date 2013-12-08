@@ -29,8 +29,6 @@ Item {
     {
         target: sudodispatcher
         onNotifySourceStatusToQML: {
-//            console.log("receive update data....");
-//            console.log(cur_status);
             //进度: 共       个项目需要更新，正在更新的个数为：
             root.source_status_text = qsTr("Progress:") + total_items + qsTr("itmes needs to be updated, now updating is No.:") + download_items;
         }
@@ -43,7 +41,6 @@ Item {
                 actionBtn.text = software.reset_text(sudodispatcher.check_pkg_status_qt(software.software_name));
                 root.source_status_text = "";
                 root.state = "SofeWareState";
-//                toolkits.alertMSG("软件源更新完成！", mainwindow.pos.x, mainwindow.pos.y);/软件源更新完成！
             }
 //            else if(type == "down_fail") {
 //                console.log("down_fail.....");
@@ -59,7 +56,6 @@ Item {
         width: parent.width
         height: parent.height
         x: (parent.width * 1.5)
-//        color: "gray"
         Connections
         {
             target: sudodispatcher
@@ -143,7 +139,6 @@ Item {
             width: 16
             height: 16
             source: "../img/icons/move.gif"
-//            anchors.centerIn: parent
         }
 
         SetBtn {
@@ -156,7 +151,6 @@ Item {
                 leftMargin: 10
                 top: parent.top
                 topMargin: 10
-//                verticalCenter: parent.verticalCenter
             }
             onClicked: {
                 root.state = "SofeWareState";
@@ -180,7 +174,6 @@ Item {
             anchors.centerIn: parent
             spacing: 5
             AnimatedImage {
-//                anchors.centerIn: parent
                 width: 16
                 height: 16
                 source: "../img/icons/move.gif"
@@ -195,35 +188,6 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
-
-//            Rectangle {
-//                id: highlight
-
-//                property int widthDest: 100//((progressbar.width * (value - minimum)) / (maximum - minimum) - 6)
-
-//                height: highlight.widthDest
-//                Behavior on height { SmoothedAnimation { velocity: 1200 } }
-//                width: 20
-
-////                height: highlight.widthDest
-////                Behavior on height { SmoothedAnimation { velocity: 1200 } }
-
-////                anchors { left: parent.left; top: parent.top; bottom: parent.bottom; margins: 3 }
-//                radius: 1
-
-//       //         width: progressbar.height
-//       //         height:progressbar.width
-//                gradient: Gradient {
-//                    GradientStop { id: gradient1; position: 0.0; color: "#086794" }
-//                    GradientStop { id: gradient2; position: 1.0; color: "#318d11" }
-//                }
-//                smooth:true
-//                rotation: 90
-//                //旋转的中心点
-//                transformOrigin: "Center"
-
-//            }
-
             Bars.Progress {
                 id: progress
                 value: 0
@@ -233,7 +197,6 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }
-
 
         SetBtn {
             id: resetBtn2
@@ -379,9 +342,6 @@ Item {
                         toolkits.alertMSG(qsTr("Operation completed!"), mainwindow.pos.x, mainwindow.pos.y);//软件操作完成！
                     }
                 }
-//                else if(type == "apt_error") {
-//                    console.log("apt_error........");
-//                }
             }
         }
     //    function split_string(statusdata) {
@@ -484,22 +444,6 @@ Item {
                 onClicked: {
                     software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
 
-
-
-
-
-//                    var mylist = sudodispatcher.getUKSoftwareList();
-//                    for (var q=0; q< mylist.length; q++) {
-//                        if(mylist[q] == software.software_name) {
-//                            software.checkFlag  = true;
-//                            software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
-//                            break;
-//                        }
-//                    }
-//                    if(software.checkFlag)
-//                        software.checkFlag = false;
-//                    else
-//                        software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
                     if(software.installed_status == "n") {
                         if(software.software_name == "wine-qq2012-longeneteam") {
                             Qt.openUrlExternally("http://www.longene.org/forum/viewtopic.php?t=4700");
@@ -508,26 +452,12 @@ Item {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
-//                            var softwarelist = sudodispatcher.getUKSoftwareList();
-//                            for (var i=0; i< softwarelist.length; i++) {
-//                                if(softwarelist[i] == software.software_name) {
-//                                    break;
-//                                }
-//                            }
                             root.state = "MaskLayerStateApt";
-//                            sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);//1028
                             sudodispatcher.install_pkg_qt(software.software_name);
                         }
                     }
                     else if(software.installed_status == "i") {
-//                        var software_list = sudodispatcher.getUKSoftwareList();
-//                        for (var k=0; k< software_list.length; k++) {
-//                            if(software_list[k] == software.software_name) {
-//                                break;
-//                            }
-//                        }
                         root.state = "MaskLayerStateApt";
-//                        sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);//1028
                         sudodispatcher.uninstall_pkg_qt(software.software_name);
                     }
                     else if(software.installed_status == "u") {
@@ -538,14 +468,7 @@ Item {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
-//                            var softwareList = sudodispatcher.getUKSoftwareList();
-//                            for (var j=0; j< softwareList.length; j++) {
-//                                if(softwareList[j] == software.software_name) {
-//                                    break;
-//                                }
-//                            }
                             root.state = "MaskLayerStateApt";
-//                            sudodispatcher.showProgressDialog(mainwindow.pos.x, mainwindow.pos.y);//1028
                             sudodispatcher.update_pkg_qt(software.software_name);
                         }
                     }
@@ -568,7 +491,6 @@ Item {
                 anchors{
                     right:parent.right
                     top: parent.top
-//                    verticalCenter: parent.verticalCenter
                 }
             }
 

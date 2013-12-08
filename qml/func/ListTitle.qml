@@ -28,11 +28,8 @@ Item {
     property string itemTitle: ""
     property string detailstr: ""
     property string arrowSource: "../img/icons/arrow.png"
-
     property int arrow_display: 0   //控制清理界面下拉图标显示还是透明的变量
     property string btnFlag//存放主按钮标记：扫描或者清理
-//    property bool nullFlag//存放扫描到的内容是否为空的标记
-
     property string title//扫描按钮的显示文字
     property bool resetStatus//重置按钮是显示还是隐藏
 
@@ -40,62 +37,6 @@ Item {
 
     property string flag //判断是firefox还是chromium
 
-//    onNullFlagChanged: {
-//        if (itemtitle.nullFlag === true) {
-//            if(itemtitle.flag == "firefox") {//firefox扫描内容为空
-//                itemtitle.state = "CookiesWorkEmpty";
-//            }
-//            else if (itemtitle.flag == "chromium") {//chromium扫描内容为空
-//                itemtitle.state = "CookiesWorkEmptyC";
-//            }
-//        }
-//        else if (itemtitle.nullFlag === false) {
-//            if(itemtitle.flag == "firefox") {//firefox扫描内容不为空
-//                itemtitle.state = "CookiesWork";
-//            }
-//            else if (itemtitle.flag == "chromium") {//chromium扫描内容不为空
-//                itemtitle.state = "CookiesWorkC";
-//            }
-//        }
-//    }
-
-    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
-//    Connections
-//    {
-//        target: systemdispatcher
-//        onFinishCleanWorkError: {
-//            if (msg == "firefox") {
-//                if (btnFlag == "cookies_work") {
-////                    itemtitle.state = "CookiesWorkError";
-//                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
-//                }
-//            }
-//            else if (msg == "chromium") {
-//                if (btnFlag == "cookies_workc") {
-////                    itemtitle.state = "CookiesWorkErrorC";
-//                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
-//                }
-//            }
-//        }
-//        onFinishCleanWork: {
-//            if (msg == "") {
-////                resetBtn.visible = true;
-//                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-//            }
-//            else if (msg == "firefox") {
-//                if (btnFlag == "cookies_work") {
-//                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
-////                    itemtitle.state = "CookiesWorkFinish";
-//                }
-//            }
-//            else if (msg == "chromium") {
-//                if (btnFlag == "cookies_workc") {
-//                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
-////                    itemtitle.state = "CookiesWorkFinishC";
-//                }
-//            }
-//        }
-//    }
     Row {
         id: chromium
         width: parent.width
@@ -167,14 +108,7 @@ Item {
             visible: itemtitle.resetStatus//false
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-//                resetBtn.visible = false;
                 itemtitle.sendBrowserType(itemtitle.flag, "reset");
-//                if(itemtitle.flag == "firefox") {
-//                    itemtitle.state = "BrowserWorkAGAIN";
-//                }
-//                else if(itemtitle.flag == "chromium") {
-//                    itemtitle.state = "BrowserWorkAGAINC";
-//                }
             }
         }
     }
@@ -200,64 +134,6 @@ Item {
             }
         }
     }
-//    states: [
-//        State {
-//            name: "CookiesWork"
-//            PropertyChanges { target: scanBtn; text:qsTr("All clean")}//全部清理
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_work" }
-//            PropertyChanges { target: resetBtn; visible: true }
-//        },
-//        State {
-//            name: "CookiesWorkC"
-//            PropertyChanges { target: scanBtn; text:qsTr("All clean")}//全部清理
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_workc" }
-//            PropertyChanges { target: resetBtn; visible: true }
-//        },
-//        State {
-//            name: "CookiesWorkAGAIN"
-//            PropertyChanges { target: scanBtn; text:qsTr("Start scanning") }//开始扫描
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_scan" }
-//        },
-//        State {
-//            name: "CookiesWorkAGAINC"
-//            PropertyChanges { target: scanBtn; text:qsTr("Start scanning") }//开始扫描
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
-//        },
-//        State {
-//            name: "CookiesWorkError"
-//            PropertyChanges { target: scanBtn; text:qsTr("Start scanning") }//开始扫描
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_scan" }
-//        },
-//        State {
-//            name: "CookiesWorkErrorC"
-//            PropertyChanges { target: scanBtn; text:qsTr("Start scanning") }//开始扫描
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
-//        },
-//        State {
-//            name: "CookiesWorkFinish"
-//            PropertyChanges { target: scanBtn; text:"Start scanning"}//开始扫描
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_scan" }
-//            PropertyChanges { target: resetBtn; visible: false}
-//        },
-//        State {
-//            name: "CookiesWorkFinishC"
-//            PropertyChanges { target: scanBtn; text:qsTr("Start scanning")}//开始扫描
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
-//            PropertyChanges { target: resetBtn; visible: false}
-//        },
-//        State {
-//            name: "CookiesWorkEmpty"
-//            PropertyChanges { target: scanBtn; text:qsTr("Start scanning")}//开始扫描
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_scan" }
-//            PropertyChanges { target: resetBtn; visible: false}
-//        },
-//        State {
-//            name: "CookiesWorkEmptyC"
-//            PropertyChanges { target: scanBtn; text:qsTr("Start scanning")}//开始扫描
-//            PropertyChanges { target: itemtitle; btnFlag: "cookies_scanc" }
-//            PropertyChanges { target: resetBtn; visible: false}
-//        }
-//    ]
 }
 
 

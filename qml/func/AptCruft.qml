@@ -68,10 +68,6 @@ Item {
                 mainModel.append({"itemTitle": qsTr("The package management cleaning"),
                                  "picture": "../img/toolWidget/apt-min.png",
                                  "detailstr": qsTr("User can according to the scan results selectively clean residual package, cache path is:/var/cache/apt/archives/")})
-//                mainModel.append({"itemTitle": qsTr("The package management cleaning"),
-//                                 "picture": "../img/toolWidget/apt-min.png",
-//                                 "detailstr": qsTr("User can according to the scan results selectively clean residual package, cache path is:/var/cache/apt/archives/"),
-//                                 "flags": "clear_apt"})
             }
             else {
                 root.resultFlag = false;//扫描的实际有效内容不存在

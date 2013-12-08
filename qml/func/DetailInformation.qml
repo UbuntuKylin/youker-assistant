@@ -29,7 +29,6 @@ Rectangle {
 
     function addList() {
         listModel.clear();//清空
-
         listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "computer"});
         listModel.append({"name": qsTr("Desktop"), "flag": "desktop", "iconName": "unity"});
         listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "cpu"});

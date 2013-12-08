@@ -37,7 +37,6 @@ Rectangle {
             right: parent.left
             rightMargin: 2
         }
-//        color: "white"
 
         Item {
             id: views
@@ -63,6 +62,6 @@ Rectangle {
             Rectangle {id: midsplitbar1; x: 600; height: screen.height; width: 1; color: "#b9c5cc" }
             Rectangle {id: midsplitbar2; x: 602; height: screen.height; width: 1; color: "#fafcfe" }
 
-        }//Item:views
-    }//Rectangle:tools_widget
-}//Rectangle:screen
+        }
+    }
+}

@@ -196,59 +196,6 @@ Rectangle {
                     }
                 }
             }
-
-//            Common.Label {
-//                id: forecastBtn
-//                text: "预  报"
-//                font.pixelSize: 14
-//                color: "#318d11"
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                MouseArea {
-//                    anchors.fill: forecastBtn
-//                    hoverEnabled: true
-//                    onClicked: {
-//                        //1、获取六天天气预报数据
-//                        sessiondispatcher.get_forecast_weahter_qt();
-//                        //2、开始给天气预报界面发送更新数据信号
-//                        sessiondispatcher.update_forecast_weather();
-//                        //3、加载天气预报界面
-//                        pageStack.push(weatherpage);
-//                    }
-//                }
-//            }
-//            Common.Label {
-//                id: preferencesBtn
-//                text: "配  置"
-//                font.pixelSize: 14
-//                color: "#318d11"
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                MouseArea {
-//                    anchors.fill: preferencesBtn
-//                    hoverEnabled: true
-//                    onClicked: {
-//                        sessiondispatcher.showWizardController();
-//                    }
-//                }
-//            }
-////            ERROR:dbus.service:Unable to append ({u'pm2_5': 0, u'area': u'\u957f\u6c99', u'quality': u'\u8f7b\u5ea6\u6c61\u67d3', u'station_code': None, u'time_point': u'2013-10-18T09:00:00Z', u'pm2_5_24h': 0, u'position_name': None, u'aqi': 122, u'primary_pollutant': None},) to message with signature a{sv}: <type 'exceptions.TypeError'>: Don't know which D-Bus type to use to encode type "NoneType"
-//            Common.Label {
-//                id: updateBtn
-//                text: "更  新"
-//                font.pixelSize: 14
-//                color: "#318d11"
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                MouseArea {
-//                    anchors.fill: updateBtn
-//                    hoverEnabled: true
-//                    onClicked: {
-//                        if(sessiondispatcher.update_weather_data_qt()) {
-//                            weahterzone.resetCurrentWeather();
-//                            weahterzone.resetChangeCityBtn();
-//                            toolkits.alertMSG("更新完毕！", mainwindow.pos.x, mainwindow.pos.y);
-//                        }
-//                    }
-//                }
-//            }
         }
 
         Column {
@@ -291,85 +238,14 @@ Rectangle {
             }
         }
     }
-        Timer{
-            id: updateTime
-            interval: 60 * 1000;running: true;repeat: true
-            onTriggered: {
-                if(sessiondispatcher.get_current_weather_qt()) {
-                    weahterzone.resetCurrentWeather();
-                    weahterzone.resetChangeCityBtn();
-                }
+    Timer{
+        id: updateTime
+        interval: 60 * 1000;running: true;repeat: true
+        onTriggered: {
+            if(sessiondispatcher.get_current_weather_qt()) {
+                weahterzone.resetCurrentWeather();
+                weahterzone.resetChangeCityBtn();
             }
         }
+    }
 }
-
-
-
-//weather_icons={
-//    'd0.gif':'weather-clear',
-//    'd1.gif':'weather-few-clouds',
-//    'd2.gif':'weather-few-clouds',
-//    'd3.gif':'weather-showers',
-//    'd4.gif':'weather-showers',
-//    'd5.gif':'weather-showers',
-//    'd6.gif':'weather-snow',
-//    'd7.gif':'weather-showers',
-//    'd8.gif':'weather-showers',
-//    'd9.gif':'weather-showers',
-//    'd10.gif':'weather-showers',
-//    'd11.gif':'weather-showers',
-//    'd12.gif':'weather-showers',
-//    'd13.gif':'weather-snow',
-//    'd14.gif':'weather-snow',
-//    'd15.gif':'weather-snow',
-//    'd16.gif':'weather-snow',
-//    'd17.gif':'weather-snow',
-//    'd18.gif':'weather-fog',
-//    'd19.gif':'weather-snow',
-//    'd20.gif':'weather-fog',
-//    'd21.gif':'weather-showers',
-//    'd22.gif':'weather-showers',
-//    'd23.gif':'weather-showers',
-//    'd24.gif':'weather-showers',
-//    'd25.gif':'weather-showers',
-//    'd26.gif':'weather-snow',
-//    'd27.gif':'weather-snow',
-//    'd28.gif':'weather-snow',
-//    'd29.gif':'weather-fog',
-//    'd30.gif':'weather-fog',
-//    'd31.gif':'weather-fog',
-//    'd53.gif':'weather-fog',
-//    'n0.gif':'weather-clear-night',
-//    'n1.gif':'weather-few-clouds-night',
-//    'n2.gif':'weather-few-clouds-night',
-//    'n3.gif':'weather-showers',
-//    'n4.gif':'weather-showers',
-//    'n5.gif':'weather-showers',
-//    'n6.gif':'weather-snow',
-//    'n7.gif':'weather-showers',
-//    'n8.gif':'weather-showers',
-//    'n9.gif':'weather-showers',
-//    'n10.gif':'weather-showers',
-//    'n11.gif':'weather-showers',
-//    'n12.gif':'weather-showers',
-//    'n13.gif':'weather-snow',
-//    'n14.gif':'weather-snow',
-//    'n15.gif':'weather-snow',
-//    'n16.gif':'weather-snow',
-//    'n17.gif':'weather-snow',
-//    'n18.gif':'weather-fog',
-//    'n19.gif':'weather-showers',
-//    'n20.gif':'weather-fog',
-//    'n21.gif':'weather-showers',
-//    'n22.gif':'weather-showers',
-//    'n23.gif':'weather-showers',
-//    'n24.gif':'weather-showers',
-//    'n25.gif':'weather-showers',
-//    'n26.gif':'weather-snow',
-//    'n27.gif':'weather-snow',
-//    'n28.gif':'weather-snow',
-//    'n29.gif':'weather-fog',
-//    'n30.gif':'weather-fog',
-//    'n31.gif':'weather-fog',
-//    'n53.gif':'weather-fog'
-//}

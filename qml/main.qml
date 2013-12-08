@@ -16,7 +16,6 @@
 
 import QtQuick 1.1
 import ToolkitsType 0.1
-
 import SessionType 0.1
 import SystemType 0.1
 import SudoType 0.1
@@ -46,7 +45,7 @@ Rectangle {
     Toolkits{
         id: toolkits
     }
-    ProcessManager {//1101
+    ProcessManager {
         id: processmanager
     }
 
@@ -69,10 +68,7 @@ Rectangle {
         source: ""
     }
     radius: 4
-//    color: "black"
-//    opacity: 0.85
     opacity: 1.0
-
     Column {
         id: layout
         anchors.fill: parent
@@ -85,58 +81,28 @@ Rectangle {
             uk_version: main.version
         }
     }
-//    Row {
-//        id: logRow
-//        spacing: 10
-//        anchors {
-//            top: parent.top
-//            topMargin: 20
-//            right: parent.right
-//            rightMargin: 40
-//        }
-//        Image {
-//            width: 64
-//            height: 64
-//            source: "./img/skin/logo.png"
-//            anchors.verticalCenter: parent.verticalCenter
-//        }
-//        Text {
-//            id: softName
-//            text: qsTr("优客助手")//优客助手        Youker Assistant
-//            anchors.verticalCenter: parent.verticalCenter
-//            font.family: "Arial"
-//            font.bold: true
-//            font.pixelSize: (sessiondispatcher.get_locale_version() == "zh_CN") ? 24 : 22
-//            style: Text.Sunken
-//            styleColor: "#AAAAAA"
-//            color: "white"
-//        }
-//    }
 
-    Text {
-        id: versionText
+    Image {
+        id: logo
+        width: 191
+        height: 54
         anchors {
             top: parent.top
-            topMargin: 70
+            topMargin: 25
             right: parent.right
             rightMargin: 35
         }
-        font.family: "Arial"
-        font.pixelSize: 18
-        style: Text.Sunken
-        styleColor: "#AAAAAA"
-        color: "white"
-        text: main.version
-    }
-    MouseArea {
-        anchors.fill: versionText
-        property variant clickPos: "1,1"
-        onPressed: {
-            clickPos  = Qt.point(mouse.x,mouse.y)
-        }
-        onPositionChanged: {
-            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-            mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
+        source: (sessiondispatcher.get_locale_version()=="zh_CN") ? "./img/logo/zh_CN/logo.png" : "./img/logo/en/logo.png"
+        MouseArea {
+            anchors.fill: logo
+            property variant clickPos: "1,1"
+            onPressed: {
+                clickPos  = Qt.point(mouse.x,mouse.y)
+            }
+            onPositionChanged: {
+                var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+                mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
+            }
         }
     }
 }

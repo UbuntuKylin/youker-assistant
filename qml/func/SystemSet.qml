@@ -141,7 +141,6 @@ Item {
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
-    //                            anchors.top: unity.top
                             }
                             Text {
                                 id: b6
@@ -150,8 +149,6 @@ Item {
                             }
                         }
                         Row {
-//                            anchors.bottom: unity.bottom
-//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: qsTr("Custom Launcher"); width: b6.width; flag: "LauncherTheme"}//自定义启动器
                         }
