@@ -58,7 +58,7 @@ class SessionDaemon(dbus.service.Object):
         self.systemconf = System()
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
-        self.weatherconf = WeatherInfo()
+        self.weatherconf = WeatherInfo(self)
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -170,12 +170,12 @@ class SessionDaemon(dbus.service.Object):
         return tmp_dic['softwarecenter'].split('<1_1>')
 
     # a dbus signal which means access weather by kobe
-    @dbus.service.signal(INTERFACE, signature='s')
-    def access_weather(self, msg):
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def access_weather(self, type, msg):
         pass
 
-    def access_weather_msg(self, para):
-        self.access_weather(para)
+    #def access_weather_msg(self, para):
+    #    self.access_weather(para)
 
     # a dbus signal which means scan complete by kobe
     @dbus.service.signal(INTERFACE, signature='s')
@@ -571,7 +571,13 @@ class SessionDaemon(dbus.service.Object):
     # get weather information of six days
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def get_forecast_weahter(self, cityId):
-        self.access_weather_msg(self.weatherconf.getWeatherForecast(cityId))
+        self.weatherconf.getWeatherForecast(cityId)
+
+    # get real forecast weather information of six days
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_forecast_dict(self):
+        print "start 000"
+        return self.weatherconf.get_forecast_dict()
 
     #@dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
     #def get_forecast_weahter(self, cityId):

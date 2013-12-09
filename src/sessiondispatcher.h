@@ -184,6 +184,7 @@ public:
 
     /*-------------------weather forecast-------------------*/
     Q_INVOKABLE void get_forecast_weahter_qt();
+    void get_forecast_dict_qt();//天气预报数据获取完成后，通过该函数返回其获取的值给forecastInfo
     Q_INVOKABLE bool get_current_weather_qt();
     Q_INVOKABLE QString get_current_pm25_qt();
     //得到配置文件中的更新周期
@@ -228,6 +229,7 @@ signals:
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
     void startChangeQMLCity();//发送开始更换QML城市
     void startUpdateForecastWeahter();//发送开始更换六天天气预报
+    void showKeyandData(QString key, QString value);//根据天气的key显示对应的数据
     void startUpdateRateTime(int rate);//发送开始更换天气自动更新周期时间
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
@@ -240,7 +242,7 @@ signals:
 //    void judge_deb_exists_chromium(QString flag);
 public slots:
     //获取天气预报槽函数
-    void handler_access_forecast_weather(QString msg);
+    void handler_access_forecast_weather(QString key, QString value);
     //扫描完成槽函数
     void handler_scan_complete(QString msg);
     //扫描过程的函数

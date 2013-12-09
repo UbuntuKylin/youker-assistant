@@ -28,6 +28,7 @@
 #include <QFileDialog>
 
 #include "KThread.h"
+//#include "SessionThread.h"
 #include "wizarddialog.h"
 #include "changecitydialog.h"
 #include "util.h"
@@ -58,7 +59,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
-    QObject::connect(sessioniface, SIGNAL(access_weather(QString)), this, SLOT(handler_access_forecast_weather(QString)));
+    QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(handler_access_forecast_weather(QString, QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -72,9 +73,16 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
-void SessionDispatcher::handler_access_forecast_weather(QString msg) {
+void SessionDispatcher::handler_access_forecast_weather(QString key, QString value) {
     qDebug() << "aaaaaaaaaaaaaaaaa";
-    qDebug() << msg;
+    qDebug() << key;
+    qDebug() << value;
+    if(key == "kobe" && value == "lee") {
+        get_forecast_dict_qt();
+        emit startUpdateForecastWeahter();
+
+    }
+//    emit showKeyandData(key, value);
 }
 
 void SessionDispatcher::handler_scan_complete(QString msg) {
@@ -657,14 +665,22 @@ void SessionDispatcher::showSkinWidget() {
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
 
+//    SessionThread *thread = new SessionThread(sessioniface, "get_forecast_weahter", initCityId);
+//    thread->start();
     QStringList tmplist;
     tmplist << "Kobe" << "Lee";
     KThread *thread = new KThread(tmplist, sessioniface, "get_forecast_weahter", initCityId);
     thread->start();
 
-
 //    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
 //    forecastInfo = reply.value();
+}
+
+void SessionDispatcher::get_forecast_dict_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_dict");
+    forecastInfo = reply.value();
+    qDebug() << "forecastInfo ->";
+    qDebug() << forecastInfo;
 }
 
 bool SessionDispatcher::get_current_weather_qt() {
@@ -701,7 +717,7 @@ bool SessionDispatcher::update_weather_data_qt() {
 }
 
 void SessionDispatcher::update_forecast_weather() {
-    emit startUpdateForecastWeahter();
+//    emit startUpdateForecastWeahter();
 }
 
 void SessionDispatcher::change_select_city_name_qt(QString cityName) {
