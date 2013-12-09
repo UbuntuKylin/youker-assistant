@@ -18,7 +18,10 @@ import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
 import "./InfoGroup.js" as InfoGroup
-
+/*{'Vga_product': 'Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller (rev 09)\n',
+ 'Vga_businfo': 'pci@0000:00:02.0',
+'Vga_vendor': 'Intel',
+'Mon_chip': 'Intel(R) HD Graphics 3000'}*/
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
@@ -27,7 +30,9 @@ Rectangle {
         systemdispatcher.get_monitor_info_qt();//获取详细信息
         chipText.text = systemdispatcher.getSingleInfo("Mon_chip", "monitor");
         chipmodelText.text = systemdispatcher.getSingleInfo("Vga_product", "monitor");
-        chipvendorText.text = systemdispatcher.getSingleInfo("Vga_vendor", "monitor");
+        var cardVendor = systemdispatcher.getSingleInfo("Vga_vendor", "monitor");
+        chipvendorText.text = cardVendor;
+        cardlogo.source = InfoGroup.judgeName(cardVendor.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cardVendor.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         chipbusText.text = systemdispatcher.getSingleInfo("Vga_businfo", "monitor");
         var vendor = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
         if(vendor.length !== 0 ) {
@@ -41,7 +46,7 @@ Rectangle {
             outputLabel.visible = true;
             supportLabel.visible = true;
             var vendorName = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
-            logo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             productText.text = systemdispatcher.getSingleInfo("Mon_product", "monitor");
             vendorText.text = vendorName;
             dateText.text = systemdispatcher.getSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getSingleInfo("Mon_week", "monitor");
@@ -70,7 +75,7 @@ Rectangle {
             top: parent.top
             topMargin: 20
             left: parent.left
-            leftMargin: 20
+            leftMargin: 25
         }
         spacing: 20
 
@@ -116,8 +121,10 @@ Rectangle {
                 }
                 Text {
                     id: chipmodelText
+                    width: 450
                     text: ""//systemdispatcher.getSingleInfo("Vga_product")
                     font.pixelSize: 14
+                    wrapMode: Text.WordWrap
                     color: "#7a7a7a"
                 }
             }
@@ -301,11 +308,22 @@ Rectangle {
     }
     //logo
     Image {
-        id: logo
+        id: cardlogo
         source: ""
         anchors {
             top: parent.top
-            topMargin: 50
+            topMargin: 130
+            right: parent.right
+            rightMargin: 30
+        }
+    }
+    //logo
+    Image {
+        id: monitorlogo
+        source: ""
+        anchors {
+            top: parent.top
+            topMargin: 300
             right: parent.right
             rightMargin: 30
         }

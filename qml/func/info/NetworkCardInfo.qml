@@ -17,7 +17,18 @@
 import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
+/*{
+ 'NetProduct': '82579LM Gigabit Network Connection (rev 04)',
 
+'NetVendor': 'Intel',
+'NetCapacity': '1000',
+ 'NetBusinfo': 'pci@0000:00:19.0'}
+
+'NetSerial': '3c:97:0e:2d:22:89',
+'NetLogicalname': 'eth0',
+
+'NetIp': '192.168.30.156',
+'NetLink': 'autonegotiation complete, link ok',*/
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
@@ -32,11 +43,11 @@ Rectangle {
         vendorText.text = msg;
         busText.text = systemdispatcher.getSingleInfo("NetBusinfo", "networkcard");
         deviceText.text = systemdispatcher.getSingleInfo("NetLogicalname", "networkcard");
-        fwText.text = systemdispatcher.getSingleInfo("NetVersion", "networkcard");
+        ipText.text = systemdispatcher.getSingleInfo("NetIp", "networkcard");
         macText.text = systemdispatcher.getSingleInfo("NetSerial", "networkcard");
-        sizeText.text = systemdispatcher.getSingleInfo("NetSize", "networkcard");
-        maxText.text = systemdispatcher.getSingleInfo("NetCapacity", "networkcard");
-        bitText.text = systemdispatcher.getSingleInfo("NetWidth", "networkcard");
+        linkText.text = systemdispatcher.getSingleInfo("NetLink", "networkcard");
+        maxText.text = systemdispatcher.getSingleInfo("NetCapacity", "networkcard") + " Mbit/s";
+//        bitText.text = systemdispatcher.getSingleInfo("NetWidth", "networkcard");
     }
 
     Column {
@@ -129,14 +140,14 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Firmware Version:")//固件版本：
+                    text: qsTr("IP Address:")//IP地址：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
                 }
                 Text {
-                    id: fwText
-                    text: ""//systemdispatcher.getSingleInfo("NetVersion")
+                    id: ipText
+                    text: ""//systemdispatcher.getSingleInfo("NetIp")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -159,14 +170,14 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Bandwidth Size:")//带宽大小：
+                    text: qsTr("Link Status:")//连接状态：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
                 }
                 Text {
-                    id: sizeText
-                    text: ""//systemdispatcher.getSingleInfo("NetSize")
+                    id: linkText
+                    text: ""//systemdispatcher.getSingleInfo("NetLink")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -186,21 +197,21 @@ Rectangle {
                     color: "#7a7a7a"
                 }
             }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("NIC-bit Wide:")//网卡位宽：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: bitText
-                    text: ""//systemdispatcher.getSingleInfo("NetWidth")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
+//            Row {
+//                spacing: 10
+//                Common.Label {
+//                    text: qsTr("NIC-bit Wide:")//网卡位宽：
+//                    font.pixelSize: 14
+//                    color: "#7a7a7a"
+//                    width: 130
+//                }
+//                Text {
+//                    id: bitText
+//                    text: ""//systemdispatcher.getSingleInfo("NetWidth")
+//                    font.pixelSize: 14
+//                    color: "#7a7a7a"
+//                }
+//            }
         }
     }
     //logo

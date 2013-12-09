@@ -15,27 +15,16 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-#from __future__ import print_function
-#from collections import OrderedDict
 import sys
 import os
-#import glob
 import re
 import math
 import binascii
-#from gi.repository import Gtk, GLib
 import platform
-#import time
-#import stat
 import gettext
-#import dmi
 from gettext import gettext as _
 from gettext import ngettext as __
-#from dmi import Dmi
 class DetailInfo:
-#    def __init__ (self):
-#        self.dmi = Dmi()
-
 #Computer：			
 #   ComVendor		    制造商
 #   ComProduct		    电脑型号
@@ -71,9 +60,7 @@ class DetailInfo:
 #   BioRelease		    发布日期
 
 #Memory：
-#   Memtotalsize        内存总大小
 #   Memnum              内存条个数
-
 #   MemInfo             内存条信息
 #   MemWidth            数据宽度
 #   MemSlot 			插槽号
@@ -95,7 +82,7 @@ class DetailInfo:
 #   Mon_support		    支持接口
 #   Mon_chip		    当前显卡
 #   Vga_product         显卡型号
-#   Vga_vendor          显卡制造商
+#   Vga_vendor          显卡产商
 #   Vga_businfo         显卡总线地址
 
 #Disk :
@@ -111,17 +98,10 @@ class DetailInfo:
 #   NetVendor           制造商
 #   NetBusinfo          总线地址
 #   NetLogicalname      设备名称
-#   NetVersion          固件版本
 #   NetSerial           MAC地址
-#   NetSize             带宽大小
 #   NetCapacity         最大带宽
-#   NetWidth            网卡位宽
-
-    def get_sys_msg(self):
-        h = os.popen("lshw")
-        self.hw = h.read()
-        h.close()
-        return 
+#   NetIp               IP地址
+#   NetLink             连接状态
 
     def ctoascii(self,buf):
         ch = str(buf)
@@ -155,6 +135,163 @@ class DetailInfo:
                 upminutes = str(minutes)
         return upminutes
 
+    def get_url(self,v,p):
+        vendors = {
+#PU产商
+           "INTEL":["Intel"],
+           "AMD":["AMD"],
+           "VIMICRO":["Vimicro"],
+#显卡产商
+           "ATI":["ATI"],
+           "1002":["ATI"],
+           "SIS":["SIS"],
+           "1039":["SIS"],
+           "NVIDIA":["Nvidia"],
+           "VIA":["VIA"],
+           "XFX":["XFX"],
+           "SUPERGRAPHIC":["Supergraphic"],
+#显示器产商
+           "AUO":["AUO"],
+           "AOC":["AOC"],
+           "PHILIPS":["Philips"],
+           "PHL":["Philips"],
+           "LEN":["Lenovo"],
+           "SEC":["SAMSUNG"],
+#电脑品牌
+           "HASEE":["Hasee"],
+           "FOUNDER":["Founder"],
+           "TONGFANG":["Tongfang"],
+           "TSINGHUA":["Tongfang"],
+           "ACER":["Acer"],
+           "LENOVO":["Lenovo"],
+           "ASUSTEK":["ASUS"],
+           "NEC":["NEC"],
+           "HP":["HP"],
+           "HEWLETT-PACKARD":["HP"],
+           "SAMSUNG":["SAMSUNG"],
+           "TOSHIBA":["TOSHIBA"],
+           "APPLE":["Apple"],
+           "DELL":["DELL"],
+           "FUJITSU":["FUJITSU"],
+           "PANASONIC":["Panasonic"],
+           "SONY":["SONY"],
+           "IBM":["IBM"],
+#虚拟机
+           "INNOTEK":["VirtualBox"],
+           "VBOX":["VirtualBox"],
+           "VIRTUALBOX":["VirtualBox"],
+#网卡产商
+           "3COM":["3COM"],
+           "D-LINK":["D-LINK"],
+           "RALINK":["Ralink"],
+           "ATHEROS":["Atheros"],
+           "MARVELL":["Marvell"],
+           "BROADCOM":["Broadcom"],
+#硬盘产商
+           "EXCELSTOR":["Excelstor"],
+           "HITACHI":["Hitachi"],
+           "MAXTOR":["Maxtor"],
+           "WESTERN":["Western Digital"],
+           "LITEON":["Liteon"],
+           "SEAGATE":["Seagate"],
+           "QUANTUM":["Quantum"],
+#光驱产商
+           "PLDS":["PLDS"],
+           "PBDS":["PLDS"],
+           "HL-DT-ST":["LG"],
+           "OPTIARC":["SONY"],
+           "TSSTCORP":["TSSTcorp"],
+           "PIONEER":["Pioneer"],
+           "MATSHITA":["Panasonic"],
+#声卡产商
+           "REALTEK":["Realtek"],
+           "CREATIVE":["Creative"],
+#摄像头
+           "SONIX":["Sonix"],
+           "ETRON":["Etron"],
+           "AVEO":["Aveo"],
+           "SYNTEK":["Syntek"],
+           "EMPIA":["Empia"],
+           "CHICONY":["Chicony"],
+           "OMNIVISION":["OmniVision"],
+#鼠标产商
+           "LOGITECH":["Logitech"],
+           "SUNPLUS":["Sunplus"],
+           "PRIMAX":["Primax"],
+           "PIXART":["Pixart"],
+           "TRUST":["Trust"],
+           "1BCF":["Rapoo"],
+           "AVAGO":["Avago"],
+           "MICROSOFT":["Microsoft"],
+#键盘产商
+           "RAPOO":["Rapoo"],
+#主板产商
+           "GIGABYTE":["Gigabyte"],
+           "BIOSTAR":["Biostar"],
+           "COLORFUL":["Colorful"],
+           "YESTON":["Yeston"],
+#指纹识别
+           "UPEK":["Authentec"],
+           "AUTHENTEC":["Authentec"],
+#闪存产商
+           "KINGSTON":["Kingston"],
+           "KINGMAX":["Kingmax"],
+           "KINGBOX":["Kingbox"],
+           "HYNIX":["Hynix"],
+           "HYUNDAI":["Hynix"],
+           "MICRON":["Micron"],
+           "06C1":["Asint"],
+           "ADATA":["ADATA"],
+           "ZTE":["ZTE"],
+           "EAGET":["Eaget"],
+           "TEXAS":["Texas Instruments"],
+           "MOTOROLA":["Motorola"],
+#电源产商
+           "SMP":["SMP"],
+           "SIMPLO":["SMP"],
+#BIOS产商
+           "AMERICAN":["AMI"],
+           "AWARD":["Phoenix"],
+           "PHOENIX":["Phoenix"]
+            }
+        tmp = v.split(" ")[0]
+        tmp = re.findall("([a-zA-Z0-9-]+)", tmp)
+        if tmp :
+            url = vendors.get(tmp[0].upper()) 
+            if url:
+                return url[0]
+            else :
+                k = p.split(" ")[0]
+                url = vendors.get(k.upper())
+                if url:
+                    return url[0]
+        else:
+            tmp = p.split(" ")[0]
+            url = vendors.get(tmp.upper())
+            if url:
+                return url[0]
+        tmp = re.findall("ATI", v)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
+        tmp = re.findall("SIS", v)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
+        tmp = re.findall("ATI", p)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
+        tmp = re.findall("SIS", p)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
+        return v
+
     def get_computer(self):
         #Computer
         Com = {}
@@ -175,6 +312,7 @@ class DetailInfo:
             tmp = re.findall("Serial Number: (.*)",computer)
             if tmp :
                 ComSerial = tmp[0]
+        ComVendor = self.get_url(ComVendor,ComProduct)
         Com['ComProduct'],Com['ComVendor'],Com['ComVersion'],Com['ComSerial'] = self.strip(ComProduct),self.strip(ComVendor),self.strip(ComVersion),self.strip(ComSerial)
         with open('/proc/uptime') as f:
             for line in f:
@@ -214,6 +352,7 @@ class DetailInfo:
             tmp = re.findall("External Clock: (.*)",cpuin)
             if tmp :
                 CpuClock = tmp[0]
+        CpuVendor = self.get_url(CpuVendor,CpuVersion)
         Cpu['CpuVersion'],Cpu['CpuVendor'],Cpu['CpuSlot'],Cpu['CpuSerial'],Cpu['CpuCapacity'],Cpu['CpuSize'],Cpu['CpuClock'] = self.strip(CpuVersion),self.strip(CpuVendor),self.strip(CpuSlot),self.strip(CpuSerial),self.strip(CpuCapacity),self.strip(CpuSize),self.strip(CpuClock)
         with open('/proc/cpuinfo') as f:
             for line in f:
@@ -263,6 +402,8 @@ class DetailInfo:
             tmp = re.findall("Release Date: (.*)",bios)
             if tmp:
                 BioRelease = tmp[0]
+        BoaVendor = self.get_url(BoaVendor,BoaProduct)
+        BioVendor = self.get_url(BioVendor,BioVersion)
         Boa['BoaProduct'],Boa['BoaVendor'],Boa['BoaSerial'],Boa['BioVendor'],Boa['BioVersion'],Boa['BioRelease'] = self.strip(BoaProduct),self.strip(BoaVendor),self.strip(BoaSerial),self.strip(BioVendor),self.strip(BioVersion),self.strip(BioRelease)
         return Boa
 
@@ -411,19 +552,24 @@ class DetailInfo:
             if tmp:
                 if not ret.get("Mon_chip"):
                     ret["Mon_chip"] = tmp[0]
-        vga = self.hw[self.hw.index('*-display\n')+len('*-display\n'):]
-        vga = vga[:vga.index('*-')-1]
+        n = os.popen('lspci | grep VGA')
+        vga = n.read()
+        n.close()
         if vga :
-            tmp = re.findall("product:(.*)",vga)
+            tmp = vga[vga.index('VGA compatible controller: ')+len('VGA compatible controller: '):]
             if tmp :
-                ret['Vga_product'] = tmp[0]
-            tmp = re.findall("vendor:(.*)",vga)
+                ret['Vga_product'] = tmp
+            tmp = vga[ :vga.index('VGA compatible controller:')-1]
             if tmp :
-                ret['Vga_vendor'] = tmp[0]
-            tmp = re.findall("bus info:(.*)",vga)
-            if tmp :
-                ret['Vga_businfo'] = tmp[0]
-            
+                ret['Vga_businfo'] = 'pci@0000:' + tmp
+        
+        if (ret.get('Mon_vendor')):
+            if (ret.get('Mon_product')):
+                ret['Mon_vendor'] = self.get_url(ret['Mon_vendor'],ret['Mon_product'])
+            else :  
+                ret['Mon_vendor'] = self.get_url(ret['Mon_vendor'],'')
+        if (ret.get('Vga_product')):
+            ret['Vga_vendor'] = self.get_url('',ret['Vga_product'])
         return ret
 
     def get_disk(self):
@@ -510,45 +656,60 @@ class DetailInfo:
 
     def get_network(self):
         net = {}
-        NetProduct,NetVendor,NetBusinfo,NetLogicalname,NetVersion,NetSerial,NetSize,NetCapacity,NetWidth = '','','','','','','','',''
-        network = self.hw[self.hw.index('*-network\n')+len('*-network\n'):]
-        network = network[:network.index('*-')-1]
+        NetProduct,NetVendor,NetBusinfo,NetLogicalname,NetSerial,NetIp,NetLink,NetCapacity = '','','','','','','',''
+        n = os.popen('lspci | grep Ether')
+        network = n.read()
+        n.close()
         if network :
-            tmp = re.findall("product:(.*)",network)
+            i = 0
+            tmp = network[network.index('Ethernet controller: ')+len('Ethernet controller: '):]
+            while i < len(tmp) and (self.ctoascii(tmp[i]) < 48 or self.ctoascii(tmp[i]) > 57):
+                i += 1
+            while i > 0 and (not self.ctoascii(tmp[i]) == 32):
+                i -= 1
+            if i :
+                NetProduct = tmp[i: ]
+                NetVendor = tmp[ :i]
+            tmp = network[ :network.index('Ethernet controller: ')-1] 
             if tmp :
-                NetProduct = tmp[0]
-            tmp = re.findall("vendor:(.*)",network)
+                NetBusinfo = 'pci@0000:' + tmp
+        n = os.popen('dmesg | grep eth')
+        network = n.read()
+        n.close()
+        if network :
+            tmp = network[network.index('eth'):]
             if tmp :
-                NetVendor = tmp[0]
-            tmp = re.findall("bus info:(.*)",network)
-            if tmp :
-                NetBusinfo = tmp[0]
-            tmp = re.findall("logical name:(.*)",network)
-            if tmp :
-                NetLogicalname = tmp[0]
-            tmp = re.findall("version:(.*)",network)
-            if tmp :
-                NetVersion = tmp[0]
-            tmp = re.findall("serial:(.*)",network)
+                NetLogicalname = tmp[0:4]
+            tmp = re.findall("\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",network)
             if tmp :
                 NetSerial = tmp[0]
-            tmp = re.findall("size:(.*)",network)
+        n = os.popen('ifconfig eth | grep "inet " ')
+        network = n.read()
+        n.close()
+        if network :
+            tmp = network[network.index(':')+len(':') : ]
+            tmp = tmp[: tmp.index(' ')+len(' ') ]
             if tmp :
-                NetSize = tmp[0]
-            tmp = re.findall("capacity:(.*)",network)
-            if tmp :
+                NetIp = tmp
+        n = os.popen('mii-tool -v')
+        network = n.read()
+        n.close()
+        if network :
+            tmp = re.findall("basic status: (.*)",network)
+            if tmp:
+                NetLink = tmp[0]
+            tmp = re.findall('capabilities: (\d*)',network)
+            if tmp:
                 NetCapacity = tmp[0]
-            tmp = re.findall("width:(.*)",network)
-            if tmp :
-                NetWidth = tmp[0]
-        net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetVersion'],net['NetSerial'],net['NetSize'],net['NetCapacity'],net['NetWidth'] = self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetVersion),self.strip(NetSerial),self.strip(NetSize),self.strip(NetCapacity),self.strip(NetWidth)
+        NetVendor = self.get_url(NetVendor,NetProduct)
+        net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetLink'],net['NetCapacity'] = self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetSerial),self.strip(NetIp),self.strip(NetLink),self.strip(NetCapacity)
         return net
 
 if __name__ == "__main__":
     cc = DetailInfo()
-    cc.get_sys_msg()
     cc.ctoascii('a')
     cc.strip('a')
+    cc.get_url('a','a')
     cc.get_computer()
     cc.get_cpu()
     cc.get_board()

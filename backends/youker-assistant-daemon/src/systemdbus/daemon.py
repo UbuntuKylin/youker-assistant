@@ -61,7 +61,6 @@ class Daemon(PolicyKitService):
         self.daemoncache = cleaner.CleanTheCache()
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, UKPATH)
-        self.infoconf.get_sys_msg()
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
@@ -83,10 +82,6 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
         return "SystemDaemon"
-
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    #def get_detail_system_message(self):
-    #    return self.infoconf.get_sys_msg()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_computer_info(self):
