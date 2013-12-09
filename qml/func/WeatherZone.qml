@@ -47,6 +47,14 @@ Rectangle {
         humidityText.text = qsTr("Humidity");//湿度
     }
 
+    //设置PM2.5到QML界面上
+    function resetPM25(pmData) {
+        if (pmData == "N/A") {
+            pmData = qsTr("N/A");//未知
+        }
+        pmText.text = qsTr("AQI:") + pmData;//空气质量指数：
+    }
+
     //设置天气数据到QML界面上
     function resetCurrentWeather() {
         var ptime = sessiondispatcher.getSingleWeatherInfo("ptime", "current");//eg: 08:00
@@ -67,11 +75,12 @@ Rectangle {
         ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + qsTr(" release");// 发布
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
         windText.text = sessiondispatcher.getSingleWeatherInfo("WD", "current") + sessiondispatcher.getSingleWeatherInfo("WS", "current");
-        var pmData = sessiondispatcher.get_current_pm25_qt();
-        if (pmData == "N/A") {
-            pmData = qsTr("N/A");//未知
-        }
-        pmText.text = qsTr("AQI:") + pmData;//空气质量指数：
+        sessiondispatcher.get_current_pm25_qt();
+        //        var pmData = sessiondispatcher.get_current_pm25_qt();
+//        if (pmData == "N/A") {
+//            pmData = qsTr("N/A");//未知
+//        }
+//        pmText.text = qsTr("AQI:") + pmData;//空气质量指数：
         tempText.text = qsTr("Current temperature:") + sessiondispatcher.getSingleWeatherInfo("temp", "current") + "℃";//当前温度：
         temperatureRangeText.text = qsTr("Temperature range:") + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");//温度范围：
         humidityText.text = qsTr("Humidity:") + sessiondispatcher.getSingleWeatherInfo("SD", "current");//湿度：
@@ -80,29 +89,41 @@ Rectangle {
     Connections
     {
         target: sessiondispatcher
-        //用户修改了城市时更新
-        onStartChangeQMLCity: {
-            if(sessiondispatcher.get_current_weather_qt()) {
+        onStartUpdateForecastWeahter: {
+            if(flag == "weather") {
                 weahterzone.resetCurrentWeather();
                 weahterzone.resetChangeCityBtn();
             }
+            else if(flag == "pm25") {
+                weahterzone.resetPM25(sessiondispatcher.access_pm25_str_qt());
+            }
+        }
+
+        //用户修改了城市时更新
+        onStartChangeQMLCity: {
+            sessiondispatcher.get_current_weather_qt();
+//            if(sessiondispatcher.get_current_weather_qt()) {
+//                weahterzone.resetCurrentWeather();
+//                weahterzone.resetChangeCityBtn();
+//            }
         }
         //自动更新时间到了的时候更新
         onStartUpdateRateTime: {
-            updateTime.interval = 1000 * rate;
+            updateTime.interval = 10000 * rate;
         }
     }
 
     Component.onCompleted: {
         var rate = sessiondispatcher.get_current_rate();
-        updateTime.interval = 1000 * rate;
-        if(sessiondispatcher.get_current_weather_qt()) {
-            weahterzone.resetCurrentWeather();
-            weahterzone.resetChangeCityBtn();
-        }
-        else {
-            weahterzone.setDefaultWeather();
-        }
+        updateTime.interval = 10000 * rate;
+        sessiondispatcher.get_current_weather_qt();
+//        if(sessiondispatcher.get_current_weather_qt()) {
+//            weahterzone.resetCurrentWeather();
+//            weahterzone.resetChangeCityBtn();
+//        }
+//        else {
+//            weahterzone.setDefaultWeather();
+//        }
     }
     Text {
         id: locationText
@@ -240,12 +261,14 @@ Rectangle {
     }
     Timer{
         id: updateTime
-        interval: 60 * 1000;running: true;repeat: true
+        interval: 60 * 10000;running: true;repeat: true
         onTriggered: {
-            if(sessiondispatcher.get_current_weather_qt()) {
-                weahterzone.resetCurrentWeather();
-                weahterzone.resetChangeCityBtn();
-            }
+            console.log("upupupup");
+            sessiondispatcher.get_current_weather_qt();
+//            if(sessiondispatcher.get_current_weather_qt()) {
+//                weahterzone.resetCurrentWeather();
+//                weahterzone.resetChangeCityBtn();
+//            }
         }
     }
 }

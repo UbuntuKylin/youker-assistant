@@ -185,8 +185,11 @@ public:
     /*-------------------weather forecast-------------------*/
     Q_INVOKABLE void get_forecast_weahter_qt();
     void get_forecast_dict_qt();//天气预报数据获取完成后，通过该函数返回其获取的值给forecastInfo
-    Q_INVOKABLE bool get_current_weather_qt();
-    Q_INVOKABLE QString get_current_pm25_qt();
+    Q_INVOKABLE void get_current_weather_qt();
+    void get_current_weather_dict_qt();//当天天气数据获取完成后，通过该函数返回其获取的值给currentInfo
+    Q_INVOKABLE void get_current_pm25_qt();
+    void get_pm25_str_qt();//当PM2.5获取成功后，返回给pm25Info
+    Q_INVOKABLE QString access_pm25_str_qt();//把pm25Info给QML
     //得到配置文件中的更新周期
     Q_INVOKABLE int get_current_rate();
     //更新当天天气
@@ -197,6 +200,7 @@ public:
 
     QMap<QString, QVariant> forecastInfo;
     QMap<QString, QVariant> currentInfo;
+    QString pm25Info;
     //通过键得到对应的单个信息的值,flag= forecast/current
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 
@@ -228,7 +232,7 @@ signals:
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
     void startChangeQMLCity();//发送开始更换QML城市
-    void startUpdateForecastWeahter();//发送开始更换六天天气预报
+    void startUpdateForecastWeahter(QString flag);//发送开始更换六天天气预报
     void showKeyandData(QString key, QString value);//根据天气的key显示对应的数据
     void startUpdateRateTime(int rate);//发送开始更换天气自动更新周期时间
     //改变主checkbox的状态

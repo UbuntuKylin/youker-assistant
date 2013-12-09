@@ -71,9 +71,13 @@ void KThread::run() {
         iface->call("check_pkgs_status", list);
     }
     else if(methodName == "get_forecast_weahter") {
-        qDebug() << "11111111111";
         iface->call("get_forecast_weahter", fileFlag);
-        qDebug() << "2222222222";
+    }
+    else if(methodName == "get_current_weather") {
+        iface->call("get_current_weather", fileFlag);
+    }
+    else if(methodName == "get_current_pm25") {
+        iface->call("get_current_pm25", fileFlag);
     }
 }
 void KThread::stop() {

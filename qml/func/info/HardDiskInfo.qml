@@ -172,7 +172,7 @@ Rectangle {
                 text: title
                 font.pixelSize: 14
                 color: "#7a7a7a"
-                width: 100
+                width: 120
                 height: 20
             }
             Text {

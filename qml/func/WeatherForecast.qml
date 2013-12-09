@@ -309,7 +309,9 @@ Item {
         {
             target: sessiondispatcher
             onStartUpdateForecastWeahter: {
-                weather_widget.initWeatherForcast();
+                if(flag == "forecast") {
+                    weather_widget.initWeatherForcast();
+                }
             }
         }
 

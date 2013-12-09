@@ -74,15 +74,18 @@ void SessionDispatcher::exit_qt() {
 }
 
 void SessionDispatcher::handler_access_forecast_weather(QString key, QString value) {
-    qDebug() << "aaaaaaaaaaaaaaaaa";
-    qDebug() << key;
-    qDebug() << value;
-    if(key == "kobe" && value == "lee") {
+    if(key == "forecast" && value == "kobe") {
         get_forecast_dict_qt();
-        emit startUpdateForecastWeahter();
-
+        emit startUpdateForecastWeahter("forecast");
     }
-//    emit showKeyandData(key, value);
+    else if(key == "weather" && value == "kobe") {
+        get_current_weather_dict_qt();
+        emit startUpdateForecastWeahter("weather");
+    }
+    else if(key == "pm25" && value == "kobe") {
+        get_pm25_str_qt();
+        emit startUpdateForecastWeahter("pm25");
+    }
 }
 
 void SessionDispatcher::handler_scan_complete(QString msg) {
@@ -679,26 +682,55 @@ void SessionDispatcher::get_forecast_weahter_qt() {
 void SessionDispatcher::get_forecast_dict_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_dict");
     forecastInfo = reply.value();
-    qDebug() << "forecastInfo ->";
-    qDebug() << forecastInfo;
 }
 
-bool SessionDispatcher::get_current_weather_qt() {
+/*bool*/void SessionDispatcher::get_current_weather_qt() {
     getCityIdInfo();
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
+    QStringList tmplist;
+    tmplist << "Kobe" << "Lee";
+    KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
+    thread->start();
+
+
+//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
+//    currentInfo = reply.value();
+//    if(currentInfo.isEmpty()) {
+//        return false;
+//    }
+//    else {
+//        return true;
+//    }
+}
+
+void SessionDispatcher::get_current_weather_dict_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather_dict");
     currentInfo = reply.value();
-    if(currentInfo.isEmpty()) {
-        return false;
-    }
-    else {
-        return true;
-    }
 }
 
-QString SessionDispatcher::get_current_pm25_qt() {
+//QString SessionDispatcher::get_current_pm25_qt() {
+//    getCityIdInfo();
+//    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
+//    return reply.value();
+//}
+
+void SessionDispatcher::get_current_pm25_qt() {
     getCityIdInfo();
-    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
-    return reply.value();
+    QStringList tmplist;
+    tmplist << "Kobe" << "Lee";
+    KThread *thread = new KThread(tmplist, sessioniface, "get_current_pm25", initCityId);
+    thread->start();
+
+//    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
+//    return reply.value();
+}
+
+void SessionDispatcher::get_pm25_str_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_pm25_str");
+    pm25Info = reply.value();
+}
+
+QString SessionDispatcher::access_pm25_str_qt() {
+    return pm25Info;
 }
 
 int SessionDispatcher::get_current_rate() {

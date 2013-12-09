@@ -5,9 +5,9 @@ youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
   * Add Clean Old Kernel Model.
   * Add Separator.qml.
   * Change Logo and add InfoGroup.js.
-  * Access forecast data with python threading.
+  * Access weather data with python threading.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 09 Dec 2013 15:31:52 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 09 Dec 2013 21:13:29 +0800
 
 youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
 

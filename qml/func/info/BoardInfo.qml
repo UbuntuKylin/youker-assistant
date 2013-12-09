@@ -70,7 +70,7 @@ Rectangle {
                     text: qsTr("Motherboard Model:")//主板型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: productText
@@ -85,7 +85,7 @@ Rectangle {
                     text: qsTr("Motherboard Vendor:")//主板产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: vendorText
@@ -100,7 +100,7 @@ Rectangle {
                     text: qsTr("Serial:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: serialText
@@ -135,7 +135,7 @@ Rectangle {
                     text: qsTr("Bios Vendor:")//BIOS产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: biosvendorText
@@ -150,7 +150,7 @@ Rectangle {
                     text: qsTr("Bios Version:")//BIOS版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: biosversionText
@@ -165,7 +165,7 @@ Rectangle {
                     text: qsTr("Release Date:")//发布日期：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: biosreleaseText

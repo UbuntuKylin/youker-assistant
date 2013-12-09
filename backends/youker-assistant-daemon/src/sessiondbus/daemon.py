@@ -171,7 +171,7 @@ class SessionDaemon(dbus.service.Object):
 
     # a dbus signal which means access weather by kobe
     @dbus.service.signal(INTERFACE, signature='ss')
-    def access_weather(self, type, msg):
+    def access_weather(self, key, msg):
         pass
 
     #def access_weather_msg(self, para):
@@ -576,7 +576,6 @@ class SessionDaemon(dbus.service.Object):
     # get real forecast weather information of six days
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_forecast_dict(self):
-        print "start 000"
         return self.weatherconf.get_forecast_dict()
 
     #@dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
@@ -584,21 +583,35 @@ class SessionDaemon(dbus.service.Object):
         #return self.weatherconf.getWeatherForecast(cityId)
 
     # get current day's weather
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def get_current_weather(self, cityId):
-        return self.weatherconf.getCurrentWeather(cityId)
+        self.weatherconf.getCurrentWeather(cityId)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_current_weather_dict(self):
+        return self.weatherconf.get_current_weather_dict()
+
+    # get current day's weather
+    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
+    #def get_current_weather(self, cityId):
+    #    return self.weatherconf.getCurrentWeather(cityId)
 
     # get current PM2.5
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def get_current_pm25(self, cityId):
-        return self.weatherconf.getPM25Info(cityId)
+        self.weatherconf.getPM25Info(cityId)
+        #return self.weatherconf.(cityId)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_pm25_str(self):
+        return self.weatherconf.get_pm25_str()
 
     # update weather data
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
     def update_weather_data(self, cityId):
         return self.weatherconf.updateCurrentWeather(cityId)
 
-    # get cityid from cityname
+    # get cityid from citynamegetPM25Info
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def get_city_id(self, cityName):
         return self.weatherconf.getCityId(cityName)
