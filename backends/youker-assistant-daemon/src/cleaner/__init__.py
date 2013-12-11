@@ -462,19 +462,19 @@ class CleanTheCache():
         result_dic = {}
         apt_path = '/var/cache/apt/archives'
         temp_apt_list = self.objc.scan_apt_cache(apt_path)
-        apt_and_size = ['%s<2_2>%s' % (filepath, common.confirm_filesize_unit(os.path.getsize(filepath))) for filepath in temp_apt_list]
-        result_dic['apt'] = '<1_1>'.join(apt_and_size)
+        apt_list = ['%s<2_2>False<2_2>%s' % (filepath, common.confirm_filesize_unit(os.path.getsize(filepath))) for filepath in temp_apt_list]
+        result_dic['apt'] = '<1_1>'.join(apt_list)
 
         homedir = common.return_homedir_sesdaemon()
         swcenterpath = '%s/.cache/software-center' % homedir
         temp_swcenter_list = self.objc.public_scan_cache(swcenterpath)
-        swcenter_and_size = []
+        swcenter_list = []
         for line in temp_swcenter_list:
             if os.path.isdir(line):
-                swcenter_and_size.append('%s<2_2>%s' % (line, common.confirm_filesize_unit(common.get_dir_size(line))))
+                swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'True', common.confirm_filesize_unit(common.get_dir_size(line))))
             else:
-                swcenter_and_size.append('%s<2_2>%s' % (line, common.confirm_filesize_unit(os.path.getsize(line))))
-        result_dic['softwarecenter'] = '<1_1>'.join(swcenter_and_size)
+                swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'Flase', common.confirm_filesize_unit(os.path.getsize(line))))
+        result_dic['softwarecenter'] = '<1_1>'.join(swcenter_list)
 
         return result_dic
 
