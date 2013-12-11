@@ -468,9 +468,9 @@ class CleanTheCache():
                 sesdaemon.data_transmit_by_cache('apt', one, 'False', '%s' % common.confirm_filesize_unit(os.path.getsize(one)))
 
         if 'software-center' in mode_list:
-            software-centerpath = "%s/.cache/software-center" % homedir
-            temp_software-center_list = self.objc.public_scan_cache(software-centerpath)
-            for one in temp_software-center_list:
+            software_centerpath = "%s/.cache/software-center" % homedir
+            temp_software_center_list = self.objc.public_scan_cache(software_centerpath)
+            for one in temp_software_center_list:
                 if os.path.isdir(one):
                     sesdaemon.data_transmit_by_cache('software-center', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
                 else:
