@@ -458,6 +458,25 @@ class CleanTheCache():
         result_dic['softwarecenter'] = tmp_center_str
         return result_dic
 
+    def get_all_cache_crufts(self, mode_list, sesdaemon):
+        homedir = common.return_homedir_sesdaemon()
+
+        if 'apt' in mode_list:
+            aptpath = "/var/cache/apt/archives"
+            temp_apt_list = self.objc.scan_apt_cache(aptpath)
+            for one in temp_apt_list:
+                sesdaemon.data_transmit_by_cache('apt', one, 'False', '%s' % common.confirm_filesize_unit(os.path.getsize(one)))
+
+        if 'software-center' in mode_list:
+            software-centerpath = "%s/.cache/software-center" % homedir
+            temp_software-center_list = self.objc.public_scan_cache(software-centerpath)
+            for one in temp_software-center_list:
+                if os.path.isdir(one):
+                    sesdaemon.data_transmit_by_cache('software-center', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
+                else:
+                    sesdaemon.data_transmit_by_cache('software-center', one, 'False', common.confirm_filesize_unit(os.path.getsize(one)))
+        sesdaemon.cache_transmit_complete()
+
     def get_cache_crufts(self):
         result_dic = {}
         apt_path = '/var/cache/apt/archives'
