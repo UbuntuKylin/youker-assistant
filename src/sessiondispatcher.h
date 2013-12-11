@@ -59,6 +59,9 @@ public:
     Q_INVOKABLE QStringList scan_apt_cruft_qt();
     //扫描软件中心缓存
     Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
+    //扫描apt和软件中心缓存
+    Q_INVOKABLE void cache_scan_function_qt(QStringList argList);
+    Q_INVOKABLE QStringList get_cache_arglist();
     //扫描旧内核安装包
     Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
 
@@ -237,6 +240,11 @@ signals:
     void startUpdateRateTime(int rate);//发送开始更换天气自动更新周期时间
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
+
+    //把cache扫描结果告诉QML
+    void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
+    //cache扫描完后告诉QML
+    void tellQMLCaheOver();
     //BrowserCookies中扫描内容为空时，告诉ListTitle.qml
 //    void getNullFlag(QString emptyFlag, bool status);
 
@@ -257,7 +265,13 @@ public slots:
     void handler_change_city();
     //更换自动更新天气周期槽函数
     void handler_change_rate(int rate);
-//    //判断是否有firefox浏览器
+
+    //接收缓存信号，把数据动态堆加到model中
+    void handler_append_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
+    //接收cache扫描完后的信号
+    void handler_cache_scan_over();
+
+    //    //判断是否有firefox浏览器
 //    void handler_deb_exists_firefox(QString flag);
 //    //判断是否有chromium浏览器
 //    void handler_deb_exists_chromium(QString flag);

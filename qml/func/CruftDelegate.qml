@@ -20,7 +20,7 @@ Item {
 
     //总控开关的初始值
     property string main_check_value: "true"
-    property bool controlMain
+    property bool controlMain: true
 
     signal checkchanged(bool checkchange);
 
@@ -71,6 +71,7 @@ Item {
                 id:check
                 checked: listViewDelegate.main_check_value//"true"
                 anchors.verticalCenter: parent.verticalCenter
+//                checkedbool: listViewDelegate.controlMain
                 onClicked: {
                     if(check.checkedbool) {
                         listViewDelegate.checkchanged(true);
@@ -131,6 +132,8 @@ Item {
             Component{
                 id:ldelegate
                 CruftItem {
+//                    exclusive: true//控制是否联动explicit : true
+//                    explicit : true
                     id: subListItem
                     split_status: listViewDelegate.delegate_flag
                     width: subItemsRect.width
@@ -139,7 +142,7 @@ Item {
                     descript: desc
                     size_num: number
                     //根据主checkbox的状态来更改所有子checkbox的状态：true、false
-                    checkbox_status: check.checkedbool
+                    checkbox_status: check.checkedbool//listViewDelegate.controlMain
                     bgImage: ""
                     fontName: listViewDelegate.subItemFontName
                     fontSize: listViewDelegate.subItemFontSize
@@ -174,5 +177,10 @@ Item {
             }
         }//子项Item
     }
+//    onControlMainChanged: {
+//        if(listViewDelegate.controlMain) {
+//            check.checkedbool = true;
+//        }
+//    }
 }
 

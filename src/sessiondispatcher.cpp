@@ -60,6 +60,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
     QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(handler_access_forecast_weather(QString, QString)));
+    QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_data_to_model(QString,QString,QString,QString)));
+    QObject::connect(sessioniface, SIGNAL(cache_transmit_complete()), this, SLOT(handler_cache_scan_over()));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -86,6 +88,14 @@ void SessionDispatcher::handler_access_forecast_weather(QString key, QString val
         get_pm25_str_qt();
         emit startUpdateForecastWeahter("pm25");
     }
+}
+
+void SessionDispatcher::handler_append_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue) {
+    emit appendContentToCacheModel(flag, path, fileFlag, sizeValue);
+}
+
+void SessionDispatcher::handler_cache_scan_over() {
+    emit tellQMLCaheOver();
 }
 
 void SessionDispatcher::handler_scan_complete(QString msg) {
@@ -154,6 +164,16 @@ QStringList SessionDispatcher::scan_apt_cruft_qt() {
 QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
     return reply.value();
+}
+
+QStringList SessionDispatcher::get_cache_arglist() {
+    QStringList tmp;
+    tmp << "apt" << "software-center";
+    return tmp;
+}
+
+void SessionDispatcher::cache_scan_function_qt(QStringList argList) {
+    sessioniface->call("cache_scan_function", argList);
 }
 
 QStringList SessionDispatcher::scan_oldkernel_packages_qt() {

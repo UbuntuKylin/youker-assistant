@@ -45,6 +45,45 @@ Item {
     ListModel { id: softmainModel }
     ListModel { id: softsubModel }
 
+    Connections
+    {
+        target: sessiondispatcher
+        onAppendContentToCacheModel: {
+            //QString flag, QString path, QString fileFlag, QString sizeValue
+            if(flag == "apt") {
+                subModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
+                root.aptNum += 1;
+            }
+            else if(flag == "software-center") {
+                softsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
+                root.softNum += 1;
+            }
+        }
+        onTellQMLCaheOver: {
+            mainModel.clear();
+            softmainModel.clear();
+            mainModel.append({"itemTitle": qsTr("The package management cleaning"),
+                             "picture": "../img/toolWidget/apt-min.png",
+                             "detailstr": qsTr("User can according to the scan results selectively clean residual package, cache path is:/var/cache/apt/archives/")})
+            softmainModel.append({"itemTitle": qsTr("Software Center buffer cleaning"),
+                             "picture": "../img/toolWidget/software-min.png",
+                             "detailstr": qsTr("User can selectively cleaning software center cache according to the scanning result, cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
+
+
+            root.firefox_expanded = true;//伸缩箭头扩展
+            root.firefox_arrow_show = 1;//伸缩箭头显示
+            root.chromium_expanded = true;//伸缩箭头扩展
+            root.chromium_arrow_show = 1;//伸缩箭头显示
+            root.state = "AptWork";
+            actionBtn.text = qsTr("Start cleaning");//开始清理
+            root.btnFlag = "apt_work";
+            backBtn.visible = true;
+            rescanBtn.visible = true;
+
+            scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
+        }
+    }
+
     Component.onCompleted: {
         mainModel.append({"itemTitle": qsTr("The package management cleaning"),
                          "picture": "../img/toolWidget/apt-min.png",
@@ -209,6 +248,7 @@ Item {
         }
     }
 
+//    get_cache_arglist
     //背景
     Image {
         source: "../img/skin/bg-bottom-tab.png"
@@ -281,6 +321,13 @@ Item {
                     onReleased: btnImg.color = "#318d11"
                     onExited: btnImg.color = "transparent"
                     onClicked: {
+                        if(root.maincheck1 == false) {
+                            root.maincheck1 = true;
+                        }
+                        if(root.maincheck2 == false) {
+                            root.maincheck2 = true;
+                        }
+
                         subModel.clear();//内容清空
                         root.aptNum = 0;//隐藏滑动条
                         root.firefox_arrow_show = 0;//伸缩图标隐藏
@@ -321,6 +368,13 @@ Item {
                     onReleased: btnImg2.color = "#318d11"
                     onExited: btnImg2.color = "transparent"
                     onClicked: {
+                        if(root.maincheck1 == false) {
+                            root.maincheck1 = true;
+                        }
+                        if(root.maincheck2 == false) {
+                            root.maincheck2 = true;
+                        }
+
                         actionBtn.text = qsTr("Start scanning");//开始扫描
                         root.btnFlag = "apt_scan";
                         backBtn.visible = false;
@@ -351,7 +405,8 @@ Item {
                 console.log(root.maincheck2);
                 if (root.btnFlag == "apt_scan") {//扫描
                     root.flag = false;
-                    root.getData();//获取数据
+//                    root.getData();//获取数据
+                    sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
                 }
                 else if (root.btnFlag == "apt_work") {//清理
                     if(root.resultFlag || root.softresultFlag) {//扫描得到的实际内容存在时
@@ -412,7 +467,7 @@ Item {
                         arrow_display: root.firefox_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
                         expanded: root.firefox_expanded//firefox_expanded为true时，箭头向下，内容展开;firefox_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
-//                        controlMain: root.maincheck1
+                        controlMain: root.maincheck1
 //                        onSubpressed: {root.aptNum=hMark}
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
@@ -468,7 +523,7 @@ Item {
                         arrow_display: root.chromium_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
                         expanded: root.chromium_expanded//firefox_expanded为true时，箭头向下，内容展开;firefox_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
-//                        controlMain: root.maincheck2
+                        controlMain: root.maincheck2
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
 //                            root.softresultFlag = checkchange;
