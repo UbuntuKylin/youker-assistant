@@ -71,6 +71,8 @@ Item {
         }
     }
 
+
+    //--------------------------------------
     Row {
         anchors {
             right: chromiumarrow.left
@@ -78,6 +80,83 @@ Item {
             verticalCenter: parent.verticalCenter
         }
         spacing: 15
+        Row {
+            spacing: 20
+            Item {
+                id: resetBtn
+                visible: itemtitle.resetStatus//false
+                width: 60
+                height: 29
+                Text {
+                    id:backText
+                    height: 10
+                    anchors.centerIn: parent
+                    text: qsTr("Go back")//返回
+                    font.pointSize: 10
+                    color: "#318d11"
+                }
+                Rectangle {
+                    id: btnImg
+                    anchors.top: parent.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: backText.width
+                    height: 1
+                    color: "transparent"
+                }
+                MouseArea {
+                    hoverEnabled: true
+                    anchors.fill: parent
+                    onEntered: btnImg.color = "#318d11"
+                    onPressed: btnImg.color = "#318d11"
+                    onReleased: btnImg.color = "#318d11"
+                    onExited: btnImg.color = "transparent"
+                    onClicked: {
+                        itemtitle.sendBrowserType(itemtitle.flag, "reset");
+                    }
+                }
+            }
+            Item {
+                id: rescanBtn
+                visible: itemtitle.resetStatus//false
+                width: 49
+                height: 29
+                Text {
+                    id:rescanText
+                    height: 10
+                    anchors.centerIn: parent
+                    text: qsTr("Scan again")//重新扫描
+                    font.pointSize: 10
+                    color: "#318d11"
+                }
+                Rectangle {
+                    id: btnImg2
+                    anchors.top: parent.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: rescanText.width
+                    height: 1
+                    color: "transparent"
+                }
+                MouseArea {
+                    hoverEnabled: true
+                    anchors.fill: parent
+                    onEntered: btnImg2.color = "#318d11"
+                    onPressed: btnImg2.color = "#318d11"
+                    onReleased: btnImg2.color = "#318d11"
+                    onExited: btnImg2.color = "transparent"
+                    onClicked: {
+                        itemtitle.sendBrowserType(itemtitle.flag, "rescan");
+//                        actionBtn.text = qsTr("Start scanning");//开始扫描
+//                        root.btnFlag = "apt_scan";
+//                        backBtn.visible = false;
+//                        rescanBtn.visible = false;
+//                        subModel.clear();//内容清空
+//                        root.arrowShow = 0;//伸缩图标隐藏
+//                        root.flag = false;
+//                        root.getData();//获取数据
+                    }
+                }
+            }
+        }
         Common.Button {
             id: scanBtn
             width: 95
@@ -100,18 +179,54 @@ Item {
                 }
             }
         }
-        SetBtn {
-            id: resetBtn
-            width: 12
-            height: 15
-            iconName: "revoke.png"
-            visible: itemtitle.resetStatus//false
-            anchors.verticalCenter: parent.verticalCenter
-            onClicked: {
-                itemtitle.sendBrowserType(itemtitle.flag, "reset");
-            }
-        }
     }
+    //--------------------------------------
+
+
+
+
+
+//    Row {
+//        anchors {
+//            right: chromiumarrow.left
+//            rightMargin: 50
+//            verticalCenter: parent.verticalCenter
+//        }
+//        spacing: 15
+//        Common.Button {
+//            id: scanBtn
+//            width: 95
+//            height: 30
+//            hoverimage: "green2.png"
+//            text: itemtitle.title//qsTr("Start scanning")//开始扫描
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                if(itemtitle.btnFlag == "cookies_scan") {
+//                    itemtitle.sendBrowserType(itemtitle.flag, "cookies_scan");
+//                }
+//                else if(itemtitle.btnFlag == "cookies_scanc") {
+//                    itemtitle.sendBrowserType(itemtitle.flag, "cookies_scanc");
+//                }
+//                else if(itemtitle.btnFlag == "cookies_work") {
+//                    itemtitle.sendBrowserType(itemtitle.flag, "cookies_work");
+//                }
+//                else if(itemtitle.btnFlag == "cookies_workc") {
+//                    itemtitle.sendBrowserType(itemtitle.flag, "cookies_workc");
+//                }
+//            }
+//        }
+//        SetBtn {
+//            id: resetBtn
+//            width: 12
+//            height: 15
+//            iconName: "revoke.png"
+//            visible: itemtitle.resetStatus//false
+//            anchors.verticalCenter: parent.verticalCenter
+//            onClicked: {
+//                itemtitle.sendBrowserType(itemtitle.flag, "reset");
+//            }
+//        }
+//    }
     Image {
         id: chromiumarrow
         fillMode: "PreserveAspectFit"

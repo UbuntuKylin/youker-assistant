@@ -65,10 +65,7 @@ class WeatherInfo(threading.Thread):
         cityIdStr = str(cityId)
         cityName = self.get_location_from_cityid(cityIdStr)
         cityName = cityName.split(',')[2]
-        # kobe: get_pm() comes from pm25 module
         threading.Thread(target=self.get_pm, args=(cityName,), name='PM25').start()
-        #self.pmData = self.get_pm(cityName)
-        #return self.pmData
 
     # Update weather and forecast
     def updateCurrentWeather(self, cityId):
@@ -95,13 +92,11 @@ class WeatherInfo(threading.Thread):
             #return pmdata
             if pmdata.has_key('aqi') and pmdata.has_key('quality'):
                 self.pmData = pmdata['quality'] + ' ' +  str(pmdata['aqi'])
-                #return airQuality
             else:
                 self.pmData = "N/A"
-                #return "N/A"
             self.sessionDaemon.access_weather('pm25', 'kobe')
         except Exception as e:
-            print(e)
+            self.pmData = "N/A"
 
     #according to get_pm get pm25 data when it run over.
     def get_pm25_str(self):
@@ -145,7 +140,6 @@ class WeatherInfo(threading.Thread):
             'index', 'index_d', 'index48', 'index48_d', 'index_uv', 'index_xc', 'index_tr', 'index_co', 'index_cl', 'index_ls', 'index_ag')
             for key in tp_forecast:
                 self.forecastData[key] = parsed_json['weatherinfo'][key]
-                #self.sessionDaemon.access_weather(key, parsed_json['weatherinfo'][key])
             self.sessionDaemon.access_weather('forecast', 'kobe')
         else:
             print "Error,choose method for 0 or 1"

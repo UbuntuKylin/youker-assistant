@@ -174,9 +174,6 @@ class SessionDaemon(dbus.service.Object):
     def access_weather(self, key, msg):
         pass
 
-    #def access_weather_msg(self, para):
-    #    self.access_weather(para)
-
     # a dbus signal which means scan complete by kobe
     @dbus.service.signal(INTERFACE, signature='s')
     def scan_complete(self, msg):

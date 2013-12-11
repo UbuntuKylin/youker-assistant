@@ -17,6 +17,7 @@
 import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
+import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home
@@ -25,19 +26,20 @@ Rectangle {
 
     Component.onCompleted: {
         systemdispatcher.get_cpu_info_qt();//获取详细信息
-        var msg = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
-        var pat1 = new RegExp('Intel');
-        var pat2 = new RegExp('AMD');
-        var pat3 = new RegExp('Vimicro');
-        if(pat1.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-        }
-        else if(pat2.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/AMD.jpg";
-        }
-        else if(pat3.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
-        }
+        var cpuName = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
+        logo.source = InfoGroup.judgeName(cpuName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cpuName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        var pat1 = new RegExp('Intel');
+//        var pat2 = new RegExp('AMD');
+//        var pat3 = new RegExp('Vimicro');
+//        if(pat1.test(msg)) {
+//            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
+//        }
+//        else if(pat2.test(msg)) {
+//            logo.source =  "../../img/logo/Manufacturer/AMD.jpg";
+//        }
+//        else if(pat3.test(msg)) {
+//            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
+//        }
 //        if(msg.indexOf("Intel") > 0) {
 //            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
 //        }
@@ -49,7 +51,7 @@ Rectangle {
 //        }
 
         cpuversionText.text = systemdispatcher.getSingleInfo("CpuVersion", "cpu");
-        cpuverdorText.text = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
+        cpuverdorText.text = cpuName;
         cpuserialText.text = systemdispatcher.getSingleInfo("CpuSerial", "cpu");
         slotText.text = systemdispatcher.getSingleInfo("CpuSlot", "cpu");
         maxText.text = systemdispatcher.getSingleInfo("CpuCapacity", "cpu") + "MHz";

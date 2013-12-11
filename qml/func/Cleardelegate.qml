@@ -165,27 +165,27 @@ Item {
 //                    textIndent: 20
                     btn_flag: listViewDelegate.btn_flag
                     onClicked: {}
-                    onChange_num: {
-                        if(check_status==true)      //已经勾上的子项数量统计,check_num记录
-                            check_num=check_num+1;
-                        else
-                            check_num=check_num-1;
+//                    onChange_num: {
+//                        if(check_status==true)      //已经勾上的子项数量统计,check_num记录
+//                            check_num=check_num+1;
+//                        else
+//                            check_num=check_num-1;
 
-                        if(sub_num!=0&&heightMark!=0){  //在扫描出子项并下拉显示了子项的前提下,根据已经勾上的子项个数确定总checkbox处于三种状态中的哪种
-                            if(check_num ==0)
-                                check.checked="false";
-                            else if(check_num ==sub_num)
-                                check.checked="true";
-                            else
-                                check.checked="mid";
-                        }
-                        if(check.checked == "true" || listViewDelegate.check_num > 0) {   //根据是否有勾选项给清理页面传值判断是否能进行清理工作
-                            listViewDelegate.checkchanged(true);
-                        }
-                        else {
-                            listViewDelegate.checkchanged(false);
-                        }
-                    }
+//                        if(sub_num!=0&&heightMark!=0){  //在扫描出子项并下拉显示了子项的前提下,根据已经勾上的子项个数确定总checkbox处于三种状态中的哪种
+//                            if(check_num ==0)
+//                                check.checked="false";
+//                            else if(check_num ==sub_num)
+//                                check.checked="true";
+//                            else
+//                                check.checked="mid";
+//                        }
+//                        if(check.checked == "true" || listViewDelegate.check_num > 0) {   //根据是否有勾选项给清理页面传值判断是否能进行清理工作
+//                            listViewDelegate.checkchanged(true);
+//                        }
+//                        else {
+//                            listViewDelegate.checkchanged(false);
+//                        }
+//                    }
                 }
             }
         }//子项Item

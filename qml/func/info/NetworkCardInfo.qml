@@ -17,30 +17,21 @@
 import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
-/*{
- 'NetProduct': '82579LM Gigabit Network Connection (rev 04)',
+import "./InfoGroup.js" as InfoGroup
 
-'NetVendor': 'Intel',
-'NetCapacity': '1000',
- 'NetBusinfo': 'pci@0000:00:19.0'}
-
-'NetSerial': '3c:97:0e:2d:22:89',
-'NetLogicalname': 'eth0',
-
-'NetIp': '192.168.30.156',
-'NetLink': 'autonegotiation complete, link ok',*/
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
     Component.onCompleted: {
         systemdispatcher.get_networkcard_info_qt();//获取详细信息
-        var msg = systemdispatcher.getSingleInfo("NetVendor", "networkcard");
-        var pat = new RegExp('Intel');
-        if(pat.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-        }
+        var netName = systemdispatcher.getSingleInfo("NetVendor", "networkcard");
+        logo.source = InfoGroup.judgeName(netName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + netName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        var pat = new RegExp('Intel');
+//        if(pat.test(msg)) {
+//            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
+//        }
         modelText.text = systemdispatcher.getSingleInfo("NetProduct", "networkcard");
-        vendorText.text = msg;
+        vendorText.text = netName;
         busText.text = systemdispatcher.getSingleInfo("NetBusinfo", "networkcard");
         deviceText.text = systemdispatcher.getSingleInfo("NetLogicalname", "networkcard");
         ipText.text = systemdispatcher.getSingleInfo("NetIp", "networkcard");
