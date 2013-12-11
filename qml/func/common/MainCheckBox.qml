@@ -9,6 +9,7 @@ Item {
 
     width: minimumWidth
     height: minimumHeight
+    signal clicked();
 
     Rectangle {
         anchors.fill: parent
@@ -43,6 +44,19 @@ Item {
             else if(checked == "false") {  //当总check处于false态时，点击后变成true状态
                 checked = "true";
             }
+
+            if(checked == "true") {
+                simage.source = "../../img/icons/checkbox.png";
+                checkedbool = true;
+            }
+            else if(checked == "mid") {
+                simage.source = "../../img/icons/checkbox-2.png"
+            }
+            else if(checked=="false") {
+                simage.source = ""
+                checkedbool = false;
+            }
+            maincheckbox.clicked();
         }
     }
     //maincheckbox.checked发生变化时激活该函数
@@ -52,10 +66,10 @@ Item {
             checkedbool = true;
         }
         else if(checked == "mid") {
-            simage.source = "../../img/icons/checkbox-2.png"
+            simage.source = "../../img/icons/checkbox-2.png";
         }
         else if(checked=="false") {
-            simage.source = ""
+            simage.source = "";
             checkedbool = false;
         }
     }

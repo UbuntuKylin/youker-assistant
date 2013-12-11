@@ -6,8 +6,10 @@ youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
   * Add Separator.qml.
   * Change Logo and add InfoGroup.js.
   * Access weather data with python threading.
+  * Change /usr/share/youker-assistant-daemon to /var/lib/youker-assistant-daemon.
+  * Change UbuntuKylin to Ubuntu Kylin.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 09 Dec 2013 21:13:29 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 11 Dec 2013 17:35:28 +0800
 
 youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
 

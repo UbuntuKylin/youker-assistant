@@ -24,7 +24,7 @@ class Others:
 
 	# custom plymouth bg by plymouthName
 	def custom_plymouth_bg(self, plymouthName):
-		existingDir = '/usr/share/youker-assistant-daemon/plymouth/existing/'
+		existingDir = '/var/lib/youker-assistant-daemon/plymouth/existing/'
 		linkFileDir = '/lib/plymouth/themes/default.plymouth'
 
 		# replace the config file
@@ -37,9 +37,9 @@ class Others:
 		if(plymouthName in existingPlymouth):
 			return False
 		else:
-			existingDir = '/usr/share/youker-assistant-daemon/plymouth/existing/'
-			customScript = '/usr/share/youker-assistant-daemon/plymouth/defaults/only_background.script'
-			defaultplymouthfile = '/usr/share/youker-assistant-daemon/plymouth/defaults/default.plymouth'
+			existingDir = '/var/lib/youker-assistant-daemon/plymouth/existing/'
+			customScript = '/var/lib/youker-assistant-daemon/plymouth/defaults/only_background.script'
+			defaultplymouthfile = '/var/lib/youker-assistant-daemon/plymouth/defaults/default.plymouth'
 			
 			# add new plymouth conf dir
 			os.mkdir(existingDir + plymouthName)
@@ -60,7 +60,7 @@ class Others:
 	# get existing plymouth list
 	def get_existing_plymouth_list(self):
 		result = []
-		edir = ('/usr/share/youker-assistant-daemon/plymouth/existing')
+		edir = ('/var/lib/youker-assistant-daemon/plymouth/existing')
 		if os.path.isdir(edir):
 			for f in os.listdir(edir):
 				if os.path.isdir(os.path.join(edir, f)):
@@ -70,7 +70,7 @@ class Others:
 
 	# check and save current plymouth when init
 	def plymouth_init_check(self):
-		existingDir = '/usr/share/youker-assistant-daemon/plymouth/existing/'
+		existingDir = '/var/lib/youker-assistant-daemon/plymouth/existing/'
 		linkFileDir = '/lib/plymouth/themes/default.plymouth'
 
 		# locate the current plymouth theme dir

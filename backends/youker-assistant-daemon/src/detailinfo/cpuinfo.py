@@ -605,16 +605,13 @@ class DetailInfo:
             line = line.split('\n')
             for k in line :
                 if k :
-                    disknum  += 1
                     st = os.popen("hdparm -i %s" % k)
                     strin = st.read()
                     st.close()
-                    if DiskName :
-                        DiskName += '/' + k
-                    else :
-                        DiskName = k
                     tmp = re.findall("Model=(.*), F",strin)
-                    if tmp:
+                    if not tmp :
+                        continue
+                    else :
                         if DiskProduct :
                             DiskProduct += '/'+tmp[0]
                         else :
@@ -651,6 +648,11 @@ class DetailInfo:
                             DiskCapacity += '/' +tmp[0]
                         else :
                             DiskCapacity = tmp[0]
+                    disknum  += 1
+                    if DiskName :
+                        DiskName += '/' + k
+                    else :
+                        DiskName = k
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
         return dis
 

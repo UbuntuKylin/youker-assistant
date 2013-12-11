@@ -26,7 +26,7 @@ Item {
     property string recommendtwo_image: "../img/skin/qq-small.png"
     property string recommendthree_image: "../img/skin/qt-small.png"
     property string recommendoneimage_image: "../img/skin/wps.png"
-    property string recommendimage_text: qsTr("WPS For UbuntuKylin, the best office software of Linux system.")//WPS For UbuntuKylin，Linux系统上最好用的办公软件。
+    property string recommendimage_text: qsTr("WPS For Ubuntu Kylin, the best office software of Linux system.")//WPS For Ubuntu Kylin，Linux系统上最好用的办公软件。
     property string status_value: "n"
     property string status_value2: "n"
 
@@ -137,7 +137,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     screen.image_flag = "wps";
-                    screen.recommendimage_text = qsTr("WPS For UbuntuKylin, the best office software of Linux system.")//WPS For UbuntuKylin，Linux系统上最好用的办公软件。
+                    screen.recommendimage_text = qsTr("WPS For Ubuntu Kylin, the best office software of Linux system.")//WPS For Ubuntu Kylin，Linux系统上最好用的办公软件。
                     imagframe.y=colum.y+recommendone.y;
                     recommendoneimage_image="../img/skin/wps.png";
                 }

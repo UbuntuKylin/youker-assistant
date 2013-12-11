@@ -1,12 +1,11 @@
 import QtQuick 1.1
 import "common" as Common
-
 Item {
     id: listViewDelegate
     property int itemHeight: 40
     property string arrow: '../img/icons/arrow.png'
     property bool expanded: true
-    property int heightMark:sub_num
+//    property int heightMark:sub_num
     //需要传值:
     property string btn_flag
     property ListModel sub_model
@@ -21,16 +20,17 @@ Item {
 
     //总控开关的初始值
     property string main_check_value: "true"
+    property bool controlMain
 
-    //传出的值,控制子列表的伸缩
-    signal subpressed(int hMark);
     signal checkchanged(bool checkchange);
-
 
     property int check_num:sub_num   //记录子项个数，在确定总checkbox状态时需要的变量
     property bool maincheck: false
     property int arrow_num: 0
     width: parent.width
+
+    property string arrowFlag
+    signal arrowClicked(string str, bool expand_flag);
 
     Item {
         id: delegate
@@ -47,13 +47,40 @@ Item {
             width: parent.width
             height: listViewDelegate.itemHeight
             spacing: 15
+            Image {
+                id: arrow
+                fillMode: "PreserveAspectFit"
+                height: 28
+                width: 26
+                anchors.verticalCenter: parent.verticalCenter
+                source: listViewDelegate.arrow
+                opacity: arrow_display
+                //当鼠标点击后,箭头图片旋转90度
+                rotation: listViewDelegate.expanded ? 0 : -90
+                smooth: true
+                MouseArea {
+                    id: mouseRegion
+                    anchors.fill: parent
+                    onPressed: {
+                        expanded = !expanded;      //扫描出的子项是否下拉显示的控制变量
+                        listViewDelegate.arrowClicked(listViewDelegate.arrowFlag, listViewDelegate.expanded);//1210
+                    }
+                }
+            }
             Common.MainCheckBox{
                 id:check
                 checked: listViewDelegate.main_check_value//"true"
                 anchors.verticalCenter: parent.verticalCenter
-                onCheckedChanged: {
+                onClicked: {
+                    if(check.checkedbool) {
+                        listViewDelegate.checkchanged(true);
+                    }
+                    else {
+                        listViewDelegate.checkchanged(false);
+                    }
                 }
             }
+
             Image {
                 id: clearImage
                 fillMode: "PreserveAspectFit"
@@ -81,51 +108,6 @@ Item {
                 }
             }
         }
-        Image {
-            id: arrow
-            fillMode: "PreserveAspectFit"
-//                    height: parent.height*0.3
-            height: 28
-            width: 26
-            x:740
-            y:10//15
-            source: listViewDelegate.arrow
-            opacity: arrow_display
-            //当鼠标点击后,箭头图片旋转90度
-//                    rotation: expanded ? 90 : 0
-            rotation: expanded ? -180 : 0
-            smooth: true
-            MouseArea {
-                id: mouseRegion
-                anchors.fill: parent
-                    onPressed: {
-                        expanded = !expanded      //扫描出的子项是否下拉显示的控制变量
-                        if(heightMark==listViewDelegate.sub_num){  //通过对heightMark的赋值来实现子项的下拉显示与收缩不显示
-//                            check.checkedbool=false;      //子项收缩时,将总checkbox回到勾选状态
-//                            check.checked="true";
-                            heightMark=0;
-                        }
-                        else if(heightMark==0){
-//                            if(sub_num>0){//子项下拉显示时，根据总checkbox状态进行赋值控制
-//                                if(check.checked=="true")
-//                                {
-//                                    check.checkedbool=true;
-//                                    check_num=sub_num;
-//                                    check.checked ="true"
-//                                }
-//                                else if(check.checked=="false")
-//                                {
-//                                    check_num=sub_num-1;
-//                                    check.checkedbool=false;
-//                                    check.checked ="false"
-//                                }
-//                            }
-                            heightMark=listViewDelegate.sub_num;
-                        }
-                        listViewDelegate.subpressed(heightMark); //将heightMark的值传给清理界面实现对是否下拉显示子项的控制
-                    }
-            }
-        }
 
         //子项
         Item {
@@ -148,40 +130,40 @@ Item {
             }
             Component{
                 id:ldelegate
-                ListItem {
+                CruftItem {
                     id: subListItem
                     split_status: listViewDelegate.delegate_flag
                     width: subItemsRect.width
                     height: subItemsRect.itemHeight
-//                            text: subItemTitle
                     text: itemTitle
                     descript: desc
                     size_num: number
                     //根据主checkbox的状态来更改所有子checkbox的状态：true、false
                     checkbox_status: check.checkedbool
-//                            bgImage: "../../img/icons/list_subitem.png"
                     bgImage: ""
                     fontName: listViewDelegate.subItemFontName
                     fontSize: listViewDelegate.subItemFontSize
                     fontColor: listViewDelegate.subItemFontColor
-//                    textIndent: 20
                     btn_flag: listViewDelegate.btn_flag
-                    onClicked: {}
+                    itemFlag: listViewDelegate.arrowFlag//ListItem.qml根据该值判断是apt还是soft
                     onChange_num: {
                         if(check_status==true)      //已经勾上的子项数量统计,check_num记录
                             check_num=check_num+1;
                         else
                             check_num=check_num-1;
 
-                        if(sub_num!=0&&heightMark!=0){  //在扫描出子项并下拉显示了子项的前提下,根据已经勾上的子项个数确定总checkbox处于三种状态中的哪种
-                            if(check_num ==0)
+                        if(sub_num != 0){  //在扫描出子项并下拉显示了子项的前提下,根据已经勾上的子项个数确定总checkbox处于三种状态中的哪种
+                            if(check_num ==0) {
                                 check.checked="false";
-                            else if(check_num ==sub_num)
+                            }
+                            else if(check_num ==sub_num) {
                                 check.checked="true";
-                            else
+                            }
+                            else {
                                 check.checked="mid";
+                            }
                         }
-                        if(check.checked == "true" || listViewDelegate.check_num > 0) {   //根据是否有勾选项给清理页面传值判断是否能进行清理工作
+                        if(check.checked == "true" || listViewDelegate.check_num > 0) {//根据是否有勾选项给清理页面传值判断是否能进行清理工作
                             listViewDelegate.checkchanged(true);
                         }
                         else {
@@ -192,5 +174,5 @@ Item {
             }
         }//子项Item
     }
-}//Component
+}
 
