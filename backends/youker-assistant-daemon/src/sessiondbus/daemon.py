@@ -73,14 +73,14 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def onekey_scan_function(self, mode_list):
-        daemononekey = cleaner.OneKeyClean()
-        total_dic = daemononekey.get_onekey_crufts(self, mode_list)
+        onekeyfunc_obj = cleaner.OneKeyClean()
+        total_dic = onekeyfunc_obj.get_onekey_crufts(self, mode_list)
         self.scan_complete_msg('onekey')
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
     def history_scan_funciton(self, flag):
-        daemonhistory = cleaner.CleanTheHistory(None)
-        crufts_list = daemonhistory.get_history_crufts(flag)
+        historyfunc_obj = cleaner.CleanTheHistory(None)
+        crufts_list = historyfunc_obj.get_history_crufts(flag)
         figure = None
         if crufts_list[0] in 'No':
             figure = -1
@@ -136,8 +136,8 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
     def cookies_scan_function(self, flag):
-        daemoncookies = cleaner.CleanTheCookies(self)
-        crufts_list = daemoncookies.get_cookies_crufts(flag)
+        cookiesfunc_obj = cleaner.CleanTheCookies(self)
+        crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
         return crufts_list
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]
@@ -149,9 +149,20 @@ class SessionDaemon(dbus.service.Object):
     # the function of scan the oldkernel
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def oldkernel_scan_function(self):
-        crufts_list = self.daemonoldkernel.get_oldkernel_crufts()
+        oldkernelfunc_obj = cleaner.CleanTheOldkernel() 
+        crufts_list = oldkernelfunc_obj.get_oldkernel_crufts()
         self.scan_complete_msg('oldkernel')
         return crufts_list
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    def cache_scan_function(self, mode_list):
+        cachefunc_obj = cleaner.CleanTheCache()
+        try:
+            cachefunc_obj.get_all_cache_crufts(mode_list, self)
+        except Exception, e:
+            pass
+        else:
+            pass
+
     # the function of scan the apt cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -179,6 +190,14 @@ class SessionDaemon(dbus.service.Object):
     def scan_complete(self, msg):
         pass
     
+    @dbus.service.signal(INTERFACE, signature='ssss')
+    def data_transmit_by_cache(self, flag0, path, flag1, size):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='')
+    def cache_transmit_complete(self):
+        pass
+
     @dbus.service.signal(INTERFACE, signature='s')
     def deb_exists_firefox(self, msg):
         pass
