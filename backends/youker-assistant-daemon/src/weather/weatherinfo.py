@@ -19,7 +19,7 @@ import os, sys
 import threading
 import urllib2, urllib
 import json
-from base import VERSION, PROJECT_ROOT_DIRECTORY, PROJECT_ROOT_DIRECTORY, WEATHER_URL, WEATHER_URL1, WEATHER_URL2, PM25_URL, TOKEN
+from base import PROJECT_ROOT_DIRECTORY, PROJECT_ROOT_DIRECTORY, WEATHER_URL, WEATHER_URL1, WEATHER_URL2, PM25_URL, TOKEN
 
 CHN_CITY_LIST_FILE = '/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt'
 
