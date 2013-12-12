@@ -33,13 +33,13 @@ Item {
         Common.TabPage {
             title:qsTr("Deb cache")//包管理缓存
             anchors.fill: parent
-            CruftModel {
-                id: aptitem
-            }
-
-//            AptCruft{
+//            CruftModel {
 //                id: aptitem
 //            }
+
+            AptCruft{
+                id: aptitem
+            }
         }
         Common.TabPage {
             title:qsTr("Software cache")//软件中心缓存
@@ -70,13 +70,13 @@ Item {
                 id: packagemodel
             }
         }
-        Common.TabPage {
-            title:qsTr("Old Kernel")//旧内核
-            anchors.fill: parent
-            KernelModel {
-                id: kernelmodel
-            }
-        }
+//        Common.TabPage {
+//            title:qsTr("Old Kernel")//旧内核
+//            anchors.fill: parent
+//            KernelModel {
+//                id: kernelmodel
+//            }
+//        }
         Common.TabPage{
             title:qsTr("Clean LargeFile ")//大文件清理
             anchors.fill: parent

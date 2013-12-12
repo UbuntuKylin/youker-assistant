@@ -19,8 +19,8 @@ Item {
     property color subItemFontColor: "black"
 
     //总控开关的初始值
-    property string main_check_value: "true"
-    property bool controlMain: true
+//    property string main_check_value: "true"
+//    property bool controlMain: true
 
     signal checkchanged(bool checkchange);
 
@@ -30,7 +30,7 @@ Item {
     width: parent.width
 
     property string arrowFlag
-    signal arrowClicked(string str, bool expand_flag);
+    signal arrowClicked(string cacheFlag, bool expand_flag);
 
     Item {
         id: delegate
@@ -69,7 +69,7 @@ Item {
             }
             Common.MainCheckBox{
                 id:check
-                checked: listViewDelegate.main_check_value//"true"
+                checked: mstatus//listViewDelegate.main_check_value//"true"
                 anchors.verticalCenter: parent.verticalCenter
 //                checkedbool: listViewDelegate.controlMain
                 onClicked: {
@@ -79,6 +79,11 @@ Item {
                     else {
                         listViewDelegate.checkchanged(false);
                     }
+                }
+                onSendMstatus: {
+                    check.checkedbool = status;
+//                    listViewDelegate.main_check_value = str;
+//                    listViewDelegate.checkchanged(status);
                 }
             }
 

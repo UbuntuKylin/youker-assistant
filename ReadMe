@@ -2,7 +2,7 @@ Youker Assistant
 
 Attention
 =========
-It supports saucy and trusty, but does not support raring.
+It supports raring, saucy and trusty, but does not support precise.
 
 Depends
 =======
@@ -20,6 +20,6 @@ backends/youker-assistant-daemon/data/com.youker-assistant.daemon.policy   ->  /
 backends/youker-assistant-daemon/data/com.ubuntukylin_tools.daemon.service   ->  /usr/share/dbus-1/system-services/
 backends/youker-assistant-daemon/data/youker-assistant-daemon.conf   ->  /etc/dbus-1/system.d/
 backends/youker-assistant-daemon/src/   ->  /usr/lib/python2.7/dist-packages/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/autostart/   ->  /usr/share/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/plymouth/   ->  /usr/share/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/sound-theme/   ->  /usr/share/youker-assistant-daemon/
+backends/youker-assistant-daemon/data/beautify/autostart/   ->  /var/lib/youker-assistant-daemon/
+backends/youker-assistant-daemon/data/beautify/plymouth/   ->  /var/lib/youker-assistant-daemon/
+backends/youker-assistant-daemon/data/beautify/sound-theme/   ->  /var/lib/youker-assistant-daemon/

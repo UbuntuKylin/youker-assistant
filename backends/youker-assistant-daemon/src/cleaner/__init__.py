@@ -21,8 +21,8 @@ import apt
 import apt_pkg
 import shutil
 import commands
+import threading
 from apt.progress.base import InstallProgress
-
 
 import historyclean
 import cookiesclean
@@ -492,17 +492,18 @@ class CleanTheCache():
             if os.path.isdir(line):
                 swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'True', common.confirm_filesize_unit(common.get_dir_size(line))))
             else:
-                swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'Flase', common.confirm_filesize_unit(os.path.getsize(line))))
+                swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'False', common.confirm_filesize_unit(os.path.getsize(line))))
         result_dic['softwarecenter'] = '<1_1>'.join(swcenter_list)
 
         return result_dic
 
 # the function of clean cruft files and cruft packages
-class FunctionOfClean():
+class FunctionOfClean(threading.Thread):
     def __init__(self, msgdaemon):
+        threading.Thread.__init__(self)
         self.msgdaemon = msgdaemon
 
-    def clean_the_file_for_main(self, cruftlist):
+    def clean_the_file_for_main_thread(self, cruftlist):
         for cruft in cruftlist:
             tmp = cruft.encode("UTF-8")
             self.sysdaemon.clean_process_main_msg("cleaning %s" % tmp)
@@ -512,7 +513,10 @@ class FunctionOfClean():
                 else:
                     os.remove(tmp)
 
-    def clean_the_file_for_second(self, cruftlist):
+    def clean_the_file_for_main(self, cruftlist):
+        threading.Thread(target=self.clean_the_file_for_main_thread, args=(cruftlist,), name='MainClean').start()
+
+    def clean_the_file_for_second_thread(self, cruftlist):
         for cruft in cruftlist:
             tmp = cruft.encode("UTF-8")
             self.sysdaemon.clean_process_second_msg("cleaning %s" % tmp)
@@ -522,7 +526,10 @@ class FunctionOfClean():
                 else:
                     os.remove(tmp)
 
-    def clean_the_file(self, cruftlist):
+    def clean_the_file_for_second(self, cruftlist):
+        threading.Thread(target=self.clean_the_file_for_second_thread, args=(cruftlist,), name='SecondClean').start()
+
+    def clean_the_file_thread(self, cruftlist):
         for cruft in cruftlist:
             tmp = cruft.encode("UTF-8")
             if tmp:
@@ -531,7 +538,10 @@ class FunctionOfClean():
                 else:
                     os.remove(tmp)
 
-    def clean_the_package(self, cruftlist):
+    def clean_the_file(self, cruftlist):
+        threading.Thread(target=self.clean_the_file_thread, args=(cruftlist,), name='CleanFile').start()
+
+    def clean_the_package_thread(self, cruftlist):
         if cruftlist:
             cache = common.get_cache_list()
             cache.open()
@@ -541,6 +551,9 @@ class FunctionOfClean():
                     pkg.mark_delete()
             iprogress = MyInstallProgress(self.msgdaemon)
             cache.commit(None, iprogress)
+
+    def clean_the_package(self, cruftlist):
+        threading.Thread(target=self.clean_the_package_thread, args=(cruftlist,), name='CleanPackage').start()
 
 class MyInstallProgress(InstallProgress):
         def __init__(self, sudodaemon):

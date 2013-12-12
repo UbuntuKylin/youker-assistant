@@ -1,5 +1,7 @@
 import QtQuick 1.1
 import StyleItemType 0.1
+
+
 Item {
     id: maincheckbox
     property string checked: "true"    //保存总checkbox处于三种状态中的哪种
@@ -10,6 +12,7 @@ Item {
     width: minimumWidth
     height: minimumHeight
     signal clicked();
+    signal sendMstatus(bool status/*, string str*/);
 
     Rectangle {
         anchors.fill: parent
@@ -61,16 +64,23 @@ Item {
     }
     //maincheckbox.checked发生变化时激活该函数
     onCheckedChanged:{
+        console.log("k111");
         if(checked == "true") {
+            console.log("k222");
             simage.source = "../../img/icons/checkbox.png";
             checkedbool = true;
+            maincheckbox.sendMstatus(true/*, "true"*/);//1212
         }
         else if(checked == "mid") {
+            console.log("k333");
             simage.source = "../../img/icons/checkbox-2.png";
+            maincheckbox.sendMstatus(true/*, "mid"*/);//1212
         }
         else if(checked=="false") {
+            console.log("k444");
             simage.source = "";
             checkedbool = false;
+            maincheckbox.sendMstatus(false/*, "false"*/);//1212
         }
     }
 }

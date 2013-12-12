@@ -28,7 +28,6 @@
 #include <QFileDialog>
 
 #include "KThread.h"
-//#include "SessionThread.h"
 #include "wizarddialog.h"
 #include "changecitydialog.h"
 #include "util.h"
@@ -60,8 +59,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
     QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(handler_access_forecast_weather(QString, QString)));
-    QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_data_to_model(QString,QString,QString,QString)));
-    QObject::connect(sessioniface, SIGNAL(cache_transmit_complete()), this, SLOT(handler_cache_scan_over()));
+//    QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_data_to_model(QString,QString,QString,QString)));
+//    QObject::connect(sessioniface, SIGNAL(cache_transmit_complete()), this, SLOT(handler_cache_scan_over()));
 }
 
 SessionDispatcher::~SessionDispatcher() {

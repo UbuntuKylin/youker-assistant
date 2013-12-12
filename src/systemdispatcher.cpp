@@ -442,6 +442,31 @@ void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
     thread->start();
 }
 //------------------------------------------------------
+void SystemDispatcher::set_cache_args(QString str) {
+    cache_args.append(str);
+}
+
+void SystemDispatcher::del_cache_args(QString str) {
+    QStringList bake;
+    int len = cache_args.length();
+    for (int i=0; i< len; i++) {
+        if (cache_args[i] != str) {
+            bake.append(cache_args[i]);
+        }
+    }
+    cache_args.clear();
+    cache_args = bake;
+}
+
+void SystemDispatcher::clear_cache_args() {
+    cache_args.clear();
+}
+
+QStringList SystemDispatcher::get_cache_args() {
+    return cache_args;
+}
+
+
 
 void SystemDispatcher::set_apt_args(QString str) {
     apt_args.append(str);

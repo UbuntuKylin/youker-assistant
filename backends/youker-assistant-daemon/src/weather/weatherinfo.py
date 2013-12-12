@@ -42,8 +42,8 @@ class Getpmdata:
 
 class WeatherInfo(threading.Thread):
     def __init__(self, sessionDaemon):
-        self.sessionDaemon = sessionDaemon
         threading.Thread.__init__(self)
+        self.sessionDaemon = sessionDaemon
         self.weatherData={}
         self.forecastData={}
         self.pmData = ''

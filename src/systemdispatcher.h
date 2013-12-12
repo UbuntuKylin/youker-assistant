@@ -95,6 +95,12 @@ public:
     Q_INVOKABLE void set_history_flag(bool flag);
     Q_INVOKABLE bool get_history_flag();
 
+    QStringList cache_args;
+    Q_INVOKABLE void set_cache_args(QString str);
+    Q_INVOKABLE void del_cache_args(QString str);
+    Q_INVOKABLE void clear_cache_args();
+    Q_INVOKABLE QStringList get_cache_args();
+
     QStringList apt_args;
     Q_INVOKABLE void set_apt_args(QString str);
     Q_INVOKABLE void del_apt_args(QString str);

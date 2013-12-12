@@ -55,7 +55,7 @@ Item {
                     num++;
                 }
                 else {
-                    subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
+                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1],"number": splitlist[2]});
                     systemdispatcher.set_apt_args(splitlist[0]);
                 }
             }

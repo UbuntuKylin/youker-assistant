@@ -201,14 +201,24 @@ Item {
     }
 
     Text {
-        text: container.descript
+        text: {
+            if(container.descript == "True") {//文件夹
+                qsTr("Folder")
+            }
+            else if(container.descript == "True") {//文件
+                qsTr("File")
+            }
+            else {
+                container.descript
+            }
+        }
         anchors {
             left: itemText.right
             top: parent.top
             leftMargin: 20
             verticalCenter: container.verticalCenter
         }
-        color: container.fontColor
+        color: "#318d11"
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
     }
