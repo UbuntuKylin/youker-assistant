@@ -15,7 +15,7 @@
  */
 import QtQuick 1.1
 import "common" as Common
-
+//扫描后取消两个checkbox，此时点击返回，再点击扫描，都为true，再点击清理，则都为false
 Item {
     id:root
     width: parent.width
@@ -406,7 +406,17 @@ Item {
                 if (root.btnFlag == "apt_scan") {//扫描
                     root.flag = false;
 //                    root.getData();//获取数据
-                    sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
+                    if(root.maincheck1 && root.maincheck2) {//software-center
+                        sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
+                    }
+                    else {
+                        if(root.maincheck1) {
+                            sessiondispatcher.cache_scan_function_qt("apt");
+                        }
+                        else if(root.maincheck2) {
+                            sessiondispatcher.cache_scan_function_qt("software-center");
+                        }
+                    }
                 }
                 else if (root.btnFlag == "apt_work") {//清理
                     if(root.resultFlag || root.softresultFlag) {//扫描得到的实际内容存在时
