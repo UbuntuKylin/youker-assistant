@@ -33,7 +33,7 @@ Item {
         Common.TabPage {
             title:qsTr("Deb cache")//包管理缓存
             anchors.fill: parent
-//            CruftModel {
+//            CruftModel {//pengshuang
 //                id: aptitem
 //            }
 

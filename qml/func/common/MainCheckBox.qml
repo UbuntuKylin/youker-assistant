@@ -74,7 +74,7 @@ Item {
         else if(checked == "mid") {
             console.log("k333");
             simage.source = "../../img/icons/checkbox-2.png";
-            maincheckbox.sendMstatus(true/*, "mid"*/);//1212
+//            maincheckbox.sendMstatus(true/*, "mid"*/);//1212
         }
         else if(checked=="false") {
             console.log("k444");

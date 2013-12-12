@@ -8,7 +8,7 @@ youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
   * Change /usr/share/youker-assistant-daemon to /var/lib/youker-assistant-daemon.
   * Change UbuntuKylin to Ubuntu Kylin.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 12 Dec 2013 16:41:18 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 12 Dec 2013 21:23:50 +0800
 
 youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
 
