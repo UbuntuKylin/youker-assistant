@@ -205,7 +205,7 @@ Item {
             if(container.descript == "True") {//文件夹
                 qsTr("Folder")
             }
-            else if(container.descript == "True") {//文件
+            else if(container.descript == "False") {//文件
                 qsTr("File")
             }
             else {
@@ -218,7 +218,7 @@ Item {
             leftMargin: 20
             verticalCenter: container.verticalCenter
         }
-        color: "#318d11"
+//        color: "#318d11"
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
     }

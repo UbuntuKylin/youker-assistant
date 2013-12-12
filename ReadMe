@@ -6,12 +6,11 @@ It supports raring, saucy and trusty, but does not support precise.
 
 Depends
 =======
-debhelper (>= 9), dh-translations, libphonon-dev, phonon-dev, libqt4-dev, fcitx-libs-dev, pkg-config, python (>= 2.6.6-3~), qt4-default, qtchooser， phonon-backend-gstreamer, python-dbus, python-psutil
+debhelper (>= 9), dh-translations, libphonon-dev, libqt4-dev, fcitx-libs-dev, pkg-config, python-dev, python (>= 2.6.6-3~), qt4-default, qtchooser, phonon-backend-gstreamer, python-dbus, python-psutil
 
 Attention with IDE
 ==================
-1、delete 'lib' in line "SUBDIRS += src qml backends lib"
-2、copy files:
+^^copy files^^:
 qml/applist.ini   ->  /usr/share/youker-assistant/qml/
 backends/youker-assistant-daemon/data/youkersystem   ->  /usr/bin
 backends/youker-assistant-daemon/data/youkersession   ->  /usr/bin
