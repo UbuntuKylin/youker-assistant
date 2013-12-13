@@ -222,6 +222,7 @@ Item {
         property string software_name: ""
         property string installed_status: "n"
         property string tm_status: "n"
+//        x: (parent.width * 1.5)
         width: parent.width
         height: parent.height
         function reset_text(showtext) {

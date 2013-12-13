@@ -19,7 +19,7 @@
 import apt
 import aptsources.sourceslist
 import apt.progress.base as apb
-import threading
+#import threading
 
 class FetchProcess(apb.AcquireProgress):
     '''Fetch Process'''
@@ -99,9 +99,10 @@ class AptProcess(apb.InstallProgress):
         print str(int(percent)) + "%  status : " + status
         self.sudoDaemon.software_apt_signal("apt_pulse", "percent:" + str(int(percent)) + ",status:" + status)
 
-class AptDaemon(threading.Thread):
+#class AptDaemon(threading.Thread):
+class AptDaemon():
     def __init__(self, sudoDaemon):
-        threading.Thread.__init__(self)
+        #threading.Thread.__init__(self)
         self.sudoDaemon = sudoDaemon
         self.ca = apt.Cache()
         self.ca.open()
@@ -109,14 +110,13 @@ class AptDaemon(threading.Thread):
 # 		for pkg in self.ca:
 # 			self.pkgNameList.append(pkg.name)
 
-#threading.Thread(target=self.get_weather_from_nmc, args=(1,), name='Forecast').start()
     # apt-get update
-    def apt_get_update_thread(self):
+    def apt_get_update(self):
         self.ca.update(fetch_progress=FetchProcess(self.sudoDaemon))
 
     # apt-get update
-    def apt_get_update(self):
-        threading.Thread(target=self.apt_get_update_thread, name='AptUpdate').start()
+    #def apt_get_update(self):
+    #    threading.Thread(target=self.apt_get_update_thread, name='AptUpdate').start()
 
     # get package by pkgName
     def get_pkg_by_name(self, pkgName):
@@ -127,7 +127,7 @@ class AptDaemon(threading.Thread):
             return "ERROR"
 
     # install package
-    def install_pkg_thread(self, pkgName):
+    def install_pkg(self, pkgName):
         self.ca.open()
         pkg = self.get_pkg_by_name(pkgName)
         pkg.mark_install()
@@ -139,11 +139,11 @@ class AptDaemon(threading.Thread):
             print "install err"
 
     # install package
-    def install_pkg(self, pkgName):
-        threading.Thread(target=self.install_pkg_thread, args=(pkgName,), name='PkgInstall').start()
+    #def install_pkg(self, pkgName):
+    #    threading.Thread(target=self.install_pkg_thread, args=(pkgName,), name='PkgInstall').start()
 
     # uninstall package
-    def uninstall_pkg_thread(self, pkgName):
+    def uninstall_pkg(self, pkgName):
         self.ca.open()
         pkg = self.get_pkg_by_name(pkgName)
         pkg.mark_delete()
@@ -155,11 +155,11 @@ class AptDaemon(threading.Thread):
             print "uninstall err"
 
     # uninstall package
-    def uninstall_pkg(self, pkgName):
-        threading.Thread(target=self.uninstall_pkg_thread, args=(pkgName,), name='PkgUninstall').start()
+    #def uninstall_pkg(self, pkgName):
+    #    threading.Thread(target=self.uninstall_pkg_thread, args=(pkgName,), name='PkgUninstall').start()
 
     # update package
-    def update_pkg_thread(self, pkgName):
+    def update_pkg(self, pkgName):
         self.ca.open()
         pkg = self.get_pkg_by_name(pkgName)
         pkg.mark_upgrade()
@@ -171,8 +171,8 @@ class AptDaemon(threading.Thread):
             print "update err"
 
     # update package
-    def update_pkg(self, pkgName):
-        threading.Thread(target=self.update_pkg_thread, args=(pkgName,), name='PkgUpgrade').start()
+    #def update_pkg(self, pkgName):
+    #    threading.Thread(target=self.update_pkg_thread, args=(pkgName,), name='PkgUpgrade').start()
 
     # check package status by pkgName, i = installed u = can update n = notinstall
     def check_pkg_status(self, pkgName):
@@ -207,7 +207,7 @@ class AptDaemon(threading.Thread):
         return pkgStatusDict
 
     # check packages status by pkgNameList, i = installed u = can update n = notinstall
-    def check_pkgs_status_rtn_list_thread(self, pkgNameList):
+    def check_pkgs_status_rtn_list(self, pkgNameList):
         self.ca.open()
         pkgStatusList = []
         for pkgName in pkgNameList:
@@ -226,8 +226,8 @@ class AptDaemon(threading.Thread):
         #return pkgStatusList
 
     # check packages status by pkgNameList, i = installed u = can update n = notinstall
-    def check_pkgs_status_rtn_list(self, pkgNameList):
-        threading.Thread(target=self.check_pkgs_status_rtn_list_thread, args=(pkgNameList,), name='PkgStatusList').start()
+    #def check_pkgs_status_rtn_list(self, pkgNameList):
+    #    threading.Thread(target=self.check_pkgs_status_rtn_list_thread, args=(pkgNameList,), name='PkgStatusList').start()
 
 # 	def get_pkgs_name_list(self):
 # 		return self.pkgNameList

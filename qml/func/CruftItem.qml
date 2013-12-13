@@ -211,30 +211,39 @@ Item {
         verticalAlignment: Text.AlignVCenter
     }
 
-    Text {
-        text: container.descript
-        anchors {
-            left: itemText.right
-            top: parent.top
-            leftMargin: 20
-            verticalCenter: container.verticalCenter
-        }
-        color: container.fontColor
-        elide: Text.ElideRight
-        verticalAlignment: Text.AlignVCenter
-    }
-
-    Text {
-        text: container.size_num
+    Row {
+        spacing: 10
         anchors {
             top: parent.top
             right: parent.right
             rightMargin: 80
             verticalCenter: container.verticalCenter
         }
-        color: container.fontColor
-        elide: Text.ElideRight
-        verticalAlignment: Text.AlignVCenter
+        Text {
+            text: {
+                if(container.descript == "True") {//文件夹
+                    qsTr("Folder")
+                }
+                else if(container.descript == "False") {//文件
+                    qsTr("File")
+                }
+                else {
+                    container.descript
+                }
+            }
+            anchors.verticalCenter: parent.verticalCenter
+            color: container.fontColor
+            elide: Text.ElideRight
+            verticalAlignment: Text.AlignVCenter
+        }
+
+        Text {
+            text: container.size_num
+            anchors.verticalCenter: parent.verticalCenter
+            color: container.fontColor
+            elide: Text.ElideRight
+            verticalAlignment: Text.AlignVCenter
+        }
     }
 
     MouseArea {
@@ -417,6 +426,7 @@ Item {
 //                }
 //                else if(container.itemFlag == "soft") {
 ////                else if (btn_flag == "software_work") {
+//                    console.log("del...........");
 //                    systemdispatcher.del_software_args(container.text);
 //                }
 //                else {
