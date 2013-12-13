@@ -293,8 +293,10 @@ Item {
         }
         visible: itemText.text=="" ? false : true
     }
-    Text {
+
+    Row {
         id: itemText
+        spacing: 10
         anchors {
             left: checkbox.right
             top: parent.top
@@ -303,18 +305,81 @@ Item {
             leftMargin: 10// + textIndent
             verticalCenter: container.verticalCenter
         }
-        font {
-            family: container.fontName
-            pointSize: container.fontSize
-            bold: container.fontBold
+        Image {
+            width: 12
+            height: 12
+            anchors.verticalCenter: parent.verticalCenter
+            source: {
+                if(container.descript == "True") {//文件夹
+                    "../img/icons/folder.png"
+                }
+                else if(container.descript == "False") {//文件
+                    "../img/icons/book.png"
+                }
+                else {
+                    ""
+                }
+            }
         }
-        color: container.fontColor
-        elide: Text.ElideRight
-//        text: get_last_name(container.text)
-        text: container.split_status ? get_last_name(container.text) : container.text
-        verticalAlignment: Text.AlignVCenter
+        Text {
+//            id: itemText
+            anchors.verticalCenter: parent.verticalCenter
+//            anchors {
+//                left: checkbox.right
+//                top: parent.top
+//                topMargin: 4
+//                bottomMargin: 4
+//                leftMargin: 10// + textIndent
+//                verticalCenter: container.verticalCenter
+//            }
+            font {
+                family: container.fontName
+                pointSize: container.fontSize
+                bold: container.fontBold
+            }
+            color: container.fontColor
+            elide: Text.ElideRight
+    //        text: get_last_name(container.text)
+            text: container.split_status ? get_last_name(container.text) : container.text
+            verticalAlignment: Text.AlignVCenter
+        }
+
     }
 
+//    Text {
+//        id: itemText
+//        anchors {
+//            left: checkbox.right
+//            top: parent.top
+//            topMargin: 4
+//            bottomMargin: 4
+//            leftMargin: 10// + textIndent
+//            verticalCenter: container.verticalCenter
+//        }
+//        font {
+//            family: container.fontName
+//            pointSize: container.fontSize
+//            bold: container.fontBold
+//        }
+//        color: container.fontColor
+//        elide: Text.ElideRight
+////        text: get_last_name(container.text)
+//        text: container.split_status ? get_last_name(container.text) : container.text
+//        verticalAlignment: Text.AlignVCenter
+//    }
+
+//    Text {
+//        text: container.descript
+//        anchors {
+//            left: itemText.right
+//            top: parent.top
+//            leftMargin: 20
+//            verticalCenter: container.verticalCenter
+//        }
+//        color: container.fontColor
+//        elide: Text.ElideRight
+//        verticalAlignment: Text.AlignVCenter
+//    }
     Row {
         spacing: 10
         anchors {
@@ -323,23 +388,23 @@ Item {
             rightMargin: 80
             verticalCenter: container.verticalCenter
         }
-        Text {
-            text: {
-                if(container.descript == "True") {//文件夹
-                    qsTr("Folder")
-                }
-                else if(container.descript == "False") {//文件
-                    qsTr("File")
-                }
-                else {
-                    container.descript
-                }
-            }
-            anchors.verticalCenter: parent.verticalCenter
-            color: container.fontColor
-            elide: Text.ElideRight
-            verticalAlignment: Text.AlignVCenter
-        }
+//        Text {
+//            text: {
+//                if(container.descript == "True") {//文件夹
+//                    qsTr("Folder")
+//                }
+//                else if(container.descript == "False") {//文件
+//                    qsTr("File")
+//                }
+//                else {
+//                    container.descript
+//                }
+//            }
+//            anchors.verticalCenter: parent.verticalCenter
+//            color: container.fontColor
+//            elide: Text.ElideRight
+//            verticalAlignment: Text.AlignVCenter
+//        }
 
         Text {
             text: container.size_num

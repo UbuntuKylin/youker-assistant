@@ -264,7 +264,6 @@ void SessionDispatcher::showWarningDialog(QString title, QString content, int wi
 //    dialog->show();
 }
 
-
 QString SessionDispatcher::getSingleInfo(QString key) {
     QVariant info = systemInfo.value(key);
     return info.toString();
