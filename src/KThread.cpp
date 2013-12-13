@@ -50,7 +50,7 @@ void KThread::run() {
         iface->call("cookies_clean_records_function", fileFlag);
     }
     else if(methodName == "clean_package_cruft") {
-        iface->call("clean_package_cruft", list);
+        iface->call("clean_package_cruft", list, fileFlag);
     }
     else if(methodName == "clean_file_cruft") {
         iface->call("clean_file_cruft", list, fileFlag);
@@ -69,6 +69,15 @@ void KThread::run() {
     }
     else if(methodName == "check_pkgs_status") {
         iface->call("check_pkgs_status", list);
+    }
+    else if(methodName == "get_forecast_weahter") {
+        iface->call("get_forecast_weahter", fileFlag);
+    }
+    else if(methodName == "get_current_weather") {
+        iface->call("get_current_weather", fileFlag);
+    }
+    else if(methodName == "get_current_pm25") {
+        iface->call("get_current_pm25", fileFlag);
     }
 }
 void KThread::stop() {

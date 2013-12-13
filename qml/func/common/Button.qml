@@ -26,11 +26,11 @@ Item {
     property int fontsize: 14
 
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
-    property string setbtn_flag: ""
-    property string get_msg: ""
-    property bool check_flag: true
+//    property string setbtn_flag: ""
+//    property string get_msg: ""
+//    property bool check_flag: true
 
-    signal send_dynamic_picture(string str);
+//    signal send_dynamic_picture(string str);
 
     BorderImage {
         id: buttonImage
@@ -128,25 +128,25 @@ Item {
 
         onClicked: {
             btn.clicked();
-            if(check_flag)
-            {
-                if (setbtn_flag == "onekeyscan") {
-                    send_dynamic_picture("onekeyscan");
-                    sessiondispatcher.onekey_scan_function_qt(systemdispatcher.get_onekey_args());
-                }
-                else if (setbtn_flag == "onekey") {
-                    send_dynamic_picture("onekey");
-                    systemdispatcher.set_user_homedir_qt();
-                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
-                }
+//            if(check_flag)
+//            {
+//                if (setbtn_flag == "onekeyscan") {
+//                    send_dynamic_picture("onekeyscan");
+//                    sessiondispatcher.onekey_scan_function_qt(systemdispatcher.get_onekey_args());
+//                }
+//                else if (setbtn_flag == "onekey") {
+//                    send_dynamic_picture("onekey");
+//                    systemdispatcher.set_user_homedir_qt();
+//                    systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+//                }
 
-                else if (setbtn_flag == "smallonekey") {
-                    systemdispatcher.set_user_homedir_qt();
-                    systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
-                }
-            }
-            else
-                sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+//                else if (setbtn_flag == "smallonekey") {
+//                    systemdispatcher.set_user_homedir_qt();
+//                    systemdispatcher.clean_by_second_one_key_qt(systemdispatcher.get_onekey_args2());
+//                }
+//            }
+//            else
+//                sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
         }
     }
 

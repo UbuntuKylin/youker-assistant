@@ -23,6 +23,7 @@
 #include <QDBusConnection>
 #include <QtGui>
 
+//#include "toplevel.h"
 class IhuApplication : public QWidget
 {
     Q_OBJECT
@@ -32,13 +33,13 @@ public:
     void setup();
     void showQMLWidget();
 
-    void showFontFamily();
-
 private:
     //关联QML界面
     QDeclarativeView *viewer;
     //系统托盘
     Tray *tray;
+
+//    TopLevel *mTopLevel;
 public slots:
     //主界面显示和隐藏
     void showOrHideMainPage();

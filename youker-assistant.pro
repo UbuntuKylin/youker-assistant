@@ -1,6 +1,5 @@
 TEMPLATE = subdirs
-#SUBDIRS += src qml backends
-SUBDIRS += src qml backends lib
+SUBDIRS += src qml backends
 
 # i18n setting
 TRANSLATIONS += \

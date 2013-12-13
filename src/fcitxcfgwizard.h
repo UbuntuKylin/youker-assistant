@@ -26,7 +26,7 @@
 #include "fcitx-utils/utils.h"
 #include "fcitx-config/hotkey.h"
 #include <QDeclarativeView>
-//#include "fcitxwarndialog.h"
+#include <kfontdialog.h>
 
 
 class FcitxCfgWizard : public QObject

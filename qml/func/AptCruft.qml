@@ -18,8 +18,6 @@
 
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 
 Item {
@@ -57,7 +55,7 @@ Item {
                     num++;
                 }
                 else {
-                    subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
+                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1],"number": splitlist[2]});
                     systemdispatcher.set_apt_args(splitlist[0]);
                 }
             }
@@ -69,8 +67,7 @@ Item {
                 //包管理清理        用户可以根据扫描结果选择性地清理包管理残留包,缓存路径为:/var/cache/apt/archives/
                 mainModel.append({"itemTitle": qsTr("The package management cleaning"),
                                  "picture": "../img/toolWidget/apt-min.png",
-                                 "detailstr": qsTr("User can according to the scan results selectively clean residual package, cache path is:/var/cache/apt/archives/"),
-                                 "flags": "clear_apt"})
+                                 "detailstr": qsTr("User can according to the scan results selectively clean residual package, cache path is:/var/cache/apt/archives/")})
             }
             else {
                 root.resultFlag = false;//扫描的实际有效内容不存在

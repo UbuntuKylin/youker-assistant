@@ -14,14 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 import "bars" as Bars
 
 Rectangle {
     id: screen; width: parent.width; height: 475
-    signal dialogmsg()
+
     function openFile(file) {
          var component = Qt.createComponent(file)
          if (component.status == Component.Ready)
@@ -39,7 +37,6 @@ Rectangle {
             right: parent.left
             rightMargin: 2
         }
-//        color: "white"
 
         Item {
             id: views
@@ -65,6 +62,6 @@ Rectangle {
             Rectangle {id: midsplitbar1; x: 600; height: screen.height; width: 1; color: "#b9c5cc" }
             Rectangle {id: midsplitbar2; x: 602; height: screen.height; width: 1; color: "#fafcfe" }
 
-        }//Item:views
-    }//Rectangle:tools_widget
-}//Rectangle:screen
+        }
+    }
+}

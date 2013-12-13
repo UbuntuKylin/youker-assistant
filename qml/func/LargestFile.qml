@@ -15,8 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 Item {
     id:root
@@ -83,8 +81,7 @@ Item {
         //清理最大文件，清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
         mainModel.append({"itemTitle": qsTr("Clean up the maximum file, and the pah is:")  + root.directory,
                          "picture": "../img/toolWidget/deb-min.png",
-                         "detailstr": qsTr("Clear the maximum file directory in user's appointment to save disk space."),
-                         "flags": "clear_largestfile"})
+                         "detailstr": qsTr("Clear the maximum file directory in user's appointment to save disk space.")})
     }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork

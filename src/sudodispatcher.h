@@ -42,7 +42,7 @@ public:
     //得到sudodbus验证值，可以通过该值验证服务是否正在运行
     Q_INVOKABLE QString get_sudo_daemon_qt();
     //清理不需要的已经安装的软件
-    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist);
+    Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist, QString flag);
     //绑定信号槽
     Q_INVOKABLE void bind_signals_after_dbus_start();
     //通过键值得到对应软件的状态
@@ -101,6 +101,9 @@ signals:
     //发送软件列表给QML去显示
     void sendAppListToQML(QStringList appList);
 
+    //将不需要的包和内核包的卸载进度告诉qml进度条
+    void sendProgressToQML(QString msg);
+
 
 public slots:
     //后台发来清理不需要的包的正确过程中的信号后响应该函数
@@ -116,6 +119,8 @@ public slots:
     //准备开始更新软件源
     void startUpdateSoftwareSource();
 
+    //清理多余包和旧内核包
+    void handlerRemoveProgress(QString msg);
 private:
     QDBusInterface *sudoiface;
     UpdateDialog *updatedialog;

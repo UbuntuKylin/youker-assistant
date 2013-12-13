@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
-    <height>395</height>
+    <width>512</width>
+    <height>406</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
+     <y>90</y>
      <width>211</width>
      <height>27</height>
     </rect>
@@ -27,7 +27,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>60</y>
+     <y>70</y>
      <width>71</width>
      <height>17</height>
     </rect>
@@ -39,8 +39,8 @@
   <widget class="QLabel" name="styleLabel">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>60</y>
+     <x>244</x>
+     <y>70</y>
      <width>71</width>
      <height>17</height>
     </rect>
@@ -52,8 +52,8 @@
   <widget class="QLabel" name="sizeLabel">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>60</y>
+     <x>438</x>
+     <y>70</y>
      <width>91</width>
      <height>17</height>
     </rect>
@@ -65,8 +65,8 @@
   <widget class="QLineEdit" name="styleEdit">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>80</y>
+     <x>244</x>
+     <y>90</y>
      <width>171</width>
      <height>27</height>
     </rect>
@@ -75,8 +75,8 @@
   <widget class="QLineEdit" name="sizeEdit">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>80</y>
+     <x>438</x>
+     <y>90</y>
      <width>51</width>
      <height>27</height>
     </rect>
@@ -86,7 +86,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>120</y>
+     <y>126</y>
      <width>211</width>
      <height>161</height>
     </rect>
@@ -95,8 +95,8 @@
   <widget class="QListView" name="styleList">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>120</y>
+     <x>244</x>
+     <y>126</y>
      <width>171</width>
      <height>161</height>
     </rect>
@@ -105,8 +105,8 @@
   <widget class="QListView" name="sizeList">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>120</y>
+     <x>438</x>
+     <y>126</y>
      <width>51</width>
      <height>161</height>
     </rect>
@@ -116,7 +116,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>290</y>
+     <y>295</y>
      <width>81</width>
      <height>17</height>
     </rect>
@@ -129,7 +129,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>310</y>
+     <y>315</y>
      <width>371</width>
      <height>71</height>
     </rect>
@@ -142,7 +142,7 @@
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>310</y>
+     <y>315</y>
      <width>99</width>
      <height>27</height>
     </rect>
@@ -155,7 +155,7 @@
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>350</y>
+     <y>355</y>
      <width>99</width>
      <height>27</height>
     </rect>
@@ -168,33 +168,33 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>35</y>
+     <y>40</y>
      <width>111</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Current Font:</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Current Font:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="curFontText">
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>35</y>
+     <y>41</y>
      <width>371</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Font</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="btn_close">
    <property name="geometry">
     <rect>
-     <x>13</x>
-     <y>10</y>
+     <x>12</x>
+     <y>6</y>
      <width>26</width>
      <height>20</height>
     </rect>
@@ -207,7 +207,7 @@
    <property name="geometry">
     <rect>
      <x>194</x>
-     <y>10</y>
+     <y>6</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -229,7 +229,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/dialog-bg.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/font-bg.png);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>

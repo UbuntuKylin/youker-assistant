@@ -15,9 +15,9 @@
  */
 
 import QtQuick 1.1
-import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
+import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home
@@ -26,19 +26,20 @@ Rectangle {
 
     Component.onCompleted: {
         systemdispatcher.get_cpu_info_qt();//获取详细信息
-        var msg = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
-        var pat1 = new RegExp('Intel');
-        var pat2 = new RegExp('AMD');
-        var pat3 = new RegExp('Vimicro');
-        if(pat1.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-        }
-        else if(pat2.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/AMD.jpg";
-        }
-        else if(pat3.test(msg)) {
-            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
-        }
+        var cpuName = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
+        logo.source = InfoGroup.judgeName(cpuName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cpuName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        var pat1 = new RegExp('Intel');
+//        var pat2 = new RegExp('AMD');
+//        var pat3 = new RegExp('Vimicro');
+//        if(pat1.test(msg)) {
+//            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
+//        }
+//        else if(pat2.test(msg)) {
+//            logo.source =  "../../img/logo/Manufacturer/AMD.jpg";
+//        }
+//        else if(pat3.test(msg)) {
+//            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
+//        }
 //        if(msg.indexOf("Intel") > 0) {
 //            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
 //        }
@@ -50,7 +51,7 @@ Rectangle {
 //        }
 
         cpuversionText.text = systemdispatcher.getSingleInfo("CpuVersion", "cpu");
-        cpuverdorText.text = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
+        cpuverdorText.text = cpuName;
         cpuserialText.text = systemdispatcher.getSingleInfo("CpuSerial", "cpu");
         slotText.text = systemdispatcher.getSingleInfo("CpuSlot", "cpu");
         maxText.text = systemdispatcher.getSingleInfo("CpuCapacity", "cpu") + "MHz";
@@ -70,7 +71,7 @@ Rectangle {
         spacing: 20
 
         Row {
-            Text {
+            Common.Label {
                 id: bartitle
                 text: qsTr("CPU information")//处理器信息
                 font.bold: true
@@ -88,11 +89,11 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("CPU:")//处理器：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: cpuversionText
@@ -103,11 +104,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Vendor:")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: cpuverdorText
@@ -118,11 +119,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Serial:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: cpuserialText
@@ -133,11 +134,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Socket/Slot:")//插座/插槽：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: slotText
@@ -148,11 +149,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Maximum Frequency:")//最大主频：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: maxText
@@ -163,11 +164,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Current Frequency:")//当前主频：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: curText
@@ -178,11 +179,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Front-side Bus:")//前端总线：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: frontText
@@ -193,11 +194,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Cores Number:")//核心数目：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: coresText
@@ -208,11 +209,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("First-level caching:")//一级缓存：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: cache1
@@ -223,11 +224,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Second-level caching:")//二级缓存：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: cache2

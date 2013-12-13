@@ -15,290 +15,331 @@
  */
 
 import QtQuick 1.1
-import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
+import "./InfoGroup.js" as InfoGroup
 
+/*------------------最多支持四个内存条的显示------------------*/
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
+    property bool firstFlag: false
+    property bool secondFlag: false
+    property bool thirdFlag: false
+    property bool fourthFlag: false
+    ListModel {id: firstModel}
+    ListModel {id: secondModel}
+    ListModel {id: thirdModel}
+    ListModel {id: fourthModel}
 
-    function get_last_name(num)
+    function show_several_memory(num)
     {
-        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").spit("/");
-        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").spit("/");
-        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").spit("/");
-        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").spit("/");
-        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").spit("/");
-
-        splitbar.visible = true;
-        slotLabel2.visible = true;
-        modelLabel2.visible = true;
-        vendorLabel2.visible = true;
-        serialLabel2.visible = true;
-        sizeLabel2.visible = true;
-
-        for (var i=0; i < num; i++) {
-            if(i == 0) {
-                logo.source = "../../img/logo/Manufacturer/" + vendor[0].toUpperCase() + ".jpg";
-                slotText.text = slot[0];
-                modelText.text = product[0];
-                vendorText.text = vendor[0];
-                serialText.text = serial[0];
-                sizeText.text = sizeValue[0]/1024/1024/1024 + "GB";
+        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").split("/");
+        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").split("/");
+        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").split("/");
+        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").split("/");
+        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").split("/");
+        var widthValue = systemdispatcher.getSingleInfo("MemWidth", "memory").split("/");
+        var info = systemdispatcher.getSingleInfo("MemInfo", "memory").split("/");
+        //--------------first--------------
+        home.firstFlag = true;
+        firstView.visible = true;
+        firstModel.clear();
+        firstModel.append({"title": qsTr("Slot Number:"), "result": slot[0]});
+        firstModel.append({"title": qsTr("Memory Model:"), "result": product[0]});
+        firstModel.append({"title": qsTr("Vendor:"), "result": vendor[0]});
+        firstModel.append({"title": qsTr("Serial:"), "result": serial[0]});
+        firstModel.append({"title": qsTr("Size:"), "result": sizeValue[0]});
+        firstModel.append({"title": qsTr("Data Width:"), "result": widthValue[0]});
+        firstModel.append({"title": qsTr("Memory Info:"), "result": info[0]});
+        splitbar1.visible = true;
+        logo1.visible = true;
+        logo1.source = InfoGroup.judgeName(vendor[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        //--------------second--------------
+        home.secondFlag = true;
+        secondView.visible = true;
+        secondModel.clear();
+        secondModel.append({"title": qsTr("Slot Number:"), "result": slot[1]});
+        secondModel.append({"title": qsTr("Memory Model:"), "result": product[1]});
+        secondModel.append({"title": qsTr("Vendor:"), "result": vendor[1]});
+        secondModel.append({"title": qsTr("Serial:"), "result": serial[1]});
+        secondModel.append({"title": qsTr("Size:"), "result": sizeValue[1]});
+        secondModel.append({"title": qsTr("Data Width:"), "result": widthValue[1]});
+        secondModel.append({"title": qsTr("Memory Info:"), "result": info[1]});
+        splitbar2.visible = true;
+        logo2.visible = true;
+        logo2.source = InfoGroup.judgeName(vendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        if(num == 2) {
+            //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+            listItem.height = (7*20 + 6*10 + 10*2) *2;
+        }
+        else if(num >= 3) {
+            //--------------third--------------
+            home.thirdFlag = true;
+            thirdView.visible = true;
+            thirdModel.clear();
+            thirdModel.append({"title": qsTr("Slot Number:"), "result": slot[2]});
+            thirdModel.append({"title": qsTr("Memory Model:"), "result": product[2]});
+            thirdModel.append({"title": qsTr("Vendor:"), "result": vendor[2]});
+            thirdModel.append({"title": qsTr("Serial:"), "result": serial[2]});
+            thirdModel.append({"title": qsTr("Size:"), "result": sizeValue[2]});
+            thirdModel.append({"title": qsTr("Data Width:"), "result": widthValue[2]});
+            thirdModel.append({"title": qsTr("Memory Info:"), "result": info[2]});
+            splitbar3.visible = true;
+            logo3.visible = true;
+            logo3.source = InfoGroup.judgeName(vendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            if(num == 3) {
+                //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+                listItem.height = (7*20 + 6*10 + 10*2) *3;
             }
-            else if(i == 1) {
-                logo2.source = "../../img/logo/Manufacturer/" + vendor[1].toUpperCase() + ".jpg";
-                slotText2.text = slot[1];
-                modelText2.text = product[1];
-                vendorText2.text = vendor[1];
-                serialText2.text = serial[1];
-                sizeText2.text = sizeValue[1]/1024/1024/1024 + "GB";
+            else if(num == 4) {
+                home.fourthFlag = true;
+                fourthView.visible = true;
+                fourthModel.clear();
+                fourthModel.append({"title": qsTr("Slot Number:"), "result": slot[3]});
+                fourthModel.append({"title": qsTr("Memory Model:"), "result": product[3]});
+                fourthModel.append({"title": qsTr("Vendor:"), "result": vendor[3]});
+                fourthModel.append({"title": qsTr("Serial:"), "result": serial[3]});
+                fourthModel.append({"title": qsTr("Size:"), "result": sizeValue[3]});
+                fourthModel.append({"title": qsTr("Data Width:"), "result": widthValue[3]});
+                fourthModel.append({"title": qsTr("Memory Info:"), "result": info[3]});
+                splitbar4.visible = true;
+                logo4.visible = true;
+                logo4.source = InfoGroup.judgeName(vendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+                listItem.height = (7*20 + 6*10 + 10*2) *4;
             }
         }
     }
 
 
     Component.onCompleted: {
+        home.firstFlag = false;
+        home.secondFlag = false;
+        home.thirdFlag = false;
+        home.fourthFlag = false;
         systemdispatcher.get_memory_info_qt();//获取详细信息
         var num = systemdispatcher.getSingleInfo("Memnum", "memory");
-//        console.log(num);
         if(num == 1) {
-            logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("MemVendor", "memory").toUpperCase() + ".jpg";
-            slotText.text = systemdispatcher.getSingleInfo("MemSlot", "memory");
-            modelText.text = systemdispatcher.getSingleInfo("MemProduct", "memory");
-            vendorText.text = systemdispatcher.getSingleInfo("MemVendor", "memory");
-            serialText.text = systemdispatcher.getSingleInfo("MemSerial", "memory");
-            var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory");
-            sizeValue = sizeValue/1024/1024/1024;
-            sizeText.text = sizeValue + "GB";
-
-            splitbar.visible = false;
-            slotLabel2.visible = false;
-            modelLabel2.visible = false;
-            vendorLabel2.visible = false;
-            serialLabel2.visible = false;
-            sizeLabel2.visible = false;
+            home.firstFlag = true;
+            firstView.visible = true;
+            var vendorName = systemdispatcher.getSingleInfo("MemVendor", "memory");
+            firstModel.clear();
+            firstModel.append({"title": qsTr("Slot Number:"), "result": systemdispatcher.getSingleInfo("MemSlot", "memory")});
+            firstModel.append({"title": qsTr("Memory Model:"), "result": systemdispatcher.getSingleInfo("MemProduct", "memory")});
+            firstModel.append({"title": qsTr("Vendor:"), "result": vendorName});
+            firstModel.append({"title": qsTr("Serial:"), "result": systemdispatcher.getSingleInfo("MemSerial", "memory")});
+            firstModel.append({"title": qsTr("Size:"), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});
+            firstModel.append({"title": qsTr("Data Width:"), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});
+            firstModel.append({"title": qsTr("Memory Info:"), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});
+            splitbar1.visible = true;
+            logo1.visible = true;
+            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+            listItem.height = 7*20 + 6*10 + 10*2;
         }
-        else if(num == 2){
-            home.get_last_name(2);
+        else if(num >= 2){
+            home.show_several_memory(num);
         }
     }
-    Column {
+
+    Component {
+        id: memoryDelegate
+        Row {
+            spacing: 10
+            Common.Label {
+                text: title
+                font.pixelSize: 14
+                color: "#7a7a7a"
+                width: 100
+                height: 20
+            }
+            Text {
+                id: slotText
+                text: result
+                font.pixelSize: 14
+                color: "#7a7a7a"
+                height: 20
+            }
+        }
+    }
+
+    Row {
+        id: titleRow
         anchors {
             top: parent.top
             topMargin: 40
             left: parent.left
             leftMargin: 30
         }
-        spacing: 20
-
-        Row {
-            Text {
-                id: titlebar
-                text: qsTr("Memory information")//内存信息
-                font.bold: true
-                font.pixelSize: 14
-                color: "#383838"
-            }
-            Rectangle {width: home.width - titlebar.width - 30 * 2
-                anchors.verticalCenter: parent.verticalCenter
-                height: 1; color: "#ccdadd"
-            }
+        Common.Label {
+            id: titlebar
+            text: qsTr("Memory information")//内存信息
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
         }
-        Column {
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-            spacing: 10
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Slot Number:")//插槽号：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: slotText
-                    text: ""//systemdispatcher.getSingleInfo("MemSlot")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Memory Model:")//内存型号：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: modelText
-                    text: ""//systemdispatcher.getSingleInfo("MemProduct")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Vendor:")//制造商：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: vendorText
-                    text: ""//systemdispatcher.getSingleInfo("MemVendor")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Serial:")//序列号：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: serialText
-                    text: ""//systemdispatcher.getSingleInfo("MemSerial")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Size:")//内存大小：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: sizeText
-                    text: ""//systemdispatcher.getSingleInfo("MemSize")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-
-
-
-
-
-            Rectangle {
-                id: splitbar
-                width: home.width - 30 * 2
-                height: 1; color: "#ccdadd"
-            }
-            Row {
-                spacing: 10
-                Text {
-                    id: slotLabel2
-                    text: qsTr("Slot Number:")//插槽号：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: slotText2
-                    text: ""//systemdispatcher.getSingleInfo("MemSlot")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    id: modelLabel2
-                    text: qsTr("Memory Model:")//内存型号：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: modelText2
-                    text: ""//systemdispatcher.getSingleInfo("MemProduct")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    id: vendorLabel2
-                    text: qsTr("Vendor:")//制造商：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: vendorText2
-                    text: ""//systemdispatcher.getSingleInfo("MemVendor")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    id: serialLabel2
-                    text: qsTr("Serial:")//序列号：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: serialText2
-                    text: ""//systemdispatcher.getSingleInfo("MemSerial")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Text {
-                    id: sizeLabel2
-                    text: qsTr("Size:")//内存大小：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 100
-                }
-                Text {
-                    id: sizeText2
-                    text: ""//systemdispatcher.getSingleInfo("MemSize")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-
-
+        Rectangle {width: home.width - titlebar.width - 30 * 2
+            anchors.verticalCenter: parent.verticalCenter
+            height: 1; color: "#ccdadd"
         }
     }
-    //logo
-    Image {
-        id: logo
-        source: ""
-        anchors {
-            top: parent.top
-            topMargin: 50
-            right: parent.right
-            rightMargin: 30
-        }
-    }
-    //logo
-    Image {
-        id: logo2
-        source: ""
-        anchors {
-            top: parent.top
-            topMargin: 300
-            right: parent.right
-            rightMargin: 30
-        }
-    }
+    Common.ScrollArea {
+        frame:false
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        anchors.top: titleRow.bottom
+        anchors.topMargin: 20
+        height: 390
+        width: 680 - 4
+        Item {
+            id: listItem
+            width: parent.width
+            height: 0
+            Column {
+                spacing: 10
+                anchors {
+                    left: parent.left
+                    leftMargin: 30
+                }
+                Item {
+                    width: parent.width
+                    height: home.firstFlag ? (7*20 + 6*10) : 0
+                    ListView {
+                        id: firstView
+                        anchors.fill: parent
+//                        width: parent.width
+//                        height: home.firstFlag ? (7*20 + 6*10) : 0
+                        model: firstModel
+                        delegate: memoryDelegate
+                        visible: false
+                        spacing: 10
+                    }
+                    Image {
+                        id: logo1
+                        visible: false
+                        source: ""
+                        anchors {
+                            right: parent.right
+                            rightMargin: 30
+                        }
+                    }
+                }
+                Common.Separator {
+                    id: splitbar1
+                    width: 680 - 4 - 30*2
+                    visible: false
+                }
+
+//                Rectangle {
+//                    id: splitbar1
+//                    width: 680 - 4 - 30*2
+//                    height: 1; color: "#ccdadd"
+//                    visible: false
+//                }
+                Item {
+                    width: parent.width
+                    height: home.secondFlag ? (7*20 + 6*10) : 0
+                    ListView {
+                        id: secondView
+                        anchors.fill: parent
+//                        width: parent.width
+//                        height: home.secondFlag ? (7*20 + 6*10) : 0
+                        model: secondModel
+                        delegate: memoryDelegate
+                        visible: false
+                        spacing: 10
+                    }
+                    Image {
+                        id: logo2
+                        visible: false
+                        source: ""
+                        anchors {
+                            right: parent.right
+                            rightMargin: 30
+                        }
+                    }
+                }
+                Common.Separator {
+                    id: splitbar2
+                    width: 680 - 4 - 30*2
+                    visible: false
+                }
+//                Rectangle {
+//                    id: splitbar2
+//                    width: 680 - 4 - 30*2
+//                    height: 1; color: "#ccdadd"
+//                    visible: false
+//                }
+                Item {
+                    width: parent.width
+                    height: home.thirdFlag ? (7*20 + 6*10) : 0
+                    ListView {
+                        id: thirdView
+                        anchors.fill: parent
+//                        width: parent.width
+//                        height: home.thirdFlag ? (7*20 + 6*10) : 0
+                        model: thirdModel
+                        delegate: memoryDelegate
+                        visible: false
+                        spacing: 10
+                    }
+                    Image {
+                        id: logo3
+                        visible: false
+                        source: ""
+                        anchors {
+                            right: parent.right
+                            rightMargin: 30
+                        }
+                    }
+                }
+                Common.Separator {
+                    id: splitbar3
+                    width: 680 - 4 - 30*2
+                    visible: false
+                }
+//                Rectangle {
+//                    id: splitbar3
+//                    width: 680 - 4 - 30*2
+//                    height: 1; color: "#ccdadd"
+//                    visible: false
+//                }
+                Item {
+                    width: parent.width
+                    height: home.fourthFlag ? (7*20 + 6*10) : 0
+                    ListView {
+                        id: fourthView
+                        anchors.fill: parent
+//                        width: parent.width
+//                        height: home.fourthFlag ? (7*20 + 6*10) : 0
+                        model: fourthModel
+                        delegate: memoryDelegate
+                        visible: false
+                        spacing: 10
+                    }
+                    Image {
+                        id: logo4
+                        visible: false
+                        source: ""
+                        anchors {
+                            right: parent.right
+                            rightMargin: 30
+                        }
+                    }
+                }
+                Common.Separator {
+                    id: splitbar4
+                    width: 680 - 4 - 30*2
+                    visible: false
+                }
+//                Rectangle {
+//                    id: splitbar4
+//                    width: 680 - 4 - 30*2
+//                    height: 1; color: "#ccdadd"
+//                    visible: false
+//                }
+            }
+        }//Item
+    }//ScrollArea
 }

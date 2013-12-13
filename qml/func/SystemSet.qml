@@ -15,8 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 import "bars" as Bars
 Item {
@@ -111,7 +109,7 @@ Item {
                             SetWord {wordname: qsTr("Change WindowTheme"); width: b1.width; flag: "WidgetTheme"}//更改窗口主题
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter}
-                            SetWord {wordname: qsTr("Change IconSetting"); width: b2.width; flag: "DesktopiconSet"}//更改图标配置
+                            SetWord {wordname: qsTr("Change IconSetting"); width: b2.width; flag: "Desktopicon"}//更改图标配置
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             SetWord {wordname: qsTr("Change MousePointer"); width: b3.width; flag: "MousePointer"}//更改鼠标指针
@@ -143,7 +141,6 @@ Item {
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
-    //                            anchors.top: unity.top
                             }
                             Text {
                                 id: b6
@@ -152,8 +149,6 @@ Item {
                             }
                         }
                         Row {
-//                            anchors.bottom: unity.bottom
-//                            anchors.bottomMargin: 10
                             spacing: 5
                             SetWord {wordname: qsTr("Custom Launcher"); width: b6.width; flag: "LauncherTheme"}//自定义启动器
                         }

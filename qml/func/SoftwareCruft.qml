@@ -14,8 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 
 Item {
@@ -33,12 +31,8 @@ Item {
     property bool positionFlag: true//传递给ClearDelegate.qml,为true时伸缩图标指向上方，为false时伸缩图标指向下方
     property bool flag: false//记录是清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
 
-    ListModel {
-        id: mainModel
-    }
-    ListModel {
-        id: subModel
-    }
+    ListModel { id: mainModel }
+    ListModel { id: subModel }
 
     function remove_last_name(str)
     {
@@ -65,7 +59,7 @@ Item {
                     num++;
                 }
                 else {
-                    subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
+                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1],"number": splitlist[2]});
                     systemdispatcher.set_software_args(splitlist[0]);
                 }
             }
@@ -77,8 +71,7 @@ Item {
                 //软件中心缓存清理     用户可以根据扫描结果选择性地清理软件中心缓存,缓存路径为:
                 mainModel.append({"itemTitle": qsTr("Software Center buffer cleaning"),
                                  "picture": "../img/toolWidget/software-min.png",
-                                 "detailstr": qsTr("User can selectively cleaning software center cache according to the scanning result, cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/",
-                                 "flags": "clear_software"})
+                                 "detailstr": qsTr("User can selectively cleaning software center cache according to the scanning result, cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
             }
             else {
                 root.resultFlag = false;//扫描的实际有效内容不存在

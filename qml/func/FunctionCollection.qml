@@ -15,7 +15,6 @@
  */
 
 import QtQuick 1.1
-import SystemType 0.1
 import "common" as Common
 import "bars" as Bars
 Item {
@@ -66,26 +65,27 @@ Item {
                 }
             }
 
-            GridView {
-                id: gridView
-                height: parent.height -label.height
-                width: parent.width
+            Item {
+                width: parent.width - 30*2
                 anchors {
                     top: label.bottom
                     topMargin: 10
                     left: parent.left
                     leftMargin: 30
                 }
-
-                model: funcmodel
-                delegate: SettingsDelegate {}
-                cacheBuffer: 1000
-                //竖列
-                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
-                //横列
-//                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
-                highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
-                focus: true
+                GridView {
+                    id: gridView
+                    anchors.fill: parent
+                    model: funcmodel
+                    delegate: SettingsDelegate {}
+                    cacheBuffer: 1000
+                    //竖列
+                    cellWidth: (parent.width-2)/6; cellHeight: cellWidth
+                    //横列
+    //                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
+                    highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+                    focus: true
+                }
             }
             Item { id: foreground; anchors.fill: parent }
         }

@@ -15,8 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 
 Item {
@@ -32,19 +30,16 @@ Item {
         id: tabs
         width: parent.width; height: 435
 
-//        Common.TabPage {
-//            title: qsTr("A key to clean up")//一键清理
-//            anchors.fill: parent
-//            FastclearModel {
-//                id: fastitem
-//            }
-//        }
         Common.TabPage {
             title:qsTr("Deb cache")//包管理缓存
             anchors.fill: parent
+//            CruftModel {//pengshuang
+//                id: aptitem
+//            }
+
             AptCruft{
-               id: aptitem
-           }
+                id: aptitem
+            }
         }
         Common.TabPage {
             title:qsTr("Software cache")//软件中心缓存
@@ -75,6 +70,13 @@ Item {
                 id: packagemodel
             }
         }
+//        Common.TabPage {
+//            title:qsTr("Old Kernel")//旧内核
+//            anchors.fill: parent
+//            KernelModel {
+//                id: kernelmodel
+//            }
+//        }
         Common.TabPage{
             title:qsTr("Clean LargeFile ")//大文件清理
             anchors.fill: parent

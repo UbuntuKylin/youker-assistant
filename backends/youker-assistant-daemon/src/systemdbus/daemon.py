@@ -61,7 +61,6 @@ class Daemon(PolicyKitService):
         self.daemoncache = cleaner.CleanTheCache()
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, UKPATH)
-        self.infoconf.get_sys_msg()
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
@@ -84,10 +83,6 @@ class Daemon(PolicyKitService):
     def get_system_daemon(self):
         return "SystemDaemon"
 
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    #def get_detail_system_message(self):
-    #    return self.infoconf.get_sys_msg()
-
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_computer_info(self):
         return self.infoconf.get_computer()
@@ -103,6 +98,14 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_memory_info(self):
         return self.infoconf.get_memory()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_harddisk_info(self):
+        return self.infoconf.get_disk()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_networkcard_info(self):
+        return self.infoconf.get_network()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_monitor_info(self):
@@ -225,6 +228,11 @@ class Daemon(PolicyKitService):
     # a dbus method which means clean complete
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_complete(self, msg):
+        pass
+
+    # a dbus method which means quit clean by clicking the policykit's quit button
+    @dbus.service.signal(INTERFACE, signature='s')
+    def quit_clean(self, msg):
         pass
 
     # a dbus method which means clean single complete
@@ -363,6 +371,19 @@ class Daemon(PolicyKitService):
     #            self.clean_error_msg_trace('s')
     #        else:
     #            self.clean_complete_msg_trace('s')
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def onekey_clean_crufts_function(self, mode_list, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.clean_complete_msg('')
+            return
+        daemononekey = cleaner.OneKeyClean()
+        try:
+            daemononekey.clean_all_onekey_crufts(self, mode_list)
+        except Exception, e:
+            self.clean_error_msg('onekey')
+        else:
+            self.clean_complete_msg('onekey')
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_history_records(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
@@ -452,7 +473,7 @@ class Daemon(PolicyKitService):
     def cookies_clean_records_function(self, flag, sender = None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
-            self.clean_complete_msg('')
+            self.quit_clean_work(flag)
             return
         daemoncookies = cleaner.CleanTheCookies(None)
         try:
@@ -509,6 +530,9 @@ class Daemon(PolicyKitService):
 
     def clean_complete_msg(self, para):
         self.clean_complete(para)
+
+    def quit_clean_work(self, para):
+        self.quit_clean(para)
 
     def clean_single_complete_msg(self, para):
         self.clean_single_complete(para)

@@ -21,8 +21,8 @@ import apt
 import apt_pkg
 import shutil
 import commands
+#import threading
 from apt.progress.base import InstallProgress
-
 
 import historyclean
 import cookiesclean
@@ -119,6 +119,42 @@ class OneKeyClean():
                     cachesize += os.path.getsize(oneswcenter)
             total_dic['cache'] = common.confirm_filesize_unit(cachesize)
         return total_dic
+
+    def clean_all_onekey_crufts(self, sysobj, mode_list):
+        homedir = return_homedir_sysdaemon()
+        flag_dic = {'history': False, 'cookies': False, 'cache': False}
+        for mode in mode_list:
+            flag_dic['%s' % mode] = True
+        if flag_dic['history']:
+            objca = historyclean.HistoryClean(homedir)
+            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+            objca.clean_firefox_all_records(filepathf)
+
+            run = common.process_pid("chromium-browser")
+            if not run:
+                filepathc = "%s/.config/chromium/Default/History" % homedir
+                objca.clean_chromium_all_records(filepathc)
+
+        if flag_dic['cookies']:
+            objcc = cookiesclean.CookiesClean(homedir)
+            filepathfc = common.analytical_profiles_file(homedir) + 'cookies.sqlite'
+            pamfc = [filepathfc, 'moz_cookies', 'baseDomain']
+            objcc.clean_all_records(pamfc[0], pamfc[1], pamfc[2])
+            filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
+            pamcc = [filepathcc, 'cookies', 'host_key']
+            objcc.clean_all_records(pamcc[0], pamcc[1], pamcc[2])
+
+        if flag_dic['cache']:
+            objclean = FunctionOfClean(sysobj)
+            objcache = cacheclean.CacheClean()
+            apt_path = "/var/cache/apt/archives"
+            temp_apt_list = objcache.scan_apt_cache(apt_path)
+            objclean.clean_the_file(temp_apt_list)
+
+            swcenterpath = '%s/.cache/software-center' % homedir
+            temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
+            objclean.clean_the_file(temp_swcenter_list)
+
 
     def get_scan_result(self, mode_list):
         global HOMEDIR
@@ -406,7 +442,7 @@ class CleanTheOldkernel():
     def get_oldkernel_crufts(self):
         objc = oldkernel.OldKernel()
         pkgobj_list = objc.scan_oldkernel_package()
-        crufts_list = ["%s<2_2>%s" % (pkg.name, common.confirm_filesize_unit(pkg.installed.size))for pkg in pkgobj_list]
+        crufts_list = ["%s<2_2>%s" % (pkg.name, pkg.installed.summary, common.confirm_filesize_unit(pkg.installed.installed_size))for pkg in pkgobj_list]
         return crufts_list
 
 # the function of scan the cache
@@ -422,30 +458,51 @@ class CleanTheCache():
         result_dic['softwarecenter'] = tmp_center_str
         return result_dic
 
+    def get_all_cache_crufts(self, mode_list, sesdaemon):
+        homedir = common.return_homedir_sesdaemon()
+
+        if 'apt' in mode_list:
+            aptpath = "/var/cache/apt/archives"
+            temp_apt_list = self.objc.scan_apt_cache(aptpath)
+            for one in temp_apt_list:
+                sesdaemon.data_transmit_by_cache('apt', one, 'False', '%s' % common.confirm_filesize_unit(os.path.getsize(one)))
+
+        if 'software-center' in mode_list:
+            software_centerpath = "%s/.cache/software-center" % homedir
+            temp_software_center_list = self.objc.public_scan_cache(software_centerpath)
+            for one in temp_software_center_list:
+                if os.path.isdir(one):
+                    sesdaemon.data_transmit_by_cache('software-center', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
+                else:
+                    sesdaemon.data_transmit_by_cache('software-center', one, 'False', common.confirm_filesize_unit(os.path.getsize(one)))
+        sesdaemon.cache_transmit_complete()
+
     def get_cache_crufts(self):
         result_dic = {}
         apt_path = '/var/cache/apt/archives'
         temp_apt_list = self.objc.scan_apt_cache(apt_path)
-        apt_and_size = ['%s<2_2>%s' % (filepath, common.confirm_filesize_unit(os.path.getsize(filepath))) for filepath in temp_apt_list]
-        result_dic['apt'] = '<1_1>'.join(apt_and_size)
+        apt_list = ['%s<2_2>False<2_2>%s' % (filepath, common.confirm_filesize_unit(os.path.getsize(filepath))) for filepath in temp_apt_list]
+        result_dic['apt'] = '<1_1>'.join(apt_list)
 
         homedir = common.return_homedir_sesdaemon()
         swcenterpath = '%s/.cache/software-center' % homedir
         temp_swcenter_list = self.objc.public_scan_cache(swcenterpath)
-        swcenter_and_size = []
+        swcenter_list = []
         for line in temp_swcenter_list:
             if os.path.isdir(line):
-                swcenter_and_size.append('%s<2_2>%s' % (line, common.confirm_filesize_unit(common.get_dir_size(line))))
+                swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'True', common.confirm_filesize_unit(common.get_dir_size(line))))
             else:
-                swcenter_and_size.append('%s<2_2>%s' % (line, common.confirm_filesize_unit(os.path.getsize(line))))
-        result_dic['softwarecenter'] = '<1_1>'.join(swcenter_and_size)
+                swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'False', common.confirm_filesize_unit(os.path.getsize(line))))
+        result_dic['softwarecenter'] = '<1_1>'.join(swcenter_list)
 
         return result_dic
 
 # the function of clean cruft files and cruft packages
+#class FunctionOfClean(threading.Thread):
 class FunctionOfClean():
-    def __init__(self, systemdaemon):
-        self.sysdaemon = systemdaemon
+    def __init__(self, msgdaemon):
+        #threading.Thread.__init__(self)
+        self.msgdaemon = msgdaemon
 
     def clean_the_file_for_main(self, cruftlist):
         for cruft in cruftlist:
@@ -457,6 +514,9 @@ class FunctionOfClean():
                 else:
                     os.remove(tmp)
 
+    #def clean_the_file_for_main(self, cruftlist):
+    #    threading.Thread(target=self.clean_the_file_for_main_thread, args=(cruftlist,), name='MainClean').start()
+
     def clean_the_file_for_second(self, cruftlist):
         for cruft in cruftlist:
             tmp = cruft.encode("UTF-8")
@@ -467,6 +527,9 @@ class FunctionOfClean():
                 else:
                     os.remove(tmp)
 
+    #def clean_the_file_for_second(self, cruftlist):
+    #    threading.Thread(target=self.clean_the_file_for_second_thread, args=(cruftlist,), name='SecondClean').start()
+
     def clean_the_file(self, cruftlist):
         for cruft in cruftlist:
             tmp = cruft.encode("UTF-8")
@@ -476,6 +539,9 @@ class FunctionOfClean():
                 else:
                     os.remove(tmp)
 
+    #def clean_the_file(self, cruftlist):
+    #    threading.Thread(target=self.clean_the_file_thread, args=(cruftlist,), name='CleanFile').start()
+
     def clean_the_package(self, cruftlist):
         if cruftlist:
             cache = common.get_cache_list()
@@ -484,14 +550,19 @@ class FunctionOfClean():
                 pkg = cache[cruft]
                 if pkg.is_installed:
                     pkg.mark_delete()
-            cache.commit(None, MyInstallProgress())
+            iprogress = MyInstallProgress(self.msgdaemon)
+            cache.commit(None, iprogress)
+
+    #def clean_the_package(self, cruftlist):
+    #    threading.Thread(target=self.clean_the_package_thread, args=(cruftlist,), name='CleanPackage').start()
 
 class MyInstallProgress(InstallProgress):
-        def __init__(self):
+        def __init__(self, sudodaemon):
             InstallProgress.__init__(self)
+            self.sudodaemon = sudodaemon
 
         def statusChange(self, pkg, percent, status):
-            pass
+            self.sudodaemon.percent_remove_packages("percent: %s" % str(int(percent)))
 
         def error(self, errorstr):
             pass

@@ -60,7 +60,7 @@ class Sound:
 
 	# get sound themes & check and bak sounds
 	def get_sound_themes(self):
-		bakDir = '/usr/share/youker-assistant-daemon/sound-theme/'
+		bakDir = '/var/lib/youker-assistant-daemon/sound-theme/'
 		dirs = ('/usr/share/sounds', os.path.join(self.homedir, ".sounds"))
 		filters = ('index.theme', '')
 		valid = utils.check_dirs(dirs, filters, True)
@@ -118,7 +118,7 @@ class Sound:
 
 	# restore sound file
 	def restore_sound_file(self, targetSoundFile):
-		bakDir = '/usr/share/youker-assistant-daemon/sound-theme/'
+		bakDir = '/var/lib/youker-assistant-daemon/sound-theme/'
 		currentTheme = self.get_sound_theme()
 		if(os.path.exists(os.path.join(self.homedir, ".sounds") + currentTheme)):
 			soundDir = os.path.join(self.homedir, ".sounds") + currentTheme
@@ -131,7 +131,7 @@ class Sound:
 
 	# restore all sound file in current sound theme
 	def restore_all_sound_file(self, soundTheme):
-		bakSoundThemeDir = '/usr/share/youker-assistant-daemon/sound-theme/' + soundTheme
+		bakSoundThemeDir = '/var/lib/youker-assistant-daemon/sound-theme/' + soundTheme
 		if(os.path.exists(os.path.join(self.homedir, ".sounds") + soundTheme)):
 			soundDir = os.path.join(self.homedir, ".sounds") + soundTheme
 		elif(os.path.exists('/usr/share/sounds/' + soundTheme)):

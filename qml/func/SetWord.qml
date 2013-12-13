@@ -62,16 +62,12 @@ Rectangle {
                 //1、获取六天天气预报数据
                 sessiondispatcher.get_forecast_weahter_qt();
                 //2、开始给天气预报界面发送更新数据信号
-                sessiondispatcher.update_forecast_weather();
+//                sessiondispatcher.update_forecast_weather();
                 //3、加载天气预报界面
                 pageStack.push(weatherpage);
             }
             else if (flag == "WeatherPreference") {
                 sessiondispatcher.showWizardController();
-            }
-            //view details of system information
-            else if (flag == "details") {
-                pageStack.push(detailinformation);
             }
 
             //bbs help
@@ -89,16 +85,12 @@ Rectangle {
 
             else if (flag == "WidgetTheme")
                 pageStack.push(widgetthemepage);
-            else if (flag == "DesktopiconSet")
+            else if (flag == "Desktopicon")
                 pageStack.push(desktopiconsetpage);
             else if (flag == "MousePointer")
                 pageStack.push(mousepointerpage);
             else if (flag == "SoundEffects") {
                 pageStack.push(soundeffectspage);
-//                var component_sound = Qt.createComponent("./settings/SoundEffects.qml");
-//                if (component_sound.status == Component.Ready) {
-//                    pageStack.push(component_sound);
-//                }
             }
             else if (flag == "BootAnimation") {
                 pageStack.push(bootanimationpage);

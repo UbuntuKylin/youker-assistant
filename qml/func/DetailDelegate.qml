@@ -28,9 +28,10 @@ Item {
         }
         //显示图片
         Image {
-            width: 30
+            id: icon
+            width: 20
             height: 20
-            source: iconName
+            source: delegate.ListView.isCurrentItem ? "../img/logo/component/" + iconName + "-active.png" : "../img/logo/component/" + iconName + ".png"
             anchors.verticalCenter: parent.verticalCenter
         }
         //显示文字
@@ -43,7 +44,6 @@ Item {
                 pixelSize: 14
                 bold: true
             }
-
         }
     }
 

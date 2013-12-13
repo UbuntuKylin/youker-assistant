@@ -95,6 +95,12 @@ public:
     Q_INVOKABLE void set_history_flag(bool flag);
     Q_INVOKABLE bool get_history_flag();
 
+    QStringList cache_args;
+    Q_INVOKABLE void set_cache_args(QString str);
+    Q_INVOKABLE void del_cache_args(QString str);
+    Q_INVOKABLE void clear_cache_args();
+    Q_INVOKABLE QStringList get_cache_args();
+
     QStringList apt_args;
     Q_INVOKABLE void set_apt_args(QString str);
     Q_INVOKABLE void del_apt_args(QString str);
@@ -118,6 +124,12 @@ public:
     Q_INVOKABLE void del_package_args(QString str);
     Q_INVOKABLE void clear_package_args();
     Q_INVOKABLE QStringList get_package_args();
+
+    QStringList kernel_args;
+    Q_INVOKABLE void set_kernel_args(QString str);
+    Q_INVOKABLE void del_kernel_args(QString str);
+    Q_INVOKABLE void clear_kernel_args();
+    Q_INVOKABLE QStringList get_kernel_args();
 
     QStringList onekey_args;
     Q_INVOKABLE void set_onekey_args(QString str);
@@ -154,12 +166,16 @@ public:
     QMap<QString, QVariant> cpuInfo;
     QMap<QString, QVariant> memoryInfo;
     QMap<QString, QVariant> boardInfo;
+    QMap<QString, QVariant> harddiskInfo;
+    QMap<QString, QVariant> networkcardInfo;
     QMap<QString, QVariant> monitorInfo;
     //得到当前系统和桌面的详细信息
     Q_INVOKABLE void get_computer_info_qt();
     Q_INVOKABLE void get_cpu_info_qt();
     Q_INVOKABLE void get_memory_info_qt();
     Q_INVOKABLE void get_board_info_qt();
+    Q_INVOKABLE void get_harddisk_info_qt();
+    Q_INVOKABLE void get_networkcard_info_qt();
     Q_INVOKABLE void get_monitor_info_qt();
     Q_INVOKABLE QString get_time_value_qt();
 //    Q_INVOKABLE void get_detail_system_message_qt();
@@ -175,6 +191,7 @@ signals:
     void finishCleanSingleWork(QString msg);
     void finishCleanSingleWorkError(QString msg);
     void finishCleanWork(QString msg);
+    void quitCleanWork(QString msg);
     void finishCleanWorkError(QString msg);
     void finishCleanWorkMain(QString msg);
     void finishCleanWorkMainError(QString msg);
@@ -187,6 +204,7 @@ public slots:
     void handler_clear_single_rubbish(QString msg);
     void handler_clear_single_rubbish_error(QString msg);
     void handler_clear_rubbish(QString msg);
+    void handler_quit_clean(QString msg);
     void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);
     void handler_clear_rubbish_main_error(QString msg);

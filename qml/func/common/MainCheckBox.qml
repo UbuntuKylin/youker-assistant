@@ -1,5 +1,7 @@
 import QtQuick 1.1
 import StyleItemType 0.1
+
+
 Item {
     id: maincheckbox
     property string checked: "true"    //保存总checkbox处于三种状态中的哪种
@@ -9,6 +11,8 @@ Item {
 
     width: minimumWidth
     height: minimumHeight
+    signal clicked();
+    signal sendMstatus(bool status/*, string str*/);
 
     Rectangle {
         anchors.fill: parent
@@ -43,20 +47,40 @@ Item {
             else if(checked == "false") {  //当总check处于false态时，点击后变成true状态
                 checked = "true";
             }
+
+            if(checked == "true") {
+                simage.source = "../../img/icons/checkbox.png";
+                checkedbool = true;
+            }
+            else if(checked == "mid") {
+                simage.source = "../../img/icons/checkbox-2.png"
+            }
+            else if(checked=="false") {
+                simage.source = ""
+                checkedbool = false;
+            }
+            maincheckbox.clicked();
         }
     }
     //maincheckbox.checked发生变化时激活该函数
     onCheckedChanged:{
-        if(checked=="true") {
-            simage.source="../../img/icons/checkbox.png";
-            checkedbool=true;
+        console.log("k111");
+        if(checked == "true") {
+            console.log("k222");
+            simage.source = "../../img/icons/checkbox.png";
+            checkedbool = true;
+            maincheckbox.sendMstatus(true/*, "true"*/);//1212
         }
-        else if(checked=="mid") {
-            simage.source="../../img/icons/checkbox-2.png"
+        else if(checked == "mid") {
+            console.log("k333");
+            simage.source = "../../img/icons/checkbox-2.png";
+//            maincheckbox.sendMstatus(true/*, "mid"*/);//1212
         }
         else if(checked=="false") {
-            simage.source=""
-            checkedbool=false;
+            console.log("k444");
+            simage.source = "";
+            checkedbool = false;
+            maincheckbox.sendMstatus(false/*, "false"*/);//1212
         }
     }
 }

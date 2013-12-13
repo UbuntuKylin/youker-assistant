@@ -2,16 +2,15 @@ Youker Assistant
 
 Attention
 =========
-It supports saucy and trusty, but does not support raring.
+It supports raring, saucy and trusty, but does not support precise.
 
 Depends
 =======
-debhelper (>= 9), dh-translations, libphonon-dev, phonon-dev, libqt4-dev, fcitx-libs-dev, pkg-config, python (>= 2.6.6-3~), qt4-default, qtchooser， phonon-backend-gstreamer, python-dbus, python-psutil
+debhelper (>= 9), dh-translations, libphonon-dev, libqt4-dev, fcitx-libs-dev, pkg-config, python-dev, python (>= 2.6.6-3~), qt4-default, qtchooser, phonon-backend-gstreamer, python-dbus, python-psutil
 
 Attention with IDE
 ==================
-1、delete 'lib' in line "SUBDIRS += src qml backends lib"
-2、copy files:
+^^copy files^^:
 qml/applist.ini   ->  /usr/share/youker-assistant/qml/
 backends/youker-assistant-daemon/data/youkersystem   ->  /usr/bin
 backends/youker-assistant-daemon/data/youkersession   ->  /usr/bin
@@ -20,6 +19,6 @@ backends/youker-assistant-daemon/data/com.youker-assistant.daemon.policy   ->  /
 backends/youker-assistant-daemon/data/com.ubuntukylin_tools.daemon.service   ->  /usr/share/dbus-1/system-services/
 backends/youker-assistant-daemon/data/youker-assistant-daemon.conf   ->  /etc/dbus-1/system.d/
 backends/youker-assistant-daemon/src/   ->  /usr/lib/python2.7/dist-packages/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/autostart/   ->  /usr/share/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/plymouth/   ->  /usr/share/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/sound-theme/   ->  /usr/share/youker-assistant-daemon/
+backends/youker-assistant-daemon/data/beautify/autostart/   ->  /var/lib/youker-assistant-daemon/
+backends/youker-assistant-daemon/data/beautify/plymouth/   ->  /var/lib/youker-assistant-daemon/
+backends/youker-assistant-daemon/data/beautify/sound-theme/   ->  /var/lib/youker-assistant-daemon/

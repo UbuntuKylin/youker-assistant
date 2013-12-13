@@ -15,8 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-//import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
 import AudioType 0.1
@@ -60,10 +58,11 @@ Rectangle {
 
         var soundlist = systemdispatcher.get_sound_themes_qt();
         var current_sound = sessiondispatcher.get_sound_theme_qt();
+        showText.text = qsTr("[ Current Sound Theme is: ") + current_sound + " ]";
         soundeffectspage.selected_sound_theme = current_sound;
         soundlist.unshift(current_sound);
         //将系统初始的声音主题写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("soundeffect", "soundtheme", current_sound);
+        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "soundtheme", current_sound);
         choices.clear();
         for(var i=0; i < soundlist.length; i++) {
             choices.append({"themetext": soundlist[i]});
@@ -83,12 +82,8 @@ Rectangle {
     }
 
 
-    ListModel {
-        id: choices
-    }
-    ListModel {
-        id: musicmodel
-    }
+    ListModel { id: choices }
+    ListModel { id: musicmodel }
 
     Image {     //背景图片
         id: background
@@ -97,7 +92,7 @@ Rectangle {
     }
 
     QmlAudio{
-        id: song;
+        id: song
     }
 
     Column {
@@ -113,7 +108,13 @@ Rectangle {
                  font.bold: true
                  font.pixelSize: 14
                  color: "#383838"
-             }
+            }
+            Text {
+                id: showText
+                text: ""
+                font.pixelSize: 14
+                color: "#318d11"
+            }
             //status picture
             Common.StatusImage {
                 id: statusImage
@@ -158,20 +159,25 @@ Rectangle {
                 hoverimage: "green2.png"
                 text: qsTr("OK")//确定
                 onClicked: {
-                    soundeffectspage.selected_sound_theme = iconcombo.selectedText;
-                    sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
-                    statusImage.visible = true;
+                    if (soundeffectspage.selected_sound_theme != iconcombo.selectedText) {
+                        soundeffectspage.selected_sound_theme = iconcombo.selectedText;
+                        showText.text = qsTr("[ Current Sound Theme is: ") + iconcombo.selectedText + " ]";
+                        soundeffectspage.selected_sound_theme = iconcombo.selectedText;
+                        sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
+                        statusImage.visible = true;
 
-                    musicmodel.clear();
-                    var musiclist=systemdispatcher.get_sounds_qt();
-                    for(var l=0; l < musiclist.length; l++) {
-                        musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+                        musicmodel.clear();
+                        var musiclist=systemdispatcher.get_sounds_qt();
+                        for(var l=0; l < musiclist.length; l++) {
+                            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+                        }
+                        if(30*musiclist.length<=chooseyy_height) {
+                            scrollbar_z = -1
+                        }
+                        else {
+                            scrollbar_z = 1;
+                        }
                     }
-                    if(30*musiclist.length<=chooseyy_height)
-                    {
-                        scrollbar_z=-1
-                    }
-                    else scrollbar_z=1
                 }
             }
             Common.Button {
@@ -180,7 +186,7 @@ Rectangle {
                 width: 105
                 height: 30
                 onClicked: {
-                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("soundeffect", "soundtheme");
+                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "soundtheme");
                     if(defaulttheme == soundeffectspage.selected_sound_theme) {
                         //友情提示：       当前主题已经为默认主题!
                         sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The current theme has been the default theme!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -188,20 +194,18 @@ Rectangle {
                     else {
                         systemdispatcher.restore_all_sound_file_qt(defaulttheme);
                         soundeffectspage.selected_sound_theme = defaulttheme;
+                        showText.text = qsTr("[ Current Sound Theme is: ") + defaulttheme + " ]";
                         iconcombo.selectedIndex = 0;
                         statusImage.visible = true;
                     }
                 }
             }
             Timer {
-                     interval: 5000; running: true; repeat: true
-                     onTriggered: statusImage.visible = false
-                 }
-
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: statusImage.visible = false
+             }
         }
-
     }
-
 
     Column{     //程序事件及选择框
         id:chooseyy

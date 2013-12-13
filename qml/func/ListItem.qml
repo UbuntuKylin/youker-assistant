@@ -36,7 +36,7 @@ Item {
     property bool split_status: false
 
     property string btn_flag: "one_key_scan"
-
+    property string itemFlag//1210 apt/soft标记 //1212 cache
     property string browserFlag//浏览器标记
     signal change_num(bool check_status, string browser_flag)   //作为子项checkbox，当状态改变时需要通过信号传给父项以进行个数统计
     signal clicked
@@ -71,8 +71,122 @@ Item {
         onCheckedChanged: {
             //单个checkbox状态改变时，先将状态通过信号change_num()传递给BrowserCookies.qml
             container.change_num(checkbox.checked, container.browserFlag);
+            //for apt and soft  //pengshuang
+//            if (checkbox.checked) {
+////                if (btn_flag == "apt_work") {
+//                if(container.itemFlag == "apt") {
+//                    var aptlist = systemdispatcher.get_cache_args();
+//                    var word_flag = "false";
+//                    for (var i=0; i<aptlist.length; i++) {
+//                        if (aptlist[i] == container.text) {
+//                            word_flag = "true";
+//                            break;
+//                        }
+//                    }
+//                    if (word_flag == "false") {
+//                        systemdispatcher.set_cache_args(container.text);
+//                    }
+//                }
+////                else if (btn_flag == "software_work") {
+//                else if(container.itemFlag == "soft") {
+//                    var softwarelist = systemdispatcher.get_cache_args();
+//                    var word_flag1 = "false";
+//                    for (var j=0; j<softwarelist.length; j++) {
+//                        if (softwarelist[j] == container.text) {
+//                            word_flag1 = "true";
+//                            break;
+//                        }
+//                    }
+//                    if (word_flag1 == "false") {
+//                        systemdispatcher.set_cache_args(container.text);
+//                    }
+//                }
+//                else {
+//                    if (btn_flag == "cookies_work") {
+//                        var cookieslist = systemdispatcher.get_cookies_args();
+//                        var word_flag2 = "false";
+//                        for (var k=0; k<cookieslist.length; k++) {
+//                            if (cookieslist[k] == container.text) {
+//                                word_flag2 = "true";
+//                                break;
+//                            }
+//                        }
+//                        if (word_flag2 == "false") {
+//                            systemdispatcher.set_cookies_args(container.text);
+//                        }
+//                    }
+//                    else if (btn_flag == "package_work") {
+//                        var mylist = systemdispatcher.get_package_args();
+//                        var word_flag3 = "false";
+//                        for (var q=0; q<mylist.length; q++) {
+//                            if (mylist[q] == container.text) {
+//                                word_flag3 = "true";
+//                                break;
+//                            }
+//                        }
+//                        if (word_flag3 == "false") {
+//                            systemdispatcher.set_package_args(container.text);
+//                        }
+//                    }
+
+//                    else if (btn_flag == "largestfile_work") {
+//                        var filelist = systemdispatcher.get_largestfile_args();
+//                        var word_flag4 = "false";
+//                        for (var t=0; t<filelist.length; t++) {
+//                            if (filelist[t] == container.descript) {
+//                                word_flag4 = "true";
+//                                break;
+//                            }
+//                        }
+//                        if (word_flag4 == "false") {
+//                            systemdispatcher.set_largestfile_args(container.descript);
+//                        }
+//                    }
+
+//                    else if (btn_flag == "kernel_work") {
+//                        var kernellist = systemdispatcher.get_kernel_args();
+//                        var word_flag5 = "false";
+//                        for (var y=0; y<kernellist.length; y++) {
+//                            if (kernellist[y] == container.text) {
+//                                word_flag5 = "true";
+//                                break;
+//                            }
+//                        }
+//                        if (word_flag5 == "false") {
+//                            systemdispatcher.set_kernel_args(container.text);
+//                        }
+//                    }
+//                }
+//            }
+//            else if (!checkbox.checked) {
+//                if(container.itemFlag == "apt") {
+////                if (btn_flag == "apt_work") {
+//                    systemdispatcher.del_cache_args(container.text);
+//                }
+//                else if(container.itemFlag == "soft") {
+////                else if (btn_flag == "software_work") {
+//                    systemdispatcher.del_cache_args(container.text);
+//                }
+//                else {
+//                   if (btn_flag == "cookies_work") {
+//                        systemdispatcher.del_cookies_args(container.text);
+//                    }
+//                    else if (btn_flag == "package_work") {
+//                        systemdispatcher.del_package_args(container.text);
+//                    }
+//                    else if (btn_flag == "kernel_work") {
+//                        systemdispatcher.del_kernel_args(container.text);
+//                    }
+//                    else if (btn_flag == "largestfile_work") {
+//                        systemdispatcher.del_largestfile_args(container.descript);
+//                    }
+//                }
+//            }
+
+
+
+            //for apt or soft
             if (checkbox.checked) {
-//                if (btn_flag == "apt_work" || btn_flag == "apt_scan") {
                 if (btn_flag == "apt_work") {
                     var aptlist = systemdispatcher.get_apt_args();
                     var word_flag = "false";
@@ -86,7 +200,6 @@ Item {
                         systemdispatcher.set_apt_args(container.text);
                     }
                 }
-//                else if (btn_flag == "software_work" || btn_flag == "software_scan") {
                 else if (btn_flag == "software_work") {
                     var softwarelist = systemdispatcher.get_software_args();
                     var word_flag1 = "false";
@@ -100,7 +213,6 @@ Item {
                         systemdispatcher.set_software_args(container.text);
                     }
                 }
-//                else if (btn_flag == "cookies_work" || btn_flag == "cookies_scan") {
                 else if (btn_flag == "cookies_work") {
                     var cookieslist = systemdispatcher.get_cookies_args();
                     var word_flag2 = "false";
@@ -114,7 +226,6 @@ Item {
                         systemdispatcher.set_cookies_args(container.text);
                     }
                 }
-//                else if (btn_flag == "package_work" || btn_flag == "package_scan") {
                 else if (btn_flag == "package_work") {
                     var mylist = systemdispatcher.get_package_args();
                     var word_flag3 = "false";
@@ -129,7 +240,6 @@ Item {
                     }
                 }
 
-
                 else if (btn_flag == "largestfile_work") {
                     var filelist = systemdispatcher.get_largestfile_args();
                     var word_flag4 = "false";
@@ -141,6 +251,20 @@ Item {
                     }
                     if (word_flag4 == "false") {
                         systemdispatcher.set_largestfile_args(container.descript);
+                    }
+                }
+
+                else if (btn_flag == "kernel_work") {
+                    var kernellist = systemdispatcher.get_kernel_args();
+                    var word_flag5 = "false";
+                    for (var y=0; y<kernellist.length; y++) {
+                        if (kernellist[y] == container.text) {
+                            word_flag5 = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag5 == "false") {
+                        systemdispatcher.set_kernel_args(container.text);
                     }
                 }
             }
@@ -156,6 +280,9 @@ Item {
                 }
                 else if (btn_flag == "package_work") {
                     systemdispatcher.del_package_args(container.text);
+                }
+                else if (btn_flag == "kernel_work") {
+                    systemdispatcher.del_kernel_args(container.text);
                 }
                 else if (btn_flag == "largestfile_work") {
                     systemdispatcher.del_largestfile_args(container.descript);
@@ -188,35 +315,43 @@ Item {
         verticalAlignment: Text.AlignVCenter
     }
 
-    Text {
-        text: container.descript
-        anchors {
-            left: itemText.right
-            top: parent.top
-            leftMargin: 20
-            verticalCenter: container.verticalCenter
-        }
-        color: container.fontColor
-        elide: Text.ElideRight
-        verticalAlignment: Text.AlignVCenter
-    }
-
-    Text {
-        text: container.size_num
+    Row {
+        spacing: 10
         anchors {
             top: parent.top
             right: parent.right
             rightMargin: 80
             verticalCenter: container.verticalCenter
         }
-        color: container.fontColor
-        elide: Text.ElideRight
-        verticalAlignment: Text.AlignVCenter
+        Text {
+            text: {
+                if(container.descript == "True") {//文件夹
+                    qsTr("Folder")
+                }
+                else if(container.descript == "False") {//文件
+                    qsTr("File")
+                }
+                else {
+                    container.descript
+                }
+            }
+            anchors.verticalCenter: parent.verticalCenter
+            color: container.fontColor
+            elide: Text.ElideRight
+            verticalAlignment: Text.AlignVCenter
+        }
+
+        Text {
+            text: container.size_num
+            anchors.verticalCenter: parent.verticalCenter
+            color: container.fontColor
+            elide: Text.ElideRight
+            verticalAlignment: Text.AlignVCenter
+        }
     }
 
     MouseArea {
         id: mouseArea
-//        anchors.fill: parent
         anchors.fill: itemText
         onClicked: container.clicked();
         onReleased: selectable && !selected ? selected = true : selected = false

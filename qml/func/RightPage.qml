@@ -15,16 +15,13 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 
 //右边栏
 Rectangle {
     id: rightbar
-    width: screen.width - 600; height: 460
 
-//推荐软件的三张图片
+    //推荐软件的三张图片
     property string image1: "../img/skin/qq0.png"
     property string image2: "../img/skin/qt0.png"
     property string image3: "../img/skin/wps0.png"
@@ -34,7 +31,7 @@ Rectangle {
     function updateList() {
         clearModel.clear();//清空
         clearModel.append({"icon": "../img/icons/checkscreen.png", "name": qsTr("CheckScreen"), "flag": "CheckScreen"});//坏点检测
-        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("DesktopIcon"), "flag": "DesktopiconSet"});//桌面图标
+        clearModel.append({"icon": "../img/icons/iconbeauty.png", "name": qsTr("DesktopIcon"), "flag": "Desktopicon"});//桌面图标
         clearModel.append({"icon": "../img/icons/bootanimation.png", "name": qsTr("BootAnimation"), "flag": "BootAnimation"});//开机动画
         clearModel.append({"icon": "../img/icons/systemsound.png", "name": qsTr("SoundEffect"), "flag": "SoundEffects"});//系统声音
         clearModel.append({"icon": "../img/icons/mouse.png", "name": qsTr("MousePointer"), "flag": "MousePointer"});//鼠标指针
@@ -52,8 +49,6 @@ Rectangle {
         source: "../img/skin/bg-right.png"
         anchors.fill: parent
     }
-
-    //-------------------
 
     SetBtn {
         id: setBtn
@@ -81,7 +76,6 @@ Rectangle {
         setbtn_flag: "message"
         anchors{
             left: adminImage.right
-//            leftMargin: 15
             top:parent.top
             topMargin: 30
         }
@@ -97,121 +91,9 @@ Rectangle {
         }
     }
 
-
-//    Item{
-//        id:software
-//        width: mage.width;height: mage.height
-//        anchors {
-//            top: parent.top
-//            topMargin: 105
-//            horizontalCenter: parent.horizontalCenter
-//        }
-//        Image {
-//            id: mage
-//            source: mage_source
-//        }
-//        MouseArea{
-//            anchors.fill: parent
-//            onClicked:  {
-//                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-//                    if(!sudodispatcher.getUKSignalFlag()) {
-//                        sudodispatcher.setUKSignalFlag(true);
-//                        sudodispatcher.bind_signals_after_dbus_start();
-//                    }
-//                    sudodispatcher.add_source_ubuntukylin_qt();
-//                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
-//                    sudodispatcher.remove_source_ubuntukylin_qt();
-//                    pageStack.push(softwarerecommend);
-//                }
-//                else {
-//                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
-//                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-//                        if(!sudodispatcher.getUKSignalFlag()) {
-//                            sudodispatcher.setUKSignalFlag(true);
-//                            sudodispatcher.bind_signals_after_dbus_start();
-//                        }
-//                        sudodispatcher.add_source_ubuntukylin_qt();
-//                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareList());
-//                        sudodispatcher.remove_source_ubuntukylin_qt();
-//                        pageStack.push(softwarerecommend);
-//                    }
-//                }
-//            }
-//        }
-//        Common.ButtonRow {
-//            exclusive: true//控制是否联动
-//            spacing: 7
-//            anchors{
-//                bottom:mage.bottom
-//                bottomMargin: 20
-//                left: parent.left
-//                leftMargin: 20
-//            }
-//            Common.CheckBox {
-//                id:image_one
-//                checked: true
-//                flag: "flowradio"
-//                onClicked: {
-//                    if (image_one.checked == true) {
-//                        mage_source=image1
-//                    }
-//                }
-//            }
-//            Common.CheckBox {
-//                id: image_two
-//                checked: false
-//                flag: "flowradio"
-//                onClicked: {
-//                    if (image_two.checked == true) {
-//                        mage_source=image2
-//                    }
-//                }
-//            }
-//            Common.CheckBox {
-//                id: image_three
-//                checked: false
-//                flag: "flowradio"
-//                onClicked: {
-//                    if (image_three.checked == true) {
-//                        mage_source=image3
-//                    }
-//                }
-//            }
-//        }
-//        Timer{
-//            interval: 3000;running: true;repeat: true
-//            onTriggered: {
-//                if(mage_source==image1)
-//                {
-//                    mage_source=image2;
-//                    image_two.checked=true;
-//                    image_three.checked=false;
-//                    image_one.checked=false;
-//                }
-//                else if(mage_source==image2)
-//                {
-//                    mage_source=image3;
-//                    image_three.checked=true;
-//                    image_one.checked=false;
-//                    image_two.checked=false;
-
-//                }
-//                else if(mage_source==image3)
-//                {
-//                    mage_source=image1;
-//                    image_one.checked=true;
-//                    image_three.checked=false;
-//                    image_two.checked=false;
-//                }
-//            }
-//        }
-//    }
-
     //上下分割条
     Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }
     Rectangle {id: splitbar2; x: 2; y: 272; width: parent.width; height: 1; color: "#fafcfe" }
-    //-------------------
-
 
     Column {
         width: parent.width
@@ -225,13 +107,9 @@ Rectangle {
         Item {
             id: views
             width: parent.width
-            height: parent.height
             GridView {
                 id: gridView
-                height: parent.height
-                width: parent.width
-                anchors.top: parent.top
-//                    anchors.topMargin: titlebar.height + 45
+                anchors.fill: parent
                 model: clearModel
                 delegate: ToolsDelegate {}
                 cellWidth: (parent.width-20)/3; cellHeight: cellWidth
@@ -253,7 +131,6 @@ Rectangle {
 
         SetWord {
             id: helplabel
-//            anchors.horizontalCenter: parent.horizontalCenter
             wordname: qsTr("Forum help")//论坛求助
             width: 50
             height: 20
@@ -261,7 +138,6 @@ Rectangle {
         }
         SetWord {
             id: versionlabel
-//            anchors.horizontalCenter: parent.horizontalCenter
             wordname: qsTr("New version")//新版本特性
             width: 60
             height: 20
@@ -269,85 +145,10 @@ Rectangle {
         }
         SetWord {
             id: buglabel
-//            anchors.horizontalCenter: parent.horizontalCenter
             wordname: qsTr("Report bug")//Bug提交
             width: 40
             height: 20
             flag: "BUG"
         }
-
-//        Common.Label {
-//            id: helplabel
-//            text: "论坛求助"
-//            font.pixelSize: 12
-//            color: "#318d11"
-//            MouseArea {
-//                  anchors.fill: helplabel
-
-//                  hoverEnabled: true
-//                  onEntered: btnImg1.source = "../img/toolWidget/menu_hover.png"
-//                  onPressed: btnImg1.source = "../img/toolWidget/menu_press.png"
-//                  //要判断松开是鼠标位置
-//                  onReleased: btnImg1.source = "../img/toolWidget/menu_hover.png"
-//                  onExited: btnImg1.source = ""
-
-//                  onClicked: {
-//                      Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php")
-//                  }
-//            }
-//            Image {
-//                id: btnImg1
-//                anchors.fill: helplabel
-//                source: ""
-//            }
-//        }
-//        Common.Label {
-//            id: versionlabel
-//            text: "新版本特性"
-//            font.pixelSize: 12
-//            color: "#318d11"
-//            MouseArea {
-//                  anchors.fill: versionlabel
-//                  hoverEnabled: true
-//                  onEntered: btnImg2.source = "../img/toolWidget/menu_hover.png"
-//                  onPressed: btnImg2.source = "../img/toolWidget/menu_press.png"
-//                  //要判断松开是鼠标位置
-//                  onReleased: btnImg2.source = "../img/toolWidget/menu_hover.png"
-//                  onExited: btnImg2.source = ""
-
-//                  onClicked: {
-//                      sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
-//                  }
-//            }
-//            Image {
-//                id: btnImg2
-//                anchors.fill: versionlabel
-//                source: ""
-//            }
-
-//        }
-//        Common.Label {
-//            id: buglabel
-//            text: "Bug提交"
-//            font.pixelSize: 12
-//            color: "#318d11"
-//            MouseArea {
-//                  anchors.fill: buglabel
-//                  hoverEnabled: true
-//                  onEntered: btnImg3.source = "../img/toolWidget/menu_hover.png"
-//                  onPressed: btnImg3.source = "../img/toolWidget/menu_press.png"
-//                  //要判断松开是鼠标位置
-//                  onReleased: btnImg3.source = "../img/toolWidget/menu_hover.png"
-//                  onExited: btnImg3.source = ""
-//                  onClicked: {
-//                      Qt.openUrlExternally("https://bugs.launchpad.net/youker-assistant")
-//                  }
-//            }
-//            Image {
-//                id: btnImg3
-//                anchors.fill: buglabel
-//                source: ""
-//            }
-//        }
     }
-}//右边栏Rectangle
+}

@@ -23,7 +23,7 @@
 #include <QMessageBox>
 
 extern QString selectedFont;
-
+extern QString selectedFcitxFont;
 KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::KFontDialog)
@@ -40,6 +40,7 @@ KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
+    ui->curFontText->setStyleSheet("color: green");
 
     ui->familyEdit->setReadOnly(true);
     ui->familyEdit->setFocusProxy(ui->familyList);
@@ -91,6 +92,10 @@ void KFontDialog::getInitFont() {
     else if(fontFlag == "titlebarfont") {
         //titlebarfont
         fontStr = pSettings->value("titlebarfont").toString();
+    }
+    else if(fontFlag == "fcitxfont")
+    {
+        fontStr = pSettings->value("fcitxfont").toString();
     }
     pSettings->endGroup();
     pSettings->sync();
@@ -261,6 +266,8 @@ void KFontDialog::on_okBtn_clicked() {
     }
     else {
         selectedFont = ui->familyEdit->text().append(" ").append(ui->styleEdit->text().append(" ").append(ui->sizeEdit->text()));
+        selectedFcitxFont = ui->familyEdit->text();
+        qDebug()<<selectedFcitxFont;
         this->accept();
     }
 }

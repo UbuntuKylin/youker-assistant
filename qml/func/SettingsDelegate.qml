@@ -15,31 +15,20 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-import SystemType 0.1
 import "common" as Common
 
 import ProcessType 0.1//1101
 
 Rectangle {
     id: scaleMe
-//    scale: 0.0
     scale: 1
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     //竖列高度和宽度
     width: 100
     height: 100
-//    width: 78
-//    height: 82
-    //横列高度和宽度
-//    width: 120
-//    height: 78
+
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
-//    function iconClicked() {
-//        scaleMe.state = "Details";
-//        settigsDetails.setTitle = flag;
-//    }
 
     //竖列
     Column {
@@ -58,28 +47,6 @@ Rectangle {
             text: qsTr(name)
         }
     }
-    //横列
-//    Row {
-//        anchors.fill: parent
-//        anchors.topMargin: 7
-//        Image {
-//            id: seticon
-//            source: icon
-//            //横列
-//            anchors.verticalCenter: parent.verticalCenter
-//            //竖列
-////            anchors.horizontalCenter: parent.horizontalCenter
-//        }
-//        Text {
-//            id: btnText
-//            //横列
-//            anchors.verticalCenter: parent.verticalCenter
-//            //竖列
-////            anchors.horizontalCenter: parent.horizontalCenter
-//            color: "green"
-//            text: qsTr(name)
-//        }
-//    }
 
     Image {
         id: btnImg
@@ -148,8 +115,6 @@ Rectangle {
             else if(flag == "ProcessManager") {
                 pageStack.push(processmanagerpage);
             }
-//            else
-//                iconClicked();
             //kobe:选中项深色块移动
             scaleMe.GridView.view.currentIndex = index;
         }

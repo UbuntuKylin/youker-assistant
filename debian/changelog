@@ -1,10 +1,23 @@
-youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
+youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
 
   * Overide the Font Dialog with KFontDialog Class.
+  * Add detailed information of Network Card, HardDisk and Graphics Card.
+  * Add Separator.qml.
+  * Change Logo and add InfoGroup.js.
+  * Access weather data with python threading.
+  * Change /usr/share/youker-assistant-daemon to /var/lib/youker-assistant-daemon.
+  * Change UbuntuKylin to Ubuntu Kylin.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 12 Dec 2013 21:23:50 +0800
+
+youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
+
   * Optimize button events of AuthDialog(LP: #1256183).
   * Fixed Dialog's movement and hazing when click a button(LP: #1255550).
+  * Change some pictures of computer's detailed information.
+  * All system configuration saved with QSetting.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 01 Dec 2013 22:31:37 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 05 Dec 2013 14:26:53 +0800
 
 youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
 

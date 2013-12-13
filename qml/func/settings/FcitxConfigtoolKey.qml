@@ -1,6 +1,4 @@
 import QtQuick 1.1
-import SystemType 0.1
-import SessionType 0.1
 import "../common" as Common
 import "../bars" as Bars
 import "../../func"  as Func
@@ -16,6 +14,9 @@ Rectangle {
     property int flag_i: 0
     property string h_fcitxSkinImage: ""
     property string v_fcitxSkinImage: ""
+    property string currentFcitxFont : "Sans"
+    property string set_currentFcitxFont : ""
+
     //背景
     Image {
         source: "../../img/skin/bg-left.png"
@@ -59,8 +60,11 @@ Rectangle {
     function refreshFcitxKey(){
         skinModel.clear();
         //set font============================================================
-        var setFont = fcitxcfgwizard.get_font();
-        fontStyleBtn.text = setFont;
+        //将系统初始的全局字体缩放写入QSetting配置文件
+        fcitxconfigtoolKey.currentFcitxFont = fcitxcfgwizard.get_font();
+        fcitxconfigtoolKey.set_currentFcitxFont = fcitxconfigtoolKey.currentFcitxFont;
+        fontStyleBtn.text = fcitxconfigtoolKey.currentFcitxFont;
+        sessiondispatcher.write_default_configure_to_qsetting_file("font", "fcitxFont", fcitxconfigtoolKey.currentFcitxFont);
         //get font size=======================================================
         var getFontSize = fcitxcfgwizard.get_font_size();
         if(getFontSize == 0)
@@ -123,7 +127,7 @@ Rectangle {
         }
 
     Component.onCompleted: {
-         refreshFcitxKey();
+        refreshFcitxKey();
     }
 
     //分割线
@@ -311,7 +315,10 @@ Rectangle {
             fontsize: 13
             anchors.verticalCenter: font.verticalCenter
            onClicked: {
-               fontStyleBtn.text = fcitxcfgwizard.show_font_dialog();
+               sessiondispatcher.show_font_dialog("fcitxfont");
+               set_currentFcitxFont = sessiondispatcher.getSelectedFcitxFont();
+               fontStyleBtn.text = fcitxconfigtoolKey.set_currentFcitxFont;
+               console.log(set_currentFcitxFont);
            }
            onTextChanged: {
                if(fontStyleBtn.text != "Sans" )
@@ -323,84 +330,84 @@ Rectangle {
    }
 
 
-    Rectangle{
-        anchors{
-            top:parent.top
-            topMargin: 220
-            left:parent.left
-            leftMargin: 65
-        }
-        color:"white"
-        width: 680
-        height: 190
+//    Rectangle{
+//        anchors{
+//            top:parent.top
+//            topMargin: 220
+//            left:parent.left
+//            leftMargin: 65
+//        }
+//        color:"white"
+//        width: 680
+//        height: 190
 
-        Rectangle{
-            anchors{
-                top:parent.top
-                topMargin: 0
-                left:parent.left
-                leftMargin: 0
-            }
-            width:680
-            height:1
-            color:"#b9c5cc"
-        }
-        Rectangle{
-            anchors{
-                top:parent.top
-                topMargin: 190
-                left:parent.left
-                leftMargin: 0
-            }
-            width:680
-            height:1
-            color:"#b9c5cc"
-        }
-        Rectangle{
-            anchors{
-                top:parent.top
-                topMargin: 0
-                left:parent.left
-                leftMargin: 0
-            }
-            width:1
-            height:190
-            color:"#b9c5cc"
-        }
-        Rectangle{
-            anchors{
-                top:parent.top
-                topMargin: 0
-                left:parent.left
-                leftMargin: 680
-            }
-            width:1
-            height:190
-            color:"#b9c5cc"
-        }
+//        Rectangle{
+//            anchors{
+//                top:parent.top
+//                topMargin: 0
+//                left:parent.left
+//                leftMargin: 0
+//            }
+//            width:680
+//            height:1
+//            color:"#b9c5cc"
+//        }
+//        Rectangle{
+//            anchors{
+//                top:parent.top
+//                topMargin: 190
+//                left:parent.left
+//                leftMargin: 0
+//            }
+//            width:680
+//            height:1
+//            color:"#b9c5cc"
+//        }
+//        Rectangle{
+//            anchors{
+//                top:parent.top
+//                topMargin: 0
+//                left:parent.left
+//                leftMargin: 0
+//            }
+//            width:1
+//            height:190
+//            color:"#b9c5cc"
+//        }
+//        Rectangle{
+//            anchors{
+//                top:parent.top
+//                topMargin: 0
+//                left:parent.left
+//                leftMargin: 680
+//            }
+//            width:1
+//            height:190
+//            color:"#b9c5cc"
+//        }
 
-        Row{
-            anchors{
-                top:parent.top
-                topMargin: 15
-                left:parent.left
-                leftMargin: 20
-            }
-        spacing: 30
-        Image {
-            id: fcitxVimage
-            source: v_fcitxSkinImage
-            smooth: true
-        }
-        Image {
-            id: fcitxHimage
-            source: h_fcitxSkinImage
-            smooth: true
-            anchors.verticalCenter: parent.verticalCenter
-        }
-      }
+//        Row{
+//            anchors{
+//                top:parent.top
+//                topMargin: 15
+//                left:parent.left
+//                leftMargin: 20
+//            }
+//        spacing: 30
+//        Image {
+//            id: fcitxVimage
+//            source: v_fcitxSkinImage
+//            smooth: true
+//        }
+//        Image {
+//            id: fcitxHimage
+//            source: h_fcitxSkinImage
+//            smooth: true
+//            anchors.verticalCenter: parent.verticalCenter
+//        }
+//      }
 
-    }
+//    }
 
     //顶层工具栏
     Bars.TopBar {
@@ -440,18 +447,17 @@ Rectangle {
 
         }
         onFinishBtnClicked: {
-            //接后台应用接口
+            //接后台应用接口            
             fcitxcfgwizard.set_font(fontStyleBtn.text,false);
             fcitxcfgwizard.set_font_size(sliderFontSize.value,false);
             fcitxcfgwizard.set_skin_type(skinCombo.selectedText, false);
-            fcitxcfgwizard.all_cfg_save()
+            fcitxcfgwizard.all_cfg_save();
             statusImage.visible = true;
         }
         Timer {
                  interval: 5000; running: true; repeat: true
                  onTriggered: statusImage.visible = false
              }
-
     }
 
 }

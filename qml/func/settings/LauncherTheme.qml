@@ -15,8 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
-//import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
 Rectangle {
@@ -28,10 +26,9 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
 
-    property int launcher_size: 24
+    property int launcher_size
     property string actiontitle: qsTr("Launcher settings")//启动器设置
     property string actiontext: qsTr("Users can set up Launcher hidden and icon display size according to the needs; drag the slider bar, click 'OK' button to complete the size setting.")//用户可以根据需要设置启动器的自动隐藏功能和启动器上图标的显示尺寸；拖动滑动条，点击“确定”按钮完成大小设置。
-
 
     //背景
     Image {
@@ -41,16 +38,25 @@ Rectangle {
 
     Component.onCompleted: {
         launcherthemepage.launcher_size = slider.value;
-
-        if (sessiondispatcher.get_launcher_autohide_qt())
+        //将系统初始的Launcher大小写入QSetting配置文件
+        sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "size", slider.value);
+        if (sessiondispatcher.get_launcher_autohide_qt()) {
             launcherswitcher.switchedOn = true;
-        else
+            sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "autohide", "true");
+        }
+        else {
             launcherswitcher.switchedOn = false;
+            sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "autohide", "false");
+        }
 
-        if (sessiondispatcher.get_launcher_have_showdesktopicon_qt())
+        if (sessiondispatcher.get_launcher_have_showdesktopicon_qt()) {
             showdesktopswitcher.switchedOn = true;
-        else
+            sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "showicon", "true");
+        }
+        else {
             showdesktopswitcher.switchedOn = false;
+            sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "showicon", "false");
+        }
     }
 
     Column {
@@ -76,13 +82,13 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-         Text {
-             width: launcherthemepage.width - 80 - 20
-             text: launcherthemepage.actiontext
-             wrapMode: Text.WordWrap
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
+        Text {
+            width: launcherthemepage.width - 80 - 20
+            text: launcherthemepage.actiontext
+            wrapMode: Text.WordWrap
+            font.pixelSize: 12
+            color: "#7a7a7a"
+        }
     }
 
 
@@ -171,6 +177,19 @@ Rectangle {
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
+            Common.Button {
+                id: okBtn
+                hoverimage: "green2.png"
+                fontsize: 12
+                text: qsTr("OK")//确定
+                width: 94; height: 29
+                onClicked: {
+                    if (launcherthemepage.launcher_size != slider.value) {
+                        launcherthemepage.launcher_size = slider.value;
+                        sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+                    }
+                }
+            }
         }
 
         Row {
@@ -221,6 +240,8 @@ Rectangle {
     //底层工具栏
     Bars.ToolBar {
         id: toolBar
+        showok: false
+        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -231,17 +252,69 @@ Rectangle {
             else if (num == 4)
                 pageStack.push(functioncollection)
         }
-        onOkBtnClicked: {
-            if (launcherthemepage.launcher_size != slider.value) {
-                launcherthemepage.launcher_size = slider.value;
-                sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+        onRestoreBtnClicked: {
+            var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "size");
+            var defaultautohide = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "autohide");
+            var defaultshowicon = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "showicon");
+            var autohideFlag;
+            var showiconFlag;
+            if(launcherswitcher.switchedOn) {
+                autohideFlag = "true";
+            }
+            else {
+                autohideFlag = "false";
+            }
+            if(showdesktopswitcher.switchedOn) {
+                showiconFlag = "true";
+            }
+            else {
+                showiconFlag = "false";
+            }
+
+            if((defaultsize == launcherthemepage.launcher_size) && (defaultautohide == autohideFlag) && (defaultshowicon == showiconFlag)) {
+                //友情提示：        Launcher配置已经为默认配置！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Launcher configure is the default configure!"), mainwindow.pos.x, mainwindow.pos.y);
+            }
+            else {
+                if(defaultsize != slider.value) {
+                    sessiondispatcher.set_launcher_icon_size_qt(defaultsize);
+                    slider.value = defaultsize;
+                    launcherthemepage.launcher_size = defaultsize;
+                }
+                if(defaultautohide != autohideFlag) {
+                    if(defaultautohide == "true") {
+                        launcherswitcher.switchedOn = true;
+                        sessiondispatcher.set_launcher_autohide_qt(true);
+                    }
+                    else {
+                        launcherswitcher.switchedOn = false;
+                        sessiondispatcher.set_launcher_autohide_qt(false);
+                    }
+                }
+                if(defaultshowicon != showiconFlag) {
+                    if(defaultshowicon == "true") {
+                        showdesktopswitcher.switchedOn = true;
+                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(true);
+                    }
+                    else {
+                        showdesktopswitcher.switchedOn = false;
+                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(false);
+                    }
+                }
                 statusImage.visible = true;
             }
         }
+//        onOkBtnClicked: {
+//            if (launcherthemepage.launcher_size != slider.value) {
+//                launcherthemepage.launcher_size = slider.value;
+//                sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+//                statusImage.visible = true;
+//            }
+//        }
 
         Timer {
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: statusImage.visible = false
-             }
+             interval: 5000; running: true; repeat: true
+             onTriggered: statusImage.visible = false
+        }
     }
 }

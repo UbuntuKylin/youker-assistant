@@ -53,7 +53,7 @@ Item {
             }
             else if (msg == "cookies") {
                 toolkits.alertMSG(qsTr("Cleanup Successfully!"), mainwindow.pos.x, mainwindow.pos.y);//清理成功！
-                container.clicked();
+                container.clicked();//清理完单个数据后，通过clicked信号告诉BrowserCookies.qml去进行数据再次扫描刷新的操作
             }
         }
     }

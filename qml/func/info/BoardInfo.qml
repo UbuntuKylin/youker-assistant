@@ -15,21 +15,25 @@
  */
 
 import QtQuick 1.1
-import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
+import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
     Component.onCompleted: {
         systemdispatcher.get_board_info_qt();//获取详细信息
-        basiclogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BoaVendor", "board") + ".jpg";
-        bioslogo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("BioVendor", "board") + ".jpg";
+
+        var basicName = systemdispatcher.getSingleInfo("BoaVendor", "board").toUpperCase();
+        var biosName = systemdispatcher.getSingleInfo("BioVendor", "board").toUpperCase();
+        basiclogo.source = InfoGroup.judgeName(basicName) ? ("../../img/logo/Manufacturer/" + basicName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        bioslogo.source = InfoGroup.judgeName(biosName) ? ("../../img/logo/Manufacturer/" + biosName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+
         productText.text = systemdispatcher.getSingleInfo("BoaProduct", "board");
-        vendorText.text = systemdispatcher.getSingleInfo("BoaVendor", "board");
+        vendorText.text = basicName;
         serialText.text = systemdispatcher.getSingleInfo("BoaSerial", "board");
-        biosvendorText.text = systemdispatcher.getSingleInfo("BioVendor", "board");
+        biosvendorText.text = biosName;
         biosversionText.text = systemdispatcher.getSingleInfo("BioVersion", "board");
         biosreleaseText.text = systemdispatcher.getSingleInfo("BioRelease", "board");
     }
@@ -44,7 +48,7 @@ Rectangle {
         spacing: 20
 
         Row {
-            Text {
+            Common.Label {
                 id: basictitle
                 text: qsTr("Basic information")//主板基本信息
                 font.bold: true
@@ -62,11 +66,11 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Motherboard Model:")//主板型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: productText
@@ -77,11 +81,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Motherboard Vendor:")//主板产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: vendorText
@@ -92,11 +96,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Serial:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: serialText
@@ -107,7 +111,7 @@ Rectangle {
             }
         }
         Row {
-            Text {
+            Common.Label {
                 id: biostitle
                 text: qsTr("Bios information")//BIOS信息
                 font.bold: true
@@ -127,11 +131,11 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Bios Vendor:")//BIOS产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: biosvendorText
@@ -142,11 +146,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Bios Version:")//BIOS版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: biosversionText
@@ -157,11 +161,11 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Release Date:")//发布日期：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 130
                 }
                 Text {
                     id: biosreleaseText

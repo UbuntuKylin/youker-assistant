@@ -33,7 +33,7 @@ ProcessManager::~ProcessManager(){
 }
 
 void ProcessManager::readMemoFile(){
-    QFile *memoFile = new QFile("/usr/share/youker-assistant-daemon/processmanager/processmemo");
+    QFile *memoFile = new QFile("/var/lib/youker-assistant-daemon/processmanager/processmemo");
     if(memoFile->open(QIODevice::ReadOnly)){
         QTextStream in(memoFile);
         while(!in.atEnd()){

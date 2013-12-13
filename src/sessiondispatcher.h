@@ -25,7 +25,7 @@
 #include "quibo.h"
 #include "modaldialog.h"
 #include "skinswidget.h"
-//#include "processmanager.h"
+
 class QSettings;
 
 class SessionDispatcher : public QObject
@@ -59,6 +59,12 @@ public:
     Q_INVOKABLE QStringList scan_apt_cruft_qt();
     //扫描软件中心缓存
     Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
+    //扫描apt和软件中心缓存
+    Q_INVOKABLE void cache_scan_function_qt(QStringList argList);
+    Q_INVOKABLE QStringList get_cache_arglist();
+    //扫描旧内核安装包
+    Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
+
     //退出sessiondubs服务
     Q_INVOKABLE void exit_qt();
     //弹出新特性对话框
@@ -72,6 +78,8 @@ public:
     Q_INVOKABLE int get_page_num();
     int page_num;
 
+    //得到安装操作系统的语言版本
+    Q_INVOKABLE QString get_locale_version();
     //得到当前登录用户的主目录
     Q_INVOKABLE QString getHomePath();
 
@@ -179,8 +187,12 @@ public:
 
     /*-------------------weather forecast-------------------*/
     Q_INVOKABLE void get_forecast_weahter_qt();
-    Q_INVOKABLE bool get_current_weather_qt();
-    Q_INVOKABLE QString get_current_pm25_qt();
+    void get_forecast_dict_qt();//天气预报数据获取完成后，通过该函数返回其获取的值给forecastInfo
+    Q_INVOKABLE void get_current_weather_qt();
+    void get_current_weather_dict_qt();//当天天气数据获取完成后，通过该函数返回其获取的值给currentInfo
+    Q_INVOKABLE void get_current_pm25_qt();
+    void get_pm25_str_qt();//当PM2.5获取成功后，返回给pm25Info
+    Q_INVOKABLE QString access_pm25_str_qt();//把pm25Info给QML
     //得到配置文件中的更新周期
     Q_INVOKABLE int get_current_rate();
     //更新当天天气
@@ -191,6 +203,7 @@ public:
 
     QMap<QString, QVariant> forecastInfo;
     QMap<QString, QVariant> currentInfo;
+    QString pm25Info;
     //通过键得到对应的单个信息的值,flag= forecast/current
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 
@@ -212,6 +225,8 @@ public:
     //从Qsetting配置文件中读取系统启动时的默认配置
     Q_INVOKABLE QString read_default_configure_from_qsetting_file(QString key, QString name);
 
+    //fcitxconfigtoolkey获取sekectedfcitxfont
+    Q_INVOKABLE QString getSelectedFcitxFont();
 
     //一键清理扫描
     Q_INVOKABLE void onekey_scan_function_qt(QStringList selectedList);
@@ -222,10 +237,16 @@ signals:
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
     void startChangeQMLCity();//发送开始更换QML城市
-    void startUpdateForecastWeahter();//发送开始更换六天天气预报
+    void startUpdateForecastWeahter(QString flag);//发送开始更换六天天气预报
+    void showKeyandData(QString key, QString value);//根据天气的key显示对应的数据
     void startUpdateRateTime(int rate);//发送开始更换天气自动更新周期时间
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
+
+    //把cache扫描结果告诉QML
+    void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
+    //cache扫描完后告诉QML
+    void tellQMLCaheOver();
     //BrowserCookies中扫描内容为空时，告诉ListTitle.qml
 //    void getNullFlag(QString emptyFlag, bool status);
 
@@ -234,6 +255,8 @@ signals:
 //    //判断是否有chromium浏览器
 //    void judge_deb_exists_chromium(QString flag);
 public slots:
+    //获取天气预报槽函数
+    void handler_access_forecast_weather(QString key, QString value);
     //扫描完成槽函数
     void handler_scan_complete(QString msg);
     //扫描过程的函数
@@ -244,7 +267,13 @@ public slots:
     void handler_change_city();
     //更换自动更新天气周期槽函数
     void handler_change_rate(int rate);
-//    //判断是否有firefox浏览器
+
+    //接收缓存信号，把数据动态堆加到model中
+    void handler_append_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
+    //接收cache扫描完后的信号
+    void handler_cache_scan_over();
+
+    //    //判断是否有firefox浏览器
 //    void handler_deb_exists_firefox(QString flag);
 //    //判断是否有chromium浏览器
 //    void handler_deb_exists_chromium(QString flag);

@@ -14,15 +14,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 1.1
-import SudoType 0.1
 
 Rectangle {
     width: parent.width
-    height: 30//28
+    height: 30
     color: "transparent"
     property string uk_version: ""
     Component.onCompleted: {
-
     }
     Row {
         anchors.verticalCenter: parent.verticalCenter
@@ -32,25 +30,22 @@ Rectangle {
         Image {
             source: "./img/icons/arrowhead.png"
         }
-
         Text {
             color: "white"
             font.pixelSize: 12
             text: qsTr("main version:") + uk_version//主版本:
         }
     }
-
     MouseArea {
-          id: mouseRegion
-          anchors.fill: parent
-          property variant clickPos: "1,1"
-          onPressed: {
-              clickPos  = Qt.point(mouse.x,mouse.y)
-          }
-          onPositionChanged: {
-              var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-              mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x,
-                                mainwindow.pos.y+delta.y)
-          }
-      }
+        id: mouseRegion
+        anchors.fill: parent
+        property variant clickPos: "1,1"
+        onPressed: {
+            clickPos  = Qt.point(mouse.x,mouse.y)
+        }
+        onPositionChanged: {
+            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+            mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
+        }
+    }
 }

@@ -15,7 +15,6 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
 import "../common" as Common
 import "../bars" as Bars
 Rectangle {
@@ -169,9 +168,9 @@ Rectangle {
             height: 30
             onClicked: {
                 var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "titlebarfont");
-                console.log("restore..........");
-                console.log(defaultfont);
-                console.log(titlebarfontpage.selected_font);
+//                console.log("restore..........");
+//                console.log(defaultfont);
+//                console.log(titlebarfontpage.selected_font);
                 if(defaultfont == titlebarfontpage.selected_font) {
                     //友情提示：        您系统的窗体标题栏字体已经为默认字体！
                     sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current titlebar font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);

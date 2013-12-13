@@ -30,7 +30,7 @@ def show_message(*args):
     from dialogs import ErrorDialog
     title = 'Daemon start failed'
     message = ('Youker Assisant systemdaemon didn\'t start correctly.\n'
-                'If you want to help developers debugging, try to run "<b>sudo /usr/share/youker-assistant-daemon/src/youkersystem-daemon</b>" in a terminal.')
+                'If you want to help developers debugging, try to run "<b>sudo /usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/youkersystem-daemon</b>" in a terminal.')
     ErrorDialog(title=title, message=message).launch()
 
 def nothing(*args):

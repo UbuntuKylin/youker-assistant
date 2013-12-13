@@ -37,6 +37,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_single_complete(QString)),this,SLOT(handler_clear_single_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(clean_single_error(QString)),this,SLOT(handler_clear_single_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
+    QObject::connect(systemiface,SIGNAL(quit_clean(QString)),this,SLOT(handler_quit_clean(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
@@ -102,6 +103,7 @@ void SystemDispatcher::get_computer_info_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         computerInfo = value;
+//        qDebug() << computerInfo;
     }
     else {
         qDebug() << "get computer info failed!";
@@ -124,6 +126,7 @@ void SystemDispatcher::get_memory_info_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         memoryInfo = value;
+//        qDebug() << memoryInfo;
     }
     else {
         qDebug() << "get memory info failed!";
@@ -138,6 +141,28 @@ void SystemDispatcher::get_board_info_qt() {
     }
     else {
         qDebug() << "get board info failed!";
+    }
+}
+
+void SystemDispatcher::get_harddisk_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_harddisk_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        harddiskInfo = value;
+    }
+    else {
+        qDebug() << "get harddisk info failed!";
+    }
+}
+
+void SystemDispatcher::get_networkcard_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_networkcard_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        networkcardInfo = value;
+    }
+    else {
+        qDebug() << "get networkcard info failed!";
     }
 }
 
@@ -170,6 +195,12 @@ QString SystemDispatcher::getSingleInfo(QString key, QString flag) {
     }
     else if(flag == "board") {
         info = boardInfo.value(key);
+    }
+    else if(flag == "harddisk") {
+        info = harddiskInfo.value(key);
+    }
+    else if(flag == "networkcard") {
+        info = networkcardInfo.value(key);
     }
     else if(flag == "monitor") {
         info = monitorInfo.value(key);
@@ -259,6 +290,10 @@ bool SystemDispatcher::get_history_flag() {
 
 void SystemDispatcher::handler_clear_rubbish(QString msg) {
      emit finishCleanWork(msg);
+}
+
+void SystemDispatcher::handler_quit_clean(QString msg) {
+    emit quitCleanWork(msg);
 }
 
 void SystemDispatcher::handler_clear_single_rubbish(QString msg) {
@@ -389,7 +424,6 @@ void SystemDispatcher::cookies_clean_record_function_qt(QString flag, QString we
 }
 
 void SystemDispatcher::cookies_clean_records_function_qt(QString flag) {
-    qDebug() << "lixiang222";
     KThread *thread = new KThread(tmplist, systemiface, "cookies_clean_records_function", flag);
     thread->start();
 }
@@ -408,6 +442,31 @@ void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
     thread->start();
 }
 //------------------------------------------------------
+void SystemDispatcher::set_cache_args(QString str) {
+    cache_args.append(str);
+}
+
+void SystemDispatcher::del_cache_args(QString str) {
+    QStringList bake;
+    int len = cache_args.length();
+    for (int i=0; i< len; i++) {
+        if (cache_args[i] != str) {
+            bake.append(cache_args[i]);
+        }
+    }
+    cache_args.clear();
+    cache_args = bake;
+}
+
+void SystemDispatcher::clear_cache_args() {
+    cache_args.clear();
+}
+
+QStringList SystemDispatcher::get_cache_args() {
+    return cache_args;
+}
+
+
 
 void SystemDispatcher::set_apt_args(QString str) {
     apt_args.append(str);
@@ -504,6 +563,31 @@ void SystemDispatcher::clear_package_args() {
 
 QStringList SystemDispatcher::get_package_args() {
     return package_args;
+}
+
+void SystemDispatcher::set_kernel_args(QString str) {
+    kernel_args.append(str);
+}
+
+void SystemDispatcher::del_kernel_args(QString str) {
+    QStringList bake;
+    int len = kernel_args.length();
+    for (int i=0; i< len; i++) {
+        if (kernel_args[i] != str) {
+            bake.append(kernel_args[i]);
+        }
+    }
+    kernel_args.clear();
+    kernel_args = bake;
+//    kernel_args.replaceInStrings(QString(str), QString(""));
+}
+
+void SystemDispatcher::clear_kernel_args() {
+    kernel_args.clear();
+}
+
+QStringList SystemDispatcher::get_kernel_args() {
+    return kernel_args;
 }
 
 void SystemDispatcher::set_onekey_args(QString str) {

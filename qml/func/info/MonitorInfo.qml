@@ -15,10 +15,13 @@
  */
 
 import QtQuick 1.1
-import SystemType 0.1
 import "../common" as Common
 import "../bars" as Bars
-
+import "./InfoGroup.js" as InfoGroup
+/*{'Vga_product': 'Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller (rev 09)\n',
+ 'Vga_businfo': 'pci@0000:00:02.0',
+'Vga_vendor': 'Intel',
+'Mon_chip': 'Intel(R) HD Graphics 3000'}*/
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
@@ -26,6 +29,11 @@ Rectangle {
     Component.onCompleted: {
         systemdispatcher.get_monitor_info_qt();//获取详细信息
         chipText.text = systemdispatcher.getSingleInfo("Mon_chip", "monitor");
+        chipmodelText.text = systemdispatcher.getSingleInfo("Vga_product", "monitor");
+        var cardVendor = systemdispatcher.getSingleInfo("Vga_vendor", "monitor");
+        chipvendorText.text = cardVendor;
+        cardlogo.source = InfoGroup.judgeName(cardVendor.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cardVendor.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        chipbusText.text = systemdispatcher.getSingleInfo("Vga_businfo", "monitor");
         var vendor = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
         if(vendor.length !== 0 ) {
             productLabel.visible = true;
@@ -37,9 +45,10 @@ Rectangle {
             gammaLabel.visible = true;
             outputLabel.visible = true;
             supportLabel.visible = true;
-            logo.source = "../../img/logo/Manufacturer/" + systemdispatcher.getSingleInfo("Mon_vendor", "monitor") + ".jpg";
+            var vendorName = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
+            monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             productText.text = systemdispatcher.getSingleInfo("Mon_product", "monitor");
-            vendorText.text = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
+            vendorText.text = vendorName;
             dateText.text = systemdispatcher.getSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getSingleInfo("Mon_week", "monitor");
             sizeText.text = systemdispatcher.getSingleInfo("Mon_size", "monitor");
             inText.text = systemdispatcher.getSingleInfo("Mon_in", "monitor");
@@ -64,16 +73,16 @@ Rectangle {
     Column {
         anchors {
             top: parent.top
-            topMargin: 40
+            topMargin: 20
             left: parent.left
-            leftMargin: 30
+            leftMargin: 25
         }
         spacing: 20
 
         Row {
-            Text {
+            Common.Label {
                 id: titlebar
-                text: qsTr("Monitor information")//显示器信息
+                text: qsTr("Monitor And Graphics Card information")//显示器和显卡信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -89,11 +98,11 @@ Rectangle {
             spacing: 10
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     text: qsTr("Current Graphics Card:")//当前显卡：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: chipText
@@ -104,12 +113,61 @@ Rectangle {
             }
             Row {
                 spacing: 10
+                Common.Label {
+                    text: qsTr("Graphics Card Model:")//显卡型号：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
                 Text {
+                    id: chipmodelText
+                    width: 450
+                    text: ""//systemdispatcher.getSingleInfo("Vga_product")
+                    font.pixelSize: 14
+                    wrapMode: Text.WordWrap
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("Graphics Card Vendor:")//显卡制造商：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
+                Text {
+                    id: chipvendorText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_vendor")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("Graphics Card Bus Address:")//显卡总线地址：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
+                Text {
+                    id: chipbusText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_businfo")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+
+
+            Row {
+                spacing: 10
+                Common.Label {
                     id: productLabel
                     text: qsTr("Monitor:")//显示器：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: productText
@@ -120,12 +178,12 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: vendorLabel
                     text: qsTr("Vendor:")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: vendorText
@@ -136,12 +194,12 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: dateLabel
                     text: qsTr("Production Date(year/week):")//生产日期(年/周)：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: dateText
@@ -152,12 +210,12 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: sizeLabel
                     text: qsTr("Reading Area:")//可视面积：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: sizeText
@@ -168,12 +226,12 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: inLabel
                     text: qsTr("Screen Size:")//屏幕尺寸：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: inText
@@ -184,12 +242,12 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: maxmodeLabel
                     text: qsTr("Maximum Resolution:")//最大分辨率：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: maxmodeText
@@ -200,12 +258,12 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: gammaLabel
                     text: qsTr("Gamma Value:")//伽马值：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: gammaText
@@ -216,12 +274,12 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: outputLabel
                     text: qsTr("Current Interface:")//当前接口：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: outputText
@@ -232,12 +290,12 @@ Rectangle {
             }
             Row {
                 spacing: 10
-                Text {
+                Common.Label {
                     id: supportLabel
                     text: qsTr("Support Interface:")//支持接口：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 165
                 }
                 Text {
                     id: supportText
@@ -250,11 +308,22 @@ Rectangle {
     }
     //logo
     Image {
-        id: logo
+        id: cardlogo
         source: ""
         anchors {
             top: parent.top
-            topMargin: 50
+            topMargin: 130
+            right: parent.right
+            rightMargin: 30
+        }
+    }
+    //logo
+    Image {
+        id: monitorlogo
+        source: ""
+        anchors {
+            top: parent.top
+            topMargin: 300
             right: parent.right
             rightMargin: 30
         }

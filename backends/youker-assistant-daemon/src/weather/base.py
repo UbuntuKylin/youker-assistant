@@ -24,12 +24,12 @@ def get_parent_path(folderpath, level=1):
         level -= 1
     return parent_path
 
-VERSION = "1.0.6"
 WEATHER_URL = 'http://m.weather.com.cn/data/%s.html'
 WEATHER_URL1 = 'http://www.weather.com.cn/data/sk/%s.html'
 WEATHER_URL2 = 'http://www.weather.com.cn/data/cityinfo/%s.html'
 PM25_URL = 'http://pm25.in/api/querys/pm2_5.json?city='
-TOKEN = '&token=X1K1gyCibzqxfvJQnpsi'
+#TOKEN = '&token=X1K1gyCibzqxfvJQnpsi'
+TOKEN = '&token=FHVqQSGmZSmuC2GxqkLF'
 
 PROJECT_ROOT_DIRECTORY = os.path.abspath(
     os.path.dirname(os.path.dirname(os.path.realpath(sys.argv[0]))))

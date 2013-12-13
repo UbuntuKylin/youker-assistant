@@ -34,6 +34,7 @@
 
 #include "kfontdialog.h"
 QString selectedFont;
+QString selectedFcitxFont;
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -58,6 +59,11 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
+    QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(handler_access_forecast_weather(QString, QString)));
+
+    //Apt and Soft center cache
+    QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_data_to_model(QString,QString,QString,QString)));
+    QObject::connect(sessioniface, SIGNAL(cache_transmit_complete()), this, SLOT(handler_cache_scan_over()));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -71,12 +77,40 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
+void SessionDispatcher::handler_access_forecast_weather(QString key, QString value) {
+    if(key == "forecast" && value == "kobe") {
+        get_forecast_dict_qt();
+        emit startUpdateForecastWeahter("forecast");
+    }
+    else if(key == "weather" && value == "kobe") {
+        get_current_weather_dict_qt();
+        emit startUpdateForecastWeahter("weather");
+    }
+    else if(key == "pm25" && value == "kobe") {
+        get_pm25_str_qt();
+        emit startUpdateForecastWeahter("pm25");
+    }
+}
+
+void SessionDispatcher::handler_append_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue) {
+    emit appendContentToCacheModel(flag, path, fileFlag, sizeValue);
+}
+
+void SessionDispatcher::handler_cache_scan_over() {
+    emit tellQMLCaheOver();
+}
+
 void SessionDispatcher::handler_scan_complete(QString msg) {
     emit finishScanWork(msg);
 }
 
 void SessionDispatcher::handler_scan_process(QString msg) {
     emit isScanning(msg);
+}
+
+QString SessionDispatcher::get_locale_version() {
+    QString locale = QLocale::system().name();
+    return locale;
 }
 
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
@@ -131,6 +165,21 @@ QStringList SessionDispatcher::scan_apt_cruft_qt() {
 
 QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
+    return reply.value();
+}
+
+QStringList SessionDispatcher::get_cache_arglist() {
+    QStringList tmp;
+    tmp << "apt" << "software-center";
+    return tmp;
+}
+
+void SessionDispatcher::cache_scan_function_qt(QStringList argList) {
+    sessioniface->call("cache_scan_function", argList);
+}
+
+QStringList SessionDispatcher::scan_oldkernel_packages_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("oldkernel_scan_function");
     return reply.value();
 }
 
@@ -441,6 +490,10 @@ void SessionDispatcher::restore_default_font_signal(QString flag) {
     emit notifyFontStyleToQML(flag); //font_style
 }
 
+QString SessionDispatcher::getSelectedFcitxFont() {
+     return selectedFcitxFont;//
+}
+
 void SessionDispatcher::show_font_dialog(QString flag) {
     KFontDialog *fontDialog = new KFontDialog(mSettings, flag, 0);
     fontDialog->exec();
@@ -459,6 +512,10 @@ void SessionDispatcher::show_font_dialog(QString flag) {
         }
         else if(flag == "titlebarfont") {
             set_window_title_font_qt(selectedFont);//set titlebarfont
+        }
+        else if(flag == "fcitxfont")
+        {
+
         }
         selectedFont.clear();
         emit notifyFontStyleToQML(flag); //font_style
@@ -640,26 +697,70 @@ void SessionDispatcher::showSkinWidget() {
 
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
+
+//    SessionThread *thread = new SessionThread(sessioniface, "get_forecast_weahter", initCityId);
+//    thread->start();
+    QStringList tmplist;
+    tmplist << "Kobe" << "Lee";
+    KThread *thread = new KThread(tmplist, sessioniface, "get_forecast_weahter", initCityId);
+    thread->start();
+
+//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
+//    forecastInfo = reply.value();
+}
+
+void SessionDispatcher::get_forecast_dict_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_dict");
     forecastInfo = reply.value();
 }
 
-bool SessionDispatcher::get_current_weather_qt() {
+/*bool*/void SessionDispatcher::get_current_weather_qt() {
     getCityIdInfo();
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
-    currentInfo = reply.value();
-    if(currentInfo.isEmpty()) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    QStringList tmplist;
+    tmplist << "Kobe" << "Lee";
+    KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
+    thread->start();
+
+
+//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
+//    currentInfo = reply.value();
+//    if(currentInfo.isEmpty()) {
+//        return false;
+//    }
+//    else {
+//        return true;
+//    }
 }
 
-QString SessionDispatcher::get_current_pm25_qt() {
+void SessionDispatcher::get_current_weather_dict_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather_dict");
+    currentInfo = reply.value();
+}
+
+//QString SessionDispatcher::get_current_pm25_qt() {
+//    getCityIdInfo();
+//    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
+//    return reply.value();
+//}
+
+void SessionDispatcher::get_current_pm25_qt() {
     getCityIdInfo();
-    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
-    return reply.value();
+    QStringList tmplist;
+    tmplist << "Kobe" << "Lee";
+    KThread *thread = new KThread(tmplist, sessioniface, "get_current_pm25", initCityId);
+    thread->start();
+
+//    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
+//    return reply.value();
+}
+
+void SessionDispatcher::get_pm25_str_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_pm25_str");
+    pm25Info = reply.value();
+}
+
+QString SessionDispatcher::access_pm25_str_qt() {
+    return pm25Info;
 }
 
 int SessionDispatcher::get_current_rate() {
@@ -678,7 +779,7 @@ bool SessionDispatcher::update_weather_data_qt() {
 }
 
 void SessionDispatcher::update_forecast_weather() {
-    emit startUpdateForecastWeahter();
+//    emit startUpdateForecastWeahter();
 }
 
 void SessionDispatcher::change_select_city_name_qt(QString cityName) {
