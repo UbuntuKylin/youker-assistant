@@ -36,23 +36,46 @@ class MonitorBall:
 	def get_cpu_percent(self, percpu = False):
 		return psutil.cpu_percent(0.1, percpu)
 
-	# get total memory
-	def get_total_memory(self, symbol = "m"):
+	# get total memory + cache
+	def get_total_cmemory(self, symbol = "m"):
 		mem = psutil.phymem_usage()
 		value = mem.total
 		return self.bytes2human(value, symbol)
 
-	# get used memory
-	def get_used_memory(self, symbol = "m"):
+	# get used memory + cache
+	def get_used_cmemory(self, symbol = "m"):
 		mem = psutil.phymem_usage()
 		value = mem.used
 		return self.bytes2human(value, symbol)
 
-	# get free memory
-	def get_free_memory(self, symbol = "m"):
+	# get free memory + cache
+	def get_free_cmemory(self, symbol = "m"):
 		mem = psutil.phymem_usage()
 		value = mem.free
 		return self.bytes2human(value, symbol)
+	
+		# get total memory
+	def get_total_memory(self, symbol = "m"):
+		baseData = psutil.virtual_memory()
+		value = baseData.total
+		return self.bytes2human(value, symbol)
+
+	# get used memory
+	def get_used_memory(self, symbol = "m"):
+		baseData = psutil.virtual_memory()
+		value = baseData.total - baseData.available
+		return self.bytes2human(value, symbol)
+
+	# get free memory
+	def get_free_memory(self, symbol = "m"):
+		baseData = psutil.virtual_memory()
+		value = baseData.available
+		return self.bytes2human(value, symbol)
+	
+	# get memory used percent
+	def get_memory_percent(self):
+		baseData = psutil.virtual_memory()
+		return baseData.percent 
 
 	# get network total flow, return (up, down)
 	def get_network_flow_total(self, symbol = "k"):
@@ -120,8 +143,8 @@ class MonitorBall:
 if __name__ == "__main__":
 	mmm = MonitorBall()
 # 	print mmm.get_network_flow()
-	print mmm.get_network_flow_total()
-	print mmm.get_network_flow_total("b")
+#	print mmm.get_network_flow_total()
+#	print mmm.get_network_flow_total("b")
 # 	mmm.cleanup_memory()
 # 	print mmm.get_cpu_percent()
 # 	print mmm.get_cpu_percent(True)
@@ -129,3 +152,8 @@ if __name__ == "__main__":
 #  	print mmm.get_free_memory("m")
 #  	print mmm.get_used_memory("g")
 # 	print mmm.get_total_memory("g")
+# 	mmm.ttestt()
+	print mmm.get_memory_percent()
+	print mmm.get_total_memory()
+	print mmm.get_used_memory()
+	print mmm.get_free_memory()

@@ -225,6 +225,8 @@ public:
     //从Qsetting配置文件中读取系统启动时的默认配置
     Q_INVOKABLE QString read_default_configure_from_qsetting_file(QString key, QString name);
 
+    //fcitxconfigtoolkey获取sekectedfcitxfont
+    Q_INVOKABLE QString getSelectedFcitxFont();
 
     //一键清理扫描
     Q_INVOKABLE void onekey_scan_function_qt(QStringList selectedList);

@@ -53,6 +53,7 @@
 #include "KThread.h"
 #include <QtSingleApplication>
 #include "processmanager.h"
+#include "devicemanager.h"
 #include <QTranslator>
 
 void registerTypes() {
@@ -86,61 +87,66 @@ void registerTypes() {
 
 int main(int argc, char** argv)
 {
-    //单程序运行处理
-    QtSingleApplication app(argc, argv);
-    if (app.isRunning())
-        return 0;
+//    //单程序运行处理
+//    QtSingleApplication app(argc, argv);
+//    if (app.isRunning())
+//        return 0;
 
-    //编码处理
-    QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+//    //编码处理
+//    QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
+//    QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
+//    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+//    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 
-    QString locale = QLocale::system().name();
-    QTranslator translator;
-    if(locale == "zh_CN") {
-        //加载Qt和QML文件的国际化
-        if(!translator.load("youker-assistant_" + locale + ".qm",
-                            ":/translate/translation/"))
-            qDebug() << "Load translation file："<< "youker-assistant_" + locale + ".qm" << " failed!";
-        else
-            app.installTranslator(&translator);
+//    QString locale = QLocale::system().name();
+//    QTranslator translator;
+//    if(locale == "zh_CN") {
+//        //加载Qt和QML文件的国际化
+//        if(!translator.load("youker-assistant_" + locale + ".qm",
+//                            ":/translate/translation/"))
+//            qDebug() << "Load translation file："<< "youker-assistant_" + locale + ".qm" << " failed!";
+//        else
+//            app.installTranslator(&translator);
+//    }
+
+//    //加载Qt对话框默认的国际化
+//    QTranslator qtTranslator;
+//    qtTranslator.load("qt_" + locale,
+//                      QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+//    app.installTranslator(&qtTranslator);
+
+//    //注册QML模块
+//    registerTypes();
+
+//    //启动sessiondbus和systemdbus服务
+//    int value_session = system("/usr/bin/youkersession &");
+//    if (value_session != 0)
+//        qDebug() << "SessionDaemon Failed!";
+//    int value_system = system("/usr/bin/youkersystem");
+//    if (value_system != 0)
+//        qDebug() << "SystemDaemon Failed!";
+
+//    //启动画面
+//    QSplashScreen *splash = new QSplashScreen;
+//    splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
+//    splash->setDisabled(true);
+//    splash->show();
+//    splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
+//    //同时创建主视图对象
+//    IhuApplication application;
+//    splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
+//    //数据处理
+//    application.setup();
+//    //显示主界面，并结束启动画面
+//    application.showQMLWidget();
+//    splash->finish(&application);
+//    delete splash;
+//    return app.exec();
+    DeviceManager d;
+    QStringList a = d.getDeviceMsg();
+    for (int var = 0; var < a.size(); ++var) {
+        qDebug()<<a.at(var);
     }
-
-    //加载Qt对话框默认的国际化
-    QTranslator qtTranslator;
-    qtTranslator.load("qt_" + locale,
-                      QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    app.installTranslator(&qtTranslator);
-
-    //注册QML模块
-    registerTypes();
-
-    //启动sessiondbus和systemdbus服务
-    int value_session = system("/usr/bin/youkersession &");
-    if (value_session != 0)
-        qDebug() << "SessionDaemon Failed!";
-    int value_system = system("/usr/bin/youkersystem");
-    if (value_system != 0)
-        qDebug() << "SystemDaemon Failed!";
-
-    //启动画面
-    QSplashScreen *splash = new QSplashScreen;
-    splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
-    splash->setDisabled(true);
-    splash->show();
-    splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
-    //同时创建主视图对象
-    IhuApplication application;
-    splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
-    //数据处理
-    application.setup();
-    //显示主界面，并结束启动画面
-    application.showQMLWidget();
-    splash->finish(&application);
-    delete splash;
-    return app.exec();
 }
 
 
