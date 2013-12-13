@@ -34,6 +34,7 @@
 
 #include "kfontdialog.h"
 QString selectedFont;
+QString selectedFcitxFont;
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -487,6 +488,10 @@ void SessionDispatcher::restore_default_font_signal(QString flag) {
     emit notifyFontStyleToQML(flag); //font_style
 }
 
+QString SessionDispatcher::getSelectedFcitxFont() {
+     return selectedFcitxFont;//
+}
+
 void SessionDispatcher::show_font_dialog(QString flag) {
     KFontDialog *fontDialog = new KFontDialog(mSettings, flag, 0);
     fontDialog->exec();
@@ -505,6 +510,10 @@ void SessionDispatcher::show_font_dialog(QString flag) {
         }
         else if(flag == "titlebarfont") {
             set_window_title_font_qt(selectedFont);//set titlebarfont
+        }
+        else if(flag == "fcitxfont")
+        {
+
         }
         selectedFont.clear();
         emit notifyFontStyleToQML(flag); //font_style

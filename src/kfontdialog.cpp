@@ -23,7 +23,7 @@
 #include <QMessageBox>
 
 extern QString selectedFont;
-
+extern QString selectedFcitxFont;
 KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::KFontDialog)
@@ -92,6 +92,10 @@ void KFontDialog::getInitFont() {
     else if(fontFlag == "titlebarfont") {
         //titlebarfont
         fontStr = pSettings->value("titlebarfont").toString();
+    }
+    else if(fontFlag == "fcitxfont")
+    {
+        fontStr = pSettings->value("fcitxfont").toString();
     }
     pSettings->endGroup();
     pSettings->sync();
@@ -262,6 +266,8 @@ void KFontDialog::on_okBtn_clicked() {
     }
     else {
         selectedFont = ui->familyEdit->text().append(" ").append(ui->styleEdit->text().append(" ").append(ui->sizeEdit->text()));
+        selectedFcitxFont = ui->familyEdit->text();
+        qDebug()<<selectedFcitxFont;
         this->accept();
     }
 }
