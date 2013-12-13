@@ -414,7 +414,7 @@ Item {
                             broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scanc");
                         }
                         else if(broswerDelegate.btn_flag == "cookies_work") {
-                            itemtitle.sendBrowserType(broswerDelegate.flag, "cookies_work");
+                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_work");
                         }
                         else if(broswerDelegate.btn_flag == "cookies_workc") {
                             broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_workc");
@@ -442,7 +442,7 @@ Item {
             }
             Component{
                 id:ldelegate
-                ListItems {
+                CookiesItem {
                     id: subListItem
                     split_status: broswerDelegate.delegate_flag
                     width: subItemsRect.width

@@ -33,7 +33,7 @@ Item {
         Common.TabPage {
             title:qsTr("Deb cache")//包管理缓存
             anchors.fill: parent
-//            CruftModel {//pengshuang
+//            CacheModel {//pengshuang缓存
 //                id: aptitem
 //            }
 
@@ -59,6 +59,10 @@ Item {
         Common.TabPage {
             title:qsTr("Cookies")//Cookies
             anchors.fill: parent
+
+//            CookiesModel {//pengshuang
+//                id: cookiesitem
+//            }
             BrowserCookies {
                 id: cookiesitem
             }

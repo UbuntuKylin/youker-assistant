@@ -380,7 +380,7 @@ Item {
             Component{
                 id:ldelegate
                 //pengshuang
-                CruftItem {
+                CacheItem {
 //                ListItem {
 //                    exclusive: true//控制是否联动explicit : true
 //                    explicit : true

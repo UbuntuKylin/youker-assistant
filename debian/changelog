@@ -7,8 +7,9 @@ youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
   * Access weather data with python threading.
   * Change /usr/share/youker-assistant-daemon to /var/lib/youker-assistant-daemon.
   * Change UbuntuKylin to Ubuntu Kylin.
+  * Modify calculation method of system memory allocation(LP: #1242579).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 12 Dec 2013 21:23:50 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 13 Dec 2013 16:01:02 +0800
 
 youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
 

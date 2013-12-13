@@ -1274,7 +1274,7 @@ Item {
                     width: parent.width
                     height: root.firefox_expanded ? (root.aptNum + 1) * 40 : 40
                     model: mainModel
-                    delegate: CruftDelegate{
+                    delegate: CacheDelegate{
                         sub_num: root.aptNum//root.aptsubNum//1212
                         sub_model: subModel
                         btn_flag: root.btnFlag
@@ -1333,7 +1333,7 @@ Item {
                     width: parent.width
                     height: root.chromium_expanded ? (root.softNum + 1) * 40 : 40
                     model: softmainModel
-                    delegate: CruftDelegate{
+                    delegate: CacheDelegate{
                         sub_num: root.softNum//root.softsubNum//1212
                         sub_model: softsubModel
                         btn_flag: root.btnFlag
