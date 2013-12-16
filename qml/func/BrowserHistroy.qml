@@ -340,75 +340,32 @@ Item {
             spacing: 20
             Row {
                 spacing: 20
-                Item {
+                anchors.verticalCenter: parent.verticalCenter
+                Common.StyleButton {
                     id: internetbackBtn
                     visible: false
-                    width: 60
-                    height: 29
-                    Text {
-                        id:internetbackText
-                        height: 10
-                        anchors.centerIn: parent
-                        text: qsTr("Go back")//返回
-                        font.pointSize: 10
-                        color: "#318d11"
-                    }
-                    Rectangle {
-                        id: internetbtnImg
-                        anchors.top: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: internetbackText.width
-                        height: 1
-                        color: "transparent"
-                    }
-                    MouseArea {
-                        hoverEnabled: true
-                        anchors.fill: parent
-                        onEntered: internetbtnImg.color = "#318d11"
-                        onPressed: internetbtnImg.color = "#318d11"
-                        onReleased: internetbtnImg.color = "#318d11"
-                        onExited: internetbtnImg.color = "transparent"
-                        onClicked: {
-                            internetBtnRow.state = "BrowserWorkAGAIN";
-                        }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Go back")//返回
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        internetBtnRow.state = "BrowserWorkAGAIN";
                     }
                 }
-                Item {
+                Common.StyleButton {
                     id: internetrescanBtn
                     visible: false
-                    width: 49
-                    height: 29
-                    Text {
-                        id:internetrescanText
-                        height: 10
-                        anchors.centerIn: parent
-                        text: qsTr("Scan again")//重新扫描
-                        font.pointSize: 10
-                        color: "#318d11"
-                    }
-                    Rectangle {
-                        id: internetbtnImg2
-                        anchors.top: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: internetrescanText.width
-                        height: 1
-                        color: "transparent"
-                    }
-                    MouseArea {
-                        hoverEnabled: true
-                        anchors.fill: parent
-                        onEntered: internetbtnImg2.color = "#318d11"
-                        onPressed: internetbtnImg2.color = "#318d11"
-                        onReleased: internetbtnImg2.color = "#318d11"
-                        onExited: internetbtnImg2.color = "transparent"
-                        onClicked: {
-                            internetcacheBtn.text = qsTr("Start scanning");//开始扫描
-                            root.btn_flag = "history_scan";
-                            internetbackBtn.visible = false;
-                            internetrescanBtn.visible = false;
-                            browserstatus_label.visible = false;
-                            root.getData("BrowserWork");
-                        }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Scan again")//重新扫描
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        internetcacheBtn.text = qsTr("Start scanning");//开始扫描
+                        root.btn_flag = "history_scan";
+                        internetbackBtn.visible = false;
+                        internetrescanBtn.visible = false;
+                        browserstatus_label.visible = false;
+                        root.getData("BrowserWork");
                     }
                 }
             }
@@ -486,75 +443,32 @@ Item {
             spacing: 20
             Row {
                 spacing: 20
-                Item {
+                anchors.verticalCenter: parent.verticalCenter
+                Common.StyleButton {
                     id: chromiumbackBtn
                     visible: false
-                    width: 60
-                    height: 29
-                    Text {
-                        id:chromiumbackText
-                        height: 10
-                        anchors.centerIn: parent
-                        text: qsTr("Go back")//返回
-                        font.pointSize: 10
-                        color: "#318d11"
-                    }
-                    Rectangle {
-                        id: chromiumbtnImg
-                        anchors.top: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: chromiumbackText.width
-                        height: 1
-                        color: "transparent"
-                    }
-                    MouseArea {
-                        hoverEnabled: true
-                        anchors.fill: parent
-                        onEntered: chromiumbtnImg.color = "#318d11"
-                        onPressed: chromiumbtnImg.color = "#318d11"
-                        onReleased: chromiumbtnImg.color = "#318d11"
-                        onExited: chromiumbtnImg.color = "transparent"
-                        onClicked: {
-                            chromiumBtnRow.state = "ChromiumWorkAGAIN";
-                        }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Go back")//返回
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        chromiumBtnRow.state = "ChromiumWorkAGAIN";
                     }
                 }
-                Item {
+                Common.StyleButton {
                     id: chromiumrescanBtn
                     visible: false
-                    width: 49
-                    height: 29
-                    Text {
-                        id:chromiumrescanText
-                        height: 10
-                        anchors.centerIn: parent
-                        text: qsTr("Scan again")//重新扫描
-                        font.pointSize: 10
-                        color: "#318d11"
-                    }
-                    Rectangle {
-                        id: chromiumbtnImg2
-                        anchors.top: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: chromiumrescanText.width
-                        height: 1
-                        color: "transparent"
-                    }
-                    MouseArea {
-                        hoverEnabled: true
-                        anchors.fill: parent
-                        onEntered: chromiumbtnImg2.color = "#318d11"
-                        onPressed: chromiumbtnImg2.color = "#318d11"
-                        onReleased: chromiumbtnImg2.color = "#318d11"
-                        onExited: chromiumbtnImg2.color = "transparent"
-                        onClicked: {
-                            chromiumcacheBtn.text = qsTr("Start scanning");//开始扫描
-                            root.btn_flag3 = "chromium_scan";
-                            chromiumbackBtn.visible = false;
-                            chromiumrescanBtn.visible = false;
-                            chromiumstatus_label.visible = false;
-                            root.getData("ChromiumWork");
-                        }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Scan again")//重新扫描
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        chromiumcacheBtn.text = qsTr("Start scanning");//开始扫描
+                        root.btn_flag3 = "chromium_scan";
+                        chromiumbackBtn.visible = false;
+                        chromiumrescanBtn.visible = false;
+                        chromiumstatus_label.visible = false;
+                        root.getData("ChromiumWork");
                     }
                 }
             }
@@ -632,75 +546,32 @@ Item {
             spacing: 20
             Row {
                 spacing: 20
-                Item {
+                anchors.verticalCenter: parent.verticalCenter
+                Common.StyleButton {
                     id: filebackBtn
                     visible: false
-                    width: 60
-                    height: 29
-                    Text {
-                        id:filebackText
-                        height: 10
-                        anchors.centerIn: parent
-                        text: qsTr("Go back")//返回
-                        font.pointSize: 10
-                        color: "#318d11"
-                    }
-                    Rectangle {
-                        id: filebtnImg
-                        anchors.top: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: filebackText.width
-                        height: 1
-                        color: "transparent"
-                    }
-                    MouseArea {
-                        hoverEnabled: true
-                        anchors.fill: parent
-                        onEntered: filebtnImg.color = "#318d11"
-                        onPressed: filebtnImg.color = "#318d11"
-                        onReleased: filebtnImg.color = "#318d11"
-                        onExited: filebtnImg.color = "transparent"
-                        onClicked: {
-                            fileBtnRow.state = "SystemWorkAGAIN";
-                        }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Go back")//返回
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        fileBtnRow.state = "SystemWorkAGAIN";
                     }
                 }
-                Item {
+                Common.StyleButton {
                     id: filerescanBtn
                     visible: false
-                    width: 49
-                    height: 29
-                    Text {
-                        id:filerescanText
-                        height: 10
-                        anchors.centerIn: parent
-                        text: qsTr("Scan again")//重新扫描
-                        font.pointSize: 10
-                        color: "#318d11"
-                    }
-                    Rectangle {
-                        id: filebtnImg2
-                        anchors.top: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: filerescanText.width
-                        height: 1
-                        color: "transparent"
-                    }
-                    MouseArea {
-                        hoverEnabled: true
-                        anchors.fill: parent
-                        onEntered: filebtnImg2.color = "#318d11"
-                        onPressed: filebtnImg2.color = "#318d11"
-                        onReleased: filebtnImg2.color = "#318d11"
-                        onExited: filebtnImg2.color = "transparent"
-                        onClicked: {
-                            syscacheBtn.text = qsTr("Start scanning");//开始扫描
-                            root.btn_flag2 = "system_scan";
-                            filebackBtn.visible = false;
-                            filerescanBtn.visible = false;
-                            systemstatus_label.visible = false;
-                            root.getData("SystemWork");
-                        }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Scan again")//重新扫描
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        syscacheBtn.text = qsTr("Start scanning");//开始扫描
+                        root.btn_flag2 = "system_scan";
+                        filebackBtn.visible = false;
+                        filerescanBtn.visible = false;
+                        systemstatus_label.visible = false;
+                        root.getData("SystemWork");
                     }
                 }
             }

@@ -251,82 +251,38 @@ Item {
             spacing: 20
             Row {
                 spacing: 20
-                Item {
+                anchors.verticalCenter: parent.verticalCenter
+                Common.StyleButton {
                     id: backBtn
                     visible: false
-                    width: 60
-                    height: 29
-                    Text {
-                        id:backText
-                        height: 10
-                        anchors.centerIn: parent
-                        text: qsTr("Go back")//返回
-                        font.pointSize: 10
-                        color: "#318d11"
-                    }
-                    Rectangle {
-                        id: btnImg
-                        anchors.top: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: backText.width
-                        height: 1
-                        color: "transparent"
-                    }
-                    MouseArea {
-                        hoverEnabled: true
-                        anchors.fill: parent
-                        onEntered: btnImg.color = "#318d11"
-                        onPressed: btnImg.color = "#318d11"
-                        onReleased: btnImg.color = "#318d11"
-                        onExited: btnImg.color = "transparent"
-                        onClicked: {
-                            mainModel.clear();
-                            subModel.clear();//内容清空
-                            root.kernelNum = 0;//隐藏滑动条
-                            root.arrowShow = 0;//伸缩图标隐藏
-                            root.state = "KernelWorkAGAIN";//按钮的状态恢复初始值
-                        }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Go back")//返回
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        mainModel.clear();
+                        subModel.clear();//内容清空
+                        root.kernelNum = 0;//隐藏滑动条
+                        root.arrowShow = 0;//伸缩图标隐藏
+                        root.state = "KernelWorkAGAIN";//按钮的状态恢复初始值
                     }
                 }
-
-                Item {
+                Common.StyleButton {
                     id: rescanBtn
                     visible: false
-                    width: 49
-                    height: 29
-                    Text {
-                        id:rescanText
-                        height: 10
-                        anchors.centerIn: parent
-                        text: qsTr("Scan again")//重新扫描
-                        font.pointSize: 10
-                        color: "#318d11"
-                    }
-                    Rectangle {
-                        id: btnImg2
-                        anchors.top: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: rescanText.width
-                        height: 1
-                        color: "transparent"
-                    }
-                    MouseArea {
-                        hoverEnabled: true
-                        anchors.fill: parent
-                        onEntered: btnImg2.color = "#318d11"
-                        onPressed: btnImg2.color = "#318d11"
-                        onReleased: btnImg2.color = "#318d11"
-                        onExited: btnImg2.color = "transparent"
-                        onClicked: {
-                            actionBtn.text = qsTr("Start scanning");//开始扫描
-                            root.btnFlag = "kernel_scan";
-                            backBtn.visible = false;
-                            rescanBtn.visible = false;
-                            subModel.clear();//内容清空
-                            root.arrowShow = 0;//伸缩图标隐藏
-                            root.flag = false;
-                            root.getData();//重新获取数据
-                        }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Scan again")//重新扫描
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        actionBtn.text = qsTr("Start scanning");//开始扫描
+                        root.btnFlag = "kernel_scan";
+                        backBtn.visible = false;
+                        rescanBtn.visible = false;
+                        subModel.clear();//内容清空
+                        root.arrowShow = 0;//伸缩图标隐藏
+                        root.flag = false;
+                        root.getData();//重新获取数据
                     }
                 }
             }

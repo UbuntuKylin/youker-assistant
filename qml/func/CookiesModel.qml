@@ -350,64 +350,43 @@ Item {
         spacing: 20
         Row {
             spacing: 20
-            Item {
+            anchors.verticalCenter: parent.verticalCenter
+            Common.StyleButton {
                 id: backBtn
                 visible: false
-                width: 60
-                height: 29
-                Text {
-                    id:backText
-                    height: 10
-                    anchors.centerIn: parent
-                    text: qsTr("Go back")//返回
-                    font.pointSize: 10
-                    color: "#318d11"
-                }
-                Rectangle {
-                    id: btnImg
-                    anchors.top: parent.bottom
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: backText.width
-                    height: 1
-                    color: "transparent"
-                }
-                MouseArea {
-                    hoverEnabled: true
-                    anchors.fill: parent
-                    onEntered: btnImg.color = "#318d11"
-                    onPressed: btnImg.color = "#318d11"
-                    onReleased: btnImg.color = "#318d11"
-                    onExited: btnImg.color = "transparent"
-                    onClicked: {
-                        if(root.maincheck1 == false) {
-                            root.maincheck1 = true;
-                        }
-                        if(root.maincheck2 == false) {
-                            root.maincheck2 = true;
-                        }
-                        systemdispatcher.clear_cache_args();
-                        root.showNum1 = false;
-                        root.showNum2 = false;
-                        mainModel.clear();
-                        softmainModel.clear();
-                        mainModel.append({
-                                         "itemTitle": qsTr("Clean Firefox's Cookies"),
-                                         "picture": "../img/toolWidget/cookies.png",
-                                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
-                        softmainModel.append({
-                                         "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                         "picture": "../img/toolWidget/chromium.png",
-                                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
-
-                        subModel.clear();//内容清空
-                        root.aptNum = 0;//隐藏滑动条
-                        root.firefox_arrow_show = 0;//伸缩图标隐藏
-                        softsubModel.clear();//内容清空
-                        root.softNum = 0;//隐藏滑动条
-                        root.chromium_arrow_show = 0;//伸缩图标隐藏
-                        scrollItem.height = 2 * 40 + root.spaceValue*2;
-                        root.state = "AptWorkAGAIN";//按钮的状态恢复初始值
+                anchors.verticalCenter: parent.verticalCenter
+                wordname: qsTr("Go back")//返回
+                width: 40
+                height: 20
+                onClicked: {
+                    if(root.maincheck1 == false) {
+                        root.maincheck1 = true;
                     }
+                    if(root.maincheck2 == false) {
+                        root.maincheck2 = true;
+                    }
+                    systemdispatcher.clear_cache_args();
+                    root.showNum1 = false;
+                    root.showNum2 = false;
+                    mainModel.clear();
+                    softmainModel.clear();
+                    mainModel.append({
+                                     "itemTitle": qsTr("Clean Firefox's Cookies"),
+                                     "picture": "../img/toolWidget/cookies.png",
+                                     "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
+                    softmainModel.append({
+                                     "itemTitle": qsTr("Clean Chromium's Cookies"),
+                                     "picture": "../img/toolWidget/chromium.png",
+                                     "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
+
+                    subModel.clear();//内容清空
+                    root.aptNum = 0;//隐藏滑动条
+                    root.firefox_arrow_show = 0;//伸缩图标隐藏
+                    softsubModel.clear();//内容清空
+                    root.softNum = 0;//隐藏滑动条
+                    root.chromium_arrow_show = 0;//伸缩图标隐藏
+                    scrollItem.height = 2 * 40 + root.spaceValue*2;
+                    root.state = "AptWorkAGAIN";//按钮的状态恢复初始值
                 }
             }
         }
