@@ -1,7 +1,7 @@
 Source: youker-assistant
 Section: misc
 Priority: optional
-Maintainer: UbuntuKylin Team <ubuntukylin-members@list.launchpad.net>
+Maintainer: Ubuntu Kylin Team <ubuntukylin-members@list.launchpad.net>
 Build-Depends: debhelper (>= 9),
                dh-translations,
                libphonon-dev,
@@ -26,7 +26,7 @@ Depends: phonon-backend-gstreamer,
          ${python:Depends},
          ${shlibs:Depends},
 Description: Integrated tool to aid in routine system maintenance tasks
- Youker Assistant is a tool designed to help Ubuntu and UbuntuKylin 
+ Youker Assistant is a tool designed to help Ubuntu and Ubuntu Kylin 
  desktop users manage and maintain many aspects of their working 
  environment conveniently in a single application, providing a consistent
  user experience.
