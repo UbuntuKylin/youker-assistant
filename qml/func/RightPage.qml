@@ -129,26 +129,35 @@ Rectangle {
             leftMargin: 20
         }
 
-        SetWord {
+        Common.StyleButton {
             id: helplabel
             wordname: qsTr("Forum help")//论坛求助
             width: 50
             height: 20
-            flag: "BBS"
+//            flag: "BBS"
+            onClicked: {
+                Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
+            }
         }
-        SetWord {
+        Common.StyleButton {
             id: versionlabel
             wordname: qsTr("New version")//新版本特性
             width: 60
             height: 20
-            flag: "VersionFeature"
+//            flag: "VersionFeature"
+            onClicked: {
+                sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
+            }
         }
-        SetWord {
+        Common.StyleButton {
             id: buglabel
             wordname: qsTr("Report bug")//Bug提交
             width: 40
             height: 20
-            flag: "BUG"
+//            flag: "BUG"
+            onClicked: {
+                Qt.openUrlExternally("https://bugs.launchpad.net/youker-assistant");
+            }
         }
     }
 }

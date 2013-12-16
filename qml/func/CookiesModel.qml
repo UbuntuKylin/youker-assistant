@@ -62,7 +62,7 @@ Item {
                          "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
         softmainModel.append({
                          "itemTitle": qsTr("Clean Chromium's Cookies"),
-                         "picture": "../img/toolWidget/chrome.png",
+                         "picture": "../img/toolWidget/chromium.png",
                          "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
     }
 
@@ -162,7 +162,7 @@ Item {
                 softmainModel.clear();
                 softmainModel.append({
                                  "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                 "picture": "../img/toolWidget/chrome.png",
+                                 "picture": "../img/toolWidget/chromium.png",
                                  "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                 }
             else {
@@ -261,7 +261,7 @@ Item {
                                          "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
                         softmainModel.append({
                                          "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                         "picture": "../img/toolWidget/chrome.png",
+                                         "picture": "../img/toolWidget/chromium.png",
                                          "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                         systemdispatcher.clear_cache_args();
                         subModel.clear();//内容清空
@@ -291,7 +291,7 @@ Item {
                             softmainModel.clear();
                             softmainModel.append({
                                              "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                             "picture": "../img/toolWidget/chrome.png",
+                                             "picture": "../img/toolWidget/chromium.png",
                                              "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
 
                             systemdispatcher.clear_cache_args();
@@ -396,7 +396,7 @@ Item {
                                          "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
                         softmainModel.append({
                                          "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                         "picture": "../img/toolWidget/chrome.png",
+                                         "picture": "../img/toolWidget/chromium.png",
                                          "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
 
                         subModel.clear();//内容清空

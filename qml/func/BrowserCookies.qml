@@ -28,10 +28,10 @@ Item {
     property string title: qsTr("Clean the login information and protect personal privacy")//清理浏览器登录信息,保护个人隐私
     property string description: qsTr("Clean up the login information, support Firefox and Chromium browser")//清理上网时留下的登录信息,支持Firefox和Chromium浏览器
 
-    property string firefoxImage: "../img/toolWidget/cookies.png"
+    property string firefoxImage: "../img/toolWidget/firefox.png"
     property string firefoxTitle: qsTr("Clean Firefox's Cookies")//清理Firefox保存的Cookies
     property string firefoxDetail: qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")//清理Firefox浏览器自动保存的登录信息(Cookies)
-    property string chromiumImage: "../img/toolWidget/chrome.png"
+    property string chromiumImage: "../img/toolWidget/chromium.png"
     property string chromiumTitle: qsTr("Clean Chromium's Cookies")//清理Chromium保存的Cookies
     property string chromiumDetail: qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")//清理Chromium浏览器自动保存的登录信息(Cookies)
 
@@ -399,6 +399,22 @@ Item {
                         //点击伸缩图标时，说明肯定是有内容的，设置其下内容的隐藏/显示以及高度
                         yourselfListView.visible = !yourselfListView.visible;
                         scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                        if(yourselfListView.visible) {
+                            if(systemListView.visible) {
+                                scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                            else {
+                                scrollItem.height = yourselfListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                        }
+                        else {
+                            if(systemListView.visible) {
+                                scrollItem.height = systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                            else {
+                                scrollItem.height = 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                        }
                     }
                     onSendBrowserType: {
                         if(flag == "firefox") {
@@ -414,18 +430,35 @@ Item {
                                 if(yourselfListView.visible == true) {
                                     yourselfListView.visible = false;//3、隐藏扩展内容
                                 }
+                                scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                            else if(status == "rescan") {//点击重新扫描
+                                firefoxModel.clear();
+                                root.firefox_btn_flag = "cookies_scan";//1206
+                                root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
+                                root.firefox_reset = false;//1206
+                                if(root.firefox_expanded == true) {
+                                    root.firefox_expanded = false;//1、先传递给ListTitle.qml的伸缩值设为默认的false
+                                }
+                                root.firefox_arrow_show = 0;//2、然后传递给ListTitle.qml去隐藏伸展按钮
+                                if(yourselfListView.visible == true) {
+                                    yourselfListView.visible = false;//3、隐藏扩展内容
+                                }
+                                //开始扫描时获取cookies
+                                root.flag = false;
+                                root.getDataOfFirefox();
                             }
                             else {
                                 root.firefox_btn_flag = status;
                                 if (root.firefox_btn_flag == "cookies_scan") {
-                                    console.log("scan---f......");
+//                                    console.log("scan---f......");
                                     //开始扫描时获取cookies
                                     root.flag = false;
                                     root.getDataOfFirefox();
                                 }
                                 else if (root.firefox_btn_flag == "cookies_work") {
                                     if(root.firefox_check_flag) {
-                                        console.log("clean---f......");
+//                                        console.log("clean---f......");
                                         //开始清理cookies
                                         systemdispatcher.set_user_homedir_qt();
                                         systemdispatcher.cookies_clean_records_function_qt("firefox");
@@ -464,7 +497,22 @@ Item {
                     onClicked: {//伸缩箭头被点击
                         systemListView.visible = !systemListView.visible;
                         root.chromium_expanded = !root.chromium_expanded;
-                        scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                        if(systemListView.visible) {
+                            if(yourselfListView.visible) {
+                                scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                            else {
+                                scrollItem.height = systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                        }
+                        else {
+                            if(yourselfListView.visible) {
+                                scrollItem.height = yourselfListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                            else {
+                                scrollItem.height = 30*2 + root.space_value*4 + 20 + 10;
+                            }
+                        }
                     }
                     onSendBrowserType: {
                         if(status == "reset") {//点击重置按钮，清空数据
@@ -479,11 +527,28 @@ Item {
                             if(systemListView.visible == true) {
                                 systemListView.visible = false;//3、隐藏扩展内容
                             }
+                            scrollItem.height = yourselfListView.height + systemListView.height + 30*2 + root.space_value*4 + 20 + 10;
+                        }
+                        else if(status == "rescan") {//点击重置按钮，清空数据
+                            chromiumModel.clear();
+                            root.chromium_btn_flag = "cookies_scanc";//1206
+                            root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
+                            root.chromium_reset = false;//1206
+                            if(root.chromium_expanded == true) {
+                                root.chromium_expanded = false;//1、先传递给ListTitle.qml的伸缩值设为默认的false
+                            }
+                            root.chromium_arrow_show = 0;//2、然后传递给ListTitle.qml去隐藏伸展按钮
+                            if(systemListView.visible == true) {
+                                systemListView.visible = false;//3、隐藏扩展内容
+                            }
+                            //开始扫描时获取cookies
+                            root.flag = false;
+                            root.getDataOfChromium();
                         }
                         else {
                             root.chromium_btn_flag = status;
                             if (root.chromium_btn_flag == "cookies_scanc") {
-                                console.log("scan---c......");
+//                                console.log("scan---c......");
                                 //开始扫描时获取cookies
                                 root.flag = false;
                                 root.getDataOfChromium();
@@ -491,7 +556,7 @@ Item {
                             else if (root.chromium_btn_flag == "cookies_workc") {
                                 if(root.chromium_check_flag)
                                 {
-                                    console.log("clean---c......");
+//                                    console.log("clean---c......");
                                     //开始清理cookies
                                     systemdispatcher.set_user_homedir_qt();
                                     systemdispatcher.cookies_clean_records_function_qt("chromium");

@@ -106,19 +106,49 @@ Item {
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: qsTr("Change WindowTheme"); width: b1.width; flag: "WidgetTheme"}//更改窗口主题
+                            Common.StyleButton {
+                                wordname: qsTr("Change WindowTheme"); width: b1.width
+//                                flag: "WidgetTheme"
+                                onClicked: {
+                                    pageStack.push(widgetthemepage);
+                                }
+                            }//更改窗口主题
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter}
-                            SetWord {wordname: qsTr("Change IconSetting"); width: b2.width; flag: "Desktopicon"}//更改图标配置
+                            Common.StyleButton {
+                                wordname: qsTr("Change IconSetting"); width: b2.width
+//                                flag: "Desktopicon"
+                                onClicked: {
+                                    pageStack.push(desktopiconsetpage);
+                                }
+                            }//更改图标配置
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: qsTr("Change MousePointer"); width: b3.width; flag: "MousePointer"}//更改鼠标指针
+                            Common.StyleButton {
+                                wordname: qsTr("Change MousePointer"); width: b3.width
+//                                flag: "MousePointer"
+                                onClicked: {
+                                    pageStack.push(mousepointerpage);
+                                }
+                            }//更改鼠标指针
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: qsTr("Change SoundEffect"); width: b4.width; flag: "SoundEffects"}//更改声音效果
+                            Common.StyleButton {
+                                wordname: qsTr("Change SoundEffect"); width: b4.width
+//                                flag: "SoundEffects"
+                                onClicked: {
+                                    pageStack.push(soundeffectspage);
+                                }
+                            }//更改声音效果
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: qsTr("Change BootAnimation"); width: b5.width; flag: "BootAnimation"}//更改开机动画
+                            Common.StyleButton {
+                                wordname: qsTr("Change BootAnimation"); width: b5.width
+//                                flag: "BootAnimation"
+                                onClicked: {
+                                    pageStack.push(bootanimationpage);
+                                }
+                            }//更改开机动画
 
                         }
 
@@ -150,7 +180,13 @@ Item {
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: qsTr("Custom Launcher"); width: b6.width; flag: "LauncherTheme"}//自定义启动器
+                            Common.StyleButton {
+                                wordname: qsTr("Custom Launcher"); width: b6.width
+//                                flag: "LauncherTheme"
+                                onClicked: {
+                                    pageStack.push(launcherthemepage);
+                                }
+                            }//自定义启动器
                         }
                     }
                 }
@@ -190,11 +226,29 @@ Item {
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: qsTr("Change Default Font"); width: b7.width; flag: "DefaultFont"}//更改默认字体设置
+                            Common.StyleButton {
+                                wordname: qsTr("Change Default Font"); width: b7.width
+//                                flag: "DefaultFont"
+                                onClicked: {
+                                    pageStack.push(defaultfontpage);
+                                }
+                            }//更改默认字体设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: qsTr("Change Document Font"); width: b8.width; flag: "DocumentFont"}//更改文档字体设置
+                            Common.StyleButton {
+                                wordname: qsTr("Change Document Font"); width: b8.width
+//                                flag: "DocumentFont"
+                                onClicked: {
+                                    pageStack.push(documentfontpage);
+                                }
+                            }//更改文档字体设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: qsTr("Change Titlebar Font"); width: b9.width; flag: "TitlebarFont"}//更改窗口标题栏字体设置
+                            Common.StyleButton {
+                                wordname: qsTr("Change Titlebar Font"); width: b9.width
+//                                flag: "TitlebarFont"
+                                onClicked: {
+                                    pageStack.push(titlebarfontpage);
+                                }
+                            }//更改窗口标题栏字体设置
                         }
                     }
                 }
@@ -229,9 +283,21 @@ Item {
                         }
                         Row {
                             spacing: 5
-                            SetWord {wordname: qsTr("Change Touchpad"); width: b10.width; flag: "TouchpadSet"}//更改触摸板设置
+                            Common.StyleButton {
+                                wordname: qsTr("Change Touchpad"); width: b10.width
+//                                flag: "TouchpadSet"
+                                onClicked: {
+                                    pageStack.push(touchpadsetpage);
+                                }
+                            }//更改触摸板设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            SetWord {wordname: qsTr("Check Screen"); width: b11.width; flag: "CheckScreen"}//检测屏幕坏点
+                            Common.StyleButton {
+                                wordname: qsTr("Check Screen"); width: b11.width
+//                                flag: "CheckScreen"
+                                onClicked: {
+                                    sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
+                                }
+                            }//检测屏幕坏点
                         }
                     }
                 }

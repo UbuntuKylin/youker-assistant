@@ -222,7 +222,7 @@ Item {
             Image {
                 id: clearImage1
                 width: 40; height: 42
-                source:"../img/toolWidget/history-min.png"
+                source: "../img/toolWidget/firefox.png"
             }
             Column {
                 spacing: 5
@@ -258,7 +258,7 @@ Item {
             spacing: 15
             Image {
                 width: 40; height: 42
-                source:"../img/toolWidget/chrominumRecord.png"
+                source: "../img/toolWidget/chromium.png"
             }
             Column {
                 spacing: 5

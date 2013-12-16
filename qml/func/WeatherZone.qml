@@ -133,14 +133,17 @@ Rectangle {
         color: "#383838"
         anchors.left: parent.left
     }
-    SetWord {
+    Common.StyleButton {
         id: changeCityBtn
         visible: false
         anchors.left: locationText.right
         wordname: qsTr("[Change City]")//[更换城市]
         width: 80
         height: 20
-        flag: "ChangeCity"
+//        flag: "ChangeCity"
+        onClicked: {
+            sessiondispatcher.showChangeCityDialog(/*mainwindow.pos.x, mainwindow.pos.y*/);
+        }
     }
     Text {
         id: ptimeText
@@ -164,56 +167,44 @@ Rectangle {
 //                source: "../img/weather/d0.gif"
             }
 
-            SetWord {
+            Common.StyleButton {
                 id: forecastBtn
                 anchors.horizontalCenter: parent.horizontalCenter
                 wordname: qsTr("Forecast")//预  报
                 width: 40
                 height: 20
-                flag: "WeatherForecast"
+//                flag: "WeatherForecast"
+                onClicked: {
+                    //1、获取六天天气预报数据
+                    sessiondispatcher.get_forecast_weahter_qt();
+                    //2、开始给天气预报界面发送更新数据信号
+    //                sessiondispatcher.update_forecast_weather();
+                    //3、加载天气预报界面
+                    pageStack.push(weatherpage);
+                }
             }
-            SetWord {
+            Common.StyleButton {
                 id: preferencesBtn
                 anchors.horizontalCenter: parent.horizontalCenter
                 wordname: qsTr("Preference")//配  置
                 width: 40
                 height: 20
-                flag: "WeatherPreference"
+//                flag: "WeatherPreference"
+                onClicked: {
+                    sessiondispatcher.showWizardController();
+                }
             }
-            Rectangle {
+            Common.StyleButton {
+                id: refreshBtn
+                anchors.horizontalCenter: parent.horizontalCenter
+                wordname: qsTr("Update")//更  新
                 width: 40
                 height: 20
-                color: "transparent"
-                anchors.horizontalCenter: parent.horizontalCenter
-                Text {
-                    id:textname
-                    anchors.centerIn: parent
-                    text: qsTr("Update")//更  新
-                    font.pointSize: 10
-                    color: "#318d11"
-                }
-                Rectangle {
-                    id: btnImg
-                    anchors.top: parent.bottom
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: textname.width
-                    height: 1
-                    color: "transparent"
-                }
-                MouseArea {
-                    hoverEnabled: true
-                    anchors.fill: parent
-                    onEntered: btnImg.color = "#318d11"
-                    onPressed: btnImg.color = "#318d11"
-                    //要判断松开是鼠标位置
-                    onReleased: btnImg.color = "#318d11"
-                    onExited: btnImg.color = "transparent"
-                    onClicked: {
-                        if(sessiondispatcher.update_weather_data_qt()) {
-                            weahterzone.resetCurrentWeather();
-                            weahterzone.resetChangeCityBtn();
-                            toolkits.alertMSG(qsTr("Update completed!"), mainwindow.pos.x, mainwindow.pos.y);//更新完毕！
-                        }
+                onClicked: {
+                    if(sessiondispatcher.update_weather_data_qt()) {
+                        weahterzone.resetCurrentWeather();
+                        weahterzone.resetChangeCityBtn();
+                        toolkits.alertMSG(qsTr("Update completed!"), mainwindow.pos.x, mainwindow.pos.y);//更新完毕！
                     }
                 }
             }
@@ -263,7 +254,6 @@ Rectangle {
         id: updateTime
         interval: 60 * 10000;running: true;repeat: true
         onTriggered: {
-            console.log("upupupup");
             sessiondispatcher.get_current_weather_qt();
 //            if(sessiondispatcher.get_current_weather_qt()) {
 //                weahterzone.resetCurrentWeather();

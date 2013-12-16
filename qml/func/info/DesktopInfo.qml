@@ -216,7 +216,7 @@ Rectangle {
 ////                source: "../img/icons/book.png"
 ////                anchors.verticalCenter: parent.verticalCenter
 ////            }
-////            SetWord {
+////            Common.StyleButton {
 ////                id: views
 ////                anchors.verticalCenter: parent.verticalCenter
 ////                wordname: qsTr("view details")//查看详情
