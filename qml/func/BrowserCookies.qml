@@ -235,7 +235,7 @@ Item {
             size_num: number
             bgImage: ""
             browserFlag: "firefox"
-            onClicked: {
+            onRefreshed: {
                 root.flag = true;
                 root.getDataOfFirefox();
             }
@@ -250,7 +250,7 @@ Item {
             size_num: number
             bgImage: ""
             browserFlag: "chromium"
-            onClicked: {//清理完单个数据后，再次扫描刷新数据
+            onRefreshed: {//清理完单个数据后，再次扫描刷新数据
                 root.flag = true;
                 root.getDataOfChromium();
             }

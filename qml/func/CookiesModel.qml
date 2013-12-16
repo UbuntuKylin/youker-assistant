@@ -22,45 +22,38 @@ Item {
     height: 435
     property string title: qsTr("Clean the login information and protect personal privacy")//清理浏览器登录信息,保护个人隐私
     property string description: qsTr("Clean up the login information, support Firefox and Chromium browser")//清理上网时留下的登录信息,支持Firefox和Chromium浏览器
-
-    property string btnFlag: "apt_scan"//扫描或者清理的标记：apt_scan/apt_work
-    property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
-    property bool softresultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
-    property int aptsubNum: 0//扫描后得到的apt的项目总数
-//    property int aptNum: aptsubNum//001
-    property int aptNum
-    property int softsubNum: 0//扫描后得到的apt的项目总数
-    property int softNum: softsubNum//001
+    property bool firefoxResultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
+    property bool chromiumResultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
+    property int firefoxNum//扫描后得到的apt的项目总数
+    property int chromiumNum//扫描后得到的apt的项目总数
     property bool splitFlag: true//传递给ClearDelegate.qml,为true时切割字符串，为false时不切割字符串
     property bool flag: false//记录是清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
-
     property int spaceValue: 20
-    property int firefox_arrow_show: 0//传递给ClearDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
-    property int chromium_arrow_show: 0//传递给ClearDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
-    property bool firefox_expanded: false
-    property bool chromium_expanded: false
-
-    property bool maincheck1: true
-    property bool maincheck2: true
-    property bool showNum1: false
-    property bool showNum2: false
-    ListModel { id: mainModel }
-    ListModel { id: subModel }
-    ListModel { id: softmainModel }
-    ListModel { id: softsubModel }
+    property int firefox_arrow_show: 0//传递给CookiesDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
+    property int chromium_arrow_show: 0//传递给CookiesDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
+    property bool firefox_expanded: false//传递给CookiesDelegate.qml,觉得伸缩图标是扩展还是收缩
+    property bool chromium_expanded: false//传递给CookiesDelegate.qml,觉得伸缩图标是扩展还是收缩
+    property bool firefox_maincheck: true
+    property bool chromium_maincheck: true
+    property bool firefox_showNum: false//决定firefox的扫描结果数是否显示
+    property bool chromium_showNum: false//决定chromium的扫描结果数是否显示
+    ListModel { id: firefoxmainModel }
+    ListModel { id: firefoxsubModel }
+    ListModel { id: chromiummainModel }
+    ListModel { id: chromiumsubModel }
     property string firefox_btn_text: qsTr("Start scanning")//开始扫描
     property string chromium_btn_text: qsTr("Start scanning")//开始扫描
     property bool firefox_reset: false//firefox重置按钮默认隐藏
     property bool chromium_reset: false//chromium重置按钮默认隐藏
-    property string firefox_btn_flag: "cookies_scan"
-    property string chromium_btn_flag: "cookies_scanc"
+    property string firefox_btn_flag: "cookies_scan"//扫描或者清理的标记
+    property string chromium_btn_flag: "cookies_scanc"//扫描或者清理的标记
 
     Component.onCompleted: {
-        mainModel.append({
+        firefoxmainModel.append({
                          "itemTitle": qsTr("Clean Firefox's Cookies"),
                          "picture": "../img/toolWidget/cookies.png",
                          "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
-        softmainModel.append({
+        chromiummainModel.append({
                          "itemTitle": qsTr("Clean Chromium's Cookies"),
                          "picture": "../img/toolWidget/chromium.png",
                          "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
@@ -75,12 +68,12 @@ Item {
         }
         else {
             if (cookies_data.length == 0) {
-                root.resultFlag = false;//扫描内容不存在
+                root.firefoxResultFlag = false;//扫描内容不存在
             }
             else {
-                root.aptsubNum = cookies_data.length;//001
+                root.firefoxNum = cookies_data.length;//001
                 systemdispatcher.clear_cookies_args();
-                subModel.clear();
+                firefoxsubModel.clear();
                 var num = 0;
                 for (var i=0; i< cookies_data.length; i++) {
                 //sina.com.cn<2_2>10
@@ -89,43 +82,67 @@ Item {
                         num++;
                     }
                     else {
-                        subModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
+                        firefoxsubModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
                         systemdispatcher.set_cookies_args(splitlist[0]);
                     }
                 }
-                root.aptsubNum -= num;//001
-                root.aptNum = root.aptsubNum;//001
-                console.log("apt num:");
-                console.log(root.aptNum);
-                if(root.aptNum != 0) {
-                    root.resultFlag = true;//扫描的实际有效内容存在
-                    mainModel.clear();
-                    mainModel.append({
+                root.firefoxNum -= num;//001
+                console.log("firefoxNum:");
+                console.log(root.firefoxNum);
+                if(root.firefoxNum != 0) {
+                    root.firefoxResultFlag = true;//扫描的实际有效内容存在
+                    firefoxmainModel.clear();
+                    firefoxmainModel.append({
                                      "itemTitle": qsTr("Clean Firefox's Cookies"),
                                      "picture": "../img/toolWidget/cookies.png",
                                      "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
                 }
                 else {
-                    root.resultFlag = false;//扫描的实际有效内容不存在
+                    root.firefoxResultFlag = false;//扫描的实际有效内容不存在
                 }
             }
-            if(root.resultFlag == false) {
+            if(root.firefoxResultFlag == false) {
                 root.firefox_expanded = false;//伸缩箭头不扩展
                 root.firefox_arrow_show = 0;//伸缩箭头不显示
-
-                //此时若是通过一个一个单项清除导致的清空全部完成，则按钮状态改变、显示文字改变、重置按钮显示
+                root.firefox_showNum = false;
+                if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+                    //友情提示：      扫描内容为空，不再执行清理！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                }
+                else {//清理apt后的重新获取数据，此时不需要显示对话框
+                    root.flag = false;
+                }
                 root.firefox_btn_flag = "cookies_scan";//1206
                 root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
                 root.firefox_reset = false;//1206
+                if(root.chromium_expanded) {
+                    scrollItem.height = 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                }
+                else {
+                    scrollItem.height = 2 * 40 + root.spaceValue*2;
+                }
             }
-            else if(root.resultFlag == true) {
+            else if(root.firefoxResultFlag == true) {
                 root.firefox_expanded = true;//伸缩箭头扩展
                 root.firefox_arrow_show = 1;//伸缩箭头显示
+                root.firefox_showNum = true;
+                if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+                    toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                }
+                else {//清理software后的重新获取数据，此时不需要显示对话框
+                    root.flag = false;
+                }
 
                 //当真正扫描到内容时：按钮状态改变、显示文字改变、重置按钮显示
                 root.firefox_btn_flag = "cookies_work";//1206
                 root.firefox_btn_text = qsTr("All clean");//全部清理//1206
                 root.firefox_reset = true;//1206
+                if(root.chromium_expanded) {
+                    scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                }
+                else {
+                    scrollItem.height = (root.firefoxNum + 1) * 40 + 40 + root.spaceValue*2;
+                }
             }
         }
     }
@@ -138,9 +155,9 @@ Item {
             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Chromium browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
         }
         else {
-            root.softsubNum = cookies_data.length;//001
+            root.chromiumNum = cookies_data.length;//001
             systemdispatcher.clear_cookies_args();
-            softsubModel.clear();
+            chromiumsubModel.clear();
             var num = 0;
             for (var i=0; i< cookies_data.length; i++) {
             //  /home/kobe/.cache/software-center/piston-helper<2_2>3026257
@@ -149,53 +166,30 @@ Item {
                     num++;
                 }
                 else {
-                    softsubModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
+                    chromiumsubModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
                     systemdispatcher.set_cookies_args(splitlist[0]);
                 }
             }
-            root.softsubNum -= num;//001
-            root.softNum = root.softsubNum;//001
-            console.log("soft num:");
-            console.log(root.softNum);
-            if(root.softNum != 0) {
-                root.softresultFlag = true;//扫描的实际有效内容存在
-                softmainModel.clear();
-                softmainModel.append({
+            root.chromiumNum -= num;//001
+            console.log("chromiumNum:");
+            console.log(root.chromiumNum);
+            if(root.chromiumNum != 0) {
+                root.chromiumResultFlag = true;//扫描的实际有效内容存在
+                chromiummainModel.clear();
+                chromiummainModel.append({
                                  "itemTitle": qsTr("Clean Chromium's Cookies"),
                                  "picture": "../img/toolWidget/chromium.png",
                                  "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                 }
             else {
-                root.softresultFlag = false;//扫描的实际有效内容不存在
+                root.chromiumResultFlag = false;//扫描的实际有效内容不存在
             }
         }
-        if(root.softresultFlag == false) {
+        if(root.chromiumResultFlag == false) {
             root.chromium_expanded = false;//伸缩箭头不扩展
             root.chromium_arrow_show = 0;//伸缩箭头不显示
+            root.chromium_showNum = false;
 
-            //此时若是通过一个一个单项清除导致的清空全部完成，则按钮状态改变、显示文字改变、重置按钮显示
-            root.chromium_btn_flag = "cookies_scanc";//1206
-            root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
-            root.chromium_reset = false;//1206
-        }
-        else if(root.softresultFlag == true) {
-            root.chromium_expanded = true;//伸缩箭头扩展
-            root.chromium_arrow_show = 1;//伸缩箭头显示
-
-            //当真正扫描到内容时：按钮状态改变、显示文字改变、重置按钮显示
-            root.chromium_btn_flag = "cookies_workc";//1206
-            root.chromium_btn_text = qsTr("All clean");//全部清理//1206
-            root.chromium_reset = true;//1206
-        }
-    }
-
-    function getData() {
-        root.aptNum = 0;
-        root.softNum =0;
-        root.getDataOfFirefox();
-//        root.getDataOfChromium();
-        if(root.resultFlag == false && root.softresultFlag == false) {
-            root.state = "AptWorkEmpty";
             if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                 //友情提示：      扫描内容为空，不再执行清理！
                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -203,105 +197,120 @@ Item {
             else {//清理apt后的重新获取数据，此时不需要显示对话框
                 root.flag = false;
             }
+
+            root.chromium_btn_flag = "cookies_scanc";//1206
+            root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
+            root.chromium_reset = false;//1206
+            if(root.firefox_expanded) {
+                scrollItem.height = 40 + (root.firefoxNum + 1) * 40 + root.spaceValue*2;
+            }
+            else {
+                scrollItem.height = 2 * 40 + root.spaceValue*2;
+            }
         }
-        else {
+        else if(root.chromiumResultFlag == true) {
+            root.chromium_expanded = true;//伸缩箭头扩展
+            root.chromium_arrow_show = 1;//伸缩箭头显示
+            root.chromium_showNum = true;
+
             if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                 toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
             }
             else {//清理software后的重新获取数据，此时不需要显示对话框
                 root.flag = false;
             }
-            root.state = "AptWork";
-            actionBtn.text = qsTr("Start cleaning");//开始清理
-            root.btnFlag = "apt_work";
-            backBtn.visible = true;
-            rescanBtn.visible = true;
+
+            //当真正扫描到内容时：按钮状态改变、显示文字改变、重置按钮显示
+            root.chromium_btn_flag = "cookies_workc";//1206
+            root.chromium_btn_text = qsTr("All clean");//全部清理//1206
+            root.chromium_reset = true;//1206
+            if(root.firefox_expanded) {
+                scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+            }
+            else {
+                scrollItem.height = (root.chromiumNum + 1) * 40 + 40 + root.spaceValue*2;
+            }
         }
-        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
     }
 
+    //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
         target: systemdispatcher
-        onFinishCleanWorkError: {//清理出错时收到的信号
-            if (btnFlag == "apt_work") {
-                if (msg == "cache") {
-                    root.state = "AptWorkError";
+        onQuitCleanWork: {//用户在policykit验证时直接关闭验证或者点击取消
+            if (msg == "firefox") {
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+            }
+            else if (msg == "chromium") {
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+            }
+        }
+
+        onFinishCleanWorkError: {//清理过程中出错
+            if (msg == "firefox") {
+                if (root.firefox_btn_flag == "cookies_work") {
+                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                }
+            }
+            else if (msg == "chromium") {
+                if (root.chromium_btn_flag == "cookies_workc") {
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
         }
-        onFinishCleanWork: {//清理成功时收到的信号
-            if (root.btnFlag == "apt_work") {
-                if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-                }
-                else if (msg == "cache") {
-                    console.log("12--------");
-                    root.state = "AptWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
 
-
-
-//                    systemdispatcher.clear_cache_args();
-//                    subModel.clear();//内容清空
-//                    softsubModel.clear();//内容清空
-//                    root.aptNum = 0;//隐藏滑动条
-//                    root.softNum = 0;//隐藏滑动条
-
-                    //清理完毕后重新获取数据
-                    root.flag = true;
-                    if(root.maincheck1 && root.maincheck2) {//software-center
-                        console.log("123--------");
-                        mainModel.clear();
-                        softmainModel.clear();
-                        mainModel.append({
-                                         "itemTitle": qsTr("Clean Firefox's Cookies"),
-                                         "picture": "../img/toolWidget/cookies.png",
-                                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
-                        softmainModel.append({
-                                         "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                         "picture": "../img/toolWidget/chromium.png",
-                                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
-                        systemdispatcher.clear_cache_args();
-                        subModel.clear();//内容清空
-                        softsubModel.clear();//内容清空
-                        root.aptNum = 0;//隐藏滑动条
-                        root.softNum = 0;//隐藏滑动条
-                        sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
+        onFinishCleanWork: {//清理正常完成
+            if (msg == "") {
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+            }
+            else if (msg == "firefox") {
+                if (root.firefox_btn_flag == "cookies_work") {
+                    systemdispatcher.clear_cookies_args();
+                    firefoxsubModel.clear();//内容清空
+                    firefoxmainModel.clear();
+                    firefoxmainModel.append({
+                                     "itemTitle": qsTr("Clean Firefox's Cookies"),
+                                     "picture": "../img/toolWidget/cookies.png",
+                                     "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
+                    root.firefox_expanded = false;//伸缩箭头不扩展
+                    root.firefox_arrow_show = 0;//伸缩箭头不显示
+                    root.firefox_showNum = false;
+                    root.firefox_btn_flag = "cookies_scan";//1206
+                    root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
+                    root.firefox_reset = false;//1206
+                    root.firefoxNum = 0;//隐藏滑动条
+                    if(root.chromium_expanded) {
+                        scrollItem.height = 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
                     }
                     else {
-                        if(root.maincheck1) {
-                            console.log("1234--------");
-                            mainModel.clear();
-                            mainModel.append({
-                                             "itemTitle": qsTr("Clean Firefox's Cookies"),
-                                             "picture": "../img/toolWidget/cookies.png",
-                                             "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
-
-                            systemdispatcher.clear_cache_args();
-                            subModel.clear();//内容清空
-                            softsubModel.clear();//内容清空
-                            root.aptNum = 0;//隐藏滑动条
-                            root.softNum = 0;//隐藏滑动条
-                            sessiondispatcher.cache_scan_function_qt("apt");
-                        }
-                        else if(root.maincheck2) {
-                            console.log("12345--------");
-                            softmainModel.clear();
-                            softmainModel.append({
-                                             "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                             "picture": "../img/toolWidget/chromium.png",
-                                             "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
-
-                            systemdispatcher.clear_cache_args();
-                            subModel.clear();//内容清空
-                            softsubModel.clear();//内容清空
-                            root.aptNum = 0;//隐藏滑动条
-                            root.softNum = 0;//隐藏滑动条
-                            sessiondispatcher.cache_scan_function_qt("software-center");
-                        }
+                        scrollItem.height = 2 * 40 + root.spaceValue*2;
                     }
+                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                }
+            }
+            else if (msg == "chromium") {
+                if (root.chromium_btn_flag == "cookies_workc") {
+                    systemdispatcher.clear_cookies_args();
+                    chromiumsubModel.clear();//内容清空
+                    chromiummainModel.clear();
+                    chromiummainModel.append({
+                                     "itemTitle": qsTr("Clean Chromium's Cookies"),
+                                     "picture": "../img/toolWidget/chromium.png",
+                                     "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
+                    root.chromium_expanded = false;//伸缩箭头不扩展
+                    root.chromium_arrow_show = 0;//伸缩箭头不显示
+                    root.chromium_showNum = false;
+                    root.chromium_btn_flag = "cookies_scanc";//1206
+                    root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
+                    root.chromium_reset = false;//1206
+                    root.chromiumNum = 0;//隐藏滑动条
+                    if(root.firefox_expanded) {
+                        scrollItem.height = 40 + (root.firefoxNum + 1) * 40 + root.spaceValue*2;
+                    }
+                    else {
+                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+                    }
+                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 }
             }
         }
@@ -345,91 +354,9 @@ Item {
         }
     }
 
-    Row{
-        anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 40 }
-        spacing: 20
-        Row {
-            spacing: 20
-            anchors.verticalCenter: parent.verticalCenter
-            Common.StyleButton {
-                id: backBtn
-                visible: false
-                anchors.verticalCenter: parent.verticalCenter
-                wordname: qsTr("Go back")//返回
-                width: 40
-                height: 20
-                onClicked: {
-                    if(root.maincheck1 == false) {
-                        root.maincheck1 = true;
-                    }
-                    if(root.maincheck2 == false) {
-                        root.maincheck2 = true;
-                    }
-                    systemdispatcher.clear_cache_args();
-                    root.showNum1 = false;
-                    root.showNum2 = false;
-                    mainModel.clear();
-                    softmainModel.clear();
-                    mainModel.append({
-                                     "itemTitle": qsTr("Clean Firefox's Cookies"),
-                                     "picture": "../img/toolWidget/cookies.png",
-                                     "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
-                    softmainModel.append({
-                                     "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                     "picture": "../img/toolWidget/chromium.png",
-                                     "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
-
-                    subModel.clear();//内容清空
-                    root.aptNum = 0;//隐藏滑动条
-                    root.firefox_arrow_show = 0;//伸缩图标隐藏
-                    softsubModel.clear();//内容清空
-                    root.softNum = 0;//隐藏滑动条
-                    root.chromium_arrow_show = 0;//伸缩图标隐藏
-                    scrollItem.height = 2 * 40 + root.spaceValue*2;
-                    root.state = "AptWorkAGAIN";//按钮的状态恢复初始值
-                }
-            }
-        }
-        Common.Button {
-            id: actionBtn
-            width: 120
-            height: 39
-            hoverimage: "green1.png"
-            text: qsTr("Start scanning")//开始扫描
-            fontsize: 15
-            anchors.verticalCenter: parent.verticalCenter
-            onClicked: {
-                if (root.btnFlag == "apt_scan") {//扫描
-                    root.flag = false;
-                    root.getData();
-                    if(root.maincheck1 && root.maincheck2) {//software-center
-                        sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
-                    }
-                    else {
-                        if(root.maincheck1) {
-                            sessiondispatcher.cache_scan_function_qt("apt");
-                        }
-                        else if(root.maincheck2) {
-                            sessiondispatcher.cache_scan_function_qt("software-center");
-                        }
-                    }
-                }
-                else if (root.btnFlag == "apt_work") {//清理
-                    if(root.resultFlag || root.softresultFlag) {//扫描得到的实际内容存在时
-                        console.log(systemdispatcher.get_cache_args());
-                        systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_cache_args(), "cache");
-                    }
-                    else {//扫描得到的实际内容不存在时
-                        //友情提示：        对不起，您没有选择需要清理的项，请确认！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                    }
-                }
-            }
-        }
-    }
     //分割条
     Rectangle {
-        id: apt_splitbar
+        id: splitbar
         anchors {
             top: titlebar.bottom
             topMargin: 18
@@ -459,23 +386,23 @@ Item {
                 ListView {
                     id: aptListView
                     width: parent.width
-                    height: root.firefox_expanded ? (root.aptNum + 1) * 40 : 40
-                    model: mainModel
+                    height: root.firefox_expanded ? (root.firefoxNum + 1) * 40 : 40
+                    model: firefoxmainModel
                     delegate: CookiesDelegate{
-                        sub_num: root.aptNum//root.aptsubNum//1212
-                        sub_model: subModel
+                        sub_num: root.firefoxNum
+                        sub_model: firefoxsubModel
                         btn_flag: root.firefox_btn_flag
                         flag: "firefox"
                         actionTitle: root.firefox_btn_text
                         resetStatus: root.firefox_reset
-                        showNum: root.showNum1
+                        showNum: root.firefox_showNum
                         arrow_display: root.firefox_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
                         expanded: root.firefox_expanded//firefox_expanded为true时，箭头向下，内容展开;firefox_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
                         onSendBrowserType: {
                             if(browserFlag == "firefox") {
                                 if(status == "reset") {//点击重置按钮，清空数据
-                                    subModel.clear();
+                                    firefoxsubModel.clear();
                                     root.firefox_btn_flag = "cookies_scan";//1206
                                     root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.firefox_reset = false;//1206
@@ -483,9 +410,16 @@ Item {
                                         root.firefox_expanded = false;//1、先传递给CookiesDelegate.qml的伸缩值设为默认的false
                                     }
                                     root.firefox_arrow_show = 0;//2、然后传递给CookiesDelegate.qml去隐藏伸展按钮
+                                    root.firefox_showNum = false;//隐藏扫描的数目
+                                    if(root.chromium_expanded) {
+                                        scrollItem.height = 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                                    }
+                                    else {
+                                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+                                    }
                                 }
-                                else if(status == "rescan") {
-                                    subModel.clear();
+                                else if(status == "rescan") {//点击重新扫描按钮
+                                    firefoxsubModel.clear();
                                     root.firefox_btn_flag = "cookies_scan";//1206
                                     root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.firefox_reset = false;//1206
@@ -493,7 +427,22 @@ Item {
                                         root.firefox_expanded = false;//1、先传递给CookiesDelegate.qml的伸缩值设为默认的false
                                     }
                                     root.firefox_arrow_show = 0;//2、然后传递给CookiesDelegate.qml去隐藏伸展按钮
+                                    root.firefox_showNum = false;//隐藏扫描的数目
                                     root.flag = false;
+                                    root.getDataOfFirefox();
+                                }
+                                else if(status == "refresh") {//清理完某个子项后自动刷新列表
+                                    console.log("---*****2222------");
+                                    firefoxsubModel.clear();
+                                    root.firefox_btn_flag = "cookies_scan";//1206
+                                    root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
+                                    root.firefox_reset = false;//1206
+                                    if(root.firefox_expanded == true) {
+                                        root.firefox_expanded = false;//1、先传递给CookiesDelegate.qml的伸缩值设为默认的false
+                                    }
+                                    root.firefox_arrow_show = 0;//2、然后传递给CookiesDelegate.qml去隐藏伸展按钮
+                                    root.firefox_showNum = false;//隐藏扫描的数目
+                                    root.flag = true;
                                     root.getDataOfFirefox();
                                 }
                                 else {
@@ -505,38 +454,34 @@ Item {
                                         root.getDataOfFirefox();
                                     }
                                     else if (root.firefox_btn_flag == "cookies_work") {
-                                        if(root.firefox_check_flag) {
+//                                        if(root.firefox_check_flag) {
                                             console.log("clean---f......");
                                             //开始清理cookies
-//                                            systemdispatcher.set_user_homedir_qt();
-//                                            systemdispatcher.cookies_clean_records_function_qt("firefox");
-                                        }
-                                        else {
-                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                                        }
+                                            systemdispatcher.set_user_homedir_qt();
+                                            systemdispatcher.cookies_clean_records_function_qt("firefox");
+//                                        }
+//                                        else {
+//                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                                        }
                                     }
                                 }
                             }
                         }
-                        onBrowserArrowClicked: {//
-//                            console.lmaincheck1og("111");
-//                            console.log(str);
-//                            console.log(expand_flag);
-//                            scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
-                            if(browserFlag == "firefox") {//1212
+                        onBrowserArrowClicked: {
+                            if(browserFlag == "firefox") {
                                 if(expand_flag == true) {
                                     root.firefox_expanded = true;
                                     if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = (root.aptNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 2) * 40 + root.spaceValue*2;
                                     }
                                 }
                                 else {
                                     root.firefox_expanded = false;
                                     if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.softNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.chromiumNum + 2) * 40 + root.spaceValue*2;
                                     }
                                     else {
                                         scrollItem.height = 2* 40 + root.spaceValue*2;
@@ -559,13 +504,13 @@ Item {
                 ListView {
                     id: softListView
                     width: parent.width
-                    height: root.chromium_expanded ? (root.softNum + 1) * 40 : 40
-                    model: softmainModel
+                    height: root.chromium_expanded ? (root.chromiumNum + 1) * 40 : 40
+                    model: chromiummainModel
                     delegate: CookiesDelegate{
-                        sub_num: root.softNum//root.softsubNum//1212
-                        sub_model: softsubModel
+                        sub_num: root.chromiumNum
+                        sub_model: chromiumsubModel
                         btn_flag: root.chromium_btn_flag
-                        showNum: root.showNum2
+                        showNum: root.chromium_showNum
                         flag: "chromium"
                         actionTitle: root.chromium_btn_text
                         resetStatus: root.chromium_reset
@@ -575,7 +520,7 @@ Item {
                         onSendBrowserType: {
                             if(browserFlag == "chromium") {
                                 if(status == "reset") {//点击重置按钮，清空数据
-                                    softsubModel.clear();
+                                    chromiumsubModel.clear();
                                     root.chromium_btn_flag = "cookies_scanc";//1206
                                     root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.chromium_reset = false;//1206
@@ -583,9 +528,16 @@ Item {
                                         root.chromium_expanded = false;//1、先传递给CookiesDelegate.qml的伸缩值设为默认的false
                                     }
                                     root.chromium_arrow_show = 0;//2、然后传递给CookiesDelegate.qml去隐藏伸展按钮
+                                    root.chromium_showNum = false;//隐藏扫描的数目
+                                    if(root.firefox_expanded) {
+                                        scrollItem.height = 40 + (root.firefoxNum + 1) * 40 + root.spaceValue*2;
+                                    }
+                                    else {
+                                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+                                    }
                                 }
                                 else if(status == "rescan") {
-                                    softsubModel.clear();
+                                    chromiumsubModel.clear();
                                     root.chromium_btn_flag = "cookies_scanc";//1206
                                     root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.chromium_reset = false;//1206
@@ -593,7 +545,21 @@ Item {
                                         root.chromium_expanded = false;//1、先传递给CookiesDelegate.qml的伸缩值设为默认的false
                                     }
                                     root.chromium_arrow_show = 0;//2、然后传递给CookiesDelegate.qml去隐藏伸展按钮
+                                    root.chromium_showNum = false;//隐藏扫描的数目
                                     root.flag = false;
+                                    root.getDataOfChromium();
+                                }
+                                else if(status == "refresh") {//清理完某个子项后自动刷新列表
+                                    chromiumsubModel.clear();
+                                    root.chromium_btn_flag = "cookies_scanc";//1206
+                                    root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
+                                    root.chromium_reset = false;//1206
+                                    if(root.chromium_expanded == true) {
+                                        root.chromium_expanded = false;//1、先传递给CookiesDelegate.qml的伸缩值设为默认的false
+                                    }
+                                    root.chromium_arrow_show = 0;//2、然后传递给CookiesDelegate.qml去隐藏伸展按钮
+                                    root.chromium_showNum = false;//隐藏扫描的数目
+                                    root.flag = true;
                                     root.getDataOfChromium();
                                 }
                                 else {
@@ -605,39 +571,35 @@ Item {
                                         root.getDataOfChromium();
                                     }
                                     else if (root.chromium_btn_flag == "cookies_workc") {
-                                        if(root.chromium_check_flag)
-                                        {
+//                                        if(root.chromium_check_flag)
+//                                        {
                                             console.log("clean---c......");
                                             //开始清理cookies
-//                                            systemdispatcher.set_user_homedir_qt();
-//                                            systemdispatcher.cookies_clean_records_function_qt("chromium");
-                                        }
-                                        else {
-                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                                        }
+                                            systemdispatcher.set_user_homedir_qt();
+                                            systemdispatcher.cookies_clean_records_function_qt("chromium");
+//                                        }
+//                                        else {
+//                                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                                        }
                                     }
                                 }
                             }
                         }
                         onBrowserArrowClicked: {
-//                            console.log("222");
-//                            console.log(str);
-//                            console.log(expand_flag);
-//                            scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
                             if(browserFlag == "chromium") {//1212
                                 if(expand_flag == true) {
                                     root.chromium_expanded = true;
                                     if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = (root.softNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.chromiumNum + 2) * 40 + root.spaceValue*2;
                                     }
                                 }
                                 else {
                                     root.chromium_expanded = false;
                                     if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.aptNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 2) * 40 + root.spaceValue*2;
                                     }
                                     else {
                                         scrollItem.height = 2* 40 + root.spaceValue*2;
@@ -659,42 +621,4 @@ Item {
             }
         }
     }
-
-    states: [
-        State {
-            name: "AptWork"
-            PropertyChanges { target: actionBtn; text:qsTr("Start cleaning")}//开始清理
-            PropertyChanges { target: root; btnFlag: "apt_work" }
-            PropertyChanges { target: backBtn; visible: true}
-//            PropertyChanges { target: rescanBtn; visible: true}
-        },
-        State {
-            name: "AptWorkAGAIN"
-            PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "apt_scan" }
-            PropertyChanges { target: backBtn; visible: false}
-//            PropertyChanges { target: rescanBtn; visible: false}
-        },
-        State {
-            name: "AptWorkError"
-            PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "apt_scan" }
-            PropertyChanges { target: backBtn; visible: false}
-//            PropertyChanges { target: rescanBtn; visible: false}
-        },
-        State {
-            name: "AptWorkFinish"
-            PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "apt_scan" }
-            PropertyChanges { target: backBtn; visible: false}
-//            PropertyChanges { target: rescanBtn; visible: false}
-        },
-        State {
-            name: "AptWorkEmpty"
-            PropertyChanges { target: actionBtn; text:qsTr("Start scanning")}//开始扫描
-            PropertyChanges { target: root; btnFlag: "apt_scan" }
-            PropertyChanges { target: backBtn; visible: false}
-//            PropertyChanges { target: rescanBtn; visible: false}
-        }
-    ]
 }

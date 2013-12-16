@@ -31,7 +31,7 @@ Item {
     property bool selectable: false
     property bool split_status: false
     property string browserFlag//浏览器标记
-    signal clicked
+    signal refreshed();
     width: 850
     height: 30
     clip: true
@@ -53,7 +53,7 @@ Item {
             }
             else if (msg == "cookies") {
                 toolkits.alertMSG(qsTr("Cleanup Successfully!"), mainwindow.pos.x, mainwindow.pos.y);//清理成功！
-                container.clicked();//清理完单个数据后，通过clicked信号告诉BrowserCookies.qml去进行数据再次扫描刷新的操作
+                container.refreshed();//清理完单个数据后，通过clicked信号告诉BrowserCookies.qml去进行数据再次扫描刷新的操作
             }
         }
     }

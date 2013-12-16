@@ -101,25 +101,9 @@ Item {
                     onPressed: {
                         expanded = !expanded      //扫描出的子项是否下拉显示的控制变量
                         if(heightMark==listViewDelegate.sub_num){  //通过对heightMark的赋值来实现子项的下拉显示与收缩不显示
-//                            check.checkedbool=false;      //子项收缩时,将总checkbox回到勾选状态
-//                            check.checked="true";
                             heightMark=0;
                         }
                         else if(heightMark==0){
-//                            if(sub_num>0){//子项下拉显示时，根据总checkbox状态进行赋值控制
-//                                if(check.checked=="true")
-//                                {
-//                                    check.checkedbool=true;
-//                                    check_num=sub_num;
-//                                    check.checked ="true"
-//                                }
-//                                else if(check.checked=="false")
-//                                {
-//                                    check_num=sub_num-1;
-//                                    check.checkedbool=false;
-//                                    check.checked ="false"
-//                                }
-//                            }
                             heightMark=listViewDelegate.sub_num;
                         }
                         listViewDelegate.subpressed(heightMark); //将heightMark的值传给清理界面实现对是否下拉显示子项的控制
@@ -135,8 +119,6 @@ Item {
             width: 850
             clip: true
             //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
-//            height: expanded ? delegate.expandedItemCount * itemHeight : 0
-//            opacity: 1
             height: delegate.expandedItemCount * itemHeight
             opacity: listViewDelegate.expanded ? 1 : 0
             ListView{
