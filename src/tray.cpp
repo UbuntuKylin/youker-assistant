@@ -48,7 +48,7 @@ Tray::Tray(QWidget *parent)
     connect(frame, SIGNAL(accelerate_memory()), this, SLOT(startMemoryAccelerate()));
 
     QTimer *timer = new QTimer(this);
-    timer->setInterval(3000);
+    timer->setInterval(1000);
     connect(timer,SIGNAL(timeout()),this,SLOT(updateData()));
     timer->start();
 }
