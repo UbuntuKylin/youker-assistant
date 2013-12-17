@@ -368,18 +368,28 @@ Item {
 //        verticalAlignment: Text.AlignVCenter
 //    }
 
-//    Text {
-//        text: container.descript
-//        anchors {
-//            left: itemText.right
-//            top: parent.top
-//            leftMargin: 20
-//            verticalCenter: container.verticalCenter
-//        }
-//        color: container.fontColor
-//        elide: Text.ElideRight
-//        verticalAlignment: Text.AlignVCenter
-//    }
+    Text {
+        text: {
+            if(btn_flag == "largestfile_work") {
+                container.descript
+            }
+            else {
+                ""
+            }
+        }
+        visible: (btn_flag == "largestfile_work") ? true : false
+        anchors {
+            left: itemText.right
+            top: parent.top
+            leftMargin: 20
+            verticalCenter: container.verticalCenter
+        }
+        wrapMode: Text.WordWrap
+        width: 700
+        color: container.fontColor
+        elide: Text.ElideRight
+        verticalAlignment: Text.AlignVCenter
+    }
     Row {
         spacing: 10
         anchors {

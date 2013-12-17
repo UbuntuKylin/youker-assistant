@@ -9,8 +9,9 @@ youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
   * Change UbuntuKylin to Ubuntu Kylin.
   * Modify calculation method of system memory allocation(LP: #1242579).
   * Refresh net speed every second to resolve the wrong displaying net flow(LP: #1237891).
+  * Modify LargestFile.qml.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 16 Dec 2013 09:14:40 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 17 Dec 2013 09:19:00 +0800
 
 youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
 
