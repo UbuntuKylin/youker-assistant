@@ -434,7 +434,7 @@ void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
 }
 
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
-    KThread *thread = new KThread(strlist, systemiface, "onekey_clean_crufts_function");
+    KThread *thread = new KThread(strlist, systemiface, "clean_by_main_one_key");
     thread->start();
 }
 void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {

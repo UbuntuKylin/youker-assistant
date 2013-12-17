@@ -28,8 +28,8 @@ KThread::~KThread() {
     stop();
 }
 void KThread::run() {
-    if(methodName == "onekey_clean_crufts_function") {
-        iface->call("onekey_clean_crufts_function", list);
+    if(methodName == "clean_by_main_one_key") {
+        iface->call("clean_by_main_one_key", list);
     }
     else if(methodName == "clean_by_second_one_key") {
         iface->call("clean_by_second_one_key", list);

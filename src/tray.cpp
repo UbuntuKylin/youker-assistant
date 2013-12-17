@@ -84,18 +84,18 @@ void Tray::updateData() {
     double up_final = up_now - up_before;
     double down_final = down_now - down_before;
 
-//    if(up_final < 1024) {
-        up_speed = QString::number(up_final,'f',0);
-//    }
-//    else if(up_final >= 1024) {
-//        up_speed = QString::number(up_final/1024.0 + up_final%1024.0,'f',2);
-//    }
-//    if(down_final < 1024) {
-        down_speed = QString::number(down_final,'f',0);
-//    }
-//    else if(down_final >= 1024) {
-//        down_speed = QString::number(down_final/1024.0 + down_final%1024.0,'f',2);
-//    }
+    if(up_final < 1024) {
+        up_speed = QString("%1%2").arg(up_final).arg("K/s");
+    }
+    else if(up_final >= 1024) {
+        up_speed = QString("%1%2").arg(QString::number((float)up_final/1024,'f',2)).arg("M/s");
+    }
+    if(down_final < 1024) {
+        down_speed = QString("%1%2").arg(down_final).arg("K/s");
+    }
+    else if(down_final >= 1024) {
+        down_speed = QString("%1%2").arg(QString::number((float)down_final/1024,'f',2)).arg("M/s");
+    }
 
     double trans_cpu = sedispather->get_cpu_percent_qt();
     cpu_value = QString::number(trans_cpu, 'f', 0);
@@ -107,18 +107,8 @@ void Tray::updateData() {
     ratio = QString::number(trans,'f',0);
 
     emit sysc_data(up_speed, down_speed, ratio, used_memory, free_memory, cpu_value);
-//    if(up_final < 1024) {
-        this->uplabel->setText(up_speed + "KiB/s");
-//    }
-//    else if(up_final >= 1024) {
-//        this->uplabel->setText(up_speed + "MiB/s");
-//    }
-//    if(down_final < 1024) {
-        this->downlabel->setText(down_speed + "KiB/s");
-//    }
-//    else if(down_final >= 1024) {
-//        this->downlabel->setText(down_speed + "MiB/s");
-//    }
+    this->uplabel->setText(up_speed);
+    this->downlabel->setText(down_speed);
     this->ratiolabel->setText(ratio + "%");
     ratio_sus = ratio.toInt();
     update();

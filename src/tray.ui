@@ -19,7 +19,7 @@
   <widget class="QLabel" name="uplabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>18</x>
      <y>-1</y>
      <width>31</width>
      <height>20</height>
@@ -35,7 +35,7 @@
   <widget class="QLabel" name="downlabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>18</x>
      <y>14</y>
      <width>31</width>
      <height>20</height>
