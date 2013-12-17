@@ -26,6 +26,7 @@ Rectangle {
     property string actiontext: qsTr("Choose the theme you want. The first theme on the page is the current theme.")//选择您想设置的主题。优客助手启动时页面上的第一个主题为系统当前使用的主题。
     property string init_theme: ""
     property string selected_theme: ""
+    property int themeIndex: 0//序号
 
     Component.onCompleted: {
         statusImage.visible = false;
@@ -39,6 +40,12 @@ Rectangle {
             if (i!=0 && syslist[i] == widgetthemepage.init_theme)
                 themeModel.remove(i);
         }
+//        for(var i=0; i < syslist.length; i++) {
+//            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
+//        }
+//        for(var i=0; i < syslist.length; i++) {
+//            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
+//        }
         //将系统初始的标题栏字体写入QSetting配置文件
         sessiondispatcher.write_default_configure_to_qsetting_file("theme", "widgettheme", widgetthemepage.init_theme);
     }
@@ -93,6 +100,8 @@ Rectangle {
                 onExited: btnImg.source = ""
                 onClicked: {
 //                    griditem.GridView.view.currentIndex = index;
+//                    console.log(index);
+//                    widgetthemepage.themeIndex = index;
                     widgetthemepage.selected_theme = name;
                     sessiondispatcher.set_theme_qt(name);
                     statusImage.visible = true;
@@ -159,6 +168,14 @@ Rectangle {
         }
     }
 
+//    Image {
+//        id: imagframe
+//        source: "../../img/skin/frame.png"
+//        x:156*(widgetthemepage.themeIndex + 1)
+//        y:156
+//        opacity: 0.8
+//    }
+
     //顶层工具栏
     Bars.TopBar {
         id: topBar
@@ -171,12 +188,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
 
@@ -188,12 +208,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
          }
         onRestoreBtnClicked: {
             var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "widgettheme");

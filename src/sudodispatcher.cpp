@@ -72,7 +72,7 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
     QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(startUpdateSoftwareSource()));
 
     //多余包和内核包删除过程信号绑定
-    QObject::connect(sudoiface,SIGNAL(percent_remove_packages(QString)),this,SLOT(handlerRemoveProgress(QString)));
+    QObject::connect(sudoiface,SIGNAL(status_remove_packages(QString,QString)),this,SLOT(handlerRemoveProgress(QString,QString)));
 }
 
 QString SudoDispatcher::get_sudo_daemon_qt() {
@@ -94,12 +94,6 @@ void SudoDispatcher::handlerClearDeb(QString msg) {
 
 void SudoDispatcher::handlerClearDebError(QString msg) {
      emit finishCleanDebError(msg);
-}
-
-void SudoDispatcher::handlerRemoveProgress(QString msg) {
-    qDebug() << "111";
-    qDebug() << msg;
-    emit sendProgressToQML(msg);
 }
 
 //得到下载或者是操作过程中发送过来的数据，在显示在进度条上之前处理优化下
@@ -140,7 +134,6 @@ QString SudoDispatcher::dealProgressData(QString type, QString msg) {
     }
     else if(type == "apt_start"){
         ratio_sus = 0;
-
     }
     else if(type == "apt_pulse"){
         if(!msg.isEmpty()) {
@@ -160,6 +153,14 @@ QString SudoDispatcher::dealProgressData(QString type, QString msg) {
         ratio_sus = 100;
     }
     return info;
+}
+
+void SudoDispatcher::handlerRemoveProgress(QString type, QString msg) {//remove package or old kernel
+    if(!type.isEmpty()) {
+        QString info = dealProgressData(type, msg);
+        //操作过程中把数据给进度条
+        emit sendProgressToQML(type, info, ratio_sus);
+    }
 }
 
 //下载

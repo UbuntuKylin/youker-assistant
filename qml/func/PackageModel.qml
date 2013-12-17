@@ -31,10 +31,23 @@ Item {
         {
             target: sudodispatcher
             //得到数据，显示在进度条上
-            onSendProgressToQML: {
+            onSendProgressToQML: {//onSendDynamicSoftwareProgressQML
                 progressTitle.text = msg;
+                if(type == "apt_pulse"){
+                    progressTitle.text = qsTr("The ongoing: ") + info;//正在进行:
+                    progress.value = ratio_sus;
+                }
+                else if(type == "apt_stop") {
+                    progress.value = 0;
+                }
             }
-        }
+            //操作完成
+            onFinishSoftwareApt: {
+                if(type == "apt_stop") {
+
+                }
+            }
+
         //背景
         Image {
             source: "../img/skin/bg-middle.png"

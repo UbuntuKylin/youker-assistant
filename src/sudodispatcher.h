@@ -102,7 +102,7 @@ signals:
     void sendAppListToQML(QStringList appList);
 
     //将不需要的包和内核包的卸载进度告诉qml进度条
-    void sendProgressToQML(QString msg);
+    void sendProgressToQML(QString type, QString info, int ratio_sus);
 
 
 public slots:
@@ -120,7 +120,7 @@ public slots:
     void startUpdateSoftwareSource();
 
     //清理多余包和旧内核包
-    void handlerRemoveProgress(QString msg);
+    void handlerRemoveProgress(QString type, QString msg);
 private:
     QDBusInterface *sudoiface;
     UpdateDialog *updatedialog;
