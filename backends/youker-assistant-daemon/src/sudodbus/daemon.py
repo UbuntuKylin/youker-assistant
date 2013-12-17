@@ -46,7 +46,7 @@ class SudoDaemon(PolicyKitService):
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, PATH)
         self.mainloop = mainloop
-        self.daemonclean = cleaner.FunctionOfClean(None)
+        self.daemonclean = cleaner.FunctionOfClean()
         self.daemonApt = AptDaemon(self)
 
     @dbus.service.signal(INTERFACE, signature='s')
@@ -61,8 +61,8 @@ class SudoDaemon(PolicyKitService):
     def clean_complete(self, msg):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def percent_remove_packages(self, msg):
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def status_remove_packages(self, type, msg):
         pass
 
     # a dbus method which means an error occurred
@@ -90,7 +90,7 @@ class SudoDaemon(PolicyKitService):
             self.clean_complete_msg('')
             return
         try:
-            self.daemonclean.clean_the_package(cruftlist)
+            self.daemonclean.clean_the_package(cruftlist, self)
         except Exception, e:
             self.clean_error_msg(flag)
         else:

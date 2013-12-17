@@ -56,7 +56,7 @@ class Daemon(PolicyKitService):
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
-        self.daemonclean = cleaner.FunctionOfClean(self)
+        self.daemonclean = cleaner.FunctionOfClean()
         self.daemononekey = cleaner.OneKeyClean()
         self.daemoncache = cleaner.CleanTheCache()
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
@@ -492,7 +492,7 @@ class Daemon(PolicyKitService):
             self.clean_complete_msg('')
             return
         try:
-            self.daemonclean.clean_the_file(cruftlist)
+            self.daemonclean.clean_the_file(cruftlist, self)
         except Exception, e:
             self.clean_error_msg(flagstr)
         else:

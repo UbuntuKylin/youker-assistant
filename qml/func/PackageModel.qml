@@ -32,21 +32,19 @@ Item {
             target: sudodispatcher
             //得到数据，显示在进度条上
             onSendProgressToQML: {//onSendDynamicSoftwareProgressQML
-                progressTitle.text = msg;
-                if(type == "apt_pulse"){
+                if(type == "apt_start") {
+                    progress.value = 0;
+                    home.state = "MaskLayerState";
+                }
+                else if(type == "apt_pulse"){
                     progressTitle.text = qsTr("The ongoing: ") + info;//正在进行:
                     progress.value = ratio_sus;
                 }
                 else if(type == "apt_stop") {
-                    progress.value = 0;
+//                    progress.value = 0;
                 }
             }
-            //操作完成
-            onFinishSoftwareApt: {
-                if(type == "apt_stop") {
-
-                }
-            }
+        }
 
         //背景
         Image {
@@ -316,7 +314,6 @@ Item {
                         }
                         else if (root.btnFlag == "package_work") {//清理
                             if(root.resultFlag) {//扫描得到的实际内容存在时
-                                home.state = "MaskLayerState";
                                 //开始清理时，禁用按钮，等到清理完成后解禁
                                 actionBtn.enabled = false;
                                 sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");

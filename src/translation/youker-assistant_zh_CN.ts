@@ -2994,34 +2994,39 @@
         <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="274"/>
-        <location filename="../../qml/func/PackageModel.qml" line="291"/>
-        <location filename="../../qml/func/PackageModel.qml" line="412"/>
-        <location filename="../../qml/func/PackageModel.qml" line="419"/>
-        <location filename="../../qml/func/PackageModel.qml" line="426"/>
-        <location filename="../../qml/func/PackageModel.qml" line="433"/>
+        <location filename="../../qml/func/PackageModel.qml" line="285"/>
+        <location filename="../../qml/func/PackageModel.qml" line="302"/>
+        <location filename="../../qml/func/PackageModel.qml" line="422"/>
+        <location filename="../../qml/func/PackageModel.qml" line="429"/>
+        <location filename="../../qml/func/PackageModel.qml" line="436"/>
+        <location filename="../../qml/func/PackageModel.qml" line="443"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="94"/>
-        <location filename="../../qml/func/PackageModel.qml" line="139"/>
+        <location filename="../../qml/func/PackageModel.qml" line="105"/>
+        <location filename="../../qml/func/PackageModel.qml" line="150"/>
         <source>Uninstall unnecessary procedures</source>
         <translation>卸载不必要的程序</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="56"/>
-        <location filename="../../qml/func/PackageModel.qml" line="452"/>
+        <location filename="../../qml/func/PackageModel.qml" line="40"/>
+        <source>The ongoing: </source>
+        <translation>正在进行：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/PackageModel.qml" line="67"/>
+        <location filename="../../qml/func/PackageModel.qml" line="462"/>
         <source>Software operation schedule</source>
         <translation>软件操作进度</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="95"/>
+        <location filename="../../qml/func/PackageModel.qml" line="106"/>
         <source>Clean installed dependent program, to improve system performance</source>
         <translation>清理软件安装过程中安装的依赖程序，提高系统性能</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="141"/>
+        <location filename="../../qml/func/PackageModel.qml" line="152"/>
         <source>User can selectively clean installed program no longer need according to the scan results, make the system more thin</source>
         <translation>用户可以根据扫描结果选择性地清理不再需要的安装程序，让系统更瘦</translation>
     </message>
@@ -3030,12 +3035,12 @@
         <translation type="obsolete">清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="182"/>
+        <location filename="../../qml/func/PackageModel.qml" line="193"/>
         <source>Exception occurred!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="198"/>
+        <location filename="../../qml/func/PackageModel.qml" line="209"/>
         <source>Cleaned</source>
         <translation>清理完毕！</translation>
     </message>
@@ -3044,46 +3049,46 @@
         <translation type="obsolete">未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="150"/>
-        <location filename="../../qml/func/PackageModel.qml" line="314"/>
-        <location filename="../../qml/func/PackageModel.qml" line="340"/>
+        <location filename="../../qml/func/PackageModel.qml" line="161"/>
+        <location filename="../../qml/func/PackageModel.qml" line="324"/>
+        <location filename="../../qml/func/PackageModel.qml" line="350"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="150"/>
+        <location filename="../../qml/func/PackageModel.qml" line="161"/>
         <source>Scanning content is empty, no longer to perform cleanup!</source>
         <translation>扫描内容为空，不再执行清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="158"/>
+        <location filename="../../qml/func/PackageModel.qml" line="169"/>
         <source>Scan completed!</source>
-        <translation></translation>
+        <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="191"/>
+        <location filename="../../qml/func/PackageModel.qml" line="202"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断了！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="255"/>
+        <location filename="../../qml/func/PackageModel.qml" line="266"/>
         <source>Go back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="270"/>
+        <location filename="../../qml/func/PackageModel.qml" line="281"/>
         <source>Scan again</source>
         <translation>重新扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="314"/>
-        <location filename="../../qml/func/PackageModel.qml" line="340"/>
+        <location filename="../../qml/func/PackageModel.qml" line="324"/>
+        <location filename="../../qml/func/PackageModel.qml" line="350"/>
         <source>Sorry, you have no choice to clean up the items, please confirm!</source>
         <translation>对不起，您没有选择需要清理的项，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/PackageModel.qml" line="165"/>
-        <location filename="../../qml/func/PackageModel.qml" line="405"/>
+        <location filename="../../qml/func/PackageModel.qml" line="176"/>
+        <location filename="../../qml/func/PackageModel.qml" line="415"/>
         <source>Start cleaning</source>
         <translation>开始清理</translation>
     </message>
@@ -3846,19 +3851,19 @@
 <context>
     <name>SudoDispatcher</name>
     <message>
-        <location filename="../sudodispatcher.cpp" line="203"/>
+        <location filename="../sudodispatcher.cpp" line="204"/>
         <source>Tip: please input password of current user to start server, make it work normally.</source>
         <translation>提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。</translation>
     </message>
     <message>
-        <location filename="../sudodispatcher.cpp" line="290"/>
-        <location filename="../sudodispatcher.cpp" line="310"/>
+        <location filename="../sudodispatcher.cpp" line="291"/>
+        <location filename="../sudodispatcher.cpp" line="311"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../sudodispatcher.cpp" line="291"/>
-        <location filename="../sudodispatcher.cpp" line="311"/>
+        <location filename="../sudodispatcher.cpp" line="292"/>
+        <location filename="../sudodispatcher.cpp" line="312"/>
         <source>No find the softlist file!</source>
         <translation>没有找到软件列表文件！</translation>
     </message>
@@ -4781,19 +4786,19 @@
         <translation>选择您想设置的主题。优客助手启动时页面上的第一个主题为系统当前使用的主题。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="34"/>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="99"/>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="207"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="35"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="108"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="230"/>
         <source>[ Current Theme is: </source>
         <translation>[ 当前主题是： </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="202"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="225"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="202"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="225"/>
         <source>Your system&apos;s current widget theme is the default theme!</source>
         <translation>您系统的当前窗口主题已经为默认主题！</translation>
     </message>
@@ -4802,7 +4807,7 @@
         <translation type="obsolete">选中您想设置的主题，点击确定按钮更换主题；优客助手启动时页面上的第一个主题为系统当前使用的主题。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="132"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="141"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>

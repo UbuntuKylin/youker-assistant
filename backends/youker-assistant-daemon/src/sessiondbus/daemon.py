@@ -64,7 +64,6 @@ class SessionDaemon(dbus.service.Object):
         self.daemonunneed = cleaner.CleanTheUnneed()
         self.daemonoldkernel = cleaner.CleanTheOldkernel()
         self.daemoncache = cleaner.CleanTheCache()
-        self.daemonclean = cleaner.FunctionOfClean(self)
         self.daemononekey = cleaner.OneKeyClean()
 
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
