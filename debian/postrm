@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$1" = "purge" ] ; then
+	rm -rf /var/lib/youker-assistant-daemon/
+fi
+
+#DEBHELPER#
