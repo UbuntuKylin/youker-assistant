@@ -196,7 +196,7 @@ void KFontDialog::updateAll(QModelIndex index) {
     }
     QString curStr = ui->familyEdit->text().append(" ").append(ui->styleEdit->text().append(" ").append(ui->sizeEdit->text()));
     ui->curFontText->setText(curStr);
-    ui->sampleEdit->setText("UbuntuKylin:做最有中国位的操作系统！");
+    ui->sampleEdit->setText("Ubuntu Kylin:做最有中国位的操作系统！");
     updateSampleFont();
 }
 

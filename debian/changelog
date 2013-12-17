@@ -9,9 +9,9 @@ youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
   * Change UbuntuKylin to Ubuntu Kylin.
   * Modify calculation method of system memory allocation(LP: #1242579).
   * Refresh net speed every second to resolve the wrong displaying net flow(LP: #1237891).
-  * Modify LargestFile.qml.
+  * Modify LargestFile.qml and One Key cleaner.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 17 Dec 2013 09:19:00 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 17 Dec 2013 10:21:24 +0800
 
 youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
 
@@ -32,7 +32,7 @@ youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
   * Save and restore the default system configuration with QSetting.
   * Clear Cookies of Chromium(LP: #1224871).
   * Solve wrong status of history cleaning(LP: #1253852).
-  * Popup a dialog to add UbuntuKylin sourcelist or not.
+  * Popup a dialog to add Ubuntu Kylin sourcelist or not.
   * Display detailed information of Computer.
   * Display contents when one key scanning.
   * Add debian/postrm file to remove a folder when it is uninstalled.

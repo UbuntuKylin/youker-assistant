@@ -89,11 +89,11 @@ class Sysinfo:
                 if line.startswith("DISTRIB_DESCRIPTION"):
                     tmp = line
         front = tmp.split('"')[2] #(LP: #1240862)
-        if front.startswith("UbuntuKylin"):
+        if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
             d = front + '-' + platform.dist()[2]
         else:
-            a = platform.dist()[0] 
-            b = platform.dist()[1] 
+            a = platform.dist()[0]
+            b = platform.dist()[1]
             c = platform.dist()[2]
             d = '-'.join((a,b,c))
         return d

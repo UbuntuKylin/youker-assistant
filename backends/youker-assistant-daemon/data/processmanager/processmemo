@@ -18,7 +18,7 @@ dconf-service:dconf的dbus服务
 nautilus:文件系统管理器
 polkit-gnome-authentication-agent:policykit用户权限代理
 bluetooth-applet:蓝牙小程序支持
-kuaipan4uk:金山快盘UbuntuKylin版
+kuaipan4uk:金山快盘Ubuntu Kylin版
 chinese-calendar:中国农历软件
 Docky:漂亮的启动菜单
 cairo-dock:cairo启动菜单
