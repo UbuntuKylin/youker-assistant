@@ -500,9 +500,10 @@ class CleanTheCache():
 # the function of clean cruft files and cruft packages
 #class FunctionOfClean(threading.Thread):
 class FunctionOfClean():
-    def __init__(self, msgdaemon):
+    def __init__(self):
         #threading.Thread.__init__(self)
-        self.msgdaemon = msgdaemon
+        #self.msgdaemon = msgdaemon
+        pass
 
     def clean_the_file_for_main(self, cruftlist):
         for cruft in cruftlist:
@@ -530,7 +531,7 @@ class FunctionOfClean():
     #def clean_the_file_for_second(self, cruftlist):
     #    threading.Thread(target=self.clean_the_file_for_second_thread, args=(cruftlist,), name='SecondClean').start()
 
-    def clean_the_file(self, cruftlist):
+    def clean_the_file(self, cruftlist, sysdaemon):
         for cruft in cruftlist:
             tmp = cruft.encode("UTF-8")
             if tmp:
@@ -542,7 +543,7 @@ class FunctionOfClean():
     #def clean_the_file(self, cruftlist):
     #    threading.Thread(target=self.clean_the_file_thread, args=(cruftlist,), name='CleanFile').start()
 
-    def clean_the_package(self, cruftlist):
+    def clean_the_package(self, cruftlist, sudodaemon):
         if cruftlist:
             cache = common.get_cache_list()
             cache.open()
@@ -550,7 +551,7 @@ class FunctionOfClean():
                 pkg = cache[cruft]
                 if pkg.is_installed:
                     pkg.mark_delete()
-            iprogress = MyInstallProgress(self.msgdaemon)
+            iprogress = MyInstallProgress(sudodaemon)
             cache.commit(None, iprogress)
 
     #def clean_the_package(self, cruftlist):
@@ -561,8 +562,8 @@ class MyInstallProgress(InstallProgress):
             InstallProgress.__init__(self)
             self.sudodaemon = sudodaemon
 
-        def statusChange(self, pkg, percent, status):
-            self.sudodaemon.percent_remove_packages("percent: %s" % str(int(percent)))
+        def status_change(self, pkg, percent, status):
+            self.sudodaemon.status_remove_packages("apt_pulse", "percent: %s, status: %s" % (str(int(percent)), status))
 
         def error(self, errorstr):
             pass
