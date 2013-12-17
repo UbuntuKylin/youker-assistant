@@ -507,7 +507,7 @@ class FunctionOfClean():
     def clean_the_file_for_main(self, cruftlist):
         for cruft in cruftlist:
             tmp = cruft.encode("UTF-8")
-            self.sysdaemon.clean_process_main_msg("cleaning %s" % tmp)
+            #self.sysdaemon.clean_process_main_msg("cleaning %s" % tmp)
             if tmp:
                 if os.path.isdir(tmp):
                     shutil.rmtree(tmp)
