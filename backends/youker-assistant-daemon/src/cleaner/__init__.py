@@ -567,4 +567,9 @@ class MyInstallProgress(InstallProgress):
 
         def error(self, errorstr):
             pass
+        
+        def finish_update(self):
+            self.sudodaemon.status_remove_packages("apt_stop", "")
 
+        def start_update(self):
+            self.sudodaemon.status_remove_packages("apt_start", "")
