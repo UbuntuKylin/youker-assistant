@@ -196,6 +196,14 @@ class Daemon(PolicyKitService):
     def clean_complete_main(self, msg):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_complete_onekey(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def clean_error_onekey(self, msg):
+        pass
+
     @dbus.service.signal(INTERFACE, signature='ss')
     def clean_data_main(self, category, msg):
         pass
@@ -219,6 +227,10 @@ class Daemon(PolicyKitService):
 
     @dbus.service.signal(INTERFACE, signature='ss')
     def clean_data_second(self, category, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def total_data_onekey(self, category, msg):
         pass
 
     @dbus.service.signal(INTERFACE, signature='s')

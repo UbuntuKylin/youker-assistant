@@ -64,7 +64,6 @@ class SessionDaemon(dbus.service.Object):
         self.daemonunneed = cleaner.CleanTheUnneed()
         self.daemonoldkernel = cleaner.CleanTheOldkernel()
         self.daemoncache = cleaner.CleanTheCache()
-        self.daemononekey = cleaner.OneKeyClean()
 
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
@@ -73,7 +72,7 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def onekey_scan_function(self, mode_list):
         onekeyfunc_obj = cleaner.OneKeyClean()
-        total_dic = onekeyfunc_obj.get_onekey_crufts(self, mode_list)
+        onekeyfunc_obj.get_onekey_crufts(self, mode_list)
         self.scan_complete_msg('onekey')
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
@@ -203,6 +202,10 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.signal(INTERFACE, signature='s')
     def deb_exists_chromium(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def total_data_transmit(self, flag, msg):
         pass
 
     @dbus.service.signal(INTERFACE, signature='s')
