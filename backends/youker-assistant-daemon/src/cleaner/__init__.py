@@ -51,7 +51,7 @@ class OneKeyClean():
         self.objunneed = CleanTheUnneed()
         self.objcache = CleanTheCache()
 
-    def get_onekey_crufts(self, sesobj, mode_list):
+    def get_onekey_crufts(self, sesdaemon, mode_list):
         homedir = common.return_homedir_sesdaemon()
         crufts_dic = {}
         total_dic = {}
@@ -66,8 +66,8 @@ class OneKeyClean():
             if os.path.exists(filepathf):
                 tempf_list = objhg.scan_firefox_history_records(filepathf)
                 for onef in tempf_list:
-                    sesobj.display_scan_process(onef[1])
-                    #sesobj.display_scan_process_msg(onef[1])
+                    sesdaemon.display_scan_process(onef[1])
+                    #sesdaemon.display_scan_process_msg(onef[1])
                     historysize += onef[2]
             filepathc = "%s/.config/chromium/Default/History" % homedir
             if os.path.exists(filepathc):
@@ -75,10 +75,11 @@ class OneKeyClean():
                 if not run:
                     tempc_list = objhg.scan_chromium_history_records(filepathc)
                     for onec in tempc_list:
-                        sesobj.display_scan_process(onec[1])
-                        #sesobj.display_scan_process_msg(onec[1])
+                        sesdaemon.display_scan_process(onec[1])
+                        #sesdaemon.display_scan_process_msg(onec[1])
                         historysize += onec[2]
             total_dic['history'] = str(historysize)
+            sesdaemon.total_data_transmit('h', total_dic['history'])
         if flag_dic['cookies']:
             cookiessize = 0
             objcg = cookiesclean.CookiesClean(homedir)
@@ -87,74 +88,90 @@ class OneKeyClean():
                 pamf = [filepathff, 'moz_cookies', 'baseDomain']
                 tempff_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
                 for oneff in tempff_list:
-                    sesobj.display_scan_process(oneff[0])
-                    #sesobj.display_scan_process_msg(oneff[0])
+                    sesdaemon.display_scan_process(oneff[0])
+                    #sesdaemon.display_scan_process_msg(oneff[0])
                     cookiessize += oneff[1]
             filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
             if os.path.exists(filepathcc):
                 pamc = [filepathcc, 'cookies', 'host_key']
                 tempcc_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
                 for onecc in tempcc_list:
-                    sesobj.display_scan_process(onecc[0])
-                    #sesobj.display_scan_process_msg(onecc[0])
+                    sesdaemon.display_scan_process(onecc[0])
+                    #sesdaemon.display_scan_process_msg(onecc[0])
                     cookiessize += onecc[1]
             total_dic['cookies'] = str(cookiessize)
+            sesdaemon.total_data_transmit('k', total_dic['cookies'])
         if flag_dic['cache']:
             cachesize = 0
             objcache = cacheclean.CacheClean()
             apt_path = "/var/cache/apt/archives"
             temp_apt_list = objcache.scan_apt_cache(apt_path)
             for oneapt in temp_apt_list:
-                sesobj.display_scan_process(oneapt)
-                #sesobj.display_scan_process_msg(oneapt)
+                sesdaemon.display_scan_process(oneapt)
+                #sesdaemon.display_scan_process_msg(oneapt)
                 cachesize += os.path.getsize(oneapt)
             swcenterpath = '%s/.cache/software-center' % homedir
             temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
             for oneswcenter in temp_swcenter_list:
-                sesobj.display_scan_process(oneswcenter)
-                #sesobj.display_scan_process_msg(oneswcenter)
+                sesdaemon.display_scan_process(oneswcenter)
+                #sesdaemon.display_scan_process_msg(oneswcenter)
                 if os.path.isdir(oneswcenter):
                     cachesize += common.get_dir_size(oneswcenter)
                 else:
                     cachesize += os.path.getsize(oneswcenter)
             total_dic['cache'] = common.confirm_filesize_unit(cachesize)
-        return total_dic
+            sesdaemon.total_data_transmit('c', total_dic['cache'])
 
-    def clean_all_onekey_crufts(self, sysobj, mode_list):
+    def clean_all_onekey_crufts(self, sysdaemon, mode_list):
         homedir = return_homedir_sysdaemon()
         flag_dic = {'history': False, 'cookies': False, 'cache': False}
         for mode in mode_list:
             flag_dic['%s' % mode] = True
         if flag_dic['history']:
-            objca = historyclean.HistoryClean(homedir)
-            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
-            objca.clean_firefox_all_records(filepathf)
+            try:
+                objca = historyclean.HistoryClean(homedir)
+                filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+                objca.clean_firefox_all_records(filepathf)
 
-            run = common.process_pid("chromium-browser")
-            if not run:
-                filepathc = "%s/.config/chromium/Default/History" % homedir
-                objca.clean_chromium_all_records(filepathc)
-
+                run = common.process_pid("chromium-browser")
+                if not run:
+                    filepathc = "%s/.config/chromium/Default/History" % homedir
+                    objca.clean_chromium_all_records(filepathc)
+            except Exception, e:
+                sysdaemon.clean_error_onekey('he')
+            else:
+                sysdaemon.clean_complete_onekey('h')
+                
         if flag_dic['cookies']:
-            objcc = cookiesclean.CookiesClean(homedir)
-            filepathfc = common.analytical_profiles_file(homedir) + 'cookies.sqlite'
-            pamfc = [filepathfc, 'moz_cookies', 'baseDomain']
-            objcc.clean_all_records(pamfc[0], pamfc[1], pamfc[2])
-            filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
-            pamcc = [filepathcc, 'cookies', 'host_key']
-            objcc.clean_all_records(pamcc[0], pamcc[1], pamcc[2])
+            try:
+                objcc = cookiesclean.CookiesClean(homedir)
+                filepathfc = common.analytical_profiles_file(homedir) + 'cookies.sqlite'
+                pamfc = [filepathfc, 'moz_cookies', 'baseDomain']
+                objcc.clean_all_records(pamfc[0], pamfc[1], pamfc[2])
+                filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
+                pamcc = [filepathcc, 'cookies', 'host_key']
+                objcc.clean_all_records(pamcc[0], pamcc[1], pamcc[2])
+            except Exception, e:
+                sysdaemon.clean_error_onekey('ke')
+            else:
+                sysdaemon.clean_complete_onekey('k')
 
         if flag_dic['cache']:
-            objclean = FunctionOfClean(sysobj)
-            objcache = cacheclean.CacheClean()
-            apt_path = "/var/cache/apt/archives"
-            temp_apt_list = objcache.scan_apt_cache(apt_path)
-            objclean.clean_the_file(temp_apt_list)
+            try:
+                objclean = FunctionOfClean()
+                objcache = cacheclean.CacheClean()
+                apt_path = "/var/cache/apt/archives"
+                temp_apt_list = objcache.scan_apt_cache(apt_path)
+                objclean.clean_the_file(temp_apt_list, sysdaemon)
 
-            swcenterpath = '%s/.cache/software-center' % homedir
-            temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
-            objclean.clean_the_file(temp_swcenter_list)
-
+                swcenterpath = '%s/.cache/software-center' % homedir
+                temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
+                objclean.clean_the_file(temp_swcenter_list, sysdaemon)
+            except Exception, e:
+                sysdaemon.clean_error_onekey('ce')
+            else:
+                sysdaemon.clean_complete_onekey('c')
+        sysdaemon.clean_complete_onekey('o')
 
     def get_scan_result(self, mode_list):
         global HOMEDIR
