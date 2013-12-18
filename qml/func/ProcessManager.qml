@@ -18,9 +18,12 @@ import QtQuick 1.1
 import "common" as Common
 
 Rectangle {
+    id: root
     width: parent.width
     height: 475
     SystemPalette {id: syspal}
+    property string processId//记录鼠标所在那行的进程号，以便自动刷新时重新定位到原来那行
+
     //背景
     Image {
         source: "../img/skin/bg-bottom-tab.png"
@@ -40,7 +43,7 @@ Rectangle {
             else {
                 var num = i.toString();
                 var id = splitlist[1];
-                largeModel.append({"user": splitlist[0], "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "content": splitlist[5], "command": splitlist[6]});
+                largeModel.append({/*"number": num, */"user": splitlist[0], "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "content": splitlist[5], "command": splitlist[6]});
                 processmanager.updateMap(num, id);//更新qt中保存的进程序号和进程号组合的map
             }
         }
@@ -205,12 +208,18 @@ Rectangle {
 //                }
             }
         }
+        onClicked: {
+            //得到选中的进程号
+            root.processId = processmanager.getProcessId(tableView.currentIndex.toString());
+        }
     }
-    //每隔10秒自动刷新
-//    Timer {
-//        interval: 10000; running: true; repeat: true
-//        onTriggered: {
-//            updateProcessList();
-//        }
-//    }
+    //每隔1分钟自动刷新
+    Timer {
+        interval: 60000; running: true; repeat: true
+        onTriggered: {
+            updateProcessList();
+            var result = processmanager.getProcessIndex(root.processId);
+            tableView.currentIndex = result;
+        }
+    }
 }
