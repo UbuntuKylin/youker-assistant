@@ -50,7 +50,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: basictitle
-                text: qsTr("Basic information")//主板基本信息
+                text: qsTr("Motherboard Basics Information")//主板基本信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -82,7 +82,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Motherboard Vendor:")//主板产商：
+                    text: qsTr("Motherboard Manufacturer:")//主板产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -97,7 +97,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Serial:")//序列号：
+                    text: qsTr("Serial Number:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -113,7 +113,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: biostitle
-                text: qsTr("Bios information")//BIOS信息
+                text: qsTr("BIOS Information")//BIOS信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -132,7 +132,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Bios Vendor:")//BIOS产商：
+                    text: qsTr("BIOS Manufacturer:")//BIOS产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130

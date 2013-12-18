@@ -28,7 +28,7 @@ Rectangle {
 
     property int launcher_size
     property string actiontitle: qsTr("Launcher settings")//启动器设置
-    property string actiontext: qsTr("Users can set up Launcher hidden and icon display size according to the needs; drag the slider bar, click 'OK' button to complete the size setting.")//用户可以根据需要设置启动器的自动隐藏功能和启动器上图标的显示尺寸；拖动滑动条，点击“确定”按钮完成大小设置。
+    property string actiontext: qsTr("Setting the Launcher display mode, Icon size")//设置启动器的显示模式、图标尺寸
 
     //背景
     Image {
@@ -130,7 +130,7 @@ Rectangle {
             Common.Label {
                 id: launcherlabel
                 width: 150
-                text: qsTr("Hide Launcher automatically:")//启动器自动隐藏:
+                text: qsTr("Launcher hide mode:")//启动器自动隐藏:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -154,7 +154,7 @@ Rectangle {
             Common.Label {
                 id: iconsizelabel
                 width: 150
-                text: qsTr("Icon size in Launcher:")//启动器上的图标大小:
+                text: qsTr("Launcher icon size:")//启动器图标尺寸：
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -272,8 +272,8 @@ Rectangle {
             }
 
             if((defaultsize == launcherthemepage.launcher_size) && (defaultautohide == autohideFlag) && (defaultshowicon == showiconFlag)) {
-                //友情提示：        Launcher配置已经为默认配置！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Launcher configure is the default configure!"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示：        Launcher已经恢复为默认配置！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Launcher has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 if(defaultsize != slider.value) {

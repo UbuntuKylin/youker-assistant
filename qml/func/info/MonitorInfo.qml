@@ -18,10 +18,7 @@ import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
 import "./InfoGroup.js" as InfoGroup
-/*{'Vga_product': 'Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller (rev 09)\n',
- 'Vga_businfo': 'pci@0000:00:02.0',
-'Vga_vendor': 'Intel',
-'Mon_chip': 'Intel(R) HD Graphics 3000'}*/
+
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"

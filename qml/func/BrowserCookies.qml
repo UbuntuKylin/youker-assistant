@@ -20,19 +20,19 @@ Item {
     id:root
     width: parent.width
     height: 435
-    property string firefox_btn_text: qsTr("Start scanning")//开始扫描
-    property string chromium_btn_text: qsTr("Start scanning")//开始扫描
+    property string firefox_btn_text: qsTr("Start Scanning")//开始扫描
+    property string chromium_btn_text: qsTr("Start Scanning")//开始扫描
     property bool firefox_reset: false//firefox重置按钮默认隐藏
     property bool chromium_reset: false//chromium重置按钮默认隐藏
 
-    property string title: qsTr("Clean the login information and protect personal privacy")//清理浏览器登录信息,保护个人隐私
-    property string description: qsTr("Clean up the login information, support Firefox and Chromium browser")//清理上网时留下的登录信息,支持Firefox和Chromium浏览器
+    property string title: qsTr("Cleanup browser Cookies information, to protect your privacy")//清理浏览器Cookies信息,保护个人隐私
+    property string description: qsTr("Clean up user login information, support Firefox and Chromium browser")//清理用户登陆网站信息,支持Firefox和Chromium浏览器
 
     property string firefoxImage: "../img/toolWidget/firefox.png"
-    property string firefoxTitle: qsTr("Clean Firefox's Cookies")//清理Firefox保存的Cookies
+    property string firefoxTitle: qsTr("Cleanup the Cookies saving in Firefox")//清理Firefox保存的Cookies
     property string firefoxDetail: qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")//清理Firefox浏览器自动保存的登录信息(Cookies)
     property string chromiumImage: "../img/toolWidget/chromium.png"
-    property string chromiumTitle: qsTr("Clean Chromium's Cookies")//清理Chromium保存的Cookies
+    property string chromiumTitle: qsTr("Cleanup the Cookies saving in Chromium")//清理Chromium保存的Cookies
     property string chromiumDetail: qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")//清理Chromium浏览器自动保存的登录信息(Cookies)
 
     property string firefox_btn_flag: "cookies_scan"
@@ -60,8 +60,8 @@ Item {
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("f");
         if(cookies_data == "None") {//没有安装Firefox
             root.firefox_arrow_show = 0;//没有安装Firefox时隐藏伸缩图标
-            //友情提示
-            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Firefox browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
+            //友情提示：  没有安装Firefox！
+            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Firefox is not installed!"), mainwindow.pos.x, mainwindow.pos.y);
         }
         else {
             if (cookies_data.length == 0) {
@@ -107,7 +107,7 @@ Item {
                 root.firefox_arrow_show = 0;//Firefox的cookies为空时隐藏伸缩图标
 
                 if(root.flag == false) {//点击“开始扫描”按钮时的操作
-                    //友情提示      扫描内容为空，不再执行清理！
+                    //友情提示：      扫描内容为空，不再执行清理！
                     sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else {//清除操作完成后的操作
@@ -124,7 +124,7 @@ Item {
                     toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
                     //当真正扫描到内容时：按钮状态改变、显示文字改变、重置按钮显示
                     root.firefox_btn_flag = "cookies_work";//1206
-                    root.firefox_btn_text = qsTr("All clean");//全部清理//1206
+                    root.firefox_btn_text = qsTr("All cleanup");//全部清理//1206
                     root.firefox_reset = true;//1206
                 }
                 else {//清除操作完成后的操作
@@ -144,8 +144,8 @@ Item {
         var cookies_data = sessiondispatcher.cookies_scan_function_qt("c");
         if(cookies_data == "None") {//没有安装Chromium
             root.chromium_arrow_show = 0;
-            //友情提示
-            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Chromium browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
+            //友情提示：           没有安装Chromium！
+            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Chromium is not installed!"), mainwindow.pos.x, mainwindow.pos.y);
         }
         else {
             if (cookies_data.length === 0) {
@@ -191,8 +191,8 @@ Item {
                 root.chromium_expanded = false;
                 root.chromium_arrow_show = 0;//Firefox的cookies为空时隐藏伸缩图标
                 if(root.flag == false) {//点击“开始扫描”按钮时的操作
-                    //友情提示      扫描内容为空，不再执行清理！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                    //友情提示：      扫描内容为空，不再执行清理！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else {//清除操作完成后的操作
                     root.flag = false;
@@ -266,23 +266,23 @@ Item {
         onQuitCleanWork: {//用户在policykit验证时直接关闭验证或者点击取消
             if (msg == "firefox") {
 //                root.firefox_reset = true;//1206
-                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
             }
             else if (msg == "chromium") {
 //                root.chromium_reset = true;//1206
-                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
             }
         }
 
         onFinishCleanWorkError: {//清理过程中出错
             if (msg == "firefox") {
                 if (root.firefox_btn_flag == "cookies_work") {
-                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
             else if (msg == "chromium") {
                 if (root.chromium_btn_flag == "cookies_workc") {
-                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
         }
@@ -293,7 +293,7 @@ Item {
                     //清理完毕后重新获取cookies
                     root.flag = true;
                     root.getDataOfFirefox();
-                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 }
             }
             else if (msg == "chromium") {
@@ -301,7 +301,7 @@ Item {
                     //清理完毕后重新获取cookies
                     root.flag = true;
                     root.getDataOfChromium();
-                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 }
             }
         }
@@ -421,7 +421,7 @@ Item {
                             if(status == "reset") {//点击重置按钮，清空数据
                                 firefoxModel.clear();
                                 root.firefox_btn_flag = "cookies_scan";//1206
-                                root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
+                                root.firefox_btn_text = qsTr("Start Scanning")//开始扫描//1206
                                 root.firefox_reset = false;//1206
                                 if(root.firefox_expanded == true) {
                                     root.firefox_expanded = false;//1、先传递给ListTitle.qml的伸缩值设为默认的false
@@ -435,7 +435,7 @@ Item {
                             else if(status == "rescan") {//点击重新扫描
                                 firefoxModel.clear();
                                 root.firefox_btn_flag = "cookies_scan";//1206
-                                root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
+                                root.firefox_btn_text = qsTr("Start Scanning")//开始扫描//1206
                                 root.firefox_reset = false;//1206
                                 if(root.firefox_expanded == true) {
                                     root.firefox_expanded = false;//1、先传递给ListTitle.qml的伸缩值设为默认的false
@@ -464,7 +464,8 @@ Item {
                                         systemdispatcher.cookies_clean_records_function_qt("firefox");
                                     }
                                     else {
-                                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                        //友情提示：        对不起，您没有选择需要清理的项，请确认！
+                                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                                     }
                                 }
                             }

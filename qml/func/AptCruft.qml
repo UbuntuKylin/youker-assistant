@@ -24,8 +24,8 @@ Item {
     id:root
     width: parent.width
     height: 435
-    property string apt_title: qsTr("The package management depth cleaning")//包管理深度清理
-    property string apt_description: qsTr("Deep cleaning package management of deb package, to save disk space")//深度清理包管理残留的deb包,节省磁盘空间
+    property string apt_title: qsTr("Deep cleaning up the package cache")//深度清理软件包缓存
+    property string apt_description: qsTr("Deep cleaning up the package cache, to save disk space!")//"深度清理软件包缓存，节省磁盘空间!
     property string btnFlag: "apt_scan"//扫描或者清理的标记：apt_scan/apt_work
     property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
     property int subNum: 0//扫描后得到的apt的项目总数
@@ -64,10 +64,10 @@ Item {
             if(root.aptNum != 0) {
                 root.resultFlag = true;//扫描的实际有效内容存在
                 mainModel.clear();
-                //包管理清理        用户可以根据扫描结果选择性地清理包管理残留包,缓存路径为:/var/cache/apt/archives/
-                mainModel.append({"itemTitle": qsTr("The package management cleaning"),
+                //软件包缓存清理       根据扫描结果选择性地清理软件包缓存，缓存路径为:/var/cache/apt/archives/
+                mainModel.append({"itemTitle": qsTr("Cleanup Package Cache"),
                                  "picture": "../img/toolWidget/apt-min.png",
-                                 "detailstr": qsTr("User can according to the scan results selectively clean residual package, cache path is:/var/cache/apt/archives/")})
+                                 "detailstr": qsTr("Selectively clean up the results of the scanning package cache, the cache path is: /var/cache/apt/archives/")})
             }
             else {
                 root.resultFlag = false;//扫描的实际有效内容不存在
@@ -79,7 +79,7 @@ Item {
             root.arrowShow = 0;
             if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                 //友情提示：      扫描内容为空，不再执行清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {//清理apt后的重新获取数据，此时不需要显示对话框
                 root.flag = false;
@@ -94,7 +94,7 @@ Item {
             }
             root.arrowShow = 1;
             root.state = "AptWork";
-            actionBtn.text = qsTr("Start cleaning");//开始清理
+            actionBtn.text = qsTr("Begin cleanup");//开始清理
             root.btnFlag = "apt_work";
             backBtn.visible = true;
             rescanBtn.visible = true;
@@ -108,18 +108,18 @@ Item {
             if (btnFlag == "apt_work") {
                 if (msg == "apt") {
                     root.state = "AptWorkError";
-                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
         }
         onFinishCleanWork: {//清理成功时收到的信号
             if (root.btnFlag == "apt_work") {
                 if (msg == "") {
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
                 }
                 else if (msg == "apt") {
                     root.state = "AptWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     root.flag = true;
                     root.getData();//清理完毕后重新获取数据
                 }
@@ -175,7 +175,7 @@ Item {
                 id: backBtn
                 visible: false
                 anchors.verticalCenter: parent.verticalCenter
-                wordname: qsTr("Go back")//返回
+                wordname: qsTr("Back")//返回
                 width: 40
                 height: 20
                 onClicked: {
@@ -190,7 +190,7 @@ Item {
                 id: rescanBtn
                 visible: false
                 anchors.verticalCenter: parent.verticalCenter
-                wordname: qsTr("Scan again")//重新扫描
+                wordname: qsTr("Rescan")//重新扫描
                 width: 40
                 height: 20
                 onClicked: {
@@ -225,7 +225,7 @@ Item {
                     }
                     else {//扫描得到的实际内容不存在时
                         //友情提示：        对不起，您没有选择需要清理的项，请确认！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                 }
             }

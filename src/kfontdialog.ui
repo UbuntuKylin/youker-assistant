@@ -122,7 +122,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Sample</string>
+    <string>View</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="sampleEdit">
@@ -148,7 +148,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>Cancel</string>
    </property>
   </widget>
   <widget class="QPushButton" name="okBtn">
@@ -213,7 +213,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Change Font</string>
+    <string>Change Fonts</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

@@ -73,7 +73,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: bartitle
-                text: qsTr("CPU information")//处理器信息
+                text: qsTr("CPU Information")//处理器信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -120,7 +120,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Serial:")//序列号：
+                    text: qsTr("Serial Number:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -180,7 +180,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Front-side Bus:")//前端总线：
+                    text: qsTr("FSB:")//前端总线：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -195,7 +195,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Cores Number:")//核心数目：
+                    text: qsTr("Core Number:")//核心数目：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -210,7 +210,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("First-level caching:")//一级缓存：
+                    text: qsTr("L1 Cache:")//一级缓存：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -225,7 +225,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Second-level caching:")//二级缓存：
+                    text: qsTr("L2 Cache:")//二级缓存：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130

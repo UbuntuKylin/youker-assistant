@@ -125,13 +125,13 @@ Rectangle {
             firstView.visible = true;
             var vendorName = systemdispatcher.getSingleInfo("MemVendor", "memory");
             firstModel.clear();
-            firstModel.append({"title": qsTr("Slot Number:"), "result": systemdispatcher.getSingleInfo("MemSlot", "memory")});
-            firstModel.append({"title": qsTr("Memory Model:"), "result": systemdispatcher.getSingleInfo("MemProduct", "memory")});
-            firstModel.append({"title": qsTr("Vendor:"), "result": vendorName});
-            firstModel.append({"title": qsTr("Serial:"), "result": systemdispatcher.getSingleInfo("MemSerial", "memory")});
-            firstModel.append({"title": qsTr("Size:"), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});
-            firstModel.append({"title": qsTr("Data Width:"), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});
-            firstModel.append({"title": qsTr("Memory Info:"), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});
+            firstModel.append({"title": qsTr("Slot Number:"), "result": systemdispatcher.getSingleInfo("MemSlot", "memory")});//插槽号：
+            firstModel.append({"title": qsTr("Memory Model:"), "result": systemdispatcher.getSingleInfo("MemProduct", "memory")});//内存型号：
+            firstModel.append({"title": qsTr("Vendor:"), "result": vendorName});//制造商：
+            firstModel.append({"title": qsTr("Serial Number:"), "result": systemdispatcher.getSingleInfo("MemSerial", "memory")});//序列号：
+            firstModel.append({"title": qsTr("Size:"), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});//内存大小：
+            firstModel.append({"title": qsTr("Data Width:"), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});//数据宽度：
+            firstModel.append({"title": qsTr("Memory Info:"), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});//内存条信息：
             splitbar1.visible = true;
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -174,7 +174,7 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("Memory information")//内存信息
+            text: qsTr("Memory Information")//内存信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"

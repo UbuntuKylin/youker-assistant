@@ -36,7 +36,7 @@ Rectangle {
                 staticImage.visible = true;
                 dynamicImage.visible = false;
                 leftbar.flag = "onekey";
-                firstonekey.text = qsTr("Clean Quickly");//一键清理
+                firstonekey.text = qsTr("Quick Cleanup");//一键清理
                 //扫描完成后根据子checkbox的勾选情况置状态
                 if(garbageCheck.checked) {
                     cachestatus.visible = true;
@@ -83,9 +83,9 @@ Rectangle {
                 firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "o") {
-                toolkits.alertMSG(qsTr("A Key cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
+                toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
                 leftbar.flag = "onekeyscan";
-                firstonekey.text = qsTr("Scan Quickly");//一键扫描
+                firstonekey.text = qsTr("Quick Scan");//一键扫描
             }
             staticImage.visible = true;
             dynamicImage.visible = false;
@@ -171,7 +171,7 @@ Rectangle {
             Text {
                 id: text0
                 width: leftbar.width-180
-                text: qsTr("A key to clean common system junk, effectively improve the efficiency of the system")//一键清理系统垃圾，有效提高系统运行效率
+                text: qsTr("Quick clean up system junk, saving disk space and improving the system efficiency！")//一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！
                 font.bold: true
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
@@ -180,7 +180,7 @@ Rectangle {
             Text {
                 id: text1
                 width: leftbar.width-180
-                text: qsTr("        A key to clean up will be directly removed the following three hook option, if you do not want to directly remove an item, please remove the tick, enter the system clean page for more detailed cleaning.")//        一键清理将会直接清理掉下面三个勾选项的内容,如果您不想直接清理掉某项内容,请去掉该项的勾选框,进入系统清理页面进行更细致地选择性清理。
+                text: qsTr("        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system！")//        一键帮您清理电脑中的Cookies、垃圾、痕迹和插件！
                 wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -188,7 +188,7 @@ Rectangle {
             Common.Button{
                 id: firstonekey
                 hoverimage: "green3.png"
-                text:qsTr("Scan Quickly")//一键扫描
+                text:qsTr("Quick Scan")//一键扫描
                 fontsize: 17
                 anchors {
                     left: parent.left; leftMargin: 100
@@ -257,7 +257,7 @@ Rectangle {
             spacing: 10
             Common.Label {
                 id: itemtip
-                text: qsTr("A key Clean Items")//一键清理项目
+                text: qsTr("Quick Cleanup Items")//一键清理项目
                 font.bold: true
                 font.pixelSize: 14
                 color: "#008000"
@@ -330,7 +330,7 @@ Rectangle {
                         Row {
                             spacing: 20
                             Text {
-                                text: qsTr("Clean up the garbage")//清理垃圾
+                                text: qsTr("Cleanup garbage")//清理垃圾
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
@@ -427,7 +427,7 @@ Rectangle {
                         Row {
                             spacing: 20
                             Text {
-                                text: qsTr("Clean history")//清理历史记录
+                                text: qsTr("Delete History")//清理历史记录
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
@@ -440,7 +440,7 @@ Rectangle {
                             }
                         }
                         Text {
-                            text: qsTr("Clean up the Internet histories, and protect your privacy")//清理上网时留下的历史记录，保护您的个人隐私
+                            text: qsTr("Clean up the historical records, to protect your privacy")//清理上网时留下的历史记录，保护您的个人隐私
                             font.pixelSize: 12
                             color: "#7a7a7a"
                         }
@@ -520,7 +520,7 @@ Rectangle {
                         Row {
                             spacing: 20
                             Text {
-                                text: qsTr("Clean Cookies")//清理Cookies
+                                text: qsTr("Cleanup Cookies")//清理Cookies
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
@@ -533,7 +533,7 @@ Rectangle {
                             }
                         }
                         Text {
-                            text: qsTr("Clean up the Internet Cookies, and give a piece of the sky to browser.")//清理上网时产生的Cookies，还浏览器一片天空
+                            text: qsTr("Clean up the Cookies，including surfing, shopping and online game records.")//清理电脑中的Cookies，包含上网、购物、游戏等记录
                             font.pixelSize: 12
                             color: "#7a7a7a"
                         }

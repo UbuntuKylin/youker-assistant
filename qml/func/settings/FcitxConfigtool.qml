@@ -8,8 +8,8 @@ Rectangle {
     id:fcitxconfigtool
     width: parent.width
     height: 475
-    property string actiontitle: qsTr("Fcitx list configuration")//小企鹅输入法列表配置
-    property string actiontext: qsTr("Set the input mode you like, click 'next' to continue setup, click 'Cancel' cancel the current settings and return.")//可以设置自己喜欢的输入方式，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。
+    property string actiontitle: qsTr("Input Method Configuration")//输入法配置
+    property string actiontext: qsTr("'<<' '>>'button to add/remove input method, '▲ ▼' buttons to adjust the input method priority, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.")//'<<'和'>>'按钮添加/删除输入法，'▲'和'▼'按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。
     property string selectedimage: ""
     property int leftFcitxModelindex: 0
     property int rightFcitxModelindex: 0
@@ -148,7 +148,7 @@ Rectangle {
             left: parent.left
             leftMargin: 80
         }
-        text: qsTr("Current input method")//当前的输入法
+        text: qsTr("Current input method list")//当前输入法列表
         font.bold: true
         font.pixelSize: 12
         color: "#7a7a7a"
@@ -161,7 +161,7 @@ Rectangle {
             left: parent.left
             leftMargin: 475
         }
-        text: qsTr("Available input method")//可用的输入法
+        text: qsTr("Available input method list")//可用输入法列表
         font.bold: true
         font.pixelSize: 12
         color: "#7a7a7a"
@@ -528,7 +528,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             onCheckedChanged: {
             }
-            titleName: qsTr("Switch Inputmethod")//输入法切换
+            titleName: qsTr("Switch input method")//输入法切换
         }
         Common.ComboBox {
             anchors{
@@ -545,19 +545,19 @@ Rectangle {
     }
 
     //提示
-    Text {
-        id:prompt
-        anchors {
-            top: parent.top
-            topMargin: 398
-            left: parent.left
-            leftMargin: 80
-        }
-        text: qsTr("Tip: '<<' add available input method, '>>'delete the currently selected input method, '▲ ▼'change the current position.")//提示:'<<'可以将可用输入法加入当前输入法，'>>'删除当前选中输入法，'▲'和'▼'改变当前输入法的位置。
-        font.bold: true
-        font.pixelSize: 12
-        color: "#7a7a7a"
-    }
+//    Text {
+//        id:prompt
+//        anchors {
+//            top: parent.top
+//            topMargin: 398
+//            left: parent.left
+//            leftMargin: 80
+//        }
+//        text: qsTr("Tip: '<<' add available input method, '>>'delete the currently selected input method, '▲ ▼'change the current position.")//提示:'<<'可以将可用输入法加入当前输入法，'>>'删除当前选中输入法，'▲'和'▼'改变当前输入法的位置。
+//        font.bold: true
+//        font.pixelSize: 12
+//        color: "#7a7a7a"
+//    }
     //ctrl_key
     Column{
         spacing: 20

@@ -45,7 +45,7 @@ Item {
              id: cancelBtn
              visible: toolbar.showok
              hoverimage: "gray1.png"//../../img/icons/
-             text: qsTr("Quit")//取消
+             text: qsTr("Cancel")//取消
              fontcolor:"#929292"
              fontsize: 13
              width: 94; height: 29

@@ -8,8 +8,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: qsTr("Fcitx appearance configuration")//小企鹅输入法外观配置
-    property string actiontext: qsTr("You can set skin you like, click 'Apply' to complete the setup, click 'Previous' to return to the previous interface.")//可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回上一界面设置。
+    property string actiontitle: qsTr("Appearance Configuration")//外观配置
+    property string actiontext: qsTr("According to personal preferences to set input method skin, click 'Apply' to complete the setup, click 'Previous' to return to the personalized configuration.")//可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回个性化配置。
     property int flagCheck: 1
     property int flag_i: 0
     property string h_fcitxSkinImage: ""
@@ -243,7 +243,7 @@ Rectangle {
         Common.CheckBox{
             id:enableHotKeyBox
             anchors.verticalCenter: parent.verticalCenter
-            titleName: qsTr("Change font")//更换字体
+            titleName: qsTr("Change Font")//更换字体
             onCheckedChanged: {
                 if(enableHotKeyBox.checked == false)
                 {

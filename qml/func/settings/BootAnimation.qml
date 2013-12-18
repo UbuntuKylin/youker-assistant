@@ -28,8 +28,8 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property string image_path: ""
-    property string actiontitle: qsTr("Boot animation settings(Only PNG image format, does not support the Chinese naming pictures currently)")//开机动画设置(目前仅支持png图片格式，不支持以中文命名的图片)
-    property string actiontext: qsTr("Click the 'custom picture' button to select you want to add to the list of pictures, select you want to set the picture name in the list, click 'OK' button to complete the set.")//点击“自定义图片”按钮选择您需要添加到列表中的图片，在列表中选中您要设置的图片名称，点击“确定”按钮完成设置。
+    property string actiontitle: qsTr("Boot animation settings (only supports the PNG image format, does not support Chinese naming pictures!)")//开机动画设置(目前仅支持png图片格式，不支持以中文命名的图片!)
+    property string actiontext: qsTr("Click the 'Custom Image' button to select the picture you want to add, select the picture you want to set and click 'OK' button to complete the setup.")//单击“自定义图片”按钮选择需要添加的图片，选中列表中要设置的图片名称，单击“确定”按钮完成设置。
     property int num: 0
     property string selectedimage: ""
 
@@ -89,7 +89,7 @@ Rectangle {
                 id: statusImage
                 visible: false
                 iconName: "green.png"
-                text: qsTr("Completed")//已完成
+                text: qsTr("Completed!")//已完成!
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
@@ -155,7 +155,7 @@ Rectangle {
             left: bootimage.right
             leftMargin: 100
         }
-        text: qsTr("Optional boot animation")//可选开机动画
+        text: qsTr("Optional Boot Animation")//可选的开机动画
         font.bold: true
         font.pixelSize: 14
         color: "#383838"

@@ -45,7 +45,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: desktoptitle
-                text: qsTr("Desktop information")//桌面信息
+                text: qsTr("Desktop Information")//桌面信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -62,7 +62,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Environment:")//桌面环境:
+                    text: qsTr("Desktop Environment:")//桌面环境:
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
@@ -105,7 +105,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Home directory:")//用户主目录:
+                    text: qsTr("Home Folder:")//用户主目录:
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100

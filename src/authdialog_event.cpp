@@ -52,10 +52,10 @@ bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
 //                    this->hide();
                     this->close();
                     this->destroy();
-                    //警告  服务没有启动，相关功能将无法正常使用！
+                    //警告  后台服务没有启动，部分功能将无法正常使用！
                     QMessageBox::warning(NULL,
-                                         tr("Warning"),
-                                         tr("server doesn't run, some function cannot work normally!"),
+                                         tr("Warning:"),
+                                         tr("Background service does not start, some features will not work properly!"),
                                          QMessageBox::Ok);
                 }else{
                     ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));

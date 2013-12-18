@@ -78,7 +78,7 @@ Rectangle {
         }
         StatusWidget{
             id: statuswidget
-            uk_version: main.version
+            version: main.version
         }
     }
 

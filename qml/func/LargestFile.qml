@@ -21,7 +21,7 @@ Item {
     width: parent.width
     height: 435
     property string title: qsTr("Find large files which take up disk space quickly")//快速找出最占用磁盘空间的大文件
-    property string description: qsTr("Delete unwanted large files, free more disk space.")//删除占用磁盘空间的无用大文件，释放更多磁盘空间。
+    property string description: qsTr("Delete the useless files, to save disk space.")//删除占用磁盘空间的无用大文件，释放更多磁盘空间。
     property string scope_desc: qsTr("File size in the range of 1M--20480M, no support the Chinese path.")//文件的大小范围为1M--20480M，暂不支持中文路径。
     property string btnFlag: "largestfile_work"//清理的标记：largestfile_work
     property int sub_num: 0
@@ -78,10 +78,10 @@ Item {
             check_flag=true;
 
         mainModel.clear();
-        //清理最大文件，清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
-        mainModel.append({"itemTitle": qsTr("Clean up the maximum file, and the pah is:")  + root.directory,
+        //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
+        mainModel.append({"itemTitle": qsTr("Cleanup path is:")  + root.directory,
                          "picture": "../img/toolWidget/deb-min.png",
-                         "detailstr": qsTr("Clear the maximum file directory in user's appointment to save disk space.")})
+                         "detailstr": qsTr("cleaning up the maximum files in user-specified directory，to save disk space.")})
     }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -99,7 +99,7 @@ Item {
             }
             else if (msg == "largestfile") {
                 root.state = "LargestFileWorkFinish";
-                toolkits.alertMSG(qsTr("Cleaned!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 refresh_page();
             }
         }
@@ -149,7 +149,7 @@ Item {
             }
         }
         Text {
-            text: qsTr("Input file size(M):")//请输入文件大小(M):
+            text: qsTr("Please input the file size(M):")//请输入文件大小(M):
             font.pixelSize: 12
             color: "#383838"
             anchors.verticalCenter: parent.verticalCenter
@@ -200,7 +200,7 @@ Item {
             width: 95
             height: 30
             hoverimage: "green2.png"
-            text: qsTr("Start cleaning")//开始清理
+            text: qsTr("Begin Cleanup")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag) {
@@ -222,7 +222,7 @@ Item {
                         if(root.null_flag == true) {
                            root.state = "LargestFileWorkEmpty";
                             //友情提示： 扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else if(root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
@@ -230,7 +230,7 @@ Item {
                     }
                 }
                 else {
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y)
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y)
                 }
             }
         }

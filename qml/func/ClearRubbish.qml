@@ -31,7 +31,7 @@ Item {
         width: parent.width; height: 435
 
         Common.TabPage {
-            title:qsTr("Deb cache")//包管理缓存
+            title:qsTr("Package Cache")//包管理缓存
             anchors.fill: parent
 //            CacheModel {//pengshuang缓存
 //                id: aptitem
@@ -42,7 +42,7 @@ Item {
             }
         }
         Common.TabPage {
-            title:qsTr("Software cache")//软件中心缓存
+            title:qsTr("Software Center Cache")//软件中心缓存
             anchors.fill: parent
             SoftwareCruft {
                 id: softwareitem
@@ -50,7 +50,7 @@ Item {
 
         }
         Common.TabPage {
-            title:qsTr("Historical records")//历史记录
+            title:qsTr("Historical Records")//历史记录
             anchors.fill: parent
             BrowserHistroy {
                 id: historyitem
@@ -68,7 +68,7 @@ Item {
             }
         }
         Common.TabPage {
-            title:qsTr("Deb uninstalled")//包卸载
+            title:qsTr("Software Cleanup")//软件清理
             anchors.fill: parent
             PackageModel {
                 id: packagemodel
@@ -82,7 +82,7 @@ Item {
 //            }
 //        }
         Common.TabPage{
-            title:qsTr("Clean LargeFile ")//大文件清理
+            title:qsTr("Find large files")//查找大文件
             anchors.fill: parent
             LargestFile {
                 id: largestitem

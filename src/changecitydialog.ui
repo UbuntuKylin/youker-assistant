@@ -16,9 +16,9 @@
   <widget class="QLabel" name="titleLabel">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>146</x>
      <y>12</y>
-     <width>91</width>
+     <width>131</width>
      <height>21</height>
     </rect>
    </property>
@@ -26,7 +26,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change City&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change the city&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -94,7 +94,7 @@
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>Cancel</string>
    </property>
   </widget>
   <widget class="QPushButton" name="okBtn">
@@ -137,7 +137,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;By default, there are 3 cities. Click &amp;quot;configure&amp;quot; button to reset city.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Three cities to be set by default, Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <zorder>frame</zorder>

@@ -38,7 +38,7 @@ Rectangle {
     property double selected_zoom //存放用户选择确认后的缩放值
 
     property string actiontitle: qsTr("Default font settings")//默认字体设置
-    property string actiontext: qsTr("According to your preferences to set the system default font , click the default settings button, can revert the corresponding font to the default font.")//根据您的喜好设置系统默认字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。
+    property string actiontext: qsTr("According to personal preferences to set the system default font, click the 'restore default' button, can be restored to the state before the font settings.")//根据个人喜好设置系统默认字体，单击“恢复默认”按钮，可以将对应的字体恢复到设置前状态。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -146,7 +146,7 @@ Rectangle {
         }
         Text{
             id: fonttitle
-            text: qsTr("Font settings")//字体设置
+            text: qsTr("Font Settings")//字体设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -178,7 +178,7 @@ Rectangle {
                 Common.Label {
                     id: fontslabel
                     width: 130
-                    text: qsTr("Current font:")//当前字体:
+                    text: qsTr("Default Font:")//默认字体：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -199,21 +199,21 @@ Rectangle {
                     id: fontBtn
                     hoverimage: "blue4.png"
                     fontcolor: "#086794"
-                    text: qsTr("Change font")//更换字体
+                    text: qsTr("Change Font")//更换字体
                     width: 105
                     height: 30
                     onClicked: sessiondispatcher.show_font_dialog("font");
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: qsTr("Restore default")//恢复默认
+                    text: qsTr("Reset Font")//恢复默认
                     width: 105
                     height: 30
                     onClicked: {
                         var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "currentfont");
                         if(defaultfont == defaultfontpage.selected_current_font) {
-                            //友情提示：    您系统的当前字体已经为默认字体！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：    已经恢复为默认字体！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Has been restored to the default font!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             sessiondispatcher.set_font_qt_default(defaultfont);
@@ -233,7 +233,7 @@ Rectangle {
                 Common.Label {
                     id: desktopfontlabel
                     width: 130
-                    text: qsTr("Current desktop font:")//当前桌面字体:
+                    text: qsTr("Desktop Font:")//桌面字体:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -253,7 +253,7 @@ Rectangle {
                 Common.Button {
                     id: desktopfontBtn
                     hoverimage: "blue4.png"
-                    text: qsTr("Change font")//更换字体
+                    text: qsTr("Change Font")//更换字体
                     fontcolor: "#086794"
                     width: 105
                     height: 30
@@ -261,14 +261,14 @@ Rectangle {
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: qsTr("Restore default")//恢复默认
+                    text: qsTr("Reset Font")//恢复默认
                     width: 105
                     height: 30
                     onClicked: {
                         var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "desktopfont");
                         if(defaultfont == defaultfontpage.selected_desktop_font) {
-                            //友情提示： 您系统的当前桌面字体已经为默认字体！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current desktop font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示： 您系统的桌面字体已经恢复为默认字体！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's desktop font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             sessiondispatcher.set_desktop_font_qt_default(defaultfont);
@@ -288,7 +288,7 @@ Rectangle {
                 Common.Label {
                     id: monospacefontlabel
                     width: 130
-                    text: qsTr("Current monospace font:")  //monospace   当前等宽字体:
+                    text: qsTr("Monospace Font:")  //等宽字体:
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -308,7 +308,7 @@ Rectangle {
                 Common.Button {
                     id: monofontBtn
                     hoverimage: "blue4.png"
-                    text: qsTr("Change font")//更换字体
+                    text: qsTr("Change Font")//更换字体
                     fontcolor: "#086794"
                     width: 105
                     height: 30
@@ -316,14 +316,14 @@ Rectangle {
                 }
                 Common.Button {
                     hoverimage: "blue2.png"
-                    text: qsTr("Restore default")//恢复默认
+                    text: qsTr("Reset Font")//恢复默认
                     width: 105
                     height: 30
                     onClicked: {
                         var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "monospacefont");
                         if(defaultfont == defaultfontpage.selected_monospace_font) {
-                            //友情提示： 您系统的当前等宽字体已经为默认字体！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's current monospace font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示： 您系统的等宽字体已经恢复为默认字体！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's monospace font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             sessiondispatcher.set_monospace_font_qt_default(defaultfont);
@@ -348,7 +348,7 @@ Rectangle {
         }
         Text{
             id: zoomtitle
-            text: qsTr("Zoom settings")//缩放设置
+            text: qsTr("Zoom Mode")//缩放设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -373,7 +373,7 @@ Rectangle {
             Common.Label {
                 id: fontzoomlabel
                 width: 130
-                text: qsTr("Global font scaling:")//全局字体缩放:
+                text: qsTr("Global Font Scaling:")//全局字体缩放:
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -410,7 +410,7 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: qsTr("Restore default")//恢复默认
+                text: qsTr("Reset Font")//恢复默认
                 width: 105
                 height: 30
                 onClicked: {

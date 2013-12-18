@@ -196,7 +196,7 @@ void KFontDialog::updateAll(QModelIndex index) {
     }
     QString curStr = ui->familyEdit->text().append(" ").append(ui->styleEdit->text().append(" ").append(ui->sizeEdit->text()));
     ui->curFontText->setText(curStr);
-    ui->sampleEdit->setText("Ubuntu Kylin:做最有中国位的操作系统！");
+    ui->sampleEdit->setText("Ubuntu Kylin:做最有中国味的操作系统！");
     updateSampleFont();
 }
 
@@ -261,7 +261,7 @@ void KFontDialog::on_okBtn_clicked() {
         //提示      你还没有更换字体，请选择字体进行更换！
         QMessageBox::warning(NULL,
                              tr("Tips"),
-                             tr("You haven't change the font, please select a font to change it!"),
+                             tr("You haven't change the font, please choose the font!"),
                              QMessageBox::Ok);
     }
     else {

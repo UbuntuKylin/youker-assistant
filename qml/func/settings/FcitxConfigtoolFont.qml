@@ -8,8 +8,8 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string actiontitle: qsTr("Fcitx habit configure")//小企鹅输入法习惯配置
-    property string actiontext: qsTr("You can set the habit that you like, click 'Next' to continue setup, click 'Cancel' to cancel the current settings and return.")//可以设置自己喜欢的输入习惯，点击＂下一步＂继续设置，点击＂取消＂撤销当前设置并返回。
+    property string actiontitle: qsTr("Personalized Configuration")//个性化配置
+    property string actiontext: qsTr("Global configuration according to personal habits, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.")//根据个人习惯进行全局配置，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。
     property int scanModelIndex:1
     property int scrollbar_z: 1
     property int defaultCandidateWord:0     //恢复默认时用到
@@ -131,7 +131,7 @@ Rectangle {
 //                font.bold: true
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("Candidate word list:")//候选词列表:
+                text: qsTr("Candidate list:")//候选词列表:
             }
             Common.ButtonRow {
                 exclusive: true//控制是否联动
@@ -161,7 +161,7 @@ Rectangle {
                 id: numberText
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("Number of candidate words:")//候选词个数:
+                text: qsTr("Candidate Word Number:")//候选词个数:
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -196,7 +196,7 @@ Rectangle {
         }
         Text{
             id: keyboardtitle
-            text: qsTr("keyboard settings")//快捷键设置
+            text: qsTr("Hotkey")//快捷键
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -225,7 +225,7 @@ Rectangle {
                 id:inputMethod
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text:qsTr("Switch the active/non active input method:")//切换激活/非激活输入法:
+                text:qsTr("Trigger Input Method:")//切换激活/非激活输入法:
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -239,7 +239,7 @@ Rectangle {
                     height:30
                     onClicked: {
                         methodBtn1.forceActiveFocus();
-                        methodBtn1.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
+                        methodBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
                     }
                     onEntered:{
                         methodBtn1Tmp = methodBtn1.text
@@ -261,7 +261,7 @@ Rectangle {
                     height:30
                     onClicked: {
                         methodBtn2.forceActiveFocus();
-                        methodBtn2.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
+                        methodBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
                     }
                     onEntered:{
                         methodBtn2Tmp = methodBtn2.text
@@ -283,7 +283,7 @@ Rectangle {
                 id: prevPage
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("Previous:")//上一页:
+                text: qsTr("Prev Page:")//上一页:
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -297,7 +297,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         prevPageBtn1.forceActiveFocus();
-                        prevPageBtn1.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
+                        prevPageBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
                     }
                     onEntered:{
                         prevpageBtn1Tmp = prevPageBtn1.text
@@ -319,7 +319,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         prevPageBtn2.forceActiveFocus();
-                        prevPageBtn2.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
+                        prevPageBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
                     }
                     onEntered:{
                         prevpageBtn2Tmp = prevPageBtn2.text;
@@ -341,7 +341,7 @@ Rectangle {
                 id: nextPage
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("Next:")//下一页:
+                text: qsTr("Next Page:")//下一页:
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -355,7 +355,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         nextPageBtn1.forceActiveFocus();
-                        nextPageBtn1.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
+                        nextPageBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
                     }
                     onEntered:{
                         nextpageBtn1Tmp = nextPageBtn1.text;
@@ -377,7 +377,7 @@ Rectangle {
                     fontsize: 13
                     onClicked: {
                         nextPageBtn2.forceActiveFocus();
-                        nextPageBtn2.text = qsTr("Please press the combination keys need set");//请按下要设置的组合键
+                        nextPageBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
                     }
                     onEntered:{
                         nextpageBtn2Tmp = nextPageBtn2.text;

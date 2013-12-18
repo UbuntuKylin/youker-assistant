@@ -63,7 +63,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: titlebar
-                text: qsTr("Basic information")//电脑基本信息
+                text: qsTr("Basic Information")//电脑基本信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -125,7 +125,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Serial:")//序列号：
+                    text: qsTr("Serial Number:")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
@@ -170,7 +170,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("OS Model:")//操作系统类型：
+                    text: qsTr("OS Types:")//操作系统类型：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
@@ -215,7 +215,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Kernel Release:")//内核版本：
+                    text: qsTr("Kernel Version:")//内核版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120
@@ -230,7 +230,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Kernel Architecture:")//内核架构：
+                    text: qsTr("Kernel Arch:")//内核架构：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 120

@@ -93,7 +93,7 @@ void AuthDialog::on_okButton_clicked()
 {
     passwd = ui->lineEdit->text();
     if(trans_password("youkersudo", passwd)) {
-        ui->msg_label->setText(tr("The server is starting, please wait!"));//正在启动服务，请稍等！
+        ui->msg_label->setText(tr("Starting service, please wait!"));//正在启动服务，请稍等！
         QTimer *timer = new QTimer(this);
         timer->setInterval(1000);
         connect(timer,SIGNAL(timeout()),this,SLOT(sleep_to_call_server()));
@@ -103,6 +103,6 @@ void AuthDialog::on_okButton_clicked()
     else {
         ui->lineEdit->clear();
         ui->lineEdit->setFocus();
-        ui->msg_label->setText(tr("Tip: password is wrong, please input the correct password!"));//"提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用。"
+        ui->msg_label->setText(tr("Tips: Password error, please re-enter the password to ensure the normal use of youker assistant!"));//提示：密码错误，请重新输入当前用户的登录密码,保证优客助手的正常使用!
     }
 }

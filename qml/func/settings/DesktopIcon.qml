@@ -29,8 +29,8 @@ Rectangle {
     property int cursor_size: 24
     property string selected_icon_theme: ""//存放用户选择确认后的主题
 
-    property string actiontitle: qsTr("Desktop icon settings")//桌面图标设置
-    property string actiontext: qsTr("You can set the desktop icon theme and control some icon displayed on the desktop.")//您可以设置桌面图标主题和控制一些图标是否显示在桌面上。
+    property string actiontitle: qsTr("Desktop Icons")//桌面图标
+    property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons")//设置桌面图标主题和桌面图标的可见性
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -197,7 +197,8 @@ Rectangle {
                     if (desktopiconsetpage.selected_icon_theme != iconcombo.selectedText) {
                         desktopiconsetpage.selected_icon_theme = iconcombo.selectedText;
                         sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                        showText.text = qsTr("[ Current Icon Theme is: ") + iconcombo.selectedText + " ]";
+                        //[ 当前图标主题是：
+                        showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";
                         statusImage.visible = true;
                     }
                 }
@@ -283,7 +284,7 @@ Rectangle {
             Common.Label {
                 id: desktopiconlabel
                 width: 170
-                text: qsTr("The file manager desktop:")//由文件管理器处理桌面:
+                text: qsTr("Show Desktop Icons:")//显示桌面图标：
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -307,7 +308,7 @@ Rectangle {
             Common.Label {
                 id: homefolderlabel
                 width: 170
-                text: qsTr("My documents:")//我的文档:
+                text: qsTr("Home Folder:")//主文件夹：
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -353,7 +354,7 @@ Rectangle {
             Common.Label {
                 id: trashlabel
                 width: 170
-                text: qsTr("Recycle bin:")//回收站:
+                text: qsTr("Trash:")//回收站:
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -377,7 +378,7 @@ Rectangle {
             Common.Label {
                 id: devicelabel
                 width: 170
-                text: qsTr("Mobile equipment:")//移动设备:
+                text: qsTr("Mounted volumes:")//已经挂载卷标：
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -478,8 +479,8 @@ Rectangle {
             }
 
             if((defaulttheme == desktopiconsetpage.selected_icon_theme) && (defaultdesktopcontrol == desktopcontrolFlag) && (defaultdocument == documentFlag) && (defaultnetwork == networkFlag) && (defaultrecyclebin == recyclebinFlag) && (defaultdevice == deviceFlag)) {
-                //友情提示：        桌面图标配置已经为默认配置！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Desktop Icon configure is the default configure!"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示：        桌面图标已经恢复为默认配置！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Desktop icon has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 if(defaulttheme != desktopiconsetpage.selected_icon_theme) {

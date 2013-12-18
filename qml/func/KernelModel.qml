@@ -96,7 +96,7 @@ Item {
         height: parent.height
 //        x: (parent.width * 1.5)
         property string title: qsTr("Uninstall old kernel packages")//卸载旧内核包
-        property string description: qsTr("Clean old kernel, to free space for system")//清理旧内核，释放系统空间
+        property string description: qsTr("Clean up the old kernel, release system space")//清理旧内核，释放系统空间
         property string btnFlag: "kernel_scan"//扫描或者清理的标记：kernel_scan/kernel_work
         property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
         property int subNum: 0//扫描后得到的kernel的项目总数
@@ -142,7 +142,7 @@ Item {
                 //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
                 mainModel.append({"itemTitle": qsTr("Uninstall old kernel packages"),
                                  "picture": "../img/toolWidget/deb-min.png",
-                                 "detailstr": qsTr("User can selectively clean old kernel packages according to the scan results, to save the system space")})
+                                 "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
             }
 
 
@@ -151,7 +151,7 @@ Item {
                 root.arrowShow = 0;
                 if(root.flag == false) {
                     //友情提示：      扫描内容为空，不再执行清理！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else {
                     root.flag = false;
@@ -166,7 +166,7 @@ Item {
                 }
                 root.arrowShow = 1;
                 root.state = "KernelWork";
-                actionBtn.text = qsTr("Start cleaning");//开始清理
+                actionBtn.text = qsTr("Begin Cleanup");//开始清理
                 root.btnFlag = "kernel_work";
                 backBtn.visible = true;
                 rescanBtn.visible = true;
@@ -183,7 +183,7 @@ Item {
                         //清理过程中发生错误，解禁按钮
                         actionBtn.enabled = true;
                         titleBar.state = "KernelWorkError";
-                        toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                        toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                     }
                 }
              }
@@ -199,7 +199,7 @@ Item {
                         //清理成功完成，解禁按钮
                         actionBtn.enabled = true;
                         root.state = "KernelWorkFinish";
-                        toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                        toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                         root.flag = true;
                         root.getData();
                         home.state = "NormalState";
@@ -256,7 +256,7 @@ Item {
                     id: backBtn
                     visible: false
                     anchors.verticalCenter: parent.verticalCenter
-                    wordname: qsTr("Go back")//返回
+                    wordname: qsTr("Back")//返回
                     width: 40
                     height: 20
                     onClicked: {
@@ -271,11 +271,11 @@ Item {
                     id: rescanBtn
                     visible: false
                     anchors.verticalCenter: parent.verticalCenter
-                    wordname: qsTr("Scan again")//重新扫描
+                    wordname: qsTr("Rescan")//重新扫描
                     width: 40
                     height: 20
                     onClicked: {
-                        actionBtn.text = qsTr("Start scanning");//开始扫描
+                        actionBtn.text = qsTr("Start Scanning");//开始扫描
                         root.btnFlag = "kernel_scan";
                         backBtn.visible = false;
                         rescanBtn.visible = false;
@@ -292,7 +292,7 @@ Item {
                 width: 120
                 height: 39
                 hoverimage: "green1.png"
-                text: qsTr("Start scanning")//开始扫描
+                text: qsTr("Start Scanning")//开始扫描
                 fontsize: 15
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
@@ -315,7 +315,7 @@ Item {
                             }
                             else {//扫描得到的实际内容不存在时
                                 //友情提示：        对不起，您没有选择需要清理的项，请确认！
-                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
                     }
@@ -341,7 +341,7 @@ Item {
                                     }
                                     else {//扫描得到的实际内容不存在时
                                         //友情提示：        对不起，您没有选择需要清理的项，请确认！
-                                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you have no choice to clean up the items, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                                     }
                                 }
                             }
@@ -406,35 +406,35 @@ Item {
         states: [
             State {
                 name: "KernelWork"
-                PropertyChanges { target: actionBtn; text:qsTr("Start cleaning") }//开始清理
+                PropertyChanges { target: actionBtn; text:qsTr("Begin Cleanup") }//开始清理
                 PropertyChanges { target: root; btnFlag: "kernel_work" }
                 PropertyChanges { target: backBtn; visible: true}
                 PropertyChanges { target: rescanBtn; visible: true}
             },
             State {
                 name: "KernelWorkAGAIN"
-                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
+                PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "kernel_scan" }
                 PropertyChanges { target: backBtn; visible: false}
                 PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
                 name: "KernelWorkError"
-                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
+                PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "kernel_scan" }
                 PropertyChanges { target: backBtn; visible: false}
                 PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
                 name: "KernelWorkFinish"
-                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
+                PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "kernel_scan" }
                 PropertyChanges { target: backBtn; visible: false}
                 PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
                 name: "KernelWorkEmpty"
-                PropertyChanges { target: actionBtn; text:qsTr("Start scanning")}//开始扫描
+                PropertyChanges { target: actionBtn; text:qsTr("Start Scanning")}//开始扫描
                 PropertyChanges { target: root; btnFlag: "kernel_scan" }
                 PropertyChanges { target: backBtn; visible: false}
                 PropertyChanges { target: rescanBtn; visible: false}
