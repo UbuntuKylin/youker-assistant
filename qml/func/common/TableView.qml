@@ -108,7 +108,7 @@ FocusScope{
 
     // Signals
     signal activated
-
+    signal clicked
 
     Rectangle {
         id: colorRect
@@ -244,6 +244,9 @@ FocusScope{
 
         onDoubleClicked: {
             parent.activated()
+        }
+        onClicked: {//added by kobe
+            root.clicked();
         }
     }
 

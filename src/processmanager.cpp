@@ -192,3 +192,10 @@ QString ProcessManager::getProcessId(QString currentIndex){
     }
     return currentId;
 }
+
+int ProcessManager::getProcessIndex(QString currentId){
+    int currentIndex;
+    currentIndex = processMap.key(currentId).toInt();
+//    qDebug() << QString("%1").arg(currentIndex);
+    return currentIndex;
+}

@@ -1,3 +1,9 @@
+youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
+
+  * Refersh process list automatically and position the originally selected process(LP: #1261802).
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 18 Dec 2013 13:51:43 +0800
+
 youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
 
   * Overide the Font Dialog with KFontDialog Class.

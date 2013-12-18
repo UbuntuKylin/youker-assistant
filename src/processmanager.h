@@ -48,6 +48,8 @@ public:
     Q_INVOKABLE void updateMap(QString num, QString id);
     //从map中得到进程号
     Q_INVOKABLE QString getProcessId(QString currentIndex);
+    //从map中得到进程在列表中的序号
+    Q_INVOKABLE int getProcessIndex(QString currentId);
 signals:
 
 public slots:
