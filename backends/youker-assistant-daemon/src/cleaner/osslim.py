@@ -20,6 +20,16 @@ class OsSlim():
                     spare_packages_list.append('<2_2>'.join(tmp_packages_list))
         return spare_packages_list
 
+    def scan_spare_packages(self):
+        cache = common.get_cache_list()
+        final_spare_list = []
+        if cache:
+            for pkg in cache:
+                if pkg.is_auto_removable and not pkg.name.startswith('linux'):
+                    final_spare_list.append(pkg)
+        return final_spare_list
+
+
 if __name__ == '__main__':
     obj = OsSlim()
     obj.get_spare_packages()
