@@ -218,8 +218,6 @@ public:
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);
 
-//    Q_INVOKABLE void tellNullToListTitle(QString emptyFlag, bool status);//BrowserCookies中扫描内容为空时，告诉ListTitle.qml
-
     //把优客助手运行时，系统的默认配置写到配置文件
     Q_INVOKABLE void write_default_configure_to_qsetting_file(QString key, QString name, QString value);
     //从Qsetting配置文件中读取系统启动时的默认配置
@@ -247,13 +245,6 @@ signals:
     void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
     //cache扫描完后告诉QML
     void tellQMLCaheOver();
-    //BrowserCookies中扫描内容为空时，告诉ListTitle.qml
-//    void getNullFlag(QString emptyFlag, bool status);
-
-//    //判断是否有firefox浏览器
-//    void judge_deb_exists_firefox(QString flag);
-//    //判断是否有chromium浏览器
-//    void judge_deb_exists_chromium(QString flag);
 public slots:
     //获取天气预报槽函数
     void handler_access_forecast_weather(QString key, QString value);

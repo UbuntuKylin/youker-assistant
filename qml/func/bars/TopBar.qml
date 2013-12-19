@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 import "../common" as Common
-import "../../func" as Func
+
 Item {
      id: topbar
      property string arrow: "../../img/icons/return.png"
@@ -32,7 +32,7 @@ Item {
 //         onClicked: topbar.buttonClicked()
 //     }
 
-     Func.SetBtn {
+     Common.SetBtn {
          id: backBtn
          width: 28
          height: 26
@@ -53,7 +53,7 @@ Item {
 //         //要判断松开是鼠标位置
 //         onReleased: backBtn.hoverimage = "../../img/icons/return.png"
 //     }
-//     Func.SetBtn{
+//     Common.SetBtn{
 //         id: backBtn
 //         setbtn_flag: topbar.arrow
 //         iconName:topbar.arrow

@@ -794,7 +794,7 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
         info = currentInfo.value(key);
     }
     else if(flag == "weathericon") {
-        info = "../img/weather/" + key;
+        info = "../../img/weather/" + key;
     }
     return info.toString();
 }
@@ -887,19 +887,3 @@ void SessionDispatcher::getCityIdInfo() {
 void SessionDispatcher::change_maincheckbox_status(QString status) {
     emit startChangeMaincheckboxStatus(status);
 }
-
-
-//void SessionDispatcher::tellNullToListTitle(QString emptyFlag, bool status) {
-//    emit getNullFlag(emptyFlag, status);
-//}
-
-
-////浏览器判断firefox
-//void SessionDispatcher::handler_deb_exists_firefox(QString flag) {
-//    emit judge_deb_exists_firefox(flag);
-//}
-
-////浏览器判断chromium
-//void SessionDispatcher::handler_deb_exists_chromium(QString flag) {
-//    emit judge_deb_exists_chromium(flag);
-//}

@@ -12,7 +12,7 @@ Item {
     width: minimumWidth
     height: minimumHeight
     signal clicked();
-    signal sendMstatus(bool status/*, string str*/);
+    signal sendMstatus(bool status);
 
     Rectangle {
         anchors.fill: parent
@@ -40,9 +40,9 @@ Item {
             else if(checked== "mid")  //当总check处于中间态时，点击后根据总check的bool型值决定变成true状态还是false状态
             {
                 if(checkedbool == false)
-                    checked = "true"
+                    checked = "true";
                 else if(checkedbool == true)
-                    checked = "false"
+                    checked = "false";
             }
             else if(checked == "false") {  //当总check处于false态时，点击后变成true状态
                 checked = "true";
@@ -53,10 +53,10 @@ Item {
                 checkedbool = true;
             }
             else if(checked == "mid") {
-                simage.source = "../../img/icons/checkbox-2.png"
+                simage.source = "../../img/icons/checkbox-2.png";
             }
             else if(checked=="false") {
-                simage.source = ""
+                simage.source = "";
                 checkedbool = false;
             }
             maincheckbox.clicked();
@@ -64,23 +64,18 @@ Item {
     }
     //maincheckbox.checked发生变化时激活该函数
     onCheckedChanged:{
-//        console.log("k111");
         if(checked == "true") {
-//            console.log("k222");
             simage.source = "../../img/icons/checkbox.png";
             checkedbool = true;
-            maincheckbox.sendMstatus(true/*, "true"*/);//1212
+            maincheckbox.sendMstatus(true);//1212
         }
         else if(checked == "mid") {
-//            console.log("k333");
             simage.source = "../../img/icons/checkbox-2.png";
-//            maincheckbox.sendMstatus(true/*, "mid"*/);//1212
         }
         else if(checked=="false") {
-//            console.log("k444");
             simage.source = "";
             checkedbool = false;
-            maincheckbox.sendMstatus(false/*, "false"*/);//1212
+            maincheckbox.sendMstatus(false);//1212
         }
     }
 }

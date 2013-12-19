@@ -18,7 +18,7 @@
 import QtQuick 1.1
 import "./func/common" as Common
 import "./func/settings" as SysSettings
-import "func"
+import "./func/page" as HomeView
 
 Item {
     id:content
@@ -63,51 +63,51 @@ Item {
                 Common.Page {
                     id: homepage
                     visible: false
-                    HomePage {}
+                    HomeView.HomePage {}
                 }
                 Common.Page {
                     id: systemmessage
                     visible: false
-                    DetailInformation {}
+                    HomeView.SystemInfo {}
                 }
                 Common.Page {
                     id: clearrubbish
                     visible: false
-                    ClearRubbish {}
+                    HomeView.SystemClean {}
                 }
                 Common.Page {
                     id: systemset
                     visible: false
-                    SystemSet {}
+                    HomeView.SystemSet {}
                 }
                 Common.Page {
                     id: functioncollection
                     visible: false
-                    FunctionCollection {}
+                    HomeView.SystemBox {}
                 }
                 Common.Page {
                     id: softwarerecommend
                     visible: false
-                    SoftWareRecommend {}
+                    HomeView.SoftWareRecommend {}
                 }
 
                 //SoftWare-pages
                 Common.Page {
                     id: softwarepage
                     visible: false
-                    SoftwarePage {}
+                    HomeView.SoftwarePage {}
                 }
                 //ProcessManager page
                 Common.Page {
                     id: processmanagerpage
                     visible: false
-                    ProcessManager {}
+                    HomeView.ProcessManager {}
                 }
                 //WeatherForecast-page
                 Common.Page {
                     id:weatherpage
                     visible: false
-                    WeatherForecast {}
+                    HomeView.WeatherForecast {}
                 }
 
                 //systemset-pages

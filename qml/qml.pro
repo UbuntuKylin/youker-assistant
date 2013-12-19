@@ -19,7 +19,10 @@ lupdate_only{
     SOURCES = *.qml \
               func/*.qml \
               func/bars/*.qml \
+              func/cleaner/*.qml \
               func/common/*.qml \
-              func/settings/*.qml \
-              func/info/*.qml
+              func/info/*.qml \
+              func/others/*.qml \
+              func/page/*.qml \
+              func/settings/*.qml
 }
