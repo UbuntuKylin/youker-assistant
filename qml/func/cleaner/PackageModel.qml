@@ -124,223 +124,223 @@ Item {
         ListModel { id: kernelmainModel }
         ListModel { id: kernelsubModel }
 
-//        Connections
-//        {
-//            target: sessiondispatcher
-//            onAppendContentToCacheModel: {
-//                //QString flag, QString path, QString fileFlag, QString sizeValue
-//                if(flag == "apt") {
-//                    packagesubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
-//                    root.packageNum += 1;
-//                    systemdispatcher.set_cache_args(path);
-//                }
-//                else if(flag == "software-center") {
-//                    kernelsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
-//                    root.kernelNum += 1;
-//                    systemdispatcher.set_cache_args(path);
-//                }
-//            }
-//            onTellQMLCaheOver: {
-//                packagemainModel.clear();
-//                kernelmainModel.clear();
-//                //软件包缓存清理          根据扫描结果选择性地清理软件包缓存，缓存路径为:/var/cache/apt/archives/
-//                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
-//                                 "itemTitle": qsTr("Package cache cleanup"),
-//                                 "picture": "../../img/toolWidget/apt-min.png",
-//                                 "detailstr": qsTr("Selectively clean up the results of the scanning package cache, the cache path is: /var/cache/apt/archives/")})
-//                //软件中心缓存清理       可以根据扫描结果选择性地清理软件中心缓存，缓存路径为:
-//                kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
-//                                 "itemTitle": qsTr("Software Center buffer cleaning"),
-//                                 "picture": "../../img/toolWidget/software-min.png",
-//                                 "detailstr": qsTr("Selectively clean up the results of the scanning software center cache, the cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
-
-//                if(root.packageNum != 0) {
-//                    root.packageresultFlag = true;//扫描的实际有效内容存在
-//                }
-//                else {
-//                    root.packageresultFlag = false;//扫描的实际有效内容不存在
-//                }
-//                if(root.kernelNum != 0) {
-//                    root.kernelresultFlag = true;//扫描的实际有效内容存在
-//                }
-//                else {
-//                    root.kernelresultFlag = false;//扫描的实际有效内容不存在
-//                }
-
-//                if(root.packageresultFlag == false) {
-//                    root.package_showNum = false;
-//                    root.package_expanded = false;//伸缩箭头不扩展
-//                    root.package_arrow_show = 0;//伸缩箭头不显示
-//                }
-//                else if(root.packageresultFlag == true) {
-//                    root.package_showNum = true;
-//                    root.package_expanded = true;//伸缩箭头扩展
-//                    root.package_arrow_show = 1;//伸缩箭头显示
-//                }
-//                if(root.kernelresultFlag == false) {
-//                    root.kernel_showNum = false;
-//                    root.kernel_expanded = false;//伸缩箭头不扩展
-//                    root.kernel_arrow_show = 0;//伸缩箭头不显示
-//                }
-//                else if(root.kernelresultFlag == true) {
-//                    root.kernel_showNum = true;
-//                    root.kernel_expanded = true;//伸缩箭头扩展
-//                    root.kernel_arrow_show = 1;//伸缩箭头显示
-//                }
-
-//                if(root.packageresultFlag == false && root.kernelresultFlag == false) {
-//                    root.state = "AptWorkEmpty";
-//                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-//                        //友情提示：      扫描内容为空，不再执行清理！
-//                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-//                    }
-//                    else {//清理apt后的重新获取数据，此时不需要显示对话框
-//                        root.flag = false;
-//                    }
-//                }
-//                else {
-//                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-//                        toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-//                    }
-//                    else {//清理software后的重新获取数据，此时不需要显示对话框
-//                        root.flag = false;
-//                    }
-//                    root.state = "AptWork";
-//                    actionBtn.text = qsTr("Begin cleanup");//开始清理
-//                    root.btnFlag = "cache_work";
-//                    backBtn.visible = true;
-//    //                rescanBtn.visible = true;
-//                }
-//                scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
-//            }
-//        }
-
-
-        //得到package
-        function getpackageData() {
-            var unneed_data = sessiondispatcher.scan_unneed_packages_qt();
-            if (unneed_data.length == 0) {//扫描内容不存在
-                root.packageresultFlag = false;
-                root.packageNum = 0;
-            }
-            else {
-                root.packageNum = unneed_data.length;//001
-                systemdispatcher.clear_package_args();
-                packagesubModel.clear();
-                var num = 0;
-                for (var i=0; i< unneed_data.length; i++) {
-                //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
-                    var splitlist = unneed_data[i].split("<2_2>");
-                    if (splitlist[0] == "") {
-                        num++;
-                    }
-                    else {
-                        packagesubModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2]});
-                        systemdispatcher.set_package_args(splitlist[0]);
-                    }
+        Connections
+        {
+            target: sessiondispatcher
+            onAppendPackageContentToCacheModel: {
+                //QString flag, QString pkgName, QString description, QString sizeValue
+                if(flag == "unneed") {
+                    packagesubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue});
+                    root.packageNum += 1;
+                    systemdispatcher.set_package_args(pkgName);
                 }
+                else if(flag == "oldkernel") {
+                    kernelsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue});
+                    root.kernelNum += 1;
+                    systemdispatcher.set_package_args(pkgName);
+                }
+            }
+            onTellQMLPackageOver: {
+                packagemainModel.clear();
+                //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
+                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+                                 "itemTitle": qsTr("Uninstall unnecessary procedures"),
+                                 "picture": "../../img/toolWidget/deb-min.png",
+                                 "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
+                //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
+                kernelmainModel.clear();
+                kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+                                 "itemTitle": qsTr("Uninstall old kernel packages"),
+                                 "picture": "../../img/toolWidget/deb-min.png",
+                                "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
 
-                root.packageNum -= num;//001
                 if(root.packageNum != 0) {
                     root.packageresultFlag = true;//扫描的实际有效内容存在
-                    packagemainModel.clear();
-//                    root.maincheck = true;//扫描到数据时默认把主checkbox勾上
-                    //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
-                    packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
-                                     "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                                     "picture": "../../img/toolWidget/deb-min.png",
-                                     "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
                 }
                 else {
                     root.packageresultFlag = false;//扫描的实际有效内容不存在
                 }
-            }
-
-            if(root.packageresultFlag == false) {
-                root.package_expanded = false;//伸缩箭头不扩展
-                root.package_arrow_show = 0;//伸缩箭头不显示
-            }
-            else if(root.packageresultFlag == true) {
-                root.package_expanded = true;//伸缩箭头扩展
-                root.package_arrow_show = 1;//伸缩箭头显示
-            }
-        }
-
-        //得到old kernel package
-        function getkernelData() {
-            var kernel_data = sessiondispatcher.scan_oldkernel_packages_qt();
-            if (kernel_data.length === 0) {//扫描内容不存在
-                root.kernelresultFlag = false;
-            }
-            else {
-                root.kernelNum = kernel_data.length;//001
-                systemdispatcher.clear_kernel_args();
-                kernelsubModel.clear();
-                var num = 0;
-                for (var i=0; i< kernel_data.length; i++) {
-                //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
-                    var splitlist = kernel_data[i].split("<2_2>");
-                    if (splitlist[0] == "") {
-                        num++;
-                    }
-                    else {
-                        kernelsubModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2]});
-                        systemdispatcher.set_kernel_args(splitlist[0]);
-                    }
-                }
-                root.kernelNum -= num;
                 if(root.kernelNum != 0) {
                     root.kernelresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
                     root.kernelresultFlag = false;//扫描的实际有效内容不存在
                 }
-                kernelmainModel.clear();
-                //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
-                kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
-                                 "itemTitle": qsTr("Uninstall old kernel packages"),
-                                 "picture": "../../img/toolWidget/deb-min.png",
-                                "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
-            }
-            if(root.kernelresultFlag == false) {
-                root.kernel_expanded = false;//伸缩箭头不扩展
-                root.kernel_arrow_show = 0;//伸缩箭头不显示
-            }
-            else if(root.kernelresultFlag == true) {
-                root.kernel_expanded = true;//伸缩箭头扩展
-                root.kernel_arrow_show = 1;//伸缩箭头显示
+
+                if(root.packageresultFlag == false) {
+                    root.package_showNum = false;
+                    root.package_expanded = false;//伸缩箭头不扩展
+                    root.package_arrow_show = 0;//伸缩箭头不显示
+                }
+                else if(root.packageresultFlag == true) {
+                    root.package_showNum = true;
+                    root.package_expanded = true;//伸缩箭头扩展
+                    root.package_arrow_show = 1;//伸缩箭头显示
+                }
+                if(root.kernelresultFlag == false) {
+                    root.kernel_showNum = false;
+                    root.kernel_expanded = false;//伸缩箭头不扩展
+                    root.kernel_arrow_show = 0;//伸缩箭头不显示
+                }
+                else if(root.kernelresultFlag == true) {
+                    root.kernel_showNum = true;
+                    root.kernel_expanded = true;//伸缩箭头扩展
+                    root.kernel_arrow_show = 1;//伸缩箭头显示
+                }
+
+                if(root.packageresultFlag == false && root.kernelresultFlag == false) {
+                    root.state = "PackageWorkEmpty";
+                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+                        //友情提示：      扫描内容为空，不再执行清理！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                    }
+                    else {//清理apt后的重新获取数据，此时不需要显示对话框
+                        root.flag = false;
+                    }
+                }
+                else {
+                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+                        toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                    }
+                    else {//清理software后的重新获取数据，此时不需要显示对话框
+                        root.flag = false;
+                    }
+                    root.state = "PackageWork";
+                    actionBtn.text = qsTr("Begin cleanup");//开始清理
+                    root.btnFlag = "package_work";
+                    backBtn.visible = true;
+    //                rescanBtn.visible = true;
+                }
+                scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
             }
         }
-        function getData() {
-            root.packageNum = 0;
-            root.kernelNum =0;
-            root.getpackageData();
-            root.getkernelData();
-            if(root.packageresultFlag == false && root.kernelresultFlag == false) {
-                root.state = "AptWorkEmpty";
-                if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                    //友情提示：      扫描内容为空，不再执行清理！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-                }
-                else {//清理apt后的重新获取数据，此时不需要显示对话框
-                    root.flag = false;
-                }
-            }
-            else {
-                if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                    toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-                }
-                else {//清理software后的重新获取数据，此时不需要显示对话框
-                    root.flag = false;
-                }
-                root.state = "AptWork";
-                actionBtn.text = qsTr("Begin Cleanup");//开始清理
-                root.btnFlag = "package_work";
-                backBtn.visible = true;
-    //            rescanBtn.visible = true;
-            }
-            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
-        }
+
+
+        //得到package
+//        function getpackageData() {
+//            var unneed_data = sessiondispatcher.scan_unneed_packages_qt();
+//            if (unneed_data.length == 0) {//扫描内容不存在
+//                root.packageresultFlag = false;
+//                root.packageNum = 0;
+//            }
+//            else {
+//                root.packageNum = unneed_data.length;//001
+//                systemdispatcher.clear_package_args();
+//                packagesubModel.clear();
+//                var num = 0;
+//                for (var i=0; i< unneed_data.length; i++) {
+//                //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
+//                    var splitlist = unneed_data[i].split("<2_2>");
+//                    if (splitlist[0] == "") {
+//                        num++;
+//                    }
+//                    else {
+//                        packagesubModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2]});
+//                        systemdispatcher.set_package_args(splitlist[0]);
+//                    }
+//                }
+
+//                root.packageNum -= num;//001
+//                if(root.packageNum != 0) {
+//                    root.packageresultFlag = true;//扫描的实际有效内容存在
+//                    packagemainModel.clear();
+////                    root.maincheck = true;//扫描到数据时默认把主checkbox勾上
+//                    //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
+//                    packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+//                                     "itemTitle": qsTr("Uninstall unnecessary procedures"),
+//                                     "picture": "../../img/toolWidget/deb-min.png",
+//                                     "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
+//                }
+//                else {
+//                    root.packageresultFlag = false;//扫描的实际有效内容不存在
+//                }
+//            }
+
+//            if(root.packageresultFlag == false) {
+//                root.package_expanded = false;//伸缩箭头不扩展
+//                root.package_arrow_show = 0;//伸缩箭头不显示
+//            }
+//            else if(root.packageresultFlag == true) {
+//                root.package_expanded = true;//伸缩箭头扩展
+//                root.package_arrow_show = 1;//伸缩箭头显示
+//            }
+//        }
+
+        //得到old kernel package
+//        function getkernelData() {
+//            var kernel_data = sessiondispatcher.scan_oldkernel_packages_qt();
+//            if (kernel_data.length === 0) {//扫描内容不存在
+//                root.kernelresultFlag = false;
+//            }
+//            else {
+//                root.kernelNum = kernel_data.length;//001
+//                systemdispatcher.clear_kernel_args();
+//                kernelsubModel.clear();
+//                var num = 0;
+//                for (var i=0; i< kernel_data.length; i++) {
+//                //linux-headers-3.8.0-19<2_2>Header files related to Linux kernel version 3.8.0<2_2>60094464
+//                    var splitlist = kernel_data[i].split("<2_2>");
+//                    if (splitlist[0] == "") {
+//                        num++;
+//                    }
+//                    else {
+//                        kernelsubModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": splitlist[2]});
+//                        systemdispatcher.set_kernel_args(splitlist[0]);
+//                    }
+//                }
+//                root.kernelNum -= num;
+//                if(root.kernelNum != 0) {
+//                    root.kernelresultFlag = true;//扫描的实际有效内容存在
+//                }
+//                else {
+//                    root.kernelresultFlag = false;//扫描的实际有效内容不存在
+//                }
+//                kernelmainModel.clear();
+//                //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
+//                kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+//                                 "itemTitle": qsTr("Uninstall old kernel packages"),
+//                                 "picture": "../../img/toolWidget/deb-min.png",
+//                                "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
+//            }
+//            if(root.kernelresultFlag == false) {
+//                root.kernel_expanded = false;//伸缩箭头不扩展
+//                root.kernel_arrow_show = 0;//伸缩箭头不显示
+//            }
+//            else if(root.kernelresultFlag == true) {
+//                root.kernel_expanded = true;//伸缩箭头扩展
+//                root.kernel_arrow_show = 1;//伸缩箭头显示
+//            }
+//        }
+//        function getData() {
+//            root.packageNum = 0;
+//            root.kernelNum =0;
+//            root.getpackageData();
+//            root.getkernelData();
+//            if(root.packageresultFlag == false && root.kernelresultFlag == false) {
+//                root.state = "PackageWorkEmpty";
+//                if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+//                    //友情提示：      扫描内容为空，不再执行清理！
+//                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+//                }
+//                else {//清理apt后的重新获取数据，此时不需要显示对话框
+//                    root.flag = false;
+//                }
+//            }
+//            else {
+//                if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+//                    toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+//                }
+//                else {//清理software后的重新获取数据，此时不需要显示对话框
+//                    root.flag = false;
+//                }
+//                root.state = "PackageWork";
+//                actionBtn.text = qsTr("Begin Cleanup");//开始清理
+//                root.btnFlag = "package_work";
+//                backBtn.visible = true;
+//    //            rescanBtn.visible = true;
+//            }
+//            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
+//        }
 
 
         Component.onCompleted: {
@@ -362,7 +362,7 @@ Item {
             onFinishCleanWorkError: {//清理出错时收到的信号
                 if (btnFlag == "package_work") {
                     if (msg == "package") {
-                        root.state = "AptWorkError";
+                        root.state = "PackageWorkError";
                         toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                     }
                 }
@@ -373,7 +373,7 @@ Item {
                         toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
                     }
                     else if (msg == "package") {
-                        root.state = "AptWorkFinish";
+                        root.state = "PackageWorkFinish";
                         toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                         //清理完毕后重新获取数据
                         root.flag = true;
@@ -389,12 +389,12 @@ Item {
                                              "itemTitle": qsTr("Uninstall old kernel packages"),
                                              "picture": "../../img/toolWidget/deb-min.png",
                                             "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
-                            systemdispatcher.clear_cache_args();
+                            systemdispatcher.clear_package_args();
                             packagesubModel.clear();//内容清空
                             kernelsubModel.clear();//内容清空
                             root.packageNum = 0;//隐藏滑动条
                             root.kernelNum = 0;//隐藏滑动条
-                            sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
+                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
                         }
                         else {
                             if(root.package_maincheck) {
@@ -403,12 +403,12 @@ Item {
                                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
                                                  "picture": "../../img/toolWidget/deb-min.png",
                                                  "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
-                                systemdispatcher.clear_cache_args();
+                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 root.packageNum = 0;//隐藏滑动条
                                 root.kernelNum = 0;//隐藏滑动条
-                                sessiondispatcher.cache_scan_function_qt("apt");
+                                sessiondispatcher.package_scan_function_qt("unneed");
                             }
                             else if(root.kernel_maincheck) {
                                 kernelmainModel.clear();
@@ -417,12 +417,12 @@ Item {
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
                                                  "picture": "../../img/toolWidget/deb-min.png",
                                                 "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
-                                systemdispatcher.clear_cache_args();
+                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 root.packageNum = 0;//隐藏滑动条
                                 root.kernelNum = 0;//隐藏滑动条
-                                sessiondispatcher.cache_scan_function_qt("software-center");
+                                sessiondispatcher.package_scan_function_qt("oldkernel");
                             }
                         }
                     }
@@ -488,7 +488,7 @@ Item {
                         if(root.kernel_maincheck == false) {
                             root.kernel_maincheck = true;
                         }
-                        systemdispatcher.clear_cache_args();
+                        systemdispatcher.clear_package_args();
                         root.package_showNum = false;
                         root.kernel_showNum = false;
                         packagemainModel.clear();
@@ -509,7 +509,7 @@ Item {
                         root.kernelNum = 0;//隐藏滑动条
                         root.kernel_arrow_show = 0;//伸缩图标隐藏
                         scrollItem.height = 2 * 40 + root.spaceValue*2;
-                        root.state = "AptWorkAGAIN";//按钮的状态恢复初始值
+                        root.state = "PackageWorkAGAIN";//按钮的状态恢复初始值
                     }
                 }
             }
@@ -532,7 +532,18 @@ Item {
                         }
                         if (root.btnFlag == "package_scan") {//扫描
                             root.flag = false;
-                            root.getData();
+//                            root.getData();
+                            if(root.package_maincheck && root.kernel_maincheck) {
+                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+                            }
+                            else {
+                                if(root.package_maincheck) {
+                                    sessiondispatcher.package_scan_function_qt("unneed");
+                                }
+                                else if(root.kernel_maincheck) {
+                                    sessiondispatcher.package_scan_function_qt("oldkernel");
+                                }
+                            }
                         }
                         else if (root.btnFlag == "package_work") {//清理
                             if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
@@ -561,7 +572,19 @@ Item {
                                 }
                                 if (root.btnFlag == "package_scan") {//扫描
                                     root.flag = false;
-                                    root.getData();
+//                                    root.getData();
+
+                                    if(root.package_maincheck && root.kernel_maincheck) {
+                                        sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+                                    }
+                                    else {
+                                        if(root.package_maincheck) {
+                                            sessiondispatcher.package_scan_function_qt("unneed");
+                                        }
+                                        else if(root.kernel_maincheck) {
+                                            sessiondispatcher.package_scan_function_qt("oldkernel");
+                                        }
+                                    }
                                 }
                                 else if (root.btnFlag == "package_work") {//清理
                                     if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
@@ -726,35 +749,35 @@ Item {
 
         states: [
             State {
-                name: "AptWork"
+                name: "PackageWork"
                 PropertyChanges { target: actionBtn; text:qsTr("Begin cleanup")}//开始清理
                 PropertyChanges { target: root; btnFlag: "package_work" }
                 PropertyChanges { target: backBtn; visible: true}
     //            PropertyChanges { target: rescanBtn; visible: true}
             },
             State {
-                name: "AptWorkAGAIN"
+                name: "PackageWorkAGAIN"
                 PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "package_scan" }
                 PropertyChanges { target: backBtn; visible: false}
     //            PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
-                name: "AptWorkError"
+                name: "PackageWorkError"
                 PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "package_scan" }
                 PropertyChanges { target: backBtn; visible: false}
     //            PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
-                name: "AptWorkFinish"
+                name: "PackageWorkFinish"
                 PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "package_scan" }
                 PropertyChanges { target: backBtn; visible: false}
     //            PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
-                name: "AptWorkEmpty"
+                name: "PackageWorkEmpty"
                 PropertyChanges { target: actionBtn; text:qsTr("Start Scanning")}//开始扫描
                 PropertyChanges { target: root; btnFlag: "package_scan" }
                 PropertyChanges { target: backBtn; visible: false}

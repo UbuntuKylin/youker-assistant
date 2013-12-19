@@ -62,8 +62,13 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(handler_access_forecast_weather(QString, QString)));
 
     //Apt and Soft center cache
-    QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_data_to_model(QString,QString,QString,QString)));
+    QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_cache_data_to_model(QString,QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cache_transmit_complete()), this, SLOT(handler_cache_scan_over()));
+
+    //Uninstall unneed package and old kernel package
+    //data_transmit_by_package(self, flag, name, summary, size):
+    QObject::connect(sessioniface, SIGNAL(data_transmit_by_package(QString, QString, QString, QString)), this, SLOT(handler_append_package_data_to_model(QString,QString,QString,QString)));
+    QObject::connect(sessioniface, SIGNAL(package_transmit_complete()), this, SLOT(handler_package_scan_over()));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -92,12 +97,20 @@ void SessionDispatcher::handler_access_forecast_weather(QString key, QString val
     }
 }
 
-void SessionDispatcher::handler_append_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue) {
+void SessionDispatcher::handler_append_cache_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue) {
     emit appendContentToCacheModel(flag, path, fileFlag, sizeValue);
 }
 
 void SessionDispatcher::handler_cache_scan_over() {
     emit tellQMLCaheOver();
+}
+
+void SessionDispatcher::handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue) {
+    emit appendPackageContentToCacheModel(flag, pkgName, description, sizeValue);
+}
+
+void SessionDispatcher::handler_package_scan_over() {
+    emit tellQMLPackageOver();
 }
 
 void SessionDispatcher::handler_scan_complete(QString msg) {
@@ -174,8 +187,18 @@ QStringList SessionDispatcher::get_cache_arglist() {
     return tmp;
 }
 
+QStringList SessionDispatcher::get_package_arglist() {
+    QStringList tmp;
+    tmp << "unneed" << "oldkernel";
+    return tmp;
+}
+
 void SessionDispatcher::cache_scan_function_qt(QStringList argList) {
     sessioniface->call("cache_scan_function", argList);
+}
+
+void SessionDispatcher::package_scan_function_qt(QStringList argList) {
+    sessioniface->call("package_scan_function", argList);
 }
 
 QStringList SessionDispatcher::scan_oldkernel_packages_qt() {

@@ -61,7 +61,10 @@ public:
     Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
     //扫描apt和软件中心缓存
     Q_INVOKABLE void cache_scan_function_qt(QStringList argList);
+    //扫描不需要的package和old kernel
+    Q_INVOKABLE void package_scan_function_qt(QStringList argList);
     Q_INVOKABLE QStringList get_cache_arglist();
+    Q_INVOKABLE QStringList get_package_arglist();
     //扫描旧内核安装包
     Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
 
@@ -245,6 +248,10 @@ signals:
     void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
     //cache扫描完后告诉QML
     void tellQMLCaheOver();
+    //把package和old kernel扫描结果告诉QML
+    void appendPackageContentToCacheModel(QString flag, QString pkgName, QString description, QString sizeValue);
+    //package和old kernel扫描完后告诉QML
+    void tellQMLPackageOver();
 public slots:
     //获取天气预报槽函数
     void handler_access_forecast_weather(QString key, QString value);
@@ -260,9 +267,14 @@ public slots:
     void handler_change_rate(int rate);
 
     //接收缓存信号，把数据动态堆加到model中
-    void handler_append_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
+    void handler_append_cache_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
     //接收cache扫描完后的信号
     void handler_cache_scan_over();
+
+    //接收package和old kernel信号，把数据动态堆加到model中
+    void handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue);
+    //接收package和old kernel扫描完后的信号
+    void handler_package_scan_over();
 
     //    //判断是否有firefox浏览器
 //    void handler_deb_exists_firefox(QString flag);
