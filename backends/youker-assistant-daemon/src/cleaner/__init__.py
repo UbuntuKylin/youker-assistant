@@ -458,9 +458,28 @@ class CleanTheOldkernel():
 
     def get_oldkernel_crufts(self):
         objc = oldkernel.OldKernel()
-        pkgobj_list = objc.scan_oldkernel_package()
+        pkgobj_list = objc.scan_oldkernel_packages()
         crufts_list = ["%s<2_2>%s" % (pkg.name, pkg.installed.summary, common.confirm_filesize_unit(pkg.installed.installed_size))for pkg in pkgobj_list]
         return crufts_list
+
+# the function of clean spare packages
+class CleanTheSpare():
+    def __init__(self):
+        pass
+
+    def get_all_package_crufts(self, mode_list, sesdaemon):
+        if 'unneed' in mode_list:
+            upkg_obj = osslim.OsSlim()
+            temp_unneed_list = upkg_obj.scan_spare_packages()
+            for upkg in temp_unneed_list:
+                sesdaemon.data_transmit_by_package('unneed', upkg.name, upkg.installed.summary, common.confirm_filesize_unit(upkg.installed.installed_size))
+        
+        if 'oldkernel' in mode_list:
+            opkg_obj = oldkernel.OldKernel()
+            temp_oldkernel_list = opkg_obj.scan_oldkernel_packages()
+            for opkg in temp_oldkernel_list:
+                sesdaemon.data_transmit_by_package('oldkernel', opkg.name, opkg.installed.summary, common.confirm_filesize_unit(opkg.installed.installed_size))
+        sesdaemon.package_transmit_complete()
 
 # the function of scan the cache
 class CleanTheCache():

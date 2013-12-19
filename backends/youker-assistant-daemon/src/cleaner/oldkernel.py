@@ -10,7 +10,7 @@ class OldKernel():
         #cache = None
         self.flag = '(\w+-)*[.\d]+-\d+[\D]*'
 
-    def scan_oldkernel_package(self):
+    def scan_oldkernel_packages(self):
         #pkgs = self.cache.packages
         cache = common.get_cache_list()
         final_oldkernel_list = []

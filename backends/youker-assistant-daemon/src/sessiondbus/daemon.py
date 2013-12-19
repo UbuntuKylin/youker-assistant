@@ -151,6 +151,17 @@ class SessionDaemon(dbus.service.Object):
         crufts_list = oldkernelfunc_obj.get_oldkernel_crufts()
         self.scan_complete_msg('oldkernel')
         return crufts_list
+
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    def package_scan_function(self, mode_list):
+        packagefunc_obj = cleaner.CleanTheSpare()
+        try:
+            packagefunc_obj.get_all_package_crufts(mode_list, self)
+        except Exception, e:
+            pass
+        else:
+            pass
+
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def cache_scan_function(self, mode_list):
         cachefunc_obj = cleaner.CleanTheCache()
@@ -192,8 +203,16 @@ class SessionDaemon(dbus.service.Object):
     def data_transmit_by_cache(self, flag0, path, flag1, size):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='ssss')
+    def data_transmit_by_package(self, flag, name, summary, size):
+        pass
+
     @dbus.service.signal(INTERFACE, signature='')
     def cache_transmit_complete(self):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='')
+    def package_transmit_complete(self):
         pass
 
     @dbus.service.signal(INTERFACE, signature='s')
