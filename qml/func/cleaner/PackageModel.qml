@@ -108,6 +108,9 @@ Item {
         property bool kernelresultFlag: false//判断旧内核包扫描后的实际内容是否为空，为空时为false，有内容时为true
         property int packageNum//扫描后得到的依赖包的项目总数
         property int kernelNum//扫描后得到的旧内核包的项目总数
+        property bool packageEmpty: false//决定是否显示扫描内容为空的状态图
+        property bool kernelEmpty: false//决定是否显示扫描内容为空的状态图
+        property int mode: 0//扫描模式：0表示两者都扫描，1表示只选中了package，2表示只选中了kernel
         property bool splitFlag: true//传递给CacheDelegate.qml,为true时切割字符串，为false时不切割字符串
         property bool flag: false//记录是清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
         property int spaceValue: 20
@@ -123,6 +126,19 @@ Item {
         ListModel { id: packagesubModel }
         ListModel { id: kernelmainModel }
         ListModel { id: kernelsubModel }
+
+        Component.onCompleted: {
+            //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
+            packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+                             "itemTitle": qsTr("Uninstall unnecessary procedures"),
+                             "picture": "../../img/toolWidget/deb-min.png",
+                             "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
+            //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
+            kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+                             "itemTitle": qsTr("Uninstall old kernel packages"),
+                             "picture": "../../img/toolWidget/deb-min.png",
+                            "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
+        }
 
         Connections
         {
@@ -158,12 +174,18 @@ Item {
                     root.packageresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
+                    if(root.mode == 0 || root.mode == 1) {
+                        root.packageEmpty = true;
+                    }
                     root.packageresultFlag = false;//扫描的实际有效内容不存在
                 }
                 if(root.kernelNum != 0) {
                     root.kernelresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
+                    if(root.mode == 0 || root.mode == 2) {
+                        root.kernelEmpty = true;
+                    }
                     root.kernelresultFlag = false;//扫描的实际有效内容不存在
                 }
 
@@ -212,6 +234,8 @@ Item {
     //                rescanBtn.visible = true;
                 }
                 scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
+                //扫描完成后恢复按钮的使能
+                actionBtn.enabled = true;
             }
         }
 
@@ -342,34 +366,26 @@ Item {
 //            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
 //        }
 
-
-        Component.onCompleted: {
-            //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
-            packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
-                             "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                             "picture": "../../img/toolWidget/deb-min.png",
-                             "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
-            //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
-            kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
-                             "itemTitle": qsTr("Uninstall old kernel packages"),
-                             "picture": "../../img/toolWidget/deb-min.png",
-                            "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
-        }
-
         Connections
         {
-            target: systemdispatcher
-            onFinishCleanWorkError: {//清理出错时收到的信号
-                if (btnFlag == "package_work") {
+            target: sudodispatcher
+            onFinishCleanDebError: {//清理出错时收到的信号
+                if (root.btnFlag == "package_work") {
                     if (msg == "package") {
-                        root.state = "PackageWorkError";
+                        home.state = "NormalState";
+                        //清理过程中发生错误，解禁按钮
+                        actionBtn.enabled = true;
+                        titleBar.state = "PackageWorkError";
                         toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                     }
                 }
             }
-            onFinishCleanWork: {//清理成功时收到的信号
+            onFinishCleanDeb: {//清理成功时收到的信号
                 if (root.btnFlag == "package_work") {
                     if (msg == "") {
+                        //清理取消，解禁按钮
+                        actionBtn.enabled = true;
+                        home.state = "NormalState";
                         toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
                     }
                     else if (msg == "package") {
@@ -377,13 +393,14 @@ Item {
                         toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                         //清理完毕后重新获取数据
                         root.flag = true;
+//                        root.getData();
                         if(root.package_maincheck && root.kernel_maincheck) {
                             packagemainModel.clear();
-                            kernelmainModel.clear();
                             packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall unnecessary procedures"),
                                              "picture": "../../img/toolWidget/deb-min.png",
                                              "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
+                            kernelmainModel.clear();
                             //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
                             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall old kernel packages"),
@@ -394,6 +411,7 @@ Item {
                             kernelsubModel.clear();//内容清空
                             root.packageNum = 0;//隐藏滑动条
                             root.kernelNum = 0;//隐藏滑动条
+                            root.mode = 0;
                             sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
                         }
                         else {
@@ -408,6 +426,7 @@ Item {
                                 kernelsubModel.clear();//内容清空
                                 root.packageNum = 0;//隐藏滑动条
                                 root.kernelNum = 0;//隐藏滑动条
+                                root.mode = 1;
                                 sessiondispatcher.package_scan_function_qt("unneed");
                             }
                             else if(root.kernel_maincheck) {
@@ -422,9 +441,13 @@ Item {
                                 kernelsubModel.clear();//内容清空
                                 root.packageNum = 0;//隐藏滑动条
                                 root.kernelNum = 0;//隐藏滑动条
+                                root.mode = 2;
                                 sessiondispatcher.package_scan_function_qt("oldkernel");
                             }
                         }
+                        home.state = "NormalState";
+                        //清理成功完成，解禁按钮
+                        actionBtn.enabled = true;
                     }
                 }
             }
@@ -482,6 +505,8 @@ Item {
                     width: 40
                     height: 20
                     onClicked: {
+                        root.packageEmpty = false;
+                        root.kernelEmpty = false;
                         if(root.package_maincheck == false) {
                             root.package_maincheck = true;
                         }
@@ -522,6 +547,10 @@ Item {
                 fontsize: 15
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
+                    //扫描过程中禁用按钮
+                    actionBtn.enabled = false;
+                    root.packageEmpty = false;
+                    root.kernelEmpty = false;
                     //                console.log("-----------");
                     //                console.log(root.package_maincheck);
                     //                console.log(root.kernel_maincheck);
@@ -534,13 +563,16 @@ Item {
                             root.flag = false;
 //                            root.getData();
                             if(root.package_maincheck && root.kernel_maincheck) {
+                                root.mode = 0;
                                 sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
                             }
                             else {
                                 if(root.package_maincheck) {
+                                    root.mode = 1;
                                     sessiondispatcher.package_scan_function_qt("unneed");
                                 }
                                 else if(root.kernel_maincheck) {
+                                    root.mode = 2;
                                     sessiondispatcher.package_scan_function_qt("oldkernel");
                                 }
                             }
@@ -552,12 +584,11 @@ Item {
                                     sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                                 }
                                 else {
-                                    home.state = "MaskLayerState";
+//                                    home.state = "MaskLayerState";
                                     //开始清理时，禁用按钮，等到清理完成后解禁
                                     actionBtn.enabled = false;
                                     console.log(systemdispatcher.get_package_args());
                                     sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
-                                    root.arrowShow = 1;
                                 }
                             }
                         }
@@ -575,13 +606,16 @@ Item {
 //                                    root.getData();
 
                                     if(root.package_maincheck && root.kernel_maincheck) {
+                                        root.mode = 0;
                                         sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
                                     }
                                     else {
                                         if(root.package_maincheck) {
+                                            root.mode = 1;
                                             sessiondispatcher.package_scan_function_qt("unneed");
                                         }
                                         else if(root.kernel_maincheck) {
+                                            root.mode = 2;
                                             sessiondispatcher.package_scan_function_qt("oldkernel");
                                         }
                                     }
@@ -593,12 +627,11 @@ Item {
                                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                                         }
                                         else {
-                                            home.state = "MaskLayerState";
+//                                            home.state = "MaskLayerState";
                                             //开始清理时，禁用按钮，等到清理完成后解禁
                                             actionBtn.enabled = false;
                                             console.log(systemdispatcher.get_package_args());
                                             sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
-                                            root.arrowShow = 1;
                                         }
                                     }
                                 }
@@ -652,6 +685,7 @@ Item {
                             arrow_display: root.package_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
                             expanded: root.package_expanded//package_expanded为true时，箭头向下，内容展开;package_expanded为false时，箭头向上，内容收缩
                             delegate_flag: root.splitFlag
+                            emptyTip: root.packageEmpty
                             //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                             onCheckchanged: {
     //                            root.packageresultFlag = checkchange;
@@ -705,6 +739,7 @@ Item {
                             arrow_display: root.kernel_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
                             expanded: root.kernel_expanded//kernel_expanded为true时，箭头向下，内容展开;kernel_expanded为false时，箭头向上，内容收缩
                             delegate_flag: root.splitFlag
+                            emptyTip: root.kernelEmpty
                             //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                             onCheckchanged: {
     //                            root.kernelresultFlag = checkchange;

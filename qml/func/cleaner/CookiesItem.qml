@@ -90,7 +90,7 @@ Item {
     Text {
         text: container.size_num
         anchors {
-            right: bitButton.left
+            right: delBtn.left
             top: parent.top
             rightMargin: 40
             verticalCenter: container.verticalCenter
@@ -99,17 +99,15 @@ Item {
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
     }
-    Common.Button {
-        id: bitButton
+    Common.StyleButton {
+        id: delBtn
         anchors {
             right: parent.right
             rightMargin: 100
             verticalCenter: parent.verticalCenter
         }
-        hoverimage: "blue1.png"
-        text: qsTr("Delete")//删除
-        fontcolor: "#086794"
-        width: 60
+        wordname: qsTr("Delete")//删除
+        width: 40
         height: 20
         onClicked: {
             systemdispatcher.set_user_homedir_qt();

@@ -58,7 +58,7 @@ class SudoDaemon(PolicyKitService):
 
     # a dbus method which means clean complete
     @dbus.service.signal(INTERFACE, signature='s')
-    def clean_complete(self, msg):
+    def sudo_finish_clean(self, msg):
         pass
 
     @dbus.service.signal(INTERFACE, signature='ss')
@@ -67,7 +67,7 @@ class SudoDaemon(PolicyKitService):
 
     # a dbus method which means an error occurred
     @dbus.service.signal(INTERFACE, signature='s')
-    def clean_error(self, msg):
+    def sudo_clean_error(self, msg):
         pass
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
@@ -87,20 +87,20 @@ class SudoDaemon(PolicyKitService):
     def clean_package_cruft(self, cruftlist, flag, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
-            self.clean_complete_msg('')
+            self.sudo_finish_clean_msg('')
             return
         try:
             self.daemonclean.clean_the_package(cruftlist, self)
         except Exception, e:
-            self.clean_error_msg(flag)
+            self.sudo_clean_error_msg(flag)
         else:
-            self.clean_complete_msg(flag)
+            self.sudo_finish_clean_msg(flag)
 
-    def clean_complete_msg(self, para):
-        self.clean_complete(para)
+    def sudo_finish_clean_msg(self, para):
+        self.sudo_finish_clean(para)
 
-    def clean_error_msg(self, para):
-        self.clean_error(para)
+    def sudo_clean_error_msg(self, para):
+        self.sudo_clean_error(para)
 
     # -------------------------software-center-------------------------
 

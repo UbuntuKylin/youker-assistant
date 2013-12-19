@@ -64,8 +64,8 @@ void SudoDispatcher::bind_signals_after_dbus_start() {
                                "/",
                                "com.ubuntukylin.Ihu",
                                QDBusConnection::systemBus());
-    QObject::connect(sudoiface,SIGNAL(clean_complete(QString)),this,SLOT(handlerClearDeb(QString)));
-    QObject::connect(sudoiface,SIGNAL(clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
+    QObject::connect(sudoiface,SIGNAL(sudo_finish_clean(QString)),this,SLOT(handlerClearDeb(QString)));
+    QObject::connect(sudoiface,SIGNAL(sudo_clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
     QObject::connect(sudoiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handlerSoftwareFetch(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handlerSoftwareApt(QString,QString)));
     QObject::connect(sudoiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handlerGetSoftwareListStatus(QStringList)));

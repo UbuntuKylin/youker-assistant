@@ -27,6 +27,7 @@ Item {
     width: parent.width
     property bool showNum: false//决定扫描结果数是否显示
     property string arrowFlag
+    property bool emptyTip//是否显示扫描内容为空的提示图
     signal arrowClicked(string cacheFlag, bool expand_flag);
 
     Item {
@@ -115,6 +116,13 @@ Item {
                         font.pointSize: 11
                         color: "black"
                         anchors.verticalCenter: parent.verticalCenter
+                    }
+                    Common.StatusImage {
+                        id: statusImage
+                        anchors.verticalCenter: parent.verticalCenter
+                        visible: listViewDelegate.emptyTip ? true : false
+                        iconName: "red.png"
+                        text: qsTr("No content")//没有内容
                     }
                 }
                 Text {

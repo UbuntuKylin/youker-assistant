@@ -38,6 +38,9 @@ Item {
     property bool soft_maincheck: true
     property bool apt_showNum: false//决定apt的扫描结果数是否显示
     property bool soft_showNum: false//决定soft的扫描结果数是否显示
+    property bool aptEmpty: false//决定是否显示扫描内容为空的状态图
+    property bool softEmpty: false//决定是否显示扫描内容为空的状态图
+    property int mode: 0//扫描模式：0表示两者都扫描，1表示只选中了apt，2表示只选中了soft
     ListModel { id: aptmainModel }
     ListModel { id: aptsubModel }
     ListModel { id: softmainModel }
@@ -62,27 +65,33 @@ Item {
         onTellQMLCaheOver: {
             aptmainModel.clear();
             softmainModel.clear();
-            //软件包缓存清理          根据扫描结果选择性地清理软件包缓存，缓存路径为:/var/cache/apt/archives/
+            //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
             aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                              "itemTitle": qsTr("Package cache cleanup"),
                              "picture": "../../img/toolWidget/apt-min.png",
-                             "detailstr": qsTr("Selectively clean up the results of the scanning package cache, the cache path is: /var/cache/apt/archives/")})
-            //软件中心缓存清理       可以根据扫描结果选择性地清理软件中心缓存，缓存路径为:
+                             "detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives")})
+            //软件中心缓存清理       软件中心缓存：
             softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
                              "itemTitle": qsTr("Software Center buffer cleaning"),
                              "picture": "../../img/toolWidget/software-min.png",
-                             "detailstr": qsTr("Selectively clean up the results of the scanning software center cache, the cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
+                             "detailstr": qsTr("Software Center Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/software-center"})
 
             if(root.aptNum != 0) {
                 root.aptresultFlag = true;//扫描的实际有效内容存在
             }
             else {
+                if(root.mode == 0 || root.mode == 1) {
+                    root.aptEmpty = true;
+                }
                 root.aptresultFlag = false;//扫描的实际有效内容不存在
             }
             if(root.softNum != 0) {
                 root.softresultFlag = true;//扫描的实际有效内容存在
             }
             else {
+                if(root.mode == 0 || root.mode == 2) {
+                    root.softEmpty = true;
+                }
                 root.softresultFlag = false;//扫描的实际有效内容不存在
             }
 
@@ -131,20 +140,22 @@ Item {
 //                rescanBtn.visible = true;
             }
             scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
+            //扫描完成后恢复按钮的使能
+            actionBtn.enabled = true;
         }
     }
 
     Component.onCompleted: {
-        //软件包缓存清理          根据扫描结果选择性地清理软件包缓存，缓存路径为:/var/cache/apt/archives/
+        //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
         aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                          "itemTitle": qsTr("Package cache cleanup"),
                          "picture": "../../img/toolWidget/apt-min.png",
-                         "detailstr": qsTr("Selectively clean up the results of the scanning package cache, the cache path is: /var/cache/apt/archives/")})
-        //软件中心缓存清理       可以根据扫描结果选择性地清理软件中心缓存，缓存路径为:
+                         "detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives")})
+        //软件中心缓存清理       软件中心缓存：
         softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
                          "itemTitle": qsTr("Software Center buffer cleaning"),
                          "picture": "../../img/toolWidget/software-min.png",
-                         "detailstr": qsTr("Selectively clean up the results of the scanning software center cache, the cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
+                         "detailstr": qsTr("Software Center Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/software-center"})
     }
 
     Connections
@@ -154,6 +165,8 @@ Item {
             if (btnFlag == "cache_work") {
                 if (msg == "cache") {
                     root.state = "AptWorkError";
+                    //清理过程中发生错误，解禁按钮
+                    actionBtn.enabled = true;
                     toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
@@ -161,6 +174,8 @@ Item {
         onFinishCleanWork: {//清理成功时收到的信号
             if (root.btnFlag == "cache_work") {
                 if (msg == "") {
+                    //清理取消，解禁按钮
+                    actionBtn.enabled = true;
                     toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
                 }
                 else if (msg == "cache") {
@@ -171,53 +186,58 @@ Item {
                     if(root.apt_maincheck && root.soft_maincheck) {
                         aptmainModel.clear();
                         softmainModel.clear();
-                        //软件包缓存清理          根据扫描结果选择性地清理软件包缓存，缓存路径为:/var/cache/apt/archives/
+                        //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
                         aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Package cache cleanup"),
                                          "picture": "../../img/toolWidget/apt-min.png",
-                                         "detailstr": qsTr("Selectively clean up the results of the scanning package cache, the cache path is: /var/cache/apt/archives/")})
-                        //软件中心缓存清理       可以根据扫描结果选择性地清理软件中心缓存，缓存路径为:
+                                         "detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives")})
+                        //软件中心缓存清理       软件中心缓存：
                         softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Software Center buffer cleaning"),
                                          "picture": "../../img/toolWidget/software-min.png",
-                                         "detailstr": qsTr("Selectively clean up the results of the scanning software center cache, the cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
+                                         "detailstr": qsTr("Software Center Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/software-center"})
                         systemdispatcher.clear_cache_args();
                         aptsubModel.clear();//内容清空
                         softsubModel.clear();//内容清空
                         root.aptNum = 0;//隐藏滑动条
                         root.softNum = 0;//隐藏滑动条
+                        root.mode = 0;
                         sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
                     }
                     else {
                         if(root.apt_maincheck) {
                             aptmainModel.clear();
-                            //软件包缓存清理          根据扫描结果选择性地清理软件包缓存，缓存路径为:/var/cache/apt/archives/
+                            //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
                             aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Package cache cleanup"),
                                              "picture": "../../img/toolWidget/apt-min.png",
-                                             "detailstr": qsTr("Selectively clean up the results of the scanning package cache, the cache path is: /var/cache/apt/archives/")})
+                                             "detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives")})
                             systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             root.aptNum = 0;//隐藏滑动条
                             root.softNum = 0;//隐藏滑动条
+                            root.mode = 1;
                             sessiondispatcher.cache_scan_function_qt("apt");
                         }
                         else if(root.soft_maincheck) {
                             softmainModel.clear();
-                            //软件中心缓存清理       可以根据扫描结果选择性地清理软件中心缓存，缓存路径为:
+                            //软件中心缓存清理       软件中心缓存:
                             softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png",
-                                             "detailstr": qsTr("Selectively clean up the results of the scanning software center cache, the cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
+                                             "detailstr": qsTr("Software Center Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/software-center"})
                             systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             root.aptNum = 0;//隐藏滑动条
                             root.softNum = 0;//隐藏滑动条
+                            root.mode = 2;
                             sessiondispatcher.cache_scan_function_qt("software-center");
                         }
                     }
+                    //清理成功完成，解禁按钮
+                    actionBtn.enabled = true;
                 }
             }
         }
@@ -275,6 +295,8 @@ Item {
                 width: 40
                 height: 20
                 onClicked: {
+                    root.aptEmpty = false;
+                    root.softEmpty = false;
                     if(root.apt_maincheck == false) {
                         root.apt_maincheck = true;
                     }
@@ -286,16 +308,16 @@ Item {
                     root.soft_showNum = false;
                     aptmainModel.clear();
                     softmainModel.clear();
-                    //软件包缓存清理          根据扫描结果选择性地清理软件包缓存，缓存路径为:/var/cache/apt/archives/
+                    //软件包缓存清理          Apt缓存路径：/var/cache/apt/archives
                     aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Package cache cleanup"),
                                      "picture": "../../img/toolWidget/apt-min.png",
-                                     "detailstr": qsTr("Selectively clean up the results of the scanning package cache, the cache path is: /var/cache/apt/archives/")})
-                    //软件中心缓存清理       可以根据扫描结果选择性地清理软件中心缓存，缓存路径为:
+                                     "detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives")})
+                    //软件中心缓存清理       软件中心缓存：
                     softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Software Center buffer cleaning"),
                                      "picture": "../../img/toolWidget/software-min.png",
-                                     "detailstr": qsTr("Selectively clean up the results of the scanning software center cache, the cache path:") + sessiondispatcher.getHomePath() + "/.cache/software-center/"})
+                                     "detailstr": qsTr("Software Center Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/software-center"})
                     aptsubModel.clear();//内容清空
                     root.aptNum = 0;//隐藏滑动条
                     root.apt_arrow_show = 0;//伸缩图标隐藏
@@ -316,20 +338,28 @@ Item {
             fontsize: 15
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
+                //扫描过程中禁用按钮
+                actionBtn.enabled = false;
+                root.aptEmpty = false;
+                root.softEmpty = false;
 //                console.log("-----------");
 //                console.log(root.apt_maincheck);
 //                console.log(root.soft_maincheck);
 
                 if (root.btnFlag == "cache_scan") {//扫描
                     root.flag = false;
+
                     if(root.apt_maincheck && root.soft_maincheck) {//software-center
+                        root.mode = 0;
                         sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
                     }
                     else {
                         if(root.apt_maincheck) {
+                            root.mode = 1;
                             sessiondispatcher.cache_scan_function_qt("apt");
                         }
                         else if(root.soft_maincheck) {
+                            root.mode = 2;
                             sessiondispatcher.cache_scan_function_qt("software-center");
                         }
                     }
@@ -343,6 +373,8 @@ Item {
                         else {
 //                            console.log("33333333333");
 //                            console.log(systemdispatcher.get_cache_args());
+                            //开始清理时，禁用按钮，等到清理完成后解禁
+                            actionBtn.enabled = false;
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_cache_args(), "cache");
                         }
                     }
@@ -394,6 +426,7 @@ Item {
                         arrow_display: root.apt_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
                         expanded: root.apt_expanded//apt_expanded为true时，箭头向下，内容展开;apt_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
+                        emptyTip: root.aptEmpty
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
 //                            root.aptresultFlag = checkchange;
@@ -447,6 +480,7 @@ Item {
                         arrow_display: root.soft_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
                         expanded: root.soft_expanded//soft_expanded为true时，箭头向下，内容展开;soft_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
+                        emptyTip: root.softEmpty
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
 //                            root.softresultFlag = checkchange;
