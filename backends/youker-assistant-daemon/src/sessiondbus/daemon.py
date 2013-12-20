@@ -123,6 +123,12 @@ class SessionDaemon(dbus.service.Object):
         tmp_list = self.daemonlarge.get_scan_result(size, path)
         self.scan_complete_msg('large')
         return tmp_list
+
+    @dbus.service.method(INTERFACE, in_signature='is', out_signature='as')
+    def large_scan_function(self, size, path):
+        largefunc_obj = cleaner.ManageTheLarge()
+        largefunc_obj.get_large_files(size, path, self)
+
     # the function of clean the cookies records
     ### input-''   output-['domain<2_2>number', 'dom...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -213,6 +219,10 @@ class SessionDaemon(dbus.service.Object):
     def data_transmit_by_cookies(self, flag, domain, num):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def data_transmit_by_large(self, size, filepath):
+        pass
+
     @dbus.service.signal(INTERFACE, signature='')
     def cache_transmit_complete(self):
         pass
@@ -223,6 +233,10 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.signal(INTERFACE, signature='')
     def cookies_transmit_complete(self):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='')
+    def large_transmit_complete(self):
         pass
 
     @dbus.service.signal(INTERFACE, signature='s')
