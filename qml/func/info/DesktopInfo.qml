@@ -62,7 +62,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Desktop Environment:")//桌面环境:
+                    text: qsTr("Environment:")//桌面环境:
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100

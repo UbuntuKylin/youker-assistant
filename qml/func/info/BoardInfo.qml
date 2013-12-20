@@ -82,7 +82,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Motherboard Manufacturer:")//主板产商：
+                    text: qsTr("Manufacturer:")//主板产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130

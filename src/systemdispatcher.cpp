@@ -71,6 +71,10 @@ SystemDispatcher::~SystemDispatcher() {
     this->exit_qt();
 }
 
+void SystemDispatcher::kill_root_process_qt(QString pid) {
+    systemiface->call("kill_root_process", pid);
+}
+
 //void SystemDispatcher::write_source_to_qsetting() {
 //    mSettings->beginGroup("sourcelist");
 //    mSettings->setValue("ubuntukylin", true);

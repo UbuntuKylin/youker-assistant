@@ -50,12 +50,22 @@ public:
     Q_INVOKABLE QString getProcessId(QString currentIndex);
     //从map中得到进程在列表中的序号
     Q_INVOKABLE int getProcessIndex(QString currentId);
+
+    //清空进程号和用户名组合的map
+    Q_INVOKABLE void clearUserMap();
+    //更新进程序号和进程号组合的map
+    Q_INVOKABLE void updateUserMap(QString id, QString user);
+    //从map中得到进程号
+    Q_INVOKABLE QString getProcessUser(QString currentId);
+    //从配置文件中得到当前的普通用户名
+    Q_INVOKABLE QString getCasualUser();
 signals:
 
 public slots:
 private:
     QSettings * mSettings;
     QMap<QString, QString> processMap;
+    QMap<QString, QString> userMap;
     
 };
 

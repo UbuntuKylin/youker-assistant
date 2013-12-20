@@ -45,6 +45,15 @@ void ProcessManager::readMemoFile(){
     }
 }
 
+QString ProcessManager::getCasualUser() {
+    QString currrentName;
+    mSettings->beginGroup("user");
+    currrentName = mSettings->value("currentName").toString();
+    mSettings->endGroup();
+    mSettings->sync();
+    return currrentName;
+}
+
 QStringList ProcessManager::getProcess(){
     mSettings->beginGroup("user");
     QString currrentName = mSettings->value("currentName").toString();
@@ -173,8 +182,12 @@ QStringList ProcessManager::getProcessAdvance(){
 
 bool ProcessManager::killProcess(QString pid){
     QProcess *p = new QProcess();
+    qDebug() << pid;
     p->start("kill -9 " + pid);
-    return p->waitForFinished();
+    bool aa = p->waitForFinished();
+    qDebug() << QString("%1").arg(aa);
+    return aa;
+//    return p->waitForFinished();
 }
 
 void ProcessManager::clearMap(){
@@ -198,4 +211,20 @@ int ProcessManager::getProcessIndex(QString currentId){
     currentIndex = processMap.key(currentId).toInt();
 //    qDebug() << QString("%1").arg(currentIndex);
     return currentIndex;
+}
+
+void ProcessManager::clearUserMap(){
+    userMap.clear();
+}
+
+void ProcessManager::updateUserMap(QString id, QString user){
+    userMap.insert(id, user);
+}
+
+QString ProcessManager::getProcessUser(QString currentId){
+    QString currentUser;
+    if(userMap.contains(currentId)){
+        currentUser = userMap.value(currentId);
+    }
+    return currentUser;
 }

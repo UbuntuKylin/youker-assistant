@@ -33,6 +33,8 @@ public:
     ~SystemDispatcher();
     //退出systemdbus服务
     Q_INVOKABLE void exit_qt();
+    //杀掉root用户的进程
+    Q_INVOKABLE void kill_root_process_qt(QString pid);
     //得到SystemDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_system_daemon_qt();
     //得到音乐文件的绝对路径

@@ -348,7 +348,6 @@ class DetailInfo:
                     minutes = seconds / 60
                     uptime = str(minutes)
         Com['node'], Com['uptime'], Com['system'], Com['platform'],Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
-        print Com
         return Com
 
     def get_cpu(self):
@@ -398,7 +397,6 @@ class DetailInfo:
                          cache_size = line.rstrip('\n').split(':')[1]
                          cache_size = filter(str.isdigit,cache_size)
         Cpu['cpu_cores'],Cpu['cpu_siblings'],Cpu['clflush_size'],Cpu['cache_size'] = cpu_cores,cpu_siblings,clflush_size,cache_size
-        print Cpu
         return Cpu
 
     def get_board(self):
@@ -434,7 +432,6 @@ class DetailInfo:
         BoaVendor = self.get_url(BoaVendor,BoaProduct)
         BioVendor = self.get_url(BioVendor,BioVersion)
         Boa['BoaProduct'],Boa['BoaVendor'],Boa['BoaSerial'],Boa['BioVendor'],Boa['BioVersion'],Boa['BioRelease'] = self.strip(BoaProduct),self.strip(BoaVendor),self.strip(BoaSerial),self.strip(BioVendor),self.strip(BioVersion),self.strip(BioRelease)
-        print Boa
         return Boa
 
     def get_memory(self):
@@ -525,7 +522,6 @@ class DetailInfo:
                         else :
                             MemInfo = tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
         Mem["MemInfo"],Mem["MemWidth"],Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemInfo,self.strip(MemWidth),self.strip(MemSlot),self.strip(MemProduct),self.strip(MemVendor),self.strip(MemSerial),self.strip(MemSize),self.strip(Memnum)
-        print Mem
         return Mem
 
     def get_monitor(self):
@@ -619,7 +615,6 @@ class DetailInfo:
             else :  
                 ret['Mon_vendor'] = self.get_url(ret['Mon_vendor'],'')
         ret['Vga_num'],ret['Vga_businfo'],ret['Vga_product'],ret['Vga_vendor'],ret['Vga_Drive'] = self.strip(str(Vga_num)),self.strip(Vga_businfo),self.strip(Vga_product),self.strip(Vga_vendor),self.strip(Vga_Drive)
-        print ret
         return ret
 
     def get_disk(self):
@@ -704,7 +699,6 @@ class DetailInfo:
                     else :
                         DiskName = k
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
-        print dis
         return dis
 
     def get_network(self):

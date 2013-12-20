@@ -56,16 +56,16 @@ Rectangle {
     Column {
         anchors {
             top: parent.top
-            topMargin: 20
+            topMargin: 10
             left: parent.left
             leftMargin: 30
         }
-        spacing: 20
+        spacing: 10
 
         Row {
             Common.Label {
                 id: basictitle
-                text: qsTr("Network Card information")//网卡信息
+                text: qsTr("NIC information")//有线网卡信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -75,15 +75,15 @@ Rectangle {
                 height: 1; color: "#ccdadd"
             }
         }
+
         Column {
             anchors.left: parent.left
             anchors.leftMargin: 20
             spacing: 10
-
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Network Card Model:")//网卡型号：
+                    text: qsTr("NIC Model:")//网卡型号：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -215,43 +215,30 @@ Rectangle {
                     color: "#7a7a7a"
                 }
             }
-
-
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("WLan Driver:")//无线网卡驱动：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: wdriverText
-                    text: ""//systemdispatcher.getSingleInfo("WlanDrive")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
+        }
+        Row {
+            Common.Label {
+                id: biostitle
+                text: qsTr("WLan NIC information")//无线网卡信息
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
             }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Wlan Vendor:")//无线制造商：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: wvendorText
-                    text: ""//systemdispatcher.getSingleInfo("WlanVendor")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
+            Rectangle {
+                id: splitbar
+                width: home.width - biostitle.width - 30 * 2
+                anchors.verticalCenter: parent.verticalCenter
+                height: 1; color: "#ccdadd"
             }
-
+        }
+        Column {
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            spacing: 10
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("WLan Model:")//无线网卡型号：
+                    text: qsTr("NIC Model:")//网卡型号：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -266,7 +253,37 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("W Bus Address:")//无线网卡总线地址：
+                    text: qsTr("Vendor:")//制造商：
+                    font.pixelSize: home.fontSize
+                    color: "#7a7a7a"
+                    width: 130
+                }
+                Text {
+                    id: wvendorText
+                    text: ""//systemdispatcher.getSingleInfo("WlanVendor")
+                    font.pixelSize: home.fontSize
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("NIC Driver:")//无线网卡驱动：
+                    font.pixelSize: home.fontSize
+                    color: "#7a7a7a"
+                    width: 130
+                }
+                Text {
+                    id: wdriverText
+                    text: ""//systemdispatcher.getSingleInfo("WlanDrive")
+                    font.pixelSize: home.fontSize
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("Bus Address:")//总线地址：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -281,7 +298,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("WDevice Name:")//无线网卡设备名称：
+                    text: qsTr("Device Name:")//设备名称：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -293,25 +310,11 @@ Rectangle {
                     color: "#7a7a7a"
                 }
             }
+
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("WLan Serial:")//无线网卡序列号：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: wmacText
-                    text: ""//systemdispatcher.getSingleInfo("WlanSerial")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("WIP Address:")//无线网卡IP地址：
+                    text: qsTr("IP Address:")//IP地址：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -323,8 +326,24 @@ Rectangle {
                     color: "#7a7a7a"
                 }
             }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("Serial Number:")//序列号：
+                    font.pixelSize: home.fontSize
+                    color: "#7a7a7a"
+                    width: 130
+                }
+                Text {
+                    id: wmacText
+                    text: ""//systemdispatcher.getSingleInfo("WlanSerial")
+                    font.pixelSize: home.fontSize
+                    color: "#7a7a7a"
+                }
+            }
         }
     }
+
     //logo
     Image {
         id: logo
@@ -342,7 +361,7 @@ Rectangle {
         source: ""
         anchors {
             top: parent.top
-            topMargin: 250
+            topMargin: 320
             right: parent.right
             rightMargin: 30
         }

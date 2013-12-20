@@ -42,6 +42,8 @@ from beautify.sound import Sound
 from beautify.others import Others
 from appcollections.monitorball.monitor_ball import MonitorBall
 
+import subprocess
+
 log = logging.getLogger('Daemon')
 
 INTERFACE = 'com.ubuntukylin_tools.daemon'
@@ -70,6 +72,51 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def set_homedir(self, homedir):
         self.soundconf.set_homedir(homedir)
+
+
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def clean_by_main_one_key(self, mode_list, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.clean_complete_main_msg('')
+            return
+
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b', sender_keyword='sender')
+    def kill_root_process(self, pid, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            return False
+        cmd = 'kill -9 %s' % pid
+        #print 'test process kill..........'
+        #print cmd
+        subprocess.Popen(cmd, shell=True, close_fds=True)#加上close_fds=True,避免子进程一直存在
+        return True
+        #print 'aa->'
+        #print aa.returncode
+
+        #p = subprocess.Popen(cmd, shell=True, close_fds=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        #stdoutdata, stderrdata = p.communicate()
+        #if p.returncode != 0:
+        #    print "error111111111111"
+        #    return
+        #print stdoutdata
+        #for r in stdoutdata.split('\n'):
+        #    if cmd in r:
+        #        continue
+        #    break
+        #if r:
+        #    pid = r.split()[1]
+        #    cmd = 'kill %s' % pid
+        #    p = subprocess.Popen(cmd, shell=True, close_fds=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        #    p.communicate()
+        #p = subprocess.Popen(start_cmd, shell=True, close_fds=True,
+        #                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        #stdoutdata, stderrdata = p.communicate()
+        #if p.returncode != 0:
+        #    print "error222222222222"
+        #    return
+
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def set_user_homedir(self, homedir):

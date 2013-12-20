@@ -54,68 +54,68 @@ Rectangle {
             mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
         }
     }
-    Row {
-        anchors {
-            right: parent.right
-            rightMargin: 5
-            verticalCenter: parent.verticalCenter
-        }
-        spacing: 10
-        Row {
-            Text {
-                id: downBtn
-                color: "white"
-                font.pixelSize: 12
-                text: qsTr("Use Cloud Conf")//使用云配置
-                MouseArea {
-                    anchors.fill: downBtn
-                    onClicked: {
-                        root.downcloud = !root.downcloud;
-                    }
-                }
-            }
-            Image {
-                id: downloadImage
-                visible: root.downcloud ? false : true
-                width: 16
-                height: 16
-                source: "./img/icons/move.png"
-            }
-            AnimatedImage {//动态图片
-                id: downloaddynamic
-                visible: root.downcloud ? true : false
-                width: 16
-                height: 16
-                source: "./img/icons/move.gif"
-            }
-        }
-        Row {
-            Text {
-                id: upBtn
-                color: "white"
-                font.pixelSize: 12
-                text: qsTr("Upload Cloud Conf")//上传云配置
-                MouseArea {
-                    anchors.fill: upBtn
-                    onClicked: {
-                        root.upcloud = !root.upcloud;
-                    }
-                }
-            }
-            Image {
-                id: uploadImage
-                visible: root.upcloud ? false : true
-                width: 16
-                height: 16
-                source: "./img/icons/move.png"
-            }
-            AnimatedImage {//动态图片
-                id: uploaddynamic
-                visible: root.upcloud ? true : false
-                width: 16
-                height: 16
-                source: "./img/icons/move.gif"
-            }
-        }
-    }
+//    Row {
+//        anchors {
+//            right: parent.right
+//            rightMargin: 5
+//            verticalCenter: parent.verticalCenter
+//        }
+//        spacing: 10
+//        Row {
+//            Text {
+//                id: downBtn
+//                color: "white"
+//                font.pixelSize: 12
+//                text: qsTr("Use Cloud Conf")//使用云配置
+//                MouseArea {
+//                    anchors.fill: downBtn
+//                    onClicked: {
+//                        root.downcloud = !root.downcloud;
+//                    }
+//                }
+//            }
+//            Image {
+//                id: downloadImage
+//                visible: root.downcloud ? false : true
+//                width: 16
+//                height: 16
+//                source: "./img/icons/move.png"
+//            }
+//            AnimatedImage {//动态图片
+//                id: downloaddynamic
+//                visible: root.downcloud ? true : false
+//                width: 16
+//                height: 16
+//                source: "./img/icons/move.gif"
+//            }
+//        }
+//        Row {
+//            Text {
+//                id: upBtn
+//                color: "white"
+//                font.pixelSize: 12
+//                text: qsTr("Upload Cloud Conf")//上传云配置
+//                MouseArea {
+//                    anchors.fill: upBtn
+//                    onClicked: {
+//                        root.upcloud = !root.upcloud;
+//                    }
+//                }
+//            }
+//            Image {
+//                id: uploadImage
+//                visible: root.upcloud ? false : true
+//                width: 16
+//                height: 16
+//                source: "./img/icons/move.png"
+//            }
+//            AnimatedImage {//动态图片
+//                id: uploaddynamic
+//                visible: root.upcloud ? true : false
+//                width: 16
+//                height: 16
+//                source: "./img/icons/move.gif"
+//            }
+//        }
+//    }
 }

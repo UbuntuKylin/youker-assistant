@@ -34,7 +34,8 @@ Rectangle {
     function updateProcessList() {
         largeModel.clear();//清空largeModel
         processmanager.clearMap();//清空qt中保存的进程序号和进程号组合的map
-        var list = processmanager.getProcess();
+//        var list = processmanager.getProcess();//得到当前用户的进程
+        var list = processmanager.getProcessAdvance();//得到所用用户的进程
         for (var i=0 ; i < list.length ; i++) {
             var splitlist = list[i].split(";");
             if(splitlist.length !== 7) {
@@ -42,9 +43,11 @@ Rectangle {
             }
             else {
                 var num = i.toString();
+                var user = splitlist[0];
                 var id = splitlist[1];
-                largeModel.append({/*"number": num, */"user": splitlist[0], "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "content": splitlist[5], "command": splitlist[6]});
+                largeModel.append({/*"number": num, */ "user": user, "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "content": splitlist[5], "command": splitlist[6]});
                 processmanager.updateMap(num, id);//更新qt中保存的进程序号和进程号组合的map
+                processmanager.updateUserMap(id, user);
             }
         }
         largeModel.append({"user": "user", "pid": "pid", "pcpu": "cpu", "pmem": "mem", "started": "time", "content": "ubuntukylin", "command": "test for TableView"});
@@ -101,12 +104,21 @@ Rectangle {
                 //根据鼠标激活的序号来获取对应的进程号
                 var currentId = processmanager.getProcessId(tableView.currentIndex.toString());
                 if(currentId.length !== 0) {
-                    if(processmanager.killProcess(currentId)) {
-                        toolkits.alertMSG(qsTr("Kill successfully!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
-                        updateProcessList();
+                    var currentUser = processmanager.getProcessUser(currentId);
+//                    console.log(currentUser);
+//                    console.log(processmanager.getCasualUser());
+                    if(currentUser == processmanager.getCasualUser()) {//普通用户杀进程
+                        if(processmanager.killProcess(currentId)) {
+                            toolkits.alertMSG(qsTr("Kill successfully!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
+                            updateProcessList();
+                        }
+                        else {
+                            toolkits.alertMSG(qsTr("Kill failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
+                        }
                     }
-                    else {
-                        toolkits.alertMSG(qsTr("Kill failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
+                    else {//root用户杀进程
+                        systemdispatcher.kill_root_process_qt(currentId);
+                        updateProcessList();
                     }
                 }
                 else {
