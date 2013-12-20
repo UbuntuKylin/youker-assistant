@@ -123,6 +123,12 @@ class SessionDaemon(dbus.service.Object):
         tmp_list = self.daemonlarge.get_scan_result(size, path)
         self.scan_complete_msg('large')
         return tmp_list
+
+    @dbus.service.method(INTERFACE, in_signature='is', out_signature='as')
+    def large_scan_function(self, size, path):
+        largefunc_obj = cleaner.ManageTheLarge()
+        largefunc_obj.get_large_files(size, path, self)
+
     # the function of clean the cookies records
     ### input-''   output-['domain<2_2>number', 'dom...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -135,8 +141,10 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
     def cookies_scan_function(self, flag):
         cookiesfunc_obj = cleaner.CleanTheCookies(self)
-        crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
-        return crufts_list
+        #crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
+        cookiesfunc_obj.get_cookie_crufts(flag, self)
+        #return crufts_list
+
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -207,12 +215,28 @@ class SessionDaemon(dbus.service.Object):
     def data_transmit_by_package(self, flag, name, summary, size):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='sss')
+    def data_transmit_by_cookies(self, flag, domain, num):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def data_transmit_by_large(self, size, filepath):
+        pass
+
     @dbus.service.signal(INTERFACE, signature='')
     def cache_transmit_complete(self):
         pass
 
     @dbus.service.signal(INTERFACE, signature='')
     def package_transmit_complete(self):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='')
+    def cookies_transmit_complete(self):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='')
+    def large_transmit_complete(self):
         pass
 
     @dbus.service.signal(INTERFACE, signature='s')

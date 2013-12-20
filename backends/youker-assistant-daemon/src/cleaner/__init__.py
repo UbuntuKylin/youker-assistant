@@ -254,6 +254,14 @@ class ManageTheLarge():
         #self.objl.type_of_file()
         largefile_dic = self.objl.adjust_the_list(finalsize, self.path)
         return largefile_dic
+
+    def get_large_files(self, size, path, sesdaemon):
+        objlg = diskanalyse.DiskAnalyse()
+        finalsize = size * 1024 * 1024
+        largefile_list = objlg.hundred_large_files(finalsize, path)
+        for one in largefile_list:
+            sesdaemon.data_transmit_by_large(common.confirm_filesize_unit(one[0]), one[1])
+        sesdaemon.large_transmit_complete('')
         
 # the functions of clean the browser history
 class CleanTheHistory():
@@ -316,18 +324,6 @@ class CleanTheHistory():
         objhc = historyclean.HistoryClean(HOMEDIR)
         objhc.clean_all_records()
 
-    def clean_the_cruftlist_for_main(self, historynum):
-        global HOMEDIR
-        objhc = historyclean.HistoryClean(HOMEDIR)
-        objhc.clean_all_records()
-        self.sysdaemon.clean_process_main_msg('%s records has been delete' % historynum)
-
-    def clean_the_cruftlist_for_second(self, historynum):
-        global HOMEDIR
-        objhc = historyclean.HistoryClean(HOMEDIR)
-        objhc.clean_all_records()
-        self.sysdaemon.clean_process_second_msg('%s records has been delete' % historynum)
-
 # the function of clean the system history
 class CleanSystemHistory():
     def get_scan_result(self, homedir = ''):
@@ -358,10 +354,28 @@ class CleanTheCookies():
     def __init__(self, daemon_obj):
         self.daemon_obj = daemon_obj
 
-    def get_scan_result(self, homedir = ''):
+    def get_cookie_crufts(self, flag, sesdaemon):
+        homedir = common.return_homedir_sesdaemon()
         objcg = cookiesclean.CookiesClean(homedir)
-        domaincount = objcg.scan_the_records()
-        return domaincount
+        crufts_list = []
+
+        if flag in "firefox":
+            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
+            if os.path.exists(filepathf):
+                pamf = [filepathf, 'moz_cookies', 'baseDomain']
+                temp_firefox_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
+                for one in temp_firefox_list:
+                    sesdaemon.data_transmit_by_cookies("firefox", one[0], str(one[-1]))
+
+        if flag in "chromium":
+            filepathc = "%s/.config/chromium/Default/Cookies" % homedir
+            if os.path.exists(filepathc):
+                pamc = [filepathc, 'cookies', 'host_key']
+                temp_chromium_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
+                crufts_list = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in temp_list]
+                for one in temp_chromium_list:
+                    sesdaemon.data_transmit_by_cookies("chromium", one[0], str(one[-1]))
+        sesdaemon.cookies_transmit_complete('')
 
     def get_cookies_crufts(self, flag):
         homedir = common.return_homedir_sesdaemon()
@@ -418,29 +432,6 @@ class CleanTheCookies():
             filepathc = "%s/.config/chromium/Default/Cookies" % homedir
             pamc = [filepathc, 'cookies', 'host_key']
             objcc.clean_all_records(pamc[0], pamc[1], pamc[2])
-            
-    def clean_the_cruftlist_for_main(self, cruftlist):
-        global HOMEDIR
-        flag = None
-        objcc = cookiesclean.CookiesClean(HOMEDIR)
-        for cruft in cruftlist:
-            #self.sysdaemon.clean_process_main_msg("cleaning %s's cookies" % cruft)
-            flag = objcc.clean_the_records(cruft)
-
-    def clean_the_cruftlist_for_second(self, cruftlist):
-        global HOMEDIR
-        flag = None
-        objcc = cookiesclean.CookiesClean(HOMEDIR)
-        for cruft in cruftlist:
-            #self.sysdaemon.clean_process_second_msg("cleaning %s's cookies" % cruft)
-            flag = objcc.clean_the_records(cruft)
-
-    def clean_the_cruftlist(self, cruftlist):
-        global HOMEDIR
-        flag = None
-        objcc = cookiesclean.CookiesClean(HOMEDIR)
-        for cruft in cruftlist:
-            flag = objcc.clean_the_records(cruft)
 
 # the function of scan the unneedpackages
 class CleanTheUnneed():
@@ -504,13 +495,22 @@ class CleanTheCache():
                 sesdaemon.data_transmit_by_cache('apt', one, 'False', '%s' % common.confirm_filesize_unit(os.path.getsize(one)))
 
         if 'software-center' in mode_list:
-            software_centerpath = "%s/.cache/software-center" % homedir
-            temp_software_center_list = self.objc.public_scan_cache(software_centerpath)
-            for one in temp_software_center_list:
+            softwarecenterpath = "%s/.cache/software-center" % homedir
+            temp_softwarecenter_list = self.objc.public_scan_cache(softwarecenterpath)
+            for one in temp_softwarecenter_list:
                 if os.path.isdir(one):
                     sesdaemon.data_transmit_by_cache('software-center', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
                 else:
                     sesdaemon.data_transmit_by_cache('software-center', one, 'False', common.confirm_filesize_unit(os.path.getsize(one)))
+
+        if 'thumbnails' in mode_list:
+            thumbnailspath = "%s/.cache/thumbnails" % homedir
+            temp_thumbnails_list = self.objc.public_scan_cache(thumbnailspath)
+            for one in temp_thumbnails_list:
+                if os.path.isdir(one):
+                    sesdaemon.data_transmit_by_cache('thumbnails', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
+                else:
+                    sesdaemon.data_transmit_by_cache('thumbnails', one, 'False',common.confirm_filesize_unit(os.path.getsize(one)))
         sesdaemon.cache_transmit_complete()
 
     def get_cache_crufts(self):
