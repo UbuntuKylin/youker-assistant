@@ -37,10 +37,10 @@ Rectangle {
         listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "harddisk"});
         listModel.append({"name": qsTr("NetworkCard"), "flag": "networkcard", "iconName": "network"});
         listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "monitor"});
-        listModel.append({"name": qsTr("AudioCard"), "flag": "audiocard", "iconName": "memory"});
+        listModel.append({"name": qsTr("AudioCard"), "flag": "audiocard", "iconName": "audio"});
         var cdromNumber = systemdispatcher.getSingleInfo("Dvdnum", "cdrom");//光驱个数
         if(cdromNumber > 0) {//存在光驱时才会增加该页面的显示
-            listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "computer"});
+            listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "cdrom"});
         }
     }
 

@@ -29,9 +29,12 @@ Item {
         //显示图片
         Image {
             id: icon
-            width: 20
-            height: 20
-            source: delegate.ListView.isCurrentItem ? "../../img/logo/component/" + iconName + "-active.png" : "../../img/logo/component/" + iconName + ".png"
+//            width: 20
+//            height: 20
+            width: 16
+            height: 16
+            source: "../../img/logo/component/" + iconName + ".png"
+//            source: delegate.ListView.isCurrentItem ? "../../img/logo/component/" + iconName + "-active.png" : "../../img/logo/component/" + iconName + ".png"
             anchors.verticalCenter: parent.verticalCenter
         }
         //显示文字
