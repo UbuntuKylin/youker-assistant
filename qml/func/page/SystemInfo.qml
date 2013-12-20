@@ -37,11 +37,17 @@ Rectangle {
         listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "harddisk"});
         listModel.append({"name": qsTr("NetworkCard"), "flag": "networkcard", "iconName": "network"});
         listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "monitor"});
+        listModel.append({"name": qsTr("AudioCard"), "flag": "audiocard", "iconName": "memory"});
+        var cdromNumber = systemdispatcher.getSingleInfo("Dvdnum", "cdrom");//光驱个数
+        if(cdromNumber > 0) {//存在光驱时才会增加该页面的显示
+            listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "computer"});
+        }
     }
 
     ListModel {
         id: listModel
         Component.onCompleted: {
+            systemdispatcher.get_cdrom_info_qt();//获取光驱详细信息
             window.addList();
         }
     }
@@ -89,6 +95,12 @@ Rectangle {
                         }
                         else if(flag == "monitor") {
                             window.state = "MonitorPage";
+                        }
+                        else if(flag == "cdrom") {
+                            window.state = "CDROMPage";
+                        }
+                        else if(flag == "audiocard") {
+                            window.state = "AudioPage";
                         }
                     }
                 }
@@ -152,6 +164,18 @@ Rectangle {
                 height: parent.height
                 visible: false
             }
+            Info.AudioCardInfo {
+                id: audioLayer
+                width: parent.width
+                height: parent.height
+                visible: false
+            }
+            Info.CDROMInfo {
+                id: cdromLayer
+                width: parent.width
+                height: parent.height
+                visible: false
+            }
         }
     }
 //    Component {
@@ -195,6 +219,8 @@ Rectangle {
             PropertyChanges { target: hardLayer; visible: false }
             PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: false }
         },
         State {
             name: "DesktopPage"
@@ -206,6 +232,8 @@ Rectangle {
             PropertyChanges { target: hardLayer; visible: false }
             PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: false }
         },
         State {
             name: "CPUPage"
@@ -217,6 +245,8 @@ Rectangle {
             PropertyChanges { target: hardLayer; visible: false }
             PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: false }
         },
         State {
             name: "BiosPage"
@@ -228,6 +258,8 @@ Rectangle {
             PropertyChanges { target: hardLayer; visible: false }
             PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: false }
         },
         State {
             name: "MemoryPage"
@@ -239,6 +271,8 @@ Rectangle {
             PropertyChanges { target: hardLayer; visible: false }
             PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: false }
         },
         State {
             name: "HarddiskPage"
@@ -250,6 +284,8 @@ Rectangle {
             PropertyChanges { target: hardLayer; visible: true }
             PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: false }
         },
         State {
             name: "NetworkPage"
@@ -261,6 +297,8 @@ Rectangle {
             PropertyChanges { target: hardLayer; visible: false }
             PropertyChanges { target: networkLayer; visible: true }
             PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: false }
         },
         State {
             name: "MonitorPage"
@@ -272,6 +310,34 @@ Rectangle {
             PropertyChanges { target: hardLayer; visible: false }
             PropertyChanges { target: networkLayer; visible: false }
             PropertyChanges { target: monitorLayer; visible: true }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: false }
+        },
+        State {
+            name: "AudioPage"
+            PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: false }
+            PropertyChanges { target: cpuLayer;  visible: false }
+            PropertyChanges { target: biosLayer; visible: false }
+            PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: false }
+            PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: true }
+            PropertyChanges { target: cdromLayer; visible: false }
+        },
+        State {
+            name: "CDROMPage"
+            PropertyChanges { target: computerLayer; visible: false }
+            PropertyChanges { target: desktopLayer; visible: false }
+            PropertyChanges { target: cpuLayer;  visible: false }
+            PropertyChanges { target: biosLayer; visible: false }
+            PropertyChanges { target: memoryLayer; visible: false }
+            PropertyChanges { target: hardLayer; visible: false }
+            PropertyChanges { target: networkLayer; visible: false }
+            PropertyChanges { target: monitorLayer; visible: false }
+            PropertyChanges { target: audioLayer; visible: false }
+            PropertyChanges { target: cdromLayer; visible: true }
         }
     ]
 }

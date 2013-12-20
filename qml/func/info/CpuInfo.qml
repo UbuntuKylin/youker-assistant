@@ -54,9 +54,9 @@ Rectangle {
         cpuverdorText.text = cpuName;
         cpuserialText.text = systemdispatcher.getSingleInfo("CpuSerial", "cpu");
         slotText.text = systemdispatcher.getSingleInfo("CpuSlot", "cpu");
-        maxText.text = systemdispatcher.getSingleInfo("CpuCapacity", "cpu") + "MHz";
-        curText.text = systemdispatcher.getSingleInfo("CpuSize", "cpu") + "MHz";
-        frontText.text = systemdispatcher.getSingleInfo("CpuClock", "cpu") + "MHz";
+        maxText.text = systemdispatcher.getSingleInfo("CpuCapacity", "cpu");// + "MHz";
+        curText.text = systemdispatcher.getSingleInfo("CpuSize", "cpu");// + "MHz";
+        frontText.text = systemdispatcher.getSingleInfo("CpuClock", "cpu");// + "MHz";
         coresText.text = systemdispatcher.getSingleInfo("cpu_cores", "cpu") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings", "cpu") + qsTr("thread");
         cache1.text = systemdispatcher.getSingleInfo("clflush_size", "cpu") + "KB";
         cache2.text = systemdispatcher.getSingleInfo("cache_size", "cpu") + "KB";

@@ -27,6 +27,7 @@ Rectangle {
     property bool secondFlag: false
     property bool thirdFlag: false
     property bool fourthFlag: false
+    property int itemNum: 7//每个模块的子项个数
     ListModel {id: firstModel}
     ListModel {id: secondModel}
     ListModel {id: thirdModel}
@@ -71,7 +72,7 @@ Rectangle {
         logo2.source = InfoGroup.judgeName(vendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-            listItem.height = (7*20 + 6*10 + 10*2) *2;
+            listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *2;
         }
         else if(num >= 3) {
             //--------------third--------------
@@ -90,7 +91,7 @@ Rectangle {
             logo3.source = InfoGroup.judgeName(vendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-                listItem.height = (7*20 + 6*10 + 10*2) *3;
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *3;
             }
             else if(num == 4) {
                 home.fourthFlag = true;
@@ -107,7 +108,7 @@ Rectangle {
                 logo4.visible = true;
                 logo4.source = InfoGroup.judgeName(vendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-                listItem.height = (7*20 + 6*10 + 10*2) *4;
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *4;
             }
         }
     }
@@ -136,7 +137,7 @@ Rectangle {
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-            listItem.height = 7*20 + 6*10 + 10*2;
+            listItem.height = home.itemNum*20 + (home.itemNum - 1)*10 + 10*2;
         }
         else if(num >= 2){
             home.show_several_memory(num);
@@ -204,7 +205,7 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.firstFlag ? (7*20 + 6*10) : 0
+                    height: home.firstFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
                     ListView {
                         id: firstView
                         anchors.fill: parent
@@ -239,7 +240,7 @@ Rectangle {
 //                }
                 Item {
                     width: parent.width
-                    height: home.secondFlag ? (7*20 + 6*10) : 0
+                    height: home.secondFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
                     ListView {
                         id: secondView
                         anchors.fill: parent
@@ -273,7 +274,7 @@ Rectangle {
 //                }
                 Item {
                     width: parent.width
-                    height: home.thirdFlag ? (7*20 + 6*10) : 0
+                    height: home.thirdFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
                     ListView {
                         id: thirdView
                         anchors.fill: parent
@@ -307,7 +308,7 @@ Rectangle {
 //                }
                 Item {
                     width: parent.width
-                    height: home.fourthFlag ? (7*20 + 6*10) : 0
+                    height: home.fourthFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
                     ListView {
                         id: fourthView
                         anchors.fill: parent

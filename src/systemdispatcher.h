@@ -169,6 +169,9 @@ public:
     QMap<QString, QVariant> harddiskInfo;
     QMap<QString, QVariant> networkcardInfo;
     QMap<QString, QVariant> monitorInfo;
+    QMap<QString, QVariant> cdromInfo;
+    QMap<QString, QVariant> audiocardInfo;
+
     //得到当前系统和桌面的详细信息
     Q_INVOKABLE void get_computer_info_qt();
     Q_INVOKABLE void get_cpu_info_qt();
@@ -177,6 +180,8 @@ public:
     Q_INVOKABLE void get_harddisk_info_qt();
     Q_INVOKABLE void get_networkcard_info_qt();
     Q_INVOKABLE void get_monitor_info_qt();
+    Q_INVOKABLE void get_cdrom_info_qt();
+    Q_INVOKABLE void get_audiocard_info_qt();
     Q_INVOKABLE QString get_time_value_qt();
 //    Q_INVOKABLE void get_detail_system_message_qt();
     //通过键得到对应的单个信息的值

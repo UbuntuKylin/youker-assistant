@@ -15,6 +15,7 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+
 import sys
 import os
 import re
@@ -81,11 +82,14 @@ class DetailInfo:
 #   Mon_output		    当前接口
 #   Mon_support		    支持接口
 #   Mon_chip		    当前显卡
+#   Vga_num             显卡数
 #   Vga_product         显卡型号
 #   Vga_vendor          显卡产商
 #   Vga_businfo         显卡总线地址
+#   Vga_Drive           显卡驱动
 
 #Disk :
+#   disknum             硬盘个数
 #   DiskProduct 		硬盘型号
 #   DiskVendor		    硬盘厂商
 #   DiskCapacity		硬盘容量
@@ -102,6 +106,29 @@ class DetailInfo:
 #   NetCapacity         最大带宽
 #   NetIp               IP地址
 #   NetLink             连接状态
+#   NetDrive            网卡驱动
+#   WlanProduct         无线网卡型号
+#   WlanVendor          无线制造商
+#   WlanBusinfo         总线地址
+#   WlanLogicalname     设备名称
+#   WlanSerial          MAC地址
+#   WlanIp              无线IP地址
+#   WlanDrive           无线网卡驱动
+
+#multimedia :
+#   MulNum              多媒体个数
+#   MulProduct          产品型号
+#   MulVendor           制造商
+#   MulBusinfo          总线地址
+#   MulDrive            驱动
+
+#dvd :
+#   Dvdnum              光驱个数
+#   DvdProduct   		光驱型号
+#   DvdVendor		    制造商
+#   DvdName	    	    设备名称
+#   DvdFw			    固件版本
+#   DvdSerial		    序列号 
 
     def ctoascii(self,buf):
         ch = str(buf)
@@ -137,7 +164,7 @@ class DetailInfo:
 
     def get_url(self,v,p):
         vendors = {
-#PU产商
+#CPU产商
            "INTEL":["Intel"],
            "AMD":["AMD"],
            "VIMICRO":["Vimicro"],
@@ -321,6 +348,7 @@ class DetailInfo:
                     minutes = seconds / 60
                     uptime = str(minutes)
         Com['node'], Com['uptime'], Com['system'], Com['platform'],Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
+        print Com
         return Com
 
     def get_cpu(self):
@@ -370,6 +398,7 @@ class DetailInfo:
                          cache_size = line.rstrip('\n').split(':')[1]
                          cache_size = filter(str.isdigit,cache_size)
         Cpu['cpu_cores'],Cpu['cpu_siblings'],Cpu['clflush_size'],Cpu['cache_size'] = cpu_cores,cpu_siblings,clflush_size,cache_size
+        print Cpu
         return Cpu
 
     def get_board(self):
@@ -405,6 +434,7 @@ class DetailInfo:
         BoaVendor = self.get_url(BoaVendor,BoaProduct)
         BioVendor = self.get_url(BioVendor,BioVersion)
         Boa['BoaProduct'],Boa['BoaVendor'],Boa['BoaSerial'],Boa['BioVendor'],Boa['BioVersion'],Boa['BioRelease'] = self.strip(BoaProduct),self.strip(BoaVendor),self.strip(BoaSerial),self.strip(BioVendor),self.strip(BioVersion),self.strip(BioRelease)
+        print Boa
         return Boa
 
     def get_memory(self):
@@ -415,7 +445,11 @@ class DetailInfo:
         memory = hw.read()
         hw.close()
         num = 0
-        memory = memory[memory.index("Memory Device\n")+len("Memory Device\n"):]
+        q = re.findall('Memory Device\n',memory)
+        if q :
+            memory = memory[memory.index("Memory Device\n")+len("Memory Device\n"):]
+        else :
+            memory = ''
         if memory :
             mark = re.findall("Data Width: (.*)",memory)
             if mark :
@@ -491,6 +525,7 @@ class DetailInfo:
                         else :
                             MemInfo = tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
         Mem["MemInfo"],Mem["MemWidth"],Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemInfo,self.strip(MemWidth),self.strip(MemSlot),self.strip(MemProduct),self.strip(MemVendor),self.strip(MemSerial),self.strip(MemSize),self.strip(Memnum)
+        print Mem
         return Mem
 
     def get_monitor(self):
@@ -516,8 +551,6 @@ class DetailInfo:
 	    if tmp:
 	        ret["Mon_year"] = tmp[0][0]
 	        ret["Mon_week"] = tmp[0][1]
-
-	    #tmp = re.findall("Max Image Size \[(\w*)\]: horiz.: (\w*)\s*vert.: (\w*)", info)
             tmp = re.findall("Image Size: \s*(\w*) x (\w*)", info)
 	    if tmp:
                 x = float(tmp[0][0])/10
@@ -552,24 +585,41 @@ class DetailInfo:
             if tmp:
                 if not ret.get("Mon_chip"):
                     ret["Mon_chip"] = tmp[0]
-        n = os.popen('lspci | grep VGA')
+        n = os.popen('lspci -vvv')
         vga = n.read()
         n.close()
+        Vga_num = 0
+        Vga_product,Vga_vendor,Vga_businfo,Vga_Drive = '','','',''
         if vga :
-            tmp = vga[vga.index('VGA compatible controller: ')+len('VGA compatible controller: '):]
-            if tmp :
-                ret['Vga_product'] = tmp
-            tmp = vga[ :vga.index('VGA compatible controller:')-1]
-            if tmp :
-                ret['Vga_businfo'] = 'pci@0000:' + tmp
-        
+            while re.findall('VGA compatible controller: ',vga) :
+                tmp = vga[vga.index('VGA compatible controller: ') - 8:]
+                vga = tmp[30:]
+                if Vga_businfo:
+                    Vga_businfo += '/' + 'pci@0000:' + tmp[:8]
+                else :
+                    Vga_businfo = 'pci@0000:' + tmp[:8]
+                if Vga_product:
+                    pro = re.findall('VGA compatible controller: (.*)',tmp)
+                    Vga_product += '/' + pro[0]
+                    Vga_vendor += '/' + self.get_url('',pro[0])
+                else :
+                    pro = re.findall('VGA compatible controller: (.*)',tmp)
+                    Vga_product = pro[0]
+                    Vga_vendor = self.get_url('',pro[0])
+                Vga_num += 1
+                tmp = re.findall('Kernel driver in use: (.*)',tmp)
+                if Vga_Drive:
+                    Vga_Drive += '/' + tmp[0]
+                else :
+                    Vga_Drive = tmp[0]
+
         if (ret.get('Mon_vendor')):
             if (ret.get('Mon_product')):
                 ret['Mon_vendor'] = self.get_url(ret['Mon_vendor'],ret['Mon_product'])
             else :  
                 ret['Mon_vendor'] = self.get_url(ret['Mon_vendor'],'')
-        if (ret.get('Vga_product')):
-            ret['Vga_vendor'] = self.get_url('',ret['Vga_product'])
+        ret['Vga_num'],ret['Vga_businfo'],ret['Vga_product'],ret['Vga_vendor'],ret['Vga_Drive'] = self.strip(str(Vga_num)),self.strip(Vga_businfo),self.strip(Vga_product),self.strip(Vga_vendor),self.strip(Vga_Drive)
+        print ret
         return ret
 
     def get_disk(self):
@@ -595,12 +645,12 @@ class DetailInfo:
         "WD.+", "Western Digital",
         ]
         DiskProduct,DiskVendor,DiskCapacity,DiskName,DiskFw,DiskSerial = '','','','','',''
-        li =  os.popen("ls /dev/sd?")
-        line = li.read()
-        li.close()
-        li = os.popen("ls /dev/hd?")
-        line += li.read()
-        li.close()
+        n =  os.popen("ls /dev/sd?")
+        line = n.read()
+        n.close()
+        n = os.popen("ls /dev/hd?")
+        line += n.read()
+        n.close()
         if line :
             line = line.split('\n')
             for k in line :
@@ -654,45 +704,37 @@ class DetailInfo:
                     else :
                         DiskName = k
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
+        print dis
         return dis
 
     def get_network(self):
         net = {}
         NetProduct,NetVendor,NetBusinfo,NetLogicalname,NetSerial,NetIp,NetLink,NetCapacity = '','','','','','','',''
-        n = os.popen('lspci | grep Ether')
+        n = os.popen('lspci -vvv')
         network = n.read()
         n.close()
         if network :
-            i = 0
-            tmp = network[network.index('Ethernet controller: ')+len('Ethernet controller: '):]
-            while i < len(tmp) and (self.ctoascii(tmp[i]) < 48 or self.ctoascii(tmp[i]) > 57):
-                i += 1
-            while i > 0 and (not self.ctoascii(tmp[i]) == 32):
-                i -= 1
-            if i :
-                NetProduct = tmp[i: ]
-                NetVendor = tmp[ :i]
-            tmp = network[ :network.index('Ethernet controller: ')-1] 
-            if tmp :
-                NetBusinfo = 'pci@0000:' + tmp
-        n = os.popen('dmesg | grep eth')
+            if re.findall('Ethernet controller: ',network):
+                tmp = network[network.index('Ethernet controller: ')-8:] 
+                NetBusinfo = 'pci@0000:' + tmp[:8]
+                pro = re.findall('Ethernet controller: (.*)',tmp)
+                NetProduct = pro[0]
+                NetVendor = self.get_url('',pro[0])
+                tmp =  re.findall('Kernel driver in use: (.*)',tmp)
+                NetDrive = tmp[0]
+        n = os.popen('ifconfig eth')
         network = n.read()
         n.close()
         if network :
-            tmp = network[network.index('eth'):]
-            if tmp :
-                NetLogicalname = tmp[0:4]
+            NetLogicalname = network[:4]
             tmp = re.findall("\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",network)
-            if tmp :
+            if tmp:
                 NetSerial = tmp[0]
-        n = os.popen('ifconfig eth | grep "inet " ')
-        network = n.read()
-        n.close()
-        if network :
-            tmp = network[network.index(':')+len(':') : ]
-            tmp = tmp[: tmp.index(' ')+len(' ') ]
-            if tmp :
-                NetIp = tmp
+            tmp = re.findall("inet(.*)",network)
+            if tmp:
+                ip = tmp[0][tmp[0].index(':')+len(':'): ]
+                ip = ip[: ip.index(' ')]
+                NetIp = ip
         n = os.popen('mii-tool -v')
         network = n.read()
         n.close()
@@ -703,19 +745,110 @@ class DetailInfo:
             tmp = re.findall('capabilities: (\d*)',network)
             if tmp:
                 NetCapacity = tmp[0]
-        NetVendor = self.get_url(NetVendor,NetProduct)
-        net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetLink'],net['NetCapacity'] = self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetSerial),self.strip(NetIp),self.strip(NetLink),self.strip(NetCapacity)
+        WlanProduct,WlanVendor,WlanBusinfo,WlanLogicalname,WlanSerial,WlanIp,WlanDrive = '','','','','','',''
+        n = os.popen('lspci -vvv')
+        wlan = n.read()
+        n.close()
+        if wlan :
+            if re.findall('Network controller: ',wlan):
+                tmp = wlan[wlan.index('Network controller: ') - 8:]
+                WlanBusinfo = 'pci@0000:' + tmp[:8]
+                pro = re.findall('Network controller: (.*)',tmp)
+                WlanProduct = pro[0]
+                WlanVendor = self.get_url('',pro[0])
+                tmp =  re.findall('Kernel driver in use: (.*)',tmp)
+                WlanDrive = tmp[0]
+        n = os.popen('ifconfig wlan')
+        wlan = n.read()
+        n.close()
+        if wlan:
+            WlanLogicalname = wlan[:5]
+            tmp = re.findall("\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",wlan)
+            if tmp:
+                WlanSerial = tmp[0]
+            tmp = re.findall("inet(.*)",wlan)
+            if tmp:
+                ip = tmp[0][tmp[0].index(':')+len(':'):]
+                ip = ip[: ip.index(' ')]
+                WlanIp = ip
+
+        net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetLink'],net['NetCapacity'],net['NetDrive'],net['WlanProduct'],net['WlanVendor'],net['WlanBusinfo'],net['WlanLogicalname'],net['WlanSerial'],net['WlanIp'],net['WlanDrive'] = self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetSerial),self.strip(NetIp),self.strip(NetLink),self.strip(NetCapacity),self.strip(NetDrive),self.strip(WlanProduct),self.strip(WlanVendor),self.strip(WlanBusinfo),self.strip(WlanLogicalname),self.strip(WlanSerial),self.strip(WlanIp),self.strip(WlanDrive)
         return net
 
+    def get_multimedia(self):
+        Mul = {}
+        MulNum = 0
+        MulProduct,MulVendor,MulBusinfo,MulDrive = '','','',''
+        n = os.popen('lspci -vvv')
+        multimedia = n.read()
+        n.close()
+        if multimedia:
+            while  re.findall('Audio device:',multimedia) :
+                tmp = multimedia[multimedia.index('Audio device:')- 8:]
+                multimedia = tmp[30:]
+                if MulBusinfo:
+                    MulBusinfo += '/'+ 'pci@0000:' + tmp[ :8]
+                else :
+                    MulBusinfo = 'pci@0000:' + tmp[ :8]
+                if MulProduct:
+                    pro = re.findall('Audio device: (.*)',tmp)
+                    MulProduct += '/' + pro[0]
+                    MulVendor += '/' + self.get_url('',self.strip(pro[0]))
+                else :
+                    pro = re.findall('Audio device: (.*)',tmp)
+                    MulProduct = pro[0]
+                    MulVendor = self.get_url('',self.strip(pro[0]))
+                MulNum += 1
+                tmp = re.findall('Kernel driver in use: (.*)',tmp)
+                if MulDrive:
+                    MulDrive += '/' + tmp[0]
+                else :
+                    MulDrive = tmp[0]
+        Mul['MulNum'],Mul['MulProduct'],Mul['MulVendor'],Mul['MulBusinfo'],Mul['MulDrive'] = self.strip(str(MulNum)),self.strip(MulProduct),self.strip(MulVendor),self.strip(MulBusinfo),self.strip(MulDrive)
+        return Mul
+
+    def get_dvd(self):
+        dvd = {}
+        Dvdnum = 0
+        DvdProduct,DvdVendor,DvdName,DvdFw,DvdSerial = '','','','',''
+        n = os.popen("hdparm -i /dev/cdrom")
+        cdrom = n.read()
+        n.close()
+        if cdrom:
+            tmp = re.findall("Model=(.*), F",cdrom)
+            if tmp:
+                DvdProduct = tmp[0]
+                DvdVendor = self.get_url('',self.strip(DvdProduct))
+                if not DvdVendor :
+                    pro = DvdProduct[:DvdProduct.index('DVD')]
+                    DvdVendor = self.get_url('',self.strip(pro))
+                if not DvdVendor :
+                    pro = DvdProduct[:DvdProduct.index('CD')]
+                    DvdVendor = self.get_url('',self.strip(pro))
+                tmp = re.findall("FwRev=(.*), ",cdrom)
+                if tmp :
+                    DvdFw = tmp[0]
+                tmp = re.findall("SerialNo=(.*)",cdrom)
+                if tmp :
+                    DvdSerial = tmp[0]
+                DvdName = '/dev/cdrom'
+                Dvdnum += 1
+        dvd['Dvdnum'],dvd['DvdProduct'],dvd['DvdVendor'],dvd['DvdName'],dvd['DvdFw'],dvd['DvdSerial'] = self.strip(str(Dvdnum)),self.strip(DvdProduct),self.strip(DvdVendor),self.strip(DvdName),self.strip(DvdFw),self.strip(DvdSerial)
+        return dvd
+
+
 if __name__ == "__main__":
-    cc = DetailInfo()
-    cc.ctoascii('a')
-    cc.strip('a')
-    cc.get_url('a','a')
-    cc.get_computer()
-    cc.get_cpu()
-    cc.get_board()
-    cc.get_memory()
-    cc.get_monitor()
-    cc.get_disk()
-    cc.get_network()
+    pass
+    #cc = DetailInfo()
+    #cc.ctoascii('a')
+    #cc.strip('a')
+    #cc.get_url('a','a')
+    #cc.get_computer()
+    #cc.get_cpu()
+    #cc.get_board()
+    #cc.get_memory()
+    #cc.get_monitor()
+    #cc.get_disk()
+    #cc.get_network()
+    #cc.get_multimedia()
+    #cc.get_dvd()

@@ -27,6 +27,7 @@ Rectangle {
     property bool secondFlag: false
     property bool thirdFlag: false
     property bool fourthFlag: false
+    property int itemNum: 6//每个模块的子项个数
     ListModel {id: firstModel}
     ListModel {id: secondModel}
     ListModel {id: thirdModel}
@@ -80,7 +81,7 @@ Rectangle {
         }
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-            listItem.height = (7*20 + 6*10 + 10*2) *2;
+            listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *2;
         }
         else if(num >= 3) {
             //--------------third--------------
@@ -103,7 +104,7 @@ Rectangle {
             }
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-                listItem.height = (7*20 + 6*10 + 10*2) *3;
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *3;
             }
             else if(num == 4) {
                 home.fourthFlag = true;
@@ -124,7 +125,7 @@ Rectangle {
                     logo4.source = InfoGroup.judgeName(diskvendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 }
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-                listItem.height = (7*20 + 6*10 + 10*2) *4;
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *4;
             }
         }
     }
@@ -157,7 +158,7 @@ Rectangle {
             }
 
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 硬盘个数
-            listItem.height = 6*20 + 5*10 + 10*2;
+            listItem.height = home.itemNum*20 + (home.itemNum - 1)*10 + 10*2;
         }
         else if(num >= 2){
             home.show_several_harddisk(num);
@@ -165,7 +166,7 @@ Rectangle {
     }
 
     Component {
-        id: memoryDelegate
+        id: hddDelegate
         Row {
             spacing: 10
             Common.Label {
@@ -225,14 +226,14 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.firstFlag ? (6*20 + 5*10) : 0
+                    height: home.firstFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
                     ListView {
                         id: firstView
                         anchors.fill: parent
 //                        width: parent.width
 //                        height: home.firstFlag ? (6*20 + 5*10) : 0
                         model: firstModel
-                        delegate: memoryDelegate
+                        delegate: hddDelegate
                         visible: false
                         spacing: 10
                     }
@@ -260,14 +261,14 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.secondFlag ? (6*20 + 5*10) : 0
+                    height: home.secondFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
                     ListView {
                         id: secondView
                         anchors.fill: parent
 //                        width: parent.width
 //                        height: home.secondFlag ? (6*20 + 5*10) : 0
                         model: secondModel
-                        delegate: memoryDelegate
+                        delegate: hddDelegate
                         visible: false
                         spacing: 10
                     }
@@ -294,14 +295,14 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.thirdFlag ? (6*20 + 5*10) : 0
+                    height: home.thirdFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
                     ListView {
                         id: thirdView
                         anchors.fill: parent
 //                        width: parent.width
 //                        height: home.thirdFlag ? (6*20 + 5*10) : 0
                         model: thirdModel
-                        delegate: memoryDelegate
+                        delegate: hddDelegate
                         visible: false
                         spacing: 10
                     }
@@ -328,14 +329,14 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.fourthFlag ? (6*20 + 5*10) : 0
+                    height: home.fourthFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
                     ListView {
                         id: fourthView
                         anchors.fill: parent
 //                        width: parent.width
 //                        height: home.fourthFlag ? (6*20 + 5*10) : 0
                         model: fourthModel
-                        delegate: memoryDelegate
+                        delegate: hddDelegate
                         visible: false
                         spacing: 10
                     }

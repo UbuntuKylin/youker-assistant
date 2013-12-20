@@ -177,6 +177,28 @@ void SystemDispatcher::get_monitor_info_qt() {
     }
 }
 
+void SystemDispatcher::get_cdrom_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cdrom_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        cdromInfo = value;
+    }
+    else {
+        qDebug() << "get cdrom info failed!";
+    }
+}
+
+void SystemDispatcher::get_audiocard_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_audiocard_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        audiocardInfo = value;
+    }
+    else {
+        qDebug() << "get audiocard info failed!";
+    }
+}
+
 QString SystemDispatcher::get_time_value_qt() {
     QDBusReply<QString> reply = systemiface->call("get_time_value");
     return reply.value();
@@ -204,6 +226,12 @@ QString SystemDispatcher::getSingleInfo(QString key, QString flag) {
     }
     else if(flag == "monitor") {
         info = monitorInfo.value(key);
+    }
+    else if(flag == "cdrom") {
+        info = cdromInfo.value(key);
+    }
+    else if(flag == "audiocard") {
+        info = audiocardInfo.value(key);
     }
     return info.toString();
 }

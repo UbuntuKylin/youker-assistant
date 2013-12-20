@@ -111,6 +111,14 @@ class Daemon(PolicyKitService):
     def get_monitor_info(self):
         return self.infoconf.get_monitor()
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_cdrom_info(self):
+        return self.infoconf.get_dvd()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_audiocard_info(self):
+        return self.infoconf.get_multimedia()
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_time_value(self):
         return self.infoconf.uptimeinfo()

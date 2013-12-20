@@ -29,6 +29,7 @@ Rectangle {
         chipmodelText.text = systemdispatcher.getSingleInfo("Vga_product", "monitor");
         var cardVendor = systemdispatcher.getSingleInfo("Vga_vendor", "monitor");
         chipvendorText.text = cardVendor;
+        driverText.text = systemdispatcher.getSingleInfo("Vga_Drive", "monitor");
         cardlogo.source = InfoGroup.judgeName(cardVendor.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cardVendor.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         chipbusText.text = systemdispatcher.getSingleInfo("Vga_businfo", "monitor");
         var vendor = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
@@ -136,6 +137,21 @@ Rectangle {
                 Text {
                     id: chipvendorText
                     text: ""//systemdispatcher.getSingleInfo("Vga_vendor")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("Graphics Driver:")//显卡驱动：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 165
+                }
+                Text {
+                    id: driverText
+                    text: ""//systemdispatcher.getSingleInfo("Vga_Drive")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
