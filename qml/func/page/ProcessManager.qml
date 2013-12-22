@@ -23,6 +23,7 @@ Rectangle {
     height: 475
     SystemPalette {id: syspal}
     property string processId//记录鼠标所在那行的进程号，以便自动刷新时重新定位到原来那行
+    property bool flag: true//判断选中当前用户还是全部用户，当前用户为true，全部用户为false
 
     //背景
     Image {
@@ -34,7 +35,30 @@ Rectangle {
     function updateProcessList() {
         largeModel.clear();//清空largeModel
         processmanager.clearMap();//清空qt中保存的进程序号和进程号组合的map
-//        var list = processmanager.getProcess();//得到当前用户的进程
+        processmanager.clearUserMap();//清空qt中保存的进程号和用户名组合的map
+
+        var list = processmanager.getProcess();//得到当前用户的进程
+        for (var i=0 ; i < list.length ; i++) {
+            var splitlist = list[i].split(";");
+            if(splitlist.length !== 7) {
+                continue;
+            }
+            else {
+                var num = i.toString();
+                var user = splitlist[0];
+                var id = splitlist[1];
+                largeModel.append({/*"number": num, */ "user": user, "pid": id, "pcpu": splitlist[2], "pmem": splitlist[3], "started": splitlist[4], "content": splitlist[5], "command": splitlist[6]});
+                processmanager.updateMap(num, id);//更新qt中保存的进程序号和进程号组合的map
+                processmanager.updateUserMap(id, user);
+            }
+        }
+        largeModel.append({"user": "user", "pid": "pid", "pcpu": "cpu", "pmem": "mem", "started": "time", "content": "ubuntukylin", "command": "test for TableView"});
+    }
+    //更新进程列表
+    function updateAllProcessList() {
+        largeModel.clear();//清空largeModel
+        processmanager.clearMap();//清空qt中保存的进程序号和进程号组合的map
+        processmanager.clearUserMap();//清空qt中保存的进程号和用户名组合的map
         var list = processmanager.getProcessAdvance();//得到所用用户的进程
         for (var i=0 ; i < list.length ; i++) {
             var splitlist = list[i].split(";");
@@ -62,44 +86,85 @@ Rectangle {
         width: parent.width - 4
         source: "../../img/skin/note-bg.png"
     }
-    Text {
+    Row {
+        spacing: 20
         anchors {
             left: parent.left
             leftMargin: 50
             top: parent.top
             topMargin: titleimage.height/2 - 7
         }
-        text: qsTr("The task manager to help you kill some process which you want.")//任务管理器帮助您结束一些您想关闭的进程。
-        font.pixelSize: 12
-        color: "#383838"
+        Text {
+            text: qsTr("The task manager to help you kill some process which you want.")//任务管理器帮助您结束一些您想关闭的进程。
+            font.pixelSize: 12
+            color: "#383838"
+        }
+        Common.ButtonRow {
+            exclusive: true//控制是否联动
+            spacing: 100
+            Common.CheckBox {
+                id:currentUser
+                titleName: qsTr("Current User") //当前用户
+                checked: (root.flag == true) ? true : false
+                flag: "radio"
+                onClicked: {
+                    if (currentUser.checked == true) {
+                        if(root.flag == false) {
+                            root.flag = true;
+                            root.updateProcessList();
+                        }
+                    }
+                }
+            }
+            Common.CheckBox {
+                id: allUser
+//                width: 20
+//                height: 20
+                titleName: qsTr("All Users")//所有用户
+                checked: (root.flag == false) ? true : false
+                flag: "radio"
+                onClicked: {
+                    if (allUser.checked == true) {
+                        if(root.flag == true) {
+                            root.flag = false;
+                            root.updateAllProcessList();
+                        }
+                    }
+                }
+            }
+        }
     }
     Row {
         anchors {
             right: parent.right
             rightMargin: 30
             top: parent.top
-            topMargin: 5
+            topMargin: titleimage.height/2 - 7
         }
-        spacing: 10
-        Common.Button {
+        spacing: 20
+
+        Common.StyleButton {
             id: listBtn
-            width: 100
-            height: 30
-            text: qsTr("Refresh")//刷新
-            hoverimage: "green1.png"
-            fontsize: 15
+            anchors.verticalCenter: parent.verticalCenter
+            wordname: qsTr("Refresh")//刷新
+            width: 40
+            height: 20
             onClicked: {
-                updateProcessList();
+                if(root.flag == true) {
+                    root.updateProcessList();
+                }
+                else if(root.flag == false) {
+                    root.updateAllProcessList();
+                }
                 toolkits.alertMSG(qsTr("Refresh Over!"), mainwindow.pos.x, mainwindow.pos.y);//刷新完毕！
             }
         }
-        Common.Button {
+        Common.StyleButton {
             id: killBtn
-            width: 100
-            height: 30
-            text: qsTr("Kill process")//结束进程
-            hoverimage: "green1.png"
-            fontsize: 15
+            anchors.verticalCenter: parent.verticalCenter
+            wordname: qsTr("Kill process")//结束进程
+            width: 40
+            height: 20
             onClicked: {
                 //根据鼠标激活的序号来获取对应的进程号
                 var currentId = processmanager.getProcessId(tableView.currentIndex.toString());
@@ -110,7 +175,12 @@ Rectangle {
                     if(currentUser == processmanager.getCasualUser()) {//普通用户杀进程
                         if(processmanager.killProcess(currentId)) {
                             toolkits.alertMSG(qsTr("Kill successfully!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
-                            updateProcessList();
+                            if(root.flag == true) {
+                                root.updateProcessList();
+                            }
+                            else if(root.flag == false) {
+                                root.updateAllProcessList();
+                            }
                         }
                         else {
                             toolkits.alertMSG(qsTr("Kill failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
@@ -118,7 +188,12 @@ Rectangle {
                     }
                     else {//root用户杀进程
                         systemdispatcher.kill_root_process_qt(currentId);
-                        updateProcessList();
+                        if(root.flag == true) {
+                            root.updateProcessList();
+                        }
+                        else if(root.flag == false) {
+                            root.updateAllProcessList();
+                        }
                     }
                 }
                 else {
@@ -126,6 +201,71 @@ Rectangle {
                 }
             }
         }
+        Common.StyleButton {
+            id: backBtn
+            anchors.verticalCenter: parent.verticalCenter
+            wordname: qsTr("Back")//返回
+            width: 40
+            height: 20
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
+            }
+        }
+
+//        Common.Button {
+//            id: listBtn
+//            width: 100
+//            height: 30
+//            text: qsTr("Refresh")//刷新
+//            hoverimage: "green1.png"
+//            fontsize: 15
+//            onClicked: {
+//                updateProcessList();
+//                toolkits.alertMSG(qsTr("Refresh Over!"), mainwindow.pos.x, mainwindow.pos.y);//刷新完毕！
+//            }
+//        }
+//        Common.Button {
+//            id: killBtn
+//            width: 100
+//            height: 30
+//            text: qsTr("Kill process")//结束进程
+//            hoverimage: "green1.png"
+//            fontsize: 15
+//            onClicked: {
+//                //根据鼠标激活的序号来获取对应的进程号
+//                var currentId = processmanager.getProcessId(tableView.currentIndex.toString());
+//                if(currentId.length !== 0) {
+//                    var currentUser = processmanager.getProcessUser(currentId);
+////                    console.log(currentUser);
+////                    console.log(processmanager.getCasualUser());
+//                    if(currentUser == processmanager.getCasualUser()) {//普通用户杀进程
+//                        if(processmanager.killProcess(currentId)) {
+//                            toolkits.alertMSG(qsTr("Kill successfully!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
+//                            updateProcessList();
+//                        }
+//                        else {
+//                            toolkits.alertMSG(qsTr("Kill failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
+//                        }
+//                    }
+//                    else {//root用户杀进程
+//                        systemdispatcher.kill_root_process_qt(currentId);
+//                        updateProcessList();
+//                    }
+//                }
+//                else {
+//                    toolkits.alertMSG(qsTr("Have no choice!"), mainwindow.pos.x, mainwindow.pos.y);//没有选择将要结束的进程！
+//                }
+//            }
+//        }
     }
 
     ListModel {
@@ -228,7 +368,12 @@ Rectangle {
     Timer {
         interval: 60000; running: true; repeat: true
         onTriggered: {
-            updateProcessList();
+            if(root.flag == true) {
+                root.updateProcessList();
+            }
+            else if(root.flag == false) {
+                root.updateAllProcessList();
+            }
             var result = processmanager.getProcessIndex(root.processId);
             tableView.currentIndex = result;
         }

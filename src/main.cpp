@@ -62,6 +62,7 @@ void registerTypes() {
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<SudoDispatcher>("SudoType", 0, 1, "SudoDispatcher");
     qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");
+    qmlRegisterType<DeviceManager>("DeviceType", 0, 1, "DeviceManager");
     qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
@@ -142,11 +143,6 @@ int main(int argc, char** argv)
     splash->finish(&application);
     delete splash;
     return app.exec();
-//    DeviceManager d;
-//    QStringList a = d.getDeviceMsg();
-//    for (int var = 0; var < a.size(); ++var) {
-//        qDebug()<<a.at(var);
-//    }
 }
 
 

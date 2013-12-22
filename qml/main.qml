@@ -21,6 +21,7 @@ import SystemType 0.1
 import SudoType 0.1
 import FcitxCfgWizard 0.1
 import ProcessType 0.1
+import DeviceType 0.1
 
 Rectangle {
     id: main
@@ -47,6 +48,9 @@ Rectangle {
     }
     ProcessManager {
         id: processmanager
+    }
+    DeviceManager {
+        id: devicemanager
     }
 
     Component.onCompleted: {

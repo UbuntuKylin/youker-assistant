@@ -296,9 +296,6 @@ private:
 
     QSettings * mSettings;
     QString initCityId;
-
-    //任务管理器对象
-//    ProcessManager *processManager;
 };
 
 #endif // SESSIONDISPATCHER_H

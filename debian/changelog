@@ -3,8 +3,10 @@ youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
   * Refersh process list automatically and position the originally selected process(LP: #1261802).
   * Adjust the structure of QML project.
   * Add CD-ROM, Audio Card and WLan information.
+  * Kill root process.
+  * Add Device basic information.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 20 Dec 2013 11:30:50 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 22 Dec 2013 12:07:29 +0800
 
 youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
 
