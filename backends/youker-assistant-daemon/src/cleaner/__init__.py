@@ -375,7 +375,6 @@ class CleanTheCookies():
             if os.path.exists(filepathc):
                 pamc = [filepathc, 'cookies', 'host_key']
                 temp_chromium_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
-                crufts_list = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in temp_list]
                 for one in temp_chromium_list:
                     sesdaemon.data_transmit_by_cookies("chromium", one[0], str(one[-1]))
                 sesdaemon.cookies_transmit_complete('chromium')

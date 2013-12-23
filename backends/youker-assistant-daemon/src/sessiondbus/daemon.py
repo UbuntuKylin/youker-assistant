@@ -139,7 +139,7 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def scan_cookies_function(self, flag):
-        crufts_list = cookiesfunc_obj.get_cookie_crufts(flag)
+        cookiesfunc_obj = cleaner.CleanTheCookies(self)
         cookiesfunc_obj.get_cookie_crufts(flag, self)
 
     # the function of scan the unneedpackages
