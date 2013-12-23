@@ -131,7 +131,7 @@ Rectangle {
 //                font.bold: true
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("Candidate list:")//候选词列表:
+                text: qsTr("Candidate list: ")//候选词列表：
             }
             Common.ButtonRow {
                 exclusive: true//控制是否联动
@@ -161,7 +161,7 @@ Rectangle {
                 id: numberText
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("Candidate Word Number:")//候选词个数:
+                text: qsTr("Candidate Word Number: ")//候选词个数：
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -225,7 +225,7 @@ Rectangle {
                 id:inputMethod
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text:qsTr("Trigger Input Method:")//切换激活/非激活输入法:
+                text:qsTr("Trigger Input Method: ")//切换激活/非激活输入法：
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -283,7 +283,7 @@ Rectangle {
                 id: prevPage
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("Prev Page:")//上一页:
+                text: qsTr("Prev Page: ")//上一页：
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
@@ -341,7 +341,7 @@ Rectangle {
                 id: nextPage
                 font.pixelSize: 12
                 color: "#7a7a7a"
-                text: qsTr("Next Page:")//下一页:
+                text: qsTr("Next Page: ")//下一页：
                 anchors.verticalCenter: parent.verticalCenter
             }
             Row{
