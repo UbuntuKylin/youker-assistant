@@ -231,8 +231,8 @@ class SessionDaemon(dbus.service.Object):
     def package_transmit_complete(self):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='')
-    def cookies_transmit_complete(self):
+    @dbus.service.signal(INTERFACE, signature='s')
+    def cookies_transmit_complete(self, msg):
         pass
 
     @dbus.service.signal(INTERFACE, signature='')

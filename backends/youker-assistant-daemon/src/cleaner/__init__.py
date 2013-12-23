@@ -261,7 +261,7 @@ class ManageTheLarge():
         largefile_list = objlg.hundred_large_files(finalsize, path)
         for one in largefile_list:
             sesdaemon.data_transmit_by_large(common.confirm_filesize_unit(one[0]), one[1])
-        sesdaemon.large_transmit_complete('')
+        sesdaemon.large_transmit_complete()
         
 # the functions of clean the browser history
 class CleanTheHistory():
@@ -366,6 +366,8 @@ class CleanTheCookies():
                 temp_firefox_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
                 for one in temp_firefox_list:
                     sesdaemon.data_transmit_by_cookies("firefox", one[0], str(one[-1]))
+            else:
+                sesdaemon.cookies_transmit_complete('funinstall')
 
         if flag in "chromium":
             filepathc = "%s/.config/chromium/Default/Cookies" % homedir
@@ -375,7 +377,8 @@ class CleanTheCookies():
                 crufts_list = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in temp_list]
                 for one in temp_chromium_list:
                     sesdaemon.data_transmit_by_cookies("chromium", one[0], str(one[-1]))
-        sesdaemon.cookies_transmit_complete('')
+            else:
+                sesdaemon.cookies_transmit_complete('cuninstall')
 
     def get_cookies_crufts(self, flag):
         homedir = common.return_homedir_sesdaemon()
