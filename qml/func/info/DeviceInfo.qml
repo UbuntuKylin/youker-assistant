@@ -179,7 +179,7 @@ Rectangle {
         anchors.leftMargin: 20
         anchors.top: titleRow.bottom
         anchors.topMargin: 20
-        height: 390
+        height: 398
         width: 680 - 4
         Item {
             id: listItem

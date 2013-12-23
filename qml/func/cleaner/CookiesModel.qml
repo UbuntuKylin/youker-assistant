@@ -77,19 +77,14 @@ Item {
                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Chromium browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
-                firefoxmainModel.clear();
-                firefoxmainModel.append({
-                                 "itemTitle": qsTr("Clean Firefox's Cookies"),
-                                 "picture": "../../img/toolWidget/cookies.png",
-                                 "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
-                chromiummainModel.clear();
-                chromiummainModel.append({
-                                 "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                 "picture": "../../img/toolWidget/chromium.png",
-                                 "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                 if (cookiesFlag == "firefox") {
                     if(root.firefoxNum != 0) {
                         root.firefoxResultFlag = true;//扫描的实际有效内容存在
+                        firefoxmainModel.clear();
+                        firefoxmainModel.append({
+                                         "itemTitle": qsTr("Clean Firefox's Cookies"),
+                                         "picture": "../../img/toolWidget/cookies.png",
+                                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
                     }
                     else {
                         root.firefoxResultFlag = false;//扫描的实际有效内容不存在
@@ -141,6 +136,11 @@ Item {
                 else if (cookiesFlag == "chromium") {
                     if(root.chromiumNum != 0) {
                         root.chromiumResultFlag = true;//扫描的实际有效内容存在
+                        chromiummainModel.clear();
+                        chromiummainModel.append({
+                                         "itemTitle": qsTr("Clean Chromium's Cookies"),
+                                         "picture": "../../img/toolWidget/chromium.png",
+                                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                     }
                     else {
                         root.chromiumResultFlag = false;//扫描的实际有效内容不存在
@@ -179,7 +179,6 @@ Item {
                         else {//清理software后的重新获取数据，此时不需要显示对话框
                             root.flag = false;
                         }
-
                         //当真正扫描到内容时：按钮状态改变、显示文字改变、重置按钮显示
                         root.chromium_btn_flag = "cookies_workc";//1206
                         root.chromium_btn_text = qsTr("All clean");//全部清理//1206
@@ -460,7 +459,7 @@ Item {
                     else {
                         scrollItem.height = 2 * 40 + root.spaceValue*2;
                     }
-                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 }
             }
         }
@@ -521,10 +520,10 @@ Item {
     Common.ScrollArea {
         frame:false
         anchors.top: titlebar.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 30
         anchors.left:parent.left
         anchors.leftMargin: 27
-        height: root.height -titlebar.height - 37
+        height: root.height -titlebar.height - 47
         width: parent.width - 27 -2
         Item {
             id: scrollItem

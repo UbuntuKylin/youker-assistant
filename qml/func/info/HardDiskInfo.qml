@@ -160,7 +160,7 @@ Rectangle {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 硬盘个数
             listItem.height = home.itemNum*20 + (home.itemNum - 1)*10 + 10*2;
         }
-        else if(num >= 2){
+        else if(num >= 2) {
             home.show_several_harddisk(num);
         }
     }
@@ -212,7 +212,7 @@ Rectangle {
         anchors.leftMargin: 20
         anchors.top: titleRow.bottom
         anchors.topMargin: 20
-        height: 390
+        height: 398
         width: 680 - 4
         Item {
             id: listItem
