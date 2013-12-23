@@ -351,15 +351,19 @@ Item {
 
                     if(root.apt_maincheck && root.soft_maincheck) {//software-center
                         root.mode = 0;
+                        root.aptNum = 0;
+                        root.softNum = 0;
                         sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist());
                     }
                     else {
                         if(root.apt_maincheck) {
                             root.mode = 1;
+                            root.aptNum = 0;
                             sessiondispatcher.cache_scan_function_qt("apt");
                         }
                         else if(root.soft_maincheck) {
                             root.mode = 2;
+                            root.softNum = 0;
                             sessiondispatcher.cache_scan_function_qt("software-center");
                         }
                     }

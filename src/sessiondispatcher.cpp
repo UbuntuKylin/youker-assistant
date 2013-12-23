@@ -187,7 +187,6 @@ QStringList SessionDispatcher::scan_cookies_records_qt() {
 void SessionDispatcher::cookies_scan_function_qt(QString flag) {
 //    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_function", flag);//cookies_scan_function
 //    return reply.value();
-    qDebug() << "11111111111";
     sessioniface->call("scan_cookies_function", flag);
 }
 

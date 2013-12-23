@@ -564,15 +564,19 @@ Item {
 //                            root.getData();
                             if(root.package_maincheck && root.kernel_maincheck) {
                                 root.mode = 0;
+                                root.packageNum = 0;
+                                root.kernelNum = 0;
                                 sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
                             }
                             else {
                                 if(root.package_maincheck) {
                                     root.mode = 1;
+                                    root.packageNum = 0;
                                     sessiondispatcher.package_scan_function_qt("unneed");
                                 }
                                 else if(root.kernel_maincheck) {
                                     root.mode = 2;
+                                    root.kernelNum = 0;
                                     sessiondispatcher.package_scan_function_qt("oldkernel");
                                 }
                             }
@@ -607,15 +611,19 @@ Item {
 
                                     if(root.package_maincheck && root.kernel_maincheck) {
                                         root.mode = 0;
+                                        root.packageNum = 0;
+                                        root.kernelNum = 0;
                                         sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
                                     }
                                     else {
                                         if(root.package_maincheck) {
                                             root.mode = 1;
+                                            root.packageNum = 0;
                                             sessiondispatcher.package_scan_function_qt("unneed");
                                         }
                                         else if(root.kernel_maincheck) {
                                             root.mode = 2;
+                                            root.kernelNum = 0;
                                             sessiondispatcher.package_scan_function_qt("oldkernel");
                                         }
                                     }

@@ -88,7 +88,7 @@ Item {
     }
 
     Text {
-        text: container.size_num
+        text: container.size_num + qsTr(" Records")//条记录
         anchors {
             right: delBtn.left
             top: parent.top

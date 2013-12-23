@@ -52,22 +52,17 @@ Item {
     {
         target: sessiondispatcher
         onAppendCookiesContentToModel: {
-            console.log("222222");
-            console.log(domain);
-            console.log(num);
             //QString flag, QString domain, QString num
             if(flag == "firefox") {
-                firefoxsubModel.append({"itemTitle": domain, "desc": num, "number": ""});
+                firefoxsubModel.append({"itemTitle": domain, "desc": "", "number": num});
                 root.firefoxNum += 1;
             }
             else if(flag == "chromium") {
-                chromiumsubModel.append({"itemTitle": domain, "desc": num, "number": ""});
+                chromiumsubModel.append({"itemTitle": domain, "desc": "", "number": num});
                 root.chromiumNum += 1;
             }
         }
         onTellQMLCookiesOver: {
-            console.log("3333333");
-            console.log(cookiesFlag);
             if (cookiesFlag == "funinstall") {
                 //友情提示
                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Firefox browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -409,10 +404,7 @@ Item {
         }
 
         onFinishCleanWork: {//清理正常完成
-            if (msg == "") {
-                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
-            }
-            else if (msg == "firefox") {
+            if (msg == "firefox") {
                 if (root.firefox_btn_flag == "cookies_work") {
 //                    systemdispatcher.clear_cookies_args();
                     firefoxsubModel.clear();//内容清空
@@ -434,7 +426,7 @@ Item {
                     else {
                         scrollItem.height = 2 * 40 + root.spaceValue*2;
                     }
-                    toolkits.alertMSG(qsTr("Cleaned"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 }
             }
             else if (msg == "chromium") {
@@ -552,6 +544,7 @@ Item {
                             if(browserFlag == "firefox") {
                                 if(status == "reset") {//点击重置按钮，清空数据
                                     firefoxsubModel.clear();
+                                    root.firefoxNum = 0;
                                     root.firefox_btn_flag = "cookies_scan";//1206
                                     root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.firefox_reset = false;//1206
@@ -569,6 +562,7 @@ Item {
                                 }
                                 else if(status == "rescan") {//点击重新扫描按钮
                                     firefoxsubModel.clear();
+                                    root.firefoxNum = 0;
                                     root.firefox_btn_flag = "cookies_scan";//1206
                                     root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.firefox_reset = false;//1206
@@ -584,6 +578,7 @@ Item {
                                 else if(status == "refresh") {//清理完某个子项后自动刷新列表
                                     console.log("---*****2222------");
                                     firefoxsubModel.clear();
+                                    root.firefoxNum = 0;
                                     root.firefox_btn_flag = "cookies_scan";//1206
                                     root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.firefox_reset = false;//1206
@@ -601,6 +596,7 @@ Item {
                                     if (root.firefox_btn_flag == "cookies_scan") {
                                         console.log("scan---f......");
                                         //开始扫描时获取cookies
+                                        root.firefoxNum = 0;
                                         root.flag = false;
                                         sessiondispatcher.cookies_scan_function_qt("firefox");
 //                                        root.getDataOfFirefox();
@@ -673,6 +669,7 @@ Item {
                             if(browserFlag == "chromium") {
                                 if(status == "reset") {//点击重置按钮，清空数据
                                     chromiumsubModel.clear();
+                                    root.chromiumNum = 0;
                                     root.chromium_btn_flag = "cookies_scanc";//1206
                                     root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.chromium_reset = false;//1206
@@ -690,6 +687,7 @@ Item {
                                 }
                                 else if(status == "rescan") {
                                     chromiumsubModel.clear();
+                                    root.chromiumNum = 0;
                                     root.chromium_btn_flag = "cookies_scanc";//1206
                                     root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.chromium_reset = false;//1206
@@ -704,6 +702,7 @@ Item {
                                 }
                                 else if(status == "refresh") {//清理完某个子项后自动刷新列表
                                     chromiumsubModel.clear();
+                                    root.chromiumNum = 0;
                                     root.chromium_btn_flag = "cookies_scanc";//1206
                                     root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
                                     root.chromium_reset = false;//1206
@@ -722,6 +721,7 @@ Item {
                                         console.log("scan---c......");
                                         //开始扫描时获取cookies
                                         root.flag = false;
+                                        root.chromiumNum = 0;
                                         sessiondispatcher.cookies_scan_function_qt("chromium");
 //                                        root.getDataOfChromium();
                                     }
