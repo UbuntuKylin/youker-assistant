@@ -31,7 +31,7 @@ Rectangle {
          if (component.status == Component.Ready)
              pageStack.push(component);
          else
-             console.log("Error loading component:", component.errorString());
+             console.log("Error loading component: ", component.errorString());
      }
 
     Column {
@@ -45,7 +45,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: desktoptitle
-                text: qsTr("Desktop Information")//桌面信息
+                text: qsTr("Desktop Info")//桌面信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -62,7 +62,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Environment:")//桌面环境:
+                    text: qsTr("Desktop Environment: ")//桌面环境：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
@@ -76,7 +76,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Language:")//语言:
+                    text: qsTr("Language: ")//语言：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
@@ -91,7 +91,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("User:")//当前用户:
+                    text: qsTr("User: ")//当前用户：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
@@ -105,7 +105,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Home Folder:")//用户主目录:
+                    text: qsTr("Home Folder: ")//用户主目录：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 100
@@ -166,7 +166,7 @@ Rectangle {
 //             if (component.status == Component.Ready)
 //                 pageStack.push(component);
 //             else
-//                 console.log("Error loading component:", component.errorString());
+//                 console.log("Error loading component: ", component.errorString());
 //         }
 
 
@@ -255,7 +255,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("CPU:")//处理器:
+//                        text: qsTr("CPU: ")//处理器:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100
@@ -269,7 +269,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("Memory:")//内存:
+//                        text: qsTr("Memory: ")//内存:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100
@@ -302,7 +302,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("Host name:")//主机名:
+//                        text: qsTr("Host name: ")//主机名:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100
@@ -316,7 +316,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("Platform:")//平台:
+//                        text: qsTr("Platform: ")//平台:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100
@@ -330,7 +330,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("Distribution:")//发行版:
+//                        text: qsTr("Distribution: ")//发行版:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100
@@ -344,7 +344,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("Environment:")//桌面环境:
+//                        text: qsTr("Environment: ")//桌面环境:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100
@@ -358,7 +358,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("Language:")//语言:
+//                        text: qsTr("Language: ")//语言:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100
@@ -391,7 +391,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("User:")//当前用户:
+//                        text: qsTr("User: ")//当前用户:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100
@@ -405,7 +405,7 @@ Rectangle {
 //                Row {
 //                    spacing: 10
 //                    Text {
-//                        text: qsTr("Home directory:")//用户主目录:
+//                        text: qsTr("Home directory: ")//用户主目录:
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                        width: 100

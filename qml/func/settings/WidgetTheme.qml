@@ -23,8 +23,7 @@ Rectangle {
     width: parent.width
     height: 475
     property string actiontitle: qsTr("Window theme settings")//窗口主题设置
-    property string actiontext: qsTr("Choose the theme you want. The first theme on the page is the current theme.")//选择您想设置的主题。优客助手启动时页面上的第一个主题为系统当前使用的主题。
-    property string init_theme: ""
+    property string actiontext: qsTr("Choose the theme what you want. The first is the theme of the currently used.")//选择您想设置的主题。第一个主题为系统当前使用的主题。
     property string selected_theme: ""
     property int themeIndex: 0//序号
 
@@ -32,7 +31,7 @@ Rectangle {
         statusImage.visible = false;
         var syslist = sessiondispatcher.get_themes_qt();
         widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
-        showText.text = qsTr("[ Current Theme is: ") + widgetthemepage.init_theme + " ]";
+        showText.text = qsTr("[ Current Theme is: ") + widgetthemepage.init_theme + " ]";//[ 当前主题是：
         syslist.unshift(widgetthemepage.init_theme);
         themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
@@ -105,7 +104,7 @@ Rectangle {
                     widgetthemepage.selected_theme = name;
                     sessiondispatcher.set_theme_qt(name);
                     statusImage.visible = true;
-                    showText.text = qsTr("[ Current Theme is: ") + name + " ]";
+                    showText.text = qsTr("[ Current Theme is: ") + name + " ]";//[ 当前主题是：
                 }
             }
         }
@@ -222,12 +221,12 @@ Rectangle {
             var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "widgettheme");
             if(defaulttheme == widgetthemepage.selected_theme || widgetthemepage.selected_theme == "") {
             //友情提示：        您系统的当前窗口主题已经为默认主题！
-            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current widget theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);
+            sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's current widget theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的当前窗口主题已经为默认主题！
             }
             else {
                 sessiondispatcher.set_theme_qt(defaulttheme);
                 statusImage.visible = true;
-                showText.text = qsTr("[ Current Theme is: ") + defaulttheme + " ]";
+                showText.text = qsTr("[ Current Theme is: ") + defaulttheme + " ]";//[ 当前主题是：
                 widgetthemepage.selected_theme = defaulttheme;
             }
         }

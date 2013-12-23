@@ -28,8 +28,8 @@ Rectangle {
     property int cursor_size: 24
     property string selected_cursor_theme: ""//存放用户选择确认后的主题
 
-    property string actiontitle: qsTr("Mouse settings")//鼠标设置
-    property string actiontext: qsTr("Replace the mouse pointer theme and size, click 'OK' button to confirm.")//更换鼠标指针主题和大小，更改设置后点击“确定”按钮进行确认。
+    property string actiontitle: qsTr("Mouse Settings")//鼠标设置
+    property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the ‘OK’ button to confirm.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -42,7 +42,7 @@ Rectangle {
         var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
         //将系统初始的图标主题写入QSetting配置文件
         sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursortheme", current_cursor_theme);
-        showText.text = qsTr("[ Current Cursor Theme is: ") + current_cursor_theme + " ]";
+        showText.text = qsTr("[ Current Cursor Theme: ") + current_cursor_theme + " ]";//[ 当前光标主题是：
         mousepointerpage.selected_cursor_theme = current_cursor_theme;
         cursorlist.unshift(current_cursor_theme);
         choices.clear();
@@ -251,7 +251,7 @@ Rectangle {
             spacing: 20
             Text {
                 id: cursorthemelabel
-                text: qsTr("Mouse pointer theme")//鼠标指针主题
+                text: qsTr("Mouse Pointer Theme")//鼠标指针主题
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -274,7 +274,7 @@ Rectangle {
                     if (mousepointerpage.selected_cursor_theme != cursorcombo.selectedText) {
                         mousepointerpage.selected_cursor_theme = cursorcombo.selectedText;
                         sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-                        showText.text = qsTr("[ Current Cursor Theme is: ") + cursorcombo.selectedText + " ]";
+                        showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
                         statusImage.visible = true;
                     }
                 }
@@ -285,7 +285,7 @@ Rectangle {
             spacing: 20
             Text {
                 id: trashlabel
-                text: qsTr("Cursor pointer size")//鼠标指针大小
+                text: qsTr("Cursor Pointer Size")//光标指针大小
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -297,7 +297,7 @@ Rectangle {
                 Common.CheckBox {
                     id: smallstyle
                     checked: (mousepointerpage.cursor_size == 24) ? true : false
-                    titleName: qsTr("Small size")//24   小号
+                    titleName: qsTr("Small Size")//24   小号
                     flag: "radio"
                     onClicked: {
                         if(smallstyle.checked == true) {
@@ -312,7 +312,7 @@ Rectangle {
                 Common.CheckBox {
                     id: bigstyle
                     checked: (mousepointerpage.cursor_size == 36) ? true : false
-                    titleName: qsTr("Big size")//36     大号
+                    titleName: qsTr("Big Size")//36     大号
                     flag: "radio"
                     onClicked: {
                         if(bigstyle.checked == true) {
@@ -382,13 +382,13 @@ Rectangle {
 
             if((defaulttheme == mousepointerpage.selected_cursor_theme) && (defaultsize == mousepointerpage.cursor_size)) {
                 //友情提示：       光标配置已经为默认设置！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("CursorPointer configure is the default configure!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Cursor configure is the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//光标配置已经为默认设置！
             }
             else {
                 if(defaulttheme != mousepointerpage.selected_cursor_theme) {
                     sessiondispatcher.set_cursor_theme_qt(defaulttheme);
                     mousepointerpage.selected_cursor_theme = defaulttheme;
-                    showText.text = qsTr("[ Current Cursor Theme is: ") + defaulttheme + " ]";
+                    showText.text = qsTr("[ Current Cursor Theme: ") + defaulttheme + " ]";//[ 当前光标主题是：
                     cursorcombo.selectedIndex = 0;
                 }
                 if(defaultsize != mousepointerpage.cursor_size) {

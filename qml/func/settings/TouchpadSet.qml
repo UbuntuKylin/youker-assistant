@@ -29,7 +29,7 @@ Rectangle {
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
     property string actiontitle: qsTr("Touchpad settings")//触摸板设置
-    property string actiontext: qsTr("Adjust touchpad settings, make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
+    property string actiontext: qsTr("By setting the relevant properties of your touchpad, make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -104,7 +104,7 @@ Rectangle {
         spacing: 5
         Text{
             id: switchtitle
-            text: qsTr("Switch setting")//开关设置
+            text: qsTr("Switch settings")//开关设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -131,7 +131,7 @@ Rectangle {
         spacing: 40
         Common.Label {
             width: 110
-            text: qsTr("Enable/disable touchpad:")//启用/禁用触摸板:
+            text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板:
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -162,7 +162,7 @@ Rectangle {
         spacing: 5
         Text{
             id: scrolltitle
-            text: qsTr("Scrollbar settings")//滚动条设置
+            text: qsTr("Property settings")//属性设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
@@ -190,7 +190,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("Scrollbar type:")//滚动条类型:
+                text: qsTr("Scrollbar type: ")//滚动条类型：
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -204,7 +204,7 @@ Rectangle {
                     spacing: 100
                     Common.CheckBox {
                         id:overlay
-                        titleName: qsTr("overlay") //overlay模式        特色类型
+                        titleName: qsTr("Features Type") //特色类型
                         checked: (touchpadsetpage.scrollbars_mode == "overlay-auto") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -219,7 +219,7 @@ Rectangle {
                     }
                     Common.CheckBox {
                         id: legacy
-                        titleName: qsTr("legacy")  //legacy模式       标准类型
+                        titleName: qsTr("Standard Type")  //标准类型
                         checked: (touchpadsetpage.scrollbars_mode == "normal") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -243,7 +243,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("Touchpad rolling mode:")//触摸板滚动触发方式:
+                text: qsTr("Touchpad scroll trigger mode: ")//触摸板滚动触发方式：
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -257,7 +257,7 @@ Rectangle {
                     spacing: 100
                     Common.CheckBox {
                         id:edge
-                        titleName: qsTr("edge")//"edge模式"        边缘触发
+                        titleName: qsTr("Edgemotion")//边缘触发
                         checked: (touchpadsetpage.touchscrolling_mode == "edge-scrolling") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -272,7 +272,7 @@ Rectangle {
                     }
                     Common.CheckBox {
                         id: twofinger
-                        titleName: qsTr("twofinger")//"twofinger模式"       双指触发
+                        titleName: qsTr("Twofinger Scroll")//双指触发
                         checked: (touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") ? true : false
                         flag: "radio"
                         onClicked: {
@@ -295,7 +295,7 @@ Rectangle {
             spacing: 40
             Common.Label {
                 width: 110
-                text: qsTr("Scrollbar horizontal scroll:")//触摸板横向滚动:
+                text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -375,7 +375,7 @@ Rectangle {
 
             if((defaultenable == enableFlag) && (defaulthorizontal == horizontalFlag) && (touchpadsetpage.scrollbars_mode == defaulttype) && (touchpadsetpage.touchscrolling_mode == defaultmode)) {
                 //友情提示：        触摸板配置已经为默认配置！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Touchpad configure is the default configure!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Touchpad configure has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//触摸板配置已经为默认配置！
             }
             else {
                 if(defaultenable != enableFlag) {

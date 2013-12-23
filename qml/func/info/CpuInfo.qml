@@ -57,7 +57,7 @@ Rectangle {
         maxText.text = systemdispatcher.getSingleInfo("CpuCapacity", "cpu");// + "MHz";
         curText.text = systemdispatcher.getSingleInfo("CpuSize", "cpu");// + "MHz";
         frontText.text = systemdispatcher.getSingleInfo("CpuClock", "cpu");// + "MHz";
-        coresText.text = systemdispatcher.getSingleInfo("cpu_cores", "cpu") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings", "cpu") + qsTr("thread");
+        coresText.text = systemdispatcher.getSingleInfo("cpu_cores", "cpu") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings", "cpu") + qsTr("thread");//核//线程
         cache1.text = systemdispatcher.getSingleInfo("clflush_size", "cpu") + "KB";
         cache2.text = systemdispatcher.getSingleInfo("cache_size", "cpu") + "KB";
     }
@@ -73,7 +73,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: bartitle
-                text: qsTr("CPU Information")//处理器信息
+                text: qsTr("CPU Info")//处理器信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -90,7 +90,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("CPU:")//处理器：
+                    text: qsTr("CPU: ")//处理器：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -105,7 +105,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Vendor:")//制造商：
+                    text: qsTr("Vendor: ")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -120,7 +120,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Serial Number:")//序列号：
+                    text: qsTr("Serial Number: ")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -135,7 +135,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Socket/Slot:")//插座/插槽：
+                    text: qsTr("Socket/Slot: ")//插座/插槽：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -150,7 +150,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Maximum Frequency:")//最大主频：
+                    text: qsTr("Maximum Frequency: ")//最大主频：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -165,7 +165,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Current Frequency:")//当前主频：
+                    text: qsTr("Current Frequency: ")//当前主频：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -180,7 +180,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("FSB:")//前端总线：
+                    text: qsTr("FSB: ")//前端总线：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -195,14 +195,14 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Core Number:")//核心数目：
+                    text: qsTr("Core Number: ")//核心数目：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
                 }
                 Text {
                     id: coresText
-                    text: ""//systemdispatcher.getSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings") + qsTr("thread")
+                    text: ""//systemdispatcher.getSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings") + qsTr("thread")//核//线程
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -210,7 +210,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("L1 Cache:")//一级缓存：
+                    text: qsTr("L1 Cache: ")//一级缓存：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -225,7 +225,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("L2 Cache:")//二级缓存：
+                    text: qsTr("L2 Cache: ")//二级缓存：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130

@@ -29,7 +29,7 @@ Rectangle {
     property int cursor_size: 24
     property string selected_icon_theme: ""//存放用户选择确认后的主题
 
-    property string actiontitle: qsTr("Desktop Icons")//桌面图标
+    property string actiontitle: qsTr("Desktop Icons")//桌面图标设置
     property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons")//设置桌面图标主题和桌面图标的可见性
     //背景
     Image {
@@ -40,7 +40,7 @@ Rectangle {
     Component.onCompleted: {
         var iconlist = sessiondispatcher.get_icon_themes_qt();
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        showText.text = qsTr("[ Current Icon Theme is: ") + current_icon_theme + " ]";
+        showText.text = qsTr("[ Current icon theme is: ") + current_icon_theme + " ]";//[ 当前图标主题是：
         desktopiconsetpage.selected_icon_theme = current_icon_theme;
         iconlist.unshift(current_icon_theme);
         //将系统初始的图标主题写入QSetting配置文件
@@ -198,7 +198,7 @@ Rectangle {
                         desktopiconsetpage.selected_icon_theme = iconcombo.selectedText;
                         sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
                         //[ 当前图标主题是：
-                        showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";
+                        showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
                         statusImage.visible = true;
                     }
                 }
@@ -284,7 +284,7 @@ Rectangle {
             Common.Label {
                 id: desktopiconlabel
                 width: 170
-                text: qsTr("Show Desktop Icons:")//显示桌面图标：
+                text: qsTr("Show Desktop Icons: ")//显示桌面图标：
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -308,7 +308,7 @@ Rectangle {
             Common.Label {
                 id: homefolderlabel
                 width: 170
-                text: qsTr("Home Folder:")//主文件夹：
+                text: qsTr("Home Folder: ")//主文件夹：
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -331,7 +331,7 @@ Rectangle {
             Common.Label {
                 id: networklabel
                 width: 170
-                text: qsTr("Network:")//网络:
+                text: qsTr("Network: ")//网络：
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -354,7 +354,7 @@ Rectangle {
             Common.Label {
                 id: trashlabel
                 width: 170
-                text: qsTr("Trash:")//回收站:
+                text: qsTr("Trash : ")//回收站：
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -378,7 +378,7 @@ Rectangle {
             Common.Label {
                 id: devicelabel
                 width: 170
-                text: qsTr("Mounted volumes:")//已经挂载卷标：
+                text: qsTr("Mounted Volumes: ")//已经挂载卷标：
                 font.pixelSize: 12
                 color: "#383838"
                 anchors.verticalCenter: parent.verticalCenter
@@ -480,13 +480,13 @@ Rectangle {
 
             if((defaulttheme == desktopiconsetpage.selected_icon_theme) && (defaultdesktopcontrol == desktopcontrolFlag) && (defaultdocument == documentFlag) && (defaultnetwork == networkFlag) && (defaultrecyclebin == recyclebinFlag) && (defaultdevice == deviceFlag)) {
                 //友情提示：        桌面图标已经恢复为默认配置！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Desktop icon has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Desktop icon has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//桌面图标已经为默认配置！
             }
             else {
                 if(defaulttheme != desktopiconsetpage.selected_icon_theme) {
                     sessiondispatcher.set_icon_theme_qt(defaulttheme);
                     desktopiconsetpage.selected_icon_theme = defaulttheme;
-                    showText.text = qsTr("[ Current Icon Theme is: ") + defaulttheme + " ]";
+                    showText.text = qsTr("[ Current icon theme is: ") + defaulttheme + " ]";//[ 当前图标主题是：
                     iconcombo.selectedIndex = 0;
                 }
 

@@ -130,7 +130,7 @@ Rectangle {
             Common.Label {
                 id: launcherlabel
                 width: 150
-                text: qsTr("Launcher hide mode:")//启动器自动隐藏:
+                text: qsTr("Launcher hide mode:")//启动器自动隐藏：
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -154,7 +154,7 @@ Rectangle {
             Common.Label {
                 id: iconsizelabel
                 width: 150
-                text: qsTr("Launcher icon size:")//启动器图标尺寸：
+                text: qsTr("Launcher icon size: ")//启动器图标尺寸：
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -197,7 +197,7 @@ Rectangle {
             Common.Label {
                 id: showdesktoplabel
                 width: 150
-                text: qsTr("Display desktop icon:")//显示桌面图标:
+                text: qsTr("Display desktop icon: ")//显示桌面图标：
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -273,7 +273,7 @@ Rectangle {
 
             if((defaultsize == launcherthemepage.launcher_size) && (defaultautohide == autohideFlag) && (defaultshowicon == showiconFlag)) {
                 //友情提示：        Launcher已经恢复为默认配置！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Launcher has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Launcher has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//Launcher已经恢默认配置！
             }
             else {
                 if(defaultsize != slider.value) {
