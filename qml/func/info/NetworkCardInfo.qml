@@ -65,7 +65,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: basictitle
-                text: qsTr("NIC information")//有线网卡信息
+                text: qsTr("NIC Info")//有线网卡信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -83,7 +83,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("NIC Model:")//网卡型号：
+                    text: qsTr("NIC Model:")//有线网卡型号：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -113,7 +113,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("NIC Driver:")//网卡驱动：
+                    text: qsTr("NIC Driver:")//有线网卡驱动：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -188,7 +188,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Link Status:")//连接状态：
+                    text: qsTr("Connection Status: ")//连接状态：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -203,7 +203,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Maximum Bandwidth:")//最大带宽：
+                    text: qsTr("Max Bandwidth: ")//最大带宽：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -219,7 +219,7 @@ Rectangle {
         Row {
             Common.Label {
                 id: biostitle
-                text: qsTr("WLan NIC information")//无线网卡信息
+                text: qsTr("WLan NIC Info")//无线网卡信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
@@ -238,7 +238,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("NIC Model:")//网卡型号：
+                    text: qsTr("WLan NIC Model:")//网卡型号：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -268,7 +268,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("NIC Driver:")//无线网卡驱动：
+                    text: qsTr("WLan NIC Driver:")//无线网卡驱动：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
@@ -329,7 +329,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Serial Number:")//序列号：
+                    text: qsTr("Serial Number: ")//序列号：
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
                     width: 130
