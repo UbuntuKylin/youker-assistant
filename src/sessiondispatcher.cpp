@@ -69,6 +69,15 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     //data_transmit_by_package(self, flag, name, summary, size):
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_package(QString, QString, QString, QString)), this, SLOT(handler_append_package_data_to_model(QString,QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(package_transmit_complete()), this, SLOT(handler_package_scan_over()));
+
+    //Largest file
+    QObject::connect(sessioniface, SIGNAL(data_transmit_by_large(QString, QString)), this, SLOT(handler_append_largest_file_to_model(QString,QString)));
+    QObject::connect(sessioniface, SIGNAL(large_transmit_complete()), this, SLOT(handler_largest_scan_over()));
+
+
+    //cookies
+    //data_transmit_by_cookies(self, flag, domain, num):
+    //cookies_transmit_complete
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -113,6 +122,22 @@ void SessionDispatcher::handler_package_scan_over() {
     emit tellQMLPackageOver();
 }
 
+void SessionDispatcher::handler_append_largest_file_to_model(QString sizeValue, QString path) {
+    emit appendLargestContentToModel(sizeValue, path);
+}
+
+void SessionDispatcher::handler_largest_scan_over() {
+    emit tellQMLLargestOver();
+}
+
+void SessionDispatcher::handler_append_cookies_to_model(QString flag, QString domain, QString num) {
+    emit appendCookiesContentToModel(flag, domain, num);
+}
+
+void SessionDispatcher::handler_cookies_scan_over() {
+    emit tellQMLCookiesOver();
+}
+
 void SessionDispatcher::handler_scan_complete(QString msg) {
     emit finishScanWork(msg);
 }
@@ -152,7 +177,7 @@ QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
 }
 
 QStringList SessionDispatcher::scan_of_large_qt(int size, QString abspath) {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);
+    QDBusReply<QStringList> reply = sessioniface->call("large_scan_function", size, abspath);
     return reply.value();
 }
 

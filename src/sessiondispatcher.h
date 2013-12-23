@@ -252,6 +252,14 @@ signals:
     void appendPackageContentToCacheModel(QString flag, QString pkgName, QString description, QString sizeValue);
     //package和old kernel扫描完后告诉QML
     void tellQMLPackageOver();
+    //把largest file扫描结果告诉QML
+    void appendLargestContentToModel(QString sizeValue, QString path);
+    //largest file扫描完后告诉QML
+    void tellQMLLargestOver();
+    //把cookies扫描结果告诉QML
+    void appendCookiesContentToModel(QString flag, QString domain, QString num);
+    //cookies扫描完后告诉QML
+    void tellQMLCookiesOver();
 public slots:
     //获取天气预报槽函数
     void handler_access_forecast_weather(QString key, QString value);
@@ -275,6 +283,17 @@ public slots:
     void handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue);
     //接收package和old kernel扫描完后的信号
     void handler_package_scan_over();
+
+    //接收largest file信号，把数据动态堆加到model中
+    void handler_append_largest_file_to_model(QString sizeValue, QString path);
+    //接收largest file扫描完后的信号
+    void handler_largest_scan_over();
+
+    //接收cookies信号，把数据动态堆加到model中
+    void handler_append_cookies_to_model(QString flag, QString domain, QString num);
+    //接收cookies扫描完后的信号
+    void handler_cookies_scan_over();
+
 
     //    //判断是否有firefox浏览器
 //    void handler_deb_exists_firefox(QString flag);

@@ -48,6 +48,148 @@ Item {
     property string firefox_btn_flag: "cookies_scan"//扫描或者清理的标记
     property string chromium_btn_flag: "cookies_scanc"//扫描或者清理的标记
 
+
+    //    Connections
+    //    {
+    //        target: sessiondispatcher
+    //        onAppendCookiesContentToModel: {
+    //            //QString flag, QString domain, QString num
+    //            if(flag == "firefox") {
+    //                aptsubModel.append({"itemTitle": domain, "desc": num, "number": ""});
+    //                root.firefoxNum += 1;
+    //                systemdispatcher.set_cookies_args(path);
+    //            }
+    //            else if(flag == "chromium") {
+    //                softsubModel.append({"itemTitle": domain, "desc": num, "number": ""});
+    //                root.softNum += 1;
+    //                systemdispatcher.set_cache_args(path);
+    //            }
+
+    //            if(cookies_data == "None") {//没有安装Firefox
+    //                //友情提示
+    //                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Firefox browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
+    //            }
+    //            else {
+    //                if (cookies_data.length == 0) {
+    //                    root.firefoxResultFlag = false;//扫描内容不存在
+    //                }
+    //                else {
+    //                    root.firefoxNum = cookies_data.length;//001
+    //                    systemdispatcher.clear_cookies_args();
+    //                    firefoxsubModel.clear();
+    //                    var num = 0;
+    //                    for (var i=0; i< cookies_data.length; i++) {
+    //                    //sina.com.cn<2_2>10
+    //                        var splitlist = cookies_data[i].split("<2_2>");
+    //                        if (splitlist[0] == "") {
+    //                            num++;
+    //                        }
+    //                        else {
+    //                            firefoxsubModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
+    //                            systemdispatcher.set_cookies_args(splitlist[0]);
+    //                        }
+    //                    }
+    //                    root.firefoxNum -= num;//001
+    //                    console.log("firefoxNum:");
+    //                    console.log(root.firefoxNum);
+    //                    if(root.firefoxNum != 0) {
+    //                        root.firefoxResultFlag = true;//扫描的实际有效内容存在
+    //                        firefoxmainModel.clear();
+    //                        firefoxmainModel.append({
+    //                                         "itemTitle": qsTr("Clean Firefox's Cookies"),
+    //                                         "picture": "../../img/toolWidget/cookies.png",
+    //                                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
+    //                    }
+    //                    else {
+    //                        root.firefoxResultFlag = false;//扫描的实际有效内容不存在
+    //                    }
+    //                }
+    //        }
+    //        onTellQMLCookiesOver: {
+    //            aptmainModel.clear();
+    //            softmainModel.clear();
+    //            //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
+    //            aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
+    //                             "itemTitle": qsTr("Package cache cleanup"),
+    //                             "picture": "../../img/toolWidget/apt-min.png",
+    //                             "detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives")})
+    //            //软件中心缓存清理       软件中心缓存：
+    //            softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
+    //                             "itemTitle": qsTr("Software Center buffer cleaning"),
+    //                             "picture": "../../img/toolWidget/software-min.png",
+    //                             "detailstr": qsTr("Software Center Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/software-center"})
+
+    //            if(root.aptNum != 0) {
+    //                root.aptresultFlag = true;//扫描的实际有效内容存在
+    //            }
+    //            else {
+    //                if(root.mode == 0 || root.mode == 1) {
+    //                    root.aptEmpty = true;
+    //                }
+    //                root.aptresultFlag = false;//扫描的实际有效内容不存在
+    //            }
+    //            if(root.softNum != 0) {
+    //                root.softresultFlag = true;//扫描的实际有效内容存在
+    //            }
+    //            else {
+    //                if(root.mode == 0 || root.mode == 2) {
+    //                    root.softEmpty = true;
+    //                }
+    //                root.softresultFlag = false;//扫描的实际有效内容不存在
+    //            }
+
+    //            if(root.aptresultFlag == false) {
+    //                root.apt_showNum = false;
+    //                root.apt_expanded = false;//伸缩箭头不扩展
+    //                root.apt_arrow_show = 0;//伸缩箭头不显示
+    //            }
+    //            else if(root.aptresultFlag == true) {
+    //                root.apt_showNum = true;
+    //                root.apt_expanded = true;//伸缩箭头扩展
+    //                root.apt_arrow_show = 1;//伸缩箭头显示
+    //            }
+    //            if(root.softresultFlag == false) {
+    //                root.soft_showNum = false;
+    //                root.soft_expanded = false;//伸缩箭头不扩展
+    //                root.soft_arrow_show = 0;//伸缩箭头不显示
+    //            }
+    //            else if(root.softresultFlag == true) {
+    //                root.soft_showNum = true;
+    //                root.soft_expanded = true;//伸缩箭头扩展
+    //                root.soft_arrow_show = 1;//伸缩箭头显示
+    //            }
+
+    //            if(root.aptresultFlag == false && root.softresultFlag == false) {
+    //                root.state = "AptWorkEmpty";
+    //                if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+    //                    //友情提示：      扫描内容为空，不再执行清理！
+    //                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+    //                }
+    //                else {//清理apt后的重新获取数据，此时不需要显示对话框
+    //                    root.flag = false;
+    //                }
+    //            }
+    //            else {
+    //                if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+    //                    toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+    //                }
+    //                else {//清理software后的重新获取数据，此时不需要显示对话框
+    //                    root.flag = false;
+    //                }
+    //                root.state = "AptWork";
+    //                actionBtn.text = qsTr("Begin cleanup");//开始清理
+    //                root.btnFlag = "cache_work";
+    //                backBtn.visible = true;
+    ////                rescanBtn.visible = true;
+    //            }
+    //            scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
+    //            //扫描完成后恢复按钮的使能
+    //            actionBtn.enabled = true;
+    //        }
+    //    }
+
+
+
     Component.onCompleted: {
         firefoxmainModel.append({
                          "itemTitle": qsTr("Clean Firefox's Cookies"),
@@ -61,7 +203,7 @@ Item {
 
     //获取firefox的cookies
     function getDataOfFirefox() {
-        var cookies_data = sessiondispatcher.cookies_scan_function_qt("f");
+        var cookies_data = sessiondispatcher.cookies_scan_function_qt("firefox");
         if(cookies_data == "None") {//没有安装Firefox
             //友情提示
             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Firefox browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -149,7 +291,7 @@ Item {
 
     //获取chromium的cookies
     function getDataOfChromium() {
-        var cookies_data = sessiondispatcher.cookies_scan_function_qt("c");
+        var cookies_data = sessiondispatcher.cookies_scan_function_qt("chromium");
         if(cookies_data == "None") {//没有安装Chromium
             //友情提示
             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Chromium browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
