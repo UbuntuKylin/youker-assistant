@@ -213,36 +213,35 @@ Item {
             text: qsTr("Begin Cleanup")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-                console.log(systemdispatcher.get_largestfile_args());
-//                if(root.check_flag) {
-//                    if(size_text.text == "" || size_text.text == 0)
-//                        //友情提示：        对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！
-//                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you have not set the scan file size or value is 0, please reset the number in the green box!"), mainwindow.pos.x, mainwindow.pos.y);
-//                    else if (root.directory == "")
-//                    {
-//                        if(root.sub_num != 0 && root.null_flag == false) {
-//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-//                        }
-//                        else {
-//                            //友情提示：        对不起，您没有选择扫描路径，请点击“浏览”按钮选择！
-//                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you don't choose the scanning path, please click the 'Browse' button to continue!"), mainwindow.pos.x, mainwindow.pos.y);
-//                            root.deleget_arrow =0;
-//                        }
-//                    }
-//                    else {
-//                        if(root.null_flag == true) {
-//                           root.state = "LargestFileWorkEmpty";
-//                            //友情提示： 扫描内容为空，不再执行清理！
-//                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
-//                        }
-//                        else if(root.null_flag == false) {
-//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-//                        }
-//                    }
-//                }
-//                else {
-//                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y)
-//                }
+                if(root.check_flag) {
+                    if(size_text.text == "" || size_text.text == 0)
+                        //友情提示：        对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you have not set the scan file size or value is 0, please reset the number in the green box!"), mainwindow.pos.x, mainwindow.pos.y);
+                    else if (root.directory == "")
+                    {
+                        if(root.sub_num != 0 && root.null_flag == false) {
+                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+                        }
+                        else {
+                            //友情提示：        对不起，您没有选择扫描路径，请点击“浏览”按钮选择！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you don't choose the scanning path, please click the 'Browse' button to continue!"), mainwindow.pos.x, mainwindow.pos.y);
+                            root.deleget_arrow =0;
+                        }
+                    }
+                    else {
+                        if(root.null_flag == true) {
+                           root.state = "LargestFileWorkEmpty";
+                            //友情提示： 扫描内容为空，不再执行清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
+                        else if(root.null_flag == false) {
+                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+                        }
+                    }
+                }
+                else {
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y)
+                }
             }
         }
     }
