@@ -40,50 +40,120 @@ Rectangle {
     width: parent.width; height: 475
     color: "transparent"
     property int rowNumber: 0//对有效行计数
+    property int itemNumber: 0//对项目的计数s
+    property string hbridge: qsTr("Host bridge:")//主桥
+    property string vga: qsTr("VGA Model:")//VGA兼容控制器
+    property string usb: qsTr("USB Model:")//USB控制器
+    property string communication: qsTr("Communication Model:")//通信控制器
+    property string ethernet: qsTr("Ethernet Model:")//以太网控制器
+    property string audio: qsTr("Audio Model:")//音频设备
+    property string pci: qsTr("PCI bridge:")//PCI桥
+    property string isa: qsTr("ISA bridge:")//ISA桥
+    property string sata: qsTr("SATA Model:")//SATA控制器
+    property string smbus: qsTr("SMBus:")//系统管理总线
+    property string peripheral: qsTr("System peripheral:")//系统外围
+    property string usedriver: qsTr("driver in use:")//使用的驱动
+    property string existdriver: qsTr("existing drivers:")//可选的驱动
+
+    function transTitle(str) {
+        //去掉前后空格
+        str = str.replace(/^(\s|\u00A0)+/,'');
+        for(var i=str.length-1; i>=0; i--){
+            if(/\S/.test(str.charAt(i))){
+                str = str.substring(0, i+1);
+                break;
+            }
+        }
+        //开始国际化
+        var pat1 = new RegExp('Host bridge');
+        var pat2 = new RegExp('VGA compatible controller');
+        var pat3 = new RegExp('USB controller');
+        var pat4 = new RegExp('Communication controller');
+        var pat5 = new RegExp('Ethernet controller');
+        var pat6 = new RegExp('Audio device');
+        var pat7 = new RegExp('PCI bridge');
+        var pat8 = new RegExp('ISA bridge');
+        var pat9 = new RegExp('SATA controller');
+        var pat10 = new RegExp('SMBus');
+        var pat11 = new RegExp('System peripheral');
+        var pat12 = new RegExp('driver in use');
+        var pat13 = new RegExp('existing drivers');
+        if(pat1.test(str)) {
+            return home.hbridge.toString();
+        }
+        else if(pat2.test(str)) {
+            return home.vga.toString();
+        }
+        else if(pat3.test(str)) {
+            return home.usb.toString();
+        }
+        else if(pat4.test(str)) {
+            return home.communication.toString();
+        }
+        else if(pat5.test(str)) {
+            return home.ethernet.toString();
+        }
+        else if(pat6.test(str)) {
+            return home.audio.toString();
+        }
+        else if(pat7.test(str)) {
+            return home.pci.toString();
+        }
+        else if(pat8.test(str)) {
+            return home.isa.toString();
+        }
+        else if(pat9.test(str)) {
+            return home.sata.toString();
+        }
+        else if(pat10.test(str)) {
+            return home.smbus.toString();
+        }
+        else if(pat11.test(str)) {
+            return home.peripheral.toString();
+        }
+        else if(pat12.test(str)) {
+            return home.usedriver.toString();
+        }
+        else if(pat13.test(str)) {
+            return home.existdriver.toString();
+        }
+        return str;
+    }
 
     function appendDataList() {
         dataModel.clear();//清空dataModel
         home.rowNumber = 0;
+        home.itemNumber += 0;
 
         var list = devicemanager.getDeviceMsg();
         for (var i=0 ; i < list.length ; i++) {
-            //        var pat = new RegExp('Intel');
-            //        if(pat.test(msg)) {
-            //            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-            //        }
             var splitlist = list[i].split(";");
             if(splitlist.length == 1) {
-//                console.log('----------111-----------');
                 var name = splitlist[0].split(":");
-//                console.log(name[0]);
-//                console.log(name[1]);
-                dataModel.append({"deviceName": name[0],  "deviceNameText": name[1], "inUseName": "", "inUseNameText": "", "existName": "", "existNameText": ""});
+                dataModel.append({"deviceName": home.transTitle(name[0]),  "deviceNameText": name[1], "inUseName": "", "inUseNameText": "", "existName": "", "existNameText": ""});
                 home.rowNumber += 1;
+                home.itemNumber += 1;
+                //设备名字太长，让其使用两行
+//                home.rowNumber += 2;
             }
             else if(splitlist.length == 2) {
-//                console.log('----------222-----------');
                 var name1 = splitlist[0].split(":");
-//                console.log(name1[0]);
-//                console.log(name1[1]);
                 var name2 = splitlist[1].split(":");
-//                console.log(name2[0]);
-//                console.log(name2[1]);
-                dataModel.append({"deviceName": name1[0],  "deviceNameText": name1[1], "inUseName": name2[0], "inUseNameText": name2[1], "existName": "", "existNameText": ""});
+                dataModel.append({"deviceName": home.transTitle(name1[0]),  "deviceNameText": name1[1], "inUseName": home.transTitle(name2[0]), "inUseNameText": name2[1], "existName": "", "existNameText": ""});
                 home.rowNumber += 2;
+                home.itemNumber += 1;
+                //设备名字太长，让其使用两行
+//                home.rowNumber += 3;
             }
             else if(splitlist.length == 3) {
-//                console.log('----------333-----------');
                 var name3 = splitlist[0].split(":");
-//                console.log(name3[0]);
-//                console.log(name3[1]);
                 var name4 = splitlist[1].split(":");
-//                console.log(name4[0]);
-//                console.log(name4[1]);
                 var name5 = splitlist[2].split(":");
-//                console.log(name5[0]);
-//                console.log(name5[1]);
-                dataModel.append({"deviceName": name3[0],  "deviceNameText": name3[1], "inUseName": name4[0], "inUseNameText": name4[1], "existName": name5[0], "existNameText": name5[1]});
+                dataModel.append({"deviceName": home.transTitle(name3[0]),  "deviceNameText": name3[1], "inUseName": home.transTitle(name4[0]), "inUseNameText": name4[1], "existName": home.transTitle(name5[0]), "existNameText": name5[1]});
                 home.rowNumber += 3;
+                home.itemNumber += 1;
+                //设备名字太长，让其使用两行
+//                home.rowNumber += 4;
             }
         }
     }
@@ -98,58 +168,66 @@ Rectangle {
     Component {
         id: deviceDelegate
         Column {
-            spacing: 5
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: deviceName
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 120
-                    height: 20
+//            spacing: 1
+            Column {
+                spacing: 20
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: deviceName
+                        font.pixelSize: 14
+                        color: "#7a7a7a"
+                        width: 140
+                        height: 20
+                    }
+                    Text {
+                        text: deviceNameText
+                        width: 500
+                        font.pixelSize: 14
+                        wrapMode: Text.WordWrap
+                        color: "#7a7a7a"
+                        height: 20
+                    }
                 }
-                Text {
-                    text: deviceNameText
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    height: 20
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: inUseName
+                        visible: (inUseName == "") ? false : true
+                        font.pixelSize: 14
+                        color: "#7a7a7a"
+                        width: 140
+                        height: 20
+                    }
+                    Text {
+                        text: inUseNameText
+                        visible: (inUseNameText == "") ? false : true
+                        font.pixelSize: 14
+                        color: "#7a7a7a"
+                        height: 20
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: existName
+                        visible: (existName == "") ? false : true
+                        font.pixelSize: 14
+                        color: "#7a7a7a"
+                        width: 140
+                        height: 20
+                    }
+                    Text {
+                        text: existNameText
+                        visible: (existNameText == "") ? false : true
+                        font.pixelSize: 14
+                        color: "#7a7a7a"
+                        height: 20
+                    }
                 }
             }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: inUseName
-                    visible: (inUseName == "") ? false : true
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 120
-                    height: 20
-                }
-                Text {
-                    text: inUseNameText
-                    visible: (inUseNameText == "") ? false : true
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    height: 20
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: existName
-                    visible: (existName == "") ? false : true
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 120
-                    height: 20
-                }
-                Text {
-                    text: existNameText
-                    visible: (existNameText == "") ? false : true
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    height: 20
-                }
+            Common.Separator {
+                width: parent.width - 20
             }
         }
     }
@@ -159,7 +237,7 @@ Rectangle {
             top: parent.top
             topMargin: 40
             left: parent.left
-            leftMargin: 30
+            leftMargin: 20
         }
         Common.Label {
             id: titlebar
@@ -176,15 +254,15 @@ Rectangle {
     Common.ScrollArea {
         frame:false
         anchors.left: parent.left
-        anchors.leftMargin: 20
+        anchors.leftMargin: 30
         anchors.top: titleRow.bottom
         anchors.topMargin: 20
         height: 398
-        width: 680 - 4
+        width: 680 - 14
         Item {
             id: listItem
             width: parent.width
-            height: home.rowNumber*20 + (home.rowNumber - 1)*10
+            height: home.rowNumber*20 + (home.rowNumber - 1)*20 + (home.itemNumber - 1) * 10
             ListView {
                 id: deviceView
                 anchors.fill: parent
