@@ -115,11 +115,17 @@ public:
     Q_INVOKABLE void clear_software_args();
     Q_INVOKABLE QStringList get_software_args();
 
-    QStringList cookies_args;
-    Q_INVOKABLE void set_cookies_args(QString str);
-    Q_INVOKABLE void del_cookies_args(QString str);
-    Q_INVOKABLE void clear_cookies_args();
-    Q_INVOKABLE QStringList get_cookies_args();
+//    QStringList cookies_args;
+//    Q_INVOKABLE void set_cookies_args(QString str);
+//    Q_INVOKABLE void del_cookies_args(QString str);
+//    Q_INVOKABLE void clear_cookies_args();
+//    Q_INVOKABLE QStringList get_cookies_args();
+
+//    QStringList chromium_cookies_args;
+//    Q_INVOKABLE void set_chromium_cookies_args(QString str);
+//    Q_INVOKABLE void del_chromium_cookies_args(QString str);
+//    Q_INVOKABLE void clear_chromium_cookies_args();
+//    Q_INVOKABLE QStringList get_chromium_cookies_args();
 
     QStringList package_args;
     Q_INVOKABLE void set_package_args(QString str);

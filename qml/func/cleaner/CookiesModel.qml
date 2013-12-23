@@ -214,7 +214,7 @@ Item {
             }
             else {
                 root.firefoxNum = cookies_data.length;//001
-                systemdispatcher.clear_cookies_args();
+//                systemdispatcher.clear_cookies_args();
                 firefoxsubModel.clear();
                 var num = 0;
                 for (var i=0; i< cookies_data.length; i++) {
@@ -225,7 +225,7 @@ Item {
                     }
                     else {
                         firefoxsubModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
-                        systemdispatcher.set_cookies_args(splitlist[0]);
+//                        systemdispatcher.set_cookies_args(splitlist[0]);
                     }
                 }
                 root.firefoxNum -= num;//001
@@ -298,7 +298,7 @@ Item {
         }
         else {
             root.chromiumNum = cookies_data.length;//001
-            systemdispatcher.clear_cookies_args();
+//            systemdispatcher.clear_chromium_cookies_args();
             chromiumsubModel.clear();
             var num = 0;
             for (var i=0; i< cookies_data.length; i++) {
@@ -309,7 +309,7 @@ Item {
                 }
                 else {
                     chromiumsubModel.append({"itemTitle": splitlist[0], "desc": "","number": splitlist[1]});
-                    systemdispatcher.set_cookies_args(splitlist[0]);
+//                    systemdispatcher.set_chromium_cookies_args(splitlist[0]);
                 }
             }
             root.chromiumNum -= num;//001
@@ -407,7 +407,7 @@ Item {
             }
             else if (msg == "firefox") {
                 if (root.firefox_btn_flag == "cookies_work") {
-                    systemdispatcher.clear_cookies_args();
+//                    systemdispatcher.clear_cookies_args();
                     firefoxsubModel.clear();//内容清空
                     firefoxmainModel.clear();
                     firefoxmainModel.append({
@@ -432,7 +432,7 @@ Item {
             }
             else if (msg == "chromium") {
                 if (root.chromium_btn_flag == "cookies_workc") {
-                    systemdispatcher.clear_cookies_args();
+//                    systemdispatcher.clear_chromium_cookies_args();
                     chromiumsubModel.clear();//内容清空
                     chromiummainModel.clear();
                     chromiummainModel.append({

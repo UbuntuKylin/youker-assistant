@@ -548,29 +548,53 @@ QStringList SystemDispatcher::get_software_args() {
     return software_args;
 }
 
-void SystemDispatcher::set_cookies_args(QString str) {
-    cookies_args.append(str);
-}
+//void SystemDispatcher::set_cookies_args(QString str) {
+//    cookies_args.append(str);
+//}
 
-void SystemDispatcher::del_cookies_args(QString str) {
-    QStringList bake;
-    int len = cookies_args.length();
-    for (int i=0; i< len; i++) {
-        if (cookies_args[i] != str) {
-            bake.append(cookies_args[i]);
-        }
-    }
-    cookies_args.clear();
-    cookies_args = bake;
-}
+//void SystemDispatcher::del_cookies_args(QString str) {
+//    QStringList bake;
+//    int len = cookies_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (cookies_args[i] != str) {
+//            bake.append(cookies_args[i]);
+//        }
+//    }
+//    cookies_args.clear();
+//    cookies_args = bake;
+//}
 
-void SystemDispatcher::clear_cookies_args() {
-    cookies_args.clear();
-}
+//void SystemDispatcher::clear_cookies_args() {
+//    cookies_args.clear();
+//}
 
-QStringList SystemDispatcher::get_cookies_args() {
-    return cookies_args;
-}
+//QStringList SystemDispatcher::get_cookies_args() {
+//    return cookies_args;
+//}
+
+//void SystemDispatcher::set_chromium_cookies_args(QString str) {
+//    chromium_cookies_args.append(str);
+//}
+
+//void SystemDispatcher::del_chromium_cookies_args(QString str) {
+//    QStringList bake;
+//    int len = chromium_cookies_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (chromium_cookies_args[i] != str) {
+//            bake.append(chromium_cookies_args[i]);
+//        }
+//    }
+//    chromium_cookies_args.clear();
+//    chromium_cookies_args = bake;
+//}
+
+//void SystemDispatcher::clear_chromium_cookies_args() {
+//    chromium_cookies_args.clear();
+//}
+
+//QStringList SystemDispatcher::get_chromium_cookies_args() {
+//    return chromium_cookies_args;
+//}
 
 void SystemDispatcher::set_package_args(QString str) {
     package_args.append(str);

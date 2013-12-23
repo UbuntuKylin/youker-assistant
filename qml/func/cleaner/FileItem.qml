@@ -275,9 +275,9 @@ Item {
                 else if (btn_flag == "software_work") {
                     systemdispatcher.del_software_args(container.text);
                 }
-               else if (btn_flag == "cookies_work") {
-                    systemdispatcher.del_cookies_args(container.text);
-                }
+//               else if (btn_flag == "cookies_work") {
+//                    systemdispatcher.del_cookies_args(container.text);
+//                }
                 else if (btn_flag == "package_work") {
                     systemdispatcher.del_package_args(container.text);
                 }

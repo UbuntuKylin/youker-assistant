@@ -131,19 +131,19 @@ Item {
                     }
                 }
 
-                else if (btn_flag == "largestfile_work") {
-                    var filelist = systemdispatcher.get_largestfile_args();
-                    var word_flag4 = "false";
-                    for (var t=0; t<filelist.length; t++) {
-                        if (filelist[t] == container.descript) {
-                            word_flag4 = "true";
-                            break;
-                        }
-                    }
-                    if (word_flag4 == "false") {
-                        systemdispatcher.set_largestfile_args(container.descript);
-                    }
-                }
+//                else if (btn_flag == "largestfile_work") {
+//                    var filelist = systemdispatcher.get_largestfile_args();
+//                    var word_flag4 = "false";
+//                    for (var t=0; t<filelist.length; t++) {
+//                        if (filelist[t] == container.descript) {
+//                            word_flag4 = "true";
+//                            break;
+//                        }
+//                    }
+//                    if (word_flag4 == "false") {
+//                        systemdispatcher.set_largestfile_args(container.descript);
+//                    }
+//                }
 
 //                else if (btn_flag == "kernel_work") {
 //                    var kernellist = systemdispatcher.get_kernel_args();
