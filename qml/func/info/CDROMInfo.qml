@@ -171,7 +171,7 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("Audio Card Information")//声卡信息
+            text: qsTr("Audio Card Info")//声卡信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"
@@ -335,7 +335,7 @@ Rectangle {
 //        Row {
 //            Common.Label {
 //                id: bartitle
-//                text: qsTr("CD-ROM Information")//光驱信息
+//                text: qsTr("CD-ROM Info")//光驱信息
 //                font.bold: true
 //                font.pixelSize: 14
 //                color: "#383838"
