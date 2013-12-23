@@ -366,6 +366,11 @@ Item {
                             root.softNum = 0;
                             sessiondispatcher.cache_scan_function_qt("software-center");
                         }
+                        else{
+                            actionBtn.enabled = true;
+                            //友情提示：        对不起，您没有选择需要扫描的项，请确认！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                        }
                     }
                 }
                 else if (root.btnFlag == "cache_work") {//清理
