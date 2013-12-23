@@ -74,8 +74,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 //    QObject::connect(sessioniface, SIGNAL(large_transmit_complete()), this, SLOT(handler_largest_scan_over()));
 
     //cookies
-//    QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
-//    QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete()), this, SLOT(handler_cookies_scan_over()));
+    QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
+    QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -132,8 +132,8 @@ void SessionDispatcher::handler_append_cookies_to_model(QString flag, QString do
     emit appendCookiesContentToModel(flag, domain, num);
 }
 
-void SessionDispatcher::handler_cookies_scan_over() {
-    emit tellQMLCookiesOver();
+void SessionDispatcher::handler_cookies_scan_over(QString cookiesFlag) {
+    emit tellQMLCookiesOver(cookiesFlag);
 }
 
 void SessionDispatcher::handler_scan_complete(QString msg) {
@@ -184,9 +184,11 @@ QStringList SessionDispatcher::scan_cookies_records_qt() {
     return reply.value();
 }
 
-QStringList SessionDispatcher::cookies_scan_function_qt(QString flag) {
-    QDBusReply<QStringList> reply = sessioniface->call("cookies_scan_function", flag);
-    return reply.value();
+void SessionDispatcher::cookies_scan_function_qt(QString flag) {
+//    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_function", flag);//cookies_scan_function
+//    return reply.value();
+    qDebug() << "11111111111";
+    sessioniface->call("scan_cookies_function", flag);
 }
 
 QStringList SessionDispatcher::scan_unneed_packages_qt() {

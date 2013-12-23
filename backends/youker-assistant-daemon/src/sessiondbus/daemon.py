@@ -124,7 +124,7 @@ class SessionDaemon(dbus.service.Object):
         self.scan_complete_msg('large')
         return tmp_list
 
-    @dbus.service.method(INTERFACE, in_signature='is', out_signature='as')
+    @dbus.service.method(INTERFACE, in_signature='is', out_signature='')
     def large_scan_function(self, size, path):
         largefunc_obj = cleaner.ManageTheLarge()
         largefunc_obj.get_large_files(size, path, self)
@@ -137,9 +137,9 @@ class SessionDaemon(dbus.service.Object):
         crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
         return crufts_list
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def scan_cookies_function(self, flag):
-        crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
+        crufts_list = cookiesfunc_obj.get_cookie_crufts(flag)
         cookiesfunc_obj.get_cookie_crufts(flag, self)
 
     # the function of scan the unneedpackages

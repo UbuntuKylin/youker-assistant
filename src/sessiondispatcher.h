@@ -51,7 +51,7 @@ public:
     Q_INVOKABLE QStringList scan_cookies_records_qt();
 
     //扫描firefox和chromium的cookies
-    Q_INVOKABLE QStringList cookies_scan_function_qt(QString flag);
+    Q_INVOKABLE void cookies_scan_function_qt(QString flag);
 
     //扫描不需要的deb包
     Q_INVOKABLE QStringList scan_unneed_packages_qt();
@@ -259,7 +259,7 @@ signals:
     //把cookies扫描结果告诉QML
     void appendCookiesContentToModel(QString flag, QString domain, QString num);
     //cookies扫描完后告诉QML
-    void tellQMLCookiesOver();
+    void tellQMLCookiesOver(QString cookiesFlag);
 public slots:
     //获取天气预报槽函数
     void handler_access_forecast_weather(QString key, QString value);
@@ -292,7 +292,7 @@ public slots:
     //接收cookies信号，把数据动态堆加到model中
     void handler_append_cookies_to_model(QString flag, QString domain, QString num);
     //接收cookies扫描完后的信号
-    void handler_cookies_scan_over();
+    void handler_cookies_scan_over(QString cookiesFlag);
 
 
     //    //判断是否有firefox浏览器
