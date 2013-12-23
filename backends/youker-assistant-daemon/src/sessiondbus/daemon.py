@@ -130,20 +130,17 @@ class SessionDaemon(dbus.service.Object):
         largefunc_obj.get_large_files(size, path, self)
 
     # the function of clean the cookies records
-    ### input-''   output-['domain<2_2>number', 'dom...]
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_cookies_records(self):
-        daemoncookies = cleaner.CleanTheCookies(self)
-        tmp_list = daemoncookies.get_scan_result()
-        self.scan_complete_msg('cookies')
-        return tmp_list
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
     def cookies_scan_function(self, flag):
         cookiesfunc_obj = cleaner.CleanTheCookies(self)
-        #crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
+        crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
+        return crufts_list
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    def scan_cookies_function(self, flag):
+        crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
         cookiesfunc_obj.get_cookie_crufts(flag, self)
-        #return crufts_list
 
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]

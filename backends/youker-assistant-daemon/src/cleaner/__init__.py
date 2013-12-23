@@ -366,6 +366,7 @@ class CleanTheCookies():
                 temp_firefox_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
                 for one in temp_firefox_list:
                     sesdaemon.data_transmit_by_cookies("firefox", one[0], str(one[-1]))
+                sesdaemon.cookies_transmit_complete('firefox')
             else:
                 sesdaemon.cookies_transmit_complete('funinstall')
 
@@ -377,6 +378,7 @@ class CleanTheCookies():
                 crufts_list = ["%s<2_2>%s" % (eachone[0], str(eachone[-1])) for eachone in temp_list]
                 for one in temp_chromium_list:
                     sesdaemon.data_transmit_by_cookies("chromium", one[0], str(one[-1]))
+                sesdaemon.cookies_transmit_complete('chromium')
             else:
                 sesdaemon.cookies_transmit_complete('cuninstall')
 
