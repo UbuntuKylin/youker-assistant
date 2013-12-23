@@ -20,8 +20,8 @@ Item {
     id:root
     width: parent.width
     height: 435//420//340
-    property string btn_text: qsTr("Start Scanning")//开始扫描
-    property string title: qsTr("Cleanup History, to protect your privacy")//清理历史记录,保护个人隐私
+    property string btn_text: qsTr("Start scanning")//开始扫描
+    property string title: qsTr("Cleanup History, to protect your privacy")//清理历史记录，保护个人隐私
     property string description: qsTr("Cleaning the internet and opened documents recently records")//清理浏览器上网记录和系统最近打开文件记录
     property string btn_flag: "history_scan"
     property string btn_flag3: "chromium_scan"
@@ -49,14 +49,14 @@ Item {
             else if (root.browserstatus_num == 0) {
                 root.null_flag = true;
                 internetBtnRow.state = "BrowserWorkEmpty";
-                //友情提示：      扫描内容为空，不再执行清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示：      扫描内容为空，无需清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 root.null_flag = false;
                 internetBtnRow.state = "BrowserWork";
                 toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-                internetcacheBtn.text = qsTr("Start cleaning");//开始清理
+                internetcacheBtn.text = qsTr("Begin cleanup");//开始清理
                 root.btn_flag = "history_work";
                 browserstatus_label.visible = true;
                 internetbackBtn.visible = true;
@@ -69,20 +69,20 @@ Item {
                 toolkits.alertMSG(qsTr("Chromium is not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Chromium！
             }
             else if(root.chromium_num == -99) {
-                //友情提示：      Chromium正在运行。当浏览器运行的时候，不能执行扫描或者清理操作。
+                //友情提示：      Chromium 正在运行。当浏览器运行的时候，不能执行扫描或者清理操作。
                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Chromium is running. When the browser is running, could not perform scan or cleanup operations."), mainwindow.pos.x, mainwindow.pos.y);//Chromium正在运行中。当它正在运行的时候，不能执行扫描或者清理操作。
             }
             else if (root.chromium_num == 0) {
                 root.null_flag3 = true;
                 chromiumBtnRow.state = "ChromiumWorkEmpty";
-                //友情提示：      扫描内容为空，不再执行清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示：      扫描内容为空，无需清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 root.null_flag3 = false;
                 chromiumBtnRow.state = "ChromiumWork";
                 toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-                chromiumcacheBtn.text = qsTr("Start cleaning");//开始清理
+                chromiumcacheBtn.text = qsTr("Begin cleanup");//开始清理
                 root.btn_flag3 = "chromium_work";
                 chromiumstatus_label.visible = true;
                 chromiumbackBtn.visible = true;
@@ -94,14 +94,14 @@ Item {
             if (root.systemstatus_num == 0) {
                 root.null_flag2 = true;
                 fileBtnRow.state = "SystemWorkEmpty";
-                //友情提示      扫描内容为空，不再执行清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示      扫描内容为空，无需清理！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 root.null_flag2 = false;
                 fileBtnRow.state ="SystemWork";
                 toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-                syscacheBtn.text = qsTr("Start cleaning");//开始清理
+                syscacheBtn.text = qsTr("Begin cleanup");//开始清理
                 root.btn_flag2 = "system_work";
                 systemstatus_label.visible = true;
                 filebackBtn.visible = true;
@@ -135,7 +135,7 @@ Item {
          }
         onFinishCleanWork: {//清理成功时收到的信号
             if (msg == "") {
-                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
             }
             else if (msg == "firefox") {
                 if (root.btn_flag == "history_work") {
@@ -229,7 +229,7 @@ Item {
                 Row{
                     spacing: 15
                     Text {
-                        text: qsTr("Clean up the Firefox Internet records")//"清理firefox上网记录
+                        text: qsTr("Clean up the Firefox Internet records")//清理 firefox 上网记录
                         wrapMode: Text.WordWrap
                         font.bold: true
                         font.pixelSize: 14
@@ -244,7 +244,7 @@ Item {
                 }
                 Text {
                     width: 450
-                    text: qsTr("Clean up the Firefox history records")//清理Firefox浏览器上的历史记录
+                    text: qsTr("Clean up the Firefox history records")//清理 Firefox 浏览器上的历史记录
                     wrapMode: Text.WordWrap
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -360,7 +360,7 @@ Item {
                     width: 40
                     height: 20
                     onClicked: {
-                        internetcacheBtn.text = qsTr("Start Scanning");//开始扫描
+                        internetcacheBtn.text = qsTr("Start scanning");//开始扫描
                         root.btn_flag = "history_scan";
                         internetbackBtn.visible = false;
                         internetrescanBtn.visible = false;
@@ -382,8 +382,8 @@ Item {
                     else if (root.btn_flag == "history_work") {
                         if(root.null_flag == true) {
                             internetBtnRow.state = "BrowserWorkEmpty";
-                            //友情提示      扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：      扫描内容为空，无需清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();
@@ -398,13 +398,13 @@ Item {
                     name: "BrowserWork"
                     PropertyChanges { target: internetcacheBtn; text:qsTr("Begin cleanup")}//开始清理
                     PropertyChanges { target: root; btn_flag: "history_work" }
-                    PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan to")+ root.browserstatus_num + qsTr("records)")}//（扫描到     条记录）
+                    PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Scan to ")+ root.browserstatus_num + qsTr(" records)")}//（扫描到     条记录）
                     PropertyChanges { target: internetbackBtn; visible: true}
                     PropertyChanges { target: internetrescanBtn; visible: true}
                 },
                 State {
                     name: "BrowserWorkAGAIN"
-                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag: "history_scan" }
                     PropertyChanges { target: browserstatus_label; visible: false}
                     PropertyChanges { target: internetbackBtn; visible: false}
@@ -412,7 +412,7 @@ Item {
                 },
                 State {
                     name: "BrowserWorkError"
-                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag: "history_scan" }
                     PropertyChanges { target: browserstatus_label; visible: false}
                     PropertyChanges { target: internetbackBtn; visible: false}
@@ -420,16 +420,16 @@ Item {
                 },
                 State {
                     name: "BrowserWorkFinish"
-                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start Scanning")}//开始扫描
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning")}//开始扫描
                     PropertyChanges { target: root; btn_flag: "history_scan" }
-                    PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Have been cleared")+ root.browserstatus_num + qsTr("records)") }//（已清理     条记录）
+                    PropertyChanges { target: browserstatus_label; visible: true; text: qsTr("(Have been cleared ")+ root.browserstatus_num + qsTr(" records)") }//（已清理     条记录）
                     PropertyChanges { target: internetbackBtn; visible: false}
                     PropertyChanges { target: internetrescanBtn; visible: false}
 
                 },
                 State {
                     name: "BrowserWorkEmpty"
-                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: internetcacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag: "history_scan" }
                     PropertyChanges { target: browserstatus_label; visible: false}
                     PropertyChanges { target: internetbackBtn; visible: false}
@@ -463,7 +463,7 @@ Item {
                     width: 40
                     height: 20
                     onClicked: {
-                        chromiumcacheBtn.text = qsTr("Start Scanning");//开始扫描
+                        chromiumcacheBtn.text = qsTr("Start scanning");//开始扫描
                         root.btn_flag3 = "chromium_scan";
                         chromiumbackBtn.visible = false;
                         chromiumrescanBtn.visible = false;
@@ -485,8 +485,8 @@ Item {
                     else if (root.btn_flag3 == "chromium_work") {
                         if(root.null_flag3 == true) {
                             internetBtnRow.state = "ChromiumWorkEmpty";
-                            //友情提示      扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：      扫描内容为空，无需清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();
@@ -501,13 +501,13 @@ Item {
                     name: "ChromiumWork"
                     PropertyChanges { target: chromiumcacheBtn; text:qsTr("Begin cleanup")}//开始清理
                     PropertyChanges { target: root; btn_flag3: "chromium_work" }
-                    PropertyChanges { target: chromiumstatus_label; visible: true; text: qsTr("(Scan to")+ root.chromium_num + qsTr("records)")}//（扫描到     条记录）
+                    PropertyChanges { target: chromiumstatus_label; visible: true; text: qsTr("(Scan to ")+ root.chromium_num + qsTr(" records)")}//（扫描到     条记录）
                     PropertyChanges { target: chromiumbackBtn; visible: true}
                     PropertyChanges { target: chromiumrescanBtn; visible: true}
                 },
                 State {
                     name: "ChromiumWorkAGAIN"
-                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag3: "chromium_scan" }
                     PropertyChanges { target: chromiumstatus_label; visible: false}
                     PropertyChanges { target: chromiumbackBtn; visible: false}
@@ -515,7 +515,7 @@ Item {
                 },
                 State {
                     name: "ChromiumWorkError"
-                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag3: "chromium_scan" }
                     PropertyChanges { target: chromiumstatus_label; visible: false}
                     PropertyChanges { target: chromiumbackBtn; visible: false}
@@ -523,16 +523,16 @@ Item {
                 },
                 State {
                     name: "ChromiumWorkFinish"
-                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start Scanning")}//开始扫描
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning")}//开始扫描
                     PropertyChanges { target: root; btn_flag3: "chromium_scan" }
-                    PropertyChanges { target: chromiumstatus_label; visible: true; text: qsTr("(Have been cleared")+ root.chromium_num + qsTr("records)") }//（已清理     条记录）
+                    PropertyChanges { target: chromiumstatus_label; visible: true; text: qsTr("(Have been cleared ")+ root.chromium_num + qsTr(" records)") }//（已清理     条记录）
                     PropertyChanges { target: chromiumbackBtn; visible: false}
                     PropertyChanges { target: chromiumrescanBtn; visible: false}
 
                 },
                 State {
                     name: "ChromiumWorkEmpty"
-                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: chromiumcacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag3: "chromium_scan" }
                     PropertyChanges { target: chromiumstatus_label; visible: false}
                     PropertyChanges { target: chromiumbackBtn; visible: false}
@@ -566,7 +566,7 @@ Item {
                     width: 40
                     height: 20
                     onClicked: {
-                        syscacheBtn.text = qsTr("Start Scanning");//开始扫描
+                        syscacheBtn.text = qsTr("Start scanning");//开始扫描
                         root.btn_flag2 = "system_scan";
                         filebackBtn.visible = false;
                         filerescanBtn.visible = false;
@@ -588,8 +588,8 @@ Item {
                     else if (root.btn_flag2 == "system_work") {
                         if(root.null_flag2 == true) {
                             root.state = "SystemWorkEmpty";
-                            //友情提示      扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：      扫描内容为空，无需清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();
@@ -604,13 +604,13 @@ Item {
                     name: "SystemWork"
                     PropertyChanges { target: syscacheBtn; text:qsTr("Begin cleanup")}//开始清理
                     PropertyChanges { target: root; btn_flag2: "system_work" }
-                    PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Scan to")+ root.systemstatus_num + qsTr("records)")}//扫描到     条记录
+                    PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Scan to ")+ root.systemstatus_num + qsTr(" records)")}//（扫描到     条记录）
                     PropertyChanges { target: filebackBtn; visible: true}
                     PropertyChanges { target: filerescanBtn; visible: true}
                 },
                 State {
                     name: "SystemWorkAGAIN"
-                    PropertyChanges { target: syscacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag2: "system_scan" }
                     PropertyChanges { target: systemstatus_label; visible: false}
                     PropertyChanges { target: filebackBtn; visible: false}
@@ -618,7 +618,7 @@ Item {
                 },
                 State {
                     name: "SystemWorkError"
-                    PropertyChanges { target: syscacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag2: "system_scan" }
                     PropertyChanges { target: systemstatus_label; visible: false}
                     PropertyChanges { target: filebackBtn; visible: false}
@@ -626,15 +626,15 @@ Item {
                 },
                 State {
                     name: "SystemWorkFinish"
-                    PropertyChanges { target: syscacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag2: "system_scan" }
-                    PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Have been cleared")+ root.systemstatus_num + qsTr("records)")}//已清理     条记录
+                    PropertyChanges { target: systemstatus_label; visible: true; text: qsTr("(Have been cleared ")+ root.systemstatus_num + qsTr(" records)")}//（已清理     条记录）
                     PropertyChanges { target: filebackBtn; visible: false}
                     PropertyChanges { target: filerescanBtn; visible: false}
                 },
                 State {
                     name: "SystemWorkEmpty"
-                    PropertyChanges { target: syscacheBtn; text:qsTr("Start Scanning") }//开始扫描
+                    PropertyChanges { target: syscacheBtn; text:qsTr("Start scanning") }//开始扫描
                     PropertyChanges { target: root; btn_flag2: "system_scan" }
                     PropertyChanges { target: systemstatus_label; visible: false}
                     PropertyChanges { target: filebackBtn; visible: false}

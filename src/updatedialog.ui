@@ -89,7 +89,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>Cancel</string>
    </property>
   </widget>
   <widget class="QFrame" name="frame">
