@@ -91,84 +91,59 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
-//            Column {
-//                id: status_update_content
-//                spacing: 5
-//                anchors.verticalCenter: parent.verticalCenter
-//                Row {
-//                    spacing: 10
-//                    Text {
-//                        text: itemTitle
-//                        font.pointSize: 11
-//                        color: "black"
-//                        anchors.verticalCenter: parent.verticalCenter
-//                    }
-//                    Common.Label {
-//                        id: numLabel
-//                        visible: broswerDelegate.showNum
-//                        text: "[ " + broswerDelegate.sub_num + qsTr(" Items ]")// 个项目
-//                        font.pointSize: 11
-//                        color: "black"
-//                        anchors.verticalCenter: parent.verticalCenter
-//                    }
-//                }
-//                Text {
-//                    text: detailstr
-//                    width: 450
-//                    wrapMode: Text.WordWrap
-//                    font.family: "URW Bookman L"
-//                    font.pointSize: 9
-//                    color: "gray"
-//                }
-//            }
 
-            Row {
-                spacing: 15
+            Item {
+                x: 550
+                y: 2
+                height: broswerDelegate.itemHeight
                 Row {
-                    spacing: 20
-                    anchors.verticalCenter: parent.verticalCenter
-                    Common.StyleButton {
-                        id: resetBtn
-                        visible: broswerDelegate.resetStatus//false
+                    spacing: 15
+                    Row {
+                        spacing: 20
                         anchors.verticalCenter: parent.verticalCenter
-                        wordname: qsTr("Back")//返回
-                        width: 40
-                        height: 20
-                        onClicked: {
-                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "reset");
+                        Common.StyleButton {
+                            id: resetBtn
+                            visible: broswerDelegate.resetStatus//false
+                            anchors.verticalCenter: parent.verticalCenter
+                            wordname: qsTr("Back")//返回
+                            width: 40
+                            height: 20
+                            onClicked: {
+                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "reset");
+                            }
+                        }
+                        Common.StyleButton {
+                            id: rescanBtn
+                            visible: broswerDelegate.resetStatus//false
+                            anchors.verticalCenter: parent.verticalCenter
+                            wordname: qsTr("Rescan")//重新扫描
+                            width: 40
+                            height: 20
+                            onClicked: {
+                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "rescan");
+                            }
                         }
                     }
-                    Common.StyleButton {
-                        id: rescanBtn
-                        visible: broswerDelegate.resetStatus//false
+                    Common.Button {
+                        id: scanBtn
+                        width: 95
+                        height: 30
+                        hoverimage: "green2.png"
+                        text: broswerDelegate.actionTitle
                         anchors.verticalCenter: parent.verticalCenter
-                        wordname: qsTr("Rescan")//重新扫描
-                        width: 40
-                        height: 20
                         onClicked: {
-                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "rescan");
-                        }
-                    }
-                }
-                Common.Button {
-                    id: scanBtn
-                    width: 95
-                    height: 30
-                    hoverimage: "green2.png"
-                    text: broswerDelegate.actionTitle
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: {
-                        if(broswerDelegate.btn_flag == "cookies_scan") {
-                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scan");
-                        }
-                        else if(broswerDelegate.btn_flag == "cookies_scanc") {
-                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scanc");
-                        }
-                        else if(broswerDelegate.btn_flag == "cookies_work") {
-                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_work");
-                        }
-                        else if(broswerDelegate.btn_flag == "cookies_workc") {
-                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_workc");
+                            if(broswerDelegate.btn_flag == "cookies_scan") {
+                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scan");
+                            }
+                            else if(broswerDelegate.btn_flag == "cookies_scanc") {
+                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scanc");
+                            }
+                            else if(broswerDelegate.btn_flag == "cookies_work") {
+                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_work");
+                            }
+                            else if(broswerDelegate.btn_flag == "cookies_workc") {
+                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_workc");
+                            }
                         }
                     }
                 }
@@ -207,8 +182,6 @@ Item {
                     fontColor: broswerDelegate.subItemFontColor
                     browserFlag: broswerDelegate.flag
                     onRefreshed: {
-//                        console.log("---*****------");
-//                        console.log(broswerDelegate.flag);
                         broswerDelegate.sendBrowserType(broswerDelegate.flag, "refresh");
                     }
                 }

@@ -40,13 +40,10 @@ Item {
              topMargin: 10
          }
 
-//         anchors.right: parent.right; anchors.rightMargin: 5; y: 3; height: 32; spacing: 30
-
          Common.Button {
              id: okBtn
              visible: toolbar.showok
-             hoverimage: "green2.png"//../../img/icons/
-//             fontcolor:"#929292"
+             hoverimage: "green2.png"
              fontsize: 15
              text: qsTr("OK")//确定
              width: 94; height: 29
@@ -63,31 +60,12 @@ Item {
          }
          Common.Button {
              id: quitBtn
-             hoverimage: "gray1.png"//../../img/icons/
+             hoverimage: "gray1.png"
              fontcolor:"#929292"
              fontsize: 15
              text: qsTr("Back")//返回
              width: 94; height: 29
              onClicked: toolbar.quitBtnClicked()
          }
-
-         //         Common.Button {
-//             id: okBtn
-//             visible: toolbar.showok
-////             hoverimage: "../../img/icons/ok.png"
-//             text:"确认"
-//             width: 94; height: 29
-//             onClicked: toolbar.okBtnClicked()
-//         }
-//         Common.Button {
-//             id: quitBtn
-////             hoverimage: "../../img/icons/back.png"
-//             text:"返回"
-//             color1: "#d4d4d4"
-//             color2: "#b5b5b5"
-//             bordercolor:"#bebebe"
-//             width: 94; height: 29
-//             onClicked: toolbar.quitBtnClicked()
-//         }
      }
 }

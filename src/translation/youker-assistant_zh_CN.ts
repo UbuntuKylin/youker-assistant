@@ -6,7 +6,7 @@
     <message>
         <location filename="../alertdialog.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
 </context>
 <context>
@@ -18,7 +18,7 @@
         <location filename="../../qml/func/info/AudioInfo.qml" line="95"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="122"/>
         <source>Vendor:</source>
-        <translation type="unfinished"></translation>
+        <translation>制造商：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/AudioInfo.qml" line="50"/>
@@ -27,7 +27,7 @@
         <location filename="../../qml/func/info/AudioInfo.qml" line="96"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="123"/>
         <source>Bus Address:</source>
-        <translation type="unfinished"></translation>
+        <translation>总线地址：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/AudioInfo.qml" line="51"/>
@@ -36,7 +36,7 @@
         <location filename="../../qml/func/info/AudioInfo.qml" line="97"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="124"/>
         <source>Audio Driver:</source>
-        <translation type="unfinished"></translation>
+        <translation>声卡驱动：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/AudioInfo.qml" line="52"/>
@@ -45,12 +45,12 @@
         <location filename="../../qml/func/info/AudioInfo.qml" line="98"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="121"/>
         <source>Audio Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>声卡型号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/AudioInfo.qml" line="170"/>
         <source>Audio Card Info</source>
-        <translation type="unfinished"></translation>
+        <translation>声卡信息</translation>
     </message>
 </context>
 <context>
@@ -58,47 +58,47 @@
     <message>
         <location filename="../authdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../authdialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../authdialog.ui" line="47"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../authdialog.ui" line="105"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User password&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用户密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../authdialog.ui" line="121"/>
         <source>Enter the current user password</source>
-        <translation type="unfinished"></translation>
+        <translation>输入当前用户密码</translation>
     </message>
     <message>
         <location filename="../authdialog.cpp" line="96"/>
         <source>Starting service, please wait!</source>
-        <translation type="unfinished"></translation>
+        <translation>正在启动服务，请稍等！</translation>
     </message>
     <message>
         <location filename="../authdialog.cpp" line="106"/>
         <source>Tips: Password error, please re-enter the password to ensure the normal use of youker assistant!</source>
-        <translation type="unfinished"></translation>
+        <translation>提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用！</translation>
     </message>
     <message>
         <location filename="../authdialog_event.cpp" line="57"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../authdialog_event.cpp" line="58"/>
         <source>Background service does not start, some features will not work properly!</source>
-        <translation type="unfinished"></translation>
+        <translation>后台服务没有启动，相关功能将无法正常使用！</translation>
     </message>
 </context>
 <context>
@@ -106,42 +106,42 @@
     <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="53"/>
         <source>Motherboard Basics Info</source>
-        <translation type="unfinished"></translation>
+        <translation>主板基本信息</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="70"/>
         <source>Motherboard Model: </source>
-        <translation type="unfinished"></translation>
+        <translation>主板型号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="85"/>
         <source>Motherboard Vendor: </source>
-        <translation type="unfinished"></translation>
+        <translation>主板产商：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="100"/>
         <source>Serial Number: </source>
-        <translation type="unfinished"></translation>
+        <translation>序列号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="116"/>
         <source>BIOS Info</source>
-        <translation type="unfinished"></translation>
+        <translation>BIOS信息</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="133"/>
         <source>BIOS Manufacturer: </source>
-        <translation type="unfinished"></translation>
+        <translation>BIOS产商：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="148"/>
         <source>Bios Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>BIOS版本：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="163"/>
         <source>Release Date: </source>
-        <translation type="unfinished"></translation>
+        <translation>发布日期：</translation>
     </message>
 </context>
 <context>
@@ -149,27 +149,27 @@
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="31"/>
         <source>Boot animation settings (only supports the PNG image format, does not support Chinese naming pictures!)</source>
-        <translation type="unfinished"></translation>
+        <translation>开机动画设置 (目前仅支持 png 图片格式，不支持以中文命名的图片！)</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="32"/>
         <source>Click the &apos; Custom Image &apos; button to select the picture you want to add, select the picture you want to set and click &apos; OK &apos; button to complete the setup.</source>
-        <translation type="unfinished"></translation>
+        <translation>单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置。</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="92"/>
         <source>Completed!</source>
-        <translation type="unfinished"></translation>
+        <translation>已完成！</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="122"/>
         <source>Custom picture</source>
-        <translation type="unfinished"></translation>
+        <translation>自定义图片</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="158"/>
         <source>Optional BootAnimation</source>
-        <translation type="unfinished"></translation>
+        <translation>可选的开机动画</translation>
     </message>
 </context>
 <context>
@@ -181,7 +181,7 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="98"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="125"/>
         <source>CD-ROM Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>光驱型号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="50"/>
@@ -190,7 +190,7 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="99"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="126"/>
         <source>Vendor:</source>
-        <translation type="unfinished"></translation>
+        <translation>制造商：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="51"/>
@@ -199,7 +199,7 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="100"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="127"/>
         <source>Device Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>设备名称：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="52"/>
@@ -208,7 +208,7 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="101"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="128"/>
         <source>Firmware Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>固件版本：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="53"/>
@@ -217,12 +217,12 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="102"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="129"/>
         <source>Serial Number:</source>
-        <translation type="unfinished"></translation>
+        <translation>序列号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="174"/>
         <source>Audio Card Info</source>
-        <translation type="unfinished"></translation>
+        <translation>声卡信息</translation>
     </message>
 </context>
 <context>
@@ -230,12 +230,12 @@
     <message>
         <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="115"/>
         <source> Items ]</source>
-        <translation type="unfinished"></translation>
+        <translation>个项目</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="125"/>
         <source>No content</source>
-        <translation type="unfinished"></translation>
+        <translation>无内容</translation>
     </message>
 </context>
 <context>
@@ -243,18 +243,18 @@
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="23"/>
         <source>Deep cleaning up the system cache</source>
-        <translation type="unfinished"></translation>
+        <translation>深度清理系统缓存</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="24"/>
         <source>Deep cleaning up the system cache, to save disk space!</source>
-        <translation type="unfinished"></translation>
+        <translation>深度清理系统缓存，节省磁盘空间！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="70"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="151"/>
         <source>Cleanup Package Cache</source>
-        <translation type="unfinished"></translation>
+        <translation>清理包缓存</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="72"/>
@@ -263,13 +263,13 @@
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="214"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="315"/>
         <source>Apt Cache Path: /var/cache/apt/archives</source>
-        <translation type="unfinished"></translation>
+        <translation>Apt缓存路径：/var/cache/apt/archives</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="75"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="156"/>
         <source>Cleanup Software Center Cache</source>
-        <translation type="unfinished"></translation>
+        <translation>清理软件中心缓存</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="77"/>
@@ -278,64 +278,64 @@
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="229"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="320"/>
         <source>Software Center Cache Path: </source>
-        <translation type="unfinished"></translation>
+        <translation>软件中心缓存路径：</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="123"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="372"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="380"/>
         <source>Tips:</source>
-        <translation type="unfinished"></translation>
+        <translation>友情提示：</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="123"/>
         <source>The scan results is empty, no need to clean up!</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描内容为空，无需清理！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="131"/>
         <source>Scan completed!</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描完成！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="137"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="536"/>
         <source>Begin cleanup</source>
-        <translation type="unfinished"></translation>
+        <translation>开始清理</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="170"/>
         <source>Cleanup abnormal!</source>
-        <translation type="unfinished"></translation>
+        <translation>清理出现异常！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="179"/>
         <source>Cleanup interrupted!</source>
-        <translation type="unfinished"></translation>
+        <translation>清理中断！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="183"/>
         <source>Cleared!</source>
-        <translation type="unfinished"></translation>
+        <translation>清理完毕！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="191"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="212"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="313"/>
         <source>Package cache cleanup</source>
-        <translation type="unfinished"></translation>
+        <translation>包缓存清理</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="196"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="227"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="318"/>
         <source>Software Center buffer cleaning</source>
-        <translation type="unfinished"></translation>
+        <translation>软件中心缓存清理</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="294"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>返回</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="337"/>
@@ -344,17 +344,17 @@
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="557"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="564"/>
         <source>Start scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>开始扫描</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="372"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
-        <translation type="unfinished"></translation>
+        <translation>对不起，您没有选择需要扫描的内容，请确认！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="380"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
-        <translation type="unfinished"></translation>
+        <translation>对不起，您没有选择需要清理的内容，请确认！</translation>
     </message>
 </context>
 <context>
@@ -362,42 +362,42 @@
     <message>
         <location filename="../changecitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="29"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change Cities&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;更换城市&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="51"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;City List:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;城市列表：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="97"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="114"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="140"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Three cities to be set by default, Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置了三个城市，点击主界面上的 “配置” 按钮可以设置需要的城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../changecitydialog.cpp" line="56"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../changecitydialog.cpp" line="57"/>
         <source>The configuration file is not found!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到配置文件！</translation>
     </message>
 </context>
 <context>
@@ -408,73 +408,73 @@
         <location filename="../../qml/func/info/ComputerInfo.qml" line="265"/>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="268"/>
         <source> Minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>分钟</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="51"/>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="268"/>
         <source> Hours </source>
-        <translation type="unfinished"></translation>
+        <translation>小时</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="66"/>
         <source>Computer Basic Info</source>
-        <translation type="unfinished"></translation>
+        <translation>电脑基本信息</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="83"/>
         <source>Vendor: </source>
-        <translation type="unfinished"></translation>
+        <translation>制造商：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="98"/>
         <source>Model: </source>
-        <translation type="unfinished"></translation>
+        <translation>电脑型号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="113"/>
         <source>Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>电脑版本：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="128"/>
         <source>Serial Number: </source>
-        <translation type="unfinished"></translation>
+        <translation>序列号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="143"/>
         <source>Hostname: </source>
-        <translation type="unfinished"></translation>
+        <translation>主机名：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="158"/>
         <source>Running Time: </source>
-        <translation type="unfinished"></translation>
+        <translation>持续运行时间：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="173"/>
         <source>OS Types: </source>
-        <translation type="unfinished"></translation>
+        <translation>操作系统类型：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="188"/>
         <source>OS Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>操作系统版本：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="203"/>
         <source>Kernel Bit: </source>
-        <translation type="unfinished"></translation>
+        <translation>系统位数：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="218"/>
         <source>Kernel Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>内核版本：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="233"/>
         <source>Kernel Arch: </source>
-        <translation type="unfinished"></translation>
+        <translation>内核架构：</translation>
     </message>
 </context>
 <context>
@@ -482,17 +482,17 @@
     <message>
         <location filename="../../qml/func/cleaner/CookiesDelegate.qml" line="88"/>
         <source> Items ]</source>
-        <translation type="unfinished"></translation>
+        <translation>个项目</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesDelegate.qml" line="134"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>返回</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesDelegate.qml" line="145"/>
         <source>Rescan</source>
-        <translation type="unfinished"></translation>
+        <translation>重新扫描</translation>
     </message>
 </context>
 <context>
@@ -500,27 +500,27 @@
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="45"/>
         <source>Cleanup failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>清理失败！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="51"/>
         <source>Cleanup interrupted!</source>
-        <translation type="unfinished"></translation>
+        <translation>清理中断！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="55"/>
         <source>Cleanup successfully!</source>
-        <translation type="unfinished"></translation>
+        <translation>清理成功！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="91"/>
         <source> Records</source>
-        <translation type="unfinished"></translation>
+        <translation>条记录</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="109"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
 </context>
 <context>
@@ -528,12 +528,12 @@
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="23"/>
         <source>Cleanup browser Cookies information, to protect your privacy</source>
-        <translation type="unfinished"></translation>
+        <translation>清理浏览器 Cookies 信息，保护个人隐私</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="24"/>
         <source>Clean up user login information, support Firefox and Chromium browser</source>
-        <translation type="unfinished"></translation>
+        <translation>清理用户登陆网站信息, 支持 Firefox 和 Chromium 浏览器</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="44"/>
@@ -549,7 +549,7 @@
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="696"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="711"/>
         <source>Start scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>开始扫描</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="68"/>
@@ -557,72 +557,72 @@
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="94"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="152"/>
         <source>Tips:</source>
-        <translation type="unfinished"></translation>
+        <translation>友情提示：</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="68"/>
         <source>Firefox is not installed!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有安装 Firefox！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="72"/>
         <source>Chromium is not installed!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有安装 Chromium！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="81"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="200"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="418"/>
         <source>Cleanup the Cookies saving in Firefox</source>
-        <translation type="unfinished"></translation>
+        <translation>清理 Firefox 保存的 Cookies</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="94"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="152"/>
         <source>The scan results is empty, no need to clean up!</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描内容为空，无需清理！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="114"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="174"/>
         <source>Scan completed!</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描完成！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="122"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="181"/>
         <source>All cleanup</source>
-        <translation type="unfinished"></translation>
+        <translation>全部清理</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="138"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="205"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="444"/>
         <source>Cleanup the Cookies saving in Chromium</source>
-        <translation type="unfinished"></translation>
+        <translation>清理 Chromium 保存的 Cookies</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="390"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="393"/>
         <source>Cleanup interrupted!</source>
-        <translation type="unfinished"></translation>
+        <translation>清理中断！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="400"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="405"/>
         <source>Cleanup abnormal!</source>
-        <translation type="unfinished"></translation>
+        <translation>清理出现异常！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="420"/>
         <source>Clean up automatically saved logon information by Firefox browser(Cookies)</source>
-        <translation type="unfinished"></translation>
+        <translation>清理 Firefox 浏览器自动保存的登录信息 (Cookies)</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="434"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="460"/>
         <source>Cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>清理完毕</translation>
     </message>
 </context>
 <context>
@@ -630,67 +630,67 @@
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="60"/>
         <source>cores</source>
-        <translation type="unfinished"></translation>
+        <translation>核</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="60"/>
         <source>thread</source>
-        <translation type="unfinished"></translation>
+        <translation>线程</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="76"/>
         <source>CPU Info</source>
-        <translation type="unfinished"></translation>
+        <translation>处理器信息</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="93"/>
         <source>CPU: </source>
-        <translation type="unfinished"></translation>
+        <translation>处理器：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="108"/>
         <source>Vendor: </source>
-        <translation type="unfinished"></translation>
+        <translation>制造商：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="123"/>
         <source>Serial Number: </source>
-        <translation type="unfinished"></translation>
+        <translation>序列号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="138"/>
         <source>Socket/Slot: </source>
-        <translation type="unfinished"></translation>
+        <translation>插座/插槽：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="153"/>
         <source>Maximum Frequency: </source>
-        <translation type="unfinished"></translation>
+        <translation>最大主频：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="168"/>
         <source>Current Frequency: </source>
-        <translation type="unfinished"></translation>
+        <translation>当前主频：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="183"/>
         <source>FSB: </source>
-        <translation type="unfinished"></translation>
+        <translation>前端总线：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="198"/>
         <source>Core Number: </source>
-        <translation type="unfinished"></translation>
+        <translation>核心数目：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="213"/>
         <source>L1 Cache: </source>
-        <translation type="unfinished"></translation>
+        <translation>一级缓存：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/CpuInfo.qml" line="228"/>
         <source>L2 Cache: </source>
-        <translation type="unfinished"></translation>
+        <translation>二级缓存：</translation>
     </message>
 </context>
 <context>
@@ -698,34 +698,34 @@
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="40"/>
         <source>Default font settings</source>
-        <translation type="unfinished"></translation>
+        <translation>默认字体设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="41"/>
         <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings. </source>
-        <translation type="unfinished"></translation>
+        <translation>根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="124"/>
         <source>Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>已完成</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="149"/>
         <source>Font Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>字体设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="178"/>
         <source>Default Font: </source>
-        <translation type="unfinished"></translation>
+        <translation>默认字体：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="199"/>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="253"/>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="308"/>
         <source>Change fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>更换字体</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="206"/>
@@ -733,64 +733,64 @@
         <location filename="../../qml/func/settings/DefaultFont.qml" line="316"/>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="408"/>
         <source>Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>恢复默认</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="213"/>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="268"/>
         <source>Tips:</source>
-        <translation type="unfinished"></translation>
+        <translation>友情提示：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="213"/>
         <source>Has been restored to the default font!</source>
-        <translation type="unfinished"></translation>
+        <translation>已经恢默认字体！</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="233"/>
         <source>Desktop Font: </source>
-        <translation type="unfinished"></translation>
+        <translation>桌面字体：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="268"/>
         <source>Your system&apos;s desktop font is the default font!</source>
-        <translation type="unfinished"></translation>
+        <translation>您系统的桌面字体已经为默认字体！</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="288"/>
         <source>Monospace Font: </source>
-        <translation type="unfinished"></translation>
+        <translation>等宽字体：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="323"/>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="415"/>
         <source>Tips: </source>
-        <translation type="unfinished"></translation>
+        <translation>友情提示：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="323"/>
         <source>Your system&apos;s monospace font is the default font!</source>
-        <translation type="unfinished"></translation>
+        <translation>您系统的等宽字体已经为默认字体！</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="348"/>
         <source>Zoom Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>缩放设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="371"/>
         <source>Global Font Scaling: </source>
-        <translation type="unfinished"></translation>
+        <translation>全局字体缩放：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="399"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="415"/>
         <source>Your system&apos;s global font scaling is the default mode!</source>
-        <translation type="unfinished"></translation>
+        <translation>您系统的全局字体缩放已经为默认设置！</translation>
     </message>
 </context>
 <context>
@@ -798,79 +798,79 @@
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="32"/>
         <source>Desktop Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>桌面图标设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="33"/>
         <source>Set the desktop icon theme and the visibility of desktop icons</source>
-        <translation type="unfinished"></translation>
+        <translation>设置桌面图标主题和桌面图标的可见性</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="43"/>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="199"/>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="450"/>
         <source>[ Current icon theme is: </source>
-        <translation type="unfinished"></translation>
+        <translation>[ 当前图标主题是：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="130"/>
         <source>Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>已完成</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="152"/>
         <source>Icon theme settings</source>
-        <translation type="unfinished"></translation>
+        <translation>图标主题设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="178"/>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>图标主题</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="193"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="217"/>
         <source>Desktop icon display control</source>
-        <translation type="unfinished"></translation>
+        <translation>桌面图标显示控制</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="242"/>
         <source>Show Desktop Icons: </source>
-        <translation type="unfinished"></translation>
+        <translation>显示桌面图标：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="266"/>
         <source>Home Folder: </source>
-        <translation type="unfinished"></translation>
+        <translation>主文件夹：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="289"/>
         <source>Network: </source>
-        <translation type="unfinished"></translation>
+        <translation>网络：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="312"/>
         <source>Trash : </source>
-        <translation type="unfinished"></translation>
+        <translation>回收站：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="336"/>
         <source>Mounted Volumes: </source>
-        <translation type="unfinished"></translation>
+        <translation>已经挂载卷标：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="444"/>
         <source>Tips: </source>
-        <translation type="unfinished"></translation>
+        <translation>友情提示：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="444"/>
         <source>Desktop icon has been restored to the default configuration!</source>
-        <translation type="unfinished"></translation>
+        <translation>桌面图标已经为默认配置！</translation>
     </message>
 </context>
 <context>
@@ -878,27 +878,27 @@
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="48"/>
         <source>Desktop Info</source>
-        <translation type="unfinished"></translation>
+        <translation>桌面信息</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="65"/>
         <source>Desktop Environment: </source>
-        <translation type="unfinished"></translation>
+        <translation>桌面环境：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="79"/>
         <source>Language: </source>
-        <translation type="unfinished"></translation>
+        <translation>语言：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="94"/>
         <source>User: </source>
-        <translation type="unfinished"></translation>
+        <translation>当前用户：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="108"/>
         <source>Home Folder: </source>
-        <translation type="unfinished"></translation>
+        <translation>用户主目录：</translation>
     </message>
 </context>
 <context>
@@ -906,72 +906,72 @@
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="44"/>
         <source>Host bridge:</source>
-        <translation type="unfinished"></translation>
+        <translation>主桥：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="45"/>
         <source>VGA Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>VGA兼容控制器：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="46"/>
         <source>USB Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>USB控制器：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="47"/>
         <source>Communication Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>通信控制器：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="48"/>
         <source>Ethernet Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>以太网控制器：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="49"/>
         <source>Audio Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>音频设备：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="50"/>
         <source>PCI bridge:</source>
-        <translation type="unfinished"></translation>
+        <translation>PCI桥：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="51"/>
         <source>ISA bridge:</source>
-        <translation type="unfinished"></translation>
+        <translation>ISA桥：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="52"/>
         <source>SATA Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>SATA控制器：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="53"/>
         <source>SMBus:</source>
-        <translation type="unfinished"></translation>
+        <translation>系统管理总线：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="54"/>
         <source>System peripheral:</source>
-        <translation type="unfinished"></translation>
+        <translation>系统外围：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="55"/>
         <source>driver in use:</source>
-        <translation type="unfinished"></translation>
+        <translation>使用的驱动：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="56"/>
         <source>existing drivers:</source>
-        <translation type="unfinished"></translation>
+        <translation>可选的驱动：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DeviceInfo.qml" line="244"/>
         <source>Device Driver Information</source>
-        <translation type="unfinished"></translation>
+        <translation>设备驱动信息</translation>
     </message>
 </context>
 <context>
@@ -980,42 +980,42 @@
         <location filename="../../qml/func/settings/DocumentFont.qml" line="30"/>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="105"/>
         <source>Document font settings</source>
-        <translation type="unfinished"></translation>
+        <translation>文档字体设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="31"/>
         <source>According to personal preferences to set document fonts, click the &apos;Restore&apos; button, can be restored to the state before the font settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>据个人喜好设置文档字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="80"/>
         <source>Completed!</source>
-        <translation type="unfinished"></translation>
+        <translation>已完成！</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="130"/>
         <source>Document font: </source>
-        <translation type="unfinished"></translation>
+        <translation>文档字体：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="156"/>
         <source>Change fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>更换字体</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="164"/>
         <source>Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>恢复默认</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="172"/>
         <source>友情提示：</source>
-        <translation type="unfinished"></translation>
+        <translation>友情提示：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="172"/>
         <source>Your system&apos;s document font is the default font!</source>
-        <translation type="unfinished"></translation>
+        <translation>您系统的文档字体已经为默认字体！</translation>
     </message>
 </context>
 <context>
@@ -1023,17 +1023,17 @@
     <message>
         <location filename="../../qml/func/bars/FcitxBar.qml" line="48"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../../qml/func/bars/FcitxBar.qml" line="62"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>上一步</translation>
     </message>
     <message>
         <location filename="../../qml/func/bars/FcitxBar.qml" line="71"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>下一步</translation>
     </message>
 </context>
 <context>
@@ -1041,27 +1041,27 @@
     <message>
         <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="10"/>
         <source>Input Method Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>输入法配置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="11"/>
         <source>&apos;&lt;&lt;&apos; &apos;&gt;&gt;&apos; button to add/remove input method, &apos;▲’ ‘▼&apos; buttons to adjust the input method priority, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.</source>
-        <translation type="unfinished"></translation>
+        <translation>＇&lt;&lt;＇和＇&gt;&gt;＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="148"/>
         <source>Current input method list</source>
-        <translation type="unfinished"></translation>
+        <translation>当前输入法列表</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="161"/>
         <source>Available input method list</source>
-        <translation type="unfinished"></translation>
+        <translation>可用输入法列表</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="396"/>
         <source>Switch input method</source>
-        <translation type="unfinished"></translation>
+        <translation>输入法切换</translation>
     </message>
 </context>
 <context>
@@ -1203,27 +1203,27 @@
     <message>
         <location filename="../fcitxwarndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../fcitxwarndialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../fcitxwarndialog.ui" line="47"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../fcitxwarndialog.ui" line="73"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温馨提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../fcitxwarndialog.cpp" line="36"/>
         <source>Are you sure you want to exit the wizardï¼</source>
-        <translation type="unfinished"></translation>
+        <translation>您确定退出输入法配置向导？</translation>
     </message>
 </context>
 <context>
@@ -1386,42 +1386,42 @@
     <message>
         <location filename="../kfontdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="36"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>字体</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="49"/>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>风格</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="62"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>大小</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="125"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>视图</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="151"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="164"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="177"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Current Font:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;当前字体：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="190"/>
@@ -1431,17 +1431,17 @@
     <message>
         <location filename="../kfontdialog.ui" line="216"/>
         <source>Change Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>更换字体</translation>
     </message>
     <message>
         <location filename="../kfontdialog.cpp" line="263"/>
         <source>Tips</source>
-        <translation type="unfinished"></translation>
+        <translation>提示</translation>
     </message>
     <message>
         <location filename="../kfontdialog.cpp" line="264"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
-        <translation type="unfinished"></translation>
+        <translation>您还没有更换字体，请选择字体进行更换！</translation>
     </message>
 </context>
 <context>
@@ -1620,43 +1620,43 @@
     <message>
         <location filename="../locationdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="39"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name or pinyin to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市中文名或者拼音进行查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="75"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="92"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="122"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>查找</translation>
     </message>
     <message>
         <location filename="../locationdialog.cpp" line="117"/>
         <location filename="../locationdialog.cpp" line="131"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../locationdialog.cpp" line="118"/>
         <source>Please input city name and click &apos;find&apos; button to find!</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
     <message>
         <location filename="../locationdialog.cpp" line="132"/>
         <source>Please input city name and click &apos;search&apos; button to find!</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
 </context>
 <context>
@@ -1743,27 +1743,27 @@
     <message>
         <location filename="../messagedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="30"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="117"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add CD-ROM and Audio Info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;添加光驱和音频设备信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add Device basic Info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;添加设备驱动的基本信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="143"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Modify system cleaner&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;优化系统清理模块&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -1771,27 +1771,27 @@
     <message>
         <location filename="../modaldialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="47"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="105"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monitor Check&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;屏幕坏点检测&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../modaldialog.cpp" line="39"/>
         <source>Left-click to change the color, right-click to exit from this detection.</source>
-        <translation type="unfinished"></translation>
+        <translation>点击鼠标左键进行更换颜色检测操作，点击鼠标右键退出检测。</translation>
     </message>
 </context>
 <context>
@@ -2147,13 +2147,13 @@
     <message>
         <location filename="../processmanager.cpp" line="66"/>
         <source>ps -u %1 -o user,pid,%cpu,%mem,start,ucmd,command</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../processmanager.cpp" line="118"/>
         <location filename="../processmanager.cpp" line="177"/>
         <source>%1;%2;%3;%4;%5;%6;%7</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="98"/>
@@ -2246,12 +2246,12 @@
     <message>
         <location filename="../main.cpp" line="135"/>
         <source>starting....</source>
-        <translation type="unfinished"></translation>
+        <translation>优客助手正在启动中....</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="138"/>
         <source>loading module data....</source>
-        <translation type="unfinished"></translation>
+        <translation>正在加载模块数据....</translation>
     </message>
 </context>
 <context>
@@ -2259,7 +2259,7 @@
     <message>
         <location filename="../quibo.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
 </context>
 <context>
@@ -2315,7 +2315,7 @@
     <message>
         <location filename="../sessiondispatcher.cpp" line="590"/>
         <source>Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>选择文件夹</translation>
     </message>
 </context>
 <context>
@@ -2323,77 +2323,77 @@
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 1</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 1</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 2</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 2</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 3</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 3</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 4</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 4</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 5</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 5</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 6</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 6</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 7</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 7</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 8</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 8</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 9</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 9</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 10</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 10</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="64"/>
         <source>Youker Skin Center</source>
-        <translation type="unfinished"></translation>
+        <translation>优客皮肤中心</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="154"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>首页</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="155"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>上一页</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="156"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>下一页</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="157"/>
         <source>Last</source>
-        <translation type="unfinished"></translation>
+        <translation>末页</translation>
     </message>
 </context>
 <context>
@@ -2633,27 +2633,28 @@
     <message>
         <location filename="../sourcedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../sourcedialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../sourcedialog.ui" line="47"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../sourcedialog.ui" line="105"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;友情提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translatorcomment>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sourcedialog.cpp" line="25"/>
         <source>You need to add Ubuntu Kylin software source, or the software recommended feature will not be available. Click &apos;OK&apos; to add the software source, click &apos;Cancel&apos; to give up!</source>
-        <translation type="unfinished"></translation>
+        <translation>您需要添加 Ubuntu Kylin 软件源，否则软件推荐功能将无法使用。点击＂确定＂按钮添加软件源，点击＂取消＂按钮放弃添加！</translation>
     </message>
 </context>
 <context>
@@ -2677,19 +2678,19 @@
     <message>
         <location filename="../sudodispatcher.cpp" line="204"/>
         <source>Tip: please input password of current user to start server, make it work normally.</source>
-        <translation type="unfinished"></translation>
+        <translation>提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。</translation>
     </message>
     <message>
         <location filename="../sudodispatcher.cpp" line="291"/>
         <location filename="../sudodispatcher.cpp" line="311"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../sudodispatcher.cpp" line="292"/>
         <location filename="../sudodispatcher.cpp" line="312"/>
         <source>No find the softlist file!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到软件列表文件！</translation>
     </message>
 </context>
 <context>
@@ -2697,7 +2698,7 @@
     <message>
         <location filename="../suspensionframe.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="29"/>
@@ -2712,64 +2713,64 @@
     <message>
         <location filename="../suspensionframe.ui" line="111"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="127"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Computer running slow&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;电脑运行缓慢&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="143"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Proposed a key acceleration&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;建议一键加速&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="168"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU occupancy rate:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="184"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="200"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Used:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;已使用：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="216"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unused&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;未使用：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="232"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="283"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory occupancy rate:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="26"/>
         <location filename="../suspensionframe.cpp" line="139"/>
         <source>System runs smoothly</source>
-        <translation type="unfinished"></translation>
+        <translation>系统运行流畅</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="27"/>
         <location filename="../suspensionframe.cpp" line="140"/>
         <source>There is no need to accelerate</source>
-        <translation type="unfinished"></translation>
+        <translation>无需进行加速</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="37"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>详细</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="53"/>
@@ -2779,12 +2780,12 @@
     <message>
         <location filename="../suspensionframe.cpp" line="133"/>
         <source>Computer runs slowly</source>
-        <translation type="unfinished"></translation>
+        <translation>电脑运行缓慢</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="134"/>
         <source>Recommend the use of âquick cleanâ</source>
-        <translation type="unfinished"></translation>
+        <translation>建议一键加速</translation>
     </message>
 </context>
 <context>
@@ -2866,22 +2867,22 @@
     <message>
         <location filename="../systemdispatcher.cpp" line="417"/>
         <source>Select the boot animation</source>
-        <translation type="unfinished"></translation>
+        <translation>选择开机动画</translation>
     </message>
     <message>
         <location filename="../systemdispatcher.cpp" line="417"/>
         <source>Image Files (*.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>图像文件  (*.png)</translation>
     </message>
     <message>
         <location filename="../systemdispatcher.cpp" line="422"/>
         <source>Select music</source>
-        <translation type="unfinished"></translation>
+        <translation>选择音乐</translation>
     </message>
     <message>
         <location filename="../systemdispatcher.cpp" line="422"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
-        <translation type="unfinished"></translation>
+        <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
 </context>
 <context>
@@ -3395,17 +3396,17 @@
     <message>
         <location filename="../tray.cpp" line="123"/>
         <source>Hide/Show window</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏/显示主界面</translation>
     </message>
     <message>
         <location filename="../tray.cpp" line="125"/>
         <source>Hide/Show monitor</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏/显示监控球</translation>
     </message>
     <message>
         <location filename="../tray.cpp" line="130"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>退出(&amp;E)</translation>
     </message>
 </context>
 <context>
@@ -3413,27 +3414,27 @@
     <message>
         <location filename="../updatedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../updatedialog.ui" line="43"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../updatedialog.ui" line="75"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Service reminder:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务提醒：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../updatedialog.ui" line="92"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../updatedialog.cpp" line="36"/>
         <source>The software was not found, please try to update the software sources.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到该软件，请尝试更新软件源。</translation>
     </message>
 </context>
 <context>
@@ -3441,17 +3442,17 @@
     <message>
         <location filename="../warningdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../warningdialog.ui" line="30"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../warningdialog.ui" line="88"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;友情提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -3676,67 +3677,67 @@
     <message>
         <location filename="../wizarddialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="29"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weather Configuration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;天气配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="51"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="80"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Location:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;地点：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="109"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;minute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="170"/>
         <source>Add City</source>
-        <translation type="unfinished"></translation>
+        <translation>添加城市</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="187"/>
         <source>Delete City</source>
-        <translation type="unfinished"></translation>
+        <translation>删除城市</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="204"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>返回</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="221"/>
         <source>Finish</source>
-        <translation type="unfinished"></translation>
+        <translation>完成</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="240"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wind speed unit: Beaufort number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;风速单位：蒲福级&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="259"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: China Meteorological Administration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="176"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="177"/>
         <source>The configuration file is not found!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到配置文件！</translation>
     </message>
 </context>
 </TS>

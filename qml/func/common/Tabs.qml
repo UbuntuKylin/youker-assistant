@@ -37,16 +37,15 @@ Item {
             model: content.length
             delegate: Rectangle {
                 id: mytab
-                width: 165//120//每个tab标题的总宽度
+                width: 165//165每个tab标题的总宽度
                 height: 36
                 color:"transparent"
-//                color: "#abc2c2"
                 Rectangle{
                     anchors{
                         bottom: parent.bottom
                         horizontalCenter: parent.horizontalCenter
                     }
-                    width: 160//115//每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 120 - 115 = 5,即为tab之间的space
+                    width: 160//160每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 165 - 160 = 5,即为tab之间的space
                     height: 30
                     border.color: "#abc2c2"
                     Image {
@@ -63,7 +62,6 @@ Item {
                     }
                     BorderImage {  //tab选项图片
                         anchors { fill: parent; leftMargin: 0.5; topMargin: 0; rightMargin: 0.5}
-    //                    border { left: 7; right: 7}
                         source: tabWidget.current == index? "../../img/icons/tab-active.png" : ""
                     }
                     Text {
@@ -80,7 +78,6 @@ Item {
                     }
                 }
             }
-
         }
     }
     Item {  //tab页
@@ -89,5 +86,4 @@ Item {
         anchors.top: header.bottom
         anchors.bottom: tabWidget.bottom
     }
-
 }
