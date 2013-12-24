@@ -36,7 +36,7 @@ Rectangle {
                 staticImage.visible = true;
                 dynamicImage.visible = false;
                 leftbar.flag = "onekey";
-                firstonekey.text = qsTr("Quick Cleanup");//一键清理
+                firstonekey.text = qsTr("Quick cleanup");//一键清理
                 //扫描完成后根据子checkbox的勾选情况置状态
                 if(garbageCheck.checked) {
                     cachestatus.visible = true;
@@ -85,7 +85,7 @@ Rectangle {
             else if (msg == "o") {
                 toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
                 leftbar.flag = "onekeyscan";
-                firstonekey.text = qsTr("Quick Scan");//一键扫描
+                firstonekey.text = qsTr("Quick scan");//一键扫描
             }
             staticImage.visible = true;
             dynamicImage.visible = false;
@@ -114,15 +114,15 @@ Rectangle {
         onFinishCleanDataMain: {//收到清理的内容
             if (type == "c") {
                 cachedes.visible = true;
-                cachedes.text = qsTr("(totally cleared") + msg + qsTr("garbage");//（共清理掉      垃圾）
+                cachedes.text = qsTr("(totally cleared") + msg + qsTr("garbage)");//（共清理掉      垃圾）
             }
             else if (type == "h") {
                 historydes.visible = true;
-                historydes.text = qsTr("(totally cleared") + msg + qsTr("historical records");//（共清理掉     条历史记录）
+                historydes.text = qsTr("(totally cleared") + msg + qsTr("historical records)");//（共清理掉     条历史记录）
             }
             else if (type == "k") {
                 cookiedes.visible = true;
-                cookiedes.text = qsTr("(totally cleared") + msg + qsTr("Cookies）");//（共清理掉    条Cookies）
+                cookiedes.text = qsTr("(totally cleared") + msg + qsTr("Cookies)");//（共清理掉    条Cookies）
             }
         }
     }
@@ -171,7 +171,7 @@ Rectangle {
             Text {
                 id: text0
                 width: leftbar.width-180
-                text: qsTr("Quick clean up system junk, saving disk space and improving the system efficiency！")//一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！
+                text: qsTr("Quick clean up system junk, saving disk space and improving the system efficiency!")//一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！
                 font.bold: true
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
@@ -180,7 +180,7 @@ Rectangle {
             Text {
                 id: text1
                 width: leftbar.width-180
-                text: qsTr("        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system！")//        一键帮您清理电脑中的Cookies、垃圾、痕迹和插件！
+                text: qsTr("        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system ")//        一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件！
                 wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -188,7 +188,7 @@ Rectangle {
             Common.Button{
                 id: firstonekey
                 hoverimage: "green3.png"
-                text:qsTr("Quick Scan")//一键扫描
+                text:qsTr("Quick scan")//一键扫描
                 fontsize: 17
                 anchors {
                     left: parent.left; leftMargin: 100
@@ -257,7 +257,7 @@ Rectangle {
             spacing: 10
             Common.Label {
                 id: itemtip
-                text: qsTr("Quick Cleanup Items")//一键清理项目
+                text: qsTr("Quick Cleanup")//一键清理项目
                 font.bold: true
                 font.pixelSize: 14
                 color: "#008000"
@@ -330,7 +330,7 @@ Rectangle {
                         Row {
                             spacing: 20
                             Text {
-                                text: qsTr("Cleanup garbage")//清理垃圾
+                                text: qsTr("Cleanup garbage")//清理系统中的垃圾
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
@@ -520,7 +520,7 @@ Rectangle {
                         Row {
                             spacing: 20
                             Text {
-                                text: qsTr("Cleanup Cookies")//清理Cookies
+                                text: qsTr("Cleanup Cookies")//清理 Cookies
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
@@ -533,7 +533,7 @@ Rectangle {
                             }
                         }
                         Text {
-                            text: qsTr("Clean up the Cookies，including surfing, shopping and online game records.")//清理电脑中的Cookies，包含上网、购物、游戏等记录
+                            text: qsTr("Clean up the Cookies，including surfing, shopping and online game records.")//清理电脑中的 Cookies，包含上网、购物、游戏等记录
                             font.pixelSize: 12
                             color: "#7a7a7a"
                         }

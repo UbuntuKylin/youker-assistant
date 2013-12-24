@@ -44,7 +44,7 @@ Rectangle {
             id: btnText
             anchors.horizontalCenter: parent.horizontalCenter
             color: "green"
-            text: qsTr(name)
+            text: qsTr(name)//名字
         }
     }
 
