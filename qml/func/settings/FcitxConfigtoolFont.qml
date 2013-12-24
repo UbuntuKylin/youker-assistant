@@ -26,7 +26,7 @@ Rectangle {
     property string methodBtn1Buff: ""
     //背景
     Image {
-        source: "../../img/skin/bg-left.png"
+        source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
 
@@ -81,14 +81,13 @@ Rectangle {
         nextPageBtn2.text = getNextpageBtn2;
     }
     Connections {
-            target: fcitxcfgwizard
-            onRefreshFcitxSig: {
-                refreshFcitxFont();
-            }
+        target: fcitxcfgwizard
+        onRefreshFcitxSig: {
+            refreshFcitxFont();
         }
+    }
     Component.onCompleted: {
-                refreshFcitxFont();
-
+        refreshFcitxFont();
     }
 
     Row{
@@ -107,11 +106,9 @@ Rectangle {
             color: "#383838"
         }
         //横线
-        Rectangle{
-            width: fcitxconfigtoolFont.width - showtitle.width - 40 * 2
-            height:1
-            color:"#b9c5cc"
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
+            width: fcitxconfigtoolFont.width - showtitle.width - 40 * 2
         }
     }
     //显示设置
@@ -406,12 +403,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏

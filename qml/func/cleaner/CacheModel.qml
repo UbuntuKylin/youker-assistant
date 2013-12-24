@@ -393,7 +393,7 @@ Item {
     }
 
     //分割条
-    Rectangle {
+    Common.Separator {
         id: splitbar
         anchors {
             top: titlebar.bottom
@@ -402,8 +402,6 @@ Item {
             leftMargin: 2
         }
         width: parent.width - 4
-        height: 1
-        color: "#d8e0e6"
     }
 
     Common.ScrollArea {

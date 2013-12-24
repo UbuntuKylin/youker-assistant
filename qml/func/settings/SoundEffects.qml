@@ -24,7 +24,6 @@ Rectangle {
     width: parent.width
     color:"transparent"
     height: 475
-//    property int soundz:0
     property int scrollbar_z: 0
     property int play_pause: 0
     property int chooseyy_height: 200
@@ -32,8 +31,6 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property string default_sound: ""
-//    property string init_sound: ""
-//    property bool init_sound_flag: false
     property string actiontitle: qsTr("Sound effect")//声音效果
     property string actiontext: qsTr("selected music file name in the list box, do something such as audition, substitution and reduction.")//选中列表框中的音乐文件名，进行对应程序事件的试听、替换和还原。
     property int musiclist_num: 0
@@ -50,7 +47,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-//        soundeffectspage.init_sound_flag = false;
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
         else
@@ -182,7 +178,7 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: qsTr("Restore defaults")//恢复默认
+                text: qsTr("Restore")//恢复默认
                 width: 105
                 height: 30
                 onClicked: {
@@ -378,68 +374,6 @@ Rectangle {
                     }
                 }//Item
             }//ScrollArea
-
-
-//            ListView{
-//                id:lisv
-//                anchors.fill: parent
-//                model:musicmodel
-//                delegate: cdelegat
-//                highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
-//                focus:true
-//            }
-
-//            Rectangle{
-//                id:scrollbar
-//                z:scrollbar_z
-//                anchors.right: parent.right
-//                anchors.rightMargin: 8
-//                height: parent.height
-//                width:4
-//                color: "lightgrey"
-//            }
-//            Rectangle{
-//                id: button
-//                anchors.right: parent.right
-//                anchors.rightMargin: 5
-//                width: 10
-//                z:scrollbar_z
-//                y: lisv.visibleArea.yPosition * (scrollbar.height+button.height)
-////                height: lisv.visibleArea.heightRatio * scrollbar.height;
-//                height:45
-//                radius: 3
-//                smooth: true
-//                color: "white"
-//                border.color: "lightgrey"
-//                Column{
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    spacing: 2
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                }
-//                MouseArea {
-//                    id: mousearea
-//                    anchors.fill: button
-//                    drag.target: button
-//                    drag.axis: Drag.YAxis
-//                    drag.minimumY: 0
-//                    drag.maximumY: scrollbar.height - button.height
-//                    onMouseYChanged: {
-//                        lisv.contentY = button.y / (scrollbar.height+lisv.visibleArea.heightRatio * (scrollbar.height-lisv.visibleArea.heightRatio * scrollbar.height))* lisv.contentHeight
-//                    }
-//                }
-//            }
         }
     }
 
@@ -532,12 +466,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
@@ -547,12 +484,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onOkBtnClicked: {
         }

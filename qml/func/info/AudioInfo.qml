@@ -24,6 +24,7 @@ Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
     property int itemNum: 4//每个模块的子项个数
+    property int viewSpace: 20
     property bool firstFlag: false
     property bool secondFlag: false
     property bool thirdFlag: false
@@ -117,16 +118,16 @@ Rectangle {
             firstView.visible = true;
             var vendorName = systemdispatcher.getSingleInfo("MulVendor", "audiocard");
             firstModel.clear();
-
+            firstModel.append({"title": qsTr("Audio Model:"), "result": systemdispatcher.getSingleInfo("MulProduct", "audiocard")});//声卡型号：
             firstModel.append({"title": qsTr("Vendor:"), "result": vendorName});//制造商：
             firstModel.append({"title": qsTr("Bus Address:"), "result": systemdispatcher.getSingleInfo("MulBusinfo", "audiocard")});//总线地址：
             firstModel.append({"title": qsTr("Audio Driver:"), "result": systemdispatcher.getSingleInfo("MulDrive", "audiocard")});//声卡驱动：
-            firstModel.append({"title": qsTr("Audio Model:"), "result": systemdispatcher.getSingleInfo("MulProduct", "audiocard")});//声卡型号：
+
             splitbar1.visible = true;
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-            listItem.height = home.itemNum*20 + (home.itemNum - 1)*10 + 10*2;
+            listItem.height = home.itemNum*20 + (home.itemNum - 1)*home.viewSpace + home.viewSpace*2;
         }
         else if(num >= 2){
             home.show_several_audio(num);
@@ -147,8 +148,8 @@ Rectangle {
             Text {
                 id: slotText
                 text: result
-//                width: 450
-//                wrapMode: Text.WordWrap
+                width: 500
+                wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
                 height: 20
@@ -171,9 +172,9 @@ Rectangle {
             font.pixelSize: 14
             color: "#383838"
         }
-        Rectangle {width: home.width - titlebar.width - 30 * 2
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
-            height: 1; color: "#ccdadd"
+            width: home.width - titlebar.width - 30 * 2
         }
     }
     Common.ScrollArea {
@@ -196,20 +197,22 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.firstFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                    height: home.firstFlag ? (home.itemNum*20 + (home.itemNum - 1)*home.viewSpace) : 0
                     ListView {
                         id: firstView
                         anchors.fill: parent
                         model: firstModel
                         delegate: audioDelegate
                         visible: false
-                        spacing: 10
+                        spacing: home.viewSpace
                     }
                     Image {
                         id: logo1
                         visible: false
                         source: ""
                         anchors {
+                            top: parent.top
+                            topMargin: 50
                             right: parent.right
                             rightMargin: 30
                         }
@@ -222,20 +225,22 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.secondFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                    height: home.secondFlag ? (home.itemNum*20 + (home.itemNum - 1)*home.viewSpace) : 0
                     ListView {
                         id: secondView
                         anchors.fill: parent
                         model: secondModel
                         delegate: audioDelegate
                         visible: false
-                        spacing: 10
+                        spacing: home.viewSpace
                     }
                     Image {
                         id: logo2
                         visible: false
                         source: ""
                         anchors {
+                            top: parent.top
+                            topMargin: 50
                             right: parent.right
                             rightMargin: 30
                         }
@@ -248,20 +253,22 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.thirdFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                    height: home.thirdFlag ? (home.itemNum*20 + (home.itemNum - 1)*home.viewSpace) : 0
                     ListView {
                         id: thirdView
                         anchors.fill: parent
                         model: thirdModel
                         delegate: audioDelegate
                         visible: false
-                        spacing: 10
+                        spacing: home.viewSpace
                     }
                     Image {
                         id: logo3
                         visible: false
                         source: ""
                         anchors {
+                            top: parent.top
+                            topMargin: 50
                             right: parent.right
                             rightMargin: 30
                         }
@@ -274,20 +281,22 @@ Rectangle {
                 }
                 Item {
                     width: parent.width
-                    height: home.fourthFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                    height: home.fourthFlag ? (home.itemNum*20 + (home.itemNum - 1)*home.viewSpace) : 0
                     ListView {
                         id: fourthView
                         anchors.fill: parent
                         model: fourthModel
                         delegate: audioDelegate
                         visible: false
-                        spacing: 10
+                        spacing: home.viewSpace
                     }
                     Image {
                         id: logo4
                         visible: false
                         source: ""
                         anchors {
+                            top: parent.top
+                            topMargin: 50
                             right: parent.right
                             rightMargin: 30
                         }

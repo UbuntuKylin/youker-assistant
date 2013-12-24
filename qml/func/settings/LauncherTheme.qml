@@ -103,16 +103,15 @@ Rectangle {
         }
         spacing: 5
         Text{
+            id: launchertitle
             text: qsTr("Launcher settings")//启动器设置
             font.bold: true
             font.pixelSize: 12
             color: "#383838"
         }
-        Rectangle{
-            width:700
-            height:1
-            color:"#b9c5cc"
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
+            width: launcherthemepage.width - launchertitle.width - 40 * 2
         }
     }
 
@@ -229,12 +228,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
@@ -245,12 +247,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onRestoreBtnClicked: {
             var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "size");
@@ -304,14 +309,6 @@ Rectangle {
                 statusImage.visible = true;
             }
         }
-//        onOkBtnClicked: {
-//            if (launcherthemepage.launcher_size != slider.value) {
-//                launcherthemepage.launcher_size = slider.value;
-//                sessiondispatcher.set_launcher_icon_size_qt(slider.value);
-//                statusImage.visible = true;
-//            }
-//        }
-
         Timer {
              interval: 5000; running: true; repeat: true
              onTriggered: statusImage.visible = false

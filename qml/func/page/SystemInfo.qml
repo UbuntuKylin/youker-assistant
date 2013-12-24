@@ -29,20 +29,20 @@ Rectangle {
 
     function addList() {
         listModel.clear();//清空
-        listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "computer"});
-        listModel.append({"name": qsTr("Desktop"), "flag": "desktop", "iconName": "unity"});
-        listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "cpu"});
-        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "memory"});
-        listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "board"});
-        listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "harddisk"});
-        listModel.append({"name": qsTr("NetworkCard"), "flag": "networkcard", "iconName": "network"});
-        listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "monitor"});
-        listModel.append({"name": qsTr("AudioCard"), "flag": "audiocard", "iconName": "audio"});
+        listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "computer"});//电脑概述
+        listModel.append({"name": qsTr("Desktop"), "flag": "desktop", "iconName": "unity"});//桌面
+        listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "cpu"});//中央处理器
+        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "memory"});//内存
+        listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "board"});//主板
+        listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "harddisk"});//硬盘
+        listModel.append({"name": qsTr("NIC"), "flag": "networkcard", "iconName": "network"});//网卡
+        listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "monitor"});//显示器
+        listModel.append({"name": qsTr("Audio"), "flag": "audiocard", "iconName": "audio"});//音频
         var cdromNumber = systemdispatcher.getSingleInfo("Dvdnum", "cdrom");//光驱个数
         if(cdromNumber > 0) {//存在光驱时才会增加该页面的显示
-            listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "cdrom"});
+            listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "cdrom"});//光驱
         }
-        listModel.append({"name": qsTr("Device"), "flag": "device", "iconName": "audio"});
+        listModel.append({"name": qsTr("Device"), "flag": "device", "iconName": "device"});//设备
     }
 
     ListModel {
@@ -150,13 +150,13 @@ Rectangle {
                 height: parent.height
                 visible: false
             }
-            Info.HardDiskInfo {
+            Info.HDInfo {
                 id: hardLayer
                 width: parent.width
                 height: parent.height
                 visible: false
             }
-            Info.NetworkCardInfo {
+            Info.NICInfo {
                 id: networkLayer
                 width: parent.width
                 height: parent.height
@@ -168,7 +168,7 @@ Rectangle {
                 height: parent.height
                 visible: false
             }
-            Info.AudioCardInfo {
+            Info.AudioInfo {
                 id: audioLayer
                 width: parent.width
                 height: parent.height
