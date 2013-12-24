@@ -112,10 +112,10 @@ void LocationDialog::on_okBtn_clicked()
         QString currentCity = ui->comboBox->currentText();
         if(!currentCity.isEmpty()) {
             if(selectCity != currentCity) {
-                //警告 请输入合适的城市名字后点击查找按钮进行查找！
+                //警告：        请输入城市名字，点击＇查找＇按钮进行查找！
                 QMessageBox::warning(NULL,
-                                     tr("Warning"),
-                                     tr("please input city name and click find button to find!"),
+                                     tr("Warning:"),
+                                     tr("Please input city name and click 'find' button to find!"),
                                      QMessageBox::Ok);
             }
             else {
@@ -129,7 +129,7 @@ void LocationDialog::on_okBtn_clicked()
         //"警告:               请输入城市名字,点击'查找'按钮进行查找！
         QMessageBox::warning(NULL,
                              tr("Warning:"),
-                             tr("please input city name and click 'search' button to find!"),
+                             tr("Please input city name and click 'search' button to find!"),
                              QMessageBox::Ok);
     }
 }

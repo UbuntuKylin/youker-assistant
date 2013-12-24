@@ -20,9 +20,9 @@ Item {
     id:root
     width: parent.width
     height: 435
-    property string title: qsTr("Find large files quickly")//快速找出大文件
+    property string title: qsTr("Quickly find large files")//快速找出大文件
     property string description: qsTr("Range:1M-20480M; 1GB = 1024MB.")//大小范围为1M-20480M；1GB = 1024MB。
-    property string scope_desc: qsTr("Tips: No support the Chinese path.")//提示：暂不支持中文路径。
+    property string scope_desc: qsTr("Tips: No support the path contains Chinese.")//提示：暂不支持中文路径。
     property string btnFlag: "largestfile_work"//清理的标记：largestfile_work
     property int sub_num: 0
     property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
@@ -86,7 +86,7 @@ Item {
         //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
         mainModel.append({"itemTitle": qsTr("Cleanup path is:")  + root.directory,
                          "picture": "../../img/toolWidget/deb-min.png",
-                         "detailstr": qsTr("cleaning up the maximum files in user-specified directory，to save disk space.")})
+                         "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
     }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -159,7 +159,7 @@ Item {
         anchors { top: parent.top; topMargin: 40;right: parent.right ; rightMargin: 40 }
         spacing: 20
         Text {
-            text: qsTr("Please input the file size(M):")//请输入文件大小(M):
+            text: qsTr("Please input the file size (M) : ")//请输入文件大小 (M)：
             font.pixelSize: 12
             color: "#383838"
             anchors.verticalCenter: parent.verticalCenter
@@ -210,29 +210,29 @@ Item {
             width: 95
             height: 30
             hoverimage: "green2.png"
-            text: qsTr("Begin Cleanup")//开始清理
+            text: qsTr("Begin cleanup")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 if(root.check_flag) {
                     if(size_text.text == "" || size_text.text == 0)
-                        //友情提示：        对不起，您没有设置扫描文件的大小或者值为0，请重新在绿色框中输入数字！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you have not set the scan file size or value is 0, please reset the number in the green box!"), mainwindow.pos.x, mainwindow.pos.y);
+                        //友情提示：        对不起，您没有设置扫描文件的大小或者设置值为 0，请重新输入文件大小！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You haven't set the file size or the value is 0, please input the file sizes !"), mainwindow.pos.x, mainwindow.pos.y);
                     else if (root.directory == "")
                     {
                         if(root.sub_num != 0 && root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                         }
                         else {
-                            //友情提示：        对不起，您没有选择扫描路径，请点击“浏览”按钮选择！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, you don't choose the scanning path, please click the 'Browse' button to continue!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：        对不起，您没有选择扫描路径，请点击＂浏览＂按钮选择！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the scan path, please click the 'Browse' button to continue!"), mainwindow.pos.x, mainwindow.pos.y);
                             root.deleget_arrow =0;
                         }
                     }
                     else {
                         if(root.null_flag == true) {
                            root.state = "LargestFileWorkEmpty";
-                            //友情提示： 扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：         扫描内容为空，无需清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else if(root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
@@ -240,6 +240,7 @@ Item {
                     }
                 }
                 else {
+                    //友情提示：         对不起，您没有选择需要清理的项，请确认！
                     sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y)
                 }
             }

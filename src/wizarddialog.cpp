@@ -171,10 +171,10 @@ void WizardDialog::delLocation() {
         ui->listWidget->setCurrentItem(currentitem);
         QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
         if (cityId == "") {
-            //警告   没有找到城市配置文件！
+            //警告：           没有找到配置文件！
             QMessageBox::warning(NULL,
-                                 tr("Warning"),
-                                 tr("No find city config file!"),
+                                 tr("Warning:"),
+                                 tr("The configuration file is not found!"),
                                  QMessageBox::Ok);
         }
         else {

@@ -22,7 +22,7 @@ SourceDialog::SourceDialog(QWidget *parent) :
                 "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
     //QLabel自动换行
     ui->displaylabel->setWordWrap(true);
-    ui->displaylabel->setText(tr("Here you can add Ubuntu Kylin source to sourcelist, If it doesn't be added into sourcelist, the recommand software will cannot work. Click 'OK' to add it, or click 'Quit' to give up!"));//你可以增加UbuntuKylin软件源到软件源列表中，如果没有被添加到列表中，软件推荐将无法正常使用。点击“确定”按钮去添加软件源，点击“取消”按钮放弃添加！
+    ui->displaylabel->setText(tr("You need to add Ubuntu Kylin software source, or the software recommended feature will not be available. Click 'OK' to add the software source, click 'Cancel' to give up!"));//您需要添加 Ubuntu Kylin 软件源，否则软件推荐功能将无法使用。点击＂确定＂按钮添加软件源，点击＂取消＂按钮放弃添加！
     QObject::connect(ui->okButton,SIGNAL(clicked()),this,SLOT(handler_OK()));
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(reject()));
 }

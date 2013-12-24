@@ -73,36 +73,54 @@ Item {
                 smooth: true
             }
 
-            Column {
-                id: status_update_content
-                spacing: 5
+            Row {
+                spacing: 10
                 anchors.verticalCenter: parent.verticalCenter
-                Row {
-                    spacing: 10
-                    Text {
-                        text: itemTitle
-                        font.pointSize: 11
-                        color: "black"
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                    Common.Label {
-                        id: numLabel
-                        visible: broswerDelegate.showNum
-                        text: "[ " + broswerDelegate.sub_num + qsTr(" Items ]")
-                        font.pointSize: 11
-                        color: "black"
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                }
                 Text {
-                    text: detailstr
-                    width: 450
-                    wrapMode: Text.WordWrap
-                    font.family: "URW Bookman L"
-                    font.pointSize: 9
-                    color: "gray"
+                    text: itemTitle
+                    font.pointSize: 11
+                    color: "black"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Label {
+                    id: numLabel
+                    visible: broswerDelegate.showNum
+                    text: "[ " + broswerDelegate.sub_num + qsTr(" Items ]")// 个项目
+                    font.pointSize: 11
+                    color: "black"
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
+//            Column {
+//                id: status_update_content
+//                spacing: 5
+//                anchors.verticalCenter: parent.verticalCenter
+//                Row {
+//                    spacing: 10
+//                    Text {
+//                        text: itemTitle
+//                        font.pointSize: 11
+//                        color: "black"
+//                        anchors.verticalCenter: parent.verticalCenter
+//                    }
+//                    Common.Label {
+//                        id: numLabel
+//                        visible: broswerDelegate.showNum
+//                        text: "[ " + broswerDelegate.sub_num + qsTr(" Items ]")// 个项目
+//                        font.pointSize: 11
+//                        color: "black"
+//                        anchors.verticalCenter: parent.verticalCenter
+//                    }
+//                }
+//                Text {
+//                    text: detailstr
+//                    width: 450
+//                    wrapMode: Text.WordWrap
+//                    font.family: "URW Bookman L"
+//                    font.pointSize: 9
+//                    color: "gray"
+//                }
+//            }
 
             Row {
                 spacing: 15
@@ -113,7 +131,7 @@ Item {
                         id: resetBtn
                         visible: broswerDelegate.resetStatus//false
                         anchors.verticalCenter: parent.verticalCenter
-                        wordname: qsTr("Go back")//返回
+                        wordname: qsTr("Back")//返回
                         width: 40
                         height: 20
                         onClicked: {
@@ -124,7 +142,7 @@ Item {
                         id: rescanBtn
                         visible: broswerDelegate.resetStatus//false
                         anchors.verticalCenter: parent.verticalCenter
-                        wordname: qsTr("Scan again")//重新扫描
+                        wordname: qsTr("Rescan")//重新扫描
                         width: 40
                         height: 20
                         onClicked: {

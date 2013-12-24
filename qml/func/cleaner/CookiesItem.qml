@@ -48,11 +48,11 @@ Item {
 
         onFinishCleanSingleWork: {
             if (msg == "") {
-                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
 
             }
             else if (msg == "cookies") {
-                toolkits.alertMSG(qsTr("Cleanup Successfully!"), mainwindow.pos.x, mainwindow.pos.y);//清理成功！
+                toolkits.alertMSG(qsTr("Cleanup successfully!"), mainwindow.pos.x, mainwindow.pos.y);//清理成功！
                 container.refreshed();//清理完单个数据后，通过clicked信号告诉BrowserCookies.qml去进行数据再次扫描刷新的操作
             }
         }

@@ -102,7 +102,7 @@ Item {
         width: parent.width
         height: parent.height
         property string title: qsTr("Uninstall unnecessary procedures and old kernel packages")//卸载不必要的程序和旧内核包
-        property string description: qsTr("Clean installed dependent program, to improve system performance and save disk space")//清理软件安装过程中安装的依赖程序，提高系统性能和节省磁盘空间
+        property string description: qsTr("Cleaning up the software that installed by other software bundled or old kernel packages, to improve system performance")//清理软件安装过程中捆绑安装的依赖程序或旧内核包，提高系统性能
         property string btnFlag: "package_scan"//扫描或者清理的标记：package_scan/package_work
         property bool packageresultFlag: false//判断依赖包扫描后的实际内容是否为空，为空时为false，有内容时为true
         property bool kernelresultFlag: false//判断旧内核包扫描后的实际内容是否为空，为空时为false，有内容时为true
@@ -128,16 +128,16 @@ Item {
         ListModel { id: kernelsubModel }
 
         Component.onCompleted: {
-            //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
+            //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
             packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                              "itemTitle": qsTr("Uninstall unnecessary procedures"),
                              "picture": "../../img/toolWidget/deb-min.png",
-                             "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
-            //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
+                             "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+            //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                              "itemTitle": qsTr("Uninstall old kernel packages"),
                              "picture": "../../img/toolWidget/deb-min.png",
-                            "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
+                            "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
         }
 
         Connections
@@ -158,17 +158,17 @@ Item {
             }
             onTellQMLPackageOver: {
                 packagemainModel.clear();
-                //卸载不必要的程序         用户可以根据扫描结果选择性地清理不再需要的安装程序,让系统更瘦
+                kernelmainModel.clear();
+                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
                                  "picture": "../../img/toolWidget/deb-min.png",
-                                 "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
-                //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
-                kernelmainModel.clear();
+                                 "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Uninstall old kernel packages"),
                                  "picture": "../../img/toolWidget/deb-min.png",
-                                "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
+                                "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
 
                 if(root.packageNum != 0) {
                     root.packageresultFlag = true;//扫描的实际有效内容存在
@@ -213,8 +213,8 @@ Item {
                 if(root.packageresultFlag == false && root.kernelresultFlag == false) {
                     root.state = "PackageWorkEmpty";
                     if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                        //友情提示：      扫描内容为空，不再执行清理！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                        //友情提示：      扫描内容为空，无需清理！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {//清理apt后的重新获取数据，此时不需要显示对话框
                         root.flag = false;
@@ -376,7 +376,7 @@ Item {
                         //清理过程中发生错误，解禁按钮
                         actionBtn.enabled = true;
                         titleBar.state = "PackageWorkError";
-                        toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                        toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                     }
                 }
             }
@@ -386,7 +386,7 @@ Item {
                         //清理取消，解禁按钮
                         actionBtn.enabled = true;
                         home.state = "NormalState";
-                        toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                        toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
                     }
                     else if (msg == "package") {
                         root.state = "PackageWorkFinish";
@@ -396,16 +396,17 @@ Item {
 //                        root.getData();
                         if(root.package_maincheck && root.kernel_maincheck) {
                             packagemainModel.clear();
+                            kernelmainModel.clear();
+                            //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                             packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall unnecessary procedures"),
                                              "picture": "../../img/toolWidget/deb-min.png",
-                                             "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
-                            kernelmainModel.clear();
-                            //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
+                                             "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                            //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall old kernel packages"),
                                              "picture": "../../img/toolWidget/deb-min.png",
-                                            "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
+                                            "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
                             systemdispatcher.clear_package_args();
                             packagesubModel.clear();//内容清空
                             kernelsubModel.clear();//内容清空
@@ -417,10 +418,11 @@ Item {
                         else {
                             if(root.package_maincheck) {
                                 packagemainModel.clear();
+                                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
                                                  "picture": "../../img/toolWidget/deb-min.png",
-                                                 "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
+                                                 "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
@@ -431,11 +433,16 @@ Item {
                             }
                             else if(root.kernel_maincheck) {
                                 kernelmainModel.clear();
-                                //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
+                                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+                                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+                                                 "itemTitle": qsTr("Uninstall unnecessary procedures"),
+                                                 "picture": "../../img/toolWidget/deb-min.png",
+                                                 "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                                //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
                                                  "picture": "../../img/toolWidget/deb-min.png",
-                                                "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
+                                                "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
@@ -518,15 +525,16 @@ Item {
                         root.kernel_showNum = false;
                         packagemainModel.clear();
                         kernelmainModel.clear();
+                        //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                         packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Uninstall unnecessary procedures"),
                                          "picture": "../../img/toolWidget/deb-min.png",
-                                         "detailstr": qsTr("User can selectively clean installed program no longer need according to the scan results, make the system more thin")})
-                        //卸载旧内核包         用户可以根据扫描结果选择性地清理旧内核包,节省系统空间
+                                         "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                        //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                         kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Uninstall old kernel packages"),
                                          "picture": "../../img/toolWidget/deb-min.png",
-                                        "detailstr": qsTr("According to the results of the scanning ，selectively clean up the old kernel to save the disk space")})
+                                        "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
                         packagesubModel.clear();//内容清空
                         root.packageNum = 0;//隐藏滑动条
                         root.package_arrow_show = 0;//伸缩图标隐藏
@@ -543,7 +551,7 @@ Item {
                 width: 120
                 height: 39
                 hoverimage: "green1.png"
-                text: qsTr("Start Scanning")//开始扫描
+                text: qsTr("Start scanning")//开始扫描
                 fontsize: 15
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
@@ -582,7 +590,7 @@ Item {
                                 }
                                 else{
                                     actionBtn.enabled = true;
-                                    //友情提示：        对不起，您没有选择需要扫描的项，请确认！
+                                    //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
                                     sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                                 }
                             }
@@ -590,7 +598,7 @@ Item {
                         else if (root.btnFlag == "package_work") {//清理
                             if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
                                 if(!root.package_maincheck && !root.kernel_maincheck) {
-                                    //友情提示：        对不起，您没有选择需要清理的项，请确认！
+                                    //友情提示：        对不起，您没有选择需要清理的内容，请确认！
                                     sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                                 }
                                 else {
@@ -606,11 +614,11 @@ Item {
                     else {//sessiondbus服务还没有启动
                         if(!root.package_maincheck && !root.kernel_maincheck) {
                             if (root.btnFlag == "package_scan") {//扫描
-                                //友情提示：        对不起，您没有选择需要扫描的项，请确认！
-                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                //友情提示：        对不起，您没有选择需要清理的内容，请确认！
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                             else if (root.btnFlag == "package_work") {//清理
-                                //友情提示：        对不起，您没有选择需要清理的项，请确认！
+                                //友情提示：        对不起，您没有选择需要清理的内容，请确认！
                                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                             }
                         }
@@ -825,28 +833,28 @@ Item {
             },
             State {
                 name: "PackageWorkAGAIN"
-                PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
+                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "package_scan" }
                 PropertyChanges { target: backBtn; visible: false}
     //            PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
                 name: "PackageWorkError"
-                PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
+                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "package_scan" }
                 PropertyChanges { target: backBtn; visible: false}
     //            PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
                 name: "PackageWorkFinish"
-                PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
+                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
                 PropertyChanges { target: root; btnFlag: "package_scan" }
                 PropertyChanges { target: backBtn; visible: false}
     //            PropertyChanges { target: rescanBtn; visible: false}
             },
             State {
                 name: "PackageWorkEmpty"
-                PropertyChanges { target: actionBtn; text:qsTr("Start Scanning")}//开始扫描
+                PropertyChanges { target: actionBtn; text:qsTr("Start scanning")}//开始扫描
                 PropertyChanges { target: root; btnFlag: "package_scan" }
                 PropertyChanges { target: backBtn; visible: false}
     //            PropertyChanges { target: rescanBtn; visible: false}

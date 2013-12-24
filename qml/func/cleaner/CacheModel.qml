@@ -20,8 +20,8 @@ Item {
     id:root
     width: parent.width
     height: 435
-    property string title: qsTr("Clearing the system cache")//深度清理系统缓存
-    property string description: qsTr("Deep cleaning system cache, to save disk space")//深度清理缓存,节省磁盘空间
+    property string title: qsTr("Deep cleaning up the system cache")//深度清理系统缓存
+    property string description: qsTr("Deep cleaning up the system cache, to save disk space!")//深度清理系统缓存,节省磁盘空间
     property string btnFlag: "cache_scan"//扫描或者清理的标记：cache_scan/cache_work
     property bool aptresultFlag: false//判断apt扫描后的实际内容是否为空，为空时为false，有内容时为true
     property bool softresultFlag: false//判断soft扫描后的实际内容是否为空，为空时为false，有内容时为true
@@ -67,12 +67,12 @@ Item {
             softmainModel.clear();
             //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
             aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
-                             "itemTitle": qsTr("Package cache cleanup"),
+                             "itemTitle": qsTr("Cleanup Package Cache"),
                              "picture": "../../img/toolWidget/apt-min.png",
                              "detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives")})
             //软件中心缓存清理       软件中心缓存：
             softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
-                             "itemTitle": qsTr("Software Center buffer cleaning"),
+                             "itemTitle": qsTr("Cleanup Software Center Cache"),
                              "picture": "../../img/toolWidget/software-min.png",
                              "detailstr": qsTr("Software Center Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/software-center"})
 
@@ -119,8 +119,8 @@ Item {
             if(root.aptresultFlag == false && root.softresultFlag == false) {
                 root.state = "AptWorkEmpty";
                 if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                    //友情提示：      扫描内容为空，不再执行清理！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                    //友情提示：      扫描内容为空，无需清理！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
                 }
                 else {//清理apt后的重新获取数据，此时不需要显示对话框
                     root.flag = false;
@@ -148,12 +148,12 @@ Item {
     Component.onCompleted: {
         //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
         aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
-                         "itemTitle": qsTr("Package cache cleanup"),
+                         "itemTitle": qsTr("Cleanup Package Cache"),
                          "picture": "../../img/toolWidget/apt-min.png",
                          "detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives")})
         //软件中心缓存清理       软件中心缓存：
         softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
-                         "itemTitle": qsTr("Software Center buffer cleaning"),
+                         "itemTitle": qsTr("Cleanup Software Center Cache"),
                          "picture": "../../img/toolWidget/software-min.png",
                          "detailstr": qsTr("Software Center Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/software-center"})
     }
@@ -167,7 +167,7 @@ Item {
                     root.state = "AptWorkError";
                     //清理过程中发生错误，解禁按钮
                     actionBtn.enabled = true;
-                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
         }
@@ -176,11 +176,11 @@ Item {
                 if (msg == "") {
                     //清理取消，解禁按钮
                     actionBtn.enabled = true;
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
                 }
                 else if (msg == "cache") {
                     root.state = "AptWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                     //清理完毕后重新获取数据
                     root.flag = true;
                     if(root.apt_maincheck && root.soft_maincheck) {
@@ -222,7 +222,7 @@ Item {
                         }
                         else if(root.soft_maincheck) {
                             softmainModel.clear();
-                            //软件中心缓存清理       软件中心缓存:
+                            //软件中心缓存清理       软件中心缓存：
                             softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png",
@@ -308,7 +308,7 @@ Item {
                     root.soft_showNum = false;
                     aptmainModel.clear();
                     softmainModel.clear();
-                    //软件包缓存清理          Apt缓存路径：/var/cache/apt/archives
+                    //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
                     aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Package cache cleanup"),
                                      "picture": "../../img/toolWidget/apt-min.png",
@@ -334,7 +334,7 @@ Item {
             width: 120
             height: 39
             hoverimage: "green1.png"
-            text: qsTr("Start Scanning")//开始扫描
+            text: qsTr("Start scanning")//开始扫描
             fontsize: 15
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
@@ -368,7 +368,7 @@ Item {
                         }
                         else{
                             actionBtn.enabled = true;
-                            //友情提示：        对不起，您没有选择需要扫描的项，请确认！
+                            //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                     }
@@ -376,7 +376,7 @@ Item {
                 else if (root.btnFlag == "cache_work") {//清理
                     if(root.aptresultFlag || root.softresultFlag) {//扫描得到的实际内容存在时
                         if(!root.apt_maincheck && !root.soft_maincheck) {
-                            //友情提示：        对不起，您没有选择需要清理的项，请确认！
+                            //友情提示：        对不起，您没有选择需要清理的内容，请确认！
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
@@ -542,28 +542,28 @@ Item {
         },
         State {
             name: "AptWorkAGAIN"
-            PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
+            PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btnFlag: "cache_scan" }
             PropertyChanges { target: backBtn; visible: false}
 //            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "AptWorkError"
-            PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
+            PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btnFlag: "cache_scan" }
             PropertyChanges { target: backBtn; visible: false}
 //            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "AptWorkFinish"
-            PropertyChanges { target: actionBtn; text:qsTr("Start Scanning") }//开始扫描
+            PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
             PropertyChanges { target: root; btnFlag: "cache_scan" }
             PropertyChanges { target: backBtn; visible: false}
 //            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "AptWorkEmpty"
-            PropertyChanges { target: actionBtn; text:qsTr("Start Scanning")}//开始扫描
+            PropertyChanges { target: actionBtn; text:qsTr("Start scanning")}//开始扫描
             PropertyChanges { target: root; btnFlag: "cache_scan" }
             PropertyChanges { target: backBtn; visible: false}
 //            PropertyChanges { target: rescanBtn; visible: false}

@@ -286,9 +286,9 @@ void SudoDispatcher::getAppListForDisPlay() {
         emit sendAppListToQML(appList);
     }
     else {
-        //警告   没有找到软件列表文件！
+        //警告：   没有找到软件列表文件！
         QMessageBox::warning(NULL,
-                             tr("Warning"),
+                             tr("Warning:"),
                              tr("No find the softlist file!"),
                              QMessageBox::Ok);
     }
@@ -306,9 +306,9 @@ void SudoDispatcher::getAppInfo(QString flag) {
         config->sync();
     }
     else {
-        //警告   没有找到软件列表文件！
+        //警告：   没有找到软件列表文件！
         QMessageBox::warning(NULL,
-                             tr("Warning"),
+                             tr("Warning:"),
                              tr("No find the softlist file!"),
                              QMessageBox::Ok);
     }
