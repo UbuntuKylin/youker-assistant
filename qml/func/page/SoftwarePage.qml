@@ -30,7 +30,7 @@ Item {
         target: sudodispatcher
         onNotifySourceStatusToQML: {
             //进度: 共       个项目需要更新，正在更新的个数为：
-            root.source_status_text = qsTr("Progress:") + total_items + qsTr("itmes needs to be updated, now updating is No.:") + download_items;
+            root.source_status_text = qsTr("Progress: ") + total_items + qsTr(" itmes need to be updated,  the number of completed updates is: ") + download_items;//进度：//个项目需要更新，已完成个数：
         }
         //下载完成
         onFinishSoftwareFetch: {
@@ -62,15 +62,15 @@ Item {
             //得到数据，显示在进度条上
             onSendDynamicSoftwareProgressQML: {
                 if(type == "down_start") {
-                    progressTitle.text = qsTr("Start download");//开始下载
+                    progressTitle.text = qsTr("Download");//开始下载
                     progress.value = 0;
                 }
                 else if(type == "down_pulse"){
-                    progressTitle.text = qsTr("Downloading package...");//正在下载安装包...
+                    progressTitle.text = qsTr("Downloading...");//正在下载安装包...
                     progress.value = ratio_sus;
                 }
                 else if(type == "down_stop") {
-                    progressTitle.text = qsTr("Download completed");//下载完成
+                    progressTitle.text = qsTr("Downloaded");//下载完成
                     progress.value = 100;
                 }
                 else if(type == "apt_start"){
@@ -78,7 +78,7 @@ Item {
                     progress.value = 0;
                 }
                 else if(type == "apt_pulse"){
-                    progressTitle.text = qsTr("The ongoing: ") + info;//正在进行:
+                    progressTitle.text = qsTr("In progress: ") + info;//正在进行：
                     progress.value = ratio_sus;
                 }
                 else if(type == "apt_stop") {
@@ -97,7 +97,7 @@ Item {
         Text {
             id: title1
             anchors.centerIn: parent
-            text: qsTr("If too long time had not finished, may be a network problem, can click the back button to exit the screen which on the upper left corner.")//如果太长时间没有更新完毕，可能是网络问题，可以点击左上角的返回按钮退出该界面。
+            text: qsTr("If it takes too long to update,  there may be network problems,  you can click the ‘back’ button in the upper left hand corner to exit the interface.")//如果太长时间没有更新完毕，这可能是网络问题，您可以点击左上角的“返回”按钮退出该界面。
             wrapMode: Text.WordWrap
             font.pixelSize: 12
             color: "#7a7a7a"
@@ -112,7 +112,7 @@ Item {
                 bottomMargin: 10
                 horizontalCenter: parent.horizontalCenter
             }
-            text: qsTr("Updating software source, please wait patiently, If it is completed, there will will pop-up prompt information automatically.")//正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息
+            text: qsTr("Updating software source,  please be patient,  there will pop-up prompt information automatically after the update completed.")//正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息
             wrapMode: Text.WordWrap
             font.pixelSize: 14
             color: "#383838"
@@ -218,7 +218,7 @@ Item {
     Rectangle {
         id: software
 //        property bool checkFlag: false
-        property string useinfo: qsTr("If the software is installed successfully, you can through Chinese/English name to search and start the software in Dash.")//如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。
+        property string useinfo: qsTr("If the software is installed successfully,  you can enter the keywords from the Chinese/English name of the software in Dash to searching and starting the software.")//如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软>件。
         property string software_name: ""
         property string installed_status: "n"
         property string tm_status: "n"
@@ -242,7 +242,7 @@ Item {
             else if(showtext == "u") {
                 statusImage.source = "../../img/icons/installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("Access webpage");//进入网页
+                    return qsTr("Download Address");//下载地址
                 }
                 else {
                     return qsTr("Upgrade");//立即升级
@@ -251,7 +251,7 @@ Item {
             else {
                 statusImage.source = "../../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("Access webpage");//进入网页
+                    return qsTr("Download Address");//下载地址
                 }
                 else {
                     return qsTr("N/A");//未发现
@@ -266,7 +266,7 @@ Item {
             else if(showtext == "n") {
                 statusImage.source = "../../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("Access webpage");//进入网页
+                    return qsTr("Download Address");//下载地址
                 }
                 else {
                     return qsTr("Install");//立即安装
@@ -275,7 +275,7 @@ Item {
             else if(showtext == "u") {
                 statusImage.source = "../../img/icons/installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("Access webpage");//进入网页
+                    return qsTr("Download Address");//下载地址
                 }
                 else {
                     return qsTr("Upgrade");//立即升级
@@ -284,7 +284,7 @@ Item {
             else {
                 statusImage.source = "../../img/icons/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                    return qsTr("Access webpage");//进入网页
+                    return qsTr("Download Address");//下载地址
                 }
                 else {
                     return qsTr("N/A");//未发现
@@ -328,7 +328,7 @@ Item {
                         }
                         else if(software.installed_status == "n") {
                             if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
-                                actionBtn.text = qsTr("Access webpage");//进入网页
+                                actionBtn.text = qsTr("Download Address");//下载地址
                             }
                             else {
                                 actionBtn.text = qsTr("Install");//立即安装
@@ -340,7 +340,7 @@ Item {
                             statusImage.source = "../../img/icons/installed.png"
                         }
                         root.state = "SofeWareState";
-                        toolkits.alertMSG(qsTr("Operation completed!"), mainwindow.pos.x, mainwindow.pos.y);//软件操作完成！
+                        toolkits.alertMSG(qsTr("Software operation completed!"), mainwindow.pos.x, mainwindow.pos.y);//软件操作完成！
                     }
                 }
             }
@@ -375,7 +375,7 @@ Item {
                     verticalCenter: parent.verticalCenter
                 }
                 hoverimage: "blue1.png"
-                text: qsTr("Return")//返回
+                text: qsTr("Back")//返回
                 fontcolor: "grey"
                 fontsize: 14
                 onClicked: {
@@ -386,7 +386,7 @@ Item {
             }
             Text {
                 anchors.centerIn: parent
-                text:qsTr("Detailed information")//详细信息
+                text:qsTr("Detailed Info")//详细信息
                 color:"grey"
                 font.bold: true
                 font.pixelSize: 14

@@ -185,7 +185,7 @@ Rectangle {
             Common.StyleButton {
                 id: preferencesBtn
                 anchors.horizontalCenter: parent.horizontalCenter
-                wordname: qsTr("Configuration")//配  置
+                wordname: qsTr("Configure")//配  置
                 width: 40
                 height: 20
 //                flag: "WeatherPreference"

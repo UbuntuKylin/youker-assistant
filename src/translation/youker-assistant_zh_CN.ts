@@ -10,45 +10,45 @@
     </message>
 </context>
 <context>
-    <name>AudioCardInfo</name>
+    <name>AudioInfo</name>
     <message>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="48"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="61"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="78"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="94"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="121"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="49"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="62"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="79"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="95"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="122"/>
         <source>Vendor:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="49"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="62"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="79"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="95"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="122"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="50"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="63"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="80"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="96"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="123"/>
         <source>Bus Address:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="50"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="63"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="80"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="96"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="123"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="51"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="64"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="81"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="97"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="124"/>
         <source>Audio Driver:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="64"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="81"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="97"/>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="124"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="52"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="65"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="82"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="98"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="121"/>
         <source>Audio Model:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioCardInfo.qml" line="169"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="170"/>
         <source>Audio Card Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -129,17 +129,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="135"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="133"/>
         <source>BIOS Manufacturer: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="150"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="148"/>
         <source>Bios Version: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="165"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="163"/>
         <source>Release Date: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -299,7 +299,7 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="137"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="538"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="536"/>
         <source>Begin cleanup</source>
         <translation type="unfinished"></translation>
     </message>
@@ -339,10 +339,10 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="337"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="545"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="552"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="559"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="566"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="543"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="550"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="557"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="564"/>
         <source>Start scanning</source>
         <translation type="unfinished"></translation>
     </message>
@@ -542,12 +542,12 @@
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="159"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="425"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="451"/>
-        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="555"/>
-        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="573"/>
-        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="589"/>
-        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="680"/>
-        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="698"/>
-        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="713"/>
+        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="553"/>
+        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="571"/>
+        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="587"/>
+        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="678"/>
+        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="696"/>
+        <location filename="../../qml/func/cleaner/CookiesModel.qml" line="711"/>
         <source>Start scanning</source>
         <translation type="unfinished"></translation>
     </message>
@@ -702,7 +702,7 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="41"/>
-        <source>According to personal preferences to set the system default font, click the  &apos;Restore defaults&apos; button, can be restored to the state before the font settings. </source>
+        <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -716,79 +716,79 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="181"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="178"/>
         <source>Default Font: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="202"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="256"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="311"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="199"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="253"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="308"/>
         <source>Change fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="209"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="264"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="319"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="413"/>
-        <source>Restore defaults</source>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="206"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="261"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="316"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="408"/>
+        <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="216"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="271"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="213"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="268"/>
         <source>Tips:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="216"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="213"/>
         <source>Has been restored to the default font!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="236"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="233"/>
         <source>Desktop Font: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="271"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="268"/>
         <source>Your system&apos;s desktop font is the default font!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="291"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="288"/>
         <source>Monospace Font: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="326"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="420"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="323"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="415"/>
         <source>Tips: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="326"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="323"/>
         <source>Your system&apos;s monospace font is the default font!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="351"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="348"/>
         <source>Zoom Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="376"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="371"/>
         <source>Global Font Scaling: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="404"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="399"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="420"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="415"/>
         <source>Your system&apos;s global font scaling is the default mode!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -807,8 +807,8 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="43"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="201"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="495"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="199"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="450"/>
         <source>[ Current icon theme is: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -823,52 +823,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="180"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="178"/>
         <source>Icon theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="195"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="193"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="260"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="217"/>
         <source>Desktop icon display control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="287"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="242"/>
         <source>Show Desktop Icons: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="311"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="266"/>
         <source>Home Folder: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="334"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="289"/>
         <source>Network: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="357"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="312"/>
         <source>Trash : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="381"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="336"/>
         <source>Mounted Volumes: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="489"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="444"/>
         <source>Tips: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="489"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="444"/>
         <source>Desktop icon has been restored to the default configuration!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -977,43 +977,43 @@
 <context>
     <name>DocumentFont</name>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="33"/>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="111"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="30"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="105"/>
         <source>Document font settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="34"/>
-        <source>According to personal preferences to set document fonts, click the &apos;Restore defaults&apos; button, can be restored to the state before the font settings.</source>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="31"/>
+        <source>According to personal preferences to set document fonts, click the &apos;Restore&apos; button, can be restored to the state before the font settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="86"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="80"/>
         <source>Completed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="138"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="130"/>
         <source>Document font: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="165"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="156"/>
         <source>Change fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="173"/>
-        <source>Restore Defaults</source>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="164"/>
+        <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="181"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="172"/>
         <source>友情提示：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="181"/>
+        <location filename="../../qml/func/settings/DocumentFont.qml" line="172"/>
         <source>Your system&apos;s document font is the default font!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1039,27 +1039,27 @@
 <context>
     <name>FcitxConfigtool</name>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="11"/>
+        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="10"/>
         <source>Input Method Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="12"/>
+        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="11"/>
         <source>&apos;&lt;&lt;&apos; &apos;&gt;&gt;&apos; button to add/remove input method, &apos;▲’ ‘▼&apos; buttons to adjust the input method priority, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="151"/>
+        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="148"/>
         <source>Current input method list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="164"/>
+        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="161"/>
         <source>Available input method list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="531"/>
+        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="396"/>
         <source>Switch input method</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1077,57 +1077,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="104"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="103"/>
         <source>Display settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="134"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="131"/>
         <source>Candidate list: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="143"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="140"/>
         <source>Horizontal display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="150"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="147"/>
         <source>Vertical display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="164"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="161"/>
         <source>Candidate Word Number: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="199"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="196"/>
         <source>Hotkey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="228"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="225"/>
         <source>Trigger Input Method: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="242"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="264"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="300"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="322"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="358"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="380"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="239"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="261"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="297"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="319"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="355"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="377"/>
         <source>Please press the combination keys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="286"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="283"/>
         <source>Prev Page: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="344"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="341"/>
         <source>Next Page: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -1150,27 +1150,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="143"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="141"/>
         <source>Skin settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="168"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="164"/>
         <source>Using skin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="246"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="242"/>
         <source>Change fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="263"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="259"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="307"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolKey.qml" line="303"/>
         <source>Font settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1302,81 +1302,81 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="311"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="318"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="309"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="316"/>
         <source>Unfinished</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="322"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="320"/>
         <source>Exception occurred</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="326"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="330"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="324"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="328"/>
         <source>Completed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>HardDiskInfo</name>
+    <name>HDInfo</name>
     <message>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="49"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="68"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="91"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="113"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="145"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="49"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="68"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="91"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="113"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="145"/>
         <source>HDD Model: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="50"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="69"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="92"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="114"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="146"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="50"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="69"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="92"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="114"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="146"/>
         <source>HDD Vendor: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="70"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="93"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="115"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="147"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="51"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="70"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="93"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="115"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="147"/>
         <source>HDD Capacity: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="71"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="94"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="116"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="148"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="52"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="71"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="94"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="116"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="148"/>
         <source>Device Name: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="53"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="72"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="95"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="117"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="149"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="53"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="72"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="95"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="117"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="149"/>
         <source>Firmware Version: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="54"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="73"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="96"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="118"/>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="150"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="54"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="73"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="96"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="118"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="150"/>
         <source>Serial Number: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HardDiskInfo.qml" line="199"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="199"/>
         <source>HDD Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1448,7 +1448,7 @@
     <name>LauncherTheme</name>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="30"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="106"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="107"/>
         <source>Launcher settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1463,32 +1463,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="133"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="132"/>
         <source>Launcher hide mode:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="157"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="156"/>
         <source>Launcher icon size: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="184"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="183"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="200"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="199"/>
         <source>Display desktop icon: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="282"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="281"/>
         <source>Tips:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="282"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="281"/>
         <source>Launcher has been restored to the default configuration!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1497,7 +1497,7 @@
     <name>LeftPage</name>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="39"/>
-        <source>Quick Cleanup</source>
+        <source>Quick cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1515,7 +1515,7 @@
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="88"/>
         <location filename="../../qml/func/others/LeftPage.qml" line="191"/>
-        <source>Quick Scan</source>
+        <source>Quick scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1527,27 +1527,27 @@
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="117"/>
-        <source>garbage</source>
+        <source>garbage)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="121"/>
-        <source>historical records</source>
+        <source>historical records)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="125"/>
-        <source>Cookies）</source>
+        <source>Cookies)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="174"/>
-        <source>Quick clean up system junk, saving disk space and improving the system efficiency！</source>
+        <source>Quick clean up system junk, saving disk space and improving the system efficiency!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="183"/>
-        <source>        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system！</source>
+        <source>        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1557,7 +1557,7 @@
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="260"/>
-        <source>Quick Cleanup Items</source>
+        <source>Quick Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1886,8 +1886,8 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="45"/>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="277"/>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="397"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="153"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="259"/>
         <source>[ Current Cursor Theme: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -1902,114 +1902,114 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="254"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="130"/>
         <source>Mouse Pointer Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="272"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="148"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="288"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="164"/>
         <source>Cursor Pointer Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="300"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="176"/>
         <source>Small Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="315"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="191"/>
         <source>Big Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="391"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="253"/>
         <source>Tips: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="391"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="253"/>
         <source>Cursor configure is the default configuration!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>NetworkCardInfo</name>
+    <name>NICInfo</name>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="68"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="68"/>
         <source>NIC Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="86"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="86"/>
         <source>NIC Model:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="101"/>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="256"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="101"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="256"/>
         <source>Vendor:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="116"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="116"/>
         <source>NIC Driver:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="131"/>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="286"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="131"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="286"/>
         <source>Bus Address:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="146"/>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="301"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="146"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="301"/>
         <source>Device Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="161"/>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="317"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="161"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="317"/>
         <source>IP Address:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="176"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="176"/>
         <source>Mac Address:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="191"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="191"/>
         <source>Connection Status: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="206"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="206"/>
         <source>Max Bandwidth: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="222"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="222"/>
         <source>WLan NIC Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="241"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="241"/>
         <source>WLan NIC Model:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="271"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="271"/>
         <source>WLan NIC Driver:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NetworkCardInfo.qml" line="332"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="332"/>
         <source>Serial Number: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2023,7 +2023,7 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="67"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="874"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="872"/>
         <source>Software operation schedule</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2096,7 +2096,7 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="231"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="829"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="827"/>
         <source>Begin cleanup</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2122,10 +2122,10 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="554"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="836"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="843"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="850"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="857"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="834"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="841"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="848"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="855"/>
         <source>Start scanning</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2157,7 +2157,7 @@
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="98"/>
-        <source>The task manager to help you kill some process which you want.</source>
+        <source>Task manager help you to understand the detailed information which procedures and processes are running on the system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2177,27 +2177,27 @@
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="159"/>
-        <source>Refresh Over!</source>
+        <source>Refresh complete!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="165"/>
-        <source>Kill process</source>
+        <source>End process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="177"/>
-        <source>Kill successfully!</source>
+        <source>The end of the process operation is successful!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="186"/>
-        <source>Kill failed!</source>
+        <source>The end of the process operation failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="200"/>
-        <source>Have no choice!</source>
+        <source>Sorry,  You did not choose the process to be killed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2217,27 +2217,27 @@
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="307"/>
-        <source>Cpu%</source>
+        <source>CPU %</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="312"/>
-        <source>Memory%</source>
+        <source>Memory %</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="317"/>
-        <source>Start time</source>
+        <source>Start Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="322"/>
-        <source>Process description</source>
+        <source>Process Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="327"/>
-        <source>Process name</source>
+        <source>Process Name</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2266,7 +2266,7 @@
     <name>RightPage</name>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="33"/>
-        <source>CheckScreen</source>
+        <source>DeadpixelTest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2281,7 +2281,7 @@
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="36"/>
-        <source>SoundEffect</source>
+        <source>SysSounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2296,17 +2296,17 @@
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="134"/>
-        <source>Forum help</source>
+        <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="144"/>
-        <source>New version</source>
+        <source>Features</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="154"/>
-        <source>Report bug</source>
+        <source>Report Bugs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2401,7 +2401,7 @@
     <message>
         <location filename="../../qml/func/page/SoftWareRecommend.qml" line="30"/>
         <location filename="../../qml/func/page/SoftWareRecommend.qml" line="141"/>
-        <source>WPS For Ubuntu Kylin, the best office software of Linux system.</source>
+        <source>WPS For Ubuntu Kylin,  the best office software in the Linux system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2412,7 +2412,7 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SoftWareRecommend.qml" line="158"/>
-        <source>WineQQ, with the best version of Linux system.</source>
+        <source>WineQQ,  the best version of QQ in the Linux system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2425,27 +2425,27 @@
     <name>SoftwarePage</name>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="33"/>
-        <source>Progress:</source>
+        <source>Progress: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="33"/>
-        <source>itmes needs to be updated, now updating is No.:</source>
+        <source> itmes need to be updated,  the number of completed updates is: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="65"/>
-        <source>Start download</source>
+        <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="69"/>
-        <source>Downloading package...</source>
+        <source>Downloading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="73"/>
-        <source>Download completed</source>
+        <source>Downloaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2455,17 +2455,17 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="81"/>
-        <source>The ongoing: </source>
+        <source>In progress: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="100"/>
-        <source>If too long time had not finished, may be a network problem, can click the back button to exit the screen which on the upper left corner.</source>
+        <source>If it takes too long to update,  there may be network problems,  you can click the ‘back’ button in the upper left hand corner to exit the interface.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="115"/>
-        <source>Updating software source, please wait patiently, If it is completed, there will will pop-up prompt information automatically.</source>
+        <source>Updating software source,  please be patient,  there will pop-up prompt information automatically after the update completed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2476,7 +2476,7 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="221"/>
-        <source>If the software is installed successfully, you can through Chinese/English name to search and start the software in Dash.</source>
+        <source>If the software is installed successfully,  you can enter the keywords from the Chinese/English name of the software in Dash to searching and starting the software.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2488,12 +2488,6 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="236"/>
-        <location filename="../../qml/func/page/SoftwarePage.qml" line="245"/>
-        <location filename="../../qml/func/page/SoftwarePage.qml" line="254"/>
-        <location filename="../../qml/func/page/SoftwarePage.qml" line="269"/>
-        <location filename="../../qml/func/page/SoftwarePage.qml" line="278"/>
-        <location filename="../../qml/func/page/SoftwarePage.qml" line="287"/>
-        <location filename="../../qml/func/page/SoftwarePage.qml" line="331"/>
         <source>Access webpage</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2502,6 +2496,16 @@
         <location filename="../../qml/func/page/SoftwarePage.qml" line="272"/>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="334"/>
         <source>Install</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/page/SoftwarePage.qml" line="245"/>
+        <location filename="../../qml/func/page/SoftwarePage.qml" line="254"/>
+        <location filename="../../qml/func/page/SoftwarePage.qml" line="269"/>
+        <location filename="../../qml/func/page/SoftwarePage.qml" line="278"/>
+        <location filename="../../qml/func/page/SoftwarePage.qml" line="287"/>
+        <location filename="../../qml/func/page/SoftwarePage.qml" line="331"/>
+        <source>Download Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2519,17 +2523,17 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="343"/>
-        <source>Operation completed!</source>
+        <source>Software operation completed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="378"/>
-        <source>Return</source>
+        <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="389"/>
-        <source>Detailed information</source>
+        <source>Detailed Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2541,89 +2545,85 @@
 <context>
     <name>SoundEffects</name>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="37"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="34"/>
         <source>Sound effect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="38"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="35"/>
         <source>selected music file name in the list box, do something such as audition, substitution and reduction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="61"/>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="164"/>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="197"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="57"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="160"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="193"/>
         <source>[ Current Sound Theme: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="123"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="119"/>
         <source>Completed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="144"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="140"/>
         <source>Sound theme:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="160"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="156"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="185"/>
-        <source>Restore defaults</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="192"/>
-        <source>Tips: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="192"/>
-        <source>The current theme is the default theme!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="224"/>
-        <source>System event tone: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="237"/>
-        <source>Listen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="244"/>
-        <source>Replace</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="251"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="181"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="247"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="466"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="188"/>
+        <source>Tips: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="188"/>
+        <source>The current theme is the default theme!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="220"/>
+        <source>System event tone: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="233"/>
+        <source>Listen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="240"/>
+        <source>Replace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="400"/>
         <source>Custom SoundTheme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="475"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="409"/>
         <source>Does not support the audio file in the path that contains Chinese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="496"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="430"/>
         <source>Sound settings:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="504"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="438"/>
         <source>Login tone: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2804,7 +2804,7 @@
     <name>SystemBox</name>
     <message>
         <location filename="../../qml/func/page/SystemBox.qml" line="36"/>
-        <source>Detecter</source>
+        <source>Dead pixel test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2829,7 +2829,7 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SystemBox.qml" line="57"/>
-        <source>Default toolbox</source>
+        <source>Default toolkits</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2857,7 +2857,7 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SystemClean.qml" line="86"/>
-        <source>Find large files</source>
+        <source>Find large files </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2918,7 +2918,7 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="38"/>
-        <source>NetworkCard</source>
+        <source>NIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2928,7 +2928,7 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="40"/>
-        <source>AudioCard</source>
+        <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2946,42 +2946,42 @@
     <name>SystemSet</name>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="51"/>
-        <source>You can customize your own visual effects and sound.</source>
+        <source>You can perform a full range of customized systems based on personal preferences！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="76"/>
-        <source> Individualization</source>
+        <source> Personalize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="83"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="110"/>
-        <source>Change WindowTheme</source>
+        <source>WindowTheme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="88"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="119"/>
-        <source>Change IconSetting</source>
+        <source>IconSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="93"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="128"/>
-        <source>Change MousePointer</source>
+        <source>MousePointer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="98"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="137"/>
-        <source>Change SoundEffect</source>
+        <source>SoundEffect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="103"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="146"/>
-        <source>Change BootAnimation</source>
+        <source>BootAnimation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2997,25 +2997,25 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="206"/>
-        <source> Font</source>
+        <source> Fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="213"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="230"/>
-        <source>Change Default Font</source>
+        <source>DefaultFont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="218"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="238"/>
-        <source>Change Document Font</source>
+        <source>DocumentFont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="223"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="246"/>
-        <source>Change Titlebar Font</source>
+        <source>TitlebarFont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3026,13 +3026,13 @@
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="275"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="287"/>
-        <source>Change Touchpad</source>
+        <source>Touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="280"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="295"/>
-        <source>Check Screen</source>
+        <source>Dead pixel test</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3046,7 +3046,7 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/TitlebarFont.qml" line="31"/>
-        <source>According to personal preferences to set titlebar fonts, click the &apos;Restore defaults&apos; button, can be restored to the state before the font settings.</source>
+        <source>According to personal preferences to set titlebar fonts, click the &apos;Restore&apos; button, can be restored to the state before the font settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3066,16 +3066,16 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/TitlebarFont.qml" line="166"/>
-        <source>Restore defaults</source>
+        <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="176"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="173"/>
         <source>Tips: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="176"/>
+        <location filename="../../qml/func/settings/TitlebarFont.qml" line="173"/>
         <source>Your system&apos;s titlebar font is the default font!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3089,7 +3089,7 @@
     </message>
     <message>
         <location filename="../../qml/func/bars/ToolBar.qml" line="59"/>
-        <source>Restore defaults</source>
+        <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3112,12 +3112,12 @@
     </message>
     <message>
         <location filename="../../qml/ToolWidget.qml" line="37"/>
-        <source>System Cleanup</source>
+        <source>Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/ToolWidget.qml" line="40"/>
-        <source>System Beautify</source>
+        <source>Feature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3149,57 +3149,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="134"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="132"/>
         <source>Enable/Disable touchpad: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="165"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="163"/>
         <source>Property settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="193"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="191"/>
         <source>Scrollbar type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="207"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="205"/>
         <source>Features Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="222"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="220"/>
         <source>Standard Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="246"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="244"/>
         <source>Touchpad scroll trigger mode: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="260"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="258"/>
         <source>Edgemotion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="275"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="273"/>
         <source>Twofinger Scroll</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="298"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="296"/>
         <source>Touchpad horizontal scroll: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="384"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="382"/>
         <source>Tips: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="384"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="382"/>
         <source>Touchpad configure has been restored to the default configuration!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3208,21 +3208,21 @@
     <name>TraceModel</name>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="23"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="363"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="407"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="415"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="423"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="432"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="466"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="510"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="518"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="526"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="535"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="569"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="613"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="621"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="629"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="637"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="361"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="405"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="413"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="421"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="430"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="464"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="508"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="516"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="524"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="533"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="567"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="611"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="619"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="627"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="635"/>
         <source>Start scanning</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3246,9 +3246,9 @@
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="73"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="79"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="98"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="386"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="489"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="592"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="384"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="487"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="590"/>
         <source>Tips:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3256,9 +3256,9 @@
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="53"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="79"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="98"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="386"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="489"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="592"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="384"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="487"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="590"/>
         <source>The scan results is empty, no need to clean up!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3273,9 +3273,9 @@
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="59"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="85"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="104"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="399"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="502"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="605"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="397"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="500"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="603"/>
         <source>Begin cleanup</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3302,70 +3302,70 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="232"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="230"/>
         <source>Clean up the Firefox Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="247"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="245"/>
         <source>Clean up the Firefox history records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="268"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="266"/>
         <source>Clean up the Chromium Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="283"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="281"/>
         <source>Clean up the Chromium history records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="305"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="303"/>
         <source>Clean up the recently opened documents records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="320"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="318"/>
         <source>Clean up the recently opened documents in your system, to protect your privacy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="348"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="451"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="554"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="346"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="449"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="552"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="359"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="462"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="565"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="357"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="460"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="563"/>
         <source>Rescan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="401"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="504"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="607"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="399"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="502"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="605"/>
         <source>(Scan to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="401"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="425"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="504"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="528"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="607"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="631"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="399"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="423"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="502"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="526"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="605"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="629"/>
         <source> records)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="425"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="528"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="631"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="423"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="526"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="629"/>
         <source>(Have been cleared </source>
         <translation type="unfinished"></translation>
     </message>
@@ -3458,7 +3458,7 @@
     <name>WeatherForecast</name>
     <message>
         <location filename="../../qml/func/page/WeatherForecast.qml" line="26"/>
-        <source>Access to the China Meteorological Administration six days weather data, provide travel information for users.</source>
+        <source>Getting six days weather forecast data from CMA, providing reference information for users to travel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3531,7 +3531,7 @@
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="45"/>
-        <source>Current temperature（℃）</source>
+        <source>Current temperature (℃)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3577,7 +3577,7 @@
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="130"/>
-        <source>长沙</source>
+        <source>Changsha</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3597,7 +3597,7 @@
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="188"/>
-        <source>Preference</source>
+        <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3649,24 +3649,24 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="34"/>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="107"/>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="229"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="35"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="102"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="215"/>
         <source>[ Current Theme is: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="140"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="135"/>
         <source>Completed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="224"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="210"/>
         <source>Tips: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="224"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="210"/>
         <source>Your system&apos;s current widget theme is the default theme!</source>
         <translation type="unfinished"></translation>
     </message>

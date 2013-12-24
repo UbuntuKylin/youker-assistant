@@ -5,8 +5,9 @@ youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
   * Add CD-ROM, Audio Card and WLan information.
   * Kill root process.
   * Add Device basic information.
+  * Use new translation content.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 22 Dec 2013 12:07:29 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 24 Dec 2013 14:14:11 +0800
 
 youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
 

@@ -30,11 +30,11 @@ Rectangle {
     //更新列表
     function updateList() {
         clearModel.clear();//清空
-        clearModel.append({"icon": "../../img/icons/checkscreen.png", "name": qsTr("Dead pixel test"), "flag": "CheckScreen"});//坏点检测
-        clearModel.append({"icon": "../../img/icons/iconbeauty.png", "name": qsTr("Desktop Icon"), "flag": "Desktopicon"});//桌面图标
-        clearModel.append({"icon": "../../img/icons/bootanimation.png", "name": qsTr("Boot Animation"), "flag": "BootAnimation"});//开机动画
-        clearModel.append({"icon": "../../img/icons/systemsound.png", "name": qsTr("System Sounds"), "flag": "SoundEffects"});//系统声音
-        clearModel.append({"icon": "../../img/icons/mouse.png", "name": qsTr("Mouse Pointer"), "flag": "MousePointer"});//鼠标指针
+        clearModel.append({"icon": "../../img/icons/checkscreen.png", "name": qsTr("DeadpixelTest"), "flag": "CheckScreen"});//坏点检测
+        clearModel.append({"icon": "../../img/icons/iconbeauty.png", "name": qsTr("DesktopIcon"), "flag": "Desktopicon"});//桌面图标
+        clearModel.append({"icon": "../../img/icons/bootanimation.png", "name": qsTr("BootAnimation"), "flag": "BootAnimation"});//开机动画
+        clearModel.append({"icon": "../../img/icons/systemsound.png", "name": qsTr("SysSounds"), "flag": "SoundEffects"});//系统声音
+        clearModel.append({"icon": "../../img/icons/mouse.png", "name": qsTr("MousePointer"), "flag": "MousePointer"});//鼠标指针
         clearModel.append({"icon": "../../img/icons/touchpad.png", "name": qsTr("Touchpad"), "flag": "TouchpadSet"});//触摸板
     }
 
