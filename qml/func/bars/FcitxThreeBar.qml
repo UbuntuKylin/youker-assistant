@@ -42,10 +42,9 @@ Item {
              topMargin: 10
          }
 
-//         anchors.right: parent.right; anchors.rightMargin: 5; y: 3; height: 32; spacing: 30
          Common.Button {
              id: gobackHome
-             hoverimage: "gray1.png"//../../img/icons/
+             hoverimage: "gray1.png"
              text: qsTr("Home")//返回主页
              fontcolor:"#929292"
              fontsize: 13
@@ -55,7 +54,7 @@ Item {
          Common.Button {
              id: cancelBtn
              visible: toolbar.showok
-             hoverimage: "gray1.png"//../../img/icons/
+             hoverimage: "gray1.png"
              text: qsTr("Cancel")//取消
              fontcolor:"#929292"
              fontsize: 13
@@ -64,7 +63,7 @@ Item {
          }
          Common.Button {
              id: gobackBtn
-             hoverimage: "gray1.png"//../../img/icons/
+             hoverimage: "gray1.png"
              text: qsTr("Previous")//上一步
              fontcolor:"#929292"
              fontsize: 13
@@ -74,7 +73,7 @@ Item {
          Common.Button {
             id: finishBtn
             visible: toolbar.showok
-            hoverimage: "green2.png"//../../img/icons/
+            hoverimage: "green2.png"
             fontsize: 13
             fontcolor:"#ffffff"
             text: qsTr("Apply")//应用

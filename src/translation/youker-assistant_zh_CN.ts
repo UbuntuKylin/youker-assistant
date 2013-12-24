@@ -6,7 +6,7 @@
     <message>
         <location filename="../alertdialog.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
 </context>
 <context>
@@ -58,47 +58,47 @@
     <message>
         <location filename="../authdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../authdialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../authdialog.ui" line="47"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../authdialog.ui" line="105"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User password&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用户密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../authdialog.ui" line="121"/>
         <source>Enter the current user password</source>
-        <translation type="unfinished"></translation>
+        <translation>输入当前用户密码</translation>
     </message>
     <message>
         <location filename="../authdialog.cpp" line="96"/>
         <source>Starting service, please wait!</source>
-        <translation type="unfinished"></translation>
+        <translation>正在启动服务，请稍等！</translation>
     </message>
     <message>
         <location filename="../authdialog.cpp" line="106"/>
         <source>Tips: Password error, please re-enter the password to ensure the normal use of youker assistant!</source>
-        <translation type="unfinished"></translation>
+        <translation>提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用！</translation>
     </message>
     <message>
         <location filename="../authdialog_event.cpp" line="57"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../authdialog_event.cpp" line="58"/>
         <source>Background service does not start, some features will not work properly!</source>
-        <translation type="unfinished"></translation>
+        <translation>后台服务没有启动，相关功能将无法正常使用！</translation>
     </message>
 </context>
 <context>
@@ -362,42 +362,42 @@
     <message>
         <location filename="../changecitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="29"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change Cities&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;更换城市&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="51"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;City List:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;城市列表：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="97"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="114"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="140"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Three cities to be set by default, Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置了三个城市，点击主界面上的 “配置” 按钮可以设置需要的城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../changecitydialog.cpp" line="56"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../changecitydialog.cpp" line="57"/>
         <source>The configuration file is not found!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到配置文件！</translation>
     </message>
 </context>
 <context>
@@ -1203,27 +1203,27 @@
     <message>
         <location filename="../fcitxwarndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../fcitxwarndialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../fcitxwarndialog.ui" line="47"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../fcitxwarndialog.ui" line="73"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温馨提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../fcitxwarndialog.cpp" line="36"/>
         <source>Are you sure you want to exit the wizardï¼</source>
-        <translation type="unfinished"></translation>
+        <translation>您确定退出输入法配置向导？</translation>
     </message>
 </context>
 <context>
@@ -1386,42 +1386,42 @@
     <message>
         <location filename="../kfontdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="36"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>字体</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="49"/>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>风格</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="62"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>大小</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="125"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>视图</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="151"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="164"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="177"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Current Font:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;当前字体：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="190"/>
@@ -1431,17 +1431,17 @@
     <message>
         <location filename="../kfontdialog.ui" line="216"/>
         <source>Change Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>更换字体</translation>
     </message>
     <message>
         <location filename="../kfontdialog.cpp" line="263"/>
         <source>Tips</source>
-        <translation type="unfinished"></translation>
+        <translation>提示</translation>
     </message>
     <message>
         <location filename="../kfontdialog.cpp" line="264"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
-        <translation type="unfinished"></translation>
+        <translation>您还没有更换字体，请选择字体进行更换！</translation>
     </message>
 </context>
 <context>
@@ -1620,43 +1620,43 @@
     <message>
         <location filename="../locationdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="39"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name or pinyin to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市中文名或者拼音进行查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="75"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="92"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="122"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>查找</translation>
     </message>
     <message>
         <location filename="../locationdialog.cpp" line="117"/>
         <location filename="../locationdialog.cpp" line="131"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../locationdialog.cpp" line="118"/>
         <source>Please input city name and click &apos;find&apos; button to find!</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
     <message>
         <location filename="../locationdialog.cpp" line="132"/>
         <source>Please input city name and click &apos;search&apos; button to find!</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
 </context>
 <context>
@@ -1743,27 +1743,27 @@
     <message>
         <location filename="../messagedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="30"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="117"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add CD-ROM and Audio Info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;添加光驱和音频设备信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add Device basic Info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;添加设备驱动的基本信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="143"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Modify system cleaner&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;优化系统清理模块&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -1771,27 +1771,27 @@
     <message>
         <location filename="../modaldialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="47"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="105"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monitor Check&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;屏幕坏点检测&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../modaldialog.cpp" line="39"/>
         <source>Left-click to change the color, right-click to exit from this detection.</source>
-        <translation type="unfinished"></translation>
+        <translation>点击鼠标左键进行更换颜色检测操作，点击鼠标右键退出检测。</translation>
     </message>
 </context>
 <context>
@@ -2147,13 +2147,13 @@
     <message>
         <location filename="../processmanager.cpp" line="66"/>
         <source>ps -u %1 -o user,pid,%cpu,%mem,start,ucmd,command</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../processmanager.cpp" line="118"/>
         <location filename="../processmanager.cpp" line="177"/>
         <source>%1;%2;%3;%4;%5;%6;%7</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="98"/>
@@ -2246,12 +2246,12 @@
     <message>
         <location filename="../main.cpp" line="135"/>
         <source>starting....</source>
-        <translation type="unfinished"></translation>
+        <translation>优客助手正在启动中....</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="138"/>
         <source>loading module data....</source>
-        <translation type="unfinished"></translation>
+        <translation>正在加载模块数据....</translation>
     </message>
 </context>
 <context>
@@ -2259,7 +2259,7 @@
     <message>
         <location filename="../quibo.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
 </context>
 <context>
@@ -2315,7 +2315,7 @@
     <message>
         <location filename="../sessiondispatcher.cpp" line="590"/>
         <source>Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>选择文件夹</translation>
     </message>
 </context>
 <context>
@@ -2323,77 +2323,77 @@
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 1</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 1</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 2</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 2</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 3</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 3</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 4</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 4</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="33"/>
         <source>skin 5</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 5</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 6</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 6</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 7</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 7</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 8</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 8</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 9</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 9</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="34"/>
         <source>skin 10</source>
-        <translation type="unfinished"></translation>
+        <translation>皮肤 10</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="64"/>
         <source>Youker Skin Center</source>
-        <translation type="unfinished"></translation>
+        <translation>优客皮肤中心</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="154"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>首页</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="155"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>上一页</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="156"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>下一页</translation>
     </message>
     <message>
         <location filename="../skinswidget.cpp" line="157"/>
         <source>Last</source>
-        <translation type="unfinished"></translation>
+        <translation>末页</translation>
     </message>
 </context>
 <context>
@@ -2633,27 +2633,28 @@
     <message>
         <location filename="../sourcedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../sourcedialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../sourcedialog.ui" line="47"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../sourcedialog.ui" line="105"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;友情提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translatorcomment>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sourcedialog.cpp" line="25"/>
         <source>You need to add Ubuntu Kylin software source, or the software recommended feature will not be available. Click &apos;OK&apos; to add the software source, click &apos;Cancel&apos; to give up!</source>
-        <translation type="unfinished"></translation>
+        <translation>您需要添加 Ubuntu Kylin 软件源，否则软件推荐功能将无法使用。点击＂确定＂按钮添加软件源，点击＂取消＂按钮放弃添加！</translation>
     </message>
 </context>
 <context>
@@ -2677,19 +2678,19 @@
     <message>
         <location filename="../sudodispatcher.cpp" line="204"/>
         <source>Tip: please input password of current user to start server, make it work normally.</source>
-        <translation type="unfinished"></translation>
+        <translation>提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。</translation>
     </message>
     <message>
         <location filename="../sudodispatcher.cpp" line="291"/>
         <location filename="../sudodispatcher.cpp" line="311"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../sudodispatcher.cpp" line="292"/>
         <location filename="../sudodispatcher.cpp" line="312"/>
         <source>No find the softlist file!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到软件列表文件！</translation>
     </message>
 </context>
 <context>
@@ -2697,7 +2698,7 @@
     <message>
         <location filename="../suspensionframe.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="29"/>
@@ -2712,64 +2713,64 @@
     <message>
         <location filename="../suspensionframe.ui" line="111"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="127"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Computer running slow&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;电脑运行缓慢&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="143"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Proposed a key acceleration&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;建议一键加速&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="168"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU occupancy rate:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="184"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="200"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Used:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;已使用：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="216"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unused&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;未使用：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="232"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="283"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory occupancy rate:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="26"/>
         <location filename="../suspensionframe.cpp" line="139"/>
         <source>System runs smoothly</source>
-        <translation type="unfinished"></translation>
+        <translation>系统运行流畅</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="27"/>
         <location filename="../suspensionframe.cpp" line="140"/>
         <source>There is no need to accelerate</source>
-        <translation type="unfinished"></translation>
+        <translation>无需进行加速</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="37"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>详细</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="53"/>
@@ -2779,12 +2780,12 @@
     <message>
         <location filename="../suspensionframe.cpp" line="133"/>
         <source>Computer runs slowly</source>
-        <translation type="unfinished"></translation>
+        <translation>电脑运行缓慢</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="134"/>
         <source>Recommend the use of âquick cleanâ</source>
-        <translation type="unfinished"></translation>
+        <translation>建议一键加速</translation>
     </message>
 </context>
 <context>
@@ -2866,22 +2867,22 @@
     <message>
         <location filename="../systemdispatcher.cpp" line="417"/>
         <source>Select the boot animation</source>
-        <translation type="unfinished"></translation>
+        <translation>选择开机动画</translation>
     </message>
     <message>
         <location filename="../systemdispatcher.cpp" line="417"/>
         <source>Image Files (*.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>图像文件  (*.png)</translation>
     </message>
     <message>
         <location filename="../systemdispatcher.cpp" line="422"/>
         <source>Select music</source>
-        <translation type="unfinished"></translation>
+        <translation>选择音乐</translation>
     </message>
     <message>
         <location filename="../systemdispatcher.cpp" line="422"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
-        <translation type="unfinished"></translation>
+        <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
 </context>
 <context>
@@ -3395,17 +3396,17 @@
     <message>
         <location filename="../tray.cpp" line="123"/>
         <source>Hide/Show window</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏/显示主界面</translation>
     </message>
     <message>
         <location filename="../tray.cpp" line="125"/>
         <source>Hide/Show monitor</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏/显示监控球</translation>
     </message>
     <message>
         <location filename="../tray.cpp" line="130"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>退出(&amp;E)</translation>
     </message>
 </context>
 <context>
@@ -3413,27 +3414,27 @@
     <message>
         <location filename="../updatedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../updatedialog.ui" line="43"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../updatedialog.ui" line="75"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Service reminder:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务提醒：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../updatedialog.ui" line="92"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../updatedialog.cpp" line="36"/>
         <source>The software was not found, please try to update the software sources.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到该软件，请尝试更新软件源。</translation>
     </message>
 </context>
 <context>
@@ -3441,17 +3442,17 @@
     <message>
         <location filename="../warningdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../warningdialog.ui" line="30"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../warningdialog.ui" line="88"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;友情提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -3676,67 +3677,67 @@
     <message>
         <location filename="../wizarddialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="29"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weather Configuration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;天气配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="51"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="80"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Location:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;地点：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="109"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;minute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="170"/>
         <source>Add City</source>
-        <translation type="unfinished"></translation>
+        <translation>添加城市</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="187"/>
         <source>Delete City</source>
-        <translation type="unfinished"></translation>
+        <translation>删除城市</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="204"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>返回</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="221"/>
         <source>Finish</source>
-        <translation type="unfinished"></translation>
+        <translation>完成</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="240"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wind speed unit: Beaufort number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;风速单位：蒲福级&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="259"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: China Meteorological Administration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="176"/>
         <source>Warning:</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：</translation>
     </message>
     <message>
         <location filename="../wizarddialog.cpp" line="177"/>
         <source>The configuration file is not found!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到配置文件！</translation>
     </message>
 </context>
 </TS>

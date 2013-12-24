@@ -40,7 +40,6 @@ Item {
              topMargin: 10
          }
 
-//         anchors.right: parent.right; anchors.rightMargin: 5; y: 3; height: 32; spacing: 30
          Common.Button {
              id: cancelBtn
              visible: toolbar.showok
@@ -58,7 +57,7 @@ Item {
          Common.Button {
             id: gobackBtn
             visible: toolbar.showok
-            hoverimage: "gray1.png"//../../img/icons/
+            hoverimage: "gray1.png"
             text: qsTr("Previous")//上一步
             fontcolor:"#929292"
             fontsize: 13
@@ -67,7 +66,7 @@ Item {
          }
          Common.Button {
              id: continueBtn
-             hoverimage: "gray1.png"//../../img/icons/
+             hoverimage: "gray1.png"
              text: qsTr("Next")//下一步
              fontcolor:"#929292"
              fontsize: 13

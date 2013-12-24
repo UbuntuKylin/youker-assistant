@@ -131,7 +131,7 @@ Rectangle {
 
         Common.StyleButton {
             id: helplabel
-            wordname: qsTr("Help")//论坛求助
+            wordname: qsTr("Forum Help")//论坛求助
             width: 50
             height: 20
 //            flag: "BBS"
