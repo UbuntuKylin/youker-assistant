@@ -46,12 +46,12 @@ Rectangle {
         home.firstFlag = true;
         firstView.visible = true;
         firstModel.clear();
-        firstModel.append({"title": qsTr("HDD Model:"), "result": diskmodel[0]});//硬盘型号：
-        firstModel.append({"title": qsTr("HDD Vendor:"), "result": diskvendor[0]});//硬盘厂商：
-        firstModel.append({"title": qsTr("HDD Capacity:"), "result": diskcapacity[0]});//硬盘容量：
-        firstModel.append({"title": qsTr("Device Name:"), "result": diskname[0]});//设备名称：
-        firstModel.append({"title": qsTr("Firmware Version:"), "result": diskfw[0]});//固件版本：
-        firstModel.append({"title": qsTr("Serial Number:"), "result": diskserial[0]});//序列号：
+        firstModel.append({"title": qsTr("HDD Model: "), "result": diskmodel[0]});//硬盘型号：
+        firstModel.append({"title": qsTr("HDD Vendor: "), "result": diskvendor[0]});//硬盘厂商：
+        firstModel.append({"title": qsTr("HDD Capacity: "), "result": diskcapacity[0]});//硬盘容量：
+        firstModel.append({"title": qsTr("Device Name: "), "result": diskname[0]});//设备名称：
+        firstModel.append({"title": qsTr("Firmware Version: "), "result": diskfw[0]});//固件版本：
+        firstModel.append({"title": qsTr("Serial Number: "), "result": diskserial[0]});//序列号：
         splitbar1.visible = true;
         logo1.visible = true;
         if(diskvendor[0] == "Western Digital") {
@@ -65,12 +65,12 @@ Rectangle {
         home.secondFlag = true;
         secondView.visible = true;
         secondModel.clear();
-        secondModel.append({"title": qsTr("HDD Model:"), "result": diskmodel[1]});
-        secondModel.append({"title": qsTr("HDD Vendor:"), "result": diskvendor[1]});
-        secondModel.append({"title": qsTr("HDD Capacity:"), "result": diskcapacity[1]});
-        secondModel.append({"title": qsTr("Device Name:"), "result": diskname[1]});
-        secondModel.append({"title": qsTr("Firmware Version:"), "result": diskfw[1]});
-        secondModel.append({"title": qsTr("Serial Number:"), "result": diskserial[1]});
+        secondModel.append({"title": qsTr("HDD Model: "), "result": diskmodel[1]});
+        secondModel.append({"title": qsTr("HDD Vendor: "), "result": diskvendor[1]});
+        secondModel.append({"title": qsTr("HDD Capacity: "), "result": diskcapacity[1]});
+        secondModel.append({"title": qsTr("Device Name: "), "result": diskname[1]});
+        secondModel.append({"title": qsTr("Firmware Version: "), "result": diskfw[1]});
+        secondModel.append({"title": qsTr("Serial Number: "), "result": diskserial[1]});
         splitbar2.visible = true;
         logo2.visible = true;
         if(diskvendor[1] == "Western Digital") {
@@ -88,12 +88,12 @@ Rectangle {
             home.thirdFlag = true;
             thirdView.visible = true;
             thirdModel.clear();
-            thirdModel.append({"title": qsTr("HDD Model:"), "result": diskmodel[2]});
-            thirdModel.append({"title": qsTr("HDD Vendor:"), "result": diskvendor[2]});
-            thirdModel.append({"title": qsTr("HDD Capacity:"), "result": diskcapacity[2]});
-            thirdModel.append({"title": qsTr("Device Name:"), "result": diskname[2]});
-            thirdModel.append({"title": qsTr("Firmware Version:"), "result": diskfw[2]});
-            thirdModel.append({"title": qsTr("Serial Number:"), "result": diskserial[2]});
+            thirdModel.append({"title": qsTr("HDD Model: "), "result": diskmodel[2]});
+            thirdModel.append({"title": qsTr("HDD Vendor: "), "result": diskvendor[2]});
+            thirdModel.append({"title": qsTr("HDD Capacity: "), "result": diskcapacity[2]});
+            thirdModel.append({"title": qsTr("Device Name: "), "result": diskname[2]});
+            thirdModel.append({"title": qsTr("Firmware Version: "), "result": diskfw[2]});
+            thirdModel.append({"title": qsTr("Serial Number: "), "result": diskserial[2]});
             splitbar3.visible = true;
             logo3.visible = true;
             if(diskvendor[2] == "Western Digital") {
@@ -110,12 +110,12 @@ Rectangle {
                 home.fourthFlag = true;
                 fourthView.visible = true;
                 fourthModel.clear();
-                fourthModel.append({"title": qsTr("HDD Model:"), "result": diskmodel[3]});
-                fourthModel.append({"title": qsTr("HDD Vendor:"), "result": diskvendor[3]});
-                fourthModel.append({"title": qsTr("HDD Capacity:"), "result": diskcapacity[3]});
-                fourthModel.append({"title": qsTr("Device Name:"), "result": diskname[3]});
-                fourthModel.append({"title": qsTr("Firmware Version:"), "result": diskfw[3]});
-                fourthModel.append({"title": qsTr("Serial Number:"), "result": diskserial[3]});
+                fourthModel.append({"title": qsTr("HDD Model: "), "result": diskmodel[3]});
+                fourthModel.append({"title": qsTr("HDD Vendor: "), "result": diskvendor[3]});
+                fourthModel.append({"title": qsTr("HDD Capacity: "), "result": diskcapacity[3]});
+                fourthModel.append({"title": qsTr("Device Name: "), "result": diskname[3]});
+                fourthModel.append({"title": qsTr("Firmware Version: "), "result": diskfw[3]});
+                fourthModel.append({"title": qsTr("Serial Number: "), "result": diskserial[3]});
                 splitbar4.visible = true;
                 logo4.visible = true;
                 if(diskvendor[3] == "Western Digital") {
@@ -142,12 +142,12 @@ Rectangle {
             firstView.visible = true;
             var vendorName = systemdispatcher.getSingleInfo("DiskVendor", "harddisk");
             firstModel.clear();
-            firstModel.append({"title": qsTr("HDD Model:"), "result": systemdispatcher.getSingleInfo("DiskProduct", "harddisk")});
-            firstModel.append({"title": qsTr("HDD Vendor:"), "result": vendorName});
-            firstModel.append({"title": qsTr("HDD Capacity:"), "result": systemdispatcher.getSingleInfo("DiskCapacity", "harddisk")});
-            firstModel.append({"title": qsTr("Device Name:"), "result": systemdispatcher.getSingleInfo("DiskName", "harddisk")});
-            firstModel.append({"title": qsTr("Firmware Version:"), "result": systemdispatcher.getSingleInfo("DiskFw", "harddisk")});
-            firstModel.append({"title": qsTr("Serial Number:"), "result": systemdispatcher.getSingleInfo("DiskSerial", "harddisk")});
+            firstModel.append({"title": qsTr("HDD Model: "), "result": systemdispatcher.getSingleInfo("DiskProduct", "harddisk")});
+            firstModel.append({"title": qsTr("HDD Vendor: "), "result": vendorName});
+            firstModel.append({"title": qsTr("HDD Capacity: "), "result": systemdispatcher.getSingleInfo("DiskCapacity", "harddisk")});
+            firstModel.append({"title": qsTr("Device Name: "), "result": systemdispatcher.getSingleInfo("DiskName", "harddisk")});
+            firstModel.append({"title": qsTr("Firmware Version: "), "result": systemdispatcher.getSingleInfo("DiskFw", "harddisk")});
+            firstModel.append({"title": qsTr("Serial Number: "), "result": systemdispatcher.getSingleInfo("DiskSerial", "harddisk")});
             splitbar1.visible = true;
             logo1.visible = true;
             if(vendorName == "Western Digital") {
@@ -196,14 +196,14 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("HDD Information")//硬盘信息
+            text: qsTr("HDD Info")//硬盘信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"
         }
-        Rectangle {width: home.width - titlebar.width - 30 * 2
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
-            height: 1; color: "#ccdadd"
+            width: home.width - titlebar.width - 30 * 2
         }
     }
     Common.ScrollArea {

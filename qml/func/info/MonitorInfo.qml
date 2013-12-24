@@ -80,14 +80,14 @@ Rectangle {
         Row {
             Common.Label {
                 id: titlebar
-                text: qsTr("Monitor And Graphics Card information")//显示器和显卡信息
+                text: qsTr("Monitor and Video display card")//显示器和显卡信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
-            Rectangle {width: home.width - titlebar.width - 30 * 2
+            Common.Separator {
                 anchors.verticalCenter: parent.verticalCenter
-                height: 1; color: "#ccdadd"
+                width: home.width - titlebar.width - 30 * 2
             }
         }
         Column {
@@ -97,7 +97,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Current Graphics Card:")//当前显卡：
+                    text: qsTr("Current Graphics Card: ")//当前显卡：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -112,7 +112,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Graphics Card Model:")//显卡型号：
+                    text: qsTr("Graphics Card Model: ")//显卡型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -129,7 +129,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Graphics Card Vendor:")//显卡制造商：
+                    text: qsTr("Graphics Card Vendor: ")//显卡制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -144,7 +144,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Graphics Driver:")//显卡驱动：
+                    text: qsTr("Graphics Driver: ")//显卡驱动：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -159,7 +159,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Graphics Card Bus Address:")//显卡总线地址：
+                    text: qsTr("Graphics Card Bus Address: ")//显卡总线地址：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -177,7 +177,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: productLabel
-                    text: qsTr("Monitor:")//显示器：
+                    text: qsTr("Monitor: ")//显示器：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -193,7 +193,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: vendorLabel
-                    text: qsTr("Vendor:")//制造商：
+                    text: qsTr("Vendor: ")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -209,7 +209,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: dateLabel
-                    text: qsTr("Production Date(year/week):")//生产日期(年/周)：
+                    text: qsTr("Production Date(year/week): ")//生产日期(年/周)：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -225,7 +225,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: sizeLabel
-                    text: qsTr("Reading Area:")//可视面积：
+                    text: qsTr("Display Area: ")//可视面积：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -241,7 +241,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: inLabel
-                    text: qsTr("Screen Size:")//屏幕尺寸：
+                    text: qsTr("Dimensions: ")//屏幕尺寸：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -257,7 +257,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: maxmodeLabel
-                    text: qsTr("Maximum Resolution:")//最大分辨率：
+                    text: qsTr("Max Resolution: ")//最大分辨率：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -273,7 +273,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: gammaLabel
-                    text: qsTr("Gamma Value:")//伽马值：
+                    text: qsTr("Gamma Value: ")//伽马值：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -289,7 +289,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: outputLabel
-                    text: qsTr("Current Interface:")//当前接口：
+                    text: qsTr("Current Output: ")//当前接口：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165
@@ -305,7 +305,7 @@ Rectangle {
                 spacing: 10
                 Common.Label {
                     id: supportLabel
-                    text: qsTr("Support Interface:")//支持接口：
+                    text: qsTr("Support Output: ")//支持接口：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 165

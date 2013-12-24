@@ -52,7 +52,7 @@ bool AuthDialog::eventFilter(QObject *obj, QEvent *event)
 //                    this->hide();
                     this->close();
                     this->destroy();
-                    //警告  后台服务没有启动，部分功能将无法正常使用！
+                    //警告：               后台服务没有启动，部分功能将无法正常使用！
                     QMessageBox::warning(NULL,
                                          tr("Warning:"),
                                          tr("Background service does not start, some features will not work properly!"),

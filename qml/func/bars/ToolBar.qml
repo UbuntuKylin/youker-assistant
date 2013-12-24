@@ -56,7 +56,7 @@ Item {
              id: restoreBtn
              visible: toolbar.showrestore
              hoverimage: "blue2.png"
-             text: qsTr("Restore default")//恢复默认
+             text: qsTr("Restore")//恢复默认
              width: 105
              height: 29
              onClicked: toolbar.restoreBtnClicked()
@@ -66,7 +66,7 @@ Item {
              hoverimage: "gray1.png"//../../img/icons/
              fontcolor:"#929292"
              fontsize: 15
-             text: qsTr("Return")//返回
+             text: qsTr("Back")//返回
              width: 94; height: 29
              onClicked: toolbar.quitBtnClicked()
          }

@@ -29,9 +29,9 @@ SkinsWidget::SkinsWidget(QSettings *mSettings, QWidget *parent)
     mouse_press = false;
     is_change = false;
     current_page = 1;
-    //皮肤1   "皮肤2"
-    tip_list<<tr("skin1")<<tr("skin2")<<tr("skin3")<<tr("skin4")<<tr("skin5")<<
-           tr("skin6")<<tr("skin7")<<tr("skin8")<<tr("skin9")<<tr("skin10");
+    //皮肤 1   皮肤 2
+    tip_list<<tr("skin 1")<<tr("skin 2")<<tr("skin 3")<<tr("skin 4")<<tr("skin 5")<<
+           tr("skin 6")<<tr("skin 7")<<tr("skin 8")<<tr("skin 9")<<tr("skin 10");
     this->initTitleBar();
     this->initSkinsCenter();
     this->initBottomBar();
@@ -61,7 +61,7 @@ void SkinsWidget::initTitleBar() {
     title_icon_label->setScaledContents(true);
 
     title_label->setFixedHeight(30);
-    title_label->setText(tr("skin center"));//优客皮肤中心
+    title_label->setText(tr("Youker Skin Center"));//优客皮肤中心
     close_button->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
 
     titleLayout = new QHBoxLayout();
@@ -151,10 +151,10 @@ void SkinsWidget::initBottomBar() {
     next_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
     last_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
 
-    first_page_button->setText(tr("firstpage"));//首页
-    previous_page_button->setText(tr("prepage"));//上一页
-    next_page_button->setText(tr("nextpage"));//下一页
-    last_page_button->setText(tr("lastpage"));//末页
+    first_page_button->setText(tr("Home"));//首页
+    previous_page_button->setText(tr("Previous"));//上一页
+    next_page_button->setText(tr("Next"));//下一页
+    last_page_button->setText(tr("Last"));//末页
 
     connect(first_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
     connect(previous_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));

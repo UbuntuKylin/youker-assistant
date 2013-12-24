@@ -42,7 +42,7 @@ Rectangle {
         weatherText.text = qsTr("Weather");//天气
         windText.text = qsTr("Wind");//风力
         pmText.text = qsTr("AQI");//空气质量指数
-        tempText.text = qsTr("Current temperature（℃）");//当前温度（℃）
+        tempText.text = qsTr("Current temperature (℃)");//当前温度（℃）
         temperatureRangeText.text = qsTr("Temperature range");//温度范围
         humidityText.text = qsTr("Humidity");//湿度
     }
@@ -127,7 +127,7 @@ Rectangle {
     }
     Text {
         id: locationText
-        text: qsTr("长沙")
+        text: qsTr("Changsha")//长沙
         font.bold: true
         font.pixelSize: 14
         color: "#383838"
@@ -185,7 +185,7 @@ Rectangle {
             Common.StyleButton {
                 id: preferencesBtn
                 anchors.horizontalCenter: parent.horizontalCenter
-                wordname: qsTr("Preference")//配  置
+                wordname: qsTr("Configuration")//配  置
                 width: 40
                 height: 20
 //                flag: "WeatherPreference"
@@ -243,7 +243,7 @@ Rectangle {
             }
             Text {
                 id: windText
-                text: qsTr("Wind:N/A")//风力未知
+                text: qsTr("Wind:N/A")//风力：未知
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }

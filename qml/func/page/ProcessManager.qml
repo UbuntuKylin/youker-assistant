@@ -141,7 +141,7 @@ Rectangle {
             top: parent.top
             topMargin: titleimage.height/2 - 7
         }
-        spacing: 20
+        spacing: 30
 
         Common.StyleButton {
             id: listBtn
@@ -205,7 +205,7 @@ Rectangle {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
             wordname: qsTr("Back")//返回
-            width: 40
+            width: 20
             height: 20
             onClicked: {
                 var num = sessiondispatcher.get_page_num();

@@ -48,7 +48,7 @@ Item {
                     top: parent.top
                     topMargin: titleimage.height/2 - 7
                 }
-                text: qsTr("You can customize your own visual effects and sound.")//您可以定制属于自己的视觉效果和声音。
+                text: qsTr("You can perform a full range of customized systems based on personal preferences！")//您可以根据个人喜好对系统进行全方位的定制！
                 font.pixelSize: 12
                 color: "#383838"
             }
@@ -73,41 +73,41 @@ Item {
                         Row {
                             Text {
                                 id: personaltext
-                                text: qsTr(" Individualization")// 个性化
+                                text: qsTr(" Personalize")// 个性化
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
                             }
                             Text {
                                 id: b1
-                                text: qsTr("Change WindowTheme")
+                                text: qsTr("WindowTheme")//窗口主题
                                 visible: false
                             }
                             Text {
                                 id: b2
-                                text: qsTr("Change IconSetting")
+                                text: qsTr("IconSetting")//图标配置
                                 visible: false
                             }
                             Text {
                                 id: b3
-                                text: qsTr("Change MousePointer")
+                                text: qsTr("MousePointer")//鼠标指针
                                 visible: false
                             }
                             Text {
                                 id: b4
-                                text: qsTr("Change SoundEffect")
+                                text: qsTr("SoundEffect")//声音效果
                                 visible: false
                             }
                             Text {
                                 id: b5
-                                text: qsTr("Change BootAnimation")
+                                text: qsTr("BootAnimation")//开机动画
                                 visible: false
                             }
                         }
                         Row {
                             spacing: 5
                             Common.StyleButton {
-                                wordname: qsTr("Change WindowTheme"); width: b1.width
+                                wordname: qsTr("WindowTheme"); width: b1.width//窗口主题
 //                                flag: "WidgetTheme"
                                 onClicked: {
                                     pageStack.push(widgetthemepage);
@@ -116,7 +116,7 @@ Item {
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter}
                             Common.StyleButton {
-                                wordname: qsTr("Change IconSetting"); width: b2.width
+                                wordname: qsTr("IconSetting"); width: b2.width//图标配置
 //                                flag: "Desktopicon"
                                 onClicked: {
                                     pageStack.push(desktopiconsetpage);
@@ -125,7 +125,7 @@ Item {
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
-                                wordname: qsTr("Change MousePointer"); width: b3.width
+                                wordname: qsTr("MousePointer"); width: b3.width//鼠标指针
 //                                flag: "MousePointer"
                                 onClicked: {
                                     pageStack.push(mousepointerpage);
@@ -134,7 +134,7 @@ Item {
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
-                                wordname: qsTr("Change SoundEffect"); width: b4.width
+                                wordname: qsTr("SoundEffect"); width: b4.width//声音效果
 //                                flag: "SoundEffects"
                                 onClicked: {
                                     pageStack.push(soundeffectspage);
@@ -143,7 +143,7 @@ Item {
                             //左右分割条
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
-                                wordname: qsTr("Change BootAnimation"); width: b5.width
+                                wordname: qsTr("BootAnimation"); width: b5.width//开机动画
 //                                flag: "BootAnimation"
                                 onClicked: {
                                     pageStack.push(bootanimationpage);
@@ -174,14 +174,14 @@ Item {
                             }
                             Text {
                                 id: b6
-                                text: qsTr("Custom Launcher")
+                                text: qsTr("Custom Launcher")//自定义启动器
                                 visible: false
                             }
                         }
                         Row {
                             spacing: 5
                             Common.StyleButton {
-                                wordname: qsTr("Custom Launcher"); width: b6.width
+                                wordname: qsTr("Custom Launcher"); width: b6.width//自定义启动器
 //                                flag: "LauncherTheme"
                                 onClicked: {
                                     pageStack.push(launcherthemepage);
@@ -203,31 +203,31 @@ Item {
                         Row {
                             Text {
                                 id: fonttext
-                                text: qsTr(" Font")// 字体
+                                text: qsTr(" Fonts")// 字体
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
                             }
                             Text {
                                 id: b7
-                                text: qsTr("Change Default Font")
+                                text: qsTr("DefaultFont")//默认字体设置
                                 visible: false
                             }
                             Text {
                                 id: b8
-                                text: qsTr("Change Document Font")
+                                text: qsTr("DocumentFont")//文档字体设置
                                 visible: false
                             }
                             Text {
                                 id: b9
-                                text: qsTr("Change Titlebar Font")
+                                text: qsTr("TitlebarFont")//窗口标题栏字体设置
                                 visible: false
                             }
                         }
                         Row {
                             spacing: 5
                             Common.StyleButton {
-                                wordname: qsTr("Change Default Font"); width: b7.width
+                                wordname: qsTr("DefaultFont"); width: b7.width//默认字体设置
 //                                flag: "DefaultFont"
                                 onClicked: {
                                     pageStack.push(defaultfontpage);
@@ -235,7 +235,7 @@ Item {
                             }//更改默认字体设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
-                                wordname: qsTr("Change Document Font"); width: b8.width
+                                wordname: qsTr("DocumentFont"); width: b8.width//文档字体设置
 //                                flag: "DocumentFont"
                                 onClicked: {
                                     pageStack.push(documentfontpage);
@@ -243,7 +243,7 @@ Item {
                             }//更改文档字体设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
-                                wordname: qsTr("Change Titlebar Font"); width: b9.width
+                                wordname: qsTr("TitlebarFont"); width: b9.width//窗口标题栏字体设置
 //                                flag: "TitlebarFont"
                                 onClicked: {
                                     pageStack.push(titlebarfontpage);
@@ -272,19 +272,19 @@ Item {
                             }
                             Text {
                                 id: b10
-                                text: qsTr("Change Touchpad")
+                                text: qsTr("Touchpad")//触摸板设置
                                 visible: false
                             }
                             Text {
                                 id: b11
-                                text: qsTr("Check Screen")
+                                text: qsTr("Dead pixel test")//坏点检测
                                 visible: false
                             }
                         }
                         Row {
                             spacing: 5
                             Common.StyleButton {
-                                wordname: qsTr("Change Touchpad"); width: b10.width
+                                wordname: qsTr("Touchpad"); width: b10.width//触摸板设置
 //                                flag: "TouchpadSet"
                                 onClicked: {
                                     pageStack.push(touchpadsetpage);
@@ -292,7 +292,7 @@ Item {
                             }//更改触摸板设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
-                                wordname: qsTr("Check Screen"); width: b11.width
+                                wordname: qsTr("Dead pixel test"); width: b11.width//坏点检测
 //                                flag: "CheckScreen"
                                 onClicked: {
                                     sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);

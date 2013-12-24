@@ -50,14 +50,14 @@ Rectangle {
         Row {
             Common.Label {
                 id: basictitle
-                text: qsTr("Motherboard Basics Information")//主板基本信息
+                text: qsTr("Motherboard Basics Info")//主板基本信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
-            Rectangle {width: home.width - basictitle.width - 30 * 2
+            Common.Separator {
                 anchors.verticalCenter: parent.verticalCenter
-                height: 1; color: "#ccdadd"
+                width: home.width - basictitle.width - 30 * 2
             }
         }
         Column {
@@ -67,7 +67,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Motherboard Model:")//主板型号：
+                    text: qsTr("Motherboard Model: ")//主板型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -82,7 +82,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Manufacturer:")//主板产商：
+                    text: qsTr("Motherboard Vendor: ")//主板产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -97,7 +97,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Serial Number:")//序列号：
+                    text: qsTr("Serial Number: ")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -113,16 +113,14 @@ Rectangle {
         Row {
             Common.Label {
                 id: biostitle
-                text: qsTr("BIOS Information")//BIOS信息
+                text: qsTr("BIOS Info")//BIOS信息
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
-            Rectangle {
-                id: splitbar
-                width: home.width - biostitle.width - 30 * 2
+            Common.Separator {
                 anchors.verticalCenter: parent.verticalCenter
-                height: 1; color: "#ccdadd"
+                width: home.width - biostitle.width - 30 * 2
             }
         }
         Column {
@@ -132,7 +130,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("BIOS Manufacturer:")//BIOS产商：
+                    text: qsTr("BIOS Manufacturer: ")//BIOS产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -147,7 +145,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Bios Version:")//BIOS版本：
+                    text: qsTr("Bios Version: ")//BIOS版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -162,7 +160,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Release Date:")//发布日期：
+                    text: qsTr("Release Date: ")//发布日期：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130

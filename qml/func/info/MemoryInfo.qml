@@ -46,13 +46,13 @@ Rectangle {
         home.firstFlag = true;
         firstView.visible = true;
         firstModel.clear();
-        firstModel.append({"title": qsTr("Slot Number:"), "result": slot[0]});
-        firstModel.append({"title": qsTr("Memory Model:"), "result": product[0]});
-        firstModel.append({"title": qsTr("Vendor:"), "result": vendor[0]});
-        firstModel.append({"title": qsTr("Serial:"), "result": serial[0]});
-        firstModel.append({"title": qsTr("Size:"), "result": sizeValue[0]});
-        firstModel.append({"title": qsTr("Data Width:"), "result": widthValue[0]});
-        firstModel.append({"title": qsTr("Memory Info:"), "result": info[0]});
+        firstModel.append({"title": qsTr("Slot Number: "), "result": slot[0]});//插槽号：
+        firstModel.append({"title": qsTr("Memory Model: "), "result": product[0]});//内存型号：
+        firstModel.append({"title": qsTr("Vendor: "), "result": vendor[0]});//制造商：
+        firstModel.append({"title": qsTr("Serial: "), "result": serial[0]});//序列号：
+        firstModel.append({"title": qsTr("Memory Size: "), "result": sizeValue[0]});//内存大小：
+        firstModel.append({"title": qsTr("Data Width: "), "result": widthValue[0]});//数据宽度：
+        firstModel.append({"title": qsTr("Memory Info: "), "result": info[0]});//内存条信息：
         splitbar1.visible = true;
         logo1.visible = true;
         logo1.source = InfoGroup.judgeName(vendor[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -60,13 +60,13 @@ Rectangle {
         home.secondFlag = true;
         secondView.visible = true;
         secondModel.clear();
-        secondModel.append({"title": qsTr("Slot Number:"), "result": slot[1]});
-        secondModel.append({"title": qsTr("Memory Model:"), "result": product[1]});
-        secondModel.append({"title": qsTr("Vendor:"), "result": vendor[1]});
-        secondModel.append({"title": qsTr("Serial:"), "result": serial[1]});
-        secondModel.append({"title": qsTr("Size:"), "result": sizeValue[1]});
-        secondModel.append({"title": qsTr("Data Width:"), "result": widthValue[1]});
-        secondModel.append({"title": qsTr("Memory Info:"), "result": info[1]});
+        secondModel.append({"title": qsTr("Slot Number: "), "result": slot[1]});
+        secondModel.append({"title": qsTr("Memory Model: "), "result": product[1]});
+        secondModel.append({"title": qsTr("Vendor: "), "result": vendor[1]});
+        secondModel.append({"title": qsTr("Serial: "), "result": serial[1]});
+        secondModel.append({"title": qsTr("Size: "), "result": sizeValue[1]});
+        secondModel.append({"title": qsTr("Data Width: "), "result": widthValue[1]});
+        secondModel.append({"title": qsTr("Memory Info: "), "result": info[1]});
         splitbar2.visible = true;
         logo2.visible = true;
         logo2.source = InfoGroup.judgeName(vendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -79,13 +79,13 @@ Rectangle {
             home.thirdFlag = true;
             thirdView.visible = true;
             thirdModel.clear();
-            thirdModel.append({"title": qsTr("Slot Number:"), "result": slot[2]});
-            thirdModel.append({"title": qsTr("Memory Model:"), "result": product[2]});
-            thirdModel.append({"title": qsTr("Vendor:"), "result": vendor[2]});
-            thirdModel.append({"title": qsTr("Serial:"), "result": serial[2]});
-            thirdModel.append({"title": qsTr("Size:"), "result": sizeValue[2]});
-            thirdModel.append({"title": qsTr("Data Width:"), "result": widthValue[2]});
-            thirdModel.append({"title": qsTr("Memory Info:"), "result": info[2]});
+            thirdModel.append({"title": qsTr("Slot Number: "), "result": slot[2]});
+            thirdModel.append({"title": qsTr("Memory Model: "), "result": product[2]});
+            thirdModel.append({"title": qsTr("Vendor: "), "result": vendor[2]});
+            thirdModel.append({"title": qsTr("Serial: "), "result": serial[2]});
+            thirdModel.append({"title": qsTr("Memory Size: "), "result": sizeValue[2]});
+            thirdModel.append({"title": qsTr("Data Width: "), "result": widthValue[2]});
+            thirdModel.append({"title": qsTr("Memory Info: "), "result": info[2]});
             splitbar3.visible = true;
             logo3.visible = true;
             logo3.source = InfoGroup.judgeName(vendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -97,13 +97,13 @@ Rectangle {
                 home.fourthFlag = true;
                 fourthView.visible = true;
                 fourthModel.clear();
-                fourthModel.append({"title": qsTr("Slot Number:"), "result": slot[3]});
-                fourthModel.append({"title": qsTr("Memory Model:"), "result": product[3]});
-                fourthModel.append({"title": qsTr("Vendor:"), "result": vendor[3]});
-                fourthModel.append({"title": qsTr("Serial:"), "result": serial[3]});
-                fourthModel.append({"title": qsTr("Size:"), "result": sizeValue[3]});
-                fourthModel.append({"title": qsTr("Data Width:"), "result": widthValue[3]});
-                fourthModel.append({"title": qsTr("Memory Info:"), "result": info[3]});
+                fourthModel.append({"title": qsTr("Slot Number: "), "result": slot[3]});
+                fourthModel.append({"title": qsTr("Memory Model: "), "result": product[3]});
+                fourthModel.append({"title": qsTr("Vendor: "), "result": vendor[3]});
+                fourthModel.append({"title": qsTr("Serial: "), "result": serial[3]});
+                fourthModel.append({"title": qsTr("Size: "), "result": sizeValue[3]});
+                fourthModel.append({"title": qsTr("Data Width: "), "result": widthValue[3]});
+                fourthModel.append({"title": qsTr("Memory Info: "), "result": info[3]});
                 splitbar4.visible = true;
                 logo4.visible = true;
                 logo4.source = InfoGroup.judgeName(vendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -126,13 +126,13 @@ Rectangle {
             firstView.visible = true;
             var vendorName = systemdispatcher.getSingleInfo("MemVendor", "memory");
             firstModel.clear();
-            firstModel.append({"title": qsTr("Slot Number:"), "result": systemdispatcher.getSingleInfo("MemSlot", "memory")});//插槽号：
-            firstModel.append({"title": qsTr("Memory Model:"), "result": systemdispatcher.getSingleInfo("MemProduct", "memory")});//内存型号：
-            firstModel.append({"title": qsTr("Vendor:"), "result": vendorName});//制造商：
-            firstModel.append({"title": qsTr("Serial Number:"), "result": systemdispatcher.getSingleInfo("MemSerial", "memory")});//序列号：
-            firstModel.append({"title": qsTr("Size:"), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});//内存大小：
-            firstModel.append({"title": qsTr("Data Width:"), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});//数据宽度：
-            firstModel.append({"title": qsTr("Memory Info:"), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});//内存条信息：
+            firstModel.append({"title": qsTr("Slot Number: "), "result": systemdispatcher.getSingleInfo("MemSlot", "memory")});//插槽号：
+            firstModel.append({"title": qsTr("Memory Model: "), "result": systemdispatcher.getSingleInfo("MemProduct", "memory")});//内存型号：
+            firstModel.append({"title": qsTr("Vendor: "), "result": vendorName});//制造商：
+            firstModel.append({"title": qsTr("Serial Number: "), "result": systemdispatcher.getSingleInfo("MemSerial", "memory")});//序列号：
+            firstModel.append({"title": qsTr("Memory Size: "), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});//内存大小：
+            firstModel.append({"title": qsTr("Data Width: "), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});//数据宽度：
+            firstModel.append({"title": qsTr("Memory Info: "), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});//内存条信息：
             splitbar1.visible = true;
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -175,14 +175,14 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("Memory Information")//内存信息
+            text: qsTr("Memory Info")//内存信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"
         }
-        Rectangle {width: home.width - titlebar.width - 30 * 2
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
-            height: 1; color: "#ccdadd"
+            width: home.width - titlebar.width - 30 * 2
         }
     }
     Common.ScrollArea {

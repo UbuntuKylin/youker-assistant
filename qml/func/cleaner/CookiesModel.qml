@@ -20,8 +20,8 @@ Item {
     id:root
     width: parent.width
     height: 435
-    property string title: qsTr("Clean the login information and protect personal privacy")//清理浏览器登录信息,保护个人隐私
-    property string description: qsTr("Clean up the login information, support Firefox and Chromium browser")//清理上网时留下的登录信息,支持Firefox和Chromium浏览器
+    property string title: qsTr("Cleanup browser Cookies information, to protect your privacy")//清理浏览器 Cookies 信息，保护个人隐私
+    property string description: qsTr("Clean up user login information, support Firefox and Chromium browser")//清理用户登陆网站信息, 支持 Firefox 和 Chromium 浏览器
     property bool firefoxResultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
     property bool chromiumResultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
     property int firefoxNum: 0//扫描后得到的apt的项目总数
@@ -64,22 +64,23 @@ Item {
         }
         onTellQMLCookiesOver: {
             if (cookiesFlag == "funinstall") {
-                //友情提示
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Firefox browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示    没有安装 Firefox！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Firefox is not installed!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else if (cookiesFlag == "cuninstall") {
-                //友情提示
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("No Chromium browser installed!"), mainwindow.pos.x, mainwindow.pos.y);
+                //友情提示        没有安装 Chromium！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Chromium is not installed!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 if (cookiesFlag == "firefox") {
                     if(root.firefoxNum != 0) {
                         root.firefoxResultFlag = true;//扫描的实际有效内容存在
                         firefoxmainModel.clear();
+                        //清理 Firefox 保存的 Cookies                清理 Firefox 浏览器自动保存的登录信息 (Cookies)
                         firefoxmainModel.append({
-                                         "itemTitle": qsTr("Clean Firefox's Cookies"),
-                                         "picture": "../../img/toolWidget/cookies.png",
-                                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
+                                         "itemTitle": qsTr("Cleanup the Cookies saving in Firefox"),
+                                         "picture": "../../img/toolWidget/cookies.png"})
+//                                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
                     }
                     else {
                         root.firefoxResultFlag = false;//扫描的实际有效内容不存在
@@ -89,8 +90,8 @@ Item {
                         root.firefox_arrow_show = 0;//伸缩箭头不显示
                         root.firefox_showNum = false;
                         if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                            //友情提示：      扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：      扫描内容为空，无需清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {//清理apt后的重新获取数据，此时不需要显示对话框
                             root.flag = false;
@@ -118,7 +119,7 @@ Item {
 
                         //当真正扫描到内容时：按钮状态改变、显示文字改变、重置按钮显示
                         root.firefox_btn_flag = "cookies_work";//1206
-                        root.firefox_btn_text = qsTr("All clean");//全部清理//1206
+                        root.firefox_btn_text = qsTr("All cleanup");//全部清理//1206
                         root.firefox_reset = true;//1206
                         if(root.chromium_expanded) {
                             scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
@@ -132,10 +133,11 @@ Item {
                     if(root.chromiumNum != 0) {
                         root.chromiumResultFlag = true;//扫描的实际有效内容存在
                         chromiummainModel.clear();
+                        //清理 Chromium 保存的 Cookies             清理 Chromium 浏览器自动保存的登录信息 (Cookies)
                         chromiummainModel.append({
-                                         "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                         "picture": "../../img/toolWidget/chromium.png",
-                                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
+                                         "itemTitle": qsTr("Cleanup the Cookies saving in Chromium"),
+                                         "picture": "../../img/toolWidget/chromium.png"})
+//                                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                     }
                     else {
                         root.chromiumResultFlag = false;//扫描的实际有效内容不存在
@@ -146,15 +148,15 @@ Item {
                         root.chromium_showNum = false;
 
                         if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                            //友情提示：      扫描内容为空，不再执行清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Scanning content is empty, no longer to perform cleanup!"), mainwindow.pos.x, mainwindow.pos.y);
+                            //友情提示：      扫描内容为空，无需清理！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {//清理apt后的重新获取数据，此时不需要显示对话框
                             root.flag = false;
                         }
 
                         root.chromium_btn_flag = "cookies_scanc";//1206
-                        root.chromium_btn_text = qsTr("Start scanning")//开始扫描//1206
+                        root.chromium_btn_text = qsTr("Start scanning")//开始扫描
                         root.chromium_reset = false;//1206
                         if(root.firefox_expanded) {
                             scrollItem.height = 40 + (root.firefoxNum + 1) * 40 + root.spaceValue*2;
@@ -176,7 +178,7 @@ Item {
                         }
                         //当真正扫描到内容时：按钮状态改变、显示文字改变、重置按钮显示
                         root.chromium_btn_flag = "cookies_workc";//1206
-                        root.chromium_btn_text = qsTr("All clean");//全部清理//1206
+                        root.chromium_btn_text = qsTr("All cleanup");//全部清理
                         root.chromium_reset = true;//1206
                         if(root.firefox_expanded) {
                             scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
@@ -193,14 +195,16 @@ Item {
 
 
     Component.onCompleted: {
+        //清理 Firefox 保存的 Cookies                清理 Firefox 浏览器自动保存的登录信息 (Cookies)
         firefoxmainModel.append({
-                         "itemTitle": qsTr("Clean Firefox's Cookies"),
-                         "picture": "../../img/toolWidget/cookies.png",
-                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
+                         "itemTitle": qsTr("Cleanup the Cookies saving in Firefox"),
+                         "picture": "../../img/toolWidget/cookies.png"})
+//                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
+        //清理 Chromium 保存的 Cookies             清理 Chromium 浏览器自动保存的登录信息 (Cookies)
         chromiummainModel.append({
-                         "itemTitle": qsTr("Clean Chromium's Cookies"),
-                         "picture": "../../img/toolWidget/chromium.png",
-                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
+                         "itemTitle": qsTr("Cleanup the Cookies saving in Chromium"),
+                         "picture": "../../img/toolWidget/chromium.png"})
+//                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
     }
 
 //    //获取firefox的cookies
@@ -383,22 +387,22 @@ Item {
         target: systemdispatcher
         onQuitCleanWork: {//用户在policykit验证时直接关闭验证或者点击取消
             if (msg == "firefox") {
-                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
             }
             else if (msg == "chromium") {
-                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断了！
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
             }
         }
 
         onFinishCleanWorkError: {//清理过程中出错
             if (msg == "firefox") {
                 if (root.firefox_btn_flag == "cookies_work") {
-                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
             else if (msg == "chromium") {
                 if (root.chromium_btn_flag == "cookies_workc") {
-                    toolkits.alertMSG(qsTr("Exception occurred!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
                 }
             }
         }
@@ -409,8 +413,9 @@ Item {
 //                    systemdispatcher.clear_cookies_args();
                     firefoxsubModel.clear();//内容清空
                     firefoxmainModel.clear();
+                    //清理 Firefox 保存的 Cookies                清理 Firefox 浏览器自动保存的登录信息 (Cookies)
                     firefoxmainModel.append({
-                                     "itemTitle": qsTr("Clean Firefox's Cookies"),
+                                     "itemTitle": qsTr("Cleanup the Cookies saving in Firefox"),
                                      "picture": "../../img/toolWidget/cookies.png",
                                      "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
                     root.firefox_expanded = false;//伸缩箭头不扩展
@@ -434,10 +439,11 @@ Item {
 //                    systemdispatcher.clear_chromium_cookies_args();
                     chromiumsubModel.clear();//内容清空
                     chromiummainModel.clear();
+                    //清理 Chromium 保存的 Cookies             清理 Chromium 浏览器自动保存的登录信息 (Cookies)
                     chromiummainModel.append({
-                                     "itemTitle": qsTr("Clean Chromium's Cookies"),
-                                     "picture": "../../img/toolWidget/chromium.png",
-                                     "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
+                                     "itemTitle": qsTr("Cleanup the Cookies saving in Chromium"),
+                                     "picture": "../../img/toolWidget/chromium.png"})
+//                                     "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                     root.chromium_expanded = false;//伸缩箭头不扩展
                     root.chromium_arrow_show = 0;//伸缩箭头不显示
                     root.chromium_showNum = false;
@@ -496,7 +502,7 @@ Item {
     }
 
     //分割条
-    Rectangle {
+    Common.Separator {
         id: splitbar
         anchors {
             top: titlebar.bottom
@@ -505,8 +511,6 @@ Item {
             leftMargin: 2
         }
         width: parent.width - 4
-        height: 1
-        color: "#d8e0e6"
     }
 
     Common.ScrollArea {

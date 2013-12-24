@@ -48,13 +48,13 @@ Rectangle {
             if (text == "homepage") {
                 btnImg.source = "./img/toolWidget/0001.png"
             }
-            else if (text == "clearrubbish") {
+            else if (text == "systemmessage") {
                 btnImg.source = "./img/toolWidget/0002.png"
             }
-            else if (text == "systemset") {
+            else if (text == "clearrubbish") {
                 btnImg.source = "./img/toolWidget/0003.png"
             }
-            else if (text == "systemmessage") {
+            else if (text == "systemset") {
                 btnImg.source = "./img/toolWidget/0004.png"
             }
             else if (text == "functioncollection") {
@@ -66,13 +66,13 @@ Rectangle {
             if (text == "homepage") {
                 btnImg.source = "./img/toolWidget/0001.png"
             }
-            else if (text == "clearrubbish") {
+            else if (text == "systemmessage") {
                 btnImg.source = "./img/toolWidget/0002.png"
             }
-            else if (text == "systemset") {
+            else if (text == "clearrubbish") {
                 btnImg.source = "./img/toolWidget/0003.png"
             }
-            else if (text == "systemmessage") {
+            else if (text == "systemset") {
                 btnImg.source = "./img/toolWidget/0004.png"
             }
             else if (text == "functioncollection") {
@@ -85,13 +85,13 @@ Rectangle {
             if (text == "homepage") {
                 btnImg.source = "./img/toolWidget/001.png"
             }
-            else if (text == "clearrubbish") {
+            else if (text == "systemmessage") {
                 btnImg.source = "./img/toolWidget/002.png"
             }
-            else if (text == "systemset") {
+            else if (text == "clearrubbish") {
                 btnImg.source = "./img/toolWidget/003.png"
             }
-            else if (text == "systemmessage") {
+            else if (text == "systemset") {
                 btnImg.source = "./img/toolWidget/004.png"
             }
             else if (text == "functioncollection") {

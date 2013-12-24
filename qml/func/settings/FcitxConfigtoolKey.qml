@@ -9,7 +9,7 @@ Rectangle {
     height: 475
 
     property string actiontitle: qsTr("Appearance Configuration")//外观配置
-    property string actiontext: qsTr("According to personal preferences to set input method skin, click 'Apply' to complete the setup, click 'Previous' to return to the personalized configuration.")//可以设置自己喜欢的皮肤,点击“应用”完成设置,点击＂上一步＂返回个性化配置。
+    property string actiontext: qsTr("According to personal preferences to set input method skin, click 'Previous' to return to the personalized configuration.")//可以设置自己喜欢的皮肤，点击＂应用＂完成设置, 点击＂上一步＂返回个性化配置。
     property int flagCheck: 1
     property int flag_i: 0
     property string h_fcitxSkinImage: ""
@@ -19,7 +19,7 @@ Rectangle {
 
     //背景
     Image {
-        source: "../../img/skin/bg-left.png"
+        source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
 
@@ -115,16 +115,14 @@ Rectangle {
 
   }
     //选择皮肤
-    ListModel {
-        id: skinModel
-    }
+    ListModel { id: skinModel }
 
     Connections {
-            target: fcitxcfgwizard
-            onRefreshFcitxSig: {
-                refreshFcitxKey();
-            }
+        target: fcitxcfgwizard
+        onRefreshFcitxSig: {
+            refreshFcitxKey();
         }
+    }
 
     Component.onCompleted: {
         refreshFcitxKey();
@@ -146,11 +144,9 @@ Rectangle {
             color: "#383838"
         }
         //横线
-        Rectangle{
-            width: fcitxconfigtoolKey.width - skintitle.width - 40 * 2
-            height:1
-            color:"#b9c5cc"
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
+            width: fcitxconfigtoolKey.width - skintitle.width - 40 * 2
         }
     }
     //使用皮肤
@@ -165,7 +161,7 @@ Rectangle {
         Common.CheckBox{
             id:enableSkinBox
             anchors.verticalCenter: parent.verticalCenter
-            titleName: qsTr("Use skin")//使用皮肤
+            titleName: qsTr("Using skin")//使用皮肤
             onCheckedChanged: {
                 if(flagCheck == 1)
                 {
@@ -243,7 +239,7 @@ Rectangle {
         Common.CheckBox{
             id:enableHotKeyBox
             anchors.verticalCenter: parent.verticalCenter
-            titleName: qsTr("Change Font")//更换字体
+            titleName: qsTr("Change fonts")//更换字体
             onCheckedChanged: {
                 if(enableHotKeyBox.checked == false)
                 {
@@ -329,86 +325,6 @@ Rectangle {
        }
    }
 
-
-//    Rectangle{
-//        anchors{
-//            top:parent.top
-//            topMargin: 220
-//            left:parent.left
-//            leftMargin: 65
-//        }
-//        color:"white"
-//        width: 680
-//        height: 190
-
-//        Rectangle{
-//            anchors{
-//                top:parent.top
-//                topMargin: 0
-//                left:parent.left
-//                leftMargin: 0
-//            }
-//            width:680
-//            height:1
-//            color:"#b9c5cc"
-//        }
-//        Rectangle{
-//            anchors{
-//                top:parent.top
-//                topMargin: 190
-//                left:parent.left
-//                leftMargin: 0
-//            }
-//            width:680
-//            height:1
-//            color:"#b9c5cc"
-//        }
-//        Rectangle{
-//            anchors{
-//                top:parent.top
-//                topMargin: 0
-//                left:parent.left
-//                leftMargin: 0
-//            }
-//            width:1
-//            height:190
-//            color:"#b9c5cc"
-//        }
-//        Rectangle{
-//            anchors{
-//                top:parent.top
-//                topMargin: 0
-//                left:parent.left
-//                leftMargin: 680
-//            }
-//            width:1
-//            height:190
-//            color:"#b9c5cc"
-//        }
-
-//        Row{
-//            anchors{
-//                top:parent.top
-//                topMargin: 15
-//                left:parent.left
-//                leftMargin: 20
-//            }
-//        spacing: 30
-//        Image {
-//            id: fcitxVimage
-//            source: v_fcitxSkinImage
-//            smooth: true
-//        }
-//        Image {
-//            id: fcitxHimage
-//            source: h_fcitxSkinImage
-//            smooth: true
-//            anchors.verticalCenter: parent.verticalCenter
-//        }
-//      }
-
-//    }
-
     //顶层工具栏
     Bars.TopBar {
         id: topBar
@@ -421,21 +337,21 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
     Bars.FcitxThreeBar {
         id: toolBar
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("退出")
-//            button1Label: qsTr("返回")
-//            button2Label: qsTr("应用")
         onGobackHomeClicked: {
             pageStack.push(functioncollection);
         }
@@ -455,9 +371,9 @@ Rectangle {
             statusImage.visible = true;
         }
         Timer {
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: statusImage.visible = false
-             }
+            interval: 5000; running: true; repeat: true
+            onTriggered: statusImage.visible = false
+        }
     }
 
 }

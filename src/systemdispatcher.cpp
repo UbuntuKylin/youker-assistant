@@ -413,13 +413,13 @@ void SystemDispatcher::plymouth_init_check_qt() {
 
 QString SystemDispatcher::showSelectFileDialog(QString flag) {
     if (flag == "bootanimation") {
-        //选择开机动画
-        QString bootfileName = QFileDialog::getOpenFileName(0, tr("choose boot animation"), "", tr("Image Files (*.png)"));
+        //选择开机动画            图像文件  (*.png)
+        QString bootfileName = QFileDialog::getOpenFileName(0, tr("Select the boot animation"), "", tr("Image Files (*.png)"));
         return bootfileName;
     }
     else if (flag == "soundeffects") {
-        //选择音乐
-        QString musicfileName = QFileDialog::getOpenFileName(0, tr("choose music"), "", tr("Music Files (*.ogg *.wav *.mp3 *.wma)"));
+        //选择音乐      音频文件 (*.ogg *.wav *.mp3 *.wma)
+        QString musicfileName = QFileDialog::getOpenFileName(0, tr("Select music"), "", tr("Audio Files (*.ogg *.wav *.mp3 *.wma)"));
         return musicfileName;
     }
     else {

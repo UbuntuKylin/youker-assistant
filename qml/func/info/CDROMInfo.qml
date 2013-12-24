@@ -171,14 +171,14 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("Audio Card Information")//声卡信息
+            text: qsTr("Audio Card Info")//声卡信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"
         }
-        Rectangle {width: home.width - titlebar.width - 30 * 2
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
-            height: 1; color: "#ccdadd"
+            width: home.width - titlebar.width - 30 * 2
         }
     }
     Common.ScrollArea {
@@ -335,7 +335,7 @@ Rectangle {
 //        Row {
 //            Common.Label {
 //                id: bartitle
-//                text: qsTr("CD-ROM Information")//光驱信息
+//                text: qsTr("CD-ROM Info")//光驱信息
 //                font.bold: true
 //                font.pixelSize: 14
 //                color: "#383838"

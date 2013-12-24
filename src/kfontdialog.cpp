@@ -258,7 +258,7 @@ void KFontDialog::on_quitBtn_clicked() {
 
 void KFontDialog::on_okBtn_clicked() {
     if(ui->familyEdit->text().isEmpty()) {
-        //提示      你还没有更换字体，请选择字体进行更换！
+        //提示      您还没有更换字体，请选择字体进行更换！
         QMessageBox::warning(NULL,
                              tr("Tips"),
                              tr("You haven't change the font, please choose the font!"),

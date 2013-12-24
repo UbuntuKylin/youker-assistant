@@ -232,66 +232,6 @@ Rectangle {
                 }
             }//Item
         }//ScrollArea
-
-//        ListView{
-//            id:lisv
-//            anchors.fill: parent
-//            model: mainModel
-//            delegate: cdelegat
-//            highlight: Rectangle{width: 440;height: 30 ; color: "lightsteelblue"}
-//            focus:true
-//        }
-
-//        Rectangle{
-//            id:scrollbar
-//            anchors.right: parent.right
-//            anchors.rightMargin: 8
-//            height: parent.height
-//            z:scrollbar_z
-//            width:4
-//            color: "lightgrey"
-//        }
-//        Rectangle{
-//            id: button
-//            anchors.right: parent.right
-//            anchors.rightMargin: 5
-//            width: 10
-//            z:scrollbar_z
-//            y: lisv.visibleArea.yPosition * scrollbar.height
-//            height: lisv.visibleArea.heightRatio * scrollbar.height;
-//            radius: 3
-//            smooth: true
-//            color: "white"
-//            border.color: "lightgrey"
-//            Column{
-//                anchors.verticalCenter: parent.verticalCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                spacing: 2
-//                Rectangle{
-//                    width: 8;height: 1
-//                    color: "lightgrey"
-//                }
-//                Rectangle{
-//                    width: 8;height: 1
-//                    color: "lightgrey"
-//                }
-//                Rectangle{
-//                    width: 8;height: 1
-//                    color: "lightgrey"
-//                }
-//            }
-//            MouseArea {
-//                id: mousearea
-//                anchors.fill: button
-//                drag.target: button
-//                drag.axis: Drag.YAxis
-//                drag.minimumY: 0
-//                drag.maximumY: scrollbar.height - button.height
-//                onMouseYChanged: {
-//                    lisv.contentY = button.y / scrollbar.height * lisv.contentHeight
-//                }
-//            }
-//        }
     }
 
     //顶层工具栏
@@ -323,20 +263,23 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onOkBtnClicked: {
             systemdispatcher.custom_plymouth_bg_qt(bootimagepage.selectedimage);
             statusImage.visible = true;
         }
         Timer {
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: statusImage.visible = false
-             }
+            interval: 5000; running: true; repeat: true
+            onTriggered: statusImage.visible = false
+        }
     }
 }

@@ -23,16 +23,16 @@ Rectangle {
     width: parent.width
     height: 475
     property string actiontitle: qsTr("Window theme settings")//窗口主题设置
-    property string actiontext: qsTr("Choose the theme you want. The first theme on the page is the current theme.")//选择您想设置的主题。优客助手启动时页面上的第一个主题为系统当前使用的主题。
-    property string init_theme: ""
+    property string actiontext: qsTr("Choose the theme what you want. The first is the theme of the currently used.")//选择您想设置的主题。第一个主题为系统当前使用的主题。
     property string selected_theme: ""
     property int themeIndex: 0//序号
+    property string init_theme: ""
 
     Component.onCompleted: {
         statusImage.visible = false;
         var syslist = sessiondispatcher.get_themes_qt();
         widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
-        showText.text = qsTr("[ Current Theme is: ") + widgetthemepage.init_theme + " ]";
+        showText.text = qsTr("[ Current Theme is: ") + widgetthemepage.init_theme + " ]";//[ 当前主题是：
         syslist.unshift(widgetthemepage.init_theme);
         themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
@@ -40,12 +40,6 @@ Rectangle {
             if (i!=0 && syslist[i] == widgetthemepage.init_theme)
                 themeModel.remove(i);
         }
-//        for(var i=0; i < syslist.length; i++) {
-//            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
-//        }
-//        for(var i=0; i < syslist.length; i++) {
-//            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
-//        }
         //将系统初始的标题栏字体写入QSetting配置文件
         sessiondispatcher.write_default_configure_to_qsetting_file("theme", "widgettheme", widgetthemepage.init_theme);
     }
@@ -105,7 +99,7 @@ Rectangle {
                     widgetthemepage.selected_theme = name;
                     sessiondispatcher.set_theme_qt(name);
                     statusImage.visible = true;
-                    showText.text = qsTr("[ Current Theme is: ") + name + " ]";
+                    showText.text = qsTr("[ Current Theme is: ") + name + " ]";//[ 当前主题是：
                 }
             }
         }
@@ -167,15 +161,6 @@ Rectangle {
 //            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
         }
     }
-
-//    Image {
-//        id: imagframe
-//        source: "../../img/skin/frame.png"
-//        x:156*(widgetthemepage.themeIndex + 1)
-//        y:156
-//        opacity: 0.8
-//    }
-
     //顶层工具栏
     Bars.TopBar {
         id: topBar
@@ -217,30 +202,20 @@ Rectangle {
             else if (num == 4) {
                 pageStack.push(functioncollection);
             }
-         }
+        }
         onRestoreBtnClicked: {
             var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "widgettheme");
             if(defaulttheme == widgetthemepage.selected_theme || widgetthemepage.selected_theme == "") {
             //友情提示：        您系统的当前窗口主题已经为默认主题！
-            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current widget theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);
+            sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's current widget theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的当前窗口主题已经为默认主题！
             }
             else {
                 sessiondispatcher.set_theme_qt(defaulttheme);
                 statusImage.visible = true;
-                showText.text = qsTr("[ Current Theme is: ") + defaulttheme + " ]";
+                showText.text = qsTr("[ Current Theme is: ") + defaulttheme + " ]";//[ 当前主题是：
                 widgetthemepage.selected_theme = defaulttheme;
             }
         }
-
-//         onOkBtnClicked: {
-//             if (widgetthemepage.selected_theme == "")
-//                 sessiondispatcher.set_theme_qt(widgetthemepage.init_theme);
-//             else {
-//                 sessiondispatcher.set_theme_qt(widgetthemepage.selected_theme);
-//                 statusImage.visible = true;
-//             }
-//         }
-
         Timer {
             interval: 5000; running: true; repeat: true
             onTriggered: statusImage.visible = false

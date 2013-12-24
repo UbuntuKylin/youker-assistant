@@ -28,7 +28,7 @@ Rectangle {
     property string titlebar_font: "Helvetica"
     property string selected_font: ""//存放用户选择确认后的字体
     property string actiontitle: qsTr("Titlebar font settings")//标题栏字体设置
-    property string actiontext: qsTr("According to your preferences set titlebar font, by using the 'default settings' button, can revert to the default font.")//根据您的喜好设置标题栏字体，通过“使用默认设置”按钮，可以将对应的字体恢复到优客助手启动时的默认字体。
+    property string actiontext: qsTr("According to personal preferences to set titlebar fonts, click the 'Restore' button, can be restored to the state before the font settings.")//根据个人喜好设置标题栏字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -129,7 +129,7 @@ Rectangle {
         Common.Label {
             id: windowtitlefontlabel
             width: 110
-            text: qsTr("Current titlebar font:")//当前标题栏字体:
+            text: qsTr("Titlebar font: ")//标题栏字体：
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter
@@ -155,7 +155,7 @@ Rectangle {
         Common.Button {
             id: titlefontBtn
             hoverimage: "blue4.png"
-            text: qsTr("Change font")//更换字体
+            text: qsTr("Change fonts")//更换字体
             fontcolor: "#086794"
             width: 105
             height: 30
@@ -163,17 +163,14 @@ Rectangle {
         }
         Common.Button {
             hoverimage: "blue2.png"
-            text: qsTr("Restore default")//恢复默认
+            text: qsTr("Restore")//恢复默认
             width: 105
             height: 30
             onClicked: {
                 var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "titlebarfont");
-//                console.log("restore..........");
-//                console.log(defaultfont);
-//                console.log(titlebarfontpage.selected_font);
                 if(defaultfont == titlebarfontpage.selected_font) {
                     //友情提示：        您系统的窗体标题栏字体已经为默认字体！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current titlebar font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);
+                    sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's titlebar font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//您系统的标题栏字体已经为默认字体！
                 }
                 else {
                     sessiondispatcher.set_window_title_font_qt_default(defaultfont);
@@ -184,9 +181,9 @@ Rectangle {
             }
         }
         Timer {
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: statusImage.visible = false
-             }
+            interval: 5000; running: true; repeat: true
+            onTriggered: statusImage.visible = false
+        }
     }
 
     //顶层工具栏
@@ -201,12 +198,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
@@ -216,12 +216,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onOkBtnClicked: {}
     }

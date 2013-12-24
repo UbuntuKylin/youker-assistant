@@ -24,7 +24,6 @@ Rectangle {
     width: parent.width
     color:"transparent"
     height: 475
-//    property int soundz:0
     property int scrollbar_z: 0
     property int play_pause: 0
     property int chooseyy_height: 200
@@ -32,10 +31,8 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property string default_sound: ""
-//    property string init_sound: ""
-//    property bool init_sound_flag: false
-    property string actiontitle: qsTr("Sound effect settings")//声音效果设置
-    property string actiontext: qsTr("Select a sound theme, click 'OK' button; selected music file name in the list box, do something such as audition, substitution and reduction.")//选择声音主题，点击“确定”按钮;选中列表框中的音乐文件名,进行对应程序事件的试听、替换和还原。
+    property string actiontitle: qsTr("Sound effect")//声音效果
+    property string actiontext: qsTr("selected music file name in the list box, do something such as audition, substitution and reduction.")//选中列表框中的音乐文件名，进行对应程序事件的试听、替换和还原。
     property int musiclist_num: 0
 
     property string selectedmusic: ""
@@ -50,7 +47,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-//        soundeffectspage.init_sound_flag = false;
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
         else
@@ -58,7 +54,7 @@ Rectangle {
 
         var soundlist = systemdispatcher.get_sound_themes_qt();
         var current_sound = sessiondispatcher.get_sound_theme_qt();
-        showText.text = qsTr("[ Current Sound Theme is: ") + current_sound + " ]";
+        showText.text = qsTr("[ Current Sound Theme: ") + current_sound + " ]";//[ 当前音效主题是：
         soundeffectspage.selected_sound_theme = current_sound;
         soundlist.unshift(current_sound);
         //将系统初始的声音主题写入QSetting配置文件
@@ -161,7 +157,7 @@ Rectangle {
                 onClicked: {
                     if (soundeffectspage.selected_sound_theme != iconcombo.selectedText) {
                         soundeffectspage.selected_sound_theme = iconcombo.selectedText;
-                        showText.text = qsTr("[ Current Sound Theme is: ") + iconcombo.selectedText + " ]";
+                        showText.text = qsTr("[ Current Sound Theme: ") + iconcombo.selectedText + " ]";//[ 当前音效主题是：
                         soundeffectspage.selected_sound_theme = iconcombo.selectedText;
                         sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
                         statusImage.visible = true;
@@ -182,19 +178,19 @@ Rectangle {
             }
             Common.Button {
                 hoverimage: "blue2.png"
-                text: qsTr("Restore default")//恢复默认
+                text: qsTr("Restore")//恢复默认
                 width: 105
                 height: 30
                 onClicked: {
                     var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "soundtheme");
                     if(defaulttheme == soundeffectspage.selected_sound_theme) {
                         //友情提示：       当前主题已经为默认主题!
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The current theme has been the default theme!"), mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("Tips: "),qsTr("The current theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//当前主题已经为默认主题！
                     }
                     else {
                         systemdispatcher.restore_all_sound_file_qt(defaulttheme);
                         soundeffectspage.selected_sound_theme = defaulttheme;
-                        showText.text = qsTr("[ Current Sound Theme is: ") + defaulttheme + " ]";
+                        showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
                         iconcombo.selectedIndex = 0;
                         statusImage.visible = true;
                     }
@@ -221,7 +217,7 @@ Rectangle {
             Text{
                 id: eventtitle
                 width: 100
-                text: qsTr("Program events:")//程序事件：
+                text: qsTr("System event tone: ")//系统事件提示音：
                 font.bold:true
                 color: "#383838"
                 font.pointSize: 10
@@ -234,21 +230,21 @@ Rectangle {
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 50
-                    text: qsTr("Listen")//试听Listen
+                    text: qsTr("Listen")//试听
                 }
                 Text {
                     id: select
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 50
-                    text: qsTr("Replace")//替换Replace
+                    text: qsTr("Replace")//替换
                 }
                 Text {
                     id: revoke
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     width: 50
-                    text: qsTr("Restore")//还原Restore
+                    text: qsTr("Restore")//还原
                 }
             }
 
@@ -378,68 +374,6 @@ Rectangle {
                     }
                 }//Item
             }//ScrollArea
-
-
-//            ListView{
-//                id:lisv
-//                anchors.fill: parent
-//                model:musicmodel
-//                delegate: cdelegat
-//                highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
-//                focus:true
-//            }
-
-//            Rectangle{
-//                id:scrollbar
-//                z:scrollbar_z
-//                anchors.right: parent.right
-//                anchors.rightMargin: 8
-//                height: parent.height
-//                width:4
-//                color: "lightgrey"
-//            }
-//            Rectangle{
-//                id: button
-//                anchors.right: parent.right
-//                anchors.rightMargin: 5
-//                width: 10
-//                z:scrollbar_z
-//                y: lisv.visibleArea.yPosition * (scrollbar.height+button.height)
-////                height: lisv.visibleArea.heightRatio * scrollbar.height;
-//                height:45
-//                radius: 3
-//                smooth: true
-//                color: "white"
-//                border.color: "lightgrey"
-//                Column{
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    spacing: 2
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                }
-//                MouseArea {
-//                    id: mousearea
-//                    anchors.fill: button
-//                    drag.target: button
-//                    drag.axis: Drag.YAxis
-//                    drag.minimumY: 0
-//                    drag.maximumY: scrollbar.height - button.height
-//                    onMouseYChanged: {
-//                        lisv.contentY = button.y / (scrollbar.height+lisv.visibleArea.heightRatio * (scrollbar.height-lisv.visibleArea.heightRatio * scrollbar.height))* lisv.contentHeight
-//                    }
-//                }
-//            }
         }
     }
 
@@ -472,7 +406,7 @@ Rectangle {
             }
             Text {
                 width: soundeffectspage.width- 665 - 52 - 15
-                text: qsTr("Not to support audio file of the Chinese path.")//暂不支持中文路径下的音频文件。
+                text: qsTr("Does not support the audio file in the path that contains Chinese.")//暂不支持中文路径下的音频文件。
                 wrapMode: Text.WordWrap
                 font.pixelSize: 10
                 color: "#7a7a7a"
@@ -493,7 +427,7 @@ Rectangle {
         }
         spacing: 20
         Text {
-            text:qsTr("Sound settings:")//声音设置:
+            text:qsTr("Sound settings:")//声音设置：
             color: "#383838"
             font.pointSize: 10
             font.bold: true
@@ -501,7 +435,7 @@ Rectangle {
         Row {
             spacing: 20
             Text{
-                text:qsTr("System login:")//系统登录:
+                text:qsTr("Login tone: ")//登录提示音：
                 font.pointSize: 10
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -532,12 +466,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
@@ -547,12 +484,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onOkBtnClicked: {
         }
