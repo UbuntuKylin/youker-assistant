@@ -249,7 +249,6 @@ Rectangle {
             var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursorsize");
 
             if((defaulttheme == mousepointerpage.selected_cursor_theme) && (defaultsize == mousepointerpage.cursor_size)) {
-                //友情提示：       光标配置已经为默认设置！
                 sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Cursor configure is the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//光标配置已经为默认设置！
             }
             else {

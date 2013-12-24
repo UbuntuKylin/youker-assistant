@@ -129,7 +129,7 @@ Rectangle {
         spacing: 40
         Common.Label {
             width: 110
-            text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板:
+            text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板：
             font.pixelSize: 12
             color: "#7a7a7a"
             anchors.verticalCenter: parent.verticalCenter

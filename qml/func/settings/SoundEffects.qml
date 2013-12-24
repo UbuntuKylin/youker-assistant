@@ -397,7 +397,7 @@ Rectangle {
         Column{
             spacing: 5
             Text{
-                text:qsTr("Custom SoundTheme")//自定义声音主题
+                text:qsTr("Custom Sound Theme")//自定义声音主题
                 width: soundeffectspage.width- 665 - 52 - 15
                 wrapMode: Text.WordWrap
                 color: "#383838"
