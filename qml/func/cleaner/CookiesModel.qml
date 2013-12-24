@@ -80,7 +80,7 @@ Item {
                         firefoxmainModel.append({
                                          "itemTitle": qsTr("Cleanup the Cookies saving in Firefox"),
                                          "picture": "../../img/toolWidget/cookies.png"})
-//                                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
+//                                       "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
                     }
                     else {
                         root.firefoxResultFlag = false;//扫描的实际有效内容不存在
@@ -137,7 +137,7 @@ Item {
                         chromiummainModel.append({
                                          "itemTitle": qsTr("Cleanup the Cookies saving in Chromium"),
                                          "picture": "../../img/toolWidget/chromium.png"})
-//                                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
+//                                       "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                     }
                     else {
                         root.chromiumResultFlag = false;//扫描的实际有效内容不存在

@@ -37,12 +37,13 @@ Item {
             if(checked == "true") {   //当总check处于true状态时，点击后变成false状态
                 checked = "false";
             }
-            else if(checked== "mid")  //当总check处于中间态时，点击后根据总check的bool型值决定变成true状态还是false状态
-            {
-                if(checkedbool == false)
+            else if(checked== "mid") { //当总check处于中间态时，点击后根据总check的bool型值决定变成true状态还是false状态
+                if(checkedbool == false) {
                     checked = "true";
-                else if(checkedbool == true)
+                }
+                else if(checkedbool == true) {
                     checked = "false";
+                }
             }
             else if(checked == "false") {  //当总check处于false态时，点击后变成true状态
                 checked = "true";
