@@ -110,11 +110,9 @@ Rectangle {
             color: "#383838"
         }
         //横线
-        Rectangle{
-            width: touchpadsetpage.width - switchtitle.width - 40 * 2
-            height:1
-            color:"#b9c5cc"
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
+            width: touchpadsetpage.width - switchtitle.width - 40 * 2
         }
     }
 
@@ -189,7 +187,7 @@ Rectangle {
             id: workmode
             spacing: 40
             Common.Label {
-                width: 110
+                width: 130
                 text: qsTr("Scrollbar type: ")//滚动条类型：
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -242,7 +240,7 @@ Rectangle {
             id: scrollstyle
             spacing: 40
             Common.Label {
-                width: 110
+                width: 130
                 text: qsTr("Touchpad scroll trigger mode: ")//触摸板滚动触发方式：
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -294,7 +292,7 @@ Rectangle {
             id: horizontalscroll
             spacing: 40
             Common.Label {
-                width: 110
+                width: 130
                 text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -329,12 +327,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
@@ -345,12 +346,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onRestoreBtnClicked: {
             var defaultenable = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "enable");

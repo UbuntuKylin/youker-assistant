@@ -56,7 +56,8 @@ Item {
                         source: "../../img/icons/tab.png"
                     }
                     Rectangle {
-                        width: tabWidget.width; height: 1
+                        width: mytab.width//parent.width
+                        height: 1
                         anchors.bottom: parent.bottom
                         color: "#abc2c2"
                     }

@@ -28,7 +28,7 @@ Rectangle {
     property string titlebar_font: "Helvetica"
     property string selected_font: ""//存放用户选择确认后的字体
     property string actiontitle: qsTr("Titlebar font settings")//标题栏字体设置
-    property string actiontext: qsTr("According to personal preferences to set titlebar fonts, click the 'restore default' button, can be restored to the state before the font settings.")//根据个人喜好设置标题栏字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
+    property string actiontext: qsTr("According to personal preferences to set titlebar fonts, click the 'Restore' button, can be restored to the state before the font settings.")//根据个人喜好设置标题栏字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -163,14 +163,11 @@ Rectangle {
         }
         Common.Button {
             hoverimage: "blue2.png"
-            text: qsTr("Restore defaults")//恢复默认
+            text: qsTr("Restore")//恢复默认
             width: 105
             height: 30
             onClicked: {
                 var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "titlebarfont");
-//                console.log("restore..........");
-//                console.log(defaultfont);
-//                console.log(titlebarfontpage.selected_font);
                 if(defaultfont == titlebarfontpage.selected_font) {
                     //友情提示：        您系统的窗体标题栏字体已经为默认字体！
                     sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's titlebar font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//您系统的标题栏字体已经为默认字体！
@@ -184,9 +181,9 @@ Rectangle {
             }
         }
         Timer {
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: statusImage.visible = false
-             }
+            interval: 5000; running: true; repeat: true
+            onTriggered: statusImage.visible = false
+        }
     }
 
     //顶层工具栏
@@ -201,12 +198,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
@@ -216,12 +216,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onOkBtnClicked: {}
     }

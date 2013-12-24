@@ -25,13 +25,10 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-
-//    property int cursor_size: 24
     property string document_font: "Helvetica"
     property string selected_font: ""//存放用户选择确认后的字体
-//    property bool document_font_flag: false
     property string actiontitle: qsTr("Document font settings")//文档字体设置
-    property string actiontext: qsTr("According to personal preferences to set document fonts, click the 'restore default' button, can be restored to the state before the font settings.")//根据个人喜好设置文档字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
+    property string actiontext: qsTr("According to personal preferences to set document fonts, click the 'Restore' button, can be restored to the state before the font settings.")//根据个人喜好设置文档字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -39,7 +36,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-//        documentfontpage.document_font_flag = false;
         documentfontpage.document_font = sessiondispatcher.get_document_font_qt();
         documentfontpage.selected_font = documentfontpage.document_font;
         //将系统初始的当前文档字体写入QSetting配置文件
@@ -51,12 +47,10 @@ Rectangle {
         target: sessiondispatcher
         onNotifyFontStyleToQML: {
             if (font_style == "documentfont") {
-//                documentfontpage.document_font_flag = true;
                 docufont.text = sessiondispatcher.get_document_font_qt();
                 documentfontpage.selected_font = docufont.text;
             }
             else if (font_style == "documentfont_default") {
-//                documentfontpage.document_font_flag = false;
                 docufont.text = sessiondispatcher.get_document_font_qt();
                 documentfontpage.selected_font = docufont.text;
             }
@@ -114,11 +108,9 @@ Rectangle {
             color: "#383838"
         }
         //横线
-        Rectangle{
-            width: documentfontpage.width - fonttitle.width - 40 * 2
-            height:1
-            color:"#b9c5cc"
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
+            width: documentfontpage.width - fonttitle.width - 40 * 2
         }
     }
 
@@ -142,7 +134,6 @@ Rectangle {
         }
         Text {
             id: docufont
-//                text: sessiondispatcher.get_document_font_qt()
             text: documentfontpage.document_font
             width: 200
             font.pixelSize: 12
@@ -170,7 +161,7 @@ Rectangle {
         }
         Common.Button {
             hoverimage: "blue2.png"
-            text: qsTr("Restore Defaults")//恢复默认
+            text: qsTr("Restore")//恢复默认
             width: 105
             height: 30
             onClicked: {
@@ -207,12 +198,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
@@ -222,12 +216,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onOkBtnClicked: {}
     }

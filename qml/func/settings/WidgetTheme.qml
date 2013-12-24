@@ -26,6 +26,7 @@ Rectangle {
     property string actiontext: qsTr("Choose the theme what you want. The first is the theme of the currently used.")//选择您想设置的主题。第一个主题为系统当前使用的主题。
     property string selected_theme: ""
     property int themeIndex: 0//序号
+    property string init_theme: ""
 
     Component.onCompleted: {
         statusImage.visible = false;
@@ -39,12 +40,6 @@ Rectangle {
             if (i!=0 && syslist[i] == widgetthemepage.init_theme)
                 themeModel.remove(i);
         }
-//        for(var i=0; i < syslist.length; i++) {
-//            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
-//        }
-//        for(var i=0; i < syslist.length; i++) {
-//            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
-//        }
         //将系统初始的标题栏字体写入QSetting配置文件
         sessiondispatcher.write_default_configure_to_qsetting_file("theme", "widgettheme", widgetthemepage.init_theme);
     }
@@ -166,15 +161,6 @@ Rectangle {
 //            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
         }
     }
-
-//    Image {
-//        id: imagframe
-//        source: "../../img/skin/frame.png"
-//        x:156*(widgetthemepage.themeIndex + 1)
-//        y:156
-//        opacity: 0.8
-//    }
-
     //顶层工具栏
     Bars.TopBar {
         id: topBar
@@ -216,7 +202,7 @@ Rectangle {
             else if (num == 4) {
                 pageStack.push(functioncollection);
             }
-         }
+        }
         onRestoreBtnClicked: {
             var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "widgettheme");
             if(defaulttheme == widgetthemepage.selected_theme || widgetthemepage.selected_theme == "") {
@@ -230,16 +216,6 @@ Rectangle {
                 widgetthemepage.selected_theme = defaulttheme;
             }
         }
-
-//         onOkBtnClicked: {
-//             if (widgetthemepage.selected_theme == "")
-//                 sessiondispatcher.set_theme_qt(widgetthemepage.init_theme);
-//             else {
-//                 sessiondispatcher.set_theme_qt(widgetthemepage.selected_theme);
-//                 statusImage.visible = true;
-//             }
-//         }
-
         Timer {
             interval: 5000; running: true; repeat: true
             onTriggered: statusImage.visible = false

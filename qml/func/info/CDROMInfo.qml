@@ -176,9 +176,9 @@ Rectangle {
             font.pixelSize: 14
             color: "#383838"
         }
-        Rectangle {width: home.width - titlebar.width - 30 * 2
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
-            height: 1; color: "#ccdadd"
+            width: home.width - titlebar.width - 30 * 2
         }
     }
     Common.ScrollArea {

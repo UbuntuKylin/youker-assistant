@@ -4,7 +4,6 @@ import "../bars" as Bars
 import "../../func"  as Func
 
 Rectangle {
-
     id:fcitxconfigtool
     width: parent.width
     height: 475
@@ -19,7 +18,7 @@ Rectangle {
     property int hotkyScrollBetweenIndex: 0
     //背景
     Image {
-        source: "../../img/skin/bg-left.png"
+        source: "../../img/skin/bg-bottom-tab.png"
         anchors.fill: parent
     }
 
@@ -66,9 +65,7 @@ Rectangle {
         }
         leftFcitxModelindex = 0;
         rightFcitxModelindex = 0;
-//        console.log(leftNum+rightNum);//524
         return returnUnneed_list;
-
     }
 
     function refreshFcitxtool(){
@@ -127,18 +124,18 @@ Rectangle {
             fcitxChangeModel.append({"text": "ALT+SHIFT"});
             fcitxChangeModel.append({"text": "CTRL+SUPER"});
         }
-}
+    }
     Connections {
-            target: fcitxcfgwizard
-            onRefreshFcitxSig: {
-                refreshFcitxtool();
-                pageStack.push(functioncollection);
-            }
+        target: fcitxcfgwizard
+        onRefreshFcitxSig: {
+            refreshFcitxtool();
+            pageStack.push(functioncollection);
         }
+    }
 
     Component.onCompleted: {
-              refreshFcitxtool();
-            }
+        refreshFcitxtool();
+    }
 
     Text {
         id:currentMethod
@@ -167,14 +164,8 @@ Rectangle {
         color: "#7a7a7a"
     }
 
-    ListModel {
-        id: leftFcitxModel
-    }
-
-
-    ListModel {
-        id: rightFcitxModel
-    }
+    ListModel { id: leftFcitxModel }
+    ListModel { id: rightFcitxModel }
     //左边框
     Rectangle{
         id:leftRectangle
@@ -278,65 +269,6 @@ Rectangle {
                 }
             }//Item
         }//ScrollArea
-
-//        ListView{
-//            id:leftLisv
-//            anchors.fill: parent
-//            model: leftFcitxModel
-//            delegate: leftDelegat
-//            highlight: Rectangle{width: 340;height: 30 ; color: "lightsteelblue"}
-//            focus:true
-//        }
-
-//        Rectangle{
-//            id:leftScrollbar
-//            anchors.right: parent.right
-//            anchors.rightMargin: -1
-//            height: parent.height
-////            z:scrollbar_z
-//            width:11
-//            color: "lightgrey"
-//        }
-//        Rectangle{
-//            id: leftButton
-//            anchors.right: parent.right
-//            anchors.rightMargin: 0
-//            width: 10
-//            y: leftLisv.visibleArea.yPosition * leftScrollbar.height    //?
-//            height: leftLisv.visibleArea.heightRatio * leftScrollbar.height; //?
-//            radius: 3
-//            smooth: true
-//            color: "white"
-//            border.color: "lightgrey"
-//            Column{
-//                anchors.verticalCenter: parent.verticalCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                spacing: 2
-//                Rectangle{
-//                    width: 8;height: 1
-//                    color: "lightgrey"
-//                }
-//                Rectangle{
-//                    width: 8;height: 1
-//                    color: "lightgrey"
-//                }
-//                Rectangle{
-//                    width: 8;height: 1
-//                    color: "lightgrey"
-//                }
-//            }
-//            MouseArea {
-//                id: mousearea
-//                anchors.fill: leftButton
-//                drag.target: leftButton
-//                drag.axis: Drag.YAxis
-//                drag.minimumY: 0
-//                drag.maximumY: leftScrollbar.height - leftButton.height
-//                onMouseYChanged: {
-//                    leftLisv.contentY = leftButton.y / leftScrollbar.height * leftLisv.contentHeight //?
-//                }
-//            }
-//        }
     }
 
   //  右边框
@@ -441,73 +373,6 @@ Rectangle {
                     }
                 }//Item
             }//ScrollArea
-
-//            ListView{
-//                id:rightLisv
-//                anchors.fill: parent
-//                model: rightFcitxModel
-//                delegate: rightDelegat
-//                highlightMoveSpeed: 9999999
-//                highlight: Rectangle{width: 350;height: 30 ; color: "lightsteelblue"}
-//            }
-
-//            Rectangle{
-//                id:rightscrollbar
-//                anchors.right: parent.right
-//                anchors.rightMargin: -1
-//                height: parent.height
-////                z:scrollbar_z
-//                width:11
-//                color: "lightgrey"
-//            }
-//            Rectangle{
-//                id: rightbutton
-//                anchors.right: parent.right
-//                anchors.rightMargin: 0
-//                width: 10
-//                height:30
-//                y: rightLisv.visibleArea.yPosition* (rightscrollbar.height-rightbutton.height)   //?
-//         //       height: rightLisv.visibleArea.heightRatio * rightscrollbar.height; //?
-//                radius: 3
-//                smooth: true
-//                color: "white"
-//                border.color: "lightgrey"
-//                Column{
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    spacing: 2
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                    Rectangle{
-//                        width: 8;height: 1
-//                        color: "lightgrey"
-//                    }
-//                }
-//                MouseArea {
-//                    id: rightmousearea
-//                    anchors.fill: rightbutton
-//                    drag.target: rightbutton
-//                    drag.axis: Drag.YAxis
-//                    drag.minimumY: 0
-//                    drag.maximumY: rightscrollbar.height - rightbutton.height
-//                    onMouseYChanged: {
-////                        console.log(rightbutton.y)
-////                        console.log(rightLisv.visibleArea.yPosition)
-////                        console.log(rightLisv.contentY)
-////                        console.log(rightscrollbar.height)
-////                        console.log(rightLisv.contentHeight)
-////                        console.log(rightLisv.visibleArea.heightRatio)
-//                        rightLisv.contentY = (rightbutton.y / (rightscrollbar.height-30+(rightLisv.visibleArea.heightRatio * (rightscrollbar.height-30)))* rightLisv.contentHeight)
-
-//                    }
-//                }
-//            }
         }
     }
     //Scroll between input Method
@@ -544,20 +409,6 @@ Rectangle {
         }
     }
 
-    //提示
-//    Text {
-//        id:prompt
-//        anchors {
-//            top: parent.top
-//            topMargin: 398
-//            left: parent.left
-//            leftMargin: 80
-//        }
-//        text: qsTr("Tip: '<<' add available input method, '>>'delete the currently selected input method, '▲ ▼'change the current position.")//提示:'<<'可以将可用输入法加入当前输入法，'>>'删除当前选中输入法，'▲'和'▼'改变当前输入法的位置。
-//        font.bold: true
-//        font.pixelSize: 12
-//        color: "#7a7a7a"
-//    }
     //ctrl_key
     Column{
         spacing: 20
@@ -686,12 +537,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
 
@@ -699,14 +553,11 @@ Rectangle {
     Bars.FcitxBar{
         id: toolBar
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-//            button1Label: qsTr("取消")
-//            button2Label: qsTr("上一步")
-//            button3Label: qsTr("下一步")
         onCancelBtnClicked: {
             fcitxcfgwizard.send_fcitx_ok_warn(mainwindow.x, mainwindow.y);
         }
         onGobackBtnClicked: {
-                pageStack.push(functioncollection)
+            pageStack.push(functioncollection)
         }
         onContinueBtnClicked: {         
             pageStack.push(fcitxConfigtoolFontpage);//静态添加页

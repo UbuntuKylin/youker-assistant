@@ -155,11 +155,9 @@ Rectangle {
             color: "#383838"
         }
         //横线
-        Rectangle{
-            width: desktopiconsetpage.width - themetitle.width - 40 * 2
-            height:1
-            color:"#b9c5cc"
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
+            width: desktopiconsetpage.width - themetitle.width - 40 * 2
         }
     }
 
@@ -204,47 +202,6 @@ Rectangle {
                 }
             }
         }
-//        Row{
-//            spacing: 26
-//            Common.Button {
-//                id: okBtn
-//                width: 105;height: 30
-//                hoverimage: "green2.png"
-//                text: qsTr("OK")//确定
-//                onClicked: {
-//                    if (desktopiconsetpage.selected_icon_theme != iconcombo.selectedText) {
-//                        desktopiconsetpage.selected_icon_theme = iconcombo.selectedText;
-//                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                        showText.text = qsTr("[ Current Icon Theme is: ") + iconcombo.selectedText + " ]";
-//                        statusImage.visible = true;
-//                    }
-//                }
-//            }
-//            Common.Button {
-//                hoverimage: "blue2.png"
-//                text: qsTr("Restore default")//恢复默认
-//                width: 105
-//                height: 30
-//                onClicked: {
-//                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "icontheme");
-//                    if(defaulttheme == desktopiconsetpage.selected_icon_theme) {
-//                        //友情提示：       您系统的图标主题已经为默认设置！
-//                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's current icon theme is the default!"), mainwindow.pos.x, mainwindow.pos.y);
-//                    }
-//                    else {
-//                        sessiondispatcher.set_icon_theme_qt(defaulttheme);
-//                        desktopiconsetpage.selected_icon_theme = defaulttheme;
-//                        showText.text = qsTr("[ Current Icon Theme is: ") + defaulttheme + " ]";
-//                        iconcombo.selectedIndex = 0;
-//                        statusImage.visible = true;
-//                    }
-//                }
-//            }
-//            Timer {
-//                interval: 5000; running: true; repeat: true
-//                onTriggered: statusImage.visible = false
-//            }
-//        }
     }
 
     Row {
@@ -263,11 +220,9 @@ Rectangle {
             color: "#383838"
         }
         //横线
-        Rectangle{
-            width: desktopiconsetpage.width - showtitle.width - 40 * 2
-            height:1
-            color:"#b9c5cc"
+        Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
+            width: desktopiconsetpage.width - showtitle.width - 40 * 2
         }
     }
 
@@ -409,12 +364,15 @@ Rectangle {
         opacity: 0.9
         onButtonClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
     }
     //底层工具栏
@@ -425,12 +383,15 @@ Rectangle {
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
-            if (num == 0)
-                pageStack.push(homepage)
-            else if (num == 3)
-                pageStack.push(systemset)
-            else if (num == 4)
-                pageStack.push(functioncollection)
+            if (num == 0) {
+                pageStack.push(homepage);
+            }
+            else if (num == 3) {
+                pageStack.push(systemset);
+            }
+            else if (num == 4) {
+                pageStack.push(functioncollection);
+            }
         }
         onOkBtnClicked: {
         }
