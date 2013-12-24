@@ -95,7 +95,7 @@ Rectangle {
             topMargin: titleimage.height/2 - 7
         }
         Text {
-            text: qsTr("The task manager to help you kill some process which you want.")//任务管理器帮助您结束一些您想关闭的进程。
+            text: qsTr("Task manager help you to understand the detailed information which procedures and processes are running on the system.")//任务管理器帮助您了解系统上运行的程序和进程的详细信息。
             font.pixelSize: 12
             color: "#383838"
         }
@@ -156,13 +156,13 @@ Rectangle {
                 else if(root.flag == false) {
                     root.updateAllProcessList();
                 }
-                toolkits.alertMSG(qsTr("Refresh Over!"), mainwindow.pos.x, mainwindow.pos.y);//刷新完毕！
+                toolkits.alertMSG(qsTr("Refresh complete!"), mainwindow.pos.x, mainwindow.pos.y);//刷新完成！
             }
         }
         Common.StyleButton {
             id: killBtn
             anchors.verticalCenter: parent.verticalCenter
-            wordname: qsTr("Kill process")//结束进程
+            wordname: qsTr("End process")//结束进程
             width: 40
             height: 20
             onClicked: {
@@ -174,7 +174,7 @@ Rectangle {
 //                    console.log(processmanager.getCasualUser());
                     if(currentUser == processmanager.getCasualUser()) {//普通用户杀进程
                         if(processmanager.killProcess(currentId)) {
-                            toolkits.alertMSG(qsTr("Kill successfully!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
+                            toolkits.alertMSG(qsTr("The end of the process operation is successful!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
                             if(root.flag == true) {
                                 root.updateProcessList();
                             }
@@ -183,7 +183,7 @@ Rectangle {
                             }
                         }
                         else {
-                            toolkits.alertMSG(qsTr("Kill failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
+                            toolkits.alertMSG(qsTr("The end of the process operation failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
                         }
                     }
                     else {//root用户杀进程
@@ -197,7 +197,7 @@ Rectangle {
                     }
                 }
                 else {
-                    toolkits.alertMSG(qsTr("Have no choice!"), mainwindow.pos.x, mainwindow.pos.y);//没有选择将要结束的进程！
+                    toolkits.alertMSG(qsTr("Sorry,  You did not choose the process to be killed!"), mainwindow.pos.x, mainwindow.pos.y);//对不起，您没有选择想要结束的进程！
                 }
             }
         }
@@ -304,27 +304,27 @@ Rectangle {
         }
         Common.TableColumn {
             role: "pcpu"
-            title: qsTr("Cpu%")//CPU占用%
+            title: qsTr("CPU %")//CPU占用 %
             width: 70
         }
         Common.TableColumn {
             role: "pmem"
-            title: qsTr("Memory%")//内存占用%
+            title: qsTr("Memory %")//内存占用 %
             width: 70
         }
         Common.TableColumn {
             role: "started"
-            title: qsTr("Start time")//启动时间
+            title: qsTr("Start Time")//启动时间
             width: 80
         }
         Common.TableColumn {
             role: "content"
-            title: qsTr("Process description")//进程说明
+            title: qsTr("Process Description")//进程说明
             width: 150
         }
         Common.TableColumn {
             role: "command"
-            title: qsTr("Process name")//进程名
+            title: qsTr("Process Name")//进程名
             width: parent.width - 60 - 70*2 - 50 - 80 - 150 - 30
         }
 

@@ -33,7 +33,7 @@ Item {
 
         Common.TabPage {
 //            title:qsTr("Package Cache")//包管理缓存
-            title:qsTr("Cache Manager")//管理缓存
+            title:qsTr("Cache Manager")//缓存管理
             anchors.fill: parent
             Cleaner.CacheModel {//pengshuang缓存
                 id: aptitem
@@ -83,7 +83,7 @@ Item {
             }
         }
         Common.TabPage{
-            title:qsTr("Find large files")//查找大文件
+            title:qsTr("Find large files ")//查找大文件
             anchors.fill: parent
             Cleaner.FileModel {
                 id: largestitem
