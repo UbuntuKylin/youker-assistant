@@ -42,7 +42,7 @@ Rectangle {
         if(cdromNumber > 0) {//存在光驱时才会增加该页面的显示
             listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "cdrom"});//光驱
         }
-        listModel.append({"name": qsTr("Device"), "flag": "device", "iconName": "device"});//设备
+        listModel.append({"name": qsTr("Drive"), "flag": "drive", "iconName": "drive"});//驱动
     }
 
     ListModel {
@@ -103,8 +103,8 @@ Rectangle {
                         else if(flag == "audiocard") {
                             window.state = "AudioPage";
                         }
-                        else if(flag == "device") {
-                            window.state = "DevicePage";
+                        else if(flag == "drive") {
+                            window.state = "DrivePage";
                         }
                     }
                 }
@@ -180,8 +180,8 @@ Rectangle {
                 height: parent.height
                 visible: false
             }
-            Info.DeviceInfo {
-                id: deviceLayer
+            Info.DriveInfo {
+                id: driveLayer
                 width: parent.width
                 height: parent.height
                 visible: false
@@ -231,7 +231,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "DesktopPage"
@@ -245,7 +245,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "CPUPage"
@@ -259,7 +259,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "BiosPage"
@@ -273,7 +273,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "MemoryPage"
@@ -287,7 +287,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "HarddiskPage"
@@ -301,7 +301,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "NetworkPage"
@@ -315,7 +315,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "MonitorPage"
@@ -329,7 +329,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: true }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "AudioPage"
@@ -343,7 +343,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: true }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
             name: "CDROMPage"
@@ -357,10 +357,10 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: true }
-            PropertyChanges { target: deviceLayer; visible: false }
+            PropertyChanges { target: driveLayer; visible: false }
         },
         State {
-            name: "DevicePage"
+            name: "DrivePage"
             PropertyChanges { target: computerLayer; visible: false }
             PropertyChanges { target: desktopLayer; visible: false }
             PropertyChanges { target: cpuLayer;  visible: false }
@@ -371,7 +371,7 @@ Rectangle {
             PropertyChanges { target: monitorLayer; visible: false }
             PropertyChanges { target: audioLayer; visible: false }
             PropertyChanges { target: cdromLayer; visible: false }
-            PropertyChanges { target: deviceLayer; visible: true }
+            PropertyChanges { target: driveLayer; visible: true }
         }
     ]
 }

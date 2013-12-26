@@ -29,7 +29,6 @@ Item {
     {
         target: sudodispatcher
         onNotifySourceStatusToQML: {
-            //进度: 共       个项目需要更新，正在更新的个数为：
             root.source_status_text = qsTr("Progress: ") + total_items + qsTr(" itmes need to be updated,  the number of completed updates is: ") + download_items;//进度：//个项目需要更新，已完成个数：
         }
         //下载完成
@@ -112,7 +111,7 @@ Item {
                 bottomMargin: 10
                 horizontalCenter: parent.horizontalCenter
             }
-            text: qsTr("Updating software source,  please be patient,  there will pop-up prompt information automatically after the update completed.")//正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息
+            text: qsTr("Updating software source,  please be patient,  there will pop-up prompt information automatically after the update completed.")//正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息。
             wrapMode: Text.WordWrap
             font.pixelSize: 14
             color: "#383838"

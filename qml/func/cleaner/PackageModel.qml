@@ -37,7 +37,7 @@ Item {
                     home.state = "MaskLayerState";
                 }
                 else if(type == "apt_pulse"){
-                    progressTitle.text = qsTr("The ongoing: ") + info;//正在进行:
+                    progressTitle.text = qsTr("The ongoing: ") + info;//正在进行：
                     progress.value = ratio_sus;
                 }
                 else if(type == "apt_stop") {
@@ -390,7 +390,7 @@ Item {
                     }
                     else if (msg == "package") {
                         root.state = "PackageWorkFinish";
-                        toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                        toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕
                         //清理完毕后重新获取数据
                         root.flag = true;
 //                        root.getData();

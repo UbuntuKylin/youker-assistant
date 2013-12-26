@@ -19,22 +19,6 @@ import "../common" as Common
 import "../bars" as Bars
 import "./InfoGroup.js" as InfoGroup
 
-/*(" Host bridge: Intel Corporation 2nd Generation Core Processor Family DRAM Controller (rev 09)",
- " VGA compatible controller: Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller (rev 09);driver in use: i915",
-" USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB xHCI Host Controller (rev 04);driver in use: xhci_hcd",
-" Communication controller: Intel Corporation 7 Series/C210 Series Chipset Family MEI Controller #1 (rev 04);driver in use: mei_me",
-" Ethernet controller: Intel Corporation 82579LM Gigabit Network Connection (rev 04);driver in use: e1000e",
-" USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2 (rev 04);driver in use: ehci-pci",
-" Audio device: Intel Corporation 7 Series/C210 Series Chipset Family High Definition Audio Controller (rev 04);driver in use: snd_hda_intel",
-" PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 1 (rev c4);driver in use: pcieport",
-" PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 2 (rev c4);driver in use: pcieport",
-" PCI bridge: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 3 (rev c4);driver in use: pcieport",
-" USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #1 (rev 04);driver in use: ehci-pci",
-" ISA bridge: Intel Corporation QM77 Express Chipset LPC Controller (rev 04);driver in use: lpc_ich",
-" SATA controller: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode] (rev 04);driver in use: ahci",
-" SMBus: Intel Corporation 7 Series/C210 Series Chipset Family SMBus Controller (rev 04)",
-" System peripheral: Ricoh Co Ltd PCIe SDXC/MMC Host Controller (rev 07);driver in use: sdhci-pci") */
-
 Rectangle {
     id: home
     width: parent.width; height: 475
@@ -241,7 +225,7 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("Device Driver Information")//设备驱动信息
+            text: qsTr("Drive Info")//驱动信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"
