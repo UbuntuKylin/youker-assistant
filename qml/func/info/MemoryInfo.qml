@@ -35,13 +35,13 @@ Rectangle {
 
     function show_several_memory(num)
     {
-        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").split("/");
-        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").split("/");
-        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").split("/");
-        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").split("/");
-        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").split("/");
-        var widthValue = systemdispatcher.getSingleInfo("MemWidth", "memory").split("/");
-        var info = systemdispatcher.getSingleInfo("MemInfo", "memory").split("/");
+        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").split("<1_1>");
+        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").split("<1_1>");
+        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").split("<1_1>");
+        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").split("<1_1>");
+        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").split("<1_1>");
+        var widthValue = systemdispatcher.getSingleInfo("MemWidth", "memory").split("<1_1>");
+        var info = systemdispatcher.getSingleInfo("MemInfo", "memory").split("<1_1>");
         //--------------first--------------
         home.firstFlag = true;
         firstView.visible = true;

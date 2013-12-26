@@ -35,11 +35,11 @@ Rectangle {
 
     function show_several_cdrom(num)
     {
-        var cdrommodel = systemdispatcher.getSingleInfo("DvdProduct", "cdrom");//光驱型号
-        var vendorname = systemdispatcher.getSingleInfo("DvdVendor", "cdrom");//制造商
-        var devicename = systemdispatcher.getSingleInfo("DvdName", "cdrom");//设备名称
-        var firmware = systemdispatcher.getSingleInfo("DvdFw", "cdrom");//固件版本
-        var serial = systemdispatcher.getSingleInfo("DvdSerial", "cdrom");//序列号
+        var cdrommodel = systemdispatcher.getSingleInfo("DvdProduct", "cdrom").split("<1_1>");//光驱型号
+        var vendorname = systemdispatcher.getSingleInfo("DvdVendor", "cdrom").split("<1_1>");//制造商
+        var devicename = systemdispatcher.getSingleInfo("DvdName", "cdrom").split("<1_1>");//设备名称
+        var firmware = systemdispatcher.getSingleInfo("DvdFw", "cdrom").split("<1_1>");//固件版本
+        var serial = systemdispatcher.getSingleInfo("DvdSerial", "cdrom").split("<1_1>");//序列号
 
         //--------------first--------------
         home.firstFlag = true;
@@ -111,12 +111,13 @@ Rectangle {
 
 
     Component.onCompleted: {
+        systemdispatcher.get_cdrom_info_qt();//获取光驱详细信息
         home.firstFlag = false;
         home.secondFlag = false;
         home.thirdFlag = false;
         home.fourthFlag = false;
-        systemdispatcher.get_audiocard_info_qt();//获取详细信息
-        var num = systemdispatcher.getSingleInfo("MulNum", "audiocard");
+//        systemdispatcher.get_audiocard_info_qt();//获取详细信息
+        var num = systemdispatcher.getSingleInfo("Dvdnum", "cdrom");
         if(num == 1) {
             home.firstFlag = true;
             firstView.visible = true;
@@ -146,7 +147,7 @@ Rectangle {
                 text: title
                 font.pixelSize: 14
                 color: "#7a7a7a"
-                width: 100
+                width: 120
                 height: 20
             }
             Text {
@@ -171,7 +172,7 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("Audio Card Info")//声卡信息
+            text: qsTr("CD-ROM Info")//光驱信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"

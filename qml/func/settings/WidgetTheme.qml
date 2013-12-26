@@ -57,7 +57,6 @@ Rectangle {
         Item {
             id: griditem
             width: 120; height: 120
-
             Column {
                  anchors.fill: parent
                  spacing: 10
@@ -79,6 +78,15 @@ Rectangle {
                 }
             }
             Image {
+                id: themeindex
+                anchors{
+                    top:parent.top
+                    right:parent.right
+                }
+                source: "../../img/icons/arrow.png"
+                opacity: griditem.GridView.isCurrentItem? 1:0
+            }
+            Image {
                 id: btnImg
                 anchors.fill: parent
                 source: ""
@@ -93,7 +101,7 @@ Rectangle {
                 onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
                 onExited: btnImg.source = ""
                 onClicked: {
-//                    griditem.GridView.view.currentIndex = index;
+                    griditem.GridView.view.currentIndex = index;
 //                    console.log(index);
 //                    widgetthemepage.themeIndex = index;
                     widgetthemepage.selected_theme = name;
@@ -161,6 +169,9 @@ Rectangle {
 //            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
         }
     }
+
+
+
     //顶层工具栏
     Bars.TopBar {
         id: topBar

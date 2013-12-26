@@ -8,7 +8,7 @@ Rectangle {
     width: parent.width
     height: 475
     property string actiontitle: qsTr("Input Method Configuration")//输入法配置
-    property string actiontext: qsTr("'<<' '>>' button to add/remove input method, '▲’ ‘▼' buttons to adjust the input method priority, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.")//＇<<＇和＇>>＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。
+    property string actiontext: qsTr("'<<' '>>' button to add/remove input method, '▲' '▼' buttons to adjust the input method priority, click 'Next' to continue Settings, click 'Cancel' to exit the setup wizard.")//＇<<＇和＇>>＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。
     property string selectedimage: ""
     property int leftFcitxModelindex: 0
     property int rightFcitxModelindex: 0

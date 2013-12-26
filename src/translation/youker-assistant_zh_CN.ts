@@ -49,8 +49,12 @@
     </message>
     <message>
         <location filename="../../qml/func/info/AudioInfo.qml" line="170"/>
+        <source>Audio Info</source>
+        <translation>音频信息</translation>
+    </message>
+    <message>
         <source>Audio Card Info</source>
-        <translation>声卡信息</translation>
+        <translation type="obsolete">声卡信息</translation>
     </message>
 </context>
 <context>
@@ -179,7 +183,7 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="63"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="81"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="98"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="125"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="126"/>
         <source>CD-ROM Model:</source>
         <translation>光驱型号：</translation>
     </message>
@@ -188,7 +192,7 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="64"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="82"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="99"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="126"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="127"/>
         <source>Vendor:</source>
         <translation>制造商：</translation>
     </message>
@@ -197,7 +201,7 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="65"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="83"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="100"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="127"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="128"/>
         <source>Device Name:</source>
         <translation>设备名称：</translation>
     </message>
@@ -206,7 +210,7 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="66"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="84"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="101"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="128"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="129"/>
         <source>Firmware Version:</source>
         <translation>固件版本：</translation>
     </message>
@@ -215,14 +219,18 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="67"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="85"/>
         <location filename="../../qml/func/info/CDROMInfo.qml" line="102"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="129"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="130"/>
         <source>Serial Number:</source>
         <translation>序列号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="174"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="175"/>
+        <source>CD-ROM Info</source>
+        <translation>光驱信息</translation>
+    </message>
+    <message>
         <source>Audio Card Info</source>
-        <translation>声卡信息</translation>
+        <translation type="obsolete">声卡信息</translation>
     </message>
 </context>
 <context>
@@ -1103,8 +1111,12 @@
         <translation>输入法配置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="11"/>
         <source>&apos;&lt;&lt;&apos; &apos;&gt;&gt;&apos; button to add/remove input method, &apos;▲’ ‘▼&apos; buttons to adjust the input method priority, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.</source>
+        <translation type="obsolete">＇&lt;&lt;＇和＇&gt;&gt;＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="11"/>
+        <source>&apos;&lt;&lt;&apos; &apos;&gt;&gt;&apos; button to add/remove input method, &apos;▲&apos; &apos;▼&apos; buttons to adjust the input method priority, click &apos;Next&apos; to continue Settings, click &apos;Cancel&apos; to exit the setup wizard.</source>
         <translation>＇&lt;&lt;＇和＇&gt;&gt;＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
     </message>
     <message>
@@ -1131,8 +1143,12 @@
         <translation>个性化配置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="12"/>
         <source>Global configuration according to personal habits, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.</source>
+        <translation type="obsolete">根据个人习惯进行全局配置，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="12"/>
+        <source>Global configuration according to personal habits, click &apos;Next&apos; to continue Settings, click &apos;Cancel&apos; to exit the setup wizard.</source>
         <translation>根据个人习惯进行全局配置，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
     </message>
     <message>
@@ -1609,8 +1625,12 @@
         <translation type="obsolete">        一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="183"/>
         <source>        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system</source>
+        <translation type="obsolete">        一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/LeftPage.qml" line="183"/>
+        <source>        To help you quick clean up the Cookies, garbage, traces and plug-ins in your system</source>
         <translation>        一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件</translation>
     </message>
     <message>
@@ -1674,8 +1694,12 @@
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="536"/>
-        <source>Clean up the Cookies，including surfing, shopping and online game records</source>
+        <source>Clean up the Cookies, including surfing, shopping and online game records</source>
         <translation>清理电脑中的 Cookies，包含上网、购物、游戏等记录</translation>
+    </message>
+    <message>
+        <source>Clean up the Cookies，including surfing, shopping and online game records</source>
+        <translation type="obsolete">清理电脑中的 Cookies，包含上网、购物、游戏等记录</translation>
     </message>
     <message>
         <source>Clean up the Cookies，including surfing, shopping and online game records.</source>
@@ -3037,8 +3061,12 @@
 <context>
     <name>SystemSet</name>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="51"/>
         <source>You can perform a full range of customized systems based on personal preferences！</source>
+        <translation type="obsolete">您可以根据个人喜好对系统进行全方位的定制！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/page/SystemSet.qml" line="51"/>
+        <source>You can perform a full range of customized systems based on personal preferences!</source>
         <translation>您可以根据个人喜好对系统进行全方位的定制！</translation>
     </message>
     <message>
@@ -3742,23 +3770,23 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/WidgetTheme.qml" line="35"/>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="102"/>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="215"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="110"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="226"/>
         <source>[ Current Theme is: </source>
         <translation>[ 当前主题是：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="135"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="143"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="210"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="221"/>
         <source>Tips: </source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="210"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="221"/>
         <source>Your system&apos;s current widget theme is the default theme!</source>
         <translation>您系统的当前窗口主题已经为默认主题！</translation>
     </message>

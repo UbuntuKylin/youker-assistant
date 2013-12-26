@@ -454,7 +454,7 @@ class DetailInfo:
                     if not k == 'Unknown':
                         num += 1
                         if MemWidth :
-                            MemWidth += '/' + k
+                            MemWidth += "<1_1>" + k
                         else :
                             MemWidth = k
             Memnum = str(num)
@@ -465,7 +465,7 @@ class DetailInfo:
                     i += 1
                     if not k == 'Unknown':
                         if MemSlot :
-                            MemSlot += '/'+ tmp[i-1]
+                            MemSlot +="<1_1>"+ tmp[i-1]
                         else :
                             MemSlot = tmp[i-1]
             tmp = re.findall("Part Number: (.*)",memory)
@@ -475,7 +475,7 @@ class DetailInfo:
                     i += 1
                     if not k == 'Unknown':
                         if MemProduct :
-                            MemProduct += '/' + tmp[i-1]
+                            MemProduct += "<1_1>" + tmp[i-1]
                         else :
                             MemProduct = tmp[i-1]
             tmp = re.findall("Manufacturer: (.*)",memory)
@@ -485,7 +485,7 @@ class DetailInfo:
                     i += 1
                     if not k == 'Unknown':
                         if MemVendor :
-                            MemVendor += '/' + tmp[i-1]
+                            MemVendor += "<1_1>" + tmp[i-1]
                         else :
                             MemVendor = tmp[i-1]
             tmp = re.findall("Serial Number: (.*)",memory)
@@ -495,7 +495,7 @@ class DetailInfo:
                     i += 1
                     if not k == 'Unknown':
                         if MemSerial :
-                            MemSerial += '/' + tmp[i-1]
+                            MemSerial += "<1_1>" + tmp[i-1]
                         else :
                             MemSerial = tmp[i-1]
             tmp = re.findall("Size: (.*)",memory)
@@ -505,7 +505,7 @@ class DetailInfo:
                     i += 1
                     if not k == 'Unknown':
                         if MemSize :
-                            MemSize += '/' + tmp[i-1]
+                            MemSize += "<1_1>" + tmp[i-1]
                         else :
                             MemSize = tmp[i-1]
             tmp0 = self.strip(re.findall("Form Factor: (.*)",memory))
@@ -518,7 +518,7 @@ class DetailInfo:
                     i += 1
                     if not k == 'Unknown':
                         if MemInfo :
-                            MemInfo += '/' + tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
+                            MemInfo += "<1_1>" + tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
                         else :
                             MemInfo = tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
         Mem["MemInfo"],Mem["MemWidth"],Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemInfo,self.strip(MemWidth),self.strip(MemSlot),self.strip(MemProduct),self.strip(MemVendor),self.strip(MemSerial),self.strip(MemSize),self.strip(Memnum)
@@ -591,13 +591,13 @@ class DetailInfo:
                 tmp = vga[vga.index('VGA compatible controller: ') - 8:]
                 vga = tmp[30:]
                 if Vga_businfo:
-                    Vga_businfo += '/' + 'pci@0000:' + tmp[:8]
+                    Vga_businfo += "<1_1>" + 'pci@0000:' + tmp[:8]
                 else :
                     Vga_businfo = 'pci@0000:' + tmp[:8]
                 if Vga_product:
                     pro = re.findall('VGA compatible controller: (.*)',tmp)
-                    Vga_product += '/' + pro[0]
-                    Vga_vendor += '/' + self.get_url('',pro[0])
+                    Vga_product += "<1_1>" + pro[0]
+                    Vga_vendor += "<1_1>" + self.get_url('',pro[0])
                 else :
                     pro = re.findall('VGA compatible controller: (.*)',tmp)
                     Vga_product = pro[0]
@@ -605,7 +605,7 @@ class DetailInfo:
                 Vga_num += 1
                 tmp = re.findall('Kernel driver in use: (.*)',tmp)
                 if Vga_Drive:
-                    Vga_Drive += '/' + tmp[0]
+                    Vga_Drive += "<1_1>" + tmp[0]
                 else :
                     Vga_Drive = tmp[0]
 
@@ -658,7 +658,7 @@ class DetailInfo:
                         continue
                     else :
                         if DiskProduct :
-                            DiskProduct += '/'+tmp[0]
+                            DiskProduct += "<1_1>"+tmp[0]
                         else :
                             DiskProduct = tmp[0]
                         i = 0
@@ -667,7 +667,7 @@ class DetailInfo:
                             tm = ven.findall(tmp[0])
                             if tm :
                                 if DiskVendor :
-                                    DiskVendor += '/' + disk_manufacturers[i+1]
+                                    DiskVendor += "<1_1>" + disk_manufacturers[i+1]
                                 else :
                                     DiskVendor += disk_manufacturers[i+1]
                                 i = len(disk_manufacturers)
@@ -675,13 +675,13 @@ class DetailInfo:
                     tmp = re.findall("FwRev=(.*), ",strin)
                     if tmp :
                         if DiskFw :
-                            DiskFw += '/' +tmp[0]
+                            DiskFw += "<1_1>" +tmp[0]
                         else :
                             DiskFw = tmp[0]
                     tmp = re.findall("SerialNo=(.*)",strin)
                     if tmp :
                         if DiskSerial :
-                            DiskSerial += '/' +tmp[0]
+                            DiskSerial += "<1_1>" +tmp[0]
                         else :
                             DiskSerial = tmp[0]
                     ds = os.popen("fdisk -l %s" % k)
@@ -690,12 +690,12 @@ class DetailInfo:
                     tmp = re.findall("%s: (.*)," % k,d)
                     if tmp:
                         if DiskCapacity :
-                            DiskCapacity += '/' +tmp[0]
+                            DiskCapacity += "<1_1>" +tmp[0]
                         else :
                             DiskCapacity = tmp[0]
                     disknum  += 1
                     if DiskName :
-                        DiskName += '/' + k
+                        DiskName += "<1_1>" + k
                     else :
                         DiskName = k
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
@@ -781,13 +781,13 @@ class DetailInfo:
                 tmp = multimedia[multimedia.index('Audio device:')- 8:]
                 multimedia = tmp[30:]
                 if MulBusinfo:
-                    MulBusinfo += '/'+ 'pci@0000:' + tmp[ :8]
+                    MulBusinfo += "<1_1>"+ 'pci@0000:' + tmp[ :8]
                 else :
                     MulBusinfo = 'pci@0000:' + tmp[ :8]
                 if MulProduct:
                     pro = re.findall('Audio device: (.*)',tmp)
-                    MulProduct += '/' + pro[0]
-                    MulVendor += '/' + self.get_url('',self.strip(pro[0]))
+                    MulProduct += "<1_1>" + pro[0]
+                    MulVendor += "<1_1>" + self.get_url('',self.strip(pro[0]))
                 else :
                     pro = re.findall('Audio device: (.*)',tmp)
                     MulProduct = pro[0]
@@ -795,7 +795,7 @@ class DetailInfo:
                 MulNum += 1
                 tmp = re.findall('Kernel driver in use: (.*)',tmp)
                 if MulDrive:
-                    MulDrive += '/' + tmp[0]
+                    MulDrive += "<1_1>" + tmp[0]
                 else :
                     MulDrive = tmp[0]
         Mul['MulNum'],Mul['MulProduct'],Mul['MulVendor'],Mul['MulBusinfo'],Mul['MulDrive'] = self.strip(str(MulNum)),self.strip(MulProduct),self.strip(MulVendor),self.strip(MulBusinfo),self.strip(MulDrive)
