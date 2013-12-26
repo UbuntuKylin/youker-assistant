@@ -574,6 +574,7 @@ class FunctionOfClean():
     def clean_the_file(self, cruftlist, sysdaemon):
         for cruft in cruftlist:
             tmp = cruft.encode("UTF-8")
+            sysdaemon.data_of_remove_file(tmp)
             if tmp:
                 if os.path.isdir(tmp):
                     shutil.rmtree(tmp)

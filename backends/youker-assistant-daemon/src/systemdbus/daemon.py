@@ -268,6 +268,10 @@ class Daemon(PolicyKitService):
         pass
 
     @dbus.service.signal(INTERFACE, signature='s')
+    def data_of_remove_file(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
     def deb_exists_firefox(self, msg):
         pass
 
