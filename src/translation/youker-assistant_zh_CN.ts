@@ -52,10 +52,6 @@
         <source>Audio Info</source>
         <translation>音频信息</translation>
     </message>
-    <message>
-        <source>Audio Card Info</source>
-        <translation type="obsolete">声卡信息</translation>
-    </message>
 </context>
 <context>
     <name>AuthDialog</name>
@@ -227,10 +223,6 @@
         <location filename="../../qml/func/info/CDROMInfo.qml" line="175"/>
         <source>CD-ROM Info</source>
         <translation>光驱信息</translation>
-    </message>
-    <message>
-        <source>Audio Card Info</source>
-        <translation type="obsolete">声卡信息</translation>
     </message>
 </context>
 <context>
@@ -910,65 +902,6 @@
     </message>
 </context>
 <context>
-    <name>DeviceInfo</name>
-    <message>
-        <source>Host bridge:</source>
-        <translation type="obsolete">主桥：</translation>
-    </message>
-    <message>
-        <source>VGA Model:</source>
-        <translation type="obsolete">VGA兼容控制器：</translation>
-    </message>
-    <message>
-        <source>USB Model:</source>
-        <translation type="obsolete">USB控制器：</translation>
-    </message>
-    <message>
-        <source>Communication Model:</source>
-        <translation type="obsolete">通信控制器：</translation>
-    </message>
-    <message>
-        <source>Ethernet Model:</source>
-        <translation type="obsolete">以太网控制器：</translation>
-    </message>
-    <message>
-        <source>Audio Model:</source>
-        <translation type="obsolete">音频设备：</translation>
-    </message>
-    <message>
-        <source>PCI bridge:</source>
-        <translation type="obsolete">PCI桥：</translation>
-    </message>
-    <message>
-        <source>ISA bridge:</source>
-        <translation type="obsolete">ISA桥：</translation>
-    </message>
-    <message>
-        <source>SATA Model:</source>
-        <translation type="obsolete">SATA控制器：</translation>
-    </message>
-    <message>
-        <source>SMBus:</source>
-        <translation type="obsolete">系统管理总线：</translation>
-    </message>
-    <message>
-        <source>System peripheral:</source>
-        <translation type="obsolete">系统外围：</translation>
-    </message>
-    <message>
-        <source>driver in use:</source>
-        <translation type="obsolete">使用的驱动：</translation>
-    </message>
-    <message>
-        <source>existing drivers:</source>
-        <translation type="obsolete">可选的驱动：</translation>
-    </message>
-    <message>
-        <source>Device Driver Information</source>
-        <translation type="obsolete">设备驱动信息</translation>
-    </message>
-</context>
-<context>
     <name>DocumentFont</name>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="30"/>
@@ -1003,7 +936,7 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/DocumentFont.qml" line="172"/>
-        <source>友情提示：</source>
+        <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
@@ -1111,10 +1044,6 @@
         <translation>输入法配置</translation>
     </message>
     <message>
-        <source>&apos;&lt;&lt;&apos; &apos;&gt;&gt;&apos; button to add/remove input method, &apos;▲’ ‘▼&apos; buttons to adjust the input method priority, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.</source>
-        <translation type="obsolete">＇&lt;&lt;＇和＇&gt;&gt;＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
-    </message>
-    <message>
         <location filename="../../qml/func/settings/FcitxConfigtool.qml" line="11"/>
         <source>&apos;&lt;&lt;&apos; &apos;&gt;&gt;&apos; button to add/remove input method, &apos;▲&apos; &apos;▼&apos; buttons to adjust the input method priority, click &apos;Next&apos; to continue Settings, click &apos;Cancel&apos; to exit the setup wizard.</source>
         <translation>＇&lt;&lt;＇和＇&gt;&gt;＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
@@ -1141,10 +1070,6 @@
         <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="11"/>
         <source>Personalized Configuration</source>
         <translation>个性化配置</translation>
-    </message>
-    <message>
-        <source>Global configuration according to personal habits, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.</source>
-        <translation type="obsolete">根据个人习惯进行全局配置，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="12"/>
@@ -1312,11 +1237,6 @@
         <location filename="../../qml/func/cleaner/FileModel.qml" line="24"/>
         <source>Range:1M-20480M; 1GB = 1024MB.</source>
         <translation>大小范围为1M-20480M；1GB = 1024MB。</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="25"/>
-        <source>Tips: No support the path contains Chinese.</source>
-        <translation>提示：暂不支持中文路径。</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="87"/>
@@ -1621,17 +1541,9 @@
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <source>        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system </source>
-        <translation type="obsolete">        一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件</translation>
-    </message>
-    <message>
-        <source>        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system</source>
-        <translation type="obsolete">        一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件</translation>
-    </message>
-    <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="183"/>
-        <source>        To help you quick clean up the Cookies, garbage, traces and plug-ins in your system</source>
-        <translation>        一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件</translation>
+        <source>To help you quick clean up the Cookies, garbage, traces and plug-ins in your system</source>
+        <translation>一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="247"/>
@@ -1639,71 +1551,63 @@
         <translation>扫描到：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="260"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="261"/>
         <source>Quick Cleanup</source>
         <translation>一键清理项目</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="333"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="334"/>
         <source>Cleanup garbage</source>
         <translation>清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="346"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="347"/>
         <source>Clean up system junk files, free disk space</source>
         <translation>清理系统中的垃圾文件，释放磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="356"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="371"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="453"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="469"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="546"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="562"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="357"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="372"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="454"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="470"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="547"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="563"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="363"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="460"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="553"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="364"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="461"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="554"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="367"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="465"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="558"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="368"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="466"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="559"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="430"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="431"/>
         <source>Delete History</source>
         <translation>清理历史记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="443"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="444"/>
         <source>Clean up the historical records, to protect your privacy</source>
         <translation>清理上网时留下的历史记录，保护您的个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="523"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="524"/>
         <source>Cleanup Cookies</source>
         <translation>清理 Cookies</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="536"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="537"/>
         <source>Clean up the Cookies, including surfing, shopping and online game records</source>
         <translation>清理电脑中的 Cookies，包含上网、购物、游戏等记录</translation>
-    </message>
-    <message>
-        <source>Clean up the Cookies，including surfing, shopping and online game records</source>
-        <translation type="obsolete">清理电脑中的 Cookies，包含上网、购物、游戏等记录</translation>
-    </message>
-    <message>
-        <source>Clean up the Cookies，including surfing, shopping and online game records.</source>
-        <translation type="obsolete">清理电脑中的 Cookies，包含上网、购物、游戏等记录。</translation>
     </message>
 </context>
 <context>
@@ -1780,14 +1684,6 @@
         <translation>制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="66"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="85"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="103"/>
-        <source>Serial: </source>
-        <translation>序列号：</translation>
-    </message>
-    <message>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="53"/>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="86"/>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="133"/>
@@ -1819,6 +1715,10 @@
         <translation>内存大小：</translation>
     </message>
     <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="52"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="66"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="85"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="103"/>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="132"/>
         <source>Serial Number: </source>
         <translation>序列号：</translation>
@@ -2266,10 +2166,6 @@
         <translation>刷新</translation>
     </message>
     <message>
-        <source>Refresh complete!</source>
-        <translation type="obsolete">刷新完成！</translation>
-    </message>
-    <message>
         <location filename="../../qml/func/page/ProcessManager.qml" line="98"/>
         <source>Task manager help you to kill the processes that are running on the system.</source>
         <translation>任务管理器帮助您去结束系统上正在运行的一些进程。</translation>
@@ -2397,10 +2293,6 @@
         <location filename="../../qml/func/others/RightPage.qml" line="134"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
-    </message>
-    <message>
-        <source>Help</source>
-        <translation type="obsolete">论坛求助</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="144"/>
@@ -2716,10 +2608,6 @@
         <translation>自定义声音主题</translation>
     </message>
     <message>
-        <source>Custom SoundTheme</source>
-        <translation type="obsolete">自定义声音主题</translation>
-    </message>
-    <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="409"/>
         <source>Does not support the audio file in the path that contains Chinese.</source>
         <translation>暂不支持中文路径下的音频文件。</translation>
@@ -2851,10 +2739,6 @@
         <location filename="../suspensionframe.ui" line="216"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unused:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;未使用：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unused&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;未使用：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="232"/>
@@ -3053,17 +2937,9 @@
         <source>Drive</source>
         <translation>驱动</translation>
     </message>
-    <message>
-        <source>Device</source>
-        <translation type="obsolete">设备</translation>
-    </message>
 </context>
 <context>
     <name>SystemSet</name>
-    <message>
-        <source>You can perform a full range of customized systems based on personal preferences！</source>
-        <translation type="obsolete">您可以根据个人喜好对系统进行全方位的定制！</translation>
-    </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="51"/>
         <source>You can perform a full range of customized systems based on personal preferences!</source>

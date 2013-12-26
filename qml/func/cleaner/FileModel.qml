@@ -22,7 +22,7 @@ Item {
     height: 435
     property string title: qsTr("Quickly find large files")//快速找出大文件
     property string description: qsTr("Range:1M-20480M; 1GB = 1024MB.")//大小范围为1M-20480M；1GB = 1024MB。
-    property string scope_desc: qsTr("Tips: No support the path contains Chinese.")//提示：暂不支持中文路径。
+//    property string scope_desc: qsTr("Tips: No support the path contains Chinese.")//提示：暂不支持中文路径。
     property string btnFlag: "largestfile_work"//清理的标记：largestfile_work
     property int sub_num: 0
     property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
@@ -147,11 +147,11 @@ Item {
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
-            Text {
-                text: root.scope_desc
-                font.pixelSize: 12
-                color: "#7a7a7a"
-            }
+//            Text {
+//                text: root.scope_desc
+//                font.pixelSize: 12
+//                color: "#7a7a7a"
+//            }
         }
 
     }

@@ -169,7 +169,7 @@ Rectangle {
                 var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "documentfont");
                 if(defaultfont == documentfontpage.selected_font) {
                     //友情提示：      您系统的文档字体已经恢复为默认字体！
-                    sessiondispatcher.showWarningDialog(qsTr("友情提示："),qsTr("Your system's document font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的文档字体已经为默认字体！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's document font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的文档字体已经为默认字体！
                 }
                 else {
                     sessiondispatcher.set_document_font_qt_default(defaultfont);

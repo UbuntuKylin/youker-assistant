@@ -77,15 +77,15 @@ Rectangle {
                     color: "#383838"
                 }
             }
-            Image {
-                id: themeindex
-                anchors{
-                    top:parent.top
-                    right:parent.right
-                }
-                source: "../../img/icons/arrow.png"
-                opacity: griditem.GridView.isCurrentItem? 1:0
-            }
+//            Image {
+//                id: themeindex
+//                anchors{
+//                    top:parent.top
+//                    right:parent.right
+//                }
+//                source: "../../img/icons/arrow.png"
+//                opacity: griditem.GridView.isCurrentItem? 1:0
+//            }
             Image {
                 id: btnImg
                 anchors.fill: parent
