@@ -73,15 +73,6 @@ class Daemon(PolicyKitService):
     def set_homedir(self, homedir):
         self.soundconf.set_homedir(homedir)
 
-
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def clean_by_main_one_key(self, mode_list, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.clean_complete_main_msg('')
-            return
-
-
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b', sender_keyword='sender')
     def kill_root_process(self, pid, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
@@ -274,9 +265,9 @@ class Daemon(PolicyKitService):
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_process_main(self, msg):
         pass
-
-    @dbus.service.signal(INTERFACE, signature='s')
-    def data_of_remove_file(self, msg):
+    
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def status_for_quick_clean(self, flag, status):
         pass
 
     @dbus.service.signal(INTERFACE, signature='s')
@@ -565,13 +556,14 @@ class Daemon(PolicyKitService):
     # the function of clean files
     ### input-['filepath', 'file...]   output-''
     @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
-    def clean_file_cruft(self, cruftlist, flagstr, sender=None):
+    def clean_file_cruft(self, cruft_list, flagstr, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
             self.clean_complete_msg('')
             return
         try:
-            self.daemonclean.clean_the_file(cruftlist, self)
+            for cruft in cruft_list:
+                self.daemonclean.clean_the_file(cruft)
         except Exception, e:
             self.clean_error_msg(flagstr)
         else:

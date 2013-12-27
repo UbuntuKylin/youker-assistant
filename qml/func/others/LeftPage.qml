@@ -79,10 +79,11 @@ Rectangle {
                 firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "k") {
-               cookiestatus.state = "CookiesOK";
+                cookiestatus.state = "CookiesOK";
                 firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "o") {
+                showText.text = "";
                 toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
                 leftbar.flag = "onekeyscan";
                 firstonekey.text = qsTr("Quick scan");//一键扫描
@@ -123,6 +124,56 @@ Rectangle {
             else if (type == "k") {
                 cookiedes.visible = true;
                 cookiedes.text = qsTr("(totally cleared") + msg + qsTr("Cookies)");//（共清理掉    条Cookies）
+            }
+        }
+        onQuickCleanProcess: {
+            if(type == "firefoxhistory") {
+                if(status == "start") {
+                    showText.text = qsTr("Cleaning up history trace of Firefox...");
+                }
+                else if(status == "end") {
+                    showText.text = qsTr("Firefox history trace had been cleared!");
+                }
+            }
+            else if(type == "chromiumhistory") {
+                if(status == "start") {
+                    showText.text = qsTr("Cleaning up history trace of Chromium...");
+                }
+                else if(status == "end") {
+                    showText.text = qsTr("Chromium history trace had been cleared!");
+                }
+            }
+            else if(type == "firefoxcookies") {
+                if(status == "start") {
+                    showText.text = qsTr("Cleaning up Cookies of Firefox...");
+                }
+                else if(status == "end") {
+                    showText.text = qsTr("Firefox Cookies had been cleared!");
+                }
+            }
+            else if(type == "chromiumcookies") {
+                if(status == "start") {
+                    showText.text = qsTr("Cleaning up Cookies of Chromium...");
+                }
+                else if(status == "end") {
+                    showText.text = qsTr("Chromium Cookies had been cleared!");
+                }
+            }
+            else if(type == "apt") {
+                if(status == "end") {
+                    showText.text = qsTr("Apt cache had been cleared!");
+                }
+                else {
+                    showText.text = qsTr("Cleaning up Apt cache: ") + status;
+                }
+            }
+            else if(type == "software_center") {
+                if(status == "end") {
+                    showText.text = qsTr("Software Center cache had been cleared!");
+                }
+                else {
+                    showText.text = qsTr("Cleaning up Software Center cache: ") + status;
+                }
             }
         }
     }
