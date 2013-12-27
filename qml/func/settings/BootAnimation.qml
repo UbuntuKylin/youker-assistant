@@ -44,7 +44,9 @@ Rectangle {
         bootimagepage.num = plymouth_list.length;
         mainModel.clear();
         for(var i=0; i < plymouth_list.length; i++) {
-            mainModel.append({"itemTitle": plymouth_list[i]});
+            if(systemdispatcher.get_image_path_qt(plymouth_list[i]) != "False"){
+                mainModel.append({"itemTitle": plymouth_list[i]});
+            }
         }
 //        bootimagepage.selectedimage = plymouth_list[0];
         if(30*plymouth_list.length<=lisv_height)
@@ -64,7 +66,9 @@ Rectangle {
             bootimagepage.num = plymouth_list.length;
             mainModel.clear();
             for(var i=0; i < plymouth_list.length; i++) {
-                mainModel.append({"itemTitle": plymouth_list[i]});
+                if(systemdispatcher.get_image_path_qt(plymouth_list[i]) != "False"){
+                    mainModel.append({"itemTitle": plymouth_list[i]});
+                }
             }
             bootimagepage.selectedimage = plymouth_list[0];
         }
@@ -161,10 +165,7 @@ Rectangle {
         color: "#383838"
     }
 
-    ListModel {
-        id: mainModel
-    }
-
+    ListModel { id: mainModel }
 
     Rectangle{
         border.color: "#b9c5cc"
@@ -202,7 +203,14 @@ Rectangle {
                     hoverEnabled: true
                     onClicked: {
                         wrapper.ListView.view.currentIndex = index;
-                        bootimagepage.selectedimage = itemTitle;
+                        if(systemdispatcher.get_image_path_qt(itemTitle) != "False"){
+                            bootimagepage.selectedimage = itemTitle;
+                            bootimage.source = systemdispatcher.get_image_path_qt(itemTitle);
+                        }
+                        else{
+                            //待添加原图片路径不存在时的说明图
+                        }
+
                     }
                 }
 

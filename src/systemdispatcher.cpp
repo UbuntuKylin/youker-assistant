@@ -415,6 +415,12 @@ QStringList SystemDispatcher::get_existing_plymouth_list_qt() {
 void SystemDispatcher::plymouth_init_check_qt() {
     systemiface->call("plymouth_init_check");
 }
+
+QString SystemDispatcher::get_image_path_qt(QString name) {
+    QDBusReply<QString> reply = systemiface->call("get_image_path", name);
+    return reply.value();
+}
+
 //-----------------------------------------------
 
 

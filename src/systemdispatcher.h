@@ -86,6 +86,9 @@ public:
     Q_INVOKABLE void readyAddBootImageToList();
     Q_INVOKABLE QStringList get_existing_plymouth_list_qt();
     Q_INVOKABLE void plymouth_init_check_qt();
+    Q_INVOKABLE QString get_image_path_qt(QString name);
+
+
     //-----------------------------------------------
 
     Q_INVOKABLE int get_the_record_qt(QString mode);

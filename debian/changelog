@@ -6,8 +6,9 @@ youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
   * Kill root process.
   * Add Device driver basic information.
   * Use new translation content.
+  * Display the preview picture when click the name on the BootAnimation page.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 27 Dec 2013 09:59:02 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 27 Dec 2013 16:01:22 +0800
 
 youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
 
