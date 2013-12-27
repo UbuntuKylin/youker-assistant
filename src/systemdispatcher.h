@@ -213,6 +213,8 @@ signals:
     void finishCleanDataMain(QString type, QString msg);
     void finishCleanDataSecond(QString type, QString msg);
 
+    void quickCleanProcess(QString type, QString status);
+
 public slots:
     void handler_clear_single_rubbish(QString msg);
     void handler_clear_single_rubbish_error(QString msg);
@@ -225,6 +227,8 @@ public slots:
     void handler_clear_rubbish_second_error(QString msg);
     void handler_clean_data_main(QString type, QString msg);
     void handler_clean_data_second(QString type, QString msg);
+
+    void handler_status_for_quick_clean(QString type, QString status);
 private:
     QStringList tmplist;
     QDBusInterface *systemiface;

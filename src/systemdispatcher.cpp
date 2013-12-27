@@ -46,6 +46,8 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_data_main(QString,QString)),this,SLOT(handler_clean_data_main(QString, QString)));
     QObject::connect(systemiface,SIGNAL(clean_data_second(QString,QString)),this,SLOT(handler_clean_data_second(QString,QString)));
 
+    QObject::connect(systemiface,SIGNAL(status_for_quick_clean(QString,QString)),this,SLOT(handler_status_for_quick_clean(QString,QString)));
+
     history_flag = true;
     onekey_args << "cache" << "history" << "cookies";
     onekey_args2 << "cache" << "history" << "cookies";
@@ -354,6 +356,13 @@ void SystemDispatcher::handler_clean_data_main(QString type, QString msg) {
 
 void SystemDispatcher::handler_clean_data_second(QString type, QString msg) {
     emit finishCleanDataSecond(type, msg);
+}
+
+void SystemDispatcher::handler_status_for_quick_clean(QString type, QString status) {
+    qDebug() << "clean.......";
+    qDebug() << type;
+    qDebug() << status;
+    emit quickCleanProcess(type, status);
 }
 
 //-----------------------sound------------------------

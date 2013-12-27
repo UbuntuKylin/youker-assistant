@@ -129,14 +129,18 @@ class OneKeyClean():
             flag_dic['%s' % mode] = True
         if flag_dic['history']:
             try:
+                sysdaemon.status_for_quick_clean('firefoxhistory', 'start')
                 objca = historyclean.HistoryClean(homedir)
                 filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
                 objca.clean_firefox_all_records(filepathf)
+                sysdaemon.status_for_quick_clean('firefoxhistory', 'end')
 
                 run = common.process_pid("chromium-browser")
                 if not run:
+                    sysdaemon.status_for_quick_clean('chromiumhistory', 'start')
                     filepathc = "%s/.config/chromium/Default/History" % homedir
                     objca.clean_chromium_all_records(filepathc)
+                    sysdaemon.status_for_quick_clean('chromiumhistory', 'end')
             except Exception, e:
                 sysdaemon.clean_error_onekey('he')
             else:
@@ -145,12 +149,17 @@ class OneKeyClean():
         if flag_dic['cookies']:
             try:
                 objcc = cookiesclean.CookiesClean(homedir)
+                sysdaemon.status_for_quick_clean('firefoxcookies', 'start')
                 filepathfc = common.analytical_profiles_file(homedir) + 'cookies.sqlite'
                 pamfc = [filepathfc, 'moz_cookies', 'baseDomain']
                 objcc.clean_all_records(pamfc[0], pamfc[1], pamfc[2])
+                sysdaemon.status_for_quick_clean('firefoxcookies', 'end')
+                
+                sysdaemon.status_for_quick_clean('chromiumcookies', 'start')
                 filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
                 pamcc = [filepathcc, 'cookies', 'host_key']
                 objcc.clean_all_records(pamcc[0], pamcc[1], pamcc[2])
+                sysdaemon.status_for_quick_clean('chromiumcookies', 'end')
             except Exception, e:
                 sysdaemon.clean_error_onekey('ke')
             else:
@@ -162,74 +171,22 @@ class OneKeyClean():
                 objcache = cacheclean.CacheClean()
                 apt_path = "/var/cache/apt/archives"
                 temp_apt_list = objcache.scan_apt_cache(apt_path)
-                objclean.clean_the_file(temp_apt_list, sysdaemon)
+                for cachea in temp_apt_list:
+                    sysdaemon.status_for_quick_clean('apt', cachea)
+                    objclean.clean_the_file(cachea)
+                sysdaemon.status_for_quick_clean('apt', 'end')
 
                 swcenterpath = '%s/.cache/software-center' % homedir
                 temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
-                objclean.clean_the_file(temp_swcenter_list, sysdaemon)
+                for caches in temp_swcenter_list:
+                    sysdaemon.status_for_quick_clean('software_center', caches)
+                    objclean.clean_the_file(caches)
+                sysdaemon.status_for_quick_clean('software_center', 'end')
             except Exception, e:
                 sysdaemon.clean_error_onekey('ce')
             else:
                 sysdaemon.clean_complete_onekey('c')
         sysdaemon.clean_complete_onekey('o')
-
-    def get_scan_result(self, mode_list):
-        global HOMEDIR
-        result_dic = {}
-        flag_dic = {'history': False, 'cookies': False, 'cache': False}
-        for mode in mode_list:
-            flag_dic['%s' % mode] = True
-        ### the part of history
-        if flag_dic['history']:
-            history_list = []
-            objhistory = CleanTheHistory(None)
-            tmp_history_list = objhistory.get_scan_result(HOMEDIR)
-            #tmp_history_str = '<1_1>'.join(tmp_history_list)
-            for record in tmp_history_list:
-                resulthistory = record.split('<2_2>')[0]
-                history_list.append(resulthistory)
-            result_dic['history'] = history_list
-            result_dic['historydata'] = str(len(history_list))
-            del objhistory
-
-        ### the part of cookies
-        if flag_dic['cookies']:
-            cookies_list = []
-            cookiesdata = 0
-            objcookies = CleanTheCookies(None)
-            tmp_cookies_list = objcookies.get_scan_result(HOMEDIR)
-            for record in tmp_cookies_list:
-                resultcookies = record.split('<2_2>')[0]
-                cookiesdata += int(record.split('<2_2>')[1])
-                cookies_list.append(resultcookies)
-            #tmp_cookies_str = '<1_1>'.join(tmp_cookies_list)
-            result_dic['cookies'] = cookies_list
-            result_dic['cookiesdata'] = str(cookiesdata)
-            del objcookies
-
-        ### the part of cache
-        if flag_dic['cache']:
-            cache_list = []
-            cachedata = 0
-            tmp_cache_dic = self.objcache.get_scan_result(HOMEDIR)
-            for k in tmp_cache_dic:
-                if tmp_cache_dic[k]:
-                    tmp_cache_list = tmp_cache_dic[k].split('<1_1>')
-                    for one in tmp_cache_list:
-                        resultcache = one.split('<2_2>')[0]
-                        cache_list.append(resultcache)
-            result_dic['cache'] = cache_list
-            if cache_list:
-                for one in cache_list:
-                    size = 0
-                    if os.path.isdir(one):
-                        size = common.get_dir_size(one)
-                    else:
-                        size = os.path.getsize(one)
-                    cachedata += size
-            result_dic['cachedata'] = common.confirm_filesize_unit(cachedata)
-        return result_dic
-
 
 # the functions of search the same files
 class SearchTheSame():
@@ -247,14 +204,6 @@ class ManageTheLarge():
     def __init__(self):
         self.objl = diskanalyse.DiskAnalyse()
 
-    def get_scan_result(self, size, path):
-        self.path = path
-        finalsize = size * 1024 * 1024
-        #self.objl.hundred_large_files(finalsize, self.path)
-        #self.objl.type_of_file()
-        largefile_dic = self.objl.adjust_the_list(finalsize, self.path)
-        return largefile_dic
-
     def get_large_files(self, size, path, sesdaemon):
         objlg = diskanalyse.DiskAnalyse()
         finalsize = size * 1024 * 1024
@@ -267,11 +216,6 @@ class ManageTheLarge():
 class CleanTheHistory():
     def __init__(self, systemdaemon):
         self.sysdaemon = systemdaemon
-
-    def get_scan_result(self, homedir = ''):
-        objhg = historyclean.HistoryClean(homedir)
-        idurlcount = objhg.scan_the_records()
-        return idurlcount
 
     def get_history_crufts(self, flag):
         homedir = common.return_homedir_sesdaemon()
@@ -318,11 +262,6 @@ class CleanTheHistory():
             else:
                 running = True
         return running
-
-    def clean_the_cruftlist(self):
-        global HOMEDIR
-        objhc = historyclean.HistoryClean(HOMEDIR)
-        objhc.clean_all_records()
 
 # the function of clean the system history
 class CleanSystemHistory():
@@ -481,14 +420,6 @@ class CleanTheCache():
     def __init__(self):
         self.objc = cacheclean.CacheClean()
 
-    def get_scan_result(self, homedir = ''):
-        result_dic = {}
-        tmp_apt_str = '<1_1>'.join(self.objc.get_apt_cache())
-        tmp_center_str = '<1_1>'.join(self.objc.get_softwarecenter_cache(homedir))
-        result_dic['apt'] = tmp_apt_str
-        result_dic['softwarecenter'] = tmp_center_str
-        return result_dic
-
     def get_all_cache_crufts(self, mode_list, sesdaemon):
         homedir = common.return_homedir_sesdaemon()
 
@@ -517,26 +448,6 @@ class CleanTheCache():
                     sesdaemon.data_transmit_by_cache('thumbnails', one, 'False',common.confirm_filesize_unit(os.path.getsize(one)))
         sesdaemon.cache_transmit_complete()
 
-    def get_cache_crufts(self):
-        result_dic = {}
-        apt_path = '/var/cache/apt/archives'
-        temp_apt_list = self.objc.scan_apt_cache(apt_path)
-        apt_list = ['%s<2_2>False<2_2>%s' % (filepath, common.confirm_filesize_unit(os.path.getsize(filepath))) for filepath in temp_apt_list]
-        result_dic['apt'] = '<1_1>'.join(apt_list)
-
-        homedir = common.return_homedir_sesdaemon()
-        swcenterpath = '%s/.cache/software-center' % homedir
-        temp_swcenter_list = self.objc.public_scan_cache(swcenterpath)
-        swcenter_list = []
-        for line in temp_swcenter_list:
-            if os.path.isdir(line):
-                swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'True', common.confirm_filesize_unit(common.get_dir_size(line))))
-            else:
-                swcenter_list.append('%s<2_2>%s<2_2>%s' % (line, 'False', common.confirm_filesize_unit(os.path.getsize(line))))
-        result_dic['softwarecenter'] = '<1_1>'.join(swcenter_list)
-
-        return result_dic
-
 # the function of clean cruft files and cruft packages
 #class FunctionOfClean(threading.Thread):
 class FunctionOfClean():
@@ -545,41 +456,14 @@ class FunctionOfClean():
         #self.msgdaemon = msgdaemon
         pass
 
-    def clean_the_file_for_main(self, cruftlist):
-        for cruft in cruftlist:
-            tmp = cruft.encode("UTF-8")
-            #self.sysdaemon.clean_process_main_msg("cleaning %s" % tmp)
-            if tmp:
-                if os.path.isdir(tmp):
-                    shutil.rmtree(tmp)
-                else:
-                    os.remove(tmp)
-
-    #def clean_the_file_for_main(self, cruftlist):
-    #    threading.Thread(target=self.clean_the_file_for_main_thread, args=(cruftlist,), name='MainClean').start()
-
-    def clean_the_file_for_second(self, cruftlist):
-        for cruft in cruftlist:
-            tmp = cruft.encode("UTF-8")
-            self.sysdaemon.clean_process_second_msg("cleaning %s" % tmp)
-            if tmp:
-                if os.path.isdir(tmp):
-                    shutil.rmtree(tmp)
-                else:
-                    os.remove(tmp)
-
-    #def clean_the_file_for_second(self, cruftlist):
-    #    threading.Thread(target=self.clean_the_file_for_second_thread, args=(cruftlist,), name='SecondClean').start()
-
-    def clean_the_file(self, cruftlist, sysdaemon):
-        for cruft in cruftlist:
-            tmp = cruft.encode("UTF-8")
-            sysdaemon.data_of_remove_file(tmp)
-            if tmp:
-                if os.path.isdir(tmp):
-                    shutil.rmtree(tmp)
-                else:
-                    os.remove(tmp)
+    def clean_the_file(self, cruft, sysdaemon):
+        tmp = cruft.encode("UTF-8")
+        #sysdaemon.data_of_remove_file(tmp)
+        if tmp:
+            if os.path.isdir(tmp):
+                shutil.rmtree(tmp)
+            else:
+                os.remove(tmp)
 
     #def clean_the_file(self, cruftlist):
     #    threading.Thread(target=self.clean_the_file_thread, args=(cruftlist,), name='CleanFile').start()
