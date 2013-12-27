@@ -95,7 +95,7 @@ Rectangle {
             topMargin: titleimage.height/2 - 7
         }
         Text {
-            text: qsTr("Task manager help you to understand the detailed information which procedures and processes are running on the system.")//任务管理器帮助您了解系统上运行的程序和进程的详细信息。
+            text: qsTr("Task manager help you to kill the processes that are running on the system.")//任务管理器帮助您去结束系统上正在运行的一些进程。
             font.pixelSize: 12
             color: "#383838"
         }
@@ -156,7 +156,7 @@ Rectangle {
                 else if(root.flag == false) {
                     root.updateAllProcessList();
                 }
-                toolkits.alertMSG(qsTr("Refresh complete!"), mainwindow.pos.x, mainwindow.pos.y);//刷新完成！
+                toolkits.alertMSG(qsTr("Refresh completed!"), mainwindow.pos.x, mainwindow.pos.y);//刷新完成！
             }
         }
         Common.StyleButton {

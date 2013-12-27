@@ -60,7 +60,7 @@ Rectangle {
             left: parent.left
             leftMargin: 30
         }
-        spacing: 10
+        spacing: 8
 
         Row {
             Common.Label {
@@ -224,11 +224,10 @@ Rectangle {
                 font.pixelSize: 14
                 color: "#383838"
             }
-            Rectangle {
+            Common.Separator {
                 id: splitbar
-                width: home.width - biostitle.width - 30 * 2
                 anchors.verticalCenter: parent.verticalCenter
-                height: 1; color: "#ccdadd"
+                width: home.width - biostitle.width - 30 * 2
             }
         }
         Column {

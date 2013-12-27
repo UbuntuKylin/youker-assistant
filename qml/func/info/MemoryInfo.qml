@@ -35,13 +35,13 @@ Rectangle {
 
     function show_several_memory(num)
     {
-        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").split("/");
-        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").split("/");
-        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").split("/");
-        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").split("/");
-        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").split("/");
-        var widthValue = systemdispatcher.getSingleInfo("MemWidth", "memory").split("/");
-        var info = systemdispatcher.getSingleInfo("MemInfo", "memory").split("/");
+        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").split("<1_1>");
+        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").split("<1_1>");
+        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").split("<1_1>");
+        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").split("<1_1>");
+        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").split("<1_1>");
+        var widthValue = systemdispatcher.getSingleInfo("MemWidth", "memory").split("<1_1>");
+        var info = systemdispatcher.getSingleInfo("MemInfo", "memory").split("<1_1>");
         //--------------first--------------
         home.firstFlag = true;
         firstView.visible = true;
@@ -49,7 +49,7 @@ Rectangle {
         firstModel.append({"title": qsTr("Slot Number: "), "result": slot[0]});//插槽号：
         firstModel.append({"title": qsTr("Memory Model: "), "result": product[0]});//内存型号：
         firstModel.append({"title": qsTr("Vendor: "), "result": vendor[0]});//制造商：
-        firstModel.append({"title": qsTr("Serial: "), "result": serial[0]});//序列号：
+        firstModel.append({"title": qsTr("Serial Number: "), "result": serial[0]});//序列号：
         firstModel.append({"title": qsTr("Memory Size: "), "result": sizeValue[0]});//内存大小：
         firstModel.append({"title": qsTr("Data Width: "), "result": widthValue[0]});//数据宽度：
         firstModel.append({"title": qsTr("Memory Info: "), "result": info[0]});//内存条信息：
@@ -63,7 +63,7 @@ Rectangle {
         secondModel.append({"title": qsTr("Slot Number: "), "result": slot[1]});
         secondModel.append({"title": qsTr("Memory Model: "), "result": product[1]});
         secondModel.append({"title": qsTr("Vendor: "), "result": vendor[1]});
-        secondModel.append({"title": qsTr("Serial: "), "result": serial[1]});
+        secondModel.append({"title": qsTr("Serial Number: "), "result": serial[1]});
         secondModel.append({"title": qsTr("Size: "), "result": sizeValue[1]});
         secondModel.append({"title": qsTr("Data Width: "), "result": widthValue[1]});
         secondModel.append({"title": qsTr("Memory Info: "), "result": info[1]});
@@ -82,7 +82,7 @@ Rectangle {
             thirdModel.append({"title": qsTr("Slot Number: "), "result": slot[2]});
             thirdModel.append({"title": qsTr("Memory Model: "), "result": product[2]});
             thirdModel.append({"title": qsTr("Vendor: "), "result": vendor[2]});
-            thirdModel.append({"title": qsTr("Serial: "), "result": serial[2]});
+            thirdModel.append({"title": qsTr("Serial Number: "), "result": serial[2]});
             thirdModel.append({"title": qsTr("Memory Size: "), "result": sizeValue[2]});
             thirdModel.append({"title": qsTr("Data Width: "), "result": widthValue[2]});
             thirdModel.append({"title": qsTr("Memory Info: "), "result": info[2]});
@@ -100,7 +100,7 @@ Rectangle {
                 fourthModel.append({"title": qsTr("Slot Number: "), "result": slot[3]});
                 fourthModel.append({"title": qsTr("Memory Model: "), "result": product[3]});
                 fourthModel.append({"title": qsTr("Vendor: "), "result": vendor[3]});
-                fourthModel.append({"title": qsTr("Serial: "), "result": serial[3]});
+                fourthModel.append({"title": qsTr("Serial Number: "), "result": serial[3]});
                 fourthModel.append({"title": qsTr("Size: "), "result": sizeValue[3]});
                 fourthModel.append({"title": qsTr("Data Width: "), "result": widthValue[3]});
                 fourthModel.append({"title": qsTr("Memory Info: "), "result": info[3]});

@@ -180,7 +180,7 @@ Rectangle {
             Text {
                 id: text1
                 width: leftbar.width-180
-                text: qsTr("        To help you quick clean up the Cookies，garbage, traces and plug-ins in your system ")//        一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件！
+                text: qsTr("To help you quick clean up the Cookies, garbage, traces and plug-ins in your system")//一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件！
                 wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -248,8 +248,9 @@ Rectangle {
             }
             Text {
                 id: showText
-                width: leftbar.width - 180 - 60
+                width: leftbar.width - 50 - 20 * 2 - 20
                 text: ""
+                wrapMode: Text.WrapAnywhere//Text.WordWrap
                 color: "green"
             }
         }
@@ -533,7 +534,7 @@ Rectangle {
                             }
                         }
                         Text {
-                            text: qsTr("Clean up the Cookies，including surfing, shopping and online game records.")//清理电脑中的 Cookies，包含上网、购物、游戏等记录
+                            text: qsTr("Clean up the Cookies, including surfing, shopping and online game records")//清理电脑中的 Cookies，包含上网、购物、游戏等记录
                             font.pixelSize: 12
                             color: "#7a7a7a"
                         }

@@ -36,10 +36,10 @@ Rectangle {
 
     function show_several_audio(num)
     {
-        var audiomodel = systemdispatcher.getSingleInfo("MulProduct", "audiocard");//声卡型号：
-        var vendorname = systemdispatcher.getSingleInfo("MulVendor", "audiocard");//制造商：
-        var address = systemdispatcher.getSingleInfo("MulBusinfo", "audiocard");//总线地址：
-        var drivers = systemdispatcher.getSingleInfo("MulDrive", "audiocard");//声卡驱动：
+        var audiomodel = systemdispatcher.getSingleInfo("MulProduct", "audiocard").split("<1_1>");//声卡型号：
+        var vendorname = systemdispatcher.getSingleInfo("MulVendor", "audiocard").split("<1_1>");//制造商：
+        var address = systemdispatcher.getSingleInfo("MulBusinfo", "audiocard").split("<1_1>");//总线地址：
+        var drivers = systemdispatcher.getSingleInfo("MulDrive", "audiocard").split("<1_1>");//声卡驱动：
 
         //--------------first--------------
         home.firstFlag = true;
@@ -167,7 +167,7 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("Audio Card Info")//声卡信息
+            text: qsTr("Audio Info")//音频信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"

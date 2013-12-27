@@ -100,7 +100,7 @@ Rectangle {
                     text: qsTr("Current Graphics Card: ")//当前显卡：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: chipText
@@ -115,7 +115,7 @@ Rectangle {
                     text: qsTr("Graphics Card Model: ")//显卡型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: chipmodelText
@@ -132,7 +132,7 @@ Rectangle {
                     text: qsTr("Graphics Card Vendor: ")//显卡制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: chipvendorText
@@ -147,7 +147,7 @@ Rectangle {
                     text: qsTr("Graphics Driver: ")//显卡驱动：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: driverText
@@ -162,7 +162,7 @@ Rectangle {
                     text: qsTr("Graphics Card Bus Address: ")//显卡总线地址：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: chipbusText
@@ -180,7 +180,7 @@ Rectangle {
                     text: qsTr("Monitor: ")//显示器：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: productText
@@ -196,7 +196,7 @@ Rectangle {
                     text: qsTr("Vendor: ")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: vendorText
@@ -212,7 +212,7 @@ Rectangle {
                     text: qsTr("Production Date(year/week): ")//生产日期(年/周)：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: dateText
@@ -228,7 +228,7 @@ Rectangle {
                     text: qsTr("Display Area: ")//可视面积：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: sizeText
@@ -244,7 +244,7 @@ Rectangle {
                     text: qsTr("Dimensions: ")//屏幕尺寸：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: inText
@@ -260,7 +260,7 @@ Rectangle {
                     text: qsTr("Max Resolution: ")//最大分辨率：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: maxmodeText
@@ -276,7 +276,7 @@ Rectangle {
                     text: qsTr("Gamma Value: ")//伽马值：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: gammaText
@@ -292,7 +292,7 @@ Rectangle {
                     text: qsTr("Current Output: ")//当前接口：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: outputText
@@ -308,7 +308,7 @@ Rectangle {
                     text: qsTr("Support Output: ")//支持接口：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 165
+                    width: 180
                 }
                 Text {
                     id: supportText

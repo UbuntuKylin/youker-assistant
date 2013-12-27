@@ -4,10 +4,10 @@ youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
   * Adjust the structure of QML project.
   * Add CD-ROM, Audio Card and WLan information.
   * Kill root process.
-  * Add Device basic information.
+  * Add Device driver basic information.
   * Use new translation content.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 24 Dec 2013 14:14:11 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 27 Dec 2013 09:59:02 +0800
 
 youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
 

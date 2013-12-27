@@ -48,7 +48,7 @@ Item {
                     top: parent.top
                     topMargin: titleimage.height/2 - 7
                 }
-                text: qsTr("You can perform a full range of customized systems based on personal preferences！")//您可以根据个人喜好对系统进行全方位的定制！
+                text: qsTr("You can perform a full range of customized systems based on personal preferences!")//您可以根据个人喜好对系统进行全方位的定制！
                 font.pixelSize: 12
                 color: "#383838"
             }

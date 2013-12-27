@@ -9,7 +9,7 @@ Rectangle {
     height: 475
 
     property string actiontitle: qsTr("Personalized Configuration")//个性化配置
-    property string actiontext: qsTr("Global configuration according to personal habits, click ‘Next’ to continue Settings, click ‘Cancel’ to exit the setup wizard.")//根据个人习惯进行全局配置，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。
+    property string actiontext: qsTr("Global configuration according to personal habits, click 'Next' to continue Settings, click 'Cancel' to exit the setup wizard.")//根据个人习惯进行全局配置，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。
     property int scanModelIndex:1
     property int scrollbar_z: 1
     property int defaultCandidateWord:0     //恢复默认时用到
