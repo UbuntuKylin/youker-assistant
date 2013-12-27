@@ -85,7 +85,7 @@ Item {
                 Common.Label {
                     id: numLabel
                     visible: broswerDelegate.showNum
-                    text: "[ " + broswerDelegate.sub_num + qsTr(" Items ]")// 个项目
+                    text: "[ " + broswerDelegate.sub_num + qsTr(" Items ]")// 个项目 ]
                     font.pointSize: 11
                     color: "black"
                     anchors.verticalCenter: parent.verticalCenter

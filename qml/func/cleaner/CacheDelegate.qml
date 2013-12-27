@@ -112,7 +112,7 @@ Item {
                     Common.Label {
                         id: numLabel
                         visible: listViewDelegate.showNum
-                        text: "[ " + listViewDelegate.sub_num + qsTr(" Items ]")// 个项目
+                        text: "[ " + listViewDelegate.sub_num + qsTr(" Items ]")// 个项目 ]
                         font.pointSize: 11
                         color: "black"
                         anchors.verticalCenter: parent.verticalCenter

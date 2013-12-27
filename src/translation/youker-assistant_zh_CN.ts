@@ -230,7 +230,7 @@
     <message>
         <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="115"/>
         <source> Items ]</source>
-        <translation>个项目</translation>
+        <translation>个项目 ]</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="125"/>
@@ -482,7 +482,7 @@
     <message>
         <location filename="../../qml/func/cleaner/CookiesDelegate.qml" line="88"/>
         <source> Items ]</source>
-        <translation>个项目</translation>
+        <translation>个项目 ]</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesDelegate.qml" line="108"/>
