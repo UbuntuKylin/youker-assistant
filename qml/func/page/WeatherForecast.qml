@@ -107,95 +107,95 @@ Item {
                 var result1 = sessiondispatcher.getSingleWeatherInfo("img1", "forecast");
                 var result2 = sessiondispatcher.getSingleWeatherInfo("img2", "forecast");
                 if (result1 == "99") {
-                    weather_widget.img1 = "../img/weather/d" + result2 + ".gif";
+                    weather_widget.img1 = "../../img/weather/d" + result2 + ".gif";
                 }
                 else {
-                    weather_widget.img1 = "../img/weather/d" + result1 + ".gif";
+                    weather_widget.img1 = "../../img/weather/d" + result1 + ".gif";
                 }
                 if (result2 == "99") {
-                    weather_widget.img2 = "../img/weather/n" + result1 + ".gif";
+                    weather_widget.img2 = "../../img/weather/n" + result1 + ".gif";
                 }
                 else {
-                    weather_widget.img2 = "../img/weather/n" + result2 + ".gif";
+                    weather_widget.img2 = "../../img/weather/n" + result2 + ".gif";
                 }
 
 
                 var result3 = sessiondispatcher.getSingleWeatherInfo("img3", "forecast");
                 var result4 = sessiondispatcher.getSingleWeatherInfo("img4", "forecast");
                 if (result3 == "99") {
-                    weather_widget.img3 = "../img/weather/d" + result4 + ".gif";
+                    weather_widget.img3 = "../../img/weather/d" + result4 + ".gif";
                 }
                 else {
-                    weather_widget.img3 = "../img/weather/d" + result3 + ".gif";
+                    weather_widget.img3 = "../../img/weather/d" + result3 + ".gif";
                 }
                 if (result4 == "99") {
-                    weather_widget.img4 = "../img/weather/n" + result3 + ".gif";
+                    weather_widget.img4 = "../../img/weather/n" + result3 + ".gif";
                 }
                 else {
-                    weather_widget.img4 = "../img/weather/n" + result4 + ".gif";
+                    weather_widget.img4 = "../../img/weather/n" + result4 + ".gif";
                 }
 
 
                 var result5 = sessiondispatcher.getSingleWeatherInfo("img5", "forecast");
                 var result6 = sessiondispatcher.getSingleWeatherInfo("img6", "forecast");
                 if (result5 == "99") {
-                    weather_widget.img5 = "../img/weather/d" + result6 + ".gif";
+                    weather_widget.img5 = "../../img/weather/d" + result6 + ".gif";
                 }
                 else {
-                    weather_widget.img5 = "../img/weather/d" + result5 + ".gif";
+                    weather_widget.img5 = "../../img/weather/d" + result5 + ".gif";
                 }
                 if (result6 == "99") {
-                    weather_widget.img6 = "../img/weather/n" + result5 + ".gif";
+                    weather_widget.img6 = "../../img/weather/n" + result5 + ".gif";
                 }
                 else {
-                    weather_widget.img6 = "../img/weather/n" + result6 + ".gif";
+                    weather_widget.img6 = "../../img/weather/n" + result6 + ".gif";
                 }
 
                 var result7 = sessiondispatcher.getSingleWeatherInfo("img7", "forecast");
                 var result8 = sessiondispatcher.getSingleWeatherInfo("img8", "forecast");
                 if (result7 == "99") {
-                    weather_widget.img7 = "../img/weather/d" + result8 + ".gif";
+                    weather_widget.img7 = "../../img/weather/d" + result8 + ".gif";
                 }
                 else {
-                    weather_widget.img7 = "../img/weather/d" + result7 + ".gif";
+                    weather_widget.img7 = "../../img/weather/d" + result7 + ".gif";
                 }
                 if (result8 == "99") {
-                    weather_widget.img8 = "../img/weather/n" + result7 + ".gif";
+                    weather_widget.img8 = "../../img/weather/n" + result7 + ".gif";
                 }
                 else {
-                    weather_widget.img8 = "../img/weather/n" + result8 + ".gif";
+                    weather_widget.img8 = "../../img/weather/n" + result8 + ".gif";
                 }
 
 
                 var result9 = sessiondispatcher.getSingleWeatherInfo("img9", "forecast");
                 var result10 = sessiondispatcher.getSingleWeatherInfo("img10", "forecast");
                 if (result9 == "99") {
-                    weather_widget.img9 = "../img/weather/d" + result10 + ".gif";
+                    weather_widget.img9 = "../../img/weather/d" + result10 + ".gif";
                 }
                 else {
-                    weather_widget.img9 = "../img/weather/d" + result9 + ".gif";
+                    weather_widget.img9 = "../../img/weather/d" + result9 + ".gif";
                 }
                 if (result10 == "99") {
-                    weather_widget.img10 = "../img/weather/n" + result9 + ".gif";
+                    weather_widget.img10 = "../../img/weather/n" + result9 + ".gif";
                 }
                 else {
-                    weather_widget.img10 = "../img/weather/n" + result10 + ".gif";
+                    weather_widget.img10 = "../../img/weather/n" + result10 + ".gif";
                 }
 
 
                 var result11 = sessiondispatcher.getSingleWeatherInfo("img11", "forecast");
                 var result12 = sessiondispatcher.getSingleWeatherInfo("img12", "forecast");
                 if (result11 == "99") {
-                    weather_widget.img11 = "../img/weather/d" + result12 + ".gif";
+                    weather_widget.img11 = "../../img/weather/d" + result12 + ".gif";
                 }
                 else {
-                    weather_widget.img11 = "../img/weather/d" + result11 + ".gif";
+                    weather_widget.img11 = "../../img/weather/d" + result11 + ".gif";
                 }
                 if (result12 == "99") {
-                    weather_widget.img12 = "../img/weather/n" + result11 + ".gif";
+                    weather_widget.img12 = "../../img/weather/n" + result11 + ".gif";
                 }
                 else {
-                    weather_widget.img12 = "../img/weather/n" + result12 + ".gif";
+                    weather_widget.img12 = "../../img/weather/n" + result12 + ".gif";
                 }
 
             }
@@ -205,95 +205,95 @@ Item {
                 var result2n = sessiondispatcher.getSingleWeatherInfo("img2", "forecast");
 
                 if (result1n == "99") {
-                    weather_widget.img1 = "../img/weather/n" + result2n + ".gif";
+                    weather_widget.img1 = "../../img/weather/n" + result2n + ".gif";
                 }
                 else {
-                    weather_widget.img1 = "../img/weather/n" + result1n + ".gif";
+                    weather_widget.img1 = "../../img/weather/n" + result1n + ".gif";
                 }
                 if (result2n == "99") {
-                    weather_widget.img2 = "../img/weather/d" + result1n + ".gif";
+                    weather_widget.img2 = "../../img/weather/d" + result1n + ".gif";
                 }
                 else {
-                    weather_widget.img2 = "../img/weather/d" + result2n + ".gif";
+                    weather_widget.img2 = "../../img/weather/d" + result2n + ".gif";
                 }
 
 
                 var result3n = sessiondispatcher.getSingleWeatherInfo("img3", "forecast");
                 var result4n = sessiondispatcher.getSingleWeatherInfo("img4", "forecast");
                 if (result3n == "99") {
-                    weather_widget.img3 = "../img/weather/n" + result4n + ".gif";
+                    weather_widget.img3 = "../../img/weather/n" + result4n + ".gif";
                 }
                 else {
-                    weather_widget.img3 = "../img/weather/n" + result3n + ".gif";
+                    weather_widget.img3 = "../../img/weather/n" + result3n + ".gif";
                 }
                 if (result4n == "99") {
-                    weather_widget.img4 = "../img/weather/d" + result3n + ".gif";
+                    weather_widget.img4 = "../../img/weather/d" + result3n + ".gif";
                 }
                 else {
-                    weather_widget.img4 = "../img/weather/d" + result4n + ".gif";
+                    weather_widget.img4 = "../../img/weather/d" + result4n + ".gif";
                 }
 
 
                 var result5n = sessiondispatcher.getSingleWeatherInfo("img5", "forecast");
                 var result6n = sessiondispatcher.getSingleWeatherInfo("img6", "forecast");
                 if (result5n == "99") {
-                    weather_widget.img5 = "../img/weather/n" + result6n + ".gif";
+                    weather_widget.img5 = "../../img/weather/n" + result6n + ".gif";
                 }
                 else {
-                    weather_widget.img5 = "../img/weather/n" + result5n + ".gif";
+                    weather_widget.img5 = "../../img/weather/n" + result5n + ".gif";
                 }
                 if (result6n == "99") {
-                    weather_widget.img6 = "../img/weather/d" + result5n + ".gif";
+                    weather_widget.img6 = "../../img/weather/d" + result5n + ".gif";
                 }
                 else {
-                    weather_widget.img6 = "../img/weather/d" + result6n + ".gif";
+                    weather_widget.img6 = "../../img/weather/d" + result6n + ".gif";
                 }
 
                 var result7n = sessiondispatcher.getSingleWeatherInfo("img7", "forecast");
                 var result8n = sessiondispatcher.getSingleWeatherInfo("img8", "forecast");
                 if (result7n == "99") {
-                    weather_widget.img7 = "../img/weather/n" + result8n + ".gif";
+                    weather_widget.img7 = "../../img/weather/n" + result8n + ".gif";
                 }
                 else {
-                    weather_widget.img7 = "../img/weather/n" + result7n + ".gif";
+                    weather_widget.img7 = "../../img/weather/n" + result7n + ".gif";
                 }
                 if (result8n == "99") {
                     weather_widget.img8 = "../img/weather/d" + result7n + ".gif";
                 }
                 else {
-                    weather_widget.img8 = "../img/weather/d" + result8n + ".gif";
+                    weather_widget.img8 = "../../img/weather/d" + result8n + ".gif";
                 }
 
 
                 var result9n = sessiondispatcher.getSingleWeatherInfo("img9", "forecast");
                 var result10n = sessiondispatcher.getSingleWeatherInfo("img10", "forecast");
                 if (result9n == "99") {
-                    weather_widget.img9 = "../img/weather/n" + result10n + ".gif";
+                    weather_widget.img9 = "../../img/weather/n" + result10n + ".gif";
                 }
                 else {
-                    weather_widget.img9 = "../img/weather/n" + result9n + ".gif";
+                    weather_widget.img9 = "../../img/weather/n" + result9n + ".gif";
                 }
                 if (result10n == "99") {
-                    weather_widget.img10 = "../img/weather/d" + result9n + ".gif";
+                    weather_widget.img10 = "../../img/weather/d" + result9n + ".gif";
                 }
                 else {
-                    weather_widget.img10 = "../img/weather/d" + result10n + ".gif";
+                    weather_widget.img10 = "../../img/weather/d" + result10n + ".gif";
                 }
 
 
                 var result11n = sessiondispatcher.getSingleWeatherInfo("img11", "forecast");
                 var result12n = sessiondispatcher.getSingleWeatherInfo("img12", "forecast");
                 if (result11n == "99") {
-                    weather_widget.img11 = "../img/weather/n" + result12n + ".gif";
+                    weather_widget.img11 = "../../img/weather/n" + result12n + ".gif";
                 }
                 else {
-                    weather_widget.img11 = "../img/weather/n" + result11n + ".gif";
+                    weather_widget.img11 = "../../img/weather/n" + result11n + ".gif";
                 }
                 if (result12n == "99") {
-                    weather_widget.img12 = "../img/weather/d" + result11n + ".gif";
+                    weather_widget.img12 = "../../img/weather/d" + result11n + ".gif";
                 }
                 else {
-                    weather_widget.img12 = "../img/weather/d" + result12n + ".gif";
+                    weather_widget.img12 = "../../img/weather/d" + result12n + ".gif";
                 }
             }
             weahterModel.clear();
