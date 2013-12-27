@@ -456,7 +456,7 @@ class FunctionOfClean():
         #self.msgdaemon = msgdaemon
         pass
 
-    def clean_the_file(self, cruft, sysdaemon):
+    def clean_the_file(self, cruft):
         tmp = cruft.encode("UTF-8")
         #sysdaemon.data_of_remove_file(tmp)
         if tmp:

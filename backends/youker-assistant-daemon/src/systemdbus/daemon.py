@@ -73,15 +73,6 @@ class Daemon(PolicyKitService):
     def set_homedir(self, homedir):
         self.soundconf.set_homedir(homedir)
 
-
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def clean_by_main_one_key(self, mode_list, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.clean_complete_main_msg('')
-            return
-
-
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b', sender_keyword='sender')
     def kill_root_process(self, pid, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
