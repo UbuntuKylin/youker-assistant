@@ -59,6 +59,9 @@ Rectangle {
                 else {
                     cookiestatus.visible = false;
                 }
+
+                showLabel.visible = false;
+                showText.text = "";
             }
         }
     }
@@ -129,50 +132,50 @@ Rectangle {
         onQuickCleanProcess: {
             if(type == "firefoxhistory") {
                 if(status == "start") {
-                    showText.text = qsTr("Cleaning up history trace of Firefox...");
+                    showText.text = qsTr("Cleaning up history trace of Firefox...");//正在清理Firefox的历史痕迹...
                 }
                 else if(status == "end") {
-                    showText.text = qsTr("Firefox history trace had been cleared!");
+                    showText.text = qsTr("Firefox history trace had been cleared!");//Firefox的历史痕迹已清理完毕！
                 }
             }
             else if(type == "chromiumhistory") {
                 if(status == "start") {
-                    showText.text = qsTr("Cleaning up history trace of Chromium...");
+                    showText.text = qsTr("Cleaning up history trace of Chromium...");//正在清理Chromium的历史痕迹...
                 }
                 else if(status == "end") {
-                    showText.text = qsTr("Chromium history trace had been cleared!");
+                    showText.text = qsTr("Chromium history trace had been cleared!");//Chromium的历史痕迹已清理完毕！
                 }
             }
             else if(type == "firefoxcookies") {
                 if(status == "start") {
-                    showText.text = qsTr("Cleaning up Cookies of Firefox...");
+                    showText.text = qsTr("Cleaning up Cookies of Firefox...");//正在清理Firefox的Cookies...
                 }
                 else if(status == "end") {
-                    showText.text = qsTr("Firefox Cookies had been cleared!");
+                    showText.text = qsTr("Firefox Cookies had been cleared!");//Firefox的Cookies已清理完毕！
                 }
             }
             else if(type == "chromiumcookies") {
                 if(status == "start") {
-                    showText.text = qsTr("Cleaning up Cookies of Chromium...");
+                    showText.text = qsTr("Cleaning up Cookies of Chromium...");//正在清理Chromium的Cookies...
                 }
                 else if(status == "end") {
-                    showText.text = qsTr("Chromium Cookies had been cleared!");
+                    showText.text = qsTr("Chromium Cookies had been cleared!");//Chromium的Cookies已清理完毕！
                 }
             }
             else if(type == "apt") {
                 if(status == "end") {
-                    showText.text = qsTr("Apt cache had been cleared!");
+                    showText.text = qsTr("Apt cache had been cleared!");//Apt缓存已清理完毕！
                 }
                 else {
-                    showText.text = qsTr("Cleaning up Apt cache: ") + status;
+                    showText.text = qsTr("Cleaning up Apt cache: ") + status;//正在清理Apt缓存：
                 }
             }
             else if(type == "software_center") {
                 if(status == "end") {
-                    showText.text = qsTr("Software Center cache had been cleared!");
+                    showText.text = qsTr("Software Center cache had been cleared!");//软件中心缓存已清理完毕！
                 }
                 else {
-                    showText.text = qsTr("Cleaning up Software Center cache: ") + status;
+                    showText.text = qsTr("Cleaning up Software Center cache: ") + status;//正在清理软件中心缓存：
                 }
             }
         }
@@ -300,6 +303,7 @@ Rectangle {
             Text {
                 id: showText
                 width: leftbar.width - 50 - 20 * 2 - 20
+                height: 30
                 text: ""
                 wrapMode: Text.WrapAnywhere//Text.WordWrap
                 color: "green"

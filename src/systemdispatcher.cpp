@@ -360,9 +360,6 @@ void SystemDispatcher::handler_clean_data_second(QString type, QString msg) {
 }
 
 void SystemDispatcher::handler_status_for_quick_clean(QString type, QString status) {
-    qDebug() << "clean.......";
-    qDebug() << type;
-    qDebug() << status;
     emit quickCleanProcess(type, status);
 }
 
@@ -475,7 +472,6 @@ void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
     thread->start();
 }
 
-//clean_by_main_one_key
 void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
     KThread *thread = new KThread(strlist, systemiface, "onekey_clean_crufts_function");
     thread->start();
