@@ -237,6 +237,14 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def plymouth_init_check(self):
         self.otherconf.plymouth_init_check()
+
+    # back image path
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
+    def back_image_path(self,name):
+        return self.otherconf.back_image_path(name)
+
+
+    #
     
     # -------------------------monitorball-------------------------
     # clean up memory
