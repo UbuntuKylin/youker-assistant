@@ -213,6 +213,24 @@ Rectangle {
 
                     }
                 }
+                Rectangle{
+                    width: revoke.width;height: revoke.height; color: "transparent"
+                    anchors{
+                        verticalCenter: parent.verticalCenter
+                        right: parent.right
+                        rightMargin: 20
+                    }
+                    opacity: wrapper.ListView.isCurrentItem? 1:0
+                    Image {id:revoke;source: "../../img/icons/revoke.png"}
+                    MouseArea{
+                        anchors.fill:parent
+                        enabled:wrapper.ListView.isCurrentItem? true:false
+                        onClicked: {
+                            systemdispatcher.delete_plymouth_qt(itemTitle);
+                            systemdispatcher.readyAddBootImageToList();
+                        }
+                    }
+                }
 
             }
         }
