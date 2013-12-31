@@ -233,6 +233,11 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def get_image_path(self,name):
         return self.otherconf.get_image_path(name)
+
+    # Delete the boot animation from the list
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def delete_plymouth(self,plymouthName):
+        return self.otherconf.delete_plymouth(plymouthName)
     
     # -------------------------monitorball-------------------------
     # clean up memory

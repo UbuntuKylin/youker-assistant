@@ -25,6 +25,7 @@ class Others:
 
     # custom plymouth bg by plymouthName
     def custom_plymouth_bg(self, plymouthName):
+        plymouthName = plymouthName.encode('utf-8')
         existingDir = '/var/lib/youker-assistant-daemon/plymouth/existing/'
         linkFileDir = '/lib/plymouth/themes/default.plymouth'
 
@@ -35,6 +36,8 @@ class Others:
     def add_new_plymouth(self, customBG, plymouthName):
         # if plymouthName exist return false
         existingPlymouth = self.get_existing_plymouth_list()
+        customBG = customBG.encode('utf-8')
+        plymouthName = plymouthName.encode('utf-8')
         if(plymouthName in existingPlymouth):
             return False
         else:
@@ -77,6 +80,7 @@ class Others:
         # locate the current plymouth theme dir
         linkFile = open(linkFileDir)
         fullString = linkFile.read()
+        linkFile.close()
         index = fullString.find('ScriptFile=')
         theLine = fullString[index:]
         # cut 'ScriptFile=' & '\n'
@@ -85,19 +89,33 @@ class Others:
         scriptName = scriptFile[scriptFile.rfind('/') + 1:]
         plymouthName = scriptDir[scriptDir.rfind('/') + 1:]
         
-        # check and save current plymouth
+        # check and save current pl        linkFile.close()ymouth
         if(os.path.exists(existingDir + plymouthName) == False):
             os.mkdir(existingDir + plymouthName)
             shutil.copy(scriptFile, existingDir + plymouthName + '/' + scriptName)
             shutil.copy(linkFileDir, existingDir + plymouthName + '/default.plymouth')
 
     def get_image_path(self,name):
+        name = name.encode('utf-8')
         if not os.path.exists('/lib/plymouth/themes/' + name + '/customBG.png') :
             return False
         else :
             path = '/lib/plymouth/themes/' + name + '/customBG.png'
             return path
 
+    def delete_plymouth(self,plymouthName):
+        plymouthName = plymouthName.encode('utf-8')
+        fd = open('/lib/plymouth/themes/default.plymouth','r')
+        animation = fd.read()
+        fd.close()
+        used = animation[animation.index('themes/')+len('themes/'):]
+        used = used[:used.index('\n')]
+        if used == plymouthName :
+            return False
+        else :
+            shutil.rmtree('/var/lib/youker-assistant-daemon/plymouth/existing/' + plymouthName)
+            shutil.rmtree('/lib/plymouth/themes/' + plymouthName)
+            return True
 
 if __name__ == '__main__':
     ooo = Others()

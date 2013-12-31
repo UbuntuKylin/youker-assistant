@@ -22,133 +22,136 @@ import gsettings
 import utils
 
 class Sound:
-	homedir = ''
+        homedir = ''
 
-	def __init__(self):
-		self.homedir = utils.get_home_dir()
+        def __init__(self):
+                self.homedir = utils.get_home_dir()
 
-	# sometimes need set homedir manual fe:the backend run by root dbus
-	def set_homedir(self, homedir):
-		self.homedir = homedir
+        # sometimes need set homedir manual fe:the backend run by root dbus
+        def set_homedir(self, homedir):
+                self.homedir = homedir
 
-	# enable the login music
-	def set_login_music_enable(self, flag):
-		configdir = self.homedir + '/.config/autostart'
-		desktopfile = '/usr/share/youker-assistant-daemon/autostart/libcanberra-login-sound.desktop'
-		targetfile = configdir + '/libcanberra-login-sound.desktop'
+        # enable the login music
+        def set_login_music_enable(self, flag):
+                configdir = self.homedir + '/.config/autostart'
+                desktopfile = '/usr/share/youker-assistant-daemon/autostart/libcanberra-login-sound.desktop'
+                targetfile = configdir + '/libcanberra-login-sound.desktop'
 
-		if flag:
-			if os.path.exists(configdir):
-				pass
-			else:
-				os.makedirs(configdir)
-			shutil.copy(desktopfile, targetfile)
-		else:
-			if os.path.exists(targetfile):
-				os.remove(targetfile)
-			else:
-				pass
+                if flag:
+                        if os.path.exists(configdir):
+                                pass
+                        else:
+                                os.makedirs(configdir)
+                        shutil.copy(desktopfile, targetfile)
+                else:
+                        if os.path.exists(targetfile):
+                                os.remove(targetfile)
+                        else:
+                                pass
 
-	# get enable the login music. need fix text check in 'libcanberra-login-sound.desktop'
-	def get_login_music_enable(self):
-		targetfile = self.homedir + '/.config/autostart/libcanberra-login-sound.desktop'
+        # get enable the login music. need fix text check in 'libcanberra-login-sound.desktop'
+        def get_login_music_enable(self):
+                targetfile = self.homedir + '/.config/autostart/libcanberra-login-sound.desktop'
 
-		if os.path.exists(targetfile):
-			return True
-		else:
-			return False
+                if os.path.exists(targetfile):
+                        return True
+                else:
+                        return False
 
-	# get sound themes & check and bak sounds
-	def get_sound_themes(self):
-		bakDir = '/var/lib/youker-assistant-daemon/sound-theme/'
-		dirs = ('/usr/share/sounds', os.path.join(self.homedir, ".sounds"))
-		filters = ('index.theme', '')
-		valid = utils.check_dirs(dirs, filters, True)
-		valid.sort()
-		
-		# check and bak sounds
-		for st in valid:
-			if(os.path.exists(bakDir + st) == False):
-				if(os.path.exists('/usr/share/sounds/' + st)):
-					shutil.copytree('/usr/share/sounds/' + st, bakDir + st)
-				else:
-					shutil.copytree(self.homedir + '.sounds/' + st, bakDir + st)
-		
-		return valid
+        # get sound themes & check and bak sounds
+        def get_sound_themes(self):
+                bakDir = '/var/lib/youker-assistant-daemon/sound-theme/'
+                dirs = ('/usr/share/sounds', os.path.join(self.homedir, ".sounds"))
+                filters = ('index.theme', '')
+                valid = utils.check_dirs(dirs, filters, True)
+                valid.sort()
 
-	# get current sound theme
-	def get_sound_theme(self):
-		return gsettings.get('org.gnome.desktop.sound',
-			None, 'theme-name', 'string')
+                # check and bak sounds
+                for st in valid:
+                        if(os.path.exists(bakDir + st) == False):
+                                if(os.path.exists('/usr/share/sounds/' + st)):
+                                        shutil.copytree('/usr/share/sounds/' + st, bakDir + st)
+                                else:
+                                        shutil.copytree(self.homedir + '.sounds/' + st, bakDir + st)
 
-	# set sound theme
-	def set_sound_theme(self, theme):
-		gstheme = gsettings.get_schema('org.gnome.desktop.sound')
-		gstheme.set_string('theme-name',theme)
+                return valid
 
-	# get sounds in current theme
-	def get_sounds(self):
-		results = []
-		currentTheme = self.get_sound_theme()
-		if(os.path.exists(os.path.join(self.homedir, ".sounds") + currentTheme)):
-			soundDir = os.path.join(self.homedir, ".sounds") + currentTheme
-		elif(os.path.exists('/usr/share/sounds/' + currentTheme)):
-			soundDir = '/usr/share/sounds/' + currentTheme
-		else:
-			return results
-		
-		for sound in os.listdir(soundDir + '/stereo'):
-			# pass the link file
-			if(os.path.islink(soundDir + '/stereo/' + sound) == False):
-				results.append(soundDir + '/stereo/' + sound)
-		results.sort()
-		return results
+        # get current sound theme
+        def get_sound_theme(self):
+                return gsettings.get('org.gnome.desktop.sound',
+                        None, 'theme-name', 'string')
 
-	# replace sound file
-	def replace_sound_file(self, newSoundFile, targetSoundFile):
-		currentTheme = self.get_sound_theme()
-		if(os.path.exists(os.path.join(self.homedir, ".sounds") + currentTheme)):
-			soundDir = os.path.join(self.homedir, ".sounds") + currentTheme
-		elif(os.path.exists('/usr/share/sounds/' + currentTheme)):
-			soundDir = '/usr/share/sounds/' + currentTheme
-		else:
-			pass
-		
-		shutil.copy(newSoundFile, soundDir + '/stereo/' + targetSoundFile)
+        # set sound theme
+        def set_sound_theme(self, theme):
+                gstheme = gsettings.get_schema('org.gnome.desktop.sound')
+                gstheme.set_string('theme-name',theme)
 
-	# restore sound file
-	def restore_sound_file(self, targetSoundFile):
-		bakDir = '/var/lib/youker-assistant-daemon/sound-theme/'
-		currentTheme = self.get_sound_theme()
-		if(os.path.exists(os.path.join(self.homedir, ".sounds") + currentTheme)):
-			soundDir = os.path.join(self.homedir, ".sounds") + currentTheme
-		elif(os.path.exists('/usr/share/sounds/' + currentTheme)):
-			soundDir = '/usr/share/sounds/' + currentTheme
-		else:
-			pass
-		
-		shutil.copy(bakDir + currentTheme + '/stereo/' + targetSoundFile, soundDir + '/stereo/' + targetSoundFile)
+        # get sounds in current theme
+        def get_sounds(self):
+                results = []
+                currentTheme = self.get_sound_theme()
+                if(os.path.exists(os.path.join(self.homedir, ".sounds") + currentTheme)):
+                        soundDir = os.path.join(self.homedir, ".sounds") + currentTheme
+                elif(os.path.exists('/usr/share/sounds/' + currentTheme)):
+                        soundDir = '/usr/share/sounds/' + currentTheme
+                else:
+                        return results
 
-	# restore all sound file in current sound theme
-	def restore_all_sound_file(self, soundTheme):
-		bakSoundThemeDir = '/var/lib/youker-assistant-daemon/sound-theme/' + soundTheme
-		if(os.path.exists(os.path.join(self.homedir, ".sounds") + soundTheme)):
-			soundDir = os.path.join(self.homedir, ".sounds") + soundTheme
-		elif(os.path.exists('/usr/share/sounds/' + soundTheme)):
-			soundDir = '/usr/share/sounds/' + soundTheme
-		else:
-			pass
-		
-		for soundFile in os.listdir(bakSoundThemeDir + '/stereo'):
-			shutil.copy(bakSoundThemeDir + '/stereo/' + soundFile, soundDir + '/stereo/' + soundFile)
+                for sound in os.listdir(soundDir + '/stereo'):
+                        # pass the link file
+                        if(os.path.islink(soundDir + '/stereo/' + sound) == False):
+                                results.append(soundDir + '/stereo/' + sound)
+                results.sort()
+                return results
+
+        # replace sound file
+        def replace_sound_file(self, newSoundFile, targetSoundFile):
+                newSoundFile = newSoundFile.encode('utf-8')
+                targetSoundFile = targetSoundFile.encode('utf-8')
+                currentTheme = self.get_sound_theme()
+                if(os.path.exists(os.path.join(self.homedir, ".sounds") + currentTheme)):
+                        soundDir = os.path.join(self.homedir, ".sounds") + currentTheme
+                elif(os.path.exists('/usr/share/sounds/' + currentTheme)):
+                        soundDir = '/usr/share/sounds/' + currentTheme
+                else:
+                        pass
+
+                shutil.copy(newSoundFile, soundDir + '/stereo/' + targetSoundFile)
+
+        # restore sound file
+        def restore_sound_file(self, targetSoundFile):
+                targetSoundFile = targetSoundFile.encode('utf-8')
+                bakDir = '/var/lib/youker-assistant-daemon/sound-theme/'
+                currentTheme = self.get_sound_theme()
+                if(os.path.exists(os.path.join(self.homedir, ".sounds") + currentTheme)):
+                        soundDir = os.path.join(self.homedir, ".sounds") + currentTheme
+                elif(os.path.exists('/usr/share/sounds/' + currentTheme)):
+                        soundDir = '/usr/share/sounds/' + currentTheme
+                else:
+                        pass
+
+                shutil.copy(bakDir + currentTheme + '/stereo/' + targetSoundFile, soundDir + '/stereo/' + targetSoundFile)
+
+        # restore all sound file in current sound theme
+        def restore_all_sound_file(self, soundTheme):
+                bakSoundThemeDir = '/var/lib/youker-assistant-daemon/sound-theme/' + soundTheme
+                if(os.path.exists(os.path.join(self.homedir, ".sounds") + soundTheme)):
+                        soundDir = os.path.join(self.homedir, ".sounds") + soundTheme
+                elif(os.path.exists('/usr/share/sounds/' + soundTheme)):
+                        soundDir = '/usr/share/sounds/' + soundTheme
+                else:
+                        pass
+
+                for soundFile in os.listdir(bakSoundThemeDir + '/stereo'):
+                        shutil.copy(bakSoundThemeDir + '/stereo/' + soundFile, soundDir + '/stereo/' + soundFile)
 
 if __name__ == '__main__':
-	sss = Sound()
+        sss = Sound()
 # 	print sss.get_sound_themes()
 #  	sss.restore_all_sound_file('ubuntu')
 # 	print sss.get_login_music_enable()
 # 	sss.set_login_music_enable(False)
 #   print sss.get_sound_themes()
 #	print sss.get_sound_theme()
-	print sss.get_sounds()
+        print sss.get_sounds()
 # sss.set_sound_theme('freedesktop')

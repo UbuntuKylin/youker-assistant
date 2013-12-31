@@ -87,6 +87,7 @@ public:
     Q_INVOKABLE QStringList get_existing_plymouth_list_qt();
     Q_INVOKABLE void plymouth_init_check_qt();
     Q_INVOKABLE QString get_image_path_qt(QString name);
+    Q_INVOKABLE bool delete_plymouth_qt(QString plymouthName);
 
 
     //-----------------------------------------------
