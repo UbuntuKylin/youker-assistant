@@ -139,7 +139,7 @@ Rectangle {
             right: parent.right
             rightMargin: 30
             top: parent.top
-            topMargin: titleimage.height/2 - 7
+            topMargin: titleimage.height/2 - 10
         }
         spacing: 30
 
