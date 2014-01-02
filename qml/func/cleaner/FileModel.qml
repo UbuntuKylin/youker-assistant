@@ -21,7 +21,7 @@ Item {
     width: parent.width
     height: 435
     property string title: qsTr("Quickly find large files")//快速找出大文件
-    property string description: qsTr("Range:1M-20480M; 1GB = 1024MB.")//大小范围为1M-20480M；1GB = 1024MB。
+    property string description: qsTr("Range:1M-20480M; 1GB = 1024MB")//大小范围为1M-20480M；1GB = 1024MB
 //    property string scope_desc: qsTr("Tips: No support the path contains Chinese.")//提示：暂不支持中文路径。
     property string btnFlag: "largestfile_work"//清理的标记：largestfile_work
     property int sub_num: 0

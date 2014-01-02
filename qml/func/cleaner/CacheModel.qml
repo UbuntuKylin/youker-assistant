@@ -21,7 +21,7 @@ Item {
     width: parent.width
     height: 435
     property string title: qsTr("Deep cleaning up the system cache")//深度清理系统缓存
-    property string description: qsTr("Deep cleaning up the system cache, to save disk space!")//深度清理系统缓存，节省磁盘空间！
+    property string description: qsTr("Deep cleaning up the system cache, to save disk space")//深度清理系统缓存，节省磁盘空间！
     property string btnFlag: "cache_scan"//扫描或者清理的标记：cache_scan/cache_work
     property bool aptresultFlag: false//判断apt扫描后的实际内容是否为空，为空时为false，有内容时为true
     property bool softresultFlag: false//判断soft扫描后的实际内容是否为空，为空时为false，有内容时为true

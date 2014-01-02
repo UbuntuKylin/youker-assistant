@@ -225,7 +225,7 @@ Rectangle {
             Text {
                 id: text0
                 width: leftbar.width-180
-                text: qsTr("Quick clean up system junk, saving disk space and improving the system efficiency!")//一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！
+                text: qsTr("Quick clean up system junks, saving disk space and improving the system efficiency !")//一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！
                 font.bold: true
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14

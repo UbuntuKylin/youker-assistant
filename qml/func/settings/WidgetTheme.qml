@@ -115,6 +115,7 @@ Rectangle {
 
     Column {
         id: titlecolumn
+        spacing: 10
         anchors {
             top: parent.top
             topMargin: 44

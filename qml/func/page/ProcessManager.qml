@@ -87,7 +87,7 @@ Rectangle {
         source: "../../img/skin/note-bg.png"
     }
     Row {
-        spacing: 20
+        spacing: 10
         anchors {
             left: parent.left
             leftMargin: 50
@@ -95,13 +95,13 @@ Rectangle {
             topMargin: titleimage.height/2 - 7
         }
         Text {
-            text: qsTr("Task manager help you to kill the processes that are running on the system.")//任务管理器帮助您去结束系统上正在运行的一些进程。
+            text: qsTr("Help you learn more about the program running on the system.")//帮助您了解系统上运行程序的详细信息。
             font.pixelSize: 12
             color: "#383838"
         }
         Common.ButtonRow {
             exclusive: true//控制是否联动
-            spacing: 100
+            spacing: 80
             Common.CheckBox {
                 id:currentUser
                 titleName: qsTr("Current User") //当前用户
@@ -139,7 +139,7 @@ Rectangle {
             right: parent.right
             rightMargin: 30
             top: parent.top
-            topMargin: titleimage.height/2 - 10
+            topMargin: titleimage.height/2 - 12
         }
         spacing: 30
 

@@ -30,7 +30,7 @@ Rectangle {
     property string selected_icon_theme: ""//存放用户选择确认后的主题
 
     property string actiontitle: qsTr("Desktop Icons")//桌面图标设置
-    property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons")//设置桌面图标主题和桌面图标的可见性
+    property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons.")//设置桌面图标主题和桌面图标的可见性
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"

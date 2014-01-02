@@ -29,7 +29,7 @@ Rectangle {
     property string selected_cursor_theme: ""//存放用户选择确认后的主题
 
     property string actiontitle: qsTr("Mouse Settings")//鼠标设置
-    property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the ‘OK’ button to confirm.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。
+    property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"

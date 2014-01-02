@@ -33,7 +33,7 @@ FcitxWarnDialog::FcitxWarnDialog(QWidget *parent) :
     ui->closeButton->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
-    ui->displaylabel->setText(tr("Are you sure you want to exit the wizard？"));//您确定退出输入法配置向导？
+    ui->displaylabel->setText(tr("Are you sure you want to exit the wizard ?"));//您确定退出输入法配置向导？
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"

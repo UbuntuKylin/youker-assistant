@@ -28,7 +28,7 @@ Rectangle {
 
     property int launcher_size
     property string actiontitle: qsTr("Launcher settings")//启动器设置
-    property string actiontext: qsTr("Setting the Launcher display mode, Icon size")//设置启动器的显示模式、图标尺寸
+    property string actiontext: qsTr("Setting the Launcher display mode, Icon size.")//设置启动器的显示模式、图标尺寸。
 
     //背景
     Image {
