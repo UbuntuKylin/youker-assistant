@@ -114,7 +114,7 @@
   <widget class="QLabel" name="title1">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>100</x>
      <y>45</y>
      <width>171</width>
      <height>17</height>
@@ -130,7 +130,7 @@
   <widget class="QLabel" name="title2">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>100</x>
      <y>70</y>
      <width>171</width>
      <height>20</height>
@@ -140,7 +140,7 @@
     <string notr="true">font: 10pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Proposed a key acceleration&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Using 'quick clean' ?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="title1_2">
@@ -203,7 +203,7 @@
   <widget class="QLabel" name="title1_4">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>157</x>
      <y>263</y>
      <width>171</width>
      <height>17</height>
@@ -241,6 +241,12 @@
      <height>17</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>文泉驿微米黑</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -248,11 +254,17 @@
   <widget class="QLabel" name="memory_2">
    <property name="geometry">
     <rect>
-     <x>209</x>
+     <x>210</x>
      <y>263</y>
      <width>67</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>文泉驿微米黑</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>

@@ -25,6 +25,7 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
+    property bool first_slider_value: false //过滤掉系统初始化时会使value的值为32（最小值），需要过滤掉
 
     property int launcher_size
     property string actiontitle: qsTr("Launcher settings")//启动器设置
@@ -161,6 +162,17 @@ Rectangle {
             Common.Slider {
                 id: slider
                 value: sessiondispatcher.get_launcher_icon_size_qt()
+                onValueChanged: {
+//                    console.log(slider.value)
+                    if(launcherthemepage.first_slider_value ){  //过滤掉系统初始化时会使value的值为32（最小值），需要过滤掉
+                        launcherthemepage.launcher_size = slider.value;
+                        sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+                    }
+                    if(slider.value == 32)  //过滤掉系统初始化时会使value的值为32（最小值），需要过滤掉
+                    {
+                        launcherthemepage.first_slider_value = true;
+                    }
+                }
                 width: 150
                 maximumValue: 64
                 minimumValue: 32
@@ -176,19 +188,19 @@ Rectangle {
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
             }
-            Common.Button {
-                id: okBtn
-                hoverimage: "green2.png"
-                fontsize: 12
-                text: qsTr("OK")//确定
-                width: 94; height: 29
-                onClicked: {
-                    if (launcherthemepage.launcher_size != slider.value) {
-                        launcherthemepage.launcher_size = slider.value;
-                        sessiondispatcher.set_launcher_icon_size_qt(slider.value);
-                    }
-                }
-            }
+//            Common.Button {
+//                id: okBtn
+//                hoverimage: "green2.png"
+//                fontsize: 12
+//                text: qsTr("OK")//确定
+//                width: 94; height: 29
+//                onClicked: {
+//                    if (launcherthemepage.launcher_size != slider.value) {
+//                        launcherthemepage.launcher_size = slider.value;
+//                        sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+//                    }
+//                }
+//            }
         }
 
         Row {
@@ -278,7 +290,7 @@ Rectangle {
 
             if((defaultsize == launcherthemepage.launcher_size) && (defaultautohide == autohideFlag) && (defaultshowicon == showiconFlag)) {
                 //友情提示：        Launcher已经恢复为默认配置！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Launcher has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//Launcher已经恢默认配置！
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Launcher has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//Launcher已经恢复默认配置！
             }
             else {
                 if(defaultsize != slider.value) {

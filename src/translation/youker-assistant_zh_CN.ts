@@ -756,7 +756,7 @@
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="213"/>
         <source>Has been restored to the default font!</source>
-        <translation>已经恢默认字体！</translation>
+        <translation>已经恢复默认字体！</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="233"/>
@@ -1474,8 +1474,8 @@
 <context>
     <name>LauncherTheme</name>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="30"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="107"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="31"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="108"/>
         <source>Launcher settings</source>
         <translation>启动器设置</translation>
     </message>
@@ -1484,44 +1484,43 @@
         <translation type="obsolete">设置启动器的显示模式、图标尺寸。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="31"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="32"/>
         <source>Setting the Launcher display mode, Icon size.</source>
         <translation>设置启动器的显示模式、图标尺寸。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="81"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="82"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="132"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="133"/>
         <source>Launcher hide mode:</source>
         <translation>启动器自动隐藏：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="156"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="157"/>
         <source>Launcher icon size: </source>
         <translation>启动器图标尺寸：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="183"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="199"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="211"/>
         <source>Display desktop icon: </source>
         <translation>显示桌面图标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="281"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="293"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="281"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="293"/>
         <source>Launcher has been restored to the default configuration!</source>
-        <translation>Launcher已经恢默认配置！</translation>
+        <translation>Launcher已经恢复默认配置！</translation>
     </message>
 </context>
 <context>
@@ -1637,6 +1636,11 @@
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
+        <location filename="../../qml/func/others/LeftPage.qml" line="592"/>
+        <source>Clean up the Cookies, including surfing and shopping records</source>
+        <translation>清理电脑中的 Cookies，包含上网、购物、游戏等记录</translation>
+    </message>
+    <message>
         <source>Quick clean up system junk, saving disk space and improving the system efficiency!</source>
         <translation type="obsolete">一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
@@ -1705,9 +1709,8 @@
         <translation>清理 Cookies</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="592"/>
         <source>Clean up the Cookies, including surfing, shopping and online game records</source>
-        <translation>清理电脑中的 Cookies，包含上网、购物、游戏等记录</translation>
+        <translation type="obsolete">清理电脑中的 Cookies，包含上网、购物、游戏等记录</translation>
     </message>
 </context>
 <context>
@@ -2832,9 +2835,13 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;电脑运行缓慢&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.ui" line="143"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Proposed a key acceleration&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;建议一键加速&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;建议一键加速&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../suspensionframe.ui" line="143"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Using &apos;quick clean&apos; ?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;使用一键加速？&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="168"/>
@@ -2862,7 +2869,7 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.ui" line="283"/>
+        <location filename="../suspensionframe.ui" line="295"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory occupancy rate:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2873,9 +2880,13 @@
         <translation>系统运行流畅</translation>
     </message>
     <message>
+        <source>There is no need to accelerate</source>
+        <translation type="obsolete">无需进行加速</translation>
+    </message>
+    <message>
         <location filename="../suspensionframe.cpp" line="27"/>
         <location filename="../suspensionframe.cpp" line="140"/>
-        <source>There is no need to accelerate</source>
+        <source>No need to accelerate</source>
         <translation>无需进行加速</translation>
     </message>
     <message>
@@ -2895,21 +2906,29 @@
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="134"/>
+        <source>Using &apos;quick clean&apos; ?</source>
+        <translation>使用一键加速？</translation>
+    </message>
+    <message>
         <source>Recommend the use of âquick cleanâ</source>
-        <translation>建议一键加速</translation>
+        <translation type="obsolete">建议一键加速</translation>
     </message>
 </context>
 <context>
     <name>Switch</name>
     <message>
-        <location filename="../../qml/func/common/Switch.qml" line="39"/>
         <source>ON</source>
-        <translation>已开启</translation>
+        <translation type="obsolete">已开启</translation>
     </message>
     <message>
         <location filename="../../qml/func/common/Switch.qml" line="39"/>
         <source>OFF</source>
         <translation>已关闭</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/common/Switch.qml" line="39"/>
+        <source>     ON</source>
+        <translation>   已开启</translation>
     </message>
 </context>
 <context>

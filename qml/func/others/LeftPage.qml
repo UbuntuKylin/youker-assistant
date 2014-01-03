@@ -202,7 +202,7 @@ Rectangle {
     Row {
         id: myrow
         spacing: 10
-        anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 20 }
+        anchors { top: parent.top; topMargin: 35; left: parent.left; leftMargin: 30 }
         Image {//静态图片
             id: staticImage//staticImage
             visible: true
@@ -220,7 +220,7 @@ Rectangle {
         }
 
         Column {
-            spacing: 10
+            spacing: 17
             id: mycolumn
             Text {
                 id: text0
@@ -290,7 +290,7 @@ Rectangle {
 
     Column {
         id: scanColumn
-        anchors { top: myrow.bottom; topMargin: 10; left: parent.left; leftMargin: 20 }
+        anchors { top: myrow.bottom; topMargin: 0; left: parent.left; leftMargin: 30 }
         spacing: 20
         Row {
             spacing: 10
@@ -334,9 +334,9 @@ Rectangle {
     //列表
     Column {
         anchors.top: parent.top
-        anchors.topMargin: 250
+        anchors.topMargin: 255
         anchors.left: parent.left
-        anchors.leftMargin: 45
+        anchors.leftMargin: 55
         spacing:30
         //-------------garbage--------------
         Item {
@@ -589,7 +589,7 @@ Rectangle {
                             }
                         }
                         Text {
-                            text: qsTr("Clean up the Cookies, including surfing, shopping and online game records")//清理电脑中的 Cookies，包含上网、购物、游戏等记录
+                            text: qsTr("Clean up the Cookies, including surfing and shopping records")//清理电脑中的 Cookies，包含上网、购物、游戏等记录
                             font.pixelSize: 12
                             color: "#7a7a7a"
                         }

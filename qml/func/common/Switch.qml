@@ -36,7 +36,7 @@ Item {
     Text {
 //        anchors.centerIn: toggleSwitch
         anchors.verticalCenter: toggleSwitch.verticalCenter
-        text: switchedOn ? qsTr("ON") : qsTr("OFF")//已开启      已关闭
+        text: switchedOn ?qsTr("     ON") : qsTr("OFF")//已开启      已关闭
         color: container.fontColor
         anchors.left: toggleSwitch.left
         anchors.leftMargin: switchedOn ? 5: 30
