@@ -2639,7 +2639,7 @@
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="377"/>
         <source>Back</source>
-        <translation></translation>
+        <translation>返回</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="388"/>

@@ -25,7 +25,7 @@ Rectangle {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
-    property bool first_slider_value: false //过滤掉系统初始化时会使value的值为32（最小值），需要过滤掉
+    property bool first_slider_value: false //系统初始化时会使value的值为32（最小值），需要过滤掉
 
     property int launcher_size
     property string actiontitle: qsTr("Launcher settings")//启动器设置
@@ -164,11 +164,11 @@ Rectangle {
                 value: sessiondispatcher.get_launcher_icon_size_qt()
                 onValueChanged: {
 //                    console.log(slider.value)
-                    if(launcherthemepage.first_slider_value ){  //过滤掉系统初始化时会使value的值为32（最小值），需要过滤掉
+                    if(launcherthemepage.first_slider_value ){  //系统初始化时会使value的值为32（最小值），需要过滤掉
                         launcherthemepage.launcher_size = slider.value;
                         sessiondispatcher.set_launcher_icon_size_qt(slider.value);
                     }
-                    if(slider.value == 32)  //过滤掉系统初始化时会使value的值为32（最小值），需要过滤掉
+                    if(slider.value == 32)  //系统初始化时会使value的值为32（最小值），需要过滤掉
                     {
                         launcherthemepage.first_slider_value = true;
                     }
