@@ -15,11 +15,17 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+import os
 import dbus
 import dbus.mainloop.glib
 from gi.repository import GObject
 
 if __name__ == '__main__':
+    os.environ["TERM"] = "xterm"
+    os.environ["PATH"] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin"
+    os.environ["DEBIAN_FRONTEND"] = "noninteractive"
+    if os.path.exists("/var/lib/apt/lists/lock"):
+        os.remove("/var/lib/apt/lists/lock")
     from systemdbus.daemon import Daemon
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = GObject.MainLoop()

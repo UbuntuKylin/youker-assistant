@@ -2,8 +2,8 @@ TEMPLATE = app
 TARGET = youker-assistant
 QT += core gui phonon declarative dbus
 
-DEPENDPATH += $$PWD/
-INCLUDEPATH += $$PWD/
+#DEPENDPATH += $$PWD/
+#INCLUDEPATH += $$PWD/
 
 inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
