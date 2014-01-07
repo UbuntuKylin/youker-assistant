@@ -1,3 +1,3 @@
 #!/bin/bash
 ROOT_PATH="/usr/lib/python2.7/dist-packages/youker-assistant-daemon"
-echo $1 | sudo -S python $ROOT_PATH/src/youker-assistant-sudodbus.py
+echo $1 | sudo -S python $ROOT_PATH/src/start_sudodbus.py

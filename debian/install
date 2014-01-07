@@ -1,0 +1,3 @@
+backends/youker-assistant-daemon/dbus/com.ubuntukylin_tools.daemon.service /usr/share/dbus-1/system-services/
+backends/youker-assistant-daemon/dbus/com.ubuntukylin.youker.policy /usr/share/polkit-1/actions/
+backends/youker-assistant-daemon/dbus/com.ubuntukylin.youker.conf /etc/dbus-1/system.d/
