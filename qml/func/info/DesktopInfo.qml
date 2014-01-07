@@ -125,7 +125,7 @@ Rectangle {
         source: "../../img/toolWidget/ubuntukylin.png"
         anchors {
             top: parent.top
-            topMargin: 50
+            topMargin: 80
             right: parent.right
             rightMargin: 30
         }

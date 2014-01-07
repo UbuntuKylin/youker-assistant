@@ -211,10 +211,10 @@ Rectangle {
                         visible: false
                         source: ""
                         anchors {
-                            top: parent.top
-                            topMargin: 50
+//                            top: parent.top
+//                            topMargin: 50
                             right: parent.right
-                            rightMargin: 30
+//                            rightMargin: 30
                         }
                     }
                 }
@@ -239,10 +239,10 @@ Rectangle {
                         visible: false
                         source: ""
                         anchors {
-                            top: parent.top
-                            topMargin: 50
+//                            top: parent.top
+//                            topMargin: 50
                             right: parent.right
-                            rightMargin: 30
+//                            rightMargin: 30
                         }
                     }
                 }

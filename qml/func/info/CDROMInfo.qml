@@ -217,7 +217,7 @@ Rectangle {
                         source: ""
                         anchors {
                             right: parent.right
-                            rightMargin: 30
+//                            rightMargin: 30
                         }
                     }
                 }
@@ -243,7 +243,7 @@ Rectangle {
                         source: ""
                         anchors {
                             right: parent.right
-                            rightMargin: 30
+//                            rightMargin: 30
                         }
                     }
                 }
@@ -269,7 +269,7 @@ Rectangle {
                         source: ""
                         anchors {
                             right: parent.right
-                            rightMargin: 30
+//                            rightMargin: 30
                         }
                     }
                 }
@@ -295,7 +295,7 @@ Rectangle {
                         source: ""
                         anchors {
                             right: parent.right
-                            rightMargin: 30
+//                            rightMargin: 30
                         }
                     }
                 }

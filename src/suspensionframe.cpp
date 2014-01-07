@@ -24,7 +24,7 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
 
     this->setWindowOpacity(1.0);
     ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
-    ui->title2->setText(tr("There is no need to accelerate"));//无需进行加速
+    ui->title2->setText(tr("No need to accelerate"));//无需进行加速
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     QDesktopWidget *desktop = QApplication::desktop();
@@ -131,13 +131,13 @@ void SuspensionFrame::paintEvent(QPaintEvent *) {
         color2="#d13625";
         color3="#d5311e";
         ui->title1->setText(tr("Computer runs slowly"));//电脑运行缓慢
-        ui->title2->setText(tr("Recommend the use of ‘quick clean’"));//建议一键加速
+        ui->title2->setText(tr("Using 'quick clean' ?"));//使用一键加速？
     }
     else {
         color2="#00b0ff";
         color3="#006eff";
         ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
-        ui->title2->setText(tr("There is no need to accelerate"));//无需进行加速
+        ui->title2->setText(tr("No need to accelerate"));//无需进行加速
 //        blister.load(":/pixmap/image/blister-big.png");
     }
 

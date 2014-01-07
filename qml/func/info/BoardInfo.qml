@@ -130,7 +130,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("BIOS Manufacturer: ")//BIOS产商：
+                    text: qsTr("BIOS Vendor: ")//BIOS产商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -145,7 +145,7 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Bios Version: ")//BIOS版本：
+                    text: qsTr("BIOS Version: ")//BIOS版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
                     width: 130
@@ -180,7 +180,7 @@ Rectangle {
         source: ""
         anchors {
             top: parent.top
-            topMargin: 50
+            topMargin: 80
             right: parent.right
             rightMargin: 30
         }
@@ -191,7 +191,7 @@ Rectangle {
         source: ""
         anchors {
             top: parent.top
-            topMargin: 200
+            topMargin: 220
             right: parent.right
             rightMargin: 30
         }

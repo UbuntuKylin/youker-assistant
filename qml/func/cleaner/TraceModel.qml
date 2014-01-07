@@ -21,7 +21,7 @@ Item {
     width: parent.width
     height: 435//420//340
     property string btn_text: qsTr("Start scanning")//开始扫描
-    property string title: qsTr("Cleanup History, to protect your privacy")//清理历史记录，保护个人隐私
+    property string title: qsTr("Cleanup history, to protect your privacy")//清理历史记录，保护个人隐私
     property string description: qsTr("Cleaning the internet and opened documents recently records")//清理浏览器上网记录和系统最近打开文件记录
     property string btn_flag: "history_scan"
     property string btn_flag3: "chromium_scan"
@@ -227,7 +227,7 @@ Item {
                 Row{
                     spacing: 15
                     Text {
-                        text: qsTr("Clean up the Firefox Internet records")//清理 firefox 上网记录
+                        text: qsTr("Clean up the Firefox Internet records")//清理 Firefox 浏览器上网记录
                         wrapMode: Text.WordWrap
                         font.bold: true
                         font.pixelSize: 14
@@ -263,7 +263,7 @@ Item {
                 Row{
                     spacing: 15
                     Text {
-                        text: qsTr("Clean up the Chromium Internet records")//清理Chromium上网记录
+                        text: qsTr("Clean up the Chromium Internet records")//清理 Chromium 浏览器上网记录
                         wrapMode: Text.WordWrap
                         font.bold: true
                         font.pixelSize: 14
@@ -278,7 +278,7 @@ Item {
                 }
                 Text {
                     width: 450
-                    text: qsTr("Clean up the Chromium history records")//清理Chromium浏览器上的历史记录
+                    text: qsTr("Clean up the Chromium history records")//清理 Chromium 浏览器上的历史记录
                     wrapMode: Text.WordWrap
                     font.pixelSize: 12
                     color: "#7a7a7a"

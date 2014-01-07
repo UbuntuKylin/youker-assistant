@@ -32,7 +32,7 @@ Rectangle {
     property color fontColor: "black"
     property string default_sound: ""
     property string actiontitle: qsTr("Sound effect")//声音效果
-    property string actiontext: qsTr("selected music file name in the list box, do something such as audition, substitution and reduction.")//选中列表框中的音乐文件名，进行对应程序事件的试听、替换和还原。
+    property string actiontext: qsTr("Selected music file name in the list box, do something such as audition, substitution and reduction.")//选中列表框中的音乐文件名，进行对应程序事件的试听、替换和还原。
     property int musiclist_num: 0
 
     property string selectedmusic: ""

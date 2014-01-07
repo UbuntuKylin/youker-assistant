@@ -36,7 +36,7 @@ Rectangle {
     property string sata: qsTr("SATA Model:")//SATA控制器
     property string smbus: qsTr("SMBus:")//系统管理总线
     property string peripheral: qsTr("System peripheral:")//系统外围
-    property string usedriver: qsTr("driver in use:")//使用的驱动
+    property string usedriver: qsTr("Driver in use:")//使用的驱动
     property string existdriver: qsTr("existing drivers:")//可选的驱动
 
     function transTitle(str) {
@@ -212,6 +212,7 @@ Rectangle {
             }
             Common.Separator {
                 width: parent.width - 20
+                visible: (deviceName == "") ? false : true
             }
         }
     }

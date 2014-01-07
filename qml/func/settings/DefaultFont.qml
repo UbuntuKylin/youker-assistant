@@ -210,7 +210,7 @@ Rectangle {
                         var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "currentfont");
                         if(defaultfont == defaultfontpage.selected_current_font) {
                             //友情提示：    已经恢复为默认字体！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Has been restored to the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//已经恢默认字体！
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Has been restored to the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//已经恢复默认字体！
                         }
                         else {
                             sessiondispatcher.set_font_qt_default(defaultfont);
