@@ -10,7 +10,7 @@ import dbus.service
 class AccessDeniedException(dbus.DBusException):
     '''This exception is raised when some operation is not permitted.'''
 
-    _dbus_error_name = 'com.ubuntukylin_tools.daemon.AccessDeniedException'
+    _dbus_error_name = 'com.ubuntukylin.youker.AccessDeniedException'
 
 
 class PolicyKitService(dbus.service.Object):

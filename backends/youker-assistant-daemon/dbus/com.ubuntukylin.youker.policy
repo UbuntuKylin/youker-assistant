@@ -8,7 +8,7 @@
   <vendor_url>http://ubuntukylin.com</vendor_url>
   <icon_name>youkersystem</icon_name>
 
-  <action id="com.ubuntukylin_tools.daemon">
+  <action id="com.ubuntukylin.youker">
     <_description>
       system level settings
     </_description>

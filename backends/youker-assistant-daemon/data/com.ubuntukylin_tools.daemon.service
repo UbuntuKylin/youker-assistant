@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=com.ubuntukylin_tools.daemon
-Exec=/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/youkersystem-daemon
-User=root

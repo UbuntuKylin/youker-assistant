@@ -22,7 +22,7 @@ import logging
 
 log = logging.getLogger("DbusProxy")
 
-INTERFACE = 'com.ubuntukylin_tools.daemon'
+INTERFACE = 'com.ubuntukylin.youker'
 UKPATH = '/'
 SHOWED = False
 
@@ -62,7 +62,7 @@ class DbusProxy:
 class AccessDeniedException(dbus.DBusException):
     '''This exception is raised when some operation is not permitted.'''
 
-    _dbus_error_name = 'com.ubuntukylin_tools.daemon.AccessDeniedException'
+    _dbus_error_name = 'com.ubuntukylin.youker.AccessDeniedException'
 
 def init_dbus(dbus_iface=INTERFACE, dbus_path=UKPATH):
     '''init dbus'''

@@ -46,9 +46,9 @@ from weather.weatherinfo import WeatherInfo
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
 
-INTERFACE = "com.ubuntukylin.IhuSession"
+INTERFACE = "com.ubuntukylin.session"
 UKPATH = "/"
-UK_ACTION_YOUKER = 'com.ubuntukylin_tools.daemon.youker'
+
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         self.sysconf = Sysinfo()
