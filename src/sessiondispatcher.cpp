@@ -38,9 +38,9 @@ QString selectedFcitxFont;
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
-    sessioniface = new QDBusInterface("com.ubuntukylin.IhuSession",
+    sessioniface = new QDBusInterface("com.ubuntukylin.session",
                                "/",
-                               "com.ubuntukylin.IhuSession",
+                               "com.ubuntukylin.session",
                                QDBusConnection::sessionBus());
     page_num = 0;
     this->mainwindow_width = 850;

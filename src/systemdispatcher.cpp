@@ -29,9 +29,9 @@ extern QString music_path;
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
-    systemiface = new QDBusInterface("com.ubuntukylin_tools.daemon",
+    systemiface = new QDBusInterface("com.ubuntukylin.youker",
                                "/",
-                               "com.ubuntukylin_tools.daemon",
+                               "com.ubuntukylin.youker",
                                QDBusConnection::systemBus());
     //绑定到底层清理完毕后发送到信号函数clear_browser
     QObject::connect(systemiface,SIGNAL(clean_single_complete(QString)),this,SLOT(handler_clear_single_rubbish(QString)));

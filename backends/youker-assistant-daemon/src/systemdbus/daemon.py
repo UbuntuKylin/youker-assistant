@@ -46,7 +46,7 @@ import subprocess
 
 log = logging.getLogger('Daemon')
 
-INTERFACE = 'com.ubuntukylin_tools.daemon'
+INTERFACE = 'com.ubuntukylin.youker'
 UKPATH = '/'
 
 class Daemon(PolicyKitService):
