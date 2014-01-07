@@ -82,6 +82,11 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
      <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
    </property>
@@ -96,10 +101,15 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
    <property name="geometry">
     <rect>
      <x>14</x>
-     <y>51</y>
-     <width>101</width>
-     <height>16</height>
+     <y>44</y>
+     <width>131</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User password&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -108,9 +118,9 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>114</x>
+     <x>124</x>
      <y>44</y>
-     <width>201</width>
+     <width>191</width>
      <height>31</height>
     </rect>
    </property>

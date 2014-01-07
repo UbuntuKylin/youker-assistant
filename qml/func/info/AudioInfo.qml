@@ -45,11 +45,10 @@ Rectangle {
         home.firstFlag = true;
         firstView.visible = true;
         firstModel.clear();
-
+        firstModel.append({"title": qsTr("Audio Model:"), "result": audiomodel[0]});//声卡型号：
         firstModel.append({"title": qsTr("Vendor:"), "result": vendorname[0]});//制造商：
         firstModel.append({"title": qsTr("Bus Address:"), "result": address[0]});//总线地址：
         firstModel.append({"title": qsTr("Audio Driver:"), "result": drivers[0]});//声卡驱动：
-        firstModel.append({"title": qsTr("Audio Model:"), "result": audiomodel[0]});//声卡型号：
 
         splitbar1.visible = true;
         logo1.visible = true;
@@ -59,10 +58,10 @@ Rectangle {
         secondView.visible = true;
         secondModel.clear();
 
+        secondModel.append({"title": qsTr("Audio Model:"), "result": audiomodel[1]});//声卡型号：
         secondModel.append({"title": qsTr("Vendor:"), "result": vendorname[1]});//制造商：
         secondModel.append({"title": qsTr("Bus Address:"), "result": address[1]});//总线地址：
         secondModel.append({"title": qsTr("Audio Driver:"), "result": drivers[1]});//声卡驱动：
-        secondModel.append({"title": qsTr("Audio Model:"), "result": audiomodel[1]});//声卡型号：
         splitbar2.visible = true;
         logo2.visible = true;
         logo2.source = InfoGroup.judgeName(vendorname[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -76,10 +75,10 @@ Rectangle {
             thirdView.visible = true;
             thirdModel.clear();
 
+            thirdModel.append({"title": qsTr("Audio Model:"), "result": audiomodel[2]});//声卡型号：
             thirdModel.append({"title": qsTr("Vendor:"), "result": vendorname[2]});//制造商：
             thirdModel.append({"title": qsTr("Bus Address:"), "result": address[2]});//总线地址：
             thirdModel.append({"title": qsTr("Audio Driver:"), "result": drivers[2]});//声卡驱动：
-            thirdModel.append({"title": qsTr("Audio Model:"), "result": audiomodel[2]});//声卡型号：
             splitbar3.visible = true;
             logo3.visible = true;
             logo3.source = InfoGroup.judgeName(vendorname[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -92,10 +91,10 @@ Rectangle {
                 fourthView.visible = true;
                 fourthModel.clear();
 
+                fourthModel.append({"title": qsTr("Audio Model:"), "result": audiomodel[3]});//声卡型号：
                 fourthModel.append({"title": qsTr("Vendor:"), "result": vendorname[3]});//制造商：
                 fourthModel.append({"title": qsTr("Bus Address:"), "result": address[3]});//总线地址：
                 fourthModel.append({"title": qsTr("Audio Driver:"), "result": drivers[3]});//声卡驱动：
-                fourthModel.append({"title": qsTr("Audio Model:"), "result": audiomodel[3]});//声卡型号：
                 splitbar4.visible = true;
                 logo4.visible = true;
                 logo4.source = InfoGroup.judgeName(vendorname[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -148,7 +147,7 @@ Rectangle {
             Text {
                 id: slotText
                 text: result
-                width: 500
+                width: 450
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
@@ -182,7 +181,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 20
         anchors.top: titleRow.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 10
         height: 390
         width: 680 - 4
         Item {
@@ -211,8 +210,8 @@ Rectangle {
                         visible: false
                         source: ""
                         anchors {
-//                            top: parent.top
-//                            topMargin: 50
+                            top: parent.top
+                            topMargin: 30
                             right: parent.right
 //                            rightMargin: 30
                         }
@@ -239,8 +238,8 @@ Rectangle {
                         visible: false
                         source: ""
                         anchors {
-//                            top: parent.top
-//                            topMargin: 50
+                            top: parent.top
+                            topMargin: 30
                             right: parent.right
 //                            rightMargin: 30
                         }
@@ -268,7 +267,7 @@ Rectangle {
                         source: ""
                         anchors {
                             top: parent.top
-                            topMargin: 50
+                            topMargin: 30
                             right: parent.right
                             rightMargin: 30
                         }
@@ -296,7 +295,7 @@ Rectangle {
                         source: ""
                         anchors {
                             top: parent.top
-                            topMargin: 50
+                            topMargin: 30
                             right: parent.right
                             rightMargin: 30
                         }

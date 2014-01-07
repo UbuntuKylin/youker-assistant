@@ -206,190 +206,215 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
         }
     }
-    Column{
-            spacing: 10
-            smooth: true
-            anchors{
-                top:parent.top
-                topMargin: 280
-                left:parent.left
-                leftMargin: 65
-        }
 
-        Row{
-            spacing: 32
-            Text{
-                id:inputMethod
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                text:qsTr("Trigger Input Method: ")//切换激活/非激活输入法：
-                anchors.verticalCenter: parent.verticalCenter
+
+
+    Text{
+        id:inputMethod
+        anchors{
+            top:parent.top
+            topMargin: 280
+            left:parent.left
+            leftMargin: 65
+        }
+        font.pixelSize: 12
+        color: "#7a7a7a"
+        text:qsTr("Trigger Input Method: ")//切换激活/非激活输入法：
+        anchors.verticalCenter: parent.verticalCenter
+    }
+    Row{
+        spacing: 5
+        anchors{
+            top:parent.top
+            topMargin: 277
+            left:parent.left
+            leftMargin: 200
+        }
+        Common.Button{
+            id:methodBtn1
+            hoverimage: "fcitxKey.png"//../../img/icons/
+            fontcolor:"#929292"
+            fontsize: 13
+            width:200
+            height:30
+            onClicked: {
+                methodBtn1.forceActiveFocus();
+                methodBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
             }
-            Row{
-                spacing: 5
-                Common.Button{
-                    id:methodBtn1
-                    hoverimage: "fcitxKey.png"//../../img/icons/
-                    fontcolor:"#929292"
-                    fontsize: 13
-                    width:200
-                    height:30
-                    onClicked: {
-                        methodBtn1.forceActiveFocus();
-                        methodBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
-                    }
-                    onEntered:{
-                        methodBtn1Tmp = methodBtn1.text
-                    }
-                    onExited: {
-                        methodBtn1.text = methodBtn1Tmp
-                    }
-                    Keys.onPressed: {
-                        methodBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        methodBtn1Tmp = methodBtn1.text;
-                    }
-                }
-                Common.Button{
-                    id:methodBtn2
-                    hoverimage: "fcitxKey.png"//../../img/icons/
-                    fontcolor:"#929292"
-                    fontsize: 13
-                    width:200
-                    height:30
-                    onClicked: {
-                        methodBtn2.forceActiveFocus();
-                        methodBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
-                    }
-                    onEntered:{
-                        methodBtn2Tmp = methodBtn2.text
-                    }
-                    onExited: {
-                        methodBtn2.text = methodBtn2Tmp
-                    }
-                    Keys.onPressed: {
-                        methodBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        methodBtn2Tmp = methodBtn2.text
-                    }
-                 }
+            onEntered:{
+                methodBtn1Tmp = methodBtn1.text
+            }
+            onExited: {
+                methodBtn1.text = methodBtn1Tmp
+            }
+            Keys.onPressed: {
+                methodBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                methodBtn1Tmp = methodBtn1.text;
             }
         }
-        //Prev Page
-        Row{
-            spacing: 120
-            Text {
-                id: prevPage
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                text: qsTr("Prev Page: ")//上一页：
-                anchors.verticalCenter: parent.verticalCenter
+        Common.Button{
+            id:methodBtn2
+            hoverimage: "fcitxKey.png"//../../img/icons/
+            fontcolor:"#929292"
+            fontsize: 13
+            width:200
+            height:30
+            onClicked: {
+                methodBtn2.forceActiveFocus();
+                methodBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
             }
-            Row{
-                spacing: 5
-                Common.Button{
-                    id:prevPageBtn1
-                    width:200
-                    height:30
-                    hoverimage: "fcitxKey.png"//../../img/icons/
-                    fontcolor:"#929292"
-                    fontsize: 13
-                    onClicked: {
-                        prevPageBtn1.forceActiveFocus();
-                        prevPageBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
-                    }
-                    onEntered:{
-                        prevpageBtn1Tmp = prevPageBtn1.text
-                    }
-                    onExited: {
-                        prevPageBtn1.text = prevpageBtn1Tmp
-                    }
-                    Keys.onPressed: {
-                        prevPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        prevpageBtn1Tmp = prevPageBtn1.text;
-                    }
-                }
-                Common.Button{
-                    id:prevPageBtn2
-                    width:200
-                    height:30
-                    hoverimage: "fcitxKey.png"//../../img/icons/
-                    fontcolor:"#929292"
-                    fontsize: 13
-                    onClicked: {
-                        prevPageBtn2.forceActiveFocus();
-                        prevPageBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
-                    }
-                    onEntered:{
-                        prevpageBtn2Tmp = prevPageBtn2.text;
-                    }
-                    onExited: {
-                        prevPageBtn2.text = prevpageBtn2Tmp;
-                    }
-                    Keys.onPressed: {
-                        prevPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        prevpageBtn2Tmp = prevPageBtn2.text;
-                    }
-                }
+            onEntered:{
+                methodBtn2Tmp = methodBtn2.text
+            }
+            onExited: {
+                methodBtn2.text = methodBtn2Tmp
+            }
+            Keys.onPressed: {
+                methodBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                methodBtn2Tmp = methodBtn2.text
+            }
+         }
+    }
+
+    //Prev Page
+
+    Text {
+        id: prevPage
+        anchors{
+            top:parent.top
+            topMargin: 325
+            left:parent.left
+            leftMargin: 65
+        }
+        font.pixelSize: 12
+        color: "#7a7a7a"
+        text: qsTr("Prev Page: ")//上一页：
+        anchors.verticalCenter: parent.verticalCenter
+    }
+    Row{
+        spacing: 5
+        anchors{
+            top:parent.top
+            topMargin: 322
+            left:parent.left
+            leftMargin: 200
+        }
+        Common.Button{
+            id:prevPageBtn1
+            width:200
+            height:30
+            hoverimage: "fcitxKey.png"//../../img/icons/
+            fontcolor:"#929292"
+            fontsize: 13
+            onClicked: {
+                prevPageBtn1.forceActiveFocus();
+                prevPageBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
+            }
+            onEntered:{
+                prevpageBtn1Tmp = prevPageBtn1.text
+            }
+            onExited: {
+                prevPageBtn1.text = prevpageBtn1Tmp
+            }
+            Keys.onPressed: {
+                prevPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                prevpageBtn1Tmp = prevPageBtn1.text;
             }
         }
-        //Next Page
-        Row{
-            spacing: 120
-            Text {
-                id: nextPage
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                text: qsTr("Next Page: ")//下一页：
-                anchors.verticalCenter: parent.verticalCenter
+        Common.Button{
+            id:prevPageBtn2
+            width:200
+            height:30
+            hoverimage: "fcitxKey.png"//../../img/icons/
+            fontcolor:"#929292"
+            fontsize: 13
+            onClicked: {
+                prevPageBtn2.forceActiveFocus();
+                prevPageBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
             }
-            Row{
-                spacing: 5
-                Common.Button{
-                    id:nextPageBtn1
-                    width:200
-                    height:30
-                    hoverimage: "fcitxKey.png"//../../img/icons/
-                    fontcolor:"#929292"
-                    fontsize: 13
-                    onClicked: {
-                        nextPageBtn1.forceActiveFocus();
-                        nextPageBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
-                    }
-                    onEntered:{
-                        nextpageBtn1Tmp = nextPageBtn1.text;
-                    }
-                    onExited: {
-                        nextPageBtn1.text = nextpageBtn1Tmp;
-                    }
-                    Keys.onPressed: {
-                        nextPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        nextpageBtn1Tmp = nextPageBtn1.text;
-                    }
-                }
-                Common.Button{
-                    id:nextPageBtn2
-                    width:200
-                    height:30
-                    hoverimage: "fcitxKey.png"//../../img/icons/
-                    fontcolor:"#929292"
-                    fontsize: 13
-                    onClicked: {
-                        nextPageBtn2.forceActiveFocus();
-                        nextPageBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
-                    }
-                    onEntered:{
-                        nextpageBtn2Tmp = nextPageBtn2.text;
-                    }
-                    onExited: {
-                        nextPageBtn2.text = nextpageBtn2Tmp;
-                    }
-                    Keys.onPressed: {
-                        nextPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
-                        nextpageBtn2Tmp = nextPageBtn2.text;
-                    }
-                }
-             }
+            onEntered:{
+                prevpageBtn2Tmp = prevPageBtn2.text;
+            }
+            onExited: {
+                prevPageBtn2.text = prevpageBtn2Tmp;
+            }
+            Keys.onPressed: {
+                prevPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                prevpageBtn2Tmp = prevPageBtn2.text;
+            }
         }
     }
+
+        //Next Page
+
+    Text {
+        id: nextPage
+        anchors{
+            top:parent.top
+            topMargin: 370
+            left:parent.left
+            leftMargin: 65
+        }
+        font.pixelSize: 12
+        color: "#7a7a7a"
+        text: qsTr("Next Page: ")//下一页：
+        anchors.verticalCenter: parent.verticalCenter
+    }
+    Row{
+        spacing: 5
+        anchors{
+            top:parent.top
+            topMargin: 367
+            left:parent.left
+            leftMargin: 200
+        }
+        Common.Button{
+            id:nextPageBtn1
+            width:200
+            height:30
+            hoverimage: "fcitxKey.png"//../../img/icons/
+            fontcolor:"#929292"
+            fontsize: 13
+            onClicked: {
+                nextPageBtn1.forceActiveFocus();
+                nextPageBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
+            }
+            onEntered:{
+                nextpageBtn1Tmp = nextPageBtn1.text;
+            }
+            onExited: {
+                nextPageBtn1.text = nextpageBtn1Tmp;
+            }
+            Keys.onPressed: {
+                nextPageBtn1.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                nextpageBtn1Tmp = nextPageBtn1.text;
+            }
+        }
+        Common.Button{
+            id:nextPageBtn2
+            width:200
+            height:30
+            hoverimage: "fcitxKey.png"//../../img/icons/
+            fontcolor:"#929292"
+            fontsize: 13
+            onClicked: {
+                nextPageBtn2.forceActiveFocus();
+                nextPageBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
+            }
+            onEntered:{
+                nextpageBtn2Tmp = nextPageBtn2.text;
+            }
+            onExited: {
+                nextPageBtn2.text = nextpageBtn2Tmp;
+            }
+            Keys.onPressed: {
+                nextPageBtn2.text = fcitxcfgwizard.get_fcitx_hot_key_string(event.key, event.modifiers);
+                nextpageBtn2Tmp = nextPageBtn2.text;
+            }
+        }
+     }
+
+
 
     //顶层工具栏
     Bars.TopBar {

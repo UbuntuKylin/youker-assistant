@@ -382,7 +382,7 @@ Rectangle {
     Rectangle{id:rightline ; x:652; y:0 ; width:1 ; height:425; color:"#fafcfe"}
 
     Row{
-        spacing: 5
+        spacing: 7
         anchors{
             left: parent.left
             top:parent.top
@@ -394,34 +394,35 @@ Rectangle {
             height: 52
             source: "../../img/icons/listen-pen.png"
         }
-        Column{
-            spacing: 5
-            Text{
-                text:qsTr("Custom Sound Theme")//自定义声音主题
-                width: soundeffectspage.width- 665 - 52 - 15
-                wrapMode: Text.WordWrap
-                color: "#383838"
-                font.pointSize: 10
-                font.bold: true
-            }
-            Text {
-                width: soundeffectspage.width- 665 - 52 - 15
-                text: qsTr("Does not support the audio file in the path that contains Chinese.")//暂不支持中文路径下的音频文件。
-                wrapMode: Text.WordWrap
-                font.pixelSize: 10
-                color: "#7a7a7a"
-            }
+//        Column{
+//            spacing: 5
+        Text{
+            anchors.verticalCenter: parent.verticalCenter
+            text:qsTr("Custom Sound Theme")//自定义声音主题
+            width: soundeffectspage.width- 665 - 52 - 15
+            wrapMode: Text.WordWrap
+            color: "#383838"
+            font.pointSize: 10
+            font.bold: true
         }
+//            Text {
+//                width: soundeffectspage.width- 665 - 52 - 15
+//                text: qsTr("Does not support the audio file in the path that contains Chinese.")//暂不支持中文路径下的音频文件。
+//                wrapMode: Text.WordWrap
+//                font.pixelSize: 10
+//                color: "#7a7a7a"
+//            }
+//        }
 
     }
-    Rectangle{id:topline ; x:652; y: 115; width:parent.width ; height:1; color:"#b9c5cc"}
-    Rectangle{id:bottomline ; x:652;y:116 ;width:parent.width ; height:1; color:"#fafcfe"}
+    Rectangle{id:topline ; x:652; y: 110; width:parent.width ; height:1; color:"#b9c5cc"}
+    Rectangle{id:bottomline ; x:652;y:111 ;width:parent.width ; height:1; color:"#fafcfe"}
 
     Column
     {
         anchors {
             top: parent.top
-            topMargin: 130
+            topMargin: 150
             left: parent.left
             leftMargin: 665
         }

@@ -33,6 +33,7 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/accelerate.png);color: white; font-size: 12px}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/accelerate-hover.png);}"
                 "QPushButton:pressed{border-image:url(:/pixmap/image/accelerate-press.png);}");
+
     ui->descBtn->setStyleSheet("QPushButton {border:0px;color:#1790c9}");
     ui->descBtn->setText(tr("Details"));//详细
     ui->descBtn->setFlat(true);

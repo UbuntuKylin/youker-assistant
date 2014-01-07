@@ -90,6 +90,8 @@ Rectangle {
                 }
                 Text {
                     id: modelText
+                    width: 450
+                    wrapMode: Text.WordWrap
                     text: ""//systemdispatcher.getSingleInfo("NetProduct")
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
@@ -244,6 +246,8 @@ Rectangle {
                 }
                 Text {
                     id: wmodelText
+                    width: 450
+                    wrapMode: Text.WordWrap
                     text: ""//systemdispatcher.getSingleInfo("WlanProduct")
                     font.pixelSize: home.fontSize
                     color: "#7a7a7a"
@@ -349,7 +353,7 @@ Rectangle {
         source: ""
         anchors {
             top: parent.top
-            topMargin: 80
+            topMargin: 65
             right: parent.right
             rightMargin: 30
         }
@@ -360,7 +364,7 @@ Rectangle {
         source: ""
         anchors {
             top: parent.top
-            topMargin: 320
+            topMargin: 315
             right: parent.right
             rightMargin: 30
         }

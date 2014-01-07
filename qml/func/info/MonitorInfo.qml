@@ -75,7 +75,7 @@ Rectangle {
             left: parent.left
             leftMargin: 25
         }
-        spacing: 20
+        spacing: 10
 
         Row {
             Common.Label {
@@ -97,21 +97,6 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
-                    text: qsTr("Current Graphics Card: ")//当前显卡：
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                    width: 180
-                }
-                Text {
-                    id: chipText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_chip")
-                    font.pixelSize: 14
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
                     text: qsTr("Graphics Card Model: ")//显卡型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
@@ -123,6 +108,21 @@ Rectangle {
                     text: ""//systemdispatcher.getSingleInfo("Vga_product")
                     font.pixelSize: 14
                     wrapMode: Text.WordWrap
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
+                    text: qsTr("Current Graphics Card: ")//当前显卡：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 180
+                }
+                Text {
+                    id: chipText
+                    text: ""//systemdispatcher.getSingleInfo("Mon_chip")
+                    font.pixelSize: 14
                     color: "#7a7a7a"
                 }
             }
@@ -325,7 +325,7 @@ Rectangle {
         source: ""
         anchors {
             top: parent.top
-            topMargin: 130
+            topMargin: 90
             right: parent.right
             rightMargin: 30
         }

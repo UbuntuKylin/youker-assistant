@@ -234,7 +234,7 @@ Rectangle {
             Text {
                 id: text1
                 width: leftbar.width-180
-                text: qsTr("To help you quick clean up the Cookies, garbage, traces and plug-ins in your system")//一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件！
+                text: qsTr("To help you quick clean up the Cookies, garbage, traces and plug-ins in your system")//一键帮您清理系统中的 Cookies、垃圾、痕迹和插件！
                 wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -290,7 +290,7 @@ Rectangle {
 
     Column {
         id: scanColumn
-        anchors { top: myrow.bottom; topMargin: 0; left: parent.left; leftMargin: 30 }
+        anchors { top: parent.top; topMargin: 150; left: parent.left; leftMargin: 30 }
         spacing: 20
         Row {
             spacing: 10
@@ -589,7 +589,7 @@ Rectangle {
                             }
                         }
                         Text {
-                            text: qsTr("Clean up the Cookies, including surfing and shopping records")//清理电脑中的 Cookies，包含上网、购物、游戏等记录
+                            text: qsTr("Clean up the Cookies, including surfing and shopping records")//清理系统中的 Cookies，包含上网、购物、游戏等记录
                             font.pixelSize: 12
                             color: "#7a7a7a"
                         }
