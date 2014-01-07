@@ -82,6 +82,11 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
      <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/pixmap/image/message.png);</string>
    </property>
@@ -96,10 +101,15 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
    <property name="geometry">
     <rect>
      <x>8</x>
-     <y>51</y>
+     <y>47</y>
      <width>291</width>
-     <height>16</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monitor Check&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

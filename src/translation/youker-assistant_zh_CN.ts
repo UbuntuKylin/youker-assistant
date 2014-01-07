@@ -16,7 +16,7 @@
         <location filename="../../qml/func/info/AudioInfo.qml" line="62"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="79"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="95"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="122"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="121"/>
         <source>Vendor:</source>
         <translation>制造商：</translation>
     </message>
@@ -25,7 +25,7 @@
         <location filename="../../qml/func/info/AudioInfo.qml" line="63"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="80"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="96"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="123"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="122"/>
         <source>Bus Address:</source>
         <translation>总线地址：</translation>
     </message>
@@ -34,21 +34,21 @@
         <location filename="../../qml/func/info/AudioInfo.qml" line="64"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="81"/>
         <location filename="../../qml/func/info/AudioInfo.qml" line="97"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="124"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="123"/>
         <source>Audio Driver:</source>
         <translation>声卡驱动：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="65"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="82"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="98"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="121"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="48"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="61"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="78"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="94"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="120"/>
         <source>Audio Model:</source>
         <translation>声卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="170"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="169"/>
         <source>Audio Info</source>
         <translation>音频信息</translation>
     </message>
@@ -71,12 +71,12 @@
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../authdialog.ui" line="105"/>
+        <location filename="../authdialog.ui" line="115"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User password&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用户密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../authdialog.ui" line="121"/>
+        <location filename="../authdialog.ui" line="131"/>
         <source>Enter the current user password</source>
         <translation>输入当前用户密码</translation>
     </message>
@@ -155,9 +155,13 @@
 <context>
     <name>BootAnimation</name>
     <message>
-        <location filename="../../qml/func/settings/BootAnimation.qml" line="31"/>
         <source>Boot animation settings (only supports the PNG image format, does not support Chinese naming pictures!)</source>
-        <translation>开机动画设置 (目前仅支持 png 图片格式，不支持以中文命名的图片！)</translation>
+        <translation type="obsolete">开机动画设置 (目前仅支持 png 图片格式，不支持以中文命名的图片！)</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/BootAnimation.qml" line="31"/>
+        <source>Boot animation settings (only supports the PNG image format !)</source>
+        <translation>开机动画设置 (目前仅支持 png 图片格式！)</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="32"/>
@@ -398,8 +402,12 @@
     </message>
     <message>
         <location filename="../changecitydialog.ui" line="140"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Three cities to be set by default, Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置三个城市，点击“首页”上的“配置”按钮添加城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Three cities to be set by default, Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置三个城市，点击“首页”上的“配置”按钮添加城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../changecitydialog.cpp" line="56"/>
@@ -1131,27 +1139,27 @@
         <translation>快捷键</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="225"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="222"/>
         <source>Trigger Input Method: </source>
         <translation>切换输入法：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="239"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="261"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="297"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="319"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="355"/>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="377"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="242"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="264"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="311"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="333"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="380"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="402"/>
         <source>Please press the combination keys</source>
         <translation>请按下要设置的组合键</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="283"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="291"/>
         <source>Prev Page: </source>
         <translation>上一页：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="341"/>
+        <location filename="../../qml/func/settings/FcitxConfigtoolFont.qml" line="360"/>
         <source>Next Page: </source>
         <translation>下一页：</translation>
     </message>
@@ -1638,7 +1646,7 @@
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="592"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
-        <translation>清理电脑中的 Cookies，包含上网、购物、游戏等记录</translation>
+        <translation>清理系统中的 Cookies，包含上网、购物、游戏等记录</translation>
     </message>
     <message>
         <source>Quick clean up system junk, saving disk space and improving the system efficiency!</source>
@@ -1647,7 +1655,7 @@
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="237"/>
         <source>To help you quick clean up the Cookies, garbage, traces and plug-ins in your system</source>
-        <translation>一键帮您清理电脑中的 Cookies、垃圾、痕迹和插件</translation>
+        <translation>一键帮您清理系统中的 Cookies、垃圾、痕迹和插件</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="301"/>
@@ -1878,7 +1886,7 @@
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../modaldialog.ui" line="105"/>
+        <location filename="../modaldialog.ui" line="115"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monitor Check&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;屏幕坏点检测&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -1896,12 +1904,12 @@
         <translation>显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="100"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="117"/>
         <source>Current Graphics Card: </source>
         <translation>当前显卡：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="115"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="100"/>
         <source>Graphics Card Model: </source>
         <translation>显卡型号：</translation>
     </message>
@@ -2048,66 +2056,66 @@
         <translation>有线网卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="101"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="255"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="103"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="259"/>
         <source>Vendor:</source>
         <translation>制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="116"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="118"/>
         <source>NIC Driver:</source>
         <translation>有线网卡驱动：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="131"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="285"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="133"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="289"/>
         <source>Bus Address:</source>
         <translation>总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="146"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="300"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="148"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="304"/>
         <source>Device Name:</source>
         <translation>设备名称：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="161"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="316"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="163"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="320"/>
         <source>IP Address:</source>
         <translation>IP地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="176"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="178"/>
         <source>Mac Address:</source>
         <translation>MAC地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="191"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="193"/>
         <source>Connection Status: </source>
         <translation>连接状态：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="206"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="208"/>
         <source>Max Bandwidth: </source>
         <translation>最大带宽：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="222"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="224"/>
         <source>WLan NIC Info</source>
         <translation>无线网卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="240"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="242"/>
         <source>WLan NIC Model:</source>
         <translation>网卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="270"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="274"/>
         <source>WLan NIC Driver:</source>
         <translation>无线网卡驱动：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="331"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="335"/>
         <source>Serial Number: </source>
         <translation>序列号：</translation>
     </message>
@@ -2649,7 +2657,7 @@
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="526"/>
         <source>Software introduction</source>
-        <translation>软件操作进度</translation>
+        <translation>软件介绍</translation>
     </message>
 </context>
 <context>
@@ -2722,22 +2730,21 @@
         <translation>替换</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="400"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="401"/>
         <source>Custom Sound Theme</source>
         <translation>自定义声音主题</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="409"/>
         <source>Does not support the audio file in the path that contains Chinese.</source>
-        <translation>暂不支持中文路径下的音频文件。</translation>
+        <translation type="obsolete">暂不支持中文路径下的音频文件。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="430"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="431"/>
         <source>Sound settings:</source>
         <translation>声音设置：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="438"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="439"/>
         <source>Login tone: </source>
         <translation>登录提示音：</translation>
     </message>
@@ -2792,7 +2799,7 @@
     <message>
         <location filename="../sudodispatcher.cpp" line="204"/>
         <source>Tip: please input password of current user to start server, make it work normally.</source>
-        <translation>提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。</translation>
+        <translation>提示：请输入当前用户登录密码启动服务，保证软件推荐功能的正常使用。</translation>
     </message>
     <message>
         <location filename="../sudodispatcher.cpp" line="291"/>
@@ -2835,6 +2842,16 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;电脑运行缓慢&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
+        <location filename="../suspensionframe.ui" line="168"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Utilization:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../suspensionframe.ui" line="295"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory Utilization:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Proposed a key acceleration&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;建议一键加速&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2844,9 +2861,8 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;使用一键加速？&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.ui" line="168"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU occupancy rate:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="184"/>
@@ -2869,13 +2885,12 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.ui" line="295"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory occupancy rate:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内存占用率：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="26"/>
-        <location filename="../suspensionframe.cpp" line="139"/>
+        <location filename="../suspensionframe.cpp" line="140"/>
         <source>System runs smoothly</source>
         <translation>系统运行流畅</translation>
     </message>
@@ -2885,27 +2900,27 @@
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="27"/>
-        <location filename="../suspensionframe.cpp" line="140"/>
+        <location filename="../suspensionframe.cpp" line="141"/>
         <source>No need to accelerate</source>
         <translation>无需进行加速</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="37"/>
+        <location filename="../suspensionframe.cpp" line="38"/>
         <source>Details</source>
         <translation>详细</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="53"/>
+        <location filename="../suspensionframe.cpp" line="54"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="133"/>
+        <location filename="../suspensionframe.cpp" line="134"/>
         <source>Computer runs slowly</source>
         <translation>电脑运行缓慢</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="134"/>
+        <location filename="../suspensionframe.cpp" line="135"/>
         <source>Using &apos;quick clean&apos; ?</source>
         <translation>使用一键加速？</translation>
     </message>
@@ -3452,7 +3467,7 @@
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="245"/>
         <source>Clean up the Firefox history records</source>
-        <translation>清理 Firefox 浏览器上的历史记录</translation>
+        <translation>清理 Firefox 浏览器上网时留下的浏览痕迹</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="266"/>
@@ -3462,7 +3477,7 @@
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="281"/>
         <source>Clean up the Chromium history records</source>
-        <translation>清理 Chromium 浏览器上的历史记录</translation>
+        <translation>清理 Chromium 浏览器上网时留下的浏览痕迹</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="303"/>
