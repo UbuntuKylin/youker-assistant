@@ -1,4 +1,4 @@
-Youker Assistant 
+Youker Assistant
 
 Attention
 =========
@@ -10,15 +10,7 @@ debhelper (>= 9), dh-translations, libphonon-dev, libqt4-dev, fcitx-libs-dev, pk
 
 Attention with IDE
 ==================
-^^copy files^^:
-qml/applist.ini   ->  /usr/share/youker-assistant/qml/
-backends/youker-assistant-daemon/data/youkersystem   ->  /usr/bin
-backends/youker-assistant-daemon/data/youkersession   ->  /usr/bin
-backends/youker-assistant-daemon/data/youkersudo   ->  /usr/bin
-backends/youker-assistant-daemon/data/com.youker-assistant.daemon.policy   ->  /usr/share/polkit-1/actions/
-backends/youker-assistant-daemon/data/com.ubuntukylin_tools.daemon.service   ->  /usr/share/dbus-1/system-services/
-backends/youker-assistant-daemon/data/youker-assistant-daemon.conf   ->  /etc/dbus-1/system.d/
-backends/youker-assistant-daemon/src/   ->  /usr/lib/python2.7/dist-packages/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/autostart/   ->  /var/lib/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/plymouth/   ->  /var/lib/youker-assistant-daemon/
-backends/youker-assistant-daemon/data/beautify/sound-theme/   ->  /var/lib/youker-assistant-daemon/
+1、Install backend:
+sudo sh ./backends/youker-assistant-daemon/install.sh
+2、Run:
+Click the 'run' button or press 'F5' in QtCreator.

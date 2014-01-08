@@ -78,39 +78,49 @@ Rectangle {
                 pageStack.push(fcitxConfigtoolpage);
             }
             else if(flag == "SoftWare") {
-                //进入软件推荐的入口
-                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                    if(systemdispatcher.judge_source_ubuntukylin_qt() == false) {
-                        systemdispatcher.showAddSourceList(mainwindow.pos.x, mainwindow.pos.y);
-                    }
-                    if(!sudodispatcher.getUKSignalFlag()) {
-                        sudodispatcher.setUKSignalFlag(true);
-                        sudodispatcher.bind_signals_after_dbus_start();
-                    }
-                    //获取所有软件的状态
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
-                    //得到所有软件列表
-                    sudodispatcher.getAppListForDisPlay();
-                    pageStack.push(softwarerecommend);
+                if(systemdispatcher.judge_source_ubuntukylin_qt() == false) {
+                    systemdispatcher.showAddSourceList(mainwindow.pos.x, mainwindow.pos.y);
                 }
-                else {
-                    if(systemdispatcher.judge_source_ubuntukylin_qt() == false) {
-                        systemdispatcher.showAddSourceList(mainwindow.pos.x, mainwindow.pos.y);
-                    }
-                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
-                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                        if(!sudodispatcher.getUKSignalFlag()) {
-                            sudodispatcher.setUKSignalFlag(true);
-                            sudodispatcher.bind_signals_after_dbus_start();
-                        }
+                //获取所有软件的状态
+                systemdispatcher.check_pkgs_status_qt(systemdispatcher.getAllSoftwareExecNameList());
+                //得到所有软件列表
+                systemdispatcher.getAppListForDisPlay();
+                pageStack.push(softwarerecommend);
 
-                        //获取所有软件的状态
-                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
-                        //得到所有软件列表
-                        sudodispatcher.getAppListForDisPlay();
-                        pageStack.push(softwarerecommend);
-                    }
-                }
+
+                //进入软件推荐的入口
+//                if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+//                    if(systemdispatcher.judge_source_ubuntukylin_qt() == false) {
+//                        systemdispatcher.showAddSourceList(mainwindow.pos.x, mainwindow.pos.y);
+//                    }
+//                    if(!sudodispatcher.getUKSignalFlag()) {
+//                        sudodispatcher.setUKSignalFlag(true);
+//                        sudodispatcher.bind_signals_after_dbus_start();
+//                    }
+//                    //获取所有软件的状态
+//                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
+//                    //得到所有软件列表
+//                    sudodispatcher.getAppListForDisPlay();
+//                    pageStack.push(softwarerecommend);
+//                }
+//                else {
+//                    if(systemdispatcher.judge_source_ubuntukylin_qt() == false) {
+//                        systemdispatcher.showAddSourceList(mainwindow.pos.x, mainwindow.pos.y);
+//                    }
+//                    sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
+//                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+//                        if(!sudodispatcher.getUKSignalFlag()) {
+//                            sudodispatcher.setUKSignalFlag(true);
+//                            sudodispatcher.bind_signals_after_dbus_start();
+//                        }
+
+//                        //获取所有软件的状态
+//                        sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
+//                        //得到所有软件列表
+//                        sudodispatcher.getAppListForDisPlay();
+//                        pageStack.push(softwarerecommend);
+//                    }
+//                }
             }
             else if(flag == "ProcessManager") {
                 pageStack.push(processmanagerpage);

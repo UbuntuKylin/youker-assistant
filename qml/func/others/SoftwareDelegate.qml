@@ -47,7 +47,7 @@ Rectangle {
         onReleased: btnImg.source = "../../img/toolWidget/highlight.png"
         onExited: btnImg.source = ""
         onClicked: {
-            sudodispatcher.ready_show_app_page(flag);
+            systemdispatcher.ready_show_app_page(flag);
             pageStack.push(softwarepage);
         }
     }

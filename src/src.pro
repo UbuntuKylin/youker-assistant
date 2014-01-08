@@ -2,8 +2,8 @@ TEMPLATE = app
 TARGET = youker-assistant
 QT += core gui phonon declarative dbus
 
-DEPENDPATH += $$PWD/
-INCLUDEPATH += $$PWD/
+#DEPENDPATH += $$PWD/
+#INCLUDEPATH += $$PWD/
 
 inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
@@ -26,8 +26,8 @@ HEADERS += youker-application.h \
     quibo.h \
     systemdispatcher.h \
     sessiondispatcher.h \
-    sudodispatcher.h \
-    authdialog.h \
+#    sudodispatcher.h \
+#    authdialog.h \
     modaldialog.h \
     warningdialog.h \
     messagedialog.h \
@@ -77,9 +77,9 @@ SOURCES += main.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
-    sudodispatcher.cpp \
-    authdialog.cpp \
-    authdialog_event.cpp \
+#    sudodispatcher.cpp \
+#    authdialog.cpp \
+#    authdialog_event.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
     messagedialog.cpp \
@@ -126,7 +126,7 @@ RESOURCES += pixmap.qrc
 
 FORMS += \
     quibo.ui \
-    authdialog.ui \
+#    authdialog.ui \
     modaldialog.ui \
     warningdialog.ui \
     messagedialog.ui \

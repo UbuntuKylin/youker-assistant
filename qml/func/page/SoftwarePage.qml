@@ -27,7 +27,7 @@ Item {
     property string source_status_text: ""
     Connections
     {
-        target: sudodispatcher
+        target: systemdispatcher
         onNotifySourceStatusToQML: {
             root.source_status_text = qsTr("Progress: ") + total_items + qsTr(" itmes need to be updated,  the number of completed updates is: ") + download_items;//进度：//个项目需要更新，已完成个数：
         }
@@ -35,9 +35,9 @@ Item {
         onFinishSoftwareFetch: {
             if(type == "down_stop" && root.source_status_text != "") {
                 //软件源更新完成后，重新获取所有软件的状态
-                sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
+                systemdispatcher.check_pkgs_status_qt(systemdispatcher.getAllSoftwareExecNameList());
                 //软件源更新完成后，重新该软件的单个状态
-                actionBtn.text = software.reset_text(sudodispatcher.check_pkg_status_qt(software.software_name));
+                actionBtn.text = software.reset_text(systemdispatcher.check_pkg_status_qt(software.software_name));
                 root.source_status_text = "";
                 root.state = "SofeWareState";
             }
@@ -57,7 +57,7 @@ Item {
         x: (parent.width * 1.5)
         Connections
         {
-            target: sudodispatcher
+            target: systemdispatcher
             //得到数据，显示在进度条上
             onSendDynamicSoftwareProgressQML: {
                 if(type == "down_start") {
@@ -292,32 +292,32 @@ Item {
         }
         Connections
         {
-            target: sudodispatcher
+            target: systemdispatcher
             //收到app的信号，开始显示对应app的页面信息
             onSendAppInfo: {
-                sudodispatcher.getAppInfo(flag);
+                systemdispatcher.getAppInfo(flag);
                 //得到app在源里面的名字
-                software.software_name = sudodispatcher.getSingleInfo("name");
+                software.software_name = systemdispatcher.getSingleInfo("name");
                 //得到该软件的初始状态
-                software.installed_status = sudodispatcher.getSoftwareStatus(software.software_name);
+                software.installed_status = systemdispatcher.getSoftwareStatus(software.software_name);
                 //根据得到的初始状态来设置按钮的文字显示
                 actionBtn.text = software.reset_text(software.installed_status);
                 //页面赋值
-                softwarename.text = sudodispatcher.getSingleInfo("title");
-                softwareintroduction.text = sudodispatcher.getSingleInfo("description");
-                imageId.source = sudodispatcher.getSingleInfo("logo");
-                introductionimage1.source = sudodispatcher.getSingleInfo("image1");
-                introductionimage2.source = sudodispatcher.getSingleInfo("image2");
+                softwarename.text = systemdispatcher.getSingleInfo("title");
+                softwareintroduction.text = systemdispatcher.getSingleInfo("description");
+                imageId.source = systemdispatcher.getSingleInfo("logo");
+                introductionimage1.source = systemdispatcher.getSingleInfo("image1");
+                introductionimage2.source = systemdispatcher.getSingleInfo("image2");
             }
 
             //操作完成
             onFinishSoftwareApt: {
                 if(type == "apt_stop") {
                     //获取软件操作后的新状态
-                    software.tm_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                    software.tm_status = systemdispatcher.check_pkg_status_qt(software.software_name);
                     //如果软件操作后的新状态和进入该页面时的初始状态相同，说明此时操作是没有成功的，提醒用户更新源
                     if(software.tm_status == software.installed_status) {
-                        sudodispatcher.showUpdateSourceDialog(mainwindow.pos.x, mainwindow.pos.y);
+                        systemdispatcher.showUpdateSourceDialog(mainwindow.pos.x, mainwindow.pos.y);
                     }
                     else {//如果软件操作后的新状态和进入该页面时的初始状态不同，说明操作是成功的，把当前状态赋值给初始状态的变量
                         software.installed_status = software.tm_status;
@@ -379,7 +379,7 @@ Item {
                 fontsize: 14
                 onClicked: {
                     //返回软件主页面时重新获取所有软件的状态
-                    sudodispatcher.check_pkgs_status_qt(sudodispatcher.getAllSoftwareExecNameList());
+                    systemdispatcher.check_pkgs_status_qt(systemdispatcher.getAllSoftwareExecNameList());
                     pageStack.push(softwarerecommend);
                 }
             }
@@ -442,7 +442,7 @@ Item {
                 text: software.show_text(software.installed_status)
                 fontsize: 20
                 onClicked: {
-                    software.installed_status = sudodispatcher.check_pkg_status_qt(software.software_name);
+                    software.installed_status = systemdispatcher.check_pkg_status_qt(software.software_name);
 
                     if(software.installed_status == "n") {
                         if(software.software_name == "wine-qq2012-longeneteam") {
@@ -453,12 +453,12 @@ Item {
                         }
                         else {
                             root.state = "MaskLayerStateApt";
-                            sudodispatcher.install_pkg_qt(software.software_name);
+                            systemdispatcher.install_pkg_qt(software.software_name);
                         }
                     }
                     else if(software.installed_status == "i") {
                         root.state = "MaskLayerStateApt";
-                        sudodispatcher.uninstall_pkg_qt(software.software_name);
+                        systemdispatcher.uninstall_pkg_qt(software.software_name);
                     }
                     else if(software.installed_status == "u") {
                         if(software.software_name == "wine-qq2012-longeneteam") {
@@ -469,7 +469,7 @@ Item {
                         }
                         else {
                             root.state = "MaskLayerStateApt";
-                            sudodispatcher.update_pkg_qt(software.software_name);
+                            systemdispatcher.update_pkg_qt(software.software_name);
                         }
                     }
                     else{
@@ -480,7 +480,7 @@ Item {
                             Qt.openUrlExternally("http://code.google.com/p/wine-packages/downloads/list");
                         }
                         else {
-                            sudodispatcher.showUpdateSourceDialog(mainwindow.pos.x, mainwindow.pos.y);
+                            systemdispatcher.showUpdateSourceDialog(mainwindow.pos.x, mainwindow.pos.y);
                         }
                     }
                 }

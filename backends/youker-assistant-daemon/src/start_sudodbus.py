@@ -15,28 +15,11 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-import logging
-import optparse
-
 import dbus
 import dbus.mainloop.glib
-
 from gi.repository import GObject
-from common.base import VERSION
 
 if __name__ == '__main__':
-    parser = optparse.OptionParser(prog="youker-assistant-sudo-daemon",
-                                   version="%%prog %s" % VERSION,
-                                   description="Youker Assistant is a tool for Ubuntu that makes it easy to configure your system and desktop settings.")
-
-    parser.add_option("-d", "--debug", action="store_true", default=False,
-                      help="Generate more debugging information.  [default: %default]")
-    options, args = parser.parse_args()
-
-    if options.debug:
-        logging.basicConfig(level=logging.DEBUG)
-
-    #TODO make it exist when timeout
     from sudodbus.daemon import SudoDaemon
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = GObject.MainLoop()
