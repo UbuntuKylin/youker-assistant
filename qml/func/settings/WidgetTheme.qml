@@ -83,9 +83,10 @@ Rectangle {
                     top:parent.top
                     right:parent.right
                 }
-                source: "../../img/icons/arrow.png"
+                source: "../../img/zh_CN/using.png"
                 opacity: griditem.GridView.isCurrentItem? 1:0
             }
+
             Image {
                 id: btnImg
                 anchors.fill: parent
@@ -103,7 +104,7 @@ Rectangle {
                 onClicked: {
                     griditem.GridView.view.currentIndex = index;
 //                    console.log(index);
-//                    widgetthemepage.themeIndex = index;
+                    widgetthemepage.themeIndex = index;
                     widgetthemepage.selected_theme = name;
                     sessiondispatcher.set_theme_qt(name);
                     statusImage.visible = true;

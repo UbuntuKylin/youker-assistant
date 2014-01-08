@@ -226,11 +226,11 @@ Item {
         height: parent.height
         function reset_text(showtext) {
             if(showtext == "i") {
-                statusImage.source = "../../img/icons/installed.png"
+                statusImage.source = "../../img/zh_CN/installed.png"
                 return qsTr("Uninstall");//立即卸载
             }
             else if(showtext == "n") {
-                statusImage.source = "../../img/icons/noinstalled.png"
+                statusImage.source = "../../img/zh_CN/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Access web");//进入网页
                 }
@@ -239,7 +239,7 @@ Item {
                 }
             }
             else if(showtext == "u") {
-                statusImage.source = "../../img/icons/installed.png"
+                statusImage.source = "../../img/zh_CN/installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -248,7 +248,7 @@ Item {
                 }
             }
             else {
-                statusImage.source = "../../img/icons/noinstalled.png"
+                statusImage.source = "../../img/zh_CN/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -259,11 +259,11 @@ Item {
         }
         function show_text(showtext) {
             if(showtext == "i") {
-                statusImage.source = "../../img/icons/installed.png"
+                statusImage.source = "../../img/zh_CN/installed.png"
                 return qsTr("Uninstall");//立即卸载
             }
             else if(showtext == "n") {
-                statusImage.source = "../../img/icons/noinstalled.png"
+                statusImage.source = "../../img/zh_CN/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -272,7 +272,7 @@ Item {
                 }
             }
             else if(showtext == "u") {
-                statusImage.source = "../../img/icons/installed.png"
+                statusImage.source = "../../img/zh_CN/installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -281,7 +281,7 @@ Item {
                 }
             }
             else {
-                statusImage.source = "../../img/icons/noinstalled.png"
+                statusImage.source = "../../img/zh_CN/noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -323,7 +323,7 @@ Item {
                         software.installed_status = software.tm_status;
                         if(software.installed_status == "i") {
                             actionBtn.text = qsTr("Uninstall");//立即卸载
-                            statusImage.source = "../../img/icons/installed.png"
+                            statusImage.source = "../../img/zh_CN/installed.png"
                         }
                         else if(software.installed_status == "n") {
                             if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
@@ -332,7 +332,7 @@ Item {
                             else {
                                 actionBtn.text = qsTr("Install");//立即安装
                             }
-                            statusImage.source = "../../img/icons/noinstalled.png"
+                            statusImage.source = "../../img/zh_CN/noinstalled.png"
                         }
                         else if(software.installed_status == "u") {
                             actionBtn.text = qsTr("Upgrade");//立即升级
@@ -487,7 +487,7 @@ Item {
             }
             Image {
                 id: statusImage
-                source: "../../img/icons/noinstalled.png"
+                source: "../../img/zh_CN/noinstalled.png"
                 anchors{
                     right:parent.right
                     top: parent.top

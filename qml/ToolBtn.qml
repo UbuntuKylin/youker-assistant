@@ -28,7 +28,8 @@ Rectangle {
 
     Image {
         id: seticon
-        source: "./img/toolWidget/" + iconName
+        //如果是中文：img/zh_CN/title/；如果是英文：img/zh_CN/en/
+        source: "./img/zh_CN/title/" + iconName
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
@@ -46,65 +47,65 @@ Rectangle {
         //鼠标放上时
         onEntered: {
             if (text == "homepage") {
-                btnImg.source = "./img/toolWidget/0001.png"
+                btnImg.source = "./img/zh_CN/title/home-active.png"
             }
             else if (text == "systemmessage") {
-                btnImg.source = "./img/toolWidget/0002.png"
+                btnImg.source = "./img/zh_CN/title/sysinfo-active.png"
             }
             else if (text == "clearrubbish") {
-                btnImg.source = "./img/toolWidget/0003.png"
+                btnImg.source = "./img/zh_CN/title/cleanup-active.png"
             }
             else if (text == "systemset") {
-                btnImg.source = "./img/toolWidget/0004.png"
+                btnImg.source = "./img/zh_CN/title/feature-active.png"
             }
             else if (text == "functioncollection") {
-                btnImg.source = "./img/toolWidget/0005.png"
+                btnImg.source = "./img/zh_CN/title/toolkits-active.png"
             }
             else {
-                btnImg.source = "./img/toolWidget/menu_hover.png"
+                btnImg.source = "./img/zh_CN/title/menu_hover.png"
             }
         }
         //鼠标按下时
         onPressed: {
             if (text == "homepage") {
-                btnImg.source = "./img/toolWidget/0001.png"
+                btnImg.source = "./img/zh_CN/title/home-active.png"
             }
             else if (text == "systemmessage") {
-                btnImg.source = "./img/toolWidget/0002.png"
+                btnImg.source = "./img/zh_CN/title/sysinfo-active.png"
             }
             else if (text == "clearrubbish") {
-                btnImg.source = "./img/toolWidget/0003.png"
+                btnImg.source = "./img/zh_CN/title/cleanup-active.png"
             }
             else if (text == "systemset") {
-                btnImg.source = "./img/toolWidget/0004.png"
+                btnImg.source = "./img/zh_CN/title/feature-active.png"
             }
             else if (text == "functioncollection") {
-                btnImg.source = "./img/toolWidget/0005.png"
+                btnImg.source = "./img/zh_CN/title/toolkits-active.png"
             }
             else {
-                btnImg.source = "./img/toolWidget/menu_press.png"
+                btnImg.source = "./img/zh_CN/title/menu_press.png"
             }
         }
         //要判断松开是鼠标位置
         //鼠标按下松开时
         onReleased: {
             if (text == "homepage") {
-                btnImg.source = "./img/toolWidget/001.png"
+                btnImg.source = "./img/zh_CN/title/home.png"
             }
             else if (text == "systemmessage") {
-                btnImg.source = "./img/toolWidget/002.png"
+                btnImg.source = "./img/zh_CN/title/sysinfo.png"
             }
             else if (text == "clearrubbish") {
-                btnImg.source = "./img/toolWidget/003.png"
+                btnImg.source = "./img/zh_CN/title/cleanup.png"
             }
             else if (text == "systemset") {
-                btnImg.source = "./img/toolWidget/004.png"
+                btnImg.source = "./img/zh_CN/title/feature.png"
             }
             else if (text == "functioncollection") {
-                btnImg.source = "./img/toolWidget/005.png"
+                btnImg.source = "./img/zh_CN/title/toolkits.png"
             }
             else {
-                btnImg.source = "./img/toolWidget/menu_hover.png"
+                btnImg.source = "./img/zh_CN/title/menu_hover.png"
             }
         }
         //鼠标按下松开再移开时
@@ -142,16 +143,16 @@ Rectangle {
         }
     }
 
-    Text {
-        id: displaytext
-        color: "white"
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: seticon.left
-        anchors.leftMargin: (menulogo.text == "homepage") ? 60: 45
-        font.family: "Arial"
-        font.pixelSize: 14
-        text: menulogo.showtext
-        style: Text.Sunken
-        styleColor: "#AAAAAA"
-    }
+//    Text {
+//        id: displaytext
+//        color: "white"
+//        anchors.verticalCenter: parent.verticalCenter
+//        anchors.left: seticon.left
+//        anchors.leftMargin: (menulogo.text == "homepage") ? 60: 45
+//        font.family: "Arial"
+//        font.pixelSize: 14
+//        text: menulogo.showtext
+//        style: Text.Sunken
+//        styleColor: "#AAAAAA"
+//    }
 }

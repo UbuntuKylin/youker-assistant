@@ -55,7 +55,7 @@ Item {
         }
         Image {
             id: statusImage
-            source: "../../img/icons/recommend.png"
+            source: "../../img/zh_CN/recommend.png"
             anchors{
                 right:parent.right
                 top: parent.top
