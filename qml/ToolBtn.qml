@@ -60,6 +60,9 @@ Rectangle {
             else if (text == "functioncollection") {
                 btnImg.source = "./img/toolWidget/0005.png"
             }
+            else {
+                btnImg.source = "./img/toolWidget/menu_hover.png"
+            }
         }
         //鼠标按下时
         onPressed: {
@@ -77,6 +80,9 @@ Rectangle {
             }
             else if (text == "functioncollection") {
                 btnImg.source = "./img/toolWidget/0005.png"
+            }
+            else {
+                btnImg.source = "./img/toolWidget/menu_press.png"
             }
         }
         //要判断松开是鼠标位置
@@ -96,6 +102,9 @@ Rectangle {
             }
             else if (text == "functioncollection") {
                 btnImg.source = "./img/toolWidget/005.png"
+            }
+            else {
+                btnImg.source = "./img/toolWidget/menu_hover.png"
             }
         }
         //鼠标按下松开再移开时

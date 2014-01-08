@@ -20,8 +20,10 @@
 SkinsWidget::SkinsWidget(QSettings *mSettings, QWidget *parent)
     :QWidget(parent)
 {
-    this->resize(620, 445);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    this->setWindowOpacity(1.0);
+    this->setAttribute(Qt::WA_DeleteOnClose);
+    this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
 
     pSettings = mSettings;
     skinName = QString("");
@@ -49,6 +51,8 @@ SkinsWidget::SkinsWidget(QSettings *mSettings, QWidget *parent)
 
     QDesktopWidget* desktop = QApplication::desktop();
     move((desktop->width() - this->width())/2, (desktop->height() - this->height())/2);
+
+    this->resize(620, 445);
 }
 
 void SkinsWidget::initTitleBar() {
@@ -121,64 +125,64 @@ void SkinsWidget::initSkinsCenter() {
 }
 
 void SkinsWidget::initBottomBar() {
-    QSignalMapper *signal_mapper = new QSignalMapper(this);
-    QList<QPushButton *> *button_list = new QList<QPushButton *>();
-    for(int i=0; i<page_count; i++) {
-        QPushButton *page_button = new QPushButton();
-        page_button->setFixedWidth(20);
-        page_button->setText(QString::number(i+1, 10));
-        page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
-        page_button->setCursor(Qt::PointingHandCursor);
-        connect(page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
-        signal_mapper->setMapping(page_button, page_button->text());
-        button_list->push_back(page_button);
-    }
+//    QSignalMapper *signal_mapper = new QSignalMapper(this);
+//    QList<QPushButton *> *button_list = new QList<QPushButton *>();
+//    for(int i=0; i<page_count; i++) {
+//        QPushButton *page_button = new QPushButton();
+//        page_button->setFixedWidth(20);
+//        page_button->setText(QString::number(i+1, 10));
+//        page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
+//        page_button->setCursor(Qt::PointingHandCursor);
+//        connect(page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
+//        signal_mapper->setMapping(page_button, page_button->text());
+//        button_list->push_back(page_button);
+//    }
 
-    first_page_button = new QPushButton();
-    previous_page_button = new QPushButton();
-    next_page_button = new QPushButton();
-    last_page_button = new QPushButton();
-    first_page_button->setFixedWidth(50);
-    previous_page_button->setFixedWidth(50);
-    next_page_button->setFixedWidth(50);
-    last_page_button->setFixedWidth(50);
-    first_page_button->setCursor(Qt::PointingHandCursor);
-    previous_page_button->setCursor(Qt::PointingHandCursor);
-    next_page_button->setCursor(Qt::PointingHandCursor);
-    last_page_button->setCursor(Qt::PointingHandCursor);
-    first_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
-    previous_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
-    next_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
-    last_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
+//    first_page_button = new QPushButton();
+//    previous_page_button = new QPushButton();
+//    next_page_button = new QPushButton();
+//    last_page_button = new QPushButton();
+//    first_page_button->setFixedWidth(50);
+//    previous_page_button->setFixedWidth(50);
+//    next_page_button->setFixedWidth(50);
+//    last_page_button->setFixedWidth(50);
+//    first_page_button->setCursor(Qt::PointingHandCursor);
+//    previous_page_button->setCursor(Qt::PointingHandCursor);
+//    next_page_button->setCursor(Qt::PointingHandCursor);
+//    last_page_button->setCursor(Qt::PointingHandCursor);
+//    first_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
+//    previous_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
+//    next_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
+//    last_page_button->setStyleSheet("color:rgb(0, 120, 230); background:transparent;");
 
-    first_page_button->setText(tr("Home"));//首页
-    previous_page_button->setText(tr("Previous"));//上一页
-    next_page_button->setText(tr("Next"));//下一页
-    last_page_button->setText(tr("Last"));//末页
+//    first_page_button->setText(tr("Home"));//首页
+//    previous_page_button->setText(tr("Previous"));//上一页
+//    next_page_button->setText(tr("Next"));//下一页
+//    last_page_button->setText(tr("Last"));//末页
 
-    connect(first_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
-    connect(previous_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
-    connect(next_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
-    connect(last_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
-    signal_mapper->setMapping(first_page_button, "first");
-    signal_mapper->setMapping(previous_page_button, "previous");
-    signal_mapper->setMapping(next_page_button, "next");
-    signal_mapper->setMapping(last_page_button, "last");
-    connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(showSkin(QString)));
+//    connect(first_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
+//    connect(previous_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
+//    connect(next_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
+//    connect(last_page_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
+//    signal_mapper->setMapping(first_page_button, "first");
+//    signal_mapper->setMapping(previous_page_button, "previous");
+//    signal_mapper->setMapping(next_page_button, "next");
+//    signal_mapper->setMapping(last_page_button, "last");
+//    connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(showSkin(QString)));
 
     bottomLayout = new QHBoxLayout();
     bottomLayout->addStretch();
-    bottomLayout->addWidget(first_page_button, 0, Qt::AlignVCenter);
-    bottomLayout->addWidget(previous_page_button, 0, Qt::AlignVCenter);
-    for(int i=0; i<button_list->count(); i++) {
-        QPushButton *page_button = button_list->at(i);
-        bottomLayout->addWidget(page_button, 0, Qt::AlignVCenter);
-    }
-    bottomLayout->addWidget(next_page_button, 0, Qt::AlignVCenter);
-    bottomLayout->addWidget(last_page_button, 0, Qt::AlignVCenter);
-    bottomLayout->addStretch();
-    bottomLayout->setSpacing(2);
-    bottomLayout->setContentsMargins(0, 10, 0, 0);
+//    bottomLayout->addWidget(first_page_button, 0, Qt::AlignVCenter);
+//    bottomLayout->addWidget(previous_page_button, 0, Qt::AlignVCenter);
+//    for(int i=0; i<button_list->count(); i++) {
+//        QPushButton *page_button = button_list->at(i);
+//        bottomLayout->addWidget(page_button, 0, Qt::AlignVCenter);
+//    }
+//    bottomLayout->addWidget(next_page_button, 0, Qt::AlignVCenter);
+//    bottomLayout->addWidget(last_page_button, 0, Qt::AlignVCenter);
+//    bottomLayout->addStretch();
+//    bottomLayout->setSpacing(2);
+//    bottomLayout->setContentsMargins(0, 10, 0, 0);
 }
 
 void SkinsWidget::selectShowNumber(int left_number, int previous_total_page, int tip_index) {
@@ -286,24 +290,24 @@ void SkinsWidget::showSkin(QString current_skin) {
         current_page = current_skin.toInt(&ok, 10);
     }
 
-    if(current_page == 1) {
-        next_page_button->show();
-        last_page_button->show();
-        first_page_button->hide();
-        previous_page_button->hide();
-    }
-    else if(current_page == page_count) {
-        first_page_button->show();
-        previous_page_button->show();
-        next_page_button->hide();
-        last_page_button->hide();
-    }
-    else {
-        first_page_button->hide();
-        previous_page_button->show();
-        next_page_button->show();
-        last_page_button->hide();
-    }
+//    if(current_page == 1) {
+//        next_page_button->show();
+//        last_page_button->show();
+//        first_page_button->hide();
+//        previous_page_button->hide();
+//    }
+//    else if(current_page == page_count) {
+//        first_page_button->show();
+//        previous_page_button->show();
+//        next_page_button->hide();
+//        last_page_button->hide();
+//    }
+//    else {
+//        first_page_button->hide();
+//        previous_page_button->show();
+//        next_page_button->show();
+//        last_page_button->hide();
+//    }
 
     int previous_total_page = (current_page - 1)*8;
     int tip_index = previous_total_page;
@@ -352,6 +356,12 @@ void SkinsWidget::paintEvent(QPaintEvent *) {
     painter3.drawPolyline(points, 4);
 }
 
+//void SkinsWidget::resizeEvent(QResizeEvent *event) {
+//    wheel=QImage(event->size(),QImage::Format_ARGB32_Premultiplied);
+//    wheel.fill(palette().background().color());
+//    update();
+//}
+
 bool SkinsWidget::eventFilter(QObject *obj, QEvent *event) {
     if(obj == close_button) {
             if(event->type() == QEvent::Enter){
@@ -364,7 +374,7 @@ bool SkinsWidget::eventFilter(QObject *obj, QEvent *event) {
                 QMouseEvent *me = (QMouseEvent *)event;
                 QLabel *lb = (QLabel *)obj;
                 if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
-                    this->close();
+                    this->hide();
                 }else{
                     close_button->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
                 }

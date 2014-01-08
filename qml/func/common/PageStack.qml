@@ -48,7 +48,6 @@ import "PageStack.js" as Engine
 import "PageStatus.js" as PageStatus
 import "PageOrientation.js" as PageOrientation
 
-
 Item {
     id: root
 

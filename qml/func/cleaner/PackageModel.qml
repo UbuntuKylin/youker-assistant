@@ -75,8 +75,8 @@ Item {
                 id: progress
                 value: 0
                 background: "../../img/skin/progress-bg.png"
-                color: "#086794"//"#383838"
-                secondColor: "#318d11"
+                color: "lightsteelblue"////"#086794"
+                secondColor: "steelblue"//"#318d11"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }

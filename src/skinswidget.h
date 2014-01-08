@@ -33,6 +33,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void paintEvent(QPaintEvent *event);
+//    void resizeEvent(QResizeEvent *event);
 
 signals:
     void skinSignalToQML(QString skinName);
@@ -76,10 +77,12 @@ private:
     SkinGrid *change_skin_widget_6;
     SkinGrid *change_skin_widget_7;
 
-    QPushButton *first_page_button;
-    QPushButton *previous_page_button;
-    QPushButton *next_page_button;
-    QPushButton *last_page_button;
+//    QPushButton *first_page_button;
+//    QPushButton *previous_page_button;
+//    QPushButton *next_page_button;
+//    QPushButton *last_page_button;
+
+//    QImage wheel;
     
 };
 
