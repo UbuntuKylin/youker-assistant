@@ -35,11 +35,11 @@ Rectangle {
 
     function show_several_cdrom(num)
     {
-        var cdrommodel = systemdispatcher.getSingleInfo("DvdProduct", "cdrom").split("<1_1>");//光驱型号
-        var vendorname = systemdispatcher.getSingleInfo("DvdVendor", "cdrom").split("<1_1>");//制造商
-        var devicename = systemdispatcher.getSingleInfo("DvdName", "cdrom").split("<1_1>");//设备名称
-        var firmware = systemdispatcher.getSingleInfo("DvdFw", "cdrom").split("<1_1>");//固件版本
-        var serial = systemdispatcher.getSingleInfo("DvdSerial", "cdrom").split("<1_1>");//序列号
+        var cdrommodel = systemdispatcher.getHWSingleInfo("DvdProduct", "cdrom").split("<1_1>");//光驱型号
+        var vendorname = systemdispatcher.getHWSingleInfo("DvdVendor", "cdrom").split("<1_1>");//制造商
+        var devicename = systemdispatcher.getHWSingleInfo("DvdName", "cdrom").split("<1_1>");//设备名称
+        var firmware = systemdispatcher.getHWSingleInfo("DvdFw", "cdrom").split("<1_1>");//固件版本
+        var serial = systemdispatcher.getHWSingleInfo("DvdSerial", "cdrom").split("<1_1>");//序列号
 
         //--------------first--------------
         home.firstFlag = true;
@@ -117,17 +117,17 @@ Rectangle {
         home.thirdFlag = false;
         home.fourthFlag = false;
 //        systemdispatcher.get_audiocard_info_qt();//获取详细信息
-        var num = systemdispatcher.getSingleInfo("Dvdnum", "cdrom");
+        var num = systemdispatcher.getHWSingleInfo("Dvdnum", "cdrom");
         if(num == 1) {
             home.firstFlag = true;
             firstView.visible = true;
-            var vendorName = systemdispatcher.getSingleInfo("DvdVendor", "cdrom");//制造商
+            var vendorName = systemdispatcher.getHWSingleInfo("DvdVendor", "cdrom");//制造商
             firstModel.clear();
-            firstModel.append({"title": qsTr("CD-ROM Model:"), "result": systemdispatcher.getSingleInfo("DvdProduct", "cdrom")});//光驱型号：
+            firstModel.append({"title": qsTr("CD-ROM Model:"), "result": systemdispatcher.getHWSingleInfo("DvdProduct", "cdrom")});//光驱型号：
             firstModel.append({"title": qsTr("Vendor:"), "result": vendorName});//制造商：
-            firstModel.append({"title": qsTr("Device Name:"), "result": systemdispatcher.getSingleInfo("DvdName", "cdrom")});//设备名称：
-            firstModel.append({"title": qsTr("Firmware Version:"), "result": systemdispatcher.getSingleInfo("DvdFw", "cdrom")});//固件版本：
-            firstModel.append({"title": qsTr("Serial Number:"), "result": systemdispatcher.getSingleInfo("DvdSerial", "cdrom")});//序列号：
+            firstModel.append({"title": qsTr("Device Name:"), "result": systemdispatcher.getHWSingleInfo("DvdName", "cdrom")});//设备名称：
+            firstModel.append({"title": qsTr("Firmware Version:"), "result": systemdispatcher.getHWSingleInfo("DvdFw", "cdrom")});//固件版本：
+            firstModel.append({"title": qsTr("Serial Number:"), "result": systemdispatcher.getHWSingleInfo("DvdSerial", "cdrom")});//序列号：
             splitbar1.visible = true;
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -316,13 +316,13 @@ Rectangle {
 //    color: "transparent"
 
 //    Component.onCompleted: {
-//        modelText.text = systemdispatcher.getSingleInfo("DvdProduct", "cdrom");//光驱型号
-//        var cdname = systemdispatcher.getSingleInfo("DvdVendor", "cdrom");//制造商
+//        modelText.text = systemdispatcher.getHWSingleInfo("DvdProduct", "cdrom");//光驱型号
+//        var cdname = systemdispatcher.getHWSingleInfo("DvdVendor", "cdrom");//制造商
 //        logo.source = InfoGroup.judgeName(cdname.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cdname.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 //        verdorText.text = cdname;
-//        nameText.text = systemdispatcher.getSingleInfo("DvdName", "cdrom");//设备名称
-//        firmwareText.text = systemdispatcher.getSingleInfo("DvdFw", "cdrom");//固件版本
-//        serialText.text = systemdispatcher.getSingleInfo("DvdSerial", "cdrom");//序列号
+//        nameText.text = systemdispatcher.getHWSingleInfo("DvdName", "cdrom");//设备名称
+//        firmwareText.text = systemdispatcher.getHWSingleInfo("DvdFw", "cdrom");//固件版本
+//        serialText.text = systemdispatcher.getHWSingleInfo("DvdSerial", "cdrom");//序列号
 //    }
 //    Column {
 //        anchors {
@@ -360,7 +360,7 @@ Rectangle {
 //                }
 //                Text {
 //                    id: modelText
-//                    text: ""//systemdispatcher.getSingleInfo("DvdProduct")
+//                    text: ""//systemdispatcher.getHWSingleInfo("DvdProduct")
 //                    font.pixelSize: 14
 //                    color: "#7a7a7a"
 //                }
@@ -375,7 +375,7 @@ Rectangle {
 //                }
 //                Text {
 //                    id: verdorText
-//                    text: ""//systemdispatcher.getSingleInfo("DvdVendor")
+//                    text: ""//systemdispatcher.getHWSingleInfo("DvdVendor")
 //                    font.pixelSize: 14
 //                    color: "#7a7a7a"
 //                }
@@ -390,7 +390,7 @@ Rectangle {
 //                }
 //                Text {
 //                    id: nameText
-//                    text: ""//systemdispatcher.getSingleInfo("DvdName")
+//                    text: ""//systemdispatcher.getHWSingleInfo("DvdName")
 //                    font.pixelSize: 14
 //                    color: "#7a7a7a"
 //                }
@@ -405,7 +405,7 @@ Rectangle {
 //                }
 //                Text {
 //                    id: firmwareText
-//                    text: ""//systemdispatcher.getSingleInfo("DvdFw")
+//                    text: ""//systemdispatcher.getHWSingleInfo("DvdFw")
 //                    font.pixelSize: 14
 //                    color: "#7a7a7a"
 //                }
@@ -420,7 +420,7 @@ Rectangle {
 //                }
 //                Text {
 //                    id: serialText
-//                    text: ""//systemdispatcher.getSingleInfo("DvdSerial")
+//                    text: ""//systemdispatcher.getHWSingleInfo("DvdSerial")
 //                    font.pixelSize: 14
 //                    color: "#7a7a7a"
 //                }

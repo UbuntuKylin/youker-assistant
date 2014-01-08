@@ -25,22 +25,22 @@ Rectangle {
 
     Component.onCompleted: {
         systemdispatcher.get_computer_info_qt();//获取详细信息
-        var vendorName = systemdispatcher.getSingleInfo("ComVendor", "computer").toUpperCase();
+        var vendorName = systemdispatcher.getHWSingleInfo("ComVendor", "computer").toUpperCase();
         logo.source = InfoGroup.judgeName(vendorName) ? ("../../img/logo/Manufacturer/" + vendorName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 
         comvendorText.text = vendorName;
-        comproductText.text = systemdispatcher.getSingleInfo("ComProduct", "computer");
-        comversionText.text = systemdispatcher.getSingleInfo("ComVersion", "computer");
-        comserialText.text = systemdispatcher.getSingleInfo("ComSerial", "computer");
-        nodeText.text = systemdispatcher.getSingleInfo("node", "computer");
-        systemText.text = systemdispatcher.getSingleInfo("system", "computer");
-        platformText.text = systemdispatcher.getSingleInfo("platform", "computer");
-        architectureText.text = systemdispatcher.getSingleInfo("architecture", "computer");
-        releaseText.text = systemdispatcher.getSingleInfo("release", "computer");
-        machineText.text = systemdispatcher.getSingleInfo("machine", "computer");
+        comproductText.text = systemdispatcher.getHWSingleInfo("ComProduct", "computer");
+        comversionText.text = systemdispatcher.getHWSingleInfo("ComVersion", "computer");
+        comserialText.text = systemdispatcher.getHWSingleInfo("ComSerial", "computer");
+        nodeText.text = systemdispatcher.getHWSingleInfo("node", "computer");
+        systemText.text = systemdispatcher.getHWSingleInfo("system", "computer");
+        platformText.text = systemdispatcher.getHWSingleInfo("platform", "computer");
+        architectureText.text = systemdispatcher.getHWSingleInfo("architecture", "computer");
+        releaseText.text = systemdispatcher.getHWSingleInfo("release", "computer");
+        machineText.text = systemdispatcher.getHWSingleInfo("machine", "computer");
 
 
-        var timeValue = systemdispatcher.getSingleInfo("uptime", "computer");
+        var timeValue = systemdispatcher.getHWSingleInfo("uptime", "computer");
         var valueHour = Math.floor(timeValue/60);//返回小于等于timeValue/60的最大整数
 //        var aa = valueHour.toFixed(0);
         var valueMinute = timeValue % 60;
@@ -87,7 +87,7 @@ Rectangle {
                 }
                 Text {
                     id: comvendorText
-                    text: ""//systemdispatcher.getSingleInfo("ComVendor")
+                    text: ""//systemdispatcher.getHWSingleInfo("ComVendor")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -102,7 +102,7 @@ Rectangle {
                 }
                 Text {
                     id: comproductText
-                    text: ""//systemdispatcher.getSingleInfo("ComProduct")
+                    text: ""//systemdispatcher.getHWSingleInfo("ComProduct")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -117,7 +117,7 @@ Rectangle {
                 }
                 Text {
                     id: comversionText
-                    text: ""//systemdispatcher.getSingleInfo("ComVersion")
+                    text: ""//systemdispatcher.getHWSingleInfo("ComVersion")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -132,7 +132,7 @@ Rectangle {
                 }
                 Text {
                     id: comserialText
-                    text: ""//systemdispatcher.getSingleInfo("ComSerial")
+                    text: ""//systemdispatcher.getHWSingleInfo("ComSerial")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -147,7 +147,7 @@ Rectangle {
                 }
                 Text {
                     id: nodeText
-                    text: ""//systemdispatcher.getSingleInfo("node")
+                    text: ""//systemdispatcher.getHWSingleInfo("node")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -162,7 +162,7 @@ Rectangle {
                 }
                 Text {
                     id: uptimeText
-                    text: ""//systemdispatcher.getSingleInfo("uptime")
+                    text: ""//systemdispatcher.getHWSingleInfo("uptime")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -177,7 +177,7 @@ Rectangle {
                 }
                 Text {
                     id: systemText
-                    text: ""//systemdispatcher.getSingleInfo("system")
+                    text: ""//systemdispatcher.getHWSingleInfo("system")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -192,7 +192,7 @@ Rectangle {
                 }
                 Text {
                     id: platformText
-                    text: ""//systemdispatcher.getSingleInfo("platform")
+                    text: ""//systemdispatcher.getHWSingleInfo("platform")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -207,7 +207,7 @@ Rectangle {
                 }
                 Text {
                     id: architectureText
-                    text: ""//systemdispatcher.getSingleInfo("architecture")
+                    text: ""//systemdispatcher.getHWSingleInfo("architecture")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -222,7 +222,7 @@ Rectangle {
                 }
                 Text {
                     id: releaseText
-                    text: ""//systemdispatcher.getSingleInfo("release")
+                    text: ""//systemdispatcher.getHWSingleInfo("release")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -237,7 +237,7 @@ Rectangle {
                 }
                 Text {
                     id: machineText
-                    text: ""//systemdispatcher.getSingleInfo("machine")
+                    text: ""//systemdispatcher.getHWSingleInfo("machine")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

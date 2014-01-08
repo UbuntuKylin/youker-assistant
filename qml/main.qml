@@ -18,7 +18,6 @@ import QtQuick 1.1
 import ToolkitsType 0.1
 import SessionType 0.1
 import SystemType 0.1
-//import SudoType 0.1
 import FcitxCfgWizard 0.1
 import ProcessType 0.1
 import DeviceType 0.1
@@ -37,9 +36,6 @@ Rectangle {
     SystemDispatcher {
         id: systemdispatcher
     }
-//    SudoDispatcher {
-//        id: sudodispatcher
-//    }
     FcitxCfgWizard {
         id: fcitxcfgwizard
     }

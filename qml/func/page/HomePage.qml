@@ -60,8 +60,8 @@ Rectangle {
             }
             Item { id: foreground; anchors.fill: parent }
             //左右分割条
-            Rectangle {id: midsplitbar1; x: 600; height: screen.height; width: 1; color: "#b9c5cc" }
-            Rectangle {id: midsplitbar2; x: 602; height: screen.height; width: 1; color: "#fafcfe" }
+            Rectangle {id: midsplitbar1; x: 600; y: 2; height: screen.height - 4; width: 1; color: "#b9c5cc" }
+            Rectangle {id: midsplitbar2; x: 602; y: 2; height: screen.height - 4; width: 1; color: "#fafcfe" }
 
         }
     }

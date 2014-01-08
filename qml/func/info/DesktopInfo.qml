@@ -261,7 +261,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("cpu")
+//                        text: sessiondispatcher.getHWSingleInfo("cpu")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }
@@ -275,7 +275,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("ram")
+//                        text: sessiondispatcher.getHWSingleInfo("ram")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }
@@ -308,7 +308,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("hostname")
+//                        text: sessiondispatcher.getHWSingleInfo("hostname")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }
@@ -322,7 +322,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("platform")
+//                        text: sessiondispatcher.getHWSingleInfo("platform")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }
@@ -336,7 +336,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("distribution")
+//                        text: sessiondispatcher.getHWSingleInfo("distribution")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }
@@ -350,7 +350,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("desktopenvironment")
+//                        text: sessiondispatcher.getHWSingleInfo("desktopenvironment")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }
@@ -364,7 +364,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("language")
+//                        text: sessiondispatcher.getHWSingleInfo("language")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }
@@ -397,7 +397,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("currrent_user")
+//                        text: sessiondispatcher.getHWSingleInfo("currrent_user")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }
@@ -411,7 +411,7 @@ Rectangle {
 //                        width: 100
 //                    }
 //                    Text {
-//                        text: sessiondispatcher.getSingleInfo("home_path")
+//                        text: sessiondispatcher.getHWSingleInfo("home_path")
 //                        font.pixelSize: 12
 //                        color: "#7a7a7a"
 //                    }

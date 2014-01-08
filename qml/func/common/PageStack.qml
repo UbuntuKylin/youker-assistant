@@ -284,6 +284,7 @@ Item {
                     from: ""; to: "right"; reversible: true
                     SequentialAnimation {
                         ScriptAction { script: if (state == "right") { transitionStarted(); } else { transitionEnded(); } }
+                        //kobe:换页时的效果
                         PropertyAnimation { properties: "x"; easing.type: Easing.InOutExpo; duration: transitionDuration }
                         ScriptAction { script: if (state == "right") { transitionEnded(); } else { transitionStarted(); } }
                     }

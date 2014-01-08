@@ -25,17 +25,17 @@ Rectangle {
     Component.onCompleted: {
         systemdispatcher.get_board_info_qt();//获取详细信息
 
-        var basicName = systemdispatcher.getSingleInfo("BoaVendor", "board").toUpperCase();
-        var biosName = systemdispatcher.getSingleInfo("BioVendor", "board").toUpperCase();
+        var basicName = systemdispatcher.getHWSingleInfo("BoaVendor", "board").toUpperCase();
+        var biosName = systemdispatcher.getHWSingleInfo("BioVendor", "board").toUpperCase();
         basiclogo.source = InfoGroup.judgeName(basicName) ? ("../../img/logo/Manufacturer/" + basicName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         bioslogo.source = InfoGroup.judgeName(biosName) ? ("../../img/logo/Manufacturer/" + biosName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 
-        productText.text = systemdispatcher.getSingleInfo("BoaProduct", "board");
+        productText.text = systemdispatcher.getHWSingleInfo("BoaProduct", "board");
         vendorText.text = basicName;
-        serialText.text = systemdispatcher.getSingleInfo("BoaSerial", "board");
+        serialText.text = systemdispatcher.getHWSingleInfo("BoaSerial", "board");
         biosvendorText.text = biosName;
-        biosversionText.text = systemdispatcher.getSingleInfo("BioVersion", "board");
-        biosreleaseText.text = systemdispatcher.getSingleInfo("BioRelease", "board");
+        biosversionText.text = systemdispatcher.getHWSingleInfo("BioVersion", "board");
+        biosreleaseText.text = systemdispatcher.getHWSingleInfo("BioRelease", "board");
     }
 
     Column {
@@ -74,7 +74,7 @@ Rectangle {
                 }
                 Text {
                     id: productText
-                    text: ""//systemdispatcher.getSingleInfo("BoaProduct")
+                    text: ""//systemdispatcher.getHWSingleInfo("BoaProduct")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -89,7 +89,7 @@ Rectangle {
                 }
                 Text {
                     id: vendorText
-                    text: ""//systemdispatcher.getSingleInfo("BoaVendor")
+                    text: ""//systemdispatcher.getHWSingleInfo("BoaVendor")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -104,7 +104,7 @@ Rectangle {
                 }
                 Text {
                     id: serialText
-                    text: ""//systemdispatcher.getSingleInfo("BoaSerial")
+                    text: ""//systemdispatcher.getHWSingleInfo("BoaSerial")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -137,7 +137,7 @@ Rectangle {
                 }
                 Text {
                     id: biosvendorText
-                    text: ""//systemdispatcher.getSingleInfo("BioVendor")
+                    text: ""//systemdispatcher.getHWSingleInfo("BioVendor")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -152,7 +152,7 @@ Rectangle {
                 }
                 Text {
                     id: biosversionText
-                    text: ""//systemdispatcher.getSingleInfo("BioVersion")
+                    text: ""//systemdispatcher.getHWSingleInfo("BioVersion")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -167,7 +167,7 @@ Rectangle {
                 }
                 Text {
                     id: biosreleaseText
-                    text: ""//systemdispatcher.getSingleInfo("BioRelease")
+                    text: ""//systemdispatcher.getHWSingleInfo("BioRelease")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

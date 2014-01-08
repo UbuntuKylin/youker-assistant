@@ -25,14 +25,14 @@ Rectangle {
 
     Component.onCompleted: {
         systemdispatcher.get_monitor_info_qt();//获取详细信息
-        chipText.text = systemdispatcher.getSingleInfo("Mon_chip", "monitor");
-        chipmodelText.text = systemdispatcher.getSingleInfo("Vga_product", "monitor");
-        var cardVendor = systemdispatcher.getSingleInfo("Vga_vendor", "monitor");
+        chipText.text = systemdispatcher.getHWSingleInfo("Mon_chip", "monitor");
+        chipmodelText.text = systemdispatcher.getHWSingleInfo("Vga_product", "monitor");
+        var cardVendor = systemdispatcher.getHWSingleInfo("Vga_vendor", "monitor");
         chipvendorText.text = cardVendor;
-        driverText.text = systemdispatcher.getSingleInfo("Vga_Drive", "monitor");
+        driverText.text = systemdispatcher.getHWSingleInfo("Vga_Drive", "monitor");
         cardlogo.source = InfoGroup.judgeName(cardVendor.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cardVendor.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-        chipbusText.text = systemdispatcher.getSingleInfo("Vga_businfo", "monitor");
-        var vendor = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
+        chipbusText.text = systemdispatcher.getHWSingleInfo("Vga_businfo", "monitor");
+        var vendor = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
         if(vendor.length !== 0 ) {
             productLabel.visible = true;
             vendorLabel.visible = true;
@@ -43,17 +43,17 @@ Rectangle {
             gammaLabel.visible = true;
             outputLabel.visible = true;
             supportLabel.visible = true;
-            var vendorName = systemdispatcher.getSingleInfo("Mon_vendor", "monitor");
+            var vendorName = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
             monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-            productText.text = systemdispatcher.getSingleInfo("Mon_product", "monitor");
+            productText.text = systemdispatcher.getHWSingleInfo("Mon_product", "monitor");
             vendorText.text = vendorName;
-            dateText.text = systemdispatcher.getSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getSingleInfo("Mon_week", "monitor");
-            sizeText.text = systemdispatcher.getSingleInfo("Mon_size", "monitor");
-            inText.text = systemdispatcher.getSingleInfo("Mon_in", "monitor");
-            maxmodeText.text = systemdispatcher.getSingleInfo("Mon_maxmode", "monitor");
-            gammaText.text = systemdispatcher.getSingleInfo("Mon_gamma", "monitor");
-            outputText.text = systemdispatcher.getSingleInfo("Mon_output", "monitor");
-            supportText.text = systemdispatcher.getSingleInfo("Mon_support", "monitor");
+            dateText.text = systemdispatcher.getHWSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getHWSingleInfo("Mon_week", "monitor");
+            sizeText.text = systemdispatcher.getHWSingleInfo("Mon_size", "monitor");
+            inText.text = systemdispatcher.getHWSingleInfo("Mon_in", "monitor");
+            maxmodeText.text = systemdispatcher.getHWSingleInfo("Mon_maxmode", "monitor");
+            gammaText.text = systemdispatcher.getHWSingleInfo("Mon_gamma", "monitor");
+            outputText.text = systemdispatcher.getHWSingleInfo("Mon_output", "monitor");
+            supportText.text = systemdispatcher.getHWSingleInfo("Mon_support", "monitor");
         }
         else {
             productLabel.visible = false;
@@ -105,7 +105,7 @@ Rectangle {
                 Text {
                     id: chipmodelText
                     width: 450
-                    text: ""//systemdispatcher.getSingleInfo("Vga_product")
+                    text: ""//systemdispatcher.getHWSingleInfo("Vga_product")
                     font.pixelSize: 14
                     wrapMode: Text.WordWrap
                     color: "#7a7a7a"
@@ -121,7 +121,7 @@ Rectangle {
                 }
                 Text {
                     id: chipText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_chip")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_chip")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -136,7 +136,7 @@ Rectangle {
                 }
                 Text {
                     id: chipvendorText
-                    text: ""//systemdispatcher.getSingleInfo("Vga_vendor")
+                    text: ""//systemdispatcher.getHWSingleInfo("Vga_vendor")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -151,7 +151,7 @@ Rectangle {
                 }
                 Text {
                     id: driverText
-                    text: ""//systemdispatcher.getSingleInfo("Vga_Drive")
+                    text: ""//systemdispatcher.getHWSingleInfo("Vga_Drive")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -166,7 +166,7 @@ Rectangle {
                 }
                 Text {
                     id: chipbusText
-                    text: ""//systemdispatcher.getSingleInfo("Vga_businfo")
+                    text: ""//systemdispatcher.getHWSingleInfo("Vga_businfo")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -184,7 +184,7 @@ Rectangle {
                 }
                 Text {
                     id: productText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_product")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_product")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -200,7 +200,7 @@ Rectangle {
                 }
                 Text {
                     id: vendorText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_vendor")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_vendor")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -216,7 +216,7 @@ Rectangle {
                 }
                 Text {
                     id: dateText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_year")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_year")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -232,7 +232,7 @@ Rectangle {
                 }
                 Text {
                     id: sizeText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_size")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_size")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -248,7 +248,7 @@ Rectangle {
                 }
                 Text {
                     id: inText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_in")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_in")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -264,7 +264,7 @@ Rectangle {
                 }
                 Text {
                     id: maxmodeText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_maxmode")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_maxmode")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -280,7 +280,7 @@ Rectangle {
                 }
                 Text {
                     id: gammaText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_gamma")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_gamma")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -296,7 +296,7 @@ Rectangle {
                 }
                 Text {
                     id: outputText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_output")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_output")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -312,7 +312,7 @@ Rectangle {
                 }
                 Text {
                     id: supportText
-                    text: ""//systemdispatcher.getSingleInfo("Mon_support")
+                    text: ""//systemdispatcher.getHWSingleInfo("Mon_support")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

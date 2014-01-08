@@ -92,8 +92,8 @@ Rectangle {
     }
 
     //上下分割条
-    Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar2; x: 2; y: 272; width: parent.width; height: 1; color: "#fafcfe" }
+    Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width - 4; height: 1; color: "#b9c5cc" }
+    Rectangle {id: splitbar2; x: 2; y: 272; width: parent.width - 4; height: 1; color: "#fafcfe" }
 
     Column {
         width: parent.width

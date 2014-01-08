@@ -153,12 +153,6 @@ public:
     Q_INVOKABLE void clear_onekey_args();
     Q_INVOKABLE QStringList get_onekey_args();
 
-    QStringList onekey_args2;
-    Q_INVOKABLE void set_onekey_args2(QString str);
-    Q_INVOKABLE void del_onekey_args2(QString str);
-    Q_INVOKABLE void clear_onekey_args2();
-    Q_INVOKABLE QStringList get_onekey_args2();
-
     QStringList largestfile_args;
     Q_INVOKABLE void set_largestfile_args(QString str);
     Q_INVOKABLE void del_largestfile_args(QString str);
@@ -200,27 +194,17 @@ public:
     Q_INVOKABLE void get_audiocard_info_qt();
     Q_INVOKABLE QString get_time_value_qt();
 //    Q_INVOKABLE void get_detail_system_message_qt();
-    //通过键得到对应的单个信息的值
-    Q_INVOKABLE QString getSingleInfo(QString key, QString flag);
-
-
+    //通过键得到硬件对应的单个信息的值
+    Q_INVOKABLE QString getHWSingleInfo(QString key, QString flag);
 
 
     //------------------------
-    //弹出密码输入框
-//    Q_INVOKABLE void showPasswdDialog(int window_x, int window_y);
     //弹出更新软件源对话框
     Q_INVOKABLE void showUpdateSourceDialog(int window_x, int window_y);
-    //得到sudodbus验证值，可以通过该值验证服务是否正在运行
-    Q_INVOKABLE QString get_sudo_daemon_qt();
     //清理不需要的已经安装的软件
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist, QString flag);
-    //绑定信号槽
-//    Q_INVOKABLE void bind_signals_after_dbus_start();
     //通过键值得到对应软件的状态
     Q_INVOKABLE QString getSoftwareStatus(QString);
-    Q_INVOKABLE bool getUKSignalFlag();
-    Q_INVOKABLE void setUKSignalFlag(bool flag);
     // -------------------------software-center-------------------------
     //安装软件
     Q_INVOKABLE void install_pkg_qt(QString pkgName);
@@ -244,7 +228,7 @@ public:
     Q_INVOKABLE void ready_show_app_page(QString flag);
     //得到对应app的信息
     Q_INVOKABLE void getAppInfo(QString flag);
-    //通过键得到对应的单个信息的值
+    //通过键得到软件对应的单个信息的值
     Q_INVOKABLE QString getSingleInfo(QString key);
 public slots:
     //添加软件推荐源
@@ -324,19 +308,6 @@ public slots:
 private:
     QStringList tmplist;
     QDBusInterface *systemiface;
-//    QSettings * mSettings;
-    int mainwindow_width;
-    int mainwindow_height;
-    int alert_width;
-    int alert_height;
-    int alert_width_bg;
-    //本次alert的x坐标
-    int alert_x;
-    //保额次alert的y坐标
-    int alert_y;
-
-
-    //-------------------------
     UpdateDialog *updatedialog;
     //存放软件列表的状态
     QMap<QString, QString> status_dict;
@@ -349,7 +320,15 @@ private:
     int ratio_sus;
     //判断是软件源更新还是软件操作，如果是软件源更新，则为true;如果是软件操作，则为默认的false
     bool progressFlag;
-    bool signalFlag;
+    int mainwindow_width;
+    int mainwindow_height;
+    int alert_width;
+    int alert_height;
+    int alert_width_bg;
+    //本次alert的x坐标
+    int alert_x;
+    //保额次alert的y坐标
+    int alert_y;
 };
 
 #endif // SYSTEMDISPATCHER_H

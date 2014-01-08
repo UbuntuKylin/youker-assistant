@@ -21,12 +21,10 @@
 #include <QObject>
 #include <QString>
 #include <QFileDialog>
-#include "KThread.h"
-#include "sourcedialog.h"
-
 #include <QMap>
 #include <QMessageBox>
-//#include "authdialog.h"
+#include "KThread.h"
+#include "sourcedialog.h"
 
 extern QString music_path;
 
@@ -37,6 +35,21 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.youker",
                                QDBusConnection::systemBus());
+    updatedialog = new UpdateDialog;
+    history_flag = true;
+    onekey_args << "cache" << "history" << "cookies";
+    tmplist << "Kobe" << "Lee";
+    this->mainwindow_width = 850;
+    this->mainwindow_height = 600;
+    this->alert_width = 292;
+    this->alert_width_bg = 329;
+    this->alert_height = 54;
+
+    config = new QSettings(APP_LIST_FILE, QSettings::IniFormat);
+    config->setIniCodec("UTF-8");
+    progressFlag = false;
+    ratio_sus = 0;
+
     //绑定到底层清理完毕后发送到信号函数clear_browser
     QObject::connect(systemiface,SIGNAL(clean_single_complete(QString)),this,SLOT(handler_clear_single_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(clean_single_error(QString)),this,SLOT(handler_clear_single_rubbish_error(QString)));
@@ -53,30 +66,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_data_second(QString,QString)),this,SLOT(handler_clean_data_second(QString,QString)));
     QObject::connect(systemiface,SIGNAL(status_for_quick_clean(QString,QString)),this,SLOT(handler_status_for_quick_clean(QString,QString)));
 
-    history_flag = true;
-    onekey_args << "cache" << "history" << "cookies";
-    onekey_args2 << "cache" << "history" << "cookies";
-    tmplist << "Kobe" << "Lee";
-
-    this->mainwindow_width = 850;
-    this->mainwindow_height = 600;
-    this->alert_width = 292;
-    this->alert_width_bg = 329;
-    this->alert_height = 54;
-
-//    mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
-//    mSettings->setIniCodec("UTF-8");
-
-    //判断是否添加了源
-//    add_source_ubuntukylin_qt();
-
-    //------------------------------------------
-    updatedialog = new UpdateDialog;
-    signalFlag = false;
-    config = new QSettings(APP_LIST_FILE, QSettings::IniFormat);
-    config->setIniCodec("UTF-8");
-    progressFlag = false;
-    ratio_sus = 0;
     QObject::connect(systemiface,SIGNAL(sudo_finish_clean(QString)),this,SLOT(handlerClearDeb(QString)));
     QObject::connect(systemiface,SIGNAL(sudo_clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
     QObject::connect(systemiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handlerSoftwareFetch(QString,QString)));
@@ -88,14 +77,14 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 }
 
 SystemDispatcher::~SystemDispatcher() {
-//    mSettings->sync();
-//    if (mSettings != NULL)
-//        delete mSettings;
-    this->exit_qt();
-
+    config->sync();
+    if (config != NULL) {
+        delete config;
+    }
     if(updatedialog) {
         delete updatedialog;
     }
+    this->exit_qt();
 }
 
 void SystemDispatcher::kill_root_process_qt(QString pid) {
@@ -235,7 +224,7 @@ QString SystemDispatcher::get_time_value_qt() {
     return reply.value();
 }
 
-QString SystemDispatcher::getSingleInfo(QString key, QString flag) {
+QString SystemDispatcher::getHWSingleInfo(QString key, QString flag) {
     QVariant info;
     if(flag == "computer") {
         info = computerInfo.value(key);
@@ -713,31 +702,6 @@ QStringList SystemDispatcher::get_onekey_args() {
     return onekey_args;
 }
 
-void SystemDispatcher::set_onekey_args2(QString str) {
-    onekey_args2.append(str);
-}
-
-void SystemDispatcher::del_onekey_args2(QString str) {
-    QStringList bake;
-    int len = onekey_args2.length();
-    for (int i=0; i< len; i++) {
-        if (onekey_args2[i] != str) {
-            bake.append(onekey_args2[i]);
-        }
-    }
-    onekey_args2.clear();
-    onekey_args2 = bake;
-//    package_args.replaceInStrings(QString(str), QString(""));
-}
-
-void SystemDispatcher::clear_onekey_args2() {
-    onekey_args2.clear();
-}
-
-QStringList SystemDispatcher::get_onekey_args2() {
-    return onekey_args2;
-}
-
 void SystemDispatcher::set_largestfile_args(QString str) {
     largestfile_args.append(str);
 }
@@ -785,19 +749,6 @@ QStringList SystemDispatcher::search_largest_file(QString path) {
 
 
 //------------------------------
-QString SystemDispatcher::get_sudo_daemon_qt() {
-    QDBusReply<QString> reply = systemiface->call("get_sudo_daemon");
-    return reply.value();
-}
-
-bool SystemDispatcher::getUKSignalFlag() {
-    return signalFlag;
-}
-
-void SystemDispatcher::setUKSignalFlag(bool flag) {
-    signalFlag = flag;
-}
-
 void SystemDispatcher::handlerClearDeb(QString msg) {
      emit finishCleanDeb(msg);
 }

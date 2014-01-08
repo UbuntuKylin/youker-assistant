@@ -35,13 +35,13 @@ Rectangle {
 
     function show_several_memory(num)
     {
-        var slot = systemdispatcher.getSingleInfo("MemSlot", "memory").split("<1_1>");
-        var product = systemdispatcher.getSingleInfo("MemProduct", "memory").split("<1_1>");
-        var vendor = systemdispatcher.getSingleInfo("MemVendor", "memory").split("<1_1>");
-        var serial = systemdispatcher.getSingleInfo("MemSerial", "memory").split("<1_1>");
-        var sizeValue = systemdispatcher.getSingleInfo("MemSize", "memory").split("<1_1>");
-        var widthValue = systemdispatcher.getSingleInfo("MemWidth", "memory").split("<1_1>");
-        var info = systemdispatcher.getSingleInfo("MemInfo", "memory").split("<1_1>");
+        var slot = systemdispatcher.getHWSingleInfo("MemSlot", "memory").split("<1_1>");
+        var product = systemdispatcher.getHWSingleInfo("MemProduct", "memory").split("<1_1>");
+        var vendor = systemdispatcher.getHWSingleInfo("MemVendor", "memory").split("<1_1>");
+        var serial = systemdispatcher.getHWSingleInfo("MemSerial", "memory").split("<1_1>");
+        var sizeValue = systemdispatcher.getHWSingleInfo("MemSize", "memory").split("<1_1>");
+        var widthValue = systemdispatcher.getHWSingleInfo("MemWidth", "memory").split("<1_1>");
+        var info = systemdispatcher.getHWSingleInfo("MemInfo", "memory").split("<1_1>");
         //--------------first--------------
         home.firstFlag = true;
         firstView.visible = true;
@@ -120,19 +120,19 @@ Rectangle {
         home.thirdFlag = false;
         home.fourthFlag = false;
         systemdispatcher.get_memory_info_qt();//获取详细信息
-        var num = systemdispatcher.getSingleInfo("Memnum", "memory");
+        var num = systemdispatcher.getHWSingleInfo("Memnum", "memory");
         if(num == 1) {
             home.firstFlag = true;
             firstView.visible = true;
-            var vendorName = systemdispatcher.getSingleInfo("MemVendor", "memory");
+            var vendorName = systemdispatcher.getHWSingleInfo("MemVendor", "memory");
             firstModel.clear();
-            firstModel.append({"title": qsTr("Slot Number: "), "result": systemdispatcher.getSingleInfo("MemSlot", "memory")});//插槽号：
-            firstModel.append({"title": qsTr("Memory Model: "), "result": systemdispatcher.getSingleInfo("MemProduct", "memory")});//内存型号：
+            firstModel.append({"title": qsTr("Slot Number: "), "result": systemdispatcher.getHWSingleInfo("MemSlot", "memory")});//插槽号：
+            firstModel.append({"title": qsTr("Memory Model: "), "result": systemdispatcher.getHWSingleInfo("MemProduct", "memory")});//内存型号：
             firstModel.append({"title": qsTr("Vendor: "), "result": vendorName});//制造商：
-            firstModel.append({"title": qsTr("Serial Number: "), "result": systemdispatcher.getSingleInfo("MemSerial", "memory")});//序列号：
-            firstModel.append({"title": qsTr("Memory Size: "), "result": systemdispatcher.getSingleInfo("MemSize", "memory")});//内存大小：
-            firstModel.append({"title": qsTr("Data Width: "), "result": systemdispatcher.getSingleInfo("MemWidth", "memory")});//数据宽度：
-            firstModel.append({"title": qsTr("Memory Info: "), "result": systemdispatcher.getSingleInfo("MemInfo", "memory")});//内存条信息：
+            firstModel.append({"title": qsTr("Serial Number: "), "result": systemdispatcher.getHWSingleInfo("MemSerial", "memory")});//序列号：
+            firstModel.append({"title": qsTr("Memory Size: "), "result": systemdispatcher.getHWSingleInfo("MemSize", "memory")});//内存大小：
+            firstModel.append({"title": qsTr("Data Width: "), "result": systemdispatcher.getHWSingleInfo("MemWidth", "memory")});//数据宽度：
+            firstModel.append({"title": qsTr("Memory Info: "), "result": systemdispatcher.getHWSingleInfo("MemInfo", "memory")});//内存条信息：
             splitbar1.visible = true;
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");

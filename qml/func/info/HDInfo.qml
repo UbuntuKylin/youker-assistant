@@ -35,12 +35,12 @@ Rectangle {
 
     function show_several_harddisk(num)
     {
-        var diskmodel = systemdispatcher.getSingleInfo("DiskProduct", "harddisk").split("<1_1>");
-        var diskvendor = systemdispatcher.getSingleInfo("DiskVendor", "harddisk").split("<1_1>");
-        var diskcapacity = systemdispatcher.getSingleInfo("DiskCapacity", "harddisk").split("<1_1>");
-        var diskname = systemdispatcher.getSingleInfo("DiskName", "harddisk").split("<1_1>");
-        var diskfw = systemdispatcher.getSingleInfo("DiskFw", "harddisk").split("<1_1>");
-        var diskserial = systemdispatcher.getSingleInfo("DiskSerial", "harddisk").split("<1_1>");
+        var diskmodel = systemdispatcher.getHWSingleInfo("DiskProduct", "harddisk").split("<1_1>");
+        var diskvendor = systemdispatcher.getHWSingleInfo("DiskVendor", "harddisk").split("<1_1>");
+        var diskcapacity = systemdispatcher.getHWSingleInfo("DiskCapacity", "harddisk").split("<1_1>");
+        var diskname = systemdispatcher.getHWSingleInfo("DiskName", "harddisk").split("<1_1>");
+        var diskfw = systemdispatcher.getHWSingleInfo("DiskFw", "harddisk").split("<1_1>");
+        var diskserial = systemdispatcher.getHWSingleInfo("DiskSerial", "harddisk").split("<1_1>");
 
         //--------------first--------------
         home.firstFlag = true;
@@ -136,18 +136,18 @@ Rectangle {
         home.thirdFlag = false;
         home.fourthFlag = false;
         systemdispatcher.get_harddisk_info_qt();//获取详细信息
-        var num = systemdispatcher.getSingleInfo("DiskNum", "harddisk");
+        var num = systemdispatcher.getHWSingleInfo("DiskNum", "harddisk");
         if(num == 1) {
             home.firstFlag = true;
             firstView.visible = true;
-            var vendorName = systemdispatcher.getSingleInfo("DiskVendor", "harddisk");
+            var vendorName = systemdispatcher.getHWSingleInfo("DiskVendor", "harddisk");
             firstModel.clear();
-            firstModel.append({"title": qsTr("HDD Model: "), "result": systemdispatcher.getSingleInfo("DiskProduct", "harddisk")});
+            firstModel.append({"title": qsTr("HDD Model: "), "result": systemdispatcher.getHWSingleInfo("DiskProduct", "harddisk")});
             firstModel.append({"title": qsTr("HDD Vendor: "), "result": vendorName});
-            firstModel.append({"title": qsTr("HDD Capacity: "), "result": systemdispatcher.getSingleInfo("DiskCapacity", "harddisk")});
-            firstModel.append({"title": qsTr("Device Name: "), "result": systemdispatcher.getSingleInfo("DiskName", "harddisk")});
-            firstModel.append({"title": qsTr("Firmware Version: "), "result": systemdispatcher.getSingleInfo("DiskFw", "harddisk")});
-            firstModel.append({"title": qsTr("Serial Number: "), "result": systemdispatcher.getSingleInfo("DiskSerial", "harddisk")});
+            firstModel.append({"title": qsTr("HDD Capacity: "), "result": systemdispatcher.getHWSingleInfo("DiskCapacity", "harddisk")});
+            firstModel.append({"title": qsTr("Device Name: "), "result": systemdispatcher.getHWSingleInfo("DiskName", "harddisk")});
+            firstModel.append({"title": qsTr("Firmware Version: "), "result": systemdispatcher.getHWSingleInfo("DiskFw", "harddisk")});
+            firstModel.append({"title": qsTr("Serial Number: "), "result": systemdispatcher.getHWSingleInfo("DiskSerial", "harddisk")});
             splitbar1.visible = true;
             logo1.visible = true;
             if(vendorName == "Western Digital") {

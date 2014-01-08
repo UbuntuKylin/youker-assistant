@@ -36,10 +36,10 @@ Rectangle {
 
     function show_several_audio(num)
     {
-        var audiomodel = systemdispatcher.getSingleInfo("MulProduct", "audiocard").split("<1_1>");//声卡型号：
-        var vendorname = systemdispatcher.getSingleInfo("MulVendor", "audiocard").split("<1_1>");//制造商：
-        var address = systemdispatcher.getSingleInfo("MulBusinfo", "audiocard").split("<1_1>");//总线地址：
-        var drivers = systemdispatcher.getSingleInfo("MulDrive", "audiocard").split("<1_1>");//声卡驱动：
+        var audiomodel = systemdispatcher.getHWSingleInfo("MulProduct", "audiocard").split("<1_1>");//声卡型号：
+        var vendorname = systemdispatcher.getHWSingleInfo("MulVendor", "audiocard").split("<1_1>");//制造商：
+        var address = systemdispatcher.getHWSingleInfo("MulBusinfo", "audiocard").split("<1_1>");//总线地址：
+        var drivers = systemdispatcher.getHWSingleInfo("MulDrive", "audiocard").split("<1_1>");//声卡驱动：
 
         //--------------first--------------
         home.firstFlag = true;
@@ -111,16 +111,16 @@ Rectangle {
         home.thirdFlag = false;
         home.fourthFlag = false;
         systemdispatcher.get_audiocard_info_qt();//获取详细信息
-        var num = systemdispatcher.getSingleInfo("MulNum", "audiocard");
+        var num = systemdispatcher.getHWSingleInfo("MulNum", "audiocard");
         if(num == 1) {
             home.firstFlag = true;
             firstView.visible = true;
-            var vendorName = systemdispatcher.getSingleInfo("MulVendor", "audiocard");
+            var vendorName = systemdispatcher.getHWSingleInfo("MulVendor", "audiocard");
             firstModel.clear();
-            firstModel.append({"title": qsTr("Audio Model:"), "result": systemdispatcher.getSingleInfo("MulProduct", "audiocard")});//声卡型号：
+            firstModel.append({"title": qsTr("Audio Model:"), "result": systemdispatcher.getHWSingleInfo("MulProduct", "audiocard")});//声卡型号：
             firstModel.append({"title": qsTr("Vendor:"), "result": vendorName});//制造商：
-            firstModel.append({"title": qsTr("Bus Address:"), "result": systemdispatcher.getSingleInfo("MulBusinfo", "audiocard")});//总线地址：
-            firstModel.append({"title": qsTr("Audio Driver:"), "result": systemdispatcher.getSingleInfo("MulDrive", "audiocard")});//声卡驱动：
+            firstModel.append({"title": qsTr("Bus Address:"), "result": systemdispatcher.getHWSingleInfo("MulBusinfo", "audiocard")});//总线地址：
+            firstModel.append({"title": qsTr("Audio Driver:"), "result": systemdispatcher.getHWSingleInfo("MulDrive", "audiocard")});//声卡驱动：
 
             splitbar1.visible = true;
             logo1.visible = true;

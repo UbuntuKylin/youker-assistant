@@ -38,7 +38,7 @@ Rectangle {
         listModel.append({"name": qsTr("NIC"), "flag": "networkcard", "iconName": "network"});//网卡
         listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "monitor"});//显示器
         listModel.append({"name": qsTr("Audio"), "flag": "audiocard", "iconName": "audio"});//音频
-        var cdromNumber = systemdispatcher.getSingleInfo("Dvdnum", "cdrom");//光驱个数
+        var cdromNumber = systemdispatcher.getHWSingleInfo("Dvdnum", "cdrom");//光驱个数
         if(cdromNumber > 0) {//存在光驱时才会增加该页面的显示
             listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "cdrom"});//光驱
         }

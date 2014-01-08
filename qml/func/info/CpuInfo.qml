@@ -26,7 +26,7 @@ Rectangle {
 
     Component.onCompleted: {
         systemdispatcher.get_cpu_info_qt();//获取详细信息
-        var cpuName = systemdispatcher.getSingleInfo("CpuVendor", "cpu");
+        var cpuName = systemdispatcher.getHWSingleInfo("CpuVendor", "cpu");
         logo.source = InfoGroup.judgeName(cpuName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cpuName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 //        var pat1 = new RegExp('Intel');
 //        var pat2 = new RegExp('AMD');
@@ -50,16 +50,16 @@ Rectangle {
 //            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
 //        }
 
-        cpuversionText.text = systemdispatcher.getSingleInfo("CpuVersion", "cpu");
+        cpuversionText.text = systemdispatcher.getHWSingleInfo("CpuVersion", "cpu");
         cpuverdorText.text = cpuName;
-        cpuserialText.text = systemdispatcher.getSingleInfo("CpuSerial", "cpu");
-        slotText.text = systemdispatcher.getSingleInfo("CpuSlot", "cpu");
-        maxText.text = systemdispatcher.getSingleInfo("CpuCapacity", "cpu");// + "MHz";
-        curText.text = systemdispatcher.getSingleInfo("CpuSize", "cpu");// + "MHz";
-        frontText.text = systemdispatcher.getSingleInfo("CpuClock", "cpu");// + "MHz";
-        coresText.text = systemdispatcher.getSingleInfo("cpu_cores", "cpu") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings", "cpu") + qsTr("thread");//核//线程
-        cache1.text = systemdispatcher.getSingleInfo("clflush_size", "cpu") + "KB";
-        cache2.text = systemdispatcher.getSingleInfo("cache_size", "cpu") + "KB";
+        cpuserialText.text = systemdispatcher.getHWSingleInfo("CpuSerial", "cpu");
+        slotText.text = systemdispatcher.getHWSingleInfo("CpuSlot", "cpu");
+        maxText.text = systemdispatcher.getHWSingleInfo("CpuCapacity", "cpu");// + "MHz";
+        curText.text = systemdispatcher.getHWSingleInfo("CpuSize", "cpu");// + "MHz";
+        frontText.text = systemdispatcher.getHWSingleInfo("CpuClock", "cpu");// + "MHz";
+        coresText.text = systemdispatcher.getHWSingleInfo("cpu_cores", "cpu") + qsTr("cores") + "/" + systemdispatcher.getHWSingleInfo("cpu_siblings", "cpu") + qsTr("thread");//核//线程
+        cache1.text = systemdispatcher.getHWSingleInfo("clflush_size", "cpu") + "KB";
+        cache2.text = systemdispatcher.getHWSingleInfo("cache_size", "cpu") + "KB";
     }
     Column {
         anchors {
@@ -97,7 +97,7 @@ Rectangle {
                 }
                 Text {
                     id: cpuversionText
-                    text: ""//systemdispatcher.getSingleInfo("CpuVersion")
+                    text: ""//systemdispatcher.getHWSingleInfo("CpuVersion")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -112,7 +112,7 @@ Rectangle {
                 }
                 Text {
                     id: cpuverdorText
-                    text: ""//systemdispatcher.getSingleInfo("CpuVendor")
+                    text: ""//systemdispatcher.getHWSingleInfo("CpuVendor")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -127,7 +127,7 @@ Rectangle {
                 }
                 Text {
                     id: cpuserialText
-                    text: ""//systemdispatcher.getSingleInfo("CpuSerial")
+                    text: ""//systemdispatcher.getHWSingleInfo("CpuSerial")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -142,7 +142,7 @@ Rectangle {
                 }
                 Text {
                     id: slotText
-                    text: ""//systemdispatcher.getSingleInfo("CpuSlot")
+                    text: ""//systemdispatcher.getHWSingleInfo("CpuSlot")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -157,7 +157,7 @@ Rectangle {
                 }
                 Text {
                     id: maxText
-                    text: ""//systemdispatcher.getSingleInfo("CpuCapacity") + "MHz"
+                    text: ""//systemdispatcher.getHWSingleInfo("CpuCapacity") + "MHz"
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -172,7 +172,7 @@ Rectangle {
                 }
                 Text {
                     id: curText
-                    text: ""//systemdispatcher.getSingleInfo("CpuSize") + "MHz"
+                    text: ""//systemdispatcher.getHWSingleInfo("CpuSize") + "MHz"
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -187,7 +187,7 @@ Rectangle {
                 }
                 Text {
                     id: frontText
-                    text: ""//systemdispatcher.getSingleInfo("CpuClock") + "MHz"
+                    text: ""//systemdispatcher.getHWSingleInfo("CpuClock") + "MHz"
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -202,7 +202,7 @@ Rectangle {
                 }
                 Text {
                     id: coresText
-                    text: ""//systemdispatcher.getSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getSingleInfo("cpu_siblings") + qsTr("thread")//核//线程
+                    text: ""//systemdispatcher.getHWSingleInfo("cpu_cores") + qsTr("cores") + "/" + systemdispatcher.getHWSingleInfo("cpu_siblings") + qsTr("thread")//核//线程
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -217,7 +217,7 @@ Rectangle {
                 }
                 Text {
                     id: cache1
-                    text: ""//systemdispatcher.getSingleInfo("clflush_size") + "KB"
+                    text: ""//systemdispatcher.getHWSingleInfo("clflush_size") + "KB"
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -232,7 +232,7 @@ Rectangle {
                 }
                 Text {
                     id: cache2
-                    text: ""//systemdispatcher.getSingleInfo("cache_size") + "KB"
+                    text: ""//systemdispatcher.getHWSingleInfo("cache_size") + "KB"
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
