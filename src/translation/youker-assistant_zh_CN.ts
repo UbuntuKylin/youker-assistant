@@ -56,49 +56,40 @@
 <context>
     <name>AuthDialog</name>
     <message>
-        <location filename="../authdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>对话框</translation>
+        <translation type="obsolete">对话框</translation>
     </message>
     <message>
-        <location filename="../authdialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="obsolete">取消</translation>
     </message>
     <message>
-        <location filename="../authdialog.ui" line="47"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../authdialog.ui" line="115"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User password&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用户密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用户密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../authdialog.ui" line="131"/>
         <source>Enter the current user password</source>
-        <translation>输入当前用户密码</translation>
+        <translation type="obsolete">输入当前用户密码</translation>
     </message>
     <message>
-        <location filename="../authdialog.cpp" line="96"/>
         <source>Starting service, please wait!</source>
-        <translation>正在启动服务，请稍等！</translation>
+        <translation type="obsolete">正在启动服务，请稍等！</translation>
     </message>
     <message>
-        <location filename="../authdialog.cpp" line="106"/>
         <source>Tips: Password error, please re-enter the password to ensure the normal use of youker assistant!</source>
-        <translation>提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用！</translation>
+        <translation type="obsolete">提示：密码错误，请重新输入当前用户登录密码，保证优客助手的正常使用！</translation>
     </message>
     <message>
-        <location filename="../authdialog_event.cpp" line="57"/>
         <source>Warning:</source>
-        <translation>警告：</translation>
+        <translation type="obsolete">警告：</translation>
     </message>
     <message>
-        <location filename="../authdialog_event.cpp" line="58"/>
         <source>Background service does not start, some features will not work properly!</source>
-        <translation>后台服务没有启动，相关功能将无法正常使用！</translation>
+        <translation type="obsolete">后台服务没有启动，相关功能将无法正常使用！</translation>
     </message>
 </context>
 <context>
@@ -2156,7 +2147,7 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="67"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="872"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="925"/>
         <source>Software operation schedule</source>
         <translation>软件介绍</translation>
     </message>
@@ -2210,10 +2201,8 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="217"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="594"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="602"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="618"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="622"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="587"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="595"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
@@ -2233,7 +2222,7 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="231"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="827"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="880"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
@@ -2259,22 +2248,20 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="554"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="834"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="841"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="848"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="855"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="887"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="894"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="901"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="908"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="594"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="587"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
         <translation>对不起，您没有选择需要扫描的内容，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="602"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="618"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="622"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="595"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的内容，请确认！</translation>
     </message>
@@ -2389,12 +2376,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="135"/>
+        <location filename="../main.cpp" line="133"/>
         <source>starting....</source>
         <translation>优客助手正在启动中....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="138"/>
+        <location filename="../main.cpp" line="136"/>
         <source>loading module data....</source>
         <translation>正在加载模块数据....</translation>
     </message>
@@ -2832,21 +2819,16 @@
 <context>
     <name>SudoDispatcher</name>
     <message>
-        <location filename="../sudodispatcher.cpp" line="204"/>
         <source>Tip: please input password of current user to start server, make it work normally.</source>
-        <translation>提示：请输入当前用户登录密码启动服务，保证软件推荐功能的正常使用。</translation>
+        <translation type="obsolete">提示：请输入当前用户登录密码启动服务，保证软件推荐功能的正常使用。</translation>
     </message>
     <message>
-        <location filename="../sudodispatcher.cpp" line="291"/>
-        <location filename="../sudodispatcher.cpp" line="311"/>
         <source>Warning:</source>
-        <translation>警告：</translation>
+        <translation type="obsolete">警告：</translation>
     </message>
     <message>
-        <location filename="../sudodispatcher.cpp" line="292"/>
-        <location filename="../sudodispatcher.cpp" line="312"/>
         <source>No find the softlist file!</source>
-        <translation>没有找到软件列表文件！</translation>
+        <translation type="obsolete">没有找到软件列表文件！</translation>
     </message>
 </context>
 <context>
@@ -3053,24 +3035,36 @@
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="435"/>
+        <location filename="../systemdispatcher.cpp" line="448"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="435"/>
+        <location filename="../systemdispatcher.cpp" line="448"/>
         <source>Image Files (*.png)</source>
         <translation>图像文件  (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="440"/>
+        <location filename="../systemdispatcher.cpp" line="453"/>
         <source>Select music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="440"/>
+        <location filename="../systemdispatcher.cpp" line="453"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
+    </message>
+    <message>
+        <location filename="../systemdispatcher.cpp" line="950"/>
+        <location filename="../systemdispatcher.cpp" line="970"/>
+        <source>Warning:</source>
+        <translation>警告：</translation>
+    </message>
+    <message>
+        <location filename="../systemdispatcher.cpp" line="951"/>
+        <location filename="../systemdispatcher.cpp" line="971"/>
+        <source>No find the softlist file!</source>
+        <translation>没有找到软件列表文件！</translation>
     </message>
 </context>
 <context>
