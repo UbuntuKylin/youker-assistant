@@ -38,6 +38,9 @@ Rectangle {
     property string peripheral: qsTr("System peripheral:")//系统外围
     property string usedriver: qsTr("Driver in use:")//使用的驱动
     property string existdriver: qsTr("existing drivers:")//可选的驱动
+    property string ide : qsTr("IDE interface:")//IDE接口
+    property string sp : qsTr("SP controller:")//信号处理控制器
+    property string net : qsTr("Network controller:")//网络控制器
 
     function transTitle(str) {
         //去掉前后空格
@@ -62,6 +65,9 @@ Rectangle {
         var pat11 = new RegExp('System peripheral');
         var pat12 = new RegExp('driver in use');
         var pat13 = new RegExp('existing drivers');
+        var pat14 = new RegExp('IDE interface');
+        var pat15 = new RegExp('Signal processing controller');
+        var pat16 = new RegExp('Network controlle');
         if(pat1.test(str)) {
             return home.hbridge.toString();
         }
@@ -100,6 +106,15 @@ Rectangle {
         }
         else if(pat13.test(str)) {
             return home.existdriver.toString();
+        }
+        else if(pat14.test(str)) {
+            return home.ide.toString();
+        }
+        else if(pat15.test(str)) {
+            return home.sp.toString();
+        }
+        else if(pat16.test(str)) {
+            return home.net.toString();
         }
         return str;
     }
@@ -158,6 +173,7 @@ Rectangle {
                 Row {
                     spacing: 10
                     Common.Label {
+                        id:device
                         text: deviceName
                         font.pixelSize: 14
                         color: "#7a7a7a"
@@ -212,7 +228,7 @@ Rectangle {
             }
             Common.Separator {
                 width: parent.width - 20
-                visible: (deviceName == "") ? false : true
+                visible: (device.text == "") ? false : true
             }
         }
     }

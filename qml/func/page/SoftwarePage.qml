@@ -217,7 +217,7 @@ Item {
     Rectangle {
         id: software
 //        property bool checkFlag: false
-        property string useinfo: qsTr("If the software is installed successfully,  you can enter the keywords from the Chinese/English name of the software in Dash to searching and starting the software.")//如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。
+        property string useinfo: qsTr("If the software is installed successfully, you can search the Chinese or English keywords in Dash and start it .")//如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。
         property string software_name: ""
         property string installed_status: "n"
         property string tm_status: "n"

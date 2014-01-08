@@ -232,7 +232,7 @@ Item {
                         if(root.null_flag == true) {
                            root.state = "LargestFileWorkEmpty";
                             //友情提示：         扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else if(root.null_flag == false) {
                             systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
