@@ -50,7 +50,7 @@ Item {
                 root.null_flag = true;
                 internetBtnRow.state = "BrowserWorkEmpty";
                 //友情提示：      扫描内容为空，无需清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 root.null_flag = false;
@@ -76,7 +76,7 @@ Item {
                 root.null_flag3 = true;
                 chromiumBtnRow.state = "ChromiumWorkEmpty";
                 //友情提示：      扫描内容为空，无需清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 root.null_flag3 = false;
@@ -95,7 +95,7 @@ Item {
                 root.null_flag2 = true;
                 fileBtnRow.state = "SystemWorkEmpty";
                 //友情提示      扫描内容为空，无需清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else {
                 root.null_flag2 = false;
@@ -381,7 +381,7 @@ Item {
                         if(root.null_flag == true) {
                             internetBtnRow.state = "BrowserWorkEmpty";
                             //友情提示：      扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();
@@ -484,7 +484,7 @@ Item {
                         if(root.null_flag3 == true) {
                             internetBtnRow.state = "ChromiumWorkEmpty";
                             //友情提示：      扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();
@@ -587,7 +587,7 @@ Item {
                         if(root.null_flag2 == true) {
                             root.state = "SystemWorkEmpty";
                             //友情提示：      扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results is empty, no need to clean up!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();

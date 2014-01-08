@@ -304,8 +304,12 @@
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="123"/>
         <source>The scan results is empty, no need to clean up!</source>
+        <translation type="obsolete">扫描内容为空，无需清理！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="123"/>
+        <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
     <message>
@@ -599,8 +603,12 @@
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="94"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="152"/>
-        <source>The scan results is empty, no need to clean up!</source>
+        <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
+    </message>
+    <message>
+        <source>The scan results is empty, no need to clean up!</source>
+        <translation type="obsolete">扫描内容为空，无需清理！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="114"/>
@@ -1041,7 +1049,22 @@
         <translation>可选的驱动：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/DriveInfo.qml" line="229"/>
+        <location filename="../../qml/func/info/DriveInfo.qml" line="41"/>
+        <source>IDE interface:</source>
+        <translation>IDE 接口：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/DriveInfo.qml" line="42"/>
+        <source>SP controller:</source>
+        <translation>信号处理控制器：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/DriveInfo.qml" line="43"/>
+        <source>Network controller:</source>
+        <translation>网络控制器：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/DriveInfo.qml" line="245"/>
         <source>Drive Info</source>
         <translation>驱动信息</translation>
     </message>
@@ -1328,8 +1351,12 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="235"/>
-        <source>The scan results is empty, no need to clean up!</source>
+        <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
+    </message>
+    <message>
+        <source>The scan results is empty, no need to clean up!</source>
+        <translation type="obsolete">扫描内容为空，无需清理！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="244"/>
@@ -2192,8 +2219,12 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="217"/>
-        <source>The scan results is empty, no need to clean up!</source>
+        <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
+    </message>
+    <message>
+        <source>The scan results is empty, no need to clean up!</source>
+        <translation type="obsolete">扫描内容为空，无需清理！</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="225"/>
@@ -2596,8 +2627,12 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="220"/>
-        <source>If the software is installed successfully,  you can enter the keywords from the Chinese/English name of the software in Dash to searching and starting the software.</source>
+        <source>If the software is installed successfully, you can search the Chinese or English keywords in Dash and start it .</source>
         <translation>如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。</translation>
+    </message>
+    <message>
+        <source>If the software is installed successfully,  you can enter the keywords from the Chinese/English name of the software in Dash to searching and starting the software.</source>
+        <translation type="obsolete">如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="230"/>
@@ -3411,13 +3446,17 @@
         <translation>友情提示：</translation>
     </message>
     <message>
+        <source>The scan results is empty, no need to clean up!</source>
+        <translation type="obsolete">扫描内容为空，无需清理！</translation>
+    </message>
+    <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="53"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="79"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="98"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="384"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="487"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="590"/>
-        <source>The scan results is empty, no need to clean up!</source>
+        <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
     <message>
