@@ -24,8 +24,6 @@ import logging
 import tempfile
 import subprocess
 import re
-
-from subprocess import PIPE
 import dbus
 import dbus.service
 import dbus.mainloop.glib
@@ -41,10 +39,12 @@ from detailinfo.cpuinfo import DetailInfo
 from beautify.sound import Sound
 from beautify.others import Others
 from appcollections.monitorball.monitor_ball import MonitorBall
-
-import subprocess
+#from softwarecenter.apt_daemon import FetchProcess
+#from softwarecenter.apt_daemon import AptProcess
+from softwarecenter.apt_daemon import AptDaemon
 
 log = logging.getLogger('Daemon')
+
 
 INTERFACE = 'com.ubuntukylin.youker'
 UKPATH = '/'
@@ -61,6 +61,7 @@ class Daemon(PolicyKitService):
         self.daemonclean = cleaner.FunctionOfClean()
         self.daemononekey = cleaner.OneKeyClean()
         self.daemoncache = cleaner.CleanTheCache()
+        self.daemonApt = AptDaemon(self)
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
@@ -622,7 +623,142 @@ class Daemon(PolicyKitService):
     def clean_error_second_msg(self, para):
         self.clean_error_second(para)
 
+
+
+#-------------------------------------------
+    @dbus.service.signal(INTERFACE, signature='s')
+    def work_finish(self, msg):
+        pass
+
+    def start_to_emit_signal(self, msg):
+        self.work_finish(msg)
+
+    # a dbus method which means clean complete
+    @dbus.service.signal(INTERFACE, signature='s')
+    def sudo_finish_clean(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def status_remove_packages(self, type, msg):
+        pass
+
+    # a dbus method which means an error occurred
+    @dbus.service.signal(INTERFACE, signature='s')
+    def sudo_clean_error(self, msg):
+        pass
+
+    # the function of clean packages
+    ### input-['packagename', 'pack...]   output-''
+    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    #def clean_package_cruft(self, cruftlist):
+    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
+    def clean_package_cruft(self, cruftlist, flag, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.sudo_finish_clean_msg('')
+            return
+        try:
+            self.daemonclean.clean_the_package(cruftlist, self)
+        except Exception, e:
+            self.sudo_clean_error_msg(flag)
+        else:
+            self.sudo_finish_clean_msg(flag)
+
+    def sudo_finish_clean_msg(self, para):
+        self.sudo_finish_clean(para)
+
+    def sudo_clean_error_msg(self, para):
+        self.sudo_clean_error(para)
+
+    # -------------------------software-center-------------------------
+    # install package sa:software_fetch_signal() and software_apt_signal()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def install_pkg(self, pkgName):
+        self.daemonApt.install_pkg(pkgName)
+
+    # uninstall package sa:software_apt_signal()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def uninstall_pkg(self, pkgName):
+        self.daemonApt.uninstall_pkg(pkgName)
+
+    # update package sa:software_fetch_signal() and software_apt_signal()
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def update_pkg(self, pkgName):
+        self.daemonApt.update_pkg(pkgName)
+
+    # check packages status by pkgNameList sa:software_check_status_signal()
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    def check_pkgs_status(self, pkgNameList):
+        self.daemonApt.check_pkgs_status_rtn_list(pkgNameList)
+
+    # check one package status by pkgName
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
+    def check_pkg_status(self, pkgName):
+        return self.daemonApt.check_pkg_status(pkgName)
+
+    # apt-get update sa:software_fetch_signal()
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def apt_get_update(self):
+        self.daemonApt.apt_get_update()
+
+    # add ubuntukylin source in /etc/apt/sources.list
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    #def add_source_ubuntukylin(self):
+    #    self.daemonApt.add_source_ubuntukylin()
+
+    # remove ubuntukylin source in /etc/apt/sources.list
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    #def remove_source_ubuntukylin(self):
+    #    self.daemonApt.remove_source_ubuntukylin()
+
+    # package download status signal
+    '''parm mean
+        type:
+            start:start download
+            stop:all work is finish
+            done:all items download finished
+            fail:download failed
+            fetch:one item download finished
+            pulse:download status, this msg given a string like dict
+        msg:
+            a message of type, sometimes is None
+    '''
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def software_fetch_signal(self, type, msg):
+        pass
+
+    # package install/update/remove signal
+    '''parm mean
+        type:
+            start:start work
+            stop:work finish
+            error:got a error
+            pulse:work status, this msg given a string like dict
+        msg:
+            a message of type, sometimes is None
+    '''
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def software_apt_signal(self, type, msg):
+        pass
+
+    # get packages status signal
+    '''parm mean
+        dict{packageName, packageStatus}
+        packageStatus:
+            i:installed
+            u:installed and can update
+            n:notinstall
+    '''
+    @dbus.service.signal(INTERFACE, signature='as')
+    def software_check_status_signal(self, statusList):
+        pass
+
 if __name__ == '__main__':
+    os.environ["TERM"] = "xterm"
+    os.environ["PATH"] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin"
+    os.environ["DEBIAN_FRONTEND"] = "noninteractive"
+    if os.path.exists("/var/lib/apt/lists/lock"):
+        os.remove("/var/lib/apt/lists/lock")
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = GObject.MainLoop()
     Daemon(dbus.SystemBus(), mainloop)

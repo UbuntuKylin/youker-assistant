@@ -29,7 +29,7 @@ Item {
         x: (parent.width * 1.5)
         Connections
         {
-            target: sudodispatcher
+            target: systemdispatcher
             //得到数据，显示在进度条上
             onSendProgressToQML: {//onSendDynamicSoftwareProgressQML
                 if(type == "apt_start") {
@@ -368,7 +368,7 @@ Item {
 
         Connections
         {
-            target: sudodispatcher
+            target: systemdispatcher
             onFinishCleanDebError: {//清理出错时收到的信号
                 if (root.btnFlag == "package_work") {
                     if (msg == "package") {
@@ -558,127 +558,180 @@ Item {
 
                     root.packageEmpty = false;
                     root.kernelEmpty = false;
+
+                    if (root.btnFlag == "package_scan") {//扫描
+                        //扫描过程中禁用按钮
+                        actionBtn.enabled = false;
+                        root.flag = false;
+//                            root.getData();
+                        if(root.package_maincheck && root.kernel_maincheck) {
+                            root.mode = 0;
+                            root.packageNum = 0;
+                            root.kernelNum = 0;
+                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+                        }
+                        else {
+                            if(root.package_maincheck) {
+                                root.mode = 1;
+                                root.packageNum = 0;
+                                sessiondispatcher.package_scan_function_qt("unneed");
+                            }
+                            else if(root.kernel_maincheck) {
+                                root.mode = 2;
+                                root.kernelNum = 0;
+                                sessiondispatcher.package_scan_function_qt("oldkernel");
+                            }
+                            else{
+                                actionBtn.enabled = true;
+                                //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                            }
+                        }
+                    }
+                    else if (root.btnFlag == "package_work") {//清理
+                        if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
+                            if(!root.package_maincheck && !root.kernel_maincheck) {
+                                //友情提示：        对不起，您没有选择需要清理的内容，请确认！
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                            }
+                            else {
+//                                    home.state = "MaskLayerState";
+                                //开始清理时，禁用按钮，等到清理完成后解禁
+                                actionBtn.enabled = false;
+                                console.log(systemdispatcher.get_package_args());
+                                systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
+                            }
+                        }
+                    }
+
+
+
+
+
+
+
+
                     //                console.log("-----------");
                     //                console.log(root.package_maincheck);
                     //                console.log(root.kernel_maincheck);
-                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {//sessiondbus服务已经成功启动了
-                        if(!sudodispatcher.getUKSignalFlag()) {
-                            sudodispatcher.setUKSignalFlag(true);
-                            sudodispatcher.bind_signals_after_dbus_start();
-                        }
-                        if (root.btnFlag == "package_scan") {//扫描
-                            //扫描过程中禁用按钮
-                            actionBtn.enabled = false;
-                            root.flag = false;
-//                            root.getData();
-                            if(root.package_maincheck && root.kernel_maincheck) {
-                                root.mode = 0;
-                                root.packageNum = 0;
-                                root.kernelNum = 0;
-                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
-                            }
-                            else {
-                                if(root.package_maincheck) {
-                                    root.mode = 1;
-                                    root.packageNum = 0;
-                                    sessiondispatcher.package_scan_function_qt("unneed");
-                                }
-                                else if(root.kernel_maincheck) {
-                                    root.mode = 2;
-                                    root.kernelNum = 0;
-                                    sessiondispatcher.package_scan_function_qt("oldkernel");
-                                }
-                                else{
-                                    actionBtn.enabled = true;
-                                    //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
-                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                                }
-                            }
-                        }
-                        else if (root.btnFlag == "package_work") {//清理
-                            if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
-                                if(!root.package_maincheck && !root.kernel_maincheck) {
-                                    //友情提示：        对不起，您没有选择需要清理的内容，请确认！
-                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                                }
-                                else {
-//                                    home.state = "MaskLayerState";
-                                    //开始清理时，禁用按钮，等到清理完成后解禁
-                                    actionBtn.enabled = false;
-                                    console.log(systemdispatcher.get_package_args());
-                                    sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
-                                }
-                            }
-                        }
-                    }
-                    else {//sessiondbus服务还没有启动
-                        if(!root.package_maincheck && !root.kernel_maincheck) {
-                            if (root.btnFlag == "package_scan") {//扫描
-                                //友情提示：        对不起，您没有选择需要清理的内容，请确认！
-                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                            }
-                            else if (root.btnFlag == "package_work") {//清理
-                                //友情提示：        对不起，您没有选择需要清理的内容，请确认！
-                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-                            }
-                        }
-                        else {
-                            sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
-                            if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
-                                if(!sudodispatcher.getUKSignalFlag()) {
-                                    if(!sudodispatcher.getUKSignalFlag()) {
-                                        sudodispatcher.setUKSignalFlag(true);
-                                        sudodispatcher.bind_signals_after_dbus_start();
-                                    }
-                                    if (root.btnFlag == "package_scan") {//扫描
-                                        //扫描过程中禁用按钮
-                                        actionBtn.enabled = false;
-                                        root.flag = false;
-    //                                    root.getData();
+//                    if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {//sessiondbus服务已经成功启动了
+//                        if(!sudodispatcher.getUKSignalFlag()) {
+//                            sudodispatcher.setUKSignalFlag(true);
+//                            sudodispatcher.bind_signals_after_dbus_start();
+//                        }
+//                        if (root.btnFlag == "package_scan") {//扫描
+//                            //扫描过程中禁用按钮
+//                            actionBtn.enabled = false;
+//                            root.flag = false;
+////                            root.getData();
+//                            if(root.package_maincheck && root.kernel_maincheck) {
+//                                root.mode = 0;
+//                                root.packageNum = 0;
+//                                root.kernelNum = 0;
+//                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+//                            }
+//                            else {
+//                                if(root.package_maincheck) {
+//                                    root.mode = 1;
+//                                    root.packageNum = 0;
+//                                    sessiondispatcher.package_scan_function_qt("unneed");
+//                                }
+//                                else if(root.kernel_maincheck) {
+//                                    root.mode = 2;
+//                                    root.kernelNum = 0;
+//                                    sessiondispatcher.package_scan_function_qt("oldkernel");
+//                                }
+//                                else{
+//                                    actionBtn.enabled = true;
+//                                    //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
+//                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                                }
+//                            }
+//                        }
+//                        else if (root.btnFlag == "package_work") {//清理
+//                            if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
+//                                if(!root.package_maincheck && !root.kernel_maincheck) {
+//                                    //友情提示：        对不起，您没有选择需要清理的内容，请确认！
+//                                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                                }
+//                                else {
+////                                    home.state = "MaskLayerState";
+//                                    //开始清理时，禁用按钮，等到清理完成后解禁
+//                                    actionBtn.enabled = false;
+//                                    console.log(systemdispatcher.get_package_args());
+//                                    sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
+//                                }
+//                            }
+//                        }
+//                    }
+//                    else {//sessiondbus服务还没有启动
+//                        if(!root.package_maincheck && !root.kernel_maincheck) {
+//                            if (root.btnFlag == "package_scan") {//扫描
+//                                //友情提示：        对不起，您没有选择需要清理的内容，请确认！
+//                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                            }
+//                            else if (root.btnFlag == "package_work") {//清理
+//                                //友情提示：        对不起，您没有选择需要清理的内容，请确认！
+//                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                            }
+//                        }
+//                        else {
+//                            sudodispatcher.showPasswdDialog(mainwindow.pos.x, mainwindow.pos.y);
+//                            if(sudodispatcher.get_sudo_daemon_qt() == "SudoDaemon") {
+//                                if(!sudodispatcher.getUKSignalFlag()) {
+//                                    if(!sudodispatcher.getUKSignalFlag()) {
+//                                        sudodispatcher.setUKSignalFlag(true);
+//                                        sudodispatcher.bind_signals_after_dbus_start();
+//                                    }
+//                                    if (root.btnFlag == "package_scan") {//扫描
+//                                        //扫描过程中禁用按钮
+//                                        actionBtn.enabled = false;
+//                                        root.flag = false;
+//    //                                    root.getData();
 
-                                        if(root.package_maincheck && root.kernel_maincheck) {
-                                            root.mode = 0;
-                                            root.packageNum = 0;
-                                            root.kernelNum = 0;
-                                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
-                                        }
-                                        else {
-                                            if(root.package_maincheck) {
-                                                root.mode = 1;
-                                                root.packageNum = 0;
-                                                sessiondispatcher.package_scan_function_qt("unneed");
-                                            }
-                                            else if(root.kernel_maincheck) {
-                                                root.mode = 2;
-                                                root.kernelNum = 0;
-                                                sessiondispatcher.package_scan_function_qt("oldkernel");
-                                            }
-//                                            else{
-//                                                actionBtn.enabled = true;
-//                                                //友情提示：        对不起，您没有选择需要扫描的项，请确认！
-//                                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                                        if(root.package_maincheck && root.kernel_maincheck) {
+//                                            root.mode = 0;
+//                                            root.packageNum = 0;
+//                                            root.kernelNum = 0;
+//                                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+//                                        }
+//                                        else {
+//                                            if(root.package_maincheck) {
+//                                                root.mode = 1;
+//                                                root.packageNum = 0;
+//                                                sessiondispatcher.package_scan_function_qt("unneed");
 //                                            }
-                                        }
-                                    }
-                                    else if (root.btnFlag == "package_work") {//清理
-                                        if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
-//                                            if(!root.package_maincheck && !root.kernel_maincheck) {
-//                                                //友情提示：        对不起，您没有选择需要清理的项，请确认！
-//                                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                                            else if(root.kernel_maincheck) {
+//                                                root.mode = 2;
+//                                                root.kernelNum = 0;
+//                                                sessiondispatcher.package_scan_function_qt("oldkernel");
 //                                            }
-//                                            else {
-    //                                            home.state = "MaskLayerState";
-                                            //开始清理时，禁用按钮，等到清理完成后解禁
-                                            actionBtn.enabled = false;
-//                                            console.log(systemdispatcher.get_package_args());
-                                            sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
-//                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+////                                            else{
+////                                                actionBtn.enabled = true;
+////                                                //友情提示：        对不起，您没有选择需要扫描的项，请确认！
+////                                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+////                                            }
+//                                        }
+//                                    }
+//                                    else if (root.btnFlag == "package_work") {//清理
+//                                        if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
+////                                            if(!root.package_maincheck && !root.kernel_maincheck) {
+////                                                //友情提示：        对不起，您没有选择需要清理的项，请确认！
+////                                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+////                                            }
+////                                            else {
+//    //                                            home.state = "MaskLayerState";
+//                                            //开始清理时，禁用按钮，等到清理完成后解禁
+//                                            actionBtn.enabled = false;
+////                                            console.log(systemdispatcher.get_package_args());
+//                                            sudodispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
+////                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
                 }
             }
         }

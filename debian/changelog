@@ -8,8 +8,9 @@ youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
   * Use new translation content.
   * Display the preview picture when click the name on the BootAnimation page.
   * Rename dbus and add backends/youker-assistant-daemon/install.sh.
+  * Use policykit for all place that requires authentication(LP: #1261799).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 07 Jan 2014 15:57:12 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 08 Jan 2014 09:42:25 +0800
 
 youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
 

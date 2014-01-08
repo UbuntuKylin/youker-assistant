@@ -18,7 +18,7 @@
 #include "toolkits.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
-#include "sudodispatcher.h"
+//#include "sudodispatcher.h"
 #include "youker-application.h"
 #include <QDeclarativeEngine>
 #include <QDeclarativeView>
@@ -60,7 +60,7 @@ void registerTypes() {
     qmlRegisterType<Toolkits>("ToolkitsType", 0, 1, "Toolkits");
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
-    qmlRegisterType<SudoDispatcher>("SudoType", 0, 1, "SudoDispatcher");
+//    qmlRegisterType<SudoDispatcher>("SudoType", 0, 1, "SudoDispatcher");
     qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");
     qmlRegisterType<DeviceManager>("DeviceType", 0, 1, "DeviceManager");
     qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");

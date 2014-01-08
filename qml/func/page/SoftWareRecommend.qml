@@ -91,7 +91,7 @@ Item {
                 }
                 text: qsTr("Details")//详细
                 onClicked: {
-                    sudodispatcher.ready_show_app_page("eclipse");
+                    systemdispatcher.ready_show_app_page("eclipse");
                     pageStack.push(softwarepage);
                 }
             }
@@ -105,13 +105,13 @@ Item {
                 text: qsTr("Details")//详细
                 onClicked: {
                     if(screen.image_flag == "wps") {
-                        sudodispatcher.ready_show_app_page("wps");
+                        systemdispatcher.ready_show_app_page("wps");
                     }
                     else if(screen.image_flag == "qq") {
-                        sudodispatcher.ready_show_app_page("wineqq");
+                        systemdispatcher.ready_show_app_page("wineqq");
                     }
                     else if(screen.image_flag == "qt") {
-                        sudodispatcher.ready_show_app_page("qtcreator");
+                        systemdispatcher.ready_show_app_page("qtcreator");
                     }
                     pageStack.push(softwarepage);
                 }
@@ -199,7 +199,7 @@ Item {
         //收到软件列表信息后添加到QML界面上
         Connections
         {
-            target: sudodispatcher
+            target: systemdispatcher
             onSendAppListToQML: {
                 funcmodel.clear();
                 var num = 0;

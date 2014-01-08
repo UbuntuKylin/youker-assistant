@@ -8,8 +8,8 @@ echo "Copy systemdbus script to /usr/bin/"
 cp ./data/youkersession /usr/bin/
 echo "Copy sessiondbus script to /usr/bin/"
 
-cp ./data/youkersudo /usr/bin/
-echo "Copy sudodbus script to /usr/bin/"
+#cp ./data/youkersudo /usr/bin/
+#echo "Copy sudodbus script to /usr/bin/"
 
 cp ./dbus/com.ubuntukylin.youker.service /usr/share/dbus-1/system-services/ 
 echo "Copy .service file to /usr/share/dbus-1/system-services/"
