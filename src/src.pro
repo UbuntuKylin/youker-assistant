@@ -2,9 +2,6 @@ TEMPLATE = app
 TARGET = youker-assistant
 QT += core gui phonon declarative dbus
 
-#DEPENDPATH += $$PWD/
-#INCLUDEPATH += $$PWD/
-
 inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
 inst2.files += ../youker-assistant.desktop
@@ -26,8 +23,6 @@ HEADERS += youker-application.h \
     quibo.h \
     systemdispatcher.h \
     sessiondispatcher.h \
-#    sudodispatcher.h \
-#    authdialog.h \
     modaldialog.h \
     warningdialog.h \
     messagedialog.h \
@@ -60,8 +55,8 @@ HEADERS += youker-application.h \
     suspensionframe.h \
     alertdialog.h \
     toolkits.h \
-    skinswidget.h \
-    skingrid.h \
+#    skinswidget.h \
+#    skingrid.h \
     locationdialog.h \
     wizarddialog.h \
     changecitydialog.h \
@@ -77,9 +72,6 @@ SOURCES += main.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
-#    sudodispatcher.cpp \
-#    authdialog.cpp \
-#    authdialog_event.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
     messagedialog.cpp \
@@ -110,8 +102,8 @@ SOURCES += main.cpp \
     suspensionframe.cpp \
     alertdialog.cpp \
     toolkits.cpp \
-    skinswidget.cpp \
-    skingrid.cpp \
+#    skinswidget.cpp \
+#    skingrid.cpp \
     locationdialog.cpp \
     wizarddialog.cpp \
     changecitydialog.cpp \
@@ -126,7 +118,6 @@ RESOURCES += pixmap.qrc
 
 FORMS += \
     quibo.ui \
-#    authdialog.ui \
     modaldialog.ui \
     warningdialog.ui \
     messagedialog.ui \

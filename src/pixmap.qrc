@@ -21,14 +21,17 @@
         <file>image/blister-small.png</file>
         <file>image/ok-hover.png</file>
         <file>image/quit-hover.png</file>
-        <file>image/accelerate.png</file>
         <file>image/memory.png</file>
         <file>image/alert.png</file>
         <file>image/progress-bg.png</file>
-        <file>image/accelerate-hover.png</file>
-        <file>image/accelerate-press.png</file>
         <file>image/feature.png</file>
         <file>image/font-bg.png</file>
+        <file>image/upshiftEN.png</file>
+        <file>image/upshiftEN-hover.png</file>
+        <file>image/upshiftEN-press.png</file>
+        <file>image/upshiftZH.png</file>
+        <file>image/upshiftZH-hover.png</file>
+        <file>image/upshiftZH-press.png</file>
     </qresource>
     <qresource prefix="/skin">
         <file>image/7_bg.png</file>

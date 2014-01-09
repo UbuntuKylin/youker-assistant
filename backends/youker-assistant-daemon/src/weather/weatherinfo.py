@@ -78,25 +78,46 @@ class WeatherInfo(threading.Thread):
 
     def read_from_url(self, url):
         # returns weather info by json_string
-        request = urllib2.Request(url, headers={'User-Agent' : 'Magic Browser'})
-        f = urllib2.urlopen(request)
-        json_string = f.read()
-        f.close()
-        return json_string
+        #fp1 = open("/tmp/read.txt", "w")
+        #print >> fp1, "--------------"
+        try:
+            request = urllib2.Request(url, headers={'User-Agent' : 'Magic Browser'})
+            #print >> fp1, request
+            f = urllib2.urlopen(request)
+            #print >> fp1, "111"
+            json_string = f.read()
+            #print >> fp1, "222"
+            #print >> fp1, json_string
+
+            f.close()
+            return json_string
+        except Exception as e:
+           # print >> fp1, "hhahha"
+            #print >> fp1, e
+            return {}
+        #fp1.close()
 
     def get_pm(self, cityplace):
         try:
+            #fp = open("/tmp/pm25.txt", "w")
+            #print >> fp, "--------------"
             ob = Getpmdata()
             url = ob.get_url(cityplace)
             pmdata = ob.get_data(url)
+            #print >> fp, pmdata
             #return pmdata
             if pmdata.has_key('aqi') and pmdata.has_key('quality'):
                 self.pmData = pmdata['quality'] + ' ' +  str(pmdata['aqi'])
+                #print >> fp, self.pmData
             else:
+                #print >> fp, "11111"
                 self.pmData = "N/A"
             self.sessionDaemon.access_weather('pm25', 'kobe')
         except Exception as e:
+            #print >> fp, "2222"
+            #print >> fp, e
             self.pmData = "N/A"
+        #fp.close()
 
     #according to get_pm get pm25 data when it run over.
     def get_pm25_str(self):
@@ -114,18 +135,37 @@ class WeatherInfo(threading.Thread):
           weather_data: a dictionary of weather data that exists in Json feed.
         """
         if method == 0:
+            #fp = open("/tmp/weather.txt", "w")
+            #print >> fp, "--------------"
             url1 = WEATHER_URL1 % (self.location_id)
             url2 = WEATHER_URL2 % (self.location_id)
             json_string1 = self.read_from_url(url1)
+            #if(json_string1 == {}):
+                #print >> fp, "111error"
+            #else:
+                #print >> fp, "111"
+                #print >> fp, json_string1
             json_string2 = self.read_from_url(url2)
+            #if(json_string2 == {}):
+            #    print >> fp, "222error"
+            #else:
+            #    print >> fp, "222"
+            #    print >> fp, json_string2
             parsed_json1 = json.loads(json_string1)
+            #print >> fp, "333"
+            #print >> fp, parsed_json1
             parsed_json2 = json.loads(json_string2)
+            #print >> fp, "444"
+            #print >> fp, parsed_json2
             for key in ('city', 'temp', 'SD', 'WD', 'WS', 'time'):
                 self.weatherData[key] = parsed_json1['weatherinfo'][key]
             for key in ('weather', 'temp1', 'temp2', 'img1', 'img2', 'ptime'):
                 self.weatherData[key] = parsed_json2['weatherinfo'][key]
             self.sessionDaemon.access_weather('weather', 'kobe')
+            #fp.close()
         elif method == 1:
+            #fp1 = open("/tmp/forecast.txt", "w")
+            #print >> fp1, "--------------"
             url = WEATHER_URL % (self.location_id)
             json_string = self.read_from_url(url)
             parsed_json = json.loads(json_string)
@@ -141,6 +181,7 @@ class WeatherInfo(threading.Thread):
             for key in tp_forecast:
                 self.forecastData[key] = parsed_json['weatherinfo'][key]
             self.sessionDaemon.access_weather('forecast', 'kobe')
+            #fp1.close()
         else:
             print "Error,choose method for 0 or 1"
             exit(1)

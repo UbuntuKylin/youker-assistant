@@ -29,6 +29,7 @@ class SuspensionFrame : public QWidget
 public:
     explicit SuspensionFrame(QWidget *parent = 0);
     virtual QSize sizeHint()const;
+    QString get_locale_version();
     ~SuspensionFrame();
     
 private:
@@ -38,6 +39,7 @@ private:
     QImage wheel;
     QPixmap blister;
     int ratio_sus;
+    QString locale_Lan;
 signals:
     void accelerate_memory();
 protected:

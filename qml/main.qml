@@ -92,7 +92,7 @@ Rectangle {
             right: parent.right
             rightMargin: 35
         }
-        source: (sessiondispatcher.get_locale_version()=="zh_CN") ? "./img/logo/zh_CN/logo.png" : "./img/logo/en/logo.png"
+        source: (sessiondispatcher.get_locale_version() == "zh_CN") ? "./img/zh_CN/logo.png" : "./img/en/logo.png"
         MouseArea {
             anchors.fill: logo
             property variant clickPos: "1,1"

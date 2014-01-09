@@ -30,9 +30,18 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 80);
     ratio_sus = 0;
-    ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/accelerate.png);color: white; font-size: 12px}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/accelerate-hover.png);}"
-                "QPushButton:pressed{border-image:url(:/pixmap/image/accelerate-press.png);}");
+
+    locale_Lan = this->get_locale_version();
+    if(locale_Lan == "zh_CN") {
+        ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/upshiftZH.png);color: white; font-size: 12px}"
+                    "QPushButton:hover{border-image:url(:/pixmap/image/upshiftZH-hover.png);}"
+                    "QPushButton:pressed{border-image:url(:/pixmap/image/upshiftZH-press.png);}");
+    }
+    else {
+        ui->fastBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/upshiftEN.png);color: white; font-size: 12px}"
+                    "QPushButton:hover{border-image:url(:/pixmap/image/upshiftEN-hover.png);}"
+                    "QPushButton:pressed{border-image:url(:/pixmap/image/upshiftEN-press.png);}");
+    }
 
     ui->descBtn->setStyleSheet("QPushButton {border:0px;color:#1790c9}");
     ui->descBtn->setText(tr("Details"));//详细
@@ -43,6 +52,11 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
 
 SuspensionFrame::~SuspensionFrame() {
     delete ui;
+}
+
+QString SuspensionFrame::get_locale_version() {
+    QString locale = QLocale::system().name();
+    return locale;
 }
 
 void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio) {
