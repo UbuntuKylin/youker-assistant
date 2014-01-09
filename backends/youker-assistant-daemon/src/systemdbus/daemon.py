@@ -245,7 +245,6 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def cleanup_memory(self):
         self.ballconf.cleanup_memory()
-
     # -------------------------monitorball end-------------------------
 
     # a dbus method which means clean complete by main one key 
@@ -448,7 +447,8 @@ class Daemon(PolicyKitService):
     def onekey_clean_crufts_function(self, mode_list, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
-            self.clean_complete_msg('')
+            #self.clean_complete_msg('')
+            self.revoke_clean_onekey('')
             return
         daemononekey = cleaner.OneKeyClean()
         try:
@@ -457,6 +457,7 @@ class Daemon(PolicyKitService):
             self.clean_error_msg('onekey')
         else:
             self.clean_complete_msg('onekey')
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     def clean_history_records(self, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
@@ -623,7 +624,8 @@ class Daemon(PolicyKitService):
     def clean_error_second_msg(self, para):
         self.clean_error_second(para)
 
-
+    def revoke_clean_onekey(self, para):
+        self.clean_complete_onekey(para)
 
 #-------------------------------------------
     @dbus.service.signal(INTERFACE, signature='s')

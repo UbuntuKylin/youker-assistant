@@ -221,16 +221,27 @@ Item {
         property string software_name: ""
         property string installed_status: "n"
         property string tm_status: "n"
+        property string path: "../../img/en/"
 //        x: (parent.width * 1.5)
         width: parent.width
         height: parent.height
+
+        Component.onCompleted: {
+            if(sessiondispatcher.get_locale_version() == "zh_CN") {
+                software.path = "../../img/zh_CN/";
+            }
+            else {
+                software.path = "../../img/en/";
+            }
+        }
+
         function reset_text(showtext) {
             if(showtext == "i") {
-                statusImage.source = "../../img/zh_CN/installed.png"
+                statusImage.source = software.path + "installed.png"
                 return qsTr("Uninstall");//立即卸载
             }
             else if(showtext == "n") {
-                statusImage.source = "../../img/zh_CN/noinstalled.png"
+                statusImage.source = software.path + "noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Access web");//进入网页
                 }
@@ -239,7 +250,7 @@ Item {
                 }
             }
             else if(showtext == "u") {
-                statusImage.source = "../../img/zh_CN/installed.png"
+                statusImage.source = software.path + "installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -248,7 +259,7 @@ Item {
                 }
             }
             else {
-                statusImage.source = "../../img/zh_CN/noinstalled.png"
+                statusImage.source = software.path + "noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -259,11 +270,11 @@ Item {
         }
         function show_text(showtext) {
             if(showtext == "i") {
-                statusImage.source = "../../img/zh_CN/installed.png"
+                statusImage.source = software.path + "installed.png"
                 return qsTr("Uninstall");//立即卸载
             }
             else if(showtext == "n") {
-                statusImage.source = "../../img/zh_CN/noinstalled.png"
+                statusImage.source = software.path + "noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -272,7 +283,7 @@ Item {
                 }
             }
             else if(showtext == "u") {
-                statusImage.source = "../../img/zh_CN/installed.png"
+                statusImage.source = software.path + "installed.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -281,7 +292,7 @@ Item {
                 }
             }
             else {
-                statusImage.source = "../../img/zh_CN/noinstalled.png"
+                statusImage.source = software.path + "noinstalled.png"
                 if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
                     return qsTr("Download");//下载地址
                 }
@@ -323,7 +334,7 @@ Item {
                         software.installed_status = software.tm_status;
                         if(software.installed_status == "i") {
                             actionBtn.text = qsTr("Uninstall");//立即卸载
-                            statusImage.source = "../../img/zh_CN/installed.png"
+                            statusImage.source = software.path + "installed.png"
                         }
                         else if(software.installed_status == "n") {
                             if(software.software_name == "wine-qq2012-longeneteam" || software.software_name == "wine-thunder") {
@@ -332,11 +343,11 @@ Item {
                             else {
                                 actionBtn.text = qsTr("Install");//立即安装
                             }
-                            statusImage.source = "../../img/zh_CN/noinstalled.png"
+                            statusImage.source = software.path + "noinstalled.png"
                         }
                         else if(software.installed_status == "u") {
                             actionBtn.text = qsTr("Upgrade");//立即升级
-                            statusImage.source = "../../img/icons/installed.png"
+                            statusImage.source = software.path + "installed.png"
                         }
                         root.state = "SofeWareState";
                         toolkits.alertMSG(qsTr("Operation completed!"), mainwindow.pos.x, mainwindow.pos.y);//软件操作完成！
@@ -487,7 +498,7 @@ Item {
             }
             Image {
                 id: statusImage
-                source: "../../img/zh_CN/noinstalled.png"
+                source: ""//software.path + "noinstalled.png"
                 anchors{
                     right:parent.right
                     top: parent.top

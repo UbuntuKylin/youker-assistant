@@ -54,12 +54,13 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     //初始化QSetting配置文件
     initConfigFile();
 
-    skin_widget = new SkinsWidget(mSettings);
-    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
+//    skin_widget = new SkinsWidget(mSettings);
+//    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
     QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(handler_access_forecast_weather(QString, QString)));
+    QObject::connect(sessioniface,SIGNAL(total_data_transmit(QString, QString)),this,SLOT(handler_total_data_transmit(QString,QString)));
 
     //Apt and Soft center cache
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_cache_data_to_model(QString,QString,QString,QString)));
@@ -142,6 +143,10 @@ void SessionDispatcher::handler_scan_complete(QString msg) {
 
 void SessionDispatcher::handler_scan_process(QString msg) {
     emit isScanning(msg);
+}
+
+void SessionDispatcher::handler_total_data_transmit(QString flag, QString msg) {
+    emit tellScanResultToQML(flag, msg);
 }
 
 QString SessionDispatcher::get_locale_version() {
@@ -737,9 +742,9 @@ QString SessionDispatcher::setSkin() {
     return skinName;
 }
 
-void SessionDispatcher::showSkinWidget() {
-    skin_widget->show();
-}
+//void SessionDispatcher::showSkinWidget() {
+//    skin_widget->show();
+//}
 
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
@@ -915,7 +920,7 @@ void SessionDispatcher::initConfigFile() {
     mSettings->beginGroup("skin");
     QString backGround = mSettings->value("background").toString();
     //backGround为空时，赋默认值为：0_bg
-    if(backGround.isEmpty()) {
+    if(backGround.isEmpty() || backGround != "0_bg") {
         backGround = QString("0_bg");
         mSettings->setValue("background", backGround);
     }

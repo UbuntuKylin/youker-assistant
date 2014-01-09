@@ -30,8 +30,14 @@ Item {
     property string recommendimage_text: qsTr("WPS For Ubuntu Kylin,  the best office software in the Linux system.")//WPS For Ubuntu Kylin，Linux 系统上最好用的办公软件。
     property string status_value: "n"
     property string status_value2: "n"
-
+    property string path: "../../img/en/"
     Component.onCompleted: {
+        if(sessiondispatcher.get_locale_version() == "zh_CN") {
+            screen.path = "../../img/zh_CN/";
+        }
+        else {
+            screen.path = "../../img/en/";
+        }
     }
 
     //背景
@@ -55,7 +61,7 @@ Item {
         }
         Image {
             id: statusImage
-            source: "../../img/zh_CN/recommend.png"
+            source: screen.path + "recommend.png"
             anchors{
                 right:parent.right
                 top: parent.top

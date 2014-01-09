@@ -23,6 +23,12 @@ Rectangle {
     property int num: 3//子checkbox的个数
     property int check_num: num
     property string flag: "onekeyscan" //onekeyscan:scan      onekey:clean
+    property string garbage
+    property string trace
+    property string cookies
+    property bool garbageFlag: false
+    property bool traceFlag: false
+    property bool cookiesFlag: false
 
     Connections
     {
@@ -64,6 +70,18 @@ Rectangle {
                 showText.text = "";
             }
         }
+
+        onTellScanResultToQML: {
+            if(flag == "h") {
+                leftbar.trace = msg;
+            }
+            else if(flag == "k") {
+                leftbar.cookies = msg;
+            }
+            else if(flag == "c") {
+                leftbar.garbage = msg;
+            }
+        }
     }
 
     Connections
@@ -86,6 +104,27 @@ Rectangle {
                 firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "o") {
+                //清理完毕后显示清理总数
+                if(leftbar.cookiesFlag) {
+                    cookiedes.visible = true;
+                    cookiedes.text = qsTr("(totally cleared") + leftbar.cookies + qsTr("Cookies)");//（共清理掉    条Cookies）
+                }
+                if(leftbar.garbageFlag) {
+                    cachedes.visible = true;
+                    cachedes.text = qsTr("(totally cleared") + leftbar.garbage + qsTr("garbage)");//（共清理掉      垃圾）
+                }
+                if(leftbar.traceFlag) {
+                    historydes.visible = true;
+                    historydes.text = qsTr("(totally cleared") + leftbar.trace + qsTr("historical records)");//（共清理掉     条历史记录）
+                }
+                //显示清理总数后把与之相关的一些标记和变量恢复默认值
+                leftbar.cookiesFlag = false;
+                leftbar.garbageFlag = false;
+                leftbar.traceFlag = false;
+                leftbar.cookies = "";
+                leftbar.garbage = "";
+                leftbar.trace = "";
+
                 showText.text = "";
                 toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
                 leftbar.flag = "onekeyscan";
@@ -115,20 +154,20 @@ Rectangle {
                 }
             }
         }
-        onFinishCleanDataMain: {//收到清理的内容
-            if (type == "c") {
-                cachedes.visible = true;
-                cachedes.text = qsTr("(totally cleared") + msg + qsTr("garbage)");//（共清理掉      垃圾）
-            }
-            else if (type == "h") {
-                historydes.visible = true;
-                historydes.text = qsTr("(totally cleared") + msg + qsTr("historical records)");//（共清理掉     条历史记录）
-            }
-            else if (type == "k") {
-                cookiedes.visible = true;
-                cookiedes.text = qsTr("(totally cleared") + msg + qsTr("Cookies)");//（共清理掉    条Cookies）
-            }
-        }
+//        onFinishCleanDataMain: {//收到清理的内容
+//            if (type == "c") {
+//                cachedes.visible = true;
+//                cachedes.text = qsTr("(totally cleared") + msg + qsTr("garbage)");//（共清理掉      垃圾）
+//            }
+//            else if (type == "h") {
+//                historydes.visible = true;
+//                historydes.text = qsTr("(totally cleared") + msg + qsTr("historical records)");//（共清理掉     条历史记录）
+//            }
+//            else if (type == "k") {
+//                cookiedes.visible = true;
+//                cookiedes.text = qsTr("(totally cleared") + msg + qsTr("Cookies)");//（共清理掉    条Cookies）
+//            }
+//        }
         onQuickCleanProcess: {
             if(type == "firefoxhistory") {
                 if(status == "start") {
@@ -275,6 +314,16 @@ Rectangle {
                             sessiondispatcher.onekey_scan_function_qt(systemdispatcher.get_onekey_args());
                         }
                         else if (leftbar.flag == "onekey") {//一键清理
+                            if(garbageCheck.checked) {
+                                leftbar.garbageFlag = true;
+                            }
+                            if(historyCheck.checked) {
+                                leftbar.traceFlag = true;
+                            }
+                            if(cookiesCheck.checked) {
+                                leftbar.cookiesFlag = true;
+                            }
+
                             staticImage.visible = false;
                             dynamicImage.visible = true;
                             showLabel.visible = false;

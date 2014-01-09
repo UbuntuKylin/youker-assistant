@@ -27,12 +27,20 @@ Rectangle {
     property string selected_theme: ""
     property int themeIndex: 0//序号
     property string init_theme: ""
+    property string path: "../../img/en/title/"
 
     Component.onCompleted: {
+        if(sessiondispatcher.get_locale_version() == "zh_CN") {
+            widgetthemepage.path = "../../img/zh_CN/";
+        }
+        else {
+            widgetthemepage.path = "../../img/en/";
+        }
+
         statusImage.visible = false;
         var syslist = sessiondispatcher.get_themes_qt();
         widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
-        showText.text = qsTr("[ Current Theme is: ") + widgetthemepage.init_theme + " ]";//[ 当前主题是：
+//        showText.text = qsTr("[ Current Theme is: ") + widgetthemepage.init_theme + " ]";//[ 当前主题是：
         syslist.unshift(widgetthemepage.init_theme);
         themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
@@ -83,7 +91,7 @@ Rectangle {
                     top:parent.top
                     right:parent.right
                 }
-                source: "../../img/zh_CN/using.png"
+                source: widgetthemepage.path + "using.png"
                 opacity: griditem.GridView.isCurrentItem? 1:0
             }
 
@@ -108,7 +116,7 @@ Rectangle {
                     widgetthemepage.selected_theme = name;
                     sessiondispatcher.set_theme_qt(name);
                     statusImage.visible = true;
-                    showText.text = qsTr("[ Current Theme is: ") + name + " ]";//[ 当前主题是：
+//                    showText.text = qsTr("[ Current Theme is: ") + name + " ]";//[ 当前主题是：
                 }
             }
         }
@@ -131,12 +139,12 @@ Rectangle {
                 font.pixelSize: 14
                 color: "#383838"
             }
-            Text {
-                id: showText
-                text: ""
-                font.pixelSize: 14
-                color: "#318d11"
-            }
+//            Text {
+//                id: showText
+//                text: ""
+//                font.pixelSize: 14
+//                color: "#318d11"
+//            }
             //status picture
             Common.StatusImage {
                 id: statusImage
@@ -225,7 +233,7 @@ Rectangle {
             else {
                 sessiondispatcher.set_theme_qt(defaulttheme);
                 statusImage.visible = true;
-                showText.text = qsTr("[ Current Theme is: ") + defaulttheme + " ]";//[ 当前主题是：
+//                showText.text = qsTr("[ Current Theme is: ") + defaulttheme + " ]";//[ 当前主题是：
                 widgetthemepage.selected_theme = defaulttheme;
             }
         }

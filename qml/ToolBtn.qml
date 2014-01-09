@@ -25,11 +25,20 @@ Rectangle {
     property string iconName: "homepage.png"
     property string text: "homepage"
     property string showtext
+    property string path: "./img/en/title/"
+
+    Component.onCompleted: {
+        if(sessiondispatcher.get_locale_version() == "zh_CN") {
+            menulogo.path = "./img/zh_CN/title/";
+        }
+        else {
+            menulogo.path = "./img/en/title/";
+        }
+    }
 
     Image {
         id: seticon
-        //如果是中文：img/zh_CN/title/；如果是英文：img/zh_CN/en/
-        source: "./img/zh_CN/title/" + iconName
+        source: menulogo.path + iconName
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
@@ -46,67 +55,16 @@ Rectangle {
         anchors.fill: parent
         //鼠标放上时
         onEntered: {
-            if (text == "homepage") {
-                btnImg.source = "./img/zh_CN/title/home-active.png"
-            }
-            else if (text == "systemmessage") {
-                btnImg.source = "./img/zh_CN/title/sysinfo-active.png"
-            }
-            else if (text == "clearrubbish") {
-                btnImg.source = "./img/zh_CN/title/cleanup-active.png"
-            }
-            else if (text == "systemset") {
-                btnImg.source = "./img/zh_CN/title/feature-active.png"
-            }
-            else if (text == "functioncollection") {
-                btnImg.source = "./img/zh_CN/title/toolkits-active.png"
-            }
-            else {
-                btnImg.source = "./img/zh_CN/title/menu_hover.png"
-            }
+            btnImg.source = "./img/toolWidget/hover-enter.png";
         }
         //鼠标按下时
         onPressed: {
-            if (text == "homepage") {
-                btnImg.source = "./img/zh_CN/title/home-active.png"
-            }
-            else if (text == "systemmessage") {
-                btnImg.source = "./img/zh_CN/title/sysinfo-active.png"
-            }
-            else if (text == "clearrubbish") {
-                btnImg.source = "./img/zh_CN/title/cleanup-active.png"
-            }
-            else if (text == "systemset") {
-                btnImg.source = "./img/zh_CN/title/feature-active.png"
-            }
-            else if (text == "functioncollection") {
-                btnImg.source = "./img/zh_CN/title/toolkits-active.png"
-            }
-            else {
-                btnImg.source = "./img/zh_CN/title/menu_press.png"
-            }
+            btnImg.source = "./img/toolWidget/hover-press.png"
         }
         //要判断松开是鼠标位置
         //鼠标按下松开时
         onReleased: {
-            if (text == "homepage") {
-                btnImg.source = "./img/zh_CN/title/home.png"
-            }
-            else if (text == "systemmessage") {
-                btnImg.source = "./img/zh_CN/title/sysinfo.png"
-            }
-            else if (text == "clearrubbish") {
-                btnImg.source = "./img/zh_CN/title/cleanup.png"
-            }
-            else if (text == "systemset") {
-                btnImg.source = "./img/zh_CN/title/feature.png"
-            }
-            else if (text == "functioncollection") {
-                btnImg.source = "./img/zh_CN/title/toolkits.png"
-            }
-            else {
-                btnImg.source = "./img/zh_CN/title/menu_hover.png"
-            }
+            btnImg.source = "./img/toolWidget/hover-enter.png";
         }
         //鼠标按下松开再移开时
         onExited: btnImg.source = ""
