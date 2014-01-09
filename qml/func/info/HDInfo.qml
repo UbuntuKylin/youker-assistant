@@ -248,12 +248,6 @@ Rectangle {
                     }
                 }
 
-//                Rectangle {
-//                    id: splitbar1
-//                    width: 680 - 4 - 30*2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
                 Common.Separator {
                     id: splitbar1
                     width: 680 - 4 - 30*2
@@ -282,12 +276,6 @@ Rectangle {
                         }
                     }
                 }
-//                Rectangle {
-//                    id: splitbar2
-//                    width: 680 - 4 - 30*2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
                 Common.Separator {
                     id: splitbar2
                     width: 680 - 4 - 30*2
@@ -316,12 +304,6 @@ Rectangle {
                         }
                     }
                 }
-//                Rectangle {
-//                    id: splitbar3
-//                    width: 680 - 4 - 30*2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
                 Common.Separator {
                     id: splitbar3
                     width: 680 - 4 - 30*2
@@ -350,12 +332,6 @@ Rectangle {
                         }
                     }
                 }
-//                Rectangle {
-//                    id: splitbar4
-//                    width: 680 - 4 - 30*2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
                 Common.Separator {
                     id: splitbar4
                     width: 680 - 4 - 30*2

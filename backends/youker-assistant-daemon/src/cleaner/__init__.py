@@ -211,6 +211,14 @@ class ManageTheLarge():
         for one in largefile_list:
             sesdaemon.data_transmit_by_large(common.confirm_filesize_unit(one[0]), one[1])
         sesdaemon.large_transmit_complete()
+
+    def get_scan_result(self, size, path):
+        self.path = path
+        finalsize = size * 1024 * 1024
+        #self.objl.hundred_large_files(finalsize, self.path)
+        #self.objl.type_of_file()
+        largefile_dic = self.objl.adjust_the_list(finalsize, self.path)
+        return largefile_dic
         
 # the functions of clean the browser history
 class CleanTheHistory():

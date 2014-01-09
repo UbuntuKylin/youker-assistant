@@ -33,4 +33,3 @@ fi
 if [ -x /usr/bin/apt-key ]; then
     apt-key add /usr/share/keyrings/ubuntukylin-archive-keyring.gpg
 fi
-

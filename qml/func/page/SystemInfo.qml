@@ -188,34 +188,6 @@ Rectangle {
             }
         }
     }
-//    Component {
-//        id: returnDelegate
-//        Item {
-//            width: categories.width; height: 40
-//            Row {
-//                spacing: 10
-//                anchors {
-//                    left: parent.left; leftMargin: 15
-//                    verticalCenter: parent.verticalCenter
-//                }
-//                Image {
-//                    width: 30
-//                    height: 20
-//                    source: "../img/sysButton/reback.png"
-//                    anchors.verticalCenter: parent.verticalCenter
-//                }
-//                Text {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    text: qsTr("Back")
-//                    font { family: "Helvetica"; pixelSize: 14; bold: true }
-//                }
-//            }
-//            MouseArea {
-//                anchors.fill: parent
-//                onClicked: pageStack.push(systemmessage);
-//            }
-//        }
-//    }
     Rectangle { x: 150; height: window.height; width: 1; color: "#1790c9" }
 
     states: [

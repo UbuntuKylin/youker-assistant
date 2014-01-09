@@ -198,8 +198,8 @@ Item {
             verticalCenter: container.verticalCenter
         }
         Image {
-            width: 12
-            height: 12
+            width: 16
+            height: 16
             anchors.verticalCenter: parent.verticalCenter
             source: {
                 if(container.descript == "True") {//文件夹

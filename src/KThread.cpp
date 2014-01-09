@@ -28,23 +28,14 @@ KThread::~KThread() {
     stop();
 }
 void KThread::run() {
-//    if(methodName == "clean_by_main_one_key") {//onekey_clean_crufts_function
-//        iface->call("clean_by_main_one_key", list);
-//    }
     if(methodName == "onekey_clean_crufts_function") {
         iface->call("onekey_clean_crufts_function", list);
-    }
-    else if(methodName == "clean_by_second_one_key") {
-        iface->call("clean_by_second_one_key", list);
     }
     else if(methodName == "history_clean_records_function") {
         iface->call("history_clean_records_function", fileFlag);
     }
     else if(methodName == "clean_system_history") {
         iface->call("clean_system_history");
-    }
-    else if(methodName == "clean_cookies_records") {
-        iface->call("clean_cookies_records", list);
     }
     else if(methodName == "cookies_clean_record_function") {
         iface->call("cookies_clean_record_function", list);

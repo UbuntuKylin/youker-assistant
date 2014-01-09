@@ -231,13 +231,6 @@ Rectangle {
                     width: 680 - 4 - 30*2
                     visible: false
                 }
-
-//                Rectangle {
-//                    id: splitbar1
-//                    width: 680 - 4 - 30*2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
                 Item {
                     width: parent.width
                     height: home.secondFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
@@ -266,12 +259,6 @@ Rectangle {
                     width: 680 - 4 - 30*2
                     visible: false
                 }
-//                Rectangle {
-//                    id: splitbar2
-//                    width: 680 - 4 - 30*2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
                 Item {
                     width: parent.width
                     height: home.thirdFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
@@ -300,12 +287,6 @@ Rectangle {
                     width: 680 - 4 - 30*2
                     visible: false
                 }
-//                Rectangle {
-//                    id: splitbar3
-//                    width: 680 - 4 - 30*2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
                 Item {
                     width: parent.width
                     height: home.fourthFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
@@ -334,12 +315,6 @@ Rectangle {
                     width: 680 - 4 - 30*2
                     visible: false
                 }
-//                Rectangle {
-//                    id: splitbar4
-//                    width: 680 - 4 - 30*2
-//                    height: 1; color: "#ccdadd"
-//                    visible: false
-//                }
             }
         }//Item
     }//ScrollArea

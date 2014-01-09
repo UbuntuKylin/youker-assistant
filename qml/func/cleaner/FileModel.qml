@@ -121,18 +121,18 @@ Item {
         id: titlebar
         spacing: 10
         width: parent.width
-        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 5}
+        anchors { top: parent.top; topMargin: 10; left: parent.left; leftMargin: 10}
         Image {
             id: refreshArrow
             visible: true
-            source: "../../img/toolWidget/find.gif"
+            source: "../../img/toolWidget/searchfile.png"
             Behavior on rotation { NumberAnimation { duration: 200 } }
         }
-        AnimatedImage {
-            id: refreshArrow_active
-            visible: false
-            source: "../../img/toolWidget/find.gif"
-        }
+//        AnimatedImage {
+//            id: refreshArrow_active
+//            visible: false
+//            source: "../../img/toolWidget/find.gif"
+//        }
         Column {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 10
@@ -156,7 +156,7 @@ Item {
 
     }
     Row{
-        anchors { top: parent.top; topMargin: 40;right: parent.right ; rightMargin: 40 }
+        anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 40 }
         spacing: 20
         Text {
             text: qsTr("Please input the file size (M) : ")//请输入文件大小 (M)：

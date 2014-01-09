@@ -130,29 +130,26 @@ Rectangle {
             if(splitlist.length == 1) {
                 var name = splitlist[0].split(":");
                 dataModel.append({"deviceName": home.transTitle(name[0]),  "deviceNameText": name[1], "inUseName": "", "inUseNameText": "", "existName": "", "existNameText": ""});
+                //设备名字太长，让其使用两行
                 home.rowNumber += 1;
                 home.itemNumber += 1;
-                //设备名字太长，让其使用两行
-//                home.rowNumber += 2;
             }
             else if(splitlist.length == 2) {
                 var name1 = splitlist[0].split(":");
                 var name2 = splitlist[1].split(":");
                 dataModel.append({"deviceName": home.transTitle(name1[0]),  "deviceNameText": name1[1], "inUseName": home.transTitle(name2[0]), "inUseNameText": name2[1], "existName": "", "existNameText": ""});
+                //设备名字太长，让其使用两行
                 home.rowNumber += 2;
                 home.itemNumber += 1;
-                //设备名字太长，让其使用两行
-//                home.rowNumber += 3;
             }
             else if(splitlist.length == 3) {
                 var name3 = splitlist[0].split(":");
                 var name4 = splitlist[1].split(":");
                 var name5 = splitlist[2].split(":");
                 dataModel.append({"deviceName": home.transTitle(name3[0]),  "deviceNameText": name3[1], "inUseName": home.transTitle(name4[0]), "inUseNameText": name4[1], "existName": home.transTitle(name5[0]), "existNameText": name5[1]});
+                //设备名字太长，让其使用两行
                 home.rowNumber += 3;
                 home.itemNumber += 1;
-                //设备名字太长，让其使用两行
-//                home.rowNumber += 4;
             }
         }
     }
@@ -258,12 +255,12 @@ Rectangle {
         anchors.leftMargin: 30
         anchors.top: titleRow.bottom
         anchors.topMargin: 20
-        height: 398
+        height: 396
         width: 680 - 14
         Item {
             id: listItem
             width: parent.width
-            height: home.rowNumber*20 + (home.rowNumber - 1)*20 + (home.itemNumber - 1) * 10
+            height: home.rowNumber*20 + (home.rowNumber - 1)*20 + (home.itemNumber - 1) * 10 + 20
             ListView {
                 id: deviceView
                 anchors.fill: parent

@@ -459,7 +459,6 @@ QString SystemDispatcher::showSelectFileDialog(QString flag) {
 }
 
 void SystemDispatcher::clean_history_records_qt(QString flag) {
-//    KThread *thread = new KThread(tmplist, systemiface, "clean_history_records");
     KThread *thread = new KThread(tmplist, systemiface, "history_clean_records_function", flag);
     thread->start();
 }
@@ -471,11 +470,6 @@ void SystemDispatcher::clean_system_history_qt() {
 
 void SystemDispatcher::clean_dash_history_qt() {
     KThread *thread = new KThread(tmplist, systemiface, "clean_dash_history");
-    thread->start();
-}
-
-void SystemDispatcher::clean_cookies_records_qt(QStringList strlist) {
-    KThread *thread = new KThread(strlist, systemiface, "clean_cookies_records");
     thread->start();
 }
 
@@ -500,10 +494,7 @@ void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
     KThread *thread = new KThread(strlist, systemiface, "onekey_clean_crufts_function");
     thread->start();
 }
-void SystemDispatcher::clean_by_second_one_key_qt(QStringList strlist) {
-    KThread *thread = new KThread(strlist, systemiface, "clean_by_second_one_key");
-    thread->start();
-}
+
 //------------------------------------------------------
 void SystemDispatcher::set_cache_args(QString str) {
     cache_args.append(str);

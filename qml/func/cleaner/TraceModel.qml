@@ -219,7 +219,7 @@ Item {
             spacing: 15
             Image {
                 id: clearImage1
-                width: 40; height: 42
+                width: 32; height: 32
                 source: "../../img/toolWidget/firefox.png"
             }
             Column {
@@ -255,7 +255,7 @@ Item {
             id: chromiumRow
             spacing: 15
             Image {
-                width: 40; height: 42
+                width: 32; height: 32
                 source: "../../img/toolWidget/chromium.png"
             }
             Column {
@@ -292,7 +292,7 @@ Item {
             spacing: 15
             Image {
                 id: clearImage2
-                width: 40; height: 42
+                width: 32; height: 32
                 source: "../../img/toolWidget/systemtrace.png"
             }
             Column {

@@ -51,16 +51,12 @@ public:
     Q_INVOKABLE QString showSelectFileDialog(QString flag);
     //首页一键清理
     Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
-    //系统清理页面一键清理
-    Q_INVOKABLE void clean_by_second_one_key_qt(QStringList strlist);
     //清理浏览器历史痕迹
     Q_INVOKABLE void clean_history_records_qt(QString flag);
     //清理系统最近打开文件的记录
     Q_INVOKABLE void clean_system_history_qt();
     //清理dash使用记录
     Q_INVOKABLE void clean_dash_history_qt();
-    //清理cookies
-    Q_INVOKABLE void clean_cookies_records_qt(QStringList strlist);
     //清理firefox或者choromium的单个cookie
     Q_INVOKABLE void cookies_clean_record_function_qt(QString flag, QString website);
     //清理firefox或者choromium的所有cookies

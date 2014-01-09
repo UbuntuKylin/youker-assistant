@@ -38,18 +38,7 @@ Item {
             Cleaner.CacheModel {//pengshuang缓存
                 id: aptitem
             }
-
-//            AptCruft{
-//                id: aptitem
-//            }
         }
-//        Common.TabPage {
-//            title:qsTr("Software Center Cache")//软件中心缓存
-//            anchors.fill: parent
-//            SoftwareCruft {
-//                id: softwareitem
-//            }
-//        }
         Common.TabPage {
             title:qsTr("Package Uninstall")//包卸载
             anchors.fill: parent
@@ -57,13 +46,6 @@ Item {
                 id: packagemodel
             }
         }
-//        Common.TabPage {
-//            title:qsTr("Old Kernel")//旧内核
-//            anchors.fill: parent
-//            KernelModel {
-//                id: kernelmodel
-//            }
-//        }
         Common.TabPage {
             title:qsTr("Cookies Cleanup")//Cookies清除
             anchors.fill: parent
@@ -71,9 +53,6 @@ Item {
             Cleaner.CookiesModel {//pengshuang
                 id: cookiesitem
             }
-//            BrowserCookies {
-//                id: cookiesitem
-//            }
         }
         Common.TabPage {
             title:qsTr("Trace Cleanup")//痕迹清理

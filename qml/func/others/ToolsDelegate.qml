@@ -33,7 +33,8 @@ Rectangle {
 
     Column {
         anchors.fill: parent
-        anchors.topMargin: 7
+        anchors.topMargin: 15
+        spacing: 10
         Image {
             id: seticon
             source: icon

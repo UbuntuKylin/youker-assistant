@@ -84,7 +84,8 @@ Item {
                     cellWidth: (parent.width-2)/6; cellHeight: cellWidth
                     //横列
     //                cellWidth: (parent.width-2)/6; cellHeight: cellWidth
-                    highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+                    highlight: Image {source: "../../img/toolWidget/box-hover.png"}
+//                    highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
                     focus: true
                 }
             }
