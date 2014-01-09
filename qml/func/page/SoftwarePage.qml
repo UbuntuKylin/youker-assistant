@@ -350,7 +350,7 @@ Item {
                             statusImage.source = software.path + "installed.png"
                         }
                         root.state = "SofeWareState";
-                        toolkits.alertMSG(qsTr("Software operation completed!"), mainwindow.pos.x, mainwindow.pos.y);//软件操作完成！
+                        toolkits.alertMSG(qsTr("Operation completed!"), mainwindow.pos.x, mainwindow.pos.y);//软件操作完成！
                     }
                 }
             }

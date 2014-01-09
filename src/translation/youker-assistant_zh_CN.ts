@@ -1662,6 +1662,11 @@
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
+        <location filename="../../qml/func/others/LeftPage.qml" line="389"/>
+        <source>Cleanup Garbage</source>
+        <translation>清理系统中的垃圾</translation>
+    </message>
+    <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="592"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
         <translation>清理系统中的 Cookies，包含上网、购物、游戏等记录</translation>
@@ -1686,9 +1691,8 @@
         <translation>一键清理项目</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="389"/>
         <source>Cleanup garbage</source>
-        <translation>清理系统中的垃圾</translation>
+        <translation type="obsolete">清理系统中的垃圾</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="402"/>
@@ -2453,79 +2457,75 @@
 <context>
     <name>SkinsWidget</name>
     <message>
-        <location filename="../skinswidget.cpp" line="33"/>
+        <location filename="../skinswidget.cpp" line="35"/>
         <source>skin 1</source>
         <translation>皮肤 1</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="33"/>
+        <location filename="../skinswidget.cpp" line="35"/>
         <source>skin 2</source>
         <translation>皮肤 2</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="33"/>
+        <location filename="../skinswidget.cpp" line="35"/>
         <source>skin 3</source>
         <translation>皮肤 3</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="33"/>
+        <location filename="../skinswidget.cpp" line="35"/>
         <source>skin 4</source>
         <translation>皮肤 4</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="33"/>
+        <location filename="../skinswidget.cpp" line="35"/>
         <source>skin 5</source>
         <translation>皮肤 5</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="34"/>
+        <location filename="../skinswidget.cpp" line="36"/>
         <source>skin 6</source>
         <translation>皮肤 6</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="34"/>
+        <location filename="../skinswidget.cpp" line="36"/>
         <source>skin 7</source>
         <translation>皮肤 7</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="34"/>
+        <location filename="../skinswidget.cpp" line="36"/>
         <source>skin 8</source>
         <translation>皮肤 8</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="34"/>
+        <location filename="../skinswidget.cpp" line="36"/>
         <source>skin 9</source>
         <translation>皮肤 9</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="34"/>
+        <location filename="../skinswidget.cpp" line="36"/>
         <source>skin 10</source>
         <translation>皮肤 10</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="64"/>
+        <location filename="../skinswidget.cpp" line="68"/>
         <source>Youker Skin Center</source>
         <translation>优客皮肤中心</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="154"/>
         <source>Home</source>
-        <translation>首页</translation>
+        <translation type="obsolete">首页</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="155"/>
         <source>Previous</source>
-        <translation>上一页</translation>
+        <translation type="obsolete">上一页</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="156"/>
         <source>Next</source>
-        <translation>下一页</translation>
+        <translation type="obsolete">下一页</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="157"/>
         <source>Last</source>
-        <translation>末页</translation>
+        <translation type="obsolete">末页</translation>
     </message>
 </context>
 <context>
@@ -2618,6 +2618,11 @@
         <translation>如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。</translation>
     </message>
     <message>
+        <location filename="../../qml/func/page/SoftwarePage.qml" line="342"/>
+        <source>Operation completed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>If the software is installed successfully,  you can enter the keywords from the Chinese/English name of the software in Dash to searching and starting the software.</source>
         <translation type="obsolete">如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。</translation>
     </message>
@@ -2662,9 +2667,8 @@
         <translation>未发现</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SoftwarePage.qml" line="342"/>
         <source>Software operation completed!</source>
-        <translation>软件操作完成！</translation>
+        <translation type="obsolete">软件操作完成！</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="377"/>
@@ -2982,8 +2986,12 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
-        <source>Recommend Software</source>
+        <source>Software</source>
         <translation>软件推荐</translation>
+    </message>
+    <message>
+        <source>Recommend Software</source>
+        <translation type="obsolete">软件推荐</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemBox.qml" line="40"/>
@@ -3284,29 +3292,24 @@
 <context>
     <name>ToolWidget</name>
     <message>
-        <location filename="../../qml/ToolWidget.qml" line="31"/>
         <source>Home</source>
-        <translation>首页</translation>
+        <translation type="obsolete">首页</translation>
     </message>
     <message>
-        <location filename="../../qml/ToolWidget.qml" line="34"/>
         <source>SysInfo</source>
-        <translation>系统信息</translation>
+        <translation type="obsolete">系统信息</translation>
     </message>
     <message>
-        <location filename="../../qml/ToolWidget.qml" line="37"/>
         <source>Cleanup</source>
-        <translation>系统清理</translation>
+        <translation type="obsolete">系统清理</translation>
     </message>
     <message>
-        <location filename="../../qml/ToolWidget.qml" line="40"/>
         <source>Feature</source>
-        <translation>系统美化</translation>
+        <translation type="obsolete">系统美化</translation>
     </message>
     <message>
-        <location filename="../../qml/ToolWidget.qml" line="43"/>
         <source>Toolkits</source>
-        <translation>功能大全</translation>
+        <translation type="obsolete">功能大全</translation>
     </message>
 </context>
 <context>
@@ -3841,23 +3844,23 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/WidgetTheme.qml" line="35"/>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="110"/>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="227"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="111"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="228"/>
         <source>[ Current Theme is: </source>
         <translation>[ 当前主题是：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="144"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="145"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="222"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="223"/>
         <source>Tips: </source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="222"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="223"/>
         <source>Your system&apos;s current widget theme is the default theme!</source>
         <translation>您系统的当前窗口主题已经为默认主题！</translation>
     </message>
