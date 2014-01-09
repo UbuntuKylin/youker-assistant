@@ -257,7 +257,7 @@ Item {
         anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 27 }
         Image {
             id: apt_refreshArrow
-            source: "../../img/toolWidget/apt.png"
+            source: "../../img/toolWidget/cache.png"
             Behavior on rotation { NumberAnimation { duration: 200 } }
         }
         Column {

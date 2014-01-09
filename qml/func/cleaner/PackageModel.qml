@@ -136,7 +136,7 @@ Item {
             //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                              "itemTitle": qsTr("Uninstall old kernel packages"),
-                             "picture": "../../img/toolWidget/deb-min.png",
+                             "picture": "../../img/toolWidget/kernel.png",
                             "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
         }
 
@@ -167,7 +167,7 @@ Item {
                 //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Uninstall old kernel packages"),
-                                 "picture": "../../img/toolWidget/deb-min.png",
+                                 "picture": "../../img/toolWidget/kernel.png",
                                 "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
 
                 if(root.packageNum != 0) {
@@ -278,7 +278,7 @@ Item {
                             //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall old kernel packages"),
-                                             "picture": "../../img/toolWidget/deb-min.png",
+                                             "picture": "../../img/toolWidget/kernel.png",
                                             "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
                             systemdispatcher.clear_package_args();
                             packagesubModel.clear();//内容清空
@@ -314,7 +314,7 @@ Item {
                                 //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
-                                                 "picture": "../../img/toolWidget/deb-min.png",
+                                                 "picture": "../../img/toolWidget/kernel.png",
                                                 "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
@@ -406,7 +406,7 @@ Item {
                         //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                         kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Uninstall old kernel packages"),
-                                         "picture": "../../img/toolWidget/deb-min.png",
+                                         "picture": "../../img/toolWidget/kernel.png",
                                         "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
                         packagesubModel.clear();//内容清空
                         root.packageNum = 0;//隐藏滑动条
