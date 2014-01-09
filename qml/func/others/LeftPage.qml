@@ -386,7 +386,7 @@ Rectangle {
                         Row {
                             spacing: 20
                             Text {
-                                text: qsTr("Cleanup garbage")//清理系统中的垃圾
+                                text: qsTr("Cleanup Garbage")//清理系统中的垃圾
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
