@@ -260,6 +260,9 @@ signals:
     void appendCookiesContentToModel(QString flag, QString domain, QString num);
     //cookies扫描完后告诉QML
     void tellQMLCookiesOver(QString cookiesFlag);
+
+    //把一键扫描的总数告诉QML
+    void tellScanResultToQML(QString flag, QString msg);
 public slots:
     //获取天气预报槽函数
     void handler_access_forecast_weather(QString key, QString value);
@@ -267,6 +270,8 @@ public slots:
     void handler_scan_complete(QString msg);
     //扫描过程的函数
     void handler_scan_process(QString msg);
+    //扫描的总数
+    void handler_total_data_transmit(QString flag, QString msg);
 
     void handler_change_skin(QString skinName);
     //更换城市槽函数
