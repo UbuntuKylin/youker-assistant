@@ -67,7 +67,8 @@ Item {
                     Image {
                         id: personal
                         source: "../../img/icons/themeset.png"
-                        anchors.verticalCenter: parent.verticalCenter
+//                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.top: parent.top
                     }
                     Column {
                         spacing: 7
@@ -162,7 +163,8 @@ Item {
                     Image {
                         id: unity
                         source: "../../img/icons/unity.png"
-                        anchors.verticalCenter: parent.verticalCenter
+//                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.top: parent.top
                     }
                     Column {
                         spacing: 7
@@ -199,7 +201,8 @@ Item {
                     Image {
                         id: fontimage
                         source: "../../img/icons/font.png"
-                        anchors.verticalCenter: parent.verticalCenter
+//                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.top: parent.top
                     }
                     Column {
                         spacing: 7
@@ -262,7 +265,8 @@ Item {
                     Image {
                         id: sysimage
                         source: "../../img/icons/systemset.png"
-                        anchors.verticalCenter: parent.verticalCenter
+//                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.top: parent.top
                     }
                     Column {
                         spacing: 7

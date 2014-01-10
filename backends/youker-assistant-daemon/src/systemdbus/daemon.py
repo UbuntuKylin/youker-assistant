@@ -17,6 +17,7 @@
 
 import sys
 import os
+import signal
 import glob
 import fcntl
 import shutil
@@ -591,6 +592,8 @@ if __name__ == '__main__':
     if os.path.exists("/var/lib/apt/lists/lock"):
         os.remove("/var/lib/apt/lists/lock")
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+    GObject.threads_init()
+    signal.signal(signal.SIGINT, lambda : mainloop.quit())
     mainloop = GObject.MainLoop()
     Daemon(dbus.SystemBus(), mainloop)
     mainloop.run()

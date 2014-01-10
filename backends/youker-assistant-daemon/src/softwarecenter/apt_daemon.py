@@ -103,6 +103,7 @@ class AptProcess(apb.InstallProgress):
 class AptDaemon():
     def __init__(self, sudoDaemon):
         #threading.Thread.__init__(self)
+        #self.setDaemon(True)
         self.sudoDaemon = sudoDaemon
         self.ca = apt.Cache()
         self.ca.open()

@@ -59,10 +59,10 @@ Rectangle {
         id: signaltest
         hoverEnabled: true
         anchors.fill: parent
-        onEntered: btnImg.source = "../../img/toolWidget/menu_hover.png"
+        onEntered: btnImg.source = "../../img/toolWidget/box-hover.png"//btnImg.source = "../../img/toolWidget/menu_hover.png"
         onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"
         //要判断松开是鼠标位置
-        onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
+        onReleased: btnImg.source = "../../img/toolWidget/box-hover.png"//btnImg.source = "../../img/toolWidget/menu_hover.png"
         onExited: btnImg.source = ""
         onClicked: {
             //屏幕坏点检测

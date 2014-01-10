@@ -490,8 +490,28 @@ void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
     thread->start();
 }
 
-void SystemDispatcher::clean_by_main_one_key_qt(QStringList strlist) {
-    KThread *thread = new KThread(strlist, systemiface, "onekey_clean_crufts_function");
+void SystemDispatcher::clean_by_main_one_key_qt(/*QStringList strlist*/bool garbageFlag, bool traceFlag, bool cookiesFlag) {
+//    KThread *thread = new KThread(strlist, systemiface, "onekey_clean_crufts_function");
+    QStringList argList;
+    if(garbageFlag) {
+        argList << "1";
+    }
+    else {
+        argList << "0";
+    }
+    if(traceFlag) {
+        argList << "1";
+    }
+    else {
+        argList << "0";
+    }
+    if(cookiesFlag) {
+        argList << "1";
+    }
+    else {
+        argList << "0";
+    }
+    KThread *thread = new KThread(argList, systemiface, "onekey_clean_crufts_function");
     thread->start();
 }
 

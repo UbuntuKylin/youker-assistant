@@ -50,7 +50,7 @@ public:
     //弹出QT的文件选择对话框
     Q_INVOKABLE QString showSelectFileDialog(QString flag);
     //首页一键清理
-    Q_INVOKABLE void clean_by_main_one_key_qt(QStringList strlist);
+    Q_INVOKABLE void clean_by_main_one_key_qt(/*QStringList strlist*/bool garbageFlag, bool traceFlag, bool cookiesFlag);
     //清理浏览器历史痕迹
     Q_INVOKABLE void clean_history_records_qt(QString flag);
     //清理系统最近打开文件的记录

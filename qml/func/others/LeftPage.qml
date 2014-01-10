@@ -26,9 +26,12 @@ Rectangle {
     property string garbage
     property string trace
     property string cookies
-    property bool garbageFlag: false
-    property bool traceFlag: false
-    property bool cookiesFlag: false
+//    property bool garbageFlag: false
+//    property bool traceFlag: false
+//    property bool cookiesFlag: false
+    property bool garbageFlag: true
+    property bool traceFlag: true
+    property bool cookiesFlag: true
 
     Connections
     {
@@ -118,9 +121,9 @@ Rectangle {
                     historydes.text = qsTr("(totally cleared") + leftbar.trace + qsTr("historical records)");//（共清理掉     条历史记录）
                 }
                 //显示清理总数后把与之相关的一些标记和变量恢复默认值
-                leftbar.cookiesFlag = false;
-                leftbar.garbageFlag = false;
-                leftbar.traceFlag = false;
+//                leftbar.cookiesFlag = false;
+//                leftbar.garbageFlag = false;
+//                leftbar.traceFlag = false;
                 leftbar.cookies = "";
                 leftbar.garbage = "";
                 leftbar.trace = "";
@@ -311,17 +314,60 @@ Rectangle {
                             dynamicImage.visible = true;
                             showLabel.visible = false;
                             showText.text = "";
-                            sessiondispatcher.onekey_scan_function_qt(systemdispatcher.get_onekey_args());
-                        }
-                        else if (leftbar.flag == "onekey") {//一键清理
+
                             if(garbageCheck.checked) {
                                 leftbar.garbageFlag = true;
+                            }
+                            else {
+                                leftbar.garbageFlag = false;
                             }
                             if(historyCheck.checked) {
                                 leftbar.traceFlag = true;
                             }
+                            else {
+                                leftbar.traceFlag = false;
+                            }
                             if(cookiesCheck.checked) {
                                 leftbar.cookiesFlag = true;
+                            }
+                            else {
+                                leftbar.cookiesFlag = false;
+                            }
+                            sessiondispatcher.onekey_scan_function_qt(systemdispatcher.get_onekey_args());
+                        }
+                        else if (leftbar.flag == "onekey") {//一键清理
+//                            if(garbageCheck.checked) {
+//                                leftbar.garbageFlag = true;
+//                            }
+//                            if(historyCheck.checked) {
+//                                leftbar.traceFlag = true;
+//                            }
+//                            if(cookiesCheck.checked) {
+//                                leftbar.cookiesFlag = true;
+//                            }
+                            if(garbageCheck.checked) {
+                                if(!leftbar.garbageFlag) {
+                                    leftbar.garbageFlag = false;
+                                }
+                            }
+                            else {
+                                leftbar.garbageFlag = false;
+                            }
+                            if(historyCheck.checked) {
+                                if(!leftbar.traceFlag) {
+                                    leftbar.traceFlag = false;
+                                }
+                            }
+                            else {
+                                leftbar.traceFlag = false;
+                            }
+                            if(cookiesCheck.checked) {
+                                if(!leftbar.cookiesFlag) {
+                                    leftbar.cookiesFlag = false;
+                                }
+                            }
+                            else {
+                                leftbar.cookiesFlag = false;
                             }
 
                             staticImage.visible = false;
@@ -329,7 +375,7 @@ Rectangle {
                             showLabel.visible = false;
                             showText.text = "";
                             systemdispatcher.set_user_homedir_qt();
-                            systemdispatcher.clean_by_main_one_key_qt(systemdispatcher.get_onekey_args());
+                            systemdispatcher.clean_by_main_one_key_qt(leftbar.garbageFlag, leftbar.traceFlag, leftbar.cookiesFlag/*systemdispatcher.get_onekey_args()*/);
                         }
                     }
                 }

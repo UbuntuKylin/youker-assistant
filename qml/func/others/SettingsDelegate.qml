@@ -32,9 +32,8 @@ Rectangle {
 
     //竖列
     Column {
-        anchors.fill: parent
-        anchors.topMargin: 7
-        spacing: 15
+        anchors.centerIn: parent
+        spacing: 10
         Image {
             id: seticon
             source: icon

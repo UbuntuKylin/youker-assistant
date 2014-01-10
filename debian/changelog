@@ -12,7 +12,7 @@ youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
   * Add GnuPG keys of the UbuntuKylin archive: ubuntukylin-archive-keyring.gpg.
   * Replace some icons.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 09 Jan 2014 14:17:48 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 10 Jan 2014 12:30:30 +0800
 
 youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
 

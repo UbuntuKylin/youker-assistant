@@ -127,45 +127,8 @@ class OneKeyClean():
         flag_dic = {'history': False, 'cookies': False, 'cache': False}
         for mode in mode_list:
             flag_dic['%s' % mode] = True
-        if flag_dic['history']:
-            try:
-                sysdaemon.status_for_quick_clean('firefoxhistory', 'start')
-                objca = historyclean.HistoryClean(homedir)
-                filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
-                objca.clean_firefox_all_records(filepathf)
-                sysdaemon.status_for_quick_clean('firefoxhistory', 'end')
-
-                run = common.process_pid("chromium-browser")
-                if not run:
-                    sysdaemon.status_for_quick_clean('chromiumhistory', 'start')
-                    filepathc = "%s/.config/chromium/Default/History" % homedir
-                    objca.clean_chromium_all_records(filepathc)
-                    sysdaemon.status_for_quick_clean('chromiumhistory', 'end')
-            except Exception, e:
-                sysdaemon.clean_error_onekey('he')
-            else:
-                sysdaemon.clean_complete_onekey('h')
-                
-        if flag_dic['cookies']:
-            try:
-                objcc = cookiesclean.CookiesClean(homedir)
-                sysdaemon.status_for_quick_clean('firefoxcookies', 'start')
-                filepathfc = common.analytical_profiles_file(homedir) + 'cookies.sqlite'
-                pamfc = [filepathfc, 'moz_cookies', 'baseDomain']
-                objcc.clean_all_records(pamfc[0], pamfc[1], pamfc[2])
-                sysdaemon.status_for_quick_clean('firefoxcookies', 'end')
-                
-                sysdaemon.status_for_quick_clean('chromiumcookies', 'start')
-                filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
-                pamcc = [filepathcc, 'cookies', 'host_key']
-                objcc.clean_all_records(pamcc[0], pamcc[1], pamcc[2])
-                sysdaemon.status_for_quick_clean('chromiumcookies', 'end')
-            except Exception, e:
-                sysdaemon.clean_error_onekey('ke')
-            else:
-                sysdaemon.clean_complete_onekey('k')
-
-        if flag_dic['cache']:
+        #if flag_dic['cache']:
+        if mode_list[0] in '1':
             try:
                 objclean = FunctionOfClean()
                 objcache = cacheclean.CacheClean()
@@ -186,6 +149,45 @@ class OneKeyClean():
                 sysdaemon.clean_error_onekey('ce')
             else:
                 sysdaemon.clean_complete_onekey('c')
+        #if flag_dic['history']:
+        if mode_list[1] in '1':
+            try:
+                sysdaemon.status_for_quick_clean('firefoxhistory', 'start')
+                objca = historyclean.HistoryClean(homedir)
+                filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+                objca.clean_firefox_all_records(filepathf)
+                sysdaemon.status_for_quick_clean('firefoxhistory', 'end')
+
+                run = common.process_pid("chromium-browser")
+                if not run:
+                    sysdaemon.status_for_quick_clean('chromiumhistory', 'start')
+                    filepathc = "%s/.config/chromium/Default/History" % homedir
+                    objca.clean_chromium_all_records(filepathc)
+                    sysdaemon.status_for_quick_clean('chromiumhistory', 'end')
+            except Exception, e:
+                sysdaemon.clean_error_onekey('he')
+            else:
+                sysdaemon.clean_complete_onekey('h')
+                
+        #if flag_dic['cookies']:
+        if mode_list[2] in '1':
+            try:
+                objcc = cookiesclean.CookiesClean(homedir)
+                sysdaemon.status_for_quick_clean('firefoxcookies', 'start')
+                filepathfc = common.analytical_profiles_file(homedir) + 'cookies.sqlite'
+                pamfc = [filepathfc, 'moz_cookies', 'baseDomain']
+                objcc.clean_all_records(pamfc[0], pamfc[1], pamfc[2])
+                sysdaemon.status_for_quick_clean('firefoxcookies', 'end')
+                
+                sysdaemon.status_for_quick_clean('chromiumcookies', 'start')
+                filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
+                pamcc = [filepathcc, 'cookies', 'host_key']
+                objcc.clean_all_records(pamcc[0], pamcc[1], pamcc[2])
+                sysdaemon.status_for_quick_clean('chromiumcookies', 'end')
+            except Exception, e:
+                sysdaemon.clean_error_onekey('ke')
+            else:
+                sysdaemon.clean_complete_onekey('k')
         sysdaemon.clean_complete_onekey('o')
 
 # the functions of search the same files
