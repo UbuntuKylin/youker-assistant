@@ -65,6 +65,7 @@ Item {
         onTellQMLCaheOver: {
             aptmainModel.clear();
             softmainModel.clear();
+//            doingImage.visible = false;
             //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
             aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                              "itemTitle": qsTr("Cleanup Package Cache"),
@@ -164,6 +165,7 @@ Item {
         onFinishCleanWorkError: {//清理出错时收到的信号
             if (btnFlag == "cache_work") {
                 if (msg == "cache") {
+//                    doingImage.visible = false;
                     root.state = "AptWorkError";
                     //清理过程中发生错误，解禁按钮
                     actionBtn.enabled = true;
@@ -173,6 +175,7 @@ Item {
         }
         onFinishCleanWork: {//清理成功时收到的信号
             if (root.btnFlag == "cache_work") {
+//                doingImage.visible = false;
                 if (msg == "") {
                     //清理取消，解禁按钮
                     actionBtn.enabled = true;
@@ -287,6 +290,14 @@ Item {
         Row {
             spacing: 20    
             anchors.verticalCenter: parent.verticalCenter
+//            AnimatedImage {
+//                id: doingImage
+//                anchors.verticalCenter: parent.verticalCenter
+//                width: 16
+//                height: 16
+//                visible: false
+//                source: "../../img/icons/move.gif"
+//            }
             Common.StyleButton {
                 id: backBtn
                 visible: false
@@ -350,6 +361,7 @@ Item {
                     root.flag = false;
 
                     if(root.apt_maincheck && root.soft_maincheck) {//software-center
+//                        doingImage.visible = true;
                         root.mode = 0;
                         root.aptNum = 0;
                         root.softNum = 0;
@@ -357,11 +369,13 @@ Item {
                     }
                     else {
                         if(root.apt_maincheck) {
+//                            doingImage.visible = true;
                             root.mode = 1;
                             root.aptNum = 0;
                             sessiondispatcher.cache_scan_function_qt("apt");
                         }
                         else if(root.soft_maincheck) {
+//                            doingImage.visible = true;
                             root.mode = 2;
                             root.softNum = 0;
                             sessiondispatcher.cache_scan_function_qt("software-center");
@@ -380,6 +394,7 @@ Item {
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
+//                            doingImage.visible = true;
 //                            console.log("33333333333");
 //                            console.log(systemdispatcher.get_cache_args());
                             //开始清理时，禁用按钮，等到清理完成后解禁

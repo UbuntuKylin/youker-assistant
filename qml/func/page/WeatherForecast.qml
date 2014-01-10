@@ -99,7 +99,7 @@ Item {
 
             var updateTime = sessiondispatcher.getSingleWeatherInfo("fchh", "forecast");
             //未来六天天气预报，预报时间：          时
-            locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + sessiondispatcher.getSingleWeatherInfo("date_y", "forecast") + updateTime + qsTr("hour release");//时  发布
+            locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + sessiondispatcher.getSingleWeatherInfo("date_y", "forecast") + updateTime + qsTr(" o'clock release");//时  发布
             //将字符串类型的时间转成整形
             var updateIntTime = parseInt(updateTime, 10);
             if(updateIntTime >= 6 && updateIntTime < 18) {

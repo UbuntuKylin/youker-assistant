@@ -1513,122 +1513,122 @@
 <context>
     <name>LeftPage</name>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="45"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="48"/>
         <source>Quick cleanup</source>
         <translation>一键清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="96"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="100"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="104"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="99"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="103"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="107"/>
         <source>Cleaning up...</source>
         <translation>正在清理...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="129"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="132"/>
         <source>Cleared!</source>
         <translation>一键清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="131"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="284"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="134"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="287"/>
         <source>Quick scan</source>
         <translation>一键扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="110"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="114"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="118"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="113"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="117"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="121"/>
         <source>(totally cleared</source>
         <translation>（共清理掉</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="114"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="117"/>
         <source>garbage)</source>
         <translation>垃圾）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="118"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="121"/>
         <source>historical records)</source>
         <translation>条历史记录）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="110"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="113"/>
         <source>Cookies)</source>
         <translation>条Cookies）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="174"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="177"/>
         <source>Cleaning up history trace of Firefox...</source>
         <translation>正在清理Firefox的历史痕迹...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="177"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="180"/>
         <source>Firefox history trace had been cleared!</source>
         <translation>Firefox的历史痕迹已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="182"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="185"/>
         <source>Cleaning up history trace of Chromium...</source>
         <translation>正在清理Chromium的历史痕迹...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="185"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="188"/>
         <source>Chromium history trace had been cleared!</source>
         <translation>Chromium的历史痕迹已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="190"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="193"/>
         <source>Cleaning up Cookies of Firefox...</source>
         <translation>正在清理Firefox的Cookies...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="193"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="196"/>
         <source>Firefox Cookies had been cleared!</source>
         <translation>Firefox的Cookies已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="198"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="201"/>
         <source>Cleaning up Cookies of Chromium...</source>
         <translation>正在清理Chromium的Cookies...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="201"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="204"/>
         <source>Chromium Cookies had been cleared!</source>
         <translation>Chromium的Cookies已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="206"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="209"/>
         <source>Apt cache had been cleared!</source>
         <translation>Apt缓存已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="209"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="212"/>
         <source>Cleaning up Apt cache: </source>
         <translation>正在清理Apt缓存：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="214"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="217"/>
         <source>Software Center cache had been cleared!</source>
         <translation>软件中心缓存已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="217"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="220"/>
         <source>Cleaning up Software Center cache: </source>
         <translation>正在清理软件中心缓存：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="267"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="270"/>
         <source>Quick clean up system junks, saving disk space and improving the system efficiency !</source>
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="438"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="484"/>
         <source>Cleanup Garbage</source>
         <translation>清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="641"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="687"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
         <translation>清理系统中的 Cookies，包含上网、购物、游戏等记录</translation>
     </message>
@@ -1637,17 +1637,17 @@
         <translation type="obsolete">一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="276"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="279"/>
         <source>To help you quick clean up the Cookies, garbage, traces and plug-ins in your system</source>
         <translation>一键帮您清理系统中的 Cookies、垃圾、痕迹和插件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="350"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="396"/>
         <source>Scan to:  </source>
         <translation>扫描到：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="365"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="411"/>
         <source>Quick Cleanup</source>
         <translation>一键清理项目</translation>
     </message>
@@ -1656,46 +1656,46 @@
         <translation type="obsolete">清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="451"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="497"/>
         <source>Clean up system junk files, free disk space</source>
         <translation>清理系统中的垃圾文件，释放磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="461"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="476"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="558"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="574"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="651"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="667"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="507"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="522"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="604"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="620"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="697"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="713"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="468"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="565"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="658"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="514"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="611"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="704"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="472"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="570"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="663"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="518"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="616"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="709"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="535"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="581"/>
         <source>Delete History</source>
         <translation>清理历史记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="548"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="594"/>
         <source>Clean up the historical records, to protect your privacy</source>
         <translation>清理上网时留下的历史记录，保护您的个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="628"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="674"/>
         <source>Cleanup Cookies</source>
         <translation>清理 Cookies</translation>
     </message>
@@ -2998,14 +2998,14 @@
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="941"/>
         <location filename="../systemdispatcher.cpp" line="961"/>
+        <location filename="../systemdispatcher.cpp" line="981"/>
         <source>Warning:</source>
         <translation>警告：</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="942"/>
         <location filename="../systemdispatcher.cpp" line="962"/>
+        <location filename="../systemdispatcher.cpp" line="982"/>
         <source>No find the softlist file!</source>
         <translation>没有找到软件列表文件！</translation>
     </message>
@@ -3076,88 +3076,88 @@
         <translation>您可以根据个人喜好对系统进行全方位的定制！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="77"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="78"/>
         <source> Personalize</source>
         <translation>个性化</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="84"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="111"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="85"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="112"/>
         <source>WindowTheme</source>
         <translation>窗口主题</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="89"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="120"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="90"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="121"/>
         <source>IconSetting</source>
         <translation>图标配置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="94"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="129"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="95"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="130"/>
         <source>MousePointer</source>
         <translation>鼠标指针</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="99"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="138"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="100"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="139"/>
         <source>SoundEffect</source>
         <translation>声音效果</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="104"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="147"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="105"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="148"/>
         <source>BootAnimation</source>
         <translation>开机动画</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="172"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="174"/>
         <source> Unity</source>
         <translation>Unity</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="179"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="186"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="181"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="188"/>
         <source>Custom Launcher</source>
         <translation>自定义启动器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="209"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="212"/>
         <source> Fonts</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="216"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="233"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="219"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="236"/>
         <source>DefaultFont</source>
         <translation>默认字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="221"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="241"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="224"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="244"/>
         <source>DocumentFont</source>
         <translation>文档字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="226"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="249"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="229"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="252"/>
         <source>TitlebarFont</source>
         <translation>窗口标题栏字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="272"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="276"/>
         <source> System options</source>
         <translation>系统选项</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="279"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="291"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="283"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="295"/>
         <source>Touchpad</source>
         <translation>触摸板设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="284"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="299"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="288"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="303"/>
         <source>Dead pixel test</source>
         <translation>坏点检测</translation>
     </message>
@@ -3604,8 +3604,12 @@
     </message>
     <message>
         <location filename="../../qml/func/page/WeatherForecast.qml" line="102"/>
-        <source>hour release</source>
+        <source> o&apos;clock release</source>
         <translation>时  发布</translation>
+    </message>
+    <message>
+        <source>hour release</source>
+        <translation type="obsolete">时  发布</translation>
     </message>
 </context>
 <context>
@@ -3662,9 +3666,13 @@
         <translation>空气质量指数：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="75"/>
         <source> release</source>
-        <translation>发布</translation>
+        <translation type="obsolete">发布</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="75"/>
+        <source> o&apos;clock release</source>
+        <translation>时发布</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="84"/>

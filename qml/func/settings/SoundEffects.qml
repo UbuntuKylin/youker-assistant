@@ -281,7 +281,7 @@ Rectangle {
                         spacing: 40
                         anchors{
                             right: parent.right
-                            rightMargin: 40
+                            rightMargin: 30
                             verticalCenter: parent.verticalCenter
                         }
 

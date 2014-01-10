@@ -72,7 +72,7 @@ Rectangle {
 
 
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
-        ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + qsTr(" release");// 发布
+        ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + qsTr(" o'clock release");// 发布
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
         windText.text = sessiondispatcher.getSingleWeatherInfo("WD", "current") + sessiondispatcher.getSingleWeatherInfo("WS", "current");
         sessiondispatcher.get_current_pm25_qt();
