@@ -593,7 +593,7 @@ if __name__ == '__main__':
         os.remove("/var/lib/apt/lists/lock")
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     GObject.threads_init()
-    signal.signal(signal.SIGINT, lambda : mainloop.quit())
     mainloop = GObject.MainLoop()
+    signal.signal(signal.SIGINT, lambda : mainloop.quit())
     Daemon(dbus.SystemBus(), mainloop)
     mainloop.run()

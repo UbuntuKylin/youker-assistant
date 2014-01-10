@@ -25,7 +25,7 @@ if __name__ == '__main__':
     from sessiondbus.daemon import SessionDaemon
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     GObject.threads_init()
-    signal.signal(signal.SIGINT, lambda : mainloop.quit())
     mainloop = GObject.MainLoop()
+    signal.signal(signal.SIGINT, lambda : mainloop.quit())
     SessionDaemon(mainloop)
     mainloop.run()
