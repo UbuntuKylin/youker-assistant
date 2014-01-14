@@ -495,6 +495,17 @@ class Daemon(PolicyKitService):
             self.sudo_clean_error_msg(flag)
         else:
             self.sudo_finish_clean_msg(flag)
+    def purge_package_cruft(self, cruftlist, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.sudo_finish_clean_msg('')
+            return
+        try:
+            self.daemonclean.purge_the_package(cruftlist, self)
+        except Exception, e:
+            self.sudo_clean_error_msg('configfile')
+        else:
+            self.sudo_finish_clean_msg('configfile')
 
     def sudo_finish_clean_msg(self, para):
         self.sudo_finish_clean(para)

@@ -423,6 +423,12 @@ class CleanTheSpare():
             temp_oldkernel_list = opkg_obj.scan_oldkernel_packages()
             for opkg in temp_oldkernel_list:
                 sesdaemon.data_transmit_by_package('oldkernel', opkg.name, opkg.installed.summary, common.confirm_filesize_unit(opkg.installed.installed_size))
+
+        if 'configfile' in mode_list:
+            spkg_obj = softwareconfigfile.SoftwareConfigfile()
+            temp_configfile_list = spkg_obj.scan_configfile_packages()
+            for spkg in temp_configfile_list:
+                sesdaemon.data_transmit_by_package('configfile', spkg.name, '', '')
         sesdaemon.package_transmit_complete()
 
 # the function of scan the cache
@@ -478,7 +484,7 @@ class FunctionOfClean():
     #def clean_the_file(self, cruftlist):
     #    threading.Thread(target=self.clean_the_file_thread, args=(cruftlist,), name='CleanFile').start()
 
-    def clean_the_package(self, cruftlist, sudodaemon):
+    def clean_the_package(self, cruftlist, sysdaemon):
         if cruftlist:
             cache = common.get_cache_list()
             cache.open()
@@ -486,25 +492,35 @@ class FunctionOfClean():
                 pkg = cache[cruft]
                 if pkg.is_installed:
                     pkg.mark_delete()
-            iprogress = MyInstallProgress(sudodaemon)
+            iprogress = MyInstallProgress(sysdaemon)
+            cache.commit(None, iprogress)
+
+    def purge_the_package(self, cruftlist, sysdaemon):
+        if cruftlist:
+            cache = common.get_cache_list()
+            cache.open()
+            for cruft in cruftlist:
+                pkg = cache[cruft]
+                pkg.mark_delete(purge=True)
+            iprogress = MyInstallProgress(sysdaemon)
             cache.commit(None, iprogress)
 
     #def clean_the_package(self, cruftlist):
     #    threading.Thread(target=self.clean_the_package_thread, args=(cruftlist,), name='CleanPackage').start()
 
 class MyInstallProgress(InstallProgress):
-        def __init__(self, sudodaemon):
+        def __init__(self, sysdaemon):
             InstallProgress.__init__(self)
-            self.sudodaemon = sudodaemon
+            self.sysdaemon = sysdaemon
 
         def status_change(self, pkg, percent, status):
-            self.sudodaemon.status_remove_packages("apt_pulse", "percent: %s, status: %s" % (str(int(percent)), status))
+            self.sysdaemon.status_remove_packages("apt_pulse", "percent: %s, status: %s" % (str(int(percent)), status))
 
         def error(self, errorstr):
             pass
         
         def finish_update(self):
-            self.sudodaemon.status_remove_packages("apt_stop", "")
+            self.sysdaemon.status_remove_packages("apt_stop", "")
 
         def start_update(self):
-            self.sudodaemon.status_remove_packages("apt_start", "")
+            self.sysdaemon.status_remove_packages("apt_start", "")
