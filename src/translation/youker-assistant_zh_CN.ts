@@ -111,9 +111,13 @@
         <translation type="obsolete">开机动画设置 (目前仅支持 png 图片格式，不支持以中文命名的图片！)</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/BootAnimation.qml" line="31"/>
         <source>Boot animation settings (only supports the PNG image format !)</source>
-        <translation>开机动画设置 (目前仅支持 png 图片格式！)</translation>
+        <translation type="obsolete">开机动画设置 (目前仅支持 png 图片格式！)</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/BootAnimation.qml" line="31"/>
+        <source>Boot animation settings</source>
+        <translation>开机动画设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="32"/>
@@ -219,39 +223,39 @@
         <translation>深度清理系统缓存，节省磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="70"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="151"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="71"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="152"/>
         <source>Cleanup Package Cache</source>
         <translation>清理包缓存</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="72"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="153"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="193"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="214"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="315"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="73"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="154"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="196"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="217"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="326"/>
         <source>Apt Cache Path: /var/cache/apt/archives</source>
         <translation>Apt缓存路径：/var/cache/apt/archives</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="75"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="156"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="76"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="157"/>
         <source>Cleanup Software Center Cache</source>
         <translation>清理软件中心缓存</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="77"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="158"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="198"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="229"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="320"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="78"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="159"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="201"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="232"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="331"/>
         <source>Software Center Cache Path: </source>
         <translation>软件中心缓存路径：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="123"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="372"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="380"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="124"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="386"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="394"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
@@ -260,71 +264,71 @@
         <translation type="obsolete">扫描内容为空，无需清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="123"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="124"/>
         <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="131"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="132"/>
         <source>Scan completed!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="137"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="536"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="138"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="551"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="170"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="172"/>
         <source>Cleanup abnormal!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="179"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="182"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="183"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="186"/>
         <source>Cleared!</source>
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="191"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="212"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="313"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="194"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="215"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="324"/>
         <source>Package cache cleanup</source>
         <translation>包缓存清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="196"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="227"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="318"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="199"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="230"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="329"/>
         <source>Software Center buffer cleaning</source>
         <translation>软件中心缓存清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="294"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="305"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="337"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="543"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="550"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="557"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="564"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="348"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="558"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="565"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="572"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="579"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="372"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="386"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
         <translation>对不起，您没有选择需要扫描的内容，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="380"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="394"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的内容，请确认！</translation>
     </message>
@@ -2983,9 +2987,13 @@
         <translation>选择开机动画</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="448"/>
         <source>Image Files (*.png)</source>
-        <translation>图像文件  (*.png)</translation>
+        <translation type="obsolete">图像文件  (*.png)</translation>
+    </message>
+    <message>
+        <location filename="../systemdispatcher.cpp" line="448"/>
+        <source>Image Files (*.png *.jpg *.gif)</source>
+        <translation>图像文件  (*.png *.jpg *.gif)</translation>
     </message>
     <message>
         <location filename="../systemdispatcher.cpp" line="453"/>
