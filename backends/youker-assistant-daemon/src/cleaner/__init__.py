@@ -62,7 +62,7 @@ class OneKeyClean():
         if flag_dic['history']:
             historysize = 0
             objhg = historyclean.HistoryClean(homedir)
-            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+            filepathf = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
             if os.path.exists(filepathf):
                 tempf_list = objhg.scan_firefox_history_records(filepathf)
                 for onef in tempf_list:
@@ -83,7 +83,7 @@ class OneKeyClean():
         if flag_dic['cookies']:
             cookiessize = 0
             objcg = cookiesclean.CookiesClean(homedir)
-            filepathff = common.analytical_profiles_file(homedir) + "cookies.sqlite"
+            filepathff = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
             if os.path.exists(filepathff):
                 pamf = [filepathff, 'moz_cookies', 'baseDomain']
                 tempff_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
@@ -154,7 +154,7 @@ class OneKeyClean():
             try:
                 sysdaemon.status_for_quick_clean('firefoxhistory', 'start')
                 objca = historyclean.HistoryClean(homedir)
-                filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+                filepathf = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
                 objca.clean_firefox_all_records(filepathf)
                 sysdaemon.status_for_quick_clean('firefoxhistory', 'end')
 
@@ -174,7 +174,7 @@ class OneKeyClean():
             try:
                 objcc = cookiesclean.CookiesClean(homedir)
                 sysdaemon.status_for_quick_clean('firefoxcookies', 'start')
-                filepathfc = common.analytical_profiles_file(homedir) + 'cookies.sqlite'
+                filepathfc = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
                 pamfc = [filepathfc, 'moz_cookies', 'baseDomain']
                 objcc.clean_all_records(pamfc[0], pamfc[1], pamfc[2])
                 sysdaemon.status_for_quick_clean('firefoxcookies', 'end')
@@ -234,7 +234,7 @@ class CleanTheHistory():
         judge_list = []
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+            filepathf = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
             if os.path.exists(filepathf):
                 temp_list = objhg.scan_firefox_history_records(filepathf)
                 crufts_list = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in temp_list]
@@ -262,7 +262,7 @@ class CleanTheHistory():
         running = False
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + 'places.sqlite'
+            filepathf = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
             objca.clean_firefox_all_records(filepathf)
         if flag in "chromium":
             run = common.process_pid("chromium-browser")
@@ -309,7 +309,7 @@ class CleanTheCookies():
         crufts_list = []
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
+            filepathf = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
             if os.path.exists(filepathf):
                 pamf = [filepathf, 'moz_cookies', 'baseDomain']
                 temp_firefox_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
@@ -365,7 +365,7 @@ class CleanTheCookies():
         objcc = cookiesclean.CookiesClean(homedir)
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
+            filepathf = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
             pamf = [filepathf, 'moz_cookies', 'baseDomain', domain]
             objcc.clean_cookies_record(pamf[0], pamf[1], pamf[2], pamf[3])
         if flag in "chromium":
@@ -378,7 +378,7 @@ class CleanTheCookies():
         objcc = cookiesclean.CookiesClean(homedir)
 
         if flag in "firefox":
-            filepathf = common.analytical_profiles_file(homedir) + "cookies.sqlite"
+            filepathf = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
             pamf = [filepathf, 'moz_cookies', 'baseDomain']
             objcc.clean_all_records(pamf[0], pamf[1], pamf[2])
         if flag in "chromium":
@@ -462,6 +462,23 @@ class CleanTheCache():
                     sesdaemon.data_transmit_by_cache('thumbnails', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
                 else:
                     sesdaemon.data_transmit_by_cache('thumbnails', one, 'False',common.confirm_filesize_unit(os.path.getsize(one)))
+        if 'firefox' in mode_list:
+            firefoxpath = "%s/.cache/mozilla/firefox/%s" % (homedir, common.analytical_profiles_file(homedir))
+            temp_firefox_list = self.objc.firefox_scan_cache(firefoxpath)
+            for one in temp_firefox_list:
+                if os.path.isdir(one):
+                    sesdaemon.data_transmit_by_cache('firefox', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
+                else:
+                    sedaemon.data_transmit_by_cache('firefox', one, 'False', common.confirm_filesize_unit(os.path.getsize(one)))
+        if 'chromium' in mode_list:
+            chromiumpath = "%s/.cache/chromium/Defaults" % homedir
+            temp_chromium_list = self.objc.public_scan_cache(chromiumpath)
+            for one in temp_thumbnails_list:
+                if os.path.isdir(one):
+                    sesdaemon.data_transmit_by_cache('chromium', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
+                else:
+                    sesdaemon.data_transmit_by_cache('chromium', one, 'False',common.confirm_filesize_unit(os.path.getsize(one)))
+
         sesdaemon.cache_transmit_complete()
 
 # the function of clean cruft files and cruft packages

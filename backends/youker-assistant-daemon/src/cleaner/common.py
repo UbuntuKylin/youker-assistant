@@ -76,7 +76,7 @@ def analytical_profiles_file(homedir):
     count = 0
     tmp_pro_section = []
     flag_pro_section = ''
-    final_path = ''
+    finalpath = ''
 
     app_path = '%s/.mozilla/firefox' % homedir
     profiles_path = '%s/profiles.ini' % app_path
@@ -98,19 +98,19 @@ def analytical_profiles_file(homedir):
         if cfg.getint('General', 'StartWithLastProfile'):
             if count == 1:
                 if cfg.getint(tmp_pro_section[0], 'IsRelative') == 0:
-                    final_path = cfg.get(tmp_pro_section[0], 'Path')
+                    finalpath = cfg.get(tmp_pro_section[0], 'Path').split('/')[-1]
                 else:
-                    final_path = os.path.expanduser('%s/%s/' % (app_path, cfg.get(tmp_pro_section[0], 'Path')))
+                    finalpath = cfg.get(tmp_pro_section[0], 'Path')
             elif count > 1 :
                 if cfg.getint(flag_pro_section, 'IsRelative') == 0:
-                    final_path = cfg.get(flag_pro_section, 'Path')
+                    finalpath = cfg.get(flag_pro_section, 'Path').split('/')[-1]
                 else:
-                    final_path = os.path.expanduser('%s/%s/' % (app_path, cfg.get(flag_pro_section, 'Path')))
+                    finalpath = cfg.get(flag_pro_section, 'Path')
             else:
                 pass
         else:
             pass
-    return final_path
+    return finalpath
 
 def get_mozilla_path(homedir):
     count = 0
@@ -120,7 +120,7 @@ def get_mozilla_path(homedir):
     else:
         app_path = os.path.expanduser('~/.mozilla/firefox')
     flag_pro_section = ''
-    final_path = ''
+    finalpath = ''
 
     profiles_path = '%s/profiles.ini' % app_path
     if os.path.exists(profiles_path):
@@ -141,17 +141,19 @@ def get_mozilla_path(homedir):
         if cfg.getint('General', 'StartWithLastProfile'):
             if count == 1:
                 if cfg.getint(tmp_pro_section[0], 'IsRelative') == 0:
-                    final_path = cfg.get(tmp_pro_section[0], 'Path')
+                    finalpath = cfg.get(tmp_pro_section[0], 'Path')
                 else:
-                    final_path = os.path.expanduser('%s/%s/' % (app_path, cfg.get(tmp_pro_section[0], 'Path')))
+                    finalpath = os.path.expanduser('%s/%s/' % (app_path, cfg.get(tmp_pro_section[0], 'Path')))
             elif count > 1 :
                 if cfg.getint(flag_pro_section, 'IsRelative') == 0:
-                    final_path = cfg.get(flag_pro_section, 'Path')
+                    finalpath = cfg.get(flag_pro_section, 'Path')
                 else:
-                    final_path = os.path.expanduser('%s/%s/' % (app_path, cfg.get(flag_pro_section, 'Path')))
+                    finalpath = os.path.expanduser('%s/%s/' % (app_path, cfg.get(flag_pro_section, 'Path')))
             else:
                 raise Exception('profile.ini has error!')
         else:
             pass
-    return final_path
+    return finalpath
 
+if __name__ == '__main__':
+    print analytical_profiles_file('/home/aya')
