@@ -48,7 +48,7 @@ bool Util::id_exists_in_location_file(QString id) {
         while(!in.atEnd())
         {
            line = in.readLine();
-           id = line.split(':')[1];
+           tmpId = line.split(':')[1];
            if (tmpId == id) {
                locationFile.close();
                return true;

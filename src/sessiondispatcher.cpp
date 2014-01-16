@@ -110,8 +110,8 @@ QStringList SessionDispatcher::get_latitude_list_qt() {
     return reply.value();
 }
 
-QString SessionDispatcher::prepare_location_for_yahoo_qt(QString geonameid) {
-    QDBusReply<QString> reply = sessioniface->call("prepare_location_for_yahoo", geonameid);
+QString SessionDispatcher::get_yahoo_city_id_qt(QString geonameid) {
+    QDBusReply<QString> reply = sessioniface->call("get_yahoo_city_id", geonameid);
     qDebug() << "new id->";
     qDebug() << reply.value();
     return reply.value();
@@ -793,7 +793,6 @@ void SessionDispatcher::get_forecast_weahter_qt() {
         thread->start();
     }
     else {
-        qDebug() << "ps111";
         get_yahoo_forecast_dict_qt();
         emit startUpdateForecastWeahter("yahooforecast");
     }
@@ -808,32 +807,31 @@ void SessionDispatcher::get_forecast_dict_qt() {
 }
 
 void SessionDispatcher::get_yahoo_forecast_dict_qt() {
-    qDebug() << "ps222";
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_yahoo_forecast_dict");
-    qDebug() << "ps333";
     yahooforecastInfo = reply.value();
-
-    qDebug() << "yahooforecastInfo data->";
-    qDebug() << yahooforecastInfo;
 }
 
 /*bool*/void SessionDispatcher::get_current_weather_qt() {
+    qDebug() << "01";
     getCityIdInfo();
+    qDebug() << "02";
+    qDebug() << initCityId;
     QStringList tmplist;
     tmplist << "Kobe" << "Lee";
 //0.3.3
     bool flag = Util::id_exists_in_location_file(initCityId);
+    qDebug() << "03";
     if(flag) {//获取中国气象局数据
 //        sessioniface->call("get_current_weather", initCityId);
-
+        qDebug() << "111";
+        qDebug() << initCityId;
         KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
         thread->start();
     }
     else {//获取雅虎气象数据
-        QStringList latlon = this->getLatandLon();
-        qDebug() << "1111111111111";
-        qDebug() << latlon;
-        qDebug() << initCityId;
+        QStringList latlon = this->getLatandLon(initCityId);
+//        qDebug() << latlon;
+//        qDebug() << initCityId;
 //        sessioniface->call("get_current_yahoo_weather", latlon, initCityId);
         KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
         thread->start();
@@ -904,7 +902,7 @@ bool SessionDispatcher::update_weather_data_qt() {
         return reply.value();
     }
     else {
-        QStringList latlon = this->getLatandLon();
+        QStringList latlon = this->getLatandLon(initCityId);
         KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
         thread->start();
         return false;
@@ -991,6 +989,13 @@ void SessionDispatcher::initConfigFile() {
         cityId = QString("101250101");
         mSettings->setValue("cityId", cityId);
     }
+    QStringList idList = mSettings->value("idList").toStringList();
+    if(idList.isEmpty()) {
+        idList.append("101250101");
+        idList.append("101010100");
+        idList.append("101020100");
+        mSettings->setValue("idList", idList);
+    }
     QStringList places = mSettings->value("places").toStringList();
     //places为空时，赋默认值为：湖南,长沙,长沙
     if(places.isEmpty()) {
@@ -1001,15 +1006,19 @@ void SessionDispatcher::initConfigFile() {
         mSettings->setValue("places", places);
     }
     //纬度
-    QString latitude = mSettings->value("latitude").toString();
+    QStringList latitude = mSettings->value("latitude").toStringList();
     if(latitude.isEmpty()) {
-        latitude = QString("");
+        latitude.append("NA");
+        latitude.append("NA");
+        latitude.append("NA");
         mSettings->setValue("latitude", latitude);
     }
     //经度
-    QString longitude = mSettings->value("longitude").toString();
+    QStringList longitude = mSettings->value("longitude").toStringList();
     if(longitude.isEmpty()) {
-        longitude = QString("");
+        longitude.append("NA");
+        longitude.append("NA");
+        longitude.append("NA");
         mSettings->setValue("longitude", longitude);
     }
     QString rate = mSettings->value("rate").toString();
@@ -1038,13 +1047,37 @@ void SessionDispatcher::getCityIdInfo() {
     mSettings->sync();
 }
 
-QStringList SessionDispatcher::getLatandLon() {
+QStringList SessionDispatcher::getLatandLon(QString id) {
+//    QStringList tmp;
+//    mSettings->beginGroup("weather");
+//    tmp << mSettings->value("latitude").toString();
+//    tmp << mSettings->value("longitude").toString();
+//    mSettings->endGroup();
+//    mSettings->sync();
+//    return tmp;
+
     QStringList tmp;
+    bool flag = false;
     mSettings->beginGroup("weather");
-    tmp << mSettings->value("latitude").toString();
-    tmp << mSettings->value("longitude").toString();
+    QStringList idList = mSettings->value("idList").toStringList();
+    QStringList latitude = mSettings->value("latitude").toStringList();
+    QStringList longitude = mSettings->value("longitude").toStringList();
     mSettings->endGroup();
     mSettings->sync();
+
+    int j = 0;
+    for (int i=0; i< idList.length(); i++) {
+        if(id == idList[i]) {
+            flag = true;
+            break;
+        }
+        j += 1;
+    }
+    if(flag) {
+        flag = false;
+        tmp << latitude[j];
+        tmp << longitude[j];
+    }
     return tmp;
 }
 

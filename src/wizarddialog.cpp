@@ -112,13 +112,20 @@ void WizardDialog::setLocation(QString cityName, QString cityId, QString lat, QS
     newCityName = cityName;
     newCityId = cityId;
 
-
+    //添加城市后，重新写天气配置到配置文件中
     QStringList listName = pSettings->value("weather/places").toStringList();
     listName.append(newCityName);
+    QStringList idList = pSettings->value("weather/idList").toStringList();
+    idList.append(newCityId);
+    QStringList latitude = pSettings->value("weather/latitude").toStringList();
+    latitude.append(lat);
+    QStringList longitude = pSettings->value("weather/longitude").toStringList();
+    longitude.append(lon);
     pSettings->setValue("weather/places", listName);
     pSettings->setValue("weather/cityId", newCityId);
-    pSettings->setValue("weather/latitude", lat);
-    pSettings->setValue("weather/longitude", lon);
+    pSettings->setValue("weather/idList", idList);
+    pSettings->setValue("weather/latitude", latitude);
+    pSettings->setValue("weather/longitude", longitude);
     pSettings->sync();
     emit readyToUpdateWeatherForWizard();
 }
@@ -144,46 +151,144 @@ void WizardDialog::addLocation() {
 void WizardDialog::delLocation() {
     QString currentStr = ui->listWidget->currentItem()->text();
     QStringList listName = pSettings->value("weather/places").toStringList();
+    QStringList idList = pSettings->value("weather/idList").toStringList();
+    QStringList latitude = pSettings->value("weather/latitude").toStringList();
+    QStringList longitude = pSettings->value("weather/longitude").toStringList();
     QStringList newList;
     int size;
+    int index = 0;
+    QString cityId;
     size = listName.size();
     for(int i =0; i<size; ++i) {
         if(listName.at(i) != currentStr) {
             newList.append(listName.at(i));
         }
+        else {
+            index = i;
+        }
+
     }
-    if(newList.size()==0)
+    if(newList.size()==0)//城市列表为空时
     {
-      ui->delBtn->setEnabled(false);
-      ui->listWidget->clear();
-      pSettings->setValue("weather/places", newList);
-      pSettings->setValue("weather/cityId", "");
-      pSettings->sync();
-    }
-    else {
+        ui->delBtn->setEnabled(false);
         ui->listWidget->clear();
         pSettings->setValue("weather/places", newList);
+        pSettings->setValue("weather/cityId", "");
+        pSettings->setValue("weather/idList", newList);
+        pSettings->setValue("weather/latitude", newList);
+        pSettings->setValue("weather/longitude", newList);
+        pSettings->sync();
+    }
+    else {
+        //将删除某个城市后的新城市列表显示在界面上
+        ui->listWidget->clear();
         for(int j=0; j<newList.size(); ++j)
         {
-            qDebug() << newList.at(j);
             ui->listWidget->insertItem(j, newList.at(j));
         }
         QListWidgetItem *currentitem;
         currentitem = ui->listWidget->item(0);
         ui->listWidget->setCurrentItem(currentitem);
-        QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
-        if (cityId == "") {
-            //警告：           没有找到配置文件！
-            QMessageBox::warning(NULL,
-                                 tr("Warning:"),
-                                 tr("The configuration file is not found!"),
-                                 QMessageBox::Ok);
+
+        //将删除某个城市后的新城市列表写入配置中
+        pSettings->setValue("weather/places", newList);
+
+
+        //将删除某个城市后的新城市id列表写入配置中
+        QStringList newidList;
+        size = idList.size();
+        for(int i =0; i<size; ++i) {
+            if(i != index) {
+                newidList.append(idList.at(i));
+            }
         }
-        else {
-            pSettings->setValue("weather/cityId", cityId);
-            pSettings->sync();
+        cityId = newidList[0];
+        pSettings->setValue("weather/idList", newidList);
+
+
+        //将删除某个城市后的新城市纬度列表写入配置中
+        QStringList newlat;
+        size = latitude.size();
+        for(int i =0; i<size; ++i) {
+            if(i != index) {
+                newlat.append(latitude.at(i));
+            }
         }
+        pSettings->setValue("weather/latitude", newlat);
+
+
+        //将删除某个城市后的新城市经度列表写入配置中
+        QStringList newlon;
+        size = longitude.size();
+        for(int i =0; i<size; ++i) {
+            if(i != index) {
+                newlon.append(longitude.at(i));
+            }
+        }
+        pSettings->setValue("weather/longitude", newlon);
+
+
+        pSettings->setValue("weather/cityId", cityId);
+        pSettings->sync();
+        emit readyToUpdateWeatherForWizard();
+//        QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
+//        if (cityId == "") {
+//            //警告：           没有找到配置文件！
+//            QMessageBox::warning(NULL,
+//                                 tr("Warning:"),
+//                                 tr("The configuration file is not found!"),
+//                                 QMessageBox::Ok);
+//        }
+//        else {
+//            pSettings->setValue("weather/cityId", cityId);
+//            pSettings->sync();
+//        }
     }
+
+
+
+//    QString currentStr = ui->listWidget->currentItem()->text();
+//    QStringList listName = pSettings->value("weather/places").toStringList();
+//    QStringList newList;
+//    int size;
+//    size = listName.size();
+//    for(int i =0; i<size; ++i) {
+//        if(listName.at(i) != currentStr) {
+//            newList.append(listName.at(i));
+//        }
+//    }
+//    if(newList.size()==0)
+//    {
+//      ui->delBtn->setEnabled(false);
+//      ui->listWidget->clear();
+//      pSettings->setValue("weather/places", newList);
+//      pSettings->setValue("weather/cityId", "");
+//      pSettings->sync();
+//    }
+//    else {
+//        ui->listWidget->clear();
+//        pSettings->setValue("weather/places", newList);
+//        for(int j=0; j<newList.size(); ++j)
+//        {
+//            qDebug() << newList.at(j);
+//            ui->listWidget->insertItem(j, newList.at(j));
+//        }
+//        QListWidgetItem *currentitem;
+//        currentitem = ui->listWidget->item(0);
+//        ui->listWidget->setCurrentItem(currentitem);
+//        QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
+//        if (cityId == "") {
+//            //警告：           没有找到配置文件！
+//            QMessageBox::warning(NULL,
+//                                 tr("Warning:"),
+//                                 tr("The configuration file is not found!"),
+//                                 QMessageBox::Ok);
+//        }
+//        else {
+//            pSettings->setValue("weather/cityId", cityId);
+//            pSettings->sync();
+//        }
+//    }
 }
 
 

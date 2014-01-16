@@ -8,6 +8,8 @@ ChangeCityDialog::ChangeCityDialog(QSettings *mSettings, QWidget *parent) :
     ui(new Ui::ChangeCityDialog)
 {
     ui->setupUi(this);
+    sedispather = new SessionDispatcher;
+
     pSettings = mSettings;
     init();
 
@@ -49,13 +51,78 @@ void ChangeCityDialog::init() {
 }
 
 void ChangeCityDialog::writeWeatherConf() {
-    QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
+    QString name = ui->listWidget->currentItem()->text();
+    QString cityId = Util::get_id_from_cityname(name);
+    bool flag = false;
     if(cityId == "") {
-        //警告:     没有找到配置文件！
-        QMessageBox::warning(NULL,
-                             tr("Warning:"),
-                             tr("The configuration file is not found!"),
-                             QMessageBox::Ok);
+        //从Yahoo获取对应城市的id
+        pSettings->beginGroup("weather");
+        QStringList cityList = pSettings->value("places").toStringList();
+        QStringList idList = pSettings->value("idList").toStringList();
+//        QStringList latitude = pSettings->value("latitude").toStringList();
+//        QStringList longitude = pSettings->value("longitude").toStringList();
+        pSettings->endGroup();
+        pSettings->sync();
+
+        if(cityList.isEmpty()) {
+            //警告:     没有找到该城市！
+            QMessageBox::warning(NULL,
+                                 tr("Warning:"),
+                                 tr("Cannot find the city!"),
+                                 QMessageBox::Ok);
+        }
+        else {
+            int j = 0;
+            for (int i=0; i< cityList.length(); i++) {
+                if(name == cityList[i]) {
+                    flag = true;
+                    break;
+                }
+                j += 1;
+            }
+            if(flag) {
+                flag = false;
+                pSettings->setValue("weather/cityId", idList[j]);
+                pSettings->sync();
+                emit readyToUpdateWeather();
+                this->accept();
+            }
+        }
+
+//        QStringList listname = sedispather->search_city_names_qt(ui->listWidget->currentItem()->text());
+//        QStringList geonameidList = sedispather->get_geonameid_list_qt();
+//        QStringList latitudeList = sedispather->get_latitude_list_qt();
+//        QStringList longitudeList = sedispather->get_longitude_list_qt();
+//        qDebug() << "--------------";
+//        qDebug() << ui->listWidget->currentItem()->text();
+//        qDebug() << listname;
+//        qDebug() << geonameidList;
+//        qDebug() << latitudeList;
+//        qDebug() << longitudeList;
+//        if(!listname.isEmpty()) {
+//            yahoo = true;
+//            flag = true;
+//            ui->comboBox->clear();
+//            ui->comboBox->addItems(listname);
+//            selectCity = "";
+//            selectCity = ui->comboBox->currentText();
+//            int len = listname.length();
+//            if(len == geonameidList.length()) {
+//                for (int i=0; i < len; i++) {
+//                    yahooInfo[listname[i]] = geonameidList[i];
+//                    latInfo[listname[i]] = latitudeList[i];
+//                    lonInfo[listname[i]] = longitudeList[i];
+//                }
+//             }
+//        }
+
+
+
+//        //警告:     没有找到配置文件！
+//        QMessageBox::warning(NULL,
+//                             tr("Warning:"),
+//                             tr("The configuration file is not found!"),
+//                             QMessageBox::Ok);
     }
     else {
         pSettings->setValue("weather/cityId", cityId);

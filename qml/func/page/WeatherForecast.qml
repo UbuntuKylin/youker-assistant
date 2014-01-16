@@ -23,7 +23,7 @@ Item {
     Rectangle {
         id: weather_widget
         anchors.fill: parent
-        property string actiontext: qsTr("Getting six days weather forecast data from CMA, providing reference information for users to travel.")//获取中国气象局的六天天气预报数据，为用户出行提供参考。
+        property string actiontext: qsTr("Getting weather forecast data from CMA/Yahoo, providing reference information for users to travel.")//获取来自中国气象局/雅虎天气的天气预报数据，为用户出行提供参考。
 
         property string week1
         property string week2

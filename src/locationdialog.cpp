@@ -105,19 +105,6 @@ void LocationDialog::on_searchBtn_clicked()
             QStringList geonameidList = sedispather->get_geonameid_list_qt();
             QStringList latitudeList = sedispather->get_latitude_list_qt();
             QStringList longitudeList = sedispather->get_longitude_list_qt();
-//            @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-//            def get_longitude_list(self):
-//                return self.__lonList
-
-//            # 纬度
-//            @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-//            def get_latitude_list(self):
-//                return self.__latList
-//            qDebug() << "-----------";
-//            qDebug() << listname;
-//            qDebug() << geonameidList;
-//            qDebug() << listname.length();
-//            qDebug() << geonameidList.length();
             if(!listname.isEmpty()) {
                 yahoo = true;
                 flag = true;
@@ -128,14 +115,11 @@ void LocationDialog::on_searchBtn_clicked()
                 int len = listname.length();
                 if(len == geonameidList.length()) {
                     for (int i=0; i < len; i++) {
-//                        qDebug() << listname[i];
-//                        qDebug() << geonameidList[i];
                         yahooInfo[listname[i]] = geonameidList[i];
                         latInfo[listname[i]] = latitudeList[i];
                         lonInfo[listname[i]] = longitudeList[i];
                     }
                  }
-                qDebug() << yahooInfo;
             }
         }
     }
@@ -163,24 +147,21 @@ void LocationDialog::on_okBtn_clicked()
             }
             else {
                 QString cityId;
-                QString lat;
-                QString lon;
+                QString lat = "NA";
+                QString lon = "NA";
                 if(yahoo) {
                     yahoo = false;
                     QString tmpId = yahooInfo[currentCity].toString();
                     lat = latInfo[currentCity].toString();
                     lon = lonInfo[currentCity].toString();
-                    cityId = sedispather->prepare_location_for_yahoo_qt(tmpId);
-                    qDebug() << "--------";
-                    qDebug() << currentCity;//"纽约, 纽约州, 美国"
-                    qDebug() << tmpId;//"5128581"
-                    qDebug() << cityId;//"USNY0996"
-
+                    cityId = sedispather->get_yahoo_city_id_qt(tmpId);
                 }
                 else {
                     cityId = cityInfo[currentCity].toString();
                 }
-                emit sendCityInfo(currentCity, cityId, lat, lon);
+                if(!cityId.isEmpty()) {
+                    emit sendCityInfo(currentCity, cityId, lat, lon);
+                }
             }
         }
         this->accept();

@@ -111,7 +111,6 @@ Rectangle {
                 weahterzone.resetPM25(sessiondispatcher.access_pm25_str_qt());
             }
             else if(flag == "yahoo") {
-                console.log("yahoo over......");
                 weahterzone.resetCurrentYahooWeather();
                 weahterzone.resetChangeCityBtn();
             }

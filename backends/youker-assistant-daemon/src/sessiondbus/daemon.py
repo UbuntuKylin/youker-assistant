@@ -75,20 +75,17 @@ class SessionDaemon(dbus.service.Object):
         self.daemonunneed = cleaner.CleanTheUnneed()
         self.daemonoldkernel = cleaner.CleanTheOldkernel()
         self.daemoncache = cleaner.CleanTheCache()
-
         self.__cities = []
         self.__idList = []
         self.__latList = []
         self.__lonList = []
-
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
-    def prepare_location_for_yahoo(self, geonameId):
-        """ Get location details in English for Yahoo """
-        #print 'ddd'
+    def get_yahoo_city_id(self, geonameId):
+        """ Get Yahoo id from geonameid """
         #print geonameId#1816670
         yahoo_id = ''
         baseurl = 'http://api.geonames.org/getJSON'
@@ -98,7 +95,7 @@ class SessionDaemon(dbus.service.Object):
         try:
             handler = urllib2.urlopen(url)
         except urllib2.URLError:
-            print "Location: error reaching url '%s'" % url
+            print "error"
         content_type = handler.info().dict['content-type']
         try:
             charset = re.search('charset\=(.*)',content_type).group(1)
@@ -109,7 +106,6 @@ class SessionDaemon(dbus.service.Object):
         else:
             json_response = handler.read()
         city = json.loads(json_response)
-        #print city
         handler.close()
         if 'adminName1' in city:
             displayed_city_name = u', '.join((city['name'],
@@ -120,11 +116,8 @@ class SessionDaemon(dbus.service.Object):
                                               city['countryName']))
         else:
             return
-        #print 'a1'
         #print displayed_city_name#Beijing, Beijing, China
-        # Get YAHOO WOEID by english name of location
         woeid_result = pywapi.get_woeid_from_yahoo(displayed_city_name)
-        #print 'a2'
         #print woeid_result#{'count': 1, 0: (u'2151330', u'Beijing, Beijing, China')}
         if 'error' in woeid_result:
             return
@@ -132,16 +125,12 @@ class SessionDaemon(dbus.service.Object):
         # only look at the the first woeid result
             woeid = woeid_result[0][0]
             location_code = woeid
-            #print 'location_code->'
             #print location_code#2151330
-
         # Get old Yahoo id by woeid
         url = 'http://weather.yahooapis.com/forecastrss?w=%s' % woeid#http://weather.yahooapis.com/forecastrss?w=2151330
         try:
-            #print "Location: Get Yahoo RSS ID, url %s" % url
             handler = urllib2.urlopen(url)
         except urllib2.URLError:
-            #print "Location: error reaching url '%s'" % url
             return
         content_type = handler.info().dict['content-type']
         try:
@@ -157,43 +146,18 @@ class SessionDaemon(dbus.service.Object):
         try:
             guid_value = dom.getElementsByTagName('guid')[0].firstChild.nodeValue
         except (AttributeError, IndexError):
-            #print "Location: Can't find guid in yahoo RSS response. "
             dom.unlink()
             return
         p = re.compile('([^_]*)_')
         m = p.match(guid_value)
         try:
             yahoo_id =  m.group(1)
-            #print "yahoo_id->"
-            #print yahoo_id
         except AttributeError:
-            print "Location: Can't find yahoo id via woeid. "
+            print "No yahoo id via woeid. "
         dom.unlink()
         return yahoo_id
 
-    def add_city_names(self, cities):
-        """ Matches found - add city names to the combo box """
-        for city in cities['geonames']:
-            # Create a full city name, consisting of city name,
-            # administrative areas names and country name
-            if 'adminName2' in city:
-                displayed_city_name = u', '.join(
-                    (city['name'], city['adminName1'],
-                    city['adminName1'], city['countryName'])
-                    )
-            elif 'adminName1' in city:
-                displayed_city_name = u', '.join(
-                    (city['name'], city['adminName1'], city['countryName'])
-                    )
-            else:
-                displayed_city_name = u', '.join((city['name'],
-                                                city['countryName']))
-            self.__cities.append(displayed_city_name.encode('utf-8'))
-            self.__idList.append(unicode(city['geonameId']))
-            self.__latList.append(unicode(city['lat']))
-            self.__lonList.append(unicode(city['lng']))
-        return False
-
+    # geonameid
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_geonameid_list(self):
         return self.__idList
@@ -218,9 +182,8 @@ class SessionDaemon(dbus.service.Object):
                 locale_name = "en"
             baseurl = 'http://api.geonames.org/searchJSON'
             params = {'q': search_string, 'featureClass': 'P', 'maxRows': '10',
-                        'lang': locale_name, 'username': 'kobe'}#indicatorweather
+                        'lang': locale_name, 'username': 'kobe'}
             url = '?'.join((baseurl, urlencode(params)))
-            #print 'url->'
             #print url#http://api.geonames.org/searchJSON?q=beijing&lang=zh&username=kobe&maxRows=10&featureClass=P
             handler = urllib2.urlopen(url)
             content_type = handler.info().dict['content-type']
@@ -235,10 +198,11 @@ class SessionDaemon(dbus.service.Object):
             cities = json.loads(json_response)
             handler.close()
             #print type(cities)
-            #self.add_city_names(cities)
+            self.__cities = []
+            self.__idList = []
+            self.__latList = []
+            self.__lonList = []
             for city in cities['geonames']:
-                # Create a full city name, consisting of city name,
-                # administrative areas names and country name
                 if 'adminName2' in city:
                     displayed_city_name = u', '.join(
                         (city['name'], city['adminName1'],
@@ -256,7 +220,7 @@ class SessionDaemon(dbus.service.Object):
                 self.__latList.append(unicode(city['lat']))
                 self.__lonList.append(unicode(city['lng']))
         except urllib2.URLError:
-            print "Assistant: error reaching url '%s'" % url
+            print "error"
         return self.__cities
 
 
@@ -851,12 +815,7 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_yahoo_forecast_dict(self):
-        return self.yahooconf.get_forecast()
-
-    # get current day's weather
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
-    #def get_current_weather(self, cityId):
-    #    return self.weatherconf.getCurrentWeather(cityId)
+        return self.yahooconf.get_yahoo_forecast_dict()
 
     # get current PM2.5
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')

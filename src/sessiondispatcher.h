@@ -45,7 +45,7 @@ public:
     //得到纬度
     Q_INVOKABLE QStringList get_latitude_list_qt();
     //得到可以获取天气数据的id
-    Q_INVOKABLE QString prepare_location_for_yahoo_qt(QString geonameid);
+    Q_INVOKABLE QString get_yahoo_city_id_qt(QString geonameid);
 
     //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_session_daemon_qt();
@@ -233,7 +233,7 @@ public:
     Q_INVOKABLE int getLengthOfCityList();
     void initConfigFile();
     void getCityIdInfo();
-    QStringList getLatandLon();//得到纬度和经度
+    QStringList getLatandLon(QString id);//得到纬度和经度
 
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);
