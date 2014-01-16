@@ -444,8 +444,8 @@ bool SystemDispatcher::delete_plymouth_qt(QString plymouthName) {
 
 QString SystemDispatcher::showSelectFileDialog(QString flag) {
     if (flag == "bootanimation") {
-        //选择开机动画            图像文件  (*.png)
-        QString bootfileName = QFileDialog::getOpenFileName(0, tr("Select the boot animation"), "", tr("Image Files (*.png)"));
+        //选择开机动画            图像文件  (*.png *.jpg *.gif)
+        QString bootfileName = QFileDialog::getOpenFileName(0, tr("Select the boot animation"), "", tr("Image Files (*.png *.jpg *.gif)"));
         return bootfileName;
     }
     else if (flag == "soundeffects") {

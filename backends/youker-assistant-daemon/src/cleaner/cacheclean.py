@@ -27,6 +27,12 @@ class CacheClean():
 
         return publiccache_list
 
+    def firefox_scan_cache(self, path):
+        firefoxcache_list = []
+        if os.path.exists(path):
+            firefoxcache_list = ['%s/%s' % (path, filename) for filename in os.listdir(path) if filename in 'Cache']
+        return firefoxcache_list
+
     def get_softwarecenter_cache(self, homedir):
         centercachelist = []
         if homedir:

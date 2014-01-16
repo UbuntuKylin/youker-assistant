@@ -28,7 +28,7 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property string image_path: ""
-    property string actiontitle: qsTr("Boot animation settings (only supports the PNG image format !)")//开机动画设置 (目前仅支持 png 图片格式！)
+    property string actiontitle: qsTr("Boot animation settings")//开机动画设置
     property string actiontext: qsTr("Click the ' Custom Image ' button to select the picture you want to add, select the picture you want to set and click ' OK ' button to complete the setup.")//单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置。
     property int num: 0
     property string selectedimage: ""

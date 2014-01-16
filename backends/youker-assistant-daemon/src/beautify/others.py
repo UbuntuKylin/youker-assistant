@@ -19,6 +19,7 @@
 import os
 import re
 import shutil
+import Image
 # from _pyio import open
 
 class Others:
@@ -38,6 +39,7 @@ class Others:
         existingPlymouth = self.get_existing_plymouth_list()
         customBG = customBG.encode('utf-8')
         plymouthName = plymouthName.encode('utf-8')
+        plymouthName
         if(plymouthName in existingPlymouth):
             return False
         else:
@@ -57,7 +59,8 @@ class Others:
             # add new system plymouth dir
             os.mkdir('/lib/plymouth/themes/' + plymouthName)
             shutil.copy(customScript, '/lib/plymouth/themes/' + plymouthName + '/youker.script')
-            shutil.copy(customBG, '/lib/plymouth/themes/' + plymouthName + '/customBG.png')
+            #shutil.copy(customBG, '/lib/plymouth/themes/' + plymouthName + '/customBG.png')
+            Image.open(customBG).save('/lib/plymouth/themes/' + plymouthName + '/customBG.png')
 			
             return True
 
@@ -84,7 +87,7 @@ class Others:
         index = fullString.find('ScriptFile=')
         theLine = fullString[index:]
         # cut 'ScriptFile=' & '\n'
-        scriptFile = theLine[0:-1][theLine.find('/'):]
+        scriptFile = theLine[theLine.find('/'):]
         scriptDir = scriptFile[0:scriptFile.rfind('/')]
         scriptName = scriptFile[scriptFile.rfind('/') + 1:]
         plymouthName = scriptDir[scriptDir.rfind('/') + 1:]
