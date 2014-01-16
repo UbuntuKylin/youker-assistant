@@ -45,7 +45,7 @@ protected slots:
     void delLocation();
     void setSpinValue(int value);
     void writeWeatherConf();
-    void setLocation(QString cityName, QString cityId);
+    void setLocation(QString cityName, QString cityId, QString lat, QString lon);
 
 signals:
     void transConfValue(QString key, QString value);

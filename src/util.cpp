@@ -38,3 +38,24 @@ QString Util::get_id_from_cityname(QString cityName) {
     }
     return cityId;
 }
+
+bool Util::id_exists_in_location_file(QString id) {
+    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt");
+    if(locationFile.exists() && locationFile.open(QFile::ReadOnly)) {
+        QTextStream in(&locationFile);
+        QString line;
+        QString tmpId;
+        while(!in.atEnd())
+        {
+           line = in.readLine();
+           id = line.split(':')[1];
+           if (tmpId == id) {
+               locationFile.close();
+               return true;
+           }
+        }
+        locationFile.close();
+    }
+    return false;
+}
+

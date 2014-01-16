@@ -36,6 +36,15 @@ import time
 
 import cleaner
 
+import pywapi
+import urllib2, urllib
+from urllib import urlencode
+from xml.dom.minidom import parseString
+import re
+import json
+import locale
+
+
 from beautify.desktop import Desktop
 from beautify.unity import Unity
 from beautify.theme import Theme
@@ -43,6 +52,7 @@ from beautify.system import System
 from beautify.sound import Sound
 from sysinfo import Sysinfo
 from weather.weatherinfo import WeatherInfo
+from weather.yahoo import YahooWeather#0.3.3
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
 
@@ -59,15 +69,196 @@ class SessionDaemon(dbus.service.Object):
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
         self.weatherconf = WeatherInfo(self)
+        self.yahooconf = YahooWeather(self)
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
         self.daemonoldkernel = cleaner.CleanTheOldkernel()
         self.daemoncache = cleaner.CleanTheCache()
 
+        self.__cities = []
+        self.__idList = []
+        self.__latList = []
+        self.__lonList = []
+
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
+    def prepare_location_for_yahoo(self, geonameId):
+        """ Get location details in English for Yahoo """
+        #print 'ddd'
+        #print geonameId#1816670
+        yahoo_id = ''
+        baseurl = 'http://api.geonames.org/getJSON'
+        params = {'geonameId': geonameId,
+                  'username': 'kobe'}
+        url = '?'.join((baseurl, urlencode(params)))
+        try:
+            handler = urllib2.urlopen(url)
+        except urllib2.URLError:
+            print "Location: error reaching url '%s'" % url
+        content_type = handler.info().dict['content-type']
+        try:
+            charset = re.search('charset\=(.*)',content_type).group(1)
+        except AttributeError:
+            charset = 'utf-8'
+        if charset.lower() != 'utf-8':
+            json_response = handler.read().decode(charset).encode('utf-8')
+        else:
+            json_response = handler.read()
+        city = json.loads(json_response)
+        #print city
+        handler.close()
+        if 'adminName1' in city:
+            displayed_city_name = u', '.join((city['name'],
+                                              city['adminName1'],
+                                              city['countryName']))
+        elif 'name' in city:
+            displayed_city_name = u', '.join((city['name'],
+                                              city['countryName']))
+        else:
+            return
+        #print 'a1'
+        #print displayed_city_name#Beijing, Beijing, China
+        # Get YAHOO WOEID by english name of location
+        woeid_result = pywapi.get_woeid_from_yahoo(displayed_city_name)
+        #print 'a2'
+        #print woeid_result#{'count': 1, 0: (u'2151330', u'Beijing, Beijing, China')}
+        if 'error' in woeid_result:
+            return
+        else:
+        # only look at the the first woeid result
+            woeid = woeid_result[0][0]
+            location_code = woeid
+            #print 'location_code->'
+            #print location_code#2151330
+
+        # Get old Yahoo id by woeid
+        url = 'http://weather.yahooapis.com/forecastrss?w=%s' % woeid#http://weather.yahooapis.com/forecastrss?w=2151330
+        try:
+            #print "Location: Get Yahoo RSS ID, url %s" % url
+            handler = urllib2.urlopen(url)
+        except urllib2.URLError:
+            #print "Location: error reaching url '%s'" % url
+            return
+        content_type = handler.info().dict['content-type']
+        try:
+            charset = re.search('charset\=(.*)',content_type).group(1)
+        except AttributeError:
+            charset = 'utf-8'
+        if charset.lower() != 'utf-8':
+            xml_response = handler.read().decode(charset).encode('utf-8')
+        else:
+            xml_response = handler.read()
+        dom = parseString(xml_response)
+        handler.close()
+        try:
+            guid_value = dom.getElementsByTagName('guid')[0].firstChild.nodeValue
+        except (AttributeError, IndexError):
+            #print "Location: Can't find guid in yahoo RSS response. "
+            dom.unlink()
+            return
+        p = re.compile('([^_]*)_')
+        m = p.match(guid_value)
+        try:
+            yahoo_id =  m.group(1)
+            #print "yahoo_id->"
+            #print yahoo_id
+        except AttributeError:
+            print "Location: Can't find yahoo id via woeid. "
+        dom.unlink()
+        return yahoo_id
+
+    def add_city_names(self, cities):
+        """ Matches found - add city names to the combo box """
+        for city in cities['geonames']:
+            # Create a full city name, consisting of city name,
+            # administrative areas names and country name
+            if 'adminName2' in city:
+                displayed_city_name = u', '.join(
+                    (city['name'], city['adminName1'],
+                    city['adminName1'], city['countryName'])
+                    )
+            elif 'adminName1' in city:
+                displayed_city_name = u', '.join(
+                    (city['name'], city['adminName1'], city['countryName'])
+                    )
+            else:
+                displayed_city_name = u', '.join((city['name'],
+                                                city['countryName']))
+            self.__cities.append(displayed_city_name.encode('utf-8'))
+            self.__idList.append(unicode(city['geonameId']))
+            self.__latList.append(unicode(city['lat']))
+            self.__lonList.append(unicode(city['lng']))
+        return False
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_geonameid_list(self):
+        return self.__idList
+
+    # 经度
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_longitude_list(self):
+        return self.__lonList
+
+    # 纬度
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_latitude_list(self):
+        return self.__latList
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    def search_city_names(self, search_string):
+        try:
+            (localeName, encode) = locale.getdefaultlocale()
+            if localeName is not None:
+                locale_name = localeName.split('_')[0]
+            else:
+                locale_name = "en"
+            baseurl = 'http://api.geonames.org/searchJSON'
+            params = {'q': search_string, 'featureClass': 'P', 'maxRows': '10',
+                        'lang': locale_name, 'username': 'kobe'}#indicatorweather
+            url = '?'.join((baseurl, urlencode(params)))
+            #print 'url->'
+            #print url#http://api.geonames.org/searchJSON?q=beijing&lang=zh&username=kobe&maxRows=10&featureClass=P
+            handler = urllib2.urlopen(url)
+            content_type = handler.info().dict['content-type']
+            try:
+                charset = re.search('charset\=(.*)', content_type).group(1)
+            except AttributeError:
+                charset = 'utf-8'
+            if charset.lower() != 'utf-8':
+                json_response = handler.read().decode(charset).encode('utf-8')
+            else:
+                json_response = handler.read()
+            cities = json.loads(json_response)
+            handler.close()
+            #print type(cities)
+            #self.add_city_names(cities)
+            for city in cities['geonames']:
+                # Create a full city name, consisting of city name,
+                # administrative areas names and country name
+                if 'adminName2' in city:
+                    displayed_city_name = u', '.join(
+                        (city['name'], city['adminName1'],
+                        city['adminName1'], city['countryName'])
+                        )
+                elif 'adminName1' in city:
+                    displayed_city_name = u', '.join(
+                        (city['name'], city['adminName1'], city['countryName'])
+                        )
+                else:
+                    displayed_city_name = u', '.join((city['name'],
+                                                    city['countryName']))
+                self.__cities.append(displayed_city_name.encode('utf-8'))
+                self.__idList.append(unicode(city['geonameId']))
+                self.__latList.append(unicode(city['lat']))
+                self.__lonList.append(unicode(city['lng']))
+        except urllib2.URLError:
+            print "Assistant: error reaching url '%s'" % url
+        return self.__cities
+
 
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def onekey_scan_function(self, mode_list):
@@ -645,9 +836,22 @@ class SessionDaemon(dbus.service.Object):
     def get_current_weather(self, cityId):
         self.weatherconf.getCurrentWeather(cityId)
 
+    # get current day's weather from yahoo 0.3.3
+    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
+    def get_current_yahoo_weather(self, latlon, cityId):
+        self.yahooconf.getYahooCurrentWeather(latlon, cityId)
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_current_weather_dict(self):
         return self.weatherconf.get_current_weather_dict()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_current_yahoo_weather_dict(self):
+        return self.yahooconf.get_current_yahoo_weather_dict()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_yahoo_forecast_dict(self):
+        return self.yahooconf.get_forecast()
 
     # get current day's weather
     #@dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')

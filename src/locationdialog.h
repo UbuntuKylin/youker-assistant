@@ -19,6 +19,8 @@
 
 #include <QDialog>
 #include <QMap>
+#include "sessiondispatcher.h"
+
 namespace Ui {
 class LocationDialog;
 }
@@ -46,10 +48,15 @@ private:
     bool flag;
     //保存用户选中的城市名，方便没有点击确定按钮，重新输入城市名字后判断flag
     QString selectCity;
-
+    SessionDispatcher *sedispather;
+//    QStringList geonameidList;
+    QMap<QString, QVariant> yahooInfo;
+    QMap<QString, QVariant> latInfo;
+    QMap<QString, QVariant> lonInfo;
+    bool yahoo;
 
 signals:
-    void sendCityInfo(QString cityName, QString cityId);
+    void sendCityInfo(QString cityName, QString cityId, QString lat, QString lon);
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);

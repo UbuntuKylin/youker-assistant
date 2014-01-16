@@ -101,7 +101,7 @@ void WizardDialog::loadConf() {
     }
 }
 
-void WizardDialog::setLocation(QString cityName, QString cityId) {
+void WizardDialog::setLocation(QString cityName, QString cityId, QString lat, QString lon) {
     ui->listWidget->insertItem(0, cityName);
     ui->delBtn->setEnabled(true);
 
@@ -117,6 +117,8 @@ void WizardDialog::setLocation(QString cityName, QString cityId) {
     listName.append(newCityName);
     pSettings->setValue("weather/places", listName);
     pSettings->setValue("weather/cityId", newCityId);
+    pSettings->setValue("weather/latitude", lat);
+    pSettings->setValue("weather/longitude", lon);
     pSettings->sync();
     emit readyToUpdateWeatherForWizard();
 }
@@ -135,7 +137,7 @@ void WizardDialog::writeWeatherConf() {
 
 void WizardDialog::addLocation() {
     LocationDialog *locationDialog = new LocationDialog();
-    connect(locationDialog, SIGNAL(sendCityInfo(QString, QString)), this, SLOT(setLocation(QString, QString)));
+    connect(locationDialog, SIGNAL(sendCityInfo(QString, QString, QString, QString)), this, SLOT(setLocation(QString, QString, QString, QString)));
     locationDialog->exec();
 }
 

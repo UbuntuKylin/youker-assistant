@@ -63,14 +63,12 @@ Rectangle {
         var pIntTime = parseInt(need_str, 10);//eg: 8
         if(pIntTime > 7 && pIntTime < 20) {
             var img1 = sessiondispatcher.getSingleWeatherInfo("img1", "current");
-            weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img1, "weathericon")
+            weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img1, "weathericon");
         }
         else {
             var img2 = sessiondispatcher.getSingleWeatherInfo("img2", "current");
-            weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img2, "weathericon")
+            weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img2, "weathericon");
         }
-
-
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
         ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + qsTr(" o'clock release");// 发布
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
@@ -85,6 +83,21 @@ Rectangle {
         temperatureRangeText.text = qsTr("Temperature range:") + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");//温度范围：
         humidityText.text = qsTr("Humidity:") + sessiondispatcher.getSingleWeatherInfo("SD", "current");//湿度：
     }
+    //设置yahoo天气到界面上
+    function resetCurrentYahooWeather() {
+        weatherIcon.source = "http://l.yimg.com/a/i/us/we/52/" + sessiondispatcher.getSingleWeatherInfo("code", "yahoo") + ".gif";
+        locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "yahoo");//城市
+        ptimeText.text = "";
+        pmText.text = sessiondispatcher.getSingleWeatherInfo("time", "yahoo");//发布时间
+//        ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "yahoo");;//发布时间
+        weatherText.text = sessiondispatcher.getSingleWeatherInfo("text", "yahoo");//当前天气
+        windText.text = qsTr("Wind:") + sessiondispatcher.getSingleWeatherInfo("wind", "yahoo");//风力
+        tempText.text = qsTr("Current temperature:") + sessiondispatcher.getSingleWeatherInfo("temp", "yahoo");//当前温度：
+        temperatureRangeText.text = qsTr("Sunrise:") + sessiondispatcher.getSingleWeatherInfo("sunrise", "yahoo");//日出 :
+        humidityText.text = qsTr("Sunset:") + sessiondispatcher.getSingleWeatherInfo("sunset", "yahoo");//日落：
+//        temperatureRangeText.text = qsTr("Sunrise:") + sessiondispatcher.getSingleWeatherInfo("sunrise", "yahoo") + "; " + qsTr("Sunset:") + sessiondispatcher.getSingleWeatherInfo("sunset", "yahoo");//日出  日落
+//        humidityText.text = qsTr("Humidity:") + sessiondispatcher.getSingleWeatherInfo("humidity", "yahoo");//湿度：
+    }
 
     Connections
     {
@@ -96,6 +109,11 @@ Rectangle {
             }
             else if(flag == "pm25") {
                 weahterzone.resetPM25(sessiondispatcher.access_pm25_str_qt());
+            }
+            else if(flag == "yahoo") {
+                console.log("yahoo over......");
+                weahterzone.resetCurrentYahooWeather();
+                weahterzone.resetChangeCityBtn();
             }
         }
 
@@ -163,7 +181,7 @@ Rectangle {
             Image {
                 id: weatherIcon
                 width: 48; height: 48
-                source: ""
+                source: ""//http://l.yimg.com/a/i/us/we/52/21.gif
             }
 
             Common.StyleButton {

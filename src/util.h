@@ -26,7 +26,7 @@ class Util
 
 public:
     static QString get_id_from_cityname(QString cityName);
-
+    static bool id_exists_in_location_file(QString id);
 };
 
 #endif // UTIL_H

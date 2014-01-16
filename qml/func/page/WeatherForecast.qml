@@ -305,12 +305,55 @@ Item {
             weahterModel.append({"date": weather_widget.week6, "dayIcon": weather_widget.img11, "nightIcon": weather_widget.img12, "temp": sessiondispatcher.getSingleWeatherInfo("temp6", "forecast"), "weather": sessiondispatcher.getSingleWeatherInfo("weather6", "forecast"),"wind": sessiondispatcher.getSingleWeatherInfo("wind6", "forecast")})
         }
 
+
+
+        //设置Yahoo五天天气预报数据显示在QML界面上
+        function initYahooWeatherForcast() {
+//            {'temp3': u'-6 \xb0C ~ 4 \xb0C', 'temp2': u'-7 \xb0C ~ 7 \xb0C', 'temp1': u'-6 \xb0C ~ 6 \xb0C', 'temp0': u'-6 \xb0C ~ 7 \xb0C', 'temp4': u'-7 \xb0C ~ 5 \xb0C',
+//             'date1': u'17 Jan 2014', 'date0': u'16 Jan 2014', 'date3': u'19 Jan 2014', 'date2': u'18 Jan 2014', 'date4': u'20 Jan 2014',
+//             'day4': u'Mon', 'day2': u'Sat', 'day3': u'Sun', 'day0': u'Thu', 'day1': u'Fri',
+//             'text2': u'Sunny', 'text3': u'Mostly Cloudy', 'text0': u'Sunny', 'text1': u'Partly Cloudy', 'text4': u'Sunny',
+//             'code0': u'32', 'code1': u'30', 'code2': u'32', 'code3': u'28', 'code4': u'32'}
+
+            weather_widget.week1 = sessiondispatcher.getSingleWeatherInfo("day0", "yahooforecast") + ", " + sessiondispatcher.getSingleWeatherInfo("date0", "yahooforecast");
+            weather_widget.week2 = sessiondispatcher.getSingleWeatherInfo("day1", "yahooforecast") + ", " + sessiondispatcher.getSingleWeatherInfo("date1", "yahooforecast");
+            weather_widget.week3 = sessiondispatcher.getSingleWeatherInfo("day2", "yahooforecast") + ", " + sessiondispatcher.getSingleWeatherInfo("date2", "yahooforecast");
+            weather_widget.week4 = sessiondispatcher.getSingleWeatherInfo("day3", "yahooforecast") + ", " + sessiondispatcher.getSingleWeatherInfo("date3", "yahooforecast");
+            weather_widget.week5 = sessiondispatcher.getSingleWeatherInfo("day4", "yahooforecast") + ", " + sessiondispatcher.getSingleWeatherInfo("date4", "yahooforecast");
+            weather_widget.week6 = "";
+            //未来五天天气预报，预报时间：
+            locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "yahooforecast") + "  " + sessiondispatcher.getSingleWeatherInfo("time", "yahooforecast");
+            weather_widget.img1 = "http://l.yimg.com/a/i/us/we/52/" + sessiondispatcher.getSingleWeatherInfo("code0", "yahooforecast") + ".gif";
+            weather_widget.img2 = "";
+            weather_widget.img3 = "http://l.yimg.com/a/i/us/we/52/" + sessiondispatcher.getSingleWeatherInfo("code1", "yahooforecast") + ".gif";
+            weather_widget.img4 = "";
+            weather_widget.img5 = "http://l.yimg.com/a/i/us/we/52/" + sessiondispatcher.getSingleWeatherInfo("code2", "yahooforecast") + ".gif";
+            weather_widget.img6 = "";
+            weather_widget.img7 = "http://l.yimg.com/a/i/us/we/52/" + sessiondispatcher.getSingleWeatherInfo("code3", "yahooforecast") + ".gif";
+            weather_widget.img8 = "";
+            weather_widget.img9 = "http://l.yimg.com/a/i/us/we/52/" + sessiondispatcher.getSingleWeatherInfo("code4", "yahooforecast") + ".gif";
+            weather_widget.img10 = "";
+            weather_widget.img11 = "";
+            weather_widget.img12 = "";
+
+            weahterModel.clear();
+            weahterModel.append({"date": weather_widget.week1, "dayIcon": weather_widget.img1, "nightIcon": weather_widget.img2, "temp": sessiondispatcher.getSingleWeatherInfo("temp0", "yahooforecast"), "weather": sessiondispatcher.getSingleWeatherInfo("text0", "yahooforecast"),"wind": ""})
+            weahterModel.append({"date": weather_widget.week2, "dayIcon": weather_widget.img3, "nightIcon": weather_widget.img4, "temp": sessiondispatcher.getSingleWeatherInfo("temp1", "yahooforecast"), "weather": sessiondispatcher.getSingleWeatherInfo("text1", "yahooforecast"),"wind": ""})
+            weahterModel.append({"date": weather_widget.week3, "dayIcon": weather_widget.img5, "nightIcon": weather_widget.img6, "temp": sessiondispatcher.getSingleWeatherInfo("temp2", "yahooforecast"), "weather": sessiondispatcher.getSingleWeatherInfo("text2", "yahooforecast"),"wind": ""})
+            weahterModel.append({"date": weather_widget.week4, "dayIcon": weather_widget.img7, "nightIcon": weather_widget.img8, "temp": sessiondispatcher.getSingleWeatherInfo("temp3", "yahooforecast"), "weather": sessiondispatcher.getSingleWeatherInfo("text3", "yahooforecast"),"wind": ""})
+            weahterModel.append({"date": weather_widget.week5, "dayIcon": weather_widget.img9, "nightIcon": weather_widget.img10, "temp": sessiondispatcher.getSingleWeatherInfo("temp4", "yahooforecast"), "weather": sessiondispatcher.getSingleWeatherInfo("text4", "yahooforecast"),"wind": ""})
+//            weahterModel.append({"date": weather_widget.week6, "dayIcon": weather_widget.img11, "nightIcon": weather_widget.img12, "temp": sessiondispatcher.getSingleWeatherInfo("temp5", "yahooforecast"), "weather": sessiondispatcher.getSingleWeatherInfo("text5", "yahooforecast"),"wind": "})
+        }
+
         Connections
         {
             target: sessiondispatcher
             onStartUpdateForecastWeahter: {
                 if(flag == "forecast") {
                     weather_widget.initWeatherForcast();
+                }
+                else if(flag == "yahooforecast") {
+                    weather_widget.initYahooWeatherForcast();
                 }
             }
         }
@@ -336,12 +379,15 @@ Item {
             opacity: 0.9
             onButtonClicked: {
                 var num = sessiondispatcher.get_page_num();
-                if (num == 0)
-                    pageStack.push(homepage)
-                else if (num == 3)
-                    pageStack.push(systemset)
-                else if (num == 4)
-                    pageStack.push(functioncollection)
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
             }
         }
         Column {

@@ -90,6 +90,33 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
+QStringList SessionDispatcher::search_city_names_qt(QString search_name) {
+    QDBusReply<QStringList> reply = sessioniface->call("search_city_names", search_name);
+    return reply.value();
+}
+
+QStringList SessionDispatcher::get_geonameid_list_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_geonameid_list");
+    return reply.value();
+}
+
+QStringList SessionDispatcher::get_longitude_list_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_longitude_list");
+    return reply.value();
+}
+
+QStringList SessionDispatcher::get_latitude_list_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_latitude_list");
+    return reply.value();
+}
+
+QString SessionDispatcher::prepare_location_for_yahoo_qt(QString geonameid) {
+    QDBusReply<QString> reply = sessioniface->call("prepare_location_for_yahoo", geonameid);
+    qDebug() << "new id->";
+    qDebug() << reply.value();
+    return reply.value();
+}
+
 void SessionDispatcher::handler_access_forecast_weather(QString key, QString value) {
     if(key == "forecast" && value == "kobe") {
         get_forecast_dict_qt();
@@ -102,6 +129,10 @@ void SessionDispatcher::handler_access_forecast_weather(QString key, QString val
     else if(key == "pm25" && value == "kobe") {
         get_pm25_str_qt();
         emit startUpdateForecastWeahter("pm25");
+    }
+    else if(key == "yahoo" && value == "kobe") {
+        get_current_yahoo_weather_dict_qt();
+        emit startUpdateForecastWeahter("yahoo");
     }
 }
 
@@ -749,12 +780,23 @@ QString SessionDispatcher::setSkin() {
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
 
-//    SessionThread *thread = new SessionThread(sessioniface, "get_forecast_weahter", initCityId);
+//    QStringList tmplist;
+//    tmplist << "Kobe" << "Lee";
+//    KThread *thread = new KThread(tmplist, sessioniface, "get_forecast_weahter", initCityId);
 //    thread->start();
-    QStringList tmplist;
-    tmplist << "Kobe" << "Lee";
-    KThread *thread = new KThread(tmplist, sessioniface, "get_forecast_weahter", initCityId);
-    thread->start();
+
+    bool flag = Util::id_exists_in_location_file(initCityId);
+    if(flag) {//获取中国气象局数据
+        QStringList tmplist;
+        tmplist << "Kobe" << "Lee";
+        KThread *thread = new KThread(tmplist, sessioniface, "get_forecast_weahter", initCityId);
+        thread->start();
+    }
+    else {
+        qDebug() << "ps111";
+        get_yahoo_forecast_dict_qt();
+        emit startUpdateForecastWeahter("yahooforecast");
+    }
 
 //    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
 //    forecastInfo = reply.value();
@@ -765,13 +807,37 @@ void SessionDispatcher::get_forecast_dict_qt() {
     forecastInfo = reply.value();
 }
 
+void SessionDispatcher::get_yahoo_forecast_dict_qt() {
+    qDebug() << "ps222";
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_yahoo_forecast_dict");
+    qDebug() << "ps333";
+    yahooforecastInfo = reply.value();
+
+    qDebug() << "yahooforecastInfo data->";
+    qDebug() << yahooforecastInfo;
+}
+
 /*bool*/void SessionDispatcher::get_current_weather_qt() {
     getCityIdInfo();
     QStringList tmplist;
     tmplist << "Kobe" << "Lee";
-    KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
-    thread->start();
+//0.3.3
+    bool flag = Util::id_exists_in_location_file(initCityId);
+    if(flag) {//获取中国气象局数据
+//        sessioniface->call("get_current_weather", initCityId);
 
+        KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
+        thread->start();
+    }
+    else {//获取雅虎气象数据
+        QStringList latlon = this->getLatandLon();
+        qDebug() << "1111111111111";
+        qDebug() << latlon;
+        qDebug() << initCityId;
+//        sessioniface->call("get_current_yahoo_weather", latlon, initCityId);
+        KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
+        thread->start();
+    }
 
 //    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
 //    currentInfo = reply.value();
@@ -786,6 +852,13 @@ void SessionDispatcher::get_forecast_dict_qt() {
 void SessionDispatcher::get_current_weather_dict_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather_dict");
     currentInfo = reply.value();
+}
+
+void SessionDispatcher::get_current_yahoo_weather_dict_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_yahoo_weather_dict");
+    yahoocurrentInfo = reply.value();
+//    qDebug() << "yahoo data->";
+//    qDebug() << yahoocurrentInfo;
 }
 
 //QString SessionDispatcher::get_current_pm25_qt() {
@@ -825,8 +898,20 @@ int SessionDispatcher::get_current_rate() {
 
 bool SessionDispatcher::update_weather_data_qt() {
     getCityIdInfo();
-    QDBusReply<bool> reply = sessioniface->call("update_weather_data", initCityId);
-    return reply.value();
+    bool flag = Util::id_exists_in_location_file(initCityId);
+    if(flag) {//获取中国气象局数据
+        QDBusReply<bool> reply = sessioniface->call("update_weather_data", initCityId);
+        return reply.value();
+    }
+    else {
+        QStringList latlon = this->getLatandLon();
+        KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
+        thread->start();
+        return false;
+    }
+
+//    QDBusReply<bool> reply = sessioniface->call("update_weather_data", initCityId);
+//    return reply.value();
 }
 
 void SessionDispatcher::update_forecast_weather() {
@@ -847,6 +932,12 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     }
     else if(flag == "weathericon") {
         info = "../../img/weather/" + key;
+    }
+    else if(flag == "yahoo") {
+        info = yahoocurrentInfo.value(key);
+    }
+    else if(flag == "yahooforecast") {
+        info = yahooforecastInfo.value(key);
     }
     return info.toString();
 }
@@ -909,6 +1000,18 @@ void SessionDispatcher::initConfigFile() {
         places.append("上海,上海,上海");
         mSettings->setValue("places", places);
     }
+    //纬度
+    QString latitude = mSettings->value("latitude").toString();
+    if(latitude.isEmpty()) {
+        latitude = QString("");
+        mSettings->setValue("latitude", latitude);
+    }
+    //经度
+    QString longitude = mSettings->value("longitude").toString();
+    if(longitude.isEmpty()) {
+        longitude = QString("");
+        mSettings->setValue("longitude", longitude);
+    }
     QString rate = mSettings->value("rate").toString();
     //rate为空时，赋默认值为：60
     if(rate.isEmpty()) {
@@ -935,6 +1038,15 @@ void SessionDispatcher::getCityIdInfo() {
     mSettings->sync();
 }
 
+QStringList SessionDispatcher::getLatandLon() {
+    QStringList tmp;
+    mSettings->beginGroup("weather");
+    tmp << mSettings->value("latitude").toString();
+    tmp << mSettings->value("longitude").toString();
+    mSettings->endGroup();
+    mSettings->sync();
+    return tmp;
+}
 
 void SessionDispatcher::change_maincheckbox_status(QString status) {
     emit startChangeMaincheckboxStatus(status);

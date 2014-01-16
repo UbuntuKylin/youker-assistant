@@ -1,3 +1,9 @@
+youker-assistant (0.3.3-0ubuntu1) trusty; urgency=low
+
+  * Access Yahoo weather info.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 16 Jan 2014 11:03:19 +0800
+
 youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
 
   * Refersh process list automatically and position the originally selected process(LP: #1261802).

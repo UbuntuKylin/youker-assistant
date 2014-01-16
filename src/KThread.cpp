@@ -70,6 +70,9 @@ void KThread::run() {
     else if(methodName == "get_current_weather") {
         iface->call("get_current_weather", fileFlag);
     }
+    else if(methodName == "get_current_yahoo_weather") {
+        iface->call("get_current_yahoo_weather", list, fileFlag);
+    }
     else if(methodName == "get_current_pm25") {
         iface->call("get_current_pm25", fileFlag);
     }

@@ -35,6 +35,18 @@ public:
     explicit SessionDispatcher(QObject *parent = 0);
     ~SessionDispatcher();
     QDBusInterface *sessioniface;
+
+    //得到yahoo城市列表
+    Q_INVOKABLE QStringList search_city_names_qt(QString search_name);
+    //得到对应yahoo城市列表的geonameid列表
+    Q_INVOKABLE QStringList get_geonameid_list_qt();
+    //得到经度
+    Q_INVOKABLE QStringList get_longitude_list_qt();
+    //得到纬度
+    Q_INVOKABLE QStringList get_latitude_list_qt();
+    //得到可以获取天气数据的id
+    Q_INVOKABLE QString prepare_location_for_yahoo_qt(QString geonameid);
+
     //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_session_daemon_qt();
     //扫描浏览器历史记录
@@ -191,8 +203,10 @@ public:
     /*-------------------weather forecast-------------------*/
     Q_INVOKABLE void get_forecast_weahter_qt();
     void get_forecast_dict_qt();//天气预报数据获取完成后，通过该函数返回其获取的值给forecastInfo
+    void get_yahoo_forecast_dict_qt();
     Q_INVOKABLE void get_current_weather_qt();
     void get_current_weather_dict_qt();//当天天气数据获取完成后，通过该函数返回其获取的值给currentInfo
+    void get_current_yahoo_weather_dict_qt();//yahoo当天天气数据获取完成后，通过该函数返回其获取的值给yahoocurrentInfo
     Q_INVOKABLE void get_current_pm25_qt();
     void get_pm25_str_qt();//当PM2.5获取成功后，返回给pm25Info
     Q_INVOKABLE QString access_pm25_str_qt();//把pm25Info给QML
@@ -206,6 +220,8 @@ public:
 
     QMap<QString, QVariant> forecastInfo;
     QMap<QString, QVariant> currentInfo;
+    QMap<QString, QVariant> yahoocurrentInfo;
+    QMap<QString, QVariant> yahooforecastInfo;
     QString pm25Info;
     //通过键得到对应的单个信息的值,flag= forecast/current
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
@@ -217,6 +233,7 @@ public:
     Q_INVOKABLE int getLengthOfCityList();
     void initConfigFile();
     void getCityIdInfo();
+    QStringList getLatandLon();//得到纬度和经度
 
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);

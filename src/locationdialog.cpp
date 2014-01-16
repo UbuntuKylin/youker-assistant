@@ -28,7 +28,9 @@ LocationDialog::LocationDialog(QWidget *parent) :
     ui->setupUi(this);
     ui->comboBox->setFocus();
 
+    sedispather = new SessionDispatcher;
     flag = false;
+    yahoo = false;
     selectCity = "";
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     this->setWindowFlags(Qt::FramelessWindowHint);
@@ -86,15 +88,55 @@ QStringList LocationDialog::list_city_names(QString inputText) {
 
 void LocationDialog::on_searchBtn_clicked()
 {
+    QString yahoo_str = ui->comboBox->currentText();
     QString content = ui->comboBox->currentText().replace(" ", "");
     if(!content.isEmpty()) {
         QStringList listname = list_city_names(content);
         if(!listname.isEmpty()) {
+            yahoo = false;
             flag = true;
             ui->comboBox->clear();
             ui->comboBox->addItems(listname);
             selectCity = "";
             selectCity = ui->comboBox->currentText();
+        }
+        else {
+            listname = sedispather->search_city_names_qt(yahoo_str);
+            QStringList geonameidList = sedispather->get_geonameid_list_qt();
+            QStringList latitudeList = sedispather->get_latitude_list_qt();
+            QStringList longitudeList = sedispather->get_longitude_list_qt();
+//            @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+//            def get_longitude_list(self):
+//                return self.__lonList
+
+//            # 纬度
+//            @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+//            def get_latitude_list(self):
+//                return self.__latList
+//            qDebug() << "-----------";
+//            qDebug() << listname;
+//            qDebug() << geonameidList;
+//            qDebug() << listname.length();
+//            qDebug() << geonameidList.length();
+            if(!listname.isEmpty()) {
+                yahoo = true;
+                flag = true;
+                ui->comboBox->clear();
+                ui->comboBox->addItems(listname);
+                selectCity = "";
+                selectCity = ui->comboBox->currentText();
+                int len = listname.length();
+                if(len == geonameidList.length()) {
+                    for (int i=0; i < len; i++) {
+//                        qDebug() << listname[i];
+//                        qDebug() << geonameidList[i];
+                        yahooInfo[listname[i]] = geonameidList[i];
+                        latInfo[listname[i]] = latitudeList[i];
+                        lonInfo[listname[i]] = longitudeList[i];
+                    }
+                 }
+                qDebug() << yahooInfo;
+            }
         }
     }
 
@@ -102,6 +144,7 @@ void LocationDialog::on_searchBtn_clicked()
 
 void LocationDialog::on_quitBtn_clicked()
 {
+    yahoo = false;
     this->close();
 }
 
@@ -119,8 +162,25 @@ void LocationDialog::on_okBtn_clicked()
                                      QMessageBox::Ok);
             }
             else {
-                QString cityId = cityInfo[currentCity].toString();
-                emit sendCityInfo(currentCity, cityId);
+                QString cityId;
+                QString lat;
+                QString lon;
+                if(yahoo) {
+                    yahoo = false;
+                    QString tmpId = yahooInfo[currentCity].toString();
+                    lat = latInfo[currentCity].toString();
+                    lon = lonInfo[currentCity].toString();
+                    cityId = sedispather->prepare_location_for_yahoo_qt(tmpId);
+                    qDebug() << "--------";
+                    qDebug() << currentCity;//"纽约, 纽约州, 美国"
+                    qDebug() << tmpId;//"5128581"
+                    qDebug() << cityId;//"USNY0996"
+
+                }
+                else {
+                    cityId = cityInfo[currentCity].toString();
+                }
+                emit sendCityInfo(currentCity, cityId, lat, lon);
             }
         }
         this->accept();
