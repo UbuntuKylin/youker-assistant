@@ -663,6 +663,31 @@ QStringList SystemDispatcher::get_package_args() {
     return package_args;
 }
 
+void SystemDispatcher::set_browser_args(QString str) {
+    browser_args.append(str);
+}
+
+void SystemDispatcher::del_browser_args(QString str) {
+    QStringList bake;
+    int len = browser_args.length();
+    for (int i=0; i< len; i++) {
+        if (browser_args[i] != str) {
+            bake.append(browser_args[i]);
+        }
+    }
+    browser_args.clear();
+    browser_args = bake;
+//    browser_args.replaceInStrings(QString(str), QString(""));
+}
+
+void SystemDispatcher::clear_browser_args() {
+    browser_args.clear();
+}
+
+QStringList SystemDispatcher::get_browser_args() {
+    return browser_args;
+}
+
 void SystemDispatcher::set_kernel_args(QString str) {
     kernel_args.append(str);
 }

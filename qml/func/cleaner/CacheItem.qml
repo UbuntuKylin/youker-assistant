@@ -130,6 +130,19 @@ Item {
                         systemdispatcher.set_package_args(container.text);
                     }
                 }
+                else if (btn_flag == "browser_work") {
+                    var browserlist = systemdispatcher.get_browser_args();
+                    var word_flag4 = "false";
+                    for (var p=0; q<browserlist.length; p++) {
+                        if (browserlist[p] == container.text) {
+                            word_flag4 = "true";
+                            break;
+                        }
+                    }
+                    if (word_flag4 == "false") {
+                        systemdispatcher.set_browser_args(container.text);
+                    }
+                }
 
 //                else if (btn_flag == "largestfile_work") {
 //                    var filelist = systemdispatcher.get_largestfile_args();
@@ -173,6 +186,9 @@ Item {
 //                }
                 else if (btn_flag == "package_work") {
                     systemdispatcher.del_package_args(container.text);
+                }
+                else if (btn_flag == "browser_work") {
+                    systemdispatcher.del_browser_args(container.text);
                 }
 //                else if (btn_flag == "kernel_work") {
 //                    systemdispatcher.del_kernel_args(container.text);

@@ -436,7 +436,7 @@ class CleanTheCache():
     def __init__(self):
         self.objc = cacheclean.CacheClean()
 
-    def get_all_cache_crufts(self, mode_list, sesdaemon):
+    def get_all_cache_crufts(self, mode_list, flag, sesdaemon):
         homedir = common.return_homedir_sesdaemon()
 
         if 'apt' in mode_list:
@@ -479,7 +479,7 @@ class CleanTheCache():
                 else:
                     sesdaemon.data_transmit_by_cache('chromium', one, 'False',common.confirm_filesize_unit(os.path.getsize(one)))
 
-        sesdaemon.cache_transmit_complete()
+        sesdaemon.cache_transmit_complete(flag)
 
 # the function of clean cruft files and cruft packages
 #class FunctionOfClean(threading.Thread):

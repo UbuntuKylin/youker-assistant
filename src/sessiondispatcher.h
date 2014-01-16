@@ -72,13 +72,15 @@ public:
     //扫描软件中心缓存
     Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
     //扫描apt和软件中心缓存
-    Q_INVOKABLE void cache_scan_function_qt(QStringList argList);
+    Q_INVOKABLE void cache_scan_function_qt(QStringList argList, QString flag);
     //扫描不需要的package和old kernel
     Q_INVOKABLE void package_scan_function_qt(QStringList argList);
     Q_INVOKABLE QStringList get_cache_arglist(int i);
     Q_INVOKABLE QStringList get_package_arglist();
     //扫描旧内核安装包
     Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
+    //扫描浏览器缓存时的参数获取
+    Q_INVOKABLE QStringList get_browser_cache_arglist();
 
     //退出sessiondubs服务
     Q_INVOKABLE void exit_qt();
@@ -264,7 +266,7 @@ signals:
     //把cache扫描结果告诉QML
     void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
     //cache扫描完后告诉QML
-    void tellQMLCaheOver();
+    void tellQMLCaheOver(QString flag);
     //把package和old kernel扫描结果告诉QML
     void appendPackageContentToCacheModel(QString flag, QString pkgName, QString description, QString sizeValue);
     //package和old kernel扫描完后告诉QML
@@ -299,7 +301,7 @@ public slots:
     //接收缓存信号，把数据动态堆加到model中
     void handler_append_cache_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
     //接收cache扫描完后的信号
-    void handler_cache_scan_over();
+    void handler_cache_scan_over(QString flag);
 
     //接收package和old kernel信号，把数据动态堆加到model中
     void handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue);

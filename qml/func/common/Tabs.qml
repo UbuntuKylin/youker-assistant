@@ -37,7 +37,8 @@ Item {
             model: content.length
             delegate: Rectangle {
                 id: mytab
-                width: 165//165每个tab标题的总宽度
+//                width: 165//165每个tab标题的总宽度
+                width: 140//140每个tab标题的总宽度
                 height: 36
                 color:"transparent"
                 Rectangle{
@@ -45,7 +46,8 @@ Item {
                         bottom: parent.bottom
                         horizontalCenter: parent.horizontalCenter
                     }
-                    width: 160//160每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 165 - 160 = 5,即为tab之间的space
+//                    width: 160//160每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 165 - 160 = 5,即为tab之间的space
+                    width: 135//135每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 140 - 130 = 5,即为tab之间的space
                     height: 30
                     border.color: "#abc2c2"
                     Image {

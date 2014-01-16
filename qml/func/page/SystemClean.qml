@@ -49,9 +49,15 @@ Item {
         Common.TabPage {
             title:qsTr("Cookies Cleanup")//Cookies清除
             anchors.fill: parent
-
             Cleaner.CookiesModel {//pengshuang
                 id: cookiesitem
+            }
+        }
+        Common.TabPage {
+            title:qsTr("Browser Cleanup")//浏览器清理
+            anchors.fill: parent
+            Cleaner.BrowserModel {
+                id: browseritem
             }
         }
         Common.TabPage {

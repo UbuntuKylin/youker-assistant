@@ -131,13 +131,11 @@ Item {
             //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
             packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                              "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                             "picture": "../../img/toolWidget/deb-min.png",
-                             "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                             "picture": "../../img/toolWidget/deb-min.png"})
             //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                              "itemTitle": qsTr("Uninstall old kernel packages"),
-                             "picture": "../../img/toolWidget/kernel.png",
-                            "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
+                             "picture": "../../img/toolWidget/kernel.png"})
         }
 
         Connections
@@ -162,13 +160,11 @@ Item {
                 //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                                 "picture": "../../img/toolWidget/deb-min.png",
-                                 "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                                 "picture": "../../img/toolWidget/deb-min.png"})
                 //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Uninstall old kernel packages"),
-                                 "picture": "../../img/toolWidget/kernel.png",
-                                "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
+                                 "picture": "../../img/toolWidget/kernel.png"})
 
                 if(root.packageNum != 0) {
                     root.packageresultFlag = true;//扫描的实际有效内容存在
@@ -273,13 +269,11 @@ Item {
                             //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                             packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                                             "picture": "../../img/toolWidget/deb-min.png",
-                                             "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                                             "picture": "../../img/toolWidget/deb-min.png"})
                             //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall old kernel packages"),
-                                             "picture": "../../img/toolWidget/kernel.png",
-                                            "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
+                                             "picture": "../../img/toolWidget/kernel.png"})
                             systemdispatcher.clear_package_args();
                             packagesubModel.clear();//内容清空
                             kernelsubModel.clear();//内容清空
@@ -294,8 +288,7 @@ Item {
                                 //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                                                 "picture": "../../img/toolWidget/deb-min.png",
-                                                 "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                                                 "picture": "../../img/toolWidget/deb-min.png"})
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
@@ -309,13 +302,11 @@ Item {
                                 //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                                                 "picture": "../../img/toolWidget/deb-min.png",
-                                                 "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                                                 "picture": "../../img/toolWidget/deb-min.png"})
                                 //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
-                                                 "picture": "../../img/toolWidget/kernel.png",
-                                                "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
+                                                 "picture": "../../img/toolWidget/kernel.png"})
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
@@ -401,13 +392,11 @@ Item {
                         //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                         packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                                         "picture": "../../img/toolWidget/deb-min.png",
-                                         "detailstr": qsTr("Users can selectively clean installed program according to the scanning results, to save the disk space.")})
+                                         "picture": "../../img/toolWidget/deb-min.png"})
                         //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                         kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Uninstall old kernel packages"),
-                                         "picture": "../../img/toolWidget/kernel.png",
-                                        "detailstr": qsTr("Users can selectively clean installed old kernel packages according to the scanning results, to save the disk space.")})
+                                         "picture": "../../img/toolWidget/kernel.png"})
                         packagesubModel.clear();//内容清空
                         root.packageNum = 0;//隐藏滑动条
                         root.package_arrow_show = 0;//伸缩图标隐藏

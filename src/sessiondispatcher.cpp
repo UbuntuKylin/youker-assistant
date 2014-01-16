@@ -64,7 +64,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     //Apt and Soft center cache
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_cache_data_to_model(QString,QString,QString,QString)));
-    QObject::connect(sessioniface, SIGNAL(cache_transmit_complete()), this, SLOT(handler_cache_scan_over()));
+    QObject::connect(sessioniface, SIGNAL(cache_transmit_complete(QString)), this, SLOT(handler_cache_scan_over(QString)));
 
     //Uninstall unneed package and old kernel package
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_package(QString, QString, QString, QString)), this, SLOT(handler_append_package_data_to_model(QString,QString,QString,QString)));
@@ -140,8 +140,8 @@ void SessionDispatcher::handler_append_cache_data_to_model(QString flag, QString
     emit appendContentToCacheModel(flag, path, fileFlag, sizeValue);
 }
 
-void SessionDispatcher::handler_cache_scan_over() {
-    emit tellQMLCaheOver();
+void SessionDispatcher::handler_cache_scan_over(QString flag) {
+    emit tellQMLCaheOver(flag);
 }
 
 void SessionDispatcher::handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue) {
@@ -258,14 +258,20 @@ QStringList SessionDispatcher::get_cache_arglist(int i) {
     return tmp;
 }
 
+QStringList SessionDispatcher::get_browser_cache_arglist() {
+    QStringList tmp;
+    tmp << "firefox" << "chromium";
+    return tmp;
+}
+
 QStringList SessionDispatcher::get_package_arglist() {
     QStringList tmp;
     tmp << "unneed" << "oldkernel";
     return tmp;
 }
 
-void SessionDispatcher::cache_scan_function_qt(QStringList argList) {
-    sessioniface->call("cache_scan_function", argList);
+void SessionDispatcher::cache_scan_function_qt(QStringList argList, QString flag) {
+    sessioniface->call("cache_scan_function", argList, flag);
 }
 
 void SessionDispatcher::package_scan_function_qt(QStringList argList) {

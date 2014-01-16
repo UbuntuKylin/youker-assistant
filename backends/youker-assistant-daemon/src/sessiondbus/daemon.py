@@ -322,11 +322,11 @@ class SessionDaemon(dbus.service.Object):
         else:
             pass
 
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    def cache_scan_function(self, mode_list):
+    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
+    def cache_scan_function(self, mode_list, flag):
         cachefunc_obj = cleaner.CleanTheCache()
         try:
-            cachefunc_obj.get_all_cache_crufts(mode_list, self)
+            cachefunc_obj.get_all_cache_crufts(mode_list, flag, self)
         except Exception, e:
             pass
         else:
@@ -375,8 +375,8 @@ class SessionDaemon(dbus.service.Object):
     def data_transmit_by_large(self, size, filepath):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='')
-    def cache_transmit_complete(self):
+    @dbus.service.signal(INTERFACE, signature='s')
+    def cache_transmit_complete(self, flag):
         pass
 
     @dbus.service.signal(INTERFACE, signature='')

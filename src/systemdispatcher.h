@@ -137,6 +137,12 @@ public:
     Q_INVOKABLE void clear_package_args();
     Q_INVOKABLE QStringList get_package_args();
 
+    QStringList browser_args;
+    Q_INVOKABLE void set_browser_args(QString str);
+    Q_INVOKABLE void del_browser_args(QString str);
+    Q_INVOKABLE void clear_browser_args();
+    Q_INVOKABLE QStringList get_browser_args();
+
     QStringList kernel_args;
     Q_INVOKABLE void set_kernel_args(QString str);
     Q_INVOKABLE void del_kernel_args(QString str);
