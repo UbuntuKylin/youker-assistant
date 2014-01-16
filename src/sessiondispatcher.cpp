@@ -241,9 +241,20 @@ QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
     return reply.value();
 }
 
-QStringList SessionDispatcher::get_cache_arglist() {
+QStringList SessionDispatcher::get_cache_arglist(int i) {
     QStringList tmp;
-    tmp << "apt" << "software-center";
+    if(i == 0) {
+        tmp << "apt" << "software-center" << "thumbnails";
+    }
+    else if(i == 4) {
+        tmp << "apt" << "software-center";
+    }
+    else if(i == 5) {
+        tmp << "apt" << "thumbnails";
+    }
+    else if(i == 6) {
+        tmp << "software-center" << "thumbnails";
+    }
     return tmp;
 }
 

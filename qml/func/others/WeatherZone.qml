@@ -37,8 +37,8 @@ Rectangle {
     //当启动时没有网络的时候，设置默认界面
     function setDefaultWeather() {
         weatherIcon.source = "../../img/weather/d0.gif"
-        locationText.text = qsTr("Unable to get weather data,");//无法获取天气数据，
-        ptimeText.text = qsTr("please check network.");//请检查网络。
+//        locationText.text = qsTr("Unable to get weather data,");//无法获取天气数据，
+//        ptimeText.text = qsTr("please check network.");//请检查网络。
         weatherText.text = qsTr("Weather");//天气
         windText.text = qsTr("Wind");//风力
         pmText.text = qsTr("AQI");//空气质量指数
@@ -131,6 +131,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        weahterzone.setDefaultWeather();
         var rate = sessiondispatcher.get_current_rate();
         updateTime.interval = 10000 * rate;
         sessiondispatcher.get_current_weather_qt();
