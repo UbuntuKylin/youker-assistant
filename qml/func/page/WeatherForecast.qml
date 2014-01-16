@@ -423,6 +423,7 @@ Item {
                     }
                     Row {
                         spacing: 20
+                        anchors.horizontalCenter: parent.horizontalCenter
                         Image {
                             source: dayIcon
                         }
