@@ -26,13 +26,13 @@
 #include <QDeclarativeContext>
 #include <QFontDialog>
 #include <QFileDialog>
-
 #include "KThread.h"
 #include "wizarddialog.h"
 #include "changecitydialog.h"
 #include "util.h"
-
 #include "kfontdialog.h"
+#include "logindialog.h"
+
 QString selectedFont;
 QString selectedFcitxFont;
 SessionDispatcher::SessionDispatcher(QObject *parent) :
@@ -45,9 +45,11 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     page_num = 0;
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
+    this->alert_width_bg = 329;
     this->alert_width = 329;
     this->alert_height = 195;
 
+    httpauth = new HttpAuth();
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
 
@@ -90,6 +92,25 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
+void SessionDispatcher::handler_access_user_password(QString user, QString pwd) {
+    qDebug() << user;
+    qDebug() << pwd;
+    QString requestData = QString("%1%2%3%4%5").arg("username=").arg(user).arg("&password=").arg(pwd).arg("&hiddenFields=ifAny");
+    QUrl url("http://210.209.123.136/box/find.php");
+    QByteArray postData;
+    postData.append(requestData);
+    httpauth->sendPostRequest(url, postData);
+}
+
+void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
+    LoginDialog *logindialog = new LoginDialog();
+    QObject::connect(logindialog, SIGNAL(translate_user_password(QString,QString)),this, SLOT(handler_access_user_password(QString,QString)));
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    logindialog->move(this->alert_x, this->alert_y);
+    logindialog->show();
+}
+
 QStringList SessionDispatcher::search_city_names_qt(QString search_name) {
     QDBusReply<QStringList> reply = sessioniface->call("search_city_names", search_name);
     return reply.value();
@@ -112,8 +133,8 @@ QStringList SessionDispatcher::get_latitude_list_qt() {
 
 QString SessionDispatcher::get_yahoo_city_id_qt(QString geonameid) {
     QDBusReply<QString> reply = sessioniface->call("get_yahoo_city_id", geonameid);
-    qDebug() << "new id->";
-    qDebug() << reply.value();
+//    qDebug() << "new id->";
+//    qDebug() << reply.value();
     return reply.value();
 }
 
@@ -829,19 +850,15 @@ void SessionDispatcher::get_yahoo_forecast_dict_qt() {
 }
 
 /*bool*/void SessionDispatcher::get_current_weather_qt() {
-    qDebug() << "01";
     getCityIdInfo();
-    qDebug() << "02";
-    qDebug() << initCityId;
+//    qDebug() << initCityId;
     QStringList tmplist;
     tmplist << "Kobe" << "Lee";
 //0.3.3
     bool flag = Util::id_exists_in_location_file(initCityId);
-    qDebug() << "03";
     if(flag) {//获取中国气象局数据
 //        sessioniface->call("get_current_weather", initCityId);
-        qDebug() << "111";
-        qDebug() << initCityId;
+//        qDebug() << initCityId;
         KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
         thread->start();
     }

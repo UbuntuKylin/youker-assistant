@@ -14,20 +14,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 1.1
-import "../common" as Common
+#ifndef LOGINDIALOG_H
+#define LOGINDIALOG_H
 
-Item {
-     id: topbar
-     property string arrow: "../../img/icons/return.png"
-     signal buttonClicked
+#include <QDialog>
 
-     Common.SetBtn {
-         id: backBtn
-         width: 28
-         height: 26
-         iconName: "return.png"
-//         setbtn_flag: "return"
-         onClicked: topbar.buttonClicked()
-     }
- }
+namespace Ui {
+class LoginDialog;
+}
+
+class LoginDialog : public QDialog
+{
+    Q_OBJECT
+    
+public:
+    explicit LoginDialog(QWidget *parent = 0);
+    ~LoginDialog();
+
+private slots:
+    void on_closeButton_clicked();
+    void on_okButton_clicked();
+signals:
+    void translate_user_password(QString user, QString pwd);
+private:
+    Ui::LoginDialog *ui;
+    QPoint dragPos;
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);
+};
+
+#endif // LOGINDIALOG_H

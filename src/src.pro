@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = youker-assistant
-QT += core gui phonon declarative dbus
+QT += core gui phonon declarative dbus network
 
 inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
@@ -21,6 +21,8 @@ LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 # The .cpp file which was generated for your project. Feel free to hack it.
 HEADERS += youker-application.h \
     quibo.h \
+    logindialog.h \
+    httpauth.h \
     systemdispatcher.h \
     sessiondispatcher.h \
     modaldialog.h \
@@ -69,6 +71,9 @@ HEADERS += youker-application.h \
 
 SOURCES += main.cpp \
     youker-application.cpp \
+    logindialog.cpp \
+    logindialog_event.cpp \
+    httpauth.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
@@ -118,6 +123,7 @@ RESOURCES += pixmap.qrc
 
 FORMS += \
     quibo.ui \
+    logindialog.ui \
     modaldialog.ui \
     warningdialog.ui \
     messagedialog.ui \

@@ -25,7 +25,7 @@
 #include "quibo.h"
 #include "modaldialog.h"
 //#include "skinswidget.h"
-
+#include "httpauth.h"
 class QSettings;
 
 class SessionDispatcher : public QObject
@@ -35,7 +35,7 @@ public:
     explicit SessionDispatcher(QObject *parent = 0);
     ~SessionDispatcher();
     QDBusInterface *sessioniface;
-
+    Q_INVOKABLE void login_ubuntukylin_account(int window_x, int window_y);
     //得到yahoo城市列表
     Q_INVOKABLE QStringList search_city_names_qt(QString search_name);
     //得到对应yahoo城市列表的geonameid列表
@@ -283,6 +283,8 @@ signals:
     //把一键扫描的总数告诉QML
     void tellScanResultToQML(QString flag, QString msg);
 public slots:
+    void handler_access_user_password(QString user, QString pwd);
+
     //获取天气预报槽函数
     void handler_access_forecast_weather(QString key, QString value);
     //扫描完成槽函数
@@ -333,12 +335,14 @@ private:
     int alert_x;
     //保额次alert的y坐标
     int alert_y;
+    int alert_width_bg;
 
     //皮肤对话框对象
 //    SkinsWidget *skin_widget;
 
     QSettings * mSettings;
     QString initCityId;
+    HttpAuth *httpauth;
 };
 
 #endif // SESSIONDISPATCHER_H

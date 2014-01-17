@@ -53,12 +53,15 @@ Rectangle {
     Common.SetBtn {
         id: setBtn
         iconName: "set.png"
-        setbtn_flag: "set"
+//        setbtn_flag: "set"
         anchors{
             left: parent.left
             leftMargin: 26
             top:parent.top
             topMargin: 30
+        }
+        onClicked: {
+            sessiondispatcher.login_ubuntukylin_account(mainwindow.pos.x, mainwindow.pos.y);
         }
     }
     Image {
@@ -73,11 +76,14 @@ Rectangle {
     }
     Common.SetBtn {
         iconName: "message.png"
-        setbtn_flag: "message"
+//        setbtn_flag: "message"
         anchors{
             left: adminImage.right
             top:parent.top
             topMargin: 30
+        }
+        onClicked: {
+            console.log("message clicked....");
         }
     }
 

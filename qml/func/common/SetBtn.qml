@@ -22,7 +22,7 @@ Rectangle {
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
     property string iconName: ""
-    property string setbtn_flag: ""
+//    property string setbtn_flag: ""
     signal clicked();   //如果没有选中任何清理项，提示警告框！first page
 
     Image {
@@ -63,10 +63,10 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             menulogo.clicked();    //如果没有选中任何清理项，提示警告框,发出信号...
-            if (setbtn_flag == "set")
-                console.log("set clicked....");
-            else if (setbtn_flag == "message")
-                console.log("message clicked....");
+//            if (setbtn_flag == "set")
+//                console.log("set clicked....");
+//            else if (setbtn_flag == "message")
+//                console.log("message clicked....");
         }
     }
 }
