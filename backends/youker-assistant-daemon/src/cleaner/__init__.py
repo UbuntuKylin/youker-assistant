@@ -473,7 +473,7 @@ class CleanTheCache():
         if 'chromium' in mode_list:
             chromiumpath = "%s/.cache/chromium/Defaults" % homedir
             temp_chromium_list = self.objc.public_scan_cache(chromiumpath)
-            for one in temp_thumbnails_list:
+            for one in temp_chromiumpath_list:
                 if os.path.isdir(one):
                     sesdaemon.data_transmit_by_cache('chromium', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
                 else:
@@ -509,6 +509,8 @@ class FunctionOfClean():
                 pkg = cache[cruft]
                 if pkg.is_installed:
                     pkg.mark_delete()
+                else:
+                    pkg.mark_delete(purge=True)
             iprogress = MyInstallProgress(sysdaemon)
             cache.commit(None, iprogress)
 
