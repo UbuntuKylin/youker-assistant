@@ -471,7 +471,7 @@ class CleanTheCache():
                 else:
                     sedaemon.data_transmit_by_cache('firefox', one, 'False', common.confirm_filesize_unit(os.path.getsize(one)))
         if 'chromium' in mode_list:
-            chromiumpath = "%s/.cache/chromium/Defaults" % homedir
+            chromiumpath = "%s/.cache/chromium/Default" % homedir
             temp_chromium_list = self.objc.public_scan_cache(chromiumpath)
             for one in temp_chromiumpath_list:
                 if os.path.isdir(one):

@@ -27,7 +27,7 @@
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>Cancel</string>
    </property>
   </widget>
   <widget class="QPushButton" name="okButton">
@@ -44,7 +44,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
 font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>OK</string>
+    <string>Login</string>
    </property>
   </widget>
   <widget class="QLabel" name="btn_close">

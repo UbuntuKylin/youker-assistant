@@ -285,9 +285,21 @@ QStringList SessionDispatcher::get_browser_cache_arglist() {
     return tmp;
 }
 
-QStringList SessionDispatcher::get_package_arglist() {
+QStringList SessionDispatcher::get_package_arglist(int i) {
     QStringList tmp;
-    tmp << "unneed" << "oldkernel";
+    if(i == 0) {
+        tmp << "unneed" << "oldkernel" << "configfile";
+    }
+    else if(i == 4) {
+        tmp << "unneed" << "oldkernel";
+    }
+    else if(i == 5) {
+        tmp << "unneed" << "configfile";
+    }
+    else if(i == 6) {
+        tmp << "oldkernel" << "configfile";
+    }
+//    tmp << "unneed" << "oldkernel";
     return tmp;
 }
 

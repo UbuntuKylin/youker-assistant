@@ -76,7 +76,7 @@ public:
     //扫描不需要的package和old kernel
     Q_INVOKABLE void package_scan_function_qt(QStringList argList);
     Q_INVOKABLE QStringList get_cache_arglist(int i);
-    Q_INVOKABLE QStringList get_package_arglist();
+    Q_INVOKABLE QStringList get_package_arglist(int i);
     //扫描旧内核安装包
     Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
     //扫描浏览器缓存时的参数获取

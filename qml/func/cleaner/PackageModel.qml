@@ -101,31 +101,40 @@ Item {
         id:root
         width: parent.width
         height: parent.height
-        property string title: qsTr("Uninstall unnecessary procedures and old kernel packages")//卸载不必要的程序和旧内核包
-        property string description: qsTr("Cleaning up the software that installed by other software bundled or old kernel packages, to improve system performance")//清理软件安装过程中捆绑安装的依赖程序或旧内核包，提高系统性能
+        property string title: qsTr("Uninstall unnecessary procedures, old kernel packages, and cleanup software configfile")//卸载不必要的程序、旧内核包和清除软件配置文件
+        property string description: qsTr("Cleaning up the software that installed by other software bundled, old kernel packages and software configfile, to improve system performance")//清理软件安装过程中捆绑安装的依赖程序、旧内核包和软件配置文件，提高系统性能
         property string btnFlag: "package_scan"//扫描或者清理的标记：package_scan/package_work
         property bool packageresultFlag: false//判断依赖包扫描后的实际内容是否为空，为空时为false，有内容时为true
         property bool kernelresultFlag: false//判断旧内核包扫描后的实际内容是否为空，为空时为false，有内容时为true
+        property bool configresultFlag: false//判断软件配置扫描后的实际内容是否为空，为空时为false，有内容时为true
         property int packageNum//扫描后得到的依赖包的项目总数
         property int kernelNum//扫描后得到的旧内核包的项目总数
+        property int configNum//扫描后得到的软件配置的项目总数
         property bool packageEmpty: false//决定是否显示扫描内容为空的状态图
         property bool kernelEmpty: false//决定是否显示扫描内容为空的状态图
-        property int mode: 0//扫描模式：0表示两者都扫描，1表示只选中了package，2表示只选中了kernel
+        property bool configEmpty: false//决定是否显示扫描内容为空的状态图
+        property int mode: 0//扫描模式：0表示两者都扫描，1表示只选中了package，2表示只选中了kernel，3表示只选中了config, 4表示只选中了package和kernel，5表示只选中了package和config, 6表示只选中了kernel和config
         property bool splitFlag: true//传递给CacheDelegate.qml,为true时切割字符串，为false时不切割字符串
         property bool flag: false//记录是清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
         property int spaceValue: 20
         property int package_arrow_show: 0//传递给CacheDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
         property int kernel_arrow_show: 0//传递给CacheDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
+        property int config_arrow_show: 0//传递给CacheDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
         property bool package_expanded: false//传递给CacheDelegate.qml,觉得伸缩图标是扩展还是收缩
         property bool kernel_expanded: false//传递给CacheDelegate.qml,觉得伸缩图标是扩展还是收缩
+        property bool config_expanded: false//传递给CacheDelegate.qml,觉得伸缩图标是扩展还是收缩
         property bool package_maincheck: true
         property bool kernel_maincheck: true
+        property bool config_maincheck: true
         property bool package_showNum: false//决定依赖包的扫描结果数是否显示
         property bool kernel_showNum: false//决定旧内核包的扫描结果数是否显示
+        property bool config_showNum: false//决定旧内核包的扫描结果数是否显示
         ListModel { id: packagemainModel }
         ListModel { id: packagesubModel }
         ListModel { id: kernelmainModel }
         ListModel { id: kernelsubModel }
+        ListModel { id: configmainModel }
+        ListModel { id: configsubModel }
 
         Component.onCompleted: {
             //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
@@ -135,6 +144,10 @@ Item {
             //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                              "itemTitle": qsTr("Uninstall old kernel packages"),
+                             "picture": "../../img/toolWidget/kernel.png"})
+            //清除软件配置文件
+            configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
+                             "itemTitle": qsTr("Cleanup software configfile"),
                              "picture": "../../img/toolWidget/kernel.png"})
         }
 
@@ -153,10 +166,16 @@ Item {
                     root.kernelNum += 1;
                     systemdispatcher.set_package_args(pkgName);
                 }
+                else if(flag == "configfile") {
+                    configsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue});
+                    root.configNum += 1;
+                    systemdispatcher.set_package_args(pkgName);
+                }
             }
             onTellQMLPackageOver: {
                 packagemainModel.clear();
                 kernelmainModel.clear();
+                configmainModel.clear();
                 //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
@@ -164,6 +183,10 @@ Item {
                 //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Uninstall old kernel packages"),
+                                 "picture": "../../img/toolWidget/kernel.png"})
+                //清除软件配置文件
+                configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
+                                 "itemTitle": qsTr("Cleanup software configfile"),
                                  "picture": "../../img/toolWidget/kernel.png"})
 
                 if(root.packageNum != 0) {
@@ -183,6 +206,15 @@ Item {
                         root.kernelEmpty = true;
                     }
                     root.kernelresultFlag = false;//扫描的实际有效内容不存在
+                }
+                if(root.configNum != 0) {
+                    root.configresultFlag = true;//扫描的实际有效内容存在
+                }
+                else {
+                    if(root.mode == 0 || root.mode == 3) {
+                        root.configEmpty = true;
+                    }
+                    root.configresultFlag = false;//扫描的实际有效内容不存在
                 }
 
                 if(root.packageresultFlag == false) {
@@ -205,8 +237,18 @@ Item {
                     root.kernel_expanded = true;//伸缩箭头扩展
                     root.kernel_arrow_show = 1;//伸缩箭头显示
                 }
+                if(root.configresultFlag == false) {
+                    root.config_showNum = false;
+                    root.config_expanded = false;//伸缩箭头不扩展
+                    root.config_arrow_show = 0;//伸缩箭头不显示
+                }
+                else if(root.configresultFlag == true) {
+                    root.config_showNum = true;
+                    root.config_expanded = true;//伸缩箭头扩展
+                    root.config_arrow_show = 1;//伸缩箭头显示
+                }
 
-                if(root.packageresultFlag == false && root.kernelresultFlag == false) {
+                if(root.packageresultFlag == false && root.kernelresultFlag == false && root.configresultFlag == false) {
                     root.state = "PackageWorkEmpty";
                     if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                         //友情提示：      扫描内容为空，无需清理！
@@ -229,7 +271,7 @@ Item {
                     backBtn.visible = true;
     //                rescanBtn.visible = true;
                 }
-                scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
+                scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + (root.configNum + 1) * 40 + root.spaceValue*3;
                 //扫描完成后恢复按钮的使能
                 actionBtn.enabled = true;
             }
@@ -263,9 +305,10 @@ Item {
                         //清理完毕后重新获取数据
                         root.flag = true;
 //                        root.getData();
-                        if(root.package_maincheck && root.kernel_maincheck) {
+                        if(root.package_maincheck && root.kernel_maincheck && root.config_maincheck) {
                             packagemainModel.clear();
                             kernelmainModel.clear();
+                            configmainModel.clear();
                             //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                             packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall unnecessary procedures"),
@@ -274,16 +317,22 @@ Item {
                             kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Uninstall old kernel packages"),
                                              "picture": "../../img/toolWidget/kernel.png"})
+                            //清除软件配置文件
+                            configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
+                                             "itemTitle": qsTr("Cleanup software configfile"),
+                                             "picture": "../../img/toolWidget/kernel.png"})
                             systemdispatcher.clear_package_args();
                             packagesubModel.clear();//内容清空
                             kernelsubModel.clear();//内容清空
+                            configsubModel.clear();//内容清空
                             root.packageNum = 0;//隐藏滑动条
                             root.kernelNum = 0;//隐藏滑动条
+                            root.configNum = 0;//隐藏滑动条
                             root.mode = 0;
-                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(0));
                         }
                         else {
-                            if(root.package_maincheck) {
+                            if(root.package_maincheck && !root.kernel_maincheck && !root.config_maincheck) {
                                 packagemainModel.clear();
                                 //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
@@ -292,17 +341,15 @@ Item {
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
+                                configsubModel.clear();//内容清空
                                 root.packageNum = 0;//隐藏滑动条
                                 root.kernelNum = 0;//隐藏滑动条
+                                root.configNum = 0;//隐藏滑动条
                                 root.mode = 1;
                                 sessiondispatcher.package_scan_function_qt("unneed");
                             }
-                            else if(root.kernel_maincheck) {
+                            else if(!root.package_maincheck && root.kernel_maincheck && !root.config_maincheck) {
                                 kernelmainModel.clear();
-                                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
-                                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
-                                                 "itemTitle": qsTr("Uninstall unnecessary procedures"),
-                                                 "picture": "../../img/toolWidget/deb-min.png"})
                                 //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
                                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
@@ -310,10 +357,91 @@ Item {
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
+                                configsubModel.clear();//内容清空
                                 root.packageNum = 0;//隐藏滑动条
                                 root.kernelNum = 0;//隐藏滑动条
+                                root.configNum = 0;//隐藏滑动条
                                 root.mode = 2;
                                 sessiondispatcher.package_scan_function_qt("oldkernel");
+                            }
+                            else if(!root.package_maincheck && !root.kernel_maincheck && root.config_maincheck) {
+                                configmainModel.clear();
+                                //清除软件配置文件
+                                configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
+                                                 "itemTitle": qsTr("Cleanup software configfile"),
+                                                 "picture": "../../img/toolWidget/kernel.png"})
+                                systemdispatcher.clear_package_args();
+                                packagesubModel.clear();//内容清空
+                                kernelsubModel.clear();//内容清空
+                                configsubModel.clear();//内容清空
+                                root.packageNum = 0;//隐藏滑动条
+                                root.kernelNum = 0;//隐藏滑动条
+                                root.configNum = 0;//隐藏滑动条
+                                root.mode = 3;
+                                sessiondispatcher.package_scan_function_qt("configfile");
+                            }
+                            else if(root.package_maincheck && root.kernel_maincheck && !root.config_maincheck) {
+                                packagemainModel.clear();
+                                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+                                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+                                                 "itemTitle": qsTr("Uninstall unnecessary procedures"),
+                                                 "picture": "../../img/toolWidget/deb-min.png"})
+                                kernelmainModel.clear();
+                                //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
+                                kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+                                                 "itemTitle": qsTr("Uninstall old kernel packages"),
+                                                 "picture": "../../img/toolWidget/kernel.png"})
+                                systemdispatcher.clear_package_args();
+                                packagesubModel.clear();//内容清空
+                                kernelsubModel.clear();//内容清空
+                                configsubModel.clear();//内容清空
+                                root.packageNum = 0;//隐藏滑动条
+                                root.kernelNum = 0;//隐藏滑动条
+                                root.configNum = 0;//隐藏滑动条
+                                root.mode = 4;
+                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(4));
+                            }
+                            else if(root.package_maincheck && !root.kernel_maincheck && root.config_maincheck) {
+                                packagemainModel.clear();
+                                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+                                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+                                                 "itemTitle": qsTr("Uninstall unnecessary procedures"),
+                                                 "picture": "../../img/toolWidget/deb-min.png"})
+                                configmainModel.clear();
+                                //清除软件配置文件
+                                configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
+                                                 "itemTitle": qsTr("Cleanup software configfile"),
+                                                 "picture": "../../img/toolWidget/kernel.png"})
+                                systemdispatcher.clear_package_args();
+                                packagesubModel.clear();//内容清空
+                                kernelsubModel.clear();//内容清空
+                                configsubModel.clear();//内容清空
+                                root.packageNum = 0;//隐藏滑动条
+                                root.kernelNum = 0;//隐藏滑动条
+                                root.configNum = 0;//隐藏滑动条
+                                root.mode = 5;
+                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(5));
+                            }
+                            else if(!root.package_maincheck && root.kernel_maincheck && root.config_maincheck) {
+                                kernelmainModel.clear();
+                                //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
+                                kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+                                                 "itemTitle": qsTr("Uninstall old kernel packages"),
+                                                 "picture": "../../img/toolWidget/kernel.png"})
+                                configmainModel.clear();
+                                //清除软件配置文件
+                                configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
+                                                 "itemTitle": qsTr("Cleanup software configfile"),
+                                                 "picture": "../../img/toolWidget/kernel.png"})
+                                systemdispatcher.clear_package_args();
+                                packagesubModel.clear();//内容清空
+                                kernelsubModel.clear();//内容清空
+                                configsubModel.clear();//内容清空
+                                root.packageNum = 0;//隐藏滑动条
+                                root.kernelNum = 0;//隐藏滑动条
+                                root.configNum = 0;//隐藏滑动条
+                                root.mode = 6;
+                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(6));
                             }
                         }
                         home.state = "NormalState";
@@ -378,17 +506,23 @@ Item {
                     onClicked: {
                         root.packageEmpty = false;
                         root.kernelEmpty = false;
+                        root.configEmpty = false;
                         if(root.package_maincheck == false) {
                             root.package_maincheck = true;
                         }
                         if(root.kernel_maincheck == false) {
                             root.kernel_maincheck = true;
                         }
+                        if(root.config_maincheck == false) {
+                            root.config_maincheck = true;
+                        }
                         systemdispatcher.clear_package_args();
                         root.package_showNum = false;
                         root.kernel_showNum = false;
+                        root.config_showNum = false;
                         packagemainModel.clear();
                         kernelmainModel.clear();
+                        configmainModel.clear();
                         //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
                         packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Uninstall unnecessary procedures"),
@@ -397,13 +531,20 @@ Item {
                         kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Uninstall old kernel packages"),
                                          "picture": "../../img/toolWidget/kernel.png"})
+                        //清除软件配置文件
+                        configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
+                                         "itemTitle": qsTr("Cleanup software configfile"),
+                                         "picture": "../../img/toolWidget/kernel.png"})
                         packagesubModel.clear();//内容清空
                         root.packageNum = 0;//隐藏滑动条
                         root.package_arrow_show = 0;//伸缩图标隐藏
                         kernelsubModel.clear();//内容清空
                         root.kernelNum = 0;//隐藏滑动条
                         root.kernel_arrow_show = 0;//伸缩图标隐藏
-                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+                        configsubModel.clear();//内容清空
+                        root.configNum = 0;//隐藏滑动条
+                        root.config_arrow_show = 0;//伸缩图标隐藏
+                        scrollItem.height = 3 * 40 + root.spaceValue*3;
                         root.state = "PackageWorkAGAIN";//按钮的状态恢复初始值
                     }
                 }
@@ -420,28 +561,68 @@ Item {
 
                     root.packageEmpty = false;
                     root.kernelEmpty = false;
+                    root.configEmpty = false;
 
                     if (root.btnFlag == "package_scan") {//扫描
                         //扫描过程中禁用按钮
                         actionBtn.enabled = false;
                         root.flag = false;
 //                            root.getData();
-                        if(root.package_maincheck && root.kernel_maincheck) {
+                        if(root.package_maincheck && root.kernel_maincheck && root.config_maincheck) {
                             root.mode = 0;
                             root.packageNum = 0;
                             root.kernelNum = 0;
-                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+                            root.configNum = 0;
+                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(0));
                         }
                         else {
-                            if(root.package_maincheck) {
+//                            if(root.package_maincheck) {
+//                                root.mode = 1;
+//                                root.packageNum = 0;
+//                                sessiondispatcher.package_scan_function_qt("unneed");
+//                            }
+//                            else if(root.kernel_maincheck) {
+//                                root.mode = 2;
+//                                root.kernelNum = 0;
+//                                sessiondispatcher.package_scan_function_qt("oldkernel");
+//                            }
+//                            else{
+//                                actionBtn.enabled = true;
+//                                //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
+//                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                            }
+                            if(root.package_maincheck && !root.kernel_maincheck && !root.config_maincheck) {
                                 root.mode = 1;
                                 root.packageNum = 0;
                                 sessiondispatcher.package_scan_function_qt("unneed");
                             }
-                            else if(root.kernel_maincheck) {
+                            else if(!root.package_maincheck && root.kernel_maincheck && !root.config_maincheck) {
                                 root.mode = 2;
                                 root.kernelNum = 0;
                                 sessiondispatcher.package_scan_function_qt("oldkernel");
+                            }
+                            else if(!root.package_maincheck && !root.kernel_maincheck && root.config_maincheck) {
+                                root.mode = 3;
+                                root.configNum = 0;
+                                sessiondispatcher.cache_scan_function_qt("configfile");
+                            }
+                            else if(root.package_maincheck && root.kernel_maincheck && !root.config_maincheck) {
+                                root.mode = 4;
+                                root.packageNum = 0;
+                                root.kernelNum = 0;
+                                sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(4));
+                            }
+                            else if(root.package_maincheck && !root.kernel_maincheck && root.config_maincheck) {
+                                root.mode = 5;
+                                root.packageNum = 0;
+                                root.configNum = 0;
+                                sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(5));
+                            }
+                            else if(!root.package_maincheck && root.kernel_maincheck && root.config_maincheck) {
+                                root.mode = 6;
+                                root.kernelNum = 0;
+                                root.configNum = 0;
+                                sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(6));
                             }
                             else{
                                 actionBtn.enabled = true;
@@ -451,8 +632,8 @@ Item {
                         }
                     }
                     else if (root.btnFlag == "package_work") {//清理
-                        if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
-                            if(!root.package_maincheck && !root.kernel_maincheck) {
+                        if(root.packageresultFlag || root.kernelresultFlag || root.configresultFlag) {//扫描得到的实际内容存在时
+                            if(!root.package_maincheck && !root.kernel_maincheck && !root.config_maincheck) {
                                 //友情提示：        对不起，您没有选择需要清理的内容，请确认！
                                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                             }
@@ -492,7 +673,7 @@ Item {
             Item {
                 id: scrollItem
                 width: parent.width
-                height: 40*2 + root.spaceValue*2
+                height: 40*3 + root.spaceValue*3
                 Column {
                     spacing: root.spaceValue
                     //垃圾清理显示内容
@@ -520,20 +701,32 @@ Item {
                                 if(cacheFlag == "package") {//1212
                                     if(expand_flag == true) {
                                         root.package_expanded = true;
-                                        if(root.kernel_expanded == true) {
-                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
+                                        if((root.kernel_expanded == true) && (root.config_expanded == true)) {
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + (root.configNum + 1) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.kernel_expanded == true) && (root.config_expanded == false)){
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 2) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.kernel_expanded == false) && (root.config_expanded == true)){
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.configNum + 2) * 40 + root.spaceValue*3;
                                         }
                                         else {
-                                            scrollItem.height = (root.packageNum + 2) * 40 + root.spaceValue*2;
+                                            scrollItem.height = (root.packageNum + 3) * 40 + root.spaceValue*3;
                                         }
                                     }
                                     else {
                                         root.package_expanded = false;
-                                        if(root.kernel_expanded == true) {
-                                            scrollItem.height = (root.kernelNum + 2) * 40 + root.spaceValue*2;
+                                        if((root.kernel_expanded == true) && (root.config_expanded == true)) {
+                                            scrollItem.height = (root.kernelNum + 1) * 40 + (root.configNum + 2) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.kernel_expanded == true) && (root.config_expanded == false)){
+                                            scrollItem.height = (root.kernelNum + 3) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.kernel_expanded == false) && (root.config_expanded == true)){
+                                            scrollItem.height = (root.configNum + 3) * 40 + root.spaceValue*3;
                                         }
                                         else {
-                                            scrollItem.height = 2* 40 + root.spaceValue*2;
+                                            scrollItem.height = 3 * 40 + root.spaceValue*3;
                                         }
                                     }
                                 }
@@ -574,20 +767,99 @@ Item {
                                 if(cacheFlag == "kernel") {//1212
                                     if(expand_flag == true) {
                                         root.kernel_expanded = true;
-                                        if(root.package_expanded == true) {
-                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
+                                        if((root.package_expanded == true) && (root.config_expanded == true)) {
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + (root.configNum + 1) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.package_expanded == true) && (root.config_expanded == false)){
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 2) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.package_expanded == false) && (root.config_expanded == true)){
+                                            scrollItem.height = (root.configNum + 1) * 40 + (root.kernelNum + 2) * 40 + root.spaceValue*3;
                                         }
                                         else {
-                                            scrollItem.height = (root.kernelNum + 2) * 40 + root.spaceValue*2;
+                                            scrollItem.height = (root.kernelNum + 3) * 40 + root.spaceValue*3;
                                         }
                                     }
                                     else {
                                         root.kernel_expanded = false;
-                                        if(root.package_expanded == true) {
-                                            scrollItem.height = (root.packageNum + 2) * 40 + root.spaceValue*2;
+                                        if((root.package_expanded == true) && (root.config_expanded == true)) {
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.configNum + 2) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.package_expanded == true) && (root.config_expanded == false)){
+                                            scrollItem.height = (root.packageNum + 3) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.package_expanded == false) && (root.config_expanded == true)){
+                                            scrollItem.height = (root.configNum + 3) * 40 + root.spaceValue*3;
                                         }
                                         else {
-                                            scrollItem.height = 2* 40 + root.spaceValue*2;
+                                            scrollItem.height = 3 * 40 + root.spaceValue*3;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        cacheBuffer: 1000
+                        opacity: 1
+                        spacing: 10
+                        snapMode: ListView.NoSnap
+                        boundsBehavior: Flickable.DragOverBounds
+                        currentIndex: 0
+                        preferredHighlightBegin: 0
+                        preferredHighlightEnd: preferredHighlightBegin
+                        highlightRangeMode: ListView.StrictlyEnforceRange
+                    }
+
+                    //垃圾清理显示内容
+                    ListView {
+                        id: configListView
+                        width: parent.width
+                        height: root.config_expanded ? (root.configNum + 1) * 40 : 40
+                        model: configmainModel
+                        delegate: CacheDelegate{
+                            sub_num: root.configNum
+                            sub_model: configsubModel
+                            btn_flag: root.btnFlag
+                            showNum: root.config_showNum
+                            arrowFlag: "configfile"
+                            arrow_display: root.config_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
+                            expanded: root.config_expanded//kernel_expanded为true时，箭头向下，内容展开;kernel_expanded为false时，箭头向上，内容收缩
+                            delegate_flag: root.splitFlag
+                            emptyTip: root.configEmpty
+                            //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
+                            onCheckchanged: {
+    //                            root.kernelresultFlag = checkchange;
+                                root.config_maincheck = checkchange;
+                            }
+                            onArrowClicked: {
+                                if(cacheFlag == "configfile") {//1212
+                                    if(expand_flag == true) {
+                                        root.config_expanded = true;
+                                        if((root.package_expanded == true) && (root.kernel_expanded == true)) {
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + (root.configNum + 1) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.package_expanded == true) && (root.kernel_expanded == false)){
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.configNum + 2) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.package_expanded == false) && (root.kernel_expanded == true)){
+                                            scrollItem.height = (root.kernelNum + 1) * 40 + (root.configNum + 2) * 40 + root.spaceValue*3;
+                                        }
+                                        else {
+                                            scrollItem.height = (root.configNum + 3) * 40 + root.spaceValue*3;
+                                        }
+                                    }
+                                    else {
+                                        root.config_expanded = false;
+                                        if((root.package_expanded == true) && (root.kernel_expanded == true)) {
+                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 2) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.package_expanded == true) && (root.kernel_expanded == false)){
+                                            scrollItem.height = (root.packageNum + 3) * 40 + root.spaceValue*3;
+                                        }
+                                        else if((root.package_expanded == false) && (root.kernel_expanded == true)){
+                                            scrollItem.height = (root.kernelNum + 3) * 40 + root.spaceValue*3;
+                                        }
+                                        else {
+                                            scrollItem.height = 3 * 40 + root.spaceValue*3;
                                         }
                                     }
                                 }
@@ -661,3 +933,648 @@ Item {
         }
     ]
 }
+
+
+//Item {
+//    id:home
+//    width: parent.width
+//    height: 435
+//    Rectangle {
+//        id: masklayer2
+//        width: parent.width
+//        height: parent.height
+//        x: (parent.width * 1.5)
+//        Connections
+//        {
+//            target: systemdispatcher
+//            //得到数据，显示在进度条上
+//            onSendProgressToQML: {//onSendDynamicSoftwareProgressQML
+//                if(type == "apt_start") {
+//                    progress.value = 0;
+//                    home.state = "MaskLayerState";
+//                }
+//                else if(type == "apt_pulse"){
+//                    progressTitle.text = qsTr("The ongoing: ") + info;//正在进行：
+//                    progress.value = ratio_sus;
+//                }
+//                else if(type == "apt_stop") {
+////                    progress.value = 0;
+//                }
+//            }
+//        }
+
+//        //背景
+//        Image {
+//            source: "../../img/skin/bg-middle.png"
+//            anchors.fill: parent
+//        }
+
+//        Column {
+//            anchors.centerIn: parent
+//            spacing: 5
+//            AnimatedImage {
+////                anchors.centerIn: parent
+//                width: 16
+//                height: 16
+//                source: "../../img/icons/move.gif"
+//                anchors.horizontalCenter: parent.horizontalCenter
+//            }
+//            Text {
+//                id: progressTitle
+//                text: qsTr("Software operation schedule")//软件操作进度
+//                color: "#318d11"
+//                wrapMode: Text.WordWrap
+//                font.pixelSize: 12
+//                anchors.horizontalCenter: parent.horizontalCenter
+//            }
+
+//            Bars.Progress {
+//                id: progress
+//                value: 0
+//                background: "../../img/skin/progress-bg.png"
+//                color: "lightsteelblue"////"#086794"
+//                secondColor: "steelblue"//"#318d11"
+//                anchors.horizontalCenter: parent.horizontalCenter
+//            }
+//        }
+//        Common.SetBtn {
+//            id: resetBtn2
+//            width: 12
+//            height: 15
+//            iconName: "revoke.png"
+//            anchors {
+//                left: parent.left
+//                leftMargin: 10
+//                top: parent.top
+//                topMargin: 10
+//            }
+//            onClicked: {
+//                home.state = "NormalState";
+//            }
+//        }
+//    }
+
+//    Rectangle {
+//        id:root
+//        width: parent.width
+//        height: parent.height
+//        property string title: qsTr("Uninstall unnecessary procedures and old kernel packages")//卸载不必要的程序和旧内核包
+//        property string description: qsTr("Cleaning up the software that installed by other software bundled or old kernel packages, to improve system performance")//清理软件安装过程中捆绑安装的依赖程序或旧内核包，提高系统性能
+//        property string btnFlag: "package_scan"//扫描或者清理的标记：package_scan/package_work
+//        property bool packageresultFlag: false//判断依赖包扫描后的实际内容是否为空，为空时为false，有内容时为true
+//        property bool kernelresultFlag: false//判断旧内核包扫描后的实际内容是否为空，为空时为false，有内容时为true
+//        property int packageNum//扫描后得到的依赖包的项目总数
+//        property int kernelNum//扫描后得到的旧内核包的项目总数
+//        property bool packageEmpty: false//决定是否显示扫描内容为空的状态图
+//        property bool kernelEmpty: false//决定是否显示扫描内容为空的状态图
+//        property int mode: 0//扫描模式：0表示两者都扫描，1表示只选中了package，2表示只选中了kernel
+//        property bool splitFlag: true//传递给CacheDelegate.qml,为true时切割字符串，为false时不切割字符串
+//        property bool flag: false//记录是清理后重新获取数据（true），还是点击开始扫描后获取数据（false）
+//        property int spaceValue: 20
+//        property int package_arrow_show: 0//传递给CacheDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
+//        property int kernel_arrow_show: 0//传递给CacheDelegate.qml是否显示伸缩图标，为1时显示，为0时隐藏
+//        property bool package_expanded: false//传递给CacheDelegate.qml,觉得伸缩图标是扩展还是收缩
+//        property bool kernel_expanded: false//传递给CacheDelegate.qml,觉得伸缩图标是扩展还是收缩
+//        property bool package_maincheck: true
+//        property bool kernel_maincheck: true
+//        property bool package_showNum: false//决定依赖包的扫描结果数是否显示
+//        property bool kernel_showNum: false//决定旧内核包的扫描结果数是否显示
+//        ListModel { id: packagemainModel }
+//        ListModel { id: packagesubModel }
+//        ListModel { id: kernelmainModel }
+//        ListModel { id: kernelsubModel }
+
+//        Component.onCompleted: {
+//            //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+//            packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+//                             "itemTitle": qsTr("Uninstall unnecessary procedures"),
+//                             "picture": "../../img/toolWidget/deb-min.png"})
+//            //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
+//            kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+//                             "itemTitle": qsTr("Uninstall old kernel packages"),
+//                             "picture": "../../img/toolWidget/kernel.png"})
+//        }
+
+//        Connections
+//        {
+//            target: sessiondispatcher
+//            onAppendPackageContentToCacheModel: {
+//                //QString flag, QString pkgName, QString description, QString sizeValue
+//                if(flag == "unneed") {
+//                    packagesubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue});
+//                    root.packageNum += 1;
+//                    systemdispatcher.set_package_args(pkgName);
+//                }
+//                else if(flag == "oldkernel") {
+//                    kernelsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue});
+//                    root.kernelNum += 1;
+//                    systemdispatcher.set_package_args(pkgName);
+//                }
+//            }
+//            onTellQMLPackageOver: {
+//                packagemainModel.clear();
+//                kernelmainModel.clear();
+//                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+//                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+//                                 "itemTitle": qsTr("Uninstall unnecessary procedures"),
+//                                 "picture": "../../img/toolWidget/deb-min.png"})
+//                //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
+//                kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+//                                 "itemTitle": qsTr("Uninstall old kernel packages"),
+//                                 "picture": "../../img/toolWidget/kernel.png"})
+
+//                if(root.packageNum != 0) {
+//                    root.packageresultFlag = true;//扫描的实际有效内容存在
+//                }
+//                else {
+//                    if(root.mode == 0 || root.mode == 1) {
+//                        root.packageEmpty = true;
+//                    }
+//                    root.packageresultFlag = false;//扫描的实际有效内容不存在
+//                }
+//                if(root.kernelNum != 0) {
+//                    root.kernelresultFlag = true;//扫描的实际有效内容存在
+//                }
+//                else {
+//                    if(root.mode == 0 || root.mode == 2) {
+//                        root.kernelEmpty = true;
+//                    }
+//                    root.kernelresultFlag = false;//扫描的实际有效内容不存在
+//                }
+
+//                if(root.packageresultFlag == false) {
+//                    root.package_showNum = false;
+//                    root.package_expanded = false;//伸缩箭头不扩展
+//                    root.package_arrow_show = 0;//伸缩箭头不显示
+//                }
+//                else if(root.packageresultFlag == true) {
+//                    root.package_showNum = true;
+//                    root.package_expanded = true;//伸缩箭头扩展
+//                    root.package_arrow_show = 1;//伸缩箭头显示
+//                }
+//                if(root.kernelresultFlag == false) {
+//                    root.kernel_showNum = false;
+//                    root.kernel_expanded = false;//伸缩箭头不扩展
+//                    root.kernel_arrow_show = 0;//伸缩箭头不显示
+//                }
+//                else if(root.kernelresultFlag == true) {
+//                    root.kernel_showNum = true;
+//                    root.kernel_expanded = true;//伸缩箭头扩展
+//                    root.kernel_arrow_show = 1;//伸缩箭头显示
+//                }
+
+//                if(root.packageresultFlag == false && root.kernelresultFlag == false) {
+//                    root.state = "PackageWorkEmpty";
+//                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+//                        //友情提示：      扫描内容为空，无需清理！
+//                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+//                    }
+//                    else {//清理apt后的重新获取数据，此时不需要显示对话框
+//                        root.flag = false;
+//                    }
+//                }
+//                else {
+//                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+//                        toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+//                    }
+//                    else {//清理software后的重新获取数据，此时不需要显示对话框
+//                        root.flag = false;
+//                    }
+//                    root.state = "PackageWork";
+//                    actionBtn.text = qsTr("Begin cleanup");//开始清理
+//                    root.btnFlag = "package_work";
+//                    backBtn.visible = true;
+//    //                rescanBtn.visible = true;
+//                }
+//                scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
+//                //扫描完成后恢复按钮的使能
+//                actionBtn.enabled = true;
+//            }
+//        }
+
+//        Connections
+//        {
+//            target: systemdispatcher
+//            onFinishCleanDebError: {//清理出错时收到的信号
+//                if (root.btnFlag == "package_work") {
+//                    if (msg == "package") {
+//                        home.state = "NormalState";
+//                        //清理过程中发生错误，解禁按钮
+//                        actionBtn.enabled = true;
+//                        titleBar.state = "PackageWorkError";
+//                        toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+//                    }
+//                }
+//            }
+//            onFinishCleanDeb: {//清理成功时收到的信号
+//                if (root.btnFlag == "package_work") {
+//                    if (msg == "") {
+//                        //清理取消，解禁按钮
+//                        actionBtn.enabled = true;
+//                        home.state = "NormalState";
+//                        toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
+//                    }
+//                    else if (msg == "package") {
+//                        root.state = "PackageWorkFinish";
+//                        toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕
+//                        //清理完毕后重新获取数据
+//                        root.flag = true;
+////                        root.getData();
+//                        if(root.package_maincheck && root.kernel_maincheck) {
+//                            packagemainModel.clear();
+//                            kernelmainModel.clear();
+//                            //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+//                            packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+//                                             "itemTitle": qsTr("Uninstall unnecessary procedures"),
+//                                             "picture": "../../img/toolWidget/deb-min.png"})
+//                            //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
+//                            kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+//                                             "itemTitle": qsTr("Uninstall old kernel packages"),
+//                                             "picture": "../../img/toolWidget/kernel.png"})
+//                            systemdispatcher.clear_package_args();
+//                            packagesubModel.clear();//内容清空
+//                            kernelsubModel.clear();//内容清空
+//                            root.packageNum = 0;//隐藏滑动条
+//                            root.kernelNum = 0;//隐藏滑动条
+//                            root.mode = 0;
+//                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+//                        }
+//                        else {
+//                            if(root.package_maincheck) {
+//                                packagemainModel.clear();
+//                                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+//                                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+//                                                 "itemTitle": qsTr("Uninstall unnecessary procedures"),
+//                                                 "picture": "../../img/toolWidget/deb-min.png"})
+//                                systemdispatcher.clear_package_args();
+//                                packagesubModel.clear();//内容清空
+//                                kernelsubModel.clear();//内容清空
+//                                root.packageNum = 0;//隐藏滑动条
+//                                root.kernelNum = 0;//隐藏滑动条
+//                                root.mode = 1;
+//                                sessiondispatcher.package_scan_function_qt("unneed");
+//                            }
+//                            else if(root.kernel_maincheck) {
+//                                kernelmainModel.clear();
+//                                //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+//                                packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+//                                                 "itemTitle": qsTr("Uninstall unnecessary procedures"),
+//                                                 "picture": "../../img/toolWidget/deb-min.png"})
+//                                //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
+//                                kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+//                                                 "itemTitle": qsTr("Uninstall old kernel packages"),
+//                                                 "picture": "../../img/toolWidget/kernel.png"})
+//                                systemdispatcher.clear_package_args();
+//                                packagesubModel.clear();//内容清空
+//                                kernelsubModel.clear();//内容清空
+//                                root.packageNum = 0;//隐藏滑动条
+//                                root.kernelNum = 0;//隐藏滑动条
+//                                root.mode = 2;
+//                                sessiondispatcher.package_scan_function_qt("oldkernel");
+//                            }
+//                        }
+//                        home.state = "NormalState";
+//                        //清理成功完成，解禁按钮
+//                        actionBtn.enabled = true;
+//                    }
+//                }
+//            }
+//        }
+
+//        //背景
+//        Image {
+//            source: "../../img/skin/bg-bottom-tab.png"
+//            anchors.fill: parent
+//        }
+
+//        //titlebar
+//        Row {
+//            id: titlebar
+//            spacing: 20
+//            width: parent.width
+//            anchors { top: parent.top; topMargin: 20; left: parent.left; leftMargin: 27 }
+//            Image {
+//                id: apt_refreshArrow
+//                source: "../../img/toolWidget/program.png"
+//                Behavior on rotation { NumberAnimation { duration: 200 } }
+//            }
+//            Column {
+//                anchors.verticalCenter: parent.verticalCenter
+//                spacing: 10
+//                Text {
+//                    width: 500
+//                    text: root.title
+//                    wrapMode: Text.WordWrap
+//                    font.bold: true
+//                    font.pixelSize: 14
+//                    color: "#383838"
+//                }
+//                Text {
+//                    width: 500
+//                    text: root.description
+//                    wrapMode: Text.WordWrap
+//                    font.pixelSize: 12
+//                    color: "#7a7a7a"
+//                }
+//            }
+//        }
+
+//        Row{
+//            anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 40 }
+//            spacing: 20
+//            Row {
+//                spacing: 20
+//                anchors.verticalCenter: parent.verticalCenter
+//                Common.StyleButton {
+//                    id: backBtn
+//                    visible: false
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    wordname: qsTr("Back")//返回
+//                    width: 40
+//                    height: 20
+//                    onClicked: {
+//                        root.packageEmpty = false;
+//                        root.kernelEmpty = false;
+//                        if(root.package_maincheck == false) {
+//                            root.package_maincheck = true;
+//                        }
+//                        if(root.kernel_maincheck == false) {
+//                            root.kernel_maincheck = true;
+//                        }
+//                        systemdispatcher.clear_package_args();
+//                        root.package_showNum = false;
+//                        root.kernel_showNum = false;
+//                        packagemainModel.clear();
+//                        kernelmainModel.clear();
+//                        //卸载不必要的程序         可以根据扫描结果选择性地清理安装程序，让系统更瘦。
+//                        packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
+//                                         "itemTitle": qsTr("Uninstall unnecessary procedures"),
+//                                         "picture": "../../img/toolWidget/deb-min.png"})
+//                        //卸载旧内核包        可以根据扫描结果选择性地清理旧内核包，让系统更瘦。
+//                        kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
+//                                         "itemTitle": qsTr("Uninstall old kernel packages"),
+//                                         "picture": "../../img/toolWidget/kernel.png"})
+//                        packagesubModel.clear();//内容清空
+//                        root.packageNum = 0;//隐藏滑动条
+//                        root.package_arrow_show = 0;//伸缩图标隐藏
+//                        kernelsubModel.clear();//内容清空
+//                        root.kernelNum = 0;//隐藏滑动条
+//                        root.kernel_arrow_show = 0;//伸缩图标隐藏
+//                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+//                        root.state = "PackageWorkAGAIN";//按钮的状态恢复初始值
+//                    }
+//                }
+//            }
+//            Common.Button {
+//                id: actionBtn
+//                width: 120
+//                height: 39
+//                hoverimage: "green1.png"
+//                text: qsTr("Start scanning")//开始扫描
+//                fontsize: 15
+//                anchors.verticalCenter: parent.verticalCenter
+//                onClicked: {
+
+//                    root.packageEmpty = false;
+//                    root.kernelEmpty = false;
+
+//                    if (root.btnFlag == "package_scan") {//扫描
+//                        //扫描过程中禁用按钮
+//                        actionBtn.enabled = false;
+//                        root.flag = false;
+////                            root.getData();
+//                        if(root.package_maincheck && root.kernel_maincheck) {
+//                            root.mode = 0;
+//                            root.packageNum = 0;
+//                            root.kernelNum = 0;
+//                            sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist());
+//                        }
+//                        else {
+//                            if(root.package_maincheck) {
+//                                root.mode = 1;
+//                                root.packageNum = 0;
+//                                sessiondispatcher.package_scan_function_qt("unneed");
+//                            }
+//                            else if(root.kernel_maincheck) {
+//                                root.mode = 2;
+//                                root.kernelNum = 0;
+//                                sessiondispatcher.package_scan_function_qt("oldkernel");
+//                            }
+//                            else{
+//                                actionBtn.enabled = true;
+//                                //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
+//                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                            }
+//                        }
+//                    }
+//                    else if (root.btnFlag == "package_work") {//清理
+//                        if(root.packageresultFlag || root.kernelresultFlag) {//扫描得到的实际内容存在时
+//                            if(!root.package_maincheck && !root.kernel_maincheck) {
+//                                //友情提示：        对不起，您没有选择需要清理的内容，请确认！
+//                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+//                            }
+//                            else {
+////                                    home.state = "MaskLayerState";
+//                                //开始清理时，禁用按钮，等到清理完成后解禁
+//                                actionBtn.enabled = false;
+//                                console.log(systemdispatcher.get_package_args());
+//                                systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+
+//        //分割条
+//        Common.Separator {
+//            id: splitbar
+//            anchors {
+//                top: titlebar.bottom
+//                topMargin: 18
+//                left: parent.left
+//                leftMargin: 2
+//            }
+//            width: parent.width - 4
+//        }
+
+//        Common.ScrollArea {
+//            frame:false
+//            anchors.top: titlebar.bottom
+//            anchors.topMargin: 30
+//            anchors.left:parent.left
+//            anchors.leftMargin: 27
+//            height: root.height - titlebar.height - 47
+//            width: parent.width - 27 -2
+//            Item {
+//                id: scrollItem
+//                width: parent.width
+//                height: 40*2 + root.spaceValue*2
+//                Column {
+//                    spacing: root.spaceValue
+//                    //垃圾清理显示内容
+//                    ListView {
+//                        id: aptListView
+//                        width: parent.width
+//                        height: root.package_expanded ? (root.packageNum + 1) * 40 : 40
+//                        model: packagemainModel
+//                        delegate: CacheDelegate{
+//                            sub_num: root.packageNum//root.aptsubNum//1212
+//                            sub_model: packagesubModel
+//                            btn_flag: root.btnFlag
+//                            arrowFlag: "package"
+//                            showNum: root.package_showNum
+//                            arrow_display: root.package_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
+//                            expanded: root.package_expanded//package_expanded为true时，箭头向下，内容展开;package_expanded为false时，箭头向上，内容收缩
+//                            delegate_flag: root.splitFlag
+//                            emptyTip: root.packageEmpty
+//                            //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
+//                            onCheckchanged: {
+//    //                            root.packageresultFlag = checkchange;
+//                                root.package_maincheck = checkchange;
+//                            }
+//                            onArrowClicked: {
+//                                if(cacheFlag == "package") {//1212
+//                                    if(expand_flag == true) {
+//                                        root.package_expanded = true;
+//                                        if(root.kernel_expanded == true) {
+//                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
+//                                        }
+//                                        else {
+//                                            scrollItem.height = (root.packageNum + 2) * 40 + root.spaceValue*2;
+//                                        }
+//                                    }
+//                                    else {
+//                                        root.package_expanded = false;
+//                                        if(root.kernel_expanded == true) {
+//                                            scrollItem.height = (root.kernelNum + 2) * 40 + root.spaceValue*2;
+//                                        }
+//                                        else {
+//                                            scrollItem.height = 2* 40 + root.spaceValue*2;
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        cacheBuffer: 1000
+//                        opacity: 1
+//                        spacing: 10
+//                        snapMode: ListView.NoSnap
+//                        boundsBehavior: Flickable.DragOverBounds
+//                        currentIndex: 0
+//                        preferredHighlightBegin: 0
+//                        preferredHighlightEnd: preferredHighlightBegin
+//                        highlightRangeMode: ListView.StrictlyEnforceRange
+//                    }
+//                    //垃圾清理显示内容
+//                    ListView {
+//                        id: softListView
+//                        width: parent.width
+//                        height: root.kernel_expanded ? (root.kernelNum + 1) * 40 : 40
+//                        model: kernelmainModel
+//                        delegate: CacheDelegate{
+//                            sub_num: root.kernelNum
+//                            sub_model: kernelsubModel
+//                            btn_flag: root.btnFlag
+//                            showNum: root.kernel_showNum
+//                            arrowFlag: "kernel"
+//                            arrow_display: root.kernel_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
+//                            expanded: root.kernel_expanded//kernel_expanded为true时，箭头向下，内容展开;kernel_expanded为false时，箭头向上，内容收缩
+//                            delegate_flag: root.splitFlag
+//                            emptyTip: root.kernelEmpty
+//                            //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
+//                            onCheckchanged: {
+//    //                            root.kernelresultFlag = checkchange;
+//                                root.kernel_maincheck = checkchange;
+//                            }
+//                            onArrowClicked: {
+//                                if(cacheFlag == "kernel") {//1212
+//                                    if(expand_flag == true) {
+//                                        root.kernel_expanded = true;
+//                                        if(root.package_expanded == true) {
+//                                            scrollItem.height = (root.packageNum + 1) * 40 + (root.kernelNum + 1) * 40 + root.spaceValue*2;
+//                                        }
+//                                        else {
+//                                            scrollItem.height = (root.kernelNum + 2) * 40 + root.spaceValue*2;
+//                                        }
+//                                    }
+//                                    else {
+//                                        root.kernel_expanded = false;
+//                                        if(root.package_expanded == true) {
+//                                            scrollItem.height = (root.packageNum + 2) * 40 + root.spaceValue*2;
+//                                        }
+//                                        else {
+//                                            scrollItem.height = 2* 40 + root.spaceValue*2;
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        cacheBuffer: 1000
+//                        opacity: 1
+//                        spacing: 10
+//                        snapMode: ListView.NoSnap
+//                        boundsBehavior: Flickable.DragOverBounds
+//                        currentIndex: 0
+//                        preferredHighlightBegin: 0
+//                        preferredHighlightEnd: preferredHighlightBegin
+//                        highlightRangeMode: ListView.StrictlyEnforceRange
+//                    }
+//                }
+//            }
+//        }
+
+//        states: [
+//            State {
+//                name: "PackageWork"
+//                PropertyChanges { target: actionBtn; text:qsTr("Begin cleanup")}//开始清理
+//                PropertyChanges { target: root; btnFlag: "package_work" }
+//                PropertyChanges { target: backBtn; visible: true}
+//    //            PropertyChanges { target: rescanBtn; visible: true}
+//            },
+//            State {
+//                name: "PackageWorkAGAIN"
+//                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
+//                PropertyChanges { target: root; btnFlag: "package_scan" }
+//                PropertyChanges { target: backBtn; visible: false}
+//    //            PropertyChanges { target: rescanBtn; visible: false}
+//            },
+//            State {
+//                name: "PackageWorkError"
+//                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
+//                PropertyChanges { target: root; btnFlag: "package_scan" }
+//                PropertyChanges { target: backBtn; visible: false}
+//    //            PropertyChanges { target: rescanBtn; visible: false}
+//            },
+//            State {
+//                name: "PackageWorkFinish"
+//                PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
+//                PropertyChanges { target: root; btnFlag: "package_scan" }
+//                PropertyChanges { target: backBtn; visible: false}
+//    //            PropertyChanges { target: rescanBtn; visible: false}
+//            },
+//            State {
+//                name: "PackageWorkEmpty"
+//                PropertyChanges { target: actionBtn; text:qsTr("Start scanning")}//开始扫描
+//                PropertyChanges { target: root; btnFlag: "package_scan" }
+//                PropertyChanges { target: backBtn; visible: false}
+//    //            PropertyChanges { target: rescanBtn; visible: false}
+//            }
+//        ]
+//    }
+//    states: [
+//        State {
+//            name: "NormalState"
+//            PropertyChanges { target: root; x: 0 }
+//            PropertyChanges { target: masklayer2; x: (parent.width * 1.5) }
+//        },
+
+//        State {
+//            name: "MaskLayerState"
+//            PropertyChanges { target: masklayer2; x: 0 }
+//            PropertyChanges { target: progressTitle; text: qsTr("Software operation schedule") }//软件操作进度
+//            PropertyChanges { target: progress; value: 0 }
+//            PropertyChanges { target: root; x: (parent.width * 1.5) }
+//        }
+//    ]
+//}
