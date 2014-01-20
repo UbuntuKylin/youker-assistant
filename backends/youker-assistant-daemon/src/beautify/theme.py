@@ -89,8 +89,15 @@ class Theme:
 	def set_cursor_theme(self, theme):
 		gstheme = gsettings.get_schema('org.gnome.desktop.interface')
 		gstheme.set_string('cursor-theme',theme)
+                try :
+                        fd = open('/usr/share/icons/default/index.theme','w')
+                        fd.write('[Icon Theme]\n')
+                        fd.write('Inherits=' + theme + '\n')
+                        fd.close()
+                except  Exception,e :
+                        pass
 
-	# get cursor size
+        # get cursor size
 	def get_cursor_size(self):
 		return gsettings.get('org.gnome.desktop.interface',
 			None, 'cursor-size', 'int')

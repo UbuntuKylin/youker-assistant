@@ -37,25 +37,32 @@ class Points:
             return 0
 
     def get_httptime(self):
-        conn = httplib.HTTPConnection("www.beijing-time.org")
-        conn.request("GET", "/time.asp")
-        response = conn.getresponse()
-        if response.status == 200:
-            result = response.read()
-            data = result.split("\r\n")
-            time = {}
-            time['year'] = data[1][len("nyear")+1 : len(data[1])-1]
-            time['month'] = data[2][len("nmonth")+1 : len(data[2])-1]
-            time['day'] = data[3][len("nday")+1 : len(data[3])-1]
-            time['hour'] = data[5][len("nhrs")+1 : len(data[5])-1]
-            time['minute'] = data[6][len("nmin")+1 : len(data[6])-1]
-            time['sec'] = data[7][len("nsec")+1 : len(data[7])-1]
-            return time
+        try:
+            conn = httplib.HTTPConnection("www.beijing-time.org")
+            conn.request("GET", "/time.asp")
+            response = conn.getresponse()
+            if response.status == 200:
+                result = response.read()
+                data = result.split("\r\n")
+                time = {}
+                time['year'] = data[1][len("nyear")+1 : len(data[1])-1]
+                time['month'] = data[2][len("nmonth")+1 : len(data[2])-1]
+                time['day'] = data[3][len("nday")+1 : len(data[3])-1]
+                time['hour'] = data[5][len("nhrs")+1 : len(data[5])-1]
+                time['minute'] = data[6][len("nmin")+1 : len(data[6])-1]
+                time['sec'] = data[7][len("nsec")+1 : len(data[7])-1]
+                return time
+        except Exception,e:
+            return False
+            #print e
 
     # Login judgment day for the first time
     def first_login(self,yesterday_login,user_points):
         #current_time = time.localtime(time.time())
         current_time = self.get_httptime()
+        if not current_time :
+            print None
+            return None
         #days = '0'
         days = str(current_time['year']) + "-" + str(current_time['month']) + "-" + str(current_time['day'])
         flogin = 0
@@ -68,12 +75,18 @@ class Points:
 
     def login(self):
         current_time = self.get_httptime()
-        login_time = int(current_time['day'])*24 + int(current_time['hour']) 
+        if not current_time :
+            print None
+            return None
+        login_time = int(current_time['day'])*24 + int(current_time['hour'])
         print login_time
         return login_time
 
     def quit(self,login_time,user_points,today_time):
-        current_time = self.get_httptime() 
+        current_time = self.get_httptime()
+        if not current_time :
+            print None
+            return None
         quit_time = int(current_time['day'])*24 + int(current_time['hour'])
         add_time = quit_time - login_time
         #Less accumulated login time score increases
@@ -83,8 +96,8 @@ class Points:
         user_points += self.time_points(today_time)
         print today_time,user_points
         return today_time,user_points
-        
-        
+
+
 
 if __name__ == '__main__':
     wb = Points()
