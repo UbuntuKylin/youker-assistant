@@ -49,6 +49,16 @@ LocationDialog::LocationDialog(QWidget *parent) :
     ui->searchBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
 
+    //------------------
+//    this->loadgif = new QMovie("/home/saucy/work/youker-assistant/src/image/loading.gif");
+//    ui->loadingDiv->setPixmap(QPixmap("/home/saucy/work/youker-assistant/src/image/div.png"));
+//    ui->loadingText->setStyleSheet("QLabel{background-color:white;}");
+    ui->loadingDiv->hide();
+    ui->loadingText->hide();
+//    ui->loading->setMovie(this->loadgif);
+    ui->loading->hide();
+    //--------------------
+
 
     connect(ui->comboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(changeSelectCity(QString)));
 }
@@ -57,6 +67,28 @@ LocationDialog::~LocationDialog()
 {
     delete ui;
 }
+
+//void LocationDialog::startLoading(const QString &loadingText){
+//    ui->loadingDiv->setGeometry(0,0,this->width() - 2,this->height() - 30);
+//    ui->loadingDiv->show();
+//    ui->loading->setGeometry(this->width() / 2 - 25, 0, this->width(), this->height() - 60);
+//    this->loadgif->start();
+//    ui->loading->show();
+//    ui->loadingText->setGeometry(ui->loading->x() + 25 - 150,ui->loading->y() + 120, 300, 20);
+//    ui->loadingText->setText(loadingText);
+//    ui->loadingText->show();
+//}
+
+//void LocationDialog::stopLoading(){
+//    ui->loading->setGeometry(0,0,1,1);
+//    ui->loadingDiv->setGeometry(0,0,1,1);
+//    ui->loadingText->setGeometry(0,0,1,1);
+//    ui->loadingText->setText("");
+//    this->loadgif->stop();
+//    ui->loading->hide();
+//    ui->loadingDiv->hide();
+//    ui->loadingText->hide();
+//}
 
 void LocationDialog::changeSelectCity(QString currentName) {
     selectCity = currentName;
@@ -101,6 +133,7 @@ void LocationDialog::on_searchBtn_clicked()
             selectCity = ui->comboBox->currentText();
         }
         else {
+//            this->startLoading("正在获取城市列表....");
             listname = sedispather->search_city_names_qt(yahoo_str);
             QStringList geonameidList = sedispather->get_geonameid_list_qt();
             QStringList latitudeList = sedispather->get_latitude_list_qt();
@@ -121,6 +154,7 @@ void LocationDialog::on_searchBtn_clicked()
                     }
                  }
             }
+//            this->stopLoading();
         }
     }
 

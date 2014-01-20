@@ -65,12 +65,9 @@ Rectangle {
     Rectangle {
         id: offline
         width: parent.width
-//        height: parent.height
-//        x: (parent.width * 1.5)
         Common.SetBtn {
             id: setBtn
             iconName: "set.png"
-    //        setbtn_flag: "set"
             anchors{
                 left: parent.left
                 leftMargin: 26
@@ -93,7 +90,6 @@ Rectangle {
         }
         Common.SetBtn {
             iconName: "message.png"
-    //        setbtn_flag: "message"
             anchors{
                 left: adminImage.right
                 top:parent.top
@@ -134,36 +130,16 @@ Rectangle {
                 }
             }
         }
-
-//        Common.StyleButton {
-//            id: quitBtn
-//            anchors {
-//                right: parent.right
-//                rightMargin: 20
-//                top: parent.top
-//                topMargin: 30
-//            }
-//            wordname: qsTr("Quit")//退出
-//            width: 40
-//            height: 20
-//            onClicked: {
-//                userText.text = "";
-//                scoreText.text = "";
-//                logo.source = "";
-//                rightbar.state = "OffLine";
-//            }
-//        }
-        Common.Button {
+        Common.KButton {
             id: quitBtn
+            showImage: "../../img/icons/remove.png"
             anchors {
                 right: parent.right
                 rightMargin: 10
                 top: parent.top
                 topMargin: 10
             }
-            width: 16
-            height: 16
-            hoverimage: "remove.png"
+            width: 16; height: 16
             onClicked: {
                 console.log("quit....");
                 userText.text = "";
@@ -173,7 +149,6 @@ Rectangle {
             }
         }
     }
-
 
     WeatherZone {
         id: weatherZone

@@ -122,6 +122,55 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string>Search</string>
    </property>
   </widget>
+  <widget class="QLabel" name="loading">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>1</width>
+     <height>1</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="loadingText">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>300</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文细黑</family>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="loadingDiv">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>1</width>
+     <height>1</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>frame</zorder>
   <zorder>comboBox</zorder>
   <zorder>label</zorder>
@@ -129,6 +178,9 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>quitBtn</zorder>
   <zorder>btn_close</zorder>
   <zorder>searchBtn</zorder>
+  <zorder>loading</zorder>
+  <zorder>loadingText</zorder>
+  <zorder>loadingDiv</zorder>
  </widget>
  <resources/>
  <connections/>

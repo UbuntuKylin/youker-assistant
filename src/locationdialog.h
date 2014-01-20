@@ -19,6 +19,7 @@
 
 #include <QDialog>
 #include <QMap>
+//#include <QMovie>
 #include "sessiondispatcher.h"
 
 namespace Ui {
@@ -54,6 +55,12 @@ private:
     QMap<QString, QVariant> latInfo;
     QMap<QString, QVariant> lonInfo;
     bool yahoo;
+
+    //------------------
+//    QMovie *loadgif;
+//    void startLoading(const QString &loadingText);
+//    void stopLoading();
+    //------------------
 
 signals:
     void sendCityInfo(QString cityName, QString cityId, QString lat, QString lon);

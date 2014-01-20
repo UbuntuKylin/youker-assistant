@@ -128,11 +128,6 @@ Item {
             source: "../../img/toolWidget/searchfile.png"
             Behavior on rotation { NumberAnimation { duration: 200 } }
         }
-//        AnimatedImage {
-//            id: refreshArrow_active
-//            visible: false
-//            source: "../../img/toolWidget/find.gif"
-//        }
         Column {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 10

@@ -74,7 +74,7 @@ Item {
             Bars.Progress {
                 id: progress
                 value: 0
-                background: "../../img/skin/progress-bg.png"
+//                background: "../../img/skin/progress-bg.png"
                 color: "lightsteelblue"////"#086794"
                 secondColor: "steelblue"//"#318d11"
                 anchors.horizontalCenter: parent.horizontalCenter
