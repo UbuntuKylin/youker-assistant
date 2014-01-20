@@ -29,7 +29,7 @@ Rectangle {
     property string selected_cursor_theme: ""//存放用户选择确认后的主题
 
     property string actiontitle: qsTr("Mouse Settings")//鼠标设置
-    property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。
+    property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm. Also, theme change need to restart system.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。
     //背景
     Image {
         source: "../../img/skin/bg-bottom-tab.png"
@@ -150,6 +150,7 @@ Rectangle {
                     if (mousepointerpage.selected_cursor_theme != cursorcombo.selectedText) {
                         mousepointerpage.selected_cursor_theme = cursorcombo.selectedText;
                         sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+                        systemdispatcher.set_cursor_theme_with_root_qt(cursorcombo.selectedText);
                         showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
                         statusImage.visible = true;
                     }
@@ -254,6 +255,7 @@ Rectangle {
             else {
                 if(defaulttheme != mousepointerpage.selected_cursor_theme) {
                     sessiondispatcher.set_cursor_theme_qt(defaulttheme);
+                    systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
                     mousepointerpage.selected_cursor_theme = defaulttheme;
                     showText.text = qsTr("[ Current Cursor Theme: ") + defaulttheme + " ]";//[ 当前光标主题是：
                     cursorcombo.selectedIndex = 0;

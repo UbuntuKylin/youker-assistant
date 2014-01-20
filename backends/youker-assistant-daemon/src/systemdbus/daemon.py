@@ -41,7 +41,7 @@ from beautify.sound import Sound
 from beautify.others import Others
 from appcollections.monitorball.monitor_ball import MonitorBall
 from softwarecenter.apt_daemon import AptDaemon
-
+from beautify.theme import Theme
 log = logging.getLogger('Daemon')
 
 
@@ -54,6 +54,7 @@ class Daemon(PolicyKitService):
         self.otherconf = Others()
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
+        self.themeconf = Theme()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -72,6 +73,11 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def set_homedir(self, homedir):
         self.soundconf.set_homedir(homedir)
+
+    # set cursor theme
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def set_cursor_theme_with_root(self, theme):
+        return self.themeconf.set_cursor_theme_with_root(theme)
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b', sender_keyword='sender')
     def kill_root_process(self, pid, sender=None):

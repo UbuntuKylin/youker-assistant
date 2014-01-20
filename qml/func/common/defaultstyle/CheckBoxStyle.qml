@@ -24,7 +24,7 @@ QtObject {
                     if(styleflag == "radio")
                          "../../../img/icons/radiobox.png";
                     else if(styleflag == "flowradio")
-                        "../../../img/icons/flowradio-01.png";
+                        "../../../img/icons/dot_normal.png";
                     else
                         "../../../img/icons/checkbox-0.png";
                 }
@@ -44,7 +44,7 @@ QtObject {
                 if(styleflag == "radio")
                      "../../../img/icons/radiobox-check.png";
                 else if(styleflag == "flowradio")
-                    "../../../img/icons/flowradio-02.png";
+                    "../../../img/icons/dot_active.png";
                 else
                     "../../../img/icons/checkbox.png";
             }

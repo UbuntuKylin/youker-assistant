@@ -55,12 +55,14 @@ from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather#0.3.3
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
+#from slider.wizard import Wizard
 
 INTERFACE = "com.ubuntukylin.session"
 UKPATH = "/"
 
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
+        #self.wizardconf = Wizard()
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
         self.unityconf = Unity()
@@ -82,6 +84,10 @@ class SessionDaemon(dbus.service.Object):
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
+
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    #def display_slide_show(self):
+    #    self.wizardconf.show_slider()
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def get_yahoo_city_id(self, geonameId):

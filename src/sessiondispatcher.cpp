@@ -92,6 +92,10 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
+void SessionDispatcher::show_slider_qt() {
+    sessioniface->call("display_slide_show");
+}
+
 void SessionDispatcher::handler_access_user_password(QString user, QString pwd) {
     qDebug() << user;
     qDebug() << pwd;

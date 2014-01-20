@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 ### BEGIN LICENSE
 # Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd
 # This program is free software: you can redistribute it and/or modify it

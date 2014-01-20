@@ -101,8 +101,8 @@ Item {
         id:root
         width: parent.width
         height: parent.height
-        property string title: qsTr("Uninstall unnecessary procedures, old kernel packages, and cleanup software configfile")//卸载不必要的程序、旧内核包和清除软件配置文件
-        property string description: qsTr("Cleaning up the software that installed by other software bundled, old kernel packages and software configfile, to improve system performance")//清理软件安装过程中捆绑安装的依赖程序、旧内核包和软件配置文件，提高系统性能
+        property string title: qsTr("Uninstall unnecessary procedures, old kernel packages and configfile")//卸载不必要的程序、旧内核包和清除软件配置文件
+        property string description: qsTr("Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance")//清理软件安装过程中捆绑安装的依赖程序、旧内核包和软件配置文件，提高系统性能
         property string btnFlag: "package_scan"//扫描或者清理的标记：package_scan/package_work
         property bool packageresultFlag: false//判断依赖包扫描后的实际内容是否为空，为空时为false，有内容时为true
         property bool kernelresultFlag: false//判断旧内核包扫描后的实际内容是否为空，为空时为false，有内容时为true

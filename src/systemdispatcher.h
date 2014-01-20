@@ -74,6 +74,8 @@ public:
     Q_INVOKABLE void restore_all_sound_file_qt(QString soundtheme);
     //-----------------------------------------------
 
+    Q_INVOKABLE bool set_cursor_theme_with_root_qt(QString theme);
+
     //-----------------------monitorball------------------------
     //一键加速
     Q_INVOKABLE void cleanup_memory_qt();

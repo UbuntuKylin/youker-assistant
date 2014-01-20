@@ -152,6 +152,7 @@ Rectangle {
             height: 25
 //            flag: "VersionFeature"
             onClicked: {
+//                sessiondispatcher.show_slider_qt();
                 sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
             }
         }

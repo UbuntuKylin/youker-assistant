@@ -118,6 +118,11 @@ void SystemDispatcher::kill_root_process_qt(QString pid) {
 //    }
 //}
 
+bool SystemDispatcher::set_cursor_theme_with_root_qt(QString theme) {
+    QDBusReply<bool> reply = systemiface->call("set_cursor_theme_with_root", theme);
+    return reply.value();
+}
+
 void SystemDispatcher::get_computer_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_computer_info");
     if (reply.isValid()) {

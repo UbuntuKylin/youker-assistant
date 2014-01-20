@@ -35,6 +35,8 @@ public:
     explicit SessionDispatcher(QObject *parent = 0);
     ~SessionDispatcher();
     QDBusInterface *sessioniface;
+    Q_INVOKABLE void show_slider_qt();
+
     Q_INVOKABLE void login_ubuntukylin_account(int window_x, int window_y);
     //得到yahoo城市列表
     Q_INVOKABLE QStringList search_city_names_qt(QString search_name);
