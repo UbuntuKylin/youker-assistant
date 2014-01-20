@@ -52,6 +52,6 @@ void LoginDialog::on_okButton_clicked()
 {
     QString user = ui->userlineEdit->text();
     QString pwd = ui->pwdlineEdit->text();
-    emit translate_user_password(user, pwd);
+    emit translate_user_password(user.replace(" ", ""), pwd);
     this->accept();
 }

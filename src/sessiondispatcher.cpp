@@ -79,6 +79,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     //cookies
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
+
+    QObject::connect(httpauth, SIGNAL(response(QString,QString,QString)), this, SLOT(handler_access_login_success_info(QString,QString,QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -99,11 +101,18 @@ void SessionDispatcher::show_slider_qt() {
 void SessionDispatcher::handler_access_user_password(QString user, QString pwd) {
     qDebug() << user;
     qDebug() << pwd;
-    QString requestData = QString("%1%2%3%4%5").arg("username=").arg(user).arg("&password=").arg(pwd).arg("&hiddenFields=ifAny");
+    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
     QUrl url("http://210.209.123.136/box/find.php");
     QByteArray postData;
     postData.append(requestData);
     httpauth->sendPostRequest(url, postData);
+
+
+//    QString requestData = QString("%1%2%3%4%5").arg("username=").arg(user).arg("&password=").arg(pwd).arg("&hiddenFields=ifAny");
+//    QUrl url("http://210.209.123.136/box/find.php");
+//    QByteArray postData;
+//    postData.append(requestData);
+//    httpauth->sendPostRequest(url, postData);
 }
 
 void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
@@ -113,6 +122,10 @@ void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
     this->alert_y = window_y + mainwindow_height - 400;
     logindialog->move(this->alert_x, this->alert_y);
     logindialog->show();
+}
+
+void SessionDispatcher::handler_access_login_success_info(QString username, QString password, QString score) {
+    emit updateLoginStatus(username, password, score);
 }
 
 QStringList SessionDispatcher::search_city_names_qt(QString search_name) {

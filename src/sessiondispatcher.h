@@ -284,9 +284,12 @@ signals:
 
     //把一键扫描的总数告诉QML
     void tellScanResultToQML(QString flag, QString msg);
+
+    //更新登录状态
+    void updateLoginStatus(QString username, QString password, QString score);
 public slots:
     void handler_access_user_password(QString user, QString pwd);
-
+    void handler_access_login_success_info(QString username, QString password, QString score);
     //获取天气预报槽函数
     void handler_access_forecast_weather(QString key, QString value);
     //扫描完成槽函数

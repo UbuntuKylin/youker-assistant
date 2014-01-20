@@ -14,8 +14,9 @@ public:
     void sendPostRequest(const QUrl &url, const QByteArray &data);
 
 signals:
-    void response(int len);
+//    void response(int len);
     void error(int errCode);
+    void response(QString username, QString password, QString score);
 
 public slots:
     void replyFinished(QNetworkReply *reply);

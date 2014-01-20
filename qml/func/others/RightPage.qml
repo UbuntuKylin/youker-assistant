@@ -27,6 +27,18 @@ Rectangle {
     property string image3: "../../img/skin/wps0.png"
     property string mage_source: image1
 
+    //更新登录状态
+    Connections
+    {
+        target: sessiondispatcher
+        onUpdateLoginStatus: {
+            logo.source = "../../img/icons/logo.png"
+            userText.text = username;
+            scoreText.text = score;
+            rightbar.state = "OnLine";
+        }
+    }
+
     //更新列表
     function updateList() {
         clearModel.clear();//清空
@@ -50,42 +62,118 @@ Rectangle {
         anchors.fill: parent
     }
 
-    Common.SetBtn {
-        id: setBtn
-        iconName: "set.png"
-//        setbtn_flag: "set"
-        anchors{
-            left: parent.left
-            leftMargin: 26
-            top:parent.top
-            topMargin: 30
+    Rectangle {
+        id: offline
+        width: parent.width
+//        height: parent.height
+//        x: (parent.width * 1.5)
+        Common.SetBtn {
+            id: setBtn
+            iconName: "set.png"
+    //        setbtn_flag: "set"
+            anchors{
+                left: parent.left
+                leftMargin: 26
+                top:parent.top
+                topMargin: 30
+            }
+            onClicked: {
+                sessiondispatcher.login_ubuntukylin_account(mainwindow.pos.x, mainwindow.pos.y);
+            }
         }
-        onClicked: {
-            sessiondispatcher.login_ubuntukylin_account(mainwindow.pos.x, mainwindow.pos.y);
+        Image {
+            id: adminImage
+            source: "../../img/icons/admin.png"
+            anchors{
+                left: parent.left
+                leftMargin: 26 + 39
+                top:parent.top
+                topMargin: 15
+            }
+        }
+        Common.SetBtn {
+            iconName: "message.png"
+    //        setbtn_flag: "message"
+            anchors{
+                left: adminImage.right
+                top:parent.top
+                topMargin: 30
+            }
+            onClicked: {
+                console.log("message clicked....");
+            }
         }
     }
-    Image {
-        id: adminImage
-        source: "../../img/icons/admin.png"
-        anchors{
-            left: parent.left
-            leftMargin: 26 + 39
-            top:parent.top
-            topMargin: 15
+    Rectangle {
+        id: online
+        width: parent.width
+        x: (parent.width * 1.5)
+        Row {
+            anchors{
+                left: parent.left
+                leftMargin: 26
+                top:parent.top
+                topMargin: 30
+            }
+            spacing: 10
+            Image {
+                id: logo
+                width: 32; height: 32
+                source: ""
+            }
+            Column {
+                Text {
+                    id: userText
+                    text: ""
+                    width: 160
+                }
+                Text {
+                    id: scoreText
+                    text: ""
+                    width: 160
+                }
+            }
+        }
+
+//        Common.StyleButton {
+//            id: quitBtn
+//            anchors {
+//                right: parent.right
+//                rightMargin: 20
+//                top: parent.top
+//                topMargin: 30
+//            }
+//            wordname: qsTr("Quit")//退出
+//            width: 40
+//            height: 20
+//            onClicked: {
+//                userText.text = "";
+//                scoreText.text = "";
+//                logo.source = "";
+//                rightbar.state = "OffLine";
+//            }
+//        }
+        Common.Button {
+            id: quitBtn
+            anchors {
+                right: parent.right
+                rightMargin: 10
+                top: parent.top
+                topMargin: 10
+            }
+            width: 16
+            height: 16
+            hoverimage: "remove.png"
+            onClicked: {
+                console.log("quit....");
+                userText.text = "";
+                scoreText.text = "";
+                logo.source = "";
+                rightbar.state = "OffLine";
+            }
         }
     }
-    Common.SetBtn {
-        iconName: "message.png"
-//        setbtn_flag: "message"
-        anchors{
-            left: adminImage.right
-            top:parent.top
-            topMargin: 30
-        }
-        onClicked: {
-            console.log("message clicked....");
-        }
-    }
+
 
     WeatherZone {
         id: weatherZone
@@ -167,4 +255,17 @@ Rectangle {
             }
         }
     }
+
+    states: [
+        State {
+            name: "OnLine"
+            PropertyChanges { target: online; x: 0 }
+            PropertyChanges { target: offline; x: (parent.width * 1.5) }
+        },
+        State {
+            name: "OffLine"
+            PropertyChanges { target: offline; x: 0 }
+            PropertyChanges { target: online; x: (parent.width * 1.5) }
+        }
+    ]
 }

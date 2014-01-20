@@ -1,7 +1,7 @@
 #include "httpauth.h"
 #include <QObject>
 #include <QDebug>
-
+#include <QStringList>
 HttpAuth::HttpAuth(QObject *parent) :
     QObject(parent)
 {
@@ -19,11 +19,17 @@ void HttpAuth::sendPostRequest(const QUrl &url, const QByteArray &data){
 
 void HttpAuth::replyFinished(QNetworkReply *reply){
     if(reply && reply->error() == QNetworkReply::NoError) {
-        QByteArray data = reply->readAll();
+        /*QByteArray*/QString data = reply->readAll();
         qDebug() << "Result:->";
         qDebug() << data;//"I AM HERE"
-        int len = data.size();
-        emit this->response(len);
+        QStringList tmp = data.split("<br>");
+        qDebug() << QString("%1").arg(tmp.length());
+        if(tmp.at(0) == "sccuss") {
+            qDebug() << "login success";
+            emit this->response(tmp.at(1), tmp.at(2), "1000");
+        }
+//        int len = data.size();
+//        emit this->response(len);
     } else {
         qDebug() << "ERROR:->";
         qDebug() << reply->errorString();//"网络不能访问"
