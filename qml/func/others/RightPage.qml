@@ -139,7 +139,7 @@ Rectangle {
             id: helplabel
             wordname: qsTr("Forum Help")//论坛求助
             width: 50
-            height: 20
+            height: 25
 //            flag: "BBS"
             onClicked: {
                 Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
@@ -149,7 +149,7 @@ Rectangle {
             id: versionlabel
             wordname: qsTr("Features")//新版本特性
             width: 60
-            height: 20
+            height: 25
 //            flag: "VersionFeature"
             onClicked: {
                 sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
@@ -159,7 +159,7 @@ Rectangle {
             id: buglabel
             wordname: qsTr("Report Bugs")//Bug提交
             width: 40
-            height: 20
+            height: 25
 //            flag: "BUG"
             onClicked: {
                 Qt.openUrlExternally("https://bugs.launchpad.net/youker-assistant");

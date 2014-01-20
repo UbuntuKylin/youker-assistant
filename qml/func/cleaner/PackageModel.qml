@@ -193,7 +193,7 @@ Item {
                     root.packageresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 1) {
+                    if(root.mode == 0 || root.mode == 1 || root.mode == 4 || root.mode == 5) {
                         root.packageEmpty = true;
                     }
                     root.packageresultFlag = false;//扫描的实际有效内容不存在
@@ -202,7 +202,7 @@ Item {
                     root.kernelresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 2) {
+                    if(root.mode == 0 || root.mode == 2 || root.mode == 4 || root.mode == 6) {
                         root.kernelEmpty = true;
                     }
                     root.kernelresultFlag = false;//扫描的实际有效内容不存在
@@ -211,7 +211,7 @@ Item {
                     root.configresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 3) {
+                    if(root.mode == 0 || root.mode == 3 || root.mode == 5 || root.mode == 6) {
                         root.configEmpty = true;
                     }
                     root.configresultFlag = false;//扫描的实际有效内容不存在

@@ -101,7 +101,7 @@ Item {
                     root.aptresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 1) {
+                    if(root.mode == 0 || root.mode == 1 || root.mode == 4 || root.mode == 5) {
                         root.aptEmpty = true;
                     }
                     root.aptresultFlag = false;//扫描的实际有效内容不存在
@@ -110,7 +110,7 @@ Item {
                     root.softresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 2) {
+                    if(root.mode == 0 || root.mode == 2  || root.mode == 4 || root.mode == 6) {
                         root.softEmpty = true;
                     }
                     root.softresultFlag = false;//扫描的实际有效内容不存在
@@ -119,7 +119,7 @@ Item {
                     root.thumbresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 3) {
+                    if(root.mode == 0 || root.mode == 3 || root.mode == 5 || root.mode == 6) {
                         root.thumbEmpty = true;
                     }
                     root.thumbresultFlag = false;//扫描的实际有效内容不存在
