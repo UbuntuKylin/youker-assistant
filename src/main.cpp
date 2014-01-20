@@ -125,6 +125,8 @@ int main(int argc, char** argv)
     if (value_system != 0)
         qDebug() << "SystemDaemon Failed!";
 
+//    system("/home/saucy/Slider/src/wizard.py");
+
     //启动画面
     QSplashScreen *splash = new QSplashScreen;
     splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
