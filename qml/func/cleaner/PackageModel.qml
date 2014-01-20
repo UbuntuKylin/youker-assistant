@@ -173,6 +173,7 @@ Item {
                 }
             }
             onTellQMLPackageOver: {
+                doingImage.visible = false;
                 packagemainModel.clear();
                 kernelmainModel.clear();
                 configmainModel.clear();
@@ -491,7 +492,7 @@ Item {
         }
 
         Row{
-            anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 40 }
+            anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 20 }
             spacing: 20
             Row {
                 spacing: 20
@@ -573,58 +574,51 @@ Item {
                             root.packageNum = 0;
                             root.kernelNum = 0;
                             root.configNum = 0;
+                            doingImage.visible = true;
                             sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(0));
                         }
                         else {
-//                            if(root.package_maincheck) {
-//                                root.mode = 1;
-//                                root.packageNum = 0;
-//                                sessiondispatcher.package_scan_function_qt("unneed");
-//                            }
-//                            else if(root.kernel_maincheck) {
-//                                root.mode = 2;
-//                                root.kernelNum = 0;
-//                                sessiondispatcher.package_scan_function_qt("oldkernel");
-//                            }
-//                            else{
-//                                actionBtn.enabled = true;
-//                                //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
-//                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
-//                            }
                             if(root.package_maincheck && !root.kernel_maincheck && !root.config_maincheck) {
                                 root.mode = 1;
                                 root.packageNum = 0;
+                                doingImage.visible = true;
                                 sessiondispatcher.package_scan_function_qt("unneed");
                             }
                             else if(!root.package_maincheck && root.kernel_maincheck && !root.config_maincheck) {
                                 root.mode = 2;
                                 root.kernelNum = 0;
+                                doingImage.visible = true;
                                 sessiondispatcher.package_scan_function_qt("oldkernel");
                             }
                             else if(!root.package_maincheck && !root.kernel_maincheck && root.config_maincheck) {
                                 root.mode = 3;
                                 root.configNum = 0;
+                                doingImage.visible = true;
                                 sessiondispatcher.cache_scan_function_qt("configfile");
                             }
                             else if(root.package_maincheck && root.kernel_maincheck && !root.config_maincheck) {
                                 root.mode = 4;
                                 root.packageNum = 0;
                                 root.kernelNum = 0;
+                                doingImage.visible = true;
                                 sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(4));
                             }
                             else if(root.package_maincheck && !root.kernel_maincheck && root.config_maincheck) {
                                 root.mode = 5;
                                 root.packageNum = 0;
                                 root.configNum = 0;
+                                doingImage.visible = true;
                                 sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(5));
                             }
                             else if(!root.package_maincheck && root.kernel_maincheck && root.config_maincheck) {
                                 root.mode = 6;
                                 root.kernelNum = 0;
                                 root.configNum = 0;
+                                doingImage.visible = true;
                                 sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(6));
                             }
                             else{
+                                doingImage.visible = false;
                                 actionBtn.enabled = true;
                                 //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
                                 sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -647,6 +641,14 @@ Item {
                         }
                     }
                 }
+            }
+            AnimatedImage {
+                id: doingImage
+                anchors.verticalCenter: parent.verticalCenter
+                width: 16
+                height: 16
+                visible: false
+                source: "../../img/icons/move.gif"
             }
         }
 

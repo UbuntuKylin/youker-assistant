@@ -69,10 +69,10 @@ Item {
         onTellQMLCaheOver: {
             console.log("1111111111");
             if(flag == "browser") {
+                doingImage.visible = false;
                 console.log("22222222");
                 firefoxmainModel.clear();
                 chromiummainModel.clear();
-    //            doingImage.visible = false;
                 //Firefox缓存清理
                 firefoxmainModel.append({"mstatus": root.firefox_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup Firefox Cache"),
@@ -169,7 +169,7 @@ Item {
         onFinishCleanWorkError: {//清理出错时收到的信号
             if (btnFlag == "browser_work") {
                 if (msg == "browsercache") {
-//                    doingImage.visible = false;
+                    doingImage.visible = false;
                     root.state = "BrowserWorkError";
                     //清理过程中发生错误，解禁按钮
                     actionBtn.enabled = true;
@@ -179,7 +179,7 @@ Item {
         }
         onFinishCleanWork: {//清理成功时收到的信号
             if (root.btnFlag == "browser_work") {
-//                doingImage.visible = false;
+                doingImage.visible = false;
                 if (msg == "") {
                     //清理取消，解禁按钮
                     actionBtn.enabled = true;
@@ -285,19 +285,11 @@ Item {
     }
 
     Row{
-        anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 40 }
+        anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 20 }
         spacing: 20
         Row {
             spacing: 20
             anchors.verticalCenter: parent.verticalCenter
-//            AnimatedImage {
-//                id: doingImage
-//                anchors.verticalCenter: parent.verticalCenter
-//                width: 16
-//                height: 16
-//                visible: false
-//                source: "../../img/icons/move.gif"
-//            }
             Common.StyleButton {
                 id: backBtn
                 visible: false
@@ -359,7 +351,7 @@ Item {
                     root.flag = false;
 
                     if(root.firefox_maincheck && root.chromium_maincheck) {
-//                        doingImage.visible = true;
+                        doingImage.visible = true;
                         root.mode = 0;
                         root.firefoxNum = 0;
                         root.chromiumNum = 0;
@@ -367,18 +359,19 @@ Item {
                     }
                     else {
                         if(root.firefox_maincheck) {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
                             root.mode = 1;
                             root.firefoxNum = 0;
                             sessiondispatcher.cache_scan_function_qt("firefox", 'browser');
                         }
                         else if(root.chromium_maincheck) {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
                             root.mode = 2;
                             root.chromiumNum = 0;
                             sessiondispatcher.cache_scan_function_qt("chromium", 'browser');
                         }
                         else{
+                            doingImage.visible = false;
                             actionBtn.enabled = true;
                             //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -392,7 +385,7 @@ Item {
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
 //                            console.log("33333333333");
 //                            console.log(systemdispatcher.get_browser_args());
                             //开始清理时，禁用按钮，等到清理完成后解禁
@@ -402,6 +395,14 @@ Item {
                     }
                 }
             }
+        }
+        AnimatedImage {
+            id: doingImage
+            anchors.verticalCenter: parent.verticalCenter
+            width: 16
+            height: 16
+            visible: false
+            source: "../../img/icons/move.gif"
         }
     }
 

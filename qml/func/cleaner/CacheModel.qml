@@ -84,7 +84,7 @@ Item {
                 //"detailstr": qsTr("Apt Cache Path: /var/cache/apt/archives"
                 //sessiondispatcher.getHomePath() + "/.cache/software-center"
                 //"detailstr": qsTr("Thumbnails Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/thumbnails"
-    //            doingImage.visible = false;
+                doingImage.visible = false;
                 //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
                 aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup Package Cache"),
@@ -207,7 +207,7 @@ Item {
         onFinishCleanWorkError: {//清理出错时收到的信号
             if (btnFlag == "cache_work") {
                 if (msg == "cache") {
-//                    doingImage.visible = false;
+                    doingImage.visible = false;
                     root.state = "AptWorkError";
                     //清理过程中发生错误，解禁按钮
                     actionBtn.enabled = true;
@@ -217,7 +217,7 @@ Item {
         }
         onFinishCleanWork: {//清理成功时收到的信号
             if (root.btnFlag == "cache_work") {
-//                doingImage.visible = false;
+                doingImage.visible = false;
                 if (msg == "") {
                     //清理取消，解禁按钮
                     actionBtn.enabled = true;
@@ -413,19 +413,11 @@ Item {
     }
 
     Row{
-        anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 40 }
+        anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 20 }
         spacing: 20
         Row {
             spacing: 20
             anchors.verticalCenter: parent.verticalCenter
-//            AnimatedImage {
-//                id: doingImage
-//                anchors.verticalCenter: parent.verticalCenter
-//                width: 16
-//                height: 16
-//                visible: false
-//                source: "../../img/icons/move.gif"
-//            }
             Common.StyleButton {
                 id: backBtn
                 visible: false
@@ -499,9 +491,8 @@ Item {
 
                 if (root.btnFlag == "cache_scan") {//扫描
                     root.flag = false;
-
                     if(root.apt_maincheck && root.soft_maincheck && root.thumb_maincheck) {
-//                        doingImage.visible = true;
+                        doingImage.visible = true;
                         root.mode = 0;
                         root.aptNum = 0;
                         root.softNum = 0;
@@ -510,45 +501,46 @@ Item {
                     }
                     else {
                         if(root.apt_maincheck && !root.soft_maincheck && !root.thumb_maincheck) {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
                             root.mode = 1;
                             root.aptNum = 0;
                             sessiondispatcher.cache_scan_function_qt("apt", 'cache');
                         }
                         else if(!root.apt_maincheck && root.soft_maincheck && !root.thumb_maincheck) {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
                             root.mode = 2;
                             root.softNum = 0;
                             sessiondispatcher.cache_scan_function_qt("software-center", 'cache');
                         }
                         else if(!root.apt_maincheck && !root.soft_maincheck && root.thumb_maincheck) {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
                             root.mode = 3;
                             root.thumbNum = 0;
                             sessiondispatcher.cache_scan_function_qt("thumbnails", 'cache');
                         }
                         else if(root.apt_maincheck && root.soft_maincheck && !root.thumb_maincheck) {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
                             root.mode = 4;
                             root.aptNum = 0;
                             root.softNum = 0;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(4), 'cache');
                         }
                         else if(root.apt_maincheck && !root.soft_maincheck && root.thumb_maincheck) {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
                             root.mode = 5;
                             root.aptNum = 0;
                             root.thumbNum = 0;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(5), 'cache');
                         }
                         else if(!root.apt_maincheck && root.soft_maincheck && root.thumb_maincheck) {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
                             root.mode = 6;
                             root.softNum = 0;
                             root.thumbNum = 0;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(6), 'cache');
                         }
                         else{
+                            doingImage.visible = false;
                             actionBtn.enabled = true;
                             //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
@@ -562,7 +554,7 @@ Item {
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
-//                            doingImage.visible = true;
+                            doingImage.visible = true;
 //                            console.log("33333333333");
 //                            console.log(systemdispatcher.get_cache_args());
                             //开始清理时，禁用按钮，等到清理完成后解禁
@@ -572,6 +564,14 @@ Item {
                     }
                 }
             }
+        }
+        AnimatedImage {
+            id: doingImage
+            anchors.verticalCenter: parent.verticalCenter
+            width: 16
+            height: 16
+            visible: false
+            source: "../../img/icons/move.gif"
         }
     }
 

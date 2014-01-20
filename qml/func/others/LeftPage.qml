@@ -26,12 +26,20 @@ Rectangle {
     property string garbage
     property string trace
     property string cookies
-//    property bool garbageFlag: false
-//    property bool traceFlag: false
-//    property bool cookiesFlag: false
+    property string path: "../../img/en/"
     property bool garbageFlag: true
     property bool traceFlag: true
     property bool cookiesFlag: true
+
+    Component.onCompleted: {
+        if(sessiondispatcher.get_locale_version() == "zh_CN") {
+            leftbar.path = "../../img/zh_CN/";
+        }
+        else {
+            leftbar.path = "../../img/en/";
+        }
+        firstonekey.showImage = leftbar.path + "quickscan.png";
+    }
 
     Connections
     {
@@ -45,7 +53,8 @@ Rectangle {
                 staticImage.visible = true;
                 dynamicImage.visible = false;
                 leftbar.flag = "onekey";
-                firstonekey.text = qsTr("Quick cleanup");//一键清理
+                firstonekey.showImage = leftbar.path + "quickclean.png";
+//                firstonekey.text = qsTr("Quick cleanup");//一键清理
                 //扫描完成后根据子checkbox的勾选情况置状态
                 if(garbageCheck.checked) {
                     cachestatus.visible = true;
@@ -96,15 +105,18 @@ Rectangle {
             }
             else if (msg == "c") {
                 cachestatus.state = "GarbageOK";
-                firstonekey.text = qsTr("Cleaning up...");//正在清理...
+                firstonekey.showImage = leftbar.path + "cleaningup.png";
+//                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "h") {
                 historystatus.state = "HistoryOK";
-                firstonekey.text = qsTr("Cleaning up...");//正在清理...
+                firstonekey.showImage = leftbar.path + "cleaningup.png";
+//                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "k") {
                 cookiestatus.state = "CookiesOK";
-                firstonekey.text = qsTr("Cleaning up...");//正在清理...
+                firstonekey.showImage = leftbar.path + "cleaningup.png";
+//                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "o") {
                 //清理完毕后显示清理总数
@@ -131,7 +143,8 @@ Rectangle {
                 showText.text = "";
                 toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
                 leftbar.flag = "onekeyscan";
-                firstonekey.text = qsTr("Quick scan");//一键扫描
+                firstonekey.showImage = leftbar.path + "quickscan.png";
+//                firstonekey.text = qsTr("Quick scan");//一键扫描
             }
             staticImage.visible = true;
             dynamicImage.visible = false;
@@ -281,15 +294,13 @@ Rectangle {
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
-            Common.Button{
+            Common.KButton {
                 id: firstonekey
-                hoverimage: "green3.png"
-                text:qsTr("Quick scan")//一键扫描
-                fontsize: 17
+                showImage: ""//"../../img/zh_CN/quickscan.png"
                 anchors {
                     left: parent.left; leftMargin: 100
                 }
-                width: 186
+                width: 185
                 height: 45
                 onClicked: {
                     if(!(garbageCheck.checked || historyCheck.checked || cookiesCheck.checked)) {//没有有一个子项勾选了
@@ -336,15 +347,6 @@ Rectangle {
                             sessiondispatcher.onekey_scan_function_qt(systemdispatcher.get_onekey_args());
                         }
                         else if (leftbar.flag == "onekey") {//一键清理
-//                            if(garbageCheck.checked) {
-//                                leftbar.garbageFlag = true;
-//                            }
-//                            if(historyCheck.checked) {
-//                                leftbar.traceFlag = true;
-//                            }
-//                            if(cookiesCheck.checked) {
-//                                leftbar.cookiesFlag = true;
-//                            }
                             if(garbageCheck.checked) {
                                 if(!leftbar.garbageFlag) {
                                     leftbar.garbageFlag = false;
@@ -379,7 +381,10 @@ Rectangle {
                         }
                     }
                 }
-            }
+            }//Button
+
+
+
         }
     }//Row
 

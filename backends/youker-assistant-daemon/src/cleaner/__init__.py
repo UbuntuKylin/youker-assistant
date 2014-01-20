@@ -34,6 +34,7 @@ import cacheclean
 import oldkernel
 import systemhistory
 import dashhistory
+import softwareconfigfile
 
 HOMEDIR = ''
 
@@ -473,7 +474,7 @@ class CleanTheCache():
         if 'chromium' in mode_list:
             chromiumpath = "%s/.cache/chromium/Default" % homedir
             temp_chromium_list = self.objc.public_scan_cache(chromiumpath)
-            for one in temp_chromiumpath_list:
+            for one in temp_chromium_list:
                 if os.path.isdir(one):
                     sesdaemon.data_transmit_by_cache('chromium', one, 'True', common.confirm_filesize_unit(common.get_dir_size(one)))
                 else:
