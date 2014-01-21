@@ -55,7 +55,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>63</y>
+     <y>67</y>
      <width>91</width>
      <height>27</height>
     </rect>
@@ -94,7 +94,7 @@
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>66</y>
+     <y>70</y>
      <width>61</width>
      <height>21</height>
     </rect>
@@ -221,30 +221,11 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string>Finish</string>
    </property>
   </widget>
-  <widget class="QLabel" name="windLabel">
-   <property name="geometry">
-    <rect>
-     <x>22</x>
-     <y>97</y>
-     <width>241</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>21</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wind speed unit: Beaufort number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="comLabel">
    <property name="geometry">
     <rect>
      <x>23</x>
-     <y>126</y>
+     <y>110</y>
      <width>241</width>
      <height>21</height>
     </rect>
@@ -256,7 +237,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     </size>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: CMA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: CMA/Yahoo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <zorder>frame</zorder>
@@ -271,7 +252,6 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>delBtn</zorder>
   <zorder>quitBtn</zorder>
   <zorder>okBtn</zorder>
-  <zorder>windLabel</zorder>
   <zorder>comLabel</zorder>
  </widget>
  <resources/>

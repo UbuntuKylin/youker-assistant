@@ -157,7 +157,7 @@
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="158"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="198"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="217"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="324"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="316"/>
         <source>Cleanup Firefox Cache</source>
         <translation>清理Firefox缓存</translation>
     </message>
@@ -166,14 +166,14 @@
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="162"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="202"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="231"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="328"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="320"/>
         <source>Cleanup Chromium Cache</source>
         <translation>清理Chromium缓存</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="129"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="384"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="392"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="377"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="385"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
@@ -189,7 +189,7 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="143"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="549"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="550"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
@@ -209,26 +209,26 @@
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="305"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="297"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="346"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="556"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="563"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="570"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="577"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="338"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="557"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="564"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="571"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="578"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="384"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="377"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
         <translation>对不起，您没有选择需要扫描的内容，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="392"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="385"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的内容，请确认！</translation>
     </message>
@@ -337,8 +337,8 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="163"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="546"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="554"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="562"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
@@ -353,7 +353,7 @@
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="294"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="336"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="357"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="466"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="458"/>
         <source>Cleanup Thumbnails Cache</source>
         <translation>清理缩略图缓存</translation>
     </message>
@@ -393,7 +393,7 @@
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="262"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="310"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="331"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="458"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="450"/>
         <source>Package cache cleanup</source>
         <translation>包缓存清理</translation>
     </message>
@@ -402,17 +402,17 @@
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="278"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="315"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="352"/>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="462"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="454"/>
         <source>Software Center buffer cleaning</source>
         <translation>软件中心缓存清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="433"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="425"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="487"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="479"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="861"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="868"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="875"/>
@@ -421,12 +421,12 @@
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="554"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="546"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
         <translation>对不起，您没有选择需要扫描的内容，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheModel.qml" line="562"/>
+        <location filename="../../qml/func/cleaner/CacheModel.qml" line="554"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的内容，请确认！</translation>
     </message>
@@ -977,16 +977,21 @@
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="79"/>
+        <source>Distribution: </source>
+        <translation>发行版：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/DesktopInfo.qml" line="93"/>
         <source>Language: </source>
         <translation>语言：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/DesktopInfo.qml" line="94"/>
+        <location filename="../../qml/func/info/DesktopInfo.qml" line="108"/>
         <source>User: </source>
         <translation>当前用户：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/DesktopInfo.qml" line="108"/>
+        <location filename="../../qml/func/info/DesktopInfo.qml" line="122"/>
         <source>Home Folder: </source>
         <translation>用户主目录：</translation>
     </message>
@@ -1375,40 +1380,40 @@
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="162"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="157"/>
         <source>Please input the file size (M) : </source>
         <translation>请输入文件大小 (M)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="194"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="189"/>
         <source>Browse...</source>
         <translation>浏览...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="213"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="208"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="219"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="227"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="235"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="244"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="214"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="222"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="230"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="239"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="219"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="214"/>
         <source>Sorry, You haven&apos;t set the file size or the value is 0, please input the file sizes !</source>
         <translation>对不起，您没有设置扫描文件的大小或者设置值为 0，请重新输入文件大小！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="227"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="222"/>
         <source>Sorry, You did not choose the scan path, please click the &apos;Browse&apos; button to continue!</source>
         <translation>对不起，您没有选择扫描路径，请点击＂浏览＂按钮选择！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="235"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="230"/>
         <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
@@ -1417,24 +1422,24 @@
         <translation type="obsolete">扫描内容为空，无需清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="244"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="239"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的项，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="309"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="316"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="304"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="311"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="320"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="315"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="324"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="328"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="319"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="323"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
@@ -1619,122 +1624,116 @@
 <context>
     <name>LeftPage</name>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="48"/>
         <source>Quick cleanup</source>
-        <translation>一键清理</translation>
+        <translation type="obsolete">一键清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="99"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="103"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="107"/>
         <source>Cleaning up...</source>
-        <translation>正在清理...</translation>
+        <translation type="obsolete">正在清理...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="132"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="144"/>
         <source>Cleared!</source>
         <translation>一键清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="134"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="287"/>
         <source>Quick scan</source>
-        <translation>一键扫描</translation>
+        <translation type="obsolete">一键扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="113"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="117"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="121"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="125"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="129"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="133"/>
         <source>(totally cleared</source>
         <translation>（共清理掉</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="117"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="129"/>
         <source>garbage)</source>
         <translation>垃圾）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="121"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="133"/>
         <source>historical records)</source>
         <translation>条历史记录）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="113"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="125"/>
         <source>Cookies)</source>
         <translation>条Cookies）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="177"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="190"/>
         <source>Cleaning up history trace of Firefox...</source>
         <translation>正在清理Firefox的历史痕迹...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="180"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="193"/>
         <source>Firefox history trace had been cleared!</source>
         <translation>Firefox的历史痕迹已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="185"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="198"/>
         <source>Cleaning up history trace of Chromium...</source>
         <translation>正在清理Chromium的历史痕迹...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="188"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="201"/>
         <source>Chromium history trace had been cleared!</source>
         <translation>Chromium的历史痕迹已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="193"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="206"/>
         <source>Cleaning up Cookies of Firefox...</source>
         <translation>正在清理Firefox的Cookies...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="196"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="209"/>
         <source>Firefox Cookies had been cleared!</source>
         <translation>Firefox的Cookies已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="201"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="214"/>
         <source>Cleaning up Cookies of Chromium...</source>
         <translation>正在清理Chromium的Cookies...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="204"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="217"/>
         <source>Chromium Cookies had been cleared!</source>
         <translation>Chromium的Cookies已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="209"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="222"/>
         <source>Apt cache had been cleared!</source>
         <translation>Apt缓存已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="212"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="225"/>
         <source>Cleaning up Apt cache: </source>
         <translation>正在清理Apt缓存：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="217"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="230"/>
         <source>Software Center cache had been cleared!</source>
         <translation>软件中心缓存已清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="220"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="233"/>
         <source>Cleaning up Software Center cache: </source>
         <translation>正在清理软件中心缓存：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="270"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="283"/>
         <source>Quick clean up system junks, saving disk space and improving the system efficiency !</source>
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="484"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="489"/>
         <source>Cleanup Garbage</source>
         <translation>清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="687"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="692"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
         <translation>清理系统中的 Cookies，包含上网、购物、游戏等记录</translation>
     </message>
@@ -1743,17 +1742,17 @@
         <translation type="obsolete">一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="279"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="292"/>
         <source>To help you quick clean up the Cookies, garbage, traces and plug-ins in your system</source>
         <translation>一键帮您清理系统中的 Cookies、垃圾、痕迹和插件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="396"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="401"/>
         <source>Scan to:  </source>
         <translation>扫描到：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="411"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="416"/>
         <source>Quick Cleanup</source>
         <translation>一键清理项目</translation>
     </message>
@@ -1762,46 +1761,46 @@
         <translation type="obsolete">清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="497"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="502"/>
         <source>Clean up system junk files, free disk space</source>
         <translation>清理系统中的垃圾文件，释放磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="507"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="522"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="604"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="620"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="697"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="713"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="512"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="527"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="609"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="625"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="702"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="718"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="514"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="611"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="704"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="519"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="616"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="709"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="518"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="616"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="709"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="523"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="621"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="714"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="581"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="586"/>
         <source>Delete History</source>
         <translation>清理历史记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="594"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="599"/>
         <source>Clean up the historical records, to protect your privacy</source>
         <translation>清理上网时留下的历史记录，保护您的个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="674"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="679"/>
         <source>Cleanup Cookies</source>
         <translation>清理 Cookies</translation>
     </message>
@@ -1838,18 +1837,18 @@
         <translation>查找</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="144"/>
-        <location filename="../locationdialog.cpp" line="172"/>
+        <location filename="../locationdialog.cpp" line="178"/>
+        <location filename="../locationdialog.cpp" line="206"/>
         <source>Warning:</source>
         <translation>警告：</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="145"/>
+        <location filename="../locationdialog.cpp" line="179"/>
         <source>Please input city name and click &apos;find&apos; button to find!</source>
         <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="173"/>
+        <location filename="../locationdialog.cpp" line="207"/>
         <source>Please input city name and click &apos;search&apos; button to find!</source>
         <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
@@ -2277,7 +2276,7 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="67"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="930"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="932"/>
         <source>Software operation schedule</source>
         <translation>软件介绍</translation>
     </message>
@@ -2291,12 +2290,12 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="142"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="181"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="314"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="339"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="387"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="408"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="528"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="182"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="315"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="340"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="388"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="409"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="529"/>
         <source>Uninstall unnecessary procedures</source>
         <translation>卸载不必要的程序</translation>
     </message>
@@ -2306,12 +2305,12 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="146"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="185"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="318"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="355"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="392"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="429"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="532"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="186"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="319"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="356"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="393"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="430"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="533"/>
         <source>Uninstall old kernel packages</source>
         <translation>卸载旧内核包</translation>
     </message>
@@ -2320,14 +2319,14 @@
         <translation type="obsolete">可以根据扫描结果选择性地清理旧内核包，让系统更瘦。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="255"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="630"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="638"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="256"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="624"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="632"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="255"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="256"/>
         <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
@@ -2347,62 +2346,62 @@
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="150"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="189"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="322"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="371"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="413"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="434"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="536"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="190"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="323"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="372"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="414"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="435"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="537"/>
         <source>Cleanup software configfile</source>
         <translation>清理软件配置文件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="263"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="264"/>
         <source>Scan completed!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="269"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="885"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="270"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="887"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="290"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="291"/>
         <source>Cleanup abnormal!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="300"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="301"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="304"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="305"/>
         <source>Cleared</source>
         <translation>清理完毕</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="503"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="504"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="557"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="892"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="899"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="906"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="913"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="558"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="894"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="901"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="908"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="915"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="630"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="624"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
         <translation>对不起，您没有选择需要扫描的内容，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="638"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="632"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的内容，请确认！</translation>
     </message>
@@ -2538,47 +2537,47 @@
 <context>
     <name>RightPage</name>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="33"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="45"/>
         <source>DeadpixelTest</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="34"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="46"/>
         <source>DesktopIcon</source>
         <translation>桌面图标</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="35"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="47"/>
         <source>BootAnimation</source>
         <translation>开机动画</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="36"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="48"/>
         <source>SysSounds</source>
         <translation>系统声音</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="37"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="49"/>
         <source>MousePointer</source>
         <translation>鼠标指针</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="38"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="50"/>
         <source>Touchpad</source>
         <translation>触摸板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="140"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="203"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="150"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="213"/>
         <source>Features</source>
         <translation>新版本特性</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="161"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="224"/>
         <source>Report Bugs</source>
         <translation>Bug提交</translation>
     </message>
@@ -2586,7 +2585,7 @@
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="680"/>
+        <location filename="../sessiondispatcher.cpp" line="700"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -4036,21 +4035,30 @@
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="240"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wind speed unit: Beaufort number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;风速单位：蒲福级&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: CMA/Yahoo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局 / 雅虎&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="259"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wind speed unit: Beaufort number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;风速单位：蒲福级&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: CMA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: China Meteorological Administration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
+        <location filename="../wizarddialog.cpp" line="117"/>
         <source>Warning:</source>
-        <translation type="obsolete">警告：</translation>
+        <translation>警告：</translation>
+    </message>
+    <message>
+        <location filename="../wizarddialog.cpp" line="118"/>
+        <source>The city already exists, please click on the &apos;[Change City]&apos; button!</source>
+        <translation>该城市已经存在，请点击 ’[更换城市]‘ 按钮！</translation>
     </message>
     <message>
         <source>The configuration file is not found!</source>

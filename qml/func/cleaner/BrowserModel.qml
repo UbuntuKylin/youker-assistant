@@ -50,10 +50,6 @@ Item {
     {
         target: sessiondispatcher
         onAppendContentToCacheModel: {
-            console.log("00000000");
-            console.log(path);
-            console.log(fileFlag);
-            console.log(sizeValue)
             //QString flag, QString path, QString fileFlag, QString sizeValue
             if(flag == "firefox") {
                 firefoxsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
@@ -67,10 +63,8 @@ Item {
             }
         }
         onTellQMLCaheOver: {
-            console.log("1111111111");
             if(flag == "browser") {
                 doingImage.visible = false;
-                console.log("22222222");
                 firefoxmainModel.clear();
                 chromiummainModel.clear();
                 //Firefox缓存清理

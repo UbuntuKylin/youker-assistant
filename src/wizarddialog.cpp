@@ -102,32 +102,46 @@ void WizardDialog::loadConf() {
 }
 
 void WizardDialog::setLocation(QString cityName, QString cityId, QString lat, QString lon) {
-    ui->listWidget->insertItem(0, cityName);
-    ui->delBtn->setEnabled(true);
-
-    QListWidgetItem *currentitem;
-    currentitem = ui->listWidget->item(0);
-    ui->listWidget->setCurrentItem(currentitem);
-
-    newCityName = cityName;
-    newCityId = cityId;
-
-    //添加城市后，重新写天气配置到配置文件中
-    QStringList listName = pSettings->value("weather/places").toStringList();
-    listName.append(newCityName);
+    bool flag = false;
     QStringList idList = pSettings->value("weather/idList").toStringList();
-    idList.append(newCityId);
-    QStringList latitude = pSettings->value("weather/latitude").toStringList();
-    latitude.append(lat);
-    QStringList longitude = pSettings->value("weather/longitude").toStringList();
-    longitude.append(lon);
-    pSettings->setValue("weather/places", listName);
-    pSettings->setValue("weather/cityId", newCityId);
-    pSettings->setValue("weather/idList", idList);
-    pSettings->setValue("weather/latitude", latitude);
-    pSettings->setValue("weather/longitude", longitude);
-    pSettings->sync();
-    emit readyToUpdateWeatherForWizard();
+    for(int i = 0; i<idList.length(); i++) {
+        if(idList[i] == cityId) {
+            flag = true;
+            break;
+        }
+    }
+    if(flag) {
+        flag = false;
+        //警告：        该城市已经存在，请点击 ’[更换城市]‘ 按钮！
+        QMessageBox::warning(NULL,
+                             tr("Warning:"),
+                             tr("The city already exists, please click on the '[Change City]' button!"),
+                             QMessageBox::Ok);
+    }
+    else {
+        ui->listWidget->insertItem(0, cityName);
+        ui->delBtn->setEnabled(true);
+        QListWidgetItem *currentitem;
+        currentitem = ui->listWidget->item(0);
+        ui->listWidget->setCurrentItem(currentitem);
+        newCityName = cityName;
+        newCityId = cityId;
+        //添加城市后，重新写天气配置到配置文件中
+        QStringList listName = pSettings->value("weather/places").toStringList();
+        listName.append(newCityName);
+        idList.append(newCityId);
+        QStringList latitude = pSettings->value("weather/latitude").toStringList();
+        latitude.append(lat);
+        QStringList longitude = pSettings->value("weather/longitude").toStringList();
+        longitude.append(lon);
+        pSettings->setValue("weather/places", listName);
+        pSettings->setValue("weather/cityId", newCityId);
+        pSettings->setValue("weather/idList", idList);
+        pSettings->setValue("weather/latitude", latitude);
+        pSettings->setValue("weather/longitude", longitude);
+        pSettings->sync();
+        emit readyToUpdateWeatherForWizard();
+    }
 }
 
 void WizardDialog::setSpinValue(int value) {
