@@ -307,27 +307,30 @@ class CleanTheCookies():
     def get_cookie_crufts(self, flag, sesdaemon):
         homedir = common.return_homedir_sesdaemon()
         objcg = cookiesclean.CookiesClean(homedir)
+        cache = common.get_cache_list()
         crufts_list = []
 
         if flag in "firefox":
-            filepathf = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
-            if os.path.exists(filepathf):
-                pamf = [filepathf, 'moz_cookies', 'baseDomain']
-                temp_firefox_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
-                for one in temp_firefox_list:
-                    sesdaemon.data_transmit_by_cookies("firefox", one[0], str(one[-1]))
-                sesdaemon.cookies_transmit_complete('firefox')
+            if cache["firefox"].is_installed:
+                filepathf = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
+                if os.path.exists(filepathf):
+                    pamf = [filepathf, 'moz_cookies', 'baseDomain']
+                    temp_firefox_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
+                    for one in temp_firefox_list:
+                        sesdaemon.data_transmit_by_cookies("firefox", one[0], str(one[-1]))
+                    sesdaemon.cookies_transmit_complete('firefox')
             else:
                 sesdaemon.cookies_transmit_complete('funinstall')
 
         if flag in "chromium":
-            filepathc = "%s/.config/chromium/Default/Cookies" % homedir
-            if os.path.exists(filepathc):
-                pamc = [filepathc, 'cookies', 'host_key']
-                temp_chromium_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
-                for one in temp_chromium_list:
+            if cache["chromium-browser"].is_installed:
+                filepathc = "%s/.config/chromium/Default/Cookies" % homedir
+                if os.path.exists(filepathc):
+                    pamc = [filepathc, 'cookies', 'host_key']
+                    temp_chromium_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
+                    for one in temp_chromium_list:
                     sesdaemon.data_transmit_by_cookies("chromium", one[0], str(one[-1]))
-                sesdaemon.cookies_transmit_complete('chromium')
+                    sesdaemon.cookies_transmit_complete('chromium')
             else:
                 sesdaemon.cookies_transmit_complete('cuninstall')
 
