@@ -30,12 +30,9 @@ import apt_pkg
 import dbus
 import dbus.service
 import dbus.mainloop.glib
-from gi.repository import GObject
-
 import time
 
 import cleaner
-
 import pywapi
 import urllib2, urllib
 from urllib import urlencode

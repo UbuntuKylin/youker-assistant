@@ -20,7 +20,7 @@ import time
 import httplib
 
 class Points:
-    def time_points (self,time):
+    def time_points(self, time):
         if time >= 1 and time < 2 :
             return 2
         elif time >= 2 and time < 4 :
@@ -57,35 +57,39 @@ class Points:
             #print e
 
     # Login judgment day for the first time
-    def first_login(self,yesterday_login,user_points):
+    def first_login(self, yesterday_login, user_points):
+        '''Like this: {'hour': '13', 'month': '1', 'sec': '27', 'year': '2014', 'day': '21', 'minute': '55'}'''
         #current_time = time.localtime(time.time())
         current_time = self.get_httptime()
+        #print "11"
+        #print current_time
         if not current_time :
-            print None
+            #print None
             return None
         #days = '0'
-        days = str(current_time['year']) + "-" + str(current_time['month']) + "-" + str(current_time['day'])
+        current_date = str(current_time['year']) + "-" + str(current_time['month']) + "-" + str(current_time['day'])
+        #print "22"
+        #print current_date
         flogin = 0
-        if not days == yesterday_login :
+        if not current_date == yesterday_login :
             user_points += 5
-            yesterday_login = days
+            yesterday_login = current_date
             flogin = 1
-        print yesterday_login,user_points,flogin
-        return yesterday_login,user_points,flogin
+        #print '33'
+        #print yesterday_login, user_points, flogin
+        return (yesterday_login, user_points, flogin)
 
     def login(self):
         current_time = self.get_httptime()
         if not current_time :
-            print None
             return None
         login_time = int(current_time['day'])*24 + int(current_time['hour'])
-        print login_time
+        #print login_time
         return login_time
 
-    def quit(self,login_time,user_points,today_time):
+    def quit(self, login_time, user_points, today_time):
         current_time = self.get_httptime()
         if not current_time :
-            print None
             return None
         quit_time = int(current_time['day'])*24 + int(current_time['hour'])
         add_time = quit_time - login_time
@@ -94,13 +98,11 @@ class Points:
         today_time += add_time
         #Increased cumulative time score increases
         user_points += self.time_points(today_time)
-        print today_time,user_points
-        return today_time,user_points
-
-
+        #print today_time,user_points
+        return (today_time, user_points)
 
 if __name__ == '__main__':
     wb = Points()
-#    wb.first_login('2014-01-16',1000)
-#    wb.login()
-#    wb.quit(418,1005,0)
+    wb.first_login('2014-01-16', 1000)
+    wb.login()
+    wb.quit(418, 1005, 0)

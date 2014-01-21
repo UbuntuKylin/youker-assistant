@@ -76,6 +76,20 @@ Rectangle {
             Row {
                 spacing: 10
                 Common.Label {
+                    text: qsTr("Distribution: ")//发行版：
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                    width: 140
+                }
+                Text {
+                    text: sessiondispatcher.getSingleInfo("distribution")
+                    font.pixelSize: 14
+                    color: "#7a7a7a"
+                }
+            }
+            Row {
+                spacing: 10
+                Common.Label {
                     text: qsTr("Language: ")//语言：
                     font.pixelSize: 14
                     color: "#7a7a7a"

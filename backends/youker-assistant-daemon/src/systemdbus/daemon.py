@@ -29,6 +29,7 @@ import dbus
 import dbus.service
 import dbus.mainloop.glib
 from gi.repository import GObject
+#import gobject
 import apt
 import aptsources.sourceslist
 import apt_pkg
@@ -609,6 +610,8 @@ if __name__ == '__main__':
     if os.path.exists("/var/lib/apt/lists/lock"):
         os.remove("/var/lib/apt/lists/lock")
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+    #gobject.threads_init()
+    #mainloop = gobject.MainLoop()
     GObject.threads_init()
     mainloop = GObject.MainLoop()
     signal.signal(signal.SIGINT, lambda : mainloop.quit())

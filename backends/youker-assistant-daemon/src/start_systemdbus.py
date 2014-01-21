@@ -20,7 +20,7 @@ import signal
 import dbus
 import dbus.mainloop.glib
 from gi.repository import GObject
-
+#import gobject
 if __name__ == '__main__':
     os.environ["TERM"] = "xterm"
     os.environ["PATH"] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin"
@@ -31,6 +31,8 @@ if __name__ == '__main__':
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     GObject.threads_init()
     mainloop = GObject.MainLoop()
+    #gobject.threads_init()
+    #mainloop = gobject.MainLoop()
     signal.signal(signal.SIGINT, lambda : mainloop.quit())
     Daemon(dbus.SystemBus(), mainloop)
     mainloop.run()

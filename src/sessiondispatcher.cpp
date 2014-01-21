@@ -125,7 +125,14 @@ void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
 }
 
 void SessionDispatcher::handler_access_login_success_info(QString username, QString password, QString score) {
+    //登录成功后将用户信息显示在界面上
     emit updateLoginStatus(username, password, score);
+    //登录成功后将用户信息添加/更新到服务器数据库中
+//    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
+//    QUrl url("http://210.209.123.136/box/find.php");
+//    QByteArray postData;
+//    postData.append(requestData);
+//    httpauth->sendPostRequest(url, postData);
 }
 
 QStringList SessionDispatcher::search_city_names_qt(QString search_name) {

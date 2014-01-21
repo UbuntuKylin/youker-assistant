@@ -19,20 +19,18 @@
 import os
 import gtk
 import gobject
-#from gi.repository import GObject, Gtk, GLib
 import math
 import locale
 #samples:https://developer.gnome.org/pygtk/stable/class-gdkwindow.html
 
 class TimeController(gobject.GObject):
     __gsignals__ = {
-        'update': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_FLOAT,)),
-        'completed': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, ()),
+        'update': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, (gobject.TYPE_FLOAT,)),
+        'completed': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),
         }
 
     def __init__(self, timeout):
         gobject.GObject.__init__(self)
-        #GObject.GObject.__init__(self)
         self.timeout = timeout
         self.container = []
 
@@ -43,7 +41,6 @@ class TimeController(gobject.GObject):
             self.container.append(curve(len(self.container) * (1.0 / tmp)))
         self.container.reverse()
         gobject.timeout_add(int(self.timeout / tmp), self.update)
-        #GObject.timeout_add(int(self.timeout / tmp), self.update)
 
     def update(self):
         self.emit('update', self.container.pop())
@@ -53,7 +50,7 @@ class TimeController(gobject.GObject):
         return True
 
 class WizardEventBox(gtk.EventBox):
-    __gsignals__ = { 'close': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, ()),}
+    __gsignals__ = { 'close': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, ()),}
     def __init__(self, slider_icons=None, pointer_icons=None, button_icons=None):
         gtk.EventBox.__init__(self)
         self.set_visible_window(False)
@@ -93,8 +90,8 @@ class WizardEventBox(gtk.EventBox):
         self.slider_y = 0
         self.showing = False
         self.show_index = None
-        GObject.timeout_add(2000, lambda : self.start_slider(1000))
-        
+        gobject.timeout_add(2000, lambda : self.start_slider(1000))
+
     def draw_pixbuf(self, cr, pixbuf, x=0, y=0, alpha=1.0):
         if pixbuf != None:
             cr.set_source_pixbuf(pixbuf, x, y)
@@ -102,7 +99,7 @@ class WizardEventBox(gtk.EventBox):
 
     def on_expose_event(self, widget, event):
         # samples:http://zetcode.com/gui/pygtk/drawing/
-        cr = widget.window.cairo_create()        
+        cr = widget.window.cairo_create()
         rect = widget.allocation
         cr.save()
         self.draw_pixbuf(cr, self.slider_pics[self.index], rect.x + self.active_x,
@@ -110,18 +107,18 @@ class WizardEventBox(gtk.EventBox):
         if self.dsc_index != None and self.dsc_x != None:
             self.draw_pixbuf(cr, self.slider_pics[self.dsc_index], rect.x + self.dsc_x,
                         rect.y + self.slider_y, self.dsc_alpha)
-        cr.restore()    
+        cr.restore()
         dot_start_x = rect.x + self.pointer_sx
         for i in range(self.icon_num):
             if self.dsc_index == None:
                 if self.index == i:
                     dot_pixbuf = self.pointer_pic_active
-                else:    
+                else:
                     dot_pixbuf = self.pointer_pic
-            else:        
+            else:
                 if self.dsc_index == i:
                     dot_pixbuf = self.pointer_pic_active
-                else:    
+                else:
                     dot_pixbuf = self.pointer_pic
             pointer_rect = gtk.gdk.Rectangle(
                 dot_start_x, rect.y + self.pointer_y,
@@ -133,11 +130,11 @@ class WizardEventBox(gtk.EventBox):
         if self.dsc_index == self.icon_num - 1:
             if self.button_hover_flag:
                 pixbuf = self.btn_pic_press
-            else:    
+            else:
                 pixbuf = self.btn_pic
             self.draw_pixbuf(cr, pixbuf, rect.x + self.btn_rect.x, rect.y + self.btn_rect.y)
-        return True    
-    
+        return True
+
     def on_motion_notify(self, widget, event):
         self.show_index = None
         for index, rect in self.pointer_dict.items():
@@ -151,30 +148,30 @@ class WizardEventBox(gtk.EventBox):
         x, y, w, h = self.btn_rect
         if (event.x >= x and event.x <= x + w and event.y >= y and event.y <= y + h):
             self.button_hover_flag = True
-        else:    
+        else:
             self.button_hover_flag = False
-        self.queue_draw()    
-    
+        self.queue_draw()
+
     def on_button_press(self, widget, event):
         # 当前不是空时，重新播放
         if self.show_index != None:
             self.start_slider(1000, self.show_index)
-        # 点击“开始”按钮，关闭启动界面    
+        # 点击“开始”按钮，关闭启动界面
         x, y, w, h = self.btn_rect
         if (event.x >= x and event.x <= x + w and event.y >= y and event.y <= y + h):
             self.emit("close")
-    
+
     def start_slider(self, animation_time, dsc_index=None, direction="left"):
         if dsc_index is None:
             if self.index >= self.icon_num - 1:
                 return False
                 dsc_index = 0
-            else:    
+            else:
                 dsc_index = self.index + 1
-        else:        
+        else:
             if dsc_index < self.index:
                 direction = "right"
-                
+
         if not self.showing:
             self.showing = True
             self.dsc_index = dsc_index
@@ -182,8 +179,8 @@ class WizardEventBox(gtk.EventBox):
             self.timecontroller.connect("update", lambda source, status: self.update_slider(source, status, direction))
             self.timecontroller.connect("completed", lambda source: self.complete_slider(source, dsc_index))
             self.timecontroller.start()
-        return True    
-    
+        return True
+
     def update_slider(self, source, status, direction):
         self.alpha = 1.0 - status
         self.dsc_alpha = status
@@ -193,8 +190,8 @@ class WizardEventBox(gtk.EventBox):
         else:
             self.active_x = 0 - (self.slider_width * status)
             self.dsc_x = 0
-        self.queue_draw()    
-        
+        self.queue_draw()
+
     def complete_slider(self, source, index):
         self.index = index
         self.alpha = 1.0
@@ -207,7 +204,6 @@ class WizardEventBox(gtk.EventBox):
 class Wizard(gtk.Window):
     def __init__(self):
         gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
-        #self.slider_callback = slider_callback
         self.set_decorated(False)#去掉默认标题栏
         self.set_position(gtk.WIN_POS_CENTER)
         self.set_resizable(False)
@@ -218,7 +214,7 @@ class Wizard(gtk.Window):
         self.window_align.set_padding(2, 2, 2, 2)
         self.add(self.window_align)
         self.window_align.add(self.window_box)
-        wizard_dir = "/usr/share/youker-assistant/qml/img/zh_CN"
+        wizard_dir = "/usr/share/youker-assistant/qml/img/zh_CN/wizard"
         wizard_root_dir = "/usr/share/youker-assistant/qml/img/icons"
         slider_icons = (os.path.join(wizard_dir, "%d.png" % i) for i in range(3))
         pointer_icons = (os.path.join(wizard_root_dir, "dot_normal.png"), os.path.join(wizard_root_dir, "dot_active.png"))

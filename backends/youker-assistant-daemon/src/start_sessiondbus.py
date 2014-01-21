@@ -20,12 +20,15 @@ import dbus
 import signal
 import dbus.mainloop.glib
 from gi.repository import GObject
+#import gobject
 
 if __name__ == '__main__':
     from sessiondbus.daemon import SessionDaemon
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     GObject.threads_init()
     mainloop = GObject.MainLoop()
+    #gobject.threads_init()
+    #mainloop = gobject.MainLoop()
     signal.signal(signal.SIGINT, lambda : mainloop.quit())
     SessionDaemon(mainloop)
     mainloop.run()

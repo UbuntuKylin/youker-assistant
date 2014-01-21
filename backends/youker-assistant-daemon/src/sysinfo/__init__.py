@@ -16,18 +16,10 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-from __future__ import print_function
-from collections import OrderedDict
 import sys
 import os
-import glob
-from gi.repository import Gtk, GLib
+from gi.repository import GLib
 import platform
-import time
-import stat
-import gettext
-from gettext import gettext as _
-from gettext import ngettext as __
 
 NO_UPDATE_WARNING_DAYS = 7
 FILEPATH = "/etc/lsb-release"
@@ -83,13 +75,14 @@ class Sysinfo:
         return dict['username'], dict['homedir'],dict['shell'],dict['lang']
 
     def get_distro(self):
-        '''It should be "Ubuntu 10.10 maverick"'''
+        '''It should be: DISTRIB_DESCRIPTION="UbuntuKylin 13.10'''
         #FILEPATH
         with open(FILEPATH, "r") as fsys:
             for line in fsys:
                 if line.startswith("DISTRIB_DESCRIPTION"):
                     tmp = line
-        front = tmp.split('"')[2] #(LP: #1240862)
+        # kobe: remove '"' and '\n'
+        front = tmp.split('=')[1].replace('"', '').replace('\n', '') #(LP: #1240862)
         if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
             d = front + '-' + platform.dist()[2]
         else:
@@ -103,9 +96,9 @@ class Sysinfo:
         desktop_dict = {'ubuntu': 'Unity',
                         'ubuntu-2d': 'Unity 2D',
                         'gnome': 'GNOME Shell',
-                        'gnome-classic': _('GNOME Classic'),
+                        'gnome-classic': 'GNOME Classic',
                         'gnome-shell': 'GNOME Shell',
-                        'gnome-fallback': _('GNOME Fallback'),
+                        'gnome-fallback': 'GNOME Fallback',
                         'pantheon': 'elementary OS (Luna)',
                         'Lubutu': 'LXDE',
         }
@@ -114,9 +107,9 @@ class Sysinfo:
             return desktop_dict[desktop]
         else:
             if desktop:
-                return _('Unknown (%s)') % desktop
+                return 'Unknown (%s)' % desktop
             else:
-                return _('Unknown')
+                return 'Unknown'
 
 
     def get_systeminfo(self):
@@ -146,3 +139,6 @@ class Sysinfo:
 
 if __name__ == '__main__':
     c = Sysinfo()
+    print(c.get_sys_msg())
+    import getpass
+    print(getpass.getuser())
