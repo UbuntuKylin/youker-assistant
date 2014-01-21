@@ -232,29 +232,28 @@ class CleanTheHistory():
         homedir = common.return_homedir_sesdaemon()
         objhg = historyclean.HistoryClean(homedir)
         crufts_list = []
-        judge_list = []
+        cache = common.get_cache_list()
 
         if flag in "firefox":
             filepathf = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
-            if os.path.exists(filepathf):
-                temp_list = objhg.scan_firefox_history_records(filepathf)
-                crufts_list = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in temp_list]
+            if cache['firefox'].is_installed:
+                if os.path.exists(filepathf):
+                    temp_list = objhg.scan_firefox_history_records(filepathf)
+                    crufts_list = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in temp_list]
             else:
-                judge_list.append('No')
-                return judge_list
+                return 'No'
         if flag in "chromium":
             filepathc = "%s/.config/chromium/Default/History" % homedir
-            if os.path.exists(filepathc):
-                run = common.process_pid("chromium-browser")
-                if not run:
-                    temp_list = objhg.scan_chromium_history_records(filepathc)
-                    crufts_list = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in temp_list]
-                else:
-                    judge_list.apend('True')
-                    return judge_list
+            if cache['chromium-browser'].is_installed:
+                if os.path.exists(filepathc):
+                    run = common.process_pid("chromium-browser")
+                    if not run:
+                        temp_list = objhg.scan_chromium_history_records(filepathc)
+                        crufts_list = ["%s<2_2>%s<2_2>%s" % (str(each[0]), each[1], str(each[2])) for each in temp_list]
+                    else:
+                        return 'True'
             else:
-                judge_list.append('No')
-                return judge_list
+                return 'No'
         return crufts_list
 
     def clean_all_history_crufts(self, flag):
@@ -329,7 +328,7 @@ class CleanTheCookies():
                     pamc = [filepathc, 'cookies', 'host_key']
                     temp_chromium_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
                     for one in temp_chromium_list:
-                    sesdaemon.data_transmit_by_cookies("chromium", one[0], str(one[-1]))
+                        sesdaemon.data_transmit_by_cookies("chromium", one[0], str(one[-1]))
                     sesdaemon.cookies_transmit_complete('chromium')
             else:
                 sesdaemon.cookies_transmit_complete('cuninstall')

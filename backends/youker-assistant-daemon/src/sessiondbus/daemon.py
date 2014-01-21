@@ -239,14 +239,14 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
     def history_scan_funciton(self, flag):
         historyfunc_obj = cleaner.CleanTheHistory(None)
-        crufts_list = historyfunc_obj.get_history_crufts(flag)
+        crufts = historyfunc_obj.get_history_crufts(flag)
         figure = None
-        if crufts_list[0] in 'No':
-            figure = -1
-        elif crufts_list[0] in 'True':
-            figure = -99
-        else:
+        if isinstance(crufts, list):
             figure = sum([int(one.split('<2_2>')[-1]) for one in crufts_list])
+        elif crufts in 'True':
+            figure = -99
+        elif crufts in 'No':
+            figure = -1
         return figure
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
