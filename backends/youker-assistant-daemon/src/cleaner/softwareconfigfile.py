@@ -28,7 +28,7 @@ class SoftwareConfigfile():
         final_softwareconfigfile_list = []
 
         status, output = commands.getstatusoutput('dpkg -l')
-        result = [line.split()[1] for line in output.split('\n') if line.startswith('rc')]
+        result = [(line.split()[1]).split(':')[0] for line in output.split('\n') if line.startswith('rc')]
         for one in result:
             final_softwareconfigfile_list.append(cache[one])
         return final_softwareconfigfile_list
