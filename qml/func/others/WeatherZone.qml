@@ -70,7 +70,7 @@ Rectangle {
             weatherIcon.source = sessiondispatcher.getSingleWeatherInfo(img2, "weathericon");
         }
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
-        ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + qsTr(" o'clock release");// 发布
+        ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + qsTr(" ");// 发布
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
         windText.text = sessiondispatcher.getSingleWeatherInfo("WD", "current") + sessiondispatcher.getSingleWeatherInfo("WS", "current");
         sessiondispatcher.get_current_pm25_qt();
@@ -155,9 +155,9 @@ Rectangle {
         id: changeCityBtn
         visible: false
         anchors.left: locationText.right
-        wordname: qsTr("[Change City]")//[更换城市]
+        wordname: qsTr(" [Change City]")//[更换城市]
         width: 80
-        height: 20
+        height: 15
 //        flag: "ChangeCity"
         onClicked: {
             sessiondispatcher.showChangeCityDialog(/*mainwindow.pos.x, mainwindow.pos.y*/);
