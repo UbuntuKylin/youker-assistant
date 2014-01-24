@@ -28,6 +28,7 @@ Rectangle {
     property int themeIndex: 0//序号
     property string init_theme: ""
     property string path: "../../img/en/title/"
+    property int gredview_num: 0 //记录listmodel中的子项数
 
     Component.onCompleted: {
         if(sessiondispatcher.get_locale_version() == "zh_CN") {
@@ -45,8 +46,11 @@ Rectangle {
         themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
             themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
-            if (i!=0 && syslist[i] == widgetthemepage.init_theme)
+            widgetthemepage.gredview_num += 1;
+            if (i!=0 && syslist[i] == widgetthemepage.init_theme){
+                widgetthemepage.gredview_num -= 1;
                 themeModel.remove(i);
+            }
         }
         //将系统初始的标题栏字体写入QSetting配置文件
         sessiondispatcher.write_default_configure_to_qsetting_file("theme", "widgettheme", widgetthemepage.init_theme);
@@ -64,15 +68,15 @@ Rectangle {
         id: themegridDelegate
         Item {
             id: griditem
-            width: 120; height: 120
+            width: 125; height: 125
             Column {
                  anchors.fill: parent
                  spacing: 10
                  Image {
                     id: seticon
                     source: icon
-                    width: 120
-                    height: 120
+                    width: 125
+                    height: 125
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
                 Text {
@@ -115,6 +119,7 @@ Rectangle {
                 onClicked: {
                     griditem.GridView.view.currentIndex = index;
 //                    console.log(index);
+                    console.log(widgetthemepage.gredview_num);
                     widgetthemepage.themeIndex = index;
                     widgetthemepage.selected_theme = name;
                     sessiondispatcher.set_theme_qt(name);
@@ -168,23 +173,41 @@ Rectangle {
             color: "#7a7a7a"
         }
     }
-    Item {
+    Item {  //gredview外框架
+        id:item
         width: parent.width - 60*2
+        height: parent.height - 180
         anchors {
             top: parent.top
             topMargin: 100
             left: parent.left
-            leftMargin: 60
+            leftMargin: 85
         }
-        GridView {
-            id: themegrid
-            anchors.fill: parent
-            cellWidth: 156; cellHeight: 156
-            model: themeModel
-            delegate: themegridDelegate
-            focus: true
-            cacheBuffer: 1000
-//            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+        Common.ScrollArea { //gredview滚动条
+            frame:false
+            anchors{
+                top:parent.top
+                topMargin: 1
+                left:parent.left
+                leftMargin: 1
+            }
+            height: parent.height-1
+            width: parent.width-1
+            Item {  //gredview列表大小
+                width: item.width - 15   //列表宽度
+//                height: 2 * 156     //列表长度,前面的数字为列表行数
+                height: (widgetthemepage.gredview_num/4 + (widgetthemepage.gredview_num % 4 ? 1: 0)) * 156 //自动计算列表行数
+                GridView {
+                    id: themegrid
+                    anchors.fill: parent
+                    cellWidth: 175; cellHeight: 156
+                    model: themeModel
+                    delegate: themegridDelegate
+                    focus: true
+                    cacheBuffer: 1000
+        //            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }//kobe:设置选中项深色块
+                }
+            }
         }
     }
 
