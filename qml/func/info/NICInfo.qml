@@ -22,7 +22,7 @@ import "./InfoGroup.js" as InfoGroup
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
-    property int fontSize: 12
+    property int fontSize: 14
     Component.onCompleted: {
         systemdispatcher.get_networkcard_info_qt();//获取详细信息
         var netName = systemdispatcher.getHWSingleInfo("NetVendor", "networkcard");
@@ -53,320 +53,337 @@ Rectangle {
         wipText.text = systemdispatcher.getHWSingleInfo("WlanIp", "networkcard");
     }
 
-    Column {
-        anchors {
-            top: parent.top
-            topMargin: 10
-            left: parent.left
-            leftMargin: 30
-        }
-        spacing: 8
-
-        Row {
-            Common.Label {
-                id: basictitle
-                text: qsTr("NIC Info")//有线网卡信息
-                font.bold: true
-                font.pixelSize: 14
-                color: "#383838"
-            }
-            Common.Separator {
-                anchors.verticalCenter: parent.verticalCenter
-                width: home.width - basictitle.width - 30 * 2
-            }
-        }
-
+    Common.ScrollArea {
+        frame:false
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.topMargin: 30
+        height: parent.height - 40
+        width: parent.width
         Column {
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-            spacing: 10
+            anchors {
+                top: parent.top
+                topMargin: 10
+                left: parent.left
+                leftMargin: 30
+            }
+            spacing: 18
+
             Row {
-                spacing: 10
                 Common.Label {
-                    text: qsTr("NIC Model:")//有线网卡型号：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
+                    id: basictitle
+                    text: qsTr("NIC Info")//有线网卡信息
+                    font.bold: true
+                    font.pixelSize: 14
+                    color: "#383838"
                 }
-                Text {
-                    id: modelText
-                    width: 450
-                    wrapMode: Text.WordWrap
-                    text: ""//systemdispatcher.getHWSingleInfo("NetProduct")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Vendor:")//制造商：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: vendorText
-                    text: ""//systemdispatcher.getHWSingleInfo("NetVendor")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("NIC Driver:")//有线网卡驱动：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: driverText
-                    text: ""//systemdispatcher.getHWSingleInfo("NetDrive")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Bus Address:")//总线地址：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: busText
-                    text: ""//systemdispatcher.getHWSingleInfo("NetBusinfo")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Device Name:")//设备名称：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: deviceText
-                    text: ""//systemdispatcher.getHWSingleInfo("NetLogicalname")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("IP Address:")//IP地址：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: ipText
-                    text: ""//systemdispatcher.getHWSingleInfo("NetIp")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Mac Address:")//MAC地址：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: macText
-                    text: ""//systemdispatcher.getHWSingleInfo("NetSerial")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Connection Status: ")//连接状态：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: linkText
-                    text: ""//systemdispatcher.getHWSingleInfo("NetLink")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Max Bandwidth: ")//最大带宽：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: maxText
-                    text: ""//systemdispatcher.getHWSingleInfo("NetCapacity")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-        }
-        Row {
-            Common.Label {
-                id: biostitle
-                text: qsTr("WLan NIC Info")//无线网卡信息
-                font.bold: true
-                font.pixelSize: 14
-                color: "#383838"
-            }
-            Common.Separator {
-                id: splitbar
-                anchors.verticalCenter: parent.verticalCenter
-                width: home.width - biostitle.width - 30 * 2
-            }
-        }
-        Column {
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-            spacing: 10
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("WLan NIC Model:")//网卡型号：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: wmodelText
-                    width: 450
-                    wrapMode: Text.WordWrap
-                    text: ""//systemdispatcher.getHWSingleInfo("WlanProduct")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Vendor:")//制造商：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: wvendorText
-                    text: ""//systemdispatcher.getHWSingleInfo("WlanVendor")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("WLan NIC Driver:")//无线网卡驱动：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: wdriverText
-                    text: ""//systemdispatcher.getHWSingleInfo("WlanDrive")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Bus Address:")//总线地址：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: wbusText
-                    text: ""//systemdispatcher.getHWSingleInfo("WlanBusinfo")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                }
-            }
-            Row {
-                spacing: 10
-                Common.Label {
-                    text: qsTr("Device Name:")//设备名称：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
-                }
-                Text {
-                    id: wdeviceText
-                    text: ""//systemdispatcher.getHWSingleInfo("WlanLogicalname")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
+                Common.Separator {
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: home.width - basictitle.width - 30 * 2
                 }
             }
 
-            Row {
+            Column {
+                anchors.left: parent.left
+                anchors.leftMargin: 20
                 spacing: 10
-                Common.Label {
-                    text: qsTr("IP Address:")//IP地址：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("NIC Model:")//有线网卡型号：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: modelText
+                        width: 450
+                        wrapMode: Text.WordWrap
+                        text: ""//systemdispatcher.getHWSingleInfo("NetProduct")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
                 }
-                Text {
-                    id: wipText
-                    text: ""//systemdispatcher.getHWSingleInfo("WlanIp")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("Vendor:")//制造商：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: vendorText
+                        text: ""//systemdispatcher.getHWSingleInfo("NetVendor")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("NIC Driver:")//有线网卡驱动：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: driverText
+                        text: ""//systemdispatcher.getHWSingleInfo("NetDrive")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("Bus Address:")//总线地址：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: busText
+                        text: ""//systemdispatcher.getHWSingleInfo("NetBusinfo")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("Device Name:")//设备名称：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: deviceText
+                        text: ""//systemdispatcher.getHWSingleInfo("NetLogicalname")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("IP Address:")//IP地址：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: ipText
+                        text: ""//systemdispatcher.getHWSingleInfo("NetIp")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("Mac Address:")//MAC地址：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: macText
+                        text: ""//systemdispatcher.getHWSingleInfo("NetSerial")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("Connection Status: ")//连接状态：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: linkText
+                        text: ""//systemdispatcher.getHWSingleInfo("NetLink")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    Common.Label {
+                        text: qsTr("Max Bandwidth: ")//最大带宽：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: maxText
+                        text: ""//systemdispatcher.getHWSingleInfo("NetCapacity")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
                 }
             }
             Row {
-                spacing: 10
+                visible: (wmodelText.text != "" && wvendorText.text != "") ? true:false
                 Common.Label {
-                    text: qsTr("Serial Number: ")//序列号：
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
-                    width: 130
+                    id: biostitle
+                    text: qsTr("WLan NIC Info")//无线网卡信息
+                    font.bold: true
+                    font.pixelSize: 14
+                    color: "#383838"
                 }
-                Text {
-                    id: wmacText
-                    text: ""//systemdispatcher.getHWSingleInfo("WlanSerial")
-                    font.pixelSize: home.fontSize
-                    color: "#7a7a7a"
+                Common.Separator {
+                    id: splitbar
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: home.width - biostitle.width - 30 * 2
                 }
             }
-        }
-    }
+            Column {
+                anchors.left: parent.left
+                anchors.leftMargin: 20
+                spacing: 10
+                Row {
+                    spacing: 10
+                    visible: wmodelText.text ? true:false
+                    Common.Label {
+                        text: qsTr("WLan NIC Model:")//网卡型号：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: wmodelText
+                        width: 450
+                        wrapMode: Text.WordWrap
+                        text: ""//systemdispatcher.getHWSingleInfo("WlanProduct")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    visible: wvendorText.text ? true:false
+                    Common.Label {
+                        text: qsTr("Vendor:")//制造商：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: wvendorText
+                        text: ""//systemdispatcher.getHWSingleInfo("WlanVendor")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    visible: wdriverText.text ? true:false
+                    Common.Label {
+                        text: qsTr("WLan NIC Driver:")//无线网卡驱动：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: wdriverText
+                        text: ""//systemdispatcher.getHWSingleInfo("WlanDrive")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    visible: wbusText.text ? true:false
+                    Common.Label {
+                        text: qsTr("Bus Address:")//总线地址：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: wbusText
+                        text: ""//systemdispatcher.getHWSingleInfo("WlanBusinfo")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    visible: wdeviceText.text ? true:false
+                    Common.Label {
+                        text: qsTr("Device Name:")//设备名称：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: wdeviceText
+                        text: ""//systemdispatcher.getHWSingleInfo("WlanLogicalname")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
 
-    //logo
-    Image {
-        id: logo
-        source: ""
-        anchors {
-            top: parent.top
-            topMargin: 65
-            right: parent.right
-            rightMargin: 30
+                Row {
+                    spacing: 10
+                    visible: wipText.text ? true:false
+                    Common.Label {
+                        text: qsTr("IP Address:")//IP地址：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: wipText
+                        text: ""//systemdispatcher.getHWSingleInfo("WlanIp")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+                Row {
+                    spacing: 10
+                    height: 40
+                    visible: wmacText.text ? true:false
+                    Common.Label {
+                        text: qsTr("Serial Number: ")//序列号：
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                        width: 130
+                    }
+                    Text {
+                        id: wmacText
+                        text: ""//systemdispatcher.getHWSingleInfo("WlanSerial")
+                        font.pixelSize: home.fontSize
+                        color: "#7a7a7a"
+                    }
+                }
+            }
         }
-    }
-    //logo
-    Image {
-        id: wlogo
-        source: ""
-        anchors {
-            top: parent.top
-            topMargin: 315
-            right: parent.right
-            rightMargin: 30
+        //logo
+        Image {
+            id: logo
+            source: ""
+            anchors {
+                top: parent.top
+                topMargin: 65
+                left: parent.left
+                leftMargin: 570
+            }
+        }
+        //logo
+        Image {
+            id: wlogo
+            visible: (wmodelText.text != "" && wvendorText.text != "") ? true:false
+            source: ""
+            anchors {
+                top: parent.top
+                topMargin: (wmodelText.text != "" && wvendorText.text != "") ? 385 : 0
+                left: parent.left
+                leftMargin: 570
+            }
         }
     }
 }

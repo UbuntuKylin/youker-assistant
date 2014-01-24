@@ -249,7 +249,7 @@ class SessionDaemon(dbus.service.Object):
         crufts = historyfunc_obj.get_history_crufts(flag)
         figure = None
         if isinstance(crufts, list):
-            figure = sum([int(one.split('<2_2>')[-1]) for one in crufts_list])
+            figure = sum([int(one.split('<2_2>')[-1]) for one in crufts])
         elif crufts in 'True':
             figure = -99
         elif crufts in 'No':
