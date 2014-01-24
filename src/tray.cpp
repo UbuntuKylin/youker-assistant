@@ -47,6 +47,10 @@ Tray::Tray(QWidget *parent)
     connect(this, SIGNAL(sysc_data(QString, QString,QString,int,QString, QString)), frame, SLOT(get_sysc_data(QString,QString,QString,int,QString, QString)));
     connect(frame, SIGNAL(accelerate_memory()), this, SLOT(startMemoryAccelerate()));
 
+    //--------------------------
+    connect(this, SIGNAL(ready_to_write_user_info_when_exit()), sedispather, SLOT(handler_write_user_info_when_exit()));
+    connect(sedispather, SIGNAL(ready_to_exit()), this, SLOT(handler_to_exit()));
+
     QTimer *timer = new QTimer(this);
     timer->setInterval(1000);
     connect(timer,SIGNAL(timeout()),this,SLOT(updateData()));
@@ -63,6 +67,12 @@ Tray::~Tray() {
     if(sedispather) {
         delete sedispather;
     }
+}
+
+void Tray::handler_to_exit() {
+    qDebug() << "kobe333";
+    qDebug() << "can exit.....";
+    qApp->quit();
 }
 
 void Tray::updateData() {
@@ -128,7 +138,8 @@ void Tray::createTray() {
 //    connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
 
     this->actionQuit = new QAction(tr("&Exit"), this);//退出(&E)
-    connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(actionQuit, SIGNAL(triggered()), this, SLOT(exit()));
+//    connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
     QShortcut *shortexit = new QShortcut(QKeySequence("Ctrl+E"), this);
     connect(shortexit, SIGNAL(activated()), this, SLOT(exit()));
 
@@ -156,7 +167,9 @@ void Tray::handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason) {
 }
 
 void Tray::exit() {
-    qApp->quit();
+    qDebug() << "kobe111";
+    emit ready_to_write_user_info_when_exit();
+//    qApp->quit();
 }
 
 void Tray::showOrHide() {

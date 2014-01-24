@@ -12,6 +12,7 @@ class HttpAuth : public QObject
 public:
     explicit HttpAuth(QObject *parent = 0);
     void sendPostRequest(const QUrl &url, const QByteArray &data);
+    void sendGetRequest(const QUrl &url);
 
 signals:
 //    void response(int len);

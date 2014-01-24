@@ -19,9 +19,21 @@ Item {
     id: btn
     signal clicked
     property string showImage
+    property string kflag
     width: 185
     height: 45
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
+
+    property string path: "../../img/en/"
+    Component.onCompleted: {
+        if(sessiondispatcher.get_locale_version() == "zh_CN") {
+            btn.path = "../../img/zh_CN/";
+        }
+        else {
+            btn.path = "../../img/en/";
+        }
+    }
+
     Image {
         id: buttonImage
         source: btn.showImage
@@ -36,10 +48,31 @@ Item {
         id: mouseRegion
         anchors.fill: buttonImage
         hoverEnabled: true
-        onEntered: { btnImg.source = "../../img/toolWidget/menu_hover.png" }
-        onPressed: { btnImg.source = "../../img/toolWidget/menu_press.png" }
+        onEntered: {
+            if (kflag == "login") {
+                btnImg.source = btn.path + "login-hover.png"
+            }
+            else {
+                btnImg.source = "../../img/toolWidget/button-hover.png"
+            }
+        }
+        onPressed: {
+            if (kflag == "login") {
+                btnImg.source = btn.path + "login-hover.png"
+            }
+            else {
+                btnImg.source = "../../img/toolWidget/button-hover.png"
+            }
+        }
         //要判断松开是鼠标位置
-        onReleased: { btnImg.source = "../../img/toolWidget/menu_hover.png" }
+        onReleased: {
+            if (kflag == "login") {
+                btnImg.source = btn.path + "login-hover.png"
+            }
+            else {
+                btnImg.source = "../../img/toolWidget/button-hover.png"
+            }
+        }
         onExited: { btnImg.source = "" }
         onClicked: { btn.clicked() }
     }

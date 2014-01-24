@@ -96,7 +96,7 @@ Item {
                 //缩略图缓存清理       缩略图缓存路径：
                 thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup Thumbnails Cache"),
-                                 "picture": "../../img/toolWidget/software-min.png"})
+                                 "picture": "../../img/toolWidget/thumbnails.png"})
                 if(root.aptNum != 0) {
                     root.aptresultFlag = true;//扫描的实际有效内容存在
                 }
@@ -198,7 +198,7 @@ Item {
         //缩略图缓存清理       缩略图缓存路径：
         thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                          "itemTitle": qsTr("Cleanup Thumbnails Cache"),
-                         "picture": "../../img/toolWidget/software-min.png"})
+                         "picture": "../../img/toolWidget/thumbnails.png"})
     }
 
     Connections
@@ -243,7 +243,7 @@ Item {
                         //缩略图缓存清理       缩略图缓存路径：
                         thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Cleanup Thumbnails Cache"),
-                                         "picture": "../../img/toolWidget/software-min.png"})
+                                         "picture": "../../img/toolWidget/thumbnails.png"})
                         systemdispatcher.clear_cache_args();
                         aptsubModel.clear();//内容清空
                         softsubModel.clear();//内容清空
@@ -292,7 +292,7 @@ Item {
                             //缩略图缓存清理       缩略图缓存路径：
                             thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
-                                             "picture": "../../img/toolWidget/software-min.png"})
+                                             "picture": "../../img/toolWidget/thumbnails.png"})
                             systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
@@ -334,7 +334,7 @@ Item {
                             //缩略图缓存清理       缩略图缓存路径：
                             thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
-                                             "picture": "../../img/toolWidget/software-min.png"})
+                                             "picture": "../../img/toolWidget/thumbnails.png"})
                             systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
@@ -355,7 +355,7 @@ Item {
                             //缩略图缓存清理       缩略图缓存路径：
                             thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
-                                             "picture": "../../img/toolWidget/software-min.png"})
+                                             "picture": "../../img/toolWidget/thumbnails.png"})
                             systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
@@ -456,7 +456,7 @@ Item {
                     //缩略图缓存清理       缩略图缓存路径：
                     thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Cleanup Thumbnails Cache"),
-                                     "picture": "../../img/toolWidget/software-min.png"})
+                                     "picture": "../../img/toolWidget/thumbnails.png"})
                     aptsubModel.clear();//内容清空
                     root.aptNum = 0;//隐藏滑动条
                     root.apt_arrow_show = 0;//伸缩图标隐藏

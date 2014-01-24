@@ -56,7 +56,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     //初始化QSetting配置文件
     initConfigFile();
 
-//    skin_widget = new SkinsWidget(mSettings);
+    skin_widget = new SkinsWidget(mSettings);
 //    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
@@ -98,9 +98,52 @@ void SessionDispatcher::show_slider_qt() {
     sessioniface->call("display_slide_show");
 }
 
+QString SessionDispatcher::get_currrent_date_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_currrent_date");
+    return reply.value();
+}
+
+int SessionDispatcher::login_in_forum_account_qt() {
+    //得到是否是当天第一次启动的标记
+    mSettings->beginGroup("account");
+    bool flag = mSettings->value("firststart").toBool();
+    //得到配置文件中的日期
+    QString org_date = mSettings->value("date").toString();
+    mSettings->endGroup();
+    mSettings->sync();
+    qDebug() << "confile data->";
+//    qDebug() << flag;
+    qDebug() << org_date;
+    QDBusReply<int> reply = sessioniface->call("login_in_forum_account", flag, org_date);
+    qDebug() << "my login score->";
+    qDebug() << reply.value();
+    return reply.value();
+}
+
+
+void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库数据和本地配置文件
+    //更新本地配置文件
+    mSettings->beginGroup("account");
+    QString org_date = mSettings->value("date").toString();
+    QString current_date = this->get_currrent_date_qt();
+    mSettings->setValue("date", current_date);
+    if(org_date == current_date) {
+        mSettings->setValue("firststart", "false");
+    }
+    mSettings->endGroup();
+    mSettings->sync();
+    //更新数据库数据
+//    int num = 1;
+//    int myscore = this->login_in_forum_account_qt();
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=%1&pp[id]=%2&pp[0]=score&score=%3").arg(num).arg(id).arg(myscore);
+//    QUrl url(requestData);
+//    qDebug () << requestData;
+//    httpauth->sendGetRequest(url);
+    qDebug() << "kobe222";
+    emit this->ready_to_exit();
+}
+
 void SessionDispatcher::handler_access_user_password(QString user, QString pwd) {
-    qDebug() << user;
-    qDebug() << pwd;
     QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
     QUrl url("http://210.209.123.136/box/find.php");
     QByteArray postData;
@@ -127,12 +170,44 @@ void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
 void SessionDispatcher::handler_access_login_success_info(QString username, QString password, QString score) {
     //登录成功后将用户信息显示在界面上
     emit updateLoginStatus(username, password, score);
-    //登录成功后将用户信息添加/更新到服务器数据库中
-//    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
-//    QUrl url("http://210.209.123.136/box/find.php");
+    QString data_type;
+    int num = 0;
+//    if(id存在)
+//        data_type= "update";
+    //            num = 8;
+//    else
+//        data_type= "insert";
+    //        num = 2;
+    num = 8;//3;
+    data_type= "insert";
+    int id = 24;
+    QString logo = "lixiang-kobe";
+    int level = 2;
+    int myscore = 3000;//2000;
+    bool isfirststart = true;//false;
+    int lastlogintime = 200;
+    int lastlogouttime = 400;
+    int holdtime = 200;
+
+    //post
+//    QString requestData = QString("pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[logo]=%4&pp[level]=%5&pp[score]=%6&pp[isfirststart]=%7&pp[lastlogintime]=%8&pp[lastlogouttime]=%9&pp[holdtime]=%10").arg(data_type).arg(num).arg(id).arg(logo).arg(level).arg(myscore).arg(isfirststart).arg(lastlogintime).arg(lastlogouttime).arg(holdtime);
+//    QUrl url("http://210.209.123.136/yk/find_post.php");
+//    qDebug () << requestData;
 //    QByteArray postData;
 //    postData.append(requestData);
 //    httpauth->sendPostRequest(url, postData);
+
+    //get
+    //search
+    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=find&pp[table]=yk_member&pp[id]=2");
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=find&pp[table]=yk_member&pp[id]=%1").arg(id);
+    //insert
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[logo]=\"%4\"&pp[level]=%5&pp[score]=%6&pp[isfirststart]=%7&pp[lastlogintime]=%8&pp[lastlogouttime]=%9&pp[holdtime]=%10").arg(data_type).arg(num).arg(id).arg(logo).arg(level).arg(myscore).arg(isfirststart).arg(lastlogintime).arg(lastlogouttime).arg(holdtime);
+    //update
+    //    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%4\"&score=%5&isfirststart=%6").arg("update").arg(num).arg(id).arg(logo).arg(myscore).arg(isfirststart);
+    QUrl url(requestData);
+    qDebug () << requestData;
+    httpauth->sendGetRequest(url);
 }
 
 QStringList SessionDispatcher::search_city_names_qt(QString search_name) {
@@ -847,9 +922,9 @@ QString SessionDispatcher::setSkin() {
     return skinName;
 }
 
-//void SessionDispatcher::showSkinWidget() {
-//    skin_widget->show();
-//}
+void SessionDispatcher::showSkinWidget() {
+    skin_widget->show();
+}
 
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
@@ -1052,6 +1127,27 @@ int SessionDispatcher::getLengthOfCityList() {
 }
 
 void SessionDispatcher::initConfigFile() {
+    mSettings->beginGroup("account");
+    QString firststart = mSettings->value("firststart").toString();
+//    qDebug() << "--------------";
+
+    if(firststart.isEmpty()) {
+//        qDebug() << "11111";
+        firststart = "true";
+        mSettings->setValue("firststart", firststart);
+    }
+//    else {
+//        qDebug() << "2222222";
+//        qDebug() << firststart;
+//    }
+    QString current_date = mSettings->value("date").toString();
+    if(current_date.isEmpty()) {
+        current_date = this->get_currrent_date_qt();
+        mSettings->setValue("date", current_date);
+    }
+    mSettings->endGroup();
+    mSettings->sync();
+
     mSettings->beginGroup("weather");
     QString cityId = mSettings->value("cityId").toString();
     //cityId为空时，赋默认值为：101250101

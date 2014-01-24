@@ -46,10 +46,7 @@ private:
     void initTitleBar();//标题栏
     void initSkinsCenter();//皮肤列表区域
     void initBottomBar();//上一页下一页按钮区域
-    void selectShowNumber(int left_number, int previous_total_page, int tip_index);
-
     QSettings *pSettings;
-
     QString skinName;
     bool is_change;
     QStringList skin_list;
@@ -68,19 +65,20 @@ private:
     int page_count_point;
     int current_page;
 
-    SkinGrid *change_skin_widget_0;
-    SkinGrid *change_skin_widget_1;
-    SkinGrid *change_skin_widget_2;
-    SkinGrid *change_skin_widget_3;
-    SkinGrid *change_skin_widget_4;
-    SkinGrid *change_skin_widget_5;
-    SkinGrid *change_skin_widget_6;
-    SkinGrid *change_skin_widget_7;
+//    SkinGrid *change_skin_widget_0;
+//    SkinGrid *change_skin_widget_1;
+//    SkinGrid *change_skin_widget_2;
+//    SkinGrid *change_skin_widget_3;
+//    SkinGrid *change_skin_widget_4;
+//    SkinGrid *change_skin_widget_5;
+//    SkinGrid *change_skin_widget_6;
+//    SkinGrid *change_skin_widget_7;
 
-//    QPushButton *first_page_button;
-//    QPushButton *previous_page_button;
-//    QPushButton *next_page_button;
-//    QPushButton *last_page_button;
+    QPushButton *first_page_button;
+    QPushButton *previous_page_button;
+    QPushButton *next_page_button;
+    QPushButton *last_page_button;
+    QList<SkinGrid *> change_skin_list;
 
 //    QImage wheel;
     

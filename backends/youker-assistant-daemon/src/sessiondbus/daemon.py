@@ -50,6 +50,7 @@ from beautify.sound import Sound
 from sysinfo import Sysinfo
 from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather#0.3.3
+from account.userinfo import UserInfo
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
 #from slider.wizard import Wizard
@@ -60,6 +61,7 @@ UKPATH = "/"
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         #self.wizardconf = Wizard()
+        self.userconf = UserInfo()
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
         self.unityconf = Unity()
@@ -85,6 +87,14 @@ class SessionDaemon(dbus.service.Object):
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
     #def display_slide_show(self):
     #    self.wizardconf.show_slider()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_currrent_date(self):
+        return self.userconf.get_currrent_date()
+
+    @dbus.service.method(INTERFACE, in_signature='bs', out_signature='i')
+    def login_in_forum_account(self, flag, date):
+        return self.userconf.login_in_forum(flag, date)
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def get_yahoo_city_id(self, geonameId):

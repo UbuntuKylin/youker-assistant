@@ -148,7 +148,7 @@ Item {
             //清除软件配置文件
             configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                              "itemTitle": qsTr("Cleanup software configfile"),
-                             "picture": "../../img/toolWidget/kernel.png"})
+                             "picture": "../../img/toolWidget/configfile.png"})
         }
 
         Connections
@@ -188,7 +188,7 @@ Item {
                 //清除软件配置文件
                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup software configfile"),
-                                 "picture": "../../img/toolWidget/kernel.png"})
+                                 "picture": "../../img/toolWidget/configfile.png"})
 
                 if(root.packageNum != 0) {
                     root.packageresultFlag = true;//扫描的实际有效内容存在
@@ -321,7 +321,7 @@ Item {
                             //清除软件配置文件
                             configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup software configfile"),
-                                             "picture": "../../img/toolWidget/kernel.png"})
+                                             "picture": "../../img/toolWidget/configfile.png"})
                             systemdispatcher.clear_package_args();
                             packagesubModel.clear();//内容清空
                             kernelsubModel.clear();//内容清空
@@ -370,7 +370,7 @@ Item {
                                 //清除软件配置文件
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
-                                                 "picture": "../../img/toolWidget/kernel.png"})
+                                                 "picture": "../../img/toolWidget/configfile.png"})
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
@@ -412,7 +412,7 @@ Item {
                                 //清除软件配置文件
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
-                                                 "picture": "../../img/toolWidget/kernel.png"})
+                                                 "picture": "../../img/toolWidget/configfile.png"})
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
@@ -433,7 +433,7 @@ Item {
                                 //清除软件配置文件
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
-                                                 "picture": "../../img/toolWidget/kernel.png"})
+                                                 "picture": "../../img/toolWidget/configfile.png"})
                                 systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
@@ -535,7 +535,7 @@ Item {
                         //清除软件配置文件
                         configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Cleanup software configfile"),
-                                         "picture": "../../img/toolWidget/kernel.png"})
+                                         "picture": "../../img/toolWidget/configfile.png"})
                         packagesubModel.clear();//内容清空
                         root.packageNum = 0;//隐藏滑动条
                         root.package_arrow_show = 0;//伸缩图标隐藏
@@ -594,28 +594,28 @@ Item {
                                 root.mode = 3;
                                 root.configNum = 0;
                                 doingImage.visible = true;
-                                sessiondispatcher.cache_scan_function_qt("configfile");
+                                sessiondispatcher.package_scan_function_qt("configfile");
                             }
                             else if(root.package_maincheck && root.kernel_maincheck && !root.config_maincheck) {
                                 root.mode = 4;
                                 root.packageNum = 0;
                                 root.kernelNum = 0;
                                 doingImage.visible = true;
-                                sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(4));
+                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(4));
                             }
                             else if(root.package_maincheck && !root.kernel_maincheck && root.config_maincheck) {
                                 root.mode = 5;
                                 root.packageNum = 0;
                                 root.configNum = 0;
                                 doingImage.visible = true;
-                                sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(5));
+                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(5));
                             }
                             else if(!root.package_maincheck && root.kernel_maincheck && root.config_maincheck) {
                                 root.mode = 6;
                                 root.kernelNum = 0;
                                 root.configNum = 0;
                                 doingImage.visible = true;
-                                sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_package_arglist(6));
+                                sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(6));
                             }
                             else{
                                 doingImage.visible = false;

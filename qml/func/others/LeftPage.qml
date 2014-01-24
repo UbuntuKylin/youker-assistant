@@ -296,7 +296,8 @@ Rectangle {
             }
             Common.KButton {
                 id: firstonekey
-                showImage: ""//"../../img/zh_CN/quickscan.png"
+                kflag: "quickscan"
+                showImage: ""   //"../../img/zh_CN/quickscan.png"
                 anchors {
                     left: parent.left; leftMargin: 100
                 }

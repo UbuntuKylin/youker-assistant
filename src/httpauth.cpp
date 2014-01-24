@@ -17,6 +17,15 @@ void HttpAuth::sendPostRequest(const QUrl &url, const QByteArray &data){
     mManager->post(request, data);
 }
 
+void HttpAuth::sendGetRequest(const QUrl &url) {
+    mUrl = url;
+    QNetworkRequest request;
+    request.setUrl(mUrl);
+//    request.setRawHeader("User-Agent", "Qt NetworkAccess 1.3");
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+    mManager->get(request);
+}
+
 void HttpAuth::replyFinished(QNetworkReply *reply){
     if(reply && reply->error() == QNetworkReply::NoError) {
         /*QByteArray*/QString data = reply->readAll();
@@ -28,8 +37,6 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
             qDebug() << "login success";
             emit this->response(tmp.at(1), tmp.at(2), "1000");
         }
-//        int len = data.size();
-//        emit this->response(len);
     } else {
         qDebug() << "ERROR:->";
         qDebug() << reply->errorString();//"网络不能访问"

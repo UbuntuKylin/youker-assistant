@@ -57,8 +57,8 @@ HEADERS += youker-application.h \
     suspensionframe.h \
     alertdialog.h \
     toolkits.h \
-#    skinswidget.h \
-#    skingrid.h \
+    skinswidget.h \
+    skingrid.h \
     locationdialog.h \
     wizarddialog.h \
     changecitydialog.h \
@@ -107,8 +107,8 @@ SOURCES += main.cpp \
     suspensionframe.cpp \
     alertdialog.cpp \
     toolkits.cpp \
-#    skinswidget.cpp \
-#    skingrid.cpp \
+    skinswidget.cpp \
+    skingrid.cpp \
     locationdialog.cpp \
     wizarddialog.cpp \
     changecitydialog.cpp \

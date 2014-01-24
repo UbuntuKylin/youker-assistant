@@ -65,38 +65,28 @@ Rectangle {
     Rectangle {
         id: offline
         width: parent.width
-        Common.SetBtn {
-            id: setBtn
-            iconName: "set.png"
-            anchors{
-                left: parent.left
-                leftMargin: 26
-                top:parent.top
-                topMargin: 30
+        property string path: "../../img/en/"
+        Component.onCompleted: {
+            if(sessiondispatcher.get_locale_version() == "zh_CN") {
+                offline.path = "../../img/zh_CN/";
             }
+            else {
+                offline.path = "../../img/en/";
+            }
+            login.showImage = offline.path + "login.png";
+        }
+        Common.KButton {
+            id: login
+            kflag: "login"
+            showImage: ""
+            anchors {
+                top: parent.top; topMargin: 20
+                horizontalCenter: parent.horizontalCenter
+            }
+            width: 216
+            height: 67
             onClicked: {
                 sessiondispatcher.login_ubuntukylin_account(mainwindow.pos.x, mainwindow.pos.y);
-            }
-        }
-        Image {
-            id: adminImage
-            source: "../../img/icons/admin.png"
-            anchors{
-                left: parent.left
-                leftMargin: 26 + 39
-                top:parent.top
-                topMargin: 15
-            }
-        }
-        Common.SetBtn {
-            iconName: "message.png"
-            anchors{
-                left: adminImage.right
-                top:parent.top
-                topMargin: 30
-            }
-            onClicked: {
-                console.log("message clicked....");
             }
         }
     }
@@ -132,6 +122,7 @@ Rectangle {
         }
         Common.KButton {
             id: quitBtn
+            kflag: "remove"
             showImage: "../../img/icons/remove.png"
             anchors {
                 right: parent.right

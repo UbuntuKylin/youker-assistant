@@ -24,7 +24,7 @@
 #include <QDeclarativeView>
 #include "quibo.h"
 #include "modaldialog.h"
-//#include "skinswidget.h"
+#include "skinswidget.h"
 #include "httpauth.h"
 class QSettings;
 
@@ -36,6 +36,8 @@ public:
     ~SessionDispatcher();
     QDBusInterface *sessioniface;
     Q_INVOKABLE void show_slider_qt();
+    QString get_currrent_date_qt();
+    int login_in_forum_account_qt();
 
     Q_INVOKABLE void login_ubuntukylin_account(int window_x, int window_y);
     //得到yahoo城市列表
@@ -202,7 +204,7 @@ public:
     /*-------------------change skin-------------------*/
     Q_INVOKABLE QString setSkin();
     //皮肤对话框
-//    Q_INVOKABLE void showSkinWidget(/*int window_x, int window_y*/);
+    Q_INVOKABLE void showSkinWidget(/*int window_x, int window_y*/);
 
     /*-------------------weather forecast-------------------*/
     Q_INVOKABLE void get_forecast_weahter_qt();
@@ -287,6 +289,9 @@ signals:
 
     //更新登录状态
     void updateLoginStatus(QString username, QString password, QString score);
+
+    //程序退出之前用户信息写入服务器端完毕后，告诉tray退出程序
+    void ready_to_exit();
 public slots:
     void handler_access_user_password(QString user, QString pwd);
     void handler_access_login_success_info(QString username, QString password, QString score);
@@ -330,6 +335,8 @@ public slots:
 //    void handler_deb_exists_firefox(QString flag);
 //    //判断是否有chromium浏览器
 //    void handler_deb_exists_chromium(QString flag);
+    //程序退出之前接受传递过来的用户信息，准备写入服务器端
+    void handler_write_user_info_when_exit();
 
 private:
     int mainwindow_width;
@@ -343,7 +350,7 @@ private:
     int alert_width_bg;
 
     //皮肤对话框对象
-//    SkinsWidget *skin_widget;
+    SkinsWidget *skin_widget;
 
     QSettings * mSettings;
     QString initCityId;
