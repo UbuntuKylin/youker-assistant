@@ -25,14 +25,25 @@
 #include <QtDBus>
 
 //#include "toplevel.h"
-
 IhuApplication::IhuApplication(QWidget *parent)
-    : QWidget(parent), viewer(0)
+    : QWidget(parent), viewer(0)/*, m_shadow("image/window_shadow.png")*/
 {
     viewer = new QDeclarativeView;
     tray = new Tray();
 //    mTopLevel = new TopLevel;
     connect(tray,SIGNAL(showOrHideQmlSignal()),this,SLOT(showOrHideMainPage()));
+//    QHBoxLayout* layout = new QHBoxLayout(this);
+//    layout->addWidget(viewer);
+//    layout->setContentsMargins(5, 3, 4, 6);
+////    layout->setContentsMargins(5, 3, 5, 7);
+//    setLayout(layout);
+//    setFixedSize(860, 610);
+//    this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
+//    this->setWindowFlags(Qt::FramelessWindowHint);
+//    this->setAttribute(Qt::WA_TranslucentBackground);
+////    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
+////    setAttribute(Qt::WA_TranslucentBackground);
+//    viewer->rootContext()->setContextProperty("mainwindow", this);
 }
 
 IhuApplication::~IhuApplication() {
@@ -42,6 +53,8 @@ IhuApplication::~IhuApplication() {
     if (tray) {
         delete tray;
     }
+
+
 //    if (mTopLevel)
 //        delete mTopLevel;
 }
@@ -54,7 +67,6 @@ inline bool isRunningInstalled() {
 
 inline QString getAppDirectory() {
     if (isRunningInstalled()) {
-        qDebug() << QCoreApplication::applicationDirPath();
         return QString("/usr/share/youker-assistant/qml/");
     } else {
         return QString(QCoreApplication::applicationDirPath() + "/../qml/");
@@ -71,6 +83,11 @@ void IhuApplication::showOrHideMainPage() {
 }
 
 void IhuApplication::setup() {
+//    viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
+//    viewer->setSource(QUrl::fromLocalFile("main.qml"));
+//    this->show();
+
+
     viewer->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
     viewer->setSource(QUrl::fromLocalFile("main.qml"));
     viewer->rootContext()->setContextProperty("mainwindow", viewer);
@@ -79,14 +96,6 @@ void IhuApplication::setup() {
     viewer->setWindowFlags(Qt::FramelessWindowHint);
 //    viewer->setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::X11BypassWindowManagerHint);
     QObject::connect(viewer->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
-
-
-
-
-
-
-
-
 //    mTopLevel->setCenterWidget(viewer);
 ////    mTopLevel->setTopLevelVisible(true,true,true);
 //    viewer->setContentsMargins(0, 0, 0, 0);
@@ -111,3 +120,42 @@ void IhuApplication::showQMLWidget() {
     viewer->move(centerW, centerH);
     viewer->show();
 }
+
+
+
+
+//------------------
+//void IhuApplication::paintEvent(QPaintEvent *e) {
+//    QPainter painter(this);
+
+//    QRect bottom(5, 136, 200, 7);
+//    QRect top(5, 0, 200, 3);
+//    QRect left(0, 3, 5, 133);
+//    QRect right(205, 3, 5, 133);
+//    QRect topRight(205, 0, 5, 3);
+//    QRect topLeft(0, 0, 5, 3);
+//    QRect bottomLeft(0, 136, 5, 7);
+//    QRect bottomRight(205, 136, 5, 7);
+
+//    QRect tBottom(5, this->height() - 7, this->width() - 10, 7);
+//    QRect tTop(5, 0, this->width() - 10, 3);
+//    QRect tLeft(0, 3, 5, this->height() - 10);
+//    QRect tRight(this->width() - 5, 3, 5, this->height() - 10);
+//    QRect tTopLeft(0, 0, 5, 3);
+//    QRect tTopRight(this->width() - 5, 0, 5, 3);
+//    QRect tBottomLeft(0, this->height() - 7, 5, 7);
+//    QRect tBottomRight(this->width() - 5, this->height() - 7, 5, 7);
+
+//    painter.drawPixmap(tBottom, m_shadow, bottom);
+//    painter.drawPixmap(tTop, m_shadow, top);
+//    painter.drawPixmap(tLeft, m_shadow, left);
+//    painter.drawPixmap(tRight, m_shadow, right);
+//    painter.drawPixmap(tTopRight, m_shadow, topRight);
+//    painter.drawPixmap(tTopLeft, m_shadow, topLeft);
+//    painter.drawPixmap(tBottomLeft, m_shadow, bottomLeft);
+//    painter.drawPixmap(tBottomRight, m_shadow, bottomRight);
+//}
+
+//void IhuApplication::showEvent(QShowEvent *e) {
+//    repaint();
+//}

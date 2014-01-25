@@ -6,7 +6,7 @@
 
   <vendor>Youker Assistant</vendor>
   <vendor_url>http://ubuntukylin.com</vendor_url>
-  <icon_name>youkersystem</icon_name>
+  <icon_name>youker-assistant</icon_name>
 
   <action id="com.ubuntukylin.youker.action">
     <_description>

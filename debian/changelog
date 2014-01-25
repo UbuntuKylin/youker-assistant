@@ -4,8 +4,9 @@ youker-assistant (0.3.3-0ubuntu1) trusty; urgency=low
   * Add Class LoginDialog and HttpAuth to login with Ubuntu Kylin forum account.
   * Cleanup browser cache, thumbnail cache and software configfile.
   * Completed global mouse theme.
+  * Modify the icon on PolicyKit Dialog.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 20 Jan 2014 15:20:46 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sat, 25 Jan 2014 17:06:05 +0800
 
 youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
 
