@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>329</width>
-    <height>195</height>
+    <width>397</width>
+    <height>282</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="closeButton">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>156</y>
+     <x>290</x>
+     <y>240</y>
      <width>94</width>
      <height>29</height>
     </rect>
@@ -33,8 +33,8 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <widget class="QPushButton" name="okButton">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>156</y>
+     <x>180</x>
+     <y>240</y>
      <width>94</width>
      <height>29</height>
     </rect>
@@ -60,24 +60,11 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="pwdLabel">
-   <property name="geometry">
-    <rect>
-     <x>14</x>
-     <y>97</y>
-     <width>58</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Passwd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="pwdlineEdit">
    <property name="geometry">
     <rect>
-     <x>74</x>
-     <y>100</y>
+     <x>117</x>
+     <y>178</y>
      <width>241</width>
      <height>31</height>
     </rect>
@@ -94,12 +81,12 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>329</width>
-     <height>195</height>
+     <width>397</width>
+     <height>282</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/dialog-bg.png);</string>
+    <string notr="true">border-image: url(:/pixmap/image/login-dialog.png);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -108,24 +95,11 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="userLabel">
-   <property name="geometry">
-    <rect>
-     <x>14</x>
-     <y>47</y>
-     <width>58</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="userlineEdit">
    <property name="geometry">
     <rect>
-     <x>74</x>
-     <y>50</y>
+     <x>117</x>
+     <y>128</y>
      <width>241</width>
      <height>31</height>
     </rect>
@@ -137,31 +111,26 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string>Forum account username</string>
    </property>
   </widget>
-  <widget class="QLabel" name="titleLabel">
+  <widget class="QLabel" name="btn_min">
    <property name="geometry">
     <rect>
-     <x>38</x>
-     <y>8</y>
-     <width>261</width>
+     <x>40</x>
+     <y>6</y>
+     <width>26</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ubuntu Kylin forum account  login &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <string/>
    </property>
   </widget>
   <zorder>frame</zorder>
   <zorder>closeButton</zorder>
   <zorder>okButton</zorder>
   <zorder>btn_close</zorder>
-  <zorder>pwdLabel</zorder>
   <zorder>pwdlineEdit</zorder>
-  <zorder>userLabel</zorder>
   <zorder>userlineEdit</zorder>
-  <zorder>titleLabel</zorder>
+  <zorder>btn_min</zorder>
  </widget>
  <tabstops>
   <tabstop>okButton</tabstop>

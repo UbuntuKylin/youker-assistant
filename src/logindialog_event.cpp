@@ -20,24 +20,43 @@
 bool LoginDialog::eventFilter(QObject *obj, QEvent *event)
 {
     if(obj == ui->btn_close){
-            if(event->type() == QEvent::Enter){
-                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
-            }else if(event->type() == QEvent::Leave){
+        if(event->type() == QEvent::Enter){
+            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
+        }else if(event->type() == QEvent::Leave){
+            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
+        }else if(event->type() == QEvent::MouseButtonPress){
+            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
+        }else if(event->type() == QEvent::MouseButtonRelease){
+            QMouseEvent *me = (QMouseEvent *)event;
+            QLabel *lb = (QLabel *)obj;
+            if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
+                this->close();
+                this->destroy();
+            }else{
                 ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
-            }else if(event->type() == QEvent::MouseButtonPress){
-                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
-            }else if(event->type() == QEvent::MouseButtonRelease){
-                QMouseEvent *me = (QMouseEvent *)event;
-                QLabel *lb = (QLabel *)obj;
-                if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
-                    this->close();
-                    this->destroy();
-                }else{
-                    ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
-                }
-            } else {
-                return QObject::eventFilter(obj, event);
             }
+        } else {
+            return QObject::eventFilter(obj, event);
+        }
+    }
+    if(obj == ui->btn_min){
+        if(event->type() == QEvent::Enter){
+            ui->btn_min->setPixmap(QPixmap(":/pixmap/image/minBtn-hover.png"));
+        }else if(event->type() == QEvent::Leave){
+            ui->btn_min->setPixmap(QPixmap(":/pixmap/image/minBtn.png"));
+        }else if(event->type() == QEvent::MouseButtonPress){
+            ui->btn_min->setPixmap(QPixmap(":/pixmap/image/minBtn-hover.png"));
+        }else if(event->type() == QEvent::MouseButtonRelease){
+            QMouseEvent *me = (QMouseEvent *)event;
+            QLabel *lb = (QLabel *)obj;
+            if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
+                this->showMinimized();
+            }else{
+                ui->btn_min->setPixmap(QPixmap(":/pixmap/image/minBtn.png"));
+            }
+        } else {
+            return QObject::eventFilter(obj, event);
+        }
     }
     if(obj == ui->okButton ||obj == ui->closeButton)
     {

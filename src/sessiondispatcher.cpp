@@ -57,6 +57,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     initConfigFile();
 
     skin_widget = new SkinsWidget(mSettings);
+//    skinCenter = new SkinCenter();
 //    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
@@ -925,6 +926,10 @@ QString SessionDispatcher::setSkin() {
 void SessionDispatcher::showSkinWidget() {
     skin_widget->show();
 }
+
+//void SessionDispatcher::showSkinCenter() {
+//    skinCenter->show();
+//}
 
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();

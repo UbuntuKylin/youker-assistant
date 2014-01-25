@@ -30,6 +30,7 @@ Rectangle {
     anchors.fill: parent
     property string version: "V0.3.3"
     property string bgName: ""
+    property color borderColor: "lightblue"
     SessionDispatcher {
         id: sessiondispatcher
     }
@@ -52,6 +53,8 @@ Rectangle {
     Component.onCompleted: {
         main.bgName = sessiondispatcher.setSkin();
         bgImg.source = "./img/skin/" + main.bgName + ".png";
+        main.border.width = 1.5;//设置边框宽度
+        main.border.color = borderColor;//设置边框颜色
     }
 
     Connections

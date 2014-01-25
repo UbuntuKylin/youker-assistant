@@ -26,6 +26,7 @@
 #include "modaldialog.h"
 #include "skinswidget.h"
 #include "httpauth.h"
+//#include "skincenter.h"
 class QSettings;
 
 class SessionDispatcher : public QObject
@@ -205,6 +206,7 @@ public:
     Q_INVOKABLE QString setSkin();
     //皮肤对话框
     Q_INVOKABLE void showSkinWidget(/*int window_x, int window_y*/);
+//    Q_INVOKABLE void showSkinCenter();
 
     /*-------------------weather forecast-------------------*/
     Q_INVOKABLE void get_forecast_weahter_qt();
@@ -351,6 +353,7 @@ private:
 
     //皮肤对话框对象
     SkinsWidget *skin_widget;
+//    SkinCenter *skinCenter;
 
     QSettings * mSettings;
     QString initCityId;

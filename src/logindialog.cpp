@@ -27,9 +27,11 @@ LoginDialog::LoginDialog(QWidget *parent) :
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     ui->btn_close->installEventFilter(this);
+    ui->btn_min->installEventFilter(this);
     ui->okButton->installEventFilter(this);
     ui->closeButton->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
+    ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"

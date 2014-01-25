@@ -267,6 +267,16 @@ Rectangle {
                 model: dataModel
                 delegate: deviceDelegate
                 spacing: 10
+
+
+
+//                snapMode: ListView.SnapOneItem
+////                orientation: ListView.Horizontal
+//                boundsBehavior: Flickable.StopAtBounds
+//                flickDeceleration: 5000
+//                highlightFollowsCurrentItem: true
+//                highlightMoveDuration:240
+//                highlightRangeMode: ListView.StrictlyEnforceRange
             }
         }
     }

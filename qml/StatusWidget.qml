@@ -54,6 +54,26 @@ Rectangle {
             mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
         }
     }
+//    Image {
+//        id: downloadImage
+//        anchors {
+//            right: parent.right
+//            rightMargin: 5
+//            verticalCenter: parent.verticalCenter
+
+//        }
+//        width: 16
+//        height: 16
+//        source: "./img/icons/move.png"
+//        MouseArea {
+//            anchors.fill: downloadImage
+//            onClicked: {
+//                console.log("1111111111");
+//                sessiondispatcher.showSkinCenter(/*mainwindow.pos.x, mainwindow.pos.y*/);
+//            }
+//        }
+//    }
+
 //    Row {
 //        anchors {
 //            right: parent.right

@@ -32,6 +32,12 @@
         <file>image/upshiftZH.png</file>
         <file>image/upshiftZH-hover.png</file>
         <file>image/upshiftZH-press.png</file>
+        <file>image/login-dialog.png</file>
+        <file>image/clothes.png</file>
+        <file>image/next-en.png</file>
+        <file>image/next-zh.png</file>
+        <file>image/pre-en.png</file>
+        <file>image/pre-zh.png</file>
     </qresource>
     <qresource prefix="/skin">
         <file>image/0_bg.png</file>
