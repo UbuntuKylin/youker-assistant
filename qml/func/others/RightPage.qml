@@ -129,7 +129,7 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: 14
                 color: "#383838"
-                text: qsTr("Logging...") //正在登录
+                text: qsTr("Logging...") //正在登录...
             }
         }
     }

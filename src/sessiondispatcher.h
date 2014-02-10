@@ -38,6 +38,7 @@ public:
     QDBusInterface *sessioniface;
     Q_INVOKABLE void show_slider_qt();
     QString get_currrent_date_qt();
+    QString get_currrent_time_qt();
     int login_in_forum_account_qt();
 
     Q_INVOKABLE void login_ubuntukylin_account(int window_x, int window_y);
@@ -292,7 +293,7 @@ signals:
     //显示登录动态图片
     void showLoginAnimatedImage();
     //更新登录状态
-    void updateLoginStatus(QString username, QString password, QString score);
+    void updateLoginStatus(QString username, /*QString password, */QString score);
     //登录失败
     void loginFailedStatus(int status);
 
@@ -300,7 +301,7 @@ signals:
     void ready_to_exit();
 public slots:
     void handler_access_user_password(QString user, QString pwd);
-    void handler_access_login_success_info(QString username, QString password, QString score);
+    void handler_access_login_success_info(/*QString username, QString password, */QString score);
     void handler_access_login_failed_info(int status);
     void handler_insert_data_to_server(QString data);
     void handler_update_server_data(QString data);
@@ -357,6 +358,7 @@ private:
     //保额次alert的y坐标
     int alert_y;
     int alert_width_bg;
+    QString username;
 
     //皮肤对话框对象
     SkinsWidget *skin_widget;

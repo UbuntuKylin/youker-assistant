@@ -92,6 +92,11 @@ class SessionDaemon(dbus.service.Object):
     def get_currrent_date(self):
         return self.userconf.get_currrent_date()
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_currrent_time(self):
+        return self.userconf.get_currrent_time()
+
+    # Get score when login current day, if first, it's 5, and it not, it's 0
     @dbus.service.method(INTERFACE, in_signature='bs', out_signature='i')
     def login_in_forum_account(self, flag, date):
         return self.userconf.login_in_forum(flag, date)

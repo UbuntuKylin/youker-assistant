@@ -35,7 +35,7 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
 //        qDebug() << QString("%1").arg(tmp.length());
         if(tmp.at(0) == "sccuss") {
 //            qDebug() << "login success";
-            emit this->response(tmp.at(1), tmp.at(2), "1000");
+            emit this->response(/*tmp.at(1), tmp.at(2), */"1000");
         }
         else {
             if(data.contains(",")/*,Qt::CaseSensitive*/) {

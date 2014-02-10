@@ -1,4 +1,4 @@
-youker-assistant (0.3.3-0ubuntu1) trusty; urgency=low
+youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 
   * Access Yahoo weather info.
   * Add Class LoginDialog and HttpAuth to login with Ubuntu Kylin forum account.

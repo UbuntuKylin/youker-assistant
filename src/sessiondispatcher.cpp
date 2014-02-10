@@ -81,7 +81,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
 
-    QObject::connect(httpauth, SIGNAL(response(QString,QString,QString)), this, SLOT(handler_access_login_success_info(QString,QString,QString)));
+    QObject::connect(httpauth, SIGNAL(response(/*QString,QString,*/QString)), this, SLOT(handler_access_login_success_info(/*QString,QString,*/QString)));
     QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handler_access_login_failed_info(int)));
     QObject::connect(httpauth, SIGNAL(insertDataToServer(QString)), this, SLOT(handler_insert_data_to_server(QString)));
     QObject::connect(httpauth, SIGNAL(updateServerData(QString)), this, SLOT(handler_update_server_data(QString)));
@@ -107,6 +107,11 @@ QString SessionDispatcher::get_currrent_date_qt() {
     return reply.value();
 }
 
+QString SessionDispatcher::get_currrent_time_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_currrent_time");
+    return reply.value();
+}
+
 int SessionDispatcher::login_in_forum_account_qt() {
     //得到是否是当天第一次启动的标记
     mSettings->beginGroup("account");
@@ -123,7 +128,6 @@ int SessionDispatcher::login_in_forum_account_qt() {
     qDebug() << reply.value();
     return reply.value();
 }
-
 
 void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库数据和本地配置文件
     //更新本地配置文件
@@ -148,6 +152,7 @@ void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库�
 }
 
 void SessionDispatcher::handler_access_user_password(QString user, QString pwd) {
+    username = user;
     //显示登录动态图
     emit showLoginAnimatedImage();
     //发送数据给服务端进行登录验证
@@ -174,9 +179,9 @@ void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
     logindialog->show();
 }
 
-void SessionDispatcher::handler_access_login_success_info(QString username, QString password, QString score) {
+void SessionDispatcher::handler_access_login_success_info(/*QString username, QString password, */QString score) {
     //登录成功后将用户信息显示在界面上
-    emit updateLoginStatus(username, password, score);
+    emit updateLoginStatus(username, /*password, */score);
 //    QString data_type;
 //    int num = 0;
 //    num = 8;//3;
@@ -207,7 +212,7 @@ void SessionDispatcher::handler_access_login_success_info(QString username, QStr
     //update
     //    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%4\"&score=%5&isfirststart=%6").arg("update").arg(num).arg(id).arg(logo).arg(myscore).arg(isfirststart);
     QUrl url(requestData);
-    qDebug () << requestData;
+//    qDebug () << requestData;
     httpauth->sendGetRequest(url);
 }
 
@@ -235,13 +240,22 @@ void SessionDispatcher::handler_insert_data_to_server(QString data) {//插入数
 
 void SessionDispatcher::handler_update_server_data(QString data) {//更系服务端数据库的数据
     qDebug() << "update->";
-    qDebug() << data;
+    qDebug() << data;//"id=2,logo=lixiang-kobe,level=3,score=3000,isfirststart=0,lastlogintime=0000-00-00 00:00:00,lastlogouttime=0000-00-00 00:00:00,holdtime=8"
     //update
-    int id = 2;
-    QString logo = "lixiang-kobe";
-    int myscore = 3000;//2000;
-    bool isfirststart = false;//true;
-    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
+    QStringList updateData = data.split(",");
+    QStringList idData = updateData.at(0).split("=");
+    int id = idData.at(1).toInt();
+    QStringList scoreData = updateData.at(3).split("=");
+//    QString logo = "lixiang-kobe";
+    int login_score = this->login_in_forum_account_qt();
+    bool isfirststart = false;
+    if(login_score == 5) {//是当天的第一次登录
+        isfirststart = true;
+    }
+    QString tmp_time = this->get_currrent_time_qt();;
+    int myscore = login_score + scoreData.at(1).toInt();
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
+    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=score&pp[1]=isfirststart&pp[2]=lastlogintime&score=%2&isfirststart=%3&lastlogintime=%4").arg(id).arg(myscore).arg(isfirststart).arg(tmp_time);
     QUrl url(requestData);
 ////    qDebug () << requestData;
     httpauth->sendGetRequest(url);
