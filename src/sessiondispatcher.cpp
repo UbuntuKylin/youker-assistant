@@ -252,7 +252,7 @@ void SessionDispatcher::handler_update_server_data(QString data) {//更系服务
     if(login_score == 5) {//是当天的第一次登录
         isfirststart = true;
     }
-    QString tmp_time = this->get_current_time_qt();
+    QString tmp_time = "2014-02-10 20:00:58";//this->get_current_time_qt();
     qDebug() << "-------------------";
     qDebug() << tmp_time;
     int myscore = login_score + scoreData.at(1).toInt();
