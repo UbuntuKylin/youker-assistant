@@ -31,7 +31,25 @@ Rectangle {
     Connections
     {
         target: sessiondispatcher
-        onUpdateLoginStatus: {
+        onShowLoginAnimatedImage: {//正在登录过程中显示动态图片
+            rightbar.state = "Logining";
+        }
+        onLoginFailedStatus: {//登录失败
+            if(status == 99) {
+                toolkits.alertMSG(qsTr("Network Error!"), mainwindow.pos.x, mainwindow.pos.y);//网络错误！
+            }
+            else if(status == -1) {
+                toolkits.alertMSG(qsTr("No User!"), mainwindow.pos.x, mainwindow.pos.y);//没有该用户！
+            }
+            else if(status == -2) {
+                toolkits.alertMSG(qsTr("Password Wrong!"), mainwindow.pos.x, mainwindow.pos.y);//密码错误！
+            }
+            else {
+                toolkits.alertMSG(qsTr("Login Failed!"), mainwindow.pos.x, mainwindow.pos.y);//登录失败！
+            }
+            rightbar.state = "OffLine";
+        }
+        onUpdateLoginStatus: {//登录成功
             logo.source = "../../img/icons/logo.png"
             userText.text = username;
             scoreText.text = score;
@@ -90,6 +108,32 @@ Rectangle {
             }
         }
     }
+
+    Rectangle {
+        id: logining
+        width: parent.width
+        x: (parent.width * 1.5)
+        Column {
+            spacing: 5
+            anchors {
+                top: parent.top; topMargin: 40
+                horizontalCenter: parent.horizontalCenter
+            }
+            AnimatedImage {
+                width: 16
+                height: 16
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: "../../img/icons/move.gif"
+            }
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 14
+                color: "#383838"
+                text: qsTr("Logging...") //正在登录
+            }
+        }
+    }
+
     Rectangle {
         id: online
         width: parent.width
@@ -227,11 +271,19 @@ Rectangle {
             name: "OnLine"
             PropertyChanges { target: online; x: 0 }
             PropertyChanges { target: offline; x: (parent.width * 1.5) }
+            PropertyChanges { target: logining; x: (parent.width * 1.5) }
+        },
+        State {
+            name: "Logining"
+            PropertyChanges { target: logining; x: 0 }
+            PropertyChanges { target: online; x: (parent.width * 1.5) }
+            PropertyChanges { target: offline; x: (parent.width * 1.5) }
         },
         State {
             name: "OffLine"
             PropertyChanges { target: offline; x: 0 }
             PropertyChanges { target: online; x: (parent.width * 1.5) }
+            PropertyChanges { target: logining; x: (parent.width * 1.5) }
         }
     ]
 }

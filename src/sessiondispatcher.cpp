@@ -82,6 +82,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
 
     QObject::connect(httpauth, SIGNAL(response(QString,QString,QString)), this, SLOT(handler_access_login_success_info(QString,QString,QString)));
+    QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handler_access_login_failed_info(int)));
+    QObject::connect(httpauth, SIGNAL(insertDataToServer(QString)), this, SLOT(handler_insert_data_to_server(QString)));
+    QObject::connect(httpauth, SIGNAL(updateServerData(QString)), this, SLOT(handler_update_server_data(QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -145,6 +148,9 @@ void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库�
 }
 
 void SessionDispatcher::handler_access_user_password(QString user, QString pwd) {
+    //显示登录动态图
+    emit showLoginAnimatedImage();
+    //发送数据给服务端进行登录验证
     QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
     QUrl url("http://210.209.123.136/box/find.php");
     QByteArray postData;
@@ -171,24 +177,18 @@ void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
 void SessionDispatcher::handler_access_login_success_info(QString username, QString password, QString score) {
     //登录成功后将用户信息显示在界面上
     emit updateLoginStatus(username, password, score);
-    QString data_type;
-    int num = 0;
-//    if(id存在)
-//        data_type= "update";
-    //            num = 8;
-//    else
-//        data_type= "insert";
-    //        num = 2;
-    num = 8;//3;
-    data_type= "insert";
-    int id = 24;
-    QString logo = "lixiang-kobe";
-    int level = 2;
-    int myscore = 3000;//2000;
-    bool isfirststart = true;//false;
-    int lastlogintime = 200;
-    int lastlogouttime = 400;
-    int holdtime = 200;
+//    QString data_type;
+//    int num = 0;
+//    num = 8;//3;
+//    data_type= "insert";
+//    int id = 24;
+//    QString logo = "lixiang-kobe";
+//    int level = 2;
+//    int myscore = 3000;//2000;
+//    bool isfirststart = true;//false;
+//    int lastlogintime = 200;
+//    int lastlogouttime = 400;
+//    int holdtime = 200;
 
     //post
 //    QString requestData = QString("pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[logo]=%4&pp[level]=%5&pp[score]=%6&pp[isfirststart]=%7&pp[lastlogintime]=%8&pp[lastlogouttime]=%9&pp[holdtime]=%10").arg(data_type).arg(num).arg(id).arg(logo).arg(level).arg(myscore).arg(isfirststart).arg(lastlogintime).arg(lastlogouttime).arg(holdtime);
@@ -208,6 +208,42 @@ void SessionDispatcher::handler_access_login_success_info(QString username, QStr
     //    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%4\"&score=%5&isfirststart=%6").arg("update").arg(num).arg(id).arg(logo).arg(myscore).arg(isfirststart);
     QUrl url(requestData);
     qDebug () << requestData;
+    httpauth->sendGetRequest(url);
+}
+
+void SessionDispatcher::handler_access_login_failed_info(int status) {
+    emit loginFailedStatus(status);
+}
+
+void SessionDispatcher::handler_insert_data_to_server(QString data) {//插入数据到服务端数据库
+    qDebug() << "insert->";
+    qDebug() << data;
+    //insert
+//    int id = 24;
+//    QString logo = "lixiang-kobe";
+//    int level = 2;
+//    int myscore = 3000;//2000;
+//    bool isfirststart = true;//false;
+//    int lastlogintime = 200;
+//    int lastlogouttime = 400;
+//    int holdtime = 200;
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=insert&pp[table]=yk_member&pp[dnumber]=8&pp[id]=%1&pp[logo]=\"%2\"&pp[level]=%3&pp[score]=%4&pp[isfirststart]=%5&pp[lastlogintime]=%6&pp[lastlogouttime]=%7&pp[holdtime]=%8").arg(id).arg(logo).arg(level).arg(myscore).arg(isfirststart).arg(lastlogintime).arg(lastlogouttime).arg(holdtime);
+//    QUrl url(requestData);
+////    qDebug () << requestData;
+//    httpauth->sendGetRequest(url);
+}
+
+void SessionDispatcher::handler_update_server_data(QString data) {//更系服务端数据库的数据
+    qDebug() << "update->";
+    qDebug() << data;
+    //update
+    int id = 2;
+    QString logo = "lixiang-kobe";
+    int myscore = 3000;//2000;
+    bool isfirststart = false;//true;
+    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
+    QUrl url(requestData);
+////    qDebug () << requestData;
     httpauth->sendGetRequest(url);
 }
 

@@ -29,19 +29,44 @@ void HttpAuth::sendGetRequest(const QUrl &url) {
 void HttpAuth::replyFinished(QNetworkReply *reply){
     if(reply && reply->error() == QNetworkReply::NoError) {
         /*QByteArray*/QString data = reply->readAll();
-        qDebug() << "Result:->";
-        qDebug() << data;//"I AM HERE"
+//        qDebug() << "Result:->";
+//        qDebug() << data;
         QStringList tmp = data.split("<br>");
-        qDebug() << QString("%1").arg(tmp.length());
+//        qDebug() << QString("%1").arg(tmp.length());
         if(tmp.at(0) == "sccuss") {
-            qDebug() << "login success";
+//            qDebug() << "login success";
             emit this->response(tmp.at(1), tmp.at(2), "1000");
         }
+        else {
+            if(data.contains(",")/*,Qt::CaseSensitive*/) {
+                QStringList searchData = data.split(",");
+//                qDebug() << searchData.at(0);//id=2
+                if(searchData.at(0).contains("=")) {
+                    QStringList idData = searchData.at(0).split("=");
+//                    qDebug() << idData.at(1);//2
+                    if(idData.at(1).isEmpty()) {
+                        emit this->insertDataToServer(data);
+                    }
+                    else {
+                        emit this->updateServerData(data);
+                    }
+                }
+            }
+            else if(data == "no user") {
+                emit this->error(-1);
+            }
+            else if(data == "no pass") {
+                emit this->error(-2);
+            }
+            else if(data == "success") {
+                qDebug() << "update success...";
+            }
+        }
     } else {
-        qDebug() << "ERROR:->";
-        qDebug() << reply->errorString();//"网络不能访问"
-        qDebug() << QString("%1").arg((int)reply->error());//99
-        emit this->error((int)reply->error());
+//        qDebug() << "ERROR:->";
+//        qDebug() << reply->errorString();//"网络不能访问"
+//        qDebug() << QString("%1").arg((int)reply->error());//99
+        emit this->error((int)reply->error());//99
     }
     reply->close();
 }

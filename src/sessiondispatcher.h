@@ -289,14 +289,21 @@ signals:
     //把一键扫描的总数告诉QML
     void tellScanResultToQML(QString flag, QString msg);
 
+    //显示登录动态图片
+    void showLoginAnimatedImage();
     //更新登录状态
     void updateLoginStatus(QString username, QString password, QString score);
+    //登录失败
+    void loginFailedStatus(int status);
 
     //程序退出之前用户信息写入服务器端完毕后，告诉tray退出程序
     void ready_to_exit();
 public slots:
     void handler_access_user_password(QString user, QString pwd);
     void handler_access_login_success_info(QString username, QString password, QString score);
+    void handler_access_login_failed_info(int status);
+    void handler_insert_data_to_server(QString data);
+    void handler_update_server_data(QString data);
     //获取天气预报槽函数
     void handler_access_forecast_weather(QString key, QString value);
     //扫描完成槽函数

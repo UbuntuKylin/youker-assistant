@@ -6,7 +6,7 @@ youker-assistant (0.3.3-0ubuntu1) trusty; urgency=low
   * Completed global mouse theme.
   * Modify the icon on PolicyKit Dialog.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sat, 25 Jan 2014 17:06:05 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 10 Feb 2014 11:21:15 +0800
 
 youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
 

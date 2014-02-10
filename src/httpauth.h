@@ -18,6 +18,8 @@ signals:
 //    void response(int len);
     void error(int errCode);
     void response(QString username, QString password, QString score);
+    void insertDataToServer(QString data);
+    void updateServerData(QString data);
 
 public slots:
     void replyFinished(QNetworkReply *reply);
