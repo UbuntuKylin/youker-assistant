@@ -38,7 +38,7 @@ public:
     QDBusInterface *sessioniface;
     Q_INVOKABLE void show_slider_qt();
     QString get_currrent_date_qt();
-    QString get_currrent_time_qt();
+    QString get_current_time_qt();
     int login_in_forum_account_qt();
 
     Q_INVOKABLE void login_ubuntukylin_account(int window_x, int window_y);

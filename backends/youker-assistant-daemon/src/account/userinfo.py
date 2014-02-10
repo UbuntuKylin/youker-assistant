@@ -23,7 +23,7 @@ class UserInfo():
     def __init__(self):
         self.time = {}
         self.net = False
-        self.get_httptime()
+        #self.get_httptime()
 
     def time_points(self, time):
         if time >= 1 and time < 2:
@@ -65,6 +65,7 @@ class UserInfo():
 
     # Get current date by kobe
     def get_currrent_date(self):
+        self.get_httptime()
         current_date = "0000-00-00"
         #self.get_httptime()
         if self.time.has_key('year') and self.time.has_key('month') and self.time.has_key('day'):

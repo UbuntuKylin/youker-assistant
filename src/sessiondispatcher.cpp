@@ -107,8 +107,8 @@ QString SessionDispatcher::get_currrent_date_qt() {
     return reply.value();
 }
 
-QString SessionDispatcher::get_currrent_time_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_currrent_time");
+QString SessionDispatcher::get_current_time_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_current_time");
     return reply.value();
 }
 
@@ -252,7 +252,9 @@ void SessionDispatcher::handler_update_server_data(QString data) {//更系服务
     if(login_score == 5) {//是当天的第一次登录
         isfirststart = true;
     }
-    QString tmp_time = this->get_currrent_time_qt();;
+    QString tmp_time = this->get_current_time_qt();
+    qDebug() << "-------------------";
+    qDebug() << tmp_time;
     int myscore = login_score + scoreData.at(1).toInt();
 //    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
     QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=score&pp[1]=isfirststart&pp[2]=lastlogintime&score=%2&isfirststart=%3&lastlogintime=%4").arg(id).arg(myscore).arg(isfirststart).arg(tmp_time);
