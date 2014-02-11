@@ -104,8 +104,10 @@ class UserInfo():
 
     def login_in_forum(self, login_flag, org_date):
         current_date = self.get_currrent_date()
-        if not current_date == org_date:
-            if login_flag:#first login today
+        if login_flag:#first login today
+            return 5
+        else:
+            if not current_date == org_date:
                 return 5
         return 0
 

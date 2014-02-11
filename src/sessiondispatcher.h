@@ -359,6 +359,7 @@ private:
     int alert_y;
     int alert_width_bg;
     QString username;
+    int userid;
 
     //皮肤对话框对象
     SkinsWidget *skin_widget;
