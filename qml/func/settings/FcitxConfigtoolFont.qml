@@ -26,7 +26,7 @@ Rectangle {
     property string methodBtn1Buff: ""
     //背景
     Image {
-        source: "../../img/skin/bg-bottom-tab.png"
+        source: "../../img/skin/bg-middle.png"
         anchors.fill: parent
     }
 

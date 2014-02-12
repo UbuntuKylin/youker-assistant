@@ -81,6 +81,12 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
             else if(data == "failed") {
                 qDebug() << "update failed...";
             }
+            else if(data == "communicate success") {//每隔30分钟链接服务器成功
+                qDebug() << "communicate success...";
+            }
+            else if(data == "communicate failed") {//每隔30分钟链接服务器失败
+                emit this->failedCommunicate();
+            }
         }
     } else {
 //        qDebug() << "ERROR:->";

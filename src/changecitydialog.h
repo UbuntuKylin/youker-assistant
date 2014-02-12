@@ -2,7 +2,7 @@
 #define CHANGECITYDIALOG_H
 
 #include <QDialog>
-#include "sessiondispatcher.h"
+//#include "sessiondispatcher.h"
 class QSettings;
 namespace Ui {
 class ChangeCityDialog;
@@ -22,7 +22,7 @@ private:
 
     QSettings *pSettings;
     QPoint dragPos;
-    SessionDispatcher *sedispather;
+//    SessionDispatcher *sedispather;
 
 protected slots:
     void writeWeatherConf();

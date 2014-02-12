@@ -25,7 +25,7 @@ Item {
     Image {     //背景图片
         id: background
         anchors.fill: parent
-        source: "../../img/skin/bg-middle-tab.png"
+        source: "../../img/skin/bg-middle.png"//bg-middle-tab
     }
     Common.Tabs {
         id: tabs

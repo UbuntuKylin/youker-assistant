@@ -33,7 +33,7 @@ Rectangle {
     property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons.")//设置桌面图标主题和桌面图标的可见性
     //背景
     Image {
-        source: "../../img/skin/bg-bottom-tab.png"
+        source: "../../img/skin/bg-middle.png"
         anchors.fill: parent
     }
 

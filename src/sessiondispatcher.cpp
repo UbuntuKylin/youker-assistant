@@ -56,6 +56,12 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     //初始化QSetting配置文件
     initConfigFile();
 
+    //超时计时器
+    timer=new QTimer(this);
+    qDebug() << "*********session**********";
+
+
+
     skin_widget = new SkinsWidget(mSettings);
 //    skinCenter = new SkinCenter();
 //    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
@@ -85,17 +91,48 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handler_access_login_failed_info(int)));
     QObject::connect(httpauth, SIGNAL(insertDataToServer(QString)), this, SLOT(handler_insert_data_to_server(QString)));
     QObject::connect(httpauth, SIGNAL(updateServerData(QString)), this, SLOT(handler_update_server_data(QString)));
+    QObject::connect(httpauth, SIGNAL(failedCommunicate()), this, SLOT(resetTimerStatus()));
 }
 
 SessionDispatcher::~SessionDispatcher() {
     mSettings->sync();
     if (mSettings != NULL)
         delete mSettings;
+    if(timer->isActive()) {
+        timer->stop();
+    }
     this->exit_qt();
 }
 
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
+}
+
+//连接服务器
+void SessionDispatcher::connectHttpServer(){
+
+    //每30minutes发送数据给服务端进行连接确认
+    qDebug()<<"start to connect every 30 minutes...";
+//    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
+//    QUrl url("http://210.209.123.136/box/find.php");
+//    QByteArray postData;
+//    postData.append(requestData);
+//    httpauth->sendPostRequest(url, postData);
+}
+
+void SessionDispatcher::resetTimerStatus() {
+    waitTime++;
+    if(waitTime >= 4){
+        waitTime = 0;
+        disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
+        if(timer->isActive()) {
+            timer->stop();
+        }
+        emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
+        qDebug()<<"connect fail...";
+    }else{
+        qDebug() << "continue connect...";
+    }
 }
 
 void SessionDispatcher::show_slider_qt() {
@@ -192,6 +229,7 @@ void SessionDispatcher::handler_access_user_password(QString user, QString pwd) 
 //    httpauth->sendPostRequest(url, postData);
 }
 
+//登录
 void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
     LoginDialog *logindialog = new LoginDialog();
     QObject::connect(logindialog, SIGNAL(translate_user_password(QString,QString)),this, SLOT(handler_access_user_password(QString,QString)));
@@ -201,9 +239,25 @@ void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
     logindialog->show();
 }
 
+//退出登录
+void SessionDispatcher::logout_ubuntukylin_account() {
+    //关闭定时器
+    waitTime = 0;
+    disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
+    if(timer->isActive()) {
+        timer->stop();
+    }
+}
+
 void SessionDispatcher::handler_access_login_success_info(/*QString username, QString password, */QString score) {
     //登录成功后将用户信息显示在界面上
     emit updateLoginStatus(username, /*password, */score);
+
+    //绑定和初始化定时器，每隔30minutes连接服务器一次
+    waitTime = 0;
+    connect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
+    timer->start(5000);
+
     // post method
 //    QString requestData = QString("pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[logo]=%4&pp[level]=%5&pp[score]=%6&pp[isfirststart]=%7&pp[lastlogintime]=%8&pp[lastlogouttime]=%9&pp[holdtime]=%10").arg(data_type).arg(num).arg(id).arg(logo).arg(level).arg(myscore).arg(isfirststart).arg(lastlogintime).arg(lastlogouttime).arg(holdtime);
 //    QUrl url("http://210.209.123.136/yk/find_post.php");

@@ -41,7 +41,11 @@ public:
     QString get_current_time_qt();
     int login_in_forum_account_qt();
 
+    //登录
     Q_INVOKABLE void login_ubuntukylin_account(int window_x, int window_y);
+    //退出登录
+    Q_INVOKABLE void logout_ubuntukylin_account();
+
     //得到yahoo城市列表
     Q_INVOKABLE QStringList search_city_names_qt(QString search_name);
     //得到对应yahoo城市列表的geonameid列表
@@ -348,6 +352,11 @@ public slots:
     //程序退出之前接受传递过来的用户信息，准备写入服务器端
     void handler_write_user_info_when_exit();
 
+    //连接服务器
+    void connectHttpServer();
+    //处理连接服务器失败的时候
+    void resetTimerStatus();
+
 private:
     int mainwindow_width;
     int mainwindow_height;
@@ -359,7 +368,7 @@ private:
     int alert_y;
     int alert_width_bg;
     QString username;
-    int userid;
+//    int userid;
 
     //皮肤对话框对象
     SkinsWidget *skin_widget;
@@ -368,6 +377,9 @@ private:
     QSettings * mSettings;
     QString initCityId;
     HttpAuth *httpauth;
+
+    int waitTime;//超时重试次数
+    QTimer *timer;
 };
 
 #endif // SESSIONDISPATCHER_H

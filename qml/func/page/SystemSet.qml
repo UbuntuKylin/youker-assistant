@@ -24,7 +24,7 @@ Item {
         anchors.fill: parent
         //背景
         Image {
-            source: "../../img/skin/bg-bottom-tab.png"
+            source: "../../img/skin/bg-bottom-tab.png"//
             anchors.fill: parent
         }
         Item {

@@ -35,6 +35,7 @@ signals:
     void response(/*QString username, QString password, */QString score);
     void insertDataToServer(QString data);
     void updateServerData(QString data);
+    void failedCommunicate();
 
 public slots:
     void replyFinished(QNetworkReply *reply);

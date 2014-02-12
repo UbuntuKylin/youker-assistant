@@ -23,7 +23,7 @@ Rectangle {
     width: parent.width; height: 475
     //背景
     Image {
-        source: "../../img/skin/bg-bottom-tab.png"
+        source: "../../img/skin/bg-middle.png"//bg-bottom-tab
         anchors.fill: parent
     }
 

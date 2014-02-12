@@ -8,7 +8,7 @@ ChangeCityDialog::ChangeCityDialog(QSettings *mSettings, QWidget *parent) :
     ui(new Ui::ChangeCityDialog)
 {
     ui->setupUi(this);
-    sedispather = new SessionDispatcher;
+//    sedispather = new SessionDispatcher;
 
     pSettings = mSettings;
     init();

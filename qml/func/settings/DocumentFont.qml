@@ -31,7 +31,7 @@ Rectangle {
     property string actiontext: qsTr("According to personal preferences to set document fonts, click the 'Restore' button, can be restored to the state before the font settings.")//根据个人喜好设置文档字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
     //背景
     Image {
-        source: "../../img/skin/bg-bottom-tab.png"
+        source: "../../img/skin/bg-middle.png"
         anchors.fill: parent
     }
 

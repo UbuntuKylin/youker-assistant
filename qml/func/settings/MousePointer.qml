@@ -32,7 +32,7 @@ Rectangle {
     property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm. Also, theme change need to restart system.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。
     //背景
     Image {
-        source: "../../img/skin/bg-bottom-tab.png"
+        source: "../../img/skin/bg-middle.png"
         anchors.fill: parent
     }
     Component.onCompleted: {

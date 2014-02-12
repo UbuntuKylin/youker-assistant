@@ -84,7 +84,7 @@ Rectangle {
     Image {     //背景图片
         id: background
         anchors.fill: parent
-        source: "../../img/skin/bg-bottom-tab.png"
+        source: "../../img/skin/bg-middle.png"
     }
 
     QmlAudio{

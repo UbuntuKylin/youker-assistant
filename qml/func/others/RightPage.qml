@@ -177,6 +177,7 @@ Rectangle {
             width: 16; height: 16
             onClicked: {
                 console.log("quit....");
+                sessiondispatcher.logout_ubuntukylin_account();
                 userText.text = "";
                 scoreText.text = "";
                 logo.source = "";
