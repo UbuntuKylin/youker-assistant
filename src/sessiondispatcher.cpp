@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include <QDeclarativeContext>
 #include <QFontDialog>
 #include <QFileDialog>
-#include "KThread.h"
+#include "kthread.h"
 #include "wizarddialog.h"
 #include "changecitydialog.h"
 #include "util.h"
@@ -62,7 +62,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
 
 
-    skin_widget = new SkinsWidget(mSettings);
+//    skin_widget = new SkinsWidget(mSettings);
 //    skinCenter = new SkinCenter();
 //    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
 
@@ -423,7 +423,7 @@ void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
 
 
 int SessionDispatcher::scan_history_records_qt(QString flag) {
-    QDBusReply<int> reply = sessioniface->call("history_scan_funciton", flag);
+    QDBusReply<int> reply = sessioniface->call("scan_history_records", flag);
     return reply.value();
 }
 
@@ -432,15 +432,15 @@ int SessionDispatcher::scan_system_history_qt() {
     return reply.value();
 }
 
-int SessionDispatcher::scan_dash_history_qt() {
-    QDBusReply<int> reply = sessioniface->call("scan_dash_history");
-    return reply.value();
-}
+//int SessionDispatcher::scan_dash_history_qt() {
+//    QDBusReply<int> reply = sessioniface->call("scan_dash_history");
+//    return reply.value();
+//}
 
-QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_of_same", abspath);
-    return reply.value();
-}
+//QStringList SessionDispatcher::scan_of_same_qt(QString abspath) {
+//    QDBusReply<QStringList> reply = sessioniface->call("scan_of_same", abspath);
+//    return reply.value();
+//}
 
 QStringList SessionDispatcher::scan_of_large_qt(int size, QString abspath) {
     QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);//large_scan_function
@@ -455,23 +455,23 @@ QStringList SessionDispatcher::scan_cookies_records_qt() {
 void SessionDispatcher::cookies_scan_function_qt(QString flag) {
 //    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_function", flag);//cookies_scan_function
 //    return reply.value();
-    sessioniface->call("scan_cookies_function", flag);
+    sessioniface->call("cookies_scan_function", flag);
 }
 
-QStringList SessionDispatcher::scan_unneed_packages_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_unneed_packages");
-    return reply.value();
-}
+//QStringList SessionDispatcher::scan_unneed_packages_qt() {
+//    QDBusReply<QStringList> reply = sessioniface->call("scan_unneed_packages");
+//    return reply.value();
+//}
 
-QStringList SessionDispatcher::scan_apt_cruft_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_apt_cruft");
-    return reply.value();
-}
+//QStringList SessionDispatcher::scan_apt_cruft_qt() {
+//    QDBusReply<QStringList> reply = sessioniface->call("scan_apt_cruft");
+//    return reply.value();
+//}
 
-QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
-    return reply.value();
-}
+//QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
+//    QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
+//    return reply.value();
+//}
 
 QStringList SessionDispatcher::get_cache_arglist(int i) {
     QStringList tmp;
@@ -522,10 +522,10 @@ void SessionDispatcher::package_scan_function_qt(QStringList argList) {
     sessioniface->call("package_scan_function", argList);
 }
 
-QStringList SessionDispatcher::scan_oldkernel_packages_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("oldkernel_scan_function");
-    return reply.value();
-}
+//QStringList SessionDispatcher::scan_oldkernel_packages_qt() {
+//    QDBusReply<QStringList> reply = sessioniface->call("oldkernel_scan_function");
+//    return reply.value();
+//}
 
 QString SessionDispatcher::getHomePath() {
     QString homepath = QDir::homePath();
@@ -1035,7 +1035,7 @@ QString SessionDispatcher::setSkin() {
 }
 
 void SessionDispatcher::showSkinWidget() {
-    skin_widget->show();
+//    skin_widget->show();
 }
 
 //void SessionDispatcher::showSkinCenter() {

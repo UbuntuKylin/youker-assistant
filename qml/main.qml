@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ Rectangle {
     height: 600
     objectName: "main"
     anchors.fill: parent
-    property string version: "V0.3.3"
+    property string version: "V1.0.0"
     property string bgName: ""
     property color borderColor: "lightblue"
     SessionDispatcher {

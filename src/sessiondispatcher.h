@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <QDeclarativeView>
 #include "quibo.h"
 #include "modaldialog.h"
-#include "skinswidget.h"
+//#include "skinswidget.h"
 #include "httpauth.h"
 //#include "skincenter.h"
 class QSettings;
@@ -64,9 +64,9 @@ public:
     //扫描系统最近打开文件的历史记录
     Q_INVOKABLE int scan_system_history_qt();
     //扫描Dash历史记录
-    Q_INVOKABLE int scan_dash_history_qt();
+//    Q_INVOKABLE int scan_dash_history_qt();
     //扫描同名文件
-    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
+//    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
     //扫描大文件
     Q_INVOKABLE QStringList scan_of_large_qt(int size, QString abspath);
     //扫描cookies
@@ -76,11 +76,11 @@ public:
     Q_INVOKABLE void cookies_scan_function_qt(QString flag);
 
     //扫描不需要的deb包
-    Q_INVOKABLE QStringList scan_unneed_packages_qt();
+//    Q_INVOKABLE QStringList scan_unneed_packages_qt();
     //扫描apt缓存
-    Q_INVOKABLE QStringList scan_apt_cruft_qt();
+//    Q_INVOKABLE QStringList scan_apt_cruft_qt();
     //扫描软件中心缓存
-    Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
+//    Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
     //扫描apt和软件中心缓存
     Q_INVOKABLE void cache_scan_function_qt(QStringList argList, QString flag);
     //扫描不需要的package和old kernel
@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE QStringList get_cache_arglist(int i);
     Q_INVOKABLE QStringList get_package_arglist(int i);
     //扫描旧内核安装包
-    Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
+//    Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
     //扫描浏览器缓存时的参数获取
     Q_INVOKABLE QStringList get_browser_cache_arglist();
 
@@ -371,7 +371,7 @@ private:
 //    int userid;
 
     //皮肤对话框对象
-    SkinsWidget *skin_widget;
+//    SkinsWidget *skin_widget;
 //    SkinCenter *skinCenter;
 
     QSettings * mSettings;
