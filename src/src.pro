@@ -38,27 +38,27 @@ HEADERS += youker-application.h \
     qtmenuitem.h \
     qtoplevelwindow.h \
     qcursorarea.h \
-    qtooltiparea.h \
-    qtmenubar.h \
-    qwindowitem.h \
-    qtsplitterbase.h \
-    settings.h \
-    qdeclarativelinearlayout.h \
-    qdeclarativefolderlistmodel.h \
-    qdeclarativelayout.h \
-    qdeclarativelayoutengine_p.h \
-    qdesktopitem.h \
+#    qtooltiparea.h \
+#    qtmenubar.h \
+#    qwindowitem.h \
+#    qtsplitterbase.h \
+#    settings.h \
+#    qdeclarativelinearlayout.h \
+#    qdeclarativefolderlistmodel.h \
+#    qdeclarativelayout.h \
+#    qdeclarativelayoutengine_p.h \
+#    qdesktopitem.h \
     tray.h \
     fcitxcfgwizard.h \
     qtkeytrans.h \
     qtkeytransdata.h \
     fcitxwarndialog.h \
-    KThread.h \
+    kthread.h \
     suspensionframe.h \
     alertdialog.h \
     toolkits.h \
-    skinswidget.h \
-    skingrid.h \
+#    skinswidget.h \
+#    skingrid.h \
     locationdialog.h \
     wizarddialog.h \
     changecitydialog.h \
@@ -89,26 +89,26 @@ SOURCES += main.cpp \
     qtmenuitem.cpp \
     qtoplevelwindow.cpp \
     qcursorarea.cpp \
-    qtooltiparea.cpp \
-    qtmenubar.cpp \
-    qwindowitem.cpp \
-    qtsplitterbase.cpp \
-    settings.cpp \
-    qdeclarativelinearlayout.cpp \
-    qdeclarativefolderlistmodel.cpp \
-    qdeclarativelayout.cpp \
-    qdeclarativelayoutengine.cpp \
-    qdesktopitem.cpp \
+#    qtooltiparea.cpp \
+#    qtmenubar.cpp \
+#    qwindowitem.cpp \
+#    qtsplitterbase.cpp \
+#    settings.cpp \
+#    qdeclarativelinearlayout.cpp \
+#    qdeclarativefolderlistmodel.cpp \
+#    qdeclarativelayout.cpp \
+#    qdeclarativelayoutengine.cpp \
+#    qdesktopitem.cpp \
     tray.cpp \
     fcitxcfgwizard.cpp \
     qtkeytrans.cpp \
     fcitxwarndialog.cpp \
-    KThread.cpp \
+    kthread.cpp \
     suspensionframe.cpp \
     alertdialog.cpp \
     toolkits.cpp \
-    skinswidget.cpp \
-    skingrid.cpp \
+#    skinswidget.cpp \
+#    skingrid.cpp \
     locationdialog.cpp \
     wizarddialog.cpp \
     changecitydialog.cpp \

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd
+# Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
@@ -252,7 +252,7 @@ class SessionDaemon(dbus.service.Object):
         self.scan_complete_msg('onekey')
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
-    def history_scan_funciton(self, flag):
+    def scan_history_records(self, flag):
         historyfunc_obj = cleaner.CleanTheHistory(None)
         crufts = historyfunc_obj.get_history_crufts(flag)
         figure = None
@@ -264,12 +264,12 @@ class SessionDaemon(dbus.service.Object):
             figure = -1
         return figure
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
-    def scan_history_records(self):
-        daemonhistory = cleaner.CleanTheHistory(None)
-        tmp_list = daemonhistory.get_scan_result()
-        self.scan_complete_msg('history')
-        return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    #def scan_history_records(self):
+    #    daemonhistory = cleaner.CleanTheHistory(None)
+    #    tmp_list = daemonhistory.get_scan_result()
+    #    self.scan_complete_msg('history')
+    #    return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_system_history(self):
@@ -278,19 +278,19 @@ class SessionDaemon(dbus.service.Object):
         self.scan_complete_msg('system')
         return len(url)
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
-    def scan_dash_history(self):
-        daemondash = cleaner.CleanDashHistory()
-        num = daemondash.get_scan_result()
-        return num
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    #def scan_dash_history(self):
+    #    daemondash = cleaner.CleanDashHistory()
+    #    num = daemondash.get_scan_result()
+    #    return num
 
     # the function of search the same file below path
     ### input-'path'  output-['filea<2_2>filea','fileb<2_2>fileb'....]
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
-    def scan_of_same(self, path):
-        tmp_list = self.daemonsame.get_scan_result(path)
-        self.scan_complete_msg('same')
-        return tmp_list
+    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    #def scan_of_same(self, path):
+    #    tmp_list = self.daemonsame.get_scan_result(path)
+    #    self.scan_complete_msg('same')
+    #    return tmp_list
 
     # the function of sort the hundred files below path betown big to small
     ### input-'path'  output-['size<2_2>biggestfile<2_2>filestyle', 'size...]
@@ -307,31 +307,32 @@ class SessionDaemon(dbus.service.Object):
 
     # the function of clean the cookies records
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
-    def cookies_scan_function(self, flag):
-        cookiesfunc_obj = cleaner.CleanTheCookies(self)
-        crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
-        return crufts_list
+    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    #def cookies_scan_function(self, flag):
+    #    cookiesfunc_obj = cleaner.CleanTheCookies(self)
+    #    crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
+    #    return crufts_list
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def scan_cookies_function(self, flag):
+    def cookies_scan_function(self, flag):
         cookiesfunc_obj = cleaner.CleanTheCookies(self)
         cookiesfunc_obj.get_cookie_crufts(flag, self)
 
     # the function of scan the unneedpackages
     ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_unneed_packages(self):
-        tmp_list = self.daemonunneed.get_scan_result()
-        self.scan_complete_msg('unneed')
-        return tmp_list
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def scan_unneed_packages(self):
+    #    tmp_list = self.daemonunneed.get_scan_result()
+    #    self.scan_complete_msg('unneed')
+    #    return tmp_list
+
     # the function of scan the oldkernel
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def oldkernel_scan_function(self):
-        oldkernelfunc_obj = cleaner.CleanTheOldkernel() 
-        crufts_list = oldkernelfunc_obj.get_oldkernel_crufts()
-        self.scan_complete_msg('oldkernel')
-        return crufts_list
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def oldkernel_scan_function(self):
+    #    oldkernelfunc_obj = cleaner.CleanTheOldkernel()
+    #    crufts_list = oldkernelfunc_obj.get_oldkernel_crufts()
+    #    self.scan_complete_msg('oldkernel')
+    #    return crufts_list
 
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def package_scan_function(self, mode_list):
@@ -355,20 +356,21 @@ class SessionDaemon(dbus.service.Object):
 
     # the function of scan the apt cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_apt_cruft(self):
-        #tmp_dic = self.daemoncache.get_scan_result()
-        tmp_dic = self.daemoncache.get_cache_crufts()
-        self.scan_complete_msg('apt')
-        return tmp_dic['apt'].split('<1_1>')
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def scan_apt_cruft(self):
+    #    #tmp_dic = self.daemoncache.get_scan_result()
+    #    tmp_dic = self.daemoncache.get_cache_crufts()
+    #    self.scan_complete_msg('apt')
+    #    return tmp_dic['apt'].split('<1_1>')
+
     # the function of scan the softwarecenter cache
     ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def scan_softwarecenter_cruft(self):
-        #tmp_dic = self.daemoncache.get_scan_result()
-        tmp_dic = self.daemoncache.get_cache_crufts()
-        self.scan_complete_msg('softwarecenter')
-        return tmp_dic['softwarecenter'].split('<1_1>')
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    #def scan_softwarecenter_cruft(self):
+    #    #tmp_dic = self.daemoncache.get_scan_result()
+    #    tmp_dic = self.daemoncache.get_cache_crufts()
+    #    self.scan_complete_msg('softwarecenter')
+    #    return tmp_dic['softwarecenter'].split('<1_1>')
 
     # a dbus signal which means access weather by kobe
     @dbus.service.signal(INTERFACE, signature='ss')
@@ -452,12 +454,12 @@ class SessionDaemon(dbus.service.Object):
     def get_system_message(self):
         return self.sysconf.get_sys_msg()
 
-    @dbus.service.signal(INTERFACE, signature='as')
-    def get_speed(self, speed):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='as')
+    #def get_speed(self, speed):
+    #    pass
 
-    def get_network_speed(self, speed):
-        self.get_speed(speed)
+    #def get_network_speed(self, speed):
+    #    self.get_speed(speed)
 
     # -------------------------beautify start here-------------------------
 
@@ -796,10 +798,10 @@ class SessionDaemon(dbus.service.Object):
         return self.ballconf.get_network_flow_total()
 
     # get network flow, return (up, down)
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def get_network_flow(self):
-        speed_network = self.ballconf.get_network_flow()
-        self.get_network_speed(speed_network)
+    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    #def get_network_flow(self):
+    #    speed_network = self.ballconf.get_network_flow()
+    #    self.get_network_speed(speed_network)
 
     # -------------------------weather-------------------------
     # get weather information of six days
@@ -814,7 +816,7 @@ class SessionDaemon(dbus.service.Object):
 
     #@dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
     #def get_forecast_weahter(self, cityId):
-        #return self.weatherconf.getWeatherForecast(cityId)
+    #    return self.weatherconf.getWeatherForecast(cityId)
 
     # get current day's weather
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
@@ -842,7 +844,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def get_current_pm25(self, cityId):
         self.weatherconf.getPM25Info(cityId)
-        #return self.weatherconf.(cityId)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_pm25_str(self):

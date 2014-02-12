@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,13 +32,13 @@
 #include "qwheelarea.h"
 #include "qtmenu.h"
 #include "qtmenubar.h"
-#include "qwindowitem.h"
-#include "qdesktopitem.h"
+//#include "qwindowitem.h"
+//#include "qdesktopitem.h"
 #include "qcursorarea.h"
-#include "qtooltiparea.h"
-#include "qtsplitterbase.h"
-#include "qdeclarativelinearlayout.h"
-#include "settings.h"
+//#include "qtooltiparea.h"
+//#include "qtsplitterbase.h"
+//#include "qdeclarativelinearlayout.h"
+//#include "settings.h"
 #include <QDeclarativeExtensionPlugin>
 #include <QtScript/QScriptValue>
 #include <QtCore/QTimer>
@@ -49,7 +49,6 @@
 #include <qdeclarativeitem.h>
 #include <qdeclarativeimageprovider.h>
 #include <qdeclarativeview.h>
-#include "KThread.h"
 #include <QtSingleApplication>
 #include "processmanager.h"
 #include "devicemanager.h"
@@ -69,19 +68,19 @@ void registerTypes() {
     qmlRegisterType<QtMenu>("MenuType", 0, 1, "Menu");
     qmlRegisterUncreatableType<QtMenuBase>("MenuBaseType", 0, 1, "NativeMenuBase", QLatin1String("Do not create objects of type NativeMenuBase"));
     qmlRegisterType<QCursorArea>("CursorAreaType", 0, 1, "CursorArea");
-    qmlRegisterType<QTooltipArea>("TooltipAreaType", 0, 1, "TooltipArea");
-    qmlRegisterType<QtMenuBar>("MenuBarType", 0, 1, "MenuBar");
-    qmlRegisterType<QtMenuItem>("MenuItemType", 0, 1, "MenuItem");
-    qmlRegisterType<QtMenuSeparator>("SeparatorType", 0, 1, "Separator");
-    qmlRegisterType<QFileSystemModel>("FileSystemModelType", 0, 1, "FileSystemModel");
-    qmlRegisterType<QtSplitterBase>("SplitterType", 0, 1, "Splitter");
-    qmlRegisterType<Settings>("SettingsType", 0, 1, "Settings");
-    qmlRegisterType<QWindowItem>("WindowType", 0, 1, "Window");
-    qmlRegisterType<QDeclarativeRowLayout>("RowLayoutType", 0, 1, "RowLayout");
-    qmlRegisterType<QDeclarativeColumnLayout>("ColumnLayoutType", 0, 1, "ColumnLayout");
-    qmlRegisterUncreatableType<QDeclarativeLayout>("LayoutType", 0, 1, "Layout",
-                                                   QLatin1String("Do not create objects of type Layout"));
-    qmlRegisterUncreatableType<QDesktopItem>("DesktopType",0,1,"Desktop", QLatin1String("Do not create objects of type Desktop"));
+//    qmlRegisterType<QTooltipArea>("TooltipAreaType", 0, 1, "TooltipArea");
+//    qmlRegisterType<QtMenuBar>("MenuBarType", 0, 1, "MenuBar");
+//    qmlRegisterType<QtMenuItem>("MenuItemType", 0, 1, "MenuItem");
+//    qmlRegisterType<QtMenuSeparator>("SeparatorType", 0, 1, "Separator");
+//    qmlRegisterType<QFileSystemModel>("FileSystemModelType", 0, 1, "FileSystemModel");
+//    qmlRegisterType<QtSplitterBase>("SplitterType", 0, 1, "Splitter");
+//    qmlRegisterType<Settings>("SettingsType", 0, 1, "Settings");
+//    qmlRegisterType<QWindowItem>("WindowType", 0, 1, "Window");
+//    qmlRegisterType<QDeclarativeRowLayout>("RowLayoutType", 0, 1, "RowLayout");
+//    qmlRegisterType<QDeclarativeColumnLayout>("ColumnLayoutType", 0, 1, "ColumnLayout");
+//    qmlRegisterUncreatableType<QDeclarativeLayout>("LayoutType", 0, 1, "Layout",
+//                                                   QLatin1String("Do not create objects of type Layout"));
+//    qmlRegisterUncreatableType<QDesktopItem>("DesktopType",0,1,"Desktop", QLatin1String("Do not create objects of type Desktop"));
 }
 
 int main(int argc, char** argv)

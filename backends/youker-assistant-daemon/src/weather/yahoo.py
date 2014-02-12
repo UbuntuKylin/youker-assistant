@@ -5,7 +5,7 @@
 # Copyright (C) 2010 Mehdi Rejraji mehd36@gmail.com
 # Copyright (C) 2011 Vadim Rutkovsky roignac@gmail.com
 # Copyright (C) 2013 Joshua Tasker jtasker@gmail.com
-# Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd
+# Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.

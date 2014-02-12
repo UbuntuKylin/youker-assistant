@@ -4,12 +4,12 @@ Upstream-Contact: Ubuntu Kylin Team <ubuntukylin-members@lists.launchpad.net>
 Source: https://launchpad.net/youker-assistant
 
 Files: *
-Copyright: 2013, National University of Defense Technology(NUDT) & Kylin Ltd.
+Copyright: 2013-2014, National University of Defense Technology(NUDT) & Kylin Ltd.
 License: GPL-3
 
 Files: backends/youker-assistant-daemon/src/policykit/*
 Copyright: Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
-           Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+           Copyright (C) 2013-2014 National University of Defense Technology(NUDT) & Kylin Ltd.
 License: GPL-3
 
 Files: qml/func/common/Dial.qml qml/func/common/private/Slider.qml qml/func/common/RangeModel.js qml/func/common/RangeModel.qml src/qrangemodel.cpp src/qcomboboxqmladapter.cpp src/qtmenu.cpp src/qdeclarativefolderlistmodel.h src/qtooltiparea.cpp src/qtsplitterbase.h src/qtmenu.h src/qcursorarea.h src/qwindowitem.h src/qrangemodel.h src/qtoplevelwindow.cpp src/qwheelarea.cpp src/qdesktopitem.h src/qcursorarea.cpp src/qtsplitterbase.cpp src/qrangemodel_p.h src/qtooltiparea.h src/qcomboboxqmladapter.h src/qdesktopitem.cpp src/qtoplevelwindow.h src/qwheelarea.h src/qdeclarativefolderlistmodel.cpp 
@@ -23,7 +23,7 @@ License: GPL-2+
 Files: backends/youker-assistant-daemon/src/systemdbus/server.py
 Copyright: Copyright (C) 2008 Fluendo Embedded S.L.
            Copyright (C) 2010 TualatriX <tualatrix@gmail.com>
-           Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+           Copyright (C) 2013-2014 National University of Defense Technology(NUDT) & Kylin Ltd.
 License: GPL-2+
 
 Files: src/qdeclarativelayout.h src/qstyleitem.h src/qdeclarativelinearlayout.cpp src/settings.cpp src/qwindowitem.cpp src/settings.h src/qdeclarativelayoutengine.cpp src/qdeclarativelayoutengine_p.h src/qtmenubar.cpp src/qtmenuitem.h src/qdeclarativelayout.cpp src/qtmenubar.h src/qtmenuitem.cpp src/qstyleitem.cpp src/qdeclarativelinearlayout.h qml/func/common/Page.qml qml/func/common/PageStack.qml qml/func/common/UIConstants.js qml/func/common/PageStack.js

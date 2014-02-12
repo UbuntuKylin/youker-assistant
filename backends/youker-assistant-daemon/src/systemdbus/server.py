@@ -3,7 +3,7 @@
 # GPL v2+
 # Copyright (C) 2008 Fluendo Embedded S.L.
 # Copyright (C) 2010 TualatriX <tualatrix@gmail.com>
-# Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd
+# Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd
 
 import dbus.service
 

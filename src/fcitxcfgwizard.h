@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
  *
  * Authors:
  *  lenky gao    lenky0401@gmail.com
