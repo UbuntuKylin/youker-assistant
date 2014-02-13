@@ -332,7 +332,7 @@ class Daemon(PolicyKitService):
         if not status:
             self.clean_complete_msg('')
             return
-        daemonhistory = cleaner.CleanTheHistory(None)
+        daemonhistory = cleaner.CleanTheHistory()
         try:
             running = daemonhistory.clean_all_history_crufts(flag)
         except Exception, e:
