@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import QtQuick 1.1
 
 Item {
@@ -46,11 +47,11 @@ Item {
     }
 
     //------------------------
-    ToolTip {
-        id: toolTip
-        showText: qsTr("Please use UbuntuKylin forum account...")
-        visible: false//mouseArea.pressed
-    }
+//    ToolTip {
+//        id: toolTip
+//        showText: qsTr("Please use UbuntuKylin forum account...")
+//        visible: false//mouseArea.pressed
+//    }
     //------------------------
 
     MouseArea {
@@ -60,7 +61,7 @@ Item {
         onEntered: {
             if (kflag == "login") {
                 btnImg.source = btn.path + "login-hover.png";
-                toolTip.visible = true;
+//                toolTip.visible = true;
             }
             else {
                 btnImg.source = "../../img/toolWidget/button-hover.png"
@@ -73,7 +74,7 @@ Item {
             else {
                 btnImg.source = "../../img/toolWidget/button-hover.png"
             }
-            toolTip.visible = false;
+//            toolTip.visible = false;
         }
         //要判断松开是鼠标位置
         onReleased: {
@@ -83,11 +84,11 @@ Item {
             else {
                 btnImg.source = "../../img/toolWidget/button-hover.png"
             }
-            toolTip.visible = false;
+//            toolTip.visible = false;
         }
         onExited: {
             btnImg.source = "";
-            toolTip.visible = false;
+//            toolTip.visible = false;
         }
         onClicked: { btn.clicked() }
     }

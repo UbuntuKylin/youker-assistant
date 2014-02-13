@@ -43,6 +43,8 @@ Item {
     function getData(history_msg) {
         if (history_msg == "BrowserWork") {
             root.browserstatus_num = sessiondispatcher.scan_history_records_qt("firefox");
+            console.log("test1111");
+            console.log(root.browserstatus_num);
             if(root.browserstatus_num == -1) {
                 toolkits.alertMSG(qsTr("Firefox is not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Firefox！
             }

@@ -58,7 +58,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     //超时计时器
     timer=new QTimer(this);
-    qDebug() << "*********session**********";
+//    qDebug() << "*********session**********";
 
 
 
@@ -87,20 +87,19 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
 
-    QObject::connect(httpauth, SIGNAL(response(/*QString,QString,*/QString)), this, SLOT(handler_access_login_success_info(/*QString,QString,*/QString)));
+    QObject::connect(httpauth, SIGNAL(response(QString,QString,QString,QString)), this, SLOT(handler_access_login_success_info(QString,QString,QString,QString)));
     QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handler_access_login_failed_info(int)));
-    QObject::connect(httpauth, SIGNAL(insertDataToServer(QString)), this, SLOT(handler_insert_data_to_server(QString)));
-    QObject::connect(httpauth, SIGNAL(updateServerData(QString)), this, SLOT(handler_update_server_data(QString)));
     QObject::connect(httpauth, SIGNAL(failedCommunicate()), this, SLOT(resetTimerStatus()));
+    QObject::connect(httpauth, SIGNAL(successCommunicate()), this, SLOT(searchCurrentInfo()));
 }
 
 SessionDispatcher::~SessionDispatcher() {
     mSettings->sync();
     if (mSettings != NULL)
         delete mSettings;
-    if(timer->isActive()) {
-        timer->stop();
-    }
+//    if(timer->isActive()) {
+//        timer->stop();
+//    }
     this->exit_qt();
 }
 
@@ -113,11 +112,10 @@ void SessionDispatcher::connectHttpServer(){
 
     //每30minutes发送数据给服务端进行连接确认
     qDebug()<<"start to connect every 30 minutes...";
-//    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
-//    QUrl url("http://210.209.123.136/box/find.php");
-//    QByteArray postData;
-//    postData.append(requestData);
-//    httpauth->sendPostRequest(url, postData);
+    //心跳
+    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
+    QUrl url(requestData);
+    httpauth->sendGetRequest(url);
 }
 
 void SessionDispatcher::resetTimerStatus() {
@@ -135,85 +133,51 @@ void SessionDispatcher::resetTimerStatus() {
     }
 }
 
+void SessionDispatcher::searchCurrentInfo() {
+    //查询当前的积分、等级....
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
+}
+
 void SessionDispatcher::show_slider_qt() {
     sessioniface->call("display_slide_show");
 }
 
-QString SessionDispatcher::get_currrent_date_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_currrent_date");
-    return reply.value();
-}
+//QString SessionDispatcher::get_currrent_date_qt() {
+//    QDBusReply<QString> reply = sessioniface->call("get_currrent_date");
+//    return reply.value();
+//}
 
-QString SessionDispatcher::get_current_time_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_current_time");
-    return reply.value();
-}
+//QString SessionDispatcher::get_current_time_qt() {
+//    QDBusReply<QString> reply = sessioniface->call("get_current_time");
+//    return reply.value();
+//}
 
-int SessionDispatcher::login_in_forum_account_qt() {
-    int score = 0;
-    //得到是否是当天第一次启动的标记
-    mSettings->beginGroup("account");
-    bool flag = mSettings->value("firststart").toBool();
-    //得到配置文件中的日期
-    QString org_date = mSettings->value("date").toString();
-    QDBusReply<int> reply = sessioniface->call("login_in_forum_account", flag, org_date);
-    qDebug() << "my login score->";
-    score = reply.value();
-    qDebug() << score;
-    if(score == 5) {//第一次启动之后，重置状态和日期
-        mSettings->setValue("firststart", "false");
-        mSettings->setValue("date", this->get_currrent_date_qt());
+void SessionDispatcher::ready_exit_normally() {
+    //关闭定时器
+    waitTime = 0;
+    disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
+    if(timer->isActive()) {
+        timer->stop();
     }
+    //退出
+    mSettings->beginGroup("account");
+    int id = mSettings->value("id").toInt();
     mSettings->endGroup();
     mSettings->sync();
-    return score;
+    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=logout&pp[table]=yk_member&pp[id]=%1").arg(id);
+    QUrl url(requestData);
+    httpauth->sendGetRequest(url);
 }
 
 void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库数据和本地配置文件
-    //更新本地配置文件
-//    mSettings->beginGroup("account");
-//    QString org_date = mSettings->value("date").toString();
-//    QString current_date = this->get_currrent_date_qt();
-//    mSettings->setValue("date", current_date);
-//    if(org_date == current_date) {
-//        mSettings->setValue("firststart", "false");
-//    }
-//    mSettings->endGroup();
-//    mSettings->sync();
-    //更新数据库数据
-//    int num = 1;
-//    int myscore = this->login_in_forum_account_qt();
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=%1&pp[id]=%2&pp[0]=score&score=%3").arg(num).arg(id).arg(myscore);
-//    QUrl url(requestData);
-//    qDebug () << requestData;
-//    httpauth->sendGetRequest(url);
-
-
-
-//    qDebug() << "----------------";
-//    mSettings->beginGroup("account");
-//    int id = mSettings->value("id").toInt();
-//    mSettings->endGroup();
-//    mSettings->sync();
-
-//    qDebug() << "userid->";
-//    qDebug() << id;
-//    int duration = 240;
-//    QString logout_time = this->get_current_time_qt();//"2014-02-10 20:00:58";//
-//    qDebug() << logout_time;
-////    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=2&pp[id]=%1&pp[0]=lastlogouttime&pp[1]=holdtime&lastlogouttime=%2&holdtime=%3").arg(id).arg(logout_time).arg(duration);
-//    QUrl url(requestData);
-//////    qDebug () << requestData;
-//    httpauth->sendGetRequest(url);
-
-
-    qDebug() << "kobe222";
-    emit this->ready_to_exit();
+    this->ready_exit_normally();
+    emit this->ready_to_exit();//通知菜单可以退出程序了
 }
 
 void SessionDispatcher::handler_access_user_password(QString user, QString pwd) {
-    username = user;
+//    username = user;
     //显示登录动态图
     emit showLoginAnimatedImage();
     //发送数据给服务端进行登录验证
@@ -224,13 +188,13 @@ void SessionDispatcher::handler_access_user_password(QString user, QString pwd) 
 //    httpauth->sendPostRequest(url, postData);
 
     //登录验证
-    QString requestData = QString("http://119.254.229.72/boxbeta/certify_get.php?name=%1&password=%2").arg(user).arg(pwd);
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=login&pp[table]=yk_member&pp[id]=2&pp[name]=fish");
+    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
+//    QString requestData = QString("http://119.254.229.72/boxbeta/certify_get.php?name=%1&password=%2").arg(user).arg(pwd);
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 
     //心跳
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=1");
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
 //    QUrl url(requestData);
 //    httpauth->sendGetRequest(url);
 
@@ -256,22 +220,25 @@ void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
 
 //退出登录
 void SessionDispatcher::logout_ubuntukylin_account() {
-    //关闭定时器
-    waitTime = 0;
-    disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
-    if(timer->isActive()) {
-        timer->stop();
-    }
+    this->ready_exit_normally();
 }
 
-void SessionDispatcher::handler_access_login_success_info(/*QString username, QString password, */QString score) {
+void SessionDispatcher::handler_access_login_success_info(QString id, QString level, QString name, QString score) {
     //登录成功后将用户信息显示在界面上
-    emit updateLoginStatus(username, /*password, */score);
+    emit updateLoginStatus(name, level, score);
+
+    //将当前用户id写入本地配置文件中
+    mSettings->beginGroup("account");
+    mSettings->setValue("id", id);
+    mSettings->endGroup();
+    mSettings->sync();
 
     //绑定和初始化定时器，每隔30minutes连接服务器一次
     waitTime = 0;
     connect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
-    timer->start(5000);
+    timer->start(60000*30);//5000
+
+
 
     // post method
 //    QString requestData = QString("pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[logo]=%4&pp[level]=%5&pp[score]=%6&pp[isfirststart]=%7&pp[lastlogintime]=%8&pp[lastlogouttime]=%9&pp[holdtime]=%10").arg(data_type).arg(num).arg(id).arg(logo).arg(level).arg(myscore).arg(isfirststart).arg(lastlogintime).arg(lastlogouttime).arg(holdtime);
@@ -289,114 +256,6 @@ void SessionDispatcher::handler_access_login_success_info(/*QString username, QS
 
 void SessionDispatcher::handler_access_login_failed_info(int status) {
     emit loginFailedStatus(status);
-}
-
-void SessionDispatcher::handler_insert_data_to_server(QString data) {//插入数据到服务端数据库
-    qDebug() << "insert->";
-    /*http://210.209.123.136/yk/find_get.php?pp[type]=insert&pp[table]=yk_member&pp[dnumber]=2&pp[id]=1&pp[name]=fish
-    pp是个数组
-        type是类型[insert]
-        table是表名
-        dnumber是传入参数的个数
-        之后就是各个列的数值
-
-
-        参数的数据结构是
-        POST{
-
-        array pp{
-        type=insert
-        table=yk_member
-        dnumber=8
-
-        id=1
-        logo=2
-        level=3
-        score=4
-        isfirststart=5
-        lastlogintime=6
-        lastlogouttime=7
-        holdtime=8
-        }
-
-        }*/
-
-
-
-//    qDebug() << data;
-    //insert
-//    int id = 24;
-//    QString logo = "lixiang-kobe";
-//    int level = 2;
-//    int myscore = 3000;//2000;
-//    bool isfirststart = true;//false;
-//    int lastlogintime = 200;
-//    int lastlogouttime = 400;
-//    int holdtime = 200;
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=insert&pp[table]=yk_member&pp[dnumber]=8&pp[id]=%1&pp[logo]=\"%2\"&pp[level]=%3&pp[score]=%4&pp[isfirststart]=%5&pp[lastlogintime]=%6&pp[lastlogouttime]=%7&pp[holdtime]=%8").arg(id).arg(logo).arg(level).arg(myscore).arg(isfirststart).arg(lastlogintime).arg(lastlogouttime).arg(holdtime);
-//    QUrl url(requestData);
-////    qDebug () << requestData;
-//    httpauth->sendGetRequest(url);
-}
-
-void SessionDispatcher::handler_update_server_data(QString data) {//更系服务端数据库的数据
-    qDebug() << "update->";
-    /*
-    http://210.209.123.136/yk/find.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=2&pp[id]=1&pp[0]=logo&pp[1]=holdtime&logo=10000&holdtime=200000
-
-    和插入有所不同
-
-      pp是个数组
-        type是类型[update]
-        table是表名
-        dnumber是传入参数的个数
-        id是改变的id号
-        接着是改变的列的名称（按照从0开始的顺序写）
-        之后就是各个列的数值
-        POST{
-
-        array pp{
-        type=update
-        table=yk_member
-        dnumber=2
-
-        id
-        0=logo
-        1=score
-        }
-
-        logo=123
-        score=456
-        }
-    */
-
-
-
-
-//    qDebug() << data;//"id=2,logo=lixiang-kobe,level=3,score=3000,isfirststart=0,lastlogintime=0000-00-00 00:00:00,lastlogouttime=0000-00-00 00:00:00,holdtime=8"
-    //update
-//    QStringList updateData = data.split(",");
-//    QStringList idData = updateData.at(0).split("=");
-//    int id = idData.at(1).toInt();
-//    mSettings->beginGroup("account");
-//    mSettings->setValue("id", id);
-//    mSettings->endGroup();
-//    mSettings->sync();
-//    qDebug() << "org userid->";
-//    qDebug() << id;
-//    QStringList scoreData = updateData.at(3).split("=");
-//    int login_score = this->login_in_forum_account_qt();
-//    bool isfirststart = false;
-//    if(login_score == 5) {//是当天的第一次登录
-//        isfirststart = true;
-//    }
-//    QString login_time = this->get_current_time_qt();//"2014-02-10 20:00:58";//
-//    int myscore = login_score + scoreData.at(1).toInt();
-////    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=score&pp[1]=isfirststart&pp[2]=lastlogintime&score=%2&isfirststart=%3&lastlogintime=%4").arg(id).arg(myscore).arg(isfirststart).arg(login_time);
-//    QUrl url(requestData);
-//////    qDebug () << requestData;
-//    httpauth->sendGetRequest(url);
 }
 
 QStringList SessionDispatcher::search_city_names_qt(QString search_name) {
@@ -421,8 +280,6 @@ QStringList SessionDispatcher::get_latitude_list_qt() {
 
 QString SessionDispatcher::get_yahoo_city_id_qt(QString geonameid) {
     QDBusReply<QString> reply = sessioniface->call("get_yahoo_city_id", geonameid);
-//    qDebug() << "new id->";
-//    qDebug() << reply.value();
     return reply.value();
 }
 
@@ -1325,16 +1182,16 @@ void SessionDispatcher::initConfigFile() {
     if(id.isEmpty()) {
         mSettings->setValue("id", "0");
     }
-    QString firststart = mSettings->value("firststart").toString();
-    if(firststart.isEmpty()) {
-        firststart = "true";
-        mSettings->setValue("firststart", firststart);
-    }
-    QString current_date = mSettings->value("date").toString();
-    if(current_date.isEmpty()) {
-        current_date = this->get_currrent_date_qt();
-        mSettings->setValue("date", current_date);
-    }
+//    QString firststart = mSettings->value("firststart").toString();
+//    if(firststart.isEmpty()) {
+//        firststart = "true";
+//        mSettings->setValue("firststart", firststart);
+//    }
+//    QString current_date = mSettings->value("date").toString();
+//    if(current_date.isEmpty()) {
+//        current_date = this->get_currrent_date_qt();
+//        mSettings->setValue("date", current_date);
+//    }
     mSettings->endGroup();
     mSettings->sync();
 

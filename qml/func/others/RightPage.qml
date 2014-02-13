@@ -52,6 +52,7 @@ Rectangle {
         onUpdateLoginStatus: {//登录成功
             logo.source = "../../img/icons/logo.png"
             userText.text = username;
+            levelText.text = "Lv" + level;
             scoreText.text = score;
             rightbar.state = "OnLine";
         }
@@ -134,36 +135,60 @@ Rectangle {
         }
     }
 
+
     Rectangle {
         id: online
         width: parent.width
         x: (parent.width * 1.5)
-        Row {
+        Image {
+            id: logo
             anchors{
                 left: parent.left
                 leftMargin: 26
                 top:parent.top
+                topMargin: 35
+            }
+            width: 50; height: 50
+            source: ""
+        }
+//        Row {
+//            anchors{
+//                left: parent.left
+//                leftMargin: 26
+//                top:parent.top
+//                topMargin: 30
+//            }
+//            spacing: 10
+//            Image {
+//                id: logo
+//                width: 32; height: 32
+//                source: ""
+//            }
+        Column {
+            spacing: 5
+            anchors{
+                left: logo.right
+                leftMargin: 10
+                top:parent.top
                 topMargin: 30
             }
-            spacing: 10
-            Image {
-                id: logo
-                width: 32; height: 32
-                source: ""
+            Text {
+                id: userText
+                text: ""
+                width: 160
             }
-            Column {
-                Text {
-                    id: userText
-                    text: ""
-                    width: 160
-                }
-                Text {
-                    id: scoreText
-                    text: ""
-                    width: 160
-                }
+            Text {
+                id: levelText
+                text: ""
+                width: 160
+            }
+            Text {
+                id: scoreText
+                text: ""
+                width: 160
             }
         }
+//        }
         Common.KButton {
             id: quitBtn
             kflag: "remove"
@@ -179,12 +204,70 @@ Rectangle {
                 console.log("quit....");
                 sessiondispatcher.logout_ubuntukylin_account();
                 userText.text = "";
+                levelText.text = "";
                 scoreText.text = "";
                 logo.source = "";
                 rightbar.state = "OffLine";
             }
         }
     }
+//    Rectangle {
+//        id: online
+//        width: parent.width
+//        x: (parent.width * 1.5)
+//        Row {
+//            anchors{
+//                left: parent.left
+//                leftMargin: 26
+//                top:parent.top
+//                topMargin: 30
+//            }
+//            spacing: 10
+//            Image {
+//                id: logo
+//                width: 32; height: 32
+//                source: ""
+//            }
+//            Column {
+//                Text {
+//                    id: userText
+//                    text: ""
+//                    width: 160
+//                }
+//                Text {
+//                    id: levelText
+//                    text: ""
+//                    width: 160
+//                }
+//                Text {
+//                    id: scoreText
+//                    text: ""
+//                    width: 160
+//                }
+//            }
+//        }
+//        Common.KButton {
+//            id: quitBtn
+//            kflag: "remove"
+//            showImage: "../../img/icons/remove.png"
+//            anchors {
+//                right: parent.right
+//                rightMargin: 10
+//                top: parent.top
+//                topMargin: 10
+//            }
+//            width: 16; height: 16
+//            onClicked: {
+//                console.log("quit....");
+//                sessiondispatcher.logout_ubuntukylin_account();
+//                userText.text = "";
+//                levelText.text = "";
+//                scoreText.text = "";
+//                logo.source = "";
+//                rightbar.state = "OffLine";
+//            }
+//        }
+//    }
 
     WeatherZone {
         id: weatherZone

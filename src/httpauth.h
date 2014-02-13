@@ -30,11 +30,9 @@ public:
     void sendGetRequest(const QUrl &url);
 
 signals:
-//    void response(int len);
     void error(int errCode);
-    void response(/*QString username, QString password, */QString score);
-    void insertDataToServer(QString data);
-    void updateServerData(QString data);
+    void response(QString id, QString level, QString name, QString score);
+    void successCommunicate();
     void failedCommunicate();
 
 public slots:

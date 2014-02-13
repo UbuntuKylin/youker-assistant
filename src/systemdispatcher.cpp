@@ -49,7 +49,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     config->setIniCodec("UTF-8");
     progressFlag = false;
     ratio_sus = 0;
-    qDebug() << "*********system**********";
 
     //绑定到底层清理完毕后发送到信号函数clear_browser
     QObject::connect(systemiface,SIGNAL(clean_single_complete(QString)),this,SLOT(handler_clear_single_rubbish(QString)));

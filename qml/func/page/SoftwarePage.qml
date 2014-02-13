@@ -96,7 +96,7 @@ Item {
         Text {
             id: title1
             anchors.centerIn: parent
-            text: qsTr("If it takes too long to update,  there may be network problems,  you can click the ‘back’ button in the upper left hand corner to exit the interface.")//如果太长时间没有更新完毕，这可能是网络问题，您可以点击左上角的“返回”按钮退出该界面。
+            text: qsTr("If it takes too long to update, there may be network problems, you can click the 'back' button in the upper left hand corner to exit the interface.")//如果太长时间没有更新完毕，这可能是网络问题，您可以点击左上角的“返回”按钮退出该界面。
             wrapMode: Text.WordWrap
             font.pixelSize: 12
             color: "#7a7a7a"

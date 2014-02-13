@@ -356,6 +356,7 @@ Rectangle {
         Image {
             id: cardlogo
             source: ""
+            opacity: 0.5
             anchors {
                 top: parent.top
                 topMargin: 75
@@ -367,6 +368,7 @@ Rectangle {
         Image {
             id: monitorlogo
             source: ""
+            opacity: 0.5
             anchors {
                 top: parent.top
                 topMargin: 250

@@ -243,6 +243,7 @@ Rectangle {
     Image {
         id: logo
         source: ""
+        opacity: 0.5
         anchors {
             top: parent.top
             topMargin: 80

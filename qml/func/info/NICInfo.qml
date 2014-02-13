@@ -366,6 +366,7 @@ Rectangle {
         Image {
             id: logo
             source: ""
+            opacity: 0.5
             anchors {
                 top: parent.top
                 topMargin: 65
@@ -377,6 +378,7 @@ Rectangle {
         Image {
             id: wlogo
             visible: (wmodelText.text != "" && wvendorText.text != "") ? true:false
+            opacity: 0.5
             source: ""
             anchors {
                 top: parent.top

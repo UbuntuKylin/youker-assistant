@@ -178,6 +178,7 @@ Rectangle {
     Image {
         id: basiclogo
         source: ""
+        opacity: 0.5
         anchors {
             top: parent.top
             topMargin: 80
@@ -189,6 +190,7 @@ Rectangle {
     Image {
         id: bioslogo
         source: ""
+        opacity: 0.5
         anchors {
             top: parent.top
             topMargin: 220

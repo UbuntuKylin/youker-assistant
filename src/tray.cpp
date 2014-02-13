@@ -70,8 +70,8 @@ Tray::~Tray() {
 }
 
 void Tray::handler_to_exit() {
-    qDebug() << "kobe333";
-    qDebug() << "can exit.....";
+//    qDebug() << "kobe333";
+//    qDebug() << "can exit.....";
     qApp->quit();
 }
 
@@ -167,7 +167,7 @@ void Tray::handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason) {
 }
 
 void Tray::exit() {
-    qDebug() << "kobe111";
+//    qDebug() << "kobe111";
     emit ready_to_write_user_info_when_exit();
 //    qApp->quit();
 }

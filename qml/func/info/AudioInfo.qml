@@ -208,6 +208,7 @@ Rectangle {
                     Image {
                         id: logo1
                         visible: false
+                        opacity: 0.5
                         source: ""
                         anchors {
                             top: parent.top
@@ -236,6 +237,7 @@ Rectangle {
                     Image {
                         id: logo2
                         visible: false
+                        opacity: 0.5
                         source: ""
                         anchors {
                             top: parent.top
@@ -264,6 +266,7 @@ Rectangle {
                     Image {
                         id: logo3
                         visible: false
+                        opacity: 0.5
                         source: ""
                         anchors {
                             top: parent.top
@@ -292,6 +295,7 @@ Rectangle {
                     Image {
                         id: logo4
                         visible: false
+                        opacity: 0.5
                         source: ""
                         anchors {
                             top: parent.top
