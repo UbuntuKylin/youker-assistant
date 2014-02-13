@@ -253,7 +253,7 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
     def scan_history_records(self, flag):
-        historyfunc_obj = cleaner.CleanTheHistory(None)
+        historyfunc_obj = cleaner.CleanTheHistory()
         crufts = historyfunc_obj.get_history_crufts(flag)
         figure = None
         if isinstance(crufts, list):
@@ -264,10 +264,10 @@ class SessionDaemon(dbus.service.Object):
             figure = -1
         return figure
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def history_scan_function(self, flag):
-        historyfunc_obj = cleaner.CleanTheHistory()
-        historyfunc_obj.new_get_history_crufts(flag, self)
+    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    #def history_scan_function(self, flag):
+    #    historyfunc_obj = cleaner.CleanTheHistory()
+    #    historyfunc_obj.new_get_history_crufts(flag, self)
 
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     #def scan_history_records(self):
@@ -399,13 +399,13 @@ class SessionDaemon(dbus.service.Object):
     def data_transmit_by_cookies(self, flag, domain, num):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='i')
-    def data_transmit_by_history(self, num):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='i')
+    #def data_transmit_by_history(self, num):
+    #    pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def browser_status_by_history(self, status):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='s')
+    #def browser_status_by_history(self, status):
+    #    pass
 
     @dbus.service.signal(INTERFACE, signature='ss')
     def data_transmit_by_large(self, size, filepath):
@@ -423,9 +423,9 @@ class SessionDaemon(dbus.service.Object):
     def cookies_transmit_complete(self, msg):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def history_transmit_complete(self, msg):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='s')
+    #def history_transmit_complete(self, msg):
+    #    pass
 
     @dbus.service.signal(INTERFACE, signature='')
     def large_transmit_complete(self):
