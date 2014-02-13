@@ -60,7 +60,7 @@ Item {
                     left: parent.left
                     leftMargin: 25
                 }
-                spacing: 10
+                spacing: 25
 
                 Row {
                     spacing: 10
@@ -68,11 +68,13 @@ Item {
                         id: personal
                         source: "../../img/icons/themeset.png"
 //                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.top: parent.top
+                        anchors.verticalCenter: parent.verticalCenter
                     }
                     Column {
-                        spacing: 7
+                        spacing: 3
                         Row {
+                            anchors.left: parent.left
+                            anchors.leftMargin: 5
                             Text {
                                 id: personaltext
                                 text: qsTr(" Personalize")// 个性化
@@ -107,7 +109,7 @@ Item {
                             }
                         }
                         Row {
-                            spacing: 5
+                            spacing: 18
                             Common.StyleButton {
                                 wordname: qsTr("WindowTheme"); width: b1.width//窗口主题
 //                                flag: "WidgetTheme"
@@ -164,11 +166,13 @@ Item {
                         id: unity
                         source: "../../img/icons/unity.png"
 //                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.top: parent.top
+                        anchors.verticalCenter: parent.verticalCenter
                     }
                     Column {
-                        spacing: 7
+                        spacing: 3
                         Row {
+                            anchors.left: parent.left
+                            anchors.leftMargin: 5
                             Text {
                                 id: unitytext
                                 text: qsTr(" Unity")// Unity
@@ -183,7 +187,7 @@ Item {
                             }
                         }
                         Row {
-                            spacing: 5
+                            spacing: 18
                             Common.StyleButton {
                                 wordname: qsTr("Custom Launcher"); width: b6.width//自定义启动器
 //                                flag: "LauncherTheme"
@@ -202,11 +206,13 @@ Item {
                         id: fontimage
                         source: "../../img/icons/font.png"
 //                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.top: parent.top
+                        anchors.verticalCenter: parent.verticalCenter
                     }
                     Column {
-                        spacing: 7
+                        spacing: 3
                         Row {
+                            anchors.left: parent.left
+                            anchors.leftMargin: 5
                             Text {
                                 id: fonttext
                                 text: qsTr(" Fonts")// 字体
@@ -231,7 +237,7 @@ Item {
                             }
                         }
                         Row {
-                            spacing: 5
+                            spacing: 18
                             Common.StyleButton {
                                 wordname: qsTr("DefaultFont"); width: b7.width//默认字体设置
 //                                flag: "DefaultFont"
@@ -266,11 +272,13 @@ Item {
                         id: sysimage
                         source: "../../img/icons/systemset.png"
 //                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.top: parent.top
+                        anchors.verticalCenter: parent.verticalCenter
                     }
                     Column {
-                        spacing: 7
+                        spacing: 3
                         Row {
+                            anchors.left: parent.left
+                            anchors.leftMargin: 5
                             Text {
                                 id: systext
                                 text: qsTr(" System options")// 系统选项
@@ -290,7 +298,7 @@ Item {
                             }
                         }
                         Row {
-                            spacing: 5
+                            spacing: 18
                             Common.StyleButton {
                                 wordname: qsTr("Touchpad"); width: b10.width//触摸板设置
 //                                flag: "TouchpadSet"
