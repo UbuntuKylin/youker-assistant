@@ -56,7 +56,7 @@ public:
     //清理系统最近打开文件的记录
     Q_INVOKABLE void clean_system_history_qt();
     //清理dash使用记录
-    Q_INVOKABLE void clean_dash_history_qt();
+//    Q_INVOKABLE void clean_dash_history_qt();
     //清理firefox或者choromium的单个cookie
     Q_INVOKABLE void cookies_clean_record_function_qt(QString flag, QString website);
     //清理firefox或者choromium的所有cookies
@@ -248,10 +248,10 @@ signals:
     void finishCleanWorkError(QString msg);
     void finishCleanWorkMain(QString msg);
     void finishCleanWorkMainError(QString msg);
-    void finishCleanWorkSecond(QString msg);
-    void finishCleanWorkSecondError(QString msg);
-    void finishCleanDataMain(QString type, QString msg);
-    void finishCleanDataSecond(QString type, QString msg);
+//    void finishCleanWorkSecond(QString msg);
+//    void finishCleanWorkSecondError(QString msg);
+//    void finishCleanDataMain(QString type, QString msg);
+//    void finishCleanDataSecond(QString type, QString msg);
     void quickCleanProcess(QString type, QString status);
 
 
@@ -287,10 +287,10 @@ public slots:
     void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);
     void handler_clear_rubbish_main_error(QString msg);
-    void handler_clear_rubbish_second_onekey(QString msg);
-    void handler_clear_rubbish_second_error(QString msg);
-    void handler_clean_data_main(QString type, QString msg);
-    void handler_clean_data_second(QString type, QString msg);
+//    void handler_clear_rubbish_second_onekey(QString msg);
+//    void handler_clear_rubbish_second_error(QString msg);
+//    void handler_clean_data_main(QString type, QString msg);
+//    void handler_clean_data_second(QString type, QString msg);
     void handler_status_for_quick_clean(QString type, QString status);
 
 

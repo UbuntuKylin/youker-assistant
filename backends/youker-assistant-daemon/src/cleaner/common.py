@@ -61,9 +61,9 @@ def get_cache_list():
     cache = apt.Cache()
     return cache
 
-def get_homedir_sysdaemon(homedir):
-    global HOMEDIR
-    HOMEDIR = homedir
+#def get_homedir_sysdaemon(homedir):
+#    global HOMEDIR
+#    HOMEDIR = homedir
 
 def return_homedir_sysdaemon():
     global HOMEDIR

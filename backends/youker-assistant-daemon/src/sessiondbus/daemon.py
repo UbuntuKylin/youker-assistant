@@ -414,13 +414,13 @@ class SessionDaemon(dbus.service.Object):
     def large_transmit_complete(self):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def deb_exists_firefox(self, msg):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='s')
+    #def deb_exists_firefox(self, msg):
+    #    pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def deb_exists_chromium(self, msg):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='s')
+    #def deb_exists_chromium(self, msg):
+    #    pass
 
     @dbus.service.signal(INTERFACE, signature='ss')
     def total_data_transmit(self, flag, msg):
@@ -433,11 +433,11 @@ class SessionDaemon(dbus.service.Object):
     def scan_complete_msg(self, para):
         self.scan_complete(para)
 
-    def deb_exists_firefox_msg(self, para):
-        self.deb_exists_firefox(para)
+    #def deb_exists_firefox_msg(self, para):
+    #    self.deb_exists_firefox(para)
 
-    def deb_exists_chromium_msg(self, para):
-        self.deb_exists_chromium(para)
+    #def deb_exists_chromium_msg(self, para):
+    #    self.deb_exists_chromium(para)
 
     def display_scan_process_msg(self, para):
         self.display_scan_process(para)
