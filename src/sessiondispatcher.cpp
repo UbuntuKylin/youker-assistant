@@ -188,22 +188,24 @@ void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库�
 //    qDebug () << requestData;
 //    httpauth->sendGetRequest(url);
 
-    qDebug() << "----------------";
-    mSettings->beginGroup("account");
-    int id = mSettings->value("id").toInt();
-    mSettings->endGroup();
-    mSettings->sync();
 
-    qDebug() << "userid->";
-    qDebug() << id;
-    int duration = 240;
-    QString logout_time = this->get_current_time_qt();//"2014-02-10 20:00:58";//
-    qDebug() << logout_time;
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
-    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=2&pp[id]=%1&pp[0]=lastlogouttime&pp[1]=holdtime&lastlogouttime=%2&holdtime=%3").arg(id).arg(logout_time).arg(duration);
-    QUrl url(requestData);
-////    qDebug () << requestData;
-    httpauth->sendGetRequest(url);
+
+//    qDebug() << "----------------";
+//    mSettings->beginGroup("account");
+//    int id = mSettings->value("id").toInt();
+//    mSettings->endGroup();
+//    mSettings->sync();
+
+//    qDebug() << "userid->";
+//    qDebug() << id;
+//    int duration = 240;
+//    QString logout_time = this->get_current_time_qt();//"2014-02-10 20:00:58";//
+//    qDebug() << logout_time;
+////    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=2&pp[id]=%1&pp[0]=lastlogouttime&pp[1]=holdtime&lastlogouttime=%2&holdtime=%3").arg(id).arg(logout_time).arg(duration);
+//    QUrl url(requestData);
+//////    qDebug () << requestData;
+//    httpauth->sendGetRequest(url);
 
 
     qDebug() << "kobe222";
@@ -215,11 +217,24 @@ void SessionDispatcher::handler_access_user_password(QString user, QString pwd) 
     //显示登录动态图
     emit showLoginAnimatedImage();
     //发送数据给服务端进行登录验证
-    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
-    QUrl url("http://210.209.123.136/box/find.php");
-    QByteArray postData;
-    postData.append(requestData);
-    httpauth->sendPostRequest(url, postData);
+//    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
+//    QUrl url("http://210.209.123.136/box/find.php");
+//    QByteArray postData;
+//    postData.append(requestData);
+//    httpauth->sendPostRequest(url, postData);
+
+    //登录验证
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=login&pp[table]=yk_member&pp[id]=2&pp[name]=fish");
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
+
+    //心跳
+
+    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=1");
+    QUrl url(requestData);
+    httpauth->sendGetRequest(url);
+
+
 
 
 //    QString requestData = QString("%1%2%3%4%5").arg("username=").arg(user).arg("&password=").arg(pwd).arg("&hiddenFields=ifAny");
@@ -267,9 +282,9 @@ void SessionDispatcher::handler_access_login_success_info(/*QString username, QS
 //    httpauth->sendPostRequest(url, postData);
 
     // get method: search
-    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=find&pp[table]=yk_member&pp[id]=2");
-    QUrl url(requestData);
-    httpauth->sendGetRequest(url);
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=find&pp[table]=yk_member&pp[id]=2");
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
 }
 
 void SessionDispatcher::handler_access_login_failed_info(int status) {
@@ -278,7 +293,37 @@ void SessionDispatcher::handler_access_login_failed_info(int status) {
 
 void SessionDispatcher::handler_insert_data_to_server(QString data) {//插入数据到服务端数据库
     qDebug() << "insert->";
-    qDebug() << data;
+    /*http://210.209.123.136/yk/find_get.php?pp[type]=insert&pp[table]=yk_member&pp[dnumber]=2&pp[id]=1&pp[name]=fish
+    pp是个数组
+        type是类型[insert]
+        table是表名
+        dnumber是传入参数的个数
+        之后就是各个列的数值
+
+
+        参数的数据结构是
+        POST{
+
+        array pp{
+        type=insert
+        table=yk_member
+        dnumber=8
+
+        id=1
+        logo=2
+        level=3
+        score=4
+        isfirststart=5
+        lastlogintime=6
+        lastlogouttime=7
+        holdtime=8
+        }
+
+        }*/
+
+
+
+//    qDebug() << data;
     //insert
 //    int id = 24;
 //    QString logo = "lixiang-kobe";
@@ -296,30 +341,62 @@ void SessionDispatcher::handler_insert_data_to_server(QString data) {//插入数
 
 void SessionDispatcher::handler_update_server_data(QString data) {//更系服务端数据库的数据
     qDebug() << "update->";
-    qDebug() << data;//"id=2,logo=lixiang-kobe,level=3,score=3000,isfirststart=0,lastlogintime=0000-00-00 00:00:00,lastlogouttime=0000-00-00 00:00:00,holdtime=8"
+    /*
+    http://210.209.123.136/yk/find.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=2&pp[id]=1&pp[0]=logo&pp[1]=holdtime&logo=10000&holdtime=200000
+
+    和插入有所不同
+
+      pp是个数组
+        type是类型[update]
+        table是表名
+        dnumber是传入参数的个数
+        id是改变的id号
+        接着是改变的列的名称（按照从0开始的顺序写）
+        之后就是各个列的数值
+        POST{
+
+        array pp{
+        type=update
+        table=yk_member
+        dnumber=2
+
+        id
+        0=logo
+        1=score
+        }
+
+        logo=123
+        score=456
+        }
+    */
+
+
+
+
+//    qDebug() << data;//"id=2,logo=lixiang-kobe,level=3,score=3000,isfirststart=0,lastlogintime=0000-00-00 00:00:00,lastlogouttime=0000-00-00 00:00:00,holdtime=8"
     //update
-    QStringList updateData = data.split(",");
-    QStringList idData = updateData.at(0).split("=");
-    int id = idData.at(1).toInt();
-    mSettings->beginGroup("account");
-    mSettings->setValue("id", id);
-    mSettings->endGroup();
-    mSettings->sync();
-    qDebug() << "org userid->";
-    qDebug() << id;
-    QStringList scoreData = updateData.at(3).split("=");
-    int login_score = this->login_in_forum_account_qt();
-    bool isfirststart = false;
-    if(login_score == 5) {//是当天的第一次登录
-        isfirststart = true;
-    }
-    QString login_time = this->get_current_time_qt();//"2014-02-10 20:00:58";//
-    int myscore = login_score + scoreData.at(1).toInt();
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
-    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=score&pp[1]=isfirststart&pp[2]=lastlogintime&score=%2&isfirststart=%3&lastlogintime=%4").arg(id).arg(myscore).arg(isfirststart).arg(login_time);
-    QUrl url(requestData);
-////    qDebug () << requestData;
-    httpauth->sendGetRequest(url);
+//    QStringList updateData = data.split(",");
+//    QStringList idData = updateData.at(0).split("=");
+//    int id = idData.at(1).toInt();
+//    mSettings->beginGroup("account");
+//    mSettings->setValue("id", id);
+//    mSettings->endGroup();
+//    mSettings->sync();
+//    qDebug() << "org userid->";
+//    qDebug() << id;
+//    QStringList scoreData = updateData.at(3).split("=");
+//    int login_score = this->login_in_forum_account_qt();
+//    bool isfirststart = false;
+//    if(login_score == 5) {//是当天的第一次登录
+//        isfirststart = true;
+//    }
+//    QString login_time = this->get_current_time_qt();//"2014-02-10 20:00:58";//
+//    int myscore = login_score + scoreData.at(1).toInt();
+////    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=logo&pp[1]=score&pp[2]=isfirststart&logo=\"%2\"&score=%3&isfirststart=%4").arg(id).arg(logo).arg(myscore).arg(isfirststart);
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=update&pp[table]=yk_member&pp[dnumber]=3&pp[id]=%1&pp[0]=score&pp[1]=isfirststart&pp[2]=lastlogintime&score=%2&isfirststart=%3&lastlogintime=%4").arg(id).arg(myscore).arg(isfirststart).arg(login_time);
+//    QUrl url(requestData);
+//////    qDebug () << requestData;
+//    httpauth->sendGetRequest(url);
 }
 
 QStringList SessionDispatcher::search_city_names_qt(QString search_name) {

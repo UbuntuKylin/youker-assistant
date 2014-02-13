@@ -44,8 +44,8 @@ void HttpAuth::sendGetRequest(const QUrl &url) {
 void HttpAuth::replyFinished(QNetworkReply *reply){
     if(reply && reply->error() == QNetworkReply::NoError) {
         /*QByteArray*/QString data = reply->readAll();
-//        qDebug() << "Result:->";
-//        qDebug() << data;
+        qDebug() << "Result:->";
+        qDebug() << data;
         QStringList tmp = data.split("<br>");
 //        qDebug() << QString("%1").arg(tmp.length());
         if(tmp.at(0) == "sccuss") {
@@ -53,8 +53,8 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
             emit this->response(/*tmp.at(1), tmp.at(2), */"1000");
         }
         else {
-            qDebug() << "1111111111111";
-            qDebug() << data;
+//            qDebug() << "1111111111111";
+//            qDebug() << data;
             if(data.contains(",")/*,Qt::CaseSensitive*/) {
                 QStringList searchData = data.split(",");
 //                qDebug() << searchData.at(0);//id=2
