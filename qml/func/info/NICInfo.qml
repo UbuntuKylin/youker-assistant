@@ -93,7 +93,7 @@ Rectangle {
                         text: qsTr("NIC Model:")//有线网卡型号：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: modelText
@@ -110,7 +110,7 @@ Rectangle {
                         text: qsTr("Vendor:")//制造商：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: vendorText
@@ -125,7 +125,7 @@ Rectangle {
                         text: qsTr("NIC Driver:")//有线网卡驱动：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: driverText
@@ -140,7 +140,7 @@ Rectangle {
                         text: qsTr("Bus Address:")//总线地址：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: busText
@@ -155,7 +155,7 @@ Rectangle {
                         text: qsTr("Device Name:")//设备名称：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: deviceText
@@ -170,7 +170,7 @@ Rectangle {
                         text: qsTr("IP Address:")//IP地址：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: ipText
@@ -185,7 +185,7 @@ Rectangle {
                         text: qsTr("Mac Address:")//MAC地址：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: macText
@@ -200,7 +200,7 @@ Rectangle {
                         text: qsTr("Connection Status: ")//连接状态：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: linkText
@@ -215,7 +215,7 @@ Rectangle {
                         text: qsTr("Max Bandwidth: ")//最大带宽：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: maxText
@@ -251,7 +251,7 @@ Rectangle {
                         text: qsTr("WLan NIC Model:")//网卡型号：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: wmodelText
@@ -269,7 +269,7 @@ Rectangle {
                         text: qsTr("Vendor:")//制造商：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: wvendorText
@@ -285,7 +285,7 @@ Rectangle {
                         text: qsTr("WLan NIC Driver:")//无线网卡驱动：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: wdriverText
@@ -301,7 +301,7 @@ Rectangle {
                         text: qsTr("Bus Address:")//总线地址：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: wbusText
@@ -317,7 +317,7 @@ Rectangle {
                         text: qsTr("Device Name:")//设备名称：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: wdeviceText
@@ -334,7 +334,7 @@ Rectangle {
                         text: qsTr("IP Address:")//IP地址：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: wipText
@@ -351,7 +351,7 @@ Rectangle {
                         text: qsTr("Serial Number: ")//序列号：
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
-                        width: 130
+                        width: 150
                     }
                     Text {
                         id: wmacText
