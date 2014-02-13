@@ -123,7 +123,7 @@ Rectangle {
             left: parent.left
             leftMargin: 60
             top: settitle.bottom
-            topMargin: 10
+            topMargin: 20
 
         }
         spacing: 40
@@ -154,7 +154,7 @@ Rectangle {
             left: parent.left
             leftMargin: 40
             top: setcontext.bottom
-            topMargin: 50
+            topMargin: 30
 
         }
         spacing: 5
@@ -175,12 +175,12 @@ Rectangle {
     }
 
     Column {
-        spacing: 20
+        spacing: 30
         anchors{
             left: parent.left
             leftMargin: 60
             top: scrollrow.bottom
-            topMargin: 10
+            topMargin: 30
         }
 
         Row {
