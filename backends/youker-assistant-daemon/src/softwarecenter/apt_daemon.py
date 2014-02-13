@@ -249,14 +249,14 @@ class AptDaemon():
         return source.list
 
     # add ubuntukylin source in /etc/apt/sources.list
-    def add_source_ubuntukylin(self):
-        source = aptsources.sourceslist.SourcesList()
-        for item in source.list:
-            if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
-                return
+    #def add_source_ubuntukylin(self):
+    #    source = aptsources.sourceslist.SourcesList()
+    #    for item in source.list:
+    #        if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
+    #            return
 
-        source.add("deb", "http://archive.ubuntukylin.com/ubuntukylin/", "raring main", "")
-        source.save()
+    #    source.add("deb", "http://archive.ubuntukylin.com/ubuntukylin/", "raring main", "")
+    #    source.save()
 
     # remove ubuntukylin source in /etc/apt/sources.list
     def remove_source_ubuntukylin(self):
@@ -273,7 +273,7 @@ if __name__ == "__main__":
 # 	print ad.check_pkgs_status(["gedit", "cairo-dock", "unity"])
 #	print ad.check_pkgs_status_rtn_list(["gedit", "cairo-dock", "unity", "haha", "hehe"])
 # 	ad.apt_get_update()
-    ad.add_source_ubuntukylin()
+#    ad.add_source_ubuntukylin()
 # 	ad.remove_source_ubuntukylin()
 
     while True:

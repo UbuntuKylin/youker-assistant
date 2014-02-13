@@ -61,13 +61,13 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 //    QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_onekey(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_onekey(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
-    QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
-    QObject::connect(systemiface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
-    QObject::connect(systemiface,SIGNAL(clean_data_main(QString,QString)),this,SLOT(handler_clean_data_main(QString, QString)));
-    QObject::connect(systemiface,SIGNAL(clean_data_second(QString,QString)),this,SLOT(handler_clean_data_second(QString,QString)));
+//    QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
+//    QObject::connect(systemiface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
+//    QObject::connect(systemiface,SIGNAL(clean_data_main(QString,QString)),this,SLOT(handler_clean_data_main(QString, QString)));
+//    QObject::connect(systemiface,SIGNAL(clean_data_second(QString,QString)),this,SLOT(handler_clean_data_second(QString,QString)));
     QObject::connect(systemiface,SIGNAL(status_for_quick_clean(QString,QString)),this,SLOT(handler_status_for_quick_clean(QString,QString)));
 
-    QObject::connect(systemiface,SIGNAL(sudo_finish_clean(QString)),this,SLOT(handlerClearDeb(QString)));
+    QObject::connect(systemiface,SIGNAL(finish_clean(QString)),this,SLOT(handlerClearDeb(QString)));
     QObject::connect(systemiface,SIGNAL(sudo_clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
     QObject::connect(systemiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handlerSoftwareFetch(QString,QString)));
     QObject::connect(systemiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handlerSoftwareApt(QString,QString)));
@@ -306,9 +306,9 @@ void SystemDispatcher::handler_clear_rubbish_error(QString msg) {
      emit finishCleanWorkError(msg);
 }
 
-void SystemDispatcher::handler_clear_rubbish_second_error(QString msg) {
-     emit finishCleanWorkSecondError(msg);
-}
+//void SystemDispatcher::handler_clear_rubbish_second_error(QString msg) {
+//     emit finishCleanWorkSecondError(msg);
+//}
 
 void SystemDispatcher::exit_qt() {
     systemiface->call("exit");
@@ -366,17 +366,17 @@ void SystemDispatcher::handler_clear_rubbish_main_error(QString msg) {
      emit finishCleanWorkMainError(msg);
 }
 
-void SystemDispatcher::handler_clear_rubbish_second_onekey(QString msg) {
-     emit finishCleanWorkSecond(msg);
-}
+//void SystemDispatcher::handler_clear_rubbish_second_onekey(QString msg) {
+//     emit finishCleanWorkSecond(msg);
+//}
 
-void SystemDispatcher::handler_clean_data_main(QString type, QString msg) {
-    emit finishCleanDataMain(type, msg);
-}
+//void SystemDispatcher::handler_clean_data_main(QString type, QString msg) {
+//    emit finishCleanDataMain(type, msg);
+//}
 
-void SystemDispatcher::handler_clean_data_second(QString type, QString msg) {
-    emit finishCleanDataSecond(type, msg);
-}
+//void SystemDispatcher::handler_clean_data_second(QString type, QString msg) {
+//    emit finishCleanDataSecond(type, msg);
+//}
 
 void SystemDispatcher::handler_status_for_quick_clean(QString type, QString status) {
     emit quickCleanProcess(type, status);
@@ -474,10 +474,10 @@ void SystemDispatcher::clean_system_history_qt() {
     thread->start();
 }
 
-void SystemDispatcher::clean_dash_history_qt() {
-    KThread *thread = new KThread(tmplist, systemiface, "clean_dash_history");
-    thread->start();
-}
+//void SystemDispatcher::clean_dash_history_qt() {
+//    KThread *thread = new KThread(tmplist, systemiface, "clean_dash_history");
+//    thread->start();
+//}
 
 void SystemDispatcher::cookies_clean_record_function_qt(QString flag, QString website) {
     QStringList strlist;

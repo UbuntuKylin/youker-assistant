@@ -264,6 +264,11 @@ class SessionDaemon(dbus.service.Object):
             figure = -1
         return figure
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def history_scan_function(self, flag):
+        historyfunc_obj = cleaner.CleanTheHistory()
+        historyfunc_obj.new_get_history_crufts(flag, self)
+
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     #def scan_history_records(self):
     #    daemonhistory = cleaner.CleanTheHistory(None)
@@ -394,6 +399,14 @@ class SessionDaemon(dbus.service.Object):
     def data_transmit_by_cookies(self, flag, domain, num):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='i')
+    def data_transmit_by_history(self, num):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def browser_status_by_history(self, status):
+        pass
+
     @dbus.service.signal(INTERFACE, signature='ss')
     def data_transmit_by_large(self, size, filepath):
         pass
@@ -410,17 +423,21 @@ class SessionDaemon(dbus.service.Object):
     def cookies_transmit_complete(self, msg):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='s')
+    def history_transmit_complete(self, msg):
+        pass
+
     @dbus.service.signal(INTERFACE, signature='')
     def large_transmit_complete(self):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def deb_exists_firefox(self, msg):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='s')
+    #def deb_exists_firefox(self, msg):
+    #    pass
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def deb_exists_chromium(self, msg):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='s')
+    #def deb_exists_chromium(self, msg):
+    #    pass
 
     @dbus.service.signal(INTERFACE, signature='ss')
     def total_data_transmit(self, flag, msg):
@@ -433,11 +450,11 @@ class SessionDaemon(dbus.service.Object):
     def scan_complete_msg(self, para):
         self.scan_complete(para)
 
-    def deb_exists_firefox_msg(self, para):
-        self.deb_exists_firefox(para)
+    #def deb_exists_firefox_msg(self, para):
+    #    self.deb_exists_firefox(para)
 
-    def deb_exists_chromium_msg(self, para):
-        self.deb_exists_chromium(para)
+    #def deb_exists_chromium_msg(self, para):
+    #    self.deb_exists_chromium(para)
 
     def display_scan_process_msg(self, para):
         self.display_scan_process(para)
