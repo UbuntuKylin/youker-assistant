@@ -224,15 +224,15 @@ void SessionDispatcher::handler_access_user_password(QString user, QString pwd) 
 //    httpauth->sendPostRequest(url, postData);
 
     //登录验证
+    QString requestData = QString("http://119.254.229.72/boxbeta/certify_get.php?name=%1&password=%2").arg(user).arg(pwd);
 //    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=login&pp[table]=yk_member&pp[id]=2&pp[name]=fish");
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
-
-    //心跳
-
-    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=1");
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
+
+    //心跳
+//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=1");
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
 
 
 

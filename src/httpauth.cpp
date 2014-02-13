@@ -45,7 +45,7 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
     if(reply && reply->error() == QNetworkReply::NoError) {
         /*QByteArray*/QString data = reply->readAll();
         qDebug() << "Result:->";
-        qDebug() << data;
+        qDebug() << data;//"sccuss,ID:5,name:kobe,email:kobe24_lixiang@126.com"
         QStringList tmp = data.split("<br>");
 //        qDebug() << QString("%1").arg(tmp.length());
         if(tmp.at(0) == "sccuss") {
