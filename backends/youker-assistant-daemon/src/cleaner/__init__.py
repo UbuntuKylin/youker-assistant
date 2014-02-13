@@ -228,34 +228,34 @@ class CleanTheHistory():
     def __init__(self):
         pass
 
-    def new_get_history_crufts(self, flag, sesdaemon):
-        homedir = common.return_homedir_sesdaemon()
-        objhg = historyclean.HistoryClean(homedir)
-        crufts_list = []
-        cache = common.get_cache_list()
+    #def new_get_history_crufts(self, flag, sesdaemon):
+    #    homedir = common.return_homedir_sesdaemon()
+    #    objhg = historyclean.HistoryClean(homedir)
+    #    crufts_list = []
+    #    cache = common.get_cache_list()
 
-        if flag in "firefox":
-            if cache['firefox'].is_installed:
-                filepathf = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
-                if not common.process_pid("firefox"):
-                    if os.path.exists(filepathf):
-                        temp_list = objhg.scan_firefox_history_records(filepathf)
-                        sesdaemon.data_transmit_by_history(sum([sin[2] for sin in temp_list]))
-                else:
-                    sesdaemon.browser_status_by_history('fruning')
-            else:
-                sesdaemon.history_transmit_complete('funinstall')
-        if flag in "chromium":
-            if cache['chromium'].is_installed:
-                filepathc = "%s/.config/chromium/Default/History" % homedir
-                if not common.process_pid("chromium-browser"):
-                    if os.path.exists(filepathc):
-                        temp_list = objhg.scan_chromium_history_records(filepathc)
-                        sesdaemon.data_transmit_by_history(sum([sin[2] for sin in temp_list]))
-                else:
-                    sesdaemon.browser_status_by_history('cruning')
-            else:
-                sesdaemon.history_transmit_complete('cuninstall')
+    #    if flag in "firefox":
+    #        if cache['firefox'].is_installed:
+    #            filepathf = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
+    #            if not common.process_pid("firefox"):
+    #                if os.path.exists(filepathf):
+    #                    temp_list = objhg.scan_firefox_history_records(filepathf)
+    #                    sesdaemon.data_transmit_by_history(sum([sin[2] for sin in temp_list]))
+    #            else:
+    #                sesdaemon.browser_status_by_history('fruning')
+    #        else:
+    #            sesdaemon.history_transmit_complete('funinstall')
+    #    if flag in "chromium":
+    #        if cache['chromium'].is_installed:
+    #            filepathc = "%s/.config/chromium/Default/History" % homedir
+    #            if not common.process_pid("chromium-browser"):
+    #                if os.path.exists(filepathc):
+    #                    temp_list = objhg.scan_chromium_history_records(filepathc)
+    #                    sesdaemon.data_transmit_by_history(sum([sin[2] for sin in temp_list]))
+    #            else:
+    #                sesdaemon.browser_status_by_history('cruning')
+    #        else:
+    #            sesdaemon.history_transmit_complete('cuninstall')
     def get_history_crufts(self, flag):
         homedir = common.return_homedir_sesdaemon()
         objhg = historyclean.HistoryClean(homedir)
