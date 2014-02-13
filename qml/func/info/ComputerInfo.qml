@@ -83,7 +83,7 @@ Rectangle {
                     text: qsTr("Vendor: ")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: comvendorText
@@ -98,7 +98,7 @@ Rectangle {
                     text: qsTr("Model: ")//电脑型号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: comproductText
@@ -113,7 +113,7 @@ Rectangle {
                     text: qsTr("Version: ")//电脑版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: comversionText
@@ -128,7 +128,7 @@ Rectangle {
                     text: qsTr("Serial Number: ")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: comserialText
@@ -143,7 +143,7 @@ Rectangle {
                     text: qsTr("Hostname: ")//主机名：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: nodeText
@@ -158,7 +158,7 @@ Rectangle {
                     text: qsTr("Running Time: ")//持续运行时间：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: uptimeText
@@ -173,7 +173,7 @@ Rectangle {
                     text: qsTr("OS Types: ")//操作系统类型：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: systemText
@@ -188,7 +188,7 @@ Rectangle {
                     text: qsTr("OS Version: ")//操作系统版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: platformText
@@ -203,7 +203,7 @@ Rectangle {
                     text: qsTr("Kernel Bit: ")//系统位数：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: architectureText
@@ -218,7 +218,7 @@ Rectangle {
                     text: qsTr("Kernel Version: ")//内核版本：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: releaseText
@@ -233,7 +233,7 @@ Rectangle {
                     text: qsTr("Kernel Arch: ")//内核架构：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 120
+                    width: 150
                 }
                 Text {
                     id: machineText

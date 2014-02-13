@@ -93,7 +93,7 @@ Rectangle {
                     text: qsTr("CPU: ")//处理器：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: cpuversionText
@@ -108,7 +108,7 @@ Rectangle {
                     text: qsTr("Vendor: ")//制造商：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: cpuverdorText
@@ -123,7 +123,7 @@ Rectangle {
                     text: qsTr("Serial Number: ")//序列号：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: cpuserialText
@@ -138,7 +138,7 @@ Rectangle {
                     text: qsTr("Socket/Slot: ")//插座/插槽：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: slotText
@@ -153,7 +153,7 @@ Rectangle {
                     text: qsTr("Maximum Frequency: ")//最大主频：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: maxText
@@ -168,7 +168,7 @@ Rectangle {
                     text: qsTr("Current Frequency: ")//当前主频：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: curText
@@ -183,7 +183,7 @@ Rectangle {
                     text: qsTr("FSB: ")//前端总线：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: frontText
@@ -198,7 +198,7 @@ Rectangle {
                     text: qsTr("Core Number: ")//核心数目：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: coresText
@@ -213,7 +213,7 @@ Rectangle {
                     text: qsTr("L1 Cache: ")//一级缓存：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: cache1
@@ -228,7 +228,7 @@ Rectangle {
                     text: qsTr("L2 Cache: ")//二级缓存：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 130
+                    width: 150
                 }
                 Text {
                     id: cache2

@@ -1733,12 +1733,12 @@
         <translation>(正在扫描：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="520"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="521"/>
         <source>Cleanup Garbage</source>
         <translation>清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="723"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="724"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
         <translation>清理系统中的 Cookies，包含上网、购物、游戏等记录</translation>
     </message>
@@ -1765,46 +1765,46 @@
         <translation type="obsolete">清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="533"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="534"/>
         <source>Clean up system junk files, free disk space</source>
         <translation>清理系统中的垃圾文件，释放磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="543"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="558"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="640"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="656"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="733"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="749"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="544"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="559"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="641"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="657"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="734"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="750"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="550"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="647"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="740"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="551"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="648"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="741"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="554"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="652"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="745"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="555"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="653"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="746"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="617"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="618"/>
         <source>Delete History</source>
         <translation>清理历史记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="630"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="631"/>
         <source>Clean up the historical records, to protect your privacy</source>
         <translation>清理上网时留下的历史记录，保护您的个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="710"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="711"/>
         <source>Cleanup Cookies</source>
         <translation>清理 Cookies</translation>
     </message>
@@ -2043,77 +2043,94 @@
 <context>
     <name>MonitorInfo</name>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="83"/>
         <source>Monitor and Video display card</source>
-        <translation>显示器和显卡信息</translation>
+        <translation type="obsolete">显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="117"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="124"/>
         <source>Current Graphics Card: </source>
         <translation>当前显卡：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="100"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="107"/>
         <source>Graphics Card Model: </source>
         <translation>显卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="132"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="90"/>
+        <source>Graphics Card Info</source>
+        <translation>显卡信息</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="139"/>
         <source>Graphics Card Vendor: </source>
         <translation>显卡制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="147"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="154"/>
         <source>Graphics Driver: </source>
         <translation>显卡驱动：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="162"/>
         <source>Graphics Card Bus Address: </source>
-        <translation>显卡总线地址：</translation>
+        <translation type="obsolete">显卡总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="180"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="204"/>
         <source>Monitor: </source>
         <translation>显示器：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="196"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="220"/>
         <source>Vendor: </source>
         <translation>制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="212"/>
         <source>Production Date(year/week): </source>
+        <translation type="obsolete">生产日期(年/周)：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="169"/>
+        <source>Bus Address: </source>
+        <translation>显卡总线地址：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="186"/>
+        <source>Monitor Info</source>
+        <translation>显示器信息</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="236"/>
+        <source>Production(year/week): </source>
         <translation>生产日期(年/周)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="228"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="252"/>
         <source>Display Area: </source>
         <translation>可视面积：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="244"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="268"/>
         <source>Dimensions: </source>
         <translation>屏幕尺寸：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="260"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="284"/>
         <source>Max Resolution: </source>
         <translation>最大分辨率：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="276"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="300"/>
         <source>Gamma Value: </source>
         <translation>伽马值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="292"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="316"/>
         <source>Current Output: </source>
         <translation>当前接口：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="308"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="333"/>
         <source>Support Output: </source>
         <translation>支持接口：</translation>
     </message>
@@ -2517,12 +2534,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="135"/>
+        <location filename="../main.cpp" line="134"/>
         <source>starting....</source>
         <translation>优客助手正在启动中....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="138"/>
+        <location filename="../main.cpp" line="137"/>
         <source>loading module data....</source>
         <translation>正在加载模块数据....</translation>
     </message>
@@ -2619,149 +2636,64 @@
 <context>
     <name>SkinsWidget</name>
     <message>
-        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 1</source>
-        <translation type="unfinished">皮肤 1</translation>
+        <translation type="obsolete">皮肤 1</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 2</source>
-        <translation type="unfinished">皮肤 2</translation>
+        <translation type="obsolete">皮肤 2</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 3</source>
-        <translation type="unfinished">皮肤 3</translation>
+        <translation type="obsolete">皮肤 3</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 4</source>
-        <translation type="unfinished">皮肤 4</translation>
+        <translation type="obsolete">皮肤 4</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 5</source>
-        <translation type="unfinished">皮肤 5</translation>
+        <translation type="obsolete">皮肤 5</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 6</source>
-        <translation type="unfinished">皮肤 6</translation>
+        <translation type="obsolete">皮肤 6</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 7</source>
-        <translation type="unfinished">皮肤 7</translation>
+        <translation type="obsolete">皮肤 7</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 8</source>
-        <translation type="unfinished">皮肤 8</translation>
+        <translation type="obsolete">皮肤 8</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 9</source>
-        <translation type="unfinished">皮肤 9</translation>
+        <translation type="obsolete">皮肤 9</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 10</source>
-        <translation type="unfinished">皮肤 10</translation>
+        <translation type="obsolete">皮肤 10</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="40"/>
-        <source>skin 11</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="40"/>
-        <source>skin 12</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="40"/>
-        <source>skin 13</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="40"/>
-        <source>skin 14</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="40"/>
-        <source>skin 15</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="41"/>
-        <source>skin 16</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="41"/>
-        <source>skin 17</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="41"/>
-        <source>skin 18</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="41"/>
-        <source>skin 19</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="41"/>
-        <source>skin 20</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="42"/>
-        <source>skin 21</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="42"/>
-        <source>skin 22</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="42"/>
-        <source>skin 23</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="42"/>
-        <source>skin 24</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinswidget.cpp" line="73"/>
         <source>Youker Skin Center</source>
-        <translation type="unfinished">优客皮肤中心</translation>
+        <translation type="obsolete">优客皮肤中心</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="143"/>
         <source>Home</source>
-        <translation type="unfinished">首页</translation>
+        <translation type="obsolete">首页</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="144"/>
         <source>Previous</source>
-        <translation type="unfinished">上一页</translation>
+        <translation type="obsolete">上一页</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="145"/>
         <source>Next</source>
-        <translation type="unfinished">下一页</translation>
+        <translation type="obsolete">下一页</translation>
     </message>
     <message>
-        <location filename="../skinswidget.cpp" line="146"/>
         <source>Last</source>
-        <translation type="unfinished">末页</translation>
+        <translation type="obsolete">末页</translation>
     </message>
 </context>
 <context>

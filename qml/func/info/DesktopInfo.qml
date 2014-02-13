@@ -65,7 +65,7 @@ Rectangle {
                     text: qsTr("Desktop Environment: ")//桌面环境：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 140
+                    width: 150
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("desktopenvironment")
@@ -79,7 +79,7 @@ Rectangle {
                     text: qsTr("Distribution: ")//发行版：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 140
+                    width: 150
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("distribution")
@@ -93,7 +93,7 @@ Rectangle {
                     text: qsTr("Language: ")//语言：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 140
+                    width: 150
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("language")
@@ -108,7 +108,7 @@ Rectangle {
                     text: qsTr("User: ")//当前用户：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 140
+                    width: 150
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("currrent_user")
@@ -122,7 +122,7 @@ Rectangle {
                     text: qsTr("Home Folder: ")//用户主目录：
                     font.pixelSize: 14
                     color: "#7a7a7a"
-                    width: 140
+                    width: 150
                 }
                 Text {
                     text: sessiondispatcher.getSingleInfo("home_path")
