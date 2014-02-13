@@ -1728,12 +1728,17 @@
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="489"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="442"/>
+        <source>(Scan to:  </source>
+        <translation>(正在扫描：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/LeftPage.qml" line="520"/>
         <source>Cleanup Garbage</source>
         <translation>清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="692"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="723"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
         <translation>清理系统中的 Cookies，包含上网、购物、游戏等记录</translation>
     </message>
@@ -1747,12 +1752,11 @@
         <translation>一键帮您清理系统中的 Cookies、垃圾、痕迹和插件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="401"/>
         <source>Scan to:  </source>
-        <translation>扫描到：</translation>
+        <translation type="obsolete">扫描到：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="416"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="420"/>
         <source>Quick Cleanup</source>
         <translation>一键清理项目</translation>
     </message>
@@ -1761,46 +1765,46 @@
         <translation type="obsolete">清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="502"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="533"/>
         <source>Clean up system junk files, free disk space</source>
         <translation>清理系统中的垃圾文件，释放磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="512"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="527"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="609"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="625"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="702"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="718"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="543"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="558"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="640"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="656"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="733"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="749"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="519"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="616"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="709"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="550"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="647"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="740"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="523"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="621"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="714"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="554"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="652"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="745"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="586"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="617"/>
         <source>Delete History</source>
         <translation>清理历史记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="599"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="630"/>
         <source>Clean up the historical records, to protect your privacy</source>
         <translation>清理上网时留下的历史记录，保护您的个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="679"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="710"/>
         <source>Cleanup Cookies</source>
         <translation>清理 Cookies</translation>
     </message>
@@ -1871,29 +1875,26 @@
         <translation>登录</translation>
     </message>
     <message>
-        <location filename="../logindialog.ui" line="73"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Passwd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../logindialog.ui" line="89"/>
+        <location filename="../logindialog.ui" line="76"/>
         <source>Forum account password</source>
         <translation>论坛帐号的密码</translation>
     </message>
     <message>
-        <location filename="../logindialog.ui" line="121"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用户名&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用户名&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../logindialog.ui" line="137"/>
+        <location filename="../logindialog.ui" line="111"/>
         <source>Forum account username</source>
         <translation>论坛帐号的用户名</translation>
     </message>
     <message>
-        <location filename="../logindialog.ui" line="150"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ubuntu Kylin forum account  login &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ubuntu Kylin 论坛帐号登录 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ubuntu Kylin 论坛帐号登录 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -2193,76 +2194,76 @@
 <context>
     <name>NICInfo</name>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="68"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="75"/>
         <source>NIC Info</source>
         <translation>有线网卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="86"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="93"/>
         <source>NIC Model:</source>
         <translation>有线网卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="103"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="259"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="110"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="269"/>
         <source>Vendor:</source>
         <translation>制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="118"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="125"/>
         <source>NIC Driver:</source>
         <translation>有线网卡驱动：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="133"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="289"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="140"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="301"/>
         <source>Bus Address:</source>
         <translation>总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="148"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="304"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="155"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="317"/>
         <source>Device Name:</source>
         <translation>设备名称：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="163"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="320"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="170"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="334"/>
         <source>IP Address:</source>
         <translation>IP地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="178"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="185"/>
         <source>Mac Address:</source>
         <translation>MAC地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="193"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="200"/>
         <source>Connection Status: </source>
         <translation>连接状态：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="208"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="215"/>
         <source>Max Bandwidth: </source>
         <translation>最大带宽：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="224"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="232"/>
         <source>WLan NIC Info</source>
         <translation>无线网卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="242"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="251"/>
         <source>WLan NIC Model:</source>
         <translation>网卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="274"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="285"/>
         <source>WLan NIC Driver:</source>
         <translation>无线网卡驱动：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="335"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="351"/>
         <source>Serial Number: </source>
         <translation>序列号：</translation>
     </message>
@@ -2275,8 +2276,8 @@
         <translation>正在进行：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="67"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="932"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="61"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="926"/>
         <source>Software operation schedule</source>
         <translation>软件介绍</translation>
     </message>
@@ -2289,13 +2290,13 @@
         <translation type="obsolete">清理软件安装过程中捆绑安装的依赖程序或旧内核包，提高系统性能</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="142"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="182"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="315"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="340"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="388"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="409"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="529"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="136"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="176"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="309"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="334"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="382"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="403"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="523"/>
         <source>Uninstall unnecessary procedures</source>
         <translation>卸载不必要的程序</translation>
     </message>
@@ -2304,13 +2305,13 @@
         <translation type="obsolete">可以根据扫描结果选择性地清理安装程序，让系统更瘦。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="146"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="186"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="319"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="356"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="393"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="430"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="533"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="140"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="180"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="313"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="350"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="387"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="424"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="527"/>
         <source>Uninstall old kernel packages</source>
         <translation>卸载旧内核包</translation>
     </message>
@@ -2319,14 +2320,14 @@
         <translation type="obsolete">可以根据扫描结果选择性地清理旧内核包，让系统更瘦。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="256"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="624"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="632"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="250"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="618"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="626"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="256"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="250"/>
         <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
@@ -2335,73 +2336,73 @@
         <translation type="obsolete">扫描内容为空，无需清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="104"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="98"/>
         <source>Uninstall unnecessary procedures, old kernel packages and configfile</source>
         <translation>卸载不必要的程序，旧内核包和软件配置文件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="105"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="99"/>
         <source>Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance</source>
         <translation>清理软件安装过程中捆绑安装的依赖程序，旧内核包和软件配置文件，提高系统性能</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="150"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="190"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="323"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="372"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="414"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="435"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="537"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="144"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="184"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="317"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="366"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="408"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="429"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="531"/>
         <source>Cleanup software configfile</source>
         <translation>清理软件配置文件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="264"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="258"/>
         <source>Scan completed!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="270"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="887"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="264"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="881"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="291"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="285"/>
         <source>Cleanup abnormal!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="301"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="295"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="305"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="299"/>
         <source>Cleared</source>
         <translation>清理完毕</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="504"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="498"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="558"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="894"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="901"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="908"/>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="915"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="552"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="888"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="895"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="902"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="909"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="624"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="618"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
         <translation>对不起，您没有选择需要扫描的内容，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/PackageModel.qml" line="632"/>
+        <location filename="../../qml/func/cleaner/PackageModel.qml" line="626"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的内容，请确认！</translation>
     </message>
@@ -2537,47 +2538,72 @@
 <context>
     <name>RightPage</name>
     <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="39"/>
+        <source>Network Error!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="42"/>
+        <source>No User!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../qml/func/others/RightPage.qml" line="45"/>
+        <source>Password Wrong!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="48"/>
+        <source>Login Failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="63"/>
         <source>DeadpixelTest</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="46"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="64"/>
         <source>DesktopIcon</source>
         <translation>桌面图标</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="47"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="65"/>
         <source>BootAnimation</source>
         <translation>开机动画</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="48"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="66"/>
         <source>SysSounds</source>
         <translation>系统声音</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="49"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="67"/>
         <source>MousePointer</source>
         <translation>鼠标指针</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="50"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
         <source>Touchpad</source>
         <translation>触摸板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="203"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="132"/>
+        <source>Logging...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="239"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="213"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="249"/>
         <source>Features</source>
         <translation>新版本特性</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="224"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="260"/>
         <source>Report Bugs</source>
         <translation>Bug提交</translation>
     </message>
@@ -2585,7 +2611,7 @@
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="700"/>
+        <location filename="../sessiondispatcher.cpp" line="887"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -2593,64 +2619,149 @@
 <context>
     <name>SkinsWidget</name>
     <message>
+        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 1</source>
-        <translation type="obsolete">皮肤 1</translation>
+        <translation type="unfinished">皮肤 1</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 2</source>
-        <translation type="obsolete">皮肤 2</translation>
+        <translation type="unfinished">皮肤 2</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 3</source>
-        <translation type="obsolete">皮肤 3</translation>
+        <translation type="unfinished">皮肤 3</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 4</source>
-        <translation type="obsolete">皮肤 4</translation>
+        <translation type="unfinished">皮肤 4</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="38"/>
         <source>skin 5</source>
-        <translation type="obsolete">皮肤 5</translation>
+        <translation type="unfinished">皮肤 5</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 6</source>
-        <translation type="obsolete">皮肤 6</translation>
+        <translation type="unfinished">皮肤 6</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 7</source>
-        <translation type="obsolete">皮肤 7</translation>
+        <translation type="unfinished">皮肤 7</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 8</source>
-        <translation type="obsolete">皮肤 8</translation>
+        <translation type="unfinished">皮肤 8</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 9</source>
-        <translation type="obsolete">皮肤 9</translation>
+        <translation type="unfinished">皮肤 9</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="39"/>
         <source>skin 10</source>
-        <translation type="obsolete">皮肤 10</translation>
+        <translation type="unfinished">皮肤 10</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="40"/>
+        <source>skin 11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="40"/>
+        <source>skin 12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="40"/>
+        <source>skin 13</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="40"/>
+        <source>skin 14</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="40"/>
+        <source>skin 15</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="41"/>
+        <source>skin 16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="41"/>
+        <source>skin 17</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="41"/>
+        <source>skin 18</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="41"/>
+        <source>skin 19</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="41"/>
+        <source>skin 20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="42"/>
+        <source>skin 21</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="42"/>
+        <source>skin 22</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="42"/>
+        <source>skin 23</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="42"/>
+        <source>skin 24</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinswidget.cpp" line="73"/>
         <source>Youker Skin Center</source>
-        <translation type="obsolete">优客皮肤中心</translation>
+        <translation type="unfinished">优客皮肤中心</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="143"/>
         <source>Home</source>
-        <translation type="obsolete">首页</translation>
+        <translation type="unfinished">首页</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="144"/>
         <source>Previous</source>
-        <translation type="obsolete">上一页</translation>
+        <translation type="unfinished">上一页</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="145"/>
         <source>Next</source>
-        <translation type="obsolete">下一页</translation>
+        <translation type="unfinished">下一页</translation>
     </message>
     <message>
+        <location filename="../skinswidget.cpp" line="146"/>
         <source>Last</source>
-        <translation type="obsolete">末页</translation>
+        <translation type="unfinished">末页</translation>
     </message>
 </context>
 <context>
@@ -3158,7 +3269,7 @@
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="453"/>
+        <location filename="../systemdispatcher.cpp" line="454"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
@@ -3167,29 +3278,29 @@
         <translation type="obsolete">图像文件  (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="453"/>
+        <location filename="../systemdispatcher.cpp" line="454"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation>图像文件  (*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="458"/>
+        <location filename="../systemdispatcher.cpp" line="459"/>
         <source>Select music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="458"/>
+        <location filename="../systemdispatcher.cpp" line="459"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="991"/>
-        <location filename="../systemdispatcher.cpp" line="1011"/>
+        <location filename="../systemdispatcher.cpp" line="992"/>
+        <location filename="../systemdispatcher.cpp" line="1012"/>
         <source>Warning:</source>
         <translation>警告：</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="992"/>
-        <location filename="../systemdispatcher.cpp" line="1012"/>
+        <location filename="../systemdispatcher.cpp" line="993"/>
+        <location filename="../systemdispatcher.cpp" line="1013"/>
         <source>No find the softlist file!</source>
         <translation>没有找到软件列表文件！</translation>
     </message>
@@ -3683,17 +3794,17 @@
         <translation>0%</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="123"/>
+        <location filename="../tray.cpp" line="133"/>
         <source>Hide/Show window</source>
         <translation>隐藏/显示主界面</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="125"/>
+        <location filename="../tray.cpp" line="135"/>
         <source>Hide/Show monitor</source>
         <translation>隐藏/显示监控球</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="130"/>
+        <location filename="../tray.cpp" line="140"/>
         <source>&amp;Exit</source>
         <translation>退出(&amp;E)</translation>
     </message>

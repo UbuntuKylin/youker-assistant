@@ -257,7 +257,7 @@ Rectangle {
     Row {
         id: myrow
         spacing: 10
-        anchors { top: parent.top; topMargin: 35; left: parent.left; leftMargin: 30 }
+        anchors { top: parent.top; topMargin: 45; left: parent.left; leftMargin: 30 }
         Image {//静态图片
             id: staticImage//staticImage
             visible: true
@@ -389,48 +389,79 @@ Rectangle {
         }
     }//Row
 
-    Column {
-        id: scanColumn
-        anchors { top: parent.top; topMargin: 150; left: parent.left; leftMargin: 30 }
-        spacing: 20
-        Row {
-            spacing: 10
-            Text {
-                id: showLabel
-                width: 50
-                visible: false
-                text: qsTr("Scan to:  ")//扫描到：
-            }
-            Text {
-                id: showText
-                width: leftbar.width - 50 - 20 * 2 - 20
-                height: 30
-                text: ""
-                wrapMode: Text.WrapAnywhere//Text.WordWrap
-                color: "green"
+//    Column {
+//        id: scanColumn
+//        anchors { top: parent.top; topMargin: 150; left: parent.left; leftMargin: 30 }
+//        spacing: 20
+//        Row {
+//            spacing: 10
+//            Text {
+//                id: showLabel
+//                width: 50
+////                visible: false
+//                visible: true
+//                font.pixelSize: 12
+//                text: qsTr("Scan to:  ")//扫描到：
+//            }
+//            Text {
+//                id: showText
+//                width: leftbar.width - 50 - 20 * 2 - 20
+//                height: 30
+//                text: ""
+//                wrapMode: Text.WrapAnywhere//Text.WordWrap
+//                color: "green"
+//            }
+//        }
+    Row{
+        spacing: 14
+        anchors { top: parent.top; topMargin: 195; left: parent.left; leftMargin: 30 }
+        Common.Label {
+            id: itemtip
+            text: qsTr("Quick Cleanup")//一键清理项目
+            font.bold: true
+            font.pixelSize: 14
+            color: "#008000"
+        }
+        Common.MainCheckBox {
+            id:mainCheck
+            checked:"true"//默认情况将所有选项都勾选上
+            //主checkbox的值改变时，当改变为true，即子checkbox全部勾选上;当改变为false，即子checkbox全部不被勾选
+            onCheckedboolChanged: {
+                garbageCheck.checked = mainCheck.checkedbool;
+                historyCheck.checked = mainCheck.checkedbool;
+                cookiesCheck.checked = mainCheck.checkedbool;
             }
         }
-        Row{
-            spacing: 10
-            Common.Label {
-                id: itemtip
-                text: qsTr("Quick Cleanup")//一键清理项目
-                font.bold: true
-                font.pixelSize: 14
-                color: "#008000"
-            }
-            Common.MainCheckBox {
-                id:mainCheck
-                checked:"true"//默认情况将所有选项都勾选上
-                //主checkbox的值改变时，当改变为true，即子checkbox全部勾选上;当改变为false，即子checkbox全部不被勾选
-                onCheckedboolChanged: {
-                    garbageCheck.checked = mainCheck.checkedbool;
-                    historyCheck.checked = mainCheck.checkedbool;
-                    cookiesCheck.checked = mainCheck.checkedbool;
-                }
+        Text {
+            id: showLabel
+            width: 50
+            visible: false
+//            visible: true
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            text: qsTr("(Scan to:  ")//扫描到：
+        }
+        Text {
+            id: showText
+            width: leftbar.width - 50 - 20 * 2 - 165
+//            height: 30
+//            text: "aazxdvxzvxczvxcvcxzvxczvvvvvvvvvvvvvvvxzcvxzcvxcvxczvxzcvxczvxzvzxcvxczvxcvxzvczxcvczcxv"
+            text:""
+            font.pixelSize: 12
+            clip: true
+//            wrapMode: Text.WrapAnywhere//Text.WordWrap
+            color: "#7a7a7a"
+            Text{
+                anchors.left: parent.right
+                anchors.top: parent.top
+                text: ")"
+                visible: showLabel.visible
+                font.pixelSize: 12
+                color: "#7a7a7a"
             }
         }
     }
+//    }
 
     //列表
     Column {
