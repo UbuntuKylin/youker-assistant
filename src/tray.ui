@@ -19,33 +19,48 @@
   <widget class="QLabel" name="uplabel">
    <property name="geometry">
     <rect>
-     <x>18</x>
+     <x>14</x>
      <y>-1</y>
-     <width>31</width>
+     <width>35</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 6pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>10K/s</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;10K/s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="downlabel">
    <property name="geometry">
     <rect>
-     <x>18</x>
+     <x>14</x>
      <y>14</y>
-     <width>31</width>
-     <height>20</height>
+     <width>35</width>
+     <height>21</height>
     </rect>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 6pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>20K/s</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;20K/s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="ratiolabel">

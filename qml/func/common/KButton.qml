@@ -44,13 +44,23 @@ Item {
         anchors.fill: parent
         source: ""
     }
+
+    //------------------------
+    ToolTip {
+        id: toolTip
+        showText: qsTr("Please use UbuntuKylin forum account...")
+        visible: false//mouseArea.pressed
+    }
+    //------------------------
+
     MouseArea {
-        id: mouseRegion
-        anchors.fill: buttonImage
+        id: mouseArea
+        anchors.fill: parent//buttonImage
         hoverEnabled: true
         onEntered: {
             if (kflag == "login") {
-                btnImg.source = btn.path + "login-hover.png"
+                btnImg.source = btn.path + "login-hover.png";
+                toolTip.visible = true;
             }
             else {
                 btnImg.source = "../../img/toolWidget/button-hover.png"
@@ -63,6 +73,7 @@ Item {
             else {
                 btnImg.source = "../../img/toolWidget/button-hover.png"
             }
+            toolTip.visible = false;
         }
         //要判断松开是鼠标位置
         onReleased: {
@@ -72,8 +83,12 @@ Item {
             else {
                 btnImg.source = "../../img/toolWidget/button-hover.png"
             }
+            toolTip.visible = false;
         }
-        onExited: { btnImg.source = "" }
+        onExited: {
+            btnImg.source = "";
+            toolTip.visible = false;
+        }
         onClicked: { btn.clicked() }
     }
 }
