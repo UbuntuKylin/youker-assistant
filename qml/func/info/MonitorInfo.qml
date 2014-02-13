@@ -43,6 +43,9 @@ Rectangle {
             gammaLabel.visible = true;
             outputLabel.visible = true;
             supportLabel.visible = true;
+            monitortitlebar.visible = true;
+            montitle.visible = true;
+            monitorlogo.visible = true;
             var vendorName = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
             monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             productText.text = systemdispatcher.getHWSingleInfo("Mon_product", "monitor");
@@ -65,6 +68,9 @@ Rectangle {
             gammaLabel.visible = false;
             outputLabel.visible = false;
             supportLabel.visible = false;
+            monitortitlebar.visible = false;
+            montitle.visible = false;
+            monitorlogo.visible = false;
         }
     }
 
@@ -189,6 +195,7 @@ Rectangle {
                     color: "#383838"
                 }
                 Common.Separator {
+                    id: montitle
                     anchors.verticalCenter: parent.verticalCenter
                     width: home.width - monitortitlebar.width - 30 * 2
                 }
