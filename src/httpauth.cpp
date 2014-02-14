@@ -13,10 +13,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include "httpauth.h"
 #include <QObject>
 #include <QDebug>
 #include <QStringList>
+
 HttpAuth::HttpAuth(QObject *parent) :
     QObject(parent)
 {
@@ -41,6 +43,19 @@ void HttpAuth::sendGetRequest(const QUrl &url) {
     mManager->get(request);
 }
 
+bool HttpAuth::isDigitStr(const QString& str/*QString str*/)
+{
+    QByteArray ba = str.toLatin1();//QString转换为char*
+    const char *s = ba.data();
+    while(*s && *s>='0' && *s<='9') s++;
+    if (*s) { //不是纯数字
+        return false;
+    }
+    else { //纯数字
+        return true;
+    }
+}
+
 void HttpAuth::replyFinished(QNetworkReply *reply){
     if(reply && reply->error() == QNetworkReply::NoError) {
         /*QByteArray*/QString data = reply->readAll();
@@ -49,9 +64,23 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
         if(data.contains(",")) {
             QStringList tmp = data.split(",");
             if(tmp.at(0).contains("=")) {
-                if (tmp.at(0).split("=").at(1) == "success") {
-                    qDebug() << "login success..........";
-                    emit this->response(tmp.at(1).split("=").at(1), tmp.at(2).split("=").at(1), tmp.at(3).split("=").at(1), tmp.at(4).split("=").at(1));
+                if (tmp.at(0).split("=").at(1) == "success") {//login success
+                    QMap<QString, QString> kmaps;
+                    for(int i=1; i<tmp.length();i++) {
+                        QStringList value = tmp.at(i).split("=");
+                        kmaps.insert(value.at(0), value.at(1));
+                    }
+                    emit this->response(kmaps.value("id"), kmaps.value("level"), kmaps.value("name"), kmaps.value("score"));
+                }
+                else if(tmp.at(0).split("=").at(1) == "search_success") {//search success
+                    QMap<QString, QString> ymaps;
+                    for(int i=1; i<tmp.length();i++) {
+                        QStringList value = tmp.at(i).split("=");
+                        if(!this->isDigitStr(value.at(0))) {
+                            ymaps.insert(value.at(0), value.at(1));
+                            emit this->refresh(ymaps.value("level"), ymaps.value("score"));
+                        }
+                    }
                 }
             }
             else {
@@ -62,7 +91,6 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
                     emit this->error(-2);
                 }
                 else if(data == "beat success,") {//每隔30分钟链接服务器成功
-                    qDebug() << "communicate success...";
                     emit this->successCommunicate();//查询当前信息，动态显示在界面上
                 }
                 else if(data == "beat fail,") {//每隔30分钟链接服务器失败
@@ -71,54 +99,10 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
             }
         }
         else if(data == "status=logout"){//正常注销
-            qDebug() << "logout success......";
+//            qDebug() << "logout success......";
         }
-//        else if() {//查询当前等级、积分成功后
-//            qDebug() << "search info success......";
-//            emit this->response(tmp.at(1).split("=").at(1), tmp.at(2).split("=").at(1), tmp.at(3).split("=").at(1), tmp.at(4).split("=").at(1));
-//        }
-
-//        qDebug() << QString("%1").arg(tmp.length());
-//        if(tmp.at(0) == "success") {
-////            qDebug() << "login success";
-//            emit this->response(/*tmp.at(1), tmp.at(2), */"1000");
-//        }
-//        else {
-////            qDebug() << "1111111111111";
-////            qDebug() << data;
-//            if(data.contains(",")/*,Qt::CaseSensitive*/) {
-//                QStringList searchData = data.split(",");
-////                qDebug() << searchData.at(0);//id=2
-//                if(searchData.at(0).contains("=")) {
-//                    QStringList idData = searchData.at(0).split("=");
-////                    qDebug() << idData.at(1);//2
-//                    if(idData.at(1).isEmpty()) {
-//                    }
-//                    else {
-//                    }
-//                }
-//            }
-//            else if(data == "no user") {
-//                emit this->error(-1);
-//            }
-//            else if(data == "no pass") {
-//                emit this->error(-2);
-//            }
-//            else if(data == "success") {
-//                qDebug() << "update success...";
-//            }
-//            else if(data == "failed") {
-//                qDebug() << "update failed...";
-//            }
-//            else if(data == "communicate success") {//每隔30分钟链接服务器成功
-//                qDebug() << "communicate success...";
-//            }
-//            else if(data == "communicate failed") {//每隔30分钟链接服务器失败
-//                emit this->failedCommunicate();
-//            }
-//        }
-    } else {
-//        qDebug() << "ERROR:->";
+    }
+    else {
 //        qDebug() << reply->errorString();//"网络不能访问"
 //        qDebug() << QString("%1").arg((int)reply->error());//99
         emit this->error((int)reply->error());//99

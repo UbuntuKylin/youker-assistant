@@ -487,14 +487,14 @@
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="48"/>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="265"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="268"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="266"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="269"/>
         <source> Minutes</source>
         <translation>分钟</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="268"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="269"/>
         <source> Hours </source>
         <translation>小时</translation>
     </message>
@@ -1875,6 +1875,11 @@
         <translation>登录</translation>
     </message>
     <message>
+        <location filename="../logindialog.ui" line="137"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Passwd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -1895,6 +1900,16 @@
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ubuntu Kylin forum account  login &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ubuntu Kylin 论坛帐号登录 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../logindialog.cpp" line="64"/>
+        <source>Please input your username!</source>
+        <translation>请输入您的用户名！</translation>
+    </message>
+    <message>
+        <location filename="../logindialog.cpp" line="71"/>
+        <source>Please input your password!</source>
+        <translation>请输入您的密码！</translation>
     </message>
 </context>
 <context>
@@ -2047,27 +2062,27 @@
         <translation type="obsolete">显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="124"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="130"/>
         <source>Current Graphics Card: </source>
         <translation>当前显卡：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="107"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="113"/>
         <source>Graphics Card Model: </source>
         <translation>显卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="90"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="96"/>
         <source>Graphics Card Info</source>
         <translation>显卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="139"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="145"/>
         <source>Graphics Card Vendor: </source>
         <translation>显卡制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="154"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="160"/>
         <source>Graphics Driver: </source>
         <translation>显卡驱动：</translation>
     </message>
@@ -2076,12 +2091,12 @@
         <translation type="obsolete">显卡总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="204"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="211"/>
         <source>Monitor: </source>
         <translation>显示器：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="220"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="227"/>
         <source>Vendor: </source>
         <translation>制造商：</translation>
     </message>
@@ -2090,47 +2105,47 @@
         <translation type="obsolete">生产日期(年/周)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="169"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="175"/>
         <source>Bus Address: </source>
         <translation>显卡总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="186"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="192"/>
         <source>Monitor Info</source>
         <translation>显示器信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="236"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="243"/>
         <source>Production(year/week): </source>
         <translation>生产日期(年/周)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="252"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="259"/>
         <source>Display Area: </source>
         <translation>可视面积：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="268"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="275"/>
         <source>Dimensions: </source>
         <translation>屏幕尺寸：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="284"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="291"/>
         <source>Max Resolution: </source>
         <translation>最大分辨率：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="300"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="307"/>
         <source>Gamma Value: </source>
         <translation>伽马值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="316"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="323"/>
         <source>Current Output: </source>
         <translation>当前接口：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="333"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="340"/>
         <source>Support Output: </source>
         <translation>支持接口：</translation>
     </message>
@@ -2557,70 +2572,70 @@
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="39"/>
         <source>Network Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>网络错误！</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="42"/>
         <source>No User!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有该用户！</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="45"/>
         <source>Password Wrong!</source>
-        <translation type="unfinished"></translation>
+        <translation>密码错误！</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="48"/>
         <source>Login Failed!</source>
-        <translation type="unfinished"></translation>
+        <translation>登录失败！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="63"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
         <source>DeadpixelTest</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="64"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="69"/>
         <source>DesktopIcon</source>
         <translation>桌面图标</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="65"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="70"/>
         <source>BootAnimation</source>
         <translation>开机动画</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="66"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="71"/>
         <source>SysSounds</source>
         <translation>系统声音</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="67"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="72"/>
         <source>MousePointer</source>
         <translation>鼠标指针</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="73"/>
         <source>Touchpad</source>
         <translation>触摸板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="132"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="137"/>
         <source>Logging...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在登录...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="239"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="326"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="249"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="336"/>
         <source>Features</source>
         <translation>新版本特性</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="260"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="347"/>
         <source>Report Bugs</source>
         <translation>Bug提交</translation>
     </message>
@@ -2628,7 +2643,7 @@
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="887"/>
+        <location filename="../sessiondispatcher.cpp" line="810"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -2766,8 +2781,12 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="99"/>
+        <source>If it takes too long to update, there may be network problems, you can click the &apos;back&apos; button in the upper left hand corner to exit the interface.</source>
+        <translation>如果太长时间没有更新完毕，这可能是网络问题，您可以点击左上角的 “返回” 按钮退出该界面。</translation>
+    </message>
+    <message>
         <source>If it takes too long to update,  there may be network problems,  you can click the ‘back’ button in the upper left hand corner to exit the interface.</source>
-        <translation>如果太长时间没有更新完毕，这可能是网络问题，您可以点击左上角的“返回”按钮退出该界面。</translation>
+        <translation type="obsolete">如果太长时间没有更新完毕，这可能是网络问题，您可以点击左上角的“返回”按钮退出该界面。</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SoftwarePage.qml" line="114"/>
@@ -3201,7 +3220,7 @@
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="454"/>
+        <location filename="../systemdispatcher.cpp" line="453"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
@@ -3210,29 +3229,29 @@
         <translation type="obsolete">图像文件  (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="454"/>
+        <location filename="../systemdispatcher.cpp" line="453"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation>图像文件  (*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="459"/>
+        <location filename="../systemdispatcher.cpp" line="458"/>
         <source>Select music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="459"/>
+        <location filename="../systemdispatcher.cpp" line="458"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="992"/>
-        <location filename="../systemdispatcher.cpp" line="1012"/>
+        <location filename="../systemdispatcher.cpp" line="991"/>
+        <location filename="../systemdispatcher.cpp" line="1011"/>
         <source>Warning:</source>
         <translation>警告：</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="993"/>
-        <location filename="../systemdispatcher.cpp" line="1013"/>
+        <location filename="../systemdispatcher.cpp" line="992"/>
+        <location filename="../systemdispatcher.cpp" line="1012"/>
         <source>No find the softlist file!</source>
         <translation>没有找到软件列表文件！</translation>
     </message>
@@ -3303,88 +3322,88 @@
         <translation>您可以根据个人喜好对系统进行全方位的定制！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="78"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="80"/>
         <source> Personalize</source>
         <translation>个性化</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="85"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="112"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="87"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="114"/>
         <source>WindowTheme</source>
         <translation>窗口主题</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="90"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="121"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="92"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="123"/>
         <source>IconSetting</source>
         <translation>图标配置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="95"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="130"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="97"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="132"/>
         <source>MousePointer</source>
         <translation>鼠标指针</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="100"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="139"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="102"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="141"/>
         <source>SoundEffect</source>
         <translation>声音效果</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="105"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="148"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="107"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="150"/>
         <source>BootAnimation</source>
         <translation>开机动画</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="174"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="178"/>
         <source> Unity</source>
         <translation>Unity</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="181"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="188"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="185"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="192"/>
         <source>Custom Launcher</source>
         <translation>自定义启动器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="212"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="218"/>
         <source> Fonts</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="219"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="236"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="225"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="242"/>
         <source>DefaultFont</source>
         <translation>默认字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="224"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="244"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="230"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="250"/>
         <source>DocumentFont</source>
         <translation>文档字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="229"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="252"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="235"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="258"/>
         <source>TitlebarFont</source>
         <translation>窗口标题栏字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="276"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="284"/>
         <source> System options</source>
         <translation>系统选项</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="283"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="295"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="291"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="303"/>
         <source>Touchpad</source>
         <translation>触摸板设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="288"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="303"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="296"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="311"/>
         <source>Dead pixel test</source>
         <translation>坏点检测</translation>
     </message>
@@ -3533,21 +3552,21 @@
     <name>TraceModel</name>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="23"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="361"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="405"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="413"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="421"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="430"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="464"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="508"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="516"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="524"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="533"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="567"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="611"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="619"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="627"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="635"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="363"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="407"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="415"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="423"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="432"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="466"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="510"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="518"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="526"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="535"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="569"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="613"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="621"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="629"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="637"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
@@ -3566,18 +3585,18 @@
         <translation>清理浏览器上网记录和系统最近打开文件记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="47"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="49"/>
         <source>Firefox is not installed!</source>
         <translation>没有安装Firefox！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="53"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="73"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="79"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="98"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="384"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="487"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="590"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="55"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="75"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="81"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="100"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="386"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="489"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="592"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
@@ -3586,119 +3605,119 @@
         <translation type="obsolete">扫描内容为空，无需清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="53"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="79"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="98"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="384"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="487"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="590"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="55"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="81"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="100"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="386"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="489"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="592"/>
         <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="58"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="84"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="103"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="60"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="86"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="105"/>
         <source>Scan completed!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="59"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="85"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="104"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="397"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="500"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="603"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="61"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="87"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="106"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="399"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="502"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="605"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="69"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="71"/>
         <source>Chromium is not installed!</source>
         <translation>没有安装Chromium！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="73"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="75"/>
         <source>Chromium is running. When the browser is running, could not perform scan or cleanup operations.</source>
         <translation>Chromium正在运行中。当它正在运行的时候，不能执行扫描或者清理操作。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="120"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="126"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="132"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="122"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="128"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="134"/>
         <source>Cleanup abnormal!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="138"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="140"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="230"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="232"/>
         <source>Clean up the Firefox Internet records</source>
         <translation>清理 Firefox 浏览器上网记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="245"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="247"/>
         <source>Clean up the Firefox history records</source>
         <translation>清理 Firefox 浏览器上网时留下的浏览痕迹</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="266"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="268"/>
         <source>Clean up the Chromium Internet records</source>
         <translation>清理 Chromium 浏览器上网记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="281"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="283"/>
         <source>Clean up the Chromium history records</source>
         <translation>清理 Chromium 浏览器上网时留下的浏览痕迹</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="303"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="305"/>
         <source>Clean up the recently opened documents records</source>
         <translation>清理最近打开文件记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="318"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="320"/>
         <source>Clean up the recently opened documents in your system, to protect your privacy</source>
         <translation>清理系统上最近打开的文件记录，保护您的个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="346"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="449"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="552"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="348"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="451"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="554"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="357"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="460"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="563"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="359"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="462"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="565"/>
         <source>Rescan</source>
         <translation>重新扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="399"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="502"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="605"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="401"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="504"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="607"/>
         <source>(Scan to </source>
         <translation>（扫描到</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="399"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="423"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="502"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="526"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="605"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="629"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="401"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="425"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="504"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="528"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="607"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="631"/>
         <source> records)</source>
         <translation>条记录）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="423"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="526"/>
-        <location filename="../../qml/func/cleaner/TraceModel.qml" line="629"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="425"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="528"/>
+        <location filename="../../qml/func/cleaner/TraceModel.qml" line="631"/>
         <source>(Have been cleared </source>
         <translation>（已清理</translation>
     </message>
@@ -3711,17 +3730,25 @@
         <translation>监控球</translation>
     </message>
     <message>
-        <location filename="../tray.ui" line="32"/>
+        <location filename="../tray.ui" line="35"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;10K/s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;10K/s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../tray.ui" line="60"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;20K/s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;20K/s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>10K/s</source>
-        <translation>10K/s</translation>
+        <translation type="obsolete">10K/s</translation>
     </message>
     <message>
-        <location filename="../tray.ui" line="48"/>
         <source>20K/s</source>
-        <translation>20K/s</translation>
+        <translation type="obsolete">20K/s</translation>
     </message>
     <message>
-        <location filename="../tray.ui" line="64"/>
+        <location filename="../tray.ui" line="79"/>
         <source>0%</source>
         <translation>0%</translation>
     </message>

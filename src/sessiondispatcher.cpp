@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include "sessiondispatcher.h"
 #include <QDebug>
 #include <QVariant>
@@ -35,6 +36,7 @@
 
 QString selectedFont;
 QString selectedFcitxFont;
+
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -58,9 +60,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     //超时计时器
     timer=new QTimer(this);
-//    qDebug() << "*********session**********";
-
-
 
 //    skin_widget = new SkinsWidget(mSettings);
 //    skinCenter = new SkinCenter();
@@ -68,7 +67,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
     QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
-    QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(handler_access_forecast_weather(QString, QString)));
+    QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(accord_flag_access_weather(QString, QString)));
     QObject::connect(sessioniface,SIGNAL(total_data_transmit(QString, QString)),this,SLOT(handler_total_data_transmit(QString,QString)));
 
     //Apt and Soft center cache
@@ -87,30 +86,32 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
 
-    QObject::connect(httpauth, SIGNAL(response(QString,QString,QString,QString)), this, SLOT(handler_access_login_success_info(QString,QString,QString,QString)));
-    QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handler_access_login_failed_info(int)));
+    //login
+    QObject::connect(httpauth, SIGNAL(response(QString,QString,QString,QString)), this, SLOT(handle_data_after_login_success(QString,QString,QString,QString)));
+    QObject::connect(httpauth, SIGNAL(refresh(QString,QString)), this, SLOT(handle_data_after_search_success(QString,QString)));
+    QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handle_data_when_login_failed(int)));
     QObject::connect(httpauth, SIGNAL(failedCommunicate()), this, SLOT(resetTimerStatus()));
     QObject::connect(httpauth, SIGNAL(successCommunicate()), this, SLOT(searchCurrentInfo()));
 }
 
 SessionDispatcher::~SessionDispatcher() {
     mSettings->sync();
-    if (mSettings != NULL)
+    if (mSettings != NULL) {
         delete mSettings;
+    }
 //    if(timer->isActive()) {
 //        timer->stop();
 //    }
     this->exit_qt();
 }
 
+//dbus服务退出
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
-//连接服务器
+//每30minutes连接服务器beat一次
 void SessionDispatcher::connectHttpServer(){
-
-    //每30minutes发送数据给服务端进行连接确认
     qDebug()<<"start to connect every 30 minutes...";
     //心跳
     QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
@@ -118,6 +119,7 @@ void SessionDispatcher::connectHttpServer(){
     httpauth->sendGetRequest(url);
 }
 
+//beat失败处理，四次beat不成功，界面的用户信息消失，改为登录界面，提示网络出错
 void SessionDispatcher::resetTimerStatus() {
     waitTime++;
     if(waitTime >= 4){
@@ -133,13 +135,18 @@ void SessionDispatcher::resetTimerStatus() {
     }
 }
 
+//查询当前的积分、等级....
 void SessionDispatcher::searchCurrentInfo() {
-    //查询当前的积分、等级....
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
+    mSettings->beginGroup("account");
+    int id = mSettings->value("id").toInt();
+    mSettings->endGroup();
+    mSettings->sync();
+    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=getall&pp[table]=yk_member&pp[id]=%1").arg(id);
+    QUrl url(requestData);
+    httpauth->sendGetRequest(url);
 }
 
+//显示SliderShow
 void SessionDispatcher::show_slider_qt() {
     sessioniface->call("display_slide_show");
 }
@@ -154,6 +161,7 @@ void SessionDispatcher::show_slider_qt() {
 //    return reply.value();
 //}
 
+//程序正常关闭之前，关闭定时器，获取id后发送退出信号给服务端
 void SessionDispatcher::ready_exit_normally() {
     //关闭定时器
     waitTime = 0;
@@ -176,42 +184,30 @@ void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库�
     emit this->ready_to_exit();//通知菜单可以退出程序了
 }
 
-void SessionDispatcher::handler_access_user_password(QString user, QString pwd) {
+//点击登录框的确定按钮后，开始发送数据给服务端进行登录验证
+void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
 //    username = user;
     //显示登录动态图
     emit showLoginAnimatedImage();
-    //发送数据给服务端进行登录验证
-//    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
-//    QUrl url("http://210.209.123.136/box/find.php");
-//    QByteArray postData;
-//    postData.append(requestData);
-//    httpauth->sendPostRequest(url, postData);
 
-    //登录验证
+    //发送数据给服务端进行登录验证
+    //method 1: get
     QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
-//    QString requestData = QString("http://119.254.229.72/boxbeta/certify_get.php?name=%1&password=%2").arg(user).arg(pwd);
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 
-    //心跳
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
-
-
-
-
-//    QString requestData = QString("%1%2%3%4%5").arg("username=").arg(user).arg("&password=").arg(pwd).arg("&hiddenFields=ifAny");
+    //method 2: post
+//    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
 //    QUrl url("http://210.209.123.136/box/find.php");
 //    QByteArray postData;
 //    postData.append(requestData);
 //    httpauth->sendPostRequest(url, postData);
 }
 
-//登录
-void SessionDispatcher::login_ubuntukylin_account(int window_x, int window_y) {
+//弹出登录框
+void SessionDispatcher::popup_login_dialog(int window_x, int window_y) {
     LoginDialog *logindialog = new LoginDialog();
-    QObject::connect(logindialog, SIGNAL(translate_user_password(QString,QString)),this, SLOT(handler_access_user_password(QString,QString)));
+    QObject::connect(logindialog, SIGNAL(translate_user_password(QString,QString)),this, SLOT(verify_user_and_password(QString,QString)));
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     logindialog->move(this->alert_x, this->alert_y);
@@ -223,7 +219,8 @@ void SessionDispatcher::logout_ubuntukylin_account() {
     this->ready_exit_normally();
 }
 
-void SessionDispatcher::handler_access_login_success_info(QString id, QString level, QString name, QString score) {
+//用户登录成功后处理数据：显示界面、id写入本地配置、开启定时器
+void SessionDispatcher::handle_data_after_login_success(QString id, QString level, QString name, QString score) {
     //登录成功后将用户信息显示在界面上
     emit updateLoginStatus(name, level, score);
 
@@ -237,24 +234,16 @@ void SessionDispatcher::handler_access_login_success_info(QString id, QString le
     waitTime = 0;
     connect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
     timer->start(60000*30);//5000
-
-
-
-    // post method
-//    QString requestData = QString("pp[type]=%1&pp[table]=yk_member&pp[dnumber]=%2&pp[id]=%3&pp[logo]=%4&pp[level]=%5&pp[score]=%6&pp[isfirststart]=%7&pp[lastlogintime]=%8&pp[lastlogouttime]=%9&pp[holdtime]=%10").arg(data_type).arg(num).arg(id).arg(logo).arg(level).arg(myscore).arg(isfirststart).arg(lastlogintime).arg(lastlogouttime).arg(holdtime);
-//    QUrl url("http://210.209.123.136/yk/find_post.php");
-//    qDebug () << requestData;
-//    QByteArray postData;
-//    postData.append(requestData);
-//    httpauth->sendPostRequest(url, postData);
-
-    // get method: search
-//    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=find&pp[table]=yk_member&pp[id]=2");
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
 }
 
-void SessionDispatcher::handler_access_login_failed_info(int status) {
+//用户查询成功后处理数据：界面刷新数据
+void SessionDispatcher::handle_data_after_search_success(QString level, QString score) {
+    //查询成功后将用户信息更新在界面上
+    emit refreshUserInfo(level, score);
+}
+
+//登录失败时，通知QML界面
+void SessionDispatcher::handle_data_when_login_failed(int status) {
     emit loginFailedStatus(status);
 }
 
@@ -283,7 +272,8 @@ QString SessionDispatcher::get_yahoo_city_id_qt(QString geonameid) {
     return reply.value();
 }
 
-void SessionDispatcher::handler_access_forecast_weather(QString key, QString value) {
+//更加相应的标记去获取需要的天气数据
+void SessionDispatcher::accord_flag_access_weather(QString key, QString value) {
     if(key == "forecast" && value == "kobe") {
         get_forecast_dict_qt();
         emit startUpdateForecastWeahter("forecast");
@@ -790,8 +780,7 @@ void SessionDispatcher::show_font_dialog(QString flag) {
         else if(flag == "titlebarfont") {
             set_window_title_font_qt(selectedFont);//set titlebarfont
         }
-        else if(flag == "fcitxfont")
-        {
+        else if(flag == "fcitxfont") {
 
         }
         selectedFont.clear();

@@ -124,6 +124,28 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="warnLabel">
+   <property name="geometry">
+    <rect>
+     <x>6</x>
+     <y>94</y>
+     <width>385</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 11pt &quot;楷体_GB2312&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
   <zorder>frame</zorder>
   <zorder>closeButton</zorder>
   <zorder>okButton</zorder>
@@ -131,6 +153,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>pwdlineEdit</zorder>
   <zorder>userlineEdit</zorder>
   <zorder>btn_min</zorder>
+  <zorder>warnLabel</zorder>
  </widget>
  <tabstops>
   <tabstop>okButton</tabstop>

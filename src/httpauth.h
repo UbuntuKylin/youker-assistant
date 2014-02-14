@@ -28,10 +28,12 @@ public:
     explicit HttpAuth(QObject *parent = 0);
     void sendPostRequest(const QUrl &url, const QByteArray &data);
     void sendGetRequest(const QUrl &url);
+    bool isDigitStr(const QString& str/*QString str*/);
 
 signals:
     void error(int errCode);
     void response(QString id, QString level, QString name, QString score);
+    void refresh(QString level, QString score);
     void successCommunicate();
     void failedCommunicate();
 

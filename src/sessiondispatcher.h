@@ -42,8 +42,8 @@ public:
     //退出前的准备工作
     void ready_exit_normally();
 
-    //登录
-    Q_INVOKABLE void login_ubuntukylin_account(int window_x, int window_y);
+    //弹出登录框
+    Q_INVOKABLE void popup_login_dialog(int window_x, int window_y);
     //退出登录
     Q_INVOKABLE void logout_ubuntukylin_account();
 
@@ -299,17 +299,20 @@ signals:
     void showLoginAnimatedImage();
     //更新登录状态
     void updateLoginStatus(QString username, QString level, QString score);
+    //刷新用户数据
+    void refreshUserInfo(QString level, QString score);
     //登录失败
     void loginFailedStatus(int status);
 
     //程序退出之前用户信息写入服务器端完毕后，告诉tray退出程序
     void ready_to_exit();
 public slots:
-    void handler_access_user_password(QString user, QString pwd);
-    void handler_access_login_success_info(QString id, QString level, QString name, QString score);
-    void handler_access_login_failed_info(int status);
+    void verify_user_and_password(QString user, QString pwd);
+    void handle_data_after_login_success(QString id, QString level, QString name, QString score);
+    void handle_data_after_search_success(QString level, QString score);
+    void handle_data_when_login_failed(int status);
     //获取天气预报槽函数
-    void handler_access_forecast_weather(QString key, QString value);
+    void accord_flag_access_weather(QString key, QString value);
     //扫描完成槽函数
     void handler_scan_complete(QString msg);
     //扫描过程的函数

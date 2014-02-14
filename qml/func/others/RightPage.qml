@@ -56,6 +56,10 @@ Rectangle {
             scoreText.text = score;
             rightbar.state = "OnLine";
         }
+        onRefreshUserInfo: {//刷新成功
+            levelText.text = "Lv" + level;
+            scoreText.text = score;
+        }
     }
 
     //更新列表
@@ -105,7 +109,7 @@ Rectangle {
             width: 216
             height: 67
             onClicked: {
-                sessiondispatcher.login_ubuntukylin_account(mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.popup_login_dialog(mainwindow.pos.x, mainwindow.pos.y);
             }
         }
     }

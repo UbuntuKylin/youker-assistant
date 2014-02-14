@@ -5,8 +5,11 @@ youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
   * Cleanup browser cache, thumbnail cache and software configfile.
   * Completed global mouse theme.
   * Modify the icon on PolicyKit Dialog.
+  * Adjust the display format of network traffic on the monitor ball.
+  * Add ToolTip.qml.
+  * Achieve the function about login with forum account.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 10 Feb 2014 11:21:15 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 14 Feb 2014 16:07:52 +0800
 
 youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
 

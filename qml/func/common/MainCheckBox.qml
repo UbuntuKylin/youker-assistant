@@ -35,12 +35,12 @@ Item {
         Image {
             id:mainimage
             anchors.fill:parent
-            source: "../../img/icons/checkbox-0.png"
+            source: "../../img/icons/checkbox.png"
         }
         Image{
             id:simage
             anchors.centerIn: mainimage
-            source: "../../img/icons/checkbox.png"
+            source: "../../img/icons/checkbox_seclect.png"
         }
     }
     MouseArea {
@@ -63,11 +63,11 @@ Item {
             }
 
             if(checked == "true") {
-                simage.source = "../../img/icons/checkbox.png";
+                simage.source = "../../img/icons/checkbox_seclect.png";
                 checkedbool = true;
             }
             else if(checked == "mid") {
-                simage.source = "../../img/icons/checkbox-2.png";
+                simage.source = "../../img/icons/checkbox_mid.png";
             }
             else if(checked=="false") {
                 simage.source = "";
@@ -79,12 +79,12 @@ Item {
     //maincheckbox.checked发生变化时激活该函数
     onCheckedChanged:{
         if(checked == "true") {
-            simage.source = "../../img/icons/checkbox.png";
+            simage.source = "../../img/icons/checkbox_seclect.png";
             checkedbool = true;
             maincheckbox.sendMstatus(true);//1212
         }
         else if(checked == "mid") {
-            simage.source = "../../img/icons/checkbox-2.png";
+            simage.source = "../../img/icons/checkbox_mid.png";
         }
         else if(checked=="false") {
             simage.source = "";

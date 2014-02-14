@@ -60,7 +60,7 @@ Item {
          }
          Common.Button {
              id: quitBtn
-             hoverimage: "gray1.png"
+             hoverimage: "gray.png"
              fontcolor:"#929292"
              fontsize: 15
              text: qsTr("Back")//返回

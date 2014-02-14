@@ -36,6 +36,9 @@ LoginDialog::LoginDialog(QWidget *parent) :
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
+    ui->warnLabel->setStyleSheet("color: #a53205;"
+                "background-color: #fcdba7");
+    ui->warnLabel->setVisible(false);
     ui->pwdlineEdit->setEchoMode(QLineEdit::Password);
     ui->userlineEdit->setFocus();
 }
@@ -54,6 +57,26 @@ void LoginDialog::on_okButton_clicked()
 {
     QString user = ui->userlineEdit->text();
     QString pwd = ui->pwdlineEdit->text();
-    emit translate_user_password(user.replace(" ", ""), pwd);
-    this->accept();
+    if(user.isEmpty()) {
+        if(!ui->warnLabel->isVisible()) {
+            ui->warnLabel->setVisible(true);
+        }
+        ui->warnLabel->setText(tr("Please input your username!"));
+    }
+    else {
+        if(pwd.isEmpty()) {
+            if(!ui->warnLabel->isVisible()) {
+                ui->warnLabel->setVisible(true);
+            }
+            ui->warnLabel->setText(tr("Please input your password!"));
+        }
+        else {
+            if(ui->warnLabel->isVisible()) {
+                ui->warnLabel->setVisible(false);
+            }
+            ui->warnLabel->setText("");
+            emit translate_user_password(user.replace(" ", ""), pwd);
+            this->accept();
+        }
+    }
 }

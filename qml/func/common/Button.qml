@@ -56,17 +56,14 @@ Item {
                 btnImg.source = "../../img/icons/blue1-hover.png"
             else if (hoverimage == "green2.png")
                 btnImg.source = "../../img/icons/green2-hover.png"
-            else if (hoverimage == "gray1.png")
-                btnImg.source = "../../img/icons/gray1-hover.png"
+            else if (hoverimage == "gray.png")
+                btnImg.source = "../../img/icons/gray-hover.png"
             else if (hoverimage == "blue2.png")
                 btnImg.source = "../../img/icons/blue2-hover.png"
             else if (hoverimage == "blue3.png")
                 btnImg.source = "../../img/icons/blue3-hover.png"
             else if (hoverimage == "blue4.png")
                 btnImg.source = "../../img/icons/blue4-hover.png"
-            else if (hoverimage == "green3.png") {
-                btnImg.source = "../../img/icons/green3-hover.png"
-            }
             else if(hoverimage == "fcitxKey.png")
                   btnImg.source = "../../img/icons/fcitxKey-hover.png"
             else if(hoverimage == "fcitxFont.png")
@@ -81,16 +78,14 @@ Item {
                 btnImg.source = "../../img/icons/blue1-hover.png"
             else if (hoverimage == "green2.png")
                 btnImg.source = "../../img/icons/green2-hover.png"
-            else if (hoverimage == "gray1.png")
-                btnImg.source = "../../img/icons/gray1-hover.png"
+            else if (hoverimage == "gray.png")
+                btnImg.source = "../../img/icons/gray-hover.png"
             else if (hoverimage == "blue2.png")
                 btnImg.source = "../../img/icons/blue2-hover.png"
             else if (hoverimage == "blue3.png")
                 btnImg.source = "../../img/icons/blue3-hover.png"
             else if (hoverimage == "blue4.png")
                 btnImg.source = "../../img/icons/blue4-hover.png"
-            else if (hoverimage == "green3.png")
-                btnImg.source = "../../img/icons/green3-hover.png"
             else
                 btnImg.source = "../../img/toolWidget/menu_press.png"
         }
@@ -102,16 +97,14 @@ Item {
                 btnImg.source = "../../img/icons/blue1.png"
             else if (hoverimage == "green2.png")
                 btnImg.source = "../../img/icons/green2.png"
-            else if (hoverimage == "gray1.png")
-                btnImg.source = "../../img/icons/gray1.png"
+            else if (hoverimage == "gray.png")
+                btnImg.source = "../../img/icons/gray.png"
             else if (hoverimage == "blue2.png")
                 btnImg.source = "../../img/icons/blue2.png"
             else if (hoverimage == "blue3.png")
                 btnImg.source = "../../img/icons/blue3.png"
             else if (hoverimage == "blue4.png")
                 btnImg.source = "../../img/icons/blue4.png"
-            else if (hoverimage == "green3.png")
-                btnImg.source = "../../img/icons/green3.png"
             else
                 btnImg.source = "../../img/toolWidget/menu_hover.png"
         }

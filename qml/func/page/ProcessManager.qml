@@ -330,7 +330,7 @@ Rectangle {
 
         //标题栏美化
         headerDelegate: BorderImage{
-            source: "../../img/icons/gray1-hover.png"
+            source: "../../img/icons/gray-hover.png"
             border{left:2;right:2;top:2;bottom:2}
             Text {
                 text: itemValue
