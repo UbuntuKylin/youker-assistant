@@ -59,8 +59,8 @@ bool HttpAuth::isDigitStr(const QString& str/*QString str*/)
 void HttpAuth::replyFinished(QNetworkReply *reply){
     if(reply && reply->error() == QNetworkReply::NoError) {
         /*QByteArray*/QString data = reply->readAll();
-        qDebug() << "Result:->";
-        qDebug() << data;//status=success,id=5,level=0,name=kobe,score=5,isfirststart=0,lastlogintime=2014-02-13 16:41:05,lastlogouttime=2014-02-13 16:41:05,holdtime=0
+//        qDebug() << "Result:->";
+//        qDebug() << data;//status=success,id=5,level=0,name=kobe,score=5,isfirststart=0,lastlogintime=2014-02-13 16:41:05,lastlogouttime=2014-02-13 16:41:05,holdtime=0
         if(data.contains(",")) {
             QStringList tmp = data.split(",");
             if(tmp.at(0).contains("=")) {

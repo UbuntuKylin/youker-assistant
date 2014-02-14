@@ -2062,41 +2062,37 @@
         <translation type="obsolete">显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="130"/>
         <source>Current Graphics Card: </source>
-        <translation>当前显卡：</translation>
+        <translation type="obsolete">当前显卡：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="113"/>
         <source>Graphics Card Model: </source>
-        <translation>显卡型号：</translation>
+        <translation type="obsolete">显卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="96"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="274"/>
         <source>Graphics Card Info</source>
         <translation>显卡信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="145"/>
         <source>Graphics Card Vendor: </source>
-        <translation>显卡制造商：</translation>
+        <translation type="obsolete">显卡制造商：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="160"/>
         <source>Graphics Driver: </source>
-        <translation>显卡驱动：</translation>
+        <translation type="obsolete">显卡驱动：</translation>
     </message>
     <message>
         <source>Graphics Card Bus Address: </source>
         <translation type="obsolete">显卡总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="211"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="519"/>
         <source>Monitor: </source>
         <translation>显示器：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="227"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="536"/>
         <source>Vendor: </source>
         <translation>制造商：</translation>
     </message>
@@ -2105,47 +2101,91 @@
         <translation type="obsolete">生产日期(年/周)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="175"/>
         <source>Bus Address: </source>
-        <translation>显卡总线地址：</translation>
+        <translation type="obsolete">显卡总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="192"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="48"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="62"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="80"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="97"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="124"/>
+        <source>Graphics Card Model:</source>
+        <translation>显卡型号：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="49"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="63"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="81"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="98"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="125"/>
+        <source>Current Graphics Card:</source>
+        <translation>当前显卡：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="50"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="64"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="82"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="99"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="126"/>
+        <source>Graphics Card Vendor:</source>
+        <translation>显卡制造商：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="51"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="65"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="83"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="100"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="127"/>
+        <source>Graphics Driver:</source>
+        <translation>显卡驱动：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="52"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="66"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="84"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="101"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="128"/>
+        <source>Bus Address:</source>
+        <translation>总线地址：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="499"/>
         <source>Monitor Info</source>
         <translation>显示器信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="243"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="552"/>
         <source>Production(year/week): </source>
         <translation>生产日期(年/周)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="259"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="568"/>
         <source>Display Area: </source>
         <translation>可视面积：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="275"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="584"/>
         <source>Dimensions: </source>
         <translation>屏幕尺寸：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="291"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="600"/>
         <source>Max Resolution: </source>
         <translation>最大分辨率：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="307"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="616"/>
         <source>Gamma Value: </source>
         <translation>伽马值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="323"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="632"/>
         <source>Current Output: </source>
         <translation>当前接口：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="340"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="649"/>
         <source>Support Output: </source>
         <translation>支持接口：</translation>
     </message>
