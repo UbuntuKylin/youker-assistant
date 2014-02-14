@@ -22,16 +22,120 @@ import "./InfoGroup.js" as InfoGroup
 Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
+    property int itemNum: 5//每个模块的子项个数
+    property bool firstFlag: false
+    property bool secondFlag: false
+    property bool thirdFlag: false
+    property bool fourthFlag: false
+    ListModel {id: firstModel}
+    ListModel {id: secondModel}
+    ListModel {id: thirdModel}
+    ListModel {id: fourthModel}
+
+    function show_several_monitor(num)
+    {
+        var Vgaproduct = systemdispatcher.getHWSingleInfo("Vga_product", "monitor").split("<1_1>");//显卡型号：
+        var Monchip = systemdispatcher.getHWSingleInfo("Mon_chip", "monitor").split("<1_1>");//当前显卡：
+        var Vgavendor = systemdispatcher.getHWSingleInfo("Vga_vendor", "monitor").split("<1_1>");//显卡制造商：
+        var VgaDrive = systemdispatcher.getHWSingleInfo("Vga_Drive", "monitor").split("<1_1>");//显卡驱动：
+        var Vgabusinfo = systemdispatcher.getHWSingleInfo("Vga_businfo", "monitor").split("<1_1>");//显卡总线地址：
+
+        //--------------first--------------
+        home.firstFlag = true;
+        firstView.visible = true;
+        firstModel.clear();
+
+        firstModel.append({"title": qsTr("Graphics Card Model:"), "result": Vgaproduct[0]});//显卡型号：
+        firstModel.append({"title": qsTr("Current Graphics Card:"), "result": Monchip[0]});//当前显卡：
+        firstModel.append({"title": qsTr("Graphics Card Vendor:"), "result": Vgavendor[0]});//显卡制造商：
+        firstModel.append({"title": qsTr("Graphics Driver:"), "result": VgaDrive[0]});//显卡驱动：
+        firstModel.append({"title": qsTr("Bus Address:"), "result": Vgabusinfo[0]});//显卡总线地址：
+
+//        splitbar1.visible = true;
+        logo1.visible = true;
+        logo1.source = InfoGroup.judgeName(Vgavendor[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        //--------------second--------------
+        home.secondFlag = true;
+        secondView.visible = true;
+        secondModel.clear();
+
+        secondModel.append({"title": qsTr("Graphics Card Model:"), "result": Vgaproduct[1]});//显卡型号：
+        secondModel.append({"title": qsTr("Current Graphics Card:"), "result": Monchip[1]});//当前显卡：
+        secondModel.append({"title": qsTr("Graphics Card Vendor:"), "result": Vgavendor[1]});//显卡制造商：
+        secondModel.append({"title": qsTr("Graphics Driver:"), "result": VgaDrive[1]});//显卡驱动：
+        secondModel.append({"title": qsTr("Bus Address:"), "result": Vgabusinfo[1]});//显卡总线地址：
+        splitbar2.visible = true;
+        logo2.visible = true;
+        logo2.source = InfoGroup.judgeName(Vgavendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        if(num == 2) {
+            //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+            listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *2-20;
+        }
+        else if(num >= 3) {
+            //--------------third--------------
+            home.thirdFlag = true;
+            thirdView.visible = true;
+            thirdModel.clear();
+
+            thirdModel.append({"title": qsTr("Graphics Card Model:"), "result": Vgaproduct[2]});//显卡型号：
+            thirdModel.append({"title": qsTr("Current Graphics Card:"), "result": Monchip[2]});//当前显卡：
+            thirdModel.append({"title": qsTr("Graphics Card Vendor:"), "result": Vgavendor[2]});//显卡制造商：
+            thirdModel.append({"title": qsTr("Graphics Driver:"), "result": VgaDrive[2]});//显卡驱动：
+            thirdModel.append({"title": qsTr("Bus Address:"), "result": Vgabusinfo[2]});//显卡总线地址：
+            splitbar3.visible = true;
+            logo3.visible = true;
+            logo3.source = InfoGroup.judgeName(Vgavendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            if(num == 3) {
+                //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *3-20;
+            }
+            else if(num == 4) {
+                home.fourthFlag = true;
+                fourthView.visible = true;
+                fourthModel.clear();
+
+                fourthModel.append({"title": qsTr("Graphics Card Model:"), "result": Vgaproduct[3]});//显卡型号：
+                fourthModel.append({"title": qsTr("Current Graphics Card:"), "result": Monchip[3]});//当前显卡：
+                fourthModel.append({"title": qsTr("Graphics Card Vendor:"), "result": Vgavendor[3]});//显卡制造商：
+                fourthModel.append({"title": qsTr("Graphics Driver:"), "result": VgaDrive[3]});//显卡驱动：
+                fourthModel.append({"title": qsTr("Bus Address:"), "result": Vgabusinfo[3]});//显卡总线地址：
+                splitbar4.visible = true;
+                logo4.visible = true;
+                logo4.source = InfoGroup.judgeName(Vgavendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *4-20;
+            }
+        }
+    }
 
     Component.onCompleted: {
-        systemdispatcher.get_monitor_info_qt();//获取详细信息
-        chipText.text = systemdispatcher.getHWSingleInfo("Mon_chip", "monitor");
-        chipmodelText.text = systemdispatcher.getHWSingleInfo("Vga_product", "monitor");
-        var cardVendor = systemdispatcher.getHWSingleInfo("Vga_vendor", "monitor");
-        chipvendorText.text = cardVendor;
-        driverText.text = systemdispatcher.getHWSingleInfo("Vga_Drive", "monitor");
-        cardlogo.source = InfoGroup.judgeName(cardVendor.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cardVendor.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-        chipbusText.text = systemdispatcher.getHWSingleInfo("Vga_businfo", "monitor");
+        systemdispatcher.get_monitor_info_qt();//获取光驱详细信息
+        home.firstFlag = false;
+        home.secondFlag = false;
+        home.thirdFlag = false;
+        home.fourthFlag = false;
+//        systemdispatcher.get_audiocard_info_qt();//获取详细信息
+        var num = systemdispatcher.getHWSingleInfo("Vga_num", "monitor");
+        if(num == 1) {
+            home.firstFlag = true;
+            firstView.visible = true;
+            var vendorName = systemdispatcher.getHWSingleInfo("Vga_vendor", "monitor");//制造商
+            firstModel.clear();
+            firstModel.append({"title": qsTr("Graphics Card Model:"), "result": systemdispatcher.getHWSingleInfo("Vga_product", "monitor")});//显卡型号：
+            firstModel.append({"title": qsTr("Current Graphics Card:"), "result": systemdispatcher.getHWSingleInfo("Mon_chip", "monitor")});//当前显卡：
+            firstModel.append({"title": qsTr("Graphics Card Vendor:"), "result": vendorName});//显卡制造商：
+            firstModel.append({"title": qsTr("Graphics Driver:"), "result": systemdispatcher.getHWSingleInfo("Vga_Drive", "monitor")});//显卡驱动：
+            firstModel.append({"title": qsTr("Bus Address:"), "result": systemdispatcher.getHWSingleInfo("Vga_businfo", "monitor")});//显卡总线地址：
+//            splitbar1.visible = true;
+            logo1.visible = true;
+            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
+            listItem.height = home.itemNum*20 + (home.itemNum - 1)*10 ;
+        }
+        else if(num >= 2){
+            home.show_several_monitor(num);
+        }
+
         var vendor = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
         if(vendor.length !== 0 ) {
             productLabel.visible = true;
@@ -74,6 +178,80 @@ Rectangle {
         }
     }
 
+//    Component.onCompleted: {
+//        systemdispatcher.get_monitor_info_qt();//获取详细信息
+//        chipText.text = systemdispatcher.getHWSingleInfo("Mon_chip", "monitor");
+//        chipmodelText.text = systemdispatcher.getHWSingleInfo("Vga_product", "monitor");
+//        var cardVendor = systemdispatcher.getHWSingleInfo("Vga_vendor", "monitor");
+//        chipvendorText.text = cardVendor;
+//        driverText.text = systemdispatcher.getHWSingleInfo("Vga_Drive", "monitor");
+//        cardlogo.source = InfoGroup.judgeName(cardVendor.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cardVendor.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        chipbusText.text = systemdispatcher.getHWSingleInfo("Vga_businfo", "monitor");
+//        var vendor = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
+//        if(vendor.length !== 0 ) {
+//            productLabel.visible = true;
+//            vendorLabel.visible = true;
+//            dateLabel.visible = true;
+//            sizeLabel.visible = true;
+//            inLabel.visible = true;
+//            maxmodeLabel.visible = true;
+//            gammaLabel.visible = true;
+//            outputLabel.visible = true;
+//            supportLabel.visible = true;
+//            monitortitlebar.visible = true;
+//            montitle.visible = true;
+//            monitorlogo.visible = true;
+//            var vendorName = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
+//            monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//            productText.text = systemdispatcher.getHWSingleInfo("Mon_product", "monitor");
+//            vendorText.text = vendorName;
+//            dateText.text = systemdispatcher.getHWSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getHWSingleInfo("Mon_week", "monitor");
+//            sizeText.text = systemdispatcher.getHWSingleInfo("Mon_size", "monitor");
+//            inText.text = systemdispatcher.getHWSingleInfo("Mon_in", "monitor");
+//            maxmodeText.text = systemdispatcher.getHWSingleInfo("Mon_maxmode", "monitor");
+//            gammaText.text = systemdispatcher.getHWSingleInfo("Mon_gamma", "monitor");
+//            outputText.text = systemdispatcher.getHWSingleInfo("Mon_output", "monitor");
+//            supportText.text = systemdispatcher.getHWSingleInfo("Mon_support", "monitor");
+//        }
+//        else {
+//            productLabel.visible = false;
+//            vendorLabel.visible = false;
+//            dateLabel.visible = false;
+//            sizeLabel.visible = false;
+//            inLabel.visible = false;
+//            maxmodeLabel.visible = false;
+//            gammaLabel.visible = false;
+//            outputLabel.visible = false;
+//            supportLabel.visible = false;
+//            monitortitlebar.visible = false;
+//            montitle.visible = false;
+//            monitorlogo.visible = false;
+//        }
+//    }
+
+    Component {
+        id: monitorDelegate
+        Row {
+            spacing: 10
+            Common.Label {
+                text: title
+                font.pixelSize: 14
+                color: "#7a7a7a"
+                width: 150
+                height: 20
+            }
+            Text {
+                id: slotText
+                text: result
+                width: 450
+                wrapMode: Text.WordWrap
+                font.pixelSize: 14
+                color: "#7a7a7a"
+                height: 20
+            }
+        }
+    }
+
     Common.ScrollArea {
         frame:false
         anchors.left: parent.left
@@ -107,83 +285,212 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 20
                 spacing: 10
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        text: qsTr("Graphics Card Model: ")//显卡型号：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
+                Item {
+                    id: listItem
+                    width: parent.width
+                    height: 0
+                    Column {
+                        spacing: 10
+                        anchors {
+                            left: parent.left
+//                            leftMargin: 30
+                        }
+                        Item {
+                            width: 680 - 4 - 30*2
+                            height: home.firstFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                            ListView {
+                                id: firstView
+                                anchors.fill: parent
+                                model: firstModel
+                                delegate: monitorDelegate
+                                visible: false
+                                spacing: 10
+                            }
+                            Image {
+                                id: logo1
+                                visible: false
+                                opacity: 0.5
+                                source: ""
+                                anchors {
+                                    right: parent.right
+                                    top:parent.top
+                                    topMargin: 20
+        //                            rightMargin: 30
+                                }
+                            }
+                        }
+//                        Common.Separator {
+//                            id: splitbar1
+//                            width: 680 - 4 - 30*2
+//                            visible: false
+//                        }
+                        Common.Separator {
+                            id: splitbar2
+                            width: 680 - 4 - 30*2
+                            visible: false
+                        }
+                        Item {
+                            width: 680 - 4 - 30*2
+                            height: home.secondFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                            ListView {
+                                id: secondView
+                                anchors.fill: parent
+                                model: secondModel
+                                delegate: monitorDelegate
+                                visible: false
+                                spacing: 10
+                            }
+                            Image {
+                                id: logo2
+                                visible: false
+                                opacity: 0.5
+                                source: ""
+                                anchors {
+                                    right: parent.right
+                                    top:parent.top
+                                    topMargin: 20
+        //                            rightMargin: 30
+                                }
+                            }
+                        }
+                        Common.Separator {
+                            id: splitbar3
+                            width: 680 - 4 - 30*2
+                            visible: false
+                        }
+                        Item {
+                            width: 680 - 4 - 30*2
+                            height: home.thirdFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                            ListView {
+                                id: thirdView
+                                anchors.fill: parent
+                                model: thirdModel
+                                delegate: monitorDelegate
+                                visible: false
+                                spacing: 10
+                            }
+                            Image {
+                                id: logo3
+                                visible: false
+                                opacity: 0.5
+                                source: ""
+                                anchors {
+                                    right: parent.right
+                                    top:parent.top
+                                    topMargin: 20
+        //                            rightMargin: 30
+                                }
+                            }
+                        }
+                        Common.Separator {
+                            id: splitbar4
+                            width: 680 - 4 - 30*2
+                            visible: false
+                        }
+                        Item {
+                            width: 680 - 4 - 30*2
+                            height: home.fourthFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                            ListView {
+                                id: fourthView
+                                anchors.fill: parent
+                                model: fourthModel
+                                delegate: monitorDelegate
+                                visible: false
+                                spacing: 10
+                            }
+                            Image {
+                                id: logo4
+                                visible: false
+                                opacity: 0.5
+                                source: ""
+                                anchors {
+                                    right: parent.right
+                                    top:parent.top
+                                    topMargin: 20
+        //                            rightMargin: 30
+                                }
+                            }
+                        }
                     }
-                    Text {
-                        id: chipmodelText
-                        width: 450
-                        text: ""//systemdispatcher.getHWSingleInfo("Vga_product")
-                        font.pixelSize: 14
-                        wrapMode: Text.WordWrap
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        text: qsTr("Current Graphics Card: ")//当前显卡：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: chipText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_chip")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        text: qsTr("Graphics Card Vendor: ")//显卡制造商：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: chipvendorText
-                        text: ""//systemdispatcher.getHWSingleInfo("Vga_vendor")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        text: qsTr("Graphics Driver: ")//显卡驱动：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: driverText
-                        text: ""//systemdispatcher.getHWSingleInfo("Vga_Drive")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        text: qsTr("Bus Address: ")//显卡总线地址：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: chipbusText
-                        text: ""//systemdispatcher.getHWSingleInfo("Vga_businfo")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
+                }//Item
+
+//                Row {
+//                    spacing: 10
+//                    Common.Label {
+//                        text: qsTr("Graphics Card Model: ")//显卡型号：
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                        width: 150
+//                    }
+//                    Text {
+//                        id: chipmodelText
+//                        width: 450
+//                        text: ""//systemdispatcher.getHWSingleInfo("Vga_product")
+//                        font.pixelSize: 14
+//                        wrapMode: Text.WordWrap
+//                        color: "#7a7a7a"
+//                    }
+//                }
+//                Row {
+//                    spacing: 10
+//                    Common.Label {
+//                        text: qsTr("Current Graphics Card: ")//当前显卡：
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                        width: 150
+//                    }
+//                    Text {
+//                        id: chipText
+//                        text: ""//systemdispatcher.getHWSingleInfo("Mon_chip")
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                    }
+//                }
+//                Row {
+//                    spacing: 10
+//                    Common.Label {
+//                        text: qsTr("Graphics Card Vendor: ")//显卡制造商：
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                        width: 150
+//                    }
+//                    Text {
+//                        id: chipvendorText
+//                        text: ""//systemdispatcher.getHWSingleInfo("Vga_vendor")
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                    }
+//                }
+//                Row {
+//                    spacing: 10
+//                    Common.Label {
+//                        text: qsTr("Graphics Driver: ")//显卡驱动：
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                        width: 150
+//                    }
+//                    Text {
+//                        id: driverText
+//                        text: ""//systemdispatcher.getHWSingleInfo("Vga_Drive")
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                    }
+//                }
+//                Row {
+//                    spacing: 10
+//                    Common.Label {
+//                        text: qsTr("Bus Address: ")//显卡总线地址：
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                        width: 150
+//                    }
+//                    Text {
+//                        id: chipbusText
+//                        text: ""//systemdispatcher.getHWSingleInfo("Vga_businfo")
+//                        font.pixelSize: 14
+//                        color: "#7a7a7a"
+//                    }
+//                }
             }
 
             Row {
@@ -200,181 +507,181 @@ Rectangle {
                     width: home.width - monitortitlebar.width - 30 * 2
                 }
             }
-            Column {
+            Row{
                 anchors.left: parent.left
                 anchors.leftMargin: 20
-                spacing: 10
-                Row {
+                Column {
                     spacing: 10
-                    Common.Label {
-                        id: productLabel
-                        text: qsTr("Monitor: ")//显示器：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
+                    Row {
+                        spacing: 10
+                        Common.Label {
+                            id: productLabel
+                            text: qsTr("Monitor: ")//显示器：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: productText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_product")
+                            width:360
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
                     }
-                    Text {
-                        id: productText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_product")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
+                    Row {
+                        spacing: 10
+                        Common.Label {
+                            id: vendorLabel
+                            text: qsTr("Vendor: ")//制造商：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: vendorText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_vendor")
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
+                    }
+                    Row {
+                        spacing: 10
+                        Common.Label {
+                            id: dateLabel
+                            text: qsTr("Production(year/week): ")//生产日期(年/周)：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: dateText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_year")
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
+                    }
+                    Row {
+                        spacing: 10
+                        Common.Label {
+                            id: sizeLabel
+                            text: qsTr("Display Area: ")//可视面积：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: sizeText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_size")
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
+                    }
+                    Row {
+                        spacing: 10
+                        Common.Label {
+                            id: inLabel
+                            text: qsTr("Dimensions: ")//屏幕尺寸：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: inText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_in")
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
+                    }
+                    Row {
+                        spacing: 10
+                        Common.Label {
+                            id: maxmodeLabel
+                            text: qsTr("Max Resolution: ")//最大分辨率：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: maxmodeText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_maxmode")
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
+                    }
+                    Row {
+                        spacing: 10
+                        Common.Label {
+                            id: gammaLabel
+                            text: qsTr("Gamma Value: ")//伽马值：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: gammaText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_gamma")
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
+                    }
+                    Row {
+                        spacing: 10
+                        Common.Label {
+                            id: outputLabel
+                            text: qsTr("Current Output: ")//当前接口：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: outputText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_output")
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
+                    }
+                    Row {
+                        spacing: 10
+                        height: 40
+                        Common.Label {
+                            id: supportLabel
+                            text: qsTr("Support Output: ")//支持接口：
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                            width: 150
+                        }
+                        Text {
+                            id: supportText
+                            text: ""//systemdispatcher.getHWSingleInfo("Mon_support")
+                            font.pixelSize: 14
+                            color: "#7a7a7a"
+                        }
                     }
                 }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        id: vendorLabel
-                        text: qsTr("Vendor: ")//制造商：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: vendorText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_vendor")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        id: dateLabel
-                        text: qsTr("Production(year/week): ")//生产日期(年/周)：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: dateText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_year")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        id: sizeLabel
-                        text: qsTr("Display Area: ")//可视面积：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: sizeText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_size")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        id: inLabel
-                        text: qsTr("Dimensions: ")//屏幕尺寸：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: inText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_in")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        id: maxmodeLabel
-                        text: qsTr("Max Resolution: ")//最大分辨率：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: maxmodeText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_maxmode")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        id: gammaLabel
-                        text: qsTr("Gamma Value: ")//伽马值：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: gammaText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_gamma")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    Common.Label {
-                        id: outputLabel
-                        text: qsTr("Current Output: ")//当前接口：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: outputText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_output")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                    }
-                }
-                Row {
-                    spacing: 10
-                    height: 40
-                    Common.Label {
-                        id: supportLabel
-                        text: qsTr("Support Output: ")//支持接口：
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
-                        width: 150
-                    }
-                    Text {
-                        id: supportText
-                        text: ""//systemdispatcher.getHWSingleInfo("Mon_support")
-                        font.pixelSize: 14
-                        color: "#7a7a7a"
+                Image {
+                    id: monitorlogo
+                    source: ""
+                    opacity: 0.5
+                    anchors {
+                        top: parent.top
                     }
                 }
             }
         }
 
         //logo
-        Image {
-            id: cardlogo
-            source: ""
-            opacity: 0.5
-            anchors {
-                top: parent.top
-                topMargin: 75
-                left: parent.left
-                leftMargin: 570
-            }
-        }
+//        Image {
+//            id: cardlogo
+//            source: ""
+//            opacity: 0.5
+//            anchors {
+//                top: parent.top
+//                topMargin: 75
+//                left: parent.left
+//                leftMargin: 570
+//            }
+//        }
         //logo
-        Image {
-            id: monitorlogo
-            source: ""
-            opacity: 0.5
-            anchors {
-                top: parent.top
-                topMargin: 250
-                left: parent.left
-                leftMargin: 570
-            }
-        }
     }
 }
