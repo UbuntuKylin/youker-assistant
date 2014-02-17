@@ -20,68 +20,68 @@ import gsettings
 
 class Desktop:
 
-	# ---------------desktopicon---------------
+    # ---------------desktopicon---------------
 
-	# show desktop icons, True/False
-	def set_show_desktop_icons(self, flag):
-		return gsettings.set('org.gnome.desktop.background',
-			None,
-			'show-desktop-icons',
-			'boolean', flag)
+    # show desktop icons, True/False
+    def set_show_desktop_icons(self, flag):
+        return gsettings.set('org.gnome.desktop.background',
+            None,
+            'show-desktop-icons',
+            'boolean', flag)
 
-	# get is show desktop icons
-	def get_show_desktop_icons(self):
-		return gsettings.get('org.gnome.desktop.background',
-			None, 'show-desktop-icons', 'boolean')
+    # get is show desktop icons
+    def get_show_desktop_icons(self):
+        return gsettings.get('org.gnome.desktop.background',
+            None, 'show-desktop-icons', 'boolean')
 
 
-	# show home folder
-	def set_show_homefolder(self, flag):
-		return gsettings.set('org.gnome.nautilus.desktop',
-			None,
-			'home-icon-visible',
-			'boolean', flag)
+    # show home folder
+    def set_show_homefolder(self, flag):
+        return gsettings.set('org.gnome.nautilus.desktop',
+            None,
+            'home-icon-visible',
+            'boolean', flag)
 
-	# get show homefolder
-	def get_show_homefolder(self):
-		return gsettings.get('org.gnome.nautilus.desktop',
-			None, 'home-icon-visible', 'boolean')
+    # get show homefolder
+    def get_show_homefolder(self):
+        return gsettings.get('org.gnome.nautilus.desktop',
+            None, 'home-icon-visible', 'boolean')
 
-	# show network
-	def set_show_network(self, flag):
-		return gsettings.set('org.gnome.nautilus.desktop',
-			None,
-			'network-icon-visible',
-			'boolean', flag)
+    # show network
+    def set_show_network(self, flag):
+        return gsettings.set('org.gnome.nautilus.desktop',
+            None,
+            'network-icon-visible',
+            'boolean', flag)
 
-	# get show network
-	def get_show_network(self):
-		return gsettings.get('org.gnome.nautilus.desktop',
-			None, 'network-icon-visible', 'boolean')
+    # get show network
+    def get_show_network(self):
+        return gsettings.get('org.gnome.nautilus.desktop',
+            None, 'network-icon-visible', 'boolean')
 
-	# show trash
-	def set_show_trash(self, flag):
-		return gsettings.set('org.gnome.nautilus.desktop',
-			None,
-			'trash-icon-visible',
-			'boolean', flag)
+    # show trash
+    def set_show_trash(self, flag):
+        return gsettings.set('org.gnome.nautilus.desktop',
+            None,
+            'trash-icon-visible',
+            'boolean', flag)
 
-	# get show trash
-	def get_show_trash(self):
-		return gsettings.get('org.gnome.nautilus.desktop',
-			None, 'trash-icon-visible', 'boolean')
+    # get show trash
+    def get_show_trash(self):
+        return gsettings.get('org.gnome.nautilus.desktop',
+            None, 'trash-icon-visible', 'boolean')
 
-	# show devices
-	def set_show_devices(self, flag):
-		return gsettings.set('org.gnome.nautilus.desktop',
-			None,
-			'volumes-visible',
-			'boolean', flag)
+    # show devices
+    def set_show_devices(self, flag):
+        return gsettings.set('org.gnome.nautilus.desktop',
+            None,
+            'volumes-visible',
+            'boolean', flag)
 
-	# get show devices
-	def get_show_devices(self):
-		return gsettings.get('org.gnome.nautilus.desktop',
-			None, 'volumes-visible', 'boolean')
+    # get show devices
+    def get_show_devices(self):
+        return gsettings.get('org.gnome.nautilus.desktop',
+            None, 'volumes-visible', 'boolean')
 
 # if __name__ == '__main__':
 # 	ddd = Desktop()

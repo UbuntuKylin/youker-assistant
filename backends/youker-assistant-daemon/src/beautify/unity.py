@@ -20,63 +20,63 @@ import gsettings
 
 class Unity:
 
-	# ---------------launcher---------------
+    # ---------------launcher---------------
 
-	# launcher auto hide mode, True/False
-	def set_launcher_autohide(self, flag):
-		return gsettings.set('org.compiz.unityshell',
-			'/org/compiz/profiles/unity/plugins/unityshell/',
-			'launcher-hide-mode',
-			'int', flag)
+    # launcher auto hide mode, True/False
+    def set_launcher_autohide(self, flag):
+        return gsettings.set('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'launcher-hide-mode',
+            'int', flag)
 
-	# get launcher auto hide mode
-	def get_launcher_autohide(self):
-		value = gsettings.get('org.compiz.unityshell',
-			'/org/compiz/profiles/unity/plugins/unityshell/',
-			'launcher-hide-mode', 'int')
-		if value == 0:
-			return False
-		elif value == 1:
-			return True
-		else:
-			return None
+    # get launcher auto hide mode
+    def get_launcher_autohide(self):
+        value = gsettings.get('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'launcher-hide-mode', 'int')
+        if value == 0:
+            return False
+        elif value == 1:
+            return True
+        else:
+            return None
 
-	# launcher icon size 32-64
-	def set_launcher_icon_size(self, size):
-		return gsettings.set('org.compiz.unityshell',
-			'/org/compiz/profiles/unity/plugins/unityshell/',
-			'icon-size',
-			'int', size)
+    # launcher icon size 32-64
+    def set_launcher_icon_size(self, size):
+        return gsettings.set('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'icon-size',
+            'int', size)
 
-	# get launcher icon size
-	def get_launcher_icon_size(self):
-		return gsettings.get('org.compiz.unityshell',
-			'/org/compiz/profiles/unity/plugins/unityshell/',
-			'icon-size', 'int')
+    # get launcher icon size
+    def get_launcher_icon_size(self):
+        return gsettings.get('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'icon-size', 'int')
 
-	# launcher 'show desktop' icon True/False
-	def set_launcher_have_showdesktopicon(self, flag):
-		launcher = gsettings.get_schema('com.canonical.Unity.Launcher')
-		icons = launcher.get_strv('favorites')
-		desktop = 'unity://desktop-icon'
-		if flag == True:
-			if desktop not in icons:
-				icons.append(desktop)
-				launcher.set_strv('favorites', icons)
-		else:
-			if desktop in icons:
-				icons.remove(desktop)
-				launcher.set_strv('favorites', icons)
+    # launcher 'show desktop' icon True/False
+    def set_launcher_have_showdesktopicon(self, flag):
+        launcher = gsettings.get_schema('com.canonical.Unity.Launcher')
+        icons = launcher.get_strv('favorites')
+        desktop = 'unity://desktop-icon'
+        if flag == True:
+            if desktop not in icons:
+                icons.append(desktop)
+                launcher.set_strv('favorites', icons)
+        else:
+            if desktop in icons:
+                icons.remove(desktop)
+                launcher.set_strv('favorites', icons)
 
-	# get is launcher have 'show desktop' icon
-	def get_launcher_have_showdesktopicon(self):
-		launcher = gsettings.get_schema('com.canonical.Unity.Launcher')
-		icons = launcher.get_strv('favorites')
-		desktop = 'unity://desktop-icon'
-		if desktop in icons:
-			return True
-		else:
-			return False
+    # get is launcher have 'show desktop' icon
+    def get_launcher_have_showdesktopicon(self):
+        launcher = gsettings.get_schema('com.canonical.Unity.Launcher')
+        icons = launcher.get_strv('favorites')
+        desktop = 'unity://desktop-icon'
+        if desktop in icons:
+            return True
+        else:
+            return False
 
 # if __name__ == '__main__':
 # 	uuu = Unity()

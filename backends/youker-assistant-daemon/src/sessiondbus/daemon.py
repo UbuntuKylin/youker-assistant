@@ -47,6 +47,7 @@ from beautify.unity import Unity
 from beautify.theme import Theme
 from beautify.system import System
 from beautify.sound import Sound
+from beautify.filemanager import FileManager
 from sysinfo import Sysinfo
 from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather#0.3.3
@@ -69,6 +70,7 @@ class SessionDaemon(dbus.service.Object):
         self.systemconf = System()
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
+        self.fileconf = FileManager()
         self.weatherconf = WeatherInfo(self)
         self.yahooconf = YahooWeather(self)
         self.daemonsame = cleaner.SearchTheSame()
@@ -786,7 +788,81 @@ class SessionDaemon(dbus.service.Object):
     def set_sound_theme(self, theme):
         self.soundconf.set_sound_theme(theme)
 
+
+    # -------------------------filemanager-------------------------
+
+    # Set: Use the location entry instead of the pathbar
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
+    def set_location_replace_pathbar(self, flag):
+        self.fileconf.set_location_replace_pathbar(flag)
+
+    # Get: Use the location entry instead of the pathbar
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_location_replace_pathbar(self):
+        return self.fileconf.get_location_replace_pathbar()
+
+    # Set: Automatically mount media
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
+    def set_auto_mount_media(self, flag):
+        self.fileconf.set_auto_mount_media(flag)
+
+    # Get: Automatically mount media
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_auto_mount_media(self):
+        return self.fileconf.get_auto_mount_media()
+
+    # Set: Automatically open a folder
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
+    def set_auto_open_folder(self, flag):
+        self.fileconf.set_auto_open_folder(flag)
+
+    # Get: Automatically open a folder
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_auto_open_folder(self):
+        return self.fileconf.get_auto_open_folder()
+
+    # Set: Prompt or autorun/autostart programs
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
+    def set_prompt_autorun_programs(self, flag):
+        self.fileconf.set_prompt_autorun_programs(flag)
+
+    # Get: Prompt or autorun/autostart programs
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_prompt_autorun_programs(self):
+        return self.fileconf.get_prompt_autorun_programs()
+
+    # Set: Thumbnail icon size (pixels)
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_thumbnail_icon_size(self, size):
+        self.fileconf.set_thumbnail_icon_size(size)
+
+    # Get: Thumbnail icon size (pixels)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_thumbnail_icon_size(self):
+        return self.fileconf.get_thumbnail_icon_size()
+
+    # Set: Thumbnail cache time (days)
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_thumbnail_cache_time(self, size):
+        self.fileconf.set_thumbnail_cache_time(size)
+
+    # Get: Thumbnail cache time (days)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_thumbnail_cache_time(self):
+        return self.fileconf.get_thumbnail_cache_time()
+
+    # Set: Maximum thumbnail cache size (MB)
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_thumbnail_cache_size(self, size):
+        self.fileconf.set_thumbnail_cache_size(size)
+
+    # Get: Maximum thumbnail cache size (MB)
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_thumbnail_cache_size(self):
+        return self.fileconf.get_thumbnail_cache_size()
+
     # -------------------------beautify end here-------------------------
+
 
     # -------------------------monitorball-------------------------
     # get cpu percent
