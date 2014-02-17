@@ -137,7 +137,7 @@ void SessionDispatcher::resetTimerStatus() {
 
 //查询当前的积分、等级....
 void SessionDispatcher::searchCurrentInfo() {
-    mSettings->beginGroup("account");
+    mSettings->beginGroup("user");
     int id = mSettings->value("id").toInt();
     mSettings->endGroup();
     mSettings->sync();
@@ -170,7 +170,7 @@ void SessionDispatcher::ready_exit_normally() {
         timer->stop();
     }
     //退出
-    mSettings->beginGroup("account");
+    mSettings->beginGroup("user");
     int id = mSettings->value("id").toInt();
     mSettings->endGroup();
     mSettings->sync();
@@ -225,7 +225,7 @@ void SessionDispatcher::handle_data_after_login_success(QString id, QString leve
     emit updateLoginStatus(name, level, score);
 
     //将当前用户id写入本地配置文件中
-    mSettings->beginGroup("account");
+    mSettings->beginGroup("user");
     mSettings->setValue("id", id);
     mSettings->endGroup();
     mSettings->sync();
@@ -1166,11 +1166,11 @@ int SessionDispatcher::getLengthOfCityList() {
 }
 
 void SessionDispatcher::initConfigFile() {
-    mSettings->beginGroup("account");
-    QString id = mSettings->value("id").toString();
-    if(id.isEmpty()) {
-        mSettings->setValue("id", "0");
-    }
+//    mSettings->beginGroup("account");
+//    QString id = mSettings->value("id").toString();
+//    if(id.isEmpty()) {
+//        mSettings->setValue("id", "0");
+//    }
 //    QString firststart = mSettings->value("firststart").toString();
 //    if(firststart.isEmpty()) {
 //        firststart = "true";
@@ -1181,8 +1181,16 @@ void SessionDispatcher::initConfigFile() {
 //        current_date = this->get_currrent_date_qt();
 //        mSettings->setValue("date", current_date);
 //    }
+//    mSettings->endGroup();
+//    mSettings->sync();
+
+
+    mSettings->beginGroup("user");
+    QString id = mSettings->value("id").toString();
+    if(id.isEmpty()) {
+        mSettings->setValue("id", "0");
+    }
     mSettings->endGroup();
-    mSettings->sync();
 
     mSettings->beginGroup("weather");
     QString cityId = mSettings->value("cityId").toString();
