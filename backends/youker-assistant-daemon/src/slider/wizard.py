@@ -3,6 +3,10 @@
 
 ### BEGIN LICENSE
 # Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd
+#
+# Author:     Kobe Lee <xiangli@ubuntukylin.com>
+# Maintainer: Ubuntu Kylin
+#
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.

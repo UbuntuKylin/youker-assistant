@@ -1,8 +1,12 @@
-#!/usr/bin/python
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
-### BEGIN LICENSE
 
+### BEGIN LICENSE
 # Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd
+#
+# Author:     Kobe Lee <xiangli@ubuntukylin.com>
+# Maintainer: Ubuntu Kylin
+#
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
@@ -20,10 +24,21 @@ import os
 import gsettings
 
 class FileManager:
-    def __init__(self):
-        pass
 
-    # 使用路径输入框取代路径栏
+    # -----------------默认值-----------------
+    # Get Default Value
+    def get_default_schema_value(self, schema, key):
+        return gsettings.get_schema_value(schema, key)
+
+    # Set Default Value
+    def set_default_schema_value(self, schema, key, type):
+        default_value = self.get_default_schema_value(schema, key)
+        if default_value is not None:
+            return gsettings.set(schema, None, key, type, default_value)
+        else:
+            raise NotImplemented
+
+    # -----------------使用路径输入框取代路径栏-----------------
     # Get: Use the location entry instead of the pathbar
     def get_location_replace_pathbar(self):
         return gsettings.get('org.gnome.nautilus.preferences',
@@ -38,7 +53,7 @@ class FileManager:
             'always-use-location-entry',
             'boolean', flag)
 
-    # 自动挂载媒体
+    # -----------------自动挂载媒体-----------------
     # Get: Automatically mount media
     def get_auto_mount_media(self):
         return gsettings.get('org.gnome.desktop.media-handling',
@@ -51,7 +66,7 @@ class FileManager:
             'automount',
             'boolean', flag)
 
-    # 自动打开文件夹
+    # -----------------自动打开文件夹-----------------
     # Get: Automatically open a folder
     def get_auto_open_folder(self):
         return gsettings.get('org.gnome.desktop.media-handling',
@@ -64,7 +79,7 @@ class FileManager:
             'automount-open',
             'boolean', flag)
 
-    # 提示自动运行的程序
+    # -----------------提示自动运行的程序-----------------
     # Get: Prompt or autorun/autostart programs
     def get_prompt_autorun_programs(self):
         return gsettings.get('org.gnome.desktop.media-handling',
@@ -77,7 +92,7 @@ class FileManager:
             'autorun-never',
             'boolean', flag)
 
-    # 缩略图图标尺寸（像素） min=16, max=512, step=16, default=64
+    # -----------------缩略图图标尺寸（像素） min=16, max=512, step=16, default=64-----------------
     # Get: Thumbnail icon size (pixels)
     def get_thumbnail_icon_size(self):
         return gsettings.get('org.gnome.nautilus.icon-view',
@@ -90,7 +105,7 @@ class FileManager:
             'thumbnail-size',
             'int', size)
 
-    # 缩略图缓存时间（天数） min=-1, max=180, step=1, default=180
+    # -----------------缩略图缓存时间（天数） min=-1, max=180, step=1, default=180-----------------
     # Get: Thumbnail cache time (days)
     def get_thumbnail_cache_time(self):
         return gsettings.get('org.gnome.desktop.thumbnail-cache',
@@ -103,7 +118,7 @@ class FileManager:
             'maximum-age',
             'int', size)
 
-    # 最大缩略图缓存尺寸（MB） min=-1, max=512, step=1, default=512
+    # -----------------最大缩略图缓存尺寸（MB） min=-1, max=512, step=1, default=512-----------------
     # Get: Maximum thumbnail cache size (MB)
     def get_thumbnail_cache_size(self):
         return gsettings.get('org.gnome.desktop.thumbnail-cache',
@@ -115,7 +130,6 @@ class FileManager:
             None,
             'maximum-size',
             'int', size)
-
 
 if __name__ == '__main__':
     fm = FileManager()
@@ -155,8 +169,14 @@ if __name__ == '__main__':
     #else:
     #    fm.set_thumbnail_cache_time(180)
 
-    value = fm.get_thumbnail_cache_size()
-    if(value == 512):
-        fm.set_thumbnail_cache_size(500)
-    else:
-        fm.set_thumbnail_cache_size(512)
+    #value = fm.get_thumbnail_cache_size()
+    #aa = fm.test()
+    #print aa
+    #if(value == 512):
+    #    fm.set_thumbnail_cache_size(500)
+    #else:
+    #    fm.set_thumbnail_cache_size(512)
+
+    #aa = fm.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
+    #print aa
+    fm.set_default_schema_value('org.gnome.desktop.media-handling', 'automount', 'boolean')

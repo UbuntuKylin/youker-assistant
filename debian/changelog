@@ -8,9 +8,9 @@ youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
   * Adjust the display format of network traffic on the monitor ball.
   * Add ToolTip.qml.
   * Achieve the function about login with forum account.
-  * Add FileManager.qml add filemanager.py.
+  * Add FileManager.qml, filemanager.py, common.py, geditmanager.py and settings.py.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 17 Feb 2014 21:14:54 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 18 Feb 2014 16:33:50 +0800
 
 youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
 

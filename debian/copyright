@@ -26,6 +26,10 @@ Copyright: Copyright (C) 2008 Fluendo Embedded S.L.
            Copyright (C) 2013-2014 National University of Defense Technology(NUDT) & Kylin Ltd.
 License: GPL-2+
 
+Files: backends/youker-assistant-daemon/src/beautify/common.py
+Copyright: Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
+License: GPL-2+
+
 Files: src/qdeclarativelayout.h src/qstyleitem.h src/qdeclarativelinearlayout.cpp src/settings.cpp src/qwindowitem.cpp src/settings.h src/qdeclarativelayoutengine.cpp src/qdeclarativelayoutengine_p.h src/qtmenubar.cpp src/qtmenuitem.h src/qdeclarativelayout.cpp src/qtmenubar.h src/qtmenuitem.cpp src/qstyleitem.cpp src/qdeclarativelinearlayout.h qml/func/common/Page.qml qml/func/common/PageStack.qml qml/func/common/UIConstants.js qml/func/common/PageStack.js
 Copyright: Copyright (C) 2010-2011 Nokia Corporation and/or its subsidiary(-ies).
 License: BSD-3-clause

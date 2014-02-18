@@ -17,22 +17,23 @@
 ### END LICENSE
 
 from gi.repository import Gio as gio
+from common import Schema
 import logging
 
-logger=logging.getLogger('i-help-you-daemon')
+logger=logging.getLogger('youker-assistant-daemon')
 
-def get(schema,path,key,type):
+def get(schema, path, key, type):
     try:
-        gs = gio.Settings(schema,path)
+        gs = gio.Settings(schema, path)
         return gs.__getattribute__('get_' + type)(key)
     except:
         logger.debug("gsettings.get: can't find value for %s" % gs)
         return None
 
-def set(schema,path,key,type,value):
+def set(schema, path, key, type, value):
     try:
-        gs = gio.Settings(schema,path)
-        gs.__getattribute__('set_' + type)(key,value)
+        gs = gio.Settings(schema, path)
+        gs.__getattribute__('set_' + type)(key, value)
         return True
     except:
         logger.debug("gsettings.set: can't find value for %s" % gs)
@@ -40,3 +41,11 @@ def set(schema,path,key,type,value):
 
 def get_schema(schema):
     return gio.Settings(schema)
+
+# added by kobe: access default schema value
+def get_schema_value(schema, key):
+    schema_default = Schema.load_schema(schema, key)
+    if schema_default is not None:
+        return schema_default
+    else:
+        raise NotImplemented
