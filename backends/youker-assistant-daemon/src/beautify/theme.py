@@ -250,14 +250,10 @@ if __name__ == '__main__':
     # ttt.set_font_zoom(1.0)
     #ttt.set_monospace_font('Ubuntu Mono 13')
     #print ttt.get_monospace_font()
-<<<<<<< TREE
 
     #aa = ttt.get_default_schema_value('org.gnome.desktop.interface', 'font-name')
     #print aa
     ttt.set_default_schema_value('org.gnome.desktop.interface', 'font-name', 'string')
-
-=======
->>>>>>> MERGE-SOURCE
     # print ttt.get_theme()
     # print ttt.get_icon_theme()
     # print ttt.get_cursor_theme()

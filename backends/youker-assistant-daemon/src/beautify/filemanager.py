@@ -179,18 +179,11 @@ if __name__ == '__main__':
     #else:
     #    fm.set_thumbnail_cache_size(512)
 
-<<<<<<< TREE
     aa = fm.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
     print aa
-=======
     #aa = fm.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
     #print aa
->>>>>>> MERGE-SOURCE
     #fm.set_default_schema_value('org.gnome.desktop.media-handling', 'automount', 'boolean')
-<<<<<<< TREE
 
     bb = fm.get_default_schema_value('org.gnome.nautilus.desktop', 'font')
     print bb
-
-=======
->>>>>>> MERGE-SOURCE
