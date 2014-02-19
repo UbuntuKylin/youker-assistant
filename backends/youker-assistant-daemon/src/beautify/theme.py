@@ -187,8 +187,12 @@ class Theme:
             'double', zoom)
 
     # -------------------------平滑性----------------------------------
-    # get hinting
-    def get_hinting(self):
+    # get all hinting value
+    def get_all_hinting(self):
+        return ['none','slight','medium','full']
+    
+    # get current hinting
+    def get_current_hinting(self):
         return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
             None,
             'hinting',
@@ -202,8 +206,12 @@ class Theme:
             'string',value)
 
     # -------------------------反锯齿----------------------------------
-    # get antialiasing
-    def get_antialiasing(self):
+    # get all antialiasing value
+    def get_all_antialiasing(self):
+        return ['none','grayscale','rgba']
+
+    # get current antialiasing
+    def get_current_antialiasing(self):
         return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
             None,
             'antialiasing',
@@ -218,8 +226,8 @@ class Theme:
 
 if __name__ == '__main__':
     ttt = Theme()
-    print ttt.get_hinting()
-    print ttt.get_antialiasing()
+    print ttt.get_current_hinting()
+    print ttt.get_current_antialiasing()
     # print ttt.set_hinting('none')
     # print ttt.set_antialiasing('none')
     # print ttt.get_font()
