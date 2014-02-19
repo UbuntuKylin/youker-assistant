@@ -28,7 +28,7 @@ HEADERS += youker-application.h \
     modaldialog.h \
     warningdialog.h \
     messagedialog.h \
-    updatedialog.h \
+#    updatedialog.h \
     qmlaudio.h \
     qrangemodel.h \
     qrangemodel_p.h \
@@ -65,7 +65,7 @@ HEADERS += youker-application.h \
     util.h \
     processmanager.h \
     yprocess.h \
-    sourcedialog.h \
+#    sourcedialog.h \
     devicemanager.h \
     kfontdialog.h
 
@@ -80,7 +80,7 @@ SOURCES += main.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
     messagedialog.cpp \
-    updatedialog.cpp \
+#    updatedialog.cpp \
     qmlaudio.cpp \
     qrangemodel.cpp \
     qstyleitem.cpp \
@@ -115,7 +115,7 @@ SOURCES += main.cpp \
     util.cpp \
     processmanager.cpp \
     yprocess.cpp \
-    sourcedialog.cpp \
+#    sourcedialog.cpp \
     devicemanager.cpp \
     kfontdialog.cpp
 
@@ -127,7 +127,7 @@ FORMS += \
     modaldialog.ui \
     warningdialog.ui \
     messagedialog.ui \
-    updatedialog.ui \
+#    updatedialog.ui \
     tray.ui \
     fcitxwarndialog.ui \
     suspensionframe.ui \
@@ -135,5 +135,5 @@ FORMS += \
     locationdialog.ui \
     wizarddialog.ui \
     changecitydialog.ui \
-    sourcedialog.ui \
+#    sourcedialog.ui \
     kfontdialog.ui

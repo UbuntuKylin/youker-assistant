@@ -32,10 +32,10 @@ Rectangle {
     property string monospace_font: "Helvetica"
     property double zoom: 1.0
 
-    property string selected_current_font: ""//存放用户选择确认后的当前字体
-    property string selected_desktop_font: ""//存放用户选择确认后的桌面字体
-    property string selected_monospace_font: ""//存放用户选择确认后的等宽字体
-    property double selected_zoom //存放用户选择确认后的缩放值
+//    property string selected_current_font: ""//存放用户选择确认后的当前字体
+//    property string selected_desktop_font: ""//存放用户选择确认后的桌面字体
+//    property string selected_monospace_font: ""//存放用户选择确认后的等宽字体
+//    property double selected_zoom //存放用户选择确认后的缩放值
 
     property string actiontitle: qsTr("Default font settings")//默认字体设置
     property string actiontext: qsTr("According to personal preferences to set the system default font, click the  'Restore' button, can be restored to the state before the font settings. ")//根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
@@ -46,59 +46,62 @@ Rectangle {
     }
     Component.onCompleted: {
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
-        defaultfontpage.selected_current_font = defaultfontpage.current_font;
+//        defaultfontpage.selected_current_font = defaultfontpage.current_font;
         //将系统初始的当前字体写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("font", "currentfont", defaultfontpage.current_font);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("font", "currentfont", defaultfontpage.current_font);
 
         defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         if (defaultfontpage.desktop_font == "") {
             sessiondispatcher.set_desktop_font_qt_default();
             defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
         }
-        defaultfontpage.selected_desktop_font = defaultfontpage.desktop_font;
+//        defaultfontpage.selected_desktop_font = defaultfontpage.desktop_font;
         //将系统初始的当前桌面字体写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("font", "desktopfont", defaultfontpage.desktop_font);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("font", "desktopfont", defaultfontpage.desktop_font);
 
         defaultfontpage.monospace_font = sessiondispatcher.get_monospace_font_qt();
-        defaultfontpage.selected_monospace_font = defaultfontpage.monospace_font;
+//        defaultfontpage.selected_monospace_font = defaultfontpage.monospace_font;
         //将系统初始的当前等宽字体写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("font", "monospacefont", defaultfontpage.monospace_font);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("font", "monospacefont", defaultfontpage.monospace_font);
 
         defaultfontpage.zoom = sessiondispatcher.get_font_zoom_qt();
-        defaultfontpage.selected_zoom = defaultfontpage.zoom;
+//        defaultfontpage.selected_zoom = defaultfontpage.zoom;
         //将系统初始的全局字体缩放写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("font", "zoom", defaultfontpage.zoom);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("font", "zoom", defaultfontpage.zoom);
     }
 
+    //字体更改后界面显示刷新
     Connections
     {
         target: sessiondispatcher
         onNotifyFontStyleToQML: {
             if (font_style == "font") {
                 sysfont.text = sessiondispatcher.get_font_qt();
-                defaultfontpage.selected_current_font = sysfont.text;
+//                defaultfontpage.selected_current_font = sysfont.text;
             }
             else if (font_style == "desktopfont") {
                 desktopfont.text = sessiondispatcher.get_desktop_font_qt();
-                defaultfontpage.selected_desktop_font = desktopfont.text;
+//                defaultfontpage.selected_desktop_font = desktopfont.text;
             }
             else if (font_style == "monospacefont") {
                 monofont.text = sessiondispatcher.get_monospace_font_qt();
-                defaultfontpage.selected_monospace_font = monofont.text;
+//                defaultfontpage.selected_monospace_font = monofont.text;
             }
 
-            else if (font_style == "font_default") {
-                sysfont.text = sessiondispatcher.get_font_qt();
-                defaultfontpage.selected_current_font = sysfont.text;
-            }
-            else if (font_style == "desktopfont_default") {
-                desktopfont.text = sessiondispatcher.get_desktop_font_qt();
-                defaultfontpage.selected_desktop_font = desktopfont.text;
-            }
-            else if (font_style == "monospacefont_default") {
-                monofont.text = sessiondispatcher.get_monospace_font_qt();
-                defaultfontpage.selected_monospace_font = monofont.text;
-            }
+//            else if (font_style == "font_default") {
+//                sysfont.text = sessiondispatcher.get_font_qt();
+//                defaultfontpage.selected_current_font = sysfont.text;
+                //20140219
+//                sysfont.text = sessiondispatcher.get_default_theme_sring_qt("org.gnome.desktop.interface", "font-name");
+//            }
+//            else if (font_style == "desktopfont_default") {
+//                desktopfont.text = sessiondispatcher.get_desktop_font_qt();
+//                defaultfontpage.selected_desktop_font = desktopfont.text;
+//            }
+//            else if (font_style == "monospacefont_default") {
+//                monofont.text = sessiondispatcher.get_monospace_font_qt();
+//                defaultfontpage.selected_monospace_font = monofont.text;
+//            }
         }
     }
 
@@ -207,17 +210,23 @@ Rectangle {
                     width: 105
                     height: 30
                     onClicked: {
-                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "currentfont");
-                        if(defaultfont == defaultfontpage.selected_current_font) {
-                            //友情提示：    已经恢复为默认字体！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Has been restored to the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//已经恢复默认字体！
-                        }
-                        else {
-                            sessiondispatcher.set_font_qt_default(defaultfont);
-                            defaultfontpage.selected_current_font = defaultfont;
-                            sessiondispatcher.restore_default_font_signal("font_default");
-                            statusImage.visible = true;
-                        }
+                        //20140219
+                        sessiondispatcher.set_default_theme_qt("defaultfont");
+                        sysfont.text = sessiondispatcher.get_font_qt();
+//                        sessiondispatcher.set_default_theme_qt("org.gnome.desktop.interface", "font-name", "string");
+
+
+//                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "currentfont");
+//                        if(defaultfont == defaultfontpage.selected_current_font) {
+//                            //友情提示：    已经恢复为默认字体！
+//                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Has been restored to the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//已经恢复默认字体！
+//                        }
+//                        else {
+//                            sessiondispatcher.set_font_qt_default(defaultfont);
+//                            defaultfontpage.selected_current_font = defaultfont;
+//                            sessiondispatcher.restore_default_font_signal("font_default");
+//                            statusImage.visible = true;
+//                        }
                     }
                 }
             }
@@ -262,17 +271,21 @@ Rectangle {
                     width: 105
                     height: 30
                     onClicked: {
-                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "desktopfont");
-                        if(defaultfont == defaultfontpage.selected_desktop_font) {
-                            //友情提示： 您系统的桌面字体已经恢复为默认字体！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's desktop font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的桌面字体已经为默认字体！
-                        }
-                        else {
-                            sessiondispatcher.set_desktop_font_qt_default(defaultfont);
-                            defaultfontpage.selected_desktop_font = defaultfont;
-                            sessiondispatcher.restore_default_font_signal("desktopfont_default");
-                            statusImage.visible = true;
-                        }
+                        //20140219
+                        sessiondispatcher.set_default_theme_qt("desktopfont");
+                        desktopfont.text = sessiondispatcher.get_desktop_font_qt();
+//                        sessiondispatcher.set_default_theme_qt("org.gnome.nautilus.desktop", "font", "string");
+//                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "desktopfont");
+//                        if(defaultfont == defaultfontpage.selected_desktop_font) {
+//                            //友情提示： 您系统的桌面字体已经恢复为默认字体！
+//                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Your system's desktop font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的桌面字体已经为默认字体！
+//                        }
+//                        else {
+//                            sessiondispatcher.set_desktop_font_qt_default(defaultfont);
+//                            defaultfontpage.selected_desktop_font = defaultfont;
+//                            sessiondispatcher.restore_default_font_signal("desktopfont_default");
+//                            statusImage.visible = true;
+//                        }
                     }
                 }
             }
@@ -317,17 +330,21 @@ Rectangle {
                     width: 105
                     height: 30
                     onClicked: {
-                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "monospacefont");
-                        if(defaultfont == defaultfontpage.selected_monospace_font) {
-                            //友情提示： 您系统的等宽字体已经恢复为默认字体！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips: "),qsTr("Your system's monospace font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的等宽字体已经为默认字体！
-                        }
-                        else {
-                            sessiondispatcher.set_monospace_font_qt_default(defaultfont);
-                            defaultfontpage.selected_monospace_font = defaultfont;
-                            sessiondispatcher.restore_default_font_signal("monospacefont_default");
-                            statusImage.visible = true;
-                        }
+                        //20140219
+                        sessiondispatcher.set_default_theme_qt("monospacefont");
+                        monofont.text = sessiondispatcher.get_monospace_font_qt();
+//                        sessiondispatcher.set_default_theme_qt("org.gnome.desktop.interface", "monospace-font-name", "string");
+//                        var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "monospacefont");
+//                        if(defaultfont == defaultfontpage.selected_monospace_font) {
+//                            //友情提示： 您系统的等宽字体已经恢复为默认字体！
+//                            sessiondispatcher.showWarningDialog(qsTr("Tips: "),qsTr("Your system's monospace font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的等宽字体已经为默认字体！
+//                        }
+//                        else {
+//                            sessiondispatcher.set_monospace_font_qt_default(defaultfont);
+//                            defaultfontpage.selected_monospace_font = defaultfont;
+//                            sessiondispatcher.restore_default_font_signal("monospacefont_default");
+//                            statusImage.visible = true;
+//                        }
                     }
                 }
             }
@@ -399,7 +416,7 @@ Rectangle {
                 text: qsTr("OK")//确定
                 onClicked: {
                     sessiondispatcher.set_font_zoom_qt(slider.value);
-                    defaultfontpage.selected_zoom = slider.value;
+//                    defaultfontpage.selected_zoom = slider.value;
                     statusImage.visible = true;
                 }
             }
@@ -409,17 +426,21 @@ Rectangle {
                 width: 105
                 height: 30
                 onClicked: {
-                    var defaultvalue = sessiondispatcher.read_default_configure_from_qsetting_file("font", "zoom");
-                    if(defaultvalue == defaultfontpage.selected_zoom) {
-                        //友情提示：       您系统的全局字体缩放已经为默认设置！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's global font scaling is the default mode!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的全局字体缩放已经为默认设置！
-                    }
-                    else {
-                        sessiondispatcher.set_font_zoom_qt(defaultvalue);
-                        defaultfontpage.selected_zoom = defaultvalue;
-                        slider.value = defaultvalue;
-                        statusImage.visible = true;
-                    }
+                    //20140219
+                    sessiondispatcher.set_default_theme_qt("globalfontscaling");
+                    slider.value = sessiondispatcher.get_font_zoom_qt();
+//                    sessiondispatcher.set_default_theme_qt("org.gnome.desktop.interface", "text-scaling-factor", "double");
+//                    var defaultvalue = sessiondispatcher.read_default_configure_from_qsetting_file("font", "zoom");
+//                    if(defaultvalue == defaultfontpage.selected_zoom) {
+//                        //友情提示：       您系统的全局字体缩放已经为默认设置！
+//                        sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's global font scaling is the default mode!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的全局字体缩放已经为默认设置！
+//                    }
+//                    else {
+//                        sessiondispatcher.set_font_zoom_qt(defaultvalue);
+//                        defaultfontpage.selected_zoom = defaultvalue;
+//                        slider.value = defaultvalue;
+//                        statusImage.visible = true;
+//                    }
                 }
             }
         }

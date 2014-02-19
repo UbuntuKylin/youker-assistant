@@ -391,7 +391,7 @@ Item {
                 onClicked: {
                     //返回软件主页面时重新获取所有软件的状态
                     systemdispatcher.check_pkgs_status_qt(systemdispatcher.getAllSoftwareExecNameList());
-                    pageStack.push(softwarerecommend);
+//                    pageStack.push(softwarerecommend);
                 }
             }
             Text {

@@ -484,6 +484,15 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------desktop-------------------------
 
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='b')
+    def get_default_desktop_bool(self, schema, key):
+        return self.desktopconf.get_default_schema_value(schema, key)
+
+    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+    def set_default_desktop(self, schema, key, type):
+        self.desktopconf.set_default_schema_value(schema, key, type)
+
+
     # show desktop icons
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
     def set_show_desktop_icons(self, flag):
@@ -567,7 +576,6 @@ class SessionDaemon(dbus.service.Object):
         return self.unityconf.get_launcher_have_showdesktopicon()
 
     # -------------------------theme-------------------------
-
     # get themes
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_themes(self):
@@ -624,6 +632,18 @@ class SessionDaemon(dbus.service.Object):
         self.themeconf.set_cursor_size(size)
 
     # -------------------------fonts-------------------------
+
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
+    def get_default_font_sring(self, schema, key):
+        return self.themeconf.get_default_schema_value(schema, key)
+
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='d')
+    def get_default_font_double(self, schema, key):
+        return self.themeconf.get_default_schema_value(schema, key)
+
+    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+    def set_default_font(self, schema, key, type):
+        self.themeconf.set_default_schema_value(schema, key, type)
 
     # get font
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
@@ -767,6 +787,14 @@ class SessionDaemon(dbus.service.Object):
         return self.systemconf.get_menus_have_icons()
 
     # -------------------------sound-------------------------
+
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
+    def get_default_sound_string(self, schema, key):
+        return self.soundconf.get_default_schema_value(schema, key)
+
+    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+    def set_default_sound(self, schema, key, type):
+        self.soundconf.set_default_schema_value(schema, key, type)
 
     # set enable the login music
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='')

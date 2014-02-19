@@ -24,10 +24,10 @@
 #include <QDeclarativeView>
 #include "util.h"
 
-#include "updatedialog.h"
+//#include "updatedialog.h"
 class QSettings;
 
-const QString APP_LIST_FILE = "/usr/share/youker-assistant/qml/applist.ini";
+//const QString APP_LIST_FILE = "/usr/share/youker-assistant/qml/applist.ini";
 
 class SystemDispatcher : public QObject
 {
@@ -164,15 +164,15 @@ public:
     Q_INVOKABLE QStringList get_largestfile_args();
 
     //弹出是否添加软件源对话框
-    Q_INVOKABLE void showAddSourceList(int window_x, int window_y);
+//    Q_INVOKABLE void showAddSourceList(int window_x, int window_y);
     //判断软件源是否已经添加了
-    Q_INVOKABLE bool judge_source_ubuntukylin_qt();
+//    Q_INVOKABLE bool judge_source_ubuntukylin_qt();
     //将软件源已经添加了的标记写到QSetting配置文件中
 //    Q_INVOKABLE void write_source_to_qsetting();
     //QSetting配置文件中读取软件源是否已经添加了的标记
 //    Q_INVOKABLE bool read_source_from_qsetting();
     //获取当前系统的版本代号：如raring、saucy
-    QString readOSVersion();
+//    QString readOSVersion();
 
     //----get system message
     //存放当前系统和桌面信息
@@ -204,39 +204,39 @@ public:
 
     //------------------------
     //弹出更新软件源对话框
-    Q_INVOKABLE void showUpdateSourceDialog(int window_x, int window_y);
+//    Q_INVOKABLE void showUpdateSourceDialog(int window_x, int window_y);
     //清理不需要的已经安装的软件
     Q_INVOKABLE void clean_package_cruft_qt(QStringList strlist, QString flag);
     //通过键值得到对应软件的状态
-    Q_INVOKABLE QString getSoftwareStatus(QString);
+//    Q_INVOKABLE QString getSoftwareStatus(QString);
     // -------------------------software-center-------------------------
     //安装软件
-    Q_INVOKABLE void install_pkg_qt(QString pkgName);
+//    Q_INVOKABLE void install_pkg_qt(QString pkgName);
     //卸载软件
-    Q_INVOKABLE void uninstall_pkg_qt(QString pkgName);
+//    Q_INVOKABLE void uninstall_pkg_qt(QString pkgName);
     //升级软件
-    Q_INVOKABLE void update_pkg_qt(QString pkgName);
+//    Q_INVOKABLE void update_pkg_qt(QString pkgName);
     //检查软件列表的状态
-    Q_INVOKABLE void check_pkgs_status_qt(QStringList pkgNameList);
+//    Q_INVOKABLE void check_pkgs_status_qt(QStringList pkgNameList);
     //检查软件的状态
-    Q_INVOKABLE QString check_pkg_status_qt(QString pkgName);
+//    Q_INVOKABLE QString check_pkg_status_qt(QString pkgName);
     //更新软件源
-    Q_INVOKABLE void apt_get_update_qt();
+//    Q_INVOKABLE void apt_get_update_qt();
     //获取所有软件的的可执行程序的名字列表，此名字对应着源里面的安装程序的名字，用该名字可以获取软件状态
-    Q_INVOKABLE QStringList getAllSoftwareExecNameList();
+//    Q_INVOKABLE QStringList getAllSoftwareExecNameList();
     //得到下载或者是操作过程中发送过来的数据，在显示在进度条上之前处理优化下，返回要显示的文字
     QString dealProgressData(QString type, QString msg);
     //得到所有app的列表，根据列表的名字可以显示所有软件机器logo到推荐界面上
-    Q_INVOKABLE void getAppListForDisPlay();
+//    Q_INVOKABLE void getAppListForDisPlay();
     //发送标记，根据标记准备显示对应app的页面信息
-    Q_INVOKABLE void ready_show_app_page(QString flag);
+//    Q_INVOKABLE void ready_show_app_page(QString flag);
     //得到对应app的信息
-    Q_INVOKABLE void getAppInfo(QString flag);
+//    Q_INVOKABLE void getAppInfo(QString flag);
     //通过键得到软件对应的单个信息的值
-    Q_INVOKABLE QString getSingleInfo(QString key);
-public slots:
-    //添加软件推荐源
-    void add_source_ubuntukylin_qt();
+//    Q_INVOKABLE QString getSingleInfo(QString key);
+//public slots:
+//    添加软件推荐源
+//    void add_source_ubuntukylin_qt();
 
 signals:
     //添加新的开机动画图片后触发该信号
@@ -261,21 +261,21 @@ signals:
     //不需要的debu包清理异常发送信号
     void finishCleanDebError(QString msg);
     //软件下载过程发送的信号
-    void finishSoftwareFetch(QString type, QString msg);
+//    void finishSoftwareFetch(QString type, QString msg);
     //软件安装、卸载、升级过程发送的信号
-    void finishSoftwareApt(QString type);
+//    void finishSoftwareApt(QString type);
     //将软件操作过程中的状态和进度告诉给进度条去显示
-    void sendDynamicSoftwareProgress(QString type, QString msg);
+//    void sendDynamicSoftwareProgress(QString type, QString msg);
     //将软件操作过程中的状态和进度告诉给进度条去显示
-    void sendDynamicSoftwareProgressQML(QString type, QString info, int ratio_sus);//1028
+//    void sendDynamicSoftwareProgressQML(QString type, QString info, int ratio_sus);//1028
     //将软件源更新进度通知给QML
-    void notifySourceStatusToQML(QString download_items, QString total_items);
+//    void notifySourceStatusToQML(QString download_items, QString total_items);
     //调用遮罩层
-    void callMasklayer();
+//    void callMasklayer();
     //准备显示对应app的页面信息的信号
-    void sendAppInfo(QString flag);
+//    void sendAppInfo(QString flag);
     //发送软件列表给QML去显示
-    void sendAppListToQML(QStringList appList);
+//    void sendAppListToQML(QStringList appList);
     //将不需要的包和内核包的卸载进度告诉qml进度条
     void sendProgressToQML(QString type, QString info, int ratio_sus);
 
@@ -300,30 +300,30 @@ public slots:
     //后台发来发来清理不需要的包发生错误的信号后响应该函数
     void handlerClearDebError(QString msg);
     //软件下载过程发送信号响应该函数
-    void handlerSoftwareFetch(QString type, QString msg);
+//    void handlerSoftwareFetch(QString type, QString msg);
     //软件安装、卸载和升级过程发送信号响应该函数
-    void handlerSoftwareApt(QString type, QString msg);
+//    void handlerSoftwareApt(QString type, QString msg);
     //检查软件列表状态过程中发送状态信号响应该函数
-    void handlerGetSoftwareListStatus(QStringList statusDict);
+//    void handlerGetSoftwareListStatus(QStringList statusDict);
     //准备开始更新软件源
-    void startUpdateSoftwareSource();
+//    void startUpdateSoftwareSource();
     //清理多余包和旧内核包
     void handlerRemoveProgress(QString type, QString msg);
 private:
     QStringList tmplist;
     QDBusInterface *systemiface;
-    UpdateDialog *updatedialog;
+//    UpdateDialog *updatedialog;
     //存放软件列表的状态
-    QMap<QString, QString> status_dict;
+//    QMap<QString, QString> status_dict;
     //存放app的信息
-    QMap<QString, QString> appInfo;
-    QSettings *config;
+//    QMap<QString, QString> appInfo;
+//    QSettings *config;
     //存放软件列表
-    QStringList appList;
+//    QStringList appList;
     //存放进度数据
     int ratio_sus;
     //判断是软件源更新还是软件操作，如果是软件源更新，则为true;如果是软件操作，则为默认的false
-    bool progressFlag;
+//    bool progressFlag;
     int mainwindow_width;
     int mainwindow_height;
     int alert_width;

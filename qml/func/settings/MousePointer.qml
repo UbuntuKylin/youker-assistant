@@ -246,6 +246,12 @@ Rectangle {
             }
         }
         onRestoreBtnClicked: {
+            //20140219
+//            sessiondispatcher.set_default_theme_qt("mousetheme");
+//            var defaulttheme = sessiondispatcher.get_cursor_theme_qt();
+//            systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
+//            showText.text = qsTr("[ Current Cursor Theme: ") + defaulttheme + " ]";//[ 当前光标主题是：
+//            statusImage.visible = true;
             var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursortheme");
             var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursorsize");
 

@@ -319,13 +319,13 @@ Item {
                                     sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
                                 }
                             }//检测屏幕坏点
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            Common.StyleButton {
-                                wordname: qsTr("File manager"); width: b12.width//文件管理器
-                                onClicked: {
-                                    pageStack.push(filemanagerpage);
-                                }
-                            }
+//                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
+//                            Common.StyleButton {
+//                                wordname: qsTr("File manager"); width: b12.width//文件管理器
+//                                onClicked: {
+//                                    pageStack.push(filemanagerpage);
+//                                }
+//                            }
                         }
                     }
                 }

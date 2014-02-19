@@ -26,7 +26,7 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property string titlebar_font: "Helvetica"
-    property string selected_font: ""//存放用户选择确认后的字体
+//    property string selected_font: ""//存放用户选择确认后的字体
     property string actiontitle: qsTr("Titlebar font settings")//标题栏字体设置
     property string actiontext: qsTr("According to personal preferences to set titlebar fonts, click the 'Restore' button, can be restored to the state before the font settings.")//根据个人喜好设置标题栏字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
     //背景
@@ -37,9 +37,9 @@ Rectangle {
 
     Component.onCompleted: {
         titlebarfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
-        titlebarfontpage.selected_font = titlebarfontpage.titlebar_font;
+//        titlebarfontpage.selected_font = titlebarfontpage.titlebar_font;
         //将系统初始的标题栏字体写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("font", "titlebarfont", titlebarfontpage.titlebar_font);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("font", "titlebarfont", titlebarfontpage.titlebar_font);
     }
 
     Connections
@@ -48,12 +48,12 @@ Rectangle {
         onNotifyFontStyleToQML: {
             if (font_style == "titlebarfont") {//弹出字体对话框更改好字体后
                 titlefont.text = sessiondispatcher.get_window_title_font_qt();
-                titlebarfontpage.selected_font = titlefont.text;
+//                titlebarfontpage.selected_font = titlefont.text;
             }
-            else if (font_style == "titlebarfont_default") {//恢复默认时
-                titlefont.text = sessiondispatcher.get_window_title_font_qt();
-                titlebarfontpage.selected_font = titlefont.text;
-            }
+//            else if (font_style == "titlebarfont_default") {//恢复默认时
+//                titlefont.text = sessiondispatcher.get_window_title_font_qt();
+//                titlebarfontpage.selected_font = titlefont.text;
+//            }
         }
     }
 
@@ -167,17 +167,21 @@ Rectangle {
             width: 105
             height: 30
             onClicked: {
-                var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "titlebarfont");
-                if(defaultfont == titlebarfontpage.selected_font) {
-                    //友情提示：        您系统的窗体标题栏字体已经为默认字体！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's titlebar font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//您系统的标题栏字体已经为默认字体！
-                }
-                else {
-                    sessiondispatcher.set_window_title_font_qt_default(defaultfont);
-                    titlebarfontpage.selected_font = defaultfont;
-                    sessiondispatcher.restore_default_font_signal("titlebarfont_default");
-                    statusImage.visible = true;
-                }
+                //20140219
+                sessiondispatcher.set_default_theme_qt("titlebarfont");
+                titlefont.text = sessiondispatcher.get_window_title_font_qt();
+//                sessiondispatcher.set_default_theme_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");
+//                var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "titlebarfont");
+//                if(defaultfont == titlebarfontpage.selected_font) {
+//                    //友情提示：        您系统的窗体标题栏字体已经为默认字体！
+//                    sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's titlebar font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//您系统的标题栏字体已经为默认字体！
+//                }
+//                else {
+//                    sessiondispatcher.set_window_title_font_qt_default(defaultfont);
+//                    titlebarfontpage.selected_font = defaultfont;
+//                    sessiondispatcher.restore_default_font_signal("titlebarfont_default");
+//                    statusImage.visible = true;
+//                }
             }
         }
         Timer {

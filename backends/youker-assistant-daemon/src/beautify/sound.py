@@ -31,6 +31,20 @@ class Sound:
     def set_homedir(self, homedir):
         self.homedir = homedir
 
+    # -----------------默认值-----------------
+    # Get Default Value
+    def get_default_schema_value(self, schema, key):
+        return gsettings.get_schema_value(schema, key)
+
+    # Set Default Value
+    def set_default_schema_value(self, schema, key, type):
+        default_value = self.get_default_schema_value(schema, key)
+        if default_value is not None:
+            return gsettings.set(schema, None, key, type, default_value)
+        else:
+            raise NotImplemented
+    # ----------------------------------
+
     # enable the login music
     def set_login_music_enable(self, flag):
         configdir = self.homedir + '/.config/autostart'

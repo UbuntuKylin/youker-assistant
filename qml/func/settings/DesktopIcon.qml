@@ -44,7 +44,7 @@ Rectangle {
         desktopiconsetpage.selected_icon_theme = current_icon_theme;
         iconlist.unshift(current_icon_theme);
         //将系统初始的图标主题写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "icontheme", current_icon_theme);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "icontheme", current_icon_theme);
         choices.clear();
         for(var j=0; j < iconlist.length; j++) {
             choices.append({"text": iconlist[j]});
@@ -54,47 +54,47 @@ Rectangle {
 
         if (sessiondispatcher.get_show_desktop_icons_qt()) {
             iconswitcher.switchedOn = true;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "desktopcontrol", "true");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "desktopcontrol", "true");
         }
         else {
             iconswitcher.switchedOn = false;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "desktopcontrol", "false");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "desktopcontrol", "false");
         }
 
         if (sessiondispatcher.get_show_homefolder_qt()) {
             folderswitcher.switchedOn = true;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "document", "true");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "document", "true");
         }
         else {
             folderswitcher.switchedOn = false;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "document", "false");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "document", "false");
         }
 
         if (sessiondispatcher.get_show_network_qt()) {
             networkswitcher.switchedOn = true;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "network", "true");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "network", "true");
         }
         else {
             networkswitcher.switchedOn = false;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "network", "false");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "network", "false");
         }
 
         if (sessiondispatcher.get_show_trash_qt()) {
             trashswitcher.switchedOn = true;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "recyclebin", "true");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "recyclebin", "true");
         }
         else {
             trashswitcher.switchedOn = false;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "recyclebin", "false");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "recyclebin", "false");
         }
 
         if (sessiondispatcher.get_show_devices_qt()) {
             deviceswitcher.switchedOn = true;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "device", "true");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "device", "true");
         }
         else {
             deviceswitcher.switchedOn = false;
-            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "device", "false");
+//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "device", "false");
         }
     }
 
@@ -201,6 +201,16 @@ Rectangle {
                     }
                 }
             }
+//            Common.Button {
+//                hoverimage: "blue2.png"
+//                text: qsTr("Restore")//恢复默认
+//                width: 105
+//                height: 30
+//                onClicked: {
+//                    //20140219
+//                    sessiondispatcher.set_default_theme_qt("icontheme");
+//                }
+//            }
         }
     }
 
@@ -396,113 +406,157 @@ Rectangle {
         onOkBtnClicked: {
         }
         onRestoreBtnClicked: {
-            var defaultdesktopcontrol = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "desktopcontrol");
-            var defaultdocument = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "document");
-            var defaultnetwork = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "network");
-            var defaultrecyclebin = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "recyclebin");
-            var defaultdevice = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "device");
-            var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "icontheme");
+//            var defaultdesktopcontrol = sessiondispatcher.get_default_desktop_bool_qt("showdesktopicons");
+//            var defaultdocument = sessiondispatcher.get_default_desktop_bool_qt("homeiconvisible");
+//            var defaultnetwork = sessiondispatcher.get_default_desktop_bool_qt("networkiconvisible");
+//            var defaultrecyclebin = sessiondispatcher.get_default_desktop_bool_qt("trashiconvisible");
+//            var defaultdevice = sessiondispatcher.get_default_desktop_bool_qt("volumesvisible");
+            //20140219
+            sessiondispatcher.set_default_theme_qt("icontheme");
+            sessiondispatcher.set_default_desktop_qt("showdesktopicons");
+            if (sessiondispatcher.get_show_desktop_icons_qt()) {
+                iconswitcher.switchedOn = true;
+            }
+            else {
+                iconswitcher.switchedOn = false;
+            }
+            sessiondispatcher.set_default_desktop_qt("homeiconvisible");
+            if (sessiondispatcher.get_show_homefolder_qt()) {
+                folderswitcher.switchedOn = true;
+            }
+            else {
+                folderswitcher.switchedOn = false;
+            }
+            sessiondispatcher.set_default_desktop_qt("networkiconvisible");
+            if (sessiondispatcher.get_show_network_qt()) {
+                networkswitcher.switchedOn = true;
+            }
+            else {
+                networkswitcher.switchedOn = false;
+            }
+            sessiondispatcher.set_default_desktop_qt("trashiconvisible");
+            if (sessiondispatcher.get_show_trash_qt()) {
+                trashswitcher.switchedOn = true;
+            }
+            else {
+                trashswitcher.switchedOn = false;
+            }
+            sessiondispatcher.set_default_desktop_qt("volumesvisible");
+            if (sessiondispatcher.get_show_devices_qt()) {
+                deviceswitcher.switchedOn = true;
+            }
+            else {
+                deviceswitcher.switchedOn = false;
+            }
 
-            var desktopcontrolFlag;
-            var documentFlag;
-            var networkFlag;
-            var recyclebinFlag;
-            var deviceFlag;
-            if(iconswitcher.switchedOn) {
-                desktopcontrolFlag = "true";
-            }
-            else {
-                desktopcontrolFlag = "false";
-            }
-            if(folderswitcher.switchedOn) {
-                documentFlag = "true";
-            }
-            else {
-                documentFlag = "false";
-            }
-            if(networkswitcher.switchedOn) {
-                networkFlag = "true";
-            }
-            else {
-                networkFlag = "false";
-            }
-            if(trashswitcher.switchedOn) {
-                recyclebinFlag = "true";
-            }
-            else {
-                recyclebinFlag = "false";
-            }
-            if(deviceswitcher.switchedOn) {
-                deviceFlag = "true";
-            }
-            else {
-                deviceFlag = "false";
-            }
 
-            if((defaulttheme == desktopiconsetpage.selected_icon_theme) && (defaultdesktopcontrol == desktopcontrolFlag) && (defaultdocument == documentFlag) && (defaultnetwork == networkFlag) && (defaultrecyclebin == recyclebinFlag) && (defaultdevice == deviceFlag)) {
-                //友情提示：        桌面图标已经恢复为默认配置！
-                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Desktop icon has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//桌面图标已经为默认配置！
-            }
-            else {
-                if(defaulttheme != desktopiconsetpage.selected_icon_theme) {
-                    sessiondispatcher.set_icon_theme_qt(defaulttheme);
-                    desktopiconsetpage.selected_icon_theme = defaulttheme;
-                    showText.text = qsTr("[ Current icon theme is: ") + defaulttheme + " ]";//[ 当前图标主题是：
-                    iconcombo.selectedIndex = 0;
-                }
+//            var defaultdesktopcontrol = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "desktopcontrol");
+//            var defaultdocument = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "document");
+//            var defaultnetwork = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "network");
+//            var defaultrecyclebin = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "recyclebin");
+//            var defaultdevice = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "device");
+//            var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "icontheme");
 
-                if(defaultdesktopcontrol != desktopcontrolFlag) {
-                    if(defaultdesktopcontrol == "true") {
-                        iconswitcher.switchedOn = true;
-                        sessiondispatcher.set_show_desktop_icons_qt(true);
-                    }
-                    else {
-                        iconswitcher.switchedOn = false;
-                        sessiondispatcher.set_show_desktop_icons_qt(false);
-                    }
-                }
-                if(defaultdocument != documentFlag) {
-                    if(defaultdocument == "true") {
-                        folderswitcher.switchedOn = true;
-                        sessiondispatcher.set_show_homefolder_qt(true);
-                    }
-                    else {
-                        folderswitcher.switchedOn = false;
-                        sessiondispatcher.set_show_homefolder_qt(false);
-                    }
-                }
-                if(defaultnetwork != networkFlag) {
-                    if(defaultnetwork == "true") {
-                        networkswitcher.switchedOn = true;
-                        sessiondispatcher.set_show_network_qt(true);
-                    }
-                    else {
-                        networkswitcher.switchedOn = false;
-                        sessiondispatcher.set_show_network_qt(false);
-                    }
-                }
-                if(defaultrecyclebin != recyclebinFlag) {
-                    if(defaultrecyclebin == "true") {
-                        trashswitcher.switchedOn = true;
-                        sessiondispatcher.set_show_trash_qt(true);
-                    }
-                    else {
-                        trashswitcher.switchedOn = false;
-                        sessiondispatcher.set_show_trash_qt(false);
-                    }
-                }
-                if(defaultdevice != deviceFlag) {
-                    if(defaultdevice == "true") {
-                        deviceswitcher.switchedOn = true;
-                        sessiondispatcher.set_show_devices_qt(true);
-                    }
-                    else {
-                        deviceswitcher.switchedOn = false;
-                        sessiondispatcher.set_show_devices_qt(false);
-                    }
-                }
-                statusImage.visible = true;
-            }
+//            var desktopcontrolFlag;
+//            var documentFlag;
+//            var networkFlag;
+//            var recyclebinFlag;
+//            var deviceFlag;
+//            if(iconswitcher.switchedOn) {
+//                desktopcontrolFlag = "true";
+//            }
+//            else {
+//                desktopcontrolFlag = "false";
+//            }
+//            if(folderswitcher.switchedOn) {
+//                documentFlag = "true";
+//            }
+//            else {
+//                documentFlag = "false";
+//            }
+//            if(networkswitcher.switchedOn) {
+//                networkFlag = "true";
+//            }
+//            else {
+//                networkFlag = "false";
+//            }
+//            if(trashswitcher.switchedOn) {
+//                recyclebinFlag = "true";
+//            }
+//            else {
+//                recyclebinFlag = "false";
+//            }
+//            if(deviceswitcher.switchedOn) {
+//                deviceFlag = "true";
+//            }
+//            else {
+//                deviceFlag = "false";
+//            }
+
+//            if((defaulttheme == desktopiconsetpage.selected_icon_theme) && (defaultdesktopcontrol == desktopcontrolFlag) && (defaultdocument == documentFlag) && (defaultnetwork == networkFlag) && (defaultrecyclebin == recyclebinFlag) && (defaultdevice == deviceFlag)) {
+//                //友情提示：        桌面图标已经恢复为默认配置！
+//                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Desktop icon has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//桌面图标已经为默认配置！
+//            }
+//            else {
+//                if(defaulttheme != desktopiconsetpage.selected_icon_theme) {
+//                    sessiondispatcher.set_icon_theme_qt(defaulttheme);
+//                    desktopiconsetpage.selected_icon_theme = defaulttheme;
+//                    showText.text = qsTr("[ Current icon theme is: ") + defaulttheme + " ]";//[ 当前图标主题是：
+//                    iconcombo.selectedIndex = 0;
+//                }
+
+//                if(defaultdesktopcontrol != desktopcontrolFlag) {
+//                    if(defaultdesktopcontrol == "true") {
+//                        iconswitcher.switchedOn = true;
+//                        sessiondispatcher.set_show_desktop_icons_qt(true);
+//                    }
+//                    else {
+//                        iconswitcher.switchedOn = false;
+//                        sessiondispatcher.set_show_desktop_icons_qt(false);
+//                    }
+//                }
+//                if(defaultdocument != documentFlag) {
+//                    if(defaultdocument == "true") {
+//                        folderswitcher.switchedOn = true;
+//                        sessiondispatcher.set_show_homefolder_qt(true);
+//                    }
+//                    else {
+//                        folderswitcher.switchedOn = false;
+//                        sessiondispatcher.set_show_homefolder_qt(false);
+//                    }
+//                }
+//                if(defaultnetwork != networkFlag) {
+//                    if(defaultnetwork == "true") {
+//                        networkswitcher.switchedOn = true;
+//                        sessiondispatcher.set_show_network_qt(true);
+//                    }
+//                    else {
+//                        networkswitcher.switchedOn = false;
+//                        sessiondispatcher.set_show_network_qt(false);
+//                    }
+//                }
+//                if(defaultrecyclebin != recyclebinFlag) {
+//                    if(defaultrecyclebin == "true") {
+//                        trashswitcher.switchedOn = true;
+//                        sessiondispatcher.set_show_trash_qt(true);
+//                    }
+//                    else {
+//                        trashswitcher.switchedOn = false;
+//                        sessiondispatcher.set_show_trash_qt(false);
+//                    }
+//                }
+//                if(defaultdevice != deviceFlag) {
+//                    if(defaultdevice == "true") {
+//                        deviceswitcher.switchedOn = true;
+//                        sessiondispatcher.set_show_devices_qt(true);
+//                    }
+//                    else {
+//                        deviceswitcher.switchedOn = false;
+//                        sessiondispatcher.set_show_devices_qt(false);
+//                    }
+//                }
+//                statusImage.visible = true;
+//            }
         }
     }
     Timer {

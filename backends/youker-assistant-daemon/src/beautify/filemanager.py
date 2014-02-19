@@ -177,6 +177,10 @@ if __name__ == '__main__':
     #else:
     #    fm.set_thumbnail_cache_size(512)
 
-    #aa = fm.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
-    #print aa
-    fm.set_default_schema_value('org.gnome.desktop.media-handling', 'automount', 'boolean')
+    aa = fm.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
+    print aa
+    #fm.set_default_schema_value('org.gnome.desktop.media-handling', 'automount', 'boolean')
+
+    bb = fm.get_default_schema_value('org.gnome.nautilus.desktop', 'font')
+    print bb
+

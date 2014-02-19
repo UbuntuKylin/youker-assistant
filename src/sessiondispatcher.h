@@ -119,6 +119,20 @@ public:
     //通过键得到对应的单个信息的值
     Q_INVOKABLE QString getSingleInfo(QString key);
 
+    /*-------------------get and set default value-------------------*/
+    //获取和设置字体默认值:theme.py
+    Q_INVOKABLE QString get_default_theme_sring_qt(QString schema, QString key);
+    Q_INVOKABLE double get_default_theme_double_qt(QString schema, QString key);
+    Q_INVOKABLE void set_default_theme_qt(QString flag/*QString schema, QString key, QString type*/);
+    //获取和设置字体默认值:desktop.py
+    Q_INVOKABLE bool get_default_desktop_bool_qt(QString schema, QString key);
+    Q_INVOKABLE void set_default_desktop_qt(QString flag);
+    //获取和设置字体默认值:sound.py
+    Q_INVOKABLE QString get_default_sound_string_qt(QString schema, QString key);
+    Q_INVOKABLE void set_default_sound_qt(QString flag);
+
+
+
     /*-------------------desktop of beauty-------------------*/
     Q_INVOKABLE bool set_show_desktop_icons_qt(bool flag);
     Q_INVOKABLE bool get_show_desktop_icons_qt();

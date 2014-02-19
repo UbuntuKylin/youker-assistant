@@ -21,6 +21,19 @@ import gsettings
 class Desktop:
 
     # ---------------desktopicon---------------
+    # -----------------默认值-----------------
+    # Get Default Value
+    def get_default_schema_value(self, schema, key):
+        return gsettings.get_schema_value(schema, key)
+
+    # Set Default Value
+    def set_default_schema_value(self, schema, key, type):
+        default_value = self.get_default_schema_value(schema, key)
+        if default_value is not None:
+            return gsettings.set(schema, None, key, type, default_value)
+        else:
+            raise NotImplemented
+    # ----------------------------------
 
     # show desktop icons, True/False
     def set_show_desktop_icons(self, flag):

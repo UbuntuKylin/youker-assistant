@@ -48,7 +48,7 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             systemdispatcher.ready_show_app_page(flag);
-            pageStack.push(softwarepage);
+//            pageStack.push(softwarepage);
         }
     }
 }

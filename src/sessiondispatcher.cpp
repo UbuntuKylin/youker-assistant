@@ -114,7 +114,7 @@ void SessionDispatcher::exit_qt() {
 void SessionDispatcher::connectHttpServer(){
     qDebug()<<"start to connect every 30 minutes...";
     //心跳
-    QString requestData = QString("http://210.209.123.136/yk/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
+    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 }
@@ -668,6 +668,84 @@ void SessionDispatcher::set_cursor_size_qt(int size) {
 }
 
 /*-----------------------------font of beauty-----------------------------*/
+QString SessionDispatcher::get_default_theme_sring_qt(QString schema, QString key) {
+    QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", schema, key);
+    return reply.value();
+}
+
+double SessionDispatcher::get_default_theme_double_qt(QString schema, QString key) {
+    QDBusReply<double> reply = sessioniface->call("get_default_font_double", schema, key);
+    return reply.value();
+}
+
+void SessionDispatcher::set_default_theme_qt(QString flag/*QString schema, QString key, QString type*/) {
+//    sessioniface->call("set_default_font", schema, key, type);
+    //-------------------字体-------------------
+    if(flag == "defaultfont") {
+        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "font-name", "string");
+    }
+    else if(flag == "desktopfont") {
+        sessioniface->call("set_default_font", "org.gnome.nautilus.desktop", "font", "string");
+    }
+    else if(flag == "monospacefont") {
+        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "monospace-font-name", "string");
+    }
+    else if(flag == "globalfontscaling") {
+        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "text-scaling-factor", "double");
+    }
+    else if(flag == "documentfont") {
+        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "document-font-name", "string");
+    }
+    else if(flag == "titlebarfont") {
+        sessioniface->call("set_default_font", "org.gnome.desktop.wm.preferences", "titlebar-font", "string");
+    }
+
+    //-------------------桌面图标-------------------
+    else if(flag == "icontheme") {//图标主题
+        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "icon-theme", "string");
+    }
+    else if(flag == "mousetheme") {//鼠标指针主题
+        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "cursor-theme", "string");
+    }
+}
+
+bool SessionDispatcher::get_default_desktop_bool_qt(QString schema, QString key) {
+    QDBusReply<bool> reply = sessioniface->call("get_default_desktop_bool", schema, key);
+    return reply.value();
+}
+
+void SessionDispatcher::set_default_desktop_qt(QString flag) {
+    if(flag == "showdesktopicons") {//显示桌面图标
+        sessioniface->call("set_default_desktop", "org.gnome.desktop.background", "show-desktop-icons", "boolean");
+    }
+    else if(flag == "homeiconvisible") {//显示主文件夹
+        sessioniface->call("set_default_desktop", "org.gnome.nautilus.desktop", "home-icon-visible", "boolean");
+    }
+    else if(flag == "networkiconvisible") {//显示网络
+        sessioniface->call("set_default_desktop", "org.gnome.nautilus.desktop", "network-icon-visible", "boolean");
+    }
+    else if(flag == "trashiconvisible") {//显示回收站
+        sessioniface->call("set_default_desktop", "org.gnome.nautilus.desktop", "trash-icon-visible", "boolean");
+    }
+    else if(flag == "volumesvisible") {//显示挂载卷标
+        sessioniface->call("set_default_desktop", "org.gnome.nautilus.desktop", "volumes-visible", "boolean");
+    }
+}
+
+
+QString SessionDispatcher::get_default_sound_string_qt(QString schema, QString key) {
+    QDBusReply<QString> reply = sessioniface->call("get_default_sound_string", schema, key);
+    return reply.value();
+}
+
+void SessionDispatcher::set_default_sound_qt(QString flag) {
+    if(flag == "soundtheme") {//声音主题
+        sessioniface->call("set_default_sound", "org.gnome.desktop.sound", "theme-name", "string");
+    }
+}
+
+
+
 QString SessionDispatcher::get_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_font");
     return reply.value();

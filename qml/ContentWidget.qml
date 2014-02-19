@@ -85,18 +85,18 @@ Item {
                     visible: false
                     HomeView.SystemBox {}
                 }
-                Common.Page {
-                    id: softwarerecommend
-                    visible: false
-                    HomeView.SoftWareRecommend {}
-                }
+//                Common.Page {
+//                    id: softwarerecommend
+//                    visible: false
+//                    HomeView.SoftWareRecommend {}
+//                }
 
                 //SoftWare-pages
-                Common.Page {
-                    id: softwarepage
-                    visible: false
-                    HomeView.SoftwarePage {}
-                }
+//                Common.Page {
+//                    id: softwarepage
+//                    visible: false
+//                    HomeView.SoftwarePage {}
+//                }
                 //ProcessManager page
                 Common.Page {
                     id: processmanagerpage
@@ -162,11 +162,11 @@ Item {
                     visible: false
                     SysSettings.TouchpadSet {}
                 }
-                Common.Page {
-                    id: filemanagerpage
-                    visible: false
-                    SysSettings.FileManager {}
-                }
+//                Common.Page {
+//                    id: filemanagerpage
+//                    visible: false
+//                    SysSettings.FileManager {}
+//                }
                 Common.Page {
                     id: fcitxConfigtoolpage
                     visible: false

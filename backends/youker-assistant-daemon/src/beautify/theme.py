@@ -28,6 +28,20 @@ class Theme:
 
     # ---------------themes---------------
 
+    # -----------------默认值-----------------
+    # Get Default Value
+    def get_default_schema_value(self, schema, key):
+        return gsettings.get_schema_value(schema, key)
+
+    # Set Default Value
+    def set_default_schema_value(self, schema, key, type):
+        default_value = self.get_default_schema_value(schema, key)
+        if default_value is not None:
+            return gsettings.set(schema, None, key, type, default_value)
+        else:
+            raise NotImplemented
+    # ----------------------------------
+
     # get themes
     def get_themes(self):
         dirs = ('/usr/share/themes', os.path.join(self.homedir, ".themes"))
@@ -190,8 +204,13 @@ if __name__ == '__main__':
     ttt = Theme()
     # print ttt.get_font_zoom()
     # ttt.set_font_zoom(1.0)
-    ttt.set_monospace_font('Ubuntu Mono 13')
-    print ttt.get_monospace_font()
+    #ttt.set_monospace_font('Ubuntu Mono 13')
+    #print ttt.get_monospace_font()
+
+    #aa = ttt.get_default_schema_value('org.gnome.desktop.interface', 'font-name')
+    #print aa
+    ttt.set_default_schema_value('org.gnome.desktop.interface', 'font-name', 'string')
+
     # print ttt.get_theme()
     # print ttt.get_icon_theme()
     # print ttt.get_cursor_theme()

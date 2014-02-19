@@ -58,7 +58,7 @@ Rectangle {
         soundeffectspage.selected_sound_theme = current_sound;
         soundlist.unshift(current_sound);
         //将系统初始的声音主题写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "soundtheme", current_sound);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "soundtheme", current_sound);
         choices.clear();
         for(var i=0; i < soundlist.length; i++) {
             choices.append({"themetext": soundlist[i]});
@@ -182,18 +182,24 @@ Rectangle {
                 width: 105
                 height: 30
                 onClicked: {
-                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "soundtheme");
-                    if(defaulttheme == soundeffectspage.selected_sound_theme) {
-                        //友情提示：       当前主题已经为默认主题!
-                        sessiondispatcher.showWarningDialog(qsTr("Tips: "),qsTr("The current theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//当前主题已经为默认主题！
-                    }
-                    else {
-                        systemdispatcher.restore_all_sound_file_qt(defaulttheme);
-                        soundeffectspage.selected_sound_theme = defaulttheme;
-                        showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
-                        iconcombo.selectedIndex = 0;
-                        statusImage.visible = true;
-                    }
+                    //20140219
+                    sessiondispatcher.set_default_sound_qt("soundtheme");
+                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
+                    showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
+                    iconcombo.selectedIndex = 0;
+                    statusImage.visible = true;
+//                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "soundtheme");
+//                    if(defaulttheme == soundeffectspage.selected_sound_theme) {
+//                        //友情提示：       当前主题已经为默认主题!
+//                        sessiondispatcher.showWarningDialog(qsTr("Tips: "),qsTr("The current theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//当前主题已经为默认主题！
+//                    }
+//                    else {
+//                        systemdispatcher.restore_all_sound_file_qt(defaulttheme);
+//                        soundeffectspage.selected_sound_theme = defaulttheme;
+//                        showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
+//                        iconcombo.selectedIndex = 0;
+//                        statusImage.visible = true;
+//                    }
                 }
             }
             Timer {

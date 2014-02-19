@@ -26,7 +26,7 @@ Rectangle {
     property int fontSize: 12
     property color fontColor: "black"
     property string document_font: "Helvetica"
-    property string selected_font: ""//存放用户选择确认后的字体
+//    property string selected_font: ""//存放用户选择确认后的字体
     property string actiontitle: qsTr("Document font settings")//文档字体设置
     property string actiontext: qsTr("According to personal preferences to set document fonts, click the 'Restore' button, can be restored to the state before the font settings.")//根据个人喜好设置文档字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
     //背景
@@ -37,9 +37,9 @@ Rectangle {
 
     Component.onCompleted: {
         documentfontpage.document_font = sessiondispatcher.get_document_font_qt();
-        documentfontpage.selected_font = documentfontpage.document_font;
+//        documentfontpage.selected_font = documentfontpage.document_font;
         //将系统初始的当前文档字体写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("font", "documentfont", documentfontpage.document_font);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("font", "documentfont", documentfontpage.document_font);
     }
 
     Connections
@@ -48,12 +48,12 @@ Rectangle {
         onNotifyFontStyleToQML: {
             if (font_style == "documentfont") {
                 docufont.text = sessiondispatcher.get_document_font_qt();
-                documentfontpage.selected_font = docufont.text;
+//                documentfontpage.selected_font = docufont.text;
             }
-            else if (font_style == "documentfont_default") {
-                docufont.text = sessiondispatcher.get_document_font_qt();
-                documentfontpage.selected_font = docufont.text;
-            }
+//            else if (font_style == "documentfont_default") {
+//                docufont.text = sessiondispatcher.get_document_font_qt();
+//                documentfontpage.selected_font = docufont.text;
+//            }
         }
     }
 
@@ -165,24 +165,28 @@ Rectangle {
             width: 105
             height: 30
             onClicked: {
-                //Sans 11
-                var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "documentfont");
-                if(defaultfont == documentfontpage.selected_font) {
-                    //友情提示：      您系统的文档字体已经恢复为默认字体！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's document font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的文档字体已经为默认字体！
-                }
-                else {
-                    sessiondispatcher.set_document_font_qt_default(defaultfont);
-                    documentfontpage.selected_font = defaultfont;
-                    sessiondispatcher.restore_default_font_signal("documentfont_default");
-                    statusImage.visible = true;
-                }
+                //20140219
+                sessiondispatcher.set_default_theme_qt("documentfont");
+                docufont.text = sessiondispatcher.get_document_font_qt();
+//                sessiondispatcher.set_default_theme_qt("org.gnome.desktop.interface", "document-font-name", "string");
+//                //Sans 11
+//                var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "documentfont");
+//                if(defaultfont == documentfontpage.selected_font) {
+//                    //友情提示：      您系统的文档字体已经恢复为默认字体！
+//                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's document font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的文档字体已经为默认字体！
+//                }
+//                else {
+//                    sessiondispatcher.set_document_font_qt_default(defaultfont);
+//                    documentfontpage.selected_font = defaultfont;
+//                    sessiondispatcher.restore_default_font_signal("documentfont_default");
+//                    statusImage.visible = true;
+//                }
             }
         }
         Timer {
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: statusImage.visible = false
-             }
+            interval: 5000; running: true; repeat: true
+            onTriggered: statusImage.visible = false
+        }
     }
 
 

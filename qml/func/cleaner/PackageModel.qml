@@ -31,7 +31,7 @@ Item {
         {
             target: systemdispatcher
             //得到数据，显示在进度条上
-            onSendProgressToQML: {//onSendDynamicSoftwareProgressQML
+            onSendProgressToQML: {
                 if(type == "apt_start") {
                     progress.value = 0;
                     home.state = "MaskLayerState";
