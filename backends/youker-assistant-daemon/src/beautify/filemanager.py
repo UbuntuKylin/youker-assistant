@@ -135,8 +135,10 @@ if __name__ == '__main__':
     fm = FileManager()
     #value = fm.get_location_replace_pathbar()
     #if(value):
+    #    print "yes"
     #    fm.set_location_replace_pathbar(False)
     #else:
+    #    print "False"
     #    fm.set_location_replace_pathbar(True)
 
     #value = fm.get_auto_mount_media()
@@ -177,10 +179,18 @@ if __name__ == '__main__':
     #else:
     #    fm.set_thumbnail_cache_size(512)
 
+<<<<<<< TREE
     aa = fm.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
     print aa
+=======
+    #aa = fm.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
+    #print aa
+>>>>>>> MERGE-SOURCE
     #fm.set_default_schema_value('org.gnome.desktop.media-handling', 'automount', 'boolean')
+<<<<<<< TREE
 
     bb = fm.get_default_schema_value('org.gnome.nautilus.desktop', 'font')
     print bb
 
+=======
+>>>>>>> MERGE-SOURCE

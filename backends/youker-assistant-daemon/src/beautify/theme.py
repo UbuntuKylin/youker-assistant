@@ -200,17 +200,64 @@ class Theme:
             'text-scaling-factor',
             'double', zoom)
 
+    # -------------------------平滑性----------------------------------
+    # get all hinting value
+    def get_all_hinting(self):
+        return ['none','slight','medium','full']
+    
+    # get current hinting
+    def get_current_hinting(self):
+        return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
+            None,
+            'hinting',
+            'string')
+
+    # set hinting
+    def set_hinting(self,value):
+        return gsettings.set('org.gnome.settings-daemon.plugins.xsettings',
+            None,
+            'hinting',
+            'string',value)
+
+    # -------------------------反锯齿----------------------------------
+    # get all antialiasing value
+    def get_all_antialiasing(self):
+        return ['none','grayscale','rgba']
+
+    # get current antialiasing
+    def get_current_antialiasing(self):
+        return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
+            None,
+            'antialiasing',
+            'string')
+
+    # set antialiasing
+    def set_antialiasing(self,value):
+        return gsettings.set('org.gnome.settings-daemon.plugins.xsettings',
+            None,
+            'antialiasing',
+            'string',value)
+
 if __name__ == '__main__':
     ttt = Theme()
+    print ttt.get_current_hinting()
+    print ttt.get_current_antialiasing()
+    # print ttt.set_hinting('none')
+    # print ttt.set_antialiasing('none')
+    # print ttt.get_font()
+    # print ttt.set_font('Ubuntu 14')
     # print ttt.get_font_zoom()
     # ttt.set_font_zoom(1.0)
     #ttt.set_monospace_font('Ubuntu Mono 13')
     #print ttt.get_monospace_font()
+<<<<<<< TREE
 
     #aa = ttt.get_default_schema_value('org.gnome.desktop.interface', 'font-name')
     #print aa
     ttt.set_default_schema_value('org.gnome.desktop.interface', 'font-name', 'string')
 
+=======
+>>>>>>> MERGE-SOURCE
     # print ttt.get_theme()
     # print ttt.get_icon_theme()
     # print ttt.get_cursor_theme()
