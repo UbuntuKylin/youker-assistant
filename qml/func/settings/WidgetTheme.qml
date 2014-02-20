@@ -22,7 +22,7 @@ Rectangle {
     id: widgetthemepage
     width: parent.width
     height: 475
-    property string actiontitle: qsTr("Window theme settings")//窗口主题设置
+    property string actiontitle: qsTr("GTK Theme settings")//GTK主题设置
     property string actiontext: qsTr("Choose the theme what you want. The first is the theme of the currently used.")//选择您想设置的主题。第一个主题为系统当前使用的主题。
     property string selected_theme: ""
     property int themeIndex: 0//序号
@@ -45,7 +45,8 @@ Rectangle {
         syslist.unshift(widgetthemepage.init_theme);
         themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
-            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
+            themeModel.append(
+                        {"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
             widgetthemepage.gredview_num += 1;
             if (i!=0 && syslist[i] == widgetthemepage.init_theme){
                 widgetthemepage.gredview_num -= 1;
@@ -74,7 +75,7 @@ Rectangle {
                  spacing: 10
                  Image {
                     id: seticon
-                    source: icon
+                    source: icon ? icon : "../../img/icons/disappear.png"
                     width: 125
                     height: 125
                     anchors.horizontalCenter: parent.horizontalCenter

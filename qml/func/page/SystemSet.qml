@@ -84,7 +84,7 @@ Item {
                             }
                             Text {
                                 id: b1
-                                text: qsTr("WindowTheme")//窗口主题
+                                text: qsTr("GTK Theme")//GTK主题
                                 visible: false
                             }
                             Text {
@@ -111,7 +111,7 @@ Item {
                         Row {
                             spacing: 18
                             Common.StyleButton {
-                                wordname: qsTr("WindowTheme"); width: b1.width//窗口主题
+                                wordname: qsTr("GTK Theme"); width: b1.width//GTK主题
 //                                flag: "WidgetTheme"
                                 onClicked: {
                                     pageStack.push(widgetthemepage);
