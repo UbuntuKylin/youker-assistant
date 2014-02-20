@@ -24,7 +24,7 @@ Rectangle {
     id: home; width: parent.width; height: 475
     color: "transparent"
     property int itemNum: 4//每个模块的子项个数
-    property int viewSpace: 20
+    property int viewSpace: 10
     property bool firstFlag: false
     property bool secondFlag: false
     property bool thirdFlag: false
@@ -142,7 +142,7 @@ Rectangle {
                 font.pixelSize: 14
                 color: "#7a7a7a"
                 width: 150
-                height: 20
+//                height: 20
             }
             Text {
                 id: slotText
@@ -151,7 +151,7 @@ Rectangle {
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
-                height: 20
+//                height: 20
             }
         }
     }
@@ -181,7 +181,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 20
         anchors.top: titleRow.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 20
         height: 390
         width: 680 - 4
         Item {
