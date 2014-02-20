@@ -545,6 +545,14 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------unity-------------------------
 
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='i')
+    def get_default_unity(self, name, key):
+        return self.unityconf.get_default_schema_value(name, key)
+
+    @dbus.service.method(INTERFACE, in_signature='ssi', out_signature='')
+    def set_default_unity(self, key, type, value):
+        self.unityconf.set_default_schema_value(key, type, value)
+
     # set launcher auto hide mode
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
     def set_launcher_autohide(self, flag):
@@ -706,6 +714,17 @@ class SessionDaemon(dbus.service.Object):
         return self.themeconf.set_font_zoom(zoom)
 
     # -------------------------scrollbars-------------------------
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
+    def get_default_system_sring(self, schema, key):
+        return self.systemconf.get_default_schema_value(schema, key)
+
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='b')
+    def get_default_system_bool(self, schema, key):
+        return self.systemconf.get_default_schema_value(schema, key)
+
+    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+    def set_default_system(self, schema, key, type):
+        self.systemconf.set_default_schema_value(schema, key, type)
 
     # set scrollbars mode overlay
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')

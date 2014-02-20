@@ -34,6 +34,8 @@ Rectangle {
     property string titlebar_font: "Helvetica"
     property double zoom: 1.0
 
+    property bool first_slider_value: false //系统初始化时会使value的值为0.5，需要过滤掉
+
 //    property string selected_current_font: ""//存放用户选择确认后的当前字体
 //    property string selected_desktop_font: ""//存放用户选择确认后的桌面字体
 //    property string selected_monospace_font: ""//存放用户选择确认后的等宽字体
@@ -510,7 +512,7 @@ Rectangle {
             top: zoomrow.bottom
             topMargin: 10
         }
-        spacing: 185
+        spacing: 185 + 105 + 26
         Row{
             Common.Label {
                 id: fontzoomlabel
@@ -522,13 +524,23 @@ Rectangle {
             }
             Common.Slider {
                 id: slider
-                minimumValue: 0.1
-                maximumValue: 2
+                minimumValue: 0.5
+                maximumValue: 3.0
                 width: 150
                 value: sessiondispatcher.get_font_zoom_qt()
+                onValueChanged: {
+                    if(defaultfontpage.first_slider_value ){  //系统初始化时会使value的值为0.5（最小值），需要过滤掉
+                        sessiondispatcher.set_font_zoom_qt(slider.value);
+                    }
+                    if(slider.value == 0.5)  //系统初始化时会使value的值为0.5（最小值），需要过滤掉
+                    {
+                        defaultfontpage.first_slider_value = true;
+                    }
+                }
                 stepSize: 0.1
                 animated: true
             }
+
             Text {
                 id: displaynum
                 text: slider.value
@@ -537,28 +549,39 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
-        Row{
-            spacing: 26
-            Common.Button {
-                id: okBtn
-                width: 105;height: 30
-                hoverimage: "green2.png"
-                text: qsTr("OK")//确定
-                onClicked: {
-                    sessiondispatcher.set_font_zoom_qt(slider.value);
-//                    defaultfontpage.selected_zoom = slider.value;
-                    statusImage.visible = true;
-                }
+        Common.Button {
+            hoverimage: "blue2.png"
+            text: qsTr("Restore")//恢复默认
+            width: 105
+            height: 30
+            onClicked: {
+                //20140219
+                sessiondispatcher.set_default_theme_qt("globalfontscaling");
+                slider.value = sessiondispatcher.get_font_zoom_qt();
             }
-            Common.Button {
-                hoverimage: "blue2.png"
-                text: qsTr("Restore")//恢复默认
-                width: 105
-                height: 30
-                onClicked: {
-                    //20140219
-                    sessiondispatcher.set_default_theme_qt("globalfontscaling");
-                    slider.value = sessiondispatcher.get_font_zoom_qt();
+        }
+//        Row{
+//            spacing: 26
+//            Common.Button {
+//                id: okBtn
+//                width: 105;height: 30
+//                hoverimage: "green2.png"
+//                text: qsTr("OK")//确定
+//                onClicked: {
+//                    sessiondispatcher.set_font_zoom_qt(slider.value);
+////                    defaultfontpage.selected_zoom = slider.value;
+//                    statusImage.visible = true;
+//                }
+//            }
+//            Common.Button {
+//                hoverimage: "blue2.png"
+//                text: qsTr("Restore")//恢复默认
+//                width: 105
+//                height: 30
+//                onClicked: {
+//                    //20140219
+//                    sessiondispatcher.set_default_theme_qt("globalfontscaling");
+//                    slider.value = sessiondispatcher.get_font_zoom_qt();
 //                    sessiondispatcher.set_default_theme_qt("org.gnome.desktop.interface", "text-scaling-factor", "double");
 //                    var defaultvalue = sessiondispatcher.read_default_configure_from_qsetting_file("font", "zoom");
 //                    if(defaultvalue == defaultfontpage.selected_zoom) {
@@ -571,9 +594,9 @@ Rectangle {
 //                        slider.value = defaultvalue;
 //                        statusImage.visible = true;
 //                    }
-                }
-            }
-        }
+//                }
+//            }
+//        }
     }
 
     //顶层工具栏

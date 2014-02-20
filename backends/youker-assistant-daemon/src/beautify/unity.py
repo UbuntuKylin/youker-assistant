@@ -17,22 +17,31 @@
 ### END LICENSE
 
 import gsettings
+from compizsettings import CompizSetting
 
 class Unity:
+    '''if compiz: key is icon_size; else if gsettins: key is icon-size'''
+
+    #def __init__(self, name, key):
+    #    self.setting = CompizSetting("%s.%s" % (name, key))
 
     # ---------------launcher---------------
     # -----------------默认值-----------------
     # Get Default Value
-    def get_default_schema_value(self, schema, key):
-        return gsettings.get_schema_value(schema, key)
+    def get_default_schema_value(self, name, key):
+        compizsetting = CompizSetting("%s.%s" % (name, key))
+        return compizsetting.get_schema_value()
 
-    # Set Default Value
-    def set_default_schema_value(self, schema, key, type):
-        default_value = self.get_default_schema_value(schema, key)
-        if default_value is not None:
-            return gsettings.set(schema, None, key, type, default_value)
-        else:
-            raise NotImplemented
+    # Set Default Value  min=32, max=64, step=16, key="unityshell.icon_size"
+    #def set_default_schema_value(self, key, name, type, value):
+    def set_default_schema_value(self, key, type, value):
+        #default_value = self.get_default_schema_value(name, key)
+        #if default_value is not None:
+        return gsettings.set('org.compiz.unityshell',
+                            '/org/compiz/profiles/unity/plugins/unityshell/',
+                            key, type, value)
+        #else:
+        #    raise NotImplemented
 
     # launcher auto hide mode, True/False
     def set_launcher_autohide(self, flag):
@@ -90,11 +99,30 @@ class Unity:
         else:
             return False
 
-# if __name__ == '__main__':
-# 	uuu = Unity()
-	# print uuu.get_launcher_icon_size()
-	# print uuu.get_launcher_have_showdesktopicon()
-	# uuu.set_launcher_autohide(0)
-	# print uuu.get_launcher_autohide()
-	# uuu.set_launcher_have_showdesktopicon(True)
-	# uuu.set_launcher_icon_size(48)
+if __name__ == '__main__':
+    uuu = Unity()
+    bb = uuu.get_default_schema_value("unityshell", "icon_size")
+    aa = uuu.get_default_schema_value("unityshell", "launcher_hide_mode")
+    #aa = uuu.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
+    #uuu = Unity("unityshell", "icon_size")
+    #aa = uuu.get_launcher_icon_size_test()
+    print "bb->"
+    print bb
+    print "aa->"
+    print aa
+    uuu.set_default_schema_value('icon-size', 'int', bb)
+
+    #uuu.set_default_schema_value('launcher-hide-mode', 'int', aa)
+
+    #bb = uuu.get_default_launcher_icon_size()
+    #print "bb->"
+    #print bb
+    #print(type(bb))
+    #uuu.reset_default_launcher_icon_size(bb)
+    #uuu.set_launcher_icon_size(48)
+    # print uuu.get_launcher_icon_size()
+    # print uuu.get_launcher_have_showdesktopicon()
+    # uuu.set_launcher_autohide(0)
+    # print uuu.get_launcher_autohide()
+    # uuu.set_launcher_have_showdesktopicon(True)
+    # uuu.set_launcher_icon_size(48)

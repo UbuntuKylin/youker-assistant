@@ -20,6 +20,19 @@ import gsettings
 
 class System:
 
+    # -----------------默认值-----------------
+    # Get Default Value
+    def get_default_schema_value(self, schema, key):
+        return gsettings.get_schema_value(schema, key)
+
+    # Set Default Value
+    def set_default_schema_value(self, schema, key, type):
+        default_value = self.get_default_schema_value(schema, key)
+        if default_value is not None:
+            return gsettings.set(schema, None, key, type, default_value)
+        else:
+            raise NotImplemented
+
     # ---------------scrollbars---------------
 
     # set scrollbars mode overlay
@@ -129,18 +142,32 @@ class System:
 
 if __name__ == '__main__':
     sss = System()
-    print sss.get_scrollbars_mode()
-    print sss.get_touchpad_enable()
-    print sss.get_touchscrolling_mode()
-    print sss.get_touchscrolling_use_horizontal()
-    print sss.get_window_button_align()
-    print sss.get_menus_have_icons()
+
+    #aa = sss.get_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'touchpad-enabled')
+    #print aa#True
+    #sss.set_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'touchpad-enabled', 'boolean')
+    #bb = sss.get_default_schema_value('com.canonical.desktop.interface', 'scrollbar-mode')
+    #print bb#overlay-auto
+    #sss.set_default_schema_value('com.canonical.desktop.interface', 'scrollbar-mode', 'string')
+    #cc = sss.get_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'scroll-method')
+    #print cc#two-finger-scrolling
+    #sss.set_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'scroll-method', 'string')
+    dd = sss.get_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'horiz-scroll-enabled')
+    print dd#True
+    #sss.set_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'horiz-scroll-enabled', 'boolean')
+
+    #print sss.get_scrollbars_mode()
+    #print sss.get_touchpad_enable()
+    #print sss.get_touchscrolling_mode()
+    #print sss.get_touchscrolling_use_horizontal()
+    #print sss.get_window_button_align()
+    #print sss.get_menus_have_icons()
 # 	sss.set_menus_have_icons(True)
 # 	sss.set_touchpad_enable(True)
-    sss.set_scrollbars_mode_overlay()
+    #sss.set_scrollbars_mode_overlay()
     # sss.set_scrollbars_mode_legacy()
     # sss.set_touchscrolling_mode_edge()
-    sss.set_touchscrolling_mode_twofinger()
-    sss.set_touchscrolling_use_horizontal(True)
+    #sss.set_touchscrolling_mode_twofinger()
+    #sss.set_touchscrolling_use_horizontal(True)
     # sss.set_window_button_align_left()
     # sss.set_window_button_align_right()

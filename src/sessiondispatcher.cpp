@@ -587,6 +587,21 @@ bool SessionDispatcher::get_show_devices_qt() {
 }
 
 /*-----------------------------unity of beauty-----------------------------*/
+
+int SessionDispatcher::get_default_unity_qt(QString name, QString key) {
+    QDBusReply<int> reply = sessioniface->call("get_default_unity", name, key);
+    return reply.value();
+}
+
+void SessionDispatcher::set_default_unity_qt(QString flag, int value) {
+    if(flag == "launchersize") {//launcher图标大小
+        sessioniface->call("set_default_unity", "icon-size", "int", value);
+    }
+    else if(flag == "launcherhide") {//launcher自动隐藏
+        sessioniface->call("set_default_unity", "launcher-hide-mode", "int", value);
+    }
+}
+
 bool SessionDispatcher::set_launcher_autohide_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_launcher_autohide", flag);
     return reply.value();
@@ -907,6 +922,33 @@ QString SessionDispatcher::get_scrollbars_mode_qt() {
 }
 
 /*-----------------------------touchpad of beauty-----------------------------*/
+QString SessionDispatcher::get_default_system_sring_qt(QString schema, QString key) {
+    QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", schema, key);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_default_system_bool_qt(QString schema, QString key) {
+    QDBusReply<bool> reply = sessioniface->call("get_default_system_bool", schema, key);
+    return reply.value();
+}
+
+void SessionDispatcher::set_default_system_qt(QString flag) {
+    if(flag == "touchpad-enabled") {//启用禁用触摸板
+        sessioniface->call("set_default_system", "org.gnome.settings-daemon.peripherals.touchpad", "touchpad-enabled", "boolean");
+    }
+    else if(flag == "scrollbar-mode") {//滚动条类型
+        sessioniface->call("set_default_system", "com.canonical.desktop.interface", "scrollbar-mode", "string");
+    }
+    else if(flag == "scroll-method") {//触摸板滚动条触发方式
+        sessioniface->call("set_default_system", "org.gnome.settings-daemon.peripherals.touchpad", "scroll-method", "string");
+    }
+    else if(flag == "horiz-scroll-enabled") {//触摸板横向滚动
+        sessioniface->call("set_default_system", "org.gnome.settings-daemon.peripherals.touchpad", "horiz-scroll-enabled", "boolean");
+    }
+}
+
+
+
 bool SessionDispatcher::set_touchpad_enable_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_touchpad_enable", flag);
     return reply.value();
