@@ -70,7 +70,7 @@ Rectangle {
         logo2.source = InfoGroup.judgeName(Vgavendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-            listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *2-20;
+            listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *2 + 40;
         }
         else if(num >= 3) {
             //--------------third--------------
@@ -88,7 +88,7 @@ Rectangle {
             logo3.source = InfoGroup.judgeName(Vgavendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *3-20;
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *3 + 60;
             }
             else if(num == 4) {
                 home.fourthFlag = true;
@@ -104,7 +104,7 @@ Rectangle {
                 logo4.visible = true;
                 logo4.source = InfoGroup.judgeName(Vgavendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *4-20;
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *4 + 80;
             }
         }
     }
@@ -131,7 +131,7 @@ Rectangle {
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-            listItem.height = home.itemNum*20 + (home.itemNum - 1)*home.columnSpace ;
+            listItem.height = home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 20 ;
         }
         else if(num >= 2){
             home.show_several_monitor(num);
@@ -298,7 +298,7 @@ Rectangle {
                         }
                         Item {
                             width: 680 - 4 - 30*2
-                            height: home.firstFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                            height: home.firstFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) + 20 : 0
                             ListView {
                                 id: firstView
                                 anchors.fill: parent
@@ -332,7 +332,7 @@ Rectangle {
                         }
                         Item {
                             width: 680 - 4 - 30*2
-                            height: home.secondFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                            height: home.secondFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) + 20 : 0
                             ListView {
                                 id: secondView
                                 anchors.fill: parent
@@ -361,7 +361,7 @@ Rectangle {
                         }
                         Item {
                             width: 680 - 4 - 30*2
-                            height: home.thirdFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                            height: home.thirdFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) + 20 : 0
                             ListView {
                                 id: thirdView
                                 anchors.fill: parent
@@ -390,7 +390,7 @@ Rectangle {
                         }
                         Item {
                             width: 680 - 4 - 30*2
-                            height: home.fourthFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) : 0
+                            height: home.fourthFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) + 20 : 0
                             ListView {
                                 id: fourthView
                                 anchors.fill: parent
