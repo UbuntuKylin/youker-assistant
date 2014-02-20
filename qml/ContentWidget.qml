@@ -147,16 +147,16 @@ Item {
                     visible: false
                     SysSettings.DefaultFont {}
                 }
-                Common.Page {
-                    id: documentfontpage
-                    visible: false
-                    SysSettings.DocumentFont {}
-                }
-                Common.Page {
-                    id: titlebarfontpage
-                    visible: false
-                    SysSettings.TitlebarFont {}
-                }
+//                Common.Page {
+//                    id: documentfontpage
+//                    visible: false
+//                    SysSettings.DocumentFont {}
+//                }
+//                Common.Page {
+//                    id: titlebarfontpage
+//                    visible: false
+//                    SysSettings.TitlebarFont {}
+//                }
                 Common.Page {
                     id: touchpadsetpage
                     visible: false

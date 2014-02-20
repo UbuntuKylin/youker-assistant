@@ -30,6 +30,8 @@ Rectangle {
     property string current_font: "Helvetica"
     property string desktop_font: "Helvetica"
     property string monospace_font: "Helvetica"
+    property string document_font: "Helvetica"
+    property string titlebar_font: "Helvetica"
     property double zoom: 1.0
 
 //    property string selected_current_font: ""//存放用户选择确认后的当前字体
@@ -64,6 +66,9 @@ Rectangle {
         //将系统初始的当前等宽字体写入QSetting配置文件
 //        sessiondispatcher.write_default_configure_to_qsetting_file("font", "monospacefont", defaultfontpage.monospace_font);
 
+        defaultfontpage.document_font = sessiondispatcher.get_document_font_qt();
+        defaultfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
+
         defaultfontpage.zoom = sessiondispatcher.get_font_zoom_qt();
 //        defaultfontpage.selected_zoom = defaultfontpage.zoom;
         //将系统初始的全局字体缩放写入QSetting配置文件
@@ -86,6 +91,14 @@ Rectangle {
             else if (font_style == "monospacefont") {
                 monofont.text = sessiondispatcher.get_monospace_font_qt();
 //                defaultfontpage.selected_monospace_font = monofont.text;
+            }
+            else if (font_style == "documentfont") {
+                docufont.text = sessiondispatcher.get_document_font_qt();
+//                defaultfontpage.selected_font = docufont.text;
+            }
+            else if (font_style == "titlebarfont") {//弹出字体对话框更改好字体后
+                titlefont.text = sessiondispatcher.get_window_title_font_qt();
+//                defaultfontpage.selected_font = titlefont.text;
             }
 
 //            else if (font_style == "font_default") {
@@ -163,7 +176,7 @@ Rectangle {
 
     Column {
         id: fontcolumn
-        spacing: 20
+        spacing: 10
         anchors{
             left: parent.left
             leftMargin: 80
@@ -350,6 +363,123 @@ Rectangle {
             }
         }
 
+        Row {
+            spacing: 130
+            Row{
+                spacing: 10
+                Common.Label {
+                    id: documentfontlabel
+                    width: 130
+                    text: qsTr("Document font: ")//文档字体：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Text {
+                    id: docufont
+                    text: defaultfontpage.document_font
+                    width: 200
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+            Row{
+                spacing: 26
+                Common.Button {
+                    id: docufontBtn
+                    hoverimage: "blue4.png"
+                    text: qsTr("Change fonts")//更换字体
+                    fontcolor: "#086794"
+                    width: 105
+                    height: 30
+                    onClicked: sessiondispatcher.show_font_dialog("documentfont");
+                }
+                Common.Button {
+                    hoverimage: "blue2.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 105
+                    height: 30
+                    onClicked: {
+                        //20140219
+                        sessiondispatcher.set_default_theme_qt("documentfont");
+                        docufont.text = sessiondispatcher.get_document_font_qt();
+        //                sessiondispatcher.set_default_theme_qt("org.gnome.desktop.interface", "document-font-name", "string");
+        //                //Sans 11
+        //                var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "documentfont");
+        //                if(defaultfont == documentfontpage.selected_font) {
+        //                    //友情提示：      您系统的文档字体已经恢复为默认字体！
+        //                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Your system's document font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的文档字体已经为默认字体！
+        //                }
+        //                else {
+        //                    sessiondispatcher.set_document_font_qt_default(defaultfont);
+        //                    documentfontpage.selected_font = defaultfont;
+        //                    sessiondispatcher.restore_default_font_signal("documentfont_default");
+        //                    statusImage.visible = true;
+        //                }
+                    }
+                }
+            }
+        }
+
+        Row {
+            spacing: 130
+            Row{
+                spacing: 10
+                Common.Label {
+                    id: windowtitlefontlabel
+                    width: 130
+                    text: qsTr("Titlebar font: ")//标题栏字体：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Text {
+                    id: titlefont
+                    text: defaultfontpage.titlebar_font
+                    width: 200
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+            Row{
+                spacing: 26
+                Common.Button {
+                    id: titlefontBtn
+                    hoverimage: "blue4.png"
+                    text: qsTr("Change fonts")//更换字体
+                    fontcolor: "#086794"
+                    width: 105
+                    height: 30
+                    onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
+                }
+                Common.Button {
+                    hoverimage: "blue2.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 105
+                    height: 30
+                    onClicked: {
+                        //20140219
+                        sessiondispatcher.set_default_theme_qt("titlebarfont");
+                        titlefont.text = sessiondispatcher.get_window_title_font_qt();
+        //                sessiondispatcher.set_default_theme_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");
+        //                var defaultfont = sessiondispatcher.read_default_configure_from_qsetting_file("font", "titlebarfont");
+        //                if(defaultfont == titlebarfontpage.selected_font) {
+        //                    //友情提示：        您系统的窗体标题栏字体已经为默认字体！
+        //                    sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's titlebar font is the default font!"), mainwindow.pos.x, mainwindow.pos.y);//您系统的标题栏字体已经为默认字体！
+        //                }
+        //                else {
+        //                    sessiondispatcher.set_window_title_font_qt_default(defaultfont);
+        //                    titlebarfontpage.selected_font = defaultfont;
+        //                    sessiondispatcher.restore_default_font_signal("titlebarfont_default");
+        //                    statusImage.visible = true;
+        //                }
+                    }
+                }
+            }
+        }
+
     }//Column
 
     Row {
@@ -358,7 +488,7 @@ Rectangle {
             left: parent.left
             leftMargin: 40
             top: fontcolumn.bottom
-            topMargin: 30
+            topMargin: 20
         }
         Text{
             id: zoomtitle
