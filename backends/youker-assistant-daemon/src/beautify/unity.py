@@ -21,6 +21,18 @@ import gsettings
 class Unity:
 
     # ---------------launcher---------------
+    # -----------------默认值-----------------
+    # Get Default Value
+    def get_default_schema_value(self, schema, key):
+        return gsettings.get_schema_value(schema, key)
+
+    # Set Default Value
+    def set_default_schema_value(self, schema, key, type):
+        default_value = self.get_default_schema_value(schema, key)
+        if default_value is not None:
+            return gsettings.set(schema, None, key, type, default_value)
+        else:
+            raise NotImplemented
 
     # launcher auto hide mode, True/False
     def set_launcher_autohide(self, flag):

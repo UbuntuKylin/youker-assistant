@@ -782,101 +782,107 @@
 <context>
     <name>DefaultFont</name>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="40"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="42"/>
         <source>Default font settings</source>
-        <translation>默认字体设置</translation>
+        <translation>字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="41"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="43"/>
         <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings. </source>
         <translation>根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="124"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="140"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="149"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="165"/>
         <source>Font Settings</source>
         <translation>字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="178"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="194"/>
         <source>Default Font: </source>
         <translation>默认字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="199"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="253"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="308"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="215"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="275"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="334"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="392"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="451"/>
         <source>Change fonts</source>
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="206"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="261"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="316"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="408"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="222"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="283"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="342"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="400"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="459"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="555"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="213"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="268"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="373"/>
+        <source>Document font: </source>
+        <translation>文档字体：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="432"/>
+        <source>Titlebar font: </source>
+        <translation>标题栏字体：</translation>
+    </message>
+    <message>
         <source>Tips:</source>
-        <translation>友情提示：</translation>
+        <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="213"/>
         <source>Has been restored to the default font!</source>
-        <translation>已经恢复默认字体！</translation>
+        <translation type="obsolete">已经恢复默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="233"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="255"/>
         <source>Desktop Font: </source>
         <translation>桌面字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="268"/>
         <source>Your system&apos;s desktop font is the default font!</source>
-        <translation>您系统的桌面字体已经为默认字体！</translation>
+        <translation type="obsolete">您系统的桌面字体已经为默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="288"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="314"/>
         <source>Monospace Font: </source>
         <translation>等宽字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="323"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="415"/>
         <source>Tips: </source>
-        <translation>友情提示：</translation>
+        <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="323"/>
         <source>Your system&apos;s monospace font is the default font!</source>
-        <translation>您系统的等宽字体已经为默认字体！</translation>
+        <translation type="obsolete">您系统的等宽字体已经为默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="348"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="495"/>
         <source>Zoom Mode</source>
         <translation>缩放设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="371"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="518"/>
         <source>Global Font Scaling: </source>
         <translation>全局字体缩放：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="399"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="546"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="415"/>
         <source>Your system&apos;s global font scaling is the default mode!</source>
-        <translation>您系统的全局字体缩放已经为默认设置！</translation>
+        <translation type="obsolete">您系统的全局字体缩放已经为默认设置！</translation>
     </message>
 </context>
 <context>
@@ -898,7 +904,6 @@
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="43"/>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="199"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="450"/>
         <source>[ Current icon theme is: </source>
         <translation>[ 当前图标主题是：</translation>
     </message>
@@ -923,44 +928,42 @@
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="217"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="227"/>
         <source>Desktop icon display control</source>
         <translation>桌面图标显示控制</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="242"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="252"/>
         <source>Show Desktop Icons: </source>
         <translation>显示桌面图标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="266"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="276"/>
         <source>Home Folder: </source>
         <translation>主文件夹：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="289"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="299"/>
         <source>Network: </source>
         <translation>网络：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="312"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="322"/>
         <source>Trash : </source>
         <translation>回收站：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="336"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="346"/>
         <source>Mounted Volumes: </source>
         <translation>挂载卷标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="444"/>
         <source>Tips: </source>
-        <translation>友情提示：</translation>
+        <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="444"/>
         <source>Desktop icon has been restored to the default configuration!</source>
-        <translation>桌面图标已经为默认配置！</translation>
+        <translation type="obsolete">桌面图标已经为默认配置！</translation>
     </message>
 </context>
 <context>
@@ -1030,14 +1033,12 @@
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="172"/>
         <source>Tips:</source>
-        <translation>友情提示：</translation>
+        <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DocumentFont.qml" line="172"/>
         <source>Your system&apos;s document font is the default font!</source>
-        <translation>您系统的文档字体已经为默认字体！</translation>
+        <translation type="obsolete">您系统的文档字体已经为默认字体！</translation>
     </message>
 </context>
 <context>
@@ -2070,7 +2071,7 @@
         <translation type="obsolete">显卡型号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="274"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="275"/>
         <source>Graphics Card Info</source>
         <translation>显卡信息</translation>
     </message>
@@ -2087,12 +2088,12 @@
         <translation type="obsolete">显卡总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="519"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="520"/>
         <source>Monitor: </source>
         <translation>显示器：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="536"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="537"/>
         <source>Vendor: </source>
         <translation>制造商：</translation>
     </message>
@@ -2105,22 +2106,13 @@
         <translation type="obsolete">显卡总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="48"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="62"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="80"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="97"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="124"/>
-        <source>Graphics Card Model:</source>
-        <translation>显卡型号：</translation>
-    </message>
-    <message>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="49"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="63"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="81"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="98"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="125"/>
-        <source>Current Graphics Card:</source>
-        <translation>当前显卡：</translation>
+        <source>Graphics Card Model:</source>
+        <translation>显卡型号：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="50"/>
@@ -2128,8 +2120,8 @@
         <location filename="../../qml/func/info/MonitorInfo.qml" line="82"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="99"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="126"/>
-        <source>Graphics Card Vendor:</source>
-        <translation>显卡制造商：</translation>
+        <source>Current Graphics Card:</source>
+        <translation>当前显卡：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="51"/>
@@ -2137,8 +2129,8 @@
         <location filename="../../qml/func/info/MonitorInfo.qml" line="83"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="100"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="127"/>
-        <source>Graphics Driver:</source>
-        <translation>显卡驱动：</translation>
+        <source>Graphics Card Vendor:</source>
+        <translation>显卡制造商：</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="52"/>
@@ -2146,46 +2138,55 @@
         <location filename="../../qml/func/info/MonitorInfo.qml" line="84"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="101"/>
         <location filename="../../qml/func/info/MonitorInfo.qml" line="128"/>
+        <source>Graphics Driver:</source>
+        <translation>显卡驱动：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="53"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="67"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="85"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="102"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="129"/>
         <source>Bus Address:</source>
         <translation>总线地址：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="499"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="500"/>
         <source>Monitor Info</source>
         <translation>显示器信息</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="552"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="553"/>
         <source>Production(year/week): </source>
         <translation>生产日期(年/周)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="568"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="569"/>
         <source>Display Area: </source>
         <translation>可视面积：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="584"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="585"/>
         <source>Dimensions: </source>
         <translation>屏幕尺寸：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="600"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="601"/>
         <source>Max Resolution: </source>
         <translation>最大分辨率：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="616"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="617"/>
         <source>Gamma Value: </source>
         <translation>伽马值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="632"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="633"/>
         <source>Current Output: </source>
         <translation>当前接口：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="649"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="650"/>
         <source>Support Output: </source>
         <translation>支持接口：</translation>
     </message>
@@ -2213,7 +2214,7 @@
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="45"/>
         <location filename="../../qml/func/settings/MousePointer.qml" line="154"/>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="260"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="266"/>
         <source>[ Current Cursor Theme: </source>
         <translation>[ 当前光标主题是：</translation>
     </message>
@@ -2253,12 +2254,12 @@
         <translation>大号</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="253"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="259"/>
         <source>Tips: </source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="253"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="259"/>
         <source>Cursor configure is the default configuration!</source>
         <translation>光标配置已经为默认设置！</translation>
     </message>
@@ -2683,7 +2684,7 @@
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="810"/>
+        <location filename="../sessiondispatcher.cpp" line="888"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -2932,7 +2933,7 @@
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="57"/>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="160"/>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="193"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="188"/>
         <source>[ Current Sound Theme: </source>
         <translation>[ 当前音效主题是：</translation>
     </message>
@@ -2953,37 +2954,35 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="181"/>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="247"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="253"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="188"/>
         <source>Tips: </source>
-        <translation>友情提示：</translation>
+        <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="188"/>
         <source>The current theme is the default theme!</source>
-        <translation>当前主题已经为默认主题!</translation>
+        <translation type="obsolete">当前主题已经为默认主题!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="220"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="226"/>
         <source>System event tone: </source>
         <translation>系统事件提示音：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="233"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="239"/>
         <source>Listen</source>
         <translation>试听</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="240"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="246"/>
         <source>Replace</source>
         <translation>替换</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="401"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="407"/>
         <source>Custom Sound Theme</source>
         <translation>自定义声音主题</translation>
     </message>
@@ -2992,12 +2991,12 @@
         <translation type="obsolete">暂不支持中文路径下的音频文件。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="431"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="437"/>
         <source>Sound settings:</source>
         <translation>声音设置：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="439"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="445"/>
         <source>Login tone: </source>
         <translation>登录提示音：</translation>
     </message>
@@ -3005,30 +3004,25 @@
 <context>
     <name>SourceDialog</name>
     <message>
-        <location filename="../sourcedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>对话框</translation>
+        <translation type="obsolete">对话框</translation>
     </message>
     <message>
-        <location filename="../sourcedialog.ui" line="30"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="obsolete">取消</translation>
     </message>
     <message>
-        <location filename="../sourcedialog.ui" line="47"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../sourcedialog.ui" line="105"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translatorcomment>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;友情提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translatorcomment>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sourcedialog.cpp" line="25"/>
         <source>You need to add Ubuntu Kylin software source, or the software recommended feature will not be available. Click &apos;OK&apos; to add the software source, click &apos;Cancel&apos; to give up!</source>
-        <translation>您需要添加 Ubuntu Kylin 软件源，否则软件推荐功能将无法使用。点击＂确定＂按钮添加软件源，点击＂取消＂按钮放弃添加！</translation>
+        <translation type="obsolete">您需要添加 Ubuntu Kylin 软件源，否则软件推荐功能将无法使用。点击＂确定＂按钮添加软件源，点击＂取消＂按钮放弃添加！</translation>
     </message>
 </context>
 <context>
@@ -3197,9 +3191,8 @@
         <translation>输入法配置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
         <source>Software</source>
-        <translation>软件推荐</translation>
+        <translation type="obsolete">软件推荐</translation>
     </message>
     <message>
         <source>Recommend Software</source>
@@ -3284,16 +3277,12 @@
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="991"/>
-        <location filename="../systemdispatcher.cpp" line="1011"/>
         <source>Warning:</source>
-        <translation>警告：</translation>
+        <translation type="obsolete">警告：</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="992"/>
-        <location filename="../systemdispatcher.cpp" line="1012"/>
         <source>No find the softlist file!</source>
-        <translation>没有找到软件列表文件！</translation>
+        <translation type="obsolete">没有找到软件列表文件！</translation>
     </message>
 </context>
 <context>
@@ -3419,16 +3408,17 @@
         <translation>默认字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="230"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="250"/>
-        <source>DocumentFont</source>
-        <translation>文档字体设置</translation>
+        <location filename="../../qml/func/page/SystemSet.qml" line="301"/>
+        <source>File manager</source>
+        <translation>文件管理器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="235"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="258"/>
+        <source>DocumentFont</source>
+        <translation type="obsolete">文档字体设置</translation>
+    </message>
+    <message>
         <source>TitlebarFont</source>
-        <translation>窗口标题栏字体设置</translation>
+        <translation type="obsolete">窗口标题栏字体设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="284"/>
@@ -3437,13 +3427,13 @@
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="291"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="303"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="308"/>
         <source>Touchpad</source>
         <translation>触摸板设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="296"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="311"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="316"/>
         <source>Dead pixel test</source>
         <translation>坏点检测</translation>
     </message>
@@ -3482,14 +3472,12 @@
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="173"/>
         <source>Tips: </source>
-        <translation>友情提示：</translation>
+        <translation type="obsolete">友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TitlebarFont.qml" line="173"/>
         <source>Your system&apos;s titlebar font is the default font!</source>
-        <translation>您系统的窗体标题栏字体已经为默认字体！</translation>
+        <translation type="obsolete">您系统的窗体标题栏字体已经为默认字体！</translation>
     </message>
 </context>
 <context>
@@ -3811,29 +3799,24 @@
 <context>
     <name>UpdateDialog</name>
     <message>
-        <location filename="../updatedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>对话框</translation>
+        <translation type="obsolete">对话框</translation>
     </message>
     <message>
-        <location filename="../updatedialog.ui" line="43"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../updatedialog.ui" line="75"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Service reminder:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务提醒：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务提醒：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../updatedialog.ui" line="92"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="obsolete">取消</translation>
     </message>
     <message>
-        <location filename="../updatedialog.cpp" line="36"/>
         <source>The software was not found, please try to update the software sources.</source>
-        <translation>没有找到该软件，请尝试更新软件源。</translation>
+        <translation type="obsolete">没有找到该软件，请尝试更新软件源。</translation>
     </message>
 </context>
 <context>

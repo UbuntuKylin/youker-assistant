@@ -222,19 +222,19 @@ Item {
                             }
                             Text {
                                 id: b7
-                                text: qsTr("DefaultFont")//默认字体设置
+                                text: qsTr("DefaultFont")//字体设置
                                 visible: false
                             }
-                            Text {
-                                id: b8
-                                text: qsTr("DocumentFont")//文档字体设置
-                                visible: false
-                            }
-                            Text {
-                                id: b9
-                                text: qsTr("TitlebarFont")//窗口标题栏字体设置
-                                visible: false
-                            }
+//                            Text {
+//                                id: b8
+//                                text: qsTr("DocumentFont")//文档字体设置
+//                                visible: false
+//                            }
+//                            Text {
+//                                id: b9
+//                                text: qsTr("TitlebarFont")//窗口标题栏字体设置
+//                                visible: false
+//                            }
                         }
                         Row {
                             spacing: 18
@@ -245,22 +245,22 @@ Item {
                                     pageStack.push(defaultfontpage);
                                 }
                             }//更改默认字体设置
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            Common.StyleButton {
-                                wordname: qsTr("DocumentFont"); width: b8.width//文档字体设置
-//                                flag: "DocumentFont"
-                                onClicked: {
-                                    pageStack.push(documentfontpage);
-                                }
-                            }//更改文档字体设置
-                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
-                            Common.StyleButton {
-                                wordname: qsTr("TitlebarFont"); width: b9.width//窗口标题栏字体设置
-//                                flag: "TitlebarFont"
-                                onClicked: {
-                                    pageStack.push(titlebarfontpage);
-                                }
-                            }//更改窗口标题栏字体设置
+//                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
+//                            Common.StyleButton {
+//                                wordname: qsTr("DocumentFont"); width: b8.width//文档字体设置
+////                                flag: "DocumentFont"
+//                                onClicked: {
+//                                    pageStack.push(documentfontpage);
+//                                }
+//                            }//更改文档字体设置
+//                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
+//                            Common.StyleButton {
+//                                wordname: qsTr("TitlebarFont"); width: b9.width//窗口标题栏字体设置
+////                                flag: "TitlebarFont"
+//                                onClicked: {
+//                                    pageStack.push(titlebarfontpage);
+//                                }
+//                            }//更改窗口标题栏字体设置
                         }
                     }
                 }
