@@ -27,6 +27,7 @@ Rectangle {
     property bool secondFlag: false
     property bool thirdFlag: false
     property bool fourthFlag: false
+    property int columnSpace: 20
     ListModel {id: firstModel}
     ListModel {id: secondModel}
     ListModel {id: thirdModel}
@@ -69,7 +70,7 @@ Rectangle {
         logo2.source = InfoGroup.judgeName(Vgavendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-            listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *2-20;
+            listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *2-20;
         }
         else if(num >= 3) {
             //--------------third--------------
@@ -87,7 +88,7 @@ Rectangle {
             logo3.source = InfoGroup.judgeName(Vgavendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *3-20;
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *3-20;
             }
             else if(num == 4) {
                 home.fourthFlag = true;
@@ -103,7 +104,7 @@ Rectangle {
                 logo4.visible = true;
                 logo4.source = InfoGroup.judgeName(Vgavendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *4-20;
+                listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *4-20;
             }
         }
     }
@@ -130,7 +131,7 @@ Rectangle {
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
-            listItem.height = home.itemNum*20 + (home.itemNum - 1)*10 ;
+            listItem.height = home.itemNum*20 + (home.itemNum - 1)*home.columnSpace ;
         }
         else if(num >= 2){
             home.show_several_monitor(num);
@@ -243,7 +244,7 @@ Rectangle {
             Text {
                 id: slotText
                 text: result
-                width: 450
+                width: 500
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
@@ -290,7 +291,7 @@ Rectangle {
                     width: parent.width
                     height: 0
                     Column {
-                        spacing: 10
+                        spacing: home.columnSpace
                         anchors {
                             left: parent.left
 //                            leftMargin: 30
@@ -304,7 +305,7 @@ Rectangle {
                                 model: firstModel
                                 delegate: monitorDelegate
                                 visible: false
-                                spacing: 10
+                                spacing: home.columnSpace
                             }
                             Image {
                                 id: logo1
@@ -314,7 +315,7 @@ Rectangle {
                                 anchors {
                                     right: parent.right
                                     top:parent.top
-                                    topMargin: 20
+                                    topMargin: 40
         //                            rightMargin: 30
                                 }
                             }
@@ -338,7 +339,7 @@ Rectangle {
                                 model: secondModel
                                 delegate: monitorDelegate
                                 visible: false
-                                spacing: 10
+                                spacing: home.columnSpace
                             }
                             Image {
                                 id: logo2
@@ -348,7 +349,7 @@ Rectangle {
                                 anchors {
                                     right: parent.right
                                     top:parent.top
-                                    topMargin: 20
+                                    topMargin: 40
         //                            rightMargin: 30
                                 }
                             }
@@ -367,7 +368,7 @@ Rectangle {
                                 model: thirdModel
                                 delegate: monitorDelegate
                                 visible: false
-                                spacing: 10
+                                spacing: home.columnSpace
                             }
                             Image {
                                 id: logo3
@@ -377,7 +378,7 @@ Rectangle {
                                 anchors {
                                     right: parent.right
                                     top:parent.top
-                                    topMargin: 20
+                                    topMargin: 40
         //                            rightMargin: 30
                                 }
                             }
@@ -396,7 +397,7 @@ Rectangle {
                                 model: fourthModel
                                 delegate: monitorDelegate
                                 visible: false
-                                spacing: 10
+                                spacing: home.columnSpace
                             }
                             Image {
                                 id: logo4
@@ -406,7 +407,7 @@ Rectangle {
                                 anchors {
                                     right: parent.right
                                     top:parent.top
-                                    topMargin: 20
+                                    topMargin: 40
         //                            rightMargin: 30
                                 }
                             }
@@ -513,7 +514,7 @@ Rectangle {
                 Column {
                     spacing: 10
                     Row {
-                        spacing: 10
+                        spacing: home.columnSpace
                         Common.Label {
                             id: productLabel
                             text: qsTr("Monitor: ")//显示器：
