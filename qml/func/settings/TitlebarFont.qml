@@ -164,8 +164,9 @@ Rectangle {
         Common.Button {
             hoverimage: "blue2.png"
             text: qsTr("Restore")//恢复默认
-            width: 105
-            height: 30
+            width: 94
+            height: 29
+            fontsize: 13
             onClicked: {
                 //20140219
                 sessiondispatcher.set_default_theme_qt("titlebarfont");

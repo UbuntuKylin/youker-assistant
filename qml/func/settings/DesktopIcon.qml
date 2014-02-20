@@ -188,8 +188,9 @@ Rectangle {
             }
             Common.Button {
                 id: okBtn
-                width: 105;height: 30
-                hoverimage: "green2.png"
+                width: 94;height: 29
+                fontsize: 13
+                hoverimage: "green.png"
                 text: qsTr("OK")//确定
                 onClicked: {
                     if (desktopiconsetpage.selected_icon_theme != iconcombo.selectedText) {

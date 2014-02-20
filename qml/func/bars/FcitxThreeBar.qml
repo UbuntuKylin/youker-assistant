@@ -73,7 +73,7 @@ Item {
          Common.Button {
             id: finishBtn
             visible: toolbar.showok
-            hoverimage: "green2.png"
+            hoverimage: "green.png"
             fontsize: 13
             fontcolor:"#ffffff"
             text: qsTr("Apply")//应用

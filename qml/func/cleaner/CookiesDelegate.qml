@@ -126,9 +126,10 @@ Item {
                     }
                     Common.Button {
                         id: scanBtn
-                        width: 95
-                        height: 30
-                        hoverimage: "green2.png"
+                        width: 94
+                        height: 29
+                        fontsize: 13
+                        hoverimage: "green.png"
                         text: broswerDelegate.actionTitle
                         anchors.verticalCenter: parent.verticalCenter
                         onClicked: {

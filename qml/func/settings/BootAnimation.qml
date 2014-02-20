@@ -120,9 +120,10 @@ Rectangle {
         }
 
         Common.Button {
-            width: 134
-            height: 35
-            hoverimage: "blue3.png"
+            width: 94
+            height: 29
+            fontsize: 13
+            hoverimage: "blue.png"
             text: qsTr("Custom picture")//自定义图片
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {

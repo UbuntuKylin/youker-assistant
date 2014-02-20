@@ -151,8 +151,8 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
-                width: 95;height: 30
-                hoverimage: "green2.png"
+                width: 94;height: 29
+                hoverimage: "green.png"
                 text: qsTr("OK")//确定
                 onClicked: {
                     if (soundeffectspage.selected_sound_theme != iconcombo.selectedText) {
@@ -177,10 +177,11 @@ Rectangle {
                 }
             }
             Common.Button {
-                hoverimage: "blue2.png"
+                hoverimage: "blue.png"
                 text: qsTr("Restore")//恢复默认
-                width: 105
-                height: 30
+                width: 94
+                height: 29
+                fontsize: 13
                 onClicked: {
                     //20140219
                     sessiondispatcher.set_default_sound_qt("soundtheme");

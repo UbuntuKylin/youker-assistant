@@ -486,7 +486,7 @@ Item {
         }
 
         Row{
-            anchors { top: parent.top; topMargin: 20;right: parent.right ; rightMargin: 20 }
+            anchors { top: parent.top; topMargin: 30;right: parent.right ; rightMargin: 20 }
             spacing: 20
             Row {
                 spacing: 20
@@ -546,11 +546,11 @@ Item {
             }
             Common.Button {
                 id: actionBtn
-                width: 120
-                height: 39
-                hoverimage: "green1.png"
+                width: 94
+                height: 29
+                hoverimage: "green.png"
                 text: qsTr("Start scanning")//开始扫描
-                fontsize: 15
+                fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
 

@@ -423,7 +423,7 @@ Rectangle {
             id:addBtn
             width:49
             height:27
-            hoverimage: "blue5.png"
+            hoverimage: "blue.png"
             text:"<<"
             fontcolor: "#6a97b4"
             onClicked: {
@@ -446,7 +446,7 @@ Rectangle {
             height:27
             text: ">>"
             fontcolor: "#6a97b4"
-            hoverimage: "blue5.png"
+            hoverimage: "blue.png"
             onClicked: {
                 rightFcitxModel.append({"itemTitle":leftFcitxModel.get(leftFcitxModelindex).itemTitle,
                                        "uniqueName" :leftFcitxModel.get(leftFcitxModelindex).uniqueName,
@@ -478,7 +478,7 @@ Rectangle {
             enabled: false
             text:"▲"
             fontcolor: "#6a97b4"
-            hoverimage: "blue5.png"
+            hoverimage: "blue.png"
             onClicked: {
                 if(leftFcitxModelindex==0)
                 {
@@ -504,7 +504,7 @@ Rectangle {
             height:27
             text: "▼"
             fontcolor: "#6a97b4"
-            hoverimage: "blue5.png"
+            hoverimage: "blue.png"
             onClicked: {
                 if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
                 {

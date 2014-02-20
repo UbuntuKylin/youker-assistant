@@ -50,7 +50,7 @@ Rectangle {
             }
             //非系统默认的4个gtk主题时使用定义的通用图片
             else{
-                themeModel.append({"icon": "../../img/icons/disappear.png", "name": syslist[i]});
+                themeModel.append({"icon": widgetthemepage.path + "disappear.png", "name": syslist[i]});
             }
             widgetthemepage.gredview_num += 1;
             if (i!=0 && syslist[i] == widgetthemepage.init_theme){

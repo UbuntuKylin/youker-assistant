@@ -21,9 +21,9 @@ Item {
     signal exited
     signal entered
     property string text : ""
-    property string hoverimage: "green1.png"
+    property string hoverimage: "green.png"
     property string fontcolor: "white"
-    property int fontsize: 14
+    property int fontsize: 12
 
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
 
@@ -32,12 +32,12 @@ Item {
         source: "../../img/icons/" + btn.hoverimage
         width: btn.width; height: btn.height
     }
-    BorderImage {
-        id: pressed
-        opacity: 0
-        source: "../../img/icons/unselect.png"
-        width: btn.width; height: btn.height
-    }
+//    BorderImage {
+//        id: pressed
+//        opacity: 0
+//        source: "../../img/icons/unselect.png"
+//        width: btn.width; height: btn.height
+//    }
     Image {
         id: btnImg
         anchors.fill: parent
@@ -49,64 +49,67 @@ Item {
         hoverEnabled: true
         onEntered: {
             btn.entered();
-            if (hoverimage == "green1.png") {
-                btnImg.source = "../../img/icons/green1-hover.png"
-            }
-            else if (hoverimage == "blue1.png")
-                btnImg.source = "../../img/icons/blue1-hover.png"
-            else if (hoverimage == "green2.png")
-                btnImg.source = "../../img/icons/green2-hover.png"
-            else if (hoverimage == "gray.png")
-                btnImg.source = "../../img/icons/gray-hover.png"
-            else if (hoverimage == "blue2.png")
-                btnImg.source = "../../img/icons/blue2-hover.png"
-            else if (hoverimage == "blue3.png")
-                btnImg.source = "../../img/icons/blue3-hover.png"
-            else if (hoverimage == "blue4.png")
-                btnImg.source = "../../img/icons/blue4-hover.png"
-            else if(hoverimage == "fcitxKey.png")
-                  btnImg.source = "../../img/icons/fcitxKey-hover.png"
-            else if(hoverimage == "fcitxFont.png")
-                  btnImg.source = "../../img/icons/fcitxFont-hover.png"
-            else
-                btnImg.source = "../../img/toolWidget/menu_hover.png"
+            btnImg.source = "../../img/toolWidget/highlight.png"
+//            if (hoverimage == "green.png") {
+//                btnImg.source = "../../img/icons/green1-hover.png"
+//            }
+//            else if (hoverimage == "blue1.png")
+//                btnImg.source = "../../img/icons/blue1-hover.png"
+//            else if (hoverimage == "green2.png")
+//                btnImg.source = "../../img/icons/green2-hover.png"
+//            else if (hoverimage == "gray.png")
+//                btnImg.source = "../../img/icons/gray-hover.png"
+//            else if (hoverimage == "blue2.png")
+//                btnImg.source = "../../img/icons/blue2-hover.png"
+//            else if (hoverimage == "blue3.png")
+//                btnImg.source = "../../img/icons/blue3-hover.png"
+//            else if (hoverimage == "blue4.png")
+//                btnImg.source = "../../img/icons/blue4-hover.png"
+//            else if(hoverimage == "fcitxKey.png")
+//                  btnImg.source = "../../img/icons/fcitxKey-hover.png"
+//            else if(hoverimage == "fcitxFont.png")
+//                  btnImg.source = "../../img/icons/fcitxFont-hover.png"
+//            else
+//                btnImg.source = "../../img/toolWidget/menu_hover.png"
         }
         onPressed: {
-            if (hoverimage == "green1.png")
-                btnImg.source = "../../img/icons/green1-hover.png"
-            else if (hoverimage == "blue1.png")
-                btnImg.source = "../../img/icons/blue1-hover.png"
-            else if (hoverimage == "green2.png")
-                btnImg.source = "../../img/icons/green2-hover.png"
-            else if (hoverimage == "gray.png")
-                btnImg.source = "../../img/icons/gray-hover.png"
-            else if (hoverimage == "blue2.png")
-                btnImg.source = "../../img/icons/blue2-hover.png"
-            else if (hoverimage == "blue3.png")
-                btnImg.source = "../../img/icons/blue3-hover.png"
-            else if (hoverimage == "blue4.png")
-                btnImg.source = "../../img/icons/blue4-hover.png"
-            else
-                btnImg.source = "../../img/toolWidget/menu_press.png"
+            btnImg.source = "../../img/toolWidget/highlight.png"
+//            if (hoverimage == "green.png")
+//                btnImg.source = "../../img/icons/green1-hover.png"
+//            else if (hoverimage == "blue1.png")
+//                btnImg.source = "../../img/icons/blue1-hover.png"
+//            else if (hoverimage == "green2.png")
+//                btnImg.source = "../../img/icons/green2-hover.png"
+//            else if (hoverimage == "gray.png")
+//                btnImg.source = "../../img/icons/gray-hover.png"
+//            else if (hoverimage == "blue2.png")
+//                btnImg.source = "../../img/icons/blue2-hover.png"
+//            else if (hoverimage == "blue3.png")
+//                btnImg.source = "../../img/icons/blue3-hover.png"
+//            else if (hoverimage == "blue4.png")
+//                btnImg.source = "../../img/icons/blue4-hover.png"
+//            else
+//                btnImg.source = "../../img/toolWidget/menu_press.png"
         }
         //要判断松开是鼠标位置
         onReleased: {
-            if (hoverimage == "green1.png")
-                btnImg.source = "../../img/icons/green1.png"
-            else if (hoverimage == "blue1.png")
-                btnImg.source = "../../img/icons/blue1.png"
-            else if (hoverimage == "green2.png")
-                btnImg.source = "../../img/icons/green2.png"
-            else if (hoverimage == "gray.png")
-                btnImg.source = "../../img/icons/gray.png"
-            else if (hoverimage == "blue2.png")
-                btnImg.source = "../../img/icons/blue2.png"
-            else if (hoverimage == "blue3.png")
-                btnImg.source = "../../img/icons/blue3.png"
-            else if (hoverimage == "blue4.png")
-                btnImg.source = "../../img/icons/blue4.png"
-            else
-                btnImg.source = "../../img/toolWidget/menu_hover.png"
+//            btnImg.source = "../../img/toolWidget/highlight.png"
+//            if (hoverimage == "green.png")
+//                btnImg.source = "../../img/icons/green.png"
+//            else if (hoverimage == "blue1.png")
+//                btnImg.source = "../../img/icons/blue1.png"
+//            else if (hoverimage == "green2.png")
+//                btnImg.source = "../../img/icons/green2.png"
+//            else if (hoverimage == "gray.png")
+//                btnImg.source = "../../img/icons/gray.png"
+//            else if (hoverimage == "blue2.png")
+//                btnImg.source = "../../img/icons/blue2.png"
+//            else if (hoverimage == "blue3.png")
+//                btnImg.source = "../../img/icons/blue3.png"
+//            else if (hoverimage == "blue4.png")
+//                btnImg.source = "../../img/icons/blue4.png"
+//            else
+//                btnImg.source = "../../img/toolWidget/menu_hover.png"
         }
 
         onExited: {
@@ -129,11 +132,11 @@ Item {
         style: Text.Sunken
         styleColor: "#AAAAAA"
     }
-    states: [
-        State {
-            name: "Pressed"
-            when: mouseRegion.pressed == true
-            PropertyChanges { target: pressed; opacity: 1 }
-        }
-    ]
+//    states: [
+//        State {
+//            name: "Pressed"
+//            when: mouseRegion.pressed == true
+//            PropertyChanges { target: pressed; opacity: 1 }
+//        }
+//    ]
 }

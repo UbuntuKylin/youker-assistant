@@ -152,18 +152,19 @@ Rectangle {
 
         Common.Button {
             id: docufontBtn
-            hoverimage: "blue4.png"
+            hoverimage: "skyblue.png"
             text: qsTr("Change fonts")//更换字体
             fontcolor: "#086794"
-            width: 105
-            height: 30
+            width: 94
+            height: 29
             onClicked: sessiondispatcher.show_font_dialog("documentfont");
         }
         Common.Button {
-            hoverimage: "blue2.png"
+            hoverimage: "blue.png"
             text: qsTr("Restore")//恢复默认
-            width: 105
-            height: 30
+            width: 94
+            height: 29
+            fontsize: 13
             onClicked: {
                 //20140219
                 sessiondispatcher.set_default_theme_qt("documentfont");

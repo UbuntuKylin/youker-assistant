@@ -43,18 +43,19 @@ Item {
          Common.Button {
              id: okBtn
              visible: toolbar.showok
-             hoverimage: "green2.png"
-             fontsize: 15
+             hoverimage: "green.png"
+             fontsize: 13
              text: qsTr("OK")//确定
-             width: 94; height: 29
+             width: 94;height: 29
              onClicked: toolbar.okBtnClicked()
          }
          Common.Button {
              id: restoreBtn
              visible: toolbar.showrestore
-             hoverimage: "blue2.png"
+             hoverimage: "blue.png"
+             fontsize: 13
              text: qsTr("Restore")//恢复默认
-             width: 105
+             width: 94
              height: 29
              onClicked: toolbar.restoreBtnClicked()
          }
@@ -62,7 +63,7 @@ Item {
              id: quitBtn
              hoverimage: "gray.png"
              fontcolor:"#929292"
-             fontsize: 15
+             fontsize: 13
              text: qsTr("Back")//返回
              width: 94; height: 29
              onClicked: toolbar.quitBtnClicked()

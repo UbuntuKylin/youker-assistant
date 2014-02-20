@@ -212,18 +212,20 @@ Rectangle {
 
                 Common.Button {
                     id: fontBtn
-                    hoverimage: "blue4.png"
+                    hoverimage: "skyblue.png"
                     fontcolor: "#086794"
                     text: qsTr("Change fonts")//更换字体
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("font");
                 }
                 Common.Button {
-                    hoverimage: "blue2.png"
+                    hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: {
                         //20140219
                         sessiondispatcher.set_default_theme_qt("defaultfont");
@@ -273,18 +275,20 @@ Rectangle {
 
                 Common.Button {
                     id: desktopfontBtn
-                    hoverimage: "blue4.png"
+                    hoverimage: "skyblue.png"
                     text: qsTr("Change fonts")//更换字体
                     fontcolor: "#086794"
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("desktopfont");
                 }
                 Common.Button {
-                    hoverimage: "blue2.png"
+                    hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: {
                         //20140219
                         sessiondispatcher.set_default_theme_qt("desktopfont");
@@ -332,18 +336,20 @@ Rectangle {
                 spacing: 26
                 Common.Button {
                     id: monofontBtn
-                    hoverimage: "blue4.png"
+                    hoverimage: "skyblue.png"
                     text: qsTr("Change fonts")//更换字体
                     fontcolor: "#086794"
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("monospacefont");
                 }
                 Common.Button {
-                    hoverimage: "blue2.png"
+                    hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: {
                         //20140219
                         sessiondispatcher.set_default_theme_qt("monospacefont");
@@ -390,18 +396,20 @@ Rectangle {
                 spacing: 26
                 Common.Button {
                     id: docufontBtn
-                    hoverimage: "blue4.png"
+                    hoverimage: "skyblue.png"
                     text: qsTr("Change fonts")//更换字体
                     fontcolor: "#086794"
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("documentfont");
                 }
                 Common.Button {
-                    hoverimage: "blue2.png"
+                    hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: {
                         //20140219
                         sessiondispatcher.set_default_theme_qt("documentfont");
@@ -449,18 +457,20 @@ Rectangle {
                 spacing: 26
                 Common.Button {
                     id: titlefontBtn
-                    hoverimage: "blue4.png"
+                    hoverimage: "skyblue.png"
                     text: qsTr("Change fonts")//更换字体
                     fontcolor: "#086794"
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
                 }
                 Common.Button {
-                    hoverimage: "blue2.png"
+                    hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
-                    width: 105
-                    height: 30
+                    width: 94
+                    height: 29
+                    fontsize: 13
                     onClicked: {
                         //20140219
                         sessiondispatcher.set_default_theme_qt("titlebarfont");
@@ -550,10 +560,11 @@ Rectangle {
             }
         }
         Common.Button {
-            hoverimage: "blue2.png"
+            hoverimage: "blue.png"
             text: qsTr("Restore")//恢复默认
-            width: 105
-            height: 30
+            width: 94
+            height: 29
+            fontsize: 13
             onClicked: {
                 //20140219
                 sessiondispatcher.set_default_theme_qt("globalfontscaling");

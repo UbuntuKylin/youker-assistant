@@ -185,11 +185,12 @@ Item {
         Common.Button {
             id: selectBtn
             anchors.verticalCenter: parent.verticalCenter
-            hoverimage: "blue1.png"
+            hoverimage: "skyblue.png"
             text: qsTr("Browse...")//浏览...
             fontcolor: "#086794"
-            width: 95
-            height: 30
+            width: 94
+            height: 29
+            fontsize: 13
             onClicked: {
                 root.size = size_text.text;
                 root.directory = sessiondispatcher.show_folder_dialog();
@@ -202,9 +203,10 @@ Item {
 
         Common.Button {
             id: bitButton
-            width: 95
-            height: 30
-            hoverimage: "green2.png"
+            width: 94
+            height: 29
+            fontsize: 13
+            hoverimage: "green.png"
             text: qsTr("Begin cleanup")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {

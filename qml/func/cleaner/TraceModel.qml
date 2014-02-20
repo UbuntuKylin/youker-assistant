@@ -371,9 +371,10 @@ Item {
             }
             Common.Button {
                 id: internetcacheBtn
-                width: 95
-                height: 30
-                hoverimage: "green2.png"
+                width: 94
+                height: 29
+                fontsize: 13
+                hoverimage: "green.png"
                 text: root.btn_text
                 onClicked: {
                     if (root.btn_flag == "history_scan") {
@@ -474,9 +475,10 @@ Item {
             }
             Common.Button {
                 id: chromiumcacheBtn
-                width: 95
-                height: 30
-                hoverimage: "green2.png"
+                width: 94
+                height: 29
+                fontsize: 13
+                hoverimage: "green.png"
                 text: root.btn_text
                 onClicked: {
                     if (root.btn_flag3 == "chromium_scan") {
@@ -577,9 +579,10 @@ Item {
             }
             Common.Button {
                 id: syscacheBtn
-                width: 95
-                height: 30
-                hoverimage: "green2.png"
+                width: 94
+                height: 29
+                fontsize: 13
+                hoverimage: "green.png"
                 text: root.btn_text
                 onClicked: {
                     if (root.btn_flag2 == "system_scan") {
