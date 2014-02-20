@@ -22,7 +22,7 @@ Rectangle {
     id: widgetthemepage
     width: parent.width
     height: 475
-    property string actiontitle: qsTr("Window theme settings")//窗口主题设置
+    property string actiontitle: qsTr("GTK Theme settings")//GTK主题设置
     property string actiontext: qsTr("Choose the theme what you want. The first is the theme of the currently used.")//选择您想设置的主题。第一个主题为系统当前使用的主题。
     property string selected_theme: ""
     property int themeIndex: 0//序号
@@ -45,7 +45,13 @@ Rectangle {
         syslist.unshift(widgetthemepage.init_theme);
         themeModel.clear();
         for(var i=0; i < syslist.length; i++) {
-            themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
+            if(syslist[i] == "Ambiance" || syslist[i] == "HighContrast" || syslist[i] == "Radiance" || syslist[i] == "ubuntukylin-theme"){
+                themeModel.append({"icon": "../../img/skin/" + syslist[i] + ".png", "name": syslist[i]});
+            }
+            //非系统默认的4个gtk主题时使用定义的通用图片
+            else{
+                themeModel.append({"icon": "../../img/icons/disappear.png", "name": syslist[i]});
+            }
             widgetthemepage.gredview_num += 1;
             if (i!=0 && syslist[i] == widgetthemepage.init_theme){
                 widgetthemepage.gredview_num -= 1;
@@ -176,7 +182,7 @@ Rectangle {
     Item {  //gredview外框架
         id:item
         width: parent.width - 60*2
-        height: parent.height - 180
+        height: parent.height - 170
         anchors {
             top: parent.top
             topMargin: 100
@@ -196,7 +202,7 @@ Rectangle {
             Item {  //gredview列表大小
                 width: item.width - 15   //列表宽度
 //                height: 2 * 156     //列表长度,前面的数字为列表行数
-                height: (widgetthemepage.gredview_num/4 + (widgetthemepage.gredview_num % 4 ? 1: 0)) * 156 //自动计算列表行数
+                height: (widgetthemepage.gredview_num/4 + (widgetthemepage.gredview_num % 4 ? 1: 0)) * 150 //自动计算列表行数
                 GridView {
                     id: themegrid
                     anchors.fill: parent

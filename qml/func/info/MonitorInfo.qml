@@ -27,7 +27,7 @@ Rectangle {
     property bool secondFlag: false
     property bool thirdFlag: false
     property bool fourthFlag: false
-    property int columnSpace: 20
+    property int columnSpace: 10
     ListModel {id: firstModel}
     ListModel {id: secondModel}
     ListModel {id: thirdModel}
@@ -239,16 +239,16 @@ Rectangle {
                 font.pixelSize: 14
                 color: "#7a7a7a"
                 width: 150
-                height: 20
+//                height: 20
             }
             Text {
                 id: slotText
                 text: result
-                width: 500
+                width: 450
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
-                height: 20
+//                height: 20
             }
         }
     }

@@ -62,6 +62,26 @@ class Theme:
         _gstheme = gsettings.get_schema('org.gnome.desktop.wm.preferences')
         _gstheme.set_string('theme',theme)
 
+    # get window theme
+    def get_window_theme(self):
+        dirs = ('/usr/share/themes', os.path.join(self.homedir, ".themes"))
+        filters = ['metacity-1']
+        valid = utils.check_dirs(dirs, filters, True)
+        valid.sort()
+        return valid
+
+    # get current window theme
+    def get_current_window_theme(self):
+        return gsettings.get('org.gnome.desktop.wm.preferences',
+            None,'theme','string')
+
+    # set window theme
+    def set_window_theme(self,theme):
+        return gsettings.set('org.gnome.desktop.wm.preferences',
+            None,
+            'theme',
+            'string',theme) 
+
     # get icon themes
     def get_icon_themes(self):
         dirs = ('/usr/share/icons', os.path.join(self.homedir, ".icons"))
@@ -240,8 +260,11 @@ class Theme:
 
 if __name__ == '__main__':
     ttt = Theme()
-    print ttt.get_current_hinting()
-    print ttt.get_current_antialiasing()
+    # print ttt.get_window_theme()
+    # print ttt.get_current_window_theme()
+    # print ttt.set_window_theme('Crux')
+    # print ttt.get_current_hinting()
+    # print ttt.get_current_antialiasing()
     # print ttt.set_hinting('none')
     # print ttt.set_antialiasing('none')
     # print ttt.get_font()
@@ -253,7 +276,7 @@ if __name__ == '__main__':
 
     #aa = ttt.get_default_schema_value('org.gnome.desktop.interface', 'font-name')
     #print aa
-    ttt.set_default_schema_value('org.gnome.desktop.interface', 'font-name', 'string')
+    # ttt.set_default_schema_value('org.gnome.desktop.interface', 'font-name', 'string')
     # print ttt.get_theme()
     # print ttt.get_icon_theme()
     # print ttt.get_cursor_theme()

@@ -1502,7 +1502,7 @@
         <translation>序列号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HDInfo.qml" line="199"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="201"/>
         <source>HDD Info</source>
         <translation>硬盘信息</translation>
     </message>
@@ -1983,7 +1983,7 @@
         <translation>序列号：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="178"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="180"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
@@ -3356,16 +3356,20 @@
         <translation>个性化</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="87"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="114"/>
         <source>WindowTheme</source>
-        <translation>窗口主题</translation>
+        <translation type="obsolete">窗口主题</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="92"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="123"/>
         <source>IconSetting</source>
         <translation>图标配置</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/page/SystemSet.qml" line="87"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="114"/>
+        <source>GTK Theme</source>
+        <translation>GTK主题</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="97"/>
@@ -4061,9 +4065,13 @@
 <context>
     <name>WidgetTheme</name>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="25"/>
         <source>Window theme settings</source>
-        <translation>窗口主题设置</translation>
+        <translation type="obsolete">窗口主题设置</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="25"/>
+        <source>GTK Theme settings</source>
+        <translation>GTK主题设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WidgetTheme.qml" line="26"/>
@@ -4075,7 +4083,7 @@
         <translation type="obsolete">[ 当前主题是：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="166"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="167"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>

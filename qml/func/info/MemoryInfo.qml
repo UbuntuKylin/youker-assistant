@@ -153,14 +153,16 @@ Rectangle {
                 font.pixelSize: 14
                 color: "#7a7a7a"
                 width: 150
-                height: 20
+//                height: 20
             }
             Text {
                 id: slotText
                 text: result
+                width: 450
+                wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
-                height: 20
+//                height: 20
             }
         }
     }
