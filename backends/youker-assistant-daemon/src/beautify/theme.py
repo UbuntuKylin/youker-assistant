@@ -36,6 +36,8 @@ class Theme:
     # Set Default Value
     def set_default_schema_value(self, schema, key, type):
         default_value = self.get_default_schema_value(schema, key)
+        if (default_value == '' and schema == 'org.gnome.nautilus.desktop' and key == 'font'):
+            default_value = 'Ubuntu 11'
         if default_value is not None:
             return gsettings.set(schema, None, key, type, default_value)
         else:
@@ -273,6 +275,10 @@ if __name__ == '__main__':
     # ttt.set_font_zoom(1.0)
     #ttt.set_monospace_font('Ubuntu Mono 13')
     #print ttt.get_monospace_font()
+
+    aa = ttt.get_default_schema_value('org.gnome.nautilus.desktop', 'font')
+    print aa
+    ttt.set_default_schema_value('org.gnome.nautilus.desktop', 'font', 'string')
 
     #aa = ttt.get_default_schema_value('org.gnome.desktop.interface', 'font-name')
     #print aa

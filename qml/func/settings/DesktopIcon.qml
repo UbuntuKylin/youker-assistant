@@ -29,6 +29,9 @@ Rectangle {
     property int cursor_size: 24
     property string selected_icon_theme: ""//存放用户选择确认后的主题
 
+    property int current_index//当前主题的索引
+    property int default_index//系统默认主题的索引
+
     property string actiontitle: qsTr("Desktop Icons")//桌面图标设置
     property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons.")//设置桌面图标主题和桌面图标的可见性
     //背景
@@ -42,59 +45,56 @@ Rectangle {
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
         showText.text = qsTr("[ Current icon theme is: ") + current_icon_theme + " ]";//[ 当前图标主题是：
         desktopiconsetpage.selected_icon_theme = current_icon_theme;
-        iconlist.unshift(current_icon_theme);
-        //将系统初始的图标主题写入QSetting配置文件
-//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "icontheme", current_icon_theme);
+//        iconlist.unshift(current_icon_theme);
+        var default_theme = sessiondispatcher.get_default_theme_sring_qt("icontheme");
+
         choices.clear();
         for(var j=0; j < iconlist.length; j++) {
             choices.append({"text": iconlist[j]});
-            if (j!=0 && iconlist[j] == current_icon_theme)
-                choices.remove(j);
+//            if (j!=0 && iconlist[j] == current_icon_theme) {
+            if (iconlist[j] == current_icon_theme) {
+//                choices.remove(j);
+                desktopiconsetpage.current_index = j;
+            }
+            else if (iconlist[j] == default_theme) {
+                desktopiconsetpage.default_index = j;
+            }
         }
+        iconcombo.selectedIndex = desktopiconsetpage.current_index;
 
         if (sessiondispatcher.get_show_desktop_icons_qt()) {
             iconswitcher.switchedOn = true;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "desktopcontrol", "true");
         }
         else {
             iconswitcher.switchedOn = false;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "desktopcontrol", "false");
         }
 
         if (sessiondispatcher.get_show_homefolder_qt()) {
             folderswitcher.switchedOn = true;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "document", "true");
         }
         else {
             folderswitcher.switchedOn = false;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "document", "false");
         }
 
         if (sessiondispatcher.get_show_network_qt()) {
             networkswitcher.switchedOn = true;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "network", "true");
         }
         else {
             networkswitcher.switchedOn = false;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "network", "false");
         }
 
         if (sessiondispatcher.get_show_trash_qt()) {
             trashswitcher.switchedOn = true;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "recyclebin", "true");
         }
         else {
             trashswitcher.switchedOn = false;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "recyclebin", "false");
         }
 
         if (sessiondispatcher.get_show_devices_qt()) {
             deviceswitcher.switchedOn = true;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "device", "true");
         }
         else {
             deviceswitcher.switchedOn = false;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("theme", "device", "false");
         }
     }
 
@@ -163,7 +163,7 @@ Rectangle {
 
     Row {
         id: themeline
-        spacing: 170
+        spacing: 135
         anchors{
             left: parent.left
             leftMargin: 60
@@ -202,16 +202,17 @@ Rectangle {
                     }
                 }
             }
-//            Common.Button {
-//                hoverimage: "blue2.png"
-//                text: qsTr("Restore")//恢复默认
-//                width: 105
-//                height: 30
-//                onClicked: {
-//                    //20140219
-//                    sessiondispatcher.set_default_theme_qt("icontheme");
-//                }
-//            }
+        }
+        Common.Button {
+            hoverimage: "blue.png"
+            text: qsTr("Restore")//恢复默认
+            width: 94
+            height: 29
+            fontsize: 13
+            onClicked: {
+                sessiondispatcher.set_default_theme_qt("icontheme");
+                iconcombo.selectedIndex = desktopiconsetpage.default_index;
+            }
         }
     }
 
@@ -246,93 +247,43 @@ Rectangle {
         }
         spacing: 10
         Row {
-            spacing: 20
-            Common.Label {
-                id: desktopiconlabel
-                width: 170
-                text: qsTr("Show Desktop Icons: ")//显示桌面图标：
-                font.pixelSize: 12
-                color: "#383838"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: iconswitcher
-                width: desktopiconlabel.width
-                onSwitched: {
-                    if (iconswitcher.switchedOn) {
-                        sessiondispatcher.set_show_desktop_icons_qt(true);
-                    }
-                    else if(!iconswitcher.switchedOn) {
-                        sessiondispatcher.set_show_desktop_icons_qt(false);
+            spacing: 200
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: desktopiconlabel
+                    width: 170
+                    text: qsTr("Show Desktop Icons: ")//显示桌面图标：
+                    font.pixelSize: 12
+                    color: "#383838"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: iconswitcher
+                    width: desktopiconlabel.width
+                    onSwitched: {
+                        if (iconswitcher.switchedOn) {
+                            sessiondispatcher.set_show_desktop_icons_qt(true);
+                        }
+                        else if(!iconswitcher.switchedOn) {
+                            sessiondispatcher.set_show_desktop_icons_qt(false);
+                        }
                     }
                 }
             }
-        }
-
-        Row {
-            spacing: 20
-            Common.Label {
-                id: homefolderlabel
-                width: 170
-                text: qsTr("Home Folder: ")//主文件夹：
-                font.pixelSize: 12
-                color: "#383838"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: folderswitcher
-                onSwitched: {
-                    if (folderswitcher.switchedOn) {
-                        sessiondispatcher.set_show_homefolder_qt(true);
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_desktop_qt("showdesktopicons");
+                    if (sessiondispatcher.get_show_desktop_icons_qt()) {
+                        iconswitcher.switchedOn = true;
                     }
-                    else if(!folderswitcher.switchedOn) {
-                        sessiondispatcher.set_show_homefolder_qt(false);
-                    }
-                }
-            }
-        }
-
-        Row {
-            spacing: 20
-            Common.Label {
-                id: networklabel
-                width: 170
-                text: qsTr("Network: ")//网络：
-                font.pixelSize: 12
-                color: "#383838"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: networkswitcher
-                onSwitched: {
-                    if (networkswitcher.switchedOn) {
-                        sessiondispatcher.set_show_network_qt(true);
-                    }
-                    else if(!networkswitcher.switchedOn) {
-                        sessiondispatcher.set_show_network_qt(false);
-                    }
-                }
-            }
-        }
-
-        Row {
-            spacing: 20
-            Common.Label {
-                id: trashlabel
-                width: 170
-                text: qsTr("Trash : ")//回收站：
-                font.pixelSize: 12
-                color: "#383838"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: trashswitcher
-                onSwitched: {
-                    if (trashswitcher.switchedOn) {
-                        sessiondispatcher.set_show_trash_qt(true);
-                    }
-                    else if(!trashswitcher.switchedOn) {
-                        sessiondispatcher.set_show_trash_qt(false);
+                    else {
+                        iconswitcher.switchedOn = false;
                     }
                 }
             }
@@ -340,23 +291,173 @@ Rectangle {
 
 
         Row {
-            spacing: 20
-            Common.Label {
-                id: devicelabel
-                width: 170
-                text: qsTr("Mounted Volumes: ")//已经挂载卷标：
-                font.pixelSize: 12
-                color: "#383838"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: deviceswitcher
-                onSwitched: {
-                    if (deviceswitcher.switchedOn) {
-                        sessiondispatcher.set_show_devices_qt(true);
+            spacing: 200
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: homefolderlabel
+                    width: 170
+                    text: qsTr("Home Folder: ")//主文件夹：
+                    font.pixelSize: 12
+                    color: "#383838"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: folderswitcher
+                    width: homefolderlabel.width
+                    onSwitched: {
+                        if (folderswitcher.switchedOn) {
+                            sessiondispatcher.set_show_homefolder_qt(true);
+                        }
+                        else if(!folderswitcher.switchedOn) {
+                            sessiondispatcher.set_show_homefolder_qt(false);
+                        }
                     }
-                    else if(!deviceswitcher.switchedOn) {
-                        sessiondispatcher.set_show_devices_qt(false);
+                }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_desktop_qt("homeiconvisible");
+                    if (sessiondispatcher.get_show_homefolder_qt()) {
+                        folderswitcher.switchedOn = true;
+                    }
+                    else {
+                        folderswitcher.switchedOn = false;
+                    }
+                }
+            }
+        }
+
+        Row {
+            spacing: 200
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: networklabel
+                    width: 170
+                    text: qsTr("Network: ")//网络：
+                    font.pixelSize: 12
+                    color: "#383838"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: networkswitcher
+                    width: networklabel.width
+                    onSwitched: {
+                        if (networkswitcher.switchedOn) {
+                            sessiondispatcher.set_show_network_qt(true);
+                        }
+                        else if(!networkswitcher.switchedOn) {
+                            sessiondispatcher.set_show_network_qt(false);
+                        }
+                    }
+                }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_desktop_qt("networkiconvisible");
+                    if (sessiondispatcher.get_show_network_qt()) {
+                        networkswitcher.switchedOn = true;
+                    }
+                    else {
+                        networkswitcher.switchedOn = false;
+                    }
+                }
+            }
+        }
+
+        Row {
+            spacing: 200
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: trashlabel
+                    width: 170
+                    text: qsTr("Trash : ")//回收站：
+                    font.pixelSize: 12
+                    color: "#383838"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: trashswitcher
+                    width: trashlabel.width
+                    onSwitched: {
+                        if (trashswitcher.switchedOn) {
+                            sessiondispatcher.set_show_trash_qt(true);
+                        }
+                        else if(!trashswitcher.switchedOn) {
+                            sessiondispatcher.set_show_trash_qt(false);
+                        }
+                    }
+                }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_desktop_qt("trashiconvisible");
+                    if (sessiondispatcher.get_show_trash_qt()) {
+                        trashswitcher.switchedOn = true;
+                    }
+                    else {
+                        trashswitcher.switchedOn = false;
+                    }
+                }
+            }
+        }
+
+
+        Row {
+            spacing: 200
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: devicelabel
+                    width: 170
+                    text: qsTr("Mounted Volumes: ")//已经挂载卷标：
+                    font.pixelSize: 12
+                    color: "#383838"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: deviceswitcher
+                    width: devicelabel.width
+                    onSwitched: {
+                        if (deviceswitcher.switchedOn) {
+                            sessiondispatcher.set_show_devices_qt(true);
+                        }
+                        else if(!deviceswitcher.switchedOn) {
+                            sessiondispatcher.set_show_devices_qt(false);
+                        }
+                    }
+                }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_desktop_qt("volumesvisible");
+                    if (sessiondispatcher.get_show_devices_qt()) {
+                        deviceswitcher.switchedOn = true;
+                    }
+                    else {
+                        deviceswitcher.switchedOn = false;
                     }
                 }
             }
@@ -390,7 +491,7 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         showok: false
-        showrestore: true
+//        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -406,49 +507,49 @@ Rectangle {
         }
         onOkBtnClicked: {
         }
-        onRestoreBtnClicked: {
+//        onRestoreBtnClicked: {
 //            var defaultdesktopcontrol = sessiondispatcher.get_default_desktop_bool_qt("showdesktopicons");
 //            var defaultdocument = sessiondispatcher.get_default_desktop_bool_qt("homeiconvisible");
 //            var defaultnetwork = sessiondispatcher.get_default_desktop_bool_qt("networkiconvisible");
 //            var defaultrecyclebin = sessiondispatcher.get_default_desktop_bool_qt("trashiconvisible");
 //            var defaultdevice = sessiondispatcher.get_default_desktop_bool_qt("volumesvisible");
             //20140219
-            sessiondispatcher.set_default_theme_qt("icontheme");
-            sessiondispatcher.set_default_desktop_qt("showdesktopicons");
-            if (sessiondispatcher.get_show_desktop_icons_qt()) {
-                iconswitcher.switchedOn = true;
-            }
-            else {
-                iconswitcher.switchedOn = false;
-            }
-            sessiondispatcher.set_default_desktop_qt("homeiconvisible");
-            if (sessiondispatcher.get_show_homefolder_qt()) {
-                folderswitcher.switchedOn = true;
-            }
-            else {
-                folderswitcher.switchedOn = false;
-            }
-            sessiondispatcher.set_default_desktop_qt("networkiconvisible");
-            if (sessiondispatcher.get_show_network_qt()) {
-                networkswitcher.switchedOn = true;
-            }
-            else {
-                networkswitcher.switchedOn = false;
-            }
-            sessiondispatcher.set_default_desktop_qt("trashiconvisible");
-            if (sessiondispatcher.get_show_trash_qt()) {
-                trashswitcher.switchedOn = true;
-            }
-            else {
-                trashswitcher.switchedOn = false;
-            }
-            sessiondispatcher.set_default_desktop_qt("volumesvisible");
-            if (sessiondispatcher.get_show_devices_qt()) {
-                deviceswitcher.switchedOn = true;
-            }
-            else {
-                deviceswitcher.switchedOn = false;
-            }
+//            sessiondispatcher.set_default_theme_qt("icontheme");
+//            sessiondispatcher.set_default_desktop_qt("showdesktopicons");
+//            if (sessiondispatcher.get_show_desktop_icons_qt()) {
+//                iconswitcher.switchedOn = true;
+//            }
+//            else {
+//                iconswitcher.switchedOn = false;
+//            }
+//            sessiondispatcher.set_default_desktop_qt("homeiconvisible");
+//            if (sessiondispatcher.get_show_homefolder_qt()) {
+//                folderswitcher.switchedOn = true;
+//            }
+//            else {
+//                folderswitcher.switchedOn = false;
+//            }
+//            sessiondispatcher.set_default_desktop_qt("networkiconvisible");
+//            if (sessiondispatcher.get_show_network_qt()) {
+//                networkswitcher.switchedOn = true;
+//            }
+//            else {
+//                networkswitcher.switchedOn = false;
+//            }
+//            sessiondispatcher.set_default_desktop_qt("trashiconvisible");
+//            if (sessiondispatcher.get_show_trash_qt()) {
+//                trashswitcher.switchedOn = true;
+//            }
+//            else {
+//                trashswitcher.switchedOn = false;
+//            }
+//            sessiondispatcher.set_default_desktop_qt("volumesvisible");
+//            if (sessiondispatcher.get_show_devices_qt()) {
+//                deviceswitcher.switchedOn = true;
+//            }
+//            else {
+//                deviceswitcher.switchedOn = false;
+//            }
 
 
 //            var defaultdesktopcontrol = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "desktopcontrol");
@@ -558,7 +659,7 @@ Rectangle {
 //                }
 //                statusImage.visible = true;
 //            }
-        }
+//        }
     }
     Timer {
         interval: 5000; running: true; repeat: true

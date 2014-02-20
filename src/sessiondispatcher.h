@@ -121,7 +121,7 @@ public:
 
     /*-------------------get and set default value-------------------*/
     //获取和设置字体默认值:theme.py
-    Q_INVOKABLE QString get_default_theme_sring_qt(QString schema, QString key);
+    Q_INVOKABLE QString get_default_theme_sring_qt(QString flag/*QString schema, QString key*/);
     Q_INVOKABLE double get_default_theme_double_qt(QString schema, QString key);
     Q_INVOKABLE void set_default_theme_qt(QString flag/*QString schema, QString key, QString type*/);
     //获取和设置字体默认值:desktop.py

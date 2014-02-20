@@ -683,9 +683,11 @@ void SessionDispatcher::set_cursor_size_qt(int size) {
 }
 
 /*-----------------------------font of beauty-----------------------------*/
-QString SessionDispatcher::get_default_theme_sring_qt(QString schema, QString key) {
-    QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", schema, key);
-    return reply.value();
+QString SessionDispatcher::get_default_theme_sring_qt(QString flag/*QString schema, QString key*/) {
+    if(flag == "icontheme") {
+        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.interface", "icon-theme");
+        return reply.value();
+    }
 }
 
 double SessionDispatcher::get_default_theme_double_qt(QString schema, QString key) {
