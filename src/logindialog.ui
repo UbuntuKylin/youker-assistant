@@ -174,10 +174,11 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>registerButton</zorder>
  </widget>
  <tabstops>
-  <tabstop>okButton</tabstop>
-  <tabstop>closeButton</tabstop>
   <tabstop>userlineEdit</tabstop>
   <tabstop>pwdlineEdit</tabstop>
+  <tabstop>okButton</tabstop>
+  <tabstop>closeButton</tabstop>
+  <tabstop>registerButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>
