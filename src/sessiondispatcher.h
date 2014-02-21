@@ -128,7 +128,7 @@ public:
     Q_INVOKABLE bool get_default_desktop_bool_qt(QString schema, QString key);
     Q_INVOKABLE void set_default_desktop_qt(QString flag);
     //获取和设置字体默认值:sound.py
-    Q_INVOKABLE QString get_default_sound_string_qt(QString schema, QString key);
+    Q_INVOKABLE QString get_default_sound_string_qt(QString flag/*QString schema, QString key*/);
     Q_INVOKABLE void set_default_sound_qt(QString flag);
     //获取和设置字体默认值:unity.py
     Q_INVOKABLE int get_default_unity_qt(QString name, QString key);

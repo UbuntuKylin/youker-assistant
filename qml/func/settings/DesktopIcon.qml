@@ -212,6 +212,8 @@ Rectangle {
             onClicked: {
                 sessiondispatcher.set_default_theme_qt("icontheme");
                 iconcombo.selectedIndex = desktopiconsetpage.default_index;
+                showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
+                statusImage.visible = true;
             }
         }
     }

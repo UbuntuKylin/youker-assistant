@@ -148,7 +148,7 @@ Rectangle {
             id: logo
             anchors{
                 left: parent.left
-                leftMargin: 26
+                leftMargin: 15
                 top:parent.top
                 topMargin: 35
             }
@@ -176,36 +176,58 @@ Rectangle {
                 top:parent.top
                 topMargin: 30
             }
-            Text {
-                id: userText
-                text: ""
-                width: 160
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Name:")//用户名：
+                    width: 60
+                }
+                Text {
+                    id: userText
+                    text: ""
+//                    width: 120
+                }
             }
-            Text {
-                id: levelText
-                text: ""
-                width: 160
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Level:")//当前等级：
+                    width: 60
+                }
+                Text {
+                    id: levelText
+                    text: ""
+//                    width: 160
+                }
             }
-            Text {
-                id: scoreText
-                text: ""
-                width: 160
+            Row {
+                spacing: 10
+                Text {
+                    text: qsTr("Score:")//当前积分：
+                    width: 60
+                }
+                Text {
+                    id: scoreText
+                    text: ""
+//                    width: 160
+                }
             }
         }
 //        }
-        Common.KButton {
+
+        Common.StyleButton {
             id: quitBtn
-            kflag: "remove"
-            showImage: "../../img/icons/remove.png"
             anchors {
                 right: parent.right
-                rightMargin: 10
+                rightMargin: 5
                 top: parent.top
                 topMargin: 10
             }
-            width: 16; height: 16
+            wordname: qsTr("Logout")//注销
+            width: 40
+            height: 20
+            fontSize: 8
             onClicked: {
-                console.log("quit....");
                 sessiondispatcher.logout_ubuntukylin_account();
                 userText.text = "";
                 levelText.text = "";
@@ -214,6 +236,29 @@ Rectangle {
                 rightbar.state = "OffLine";
             }
         }
+
+
+//        Common.KButton {
+//            id: quitBtn
+//            kflag: "remove"
+//            showImage: "../../img/icons/remove.png"
+//            anchors {
+//                right: parent.right
+//                rightMargin: 10
+//                top: parent.top
+//                topMargin: 10
+//            }
+//            width: 16; height: 16
+//            onClicked: {
+//                console.log("quit....");
+//                sessiondispatcher.logout_ubuntukylin_account();
+//                userText.text = "";
+//                levelText.text = "";
+//                scoreText.text = "";
+//                logo.source = "";
+//                rightbar.state = "OffLine";
+//            }
+//        }
     }
 //    Rectangle {
 //        id: online

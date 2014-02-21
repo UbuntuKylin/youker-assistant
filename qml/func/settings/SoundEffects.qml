@@ -35,6 +35,9 @@ Rectangle {
     property string actiontext: qsTr("Selected music file name in the list box, do something such as audition, substitution and reduction.")//选中列表框中的音乐文件名，进行对应程序事件的试听、替换和还原。
     property int musiclist_num: 0
 
+    property int current_index//当前主题的索引
+    property int default_index//系统默认主题的索引
+
     property string selectedmusic: ""
     property string selected_sound_theme: ""//存放用户选择确认后的主题
 
@@ -47,6 +50,39 @@ Rectangle {
     }
 
     Component.onCompleted: {
+//        if (sessiondispatcher.get_login_music_enable_qt())
+//            soundswitcher.switchedOn = true;
+//        else
+//            soundswitcher.switchedOn = false;
+
+//        var soundlist = systemdispatcher.get_sound_themes_qt();
+//        var current_sound = sessiondispatcher.get_sound_theme_qt();
+//        showText.text = qsTr("[ Current Sound Theme: ") + current_sound + " ]";//[ 当前音效主题是：
+//        soundeffectspage.selected_sound_theme = current_sound;
+//        soundlist.unshift(current_sound);
+//        //将系统初始的声音主题写入QSetting配置文件
+////        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "soundtheme", current_sound);
+//        choices.clear();
+//        for(var i=0; i < soundlist.length; i++) {
+//            choices.append({"themetext": soundlist[i]});
+//            if (i!=0 && soundlist[i] == current_sound)
+//                choices.remove(i);
+//        }
+//        musicmodel.clear();
+//        var musiclist=systemdispatcher.get_sounds_qt();
+//        musiclist_num = musiclist.length;
+//        for(var l=0; l < musiclist.length; l++) {
+//            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+//        }
+//        if(30*musiclist.length<=chooseyy_height)
+//            scrollbar_z = -1;
+//        else
+//            scrollbar_z = 1;
+
+
+
+
+        var default_theme = sessiondispatcher.get_default_sound_string_qt("soundtheme");
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
         else
@@ -56,15 +92,25 @@ Rectangle {
         var current_sound = sessiondispatcher.get_sound_theme_qt();
         showText.text = qsTr("[ Current Sound Theme: ") + current_sound + " ]";//[ 当前音效主题是：
         soundeffectspage.selected_sound_theme = current_sound;
-        soundlist.unshift(current_sound);
+//        soundlist.unshift(current_sound);
         //将系统初始的声音主题写入QSetting配置文件
 //        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "soundtheme", current_sound);
         choices.clear();
         for(var i=0; i < soundlist.length; i++) {
             choices.append({"themetext": soundlist[i]});
-            if (i!=0 && soundlist[i] == current_sound)
-                choices.remove(i);
+            if (soundlist[i] == current_sound) {
+                soundeffectspage.current_index = i;
+            }
+            else if (soundlist[i] == default_theme) {
+                soundeffectspage.default_index = i;
+            }
+
+//                choices.remove(i);
         }
+        iconcombo.selectedIndex = soundeffectspage.current_index;
+//        console.log(soundeffectspage.current_index);
+//        console.log(soundeffectspage.default_index);
+//        console.log(soundlist);
         musicmodel.clear();
         var musiclist=systemdispatcher.get_sounds_qt();
         musiclist_num = musiclist.length;
@@ -142,7 +188,7 @@ Rectangle {
             font.pointSize: 10
         }
         Row{
-            spacing: 19
+            spacing: 100
             Common.ComboBox {
                 id: iconcombo
                 width : 345
@@ -151,7 +197,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
             Common.Button {
-                width: 94;height: 29
+                width: 95;height: 30
                 hoverimage: "green.png"
                 text: qsTr("OK")//确定
                 onClicked: {
@@ -176,33 +222,28 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    //20140219
-                    sessiondispatcher.set_default_sound_qt("soundtheme");
-                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
-                    showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
-                    iconcombo.selectedIndex = 0;
-                    statusImage.visible = true;
-//                    var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "soundtheme");
-//                    if(defaulttheme == soundeffectspage.selected_sound_theme) {
-//                        //友情提示：       当前主题已经为默认主题!
-//                        sessiondispatcher.showWarningDialog(qsTr("Tips: "),qsTr("The current theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//当前主题已经为默认主题！
-//                    }
-//                    else {
-//                        systemdispatcher.restore_all_sound_file_qt(defaulttheme);
-//                        soundeffectspage.selected_sound_theme = defaulttheme;
-//                        showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
-//                        iconcombo.selectedIndex = 0;
-//                        statusImage.visible = true;
-//                    }
-                }
-            }
+//            Common.Button {
+//                hoverimage: "blue.png"
+//                text: qsTr("Restore")//恢复默认
+//                width: 105
+//                height: 30
+//                onClicked: {
+//                    sessiondispatcher.set_default_sound_qt("soundtheme");
+//                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
+//                    showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
+//                    //attention：这里貌似combobox的顺序已经发生变化了。
+//                    iconcombo.selectedIndex = soundeffectspage.default_index;
+////                    iconcombo.selectedText = defaulttheme;
+//                    console.log("111");
+//                    console.log(soundeffectspage.default_index);
+//                    statusImage.visible = true;
+////                    sessiondispatcher.set_default_sound_qt("soundtheme");
+////                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
+////                    showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
+////                    iconcombo.selectedText = defaulttheme;
+////                    statusImage.visible = true;
+//                }
+//            }
             Timer {
                  interval: 5000; running: true; repeat: true
                  onTriggered: statusImage.visible = false

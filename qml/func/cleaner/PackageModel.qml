@@ -27,6 +27,11 @@ Item {
         width: parent.width
         height: parent.height
         x: (parent.width * 1.5)
+        //背景
+        Image {
+            source: "../../img/skin/bg-middle.png"
+            anchors.fill: parent
+        }
         Connections
         {
             target: systemdispatcher

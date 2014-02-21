@@ -115,34 +115,51 @@ Rectangle {
             width: touchpadsetpage.width - switchtitle.width - 40 * 2
         }
     }
-
-
     Row {
         id: setcontext
+        spacing: 200
         anchors{
             left: parent.left
             leftMargin: 60
             top: settitle.bottom
             topMargin: 20
-
         }
-        spacing: 40
-        Common.Label {
-            width: 130
-            text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板：
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        Common.Switch {
-            id: touchpadswitcher
-            width: 110
-            onSwitched: {
-                if (touchpadswitcher.switchedOn) {
-                    sessiondispatcher.set_touchpad_enable_qt(true);
+        Row {
+            spacing: 40
+            Common.Label {
+                width: 130
+                text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板：
+                font.pixelSize: 12
+                color: "#7a7a7a"
+    //                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: touchpadswitcher
+                width: 125
+                onSwitched: {
+                    if (touchpadswitcher.switchedOn) {
+                        sessiondispatcher.set_touchpad_enable_qt(true);
+                    }
+                    else if(!touchpadswitcher.switchedOn) {
+                        sessiondispatcher.set_touchpad_enable_qt(false);
+                    }
                 }
-                else if(!touchpadswitcher.switchedOn) {
-                    sessiondispatcher.set_touchpad_enable_qt(false);
+            }
+        }
+        Common.Button {
+            hoverimage: "blue.png"
+            text: qsTr("Restore")//恢复默认
+            width: 94
+            height: 29
+            fontsize: 13
+            anchors.verticalCenter: parent.verticalCenter
+            onClicked: {
+                sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
+                if (sessiondispatcher.get_touchpad_enable_qt()) {
+                    touchpadswitcher.switchedOn = true;
+                }
+                else {
+                    touchpadswitcher.switchedOn = false;
                 }
             }
         }
@@ -184,129 +201,191 @@ Rectangle {
         }
 
         Row {
-            id: workmode
-            spacing: 40
-            Common.Label {
-                width: 130
-                text: qsTr("Scrollbar type: ")//滚动条类型：
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
+            spacing: 200
+            Row {
+                id: workmode
+                spacing: 40
+                Common.Label {
+                    width: 130
+                    text: qsTr("Scrollbar type: ")//滚动条类型：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+        //        GroupBox {
+        //            anchors.verticalCenter: parent.verticalCenter
+        //                title: qsTr("触摸板滚动条触发方式:")
+        //            adjustToContentSize: true
+                    Common.ButtonRow {
+                        exclusive: true//控制是否联动
+                        spacing: 100
+                        Common.CheckBox {
+                            id:overlay
+                            titleName: qsTr("Features Type") //特色类型
+                            checked: (touchpadsetpage.scrollbars_mode == "overlay-auto") ? true : false
+                            flag: "radio"
+                            onClicked: {
+                                if (overlay.checked == true) {
+                                    if(touchpadsetpage.scrollbars_mode != "overlay-auto") {
+                                        sessiondispatcher.set_scrollbars_mode_overlay_qt();
+                                        touchpadsetpage.scrollbars_mode = "overlay-auto";
+                                        statusImage.visible = true;
+                                    }
+                                }
+                            }
+                        }
+                        Common.CheckBox {
+                            id: legacy
+                            titleName: qsTr("Standard Type")  //标准类型
+                            checked: (touchpadsetpage.scrollbars_mode == "normal") ? true : false
+                            flag: "radio"
+                            onClicked: {
+                                if (legacy.checked == true) {
+                                    if(touchpadsetpage.scrollbars_mode != "normal") {
+                                        sessiondispatcher.set_scrollbars_mode_legacy_qt();
+                                        touchpadsetpage.scrollbars_mode = "normal";
+                                        statusImage.visible = true;
+                                    }
+                                }
+                            }
+                        }
+        //            }
+                }
             }
-    //        GroupBox {
-    //            anchors.verticalCenter: parent.verticalCenter
-    //                title: qsTr("触摸板滚动条触发方式:")
-    //            adjustToContentSize: true
-                Common.ButtonRow {
-                    exclusive: true//控制是否联动
-                    spacing: 100
-                    Common.CheckBox {
-                        id:overlay
-                        titleName: qsTr("Features Type") //特色类型
-                        checked: (touchpadsetpage.scrollbars_mode == "overlay-auto") ? true : false
-                        flag: "radio"
-                        onClicked: {
-                            if (overlay.checked == true) {
-                                if(touchpadsetpage.scrollbars_mode != "overlay-auto") {
-                                    sessiondispatcher.set_scrollbars_mode_overlay_qt();
-                                    touchpadsetpage.scrollbars_mode = "overlay-auto";
-                                    statusImage.visible = true;
-                                }
-                            }
-                        }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
+                    var default_type = sessiondispatcher.get_scrollbars_mode_qt();
+                    if(default_type == "overlay-auto") {
+                        overlay.checked = true;
                     }
-                    Common.CheckBox {
-                        id: legacy
-                        titleName: qsTr("Standard Type")  //标准类型
-                        checked: (touchpadsetpage.scrollbars_mode == "normal") ? true : false
-                        flag: "radio"
-                        onClicked: {
-                            if (legacy.checked == true) {
-                                if(touchpadsetpage.scrollbars_mode != "normal") {
-                                    sessiondispatcher.set_scrollbars_mode_legacy_qt();
-                                    touchpadsetpage.scrollbars_mode = "normal";
-                                    statusImage.visible = true;
-                                }
-                            }
-                        }
+                    else if(default_type == "normal") {
+                        legacy.checked = true;
                     }
-    //            }
+                }
             }
         }
 
 
 
         Row {
-            id: scrollstyle
-            spacing: 40
-            Common.Label {
-                width: 130
-                text: qsTr("Touchpad scroll trigger mode: ")//触摸板滚动触发方式：
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
+            spacing: 200
+            Row {
+                id: scrollstyle
+                spacing: 40
+                Common.Label {
+                    width: 130
+                    text: qsTr("Touchpad scroll trigger mode: ")//触摸板滚动触发方式：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+        //        GroupBox {
+        //            anchors.verticalCenter: parent.verticalCenter
+        //                title: qsTr("触摸板滚动模式:")
+        //            adjustToContentSize: true
+                    Common.ButtonRow {
+                        exclusive: true//控制是否联动
+                        spacing: 100
+                        Common.CheckBox {
+                            id:edge
+                            titleName: qsTr("Edgemotion")//边缘触发
+                            checked: (touchpadsetpage.touchscrolling_mode == "edge-scrolling") ? true : false
+                            flag: "radio"
+                            onClicked: {
+                                if (edge.checked == true) {
+                                    if(touchpadsetpage.touchscrolling_mode != "edge-scrolling") {
+                                        sessiondispatcher.set_touchscrolling_mode_edge_qt();
+                                        touchpadsetpage.touchscrolling_mode = "edge-scrolling";
+                                        statusImage.visible = true;
+                                    }
+                                }
+                            }
+                        }
+                        Common.CheckBox {
+                            id: twofinger
+                            titleName: qsTr("Twofinger Scroll")//双指触发
+                            checked: (touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") ? true : false
+                            flag: "radio"
+                            onClicked: {
+                                if (twofinger.checked == true) {
+                                    if(touchpadsetpage.touchscrolling_mode != "two-finger-scrolling") {
+                                        sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
+                                        touchpadsetpage.touchscrolling_mode = "two-finger-scrolling";
+                                        statusImage.visible = true;
+                                    }
+                                }
+                            }
+                        }
+        //            }
+                }
             }
-    //        GroupBox {
-    //            anchors.verticalCenter: parent.verticalCenter
-    //                title: qsTr("触摸板滚动模式:")
-    //            adjustToContentSize: true
-                Common.ButtonRow {
-                    exclusive: true//控制是否联动
-                    spacing: 100
-                    Common.CheckBox {
-                        id:edge
-                        titleName: qsTr("Edgemotion")//边缘触发
-                        checked: (touchpadsetpage.touchscrolling_mode == "edge-scrolling") ? true : false
-                        flag: "radio"
-                        onClicked: {
-                            if (edge.checked == true) {
-                                if(touchpadsetpage.touchscrolling_mode != "edge-scrolling") {
-                                    sessiondispatcher.set_touchscrolling_mode_edge_qt();
-                                    touchpadsetpage.touchscrolling_mode = "edge-scrolling";
-                                    statusImage.visible = true;
-                                }
-                            }
-                        }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
+                    var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
+                    if(default_mode == "edge-scrolling") {
+                        edge.checked = true;
                     }
-                    Common.CheckBox {
-                        id: twofinger
-                        titleName: qsTr("Twofinger Scroll")//双指触发
-                        checked: (touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") ? true : false
-                        flag: "radio"
-                        onClicked: {
-                            if (twofinger.checked == true) {
-                                if(touchpadsetpage.touchscrolling_mode != "two-finger-scrolling") {
-                                    sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
-                                    touchpadsetpage.touchscrolling_mode = "two-finger-scrolling";
-                                    statusImage.visible = true;
-                                }
-                            }
-                        }
+                    else if(default_mode == "two-finger-scrolling") {
+                        twofinger.checked = true;
                     }
-    //            }
+                }
             }
         }
 
 
         Row {
-            id: horizontalscroll
-            spacing: 40
-            Common.Label {
-                width: 130
-                text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: horizontalswitcher
-                width: 110
-                onSwitched: {
-                    if (horizontalswitcher.switchedOn) {
-                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
+            spacing: 200
+            Row {
+                id: horizontalscroll
+                spacing: 40
+                Common.Label {
+                    width: 130
+                    text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: horizontalswitcher
+                    width: 125
+                    onSwitched: {
+                        if (horizontalswitcher.switchedOn) {
+                            sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
+                        }
+                        else if(!horizontalswitcher.switchedOn) {
+                            sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
+                        }
                     }
-                    else if(!horizontalswitcher.switchedOn) {
-                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
+                }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
+                    if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
+                        horizontalswitcher.switchedOn = true;
+                    }
+                    else {
+                        horizontalswitcher.switchedOn = false;
                     }
                 }
             }
@@ -342,7 +421,7 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         showok: false
-        showrestore: true
+//        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -356,40 +435,40 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-        onRestoreBtnClicked: {
-            sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
-            if (sessiondispatcher.get_touchpad_enable_qt()) {
-                touchpadswitcher.switchedOn = true;
-            }
-            else {
-                touchpadswitcher.switchedOn = false;
-            }
+//        onRestoreBtnClicked: {
+//            sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
+//            if (sessiondispatcher.get_touchpad_enable_qt()) {
+//                touchpadswitcher.switchedOn = true;
+//            }
+//            else {
+//                touchpadswitcher.switchedOn = false;
+//            }
 
-            sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
-            var default_type = sessiondispatcher.get_scrollbars_mode_qt();
-            if(default_type == "overlay-auto") {
-                overlay.checked = true;
-            }
-            else if(default_type == "normal") {
-                legacy.checked = true;
-            }
-            sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
-            var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
-            if(default_mode == "edge-scrolling") {
-                edge.checked = true;
-            }
-            else if(default_mode == "two-finger-scrolling") {
-                twofinger.checked = true;
-            }
-            sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
-            if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
-                horizontalswitcher.switchedOn = true;
-            }
-            else {
-                horizontalswitcher.switchedOn = false;
-            }
+//            sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
+//            var default_type = sessiondispatcher.get_scrollbars_mode_qt();
+//            if(default_type == "overlay-auto") {
+//                overlay.checked = true;
+//            }
+//            else if(default_type == "normal") {
+//                legacy.checked = true;
+//            }
+//            sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
+//            var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
+//            if(default_mode == "edge-scrolling") {
+//                edge.checked = true;
+//            }
+//            else if(default_mode == "two-finger-scrolling") {
+//                twofinger.checked = true;
+//            }
+//            sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
+//            if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
+//                horizontalswitcher.switchedOn = true;
+//            }
+//            else {
+//                horizontalswitcher.switchedOn = false;
+//            }
 
-            statusImage.visible = true;
+//            statusImage.visible = true;
 
 
 //            var defaultenable = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "enable");
@@ -461,7 +540,7 @@ Rectangle {
 //                }
 //                statusImage.visible = true;
 //            }
-        }
+//        }
     }
     Timer {
          interval: 5000; running: true; repeat: true

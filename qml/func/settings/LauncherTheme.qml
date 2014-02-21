@@ -126,105 +126,161 @@ Rectangle {
             topMargin: 10
         }
         Row {
-            spacing: 20
-            Common.Label {
-                id: launcherlabel
-                width: 150
-                text: qsTr("Launcher hide mode:")//启动器自动隐藏：
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: launcherswitcher
-//                width: launcherlabel.width
-                onSwitched: {
-                    if (launcherswitcher.switchedOn) {
-                        sessiondispatcher.set_launcher_autohide_qt(true);
+            spacing: 135
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: launcherlabel
+                    width: 170
+                    text: qsTr("Launcher hide mode:")//启动器自动隐藏：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: launcherswitcher
+                    width: launcherlabel.width
+                    onSwitched: {
+                        if (launcherswitcher.switchedOn) {
+                            sessiondispatcher.set_launcher_autohide_qt(true);
+                        }
+                        else if(!launcherswitcher.switchedOn) {
+                            sessiondispatcher.set_launcher_autohide_qt(false);
+                        }
                     }
-                    else if(!launcherswitcher.switchedOn) {
-                        sessiondispatcher.set_launcher_autohide_qt(false);
+                }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
+//                    console.log(default_hide);
+//                    statusImage.visible = true;
+                    if(default_hide) {
+                        console.log("it should be off");
+                        sessiondispatcher.set_default_unity_qt("launcherhide", false);
+                        launcherswitcher.switchedOn = false;
+                    }
+                    else {
+                        sessiondispatcher.set_default_unity_qt("launcherhide", true);
+                        launcherswitcher.switchedOn = true;
+                        console.log("it should be oon");
                     }
                 }
             }
         }
 
+
         Row {
-            spacing: 20
-            Common.Label {
-                id: iconsizelabel
-                width: 150
-                text: qsTr("Launcher icon size: ")//启动器图标尺寸：
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Slider {
-                id: slider
-                value: sessiondispatcher.get_launcher_icon_size_qt()
-                onValueChanged: {
-//                    console.log(slider.value)
-                    if(launcherthemepage.first_slider_value ){  //系统初始化时会使value的值为32（最小值），需要过滤掉
-//                        launcherthemepage.launcher_size = slider.value;
-                        sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+            spacing: 135 - 20
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: iconsizelabel
+                    width: 170
+                    text: qsTr("Launcher icon size: ")//启动器图标尺寸：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Slider {
+                    id: slider
+                    value: sessiondispatcher.get_launcher_icon_size_qt()
+                    onValueChanged: {
+    //                    console.log(slider.value)
+                        if(launcherthemepage.first_slider_value ){  //系统初始化时会使value的值为32（最小值），需要过滤掉
+    //                        launcherthemepage.launcher_size = slider.value;
+                            sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+                        }
+                        if(slider.value == 32)  //系统初始化时会使value的值为32（最小值），需要过滤掉
+                        {
+                            launcherthemepage.first_slider_value = true;
+                        }
                     }
-                    if(slider.value == 32)  //系统初始化时会使value的值为32（最小值），需要过滤掉
-                    {
-                        launcherthemepage.first_slider_value = true;
+                    width: 150
+                    maximumValue: 64
+                    minimumValue: 32
+    //                tickmarksEnabled: true
+                    stepSize: 1
+                    animated: true
+                }
+
+                Text {
+                    id: displaynum
+                    width: 20
+                    text: slider.value
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+    //            Common.Button {
+    //                id: okBtn
+    //                hoverimage: "green2.png"
+    //                fontsize: 12
+    //                text: qsTr("OK")//确定
+    //                width: 94; height: 29
+    //                onClicked: {
+    //                    if (launcherthemepage.launcher_size != slider.value) {
+    //                        launcherthemepage.launcher_size = slider.value;
+    //                        sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+    //                    }
+    //                }
+    //            }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
+//                    console.log(default_size);
+                    sessiondispatcher.set_default_unity_qt("launchersize", default_size);
+                    slider.value = default_size;
+                }
+            }
+        }
+
+
+        Row {
+            spacing: 135
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: showdesktoplabel
+                    width: 170
+                    text: qsTr("Display desktop icon: ")//显示桌面图标：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: showdesktopswitcher
+                    width: showdesktoplabel.width
+                    onSwitched: {
+                        if (showdesktopswitcher.switchedOn) {
+                            sessiondispatcher.set_launcher_have_showdesktopicon_qt(true);
+                        }
+                        else if(!showdesktopswitcher.switchedOn) {
+                            sessiondispatcher.set_launcher_have_showdesktopicon_qt(false);
+                        }
                     }
                 }
-                width: 150
-                maximumValue: 64
-                minimumValue: 32
-//                tickmarksEnabled: true
-                stepSize: 1
-                animated: true
-            }
-
-            Text {
-                id: displaynum
-                text: slider.value
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
             }
 //            Common.Button {
-//                id: okBtn
-//                hoverimage: "green2.png"
-//                fontsize: 12
-//                text: qsTr("OK")//确定
-//                width: 94; height: 29
+//                hoverimage: "blue.png"
+//                text: qsTr("Restore")//恢复默认
+//                width: 94
+//                height: 29
+//                fontsize: 13
 //                onClicked: {
-//                    if (launcherthemepage.launcher_size != slider.value) {
-//                        launcherthemepage.launcher_size = slider.value;
-//                        sessiondispatcher.set_launcher_icon_size_qt(slider.value);
-//                    }
 //                }
 //            }
-        }
-
-        Row {
-            spacing: 20
-            Common.Label {
-                id: showdesktoplabel
-                width: 150
-                text: qsTr("Display desktop icon: ")//显示桌面图标：
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: showdesktopswitcher
-//                width: showdesktoplabel.width
-                onSwitched: {
-                    if (showdesktopswitcher.switchedOn) {
-                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(true);
-                    }
-                    else if(!showdesktopswitcher.switchedOn) {
-                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(false);
-                    }
-                }
-            }
         }
     }//Column
 
@@ -255,7 +311,7 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         showok: false
-        showrestore: true
+//        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -269,24 +325,24 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-        onRestoreBtnClicked: {
-            var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
-            console.log(default_size);
-            sessiondispatcher.set_default_unity_qt("launchersize", default_size);
-            slider.value = default_size;
-            var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
-            console.log(default_hide);
-            statusImage.visible = true;
-            if(default_hide) {
-                console.log("it should be off");
-                sessiondispatcher.set_default_unity_qt("launcherhide", false);
-                launcherswitcher.switchedOn = false;
-            }
-            else {
-                sessiondispatcher.set_default_unity_qt("launcherhide", true);
-                launcherswitcher.switchedOn = true;
-                console.log("it should be oon");
-            }
+//        onRestoreBtnClicked: {
+//            var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
+//            console.log(default_size);
+//            sessiondispatcher.set_default_unity_qt("launchersize", default_size);
+//            slider.value = default_size;
+//            var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
+//            console.log(default_hide);
+//            statusImage.visible = true;
+//            if(default_hide) {
+//                console.log("it should be off");
+//                sessiondispatcher.set_default_unity_qt("launcherhide", false);
+//                launcherswitcher.switchedOn = false;
+//            }
+//            else {
+//                sessiondispatcher.set_default_unity_qt("launcherhide", true);
+//                launcherswitcher.switchedOn = true;
+//                console.log("it should be oon");
+//            }
 
 //            var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "size");
 //            var defaultautohide = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "autohide");
@@ -338,7 +394,7 @@ Rectangle {
 //                }
 //                statusImage.visible = true;
 //            }
-        }
+//        }
         Timer {
              interval: 5000; running: true; repeat: true
              onTriggered: statusImage.visible = false

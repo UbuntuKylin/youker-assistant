@@ -119,10 +119,10 @@ void SessionDispatcher::connectHttpServer(){
     httpauth->sendGetRequest(url);
 }
 
-//beat失败处理，四次beat不成功，界面的用户信息消失，改为登录界面，提示网络出错
+//beat失败处理，2次beat不成功，界面的用户信息消失，改为登录界面，提示网络出错
 void SessionDispatcher::resetTimerStatus() {
     waitTime++;
-    if(waitTime >= 4){
+    if(waitTime >= 2){
         waitTime = 0;
         disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
         if(timer->isActive()) {
@@ -688,6 +688,11 @@ QString SessionDispatcher::get_default_theme_sring_qt(QString flag/*QString sche
         QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.interface", "icon-theme");
         return reply.value();
     }
+    else if(flag == "mousetheme") {
+        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.interface", "cursor-theme");
+        return reply.value();
+    }
+    return flag;
 }
 
 double SessionDispatcher::get_default_theme_double_qt(QString schema, QString key) {
@@ -750,9 +755,12 @@ void SessionDispatcher::set_default_desktop_qt(QString flag) {
 }
 
 
-QString SessionDispatcher::get_default_sound_string_qt(QString schema, QString key) {
-    QDBusReply<QString> reply = sessioniface->call("get_default_sound_string", schema, key);
-    return reply.value();
+QString SessionDispatcher::get_default_sound_string_qt(QString flag/*QString schema, QString key*/) {
+    if(flag == "soundtheme") {
+        QDBusReply<QString> reply = sessioniface->call("get_default_sound_string", "org.gnome.desktop.sound", "theme-name");
+        return reply.value();
+    }
+    return flag;
 }
 
 void SessionDispatcher::set_default_sound_qt(QString flag) {
@@ -760,7 +768,6 @@ void SessionDispatcher::set_default_sound_qt(QString flag) {
         sessioniface->call("set_default_sound", "org.gnome.desktop.sound", "theme-name", "string");
     }
 }
-
 
 
 QString SessionDispatcher::get_font_qt() {

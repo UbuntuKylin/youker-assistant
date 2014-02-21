@@ -28,6 +28,9 @@ Rectangle {
     property int cursor_size: 24
     property string selected_cursor_theme: ""//存放用户选择确认后的主题
 
+    property int current_index//当前主题的索引
+    property int default_index//系统默认主题的索引
+
     property string actiontitle: qsTr("Mouse Settings")//鼠标设置
     property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm. Also, theme change need to restart system.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。
     //背景
@@ -37,20 +40,68 @@ Rectangle {
     }
     Component.onCompleted: {
         mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
-        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursorsize", mousepointerpage.cursor_size);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursorsize", mousepointerpage.cursor_size);
         var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+        var default_theme = sessiondispatcher.get_default_theme_sring_qt("mousetheme");
+        //系统默认值可能在获取列表的时候没有该值，所以需要在这里添加进去。
+        var flag = false;
+        for(var i=0; i < cursorlist.length; i++) {
+            if(cursorlist[i] == default_theme) {
+                flag = true;
+            }
+        }
+        if(flag) {
+            flag = false;
+        }
+        else {
+            var len = cursorlist.length;
+            cursorlist.push(default_theme);
+        }
+
+
         var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
         //将系统初始的图标主题写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursortheme", current_cursor_theme);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursortheme", current_cursor_theme);
         showText.text = qsTr("[ Current Cursor Theme: ") + current_cursor_theme + " ]";//[ 当前光标主题是：
         mousepointerpage.selected_cursor_theme = current_cursor_theme;
-        cursorlist.unshift(current_cursor_theme);
+//        cursorlist.unshift(current_cursor_theme);
+
+
+//        console.log("default_theme->");
+//        console.log(default_theme);
+
         choices.clear();
         for(var k=0; k < cursorlist.length; k++) {
             choices.append({"text": cursorlist[k]});
-            if (k!=0 && cursorlist[k] == current_cursor_theme)
-                choices.remove(k);
+            if (cursorlist[k] == current_cursor_theme) {
+                mousepointerpage.current_index = k;
+            }
         }
+//        var flag = false;
+//        var k;
+//        for(k=0; k < cursorlist.length; k++) {
+//            choices.append({"text": cursorlist[k]});
+////            if (k!=0 && cursorlist[k] == current_cursor_theme)
+////                choices.remove(k);
+//            if (cursorlist[k] == current_cursor_theme) {
+//                mousepointerpage.current_index = k;
+//            }
+//            else if (cursorlist[k] == default_theme) {
+//                mousepointerpage.default_index = k;
+//                flag = true;
+////                console.log("aaaaaaaaaa->");
+////                console.log()
+//            }
+//        }
+//        if(flag) {
+//            flag = false;
+//        }
+//        else {
+//            choices.append({"text": default_theme});
+//            mousepointerpage.default_index = cursorlist.length - 1;
+//        }
+
+        cursorcombo.selectedIndex = mousepointerpage.current_index;
 
     }
 
@@ -124,41 +175,63 @@ Rectangle {
         }
         spacing: 20
         Row {
-            spacing: 20
-            Text {
-                id: cursorthemelabel
-                text: qsTr("Mouse Pointer Theme")//鼠标指针主题
-                font.pixelSize: 12
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
+            spacing: 135
+            Row {
+                spacing: 20
+                Text {
+                    id: cursorthemelabel
+                    text: qsTr("Mouse Pointer Theme")//鼠标指针主题
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
 
-            Common.ComboBox {
-                id: cursorcombo
-                model: choices
-                width: 150
-    //            width: cursorthemelabel.width
-                onSelectedTextChanged: {/*console.log(selectedText)*/}
-                anchors.verticalCenter: parent.verticalCenter
+                Common.ComboBox {
+                    id: cursorcombo
+                    model: choices
+                    width: 150
+        //            width: cursorthemelabel.width
+                    onSelectedTextChanged: {/*console.log(selectedText)*/}
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Button {
+                    id: okBtn
+                    width: 94;height: 29
+                    fontsize: 13
+                    hoverimage: "green.png"
+                    text: qsTr("OK")//确定
+                    onClicked: {
+                        if (mousepointerpage.selected_cursor_theme != cursorcombo.selectedText) {
+                            mousepointerpage.selected_cursor_theme = cursorcombo.selectedText;
+                            sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+                            systemdispatcher.set_cursor_theme_with_root_qt(cursorcombo.selectedText);
+                            showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
+                            statusImage.visible = true;
+                        }
+                    }
+                }
             }
             Common.Button {
-                id: okBtn
-                width: 94;height: 29
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
                 fontsize: 13
-                hoverimage: "green.png"
-                text: qsTr("OK")//确定
                 onClicked: {
-                    if (mousepointerpage.selected_cursor_theme != cursorcombo.selectedText) {
-                        mousepointerpage.selected_cursor_theme = cursorcombo.selectedText;
-                        sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-                        systemdispatcher.set_cursor_theme_with_root_qt(cursorcombo.selectedText);
-                        showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
-                        statusImage.visible = true;
-                    }
+                    sessiondispatcher.set_default_theme_qt("mousetheme");
+                    var defaulttheme = sessiondispatcher.get_cursor_theme_qt();
+//                    console.log(defaulttheme);
+                    systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
+                    cursorcombo.selectedText = defaulttheme;
+//                    cursorcombo.selectedIndex = mousepointerpage.default_index;
+                    showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
+                    statusImage.visible = true;
                 }
             }
         }
 
+//        Row {
+//            spacing: 135
         Row {
             spacing: 20
             Text {
@@ -204,6 +277,17 @@ Rectangle {
                 }
             }
         }
+//            Common.Button {
+//                hoverimage: "blue.png"
+//                text: qsTr("Restore")//恢复默认
+//                width: 94
+//                height: 29
+//                fontsize: 13
+//                onClicked: {
+
+//                }
+//            }
+//        }
     }
     //顶层工具栏
     Bars.TopBar {
@@ -232,7 +316,7 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         showok: false
-        showrestore: true
+//        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -246,40 +330,40 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-        onRestoreBtnClicked: {
+//        onRestoreBtnClicked: {
             //20140219
 //            sessiondispatcher.set_default_theme_qt("mousetheme");
 //            var defaulttheme = sessiondispatcher.get_cursor_theme_qt();
 //            systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
 //            showText.text = qsTr("[ Current Cursor Theme: ") + defaulttheme + " ]";//[ 当前光标主题是：
 //            statusImage.visible = true;
-            var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursortheme");
-            var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursorsize");
+//            var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursortheme");
+//            var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursorsize");
 
-            if((defaulttheme == mousepointerpage.selected_cursor_theme) && (defaultsize == mousepointerpage.cursor_size)) {
-                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Cursor configure is the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//光标配置已经为默认设置！
-            }
-            else {
-                if(defaulttheme != mousepointerpage.selected_cursor_theme) {
-                    sessiondispatcher.set_cursor_theme_qt(defaulttheme);
-                    systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
-                    mousepointerpage.selected_cursor_theme = defaulttheme;
-                    showText.text = qsTr("[ Current Cursor Theme: ") + defaulttheme + " ]";//[ 当前光标主题是：
-                    cursorcombo.selectedIndex = 0;
-                }
-                if(defaultsize != mousepointerpage.cursor_size) {
-                    sessiondispatcher.set_cursor_size_qt(defaultsize);
-                    mousepointerpage.cursor_size = defaultsize;
-                    if(defaultsize == 24) {
-                        smallstyle.checked = true;
-                    }
-                    else if(defaultsize == 36) {
-                        bigstyle.checked = true;
-                    }
-                }
-                statusImage.visible = true;
-            }
-        }
+//            if((defaulttheme == mousepointerpage.selected_cursor_theme) && (defaultsize == mousepointerpage.cursor_size)) {
+//                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Cursor configure is the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//光标配置已经为默认设置！
+//            }
+//            else {
+//                if(defaulttheme != mousepointerpage.selected_cursor_theme) {
+//                    sessiondispatcher.set_cursor_theme_qt(defaulttheme);
+//                    systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
+//                    mousepointerpage.selected_cursor_theme = defaulttheme;
+//                    showText.text = qsTr("[ Current Cursor Theme: ") + defaulttheme + " ]";//[ 当前光标主题是：
+//                    cursorcombo.selectedIndex = 0;
+//                }
+//                if(defaultsize != mousepointerpage.cursor_size) {
+//                    sessiondispatcher.set_cursor_size_qt(defaultsize);
+//                    mousepointerpage.cursor_size = defaultsize;
+//                    if(defaultsize == 24) {
+//                        smallstyle.checked = true;
+//                    }
+//                    else if(defaultsize == 36) {
+//                        bigstyle.checked = true;
+//                    }
+//                }
+//                statusImage.visible = true;
+//            }
+//        }
         Timer {
              interval: 5000; running: true; repeat: true
              onTriggered: statusImage.visible = false

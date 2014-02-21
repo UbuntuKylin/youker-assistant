@@ -59,7 +59,7 @@ Rectangle {
             }
         }
         //将系统初始的标题栏字体写入QSetting配置文件
-        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "widgettheme", widgetthemepage.init_theme);
+//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "widgettheme", widgetthemepage.init_theme);
     }
 
     ListModel { id: themeModel }

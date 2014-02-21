@@ -598,7 +598,7 @@ Item {
                                 else {
                                     root.firefox_btn_flag = status;
                                     if (root.firefox_btn_flag == "cookies_scan") {
-                                        console.log("scan---f......");
+//                                        console.log("scan---f......");
                                         //开始扫描时获取cookies
                                         root.firefoxNum = 0;
                                         root.flag = false;
@@ -722,7 +722,7 @@ Item {
                                 else {
                                     root.chromium_btn_flag = status;
                                     if (root.chromium_btn_flag == "cookies_scanc") {
-                                        console.log("scan---c......");
+//                                        console.log("scan---c......");
                                         //开始扫描时获取cookies
                                         root.flag = false;
                                         root.chromiumNum = 0;

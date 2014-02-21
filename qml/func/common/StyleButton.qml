@@ -19,6 +19,7 @@ Rectangle {
     id: styleBtn
     width: 58
     height: 29
+    property int fontSize: 10
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
     property string wordname: ""
@@ -28,7 +29,7 @@ Rectangle {
         id:textname
         anchors.centerIn: parent
         text: wordname
-        font.pointSize: 10
+        font.pointSize: styleBtn.fontSize
         color: "#318d11"
     }
 

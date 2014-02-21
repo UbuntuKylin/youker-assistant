@@ -42,7 +42,7 @@ Rectangle {
         weatherText.text = qsTr("Weather");//天气
         windText.text = qsTr("Wind");//风力
         pmText.text = qsTr("AQI");//空气质量指数
-        tempText.text = qsTr("Current temperature (℃)");//当前温度（℃）
+        tempText.text = qsTr("Current temperature");//当前温度（℃）
         temperatureRangeText.text = qsTr("Temperature range");//温度范围
         humidityText.text = qsTr("Humidity");//湿度
     }
