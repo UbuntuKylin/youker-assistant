@@ -146,6 +146,23 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="registerButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>240</y>
+     <width>94</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pixmap/image/ok.png);
+font: 11pt &quot;文泉驿微米黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Register</string>
+   </property>
+  </widget>
   <zorder>frame</zorder>
   <zorder>closeButton</zorder>
   <zorder>okButton</zorder>
@@ -154,6 +171,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>userlineEdit</zorder>
   <zorder>btn_min</zorder>
   <zorder>warnLabel</zorder>
+  <zorder>registerButton</zorder>
  </widget>
  <tabstops>
   <tabstop>okButton</tabstop>

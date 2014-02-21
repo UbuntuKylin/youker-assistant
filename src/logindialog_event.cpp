@@ -58,7 +58,7 @@ bool LoginDialog::eventFilter(QObject *obj, QEvent *event)
             return QObject::eventFilter(obj, event);
         }
     }
-    if(obj == ui->okButton ||obj == ui->closeButton)
+    if(obj == ui->registerButton ||obj == ui->okButton ||obj == ui->closeButton)
     {
         if(event->type() == QEvent::MouseButtonPress)
         {

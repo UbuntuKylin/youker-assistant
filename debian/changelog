@@ -12,7 +12,7 @@ youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
   * Reset default config value with Gio Settings and compizconfig.
   * Remove software recommand.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 21 Feb 2014 15:31:40 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 21 Feb 2014 16:36:44 +0800
 
 youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
 

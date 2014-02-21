@@ -35,6 +35,8 @@
         <file>image/next-zh.png</file>
         <file>image/pre-en.png</file>
         <file>image/pre-zh.png</file>
+        <file>image/register.png</file>
+        <file>image/register-hover.png</file>
     </qresource>
     <qresource prefix="/skin">
         <file>image/0_bg.png</file>

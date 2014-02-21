@@ -1895,6 +1895,11 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
+        <location filename="../logindialog.ui" line="163"/>
+        <source>Register</source>
+        <translation>注册帐号</translation>
+    </message>
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Passwd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;密码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -1917,12 +1922,12 @@
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ubuntu Kylin 论坛帐号登录 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../logindialog.cpp" line="64"/>
+        <location filename="../logindialog.cpp" line="68"/>
         <source>Please input your username!</source>
         <translation>请输入您的用户名！</translation>
     </message>
     <message>
-        <location filename="../logindialog.cpp" line="71"/>
+        <location filename="../logindialog.cpp" line="75"/>
         <source>Please input your password!</source>
         <translation>请输入您的密码！</translation>
     </message>

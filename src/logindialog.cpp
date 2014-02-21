@@ -17,6 +17,8 @@
 #include "ui_logindialog.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <QDesktopServices>
+#include <QUrl>
 
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
@@ -32,6 +34,8 @@ LoginDialog::LoginDialog(QWidget *parent) :
     ui->closeButton->installEventFilter(this);
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
+    ui->registerButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/register.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/register-hover.png);}");
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
     ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
@@ -79,4 +83,9 @@ void LoginDialog::on_okButton_clicked()
             this->accept();
         }
     }
+}
+
+void LoginDialog::on_registerButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl(QLatin1String("http://www.ubuntukylin.com/ukylin/portal.php")));
 }
