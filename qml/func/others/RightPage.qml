@@ -103,7 +103,7 @@ Rectangle {
             kflag: "login"
             showImage: ""
             anchors {
-                top: parent.top; topMargin: 20
+                top: parent.top; topMargin: 25
                 horizontalCenter: parent.horizontalCenter
             }
             width: 216
@@ -140,53 +140,61 @@ Rectangle {
     }
 
 
+
+
+    //------------------login
     Rectangle {
         id: online
         width: parent.width
         x: (parent.width * 1.5)
-        Image {
-            id: logo
+        Column {
+            id: logcolumn
+            spacing: 5
             anchors{
                 left: parent.left
                 leftMargin: 15
                 top:parent.top
-                topMargin: 35
+                topMargin: 10
             }
-            width: 50; height: 50
-            source: ""
+            Image {
+                id: logo
+                width: 56; height: 56
+                source: ""
+            }
+            Common.Button {
+                id: logout
+                hoverimage: "skyblue.png"
+                text: qsTr("Logout")//注销
+                fontcolor: "#086794"
+                width: 56
+                height: 22
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.logout_ubuntukylin_account();
+                    userText.text = "";
+                    levelText.text = "";
+                    scoreText.text = "";
+                    logo.source = "";
+                    rightbar.state = "OffLine";
+                }
+            }
         }
-//        Row {
-//            anchors{
-//                left: parent.left
-//                leftMargin: 26
-//                top:parent.top
-//                topMargin: 30
-//            }
-//            spacing: 10
-//            Image {
-//                id: logo
-//                width: 32; height: 32
-//                source: ""
-//            }
         Column {
-            spacing: 5
+            spacing: 10
             anchors{
-                left: logo.right
+//                left: logo.right
+                left: logcolumn.right
                 leftMargin: 10
                 top:parent.top
-                topMargin: 30
+                topMargin: 10
             }
-            Row {
-                spacing: 10
-                Text {
-                    text: qsTr("Name:")//用户名：
-                    width: 60
-                }
-                Text {
-                    id: userText
-                    text: ""
-//                    width: 120
-                }
+            Text {
+                id: userText
+                text: ""
+                font.bold: true
+                font.pixelSize: 20
+                color: "#383838"
+                width: 160
             }
             Row {
                 spacing: 10
@@ -214,43 +222,29 @@ Rectangle {
             }
         }
 //        }
-
-        Common.StyleButton {
-            id: quitBtn
+        Common.Separator {
             anchors {
-                right: parent.right
-                rightMargin: 5
+                left: parent.left
+                leftMargin: 2
                 top: parent.top
-                topMargin: 10
+                topMargin: 100
             }
-            wordname: qsTr("Logout")//注销
-            width: 40
-            height: 20
-            fontSize: 8
-            onClicked: {
-                sessiondispatcher.logout_ubuntukylin_account();
-                userText.text = "";
-                levelText.text = "";
-                scoreText.text = "";
-                logo.source = "";
-                rightbar.state = "OffLine";
-            }
+            width: parent.width - 4
         }
 
-
-//        Common.KButton {
+//        Common.StyleButton {
 //            id: quitBtn
-//            kflag: "remove"
-//            showImage: "../../img/icons/remove.png"
 //            anchors {
 //                right: parent.right
-//                rightMargin: 10
+//                rightMargin: 5
 //                top: parent.top
-//                topMargin: 10
+//                topMargin: 5
 //            }
-//            width: 16; height: 16
+//            wordname: qsTr("Logout")//注销
+//            width: 40
+//            height: 20
+//            fontSize: 8
 //            onClicked: {
-//                console.log("quit....");
 //                sessiondispatcher.logout_ubuntukylin_account();
 //                userText.text = "";
 //                levelText.text = "";
@@ -260,54 +254,91 @@ Rectangle {
 //            }
 //        }
     }
+
 //    Rectangle {
 //        id: online
 //        width: parent.width
 //        x: (parent.width * 1.5)
-//        Row {
+//        Image {
+//            id: logo
 //            anchors{
 //                left: parent.left
-//                leftMargin: 26
+//                leftMargin: 15
 //                top:parent.top
-//                topMargin: 30
+//                topMargin: 35
 //            }
-//            spacing: 10
-//            Image {
-//                id: logo
-//                width: 32; height: 32
-//                source: ""
+//            width: 50; height: 50
+//            source: ""
+//        }
+//        Column {
+//            spacing: 5
+//            anchors{
+//                left: logo.right
+//                leftMargin: 10
+//                top:parent.top
+//                topMargin: 25
 //            }
-//            Column {
+//            Row {
+//                spacing: 10
+//                Text {
+//                    text: qsTr("Name:")//用户名：
+//                    width: 60
+//                }
 //                Text {
 //                    id: userText
 //                    text: ""
-//                    width: 160
+////                    width: 120
+//                }
+//            }
+//            Row {
+//                spacing: 10
+//                Text {
+//                    text: qsTr("Level:")//当前等级：
+//                    width: 60
 //                }
 //                Text {
 //                    id: levelText
 //                    text: ""
-//                    width: 160
+////                    width: 160
+//                }
+//            }
+//            Row {
+//                spacing: 10
+//                Text {
+//                    text: qsTr("Score:")//当前积分：
+//                    width: 60
 //                }
 //                Text {
 //                    id: scoreText
 //                    text: ""
-//                    width: 160
+////                    width: 160
 //                }
 //            }
 //        }
-//        Common.KButton {
+////        }
+//        Common.Separator {
+//            anchors {
+//                left: parent.left
+//                leftMargin: 2
+//                top: parent.top
+//                topMargin: 100
+//            }
+//            width: parent.width - 4
+//        }
+
+//        Common.StyleButton {
 //            id: quitBtn
-//            kflag: "remove"
-//            showImage: "../../img/icons/remove.png"
 //            anchors {
 //                right: parent.right
-//                rightMargin: 10
+//                rightMargin: 5
 //                top: parent.top
-//                topMargin: 10
+//                topMargin: 5
 //            }
-//            width: 16; height: 16
+//            wordname: qsTr("Logout")//注销
+//            width: 40
+//            height: 20
+//            fontSize: 8
 //            onClicked: {
-//                console.log("quit....");
 //                sessiondispatcher.logout_ubuntukylin_account();
 //                userText.text = "";
 //                levelText.text = "";
@@ -318,25 +349,31 @@ Rectangle {
 //        }
 //    }
 
+
     WeatherZone {
         id: weatherZone
         width: 208;height: 147
         anchors {
             top: parent.top
-            topMargin: 105
+            topMargin: 115
             horizontalCenter: parent.horizontalCenter
         }
     }
 
     //上下分割条
-    Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width - 4; height: 1; color: "#b9c5cc" }
-    Rectangle {id: splitbar2; x: 2; y: 272; width: parent.width - 4; height: 1; color: "#fafcfe" }
+//    Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width - 4; height: 1; color: "#b9c5cc" }
+//    Rectangle {id: splitbar; x: 2; y: 272; width: parent.width - 4; height: 1; color: "#fafcfe" }
+    Common.Separator {
+        id: splitbar
+        x: 2; y: 270;
+        width: parent.width - 4
+    }
 
     Column {
         width: parent.width
         height: 200
         anchors {
-            top: splitbar2.bottom
+            top: splitbar.bottom
             topMargin: 5
             left: parent.left
             leftMargin: 5

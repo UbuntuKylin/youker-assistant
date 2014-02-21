@@ -2683,45 +2683,115 @@
         <translation>正在登录...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="182"/>
         <source>Name:</source>
-        <translation>用户名：</translation>
+        <translation type="obsolete">用户名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="194"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="202"/>
         <source>Level:</source>
         <translation>等级：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="206"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="214"/>
         <source>Score:</source>
         <translation>经验值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="226"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="167"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="371"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="408"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="381"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="418"/>
         <source>Features</source>
         <translation>新版本特性</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="392"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="429"/>
         <source>Report Bugs</source>
         <translation>Bug提交</translation>
     </message>
 </context>
 <context>
+    <name>RightPage-org</name>
+    <message>
+        <source>Network Error!</source>
+        <translation type="obsolete">网络错误！</translation>
+    </message>
+    <message>
+        <source>No User!</source>
+        <translation type="obsolete">没有该用户！</translation>
+    </message>
+    <message>
+        <source>Password Wrong!</source>
+        <translation type="obsolete">密码错误！</translation>
+    </message>
+    <message>
+        <source>Login Failed!</source>
+        <translation type="obsolete">登录失败！</translation>
+    </message>
+    <message>
+        <source>DeadpixelTest</source>
+        <translation type="obsolete">坏点检测</translation>
+    </message>
+    <message>
+        <source>DesktopIcon</source>
+        <translation type="obsolete">桌面图标</translation>
+    </message>
+    <message>
+        <source>BootAnimation</source>
+        <translation type="obsolete">开机动画</translation>
+    </message>
+    <message>
+        <source>SysSounds</source>
+        <translation type="obsolete">系统声音</translation>
+    </message>
+    <message>
+        <source>MousePointer</source>
+        <translation type="obsolete">鼠标指针</translation>
+    </message>
+    <message>
+        <source>Logging...</source>
+        <translation type="obsolete">正在登录...</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation type="obsolete">用户名：</translation>
+    </message>
+    <message>
+        <source>Level:</source>
+        <translation type="obsolete">等级：</translation>
+    </message>
+    <message>
+        <source>Score:</source>
+        <translation type="obsolete">经验值：</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation type="obsolete">注销</translation>
+    </message>
+    <message>
+        <source>Forum Help</source>
+        <translation type="obsolete">论坛求助</translation>
+    </message>
+    <message>
+        <source>Features</source>
+        <translation type="obsolete">新版本特性</translation>
+    </message>
+    <message>
+        <source>Report Bugs</source>
+        <translation type="obsolete">Bug提交</translation>
+    </message>
+</context>
+<context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="912"/>
+        <location filename="../sessiondispatcher.cpp" line="958"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>

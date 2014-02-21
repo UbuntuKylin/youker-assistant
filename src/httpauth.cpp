@@ -71,6 +71,7 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
                         kmaps.insert(value.at(0), value.at(1));
                     }
                     emit this->response(kmaps.value("id"), kmaps.value("level"), kmaps.value("name"), kmaps.value("score"));
+                    emit this->successCommunicate();//查询当前信息，动态显示在界面上
                 }
                 else if(tmp.at(0).split("=").at(1) == "search_success") {//search success
                     QMap<QString, QString> ymaps;
@@ -95,6 +96,9 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
                 }
                 else if(data == "beat fail,") {//每隔30分钟链接服务器失败
                     emit this->failedCommunicate();
+                }
+                else if(data == "network,") {//主动查询网络
+                    qDebug() << "newwork ok...";
                 }
             }
         }

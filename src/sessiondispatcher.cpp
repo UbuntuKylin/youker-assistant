@@ -113,30 +113,55 @@ void SessionDispatcher::exit_qt() {
 //每30minutes连接服务器beat一次
 void SessionDispatcher::connectHttpServer(){
     qDebug()<<"start to connect every 30 minutes...";
+    mSettings->beginGroup("user");
+    int id = mSettings->value("id").toInt();
+    mSettings->endGroup();
+    mSettings->sync();
     //心跳
-    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=2");
+    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=%1").arg(id);
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 }
 
-//beat失败处理，2次beat不成功，界面的用户信息消失，改为登录界面，提示网络出错
+//beat失败处理，beat不成功，界面的用户信息消失，改为登录界面，提示网络出错
 void SessionDispatcher::resetTimerStatus() {
-    waitTime++;
-    if(waitTime >= 2){
-        waitTime = 0;
-        disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
-        if(timer->isActive()) {
-            timer->stop();
-        }
-        emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
-        qDebug()<<"connect fail...";
-    }else{
-        qDebug() << "continue connect...";
-    }
+    //主动查询
+    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=network");
+    QUrl url(requestData);
+    httpauth->sendGetRequest(url);
+    //主动检测是否断开服务器了
+//    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=network");
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
+//    waitTime++;
+//    if(waitTime >= 2){
+//        waitTime = 0;
+//        disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
+//        if(timer->isActive()) {
+//            timer->stop();
+//        }
+//        emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
+//        qDebug()<<"connect fail...";
+//    }else{
+//        qDebug() << "continue connect...";
+//    }
+//    waitTime++;
+//    if(waitTime >= 2){
+//        waitTime = 0;
+//        disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
+//        if(timer->isActive()) {
+//            timer->stop();
+//        }
+//        emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
+//        qDebug()<<"connect fail...";
+//    }else{
+//        qDebug() << "continue connect...";
+//    }
 }
 
 //查询当前的积分、等级....
 void SessionDispatcher::searchCurrentInfo() {
+    waitTime = 0;
     mSettings->beginGroup("user");
     int id = mSettings->value("id").toInt();
     mSettings->endGroup();
@@ -240,11 +265,32 @@ void SessionDispatcher::handle_data_after_login_success(QString id, QString leve
 void SessionDispatcher::handle_data_after_search_success(QString level, QString score) {
     //查询成功后将用户信息更新在界面上
     emit refreshUserInfo(level, score);
+    waitTime = 0;
 }
 
-//登录失败时，通知QML界面
+//登录失败时或者测试网络失败，通知QML界面
 void SessionDispatcher::handle_data_when_login_failed(int status) {
-    emit loginFailedStatus(status);
+//    emit loginFailedStatus(status);
+    if(status == 99) {
+        waitTime++;
+        if(waitTime >= 4){
+            waitTime = 0;
+            disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
+            if(timer->isActive()) {
+                timer->stop();
+            }
+            emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
+            qDebug()<<"connect fail...";
+        }else{
+            qDebug() << "continue connect...";
+            QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=network");
+            QUrl url(requestData);
+            httpauth->sendGetRequest(url);
+        }
+    }
+    else {
+        emit loginFailedStatus(status);
+    }
 }
 
 QStringList SessionDispatcher::search_city_names_qt(QString search_name) {
