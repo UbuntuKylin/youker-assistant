@@ -15,7 +15,7 @@ Build-Depends: debhelper (>= 9),
                python (>= 2.6.6-3~),
                qt4-default,
                qtchooser,
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 Homepage: https://launchpad.net/youker-assistant
 Vcs-Browser: https://code.launchpad.net/~ubuntukylin-members/youker-assistant/trunk
 Vcs-Bzr: lp:youker-assistant
