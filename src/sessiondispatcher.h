@@ -194,6 +194,14 @@ public:
     Q_INVOKABLE double get_font_zoom_qt();
     Q_INVOKABLE bool set_font_zoom_qt(double zoom);
 
+    Q_INVOKABLE QStringList get_smooth_style_list_qt();
+    Q_INVOKABLE QString get_smooth_style_qt();
+    Q_INVOKABLE bool set_smooth_style_qt(QString style);
+    Q_INVOKABLE QStringList get_antialiasing_style_list_qt();
+    Q_INVOKABLE QString get_antialiasing_style_qt();
+    Q_INVOKABLE bool set_antialiasing_style_qt(QString style);
+
+
     /*-------------------scrollbars of beauty-------------------*/
     Q_INVOKABLE bool set_scrollbars_mode_overlay_qt();
     Q_INVOKABLE bool set_scrollbars_mode_legacy_qt();

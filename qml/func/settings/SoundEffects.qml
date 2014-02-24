@@ -82,35 +82,72 @@ Rectangle {
 
 
 
-        var default_theme = sessiondispatcher.get_default_sound_string_qt("soundtheme");
+//        var default_theme = sessiondispatcher.get_default_sound_string_qt("soundtheme");
+//        if (sessiondispatcher.get_login_music_enable_qt())
+//            soundswitcher.switchedOn = true;
+//        else
+//            soundswitcher.switchedOn = false;
+
+//        var soundlist = systemdispatcher.get_sound_themes_qt();
+//        var current_sound = sessiondispatcher.get_sound_theme_qt();
+//        showText.text = qsTr("[ Current Sound Theme: ") + current_sound + " ]";//[ 当前音效主题是：
+//        soundeffectspage.selected_sound_theme = current_sound;
+//        choices.clear();
+//        for(var i=0; i < soundlist.length; i++) {
+//            choices.append({"themetext": soundlist[i]});
+//            if (soundlist[i] == current_sound) {
+//                soundeffectspage.current_index = i;
+//            }
+//            else if (soundlist[i] == default_theme) {
+//                soundeffectspage.default_index = i;
+//            }
+//        }
+//        iconcombo.selectedIndex = soundeffectspage.current_index;
+//        musicmodel.clear();
+//        var musiclist=systemdispatcher.get_sounds_qt();
+//        musiclist_num = musiclist.length;
+//        for(var l=0; l < musiclist.length; l++) {
+//            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+//        }
+//        if(30*musiclist.length<=chooseyy_height)
+//            scrollbar_z = -1;
+//        else
+//            scrollbar_z = 1;
+
+
+
+
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
         else
             soundswitcher.switchedOn = false;
-
         var soundlist = systemdispatcher.get_sound_themes_qt();
         var current_sound = sessiondispatcher.get_sound_theme_qt();
+        var default_theme = sessiondispatcher.get_default_sound_string_qt("soundtheme");
         showText.text = qsTr("[ Current Sound Theme: ") + current_sound + " ]";//[ 当前音效主题是：
         soundeffectspage.selected_sound_theme = current_sound;
-//        soundlist.unshift(current_sound);
-        //将系统初始的声音主题写入QSetting配置文件
-//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "soundtheme", current_sound);
         choices.clear();
-        for(var i=0; i < soundlist.length; i++) {
-            choices.append({"themetext": soundlist[i]});
-            if (soundlist[i] == current_sound) {
-                soundeffectspage.current_index = i;
+        if(current_sound == default_theme) {
+            for(var i=0; i < soundlist.length; i++) {
+                choices.append({"themetext": soundlist[i]});
+                if (soundlist[i] == current_sound) {
+                    soundeffectspage.current_index = i;
+                    soundeffectspage.default_index = i;
+                }
             }
-            else if (soundlist[i] == default_theme) {
-                soundeffectspage.default_index = i;
+        }
+        else {
+            for(var j=0; j < soundlist.length; j++) {
+                choices.append({"themetext": soundlist[j]});
+                if (soundlist[j] == current_sound) {
+                    soundeffectspage.current_index = j;
+                }
+                else if (soundlist[j] == default_theme) {
+                    soundeffectspage.default_index = j;
+                }
             }
-
-//                choices.remove(i);
         }
         iconcombo.selectedIndex = soundeffectspage.current_index;
-//        console.log(soundeffectspage.current_index);
-//        console.log(soundeffectspage.default_index);
-//        console.log(soundlist);
         musicmodel.clear();
         var musiclist=systemdispatcher.get_sounds_qt();
         musiclist_num = musiclist.length;
@@ -193,57 +230,74 @@ Rectangle {
                 id: iconcombo
                 width : 345
                 model: choices
-                onSelectedTextChanged: {}
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Button {
-                width: 95;height: 30
-                hoverimage: "green.png"
-                text: qsTr("OK")//确定
-                onClicked: {
-                    if (soundeffectspage.selected_sound_theme != iconcombo.selectedText) {
-                        soundeffectspage.selected_sound_theme = iconcombo.selectedText;
-                        showText.text = qsTr("[ Current Sound Theme: ") + iconcombo.selectedText + " ]";//[ 当前音效主题是：
-                        soundeffectspage.selected_sound_theme = iconcombo.selectedText;
-                        sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
-                        statusImage.visible = true;
+                onSelectedTextChanged: {
+                    showText.text = qsTr("[ Current Sound Theme: ") + iconcombo.selectedText + " ]";//[ 当前音效主题是：
+                    soundeffectspage.selected_sound_theme = iconcombo.selectedText;
+                    sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
+                    statusImage.visible = true;
 
-                        musicmodel.clear();
-                        var musiclist=systemdispatcher.get_sounds_qt();
-                        for(var l=0; l < musiclist.length; l++) {
-                            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
-                        }
-                        if(30*musiclist.length<=chooseyy_height) {
-                            scrollbar_z = -1
-                        }
-                        else {
-                            scrollbar_z = 1;
-                        }
+                    musicmodel.clear();
+                    var musiclist=systemdispatcher.get_sounds_qt();
+                    for(var l=0; l < musiclist.length; l++) {
+                        musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+                    }
+                    if(30*musiclist.length <= chooseyy_height) {
+                        scrollbar_z = -1
+                    }
+                    else {
+                        scrollbar_z = 1;
                     }
                 }
+                anchors.verticalCenter: parent.verticalCenter
             }
 //            Common.Button {
-//                hoverimage: "blue.png"
-//                text: qsTr("Restore")//恢复默认
-//                width: 105
-//                height: 30
+//                width: 95;height: 30
+//                hoverimage: "green.png"
+//                text: qsTr("OK")//确定
 //                onClicked: {
+//                    if (soundeffectspage.selected_sound_theme != iconcombo.selectedText) {
+//                        soundeffectspage.selected_sound_theme = iconcombo.selectedText;
+//                        showText.text = qsTr("[ Current Sound Theme: ") + iconcombo.selectedText + " ]";//[ 当前音效主题是：
+//                        soundeffectspage.selected_sound_theme = iconcombo.selectedText;
+//                        sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
+//                        statusImage.visible = true;
+
+//                        musicmodel.clear();
+//                        var musiclist=systemdispatcher.get_sounds_qt();
+//                        for(var l=0; l < musiclist.length; l++) {
+//                            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+//                        }
+//                        if(30*musiclist.length<=chooseyy_height) {
+//                            scrollbar_z = -1
+//                        }
+//                        else {
+//                            scrollbar_z = 1;
+//                        }
+//                    }
+//                }
+//            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 105
+                height: 30
+                onClicked: {
+                    sessiondispatcher.set_default_sound_qt("soundtheme");
+                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
+                    showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
+                    //attention：这里貌似combobox的顺序已经发生变化了。
+                    iconcombo.selectedIndex = soundeffectspage.default_index;
+//                    iconcombo.selectedText = defaulttheme;
+//                    console.log("111");
+//                    console.log(soundeffectspage.default_index);
+                    statusImage.visible = true;
 //                    sessiondispatcher.set_default_sound_qt("soundtheme");
 //                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
 //                    showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
-//                    //attention：这里貌似combobox的顺序已经发生变化了。
-//                    iconcombo.selectedIndex = soundeffectspage.default_index;
-////                    iconcombo.selectedText = defaulttheme;
-//                    console.log("111");
-//                    console.log(soundeffectspage.default_index);
+//                    iconcombo.selectedText = defaulttheme;
 //                    statusImage.visible = true;
-////                    sessiondispatcher.set_default_sound_qt("soundtheme");
-////                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
-////                    showText.text = qsTr("[ Current Sound Theme: ") + defaulttheme + " ]";//[ 当前音效主题是：
-////                    iconcombo.selectedText = defaulttheme;
-////                    statusImage.visible = true;
-//                }
-//            }
+                }
+            }
             Timer {
                  interval: 5000; running: true; repeat: true
                  onTriggered: statusImage.visible = false
