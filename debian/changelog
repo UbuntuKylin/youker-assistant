@@ -1,8 +1,8 @@
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 
-  * Modify display mode of weather forecast.
+  * Modify display mode of weather forecast and system settings.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 24 Feb 2014 12:29:24 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 24 Feb 2014 17:42:56 +0800
 
 youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
 

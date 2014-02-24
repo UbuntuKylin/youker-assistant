@@ -738,6 +738,14 @@ QString SessionDispatcher::get_default_theme_sring_qt(QString flag/*QString sche
         QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.interface", "cursor-theme");
         return reply.value();
     }
+    else if(flag == "smoothstyle") {
+        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.settings-daemon.plugins.xsettings", "hinting");
+        return reply.value();
+    }
+    else if(flag == "antialiasingstyle") {
+        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.settings-daemon.plugins.xsettings", "antialiasing");
+        return reply.value();
+    }
     return flag;
 }
 
@@ -766,6 +774,12 @@ void SessionDispatcher::set_default_theme_qt(QString flag/*QString schema, QStri
     }
     else if(flag == "titlebarfont") {
         sessioniface->call("set_default_font", "org.gnome.desktop.wm.preferences", "titlebar-font", "string");
+    }
+    else if(flag == "smoothstyle") {
+        sessioniface->call("set_default_font", "org.gnome.settings-daemon.plugins.xsettings", "hinting", "string");
+    }
+    else if(flag == "antialiasingstyle") {
+        sessioniface->call("set_default_font", "org.gnome.settings-daemon.plugins.xsettings", "antialiasing", "string");
     }
 
     //-------------------桌面图标-------------------
@@ -900,6 +914,37 @@ bool SessionDispatcher::set_font_zoom_qt(double zoom) {
     QDBusReply<bool> reply = sessioniface->call("set_font_zoom", zoom);
     return reply.value();
 }
+
+QStringList SessionDispatcher::get_smooth_style_list_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_smooth_style_list");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_smooth_style_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_smooth_style");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_smooth_style_qt(QString style) {
+    QDBusReply<bool> reply = sessioniface->call("set_smooth_style", style);
+    return reply.value();
+}
+
+QStringList SessionDispatcher::get_antialiasing_style_list_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_antialiasing_style_list");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_antialiasing_style_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_antialiasing_style");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_antialiasing_style_qt(QString style) {
+    QDBusReply<bool> reply = sessioniface->call("set_antialiasing_style", style);
+    return reply.value();
+}
+
 
 void SessionDispatcher::restore_default_font_signal(QString flag) {
     emit notifyFontStyleToQML(flag); //font_style

@@ -63,4 +63,14 @@ Private.Slider{
         }
     }
 
+    Text {
+        text: slider.value
+        anchors {
+            verticalCenter: parent.verticalCenter
+            left: wheelarea.right
+            leftMargin: 2
+        }
+        font.pixelSize: 12
+        color: "#7a7a7a"
+    }
 }

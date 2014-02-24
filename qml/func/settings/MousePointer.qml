@@ -39,70 +39,71 @@ Rectangle {
         anchors.fill: parent
     }
     Component.onCompleted: {
+//
         mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
-//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursorsize", mousepointerpage.cursor_size);
         var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-        var default_theme = sessiondispatcher.get_default_theme_sring_qt("mousetheme");
-        //系统默认值可能在获取列表的时候没有该值，所以需要在这里添加进去。
-        var flag = false;
-        for(var i=0; i < cursorlist.length; i++) {
-            if(cursorlist[i] == default_theme) {
-                flag = true;
-            }
-        }
-        if(flag) {
-            flag = false;
-        }
-        else {
-            var len = cursorlist.length;
-            cursorlist.push(default_theme);
-        }
-
-
         var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-        //将系统初始的图标主题写入QSetting配置文件
-//        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursortheme", current_cursor_theme);
+        var default_theme = "DMZ-White";//sessiondispatcher.get_default_theme_sring_qt("mousetheme");
+
         showText.text = qsTr("[ Current Cursor Theme: ") + current_cursor_theme + " ]";//[ 当前光标主题是：
-        mousepointerpage.selected_cursor_theme = current_cursor_theme;
-//        cursorlist.unshift(current_cursor_theme);
-
-
-//        console.log("default_theme->");
-//        console.log(default_theme);
 
         choices.clear();
-        for(var k=0; k < cursorlist.length; k++) {
-            choices.append({"text": cursorlist[k]});
-            if (cursorlist[k] == current_cursor_theme) {
-                mousepointerpage.current_index = k;
+        if(current_cursor_theme == default_theme) {
+            for(var i=0; i < cursorlist.length; i++) {
+                choices.append({"text": cursorlist[i]});
+                if (cursorlist[i] == current_cursor_theme) {
+                    mousepointerpage.current_index = i;
+                    mousepointerpage.default_index = i;
+                }
             }
         }
+        else {
+            for(var j=0; j < cursorlist.length; j++) {
+                choices.append({"text": cursorlist[j]});
+                if (cursorlist[j] == current_cursor_theme) {
+                    mousepointerpage.current_index = j;
+                }
+                else if (cursorlist[j] == default_theme) {
+                    mousepointerpage.default_index = j;
+                }
+            }
+        }
+        cursorcombo.selectedIndex = mousepointerpage.current_index;
+
+
+
+//        mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
+////        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursorsize", mousepointerpage.cursor_size);
+//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+//        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+//        var default_theme = sessiondispatcher.get_default_theme_sring_qt("mousetheme");
+//        //系统默认值可能在获取列表的时候没有该值，所以需要在这里添加进去。
 //        var flag = false;
-//        var k;
-//        for(k=0; k < cursorlist.length; k++) {
-//            choices.append({"text": cursorlist[k]});
-////            if (k!=0 && cursorlist[k] == current_cursor_theme)
-////                choices.remove(k);
-//            if (cursorlist[k] == current_cursor_theme) {
-//                mousepointerpage.current_index = k;
-//            }
-//            else if (cursorlist[k] == default_theme) {
-//                mousepointerpage.default_index = k;
+//        for(var i=0; i < cursorlist.length; i++) {
+//            if(cursorlist[i] == default_theme) {
 //                flag = true;
-////                console.log("aaaaaaaaaa->");
-////                console.log()
 //            }
 //        }
 //        if(flag) {
 //            flag = false;
 //        }
 //        else {
-//            choices.append({"text": default_theme});
-//            mousepointerpage.default_index = cursorlist.length - 1;
+//            var len = cursorlist.length;
+//            cursorlist.push(default_theme);
 //        }
+//        //将系统初始的图标主题写入QSetting配置文件
+////        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursortheme", current_cursor_theme);
+//        showText.text = qsTr("[ Current Cursor Theme: ") + current_cursor_theme + " ]";//[ 当前光标主题是：
+//        mousepointerpage.selected_cursor_theme = current_cursor_theme;
 
-        cursorcombo.selectedIndex = mousepointerpage.current_index;
-
+//        choices.clear();
+//        for(var k=0; k < cursorlist.length; k++) {
+//            choices.append({"text": cursorlist[k]});
+//            if (cursorlist[k] == current_cursor_theme) {
+//                mousepointerpage.current_index = k;
+//            }
+//        }
+//        cursorcombo.selectedIndex = mousepointerpage.current_index;
     }
 
     Column {
@@ -191,25 +192,23 @@ Rectangle {
                     model: choices
                     width: 150
         //            width: cursorthemelabel.width
-                    onSelectedTextChanged: {/*console.log(selectedText)*/}
+                    onSelectedTextChanged: {
+                        sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
+                        systemdispatcher.set_cursor_theme_with_root_qt(cursorcombo.selectedText);
+                        showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
+                        statusImage.visible = true;
+                    }
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.Button {
-                    id: okBtn
-                    width: 94;height: 29
-                    fontsize: 13
-                    hoverimage: "green.png"
-                    text: qsTr("OK")//确定
-                    onClicked: {
-                        if (mousepointerpage.selected_cursor_theme != cursorcombo.selectedText) {
-                            mousepointerpage.selected_cursor_theme = cursorcombo.selectedText;
-                            sessiondispatcher.set_cursor_theme_qt(cursorcombo.selectedText);
-                            systemdispatcher.set_cursor_theme_with_root_qt(cursorcombo.selectedText);
-                            showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
-                            statusImage.visible = true;
-                        }
-                    }
-                }
+//                Common.Button {
+//                    id: okBtn
+//                    width: 94;height: 29
+//                    fontsize: 13
+//                    hoverimage: "green.png"
+//                    text: qsTr("OK")//确定
+//                    onClicked: {
+//                    }
+//                }
             }
             Common.Button {
                 hoverimage: "blue.png"
@@ -218,14 +217,23 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("mousetheme");
-                    var defaulttheme = sessiondispatcher.get_cursor_theme_qt();
-//                    console.log(defaulttheme);
-                    systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
-                    cursorcombo.selectedText = defaulttheme;
-//                    cursorcombo.selectedIndex = mousepointerpage.default_index;
+                    //Attention:配置文件的系统默认值为：DMZ-White，而通过gsetting方法得到的默认值为：Adwaita
+                    //这里我们使用配置自带的系统默认值DMZ-White
+                    sessiondispatcher.set_cursor_theme_qt("DMZ-White");
+                    systemdispatcher.set_cursor_theme_with_root_qt("DMZ-White");
+                    cursorcombo.selectedIndex = mousepointerpage.default_index;
                     showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
                     statusImage.visible = true;
+
+
+
+//                    sessiondispatcher.set_default_theme_qt("mousetheme");
+//                    var defaulttheme = sessiondispatcher.get_cursor_theme_qt();
+//                    systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
+//                    cursorcombo.selectedText = defaulttheme;
+////                    cursorcombo.selectedIndex = mousepointerpage.default_index;
+//                    showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
+//                    statusImage.visible = true;
                 }
             }
         }

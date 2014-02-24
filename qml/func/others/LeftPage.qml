@@ -100,8 +100,15 @@ Rectangle {
     {
         target: systemdispatcher
         onFinishCleanWorkMain: {//收到清理后的状态
-            if (msg == "") {//在弹出输入密码验证时，点击了取消按钮
+            if (msg == "yes") {//在弹出输入密码验证时，点击了取消按钮
                 //do nothing
+            }
+            if (msg == "no") {//在弹出输入密码验证时，输入密码，验证通过，此时让动态图片开始显示
+                //show dynamic image
+                staticImage.visible = false;
+                dynamicImage.visible = true;
+                showLabel.visible = false;
+                showText.text = "";
             }
             else if (msg == "c") {
                 cachestatus.state = "GarbageOK";
@@ -373,10 +380,6 @@ Rectangle {
                                 leftbar.cookiesFlag = false;
                             }
 
-                            staticImage.visible = false;
-                            dynamicImage.visible = true;
-                            showLabel.visible = false;
-                            showText.text = "";
                             systemdispatcher.set_user_homedir_qt();
                             systemdispatcher.clean_by_main_one_key_qt(leftbar.garbageFlag, leftbar.traceFlag, leftbar.cookiesFlag/*systemdispatcher.get_onekey_args()*/);
                         }
@@ -444,8 +447,6 @@ Rectangle {
         Text {
             id: showText
             width: leftbar.width - 50 - 20 * 2 - 165
-//            height: 30
-//            text: "aazxdvxzvxczvxcvcxzvxczvvvvvvvvvvvvvvvxzcvxzcvxcvxczvxzcvxczvxzvzxcvxczvxcvxzvczxcvczcxv"
             text:""
             font.pixelSize: 12
             clip: true

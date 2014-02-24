@@ -310,31 +310,31 @@ class Theme:
             'double', zoom)
 
     # -------------------------平滑性----------------------------------
-    # get all hinting value
+    # get all hinting value.    none:'No hinting',slight:'Basic',medium:'Moderate',full:'Maximum'
     def get_all_hinting(self):
-        return ['none','slight','medium','full']
+        return ['none', 'slight', 'medium', 'full']
     
     # get current hinting
-    def get_current_hinting(self):
+    def get_hinting(self):
         return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
             None,
             'hinting',
             'string')
 
     # set hinting
-    def set_hinting(self,value):
+    def set_hinting(self, value):
         return gsettings.set('org.gnome.settings-daemon.plugins.xsettings',
             None,
             'hinting',
-            'string',value)
+            'string', value)
 
     # -------------------------反锯齿----------------------------------
-    # get all antialiasing value
+    # get all antialiasing value.  none:'No antialiasing', grayscale:'Standard grayscale antialiasing',rgba:'Subpixel antialiasing (LCD screens only)'
     def get_all_antialiasing(self):
-        return ['none','grayscale','rgba']
+        return ['none', 'grayscale', 'rgba']
 
     # get current antialiasing
-    def get_current_antialiasing(self):
+    def get_antialiasing(self):
         return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
             None,
             'antialiasing',
@@ -345,7 +345,7 @@ class Theme:
         return gsettings.set('org.gnome.settings-daemon.plugins.xsettings',
             None,
             'antialiasing',
-            'string',value)
+            'string', value)
 
 if __name__ == '__main__':
     ttt = Theme()
@@ -363,9 +363,15 @@ if __name__ == '__main__':
     #ttt.set_monospace_font('Ubuntu Mono 13')
     #print ttt.get_monospace_font()
 
-    aa = ttt.get_default_schema_value('org.gnome.nautilus.desktop', 'font')
+    #aa = ttt.get_default_schema_value('org.gnome.nautilus.desktop', 'font')
+    #print aa
+    #ttt.set_default_schema_value('org.gnome.nautilus.desktop', 'font', 'string')
+    aa = ttt.get_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'hinting')
     print aa
-    ttt.set_default_schema_value('org.gnome.nautilus.desktop', 'font', 'string')
+    ttt.set_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'hinting', 'string')
+    bb = ttt.get_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'antialiasing')
+    print bb
+
 
     #aa = ttt.get_default_schema_value('org.gnome.desktop.interface', 'font-name')
     #print aa

@@ -714,6 +714,37 @@ class SessionDaemon(dbus.service.Object):
     def set_font_zoom(self, zoom):
         return self.themeconf.set_font_zoom(zoom)
 
+    # get smooth style list
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_smooth_style_list(self):
+        return self.themeconf.get_all_hinting()
+
+    # get smooth style
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_smooth_style(self):
+        return self.themeconf.get_hinting()
+
+    # set smooth style
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def set_smooth_style(self, value):
+        return self.themeconf.set_hinting(value)
+
+    # get antialiasing style list
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_antialiasing_style_list(self):
+        return self.themeconf.get_all_antialiasing()
+
+    # get antialiasing style
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_antialiasing_style(self):
+        return self.themeconf.get_antialiasing()
+
+    # set antialiasing style
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def set_antialiasing_style(self, value):
+        return self.themeconf.set_antialiasing(value)
+
+
     # -------------------------scrollbars-------------------------
     @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
     def get_default_system_sring(self, schema, key):

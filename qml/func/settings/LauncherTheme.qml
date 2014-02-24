@@ -176,7 +176,7 @@ Rectangle {
 
 
         Row {
-            spacing: 135 - 20
+            spacing: 135
             Row {
                 spacing: 20
                 Common.Label {
@@ -201,7 +201,7 @@ Rectangle {
                             launcherthemepage.first_slider_value = true;
                         }
                     }
-                    width: 150
+                    width: iconsizelabel.width
                     maximumValue: 64
                     minimumValue: 32
     //                tickmarksEnabled: true
@@ -209,14 +209,14 @@ Rectangle {
                     animated: true
                 }
 
-                Text {
-                    id: displaynum
-                    width: 20
-                    text: slider.value
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    anchors.verticalCenter: parent.verticalCenter
-                }
+//                Text {
+//                    id: displaynum
+//                    width: 20
+//                    text: slider.value
+//                    font.pixelSize: 12
+//                    color: "#7a7a7a"
+//                    anchors.verticalCenter: parent.verticalCenter
+//                }
     //            Common.Button {
     //                id: okBtn
     //                hoverimage: "green2.png"

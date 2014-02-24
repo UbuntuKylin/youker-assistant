@@ -49,18 +49,28 @@ Rectangle {
         var default_theme = sessiondispatcher.get_default_theme_sring_qt("icontheme");
 
         choices.clear();
-        for(var j=0; j < iconlist.length; j++) {
-            choices.append({"text": iconlist[j]});
-//            if (j!=0 && iconlist[j] == current_icon_theme) {
-            if (iconlist[j] == current_icon_theme) {
-//                choices.remove(j);
-                desktopiconsetpage.current_index = j;
+        if(current_icon_theme == default_theme) {
+            for(var i=0; i < iconlist.length; i++) {
+                choices.append({"text": iconlist[i]});
+                if (iconlist[i] == current_icon_theme) {
+                    desktopiconsetpage.current_index = i;
+                    desktopiconsetpage.default_index = i;
+                }
             }
-            else if (iconlist[j] == default_theme) {
-                desktopiconsetpage.default_index = j;
+        }
+        else {
+            for(var j=0; j < iconlist.length; j++) {
+                choices.append({"text": iconlist[j]});
+                if (iconlist[j] == current_icon_theme) {
+                    desktopiconsetpage.current_index = j;
+                }
+                else if (iconlist[j] == default_theme) {
+                    desktopiconsetpage.default_index = j;
+                }
             }
         }
         iconcombo.selectedIndex = desktopiconsetpage.current_index;
+
 
         if (sessiondispatcher.get_show_desktop_icons_qt()) {
             iconswitcher.switchedOn = true;
@@ -161,9 +171,72 @@ Rectangle {
         }
     }
 
+//    Row {
+//        id: themeline
+//        spacing: 135
+//        anchors{
+//            left: parent.left
+//            leftMargin: 60
+//            top: settitle.bottom
+//            topMargin: 10
+
+//        }
+//        Row{
+//            spacing: 40
+//            Text {
+//                id: iconthemelabel
+//                text: qsTr("Icon theme")//图标主题
+//                font.pixelSize: 12
+//                color: "#7a7a7a"
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
+//            Common.ComboBox {
+//                id: iconcombo
+//                model: choices
+//                width: 200
+//                onSelectedTextChanged: {
+//                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+//                        //[ 当前图标主题是：
+//                        showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
+//                        statusImage.visible = true;
+//                }
+//            }
+////            Common.Button {
+////                id: okBtn
+////                width: 94;height: 29
+////                fontsize: 13
+////                hoverimage: "green.png"
+////                text: qsTr("OK")//确定
+////                onClicked: {
+////                    if (desktopiconsetpage.selected_icon_theme != iconcombo.selectedText) {
+////                        desktopiconsetpage.selected_icon_theme = iconcombo.selectedText;
+////                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
+////                        //[ 当前图标主题是：
+////                        showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
+////                        statusImage.visible = true;
+////                    }
+////                }
+////            }
+//        }
+//        Common.Button {
+//            hoverimage: "blue.png"
+//            text: qsTr("Restore")//恢复默认
+//            width: 94
+//            height: 29
+//            fontsize: 13
+//            onClicked: {
+//                sessiondispatcher.set_default_theme_qt("icontheme");
+//                iconcombo.selectedIndex = desktopiconsetpage.default_index;
+//                showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
+//                statusImage.visible = true;
+//            }
+//        }
+//    }
+
+
+    //-----------------
     Row {
         id: themeline
-        spacing: 135
         anchors{
             left: parent.left
             leftMargin: 60
@@ -171,10 +244,12 @@ Rectangle {
             topMargin: 10
 
         }
-        Row{
-            spacing: 40
+        spacing: 200
+        Row {
+            spacing: 20
             Text {
                 id: iconthemelabel
+                width: 170 - 50
                 text: qsTr("Icon theme")//图标主题
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -183,23 +258,12 @@ Rectangle {
             Common.ComboBox {
                 id: iconcombo
                 model: choices
-                width: 200
-                onSelectedTextChanged: {/*console.log(selectedText)*/}
-            }
-            Common.Button {
-                id: okBtn
-                width: 94;height: 29
-                fontsize: 13
-                hoverimage: "green.png"
-                text: qsTr("OK")//确定
-                onClicked: {
-                    if (desktopiconsetpage.selected_icon_theme != iconcombo.selectedText) {
-                        desktopiconsetpage.selected_icon_theme = iconcombo.selectedText;
+                width: 170 + 50
+                onSelectedTextChanged: {
                         sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
                         //[ 当前图标主题是：
                         showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
                         statusImage.visible = true;
-                    }
                 }
             }
         }
@@ -217,6 +281,7 @@ Rectangle {
             }
         }
     }
+    //---------------------------
 
     Row {
         id: icontitle
