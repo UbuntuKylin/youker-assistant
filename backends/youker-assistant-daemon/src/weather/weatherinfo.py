@@ -47,6 +47,7 @@ class WeatherInfo(threading.Thread):
         self.weatherData={}
         self.forecastData={}
         self.pmData = ''
+        #self.location_id = '101250101'
 
     # Get weahter forecast
     def getWeatherForecast(self, cityId):
@@ -166,10 +167,11 @@ class WeatherInfo(threading.Thread):
         elif method == 1:
             #fp1 = open("/tmp/forecast.txt", "w")
             #print >> fp1, "--------------"
+            # http://m.weather.com.cn/data/101250101.html
             url = WEATHER_URL % (self.location_id)
             json_string = self.read_from_url(url)
             parsed_json = json.loads(json_string)
-            tp_forecast = ('city', 'date_y', 'fchh', 'temp1', 'temp2', 'temp3', 'temp4', 'temp5', 'temp6', \
+            tp_forecast = ('city', 'date_y', 'week', 'fchh', 'temp1', 'temp2', 'temp3', 'temp4', 'temp5', 'temp6', \
             'weather1', 'weather2', 'weather3', 'weather4', 'weather5', 'weather6', \
             'wind1', 'wind2', 'wind3', 'wind4', 'wind5', 'wind6', \
             'img1', 'img2', 'img3', 'img4', 'img5', 'img6', 'img7', 'img8', 'img9', 'img10', 'img11', 'img12', 'img_single', \

@@ -48,58 +48,117 @@ Item {
         //设置六天天气预报数据显示在QML界面上
         function initWeatherForcast() {
             //("星期日"),("星期一"),("星期二"),("星期三"),("星期四"),("星期五"),("星期六")
-            var dayNames = new Array(qsTr("Sunday"),qsTr("Monday"),qsTr("Tuesday"),qsTr("Wednesday"),qsTr("Thursday"),qsTr("Friday"),qsTr("Saturday"));
-            var Stamp = new Date();
-            var dateTime = (Stamp.getMonth() + 1) +"月" +Stamp.getDate()+ "日";
-            var num = Stamp.getDay();
-            weather_widget.week1 = dateTime + " " + dayNames[num];
-            var alterNum;
-            for(var i = num+1; i<num+6; i++) {
-                if(i == num+1) {
-                    if(i >=7) {
-                        alterNum = i - 7;
-                        weather_widget.week2 = dayNames[alterNum];
-                    }
-                    else
-                        weather_widget.week2 = dayNames[i];
+//            var dayNames = new Array(qsTr("Sunday"),qsTr("Monday"),qsTr("Tuesday"),qsTr("Wednesday"),qsTr("Thursday"),qsTr("Friday"),qsTr("Saturday"));
+//            var Stamp = new Date();
+//            var dateTime = (Stamp.getMonth() + 1) +"月" +Stamp.getDate()+ "日";
+//            var num = Stamp.getDay();
+//            weather_widget.week1 = dateTime + " " + dayNames[num];
+//            var alterNum;
+//            for(var i = num+1; i<num+6; i++) {
+//                if(i == num+1) {
+//                    if(i >=7) {
+//                        alterNum = i - 7;
+//                        weather_widget.week2 = dayNames[alterNum];
+//                    }
+//                    else
+//                        weather_widget.week2 = dayNames[i];
+//                }
+//                else if(i == num+2) {
+//                    if(i >=7) {
+//                        alterNum = i - 7;
+//                        weather_widget.week3 = dayNames[alterNum];
+//                    }
+//                    else
+//                        weather_widget.week3 = dayNames[i];
+//                }
+//                else if(i == num+3) {
+//                    if(i >=7) {
+//                        alterNum = i - 7;
+//                        weather_widget.week4 = dayNames[alterNum];
+//                    }
+//                    else
+//                        weather_widget.week4 = dayNames[i];
+//                }
+//                else if(i == num+4) {
+//                    if(i >=7) {
+//                        alterNum = i - 7;
+//                        weather_widget.week5 = dayNames[alterNum];
+//                    }
+//                    else
+//                        weather_widget.week5 = dayNames[i];
+//                }
+//                else if(i == num+5) {
+//                    if(i >=7) {
+//                        alterNum = i - 7;
+//                        weather_widget.week6 = dayNames[alterNum];
+//                    }
+//                    else
+//                        weather_widget.week6 = dayNames[i];
+//                }
+//            }
+
+            var release_date = sessiondispatcher.getSingleWeatherInfo("date_y", "forecast");
+            var release_week = sessiondispatcher.getSingleWeatherInfo("week", "forecast");
+
+            var dayNames = new Array("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天");
+
+            var value = 0;
+            if (release_week == "星期日") {
+                value = 7;
+            }
+            for(var index=0; index<6; index++)
+            {
+                if(dayNames[index] == release_week) {
+                    value = index + 1;
+                    break;
                 }
-                else if(i == num+2) {
-                    if(i >=7) {
-                        alterNum = i - 7;
-                        weather_widget.week3 = dayNames[alterNum];
-                    }
-                    else
-                        weather_widget.week3 = dayNames[i];
+            }
+            for(var i=0; i<6; i++)
+            {
+                var weektime = value + i;
+                if(weektime > 7) {
+                    weektime -= 7;
                 }
-                else if(i == num+3) {
-                    if(i >=7) {
-                        alterNum = i - 7;
-                        weather_widget.week4 = dayNames[alterNum];
-                    }
-                    else
-                        weather_widget.week4 = dayNames[i];
+                if(i == 0) {
+                    weather_widget.week1 = release_date + " " + release_week;
                 }
-                else if(i == num+4) {
-                    if(i >=7) {
-                        alterNum = i - 7;
-                        weather_widget.week5 = dayNames[alterNum];
-                    }
-                    else
-                        weather_widget.week5 = dayNames[i];
+                else if(i == 1) {
+                    weather_widget.week2 = dayNames[weektime - 1];
                 }
-                else if(i == num+5) {
-                    if(i >=7) {
-                        alterNum = i - 7;
-                        weather_widget.week6 = dayNames[alterNum];
-                    }
-                    else
-                        weather_widget.week6 = dayNames[i];
+                else if(i == 2) {
+                    weather_widget.week3 = dayNames[weektime - 1];
+                }
+                else if(i == 3) {
+                    weather_widget.week4 = dayNames[weektime - 1];
+                }
+                else if(i == 4) {
+                    weather_widget.week5 = dayNames[weektime - 1];
+                }
+                else if(i == 5) {
+                    weather_widget.week6 = dayNames[weektime - 1];
                 }
             }
 
+//            dayofweek = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
+//            # added by kobe 20140224
+//            if forecast_data['week'] == '星期日':
+//                self.time = 7
+//            for index in range(0, 6):
+//                if dayofweek[index] == forecast_data['week']:
+//                    self.time = index + 1
+//                    break
+//            for i in range(0,6):
+//                weektime = self.time + i
+//                if weektime > 7:
+//                    weektime -= 7
+//                if i == 0:
+//                    self.builder.get_object(labelofweek[i]).set_text(forecast_data['date_y'] + ' ' + forecast_data['week'])
+//                else:
+//                    self.builder.get_object(labelofweek[i]).set_text(dayofweek[weektime-1])
+
             var updateTime = sessiondispatcher.getSingleWeatherInfo("fchh", "forecast");
             //未来六天天气预报，预报时间：          时
-            locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + sessiondispatcher.getSingleWeatherInfo("date_y", "forecast") + updateTime + qsTr(" o'clock release");//时  发布
+            locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + release_date + updateTime + qsTr(" o'clock release");//时  发布
             //将字符串类型的时间转成整形
             var updateIntTime = parseInt(updateTime, 10);
             if(updateIntTime >= 6 && updateIntTime < 18) {
