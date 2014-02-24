@@ -83,7 +83,24 @@ class Theme:
         return gsettings.set('org.gnome.desktop.wm.preferences',
             None,
             'theme',
-            'string',theme) 
+            'string',theme)
+
+    #-----------------------窗口控制按钮位置----------------------
+    # get window button
+    def get_window_button(self):
+        return ['close,minimize,maximize:',':minimize,maximize,close'] #左边/右边
+
+    # get current window button
+    def get_current_window_button(self):
+        return gsettings.get('org.gnome.desktop.wm.preferences',
+            None,'button-layout','string')
+
+    # set window button
+    def set_window_button(self,value):
+        return gsettings.set('org.gnome.desktop.wm.preferences',
+            None,
+            'button-layout',
+            'string',value)
 
     #-----------------------标题栏鼠标滚轮动作---------------------
     # get titlebar wheel
