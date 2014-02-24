@@ -64,6 +64,7 @@ class Theme:
         _gstheme = gsettings.get_schema('org.gnome.desktop.wm.preferences')
         _gstheme.set_string('theme',theme)
 
+    #------------------------窗口主题设置``````````````````````````
     # get window theme
     def get_window_theme(self):
         dirs = ('/usr/share/themes', os.path.join(self.homedir, ".themes"))
@@ -83,6 +84,75 @@ class Theme:
             None,
             'theme',
             'string',theme) 
+
+    #-----------------------标题栏鼠标滚轮动作---------------------
+    # get titlebar wheel
+    def get_titlebar_wheel(self):
+        return ['none','shade']
+
+    # get current titlebar wheel
+    def get_current_titlebar_wheel(self):
+        return gsettings.get('org.compiz.gwd',
+            None,'mouse-wheel-action','string')
+
+    # set titlebar wheel
+    def set_titlebar_wheel(self,value):
+        return gsettings.set('org.compiz.gwd',
+            None,
+            'mouse-wheel-action'
+            'string',value)
+
+    #-------------------------标题栏双击动作-------------------------
+    # get titlebar double
+    def get_titlebar_double(self):
+        return ['none','toggle-maximize','minimize','toggle-shade','lower','menu']
+
+    # get current titlebar double
+    def get_current_titlebar_double(self):
+        return gsettings.get('org.gnome.desktop.wm.preferences',
+            None,'action-double-click-titlebar','string')
+
+    # set titlebar double
+    def set_titlebar_double(self,value):
+        return gsettings.set('org.gnome.desktop.wm.preferences',
+            None,
+            'action-double-click-titlebar',
+            'string',value)
+
+    #-------------------------标题栏中键动作-------------------------
+    # get titlebar middle
+    def get_titlebar_middle(self):
+        return ['none','toggle-maximize','minimize','toggle-shade','lower','menu']
+    
+    # get current titlebar middle
+    def get_current_titlebar_middle(self):
+        return gsettings.get('org.gnome.desktop.wm.preferences',
+            None,'action-middle-click-titlebar','string')
+
+    # set titlebar middle
+    def set_titlebar_middle(self,value):
+        return gsettings.set('org.gnome.desktop.wm.preferences',
+            None,
+            'action-middle-click-titlebar',
+            'string',value)
+
+    #-------------------------标题栏右键动作-------------------------
+    # get titlebar right
+    def get_titlebar_right(self):
+        return ['none','toggle-maximize','minimize','toggle-shade','lower','menu']
+
+    # get current titlebar right
+    def get_current_titlebar_right(self):
+        return gsettings.get('org.gnome.desktop.wm.preferences',
+            None,'action-right-click-titlebar','string')
+
+    # set titlebar right
+    def set_titlebar_right(self,value):
+        return gsettings.set('org.gnome.desktop.wm.preferences',
+            None,
+            'action-right-click-titlebar',
+            'string',value)
+
 
     # get icon themes
     def get_icon_themes(self):
