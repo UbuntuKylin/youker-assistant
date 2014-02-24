@@ -296,11 +296,6 @@ Item {
                                 text: qsTr("Dead pixel test")//坏点检测
                                 visible: false
                             }
-                            Text {
-                                id: b12
-                                text: qsTr("File manager")//文件管理器
-                                visible: false
-                            }
                         }
                         Row {
                             spacing: 18
@@ -329,6 +324,44 @@ Item {
                         }
                     }
                 }
+
+                Row {
+                    spacing: 10
+                    Image {
+                        id: otherimage
+                        source: "../../img/icons/others.png"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    Column {
+                        spacing: 3
+                        Row {
+                            anchors.left: parent.left
+                            anchors.leftMargin: 5
+                            Text {
+                                id: othertext
+                                text: qsTr(" Others")// 杂项
+                                font.bold: true
+                                font.pixelSize: 14
+                                color: "#383838"
+                            }
+                            Text {
+                                id: b12
+                                text: qsTr("File manager")//文件管理器
+                                visible: false
+                            }
+                        }
+                        Row {
+                            spacing: 18
+                            Common.StyleButton {
+                                wordname: qsTr("File manager"); width: b12.width//文件管理器
+                                onClicked: {
+                                    pageStack.push(filemanagerpage);
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
             Item { id: foreground; anchors.fill: parent }
         }

@@ -1129,6 +1129,102 @@ void SessionDispatcher::set_sound_theme_qt(QString theme) {
     sessioniface->call("set_sound_theme", theme);
 }
 
+/*-------------------filemanager of beauty-------------------*/
+//bool SessionDispatcher::get_default_filemanager_bool_qt(QString flag) {
+
+//}
+
+//int SessionDispatcher::get_default_filemanager_int_qt(QString flag) {
+
+//}
+
+void SessionDispatcher::set_default_filemanager_qt(QString flag) {
+    if(flag == "pathbar") {//路径输入框取代路径栏
+        sessioniface->call("set_default_filemanager", "org.gnome.nautilus.preferences", "always-use-location-entry", "boolean");
+    }
+    else if(flag == "media") {//自动挂载媒体
+        sessioniface->call("set_default_filemanager", "org.gnome.desktop.media-handling", "automount", "boolean");
+    }
+    else if(flag == "folder") {//自动打开文件夹
+        sessioniface->call("set_default_filemanager", "org.gnome.desktop.media-handling", "automount-open", "boolean");
+    }
+    else if(flag == "programs") {//提示自动运行的程序
+        sessioniface->call("set_default_filemanager", "org.gnome.desktop.media-handling", "autorun-never", "boolean");
+    }
+    else if(flag == "iconsize") {//缩略图图标尺寸（像素）
+        sessioniface->call("set_default_filemanager", "org.gnome.nautilus.icon-view", "thumbnail-size", "int");
+    }
+    else if(flag == "cachetime") {//缩略图缓存时间（天数）
+        sessioniface->call("set_default_filemanager", "org.gnome.desktop.thumbnail-cache", "maximum-age", "int");
+    }
+    else if(flag == "maxsize") {//最大缩略图缓存尺寸（MB）
+        sessioniface->call("set_default_filemanager", "org.gnome.desktop.thumbnail-cache", "maximum-size", "int");
+    }
+}
+
+void SessionDispatcher::set_location_replace_pathbar_qt(bool flag) {
+    sessioniface->call("set_location_replace_pathbar", flag);
+}
+
+bool SessionDispatcher::get_location_replace_pathbar_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_location_replace_pathbar");
+    return reply.value();
+}
+
+void SessionDispatcher::set_auto_mount_media_qt(bool flag) {
+    sessioniface->call("set_auto_mount_media", flag);
+}
+
+bool SessionDispatcher::get_auto_mount_media_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_auto_mount_media");
+    return reply.value();
+}
+
+void SessionDispatcher::set_auto_open_folder_qt(bool flag) {
+    sessioniface->call("set_auto_open_folder", flag);
+}
+
+bool SessionDispatcher::get_auto_open_folder_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_auto_open_folder");
+    return reply.value();
+}
+
+void SessionDispatcher::set_prompt_autorun_programs_qt(bool flag) {
+    sessioniface->call("set_prompt_autorun_programs", flag);
+}
+
+bool SessionDispatcher::get_prompt_autorun_programs_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_prompt_autorun_programs");
+    return reply.value();
+}
+
+void SessionDispatcher::set_thumbnail_icon_size_qt(int size) {
+    sessioniface->call("set_thumbnail_icon_size", size);
+}
+
+int SessionDispatcher::get_thumbnail_icon_size_qt() {
+    QDBusReply<int> reply = sessioniface->call("get_thumbnail_icon_size");
+    return reply.value();
+}
+
+void SessionDispatcher::set_thumbnail_cache_time_qt(int value) {
+    sessioniface->call("set_thumbnail_cache_time", value);
+}
+
+int SessionDispatcher::get_thumbnail_cache_time_qt() {
+    QDBusReply<int> reply = sessioniface->call("get_thumbnail_cache_time");
+    return reply.value();
+}
+
+void SessionDispatcher::set_thumbnail_cache_size_qt(int size) {
+    sessioniface->call("set_thumbnail_cache_size", size);
+}
+
+int SessionDispatcher::get_thumbnail_cache_size_qt() {
+    QDBusReply<int> reply = sessioniface->call("get_thumbnail_cache_size");
+    return reply.value();
+}
+
 //-----------------------monitorball------------------------
 double SessionDispatcher::get_cpu_percent_qt() {
     QDBusReply<double> reply = sessioniface->call("get_cpu_percent");

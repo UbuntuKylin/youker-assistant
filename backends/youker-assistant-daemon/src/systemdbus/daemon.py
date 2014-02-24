@@ -29,7 +29,6 @@ import dbus
 import dbus.service
 import dbus.mainloop.glib
 from gi.repository import GObject
-#import gobject
 import apt
 import aptsources.sourceslist
 import apt_pkg

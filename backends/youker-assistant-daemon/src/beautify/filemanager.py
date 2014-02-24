@@ -112,11 +112,11 @@ class FileManager:
             None, 'maximum-age', 'int')
 
     # Set: Thumbnail cache time (days)
-    def set_thumbnail_cache_time(self, size):
+    def set_thumbnail_cache_time(self, value):
         return gsettings.set('org.gnome.desktop.thumbnail-cache',
             None,
             'maximum-age',
-            'int', size)
+            'int', value)
 
     # -----------------最大缩略图缓存尺寸（MB） min=-1, max=512, step=1, default=512-----------------
     # Get: Maximum thumbnail cache size (MB)

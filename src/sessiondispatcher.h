@@ -137,6 +137,12 @@ public:
     Q_INVOKABLE QString get_default_system_sring_qt(QString schema, QString key);
     Q_INVOKABLE bool get_default_system_bool_qt(QString schema, QString key);
     Q_INVOKABLE void set_default_system_qt(QString flag);
+    //获取和设置文件管理器默认值:filemanager.py
+//    Q_INVOKABLE bool get_default_filemanager_bool_qt(QString flag);
+//    Q_INVOKABLE int get_default_filemanager_int_qt(QString flag);
+    Q_INVOKABLE void set_default_filemanager_qt(QString flag);
+
+
 
 
     /*-------------------desktop of beauty-------------------*/
@@ -228,6 +234,22 @@ public:
     Q_INVOKABLE bool get_login_music_enable_qt();
     Q_INVOKABLE QString get_sound_theme_qt();
     Q_INVOKABLE void set_sound_theme_qt(QString theme);
+
+    /*-------------------filemanager of beauty-------------------*/
+    Q_INVOKABLE void set_location_replace_pathbar_qt(bool flag);
+    Q_INVOKABLE bool get_location_replace_pathbar_qt();
+    Q_INVOKABLE void set_auto_mount_media_qt(bool flag);
+    Q_INVOKABLE bool get_auto_mount_media_qt();
+    Q_INVOKABLE void set_auto_open_folder_qt(bool flag);
+    Q_INVOKABLE bool get_auto_open_folder_qt();
+    Q_INVOKABLE void set_prompt_autorun_programs_qt(bool flag);
+    Q_INVOKABLE bool get_prompt_autorun_programs_qt();
+    Q_INVOKABLE void set_thumbnail_icon_size_qt(int size);
+    Q_INVOKABLE int get_thumbnail_icon_size_qt();
+    Q_INVOKABLE void set_thumbnail_cache_time_qt(int value);
+    Q_INVOKABLE int get_thumbnail_cache_time_qt();
+    Q_INVOKABLE void set_thumbnail_cache_size_qt(int size);
+    Q_INVOKABLE int get_thumbnail_cache_size_qt();
 
     /*-------------------monitorball-------------------*/
     Q_INVOKABLE double get_cpu_percent_qt();

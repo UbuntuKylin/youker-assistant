@@ -162,11 +162,11 @@ Item {
                     visible: false
                     SysSettings.TouchpadSet {}
                 }
-//                Common.Page {
-//                    id: filemanagerpage
-//                    visible: false
-//                    SysSettings.FileManager {}
-//                }
+                Common.Page {
+                    id: filemanagerpage
+                    visible: false
+                    SysSettings.FileManager {}
+                }
                 Common.Page {
                     id: fcitxConfigtoolpage
                     visible: false
