@@ -131,6 +131,11 @@ Item {
                     SysSettings.LauncherTheme {}
                 }
                 Common.Page {
+                    id: windowmanagerpage
+                    visible: false
+                    SysSettings.WindowManager {}
+                }
+                Common.Page {
                     id: defaultfontpage
                     visible: false
                     SysSettings.DefaultFont {}

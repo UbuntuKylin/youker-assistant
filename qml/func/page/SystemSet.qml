@@ -175,7 +175,7 @@ Item {
                             anchors.leftMargin: 5
                             Text {
                                 id: unitytext
-                                text: qsTr(" Unity")// Unity
+                                text: qsTr(" Desktop")// 桌面
                                 font.bold: true
                                 font.pixelSize: 14
                                 color: "#383838"
@@ -185,16 +185,27 @@ Item {
                                 text: qsTr("Custom Launcher")//自定义启动器
                                 visible: false
                             }
+                            Text {
+                                id: b7
+                                text: qsTr("Window")//窗口
+                                visible: false
+                            }
                         }
                         Row {
                             spacing: 18
                             Common.StyleButton {
                                 wordname: qsTr("Custom Launcher"); width: b6.width//自定义启动器
-//                                flag: "LauncherTheme"
                                 onClicked: {
                                     pageStack.push(launcherthemepage);
                                 }
-                            }//自定义启动器
+                            }
+                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
+                            Common.StyleButton {
+                                wordname: qsTr("Window"); width: b7.width//窗口
+                                onClicked: {
+                                    pageStack.push(windowmanagerpage);
+                                }
+                            }
                         }
                     }
                 }
@@ -221,7 +232,7 @@ Item {
                                 color: "#383838"
                             }
                             Text {
-                                id: b7
+                                id: b8
                                 text: qsTr("DefaultFont")//字体设置
                                 visible: false
                             }
@@ -229,7 +240,7 @@ Item {
                         Row {
                             spacing: 18
                             Common.StyleButton {
-                                wordname: qsTr("DefaultFont"); width: b7.width//默认字体设置
+                                wordname: qsTr("DefaultFont"); width: b8.width//默认字体设置
 //                                flag: "DefaultFont"
                                 onClicked: {
                                     pageStack.push(defaultfontpage);

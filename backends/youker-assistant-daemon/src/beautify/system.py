@@ -106,7 +106,7 @@ class System:
         return gsettings.set('org.gnome.desktop.wm.preferences',
             None,
             'button-layout',
-            'string', 'close,maximize,minimize:')
+            'string', 'close,maximize,minimize:')#close,minimize,maximize:
 
     # set window button alignment right
     def set_window_button_align_right(self):
@@ -119,16 +119,16 @@ class System:
     def get_window_button_align(self):
         value = gsettings.get('org.gnome.desktop.wm.preferences',
             None, 'button-layout', 'string')
-        if value == 'close,maximize,minimize:':
+        if value == 'close,maximize,minimize:' or value == 'close,minimize,maximize:':
             return 'left'
         elif value == ':minimize,maximize,close':
             return 'right'
-        elif value == 'close,minimize,maximize:':
-            return 'default'
+        #elif value == 'close,minimize,maximize:':
+        #    return 'default'
         else:
             return 'custom'
 
-    # set right click menus have icons
+    # set right click menus have icons 菜单带图标 是否可在菜单项旁显示图标。
     def set_menus_have_icons(self, flag):
         return gsettings.set('org.gnome.desktop.interface',
             None,
@@ -139,6 +139,91 @@ class System:
     def get_menus_have_icons(self):
         return gsettings.get('org.gnome.desktop.interface',
             None, 'menus-have-icons', 'boolean')
+
+    #-----------------------窗口控制按钮位置----------------------
+    # get window button
+    #def get_window_button(self):
+    #    return ['close,minimize,maximize:', ':minimize,maximize,close'] #左边/右边
+
+    # get current window button
+    #def get_current_window_button(self):
+    #    return gsettings.get('org.gnome.desktop.wm.preferences',
+    #        None, 'button-layout', 'string')
+
+    # set window button
+    #def set_window_button(self, value):
+    #    return gsettings.set('org.gnome.desktop.wm.preferences',
+    #        None,
+    #        'button-layout',
+    #        'string', value)
+
+    #-----------------------标题栏鼠标滚轮动作---------------------
+    # get titlebar wheel
+    def get_titlebar_wheel(self):
+        return ['none', 'shade']
+
+    # get current titlebar wheel
+    def get_current_titlebar_wheel(self):
+        return gsettings.get('org.compiz.gwd',
+            None, 'mouse-wheel-action', 'string')
+
+    # set titlebar wheel
+    def set_titlebar_wheel(self, value):
+        return gsettings.set('org.compiz.gwd',
+            None,
+            'mouse-wheel-action'
+            'string', value)
+
+    #-------------------------标题栏双击动作-------------------------
+    # get titlebar double
+    def get_titlebar_double(self):
+        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower', 'menu']
+
+    # get current titlebar double
+    def get_current_titlebar_double(self):
+        return gsettings.get('org.gnome.desktop.wm.preferences',
+            None, 'action-double-click-titlebar', 'string')
+
+    # set titlebar double
+    def set_titlebar_double(self, value):
+        return gsettings.set('org.gnome.desktop.wm.preferences',
+            None,
+            'action-double-click-titlebar',
+            'string', value)
+
+    #-------------------------标题栏中键动作-------------------------
+    # get titlebar middle
+    def get_titlebar_middle(self):
+        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower','menu']
+
+    # get current titlebar middle
+    def get_current_titlebar_middle(self):
+        return gsettings.get('org.gnome.desktop.wm.preferences',
+            None, 'action-middle-click-titlebar', 'string')
+
+    # set titlebar middle
+    def set_titlebar_middle(self, value):
+        return gsettings.set('org.gnome.desktop.wm.preferences',
+            None,
+            'action-middle-click-titlebar',
+            'string', value)
+
+    #-------------------------标题栏右键动作-------------------------
+    # get titlebar right
+    def get_titlebar_right(self):
+        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower','menu']
+
+    # get current titlebar right
+    def get_current_titlebar_right(self):
+        return gsettings.get('org.gnome.desktop.wm.preferences',
+            None, 'action-right-click-titlebar', 'string')
+
+    # set titlebar right
+    def set_titlebar_right(self, value):
+        return gsettings.set('org.gnome.desktop.wm.preferences',
+            None,
+            'action-right-click-titlebar',
+            'string', value)
 
 if __name__ == '__main__':
     sss = System()

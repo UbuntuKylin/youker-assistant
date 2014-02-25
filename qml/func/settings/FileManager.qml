@@ -59,6 +59,11 @@ Rectangle {
         else {
             programsswitcher.switchedOn = false;
         }
+
+        var aa = sessiondispatcher.get_thumbnail_icon_size_qt();
+        console.log("1111111");
+        console.log(aa);
+        iconsizeslider.value = aa;
     }
 
     Column {
@@ -308,9 +313,10 @@ Rectangle {
                     minimumValue: 16
                     maximumValue: 512
                     width: thumbnailsizelabel.width
-                    value: sessiondispatcher.get_thumbnail_icon_size_qt()
+//                    value: sessiondispatcher.get_thumbnail_icon_size_qt()
                     onValueChanged: {
-                        sessiondispatcher.set_thumbnail_icon_size_qt(iconsizeslider.value);
+                        console.log(iconsizeslider.value);
+//                        sessiondispatcher.set_thumbnail_icon_size_qt(iconsizeslider.value);
                     }
                     stepSize: 16
                     animated: true

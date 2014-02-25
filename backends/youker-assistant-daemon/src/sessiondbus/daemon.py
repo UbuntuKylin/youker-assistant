@@ -851,6 +851,66 @@ class SessionDaemon(dbus.service.Object):
     def get_menus_have_icons(self):
         return self.systemconf.get_menus_have_icons()
 
+    # get titlebar wheel action
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_titlebar_wheel(self):
+        return self.systemconf.get_titlebar_wheel()
+
+    # get current titlebar wheel
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_titlebar_wheel(self):
+        return self.systemconf.get_current_titlebar_wheel()
+
+    # set titlebar wheel
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_titlebar_wheel(self, value):
+        self.systemconf.set_titlebar_wheel(value)
+
+    # get titlebar double
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_titlebar_double(self):
+        return self.systemconf.get_titlebar_double()
+
+    # get current titlebar double
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_titlebar_double(self):
+        return self.systemconf.get_current_titlebar_double()
+
+    # set titlebar double
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_titlebar_double(self, value):
+        self.systemconf.set_titlebar_double(value)
+
+    # get titlebar middle
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_titlebar_middle(self):
+        return self.systemconf.get_titlebar_middle()
+
+    # get current titlebar middle
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_titlebar_middle(self):
+        return self.systemconf.get_current_titlebar_middle()
+
+    # set titlebar middle
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_titlebar_middle(self, value):
+        self.systemconf.set_titlebar_middle(value)
+
+    # get titlebar right
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_titlebar_right(self):
+        return self.systemconf.get_titlebar_right()
+
+    # get current titlebar right
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_titlebar_right(self):
+        return self.systemconf.get_current_titlebar_right()
+
+    # set titlebar right
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_titlebar_right(self, value):
+        self.systemconf.set_titlebar_right(value)
+
     # -------------------------sound-------------------------
 
     @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')

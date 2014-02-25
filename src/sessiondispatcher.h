@@ -232,6 +232,19 @@ public:
     Q_INVOKABLE QString get_window_button_align_qt();
     Q_INVOKABLE bool set_menus_have_icons_qt(bool flag);
     Q_INVOKABLE bool get_menus_have_icons_qt();
+    Q_INVOKABLE QStringList get_titlebar_wheel_qt();
+    Q_INVOKABLE QString get_current_titlebar_wheel_qt();
+    Q_INVOKABLE void set_titlebar_wheel_qt(QString value);
+    Q_INVOKABLE QStringList get_titlebar_double_qt();
+    Q_INVOKABLE QString get_current_titlebar_double_qt();
+    Q_INVOKABLE void set_titlebar_double_qt(QString value);
+    Q_INVOKABLE QStringList get_titlebar_middle_qt();
+    Q_INVOKABLE QString get_current_titlebar_middle_qt();
+    Q_INVOKABLE void set_titlebar_middle_qt(QString value);
+    Q_INVOKABLE QStringList get_titlebar_right_qt();
+    Q_INVOKABLE QString get_current_titlebar_right_qt();
+    Q_INVOKABLE void set_titlebar_right_qt(QString value);
+
 
     /*-------------------sound of beauty-------------------*/
     Q_INVOKABLE void set_login_music_enable_qt(bool flag);
