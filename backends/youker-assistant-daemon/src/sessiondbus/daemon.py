@@ -612,6 +612,20 @@ class SessionDaemon(dbus.service.Object):
     def set_theme(self, theme):
         self.themeconf.set_theme(theme)
 
+    # ----------------window theme----------------
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_window_themes(self):
+        return self.themeconf.get_window_themes()
+
+    # get current window theme
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_window_theme(self):
+        return self.themeconf.get_current_window_theme()
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_window_theme(self, theme):
+        self.themeconf.set_window_theme(theme)
+
     # get icon themes
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_icon_themes(self):

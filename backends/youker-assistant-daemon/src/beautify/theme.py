@@ -66,7 +66,7 @@ class Theme:
 
     #------------------------窗口主题设置``````````````````````````
     # get window theme
-    def get_window_theme(self):
+    def get_window_themes(self):
         dirs = ('/usr/share/themes', os.path.join(self.homedir, ".themes"))
         filters = ['metacity-1']
         valid = utils.check_dirs(dirs, filters, True)

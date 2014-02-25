@@ -728,10 +728,29 @@ void SessionDispatcher::set_cursor_size_qt(int size) {
     sessioniface->call("set_cursor_size", size);
 }
 
+//window theme
+QStringList SessionDispatcher::get_window_themes_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_window_themes");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_current_window_theme_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_current_window_theme");
+    return reply.value();
+}
+
+void SessionDispatcher::set_window_theme_qt(QString theme) {
+    sessioniface->call("set_window_theme", theme);
+}
+
 /*-----------------------------font of beauty-----------------------------*/
 QString SessionDispatcher::get_default_theme_sring_qt(QString flag/*QString schema, QString key*/) {
     if(flag == "icontheme") {
         QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.interface", "icon-theme");
+        return reply.value();
+    }
+    else if(flag == "windowtheme") {
+        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.wm.preferences", "theme");
         return reply.value();
     }
     else if(flag == "mousetheme") {
@@ -782,9 +801,11 @@ void SessionDispatcher::set_default_theme_qt(QString flag/*QString schema, QStri
         sessioniface->call("set_default_font", "org.gnome.settings-daemon.plugins.xsettings", "antialiasing", "string");
     }
 
-    //-------------------桌面图标-------------------
     else if(flag == "icontheme") {//图标主题
         sessioniface->call("set_default_font", "org.gnome.desktop.interface", "icon-theme", "string");
+    }
+    else if(flag == "windowtheme") {//窗口主题
+        sessioniface->call("set_default_font", "org.gnome.desktop.wm.preferences", "theme", "string");
     }
     else if(flag == "mousetheme") {//鼠标指针主题
         sessioniface->call("set_default_font", "org.gnome.desktop.interface", "cursor-theme", "string");

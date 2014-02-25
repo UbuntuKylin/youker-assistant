@@ -108,9 +108,7 @@ Rectangle {
         }
     }
 
-    ListModel {
-        id: choices
-    }
+    ListModel { id: choices }
 
     Column {
         spacing: 10

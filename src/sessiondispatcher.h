@@ -177,6 +177,10 @@ public:
     Q_INVOKABLE void set_cursor_theme_qt(QString theme);
     Q_INVOKABLE int get_cursor_size_qt();
     Q_INVOKABLE void set_cursor_size_qt(int size);
+    //window theme
+    Q_INVOKABLE QStringList get_window_themes_qt();
+    Q_INVOKABLE QString get_current_window_theme_qt();
+    Q_INVOKABLE void set_window_theme_qt(QString theme);
 
     /*-------------------fonts of beauty-------------------*/
     Q_INVOKABLE void restore_default_font_signal(QString flag);
