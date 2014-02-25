@@ -236,7 +236,7 @@ void SessionDispatcher::popup_login_dialog(int window_x, int window_y) {
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
     logindialog->move(this->alert_x, this->alert_y);
-    logindialog->show();
+    logindialog->exec();
 }
 
 //退出登录

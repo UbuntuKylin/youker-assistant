@@ -22,7 +22,6 @@ Rectangle {
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
     property string iconName: ""
-//    property string setbtn_flag: ""
     signal clicked();   //如果没有选中任何清理项，提示警告框！first page
 
     Image {
@@ -40,33 +39,33 @@ Rectangle {
         anchors.fill: parent
 
         onEntered: {
-            if (menulogo.setbtn_flag == "set")
-                btnImg.source = "../../img/icons/set-hover.png"
-            else if (menulogo.setbtn_flag == "message")
-                btnImg.source = "../../img/icons/message-hover.png"
-            else if(menulogo.setbtn_flag == "return")
-                btnImg.source = "../../img/icons/return-hover.png"
+            if(menulogo.iconName == "return.png") {
+                btnImg.source = "../../img/icons/return-hover.png";
+            }
+            else {
+                btnImg.source = "../../img/toolWidget/highlight.png";
+            }
         }
         onPressed: {
-            if(menulogo.setbtn_flag == "return")
-                btnImg.source = "../../img/icons/return-hover.png"
-            else
-                btnImg.source = "../../img/toolWidget/menu_press.png"
+            if(menulogo.iconName == "return.png") {
+                btnImg.source = "../../img/icons/return-hover.png";
+            }
+            else {
+                btnImg.source = "../../img/toolWidget/highlight.png";
+            }
         }
         //要判断松开是鼠标位置
         onReleased: {
-            if(menulogo.setbtn_flag == "return")
-                btnImg.source = "../../img/icons/return.png"
-            else
-                btnImg.source = "../../img/toolWidget/menu_hover.png"
+            if(menulogo.iconName == "return.png") {
+                btnImg.source = "../../img/icons/return.png";
+            }
+            else {
+                btnImg.source = "../../img/icons/" + iconName;
+            }
         }
         onExited: btnImg.source = ""
         onClicked: {
-            menulogo.clicked();    //如果没有选中任何清理项，提示警告框,发出信号...
-//            if (setbtn_flag == "set")
-//                console.log("set clicked....");
-//            else if (setbtn_flag == "message")
-//                console.log("message clicked....");
+            menulogo.clicked();
         }
     }
 }

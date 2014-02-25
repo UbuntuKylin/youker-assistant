@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = youker-assistant
-QT += core gui phonon declarative dbus network
+QT += core gui phonon declarative dbus network xml
 
 inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
@@ -22,13 +22,13 @@ LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 HEADERS += youker-application.h \
     quibo.h \
     logindialog.h \
+    accountcache.h \
     httpauth.h \
     systemdispatcher.h \
     sessiondispatcher.h \
     modaldialog.h \
     warningdialog.h \
     messagedialog.h \
-#    updatedialog.h \
     qmlaudio.h \
     qrangemodel.h \
     qrangemodel_p.h \
@@ -38,16 +38,6 @@ HEADERS += youker-application.h \
     qtmenuitem.h \
     qtoplevelwindow.h \
     qcursorarea.h \
-#    qtooltiparea.h \
-#    qtmenubar.h \
-#    qwindowitem.h \
-#    qtsplitterbase.h \
-#    settings.h \
-#    qdeclarativelinearlayout.h \
-#    qdeclarativefolderlistmodel.h \
-#    qdeclarativelayout.h \
-#    qdeclarativelayoutengine_p.h \
-#    qdesktopitem.h \
     tray.h \
     fcitxcfgwizard.h \
     qtkeytrans.h \
@@ -65,14 +55,13 @@ HEADERS += youker-application.h \
     util.h \
     processmanager.h \
     yprocess.h \
-#    sourcedialog.h \
     devicemanager.h \
     kfontdialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
     logindialog.cpp \
-    logindialog_event.cpp \
+    accountcache.cpp \
     httpauth.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
@@ -80,7 +69,6 @@ SOURCES += main.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
     messagedialog.cpp \
-#    updatedialog.cpp \
     qmlaudio.cpp \
     qrangemodel.cpp \
     qstyleitem.cpp \
@@ -89,16 +77,6 @@ SOURCES += main.cpp \
     qtmenuitem.cpp \
     qtoplevelwindow.cpp \
     qcursorarea.cpp \
-#    qtooltiparea.cpp \
-#    qtmenubar.cpp \
-#    qwindowitem.cpp \
-#    qtsplitterbase.cpp \
-#    settings.cpp \
-#    qdeclarativelinearlayout.cpp \
-#    qdeclarativefolderlistmodel.cpp \
-#    qdeclarativelayout.cpp \
-#    qdeclarativelayoutengine.cpp \
-#    qdesktopitem.cpp \
     tray.cpp \
     fcitxcfgwizard.cpp \
     qtkeytrans.cpp \
@@ -115,7 +93,6 @@ SOURCES += main.cpp \
     util.cpp \
     processmanager.cpp \
     yprocess.cpp \
-#    sourcedialog.cpp \
     devicemanager.cpp \
     kfontdialog.cpp
 
@@ -127,7 +104,6 @@ FORMS += \
     modaldialog.ui \
     warningdialog.ui \
     messagedialog.ui \
-#    updatedialog.ui \
     tray.ui \
     fcitxwarndialog.ui \
     suspensionframe.ui \
@@ -135,5 +111,4 @@ FORMS += \
     locationdialog.ui \
     wizarddialog.ui \
     changecitydialog.ui \
-#    sourcedialog.ui \
     kfontdialog.ui

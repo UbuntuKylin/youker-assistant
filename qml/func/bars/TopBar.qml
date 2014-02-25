@@ -27,7 +27,6 @@ Item {
          width: 28
          height: 26
          iconName: "return.png"
-//         setbtn_flag: "return"
          onClicked: topbar.buttonClicked()
      }
  }

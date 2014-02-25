@@ -14,35 +14,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UPDATEDIALOG_H
-#define UPDATEDIALOG_H
+#ifndef ACCOUNTCACHE_H
+#define ACCOUNTCACHE_H
 
-#include <QDialog>
-//#include <qfiledialog.h>
-namespace Ui {
-class UpdateDialog;
-}
+#include <QStringList>
+#include <QDomElement>
+#include <QDir>
+#include <QFile>
+#include <QDesktopServices>
+#include <QTextStream>
+#include <qmath.h>
 
-class UpdateDialog : public QDialog
+class AccountCache
 {
-    Q_OBJECT
-    
 public:
-    explicit UpdateDialog(QWidget *parent = 0);
-    ~UpdateDialog();
-    
+    AccountCache();
+    QString getPassword(const QString& bareJid);
+    void addAccount(const QString& bareJid, const QString& passwd);
+    void loadFromFile();
+    QStringList getUserName();
 private:
-    Ui::UpdateDialog *ui;
-    QPoint dragPos;
-protected:
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    bool eventFilter(QObject *obj, QEvent *event);
-public slots:
-    void update_software_source();
-signals:
-    void call_update();
+    void saveToFile();
+    QDomDocument accountsDocument;
+    QString dir ;
+    QByteArray calculateXor(const QByteArray &data, const QByteArray &key);
 };
 
-#endif // UPDATEDIALOG_H
+#endif // ACCOUNTCACHE_H

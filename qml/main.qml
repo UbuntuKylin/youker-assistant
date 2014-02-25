@@ -28,7 +28,7 @@ Rectangle {
     height: 600
     objectName: "main"
     anchors.fill: parent
-    property string version: "V1.0.0"
+    property string version: "V1.0.1"
     property string bgName: ""
     property color borderColor: "lightblue"
     SessionDispatcher {

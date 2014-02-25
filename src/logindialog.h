@@ -18,7 +18,7 @@
 #define LOGINDIALOG_H
 
 #include <QDialog>
-
+#include "accountcache.h"
 namespace Ui {
 class LoginDialog;
 }
@@ -34,13 +34,20 @@ public:
 private slots:
     void on_closeButton_clicked();
     void on_okButton_clicked();
-    void on_registerButton_clicked();
+
+public slots:
+    void setPassWordForAccountCache(const QString& userName);
 
 signals:
     void translate_user_password(QString user, QString pwd);
 private:
     Ui::LoginDialog *ui;
     QPoint dragPos;
+
+
+    AccountCache accountCache;
+    void loadAccountCache();
+    void action_register();
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);

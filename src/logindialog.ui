@@ -64,7 +64,7 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
    <property name="geometry">
     <rect>
      <x>117</x>
-     <y>178</y>
+     <y>163</y>
      <width>241</width>
      <height>31</height>
     </rect>
@@ -93,22 +93,6 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="userlineEdit">
-   <property name="geometry">
-    <rect>
-     <x>117</x>
-     <y>128</y>
-     <width>241</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string/>
-   </property>
-   <property name="placeholderText">
-    <string>Forum account username</string>
    </property>
   </widget>
   <widget class="QLabel" name="btn_min">
@@ -146,21 +130,52 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="registerButton">
+  <widget class="QCheckBox" name="passwdremember">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>240</y>
-     <width>94</width>
-     <height>29</height>
+     <x>117</x>
+     <y>199</y>
+     <width>91</width>
+     <height>25</height>
     </rect>
    </property>
+   <property name="text">
+    <string>记住密码</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="username">
+   <property name="geometry">
+    <rect>
+     <x>118</x>
+     <y>122</y>
+     <width>241</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pixmap/image/ok.png);
-font: 11pt &quot;文泉驿微米黑&quot;;</string>
+    <string notr="true"/>
+   </property>
+   <property name="editable">
+    <bool>true</bool>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="btn_register">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>200</y>
+     <width>91</width>
+     <height>25</height>
+    </rect>
    </property>
    <property name="text">
-    <string>Register</string>
+    <string>注册帐号</string>
    </property>
   </widget>
   <zorder>frame</zorder>
@@ -168,17 +183,16 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>okButton</zorder>
   <zorder>btn_close</zorder>
   <zorder>pwdlineEdit</zorder>
-  <zorder>userlineEdit</zorder>
   <zorder>btn_min</zorder>
   <zorder>warnLabel</zorder>
-  <zorder>registerButton</zorder>
+  <zorder>passwdremember</zorder>
+  <zorder>username</zorder>
+  <zorder>btn_register</zorder>
  </widget>
  <tabstops>
-  <tabstop>userlineEdit</tabstop>
   <tabstop>pwdlineEdit</tabstop>
   <tabstop>okButton</tabstop>
   <tabstop>closeButton</tabstop>
-  <tabstop>registerButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>
