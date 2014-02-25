@@ -421,7 +421,6 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         showok: false
-//        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -435,112 +434,6 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-//        onRestoreBtnClicked: {
-//            sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
-//            if (sessiondispatcher.get_touchpad_enable_qt()) {
-//                touchpadswitcher.switchedOn = true;
-//            }
-//            else {
-//                touchpadswitcher.switchedOn = false;
-//            }
-
-//            sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
-//            var default_type = sessiondispatcher.get_scrollbars_mode_qt();
-//            if(default_type == "overlay-auto") {
-//                overlay.checked = true;
-//            }
-//            else if(default_type == "normal") {
-//                legacy.checked = true;
-//            }
-//            sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
-//            var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
-//            if(default_mode == "edge-scrolling") {
-//                edge.checked = true;
-//            }
-//            else if(default_mode == "two-finger-scrolling") {
-//                twofinger.checked = true;
-//            }
-//            sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
-//            if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
-//                horizontalswitcher.switchedOn = true;
-//            }
-//            else {
-//                horizontalswitcher.switchedOn = false;
-//            }
-
-//            statusImage.visible = true;
-
-
-//            var defaultenable = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "enable");
-//            var defaulthorizontal = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "horizontal");
-//            var defaulttype = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "scrolltype");
-//            var defaultmode = sessiondispatcher.read_default_configure_from_qsetting_file("touchpad", "scrollmode");
-
-//            var enableFlag;
-//            var horizontalFlag;
-//            if(touchpadswitcher.switchedOn) {
-//                enableFlag = "true";
-//            }
-//            else {
-//                enableFlag = "false";
-//            }
-//            if(horizontalswitcher.switchedOn) {
-//                horizontalFlag = "true";
-//            }
-//            else {
-//                horizontalFlag = "false";
-//            }
-
-//            if((defaultenable == enableFlag) && (defaulthorizontal == horizontalFlag) && (touchpadsetpage.scrollbars_mode == defaulttype) && (touchpadsetpage.touchscrolling_mode == defaultmode)) {
-//                //友情提示：        触摸板配置已经为默认配置！
-//                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Touchpad configure has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//触摸板配置已经为默认配置！
-//            }
-//            else {
-//                if(defaultenable != enableFlag) {
-//                    if(defaultenable == "true") {
-//                        touchpadswitcher.switchedOn = true;
-//                        sessiondispatcher.set_touchpad_enable_qt(true);
-//                    }
-//                    else {
-//                        touchpadswitcher.switchedOn = false;
-//                        sessiondispatcher.set_touchpad_enable_qt(false);
-//                    }
-//                }
-//                if(defaulthorizontal != horizontalFlag) {
-//                    if(defaulthorizontal == "true") {
-//                        horizontalswitcher.switchedOn = true;
-//                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
-//                    }
-//                    else {
-//                        horizontalswitcher.switchedOn = false;
-//                        sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
-//                    }
-//                }
-//                if(touchpadsetpage.scrollbars_mode != defaulttype) {
-//                    if(defaulttype == "overlay-auto") {
-//                        sessiondispatcher.set_scrollbars_mode_overlay_qt();
-//                        overlay.checked = true;
-//                    }
-//                    else if(defaulttype == "normal") {
-//                        sessiondispatcher.set_scrollbars_mode_legacy_qt();
-//                        legacy.checked = true;
-//                    }
-//                    touchpadsetpage.scrollbars_mode = defaulttype;
-//                }
-//                if(touchpadsetpage.touchscrolling_mode != defaultmode) {
-//                    if(defaultmode == "edge-scrolling") {
-//                        sessiondispatcher.set_touchscrolling_mode_edge_qt();
-//                        edge.checked = true;
-//                    }
-//                    else if(defaultmode == "two-finger-scrolling") {
-//                        sessiondispatcher.set_touchscrolling_mode_twofinger_qt();
-//                        twofinger.checked = true;
-//                    }
-//                    touchpadsetpage.touchscrolling_mode = defaultmode;
-//                }
-//                statusImage.visible = true;
-//            }
-//        }
     }
     Timer {
          interval: 5000; running: true; repeat: true

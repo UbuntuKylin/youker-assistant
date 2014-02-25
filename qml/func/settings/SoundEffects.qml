@@ -50,73 +50,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-//        if (sessiondispatcher.get_login_music_enable_qt())
-//            soundswitcher.switchedOn = true;
-//        else
-//            soundswitcher.switchedOn = false;
-
-//        var soundlist = systemdispatcher.get_sound_themes_qt();
-//        var current_sound = sessiondispatcher.get_sound_theme_qt();
-//        showText.text = qsTr("[ Current Sound Theme: ") + current_sound + " ]";//[ 当前音效主题是：
-//        soundeffectspage.selected_sound_theme = current_sound;
-//        soundlist.unshift(current_sound);
-//        //将系统初始的声音主题写入QSetting配置文件
-////        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "soundtheme", current_sound);
-//        choices.clear();
-//        for(var i=0; i < soundlist.length; i++) {
-//            choices.append({"themetext": soundlist[i]});
-//            if (i!=0 && soundlist[i] == current_sound)
-//                choices.remove(i);
-//        }
-//        musicmodel.clear();
-//        var musiclist=systemdispatcher.get_sounds_qt();
-//        musiclist_num = musiclist.length;
-//        for(var l=0; l < musiclist.length; l++) {
-//            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
-//        }
-//        if(30*musiclist.length<=chooseyy_height)
-//            scrollbar_z = -1;
-//        else
-//            scrollbar_z = 1;
-
-
-
-
-//        var default_theme = sessiondispatcher.get_default_sound_string_qt("soundtheme");
-//        if (sessiondispatcher.get_login_music_enable_qt())
-//            soundswitcher.switchedOn = true;
-//        else
-//            soundswitcher.switchedOn = false;
-
-//        var soundlist = systemdispatcher.get_sound_themes_qt();
-//        var current_sound = sessiondispatcher.get_sound_theme_qt();
-//        showText.text = qsTr("[ Current Sound Theme: ") + current_sound + " ]";//[ 当前音效主题是：
-//        soundeffectspage.selected_sound_theme = current_sound;
-//        choices.clear();
-//        for(var i=0; i < soundlist.length; i++) {
-//            choices.append({"themetext": soundlist[i]});
-//            if (soundlist[i] == current_sound) {
-//                soundeffectspage.current_index = i;
-//            }
-//            else if (soundlist[i] == default_theme) {
-//                soundeffectspage.default_index = i;
-//            }
-//        }
-//        iconcombo.selectedIndex = soundeffectspage.current_index;
-//        musicmodel.clear();
-//        var musiclist=systemdispatcher.get_sounds_qt();
-//        musiclist_num = musiclist.length;
-//        for(var l=0; l < musiclist.length; l++) {
-//            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
-//        }
-//        if(30*musiclist.length<=chooseyy_height)
-//            scrollbar_z = -1;
-//        else
-//            scrollbar_z = 1;
-
-
-
-
         if (sessiondispatcher.get_login_music_enable_qt())
             soundswitcher.switchedOn = true;
         else
@@ -507,15 +440,6 @@ Rectangle {
             font.pointSize: 10
             font.bold: true
         }
-//            Text {
-//                width: soundeffectspage.width- 665 - 52 - 15
-//                text: qsTr("Does not support the audio file in the path that contains Chinese.")//暂不支持中文路径下的音频文件。
-//                wrapMode: Text.WordWrap
-//                font.pixelSize: 10
-//                color: "#7a7a7a"
-//            }
-//        }
-
     }
     Rectangle{id:topline ; x:652; y: 110; width:parent.width ; height:1; color:"#b9c5cc"}
     Rectangle{id:bottomline ; x:652;y:111 ;width:parent.width ; height:1; color:"#fafcfe"}
@@ -596,8 +520,6 @@ Rectangle {
             else if (num == 4) {
                 pageStack.push(functioncollection);
             }
-        }
-        onOkBtnClicked: {
         }
     }
 }

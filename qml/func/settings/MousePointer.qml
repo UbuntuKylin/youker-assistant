@@ -69,41 +69,6 @@ Rectangle {
             }
         }
         cursorcombo.selectedIndex = mousepointerpage.current_index;
-
-
-
-//        mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
-////        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursorsize", mousepointerpage.cursor_size);
-//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-//        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-//        var default_theme = sessiondispatcher.get_default_theme_sring_qt("mousetheme");
-//        //系统默认值可能在获取列表的时候没有该值，所以需要在这里添加进去。
-//        var flag = false;
-//        for(var i=0; i < cursorlist.length; i++) {
-//            if(cursorlist[i] == default_theme) {
-//                flag = true;
-//            }
-//        }
-//        if(flag) {
-//            flag = false;
-//        }
-//        else {
-//            var len = cursorlist.length;
-//            cursorlist.push(default_theme);
-//        }
-//        //将系统初始的图标主题写入QSetting配置文件
-////        sessiondispatcher.write_default_configure_to_qsetting_file("theme", "cursortheme", current_cursor_theme);
-//        showText.text = qsTr("[ Current Cursor Theme: ") + current_cursor_theme + " ]";//[ 当前光标主题是：
-//        mousepointerpage.selected_cursor_theme = current_cursor_theme;
-
-//        choices.clear();
-//        for(var k=0; k < cursorlist.length; k++) {
-//            choices.append({"text": cursorlist[k]});
-//            if (cursorlist[k] == current_cursor_theme) {
-//                mousepointerpage.current_index = k;
-//            }
-//        }
-//        cursorcombo.selectedIndex = mousepointerpage.current_index;
     }
 
     Column {
@@ -200,15 +165,6 @@ Rectangle {
                     }
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.Button {
-//                    id: okBtn
-//                    width: 94;height: 29
-//                    fontsize: 13
-//                    hoverimage: "green.png"
-//                    text: qsTr("OK")//确定
-//                    onClicked: {
-//                    }
-//                }
             }
             Common.Button {
                 hoverimage: "blue.png"
@@ -224,16 +180,6 @@ Rectangle {
                     cursorcombo.selectedIndex = mousepointerpage.default_index;
                     showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
                     statusImage.visible = true;
-
-
-
-//                    sessiondispatcher.set_default_theme_qt("mousetheme");
-//                    var defaulttheme = sessiondispatcher.get_cursor_theme_qt();
-//                    systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
-//                    cursorcombo.selectedText = defaulttheme;
-////                    cursorcombo.selectedIndex = mousepointerpage.default_index;
-//                    showText.text = qsTr("[ Current Cursor Theme: ") + cursorcombo.selectedText + " ]";//[ 当前光标主题是：
-//                    statusImage.visible = true;
                 }
             }
         }
@@ -285,17 +231,6 @@ Rectangle {
                 }
             }
         }
-//            Common.Button {
-//                hoverimage: "blue.png"
-//                text: qsTr("Restore")//恢复默认
-//                width: 94
-//                height: 29
-//                fontsize: 13
-//                onClicked: {
-
-//                }
-//            }
-//        }
     }
     //顶层工具栏
     Bars.TopBar {
@@ -324,7 +259,6 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         showok: false
-//        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -338,40 +272,6 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-//        onRestoreBtnClicked: {
-            //20140219
-//            sessiondispatcher.set_default_theme_qt("mousetheme");
-//            var defaulttheme = sessiondispatcher.get_cursor_theme_qt();
-//            systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
-//            showText.text = qsTr("[ Current Cursor Theme: ") + defaulttheme + " ]";//[ 当前光标主题是：
-//            statusImage.visible = true;
-//            var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursortheme");
-//            var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "cursorsize");
-
-//            if((defaulttheme == mousepointerpage.selected_cursor_theme) && (defaultsize == mousepointerpage.cursor_size)) {
-//                sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Cursor configure is the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//光标配置已经为默认设置！
-//            }
-//            else {
-//                if(defaulttheme != mousepointerpage.selected_cursor_theme) {
-//                    sessiondispatcher.set_cursor_theme_qt(defaulttheme);
-//                    systemdispatcher.set_cursor_theme_with_root_qt(defaulttheme);
-//                    mousepointerpage.selected_cursor_theme = defaulttheme;
-//                    showText.text = qsTr("[ Current Cursor Theme: ") + defaulttheme + " ]";//[ 当前光标主题是：
-//                    cursorcombo.selectedIndex = 0;
-//                }
-//                if(defaultsize != mousepointerpage.cursor_size) {
-//                    sessiondispatcher.set_cursor_size_qt(defaultsize);
-//                    mousepointerpage.cursor_size = defaultsize;
-//                    if(defaultsize == 24) {
-//                        smallstyle.checked = true;
-//                    }
-//                    else if(defaultsize == 36) {
-//                        bigstyle.checked = true;
-//                    }
-//                }
-//                statusImage.visible = true;
-//            }
-//        }
         Timer {
              interval: 5000; running: true; repeat: true
              onTriggered: statusImage.visible = false

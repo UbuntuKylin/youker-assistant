@@ -85,18 +85,6 @@ Item {
                     visible: false
                     HomeView.SystemBox {}
                 }
-//                Common.Page {
-//                    id: softwarerecommend
-//                    visible: false
-//                    HomeView.SoftWareRecommend {}
-//                }
-
-                //SoftWare-pages
-//                Common.Page {
-//                    id: softwarepage
-//                    visible: false
-//                    HomeView.SoftwarePage {}
-//                }
                 //ProcessManager page
                 Common.Page {
                     id: processmanagerpage
@@ -147,16 +135,6 @@ Item {
                     visible: false
                     SysSettings.DefaultFont {}
                 }
-//                Common.Page {
-//                    id: documentfontpage
-//                    visible: false
-//                    SysSettings.DocumentFont {}
-//                }
-//                Common.Page {
-//                    id: titlebarfontpage
-//                    visible: false
-//                    SysSettings.TitlebarFont {}
-//                }
                 Common.Page {
                     id: touchpadsetpage
                     visible: false

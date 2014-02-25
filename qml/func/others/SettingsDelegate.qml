@@ -76,16 +76,6 @@ Rectangle {
             else if(flag == "FcitxConfigtool") {
                 pageStack.push(fcitxConfigtoolpage);
             }
-//            else if(flag == "SoftWare") {
-//                if(systemdispatcher.judge_source_ubuntukylin_qt() == false) {
-//                    systemdispatcher.showAddSourceList(mainwindow.pos.x, mainwindow.pos.y);
-//                }
-//                //获取所有软件的状态
-//                systemdispatcher.check_pkgs_status_qt(systemdispatcher.getAllSoftwareExecNameList());
-//                //得到所有软件列表
-//                systemdispatcher.getAppListForDisPlay();
-//                pageStack.push(softwarerecommend);
-//            }
             else if(flag == "ProcessManager") {
                 pageStack.push(processmanagerpage);
             }

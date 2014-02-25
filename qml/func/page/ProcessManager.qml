@@ -220,52 +220,6 @@ Rectangle {
                 }
             }
         }
-
-//        Common.Button {
-//            id: listBtn
-//            width: 100
-//            height: 30
-//            text: qsTr("Refresh")//刷新
-//            hoverimage: "green1.png"
-//            fontsize: 15
-//            onClicked: {
-//                updateProcessList();
-//                toolkits.alertMSG(qsTr("Refresh Over!"), mainwindow.pos.x, mainwindow.pos.y);//刷新完毕！
-//            }
-//        }
-//        Common.Button {
-//            id: killBtn
-//            width: 100
-//            height: 30
-//            text: qsTr("Kill process")//结束进程
-//            hoverimage: "green1.png"
-//            fontsize: 15
-//            onClicked: {
-//                //根据鼠标激活的序号来获取对应的进程号
-//                var currentId = processmanager.getProcessId(tableView.currentIndex.toString());
-//                if(currentId.length !== 0) {
-//                    var currentUser = processmanager.getProcessUser(currentId);
-////                    console.log(currentUser);
-////                    console.log(processmanager.getCasualUser());
-//                    if(currentUser == processmanager.getCasualUser()) {//普通用户杀进程
-//                        if(processmanager.killProcess(currentId)) {
-//                            toolkits.alertMSG(qsTr("Kill successfully!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
-//                            updateProcessList();
-//                        }
-//                        else {
-//                            toolkits.alertMSG(qsTr("Kill failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
-//                        }
-//                    }
-//                    else {//root用户杀进程
-//                        systemdispatcher.kill_root_process_qt(currentId);
-//                        updateProcessList();
-//                    }
-//                }
-//                else {
-//                    toolkits.alertMSG(qsTr("Have no choice!"), mainwindow.pos.x, mainwindow.pos.y);//没有选择将要结束的进程！
-//                }
-//            }
-//        }
     }
 
     ListModel {

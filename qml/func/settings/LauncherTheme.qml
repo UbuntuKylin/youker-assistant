@@ -208,28 +208,6 @@ Rectangle {
                     stepSize: 1
                     animated: true
                 }
-
-//                Text {
-//                    id: displaynum
-//                    width: 20
-//                    text: slider.value
-//                    font.pixelSize: 12
-//                    color: "#7a7a7a"
-//                    anchors.verticalCenter: parent.verticalCenter
-//                }
-    //            Common.Button {
-    //                id: okBtn
-    //                hoverimage: "green2.png"
-    //                fontsize: 12
-    //                text: qsTr("OK")//确定
-    //                width: 94; height: 29
-    //                onClicked: {
-    //                    if (launcherthemepage.launcher_size != slider.value) {
-    //                        launcherthemepage.launcher_size = slider.value;
-    //                        sessiondispatcher.set_launcher_icon_size_qt(slider.value);
-    //                    }
-    //                }
-    //            }
             }
             Common.Button {
                 hoverimage: "blue.png"
@@ -272,15 +250,6 @@ Rectangle {
                     }
                 }
             }
-//            Common.Button {
-//                hoverimage: "blue.png"
-//                text: qsTr("Restore")//恢复默认
-//                width: 94
-//                height: 29
-//                fontsize: 13
-//                onClicked: {
-//                }
-//            }
         }
     }//Column
 
@@ -311,7 +280,6 @@ Rectangle {
     Bars.ToolBar {
         id: toolBar
         showok: false
-//        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -325,76 +293,6 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-//        onRestoreBtnClicked: {
-//            var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
-//            console.log(default_size);
-//            sessiondispatcher.set_default_unity_qt("launchersize", default_size);
-//            slider.value = default_size;
-//            var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
-//            console.log(default_hide);
-//            statusImage.visible = true;
-//            if(default_hide) {
-//                console.log("it should be off");
-//                sessiondispatcher.set_default_unity_qt("launcherhide", false);
-//                launcherswitcher.switchedOn = false;
-//            }
-//            else {
-//                sessiondispatcher.set_default_unity_qt("launcherhide", true);
-//                launcherswitcher.switchedOn = true;
-//                console.log("it should be oon");
-//            }
-
-//            var defaultsize = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "size");
-//            var defaultautohide = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "autohide");
-//            var defaultshowicon = sessiondispatcher.read_default_configure_from_qsetting_file("launcher", "showicon");
-//            var autohideFlag;
-//            var showiconFlag;
-//            if(launcherswitcher.switchedOn) {
-//                autohideFlag = "true";
-//            }
-//            else {
-//                autohideFlag = "false";
-//            }
-//            if(showdesktopswitcher.switchedOn) {
-//                showiconFlag = "true";
-//            }
-//            else {
-//                showiconFlag = "false";
-//            }
-
-//            if((defaultsize == launcherthemepage.launcher_size) && (defaultautohide == autohideFlag) && (defaultshowicon == showiconFlag)) {
-//                //友情提示：        Launcher已经恢复为默认配置！
-//                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Launcher has been restored to the default configuration!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//Launcher已经恢复默认配置！
-//            }
-//            else {
-//                if(defaultsize != slider.value) {
-//                    sessiondispatcher.set_launcher_icon_size_qt(defaultsize);
-//                    slider.value = defaultsize;
-//                    launcherthemepage.launcher_size = defaultsize;
-//                }
-//                if(defaultautohide != autohideFlag) {
-//                    if(defaultautohide == "true") {
-//                        launcherswitcher.switchedOn = true;
-//                        sessiondispatcher.set_launcher_autohide_qt(true);
-//                    }
-//                    else {
-//                        launcherswitcher.switchedOn = false;
-//                        sessiondispatcher.set_launcher_autohide_qt(false);
-//                    }
-//                }
-//                if(defaultshowicon != showiconFlag) {
-//                    if(defaultshowicon == "true") {
-//                        showdesktopswitcher.switchedOn = true;
-//                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(true);
-//                    }
-//                    else {
-//                        showdesktopswitcher.switchedOn = false;
-//                        sessiondispatcher.set_launcher_have_showdesktopicon_qt(false);
-//                    }
-//                }
-//                statusImage.visible = true;
-//            }
-//        }
         Timer {
              interval: 5000; running: true; repeat: true
              onTriggered: statusImage.visible = false

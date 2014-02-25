@@ -139,23 +139,6 @@ Item {
                 }
             }
 
-//            dayofweek = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
-//            # added by kobe 20140224
-//            if forecast_data['week'] == '星期日':
-//                self.time = 7
-//            for index in range(0, 6):
-//                if dayofweek[index] == forecast_data['week']:
-//                    self.time = index + 1
-//                    break
-//            for i in range(0,6):
-//                weektime = self.time + i
-//                if weektime > 7:
-//                    weektime -= 7
-//                if i == 0:
-//                    self.builder.get_object(labelofweek[i]).set_text(forecast_data['date_y'] + ' ' + forecast_data['week'])
-//                else:
-//                    self.builder.get_object(labelofweek[i]).set_text(dayofweek[weektime-1])
-
             var updateTime = sessiondispatcher.getSingleWeatherInfo("fchh", "forecast");
             //未来六天天气预报，预报时间：          时
             locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + release_date + updateTime + qsTr(" o'clock release");//时  发布

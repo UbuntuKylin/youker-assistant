@@ -248,7 +248,6 @@ Rectangle {
         id: toolBar
         showok: false
         showrestore: false
-//        showrestore: true
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onQuitBtnClicked: {
             var num = sessiondispatcher.get_page_num();
@@ -262,20 +261,6 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-//        onRestoreBtnClicked: {
-//            var defaulttheme = sessiondispatcher.read_default_configure_from_qsetting_file("theme", "widgettheme");
-//            if(defaulttheme == widgetthemepage.selected_theme || widgetthemepage.selected_theme == "") {
-//            //友情提示：        您系统的当前窗口主题已经为默认主题！
-//            sessiondispatcher.showWarningDialog(qsTr("Tips: "), qsTr("Your system's current widget theme is the default theme!"), mainwindow.pos.x, mainwindow.pos.y);//友情提示：//您系统的当前窗口主题已经为默认主题！
-//            }
-//            else {
-//                sessiondispatcher.set_theme_qt(defaulttheme);
-//                statusImage.visible = true;
-////                showText.text = qsTr("[ Current Theme is: ") + defaulttheme + " ]";//[ 当前主题是：
-//                widgetthemepage.selected_theme = defaulttheme;
-//                widgetthemepage.restoreTheme();
-//            }
-//        }
         Timer {
             interval: 5000; running: true; repeat: true
             onTriggered: statusImage.visible = false

@@ -108,7 +108,7 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def get_yahoo_city_id(self, geonameId):
-        """ Get Yahoo id from geonameid """
+        #""" Get Yahoo id from geonameid """
         #print geonameId#1816670
         yahoo_id = ''
         baseurl = 'http://api.geonames.org/getJSON'
