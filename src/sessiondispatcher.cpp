@@ -1043,9 +1043,24 @@ QString SessionDispatcher::get_scrollbars_mode_qt() {
 }
 
 /*-----------------------------touchpad of beauty-----------------------------*/
-QString SessionDispatcher::get_default_system_sring_qt(QString schema, QString key) {
-    QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", schema, key);
-    return reply.value();
+QString SessionDispatcher::get_default_system_sring_qt(QString flag) {
+    if(flag == "wheel-action") {//菜单项旁显示图标
+        QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", "org.compiz.gwd", "mouse-wheel-action");
+        return reply.value();
+    }
+    else if(flag == "double-click") {//标题栏双击动作
+        QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", "org.gnome.desktop.wm.preferences", "action-double-click-titlebar");
+        return reply.value();
+    }
+    else if(flag == "middle-click") {//标题栏中键动作
+        QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", "org.gnome.desktop.wm.preferences", "action-middle-click-titlebar");
+        return reply.value();
+    }
+    else if(flag == "right-click") {//标题栏右键动作
+        QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", "org.gnome.desktop.wm.preferences", "action-right-click-titlebar");
+        return reply.value();
+    }
+    return flag;
 }
 
 bool SessionDispatcher::get_default_system_bool_qt(QString schema, QString key) {
@@ -1066,129 +1081,24 @@ void SessionDispatcher::set_default_system_qt(QString flag) {
     else if(flag == "horiz-scroll-enabled") {//触摸板横向滚动
         sessioniface->call("set_default_system", "org.gnome.settings-daemon.peripherals.touchpad", "horiz-scroll-enabled", "boolean");
     }
-
-    /*def set_window_button_align_left(self):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'button-layout',
-            'string', 'close,maximize,minimize:')#close,minimize,maximize:
-
-    # set window button alignment right
-    def set_window_button_align_right(self):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'button-layout',
-            'string', ':minimize,maximize,close')
-
-    # get window button alignment
-    def get_window_button_align(self):
-        value = gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'button-layout', 'string')
-        if value == 'close,maximize,minimize:' || value == 'close,minimize,maximize:':
-            return 'left'
-        elif value == ':minimize,maximize,close':
-            return 'right'
-        #elif value == 'close,minimize,maximize:':
-        #    return 'default'
-        else:
-            return 'custom'
-
-    # set right click menus have icons 菜单带图标 是否可在菜单项旁显示图标。
-    def set_menus_have_icons(self, flag):
-        return gsettings.set('org.gnome.desktop.interface',
-            None,
-            'menus-have-icons',
-            'boolean', flag)
-
-    # get is right click menus have icons
-    def get_menus_have_icons(self):
-        return gsettings.get('org.gnome.desktop.interface',
-            None, 'menus-have-icons', 'boolean')
-
-    #-----------------------窗口控制按钮位置----------------------
-    # get window button
-    #def get_window_button(self):
-    #    return ['close,minimize,maximize:', ':minimize,maximize,close'] #左边/右边
-
-    # get current window button
-    #def get_current_window_button(self):
-    #    return gsettings.get('org.gnome.desktop.wm.preferences',
-    #        None, 'button-layout', 'string')
-
-    # set window button
-    #def set_window_button(self, value):
-    #    return gsettings.set('org.gnome.desktop.wm.preferences',
-    #        None,
-    #        'button-layout',
-    #        'string', value)
-
-    #-----------------------标题栏鼠标滚轮动作---------------------
-    # get titlebar wheel
-    def get_titlebar_wheel(self):
-        return ['none', 'shade']
-
-    # get current titlebar wheel
-    def get_current_titlebar_wheel(self):
-        return gsettings.get('org.compiz.gwd',
-            None, 'mouse-wheel-action', 'string')
-
-    # set titlebar wheel
-    def set_titlebar_wheel(self, value):
-        return gsettings.set('org.compiz.gwd',
-            None,
-            'mouse-wheel-action'
-            'string', value)
-
-    #-------------------------标题栏双击动作-------------------------
-    # get titlebar double
-    def get_titlebar_double(self):
-        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower', 'menu']
-
-    # get current titlebar double
-    def get_current_titlebar_double(self):
-        return gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'action-double-click-titlebar', 'string')
-
-    # set titlebar double
-    def set_titlebar_double(self, value):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'action-double-click-titlebar',
-            'string', value)
-
-    #-------------------------标题栏中键动作-------------------------
-    # get titlebar middle
-    def get_titlebar_middle(self):
-        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower','menu']
-
-    # get current titlebar middle
-    def get_current_titlebar_middle(self):
-        return gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'action-middle-click-titlebar', 'string')
-
-    # set titlebar middle
-    def set_titlebar_middle(self, value):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'action-middle-click-titlebar',
-            'string', value)
-
-    #-------------------------标题栏右键动作-------------------------
-    # get titlebar right
-    def get_titlebar_right(self):
-        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower','menu']
-
-    # get current titlebar right
-    def get_current_titlebar_right(self):
-        return gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'action-right-click-titlebar', 'string')
-
-    # set titlebar right
-    def set_titlebar_right(self, value):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'action-right-click-titlebar',
-            'string', value)*/
+    else if(flag == "control-button-position") {//窗口控制按钮位置
+        sessioniface->call("set_default_system", "org.gnome.desktop.wm.preferences", "button-layout", "string");
+    }
+    else if(flag == "menu-with-icons") {//菜单项旁显示图标
+        sessioniface->call("set_default_system", "org.gnome.desktop.interface", "menus-have-icons", "boolean");
+    }
+    else if(flag == "wheel-action") {//标题栏鼠标滚轮动作
+        sessioniface->call("set_default_system", "org.compiz.gwd", "mouse-wheel-action", "string");
+    }
+    else if(flag == "double-click") {//标题栏双击动作
+        sessioniface->call("set_default_system", "org.gnome.desktop.wm.preferences", "action-double-click-titlebar", "string");
+    }
+    else if(flag == "middle-click") {//标题栏中键动作
+        sessioniface->call("set_default_system", "org.gnome.desktop.wm.preferences", "action-middle-click-titlebar", "string");
+    }
+    else if(flag == "right-click") {//标题栏右键动作
+        sessioniface->call("set_default_system", "org.gnome.desktop.wm.preferences", "action-right-click-titlebar", "string");
+    }
 }
 
 

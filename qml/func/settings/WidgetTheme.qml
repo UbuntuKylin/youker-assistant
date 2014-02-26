@@ -32,7 +32,6 @@ Rectangle {
 
     property int current_index//当前主题的索引
     property int default_index//系统默认主题的索引
-    property string uk_default
 
     Component.onCompleted: {
         var windowlist = sessiondispatcher.get_window_themes_qt();

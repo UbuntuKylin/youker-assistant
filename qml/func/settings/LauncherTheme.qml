@@ -191,9 +191,7 @@ Rectangle {
                     id: slider
                     value: sessiondispatcher.get_launcher_icon_size_qt()
                     onValueChanged: {
-    //                    console.log(slider.value)
                         if(launcherthemepage.first_slider_value ){  //系统初始化时会使value的值为32（最小值），需要过滤掉
-    //                        launcherthemepage.launcher_size = slider.value;
                             sessiondispatcher.set_launcher_icon_size_qt(slider.value);
                         }
                         if(slider.value == 32)  //系统初始化时会使value的值为32（最小值），需要过滤掉

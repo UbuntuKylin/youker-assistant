@@ -134,7 +134,7 @@ public:
     Q_INVOKABLE int get_default_unity_qt(QString name, QString key);
     Q_INVOKABLE void set_default_unity_qt(QString flag, int value);
     //获取和设置字体默认值:system.py
-    Q_INVOKABLE QString get_default_system_sring_qt(QString schema, QString key);
+    Q_INVOKABLE QString get_default_system_sring_qt(QString flag);
     Q_INVOKABLE bool get_default_system_bool_qt(QString schema, QString key);
     Q_INVOKABLE void set_default_system_qt(QString flag);
     //获取和设置文件管理器默认值:filemanager.py

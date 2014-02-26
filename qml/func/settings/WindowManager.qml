@@ -23,6 +23,16 @@ Rectangle {
     width: parent.width
     height: 475
 
+    property string position_mode: ""
+    property int wheel_current_index//当前的索引
+    property int wheel_default_index//系统默认的索引
+    property int double_current_index//当前的索引
+    property int double_default_index//系统默认的索引
+    property int middle_current_index//当前的索引
+    property int middle_default_index//系统默认的索引
+    property int right_current_index//当前的索引
+    property int right_default_index//系统默认的索引
+
     property string actiontitle: qsTr("Window")//窗口
     property string actiontext: qsTr("Manage Window Manager settings.")//管理窗口管理器的设置
     //背景
@@ -31,12 +41,127 @@ Rectangle {
         anchors.fill: parent
     }
 
-    ListModel { id: choices1 }
-    ListModel { id: choices2 }
-    ListModel { id: choices3 }
-    ListModel { id: choices4 }
+    ListModel { id: wheelchoices }
+    ListModel { id: doublechoices }
+    ListModel { id: middlechoices }
+    ListModel { id: rightchoices }
     Component.onCompleted: {
+        windowmanagerpage.position_mode = sessiondispatcher.get_window_button_align_qt();
+        if (sessiondispatcher.get_menus_have_icons_qt()) {
+            menuswitcher.switchedOn = true;
+        }
+        else {
+            menuswitcher.switchedOn = false;
+        }
 
+        //wheel action
+        var wheellist = sessiondispatcher.get_titlebar_wheel_qt();
+        var current_wheel_type = sessiondispatcher.get_current_titlebar_wheel_qt();
+        var default_wheel_type = sessiondispatcher.get_default_system_sring_qt("wheel-action");
+        wheelchoices.clear();
+        if(current_wheel_type == default_wheel_type) {
+            for(var i=0; i < wheellist.length; i++) {
+                wheelchoices.append({"text": wheellist[i]});
+                if (wheellist[i] == current_wheel_type) {
+                    windowmanagerpage.wheel_current_index = i;
+                    windowmanagerpage.wheel_default_index = i;
+                }
+            }
+        }
+        else {
+            for(var j=0; j < wheellist.length; j++) {
+                wheelchoices.append({"text": wheellist[j]});
+                if (wheellist[j] == current_wheel_type) {
+                    windowmanagerpage.wheel_current_index = j;
+                }
+                else if (wheellist[j] == default_wheel_type) {
+                    windowmanagerpage.wheel_default_index = j;
+                }
+            }
+        }
+        wheelcombo.selectedIndex = windowmanagerpage.wheel_current_index;
+
+        //double click
+        var doublelist = sessiondispatcher.get_titlebar_double_qt();
+        var current_double_type = sessiondispatcher.get_current_titlebar_double_qt();
+        var default_double_type = sessiondispatcher.get_default_system_sring_qt("double-click");
+        doublechoices.clear();
+        if(current_double_type == default_double_type) {
+            for(var k=0; k < doublelist.length; k++) {
+                doublechoices.append({"text": doublelist[k]});
+                if (doublelist[k] == current_double_type) {
+                    windowmanagerpage.double_current_index = k;
+                    windowmanagerpage.double_default_index = k;
+                }
+            }
+        }
+        else {
+            for(var m=0; m < doublelist.length; m++) {
+                doublechoices.append({"text": doublelist[m]});
+                if (doublelist[m] == current_double_type) {
+                    windowmanagerpage.double_current_index = m;
+                }
+                else if (doublelist[m] == default_double_type) {
+                    windowmanagerpage.double_default_index = m;
+                }
+            }
+        }
+        doublecombo.selectedIndex = windowmanagerpage.double_current_index;
+
+        //middle click
+        var middlelist = sessiondispatcher.get_titlebar_middle_qt();
+        var current_middle_type = sessiondispatcher.get_current_titlebar_middle_qt();
+        var default_middle_type = sessiondispatcher.get_default_system_sring_qt("middle-click");
+        middlechoices.clear();
+        if(current_middle_type == default_middle_type) {
+            for(var n=0; n < middlelist.length; n++) {
+                middlechoices.append({"text": middlelist[n]});
+                if (middlelist[n] == current_middle_type) {
+                    windowmanagerpage.middle_current_index = n;
+                    windowmanagerpage.middle_default_index = n;
+                }
+            }
+        }
+        else {
+            for(var p=0; p < middlelist.length; p++) {
+                middlechoices.append({"text": middlelist[p]});
+                if (middlelist[p] == current_middle_type) {
+                    windowmanagerpage.middle_current_index = p;
+                }
+                else if (middlelist[p] == default_middle_type) {
+                    windowmanagerpage.middle_default_index = p;
+                }
+            }
+        }
+        middlecombo.selectedIndex = windowmanagerpage.middle_current_index;
+
+
+        //right click
+        var rightlist = sessiondispatcher.get_titlebar_right_qt();
+        var current_right_type = sessiondispatcher.get_current_titlebar_right_qt();
+        var default_right_type = sessiondispatcher.get_default_system_sring_qt("right-click");
+        rightchoices.clear();
+        if(current_right_type == default_right_type) {
+            for(var l=0; l < rightlist.length; l++) {
+                rightchoices.append({"text": rightlist[l]});
+                if (rightlist[l] == current_right_type) {
+                    windowmanagerpage.right_current_index = l;
+                    windowmanagerpage.right_default_index = l;
+                }
+            }
+        }
+        else {
+            for(var q=0; q < rightlist.length; q++) {
+                rightchoices.append({"text": rightlist[q]});
+                if (rightlist[q] == current_right_type) {
+                    windowmanagerpage.right_current_index = q;
+                }
+                else if (rightlist[q] == default_right_type) {
+                    windowmanagerpage.right_default_index = q;
+                }
+            }
+        }
+        rightcombo.selectedIndex = windowmanagerpage.right_current_index;
     }
 
     Column {
@@ -99,48 +224,46 @@ Rectangle {
         }
 
         Row {
-            spacing: 200
+            spacing: 250
             Row {
                 id: workmode
                 spacing: 40
                 Common.Label {
-                    width: 130
-                    text: qsTr("Scrollbar type: ")//滚动条类型：
+                    width: 160
+                    text: qsTr("Window control button position:")//窗口控制按钮位置：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 Common.ButtonRow {
                     exclusive: true//控制是否联动
-                    spacing: 100
+                    spacing: 134
                     Common.CheckBox {
-                        id:overlay
-                        titleName: qsTr("Features Type") //特色类型
-//                        checked: (touchpadsetpage.scrollbars_mode == "overlay-auto") ? true : false
+                        id: leftbox
+                        titleName: qsTr("Left Side")//左边
+                        checked: (windowmanagerpage.position_mode == "left") ? true : false
                         flag: "radio"
                         onClicked: {
-//                            if (overlay.checked == true) {
-//                                if(touchpadsetpage.scrollbars_mode != "overlay-auto") {
-//                                    sessiondispatcher.set_scrollbars_mode_overlay_qt();
-//                                    touchpadsetpage.scrollbars_mode = "overlay-auto";
-//                                    statusImage.visible = true;
-//                                }
-//                            }
+                            if (leftbox.checked == true) {
+                                if(windowmanagerpage.position_mode != "left") {
+                                    sessiondispatcher.set_window_button_align_left_qt();
+                                    windowmanagerpage.position_mode = "left";
+                                }
+                            }
                         }
                     }
                     Common.CheckBox {
-                        id: legacy
-                        titleName: qsTr("Standard Type")  //标准类型
-//                        checked: (touchpadsetpage.scrollbars_mode == "normal") ? true : false
+                        id: rightbox
+                        titleName: qsTr("Right Side")//右边
+                        checked: (windowmanagerpage.position_mode == "right") ? true : false
                         flag: "radio"
                         onClicked: {
-//                            if (legacy.checked == true) {
-//                                if(touchpadsetpage.scrollbars_mode != "normal") {
-//                                    sessiondispatcher.set_scrollbars_mode_legacy_qt();
-//                                    touchpadsetpage.scrollbars_mode = "normal";
-//                                    statusImage.visible = true;
-//                                }
-//                            }
+                            if (rightbox.checked == true) {
+                                if(windowmanagerpage.position_mode != "right") {
+                                    sessiondispatcher.set_window_button_align_right_qt();
+                                    windowmanagerpage.position_mode = "right";
+                                }
+                            }
                         }
                     }
                 }
@@ -153,39 +276,39 @@ Rectangle {
                 fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
-//                    sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
-//                    var default_type = sessiondispatcher.get_scrollbars_mode_qt();
-//                    if(default_type == "overlay-auto") {
-//                        overlay.checked = true;
-//                    }
-//                    else if(default_type == "normal") {
-//                        legacy.checked = true;
-//                    }
+                    sessiondispatcher.set_default_system_qt("control-button-position");
+                    var default_type = sessiondispatcher.get_window_button_align_qt();
+                    if(default_type == "left") {
+                        leftbox.checked = true;
+                    }
+                    else if(default_type == "right") {
+                        rightbox.checked = true;
+                    }
                 }
             }
         }
 
         Row {
-            spacing: 200
+            spacing: 250
             Row {
                 spacing: 40
                 Common.Label {
-                    width: 130
-                    text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
+                    width: 160
+                    text: qsTr("Menu with icons: ")//菜单项旁显示图标：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 Common.Switch {
-                    id: horizontalswitcher
-                    width: 125
+                    id: menuswitcher
+                    width: 160
                     onSwitched: {
-//                        if (horizontalswitcher.switchedOn) {
-//                            sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
-//                        }
-//                        else if(!horizontalswitcher.switchedOn) {
-//                            sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
-//                        }
+                        if (menuswitcher.switchedOn) {
+                            sessiondispatcher.set_menus_have_icons_qt(true);
+                        }
+                        else if(!menuswitcher.switchedOn) {
+                            sessiondispatcher.set_menus_have_icons_qt(false);
+                        }
                     }
                 }
             }
@@ -197,37 +320,34 @@ Rectangle {
                 fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
-//                    sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
-//                    if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
-//                        horizontalswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        horizontalswitcher.switchedOn = false;
-//                    }
+                    sessiondispatcher.set_default_system_qt("menu-with-icons");
+                    if (sessiondispatcher.get_menus_have_icons_qt()) {
+                        menuswitcher.switchedOn = true;
+                    }
+                    else {
+                        menuswitcher.switchedOn = false;
+                    }
                 }
             }
         }
 
         Row {
-            spacing: 200
+            spacing: 250
             Row {
                 spacing: 40
                 Text {
-                    width: 130
-                    text: qsTr("Icon theme")//图标主题
+                    width: 160
+                    text: qsTr("Titlebar mouse wheel action:")//标题栏鼠标滚轮动作：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 Common.ComboBox {
-                    id: iconcombo1
-                    model: choices1
-                    width: 125
+                    id: wheelcombo
+                    model: wheelchoices
+                    width: 160
                     onSelectedTextChanged: {
-//                            sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                            //[ 当前图标主题是：
-//                            showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                            statusImage.visible = true;
+                        sessiondispatcher.set_titlebar_wheel_qt(wheelcombo.selectedText);
                     }
                 }
             }
@@ -238,34 +358,29 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-//                    sessiondispatcher.set_default_theme_qt("icontheme");
-//                    iconcombo.selectedIndex = desktopiconsetpage.default_index;
-//                    showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                    statusImage.visible = true;
+                    sessiondispatcher.set_default_system_qt("wheel-action");
+                    wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
                 }
             }
         }
 
         Row {
-            spacing: 200
+            spacing: 250
             Row {
                 spacing: 40
                 Text {
-                    width: 130
-                    text: qsTr("Icon theme")//图标主题
+                    width: 160
+                    text: qsTr("Titlebar double-click action:")//标题栏双击动作：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 Common.ComboBox {
-                    id: iconcombo2
-                    model: choices2
-                    width: 125
+                    id: doublecombo
+                    model: doublechoices
+                    width: 160
                     onSelectedTextChanged: {
-//                            sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                            //[ 当前图标主题是：
-//                            showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                            statusImage.visible = true;
+                        sessiondispatcher.set_titlebar_double_qt(doublecombo.selectedText);
                     }
                 }
             }
@@ -276,34 +391,29 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-//                    sessiondispatcher.set_default_theme_qt("icontheme");
-//                    iconcombo.selectedIndex = desktopiconsetpage.default_index;
-//                    showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                    statusImage.visible = true;
+                    sessiondispatcher.set_default_system_qt("double-action");
+                    doublecombo.selectedIndex = windowmanagerpage.double_default_index;
                 }
             }
         }
 
         Row {
-            spacing: 200
+            spacing: 250
             Row {
                 spacing: 40
                 Text {
-                    width: 130
-                    text: qsTr("Icon theme")//图标主题
+                    width: 160
+                    text: qsTr("Titlebar middle-click action:")//标题栏中键动作：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 Common.ComboBox {
-                    id: iconcombo3
-                    model: choices3
-                    width: 125
+                    id: middlecombo
+                    model: middlechoices
+                    width: 160
                     onSelectedTextChanged: {
-//                            sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                            //[ 当前图标主题是：
-//                            showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                            statusImage.visible = true;
+                        sessiondispatcher.set_titlebar_middle_qt(middlecombo.selectedText);
                     }
                 }
             }
@@ -314,34 +424,29 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-//                    sessiondispatcher.set_default_theme_qt("icontheme");
-//                    iconcombo.selectedIndex = desktopiconsetpage.default_index;
-//                    showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                    statusImage.visible = true;
+                    sessiondispatcher.set_default_system_qt("middle-action");
+                    middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
                 }
             }
         }
 
         Row {
-            spacing: 200
+            spacing: 250
             Row {
                 spacing: 40
                 Text {
-                    width: 130
-                    text: qsTr("Icon theme")//图标主题
+                    width: 160
+                    text: qsTr("Titlebar right-click action:")//标题栏右键动作：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
                 Common.ComboBox {
-                    id: iconcombo4
-                    model: choices4
-                    width: 125
+                    id: rightcombo
+                    model: rightchoices
+                    width: 160
                     onSelectedTextChanged: {
-//                            sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                            //[ 当前图标主题是：
-//                            showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                            statusImage.visible = true;
+                        sessiondispatcher.set_titlebar_right_qt(rightcombo.selectedText);
                     }
                 }
             }
@@ -352,10 +457,8 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-//                    sessiondispatcher.set_default_theme_qt("icontheme");
-//                    iconcombo.selectedIndex = desktopiconsetpage.default_index;
-//                    showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                    statusImage.visible = true;
+                    sessiondispatcher.set_default_system_qt("right-action");
+                    rightcombo.selectedIndex = windowmanagerpage.right_default_index;
                 }
             }
         }
