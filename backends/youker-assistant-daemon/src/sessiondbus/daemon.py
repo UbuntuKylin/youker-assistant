@@ -67,7 +67,8 @@ class SessionDaemon(dbus.service.Object):
         self.desktopconf = Desktop()
         self.unityconf = Unity()
         self.themeconf = Theme()
-        self.systemconf = System()
+        #self.systemconf = System()
+        self.systemconf = System(self)
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
         self.fileconf = FileManager()
@@ -85,6 +86,11 @@ class SessionDaemon(dbus.service.Object):
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
+
+    # a dbus signal which tell widget to change titlebar postion by kobe
+    @dbus.service.signal(INTERFACE, signature='s')
+    def change_titlebar_position(self, position):
+        pass
 
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
     #def display_slide_show(self):
@@ -831,14 +837,14 @@ class SessionDaemon(dbus.service.Object):
     # -------------------------window-------------------------
 
     # set window button alignment left
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def set_window_button_align_left(self):
-        return self.systemconf.set_window_button_align_left()
+        self.systemconf.set_window_button_align_left()
 
     # set window button alignment right
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def set_window_button_align_right(self):
-        return self.systemconf.set_window_button_align_right()
+        self.systemconf.set_window_button_align_right()
 
     # get window button alignment
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')

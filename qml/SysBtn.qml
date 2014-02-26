@@ -26,16 +26,16 @@ Rectangle {
     Image {
         id: btnImg
         source: "./img/sysButton/" + iconName
-        x: 0-parent.width*3
+        x: 0 - parent.width*3
     }
 
     MouseArea {
         hoverEnabled: true
         anchors.fill: parent
         onEntered: btnImg.x = 0
-        onPressed: btnImg.x = 0-parent.width
+        onPressed: btnImg.x = 0 - parent.width
         //要判断鼠标松开时位置
-        onReleased: btnImg.x = 0-parent.width*2
-        onExited: btnImg.x = 0-parent.width*3
+        onReleased: btnImg.x = 0 - parent.width*2
+        onExited: btnImg.x = 0 - parent.width*3
     }
 }

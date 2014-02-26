@@ -64,11 +64,12 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 //    skin_widget = new SkinsWidget(mSettings);
 //    skinCenter = new SkinCenter();
 //    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
-
-    QObject::connect(sessioniface,SIGNAL(display_scan_process(QString)),this,SLOT(handler_scan_process(QString)));
-    QObject::connect(sessioniface,SIGNAL(scan_complete(QString)),this,SLOT(handler_scan_complete(QString)));
+    //handler_change_titlebar_position
+    QObject::connect(sessioniface, SIGNAL(change_titlebar_position(QString)), this, SLOT(handler_change_titlebar_position(QString)));
+    QObject::connect(sessioniface, SIGNAL(display_scan_process(QString)), this, SLOT(handler_scan_process(QString)));
+    QObject::connect(sessioniface, SIGNAL(scan_complete(QString)), this, SLOT(handler_scan_complete(QString)));
     QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(accord_flag_access_weather(QString, QString)));
-    QObject::connect(sessioniface,SIGNAL(total_data_transmit(QString, QString)),this,SLOT(handler_total_data_transmit(QString,QString)));
+    QObject::connect(sessioniface, SIGNAL(total_data_transmit(QString, QString)), this, SLOT(handler_total_data_transmit(QString,QString)));
 
     //Apt and Soft center cache
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_cache_data_to_model(QString,QString,QString,QString)));
@@ -108,6 +109,11 @@ SessionDispatcher::~SessionDispatcher() {
 //dbus服务退出
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
+}
+
+//准发发送信号告诉优客助手自己去改变自身的标题栏控制按钮位置
+void SessionDispatcher::handler_change_titlebar_position(QString position) {
+    emit this->startChangeControlBtnPosition(position);
 }
 
 //每30minutes连接服务器beat一次
@@ -1146,14 +1152,12 @@ bool SessionDispatcher::get_touchscrolling_use_horizontal_qt() {
 }
 
 /*-----------------------------window of beauty-----------------------------*/
-bool SessionDispatcher::set_window_button_align_left_qt() {
-    QDBusReply<bool> reply = sessioniface->call("set_window_button_align_left");
-    return reply.value();
+void SessionDispatcher::set_window_button_align_left_qt() {
+    sessioniface->call("set_window_button_align_left");
 }
 
-bool SessionDispatcher::set_window_button_align_right_qt() {
-    QDBusReply<bool> reply = sessioniface->call("set_window_button_align_right");
-    return reply.value();
+void SessionDispatcher::set_window_button_align_right_qt() {
+    sessioniface->call("set_window_button_align_right");
 }
 
 QString SessionDispatcher::get_window_button_align_qt() {

@@ -18,7 +18,9 @@
 
 import gsettings
 
-class System:
+class System():
+    def __init__(self, sysdaemon):
+        self.sysdaemon = sysdaemon
 
     # -----------------默认值-----------------
     # Get Default Value
@@ -27,9 +29,17 @@ class System:
 
     # Set Default Value
     def set_default_schema_value(self, schema, key, type):
+        #fp = open("/tmp/default.txt", "w")
+        #print >> fp, "--------------"
+        #fp.close()
         default_value = self.get_default_schema_value(schema, key)
         if default_value is not None:
-            return gsettings.set(schema, None, key, type, default_value)
+            gsettings.set(schema, None, key, type, default_value)
+            if schema == "org.gnome.desktop.wm.preferences" and key == "button-layout":
+                if default_value == 'close,maximize,minimize:' or default_value == 'close,minimize,maximize:':
+                    self.sysdaemon.change_titlebar_position('left')
+                elif default_value == ':minimize,maximize,close':
+                    self.sysdaemon.change_titlebar_position('right')
         else:
             raise NotImplemented
 
@@ -103,17 +113,27 @@ class System:
 
     # set window button alignment left
     def set_window_button_align_left(self):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
+        gsettings.set('org.gnome.desktop.wm.preferences',
             None,
             'button-layout',
-            'string', 'close,maximize,minimize:')#close,minimize,maximize:
+            'string', 'close,maximize,minimize:')
+        self.sysdaemon.change_titlebar_position("left")
+        #return gsettings.set('org.gnome.desktop.wm.preferences',
+        #    None,
+        #    'button-layout',
+        #    'string', 'close,maximize,minimize:')#close,minimize,maximize:
 
     # set window button alignment right
     def set_window_button_align_right(self):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
+        gsettings.set('org.gnome.desktop.wm.preferences',
             None,
             'button-layout',
             'string', ':minimize,maximize,close')
+        self.sysdaemon.change_titlebar_position("right")
+        #return gsettings.set('org.gnome.desktop.wm.preferences',
+        #    None,
+        #    'button-layout',
+        #    'string', ':minimize,maximize,close')
 
     # get window button alignment
     def get_window_button_align(self):
@@ -226,7 +246,7 @@ class System:
             'string', value)
 
 if __name__ == '__main__':
-    sss = System()
+    sss = System(None)
 
     #aa = sss.get_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'touchpad-enabled')
     #print aa#True

@@ -16,9 +16,36 @@
 import QtQuick 1.1
 
 Rectangle {
+    id: titlebar
     height: 20
     width: parent.width
     color: "transparent"
+
+    property int closeleftspace: 1
+    property int minleftspace: 22
+
+    Component.onCompleted: {
+        var btn_position = sessiondispatcher.get_window_button_align_qt();
+        if(btn_position == "right") {
+            titlebar.closeleftspace = 828;
+            titlebar.minleftspace = 807;
+        }
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onStartChangeControlBtnPosition: {
+            if(position == "left") {
+                titlebar.closeleftspace = 1;
+                titlebar.minleftspace = 22;
+            }
+            if(position == "right") {
+                titlebar.closeleftspace = 828;
+                titlebar.minleftspace = 807;
+            }
+        }
+    }
 
     MouseArea {
           id: mouseRegion
@@ -36,42 +63,71 @@ Rectangle {
           }
       }
 
-    Row {
-        id:row
-        anchors.left: parent.left
-        anchors.leftMargin: 1
+    SysBtn {
+        iconName: "sys_button_close.png"
+        anchors {
+            left: parent.left
+            leftMargin: titlebar.closeleftspace
+        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                mainwindow.hide();
+            }
+        }
+    }
+    SysBtn {
+        iconName: "sys_button_min.png"
+        anchors {
+            left: parent.left
+            leftMargin: titlebar.minleftspace
+        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                mainwindow.showMinimized();
+            }
+        }
+    }
 
-        SysBtn {
-            iconName: "sys_button_close.png"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    mainwindow.hide();
-//                    systemdispatcher.exit_qt();
-//                    sessiondispatcher.exit_qt();
-//                    sudodispatcher.exit_qt();
-//                    Qt.quit();
-                }
-            }
-        }
-        SysBtn {
-            iconName: "sys_button_min.png"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    mainwindow.showMinimized();
-                }
-            }
-        }
+//    Row {
+//        id:row
+//        anchors {
+//            left: parent.left
+//            leftMargin: titlebar.leftspace
+//        }
+
 //        SysBtn {
-//            iconName: "title_bar_menu.png"
+//            iconName: "sys_button_close.png"
 //            MouseArea {
 //                anchors.fill: parent
-//                acceptedButtons : Qt.LeftButton
 //                onClicked: {
-//                    sessiondispatcher.showSkinWidget(/*mainwindow.pos.x, mainwindow.pos.y*/);
+//                    mainwindow.hide();
+////                    systemdispatcher.exit_qt();
+////                    sessiondispatcher.exit_qt();
+////                    sudodispatcher.exit_qt();
+////                    Qt.quit();
 //                }
 //            }
 //        }
-    }
+//        SysBtn {
+//            iconName: "sys_button_min.png"
+//            MouseArea {
+//                anchors.fill: parent
+//                onClicked: {
+//                    mainwindow.showMinimized();
+//                }
+//            }
+//        }
+////        SysBtn {
+////            iconName: "title_bar_menu.png"
+////            MouseArea {
+////                anchors.fill: parent
+////                acceptedButtons : Qt.LeftButton
+////                onClicked: {
+////                    sessiondispatcher.showSkinWidget(/*mainwindow.pos.x, mainwindow.pos.y*/);
+////                }
+////            }
+////        }
+//    }
 }

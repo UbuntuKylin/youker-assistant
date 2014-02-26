@@ -228,8 +228,8 @@ public:
     Q_INVOKABLE bool get_touchscrolling_use_horizontal_qt();
 
     /*-------------------window of beauty-------------------*/
-    Q_INVOKABLE bool set_window_button_align_left_qt();
-    Q_INVOKABLE bool set_window_button_align_right_qt();
+    Q_INVOKABLE void set_window_button_align_left_qt();
+    Q_INVOKABLE void set_window_button_align_right_qt();
     Q_INVOKABLE QString get_window_button_align_qt();
     Q_INVOKABLE bool set_menus_have_icons_qt(bool flag);
     Q_INVOKABLE bool get_menus_have_icons_qt();
@@ -372,6 +372,9 @@ signals:
     //登录失败
     void loginFailedStatus(int status);
 
+    //告诉QML界面，标题栏控制按钮位置发生变化了，准备改变优客助手自身的控制按钮位置
+    void startChangeControlBtnPosition(QString position);
+
     //程序退出之前用户信息写入服务器端完毕后，告诉tray退出程序
     void ready_to_exit();
 public slots:
@@ -428,6 +431,9 @@ public slots:
     void resetTimerStatus();
     //处理连接服务器成功的时候，查询当前用户的信息：积分、等级...
     void searchCurrentInfo();
+
+    //接受标题栏控制按钮位置改变
+    void handler_change_titlebar_position(QString position);
 
 private:
     int mainwindow_width;
