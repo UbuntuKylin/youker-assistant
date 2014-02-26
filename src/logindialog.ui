@@ -85,6 +85,9 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
      <height>282</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string extracomment="aaa"/>
+   </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/pixmap/image/login-dialog.png);</string>
    </property>
@@ -135,12 +138,12 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
     <rect>
      <x>117</x>
      <y>199</y>
-     <width>91</width>
+     <width>151</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string>记住密码</string>
+    <string>Remember pwd</string>
    </property>
   </widget>
   <widget class="QComboBox" name="username">
@@ -151,6 +154,9 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
      <width>241</width>
      <height>34</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string/>
    </property>
    <property name="autoFillBackground">
     <bool>false</bool>
@@ -168,14 +174,14 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <widget class="QLabel" name="btn_register">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>293</x>
      <y>200</y>
      <width>91</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string>注册帐号</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Register&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <zorder>frame</zorder>
@@ -190,9 +196,11 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <zorder>btn_register</zorder>
  </widget>
  <tabstops>
+  <tabstop>username</tabstop>
   <tabstop>pwdlineEdit</tabstop>
   <tabstop>okButton</tabstop>
   <tabstop>closeButton</tabstop>
+  <tabstop>passwdremember</tabstop>
  </tabstops>
  <resources/>
  <connections/>

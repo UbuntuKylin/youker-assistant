@@ -249,7 +249,7 @@ Rectangle {
         //横线
         Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
-            width: desktopiconsetpage.width - showtitle.width - 40 * 2
+            width: widgetthemepage.width - showtitle.width - 40 * 2
         }
     }
 
@@ -323,7 +323,7 @@ Rectangle {
     Item {  //gredview外框架
         id:item
         width: parent.width - 60*2
-        height: parent.height - 170
+        height: 200//parent.height - 170
         anchors {
 //            top: parent.top
             top: icontitle.bottom
