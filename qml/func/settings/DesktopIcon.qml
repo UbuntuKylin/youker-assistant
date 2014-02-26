@@ -20,20 +20,16 @@ import "../bars" as Bars
 
 Rectangle {
     id: desktopiconsetpage
-    property bool on: true
     width: parent.width
     height: 475
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
-    property int cursor_size: 24
-    property string selected_icon_theme: ""//存放用户选择确认后的主题
 
     property int current_index//当前主题的索引
     property int default_index//系统默认主题的索引
-
     property string actiontitle: qsTr("Desktop Icons")//桌面图标设置
     property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons.")//设置桌面图标主题和桌面图标的可见性
+
+    ListModel { id: choices }
+
     //背景
     Image {
         source: "../../img/skin/bg-middle.png"
@@ -43,11 +39,7 @@ Rectangle {
     Component.onCompleted: {
         var iconlist = sessiondispatcher.get_icon_themes_qt();
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        showText.text = qsTr("[ Current icon theme is: ") + current_icon_theme + " ]";//[ 当前图标主题是：
-        desktopiconsetpage.selected_icon_theme = current_icon_theme;
-//        iconlist.unshift(current_icon_theme);
         var default_theme = sessiondispatcher.get_default_theme_sring_qt("icontheme");
-
         choices.clear();
         if(current_icon_theme == default_theme) {
             for(var i=0; i < iconlist.length; i++) {
@@ -108,36 +100,17 @@ Rectangle {
         }
     }
 
-    ListModel { id: choices }
-
     Column {
         spacing: 10
         anchors.top: parent.top
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Row{
-            spacing: 50
-            Text {
-                 text: desktopiconsetpage.actiontitle
-                 font.bold: true
-                 font.pixelSize: 14
-                 color: "#383838"
-             }
-            Text {
-                id: showText
-                text: ""
-                font.pixelSize: 14
-                color: "#318d11"
-            }
-            //status picture
-            Common.StatusImage {
-                id: statusImage
-                visible: false
-                iconName: "green.png"
-                text: qsTr("Completed")//已完成
-                anchors.verticalCenter: parent.verticalCenter
-            }
+        Text {
+            text: desktopiconsetpage.actiontitle
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
         }
         Text {
             text: desktopiconsetpage.actiontext
@@ -153,7 +126,6 @@ Rectangle {
             leftMargin: 40
             top: parent.top
             topMargin: 120
-
         }
         Text{
             id: themetitle
@@ -169,70 +141,6 @@ Rectangle {
         }
     }
 
-//    Row {
-//        id: themeline
-//        spacing: 135
-//        anchors{
-//            left: parent.left
-//            leftMargin: 60
-//            top: settitle.bottom
-//            topMargin: 10
-
-//        }
-//        Row{
-//            spacing: 40
-//            Text {
-//                id: iconthemelabel
-//                text: qsTr("Icon theme")//图标主题
-//                font.pixelSize: 12
-//                color: "#7a7a7a"
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-//            Common.ComboBox {
-//                id: iconcombo
-//                model: choices
-//                width: 200
-//                onSelectedTextChanged: {
-//                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-//                        //[ 当前图标主题是：
-//                        showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                        statusImage.visible = true;
-//                }
-//            }
-////            Common.Button {
-////                id: okBtn
-////                width: 94;height: 29
-////                fontsize: 13
-////                hoverimage: "green.png"
-////                text: qsTr("OK")//确定
-////                onClicked: {
-////                    if (desktopiconsetpage.selected_icon_theme != iconcombo.selectedText) {
-////                        desktopiconsetpage.selected_icon_theme = iconcombo.selectedText;
-////                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-////                        //[ 当前图标主题是：
-////                        showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-////                        statusImage.visible = true;
-////                    }
-////                }
-////            }
-//        }
-//        Common.Button {
-//            hoverimage: "blue.png"
-//            text: qsTr("Restore")//恢复默认
-//            width: 94
-//            height: 29
-//            fontsize: 13
-//            onClicked: {
-//                sessiondispatcher.set_default_theme_qt("icontheme");
-//                iconcombo.selectedIndex = desktopiconsetpage.default_index;
-//                showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-//                statusImage.visible = true;
-//            }
-//        }
-//    }
-
-
-    //-----------------
     Row {
         id: themeline
         anchors{
@@ -240,15 +148,14 @@ Rectangle {
             leftMargin: 60
             top: settitle.bottom
             topMargin: 10
-
         }
-        spacing: 200
+        spacing: 245
         Row {
             spacing: 20
             Text {
                 id: iconthemelabel
-                width: 170 - 50
-                text: qsTr("Icon theme")//图标主题
+                width: 170
+                text: qsTr("Icon theme:")//图标主题：
                 font.pixelSize: 12
                 color: "#7a7a7a"
                 anchors.verticalCenter: parent.verticalCenter
@@ -256,12 +163,9 @@ Rectangle {
             Common.ComboBox {
                 id: iconcombo
                 model: choices
-                width: 170 + 50
+                width: 220
                 onSelectedTextChanged: {
-                        sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
-                        //[ 当前图标主题是：
-                        showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-                        statusImage.visible = true;
+                    sessiondispatcher.set_icon_theme_qt(iconcombo.selectedText);
                 }
             }
         }
@@ -274,12 +178,9 @@ Rectangle {
             onClicked: {
                 sessiondispatcher.set_default_theme_qt("icontheme");
                 iconcombo.selectedIndex = desktopiconsetpage.default_index;
-                showText.text = qsTr("[ Current icon theme is: ") + iconcombo.selectedText + " ]";//[ 当前图标主题是：
-                statusImage.visible = true;
             }
         }
     }
-    //---------------------------
 
     Row {
         id: icontitle
@@ -312,7 +213,7 @@ Rectangle {
         }
         spacing: 10
         Row {
-            spacing: 200
+            spacing: 294
             Row {
                 spacing: 20
                 Common.Label {
@@ -354,9 +255,8 @@ Rectangle {
             }
         }
 
-
         Row {
-            spacing: 200
+            spacing: 294
             Row {
                 spacing: 20
                 Common.Label {
@@ -399,7 +299,7 @@ Rectangle {
         }
 
         Row {
-            spacing: 200
+            spacing: 294
             Row {
                 spacing: 20
                 Common.Label {
@@ -442,7 +342,7 @@ Rectangle {
         }
 
         Row {
-            spacing: 200
+            spacing: 294
             Row {
                 spacing: 20
                 Common.Label {
@@ -484,9 +384,8 @@ Rectangle {
             }
         }
 
-
         Row {
-            spacing: 200
+            spacing: 294
             Row {
                 spacing: 20
                 Common.Label {
@@ -569,11 +468,5 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-        onOkBtnClicked: {
-        }
-    }
-    Timer {
-        interval: 5000; running: true; repeat: true
-        onTriggered: statusImage.visible = false
     }
 }

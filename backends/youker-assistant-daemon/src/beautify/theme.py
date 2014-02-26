@@ -147,7 +147,7 @@ class Theme:
     # set cursor size
     def set_cursor_size(self, size):
         gstheme = gsettings.get_schema('org.gnome.desktop.interface')
-        gstheme.set_int('cursor-size',size)
+        gstheme.set_int('cursor-size', size)
 
 
 
@@ -282,12 +282,17 @@ if __name__ == '__main__':
     #aa = ttt.get_default_schema_value('org.gnome.nautilus.desktop', 'font')
     #print aa
     #ttt.set_default_schema_value('org.gnome.nautilus.desktop', 'font', 'string')
-    aa = ttt.get_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'hinting')
-    print aa
-    ttt.set_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'hinting', 'string')
-    bb = ttt.get_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'antialiasing')
-    print bb
+    #aa = ttt.get_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'hinting')
+    #print aa
+    #ttt.set_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'hinting', 'string')
+    #bb = ttt.get_default_schema_value('org.gnome.settings-daemon.plugins.xsettings', 'antialiasing')
+    #print bb
 
+    aa = ttt.get_default_schema_value('org.gnome.desktop.interface', 'cursor-size')
+    print aa
+    bb = ttt.get_cursor_size()
+    print bb
+    ttt.set_default_schema_value('org.gnome.desktop.interface', 'cursor-size', 'int')
 
     #aa = ttt.get_default_schema_value('org.gnome.desktop.interface', 'font-name')
     #print aa

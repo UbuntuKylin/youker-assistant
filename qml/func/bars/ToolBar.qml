@@ -35,7 +35,7 @@ Item {
          height: 32
          anchors {
              right: parent.right
-             rightMargin: 37
+             rightMargin: 42
              top: splitbar.bottom
              topMargin: 10
          }

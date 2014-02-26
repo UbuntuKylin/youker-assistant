@@ -648,6 +648,10 @@ void SessionDispatcher::set_default_unity_qt(QString flag, int value) {
     }
 }
 
+void SessionDispatcher::set_default_launcher_have_showdesktopicon_qt() {
+    sessioniface->call("set_default_launcher_have_showdesktopicon");
+}
+
 bool SessionDispatcher::set_launcher_autohide_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_launcher_autohide", flag);
     return reply.value();
@@ -809,6 +813,9 @@ void SessionDispatcher::set_default_theme_qt(QString flag/*QString schema, QStri
     }
     else if(flag == "mousetheme") {//鼠标指针主题
         sessioniface->call("set_default_font", "org.gnome.desktop.interface", "cursor-theme", "string");
+    }
+    else if(flag == "cursorsize") {//光标大小
+        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "cursor-size", "int");
     }
 }
 

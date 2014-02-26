@@ -224,13 +224,13 @@ Rectangle {
         }
 
         Row {
-            spacing: 250
+            spacing: 314
             Row {
                 id: workmode
-                spacing: 40
+                spacing: 20
                 Common.Label {
                     width: 160
-                    text: qsTr("Window control button position:")//窗口控制按钮位置：
+                    text: qsTr("Window control btn position:")//窗口控制按钮位置：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -289,9 +289,9 @@ Rectangle {
         }
 
         Row {
-            spacing: 250
+            spacing: 314
             Row {
-                spacing: 40
+                spacing: 20
                 Common.Label {
                     width: 160
                     text: qsTr("Menu with icons: ")//菜单项旁显示图标：
@@ -332,9 +332,9 @@ Rectangle {
         }
 
         Row {
-            spacing: 250
+            spacing: 314
             Row {
-                spacing: 40
+                spacing: 20
                 Text {
                     width: 160
                     text: qsTr("Titlebar mouse wheel action:")//标题栏鼠标滚轮动作：
@@ -365,9 +365,9 @@ Rectangle {
         }
 
         Row {
-            spacing: 250
+            spacing: 314
             Row {
-                spacing: 40
+                spacing: 20
                 Text {
                     width: 160
                     text: qsTr("Titlebar double-click action:")//标题栏双击动作：
@@ -398,9 +398,9 @@ Rectangle {
         }
 
         Row {
-            spacing: 250
+            spacing: 314
             Row {
-                spacing: 40
+                spacing: 20
                 Text {
                     width: 160
                     text: qsTr("Titlebar middle-click action:")//标题栏中键动作：
@@ -431,9 +431,9 @@ Rectangle {
         }
 
         Row {
-            spacing: 250
+            spacing: 314
             Row {
-                spacing: 40
+                spacing: 20
                 Text {
                     width: 160
                     text: qsTr("Titlebar right-click action:")//标题栏右键动作：

@@ -19,19 +19,18 @@ import "../common" as Common
 import "../bars" as Bars
 Rectangle {
     id: bootimagepage
-    property bool on: true
     width: parent.width
     height: 475
-    property string fontName: "Helvetica"
+
     property int scrollbar_z:0
     property int lisv_height: 250
-    property int fontSize: 12
-    property color fontColor: "black"
     property string image_path: ""
     property string actiontitle: qsTr("Boot animation settings")//开机动画设置
     property string actiontext: qsTr("Click the ' Custom Image ' button to select the picture you want to add, select the picture you want to set and click ' OK ' button to complete the setup.")//单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置。
     property int num: 0
     property string selectedimage: ""
+
+    ListModel { id: mainModel }
 
     //背景
     Image {
@@ -48,12 +47,12 @@ Rectangle {
                 mainModel.append({"itemTitle": plymouth_list[i]});
             }
         }
-//        bootimagepage.selectedimage = plymouth_list[0];
-        if(30*plymouth_list.length<=lisv_height)
-        {
-            scrollbar_z=-1
+        if(30*plymouth_list.length<=lisv_height) {
+            scrollbar_z = -1
         }
-        else scrollbar_z=1
+        else {
+            scrollbar_z = 1;
+        }
 
     }
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -165,8 +164,6 @@ Rectangle {
         font.pixelSize: 14
         color: "#383838"
     }
-
-    ListModel { id: mainModel }
 
     Rectangle{
         border.color: "#b9c5cc"

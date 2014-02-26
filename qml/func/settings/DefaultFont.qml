@@ -23,19 +23,13 @@ Rectangle {
     width: parent.width
     height: 475
 
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
-
     property string current_font: "Helvetica"
     property string desktop_font: "Helvetica"
     property string monospace_font: "Helvetica"
     property string document_font: "Helvetica"
     property string titlebar_font: "Helvetica"
     property double zoom: 1.0
-
     property bool first_slider_value: false //系统初始化时会使value的值为0.5，需要过滤掉
-
     property int current_smooth_index//当前平滑的索引
     property int default_smooth_index//系统默认平滑的索引
     property int current_antialiasing_index//当前锯齿的索引
@@ -145,22 +139,11 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Row {
-            spacing: 50
-            Text {
-                 text: defaultfontpage.actiontitle
-                 font.bold: true
-                 font.pixelSize: 14
-                 color: "#383838"
-             }
-            //status picture
-            Common.StatusImage {
-                id: statusImage
-                visible: false
-                iconName: "green.png"
-                text: qsTr("Completed")//已完成
-                anchors.verticalCenter: parent.verticalCenter
-            }
+        Text {
+            text: defaultfontpage.actiontitle
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
         }
          Text {
              width: defaultfontpage.width - 80 - 20
@@ -193,7 +176,6 @@ Rectangle {
         }
     }
 
-
     Column {
         id: fontcolumn
         spacing: 3
@@ -203,14 +185,12 @@ Rectangle {
             top: settitle.bottom
             topMargin: 10
         }
-
-        //---------------------
         Row {
-            spacing: 200
+            spacing: 234
             Row{
                 Common.Label {
                     id: fontslabel
-                    width: 130
+                    width: 150
                     text: qsTr("Default Font: ")//默认字体：
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -240,11 +220,11 @@ Rectangle {
             }
         }
         Row {
-            spacing: 200
+            spacing: 234
             Row{
                 Common.Label {
                     id: desktopfontlabel
-                    width: 130
+                    width: 150
                     text: qsTr("Desktop Font: ")//桌面字体：
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -268,18 +248,17 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-                    //20140219
                     sessiondispatcher.set_default_theme_qt("desktopfont");
                     desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
                 }
             }
         }
         Row {
-            spacing: 200
+            spacing: 234
             Row{
                 Common.Label {
                     id: monospacefontlabel
-                    width: 130
+                    width: 150
                     text: qsTr("Monospace Font: ")  //等宽字体：
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -303,18 +282,17 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-                    //20140219
                     sessiondispatcher.set_default_theme_qt("monospacefont");
                     monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
                 }
             }
         }
         Row {
-            spacing: 200
+            spacing: 234
             Row{
                 Common.Label {
                     id: documentfontlabel
-                    width: 130
+                    width: 150
                     text: qsTr("Document font: ")//文档字体：
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -338,18 +316,17 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-                    //20140219
                     sessiondispatcher.set_default_theme_qt("documentfont");
                     docufontBtn.text = sessiondispatcher.get_document_font_qt();
                 }
             }
         }
         Row {
-            spacing: 200
+            spacing: 234
             Row{
                 Common.Label {
                     id: windowtitlefontlabel
-                    width: 130
+                    width: 150
                     text: qsTr("Titlebar font: ")//标题栏字体：
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -373,14 +350,11 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-                    //20140219
                     sessiondispatcher.set_default_theme_qt("titlebarfont");
                     titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
                 }
             }
         }
-        //---------------------
-
     }//Column
 
     Row {
@@ -414,11 +388,11 @@ Rectangle {
             topMargin: 5
         }
         Row {
-            spacing: 200
+            spacing: 234
             Row{
                 Common.Label {
                     id: fontzoomlabel
-                    width: 130
+                    width: 150
                     text: qsTr("Global Font Scaling: ")//全局字体缩放：
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -434,22 +408,13 @@ Rectangle {
                         if(defaultfontpage.first_slider_value ){  //系统初始化时会使value的值为0.5（最小值），需要过滤掉
                             sessiondispatcher.set_font_zoom_qt(slider.value);
                         }
-                        if(slider.value == 0.5)  //系统初始化时会使value的值为0.5（最小值），需要过滤掉
-                        {
+                        if(slider.value == 0.5) { //系统初始化时会使value的值为0.5（最小值），需要过滤掉
                             defaultfontpage.first_slider_value = true;
                         }
                     }
                     stepSize: 0.1
                     animated: true
                 }
-
-//                Text {
-//                    id: displaynum
-//                    text: slider.value
-//                    font.pixelSize: 12
-//                    color: "#7a7a7a"
-//                    anchors.verticalCenter: parent.verticalCenter
-//                }
             }
             Common.Button {
                 hoverimage: "blue.png"
@@ -458,7 +423,6 @@ Rectangle {
                 height: 29
                 fontsize: 13
                 onClicked: {
-                    //20140219
                     sessiondispatcher.set_default_theme_qt("globalfontscaling");
                     slider.value = sessiondispatcher.get_font_zoom_qt();
                 }
@@ -466,11 +430,11 @@ Rectangle {
         }
 
         Row {
-            spacing: 200
+            spacing: 234
             Row{
                 Common.Label {
                     id: smoothlabel
-                    width: 130
+                    width: 150
                     text: qsTr("Global Font Scaling: ")//平滑：
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -480,7 +444,6 @@ Rectangle {
                     id: smoothcombo
                     model: smoothchoices
                     width: 250
-        //            width: cursorthemelabel.width
                     onSelectedTextChanged: {
                         sessiondispatcher.set_smooth_style_qt(smoothcombo.selectedText);
                     }
@@ -496,17 +459,16 @@ Rectangle {
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("smoothstyle");
                     smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
-                    statusImage.visible = true;
                 }
             }
         }
 
         Row {
-            spacing: 200
+            spacing: 234
             Row{
                 Common.Label {
                     id: antialiasinglabel
-                    width: 130
+                    width: 150
                     text: qsTr("Global Font Scaling: ")//反锯齿：
                     font.pixelSize: 12
                     color: "#7a7a7a"
@@ -516,7 +478,6 @@ Rectangle {
                     id: antialiasingcombo
                     model: antialiasingchoices
                     width: 250
-        //            width: cursorthemelabel.width
                     onSelectedTextChanged: {
                         sessiondispatcher.set_antialiasing_style_qt(antialiasingcombo.selectedText);
                     }
@@ -532,7 +493,6 @@ Rectangle {
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("antialiasingstyle");
                     antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
-                    statusImage.visible = true;
                 }
             }
         }
@@ -578,10 +538,5 @@ Rectangle {
                 pageStack.push(functioncollection);
             }
         }
-        onOkBtnClicked: {}
-    }
-    Timer {
-        interval: 5000; running: true; repeat: true
-        onTriggered: statusImage.visible = false
     }
 }

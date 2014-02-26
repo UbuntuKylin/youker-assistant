@@ -1,8 +1,10 @@
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 
   * Modify display mode of weather forecast and system settings.
+  * Add file manager and font style settings.
+  * Perfecting the system settings and restore default settings better.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 24 Feb 2014 17:42:56 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 26 Feb 2014 15:45:44 +0800
 
 youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
 

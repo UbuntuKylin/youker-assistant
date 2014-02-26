@@ -553,6 +553,10 @@ class SessionDaemon(dbus.service.Object):
     def set_default_unity(self, key, type, value):
         self.unityconf.set_default_schema_value(key, type, value)
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def set_default_launcher_have_showdesktopicon(self):
+        self.unityconf.set_default_launcher_have_showdesktopicon()
+
     # set launcher auto hide mode
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
     def set_launcher_autohide(self, flag):

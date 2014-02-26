@@ -19,15 +19,10 @@ import "../common" as Common
 import "../bars" as Bars
 Rectangle {
     id: launcherthemepage
-    property bool on: true
     width: parent.width
     height: 475
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
-    property bool first_slider_value: false //系统初始化时会使value的值为32（最小值），需要过滤掉
 
-//    property int launcher_size
+    property bool first_slider_value: false //系统初始化时会使value的值为32（最小值），需要过滤掉
     property string actiontitle: qsTr("Launcher settings")//启动器设置
     property string actiontext: qsTr("Setting the Launcher display mode, Icon size.")//设置启动器的显示模式、图标尺寸。
 
@@ -38,25 +33,17 @@ Rectangle {
     }
 
     Component.onCompleted: {
-//        launcherthemepage.launcher_size = slider.value;
-        //将系统初始的Launcher大小写入QSetting配置文件
-//        sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "size", slider.value);
         if (sessiondispatcher.get_launcher_autohide_qt()) {
             launcherswitcher.switchedOn = true;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "autohide", "true");
         }
         else {
             launcherswitcher.switchedOn = false;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "autohide", "false");
         }
-
         if (sessiondispatcher.get_launcher_have_showdesktopicon_qt()) {
             showdesktopswitcher.switchedOn = true;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "showicon", "true");
         }
         else {
             showdesktopswitcher.switchedOn = false;
-//            sessiondispatcher.write_default_configure_to_qsetting_file("launcher", "showicon", "false");
         }
     }
 
@@ -66,22 +53,11 @@ Rectangle {
         anchors.topMargin: 44
         anchors.left: parent.left
         anchors.leftMargin: 80
-        Row {
-            spacing: 50
-            Text {
-                 text: launcherthemepage.actiontitle
-                 font.bold: true
-                 font.pixelSize: 14
-                 color: "#383838"
-             }
-            //status picture
-            Common.StatusImage {
-                id: statusImage
-                visible: false
-                iconName: "green.png"
-                text: qsTr("Completed")//已完成
-                anchors.verticalCenter: parent.verticalCenter
-            }
+        Text {
+            text: launcherthemepage.actiontitle
+            font.bold: true
+            font.pixelSize: 14
+            color: "#383838"
         }
         Text {
             width: launcherthemepage.width - 80 - 20
@@ -116,7 +92,6 @@ Rectangle {
         }
     }
 
-
     Column {
         spacing: 20
         anchors{
@@ -126,7 +101,53 @@ Rectangle {
             topMargin: 10
         }
         Row {
-            spacing: 135
+            spacing: 294
+            Row {
+                spacing: 20
+                Common.Label {
+                    id: iconsizelabel
+                    width: 170
+                    text: qsTr("Launcher icon size: ")//启动器图标尺寸：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Slider {
+                    id: slider
+                    value: sessiondispatcher.get_launcher_icon_size_qt()
+                    onValueChanged: {
+                        if(launcherthemepage.first_slider_value ){  //系统初始化时会使value的值为32（最小值），需要过滤掉
+                            sessiondispatcher.set_launcher_icon_size_qt(slider.value);
+                        }
+                        if(slider.value == 32) { //系统初始化时会使value的值为32（最小值），需要过滤掉
+                            launcherthemepage.first_slider_value = true;
+                        }
+                    }
+                    width: iconsizelabel.width
+                    maximumValue: 64
+                    minimumValue: 32
+    //                tickmarksEnabled: true
+                    stepSize: 1
+                    animated: true
+                }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
+//                    console.log(default_size);
+                    sessiondispatcher.set_default_unity_qt("launchersize", default_size);
+                    slider.value = default_size;
+                }
+            }
+        }
+
+        Row {
+            spacing: 294
             Row {
                 spacing: 20
                 Common.Label {
@@ -158,73 +179,20 @@ Rectangle {
                 fontsize: 13
                 onClicked: {
                     var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
-//                    console.log(default_hide);
-//                    statusImage.visible = true;
                     if(default_hide) {
-                        console.log("it should be off");
                         sessiondispatcher.set_default_unity_qt("launcherhide", false);
                         launcherswitcher.switchedOn = false;
                     }
                     else {
                         sessiondispatcher.set_default_unity_qt("launcherhide", true);
                         launcherswitcher.switchedOn = true;
-                        console.log("it should be oon");
                     }
                 }
             }
         }
 
-
         Row {
-            spacing: 135
-            Row {
-                spacing: 20
-                Common.Label {
-                    id: iconsizelabel
-                    width: 170
-                    text: qsTr("Launcher icon size: ")//启动器图标尺寸：
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-                Common.Slider {
-                    id: slider
-                    value: sessiondispatcher.get_launcher_icon_size_qt()
-                    onValueChanged: {
-                        if(launcherthemepage.first_slider_value ){  //系统初始化时会使value的值为32（最小值），需要过滤掉
-                            sessiondispatcher.set_launcher_icon_size_qt(slider.value);
-                        }
-                        if(slider.value == 32)  //系统初始化时会使value的值为32（最小值），需要过滤掉
-                        {
-                            launcherthemepage.first_slider_value = true;
-                        }
-                    }
-                    width: iconsizelabel.width
-                    maximumValue: 64
-                    minimumValue: 32
-    //                tickmarksEnabled: true
-                    stepSize: 1
-                    animated: true
-                }
-            }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
-//                    console.log(default_size);
-                    sessiondispatcher.set_default_unity_qt("launchersize", default_size);
-                    slider.value = default_size;
-                }
-            }
-        }
-
-
-        Row {
-            spacing: 135
+            spacing: 294
             Row {
                 spacing: 20
                 Common.Label {
@@ -245,6 +213,22 @@ Rectangle {
                         else if(!showdesktopswitcher.switchedOn) {
                             sessiondispatcher.set_launcher_have_showdesktopicon_qt(false);
                         }
+                    }
+                }
+            }
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_launcher_have_showdesktopicon_qt();
+                    if (sessiondispatcher.get_launcher_have_showdesktopicon_qt()) {
+                        showdesktopswitcher.switchedOn = true;
+                    }
+                    else {
+                        showdesktopswitcher.switchedOn = false;
                     }
                 }
             }
@@ -290,10 +274,6 @@ Rectangle {
             else if (num == 4) {
                 pageStack.push(functioncollection);
             }
-        }
-        Timer {
-             interval: 5000; running: true; repeat: true
-             onTriggered: statusImage.visible = false
         }
     }
 }

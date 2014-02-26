@@ -124,7 +124,7 @@ Rectangle {
         }
         spacing: 10
         Row {
-            spacing: 100
+            spacing: 164
             Row {
                 spacing: 20
                 Common.Label {
@@ -137,7 +137,7 @@ Rectangle {
                 }
                 Common.Switch {
                     id: pathbarswitcher
-                    width: pathbarlabel.width
+                    width: 200
                     onSwitched: {
                         if (pathbarswitcher.switchedOn) {
                             sessiondispatcher.set_location_replace_pathbar_qt(true);
@@ -167,7 +167,7 @@ Rectangle {
         }
 
         Row {
-            spacing: 100
+            spacing: 164
             Row {
                 spacing: 20
                 Common.Label {
@@ -180,7 +180,7 @@ Rectangle {
                 }
                 Common.Switch {
                     id: mediaswitcher
-                    width: medialabel.width
+                    width: 200
                     onSwitched: {
                         if (mediaswitcher.switchedOn) {
                             sessiondispatcher.set_auto_mount_media_qt(true);
@@ -210,7 +210,7 @@ Rectangle {
         }
 
         Row {
-            spacing: 100
+            spacing: 164
             Row {
                 spacing: 20
                 Common.Label {
@@ -223,7 +223,7 @@ Rectangle {
                 }
                 Common.Switch {
                     id: folderswitcher
-                    width: folderlabel.width
+                    width: 200
                     onSwitched: {
                         if (folderswitcher.switchedOn) {
                             sessiondispatcher.set_auto_open_folder_qt(true);
@@ -253,7 +253,7 @@ Rectangle {
         }
 
         Row {
-            spacing: 100
+            spacing: 164
             Row {
                 spacing: 20
                 Common.Label {
@@ -266,7 +266,7 @@ Rectangle {
                 }
                 Common.Switch {
                     id: programsswitcher
-                    width: programslabel.width
+                    width: 200
                     onSwitched: {
                         if (programsswitcher.switchedOn) {
                             sessiondispatcher.set_prompt_autorun_programs_qt(true);
@@ -296,7 +296,7 @@ Rectangle {
         }
 
         Row {
-            spacing: 100
+            spacing: 164
             Row {
                 spacing: 20
                 Common.Label {
@@ -311,7 +311,7 @@ Rectangle {
                     id: iconsizeslider
                     minimumValue: 16
                     maximumValue: 512
-                    width: thumbnailsizelabel.width
+                    width: 200
                     value: sessiondispatcher.get_thumbnail_icon_size_qt()
                     onValueChanged: {
                         if(filemanagerpage.first_icon_size ) {
@@ -339,7 +339,7 @@ Rectangle {
         }
 
         Row {
-            spacing: 100
+            spacing: 164
             Row {
                 spacing: 20
                 Common.Label {
@@ -354,7 +354,7 @@ Rectangle {
                     id: cachetimeslider
                     minimumValue: -1
                     maximumValue: 180
-                    width: thumbnailtimelabel.width
+                    width: 200
                     value: sessiondispatcher.get_thumbnail_cache_time_qt()
                     onValueChanged: {
                         if(filemanagerpage.first_cache_time ) {
@@ -382,7 +382,7 @@ Rectangle {
         }
 
         Row {
-            spacing: 100
+            spacing: 164
             Row {
                 spacing: 20
                 Common.Label {
@@ -397,7 +397,7 @@ Rectangle {
                     id: maxcacheslider
                     minimumValue: -1
                     maximumValue: 512
-                    width: thumbnailmaxsizelabel.width
+                    width: 200
                     value: sessiondispatcher.get_thumbnail_cache_size_qt()
                     onValueChanged: {
                         if(filemanagerpage.first_cache_size ) {

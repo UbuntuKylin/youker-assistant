@@ -133,6 +133,7 @@ public:
     //获取和设置字体默认值:unity.py
     Q_INVOKABLE int get_default_unity_qt(QString name, QString key);
     Q_INVOKABLE void set_default_unity_qt(QString flag, int value);
+    Q_INVOKABLE void set_default_launcher_have_showdesktopicon_qt();
     //获取和设置字体默认值:system.py
     Q_INVOKABLE QString get_default_system_sring_qt(QString flag);
     Q_INVOKABLE bool get_default_system_bool_qt(QString schema, QString key);

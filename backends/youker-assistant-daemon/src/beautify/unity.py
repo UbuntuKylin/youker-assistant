@@ -99,6 +99,12 @@ class Unity:
         else:
             return False
 
+    def get_default_launcher_have_showdesktopicon(self):
+        return self.get_launcher_have_showdesktopicon()
+
+    def set_default_launcher_have_showdesktopicon(self):
+        self.set_launcher_have_showdesktopicon(True)
+
 if __name__ == '__main__':
     uuu = Unity()
     bb = uuu.get_default_schema_value("unityshell", "icon_size")
@@ -106,11 +112,13 @@ if __name__ == '__main__':
     #aa = uuu.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
     #uuu = Unity("unityshell", "icon_size")
     #aa = uuu.get_launcher_icon_size_test()
-    print "bb->"
-    print bb
-    print "aa->"
-    print aa
-    uuu.set_default_schema_value('icon-size', 'int', bb)
+    #print "bb->"
+    #print bb
+    #print "aa->"
+    #print aa
+    #uuu.set_default_schema_value('icon-size', 'int', bb)
+    cc = uuu.get_default_launcher_have_showdesktopicon()
+    print cc
 
     #uuu.set_default_schema_value('launcher-hide-mode', 'int', aa)
 
