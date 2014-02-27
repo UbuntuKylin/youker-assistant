@@ -32,6 +32,25 @@ Rectangle {
         anchors.fill: parent
     }
 
+    //使用云配置后，控件状态根据配置发生相应的变化
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDownloadCloudConfToQML: {
+            if(download == "launcher_autohide") {
+                if (sessiondispatcher.get_launcher_autohide_qt()) {
+                    launcherswitcher.switchedOn = true;
+                }
+                else {
+                    launcherswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "launcher_icon_size") {
+                slider.value = sessiondispatcher.get_launcher_icon_size_qt();
+            }
+        }
+    }
+
     Component.onCompleted: {
         if (sessiondispatcher.get_launcher_autohide_qt()) {
             launcherswitcher.switchedOn = true;
@@ -131,17 +150,23 @@ Rectangle {
                     animated: true
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
-//                    console.log(default_size);
-                    sessiondispatcher.set_default_unity_qt("launchersize", default_size);
-                    slider.value = default_size;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
+    //                    console.log(default_size);
+                        sessiondispatcher.set_default_unity_qt("launchersize", default_size);
+                        slider.value = default_size;
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -171,22 +196,28 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
-                    if(default_hide) {
-                        sessiondispatcher.set_default_unity_qt("launcherhide", false);
-                        launcherswitcher.switchedOn = false;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
+                        if(default_hide) {
+                            sessiondispatcher.set_default_unity_qt("launcherhide", false);
+                            launcherswitcher.switchedOn = false;
+                        }
+                        else {
+                            sessiondispatcher.set_default_unity_qt("launcherhide", true);
+                            launcherswitcher.switchedOn = true;
+                        }
                     }
-                    else {
-                        sessiondispatcher.set_default_unity_qt("launcherhide", true);
-                        launcherswitcher.switchedOn = true;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }

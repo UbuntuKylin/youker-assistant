@@ -319,6 +319,11 @@ public:
 
     //一键清理扫描
     Q_INVOKABLE void onekey_scan_function_qt(QStringList selectedList);
+
+
+    //金山快盘云配置
+    Q_INVOKABLE void download_kysoft_cloud_conf_qt();
+    Q_INVOKABLE void upload_kysoft_cloud_conf_qt();
 signals:
     void finishScanWork(QString msg);
     void isScanning(QString msg);
@@ -363,6 +368,11 @@ signals:
 
     //告诉QML界面，标题栏控制按钮位置发生变化了，准备改变优客助手自身的控制按钮位置
     void startChangeControlBtnPosition(QString position);
+
+    //把下载和使用云端配置的情况告诉QML
+    void tellDownloadCloudConfToQML(QString download);
+    //把上传配置到云端的情况告诉QML
+    void tellUploadCloudConfToQML(QString upload);
 
     //程序退出之前用户信息写入服务器端完毕后，告诉tray退出程序
     void ready_to_exit();
@@ -417,6 +427,11 @@ public slots:
 
     //接受标题栏控制按钮位置改变
     void handler_change_titlebar_position(QString position);
+
+    //接收下载和使用云端配置的信号
+    void handler_download_cloud_conf(QString download);
+    //接收上传配置到云端时的信号
+    void handler_upload_cloud_conf(QString upload);
 
 private:
     int mainwindow_width;

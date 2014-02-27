@@ -24,6 +24,35 @@ Rectangle {
     property bool upcloud: false//金山快盘云配置使用
     property bool downcloud: false//金山快盘上传云配置
 
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDownloadCloudConfToQML: {
+            if(download == "download_norun") {
+                root.downcloud = fasle;
+                console.log("download - norun....");
+            }
+            else if(download == "download_notconf") {
+                root.downcloud = false;
+                console.log("download - noconf....");
+            }
+            else if(download == "download_ok") {
+                root.downcloud = false;
+                console.log("download - ok....");
+            }
+        }
+        onTellUploadCloudConfToQML: {
+            if(upload == "upload_norun") {
+                root.upcloud = fasle;
+                console.log("upload - norun....");
+            }
+            else if(upload == "upload_ok") {
+                root.upcloud = false;
+                console.log("upload - ok....");
+            }
+        }
+    }
+
     Component.onCompleted: {
     }
     Row {
@@ -74,68 +103,70 @@ Rectangle {
 //        }
 //    }
 
-//    Row {
-//        anchors {
-//            right: parent.right
-//            rightMargin: 5
-//            verticalCenter: parent.verticalCenter
-//        }
-//        spacing: 10
-//        Row {
-//            Text {
-//                id: downBtn
-//                color: "white"
-//                font.pixelSize: 12
-//                text: qsTr("Use Cloud Conf")//使用云配置
-//                MouseArea {
-//                    anchors.fill: downBtn
-//                    onClicked: {
-//                        root.downcloud = !root.downcloud;
-//                    }
-//                }
-//            }
-//            Image {
-//                id: downloadImage
-//                visible: root.downcloud ? false : true
-//                width: 16
-//                height: 16
-//                source: "./img/icons/move.png"
-//            }
-//            AnimatedImage {//动态图片
-//                id: downloaddynamic
-//                visible: root.downcloud ? true : false
-//                width: 16
-//                height: 16
-//                source: "./img/icons/move.gif"
-//            }
-//        }
-//        Row {
-//            Text {
-//                id: upBtn
-//                color: "white"
-//                font.pixelSize: 12
-//                text: qsTr("Upload Cloud Conf")//上传云配置
-//                MouseArea {
-//                    anchors.fill: upBtn
-//                    onClicked: {
-//                        root.upcloud = !root.upcloud;
-//                    }
-//                }
-//            }
-//            Image {
-//                id: uploadImage
-//                visible: root.upcloud ? false : true
-//                width: 16
-//                height: 16
-//                source: "./img/icons/move.png"
-//            }
-//            AnimatedImage {//动态图片
-//                id: uploaddynamic
-//                visible: root.upcloud ? true : false
-//                width: 16
-//                height: 16
-//                source: "./img/icons/move.gif"
-//            }
-//        }
-//    }
+    Row {
+        anchors {
+            right: parent.right
+            rightMargin: 5
+            verticalCenter: parent.verticalCenter
+        }
+        spacing: 10
+        Row {
+            Text {
+                id: downBtn
+                color: "white"
+                font.pixelSize: 12
+                text: qsTr("Use Cloud Conf")//使用云配置
+                MouseArea {
+                    anchors.fill: downBtn
+                    onClicked: {
+                        root.downcloud = true;
+                        sessiondispatcher.download_kysoft_cloud_conf_qt();
+                    }
+                }
+            }
+            Image {
+                id: downloadImage
+                visible: root.downcloud ? false : true
+                width: 16
+                height: 16
+                source: "./img/icons/move.png"
+            }
+            AnimatedImage {//动态图片
+                id: downloaddynamic
+                visible: root.downcloud ? true : false
+                width: 16
+                height: 16
+                source: "./img/icons/move.gif"
+            }
+        }
+        Row {
+            Text {
+                id: upBtn
+                color: "white"
+                font.pixelSize: 12
+                text: qsTr("Upload Cloud Conf")//上传云配置
+                MouseArea {
+                    anchors.fill: upBtn
+                    onClicked: {
+                        root.upcloud = true;
+                        sessiondispatcher.upload_kysoft_cloud_conf_qt();
+                    }
+                }
+            }
+            Image {
+                id: uploadImage
+                visible: root.upcloud ? false : true
+                width: 16
+                height: 16
+                source: "./img/icons/move.png"
+            }
+            AnimatedImage {//动态图片
+                id: uploaddynamic
+                visible: root.upcloud ? true : false
+                width: 16
+                height: 16
+                source: "./img/icons/move.gif"
+            }
+        }
+    }
 }

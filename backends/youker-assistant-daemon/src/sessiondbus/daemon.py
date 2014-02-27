@@ -48,6 +48,7 @@ from beautify.theme import Theme
 from beautify.system import System
 from beautify.sound import Sound
 from beautify.filemanager import FileManager
+from beautify.cloudconfig import CloudConfig
 from sysinfo import Sysinfo
 from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather
@@ -61,6 +62,7 @@ UKPATH = "/"
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         #self.wizardconf = Wizard()
+        self.cloudconf = CloudConfig(self)
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
         self.unityconf = Unity()
@@ -84,6 +86,26 @@ class SessionDaemon(dbus.service.Object):
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
+
+    # a dbus method which download and use kuaipan cloud conf by kobe
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def download_kysoft_cloud_conf(self):
+        self.cloudconf.download_kysoft_cloud_conf()
+
+    # a dbus method which upload conf to kuaipan cloud by kobe
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def upload_kysoft_cloud_conf(self):
+        self.cloudconf.upload_kysoft_cloud_conf()
+
+    # a dbus signal which download and use kuaipan cloud conf by kobe
+    @dbus.service.signal(INTERFACE, signature='s')
+    def download_cloud_conf_signal(self, download):
+        pass
+
+    # a dbus signal which upload conf to kuaipan cloud by kobe
+    @dbus.service.signal(INTERFACE, signature='s')
+    def upload_cloud_conf_signal(self, upload):
+        pass
 
     # a dbus signal which tell widget to change titlebar postion by kobe
     @dbus.service.signal(INTERFACE, signature='s')

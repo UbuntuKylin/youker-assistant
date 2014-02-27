@@ -18,7 +18,7 @@
 
 AccountCache::AccountCache()
 {
-    dir = QDesktopServices::storageLocation(QDesktopServices::HomeLocation)+"/.youker-assistant/";
+    dir = QDesktopServices::storageLocation(QDesktopServices::HomeLocation)+"/.config/ubuntukylin/youker-assistant/";
 }
 
 QStringList AccountCache::getUserName()

@@ -36,6 +36,30 @@ Rectangle {
         anchors.fill: parent
     }
 
+    //使用云配置后，控件状态根据配置发生相应的变化
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDownloadCloudConfToQML: {
+            if(download == "show_homefolder") {
+                if (sessiondispatcher.get_show_homefolder_qt()) {
+                    folderswitcher.switchedOn = true;
+                }
+                else {
+                    folderswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "show_network") {
+                if (sessiondispatcher.get_show_network_qt()) {
+                    networkswitcher.switchedOn = true;
+                }
+                else {
+                    networkswitcher.switchedOn = false;
+                }
+            }
+        }
+    }
+
     Component.onCompleted: {
         var iconlist = sessiondispatcher.get_icon_themes_qt();
         var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
@@ -280,20 +304,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_desktop_qt("homeiconvisible");
-                    if (sessiondispatcher.get_show_homefolder_qt()) {
-                        folderswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_desktop_qt("homeiconvisible");
+                        if (sessiondispatcher.get_show_homefolder_qt()) {
+                            folderswitcher.switchedOn = true;
+                        }
+                        else {
+                            folderswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        folderswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -323,20 +353,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_desktop_qt("networkiconvisible");
-                    if (sessiondispatcher.get_show_network_qt()) {
-                        networkswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_desktop_qt("networkiconvisible");
+                        if (sessiondispatcher.get_show_network_qt()) {
+                            networkswitcher.switchedOn = true;
+                        }
+                        else {
+                            networkswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        networkswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }

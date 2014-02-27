@@ -5,8 +5,9 @@ youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
   * Perfecting the system settings and restore default settings better.
   * Remember user account.
   * Change window control button position of youkerf-assistant.
+  * Add Kysoft KuaiPan cloud conf.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 26 Feb 2014 17:31:18 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 27 Feb 2014 19:08:45 +0800
 
 youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
 

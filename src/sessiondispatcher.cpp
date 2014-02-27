@@ -87,6 +87,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
 
+    //cloud conf
+    QObject::connect(sessioniface, SIGNAL(upload_cloud_conf_signal(QString)), this, SLOT(handler_upload_cloud_conf(QString)));
+    QObject::connect(sessioniface, SIGNAL(download_cloud_conf_signal(QString)), this, SLOT(handler_download_cloud_conf(QString)));
+
     //login
     QObject::connect(httpauth, SIGNAL(response(QString,QString,QString,QString)), this, SLOT(handle_data_after_login_success(QString,QString,QString,QString)));
     QObject::connect(httpauth, SIGNAL(refresh(QString,QString)), this, SLOT(handle_data_after_search_success(QString,QString)));
@@ -109,6 +113,24 @@ SessionDispatcher::~SessionDispatcher() {
 //dbus服务退出
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
+}
+
+void SessionDispatcher::download_kysoft_cloud_conf_qt() {
+    sessioniface->call("download_kysoft_cloud_conf");
+}
+
+void SessionDispatcher::upload_kysoft_cloud_conf_qt() {
+    sessioniface->call("upload_kysoft_cloud_conf");
+}
+
+//接收下载和使用云端配置的信号
+void SessionDispatcher::handler_download_cloud_conf(QString download) {
+    emit this->tellDownloadCloudConfToQML(download);
+}
+
+//接收上传配置到云端时的信号
+void SessionDispatcher::handler_upload_cloud_conf(QString upload) {
+    emit this->tellUploadCloudConfToQML(upload);
 }
 
 //准发发送信号告诉优客助手自己去改变自身的标题栏控制按钮位置
