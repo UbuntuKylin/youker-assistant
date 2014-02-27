@@ -37,8 +37,6 @@ public:
     ~SessionDispatcher();
     QDBusInterface *sessioniface;
     Q_INVOKABLE void show_slider_qt();
-//    QString get_currrent_date_qt();
-//    QString get_current_time_qt();
     //退出前的准备工作
     void ready_exit_normally();
 
@@ -76,12 +74,6 @@ public:
     //扫描firefox和chromium的cookies
     Q_INVOKABLE void cookies_scan_function_qt(QString flag);
 
-    //扫描不需要的deb包
-//    Q_INVOKABLE QStringList scan_unneed_packages_qt();
-    //扫描apt缓存
-//    Q_INVOKABLE QStringList scan_apt_cruft_qt();
-    //扫描软件中心缓存
-//    Q_INVOKABLE QStringList scan_softwarecenter_cruft_qt();
     //扫描apt和软件中心缓存
     Q_INVOKABLE void cache_scan_function_qt(QStringList argList, QString flag);
     //扫描不需要的package和old kernel
@@ -296,9 +288,6 @@ public:
     Q_INVOKABLE int get_current_rate();
     //更新当天天气
     Q_INVOKABLE bool update_weather_data_qt();
-    //更新六天天气预报
-    Q_INVOKABLE void update_forecast_weather();
-    Q_INVOKABLE void change_select_city_name_qt(QString cityName);
 
     QMap<QString, QVariant> forecastInfo;
     QMap<QString, QVariant> currentInfo;
@@ -416,12 +405,6 @@ public slots:
     void handler_append_cookies_to_model(QString flag, QString domain, QString num);
     //接收cookies扫描完后的信号
     void handler_cookies_scan_over(QString cookiesFlag);
-
-
-    //    //判断是否有firefox浏览器
-//    void handler_deb_exists_firefox(QString flag);
-//    //判断是否有chromium浏览器
-//    void handler_deb_exists_chromium(QString flag);
     //程序退出之前接受传递过来的用户信息，准备写入服务器端
     void handler_write_user_info_when_exit();
 
@@ -445,8 +428,6 @@ private:
     //保额次alert的y坐标
     int alert_y;
     int alert_width_bg;
-//    QString username;
-//    int userid;
 
     //皮肤对话框对象
 //    SkinsWidget *skin_widget;

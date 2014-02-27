@@ -51,7 +51,6 @@ from beautify.filemanager import FileManager
 from sysinfo import Sysinfo
 from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather
-#from account.userinfo import UserInfo
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
 #from slider.wizard import Wizard
@@ -62,7 +61,6 @@ UKPATH = "/"
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         #self.wizardconf = Wizard()
-        #self.userconf = UserInfo()
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
         self.unityconf = Unity()
@@ -95,22 +93,6 @@ class SessionDaemon(dbus.service.Object):
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
     #def display_slide_show(self):
     #    self.wizardconf.show_slider()
-
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    #def get_currrent_date(self):
-    #    #return "0000-00-00"
-    #    return self.userconf.get_currrent_date()
-
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    #def get_current_time(self):
-    #    #return "0000-00-00 00:00:00"
-    #    return self.userconf.get_current_time()
-
-    # Get score when login current day, if first, it's 5, and it not, it's 0
-    #@dbus.service.method(INTERFACE, in_signature='bs', out_signature='i')
-    #def login_in_forum_account(self, flag, date):
-    #    #return 0
-    #    return self.userconf.login_in_forum(flag, date)
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def get_yahoo_city_id(self, geonameId):
@@ -272,18 +254,6 @@ class SessionDaemon(dbus.service.Object):
             figure = -1
         return figure
 
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    #def history_scan_function(self, flag):
-    #    historyfunc_obj = cleaner.CleanTheHistory()
-    #    historyfunc_obj.new_get_history_crufts(flag, self)
-
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='i')
-    #def scan_history_records(self):
-    #    daemonhistory = cleaner.CleanTheHistory(None)
-    #    tmp_list = daemonhistory.get_scan_result()
-    #    self.scan_complete_msg('history')
-    #    return sum([int(one.split('<2_2>')[-1]) for one in tmp_list])
-
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_system_history(self):
         daemonsystem = cleaner.CleanSystemHistory()
@@ -313,39 +283,11 @@ class SessionDaemon(dbus.service.Object):
         self.scan_complete_msg('large')
         return tmp_list
 
-    #@dbus.service.method(INTERFACE, in_signature='is', out_signature='')
-    #def large_scan_function(self, size, path):
-    #    largefunc_obj = cleaner.ManageTheLarge()
-    #    largefunc_obj.get_large_files(size, path, self)
-
     # the function of clean the cookies records
-
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
-    #def cookies_scan_function(self, flag):
-    #    cookiesfunc_obj = cleaner.CleanTheCookies(self)
-    #    crufts_list = cookiesfunc_obj.get_cookies_crufts(flag)
-    #    return crufts_list
-
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def cookies_scan_function(self, flag):
         cookiesfunc_obj = cleaner.CleanTheCookies(self)
         cookiesfunc_obj.get_cookie_crufts(flag, self)
-
-    # the function of scan the unneedpackages
-    ### input-''   output-['pkgname<2_2>pkgsummary<2_2>installedsize', 'pkg...]
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    #def scan_unneed_packages(self):
-    #    tmp_list = self.daemonunneed.get_scan_result()
-    #    self.scan_complete_msg('unneed')
-    #    return tmp_list
-
-    # the function of scan the oldkernel
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    #def oldkernel_scan_function(self):
-    #    oldkernelfunc_obj = cleaner.CleanTheOldkernel()
-    #    crufts_list = oldkernelfunc_obj.get_oldkernel_crufts()
-    #    self.scan_complete_msg('oldkernel')
-    #    return crufts_list
 
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def package_scan_function(self, mode_list):
@@ -366,24 +308,6 @@ class SessionDaemon(dbus.service.Object):
             pass
         else:
             pass
-
-    # the function of scan the apt cache
-    ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    #def scan_apt_cruft(self):
-    #    #tmp_dic = self.daemoncache.get_scan_result()
-    #    tmp_dic = self.daemoncache.get_cache_crufts()
-    #    self.scan_complete_msg('apt')
-    #    return tmp_dic['apt'].split('<1_1>')
-
-    # the function of scan the softwarecenter cache
-    ### input-'' output-['filepath<2_2>size', 'filepath<2_2>size', 'file...]
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    #def scan_softwarecenter_cruft(self):
-    #    #tmp_dic = self.daemoncache.get_scan_result()
-    #    tmp_dic = self.daemoncache.get_cache_crufts()
-    #    self.scan_complete_msg('softwarecenter')
-    #    return tmp_dic['softwarecenter'].split('<1_1>')
 
     # a dbus signal which means access weather by kobe
     @dbus.service.signal(INTERFACE, signature='ss')
@@ -439,14 +363,6 @@ class SessionDaemon(dbus.service.Object):
     def large_transmit_complete(self):
         pass
 
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def deb_exists_firefox(self, msg):
-    #    pass
-
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def deb_exists_chromium(self, msg):
-    #    pass
-
     @dbus.service.signal(INTERFACE, signature='ss')
     def total_data_transmit(self, flag, msg):
         pass
@@ -458,11 +374,6 @@ class SessionDaemon(dbus.service.Object):
     def scan_complete_msg(self, para):
         self.scan_complete(para)
 
-    #def deb_exists_firefox_msg(self, para):
-    #    self.deb_exists_firefox(para)
-
-    #def deb_exists_chromium_msg(self, para):
-    #    self.deb_exists_chromium(para)
 
     def display_scan_process_msg(self, para):
         self.display_scan_process(para)
@@ -478,13 +389,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_system_message(self):
         return self.sysconf.get_sys_msg()
-
-    #@dbus.service.signal(INTERFACE, signature='as')
-    #def get_speed(self, speed):
-    #    pass
-
-    #def get_network_speed(self, speed):
-    #    self.get_speed(speed)
 
     # -------------------------beautify start here-------------------------
 
@@ -1064,12 +968,6 @@ class SessionDaemon(dbus.service.Object):
     def get_network_flow_total(self):
         return self.ballconf.get_network_flow_total()
 
-    # get network flow, return (up, down)
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    #def get_network_flow(self):
-    #    speed_network = self.ballconf.get_network_flow()
-    #    self.get_network_speed(speed_network)
-
     # -------------------------weather-------------------------
     # get weather information of six days
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
@@ -1080,10 +978,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_forecast_dict(self):
         return self.weatherconf.get_forecast_dict()
-
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='a{sv}')
-    #def get_forecast_weahter(self, cityId):
-    #    return self.weatherconf.getWeatherForecast(cityId)
 
     # get current day's weather
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
@@ -1125,18 +1019,3 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def get_city_id(self, cityName):
         return self.weatherconf.getCityId(cityName)
-
-    # change city name
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    #def change_select_city_name(self, cityName):
-    #    self.weatherconf.change_city(cityName)
-
-    # read conf data
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    #def read_conf_data(self):
-    #    return self.weatherconf.read_conf_data()
-
-    # write conf data
-    #@dbus.service.method(INTERFACE, in_signature='ss', out_signature='')
-    #def write_conf_data(self, key, value):
-    #    self.weatherconf.write_conf_data(key, value)

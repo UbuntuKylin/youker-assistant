@@ -177,20 +177,7 @@ Rectangle {
                 }
             }
         }
-//        onFinishCleanDataMain: {//收到清理的内容
-//            if (type == "c") {
-//                cachedes.visible = true;
-//                cachedes.text = qsTr("(totally cleared") + msg + qsTr("garbage)");//（共清理掉      垃圾）
-//            }
-//            else if (type == "h") {
-//                historydes.visible = true;
-//                historydes.text = qsTr("(totally cleared") + msg + qsTr("historical records)");//（共清理掉     条历史记录）
-//            }
-//            else if (type == "k") {
-//                cookiedes.visible = true;
-//                cookiedes.text = qsTr("(totally cleared") + msg + qsTr("Cookies)");//（共清理掉    条Cookies）
-//            }
-//        }
+
         onQuickCleanProcess: {
             if(type == "firefoxhistory") {
                 if(status == "start") {

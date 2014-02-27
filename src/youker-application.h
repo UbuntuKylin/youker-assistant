@@ -23,7 +23,6 @@
 #include <QDBusConnection>
 #include <QtGui>
 
-//#include "toplevel.h"
 //#include <QPixmap>
 class IhuApplication : public QWidget
 {
@@ -37,18 +36,11 @@ public:
 private:
     //关联QML界面
     QDeclarativeView *viewer;
-//    QPixmap m_shadow;
     //系统托盘
     Tray *tray;
-
-//    TopLevel *mTopLevel;
 public slots:
     //主界面显示和隐藏
     void showOrHideMainPage();
-
-//protected:
-//    void paintEvent(QPaintEvent *e);
-//    void showEvent(QShowEvent *e);
 };
 
 #endif // SYSTEMAPPLICATION_H

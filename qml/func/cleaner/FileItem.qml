@@ -99,19 +99,6 @@ Item {
                         systemdispatcher.set_software_args(container.text);
                     }
                 }
-                else if (btn_flag == "cookies_work") {
-                    var cookieslist = systemdispatcher.get_cookies_args();
-                    var word_flag2 = "false";
-                    for (var k=0; k<cookieslist.length; k++) {
-                        if (cookieslist[k] == container.text) {
-                            word_flag2 = "true";
-                            break;
-                        }
-                    }
-                    if (word_flag2 == "false") {
-                        systemdispatcher.set_cookies_args(container.text);
-                    }
-                }
                 else if (btn_flag == "package_work") {
                     var mylist = systemdispatcher.get_package_args();
                     var word_flag3 = "false";

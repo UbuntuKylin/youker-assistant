@@ -93,10 +93,6 @@ class Daemon(PolicyKitService):
     def set_user_homedir(self, homedir):
         cleaner.get_user_homedir(homedir)
 
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    #def set_homedir_sysdaemon(self, homedir):
-    #    cleaner.common.get_homedir_sysdaemon(homedir)
-
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_system_daemon(self):
         return "SystemDaemon"
@@ -140,26 +136,6 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_time_value(self):
         return self.infoconf.uptimeinfo()
-
-    # judge ubuntukylin source is in /etc/apt/sources.list or not
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='b')
-    #def judge_source_ubuntukylin(self):
-    #    source = aptsources.sourceslist.SourcesList()
-    #    for item in source.list:
-    #        if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
-    #            return True
-    #    return False
-
-    # add ubuntukylin source in /etc/apt/sources.list
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    #def add_source_ubuntukylin(self, version):
-    #    source = aptsources.sourceslist.SourcesList(())
-    #    #for item in source.list:
-    #    #    if(item.str().find("deb http://archive.ubuntukylin.com/ubuntukylin") != -1):
-    #    #        return
-    #    osversion = str(version) + (" main")
-    #    source.add("deb", "http://archive.ubuntukylin.com/ubuntukylin/", osversion, "")
-    #    source.save()
 
     # -------------------------sound-------------------------
     # get sound themes
@@ -226,11 +202,6 @@ class Daemon(PolicyKitService):
         self.ballconf.cleanup_memory()
     # -------------------------monitorball end-------------------------
 
-    # a dbus method which means clean complete by main one key 
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_complete_main(self, msg):
-    #    pass
-
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_complete_onekey(self, msg):
         pass
@@ -238,43 +209,10 @@ class Daemon(PolicyKitService):
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_error_onekey(self, msg):
         pass
-
-    #@dbus.service.signal(INTERFACE, signature='ss')
-    #def clean_data_main(self, category, msg):
-    #    pass
-
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_process_main(self, msg):
-    #    pass
     
     @dbus.service.signal(INTERFACE, signature='ss')
     def status_for_quick_clean(self, flag, status):
         pass
-
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def deb_exists_firefox(self, msg):
-    #    pass
-
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def deb_exists_chromium(self, msg):
-    #    pass
-
-    # a dbus method which means clean complete by second one key 
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_complete_second(self, msg):
-    #    pass
-
-    #@dbus.service.signal(INTERFACE, signature='ss')
-    #def clean_data_second(self, category, msg):
-    #    pass
-
-    #@dbus.service.signal(INTERFACE, signature='ss')
-    #def total_data_onekey(self, category, msg):
-    #    pass
-
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_process_second(self, msg):
-    #    pass
 
     # a dbus method which means clean complete
     @dbus.service.signal(INTERFACE, signature='s')
@@ -290,16 +228,6 @@ class Daemon(PolicyKitService):
     @dbus.service.signal(INTERFACE, signature='s')
     def clean_single_complete(self, msg):
         pass
-
-    # a dbus method which means an error occurred with main one key
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_error_main(self, msg):
-    #    pass
-
-    # a dbus method which means an error occurred with second one key
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def clean_error_second(self, msg):
-    #    pass
 
     # a dbus method which means an error occurred
     @dbus.service.signal(INTERFACE, signature='s')
@@ -419,30 +347,6 @@ class Daemon(PolicyKitService):
     #    tmp_list = re.findall(patt, tmp_string)
     #    return [ok.split("'")[1] for ok in tmp_list]
 
-    #def clean_complete_main_msg(self, para):
-    #    self.clean_complete_main(para)
-
-    #def clean_data_main_msg(self, category, para):
-    #    self.clean_data_main(category, para)
-
-    #def clean_process_main_msg(self, para):
-    #    self.clean_process_main(para)
-
-    #def deb_exists_firefox_msg(self, para):
-    #    self.deb_exists_firefox(para)
-
-    #def deb_exists_chromium_msg(self, para):
-    #    self.deb_exists_chromium(para)
-
-    #def clean_complete_second_msg(self, para):
-    #    self.clean_complete_second(para)
-
-    #def clean_data_second_msg(self, category, para):
-    #    self.clean_data_second(category, para)
-
-    #def clean_process_second_msg(self, para):
-    #    self.clean_process_second(para)
-
     def clean_complete_msg(self, para):
         self.clean_complete(para)
 
@@ -458,22 +362,8 @@ class Daemon(PolicyKitService):
     def clean_single_error_msg(self, para):
         self.clean_single_error(para)
 
-    #def clean_error_main_msg(self, para):
-    #    self.clean_error_main(para)
-
-    #def clean_error_second_msg(self, para):
-    #    self.clean_error_second(para)
-
     def revoke_clean_onekey(self, para):
         self.clean_complete_onekey(para)
-
-#-------------------------------------------
-    #@dbus.service.signal(INTERFACE, signature='s')
-    #def work_finish(self, msg):
-    #    pass
-
-    #def start_to_emit_signal(self, msg):
-    #    self.work_finish(msg)
 
     # a dbus method which means clean complete
     @dbus.service.signal(INTERFACE, signature='s')
@@ -504,106 +394,11 @@ class Daemon(PolicyKitService):
         else:
             self.finish_clean_msg(flag)
 
-    #def purge_package_cruft(self, cruftlist, sender=None):
-    #    status = self._check_permission(sender, UK_ACTION_YOUKER)
-    #    if not status:
-    #        self.finish_clean_msg('')
-    #        return
-    #    try:
-    #        self.daemonclean.purge_the_package(cruftlist, self)
-    #    except Exception, e:
-    #        self.sudo_clean_error_msg('configfile')
-    #    else:
-    #        self.finish_clean_msg('configfile')
-
     def finish_clean_msg(self, para):
         self.finish_clean(para)
 
     def sudo_clean_error_msg(self, para):
         self.sudo_clean_error(para)
-
-    # -------------------------software-center-------------------------
-    # install package sa:software_fetch_signal() and software_apt_signal()
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    #def install_pkg(self, pkgName):
-    #    self.daemonApt.install_pkg(pkgName)
-
-    # uninstall package sa:software_apt_signal()
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    #def uninstall_pkg(self, pkgName):
-    #    self.daemonApt.uninstall_pkg(pkgName)
-
-    # update package sa:software_fetch_signal() and software_apt_signal()
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    #def update_pkg(self, pkgName):
-    #    self.daemonApt.update_pkg(pkgName)
-
-    # check packages status by pkgNameList sa:software_check_status_signal()
-    #@dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    #def check_pkgs_status(self, pkgNameList):
-    #    self.daemonApt.check_pkgs_status_rtn_list(pkgNameList)
-
-    # check one package status by pkgName
-    #@dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
-    #def check_pkg_status(self, pkgName):
-    #    return self.daemonApt.check_pkg_status(pkgName)
-
-    # apt-get update sa:software_fetch_signal()
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    #def apt_get_update(self):
-    #    self.daemonApt.apt_get_update()
-
-    # add ubuntukylin source in /etc/apt/sources.list
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    #def add_source_ubuntukylin(self):
-    #    self.daemonApt.add_source_ubuntukylin()
-
-    # remove ubuntukylin source in /etc/apt/sources.list
-    #@dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    #def remove_source_ubuntukylin(self):
-    #    self.daemonApt.remove_source_ubuntukylin()
-
-    # package download status signal
-    #'''parm mean
-    #    type:
-    #        start:start download
-    #        stop:all work is finish
-    #        done:all items download finished
-    #        fail:download failed
-    #        fetch:one item download finished
-    #        pulse:download status, this msg given a string like dict
-    #    msg:
-    #        a message of type, sometimes is None
-    #'''
-    #@dbus.service.signal(INTERFACE, signature='ss')
-    #def software_fetch_signal(self, type, msg):
-    #    pass
-
-    # package install/update/remove signal
-    #'''parm mean
-    #    type:
-    #        start:start work
-    #        stop:work finish
-    #        error:got a error
-    #        pulse:work status, this msg given a string like dict
-    #    msg:
-    #        a message of type, sometimes is None
-    #'''
-    #@dbus.service.signal(INTERFACE, signature='ss')
-    #def software_apt_signal(self, type, msg):
-    #    pass
-
-    # get packages status signal
-    #'''parm mean
-    #    dict{packageName, packageStatus}
-    #    packageStatus:
-    #        i:installed
-    #        u:installed and can update
-    #        n:notinstall
-    #'''
-    #@dbus.service.signal(INTERFACE, signature='as')
-    #def software_check_status_signal(self, statusList):
-    #    pass
 
 if __name__ == '__main__':
     os.environ["TERM"] = "xterm"

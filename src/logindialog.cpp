@@ -28,15 +28,6 @@ LoginDialog::LoginDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->setAttribute(Qt::WA_TranslucentBackground);
-//    int bgW =397;
-//    int bgH =282;
-//    this->resize(bgW, bgH);
-//    ui->frame->resize(bgW,bgH);
-//    this->setWindowTitle(tr("Login"));
-
-
     this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);

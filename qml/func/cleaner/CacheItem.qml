@@ -90,33 +90,6 @@ Item {
                         systemdispatcher.set_cache_args(container.text);
                     }
                 }
-//                else if (btn_flag == "software_work") {
-//                else if(container.itemFlag == "soft") {
-//                    var softwarelist = systemdispatcher.get_cache_args();
-//                    var word_flag1 = "false";
-//                    for (var j=0; j<softwarelist.length; j++) {
-//                        if (softwarelist[j] == container.text) {
-//                            word_flag1 = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag1 == "false") {
-//                        systemdispatcher.set_cache_args(container.text);
-//                    }
-//                }
-//                else if (btn_flag == "cookies_work") {
-//                    var cookieslist = systemdispatcher.get_cookies_args();
-//                    var word_flag2 = "false";
-//                    for (var k=0; k<cookieslist.length; k++) {
-//                        if (cookieslist[k] == container.text) {
-//                            word_flag2 = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag2 == "false") {
-//                        systemdispatcher.set_cookies_args(container.text);
-//                    }
-//                }
                 else if (btn_flag == "package_work") {
                     var mylist = systemdispatcher.get_package_args();
                     var word_flag3 = "false";
@@ -143,56 +116,18 @@ Item {
                         systemdispatcher.set_browser_args(container.text);
                     }
                 }
-
-//                else if (btn_flag == "largestfile_work") {
-//                    var filelist = systemdispatcher.get_largestfile_args();
-//                    var word_flag4 = "false";
-//                    for (var t=0; t<filelist.length; t++) {
-//                        if (filelist[t] == container.descript) {
-//                            word_flag4 = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag4 == "false") {
-//                        systemdispatcher.set_largestfile_args(container.descript);
-//                    }
-//                }
-
-//                else if (btn_flag == "kernel_work") {
-//                    var kernellist = systemdispatcher.get_kernel_args();
-//                    var word_flag5 = "false";
-//                    for (var y=0; y<kernellist.length; y++) {
-//                        if (kernellist[y] == container.text) {
-//                            word_flag5 = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag5 == "false") {
-//                        systemdispatcher.set_kernel_args(container.text);
-//                    }
-//                }
             }
             else if (!checkbox.checked) {
 //                if(container.itemFlag == "apt") {
                 if (btn_flag == "cache_work") {
                     systemdispatcher.del_cache_args(container.text);
                 }
-//                else if(container.itemFlag == "soft") {
-//                else if (btn_flag == "software_work") {
-//                    systemdispatcher.del_cache_args(container.text);
-//                }
-//                if (btn_flag == "cookies_work") {
-//                    systemdispatcher.del_cookies_args(container.text);
-//                }
                 else if (btn_flag == "package_work") {
                     systemdispatcher.del_package_args(container.text);
                 }
                 else if (btn_flag == "browser_work") {
                     systemdispatcher.del_browser_args(container.text);
                 }
-//                else if (btn_flag == "kernel_work") {
-//                    systemdispatcher.del_kernel_args(container.text);
-//                }
                 else if (btn_flag == "largestfile_work") {
                     systemdispatcher.del_largestfile_args(container.descript);
                 }

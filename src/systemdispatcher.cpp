@@ -24,7 +24,6 @@
 #include <QMap>
 #include <QMessageBox>
 #include "kthread.h"
-//#include "sourcedialog.h"
 
 extern QString music_path;
 
@@ -35,7 +34,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.youker",
                                QDBusConnection::systemBus());
-//    updatedialog = new UpdateDialog;
     history_flag = true;
     onekey_args << "cache" << "history" << "cookies";
     tmplist << "Kobe" << "Lee";
@@ -44,10 +42,6 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     this->alert_width = 292;
     this->alert_width_bg = 329;
     this->alert_height = 54;
-
-//    config = new QSettings(APP_LIST_FILE, QSettings::IniFormat);
-//    config->setIniCodec("UTF-8");
-//    progressFlag = false;
     ratio_sus = 0;
 
     //绑定到底层清理完毕后发送到信号函数clear_browser
@@ -56,67 +50,23 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
     QObject::connect(systemiface,SIGNAL(quit_clean(QString)),this,SLOT(handler_quit_clean(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
-//    QObject::connect(systemiface,SIGNAL(clean_complete_main(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
-//    QObject::connect(systemiface,SIGNAL(clean_error_main(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_onekey(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_onekey(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
-//    QObject::connect(systemiface,SIGNAL(clean_complete_second(QString)),this,SLOT(handler_clear_rubbish_second_onekey(QString)));
-//    QObject::connect(systemiface,SIGNAL(clean_error_second(QString)),this,SLOT(handler_clear_rubbish_second_error(QString)));
-//    QObject::connect(systemiface,SIGNAL(clean_data_main(QString,QString)),this,SLOT(handler_clean_data_main(QString, QString)));
-//    QObject::connect(systemiface,SIGNAL(clean_data_second(QString,QString)),this,SLOT(handler_clean_data_second(QString,QString)));
     QObject::connect(systemiface,SIGNAL(status_for_quick_clean(QString,QString)),this,SLOT(handler_status_for_quick_clean(QString,QString)));
 
     QObject::connect(systemiface,SIGNAL(finish_clean(QString)),this,SLOT(handlerClearDeb(QString)));
     QObject::connect(systemiface,SIGNAL(sudo_clean_error(QString)),this,SLOT(handlerClearDebError(QString)));
-//    QObject::connect(systemiface,SIGNAL(software_fetch_signal(QString,QString)),this,SLOT(handlerSoftwareFetch(QString,QString)));
-//    QObject::connect(systemiface,SIGNAL(software_apt_signal(QString,QString)),this,SLOT(handlerSoftwareApt(QString,QString)));
-//    QObject::connect(systemiface,SIGNAL(software_check_status_signal(QStringList)),this,SLOT(handlerGetSoftwareListStatus(QStringList)));
-//    QObject::connect(updatedialog,SIGNAL(call_update()),this, SLOT(startUpdateSoftwareSource()));
     //多余包和内核包删除过程信号绑定
     QObject::connect(systemiface,SIGNAL(status_remove_packages(QString,QString)),this,SLOT(handlerRemoveProgress(QString,QString)));
 }
 
 SystemDispatcher::~SystemDispatcher() {
-//    config->sync();
-//    if (config != NULL) {
-//        delete config;
-//    }
-//    if(updatedialog) {
-//        delete updatedialog;
-//    }
     this->exit_qt();
 }
 
 void SystemDispatcher::kill_root_process_qt(QString pid) {
     systemiface->call("kill_root_process", pid);
 }
-
-//void SystemDispatcher::write_source_to_qsetting() {
-//    mSettings->beginGroup("sourcelist");
-//    mSettings->setValue("ubuntukylin", true);
-//    mSettings->endGroup();
-//    mSettings->sync();
-//}
-
-//bool SystemDispatcher::read_source_from_qsetting() {
-//    mSettings->beginGroup("sourcelist");
-//    bool flag = mSettings->value("ubuntukylin").toBool();
-//    mSettings->endGroup();
-//    mSettings->sync();
-//    return flag;
-//}
-
-//void SystemDispatcher::get_detail_system_message_qt() {
-//    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_detail_system_message");
-//    if (reply.isValid()) {
-//        QMap<QString, QVariant> value = reply.value();
-//        systemInfo = value;
-////        qDebug() << systemInfo;
-//    }
-//    else {
-//        qDebug() << "get pc_detail_message failed!";
-//    }
-//}
 
 bool SystemDispatcher::set_cursor_theme_with_root_qt(QString theme) {
     QDBusReply<bool> reply = systemiface->call("set_cursor_theme_with_root", theme);
@@ -128,7 +78,6 @@ void SystemDispatcher::get_computer_info_qt() {
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         computerInfo = value;
-//        qDebug() << computerInfo;
     }
     else {
         qDebug() << "get computer info failed!";
@@ -261,53 +210,9 @@ QString SystemDispatcher::getHWSingleInfo(QString key, QString flag) {
     return info.toString();
 }
 
-//bool SystemDispatcher::judge_source_ubuntukylin_qt() {
-//    QDBusReply<bool> reply = systemiface->call("judge_source_ubuntukylin");
-//    return reply.value();
-//}
-
-//QString SystemDispatcher::readOSVersion() {
-//    QFile lsbFile(LSB_RELEASE);
-//    if(lsbFile.exists() && lsbFile.open(QFile::ReadOnly)) {
-//        QTextStream in(&lsbFile);
-//        QString line;
-//        QString version;
-//        while(!in.atEnd())
-//        {
-//           line = in.readLine();
-//           if(line.contains("DISTRIB_CODENAME")) {
-//               version = line.split("=").at(1);
-//               lsbFile.close();
-//               return version;
-//           }
-//        }
-//        lsbFile.close();
-//    }
-//    return "raring";
-//}
-
-//void SystemDispatcher::add_source_ubuntukylin_qt() {
-//    QString version = readOSVersion();
-//    systemiface->call("add_source_ubuntukylin", version);
-//}
-
-//void SystemDispatcher::showAddSourceList(int window_x, int window_y) {
-//    //弹出添加软件源的对话框
-//    SourceDialog *sourceDialog = new SourceDialog;
-//    connect(sourceDialog, SIGNAL(addList()), this, SLOT(add_source_ubuntukylin_qt()));
-//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
-//    this->alert_y = window_y + mainwindow_height - 400;
-//    sourceDialog->move(this->alert_x, this->alert_y);
-//    sourceDialog->exec();
-//}
-
 void SystemDispatcher::handler_clear_rubbish_error(QString msg) {
      emit finishCleanWorkError(msg);
 }
-
-//void SystemDispatcher::handler_clear_rubbish_second_error(QString msg) {
-//     emit finishCleanWorkSecondError(msg);
-//}
 
 void SystemDispatcher::exit_qt() {
     systemiface->call("exit");
@@ -365,18 +270,6 @@ void SystemDispatcher::handler_clear_rubbish_main_error(QString msg) {
      emit finishCleanWorkMainError(msg);
 }
 
-//void SystemDispatcher::handler_clear_rubbish_second_onekey(QString msg) {
-//     emit finishCleanWorkSecond(msg);
-//}
-
-//void SystemDispatcher::handler_clean_data_main(QString type, QString msg) {
-//    emit finishCleanDataMain(type, msg);
-//}
-
-//void SystemDispatcher::handler_clean_data_second(QString type, QString msg) {
-//    emit finishCleanDataSecond(type, msg);
-//}
-
 void SystemDispatcher::handler_status_for_quick_clean(QString type, QString status) {
     emit quickCleanProcess(type, status);
 }
@@ -402,7 +295,6 @@ void SystemDispatcher::restore_sound_file_qt(QString targetfile) {
 void SystemDispatcher::restore_all_sound_file_qt(QString soundtheme) {
     systemiface->call("restore_all_sound_file", soundtheme);
 }
-
 //-----------------------------------------------
 
 //-----------------------monitorball------------------------
@@ -445,8 +337,6 @@ bool SystemDispatcher::delete_plymouth_qt(QString plymouthName) {
 }
 
 //-----------------------------------------------
-
-
 QString SystemDispatcher::showSelectFileDialog(QString flag) {
     if (flag == "bootanimation") {
         //选择开机动画            图像文件  (*.png *.jpg *.gif)
@@ -495,8 +385,7 @@ void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
     thread->start();
 }
 
-void SystemDispatcher::clean_by_main_one_key_qt(/*QStringList strlist*/bool garbageFlag, bool traceFlag, bool cookiesFlag) {
-//    KThread *thread = new KThread(strlist, systemiface, "onekey_clean_crufts_function");
+void SystemDispatcher::clean_by_main_one_key_qt(bool garbageFlag, bool traceFlag, bool cookiesFlag) {
     QStringList argList;
     if(garbageFlag) {
         argList << "1";
@@ -545,8 +434,6 @@ QStringList SystemDispatcher::get_cache_args() {
     return cache_args;
 }
 
-
-
 void SystemDispatcher::set_apt_args(QString str) {
     apt_args.append(str);
 }
@@ -594,54 +481,6 @@ void SystemDispatcher::clear_software_args() {
 QStringList SystemDispatcher::get_software_args() {
     return software_args;
 }
-
-//void SystemDispatcher::set_cookies_args(QString str) {
-//    cookies_args.append(str);
-//}
-
-//void SystemDispatcher::del_cookies_args(QString str) {
-//    QStringList bake;
-//    int len = cookies_args.length();
-//    for (int i=0; i< len; i++) {
-//        if (cookies_args[i] != str) {
-//            bake.append(cookies_args[i]);
-//        }
-//    }
-//    cookies_args.clear();
-//    cookies_args = bake;
-//}
-
-//void SystemDispatcher::clear_cookies_args() {
-//    cookies_args.clear();
-//}
-
-//QStringList SystemDispatcher::get_cookies_args() {
-//    return cookies_args;
-//}
-
-//void SystemDispatcher::set_chromium_cookies_args(QString str) {
-//    chromium_cookies_args.append(str);
-//}
-
-//void SystemDispatcher::del_chromium_cookies_args(QString str) {
-//    QStringList bake;
-//    int len = chromium_cookies_args.length();
-//    for (int i=0; i< len; i++) {
-//        if (chromium_cookies_args[i] != str) {
-//            bake.append(chromium_cookies_args[i]);
-//        }
-//    }
-//    chromium_cookies_args.clear();
-//    chromium_cookies_args = bake;
-//}
-
-//void SystemDispatcher::clear_chromium_cookies_args() {
-//    chromium_cookies_args.clear();
-//}
-
-//QStringList SystemDispatcher::get_chromium_cookies_args() {
-//    return chromium_cookies_args;
-//}
 
 void SystemDispatcher::set_package_args(QString str) {
     package_args.append(str);
@@ -818,20 +657,11 @@ QString SystemDispatcher::dealProgressData(QString type, QString msg) {
                     double trans = cur_status.toDouble() * 100;
                     cur_status = QString::number(trans,'f',0);
                     ratio_sus = cur_status.toInt();
-//                    if(progressFlag) {//更新软件源的下载
-//                        QString download_items = process_value.at(2).split(":").at(1);
-//                        QString total_items = process_value.at(3).split(":").at(1);
-//                        emit notifySourceStatusToQML(download_items, total_items);
-//                    }
                 }
             }
         }
     }
     else if(type == "down_stop") {
-        //软件源更新下载完毕后，把progressFlag置为false
-//        if(progressFlag) {
-//            progressFlag = false;
-//        }
         ratio_sus = 100;
     }
     else if(type == "apt_start"){
@@ -865,156 +695,7 @@ void SystemDispatcher::handlerRemoveProgress(QString type, QString msg) {//remov
     }
 }
 
-//下载
-//void SystemDispatcher::handlerSoftwareFetch(QString type, QString msg) {
-//    if(!type.isEmpty()) {
-//        QString info = dealProgressData(type, msg);
-//        //下载过程中把数据给进度条
-//        emit sendDynamicSoftwareProgressQML(type, info, ratio_sus);
-//        //下载完成
-//        if(type == "down_stop") {
-//            emit finishSoftwareFetch(type, msg);
-//        }
-//    }
-//}
-
-//apt操作
-//void SystemDispatcher::handlerSoftwareApt(QString type, QString msg) {
-//    if(!type.isEmpty()) {
-//        QString info = dealProgressData(type, msg);
-//        //操作过程中把数据给进度条
-//        emit sendDynamicSoftwareProgressQML(type, info, ratio_sus);
-//        //操作完成
-//        if (type == "apt_stop") {
-//            emit finishSoftwareApt(type);
-//        }
-//    }
-//}
-
-//得到所有软件的状态
-//void SystemDispatcher::handlerGetSoftwareListStatus(QStringList statusDict) {
-//    status_dict.clear();
-//    for(int i=0; i< statusDict.size(); i++) {
-//        QStringList value = statusDict[i].split(":");
-//        status_dict.insert(value[0], value[1]);
-//    }
-////    qDebug() << status_dict;
-//}
-
-//void SystemDispatcher::showPasswdDialog(int window_x, int window_y) {
-//    //弹出输入密码的对话框
-//    AuthDialog *authdialog = new AuthDialog(tr("Tip: please input password of current user to start server, make it work normally."));//提示：请输入当前用户登录密码启动服务，保证优客助手的正常使用。
-//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
-//    this->alert_y = window_y + mainwindow_height - 400;
-//    authdialog->move(this->alert_x, this->alert_y);
-//    authdialog->exec();
-//}
-
-//void SystemDispatcher::showUpdateSourceDialog(int window_x, int window_y) {
-//    progressFlag = true;//此时让qt的进度条隐藏
-//    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-//    this->alert_y = window_y + mainwindow_height - 400;
-//    updatedialog->move(this->alert_x, this->alert_y);
-//    updatedialog->show();
-//}
-
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist, QString flag) {
     KThread *thread = new KThread(strlist, systemiface, "clean_package_cruft", flag);
     thread->start();
 }
-
-//从状态列表中得到指定的某个软件的状态
-//QString SystemDispatcher::getSoftwareStatus(QString key) {
-//    QVariant tt = status_dict.value(key);
-//    return tt.toString();
-//}
-
-// -------------------------software-center-------------------------
-//void SystemDispatcher::install_pkg_qt(QString pkgName) {
-//    KThread *thread = new KThread(tmplist, systemiface, "install_pkg", pkgName);
-//    thread->start();
-//}
-
-//void SystemDispatcher::uninstall_pkg_qt(QString pkgName) {
-//    KThread *thread = new KThread(tmplist, systemiface, "uninstall_pkg", pkgName);
-//    thread->start();
-//}
-
-//void SystemDispatcher::update_pkg_qt(QString pkgName) {
-//    KThread *thread = new KThread(tmplist, systemiface, "update_pkg", pkgName);
-//    thread->start();
-//}
-
-//void SystemDispatcher::check_pkgs_status_qt(QStringList pkgNameList) {
-//    KThread *thread = new KThread(pkgNameList, systemiface, "check_pkgs_status");
-//    thread->start();
-//}
-
-//QString SystemDispatcher::check_pkg_status_qt(QString pkgName) {
-//    QDBusReply<QString> reply = systemiface->call("check_pkg_status", pkgName);
-//    return reply.value();
-//}
-
-//void SystemDispatcher::apt_get_update_qt() {
-//    KThread *thread = new KThread(tmplist, systemiface, "apt_get_update");
-//    thread->start();
-//}
-
-//void SystemDispatcher::ready_show_app_page(QString flag) {
-//    emit sendAppInfo(flag);
-//}
-
-//QString SystemDispatcher::getSingleInfo(QString key) {
-//    QString info = appInfo.value(key);
-//    return info;
-//}
-
-//获取所有软件的的可执行程序的名字列表，此名字对应着源里面的安装程序的名字，用该名字可以获取软件状态
-//QStringList SystemDispatcher::getAllSoftwareExecNameList() {
-//    QStringList execNameList = config->value(QString("app-list/AllExecList")).toStringList();
-//    config->sync();
-//    return execNameList;
-
-//}
-
-//得到所有app的列表，根据列表的名字可以显示所有软件机器logo到推荐界面上
-//void SystemDispatcher::getAppListForDisPlay() {
-//    QFile appFile(APP_LIST_FILE);
-//    if(appFile.exists()) {
-//        appList = config->value(QString("app-list/AppList")).toStringList();
-//        config->sync();
-//        emit sendAppListToQML(appList);
-//    }
-//    else {
-//        //警告：   没有找到软件列表文件！
-//        QMessageBox::warning(NULL,
-//                             tr("Warning:"),
-//                             tr("No find the softlist file!"),
-//                             QMessageBox::Ok);
-//    }
-//}
-
-//void SystemDispatcher::getAppInfo(QString flag) {
-//    QFile appFile(APP_LIST_FILE);
-//    if(appFile.exists()) {
-//        appInfo["name"] = config->value(flag + QString("/name")).toString();
-//        appInfo["title"] = config->value(flag + QString("/title")).toString();
-//        appInfo["logo"] = config->value(flag + QString("/logo")).toString();
-//        appInfo["description"] = config->value(flag + QString("/description")).toString();
-//        appInfo["image1"] = config->value(flag + QString("/image1")).toString();
-//        appInfo["image2"] = config->value(flag + QString("/image2")).toString();
-//        config->sync();
-//    }
-//    else {
-//        //警告：   没有找到软件列表文件！
-//        QMessageBox::warning(NULL,
-//                             tr("Warning:"),
-//                             tr("No find the softlist file!"),
-//                             QMessageBox::Ok);
-//    }
-//}
-
-//void SystemDispatcher::startUpdateSoftwareSource() {
-//    emit callMasklayer();
-//    apt_get_update_qt();
-//}

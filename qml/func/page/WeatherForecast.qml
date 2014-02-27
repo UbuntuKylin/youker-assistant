@@ -140,8 +140,14 @@ Item {
             }
 
             var updateTime = sessiondispatcher.getSingleWeatherInfo("fchh", "forecast");
-            //未来六天天气预报，预报时间：          时
-            locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + release_date + updateTime + qsTr(" o'clock release");//时  发布
+            if(release_date == "2014年2月19日") {
+                locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + qsTr("[ The weather forecast has stopped updating, please wait interface update. ]");//[ 天气预报已经停止更新，请等待接口更新后再使用。 ]
+            }
+            else {
+                //未来六天天气预报，预报时间：          时
+                locationLabel.text = sessiondispatcher.getSingleWeatherInfo("city", "forecast") + "  " + release_date + updateTime + qsTr(" o'clock release");//时  发布
+            }
+
             //将字符串类型的时间转成整形
             var updateIntTime = parseInt(updateTime, 10);
             if(updateIntTime >= 6 && updateIntTime < 18) {

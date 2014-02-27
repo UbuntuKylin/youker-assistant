@@ -245,64 +245,7 @@ void WizardDialog::delLocation() {
         pSettings->setValue("weather/cityId", cityId);
         pSettings->sync();
         emit readyToUpdateWeatherForWizard();
-//        QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
-//        if (cityId == "") {
-//            //警告：           没有找到配置文件！
-//            QMessageBox::warning(NULL,
-//                                 tr("Warning:"),
-//                                 tr("The configuration file is not found!"),
-//                                 QMessageBox::Ok);
-//        }
-//        else {
-//            pSettings->setValue("weather/cityId", cityId);
-//            pSettings->sync();
-//        }
     }
-
-
-
-//    QString currentStr = ui->listWidget->currentItem()->text();
-//    QStringList listName = pSettings->value("weather/places").toStringList();
-//    QStringList newList;
-//    int size;
-//    size = listName.size();
-//    for(int i =0; i<size; ++i) {
-//        if(listName.at(i) != currentStr) {
-//            newList.append(listName.at(i));
-//        }
-//    }
-//    if(newList.size()==0)
-//    {
-//      ui->delBtn->setEnabled(false);
-//      ui->listWidget->clear();
-//      pSettings->setValue("weather/places", newList);
-//      pSettings->setValue("weather/cityId", "");
-//      pSettings->sync();
-//    }
-//    else {
-//        ui->listWidget->clear();
-//        pSettings->setValue("weather/places", newList);
-//        for(int j=0; j<newList.size(); ++j)
-//        {
-//            qDebug() << newList.at(j);
-//            ui->listWidget->insertItem(j, newList.at(j));
-//        }
-//        QListWidgetItem *currentitem;
-//        currentitem = ui->listWidget->item(0);
-//        ui->listWidget->setCurrentItem(currentitem);
-//        QString cityId = Util::get_id_from_cityname(ui->listWidget->currentItem()->text());
-//        if (cityId == "") {
-//            //警告：           没有找到配置文件！
-//            QMessageBox::warning(NULL,
-//                                 tr("Warning:"),
-//                                 tr("The configuration file is not found!"),
-//                                 QMessageBox::Ok);
-//        }
-//        else {
-//            pSettings->setValue("weather/cityId", cityId);
-//            pSettings->sync();
-//        }
-//    }
 }
 
 

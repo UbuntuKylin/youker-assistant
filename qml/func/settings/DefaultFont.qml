@@ -198,7 +198,7 @@ Rectangle {
                 }
                 Common.Button {
                     id: fontBtn
-                    hoverimage: "skyblue.png"
+                    hoverimage: "fontbtn.png"
                     fontcolor: "#086794"
                     text: sessiondispatcher.get_font_qt()
                     width: 250
@@ -232,7 +232,7 @@ Rectangle {
                 }
                 Common.Button {
                     id: desktopfontBtn
-                    hoverimage: "skyblue.png"
+                    hoverimage: "fontbtn.png"
                     text: sessiondispatcher.get_desktop_font_qt()
                     fontcolor: "#086794"
                     width: 250
@@ -266,7 +266,7 @@ Rectangle {
                 }
                 Common.Button {
                     id: monofontBtn
-                    hoverimage: "skyblue.png"
+                    hoverimage: "fontbtn.png"
                     text: sessiondispatcher.get_monospace_font_qt()
                     fontcolor: "#086794"
                     width: 250
@@ -300,7 +300,7 @@ Rectangle {
                 }
                 Common.Button {
                     id: docufontBtn
-                    hoverimage: "skyblue.png"
+                    hoverimage: "fontbtn.png"
                     text: defaultfontpage.document_font
                     fontcolor: "#086794"
                     width: 250
@@ -334,7 +334,7 @@ Rectangle {
                 }
                 Common.Button {
                     id: titlefontBtn
-                    hoverimage: "skyblue.png"
+                    hoverimage: "fontbtn.png"
                     text: defaultfontpage.titlebar_font
                     fontcolor: "#086794"
                     width: 250

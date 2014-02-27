@@ -239,7 +239,7 @@ Rectangle {
         }
         Common.Label {
             id: titlebar
-            text: qsTr("Drive Info")//驱动信息
+            text: qsTr("Device Driver Info")//设备驱动信息
             font.bold: true
             font.pixelSize: 14
             color: "#383838"

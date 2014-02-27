@@ -261,7 +261,6 @@ Item {
             }
             else if (msg == "chromium") {
                 if (root.chromium_btn_flag == "cookies_workc") {
-//                    systemdispatcher.clear_chromium_cookies_args();
                     chromiumsubModel.clear();//内容清空
                     chromiummainModel.clear();
                     //清理 Chromium 保存的 Cookies             清理 Chromium 浏览器自动保存的登录信息 (Cookies)

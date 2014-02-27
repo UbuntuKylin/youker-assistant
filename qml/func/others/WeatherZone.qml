@@ -194,9 +194,7 @@ Rectangle {
                 onClicked: {
                     //1、获取六天天气预报数据
                     sessiondispatcher.get_forecast_weahter_qt();
-                    //2、开始给天气预报界面发送更新数据信号
-    //                sessiondispatcher.update_forecast_weather();
-                    //3、加载天气预报界面
+                    //2、加载天气预报界面
                     pageStack.push(weatherpage);
                 }
             }

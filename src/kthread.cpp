@@ -49,21 +49,6 @@ void KThread::run() {
     else if(methodName == "clean_file_cruft") {
         iface->call("clean_file_cruft", list, fileFlag);
     }
-//    else if(methodName == "install_pkg") {
-//        iface->call("install_pkg", fileFlag);
-//    }
-//    else if(methodName == "uninstall_pkg") {
-//        iface->call("uninstall_pkg", fileFlag);
-//    }
-//    else if(methodName == "update_pkg") {
-//        iface->call("update_pkg", fileFlag);
-//    }
-//    else if(methodName == "apt_get_update") {
-//        iface->call("apt_get_update");
-//    }
-//    else if(methodName == "check_pkgs_status") {
-//        iface->call("check_pkgs_status", list);
-//    }
     else if(methodName == "get_forecast_weahter") {
         iface->call("get_forecast_weahter", fileFlag);
     }

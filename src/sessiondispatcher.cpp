@@ -135,34 +135,6 @@ void SessionDispatcher::resetTimerStatus() {
     QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=network");
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
-    //主动检测是否断开服务器了
-//    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=network");
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
-//    waitTime++;
-//    if(waitTime >= 2){
-//        waitTime = 0;
-//        disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
-//        if(timer->isActive()) {
-//            timer->stop();
-//        }
-//        emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
-//        qDebug()<<"connect fail...";
-//    }else{
-//        qDebug() << "continue connect...";
-//    }
-//    waitTime++;
-//    if(waitTime >= 2){
-//        waitTime = 0;
-//        disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
-//        if(timer->isActive()) {
-//            timer->stop();
-//        }
-//        emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
-//        qDebug()<<"connect fail...";
-//    }else{
-//        qDebug() << "continue connect...";
-//    }
 }
 
 //查询当前的积分、等级....
@@ -181,16 +153,6 @@ void SessionDispatcher::searchCurrentInfo() {
 void SessionDispatcher::show_slider_qt() {
     sessioniface->call("display_slide_show");
 }
-
-//QString SessionDispatcher::get_currrent_date_qt() {
-//    QDBusReply<QString> reply = sessioniface->call("get_currrent_date");
-//    return reply.value();
-//}
-
-//QString SessionDispatcher::get_current_time_qt() {
-//    QDBusReply<QString> reply = sessioniface->call("get_current_time");
-//    return reply.value();
-//}
 
 //程序正常关闭之前，关闭定时器，获取id后发送退出信号给服务端
 void SessionDispatcher::ready_exit_normally() {
@@ -217,22 +179,13 @@ void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库�
 
 //点击登录框的确定按钮后，开始发送数据给服务端进行登录验证
 void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
-//    username = user;
     //显示登录动态图
     emit showLoginAnimatedImage();
 
     //发送数据给服务端进行登录验证
-    //method 1: get
     QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
-
-    //method 2: post
-//    QString requestData = QString("%1%2%3%4").arg("name=").arg(user).arg("&password=").arg(pwd);
-//    QUrl url("http://210.209.123.136/box/find.php");
-//    QByteArray postData;
-//    postData.append(requestData);
-//    httpauth->sendPostRequest(url, postData);
 }
 
 //弹出登录框
@@ -276,7 +229,6 @@ void SessionDispatcher::handle_data_after_search_success(QString level, QString 
 
 //登录失败时或者测试网络失败，通知QML界面
 void SessionDispatcher::handle_data_when_login_failed(int status) {
-//    emit loginFailedStatus(status);
     if(status == 99) {
         waitTime++;
         if(waitTime >= 4){
@@ -419,7 +371,7 @@ int SessionDispatcher::scan_system_history_qt() {
 //}
 
 QStringList SessionDispatcher::scan_of_large_qt(int size, QString abspath) {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);//large_scan_function
+    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);
     return reply.value();
 }
 
@@ -429,25 +381,8 @@ QStringList SessionDispatcher::scan_cookies_records_qt() {
 }
 
 void SessionDispatcher::cookies_scan_function_qt(QString flag) {
-//    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_function", flag);//cookies_scan_function
-//    return reply.value();
     sessioniface->call("cookies_scan_function", flag);
 }
-
-//QStringList SessionDispatcher::scan_unneed_packages_qt() {
-//    QDBusReply<QStringList> reply = sessioniface->call("scan_unneed_packages");
-//    return reply.value();
-//}
-
-//QStringList SessionDispatcher::scan_apt_cruft_qt() {
-//    QDBusReply<QStringList> reply = sessioniface->call("scan_apt_cruft");
-//    return reply.value();
-//}
-
-//QStringList SessionDispatcher::scan_softwarecenter_cruft_qt() {
-//    QDBusReply<QStringList> reply = sessioniface->call("scan_softwarecenter_cruft");
-//    return reply.value();
-//}
 
 QStringList SessionDispatcher::get_cache_arglist(int i) {
     QStringList tmp;
@@ -486,7 +421,6 @@ QStringList SessionDispatcher::get_package_arglist(int i) {
     else if(i == 6) {
         tmp << "oldkernel" << "configfile";
     }
-//    tmp << "unneed" << "oldkernel";
     return tmp;
 }
 
@@ -497,11 +431,6 @@ void SessionDispatcher::cache_scan_function_qt(QStringList argList, QString flag
 void SessionDispatcher::package_scan_function_qt(QStringList argList) {
     sessioniface->call("package_scan_function", argList);
 }
-
-//QStringList SessionDispatcher::scan_oldkernel_packages_qt() {
-//    QDBusReply<QStringList> reply = sessioniface->call("oldkernel_scan_function");
-//    return reply.value();
-//}
 
 QString SessionDispatcher::getHomePath() {
     QString homepath = QDir::homePath();
@@ -581,8 +510,6 @@ void SessionDispatcher::showWarningDialog(QString title, QString content, int wi
     this->alert_y = window_y + mainwindow_height - 400;
     dialog->move(this->alert_x, this->alert_y);
     dialog->exec();
-//    dialog->setModal(true);
-//    dialog->show();
 }
 
 QString SessionDispatcher::getSingleInfo(QString key) {
@@ -784,7 +711,6 @@ double SessionDispatcher::get_default_theme_double_qt(QString schema, QString ke
 }
 
 void SessionDispatcher::set_default_theme_qt(QString flag/*QString schema, QString key, QString type*/) {
-//    sessioniface->call("set_default_font", schema, key, type);
     //-------------------字体-------------------
     if(flag == "defaultfont") {
         sessioniface->call("set_default_font", "org.gnome.desktop.interface", "font-name", "string");
@@ -1013,23 +939,6 @@ void SessionDispatcher::show_font_dialog(QString flag) {
         selectedFont.clear();
         emit notifyFontStyleToQML(flag); //font_style
     }
-//    bool ok;
-//    const QFont& font = QFontDialog::getFont(&ok, 0);
-//    if(ok) {
-//        QString fontsize = QString("%1").arg(font.pointSize());
-//        QString fontstyle = font.family() + " " +  font.styleName() + " " + fontsize;
-//        if(flag == "font")
-//            set_font_qt(fontstyle);//set font
-//        else if(flag == "desktopfont")
-//            set_desktop_font_qt(fontstyle);//set desktopfont
-//        else if(flag == "monospacefont")
-//            set_monospace_font_qt(fontstyle);//set monospacefont
-//        else if(flag == "documentfont")
-//            set_document_font_qt(fontstyle);//set documentfont
-//        else if(flag == "titlebarfont")
-//            set_window_title_font_qt(fontstyle);//set titlebarfont
-//        emit notifyFontStyleToQML(flag); //font_style
-//    }
 }
 
 QString SessionDispatcher::show_folder_dialog() {
@@ -1406,11 +1315,6 @@ void SessionDispatcher::showSkinWidget() {
 void SessionDispatcher::get_forecast_weahter_qt() {
     getCityIdInfo();
 
-//    QStringList tmplist;
-//    tmplist << "Kobe" << "Lee";
-//    KThread *thread = new KThread(tmplist, sessioniface, "get_forecast_weahter", initCityId);
-//    thread->start();
-
     bool flag = Util::id_exists_in_location_file(initCityId);
     if(flag) {//获取中国气象局数据
         QStringList tmplist;
@@ -1422,9 +1326,6 @@ void SessionDispatcher::get_forecast_weahter_qt() {
         get_yahoo_forecast_dict_qt();
         emit startUpdateForecastWeahter("yahooforecast");
     }
-
-//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_weahter", initCityId);
-//    forecastInfo = reply.value();
 }
 
 void SessionDispatcher::get_forecast_dict_qt() {
@@ -1437,36 +1338,21 @@ void SessionDispatcher::get_yahoo_forecast_dict_qt() {
     yahooforecastInfo = reply.value();
 }
 
-/*bool*/void SessionDispatcher::get_current_weather_qt() {
+void SessionDispatcher::get_current_weather_qt() {
     getCityIdInfo();
-//    qDebug() << initCityId;
     QStringList tmplist;
     tmplist << "Kobe" << "Lee";
-//0.3.3
+
     bool flag = Util::id_exists_in_location_file(initCityId);
     if(flag) {//获取中国气象局数据
-//        sessioniface->call("get_current_weather", initCityId);
-//        qDebug() << initCityId;
         KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
         thread->start();
     }
     else {//获取雅虎气象数据
         QStringList latlon = this->getLatandLon(initCityId);
-//        qDebug() << latlon;
-//        qDebug() << initCityId;
-//        sessioniface->call("get_current_yahoo_weather", latlon, initCityId);
         KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
         thread->start();
     }
-
-//    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather", initCityId);
-//    currentInfo = reply.value();
-//    if(currentInfo.isEmpty()) {
-//        return false;
-//    }
-//    else {
-//        return true;
-//    }
 }
 
 void SessionDispatcher::get_current_weather_dict_qt() {
@@ -1477,15 +1363,7 @@ void SessionDispatcher::get_current_weather_dict_qt() {
 void SessionDispatcher::get_current_yahoo_weather_dict_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_yahoo_weather_dict");
     yahoocurrentInfo = reply.value();
-//    qDebug() << "yahoo data->";
-//    qDebug() << yahoocurrentInfo;
 }
-
-//QString SessionDispatcher::get_current_pm25_qt() {
-//    getCityIdInfo();
-//    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
-//    return reply.value();
-//}
 
 void SessionDispatcher::get_current_pm25_qt() {
     getCityIdInfo();
@@ -1493,9 +1371,6 @@ void SessionDispatcher::get_current_pm25_qt() {
     tmplist << "Kobe" << "Lee";
     KThread *thread = new KThread(tmplist, sessioniface, "get_current_pm25", initCityId);
     thread->start();
-
-//    QDBusReply<QString> reply = sessioniface->call("get_current_pm25", initCityId);
-//    return reply.value();
 }
 
 void SessionDispatcher::get_pm25_str_qt() {
@@ -1529,17 +1404,6 @@ bool SessionDispatcher::update_weather_data_qt() {
         thread->start();
         return false;
     }
-
-//    QDBusReply<bool> reply = sessioniface->call("update_weather_data", initCityId);
-//    return reply.value();
-}
-
-void SessionDispatcher::update_forecast_weather() {
-//    emit startUpdateForecastWeahter();
-}
-
-void SessionDispatcher::change_select_city_name_qt(QString cityName) {
-    sessioniface->call("change_select_city_name", cityName);
 }
 
 QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
@@ -1604,25 +1468,6 @@ int SessionDispatcher::getLengthOfCityList() {
 }
 
 void SessionDispatcher::initConfigFile() {
-//    mSettings->beginGroup("account");
-//    QString id = mSettings->value("id").toString();
-//    if(id.isEmpty()) {
-//        mSettings->setValue("id", "0");
-//    }
-//    QString firststart = mSettings->value("firststart").toString();
-//    if(firststart.isEmpty()) {
-//        firststart = "true";
-//        mSettings->setValue("firststart", firststart);
-//    }
-//    QString current_date = mSettings->value("date").toString();
-//    if(current_date.isEmpty()) {
-//        current_date = this->get_currrent_date_qt();
-//        mSettings->setValue("date", current_date);
-//    }
-//    mSettings->endGroup();
-//    mSettings->sync();
-
-
     mSettings->beginGroup("user");
     QString id = mSettings->value("id").toString();
     if(id.isEmpty()) {
@@ -1696,14 +1541,6 @@ void SessionDispatcher::getCityIdInfo() {
 }
 
 QStringList SessionDispatcher::getLatandLon(QString id) {
-//    QStringList tmp;
-//    mSettings->beginGroup("weather");
-//    tmp << mSettings->value("latitude").toString();
-//    tmp << mSettings->value("longitude").toString();
-//    mSettings->endGroup();
-//    mSettings->sync();
-//    return tmp;
-
     QStringList tmp;
     bool flag = false;
     mSettings->beginGroup("weather");

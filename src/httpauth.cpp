@@ -105,16 +105,6 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
         else if(data == "status=logout"){//正常注销
 //            qDebug() << "logout success......";
         }
-
-
-//        QVariant variantCookies = reply->header(QNetworkRequest::SetCookieHeader);
-//        QList<QNetworkCookie> cookies = qvariant_cast<QList<QNetworkCookie> >(variantCookies);
-//        qDebug() << "Cookies reply: " << cookies;
-////        QNetworkCookie cookie; //Create a cookie
-//        jar = new QNetworkCookieJar;
-//        //view->page()->networkAccessManager()->setCookieJar(jar);
-//        jar->setCookiesFromUrl(cookies, reply->request().url());
-//        qDebug() << "Saved cookies: " << jar->getAllCookies();
     }
     else {
 //        qDebug() << reply->errorString();//"网络不能访问"

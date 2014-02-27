@@ -8,8 +8,6 @@ ChangeCityDialog::ChangeCityDialog(QSettings *mSettings, QWidget *parent) :
     ui(new Ui::ChangeCityDialog)
 {
     ui->setupUi(this);
-//    sedispather = new SessionDispatcher;
-
     pSettings = mSettings;
     init();
 
@@ -88,41 +86,6 @@ void ChangeCityDialog::writeWeatherConf() {
                 this->accept();
             }
         }
-
-//        QStringList listname = sedispather->search_city_names_qt(ui->listWidget->currentItem()->text());
-//        QStringList geonameidList = sedispather->get_geonameid_list_qt();
-//        QStringList latitudeList = sedispather->get_latitude_list_qt();
-//        QStringList longitudeList = sedispather->get_longitude_list_qt();
-//        qDebug() << "--------------";
-//        qDebug() << ui->listWidget->currentItem()->text();
-//        qDebug() << listname;
-//        qDebug() << geonameidList;
-//        qDebug() << latitudeList;
-//        qDebug() << longitudeList;
-//        if(!listname.isEmpty()) {
-//            yahoo = true;
-//            flag = true;
-//            ui->comboBox->clear();
-//            ui->comboBox->addItems(listname);
-//            selectCity = "";
-//            selectCity = ui->comboBox->currentText();
-//            int len = listname.length();
-//            if(len == geonameidList.length()) {
-//                for (int i=0; i < len; i++) {
-//                    yahooInfo[listname[i]] = geonameidList[i];
-//                    latInfo[listname[i]] = latitudeList[i];
-//                    lonInfo[listname[i]] = longitudeList[i];
-//                }
-//             }
-//        }
-
-
-
-//        //警告:     没有找到配置文件！
-//        QMessageBox::warning(NULL,
-//                             tr("Warning:"),
-//                             tr("The configuration file is not found!"),
-//                             QMessageBox::Ok);
     }
     else {
         pSettings->setValue("weather/cityId", cityId);

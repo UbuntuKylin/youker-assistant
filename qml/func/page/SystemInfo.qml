@@ -32,17 +32,17 @@ Rectangle {
         listModel.append({"name": qsTr("Computer"), "flag": "computer", "iconName": "computer"});//电脑概述
         listModel.append({"name": qsTr("Desktop"), "flag": "desktop", "iconName": "unity"});//桌面
         listModel.append({"name": qsTr("CPU"), "flag": "cpu", "iconName": "cpu"});//中央处理器
-        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "memory"});//内存
-        listModel.append({"name": qsTr("Board"), "flag": "board", "iconName": "board"});//主板
-        listModel.append({"name": qsTr("HardDisk"), "flag": "harddisk", "iconName": "harddisk"});//硬盘
+        listModel.append({"name": qsTr("Memory"), "flag": "memory", "iconName": "memory"});//内存条
+        listModel.append({"name": qsTr("Motherboard"), "flag": "board", "iconName": "board"});//主板
+        listModel.append({"name": qsTr("HD"), "flag": "harddisk", "iconName": "harddisk"});//硬盘
         listModel.append({"name": qsTr("NIC"), "flag": "networkcard", "iconName": "network"});//网卡
-        listModel.append({"name": qsTr("Monitor"), "flag": "monitor", "iconName": "monitor"});//显示器
-        listModel.append({"name": qsTr("Audio"), "flag": "audiocard", "iconName": "audio"});//音频
+        listModel.append({"name": qsTr("VGA"), "flag": "monitor", "iconName": "monitor"});//显卡
+        listModel.append({"name": qsTr("SB"), "flag": "audiocard", "iconName": "audio"});//声卡
         var cdromNumber = systemdispatcher.getHWSingleInfo("Dvdnum", "cdrom");//光驱个数
         if(cdromNumber > 0) {//存在光驱时才会增加该页面的显示
             listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "cdrom"});//光驱
         }
-        listModel.append({"name": qsTr("Drive"), "flag": "drive", "iconName": "drive"});//驱动
+        listModel.append({"name": qsTr("Device Driver"), "flag": "drive", "iconName": "drive"});//设备驱动
     }
 
     ListModel {

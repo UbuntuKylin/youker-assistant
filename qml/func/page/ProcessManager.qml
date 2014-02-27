@@ -86,6 +86,7 @@ Rectangle {
         width: parent.width - 4
         source: "../../img/skin/note-bg.png"
     }
+
     Row {
         spacing: 10
         anchors {
@@ -201,12 +202,30 @@ Rectangle {
                 }
             }
         }
-        Common.StyleButton {
+//        Common.StyleButton {
+//            id: backBtn
+//            anchors.verticalCenter: parent.verticalCenter
+//            wordname: qsTr("Back")//返回
+//            width: 20
+//            height: 20
+//            onClicked: {
+//                var num = sessiondispatcher.get_page_num();
+//                if (num == 0) {
+//                    pageStack.push(homepage);
+//                }
+//                else if (num == 3) {
+//                    pageStack.push(systemset);
+//                }
+//                else if (num == 4) {
+//                    pageStack.push(functioncollection);
+//                }
+//            }
+//        }
+        Common.SetBtn {
             id: backBtn
-            anchors.verticalCenter: parent.verticalCenter
-            wordname: qsTr("Back")//返回
-            width: 20
-            height: 20
+            width: 28
+            height: 26
+            iconName: "return.png"
             onClicked: {
                 var num = sessiondispatcher.get_page_num();
                 if (num == 0) {

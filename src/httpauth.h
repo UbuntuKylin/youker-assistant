@@ -21,7 +21,7 @@
 #include <QUrl>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-//#include <QNetworkCookieJar>
+
 class HttpAuth : public QObject
 {
     Q_OBJECT
@@ -30,8 +30,6 @@ public:
     void sendPostRequest(const QUrl &url, const QByteArray &data);
     void sendGetRequest(const QUrl &url);
     bool isDigitStr(const QString& str/*QString str*/);
-//    QNetworkCookieJar jar;
-
 signals:
     void error(int errCode);
     void response(QString id, QString level, QString name, QString score);
