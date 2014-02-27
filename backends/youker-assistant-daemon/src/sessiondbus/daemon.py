@@ -735,6 +735,16 @@ class SessionDaemon(dbus.service.Object):
     def get_touchpad_enable(self):
         return self.systemconf.get_touchpad_enable()
 
+    # set touch scrolling use horizontal
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_touchscrolling_use_horizontal(self, flag):
+        return self.systemconf.set_touchscrolling_use_horizontal(flag)
+
+    # get is touch scrolling use horizontal
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_touchscrolling_use_horizontal(self):
+        return self.systemconf.get_touchscrolling_use_horizontal()
+
     # set touch scrolling mode edge
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def set_touchscrolling_mode_edge(self):
@@ -749,16 +759,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_touchscrolling_mode(self):
         return self.systemconf.get_touchscrolling_mode()
-
-    # set touch scrolling use horizontal
-    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
-    def set_touchscrolling_use_horizontal(self, flag):
-        return self.systemconf.set_touchscrolling_use_horizontal(flag)
-
-    # get is touch scrolling use horizontal
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
-    def get_touchscrolling_use_horizontal(self):
-        return self.systemconf.get_touchscrolling_use_horizontal()
 
     # -------------------------window-------------------------
 

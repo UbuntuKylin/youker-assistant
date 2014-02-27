@@ -33,6 +33,48 @@ Rectangle {
         anchors.fill: parent
     }
 
+    //使用云配置后，控件状态根据配置发生相应的变化
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDownloadCloudConfToQML: {
+            if(download == "touchpad_enable") {
+                if (sessiondispatcher.get_touchpad_enable_qt()) {
+                    touchpadswitcher.switchedOn = true;
+                }
+                else {
+                    touchpadswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "touch_horizontal_scrolling") {
+                if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
+                    horizontalswitcher.switchedOn = true;
+                }
+                else {
+                    horizontalswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "type_scroll_bar") {
+                touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
+                if (touchpadsetpage.scrollbars_mode == "overlay-auto") {
+                    overlay.checked = true;
+                }
+                else if(touchpadsetpage.scrollbars_mode == "normal") {
+                    legacy.checked = true;
+                }
+            }
+            else if(download == "touchpad_scrolling_mode") {
+                touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();
+                if (touchpadsetpage.touchscrolling_mode == "edge-scrolling") {
+                    edge.checked = true;
+                }
+                else if(touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") {
+                    twofinger.checked = true;
+                }
+            }
+        }
+    }
+
     Component.onCompleted: {
         touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
         touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();//edge-scrolling
@@ -124,21 +166,27 @@ Rectangle {
                 }
             }
         }
-        Common.Button {
-            hoverimage: "blue.png"
-            text: qsTr("Restore")//恢复默认
-            width: 94
-            height: 29
-            fontsize: 13
-            anchors.verticalCenter: parent.verticalCenter
-            onClicked: {
-                sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
-                if (sessiondispatcher.get_touchpad_enable_qt()) {
-                    touchpadswitcher.switchedOn = true;
+        Row {
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
+                    if (sessiondispatcher.get_touchpad_enable_qt()) {
+                        touchpadswitcher.switchedOn = true;
+                    }
+                    else {
+                        touchpadswitcher.switchedOn = false;
+                    }
                 }
-                else {
-                    touchpadswitcher.switchedOn = false;
-                }
+            }
+            Image {
+                width: 16; height: 16
+                source: "../../img/icons/cloud.png"
             }
         }
     }
@@ -181,30 +229,29 @@ Rectangle {
         Row {
             spacing: 314
             Row {
-                spacing: 314
-                Row {
-                    id: horizontalscroll
-                    spacing: 20
-                    Common.Label {
-                        width: 160
-                        text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
-                        font.pixelSize: 12
-                        color: "#7a7a7a"
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                    Common.Switch {
-                        id: horizontalswitcher
-                        width: 160
-                        onSwitched: {
-                            if (horizontalswitcher.switchedOn) {
-                                sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
-                            }
-                            else if(!horizontalswitcher.switchedOn) {
-                                sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
-                            }
+                id: horizontalscroll
+                spacing: 20
+                Common.Label {
+                    width: 160
+                    text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: horizontalswitcher
+                    width: 160
+                    onSwitched: {
+                        if (horizontalswitcher.switchedOn) {
+                            sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
+                        }
+                        else if(!horizontalswitcher.switchedOn) {
+                            sessiondispatcher.set_touchscrolling_use_horizontal_qt(false);
                         }
                     }
                 }
+            }
+            Row {
                 Common.Button {
                     hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
@@ -222,8 +269,15 @@ Rectangle {
                         }
                     }
                 }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
+                }
             }
+        }
 
+        Row {
+            spacing: 314
             Row {
                 id: workmode
                 spacing: 20
@@ -272,22 +326,28 @@ Rectangle {
         //            }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                anchors.verticalCenter: parent.verticalCenter
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
-                    var default_type = sessiondispatcher.get_scrollbars_mode_qt();
-                    if(default_type == "overlay-auto") {
-                        overlay.checked = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: {
+                        sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
+                        var default_type = sessiondispatcher.get_scrollbars_mode_qt();
+                        if(default_type == "overlay-auto") {
+                            overlay.checked = true;
+                        }
+                        else if(default_type == "normal") {
+                            legacy.checked = true;
+                        }
                     }
-                    else if(default_type == "normal") {
-                        legacy.checked = true;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -342,22 +402,28 @@ Rectangle {
         //            }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                anchors.verticalCenter: parent.verticalCenter
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
-                    var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
-                    if(default_mode == "edge-scrolling") {
-                        edge.checked = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: {
+                        sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
+                        var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
+                        if(default_mode == "edge-scrolling") {
+                            edge.checked = true;
+                        }
+                        else if(default_mode == "two-finger-scrolling") {
+                            twofinger.checked = true;
+                        }
                     }
-                    else if(default_mode == "two-finger-scrolling") {
-                        twofinger.checked = true;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }

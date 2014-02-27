@@ -45,6 +45,72 @@ Rectangle {
     ListModel { id: smoothchoices }
     ListModel { id: antialiasingchoices }
 
+
+    Connections
+    {
+        target: sessiondispatcher
+        onNotifyFontStyleToQML: {//字体更改后界面显示刷新
+            if (font_style == "font") {
+                fontBtn.text = sessiondispatcher.get_font_qt();
+            }
+            else if (font_style == "desktopfont") {
+                desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
+            }
+            else if (font_style == "monospacefont") {
+                monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
+            }
+            else if (font_style == "documentfont") {
+                docufontBtn.text = sessiondispatcher.get_document_font_qt();
+            }
+            else if (font_style == "titlebarfont") {//弹出字体对话框更改好字体后
+                titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
+            }
+        }
+
+        onTellDownloadCloudConfToQML: {//使用云配置后，控件状态根据配置发生相应的变化
+            if(download == "default_font") {
+                fontBtn.text = sessiondispatcher.get_font_qt();
+            }
+            else if(download == "desktop_font") {
+                desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
+            }
+            else if(download == "document_font") {
+                monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
+            }
+            else if(download == "monospace_font") {
+                docufontBtn.text = sessiondispatcher.get_document_font_qt();
+            }
+            else if(download == "window_title_font") {
+                titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
+            }
+            else if(download == "font_zoom") {
+                slider.value = sessiondispatcher.get_font_zoom_qt();
+            }
+            else if(download == "font_hinting") {
+                var smooth_list = sessiondispatcher.get_smooth_style_list_qt();
+                var cur_smooth = sessiondispatcher.get_smooth_style_qt();
+                for(var m=0; m < smooth_list.length; m++) {
+                    if (smooth_list[m] == cur_smooth) {
+                        defaultfontpage.current_smooth_index = m;
+                        break;
+                    }
+                }
+                smoothcombo.selectedIndex = defaultfontpage.current_smooth_index;
+            }
+            else if(download == "font_antialiasing") {
+                var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
+                var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
+                for(var n=0; n < antialiasinglist.length; n++) {
+                    if (antialiasinglist[n] == current_antialiasing) {
+                        defaultfontpage.current_antialiasing_index = n;
+                        break;
+                    }
+                }
+                antialiasingcombo.selectedIndex = defaultfontpage.current_antialiasing_index;
+            }
+        }
+    }
+
     Component.onCompleted: {
         defaultfontpage.current_font = sessiondispatcher.get_font_qt();
         defaultfontpage.desktop_font = sessiondispatcher.get_desktop_font_qt();
@@ -108,29 +174,6 @@ Rectangle {
             }
         }
         antialiasingcombo.selectedIndex = defaultfontpage.current_antialiasing_index;
-    }
-
-    //字体更改后界面显示刷新
-    Connections
-    {
-        target: sessiondispatcher
-        onNotifyFontStyleToQML: {
-            if (font_style == "font") {
-                fontBtn.text = sessiondispatcher.get_font_qt();
-            }
-            else if (font_style == "desktopfont") {
-                desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
-            }
-            else if (font_style == "monospacefont") {
-                monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
-            }
-            else if (font_style == "documentfont") {
-                docufontBtn.text = sessiondispatcher.get_document_font_qt();
-            }
-            else if (font_style == "titlebarfont") {//弹出字体对话框更改好字体后
-                titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
-            }
-        }
     }
 
     Column {
@@ -207,15 +250,21 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("font");
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_theme_qt("defaultfont");
-                    fontBtn.text = sessiondispatcher.get_font_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_theme_qt("defaultfont");
+                        fontBtn.text = sessiondispatcher.get_font_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -241,15 +290,21 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("desktopfont");
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_theme_qt("desktopfont");
-                    desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_theme_qt("desktopfont");
+                        desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -275,15 +330,21 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("monospacefont");
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_theme_qt("monospacefont");
-                    monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_theme_qt("monospacefont");
+                        monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -309,15 +370,21 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("documentfont");
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_theme_qt("documentfont");
-                    docufontBtn.text = sessiondispatcher.get_document_font_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_theme_qt("documentfont");
+                        docufontBtn.text = sessiondispatcher.get_document_font_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -343,15 +410,21 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_theme_qt("titlebarfont");
-                    titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_theme_qt("titlebarfont");
+                        titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -416,15 +489,21 @@ Rectangle {
                     animated: true
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_theme_qt("globalfontscaling");
-                    slider.value = sessiondispatcher.get_font_zoom_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_theme_qt("globalfontscaling");
+                        slider.value = sessiondispatcher.get_font_zoom_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -450,15 +529,21 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_theme_qt("smoothstyle");
-                    smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_theme_qt("smoothstyle");
+                        smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -484,15 +569,21 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_theme_qt("antialiasingstyle");
-                    antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_theme_qt("antialiasingstyle");
+                        antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }

@@ -45,6 +45,76 @@ Rectangle {
     ListModel { id: doublechoices }
     ListModel { id: middlechoices }
     ListModel { id: rightchoices }
+
+    //使用云配置后，控件状态根据配置发生相应的变化
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDownloadCloudConfToQML: {
+            if(download == "window_button") {
+                windowmanagerpage.position_mode = sessiondispatcher.get_window_button_align_qt();
+                if (windowmanagerpage.position_mode == "left") {
+                    leftbox.checked = true;
+                }
+                else if(windowmanagerpage.position_mode == "right") {
+                    rightbox.checked = true;
+                }
+            }
+            else if(download == "menus_have_icons") {
+                if (sessiondispatcher.get_menus_have_icons_qt()) {
+                    menuswitcher.switchedOn = true;
+                }
+                else {
+                    menuswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "titlebar_wheel") {
+                var wheellist = sessiondispatcher.get_titlebar_wheel_qt();
+                var current_wheel_type = sessiondispatcher.get_current_titlebar_wheel_qt();
+                for(var i=0; i < wheellist.length; i++) {
+                    if (wheellist[i] == current_wheel_type) {
+                        windowmanagerpage.wheel_current_index = i;
+                        break;
+                    }
+                }
+                wheelcombo.selectedIndex = windowmanagerpage.wheel_current_index;
+            }
+            else if(download == "titlebar_double") {
+                var doublelist = sessiondispatcher.get_titlebar_double_qt();
+                var current_double_type = sessiondispatcher.get_current_titlebar_double_qt();
+                for(var k=0; k < doublelist.length; k++) {
+                    if (doublelist[k] == current_double_type) {
+                        windowmanagerpage.double_current_index = k;
+                        break;
+                    }
+                }
+                doublecombo.selectedIndex = windowmanagerpage.double_current_index;
+            }
+            else if(download == "titlebar_middle") {
+                var middlelist = sessiondispatcher.get_titlebar_middle_qt();
+                var current_middle_type = sessiondispatcher.get_current_titlebar_middle_qt();
+                for(var n=0; n < middlelist.length; n++) {
+                    if (middlelist[n] == current_middle_type) {
+                        windowmanagerpage.middle_current_index = n;
+                        break;
+                    }
+                }
+                middlecombo.selectedIndex = windowmanagerpage.middle_current_index;
+            }
+            else if(download == "titlebar_right") {
+                var rightlist = sessiondispatcher.get_titlebar_right_qt();
+                var current_right_type = sessiondispatcher.get_current_titlebar_right_qt();
+                for(var l=0; l < rightlist.length; l++) {
+                    if (rightlist[l] == current_right_type) {
+                        windowmanagerpage.right_current_index = l;
+                        break;
+                    }
+                }
+                rightcombo.selectedIndex = windowmanagerpage.right_current_index;
+            }
+        }
+    }
+
     Component.onCompleted: {
         windowmanagerpage.position_mode = sessiondispatcher.get_window_button_align_qt();
         if (sessiondispatcher.get_menus_have_icons_qt()) {
@@ -268,22 +338,28 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                anchors.verticalCenter: parent.verticalCenter
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("control-button-position");
-                    var default_type = sessiondispatcher.get_window_button_align_qt();
-                    if(default_type == "left") {
-                        leftbox.checked = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: {
+                        sessiondispatcher.set_default_system_qt("control-button-position");
+                        var default_type = sessiondispatcher.get_window_button_align_qt();
+                        if(default_type == "left") {
+                            leftbox.checked = true;
+                        }
+                        else if(default_type == "right") {
+                            rightbox.checked = true;
+                        }
                     }
-                    else if(default_type == "right") {
-                        rightbox.checked = true;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -312,21 +388,27 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                anchors.verticalCenter: parent.verticalCenter
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("menu-with-icons");
-                    if (sessiondispatcher.get_menus_have_icons_qt()) {
-                        menuswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: {
+                        sessiondispatcher.set_default_system_qt("menu-with-icons");
+                        if (sessiondispatcher.get_menus_have_icons_qt()) {
+                            menuswitcher.switchedOn = true;
+                        }
+                        else {
+                            menuswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        menuswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -351,15 +433,21 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("wheel-action");
-                    wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_system_qt("wheel-action");
+                        wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -384,15 +472,21 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("double-action");
-                    doublecombo.selectedIndex = windowmanagerpage.double_default_index;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_system_qt("double-action");
+                        doublecombo.selectedIndex = windowmanagerpage.double_default_index;
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -417,15 +511,21 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("middle-action");
-                    middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_system_qt("middle-action");
+                        middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -450,15 +550,21 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("right-action");
-                    rightcombo.selectedIndex = windowmanagerpage.right_default_index;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_system_qt("right-action");
+                        rightcombo.selectedIndex = windowmanagerpage.right_default_index;
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }

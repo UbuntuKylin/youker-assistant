@@ -35,6 +35,35 @@ Rectangle {
     ListModel { id: themeModel }
     ListModel { id: choices }
 
+    //使用云配置后，控件状态根据配置发生相应的变化
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDownloadCloudConfToQML: {
+            if(download == "gtk_theme") {
+                var syslist = sessiondispatcher.get_themes_qt();
+                widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
+                for(var i=0; i < syslist.length; i++) {
+                    if(syslist[i] == widgetthemepage.init_theme){
+                        widgetthemepage.themeIndex = i;
+                        break;
+                    }
+                }
+            }
+            else if(download == "window_theme") {
+                var windowlist = sessiondispatcher.get_window_themes_qt();
+                var current_window_theme = sessiondispatcher.get_current_window_theme_qt();
+                for(var i=0; i < windowlist.length; i++) {
+                    if (windowlist[i] == current_window_theme) {
+                        widgetthemepage.current_index = i;
+                        break;
+                    }
+                }
+                windowcombo.selectedIndex = widgetthemepage.current_index;
+            }
+        }
+    }
+
     Component.onCompleted: {
         //window theme
         var windowlist = sessiondispatcher.get_window_themes_qt();
@@ -165,45 +194,51 @@ Rectangle {
                 }
             }
         }
-        Common.Button {
-            hoverimage: "blue.png"
-            text: qsTr("Restore")//恢复默认
-            width: 94
-            height: 29
-            fontsize: 13
-            onClicked: {
-                var mylist = sessiondispatcher.get_window_themes_qt();
-                var mytheme = sessiondispatcher.get_default_theme_sring_qt("windowtheme");
-                //系统默认值为Adwaita，但是目前均无法设置该值
-                var flag = false;
-                for(var k=0; k < mylist.length; k++) {
-                    if(mylist[k] == mytheme) {
-                        flag = true;
-                        break;
-                    }
-                }
-                if(flag) {//系统默认值存在于列表中
-                    sessiondispatcher.set_default_theme_qt("windowtheme");
-                    windowcombo.selectedIndex = widgetthemepage.default_index;
-                }
-                else {//系统默认值不存在于列表中
-                    flag = false;
-                    var q;
-                    for(q=0; q < mylist.length; q++) {
-                        if(mylist[q] == "ubuntukylin-theme") {
+        Row {
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    var mylist = sessiondispatcher.get_window_themes_qt();
+                    var mytheme = sessiondispatcher.get_default_theme_sring_qt("windowtheme");
+                    //系统默认值为Adwaita，但是目前均无法设置该值
+                    var flag = false;
+                    for(var k=0; k < mylist.length; k++) {
+                        if(mylist[k] == mytheme) {
                             flag = true;
                             break;
                         }
                     }
-                    if(flag) {//ubuntukylin-theme存在于列表中
-                        sessiondispatcher.set_window_theme_qt("ubuntukylin-theme");
-                        windowcombo.selectedIndex = q;
+                    if(flag) {//系统默认值存在于列表中
+                        sessiondispatcher.set_default_theme_qt("windowtheme");
+                        windowcombo.selectedIndex = widgetthemepage.default_index;
                     }
-                    else {//ubuntukylin-theme不存在于列表中
-                        sessiondispatcher.set_window_theme_qt(mylist[0]);
-                        windowcombo.selectedIndex = 0;
+                    else {//系统默认值不存在于列表中
+                        flag = false;
+                        var q;
+                        for(q=0; q < mylist.length; q++) {
+                            if(mylist[q] == "ubuntukylin-theme") {
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if(flag) {//ubuntukylin-theme存在于列表中
+                            sessiondispatcher.set_window_theme_qt("ubuntukylin-theme");
+                            windowcombo.selectedIndex = q;
+                        }
+                        else {//ubuntukylin-theme不存在于列表中
+                            sessiondispatcher.set_window_theme_qt(mylist[0]);
+                            windowcombo.selectedIndex = 0;
+                        }
                     }
                 }
+            }
+            Image {
+                width: 16; height: 16
+                source: "../../img/icons/cloud.png"
             }
         }
     }
@@ -222,10 +257,14 @@ Rectangle {
             font.pixelSize: 12
             color: "#383838"
         }
+        Image {
+            width: 16; height: 16
+            source: "../../img/icons/cloud.png"
+        }
         //横线
         Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
-            width: widgetthemepage.width - showtitle.width - 40 * 2
+            width: widgetthemepage.width - showtitle.width - 40 * 2 - 16
         }
     }
 
@@ -255,7 +294,7 @@ Rectangle {
                 }
             }
             Image {
-                id: themeindex
+//                id: themeindex
                 anchors{
                     top: parent.top
                     left: parent.left

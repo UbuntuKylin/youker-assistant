@@ -35,6 +35,55 @@ Rectangle {
         anchors.fill: parent
     }
 
+    //使用云配置后，控件状态根据配置发生相应的变化
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDownloadCloudConfToQML: {
+            if(download == "location_replace_pathbar") {
+                if (sessiondispatcher.get_location_replace_pathbar_qt()) {
+                    pathbarswitcher.switchedOn = true;
+                }
+                else {
+                    pathbarswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "auto_mount_media") {
+                if (sessiondispatcher.get_auto_mount_media_qt()) {
+                    mediaswitcher.switchedOn = true;
+                }
+                else {
+                    mediaswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "auto_open_folder") {
+                if (sessiondispatcher.get_auto_open_folder_qt()) {
+                    folderswitcher.switchedOn = true;
+                }
+                else {
+                    folderswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "prompt_autorun_programs") {
+                if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
+                    programsswitcher.switchedOn = true;
+                }
+                else {
+                    programsswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "thumbnail_icon_size") {
+                iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
+            }
+            else if(download == "thumbnail_cache_time") {
+                cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
+            }
+            else if(download == "thumbnail_cache_size") {
+                maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
+            }
+        }
+    }
+
     Component.onCompleted: {
         if (sessiondispatcher.get_location_replace_pathbar_qt()) {
             pathbarswitcher.switchedOn = true;
@@ -148,20 +197,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("pathbar");
-                    if (sessiondispatcher.get_location_replace_pathbar_qt()) {
-                        pathbarswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_filemanager_qt("pathbar");
+                        if (sessiondispatcher.get_location_replace_pathbar_qt()) {
+                            pathbarswitcher.switchedOn = true;
+                        }
+                        else {
+                            pathbarswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        pathbarswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -191,20 +246,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("media");
-                    if (sessiondispatcher.get_auto_mount_media_qt()) {
-                        mediaswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_filemanager_qt("media");
+                        if (sessiondispatcher.get_auto_mount_media_qt()) {
+                            mediaswitcher.switchedOn = true;
+                        }
+                        else {
+                            mediaswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        mediaswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -234,20 +295,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("folder");
-                    if (sessiondispatcher.get_auto_open_folder_qt()) {
-                        folderswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_filemanager_qt("folder");
+                        if (sessiondispatcher.get_auto_open_folder_qt()) {
+                            folderswitcher.switchedOn = true;
+                        }
+                        else {
+                            folderswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        folderswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -277,20 +344,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("programs");
-                    if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
-                        programsswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_filemanager_qt("programs");
+                        if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
+                            programsswitcher.switchedOn = true;
+                        }
+                        else {
+                            programsswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        programsswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -325,15 +398,21 @@ Rectangle {
                     animated: true
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("iconsize");
-                    iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_filemanager_qt("iconsize");
+                        iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -368,15 +447,21 @@ Rectangle {
                     animated: true
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("cachetime");
-                    cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_filemanager_qt("cachetime");
+                        cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -411,15 +496,21 @@ Rectangle {
                     animated: true
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("maxsize");
-                    maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_filemanager_qt("maxsize");
+                        maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
+                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }

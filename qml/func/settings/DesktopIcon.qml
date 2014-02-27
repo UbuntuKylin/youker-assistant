@@ -41,7 +41,26 @@ Rectangle {
     {
         target: sessiondispatcher
         onTellDownloadCloudConfToQML: {
-            if(download == "show_homefolder") {
+            if(download == "icon_theme") {
+                var iconlist = sessiondispatcher.get_icon_themes_qt();
+                var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
+                for(var i=0; i < iconlist.length; i++) {
+                    if (iconlist[i] == current_icon_theme) {
+                        desktopiconsetpage.current_index = i;
+                        break;
+                    }
+                }
+                iconcombo.selectedIndex = desktopiconsetpage.current_index;
+            }
+            else if(download == "show_desktop_icons") {
+                if (sessiondispatcher.get_show_desktop_icons_qt()) {
+                    iconswitcher.switchedOn = true;
+                }
+                else {
+                    iconswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "show_homefolder") {
                 if (sessiondispatcher.get_show_homefolder_qt()) {
                     folderswitcher.switchedOn = true;
                 }
@@ -55,6 +74,22 @@ Rectangle {
                 }
                 else {
                     networkswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "show_trash") {
+                if (sessiondispatcher.get_show_trash_qt()) {
+                    trashswitcher.switchedOn = true;
+                }
+                else {
+                    trashswitcher.switchedOn = false;
+                }
+            }
+            else if(download == "show_devices") {
+                if (sessiondispatcher.get_show_devices_qt()) {
+                    deviceswitcher.switchedOn = true;
+                }
+                else {
+                    deviceswitcher.switchedOn = false;
                 }
             }
         }
@@ -193,15 +228,21 @@ Rectangle {
                 }
             }
         }
-        Common.Button {
-            hoverimage: "blue.png"
-            text: qsTr("Restore")//恢复默认
-            width: 94
-            height: 29
-            fontsize: 13
-            onClicked: {
-                sessiondispatcher.set_default_theme_qt("icontheme");
-                iconcombo.selectedIndex = desktopiconsetpage.default_index;
+        Row {
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("icontheme");
+                    iconcombo.selectedIndex = desktopiconsetpage.default_index;
+                }
+            }
+            Image {
+                width: 16; height: 16
+                source: "../../img/icons/cloud.png"
             }
         }
     }
@@ -261,20 +302,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_desktop_qt("showdesktopicons");
-                    if (sessiondispatcher.get_show_desktop_icons_qt()) {
-                        iconswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_desktop_qt("showdesktopicons");
+                        if (sessiondispatcher.get_show_desktop_icons_qt()) {
+                            iconswitcher.switchedOn = true;
+                        }
+                        else {
+                            iconswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        iconswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -402,20 +449,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_desktop_qt("trashiconvisible");
-                    if (sessiondispatcher.get_show_trash_qt()) {
-                        trashswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_desktop_qt("trashiconvisible");
+                        if (sessiondispatcher.get_show_trash_qt()) {
+                            trashswitcher.switchedOn = true;
+                        }
+                        else {
+                            trashswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        trashswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
@@ -445,20 +498,26 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_desktop_qt("volumesvisible");
-                    if (sessiondispatcher.get_show_devices_qt()) {
-                        deviceswitcher.switchedOn = true;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_desktop_qt("volumesvisible");
+                        if (sessiondispatcher.get_show_devices_qt()) {
+                            deviceswitcher.switchedOn = true;
+                        }
+                        else {
+                            deviceswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        deviceswitcher.switchedOn = false;
-                    }
+                }
+                Image {
+                    width: 16; height: 16
+                    source: "../../img/icons/cloud.png"
                 }
             }
         }
