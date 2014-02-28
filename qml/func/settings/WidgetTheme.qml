@@ -174,9 +174,14 @@ Rectangle {
             top: settitle.bottom
             topMargin: 10
         }
-        spacing: 285
+        spacing: 285 - 16 - 20
         Row {
             spacing: 20
+            Common.TipLabel {
+                anchors.verticalCenter: parent.verticalCenter
+                kflag: "yes"
+                showImage: "../../img/icons/cloud-light.png"
+            }
             Text {
                 id: iconthemelabel
                 width: 130
@@ -236,10 +241,10 @@ Rectangle {
                     }
                 }
             }
-            Image {
-                width: 16; height: 16
-                source: "../../img/icons/cloud.png"
-            }
+//            Image {
+//                width: 16; height: 16
+//                source: "../../img/icons/cloud-light.png"
+//            }
         }
     }
     Row {
@@ -257,9 +262,14 @@ Rectangle {
             font.pixelSize: 12
             color: "#383838"
         }
-        Image {
-            width: 16; height: 16
-            source: "../../img/icons/cloud.png"
+//        Image {
+//            width: 16; height: 16
+//            source: "../../img/icons/cloud-light.png"
+//        }
+        Common.TipLabel {
+            anchors.verticalCenter: parent.verticalCenter
+            kflag: "yes"
+            showImage: "../../img/icons/cloud-light.png"
         }
         //横线
         Common.Separator {

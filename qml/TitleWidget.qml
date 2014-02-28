@@ -45,6 +45,19 @@ Rectangle {
                 titlebar.minleftspace = 807;
             }
         }
+        onTellDownloadCloudConfToQML: {//使用云配置后，控件状态根据配置发生相应的变化
+            if(download == "window_button") {
+                var position_mode = sessiondispatcher.get_window_button_align_qt();
+                if(position_mode == "left") {
+                    titlebar.closeleftspace = 1;
+                    titlebar.minleftspace = 22;
+                }
+                if(position_mode == "right") {
+                    titlebar.closeleftspace = 828;
+                    titlebar.minleftspace = 807;
+                }
+            }
+        }
     }
 
     MouseArea {

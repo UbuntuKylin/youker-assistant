@@ -339,9 +339,17 @@ class CloudConfig(threading.Thread):
         elif conf_id == 'window_button':
             value = gsettings.get('org.gnome.desktop.wm.preferences',
                         None, 'button-layout', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('window_button')
+            left_list = ['close,minimize,maximize:', 'close,maximize,minimize:']
+            right_list = [':minimize,maximize,close', ':maximize,minimize,close']
+            if value in left_list and conf_value in right_list:
+                    gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+                    self.sysdaemon.download_cloud_conf_signal('window_button')
+            elif value in right_list and conf_value in left_list:
+                    gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+                    self.sysdaemon.download_cloud_conf_signal('window_button')
+            #if value in != conf_value:
+            #    gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+            #    self.sysdaemon.download_cloud_conf_signal('window_button')
         elif conf_id == 'menus_have_icons':
             value = gsettings.get('org.gnome.desktop.interface',
                         None, 'menus-have-icons', 'boolean')

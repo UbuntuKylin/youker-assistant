@@ -120,9 +120,14 @@ Rectangle {
             topMargin: 10
         }
         Row {
-            spacing: 294
+            spacing: 294 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: iconsizelabel
                     width: 170
@@ -164,17 +169,22 @@ Rectangle {
                         slider.value = default_size;
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 294
+            spacing: 294 - 16 -20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: launcherlabel
                     width: 170
@@ -215,17 +225,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 294
+            spacing: 294 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "no"
+                    showImage: "../../img/icons/cloud-gray.png"
+                }
                 Common.Label {
                     id: showdesktoplabel
                     width: 170
@@ -247,21 +262,27 @@ Rectangle {
                     }
                 }
             }
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    sessiondispatcher.set_default_launcher_have_showdesktopicon_qt();
-                    if (sessiondispatcher.get_launcher_have_showdesktopicon_qt()) {
-                        showdesktopswitcher.switchedOn = true;
-                    }
-                    else {
-                        showdesktopswitcher.switchedOn = false;
+            Row {
+                Common.Button {
+                    hoverimage: "blue.png"
+                    text: qsTr("Restore")//恢复默认
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    onClicked: {
+                        sessiondispatcher.set_default_launcher_have_showdesktopicon_qt();
+                        if (sessiondispatcher.get_launcher_have_showdesktopicon_qt()) {
+                            showdesktopswitcher.switchedOn = true;
+                        }
+                        else {
+                            showdesktopswitcher.switchedOn = false;
+                        }
                     }
                 }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-gray.png"
+//                }
             }
         }
     }//Column

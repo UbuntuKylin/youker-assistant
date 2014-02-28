@@ -294,10 +294,15 @@ Rectangle {
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 -20
             Row {
                 id: workmode
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     width: 160
                     text: qsTr("Window control btn position:")//窗口控制按钮位置：
@@ -357,17 +362,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     width: 160
                     text: qsTr("Menu with icons: ")//菜单项旁显示图标：
@@ -406,17 +416,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar mouse wheel action:")//标题栏鼠标滚轮动作：
@@ -445,17 +460,22 @@ Rectangle {
                         wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar double-click action:")//标题栏双击动作：
@@ -484,17 +504,22 @@ Rectangle {
                         doublecombo.selectedIndex = windowmanagerpage.double_default_index;
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar middle-click action:")//标题栏中键动作：
@@ -523,17 +548,22 @@ Rectangle {
                         middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar right-click action:")//标题栏右键动作：
@@ -562,10 +592,10 @@ Rectangle {
                         rightcombo.selectedIndex = windowmanagerpage.right_default_index;
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 

@@ -138,7 +138,7 @@ Rectangle {
     }
     Row {
         id: setcontext
-        spacing: 314
+        spacing: 314 - 16 - 20
         anchors{
             left: parent.left
             leftMargin: 60
@@ -147,14 +147,21 @@ Rectangle {
         }
         Row {
             spacing: 20
+            Common.TipLabel {
+                anchors.verticalCenter: parent.verticalCenter
+                kflag: "yes"
+                showImage: "../../img/icons/cloud-light.png"
+            }
             Common.Label {
                 width: 160
+                anchors.verticalCenter: parent.verticalCenter
                 text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板：
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
             Common.Switch {
                 id: touchpadswitcher
+                anchors.verticalCenter: parent.verticalCenter
                 width: 160
                 onSwitched: {
                     if (touchpadswitcher.switchedOn) {
@@ -184,10 +191,10 @@ Rectangle {
                     }
                 }
             }
-            Image {
-                width: 16; height: 16
-                source: "../../img/icons/cloud.png"
-            }
+//            Image {
+//                width: 16; height: 16
+//                source: "../../img/icons/cloud-light.png"
+//            }
         }
     }
 
@@ -227,10 +234,15 @@ Rectangle {
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 id: horizontalscroll
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     width: 160
                     text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
@@ -241,6 +253,7 @@ Rectangle {
                 Common.Switch {
                     id: horizontalswitcher
                     width: 160
+                    anchors.verticalCenter: parent.verticalCenter
                     onSwitched: {
                         if (horizontalswitcher.switchedOn) {
                             sessiondispatcher.set_touchscrolling_use_horizontal_qt(true);
@@ -269,18 +282,23 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 id: workmode
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     width: 160
                     text: qsTr("Scrollbar type: ")//滚动条类型：
@@ -345,18 +363,23 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 id: scrollstyle
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     width: 160
                     text: qsTr("Touchpad scroll trigger mode: ")//触摸板滚动触发方式：
@@ -421,10 +444,10 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
     }

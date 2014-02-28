@@ -229,8 +229,14 @@ Rectangle {
             topMargin: 10
         }
         Row {
-            spacing: 234
+            spacing: 234 - 16 - 40
             Row{
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: fontslabel
                     width: 150
@@ -262,15 +268,21 @@ Rectangle {
                         fontBtn.text = sessiondispatcher.get_font_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
         Row {
-            spacing: 234
+            spacing: 234 - 16 - 40
             Row{
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: desktopfontlabel
                     width: 150
@@ -302,15 +314,21 @@ Rectangle {
                         desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
         Row {
-            spacing: 234
+            spacing: 234 - 16 - 40
             Row{
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: monospacefontlabel
                     width: 150
@@ -342,15 +360,21 @@ Rectangle {
                         monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
         Row {
-            spacing: 234
+            spacing: 234 - 16 - 40
             Row{
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: documentfontlabel
                     width: 150
@@ -382,15 +406,21 @@ Rectangle {
                         docufontBtn.text = sessiondispatcher.get_document_font_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
         Row {
-            spacing: 234
+            spacing: 234 - 16 - 40
             Row{
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: windowtitlefontlabel
                     width: 150
@@ -422,10 +452,10 @@ Rectangle {
                         titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
     }//Column
@@ -461,8 +491,14 @@ Rectangle {
             topMargin: 5
         }
         Row {
-            spacing: 234
+            spacing: 234 - 16 - 40
             Row{
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: fontzoomlabel
                     width: 150
@@ -501,16 +537,22 @@ Rectangle {
                         slider.value = sessiondispatcher.get_font_zoom_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 234
+            spacing: 234 - 16 - 40
             Row{
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: smoothlabel
                     width: 150
@@ -541,16 +583,22 @@ Rectangle {
                         smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 234
+            spacing: 234 - 16 - 40
             Row{
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: antialiasinglabel
                     width: 150
@@ -581,10 +629,10 @@ Rectangle {
                         antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
     }

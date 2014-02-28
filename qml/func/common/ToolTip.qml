@@ -18,13 +18,25 @@ import QtQuick 1.1
 
 Rectangle {
     property string showText
-//    width: 200; height: 50
     visible: false
-    color: "#383838"//"#318d11"
+    color: "#383838"
     opacity: 0.7
-    z:100
+//    z:100
+
+    BorderImage {
+        id: borderimage
+//        opacity: 0
+        source: "../../img/skin/frame.png"
+        width: 150; height: 30
+        anchors {
+            top: parent.bottom
+            topMargin: 15
+
+        }
+    }
     Text {
-        anchors.centerIn: parent
+        anchors.centerIn: borderimage
+        font.pixelSize: 10
         text: showText
     }
 }

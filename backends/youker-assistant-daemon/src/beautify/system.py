@@ -141,7 +141,7 @@ class System():
             None, 'button-layout', 'string')
         if value == 'close,maximize,minimize:' or value == 'close,minimize,maximize:':
             return 'left'
-        elif value == ':minimize,maximize,close':
+        elif value == ':minimize,maximize,close' or value == ':maximize,minimize,close':
             return 'right'
         #elif value == 'close,minimize,maximize:':
         #    return 'default'

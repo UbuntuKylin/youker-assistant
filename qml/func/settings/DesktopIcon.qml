@@ -208,9 +208,14 @@ Rectangle {
             top: settitle.bottom
             topMargin: 10
         }
-        spacing: 245
+        spacing: 245 - 16 - 20
         Row {
             spacing: 20
+            Common.TipLabel {
+                anchors.verticalCenter: parent.verticalCenter
+                kflag: "yes"
+                showImage: "../../img/icons/cloud-light.png"
+            }
             Text {
                 id: iconthemelabel
                 width: 170
@@ -240,10 +245,10 @@ Rectangle {
                     iconcombo.selectedIndex = desktopiconsetpage.default_index;
                 }
             }
-            Image {
-                width: 16; height: 16
-                source: "../../img/icons/cloud.png"
-            }
+//            Image {
+//                width: 16; height: 16
+//                source: "../../img/icons/cloud-light.png"
+//            }
         }
     }
 
@@ -278,9 +283,14 @@ Rectangle {
         }
         spacing: 10
         Row {
-            spacing: 294
+            spacing: 294 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: desktopiconlabel
                     width: 170
@@ -319,17 +329,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 294
+            spacing: 294 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: homefolderlabel
                     width: 170
@@ -368,17 +383,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 294
+            spacing: 294 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: networklabel
                     width: 170
@@ -417,17 +437,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 294
+            spacing: 294 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: trashlabel
                     width: 170
@@ -466,17 +491,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 294
+            spacing: 294 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: devicelabel
                     width: 170
@@ -515,10 +545,10 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
     }//Column

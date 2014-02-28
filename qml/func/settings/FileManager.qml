@@ -173,9 +173,14 @@ Rectangle {
         }
         spacing: 10
         Row {
-            spacing: 164
+            spacing: 164 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: pathbarlabel
                     width: 270
@@ -186,6 +191,7 @@ Rectangle {
                 }
                 Common.Switch {
                     id: pathbarswitcher
+                    anchors.verticalCenter: parent.verticalCenter
                     width: 200
                     onSwitched: {
                         if (pathbarswitcher.switchedOn) {
@@ -199,6 +205,7 @@ Rectangle {
             }
             Row {
                 Common.Button {
+                    anchors.verticalCenter: parent.verticalCenter
                     hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
                     width: 94
@@ -214,17 +221,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 164
+            spacing: 164 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: medialabel
                     width: 270
@@ -235,6 +247,7 @@ Rectangle {
                 }
                 Common.Switch {
                     id: mediaswitcher
+                    anchors.verticalCenter: parent.verticalCenter
                     width: 200
                     onSwitched: {
                         if (mediaswitcher.switchedOn) {
@@ -248,6 +261,7 @@ Rectangle {
             }
             Row {
                 Common.Button {
+                    anchors.verticalCenter: parent.verticalCenter
                     hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
                     width: 94
@@ -263,17 +277,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 164
+            spacing: 164 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: folderlabel
                     width: 270
@@ -284,6 +303,7 @@ Rectangle {
                 }
                 Common.Switch {
                     id: folderswitcher
+                    anchors.verticalCenter: parent.verticalCenter
                     width: 200
                     onSwitched: {
                         if (folderswitcher.switchedOn) {
@@ -297,6 +317,7 @@ Rectangle {
             }
             Row {
                 Common.Button {
+                    anchors.verticalCenter: parent.verticalCenter
                     hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
                     width: 94
@@ -312,17 +333,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 164
+            spacing: 164 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: programslabel
                     width: 270
@@ -333,6 +359,7 @@ Rectangle {
                 }
                 Common.Switch {
                     id: programsswitcher
+                    anchors.verticalCenter: parent.verticalCenter
                     width: 200
                     onSwitched: {
                         if (programsswitcher.switchedOn) {
@@ -346,6 +373,7 @@ Rectangle {
             }
             Row {
                 Common.Button {
+                    anchors.verticalCenter: parent.verticalCenter
                     hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
                     width: 94
@@ -361,17 +389,22 @@ Rectangle {
                         }
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 164
+            spacing: 164 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: thumbnailsizelabel
                     width: 270
@@ -382,6 +415,7 @@ Rectangle {
                 }
                 Common.Slider {
                     id: iconsizeslider
+                    anchors.verticalCenter: parent.verticalCenter
                     minimumValue: 16
                     maximumValue: 512
                     width: 200
@@ -400,6 +434,7 @@ Rectangle {
             }
             Row {
                 Common.Button {
+                    anchors.verticalCenter: parent.verticalCenter
                     hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
                     width: 94
@@ -410,17 +445,22 @@ Rectangle {
                         iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 164
+            spacing: 164 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: thumbnailtimelabel
                     width: 270
@@ -431,6 +471,7 @@ Rectangle {
                 }
                 Common.Slider {
                     id: cachetimeslider
+                    anchors.verticalCenter: parent.verticalCenter
                     minimumValue: -1
                     maximumValue: 180
                     width: 200
@@ -449,6 +490,7 @@ Rectangle {
             }
             Row {
                 Common.Button {
+                    anchors.verticalCenter: parent.verticalCenter
                     hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
                     width: 94
@@ -459,17 +501,22 @@ Rectangle {
                         cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
         Row {
-            spacing: 164
+            spacing: 164 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
                 Common.Label {
                     id: thumbnailmaxsizelabel
                     width: 270
@@ -480,6 +527,7 @@ Rectangle {
                 }
                 Common.Slider {
                     id: maxcacheslider
+                    anchors.verticalCenter: parent.verticalCenter
                     minimumValue: -1
                     maximumValue: 512
                     width: 200
@@ -498,6 +546,7 @@ Rectangle {
             }
             Row {
                 Common.Button {
+                    anchors.verticalCenter: parent.verticalCenter
                     hoverimage: "blue.png"
                     text: qsTr("Restore")//恢复默认
                     width: 94
@@ -508,10 +557,10 @@ Rectangle {
                         maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
                     }
                 }
-                Image {
-                    width: 16; height: 16
-                    source: "../../img/icons/cloud.png"
-                }
+//                Image {
+//                    width: 16; height: 16
+//                    source: "../../img/icons/cloud-light.png"
+//                }
             }
         }
 
