@@ -246,7 +246,7 @@ Rectangle {
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.Button {
+                Common.FontButton {
                     id: fontBtn
                     hoverimage: "fontbtn.png"
                     fontcolor: "#086794"
@@ -292,7 +292,7 @@ Rectangle {
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.Button {
+                Common.FontButton {
                     id: desktopfontBtn
                     hoverimage: "fontbtn.png"
                     text: sessiondispatcher.get_desktop_font_qt()
@@ -338,7 +338,7 @@ Rectangle {
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.Button {
+                Common.FontButton {
                     id: monofontBtn
                     hoverimage: "fontbtn.png"
                     text: sessiondispatcher.get_monospace_font_qt()
@@ -384,7 +384,7 @@ Rectangle {
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.Button {
+                Common.FontButton {
                     id: docufontBtn
                     hoverimage: "fontbtn.png"
                     text: defaultfontpage.document_font
@@ -430,7 +430,7 @@ Rectangle {
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.Button {
+                Common.FontButton {
                     id: titlefontBtn
                     hoverimage: "fontbtn.png"
                     text: defaultfontpage.titlebar_font
@@ -558,7 +558,7 @@ Rectangle {
                 Common.Label {
                     id: smoothlabel
                     width: 150
-                    text: qsTr("Global Font Scaling: ")//平滑：
+                    text: qsTr("Hinting: ")//平滑：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -604,7 +604,7 @@ Rectangle {
                 Common.Label {
                     id: antialiasinglabel
                     width: 150
-                    text: qsTr("Global Font Scaling: ")//反锯齿：
+                    text: qsTr("Antialiasing: ")//反锯齿：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter

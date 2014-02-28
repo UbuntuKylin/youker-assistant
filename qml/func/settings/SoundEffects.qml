@@ -121,6 +121,7 @@ Rectangle {
     Column{     //声音主题
         id:soundtheme
         spacing: 10
+        z: 11
         anchors {
             top: parent.top;topMargin: 120
             left: parent.left;leftMargin: 60
@@ -131,26 +132,34 @@ Rectangle {
             font.pointSize: 10
         }
         Row{
-            spacing: 100
-            Common.ComboBox {
-                id: iconcombo
-                width : 345
-                model: choices
-                onSelectedTextChanged: {
-                    sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
-                    musicmodel.clear();
-                    var musiclist=systemdispatcher.get_sounds_qt();
-                    for(var l=0; l < musiclist.length; l++) {
-                        musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
-                    }
-                    if(30*musiclist.length <= chooseyy_height) {
-                        scrollbar_z = -1
-                    }
-                    else {
-                        scrollbar_z = 1;
-                    }
+            spacing: 100 -16 - 20
+            Row {
+                spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "no"
+                    showImage: "../../img/icons/cloud-gray.png"
                 }
-                anchors.verticalCenter: parent.verticalCenter
+                Common.ComboBox {
+                    id: iconcombo
+                    width : 345
+                    model: choices
+                    onSelectedTextChanged: {
+                        sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
+                        musicmodel.clear();
+                        var musiclist=systemdispatcher.get_sounds_qt();
+                        for(var l=0; l < musiclist.length; l++) {
+                            musicmodel.append({"musicname": musiclist[l], "musicimage": "../../img/icons/broadcast.png"});
+                        }
+                        if(30*musiclist.length <= chooseyy_height) {
+                            scrollbar_z = -1
+                        }
+                        else {
+                            scrollbar_z = 1;
+                        }
+                    }
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
 
             Common.Button {

@@ -113,10 +113,16 @@ Rectangle {
             topMargin: 10
         }
         spacing: 20
+        z: 11
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "no"
+                    showImage: "../../img/icons/cloud-gray.png"
+                }
                 Text {
                     id: cursorthemelabel
                     width: 160
@@ -153,9 +159,15 @@ Rectangle {
         }
 
         Row {
-            spacing: 314
+            spacing: 314 - 16 - 20
+
             Row {
                 spacing: 20
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "no"
+                    showImage: "../../img/icons/cloud-gray.png"
+                }
                 Text {
                     id: trashlabel
                     width: 160

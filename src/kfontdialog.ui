@@ -167,7 +167,7 @@
   <widget class="QLabel" name="curFontLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>8</x>
      <y>40</y>
      <width>111</width>
      <height>20</height>
@@ -193,7 +193,7 @@
   <widget class="QLabel" name="btn_close">
    <property name="geometry">
     <rect>
-     <x>12</x>
+     <x>7</x>
      <y>6</y>
      <width>26</width>
      <height>20</height>
