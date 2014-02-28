@@ -29,26 +29,26 @@ Rectangle {
         target: sessiondispatcher
         onTellDownloadCloudConfToQML: {
             if(download == "download_norun") {
-                root.downcloud = fasle;
-                console.log("download - norun....");
+                root.downcloud = false;
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The kuaipan4uk is not running!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else if(download == "download_notconf") {
                 root.downcloud = false;
-                console.log("download - noconf....");
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The kuaipan4uk cloud doesn't have configure file!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else if(download == "download_ok") {
                 root.downcloud = false;
-                console.log("download - ok....");
+                toolkits.alertMSG(qsTr("Download OK!"), mainwindow.pos.x, mainwindow.pos.y);//使用完毕！
             }
         }
         onTellUploadCloudConfToQML: {
             if(upload == "upload_norun") {
-                root.upcloud = fasle;
-                console.log("upload - norun....");
+                root.upcloud = false;
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The kuaipan4uk is not running!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else if(upload == "upload_ok") {
                 root.upcloud = false;
-                console.log("upload - ok....");
+                toolkits.alertMSG(qsTr("Upload OK!"), mainwindow.pos.x, mainwindow.pos.y);//上传完成！
             }
         }
     }
