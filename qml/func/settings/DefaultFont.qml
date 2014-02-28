@@ -75,10 +75,10 @@ Rectangle {
                 desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
             }
             else if(download == "document_font") {
-                monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
+                docufontBtn.text = sessiondispatcher.get_document_font_qt();
             }
             else if(download == "monospace_font") {
-                docufontBtn.text = sessiondispatcher.get_document_font_qt();
+                monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
             }
             else if(download == "window_title_font") {
                 titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
@@ -228,6 +228,7 @@ Rectangle {
             top: settitle.bottom
             topMargin: 10
         }
+        z: 11
         Row {
             spacing: 234 - 16 - 40
             Row{
@@ -490,6 +491,7 @@ Rectangle {
             top: zoomrow.bottom
             topMargin: 5
         }
+        z: 11
         Row {
             spacing: 234 - 16 - 40
             Row{

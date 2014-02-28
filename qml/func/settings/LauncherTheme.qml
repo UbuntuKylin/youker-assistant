@@ -119,6 +119,7 @@ Rectangle {
             top: settitle.bottom
             topMargin: 10
         }
+        z: 11
         Row {
             spacing: 294 - 16 - 20
             Row {

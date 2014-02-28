@@ -209,6 +209,7 @@ Rectangle {
             topMargin: 10
         }
         spacing: 245 - 16 - 20
+        z: 11
         Row {
             spacing: 20
             Common.TipLabel {
@@ -282,6 +283,7 @@ Rectangle {
             topMargin: 10
         }
         spacing: 10
+        z: 11
         Row {
             spacing: 294 - 16 - 20
             Row {

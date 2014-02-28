@@ -40,17 +40,17 @@ Rectangle {
     {
         target: sessiondispatcher
         onTellDownloadCloudConfToQML: {
-            if(download == "gtk_theme") {
-                var syslist = sessiondispatcher.get_themes_qt();
-                widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
-                for(var i=0; i < syslist.length; i++) {
-                    if(syslist[i] == widgetthemepage.init_theme){
-                        widgetthemepage.themeIndex = i;
-                        break;
-                    }
-                }
-            }
-            else if(download == "window_theme") {
+//            if(download == "gtk_theme") {
+//                var syslist = sessiondispatcher.get_themes_qt();
+//                widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
+//                for(var i=0; i < syslist.length; i++) {
+//                    if(syslist[i] == widgetthemepage.init_theme){
+//                        widgetthemepage.themeIndex = i;
+//                        break;
+//                    }
+//                }
+//            }
+            if(download == "window_theme") {
                 var windowlist = sessiondispatcher.get_window_themes_qt();
                 var current_window_theme = sessiondispatcher.get_current_window_theme_qt();
                 for(var i=0; i < windowlist.length; i++) {
@@ -174,6 +174,7 @@ Rectangle {
             top: settitle.bottom
             topMargin: 10
         }
+        z: 11
         spacing: 285 - 16 - 20
         Row {
             spacing: 20
@@ -262,19 +263,10 @@ Rectangle {
             font.pixelSize: 12
             color: "#383838"
         }
-//        Image {
-//            width: 16; height: 16
-//            source: "../../img/icons/cloud-light.png"
-//        }
-        Common.TipLabel {
-            anchors.verticalCenter: parent.verticalCenter
-            kflag: "yes"
-            showImage: "../../img/icons/cloud-light.png"
-        }
         //横线
         Common.Separator {
             anchors.verticalCenter: parent.verticalCenter
-            width: widgetthemepage.width - showtitle.width - 40 * 2 - 16
+            width: widgetthemepage.width - showtitle.width - 40 * 2
         }
     }
 

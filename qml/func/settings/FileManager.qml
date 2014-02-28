@@ -27,8 +27,8 @@ Rectangle {
     property string actiontext: qsTr("Manage the Nautilus file manager.")//管理Nautilus文件管理器
 
     property bool first_icon_size: false
-    property bool first_cache_time: false
-    property bool first_cache_size: false
+//    property bool first_cache_time: false
+//    property bool first_cache_size: false
     //背景
     Image {
         source: "../../img/skin/bg-middle.png"
@@ -76,10 +76,14 @@ Rectangle {
                 iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
             }
             else if(download == "thumbnail_cache_time") {
+                console.log("thumbnail_cache_time.........");
                 cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
+                console.log(cachetimeslider.value);
             }
             else if(download == "thumbnail_cache_size") {
+                console.log("thumbnail_cache_size.........");
                 maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
+                console.log(maxcacheslider.value);
             }
         }
     }
@@ -172,6 +176,7 @@ Rectangle {
             topMargin: 10
         }
         spacing: 10
+        z: 11
         Row {
             spacing: 164 - 16 - 20
             Row {
@@ -421,6 +426,9 @@ Rectangle {
                     width: 200
                     value: sessiondispatcher.get_thumbnail_icon_size_qt()
                     onValueChanged: {
+//                        console.log("333333333");
+//                        console.log(iconsizeslider.value);
+//                        console.log(sessiondispatcher.get_thumbnail_icon_size_qt())
                         if(filemanagerpage.first_icon_size ) {
                             sessiondispatcher.set_thumbnail_icon_size_qt(iconsizeslider.value);
                         }
@@ -477,12 +485,16 @@ Rectangle {
                     width: 200
                     value: sessiondispatcher.get_thumbnail_cache_time_qt()
                     onValueChanged: {
-                        if(filemanagerpage.first_cache_time ) {
-                            sessiondispatcher.set_thumbnail_cache_time_qt(cachetimeslider.value);
-                        }
-                        if(iconsizeslider.value == -1) {//系统初始化时value的值为16（最小值），需要过滤掉
-                            filemanagerpage.first_cache_time = true;
-                        }
+//                        console.log("111111111111");
+//                        console.log(cachetimeslider.value);
+//                        console.log(sessiondispatcher.get_thumbnail_cache_time_qt())
+                        sessiondispatcher.set_thumbnail_cache_time_qt(cachetimeslider.value);
+//                        if(filemanagerpage.first_cache_time ) {
+//                            sessiondispatcher.set_thumbnail_cache_time_qt(cachetimeslider.value);
+//                        }
+//                        if(iconsizeslider.value == -1) {//系统初始化时value的值为-1（最小值），需要过滤掉
+//                            filemanagerpage.first_cache_time = true;
+//                        }
                     }
                     stepSize: 1
                     animated: true
@@ -533,12 +545,13 @@ Rectangle {
                     width: 200
                     value: sessiondispatcher.get_thumbnail_cache_size_qt()
                     onValueChanged: {
-                        if(filemanagerpage.first_cache_size ) {
-                            sessiondispatcher.set_thumbnail_cache_size_qt(maxcacheslider.value);
-                        }
-                        if(iconsizeslider.value == -1) {//系统初始化时value的值为16（最小值），需要过滤掉
-                            filemanagerpage.first_cache_size = true;
-                        }
+                        sessiondispatcher.set_thumbnail_cache_size_qt(maxcacheslider.value);
+//                        if(filemanagerpage.first_cache_size ) {
+//                            sessiondispatcher.set_thumbnail_cache_size_qt(maxcacheslider.value);
+//                        }
+//                        if(iconsizeslider.value == -1) {//系统初始化时value的值为-1（最小值），需要过滤掉
+//                            filemanagerpage.first_cache_size = true;
+//                        }
                     }
                     stepSize: 1
                     animated: true

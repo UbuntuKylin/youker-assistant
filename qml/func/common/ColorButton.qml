@@ -28,36 +28,26 @@ Rectangle {
 
     Text {
         id:textname
-//        anchors {
-//            horizontalCenter: parent.horizontalCenter
-//            top: parent.top
-//            topMargin: 2
-//        }
-        anchors.centerIn: parent
+//        anchors.centerIn: parent
+        anchors {
+            verticalCenter: parent.verticalCenter
+            left: parent.left
+            leftMargin: 2
+        }
         text: wordname
         font.pointSize: styleBtn.fontSize
-        color: styleBtn.textColor//"#318d11"
+        color: styleBtn.textColor//
     }
 
-    Rectangle {
-        id: btnImg
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: parent.bottom
-        }
-        width: textname.width
-        height: 1
-        color: "transparent"
-    }
 
     MouseArea {
         hoverEnabled: true
         anchors.fill: parent
-        onEntered: btnImg.color = styleBtn.textColor//"#318d11"
-        onPressed: btnImg.color = styleBtn.textColor//"#318d11"
+        onEntered: styleBtn.textColor = "black"
+        onPressed: styleBtn.textColor = "#318d11"
         //要判断松开是鼠标位置
-        onReleased: btnImg.color = styleBtn.textColor//"#318d11"
-        onExited: btnImg.color = "transparent"
+        onReleased: styleBtn.textColor = "white"
+        onExited: styleBtn.textColor = "white"
         onClicked: {
             styleBtn.clicked();
         }

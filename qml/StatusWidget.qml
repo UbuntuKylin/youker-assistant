@@ -38,7 +38,7 @@ Rectangle {
 //                root.downcloud = false;
                 downloaddynamic.paused = true;
                 downloaddynamic.playing = false;
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The kuaipan4uk cloud doesn't have configure file!"), mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Not found the cloud configuration!"), mainwindow.pos.x, mainwindow.pos.y);
             }
             else if(download == "download_ok") {
 //                root.downcloud = false;
@@ -117,28 +117,22 @@ Rectangle {
     Row {
         anchors {
             right: parent.right
-            rightMargin: 5
+            rightMargin: 3
             verticalCenter: parent.verticalCenter
         }
         spacing: 10
+        Text {
+            id: b1
+            text: qsTr("Use Cloud")//使用云配置
+            visible: false
+        }
+        Text {
+            id: b2
+            text: qsTr("Save Cloud")//保存云配置
+            visible: false
+        }
 
         Row {
-            spacing: 2
-            Text {
-                id: downBtn
-                anchors.verticalCenter: parent.verticalCenter
-                color: "white"
-                font.pixelSize: 12
-                text: qsTr("Use Cloud")//使用云配置
-                MouseArea {
-                    anchors.fill: downBtn
-                    onClicked: {
-                        downloaddynamic.playing = true;
-                        downloaddynamic.paused = false;
-                        sessiondispatcher.download_kysoft_cloud_conf_qt();
-                    }
-                }
-            }
             AnimatedImage {//动态图片
                 id: downloaddynamic
                 playing: false
@@ -147,24 +141,24 @@ Rectangle {
                 height: 25
                 source: "./img/icons/download.gif"
             }
-        }
-        Row {
-            spacing: 2
-            Text {
-                id: upBtn
+            Common.ColorButton {
+                id: downBtn
                 anchors.verticalCenter: parent.verticalCenter
-                color: "white"
-                font.pixelSize: 12
-                text: qsTr("Upload Cloud")//上传云配置
-                MouseArea {
-                    anchors.fill: upBtn
-                    onClicked: {
-                        uploaddynamic.playing = true;
-                        uploaddynamic.paused = false;
-                        sessiondispatcher.upload_kysoft_cloud_conf_qt();
-                    }
+                wordname: qsTr("Use Cloud")//使用云配置
+                textColor: "white"
+                fontSize: 8
+                width: b1.width
+                height: 20
+                onClicked: {
+                    downloaddynamic.playing = true;
+                    downloaddynamic.paused = false;
+                    sessiondispatcher.download_kysoft_cloud_conf_qt();
                 }
             }
+
+
+        }
+        Row {
             AnimatedImage {//动态图片
                 id: uploaddynamic
                 width: 25
@@ -173,6 +167,21 @@ Rectangle {
                 paused: true
                 source: "./img/icons/upload.gif"
             }
+            Common.ColorButton {
+                id: upBtn
+                anchors.verticalCenter: parent.verticalCenter
+                wordname: qsTr("Save Cloud")//保存云配置
+                textColor: "white"
+                fontSize: 8
+                width: b2.width
+                height: 20
+                onClicked: {
+                    uploaddynamic.playing = true;
+                    uploaddynamic.paused = false;
+                    sessiondispatcher.upload_kysoft_cloud_conf_qt();
+                }
+            }
+
         }
     }
 

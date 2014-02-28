@@ -292,7 +292,7 @@ Rectangle {
             top: titlebar.bottom
             topMargin: 30
         }
-
+        z: 11
         Row {
             spacing: 314 - 16 -20
             Row {

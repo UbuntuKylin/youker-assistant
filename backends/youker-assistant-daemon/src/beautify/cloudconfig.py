@@ -115,9 +115,9 @@ class CloudConfig(threading.Thread):
             None, 'antialiasing', 'string')
 
     # 主题设置-------------------------------------
-        self.write_conf(sections, 'gtk_theme',
-            'org.gnome.desktop.interface',
-            None, 'gtk-theme', 'string')
+        #self.write_conf(sections, 'gtk_theme',
+        #    'org.gnome.desktop.interface',
+        #    None, 'gtk-theme', 'string')
         self.write_conf(sections, 'window_theme',
             'org.gnome.desktop.wm.preferences',
             None, 'theme', 'string')
@@ -190,153 +190,7 @@ class CloudConfig(threading.Thread):
             conf_value = self.conf.get(conf_id, 'value')
         #gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
 
-        #----------------desktop icon settings----------------
-        if conf_id == 'show_desktop_icons':
-            value = gsettings.get('org.gnome.desktop.background',
-                        None, 'show-desktop-icons', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('show_desktop_icons')
-        elif conf_id == 'show_homefolder':
-            value = gsettings.get('org.gnome.nautilus.desktop',
-                        None, 'home-icon-visible', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('show_homefolder')
-        elif conf_id == 'show_network':
-            value = gsettings.get('org.gnome.nautilus.desktop',
-                        None, 'network-icon-visible', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('show_network')
-        elif conf_id == 'show_trash':
-            value = gsettings.get('org.gnome.nautilus.desktop',
-                        None, 'trash-icon-visible', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('show_trash')
-        elif conf_id == 'show_devices':
-            value = gsettings.get('org.gnome.nautilus.desktop',
-                        None, 'volumes-visible', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('show_devices')
-
-        #----------------launcher settings----------------
-        elif conf_id == 'launcher_autohide':
-            value = gsettings.get('org.compiz.unityshell',
-                        '/org/compiz/profiles/unity/plugins/unityshell/',
-                        'launcher-hide-mode', 'int')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('launcher_autohide')
-        elif conf_id == 'launcher_icon_size':
-            value = gsettings.get('org.compiz.unityshell',
-                        '/org/compiz/profiles/unity/plugins/unityshell/',
-                        'icon-size', 'int')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('launcher_icon_size')
-
-        #----------------touchpad settings----------------
-        elif conf_id == 'touchpad_enable':
-            value = gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
-                        None, 'touchpad-enabled', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('touchpad_enable')
-        elif conf_id == 'touch_horizontal_scrolling':
-            value = gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
-                        None, 'horiz-scroll-enabled', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('touch_horizontal_scrolling')
-        elif conf_id == 'type_scroll_bar':
-            value = gsettings.get('com.canonical.desktop.interface',
-                        None, 'scrollbar-mode', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('type_scroll_bar')
-        elif conf_id == 'touchpad_scrolling_mode':
-            value = gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
-                        None, 'scroll-method', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('touchpad_scrolling_mode')
-
-        #----------------font settings----------------
-        elif conf_id == 'default_font':
-            value = gsettings.get('org.gnome.desktop.interface',
-                        None, 'font-name', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('default_font')
-        elif conf_id == 'desktop_font':
-            value = gsettings.get('org.gnome.nautilus.desktop',
-                        None, 'font', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('desktop_font')
-        elif conf_id == 'document_font':
-            value = gsettings.get('org.gnome.desktop.interface',
-                        None, 'document-font-name', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('document_font')
-        elif conf_id == 'monospace_font':
-            value = gsettings.get('org.gnome.desktop.interface',
-                        None, 'monospace-font-name', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('monospace_font')
-        elif conf_id == 'window_title_font':
-            value = gsettings.get('org.gnome.desktop.wm.preferences',
-                        None, 'titlebar-font', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('window_title_font')
-        elif conf_id == 'font_zoom':
-            value = gsettings.get('org.gnome.desktop.interface',
-                        None, 'text-scaling-factor', 'double')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('font_zoom')
-        elif conf_id == 'font_hinting':
-            value = gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
-                        None, 'hinting', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('font_hinting')
-        elif conf_id == 'font_antialiasing':
-            value = gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
-                        None, 'antialiasing', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('font_antialiasing')
-
-
-        #----------------theme settings----------------
-        elif conf_id == 'gtk_theme':
-            value = gsettings.get('org.gnome.desktop.interface',
-                        None, 'gtk-theme', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('gtk_theme')
-        elif conf_id == 'window_theme':
-            value = gsettings.get('org.gnome.desktop.wm.preferences',
-                        None, 'theme', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('window_theme')
-        elif conf_id == 'icon_theme':
-            value = gsettings.get('org.gnome.desktop.interface',
-                        None, 'icon-theme', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('icon_theme')
-
-        #----------------window settings----------------
-        elif conf_id == 'window_button':
+        if conf_id == 'window_button':
             value = gsettings.get('org.gnome.desktop.wm.preferences',
                         None, 'button-layout', 'string')
             left_list = ['close,minimize,maximize:', 'close,maximize,minimize:']
@@ -347,83 +201,243 @@ class CloudConfig(threading.Thread):
             elif value in right_list and conf_value in left_list:
                     gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
                     self.sysdaemon.download_cloud_conf_signal('window_button')
-            #if value in != conf_value:
-            #    gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-            #    self.sysdaemon.download_cloud_conf_signal('window_button')
-        elif conf_id == 'menus_have_icons':
-            value = gsettings.get('org.gnome.desktop.interface',
-                        None, 'menus-have-icons', 'boolean')
+        else:
+            value = gsettings.get(conf_schema, conf_path, conf_key, conf_type)
             if value != conf_value:
                 gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('menus_have_icons')
-        elif conf_id == 'titlebar_wheel':
-            value = gsettings.get('org.compiz.gwd',
-                        None, 'mouse-wheel-action', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('titlebar_wheel')
-        elif conf_id == 'titlebar_double':
-            value = gsettings.get('org.gnome.desktop.wm.preferences',
-                        None, 'action-double-click-titlebar', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('titlebar_double')
-        elif conf_id == 'titlebar_middle':
-            value = gsettings.get('org.gnome.desktop.wm.preferences',
-                        None, 'action-middle-click-titlebar', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('titlebar_middle')
-        elif conf_id == 'titlebar_right':
-            value = gsettings.get('org.gnome.desktop.wm.preferences',
-                        None, 'action-right-click-titlebar', 'string')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('titlebar_right')
+                self.sysdaemon.download_cloud_conf_signal(conf_id)
+
+        #----------------desktop icon settings----------------
+        #if conf_id == 'show_desktop_icons':
+        #    value = gsettings.get('org.gnome.desktop.background',
+        #                None, 'show-desktop-icons', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('show_desktop_icons')
+        #elif conf_id == 'show_homefolder':
+        #    value = gsettings.get('org.gnome.nautilus.desktop',
+        #                None, 'home-icon-visible', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('show_homefolder')
+        #elif conf_id == 'show_network':
+        #    value = gsettings.get('org.gnome.nautilus.desktop',
+        #                None, 'network-icon-visible', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('show_network')
+        #elif conf_id == 'show_trash':
+        #    value = gsettings.get('org.gnome.nautilus.desktop',
+        #                None, 'trash-icon-visible', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('show_trash')
+        #elif conf_id == 'show_devices':
+        #    value = gsettings.get('org.gnome.nautilus.desktop',
+        #                None, 'volumes-visible', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('show_devices')
+
+        #----------------launcher settings----------------
+        #elif conf_id == 'launcher_autohide':
+        #    value = gsettings.get('org.compiz.unityshell',
+        #                '/org/compiz/profiles/unity/plugins/unityshell/',
+        #                'launcher-hide-mode', 'int')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('launcher_autohide')
+        #elif conf_id == 'launcher_icon_size':
+        #    value = gsettings.get('org.compiz.unityshell',
+        #                '/org/compiz/profiles/unity/plugins/unityshell/',
+        #                'icon-size', 'int')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('launcher_icon_size')
+
+        #----------------touchpad settings----------------
+        #elif conf_id == 'touchpad_enable':
+        #    value = gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
+        #                None, 'touchpad-enabled', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('touchpad_enable')
+        #elif conf_id == 'touch_horizontal_scrolling':
+        #    value = gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
+        #                None, 'horiz-scroll-enabled', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('touch_horizontal_scrolling')
+        #elif conf_id == 'type_scroll_bar':
+        #    value = gsettings.get('com.canonical.desktop.interface',
+        #                None, 'scrollbar-mode', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('type_scroll_bar')
+        #elif conf_id == 'touchpad_scrolling_mode':
+        #    value = gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
+        #                None, 'scroll-method', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('touchpad_scrolling_mode')
+
+        #----------------font settings----------------
+        #elif conf_id == 'default_font':
+        #    value = gsettings.get('org.gnome.desktop.interface',
+        #                None, 'font-name', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('default_font')
+        #elif conf_id == 'desktop_font':
+        #    value = gsettings.get('org.gnome.nautilus.desktop',
+        #                None, 'font', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('desktop_font')
+        #elif conf_id == 'document_font':
+        #    value = gsettings.get('org.gnome.desktop.interface',
+        #                None, 'document-font-name', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('document_font')
+        #elif conf_id == 'monospace_font':
+        #    value = gsettings.get('org.gnome.desktop.interface',
+        #                None, 'monospace-font-name', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('monospace_font')
+        #elif conf_id == 'window_title_font':
+        #    value = gsettings.get('org.gnome.desktop.wm.preferences',
+        #                None, 'titlebar-font', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('window_title_font')
+        #elif conf_id == 'font_zoom':
+        #    value = gsettings.get('org.gnome.desktop.interface',
+        #                None, 'text-scaling-factor', 'double')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('font_zoom')
+        #elif conf_id == 'font_hinting':
+        #    value = gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
+        #                None, 'hinting', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('font_hinting')
+        #elif conf_id == 'font_antialiasing':
+        #    value = gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
+        #                None, 'antialiasing', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('font_antialiasing')
+
+
+        #----------------theme settings----------------
+        #elif conf_id == 'gtk_theme':
+        #    value = gsettings.get('org.gnome.desktop.interface',
+        #                None, 'gtk-theme', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('gtk_theme')
+        #elif conf_id == 'window_theme':
+        #    value = gsettings.get('org.gnome.desktop.wm.preferences',
+        #                None, 'theme', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('window_theme')
+        #elif conf_id == 'icon_theme':
+        #    value = gsettings.get('org.gnome.desktop.interface',
+        #                None, 'icon-theme', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('icon_theme')
+
+        #----------------window settings----------------
+        #elif conf_id == 'window_button':
+        #    value = gsettings.get('org.gnome.desktop.wm.preferences',
+        #                None, 'button-layout', 'string')
+        #    left_list = ['close,minimize,maximize:', 'close,maximize,minimize:']
+        #    right_list = [':minimize,maximize,close', ':maximize,minimize,close']
+        #    if value in left_list and conf_value in right_list:
+        #            gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #            self.sysdaemon.download_cloud_conf_signal('window_button')
+        #    elif value in right_list and conf_value in left_list:
+        #            gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #            self.sysdaemon.download_cloud_conf_signal('window_button')
+        #elif conf_id == 'menus_have_icons':
+        #    value = gsettings.get('org.gnome.desktop.interface',
+        #                None, 'menus-have-icons', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('menus_have_icons')
+        #elif conf_id == 'titlebar_wheel':
+        #    value = gsettings.get('org.compiz.gwd',
+        #                None, 'mouse-wheel-action', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('titlebar_wheel')
+        #elif conf_id == 'titlebar_double':
+        #    value = gsettings.get('org.gnome.desktop.wm.preferences',
+        #                None, 'action-double-click-titlebar', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('titlebar_double')
+        #elif conf_id == 'titlebar_middle':
+        #    value = gsettings.get('org.gnome.desktop.wm.preferences',
+        #                None, 'action-middle-click-titlebar', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('titlebar_middle')
+        #elif conf_id == 'titlebar_right':
+        #    value = gsettings.get('org.gnome.desktop.wm.preferences',
+        #                None, 'action-right-click-titlebar', 'string')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('titlebar_right')
 
         #----------------file manager----------------
-        elif conf_id == 'location_replace_pathbar':
-            value = gsettings.get('org.gnome.nautilus.preferences',
-                        None, 'always-use-location-entry', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('location_replace_pathbar')
-        elif conf_id == 'auto_mount_media':
-            value = gsettings.get('org.gnome.desktop.media-handling',
-                        None, 'automount', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('auto_mount_media')
-        elif conf_id == 'auto_open_folder':
-            value = gsettings.get('org.gnome.desktop.media-handling',
-                        None, 'automount-open', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('auto_open_folder')
-        elif conf_id == 'prompt_autorun_programs':
-            value = gsettings.get('org.gnome.desktop.media-handling',
-                        None, 'autorun-never', 'boolean')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('prompt_autorun_programs')
-        elif conf_id == 'thumbnail_icon_size':
-            value = gsettings.get('org.gnome.nautilus.icon-view',
-                        None, 'thumbnail-size', 'int')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('thumbnail_icon_size')
-        elif conf_id == 'thumbnail_cache_time':
-            value = gsettings.get('org.gnome.desktop.thumbnail-cache',
-                        None, 'maximum-age', 'int')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('thumbnail_cache_time')
-        elif conf_id == 'thumbnail_cache_size':
-            value = gsettings.get('org.gnome.desktop.thumbnail-cache',
-                        None, 'maximum-size', 'int')
-            if value != conf_value:
-                gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
-                self.sysdaemon.download_cloud_conf_signal('thumbnail_cache_size')
+        #elif conf_id == 'location_replace_pathbar':
+        #    value = gsettings.get('org.gnome.nautilus.preferences',
+        #                None, 'always-use-location-entry', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('location_replace_pathbar')
+        #elif conf_id == 'auto_mount_media':
+        #    value = gsettings.get('org.gnome.desktop.media-handling',
+        #                None, 'automount', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('auto_mount_media')
+        #elif conf_id == 'auto_open_folder':
+        #    value = gsettings.get('org.gnome.desktop.media-handling',
+        #                None, 'automount-open', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('auto_open_folder')
+        #elif conf_id == 'prompt_autorun_programs':
+        #    value = gsettings.get('org.gnome.desktop.media-handling',
+        #                None, 'autorun-never', 'boolean')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('prompt_autorun_programs')
+        #elif conf_id == 'thumbnail_icon_size':
+        #    value = gsettings.get('org.gnome.nautilus.icon-view',
+        #                None, 'thumbnail-size', 'int')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('thumbnail_icon_size')
+        #elif conf_id == 'thumbnail_cache_time':
+        #    value = gsettings.get('org.gnome.desktop.thumbnail-cache',
+        #                None, 'maximum-age', 'int')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('thumbnail_cache_time')
+        #elif conf_id == 'thumbnail_cache_size':
+        #    value = gsettings.get('org.gnome.desktop.thumbnail-cache',
+        #                None, 'maximum-size', 'int')
+        #    if value != conf_value:
+        #        gsettings.set(conf_schema, conf_path, conf_key, conf_type, conf_value)
+        #        self.sysdaemon.download_cloud_conf_signal('thumbnail_cache_size')
 
         # desktop icon settings
         #if conf_id == 'show_desktop_icons':

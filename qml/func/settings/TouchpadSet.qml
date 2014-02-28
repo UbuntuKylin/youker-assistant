@@ -145,6 +145,7 @@ Rectangle {
             top: settitle.bottom
             topMargin: 20
         }
+        z: 11
         Row {
             spacing: 20
             Common.TipLabel {
@@ -232,7 +233,7 @@ Rectangle {
             top: scrollrow.bottom
             topMargin: 30
         }
-
+        z: 11
         Row {
             spacing: 314 - 16 - 20
             Row {
