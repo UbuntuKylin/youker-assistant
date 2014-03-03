@@ -6,8 +6,9 @@ youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
   * Remember user account.
   * Change window control button position of youkerf-assistant.
   * Add Kysoft KuaiPan cloud conf.
+  * Add the instruction of youker-assistant.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 27 Feb 2014 19:08:45 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 03 Mar 2014 18:36:15 +0800
 
 youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
 

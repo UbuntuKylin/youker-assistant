@@ -174,28 +174,23 @@ Rectangle {
                 }
             }
         }
-        Row {
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                anchors.verticalCenter: parent.verticalCenter
-                onClicked: {
-                    sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
-                    if (sessiondispatcher.get_touchpad_enable_qt()) {
-                        touchpadswitcher.switchedOn = true;
-                    }
-                    else {
-                        touchpadswitcher.switchedOn = false;
-                    }
+
+        Common.Button {
+            hoverimage: "blue.png"
+            text: qsTr("Restore")//恢复默认
+            width: 94
+            height: 29
+            fontsize: 13
+            anchors.verticalCenter: parent.verticalCenter
+            onClicked: {
+                sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
+                if (sessiondispatcher.get_touchpad_enable_qt()) {
+                    touchpadswitcher.switchedOn = true;
+                }
+                else {
+                    touchpadswitcher.switchedOn = false;
                 }
             }
-//            Image {
-//                width: 16; height: 16
-//                source: "../../img/icons/cloud-light.png"
-//            }
         }
     }
 
@@ -265,28 +260,23 @@ Rectangle {
                     }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
-                        if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
-                            horizontalswitcher.switchedOn = true;
-                        }
-                        else {
-                            horizontalswitcher.switchedOn = false;
-                        }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
+                    if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
+                        horizontalswitcher.switchedOn = true;
+                    }
+                    else {
+                        horizontalswitcher.switchedOn = false;
                     }
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
 
@@ -345,29 +335,24 @@ Rectangle {
         //            }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
-                        var default_type = sessiondispatcher.get_scrollbars_mode_qt();
-                        if(default_type == "overlay-auto") {
-                            overlay.checked = true;
-                        }
-                        else if(default_type == "normal") {
-                            legacy.checked = true;
-                        }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
+                    var default_type = sessiondispatcher.get_scrollbars_mode_qt();
+                    if(default_type == "overlay-auto") {
+                        overlay.checked = true;
+                    }
+                    else if(default_type == "normal") {
+                        legacy.checked = true;
                     }
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
 
@@ -426,29 +411,24 @@ Rectangle {
         //            }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
-                        var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
-                        if(default_mode == "edge-scrolling") {
-                            edge.checked = true;
-                        }
-                        else if(default_mode == "two-finger-scrolling") {
-                            twofinger.checked = true;
-                        }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
+                    var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
+                    if(default_mode == "edge-scrolling") {
+                        edge.checked = true;
+                    }
+                    else if(default_mode == "two-finger-scrolling") {
+                        twofinger.checked = true;
                     }
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
     }

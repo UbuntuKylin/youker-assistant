@@ -200,52 +200,47 @@ Rectangle {
                 }
             }
         }
-        Row {
-            Common.Button {
-                hoverimage: "blue.png"
-                text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
-                onClicked: {
-                    var mylist = sessiondispatcher.get_window_themes_qt();
-                    var mytheme = sessiondispatcher.get_default_theme_sring_qt("windowtheme");
-                    //系统默认值为Adwaita，但是目前均无法设置该值
-                    var flag = false;
-                    for(var k=0; k < mylist.length; k++) {
-                        if(mylist[k] == mytheme) {
+
+        Common.Button {
+            hoverimage: "blue.png"
+            text: qsTr("Restore")//恢复默认
+            width: 94
+            height: 29
+            fontsize: 13
+            onClicked: {
+                var mylist = sessiondispatcher.get_window_themes_qt();
+                var mytheme = sessiondispatcher.get_default_theme_sring_qt("windowtheme");
+                //系统默认值为Adwaita，但是目前均无法设置该值
+                var flag = false;
+                for(var k=0; k < mylist.length; k++) {
+                    if(mylist[k] == mytheme) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if(flag) {//系统默认值存在于列表中
+                    sessiondispatcher.set_default_theme_qt("windowtheme");
+                    windowcombo.selectedIndex = widgetthemepage.default_index;
+                }
+                else {//系统默认值不存在于列表中
+                    flag = false;
+                    var q;
+                    for(q=0; q < mylist.length; q++) {
+                        if(mylist[q] == "ubuntukylin-theme") {
                             flag = true;
                             break;
                         }
                     }
-                    if(flag) {//系统默认值存在于列表中
-                        sessiondispatcher.set_default_theme_qt("windowtheme");
-                        windowcombo.selectedIndex = widgetthemepage.default_index;
+                    if(flag) {//ubuntukylin-theme存在于列表中
+                        sessiondispatcher.set_window_theme_qt("ubuntukylin-theme");
+                        windowcombo.selectedIndex = q;
                     }
-                    else {//系统默认值不存在于列表中
-                        flag = false;
-                        var q;
-                        for(q=0; q < mylist.length; q++) {
-                            if(mylist[q] == "ubuntukylin-theme") {
-                                flag = true;
-                                break;
-                            }
-                        }
-                        if(flag) {//ubuntukylin-theme存在于列表中
-                            sessiondispatcher.set_window_theme_qt("ubuntukylin-theme");
-                            windowcombo.selectedIndex = q;
-                        }
-                        else {//ubuntukylin-theme不存在于列表中
-                            sessiondispatcher.set_window_theme_qt(mylist[0]);
-                            windowcombo.selectedIndex = 0;
-                        }
+                    else {//ubuntukylin-theme不存在于列表中
+                        sessiondispatcher.set_window_theme_qt(mylist[0]);
+                        windowcombo.selectedIndex = 0;
                     }
                 }
             }
-//            Image {
-//                width: 16; height: 16
-//                source: "../../img/icons/cloud-light.png"
-//            }
         }
     }
     Row {

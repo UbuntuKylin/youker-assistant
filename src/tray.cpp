@@ -13,8 +13,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include "tray.h"
 #include <QDebug>
+
 Tray::Tray(QWidget *parent)
     : QWidget(parent)
 {
@@ -41,6 +43,9 @@ Tray::Tray(QWidget *parent)
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 25);
     this->show();
+
+    aboutDlg = new AboutDialog();
+    aboutDlg->hide();
 
     frame = new SuspensionFrame;
     frame->hide();
@@ -135,6 +140,9 @@ void Tray::createTray() {
 //    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
 //    connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
 
+    this->actionAbout = new QAction(tr("About"), this);//关于本软件
+    connect(actionAbout, SIGNAL(triggered()), this, SLOT(showAboutWidget()));
+
     this->actionQuit = new QAction(tr("&Exit"), this);//退出(&E)
     connect(actionQuit, SIGNAL(triggered()), this, SLOT(exit()));
 //    connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
@@ -144,6 +152,8 @@ void Tray::createTray() {
     this->trayMenu = new QMenu(this);
     this->trayMenu->addAction(actionQml);
     this->trayMenu->addAction(actionShow);
+    this->trayMenu->addSeparator();
+    this->trayMenu->addAction(actionAbout);
     this->trayMenu->addSeparator();
     this->trayMenu->addAction(actionQuit);
 
@@ -182,6 +192,10 @@ void Tray::showOrHide() {
 
 void Tray::showOrHideQml() {
     emit showOrHideQmlSignal();
+}
+
+void Tray::showAboutWidget() {
+    aboutDlg->show();
 }
 
 void Tray::mousePressEvent(QMouseEvent *event) {

@@ -2,6 +2,71 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../aboutdialog.ui" line="26"/>
+        <location filename="../aboutdialog.ui" line="42"/>
+        <source>About</source>
+        <translation>关于本软件</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.ui" line="70"/>
+        <location filename="../aboutdialog.ui" line="162"/>
+        <source>Youker Assistant</source>
+        <translation>优客助手</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.ui" line="86"/>
+        <source>V1.0.1</source>
+        <translation>V1.0.1</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.ui" line="102"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: https://launchpad.net/youker-assistant.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。 &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：https://launchpad.net/youker-assistant 。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.ui" line="113"/>
+        <source>Contributor</source>
+        <translation>贡献者</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.ui" line="128"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Maintainer&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;维护者&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;;&quot;&gt;：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.ui" line="178"/>
+        <source>&lt;a href=https://launchpad.net/youker-assistant&gt;home page&lt;/a&gt;</source>
+        <translation>&lt;a href=https://launchpad.net/youker-assistant&gt;项目主页&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.ui" line="193"/>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+</context>
+<context>
     <name>AlertDialog</name>
     <message>
         <location filename="../alertdialog.ui" line="14"/>
@@ -806,17 +871,17 @@
         <translation>默认字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="474"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="449"/>
         <source>Style Settings</source>
         <translation>风格设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="561"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="532"/>
         <source>Hinting: </source>
         <translation>平滑：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="607"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="573"/>
         <source>Antialiasing: </source>
         <translation>反锯齿：</translation>
     </message>
@@ -826,23 +891,23 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="263"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="309"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="355"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="401"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="447"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="533"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="579"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="625"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="304"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="345"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="386"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="427"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="508"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="550"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="591"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="382"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="367"/>
         <source>Document font: </source>
         <translation>文档字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="428"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="408"/>
         <source>Titlebar font: </source>
         <translation>标题栏字体：</translation>
     </message>
@@ -855,7 +920,7 @@
         <translation type="obsolete">已经恢复默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="290"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="285"/>
         <source>Desktop Font: </source>
         <translation>桌面字体：</translation>
     </message>
@@ -864,7 +929,7 @@
         <translation type="obsolete">您系统的桌面字体已经为默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="336"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="326"/>
         <source>Monospace Font: </source>
         <translation>等宽字体：</translation>
     </message>
@@ -881,7 +946,7 @@
         <translation type="obsolete">缩放设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="507"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="482"/>
         <source>Global Font Scaling: </source>
         <translation>全局字体缩放：</translation>
     </message>
@@ -938,41 +1003,41 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="240"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="320"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="374"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="428"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="482"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="536"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="315"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="364"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="413"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="462"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="511"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="266"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="261"/>
         <source>Desktop icon display control</source>
         <translation>桌面图标显示控制</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="299"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="294"/>
         <source>Show Desktop Icons: </source>
         <translation>显示桌面图标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="353"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="343"/>
         <source>Home Folder: </source>
         <translation>主文件夹：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="407"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="392"/>
         <source>Network: </source>
         <translation>网络：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="461"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="441"/>
         <source>Trash : </source>
         <translation>回收站：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="515"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="490"/>
         <source>Mounted Volumes: </source>
         <translation>挂载卷标：</translation>
     </message>
@@ -1378,53 +1443,53 @@
         <translation>管理Nautilus文件管理器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="159"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="155"/>
         <source>File manage and control</source>
         <translation>文件管理控制</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="192"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="188"/>
         <source>Use the location entry instead of the pathbar: </source>
         <translation>路径输入框取代路径栏：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="215"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="271"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="327"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="383"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="447"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="507"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="564"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="211"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="262"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="313"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="364"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="420"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="472"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="524"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="248"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="239"/>
         <source>Automatically mount media: </source>
         <translation>自动挂载媒体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="304"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="290"/>
         <source>Automatically open a folder: </source>
         <translation>自动打开文件夹：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="360"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="341"/>
         <source>Prompt or autorun/autostart programs: </source>
         <translation>提示自动运行的程序：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="416"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="392"/>
         <source>Thumbnail icon size (pixels): </source>
         <translation>缩略图图标尺寸（像素）：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="475"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="443"/>
         <source>Thumbnail cache time (days): </source>
         <translation>缩略图缓存时间（天数）：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="535"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="495"/>
         <source>Maximum thumbnail cache size (MB): </source>
         <translation>最大缩略图缓存尺寸（MB）：</translation>
     </message>
@@ -1672,14 +1737,14 @@
         <translation type="obsolete">已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="192"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="187"/>
         <source>Launcher hide mode:</source>
         <translation>启动器自动隐藏：</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="162"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="213"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="269"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="208"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="259"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
@@ -1693,7 +1758,7 @@
         <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="248"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="238"/>
         <source>Display desktop icon: </source>
         <translation>显示桌面图标：</translation>
     </message>
@@ -2099,18 +2164,30 @@
     </message>
     <message>
         <location filename="../messagedialog.ui" line="117"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Access Yahoo weather info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;增加雅虎天气信息显示&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add kuaipan cloud conf&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;添加快盘云配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="130"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Login with Ubuntu Kylin forum account&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用Ubuntu Kylin论坛帐号登录&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add file and window manager&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;增加文件和窗口管理器&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../messagedialog.ui" line="143"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remember user account info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;保留用户帐号信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Access Yahoo weather info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;增加雅虎天气信息显示&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Login with Ubuntu Kylin forum account&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用Ubuntu Kylin论坛帐号登录&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cleanup thumbnail and  configfile&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;清理缩略图和配置文件&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;清理缩略图和配置文件&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add CD-ROM and Audio Info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -2877,7 +2954,7 @@
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="968"/>
+        <location filename="../sessiondispatcher.cpp" line="978"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -3764,49 +3841,49 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="180"/>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="271"/>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="351"/>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="432"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="266"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="341"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="417"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="214"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="209"/>
         <source>Property settings</source>
         <translation>属性设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="305"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="295"/>
         <source>Scrollbar type: </source>
         <translation>滚动条类型：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="319"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="309"/>
         <source>Features Type</source>
         <translation>特色类型</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="333"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="323"/>
         <source>Standard Type</source>
         <translation>标准类型</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="386"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="371"/>
         <source>Touchpad scroll trigger mode: </source>
         <translation>触摸板滚动触发方式：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="400"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="385"/>
         <source>Edgemotion</source>
         <translation>边缘触发</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="414"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="399"/>
         <source>Twofinger Scroll</source>
         <translation>双指触发</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="249"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="244"/>
         <source>Touchpad horizontal scroll: </source>
         <translation>触摸板横向滚动：</translation>
     </message>
@@ -4024,17 +4101,22 @@
         <translation>0%</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="131"/>
+        <location filename="../tray.cpp" line="136"/>
         <source>Hide/Show window</source>
         <translation>隐藏/显示主界面</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="133"/>
+        <location filename="../tray.cpp" line="138"/>
         <source>Hide/Show monitor</source>
         <translation>隐藏/显示监控球</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="138"/>
+        <location filename="../tray.cpp" line="143"/>
+        <source>About</source>
+        <translation>关于本软件</translation>
+    </message>
+    <message>
+        <location filename="../tray.cpp" line="146"/>
         <source>&amp;Exit</source>
         <translation>退出(&amp;E)</translation>
     </message>
@@ -4331,7 +4413,7 @@
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WidgetTheme.qml" line="261"/>
+        <location filename="../../qml/func/settings/WidgetTheme.qml" line="256"/>
         <source>Gtk theme settings</source>
         <translation>GTK主题设置</translation>
     </message>
@@ -4398,36 +4480,36 @@
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="349"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="404"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="454"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="498"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="542"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="586"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="399"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="444"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="483"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="522"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="561"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="383"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="378"/>
         <source>Menu with icons: </source>
         <translation>菜单项旁显示图标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="437"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="427"/>
         <source>Titlebar mouse wheel action:</source>
         <translation>标题栏鼠标滚轮动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="481"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="466"/>
         <source>Titlebar double-click action:</source>
         <translation>标题栏双击动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="525"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="505"/>
         <source>Titlebar middle-click action:</source>
         <translation>标题栏中键动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="569"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="544"/>
         <source>Titlebar right-click action:</source>
         <translation>标题栏右键动作：</translation>
     </message>

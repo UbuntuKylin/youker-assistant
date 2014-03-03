@@ -56,7 +56,8 @@ HEADERS += youker-application.h \
     processmanager.h \
     yprocess.h \
     devicemanager.h \
-    kfontdialog.h
+    kfontdialog.h \
+    aboutdialog.h
 
 SOURCES += main.cpp \
     youker-application.cpp \
@@ -94,7 +95,8 @@ SOURCES += main.cpp \
     processmanager.cpp \
     yprocess.cpp \
     devicemanager.cpp \
-    kfontdialog.cpp
+    kfontdialog.cpp \
+    aboutdialog.cpp
 
 RESOURCES += pixmap.qrc
 
@@ -111,4 +113,5 @@ FORMS += \
     locationdialog.ui \
     wizarddialog.ui \
     changecitydialog.ui \
-    kfontdialog.ui
+    kfontdialog.ui \
+    aboutdialog.ui

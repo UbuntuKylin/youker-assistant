@@ -70,7 +70,7 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
                         QStringList value = tmp.at(i).split("=");
                         kmaps.insert(value.at(0), value.at(1));
                     }
-                    emit this->response(kmaps.value("id"), kmaps.value("level"), kmaps.value("name"), kmaps.value("score"));
+                    emit this->response(kmaps.value("id"), /*kmaps.value("level"), */kmaps.value("name"), kmaps.value("score"));
                     emit this->successCommunicate();//查询当前信息，动态显示在界面上
                 }
                 else if(tmp.at(0).split("=").at(1) == "search_success") {//search success
@@ -79,7 +79,7 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
                         QStringList value = tmp.at(i).split("=");
                         if(!this->isDigitStr(value.at(0))) {
                             ymaps.insert(value.at(0), value.at(1));
-                            emit this->refresh(ymaps.value("level"), ymaps.value("score"));
+                            emit this->refresh(/*ymaps.value("level"), */ymaps.value("score"));
                         }
                     }
                 }

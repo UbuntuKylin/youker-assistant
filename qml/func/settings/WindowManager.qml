@@ -343,29 +343,24 @@ Rectangle {
                     }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("control-button-position");
-                        var default_type = sessiondispatcher.get_window_button_align_qt();
-                        if(default_type == "left") {
-                            leftbox.checked = true;
-                        }
-                        else if(default_type == "right") {
-                            rightbox.checked = true;
-                        }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("control-button-position");
+                    var default_type = sessiondispatcher.get_window_button_align_qt();
+                    if(default_type == "left") {
+                        leftbox.checked = true;
+                    }
+                    else if(default_type == "right") {
+                        rightbox.checked = true;
                     }
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
 
@@ -398,28 +393,23 @@ Rectangle {
                     }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("menu-with-icons");
-                        if (sessiondispatcher.get_menus_have_icons_qt()) {
-                            menuswitcher.switchedOn = true;
-                        }
-                        else {
-                            menuswitcher.switchedOn = false;
-                        }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("menu-with-icons");
+                    if (sessiondispatcher.get_menus_have_icons_qt()) {
+                        menuswitcher.switchedOn = true;
+                    }
+                    else {
+                        menuswitcher.switchedOn = false;
                     }
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
 
@@ -448,22 +438,17 @@ Rectangle {
                     }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("wheel-action");
-                        wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("wheel-action");
+                    wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
 
@@ -492,22 +477,17 @@ Rectangle {
                     }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("double-action");
-                        doublecombo.selectedIndex = windowmanagerpage.double_default_index;
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("double-action");
+                    doublecombo.selectedIndex = windowmanagerpage.double_default_index;
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
 
@@ -536,22 +516,17 @@ Rectangle {
                     }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("middle-action");
-                        middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("middle-action");
+                    middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
 
@@ -580,26 +555,19 @@ Rectangle {
                     }
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_system_qt("right-action");
-                        rightcombo.selectedIndex = windowmanagerpage.right_default_index;
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("right-action");
+                    rightcombo.selectedIndex = windowmanagerpage.right_default_index;
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
-
-
     }
 
     //顶层工具栏

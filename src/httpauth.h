@@ -32,8 +32,8 @@ public:
     bool isDigitStr(const QString& str/*QString str*/);
 signals:
     void error(int errCode);
-    void response(QString id, QString level, QString name, QString score);
-    void refresh(QString level, QString score);
+    void response(QString id, /*QString level, */QString name, QString score);
+    void refresh(/*QString level,*/QString score);
     void successCommunicate();
     void failedCommunicate();
 

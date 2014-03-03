@@ -559,7 +559,7 @@ class CloudConfig(threading.Thread):
         if not os.path.isdir(self.kuaipan_path):
             os.makedirs(self.kuaipan_path)
         self.youker_path = self.home + '/.config/ubuntukylin/youker-assistant/'
-        youker_abs_path = self.youker_path + 'youker-cloud.conf'
+        youker_abs_path = self.youker_path + 'youker-settings-cloud.conf'
         self.save_configuration_to_local_file(youker_abs_path)
         copy(youker_abs_path, self.kuaipan_path)
         self.sysdaemon.upload_cloud_conf_signal('upload_ok')
@@ -571,10 +571,10 @@ class CloudConfig(threading.Thread):
             self.sysdaemon.download_cloud_conf_signal('download_norun')
             return
         self.youker_path = self.home + '/.config/ubuntukylin/youker-assistant/'
-        youker_abs_path = self.youker_path + 'youker-cloud.conf'
+        youker_abs_path = self.youker_path + 'youker-settings-cloud.conf'
         if not os.path.exists(youker_abs_path):
             os.mknod(youker_abs_path)
-        cloud_abs_path = self.get_kuaipan_path() + '/[Ubuntu Kylin Sync]/youker-assistant/youker-cloud.conf'
+        cloud_abs_path = self.get_kuaipan_path() + '/[Ubuntu Kylin Sync]/youker-assistant/youker-settings-cloud.conf'
         if not os.path.isfile(cloud_abs_path):
         # 云端没有备份的配置文件
             self.sysdaemon.download_cloud_conf_signal('download_notconf')

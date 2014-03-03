@@ -257,22 +257,17 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("font");
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_theme_qt("defaultfont");
-                        fontBtn.text = sessiondispatcher.get_font_qt();
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("defaultfont");
+                    fontBtn.text = sessiondispatcher.get_font_qt();
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
         Row {
@@ -303,22 +298,17 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("desktopfont");
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_theme_qt("desktopfont");
-                        desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("desktopfont");
+                    desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
         Row {
@@ -349,22 +339,17 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("monospacefont");
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_theme_qt("monospacefont");
-                        monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("monospacefont");
+                    monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
         Row {
@@ -395,22 +380,17 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("documentfont");
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_theme_qt("documentfont");
-                        docufontBtn.text = sessiondispatcher.get_document_font_qt();
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("documentfont");
+                    docufontBtn.text = sessiondispatcher.get_document_font_qt();
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
         Row {
@@ -441,22 +421,17 @@ Rectangle {
                     onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_theme_qt("titlebarfont");
-                        titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("titlebarfont");
+                    titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
     }//Column
@@ -527,23 +502,19 @@ Rectangle {
                     animated: true
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_theme_qt("globalfontscaling");
-                        slider.value = sessiondispatcher.get_font_zoom_qt();
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("globalfontscaling");
+                    slider.value = sessiondispatcher.get_font_zoom_qt();
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
+
         }
 
         Row {
@@ -573,22 +544,17 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_theme_qt("smoothstyle");
-                        smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("smoothstyle");
+                    smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
 
@@ -619,22 +585,17 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
-            Row {
-                Common.Button {
-                    hoverimage: "blue.png"
-                    text: qsTr("Restore")//恢复默认
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    onClicked: {
-                        sessiondispatcher.set_default_theme_qt("antialiasingstyle");
-                        antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
-                    }
+
+            Common.Button {
+                hoverimage: "blue.png"
+                text: qsTr("Restore")//恢复默认
+                width: 94
+                height: 29
+                fontsize: 13
+                onClicked: {
+                    sessiondispatcher.set_default_theme_qt("antialiasingstyle");
+                    antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
                 }
-//                Image {
-//                    width: 16; height: 16
-//                    source: "../../img/icons/cloud-light.png"
-//                }
             }
         }
     }

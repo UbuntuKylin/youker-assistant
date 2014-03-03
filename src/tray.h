@@ -25,6 +25,7 @@
 #include "suspensionframe.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
+#include "aboutdialog.h"
 
 class Tray: public QWidget, private Ui::Tray
 {
@@ -37,8 +38,8 @@ public:
     void createTray();
     QSystemTrayIcon *trayIcon;
     QMenu *trayMenu;
-    //监控球、QML、退出程序三个托盘菜单
-    QAction *actionShow, *actionQml, *actionQuit;
+    //监控球、QML、关于、退出程序四个托盘菜单
+    QAction *actionShow, *actionQml, *actionAbout, *actionQuit;
 
     virtual QSize sizeHint()const;
 private:
@@ -60,6 +61,7 @@ private:
     QImage wheel;
     QPixmap blister;
     int ratio_sus;
+    AboutDialog *aboutDlg;
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
@@ -78,6 +80,8 @@ public slots:
     void updateData();
     //开始整理内存，一键加速
     void startMemoryAccelerate();
+    //弹出关于本软件的对话框
+    void showAboutWidget();
     //快捷键退出
     void exit();
     //数据写入数据库完毕后，准备退出程序
