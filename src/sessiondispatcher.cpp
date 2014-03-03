@@ -33,6 +33,7 @@
 #include "util.h"
 #include "kfontdialog.h"
 #include "logindialog.h"
+#include "math.h"
 
 QString selectedFont;
 QString selectedFcitxFont;
@@ -228,6 +229,8 @@ void SessionDispatcher::logout_ubuntukylin_account() {
 //用户登录成功后处理数据：显示界面、id写入本地配置、开启定时器
 void SessionDispatcher::handle_data_after_login_success(QString id, QString level, QString name, QString score) {
     //登录成功后将用户信息显示在界面上
+    bool ok;
+    level = score_count_level(score.toInt(&ok, 10));
     emit updateLoginStatus(name, level, score);
 
     //将当前用户id写入本地配置文件中
@@ -245,6 +248,8 @@ void SessionDispatcher::handle_data_after_login_success(QString id, QString leve
 //用户查询成功后处理数据：界面刷新数据
 void SessionDispatcher::handle_data_after_search_success(QString level, QString score) {
     //查询成功后将用户信息更新在界面上
+    bool ok;
+    level = score_count_level(score.toInt(&ok, 10));
     emit refreshUserInfo(level, score);
     waitTime = 0;
 }
@@ -271,6 +276,11 @@ void SessionDispatcher::handle_data_when_login_failed(int status) {
     else {
         emit loginFailedStatus(status);
     }
+}
+
+//根据积分计算用户等级
+QString SessionDispatcher::score_count_level(int score) {
+    return QString::number(qFloor(sqrt((score - 5) / 30 )));
 }
 
 QStringList SessionDispatcher::search_city_names_qt(QString search_name) {

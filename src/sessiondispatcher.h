@@ -424,6 +424,8 @@ public slots:
     void resetTimerStatus();
     //处理连接服务器成功的时候，查询当前用户的信息：积分、等级...
     void searchCurrentInfo();
+    //根据积分计算用户等级
+    QString score_count_level(int score);
 
     //接受标题栏控制按钮位置改变
     void handler_change_titlebar_position(QString position);
