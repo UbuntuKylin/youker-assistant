@@ -309,7 +309,7 @@ Rectangle {
         }
         Common.StyleButton {
             id: buglabel
-            wordname: qsTr("Report Bugs")//Bug提交
+            wordname: qsTr("Feedback")//问题反馈
             width: 40
             height: 25
 //            flag: "BUG"

@@ -218,82 +218,82 @@ p, li { white-space: pre-wrap; }
         <translation>深度清理浏览器缓存，节省磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="72"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="152"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="192"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="211"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="310"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="85"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="165"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="205"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="224"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="323"/>
         <source>Cleanup Firefox Cache</source>
         <translation>清理Firefox缓存</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="76"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="156"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="196"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="225"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="314"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="89"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="169"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="209"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="238"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="327"/>
         <source>Cleanup Chromium Cache</source>
         <translation>清理Chromium缓存</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="123"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="371"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="379"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="136"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="384"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="392"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="123"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="136"/>
         <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="131"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="144"/>
         <source>Scan completed!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="137"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="544"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="150"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="568"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="170"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="183"/>
         <source>Cleanup abnormal!</source>
         <translation>清理出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="180"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="193"/>
         <source>Cleanup interrupted!</source>
         <translation>清理中断！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="184"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="197"/>
         <source>Cleared!</source>
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="291"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="304"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="332"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="551"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="558"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="565"/>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="572"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="345"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="575"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="582"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="589"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="596"/>
         <source>Start scanning</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="371"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="384"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
         <translation>对不起，您没有选择需要扫描的内容，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="379"/>
+        <location filename="../../qml/func/cleaner/BrowserModel.qml" line="392"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的内容，请确认！</translation>
     </message>
@@ -354,12 +354,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CacheDelegate</name>
     <message>
-        <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="115"/>
+        <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="116"/>
         <source> Items ]</source>
         <translation>个项目 ]</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="125"/>
+        <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="126"/>
         <source>No content</source>
         <translation>无内容</translation>
     </message>
@@ -2846,6 +2846,11 @@ p, li { white-space: pre-wrap; }
         <translation>正在登录...</translation>
     </message>
     <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="312"/>
+        <source>Feedback</source>
+        <translation>问题反馈</translation>
+    </message>
+    <message>
         <source>Name:</source>
         <translation type="obsolete">用户名：</translation>
     </message>
@@ -2875,9 +2880,8 @@ p, li { white-space: pre-wrap; }
         <translation>新版本特性</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="312"/>
         <source>Report Bugs</source>
-        <translation>Bug提交</translation>
+        <translation type="obsolete">Bug提交</translation>
     </message>
 </context>
 <context>
@@ -2954,7 +2958,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="978"/>
+        <location filename="../sessiondispatcher.cpp" line="987"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
