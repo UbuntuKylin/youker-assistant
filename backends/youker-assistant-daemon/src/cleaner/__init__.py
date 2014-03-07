@@ -491,6 +491,7 @@ class CleanTheCache():
                     sesdaemon.data_transmit_by_cache('thumbnails', one, 'False',common.confirm_filesize_unit(os.path.getsize(one)))
         if 'firefox' in mode_list:
             firefoxpath = "%s/.cache/mozilla/firefox/%s" % (homedir, common.analytical_profiles_file(homedir))
+            sesdaemon.path_transmit_by_cache('firefox', firefoxpath)
             temp_firefox_list = self.objc.firefox_scan_cache(firefoxpath)
             for one in temp_firefox_list:
                 if os.path.isdir(one):
@@ -499,6 +500,7 @@ class CleanTheCache():
                     sedaemon.data_transmit_by_cache('firefox', one, 'False', common.confirm_filesize_unit(os.path.getsize(one)))
         if 'chromium' in mode_list:
             chromiumpath = "%s/.cache/chromium/Default" % homedir
+            sesdaemon.path_transmit_by_cache('chromium', chromiumpath)
             temp_chromium_list = self.objc.public_scan_cache(chromiumpath)
             for one in temp_chromium_list:
                 if os.path.isdir(one):

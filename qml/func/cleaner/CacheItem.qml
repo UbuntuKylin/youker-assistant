@@ -199,7 +199,13 @@ Item {
     MouseArea {
         id: mouseArea
         anchors.fill: itemText
-        onClicked: container.clicked();
+//        onClicked: container.clicked();
+        onDoubleClicked: {//双击浏览器缓存栏目时，可以打开文件夹
+            if(btn_flag == "browser_work") {
+                container.clicked();
+            }
+        }
+
         onReleased: selectable && !selected ? selected = true : selected = false
     }
 

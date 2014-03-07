@@ -137,6 +137,7 @@ Rectangle {
     Image {
         id: logo
         source: "../../img/toolWidget/ubuntukylin.png"
+        opacity: 0.5
         anchors {
             top: parent.top
             topMargin: 80

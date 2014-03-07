@@ -20,6 +20,7 @@ Item {
     property color subItemFontColor: "black"
 
     signal checkchanged(bool checkchange);
+    signal tellModelToOpenFolder(string category);
 
     property int check_num:sub_num   //记录子项个数，在确定总checkbox状态时需要的变量
     property bool maincheck: false
@@ -193,6 +194,9 @@ Item {
                         else {
                             listViewDelegate.checkchanged(false);
                         }
+                    }
+                    onClicked: {
+                        listViewDelegate.tellModelToOpenFolder(arrowFlag);
                     }
                 }
             }

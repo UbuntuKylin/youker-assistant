@@ -41,6 +41,10 @@ Item {
     property bool firefoxEmpty: false//决定是否显示扫描内容为空的状态图
     property bool chromiumEmpty: false//决定是否显示扫描内容为空的状态图
     property int mode: 0//扫描模式：0表示两者都扫描，1表示只选中了firefox，2表示只选中了chromium
+
+    property string firefox_path//firefox的cache的绝对路径
+    property string chromium_path//chromium的cache的绝对路径
+
     ListModel { id: firefoxmainModel }
     ListModel { id: firefoxsubModel }
     ListModel { id: chromiummainModel }
@@ -62,6 +66,15 @@ Item {
                 systemdispatcher.set_browser_args(path);
             }
         }
+        onTellAbsPathToCacheModel: {
+            if(flag == "firefox") {
+                root.firefox_path = path;
+            }
+            else if(flag == "chromium") {
+                root.chromium_path = path;
+            }
+        }
+
         onTellQMLCaheOver: {
             if(flag == "browser") {
                 doingImage.visible = false;
@@ -442,6 +455,12 @@ Item {
                         expanded: root.firefox_expanded//firefox_expanded为true时，箭头向下，内容展开;firefox_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
                         emptyTip: root.firefoxEmpty
+                        onTellModelToOpenFolder: {
+                            if(category == "firefoxcache") {
+                                sessiondispatcher.open_folder_qt(root.firefox_path);
+                            }
+                        }
+
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
 //                            root.aptresultFlag = checkchange;
@@ -496,6 +515,11 @@ Item {
                         expanded: root.chromium_expanded//chromium_expanded为true时，箭头向下，内容展开;chromium_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
                         emptyTip: root.chromiumEmpty
+                        onTellModelToOpenFolder: {
+                            if(category == "chromiumcache") {
+                                sessiondispatcher.open_folder_qt(root.chromium_path);
+                            }
+                        }
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
 //                            root.softresultFlag = checkchange;

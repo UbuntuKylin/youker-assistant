@@ -16,7 +16,7 @@
 #include <QDebug>
 #include "kthread.h"
 
-KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, QString method, QString flag):QThread()
+KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, /*QObject *parent, */QString method, QString flag):QThread(/*parent*/)
 {
     iface = systemiface;
     methodName = method;
@@ -27,6 +27,7 @@ KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, QString meth
 KThread::~KThread() {
     stop();
 }
+
 void KThread::run() {
     if(methodName == "onekey_clean_crufts_function") {
         iface->call("onekey_clean_crufts_function", list);

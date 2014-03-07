@@ -39,6 +39,8 @@ public:
     Q_INVOKABLE void show_slider_qt();
     //退出前的准备工作
     void ready_exit_normally();
+    //打开文件夹
+    Q_INVOKABLE void open_folder_qt(QString path);
 
     //弹出登录框
     Q_INVOKABLE void popup_login_dialog(int window_x, int window_y);
@@ -339,6 +341,8 @@ signals:
 
     //把cache扫描结果告诉QML
     void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
+    //把cache的绝对路径告诉QML
+    void tellAbsPathToCacheModel(QString flag, QString path);
     //cache扫描完后告诉QML
     void tellQMLCaheOver(QString flag);
     //把package和old kernel扫描结果告诉QML
@@ -400,6 +404,8 @@ public slots:
     void handler_append_cache_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
     //接收cache扫描完后的信号
     void handler_cache_scan_over(QString flag);
+    //接收cache的绝对路径
+    void handler_cache_path(QString flag, QString path);
 
     //接收package和old kernel信号，把数据动态堆加到model中
     void handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue);

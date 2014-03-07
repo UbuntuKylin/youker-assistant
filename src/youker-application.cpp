@@ -73,6 +73,7 @@ void IhuApplication::setup() {
     viewer->setStyleSheet("background:transparent");
     viewer->setAttribute(Qt::WA_TranslucentBackground);
     viewer->setWindowFlags(Qt::FramelessWindowHint);
+    viewer->resize(850, 600);
     QObject::connect(viewer->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
 }
 

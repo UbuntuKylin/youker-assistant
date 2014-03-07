@@ -27,8 +27,9 @@
 
 class KThread : public QThread
 {
+    Q_OBJECT
 public:
-    KThread(QStringList &arglist, QDBusInterface *systemiface=0, QString method="", QString flag="");
+    explicit KThread(QStringList &arglist, QDBusInterface *systemiface=0,/* QObject *parent = 0, */QString method="", QString flag="");
     ~KThread();
     void stop();
 protected:
