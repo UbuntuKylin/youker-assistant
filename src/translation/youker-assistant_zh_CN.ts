@@ -2958,7 +2958,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="987"/>
+        <location filename="../sessiondispatcher.cpp" line="1005"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -3268,6 +3268,8 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/StatusWidget.qml" line="35"/>
         <location filename="../../qml/StatusWidget.qml" line="41"/>
         <location filename="../../qml/StatusWidget.qml" line="55"/>
+        <location filename="../../qml/StatusWidget.qml" line="153"/>
+        <location filename="../../qml/StatusWidget.qml" line="185"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
@@ -3305,9 +3307,19 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../qml/StatusWidget.qml" line="131"/>
-        <location filename="../../qml/StatusWidget.qml" line="173"/>
+        <location filename="../../qml/StatusWidget.qml" line="179"/>
         <source>Save Cloud</source>
         <translation>保存云配置</translation>
+    </message>
+    <message>
+        <location filename="../../qml/StatusWidget.qml" line="153"/>
+        <source>It will use the Kingsoft disk cloud configuration!</source>
+        <translation>该操作将使用金山快盘云配置来设置系统配置！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/StatusWidget.qml" line="185"/>
+        <source>It will upload configuration to the Kingsoft disk cloud!</source>
+        <translation>该操作将会把本地配置上传到金山快盘云端！</translation>
     </message>
 </context>
 <context>

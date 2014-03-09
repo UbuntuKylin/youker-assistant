@@ -150,9 +150,11 @@ Rectangle {
                 width: b1.width
                 height: 20
                 onClicked: {
-                    downloaddynamic.playing = true;
-                    downloaddynamic.paused = false;
-                    sessiondispatcher.download_kysoft_cloud_conf_qt();
+                    if(sessiondispatcher.showConfirmDialog(qsTr("Tips:"), qsTr("It will use the Kingsoft disk cloud configuration!"), mainwindow.pos.x, mainwindow.pos.y)) {
+                        downloaddynamic.playing = true;
+                        downloaddynamic.paused = false;
+                        sessiondispatcher.download_kysoft_cloud_conf_qt();
+                    }
                 }
             }
 
@@ -176,9 +178,11 @@ Rectangle {
                 width: b2.width
                 height: 20
                 onClicked: {
-                    uploaddynamic.playing = true;
-                    uploaddynamic.paused = false;
-                    sessiondispatcher.upload_kysoft_cloud_conf_qt();
+                    if(sessiondispatcher.showConfirmDialog(qsTr("Tips:"), qsTr("It will upload configuration to the Kingsoft disk cloud!"), mainwindow.pos.x, mainwindow.pos.y)) {
+                        uploaddynamic.playing = true;
+                        uploaddynamic.paused = false;
+                        sessiondispatcher.upload_kysoft_cloud_conf_qt();
+                    }
                 }
             }
 

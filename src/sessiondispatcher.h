@@ -95,6 +95,8 @@ public:
     Q_INVOKABLE void showCheckscreenDialog(int window_x, int window_y);
     //弹出警告提示对话框
     Q_INVOKABLE void showWarningDialog(QString title, QString content, int window_x, int window_y);
+    //弹出确认对话框
+    Q_INVOKABLE bool showConfirmDialog(QString title, QString content, int window_x, int window_y);
 
     Q_INVOKABLE void set_page_num(int num);
     Q_INVOKABLE int get_page_num();
@@ -380,6 +382,9 @@ signals:
 
     //程序退出之前用户信息写入服务器端完毕后，告诉tray退出程序
     void ready_to_exit();
+
+    //告诉QML确认云配置操作
+//    void tellQMLCloudConfirm();
 public slots:
     void verify_user_and_password(QString user, QString pwd);
     void handle_data_after_login_success(QString id, /*QString level, */QString name, QString score);
@@ -440,6 +445,8 @@ public slots:
     void handler_download_cloud_conf(QString download);
     //接收上传配置到云端时的信号
     void handler_upload_cloud_conf(QString upload);
+    //接收确认云配置操作
+//    void handler_confirm_cloud_action();
 
 private:
     int mainwindow_width;

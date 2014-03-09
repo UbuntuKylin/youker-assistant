@@ -553,6 +553,24 @@ void SessionDispatcher::showWarningDialog(QString title, QString content, int wi
     dialog->exec();
 }
 
+bool SessionDispatcher::showConfirmDialog(QString title, QString content, int window_x, int window_y) {
+    WarningDialog *dialog = new WarningDialog(title, content);
+    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
+    this->alert_y = window_y + mainwindow_height - 400;
+    dialog->move(this->alert_x, this->alert_y);
+    dialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
+    if(dialog->exec()==QDialog::Rejected) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+//void SessionDispatcher::handler_confirm_cloud_action() {
+//    emit this->tellQMLCloudConfirm();
+//}
+
 QString SessionDispatcher::getSingleInfo(QString key) {
     QVariant info = systemInfo.value(key);
     return info.toString();
