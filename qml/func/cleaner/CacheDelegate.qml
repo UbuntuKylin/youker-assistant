@@ -3,7 +3,7 @@ import "../common" as Common
 
 Item {
     id: listViewDelegate
-    property int itemHeight: 40
+    property int itemHeight: 30
     property string arrow: '../../img/icons/arrow.png'
     property bool expanded: true
     property int heightMark:sub_num
@@ -20,7 +20,7 @@ Item {
     property color subItemFontColor: "black"
 
     signal checkchanged(bool checkchange);
-    signal tellModelToOpenFolder(string category);
+    signal tellModelToOpenFolder(string category, string path);
 
     property int check_num:sub_num   //记录子项个数，在确定总checkbox状态时需要的变量
     property bool maincheck: false
@@ -142,7 +142,7 @@ Item {
             id: subItemsRect
             property int itemHeight: listViewDelegate.itemHeight
             y: headerItemRect.height
-            width: 850
+            width: 800//850
             clip: true
             //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
             height: delegate.expandedItemCount * itemHeight
@@ -164,9 +164,9 @@ Item {
                     text: itemTitle
                     descript: desc
                     size_num: number
+                    item_index: index
                     //根据主checkbox的状态来更改所有子checkbox的状态：true、false
                     checkbox_status: check.checkedbool//listViewDelegate.controlMain
-                    bgImage: ""
                     fontName: listViewDelegate.subItemFontName
                     fontSize: listViewDelegate.subItemFontSize
                     fontColor: listViewDelegate.subItemFontColor
@@ -196,7 +196,7 @@ Item {
                         }
                     }
                     onClicked: {
-                        listViewDelegate.tellModelToOpenFolder(arrowFlag);
+                        listViewDelegate.tellModelToOpenFolder(arrowFlag, path);
                     }
                 }
             }

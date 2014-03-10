@@ -24,7 +24,9 @@ Item {
     property string text: ""
     property string descript: ""
     property string size_num: ""
-    property string bgImage: '../../img/icons/list_item.png'
+    property int item_index
+    property string bgImage: "../../img/icons/green.png"
+    property string bgImage2: "../../img/icons/blue.png"
     property string bgImageSelected: '../../img/icons/list_item_selected.png'
     property string bgImagePressed: '../../img/icons/list_item_pressed.png'
     property bool selected: false
@@ -67,8 +69,15 @@ Item {
 
     BorderImage {
         id: background
-        border { top: 9; bottom: 36; left: 35; right: 35; }
-        source: bgImage
+        anchors {
+            left: parent.left
+            leftMargin: 20
+        }
+//        border { top: 9; bottom: 36; left: 35; right: 35; }
+//        source: bgImage
+        border {left: 35; right: 35; }
+        source: (container.item_index%2 == 0) ? bgImage : bgImage2
+//        source: (container.item_index%2 == 0) ? "../../img/icons/green.png": "../../img/icons/blue.png"
         anchors.fill: parent
     }
     Text {

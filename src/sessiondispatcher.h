@@ -344,7 +344,7 @@ signals:
     //把cache扫描结果告诉QML
     void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
     //把cache的绝对路径告诉QML
-    void tellAbsPathToCacheModel(QString flag, QString path);
+//    void tellAbsPathToCacheModel(QString flag, QString path);
     //cache扫描完后告诉QML
     void tellQMLCaheOver(QString flag);
     //把package和old kernel扫描结果告诉QML
@@ -410,7 +410,7 @@ public slots:
     //接收cache扫描完后的信号
     void handler_cache_scan_over(QString flag);
     //接收cache的绝对路径
-    void handler_cache_path(QString flag, QString path);
+//    void handler_cache_path(QString flag, QString path);
 
     //接收package和old kernel信号，把数据动态堆加到model中
     void handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue);

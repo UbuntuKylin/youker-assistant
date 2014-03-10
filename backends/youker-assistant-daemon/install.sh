@@ -2,14 +2,6 @@
 backupPath="/var/lib/youker-assistant-daemon/"
 backendPath="/usr/lib/python2.7/dist-packages/youker-assistant-daemon/"
 cd `dirname $0`
-cp ./data/youkersystem /usr/bin/
-echo "Copy systemdbus script to /usr/bin/"
-
-cp ./data/youkersession /usr/bin/
-echo "Copy sessiondbus script to /usr/bin/"
-
-#cp ./data/youkersudo /usr/bin/
-#echo "Copy sudodbus script to /usr/bin/"
 
 cp ./dbus/com.ubuntukylin.youker.service /usr/share/dbus-1/system-services/ 
 echo "Copy .service file to /usr/share/dbus-1/system-services/"
@@ -38,7 +30,14 @@ fi
 rm -f /usr/bin/youker-assistant-backend.py
 echo "Remove /usr/bin/youker-assistant-backend.py"
 
+rm -f /usr/bin/youker-assistant-session.py
+echo "Remove /usr/bin/youker-assistant-session.py"
+
 chmod +x "$backendPath"/src/start_systemdbus.py
 ln -s "$backendPath"/src/start_systemdbus.py  /usr/bin/youker-assistant-backend.py
+
+chmod +x "$backendPath"/src/start_sessiondbus.py
+ln -s "$backendPath"/src/start_sessiondbus.py  /usr/bin/youker-assistant-session.py
+
 echo "Build symbol link for service file"
 echo "^^ Now, You can run the program in QtCreator!"

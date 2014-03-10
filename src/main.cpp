@@ -96,14 +96,6 @@ int main(int argc, char** argv)
     //注册QML模块
     registerTypes();
 
-    //启动sessiondbus和systemdbus服务
-    //int value_session = system("/usr/bin/youkersession &");
-    //if (value_session != 0)
-    //    qDebug() << "SessionDaemon Failed!";
-    //int value_system = system("/usr/bin/youkersystem");
-    //if (value_system != 0)
-    //    qDebug() << "SystemDaemon Failed!";
-
 //    system("/home/saucy/Slider/src/wizard.py");
 
     //启动画面

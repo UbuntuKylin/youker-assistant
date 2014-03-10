@@ -22,11 +22,11 @@ Item {
     id: clearmode
     width: parent.width
     height: 475
-    Image {     //背景图片
-        id: background
-        anchors.fill: parent
-        source: "../../img/skin/bg-middle.png"//bg-middle-tab
-    }
+//    Image {     //背景图片
+//        id: background
+//        anchors.fill: parent
+//        source: "../../img/skin/bg-middle.png"//bg-middle-tab
+//    }
     Common.Tabs {
         id: tabs
         width: parent.width; height: 435

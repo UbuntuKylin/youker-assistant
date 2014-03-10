@@ -1,11 +1,5 @@
 TEMPLATE = aux
 
-#inst1.files += ../backends/youker-assistant-daemon/data/youkersystem
-#inst1.path = /usr/bin
-#inst2.files += ../backends/youker-assistant-daemon/data/youkersession
-#inst2.path = /usr/bin
-#inst3.files += ../backends/youker-assistant-daemon/keyrings/ubuntukylin-archive-keyring.gpg
-#inst3.path = /usr/share/keyrings/
 inst1.files += ../backends/youker-assistant-daemon/src/
 inst1.path = /usr/lib/python2.7/dist-packages/youker-assistant-daemon/
 inst2.files += ../backends/youker-assistant-daemon/data/beautify/autostart/

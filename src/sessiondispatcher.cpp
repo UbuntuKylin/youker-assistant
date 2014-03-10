@@ -75,7 +75,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     //Apt and Soft center cache
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_cache_data_to_model(QString,QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cache_transmit_complete(QString)), this, SLOT(handler_cache_scan_over(QString)));
-    QObject::connect(sessioniface, SIGNAL(path_transmit_by_cache(QString, QString)), this, SLOT(handler_cache_path(QString, QString)));
+//    QObject::connect(sessioniface, SIGNAL(path_transmit_by_cache(QString, QString)), this, SLOT(handler_cache_path(QString, QString)));
 
     //Uninstall unneed package and old kernel package
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_package(QString, QString, QString, QString)), this, SLOT(handler_append_package_data_to_model(QString,QString,QString,QString)));
@@ -341,9 +341,9 @@ void SessionDispatcher::handler_cache_scan_over(QString flag) {
     emit tellQMLCaheOver(flag);
 }
 
-void SessionDispatcher::handler_cache_path(QString flag, QString path) {
-    emit tellAbsPathToCacheModel(flag, path);
-}
+//void SessionDispatcher::handler_cache_path(QString flag, QString path) {
+//    emit tellAbsPathToCacheModel(flag, path);
+//}
 
 void SessionDispatcher::handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue) {
     emit appendPackageContentToCacheModel(flag, pkgName, description, sizeValue);

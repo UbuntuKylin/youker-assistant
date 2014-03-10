@@ -47,6 +47,7 @@ Item {
     property bool aptEmpty: false//决定是否显示扫描内容为空的状态图
     property bool softEmpty: false//决定是否显示扫描内容为空的状态图
     property bool thumbEmpty: false//决定是否显示扫描内容为空的状态图
+    property int item_height: 30
     property int mode: 0//扫描模式：0表示两者都扫描，1表示只选中了apt，2表示只选中了soft，3表示只选中了thumbnails, 4表示只选中了apt和soft，5表示只选中了apt和thumbnails, 6表示只选中了thumbnails和soft
     ListModel { id: aptmainModel }
     ListModel { id: aptsubModel }
@@ -61,17 +62,17 @@ Item {
         onAppendContentToCacheModel: {
             //QString flag, QString path, QString fileFlag, QString sizeValue
             if(flag == "apt") {//Apt缓存
-                aptsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
+                aptsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.aptNum});
                 root.aptNum += 1;
                 systemdispatcher.set_cache_args(path);
             }
             else if(flag == "software-center") {//软件中心缓存
-                softsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
+                softsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.softNum});
                 root.softNum += 1;
                 systemdispatcher.set_cache_args(path);
             }
             else if(flag == "thumbnails") {//缩略图缓存
-                thumbsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
+                thumbsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.thumbNum});
                 root.thumbNum += 1;
                 systemdispatcher.set_cache_args(path);
             }
@@ -179,7 +180,7 @@ Item {
                     backBtn.visible = true;
     //                rescanBtn.visible = true;
                 }
-                scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + (root.thumbNum + 1) * 40 + root.spaceValue*3;
+                scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*3;
                 //扫描完成后恢复按钮的使能
                 actionBtn.enabled = true;
             }
@@ -466,7 +467,7 @@ Item {
                     thumbsubModel.clear();//内容清空
                     root.thumbNum = 0;//隐藏滑动条
                     root.thumb_arrow_show = 0;//伸缩图标隐藏
-                    scrollItem.height = 3 * 40 + root.spaceValue*3;
+                    scrollItem.height = 3 * root.item_height + root.spaceValue*3;
                     root.state = "AptWorkAGAIN";//按钮的状态恢复初始值
                 }
             }
@@ -598,14 +599,14 @@ Item {
         Item {
             id: scrollItem
             width: parent.width
-            height: 40*3 + root.spaceValue*3
+            height: root.item_height*3 + root.spaceValue*3
             Column {
                 spacing: root.spaceValue
                 //垃圾清理显示内容
                 ListView {
                     id: aptListView
                     width: parent.width
-                    height: root.apt_expanded ? (root.aptNum + 1) * 40 : 40
+                    height: root.apt_expanded ? (root.aptNum + 1) * root.item_height : root.item_height
                     model: aptmainModel
                     delegate: CacheDelegate{
                         sub_num: root.aptNum//root.aptsubNum//1212
@@ -622,36 +623,41 @@ Item {
 //                            root.aptresultFlag = checkchange;
                             root.apt_maincheck = checkchange;
                         }
+                        onTellModelToOpenFolder: {
+                            if(category == "apt") {
+                                sessiondispatcher.open_folder_qt(path);
+                            }
+                        }
                         onArrowClicked: {
                             if(cacheFlag == "apt") {//1212
                                 if(expand_flag == true) {
                                     root.apt_expanded = true;
                                     if((root.soft_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + (root.thumbNum + 1) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.soft_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.soft_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.thumbNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else {
-                                        scrollItem.height = (root.aptNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                 }
                                 else {
                                     root.apt_expanded = false;
                                     if((root.soft_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.softNum + 1) * 40 + (root.thumbNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.soft_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.softNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.soft_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                     else {
-                                        scrollItem.height = 3 * 40 + root.spaceValue*3;
+                                        scrollItem.height = 3 * root.item_height + root.spaceValue*3;
                                     }
                                 }
                             }
@@ -671,7 +677,7 @@ Item {
                 ListView {
                     id: softListView
                     width: parent.width
-                    height: root.soft_expanded ? (root.softNum + 1) * 40 : 40
+                    height: root.soft_expanded ? (root.softNum + 1) * root.item_height : root.item_height
                     model: softmainModel
                     delegate: CacheDelegate{
                         sub_num: root.softNum
@@ -688,36 +694,41 @@ Item {
 //                            root.softresultFlag = checkchange;
                             root.soft_maincheck = checkchange;
                         }
+                        onTellModelToOpenFolder: {
+                            if(category == "soft") {
+                                sessiondispatcher.open_folder_qt(path);
+                            }
+                        }
                         onArrowClicked: {
                             if(cacheFlag == "soft") {//1212
                                 if(expand_flag == true) {
                                     root.soft_expanded = true;
                                     if((root.apt_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + (root.thumbNum + 1) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.apt_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.apt_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 1) * 40 + (root.softNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.thumbNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else {
-                                        scrollItem.height = (root.softNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                 }
                                 else {
                                     root.soft_expanded = false;
                                     if((root.apt_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.thumbNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.apt_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.apt_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                     else {
-                                        scrollItem.height = 3 * 40 + root.spaceValue*3;
+                                        scrollItem.height = 3 * root.item_height + root.spaceValue*3;
                                     }
                                 }
                             }
@@ -737,7 +748,7 @@ Item {
                 ListView {
                     id: thumbListView
                     width: parent.width
-                    height: root.thumb_expanded ? (root.thumbNum + 1) * 40 : 40
+                    height: root.thumb_expanded ? (root.thumbNum + 1) * root.item_height : root.item_height
                     model: thumbmainModel
                     delegate: CacheDelegate{
                         sub_num: root.thumbNum
@@ -754,37 +765,42 @@ Item {
 //                            root.softresultFlag = checkchange;
                             root.thumb_maincheck = checkchange;
                         }
+                        onTellModelToOpenFolder: {
+                            if(category == "thumb") {
+                                sessiondispatcher.open_folder_qt(path);
+                            }
+                        }
                         onArrowClicked: {
                             if(cacheFlag == "thumb") {//1212
                                 if(expand_flag == true) {
                                     root.thumb_expanded = true;
                                     if((root.apt_expanded == true) && (root.soft_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + (root.thumbNum + 1) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*3;
 //                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
                                     }
                                     else if((root.apt_expanded == true) && (root.soft_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.thumbNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.apt_expanded == false) && (root.soft_expanded == true)){
-                                        scrollItem.height = (root.softNum + 1) * 40 + (root.thumbNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else {
-                                        scrollItem.height = (root.thumbNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                 }
                                 else {
                                     root.thumb_expanded = false;
                                     if((root.apt_expanded == true) && (root.soft_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 2) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.apt_expanded == true) && (root.soft_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                     else if((root.apt_expanded == false) && (root.soft_expanded == true)){
-                                        scrollItem.height = (root.softNum + 3) * 40 + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*3;
                                     }
                                     else {
-                                        scrollItem.height = 3 * 40 + root.spaceValue*3;
+                                        scrollItem.height = 3 * root.item_height + root.spaceValue*3;
                                     }
                                 }
                             }

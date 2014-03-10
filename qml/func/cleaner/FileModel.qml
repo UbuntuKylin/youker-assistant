@@ -66,7 +66,7 @@ Item {
                 num++;
             }
             else {
-                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": ""});
+                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i});
 //                if(root.yesOrno == "true") {
 //                    console.log("is yes...........");
 //                    systemdispatcher.set_largestfile_args(splitlist[1]);
@@ -266,7 +266,7 @@ Item {
         width: parent.width - 27 -2
         Item {
             width: parent.width
-            height: (root.sub_num + 1) * 40
+            height: (root.sub_num + 1) * 30
             //垃圾清理显示内容
             ListView {
                 id: listView

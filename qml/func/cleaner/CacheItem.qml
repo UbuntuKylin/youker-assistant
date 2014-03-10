@@ -26,8 +26,9 @@ Item {
     property string text: ""
     property string descript: ""
     property string size_num: ""
-    property string bgImage: '../img/icons/list_item.png'
-
+    property int item_index
+    property string bgImage: "../../img/icons/green.png"
+    property string bgImage2: "../../img/icons/blue.png"
     property string bgImageSelected: '../../img/icons/list_item_selected.png'
     property string bgImagePressed: '../../img/icons/list_item_pressed.png'
     property bool selected: false
@@ -41,10 +42,10 @@ Item {
 
     property string browserFlag//浏览器标记
     signal change_num(bool check_status, string browser_flag)   //作为子项checkbox，当状态改变时需要通过信号传给父项以进行个数统计
-    signal clicked
+    signal clicked(string path);
 
-    width: 850
-    height: 40
+    width: 800//850
+    height: 30
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
     onCheckbox_statusChanged: {
@@ -60,8 +61,15 @@ Item {
 
     BorderImage {
         id: background
-        border { top: 9; bottom: 36; left: 35; right: 35; }
-        source: bgImage
+        anchors {
+            left: parent.left
+            leftMargin: 20
+        }
+
+//        border { top: 9; bottom: 36; left: 35; right: 35; }
+//        source: bgImage
+        border {left: 35; right: 35; }
+        source: (container.item_index%2 == 0) ? bgImage : bgImage2
         anchors.fill: parent
     }
 
@@ -201,8 +209,8 @@ Item {
         anchors.fill: itemText
 //        onClicked: container.clicked();
         onDoubleClicked: {//双击浏览器缓存栏目时，可以打开文件夹
-            if(btn_flag == "browser_work") {
-                container.clicked();
+            if((btn_flag == "browser_work") || (btn_flag == "cache_work" && container.descript == "True")) {
+                container.clicked(container.text);
             }
         }
 

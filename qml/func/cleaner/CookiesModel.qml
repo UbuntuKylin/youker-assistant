@@ -47,6 +47,7 @@ Item {
     property bool chromium_reset: false//chromium重置按钮默认隐藏
     property string firefox_btn_flag: "cookies_scan"//扫描或者清理的标记
     property string chromium_btn_flag: "cookies_scanc"//扫描或者清理的标记
+    property int item_height: 30
 
     Connections
     {
@@ -54,11 +55,11 @@ Item {
         onAppendCookiesContentToModel: {
             //QString flag, QString domain, QString num
             if(flag == "firefox") {
-                firefoxsubModel.append({"itemTitle": domain, "desc": "", "number": num});
+                firefoxsubModel.append({"itemTitle": domain, "desc": "", "number": num, "index": root.firefoxNum});
                 root.firefoxNum += 1;
             }
             else if(flag == "chromium") {
-                chromiumsubModel.append({"itemTitle": domain, "desc": "", "number": num});
+                chromiumsubModel.append({"itemTitle": domain, "desc": "", "number": num, "index": root.chromiumNum});
                 root.chromiumNum += 1;
             }
         }
@@ -100,10 +101,10 @@ Item {
                         root.firefox_btn_text = qsTr("Start scanning")//开始扫描//1206
                         root.firefox_reset = false;//1206
                         if(root.chromium_expanded) {
-                            scrollItem.height = 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                            scrollItem.height = root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                         }
                         else {
-                            scrollItem.height = 2 * 40 + root.spaceValue*2;
+                            scrollItem.height = 2 * root.item_height + root.spaceValue*2;
                         }
                     }
                     else if(root.firefoxResultFlag == true) {
@@ -122,10 +123,10 @@ Item {
                         root.firefox_btn_text = qsTr("All cleanup");//全部清理//1206
                         root.firefox_reset = true;//1206
                         if(root.chromium_expanded) {
-                            scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                            scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                         }
                         else {
-                            scrollItem.height = (root.firefoxNum + 1) * 40 + 40 + root.spaceValue*2;
+                            scrollItem.height = (root.firefoxNum + 1) * root.item_height + root.item_height + root.spaceValue*2;
                         }
                     }
                 }
@@ -159,10 +160,10 @@ Item {
                         root.chromium_btn_text = qsTr("Start scanning")//开始扫描
                         root.chromium_reset = false;//1206
                         if(root.firefox_expanded) {
-                            scrollItem.height = 40 + (root.firefoxNum + 1) * 40 + root.spaceValue*2;
+                            scrollItem.height = root.item_height + (root.firefoxNum + 1) * root.item_height + root.spaceValue*2;
                         }
                         else {
-                            scrollItem.height = 2 * 40 + root.spaceValue*2;
+                            scrollItem.height = 2 * root.item_height + root.spaceValue*2;
                         }
                     }
                     else if(root.chromiumResultFlag == true) {
@@ -181,10 +182,10 @@ Item {
                         root.chromium_btn_text = qsTr("All cleanup");//全部清理
                         root.chromium_reset = true;//1206
                         if(root.firefox_expanded) {
-                            scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                            scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                         }
                         else {
-                            scrollItem.height = (root.chromiumNum + 1) * 40 + 40 + root.spaceValue*2;
+                            scrollItem.height = (root.chromiumNum + 1) * root.item_height + root.item_height + root.spaceValue*2;
                         }
                     }
                 }
@@ -251,10 +252,10 @@ Item {
                     root.firefox_reset = false;//1206
                     root.firefoxNum = 0;//隐藏滑动条
                     if(root.chromium_expanded) {
-                        scrollItem.height = 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                        scrollItem.height = root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                     }
                     else {
-                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+                        scrollItem.height = 2 * root.item_height + root.spaceValue*2;
                     }
                     toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 }
@@ -276,10 +277,10 @@ Item {
                     root.chromium_reset = false;//1206
                     root.chromiumNum = 0;//隐藏滑动条
                     if(root.firefox_expanded) {
-                        scrollItem.height = 40 + (root.firefoxNum + 1) * 40 + root.spaceValue*2;
+                        scrollItem.height = root.item_height + (root.firefoxNum + 1) * root.item_height + root.spaceValue*2;
                     }
                     else {
-                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+                        scrollItem.height = 2 * root.item_height + root.spaceValue*2;
                     }
                     toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
                 }
@@ -348,14 +349,14 @@ Item {
         Item {
             id: scrollItem
             width: parent.width
-            height: 40*2 + root.spaceValue*2
+            height: root.item_height*2 + root.spaceValue*2
             Column {
                 spacing: root.spaceValue
                 //垃圾清理显示内容
                 ListView {
                     id: aptListView
                     width: parent.width
-                    height: root.firefox_expanded ? (root.firefoxNum + 1) * 40 : 40
+                    height: root.firefox_expanded ? (root.firefoxNum + 1) * root.item_height : root.item_height
                     model: firefoxmainModel
                     delegate: CookiesDelegate{
                         sub_num: root.firefoxNum
@@ -382,10 +383,10 @@ Item {
                                     root.firefox_arrow_show = 0;//2、然后传递给CookiesDelegate.qml去隐藏伸展按钮
                                     root.firefox_showNum = false;//隐藏扫描的数目
                                     if(root.chromium_expanded) {
-                                        scrollItem.height = 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                                        scrollItem.height = root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+                                        scrollItem.height = 2 * root.item_height + root.spaceValue*2;
                                     }
                                 }
                                 else if(status == "rescan") {//点击重新扫描按钮
@@ -448,19 +449,19 @@ Item {
                                 if(expand_flag == true) {
                                     root.firefox_expanded = true;
                                     if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = (root.firefoxNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*2;
                                     }
                                 }
                                 else {
                                     root.firefox_expanded = false;
                                     if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.chromiumNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = 2* 40 + root.spaceValue*2;
+                                        scrollItem.height = 2* root.item_height + root.spaceValue*2;
                                     }
                                 }
                             }
@@ -468,7 +469,7 @@ Item {
                     }
                     cacheBuffer: 1000
                     opacity: 1
-                    spacing: 10
+//                    spacing: 10
                     snapMode: ListView.NoSnap
                     boundsBehavior: Flickable.DragOverBounds
                     currentIndex: 0
@@ -480,7 +481,7 @@ Item {
                 ListView {
                     id: softListView
                     width: parent.width
-                    height: root.chromium_expanded ? (root.chromiumNum + 1) * 40 : 40
+                    height: root.chromium_expanded ? (root.chromiumNum + 1) * root.item_height : root.item_height
                     model: chromiummainModel
                     delegate: CookiesDelegate{
                         sub_num: root.chromiumNum
@@ -507,10 +508,10 @@ Item {
                                     root.chromium_arrow_show = 0;//2、然后传递给CookiesDelegate.qml去隐藏伸展按钮
                                     root.chromium_showNum = false;//隐藏扫描的数目
                                     if(root.firefox_expanded) {
-                                        scrollItem.height = 40 + (root.firefoxNum + 1) * 40 + root.spaceValue*2;
+                                        scrollItem.height = root.item_height + (root.firefoxNum + 1) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = 2 * 40 + root.spaceValue*2;
+                                        scrollItem.height = 2 * root.item_height + root.spaceValue*2;
                                     }
                                 }
                                 else if(status == "rescan") {
@@ -573,19 +574,19 @@ Item {
                                 if(expand_flag == true) {
                                     root.chromium_expanded = true;
                                     if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = (root.chromiumNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*2;
                                     }
                                 }
                                 else {
                                     root.chromium_expanded = false;
                                     if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = 2* 40 + root.spaceValue*2;
+                                        scrollItem.height = 2* root.item_height + root.spaceValue*2;
                                     }
                                 }
                             }
@@ -593,7 +594,7 @@ Item {
                     }
                     cacheBuffer: 1000
                     opacity: 1
-                    spacing: 10
+//                    spacing: 10
                     snapMode: ListView.NoSnap
                     boundsBehavior: Flickable.DragOverBounds
                     currentIndex: 0

@@ -42,8 +42,9 @@ Item {
     property bool chromiumEmpty: false//决定是否显示扫描内容为空的状态图
     property int mode: 0//扫描模式：0表示两者都扫描，1表示只选中了firefox，2表示只选中了chromium
 
-    property string firefox_path//firefox的cache的绝对路径
-    property string chromium_path//chromium的cache的绝对路径
+//    property string firefox_path//firefox的cache的绝对路径
+//    property string chromium_path//chromium的cache的绝对路径
+    property int item_height: 30
 
     ListModel { id: firefoxmainModel }
     ListModel { id: firefoxsubModel }
@@ -56,24 +57,24 @@ Item {
         onAppendContentToCacheModel: {
             //QString flag, QString path, QString fileFlag, QString sizeValue
             if(flag == "firefox") {
-                firefoxsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
+                firefoxsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.firefoxNum});
                 root.firefoxNum += 1;
                 systemdispatcher.set_browser_args(path);
             }
             else if(flag == "chromium") {
-                chromiumsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue});
+                chromiumsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.chromiumNum});
                 root.chromiumNum += 1;
                 systemdispatcher.set_browser_args(path);
             }
         }
-        onTellAbsPathToCacheModel: {
-            if(flag == "firefox") {
-                root.firefox_path = path;
-            }
-            else if(flag == "chromium") {
-                root.chromium_path = path;
-            }
-        }
+//        onTellAbsPathToCacheModel: {
+//            if(flag == "firefox") {
+//                root.firefox_path = path;
+//            }
+//            else if(flag == "chromium") {
+//                root.chromium_path = path;
+//            }
+//        }
 
         onTellQMLCaheOver: {
             if(flag == "browser") {
@@ -152,7 +153,7 @@ Item {
                     backBtn.visible = true;
     //                rescanBtn.visible = true;
                 }
-                scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                 //扫描完成后恢复按钮的使能
                 actionBtn.enabled = true;
             }
@@ -332,7 +333,7 @@ Item {
                     chromiumsubModel.clear();//内容清空
                     root.chromiumNum = 0;//隐藏滑动条
                     root.chromium_arrow_show = 0;//伸缩图标隐藏
-                    scrollItem.height = 2 * 40 + root.spaceValue*2;
+                    scrollItem.height = 2 * root.item_height + root.spaceValue*2;
                     root.state = "BrowserWorkAGAIN";//按钮的状态恢复初始值
                 }
             }
@@ -436,14 +437,14 @@ Item {
         Item {
             id: scrollItem
             width: parent.width
-            height: 40*2 + root.spaceValue*2
+            height: root.item_height*2 + root.spaceValue*2
             Column {
                 spacing: root.spaceValue
                 //垃圾清理显示内容
                 ListView {
                     id: aptListView
                     width: parent.width
-                    height: root.firefox_expanded ? (root.firefoxNum + 1) * 40 : 40
+                    height: root.firefox_expanded ? (root.firefoxNum + 1) * root.item_height : root.item_height
                     model: firefoxmainModel
                     delegate: CacheDelegate{
                         sub_num: root.firefoxNum//root.aptsubNum//1212
@@ -457,7 +458,9 @@ Item {
                         emptyTip: root.firefoxEmpty
                         onTellModelToOpenFolder: {
                             if(category == "firefoxcache") {
-                                sessiondispatcher.open_folder_qt(root.firefox_path);
+//                                sessiondispatcher.open_folder_qt(root.firefox_path);
+                                sessiondispatcher.open_folder_qt(path);
+
                             }
                         }
 
@@ -471,19 +474,19 @@ Item {
                                 if(expand_flag == true) {
                                     root.firefox_expanded = true;
                                     if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = (root.firefoxNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*2;
                                     }
                                 }
                                 else {
                                     root.firefox_expanded = false;
                                     if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.chromiumNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = 2* 40 + root.spaceValue*2;
+                                        scrollItem.height = 2* root.item_height + root.spaceValue*2;
                                     }
                                 }
                             }
@@ -503,7 +506,7 @@ Item {
                 ListView {
                     id: softListView
                     width: parent.width
-                    height: root.chromium_expanded ? (root.chromiumNum + 1) * 40 : 40
+                    height: root.chromium_expanded ? (root.chromiumNum + 1) * root.item_height : root.item_height
                     model: chromiummainModel
                     delegate: CacheDelegate{
                         sub_num: root.chromiumNum
@@ -517,7 +520,8 @@ Item {
                         emptyTip: root.chromiumEmpty
                         onTellModelToOpenFolder: {
                             if(category == "chromiumcache") {
-                                sessiondispatcher.open_folder_qt(root.chromium_path);
+//                                sessiondispatcher.open_folder_qt(root.chromium_path);
+                                sessiondispatcher.open_folder_qt(path);
                             }
                         }
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
@@ -530,19 +534,19 @@ Item {
                                 if(expand_flag == true) {
                                     root.chromium_expanded = true;
                                     if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 1) * 40 + (root.chromiumNum + 1) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = (root.chromiumNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*2;
                                     }
                                 }
                                 else {
                                     root.chromium_expanded = false;
                                     if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 2) * 40 + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*2;
                                     }
                                     else {
-                                        scrollItem.height = 2* 40 + root.spaceValue*2;
+                                        scrollItem.height = 2* root.item_height + root.spaceValue*2;
                                     }
                                 }
                             }

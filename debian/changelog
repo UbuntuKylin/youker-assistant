@@ -7,11 +7,11 @@ youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
   * Change window control button position of youkerf-assistant.
   * Add Kysoft KuaiPan cloud conf.
   * Add the instruction of youker-assistant.
-  * Open the cache folder when clicked browser cache item.
+  * Open the folder when double-clicked scanning item.
   * Notify users when operating the Kingsoft disk cloud configuration.
   * Modify Dbus starting method.
   
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 10 Mar 2014 17:39:01 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 10 Mar 2014 22:44:11 +0800
 
 youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
 

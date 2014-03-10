@@ -354,9 +354,9 @@ class SessionDaemon(dbus.service.Object):
     def data_transmit_by_cache(self, flag0, path, flag1, size):
         pass
 
-    @dbus.service.signal(INTERFACE, signature='ss')
-    def path_transmit_by_cache(self, flag, path):
-        pass
+    #@dbus.service.signal(INTERFACE, signature='ss')
+    #def path_transmit_by_cache(self, flag, path):
+    #    pass
 
     @dbus.service.signal(INTERFACE, signature='ssss')
     def data_transmit_by_package(self, flag, name, summary, size):

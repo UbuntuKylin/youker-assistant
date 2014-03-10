@@ -3,7 +3,7 @@ import "../common" as Common
 
 Item {
     id: broswerDelegate
-    property int itemHeight: 40
+    property int itemHeight: 30
     property string arrow: '../../img/icons/arrow.png'
     property bool expanded: true
     property int heightMark:sub_num
@@ -177,7 +177,7 @@ Item {
                     text: itemTitle
                     descript: desc
                     size_num: number
-                    bgImage: ""
+                    item_index: index
                     fontName: broswerDelegate.subItemFontName
                     fontSize: broswerDelegate.subItemFontSize
                     fontColor: broswerDelegate.subItemFontColor

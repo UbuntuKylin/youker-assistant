@@ -3,7 +3,7 @@ import "../common" as Common
 
 Item {
     id: listViewDelegate
-    property int itemHeight: 40
+    property int itemHeight: 30
     property string arrow: '../../img/icons/arrow.png'
     property bool expanded: true
     property int heightMark:sub_num
@@ -139,9 +139,9 @@ Item {
                     text: itemTitle
                     descript: desc
                     size_num: number
+                    item_index: index
                     //根据主checkbox的状态来更改所有子checkbox的状态：true、false
                     checkbox_status: check.checkedbool
-                    bgImage: ""
                     fontName: listViewDelegate.subItemFontName
                     fontSize: listViewDelegate.subItemFontSize
                     fontColor: listViewDelegate.subItemFontColor
