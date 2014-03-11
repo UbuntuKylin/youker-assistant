@@ -27,16 +27,23 @@ Rectangle {
         id: borderimage
 //        opacity: 0
         source: "../../img/skin/frame.png"
-        width: 150; height: 30
+        width: 165
+        height: 24
         anchors {
             top: parent.bottom
             topMargin: 15
-
         }
     }
     Text {
-        anchors.centerIn: borderimage
+        id: tipText
+//        anchors.centerIn: borderimage
+        anchors {
+            left: borderimage.left
+            leftMargin: 20
+            verticalCenter: borderimage.verticalCenter
+        }
         font.pixelSize: 10
         text: showText
+        color: "#607684"
     }
 }

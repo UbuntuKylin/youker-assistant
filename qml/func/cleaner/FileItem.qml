@@ -42,7 +42,7 @@ Item {
     signal change_num(bool check_status, string browser_flag)   //作为子项checkbox，当状态改变时需要通过信号传给父项以进行个数统计
     signal clicked
 
-    width: 850
+    width: 850 - 2
     height: 30
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
@@ -55,19 +55,27 @@ Item {
         return need_str;
     }
 
-    BorderImage {
+//    BorderImage {
+//        id: background
+//        anchors {
+//            left: parent.left
+//            leftMargin: 20
+//        }
+////        border { top: 9; bottom: 36; left: 35; right: 35; }
+////        source: bgImage
+//        border {left: 35; right: 35; }
+//        source: (container.item_index%2 == 0) ? bgImage : bgImage2
+//        anchors.fill: parent
+//    }
+    Rectangle {
         id: background
-        anchors {
-            left: parent.left
-            leftMargin: 20
-        }
-//        border { top: 9; bottom: 36; left: 35; right: 35; }
-//        source: bgImage
-        border {left: 35; right: 35; }
-        source: (container.item_index%2 == 0) ? bgImage : bgImage2
         anchors.fill: parent
-    }
-
+        color: (container.item_index%2 == 0) ? "#d7ecfb" : "transparent"
+//        color: (container.item_index%2 == 0) ? "#d0eafb" : "#d7eefd"
+//         border.color: "black"
+//         border.width: 5
+//         radius: 10
+     }
     Common.CheckBox {
         id: checkbox
 //        width: 30
@@ -259,19 +267,33 @@ Item {
 
     MouseArea {
         id: mouseArea
+        hoverEnabled: true
         anchors.fill: itemText
-        onClicked: container.clicked();
-        onReleased: selectable && !selected ? selected = true : selected = false
+        onExited: container.state = ''
+        onReleased: container.state = ''//selectable && !selected ? selected = true : selected = false
+        onHoveredChanged:  {
+            !selected ? selected = true : selected = false
+        }
     }
-
     states: [
         State {
             name: 'pressed'; when: mouseArea.pressed
-            PropertyChanges { target: background; source: bgImagePressed; border { left: 35; top: 35; right: 35; bottom: 10 } }
+            PropertyChanges { target: background; color: "#cae7fa" }
         },
         State {
             name: 'selected'
-            PropertyChanges { target: background; source: bgImageSelected; border { left: 35; top: 35; right: 35; bottom: 10 } }
+            PropertyChanges { target: background; color: "#cae7fa" }
         }
     ]
+
+//    states: [
+//        State {
+//            name: 'pressed'; when: mouseArea.pressed
+//            PropertyChanges { target: background; source: bgImagePressed; border { left: 35; top: 35; right: 35; bottom: 10 } }
+//        },
+//        State {
+//            name: 'selected'
+//            PropertyChanges { target: background; source: bgImageSelected; border { left: 35; top: 35; right: 35; bottom: 10 } }
+//        }
+//    ]
 }

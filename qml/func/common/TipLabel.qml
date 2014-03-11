@@ -20,8 +20,8 @@ Item {
     id: btn
     property string showImage
     property string kflag
-    width: 16
-    height: 16
+    width: 19
+    height: 13
 
     Image {
         id: buttonImage

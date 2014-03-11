@@ -32,13 +32,14 @@ Item {
     Item {
         id: delegate
         property alias expandedItemCount: subItemRepeater.count
-//        x: 5; y: 2
+        x: 2; y: 2
         width: parent.width
         height: headerItemRect.height + subItemsRect.height
 
         //母项
         //checkbox, picture and words
         Item {
+            x: 20; y: 2
             id: headerItemRect
             width: parent.width
             height: broswerDelegate.itemHeight
@@ -170,7 +171,7 @@ Item {
             id: subItemsRect
             property int itemHeight: broswerDelegate.itemHeight
             y: headerItemRect.height + 20
-            width: 850
+            width: 850 - 2
             clip: true
             height: delegate.expandedItemCount * itemHeight
             opacity: broswerDelegate.expanded ? 1 : 0

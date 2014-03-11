@@ -47,7 +47,9 @@ Item {
     width: 800//850
     height: 30
     clip: true
-    onSelectedChanged: selected ? state = 'selected' : state = ''
+    onSelectedChanged: {
+        selected ? state = 'selected' : state = '';
+    }
     onCheckbox_statusChanged: {
         checkbox.checked=checkbox_status;
     }  //当父项传进来的check值改变时，强制改变全部子项的check值以进行统一控制
@@ -59,19 +61,29 @@ Item {
         return need_str;
     }
 
-    BorderImage {
-        id: background
-        anchors {
-            left: parent.left
-            leftMargin: 20
-        }
+//    BorderImage {
+//        id: background
+//        anchors {
+//            left: parent.left
+//            leftMargin: 20
+//        }
 
-//        border { top: 9; bottom: 36; left: 35; right: 35; }
-//        source: bgImage
-        border {left: 35; right: 35; }
-        source: (container.item_index%2 == 0) ? bgImage : bgImage2
+////        border { top: 9; bottom: 36; left: 35; right: 35; }
+////        source: bgImage
+//        border {left: 35; right: 35; }
+//        source: (container.item_index%2 == 0) ? bgImage : bgImage2
+//        anchors.fill: parent
+
+//    }
+    Rectangle {
+        id: background
         anchors.fill: parent
-    }
+        color: (container.item_index%2 == 0) ? "#d7ecfb" : "transparent"
+//        color: (container.item_index%2 == 0) ? "#d0eafb" : "#d7eefd"
+//         border.color: "black"
+//         border.width: 5
+//         radius: 10
+     }
 
     Common.CheckBox {
         id: checkbox
@@ -205,6 +217,7 @@ Item {
 
     MouseArea {
         id: mouseArea
+        hoverEnabled: true
         anchors.fill: itemText
 //        onClicked: container.clicked();
         onDoubleClicked: {//双击浏览器缓存栏目时，可以打开文件夹
@@ -213,17 +226,31 @@ Item {
             }
         }
 
-        onReleased: selectable && !selected ? selected = true : selected = false
+        onExited: container.state = ''
+        onReleased: container.state = ''//selectable && !selected ? selected = true : selected = false
+        onHoveredChanged:  {
+            !selected ? selected = true : selected = false
+        }
     }
-
     states: [
         State {
             name: 'pressed'; when: mouseArea.pressed
-            PropertyChanges { target: background; source: bgImagePressed; border { left: 35; top: 35; right: 35; bottom: 10 } }
+            PropertyChanges { target: background; color: "#cae7fa" }
         },
         State {
             name: 'selected'
-            PropertyChanges { target: background; source: bgImageSelected; border { left: 35; top: 35; right: 35; bottom: 10 } }
+            PropertyChanges { target: background; color: "#cae7fa" }
         }
     ]
+
+//    states: [
+//        State {
+//            name: 'pressed'; when: mouseArea.pressed
+//            PropertyChanges { target: background; source: bgImagePressed; border { left: 35; top: 35; right: 35; bottom: 10 } }
+//        },
+//        State {
+//            name: 'selected'
+//            PropertyChanges { target: background; source: bgImageSelected; border { left: 35; top: 35; right: 35; bottom: 10 } }
+//        }
+//    ]
 }

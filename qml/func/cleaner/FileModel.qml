@@ -264,9 +264,10 @@ Item {
         anchors.top: titlebar.bottom
         anchors.topMargin: 30
         anchors.left:parent.left
-        anchors.leftMargin: 27
+//        anchors.leftMargin: 27
         height: root.height -titlebar.height - 37
-        width: parent.width - 27 -2
+        width: parent.width -2
+//        width: parent.width - 27 -2
         Item {
             width: parent.width
             height: (root.sub_num + 1) * 30 + 30

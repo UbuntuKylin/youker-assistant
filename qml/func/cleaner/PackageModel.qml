@@ -669,9 +669,9 @@ Item {
             anchors.top: titlebar.bottom
             anchors.topMargin: 30
             anchors.left:parent.left
-            anchors.leftMargin: 27
+//            anchors.leftMargin: 27
             height: root.height - titlebar.height - 47
-            width: parent.width - 27 -2
+            width: parent.width -2//parent.width - 27 -2
             Item {
                 id: scrollItem
                 width: parent.width

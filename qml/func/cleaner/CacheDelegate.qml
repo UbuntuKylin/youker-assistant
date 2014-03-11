@@ -34,7 +34,7 @@ Item {
     Item {
         id: delegate
         property alias expandedItemCount: subItemRepeater.count
-        x: 5; y: 2
+        x: 2; y: 2
         width: parent.width
         height: headerItemRect.height + subItemsRect.height
 
@@ -42,7 +42,7 @@ Item {
         //checkbox, picture and words
         Row {
             id: headerItemRect
-            x: 5; y: 2
+            x: 20; y: 2
             width: parent.width
             height: listViewDelegate.itemHeight
             spacing: 15
@@ -142,7 +142,7 @@ Item {
             id: subItemsRect
             property int itemHeight: listViewDelegate.itemHeight
             y: headerItemRect.height + 20
-            width: 800//850
+            width: 850 - 2
             clip: true
             //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展
             height: delegate.expandedItemCount * itemHeight

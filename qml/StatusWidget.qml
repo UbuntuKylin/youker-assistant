@@ -135,10 +135,11 @@ Rectangle {
         Row {
             AnimatedImage {//动态图片
                 id: downloaddynamic
+                anchors.verticalCenter: parent.verticalCenter
                 playing: false
                 paused: true
-                width: 25
-                height: 25
+                width: 24
+                height: 16
                 source: "./img/icons/download.gif"
             }
             Common.ColorButton {
@@ -163,8 +164,9 @@ Rectangle {
         Row {
             AnimatedImage {//动态图片
                 id: uploaddynamic
-                width: 25
-                height: 25
+                anchors.verticalCenter: parent.verticalCenter
+                width: 24
+                height: 16
                 playing: false
                 paused: true
                 source: "./img/icons/upload.gif"
