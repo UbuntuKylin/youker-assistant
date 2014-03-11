@@ -136,6 +136,7 @@ Rectangle {
             Row {
                 spacing: 20
                 Common.TipLabel {
+                    z: 11
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "no"
                     showImage: "../../img/icons/cloud-gray.png"

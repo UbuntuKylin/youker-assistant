@@ -20,7 +20,7 @@ Rectangle {
     property string showText
     visible: false
     color: "#383838"
-    opacity: 0.7
+//    opacity: 0.7
 //    z:100
 
     BorderImage {

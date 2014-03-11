@@ -19,8 +19,8 @@ Item {
     id: container
     signal switched(bool position)
     property string fontName: "Helvetica"
-    property int fontSize: 8
-    property color fontColor: "black"
+    property int fontSize: 10
+    property color fontColor: "white"
     property string imageOn: '../../img/icons/on.png'
     property string imageOff: '../../img/icons/off.png'
     property bool switchedOn: true
@@ -42,7 +42,8 @@ Item {
         anchors.leftMargin: switchedOn ? 5: 30
         font {
             family: container.fontName
-            pointSize: container.fontSize
+            pixelSize: container.fontSize
+            bold: true
         }
         verticalAlignment: Text.AlignVCenter
     }

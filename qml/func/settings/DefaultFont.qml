@@ -203,7 +203,7 @@ Rectangle {
             left: parent.left
             leftMargin: 40
             top: parent.top
-            topMargin: 105
+            topMargin: 100
 
         }
         Text{
@@ -221,12 +221,12 @@ Rectangle {
 
     Column {
         id: fontcolumn
-        spacing: 3
+        spacing: 8
         anchors{
             left: parent.left
             leftMargin: 80
             top: settitle.bottom
-            topMargin: 10
+            topMargin: 2
         }
         z: 11
         Row {
@@ -234,6 +234,7 @@ Rectangle {
             Row{
                 spacing: 20
                 Common.TipLabel {
+                    z: 11
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
                     showImage: "../../img/icons/cloud-light.png"
@@ -275,6 +276,7 @@ Rectangle {
             Row{
                 spacing: 20
                 Common.TipLabel {
+                    z: 11
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
                     showImage: "../../img/icons/cloud-light.png"
@@ -442,7 +444,7 @@ Rectangle {
             left: parent.left
             leftMargin: 40
             top: fontcolumn.bottom
-            topMargin: 10
+            topMargin: 4
         }
         Text{
             id: zoomtitle
@@ -459,12 +461,12 @@ Rectangle {
     }
     Column {
         id: stylecolumn
-        spacing: 3
+        spacing: 8
         anchors{
             left: parent.left
             leftMargin: 80
             top: zoomrow.bottom
-            topMargin: 5
+            topMargin: 2
         }
         z: 11
         Row {
