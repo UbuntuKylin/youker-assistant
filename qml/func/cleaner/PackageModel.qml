@@ -272,7 +272,7 @@ Item {
                     backBtn.visible = true;
     //                rescanBtn.visible = true;
                 }
-                scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 1) * root.item_height + (root.configNum + 1) * root.item_height + root.spaceValue*3;
+                scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 1) * root.item_height + (root.configNum + 1) * root.item_height + root.spaceValue*6;
                 //扫描完成后恢复按钮的使能
                 actionBtn.enabled = true;
             }
@@ -545,7 +545,7 @@ Item {
                         configsubModel.clear();//内容清空
                         root.configNum = 0;//隐藏滑动条
                         root.config_arrow_show = 0;//伸缩图标隐藏
-                        scrollItem.height = 3 * root.item_height + root.spaceValue*3;
+                        scrollItem.height = 3 * root.item_height + root.spaceValue*6;
                         root.state = "PackageWorkAGAIN";//按钮的状态恢复初始值
                     }
                 }
@@ -675,9 +675,9 @@ Item {
             Item {
                 id: scrollItem
                 width: parent.width
-                height: root.item_height*3 + root.spaceValue*3
+                height: root.item_height*3 + root.spaceValue*3*2
                 Column {
-                    spacing: root.spaceValue
+                    spacing: root.spaceValue*2
                     //垃圾清理显示内容
                     ListView {
                         id: aptListView
@@ -704,31 +704,31 @@ Item {
                                     if(expand_flag == true) {
                                         root.package_expanded = true;
                                         if((root.kernel_expanded == true) && (root.config_expanded == true)) {
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 1) * root.item_height + (root.configNum + 1) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 1) * root.item_height + (root.configNum + 1) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.kernel_expanded == true) && (root.config_expanded == false)){
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.kernel_expanded == false) && (root.config_expanded == true)){
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else {
-                                            scrollItem.height = (root.packageNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                     }
                                     else {
                                         root.package_expanded = false;
                                         if((root.kernel_expanded == true) && (root.config_expanded == true)) {
-                                            scrollItem.height = (root.kernelNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.kernelNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.kernel_expanded == true) && (root.config_expanded == false)){
-                                            scrollItem.height = (root.kernelNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.kernelNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.kernel_expanded == false) && (root.config_expanded == true)){
-                                            scrollItem.height = (root.configNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.configNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                         else {
-                                            scrollItem.height = 3 * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = 3 * root.item_height + root.spaceValue*6;
                                         }
                                     }
                                 }
@@ -736,7 +736,7 @@ Item {
                         }
                         cacheBuffer: 1000
                         opacity: 1
-                        spacing: 10
+//                        spacing: 10
                         snapMode: ListView.NoSnap
                         boundsBehavior: Flickable.DragOverBounds
                         currentIndex: 0
@@ -770,31 +770,31 @@ Item {
                                     if(expand_flag == true) {
                                         root.kernel_expanded = true;
                                         if((root.package_expanded == true) && (root.config_expanded == true)) {
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 1) * root.item_height + (root.configNum + 1) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 1) * root.item_height + (root.configNum + 1) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.package_expanded == true) && (root.config_expanded == false)){
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.package_expanded == false) && (root.config_expanded == true)){
-                                            scrollItem.height = (root.configNum + 1) * root.item_height + (root.kernelNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.configNum + 1) * root.item_height + (root.kernelNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else {
-                                            scrollItem.height = (root.kernelNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.kernelNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                     }
                                     else {
                                         root.kernel_expanded = false;
                                         if((root.package_expanded == true) && (root.config_expanded == true)) {
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.package_expanded == true) && (root.config_expanded == false)){
-                                            scrollItem.height = (root.packageNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.package_expanded == false) && (root.config_expanded == true)){
-                                            scrollItem.height = (root.configNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.configNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                         else {
-                                            scrollItem.height = 3 * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = 3 * root.item_height + root.spaceValue*6;
                                         }
                                     }
                                 }
@@ -837,31 +837,31 @@ Item {
                                     if(expand_flag == true) {
                                         root.config_expanded = true;
                                         if((root.package_expanded == true) && (root.kernel_expanded == true)) {
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 1) * root.item_height + (root.configNum + 1) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 1) * root.item_height + (root.configNum + 1) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.package_expanded == true) && (root.kernel_expanded == false)){
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.package_expanded == false) && (root.kernel_expanded == true)){
-                                            scrollItem.height = (root.kernelNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.kernelNum + 1) * root.item_height + (root.configNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else {
-                                            scrollItem.height = (root.configNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.configNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                     }
                                     else {
                                         root.config_expanded = false;
                                         if((root.package_expanded == true) && (root.kernel_expanded == true)) {
-                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 2) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 1) * root.item_height + (root.kernelNum + 2) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.package_expanded == true) && (root.kernel_expanded == false)){
-                                            scrollItem.height = (root.packageNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.packageNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                         else if((root.package_expanded == false) && (root.kernel_expanded == true)){
-                                            scrollItem.height = (root.kernelNum + 3) * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = (root.kernelNum + 3) * root.item_height + root.spaceValue*6;
                                         }
                                         else {
-                                            scrollItem.height = 3 * root.item_height + root.spaceValue*3;
+                                            scrollItem.height = 3 * root.item_height + root.spaceValue*6;
                                         }
                                     }
                                 }
@@ -869,7 +869,7 @@ Item {
                         }
                         cacheBuffer: 1000
                         opacity: 1
-                        spacing: 10
+//                        spacing: 10
                         snapMode: ListView.NoSnap
                         boundsBehavior: Flickable.DragOverBounds
                         currentIndex: 0

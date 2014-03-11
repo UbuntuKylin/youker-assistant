@@ -20,7 +20,7 @@ Item {
     id: container
 
     property string fontName: "Helvetica"
-    property int fontSize: 10
+    property int fontSize: 12
     property color fontColor: "black"
     property bool fontBold: false
     property string text: ""
@@ -174,11 +174,8 @@ Item {
         }
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            font {
-                family: container.fontName
-                pointSize: container.fontSize
-                bold: container.fontBold
-            }
+            font.pixelSize: container.fontSize
+            font.family: container.fontName
             color: container.fontColor
             elide: Text.ElideRight
             text: container.split_status ? get_last_name(container.text) : container.text
@@ -198,6 +195,8 @@ Item {
         Text {
             text: container.size_num
             anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: container.fontSize
+            font.family: container.fontName
             color: container.fontColor
             elide: Text.ElideRight
             verticalAlignment: Text.AlignVCenter

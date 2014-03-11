@@ -18,7 +18,7 @@ import "../common" as Common
 Item {
     id: container
     property string fontName: "Helvetica"
-    property int fontSize: 10
+    property int fontSize: 12
     property color fontColor: "black"
     property bool fontBold: false
     property string text: ""
@@ -85,11 +85,8 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 30
-        font {
-            family: container.fontName
-            pointSize: container.fontSize
-            bold: container.fontBold
-        }
+        font.pixelSize: container.fontSize
+        font.family: container.fontName
         color: container.fontColor
         elide: Text.ElideRight
         text: container.split_status ? get_last_name(container.text) : container.text
@@ -104,6 +101,8 @@ Item {
             rightMargin: 40
             verticalCenter: container.verticalCenter
         }
+        font.pixelSize: container.fontSize
+        font.family: container.fontName
         color: container.fontColor
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter

@@ -141,7 +141,7 @@ Item {
         Item {
             id: subItemsRect
             property int itemHeight: listViewDelegate.itemHeight
-            y: headerItemRect.height
+            y: headerItemRect.height + 20
             width: 800//850
             clip: true
             //当高度需要扩展时,根据expandedItemCount数目和itemHeight高度去扩展

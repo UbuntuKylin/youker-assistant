@@ -153,7 +153,7 @@ Item {
                     backBtn.visible = true;
     //                rescanBtn.visible = true;
                 }
-                scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
+                scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*4;
                 //扫描完成后恢复按钮的使能
                 actionBtn.enabled = true;
             }
@@ -333,7 +333,7 @@ Item {
                     chromiumsubModel.clear();//内容清空
                     root.chromiumNum = 0;//隐藏滑动条
                     root.chromium_arrow_show = 0;//伸缩图标隐藏
-                    scrollItem.height = 2 * root.item_height + root.spaceValue*2;
+                    scrollItem.height = 2 * root.item_height + root.spaceValue*4;
                     root.state = "BrowserWorkAGAIN";//按钮的状态恢复初始值
                 }
             }
@@ -437,9 +437,9 @@ Item {
         Item {
             id: scrollItem
             width: parent.width
-            height: root.item_height*2 + root.spaceValue*2
+            height: root.item_height*2 + root.spaceValue*2*2
             Column {
-                spacing: root.spaceValue
+                spacing: root.spaceValue * 2
                 //垃圾清理显示内容
                 ListView {
                     id: aptListView
@@ -474,19 +474,19 @@ Item {
                                 if(expand_flag == true) {
                                     root.firefox_expanded = true;
                                     if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*4;
                                     }
                                     else {
-                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*4;
                                     }
                                 }
                                 else {
                                     root.firefox_expanded = false;
                                     if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*2;
+                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*4;
                                     }
                                     else {
-                                        scrollItem.height = 2* root.item_height + root.spaceValue*2;
+                                        scrollItem.height = 2* root.item_height + root.spaceValue*4;
                                     }
                                 }
                             }
@@ -534,19 +534,19 @@ Item {
                                 if(expand_flag == true) {
                                     root.chromium_expanded = true;
                                     if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*4;
                                     }
                                     else {
-                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*2;
+                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*4;
                                     }
                                 }
                                 else {
                                     root.chromium_expanded = false;
                                     if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*2;
+                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*4;
                                     }
                                     else {
-                                        scrollItem.height = 2* root.item_height + root.spaceValue*2;
+                                        scrollItem.height = 2* root.item_height + root.spaceValue*4;
                                     }
                                 }
                             }

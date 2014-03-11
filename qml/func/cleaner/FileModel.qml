@@ -67,6 +67,7 @@ Item {
             }
             else {
                 subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i});
+                systemdispatcher.set_largestfile_args(splitlist[1]);
 //                if(root.yesOrno == "true") {
 //                    console.log("is yes...........");
 //                    systemdispatcher.set_largestfile_args(splitlist[1]);
@@ -84,7 +85,8 @@ Item {
         }
         mainModel.clear();
         //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
-        mainModel.append({"itemTitle": qsTr("Cleanup path is:")  + root.directory,
+        mainModel.append({"mstatus": root.check_flag ? "true": "false",
+                          "itemTitle": qsTr("Cleanup path is:")  + root.directory,
                          "picture": "../../img/toolWidget/deb-min.png",
                          "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
     }
@@ -210,7 +212,8 @@ Item {
             text: qsTr("Begin cleanup")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-                if(root.check_flag) {
+//                if(root.check_flag) {
+                if(root.lar_num > 0) {
                     if(size_text.text == "" || size_text.text == 0)
                         //友情提示：        对不起，您没有设置扫描文件的大小或者设置值为 0，请重新输入文件大小！
                         sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You haven't set the file size or the value is 0, please input the file sizes !"), mainwindow.pos.x, mainwindow.pos.y);
@@ -266,7 +269,7 @@ Item {
         width: parent.width - 27 -2
         Item {
             width: parent.width
-            height: (root.sub_num + 1) * 30
+            height: (root.sub_num + 1) * 30 + 30
             //垃圾清理显示内容
             ListView {
                 id: listView
@@ -279,12 +282,16 @@ Item {
                     arrow_display: root.deleget_arrow
                     delegate_flag: false
 //                    main_check_value: root.yesOrno
-                    onSubpressed: { root.sub_num = hMark }
-                    onCheckchanged: { root.check_flag = checkchange }
+                    onSubpressed: {
+                        root.sub_num = hMark;
+                    }
+                    onCheckchanged: {
+                        root.check_flag = checkchange;
+                    }
                 }
                 cacheBuffer: 1000
                 opacity: 1
-                spacing: 10
+//                spacing: 10
                 snapMode: ListView.NoSnap
                 boundsBehavior: Flickable.DragOverBounds
                 currentIndex: 0

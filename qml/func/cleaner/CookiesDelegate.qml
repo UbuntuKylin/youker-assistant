@@ -32,120 +32,134 @@ Item {
     Item {
         id: delegate
         property alias expandedItemCount: subItemRepeater.count
-        x: 5; y: 2
+//        x: 5; y: 2
         width: parent.width
         height: headerItemRect.height + subItemsRect.height
 
         //母项
         //checkbox, picture and words
-        Row {
+        Item {
             id: headerItemRect
-            x: 5; y: 2
             width: parent.width
             height: broswerDelegate.itemHeight
-            spacing: 15
-            Image {
-                id: arrow
-                fillMode: "PreserveAspectFit"
-                height: 28
-                width: 26
-                anchors.verticalCenter: parent.verticalCenter
-                source: broswerDelegate.arrow
-                opacity: arrow_display
-                //当鼠标点击后,箭头图片旋转90度
-                rotation: broswerDelegate.expanded ? 0 : -90
-                smooth: true
-                MouseArea {
-                    id: mouseRegion
-                    anchors.fill: parent
-                    onPressed: {
-                        expanded = !expanded;//扫描出的子项是否下拉显示的控制变量
-                        broswerDelegate.browserArrowClicked(broswerDelegate.flag, broswerDelegate.expanded);//1210
-                    }
-                }
-            }
-
-            Image {
-                id: clearImage
-                fillMode: "PreserveAspectFit"
-                height: parent.height*0.9
-                source: picture
-                smooth: true
-            }
-
             Row {
-                spacing: 10
-                anchors.verticalCenter: parent.verticalCenter
-                Text {
-                    text: itemTitle
-                    font.pointSize: 11
-                    color: "black"
-                    anchors.verticalCenter: parent.verticalCenter
+                spacing: 15
+                anchors {
+                    left: parent.left
+                    leftMargin: 5
                 }
-                Common.Label {
-                    id: numLabel
-                    visible: broswerDelegate.showNum
-                    text: "[ " + broswerDelegate.sub_num + qsTr(" Items ]")// 个项目 ]
-                    font.pointSize: 11
-                    color: "black"
+                Image {
+                    id: arrow
+                    fillMode: "PreserveAspectFit"
+                    height: 28
+                    width: 26
                     anchors.verticalCenter: parent.verticalCenter
+                    source: broswerDelegate.arrow
+                    opacity: arrow_display
+                    //当鼠标点击后,箭头图片旋转90度
+                    rotation: broswerDelegate.expanded ? 0 : -90
+                    smooth: true
+                    MouseArea {
+                        id: mouseRegion
+                        anchors.fill: parent
+                        onPressed: {
+                            expanded = !expanded;//扫描出的子项是否下拉显示的控制变量
+                            broswerDelegate.browserArrowClicked(broswerDelegate.flag, broswerDelegate.expanded);//1210
+                        }
+                    }
+                }
+
+                Image {
+                    id: clearImage
+                    anchors.verticalCenter: parent.verticalCenter
+                    fillMode: "PreserveAspectFit"
+//                    height: parent.height*0.9
+                    source: picture
+                    smooth: true
+                }
+
+                Row {
+                    spacing: 10
+                    anchors.verticalCenter: parent.verticalCenter
+                    Text {
+                        text: itemTitle
+                        font.pointSize: 11
+                        color: "black"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    Common.Label {
+                        id: numLabel
+                        visible: broswerDelegate.showNum
+                        text: "[ " + broswerDelegate.sub_num + qsTr(" Items ]")// 个项目 ]
+                        font.pointSize: 11
+                        color: "black"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
                 }
             }
 
-            Item {
-                x: 550
-                y: 2
-                height: broswerDelegate.itemHeight
-                Row {
-                    spacing: 15
-                    Row {
-                        spacing: 20
-                        anchors.verticalCenter: parent.verticalCenter
-                        Common.StyleButton {
-                            id: resetBtn
-                            visible: broswerDelegate.resetStatus//false
-                            anchors.verticalCenter: parent.verticalCenter
-                            wordname: qsTr("Back")//返回
-                            width: 40
-                            height: 20
-                            onClicked: {
-                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "reset");
-                            }
-                        }
-                        Common.StyleButton {
-                            id: rescanBtn
-                            visible: broswerDelegate.resetStatus//false
-                            anchors.verticalCenter: parent.verticalCenter
-                            wordname: qsTr("Rescan")//重新扫描
-                            width: 40
-                            height: 20
-                            onClicked: {
-                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "rescan");
-                            }
-                        }
+//            Row {
+//                anchors {
+////                    left: parent.left
+////                    leftMargin: 600
+//                    right: parent.right
+//                    rightMargin: 30
+//                }
+//                spacing: 20
+            Common.StyleButton {
+                id: resetBtn
+                visible: broswerDelegate.resetStatus//false
+                anchors {
+                    left: parent.left
+                    leftMargin: 580
+                }
+                anchors.verticalCenter: parent.verticalCenter
+                wordname: qsTr("Back")//返回
+                width: 40
+                height: 20
+                onClicked: {
+                    broswerDelegate.sendBrowserType(broswerDelegate.flag, "reset");
+                }
+            }
+            Common.StyleButton {
+                id: rescanBtn
+                visible: broswerDelegate.resetStatus//false
+                anchors {
+                    left: parent.left
+                    leftMargin: 640
+                }
+                anchors.verticalCenter: parent.verticalCenter
+                wordname: qsTr("Rescan")//重新扫描
+                width: 40
+                height: 20
+                onClicked: {
+                    broswerDelegate.sendBrowserType(broswerDelegate.flag, "rescan");
+                }
+            }
+            Common.Button {
+                id: scanBtn
+                width: 94
+                height: 29
+                fontsize: 13
+                hoverimage: "green.png"
+                text: broswerDelegate.actionTitle
+                anchors {
+                    left: parent.left
+                    leftMargin: 700
+                }
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    if(broswerDelegate.btn_flag == "cookies_scan") {
+                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scan");
                     }
-                    Common.Button {
-                        id: scanBtn
-                        width: 94
-                        height: 29
-                        fontsize: 13
-                        hoverimage: "green.png"
-                        text: broswerDelegate.actionTitle
-                        anchors.verticalCenter: parent.verticalCenter
-                        onClicked: {
-                            if(broswerDelegate.btn_flag == "cookies_scan") {
-                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scan");
-                            }
-                            else if(broswerDelegate.btn_flag == "cookies_scanc") {
-                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scanc");
-                            }
-                            else if(broswerDelegate.btn_flag == "cookies_work") {
-                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_work");
-                            }
-                            else if(broswerDelegate.btn_flag == "cookies_workc") {
-                                broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_workc");
-                            }
-                        }
+                    else if(broswerDelegate.btn_flag == "cookies_scanc") {
+                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scanc");
+                    }
+                    else if(broswerDelegate.btn_flag == "cookies_work") {
+                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_work");
+                    }
+                    else if(broswerDelegate.btn_flag == "cookies_workc") {
+                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_workc");
                     }
                 }
             }
@@ -155,7 +169,7 @@ Item {
         Item {
             id: subItemsRect
             property int itemHeight: broswerDelegate.itemHeight
-            y: headerItemRect.height
+            y: headerItemRect.height + 20
             width: 850
             clip: true
             height: delegate.expandedItemCount * itemHeight

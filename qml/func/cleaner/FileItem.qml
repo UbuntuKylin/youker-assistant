@@ -43,7 +43,7 @@ Item {
     signal clicked
 
     width: 850
-    height: 40
+    height: 30
     clip: true
     onSelectedChanged: selected ? state = 'selected' : state = ''
     onCheckbox_statusChanged: {checkbox.checked=checkbox_status}  //当父项传进来的check值改变时，强制改变全部子项的check值以进行统一控制
@@ -203,11 +203,8 @@ Item {
         }
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            font {
-                family: container.fontName
-                pointSize: container.fontSize
-                bold: container.fontBold
-            }
+            font.pixelSize: container.fontSize
+            font.family: container.fontName
             color: container.fontColor
             elide: Text.ElideRight
     //        text: get_last_name(container.text)
@@ -235,6 +232,8 @@ Item {
         }
         wrapMode: Text.WordWrap
         width: 700
+        font.pixelSize: container.fontSize
+        font.family: container.fontName
         color: container.fontColor
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
@@ -250,6 +249,8 @@ Item {
         Text {
             text: container.size_num
             anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: container.fontSize
+            font.family: container.fontName
             color: container.fontColor
             elide: Text.ElideRight
             verticalAlignment: Text.AlignVCenter

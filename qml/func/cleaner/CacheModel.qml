@@ -180,7 +180,7 @@ Item {
                     backBtn.visible = true;
     //                rescanBtn.visible = true;
                 }
-                scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*3;
+                scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*6;
                 //扫描完成后恢复按钮的使能
                 actionBtn.enabled = true;
             }
@@ -467,7 +467,7 @@ Item {
                     thumbsubModel.clear();//内容清空
                     root.thumbNum = 0;//隐藏滑动条
                     root.thumb_arrow_show = 0;//伸缩图标隐藏
-                    scrollItem.height = 3 * root.item_height + root.spaceValue*3;
+                    scrollItem.height = 3 * root.item_height + root.spaceValue*6;
                     root.state = "AptWorkAGAIN";//按钮的状态恢复初始值
                 }
             }
@@ -599,9 +599,9 @@ Item {
         Item {
             id: scrollItem
             width: parent.width
-            height: root.item_height*3 + root.spaceValue*3
+            height: root.item_height*3 + root.spaceValue*3*2
             Column {
-                spacing: root.spaceValue
+                spacing: root.spaceValue * 2
                 //垃圾清理显示内容
                 ListView {
                     id: aptListView
@@ -633,31 +633,31 @@ Item {
                                 if(expand_flag == true) {
                                     root.apt_expanded = true;
                                     if((root.soft_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.soft_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.soft_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                 }
                                 else {
                                     root.apt_expanded = false;
                                     if((root.soft_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.softNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.soft_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.soft_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = 3 * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = 3 * root.item_height + root.spaceValue*6;
                                     }
                                 }
                             }
@@ -665,7 +665,7 @@ Item {
                     }
                     cacheBuffer: 1000
                     opacity: 1
-                    spacing: 10
+//                    spacing: 10
                     snapMode: ListView.NoSnap
                     boundsBehavior: Flickable.DragOverBounds
                     currentIndex: 0
@@ -704,31 +704,31 @@ Item {
                                 if(expand_flag == true) {
                                     root.soft_expanded = true;
                                     if((root.apt_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.apt_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.apt_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.thumbNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                 }
                                 else {
                                     root.soft_expanded = false;
                                     if((root.apt_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.apt_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.apt_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = 3 * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = 3 * root.item_height + root.spaceValue*6;
                                     }
                                 }
                             }
@@ -736,7 +736,7 @@ Item {
                     }
                     cacheBuffer: 1000
                     opacity: 1
-                    spacing: 10
+//                    spacing: 10
                     snapMode: ListView.NoSnap
                     boundsBehavior: Flickable.DragOverBounds
                     currentIndex: 0
@@ -775,32 +775,32 @@ Item {
                                 if(expand_flag == true) {
                                     root.thumb_expanded = true;
                                     if((root.apt_expanded == true) && (root.soft_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*6;
 //                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
                                     }
                                     else if((root.apt_expanded == true) && (root.soft_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.apt_expanded == false) && (root.soft_expanded == true)){
-                                        scrollItem.height = (root.softNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                 }
                                 else {
                                     root.thumb_expanded = false;
                                     if((root.apt_expanded == true) && (root.soft_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.apt_expanded == true) && (root.soft_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                     else if((root.apt_expanded == false) && (root.soft_expanded == true)){
-                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = 3 * root.item_height + root.spaceValue*3;
+                                        scrollItem.height = 3 * root.item_height + root.spaceValue*6;
                                     }
                                 }
                             }
@@ -808,7 +808,7 @@ Item {
                     }
                     cacheBuffer: 1000
                     opacity: 1
-                    spacing: 10
+//                    spacing: 10
                     snapMode: ListView.NoSnap
                     boundsBehavior: Flickable.DragOverBounds
                     currentIndex: 0
