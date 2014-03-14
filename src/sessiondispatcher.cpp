@@ -152,7 +152,7 @@ void SessionDispatcher::connectHttpServer(){
     mSettings->endGroup();
     mSettings->sync();
     //心跳
-    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=%1").arg(id);
+    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=%1").arg(id);
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 }
@@ -160,7 +160,7 @@ void SessionDispatcher::connectHttpServer(){
 //beat失败处理，beat不成功，界面的用户信息消失，改为登录界面，提示网络出错
 void SessionDispatcher::resetTimerStatus() {
     //主动查询
-    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=network");
+    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=network");
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 }
@@ -172,7 +172,7 @@ void SessionDispatcher::searchCurrentInfo() {
     int id = mSettings->value("id").toInt();
     mSettings->endGroup();
     mSettings->sync();
-    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=getall&pp[table]=yk_member&pp[id]=%1").arg(id);
+    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=getall&pp[table]=yk_member&pp[id]=%1").arg(id);
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 }
@@ -195,7 +195,7 @@ void SessionDispatcher::ready_exit_normally() {
     int id = mSettings->value("id").toInt();
     mSettings->endGroup();
     mSettings->sync();
-    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=logout&pp[table]=yk_member&pp[id]=%1").arg(id);
+    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=logout&pp[table]=yk_member&pp[id]=%1").arg(id);
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 }
@@ -209,9 +209,11 @@ void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库�
 void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
     //显示登录动态图
     emit showLoginAnimatedImage();
+    qDebug() << user;
+    qDebug() << pwd;
 
     //发送数据给服务端进行登录验证
-    QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
+    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
     QUrl url(requestData);
     httpauth->sendGetRequest(url);
 }
@@ -273,7 +275,7 @@ void SessionDispatcher::handle_data_when_login_failed(int status) {
             qDebug()<<"connect fail...";
         }else{
             qDebug() << "continue connect...";
-            QString requestData = QString("http://119.254.229.72/boxbeta/find_get.php?pp[type]=network");
+            QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=network");
             QUrl url(requestData);
             httpauth->sendGetRequest(url);
         }
