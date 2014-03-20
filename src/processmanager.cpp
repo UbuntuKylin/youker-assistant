@@ -182,10 +182,10 @@ QStringList ProcessManager::getProcessAdvance(){
 
 bool ProcessManager::killProcess(QString pid){
     QProcess *p = new QProcess();
-    qDebug() << pid;
+//    qDebug() << pid;
     p->start("kill -9 " + pid);
     bool aa = p->waitForFinished();
-    qDebug() << QString("%1").arg(aa);
+//    qDebug() << QString("%1").arg(aa);
     return aa;
 //    return p->waitForFinished();
 }

@@ -209,8 +209,8 @@ void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库�
 void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
     //显示登录动态图
     emit showLoginAnimatedImage();
-    qDebug() << user;
-    qDebug() << pwd;
+//    qDebug() << user;
+//    qDebug() << pwd;
 
     //发送数据给服务端进行登录验证
     QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);

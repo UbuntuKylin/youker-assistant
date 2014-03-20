@@ -2,16 +2,16 @@ youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 
   * Modify display mode of weather forecast and system settings.
   * Add file manager and font style settings.
-  * Perfecting the system settings and restore default settings better.
-  * Remember user account.
-  * Change window control button position of youkerf-assistant.
-  * Add Kysoft KuaiPan cloud conf.
-  * Add the instruction of youker-assistant.
-  * Open the folder when double-clicked scanning item.
+  * Improve system settings and restoring default settings.
+  * Cache user account (not password).
+  * Change the position of window control buttons.
+  * Add configuration for Kysoft KuaiPan cloud client.
+  * Add the instruction of Youker Assistant.
+  * Open related folders when scanning items got double-clicked.
   * Notify users when operating the Kingsoft disk cloud configuration.
   * Modify Dbus starting method.
   
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 11 Mar 2014 22:31:43 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 20 Mar 2014 10:14:56 +0800
 
 youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
 
