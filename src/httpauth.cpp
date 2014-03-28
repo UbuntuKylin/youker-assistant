@@ -103,7 +103,7 @@ void HttpAuth::replyFinished(QNetworkReply *reply){
             }
         }
         else if(data == "status=logout"){//正常注销
-//            qDebug() << "logout success......";
+            qDebug() << "logout success......";
         }
     }
     else {

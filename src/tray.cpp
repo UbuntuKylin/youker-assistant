@@ -53,8 +53,8 @@ Tray::Tray(QWidget *parent)
     connect(frame, SIGNAL(accelerate_memory()), this, SLOT(startMemoryAccelerate()));
 
     //--------------------------
-    connect(this, SIGNAL(ready_to_write_user_info_when_exit()), sedispather, SLOT(handler_write_user_info_when_exit()));
-    connect(sedispather, SIGNAL(ready_to_exit()), this, SLOT(handler_to_exit()));
+//    connect(this, SIGNAL(ready_to_write_user_info_when_exit()), sedispather, SLOT(handler_write_user_info_when_exit()));
+//    connect(sedispather, SIGNAL(ready_to_exit()), this, SLOT(handler_to_exit()));
 
     QTimer *timer = new QTimer(this);
     timer->setInterval(1000);
@@ -74,9 +74,9 @@ Tray::~Tray() {
     }
 }
 
-void Tray::handler_to_exit() {
-    qApp->quit();
-}
+//void Tray::handler_to_exit() {
+//    qApp->quit();
+//}
 
 void Tray::updateData() {
     QStringList current_speed = sedispather->get_network_flow_total_qt();
@@ -175,8 +175,8 @@ void Tray::handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason) {
 }
 
 void Tray::exit() {
-    emit ready_to_write_user_info_when_exit();
-//    qApp->quit();
+//    emit ready_to_write_user_info_when_exit();
+    qApp->quit();
 }
 
 void Tray::showOrHide() {

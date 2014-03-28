@@ -30,14 +30,20 @@ class IhuApplication : public QWidget
 public:
     explicit IhuApplication(QWidget *parent = 0);
     virtual ~IhuApplication();
-    void setup();
+    void setup(QString qmlFile);
     void showQMLWidget();
+
+protected:
+    void showEvent(QShowEvent *e);
 
 private:
     //关联QML界面
     QDeclarativeView *viewer;
     //系统托盘
     Tray *tray;
+    //重写绘图函数
+    void paintEvent(QPaintEvent *);
+
 public slots:
     //主界面显示和隐藏
     void showOrHideMainPage();

@@ -61,6 +61,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     //超时计时器
     timer=new QTimer(this);
+    loginOK = false;
 
 //    skin_widget = new SkinsWidget(mSettings);
 //    skinCenter = new SkinCenter();
@@ -102,14 +103,29 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 }
 
 SessionDispatcher::~SessionDispatcher() {
+    if(loginOK) {
+        //退出
+        mSettings->beginGroup("user");
+        int id = mSettings->value("id").toInt();
+        mSettings->endGroup();
+        mSettings->sync();
+        QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=logout&pp[table]=yk_member&pp[id]=%1").arg(id);
+        QUrl url(requestData);
+        httpauth->sendGetRequest(url);
+    }
+    waitTime = 0;
+    disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
+    if(timer->isActive()) {
+        timer->stop();
+    }
+
     mSettings->sync();
     if (mSettings != NULL) {
         delete mSettings;
     }
-//    if(timer->isActive()) {
-//        timer->stop();
-//    }
+
     this->exit_qt();
+//    this->ready_exit_normally();
 }
 
 //dbus服务退出
@@ -200,10 +216,10 @@ void SessionDispatcher::ready_exit_normally() {
     httpauth->sendGetRequest(url);
 }
 
-void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库数据和本地配置文件
-    this->ready_exit_normally();
-    emit this->ready_to_exit();//通知菜单可以退出程序了
-}
+//void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库数据和本地配置文件
+//    this->ready_exit_normally();
+//    emit this->ready_to_exit();//通知菜单可以退出程序了
+//}
 
 //点击登录框的确定按钮后，开始发送数据给服务端进行登录验证
 void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
@@ -235,6 +251,7 @@ void SessionDispatcher::logout_ubuntukylin_account() {
 
 //用户登录成功后处理数据：显示界面、id写入本地配置、开启定时器
 void SessionDispatcher::handle_data_after_login_success(QString id,/* QString level, */QString name, QString score) {
+    loginOK = true;
     //登录成功后将用户信息显示在界面上
     bool ok;
     QString level = score_count_level(score.toInt(&ok, 10));
@@ -281,6 +298,7 @@ void SessionDispatcher::handle_data_when_login_failed(int status) {
         }
     }
     else {
+        loginOK = false;
         emit loginFailedStatus(status);
     }
 }

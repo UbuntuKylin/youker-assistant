@@ -85,13 +85,13 @@ public slots:
     //快捷键退出
     void exit();
     //数据写入数据库完毕后，准备退出程序
-    void handler_to_exit();
+//    void handler_to_exit();
 signals:
     //显示/隐藏QML主界面的信号
     void showOrHideQmlSignal();
     //将小监控球实时更新的数据同步到大监控球
     void sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
-    void ready_to_write_user_info_when_exit();
+//    void ready_to_write_user_info_when_exit();
 
 };
 

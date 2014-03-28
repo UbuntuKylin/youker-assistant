@@ -81,18 +81,18 @@ Rectangle {
             text: qsTr("main version:") + root.version//主版本：
         }
     }
-    MouseArea {
-        id: mouseRegion
-        anchors.fill: parent
-        property variant clickPos: "1,1"
-        onPressed: {
-            clickPos  = Qt.point(mouse.x,mouse.y)
-        }
-        onPositionChanged: {
-            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-            mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
-        }
-    }
+//    MouseArea {
+//        id: mouseRegion
+//        anchors.fill: parent
+//        property variant clickPos: "1,1"
+//        onPressed: {
+//            clickPos  = Qt.point(mouse.x,mouse.y)
+//        }
+//        onPositionChanged: {
+//            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+//            mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
+//        }
+//    }
 //    Image {
 //        id: downloadImage
 //        anchors {

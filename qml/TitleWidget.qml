@@ -60,21 +60,21 @@ Rectangle {
         }
     }
 
-    MouseArea {
-          id: mouseRegion
-          anchors.fill: parent;
-          property variant clickPos: "1,1"
+//    MouseArea {
+//          id: mouseRegion
+//          anchors.fill: parent;
+//          property variant clickPos: "1,1"
 
-          onPressed: {
-              clickPos  = Qt.point(mouse.x,mouse.y)
-          }
+//          onPressed: {
+//              clickPos  = Qt.point(mouse.x,mouse.y)
+//          }
 
-          onPositionChanged: {
-              var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-              mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x,
-                                mainwindow.pos.y+delta.y)
-          }
-      }
+//          onPositionChanged: {
+//              var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+//              mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x,
+//                                mainwindow.pos.y+delta.y)
+//          }
+//      }
 
     SysBtn {
         iconName: "sys_button_close.png"

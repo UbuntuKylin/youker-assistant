@@ -108,7 +108,7 @@ int main(int argc, char** argv)
     IhuApplication application;
     splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
-    application.setup();
+    application.setup("main.qml");
     //显示主界面，并结束启动画面
     application.showQMLWidget();
     splash->finish(&application);

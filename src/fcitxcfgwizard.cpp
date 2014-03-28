@@ -674,14 +674,13 @@ void FcitxCfgWizard::set_next_page_key()
 //=================================================================================//
 QStringList FcitxCfgWizard::get_all_skin_type()
 {
-    int i;
     size_t len;
     QStringList ret_value;
     QDir skin_dir;
     QFileInfoList list;
     QFileInfoList::Iterator list_iter;
     char **skin_path = FcitxXDGGetPathWithPrefix(&len, "skin");
-    for (i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++) {
         skin_dir = QDir(skin_path[i]);
         if (!skin_dir.exists())
             continue;

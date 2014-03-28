@@ -70,6 +70,23 @@ Rectangle {
         anchors.fill: parent
         source: ""
     }
+
+    MouseArea {
+        anchors.fill: parent
+        property variant previousPosition
+        onPressed: {
+            previousPosition = Qt.point(mouseX, mouseY)
+        }
+        onPositionChanged: {
+            if (pressedButtons == Qt.LeftButton) {
+                var dx = mouseX - previousPosition.x
+                var dy = mouseY - previousPosition.y
+                mainwindow.pos = Qt.point(mainwindow.pos.x + dx,
+                                            mainwindow.pos.y + dy)
+            }
+        }
+    }
+
     radius: 4
     opacity: 1.0
     Column {
@@ -96,24 +113,24 @@ Rectangle {
             rightMargin: 35
         }
         source: (sessiondispatcher.get_locale_version() == "zh_CN") ? "./img/zh_CN/logo.png" : "./img/en/logo.png"
-        MouseArea {
-            anchors.fill: logo
-//            property variant clickPos: "1,1"
-            property variant previousPosition
-            onPressed: {
-//                clickPos  = Qt.point(mouse.x,mouse.y)
-                previousPosition = Qt.point(mouseX, mouseY)
-            }
-            onPositionChanged: {
-//                var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-//                mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
-                if (pressedButtons == Qt.LeftButton) {
-                    var dx = mouseX - previousPosition.x
-                    var dy = mouseY - previousPosition.y
-                    mainwindow.pos = Qt.point(mainwindow.pos.x + dx,
-                                                mainwindow.pos.y + dy)
-                }
-            }
-        }
+//        MouseArea {
+//            anchors.fill: logo
+////            property variant clickPos: "1,1"
+//            property variant previousPosition
+//            onPressed: {
+////                clickPos  = Qt.point(mouse.x,mouse.y)
+//                previousPosition = Qt.point(mouseX, mouseY)
+//            }
+//            onPositionChanged: {
+////                var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+////                mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x, mainwindow.pos.y+delta.y)
+//                if (pressedButtons == Qt.LeftButton) {
+//                    var dx = mouseX - previousPosition.x
+//                    var dy = mouseY - previousPosition.y
+//                    mainwindow.pos = Qt.point(mainwindow.pos.x + dx,
+//                                                mainwindow.pos.y + dy)
+//                }
+//            }
+//        }
     }
 }

@@ -381,7 +381,7 @@ signals:
     void tellUploadCloudConfToQML(QString upload);
 
     //程序退出之前用户信息写入服务器端完毕后，告诉tray退出程序
-    void ready_to_exit();
+//    void ready_to_exit();
 
     //告诉QML确认云配置操作
 //    void tellQMLCloudConfirm();
@@ -427,7 +427,7 @@ public slots:
     //接收cookies扫描完后的信号
     void handler_cookies_scan_over(QString cookiesFlag);
     //程序退出之前接受传递过来的用户信息，准备写入服务器端
-    void handler_write_user_info_when_exit();
+//    void handler_write_user_info_when_exit();
 
     //连接服务器
     void connectHttpServer();
@@ -469,6 +469,7 @@ private:
 
     int waitTime;//超时重试次数
     QTimer *timer;
+    bool loginOK;
 };
 
 #endif // SESSIONDISPATCHER_H
