@@ -102,13 +102,20 @@ int main(int argc, char** argv)
     QSplashScreen *splash = new QSplashScreen;
     splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
     splash->setDisabled(true);
+    QBitmap objBitmap(313, 209);
+    QPainter painter(&objBitmap);
+    painter.fillRect(splash->rect(),Qt::white);
+    painter.setBrush(QColor(0,0,0));
+    painter.drawRoundedRect(splash->rect(), 10,10);
+    splash->setMask(objBitmap);
     splash->show();
     splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
+    app.processEvents();
     //同时创建主视图对象
     IhuApplication application;
     splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
-    application.setup("main.qml");
+    application.setup(/*"main.qml"*/);
     //显示主界面，并结束启动画面
     application.showQMLWidget();
     splash->finish(&application);

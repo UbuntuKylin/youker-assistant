@@ -30,7 +30,7 @@ class IhuApplication : public QWidget
 public:
     explicit IhuApplication(QWidget *parent = 0);
     virtual ~IhuApplication();
-    void setup(QString qmlFile);
+    void setup(/*QString qmlFile*/);
     void showQMLWidget();
 
 protected:
