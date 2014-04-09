@@ -99,68 +99,67 @@ Item {
                 }
             }
 
-//            Row {
-//                anchors {
-////                    left: parent.left
-////                    leftMargin: 600
-//                    right: parent.right
-//                    rightMargin: 30
-//                }
-//                spacing: 20
-            Common.StyleButton {
-                id: resetBtn
-                visible: broswerDelegate.resetStatus//false
+            Row {
                 anchors {
-                    left: parent.left
-                    leftMargin: 580
+                    right: headerItemRect.right
+                    rightMargin: -800
                 }
-                anchors.verticalCenter: parent.verticalCenter
-                wordname: qsTr("Back")//返回
-                width: 40
-                height: 20
-                onClicked: {
-                    broswerDelegate.sendBrowserType(broswerDelegate.flag, "reset");
-                }
-            }
-            Common.StyleButton {
-                id: rescanBtn
-                visible: broswerDelegate.resetStatus//false
-                anchors {
-                    left: parent.left
-                    leftMargin: 640
-                }
-                anchors.verticalCenter: parent.verticalCenter
-                wordname: qsTr("Rescan")//重新扫描
-                width: 40
-                height: 20
-                onClicked: {
-                    broswerDelegate.sendBrowserType(broswerDelegate.flag, "rescan");
-                }
-            }
-            Common.Button {
-                id: scanBtn
-                width: 94
-                height: 29
-                fontsize: 13
-                hoverimage: "green.png"
-                text: broswerDelegate.actionTitle
-                anchors {
-                    left: parent.left
-                    leftMargin: 700
-                }
-                anchors.verticalCenter: parent.verticalCenter
-                onClicked: {
-                    if(broswerDelegate.btn_flag == "cookies_scan") {
-                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scan");
+                spacing: 20
+                Common.StyleButton {
+                    id: resetBtn
+                    visible: broswerDelegate.resetStatus//false
+//                    anchors {
+//                        left: parent.left
+//                        leftMargin: 580
+//                    }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Back")//返回
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "reset");
                     }
-                    else if(broswerDelegate.btn_flag == "cookies_scanc") {
-                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scanc");
+                }
+                Common.StyleButton {
+                    id: rescanBtn
+                    visible: broswerDelegate.resetStatus//false
+//                    anchors {
+//                        left: parent.left
+//                        leftMargin: 640
+//                    }
+                    anchors.verticalCenter: parent.verticalCenter
+                    wordname: qsTr("Rescan")//重新扫描
+                    width: 40
+                    height: 20
+                    onClicked: {
+                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "rescan");
                     }
-                    else if(broswerDelegate.btn_flag == "cookies_work") {
-                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_work");
-                    }
-                    else if(broswerDelegate.btn_flag == "cookies_workc") {
-                        broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_workc");
+                }
+                Common.Button {
+                    id: scanBtn
+                    width: 94
+                    height: 29
+                    fontsize: 13
+                    hoverimage: "green.png"
+                    text: broswerDelegate.actionTitle
+//                    anchors {
+//                        left: parent.left
+//                        leftMargin: 700
+//                    }
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: {
+                        if(broswerDelegate.btn_flag == "cookies_scan") {
+                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scan");
+                        }
+                        else if(broswerDelegate.btn_flag == "cookies_scanc") {
+                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_scanc");
+                        }
+                        else if(broswerDelegate.btn_flag == "cookies_work") {
+                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_work");
+                        }
+                        else if(broswerDelegate.btn_flag == "cookies_workc") {
+                            broswerDelegate.sendBrowserType(broswerDelegate.flag, "cookies_workc");
+                        }
                     }
                 }
             }

@@ -347,7 +347,22 @@ class DetailInfo:
                     seconds = int(string)
                     minutes = seconds / 60
                     uptime = str(minutes)
-        Com['node'], Com['uptime'], Com['system'], Com['platform'],Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
+
+        platValue = platform.platform()
+        if "Ubuntu" in platValue and "Kylin" not in platValue:
+            with open("/etc/lsb-release", "r") as fsys:
+                for line in fsys:
+                    if line.startswith("DISTRIB_DESCRIPTION"):
+                        tmp = line
+                        break
+            # kobe: remove '"' and '\n'
+            front = tmp.split('=')[1].replace('"', '').replace('\n', '')
+            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
+                platValue = platValue.replace('Ubuntu', 'UbuntuKylin')
+        Com['platform'] = platValue
+
+        #Com['node'], Com['uptime'], Com['system'], Com['platform'],Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
+        Com['node'], Com['uptime'], Com['system'], Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.architecture()[0],platform.release(),platform.machine()
         return Com
 
     def get_cpu(self):

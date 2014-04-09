@@ -48,7 +48,7 @@ class Sound:
     # enable the login music
     def set_login_music_enable(self, flag):
         configdir = self.homedir + '/.config/autostart'
-        desktopfile = '/usr/share/youker-assistant-daemon/autostart/libcanberra-login-sound.desktop'
+        desktopfile = '/var/lib/youker-assistant-daemon/autostart/libcanberra-login-sound.desktop'
         targetfile = configdir + '/libcanberra-login-sound.desktop'
 
         if flag:
