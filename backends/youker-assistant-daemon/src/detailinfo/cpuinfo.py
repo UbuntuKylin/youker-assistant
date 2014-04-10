@@ -349,16 +349,28 @@ class DetailInfo:
                 uptime = str(minutes)
 
         platValue = platform.platform()
-        if "Ubuntu" in platValue and "Kylin" not in platValue:
-            with open("/etc/lsb-release", "r") as fsys:
-                for line in fsys:
-                    if line.startswith("DISTRIB_DESCRIPTION"):
+        if not os.path.exists("/etc/ubuntukylin-release"):
+            if "Ubuntu" in platValue and "Kylin" not in platValue:
+                with open("/etc/lsb-release", "r") as fsys:
+                    for line in fsys:
+                        if line.startswith("DISTRIB_DESCRIPTION"):
+                            tmp = line
+                            break
+                # kobe: remove '"' and '\n'
+                front = tmp.split('=')[1].replace('"', '').replace('\n', '')
+                if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
+                    platValue = platValue.replace('Ubuntu', 'Ubuntu Kylin')
+        else:
+            with open("/etc/ubuntukylin-release", "r") as fp:
+                for line in fp:
+                    if line.startswith("DISTRIB_ID"):
                         tmp = line
                         break
             # kobe: remove '"' and '\n'
-            front = tmp.split('=')[1].replace('"', '').replace('\n', '')
-            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
-                platValue = platValue.replace('Ubuntu', 'UbuntuKylin')
+            id = tmp.split('=')[1].replace('"', '').replace('\n', '')
+            if "Ubuntu" in platValue:
+                platValue = platValue.replace('Ubuntu', id)
+
         Com['platform'] = platValue
 
         #Com['node'], Com['uptime'], Com['system'], Com['platform'],Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()

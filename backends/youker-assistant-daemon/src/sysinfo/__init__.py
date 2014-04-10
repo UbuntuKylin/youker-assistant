@@ -23,6 +23,7 @@ import platform
 
 NO_UPDATE_WARNING_DAYS = 7
 FILEPATH = "/etc/lsb-release"
+RELEASEPATH = "/etc/ubuntukylin-release"
 
 class Sysinfo:
     CACHE_FLAG = ''
@@ -76,21 +77,38 @@ class Sysinfo:
 
     def get_distro(self):
         '''It should be: DISTRIB_DESCRIPTION="UbuntuKylin 13.10'''
-        #FILEPATH
-        with open(FILEPATH, "r") as fsys:
-            for line in fsys:
-                if line.startswith("DISTRIB_DESCRIPTION"):
-                    tmp = line
-        # kobe: remove '"' and '\n'
-        front = tmp.split('=')[1].replace('"', '').replace('\n', '') #(LP: #1240862)
-        if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
-            d = front + '-' + platform.dist()[2]
+        #FILEPATH  RELEASEPATH
+        distro = ""
+        if not os.path.exists(RELEASEPATH):
+            with open(FILEPATH, "r") as fsys:
+                for line in fsys:
+                    if line.startswith("DISTRIB_DESCRIPTION"):
+                        tmp = line
+                        break
+            # kobe: remove '"' and '\n'
+            front = tmp.split('=')[1].replace('"', '').replace('\n', '') #(LP: #1240862)
+            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
+                distro = front + '-' + platform.dist()[2]
+            else:
+                a = platform.dist()[0]
+                b = platform.dist()[1]
+                c = platform.dist()[2]
+                distro = '-'.join((a,b,c))
         else:
-            a = platform.dist()[0]
-            b = platform.dist()[1]
-            c = platform.dist()[2]
-            d = '-'.join((a,b,c))
-        return d
+            with open(RELEASEPATH, "r") as fp:
+                for line in fp:
+                    if line.startswith("DISTRIB_ID"):
+                        tmp1 = line
+                    elif line.startswith("DISTRIB_RELEASE"):
+                        tmp2 = line
+                    elif line.startswith("DISTRIB_CODENAME"):
+                        tmp3 = line
+            # kobe: remove '"' and '\n'
+            id = tmp1.split('=')[1].replace('"', '').replace('\n', '')
+            release = tmp2.split('=')[1].replace('"', '').replace('\n', '')
+            codename = tmp3.split('=')[1].replace('"', '').replace('\n', '')
+            distro = '-'.join((id, release, codename))
+        return distro
 
     def get_desktop(self):
         desktop_dict = {'ubuntu': 'Unity',
