@@ -31,6 +31,9 @@ Item {
     property bool emptyTip//是否显示扫描内容为空的提示图
     signal arrowClicked(string cacheFlag, bool expand_flag);
 
+    signal transmitCacheItemCheckBoxStatus(string flag, bool status, int index); //test
+    signal transmitCacheItemMainCheckBoxStatus(string flag, bool status); //test
+
     Item {
         id: delegate
         property alias expandedItemCount: subItemRepeater.count
@@ -80,9 +83,11 @@ Item {
                 onClicked: {
                     if(check.checkedbool) {
                         listViewDelegate.checkchanged(true);
+                        listViewDelegate.transmitCacheItemMainCheckBoxStatus(arrowFlag, true);//test 0410
                     }
                     else {
                         listViewDelegate.checkchanged(false);
+                        listViewDelegate.transmitCacheItemMainCheckBoxStatus(arrowFlag, false);//test 0410
                     }
                 }
                 onSendMstatus: {
@@ -171,6 +176,14 @@ Item {
                     fontSize: listViewDelegate.subItemFontSize
                     fontColor: listViewDelegate.subItemFontColor
                     btn_flag: listViewDelegate.btn_flag
+
+                    //test 0410
+                    itemFlag: listViewDelegate.arrowFlag
+                    onGetCacheItemCheckBoxStatus: {
+                        listViewDelegate.transmitCacheItemCheckBoxStatus(flag, status, index);
+                    }
+
+
                     onChange_num: {
                         if(check_status==true)      //已经勾上的子项数量统计,check_num记录
                             check_num=check_num+1;

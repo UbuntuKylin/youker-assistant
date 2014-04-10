@@ -34,7 +34,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.youker",
                                QDBusConnection::systemBus());
-    history_flag = true;
+//    history_flag = true;
     onekey_args << "cache" << "history" << "cookies";
     tmplist << "Kobe" << "Lee";
     this->mainwindow_width = 850;
@@ -238,13 +238,13 @@ void SystemDispatcher::set_user_homedir_qt() {
 }
 
 
-void SystemDispatcher::set_history_flag(bool flag) {
-    history_flag = flag;
-}
+//void SystemDispatcher::set_history_flag(bool flag) {
+//    history_flag = flag;
+//}
 
-bool SystemDispatcher::get_history_flag() {
-    return history_flag;
-}
+//bool SystemDispatcher::get_history_flag() {
+//    return history_flag;
+//}
 
 void SystemDispatcher::handler_clear_rubbish(QString msg) {
      emit finishCleanWork(msg);
@@ -410,152 +410,152 @@ void SystemDispatcher::clean_by_main_one_key_qt(bool garbageFlag, bool traceFlag
 }
 
 //------------------------------------------------------
-void SystemDispatcher::set_cache_args(QString str) {
-    cache_args.append(str);
-}
+//void SystemDispatcher::set_cache_args(QString str) {
+//    cache_args.append(str);
+//}
 
-void SystemDispatcher::del_cache_args(QString str) {
-    QStringList bake;
-    int len = cache_args.length();
-    for (int i=0; i< len; i++) {
-        if (cache_args[i] != str) {
-            bake.append(cache_args[i]);
-        }
-    }
-    cache_args.clear();
-    cache_args = bake;
-}
+//void SystemDispatcher::del_cache_args(QString str) {
+//    QStringList bake;
+//    int len = cache_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (cache_args[i] != str) {
+//            bake.append(cache_args[i]);
+//        }
+//    }
+//    cache_args.clear();
+//    cache_args = bake;
+//}
 
-void SystemDispatcher::clear_cache_args() {
-    cache_args.clear();
-}
+//void SystemDispatcher::clear_cache_args() {
+//    cache_args.clear();
+//}
 
-QStringList SystemDispatcher::get_cache_args() {
-    return cache_args;
-}
+//QStringList SystemDispatcher::get_cache_args() {
+//    return cache_args;
+//}
 
-void SystemDispatcher::set_apt_args(QString str) {
-    apt_args.append(str);
-}
+//void SystemDispatcher::set_apt_args(QString str) {
+//    apt_args.append(str);
+//}
 
-void SystemDispatcher::del_apt_args(QString str) {
-    QStringList bake;
-    int len = apt_args.length();
-    for (int i=0; i< len; i++) {
-        if (apt_args[i] != str) {
-            bake.append(apt_args[i]);
-        }
-    }
-    apt_args.clear();
-    apt_args = bake;
-}
+//void SystemDispatcher::del_apt_args(QString str) {
+//    QStringList bake;
+//    int len = apt_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (apt_args[i] != str) {
+//            bake.append(apt_args[i]);
+//        }
+//    }
+//    apt_args.clear();
+//    apt_args = bake;
+//}
 
-void SystemDispatcher::clear_apt_args() {
-    apt_args.clear();
-}
+//void SystemDispatcher::clear_apt_args() {
+//    apt_args.clear();
+//}
 
-QStringList SystemDispatcher::get_apt_args() {
-    return apt_args;
-}
+//QStringList SystemDispatcher::get_apt_args() {
+//    return apt_args;
+//}
 
-void SystemDispatcher::set_software_args(QString str) {
-    software_args.append(str);
-}
+//void SystemDispatcher::set_software_args(QString str) {
+//    software_args.append(str);
+//}
 
-void SystemDispatcher::del_software_args(QString str) {
-    QStringList bake;
-    int len = software_args.length();
-    for (int i=0; i< len; i++) {
-        if (software_args[i] != str) {
-            bake.append(software_args[i]);
-        }
-    }
-    software_args.clear();
-    software_args = bake;
-}
+//void SystemDispatcher::del_software_args(QString str) {
+//    QStringList bake;
+//    int len = software_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (software_args[i] != str) {
+//            bake.append(software_args[i]);
+//        }
+//    }
+//    software_args.clear();
+//    software_args = bake;
+//}
 
-void SystemDispatcher::clear_software_args() {
-    software_args.clear();
-}
+//void SystemDispatcher::clear_software_args() {
+//    software_args.clear();
+//}
 
-QStringList SystemDispatcher::get_software_args() {
-    return software_args;
-}
+//QStringList SystemDispatcher::get_software_args() {
+//    return software_args;
+//}
 
-void SystemDispatcher::set_package_args(QString str) {
-    package_args.append(str);
-}
+//void SystemDispatcher::set_package_args(QString str) {
+//    package_args.append(str);
+//}
 
-void SystemDispatcher::del_package_args(QString str) {
-    QStringList bake;
-    int len = package_args.length();
-    for (int i=0; i< len; i++) {
-        if (package_args[i] != str) {
-            bake.append(package_args[i]);
-        }
-    }
-    package_args.clear();
-    package_args = bake;
-//    package_args.replaceInStrings(QString(str), QString(""));
-}
+//void SystemDispatcher::del_package_args(QString str) {
+//    QStringList bake;
+//    int len = package_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (package_args[i] != str) {
+//            bake.append(package_args[i]);
+//        }
+//    }
+//    package_args.clear();
+//    package_args = bake;
+////    package_args.replaceInStrings(QString(str), QString(""));
+//}
 
-void SystemDispatcher::clear_package_args() {
-    package_args.clear();
-}
+//void SystemDispatcher::clear_package_args() {
+//    package_args.clear();
+//}
 
-QStringList SystemDispatcher::get_package_args() {
-    return package_args;
-}
+//QStringList SystemDispatcher::get_package_args() {
+//    return package_args;
+//}
 
-void SystemDispatcher::set_browser_args(QString str) {
-    browser_args.append(str);
-}
+//void SystemDispatcher::set_browser_args(QString str) {
+//    browser_args.append(str);
+//}
 
-void SystemDispatcher::del_browser_args(QString str) {
-    QStringList bake;
-    int len = browser_args.length();
-    for (int i=0; i< len; i++) {
-        if (browser_args[i] != str) {
-            bake.append(browser_args[i]);
-        }
-    }
-    browser_args.clear();
-    browser_args = bake;
-//    browser_args.replaceInStrings(QString(str), QString(""));
-}
+//void SystemDispatcher::del_browser_args(QString str) {
+//    QStringList bake;
+//    int len = browser_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (browser_args[i] != str) {
+//            bake.append(browser_args[i]);
+//        }
+//    }
+//    browser_args.clear();
+//    browser_args = bake;
+////    browser_args.replaceInStrings(QString(str), QString(""));
+//}
 
-void SystemDispatcher::clear_browser_args() {
-    browser_args.clear();
-}
+//void SystemDispatcher::clear_browser_args() {
+//    browser_args.clear();
+//}
 
-QStringList SystemDispatcher::get_browser_args() {
-    return browser_args;
-}
+//QStringList SystemDispatcher::get_browser_args() {
+//    return browser_args;
+//}
 
-void SystemDispatcher::set_kernel_args(QString str) {
-    kernel_args.append(str);
-}
+//void SystemDispatcher::set_kernel_args(QString str) {
+//    kernel_args.append(str);
+//}
 
-void SystemDispatcher::del_kernel_args(QString str) {
-    QStringList bake;
-    int len = kernel_args.length();
-    for (int i=0; i< len; i++) {
-        if (kernel_args[i] != str) {
-            bake.append(kernel_args[i]);
-        }
-    }
-    kernel_args.clear();
-    kernel_args = bake;
-//    kernel_args.replaceInStrings(QString(str), QString(""));
-}
+//void SystemDispatcher::del_kernel_args(QString str) {
+//    QStringList bake;
+//    int len = kernel_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (kernel_args[i] != str) {
+//            bake.append(kernel_args[i]);
+//        }
+//    }
+//    kernel_args.clear();
+//    kernel_args = bake;
+////    kernel_args.replaceInStrings(QString(str), QString(""));
+//}
 
-void SystemDispatcher::clear_kernel_args() {
-    kernel_args.clear();
-}
+//void SystemDispatcher::clear_kernel_args() {
+//    kernel_args.clear();
+//}
 
-QStringList SystemDispatcher::get_kernel_args() {
-    return kernel_args;
-}
+//QStringList SystemDispatcher::get_kernel_args() {
+//    return kernel_args;
+//}
 
 void SystemDispatcher::set_onekey_args(QString str) {
     onekey_args.append(str);
@@ -582,30 +582,30 @@ QStringList SystemDispatcher::get_onekey_args() {
     return onekey_args;
 }
 
-void SystemDispatcher::set_largestfile_args(QString str) {
-    largestfile_args.append(str);
-}
+//void SystemDispatcher::set_largestfile_args(QString str) {
+//    largestfile_args.append(str);
+//}
 
-void SystemDispatcher::del_largestfile_args(QString str) {
-    QStringList bake;
-    int len = largestfile_args.length();
-    for (int i=0; i< len; i++) {
-        if (largestfile_args[i] != str) {
-            bake.append(largestfile_args[i]);
-        }
-    }
-    largestfile_args.clear();
-    largestfile_args = bake;
-//    package_args.replaceInStrings(QString(str), QString(""));
-}
+//void SystemDispatcher::del_largestfile_args(QString str) {
+//    QStringList bake;
+//    int len = largestfile_args.length();
+//    for (int i=0; i< len; i++) {
+//        if (largestfile_args[i] != str) {
+//            bake.append(largestfile_args[i]);
+//        }
+//    }
+//    largestfile_args.clear();
+//    largestfile_args = bake;
+////    package_args.replaceInStrings(QString(str), QString(""));
+//}
 
-void SystemDispatcher::clear_largestfile_args() {
-    largestfile_args.clear();
-}
+//void SystemDispatcher::clear_largestfile_args() {
+//    largestfile_args.clear();
+//}
 
-QStringList SystemDispatcher::get_largestfile_args() {
-    return largestfile_args;
-}
+//QStringList SystemDispatcher::get_largestfile_args() {
+//    return largestfile_args;
+//}
 
 int SystemDispatcher::get_the_record_qt(QString mode) {
     QDBusReply<int> reply = systemiface->call("get_the_record", mode);

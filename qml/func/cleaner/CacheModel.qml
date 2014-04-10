@@ -62,19 +62,19 @@ Item {
         onAppendContentToCacheModel: {
             //QString flag, QString path, QString fileFlag, QString sizeValue
             if(flag == "apt") {//Apt缓存
-                aptsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.aptNum});
+                aptsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.aptNum, "checked": true});
                 root.aptNum += 1;
-                systemdispatcher.set_cache_args(path);
+//                systemdispatcher.set_cache_args(path);
             }
             else if(flag == "software-center") {//软件中心缓存
-                softsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.softNum});
+                softsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.softNum, "checked": true});
                 root.softNum += 1;
-                systemdispatcher.set_cache_args(path);
+//                systemdispatcher.set_cache_args(path);
             }
             else if(flag == "thumbnails") {//缩略图缓存
-                thumbsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.thumbNum});
+                thumbsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.thumbNum, "checked": true});
                 root.thumbNum += 1;
-                systemdispatcher.set_cache_args(path);
+//                systemdispatcher.set_cache_args(path);
             }
         }
         onTellQMLCaheOver: {
@@ -555,12 +555,40 @@ Item {
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
+                            //test 0410
+                            var filelist = new Array();
+                            for(var i=0; i<aptsubModel.count; i++) {
+                                if(aptsubModel.get(i).checked) {
+                                    console.log("111");
+                                    console.log(i);
+                                    filelist.push(aptsubModel.get(i).itemTitle);
+                                }
+                            }
+                            for(var j=0; j<softsubModel.count; j++) {
+                                if(softsubModel.get(j).checked) {
+                                    console.log("222");
+                                    console.log(j);
+                                    filelist.push(softsubModel.get(j).itemTitle);
+                                }
+                            }
+                            for(var k=0; k<thumbsubModel.count; k++) {
+                                if(thumbsubModel.get(k).checked) {
+                                    console.log("333");
+                                    console.log(k);
+                                    filelist.push(thumbsubModel.get(k).itemTitle);
+                                }
+                            }
+//                            console.log("ffff", filelist);
+
+
+
                             doingImage.visible = true;
 //                            console.log("33333333333");
 //                            console.log(systemdispatcher.get_cache_args());
                             //开始清理时，禁用按钮，等到清理完成后解禁
                             actionBtn.enabled = false;
-                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_cache_args(), "cache");
+                            systemdispatcher.clean_file_cruft_qt(filelist, "cache");
+//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_cache_args(), "cache");
                         }
                     }
                 }
@@ -618,6 +646,36 @@ Item {
                         expanded: root.apt_expanded//apt_expanded为true时，箭头向下，内容展开;apt_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
                         emptyTip: root.aptEmpty
+
+                        //test 0410
+                        onTransmitCacheItemMainCheckBoxStatus: {
+                            if(flag == "apt") {
+                                if(status) {
+                                    for(var i=0; i<aptsubModel.count; i++) {
+                                        aptsubModel.setProperty(i, "checked", true);
+                                    }
+                                }
+                                else {
+                                    for(var j=0; j<aptsubModel.count; j++) {
+                                        aptsubModel.setProperty(j, "checked", false);
+                                    }
+                                }
+                            }
+                        }
+
+                        //test 0410
+                        onTransmitCacheItemCheckBoxStatus: {
+                            if(flag == "apt") {
+                                if(status) {
+                                    aptsubModel.setProperty(index, "checked", true);
+                                }
+                                else {
+                                    aptsubModel.setProperty(index, "checked", false);
+                                }
+                            }
+                        }
+
+
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
 //                            root.aptresultFlag = checkchange;
@@ -689,6 +747,36 @@ Item {
                         expanded: root.soft_expanded//soft_expanded为true时，箭头向下，内容展开;soft_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
                         emptyTip: root.softEmpty
+
+                        //test 0410
+                        onTransmitCacheItemMainCheckBoxStatus: {
+                            if(flag == "soft") {
+                                if(status) {
+                                    for(var i=0; i<softsubModel.count; i++) {
+                                        softsubModel.setProperty(i, "checked", true);
+                                    }
+                                }
+                                else {
+                                    for(var j=0; j<softsubModel.count; j++) {
+                                        softsubModel.setProperty(j, "checked", false);
+                                    }
+                                }
+                            }
+                        }
+
+                        //test 0410
+                        onTransmitCacheItemCheckBoxStatus: {
+                            if(flag == "soft") {
+                                if(status) {
+                                    softsubModel.setProperty(index, "checked", true);
+                                }
+                                else {
+                                    softsubModel.setProperty(index, "checked", false);
+                                }
+                            }
+                        }
+
+
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
 //                            root.softresultFlag = checkchange;
@@ -760,6 +848,36 @@ Item {
                         expanded: root.thumb_expanded//soft_expanded为true时，箭头向下，内容展开;soft_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
                         emptyTip: root.thumbEmpty
+
+                        //test 0410
+                        onTransmitCacheItemMainCheckBoxStatus: {
+                            if(flag == "thumb") {
+                                if(status) {
+                                    for(var i=0; i<thumbsubModel.count; i++) {
+                                        thumbsubModel.setProperty(i, "checked", true);
+                                    }
+                                }
+                                else {
+                                    for(var j=0; j<thumbsubModel.count; j++) {
+                                        thumbsubModel.setProperty(j, "checked", false);
+                                    }
+                                }
+                            }
+                        }
+
+                        //test 0410
+                        onTransmitCacheItemCheckBoxStatus: {
+                            if(flag == "thumb") {
+                                if(status) {
+                                    thumbsubModel.setProperty(index, "checked", true);
+                                }
+                                else {
+                                    thumbsubModel.setProperty(index, "checked", false);
+                                }
+                            }
+                        }
+
+
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
 //                            root.softresultFlag = checkchange;

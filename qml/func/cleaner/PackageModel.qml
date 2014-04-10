@@ -157,19 +157,19 @@ Item {
             onAppendPackageContentToCacheModel: {
                 //QString flag, QString pkgName, QString description, QString sizeValue
                 if(flag == "unneed") {
-                    packagesubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.packageNum});
+                    packagesubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.packageNum, "checked": true});
                     root.packageNum += 1;
-                    systemdispatcher.set_package_args(pkgName);
+//                    systemdispatcher.set_package_args(pkgName);
                 }
                 else if(flag == "oldkernel") {
-                    kernelsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.kernelNum});
+                    kernelsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.kernelNum, "checked": true});
                     root.kernelNum += 1;
-                    systemdispatcher.set_package_args(pkgName);
+//                    systemdispatcher.set_package_args(pkgName);
                 }
                 else if(flag == "configfile") {
-                    configsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.configNum});
+                    configsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.configNum, "checked": true});
                     root.configNum += 1;
-                    systemdispatcher.set_package_args(pkgName);
+//                    systemdispatcher.set_package_args(pkgName);
                 }
             }
             onTellQMLPackageOver: {
@@ -322,7 +322,7 @@ Item {
                             configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup software configfile"),
                                              "picture": "../../img/toolWidget/configfile.png"})
-                            systemdispatcher.clear_package_args();
+//                            systemdispatcher.clear_package_args();
                             packagesubModel.clear();//内容清空
                             kernelsubModel.clear();//内容清空
                             configsubModel.clear();//内容清空
@@ -339,7 +339,7 @@ Item {
                                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
                                                  "picture": "../../img/toolWidget/deb-min.png"})
-                                systemdispatcher.clear_package_args();
+//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -355,7 +355,7 @@ Item {
                                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
                                                  "picture": "../../img/toolWidget/kernel.png"})
-                                systemdispatcher.clear_package_args();
+//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -371,7 +371,7 @@ Item {
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
                                                  "picture": "../../img/toolWidget/configfile.png"})
-                                systemdispatcher.clear_package_args();
+//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -392,7 +392,7 @@ Item {
                                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
                                                  "picture": "../../img/toolWidget/kernel.png"})
-                                systemdispatcher.clear_package_args();
+//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -413,7 +413,7 @@ Item {
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
                                                  "picture": "../../img/toolWidget/configfile.png"})
-                                systemdispatcher.clear_package_args();
+//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -434,7 +434,7 @@ Item {
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
                                                  "picture": "../../img/toolWidget/configfile.png"})
-                                systemdispatcher.clear_package_args();
+//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -517,7 +517,7 @@ Item {
                         if(root.config_maincheck == false) {
                             root.config_maincheck = true;
                         }
-                        systemdispatcher.clear_package_args();
+//                        systemdispatcher.clear_package_args();
                         root.package_showNum = false;
                         root.kernel_showNum = false;
                         root.config_showNum = false;
@@ -633,10 +633,32 @@ Item {
                             }
                             else {
 //                                    home.state = "MaskLayerState";
+
+                                //test 0410
+                                var packagelist = new Array();
+                                for(var i=0; i<packagesubModel.count; i++) {
+                                    if(packagesubModel.get(i).checked) {
+                                        packagelist.push(packagesubModel.get(i).itemTitle);
+                                    }
+                                }
+                                for(var j=0; j<kernelsubModel.count; j++) {
+                                    if(kernelsubModel.get(j).checked) {
+                                        packagelist.push(kernelsubModel.get(j).itemTitle);
+                                    }
+                                }
+                                for(var k=0; k<configsubModel.count; k++) {
+                                    if(configsubModel.get(k).checked) {
+                                        packagelist.push(configsubModel.get(k).itemTitle);
+                                    }
+                                }
+//                                console.log("hhhhh", packagelist);
+
+
                                 //开始清理时，禁用按钮，等到清理完成后解禁
                                 actionBtn.enabled = false;
-                                console.log(systemdispatcher.get_package_args());
-                                systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
+//                                console.log(systemdispatcher.get_package_args());
+                                systemdispatcher.clean_package_cruft_qt(packagelist, "package");
+//                                systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
                             }
                         }
                     }
@@ -694,6 +716,35 @@ Item {
                             expanded: root.package_expanded//package_expanded为true时，箭头向下，内容展开;package_expanded为false时，箭头向上，内容收缩
                             delegate_flag: root.splitFlag
                             emptyTip: root.packageEmpty
+
+                            //test 0410
+                            onTransmitCacheItemMainCheckBoxStatus: {
+                                if(flag == "package") {
+                                    if(status) {
+                                        for(var i=0; i<packagesubModel.count; i++) {
+                                            packagesubModel.setProperty(i, "checked", true);
+                                        }
+                                    }
+                                    else {
+                                        for(var j=0; j<packagesubModel.count; j++) {
+                                            packagesubModel.setProperty(j, "checked", false);
+                                        }
+                                    }
+                                }
+                            }
+
+                            //test 0410
+                            onTransmitCacheItemCheckBoxStatus: {
+                                if(flag == "package") {
+                                    if(status) {
+                                        packagesubModel.setProperty(index, "checked", true);
+                                    }
+                                    else {
+                                        packagesubModel.setProperty(index, "checked", false);
+                                    }
+                                }
+                            }
+
                             //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                             onCheckchanged: {
     //                            root.packageresultFlag = checkchange;
@@ -760,6 +811,36 @@ Item {
                             expanded: root.kernel_expanded//kernel_expanded为true时，箭头向下，内容展开;kernel_expanded为false时，箭头向上，内容收缩
                             delegate_flag: root.splitFlag
                             emptyTip: root.kernelEmpty
+
+                            //test 0410
+                            onTransmitCacheItemMainCheckBoxStatus: {
+                                if(flag == "kernel") {
+                                    if(status) {
+                                        for(var i=0; i<kernelsubModel.count; i++) {
+                                            kernelsubModel.setProperty(i, "checked", true);
+                                        }
+                                    }
+                                    else {
+                                        for(var j=0; j<kernelsubModel.count; j++) {
+                                            kernelsubModel.setProperty(j, "checked", false);
+                                        }
+                                    }
+                                }
+                            }
+
+                            //test 0410
+                            onTransmitCacheItemCheckBoxStatus: {
+                                if(flag == "kernel") {
+                                    if(status) {
+                                        kernelsubModel.setProperty(index, "checked", true);
+                                    }
+                                    else {
+                                        kernelsubModel.setProperty(index, "checked", false);
+                                    }
+                                }
+                            }
+
+
                             //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                             onCheckchanged: {
     //                            root.kernelresultFlag = checkchange;
@@ -827,6 +908,36 @@ Item {
                             expanded: root.config_expanded//kernel_expanded为true时，箭头向下，内容展开;kernel_expanded为false时，箭头向上，内容收缩
                             delegate_flag: root.splitFlag
                             emptyTip: root.configEmpty
+
+                            //test 0410
+                            onTransmitCacheItemMainCheckBoxStatus: {
+                                if(flag == "configfile") {
+                                    if(status) {
+                                        for(var i=0; i<configsubModel.count; i++) {
+                                            configsubModel.setProperty(i, "checked", true);
+                                        }
+                                    }
+                                    else {
+                                        for(var j=0; j<configsubModel.count; j++) {
+                                            configsubModel.setProperty(j, "checked", false);
+                                        }
+                                    }
+                                }
+                            }
+
+                            //test 0410
+                            onTransmitCacheItemCheckBoxStatus: {
+                                if(flag == "configfile") {
+                                    if(status) {
+                                        configsubModel.setProperty(index, "checked", true);
+                                    }
+                                    else {
+                                        configsubModel.setProperty(index, "checked", false);
+                                    }
+                                }
+                            }
+
+
                             //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                             onCheckchanged: {
     //                            root.kernelresultFlag = checkchange;

@@ -343,10 +343,10 @@ class DetailInfo:
         Com['ComProduct'],Com['ComVendor'],Com['ComVersion'],Com['ComSerial'] = self.strip(ComProduct),self.strip(ComVendor),self.strip(ComVersion),self.strip(ComSerial)
         with open('/proc/uptime') as f:
             for line in f:
-                    string = line.split('.')[0]
-                    seconds = int(string)
-                    minutes = seconds / 60
-                    uptime = str(minutes)
+                string = line.split('.')[0]
+                seconds = int(string)
+                minutes = seconds / 60
+                uptime = str(minutes)
 
         platValue = platform.platform()
         if "Ubuntu" in platValue and "Kylin" not in platValue:

@@ -26,6 +26,9 @@ Item {
     signal subpressed(int hMark);
     signal checkchanged(bool checkchange);
 
+    signal transmitFileItemCheckBoxStatus(bool status, int index); //test
+    signal transmitFileItemMainCheckBoxStatus(bool status); //test
+
 
     property int check_num:sub_num   //记录子项个数，在确定总checkbox状态时需要的变量
     property bool maincheck: false
@@ -93,9 +96,11 @@ Item {
                 onClicked: {
                     if(check.checkedbool) {
                         listViewDelegate.checkchanged(true);
+                        listViewDelegate.transmitFileItemMainCheckBoxStatus(true);//test 0410
                     }
                     else {
                         listViewDelegate.checkchanged(false);
+                        listViewDelegate.transmitFileItemMainCheckBoxStatus(false);//test 0410
                     }
                 }
                 onSendMstatus: {
@@ -167,6 +172,12 @@ Item {
 //                    textIndent: 20
                     btn_flag: listViewDelegate.btn_flag
                     onClicked: {}
+
+                    //test 0410
+                    onGetFileItemCheckBoxStatus: {
+                        listViewDelegate.transmitFileItemCheckBoxStatus(status, index);
+                    }
+
                     onChange_num: {
                         if(check_status==true) {      //已经勾上的子项数量统计,check_num记录
                             check_num=check_num+1;

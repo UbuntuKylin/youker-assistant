@@ -57,14 +57,14 @@ Item {
         onAppendContentToCacheModel: {
             //QString flag, QString path, QString fileFlag, QString sizeValue
             if(flag == "firefox") {
-                firefoxsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.firefoxNum});
+                firefoxsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.firefoxNum, "checked": true});
                 root.firefoxNum += 1;
-                systemdispatcher.set_browser_args(path);
+//                systemdispatcher.set_browser_args(path);
             }
             else if(flag == "chromium") {
-                chromiumsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.chromiumNum});
+                chromiumsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.chromiumNum, "checked": true});
                 root.chromiumNum += 1;
-                systemdispatcher.set_browser_args(path);
+//                systemdispatcher.set_browser_args(path);
             }
         }
 //        onTellAbsPathToCacheModel: {
@@ -209,7 +209,7 @@ Item {
                         chromiummainModel.append({"mstatus": root.chromium_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Cleanup Chromium Cache"),
                                          "picture": "../../img/toolWidget/chromium.png"})
-                        systemdispatcher.clear_browser_args();
+//                        systemdispatcher.clear_browser_args();
                         firefoxsubModel.clear();//内容清空
                         chromiumsubModel.clear();//内容清空
                         root.firefoxNum = 0;//隐藏滑动条
@@ -224,7 +224,7 @@ Item {
                             firefoxmainModel.append({"mstatus": root.firefox_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Firefox Cache"),
                                              "picture": "../../img/toolWidget/firefox.png"})
-                            systemdispatcher.clear_browser_args();
+//                            systemdispatcher.clear_browser_args();
                             firefoxsubModel.clear();//内容清空
                             chromiumsubModel.clear();//内容清空
                             root.firefoxNum = 0;//隐藏滑动条
@@ -238,7 +238,7 @@ Item {
                             chromiummainModel.append({"mstatus": root.chromium_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Chromium Cache"),
                                              "picture": "../../img/toolWidget/chromium.png"})
-                            systemdispatcher.clear_browser_args();
+//                            systemdispatcher.clear_browser_args();
                             firefoxsubModel.clear();//内容清空
                             chromiumsubModel.clear();//内容清空
                             root.firefoxNum = 0;//隐藏滑动条
@@ -314,7 +314,7 @@ Item {
                     if(root.chromium_maincheck == false) {
                         root.chromium_maincheck = true;
                     }
-                    systemdispatcher.clear_browser_args();
+//                    systemdispatcher.clear_browser_args();
                     root.firefox_showNum = false;
                     root.chromium_showNum = false;
                     firefoxmainModel.clear();
@@ -393,12 +393,29 @@ Item {
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else {
+                            //test 0410
+                            var browserlist = new Array();
+                            for(var i=0; i<firefoxsubModel.count; i++) {
+                                if(firefoxsubModel.get(i).checked) {
+                                    browserlist.push(firefoxsubModel.get(i).itemTitle);
+                                }
+                            }
+                            for(var j=0; j<chromiumsubModel.count; j++) {
+                                if(chromiumsubModel.get(j).checked) {
+                                    browserlist.push(chromiumsubModel.get(j).itemTitle);
+                                }
+                            }
+//                            console.log("gggg", browserlist);
+
+
+
                             doingImage.visible = true;
 //                            console.log("33333333333");
 //                            console.log(systemdispatcher.get_browser_args());
                             //开始清理时，禁用按钮，等到清理完成后解禁
                             actionBtn.enabled = false;
-                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_browser_args(), "browsercache");
+                            systemdispatcher.clean_file_cruft_qt(browserlist, "browsercache");
+//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_browser_args(), "browsercache");
                         }
                     }
                 }
@@ -456,6 +473,36 @@ Item {
                         expanded: root.firefox_expanded//firefox_expanded为true时，箭头向下，内容展开;firefox_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
                         emptyTip: root.firefoxEmpty
+
+
+                        //test 0410
+                        onTransmitCacheItemMainCheckBoxStatus: {
+                            if(flag == "firefoxcache") {
+                                if(status) {
+                                    for(var i=0; i<firefoxsubModel.count; i++) {
+                                        firefoxsubModel.setProperty(i, "checked", true);
+                                    }
+                                }
+                                else {
+                                    for(var j=0; j<firefoxsubModel.count; j++) {
+                                        firefoxsubModel.setProperty(j, "checked", false);
+                                    }
+                                }
+                            }
+                        }
+
+                        //test 0410
+                        onTransmitCacheItemCheckBoxStatus: {
+                            if(flag == "firefoxcache") {
+                                if(status) {
+                                    firefoxsubModel.setProperty(index, "checked", true);
+                                }
+                                else {
+                                    firefoxsubModel.setProperty(index, "checked", false);
+                                }
+                            }
+                        }
+
                         onTellModelToOpenFolder: {
                             if(category == "firefoxcache") {
 //                                sessiondispatcher.open_folder_qt(root.firefox_path);
@@ -518,6 +565,36 @@ Item {
                         expanded: root.chromium_expanded//chromium_expanded为true时，箭头向下，内容展开;chromium_expanded为false时，箭头向上，内容收缩
                         delegate_flag: root.splitFlag
                         emptyTip: root.chromiumEmpty
+
+
+                        //test 0410
+                        onTransmitCacheItemMainCheckBoxStatus: {
+                            if(flag == "chromiumcache") {
+                                if(status) {
+                                    for(var i=0; i<chromiumsubModel.count; i++) {
+                                        chromiumsubModel.setProperty(i, "checked", true);
+                                    }
+                                }
+                                else {
+                                    for(var j=0; j<chromiumsubModel.count; j++) {
+                                        chromiumsubModel.setProperty(j, "checked", false);
+                                    }
+                                }
+                            }
+                        }
+
+                        //test 0410
+                        onTransmitCacheItemCheckBoxStatus: {
+                            if(flag == "chromiumcache") {
+                                if(status) {
+                                    chromiumsubModel.setProperty(index, "checked", true);
+                                }
+                                else {
+                                    chromiumsubModel.setProperty(index, "checked", false);
+                                }
+                            }
+                        }
+
                         onTellModelToOpenFolder: {
                             if(category == "chromiumcache") {
 //                                sessiondispatcher.open_folder_qt(root.chromium_path);

@@ -91,45 +91,45 @@ public:
     Q_INVOKABLE QMap<QString, QVariant> search_same_files(QString path);
     Q_INVOKABLE QStringList search_largest_file(QString path);
 
-    bool history_flag;
-    Q_INVOKABLE void set_history_flag(bool flag);
-    Q_INVOKABLE bool get_history_flag();
+//    bool history_flag;
+//    Q_INVOKABLE void set_history_flag(bool flag);
+//    Q_INVOKABLE bool get_history_flag();
 
-    QStringList cache_args;
-    Q_INVOKABLE void set_cache_args(QString str);
-    Q_INVOKABLE void del_cache_args(QString str);
-    Q_INVOKABLE void clear_cache_args();
-    Q_INVOKABLE QStringList get_cache_args();
+//    QStringList cache_args;
+//    Q_INVOKABLE void set_cache_args(QString str);
+//    Q_INVOKABLE void del_cache_args(QString str);
+//    Q_INVOKABLE void clear_cache_args();
+//    Q_INVOKABLE QStringList get_cache_args();
 
-    QStringList apt_args;
-    Q_INVOKABLE void set_apt_args(QString str);
-    Q_INVOKABLE void del_apt_args(QString str);
-    Q_INVOKABLE void clear_apt_args();
-    Q_INVOKABLE QStringList get_apt_args();
+//    QStringList apt_args;
+//    Q_INVOKABLE void set_apt_args(QString str);
+//    Q_INVOKABLE void del_apt_args(QString str);
+//    Q_INVOKABLE void clear_apt_args();
+//    Q_INVOKABLE QStringList get_apt_args();
 
-    QStringList software_args;
-    Q_INVOKABLE void set_software_args(QString str);
-    Q_INVOKABLE void del_software_args(QString str);
-    Q_INVOKABLE void clear_software_args();
-    Q_INVOKABLE QStringList get_software_args();
+//    QStringList software_args;
+//    Q_INVOKABLE void set_software_args(QString str);
+//    Q_INVOKABLE void del_software_args(QString str);
+//    Q_INVOKABLE void clear_software_args();
+//    Q_INVOKABLE QStringList get_software_args();
 
-    QStringList package_args;
-    Q_INVOKABLE void set_package_args(QString str);
-    Q_INVOKABLE void del_package_args(QString str);
-    Q_INVOKABLE void clear_package_args();
-    Q_INVOKABLE QStringList get_package_args();
+//    QStringList package_args;
+//    Q_INVOKABLE void set_package_args(QString str);
+//    Q_INVOKABLE void del_package_args(QString str);
+//    Q_INVOKABLE void clear_package_args();
+//    Q_INVOKABLE QStringList get_package_args();
 
-    QStringList browser_args;
-    Q_INVOKABLE void set_browser_args(QString str);
-    Q_INVOKABLE void del_browser_args(QString str);
-    Q_INVOKABLE void clear_browser_args();
-    Q_INVOKABLE QStringList get_browser_args();
+//    QStringList browser_args;
+//    Q_INVOKABLE void set_browser_args(QString str);
+//    Q_INVOKABLE void del_browser_args(QString str);
+//    Q_INVOKABLE void clear_browser_args();
+//    Q_INVOKABLE QStringList get_browser_args();
 
-    QStringList kernel_args;
-    Q_INVOKABLE void set_kernel_args(QString str);
-    Q_INVOKABLE void del_kernel_args(QString str);
-    Q_INVOKABLE void clear_kernel_args();
-    Q_INVOKABLE QStringList get_kernel_args();
+//    QStringList kernel_args;
+//    Q_INVOKABLE void set_kernel_args(QString str);
+//    Q_INVOKABLE void del_kernel_args(QString str);
+//    Q_INVOKABLE void clear_kernel_args();
+//    Q_INVOKABLE QStringList get_kernel_args();
 
     QStringList onekey_args;
     Q_INVOKABLE void set_onekey_args(QString str);
@@ -137,11 +137,11 @@ public:
     Q_INVOKABLE void clear_onekey_args();
     Q_INVOKABLE QStringList get_onekey_args();
 
-    QStringList largestfile_args;
-    Q_INVOKABLE void set_largestfile_args(QString str);
-    Q_INVOKABLE void del_largestfile_args(QString str);
-    Q_INVOKABLE void clear_largestfile_args();
-    Q_INVOKABLE QStringList get_largestfile_args();
+//    QStringList largestfile_args;
+//    Q_INVOKABLE void set_largestfile_args(QString str);
+//    Q_INVOKABLE void del_largestfile_args(QString str);
+//    Q_INVOKABLE void clear_largestfile_args();
+//    Q_INVOKABLE QStringList get_largestfile_args();
 
     //----get system message
     //存放当前系统和桌面信息

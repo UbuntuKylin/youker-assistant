@@ -1,3 +1,9 @@
+youker-assistant (1.0.2-0ubuntu1) trusty; urgency=low
+
+  * Perfect for parameter when checkbox checked.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 10 Apr 2014 16:49:34 +0800
+
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 
   * Modify display mode of weather forecast and system settings.

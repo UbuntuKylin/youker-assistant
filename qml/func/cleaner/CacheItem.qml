@@ -44,6 +44,8 @@ Item {
     signal change_num(bool check_status, string browser_flag)   //作为子项checkbox，当状态改变时需要通过信号传给父项以进行个数统计
     signal clicked(string path);
 
+    signal getCacheItemCheckBoxStatus(string flag, bool status, int index); //test
+
     width: 800//850
     height: 30
     clip: true
@@ -92,66 +94,71 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 30
+
+        onClicked: {
+            container.getCacheItemCheckBoxStatus(itemFlag, checkbox.checked, item_index);
+        }
+
         onCheckedChanged: {
             //单个checkbox状态改变时，先将状态通过信号change_num()传递给BrowserCookies.qml
             container.change_num(checkbox.checked, container.browserFlag);
-            if (checkbox.checked) {
-                if (btn_flag == "cache_work") {
-//                if(container.itemFlag == "apt") {
-                    var aptlist = systemdispatcher.get_cache_args();
-                    var word_flag = "false";
-                    for (var i=0; i<aptlist.length; i++) {
-                        if (aptlist[i] == container.text) {
-                            word_flag = "true";
-                            break;
-                        }
-                    }
-                    if (word_flag == "false") {
-                        systemdispatcher.set_cache_args(container.text);
-                    }
-                }
-                else if (btn_flag == "package_work") {
-                    var mylist = systemdispatcher.get_package_args();
-                    var word_flag3 = "false";
-                    for (var q=0; q<mylist.length; q++) {
-                        if (mylist[q] == container.text) {
-                            word_flag3 = "true";
-                            break;
-                        }
-                    }
-                    if (word_flag3 == "false") {
-                        systemdispatcher.set_package_args(container.text);
-                    }
-                }
-                else if (btn_flag == "browser_work") {
-                    var browserlist = systemdispatcher.get_browser_args();
-                    var word_flag4 = "false";
-                    for (var p=0; q<browserlist.length; p++) {
-                        if (browserlist[p] == container.text) {
-                            word_flag4 = "true";
-                            break;
-                        }
-                    }
-                    if (word_flag4 == "false") {
-                        systemdispatcher.set_browser_args(container.text);
-                    }
-                }
-            }
-            else if (!checkbox.checked) {
-//                if(container.itemFlag == "apt") {
-                if (btn_flag == "cache_work") {
-                    systemdispatcher.del_cache_args(container.text);
-                }
-                else if (btn_flag == "package_work") {
-                    systemdispatcher.del_package_args(container.text);
-                }
-                else if (btn_flag == "browser_work") {
-                    systemdispatcher.del_browser_args(container.text);
-                }
-                else if (btn_flag == "largestfile_work") {
-                    systemdispatcher.del_largestfile_args(container.descript);
-                }
-            }
+//            if (checkbox.checked) {
+//                if (btn_flag == "cache_work") {
+////                if(container.itemFlag == "apt") {
+//                    var aptlist = systemdispatcher.get_cache_args();
+//                    var word_flag = "false";
+//                    for (var i=0; i<aptlist.length; i++) {
+//                        if (aptlist[i] == container.text) {
+//                            word_flag = "true";
+//                            break;
+//                        }
+//                    }
+//                    if (word_flag == "false") {
+//                        systemdispatcher.set_cache_args(container.text);
+//                    }
+//                }
+//                else if (btn_flag == "package_work") {
+//                    var mylist = systemdispatcher.get_package_args();
+//                    var word_flag3 = "false";
+//                    for (var q=0; q<mylist.length; q++) {
+//                        if (mylist[q] == container.text) {
+//                            word_flag3 = "true";
+//                            break;
+//                        }
+//                    }
+//                    if (word_flag3 == "false") {
+//                        systemdispatcher.set_package_args(container.text);
+//                    }
+//                }
+//                else if (btn_flag == "browser_work") {
+//                    var browserlist = systemdispatcher.get_browser_args();
+//                    var word_flag4 = "false";
+//                    for (var p=0; q<browserlist.length; p++) {
+//                        if (browserlist[p] == container.text) {
+//                            word_flag4 = "true";
+//                            break;
+//                        }
+//                    }
+//                    if (word_flag4 == "false") {
+//                        systemdispatcher.set_browser_args(container.text);
+//                    }
+//                }
+//            }
+//            else if (!checkbox.checked) {
+////                if(container.itemFlag == "apt") {
+//                if (btn_flag == "cache_work") {
+//                    systemdispatcher.del_cache_args(container.text);
+//                }
+//                else if (btn_flag == "package_work") {
+//                    systemdispatcher.del_package_args(container.text);
+//                }
+//                else if (btn_flag == "browser_work") {
+//                    systemdispatcher.del_browser_args(container.text);
+//                }
+//                else if (btn_flag == "largestfile_work") {
+//                    systemdispatcher.del_largestfile_args(container.descript);
+//                }
+//            }
 
         }
         visible: itemText.text=="" ? false : true

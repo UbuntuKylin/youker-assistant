@@ -57,7 +57,7 @@ Item {
             statusImage.visible = true;
         }
         root.sub_num = largestfile_data.length;
-        systemdispatcher.clear_largestfile_args();
+//        systemdispatcher.clear_largestfile_args();
         subModel.clear();
         var num = 0;
         for (var i=0; i< largestfile_data.length; i++) {
@@ -66,8 +66,10 @@ Item {
                 num++;
             }
             else {
-                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i});
-                systemdispatcher.set_largestfile_args(splitlist[1]);
+                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i, "checked": true});
+//                systemdispatcher.set_largestfile_args(splitlist[1]);
+
+
 //                if(root.yesOrno == "true") {
 //                    console.log("is yes...........");
 //                    systemdispatcher.set_largestfile_args(splitlist[1]);
@@ -219,14 +221,14 @@ Item {
                         sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You haven't set the file size or the value is 0, please input the file sizes !"), mainwindow.pos.x, mainwindow.pos.y);
                     else if (root.directory == "")
                     {
-                        if(root.sub_num != 0 && root.null_flag == false) {
-                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-                        }
-                        else {
-                            //友情提示：        对不起，您没有选择扫描路径，请点击＂浏览＂按钮选择！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the scan path, please click the 'Browse' button to continue!"), mainwindow.pos.x, mainwindow.pos.y);
-                            root.deleget_arrow =0;
-                        }
+//                        if(root.sub_num != 0 && root.null_flag == false) {
+//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+//                        }
+//                        else {
+                        //友情提示：        对不起，您没有选择扫描路径，请点击＂浏览＂按钮选择！
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the scan path, please click the 'Browse' button to continue!"), mainwindow.pos.x, mainwindow.pos.y);
+                        root.deleget_arrow =0;
+//                        }
                     }
                     else {
                         if(root.null_flag == true) {
@@ -235,7 +237,16 @@ Item {
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
                         }
                         else if(root.null_flag == false) {
-                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+                            //test 0410
+                            var filelist = new Array();
+                            for(var i=0; i<subModel.count; i++) {
+                                if(subModel.get(i).checked) {
+                                    filelist.push(subModel.get(i).desc);
+                                }
+                            }
+//                            console.log("yyyy", filelist);
+                            systemdispatcher.clean_file_cruft_qt(filelist, "largestfile");
+//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                         }
                     }
                 }
@@ -283,6 +294,33 @@ Item {
                     arrow_display: root.deleget_arrow
                     delegate_flag: false
 //                    main_check_value: root.yesOrno
+
+
+                    //test 0410
+                    onTransmitFileItemMainCheckBoxStatus: {
+                        if(status) {
+                            for(var i=0; i<subModel.count; i++) {
+                                subModel.setProperty(i, "checked", true);
+                            }
+                        }
+                        else {
+                            for(var j=0; j<subModel.count; j++) {
+                                subModel.setProperty(j, "checked", false);
+                            }
+                        }
+                    }
+
+                    //test 0410
+                    onTransmitFileItemCheckBoxStatus: {
+                        if(status) {
+                            subModel.setProperty(index, "checked", true);
+                        }
+                        else {
+                            subModel.setProperty(index, "checked", false);
+                        }
+                    }
+
+
                     onSubpressed: {
                         root.sub_num = hMark;
                     }
