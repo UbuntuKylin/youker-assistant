@@ -38,60 +38,115 @@ Item {
     ListModel { id: mainModel }
     ListModel { id: subModel }
 
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellQMLLargeFileList: {
+            var largestfile_data = filelist;
+            if (largestfile_data.length === 0) {
+                root.null_flag = true;
+                root.deleget_arrow =0;
+                if(statusImage.visible == true)
+                    statusImage.visible = false;
+                root.resultFlag = false;//扫描内容不存在
+            }
+            else
+            {
+                root.null_flag = false;
+                root.deleget_arrow =1;
+                statusImage.visible = true;
+            }
+            root.sub_num = largestfile_data.length;
+    //        systemdispatcher.clear_largestfile_args();
+            subModel.clear();
+            var num = 0;
+            for (var i=0; i< largestfile_data.length; i++) {
+                var splitlist = largestfile_data[i].split("<2_2>");
+                if (splitlist[0] == "") {
+                    num++;
+                }
+                else {
+                    subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i, "checked": true});
+    //                systemdispatcher.set_largestfile_args(splitlist[1]);
+                }
+            }
+            root.sub_num -= num;
+            root.lar_num = root.sub_num;
+            root.check_num = root.sub_num;
+            if(check_num != 0) {
+                check_flag = true;
+            }
+            mainModel.clear();
+            //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
+            mainModel.append({"mstatus": root.check_flag ? "true": "false",
+                              "itemTitle": qsTr("Cleanup path is:")  + root.directory,
+                             "picture": "../../img/toolWidget/deb-min.png",
+                             "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
+        }
+    }
+
     //获取数据
     function refresh_page() {
         root.sub_num=0;
         root.check_num=0
-        var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
-        if (largestfile_data.length === 0) {
-            root.null_flag = true;
-            root.deleget_arrow =0;
-            if(statusImage.visible == true)
-                statusImage.visible = false;
-            root.resultFlag = false;//扫描内容不存在
-        }
-        else
-        {
-            root.null_flag = false;
-            root.deleget_arrow =1;
-            statusImage.visible = true;
-        }
-        root.sub_num = largestfile_data.length;
-//        systemdispatcher.clear_largestfile_args();
-        subModel.clear();
-        var num = 0;
-        for (var i=0; i< largestfile_data.length; i++) {
-            var splitlist = largestfile_data[i].split("<2_2>");
-            if (splitlist[0] == "") {
-                num++;
-            }
-            else {
-                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i, "checked": true});
-//                systemdispatcher.set_largestfile_args(splitlist[1]);
-
-
-//                if(root.yesOrno == "true") {
-//                    console.log("is yes...........");
-//                    systemdispatcher.set_largestfile_args(splitlist[1]);
-//                }
-//                else {
-//                    console.log("is no...........");
-//                }
-            }
-        }
-        root.sub_num -= num;
-        root.lar_num = root.sub_num;
-        root.check_num = root.sub_num;
-        if(check_num != 0) {
-            check_flag = true;
-        }
-        mainModel.clear();
-        //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
-        mainModel.append({"mstatus": root.check_flag ? "true": "false",
-                          "itemTitle": qsTr("Cleanup path is:")  + root.directory,
-                         "picture": "../../img/toolWidget/deb-min.png",
-                         "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
+        sessiondispatcher.scan_of_large_qt(root.directory, root.size);
     }
+
+    //获取数据
+//    function refresh_page() {
+//        root.sub_num=0;
+//        root.check_num=0
+//        var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
+//        if (largestfile_data.length === 0) {
+//            root.null_flag = true;
+//            root.deleget_arrow =0;
+//            if(statusImage.visible == true)
+//                statusImage.visible = false;
+//            root.resultFlag = false;//扫描内容不存在
+//        }
+//        else
+//        {
+//            root.null_flag = false;
+//            root.deleget_arrow =1;
+//            statusImage.visible = true;
+//        }
+//        root.sub_num = largestfile_data.length;
+////        systemdispatcher.clear_largestfile_args();
+//        subModel.clear();
+//        var num = 0;
+//        for (var i=0; i< largestfile_data.length; i++) {
+//            var splitlist = largestfile_data[i].split("<2_2>");
+//            if (splitlist[0] == "") {
+//                num++;
+//            }
+//            else {
+//                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i, "checked": true});
+////                systemdispatcher.set_largestfile_args(splitlist[1]);
+
+
+////                if(root.yesOrno == "true") {
+////                    console.log("is yes...........");
+////                    systemdispatcher.set_largestfile_args(splitlist[1]);
+////                }
+////                else {
+////                    console.log("is no...........");
+////                }
+//            }
+//        }
+//        root.sub_num -= num;
+//        root.lar_num = root.sub_num;
+//        root.check_num = root.sub_num;
+//        if(check_num != 0) {
+//            check_flag = true;
+//        }
+//        mainModel.clear();
+//        //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
+//        mainModel.append({"mstatus": root.check_flag ? "true": "false",
+//                          "itemTitle": qsTr("Cleanup path is:")  + root.directory,
+//                         "picture": "../../img/toolWidget/deb-min.png",
+//                         "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
+//    }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections

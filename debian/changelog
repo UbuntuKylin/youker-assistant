@@ -2,8 +2,9 @@ youker-assistant (1.0.2-0ubuntu1) trusty; urgency=low
 
   * Perfect for parameter when checkbox checked.
   * Get the correct version information of OS.
+  * Do system scan with thread.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 10 Apr 2014 19:22:33 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 14 Apr 2014 15:26:18 +0800
 
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 

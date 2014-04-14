@@ -245,7 +245,7 @@ Item {
                         thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                          "picture": "../../img/toolWidget/thumbnails.png"})
-                        systemdispatcher.clear_cache_args();
+//                        systemdispatcher.clear_cache_args();
                         aptsubModel.clear();//内容清空
                         softsubModel.clear();//内容清空
                         thumbsubModel.clear();//内容清空
@@ -262,7 +262,7 @@ Item {
                             aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Package cache cleanup"),
                                              "picture": "../../img/toolWidget/apt-min.png"})
-                            systemdispatcher.clear_cache_args();
+//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -278,7 +278,7 @@ Item {
                             softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png"})
-                            systemdispatcher.clear_cache_args();
+//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -294,7 +294,7 @@ Item {
                             thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
-                            systemdispatcher.clear_cache_args();
+//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -315,7 +315,7 @@ Item {
                             softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png"})
-                            systemdispatcher.clear_cache_args();
+//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -336,7 +336,7 @@ Item {
                             thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
-                            systemdispatcher.clear_cache_args();
+//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -357,7 +357,7 @@ Item {
                             thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
-                            systemdispatcher.clear_cache_args();
+//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -439,7 +439,7 @@ Item {
                     if(root.thumb_maincheck == false) {
                         root.thumb_maincheck = true;
                     }
-                    systemdispatcher.clear_cache_args();
+//                    systemdispatcher.clear_cache_args();
                     root.apt_showNum = false;
                     root.soft_showNum = false;
                     root.thumb_showNum = false;

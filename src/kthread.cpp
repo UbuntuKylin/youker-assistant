@@ -16,12 +16,13 @@
 #include <QDebug>
 #include "kthread.h"
 
-KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, /*QObject *parent, */QString method, QString flag):QThread(/*parent*/)
+KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, /*QObject *parent, */QString method, QString flag, int size):QThread(/*parent*/)
 {
     iface = systemiface;
     methodName = method;
     list = arglist;
     fileFlag = flag;
+    fileSize = size;
 }
 
 KThread::~KThread() {
@@ -29,6 +30,7 @@ KThread::~KThread() {
 }
 
 void KThread::run() {
+    //清理
     if(methodName == "onekey_clean_crufts_function") {
         iface->call("onekey_clean_crufts_function", list);
     }
@@ -50,6 +52,7 @@ void KThread::run() {
     else if(methodName == "clean_file_cruft") {
         iface->call("clean_file_cruft", list, fileFlag);
     }
+    //天气
     else if(methodName == "get_forecast_weahter") {
         iface->call("get_forecast_weahter", fileFlag);
     }
@@ -61,6 +64,28 @@ void KThread::run() {
     }
     else if(methodName == "get_current_pm25") {
         iface->call("get_current_pm25", fileFlag);
+    }
+    //扫描
+    else if(methodName == "onekey_scan_function") {
+        iface->call("onekey_scan_function", list);
+    }
+    else if(methodName == "cache_scan_function") {
+        iface->call("cache_scan_function", list, fileFlag);
+    }
+    else if(methodName == "package_scan_function") {
+        iface->call("package_scan_function", list);
+    }
+    else if(methodName == "cookies_scan_function") {
+        iface->call("cookies_scan_function", fileFlag);
+    }
+    else if(methodName == "scan_history_records") {
+        iface->call("scan_history_records", fileFlag);
+    }
+    else if(methodName == "scan_system_history") {
+        iface->call("scan_system_history");
+    }
+    else if(methodName == "scan_of_large") {
+        iface->call("scan_of_large", fileSize, fileFlag);
     }
 }
 void KThread::stop() {

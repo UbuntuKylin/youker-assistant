@@ -61,18 +61,17 @@ public:
     //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_session_daemon_qt();
     //扫描浏览器历史记录
-    Q_INVOKABLE int scan_history_records_qt(QString flag);
+    Q_INVOKABLE void scan_history_records_qt(QString flag);
     //扫描系统最近打开文件的历史记录
-    Q_INVOKABLE int scan_system_history_qt();
+    Q_INVOKABLE void scan_system_history_qt();
     //扫描Dash历史记录
 //    Q_INVOKABLE int scan_dash_history_qt();
     //扫描同名文件
 //    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
     //扫描大文件
-    Q_INVOKABLE QStringList scan_of_large_qt(int size, QString abspath);
+    Q_INVOKABLE /*QStringList*/void scan_of_large_qt(QString abspath, int size);
     //扫描cookies
-    Q_INVOKABLE QStringList scan_cookies_records_qt();
-
+//    Q_INVOKABLE QStringList scan_cookies_records_qt();
     //扫描firefox和chromium的cookies
     Q_INVOKABLE void cookies_scan_function_qt(QString flag);
 
@@ -385,6 +384,9 @@ signals:
 
     //告诉QML确认云配置操作
 //    void tellQMLCloudConfirm();
+
+    void tellQMLHistoryNumber(QString flag, int num);
+    void tellQMLLargeFileList(QStringList filelist);
 public slots:
     void verify_user_and_password(QString user, QString pwd);
     void handle_data_after_login_success(QString id, /*QString level, */QString name, QString score);
@@ -447,6 +449,9 @@ public slots:
     void handler_upload_cloud_conf(QString upload);
     //接收确认云配置操作
 //    void handler_confirm_cloud_action();
+
+    void handlerHistoryNumber(QString flag, int num);
+    void handlerLargeFileList(QStringList filelist);
 
 private:
     int mainwindow_width;

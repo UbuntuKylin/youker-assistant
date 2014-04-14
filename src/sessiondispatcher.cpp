@@ -100,6 +100,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handle_data_when_login_failed(int)));
     QObject::connect(httpauth, SIGNAL(failedCommunicate()), this, SLOT(resetTimerStatus()));
     QObject::connect(httpauth, SIGNAL(successCommunicate()), this, SLOT(searchCurrentInfo()));
+
+    QObject::connect(sessioniface, SIGNAL(get_history_number(QString, int)), this, SLOT(handlerHistoryNumber(QString, int)));
+    QObject::connect(sessioniface, SIGNAL(get_largefile_list(QStringList)), this, SLOT(handlerLargeFileList(QStringList)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -131,6 +134,14 @@ SessionDispatcher::~SessionDispatcher() {
 //dbus服务退出
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
+}
+
+void SessionDispatcher::handlerHistoryNumber(QString flag, int num) {
+    emit this->tellQMLHistoryNumber(flag, num);
+}
+
+void SessionDispatcher::handlerLargeFileList(QStringList filelist) {
+    emit this->tellQMLLargeFileList(filelist);
 }
 
 void SessionDispatcher::open_folder_qt(QString path) {
@@ -407,18 +418,28 @@ QString SessionDispatcher::get_locale_version() {
 }
 
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
-    sessioniface->call("onekey_scan_function", selectedList);
+//    sessioniface->call("onekey_scan_function", selectedList);
+    KThread *thread = new KThread(selectedList, sessioniface, "onekey_scan_function");
+    thread->start();
+}
+
+void SessionDispatcher::scan_history_records_qt(QString flag) {
+//    QDBusReply<int> reply = sessioniface->call("scan_history_records", flag);
+//    return reply.value();
+
+    QStringList tmp;
+    KThread *thread = new KThread(tmp, sessioniface, "scan_history_records", flag);
+    thread->start();
 }
 
 
-int SessionDispatcher::scan_history_records_qt(QString flag) {
-    QDBusReply<int> reply = sessioniface->call("scan_history_records", flag);
-    return reply.value();
-}
+void SessionDispatcher::scan_system_history_qt() {
+//    QDBusReply<int> reply = sessioniface->call("scan_system_history");
+//    return reply.value();
 
-int SessionDispatcher::scan_system_history_qt() {
-    QDBusReply<int> reply = sessioniface->call("scan_system_history");
-    return reply.value();
+    QStringList tmp;
+    KThread *thread = new KThread(tmp, sessioniface, "scan_system_history");
+    thread->start();
 }
 
 //int SessionDispatcher::scan_dash_history_qt() {
@@ -431,18 +452,26 @@ int SessionDispatcher::scan_system_history_qt() {
 //    return reply.value();
 //}
 
-QStringList SessionDispatcher::scan_of_large_qt(int size, QString abspath) {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);
-    return reply.value();
+/*QStringList*/void SessionDispatcher::scan_of_large_qt(QString abspath, int size) {
+//    sessioniface->call("scan_of_large", size, abspath);
+//    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);
+//    return reply.value();
+
+    QStringList tmp;
+    KThread *thread = new KThread(tmp, sessioniface, "scan_of_large", abspath, size);
+    thread->start();
 }
 
-QStringList SessionDispatcher::scan_cookies_records_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_records");
-    return reply.value();
-}
+//QStringList SessionDispatcher::scan_cookies_records_qt() {
+//    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_records");
+//    return reply.value();
+//}
 
 void SessionDispatcher::cookies_scan_function_qt(QString flag) {
-    sessioniface->call("cookies_scan_function", flag);
+//    sessioniface->call("cookies_scan_function", flag);
+    QStringList tmp;
+    KThread *thread = new KThread(tmp, sessioniface, "cookies_scan_function", flag);
+    thread->start();
 }
 
 QStringList SessionDispatcher::get_cache_arglist(int i) {
@@ -486,11 +515,18 @@ QStringList SessionDispatcher::get_package_arglist(int i) {
 }
 
 void SessionDispatcher::cache_scan_function_qt(QStringList argList, QString flag) {
-    sessioniface->call("cache_scan_function", argList, flag);
+//    sessioniface->call("cache_scan_function", argList, flag);
+
+
+    KThread *thread = new KThread(argList, sessioniface, "cache_scan_function", flag);
+    thread->start();
 }
 
 void SessionDispatcher::package_scan_function_qt(QStringList argList) {
-    sessioniface->call("package_scan_function", argList);
+//    sessioniface->call("package_scan_function", argList);
+
+    KThread *thread = new KThread(argList, sessioniface, "package_scan_function");
+    thread->start();
 }
 
 QString SessionDispatcher::getHomePath() {

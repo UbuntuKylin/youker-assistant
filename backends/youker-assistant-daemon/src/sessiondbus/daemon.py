@@ -272,6 +272,20 @@ class SessionDaemon(dbus.service.Object):
         onekeyfunc_obj.get_onekey_crufts(self, mode_list)
         self.scan_complete_msg('onekey')
 
+    @dbus.service.signal(INTERFACE, signature='as')
+    def get_largefile_list(self, filelist):
+        pass
+
+    def tell_widget_largefile_list(self, filelist):
+        self.get_largefile_list(filelist)
+
+    @dbus.service.signal(INTERFACE, signature='si')
+    def get_history_number(self, flag, num):
+        pass
+
+    def tell_widget_history_number(self, flag, num):
+        self.get_history_number(flag, num)
+
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
     def scan_history_records(self, flag):
         historyfunc_obj = cleaner.CleanTheHistory()
@@ -283,14 +297,16 @@ class SessionDaemon(dbus.service.Object):
             figure = -99
         elif crufts in 'No':
             figure = -1
-        return figure
+        #return figure
+        self.tell_widget_history_number(flag, figure)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def scan_system_history(self):
         daemonsystem = cleaner.CleanSystemHistory()
         url = daemonsystem.get_scan_result()
-        self.scan_complete_msg('system')
-        return len(url)
+        #self.scan_complete_msg('system')
+        #return len(url)
+        self.tell_widget_history_number("system", len(url))
 
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     #def scan_dash_history(self):
@@ -308,11 +324,18 @@ class SessionDaemon(dbus.service.Object):
 
     # the function of sort the hundred files below path betown big to small
     ### input-'path'  output-['size<2_2>biggestfile<2_2>filestyle', 'size...]
-    @dbus.service.method(INTERFACE, in_signature='is', out_signature='as')
+    #@dbus.service.method(INTERFACE, in_signature='is', out_signature='as')
+    #def scan_of_large(self, size, path):
+    #    tmp_list = self.daemonlarge.get_scan_result(size, path)
+    #    self.scan_complete_msg('large')
+    #    return tmp_list
+
+    @dbus.service.method(INTERFACE, in_signature='is', out_signature='')
     def scan_of_large(self, size, path):
         tmp_list = self.daemonlarge.get_scan_result(size, path)
-        self.scan_complete_msg('large')
-        return tmp_list
+        #self.scan_complete_msg('large')
+        #return tmp_list
+        self.tell_widget_largefile_list(tmp_list)
 
     # the function of clean the cookies records
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')

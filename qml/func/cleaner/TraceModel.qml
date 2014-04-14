@@ -39,76 +39,162 @@ Item {
     property bool null_flag3: false
     property bool null_flag2: false
 
-    //获取数据
-    function getData(history_msg) {
-        if (history_msg == "BrowserWork") {
-            root.browserstatus_num = sessiondispatcher.scan_history_records_qt("firefox");
-            if(root.browserstatus_num == -1) {
-                toolkits.alertMSG(qsTr("Firefox is not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Firefox！
+    Connections
+    {
+        target: sessiondispatcher
+        onTellQMLHistoryNumber: {
+            if(flag == "firefox") {
+                root.browserstatus_num = num;
+                if(root.browserstatus_num == -1) {
+                    toolkits.alertMSG(qsTr("Firefox is not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Firefox！
+                }
+                else if (root.browserstatus_num == 0) {
+                    root.null_flag = true;
+                    internetBtnRow.state = "BrowserWorkEmpty";
+                    //友情提示：      扫描内容为空，无需清理！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !")/*, mainwindow.pos.x, mainwindow.pos.y*/);
+                }
+                else {
+                    root.null_flag = false;
+                    internetBtnRow.state = "BrowserWork";
+                    toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                    internetcacheBtn.text = qsTr("Begin cleanup");//开始清理
+                    root.btn_flag = "history_work";
+                    browserstatus_label.visible = true;
+                    internetbackBtn.visible = true;
+                    internetrescanBtn.visible = true;
+                }
             }
-            else if (root.browserstatus_num == 0) {
-                root.null_flag = true;
-                internetBtnRow.state = "BrowserWorkEmpty";
-                //友情提示：      扫描内容为空，无需清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+            else if(flag == "chromium") {
+                root.chromium_num = num;
+                if(root.chromium_num == -1) {
+                    toolkits.alertMSG(qsTr("Chromium is not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Chromium！
+                }
+                else if(root.chromium_num == -99) {
+                    //友情提示：      Chromium 正在运行。当浏览器运行的时候，不能执行扫描或者清理操作。
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Chromium is running. When the browser is running, could not perform scan or cleanup operations.")/*, mainwindow.pos.x, mainwindow.pos.y*/);//Chromium正在运行中。当它正在运行的时候，不能执行扫描或者清理操作。
+                }
+                else if (root.chromium_num == 0) {
+                    root.null_flag3 = true;
+                    chromiumBtnRow.state = "ChromiumWorkEmpty";
+                    //友情提示：      扫描内容为空，无需清理！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !")/*, mainwindow.pos.x, mainwindow.pos.y*/);
+                }
+                else {
+                    root.null_flag3 = false;
+                    chromiumBtnRow.state = "ChromiumWork";
+                    toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                    chromiumcacheBtn.text = qsTr("Begin cleanup");//开始清理
+                    root.btn_flag3 = "chromium_work";
+                    chromiumstatus_label.visible = true;
+                    chromiumbackBtn.visible = true;
+                    chromiumrescanBtn.visible = true;
+                }
             }
-            else {
-                root.null_flag = false;
-                internetBtnRow.state = "BrowserWork";
-                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-                internetcacheBtn.text = qsTr("Begin cleanup");//开始清理
-                root.btn_flag = "history_work";
-                browserstatus_label.visible = true;
-                internetbackBtn.visible = true;
-                internetrescanBtn.visible = true;
-            }
-        }
-        else if (history_msg == "ChromiumWork") {
-            root.chromium_num = sessiondispatcher.scan_history_records_qt("chromium");
-            if(root.chromium_num == -1) {
-                toolkits.alertMSG(qsTr("Chromium is not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Chromium！
-            }
-            else if(root.chromium_num == -99) {
-                //友情提示：      Chromium 正在运行。当浏览器运行的时候，不能执行扫描或者清理操作。
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Chromium is running. When the browser is running, could not perform scan or cleanup operations."), mainwindow.pos.x, mainwindow.pos.y);//Chromium正在运行中。当它正在运行的时候，不能执行扫描或者清理操作。
-            }
-            else if (root.chromium_num == 0) {
-                root.null_flag3 = true;
-                chromiumBtnRow.state = "ChromiumWorkEmpty";
-                //友情提示：      扫描内容为空，无需清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
-            }
-            else {
-                root.null_flag3 = false;
-                chromiumBtnRow.state = "ChromiumWork";
-                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-                chromiumcacheBtn.text = qsTr("Begin cleanup");//开始清理
-                root.btn_flag3 = "chromium_work";
-                chromiumstatus_label.visible = true;
-                chromiumbackBtn.visible = true;
-                chromiumrescanBtn.visible = true;
-            }
-        }
-        else if (history_msg == "SystemWork") {
-            root.systemstatus_num = sessiondispatcher.scan_system_history_qt();
-            if (root.systemstatus_num == 0) {
-                root.null_flag2 = true;
-                fileBtnRow.state = "SystemWorkEmpty";
-                //友情提示      扫描内容为空，无需清理！
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
-            }
-            else {
-                root.null_flag2 = false;
-                fileBtnRow.state ="SystemWork";
-                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
-                syscacheBtn.text = qsTr("Begin cleanup");//开始清理
-                root.btn_flag2 = "system_work";
-                systemstatus_label.visible = true;
-                filebackBtn.visible = true;
-                filerescanBtn.visible = true;
+            else if(flag == "system") {
+                root.systemstatus_num = num;
+                if (root.systemstatus_num == 0) {
+                    root.null_flag2 = true;
+                    fileBtnRow.state = "SystemWorkEmpty";
+                    //友情提示      扫描内容为空，无需清理！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !")/*, mainwindow.pos.x, mainwindow.pos.y*/);
+                }
+                else {
+                    root.null_flag2 = false;
+                    fileBtnRow.state ="SystemWork";
+                    toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                    syscacheBtn.text = qsTr("Begin cleanup");//开始清理
+                    root.btn_flag2 = "system_work";
+                    systemstatus_label.visible = true;
+                    filebackBtn.visible = true;
+                    filerescanBtn.visible = true;
+                }
             }
         }
     }
+
+    //获取数据
+    function getData(history_msg) {
+        if (history_msg == "BrowserWork") {
+            sessiondispatcher.scan_history_records_qt("firefox");
+        }
+        else if (history_msg == "ChromiumWork") {
+            sessiondispatcher.scan_history_records_qt("chromium");
+        }
+        else if (history_msg == "SystemWork") {
+            sessiondispatcher.scan_system_history_qt();
+        }
+    }
+//    //获取数据
+//    function getData(history_msg) {
+//        if (history_msg == "BrowserWork") {
+//            root.browserstatus_num = sessiondispatcher.scan_history_records_qt("firefox");
+//            if(root.browserstatus_num == -1) {
+//                toolkits.alertMSG(qsTr("Firefox is not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Firefox！
+//            }
+//            else if (root.browserstatus_num == 0) {
+//                root.null_flag = true;
+//                internetBtnRow.state = "BrowserWorkEmpty";
+//                //友情提示：      扫描内容为空，无需清理！
+//                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+//            }
+//            else {
+//                root.null_flag = false;
+//                internetBtnRow.state = "BrowserWork";
+//                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+//                internetcacheBtn.text = qsTr("Begin cleanup");//开始清理
+//                root.btn_flag = "history_work";
+//                browserstatus_label.visible = true;
+//                internetbackBtn.visible = true;
+//                internetrescanBtn.visible = true;
+//            }
+//        }
+//        else if (history_msg == "ChromiumWork") {
+//            root.chromium_num = sessiondispatcher.scan_history_records_qt("chromium");
+//            if(root.chromium_num == -1) {
+//                toolkits.alertMSG(qsTr("Chromium is not installed!"), mainwindow.pos.x, mainwindow.pos.y);//没有安装Chromium！
+//            }
+//            else if(root.chromium_num == -99) {
+//                //友情提示：      Chromium 正在运行。当浏览器运行的时候，不能执行扫描或者清理操作。
+//                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Chromium is running. When the browser is running, could not perform scan or cleanup operations."), mainwindow.pos.x, mainwindow.pos.y);//Chromium正在运行中。当它正在运行的时候，不能执行扫描或者清理操作。
+//            }
+//            else if (root.chromium_num == 0) {
+//                root.null_flag3 = true;
+//                chromiumBtnRow.state = "ChromiumWorkEmpty";
+//                //友情提示：      扫描内容为空，无需清理！
+//                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+//            }
+//            else {
+//                root.null_flag3 = false;
+//                chromiumBtnRow.state = "ChromiumWork";
+//                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+//                chromiumcacheBtn.text = qsTr("Begin cleanup");//开始清理
+//                root.btn_flag3 = "chromium_work";
+//                chromiumstatus_label.visible = true;
+//                chromiumbackBtn.visible = true;
+//                chromiumrescanBtn.visible = true;
+//            }
+//        }
+//        else if (history_msg == "SystemWork") {
+//            root.systemstatus_num = sessiondispatcher.scan_system_history_qt();
+//            if (root.systemstatus_num == 0) {
+//                root.null_flag2 = true;
+//                fileBtnRow.state = "SystemWorkEmpty";
+//                //友情提示      扫描内容为空，无需清理！
+//                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+//            }
+//            else {
+//                root.null_flag2 = false;
+//                fileBtnRow.state ="SystemWork";
+//                toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+//                syscacheBtn.text = qsTr("Begin cleanup");//开始清理
+//                root.btn_flag2 = "system_work";
+//                systemstatus_label.visible = true;
+//                filebackBtn.visible = true;
+//                filerescanBtn.visible = true;
+//            }
+//        }
+//    }
 
     Connections
     {
