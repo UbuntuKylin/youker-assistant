@@ -19,6 +19,10 @@
 import sys
 import os
 import re
+import uuid
+import socket
+import fcntl
+import struct
 import math
 import binascii
 import platform
@@ -743,19 +747,43 @@ class DetailInfo:
                 NetVendor = self.get_url('',pro[0])
                 tmp =  re.findall('Kernel driver in use: (.*)',tmp)
                 NetDrive = tmp[0]
-        n = os.popen('ifconfig eth')
-        network = n.read()
-        n.close()
-        if network :
-            NetLogicalname = network[:4]
-            tmp = re.findall("\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",network)
-            if tmp:
-                NetSerial = tmp[0]
-            tmp = re.findall("inet(.*)",network)
-            if tmp:
-                ip = tmp[0][tmp[0].index(':')+len(':'): ]
-                ip = ip[: ip.index(' ')]
-                NetIp = ip
+        #n = os.popen('ifconfig eth')
+        #network = n.read()
+        #n.close()
+        #if network :
+        #    NetLogicalname = network[:4]
+        #    tmp = re.findall("\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",network)
+        #    if tmp:
+        #        NetSerial = tmp[0]
+        #    tmp = re.findall("inet(.*)",network)
+        #    if tmp:
+        #        ip = tmp[0][tmp[0].index(':')+len(':'): ]
+        #        ip = ip[: ip.index(' ')]
+        #        NetIp = ip
+        # modify by kobe(LP: #1310882 )
+        # -------------------get eth interface and ip address-------------------
+        fp=os.popen("ifconfig -s|grep -v Iface|grep -v lo|awk '{print $1}'")
+        interface=fp.readlines()
+        fp.close()
+        ip_dic={}
+        for name in interface:
+            name=name.strip()
+            sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            ipaddr=socket.inet_ntoa(fcntl.ioctl(
+                sk.fileno(),
+                0x8915, # SIOCGIFADDR
+                struct.pack('256s', name[:15])
+            )[20:24])
+            ip_dic[name]=ipaddr
+        NetLogicalname =  ip_dic.keys()[0]
+        NetIp =  ip_dic.values()[0]
+        # -------------------get mac address-------------------
+        mac_addr = uuid.UUID(int = uuid.getnode()).hex[-12:]
+        NetSerial = ":".join([mac_addr[e:e+2] for e in range(0,11,2)])
+
+
+
+
         n = os.popen('mii-tool -v')
         network = n.read()
         n.close()
