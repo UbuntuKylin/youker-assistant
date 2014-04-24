@@ -354,6 +354,7 @@ Rectangle {
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("control-button-position");
                     var default_type = sessiondispatcher.get_window_button_align_qt();
+                    windowmanagerpage.position_mode = default_type;
                     if(default_type == "left") {
                         leftbox.checked = true;
                     }

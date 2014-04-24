@@ -747,6 +747,7 @@ class DetailInfo:
                 NetVendor = self.get_url('',pro[0])
                 tmp =  re.findall('Kernel driver in use: (.*)',tmp)
                 NetDrive = tmp[0]
+
         #n = os.popen('ifconfig eth')
         #network = n.read()
         #n.close()
@@ -768,13 +769,15 @@ class DetailInfo:
         ip_dic={}
         for name in interface:
             name=name.strip()
-            sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            ipaddr=socket.inet_ntoa(fcntl.ioctl(
-                sk.fileno(),
-                0x8915, # SIOCGIFADDR
-                struct.pack('256s', name[:15])
-            )[20:24])
-            ip_dic[name]=ipaddr
+            # remove 'wlan'
+            if name.startswith('eth'):
+                sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                ipaddr=socket.inet_ntoa(fcntl.ioctl(
+                    sk.fileno(),
+                    0x8915, # SIOCGIFADDR
+                    struct.pack('256s', name[:15])
+                )[20:24])
+                ip_dic[name]=ipaddr
         NetLogicalname =  ip_dic.keys()[0]
         NetIp =  ip_dic.values()[0]
         # -------------------get mac address-------------------
