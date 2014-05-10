@@ -26,9 +26,13 @@ HEADERS += youker-application.h \
     httpauth.h \
     systemdispatcher.h \
     sessiondispatcher.h \
+    kbutton.h \
+    icontext.h \
+    slidershow.h \
+    newcharacter.h \
     modaldialog.h \
     warningdialog.h \
-    messagedialog.h \
+#    messagedialog.h \
     qmlaudio.h \
     qrangemodel.h \
     qrangemodel_p.h \
@@ -67,9 +71,13 @@ SOURCES += main.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
+    kbutton.cpp \
+    icontext.cpp \
+    slidershow.cpp \
+    newcharacter.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
-    messagedialog.cpp \
+#    messagedialog.cpp \
     qmlaudio.cpp \
     qrangemodel.cpp \
     qstyleitem.cpp \
@@ -105,7 +113,7 @@ FORMS += \
     logindialog.ui \
     modaldialog.ui \
     warningdialog.ui \
-    messagedialog.ui \
+#    messagedialog.ui \
     tray.ui \
     fcitxwarndialog.ui \
     suspensionframe.ui \

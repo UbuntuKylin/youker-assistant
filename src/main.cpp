@@ -45,6 +45,7 @@
 #include <QtSingleApplication>
 #include "processmanager.h"
 #include "devicemanager.h"
+#include "slidershow.h"
 #include <QTranslator>
 
 void registerTypes() {
@@ -96,30 +97,80 @@ int main(int argc, char** argv)
     //注册QML模块
     registerTypes();
 
-//    system("/home/saucy/Slider/src/wizard.py");
+    bool flag = false;
+    QSettings * mSettings;
+    QString filePath =  "/var/lib/youker-assistant-daemon/youker-assistant-start.ini";
+    mSettings = new QSettings(filePath, QSettings::IniFormat);
+    mSettings->setIniCodec("UTF-8");
+    mSettings->beginGroup("firststart");
+    flag = mSettings->value("flag").toBool();
+    mSettings->endGroup();
+    mSettings->sync();
 
+    SliderShow *slider;
+    QSplashScreen *splash;
     //启动画面
-    QSplashScreen *splash = new QSplashScreen;
+    splash = new QSplashScreen;
     splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
     splash->setDisabled(true);
+
+    //去掉splash背景底色
     QBitmap objBitmap(313, 209);
     QPainter painter(&objBitmap);
-    painter.fillRect(splash->rect(),Qt::white);
-    painter.setBrush(QColor(0,0,0));
-    painter.drawRoundedRect(splash->rect(), 10,10);
+    painter.fillRect(splash->rect(), Qt::white);
+    painter.setBrush(QColor(0, 0 ,0));
+    painter.drawRoundedRect(splash->rect(), 10 , 10);
     splash->setMask(objBitmap);
     splash->show();
     splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
     app.processEvents();
+
     //同时创建主视图对象
     IhuApplication application;
     splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
     application.setup(/*"main.qml"*/);
-    //显示主界面，并结束启动画面
-    application.showQMLWidget();
-    splash->finish(&application);
-    delete splash;
+    if(flag) {
+        splash->finish(&application);
+        delete splash;
+        slider = new SliderShow();
+        mSettings->beginGroup("firststart");
+        mSettings->setValue("flag", "0");
+        mSettings->endGroup();
+        mSettings->sync();
+        if(slider->exec() == QDialog::Accepted) {
+             application.showQMLWidget();
+        }
+    }
+    else {
+        splash->finish(&application);
+        //显示主界面，并结束启动画面
+        application.showQMLWidget();
+        delete splash;
+    }
+
+//    //启动画面
+//    QSplashScreen *splash = new QSplashScreen;
+//    splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
+//    splash->setDisabled(true);
+//    QBitmap objBitmap(313, 209);
+//    QPainter painter(&objBitmap);
+//    painter.fillRect(splash->rect(),Qt::white);
+//    painter.setBrush(QColor(0,0,0));
+//    painter.drawRoundedRect(splash->rect(), 10,10);
+//    splash->setMask(objBitmap);
+//    splash->show();
+//    splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
+//    app.processEvents();
+//    //同时创建主视图对象
+//    IhuApplication application;
+//    splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
+//    //数据处理
+//    application.setup(/*"main.qml"*/);
+//    //显示主界面，并结束启动画面
+//    application.showQMLWidget();
+//    splash->finish(&application);
+//    delete splash;
     return app.exec();
 }
 

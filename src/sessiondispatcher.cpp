@@ -21,7 +21,7 @@
 #include <QtDBus>
 #include <QObject>
 #include <QString>
-#include "messagedialog.h"
+//#include "messagedialog.h"
 #include "warningdialog.h"
 #include <QDesktopWidget>
 #include <QDeclarativeContext>
@@ -58,6 +58,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     //初始化QSetting配置文件
     initConfigFile();
+
+    slidershow = new NewCharacter();
 
     //超时计时器
     timer=new QTimer(this);
@@ -583,12 +585,11 @@ QString SessionDispatcher::read_default_configure_from_qsetting_file(QString key
 
 //----------------message dialog--------------------
 void SessionDispatcher::showFeatureDialog(int window_x, int window_y) {
-    MessageDialog *dialog = new MessageDialog();
+//    MessageDialog *dialog = new MessageDialog();
     this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
     this->alert_y = window_y + mainwindow_height - 400;
-    dialog->move(this->alert_x, this->alert_y);
-//    dialog->move ((QApplication::desktop()->width() - dialog->width())/2,(QApplication::desktop()->height() - dialog->height())/2);
-    dialog->show();
+    slidershow->move(this->alert_x, this->alert_y);
+    slidershow->showSlider();
 }
 
 //----------------checkscreen dialog--------------------

@@ -27,6 +27,7 @@
 //#include "skinswidget.h"
 #include "httpauth.h"
 //#include "skincenter.h"
+#include "newcharacter.h"
 class QSettings;
 
 class SessionDispatcher : public QObject
@@ -475,6 +476,7 @@ private:
     int waitTime;//超时重试次数
     QTimer *timer;
     bool loginOK;
+    NewCharacter *slidershow; //新版特性界面
 };
 
 #endif // SESSIONDISPATCHER_H

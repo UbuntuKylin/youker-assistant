@@ -4,7 +4,6 @@
         <file>image/message.png</file>
         <file>image/youker-assistant.png</file>
         <file>image/closeBtn.png</file>
-        <file>image/closeBtn-hover.png</file>
         <file>image/minBtn.png</file>
         <file>image/minBtn-hover.png</file>
         <file>image/dialog-feature.png</file>
@@ -35,6 +34,16 @@
         <file>image/next-zh.png</file>
         <file>image/pre-en.png</file>
         <file>image/pre-zh.png</file>
+        <file>image/desktop_0.jpg</file>
+        <file>image/desktop_1.jpg</file>
+        <file>image/desktop_2.jpg</file>
+        <file>image/desktop_3.jpg</file>
+        <file>image/desktop_4.jpg</file>
+        <file>image/dot_active.png</file>
+        <file>image/dot_normal.png</file>
+        <file>image/start.png</file>
+        <file>image/start_hover.png</file>
+        <file>image/closeBtn_hover.png</file>
     </qresource>
     <qresource prefix="/skin">
         <file>image/0_bg.png</file>

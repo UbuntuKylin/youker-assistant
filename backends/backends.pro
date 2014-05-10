@@ -10,9 +10,12 @@ inst4.files += ../backends/youker-assistant-daemon/data/beautify/sound-theme/
 inst4.path = /var/lib/youker-assistant-daemon/
 inst5.files += ../backends/youker-assistant-daemon/data/processmanager/
 inst5.path = /var/lib/youker-assistant-daemon/
+inst6.files += ../backends/youker-assistant-daemon/data/youker-assistant-start.ini
+inst6.path = /var/lib/youker-assistant-daemon/
 
 INSTALLS += inst1 \
     inst2 \
     inst3 \
     inst4 \
-    inst5
+    inst5 \
+    inst6

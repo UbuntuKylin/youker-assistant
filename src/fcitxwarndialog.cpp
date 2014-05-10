@@ -71,11 +71,11 @@ bool FcitxWarnDialog::eventFilter(QObject *obj, QEvent *event)
     }
     if(obj == ui->btn_close){
             if(event->type() == QEvent::Enter){
-                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
+                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));
             }else if(event->type() == QEvent::Leave){
                 ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
             }else if(event->type() == QEvent::MouseButtonPress){
-                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn-hover.png"));
+                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));
             }else if(event->type() == QEvent::MouseButtonRelease){
                 QMouseEvent *me = (QMouseEvent *)event;
                 QLabel *lb = (QLabel *)obj;
