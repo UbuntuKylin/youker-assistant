@@ -21,7 +21,8 @@ import apt
 import apt_pkg
 import shutil
 import commands
-#import threading
+import threading
+import ctypes
 from apt.progress.base import InstallProgress
 
 import historyclean
@@ -572,3 +573,22 @@ class MyInstallProgress(InstallProgress):
 
         def start_update(self):
             self.sysdaemon.status_remove_packages("apt_start", "")
+
+def cancel_onekey_clean(thead_obj, exception):
+    found = False
+    target_tid = 0
+    for tid, tobj in threading._active.items():
+        if tobj is thread_obj:
+            found = True
+            target_tid = tid
+            break
+    if not found:
+        raise ValueError("Invalid thread object")
+    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), ctypes.py_object(exception))
+
+    if res = 0:
+        raise ValueError("Invalid thread ID")
+    elif res > 1:
+        ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), None)
+        raise SystemError("PyThreadState_SetAsyncExc failed")
+

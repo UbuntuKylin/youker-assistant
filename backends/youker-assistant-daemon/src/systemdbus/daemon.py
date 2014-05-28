@@ -255,6 +255,28 @@ class Daemon(PolicyKitService):
         else:
             self.clean_complete_msg('onekey')
 
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+    def onekey_clean_crufts_function_by_threading(self, mode_list, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.revoke_clean_onekey('yes')
+            return
+        else:
+            self.revoke_clean_onekey('no')
+        daemononekey = cleaner.OneKeyClean()
+        try:
+            t = threading.Thread(targets = daemononekey.clean_all_onekey_crufts, args = (self, mode_list))
+            #daemononekey.clean_all_onekey_crufts(self, mode_list)
+        except Exception, e:
+            self.clean_error_msg('onekey')
+        else:
+            self.clean_complete_msg('onekey')
+
+        return t
+
+    def onekey_clean_cancel_function(self, t):
+        daemononekey.cancel_onekey_clean(t, SystemExit)
+
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
     def history_clean_records_function(self, flag, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
