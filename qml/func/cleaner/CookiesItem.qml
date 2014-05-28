@@ -44,17 +44,17 @@ Item {
         target: systemdispatcher
         onFinishCleanSingleWorkError: {
             if (msg == "cookies") {
-                toolkits.alertMSG(qsTr("Cleanup failed!"), mainwindow.pos.x, mainwindow.pos.y);//清理失败！
+                toolkits.alertMSG(qsTr("Cleanup failed!"));//清理失败！
             }
         }
 
         onFinishCleanSingleWork: {
             if (msg == "") {
-                toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
+                toolkits.alertMSG(qsTr("Cleanup interrupted!"));//清理中断！
 
             }
             else if (msg == "cookies") {
-                toolkits.alertMSG(qsTr("Cleanup successfully!"), mainwindow.pos.x, mainwindow.pos.y);//清理成功！
+                toolkits.alertMSG(qsTr("Cleanup successfully!"));//清理成功！
                 container.refreshed();//清理完单个数据后，通过clicked信号告诉BrowserCookies.qml去进行数据再次扫描刷新的操作
             }
         }

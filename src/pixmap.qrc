@@ -1,27 +1,17 @@
 <RCC>
     <qresource prefix="/pixmap">
-        <file>image/dialog-bg.png</file>
         <file>image/message.png</file>
         <file>image/youker-assistant.png</file>
         <file>image/closeBtn.png</file>
         <file>image/minBtn.png</file>
         <file>image/minBtn-hover.png</file>
-        <file>image/dialog-feature.png</file>
-        <file>image/feature1.png</file>
-        <file>image/feature2.png</file>
-        <file>image/feature3.png</file>
         <file>image/icon.png</file>
-        <file>image/ok.png</file>
-        <file>image/quit.png</file>
         <file>image/accelerate-bg.png</file>
         <file>image/accelerate-bg0.png</file>
-        <file>image/ok-hover.png</file>
-        <file>image/quit-hover.png</file>
         <file>image/memory.png</file>
         <file>image/alert.png</file>
         <file>image/progress-bg.png</file>
         <file>image/feature.png</file>
-        <file>image/font-bg.png</file>
         <file>image/upshiftEN.png</file>
         <file>image/upshiftEN-hover.png</file>
         <file>image/upshiftEN-press.png</file>
@@ -44,10 +34,16 @@
         <file>image/start.png</file>
         <file>image/start_hover.png</file>
         <file>image/closeBtn_hover.png</file>
-    </qresource>
-    <qresource prefix="/skin">
-        <file>image/0_bg.png</file>
-        <file>image/0.png</file>
+        <file>image/shade.png</file>
+        <file>image/titlebg.png</file>
+        <file>image/button12-gray.png</file>
+        <file>image/button12-gray-hover.png</file>
+        <file>image/add.png</file>
+        <file>image/del.png</file>
+        <file>image/start_active.png</file>
+        <file>image/start_en.png</file>
+        <file>image/start_en_active.png</file>
+        <file>image/start_en_hover.png</file>
     </qresource>
     <qresource prefix="/translate">
         <file>translation/youker-assistant_zh_CN.qm</file>

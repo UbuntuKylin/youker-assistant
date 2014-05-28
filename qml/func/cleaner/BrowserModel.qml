@@ -17,9 +17,9 @@ import QtQuick 1.1
 import "../common" as Common
 
 Item {
-    id:root
-    width: parent.width
-    height: 435
+    id:browserpage
+    width: parent.width; height: 437
+
     property string title: qsTr("Deep cleaning up the browser cache")//深度清理浏览器缓存
     property string description: qsTr("Deep cleaning up the browser cache, to save disk space")//深度清理浏览器缓存，节省磁盘空间！
     property string btnFlag: "browser_scan"//browser_scan/browser_work
@@ -57,22 +57,22 @@ Item {
         onAppendContentToCacheModel: {
             //QString flag, QString path, QString fileFlag, QString sizeValue
             if(flag == "firefox") {
-                firefoxsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.firefoxNum, "checked": true});
-                root.firefoxNum += 1;
+                firefoxsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": browserpage.firefoxNum, "checked": true});
+                browserpage.firefoxNum += 1;
 //                systemdispatcher.set_browser_args(path);
             }
             else if(flag == "chromium") {
-                chromiumsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.chromiumNum, "checked": true});
-                root.chromiumNum += 1;
+                chromiumsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": browserpage.chromiumNum, "checked": true});
+                browserpage.chromiumNum += 1;
 //                systemdispatcher.set_browser_args(path);
             }
         }
 //        onTellAbsPathToCacheModel: {
 //            if(flag == "firefox") {
-//                root.firefox_path = path;
+//                browserpage.firefox_path = path;
 //            }
 //            else if(flag == "chromium") {
-//                root.chromium_path = path;
+//                browserpage.chromium_path = path;
 //            }
 //        }
 
@@ -82,78 +82,78 @@ Item {
                 firefoxmainModel.clear();
                 chromiummainModel.clear();
                 //Firefox缓存清理
-                firefoxmainModel.append({"mstatus": root.firefox_maincheck ? "true": "false",
+                firefoxmainModel.append({"mstatus": browserpage.firefox_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup Firefox Cache"),
                                  "picture": "../../img/toolWidget/firefox.png"})
                 //Chromium缓存清理
-                chromiummainModel.append({"mstatus": root.chromium_maincheck ? "true": "false",
+                chromiummainModel.append({"mstatus": browserpage.chromium_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup Chromium Cache"),
                                  "picture": "../../img/toolWidget/chromium.png"})
 
-                if(root.firefoxNum != 0) {
-                    root.firefoxresultFlag = true;//扫描的实际有效内容存在
+                if(browserpage.firefoxNum != 0) {
+                    browserpage.firefoxresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 1) {
-                        root.firefoxEmpty = true;
+                    if(browserpage.mode == 0 || browserpage.mode == 1) {
+                        browserpage.firefoxEmpty = true;
                     }
-                    root.firefoxresultFlag = false;//扫描的实际有效内容不存在
+                    browserpage.firefoxresultFlag = false;//扫描的实际有效内容不存在
                 }
-                if(root.chromiumNum != 0) {
-                    root.chromiumresultFlag = true;//扫描的实际有效内容存在
+                if(browserpage.chromiumNum != 0) {
+                    browserpage.chromiumresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 2) {
-                        root.chromiumEmpty = true;
+                    if(browserpage.mode == 0 || browserpage.mode == 2) {
+                        browserpage.chromiumEmpty = true;
                     }
-                    root.chromiumresultFlag = false;//扫描的实际有效内容不存在
+                    browserpage.chromiumresultFlag = false;//扫描的实际有效内容不存在
                 }
 
-                if(root.firefoxresultFlag == false) {
-                    root.firefox_showNum = false;
-                    root.firefox_expanded = false;//伸缩箭头不扩展
-                    root.firefox_arrow_show = 0;//伸缩箭头不显示
+                if(browserpage.firefoxresultFlag == false) {
+                    browserpage.firefox_showNum = false;
+                    browserpage.firefox_expanded = false;//伸缩箭头不扩展
+                    browserpage.firefox_arrow_show = 0;//伸缩箭头不显示
                 }
-                else if(root.firefoxresultFlag == true) {
-                    root.firefox_showNum = true;
-                    root.firefox_expanded = true;//伸缩箭头扩展
-                    root.firefox_arrow_show = 1;//伸缩箭头显示
+                else if(browserpage.firefoxresultFlag == true) {
+                    browserpage.firefox_showNum = true;
+                    browserpage.firefox_expanded = true;//伸缩箭头扩展
+                    browserpage.firefox_arrow_show = 1;//伸缩箭头显示
                 }
-                if(root.chromiumresultFlag == false) {
-                    root.chromium_showNum = false;
-                    root.chromium_expanded = false;//伸缩箭头不扩展
-                    root.chromium_arrow_show = 0;//伸缩箭头不显示
+                if(browserpage.chromiumresultFlag == false) {
+                    browserpage.chromium_showNum = false;
+                    browserpage.chromium_expanded = false;//伸缩箭头不扩展
+                    browserpage.chromium_arrow_show = 0;//伸缩箭头不显示
                 }
-                else if(root.chromiumresultFlag == true) {
-                    root.chromium_showNum = true;
-                    root.chromium_expanded = true;//伸缩箭头扩展
-                    root.chromium_arrow_show = 1;//伸缩箭头显示
+                else if(browserpage.chromiumresultFlag == true) {
+                    browserpage.chromium_showNum = true;
+                    browserpage.chromium_expanded = true;//伸缩箭头扩展
+                    browserpage.chromium_arrow_show = 1;//伸缩箭头显示
                 }
 
-                if(root.firefoxresultFlag == false && root.chromiumresultFlag == false) {
-                    root.state = "BrowserWorkEmpty";
-                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+                if(browserpage.firefoxresultFlag == false && browserpage.chromiumresultFlag == false) {
+                    browserpage.state = "BrowserWorkEmpty";
+                    if(browserpage.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                         //友情提示：      扫描内容为空，无需清理！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
                     }
                     else {//清理firefox后的重新获取数据，此时不需要显示对话框
-                        root.flag = false;
+                        browserpage.flag = false;
                     }
                 }
                 else {
-                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                        toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                    if(browserpage.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+                        toolkits.alertMSG(qsTr("Scan completed!"));//扫描完成！
                     }
                     else {//清理chromium后的重新获取数据，此时不需要显示对话框
-                        root.flag = false;
+                        browserpage.flag = false;
                     }
-                    root.state = "BrowserWork";
+                    browserpage.state = "BrowserWork";
                     actionBtn.text = qsTr("Begin cleanup");//开始清理
-                    root.btnFlag = "browser_work";
+                    browserpage.btnFlag = "browser_work";
                     backBtn.visible = true;
     //                rescanBtn.visible = true;
                 }
-                scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*4;
+                scrollItem.height = (browserpage.firefoxNum + 1) * browserpage.item_height + (browserpage.chromiumNum + 1) * browserpage.item_height + browserpage.spaceValue*4;
                 //扫描完成后恢复按钮的使能
                 actionBtn.enabled = true;
             }
@@ -162,11 +162,11 @@ Item {
 
     Component.onCompleted: {
         //Firefox缓存清理
-        firefoxmainModel.append({"mstatus": root.firefox_maincheck ? "true": "false",
+        firefoxmainModel.append({"mstatus": browserpage.firefox_maincheck ? "true": "false",
                          "itemTitle": qsTr("Cleanup Firefox Cache"),
                          "picture": "../../img/toolWidget/firefox.png"})
         //Chromium缓存清理
-        chromiummainModel.append({"mstatus": root.chromium_maincheck ? "true": "false",
+        chromiummainModel.append({"mstatus": browserpage.chromium_maincheck ? "true": "false",
                          "itemTitle": qsTr("Cleanup Chromium Cache"),
                          "picture": "../../img/toolWidget/chromium.png"})
     }
@@ -178,72 +178,72 @@ Item {
             if (btnFlag == "browser_work") {
                 if (msg == "browsercache") {
                     doingImage.visible = false;
-                    root.state = "BrowserWorkError";
+                    browserpage.state = "BrowserWorkError";
                     //清理过程中发生错误，解禁按钮
                     actionBtn.enabled = true;
-                    toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Cleanup abnormal!"));//清理出现异常！
                 }
             }
         }
         onFinishCleanWork: {//清理成功时收到的信号
-            if (root.btnFlag == "browser_work") {
+            if (browserpage.btnFlag == "browser_work") {
                 doingImage.visible = false;
                 if (msg == "") {
                     //清理取消，解禁按钮
                     actionBtn.enabled = true;
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
+                    toolkits.alertMSG(qsTr("Cleanup interrupted!"));//清理中断！
                 }
                 else if (msg == "browsercache") {
-                    root.state = "BrowserWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    browserpage.state = "BrowserWorkFinish";
+                    toolkits.alertMSG(qsTr("Cleared!"));//清理完毕！
                     //清理完毕后重新获取数据
-                    root.flag = true;
-                    if(root.firefox_maincheck && root.chromium_maincheck) {
+                    browserpage.flag = true;
+                    if(browserpage.firefox_maincheck && browserpage.chromium_maincheck) {
                         firefoxmainModel.clear();
                         chromiummainModel.clear();
                         //Firefox缓存清理
-                        firefoxmainModel.append({"mstatus": root.firefox_maincheck ? "true": "false",
+                        firefoxmainModel.append({"mstatus": browserpage.firefox_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Cleanup Firefox Cache"),
                                          "picture": "../../img/toolWidget/firefox.png"})
                         //Chromium缓存清理
-                        chromiummainModel.append({"mstatus": root.chromium_maincheck ? "true": "false",
+                        chromiummainModel.append({"mstatus": browserpage.chromium_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Cleanup Chromium Cache"),
                                          "picture": "../../img/toolWidget/chromium.png"})
 //                        systemdispatcher.clear_browser_args();
                         firefoxsubModel.clear();//内容清空
                         chromiumsubModel.clear();//内容清空
-                        root.firefoxNum = 0;//隐藏滑动条
-                        root.chromiumNum = 0;//隐藏滑动条
-                        root.mode = 0;
+                        browserpage.firefoxNum = 0;//隐藏滑动条
+                        browserpage.chromiumNum = 0;//隐藏滑动条
+                        browserpage.mode = 0;
                         sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_browser_cache_arglist(), 'browser');
                     }
                     else {
-                        if(root.firefox_maincheck) {
+                        if(browserpage.firefox_maincheck) {
                             firefoxmainModel.clear();
                             //Firefox缓存清理
-                            firefoxmainModel.append({"mstatus": root.firefox_maincheck ? "true": "false",
+                            firefoxmainModel.append({"mstatus": browserpage.firefox_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Firefox Cache"),
                                              "picture": "../../img/toolWidget/firefox.png"})
 //                            systemdispatcher.clear_browser_args();
                             firefoxsubModel.clear();//内容清空
                             chromiumsubModel.clear();//内容清空
-                            root.firefoxNum = 0;//隐藏滑动条
-                            root.chromiumNum = 0;//隐藏滑动条
-                            root.mode = 1;
+                            browserpage.firefoxNum = 0;//隐藏滑动条
+                            browserpage.chromiumNum = 0;//隐藏滑动条
+                            browserpage.mode = 1;
                             sessiondispatcher.cache_scan_function_qt("firefox", 'browser');
                         }
-                        else if(root.chromium_maincheck) {
+                        else if(browserpage.chromium_maincheck) {
                             chromiummainModel.clear();
                             //Chromium缓存清理
-                            chromiummainModel.append({"mstatus": root.chromium_maincheck ? "true": "false",
+                            chromiummainModel.append({"mstatus": browserpage.chromium_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Chromium Cache"),
                                              "picture": "../../img/toolWidget/chromium.png"})
 //                            systemdispatcher.clear_browser_args();
                             firefoxsubModel.clear();//内容清空
                             chromiumsubModel.clear();//内容清空
-                            root.firefoxNum = 0;//隐藏滑动条
-                            root.chromiumNum = 0;//隐藏滑动条
-                            root.mode = 2;
+                            browserpage.firefoxNum = 0;//隐藏滑动条
+                            browserpage.chromiumNum = 0;//隐藏滑动条
+                            browserpage.mode = 2;
                             sessiondispatcher.cache_scan_function_qt("chromium", 'browser');
                         }
                     }
@@ -276,7 +276,7 @@ Item {
             spacing: 10
             Text {
                 width: 500
-                text: root.title
+                text: browserpage.title
                 wrapMode: Text.WordWrap
                 font.bold: true
                 font.pixelSize: 14
@@ -284,7 +284,7 @@ Item {
             }
             Text {
                 width: 500
-                text: root.description
+                text: browserpage.description
                 wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -306,91 +306,93 @@ Item {
                 width: 40
                 height: 20
                 onClicked: {
-                    root.firefoxEmpty = false;
-                    root.chromiumEmpty = false;
-                    if(root.firefox_maincheck == false) {
-                        root.firefox_maincheck = true;
+                    browserpage.firefoxEmpty = false;
+                    browserpage.chromiumEmpty = false;
+                    if(browserpage.firefox_maincheck == false) {
+                        browserpage.firefox_maincheck = true;
                     }
-                    if(root.chromium_maincheck == false) {
-                        root.chromium_maincheck = true;
+                    if(browserpage.chromium_maincheck == false) {
+                        browserpage.chromium_maincheck = true;
                     }
 //                    systemdispatcher.clear_browser_args();
-                    root.firefox_showNum = false;
-                    root.chromium_showNum = false;
+                    browserpage.firefox_showNum = false;
+                    browserpage.chromium_showNum = false;
                     firefoxmainModel.clear();
                     chromiummainModel.clear();
                     //Firefox缓存清理
-                    firefoxmainModel.append({"mstatus": root.firefox_maincheck ? "true": "false",
+                    firefoxmainModel.append({"mstatus": browserpage.firefox_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Cleanup Firefox Cache"),
                                      "picture": "../../img/toolWidget/firefox.png"})
                     //Chromium缓存清理
-                    chromiummainModel.append({"mstatus": root.chromium_maincheck ? "true": "false",
+                    chromiummainModel.append({"mstatus": browserpage.chromium_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Cleanup Chromium Cache"),
                                      "picture": "../../img/toolWidget/chromium.png"})
                     firefoxsubModel.clear();//内容清空
-                    root.firefoxNum = 0;//隐藏滑动条
-                    root.firefox_arrow_show = 0;//伸缩图标隐藏
+                    browserpage.firefoxNum = 0;//隐藏滑动条
+                    browserpage.firefox_arrow_show = 0;//伸缩图标隐藏
                     chromiumsubModel.clear();//内容清空
-                    root.chromiumNum = 0;//隐藏滑动条
-                    root.chromium_arrow_show = 0;//伸缩图标隐藏
-                    scrollItem.height = 2 * root.item_height + root.spaceValue*4;
-                    root.state = "BrowserWorkAGAIN";//按钮的状态恢复初始值
+                    browserpage.chromiumNum = 0;//隐藏滑动条
+                    browserpage.chromium_arrow_show = 0;//伸缩图标隐藏
+                    scrollItem.height = 2 * browserpage.item_height + browserpage.spaceValue*4;
+                    browserpage.state = "BrowserWorkAGAIN";//按钮的状态恢复初始值
                 }
             }
         }
         Common.Button {
             id: actionBtn
-            width: 94
-            height: 29
-            hoverimage: "green.png"
+            picNormal: "../../img/icons/button16.png"
+            picHover: "../../img/icons/button16-hover.png"
+            picPressed: "../../img/icons/button16-hover.png"
+            fontcolor:"#ffffff"
+            fontsize: 16
+            width: 120; height: 36
             text: qsTr("Start scanning")//开始扫描
-            fontsize: 13
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 //扫描过程中禁用按钮
                 actionBtn.enabled = false;
-                root.firefoxEmpty = false;
-                root.chromiumEmpty = false;
+                browserpage.firefoxEmpty = false;
+                browserpage.chromiumEmpty = false;
 //                console.log("-----------");
-//                console.log(root.firefox_maincheck);
-//                console.log(root.chromium_maincheck);
+//                console.log(browserpage.firefox_maincheck);
+//                console.log(browserpage.chromium_maincheck);
 
-                if (root.btnFlag == "browser_scan") {//扫描
-                    root.flag = false;
+                if (browserpage.btnFlag == "browser_scan") {//扫描
+                    browserpage.flag = false;
 
-                    if(root.firefox_maincheck && root.chromium_maincheck) {
+                    if(browserpage.firefox_maincheck && browserpage.chromium_maincheck) {
                         doingImage.visible = true;
-                        root.mode = 0;
-                        root.firefoxNum = 0;
-                        root.chromiumNum = 0;
+                        browserpage.mode = 0;
+                        browserpage.firefoxNum = 0;
+                        browserpage.chromiumNum = 0;
                         sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_browser_cache_arglist(), 'browser');
                     }
                     else {
-                        if(root.firefox_maincheck) {
+                        if(browserpage.firefox_maincheck) {
                             doingImage.visible = true;
-                            root.mode = 1;
-                            root.firefoxNum = 0;
+                            browserpage.mode = 1;
+                            browserpage.firefoxNum = 0;
                             sessiondispatcher.cache_scan_function_qt("firefox", 'browser');
                         }
-                        else if(root.chromium_maincheck) {
+                        else if(browserpage.chromium_maincheck) {
                             doingImage.visible = true;
-                            root.mode = 2;
-                            root.chromiumNum = 0;
+                            browserpage.mode = 2;
+                            browserpage.chromiumNum = 0;
                             sessiondispatcher.cache_scan_function_qt("chromium", 'browser');
                         }
                         else{
                             doingImage.visible = false;
                             actionBtn.enabled = true;
                             //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"));
                         }
                     }
                 }
-                else if (root.btnFlag == "browser_work") {//清理
-                    if(root.firefoxresultFlag || root.chromiumresultFlag) {//扫描得到的实际内容存在时
-                        if(!root.firefox_maincheck && !root.chromium_maincheck) {
+                else if (browserpage.btnFlag == "browser_work") {//清理
+                    if(browserpage.firefoxresultFlag || browserpage.chromiumresultFlag) {//扫描得到的实际内容存在时
+                        if(!browserpage.firefox_maincheck && !browserpage.chromium_maincheck) {
                             //友情提示：        对不起，您没有选择需要清理的内容，请确认！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"));
                         }
                         else {
                             //test 0410
@@ -449,30 +451,30 @@ Item {
         anchors.topMargin: 30
         anchors.left:parent.left
 //        anchors.leftMargin: 27
-        height: root.height - titlebar.height - 47
+        height: browserpage.height - titlebar.height - 47
         width: parent.width -2//parent.width - 27 -2
         Item {
             id: scrollItem
             width: parent.width
-            height: root.item_height*2 + root.spaceValue*2*2
+            height: browserpage.item_height*2 + browserpage.spaceValue*2*2
             Column {
-                spacing: root.spaceValue * 2
+                spacing: browserpage.spaceValue * 2
                 //垃圾清理显示内容
                 ListView {
                     id: aptListView
                     width: parent.width
-                    height: root.firefox_expanded ? (root.firefoxNum + 1) * root.item_height : root.item_height
+                    height: browserpage.firefox_expanded ? (browserpage.firefoxNum + 1) * browserpage.item_height : browserpage.item_height
                     model: firefoxmainModel
                     delegate: CacheDelegate{
-                        sub_num: root.firefoxNum//root.aptsubNum//1212
+                        sub_num: browserpage.firefoxNum//browserpage.aptsubNum//1212
                         sub_model: firefoxsubModel
-                        btn_flag: root.btnFlag
+                        btn_flag: browserpage.btnFlag
                         arrowFlag: "firefoxcache"
-                        showNum: root.firefox_showNum
-                        arrow_display: root.firefox_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
-                        expanded: root.firefox_expanded//firefox_expanded为true时，箭头向下，内容展开;firefox_expanded为false时，箭头向上，内容收缩
-                        delegate_flag: root.splitFlag
-                        emptyTip: root.firefoxEmpty
+                        showNum: browserpage.firefox_showNum
+                        arrow_display: browserpage.firefox_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
+                        expanded: browserpage.firefox_expanded//firefox_expanded为true时，箭头向下，内容展开;firefox_expanded为false时，箭头向上，内容收缩
+                        delegate_flag: browserpage.splitFlag
+                        emptyTip: browserpage.firefoxEmpty
 
 
                         //test 0410
@@ -505,7 +507,7 @@ Item {
 
                         onTellModelToOpenFolder: {
                             if(category == "firefoxcache") {
-//                                sessiondispatcher.open_folder_qt(root.firefox_path);
+//                                sessiondispatcher.open_folder_qt(browserpage.firefox_path);
                                 sessiondispatcher.open_folder_qt(path);
 
                             }
@@ -513,27 +515,27 @@ Item {
 
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
-//                            root.aptresultFlag = checkchange;
-                            root.firefox_maincheck = checkchange;
+//                            browserpage.aptresultFlag = checkchange;
+                            browserpage.firefox_maincheck = checkchange;
                         }
                         onArrowClicked: {
                             if(cacheFlag == "firefoxcache") {//1212
                                 if(expand_flag == true) {
-                                    root.firefox_expanded = true;
-                                    if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*4;
+                                    browserpage.firefox_expanded = true;
+                                    if(browserpage.chromium_expanded == true) {
+                                        scrollItem.height = (browserpage.firefoxNum + 1) * browserpage.item_height + (browserpage.chromiumNum + 1) * browserpage.item_height + browserpage.spaceValue*4;
                                     }
                                     else {
-                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*4;
+                                        scrollItem.height = (browserpage.firefoxNum + 2) * browserpage.item_height + browserpage.spaceValue*4;
                                     }
                                 }
                                 else {
-                                    root.firefox_expanded = false;
-                                    if(root.chromium_expanded == true) {
-                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*4;
+                                    browserpage.firefox_expanded = false;
+                                    if(browserpage.chromium_expanded == true) {
+                                        scrollItem.height = (browserpage.chromiumNum + 2) * browserpage.item_height + browserpage.spaceValue*4;
                                     }
                                     else {
-                                        scrollItem.height = 2* root.item_height + root.spaceValue*4;
+                                        scrollItem.height = 2* browserpage.item_height + browserpage.spaceValue*4;
                                     }
                                 }
                             }
@@ -553,18 +555,18 @@ Item {
                 ListView {
                     id: softListView
                     width: parent.width
-                    height: root.chromium_expanded ? (root.chromiumNum + 1) * root.item_height : root.item_height
+                    height: browserpage.chromium_expanded ? (browserpage.chromiumNum + 1) * browserpage.item_height : browserpage.item_height
                     model: chromiummainModel
                     delegate: CacheDelegate{
-                        sub_num: root.chromiumNum
+                        sub_num: browserpage.chromiumNum
                         sub_model: chromiumsubModel
-                        btn_flag: root.btnFlag
-                        showNum: root.chromium_showNum
+                        btn_flag: browserpage.btnFlag
+                        showNum: browserpage.chromium_showNum
                         arrowFlag: "chromiumcache"
-                        arrow_display: root.chromium_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
-                        expanded: root.chromium_expanded//chromium_expanded为true时，箭头向下，内容展开;chromium_expanded为false时，箭头向上，内容收缩
-                        delegate_flag: root.splitFlag
-                        emptyTip: root.chromiumEmpty
+                        arrow_display: browserpage.chromium_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
+                        expanded: browserpage.chromium_expanded//chromium_expanded为true时，箭头向下，内容展开;chromium_expanded为false时，箭头向上，内容收缩
+                        delegate_flag: browserpage.splitFlag
+                        emptyTip: browserpage.chromiumEmpty
 
 
                         //test 0410
@@ -597,33 +599,33 @@ Item {
 
                         onTellModelToOpenFolder: {
                             if(category == "chromiumcache") {
-//                                sessiondispatcher.open_folder_qt(root.chromium_path);
+//                                sessiondispatcher.open_folder_qt(browserpage.chromium_path);
                                 sessiondispatcher.open_folder_qt(path);
                             }
                         }
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
-//                            root.softresultFlag = checkchange;
-                            root.chromium_maincheck = checkchange;
+//                            browserpage.softresultFlag = checkchange;
+                            browserpage.chromium_maincheck = checkchange;
                         }
                         onArrowClicked: {
                             if(cacheFlag == "chromiumcache") {//1212
                                 if(expand_flag == true) {
-                                    root.chromium_expanded = true;
-                                    if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 1) * root.item_height + (root.chromiumNum + 1) * root.item_height + root.spaceValue*4;
+                                    browserpage.chromium_expanded = true;
+                                    if(browserpage.firefox_expanded == true) {
+                                        scrollItem.height = (browserpage.firefoxNum + 1) * browserpage.item_height + (browserpage.chromiumNum + 1) * browserpage.item_height + browserpage.spaceValue*4;
                                     }
                                     else {
-                                        scrollItem.height = (root.chromiumNum + 2) * root.item_height + root.spaceValue*4;
+                                        scrollItem.height = (browserpage.chromiumNum + 2) * browserpage.item_height + browserpage.spaceValue*4;
                                     }
                                 }
                                 else {
-                                    root.chromium_expanded = false;
-                                    if(root.firefox_expanded == true) {
-                                        scrollItem.height = (root.firefoxNum + 2) * root.item_height + root.spaceValue*4;
+                                    browserpage.chromium_expanded = false;
+                                    if(browserpage.firefox_expanded == true) {
+                                        scrollItem.height = (browserpage.firefoxNum + 2) * browserpage.item_height + browserpage.spaceValue*4;
                                     }
                                     else {
-                                        scrollItem.height = 2* root.item_height + root.spaceValue*4;
+                                        scrollItem.height = 2* browserpage.item_height + browserpage.spaceValue*4;
                                     }
                                 }
                             }
@@ -647,35 +649,35 @@ Item {
         State {
             name: "BrowserWork"
             PropertyChanges { target: actionBtn; text:qsTr("Begin cleanup")}//开始清理
-            PropertyChanges { target: root; btnFlag: "browser_work" }
+            PropertyChanges { target: browserpage; btnFlag: "browser_work" }
             PropertyChanges { target: backBtn; visible: true}
 //            PropertyChanges { target: rescanBtn; visible: true}
         },
         State {
             name: "BrowserWorkAGAIN"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "browser_scan" }
+            PropertyChanges { target: browserpage; btnFlag: "browser_scan" }
             PropertyChanges { target: backBtn; visible: false}
 //            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "BrowserWorkError"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "browser_scan" }
+            PropertyChanges { target: browserpage; btnFlag: "browser_scan" }
             PropertyChanges { target: backBtn; visible: false}
 //            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "BrowserWorkFinish"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "browser_scan" }
+            PropertyChanges { target: browserpage; btnFlag: "browser_scan" }
             PropertyChanges { target: backBtn; visible: false}
 //            PropertyChanges { target: rescanBtn; visible: false}
         },
         State {
             name: "BrowserWorkEmpty"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning")}//开始扫描
-            PropertyChanges { target: root; btnFlag: "browser_scan" }
+            PropertyChanges { target: browserpage; btnFlag: "browser_scan" }
             PropertyChanges { target: backBtn; visible: false}
 //            PropertyChanges { target: rescanBtn; visible: false}
         }

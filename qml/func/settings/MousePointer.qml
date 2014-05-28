@@ -20,7 +20,7 @@ import "../bars" as Bars
 Rectangle {
     id: mousepointerpage
     width: parent.width
-    height: 475
+    height: 476
 
     property int cursor_size: 24
     property int current_index//当前主题的索引
@@ -37,87 +37,150 @@ Rectangle {
     }
     Component.onCompleted: {
         mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
+//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
+//        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
+//        var default_theme = "DMZ-White";//sessiondispatcher.get_default_theme_sring_qt("mousetheme");
+//        choices.clear();
+//        if(current_cursor_theme == default_theme) {
+//            for(var i=0; i < cursorlist.length; i++) {
+//                choices.append({"text": cursorlist[i]});
+//                if (cursorlist[i] == current_cursor_theme) {
+//                    mousepointerpage.current_index = i;
+//                    mousepointerpage.default_index = i;
+//                }
+//            }
+//        }
+//        else {
+//            for(var j=0; j < cursorlist.length; j++) {
+//                choices.append({"text": cursorlist[j]});
+//                if (cursorlist[j] == current_cursor_theme) {
+//                    mousepointerpage.current_index = j;
+//                }
+//                else if (cursorlist[j] == default_theme) {
+//                    mousepointerpage.default_index = j;
+//                }
+//            }
+//        }
+//        cursorcombo.selectedIndex = mousepointerpage.current_index;
+
+
+
+
+        var index = 0;
         var cursorlist = sessiondispatcher.get_cursor_themes_qt();
         var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
         var default_theme = "DMZ-White";//sessiondispatcher.get_default_theme_sring_qt("mousetheme");
+        for(var i=0; i < cursorlist.length; i++) {
+            if (current_cursor_theme == cursorlist[i]) {
+                index = i;
+                mousepointerpage.current_index = i;
+            }
+            if (default_theme == cursorlist[i]) {
+                mousepointerpage.default_index = i;
+            }
+        }
         choices.clear();
-        if(current_cursor_theme == default_theme) {
-            for(var i=0; i < cursorlist.length; i++) {
-                choices.append({"text": cursorlist[i]});
-                if (cursorlist[i] == current_cursor_theme) {
-                    mousepointerpage.current_index = i;
-                    mousepointerpage.default_index = i;
-                }
+        if (index == 0) {
+            for(var j=0; j < cursorlist.length; j++) {
+                choices.append({"text": cursorlist[j]});
             }
         }
         else {
-            for(var j=0; j < cursorlist.length; j++) {
-                choices.append({"text": cursorlist[j]});
-                if (cursorlist[j] == current_cursor_theme) {
-                    mousepointerpage.current_index = j;
-                }
-                else if (cursorlist[j] == default_theme) {
-                    mousepointerpage.default_index = j;
+            cursorlist.unshift(current_cursor_theme);
+            for(var k=0; k < cursorlist.length; k++) {
+                choices.append({"text": cursorlist[k]});
+                if (k!=0 && cursorlist[k] == current_cursor_theme){
+                    choices.remove(k);
                 }
             }
-        }
-        cursorcombo.selectedIndex = mousepointerpage.current_index;
-    }
-
-    Column {
-        spacing: 10
-        anchors.top: parent.top
-        anchors.topMargin: 44
-        anchors.left: parent.left
-        anchors.leftMargin: 80
-        Text {
-            text: mousepointerpage.actiontitle
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
-        }
-        Text {
-            text: mousepointerpage.actiontext
-            font.pixelSize: 12
-            color: "#7a7a7a"
         }
     }
 
     Row {
-        id: settitle
-        anchors{
-            left: parent.left
-            leftMargin: 40
+        spacing: 20
+        anchors {
             top: parent.top
-            topMargin: 120
+            topMargin: 10
+            left: parent.left
+            leftMargin: 20
         }
-        Text{
-            id: mousetitle
-            text: qsTr("Mouse settings")//鼠标设置
-            font.bold: true
-            font.pixelSize: 12
-            color: "#383838"
-        }
-        //横线
-        Common.Separator {
+        Common.Button {
+            id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-            width: mousepointerpage.width - mousetitle.width - 40 * 2
+//            hoverimage: "button12-gray.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
+            text: qsTr("Back")//返回
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 1) {
+                    pageStack.push(systemmessage);
+                }
+                else if (num == 2) {
+                    pageStack.push(clearrubbish);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
+            }
+        }
+        Column {
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
+            Text {
+                text: mousepointerpage.actiontitle
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
+            }
+            Text {
+                text: mousepointerpage.actiontext
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
         }
     }
+
+    //分割条
+    Common.Separator {
+        id: top_splitbar
+        y: 60
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        width: parent.width - 4
+    }
+
 
     Column {
         anchors{
             left: parent.left
             leftMargin: 60
-            top: settitle.bottom
-            topMargin: 10
+            top: top_splitbar.bottom
+            topMargin: 50
         }
         spacing: 20
         z: 11
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 200
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "no"
@@ -143,11 +206,15 @@ Rectangle {
                 }
             }
             Common.Button {
-                hoverimage: "blue.png"
+                anchors.verticalCenter: parent.verticalCenter
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     //Attention:配置文件的系统默认值为：DMZ-White，而通过gsetting方法得到的默认值为：Adwaita
                     //这里我们使用配置自带的系统默认值DMZ-White
@@ -159,10 +226,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 314 - 16 - 20
-
+            spacing: 200
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "no"
@@ -211,11 +282,15 @@ Rectangle {
                 }
             }
             Common.Button {
-                hoverimage: "blue.png"
+                anchors.verticalCenter: parent.verticalCenter
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("cursorsize");
                     var default_value = sessiondispatcher.get_cursor_size_qt();
@@ -226,47 +301,6 @@ Rectangle {
                         bigstyle.checked = true;
                     }
                 }
-            }
-        }
-    }
-    //顶层工具栏
-    Bars.TopBar {
-        id: topBar
-        width: 28
-        height: 26
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        anchors.left: parent.left
-        anchors.leftMargin: 40
-        opacity: 0.9
-        onButtonClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
-    //底层工具栏
-    Bars.ToolBar {
-        id: toolBar
-        showok: false
-        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        onQuitBtnClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
             }
         }
     }

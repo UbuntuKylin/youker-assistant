@@ -6,7 +6,7 @@ import "../../func"  as Func
 Rectangle {
     id:fcitxconfigtool
     width: parent.width
-    height: 475
+    height: 476
     property string actiontitle: qsTr("Input Method Configuration")//输入法配置
     property string actiontext: qsTr("'<<' '>>' button to add/remove input method, Up Arrow and Down Arrow keys to adjust the input method priority, click 'Next' to continue Settings, click 'Cancel' to exit the setup wizard.")//＇<<＇和＇>>＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。
     property string selectedimage: ""
@@ -421,11 +421,14 @@ Rectangle {
     }
         Common.Button{
             id:addBtn
-            width:49
-            height:27
-            hoverimage: "blue.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 49; height: 27
+//            hoverimage: "blue.png"
             text:"<<"
-            fontcolor: "#6a97b4"
             onClicked: {
                 leftFcitxModel.append({"itemTitle":rightFcitxModel.get(rightFcitxModelindex).itemTitle,
                                        "uniqueName" :rightFcitxModel.get(rightFcitxModelindex).uniqueName,
@@ -442,11 +445,14 @@ Rectangle {
         }
         Common.Button{
             id:cutBtn
-            width:49
-            height:27
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 49; height: 27
             text: ">>"
-            fontcolor: "#6a97b4"
-            hoverimage: "blue.png"
+//            hoverimage: "blue.png"
             onClicked: {
                 rightFcitxModel.append({"itemTitle":leftFcitxModel.get(leftFcitxModelindex).itemTitle,
                                        "uniqueName" :leftFcitxModel.get(leftFcitxModelindex).uniqueName,
@@ -473,12 +479,15 @@ Rectangle {
         }
         Common.Button{
             id:upBtn
-            width:49
-            height:27
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 49; height: 27
             enabled: false
             text:"▲"
-            fontcolor: "#6a97b4"
-            hoverimage: "blue.png"
+//            hoverimage: "blue.png"
             onClicked: {
                 if(leftFcitxModelindex==0)
                 {
@@ -500,11 +509,14 @@ Rectangle {
         }
         Common.Button{
             id:downBtn
-            width:49
-            height:27
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 49; height: 27
             text: "▼"
-            fontcolor: "#6a97b4"
-            hoverimage: "blue.png"
+//            hoverimage: "blue.png"
             onClicked: {
                 if((leftFcitxModelindex==leftNum-1)||(leftNum==0))
                 {
@@ -554,7 +566,7 @@ Rectangle {
         id: toolBar
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onCancelBtnClicked: {
-            fcitxcfgwizard.send_fcitx_ok_warn(mainwindow.x, mainwindow.y);
+            fcitxcfgwizard.send_fcitx_ok_warn();
         }
         onGobackBtnClicked: {
             pageStack.push(functioncollection)

@@ -13,17 +13,28 @@ ChangeCityDialog::ChangeCityDialog(QSettings *mSettings, QWidget *parent) :
 
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     this->setWindowFlags(Qt::FramelessWindowHint);
-    this->setAttribute(Qt::WA_TranslucentBackground);
-    ui->btn_close->installEventFilter(this);
+//    this->setAttribute(Qt::WA_TranslucentBackground);
 
+    ui->widget->setAutoFillBackground(true);
+    QPalette palette;
+    QPixmap img(":/pixmap/image/titlebg.png");
+    palette.setBrush(QPalette::Window, img);//标题栏背景颜色
+    ui->widget->setPalette(palette);
+    ui->titleLabel->setStyleSheet("color: white");//设置字颜色
+    //http://www.atool.org/colorpicker.php
+    ui->widget_2->setAutoFillBackground(true);
+    palette.setColor(QPalette::Background, QColor(228,242,252));//#e4f2fc
+    ui->widget_2->setPalette(palette);
+
+    ui->btn_close->installEventFilter(this);
     ui->okBtn->installEventFilter(this);
     ui->quitBtn->installEventFilter(this);
 
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
-    ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
-    ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
+    ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");
+    ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");
     connect(ui->okBtn, SIGNAL(clicked()),this, SLOT(writeWeatherConf()));
     connect(ui->quitBtn, SIGNAL(clicked()), this, SLOT(close()));
 }

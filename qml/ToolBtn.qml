@@ -74,43 +74,25 @@ Rectangle {
             //kobe:选中项深色块移动
 //            menulogo.GridView.view.currentIndex = index;
             if (text == "homepage") {
-                sessiondispatcher.set_page_num(0);
                 menulogo.send("homepage");
-                pageStack.push(homepage);
+                cpp.navigate(0);
             }
             else if (text == "systemmessage") {
-                sessiondispatcher.set_page_num(1);
                 menulogo.send("systemmessage");
-                pageStack.push(systemmessage);
+                cpp.navigate(1);
             }
             else if (text == "clearrubbish") {
-                sessiondispatcher.set_page_num(2);
                 menulogo.send("clearrubbish");
-                pageStack.push(clearrubbish);
+                cpp.navigate(2);
             }
             else if (text == "systemset") {
-                sessiondispatcher.set_page_num(3);
                 menulogo.send("systemset");
-                pageStack.push(systemset);
+                cpp.navigate(3);
             }
             else if (text == "functioncollection") {
-                sessiondispatcher.set_page_num(4);
                 menulogo.send("functioncollection");
-                pageStack.push(functioncollection);
+                cpp.navigate(4);
             }
         }
     }
-
-//    Text {
-//        id: displaytext
-//        color: "white"
-//        anchors.verticalCenter: parent.verticalCenter
-//        anchors.left: seticon.left
-//        anchors.leftMargin: (menulogo.text == "homepage") ? 60: 45
-//        font.family: "Arial"
-//        font.pixelSize: 14
-//        text: menulogo.showtext
-//        style: Text.Sunken
-//        styleColor: "#AAAAAA"
-//    }
 }

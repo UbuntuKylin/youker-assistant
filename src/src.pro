@@ -19,17 +19,22 @@ LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 #QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-HEADERS += youker-application.h \
+HEADERS += homepage.h \
+    topbar.h \
+    tabbar.h \
+    contentfield.h \
+    bottombar.h \
+    messengerproxy.h \
+    kbutton.h \
+    icontext.h \
+    slidershow.h \
+    newcharacter.h \
     quibo.h \
     logindialog.h \
     accountcache.h \
     httpauth.h \
     systemdispatcher.h \
     sessiondispatcher.h \
-    kbutton.h \
-    icontext.h \
-    slidershow.h \
-    newcharacter.h \
     modaldialog.h \
     warningdialog.h \
 #    messagedialog.h \
@@ -64,17 +69,22 @@ HEADERS += youker-application.h \
     aboutdialog.h
 
 SOURCES += main.cpp \
-    youker-application.cpp \
+    homepage.cpp \
+    topbar.cpp \
+    tabbar.cpp \
+    contentfield.cpp \
+    bottombar.cpp \
+    messengerproxy.cpp \
+    kbutton.cpp \
+    icontext.cpp \
+    slidershow.cpp \
+    newcharacter.cpp \
     logindialog.cpp \
     accountcache.cpp \
     httpauth.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
-    kbutton.cpp \
-    icontext.cpp \
-    slidershow.cpp \
-    newcharacter.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
 #    messagedialog.cpp \

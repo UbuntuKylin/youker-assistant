@@ -21,7 +21,7 @@ import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home
-    width: parent.width; height: 475
+    width: parent.width; height: 476
     color: "transparent"
     property int rowNumber: 0//对有效行计数
     property int itemNumber: 0//对项目的计数s

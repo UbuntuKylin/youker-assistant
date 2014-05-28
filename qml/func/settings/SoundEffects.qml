@@ -22,7 +22,7 @@ Rectangle {
     id: soundeffectspage
     width: parent.width
     color:"transparent"
-    height: 475
+    height: 476
 
     property int scrollbar_z: 0
     property int play_pause: 0
@@ -50,31 +50,67 @@ Rectangle {
         else {
             soundswitcher.switchedOn = false;
         }
+//        var soundlist = systemdispatcher.get_sound_themes_qt();
+//        var current_sound = sessiondispatcher.get_sound_theme_qt();
+//        var default_theme = sessiondispatcher.get_default_sound_string_qt("soundtheme");
+//        choices.clear();
+//        if(current_sound == default_theme) {
+//            for(var i=0; i < soundlist.length; i++) {
+//                choices.append({"themetext": soundlist[i]});
+//                if (soundlist[i] == current_sound) {
+//                    soundeffectspage.current_index = i;
+//                    soundeffectspage.default_index = i;
+//                }
+//            }
+//        }
+//        else {
+//            for(var j=0; j < soundlist.length; j++) {
+//                choices.append({"themetext": soundlist[j]});
+//                if (soundlist[j] == current_sound) {
+//                    soundeffectspage.current_index = j;
+//                }
+//                else if (soundlist[j] == default_theme) {
+//                    soundeffectspage.default_index = j;
+//                }
+//            }
+//        }
+//        iconcombo.selectedIndex = soundeffectspage.current_index;
+
+
+        var index = 0;
         var soundlist = systemdispatcher.get_sound_themes_qt();
         var current_sound = sessiondispatcher.get_sound_theme_qt();
         var default_theme = sessiondispatcher.get_default_sound_string_qt("soundtheme");
+        for(var i=0; i < soundlist.length; i++) {
+            if (current_sound == soundlist[i]) {
+                index = i;
+                soundeffectspage.current_index = i;
+            }
+            if (default_theme == soundlist[i]) {
+                soundeffectspage.default_index = i;
+            }
+        }
         choices.clear();
-        if(current_sound == default_theme) {
-            for(var i=0; i < soundlist.length; i++) {
-                choices.append({"themetext": soundlist[i]});
-                if (soundlist[i] == current_sound) {
-                    soundeffectspage.current_index = i;
-                    soundeffectspage.default_index = i;
-                }
+        if (index == 0) {
+            for(var j=0; j < soundlist.length; j++) {
+                choices.append({"themetext": soundlist[j]});
             }
         }
         else {
-            for(var j=0; j < soundlist.length; j++) {
-                choices.append({"themetext": soundlist[j]});
-                if (soundlist[j] == current_sound) {
-                    soundeffectspage.current_index = j;
-                }
-                else if (soundlist[j] == default_theme) {
-                    soundeffectspage.default_index = j;
+            soundlist.unshift(current_sound);
+            for(var k=0; k < soundlist.length; k++) {
+                choices.append({"themetext": soundlist[k]});
+                if (k!=0 && soundlist[k] == current_sound){
+                    choices.remove(k);
                 }
             }
         }
-        iconcombo.selectedIndex = soundeffectspage.current_index;
+
+
+
+
+
+
         musicmodel.clear();
         var musiclist=systemdispatcher.get_sounds_qt();
         musiclist_num = musiclist.length;
@@ -97,53 +133,110 @@ Rectangle {
 
     QmlAudio{ id: song }
 
-    Column {
-        spacing: 10
-        anchors{
-            top: parent.top;topMargin: 44
-            left: parent.left;leftMargin: 80
+    Row {
+        spacing: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 20
         }
-        Text {
-             text: soundeffectspage.actiontitle
-             font.bold: true
-             font.pixelSize: 14
-             color: "#383838"
+        Common.Button {
+            id: backBtn
+            anchors.verticalCenter: parent.verticalCenter
+//            hoverimage: "button12-gray.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
+            text: qsTr("Back")//返回
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 1) {
+                    pageStack.push(systemmessage);
+                }
+                else if (num == 2) {
+                    pageStack.push(clearrubbish);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
+            }
         }
-        Text {
-            width: 650 - 80 - 15//左边区域总宽度-左边space-右边space
-            text: soundeffectspage.actiontext
-            wrapMode: Text.WordWrap
-            font.pixelSize: 12
-            color: "#7a7a7a"
+        Column {
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
+            Text {
+                 text: soundeffectspage.actiontitle
+                 font.bold: true
+                 font.pixelSize: 14
+                 color: "#383838"
+            }
+            Text {
+                text: soundeffectspage.actiontext
+                wrapMode: Text.WordWrap
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
         }
+    }
+
+    //分割条
+    Common.Separator {
+        id: top_splitbar
+        y: 60
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        width: parent.width - 4
     }
 
     Column{     //声音主题
         id:soundtheme
         spacing: 10
         z: 11
-        anchors {
-            top: parent.top;topMargin: 120
-            left: parent.left;leftMargin: 60
-        }
-        Text{
-            text: qsTr("Sound theme:")//声音主题：
-            font.bold:true;color: "#383838"
-            font.pointSize: 10
+        anchors{
+            left: parent.left
+            leftMargin: 60
+            top: top_splitbar.bottom
+            topMargin: 20
         }
         Row{
-            spacing: 100 -16 - 20
+            spacing: 210
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
                 Common.TipLabel {
                     z: 11
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "no"
                     showImage: "../../img/icons/cloud-gray.png"
                 }
+                Text {
+                    id: trashlabel
+                    width: 160
+                    text: qsTr("Sound theme:")//声音主题：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.ComboBox {
                     id: iconcombo
-                    width : 345
+                    width : trashlabel.width//345
                     model: choices
                     onSelectedTextChanged: {
                         sessiondispatcher.set_sound_theme_qt(iconcombo.selectedText);
@@ -164,10 +257,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 105
-                height: 30
                 onClicked: {
                     sessiondispatcher.set_default_sound_qt("soundtheme");
                     var defaulttheme = sessiondispatcher.get_sound_theme_qt();
@@ -175,56 +272,94 @@ Rectangle {
                 }
             }
         }
+
+        Row {
+            spacing: 20
+            Image {
+                source: "../../img/icons/dot.png"
+                width: 14; height: 14
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            Common.TipLabel {
+                z: 11
+                anchors.verticalCenter: parent.verticalCenter
+                kflag: "no"
+                showImage: "../../img/icons/cloud-gray.png"
+            }
+
+            Text{
+                text:qsTr("Login tone: ")//登录提示音：
+                width: 160
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: soundswitcher
+                onSwitched: {
+                    if (soundswitcher.switchedOn) {
+                        sessiondispatcher.set_login_music_enable_qt(true);
+                    }
+                    else if(!soundswitcher.switchedOn) {
+                        sessiondispatcher.set_login_music_enable_qt(false);
+                    }
+                }
+            }
+        }
+    }
+
+    Row {
+        spacing: 2
+        anchors {
+            top: soundtheme.bottom
+            topMargin: 20
+            right: parent.right
+            rightMargin: 95
+        }
+        Text {
+            id: listen
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            width: 50
+            text: qsTr("Listen")//试听
+        }
+        Text {
+            id: select
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            width: 50
+            text: qsTr("Replace")//替换
+        }
+        Text {
+            id: revoke
+            font.pixelSize: 12
+            color: "#7a7a7a"
+            width: 50
+            text: qsTr("Restore")//还原
+        }
     }
 
     Column{     //程序事件及选择框
         id:chooseyy
         spacing: 10
         anchors {
-            top: parent.top
-            topMargin: 185
+            top: soundtheme.bottom
+            topMargin: 20
             left: parent.left
             leftMargin: 60
         }
-        Row {
-            spacing: 270
-            Text{
-                id: eventtitle
-                width: 100
-                text: qsTr("System event tone: ")//系统事件提示音：
-                font.bold:true
-                color: "#383838"
-                font.pointSize: 10
-            }
-            Row {
-                anchors.verticalCenter: parent.verticalCenter
-                spacing: 2
-                Text {
-                    id: listen
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    width: 50
-                    text: qsTr("Listen")//试听
-                }
-                Text {
-                    id: select
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    width: 50
-                    text: qsTr("Replace")//替换
-                }
-                Text {
-                    id: revoke
-                    font.pixelSize: 12
-                    color: "#7a7a7a"
-                    width: 50
-                    text: qsTr("Restore")//还原
-                }
-            }
+        Text{
+            id: eventtitle
+            width: 100
+            text: qsTr("System event tone: ")//系统事件提示音：
+            font.bold:true
+            color: "#383838"
+            font.pointSize: 10
         }
         Rectangle{
             border.color: "#b9c5cc"
-            width: 550; height: 205
+            width: 720; height: 270
             clip:true
 
             Component{
@@ -232,7 +367,7 @@ Rectangle {
 
                 Item{
                     id:wrapper
-                    width: 530; height: 30
+                    width: 700; height: 30
                     Image {
                         id:pickcher
                         source: musicimage
@@ -346,115 +481,6 @@ Rectangle {
                     }
                 }//Item
             }//ScrollArea
-        }
-    }
-
-//左右分割线
-    Rectangle{id:leftline ; x:650; y: 0; width:1 ; height:425; color:"#b9c5cc"}
-    Rectangle{id:rightline ; x:652; y:0 ; width:1 ; height:425; color:"#fafcfe"}
-
-    Row{
-        spacing: 7
-        anchors{
-            left: parent.left
-            top:parent.top
-            leftMargin: 665
-            topMargin: 25
-        }
-        Image {
-            width: 52
-            height: 52
-            source: "../../img/icons/listen-pen.png"
-        }
-        Text{
-            anchors.verticalCenter: parent.verticalCenter
-            text:qsTr("Custom Sound Theme")//自定义声音主题
-            width: soundeffectspage.width- 665 - 52 - 15
-            wrapMode: Text.WordWrap
-            color: "#383838"
-            font.pointSize: 10
-            font.bold: true
-        }
-    }
-    Rectangle{id:topline ; x:652; y: 110; width:parent.width ; height:1; color:"#b9c5cc"}
-    Rectangle{id:bottomline ; x:652;y:111 ;width:parent.width ; height:1; color:"#fafcfe"}
-
-    Column
-    {
-        anchors {
-            top: parent.top
-            topMargin: 150
-            left: parent.left
-            leftMargin: 665
-        }
-        spacing: 20
-        Text {
-            text:qsTr("Sound settings:")//声音设置：
-            color: "#383838"
-            font.pointSize: 10
-            font.bold: true
-        }
-        Row {
-            spacing: 20
-            Text{
-                text:qsTr("Login tone: ")//登录提示音：
-                font.pointSize: 10
-                color: "#7a7a7a"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            Common.Switch {
-                id: soundswitcher
-                onSwitched: {
-                    if (soundswitcher.switchedOn) {
-                        sessiondispatcher.set_login_music_enable_qt(true);
-                    }
-                    else if(!soundswitcher.switchedOn) {
-                        sessiondispatcher.set_login_music_enable_qt(false);
-                    }
-                }
-            }
-        }
-    }
-
-    //顶层工具栏
-    Bars.TopBar {
-        id: topBar
-        width: 28
-        height: 26
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        anchors.left: parent.left
-        anchors.leftMargin: 40
-        opacity: 0.9
-        onButtonClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
-    //底层工具栏
-    Bars.ToolBar {
-        id: toolBar
-        showok: false
-        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        onQuitBtnClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
         }
     }
 }

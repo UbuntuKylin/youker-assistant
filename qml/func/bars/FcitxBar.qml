@@ -43,11 +43,13 @@ Item {
          Common.Button {
              id: cancelBtn
              visible: toolbar.showok
-             hoverimage: "gray.png"//../../img/icons/
+             picNormal: "../../img/icons/button12-gray.png"
+             picHover: "../../img/icons/button12-gray-hover.png"
+             picPressed: "../../img/icons/button12-gray-hover.png"
              text: qsTr("Cancel")//取消
-             fontcolor:"#929292"
-             fontsize: 13
-             width: 94; height: 29
+             fontcolor:"#707070"
+             fontsize: 12
+             width: 70; height: 28
              onClicked:
              {
                  toolbar.cancelBtnClicked()
@@ -57,20 +59,24 @@ Item {
          Common.Button {
             id: gobackBtn
             visible: toolbar.showok
-            hoverimage: "gray.png"
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
             text: qsTr("Previous")//上一步
-            fontcolor:"#929292"
-            fontsize: 13
-            width: 94; height: 29
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 100; height: 28
             onClicked: toolbar.gobackBtnClicked()
          }
          Common.Button {
              id: continueBtn
-             hoverimage: "gray.png"
+             picNormal: "../../img/icons/button12-gray-long.png"
+             picHover: "../../img/icons/button12-gray-long-hover.png"
+             picPressed: "../../img/icons/button12-gray-long-hover.png"
              text: qsTr("Next")//下一步
-             fontcolor:"#929292"
-             fontsize: 13
-             width: 94; height: 29
+             fontcolor:"#707070"
+             fontsize: 12
+             width: 100; height: 28
              onClicked: toolbar.continueBtnClicked()
          }
      }

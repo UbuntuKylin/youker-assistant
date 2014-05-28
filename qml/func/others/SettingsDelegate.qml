@@ -65,7 +65,7 @@ Rectangle {
         onClicked: {
             //屏幕坏点检测
             if (flag == "CheckScreen")
-                sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showCheckscreenDialog();
             else if (flag == "BootAnimation") {
                 pageStack.push(bootanimationpage);
 //                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");

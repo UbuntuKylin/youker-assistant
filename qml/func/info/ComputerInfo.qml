@@ -20,7 +20,7 @@ import "../bars" as Bars
 import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
-    id: home; width: parent.width; height: 475
+    id: home; width: parent.width; height: 476
     color: "transparent"
 
     Component.onCompleted: {

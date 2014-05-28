@@ -34,9 +34,11 @@
 #include "kfontdialog.h"
 #include "logindialog.h"
 #include "math.h"
+#include "messengerproxy.h"
 
 QString selectedFont;
 QString selectedFcitxFont;
+extern QPoint widgetPosition;
 
 SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject(parent)
@@ -105,6 +107,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     QObject::connect(sessioniface, SIGNAL(get_history_number(QString, int)), this, SLOT(handlerHistoryNumber(QString, int)));
     QObject::connect(sessioniface, SIGNAL(get_largefile_list(QStringList)), this, SLOT(handlerLargeFileList(QStringList)));
+
+    QObject::connect(MessengerProxy::get_instance_object(), SIGNAL(getHomeBackIndex(int)), this, SLOT(handlerBackToHomePage(int)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -248,12 +252,13 @@ void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
 }
 
 //弹出登录框
-void SessionDispatcher::popup_login_dialog(int window_x, int window_y) {
+void SessionDispatcher::popup_login_dialog() {
+    //LoginDialog width:397; LoginDialog height:282
     LoginDialog *logindialog = new LoginDialog();
     QObject::connect(logindialog, SIGNAL(translate_user_password(QString,QString)),this, SLOT(verify_user_and_password(QString,QString)));
-    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width_bg  / 2);
-    this->alert_y = window_y + mainwindow_height - 400;
-    logindialog->move(this->alert_x, this->alert_y);
+    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (397  / 2);
+    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (282  / 2);
+    logindialog->move(w_x, w_y);
     logindialog->exec();
 }
 
@@ -551,9 +556,13 @@ QString SessionDispatcher::get_session_daemon_qt() {
 
 void SessionDispatcher::get_system_message_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");
+//    qDebug() << "111";
     if (reply.isValid()) {
+//        qDebug() << "222";
         QMap<QString, QVariant> value = reply.value();
         systemInfo = value;
+//        qDebug() << systemInfo;
+//        QMap(("cpu", QVariant(QString, " Pentium(R) Dual-Core  CPU      E5500  @ 2.80GHz") ) ( "currrent_user" ,  QVariant(QString, "trusty") ) ( "desktopenvironment" ,  QVariant(QString, "Unity") ) ( "distribution" ,  QVariant(QString, "Ubuntu Kylin-14.04-trusty") ) ( "home_path" ,  QVariant(QString, "/home/trusty") ) ( "hostname" ,  QVariant(QString, "trusty-lenovo") ) ( "language" ,  QVariant(QString, "zh_CN.UTF-8") ) ( "platform" ,  QVariant(QString, "x86_64") ) ( "ram" ,  QVariant(QString, "2.0 GB") ) ( "shell" ,  QVariant(QString, "/bin/bash") ) )
         //把当前登录的用户名存放到QSetting配置文件中，方便任务管理器使用
         mSettings->beginGroup("user");
         mSettings->setValue("currentName", systemInfo["currrent_user"].toString());
@@ -584,37 +593,40 @@ QString SessionDispatcher::read_default_configure_from_qsetting_file(QString key
 }
 
 //----------------message dialog--------------------
-void SessionDispatcher::showFeatureDialog(int window_x, int window_y) {
-//    MessageDialog *dialog = new MessageDialog();
-    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-    this->alert_y = window_y + mainwindow_height - 400;
-    slidershow->move(this->alert_x, this->alert_y);
+void SessionDispatcher::showFeatureDialog() {
+    //slider width:680; slider height:372
+    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (680  / 2);
+    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (372  / 2);
+    slidershow->move(w_x, w_y);
     slidershow->showSlider();
 }
 
 //----------------checkscreen dialog--------------------
-void SessionDispatcher::showCheckscreenDialog(int window_x, int window_y) {
+void SessionDispatcher::showCheckscreenDialog() {
+    //ModalDialog width:329; ModalDialog height:195
     ModalDialog *dialog = new ModalDialog;
-    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-    this->alert_y = window_y + mainwindow_height - 400;
-    dialog->move(this->alert_x, this->alert_y);
+    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (329  / 2);
+    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (195  / 2);
+    dialog->move(w_x, w_y);
     dialog->setModal(true);
     dialog->show();
 }
 
-void SessionDispatcher::showWarningDialog(QString title, QString content, int window_x, int window_y) {
+void SessionDispatcher::showWarningDialog(QString title, QString content) {
+    //WarningDialog width:329; WarningDialog height:195
     WarningDialog *dialog = new WarningDialog(title, content);
-    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-    this->alert_y = window_y + mainwindow_height - 400;
-    dialog->move(this->alert_x, this->alert_y);
+    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (329  / 2);
+    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (195  / 2);
+    dialog->move(w_x, w_y);
     dialog->exec();
 }
 
-bool SessionDispatcher::showConfirmDialog(QString title, QString content, int window_x, int window_y) {
+bool SessionDispatcher::showConfirmDialog(QString title, QString content) {
+    //WarningDialog width:329; WarningDialog height:195
     WarningDialog *dialog = new WarningDialog(title, content);
-    this->alert_x = window_x + (mainwindow_width / 2) - (alert_width  / 2);
-    this->alert_y = window_y + mainwindow_height - 400;
-    dialog->move(this->alert_x, this->alert_y);
+    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (329  / 2);
+    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (195  / 2);
+    dialog->move(w_x, w_y);
     dialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
     if(dialog->exec()==QDialog::Rejected) {
         return false;
@@ -729,6 +741,141 @@ bool SessionDispatcher::get_launcher_have_showdesktopicon_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_launcher_have_showdesktopicon");
     return reply.value();
 }
+
+
+// for v1.0.3
+//透明度
+double SessionDispatcher::get_launcher_transparency_qt() {
+    QDBusReply<double> reply = sessioniface->call("get_launcher_transparency");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_launcher_transparency_qt(double opacity) {
+    QDBusReply<bool> reply = sessioniface->call("set_launcher_transparency", opacity);
+    return reply.value();
+}
+
+//图标背景
+QStringList SessionDispatcher::get_all_launcher_icon_colourings_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_all_launcher_icon_colourings");
+    return reply.value();
+}
+
+int SessionDispatcher::get_launcher_icon_colouring_qt() {
+    QDBusReply<int> reply = sessioniface->call("get_launcher_icon_colouring");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_launcher_icon_colouring_qt(int colouring) {
+    QDBusReply<bool> reply = sessioniface->call("set_launcher_icon_colouring", colouring);
+    return reply.value();
+}
+
+//Dash背景模糊类型
+int SessionDispatcher::get_dash_blur_experimental_qt() {
+    QDBusReply<int> reply = sessioniface->call("get_dash_blur_experimental");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_dash_blur_experimental_qt(int blur) {
+    QDBusReply<bool> reply = sessioniface->call("set_dash_blur_experimental", blur);
+    return reply.value();
+}
+
+//面板菜单透明度
+double SessionDispatcher::get_panel_transparency_qt() {
+    QDBusReply<double> reply = sessioniface->call("get_dash_blur_experimental");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_panel_transparency_qt(double opacity) {
+    QDBusReply<bool> reply = sessioniface->call("set_panel_transparency", opacity);
+    return reply.value();
+}
+
+//日期时间格式
+QStringList SessionDispatcher::get_all_time_format_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_all_time_format");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_time_format_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_time_format");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_time_format_qt(QString format) {
+    QDBusReply<bool> reply = sessioniface->call("set_time_format", format);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_seconds_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_seconds");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_seconds_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_seconds", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_week_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_week");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_week_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_week", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_date_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_date");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_date_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_date", flag);
+    return reply.value();
+}
+
+//电源
+QStringList SessionDispatcher::get_all_power_icon_policy_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_all_power_icon_policy");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_power_icon_policy_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_power_icon_policy");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_power_icon_policy_qt(QString format) {
+    QDBusReply<bool> reply = sessioniface->call("set_power_icon_policy", format);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_power_time_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_power_time");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_power_time_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_power_time", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_power_percentage_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_power_percentage");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_power_percentage_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_power_percentage", flag);
+    return reply.value();
+}
+
+
 
 /*-----------------------------theme of beauty-----------------------------*/
 QStringList SessionDispatcher::get_themes_qt() {
@@ -1543,10 +1690,14 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
 }
 
 bool SessionDispatcher::showWizardController() {
+    //WizardDialog width:531; WizardDialog height:210
     WizardDialog *wizardDialog = new WizardDialog(mSettings, 0);
     connect(wizardDialog, SIGNAL(readyToUpdateRateTime(int)), this, SLOT(handler_change_rate(int)));
     connect(wizardDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
-    wizardDialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
+    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (531  / 2);
+    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (210  / 2);
+    wizardDialog->move(w_x, w_y);
+    wizardDialog->QWidget::setAttribute(Qt::WA_DeleteOnClose);
     if(wizardDialog->exec()==QDialog::Rejected) {
         return false;
     }
@@ -1560,9 +1711,13 @@ void SessionDispatcher::handler_change_rate(int rate) {
 }
 
 bool SessionDispatcher::showChangeCityDialog() {
+    //ChangeCityDialog width:421; ChangeCityDialog height:280
     ChangeCityDialog *cityDialog = new ChangeCityDialog(mSettings);
     cityDialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
     connect(cityDialog, SIGNAL(readyToUpdateWeather()), this, SLOT(handler_change_city()));
+    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (421  / 2);
+    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (280  / 2);
+    cityDialog->move(w_x, w_y);
     if(cityDialog->exec()==QDialog::Rejected) {
         return false;
     }
@@ -1684,4 +1839,11 @@ QStringList SessionDispatcher::getLatandLon(QString id) {
 
 void SessionDispatcher::change_maincheckbox_status(QString status) {
     emit startChangeMaincheckboxStatus(status);
+}
+
+
+//0412
+void SessionDispatcher::handlerBackToHomePage(int index) {
+    emit backToHomePage(index);
+    this->set_page_num(index);
 }

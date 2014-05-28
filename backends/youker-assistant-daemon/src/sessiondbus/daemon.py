@@ -555,6 +555,119 @@ class SessionDaemon(dbus.service.Object):
     def get_launcher_have_showdesktopicon(self):
         return self.unityconf.get_launcher_have_showdesktopicon()
 
+
+
+
+    #add by kobe for v1.0.3
+    # 透明度
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
+    def get_launcher_transparency(self):
+        return self.unityconf.get_launcher_transparency()
+
+    @dbus.service.method(INTERFACE, in_signature='d', out_signature='b')
+    def set_launcher_transparency(self, opacity):
+        return self.unityconf.set_launcher_transparency(opacity)
+
+    #图标背景
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_all_launcher_icon_colourings(self):
+        return self.unityconf.get_all_launcher_icon_colourings()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_launcher_icon_colouring(self):
+        return self.unityconf.get_launcher_icon_colouring()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='b')
+    def set_launcher_icon_colouring(self, colouring):
+        return self.unityconf.set_launcher_icon_colouring(colouring)
+
+    # Dash背景模糊类型
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_dash_blur_experimental(self):
+        return self.unityconf.get_dash_blur_experimental()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='b')
+    def set_dash_blur_experimental(self, blur):
+        return self.unityconf.set_dash_blur_experimental(blur)
+
+    #面板菜单透明度
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
+    def get_panel_transparency(self):
+        return self.unityconf.get_panel_transparency()
+
+    @dbus.service.method(INTERFACE, in_signature='d', out_signature='b')
+    def set_panel_transparency(self, opacity):
+        return self.unityconf.set_panel_transparency(opacity)
+
+
+    #日期时间格式
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_all_time_format(self):
+        return self.unityconf.get_all_time_format()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_time_format(self):
+        return self.unityconf.get_time_format()
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def set_time_format(self, format):
+        return self.unityconf.set_time_format(format)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_seconds(self):
+        return self.unityconf.get_show_seconds()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_seconds(self, flag):
+        return self.unityconf.set_show_seconds(flag)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_week(self):
+        return self.unityconf.get_show_week()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_week(self, flag):
+        return self.unityconf.set_show_week(flag)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_date(self):
+        return self.unityconf.get_show_date()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_date(self, flag):
+        return self.unityconf.set_show_date(flag)
+
+    # 电源
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_all_power_icon_policy(self):
+        return self.unityconf.get_all_power_icon_policy()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_power_icon_policy(self):
+        return self.unityconf.get_power_icon_policy()
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def set_power_icon_policy(self, flag):
+        return self.unityconf.set_power_icon_policy(flag)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_power_time(self):
+        return self.unityconf.get_show_power_time()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_power_time(self, flag):
+        return self.unityconf.set_show_power_time(flag)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_power_percentage(self):
+        return self.unityconf.get_show_power_percentage()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_power_percentage(self, flag):
+        return self.unityconf.set_show_power_percentage(flag)
+
+
+
     # -------------------------theme-------------------------
 
     @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')

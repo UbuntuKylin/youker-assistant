@@ -6,7 +6,7 @@ import "../" as Func
 Rectangle {
     id:fcitxconfigtoolFont
     width: parent.width
-    height: 475
+    height: 476
 
     property string actiontitle: qsTr("Personalized Configuration")//个性化配置
     property string actiontext: qsTr("Global configuration according to personal habits, click 'Next' to continue Settings, click 'Cancel' to exit the setup wizard.")//根据个人习惯进行全局配置，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。
@@ -232,11 +232,13 @@ Rectangle {
         }
         Common.Button{
             id:methodBtn1
-            hoverimage: "fcitxKey.png"//../../img/icons/
-            fontcolor:"#929292"
+//            hoverimage: "fcitxKey.png"//../../img/icons/
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
+            fontcolor:"#707070"
             fontsize: 13
-            width:200
-            height:30
+            width: 200; height: 30
             onClicked: {
                 methodBtn1.forceActiveFocus();
                 methodBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
@@ -254,11 +256,13 @@ Rectangle {
         }
         Common.Button{
             id:methodBtn2
-            hoverimage: "fcitxKey.png"//../../img/icons/
-            fontcolor:"#929292"
+//            hoverimage: "fcitxKey.png"//../../img/icons/
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
+            fontcolor:"#707070"
             fontsize: 13
-            width:200
-            height:30
+            width: 200; height: 30
             onClicked: {
                 methodBtn2.forceActiveFocus();
                 methodBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
@@ -301,11 +305,13 @@ Rectangle {
         }
         Common.Button{
             id:prevPageBtn1
-            width:200
-            height:30
-            hoverimage: "fcitxKey.png"//../../img/icons/
-            fontcolor:"#929292"
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
+            fontcolor:"#707070"
             fontsize: 13
+            width: 200; height: 30
+//            hoverimage: "fcitxKey.png"//../../img/icons/
             onClicked: {
                 prevPageBtn1.forceActiveFocus();
                 prevPageBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
@@ -323,11 +329,13 @@ Rectangle {
         }
         Common.Button{
             id:prevPageBtn2
-            width:200
-            height:30
-            hoverimage: "fcitxKey.png"//../../img/icons/
-            fontcolor:"#929292"
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
+            fontcolor:"#707070"
             fontsize: 13
+            width: 200; height: 30
+//            hoverimage: "fcitxKey.png"//../../img/icons/
             onClicked: {
                 prevPageBtn2.forceActiveFocus();
                 prevPageBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
@@ -370,11 +378,13 @@ Rectangle {
         }
         Common.Button{
             id:nextPageBtn1
-            width:200
-            height:30
-            hoverimage: "fcitxKey.png"//../../img/icons/
-            fontcolor:"#929292"
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
+            fontcolor:"#707070"
             fontsize: 13
+            width: 200; height: 30
+//            hoverimage: "fcitxKey.png"//../../img/icons/
             onClicked: {
                 nextPageBtn1.forceActiveFocus();
                 nextPageBtn1.text = qsTr("Please press the combination keys");//请按下要设置的组合键
@@ -392,11 +402,13 @@ Rectangle {
         }
         Common.Button{
             id:nextPageBtn2
-            width:200
-            height:30
-            hoverimage: "fcitxKey.png"//../../img/icons/
-            fontcolor:"#929292"
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
+            fontcolor:"#707070"
             fontsize: 13
+            width: 200; height: 30
+//            hoverimage: "fcitxKey.png"//../../img/icons/
             onClicked: {
                 nextPageBtn2.forceActiveFocus();
                 nextPageBtn2.text = qsTr("Please press the combination keys");//请按下要设置的组合键
@@ -444,7 +456,7 @@ Rectangle {
         id: toolBar
         height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
         onCancelBtnClicked: {
-            fcitxcfgwizard.send_fcitx_ok_warn(mainwindow.x, mainwindow.y);
+            fcitxcfgwizard.send_fcitx_ok_warn();
         }
 
         onGobackBtnClicked: {

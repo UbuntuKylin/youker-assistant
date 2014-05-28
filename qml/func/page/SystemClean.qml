@@ -20,16 +20,14 @@ import "../cleaner" as Cleaner
 
 Item {
     id: clearmode
-    width: parent.width
-    height: 475
+    width: 850; height: 476
 //    Image {     //背景图片
 //        id: background
 //        anchors.fill: parent
 //        source: "../../img/skin/bg-middle.png"//bg-middle-tab
 //    }
     Common.Tabs {
-        id: tabs
-        width: parent.width; height: 435
+        anchors.fill: parent
 
         Common.TabPage {
 //            title:qsTr("Package Cache")//包管理缓存

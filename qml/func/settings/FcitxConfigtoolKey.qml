@@ -6,7 +6,7 @@ import "../../func"  as Func
 Rectangle {
     id:fcitxconfigtoolKey
     width: parent.width
-    height: 475
+    height: 476
 
     property string actiontitle: qsTr("Appearance Configuration")//外观配置
     property string actiontext: qsTr("According to personal preferences to set input method skin, click 'Previous' to return to the personalized configuration.")//可以设置自己喜欢的皮肤，点击＂应用＂完成设置, 点击＂上一步＂返回个性化配置。
@@ -305,10 +305,13 @@ Rectangle {
        Common.Button {
             id: fontStyleBtn
             smooth:true
-            width: 160;height: 25
-            hoverimage: "fcitxFont.png"//../../img/icons/
-            fontcolor:"#929292"
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
+            fontcolor:"#707070"
             fontsize: 13
+            width: 160; height: 30
+//            hoverimage: "fcitxFont.png"//../../img/icons/
             anchors.verticalCenter: font.verticalCenter
            onClicked: {
                sessiondispatcher.show_font_dialog("fcitxfont");
@@ -356,7 +359,7 @@ Rectangle {
             pageStack.push(functioncollection);
         }
         onCancelBtnClicked: {
-            fcitxcfgwizard.send_fcitx_ok_warn(mainwindow.x, mainwindow.y);
+            fcitxcfgwizard.send_fcitx_ok_warn();
         }
         onGobackBtnClicked: {
             pageStack.push(fcitxConfigtoolFontpage);//静态添加页面

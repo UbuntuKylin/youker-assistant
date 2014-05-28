@@ -19,11 +19,11 @@ import "../common" as Common
 import "../bars" as Bars
 
 Item {
-    id:home
-    width: parent.width
-    height: 435
+    id:packagepage
+    width: parent.width; height: 437
+
     Rectangle {
-        id: masklayer2
+        id: masklayer
         width: parent.width
         height: parent.height
         x: (parent.width * 1.5)
@@ -39,7 +39,7 @@ Item {
             onSendProgressToQML: {
                 if(type == "apt_start") {
                     progress.value = 0;
-                    home.state = "MaskLayerState";
+                    packagepage.state = "MaskLayerState";
                 }
                 else if(type == "apt_pulse"){
                     progressTitle.text = qsTr("The ongoing: ") + info;//正在进行：
@@ -91,7 +91,7 @@ Item {
                 topMargin: 10
             }
             onClicked: {
-                home.state = "NormalState";
+                packagepage.state = "NormalState";
             }
         }
     }
@@ -253,7 +253,7 @@ Item {
                     root.state = "PackageWorkEmpty";
                     if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                         //友情提示：      扫描内容为空，无需清理！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
                     }
                     else {//清理apt后的重新获取数据，此时不需要显示对话框
                         root.flag = false;
@@ -261,7 +261,7 @@ Item {
                 }
                 else {
                     if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                        toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                        toolkits.alertMSG(qsTr("Scan completed!"));//扫描完成！
                     }
                     else {//清理software后的重新获取数据，此时不需要显示对话框
                         root.flag = false;
@@ -284,11 +284,11 @@ Item {
             onFinishCleanDebError: {//清理出错时收到的信号
                 if (root.btnFlag == "package_work") {
                     if (msg == "package") {
-                        home.state = "NormalState";
+                        packagepage.state = "NormalState";
                         //清理过程中发生错误，解禁按钮
                         actionBtn.enabled = true;
                         titleBar.state = "PackageWorkError";
-                        toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                        toolkits.alertMSG(qsTr("Cleanup abnormal!"));//清理出现异常！
                     }
                 }
             }
@@ -297,12 +297,12 @@ Item {
                     if (msg == "") {
                         //清理取消，解禁按钮
                         actionBtn.enabled = true;
-                        home.state = "NormalState";
-                        toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
+                        packagepage.state = "NormalState";
+                        toolkits.alertMSG(qsTr("Cleanup interrupted!"));//清理中断！
                     }
                     else if (msg == "package") {
                         root.state = "PackageWorkFinish";
-                        toolkits.alertMSG(qsTr("Cleared"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕
+                        toolkits.alertMSG(qsTr("Cleared"));//清理完毕
                         //清理完毕后重新获取数据
                         root.flag = true;
 //                        root.getData();
@@ -445,7 +445,7 @@ Item {
                                 sessiondispatcher.package_scan_function_qt(sessiondispatcher.get_package_arglist(6));
                             }
                         }
-                        home.state = "NormalState";
+                        packagepage.state = "NormalState";
                         //清理成功完成，解禁按钮
                         actionBtn.enabled = true;
                     }
@@ -552,11 +552,13 @@ Item {
             }
             Common.Button {
                 id: actionBtn
-                width: 94
-                height: 29
-                hoverimage: "green.png"
+                picNormal: "../../img/icons/button16.png"
+                picHover: "../../img/icons/button16-hover.png"
+                picPressed: "../../img/icons/button16-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 16
+                width: 120; height: 36
                 text: qsTr("Start scanning")//开始扫描
-                fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
 
@@ -621,7 +623,7 @@ Item {
                                 doingImage.visible = false;
                                 actionBtn.enabled = true;
                                 //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
-                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"));
                             }
                         }
                     }
@@ -629,10 +631,10 @@ Item {
                         if(root.packageresultFlag || root.kernelresultFlag || root.configresultFlag) {//扫描得到的实际内容存在时
                             if(!root.package_maincheck && !root.kernel_maincheck && !root.config_maincheck) {
                                 //友情提示：        对不起，您没有选择需要清理的内容，请确认！
-                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"));
                             }
                             else {
-//                                    home.state = "MaskLayerState";
+//                                    packagepage.state = "MaskLayerState";
 
                                 //test 0410
                                 var packagelist = new Array();
@@ -1029,12 +1031,12 @@ Item {
         State {
             name: "NormalState"
             PropertyChanges { target: root; x: 0 }
-            PropertyChanges { target: masklayer2; x: (parent.width * 1.5) }
+            PropertyChanges { target: masklayer; x: (parent.width * 1.5) }
         },
 
         State {
             name: "MaskLayerState"
-            PropertyChanges { target: masklayer2; x: 0 }
+            PropertyChanges { target: masklayer; x: 0 }
             PropertyChanges { target: progressTitle; text: qsTr("Software operation schedule") }//软件操作进度
             PropertyChanges { target: progress; value: 0 }
             PropertyChanges { target: root; x: (parent.width * 1.5) }

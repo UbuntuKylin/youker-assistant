@@ -19,11 +19,16 @@ import "../common" as Common
 
 Rectangle {
     id: home
-    width: parent.width; height: 475
+    width: parent.width; height: 476
     color: "transparent"
 
     Component.onCompleted: {
         sessiondispatcher.get_system_message_qt();
+        desktoptext.text = sessiondispatcher.getSingleInfo("desktopenvironment");
+        distributiontext.text = sessiondispatcher.getSingleInfo("distribution");
+        languagetext.text = sessiondispatcher.getSingleInfo("language");
+        usertext.text = sessiondispatcher.getSingleInfo("currrent_user");
+        hometext.text = sessiondispatcher.getSingleInfo("home_path");
     }
 
     function openFile(file) {
@@ -68,7 +73,8 @@ Rectangle {
                     width: 150
                 }
                 Text {
-                    text: sessiondispatcher.getSingleInfo("desktopenvironment")
+                    id: desktoptext
+                    text: ""//sessiondispatcher.getSingleInfo("desktopenvironment")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -82,7 +88,8 @@ Rectangle {
                     width: 150
                 }
                 Text {
-                    text: sessiondispatcher.getSingleInfo("distribution")
+                    id: distributiontext
+                    text: ""//sessiondispatcher.getSingleInfo("distribution")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -96,7 +103,8 @@ Rectangle {
                     width: 150
                 }
                 Text {
-                    text: sessiondispatcher.getSingleInfo("language")
+                    id: languagetext
+                    text: ""//sessiondispatcher.getSingleInfo("language")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -111,7 +119,8 @@ Rectangle {
                     width: 150
                 }
                 Text {
-                    text: sessiondispatcher.getSingleInfo("currrent_user")
+                    id: usertext
+                    text: ""//sessiondispatcher.getSingleInfo("currrent_user")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -125,7 +134,8 @@ Rectangle {
                     width: 150
                 }
                 Text {
-                    text: sessiondispatcher.getSingleInfo("home_path")
+                    id: hometext
+                    text: ""//sessiondispatcher.getSingleInfo("home_path")
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

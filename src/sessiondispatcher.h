@@ -44,7 +44,7 @@ public:
     Q_INVOKABLE void open_folder_qt(QString path);
 
     //弹出登录框
-    Q_INVOKABLE void popup_login_dialog(int window_x, int window_y);
+    Q_INVOKABLE void popup_login_dialog();
     //退出登录
     Q_INVOKABLE void logout_ubuntukylin_account();
 
@@ -90,15 +90,15 @@ public:
     //退出sessiondubs服务
     Q_INVOKABLE void exit_qt();
     //弹出新特性对话框
-    Q_INVOKABLE void showFeatureDialog(int window_x, int window_y);
+    Q_INVOKABLE void showFeatureDialog();
     //弹出屏幕坏点检测对话框
-    Q_INVOKABLE void showCheckscreenDialog(int window_x, int window_y);
+    Q_INVOKABLE void showCheckscreenDialog();
     //弹出警告提示对话框
-    Q_INVOKABLE void showWarningDialog(QString title, QString content, int window_x, int window_y);
+    Q_INVOKABLE void showWarningDialog(QString title, QString content);
     //弹出确认对话框
-    Q_INVOKABLE bool showConfirmDialog(QString title, QString content, int window_x, int window_y);
+    Q_INVOKABLE bool showConfirmDialog(QString title, QString content);
 
-    Q_INVOKABLE void set_page_num(int num);
+    /*Q_INVOKABLE  */void set_page_num(int num);
     Q_INVOKABLE int get_page_num();
     int page_num;
 
@@ -161,6 +161,42 @@ public:
     Q_INVOKABLE int get_launcher_icon_size_qt();
     Q_INVOKABLE bool set_launcher_have_showdesktopicon_qt(bool flag);
     Q_INVOKABLE bool get_launcher_have_showdesktopicon_qt();
+
+
+
+    // for v1.0.3
+    //透明度
+    Q_INVOKABLE double get_launcher_transparency_qt();
+    Q_INVOKABLE bool set_launcher_transparency_qt(double opacity);
+    //图标背景
+    Q_INVOKABLE QStringList get_all_launcher_icon_colourings_qt();
+    Q_INVOKABLE int get_launcher_icon_colouring_qt();
+    Q_INVOKABLE bool set_launcher_icon_colouring_qt(int colouring);
+    //Dash背景模糊类型
+    Q_INVOKABLE int get_dash_blur_experimental_qt();
+    Q_INVOKABLE bool set_dash_blur_experimental_qt(int blur);
+    //面板菜单透明度
+    Q_INVOKABLE double get_panel_transparency_qt();
+    Q_INVOKABLE bool set_panel_transparency_qt(double opacity);
+    //日期时间格式
+    Q_INVOKABLE QStringList get_all_time_format_qt();
+    Q_INVOKABLE QString get_time_format_qt();
+    Q_INVOKABLE bool set_time_format_qt(QString format);
+    Q_INVOKABLE bool get_show_seconds_qt();
+    Q_INVOKABLE bool set_show_seconds_qt(bool flag);
+    Q_INVOKABLE bool get_show_week_qt();
+    Q_INVOKABLE bool set_show_week_qt(bool flag);
+    Q_INVOKABLE bool get_show_date_qt();
+    Q_INVOKABLE bool set_show_date_qt(bool flag);
+    //电源
+    Q_INVOKABLE QStringList get_all_power_icon_policy_qt();
+    Q_INVOKABLE QString get_power_icon_policy_qt();
+    Q_INVOKABLE bool set_power_icon_policy_qt(QString flag);
+    Q_INVOKABLE bool get_show_power_time_qt();
+    Q_INVOKABLE bool set_show_power_time_qt(bool flag);
+    Q_INVOKABLE bool get_show_power_percentage_qt();
+    Q_INVOKABLE bool set_show_power_percentage_qt(bool flag);
+
 
     /*-------------------theme of beauty-------------------*/
     Q_INVOKABLE QStringList get_themes_qt();
@@ -304,7 +340,7 @@ public:
     //显示wizard
     Q_INVOKABLE bool showWizardController();
     //显示更改城市对话框
-    Q_INVOKABLE bool showChangeCityDialog(/*int window_x, int window_y*/);
+    Q_INVOKABLE bool showChangeCityDialog();
     Q_INVOKABLE int getLengthOfCityList();
     void initConfigFile();
     void getCityIdInfo();
@@ -388,6 +424,10 @@ signals:
 
     void tellQMLHistoryNumber(QString flag, int num);
     void tellQMLLargeFileList(QStringList filelist);
+
+
+    //返回主页面信号
+    void backToHomePage(int index);//0412
 public slots:
     void verify_user_and_password(QString user, QString pwd);
     void handle_data_after_login_success(QString id, /*QString level, */QString name, QString score);
@@ -453,6 +493,9 @@ public slots:
 
     void handlerHistoryNumber(QString flag, int num);
     void handlerLargeFileList(QStringList filelist);
+
+    //返回主页面槽函数
+    void handlerBackToHomePage(int index);//0412
 
 private:
     int mainwindow_width;

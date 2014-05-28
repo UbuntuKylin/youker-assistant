@@ -20,7 +20,7 @@ import "../bars" as Bars
 Rectangle {
     id: bootimagepage
     width: parent.width
-    height: 475
+    height: 476
 
     property int scrollbar_z:0
     property int lisv_height: 250
@@ -73,37 +73,85 @@ Rectangle {
         }
     }
 
-    Column {
-        spacing: 10
-        anchors.top: parent.top
-        anchors.topMargin: 44
-        anchors.left: parent.left
-        anchors.leftMargin: 80
-        Row {
-            spacing: 50
-            Text {
-                 text: bootimagepage.actiontitle
-                 font.bold: true
-                 font.pixelSize: 14
-                 color: "#383838"
-             }
-            //status picture
-            Common.StatusImage {
-                id: statusImage
-                visible: false
-                iconName: "green.png"
-                text: qsTr("Completed!")//已完成！
-                anchors.verticalCenter: parent.verticalCenter
+    Row {
+        spacing: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 20
+        }
+        Common.Button {
+            id: backBtn
+            anchors.verticalCenter: parent.verticalCenter
+//            hoverimage: "button12-gray.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
+            text: qsTr("Back")//返回
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 1) {
+                    pageStack.push(systemmessage);
+                }
+                else if (num == 2) {
+                    pageStack.push(clearrubbish);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
             }
         }
-        Text {
-            width: bootimagepage.width - 80 - 20
-            text: bootimagepage.actiontext
-            wrapMode: Text.WordWrap
-            font.pixelSize: 12
-            color: "#7a7a7a"
+        Column {
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
+            Row {
+                spacing: 50
+                Text {
+                     text: bootimagepage.actiontitle
+                     font.bold: true
+                     font.pixelSize: 14
+                     color: "#383838"
+                 }
+                //status picture
+                Common.StatusImage {
+                    id: statusImage
+                    visible: false
+                    iconName: "green.png"
+                    text: qsTr("Completed!")//已完成！
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+            Text {
+                width: bootimagepage.width - 80 - 20
+                text: bootimagepage.actiontext
+                wrapMode: Text.WordWrap
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
         }
     }
+
+    //分割条
+    Common.Separator {
+        id: top_splitbar
+        y: 60
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        width: parent.width - 4
+    }
+
 
     Column {
         anchors {
@@ -119,10 +167,13 @@ Rectangle {
         }
 
         Common.Button {
-            width: 94
-            height: 29
-            fontsize: 13
-            hoverimage: "blue.png"
+//            hoverimage: "button12-gray-long.png"
+            picNormal: "../../img/icons/button12-gray-long.png"
+            picHover: "../../img/icons/button12-gray-long-hover.png"
+            picPressed: "../../img/icons/button12-gray-long-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 100; height: 28
             text: qsTr("Custom picture")//自定义图片
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
@@ -179,7 +230,8 @@ Rectangle {
             id:cdelegat
             Item{
                 id:wrapper
-                width: 440; height: 30
+//                width: 440; height: 30
+                width: 460; height: 30
                 Text{
                     id:listtext
                     anchors {
@@ -208,7 +260,6 @@ Rectangle {
                         else{
                             //待添加原图片路径不存在时的说明图
                         }
-
                     }
                 }
                 Rectangle{
@@ -229,7 +280,6 @@ Rectangle {
                         }
                     }
                 }
-
             }
         }
         Common.ScrollArea {
@@ -251,59 +301,36 @@ Rectangle {
                     anchors.fill: parent
                     model: mainModel
                     delegate: cdelegat
-                    highlight: Rectangle{width: 440;height: 30 ; color: "lightsteelblue"}
+                    highlight: Rectangle{width: parent.width /*440*/;height: 30 ; color: "lightsteelblue"}
                     focus:true
                 }
             }//Item
         }//ScrollArea
     }
 
-    //顶层工具栏
-    Bars.TopBar {
-        id: topBar
-        width: 28
-        height: 26
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        anchors.left: parent.left
-        anchors.leftMargin: 40
-        opacity: 0.9
-        onButtonClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
+    Common.Button {
+        id: okBtn
+        anchors {
+            right: parent.right
+            rightMargin: 42
+            bottom: parent.bottom
+            bottomMargin: 30
         }
-    }
-    //底层工具栏
-    Bars.ToolBar {
-        id: toolBar
-        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        onQuitBtnClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-        onOkBtnClicked: {
+//        hoverimage: "button12-gray.png"
+        picNormal: "../../img/icons/button12-gray.png"
+        picHover: "../../img/icons/button12-gray-hover.png"
+        picPressed: "../../img/icons/button12-gray-hover.png"
+        fontcolor:"#707070"
+        fontsize: 12
+        width: 70; height: 28
+        text: qsTr("OK")//确定
+        onClicked: {
             systemdispatcher.custom_plymouth_bg_qt(bootimagepage.selectedimage);
             statusImage.visible = true;
         }
-        Timer {
-            interval: 5000; running: true; repeat: true
-            onTriggered: statusImage.visible = false
-        }
+    }
+    Timer {
+        interval: 5000; running: true; repeat: true
+        onTriggered: statusImage.visible = false
     }
 }

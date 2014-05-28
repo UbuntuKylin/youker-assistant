@@ -137,10 +137,12 @@ Item {
                 }
                 Common.Button {
                     id: scanBtn
-                    width: 94
-                    height: 29
-                    fontsize: 13
-                    hoverimage: "green.png"
+                    picNormal: "../../img/icons/button12.png"
+                    picHover: "../../img/icons/button12-hover.png"
+                    picPressed: "../../img/icons/button12-hover.png"
+                    fontcolor:"#ffffff"
+                    fontsize: 12
+                    width: 100; height: 28
                     text: broswerDelegate.actionTitle
 //                    anchors {
 //                        left: parent.left

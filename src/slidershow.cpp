@@ -82,7 +82,14 @@ SliderShow::SliderShow(QWidget *parent)
     //设置开始按钮属性
     hLayout = new QHBoxLayout(this);
     start_button = new KButton(this);
-    start_button->setPicName(":/pixmap/image/start");
+
+    locale_Lan = this->get_locale_version();
+    if(locale_Lan == "zh_CN") {
+        start_button->setPicName(":/pixmap/image/start");
+    }
+    else {
+        start_button->setPicName(":/pixmap/image/start_en");
+    }
     start_button->resize(QSize(180, 57));
 //    start_button->move(300, 320);
     start_button->raise();
@@ -116,6 +123,11 @@ SliderShow::~SliderShow()
     if(timer->isActive()) {
         timer->stop();
     }
+}
+
+QString SliderShow::get_locale_version() {
+    QString locale = QLocale::system().name();
+    return locale;
 }
 
 //void SliderShow::mousePressEvent(QMouseEvent *event)

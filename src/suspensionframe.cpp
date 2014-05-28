@@ -127,44 +127,51 @@ void SuspensionFrame::paintEvent(QPaintEvent *) {
 
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);
-    blister.load(":/pixmap/image/blister-big.png");
+//    blister.load(":/pixmap/image/blister-big.png");
     //线性渐变
     QLinearGradient linearGradient(76,10,76,76);
     //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
     painter.setPen(Qt::transparent);
-    QString color1;
-    QString color2;
-    QString color3;
+    QString color_start;
+    QString color_end;
 
-    color1=(ratio_sus == 100) ? "#ff2f00" : "transparent";
     if (ratio_sus == 0)
     {
-        color2="transparent";
-        color3="transparent";
+        color_start = "#940302";//950302
+        color_end="transparent";
     }
-    else if(ratio_sus > 80) {
-        color2="#d13625";
-        color3="#d5311e";
+    else if (ratio_sus > 0 && ratio_sus < 50) {
+        color_start = "#006f45";//006F45
+        color_end= "#48ca5e";//52D063
+        ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
+        ui->title2->setText(tr("No need to accelerate"));//无需进行加速
+    }
+    else if (ratio_sus >= 50 && ratio_sus <= 80) {
+        color_start = "#af3a00";//AF3A00
+        color_end="#ed711d";//F07620
+        ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
+        ui->title2->setText(tr("No need to accelerate"));//无需进行加速
+    }
+    else {// if(ratio_sus > 80) {
+        color_start = "#940302";//950302
+        color_end="#dd291c";//DE281C
         ui->title1->setText(tr("Computer runs slowly"));//电脑运行缓慢
         ui->title2->setText(tr("Using 'quick clean' ?"));//使用一键加速？
     }
-    else {
-        color2="#00b0ff";
-        color3="#006eff";
-        ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
-        ui->title2->setText(tr("No need to accelerate"));//无需进行加速
-//        blister.load(":/pixmap/image/blister-big.png");
-    }
-
-    linearGradient.setColorAt(0.0,color1);
-    linearGradient.setColorAt( 1.0 - ratio_sus * 0.01,color1);
-    linearGradient.setColorAt((ratio_sus <= 0) ? 0.0 : (1.0 - ratio_sus * 0.01 + 0.01),color2);
-    linearGradient.setColorAt(1.0,color3);
+    linearGradient.setColorAt(0.0, color_start);
+    linearGradient.setColorAt( 1.0 - ratio_sus * 0.01, color_start);
+    linearGradient.setColorAt((ratio_sus <= 0) ? 0.0 : (1.0 - ratio_sus * 0.01 + 0.01), color_end);
+    linearGradient.setColorAt(1.0, color_end);
     painter.setBrush(QBrush(linearGradient));
     painter.drawEllipse(7,7,65,65);
     opt.init(this);
     painter.drawImage(0,0,wheel);
     painter.drawPixmap(44,231,memory,0,0,memory.width()*(ratio_sus* 0.01),memory.height());
-    painter.drawPixmap(7,7, blister);
+//    painter.drawPixmap(7,7, blister);
+
+    QPixmap pixmap;
+    pixmap.load(":/pixmap/image/shade.png");
+    painter.drawPixmap(5, 7, pixmap);
+
     style()->drawPrimitive(QStyle::PE_Widget,&opt,&painter,this);
 }

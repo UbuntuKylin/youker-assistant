@@ -30,7 +30,7 @@ Item {
         id: header
         anchors{
             left:parent.left
-            leftMargin: 5
+//            leftMargin: 5
         }
 
         Repeater {
@@ -38,7 +38,9 @@ Item {
             delegate: Rectangle {
                 id: mytab
 //                width: 165//165每个tab标题的总宽度
-                width: 140//140每个tab标题的总宽度
+//                width: 140//140每个tab标题的总宽度
+//                height: 36
+                width: 142
                 height: 36
                 color:"transparent"
                 Rectangle{
@@ -47,14 +49,22 @@ Item {
                         horizontalCenter: parent.horizontalCenter
                     }
 //                    width: 160//160每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 165 - 160 = 5,即为tab之间的space
-                    width: 135//135每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 140 - 130 = 5,即为tab之间的space
-                    height: 30
-                    border.color: "#abc2c2"
+//                    width: 135//135每个tab标题的宽度，其中：每个tab标题的总宽度-每个tab标题的宽度 = 140 - 130 = 5,即为tab之间的space
+//                    height: 30
+                    width: 142
+                    height: 36
+//                    border.color: "#abc2c2"
                     Image {
                         anchors.fill: parent
-                        anchors.leftMargin: 0.5
-                        anchors.rightMargin: 0.5
-                        source: "../../img/icons/tab.png"
+//                        anchors.leftMargin: 0.5
+//                        anchors.rightMargin: 0.5
+//                        source: "../../img/icons/tab.png"
+                        source: "../../img/icons/tab-background.png"
+                    }
+                    Image {
+                        id: btnImg
+                        anchors.fill: parent
+                        source: ""
                     }
                     Rectangle {
                         width: mytab.width//parent.width
@@ -63,8 +73,9 @@ Item {
                         color: "#abc2c2"
                     }
                     BorderImage {  //tab选项图片
-                        anchors { fill: parent; leftMargin: 0.5; topMargin: 0; rightMargin: 0.5}
-                        source: tabWidget.current == index? "../../img/icons/tab-active.png" : ""
+                        anchors { fill: parent/*; leftMargin: 0.5; topMargin: 0; rightMargin: 0.5*/}
+//                        source: tabWidget.current == index? "../../img/icons/tab-active.png" : ""
+                        source: tabWidget.current == index? "../../img/icons/tab-current.png" : ""
                     }
                     Text {
                         horizontalAlignment: "AlignHCenter"; verticalAlignment: "AlignVCenter"
@@ -74,10 +85,31 @@ Item {
                         elide: Text.ElideRight
                         font.bold: tabWidget.current == index
                     }
+//                    MouseArea {
+//                        anchors.fill: parent
+//                        onClicked: tabWidget.current = index  //存储当前选中tab页
+//                    }
                     MouseArea {
                         anchors.fill: parent
+                        hoverEnabled: true
+                        onEntered: {
+                            btnImg.source = "../../img/icons/tab-hover.png";
+                        }
+                        onPressed: {
+                            btnImg.source = "../../img/icons/tab-hover.png";
+                        }
+                        //要判断松开是鼠标位置
+                        onReleased: {
+                            btnImg.source = "../../img/icons/tab-hover.png";
+                        }
+                        onExited: {
+                            btnImg.source = "";
+                        }
                         onClicked: tabWidget.current = index  //存储当前选中tab页
                     }
+                }
+                Image {
+                    source: "../../img/icons/tab-split-line.png"
                 }
             }
         }

@@ -31,6 +31,9 @@
 
 #include "locationdialog.h"
 #include "util.h"
+
+extern QPoint widgetPosition;
+
 WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::WizardDialog)
@@ -39,17 +42,31 @@ WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
     pSettings = mSettings;
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     this->setWindowFlags(Qt::FramelessWindowHint);
-    this->setAttribute(Qt::WA_TranslucentBackground);
+//    this->setAttribute(Qt::WA_TranslucentBackground);
+
+    ui->widget->setAutoFillBackground(true);
+    QPalette palette;
+    QPixmap img(":/pixmap/image/titlebg.png");
+    palette.setBrush(QPalette::Window, img);//标题栏背景颜色
+    ui->widget->setPalette(palette);
+    ui->titleLabel->setStyleSheet("color: white");//设置字颜色
+    //http://www.atool.org/colorpicker.php
+    ui->widget_2->setAutoFillBackground(true);
+    palette.setColor(QPalette::Background, QColor(228,242,252));//#e4f2fc
+    ui->widget_2->setPalette(palette);
 
     ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
-    ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
-    ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
-    ui->addBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
-    ui->delBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
+    ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");
+    ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");
+
+    ui->titleLabel->setStyleSheet("color: white");//设置字颜色
+    ui->addBtn->setStyleSheet("color: #00A0E9");//设置字颜色
+    ui->delBtn->setStyleSheet("color: #00A0E9");//设置字颜色
+
+    this->mainwindow_width = 850;
+    this->mainwindow_height = 600;
 
     spinValue = 0;
     newCityName = "";
@@ -68,8 +85,6 @@ WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
     connect(ui->okBtn, SIGNAL(clicked()),this, SLOT(writeWeatherConf()));
     connect(ui->quitBtn, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->spinBox,SIGNAL(valueChanged(int)),this,SLOT(setSpinValue(int)));
-    connect(ui->addBtn,SIGNAL(clicked()),this,SLOT(addLocation()));
-    connect(ui->delBtn,SIGNAL(clicked()),this,SLOT(delLocation()));
 }
 
 WizardDialog::~WizardDialog()
@@ -157,8 +172,12 @@ void WizardDialog::writeWeatherConf() {
 }
 
 void WizardDialog::addLocation() {
+    //LocationDialog width:329; LocationDialog height:195
     LocationDialog *locationDialog = new LocationDialog();
     connect(locationDialog, SIGNAL(sendCityInfo(QString, QString, QString, QString)), this, SLOT(setLocation(QString, QString, QString, QString)));
+    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (329  / 2);
+    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (195  / 2);
+    locationDialog->move(w_x, w_y);
     locationDialog->exec();
 }
 
@@ -269,7 +288,17 @@ bool WizardDialog::eventFilter(QObject *obj, QEvent *event) {
                 return QObject::eventFilter(obj, event);
             }
     }
-    if(obj == ui->spinBox || obj == ui->quitBtn || obj == ui->okBtn || obj == ui->addBtn || obj == ui->delBtn)
+    if(obj==ui->addBtn){
+            if(event->type() == QEvent::MouseButtonRelease){
+                addLocation();
+            }
+        }
+        if(obj==ui->delBtn){
+            if(event->type() == QEvent::MouseButtonRelease){
+                delLocation();
+            }
+        }
+    if(obj == ui->spinBox || obj == ui->quitBtn || obj == ui->okBtn)
     {
         if(event->type() == QEvent::MouseButtonPress)
         {

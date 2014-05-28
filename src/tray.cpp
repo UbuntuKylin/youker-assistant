@@ -262,31 +262,30 @@ void Tray::paintEvent(QPaintEvent *) {
     QLinearGradient linearGradient(66,1,66,31);
     //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
     painter.setPen(Qt::transparent);
-    QString color1;
-    QString color2;
-    QString color3;
-
-    color1=(ratio_sus == 100) ? "#ff2f00" : "transparent";
+    QString color_start;
+    QString color_end;
     if (ratio_sus == 0)
     {
-        color2="transparent";
-        color3="transparent";
+        color_start = "#940302";//950302
+        color_end="transparent";
     }
-    else if(ratio_sus > 80) {
-        color2="#d13625";
-        color3="#d13625";
-        blister.load(":/pixmap/image/blister-small.png");
+    else if (ratio_sus > 0 && ratio_sus < 50) {
+        color_start = "#006f45";//006F45
+        color_end= "#48ca5e";//52D063
     }
-    else {
-        color2="#00b0ff";
-        color3="#006eff";
-        blister.load(":/pixmap/image/blister-small.png");
+    else if (ratio_sus >= 50 && ratio_sus <= 80) {
+        color_start = "#af3a00";//AF3A00
+        color_end="#ed711d";//F07620
+    }
+    else {// if(ratio_sus > 80) {
+        color_start = "#940302";//950302
+        color_end="#dd291c";//DE281C
     }
 
-    linearGradient.setColorAt(0.0,color1);
-    linearGradient.setColorAt( 1.0 - ratio_sus * 0.01,color1);
-    linearGradient.setColorAt((ratio_sus <= 0) ? 0.0 : (1.0 - ratio_sus * 0.01 + 0.01),color2);
-    linearGradient.setColorAt(1.0,color3);
+    linearGradient.setColorAt(0.0, color_start);
+    linearGradient.setColorAt( 1.0 - ratio_sus * 0.01, color_start);
+    linearGradient.setColorAt((ratio_sus <= 0) ? 0.0 : (1.0 - ratio_sus * 0.01 + 0.01), color_end);
+    linearGradient.setColorAt(1.0, color_end);
     painter.setBrush(QBrush(linearGradient));
     painter.drawRoundRect(51,1,30,30,5,5);
 

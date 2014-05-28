@@ -21,7 +21,7 @@ import "../bars" as Bars
 Rectangle {
     id: filemanagerpage
     width: parent.width
-    height: 475
+    height: 476
 
     property string actiontitle: qsTr("File Manager")//文件管理器
     property string actiontext: qsTr("Manage the Nautilus file manager.")//管理Nautilus文件管理器
@@ -114,14 +114,47 @@ Rectangle {
         }
     }
 
-    Column {
-        spacing: 10
-        anchors.top: parent.top
-        anchors.topMargin: 44
-        anchors.left: parent.left
-        anchors.leftMargin: 80
-        Row{
-            spacing: 50
+    Row {
+        spacing: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 20
+        }
+        Common.Button {
+            id: backBtn
+            anchors.verticalCenter: parent.verticalCenter
+//            hoverimage: "button12-gray.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
+            text: qsTr("Back")//返回
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 1) {
+                    pageStack.push(systemmessage);
+                }
+                else if (num == 2) {
+                    pageStack.push(clearrubbish);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
+            }
+        }
+        Column {
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
             Text {
                  text: filemanagerpage.actiontitle
                  font.bold: true
@@ -129,54 +162,42 @@ Rectangle {
                  color: "#383838"
              }
             Text {
-                id: showText
-                text: ""
-                font.pixelSize: 14
-                color: "#318d11"
+                text: filemanagerpage.actiontext
+                font.pixelSize: 12
+                color: "#7a7a7a"
             }
-        }
-        Text {
-            text: filemanagerpage.actiontext
-            font.pixelSize: 12
-            color: "#7a7a7a"
         }
     }
 
-    Row {
-        id: titlebar
-        anchors{
+    //分割条
+    Common.Separator {
+        id: top_splitbar
+        y: 60
+        anchors {
             left: parent.left
-            leftMargin: 40
-            top: parent.top
-            topMargin: 120
+            leftMargin: 2
         }
-        Text{
-            id: showtitle
-            text: qsTr("File manage and control")//文件管理控制
-            font.bold: true
-            font.pixelSize: 12
-            color: "#383838"
-        }
-        //横线
-        Common.Separator {
-            anchors.verticalCenter: parent.verticalCenter
-            width: filemanagerpage.width - showtitle.width - 40 * 2
-        }
+        width: parent.width - 4
     }
 
     Column {
         anchors{
             left: parent.left
             leftMargin: 60
-            top: titlebar.bottom
-            topMargin: 10
+            top: top_splitbar.bottom
+            topMargin: 50
         }
         spacing: 10
         z: 11
         Row {
-            spacing: 164 - 16 - 20
+            spacing: 100
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -207,11 +228,14 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_filemanager_qt("pathbar");
                     if (sessiondispatcher.get_location_replace_pathbar_qt()) {
@@ -225,9 +249,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 164 - 16 - 20
+            spacing: 100
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -258,11 +287,14 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_filemanager_qt("media");
                     if (sessiondispatcher.get_auto_mount_media_qt()) {
@@ -276,9 +308,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 164 - 16 - 20
+            spacing: 100
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -309,11 +346,14 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_filemanager_qt("folder");
                     if (sessiondispatcher.get_auto_open_folder_qt()) {
@@ -327,9 +367,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 164 - 16 - 20
+            spacing: 100
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -360,11 +405,14 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_filemanager_qt("programs");
                     if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
@@ -378,9 +426,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 164 - 16 - 20
+            spacing: 100
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -416,11 +469,14 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_filemanager_qt("iconsize");
                     iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
@@ -429,9 +485,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 164 - 16 - 20
+            spacing: 100
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -468,11 +529,14 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_filemanager_qt("cachetime");
                     cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
@@ -481,9 +545,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 164 - 16 - 20
+            spacing: 100
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -520,60 +589,19 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_filemanager_qt("maxsize");
                     maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
                 }
             }
         }
-
-
     }//Column
-
-    //顶层工具栏
-    Bars.TopBar {
-        id: topBar
-        width: 28
-        height: 26
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        anchors.left: parent.left
-        anchors.leftMargin: 40
-        opacity: 0.9
-        onButtonClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
-    //底层工具栏
-    Bars.ToolBar {
-        id: toolBar
-        showok: false
-        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        onQuitBtnClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
 }

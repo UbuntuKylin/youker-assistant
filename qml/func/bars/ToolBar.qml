@@ -43,29 +43,36 @@ Item {
          Common.Button {
              id: okBtn
              visible: toolbar.showok
-             hoverimage: "green.png"
-             fontsize: 13
+             picNormal: "../../img/icons/button12-gray.png"
+             picHover: "../../img/icons/button12-gray-hover.png"
+             picPressed: "../../img/icons/button12-gray-hover.png"
+             fontcolor:"#707070"
+             fontsize: 12
+             width: 70; height: 28
              text: qsTr("OK")//确定
-             width: 94;height: 29
              onClicked: toolbar.okBtnClicked()
          }
          Common.Button {
              id: restoreBtn
              visible: toolbar.showrestore
-             hoverimage: "blue.png"
-             fontsize: 13
+             picNormal: "../../img/icons/button12-gray-long.png"
+             picHover: "../../img/icons/button12-gray-long-hover.png"
+             picPressed: "../../img/icons/button12-gray-long-hover.png"
+             fontcolor:"#707070"
+             fontsize: 12
+             width: 100; height: 28
              text: qsTr("Restore")//恢复默认
-             width: 94
-             height: 29
              onClicked: toolbar.restoreBtnClicked()
          }
          Common.Button {
              id: quitBtn
-             hoverimage: "gray.png"
-             fontcolor:"#929292"
-             fontsize: 13
+             picNormal: "../../img/icons/button12-gray.png"
+             picHover: "../../img/icons/button12-gray-hover.png"
+             picPressed: "../../img/icons/button12-gray-hover.png"
+             fontcolor:"#707070"
+             fontsize: 12
+             width: 70; height: 28
              text: qsTr("Back")//返回
-             width: 94; height: 29
              onClicked: toolbar.quitBtnClicked()
          }
      }

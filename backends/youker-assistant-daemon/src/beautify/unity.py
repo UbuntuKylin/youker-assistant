@@ -105,10 +105,175 @@ class Unity:
     def set_default_launcher_have_showdesktopicon(self):
         self.set_launcher_have_showdesktopicon(True)
 
+
+
+    #add by kobe
+    # 透明度
+    def get_launcher_transparency(self):
+        return gsettings.get('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'launcher-opacity', 'double')
+
+    # 'min'    : 0.2, # TODO : Check these min max. Most prolly wrong.
+    # 'max'    : 8.0, # But fine since they are ignored anyway.
+    # 'ticks'  : [(0.666, Gtk.PositionType.BOTTOM, None)]
+    def set_launcher_transparency(self, opacity):
+        return gsettings.set('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'launcher-opacity',
+            'double', opacity)
+
+    # 图标背景
+    def get_all_launcher_icon_colourings(self):
+#        return ['0:0', '1:1', '2:2', '3:3', '4:4']
+        return ['all programs', 'only run app', 'no coloring', 'edge coloring', 'each workspace alternating coloring']
+
+    def get_launcher_icon_colouring(self):
+        return gsettings.get('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'backlight-mode', 'int')
+
+    # 'map'       : {0:0,1:1,2:2,3:3,4:4}  0:所有程序，1:仅打开的应用程序，2:不着色，3:边缘着色，4:每个工作区交替着色
+    def set_launcher_icon_colouring(self, colouring):
+        return gsettings.set('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'backlight-mode',
+            'int', colouring)
+
+    #Dash背景模糊类型
+    def get_dash_blur_experimental(self):
+        return gsettings.get('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'dash-blur-experimental', 'int')
+
+    # 活动模糊smart: 2   静态模糊static:1   非模糊0
+    def set_dash_blur_experimental(self, blur):
+        return gsettings.set('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'dash-blur-experimental',
+            'int', blur)
+
+    #面板菜单透明度
+    def get_panel_transparency(self):
+        return gsettings.get('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'panel-opacity', 'double')
+
+    # 'min'    : 0.2, # TODO : Check these min max. Most prolly wrong.
+    # 'max'    : 8.0, # But fine since they are ignored anyway.
+    # 'ticks'  : [(0.666, Gtk.PositionType.BOTTOM, None)]
+    def set_panel_transparency(self, opacity):
+        return gsettings.set('org.compiz.unityshell',
+            '/org/compiz/profiles/unity/plugins/unityshell/',
+            'panel-opacity',
+            'double', opacity)
+
+    #日期时间格式
+    def get_all_time_format(self):
+        return ['locale-default', '12-hour' , '24-hour', 'custom']
+
+    def get_time_format(self):
+        return gsettings.get('com.canonical.indicator.datetime',
+            None,
+            'time-format',
+            'string')
+
+    def set_time_format(self, format):
+        return gsettings.set('com.canonical.indicator.datetime',
+            None,
+            'time-format',
+            'string', format)
+    # 秒
+    def get_show_seconds(self):
+        return gsettings.get('com.canonical.indicator.datetime',
+            None,
+            'show-seconds',
+            'boolean')
+
+    def set_show_seconds(self, flag):
+        return gsettings.set('com.canonical.indicator.datetime',
+            None,
+            'show-seconds',
+            'boolean', flag)
+
+    #星期
+    def get_show_week(self):
+        return gsettings.get('com.canonical.indicator.datetime',
+            None,
+            'show-day',
+            'boolean')
+
+    def set_show_week(self, flag):
+        return gsettings.set('com.canonical.indicator.datetime',
+            None,
+            'show-day',
+            'boolean', flag)
+
+    #日期
+    def get_show_date(self):
+        return gsettings.get('com.canonical.indicator.datetime',
+            None,
+            'show-date',
+            'boolean')
+
+    def set_show_date(self, flag):
+        return gsettings.set('com.canonical.indicator.datetime',
+            None,
+            'show-date',
+            'boolean', flag)
+
+    # 电源
+    # present:电源总是可见     charge:当机器充电/放电时可见         never:总是不可见
+    def get_all_power_icon_policy(self):
+        return ['present', 'charge', 'never']
+
+    def get_power_icon_policy(self):
+        return gsettings.get('com.canonical.indicator.power',
+            None,
+            'icon-policy',
+            'string')
+
+    def set_power_icon_policy(self, flag):
+        return gsettings.set('com.canonical.indicator.power',
+            None,
+            'icon-policy',
+            'string', flag)
+
+    #电源时间
+    def get_show_power_time(self):
+        return gsettings.get('com.canonical.indicator.power',
+            None,
+            'show-time',
+            'boolean')
+
+    def set_show_power_time(self, flag):
+        return gsettings.set('com.canonical.indicator.power',
+            None,
+            'show-time',
+            'boolean', flag)
+
+    #电源百分比
+    def get_show_power_percentage(self):
+        return gsettings.get('com.canonical.indicator.power',
+            None,
+            'show-percentage',
+            'boolean')
+
+    def set_show_power_percentage(self, flag):
+        return gsettings.set('com.canonical.indicator.power',
+            None,
+            'show-percentage',
+            'boolean', flag)
+
+
+
 if __name__ == '__main__':
     uuu = Unity()
-    bb = uuu.get_default_schema_value("unityshell", "icon_size")
-    aa = uuu.get_default_schema_value("unityshell", "launcher_hide_mode")
+#    print uuu.get_launcher_icon_colouring()
+#    print uuu.set_launcher_icon_colouring(1)
+    print uuu.get_time_format()
+#    bb = uuu.get_default_schema_value("unityshell", "icon_size")
+#    aa = uuu.get_default_schema_value("unityshell", "launcher_hide_mode")
     #aa = uuu.get_default_schema_value('org.gnome.desktop.media-handling', 'automount')
     #uuu = Unity("unityshell", "icon_size")
     #aa = uuu.get_launcher_icon_size_test()
@@ -117,8 +282,8 @@ if __name__ == '__main__':
     #print "aa->"
     #print aa
     #uuu.set_default_schema_value('icon-size', 'int', bb)
-    cc = uuu.get_default_launcher_have_showdesktopicon()
-    print cc
+#    cc = uuu.get_default_launcher_have_showdesktopicon()
+#    print cc
 
     #uuu.set_default_schema_value('launcher-hide-mode', 'int', aa)
 

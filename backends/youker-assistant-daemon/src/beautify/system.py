@@ -191,7 +191,7 @@ class System():
     def set_titlebar_wheel(self, value):
         return gsettings.set('org.compiz.gwd',
             None,
-            'mouse-wheel-action'
+            'mouse-wheel-action',
             'string', value)
 
     #-------------------------标题栏双击动作-------------------------
@@ -246,7 +246,9 @@ class System():
             'string', value)
 
 if __name__ == '__main__':
-    sss = System(None)
+    gsettings.set('org.compiz.gwd',None,'mouse-wheel-action', 'string', 'shade')
+#    sss = System(None)
+#    print sss.set_titlebar_wheel('shade')
 
     #aa = sss.get_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'touchpad-enabled')
     #print aa#True
@@ -257,8 +259,8 @@ if __name__ == '__main__':
     #cc = sss.get_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'scroll-method')
     #print cc#two-finger-scrolling
     #sss.set_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'scroll-method', 'string')
-    dd = sss.get_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'horiz-scroll-enabled')
-    print dd#True
+#    dd = sss.get_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'horiz-scroll-enabled')
+#    print dd#True
     #sss.set_default_schema_value('org.gnome.settings-daemon.peripherals.touchpad', 'horiz-scroll-enabled', 'boolean')
 
     #print sss.get_scrollbars_mode()

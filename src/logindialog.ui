@@ -50,8 +50,8 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <widget class="QLabel" name="btn_close">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>6</y>
+     <x>6</x>
+     <y>7</y>
      <width>26</width>
      <height>20</height>
     </rect>
@@ -101,8 +101,8 @@ font: 11pt &quot;文泉驿微米黑&quot;;</string>
   <widget class="QLabel" name="btn_min">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>6</y>
+     <x>30</x>
+     <y>7</y>
      <width>26</width>
      <height>20</height>
     </rect>

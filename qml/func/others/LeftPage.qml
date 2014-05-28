@@ -19,7 +19,7 @@ import "../common" as Common
 
 Rectangle {
     id: leftbar
-    width: 600; height: 435
+    width: 600; height: 436
     property int num: 3//子checkbox的个数
     property int check_num: num
     property string flag: "onekeyscan" //onekeyscan:scan      onekey:clean
@@ -148,7 +148,7 @@ Rectangle {
                 leftbar.trace = "";
 
                 showText.text = "";
-                toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//一键清理完毕！
+                toolkits.alertMSG(qsTr("Cleared!"));//一键清理完毕！
                 leftbar.flag = "onekeyscan";
                 firstonekey.showImage = leftbar.path + "quickscan.png";
 //                firstonekey.text = qsTr("Quick scan");//一键扫描
@@ -299,7 +299,7 @@ Rectangle {
                 height: 45
                 onClicked: {
                     if(!(garbageCheck.checked || historyCheck.checked || cookiesCheck.checked)) {//没有有一个子项勾选了
-                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中清理项，请确认！", mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog("友情提示：","对不起，您没有选中清理项，请确认！");
                     }
                     else {
                         if (leftbar.flag == "onekeyscan") {//一键扫描

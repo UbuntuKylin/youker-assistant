@@ -18,7 +18,7 @@ import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
 Item {
-    id: screen; width: parent.width; height: 475
+    id: screen; width: parent.width; height: 476
     Rectangle {
         id: setting_widget
         anchors.fill: parent
@@ -186,6 +186,11 @@ Item {
                                 visible: false
                             }
                             Text {
+                                id: b9
+                                text: qsTr("Dash & Panel")//搜索和面板
+                                visible: false
+                            }
+                            Text {
                                 id: b7
                                 text: qsTr("Window")//窗口
                                 visible: false
@@ -197,6 +202,12 @@ Item {
                                 wordname: qsTr("Custom Launcher"); width: b6.width//自定义启动器
                                 onClicked: {
                                     pageStack.push(launcherthemepage);
+                                }
+                            }
+                            Common.StyleButton {
+                                wordname: qsTr("Dash & Panel"); width: b9.width//搜索和面板
+                                onClicked: {
+                                    pageStack.push(panelmanagerpage);
                                 }
                             }
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
@@ -296,7 +307,7 @@ Item {
                                 wordname: qsTr("Dead pixel test"); width: b11.width//坏点检测
 //                                flag: "CheckScreen"
                                 onClicked: {
-                                    sessiondispatcher.showCheckscreenDialog(mainwindow.pos.x, mainwindow.pos.y);
+                                    sessiondispatcher.showCheckscreenDialog();
                                 }
                             }
                         }

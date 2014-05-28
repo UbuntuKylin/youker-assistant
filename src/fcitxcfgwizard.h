@@ -132,8 +132,8 @@ public:
 
     Q_INVOKABLE QString show_font_dialog();
 
-    Q_INVOKABLE void send_fcitx_ok_warn(int window_x, int window_y);
-    void create_fcitx_ok_warn(int window_x, int window_y);
+    Q_INVOKABLE void send_fcitx_ok_warn();
+    void create_fcitx_ok_warn();
 
     //
 

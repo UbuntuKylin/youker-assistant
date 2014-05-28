@@ -14,39 +14,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <QApplication>
+#include <QTextCodec>
+#include <QDebug>
+#include <QtSingleApplication>
+#include <QSettings>
+#include <QDir>
+#include <QTranslator>
+
 #include "fcitxcfgwizard.h"
 #include "toolkits.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
-#include "youker-application.h"
-#include <QDeclarativeEngine>
-#include <QDeclarativeView>
-#include <QtDeclarative>
+#include "processmanager.h"
+#include "devicemanager.h"
+#include "slidershow.h"
+#include "homepage.h"
 #include "qmlaudio.h"
-#include <QTextCodec>
-#include <QProcess>
-#include <QDebug>
-#include <sys/types.h>
 #include "qrangemodel.h"
 #include "qstyleitem.h"
 #include "qwheelarea.h"
 #include "qtmenu.h"
 #include "qcursorarea.h"
-#include <QDeclarativeExtensionPlugin>
-#include <QtScript/QScriptValue>
-#include <QtCore/QTimer>
-#include <QFileSystemModel>
-#include <qdeclarative.h>
-#include <qdeclarativeextensionplugin.h>
-#include <qdeclarativeengine.h>
-#include <qdeclarativeitem.h>
-#include <qdeclarativeimageprovider.h>
-#include <qdeclarativeview.h>
-#include <QtSingleApplication>
-#include "processmanager.h"
-#include "devicemanager.h"
-#include "slidershow.h"
-#include <QTranslator>
+
 
 void registerTypes() {
     qmlRegisterType<Toolkits>("ToolkitsType", 0, 1, "Toolkits");
@@ -100,6 +89,7 @@ int main(int argc, char** argv)
     bool flag = false;
     QSettings * mSettings;
     QString filePath =  "/var/lib/youker-assistant-daemon/youker-assistant-start.ini";
+
     mSettings = new QSettings(filePath, QSettings::IniFormat);
     mSettings->setIniCodec("UTF-8");
     mSettings->beginGroup("firststart");
@@ -126,12 +116,12 @@ int main(int argc, char** argv)
     app.processEvents();
 
     //同时创建主视图对象
-    IhuApplication application;
+    HomePage homePage;
     splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
-    application.setup(/*"main.qml"*/);
+    homePage.setup(/*"main.qml"*/);
     if(flag) {
-        splash->finish(&application);
+        splash->finish(&homePage);
         delete splash;
         slider = new SliderShow();
         mSettings->beginGroup("firststart");
@@ -139,38 +129,15 @@ int main(int argc, char** argv)
         mSettings->endGroup();
         mSettings->sync();
         if(slider->exec() == QDialog::Accepted) {
-             application.showQMLWidget();
+             homePage.show();
         }
     }
     else {
-        splash->finish(&application);
+        splash->finish(&homePage);
         //显示主界面，并结束启动画面
-        application.showQMLWidget();
+        homePage.show();
         delete splash;
     }
-
-//    //启动画面
-//    QSplashScreen *splash = new QSplashScreen;
-//    splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
-//    splash->setDisabled(true);
-//    QBitmap objBitmap(313, 209);
-//    QPainter painter(&objBitmap);
-//    painter.fillRect(splash->rect(),Qt::white);
-//    painter.setBrush(QColor(0,0,0));
-//    painter.drawRoundedRect(splash->rect(), 10,10);
-//    splash->setMask(objBitmap);
-//    splash->show();
-//    splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
-//    app.processEvents();
-//    //同时创建主视图对象
-//    IhuApplication application;
-//    splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
-//    //数据处理
-//    application.setup(/*"main.qml"*/);
-//    //显示主界面，并结束启动画面
-//    application.showQMLWidget();
-//    splash->finish(&application);
-//    delete splash;
     return app.exec();
 }
 
