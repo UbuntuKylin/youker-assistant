@@ -20,7 +20,7 @@ import "../common" as Common
 Rectangle {
     id: root
     width: parent.width
-    height: 475
+    height: 476
     SystemPalette {id: syspal}
     property string processId//记录鼠标所在那行的进程号，以便自动刷新时重新定位到原来那行
     property bool flag: true//判断选中当前用户还是全部用户，当前用户为true，全部用户为false
@@ -157,7 +157,7 @@ Rectangle {
                 else if(root.flag == false) {
                     root.updateAllProcessList();
                 }
-                toolkits.alertMSG(qsTr("Refresh completed!"), mainwindow.pos.x, mainwindow.pos.y);//刷新完成！
+                toolkits.alertMSG(qsTr("Refresh completed!"));//刷新完成！
             }
         }
         Common.StyleButton {
@@ -175,7 +175,7 @@ Rectangle {
 //                    console.log(processmanager.getCasualUser());
                     if(currentUser == processmanager.getCasualUser()) {//普通用户杀进程
                         if(processmanager.killProcess(currentId)) {
-                            toolkits.alertMSG(qsTr("The end of the process operation is successful!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作成功！
+                            toolkits.alertMSG(qsTr("The end of the process operation is successful!"));//结束进程操作成功！
                             if(root.flag == true) {
                                 root.updateProcessList();
                             }
@@ -184,7 +184,7 @@ Rectangle {
                             }
                         }
                         else {
-                            toolkits.alertMSG(qsTr("The end of the process operation failed!"), mainwindow.pos.x, mainwindow.pos.y);//结束进程操作失败！
+                            toolkits.alertMSG(qsTr("The end of the process operation failed!"));//结束进程操作失败！
                         }
                     }
                     else {//root用户杀进程
@@ -198,7 +198,7 @@ Rectangle {
                     }
                 }
                 else {
-                    toolkits.alertMSG(qsTr("Sorry,  You did not choose the process to be killed!"), mainwindow.pos.x, mainwindow.pos.y);//对不起，您没有选择想要结束的进程！
+                    toolkits.alertMSG(qsTr("Sorry,  You did not choose the process to be killed!"));//对不起，您没有选择想要结束的进程！
                 }
             }
         }

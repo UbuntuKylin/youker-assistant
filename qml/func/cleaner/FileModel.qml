@@ -17,9 +17,9 @@
 import QtQuick 1.1
 import "../common" as Common
 Item {
-    id:root
-    width: parent.width
-    height: 435
+    id:filepage
+    width: parent.width; height: 437
+
     property string title: qsTr("Quickly find large files")//快速找出大文件
     property string description: qsTr("Range:1M-20480M; 1GB = 1024MB")//大小范围为1M-20480M；1GB = 1024MB
 //    property string scope_desc: qsTr("Tips: No support the path contains Chinese.")//提示：暂不支持中文路径。
@@ -45,19 +45,19 @@ Item {
         onTellQMLLargeFileList: {
             var largestfile_data = filelist;
             if (largestfile_data.length === 0) {
-                root.null_flag = true;
-                root.deleget_arrow =0;
+                filepage.null_flag = true;
+                filepage.deleget_arrow =0;
                 if(statusImage.visible == true)
                     statusImage.visible = false;
-                root.resultFlag = false;//扫描内容不存在
+                filepage.resultFlag = false;//扫描内容不存在
             }
             else
             {
-                root.null_flag = false;
-                root.deleget_arrow =1;
+                filepage.null_flag = false;
+                filepage.deleget_arrow =1;
                 statusImage.visible = true;
             }
-            root.sub_num = largestfile_data.length;
+            filepage.sub_num = largestfile_data.length;
     //        systemdispatcher.clear_largestfile_args();
             subModel.clear();
             var num = 0;
@@ -71,16 +71,16 @@ Item {
     //                systemdispatcher.set_largestfile_args(splitlist[1]);
                 }
             }
-            root.sub_num -= num;
-            root.lar_num = root.sub_num;
-            root.check_num = root.sub_num;
+            filepage.sub_num -= num;
+            filepage.lar_num = filepage.sub_num;
+            filepage.check_num = filepage.sub_num;
             if(check_num != 0) {
                 check_flag = true;
             }
             mainModel.clear();
             //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
-            mainModel.append({"mstatus": root.check_flag ? "true": "false",
-                              "itemTitle": qsTr("Cleanup path is:")  + root.directory,
+            mainModel.append({"mstatus": filepage.check_flag ? "true": "false",
+                              "itemTitle": qsTr("Cleanup path is:")  + filepage.directory,
                              "picture": "../../img/toolWidget/deb-min.png",
                              "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
         }
@@ -88,30 +88,30 @@ Item {
 
     //获取数据
     function refresh_page() {
-        root.sub_num=0;
-        root.check_num=0
-        sessiondispatcher.scan_of_large_qt(root.directory, root.size);
+        filepage.sub_num=0;
+        filepage.check_num=0
+        sessiondispatcher.scan_of_large_qt(filepage.directory, filepage.size);
     }
 
     //获取数据
 //    function refresh_page() {
-//        root.sub_num=0;
-//        root.check_num=0
-//        var largestfile_data = sessiondispatcher.scan_of_large_qt(root.size, root.directory);
+//        filepage.sub_num=0;
+//        filepage.check_num=0
+//        var largestfile_data = sessiondispatcher.scan_of_large_qt(filepage.size, filepage.directory);
 //        if (largestfile_data.length === 0) {
-//            root.null_flag = true;
-//            root.deleget_arrow =0;
+//            filepage.null_flag = true;
+//            filepage.deleget_arrow =0;
 //            if(statusImage.visible == true)
 //                statusImage.visible = false;
-//            root.resultFlag = false;//扫描内容不存在
+//            filepage.resultFlag = false;//扫描内容不存在
 //        }
 //        else
 //        {
-//            root.null_flag = false;
-//            root.deleget_arrow =1;
+//            filepage.null_flag = false;
+//            filepage.deleget_arrow =1;
 //            statusImage.visible = true;
 //        }
-//        root.sub_num = largestfile_data.length;
+//        filepage.sub_num = largestfile_data.length;
 ////        systemdispatcher.clear_largestfile_args();
 //        subModel.clear();
 //        var num = 0;
@@ -125,7 +125,7 @@ Item {
 ////                systemdispatcher.set_largestfile_args(splitlist[1]);
 
 
-////                if(root.yesOrno == "true") {
+////                if(filepage.yesOrno == "true") {
 ////                    console.log("is yes...........");
 ////                    systemdispatcher.set_largestfile_args(splitlist[1]);
 ////                }
@@ -134,16 +134,16 @@ Item {
 ////                }
 //            }
 //        }
-//        root.sub_num -= num;
-//        root.lar_num = root.sub_num;
-//        root.check_num = root.sub_num;
+//        filepage.sub_num -= num;
+//        filepage.lar_num = filepage.sub_num;
+//        filepage.check_num = filepage.sub_num;
 //        if(check_num != 0) {
 //            check_flag = true;
 //        }
 //        mainModel.clear();
 //        //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
-//        mainModel.append({"mstatus": root.check_flag ? "true": "false",
-//                          "itemTitle": qsTr("Cleanup path is:")  + root.directory,
+//        mainModel.append({"mstatus": filepage.check_flag ? "true": "false",
+//                          "itemTitle": qsTr("Cleanup path is:")  + filepage.directory,
 //                         "picture": "../../img/toolWidget/deb-min.png",
 //                         "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
 //    }
@@ -154,16 +154,16 @@ Item {
         target: systemdispatcher
         onFinishCleanWorkError: {
             if (msg == "largestfile") {
-                root.state = "LargestFileWorkError";
+                filepage.state = "LargestFileWorkError";
             }
          }
         onFinishCleanWork: {
             if (msg == "") {
-                root.state = "LargestFileWorkAgain";
+                filepage.state = "LargestFileWorkAgain";
             }
             else if (msg == "largestfile") {
-                root.state = "LargestFileWorkFinish";
-                toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                filepage.state = "LargestFileWorkFinish";
+                toolkits.alertMSG(qsTr("Cleared!"));//清理完毕！
                 refresh_page();
             }
         }
@@ -191,18 +191,18 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 10
             Text {
-                text: root.title
+                text: filepage.title
                 font.bold: true
                 font.pixelSize: 14
                 color: "#383838"
             }
             Text {
-                text: root.description
+                text: filepage.description
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
 //            Text {
-//                text: root.scope_desc
+//                text: filepage.scope_desc
 //                font.pixelSize: 12
 //                color: "#7a7a7a"
 //            }
@@ -244,54 +244,57 @@ Item {
         Common.Button {
             id: selectBtn
             anchors.verticalCenter: parent.verticalCenter
-            hoverimage: "skyblue.png"
             text: qsTr("Browse...")//浏览...
-            fontcolor: "#086794"
-            width: 94
-            height: 29
-            fontsize: 13
+            picNormal: "../../img/icons/button12-lightblue.png"
+            picHover: "../../img/icons/button12-lightblue-hover.png"
+            picPressed: "../../img/icons/button12-lightblue-hover.png"
+            fontcolor:"#ffffff"
+            fontsize: 12
+            width: 100; height: 28
             onClicked: {
-                root.size = size_text.text;
-                root.directory = sessiondispatcher.show_folder_dialog();
-                if (root.directory != "") {
-                    root.refresh_page();
-                    root.state = "LargestFileWorkAgain";
+                filepage.size = size_text.text;
+                filepage.directory = sessiondispatcher.show_folder_dialog();
+                if (filepage.directory != "") {
+                    filepage.refresh_page();
+                    filepage.state = "LargestFileWorkAgain";
                 }
             }
         }
 
         Common.Button {
             id: bitButton
-            width: 94
-            height: 29
-            fontsize: 13
-            hoverimage: "green.png"
+            picNormal: "../../img/icons/button16.png"
+            picHover: "../../img/icons/button16-hover.png"
+            picPressed: "../../img/icons/button16-hover.png"
+            fontcolor:"#ffffff"
+            fontsize: 16
+            width: 120; height: 36
             text: qsTr("Begin cleanup")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-//                if(root.check_flag) {
-                if(root.lar_num > 0) {
+//                if(filepage.check_flag) {
+                if(filepage.lar_num > 0) {
                     if(size_text.text == "" || size_text.text == 0)
                         //友情提示：        对不起，您没有设置扫描文件的大小或者设置值为 0，请重新输入文件大小！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You haven't set the file size or the value is 0, please input the file sizes !"), mainwindow.pos.x, mainwindow.pos.y);
-                    else if (root.directory == "")
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You haven't set the file size or the value is 0, please input the file sizes !"));
+                    else if (filepage.directory == "")
                     {
-//                        if(root.sub_num != 0 && root.null_flag == false) {
+//                        if(filepage.sub_num != 0 && filepage.null_flag == false) {
 //                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
 //                        }
 //                        else {
                         //友情提示：        对不起，您没有选择扫描路径，请点击＂浏览＂按钮选择！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the scan path, please click the 'Browse' button to continue!"), mainwindow.pos.x, mainwindow.pos.y);
-                        root.deleget_arrow =0;
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the scan path, please click the 'Browse' button to continue!"));
+                        filepage.deleget_arrow =0;
 //                        }
                     }
                     else {
-                        if(root.null_flag == true) {
-                           root.state = "LargestFileWorkEmpty";
+                        if(filepage.null_flag == true) {
+                           filepage.state = "LargestFileWorkEmpty";
                             //友情提示：         扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scan results are empty, no need to clean up !"));
                         }
-                        else if(root.null_flag == false) {
+                        else if(filepage.null_flag == false) {
                             //test 0410
                             var filelist = new Array();
                             for(var i=0; i<subModel.count; i++) {
@@ -307,7 +310,7 @@ Item {
                 }
                 else {
                     //友情提示：         对不起，您没有选择需要清理的项，请确认！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y)
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"))
                 }
             }
         }
@@ -331,24 +334,24 @@ Item {
         anchors.topMargin: 30
         anchors.left:parent.left
 //        anchors.leftMargin: 27
-        height: root.height -titlebar.height - 37
+        height: filepage.height -titlebar.height - 37
         width: parent.width -2
 //        width: parent.width - 27 -2
         Item {
             width: parent.width
-            height: (root.sub_num + 1) * 30 + 30
+            height: (filepage.sub_num + 1) * 30 + 30
             //垃圾清理显示内容
             ListView {
                 id: listView
                 height: parent.height
                 model: mainModel
                 delegate: FileDelegate{
-                    sub_num: root.lar_num
+                    sub_num: filepage.lar_num
                     sub_model:subModel
-                    btn_flag: root.btnFlag
-                    arrow_display: root.deleget_arrow
+                    btn_flag: filepage.btnFlag
+                    arrow_display: filepage.deleget_arrow
                     delegate_flag: false
-//                    main_check_value: root.yesOrno
+//                    main_check_value: filepage.yesOrno
 
 
                     //test 0410
@@ -377,10 +380,10 @@ Item {
 
 
                     onSubpressed: {
-                        root.sub_num = hMark;
+                        filepage.sub_num = hMark;
                     }
                     onCheckchanged: {
-                        root.check_flag = checkchange;
+                        filepage.check_flag = checkchange;
                     }
                 }
                 cacheBuffer: 1000

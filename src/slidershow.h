@@ -33,6 +33,7 @@ class SliderShow : public QDialog
 public:
     explicit SliderShow(QWidget *parent = 0);
     ~SliderShow();
+    QString get_locale_version();
 //    void showSlider();
 
 
@@ -72,7 +73,7 @@ private:
     QTimer *timer;
     QPoint dragPos;
     bool mouse_move;
-
+    QString locale_Lan;
 };
 
 #endif //SLIDERSHOW_H

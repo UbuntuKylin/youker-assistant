@@ -60,6 +60,9 @@ private:
     QString newCityName;
     QString newCityId;
     QSettings *pSettings;
+    //主界面的宽和高
+    int mainwindow_width;
+    int mainwindow_height;
 };
 
 #endif // WIZARDDIALOG_H

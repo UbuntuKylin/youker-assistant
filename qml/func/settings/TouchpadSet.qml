@@ -21,7 +21,7 @@ import "../bars" as Bars
 Rectangle {
     id: touchpadsetpage
     width: parent.width
-    height: 475
+    height: 476
 
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
@@ -92,132 +92,72 @@ Rectangle {
         }
     }
 
-    Column {
-        spacing: 10
-        anchors.top: parent.top
-        anchors.topMargin: 44
-        anchors.left: parent.left
-        anchors.leftMargin: 80
-        Text {
-            text: touchpadsetpage.actiontitle
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
-        }
-        Text {
-            width: touchpadsetpage.width - 80 - 20
-            text: touchpadsetpage.actiontext
-            wrapMode: Text.WordWrap
-            font.pixelSize: 12
-            color: "#7a7a7a"
-        }
-    }
-
     Row {
-        id: settitle
-        anchors{
-            left: parent.left
-            leftMargin: 40
+        spacing: 20
+        anchors {
             top: parent.top
-            topMargin: 120
-
-        }
-        spacing: 5
-        Text{
-            id: switchtitle
-            text: qsTr("Switch settings")//开关设置
-            font.bold: true
-            font.pixelSize: 12
-            color: "#383838"
-        }
-        //横线
-        Common.Separator {
-            anchors.verticalCenter: parent.verticalCenter
-            width: touchpadsetpage.width - switchtitle.width - 40 * 2
-        }
-    }
-    Row {
-        id: setcontext
-        spacing: 314 - 16 - 20
-        anchors{
+            topMargin: 10
             left: parent.left
-            leftMargin: 60
-            top: settitle.bottom
-            topMargin: 20
+            leftMargin: 20
         }
-        z: 11
-        Row {
-            spacing: 20
-            Common.TipLabel {
-                anchors.verticalCenter: parent.verticalCenter
-                kflag: "yes"
-                showImage: "../../img/icons/cloud-light.png"
+        Common.Button {
+            id: backBtn
+            anchors.verticalCenter: parent.verticalCenter
+//            hoverimage: "button12-gray.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
+            text: qsTr("Back")//返回
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 1) {
+                    pageStack.push(systemmessage);
+                }
+                else if (num == 2) {
+                    pageStack.push(clearrubbish);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
             }
-            Common.Label {
-                width: 160
-                anchors.verticalCenter: parent.verticalCenter
-                text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板：
+        }
+        Column {
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
+            Text {
+                text: touchpadsetpage.actiontitle
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
+            }
+            Text {
+                width: touchpadsetpage.width - 80 - 20
+                text: touchpadsetpage.actiontext
+                wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
-            Common.Switch {
-                id: touchpadswitcher
-                anchors.verticalCenter: parent.verticalCenter
-                width: 160
-                onSwitched: {
-                    if (touchpadswitcher.switchedOn) {
-                        sessiondispatcher.set_touchpad_enable_qt(true);
-                    }
-                    else if(!touchpadswitcher.switchedOn) {
-                        sessiondispatcher.set_touchpad_enable_qt(false);
-                    }
-                }
-            }
-        }
-
-        Common.Button {
-            hoverimage: "blue.png"
-            text: qsTr("Restore")//恢复默认
-            width: 94
-            height: 29
-            fontsize: 13
-            anchors.verticalCenter: parent.verticalCenter
-            onClicked: {
-                sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
-                if (sessiondispatcher.get_touchpad_enable_qt()) {
-                    touchpadswitcher.switchedOn = true;
-                }
-                else {
-                    touchpadswitcher.switchedOn = false;
-                }
-            }
         }
     }
 
-    Row {
-        id: scrollrow
-        anchors{
+    //分割条
+    Common.Separator {
+        id: top_splitbar
+        y: 60
+        anchors {
             left: parent.left
-            leftMargin: 40
-            top: setcontext.bottom
-            topMargin: 30
-
+            leftMargin: 2
         }
-        spacing: 5
-        Text{
-            id: scrolltitle
-            text: qsTr("Property settings")//属性设置
-            font.bold: true
-            font.pixelSize: 12
-            color: "#383838"
-        }
-        //横线
-        Rectangle{
-            width: touchpadsetpage.width - scrolltitle.width - 40 * 2
-            height:1
-            color:"#b9c5cc"
-            anchors.verticalCenter: parent.verticalCenter
-        }
+        width: parent.width - 4
     }
 
     Column {
@@ -225,15 +165,79 @@ Rectangle {
         anchors{
             left: parent.left
             leftMargin: 60
-            top: scrollrow.bottom
-            topMargin: 30
+            top: top_splitbar.bottom
+            topMargin: 50
         }
         z: 11
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 200
+            z: 11
+            Row {
+                spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "yes"
+                    showImage: "../../img/icons/cloud-light.png"
+                }
+                Common.Label {
+                    width: 160
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                }
+                Common.Switch {
+                    id: touchpadswitcher
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: 160
+                    onSwitched: {
+                        if (touchpadswitcher.switchedOn) {
+                            sessiondispatcher.set_touchpad_enable_qt(true);
+                        }
+                        else if(!touchpadswitcher.switchedOn) {
+                            sessiondispatcher.set_touchpad_enable_qt(false);
+                        }
+                    }
+                }
+            }
+
+            Common.Button {
+    //            hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
+                    if (sessiondispatcher.get_touchpad_enable_qt()) {
+                        touchpadswitcher.switchedOn = true;
+                    }
+                    else {
+                        touchpadswitcher.switchedOn = false;
+                    }
+                }
+            }
+        }
+
+        Row {
+            spacing: 200
             Row {
                 id: horizontalscroll
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -262,11 +266,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
@@ -280,11 +287,17 @@ Rectangle {
             }
         }
 
+
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 200
             Row {
                 id: workmode
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -337,11 +350,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
@@ -357,10 +373,15 @@ Rectangle {
         }
 
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 200
             Row {
                 id: scrollstyle
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -413,11 +434,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
@@ -429,48 +453,6 @@ Rectangle {
                         twofinger.checked = true;
                     }
                 }
-            }
-        }
-    }
-
-    //顶层工具栏
-    Bars.TopBar {
-        id: topBar
-        width: 28
-        height: 26
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        anchors.left: parent.left
-        anchors.leftMargin: 40
-        opacity: 0.9
-        onButtonClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
-    //底层工具栏
-    Bars.ToolBar {
-        id: toolBar
-        showok: false
-        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        onQuitBtnClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
             }
         }
     }

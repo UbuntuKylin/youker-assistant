@@ -20,11 +20,13 @@ import "../bars" as Bars
 Rectangle {
     id: launcherthemepage
     width: parent.width
-    height: 475
+    height: 476
 
     property bool first_slider_value: false //系统初始化时会使value的值为32（最小值），需要过滤掉
     property string actiontitle: qsTr("Launcher settings")//启动器设置
     property string actiontext: qsTr("Setting the Launcher display mode, Icon size.")//设置启动器的显示模式、图标尺寸。
+
+    ListModel { id: backgroundchoices }
 
     //背景
     Image {
@@ -64,66 +66,147 @@ Rectangle {
         else {
             showdesktopswitcher.switchedOn = false;
         }
-    }
 
-    Column {
-        spacing: 10
-        anchors.top: parent.top
-        anchors.topMargin: 44
-        anchors.left: parent.left
-        anchors.leftMargin: 80
-        Text {
-            text: launcherthemepage.actiontitle
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
+//        var colourlist = sessiondispatcher.get_all_launcher_icon_colourings_qt();
+//        var index = sessiondispatcher.get_launcher_icon_colouring_qt();
+//        backgroundchoices.clear();
+//        for(var i=0; i < colourlist.length; i++) {
+//            backgroundchoices.append({"text": colourlist[i]});
+//        }
+//        backgroundcommbo.selectedIndex = index;
+
+
+
+        var index = 0;
+        var colourlist = sessiondispatcher.get_all_launcher_icon_colourings_qt();
+        var cur_index = sessiondispatcher.get_launcher_icon_colouring_qt();
+        var cur_colour;
+        if (cur_index == 0) {
+            cur_colour = "all programs";
         }
-        Text {
-            width: launcherthemepage.width - 80 - 20
-            text: launcherthemepage.actiontext
-            wrapMode: Text.WordWrap
-            font.pixelSize: 12
-            color: "#7a7a7a"
+        else if (cur_index == 1) {
+            cur_colour = "only run app";
+        }
+        else if (cur_index == 2) {
+            cur_colour = "no coloring";
+        }
+        else if (cur_index == 3) {
+            cur_colour = "edge coloring";
+        }
+        else if (cur_index == 4) {
+            cur_colour = "each workspace alternating coloring";
+        }
+        for(var i=0; i < colourlist.length; i++) {
+            if (cur_colour == colourlist[i]) {
+                index = i;
+            }
+        }
+        backgroundchoices.clear();
+        if (index == 0) {
+            for(var j=0; j < colourlist.length; j++) {
+                backgroundchoices.append({"text": colourlist[j]});
+            }
+        }
+        else {
+            colourlist.unshift(cur_colour);
+            for(var k=0; k < colourlist.length; k++) {
+                backgroundchoices.append({"text": colourlist[k]});
+                if (k!=0 && colourlist[k] == cur_colour){
+                    backgroundchoices.remove(k);
+                }
+            }
         }
     }
-
 
     Row {
-        id: settitle
-        anchors{
-            left: parent.left
-            leftMargin: 40
+        spacing: 20
+        anchors {
             top: parent.top
-            topMargin: 120
-
+            topMargin: 10
+            left: parent.left
+            leftMargin: 20
         }
-        spacing: 5
-        Text{
-            id: launchertitle
-            text: qsTr("Launcher settings")//启动器设置
-            font.bold: true
-            font.pixelSize: 12
-            color: "#383838"
-        }
-        Common.Separator {
+        Common.Button {
+            id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-            width: launcherthemepage.width - launchertitle.width - 40 * 2
+//            hoverimage: "button12-gray.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
+            text: qsTr("Back")//返回
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 1) {
+                    pageStack.push(systemmessage);
+                }
+                else if (num == 2) {
+                    pageStack.push(clearrubbish);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
+            }
+        }
+        Column {
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
+            Text {
+                text: launcherthemepage.actiontitle
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
+            }
+            Text {
+                width: launcherthemepage.width - 80 - 20
+                text: launcherthemepage.actiontext
+                wrapMode: Text.WordWrap
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
         }
     }
+
+    //分割条
+    Common.Separator {
+        id: top_splitbar
+        y: 60
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        width: parent.width - 4
+    }
+
+
+
 
     Column {
         spacing: 20
         anchors{
             left: parent.left
             leftMargin: 60
-            top: settitle.bottom
-            topMargin: 10
+            top: top_splitbar.bottom
+            topMargin: 50
         }
         z: 11
         Row {
-            spacing: 294 - 16 - 20
+            spacing: 210
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -158,11 +241,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
 //                    console.log(default_size);
@@ -173,9 +259,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 294 - 16 -20
+            spacing: 210
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -204,11 +295,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
                     if(default_hide) {
@@ -224,9 +318,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 294 - 16 - 20
+            spacing: 210
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "no"
@@ -255,11 +354,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_launcher_have_showdesktopicon_qt();
                     if (sessiondispatcher.get_launcher_have_showdesktopicon_qt()) {
@@ -271,47 +373,89 @@ Rectangle {
                 }
             }
         }
-    }//Column
 
-    //顶层工具栏
-    Bars.TopBar {
-        id: topBar
-        width: 28
-        height: 26
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        anchors.left: parent.left
-        anchors.leftMargin: 40
-        opacity: 0.9
-        onButtonClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
-    //底层工具栏
-    Bars.ToolBar {
-        id: toolBar
-        showok: false
-        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        onQuitBtnClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
+
+        Row {
+            spacing: 210
+            Row {
+                spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "no"
+                    showImage: "../../img/icons/cloud-gray.png"
+                }
+                Common.Label {
+                    width: 170
+                    text: qsTr("Launcher Transparency:")//启动器透明度：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Slider {
+                    id: opacityslider
+                    value: sessiondispatcher.get_launcher_transparency_qt()
+                    onValueChanged: {
+                        sessiondispatcher.set_launcher_transparency_qt(opacityslider.value);
+                    }
+                    width: 170
+                    maximumValue: 8.0
+                    minimumValue: 0.2
+                    stepSize: 0.1
+                    animated: true
+                }
             }
         }
-    }
+
+        Row {
+            spacing: 210
+            Row {
+                spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.TipLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    kflag: "no"
+                    showImage: "../../img/icons/cloud-gray.png"
+                }
+                Text {
+                    width: 170
+                    text: qsTr("Icon Background:")//图标背景：
+                    font.pixelSize: 12
+                    color: "#7a7a7a"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.ComboBox {
+                    id: backgroundcommbo
+                    model: backgroundchoices
+                    width: 170
+                    onSelectedTextChanged: {
+                        if (backgroundcommbo.selectedText == "all programs") {
+                            sessiondispatcher.set_launcher_icon_colouring_qt(0);
+                        }
+                        else if (backgroundcommbo.selectedText == "only run app") {
+                            sessiondispatcher.set_launcher_icon_colouring_qt(1);
+                        }
+                        else if (backgroundcommbo.selectedText == "no coloring") {
+                            sessiondispatcher.set_launcher_icon_colouring_qt(2);
+                        }
+                        else if (backgroundcommbo.selectedText == "edge coloring") {
+                            sessiondispatcher.set_launcher_icon_colouring_qt(3);
+                        }
+                        else if (backgroundcommbo.selectedText == "each workspace alternating coloring") {
+                            sessiondispatcher.set_launcher_icon_colouring_qt(4);
+                        }
+                    }
+                }
+            }
+        }
+
+    }//Column
 }

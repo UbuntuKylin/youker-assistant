@@ -19,7 +19,7 @@ import "../common" as Common
 import "../bars" as Bars
 import "../others" as Others
 Item {
-    id: screen; width: parent.width; height: 475
+    id: screen; width: parent.width; height: 476
     Rectangle {
         id: setting_widget
         anchors.fill: parent

@@ -20,7 +20,7 @@ import "../info" as Info
 import "../others" as Others
 Rectangle {
     id: window
-    width: parent.width; height: 475
+    width: parent.width; height: 476
     //背景
     Image {
         source: "../../img/skin/bg-middle.png"//bg-bottom-tab

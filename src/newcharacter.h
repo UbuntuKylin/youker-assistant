@@ -34,7 +34,6 @@ public:
     ~NewCharacter();
     void showSlider();
 
-
 protected:
     void mousePressEvent(QMouseEvent *);
     void mouseMoveEvent(QMouseEvent *);

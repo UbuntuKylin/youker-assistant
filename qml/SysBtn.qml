@@ -17,6 +17,8 @@
 import QtQuick 1.1
 
 Rectangle {
+    id: sysbtn
+    signal clicked
     width: btnImg.width/4
     height: btnImg.height
     clip: true
@@ -37,5 +39,6 @@ Rectangle {
         //要判断鼠标松开时位置
         onReleased: btnImg.x = 0 - parent.width*2
         onExited: btnImg.x = 0 - parent.width*3
+        onClicked: { sysbtn.clicked() }
     }
 }

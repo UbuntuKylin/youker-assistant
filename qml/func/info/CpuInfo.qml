@@ -21,7 +21,7 @@ import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home
-    width: parent.width; height: 475
+    width: parent.width; height: 476
     color: "transparent"
 
     Component.onCompleted: {

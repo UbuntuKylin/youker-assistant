@@ -21,7 +21,7 @@ import "./InfoGroup.js" as InfoGroup
 
 /*------------------最多支持四个内存条的显示------------------*/
 Rectangle {
-    id: home; width: parent.width; height: 475
+    id: home; width: parent.width; height: 476
     color: "transparent"
     property bool firstFlag: false
     property bool secondFlag: false

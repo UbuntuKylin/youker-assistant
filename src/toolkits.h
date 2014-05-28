@@ -27,7 +27,7 @@ class Toolkits : public QObject
 public:
     explicit Toolkits(QObject *parent = 0);
     //启动alert提示
-    Q_INVOKABLE void alertMSG(const QString &alertText, int parent_x, int parent_y);
+    Q_INVOKABLE void alertMSG(const QString &alertText);
 private:
     int mainwindow_width;
     int mainwindow_height;

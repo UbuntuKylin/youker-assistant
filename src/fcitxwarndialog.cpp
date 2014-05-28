@@ -26,7 +26,18 @@ FcitxWarnDialog::FcitxWarnDialog(QWidget *parent) :
     ui->setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     this->setWindowFlags(Qt::FramelessWindowHint);
-    this->setAttribute(Qt::WA_TranslucentBackground);
+//    this->setAttribute(Qt::WA_TranslucentBackground);
+
+    ui->widget->setAutoFillBackground(true);
+    QPalette palette;
+    QPixmap img(":/pixmap/image/titlebg.png");
+    palette.setBrush(QPalette::Window, img);//标题栏背景颜色
+    ui->widget->setPalette(palette);
+    //http://www.atool.org/colorpicker.php
+    ui->widget_2->setAutoFillBackground(true);
+    palette.setColor(QPalette::Background, QColor(228,242,252));//#e4f2fc
+    ui->widget_2->setPalette(palette);
+
     ui->btn_close->installEventFilter(this);
     ui->btn_min->installEventFilter(this);
     ui->okButton->installEventFilter(this);
@@ -34,10 +45,10 @@ FcitxWarnDialog::FcitxWarnDialog(QWidget *parent) :
     ui->btn_close->setStyleSheet("border-image:url(:/pixmap/image/closeBtn.png)");
     ui->btn_min->setStyleSheet("border-image:url(:/pixmap/image/minBtn.png)");
     ui->displaylabel->setText(tr("Are you sure you want to exit the wizard ?"));//您确定退出输入法配置向导？
-    ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/ok.png);}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/ok-hover.png);}");
-    ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/quit.png);}"
-                "QPushButton:hover{border-image:url(:/pixmap/image/quit-hover.png);}");
+    ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");
+    ui->closeButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
+                "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");
 
     QObject::connect(ui->closeButton,SIGNAL(clicked()),this,SLOT(accept()));
 

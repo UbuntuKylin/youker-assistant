@@ -17,9 +17,9 @@ import QtQuick 1.1
 import "../common" as Common
 
 Item {
-    id:root
-    width: parent.width
-    height: 435
+    id:cachepage
+    width: parent.width; height: 437
+
     property string title: qsTr("Deep cleaning up the system cache")//深度清理系统缓存
     property string description: qsTr("Deep cleaning up the system cache, to save disk space")//深度清理系统缓存，节省磁盘空间！
     property string btnFlag: "cache_scan"//扫描或者清理的标记：cache_scan/cache_work
@@ -62,18 +62,18 @@ Item {
         onAppendContentToCacheModel: {
             //QString flag, QString path, QString fileFlag, QString sizeValue
             if(flag == "apt") {//Apt缓存
-                aptsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.aptNum, "checked": true});
-                root.aptNum += 1;
+                aptsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": cachepage.aptNum, "checked": true});
+                cachepage.aptNum += 1;
 //                systemdispatcher.set_cache_args(path);
             }
             else if(flag == "software-center") {//软件中心缓存
-                softsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.softNum, "checked": true});
-                root.softNum += 1;
+                softsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": cachepage.softNum, "checked": true});
+                cachepage.softNum += 1;
 //                systemdispatcher.set_cache_args(path);
             }
             else if(flag == "thumbnails") {//缩略图缓存
-                thumbsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": root.thumbNum, "checked": true});
-                root.thumbNum += 1;
+                thumbsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": cachepage.thumbNum, "checked": true});
+                cachepage.thumbNum += 1;
 //                systemdispatcher.set_cache_args(path);
             }
         }
@@ -87,100 +87,100 @@ Item {
                 //"detailstr": qsTr("Thumbnails Cache Path: ") + sessiondispatcher.getHomePath() + "/.cache/thumbnails"
                 doingImage.visible = false;
                 //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
-                aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
+                aptmainModel.append({"mstatus": cachepage.apt_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup Package Cache"),
                                  "picture": "../../img/toolWidget/apt-min.png"})
                 //软件中心缓存清理       软件中心缓存路径：
-                softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
+                softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup Software Center Cache"),
                                  "picture": "../../img/toolWidget/software-min.png"})
                 //缩略图缓存清理       缩略图缓存路径：
-                thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
+                thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                  "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                  "picture": "../../img/toolWidget/thumbnails.png"})
-                if(root.aptNum != 0) {
-                    root.aptresultFlag = true;//扫描的实际有效内容存在
+                if(cachepage.aptNum != 0) {
+                    cachepage.aptresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 1 || root.mode == 4 || root.mode == 5) {
-                        root.aptEmpty = true;
+                    if(cachepage.mode == 0 || cachepage.mode == 1 || cachepage.mode == 4 || cachepage.mode == 5) {
+                        cachepage.aptEmpty = true;
                     }
-                    root.aptresultFlag = false;//扫描的实际有效内容不存在
+                    cachepage.aptresultFlag = false;//扫描的实际有效内容不存在
                 }
-                if(root.softNum != 0) {
-                    root.softresultFlag = true;//扫描的实际有效内容存在
+                if(cachepage.softNum != 0) {
+                    cachepage.softresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 2  || root.mode == 4 || root.mode == 6) {
-                        root.softEmpty = true;
+                    if(cachepage.mode == 0 || cachepage.mode == 2  || cachepage.mode == 4 || cachepage.mode == 6) {
+                        cachepage.softEmpty = true;
                     }
-                    root.softresultFlag = false;//扫描的实际有效内容不存在
+                    cachepage.softresultFlag = false;//扫描的实际有效内容不存在
                 }
-                if(root.thumbNum != 0) {
-                    root.thumbresultFlag = true;//扫描的实际有效内容存在
+                if(cachepage.thumbNum != 0) {
+                    cachepage.thumbresultFlag = true;//扫描的实际有效内容存在
                 }
                 else {
-                    if(root.mode == 0 || root.mode == 3 || root.mode == 5 || root.mode == 6) {
-                        root.thumbEmpty = true;
+                    if(cachepage.mode == 0 || cachepage.mode == 3 || cachepage.mode == 5 || cachepage.mode == 6) {
+                        cachepage.thumbEmpty = true;
                     }
-                    root.thumbresultFlag = false;//扫描的实际有效内容不存在
+                    cachepage.thumbresultFlag = false;//扫描的实际有效内容不存在
                 }
 
-                if(root.aptresultFlag == false) {
-                    root.apt_showNum = false;
-                    root.apt_expanded = false;//伸缩箭头不扩展
-                    root.apt_arrow_show = 0;//伸缩箭头不显示
+                if(cachepage.aptresultFlag == false) {
+                    cachepage.apt_showNum = false;
+                    cachepage.apt_expanded = false;//伸缩箭头不扩展
+                    cachepage.apt_arrow_show = 0;//伸缩箭头不显示
                 }
-                else if(root.aptresultFlag == true) {
-                    root.apt_showNum = true;
-                    root.apt_expanded = true;//伸缩箭头扩展
-                    root.apt_arrow_show = 1;//伸缩箭头显示
+                else if(cachepage.aptresultFlag == true) {
+                    cachepage.apt_showNum = true;
+                    cachepage.apt_expanded = true;//伸缩箭头扩展
+                    cachepage.apt_arrow_show = 1;//伸缩箭头显示
                 }
-                if(root.softresultFlag == false) {
-                    root.soft_showNum = false;
-                    root.soft_expanded = false;//伸缩箭头不扩展
-                    root.soft_arrow_show = 0;//伸缩箭头不显示
+                if(cachepage.softresultFlag == false) {
+                    cachepage.soft_showNum = false;
+                    cachepage.soft_expanded = false;//伸缩箭头不扩展
+                    cachepage.soft_arrow_show = 0;//伸缩箭头不显示
                 }
-                else if(root.softresultFlag == true) {
-                    root.soft_showNum = true;
-                    root.soft_expanded = true;//伸缩箭头扩展
-                    root.soft_arrow_show = 1;//伸缩箭头显示
+                else if(cachepage.softresultFlag == true) {
+                    cachepage.soft_showNum = true;
+                    cachepage.soft_expanded = true;//伸缩箭头扩展
+                    cachepage.soft_arrow_show = 1;//伸缩箭头显示
                 }
-                if(root.thumbresultFlag == false) {
-                    root.thumb_showNum = false;
-                    root.thumb_expanded = false;//伸缩箭头不扩展
-                    root.thumb_arrow_show = 0;//伸缩箭头不显示
+                if(cachepage.thumbresultFlag == false) {
+                    cachepage.thumb_showNum = false;
+                    cachepage.thumb_expanded = false;//伸缩箭头不扩展
+                    cachepage.thumb_arrow_show = 0;//伸缩箭头不显示
                 }
-                else if(root.thumbresultFlag == true) {
-                    root.thumb_showNum = true;
-                    root.thumb_expanded = true;//伸缩箭头扩展
-                    root.thumb_arrow_show = 1;//伸缩箭头显示
+                else if(cachepage.thumbresultFlag == true) {
+                    cachepage.thumb_showNum = true;
+                    cachepage.thumb_expanded = true;//伸缩箭头扩展
+                    cachepage.thumb_arrow_show = 1;//伸缩箭头显示
                 }
 
-                if(root.aptresultFlag == false && root.softresultFlag == false && root.thumbresultFlag == false) {
-                    root.state = "AptWorkEmpty";
-                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+                if(cachepage.aptresultFlag == false && cachepage.softresultFlag == false && cachepage.thumbresultFlag == false) {
+                    cachepage.state = "AptWorkEmpty";
+                    if(cachepage.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                         //友情提示：      扫描内容为空，无需清理！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"), mainwindow.pos.x, mainwindow.pos.y);
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
                     }
                     else {//清理apt后的重新获取数据，此时不需要显示对话框
-                        root.flag = false;
+                        cachepage.flag = false;
                     }
                 }
                 else {
-                    if(root.flag == false) {//点击扫描时的获取数据，此时显示该对话框
-                        toolkits.alertMSG(qsTr("Scan completed!"), mainwindow.pos.x, mainwindow.pos.y);//扫描完成！
+                    if(cachepage.flag == false) {//点击扫描时的获取数据，此时显示该对话框
+                        toolkits.alertMSG(qsTr("Scan completed!"));//扫描完成！
                     }
                     else {//清理software后的重新获取数据，此时不需要显示对话框
-                        root.flag = false;
+                        cachepage.flag = false;
                     }
-                    root.state = "AptWork";
+                    cachepage.state = "AptWork";
                     actionBtn.text = qsTr("Begin cleanup");//开始清理
-                    root.btnFlag = "cache_work";
+                    cachepage.btnFlag = "cache_work";
                     backBtn.visible = true;
     //                rescanBtn.visible = true;
                 }
-                scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*6;
+                scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.softNum + 1) * cachepage.item_height + (cachepage.thumbNum + 1) * cachepage.item_height + cachepage.spaceValue*6;
                 //扫描完成后恢复按钮的使能
                 actionBtn.enabled = true;
             }
@@ -189,15 +189,15 @@ Item {
 
     Component.onCompleted: {
         //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
-        aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
+        aptmainModel.append({"mstatus": cachepage.apt_maincheck ? "true": "false",
                          "itemTitle": qsTr("Cleanup Package Cache"),
                          "picture": "../../img/toolWidget/apt-min.png"})
         //软件中心缓存清理       软件中心缓存：
-        softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
+        softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                          "itemTitle": qsTr("Cleanup Software Center Cache"),
                          "picture": "../../img/toolWidget/software-min.png"})
         //缩略图缓存清理       缩略图缓存路径：
-        thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
+        thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                          "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                          "picture": "../../img/toolWidget/thumbnails.png"})
     }
@@ -209,162 +209,162 @@ Item {
             if (btnFlag == "cache_work") {
                 if (msg == "cache") {
                     doingImage.visible = false;
-                    root.state = "AptWorkError";
+                    cachepage.state = "AptWorkError";
                     //清理过程中发生错误，解禁按钮
                     actionBtn.enabled = true;
-                    toolkits.alertMSG(qsTr("Cleanup abnormal!"), mainwindow.pos.x, mainwindow.pos.y);//清理出现异常！
+                    toolkits.alertMSG(qsTr("Cleanup abnormal!"));//清理出现异常！
                 }
             }
         }
         onFinishCleanWork: {//清理成功时收到的信号
-            if (root.btnFlag == "cache_work") {
+            if (cachepage.btnFlag == "cache_work") {
                 doingImage.visible = false;
                 if (msg == "") {
                     //清理取消，解禁按钮
                     actionBtn.enabled = true;
-                    toolkits.alertMSG(qsTr("Cleanup interrupted!"), mainwindow.pos.x, mainwindow.pos.y);//清理中断！
+                    toolkits.alertMSG(qsTr("Cleanup interrupted!"));//清理中断！
                 }
                 else if (msg == "cache") {
-                    root.state = "AptWorkFinish";
-                    toolkits.alertMSG(qsTr("Cleared!"), mainwindow.pos.x, mainwindow.pos.y);//清理完毕！
+                    cachepage.state = "AptWorkFinish";
+                    toolkits.alertMSG(qsTr("Cleared!"));//清理完毕！
                     //清理完毕后重新获取数据
-                    root.flag = true;
-                    if(root.apt_maincheck && root.soft_maincheck && root.thumb_maincheck) {
+                    cachepage.flag = true;
+                    if(cachepage.apt_maincheck && cachepage.soft_maincheck && cachepage.thumb_maincheck) {
                         aptmainModel.clear();
                         softmainModel.clear();
                         thumbmainModel.clear();
                         //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
-                        aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
+                        aptmainModel.append({"mstatus": cachepage.apt_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Package cache cleanup"),
                                          "picture": "../../img/toolWidget/apt-min.png"})
                         //软件中心缓存清理       软件中心缓存：
-                        softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
+                        softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Software Center buffer cleaning"),
                                          "picture": "../../img/toolWidget/software-min.png"})
                         //缩略图缓存清理       缩略图缓存路径：
-                        thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
+                        thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                          "picture": "../../img/toolWidget/thumbnails.png"})
 //                        systemdispatcher.clear_cache_args();
                         aptsubModel.clear();//内容清空
                         softsubModel.clear();//内容清空
                         thumbsubModel.clear();//内容清空
-                        root.aptNum = 0;//隐藏滑动条
-                        root.softNum = 0;//隐藏滑动条
-                        root.thumbNum = 0;//隐藏滑动条
-                        root.mode = 0;
+                        cachepage.aptNum = 0;//隐藏滑动条
+                        cachepage.softNum = 0;//隐藏滑动条
+                        cachepage.thumbNum = 0;//隐藏滑动条
+                        cachepage.mode = 0;
                         sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(0), 'cache');
                     }
                     else {
-                        if(root.apt_maincheck && !root.soft_maincheck && !root.thumb_maincheck) {
+                        if(cachepage.apt_maincheck && !cachepage.soft_maincheck && !cachepage.thumb_maincheck) {
                             aptmainModel.clear();
                             //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
-                            aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
+                            aptmainModel.append({"mstatus": cachepage.apt_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Package cache cleanup"),
                                              "picture": "../../img/toolWidget/apt-min.png"})
 //                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
-                            root.aptNum = 0;//隐藏滑动条
-                            root.softNum = 0;//隐藏滑动条
-                            root.thumbNum = 0;//隐藏滑动条
-                            root.mode = 1;
+                            cachepage.aptNum = 0;//隐藏滑动条
+                            cachepage.softNum = 0;//隐藏滑动条
+                            cachepage.thumbNum = 0;//隐藏滑动条
+                            cachepage.mode = 1;
                             sessiondispatcher.cache_scan_function_qt("apt", 'cache');
                         }
-                        else if(!root.apt_maincheck && root.soft_maincheck && !root.thumb_maincheck) {
+                        else if(!cachepage.apt_maincheck && cachepage.soft_maincheck && !cachepage.thumb_maincheck) {
                             softmainModel.clear();
                             //软件中心缓存清理       软件中心缓存：
-                            softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
+                            softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png"})
 //                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
-                            root.aptNum = 0;//隐藏滑动条
-                            root.softNum = 0;//隐藏滑动条
-                            root.thumbNum = 0;//隐藏滑动条
-                            root.mode = 2;
+                            cachepage.aptNum = 0;//隐藏滑动条
+                            cachepage.softNum = 0;//隐藏滑动条
+                            cachepage.thumbNum = 0;//隐藏滑动条
+                            cachepage.mode = 2;
                             sessiondispatcher.cache_scan_function_qt("software-center", 'cache');
                         }
-                        else if(!root.apt_maincheck && !root.soft_maincheck && root.thumb_maincheck) {
+                        else if(!cachepage.apt_maincheck && !cachepage.soft_maincheck && cachepage.thumb_maincheck) {
                             thumbmainModel.clear();
                             //缩略图缓存清理       缩略图缓存路径：
-                            thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
+                            thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
 //                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
-                            root.aptNum = 0;//隐藏滑动条
-                            root.softNum = 0;//隐藏滑动条
-                            root.thumbNum = 0;//隐藏滑动条
-                            root.mode = 3;
+                            cachepage.aptNum = 0;//隐藏滑动条
+                            cachepage.softNum = 0;//隐藏滑动条
+                            cachepage.thumbNum = 0;//隐藏滑动条
+                            cachepage.mode = 3;
                             sessiondispatcher.cache_scan_function_qt("thumbnails", 'cache');
                         }
-                        else if(root.apt_maincheck && root.soft_maincheck && !root.thumb_maincheck) {
+                        else if(cachepage.apt_maincheck && cachepage.soft_maincheck && !cachepage.thumb_maincheck) {
                             aptmainModel.clear();
                             //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
-                            aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
+                            aptmainModel.append({"mstatus": cachepage.apt_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Package cache cleanup"),
                                              "picture": "../../img/toolWidget/apt-min.png"})
                             softmainModel.clear();
                             //软件中心缓存清理       软件中心缓存：
-                            softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
+                            softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png"})
 //                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
-                            root.aptNum = 0;//隐藏滑动条
-                            root.softNum = 0;//隐藏滑动条
-                            root.thumbNum = 0;//隐藏滑动条
-                            root.mode = 4;
+                            cachepage.aptNum = 0;//隐藏滑动条
+                            cachepage.softNum = 0;//隐藏滑动条
+                            cachepage.thumbNum = 0;//隐藏滑动条
+                            cachepage.mode = 4;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(4), 'cache');
                         }
-                        else if(root.apt_maincheck && !root.soft_maincheck && root.thumb_maincheck) {
+                        else if(cachepage.apt_maincheck && !cachepage.soft_maincheck && cachepage.thumb_maincheck) {
                             aptmainModel.clear();
                             //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
-                            aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
+                            aptmainModel.append({"mstatus": cachepage.apt_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Package cache cleanup"),
                                              "picture": "../../img/toolWidget/apt-min.png"})
                             thumbmainModel.clear();
                             //缩略图缓存清理       缩略图缓存路径：
-                            thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
+                            thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
 //                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
-                            root.aptNum = 0;//隐藏滑动条
-                            root.softNum = 0;//隐藏滑动条
-                            root.thumbNum = 0;//隐藏滑动条
-                            root.mode = 5;
+                            cachepage.aptNum = 0;//隐藏滑动条
+                            cachepage.softNum = 0;//隐藏滑动条
+                            cachepage.thumbNum = 0;//隐藏滑动条
+                            cachepage.mode = 5;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(5), 'cache');
                         }
-                        else if(!root.apt_maincheck && root.soft_maincheck && root.thumb_maincheck) {
+                        else if(!cachepage.apt_maincheck && cachepage.soft_maincheck && cachepage.thumb_maincheck) {
                             softmainModel.clear();
                             //软件中心缓存清理       软件中心缓存：
-                            softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
+                            softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png"})
                             thumbmainModel.clear();
                             //缩略图缓存清理       缩略图缓存路径：
-                            thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
+                            thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
 //                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
-                            root.aptNum = 0;//隐藏滑动条
-                            root.softNum = 0;//隐藏滑动条
-                            root.thumbNum = 0;//隐藏滑动条
-                            root.mode = 6;
+                            cachepage.aptNum = 0;//隐藏滑动条
+                            cachepage.softNum = 0;//隐藏滑动条
+                            cachepage.thumbNum = 0;//隐藏滑动条
+                            cachepage.mode = 6;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(6), 'cache');
                         }
                     }
@@ -397,7 +397,7 @@ Item {
             spacing: 10
             Text {
                 width: 500
-                text: root.title
+                text: cachepage.title
                 wrapMode: Text.WordWrap
                 font.bold: true
                 font.pixelSize: 14
@@ -405,7 +405,7 @@ Item {
             }
             Text {
                 width: 500
-                text: root.description
+                text: cachepage.description
                 wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"
@@ -427,132 +427,134 @@ Item {
                 width: 40
                 height: 20
                 onClicked: {
-                    root.aptEmpty = false;
-                    root.softEmpty = false;
-                    root.thumbEmpty = false;
-                    if(root.apt_maincheck == false) {
-                        root.apt_maincheck = true;
+                    cachepage.aptEmpty = false;
+                    cachepage.softEmpty = false;
+                    cachepage.thumbEmpty = false;
+                    if(cachepage.apt_maincheck == false) {
+                        cachepage.apt_maincheck = true;
                     }
-                    if(root.soft_maincheck == false) {
-                        root.soft_maincheck = true;
+                    if(cachepage.soft_maincheck == false) {
+                        cachepage.soft_maincheck = true;
                     }
-                    if(root.thumb_maincheck == false) {
-                        root.thumb_maincheck = true;
+                    if(cachepage.thumb_maincheck == false) {
+                        cachepage.thumb_maincheck = true;
                     }
 //                    systemdispatcher.clear_cache_args();
-                    root.apt_showNum = false;
-                    root.soft_showNum = false;
-                    root.thumb_showNum = false;
+                    cachepage.apt_showNum = false;
+                    cachepage.soft_showNum = false;
+                    cachepage.thumb_showNum = false;
                     aptmainModel.clear();
                     softmainModel.clear();
                     thumbmainModel.clear();
                     //软件包缓存清理           Apt缓存路径：/var/cache/apt/archives
-                    aptmainModel.append({"mstatus": root.apt_maincheck ? "true": "false",
+                    aptmainModel.append({"mstatus": cachepage.apt_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Package cache cleanup"),
                                      "picture": "../../img/toolWidget/apt-min.png"})
                     //软件中心缓存清理       软件中心缓存：
-                    softmainModel.append({"mstatus": root.soft_maincheck ? "true": "false",
+                    softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Software Center buffer cleaning"),
                                      "picture": "../../img/toolWidget/software-min.png"})
                     //缩略图缓存清理       缩略图缓存路径：
-                    thumbmainModel.append({"mstatus": root.thumb_maincheck ? "true": "false",
+                    thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                      "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                      "picture": "../../img/toolWidget/thumbnails.png"})
                     aptsubModel.clear();//内容清空
-                    root.aptNum = 0;//隐藏滑动条
-                    root.apt_arrow_show = 0;//伸缩图标隐藏
+                    cachepage.aptNum = 0;//隐藏滑动条
+                    cachepage.apt_arrow_show = 0;//伸缩图标隐藏
                     softsubModel.clear();//内容清空
-                    root.softNum = 0;//隐藏滑动条
-                    root.soft_arrow_show = 0;//伸缩图标隐藏
+                    cachepage.softNum = 0;//隐藏滑动条
+                    cachepage.soft_arrow_show = 0;//伸缩图标隐藏
                     thumbsubModel.clear();//内容清空
-                    root.thumbNum = 0;//隐藏滑动条
-                    root.thumb_arrow_show = 0;//伸缩图标隐藏
-                    scrollItem.height = 3 * root.item_height + root.spaceValue*6;
-                    root.state = "AptWorkAGAIN";//按钮的状态恢复初始值
+                    cachepage.thumbNum = 0;//隐藏滑动条
+                    cachepage.thumb_arrow_show = 0;//伸缩图标隐藏
+                    scrollItem.height = 3 * cachepage.item_height + cachepage.spaceValue*6;
+                    cachepage.state = "AptWorkAGAIN";//按钮的状态恢复初始值
                 }
             }
         }
         Common.Button {
             id: actionBtn
-            width: 94
-            height: 29
-            hoverimage: "green.png"
+            picNormal: "../../img/icons/button16.png"
+            picHover: "../../img/icons/button16-hover.png"
+            picPressed: "../../img/icons/button16-hover.png"
+            fontcolor:"#ffffff"
+            fontsize: 16
+            width: 120; height: 36
             text: qsTr("Start scanning")//开始扫描
-            fontsize: 13
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 //扫描过程中禁用按钮
                 actionBtn.enabled = false;
-                root.aptEmpty = false;
-                root.softEmpty = false;
-                root.thumbEmpty = false;
+                cachepage.aptEmpty = false;
+                cachepage.softEmpty = false;
+                cachepage.thumbEmpty = false;
 //                console.log("-----------");
-//                console.log(root.apt_maincheck);
-//                console.log(root.soft_maincheck);
+//                console.log(cachepage.apt_maincheck);
+//                console.log(cachepage.soft_maincheck);
 
-                if (root.btnFlag == "cache_scan") {//扫描
-                    root.flag = false;
-                    if(root.apt_maincheck && root.soft_maincheck && root.thumb_maincheck) {
+                if (cachepage.btnFlag == "cache_scan") {//扫描
+                    cachepage.flag = false;
+                    if(cachepage.apt_maincheck && cachepage.soft_maincheck && cachepage.thumb_maincheck) {
                         doingImage.visible = true;
-                        root.mode = 0;
-                        root.aptNum = 0;
-                        root.softNum = 0;
-                        root.thumbNum = 0;
+                        cachepage.mode = 0;
+                        cachepage.aptNum = 0;
+                        cachepage.softNum = 0;
+                        cachepage.thumbNum = 0;
                         sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(0), 'cache');
                     }
                     else {
-                        if(root.apt_maincheck && !root.soft_maincheck && !root.thumb_maincheck) {
+                        if(cachepage.apt_maincheck && !cachepage.soft_maincheck && !cachepage.thumb_maincheck) {
                             doingImage.visible = true;
-                            root.mode = 1;
-                            root.aptNum = 0;
+                            cachepage.mode = 1;
+                            cachepage.aptNum = 0;
                             sessiondispatcher.cache_scan_function_qt("apt", 'cache');
                         }
-                        else if(!root.apt_maincheck && root.soft_maincheck && !root.thumb_maincheck) {
+                        else if(!cachepage.apt_maincheck && cachepage.soft_maincheck && !cachepage.thumb_maincheck) {
                             doingImage.visible = true;
-                            root.mode = 2;
-                            root.softNum = 0;
+                            cachepage.mode = 2;
+                            cachepage.softNum = 0;
                             sessiondispatcher.cache_scan_function_qt("software-center", 'cache');
                         }
-                        else if(!root.apt_maincheck && !root.soft_maincheck && root.thumb_maincheck) {
+                        else if(!cachepage.apt_maincheck && !cachepage.soft_maincheck && cachepage.thumb_maincheck) {
                             doingImage.visible = true;
-                            root.mode = 3;
-                            root.thumbNum = 0;
+                            cachepage.mode = 3;
+                            cachepage.thumbNum = 0;
                             sessiondispatcher.cache_scan_function_qt("thumbnails", 'cache');
                         }
-                        else if(root.apt_maincheck && root.soft_maincheck && !root.thumb_maincheck) {
+                        else if(cachepage.apt_maincheck && cachepage.soft_maincheck && !cachepage.thumb_maincheck) {
                             doingImage.visible = true;
-                            root.mode = 4;
-                            root.aptNum = 0;
-                            root.softNum = 0;
+                            cachepage.mode = 4;
+                            cachepage.aptNum = 0;
+                            cachepage.softNum = 0;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(4), 'cache');
                         }
-                        else if(root.apt_maincheck && !root.soft_maincheck && root.thumb_maincheck) {
+                        else if(cachepage.apt_maincheck && !cachepage.soft_maincheck && cachepage.thumb_maincheck) {
                             doingImage.visible = true;
-                            root.mode = 5;
-                            root.aptNum = 0;
-                            root.thumbNum = 0;
+                            cachepage.mode = 5;
+                            cachepage.aptNum = 0;
+                            cachepage.thumbNum = 0;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(5), 'cache');
                         }
-                        else if(!root.apt_maincheck && root.soft_maincheck && root.thumb_maincheck) {
+                        else if(!cachepage.apt_maincheck && cachepage.soft_maincheck && cachepage.thumb_maincheck) {
                             doingImage.visible = true;
-                            root.mode = 6;
-                            root.softNum = 0;
-                            root.thumbNum = 0;
+                            cachepage.mode = 6;
+                            cachepage.softNum = 0;
+                            cachepage.thumbNum = 0;
                             sessiondispatcher.cache_scan_function_qt(sessiondispatcher.get_cache_arglist(6), 'cache');
                         }
                         else{
                             doingImage.visible = false;
                             actionBtn.enabled = true;
                             //友情提示：        对不起，您没有选择需要扫描的内容，请确认！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be scanned, please confirm!"));
                         }
                     }
                 }
-                else if (root.btnFlag == "cache_work") {//清理
-                    if(root.aptresultFlag || root.softresultFlag || root.thumbresultFlag) {//扫描得到的实际内容存在时
-                        if(!root.apt_maincheck && !root.soft_maincheck && !root.thumb_maincheck) {
+                else if (cachepage.btnFlag == "cache_work") {//清理
+                    if(cachepage.aptresultFlag || cachepage.softresultFlag || cachepage.thumbresultFlag) {//扫描得到的实际内容存在时
+                        if(!cachepage.apt_maincheck && !cachepage.soft_maincheck && !cachepage.thumb_maincheck) {
                             //友情提示：        对不起，您没有选择需要清理的内容，请确认！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"), mainwindow.pos.x, mainwindow.pos.y);
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"));
                         }
                         else {
                             //test 0410
@@ -622,30 +624,30 @@ Item {
         anchors.topMargin: 30
         anchors.left:parent.left
 //        anchors.leftMargin: 27
-        height: root.height - titlebar.height - 47
+        height: cachepage.height - titlebar.height - 47
         width: parent.width -2//parent.width - 27 -2
         Item {
             id: scrollItem
             width: parent.width
-            height: root.item_height*3 + root.spaceValue*3*2
+            height: cachepage.item_height*3 + cachepage.spaceValue*3*2
             Column {
-                spacing: root.spaceValue * 2
+                spacing: cachepage.spaceValue * 2
                 //垃圾清理显示内容
                 ListView {
                     id: aptListView
                     width: parent.width
-                    height: root.apt_expanded ? (root.aptNum + 1) * root.item_height : root.item_height
+                    height: cachepage.apt_expanded ? (cachepage.aptNum + 1) * cachepage.item_height : cachepage.item_height
                     model: aptmainModel
                     delegate: CacheDelegate{
-                        sub_num: root.aptNum//root.aptsubNum//1212
+                        sub_num: cachepage.aptNum//cachepage.aptsubNum//1212
                         sub_model: aptsubModel
-                        btn_flag: root.btnFlag
+                        btn_flag: cachepage.btnFlag
                         arrowFlag: "apt"
-                        showNum: root.apt_showNum
-                        arrow_display: root.apt_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
-                        expanded: root.apt_expanded//apt_expanded为true时，箭头向下，内容展开;apt_expanded为false时，箭头向上，内容收缩
-                        delegate_flag: root.splitFlag
-                        emptyTip: root.aptEmpty
+                        showNum: cachepage.apt_showNum
+                        arrow_display: cachepage.apt_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
+                        expanded: cachepage.apt_expanded//apt_expanded为true时，箭头向下，内容展开;apt_expanded为false时，箭头向上，内容收缩
+                        delegate_flag: cachepage.splitFlag
+                        emptyTip: cachepage.aptEmpty
 
                         //test 0410
                         onTransmitCacheItemMainCheckBoxStatus: {
@@ -678,8 +680,8 @@ Item {
 
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
-//                            root.aptresultFlag = checkchange;
-                            root.apt_maincheck = checkchange;
+//                            cachepage.aptresultFlag = checkchange;
+                            cachepage.apt_maincheck = checkchange;
                         }
                         onTellModelToOpenFolder: {
                             if(category == "apt") {
@@ -689,33 +691,33 @@ Item {
                         onArrowClicked: {
                             if(cacheFlag == "apt") {//1212
                                 if(expand_flag == true) {
-                                    root.apt_expanded = true;
-                                    if((root.soft_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*6;
+                                    cachepage.apt_expanded = true;
+                                    if((cachepage.soft_expanded == true) && (cachepage.thumb_expanded == true)) {
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.softNum + 1) * cachepage.item_height + (cachepage.thumbNum + 1) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.soft_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.soft_expanded == true) && (cachepage.thumb_expanded == false)){
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.softNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.soft_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.soft_expanded == false) && (cachepage.thumb_expanded == true)){
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.thumbNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*6;
+                                        scrollItem.height = (cachepage.aptNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                 }
                                 else {
-                                    root.apt_expanded = false;
-                                    if((root.soft_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.softNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
+                                    cachepage.apt_expanded = false;
+                                    if((cachepage.soft_expanded == true) && (cachepage.thumb_expanded == true)) {
+                                        scrollItem.height = (cachepage.softNum + 1) * cachepage.item_height + (cachepage.thumbNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.soft_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.soft_expanded == true) && (cachepage.thumb_expanded == false)){
+                                        scrollItem.height = (cachepage.softNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.soft_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.soft_expanded == false) && (cachepage.thumb_expanded == true)){
+                                        scrollItem.height = (cachepage.thumbNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = 3 * root.item_height + root.spaceValue*6;
+                                        scrollItem.height = 3 * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                 }
                             }
@@ -735,18 +737,18 @@ Item {
                 ListView {
                     id: softListView
                     width: parent.width
-                    height: root.soft_expanded ? (root.softNum + 1) * root.item_height : root.item_height
+                    height: cachepage.soft_expanded ? (cachepage.softNum + 1) * cachepage.item_height : cachepage.item_height
                     model: softmainModel
                     delegate: CacheDelegate{
-                        sub_num: root.softNum
+                        sub_num: cachepage.softNum
                         sub_model: softsubModel
-                        btn_flag: root.btnFlag
-                        showNum: root.soft_showNum
+                        btn_flag: cachepage.btnFlag
+                        showNum: cachepage.soft_showNum
                         arrowFlag: "soft"
-                        arrow_display: root.soft_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
-                        expanded: root.soft_expanded//soft_expanded为true时，箭头向下，内容展开;soft_expanded为false时，箭头向上，内容收缩
-                        delegate_flag: root.splitFlag
-                        emptyTip: root.softEmpty
+                        arrow_display: cachepage.soft_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
+                        expanded: cachepage.soft_expanded//soft_expanded为true时，箭头向下，内容展开;soft_expanded为false时，箭头向上，内容收缩
+                        delegate_flag: cachepage.splitFlag
+                        emptyTip: cachepage.softEmpty
 
                         //test 0410
                         onTransmitCacheItemMainCheckBoxStatus: {
@@ -779,8 +781,8 @@ Item {
 
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
-//                            root.softresultFlag = checkchange;
-                            root.soft_maincheck = checkchange;
+//                            cachepage.softresultFlag = checkchange;
+                            cachepage.soft_maincheck = checkchange;
                         }
                         onTellModelToOpenFolder: {
                             if(category == "soft") {
@@ -790,33 +792,33 @@ Item {
                         onArrowClicked: {
                             if(cacheFlag == "soft") {//1212
                                 if(expand_flag == true) {
-                                    root.soft_expanded = true;
-                                    if((root.apt_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*6;
+                                    cachepage.soft_expanded = true;
+                                    if((cachepage.apt_expanded == true) && (cachepage.thumb_expanded == true)) {
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.softNum + 1) * cachepage.item_height + (cachepage.thumbNum + 1) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.apt_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.apt_expanded == true) && (cachepage.thumb_expanded == false)){
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.softNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.apt_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.apt_expanded == false) && (cachepage.thumb_expanded == true)){
+                                        scrollItem.height = (cachepage.thumbNum + 1) * cachepage.item_height + (cachepage.softNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*6;
+                                        scrollItem.height = (cachepage.softNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                 }
                                 else {
-                                    root.soft_expanded = false;
-                                    if((root.apt_expanded == true) && (root.thumb_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
+                                    cachepage.soft_expanded = false;
+                                    if((cachepage.apt_expanded == true) && (cachepage.thumb_expanded == true)) {
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.thumbNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.apt_expanded == true) && (root.thumb_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.apt_expanded == true) && (cachepage.thumb_expanded == false)){
+                                        scrollItem.height = (cachepage.aptNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.apt_expanded == false) && (root.thumb_expanded == true)){
-                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.apt_expanded == false) && (cachepage.thumb_expanded == true)){
+                                        scrollItem.height = (cachepage.thumbNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = 3 * root.item_height + root.spaceValue*6;
+                                        scrollItem.height = 3 * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                 }
                             }
@@ -836,18 +838,18 @@ Item {
                 ListView {
                     id: thumbListView
                     width: parent.width
-                    height: root.thumb_expanded ? (root.thumbNum + 1) * root.item_height : root.item_height
+                    height: cachepage.thumb_expanded ? (cachepage.thumbNum + 1) * cachepage.item_height : cachepage.item_height
                     model: thumbmainModel
                     delegate: CacheDelegate{
-                        sub_num: root.thumbNum
+                        sub_num: cachepage.thumbNum
                         sub_model: thumbsubModel
-                        btn_flag: root.btnFlag
-                        showNum: root.thumb_showNum
+                        btn_flag: cachepage.btnFlag
+                        showNum: cachepage.thumb_showNum
                         arrowFlag: "thumb"
-                        arrow_display: root.thumb_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
-                        expanded: root.thumb_expanded//soft_expanded为true时，箭头向下，内容展开;soft_expanded为false时，箭头向上，内容收缩
-                        delegate_flag: root.splitFlag
-                        emptyTip: root.thumbEmpty
+                        arrow_display: cachepage.thumb_arrow_show//为0时隐藏伸缩图标，为1时显示伸缩图标
+                        expanded: cachepage.thumb_expanded//soft_expanded为true时，箭头向下，内容展开;soft_expanded为false时，箭头向上，内容收缩
+                        delegate_flag: cachepage.splitFlag
+                        emptyTip: cachepage.thumbEmpty
 
                         //test 0410
                         onTransmitCacheItemMainCheckBoxStatus: {
@@ -880,8 +882,8 @@ Item {
 
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
-//                            root.softresultFlag = checkchange;
-                            root.thumb_maincheck = checkchange;
+//                            cachepage.softresultFlag = checkchange;
+                            cachepage.thumb_maincheck = checkchange;
                         }
                         onTellModelToOpenFolder: {
                             if(category == "thumb") {
@@ -891,34 +893,34 @@ Item {
                         onArrowClicked: {
                             if(cacheFlag == "thumb") {//1212
                                 if(expand_flag == true) {
-                                    root.thumb_expanded = true;
-                                    if((root.apt_expanded == true) && (root.soft_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 1) * root.item_height + (root.thumbNum + 1) * root.item_height + root.spaceValue*6;
-//                                        scrollItem.height = (root.aptNum + 1) * 40 + (root.softNum + 1) * 40 + root.spaceValue*2;
+                                    cachepage.thumb_expanded = true;
+                                    if((cachepage.apt_expanded == true) && (cachepage.soft_expanded == true)) {
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.softNum + 1) * cachepage.item_height + (cachepage.thumbNum + 1) * cachepage.item_height + cachepage.spaceValue*6;
+//                                        scrollItem.height = (cachepage.aptNum + 1) * 40 + (cachepage.softNum + 1) * 40 + cachepage.spaceValue*2;
                                     }
-                                    else if((root.apt_expanded == true) && (root.soft_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.apt_expanded == true) && (cachepage.soft_expanded == false)){
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.thumbNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.apt_expanded == false) && (root.soft_expanded == true)){
-                                        scrollItem.height = (root.softNum + 1) * root.item_height + (root.thumbNum + 2) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.apt_expanded == false) && (cachepage.soft_expanded == true)){
+                                        scrollItem.height = (cachepage.softNum + 1) * cachepage.item_height + (cachepage.thumbNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = (root.thumbNum + 3) * root.item_height + root.spaceValue*6;
+                                        scrollItem.height = (cachepage.thumbNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                 }
                                 else {
-                                    root.thumb_expanded = false;
-                                    if((root.apt_expanded == true) && (root.soft_expanded == true)) {
-                                        scrollItem.height = (root.aptNum + 1) * root.item_height + (root.softNum + 2) * root.item_height + root.spaceValue*6;
+                                    cachepage.thumb_expanded = false;
+                                    if((cachepage.apt_expanded == true) && (cachepage.soft_expanded == true)) {
+                                        scrollItem.height = (cachepage.aptNum + 1) * cachepage.item_height + (cachepage.softNum + 2) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.apt_expanded == true) && (root.soft_expanded == false)){
-                                        scrollItem.height = (root.aptNum + 3) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.apt_expanded == true) && (cachepage.soft_expanded == false)){
+                                        scrollItem.height = (cachepage.aptNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
-                                    else if((root.apt_expanded == false) && (root.soft_expanded == true)){
-                                        scrollItem.height = (root.softNum + 3) * root.item_height + root.spaceValue*6;
+                                    else if((cachepage.apt_expanded == false) && (cachepage.soft_expanded == true)){
+                                        scrollItem.height = (cachepage.softNum + 3) * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                     else {
-                                        scrollItem.height = 3 * root.item_height + root.spaceValue*6;
+                                        scrollItem.height = 3 * cachepage.item_height + cachepage.spaceValue*6;
                                     }
                                 }
                             }
@@ -942,31 +944,31 @@ Item {
         State {
             name: "AptWork"
             PropertyChanges { target: actionBtn; text:qsTr("Begin cleanup")}//开始清理
-            PropertyChanges { target: root; btnFlag: "cache_work" }
+            PropertyChanges { target: cachepage; btnFlag: "cache_work" }
             PropertyChanges { target: backBtn; visible: true}
         },
         State {
             name: "AptWorkAGAIN"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "cache_scan" }
+            PropertyChanges { target: cachepage; btnFlag: "cache_scan" }
             PropertyChanges { target: backBtn; visible: false}
         },
         State {
             name: "AptWorkError"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "cache_scan" }
+            PropertyChanges { target: cachepage; btnFlag: "cache_scan" }
             PropertyChanges { target: backBtn; visible: false}
         },
         State {
             name: "AptWorkFinish"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning") }//开始扫描
-            PropertyChanges { target: root; btnFlag: "cache_scan" }
+            PropertyChanges { target: cachepage; btnFlag: "cache_scan" }
             PropertyChanges { target: backBtn; visible: false}
         },
         State {
             name: "AptWorkEmpty"
             PropertyChanges { target: actionBtn; text:qsTr("Start scanning")}//开始扫描
-            PropertyChanges { target: root; btnFlag: "cache_scan" }
+            PropertyChanges { target: cachepage; btnFlag: "cache_scan" }
             PropertyChanges { target: backBtn; visible: false}
         }
     ]

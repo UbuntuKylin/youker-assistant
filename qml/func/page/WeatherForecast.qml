@@ -19,7 +19,7 @@ import "../common" as Common
 import "../bars" as Bars
 
 Item {
-    id: weatherpage; width: parent.width; height: 475
+    id: weatherpage; width: parent.width; height: 476
     Rectangle {
         id: weather_widget
         anchors.fill: parent

@@ -157,10 +157,10 @@ Rectangle {
         anchors.left: locationText.right
         wordname: qsTr(" [Change City]")//[更换城市]
         width: 80
-        height: 15
+        height: locationText.height
 //        flag: "ChangeCity"
         onClicked: {
-            sessiondispatcher.showChangeCityDialog(/*mainwindow.pos.x, mainwindow.pos.y*/);
+            sessiondispatcher.showChangeCityDialog();
         }
     }
     Text {
@@ -184,20 +184,20 @@ Rectangle {
                 source: ""//http://l.yimg.com/a/i/us/we/52/21.gif
             }
 
-            Common.StyleButton {
-                id: forecastBtn
-                anchors.horizontalCenter: parent.horizontalCenter
-                wordname: qsTr("Forecast")//预  报
-                width: 40
-                height: 20
-//                flag: "WeatherForecast"
-                onClicked: {
-                    //1、获取六天天气预报数据
-                    sessiondispatcher.get_forecast_weahter_qt();
-                    //2、加载天气预报界面
-                    pageStack.push(weatherpage);
-                }
-            }
+//            Common.StyleButton {
+//                id: forecastBtn
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                wordname: qsTr("Forecast")//预  报
+//                width: 40
+//                height: 20
+////                flag: "WeatherForecast"
+//                onClicked: {
+//                    //1、获取六天天气预报数据
+//                    sessiondispatcher.get_forecast_weahter_qt();
+//                    //2、加载天气预报界面
+//                    pageStack.push(weatherpage);
+//                }
+//            }
             Common.StyleButton {
                 id: preferencesBtn
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -209,20 +209,20 @@ Rectangle {
                     sessiondispatcher.showWizardController();
                 }
             }
-            Common.StyleButton {
-                id: refreshBtn
-                anchors.horizontalCenter: parent.horizontalCenter
-                wordname: qsTr("Update")//更  新
-                width: 40
-                height: 20
-                onClicked: {
-                    if(sessiondispatcher.update_weather_data_qt()) {
-                        weahterzone.resetCurrentWeather();
-                        weahterzone.resetChangeCityBtn();
-                        toolkits.alertMSG(qsTr("Update completed!"), mainwindow.pos.x, mainwindow.pos.y);//更新完毕！
-                    }
-                }
-            }
+//            Common.StyleButton {
+//                id: refreshBtn
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                wordname: qsTr("Update")//更  新
+//                width: 40
+//                height: 20
+//                onClicked: {
+//                    if(sessiondispatcher.update_weather_data_qt()) {
+//                        weahterzone.resetCurrentWeather();
+//                        weahterzone.resetChangeCityBtn();
+//                        toolkits.alertMSG(qsTr("Update completed!"));//更新完毕！
+//                    }
+//                }
+//            }
         }
 
         Column {

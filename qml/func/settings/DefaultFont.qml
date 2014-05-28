@@ -21,7 +21,7 @@ Rectangle {
     id: defaultfontpage
     property bool on: true
     width: parent.width
-    height: 475
+    height: 476
 
     property string current_font: "Helvetica"
     property string desktop_font: "Helvetica"
@@ -123,100 +123,188 @@ Rectangle {
         defaultfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
 
         defaultfontpage.zoom = sessiondispatcher.get_font_zoom_qt();
+//        var smoothlist = sessiondispatcher.get_smooth_style_list_qt();
+//        var current_smooth = sessiondispatcher.get_smooth_style_qt();
+//        var default_smooth = sessiondispatcher.get_default_theme_sring_qt("smoothstyle");
+//        smoothchoices.clear();
+//        if(current_smooth == default_smooth) {
+//            for(var m=0; m < smoothlist.length; m++) {
+//                smoothchoices.append({"text": smoothlist[m]});
+//                if (smoothlist[m] == current_smooth) {
+//                    defaultfontpage.current_smooth_index = m;
+//                    defaultfontpage.default_smooth_index = m;
+//                }
+//            }
+//        }
+//        else {
+//            for(var i=0; i < smoothlist.length; i++) {
+//                smoothchoices.append({"text": smoothlist[i]});
+//                if (smoothlist[i] == current_smooth) {
+//                    defaultfontpage.current_smooth_index = i;
+//                }
+//                else if (smoothlist[i] == default_smooth) {
+//                    defaultfontpage.default_smooth_index = i;
+//                }
+//            }
+//        }
+//        smoothcombo.selectedIndex = defaultfontpage.current_smooth_index;
+
+
+        var index = 0;
         var smoothlist = sessiondispatcher.get_smooth_style_list_qt();
         var current_smooth = sessiondispatcher.get_smooth_style_qt();
         var default_smooth = sessiondispatcher.get_default_theme_sring_qt("smoothstyle");
+        for(var i=0; i < smoothlist.length; i++) {
+            if (current_smooth == smoothlist[i]) {
+                index = i;
+                defaultfontpage.current_smooth_index = i;
+            }
+            if (default_smooth == smoothlist[i]) {
+                defaultfontpage.default_smooth_index = i;
+            }
+        }
         smoothchoices.clear();
-        if(current_smooth == default_smooth) {
-            for(var m=0; m < smoothlist.length; m++) {
-                smoothchoices.append({"text": smoothlist[m]});
-                if (smoothlist[m] == current_smooth) {
-                    defaultfontpage.current_smooth_index = m;
-                    defaultfontpage.default_smooth_index = m;
-                }
+        if (index == 0) {
+            for(var j=0; j < smoothlist.length; j++) {
+                smoothchoices.append({"text": smoothlist[j]});
             }
         }
         else {
-            for(var i=0; i < smoothlist.length; i++) {
-                smoothchoices.append({"text": smoothlist[i]});
-                if (smoothlist[i] == current_smooth) {
-                    defaultfontpage.current_smooth_index = i;
-                }
-                else if (smoothlist[i] == default_smooth) {
-                    defaultfontpage.default_smooth_index = i;
+            smoothlist.unshift(current_smooth);
+            for(var k=0; k < smoothlist.length; k++) {
+                smoothchoices.append({"text": smoothlist[k]});
+                if (k!=0 && smoothlist[k] == current_smooth){
+                    smoothchoices.remove(k);
                 }
             }
         }
-        smoothcombo.selectedIndex = defaultfontpage.current_smooth_index;
 
+
+
+
+//        var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
+//        var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
+//        var default_antialiasing = sessiondispatcher.get_default_theme_sring_qt("antialiasingstyle");
+//        antialiasingchoices.clear();
+//        if(current_antialiasing == default_antialiasing) {
+//            for(var n=0; n < antialiasinglist.length; n++) {
+//                antialiasingchoices.append({"text": antialiasinglist[n]});
+//                if (antialiasinglist[n] == current_antialiasing) {
+//                    defaultfontpage.current_antialiasing_index = n;
+//                    defaultfontpage.default_antialiasing_index = n;
+//                }
+//            }
+//        }
+//        else {
+//            for(var j=0; j < antialiasinglist.length; j++) {
+//                antialiasingchoices.append({"text": antialiasinglist[j]});
+//                if (antialiasinglist[j] == current_antialiasing) {
+//                    defaultfontpage.current_antialiasing_index = j;
+//                }
+//                else if (antialiasinglist[j] == default_antialiasing) {
+//                    defaultfontpage.default_antialiasing_index = j;
+//                }
+//            }
+//        }
+//        antialiasingcombo.selectedIndex = defaultfontpage.current_antialiasing_index;
+
+
+        var index2 = 0;
         var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
         var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
         var default_antialiasing = sessiondispatcher.get_default_theme_sring_qt("antialiasingstyle");
+        for(var x=0; x < smoothlist.length; x++) {
+            if (current_antialiasing == antialiasinglist[x]) {
+                index2 = x;
+                defaultfontpage.current_antialiasing_index = x;
+            }
+            if (default_antialiasing == antialiasinglist[i]) {
+                defaultfontpage.default_antialiasing_index = x;
+            }
+        }
         antialiasingchoices.clear();
-        if(current_antialiasing == default_antialiasing) {
-            for(var n=0; n < antialiasinglist.length; n++) {
-                antialiasingchoices.append({"text": antialiasinglist[n]});
-                if (antialiasinglist[n] == current_antialiasing) {
-                    defaultfontpage.current_antialiasing_index = n;
-                    defaultfontpage.default_antialiasing_index = n;
-                }
+        if (index2 == 0) {
+            for(var y=0; y < antialiasinglist.length; y++) {
+                antialiasingchoices.append({"text": antialiasinglist[y]});
             }
         }
         else {
-            for(var j=0; j < antialiasinglist.length; j++) {
-                antialiasingchoices.append({"text": antialiasinglist[j]});
-                if (antialiasinglist[j] == current_antialiasing) {
-                    defaultfontpage.current_antialiasing_index = j;
-                }
-                else if (antialiasinglist[j] == default_antialiasing) {
-                    defaultfontpage.default_antialiasing_index = j;
+            antialiasinglist.unshift(current_antialiasing);
+            for(var z=0; z < antialiasinglist.length; z++) {
+                antialiasingchoices.append({"text": antialiasinglist[z]});
+                if (z!=0 && antialiasinglist[z] == current_antialiasing){
+                    antialiasingchoices.remove(z);
                 }
             }
         }
-        antialiasingcombo.selectedIndex = defaultfontpage.current_antialiasing_index;
-    }
-
-    Column {
-        spacing: 10
-        anchors.top: parent.top
-        anchors.topMargin: 44
-        anchors.left: parent.left
-        anchors.leftMargin: 80
-        Text {
-            text: defaultfontpage.actiontitle
-            font.bold: true
-            font.pixelSize: 14
-            color: "#383838"
-        }
-         Text {
-             width: defaultfontpage.width - 80 - 20
-             text: defaultfontpage.actiontext
-             wrapMode: Text.WordWrap
-             font.pixelSize: 12
-             color: "#7a7a7a"
-         }
     }
 
     Row {
-        id: settitle
-        anchors{
-            left: parent.left
-            leftMargin: 40
+        spacing: 20
+        anchors {
             top: parent.top
-            topMargin: 100
-
+            topMargin: 10
+            left: parent.left
+            leftMargin: 20
         }
-        Text{
-            id: fonttitle
-            text: qsTr("Font Settings")//字体设置
-            font.bold: true
-            font.pixelSize: 12
-            color: "#383838"
-        }
-        Common.Separator {
+        Common.Button {
+            id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-            width: defaultfontpage.width - fonttitle.width - 40 * 2
+//            hoverimage: "button12-gray.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
+            text: qsTr("Back")//返回
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 1) {
+                    pageStack.push(systemmessage);
+                }
+                else if (num == 2) {
+                    pageStack.push(clearrubbish);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
+            }
         }
+        Column {
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
+            Text {
+                text: defaultfontpage.actiontitle
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
+            }
+             Text {
+                 width: defaultfontpage.width - 80 - 20
+                 text: defaultfontpage.actiontext
+                 wrapMode: Text.WordWrap
+                 font.pixelSize: 12
+                 color: "#7a7a7a"
+             }
+        }
+    }
+
+    //分割条
+    Common.Separator {
+        id: top_splitbar
+        y: 60
+        anchors {
+            left: parent.left
+            leftMargin: 2
+        }
+        width: parent.width - 4
     }
 
     Column {
@@ -225,14 +313,19 @@ Rectangle {
         anchors{
             left: parent.left
             leftMargin: 80
-            top: settitle.bottom
-            topMargin: 2
+            top: top_splitbar.bottom
+            topMargin: 50
         }
         z: 11
         Row {
-            spacing: 234 - 16 - 40
+            spacing: 150
             Row{
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     z: 11
                     anchors.verticalCenter: parent.verticalCenter
@@ -260,11 +353,13 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("defaultfont");
                     fontBtn.text = sessiondispatcher.get_font_qt();
@@ -272,9 +367,14 @@ Rectangle {
             }
         }
         Row {
-            spacing: 234 - 16 - 40
+            spacing: 150
             Row{
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     z: 11
                     anchors.verticalCenter: parent.verticalCenter
@@ -302,11 +402,13 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("desktopfont");
                     desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
@@ -314,9 +416,14 @@ Rectangle {
             }
         }
         Row {
-            spacing: 234 - 16 - 40
+            spacing: 150
             Row{
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -343,11 +450,13 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("monospacefont");
                     monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
@@ -355,9 +464,14 @@ Rectangle {
             }
         }
         Row {
-            spacing: 234 - 16 - 40
+            spacing: 150
             Row{
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -384,11 +498,13 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("documentfont");
                     docufontBtn.text = sessiondispatcher.get_document_font_qt();
@@ -396,9 +512,14 @@ Rectangle {
             }
         }
         Row {
-            spacing: 234 - 16 - 40
+            spacing: 150
             Row{
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -425,54 +546,29 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("titlebarfont");
                     titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
                 }
             }
         }
-    }//Column
 
-    Row {
-        id: zoomrow
-        anchors{
-            left: parent.left
-            leftMargin: 40
-            top: fontcolumn.bottom
-            topMargin: 4
-        }
-        Text{
-            id: zoomtitle
-            text: qsTr("Style Settings")//风格设置
-            font.bold: true
-            font.pixelSize: 12
-            color: "#383838"
-        }
-        //横线
-        Common.Separator {
-            anchors.verticalCenter: parent.verticalCenter
-            width: defaultfontpage.width - zoomtitle.width - 40 * 2
-        }
-    }
-    Column {
-        id: stylecolumn
-        spacing: 8
-        anchors{
-            left: parent.left
-            leftMargin: 80
-            top: zoomrow.bottom
-            topMargin: 2
-        }
-        z: 11
         Row {
-            spacing: 234 - 16 - 40
+            spacing: 150
             Row{
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -506,11 +602,13 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("globalfontscaling");
                     slider.value = sessiondispatcher.get_font_zoom_qt();
@@ -520,9 +618,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 234 - 16 - 40
+            spacing: 150
             Row{
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -548,11 +651,13 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("smoothstyle");
                     smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
@@ -561,9 +666,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 234 - 16 - 40
+            spacing: 150
             Row{
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -589,58 +699,18 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_theme_qt("antialiasingstyle");
                     antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
                 }
             }
         }
-    }
-
-    //顶层工具栏
-    Bars.TopBar {
-        id: topBar
-        width: 28
-        height: 26
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        anchors.left: parent.left
-        anchors.leftMargin: 40
-        opacity: 0.9
-        onButtonClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
-    //底层工具栏
-    Bars.ToolBar {
-        id: toolBar
-        showok: false
-        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        onQuitBtnClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
+    }//Column
 }

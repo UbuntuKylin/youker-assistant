@@ -64,7 +64,7 @@ class Theme:
         _gstheme = gsettings.get_schema('org.gnome.desktop.wm.preferences')
         _gstheme.set_string('theme',theme)
 
-    #------------------------窗口主题设置``````````````````````````
+    #------------------------窗口主题设置
     # get window theme
     def get_window_themes(self):
         dirs = ('/usr/share/themes', os.path.join(self.homedir, ".themes"))

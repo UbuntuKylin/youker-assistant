@@ -15,41 +15,145 @@
  */
 import QtQuick 1.1
 
-Rectangle {
-    id: styleBtn
+Rectangle
+{
+    id: btn
     width: 58
     height: 29
-    property int fontSize: 10
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
-    property string textColor: "#318d11"
     property string wordname: ""
-    signal clicked();
+
+    property string colorCurrent: ""
+    property string colorNormal: ""
+    property string colorHover: ""
+    property string colorPressed: ""
+
+    property int sizeCurrent
+    property int sizeNormal
+    property int sizeHover
+    property int sizePressed
+
+    signal clicked
+
+    state:"normal"
 
     Text {
-        id:textname
-//        anchors.centerIn: parent
         anchors {
             verticalCenter: parent.verticalCenter
             left: parent.left
             leftMargin: 2
         }
         text: wordname
-        font.pointSize: styleBtn.fontSize
-        color: styleBtn.textColor//
+        font.pixelSize: sizeCurrent
+        color: colorCurrent
     }
 
 
-    MouseArea {
+    MouseArea
+    {
         hoverEnabled: true
         anchors.fill: parent
-        onEntered: styleBtn.textColor = "black"
-        onPressed: styleBtn.textColor = "#318d11"
-        //要判断松开是鼠标位置
-        onReleased: styleBtn.textColor = "white"
-        onExited: styleBtn.textColor = "white"
-        onClicked: {
-            styleBtn.clicked();
+        onEntered: btn.state == "pressed" ? btn.state = "pressed" : btn.state = "hover"
+        onExited: btn.state == "pressed" ? btn.state = "pressed" : btn.state = "normal"
+        onPressed: btn.state = "pressed"
+        onReleased:
+        {
+            btn.state = "normal";
+            btn.clicked();
         }
     }
+
+    states:
+    [
+        State{
+            name:"hover"
+            PropertyChanges {
+                target: btn
+                colorCurrent: colorHover
+                sizeCurrent: sizeHover
+            }
+        },
+        State {
+            name: "normal"
+            PropertyChanges {
+                target: btn
+                colorCurrent: colorNormal
+                sizeCurrent: sizeNormal
+            }
+        },
+        State {
+            name: "pressed"
+            PropertyChanges {
+                target: btn
+                colorCurrent: colorPressed
+                sizeCurrent: sizePressed
+            }
+        }
+
+    ]
 }
+
+
+//Rectangle {
+//    id: styleBtn
+//    width: 58
+//    height: 29
+//    property int fontSize: 12
+//    SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
+//    color: "transparent"
+//    property string textColor: "#318d11"
+//    property string wordname: ""
+//    property string flag: ""
+//    signal clicked();
+
+//    Text {
+//        id:textname
+////        anchors.centerIn: parent
+//        anchors {
+//            verticalCenter: parent.verticalCenter
+//            left: parent.left
+//            leftMargin: 2
+//        }
+//        text: wordname
+//        font.pixelSize: styleBtn.fontSize
+//        color: styleBtn.textColor
+//    }
+
+
+//    MouseArea {
+//        hoverEnabled: true
+//        anchors.fill: parent
+//        onEntered: {
+//            styleBtn.fontSize = 14;
+//            if(styleBtn.flag == "360") {//#00a0e9
+//                styleBtn.textColor = "#65cfff";
+//            }
+//        }
+//        onPressed: {
+//            styleBtn.fontSize = 14;
+//            if(styleBtn.flag == "360") {//#00a0e9
+//                styleBtn.textColor = "#65cfff";
+//            }
+//        }
+
+//        //要判断松开是鼠标位置
+//        onReleased: {
+//            styleBtn.fontSize = 12;
+//            if(styleBtn.flag == "360") {
+//                styleBtn.textColor = "#00a0e9";
+//            }
+//        }
+
+//        onExited: {
+//            styleBtn.fontSize = 12;
+//            if(styleBtn.flag == "360") {
+//                styleBtn.textColor = "#00a0e9";
+//            }
+//        }
+//        onClicked: {
+//            styleBtn.clicked();
+//        }
+//    }
+//}
+

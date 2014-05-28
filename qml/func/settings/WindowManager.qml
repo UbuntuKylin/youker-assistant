@@ -21,7 +21,7 @@ import "../bars" as Bars
 Rectangle {
     id: windowmanagerpage
     width: parent.width
-    height: 475
+    height: 476
 
     property string position_mode: ""
     property int wheel_current_index//当前的索引
@@ -36,10 +36,10 @@ Rectangle {
     property string actiontitle: qsTr("Window")//窗口
     property string actiontext: qsTr("Manage Window Manager settings.")//管理窗口管理器的设置
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     ListModel { id: wheelchoices }
     ListModel { id: doublechoices }
@@ -125,163 +125,310 @@ Rectangle {
         }
 
         //wheel action
+//        var wheellist = sessiondispatcher.get_titlebar_wheel_qt();
+//        var current_wheel_type = sessiondispatcher.get_current_titlebar_wheel_qt();
+//        var default_wheel_type = sessiondispatcher.get_default_system_sring_qt("wheel-action");
+//        wheelchoices.clear();
+//        if(current_wheel_type == default_wheel_type) {
+//            for(var i=0; i < wheellist.length; i++) {
+//                wheelchoices.append({"text": wheellist[i]});
+//                if (wheellist[i] == current_wheel_type) {
+//                    windowmanagerpage.wheel_current_index = i;
+//                    windowmanagerpage.wheel_default_index = i;
+//                }
+//            }
+//        }
+//        else {
+//            for(var j=0; j < wheellist.length; j++) {
+//                wheelchoices.append({"text": wheellist[j]});
+//                if (wheellist[j] == current_wheel_type) {
+//                    windowmanagerpage.wheel_current_index = j;
+//                }
+//                else if (wheellist[j] == default_wheel_type) {
+//                    windowmanagerpage.wheel_default_index = j;
+//                }
+//            }
+//        }
+//        wheelcombo.selectedIndex = windowmanagerpage.wheel_current_index;
+
+
+
+        var index = 0;
+        var i = 0;
+        var j = 0;
+        var k = 0;
         var wheellist = sessiondispatcher.get_titlebar_wheel_qt();
         var current_wheel_type = sessiondispatcher.get_current_titlebar_wheel_qt();
         var default_wheel_type = sessiondispatcher.get_default_system_sring_qt("wheel-action");
+        for(i=0; i < wheellist.length; i++) {
+            if (current_wheel_type == wheellist[i]) {
+                index = i;
+                windowmanagerpage.wheel_current_index = i;
+            }
+            if (default_wheel_type == wheellist[i]) {
+                windowmanagerpage.wheel_default_index = i;
+            }
+        }
         wheelchoices.clear();
-        if(current_wheel_type == default_wheel_type) {
-            for(var i=0; i < wheellist.length; i++) {
-                wheelchoices.append({"text": wheellist[i]});
-                if (wheellist[i] == current_wheel_type) {
-                    windowmanagerpage.wheel_current_index = i;
-                    windowmanagerpage.wheel_default_index = i;
-                }
+        if (index == 0) {
+            for(j=0; j < wheellist.length; j++) {
+                wheelchoices.append({"text": wheellist[j]});
             }
         }
         else {
-            for(var j=0; j < wheellist.length; j++) {
-                wheelchoices.append({"text": wheellist[j]});
-                if (wheellist[j] == current_wheel_type) {
-                    windowmanagerpage.wheel_current_index = j;
-                }
-                else if (wheellist[j] == default_wheel_type) {
-                    windowmanagerpage.wheel_default_index = j;
+            wheellist.unshift(current_wheel_type);
+            for(k=0; k < wheellist.length; k++) {
+                wheelchoices.append({"text": wheellist[k]});
+                if (k!=0 && wheellist[k] == current_wheel_type){
+                    wheelchoices.remove(k);
                 }
             }
         }
-        wheelcombo.selectedIndex = windowmanagerpage.wheel_current_index;
+
 
         //double click
+//        var doublelist = sessiondispatcher.get_titlebar_double_qt();
+//        var current_double_type = sessiondispatcher.get_current_titlebar_double_qt();
+//        var default_double_type = sessiondispatcher.get_default_system_sring_qt("double-click");
+//        doublechoices.clear();
+//        if(current_double_type == default_double_type) {
+//            for(var k=0; k < doublelist.length; k++) {
+//                doublechoices.append({"text": doublelist[k]});
+//                if (doublelist[k] == current_double_type) {
+//                    windowmanagerpage.double_current_index = k;
+//                    windowmanagerpage.double_default_index = k;
+//                }
+//            }
+//        }
+//        else {
+//            for(var m=0; m < doublelist.length; m++) {
+//                doublechoices.append({"text": doublelist[m]});
+//                if (doublelist[m] == current_double_type) {
+//                    windowmanagerpage.double_current_index = m;
+//                }
+//                else if (doublelist[m] == default_double_type) {
+//                    windowmanagerpage.double_default_index = m;
+//                }
+//            }
+//        }
+//        doublecombo.selectedIndex = windowmanagerpage.double_current_index;
+
+
+
+        index = 0;
         var doublelist = sessiondispatcher.get_titlebar_double_qt();
         var current_double_type = sessiondispatcher.get_current_titlebar_double_qt();
         var default_double_type = sessiondispatcher.get_default_system_sring_qt("double-click");
+        for(i=0; i < doublelist.length; i++) {
+            if (current_double_type == doublelist[i]) {
+                index = i;
+                windowmanagerpage.double_current_index = i;
+
+            }
+            if (default_double_type == doublelist[i]) {
+                windowmanagerpage.double_default_index = i;
+            }
+        }
         doublechoices.clear();
-        if(current_double_type == default_double_type) {
-            for(var k=0; k < doublelist.length; k++) {
-                doublechoices.append({"text": doublelist[k]});
-                if (doublelist[k] == current_double_type) {
-                    windowmanagerpage.double_current_index = k;
-                    windowmanagerpage.double_default_index = k;
-                }
+        if (index == 0) {
+            for(j=0; j < doublelist.length; j++) {
+                doublechoices.append({"text": doublelist[j]});
             }
         }
         else {
-            for(var m=0; m < doublelist.length; m++) {
-                doublechoices.append({"text": doublelist[m]});
-                if (doublelist[m] == current_double_type) {
-                    windowmanagerpage.double_current_index = m;
-                }
-                else if (doublelist[m] == default_double_type) {
-                    windowmanagerpage.double_default_index = m;
+            doublelist.unshift(current_double_type);
+            for(k=0; k < doublelist.length; k++) {
+                doublechoices.append({"text": doublelist[k]});
+                if (k!=0 && doublelist[k] == current_double_type){
+                    doublechoices.remove(k);
                 }
             }
         }
-        doublecombo.selectedIndex = windowmanagerpage.double_current_index;
+
 
         //middle click
+//        var middlelist = sessiondispatcher.get_titlebar_middle_qt();
+//        var current_middle_type = sessiondispatcher.get_current_titlebar_middle_qt();
+//        var default_middle_type = sessiondispatcher.get_default_system_sring_qt("middle-click");
+//        middlechoices.clear();
+//        if(current_middle_type == default_middle_type) {
+//            for(var n=0; n < middlelist.length; n++) {
+//                middlechoices.append({"text": middlelist[n]});
+//                if (middlelist[n] == current_middle_type) {
+//                    windowmanagerpage.middle_current_index = n;
+//                    windowmanagerpage.middle_default_index = n;
+//                }
+//            }
+//        }
+//        else {
+//            for(var p=0; p < middlelist.length; p++) {
+//                middlechoices.append({"text": middlelist[p]});
+//                if (middlelist[p] == current_middle_type) {
+//                    windowmanagerpage.middle_current_index = p;
+//                }
+//                else if (middlelist[p] == default_middle_type) {
+//                    windowmanagerpage.middle_default_index = p;
+//                }
+//            }
+//        }
+//        middlecombo.selectedIndex = windowmanagerpage.middle_current_index;
+
+
+        index = 0;
         var middlelist = sessiondispatcher.get_titlebar_middle_qt();
         var current_middle_type = sessiondispatcher.get_current_titlebar_middle_qt();
         var default_middle_type = sessiondispatcher.get_default_system_sring_qt("middle-click");
+        for(i=0; i < middlelist.length; i++) {
+            if (current_middle_type == middlelist[i]) {
+                index = i;
+                windowmanagerpage.middle_current_index = i;
+
+            }
+            if (default_middle_type == middlelist[i]) {
+                windowmanagerpage.middle_default_index = i;
+            }
+        }
         middlechoices.clear();
-        if(current_middle_type == default_middle_type) {
-            for(var n=0; n < middlelist.length; n++) {
-                middlechoices.append({"text": middlelist[n]});
-                if (middlelist[n] == current_middle_type) {
-                    windowmanagerpage.middle_current_index = n;
-                    windowmanagerpage.middle_default_index = n;
-                }
+        if (index == 0) {
+            for(j=0; j < middlelist.length; j++) {
+                middlechoices.append({"text": middlelist[j]});
             }
         }
         else {
-            for(var p=0; p < middlelist.length; p++) {
-                middlechoices.append({"text": middlelist[p]});
-                if (middlelist[p] == current_middle_type) {
-                    windowmanagerpage.middle_current_index = p;
-                }
-                else if (middlelist[p] == default_middle_type) {
-                    windowmanagerpage.middle_default_index = p;
+            middlelist.unshift(current_middle_type);
+            for(k=0; k < middlelist.length; k++) {
+                middlechoices.append({"text": middlelist[k]});
+                if (k!=0 && middlelist[k] == current_middle_type){
+                    middlechoices.remove(k);
                 }
             }
         }
-        middlecombo.selectedIndex = windowmanagerpage.middle_current_index;
 
 
         //right click
+//        var rightlist = sessiondispatcher.get_titlebar_right_qt();
+//        var current_right_type = sessiondispatcher.get_current_titlebar_right_qt();
+//        var default_right_type = sessiondispatcher.get_default_system_sring_qt("right-click");
+//        rightchoices.clear();
+//        if(current_right_type == default_right_type) {
+//            for(var l=0; l < rightlist.length; l++) {
+//                rightchoices.append({"text": rightlist[l]});
+//                if (rightlist[l] == current_right_type) {
+//                    windowmanagerpage.right_current_index = l;
+//                    windowmanagerpage.right_default_index = l;
+//                }
+//            }
+//        }
+//        else {
+//            for(var q=0; q < rightlist.length; q++) {
+//                rightchoices.append({"text": rightlist[q]});
+//                if (rightlist[q] == current_right_type) {
+//                    windowmanagerpage.right_current_index = q;
+//                }
+//                else if (rightlist[q] == default_right_type) {
+//                    windowmanagerpage.right_default_index = q;
+//                }
+//            }
+//        }
+//        rightcombo.selectedIndex = windowmanagerpage.right_current_index;
+
+
+
+        index = 0;
         var rightlist = sessiondispatcher.get_titlebar_right_qt();
         var current_right_type = sessiondispatcher.get_current_titlebar_right_qt();
         var default_right_type = sessiondispatcher.get_default_system_sring_qt("right-click");
+        for(i=0; i < rightlist.length; i++) {
+            if (current_right_type == rightlist[i]) {
+                index = i;
+                windowmanagerpage.right_current_index = i;
+
+            }
+            if (default_right_type == rightlist[i]) {
+                windowmanagerpage.right_default_index = i;
+            }
+        }
         rightchoices.clear();
-        if(current_right_type == default_right_type) {
-            for(var l=0; l < rightlist.length; l++) {
-                rightchoices.append({"text": rightlist[l]});
-                if (rightlist[l] == current_right_type) {
-                    windowmanagerpage.right_current_index = l;
-                    windowmanagerpage.right_default_index = l;
-                }
+        if (index == 0) {
+            for(j=0; j < rightlist.length; j++) {
+                rightchoices.append({"text": rightlist[j]});
             }
         }
         else {
-            for(var q=0; q < rightlist.length; q++) {
-                rightchoices.append({"text": rightlist[q]});
-                if (rightlist[q] == current_right_type) {
-                    windowmanagerpage.right_current_index = q;
-                }
-                else if (rightlist[q] == default_right_type) {
-                    windowmanagerpage.right_default_index = q;
+            rightlist.unshift(current_right_type);
+            for(k=0; k < rightlist.length; k++) {
+                rightchoices.append({"text": rightlist[k]});
+                if (k!=0 && rightlist[k] == current_right_type){
+                    rightchoices.remove(k);
                 }
             }
         }
-        rightcombo.selectedIndex = windowmanagerpage.right_current_index;
     }
 
-    Column {
-        spacing: 10
-        anchors.top: parent.top
-        anchors.topMargin: 44
-        anchors.left: parent.left
-        anchors.leftMargin: 80
-        Row{
-            spacing: 50
+    Row {
+        spacing: 20
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 20
+        }
+        Common.Button {
+            id: backBtn
+            anchors.verticalCenter: parent.verticalCenter
+//            hoverimage: "button12-gray.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
+            text: qsTr("Back")//返回
+            onClicked: {
+                var num = sessiondispatcher.get_page_num();
+                if (num == 0) {
+                    pageStack.push(homepage);
+                }
+                else if (num == 1) {
+                    pageStack.push(systemmessage);
+                }
+                else if (num == 2) {
+                    pageStack.push(clearrubbish);
+                }
+                else if (num == 3) {
+                    pageStack.push(systemset);
+                }
+                else if (num == 4) {
+                    pageStack.push(functioncollection);
+                }
+            }
+        }
+        Column {
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
             Text {
                  text: windowmanagerpage.actiontitle
                  font.bold: true
                  font.pixelSize: 14
                  color: "#383838"
-             }
-            Text {
-                id: showText
-                text: ""
-                font.pixelSize: 14
-                color: "#318d11"
             }
-        }
-        Text {
-            text: windowmanagerpage.actiontext
-            font.pixelSize: 12
-            color: "#7a7a7a"
+            Text {
+                text: windowmanagerpage.actiontext
+                font.pixelSize: 12
+                color: "#7a7a7a"
+            }
         }
     }
 
-    Row {
-        id: titlebar
-        anchors{
+    //分割条
+    Common.Separator {
+        id: top_splitbar
+        y: 60
+        anchors {
             left: parent.left
-            leftMargin: 40
-            top: parent.top
-            topMargin: 120
+            leftMargin: 2
         }
-        Text{
-            id: showtitle
-            text: qsTr("Window settings")//窗口设置
-            font.bold: true
-            font.pixelSize: 12
-            color: "#383838"
-        }
-        //横线
-        Common.Separator {
-            anchors.verticalCenter: parent.verticalCenter
-            width: windowmanagerpage.width - showtitle.width - 40 * 2
-        }
+        width: parent.width - 4
     }
 
     Column {
@@ -289,15 +436,20 @@ Rectangle {
         anchors{
             left: parent.left
             leftMargin: 60
-            top: titlebar.bottom
-            topMargin: 30
+            top: top_splitbar.bottom
+            topMargin: 50
         }
         z: 11
         Row {
-            spacing: 314 - 16 -20
+            spacing: 230
             Row {
                 id: workmode
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -345,11 +497,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("control-button-position");
@@ -366,9 +521,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 230
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -396,11 +556,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("menu-with-icons");
@@ -415,9 +578,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 230
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -441,11 +609,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("wheel-action");
                     wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
@@ -454,9 +625,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 230
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -480,11 +656,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("double-action");
                     doublecombo.selectedIndex = windowmanagerpage.double_default_index;
@@ -493,9 +672,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 230
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -519,11 +703,14 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("middle-action");
                     middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
@@ -532,9 +719,14 @@ Rectangle {
         }
 
         Row {
-            spacing: 314 - 16 - 20
+            spacing: 230
             Row {
                 spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Common.TipLabel {
                     anchors.verticalCenter: parent.verticalCenter
                     kflag: "yes"
@@ -558,57 +750,18 @@ Rectangle {
             }
 
             Common.Button {
-                hoverimage: "blue.png"
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
-                width: 94
-                height: 29
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.set_default_system_qt("right-action");
                     rightcombo.selectedIndex = windowmanagerpage.right_default_index;
                 }
-            }
-        }
-    }
-
-    //顶层工具栏
-    Bars.TopBar {
-        id: topBar
-        width: 28
-        height: 26
-        anchors.top: parent.top
-        anchors.topMargin: 40
-        anchors.left: parent.left
-        anchors.leftMargin: 40
-        opacity: 0.9
-        onButtonClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
-            }
-        }
-    }
-    //底层工具栏
-    Bars.ToolBar {
-        id: toolBar
-        showok: false
-        height: 50; anchors.bottom: parent.bottom; width: parent.width; opacity: 0.9
-        onQuitBtnClicked: {
-            var num = sessiondispatcher.get_page_num();
-            if (num == 0) {
-                pageStack.push(homepage);
-            }
-            else if (num == 3) {
-                pageStack.push(systemset);
-            }
-            else if (num == 4) {
-                pageStack.push(functioncollection);
             }
         }
     }

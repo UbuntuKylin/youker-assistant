@@ -44,40 +44,48 @@ Item {
 
          Common.Button {
              id: gobackHome
-             hoverimage: "gray.png"
+             picNormal: "../../img/icons/button12-gray-long.png"
+             picHover: "../../img/icons/button12-gray-long-hover.png"
+             picPressed: "../../img/icons/button12-gray-long-hover.png"
              text: qsTr("Home")//返回主页
-             fontcolor:"#929292"
-             fontsize: 13
-             width: 94; height: 29
+             fontcolor:"#707070"
+             fontsize: 12
+             width: 100; height: 28
              onClicked: toolbar.gobackHomeClicked()
          }
          Common.Button {
              id: cancelBtn
              visible: toolbar.showok
-             hoverimage: "gray.png"
+             picNormal: "../../img/icons/button12-gray.png"
+             picHover: "../../img/icons/button12-gray-hover.png"
+             picPressed: "../../img/icons/button12-gray-hover.png"
              text: qsTr("Cancel")//取消
-             fontcolor:"#929292"
-             fontsize: 13
-             width: 94; height: 29
+             fontcolor:"#707070"
+             fontsize: 12
+             width: 70; height: 28
              onClicked: toolbar.cancelBtnClicked()
          }
          Common.Button {
              id: gobackBtn
-             hoverimage: "gray.png"
+             picNormal: "../../img/icons/button12-gray-long.png"
+             picHover: "../../img/icons/button12-gray-long-hover.png"
+             picPressed: "../../img/icons/button12-gray-long-hover.png"
              text: qsTr("Previous")//上一步
-             fontcolor:"#929292"
-             fontsize: 13
-             width: 94; height: 29
+             fontcolor:"#707070"
+             fontsize: 12
+             width: 100; height: 28
              onClicked: toolbar.gobackBtnClicked()
          }
          Common.Button {
             id: finishBtn
             visible: toolbar.showok
-            hoverimage: "green.png"
-            fontsize: 13
-            fontcolor:"#ffffff"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
+            fontcolor:"#707070"
+            fontsize: 12
+            width: 70; height: 28
             text: qsTr("Apply")//应用
-            width: 94; height: 29
 
             onClicked: toolbar.finishBtnClicked()
          }

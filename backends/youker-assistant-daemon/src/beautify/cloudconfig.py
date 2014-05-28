@@ -118,9 +118,9 @@ class CloudConfig(threading.Thread):
         #self.write_conf(sections, 'gtk_theme',
         #    'org.gnome.desktop.interface',
         #    None, 'gtk-theme', 'string')
-        self.write_conf(sections, 'window_theme',
-            'org.gnome.desktop.wm.preferences',
-            None, 'theme', 'string')
+#        self.write_conf(sections, 'window_theme',
+#            'org.gnome.desktop.wm.preferences',
+#            None, 'theme', 'string')
         self.write_conf(sections, 'icon_theme',
             'org.gnome.desktop.interface',
             None, 'icon-theme', 'string')

@@ -21,12 +21,6 @@ import "../common" as Common
 Rectangle {
     id: rightbar
 
-    //推荐软件的三张图片
-    property string image1: "../../img/skin/qq0.png"
-    property string image2: "../../img/skin/qt0.png"
-    property string image3: "../../img/skin/wps0.png"
-    property string mage_source: image1
-
     //更新登录状态
     Connections
     {
@@ -36,16 +30,16 @@ Rectangle {
         }
         onLoginFailedStatus: {//登录失败
             if(status == 99) {
-                toolkits.alertMSG(qsTr("Network Error!"), mainwindow.pos.x, mainwindow.pos.y);//网络错误！
+                toolkits.alertMSG(qsTr("Network Error!"));//网络错误！
             }
             else if(status == -1) {
-                toolkits.alertMSG(qsTr("No User!"), mainwindow.pos.x, mainwindow.pos.y);//没有该用户！
+                toolkits.alertMSG(qsTr("No User!"));//没有该用户！
             }
             else if(status == -2) {
-                toolkits.alertMSG(qsTr("Password Wrong!"), mainwindow.pos.x, mainwindow.pos.y);//密码错误！
+                toolkits.alertMSG(qsTr("Password Wrong!"));//密码错误！
             }
             else {
-                toolkits.alertMSG(qsTr("Login Failed!"), mainwindow.pos.x, mainwindow.pos.y);//登录失败！
+                toolkits.alertMSG(qsTr("Login Failed!"));//登录失败！
             }
             rightbar.state = "OffLine";
         }
@@ -109,7 +103,7 @@ Rectangle {
             width: 216
             height: 67
             onClicked: {
-                sessiondispatcher.popup_login_dialog(mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.popup_login_dialog();
             }
         }
     }
@@ -163,12 +157,13 @@ Rectangle {
             }
             Common.Button {
                 id: logout
-                hoverimage: "skyblue.png"
+                picNormal: "../../img/icons/button12-gray.png"
+                picHover: "../../img/icons/button12-gray-hover.png"
+                picPressed: "../../img/icons/button12-gray-hover.png"
+                fontcolor:"#707070"
+                fontsize: 12
+                width: 70; height: 28
                 text: qsTr("Logout")//注销
-                fontcolor: "#086794"
-                width: 56
-                height: 22
-                fontsize: 13
                 onClicked: {
                     sessiondispatcher.logout_ubuntukylin_account();
                     userText.text = "";
@@ -303,8 +298,7 @@ Rectangle {
             height: 25
 //            flag: "VersionFeature"
             onClicked: {
-//                sessiondispatcher.show_slider_qt();
-                sessiondispatcher.showFeatureDialog(mainwindow.pos.x, mainwindow.pos.y);
+                sessiondispatcher.showFeatureDialog();
             }
         }
         Common.StyleButton {
