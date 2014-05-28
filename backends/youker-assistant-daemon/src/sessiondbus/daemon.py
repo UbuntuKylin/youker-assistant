@@ -31,6 +31,7 @@ import dbus
 import dbus.service
 import dbus.mainloop.glib
 import time
+import threading
 
 import cleaner
 import pywapi
@@ -272,6 +273,20 @@ class SessionDaemon(dbus.service.Object):
         onekeyfunc_obj.get_onekey_crufts(self, mode_list)
         self.scan_complete_msg('onekey')
 
+    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+    def mainpage_scan_function(self):
+        mainfunc_obj = cleaner.MainPage()
+        t = threading.Thread(target = mainfunc_obj.get_cache, args=(self,))
+        target_tid = mainfunc_obj.get_threadid(t)
+        self.trans_thread_infor(target_tid)
+        t.join()
+        self.scan_complete_msg('onekey')
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def cancel_mainpage_scan(self, target_tid):
+        mainfunc_obj = cleaner.MainPage()
+        mainfunc_obj.cancel_mainpage_function(target_tid, SystemExit)
+
     @dbus.service.signal(INTERFACE, signature='as')
     def get_largefile_list(self, filelist):
         pass
@@ -377,6 +392,10 @@ class SessionDaemon(dbus.service.Object):
     def data_transmit_by_cache(self, flag0, path, flag1, size):
         pass
 
+    @dbus.service.signal(INTERFACE, signature='i')
+    def trans_thread_infor(self, target_tid):
+        pass
+
     #@dbus.service.signal(INTERFACE, signature='ss')
     #def path_transmit_by_cache(self, flag, path):
     #    pass
@@ -432,6 +451,8 @@ class SessionDaemon(dbus.service.Object):
     def scan_complete_msg(self, para):
         self.scan_complete(para)
 
+    def trans_thread_infor_msg(self, para):
+        self.trans_thread_infor(para)
 
     def display_scan_process_msg(self, para):
         self.display_scan_process(para)
