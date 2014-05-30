@@ -574,7 +574,25 @@ class MyInstallProgress(InstallProgress):
         def start_update(self):
             self.sysdaemon.status_remove_packages("apt_start", "")
 
-def cancel_onekey_clean(thead_obj, exception):
+def cancel_mainpage_function(target_tid, exception):
+    #found = False
+    #target_tid = 0
+    #for tid, tobj in threading._active.items():
+    #    if tobj is thread_obj:
+    #        found = True
+    #        target_tid = tid
+    #        break
+    #if not found:
+    #    raise ValueError("Invalid thread object")
+    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), ctypes.py_object(exception))
+
+    if res = 0:
+        raise ValueError("Invalid thread ID")
+    elif res > 1:
+        ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), None)
+        raise SystemError("PyThreadState_SetAsyncExc failed")
+
+def get_threadid(thread_obj):
     found = False
     target_tid = 0
     for tid, tobj in threading._active.items():
@@ -584,11 +602,83 @@ def cancel_onekey_clean(thead_obj, exception):
             break
     if not found:
         raise ValueError("Invalid thread object")
-    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), ctypes.py_object(exception))
+    return target_tid
 
-    if res = 0:
-        raise ValueError("Invalid thread ID")
-    elif res > 1:
-        ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), None)
-        raise SystemError("PyThreadState_SetAsyncExc failed")
+
+class MainPage():
+    def __init__(self):
+        pass
+
+    def get_cache(self, sesdaemon):
+        flag = False
+        totalsize = 0
+        homedir = ''
+        cache_obj = cacheclean.CacheClean()
+        if sesdaemon:
+            homedir = common.return_homedir_sesdaemon()
+        else:
+            homedir = return_homedir_sysdaemon()
+
+        self.cache_dic = {'apt':[], 'softwarecenter':[], 'thumbnail':[]}
+        aptpath = "/var/cache/apt/archives"
+        temp_apt_list = cache_obj.scan_apt_cache(aptpath)
+        if sesdaemon:
+            for one in temp_apt_list:
+                self.cache_dic['apt'].append(one)
+                totalsize += common.get_size(one)
+                sesdaemon.check_scan_garbage_process(one)
+        else:
+            for one in temp_apt_list:
+                self.cache_dic['apt'].append(one)
+        softwarecenterpath = "%s/.cache/software-center" % homedir
+        temp_softwarecenter_list = cache_obj.public_scan_cache(softwarecenterpath)
+        if sesdaemon:
+            for one in temp_softwarecenter_list:
+                self.cache_dic['softwarecenter'].append(one)
+                totalsize += common.get_size(one)
+                sesdaemon.check_scan_garbage_process(one)
+        else:
+            for one in temp_softwarecenter_list:
+                self.cache_dic['softwarecenter'].append(one)
+        thumbnailspath = "%s/.cache/thumbnails" % homedir
+        try:
+            temp_thumbnails_list = cache_obj.public_scan_cache(thumbnailspath)
+        except Exception, e:
+            print e
+        if sesdaemon:
+            for one in temp_thumbnails_list:
+                self.cache_dic['thumbnail'].append(one)
+                totalsize += common.get_size(one)
+                sesdaemon.check_scan_garbage_process(one)
+        else:
+            for one in temp_thumbnails_list:
+                self.cache_dic['thumbnail'].append(one)
+        if sesdaemon:
+            for key in self.cache_dic.keys():
+                if self.cache_dic[key]:
+                    flag = True
+                    break
+            if flag:
+                sesdaemon.scan_complete('True')
+            else:
+                sesdaemon.scan_complete('False')
+            size_str = common.confirm_filesize_unit(totalsize)
+            sesdaemon.check_scan_complete(size_str)
+        else:
+            pass
+
+    def clean_cache(self, sysdaemon):
+        totalsize = 0
+        self.get_cache(None)
+        for key in self.cache_dic.keys():
+            for f in self.cache_dic[key]:
+                totalsize += common.get_size(f)
+                if os.path.isdir(f):
+                    sysdaemon.info_for_mainpage_clean(f)
+                    shutil.rmtree(f)
+                else:
+                    sysdaemon.info_for_mainpage_clean(f)
+                    os.remove(f)
+        size_str = common.confirm_filesize_unit(totalsize)
+        sysdaemon.mainpage_clean(size_str)
 
