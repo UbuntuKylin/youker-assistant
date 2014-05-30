@@ -76,10 +76,18 @@ Rectangle {
                     pageStack.push(component_boot);
                 }
             }
-            else if (flag == "SoundEffects") {
-                var component_sound = Qt.createComponent("../settings/SoundEffects.qml");
-                if (component_sound.status == Component.Ready) {
-                    pageStack.push(component_sound);
+//            else if (flag == "SoundEffects") {
+//                var component_sound = Qt.createComponent("../settings/SoundEffects.qml");
+//                if (component_sound.status == Component.Ready) {
+//                    pageStack.push(component_sound);
+//                }
+//            }
+            else if (flag == "CameraCapture") {
+                if (sessiondispatcher.judge_camera_qt()) {
+                    pageStack.push(capturepage);
+                }
+                else {
+                    toolkits.alertMSG(qsTr("No found camera!"));
                 }
             }
             else if (flag == "MousePointer")

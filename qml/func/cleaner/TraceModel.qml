@@ -16,9 +16,10 @@
 import QtQuick 1.1
 import "../common" as Common
 
-Item {
+Rectangle {
     id:tracepage
     width: parent.width; height: 437
+    color: "#e4f2fc"
 
     property string btn_text: qsTr("Start scanning")//开始扫描
     property string title: qsTr("Cleanup history, to protect your privacy")//清理历史记录，保护个人隐私
@@ -171,10 +172,10 @@ Item {
         }
     }
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
     //titlebar
     Row {
         id: titlebar

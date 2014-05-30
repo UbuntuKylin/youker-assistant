@@ -16,9 +16,11 @@
 
 import QtQuick 1.1
 import "../common" as Common
-Item {
+
+Rectangle {
     id:filepage
     width: parent.width; height: 437
+    color: "#e4f2fc"
 
     property string title: qsTr("Quickly find large files")//快速找出大文件
     property string description: qsTr("Range:1M-20480M; 1GB = 1024MB")//大小范围为1M-20480M；1GB = 1024MB
@@ -169,11 +171,11 @@ Item {
         }
     }
 
-    //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    //背景
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     //titlebar
     Row {

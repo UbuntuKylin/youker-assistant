@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 import "../common" as Common
-import "../bars" as Bars
+
 Rectangle {
     id: launcherthemepage
     width: parent.width

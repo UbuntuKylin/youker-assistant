@@ -142,6 +142,18 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
+bool SessionDispatcher::judge_camera_qt() {
+    QDBusReply<bool> reply = sessioniface->call("judge_camera");
+    return reply.value();
+}
+
+void SessionDispatcher::call_camera_qt() {
+    QStringList tmp;
+    KThread *thread = new KThread(tmp, sessioniface, "call_camera");
+    thread->start();
+//    sessioniface->call("call_camera");
+}
+
 void SessionDispatcher::handlerHistoryNumber(QString flag, int num) {
     emit this->tellQMLHistoryNumber(flag, num);
 }

@@ -87,6 +87,9 @@ void KThread::run() {
     else if(methodName == "scan_of_large") {
         iface->call("scan_of_large", fileSize, fileFlag);
     }
+    else if(methodName == "call_camera") {
+        iface->call("call_camera");
+    }
 }
 void KThread::stop() {
     wait();

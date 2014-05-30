@@ -16,8 +16,8 @@
 
 import QtQuick 1.1
 import "../common" as Common
-import "../bars" as Bars
 import AudioType 0.1
+
 Rectangle {
     id: soundeffectspage
     width: parent.width

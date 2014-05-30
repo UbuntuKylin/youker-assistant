@@ -155,14 +155,15 @@ Rectangle {
         id: changeCityBtn
         visible: false
         anchors.left: locationText.right
-        wordname: qsTr(" [Change City]")//[更换城市]
-        width: 80
+        wordname: qsTr("[Change]")//[切换]
+        width: 60
         height: locationText.height
 //        flag: "ChangeCity"
         onClicked: {
             sessiondispatcher.showChangeCityDialog();
         }
     }
+
     Text {
         id: ptimeText
         text: qsTr("Release time")//发布时间
@@ -171,18 +172,49 @@ Rectangle {
         color: "#383838"
         anchors.right: parent.right
     }
+    Column {
+        anchors {
+            top: ptimeText.bottom
+            topMargin: 5
+            right: parent.right
+        }
+        Image {
+            id: weatherIcon
+            anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors {
+//                        top: ptimeText.bottom
+//                        topMargin: 5
+//                        right: parent.right
+//            //            rightMargin: 10
+//                    }
+            width: 48; height: 48
+            source: ""//http://l.yimg.com/a/i/us/we/52/21.gif
+         }
+        Common.StyleButton {
+            id: preferencesBtn
+            anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors.top: weatherIcon.bottom
+            wordname: qsTr("Configure")//配  置
+            width: 40
+            height: 20
+    //                flag: "WeatherPreference"
+            onClicked: {
+                sessiondispatcher.showWizardController();
+            }
+        }
+    }
     Row {
         anchors.top: parent.top
         anchors.topMargin: 25
         spacing: 15
-        Column {
-            id: leftrow
-            spacing: 5
-            Image {
-                id: weatherIcon
-                width: 48; height: 48
-                source: ""//http://l.yimg.com/a/i/us/we/52/21.gif
-            }
+//        Column {
+//            id: leftrow
+//            spacing: 5
+//            Image {
+//                id: weatherIcon
+//                width: 48; height: 48
+//                source: ""//http://l.yimg.com/a/i/us/we/52/21.gif
+//            }
 
 //            Common.StyleButton {
 //                id: forecastBtn
@@ -198,17 +230,17 @@ Rectangle {
 //                    pageStack.push(weatherpage);
 //                }
 //            }
-            Common.StyleButton {
-                id: preferencesBtn
-                anchors.horizontalCenter: parent.horizontalCenter
-                wordname: qsTr("Configure")//配  置
-                width: 40
-                height: 20
-//                flag: "WeatherPreference"
-                onClicked: {
-                    sessiondispatcher.showWizardController();
-                }
-            }
+//            Common.StyleButton {
+//                id: preferencesBtn
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                wordname: qsTr("Configure")//配  置
+//                width: 40
+//                height: 20
+////                flag: "WeatherPreference"
+//                onClicked: {
+//                    sessiondispatcher.showWizardController();
+//                }
+//            }
 //            Common.StyleButton {
 //                id: refreshBtn
 //                anchors.horizontalCenter: parent.horizontalCenter
@@ -223,7 +255,7 @@ Rectangle {
 //                    }
 //                }
 //            }
-        }
+//        }
 
         Column {
             spacing: 5

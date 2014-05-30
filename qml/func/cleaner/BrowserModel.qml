@@ -16,9 +16,10 @@
 import QtQuick 1.1
 import "../common" as Common
 
-Item {
+Rectangle {
     id:browserpage
     width: parent.width; height: 437
+    color: "#e4f2fc"
 
     property string title: qsTr("Deep cleaning up the browser cache")//深度清理浏览器缓存
     property string description: qsTr("Deep cleaning up the browser cache, to save disk space")//深度清理浏览器缓存，节省磁盘空间！
@@ -255,10 +256,10 @@ Item {
     }
 
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"//bg-bottom-tab
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"//bg-bottom-tab
+//        anchors.fill: parent
+//    }
 
     //titlebar
     Row {

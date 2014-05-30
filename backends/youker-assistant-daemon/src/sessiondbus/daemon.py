@@ -50,6 +50,7 @@ from beautify.sound import Sound
 from beautify.filemanager import FileManager
 from beautify.cloudconfig import CloudConfig
 from sysinfo import Sysinfo
+from camera.capture import Capture
 from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather
 from appcollections.monitorball.monitor_ball import MonitorBall
@@ -74,6 +75,7 @@ class SessionDaemon(dbus.service.Object):
         self.fileconf = FileManager()
         self.weatherconf = WeatherInfo(self)
         self.yahooconf = YahooWeather(self)
+        self.capturemode = Capture()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -95,6 +97,15 @@ class SessionDaemon(dbus.service.Object):
         #    path = os.path.dirname(path)
         if os.path.isdir(root_path):
             os.system("xdg-open '%s' &" % root_path)
+
+    # True: has camera, False: no camera
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def judge_camera(self):
+        return self.capturemode.judge_camera()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def call_camera(self):
+        self.capturemode.call_camera()
 
     # a dbus method which download and use kuaipan cloud conf by kobe
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')

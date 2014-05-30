@@ -443,6 +443,12 @@ Rectangle {
             if (num == 0) {
                 pageStack.push(homepage);
             }
+            else if (num == 1) {
+                pageStack.push(systemmessage);
+            }
+            else if (num == 2) {
+                pageStack.push(clearrubbish);
+            }
             else if (num == 3) {
                 pageStack.push(systemset);
             }

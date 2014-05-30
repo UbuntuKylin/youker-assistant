@@ -16,9 +16,10 @@
 import QtQuick 1.1
 import "../common" as Common
 
-Item {
+Rectangle {
     id:cookiespage
     width: parent.width; height: 437
+    color: "#e4f2fc"
 
     property string title: qsTr("Cleanup browser Cookies information, to protect your privacy")//清理浏览器 Cookies 信息，保护个人隐私
     property string description: qsTr("Clean up user login information, support Firefox and Chromium browser")//清理用户登陆网站信息, 支持 Firefox 和 Chromium 浏览器
@@ -288,11 +289,11 @@ Item {
         }
     }
 
-    //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    //背景
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     //titlebar
     Row {

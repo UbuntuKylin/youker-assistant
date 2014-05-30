@@ -43,6 +43,9 @@ public:
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
 
+    Q_INVOKABLE bool judge_camera_qt();
+    Q_INVOKABLE void call_camera_qt();
+
     //弹出登录框
     Q_INVOKABLE void popup_login_dialog();
     //退出登录

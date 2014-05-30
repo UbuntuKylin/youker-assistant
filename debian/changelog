@@ -7,8 +7,9 @@ youker-assistant (1.0.3-0ubuntu1) trusty; urgency=low
   * Add slider show.
   * Solved the interface flicker problem when it move(LP: #1304980).
   * Add some settings about Dash, Panel and Launcher.
+  * Use camera to take pictures.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 28 May 2014 10:35:30 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 30 May 2014 14:29:57 +0800
 
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 

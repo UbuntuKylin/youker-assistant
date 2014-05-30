@@ -26,12 +26,13 @@ Item {
         id: masklayer
         width: parent.width
         height: parent.height
+        color: "#e4f2fc"
         x: (parent.width * 1.5)
         //背景
-        Image {
-            source: "../../img/skin/bg-middle.png"
-            anchors.fill: parent
-        }
+//        Image {
+//            source: "../../img/skin/bg-middle.png"
+//            anchors.fill: parent
+//        }
         Connections
         {
             target: systemdispatcher
@@ -100,6 +101,7 @@ Item {
         id:root
         width: parent.width
         height: parent.height
+        color: "#e4f2fc"
         property string title: qsTr("Uninstall unnecessary procedures, old kernel packages and configfile")//卸载不必要的程序、旧内核包和清除软件配置文件
         property string description: qsTr("Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance")//清理软件安装过程中捆绑安装的依赖程序、旧内核包和软件配置文件，提高系统性能
         property string btnFlag: "package_scan"//扫描或者清理的标记：package_scan/package_work
@@ -454,10 +456,10 @@ Item {
         }
 
         //背景
-        Image {
-            source: "../../img/skin/bg-middle.png"
-            anchors.fill: parent
-        }
+//        Image {
+//            source: "../../img/skin/bg-middle.png"
+//            anchors.fill: parent
+//        }
 
         //titlebar
         Row {
