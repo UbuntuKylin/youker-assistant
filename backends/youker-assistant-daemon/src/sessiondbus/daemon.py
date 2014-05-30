@@ -284,19 +284,19 @@ class SessionDaemon(dbus.service.Object):
         onekeyfunc_obj.get_onekey_crufts(self, mode_list)
         self.scan_complete_msg('onekey')
 
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    def mainpage_scan_function(self):
-        mainfunc_obj = cleaner.MainPage()
-        t = threading.Thread(target = mainfunc_obj.get_cache, args=(self,))
-        target_tid = mainfunc_obj.get_threadid(t)
-        self.trans_thread_infor(target_tid)
-        t.join()
-        self.scan_complete_msg('onekey')
+#    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+#    def mainpage_scan_function(self):
+#        mainfunc_obj = cleaner.MainPage()
+#        t = threading.Thread(target = mainfunc_obj.get_cache, args=(self,))
+#        target_tid = mainfunc_obj.get_threadid(t)
+#        self.trans_thread_infor(target_tid)
+#        t.join()
+#        self.scan_complete_msg('onekey')
 
-    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
-    def cancel_mainpage_scan(self, target_tid):
-        mainfunc_obj = cleaner.MainPage()
-        mainfunc_obj.cancel_mainpage_function(target_tid, SystemExit)
+#    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+#    def cancel_mainpage_scan(self, target_tid):
+#        mainfunc_obj = cleaner.MainPage()
+#        mainfunc_obj.cancel_mainpage_function(target_tid, SystemExit)
 
     @dbus.service.signal(INTERFACE, signature='as')
     def get_largefile_list(self, filelist):

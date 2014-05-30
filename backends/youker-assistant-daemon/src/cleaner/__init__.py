@@ -575,6 +575,7 @@ class MyInstallProgress(InstallProgress):
             self.sysdaemon.status_remove_packages("apt_start", "")
 
 def cancel_mainpage_function(target_tid, exception):
+    pass
     #found = False
     #target_tid = 0
     #for tid, tobj in threading._active.items():
@@ -584,13 +585,13 @@ def cancel_mainpage_function(target_tid, exception):
     #        break
     #if not found:
     #    raise ValueError("Invalid thread object")
-    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), ctypes.py_object(exception))
+#    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), ctypes.py_object(exception))
 
-    if res = 0:
-        raise ValueError("Invalid thread ID")
-    elif res > 1:
-        ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), None)
-        raise SystemError("PyThreadState_SetAsyncExc failed")
+#    if res = 0:
+#        raise ValueError("Invalid thread ID")
+#    elif res > 1:
+#        ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(target_tid), None)
+#        raise SystemError("PyThreadState_SetAsyncExc failed")
 
 def get_threadid(thread_obj):
     found = False
