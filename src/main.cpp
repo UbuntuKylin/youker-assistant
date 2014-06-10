@@ -28,13 +28,13 @@
 #include "processmanager.h"
 #include "devicemanager.h"
 #include "slidershow.h"
-#include "homepage.h"
 #include "qmlaudio.h"
 #include "qrangemodel.h"
 #include "qstyleitem.h"
 #include "qwheelarea.h"
 #include "qtmenu.h"
 #include "qcursorarea.h"
+#include "homepage.h"
 
 
 void registerTypes() {
