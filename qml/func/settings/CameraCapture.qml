@@ -41,9 +41,9 @@ Rectangle {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
 //            hoverimage: "button12-gray.png"
-            picNormal: "../../img/360/button12-gray.png"
-            picHover: "../../img/360/button12-gray-hover.png"
-            picPressed: "../../img/360/button12-gray-hover.png"
+            picNormal: "../../img/icons/button12-gray.png"
+            picHover: "../../img/icons/button12-gray-hover.png"
+            picPressed: "../../img/icons/button12-gray-hover.png"
             fontcolor:"#707070"
             fontsize: 12
             width: 70; height: 28
@@ -117,9 +117,9 @@ Rectangle {
             spacing: 20
             anchors.horizontalCenter: parent.horizontalCenter
             Common.Button {
-                picNormal: "../../img/360/button12.png"
-                picHover: "../../img/360/button12-hover.png"
-                picPressed: "../../img/360/button12-hover.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -129,9 +129,9 @@ Rectangle {
                 }
             }
             Common.Button {
-                picNormal: "../../img/360/button12.png"
-                picHover: "../../img/360/button12-hover.png"
-                picPressed: "../../img/360/button12-hover.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
