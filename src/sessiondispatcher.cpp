@@ -28,7 +28,6 @@
 #include <QFontDialog>
 #include <QFileDialog>
 #include "kthread.h"
-#include "wizarddialog.h"
 #include "changecitydialog.h"
 #include "util.h"
 #include "kfontdialog.h"
@@ -109,6 +108,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(get_largefile_list(QStringList)), this, SLOT(handlerLargeFileList(QStringList)));
 
     QObject::connect(MessengerProxy::get_instance_object(), SIGNAL(getHomeBackIndex(int)), this, SLOT(handlerBackToHomePage(int)));
+
+    wizardDialog = new WizardDialog(mSettings, 0);
+    connect(wizardDialog, SIGNAL(readyToUpdateRateTime(int)), this, SLOT(handler_change_rate(int)));
+    connect(wizardDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -131,6 +134,14 @@ SessionDispatcher::~SessionDispatcher() {
     mSettings->sync();
     if (mSettings != NULL) {
         delete mSettings;
+    }
+
+    if (slidershow != NULL) {
+        delete slidershow;
+    }
+
+    if (wizardDialog != NULL) {
+        delete wizardDialog;
     }
 
     this->exit_qt();
@@ -1703,19 +1714,21 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
 
 bool SessionDispatcher::showWizardController() {
     //WizardDialog width:531; WizardDialog height:210
-    WizardDialog *wizardDialog = new WizardDialog(mSettings, 0);
-    connect(wizardDialog, SIGNAL(readyToUpdateRateTime(int)), this, SLOT(handler_change_rate(int)));
-    connect(wizardDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
+//    WizardDialog *wizardDialog = new WizardDialog(mSettings, 0);
+//    connect(wizardDialog, SIGNAL(readyToUpdateRateTime(int)), this, SLOT(handler_change_rate(int)));
+//    connect(wizardDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
     int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (531  / 2);
     int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (210  / 2);
     wizardDialog->move(w_x, w_y);
-    wizardDialog->QWidget::setAttribute(Qt::WA_DeleteOnClose);
-    if(wizardDialog->exec()==QDialog::Rejected) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    wizardDialog->show();
+    return true;
+//    wizardDialog->QWidget::setAttribute(Qt::WA_DeleteOnClose);
+//    if(wizardDialog->exec()==QDialog::Rejected) {
+//        return false;
+//    }
+//    else {
+//        return true;
+//    }
 }
 
 void SessionDispatcher::handler_change_rate(int rate) {

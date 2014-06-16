@@ -83,7 +83,7 @@ WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
 
     loadConf();
     connect(ui->okBtn, SIGNAL(clicked()),this, SLOT(writeWeatherConf()));
-    connect(ui->quitBtn, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->quitBtn, SIGNAL(clicked()), this, SLOT(hide()));
     connect(ui->spinBox,SIGNAL(valueChanged(int)),this,SLOT(setSpinValue(int)));
 }
 
@@ -168,7 +168,8 @@ void WizardDialog::writeWeatherConf() {
     pSettings->setValue("weather/rate", strValue);
     pSettings->sync();
     emit readyToUpdateRateTime(spinValue);
-    this->accept();
+    this->hide();
+//    this->accept();
 }
 
 void WizardDialog::addLocation() {
@@ -280,7 +281,8 @@ bool WizardDialog::eventFilter(QObject *obj, QEvent *event) {
                 QMouseEvent *me = (QMouseEvent *)event;
                 QLabel *lb = (QLabel *)obj;
                 if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
-                    this->close();
+//                    this->close();
+                    this->hide();
                 }else{
                     ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
                 }

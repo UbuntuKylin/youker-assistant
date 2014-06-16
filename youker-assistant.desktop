@@ -8,4 +8,4 @@ Icon=youker-assistant.png
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=GNOME;GTK;Graphics;RasterGraphics;Viewer;
+Categories=GNOME;GTK;System;Settings;Viewer;

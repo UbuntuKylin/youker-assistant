@@ -28,6 +28,7 @@
 #include "httpauth.h"
 //#include "skincenter.h"
 #include "newcharacter.h"
+#include "wizarddialog.h"
 class QSettings;
 
 class SessionDispatcher : public QObject
@@ -523,6 +524,7 @@ private:
     QTimer *timer;
     bool loginOK;
     NewCharacter *slidershow; //新版特性界面
+    WizardDialog *wizardDialog;
 };
 
 #endif // SESSIONDISPATCHER_H
