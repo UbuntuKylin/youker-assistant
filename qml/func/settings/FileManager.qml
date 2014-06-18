@@ -26,8 +26,8 @@ Rectangle {
     property string actiontext: qsTr("Manage the Nautilus file manager.")//管理Nautilus文件管理器
 
     property bool first_icon_size: false
-//    property bool first_cache_time: false
-//    property bool first_cache_size: false
+    property bool first_cache_time: false
+    property bool first_cache_size: false
     //背景
     Image {
         source: "../../img/skin/bg-middle.png"
@@ -513,13 +513,12 @@ Rectangle {
                     width: 200
                     value: sessiondispatcher.get_thumbnail_cache_time_qt()
                     onValueChanged: {
-                        sessiondispatcher.set_thumbnail_cache_time_qt(cachetimeslider.value);
-//                        if(filemanagerpage.first_cache_time ) {
-//                            sessiondispatcher.set_thumbnail_cache_time_qt(cachetimeslider.value);
-//                        }
-//                        if(iconsizeslider.value == -1) {//系统初始化时value的值为-1（最小值），需要过滤掉
-//                            filemanagerpage.first_cache_time = true;
-//                        }
+                        if(filemanagerpage.first_cache_time ) {
+                            sessiondispatcher.set_thumbnail_cache_time_qt(cachetimeslider.value);
+                        }
+                        if(iconsizeslider.value == -1) {//系统初始化时value的值为-1（最小值），需要过滤掉
+                            filemanagerpage.first_cache_time = true;
+                        }
                     }
                     stepSize: 1
                     animated: true
@@ -573,13 +572,12 @@ Rectangle {
                     width: 200
                     value: sessiondispatcher.get_thumbnail_cache_size_qt()
                     onValueChanged: {
-                        sessiondispatcher.set_thumbnail_cache_size_qt(maxcacheslider.value);
-//                        if(filemanagerpage.first_cache_size ) {
-//                            sessiondispatcher.set_thumbnail_cache_size_qt(maxcacheslider.value);
-//                        }
-//                        if(iconsizeslider.value == -1) {//系统初始化时value的值为-1（最小值），需要过滤掉
-//                            filemanagerpage.first_cache_size = true;
-//                        }
+                        if(filemanagerpage.first_cache_size ) {
+                            sessiondispatcher.set_thumbnail_cache_size_qt(maxcacheslider.value);
+                        }
+                        if(iconsizeslider.value == -1) {//系统初始化时value的值为-1（最小值），需要过滤掉
+                            filemanagerpage.first_cache_size = true;
+                        }
                     }
                     stepSize: 1
                     animated: true

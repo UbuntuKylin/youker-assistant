@@ -212,7 +212,7 @@ Rectangle {
         var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
         var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
         var default_antialiasing = sessiondispatcher.get_default_theme_sring_qt("antialiasingstyle");
-        for(var x=0; x < smoothlist.length; x++) {
+        for(var x=0; x < antialiasinglist.length; x++) {
             if (current_antialiasing == antialiasinglist[x]) {
                 index2 = x;
                 defaultfontpage.current_antialiasing_index = x;
