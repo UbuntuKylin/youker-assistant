@@ -397,8 +397,27 @@ Rectangle {
                         Rectangle{
                             width: play.width;height: play.height; color: "transparent"
                             Image {id:play;source: "../../img/icons/play.png"}
+                            Image {
+                                id: btnImg1
+                                anchors.fill: parent
+                                source: ""
+                            }
                             MouseArea{
                                 anchors.fill:parent
+                                hoverEnabled: true
+                                onEntered: {
+                                    btnImg1.source = "../../img/toolWidget/highlight.png";
+                                }
+                                onPressed: {
+                                    btnImg1.source = "../../img/toolWidget/highlight.png";
+                                }
+                                //要判断松开是鼠标位置
+                                onReleased: {
+                                    btnImg1.source = "../../img/toolWidget/highlight.png";
+                                }
+                                onExited: {
+                                    btnImg1.source = ""
+                                }
                                 onClicked: {
                                     wrapper.ListView.view.currentIndex = index;
                                     systemdispatcher.getMusicFileAbsolutePath(musicname);
@@ -417,8 +436,27 @@ Rectangle {
                         Rectangle{
                             width: next.width;height: next.height; color: "transparent"
                             Image {id:next;source: "../../img/icons/folder.png"}
+                            Image {
+                                id: btnImg2
+                                anchors.fill: parent
+                                source: ""
+                            }
                             MouseArea{
                                 anchors.fill:parent
+                                hoverEnabled: true
+                                onEntered: {
+                                    btnImg2.source = "../../img/toolWidget/highlight.png";
+                                }
+                                onPressed: {
+                                    btnImg2.source = "../../img/toolWidget/highlight.png";
+                                }
+                                //要判断松开是鼠标位置
+                                onReleased: {
+                                    btnImg2.source = "../../img/toolWidget/highlight.png";
+                                }
+                                onExited: {
+                                    btnImg2.source = ""
+                                }
                                 onClicked: {
                                     wrapper.ListView.view.currentIndex = index;
                                     var selectedmusic = systemdispatcher.showSelectFileDialog("soundeffects");
@@ -431,8 +469,27 @@ Rectangle {
                         Rectangle{
                             width: revoke.width;height: revoke.height; color: "transparent"
                             Image {id:revoke;source: "../../img/icons/revoke.png"}
+                            Image {
+                                id: btnImg3
+                                anchors.fill: parent
+                                source: ""
+                            }
                             MouseArea{
                                 anchors.fill:parent
+                                hoverEnabled: true
+                                onEntered: {
+                                    btnImg3.source = "../../img/toolWidget/highlight.png";
+                                }
+                                onPressed: {
+                                    btnImg3.source = "../../img/toolWidget/highlight.png";
+                                }
+                                //要判断松开是鼠标位置
+                                onReleased: {
+                                    btnImg3.source = "../../img/toolWidget/highlight.png";
+                                }
+                                onExited: {
+                                    btnImg3.source = ""
+                                }
                                 onClicked: {
                                     wrapper.ListView.view.currentIndex = index;
                                     systemdispatcher.restore_sound_file_qt(split_music_name(musicname));

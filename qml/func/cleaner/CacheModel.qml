@@ -428,6 +428,8 @@ Rectangle {
                 width: 40
                 height: 20
                 onClicked: {
+                    actionBtn.visible = true;
+                    actionBtn.enabled = true;
                     cachepage.aptEmpty = false;
                     cachepage.softEmpty = false;
                     cachepage.thumbEmpty = false;

@@ -507,6 +507,8 @@ Item {
                     width: 40
                     height: 20
                     onClicked: {
+                        actionBtn.visible = true;
+                        actionBtn.enabled = true;
                         root.packageEmpty = false;
                         root.kernelEmpty = false;
                         root.configEmpty = false;
