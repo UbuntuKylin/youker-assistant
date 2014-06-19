@@ -229,11 +229,11 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unused:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="title1_5">
+  <widget class="QLabel" name="memory_title">
    <property name="geometry">
     <rect>
      <x>135</x>
-     <y>236</y>
+     <y>234</y>
      <width>171</width>
      <height>17</height>
     </rect>
@@ -319,7 +319,7 @@
   <zorder>ratiolabel_2</zorder>
   <zorder>title1_3</zorder>
   <zorder>title1_4</zorder>
-  <zorder>title1_5</zorder>
+  <zorder>memory_title</zorder>
   <zorder>memory_1</zorder>
   <zorder>memory_2</zorder>
   <zorder>title1_6</zorder>
