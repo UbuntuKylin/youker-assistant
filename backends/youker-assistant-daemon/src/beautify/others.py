@@ -79,6 +79,9 @@ class Others:
     def plymouth_init_check(self):
         existingDir = '/var/lib/youker-assistant-daemon/plymouth/existing/'
         linkFileDir = '/lib/plymouth/themes/default.plymouth'
+        
+        if(os.path.exists('/lib/plymouth/themes/ubuntukylin-logo') == False):
+            shutil.copytree('/var/lib/youker-assistant-daemon/plymouth/ubuntukylin-logo/', '/lib/plymouth/themes/ubuntukylin-logo')
 
         # locate the current plymouth theme dir
         linkFile = open(linkFileDir)
@@ -87,7 +90,7 @@ class Others:
         index = fullString.find('ScriptFile=')
         theLine = fullString[index:]
         # cut 'ScriptFile=' & '\n'
-        scriptFile = theLine[theLine.find('/'):]
+        scriptFile = theLine[theLine.find('/'):theLine.find('\n')]
         scriptDir = scriptFile[0:scriptFile.rfind('/')]
         scriptName = scriptFile[scriptFile.rfind('/') + 1:]
         plymouthName = scriptDir[scriptDir.rfind('/') + 1:]
@@ -114,17 +117,15 @@ class Others:
         used = animation[animation.index('themes/')+len('themes/'):]
         used = used[:used.index('\n')]
         if used == plymouthName :
-            return 'use'
-        elif plymouthName == 'ubuntukylin-logo'
-            return 'sys'
+            return False
         else :
             shutil.rmtree('/var/lib/youker-assistant-daemon/plymouth/existing/' + plymouthName)
             shutil.rmtree('/lib/plymouth/themes/' + plymouthName)
-            return 'ok'
+            return True
 
 if __name__ == '__main__':
     ooo = Others()
 # 	print ooo.get_existing_plymouth_list()
 # 	ooo.add_new_plymouth('/home/shine/heihei.png', 'hoho')
 #	ooo.custom_plymouth_bg('hoho')
-# 	ooo.plymouth_init_check()
+#    ooo.plymouth_init_check()
