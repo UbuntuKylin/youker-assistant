@@ -854,7 +854,7 @@ class DetailInfo:
         multimedia = n.read()
         n.close()
         if multimedia:
-            if re.findall('Audio device:',multimedia) :
+            if re.findall('Audio device:',multimedia):
                 tmp = multimedia[multimedia.index('Audio device:')- 8:]
                 multimedia = tmp[30:]
                 if MulBusinfo:

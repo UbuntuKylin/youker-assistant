@@ -39,6 +39,7 @@ private:
     QImage wheel;
     QPixmap blister;
     int ratio_sus;
+    int cpu_sus;
     QString locale_Lan;
 signals:
     void accelerate_memory();
