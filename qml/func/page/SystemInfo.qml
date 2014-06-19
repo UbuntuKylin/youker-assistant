@@ -172,14 +172,14 @@ Rectangle {
             }
             Common.ShowHide {
                 anchors.fill: parent
-                Info.BoardInfo {
+                Info.MemoryInfo {
                     width: parent.width
                     height: parent.height
                 }
             }
             Common.ShowHide {
                 anchors.fill: parent
-                Info.MemoryInfo {
+                Info.BoardInfo {
                     width: parent.width
                     height: parent.height
                 }

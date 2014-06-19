@@ -64,20 +64,23 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             //屏幕坏点检测
-            if (flag == "CheckScreen")
+            if (flag == "CheckScreen") {
                 sessiondispatcher.showCheckscreenDialog();
+            }
             else if (flag == "BootAnimation") {
-                pageStack.push(bootanimationpage);
+                pageStack.push(Qt.resolvedUrl("../settings/BootAnimation.qml"));
+//                pageStack.push(bootanimationpage);
 //                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
 //                if (component_boot.status == Component.Ready) {
 //                    pageStack.push(component_boot);
 //                }
             }
-            else if(flag == "FcitxConfigtool") {
-                pageStack.push(fcitxConfigtoolpage);
-            }
+//            else if(flag == "FcitxConfigtool") {
+//                pageStack.push(fcitxConfigtoolpage);
+//            }
             else if(flag == "ProcessManager") {
-                pageStack.push(processmanagerpage);
+//                pageStack.push(processmanagerpage);
+                pageStack.push(Qt.resolvedUrl("../settings/ProcessManager.qml"));
             }
             //kobe:选中项深色块移动
             scaleMe.GridView.view.currentIndex = index;

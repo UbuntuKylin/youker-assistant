@@ -66,15 +66,19 @@ Rectangle {
         onExited: btnImg.source = ""
         onClicked: {
             //屏幕坏点检测
-            if (flag == "CheckScreen")
+            if (flag == "CheckScreen") {
                 sessiondispatcher.showCheckscreenDialog();
-            else if (flag == "Desktopicon")
-                pageStack.push(desktopiconsetpage);
+            }
+            else if (flag == "Desktopicon") {
+//                pageStack.push(desktopiconsetpage);
+                pageStack.push(Qt.resolvedUrl("../settings/DesktopIcon.qml"));
+            }
             else if (flag == "BootAnimation") {
-                var component_boot = Qt.createComponent("../settings/BootAnimation.qml");
-                if (component_boot.status == Component.Ready) {
-                    pageStack.push(component_boot);
-                }
+                pageStack.push(Qt.resolvedUrl("../settings/BootAnimation.qml"));
+//                var component_boot = Qt.createComponent("../settings/BootAnimation.qml");
+//                if (component_boot.status == Component.Ready) {
+//                    pageStack.push(component_boot);
+//                }
             }
 //            else if (flag == "SoundEffects") {
 //                var component_sound = Qt.createComponent("../settings/SoundEffects.qml");
@@ -84,16 +88,21 @@ Rectangle {
 //            }
             else if (flag == "CameraCapture") {
                 if (sessiondispatcher.judge_camera_qt()) {
-                    pageStack.push(capturepage);
+//                    pageStack.push(capturepage);
+                    pageStack.push(Qt.resolvedUrl("../settings/CameraCapture.qml"));
                 }
                 else {
                     toolkits.alertMSG(qsTr("No found camera!"));
                 }
             }
-            else if (flag == "MousePointer")
-                pageStack.push(mousepointerpage);
-            else if (flag == "TouchpadSet")
-                pageStack.push(touchpadsetpage);
+            else if (flag == "MousePointer") {
+//                pageStack.push(mousepointerpage);
+                pageStack.push(Qt.resolvedUrl("../settings/MousePointer.qml"));
+            }
+            else if (flag == "TouchpadSet") {
+//                pageStack.push(touchpadsetpage);
+                pageStack.push(Qt.resolvedUrl("../settings/TouchpadSet.qml"));
+            }
             //kobe:选中项深色块移动
 //            scaleMe.GridView.view.currentIndex = index;
         }

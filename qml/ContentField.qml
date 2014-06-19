@@ -67,43 +67,43 @@ Rectangle {
     }
 
 
-        Common.PageStack {
-            id: pageStack
-            Component.onCompleted: {
-                pageStack.push(homepage);
-            }
-            Common.Page {
-                id: homepage
-                visible: false
-                HomeView.HomePage {}
-            }
-            Common.Page {
-                id: systemmessage
-                visible: false
-                HomeView.SystemInfo {}
-            }
-            Common.Page {
-                id: clearrubbish
-                visible: false
-                HomeView.SystemClean {}
-            }
-            Common.Page {
-                id: systemset
-                visible: false
-                HomeView.SystemSet {}
-            }
-            Common.Page {
-                id: functioncollection
-                visible: false
-                HomeView.SystemBox {}
-            }
+    Common.PageStack {
+        id: pageStack
+        Component.onCompleted: {
+            pageStack.push(homepage);
+        }
+        Common.Page {
+            id: homepage
+            visible: false
+            HomeView.HomePage {}
+        }
+        Common.Page {
+            id: systemmessage
+            visible: false
+            HomeView.SystemInfo {}
+        }
+        Common.Page {
+            id: clearrubbish
+            visible: false
+            HomeView.SystemClean {}
+        }
+        Common.Page {
+            id: systemset
+            visible: false
+            HomeView.SystemSet {}
+        }
+        Common.Page {
+            id: functioncollection
+            visible: false
+            HomeView.SystemBox {}
+        }
 
             //ProcessManager page
-            Common.Page {
-                id: processmanagerpage
-                visible: false
-                HomeView.ProcessManager {}
-            }
+//            Common.Page {
+//                id: processmanagerpage
+//                visible: false
+//                HomeView.ProcessManager {}
+//            }
             //WeatherForecast-page
 //            Common.Page {
 //                id:weatherpage
@@ -112,81 +112,81 @@ Rectangle {
 //            }
 
             //systemset-pages
-            Common.Page {
-                id: capturepage
-                visible: false
-                SysSettings.CameraCapture {}
-            }
-            Common.Page {
-                id: widgetthemepage
-                visible: false
-                SysSettings.WidgetTheme {}
-            }
-            Common.Page {
-                id: desktopiconsetpage
-                visible: false
-                SysSettings.DesktopIcon {}
-            }
-            Common.Page {
-                id: mousepointerpage
-                visible: false
-                SysSettings.MousePointer {}
-            }
+//            Common.Page {
+//                id: capturepage
+//                visible: false
+//                SysSettings.CameraCapture {}
+//            }
+//            Common.Page {
+//                id: widgetthemepage
+//                visible: false
+//                SysSettings.WidgetTheme {}
+//            }
+//            Common.Page {
+//                id: desktopiconsetpage
+//                visible: false
+//                SysSettings.DesktopIcon {}
+//            }
+//            Common.Page {
+//                id: mousepointerpage
+//                visible: false
+//                SysSettings.MousePointer {}
+//            }
 
-            Common.Page {
-                id: soundeffectspage
-                visible: false
-                SysSettings.SoundEffects {}
-            }
-            Common.Page {
-                id: bootanimationpage
-                visible: false
-                SysSettings.BootAnimation {}
-            }
-            Common.Page {
-                id: launcherthemepage
-                visible: false
-                SysSettings.LauncherTheme {}
-            }
-            Common.Page {
-                id: panelmanagerpage
-                visible: false
-                SysSettings.PanelManager {}
-            }
-            Common.Page {
-                id: windowmanagerpage
-                visible: false
-                SysSettings.WindowManager {}
-            }
-            Common.Page {
-                id: defaultfontpage
-                visible: false
-                SysSettings.DefaultFont {}
-            }
-            Common.Page {
-                id: touchpadsetpage
-                visible: false
-                SysSettings.TouchpadSet {}
-            }
-            Common.Page {
-                id: filemanagerpage
-                visible: false
-                SysSettings.FileManager {}
-            }
-            Common.Page {
-                id: fcitxConfigtoolpage
-                visible: false
-                SysSettings.FcitxConfigtool{}
-            }
-            Common.Page {
-                id: fcitxConfigtoolFontpage
-                visible: false
-                SysSettings.FcitxConfigtoolFont{}
-            }
-            Common.Page {
-                id: fcitxConfigtoolKeypage
-                visible: false
-                SysSettings.FcitxConfigtoolKey{}
-            }
+//            Common.Page {
+//                id: soundeffectspage
+//                visible: false
+//                SysSettings.SoundEffects {}
+//            }
+//            Common.Page {
+//                id: bootanimationpage
+//                visible: false
+//                SysSettings.BootAnimation {}
+//            }
+//            Common.Page {
+//                id: launcherthemepage
+//                visible: false
+//                SysSettings.LauncherTheme {}
+//            }
+//            Common.Page {
+//                id: panelmanagerpage
+//                visible: false
+//                SysSettings.PanelManager {}
+//            }
+//            Common.Page {
+//                id: windowmanagerpage
+//                visible: false
+//                SysSettings.WindowManager {}
+//            }
+//            Common.Page {
+//                id: defaultfontpage
+//                visible: false
+//                SysSettings.DefaultFont {}
+//            }
+//            Common.Page {
+//                id: touchpadsetpage
+//                visible: false
+//                SysSettings.TouchpadSet {}
+//            }
+//            Common.Page {
+//                id: filemanagerpage
+//                visible: false
+//                SysSettings.FileManager {}
+//            }
+//            Common.Page {
+//                id: fcitxConfigtoolpage
+//                visible: false
+//                SysSettings.FcitxConfigtool{}
+//            }
+//            Common.Page {
+//                id: fcitxConfigtoolFontpage
+//                visible: false
+//                SysSettings.FcitxConfigtoolFont{}
+//            }
+//            Common.Page {
+//                id: fcitxConfigtoolKeypage
+//                visible: false
+//                SysSettings.FcitxConfigtoolKey{}
+//            }
     }
 }

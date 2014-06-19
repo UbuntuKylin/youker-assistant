@@ -115,7 +115,7 @@ class Others:
         used = used[:used.index('\n')]
         if used == plymouthName :
             return 'use'
-        elif plymouthName == 'ubuntukylin-logo'
+        elif plymouthName == 'ubuntukylin-logo':
             return 'sys'
         else :
             shutil.rmtree('/var/lib/youker-assistant-daemon/plymouth/existing/' + plymouthName)
