@@ -134,6 +134,9 @@ class DetailInfo:
 #   DvdFw			    固件版本
 #   DvdSerial		    序列号 
 
+    def __init__(self):
+        self.lshwstr = ''
+
     def ctoascii(self,buf):
         ch = str(buf)
         asci = binascii.b2a_hex(ch)
@@ -311,12 +314,22 @@ class DetailInfo:
             url = vendors.get(tmp[0].upper())
             if url:
                 return url[0]
+        tmp = re.findall("Intel", v)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
         tmp = re.findall("ATI", p)
         if tmp :
             url = vendors.get(tmp[0].upper())
             if url:
                 return url[0]
         tmp = re.findall("SIS", p)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
+        tmp = re.findall("Intel", p)
         if tmp :
             url = vendors.get(tmp[0].upper())
             if url:
@@ -685,9 +698,7 @@ class DetailInfo:
                     strin = st.read()
                     st.close()
                     tmp = re.findall("Model=(.*), F",strin)
-                    if not tmp :
-                        continue
-                    else :
+                    if tmp :
                         if DiskProduct :
                             DiskProduct += "<1_1>"+tmp[0]
                         else :
@@ -729,6 +740,7 @@ class DetailInfo:
                         DiskName += "<1_1>" + k
                     else :
                         DiskName = k
+            
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
         return dis
 
@@ -842,7 +854,7 @@ class DetailInfo:
         multimedia = n.read()
         n.close()
         if multimedia:
-            while  re.findall('Audio device:',multimedia) :
+            if re.findall('Audio device:',multimedia) :
                 tmp = multimedia[multimedia.index('Audio device:')- 8:]
                 multimedia = tmp[30:]
                 if MulBusinfo:
@@ -855,6 +867,27 @@ class DetailInfo:
                     MulVendor += "<1_1>" + self.get_url('',self.strip(pro[0]))
                 else :
                     pro = re.findall('Audio device: (.*)',tmp)
+                    MulProduct = pro[0]
+                    MulVendor = self.get_url('',self.strip(pro[0]))
+                MulNum += 1
+                tmp = re.findall('Kernel driver in use: (.*)',tmp)
+                if MulDrive:
+                    MulDrive += "<1_1>" + tmp[0]
+                else :
+                    MulDrive = tmp[0]
+            elif re.findall('Multimedia audio controller:',multimedia) :
+                tmp = multimedia[multimedia.index('Multimedia audio controller:')- 8:]
+                multimedia = tmp[30:]
+                if MulBusinfo:
+                    MulBusinfo += "<1_1>"+ 'pci@0000:' + tmp[ :8]
+                else :
+                    MulBusinfo = 'pci@0000:' + tmp[ :8]
+                if MulProduct:
+                    pro = re.findall('Multimedia audio controller: (.*)',tmp)
+                    MulProduct += "<1_1>" + pro[0]
+                    MulVendor += "<1_1>" + self.get_url('',self.strip(pro[0]))
+                else :
+                    pro = re.findall('Multimedia audio controller: (.*)',tmp)
                     MulProduct = pro[0]
                     MulVendor = self.get_url('',self.strip(pro[0]))
                 MulNum += 1

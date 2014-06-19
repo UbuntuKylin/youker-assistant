@@ -114,11 +114,13 @@ class Others:
         used = animation[animation.index('themes/')+len('themes/'):]
         used = used[:used.index('\n')]
         if used == plymouthName :
-            return False
+            return 'use'
+        elif plymouthName == 'ubuntukylin-logo'
+            return 'sys'
         else :
             shutil.rmtree('/var/lib/youker-assistant-daemon/plymouth/existing/' + plymouthName)
             shutil.rmtree('/lib/plymouth/themes/' + plymouthName)
-            return True
+            return 'ok'
 
 if __name__ == '__main__':
     ooo = Others()
