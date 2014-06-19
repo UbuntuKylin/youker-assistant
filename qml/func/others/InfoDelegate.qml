@@ -19,7 +19,9 @@ import QtQuick 1.1
 Item {
     id: delegate
     width: delegate.ListView.view.width; height: 40
-    signal sendFlag(string flag);
+//    signal sendFlag(string flag);
+    signal sendIndex(int myindex);
+
     Row {
         spacing: 10
         anchors {
@@ -61,7 +63,8 @@ Item {
         anchors.fill: delegate
         onClicked: {
             delegate.ListView.view.currentIndex = index;
-            delegate.sendFlag(flag);
+            delegate.sendIndex(index);
+//            delegate.sendFlag(flag);
         }
     }
 }

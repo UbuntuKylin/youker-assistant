@@ -22,7 +22,8 @@ import "./InfoGroup.js" as InfoGroup
 /*------------------最多支持四个声卡的显示------------------*/
 Rectangle {
     id: home; width: parent.width; height: 476
-    color: "transparent"
+//    color: "transparent"
+    color: "#e4f2fc"
     property int itemNum: 4//每个模块的子项个数
     property int viewSpace: 10
     property bool firstFlag: false

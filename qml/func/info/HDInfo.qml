@@ -22,7 +22,8 @@ import "./InfoGroup.js" as InfoGroup
 /*------------------最多支持四个硬盘的显示------------------*/
 Rectangle {
     id: home; width: parent.width; height: 476
-    color: "transparent"
+//    color: "transparent"
+    color: "#e4f2fc"
     property bool firstFlag: false
     property bool secondFlag: false
     property bool thirdFlag: false
