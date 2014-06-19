@@ -21,7 +21,8 @@ import "./InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 476
-    color: "transparent"
+//    color: "transparent"
+    color: "#e4f2fc"
     property int fontSize: 14
     Component.onCompleted: {
         systemdispatcher.get_networkcard_info_qt();//获取详细信息

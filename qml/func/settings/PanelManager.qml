@@ -26,6 +26,7 @@ Rectangle {
 
     property string actiontitle: qsTr("Dash & Panel")//搜索和面板
     property string actiontext: qsTr("Manage Dash and Panel menu settings.")//管理Dash搜索和面板菜单的设置
+    property bool first_slider_value: false //系统初始化时会使value的值为0.2，需要过滤掉
 
     ListModel { id: datechoices }
     ListModel { id: powerchoices }
@@ -36,7 +37,6 @@ Rectangle {
         source: "../../img/skin/bg-middle.png"
         anchors.fill: parent
     }
-
 
     Component.onCompleted: {
         panelmanagerpage.blur_mode = sessiondispatcher.get_dash_blur_experimental_qt();
@@ -320,7 +320,12 @@ Rectangle {
                     id: slider
                     value: sessiondispatcher.get_panel_transparency_qt()
                     onValueChanged: {
-                        sessiondispatcher.set_panel_transparency_qt(slider.value);
+                        if(panelmanagerpage.first_slider_value ){  //系统初始化时会使value的值为0.2（最小值），需要过滤掉
+                            sessiondispatcher.set_panel_transparency_qt(slider.value);
+                        }
+                        if(slider.value == 0.2) { //系统初始化时会使value的值为0.2（最小值），需要过滤掉
+                            panelmanagerpage.first_slider_value = true;
+                        }
                     }
                     width: 160
                     maximumValue: 8.0

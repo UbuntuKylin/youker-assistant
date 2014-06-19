@@ -807,7 +807,7 @@ bool SessionDispatcher::set_dash_blur_experimental_qt(int blur) {
 
 //面板菜单透明度
 double SessionDispatcher::get_panel_transparency_qt() {
-    QDBusReply<double> reply = sessioniface->call("get_dash_blur_experimental");
+    QDBusReply<double> reply = sessioniface->call("get_panel_transparency");
     return reply.value();
 }
 

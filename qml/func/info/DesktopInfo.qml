@@ -20,7 +20,8 @@ import "../common" as Common
 Rectangle {
     id: home
     width: parent.width; height: 476
-    color: "transparent"
+//    color: "transparent"
+    color: "#e4f2fc"
 
     Component.onCompleted: {
         sessiondispatcher.get_system_message_qt();

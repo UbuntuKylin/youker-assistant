@@ -307,6 +307,8 @@ Rectangle {
                 width: 40
                 height: 20
                 onClicked: {
+                    actionBtn.visible = true;
+                    actionBtn.enabled = true;
                     browserpage.firefoxEmpty = false;
                     browserpage.chromiumEmpty = false;
                     if(browserpage.firefox_maincheck == false) {

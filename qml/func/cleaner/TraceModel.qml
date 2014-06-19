@@ -353,6 +353,10 @@ Rectangle {
         Row{
             id: internetBtnRow
             spacing: 20
+            anchors {
+                right: parent.right
+                rightMargin: 20
+            }//add
             Row {
                 spacing: 20
                 anchors.verticalCenter: parent.verticalCenter
@@ -459,6 +463,10 @@ Rectangle {
         Row{
             id: chromiumBtnRow
             spacing: 20
+            anchors {
+                right: parent.right
+                rightMargin: 20
+            }//add
             Row {
                 spacing: 20
                 anchors.verticalCenter: parent.verticalCenter
@@ -565,6 +573,10 @@ Rectangle {
         Row{
             id: fileBtnRow
             spacing: 20
+            anchors {
+                right: parent.right
+                rightMargin: 20
+            }//add
             Row {
                 spacing: 20
                 anchors.verticalCenter: parent.verticalCenter
