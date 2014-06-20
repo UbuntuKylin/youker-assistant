@@ -384,22 +384,23 @@ Rectangle {
             width: 70; height: 28
             text: qsTr("Back")//返回
             onClicked: {
-                var num = sessiondispatcher.get_page_num();
-                if (num == 0) {
-                    pageStack.push(homepage);
-                }
-                else if (num == 1) {
-                    pageStack.push(systemmessage);
-                }
-                else if (num == 2) {
-                    pageStack.push(clearrubbish);
-                }
-                else if (num == 3) {
-                    pageStack.push(systemset);
-                }
-                else if (num == 4) {
-                    pageStack.push(functioncollection);
-                }
+                pageStack.pop();
+//                var num = sessiondispatcher.get_page_num();
+//                if (num == 0) {
+//                    pageStack.push(homepage);
+//                }
+//                else if (num == 1) {
+//                    pageStack.push(systemmessage);
+//                }
+//                else if (num == 2) {
+//                    pageStack.push(clearrubbish);
+//                }
+//                else if (num == 3) {
+//                    pageStack.push(systemset);
+//                }
+//                else if (num == 4) {
+//                    pageStack.push(functioncollection);
+//                }
             }
         }
         Column {

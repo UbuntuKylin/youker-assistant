@@ -331,8 +331,8 @@ QString SystemDispatcher::get_image_path_qt(QString name) {
     return reply.value();
 }
 
-bool SystemDispatcher::delete_plymouth_qt(QString plymouthName) {
-    QDBusReply<bool> reply = systemiface->call("delete_plymouth", plymouthName);
+QString SystemDispatcher::delete_plymouth_qt(QString plymouthName) {
+    QDBusReply<QString> reply = systemiface->call("delete_plymouth", plymouthName);
     return reply.value();
 }
 

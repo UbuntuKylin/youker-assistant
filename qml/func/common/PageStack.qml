@@ -61,7 +61,7 @@ Item {
     property Item currentPage: null
 
     // The application tool bar.
-    //property ToolBar toolBar
+    property ToolBar toolBar
 
     // Indicates whether there is an ongoing page transition.
     property bool busy: __ongoingTransitionCount > 0

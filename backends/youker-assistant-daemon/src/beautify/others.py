@@ -80,6 +80,10 @@ class Others:
         existingDir = '/var/lib/youker-assistant-daemon/plymouth/existing/'
         linkFileDir = '/lib/plymouth/themes/default.plymouth'
 
+        # add 0619
+        if(os.path.exists('/lib/plymouth/themes/ubuntukylin-logo') == False):
+            shutil.copytree('/var/lib/youker-assistant-daemon/plymouth/ubuntukylin-logo/', '/lib/plymouth/themes/ubuntukylin-logo')
+
         # locate the current plymouth theme dir
         linkFile = open(linkFileDir)
         fullString = linkFile.read()
@@ -87,7 +91,8 @@ class Others:
         index = fullString.find('ScriptFile=')
         theLine = fullString[index:]
         # cut 'ScriptFile=' & '\n'
-        scriptFile = theLine[theLine.find('/'):]
+        scriptFile = theLine[theLine.find('/'):theLine.find('\n')]
+#        scriptFile = theLine[theLine.find('/'):]
         scriptDir = scriptFile[0:scriptFile.rfind('/')]
         scriptName = scriptFile[scriptFile.rfind('/') + 1:]
         plymouthName = scriptDir[scriptDir.rfind('/') + 1:]
@@ -115,12 +120,24 @@ class Others:
         used = used[:used.index('\n')]
         if used == plymouthName :
             return 'use'
-        elif plymouthName == 'ubuntukylin-logo'
+        elif plymouthName == 'ubuntukylin-logo':
             return 'sys'
         else :
             shutil.rmtree('/var/lib/youker-assistant-daemon/plymouth/existing/' + plymouthName)
             shutil.rmtree('/lib/plymouth/themes/' + plymouthName)
             return 'ok'
+#        plymouthName = plymouthName.encode('utf-8')
+#        fd = open('/lib/plymouth/themes/default.plymouth','r')
+#        animation = fd.read()
+#        fd.close()
+#        used = animation[animation.index('themes/')+len('themes/'):]
+#        used = used[:used.index('\n')]
+#        if used == plymouthName :
+#            return False
+#        else :
+#            shutil.rmtree('/var/lib/youker-assistant-daemon/plymouth/existing/' + plymouthName)
+#            shutil.rmtree('/lib/plymouth/themes/' + plymouthName)
+#            return True
 
 if __name__ == '__main__':
     ooo = Others()

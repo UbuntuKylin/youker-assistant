@@ -191,7 +191,7 @@ class Daemon(PolicyKitService):
         return self.otherconf.get_image_path(name)
 
     # Delete the boot animation from the list
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
     def delete_plymouth(self,plymouthName):
         return self.otherconf.delete_plymouth(plymouthName)
     
