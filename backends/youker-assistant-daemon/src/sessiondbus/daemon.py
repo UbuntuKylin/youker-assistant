@@ -367,27 +367,33 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def cookies_scan_function(self, flag):
         cookiesfunc_obj = cleaner.CleanTheCookies(self)
-        cookiesfunc_obj.get_cookie_crufts(flag, self)
+        t = threading.Thread(target = cookiesfunc_obj.get_cookie_crufts, args = (flag, self))
+        t.start()
+        #cookiesfunc_obj.get_cookie_crufts(flag, self)
 
     @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
     def package_scan_function(self, mode_list):
         packagefunc_obj = cleaner.CleanTheSpare()
-        try:
-            packagefunc_obj.get_all_package_crufts(mode_list, self)
-        except Exception, e:
-            pass
-        else:
-            pass
+        t = threading.Thread(target = packagefunc_obj.get_all_package_crufts, args = (mode_list, self))
+        t.start()
+        #try:
+        #    packagefunc_obj.get_all_package_crufts(mode_list, self)
+        #except Exception, e:
+        #    pass
+        #else:
+        #    pass
 
     @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
     def cache_scan_function(self, mode_list, flag):
         cachefunc_obj = cleaner.CleanTheCache()
-        try:
-            cachefunc_obj.get_all_cache_crufts(mode_list, flag, self)
-        except Exception, e:
-            pass
-        else:
-            pass
+        t = threading.Thread(target = cachefunc_obj.get_all_cache_crufts, args = (mode_list, flag, self))
+        t.start()
+        #try:
+        #    cachefunc_obj.get_all_cache_crufts(mode_list, flag, self)
+        #except Exception, e:
+        #    pass
+        #else:
+        #    pass
 
     # a dbus signal which means access weather by kobe
     @dbus.service.signal(INTERFACE, signature='ss')
