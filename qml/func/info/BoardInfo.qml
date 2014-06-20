@@ -23,7 +23,8 @@ Rectangle {
     id: home; width: parent.width; height: 476
 //    color: "transparent"
     color: "#e4f2fc"
-    Component.onCompleted: {
+//    Component.onCompleted: {
+    function init_data() {
         systemdispatcher.get_board_info_qt();//获取详细信息
 
         var basicName = systemdispatcher.getHWSingleInfo("BoaVendor", "board").toUpperCase();
@@ -37,6 +38,16 @@ Rectangle {
         biosvendorText.text = biosName;
         biosversionText.text = systemdispatcher.getHWSingleInfo("BioVersion", "board");
         biosreleaseText.text = systemdispatcher.getHWSingleInfo("BioRelease", "board");
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDetailPageUpdateData: {
+            if (infoFlag == "board") {
+                home.init_data();
+            }
+        }
     }
 
     Column {

@@ -24,7 +24,8 @@ Rectangle {
 //    color: "transparent"
     color: "#e4f2fc"
     property int fontSize: 14
-    Component.onCompleted: {
+//    Component.onCompleted: {
+    function init_data() {
         systemdispatcher.get_networkcard_info_qt();//获取详细信息
         var netName = systemdispatcher.getHWSingleInfo("NetVendor", "networkcard");
         logo.source = InfoGroup.judgeName(netName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + netName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -52,6 +53,16 @@ Rectangle {
         wdeviceText.text = systemdispatcher.getHWSingleInfo("WlanLogicalname", "networkcard");
         wmacText.text = systemdispatcher.getHWSingleInfo("WlanSerial", "networkcard");
         wipText.text = systemdispatcher.getHWSingleInfo("WlanIp", "networkcard");
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDetailPageUpdateData: {
+            if (infoFlag == "networkcard") {
+                home.init_data();
+            }
+        }
     }
 
     Common.ScrollArea {

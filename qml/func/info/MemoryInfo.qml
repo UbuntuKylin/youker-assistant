@@ -115,7 +115,8 @@ Rectangle {
     }
 
 
-    Component.onCompleted: {
+//    Component.onCompleted: {
+    function init_data() {
         home.firstFlag = false;
         home.secondFlag = false;
         home.thirdFlag = false;
@@ -142,6 +143,16 @@ Rectangle {
         }
         else if(num >= 2){
             home.show_several_memory(num);
+        }
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDetailPageUpdateData: {
+            if (infoFlag == "memory") {
+                home.init_data();
+            }
         }
     }
 

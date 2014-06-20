@@ -20,7 +20,8 @@ Item {
     id: delegate
     width: delegate.ListView.view.width; height: 40
 //    signal sendFlag(string flag);
-    signal sendIndex(int myindex);
+//    signal sendIndex(int myindex);
+    signal sendIndex(int myindex, string flag);
 
     Row {
         spacing: 10
@@ -63,7 +64,8 @@ Item {
         anchors.fill: delegate
         onClicked: {
             delegate.ListView.view.currentIndex = index;
-            delegate.sendIndex(index);
+            delegate.sendIndex(index, flag);
+//            delegate.sendIndex(index);
 //            delegate.sendFlag(flag);
         }
     }

@@ -165,6 +165,28 @@ void SessionDispatcher::call_camera_qt() {
 //    sessioniface->call("call_camera");
 }
 
+bool SessionDispatcher::judge_power_is_exists_qt() {
+    QDBusReply<bool> reply = sessioniface->call("judge_power_is_exists");
+    return reply.value();
+}
+
+bool SessionDispatcher::read_battery_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("read_battery_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        batteryInfo = value;
+        return true;
+    }
+    else {
+        qDebug() << "get battery_message failed!";
+        return false;
+    }
+}
+
+void SessionDispatcher::let_detail_info_page_to_update_data(QString infoFlag) {
+    emit this->tellDetailPageUpdateData(infoFlag);
+}
+
 void SessionDispatcher::handlerHistoryNumber(QString flag, int num) {
     emit this->tellQMLHistoryNumber(flag, num);
 }

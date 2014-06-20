@@ -32,6 +32,7 @@ from gi.repository import GObject
 import apt
 import aptsources.sourceslist
 import apt_pkg
+import threading
 from server import PolicyKitService
 from policykit import UK_ACTION_YOUKER
 import time
@@ -249,30 +250,32 @@ class Daemon(PolicyKitService):
             self.revoke_clean_onekey('no')
         daemononekey = cleaner.OneKeyClean()
         try:
-            daemononekey.clean_all_onekey_crufts(self, mode_list)
-        except Exception, e:
-            self.clean_error_msg('onekey')
-        else:
-            self.clean_complete_msg('onekey')
-
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
-    def onekey_clean_crufts_function_by_threading(self, mode_list, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.revoke_clean_onekey('yes')
-            return
-        else:
-            self.revoke_clean_onekey('no')
-        daemononekey = cleaner.OneKeyClean()
-        try:
-            t = threading.Thread(targets = daemononekey.clean_all_onekey_crufts, args = (self, mode_list))
+            t = threading.Thread(target = daemononekey.clean_all_onekey_crufts, args = (self, mode_list))
+            t.start()
             #daemononekey.clean_all_onekey_crufts(self, mode_list)
         except Exception, e:
             self.clean_error_msg('onekey')
         else:
             self.clean_complete_msg('onekey')
 
-        return t
+#    @dbus.service.method(INTERFACE, in_signature='as', out_signature='', sender_keyword='sender')
+#    def onekey_clean_crufts_function_by_threading(self, mode_list, sender=None):
+#        status = self._check_permission(sender, UK_ACTION_YOUKER)
+#        if not status:
+#            self.revoke_clean_onekey('yes')
+#            return
+#        else:
+#            self.revoke_clean_onekey('no')
+#        daemononekey = cleaner.OneKeyClean()
+#        try:
+#            t = threading.Thread(target = daemononekey.clean_all_onekey_crufts, args = (self, mode_list))
+#            #daemononekey.clean_all_onekey_crufts(self, mode_list)
+#        except Exception, e:
+#            self.clean_error_msg('onekey')
+#        else:
+#            self.clean_complete_msg('onekey')
+
+#        return t
 
     def onekey_clean_cancel_function(self, t):
         daemononekey.cancel_onekey_clean(t, SystemExit)

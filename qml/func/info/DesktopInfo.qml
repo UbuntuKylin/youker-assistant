@@ -23,13 +23,24 @@ Rectangle {
 //    color: "transparent"
     color: "#e4f2fc"
 
-    Component.onCompleted: {
+//    Component.onCompleted: {
+    function init_data() {
         sessiondispatcher.get_system_message_qt();
         desktoptext.text = sessiondispatcher.getSingleInfo("desktopenvironment");
         distributiontext.text = sessiondispatcher.getSingleInfo("distribution");
         languagetext.text = sessiondispatcher.getSingleInfo("language");
         usertext.text = sessiondispatcher.getSingleInfo("currrent_user");
         hometext.text = sessiondispatcher.getSingleInfo("home_path");
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDetailPageUpdateData: {
+            if (infoFlag == "desktop") {
+                home.init_data();
+            }
+        }
     }
 
     function openFile(file) {
