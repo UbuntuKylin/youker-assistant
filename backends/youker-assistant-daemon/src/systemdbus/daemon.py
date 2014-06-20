@@ -32,6 +32,7 @@ from gi.repository import GObject
 import apt
 import aptsources.sourceslist
 import apt_pkg
+import threading
 from server import PolicyKitService
 from policykit import UK_ACTION_YOUKER
 import time
@@ -249,7 +250,9 @@ class Daemon(PolicyKitService):
             self.revoke_clean_onekey('no')
         daemononekey = cleaner.OneKeyClean()
         try:
-            daemononekey.clean_all_onekey_crufts(self, mode_list)
+            t = threading.Thread(target = daemononekey.clean_all_onekey_crufts, args = (self, mode_list))
+            t.start()
+            #daemononekey.clean_all_onekey_crufts(self, mode_list)
         except Exception, e:
             self.clean_error_msg('onekey')
         else:
@@ -265,7 +268,7 @@ class Daemon(PolicyKitService):
             self.revoke_clean_onekey('no')
         daemononekey = cleaner.OneKeyClean()
         try:
-            t = threading.Thread(targets = daemononekey.clean_all_onekey_crufts, args = (self, mode_list))
+            t = threading.Thread(target = daemononekey.clean_all_onekey_crufts, args = (self, mode_list))
             #daemononekey.clean_all_onekey_crufts(self, mode_list)
         except Exception, e:
             self.clean_error_msg('onekey')
