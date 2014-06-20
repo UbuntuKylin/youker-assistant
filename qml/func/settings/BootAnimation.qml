@@ -244,11 +244,11 @@ Rectangle {
                     color: "#7a7a7a"
                     text:itemTitle
                 }
-                Image {
-                    id: btnImg
-                    anchors.fill: parent
-                    source: ""
-                }
+//                Image {
+//                    id: btnImg
+//                    anchors.fill: parent
+//                    source: ""
+//                }
                 MouseArea{
                     anchors.fill:parent
                     hoverEnabled: true
@@ -272,12 +272,43 @@ Rectangle {
                     }
                     opacity: wrapper.ListView.isCurrentItem? 1:0
                     Image {id:revoke;source: "../../img/icons/revoke.png"}
+                    Image {
+                        id: btnImg
+                        anchors.fill: parent
+                        source: ""
+                    }
                     MouseArea{
                         anchors.fill:parent
+                        hoverEnabled: true
+                        onEntered: {
+                            btnImg.source = "../../img/toolWidget/highlight.png";
+                        }
+                        onPressed: {
+                            btnImg.source = "../../img/toolWidget/highlight.png";
+                        }
+                        //要判断松开是鼠标位置
+                        onReleased: {
+                            btnImg.source = "../../img/toolWidget/highlight.png";
+                        }
+                        onExited: {
+                            btnImg.source = ""
+                        }
                         enabled:wrapper.ListView.isCurrentItem? true:false
                         onClicked: {
-                            systemdispatcher.delete_plymouth_qt(itemTitle);
-                            systemdispatcher.readyAddBootImageToList();
+                            var result = systemdispatcher.delete_plymouth_qt(itemTitle);
+                            if (result === "ok") {
+                                toolkits.alertMSG(qsTr("Deleted successfully!"));//删除成功！
+                                systemdispatcher.readyAddBootImageToList();
+                            }
+                            else if (result === "use") {
+                                toolkits.alertMSG(qsTr("This is the using animation!"));//该动画为当前使用动画！
+                            }
+                            else if (result === "sys") {
+                                toolkits.alertMSG(qsTr("This is the default animation!"));//该动画为系统默认动画！
+                            }
+                            else {
+                                toolkits.alertMSG(qsTr("An unknown error occurred!"));//发生未知错误！
+                            }
                         }
                     }
                 }

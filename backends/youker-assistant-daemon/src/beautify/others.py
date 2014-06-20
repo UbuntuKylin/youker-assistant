@@ -81,8 +81,8 @@ class Others:
         linkFileDir = '/lib/plymouth/themes/default.plymouth'
 
         # add 0619
-#        if(os.path.exists('/lib/plymouth/themes/ubuntukylin-logo') == False):
-#            shutil.copytree('/var/lib/youker-assistant-daemon/plymouth/ubuntukylin-logo/', '/lib/plymouth/themes/ubuntukylin-logo')
+        if(os.path.exists('/lib/plymouth/themes/ubuntukylin-logo') == False):
+            shutil.copytree('/var/lib/youker-assistant-daemon/plymouth/ubuntukylin-logo/', '/lib/plymouth/themes/ubuntukylin-logo')
 
         # locate the current plymouth theme dir
         linkFile = open(linkFileDir)
