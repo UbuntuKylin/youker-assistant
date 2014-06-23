@@ -28,6 +28,8 @@ Rectangle {
     property string actiontext: qsTr("Manage Dash and Panel menu settings.")//管理Dash搜索和面板菜单的设置
     property bool first_slider_value: false //系统初始化时会使value的值为0.2，需要过滤掉
 
+    property bool battery_exists: false//判断是否存在电池
+
     ListModel { id: datechoices }
     ListModel { id: powerchoices }
     property int dateindex: 0
@@ -39,6 +41,19 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        panelmanagerpage.battery_exists = sessiondispatcher.judge_power_is_exists_qt();
+        if(panelmanagerpage.battery_exists) {
+            battery_icon.visible = true;
+            battery_percentage.visible = true;
+            battery_time.visible = true;
+        }
+        else {
+            battery_icon.visible = false;
+            battery_percentage.visible = false;
+            battery_time.visible = false;
+        }
+
+
         panelmanagerpage.blur_mode = sessiondispatcher.get_dash_blur_experimental_qt();
         var index = 0;
         var timelist = sessiondispatcher.get_all_time_format_qt();
@@ -548,6 +563,7 @@ Rectangle {
         //# 电源
 //        # present:电源总是可见     charge:当机器充电/放电时可见         never:总是不可见
         Row {
+            id: battery_icon
             spacing: 230
             Row {
                 spacing: 20
@@ -580,6 +596,7 @@ Rectangle {
         }
 
         Row {
+            id: battery_percentage
             spacing: 230
             Row {
                 spacing: 20
@@ -616,6 +633,7 @@ Rectangle {
         }
 
         Row {
+            id: battery_time
             spacing: 230
             Row {
                 spacing: 20

@@ -46,6 +46,9 @@ public:
 
     Q_INVOKABLE bool judge_camera_qt();
     Q_INVOKABLE void call_camera_qt();
+    QMap<QString, QVariant> batteryInfo;
+    Q_INVOKABLE bool judge_power_is_exists_qt();
+    Q_INVOKABLE bool read_battery_info_qt();
 
     //弹出登录框
     Q_INVOKABLE void popup_login_dialog();
@@ -118,6 +121,15 @@ public:
     Q_INVOKABLE void get_system_message_qt();
     //通过键得到对应的单个信息的值
     Q_INVOKABLE QString getSingleInfo(QString key);
+    Q_INVOKABLE QString getBatterySingleInfo(QString key);
+
+
+    //恢复ubuntukylin默认配置
+    Q_INVOKABLE QString get_uk_default_setting_string(QString key, QString name);
+    Q_INVOKABLE double get_uk_default_setting_double(QString key, QString name);
+    Q_INVOKABLE int get_uk_default_setting_int(QString key, QString name);
+    Q_INVOKABLE bool get_uk_default_setting_bool(QString key, QString name);
+    Q_INVOKABLE void restore_uk_default_setting(QString key, QString name);
 
     /*-------------------get and set default value-------------------*/
     //获取和设置字体默认值:theme.py
@@ -368,6 +380,9 @@ public:
     //金山快盘云配置
     Q_INVOKABLE void download_kysoft_cloud_conf_qt();
     Q_INVOKABLE void upload_kysoft_cloud_conf_qt();
+
+    Q_INVOKABLE void let_detail_info_page_to_update_data(QString infoFlag);
+
 signals:
     void finishScanWork(QString msg);
     void isScanning(QString msg);
@@ -428,6 +443,8 @@ signals:
 
     void tellQMLHistoryNumber(QString flag, int num);
     void tellQMLLargeFileList(QStringList filelist);
+
+    void tellDetailPageUpdateData(QString infoFlag);
 
 
     //返回主页面信号
@@ -517,6 +534,7 @@ private:
 //    SkinCenter *skinCenter;
 
     QSettings * mSettings;
+    QSettings * default_Settings;
     QString initCityId;
     HttpAuth *httpauth;
 

@@ -22,6 +22,9 @@ import "../common" as Common
 Rectangle {
     id: window
     width: parent.width; height: 476
+
+    property string current_flag: "computer"
+
     //背景
     Image {
         source: "../../img/skin/bg-middle.png"//bg-bottom-tab
@@ -46,6 +49,9 @@ Rectangle {
         var cdromNumber = systemdispatcher.getHWSingleInfo("Dvdnum", "cdrom");//光驱个数
         if(cdromNumber > 0) {//存在光驱时才会增加该页面的显示
             listModel.append({"name": qsTr("CD-ROM"), "flag": "cdrom", "iconName": "cdrom"});//光驱
+        }
+        if (sessiondispatcher.judge_power_is_exists_qt() === true) {
+            listModel.append({"name": qsTr("Battery"), "flag": "battery", "iconName": "battery"});//电源
         }
         listModel.append({"name": qsTr("Device Driver"), "flag": "drive", "iconName": "drive"});//设备驱动
     }
@@ -89,7 +95,9 @@ Rectangle {
 //                footer: returnDelegate
                 delegate: Others.InfoDelegate {
                     onSendIndex: {
+                        window.current_flag = flag;
                         toolbar.current=myindex;
+                        sessiondispatcher.let_detail_info_page_to_update_data(window.current_flag);//tell page to update data
                     }
 //                    onSendFlag: {
 //                        if(flag == "computer") {
@@ -144,9 +152,21 @@ Rectangle {
             function currentChanged(curIndex)
             {
 //                content.children[curIndex].x=150;//width
-                content.children[curIndex].state='active';
-                content.children[current].state='hide';
-                current = curIndex;
+                if (window.current_flag == "battery" && curIndex !== 10) {
+                    content.children[10].state='active';
+                    content.children[current].state='hide';
+                    current = 10;
+                }
+                else if (window.current_flag == "drive" && curIndex !== 11) {
+                    content.children[11].state='active';
+                    content.children[current].state='hide';
+                    current = 11;
+                }
+                else {
+                    content.children[curIndex].state='active';
+                    content.children[current].state='hide';
+                    current = curIndex;
+                }
             }
             Common.ShowHide {
                 anchors.fill: parent
@@ -212,6 +232,13 @@ Rectangle {
             Common.ShowHide {
                 anchors.fill: parent
                 Info.CDROMInfo {
+                    width: parent.width
+                    height: parent.height
+                }
+            }
+            Common.ShowHide {
+                anchors.fill: parent
+                Info.BatteryInfo {
                     width: parent.width
                     height: parent.height
                 }

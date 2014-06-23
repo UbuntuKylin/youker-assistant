@@ -25,7 +25,8 @@ Rectangle {
 //    color: "transparent"
     color: "#e4f2fc"
 
-    Component.onCompleted: {
+//    Component.onCompleted: {
+    function init_data() {
         systemdispatcher.get_cpu_info_qt();//获取详细信息
         var cpuName = systemdispatcher.getHWSingleInfo("CpuVendor", "cpu");
         logo.source = InfoGroup.judgeName(cpuName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cpuName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
@@ -62,6 +63,17 @@ Rectangle {
         cache1.text = systemdispatcher.getHWSingleInfo("clflush_size", "cpu") + "KB";
         cache2.text = systemdispatcher.getHWSingleInfo("cache_size", "cpu") + "KB";
     }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDetailPageUpdateData: {
+            if (infoFlag == "cpu") {
+                home.init_data();
+            }
+        }
+    }
+
     Column {
         anchors {
             top: parent.top

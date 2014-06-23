@@ -57,6 +57,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
 
+    default_Settings = new QSettings(DEFAULT_UBUNTUKYLIN_SETTING, QSettings::IniFormat);
+    default_Settings->setIniCodec("UTF-8");
+
     //初始化QSetting配置文件
     initConfigFile();
 
@@ -136,6 +139,11 @@ SessionDispatcher::~SessionDispatcher() {
         delete mSettings;
     }
 
+    default_Settings->sync();
+    if (default_Settings != NULL) {
+        delete default_Settings;
+    }
+
     if (slidershow != NULL) {
         delete slidershow;
     }
@@ -163,6 +171,28 @@ void SessionDispatcher::call_camera_qt() {
     KThread *thread = new KThread(tmp, sessioniface, "call_camera");
     thread->start();
 //    sessioniface->call("call_camera");
+}
+
+bool SessionDispatcher::judge_power_is_exists_qt() {
+    QDBusReply<bool> reply = sessioniface->call("judge_power_is_exists");
+    return reply.value();
+}
+
+bool SessionDispatcher::read_battery_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("read_battery_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        batteryInfo = value;
+        return true;
+    }
+    else {
+        qDebug() << "get battery_message failed!";
+        return false;
+    }
+}
+
+void SessionDispatcher::let_detail_info_page_to_update_data(QString infoFlag) {
+    emit this->tellDetailPageUpdateData(infoFlag);
 }
 
 void SessionDispatcher::handlerHistoryNumber(QString flag, int num) {
@@ -667,6 +697,214 @@ QString SessionDispatcher::getSingleInfo(QString key) {
     QVariant info = systemInfo.value(key);
     return info.toString();
 }
+
+QString SessionDispatcher::getBatterySingleInfo(QString key) {
+    QVariant info = batteryInfo.value(key);
+    return info.toString();
+}
+
+//-------------------------------------ubuntukylin default settings-------------------------------------
+QString SessionDispatcher::get_uk_default_setting_string(QString key, QString name) {
+    QString result;
+    default_Settings->beginGroup(key);
+    if (key == "window" && name == "button-layout") {
+        result = default_Settings->value(name).toString().replace("-", ",");
+    }
+    else {
+        result = default_Settings->value(name).toString();
+    }
+    default_Settings->endGroup();
+    default_Settings->sync();
+    return result;
+}
+
+double SessionDispatcher::get_uk_default_setting_double(QString key, QString name) {
+    default_Settings->beginGroup(key);
+    double result = default_Settings->value(name).toDouble();
+    default_Settings->endGroup();
+    default_Settings->sync();
+    return result;
+}
+
+int SessionDispatcher::get_uk_default_setting_int(QString key, QString name) {
+    default_Settings->beginGroup(key);
+    int result = default_Settings->value(name).toInt();
+    default_Settings->endGroup();
+    default_Settings->sync();
+    return result;
+}
+
+bool SessionDispatcher::get_uk_default_setting_bool(QString key, QString name) {
+    default_Settings->beginGroup(key);
+    bool result = default_Settings->value(name).toBool();
+    default_Settings->endGroup();
+    default_Settings->sync();
+    return result;
+}
+
+void SessionDispatcher::restore_uk_default_setting(QString key, QString name) {
+    default_Settings->beginGroup(key);
+    //-------------------字体-------------------
+    if (key == "font") {
+        if(name == "font-name") {//"Ubuntu 11"
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.interface", "font", "font-name", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "font") {//"Ubuntu 11"
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.nautilus.desktop", "font", "font", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "monospace-font-name") {//"Ubuntu Mono 13"
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.interface", "font", "monospace-font-name", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "document-font-name") {//"Sans 11"
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.interface", "font", "document-font-name", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "titlebar-font") {//"Ubuntu Bold 11"
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.wm.preferences", "font", "titlebar-font", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "text-scaling-factor") {//1
+            sessioniface->call("set_ubuntukylin_default_setting_double", "org.gnome.desktop.interface", "font", "text-scaling-factor", "double", default_Settings->value(name).toDouble());
+        }
+        else if(name == "hinting") {//"slight"
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.settings-daemon.plugins.xsettings", "font", "hinting", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "antialiasing") {//"rgba"
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.settings-daemon.plugins.xsettings", "font", "antialiasing", "string", default_Settings->value(name).toString());
+        }
+    }
+    else if (key == "icon") {
+        if(name == "icon-theme") {//"ubuntukylin-icon-theme"
+             sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.interface", "icon", "icon-theme", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "show-desktop-icons") {//显示桌面图标
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.desktop.background", "icon", "show-desktop-icons", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "home-icon-visible") {//显示主文件夹
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.nautilus.desktop", "icon", "home-icon-visible", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "network-icon-visible") {//显示网络
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.nautilus.desktop", "icon", "network-icon-visible", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "trash-icon-visible") {//显示回收站
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.nautilus.desktop", "icon", "trash-icon-visible", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "volumes-visible") {//显示挂载卷标
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.nautilus.desktop", "icon", "volumes-visible", "boolean", default_Settings->value(name).toBool());
+        }
+    }
+    else if (key == "file") {
+        if(name == "always-use-location-entry") {//路径输入框取代路径栏
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.nautilus.preferences", "file", "always-use-location-entry", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "automount") {//自动挂载媒体
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.desktop.media-handling", "file", "automount", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "automount-open") {//自动打开文件夹
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.desktop.media-handling", "file", "automount-open", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "autorun-never") {//提示自动运行的程序
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.desktop.media-handling", "file", "autorun-never", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "thumbnail-size") {//缩略图图标尺寸（像素）
+            sessioniface->call("set_ubuntukylin_default_setting_int", "org.gnome.nautilus.icon-view", "file", "thumbnail-size", "int", default_Settings->value(name).toInt());
+        }
+        else if(name == "maximum-age") {//缩略图缓存时间（天数）
+            sessioniface->call("set_ubuntukylin_default_setting_int", "org.gnome.desktop.thumbnail-cache", "file", "maximum-age", "int", default_Settings->value(name).toInt());
+        }
+        else if(name == "maximum-size") {//最大缩略图缓存尺寸（MB）
+            sessioniface->call("set_ubuntukylin_default_setting_int", "org.gnome.desktop.thumbnail-cache", "file", "maximum-size", "int", default_Settings->value(name).toInt());
+        }
+    }
+    else if (key == "unity") {
+        if(name == "icon-size") {//launcher图标大小
+            sessioniface->call("set_ubuntukylin_default_setting_int", "org.compiz.unityshell", "unity", "icon-size", "int", default_Settings->value(name).toInt());
+        }
+        else if(name == "launcher-hide-mode") {//launcher自动隐藏
+            sessioniface->call("set_ubuntukylin_default_setting_int", "org.compiz.unityshell", "unity", "launcher-hide-mode", "int", default_Settings->value(name).toInt());
+        }
+        else if(name == "launcher-opacity") {//透明度
+            sessioniface->call("set_ubuntukylin_default_setting_double", "org.compiz.unityshell", "unity", "launcher-opacity", "double", default_Settings->value(name).toDouble());
+        }
+        else if(name == "backlight-mode") {//图标背景模式
+            sessioniface->call("set_ubuntukylin_default_setting_int", "org.compiz.unityshell", "unity", "backlight-mode", "int", default_Settings->value(name).toInt());
+        }
+
+        else if(name == "dash-blur-experimental") {//Dash背景模糊类型
+            sessioniface->call("set_ubuntukylin_default_setting_int", "org.compiz.unityshell", "unity", "dash-blur-experimental", "int", default_Settings->value(name).toInt());
+        }
+        else if(name == "panel-opacity") {//面板菜单透明度
+            sessioniface->call("set_ubuntukylin_default_setting_double", "org.compiz.unityshell", "unity", "panel-opacity", "double", default_Settings->value(name).toDouble());
+        }
+    }
+    else if (key == "mouse") {
+        if(name == "cursor-size") {
+            sessioniface->call("set_ubuntukylin_default_setting_int", "org.gnome.desktop.interface", "mouse", "cursor-size", "int", default_Settings->value(name).toInt());
+        }
+    }
+    else if (key == "touchpad") {
+        if(name == "touchpad-enabled") {
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.settings-daemon.peripherals.touchpad", "touchpad", "touchpad-enabled", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "horiz-scroll-enabled") {
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.settings-daemon.peripherals.touchpad", "touchpad", "horiz-scroll-enabled", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "scrollbar-mode") {
+            sessioniface->call("set_ubuntukylin_default_setting_str", "com.canonical.desktop.interface", "touchpad", "scrollbar-mode", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "scroll-method") {
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.settings-daemon.peripherals.touchpad", "touchpad", "scroll-method", "string", default_Settings->value(name).toString());
+        }
+    }
+    else if (key == "window") {
+        if(name == "button-layout") {
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.wm.preferences", "window", "button-layout", "string", default_Settings->value(name).toString().replace("-", ","));
+        }
+        else if(name == "menus-have-icons") {
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.desktop.interface", "window", "menus-have-icons", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "mouse-wheel-action") {
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.compiz.gwd", "window", "mouse-wheel-action", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "action-double-click-titlebar") {
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.wm.preferences", "window", "action-double-click-titlebar", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "action-middle-click-titlebar") {
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.wm.preferences", "window", "action-middle-click-titlebar", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "action-right-click-titlebar") {
+            sessioniface->call("set_ubuntukylin_default_setting_str", "org.gnome.desktop.wm.preferences", "window", "action-right-click-titlebar", "string", default_Settings->value(name).toString());
+        }
+    }
+    else if (key == "datetime") {
+        if(name == "time-format") {//日期时间格式
+            sessioniface->call("set_ubuntukylin_default_setting_str", "com.canonical.indicator.datetime", "datetime", "time-format", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "show-seconds") {//秒
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "com.canonical.indicator.datetime", "datetime", "show-seconds", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "show-day") {//星期
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "com.canonical.indicator.datetime", "datetime", "show-day", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "show-date") {//日期
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "com.canonical.indicator.datetime", "datetime", "show-date", "boolean", default_Settings->value(name).toBool());
+        }
+    }
+    else if (key == "power") {
+        if(name == "time-format") {//日期时间格式
+            sessioniface->call("set_ubuntukylin_default_setting_str", "com.canonical.indicator.power", "power", "icon-policy", "string", default_Settings->value(name).toString());
+        }
+        else if(name == "show-percentage") {//电源百分比
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "com.canonical.indicator.power", "power", "show-percentage", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "show-time") {//电源时间
+            sessioniface->call("set_ubuntukylin_default_setting_bool", "com.canonical.indicator.power", "power", "show-time", "boolean", default_Settings->value(name).toBool());
+        }
+    }
+
+    default_Settings->endGroup();
+    default_Settings->sync();
+}
+//-------------------------------------uk end-------------------------------------
+
 
 /*-----------------------------desktop of beauty-----------------------------*/
 bool SessionDispatcher::set_show_desktop_icons_qt(bool flag) {

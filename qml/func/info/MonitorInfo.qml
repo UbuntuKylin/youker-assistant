@@ -110,7 +110,8 @@ Rectangle {
         }
     }
 
-    Component.onCompleted: {
+//    Component.onCompleted: {
+    function init_data() {
         systemdispatcher.get_monitor_info_qt();//获取光驱详细信息
         home.firstFlag = false;
         home.secondFlag = false;
@@ -177,6 +178,16 @@ Rectangle {
             monitortitlebar.visible = false;
             montitle.visible = false;
             monitorlogo.visible = false;
+        }
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDetailPageUpdateData: {
+            if (infoFlag == "monitor") {
+                home.init_data();
+            }
         }
     }
 

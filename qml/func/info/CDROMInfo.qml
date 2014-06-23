@@ -111,7 +111,8 @@ Rectangle {
     }
 
 
-    Component.onCompleted: {
+//    Component.onCompleted: {
+    function init_data() {
         systemdispatcher.get_cdrom_info_qt();//获取光驱详细信息
         home.firstFlag = false;
         home.secondFlag = false;
@@ -137,6 +138,16 @@ Rectangle {
         }
         else if(num >= 2){
             home.show_several_cdrom(num);
+        }
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDetailPageUpdateData: {
+            if (infoFlag == "cdrom") {
+                home.init_data();
+            }
         }
     }
 

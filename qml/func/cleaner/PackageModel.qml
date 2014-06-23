@@ -289,7 +289,7 @@ Item {
                         packagepage.state = "NormalState";
                         //清理过程中发生错误，解禁按钮
                         actionBtn.enabled = true;
-                        titleBar.state = "PackageWorkError";
+                        packagepage.state = "PackageWorkError";
                         toolkits.alertMSG(qsTr("Cleanup abnormal!"));//清理出现异常！
                     }
                 }
