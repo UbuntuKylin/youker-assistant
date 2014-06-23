@@ -29,9 +29,8 @@ Rectangle {
     property string titlebar_font: "Helvetica"
     property double zoom: 1.0
     property bool first_slider_value: false //系统初始化时会使value的值为0.5，需要过滤掉
-    property int current_smooth_index//当前平滑的索引
     property int default_smooth_index//系统默认平滑的索引
-    property int current_antialiasing_index//当前锯齿的索引
+//    property int current_antialiasing_index//当前锯齿的索引
     property int default_antialiasing_index//系统默认锯齿的索引
 
     property string actiontitle: qsTr("Default font settings")//默认字体设置
@@ -88,24 +87,35 @@ Rectangle {
             else if(download == "font_hinting") {
                 var smooth_list = sessiondispatcher.get_smooth_style_list_qt();
                 var cur_smooth = sessiondispatcher.get_smooth_style_qt();
+                var new_list = new Array();
                 for(var m=0; m < smooth_list.length; m++) {
-                    if (smooth_list[m] == cur_smooth) {
-                        defaultfontpage.current_smooth_index = m;
+                    if(smooth_list[m] !== cur_smooth) {
+                        new_list.push(smooth_list[m]);
+                    }
+                }
+                for(var j=0; j < new_list.length; j++) {
+                    if (cur_smooth === new_list[j]) {
+                        smoothcombo.selectedIndex  = j;
                         break;
                     }
                 }
-                smoothcombo.selectedIndex = defaultfontpage.current_smooth_index;
             }
             else if(download == "font_antialiasing") {
                 var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
                 var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
-                for(var n=0; n < antialiasinglist.length; n++) {
-                    if (antialiasinglist[n] == current_antialiasing) {
-                        defaultfontpage.current_antialiasing_index = n;
+                var new_list2 = new Array();
+                for(var x=0; x < antialiasinglist.length; x++) {
+                    if(antialiasinglist[x] !== current_antialiasing) {
+                        new_list2.push(antialiasinglist[x]);
+                    }
+                }
+                new_list2.unshift(current_antialiasing);
+                for(var y=0; y < new_list2.length; y++) {
+                    if (current_antialiasing === new_list2[y]) {
+                        antialiasingcombo.selectedIndex = y;
                         break;
                     }
                 }
-                antialiasingcombo.selectedIndex = defaultfontpage.current_antialiasing_index;
             }
         }
     }
@@ -122,118 +132,40 @@ Rectangle {
         defaultfontpage.titlebar_font = sessiondispatcher.get_window_title_font_qt();
 
         defaultfontpage.zoom = sessiondispatcher.get_font_zoom_qt();
-//        var smoothlist = sessiondispatcher.get_smooth_style_list_qt();
-//        var current_smooth = sessiondispatcher.get_smooth_style_qt();
-//        var default_smooth = sessiondispatcher.get_default_theme_sring_qt("smoothstyle");
-//        smoothchoices.clear();
-//        if(current_smooth == default_smooth) {
-//            for(var m=0; m < smoothlist.length; m++) {
-//                smoothchoices.append({"text": smoothlist[m]});
-//                if (smoothlist[m] == current_smooth) {
-//                    defaultfontpage.current_smooth_index = m;
-//                    defaultfontpage.default_smooth_index = m;
-//                }
-//            }
-//        }
-//        else {
-//            for(var i=0; i < smoothlist.length; i++) {
-//                smoothchoices.append({"text": smoothlist[i]});
-//                if (smoothlist[i] == current_smooth) {
-//                    defaultfontpage.current_smooth_index = i;
-//                }
-//                else if (smoothlist[i] == default_smooth) {
-//                    defaultfontpage.default_smooth_index = i;
-//                }
-//            }
-//        }
-//        smoothcombo.selectedIndex = defaultfontpage.current_smooth_index;
 
-
-        var index = 0;
         var smoothlist = sessiondispatcher.get_smooth_style_list_qt();
         var current_smooth = sessiondispatcher.get_smooth_style_qt();
-        var default_smooth = sessiondispatcher.get_default_theme_sring_qt("smoothstyle");
+        var default_smooth = sessiondispatcher.get_uk_default_setting_string("font", "hinting");
+        var new_list = new Array();
         for(var i=0; i < smoothlist.length; i++) {
-            if (current_smooth == smoothlist[i]) {
-                index = i;
-                defaultfontpage.current_smooth_index = i;
-            }
-            if (default_smooth == smoothlist[i]) {
-                defaultfontpage.default_smooth_index = i;
+            if(smoothlist[i] !== current_smooth) {
+                new_list.push(smoothlist[i]);
             }
         }
+        new_list.unshift(current_smooth);
         smoothchoices.clear();
-        if (index == 0) {
-            for(var j=0; j < smoothlist.length; j++) {
-                smoothchoices.append({"text": smoothlist[j]});
-            }
-        }
-        else {
-            smoothlist.unshift(current_smooth);
-            for(var k=0; k < smoothlist.length; k++) {
-                smoothchoices.append({"text": smoothlist[k]});
-                if (k!=0 && smoothlist[k] == current_smooth){
-                    smoothchoices.remove(k);
-                }
+        for(var j=0; j < new_list.length; j++) {
+            smoothchoices.append({"text": new_list[j]});
+            if (default_smooth === new_list[j]) {
+                defaultfontpage.default_smooth_index = j;
             }
         }
 
-
-
-
-//        var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
-//        var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
-//        var default_antialiasing = sessiondispatcher.get_default_theme_sring_qt("antialiasingstyle");
-//        antialiasingchoices.clear();
-//        if(current_antialiasing == default_antialiasing) {
-//            for(var n=0; n < antialiasinglist.length; n++) {
-//                antialiasingchoices.append({"text": antialiasinglist[n]});
-//                if (antialiasinglist[n] == current_antialiasing) {
-//                    defaultfontpage.current_antialiasing_index = n;
-//                    defaultfontpage.default_antialiasing_index = n;
-//                }
-//            }
-//        }
-//        else {
-//            for(var j=0; j < antialiasinglist.length; j++) {
-//                antialiasingchoices.append({"text": antialiasinglist[j]});
-//                if (antialiasinglist[j] == current_antialiasing) {
-//                    defaultfontpage.current_antialiasing_index = j;
-//                }
-//                else if (antialiasinglist[j] == default_antialiasing) {
-//                    defaultfontpage.default_antialiasing_index = j;
-//                }
-//            }
-//        }
-//        antialiasingcombo.selectedIndex = defaultfontpage.current_antialiasing_index;
-
-
-        var index2 = 0;
         var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
         var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
-        var default_antialiasing = sessiondispatcher.get_default_theme_sring_qt("antialiasingstyle");
+        var default_antialiasing = sessiondispatcher.get_uk_default_setting_string("font", "antialiasing");
+        var new_list2 = new Array();
         for(var x=0; x < antialiasinglist.length; x++) {
-            if (current_antialiasing == antialiasinglist[x]) {
-                index2 = x;
-                defaultfontpage.current_antialiasing_index = x;
-            }
-            if (default_antialiasing == antialiasinglist[i]) {
-                defaultfontpage.default_antialiasing_index = x;
+            if(antialiasinglist[x] !== current_antialiasing) {
+                new_list2.push(antialiasinglist[x]);
             }
         }
+        new_list2.unshift(current_antialiasing);
         antialiasingchoices.clear();
-        if (index2 == 0) {
-            for(var y=0; y < antialiasinglist.length; y++) {
-                antialiasingchoices.append({"text": antialiasinglist[y]});
-            }
-        }
-        else {
-            antialiasinglist.unshift(current_antialiasing);
-            for(var z=0; z < antialiasinglist.length; z++) {
-                antialiasingchoices.append({"text": antialiasinglist[z]});
-                if (z!=0 && antialiasinglist[z] == current_antialiasing){
-                    antialiasingchoices.remove(z);
-                }
+        for(var y=0; y < new_list2.length; y++) {
+            antialiasingchoices.append({"text": new_list2[y]});
+            if (default_antialiasing === new_list2[y]) {
+                defaultfontpage.default_antialiasing_index = y;
             }
         }
     }
@@ -361,8 +293,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("defaultfont");
-                    fontBtn.text = sessiondispatcher.get_font_qt();
+                    if (sessiondispatcher.get_uk_default_setting_string("font", "font-name") !== fontBtn.text) {
+                        sessiondispatcher.restore_uk_default_setting("font", "font-name");
+                        fontBtn.text = sessiondispatcher.get_font_qt();
+                    }
+//                    sessiondispatcher.set_default_theme_qt("defaultfont");
+//                    fontBtn.text = sessiondispatcher.get_font_qt();
                 }
             }
         }
@@ -410,8 +346,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("desktopfont");
-                    desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
+                    if (sessiondispatcher.get_uk_default_setting_string("font", "font") !== desktopfontBtn.text) {
+                        sessiondispatcher.restore_uk_default_setting("font", "font");
+                        desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
+                    }
+//                    sessiondispatcher.set_default_theme_qt("desktopfont");
+//                    desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
                 }
             }
         }
@@ -458,8 +398,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("monospacefont");
-                    monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
+                    if (sessiondispatcher.get_uk_default_setting_string("font", "monospace-font-name") !== monofontBtn.text) {
+                        sessiondispatcher.restore_uk_default_setting("font", "monospace-font-name");
+                        monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
+                    }
+//                    sessiondispatcher.set_default_theme_qt("monospacefont");
+//                    monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
                 }
             }
         }
@@ -506,8 +450,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("documentfont");
-                    docufontBtn.text = sessiondispatcher.get_document_font_qt();
+                    if (sessiondispatcher.get_uk_default_setting_string("font", "document-font-name") !== docufontBtn.text) {
+                        sessiondispatcher.restore_uk_default_setting("font", "document-font-name");
+                        docufontBtn.text = sessiondispatcher.get_document_font_qt();
+                    }
+//                    sessiondispatcher.set_default_theme_qt("documentfont");
+//                    docufontBtn.text = sessiondispatcher.get_document_font_qt();
                 }
             }
         }
@@ -554,8 +502,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("titlebarfont");
-                    titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
+                    if (sessiondispatcher.get_uk_default_setting_string("font", "titlebar-font") !== titlefontBtn.text) {
+                        sessiondispatcher.restore_uk_default_setting("font", "titlebar-font");
+                        titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
+                    }
+//                    sessiondispatcher.set_default_theme_qt("titlebarfont");
+//                    titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
                 }
             }
         }
@@ -610,8 +562,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("globalfontscaling");
-                    slider.value = sessiondispatcher.get_font_zoom_qt();
+                    if (sessiondispatcher.get_uk_default_setting_double("font", "text-scaling-factor") !== slider.value) {
+                        sessiondispatcher.restore_uk_default_setting("font", "text-scaling-factor");
+                        slider.value = sessiondispatcher.get_font_zoom_qt();
+                    }
+//                    sessiondispatcher.set_default_theme_qt("globalfontscaling");
+//                    slider.value = sessiondispatcher.get_font_zoom_qt();
                 }
             }
 
@@ -659,8 +615,13 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("smoothstyle");
-                    smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
+                    var default_hinting = sessiondispatcher.get_uk_default_setting_string("font", "hinting");
+                    if(smoothcombo.selectedText !== default_hinting) {
+                        sessiondispatcher.restore_uk_default_setting("font", "hinting");
+                        smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
+                    }
+//                    sessiondispatcher.set_default_theme_qt("smoothstyle");
+//                    smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
                 }
             }
         }
@@ -707,8 +668,13 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("antialiasingstyle");
-                    antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
+                    var default_antialiasing = sessiondispatcher.get_uk_default_setting_string("font", "antialiasing");
+                    if(antialiasingcombo.selectedText !== default_antialiasing) {
+                        sessiondispatcher.restore_uk_default_setting("font", "antialiasing");
+                        antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
+                    }
+//                    sessiondispatcher.set_default_theme_qt("antialiasingstyle");
+//                    antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
                 }
             }
         }

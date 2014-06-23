@@ -735,6 +735,26 @@ class SessionDaemon(dbus.service.Object):
     def set_theme(self, theme):
         self.themeconf.set_theme(theme)
 
+
+#----------------------------------------------------------------------------------------------------------
+    @dbus.service.method(INTERFACE, in_signature='sssss', out_signature='')
+    def set_ubuntukylin_default_setting_str(self, schema, title, key, type,value):
+        self.themeconf.set_ubuntukylin_default_setting(schema, title, key, type,value)
+
+    @dbus.service.method(INTERFACE, in_signature='ssssd', out_signature='')
+    def set_ubuntukylin_default_setting_double(self, schema, title, key, type,value):
+        self.themeconf.set_ubuntukylin_default_setting(schema, title, key, type,value)
+
+    @dbus.service.method(INTERFACE, in_signature='ssssi', out_signature='')
+    def set_ubuntukylin_default_setting_int(self, schema, title, key, type,value):
+        self.themeconf.set_ubuntukylin_default_setting(schema, title, key, type,value)
+
+    @dbus.service.method(INTERFACE, in_signature='ssssb', out_signature='')
+    def set_ubuntukylin_default_setting_bool(self, schema, title, key, type,value):
+        self.themeconf.set_ubuntukylin_default_setting(schema, title, key, type,value)
+#----------------------------------------------------------------------------------------------------------
+
+
     # ----------------window theme----------------
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_window_themes(self):

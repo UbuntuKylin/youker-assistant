@@ -121,6 +121,15 @@ public:
     Q_INVOKABLE void get_system_message_qt();
     //通过键得到对应的单个信息的值
     Q_INVOKABLE QString getSingleInfo(QString key);
+    Q_INVOKABLE QString getBatterySingleInfo(QString key);
+
+
+    //恢复ubuntukylin默认配置
+    Q_INVOKABLE QString get_uk_default_setting_string(QString key, QString name);
+    Q_INVOKABLE double get_uk_default_setting_double(QString key, QString name);
+    Q_INVOKABLE int get_uk_default_setting_int(QString key, QString name);
+    Q_INVOKABLE bool get_uk_default_setting_bool(QString key, QString name);
+    Q_INVOKABLE void restore_uk_default_setting(QString key, QString name);
 
     /*-------------------get and set default value-------------------*/
     //获取和设置字体默认值:theme.py
@@ -525,6 +534,7 @@ private:
 //    SkinCenter *skinCenter;
 
     QSettings * mSettings;
+    QSettings * default_Settings;
     QString initCityId;
     HttpAuth *httpauth;
 

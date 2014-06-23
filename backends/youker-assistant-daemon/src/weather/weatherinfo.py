@@ -108,7 +108,7 @@ class WeatherInfo(threading.Thread):
             #print >> fp, pmdata
             #return pmdata
             if pmdata.has_key('aqi') and pmdata.has_key('quality'):
-                self.pmData = pmdata['quality'] + '（' +  str(pmdata['aqi']) + '）'
+                self.pmData = pmdata['quality'] + '(' +  str(pmdata['aqi']) + ')'
                 #print >> fp, self.pmData
             else:
                 #print >> fp, "11111"

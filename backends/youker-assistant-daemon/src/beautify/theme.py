@@ -27,6 +27,11 @@ class Theme:
         self.homedir = utils.get_home_dir()
 
     # ---------------themes---------------
+    def set_ubuntukylin_default_setting(self, schema, title, key, type, default_value):
+        if title == 'unity':
+            return gsettings.set(schema, '/org/compiz/profiles/unity/plugins/unityshell/', key, type, default_value)
+        else:
+            return gsettings.set(schema, None, key, type, default_value)
 
     # -----------------默认值-----------------
     # Get Default Value
