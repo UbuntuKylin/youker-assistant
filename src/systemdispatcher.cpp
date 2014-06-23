@@ -77,6 +77,7 @@ void SystemDispatcher::get_computer_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_computer_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        computerInfo.clear();
         computerInfo = value;
     }
     else {
@@ -88,6 +89,7 @@ void SystemDispatcher::get_cpu_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cpu_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        cpuInfo.clear();
         cpuInfo = value;
     }
     else {
@@ -99,6 +101,7 @@ void SystemDispatcher::get_memory_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_memory_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        memoryInfo.clear();
         memoryInfo = value;
 //        qDebug() << memoryInfo;
     }
@@ -111,6 +114,7 @@ void SystemDispatcher::get_board_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_board_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        boardInfo.clear();
         boardInfo = value;
     }
     else {
@@ -122,6 +126,7 @@ void SystemDispatcher::get_harddisk_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_harddisk_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        harddiskInfo.clear();
         harddiskInfo = value;
     }
     else {
@@ -133,6 +138,7 @@ void SystemDispatcher::get_networkcard_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_networkcard_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        networkcardInfo.clear();
         networkcardInfo = value;
     }
     else {
@@ -144,6 +150,7 @@ void SystemDispatcher::get_monitor_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_monitor_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        monitorInfo.clear();
         monitorInfo = value;
     }
     else {
@@ -155,6 +162,7 @@ void SystemDispatcher::get_cdrom_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cdrom_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        cdromInfo.clear();
         cdromInfo = value;
     }
     else {
@@ -166,6 +174,7 @@ void SystemDispatcher::get_audiocard_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_audiocard_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        audiocardInfo.clear();
         audiocardInfo = value;
     }
     else {

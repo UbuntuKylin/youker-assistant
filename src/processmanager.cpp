@@ -28,13 +28,18 @@ ProcessManager::ProcessManager(QObject *parent) :
 
 ProcessManager::~ProcessManager(){
     mSettings->sync();
-    if (mSettings != NULL)
+    if (mSettings != NULL) {
         delete mSettings;
+    }
+    if (memos != NULL) {
+        delete memos;
+    }
 }
 
 void ProcessManager::readMemoFile(){
     QFile *memoFile = new QFile("/var/lib/youker-assistant-daemon/processmanager/processmemo");
     if(memoFile->open(QIODevice::ReadOnly)){
+        memos->clear();
         QTextStream in(memoFile);
         while(!in.atEnd()){
             QString line = in.readLine();

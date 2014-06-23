@@ -182,7 +182,20 @@ bool SessionDispatcher::read_battery_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("read_battery_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
+        batteryInfo.clear();
         batteryInfo = value;
+        if (batteryInfo.contains("POWER_SUPPLY_VOLTAGE_NOW")) {
+            batteryInfo["POWER_SUPPLY_VOLTAGE_NOW"] =  QString::number(batteryInfo["POWER_SUPPLY_VOLTAGE_NOW"].toDouble()/1000000, 'f', 1) + "V";
+        }
+        if (batteryInfo.contains("POWER_SUPPLY_ENERGY_FULL_DESIGN")) {
+            batteryInfo["POWER_SUPPLY_ENERGY_FULL_DESIGN"] =  QString::number(batteryInfo["POWER_SUPPLY_ENERGY_FULL_DESIGN"].toDouble()/1000000, 'f', 1) + "Wh";
+        }
+        if (batteryInfo.contains("POWER_SUPPLY_ENERGY_FULL")) {
+            batteryInfo["POWER_SUPPLY_ENERGY_FULL"] =  QString::number(batteryInfo["POWER_SUPPLY_ENERGY_FULL"].toDouble()/1000000, 'f', 1) + "Wh";
+        }
+        if (batteryInfo.contains("POWER_SUPPLY_ENERGY_NOW")) {
+            batteryInfo["POWER_SUPPLY_ENERGY_NOW"] =  QString::number(batteryInfo["POWER_SUPPLY_ENERGY_NOW"].toDouble()/1000000, 'f', 1) + "Wh";
+        }
         return true;
     }
     else {
@@ -613,6 +626,7 @@ void SessionDispatcher::get_system_message_qt() {
     if (reply.isValid()) {
 //        qDebug() << "222";
         QMap<QString, QVariant> value = reply.value();
+        systemInfo.clear();
         systemInfo = value;
 //        qDebug() << systemInfo;
 //        QMap(("cpu", QVariant(QString, " Pentium(R) Dual-Core  CPU      E5500  @ 2.80GHz") ) ( "currrent_user" ,  QVariant(QString, "trusty") ) ( "desktopenvironment" ,  QVariant(QString, "Unity") ) ( "distribution" ,  QVariant(QString, "Ubuntu Kylin-14.04-trusty") ) ( "home_path" ,  QVariant(QString, "/home/trusty") ) ( "hostname" ,  QVariant(QString, "trusty-lenovo") ) ( "language" ,  QVariant(QString, "zh_CN.UTF-8") ) ( "platform" ,  QVariant(QString, "x86_64") ) ( "ram" ,  QVariant(QString, "2.0 GB") ) ( "shell" ,  QVariant(QString, "/bin/bash") ) )
@@ -1854,11 +1868,13 @@ void SessionDispatcher::get_forecast_weahter_qt() {
 
 void SessionDispatcher::get_forecast_dict_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_dict");
+    forecastInfo.clear();
     forecastInfo = reply.value();
 }
 
 void SessionDispatcher::get_yahoo_forecast_dict_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_yahoo_forecast_dict");
+    yahooforecastInfo.clear();
     yahooforecastInfo = reply.value();
 }
 
@@ -1881,11 +1897,13 @@ void SessionDispatcher::get_current_weather_qt() {
 
 void SessionDispatcher::get_current_weather_dict_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_weather_dict");
+    currentInfo.clear();
     currentInfo = reply.value();
 }
 
 void SessionDispatcher::get_current_yahoo_weather_dict_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_current_yahoo_weather_dict");
+    yahoocurrentInfo.clear();
     yahoocurrentInfo = reply.value();
 }
 
