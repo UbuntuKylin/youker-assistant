@@ -70,46 +70,70 @@ Rectangle {
             else if(download == "titlebar_wheel") {
                 var wheellist = sessiondispatcher.get_titlebar_wheel_qt();
                 var current_wheel_type = sessiondispatcher.get_current_titlebar_wheel_qt();
-                for(var i=0; i < wheellist.length; i++) {
-                    if (wheellist[i] == current_wheel_type) {
-                        windowmanagerpage.wheel_current_index = i;
+                var new_list = new Array();
+                for(var m=0; m < wheellist.length; m++) {
+                    if(wheellist[m] !== current_wheel_type) {
+                        new_list.push(wheellist[m]);
+                    }
+                }
+                new_list.unshift(current_wheel_type);
+                for(var j=0; j < new_list.length; j++) {
+                    if (current_wheel_type === new_list[j]) {
+                        wheelcombo.selectedIndex  = j;
                         break;
                     }
                 }
-                wheelcombo.selectedIndex = windowmanagerpage.wheel_current_index;
             }
             else if(download == "titlebar_double") {
                 var doublelist = sessiondispatcher.get_titlebar_double_qt();
                 var current_double_type = sessiondispatcher.get_current_titlebar_double_qt();
-                for(var k=0; k < doublelist.length; k++) {
-                    if (doublelist[k] == current_double_type) {
-                        windowmanagerpage.double_current_index = k;
+                var new_list = new Array();
+                for(var m=0; m < doublelist.length; m++) {
+                    if(doublelist[m] !== current_double_type) {
+                        new_list.push(doublelist[m]);
+                    }
+                }
+                new_list.unshift(current_double_type);
+                for(var j=0; j < new_list.length; j++) {
+                    if (current_double_type === new_list[j]) {
+                        doublecombo.selectedIndex  = j;
                         break;
                     }
                 }
-                doublecombo.selectedIndex = windowmanagerpage.double_current_index;
             }
             else if(download == "titlebar_middle") {
                 var middlelist = sessiondispatcher.get_titlebar_middle_qt();
                 var current_middle_type = sessiondispatcher.get_current_titlebar_middle_qt();
-                for(var n=0; n < middlelist.length; n++) {
-                    if (middlelist[n] == current_middle_type) {
-                        windowmanagerpage.middle_current_index = n;
+                var new_list = new Array();
+                for(var m=0; m < middlelist.length; m++) {
+                    if(middlelist[m] !== current_middle_type) {
+                        new_list.push(middlelist[m]);
+                    }
+                }
+                new_list.unshift(current_middle_type);
+                for(var j=0; j < new_list.length; j++) {
+                    if (current_middle_type === new_list[j]) {
+                        middlecombo.selectedIndex  = j;
                         break;
                     }
                 }
-                middlecombo.selectedIndex = windowmanagerpage.middle_current_index;
             }
             else if(download == "titlebar_right") {
                 var rightlist = sessiondispatcher.get_titlebar_right_qt();
                 var current_right_type = sessiondispatcher.get_current_titlebar_right_qt();
-                for(var l=0; l < rightlist.length; l++) {
-                    if (rightlist[l] == current_right_type) {
-                        windowmanagerpage.right_current_index = l;
+                var new_list = new Array();
+                for(var m=0; m < rightlist.length; m++) {
+                    if(rightlist[m] !== current_right_type) {
+                        new_list.push(rightlist[m]);
+                    }
+                }
+                new_list.unshift(current_right_type);
+                for(var j=0; j < new_list.length; j++) {
+                    if (current_right_type === new_list[j]) {
+                        rightcombo.selectedIndex  = j;
                         break;
                     }
                 }
-                rightcombo.selectedIndex = windowmanagerpage.right_current_index;
             }
         }
     }
@@ -123,245 +147,82 @@ Rectangle {
             menuswitcher.switchedOn = false;
         }
 
-        //wheel action
-//        var wheellist = sessiondispatcher.get_titlebar_wheel_qt();
-//        var current_wheel_type = sessiondispatcher.get_current_titlebar_wheel_qt();
-//        var default_wheel_type = sessiondispatcher.get_default_system_sring_qt("wheel-action");
-//        wheelchoices.clear();
-//        if(current_wheel_type == default_wheel_type) {
-//            for(var i=0; i < wheellist.length; i++) {
-//                wheelchoices.append({"text": wheellist[i]});
-//                if (wheellist[i] == current_wheel_type) {
-//                    windowmanagerpage.wheel_current_index = i;
-//                    windowmanagerpage.wheel_default_index = i;
-//                }
-//            }
-//        }
-//        else {
-//            for(var j=0; j < wheellist.length; j++) {
-//                wheelchoices.append({"text": wheellist[j]});
-//                if (wheellist[j] == current_wheel_type) {
-//                    windowmanagerpage.wheel_current_index = j;
-//                }
-//                else if (wheellist[j] == default_wheel_type) {
-//                    windowmanagerpage.wheel_default_index = j;
-//                }
-//            }
-//        }
-//        wheelcombo.selectedIndex = windowmanagerpage.wheel_current_index;
-
-
-
-        var index = 0;
         var i = 0;
         var j = 0;
-        var k = 0;
         var wheellist = sessiondispatcher.get_titlebar_wheel_qt();
         var current_wheel_type = sessiondispatcher.get_current_titlebar_wheel_qt();
-        var default_wheel_type = sessiondispatcher.get_default_system_sring_qt("wheel-action");
+        var default_wheel_type = sessiondispatcher.get_uk_default_setting_string("window", "mouse-wheel-action");
+
+        var new_list = new Array();
         for(i=0; i < wheellist.length; i++) {
-            if (current_wheel_type == wheellist[i]) {
-                index = i;
-                windowmanagerpage.wheel_current_index = i;
-            }
-            if (default_wheel_type == wheellist[i]) {
-                windowmanagerpage.wheel_default_index = i;
+            if(wheellist[i] !== current_wheel_type) {
+                new_list.push(wheellist[i]);
             }
         }
+        new_list.unshift(current_wheel_type);
         wheelchoices.clear();
-        if (index == 0) {
-            for(j=0; j < wheellist.length; j++) {
-                wheelchoices.append({"text": wheellist[j]});
-            }
-        }
-        else {
-            wheellist.unshift(current_wheel_type);
-            for(k=0; k < wheellist.length; k++) {
-                wheelchoices.append({"text": wheellist[k]});
-                if (k!=0 && wheellist[k] == current_wheel_type){
-                    wheelchoices.remove(k);
-                }
+        for(j=0; j < new_list.length; j++) {
+            wheelchoices.append({"text": new_list[j]});
+            if (default_wheel_type === new_list[j]) {
+                windowmanagerpage.wheel_default_index = j;
             }
         }
 
-
-        //double click
-//        var doublelist = sessiondispatcher.get_titlebar_double_qt();
-//        var current_double_type = sessiondispatcher.get_current_titlebar_double_qt();
-//        var default_double_type = sessiondispatcher.get_default_system_sring_qt("double-click");
-//        doublechoices.clear();
-//        if(current_double_type == default_double_type) {
-//            for(var k=0; k < doublelist.length; k++) {
-//                doublechoices.append({"text": doublelist[k]});
-//                if (doublelist[k] == current_double_type) {
-//                    windowmanagerpage.double_current_index = k;
-//                    windowmanagerpage.double_default_index = k;
-//                }
-//            }
-//        }
-//        else {
-//            for(var m=0; m < doublelist.length; m++) {
-//                doublechoices.append({"text": doublelist[m]});
-//                if (doublelist[m] == current_double_type) {
-//                    windowmanagerpage.double_current_index = m;
-//                }
-//                else if (doublelist[m] == default_double_type) {
-//                    windowmanagerpage.double_default_index = m;
-//                }
-//            }
-//        }
-//        doublecombo.selectedIndex = windowmanagerpage.double_current_index;
-
-
-
-        index = 0;
         var doublelist = sessiondispatcher.get_titlebar_double_qt();
         var current_double_type = sessiondispatcher.get_current_titlebar_double_qt();
-        var default_double_type = sessiondispatcher.get_default_system_sring_qt("double-click");
+        var default_double_type = sessiondispatcher.get_uk_default_setting_string("window", "action-double-click-titlebar");
+        var new_list2 = new Array();
         for(i=0; i < doublelist.length; i++) {
-            if (current_double_type == doublelist[i]) {
-                index = i;
-                windowmanagerpage.double_current_index = i;
-
-            }
-            if (default_double_type == doublelist[i]) {
-                windowmanagerpage.double_default_index = i;
+            if(doublelist[i] !== current_double_type) {
+                new_list2.push(doublelist[i]);
             }
         }
+        new_list2.unshift(current_double_type);
         doublechoices.clear();
-        if (index == 0) {
-            for(j=0; j < doublelist.length; j++) {
-                doublechoices.append({"text": doublelist[j]});
-            }
-        }
-        else {
-            doublelist.unshift(current_double_type);
-            for(k=0; k < doublelist.length; k++) {
-                doublechoices.append({"text": doublelist[k]});
-                if (k!=0 && doublelist[k] == current_double_type){
-                    doublechoices.remove(k);
-                }
+        for(j=0; j < new_list2.length; j++) {
+            doublechoices.append({"text": new_list2[j]});
+            if (default_double_type === new_list2[j]) {
+                windowmanagerpage.double_default_index = j;
             }
         }
 
-
-        //middle click
-//        var middlelist = sessiondispatcher.get_titlebar_middle_qt();
-//        var current_middle_type = sessiondispatcher.get_current_titlebar_middle_qt();
-//        var default_middle_type = sessiondispatcher.get_default_system_sring_qt("middle-click");
-//        middlechoices.clear();
-//        if(current_middle_type == default_middle_type) {
-//            for(var n=0; n < middlelist.length; n++) {
-//                middlechoices.append({"text": middlelist[n]});
-//                if (middlelist[n] == current_middle_type) {
-//                    windowmanagerpage.middle_current_index = n;
-//                    windowmanagerpage.middle_default_index = n;
-//                }
-//            }
-//        }
-//        else {
-//            for(var p=0; p < middlelist.length; p++) {
-//                middlechoices.append({"text": middlelist[p]});
-//                if (middlelist[p] == current_middle_type) {
-//                    windowmanagerpage.middle_current_index = p;
-//                }
-//                else if (middlelist[p] == default_middle_type) {
-//                    windowmanagerpage.middle_default_index = p;
-//                }
-//            }
-//        }
-//        middlecombo.selectedIndex = windowmanagerpage.middle_current_index;
-
-
-        index = 0;
         var middlelist = sessiondispatcher.get_titlebar_middle_qt();
         var current_middle_type = sessiondispatcher.get_current_titlebar_middle_qt();
-        var default_middle_type = sessiondispatcher.get_default_system_sring_qt("middle-click");
+        var default_middle_type = sessiondispatcher.get_uk_default_setting_string("window", "action-middle-click-titlebar");
+        var new_list3 = new Array();
         for(i=0; i < middlelist.length; i++) {
-            if (current_middle_type == middlelist[i]) {
-                index = i;
-                windowmanagerpage.middle_current_index = i;
-
-            }
-            if (default_middle_type == middlelist[i]) {
-                windowmanagerpage.middle_default_index = i;
+            if(middlelist[i] !== current_middle_type) {
+                new_list3.push(middlelist[i]);
             }
         }
+        new_list3.unshift(current_middle_type);
         middlechoices.clear();
-        if (index == 0) {
-            for(j=0; j < middlelist.length; j++) {
-                middlechoices.append({"text": middlelist[j]});
-            }
-        }
-        else {
-            middlelist.unshift(current_middle_type);
-            for(k=0; k < middlelist.length; k++) {
-                middlechoices.append({"text": middlelist[k]});
-                if (k!=0 && middlelist[k] == current_middle_type){
-                    middlechoices.remove(k);
-                }
+        for(j=0; j < new_list3.length; j++) {
+            middlechoices.append({"text": new_list3[j]});
+            if (default_middle_type === new_list3[j]) {
+                windowmanagerpage.middle_default_index = j;
             }
         }
 
-
-        //right click
-//        var rightlist = sessiondispatcher.get_titlebar_right_qt();
-//        var current_right_type = sessiondispatcher.get_current_titlebar_right_qt();
-//        var default_right_type = sessiondispatcher.get_default_system_sring_qt("right-click");
-//        rightchoices.clear();
-//        if(current_right_type == default_right_type) {
-//            for(var l=0; l < rightlist.length; l++) {
-//                rightchoices.append({"text": rightlist[l]});
-//                if (rightlist[l] == current_right_type) {
-//                    windowmanagerpage.right_current_index = l;
-//                    windowmanagerpage.right_default_index = l;
-//                }
-//            }
-//        }
-//        else {
-//            for(var q=0; q < rightlist.length; q++) {
-//                rightchoices.append({"text": rightlist[q]});
-//                if (rightlist[q] == current_right_type) {
-//                    windowmanagerpage.right_current_index = q;
-//                }
-//                else if (rightlist[q] == default_right_type) {
-//                    windowmanagerpage.right_default_index = q;
-//                }
-//            }
-//        }
-//        rightcombo.selectedIndex = windowmanagerpage.right_current_index;
-
-
-
-        index = 0;
         var rightlist = sessiondispatcher.get_titlebar_right_qt();
         var current_right_type = sessiondispatcher.get_current_titlebar_right_qt();
-        var default_right_type = sessiondispatcher.get_default_system_sring_qt("right-click");
+        var default_right_type = sessiondispatcher.get_uk_default_setting_string("window", "action-right-click-titlebar");
+        var new_list4 = new Array();
         for(i=0; i < rightlist.length; i++) {
-            if (current_right_type == rightlist[i]) {
-                index = i;
-                windowmanagerpage.right_current_index = i;
-
-            }
-            if (default_right_type == rightlist[i]) {
-                windowmanagerpage.right_default_index = i;
+            if(rightlist[i] !== current_right_type) {
+                new_list4.push(rightlist[i]);
             }
         }
+        new_list4.unshift(current_right_type);
         rightchoices.clear();
-        if (index == 0) {
-            for(j=0; j < rightlist.length; j++) {
-                rightchoices.append({"text": rightlist[j]});
+        for(j=0; j < new_list4.length; j++) {
+            rightchoices.append({"text": new_list4[j]});
+            if (default_right_type === new_list4[j]) {
+                windowmanagerpage.right_default_index = j;
             }
         }
-        else {
-            rightlist.unshift(current_right_type);
-            for(k=0; k < rightlist.length; k++) {
-                rightchoices.append({"text": rightlist[k]});
-                if (k!=0 && rightlist[k] == current_right_type){
-                    rightchoices.remove(k);
-                }
-            }
-        }
+
+
     }
 
     Row {
@@ -507,15 +368,34 @@ Rectangle {
                 text: qsTr("Restore")//恢复默认
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("control-button-position");
-                    var default_type = sessiondispatcher.get_window_button_align_qt();
-                    windowmanagerpage.position_mode = default_type;
-                    if(default_type == "left") {
-                        leftbox.checked = true;
+                    var cur_type;
+                    if (leftbox.checked) {
+                        cur_type = "left";
                     }
-                    else if(default_type == "right") {
-                        rightbox.checked = true;
+                    else {
+                        cur_type = "right";
                     }
+
+                    if (sessiondispatcher.get_uk_default_setting_string("window", "button-layout") !== cur_type) {
+                        sessiondispatcher.restore_uk_default_setting("window", "button-layout");
+                        var current_type = sessiondispatcher.get_window_button_align_qt();
+                        windowmanagerpage.position_mode = current_type;
+                        if(current_type === "left") {
+                            leftbox.checked = true;
+                        }
+                        else if(current_type === "right") {
+                            rightbox.checked = true;
+                        }
+                    }
+//                    sessiondispatcher.set_default_system_qt("control-button-position");
+//                    var default_type = sessiondispatcher.get_window_button_align_qt();
+//                    windowmanagerpage.position_mode = default_type;
+//                    if(default_type == "left") {
+//                        leftbox.checked = true;
+//                    }
+//                    else if(default_type == "right") {
+//                        rightbox.checked = true;
+//                    }
                 }
             }
         }
@@ -566,13 +446,22 @@ Rectangle {
                 text: qsTr("Restore")//恢复默认
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("menu-with-icons");
-                    if (sessiondispatcher.get_menus_have_icons_qt()) {
-                        menuswitcher.switchedOn = true;
+                    if(sessiondispatcher.get_uk_default_setting_bool("window", "menus-have-icons") !== menuswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("window", "menus-have-icons");
+                        if (sessiondispatcher.get_menus_have_icons_qt()) {
+                            menuswitcher.switchedOn = true;
+                        }
+                        else {
+                            menuswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        menuswitcher.switchedOn = false;
-                    }
+//                    sessiondispatcher.set_default_system_qt("menu-with-icons");
+//                    if (sessiondispatcher.get_menus_have_icons_qt()) {
+//                        menuswitcher.switchedOn = true;
+//                    }
+//                    else {
+//                        menuswitcher.switchedOn = false;
+//                    }
                 }
             }
         }
@@ -618,8 +507,13 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("wheel-action");
-                    wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
+                    var default_theme = sessiondispatcher.get_uk_default_setting_string("window", "mouse-wheel-action");
+                    if(wheelcombo.selectedText !== default_theme) {
+                        sessiondispatcher.restore_uk_default_setting("window", "mouse-wheel-action");
+                        wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
+                    }
+//                    sessiondispatcher.set_default_system_qt("wheel-action");
+//                    wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
                 }
             }
         }
@@ -665,8 +559,13 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("double-action");
-                    doublecombo.selectedIndex = windowmanagerpage.double_default_index;
+                    default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-double-click-titlebar");
+                    if(doublecombo.selectedText !== default_theme) {
+                        sessiondispatcher.restore_uk_default_setting("window", "action-double-click-titlebar");
+                        doublecombo.selectedIndex = windowmanagerpage.double_default_index;
+                    }
+//                    sessiondispatcher.set_default_system_qt("double-action");
+//                    doublecombo.selectedIndex = windowmanagerpage.double_default_index;
                 }
             }
         }
@@ -712,8 +611,13 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("middle-action");
-                    middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
+                    default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-middle-click-titlebar");
+                    if(middlecombo.selectedText !== default_theme) {
+                        sessiondispatcher.restore_uk_default_setting("window", "action-middle-click-titlebar");
+                        middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
+                    }
+//                    sessiondispatcher.set_default_system_qt("middle-action");
+//                    middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
                 }
             }
         }
@@ -759,8 +663,13 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("right-action");
-                    rightcombo.selectedIndex = windowmanagerpage.right_default_index;
+                    default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-right-click-titlebar");
+                    if(rightcombo.selectedText !== default_theme) {
+                        sessiondispatcher.restore_uk_default_setting("window", "action-right-click-titlebar");
+                        rightcombo.selectedIndex = windowmanagerpage.right_default_index;
+                    }
+//                    sessiondispatcher.set_default_system_qt("right-action");
+//                    rightcombo.selectedIndex = windowmanagerpage.right_default_index;
                 }
             }
         }

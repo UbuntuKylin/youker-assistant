@@ -217,13 +217,22 @@ Rectangle {
                 text: qsTr("Restore")//恢复默认
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
-                    if (sessiondispatcher.get_touchpad_enable_qt()) {
-                        touchpadswitcher.switchedOn = true;
+                    if(sessiondispatcher.get_uk_default_setting_bool("touchpad", "touchpad-enabled") !== touchpadswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("touchpad", "touchpad-enabled");
+                        if (sessiondispatcher.get_touchpad_enable_qt()) {
+                            touchpadswitcher.switchedOn = true;
+                        }
+                        else {
+                            touchpadswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        touchpadswitcher.switchedOn = false;
-                    }
+//                    sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
+//                    if (sessiondispatcher.get_touchpad_enable_qt()) {
+//                        touchpadswitcher.switchedOn = true;
+//                    }
+//                    else {
+//                        touchpadswitcher.switchedOn = false;
+//                    }
                 }
             }
         }
@@ -276,13 +285,22 @@ Rectangle {
                 text: qsTr("Restore")//恢复默认
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
-                    if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
-                        horizontalswitcher.switchedOn = true;
+                    if(sessiondispatcher.get_uk_default_setting_bool("touchpad", "horiz-scroll-enabled") !== horizontalswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("touchpad", "horiz-scroll-enabled");
+                        if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
+                            horizontalswitcher.switchedOn = true;
+                        }
+                        else {
+                            horizontalswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        horizontalswitcher.switchedOn = false;
-                    }
+//                    sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
+//                    if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
+//                        horizontalswitcher.switchedOn = true;
+//                    }
+//                    else {
+//                        horizontalswitcher.switchedOn = false;
+//                    }
                 }
             }
         }
@@ -360,14 +378,31 @@ Rectangle {
                 text: qsTr("Restore")//恢复默认
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
-                    var default_type = sessiondispatcher.get_scrollbars_mode_qt();
-                    if(default_type == "overlay-auto") {
-                        overlay.checked = true;
+                    var cur_type;
+                    if (overlay.checked) {
+                        cur_type = "overlay-auto";
                     }
-                    else if(default_type == "normal") {
-                        legacy.checked = true;
+                    else {
+                        cur_type = "normal";
                     }
+                    if (sessiondispatcher.get_uk_default_setting_string("touchpad", "scrollbar-mode") !== cur_type) {
+                        sessiondispatcher.restore_uk_default_setting("touchpad", "scrollbar-mode");
+                        var default_type = sessiondispatcher.get_scrollbars_mode_qt();
+                        if(default_type === "overlay-auto") {
+                            overlay.checked = true;
+                        }
+                        else if(default_type === "normal") {
+                            legacy.checked = true;
+                        }
+                    }
+//                    sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
+//                    var default_type = sessiondispatcher.get_scrollbars_mode_qt();
+//                    if(default_type == "overlay-auto") {
+//                        overlay.checked = true;
+//                    }
+//                    else if(default_type == "normal") {
+//                        legacy.checked = true;
+//                    }
                 }
             }
         }
@@ -444,14 +479,31 @@ Rectangle {
                 text: qsTr("Restore")//恢复默认
                 anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
-                    sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
-                    var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
-                    if(default_mode == "edge-scrolling") {
-                        edge.checked = true;
+                    var cur_mode;
+                    if (edge.checked) {
+                        cur_mode = "edge-scrolling";
                     }
-                    else if(default_mode == "two-finger-scrolling") {
-                        twofinger.checked = true;
+                    else {
+                        cur_mode = "two-finger-scrolling";
                     }
+                    if (sessiondispatcher.get_uk_default_setting_string("touchpad", "scroll-method") !== cur_mode) {
+                        sessiondispatcher.restore_uk_default_setting("touchpad", "scroll-method");
+                        var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
+                        if(default_mode === "edge-scrolling") {
+                            edge.checked = true;
+                        }
+                        else if(default_mode === "two-finger-scrolling") {
+                            twofinger.checked = true;
+                        }
+                    }
+//                    sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
+//                    var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
+//                    if(default_mode == "edge-scrolling") {
+//                        edge.checked = true;
+//                    }
+//                    else if(default_mode == "two-finger-scrolling") {
+//                        twofinger.checked = true;
+//                    }
                 }
             }
         }

@@ -26,13 +26,14 @@ Rectangle {
 
     property string actiontitle: qsTr("Dash & Panel")//搜索和面板
     property string actiontext: qsTr("Manage Dash and Panel menu settings.")//管理Dash搜索和面板菜单的设置
+    property int default_time_index
+    property int default_power_index
     property bool first_slider_value: false //系统初始化时会使value的值为0.2，需要过滤掉
 
     property bool battery_exists: false//判断是否存在电池
 
     ListModel { id: datechoices }
     ListModel { id: powerchoices }
-    property int dateindex: 0
 
     //背景
     Image {
@@ -55,27 +56,21 @@ Rectangle {
 
 
         panelmanagerpage.blur_mode = sessiondispatcher.get_dash_blur_experimental_qt();
-        var index = 0;
         var timelist = sessiondispatcher.get_all_time_format_qt();
         var cur_format = sessiondispatcher.get_time_format_qt();
+        var default_format = sessiondispatcher.get_uk_default_setting_string("datetime", "time-format");
+        var new_list = new Array();
         for(var i=0; i < timelist.length; i++) {
-            if (cur_format == timelist[i]) {
-                index = i;
+            if(timelist[i] !== cur_format) {
+                new_list.push(timelist[i]);
             }
         }
+        new_list.unshift(cur_format);
         datechoices.clear();
-        if (index == 0) {
-            for(var j=0; j < timelist.length; j++) {
-                datechoices.append({"text": timelist[j]});
-            }
-        }
-        else {
-            timelist.unshift(cur_format);
-            for(var k=0; k < timelist.length; k++) {
-                datechoices.append({"text": timelist[k]});
-                if (k!=0 && timelist[k] == cur_format){
-                    datechoices.remove(k);
-                }
+        for(var j=0; j < new_list.length; j++) {
+            datechoices.append({"text": new_list[j]});
+            if (default_format === new_list[j]) {
+                panelmanagerpage.default_time_index = j;
             }
         }
 
@@ -102,27 +97,21 @@ Rectangle {
         }
 
 
-        var index2 = 0;
         var powerlist = sessiondispatcher.get_all_power_icon_policy_qt();
         var cur_power = sessiondispatcher.get_power_icon_policy_qt();
-        for(var x=0; x < powerlist.length; x++) {
-            if (cur_power == powerlist[x]) {
-                index2 = x;
+        var default_power = sessiondispatcher.get_uk_default_setting_string("power", "icon-policy");
+        var new_list2 = new Array();
+        for(var m=0; m < powerlist.length; m++) {
+            if(powerlist[m] !== cur_power) {
+                new_list2.push(powerlist[m]);
             }
         }
+        new_list2.unshift(cur_power);
         powerchoices.clear();
-        if (index2 == 0) {
-            for(var y=0; y < powerlist.length; y++) {
-                powerchoices.append({"text": powerlist[y]});
-            }
-        }
-        else {
-            powerlist.unshift(cur_power);
-            for(var z=0; z < powerlist.length; z++) {
-                powerchoices.append({"text": powerlist[z]});
-                if (z!=0 && cur_power == powerlist[z]){
-                    powerchoices.remove(z);
-                }
+        for(var n=0; n < new_list2.length; n++) {
+            powerchoices.append({"text": new_list2[n]});
+            if (default_power === new_list2[n]) {
+                panelmanagerpage.default_power_index = n;
             }
         }
 
@@ -218,7 +207,7 @@ Rectangle {
         }
         z: 11
         Row {
-            spacing: 230
+            spacing: 83//230
             Row {
                 id: workmode
                 spacing: 20
@@ -287,28 +276,42 @@ Rectangle {
                 }
             }
 
-//            Common.Button {
-////                hoverimage: "blue.png"
-//                picNormal: "../../img/icons/button12.png"
-//                picHover: "../../img/icons/button12-hover.png"
-//                picPressed: "../../img/icons/button12-hover.png"
-//                fontcolor:"#ffffff"
-//                fontsize: 12
-//                width: 100; height: 28
-//                text: qsTr("Restore")//恢复默认
-//                anchors.verticalCenter: parent.verticalCenter
-//                onClicked: {
-//                    sessiondispatcher.set_default_system_qt("control-button-position");
-//                    var default_type = sessiondispatcher.get_window_button_align_qt();
-//                    windowmanagerpage.position_mode = default_type;
-//                    if(default_type == "left") {
-//                        leftbox.checked = true;
-//                    }
-//                    else if(default_type == "right") {
-//                        rightbox.checked = true;
-//                    }
-//                }
-//            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    var cur_type;
+                    if (smartbox.checked) {
+                        cur_type = 2;
+                    }
+                    if (staticbox.checked) {
+                        cur_type = 1;
+                    }
+                    if (nonbox.checked) {
+                        cur_type = 0;
+                    }
+                    if (sessiondispatcher.get_uk_default_setting_int("unity", "dash-blur-experimental") !== cur_type) {
+                        sessiondispatcher.restore_uk_default_setting("unity", "dash-blur-experimental");
+                        panelmanagerpage.blur_mode = sessiondispatcher.get_dash_blur_experimental_qt();
+                        if(panelmanagerpage.blur_mode === 2) {
+                            smartbox.checked = true;
+                        }
+                        else if(panelmanagerpage.blur_mode === 1) {
+                            staticbox.checked = true;
+                        }
+                        else {
+                            nonbox.checked = true;
+                        }
+                    }
+                }
+            }
         }
 
         Row {
@@ -351,26 +354,23 @@ Rectangle {
                 }
             }
 
-//            Common.Button {
-////                hoverimage: "blue.png"
-//                picNormal: "../../img/icons/button12.png"
-//                picHover: "../../img/icons/button12-hover.png"
-//                picPressed: "../../img/icons/button12-hover.png"
-//                fontcolor:"#ffffff"
-//                fontsize: 12
-//                width: 100; height: 28
-//                text: qsTr("Restore")//恢复默认
-//                anchors.verticalCenter: parent.verticalCenter
-//                onClicked: {
-//                    sessiondispatcher.set_default_system_qt("menu-with-icons");
-//                    if (sessiondispatcher.get_menus_have_icons_qt()) {
-//                        menuswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        menuswitcher.switchedOn = false;
-//                    }
-//                }
-//            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    if (sessiondispatcher.get_uk_default_setting_double("unity", "panel-opacity") !== slider.value) {
+                        sessiondispatcher.restore_uk_default_setting("unity", "panel-opacity");
+                        slider.value = sessiondispatcher.get_panel_transparency_qt();
+                    }
+                }
+            }
         }
 
         Row {
@@ -400,6 +400,24 @@ Rectangle {
                     width: 160
                     onSelectedTextChanged: {
                         sessiondispatcher.set_time_format_qt(datecombo.selectedText);
+                    }
+                }
+            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    var default_format = sessiondispatcher.get_uk_default_setting_string("datetime", "time-format");
+                    if(datecombo.selectedText !== default_format) {
+                        sessiondispatcher.restore_uk_default_setting("datetime", "time-format");
+                        datecombo.selectedIndex = panelmanagerpage.default_time_index;
                     }
                 }
             }
@@ -440,20 +458,28 @@ Rectangle {
                 }
             }
 
-//            Common.Button {
-////                hoverimage: "blue.png"
-//                picNormal: "../../img/icons/button12.png"
-//                picHover: "../../img/icons/button12-hover.png"
-//                picPressed: "../../img/icons/button12-hover.png"
-//                fontcolor:"#ffffff"
-//                fontsize: 12
-//                width: 100; height: 28
-//                text: qsTr("Restore")//恢复默认
-//                onClicked: {
-//                    sessiondispatcher.set_default_system_qt("double-action");
-//                    doublecombo.selectedIndex = windowmanagerpage.double_default_index;
-//                }
-//            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    if(sessiondispatcher.get_uk_default_setting_bool("datetime", "show-seconds") !== secondswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("datetime", "show-seconds");
+                        if (sessiondispatcher.get_show_seconds_qt()) {
+                            secondswitcher.switchedOn = true;
+                        }
+                        else {
+                            secondswitcher.switchedOn = false;
+                        }
+                    }
+                }
+            }
         }
 
         Row {
@@ -491,20 +517,28 @@ Rectangle {
                 }
             }
 
-//            Common.Button {
-////                hoverimage: "blue.png"
-//                picNormal: "../../img/icons/button12.png"
-//                picHover: "../../img/icons/button12-hover.png"
-//                picPressed: "../../img/icons/button12-hover.png"
-//                fontcolor:"#ffffff"
-//                fontsize: 12
-//                width: 100; height: 28
-//                text: qsTr("Restore")//恢复默认
-//                onClicked: {
-//                    sessiondispatcher.set_default_system_qt("middle-action");
-//                    middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
-//                }
-//            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    if(sessiondispatcher.get_uk_default_setting_bool("datetime", "show-day") !== weekswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("datetime", "show-day");
+                        if (sessiondispatcher.get_show_week_qt()) {
+                            weekswitcher.switchedOn = true;
+                        }
+                        else {
+                            weekswitcher.switchedOn = false;
+                        }
+                    }
+                }
+            }
         }
 
         Row {
@@ -542,20 +576,28 @@ Rectangle {
                 }
             }
 
-//            Common.Button {
-////                hoverimage: "blue.png"
-//                picNormal: "../../img/icons/button12.png"
-//                picHover: "../../img/icons/button12-hover.png"
-//                picPressed: "../../img/icons/button12-hover.png"
-//                fontcolor:"#ffffff"
-//                fontsize: 12
-//                width: 100; height: 28
-//                text: qsTr("Restore")//恢复默认
-//                onClicked: {
-//                    sessiondispatcher.set_default_system_qt("right-action");
-//                    rightcombo.selectedIndex = windowmanagerpage.right_default_index;
-//                }
-//            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    if(sessiondispatcher.get_uk_default_setting_bool("datetime", "show-date") !== dateswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("datetime", "show-date");
+                        if (sessiondispatcher.get_show_date_qt()) {
+                            dateswitcher.switchedOn = true;
+                        }
+                        else {
+                            dateswitcher.switchedOn = false;
+                        }
+                    }
+                }
+            }
         }
 
 
@@ -590,6 +632,26 @@ Rectangle {
                     width: 160
                     onSelectedTextChanged: {
                         sessiondispatcher.set_power_icon_policy_qt(powercombo.selectedText);
+                    }
+                }
+            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    if(panelmanagerpage.battery_exists) {
+                        var default_power = sessiondispatcher.get_uk_default_setting_string("power", "icon-policy");
+                        if(powercombo.selectedText !== default_power) {
+                            sessiondispatcher.restore_uk_default_setting("power", "icon-policy");
+                            powercombo.selectedIndex = panelmanagerpage.default_power_index;
+                        }
                     }
                 }
             }
@@ -630,6 +692,28 @@ Rectangle {
                     }
                 }
             }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    if(sessiondispatcher.get_uk_default_setting_bool("power", "show-percentage") !== percentageswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("power", "show-percentage");
+                        if (sessiondispatcher.get_show_power_percentage_qt()) {
+                            percentageswitcher.switchedOn = true;
+                        }
+                        else {
+                            percentageswitcher.switchedOn = false;
+                        }
+                    }
+                }
+            }
         }
 
         Row {
@@ -663,6 +747,28 @@ Rectangle {
                         }
                         else if(!timeswitcher.switchedOn) {
                             sessiondispatcher.set_show_power_time_qt(false);
+                        }
+                    }
+                }
+            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12.png"
+                picHover: "../../img/icons/button12-hover.png"
+                picPressed: "../../img/icons/button12-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                anchors.verticalCenter: parent.verticalCenter
+                onClicked: {
+                    if(sessiondispatcher.get_uk_default_setting_bool("power", "show-time") !== timeswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("power", "show-time");
+                        if (sessiondispatcher.get_show_power_time_qt()) {
+                            timeswitcher.switchedOn = true;
+                        }
+                        else {
+                            timeswitcher.switchedOn = false;
                         }
                     }
                 }

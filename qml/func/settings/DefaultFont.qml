@@ -93,6 +93,7 @@ Rectangle {
                         new_list.push(smooth_list[m]);
                     }
                 }
+                new_list.unshift(cur_smooth);
                 for(var j=0; j < new_list.length; j++) {
                     if (cur_smooth === new_list[j]) {
                         smoothcombo.selectedIndex  = j;

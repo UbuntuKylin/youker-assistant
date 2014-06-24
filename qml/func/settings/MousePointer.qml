@@ -23,7 +23,7 @@ Rectangle {
     height: 476
 
     property int cursor_size: 24
-    property int current_index//当前主题的索引
+//    property int current_index//当前主题的索引
     property int default_index//系统默认主题的索引
     property string actiontitle: qsTr("Mouse Settings")//鼠标设置
     property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm. Also, theme change need to restart system.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。
@@ -37,61 +37,22 @@ Rectangle {
     }
     Component.onCompleted: {
         mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
-//        var cursorlist = sessiondispatcher.get_cursor_themes_qt();
-//        var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-//        var default_theme = "DMZ-White";//sessiondispatcher.get_default_theme_sring_qt("mousetheme");
-//        choices.clear();
-//        if(current_cursor_theme == default_theme) {
-//            for(var i=0; i < cursorlist.length; i++) {
-//                choices.append({"text": cursorlist[i]});
-//                if (cursorlist[i] == current_cursor_theme) {
-//                    mousepointerpage.current_index = i;
-//                    mousepointerpage.default_index = i;
-//                }
-//            }
-//        }
-//        else {
-//            for(var j=0; j < cursorlist.length; j++) {
-//                choices.append({"text": cursorlist[j]});
-//                if (cursorlist[j] == current_cursor_theme) {
-//                    mousepointerpage.current_index = j;
-//                }
-//                else if (cursorlist[j] == default_theme) {
-//                    mousepointerpage.default_index = j;
-//                }
-//            }
-//        }
-//        cursorcombo.selectedIndex = mousepointerpage.current_index;
 
-
-
-
-        var index = 0;
         var cursorlist = sessiondispatcher.get_cursor_themes_qt();
         var current_cursor_theme = sessiondispatcher.get_cursor_theme_qt();
-        var default_theme = "DMZ-White";//sessiondispatcher.get_default_theme_sring_qt("mousetheme");
-        for(var i=0; i < cursorlist.length; i++) {
-            if (current_cursor_theme == cursorlist[i]) {
-                index = i;
-                mousepointerpage.current_index = i;
-            }
-            if (default_theme == cursorlist[i]) {
-                mousepointerpage.default_index = i;
+        var default_theme = sessiondispatcher.get_uk_default_setting_string("mouse", "cursor-theme");
+        var new_list = new Array();
+        for(var j=0; j < cursorlist.length; j++) {
+            if(cursorlist[j] !== current_cursor_theme) {
+                new_list.push(cursorlist[j]);
             }
         }
+        new_list.unshift(current_cursor_theme);
         choices.clear();
-        if (index == 0) {
-            for(var j=0; j < cursorlist.length; j++) {
-                choices.append({"text": cursorlist[j]});
-            }
-        }
-        else {
-            cursorlist.unshift(current_cursor_theme);
-            for(var k=0; k < cursorlist.length; k++) {
-                choices.append({"text": cursorlist[k]});
-                if (k!=0 && cursorlist[k] == current_cursor_theme){
-                    choices.remove(k);
-                }
+        for(var k=0; k < new_list.length; k++) {
+            choices.append({"text": new_list[k]});
+            if (default_theme === new_list[k]) {
+                mousepointerpage.default_index = k;
             }
         }
     }
@@ -219,9 +180,16 @@ Rectangle {
                 onClicked: {
                     //Attention:配置文件的系统默认值为：DMZ-White，而通过gsetting方法得到的默认值为：Adwaita
                     //这里我们使用配置自带的系统默认值DMZ-White
-                    sessiondispatcher.set_cursor_theme_qt("DMZ-White");
-                    systemdispatcher.set_cursor_theme_with_root_qt("DMZ-White");
-                    cursorcombo.selectedIndex = mousepointerpage.default_index;
+                    var default_theme= sessiondispatcher.get_uk_default_setting_string("mouse", "cursor-theme");
+                    if(cursorcombo.selectedText !== default_theme) {
+                        sessiondispatcher.set_cursor_theme_qt(default_theme);
+                        systemdispatcher.set_cursor_theme_with_root_qt(default_theme);
+                        cursorcombo.selectedIndex = mousepointerpage.default_index;
+                    }
+
+//                    sessiondispatcher.set_cursor_theme_qt("DMZ-White");
+//                    systemdispatcher.set_cursor_theme_with_root_qt("DMZ-White");
+//                    cursorcombo.selectedIndex = mousepointerpage.default_index;
                 }
             }
         }
@@ -293,14 +261,31 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_theme_qt("cursorsize");
-                    var default_value = sessiondispatcher.get_cursor_size_qt();
-                    if(default_value == 24) {
-                        smallstyle.checked = true;
+                    var cur_value;
+                    if (smallstyle.checked) {
+                        cur_value = 24;
                     }
-                    else if(default_type == 48) {
-                        bigstyle.checked = true;
+                    else {
+                        cur_value = 48;
                     }
+                    if (sessiondispatcher.get_uk_default_setting_int("mouse", "cursor-size") !== cur_value) {
+                        sessiondispatcher.restore_uk_default_setting("mouse", "cursor-size");
+                        var default_value = sessiondispatcher.get_cursor_size_qt();
+                        if(default_value === 24) {
+                            smallstyle.checked = true;
+                        }
+                        else if(default_type === 48) {
+                            bigstyle.checked = true;
+                        }
+                    }
+//                    sessiondispatcher.set_default_theme_qt("cursorsize");
+//                    var default_value = sessiondispatcher.get_cursor_size_qt();
+//                    if(default_value == 24) {
+//                        smallstyle.checked = true;
+//                    }
+//                    else if(default_type == 48) {
+//                        bigstyle.checked = true;
+//                    }
                 }
             }
         }

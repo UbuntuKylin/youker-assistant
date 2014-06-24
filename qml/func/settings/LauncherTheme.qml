@@ -26,6 +26,7 @@ Rectangle {
     property bool first_transparency_value: false //系统初始化时会使value的值为0.2（最小值），需要过滤掉
     property string actiontitle: qsTr("Launcher settings")//启动器设置
     property string actiontext: qsTr("Setting the Launcher display mode, Icon size.")//设置启动器的显示模式、图标尺寸。
+    property int default_bg_index//系统默认图标背景模式的索引
 
     ListModel { id: backgroundchoices }
 
@@ -68,53 +69,37 @@ Rectangle {
             showdesktopswitcher.switchedOn = false;
         }
 
-//        var colourlist = sessiondispatcher.get_all_launcher_icon_colourings_qt();
-//        var index = sessiondispatcher.get_launcher_icon_colouring_qt();
-//        backgroundchoices.clear();
-//        for(var i=0; i < colourlist.length; i++) {
-//            backgroundchoices.append({"text": colourlist[i]});
-//        }
-//        backgroundcommbo.selectedIndex = index;
-
-
-
-        var index = 0;
         var colourlist = sessiondispatcher.get_all_launcher_icon_colourings_qt();
         var cur_index = sessiondispatcher.get_launcher_icon_colouring_qt();
+        var default_bg = sessiondispatcher.get_uk_default_setting_string("unity", "backlight-mode");
         var cur_colour;
-        if (cur_index == 0) {
+        if (cur_index === 0) {
             cur_colour = "all programs";
         }
-        else if (cur_index == 1) {
+        else if (cur_index === 1) {
             cur_colour = "only run app";
         }
-        else if (cur_index == 2) {
+        else if (cur_index === 2) {
             cur_colour = "no coloring";
         }
-        else if (cur_index == 3) {
+        else if (cur_index === 3) {
             cur_colour = "edge coloring";
         }
-        else if (cur_index == 4) {
+        else if (cur_index === 4) {
             cur_colour = "each workspace alternating coloring";
         }
-        for(var i=0; i < colourlist.length; i++) {
-            if (cur_colour == colourlist[i]) {
-                index = i;
+        var new_list = new Array();
+        for(var j=0; j < colourlist.length; j++) {
+            if(colourlist[j] !== cur_colour) {
+                new_list.push(colourlist[j]);
             }
         }
+        new_list.unshift(cur_colour);
         backgroundchoices.clear();
-        if (index == 0) {
-            for(var j=0; j < colourlist.length; j++) {
-                backgroundchoices.append({"text": colourlist[j]});
-            }
-        }
-        else {
-            colourlist.unshift(cur_colour);
-            for(var k=0; k < colourlist.length; k++) {
-                backgroundchoices.append({"text": colourlist[k]});
-                if (k!=0 && colourlist[k] == cur_colour){
-                    backgroundchoices.remove(k);
-                }
+        for(var k=0; k < new_list.length; k++) {
+            backgroundchoices.append({"text": new_list[k]});
+            if (default_bg === new_list[k]) {
+                launcherthemepage.default_bg_index = k;
             }
         }
     }
@@ -252,10 +237,13 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
-//                    console.log(default_size);
-                    sessiondispatcher.set_default_unity_qt("launchersize", default_size);
-                    slider.value = default_size;
+                    if (sessiondispatcher.get_uk_default_setting_int("unity", "icon-size") !== slider.value) {
+                        sessiondispatcher.restore_uk_default_setting("unity", "icon-size");
+                        slider.value = sessiondispatcher.get_launcher_icon_size_qt();
+                    }
+//                    var default_size = sessiondispatcher.get_default_unity_qt("unityshell", "icon_size");
+//                    sessiondispatcher.set_default_unity_qt("launchersize", default_size);
+//                    slider.value = default_size;
                 }
             }
         }
@@ -306,15 +294,24 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
-                    if(default_hide) {
-                        sessiondispatcher.set_default_unity_qt("launcherhide", false);
-                        launcherswitcher.switchedOn = false;
+                    if(sessiondispatcher.get_uk_default_setting_bool("unity", "launcher-hide-mode") !== launcherswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("unity", "launcher-hide-mode");
+                        if(sessiondispatcher.get_launcher_autohide_qt()) {
+                            launcherswitcher.switchedOn = true;
+                        }
+                        else {
+                            launcherswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        sessiondispatcher.set_default_unity_qt("launcherhide", true);
-                        launcherswitcher.switchedOn = true;
-                    }
+//                    var default_hide = sessiondispatcher.get_default_unity_qt("unityshell", "launcher_hide_mode");
+//                    if(default_hide) {
+//                        sessiondispatcher.set_default_unity_qt("launcherhide", false);
+//                        launcherswitcher.switchedOn = false;
+//                    }
+//                    else {
+//                        sessiondispatcher.set_default_unity_qt("launcherhide", true);
+//                        launcherswitcher.switchedOn = true;
+//                    }
                 }
             }
         }
@@ -372,6 +369,13 @@ Rectangle {
                     else {
                         showdesktopswitcher.switchedOn = false;
                     }
+//                    sessiondispatcher.set_default_launcher_have_showdesktopicon_qt();
+//                    if (sessiondispatcher.get_launcher_have_showdesktopicon_qt()) {
+//                        showdesktopswitcher.switchedOn = true;
+//                    }
+//                    else {
+//                        showdesktopswitcher.switchedOn = false;
+//                    }
                 }
             }
         }
@@ -414,6 +418,22 @@ Rectangle {
                     minimumValue: 0.2
                     stepSize: 0.1
                     animated: true
+                }
+            }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                onClicked: {
+                    if (sessiondispatcher.get_uk_default_setting_double("unity", "launcher-opacity") !== opacityslider.value) {
+                        sessiondispatcher.restore_uk_default_setting("unity", "launcher-opacity");
+                        opacityslider.value = sessiondispatcher.get_launcher_transparency_qt();
+                    }
                 }
             }
         }
@@ -462,7 +482,23 @@ Rectangle {
                     }
                 }
             }
+            Common.Button {
+//                hoverimage: "blue.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
+                fontcolor:"#ffffff"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                onClicked: {
+                    var default_bg = sessiondispatcher.get_uk_default_setting_string("unity", "backlight-mode");
+                    if(backgroundcommbo.selectedText !== default_bg) {
+                        sessiondispatcher.restore_uk_default_setting("unity", "backlight-mode");
+                        backgroundcommbo.selectedIndex = launcherthemepage.default_bg_index;
+                    }
+                }
+            }
         }
-
     }//Column
 }

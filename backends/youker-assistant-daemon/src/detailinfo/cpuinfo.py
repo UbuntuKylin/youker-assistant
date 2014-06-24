@@ -134,6 +134,15 @@ class DetailInfo:
 #   DvdFw			    固件版本
 #   DvdSerial		    序列号 
 
+#usb :
+#   Usbnum              usb使用个数
+#   UsbVendor           制造商
+#   UsbProduct          产品型号
+#   UsbBusinfo          总线地址
+#   UsbID               设备ID
+#   bcdUsb              固件版本
+#   UsbMaxpower         最大电流
+
     def __init__(self):
         self.lshwstr = ''
 
@@ -698,6 +707,8 @@ class DetailInfo:
                     strin = st.read()
                     st.close()
                     tmp = re.findall("Model=(.*), F",strin)
+                    if not tmp and DiskProduct:
+                        continue
                     if tmp :
                         if DiskProduct :
                             DiskProduct += "<1_1>"+tmp[0]
@@ -928,6 +939,62 @@ class DetailInfo:
         dvd['Dvdnum'],dvd['DvdProduct'],dvd['DvdVendor'],dvd['DvdName'],dvd['DvdFw'],dvd['DvdSerial'] = self.strip(str(Dvdnum)),self.strip(DvdProduct),self.strip(DvdVendor),self.strip(DvdName),self.strip(DvdFw),self.strip(DvdSerial)
         return dvd
 
+    def get_usb(self):
+        usb = {}
+        Usbnum = 0
+        UsbVendor, UsbBusinfo, UsbID, UsbProduct, bcdUsb, UsbMaxpower = '','','','','',''
+        n = os.popen("lsusb -v")
+        usbinfo = n.read()
+        n.close()
+        bus = re.findall('Bus 0',usbinfo)
+        if bus:
+            usbinfo = usbinfo[usbinfo.index('Bus 0')+len('Bus 0'):]
+        while bus:
+            usbstr = usbinfo[:usbinfo.index('Device Status:')]
+            flag = usbstr[usbstr.index('\n')-8:usbstr.index('\n')]
+            if not flag == 'root hub' :
+                if UsbBusinfo:
+                    UsbBusinfo += "<1_1>" + 'Bus 0'+usbstr[:2]
+                else :
+                    UsbBusinfo = 'Bus 0'+usbstr[:2]
+                
+                tmp = re.findall('idVendor(.*)',usbstr)
+                vendor = tmp[0].lstrip()
+                if UsbVendor:
+                    UsbVendor += "<1_1>" + vendor[7:]
+                else :
+                    UsbVendor = vendor[7:]
+                
+                tmp = re.findall('idProduct(.*)',usbstr)
+                product = tmp[0].lstrip()
+                if UsbProduct:
+                    UsbProduct += "<1_1>" + product[7:]
+                else :
+                    UsbProduct = product[7:]
+                
+                if UsbID:
+                    UsbID += "<1_1>" + vendor[2:6] + ':' + product[2:6]
+                else :
+                    UsbID = vendor[2:6] + ':' + product[2:6]
+                
+                tmp = re.findall('bcdUSB(.*)',usbstr)
+                if bcdUsb:
+                    bcdUsb += "<1_1>" + tmp[0].lstrip()
+                else :
+                    bcdUsb = tmp[0].lstrip()
+                
+                tmp = re.findall('MaxPower(.*)',usbstr)
+                if UsbMaxpower:
+                    UsbMaxpower += "<1_1>" + tmp[0].lstrip()
+                else :
+                    UsbMaxpower = tmp[0].lstrip()
+                Usbnum += 1
+            bus = re.findall('Bus 0',usbinfo)
+            if bus :
+                usbinfo = usbinfo[usbinfo.index('Bus 0')+len('Bus 0'):]
+        usb['Usbnum'],usb['UsbVendor'],usb['UsbProduct'],usb['UsbBusinfo'],usb['UsbID'],usb['bcdUsb'],usb['UsbMaxpower'] = self.strip(str(Usbnum)),self.strip(UsbVendor),self.strip(UsbProduct),self.strip(UsbBusinfo),self.strip(UsbID),self.strip(bcdUsb),self.strip(UsbMaxpower)
+        return usb
+
 
 if __name__ == "__main__":
     pass
@@ -944,3 +1011,4 @@ if __name__ == "__main__":
     #cc.get_network()
     #cc.get_multimedia()
     #cc.get_dvd()
+    #cc.get_usb()

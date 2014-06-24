@@ -1099,7 +1099,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="270"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="271"/>
         <source>Default Font: </source>
         <translation>默认字体：</translation>
     </message>
@@ -1108,12 +1108,12 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">风格设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="593"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="594"/>
         <source>Hinting: </source>
         <translation>平滑：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="646"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="647"/>
         <source>Antialiasing: </source>
         <translation>反锯齿：</translation>
     </message>
@@ -1122,29 +1122,29 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">更换字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="191"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="192"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="294"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="347"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="399"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="451"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="503"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="563"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="616"/>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="669"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="295"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="348"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="400"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="452"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="504"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="564"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="617"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="670"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="427"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="428"/>
         <source>Document font: </source>
         <translation>文档字体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="479"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="480"/>
         <source>Titlebar font: </source>
         <translation>标题栏字体：</translation>
     </message>
@@ -1157,7 +1157,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">已经恢复默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="323"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="324"/>
         <source>Desktop Font: </source>
         <translation>桌面字体：</translation>
     </message>
@@ -1166,7 +1166,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">您系统的桌面字体已经为默认字体！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="375"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="376"/>
         <source>Monospace Font: </source>
         <translation>等宽字体：</translation>
     </message>
@@ -1183,7 +1183,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">缩放设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DefaultFont.qml" line="532"/>
+        <location filename="../../qml/func/settings/DefaultFont.qml" line="533"/>
         <source>Global Font Scaling: </source>
         <translation>全局字体缩放：</translation>
     </message>
@@ -1199,7 +1199,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DesktopIcon</name>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="27"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="26"/>
         <source>Desktop Icons</source>
         <translation>桌面图标设置</translation>
     </message>
@@ -1208,7 +1208,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">设置桌面图标主题和桌面图标的可见性。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="28"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="27"/>
         <source>Set the desktop icon theme and the visibility of desktop icons.</source>
         <translation>设置桌面图标主题和桌面图标的可见性。</translation>
     </message>
@@ -1233,17 +1233,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="284"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="251"/>
         <source>Icon theme:</source>
         <translation>图标主题：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="308"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="360"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="417"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="474"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="531"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="588"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="275"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="332"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="398"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="464"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="530"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="596"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
@@ -1252,32 +1252,32 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">桌面图标显示控制</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="208"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="175"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="333"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="305"/>
         <source>Show Desktop Icons: </source>
         <translation>显示桌面图标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="390"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="371"/>
         <source>Home Folder: </source>
         <translation>主文件夹：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="447"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="437"/>
         <source>Network: </source>
         <translation>网络：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="504"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="503"/>
         <source>Trash : </source>
         <translation>回收站：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="561"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="569"/>
         <source>Mounted Volumes: </source>
         <translation>挂载卷标：</translation>
     </message>
@@ -1698,42 +1698,42 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="238"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="297"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="356"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="415"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="479"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="538"/>
-        <location filename="../../qml/func/settings/FileManager.qml" line="597"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="307"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="375"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="443"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="516"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="579"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="642"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="268"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="278"/>
         <source>Automatically mount media: </source>
         <translation>自动挂载媒体：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="327"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="346"/>
         <source>Automatically open a folder: </source>
         <translation>自动打开文件夹：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="386"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="414"/>
         <source>Prompt or autorun/autostart programs: </source>
         <translation>提示自动运行的程序：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="445"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="482"/>
         <source>Thumbnail icon size (pixels): </source>
         <translation>缩略图图标尺寸（像素）：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="504"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="545"/>
         <source>Thumbnail cache time (days): </source>
         <translation>缩略图缓存时间（天数）：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="563"/>
+        <location filename="../../qml/func/settings/FileManager.qml" line="608"/>
         <source>Maximum thumbnail cache size (MB): </source>
         <translation>最大缩略图缓存尺寸（MB）：</translation>
     </message>
@@ -1988,34 +1988,36 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="280"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="268"/>
         <source>Launcher hide mode:</source>
         <translation>启动器自动隐藏：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="253"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="307"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="366"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="238"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="295"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="363"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="431"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="493"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="140"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="125"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="220"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="205"/>
         <source>Launcher icon size: </source>
         <translation>启动器图标尺寸：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="396"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="400"/>
         <source>Launcher Transparency:</source>
         <translation>启动器透明度：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="437"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="457"/>
         <source>Icon Background:</source>
         <translation>图标背景：</translation>
     </message>
@@ -2024,7 +2026,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="339"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="336"/>
         <source>Display desktop icon: </source>
         <translation>显示桌面图标：</translation>
     </message>
@@ -2667,8 +2669,8 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="218"/>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="294"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="179"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="262"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
@@ -2677,27 +2679,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">光标指针大小</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="117"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="78"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="193"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="154"/>
         <source>Mouse Pointer Theme:</source>
         <translation>鼠标指针主题：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="246"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="214"/>
         <source>Cursor Pointer Size:</source>
         <translation>光标指针大小：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="258"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="226"/>
         <source>Small Size</source>
         <translation>小号</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/MousePointer.qml" line="272"/>
+        <location filename="../../qml/func/settings/MousePointer.qml" line="240"/>
         <source>Big Size</source>
         <translation>大号</translation>
     </message>
@@ -2939,32 +2941,45 @@ p, li { white-space: pre-wrap; }
         <translation>管理Dash搜索和面板菜单的设置。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="162"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="151"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="237"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="226"/>
         <source>Dash background blur type:</source>
         <translation>搜索框背景模糊类型：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="247"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="236"/>
         <source>Smart blur</source>
         <translation>活动模糊</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="261"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="250"/>
         <source>Static blur</source>
         <translation>静态模糊</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="275"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="264"/>
         <source>Clear</source>
         <translation>非模糊</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="330"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="287"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="365"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="414"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="469"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="528"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="587"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="646"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="703"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="762"/>
+        <source>Restore</source>
+        <translation>恢复默认</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="333"/>
         <source>Panel Transparency:</source>
         <translation>面板透明度：</translation>
     </message>
@@ -2974,32 +2989,32 @@ p, li { white-space: pre-wrap; }
         <translation>日期时间格式：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="424"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="442"/>
         <source>Display seconds:</source>
         <translation>显示秒数：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="475"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="501"/>
         <source>Display week:</source>
         <translation>显示星期：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="526"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="560"/>
         <source>Show date:</source>
         <translation>显示日期：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="582"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="624"/>
         <source>Display battery icon:</source>
         <translation>显示电池图标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="615"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="677"/>
         <source>Display battery percentage:</source>
         <translation>显示电池百分比：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/PanelManager.qml" line="652"/>
+        <location filename="../../qml/func/settings/PanelManager.qml" line="736"/>
         <source>Display battery remaining time:</source>
         <translation>显示电池电量时间：</translation>
     </message>
@@ -4225,9 +4240,9 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="217"/>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="276"/>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="360"/>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="444"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="285"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="378"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="479"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
@@ -4241,37 +4256,37 @@ p, li { white-space: pre-wrap; }
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="308"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="326"/>
         <source>Scrollbar type: </source>
         <translation>滚动条类型：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="322"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="340"/>
         <source>Features Type</source>
         <translation>特色类型</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="336"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="354"/>
         <source>Standard Type</source>
         <translation>标准类型</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="392"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="427"/>
         <source>Touchpad scroll trigger mode: </source>
         <translation>触摸板滚动触发方式：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="406"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="441"/>
         <source>Edgemotion</source>
         <translation>边缘触发</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="420"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="455"/>
         <source>Twofinger Scroll</source>
         <translation>双指触发</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/TouchpadSet.qml" line="248"/>
+        <location filename="../../qml/func/settings/TouchpadSet.qml" line="257"/>
         <source>Touchpad horizontal scroll: </source>
         <translation>触摸板横向滚动：</translation>
     </message>
@@ -4858,57 +4873,57 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">窗口控制按钮位置：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="385"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="246"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="460"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="321"/>
         <source>Window control btn position:</source>
         <translation>窗口控制按钮位置：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="470"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="331"/>
         <source>Left Side</source>
         <translation>左边</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="484"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="345"/>
         <source>Right Side</source>
         <translation>右边</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="507"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="566"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="619"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="666"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="713"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="760"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="368"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="446"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="508"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="560"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="612"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="664"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="539"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="419"/>
         <source>Menu with icons: </source>
         <translation>菜单项旁显示图标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="596"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="485"/>
         <source>Titlebar mouse wheel action:</source>
         <translation>标题栏鼠标滚轮动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="643"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="537"/>
         <source>Titlebar double-click action:</source>
         <translation>标题栏双击动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="690"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="589"/>
         <source>Titlebar middle-click action:</source>
         <translation>标题栏中键动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="737"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="641"/>
         <source>Titlebar right-click action:</source>
         <translation>标题栏右键动作：</translation>
     </message>

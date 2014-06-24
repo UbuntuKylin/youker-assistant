@@ -237,13 +237,23 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("pathbar");
-                    if (sessiondispatcher.get_location_replace_pathbar_qt()) {
-                        pathbarswitcher.switchedOn = true;
+                    if(sessiondispatcher.get_uk_default_setting_bool("file", "always-use-location-entry") !== pathbarswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("file", "always-use-location-entry");//路径输入框取代路径栏
+                        if (sessiondispatcher.get_location_replace_pathbar_qt()) {
+                            pathbarswitcher.switchedOn = true;
+                        }
+                        else {
+                            pathbarswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        pathbarswitcher.switchedOn = false;
-                    }
+
+//                    sessiondispatcher.set_default_filemanager_qt("pathbar");
+//                    if (sessiondispatcher.get_location_replace_pathbar_qt()) {
+//                        pathbarswitcher.switchedOn = true;
+//                    }
+//                    else {
+//                        pathbarswitcher.switchedOn = false;
+//                    }
                 }
             }
         }
@@ -296,13 +306,22 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("media");
-                    if (sessiondispatcher.get_auto_mount_media_qt()) {
-                        mediaswitcher.switchedOn = true;
+                    if(sessiondispatcher.get_uk_default_setting_bool("file", "automount") !== mediaswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("file", "automount");//自动挂载媒体
+                        if (sessiondispatcher.get_auto_mount_media_qt()) {
+                            mediaswitcher.switchedOn = true;
+                        }
+                        else {
+                            mediaswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        mediaswitcher.switchedOn = false;
-                    }
+//                    sessiondispatcher.set_default_filemanager_qt("media");
+//                    if (sessiondispatcher.get_auto_mount_media_qt()) {
+//                        mediaswitcher.switchedOn = true;
+//                    }
+//                    else {
+//                        mediaswitcher.switchedOn = false;
+//                    }
                 }
             }
         }
@@ -355,13 +374,22 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("folder");
-                    if (sessiondispatcher.get_auto_open_folder_qt()) {
-                        folderswitcher.switchedOn = true;
+                    if(sessiondispatcher.get_uk_default_setting_bool("file", "automount-open") !== folderswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("file", "automount-open");//自动打开文件夹
+                        if (sessiondispatcher.get_auto_open_folder_qt()) {
+                            folderswitcher.switchedOn = true;
+                        }
+                        else {
+                            folderswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        folderswitcher.switchedOn = false;
-                    }
+//                    sessiondispatcher.set_default_filemanager_qt("folder");
+//                    if (sessiondispatcher.get_auto_open_folder_qt()) {
+//                        folderswitcher.switchedOn = true;
+//                    }
+//                    else {
+//                        folderswitcher.switchedOn = false;
+//                    }
                 }
             }
         }
@@ -414,13 +442,22 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("programs");
-                    if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
-                        programsswitcher.switchedOn = true;
+                    if(sessiondispatcher.get_uk_default_setting_bool("file", "autorun-never") !== programsswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("file", "autorun-never");//提示自动运行的程序
+                        if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
+                            programsswitcher.switchedOn = true;
+                        }
+                        else {
+                            programsswitcher.switchedOn = false;
+                        }
                     }
-                    else {
-                        programsswitcher.switchedOn = false;
-                    }
+//                    sessiondispatcher.set_default_filemanager_qt("programs");
+//                    if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
+//                        programsswitcher.switchedOn = true;
+//                    }
+//                    else {
+//                        programsswitcher.switchedOn = false;
+//                    }
                 }
             }
         }
@@ -478,8 +515,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("iconsize");
-                    iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
+                    if (sessiondispatcher.get_uk_default_setting_int("file", "thumbnail-size") !== iconsizeslider.value) {
+                        sessiondispatcher.restore_uk_default_setting("file", "thumbnail-size");//缩略图图标尺寸（像素）
+                        iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
+                    }
+//                    sessiondispatcher.set_default_filemanager_qt("iconsize");
+//                    iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
                 }
             }
         }
@@ -537,8 +578,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("cachetime");
-                    cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
+                    if (sessiondispatcher.get_uk_default_setting_int("file", "maximum-age") !== cachetimeslider.value) {
+                        sessiondispatcher.restore_uk_default_setting("file", "maximum-age");//缩略图缓存时间（天数）
+                        cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
+                    }
+//                    sessiondispatcher.set_default_filemanager_qt("cachetime");
+//                    cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
                 }
             }
         }
@@ -596,8 +641,12 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    sessiondispatcher.set_default_filemanager_qt("maxsize");
-                    maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
+                    if (sessiondispatcher.get_uk_default_setting_int("file", "maximum-size") !== maxcacheslider.value) {
+                        sessiondispatcher.restore_uk_default_setting("file", "maximum-size");//最大缩略图缓存尺寸（MB）
+                        maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
+                    }
+//                    sessiondispatcher.set_default_filemanager_qt("maxsize");
+//                    maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
                 }
             }
         }
