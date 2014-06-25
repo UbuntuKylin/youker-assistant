@@ -26,8 +26,8 @@ HomePage::HomePage(QWidget *parent)
 {
     tray = new Tray();
     connect(tray, SIGNAL(showOrHideQmlSignal()), this, SLOT(showOrHideMainPage()));
-    connect(MessengerProxy::get_instance_object(), SIGNAL(mainHide()), this, SLOT(hide()));
-    connect(MessengerProxy::get_instance_object(), SIGNAL(showMin()), this, SLOT(showMinimized()));
+//    connect(MessengerProxy::get_instance_object(), SIGNAL(mainHide()), this, SLOT(hide()));
+//    connect(MessengerProxy::get_instance_object(), SIGNAL(showMin()), this, SLOT(showMinimized()));
 }
 
 HomePage::~HomePage()
@@ -105,7 +105,13 @@ void HomePage::setup() {
     this->setAutoFillBackground(false);
     this->setWindowOpacity(1);
 //    this->setAttribute(Qt::WA_TranslucentBackground);
-    this->setWindowFlags(Qt::FramelessWindowHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint);
+    //设置窗体标题栏隐藏并设置位于顶层
+     this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    //如果不设置Qt::WindowStaysOnTopHint，则存在问题，那就是界面能够拖动到任务栏之下
+     //可获取鼠标跟踪效果
+     setMouseTracking(true);
+
     this->view = new QDeclarativeView(this);
     this->view->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
     this->view->setSource(QUrl::fromLocalFile("main.qml"));
@@ -115,6 +121,9 @@ void HomePage::setup() {
     this->hlayout->setSpacing(0);
 
     this->topBar = new TopBar(this);
+    connect(this->topBar, SIGNAL(readyShowMin()), this, SLOT(showMinimized()));
+    connect(this->topBar, SIGNAL(readyHideWidget()), this, SLOT(hide()));
+
     this->tabBar = new TabBar(this);
     this->contentField = new ContentField(this);
     this->bottomBar = new BottomBar(this);
@@ -123,9 +132,10 @@ void HomePage::setup() {
 ////    this->hlayout->addWidget(this->mainWidget,0, Qt::AlignBottom);
     this->hlayout->addWidget(this->contentField);
     this->hlayout->addWidget(this->bottomBar,0, Qt::AlignBottom);
+    setLayout(this->hlayout);
+
     QObject::connect(this->tabBar, SIGNAL(navigate(int)), this->contentField, SLOT(DoNavigate(int)));
 
-    this->setMouseTracking(true);
     this->resize(850, 600);
     int windowWidth = QApplication::desktop()->width();
     int windowHeight = QApplication::desktop()->height();

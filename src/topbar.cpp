@@ -16,46 +16,42 @@
  */
 
 #include "topbar.h"
-#include "messengerproxy.h"
-#include <QDebug>
 
 TopBar::TopBar(QWidget *parent)
-    :QStackedWidget(parent)
+    :QWidget(parent)
 {
-    this->view = new QDeclarativeView(this);
-    this->view->rootContext()->setContextProperty("topbarObject", MessengerProxy::get_instance_object());
-    this->setup();
-//    this->view->setSource(QUrl("../qml/TopBar.qml"));
-    this->addWidget(this->view);
-    this->setAutoFillBackground(false);
-    this->setStyleSheet("background:transparent;");
-    this->resize(this->view->size());
-    this->setFixedSize(this->view->size());
-    this->setMouseTracking(true);
-    this->view->move(0, 0);
+    close_button = new KButton(this);
+    close_button->setPicName(":/pixmap/image/closeBtn");
+    close_button->resize(QSize(29, 29));
+    min_button = new KButton(this);
+    min_button->setPicName(":/pixmap/image/minBtn");
+    min_button->resize(QSize(29, 29));
+    connect(min_button, SIGNAL(clicked()), this, SLOT(showMinWidget()));
+    connect(close_button, SIGNAL(clicked()), this, SLOT(hideWidget()));
+    QHBoxLayout *title_layout = new QHBoxLayout();
+    title_layout->addWidget(close_button, 0, Qt::AlignTop);
+    title_layout->addWidget(min_button, 0, Qt::AlignTop);
+    title_layout->addStretch();
+    title_layout->setSpacing(0);
+    title_layout->setContentsMargins(0, 0, 5, 0);
+    setLayout(title_layout);
+    setFixedHeight(29);
 }
 
 TopBar::~TopBar()
 {
-    delete this->view;
-}
-
-inline bool isRunningInstalled() {
-    static bool installed = (QCoreApplication::applicationDirPath() ==
-                             QDir(("/usr/bin")).canonicalPath());
-    return installed;
-}
-
-inline QString getAppDirectory() {
-    if (isRunningInstalled()) {
-//        qDebug() << QCoreApplication::applicationDirPath();
-        return QString("/usr/share/youker-assistant/qml/");
-    } else {
-        return QString(QCoreApplication::applicationDirPath() + "/../qml/");
+    if (min_button != NULL) {
+        delete min_button;
+    }
+    if (close_button != NULL) {
+        delete close_button;
     }
 }
 
-void TopBar::setup() {
-    this->view->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
-    this->view->setSource(QUrl::fromLocalFile("TopBar.qml"));
+void TopBar::showMinWidget() {
+    emit this->readyShowMin();
+}
+
+void TopBar::hideWidget() {
+    emit this->readyHideWidget();
 }

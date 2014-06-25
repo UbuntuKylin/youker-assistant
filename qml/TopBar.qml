@@ -16,71 +16,71 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
+//import SessionType 0.1
 
 Rectangle {
     id: topbar
     width: 850; height: 29
     color: "transparent"
-    SessionDispatcher { id: sessiondispatcher }
+//    SessionDispatcher { id: sessiondispatcher }
 
-    property int closeleftspace: 1
-    property int minleftspace: 22
+//    property int closeleftspace: 1
+//    property int minleftspace: 22
 
-    Component.onCompleted: {
-        var btn_position = sessiondispatcher.get_window_button_align_qt();
-        if(btn_position == "right") {
-            topbar.closeleftspace = 828;
-            topbar.minleftspace = 807;
-        }
-    }
+//    Component.onCompleted: {
+//        var btn_position = sessiondispatcher.get_window_button_align_qt();
+//        if(btn_position == "right") {
+//            topbar.closeleftspace = 828;
+//            topbar.minleftspace = 807;
+//        }
+//    }
 
-    Connections
-    {
-        target: sessiondispatcher
-        onStartChangeControlBtnPosition: {
-            if(position == "left") {
-                topbar.closeleftspace = 1;
-                topbar.minleftspace = 22;
-            }
-            if(position == "right") {
-                topbar.closeleftspace = 828;
-                topbar.minleftspace = 807;
-            }
-        }
-        onTellDownloadCloudConfToQML: {//使用云配置后，控件状态根据配置发生相应的变化
-            if(download == "window_button") {
-                var position_mode = sessiondispatcher.get_window_button_align_qt();
-                if(position_mode == "left") {
-                    topbar.closeleftspace = 1;
-                    topbar.minleftspace = 22;
-                }
-                if(position_mode == "right") {
-                    topbar.closeleftspace = 828;
-                    topbar.minleftspace = 807;
-                }
-            }
-        }
-    }
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onStartChangeControlBtnPosition: {
+//            if(position == "left") {
+//                topbar.closeleftspace = 1;
+//                topbar.minleftspace = 22;
+//            }
+//            if(position == "right") {
+//                topbar.closeleftspace = 828;
+//                topbar.minleftspace = 807;
+//            }
+//        }
+//        onTellDownloadCloudConfToQML: {//使用云配置后，控件状态根据配置发生相应的变化
+//            if(download == "window_button") {
+//                var position_mode = sessiondispatcher.get_window_button_align_qt();
+//                if(position_mode == "left") {
+//                    topbar.closeleftspace = 1;
+//                    topbar.minleftspace = 22;
+//                }
+//                if(position_mode == "right") {
+//                    topbar.closeleftspace = 828;
+//                    topbar.minleftspace = 807;
+//                }
+//            }
+//        }
+//    }
 
-    SysBtn {
-         iconName: "sys_button_close.png"
-        anchors {
-            left: parent.left
-            leftMargin: topbar.closeleftspace
-        }
-        onClicked: {
-            topbarObject.hideMainWidget();
-        }
-    }
-    SysBtn {
-        iconName: "sys_button_min.png"
-        anchors {
-            left: parent.left
-            leftMargin: topbar.minleftspace
-        }
-        onClicked: {
-            topbarObject.showMinMainWidget();
-        }
-    }
+//    SysBtn {
+//         iconName: "sys_button_close.png"
+//        anchors {
+//            left: parent.left
+//            leftMargin: topbar.closeleftspace
+//        }
+//        onClicked: {
+//            topbarObject.hideMainWidget();
+//        }
+//    }
+//    SysBtn {
+//        iconName: "sys_button_min.png"
+//        anchors {
+//            left: parent.left
+//            leftMargin: topbar.minleftspace
+//        }
+//        onClicked: {
+//            topbarObject.showMinMainWidget();
+//        }
+//    }
 }

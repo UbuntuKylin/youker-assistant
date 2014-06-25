@@ -18,23 +18,27 @@
 #ifndef TOPBAR_H
 #define TOPBAR_H
 
-#include <QtGui/QApplication>
-#include <QStackedWidget>
-#include <QDeclarativeView>
-#include <QDeclarativeContext>
-#include <QDeclarativeEngine>
-#include <QDir>
+#include <QtGui>
+#include "kbutton.h"
 
-class TopBar : public QStackedWidget
+class TopBar : public QWidget
 {
     Q_OBJECT
 public:
     explicit TopBar(QWidget *parent = 0);
     ~TopBar();
-    void setup();
 
 private:
-    QDeclarativeView *view;
+    KButton  *min_button;
+    KButton  *close_button;
+
+signals:
+    void readyShowMin();
+    void readyHideWidget();
+
+public slots:
+    void showMinWidget();
+    void hideWidget();
 };
 
 #endif // TOPBAR_H

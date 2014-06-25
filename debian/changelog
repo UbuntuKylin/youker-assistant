@@ -8,8 +8,9 @@ youker-assistant (1.0.3-0ubuntu1) trusty; urgency=low
   * Solved the interface flicker problem when it move(LP: #1304980).
   * Add some settings about Dash, Panel and Launcher.
   * Use camera to take pictures.
+  * Modify moving zone of the main widget.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 30 May 2014 14:29:57 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 25 Jun 2014 15:58:40 +0800
 
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 
