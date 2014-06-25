@@ -16,39 +16,20 @@
  */
 
 #include "homepage.h"
-#include "messengerproxy.h"
 
 QPoint widgetPosition;//界面中心位置的全局变量
 
 HomePage::HomePage(QWidget *parent)
     :QWidget(parent)
-//    :QStackedWidget(parent)
 {
     tray = new Tray();
     connect(tray, SIGNAL(showOrHideQmlSignal()), this, SLOT(showOrHideMainPage()));
-//    connect(MessengerProxy::get_instance_object(), SIGNAL(mainHide()), this, SLOT(hide()));
-//    connect(MessengerProxy::get_instance_object(), SIGNAL(showMin()), this, SLOT(showMinimized()));
 }
 
 HomePage::~HomePage()
 {
-    delete this->view;
-    if (tray) {
+    if (tray != NULL) {
         delete tray;
-    }
-}
-
-inline bool isRunningInstalled() {
-    static bool installed = (QCoreApplication::applicationDirPath() ==
-                             QDir(("/usr/bin")).canonicalPath());
-    return installed;
-}
-
-inline QString getAppDirectory() {
-    if (isRunningInstalled()) {
-        return QString("/usr/share/youker-assistant/qml/");
-    } else {
-        return QString(QCoreApplication::applicationDirPath() + "/../qml/");
     }
 }
 
@@ -100,23 +81,26 @@ void HomePage::paintEvent(QPaintEvent *) {
 }
 
 void HomePage::setup() {
-    this->setStyleSheet("background:transparent");
     this->setWindowTitle("Youker Assistant");
     this->setAutoFillBackground(false);
     this->setWindowOpacity(1);
-//    this->setAttribute(Qt::WA_TranslucentBackground);
-//    this->setWindowFlags(Qt::FramelessWindowHint);
     //设置窗体标题栏隐藏并设置位于顶层
      this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     //如果不设置Qt::WindowStaysOnTopHint，则存在问题，那就是界面能够拖动到任务栏之下
      //可获取鼠标跟踪效果
      setMouseTracking(true);
 
-    this->view = new QDeclarativeView(this);
-    this->view->engine()->setBaseUrl(QUrl::fromLocalFile(getAppDirectory()));
-    this->view->setSource(QUrl::fromLocalFile("main.qml"));
-    QObject::connect(this->view->engine(), SIGNAL(quit()), qApp, SLOT(quit()));
-    this->hlayout = new QBoxLayout(QBoxLayout::TopToBottom, this->view);
+    QPixmap pixmap(":/skin/image/0_bg.png");
+    QFrame *frame = new QFrame(this);
+    frame->setGeometry(0,0,850,600);
+    QPalette  palette;
+    palette.setBrush(frame->backgroundRole(),QBrush( pixmap ));
+    frame -> setPalette(palette);
+    frame->setMask(pixmap.mask());//可以将图片中透明部分显示为透明的
+    frame->setAutoFillBackground(true);
+    frame->show();
+
+    this->hlayout = new QBoxLayout(QBoxLayout::TopToBottom, this);
     this->hlayout->setMargin(0);
     this->hlayout->setSpacing(0);
 

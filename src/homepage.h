@@ -20,9 +20,6 @@
 
 #include <QtGui/QApplication>
 #include <QDesktopWidget>
-#include <QDeclarativeView>
-#include <QDeclarativeEngine>
-#include <QDeclarativeContext>
 #include <QDebug>
 #include <QDir>
 
@@ -32,7 +29,7 @@
 #include "bottombar.h"
 #include "tray.h"
 
-class HomePage : public QWidget//QStackedWidget
+class HomePage : public QWidget
 {
     Q_OBJECT
 public:
@@ -41,7 +38,6 @@ public:
     void setup();
 
 private:
-    QDeclarativeView *view;
     QBoxLayout *hlayout;
     TopBar *topBar;
     TabBar *tabBar;

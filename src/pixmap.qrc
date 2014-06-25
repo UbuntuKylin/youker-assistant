@@ -48,4 +48,7 @@
     <qresource prefix="/translate">
         <file>translation/youker-assistant_zh_CN.qm</file>
     </qresource>
+    <qresource prefix="/skin">
+        <file>image/0_bg.png</file>
+    </qresource>
 </RCC>
