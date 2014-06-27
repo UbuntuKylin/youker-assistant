@@ -36,7 +36,7 @@
 #include "messengerproxy.h"
 
 QString selectedFont;
-QString selectedFcitxFont;
+//QString selectedFcitxFont;
 extern QPoint widgetPosition;
 
 SessionDispatcher::SessionDispatcher(QObject *parent) :
@@ -133,7 +133,10 @@ SessionDispatcher::~SessionDispatcher() {
     if(timer->isActive()) {
         timer->stop();
     }
-
+    this->exit_qt();
+    if (sessioniface != NULL) {
+        delete sessioniface;
+    }
     mSettings->sync();
     if (mSettings != NULL) {
         delete mSettings;
@@ -151,9 +154,6 @@ SessionDispatcher::~SessionDispatcher() {
     if (wizardDialog != NULL) {
         delete wizardDialog;
     }
-
-    this->exit_qt();
-//    this->ready_exit_normally();
 }
 
 //dbus服务退出
@@ -1018,7 +1018,7 @@ bool SessionDispatcher::get_launcher_have_showdesktopicon_qt() {
 }
 
 
-// for v1.0.3
+// for v1.1.0
 //透明度
 double SessionDispatcher::get_launcher_transparency_qt() {
     QDBusReply<double> reply = sessioniface->call("get_launcher_transparency");
@@ -1448,9 +1448,9 @@ void SessionDispatcher::restore_default_font_signal(QString flag) {
     emit notifyFontStyleToQML(flag); //font_style
 }
 
-QString SessionDispatcher::getSelectedFcitxFont() {
-     return selectedFcitxFont;//
-}
+//QString SessionDispatcher::getSelectedFcitxFont() {
+//     return selectedFcitxFont;//
+//}
 
 void SessionDispatcher::show_font_dialog(QString flag) {
     KFontDialog *fontDialog = new KFontDialog(mSettings, flag, 0);

@@ -25,7 +25,7 @@ Rectangle {
     width: 850
     height: 26
     color: "transparent"
-    property string version: "V1.0.3"
+    property string version: "V1.1.0"
 
     SessionDispatcher { id: sessiondispatcher }
     Toolkits{ id: toolkits }

@@ -42,6 +42,7 @@ Rectangle {
     property string ide : qsTr("IDE interface:")//IDE接口
     property string sp : qsTr("SP controller:")//信号处理控制器
     property string net : qsTr("Network controller:")//网络控制器
+    property string multi : qsTr("Multimedia audio controller:")//多媒体音频控制器
 
     function transTitle(str) {
         //去掉前后空格
@@ -69,6 +70,7 @@ Rectangle {
         var pat14 = new RegExp('IDE interface');
         var pat15 = new RegExp('Signal processing controller');
         var pat16 = new RegExp('Network controlle');
+        var pat17 = new RegExp('Multimedia audio controller');
         if(pat1.test(str)) {
             return home.hbridge.toString();
         }
@@ -116,6 +118,9 @@ Rectangle {
         }
         else if(pat16.test(str)) {
             return home.net.toString();
+        }
+        else if(pat17.test(str)) {
+            return home.multi.toString();//"多媒体音频控制器：";
         }
         return str;
     }
@@ -176,6 +181,7 @@ Rectangle {
                         font.pixelSize: 14
                         color: "#7a7a7a"
                         width: 140
+                        clip: true
                         height: 20
                     }
                     Text {
@@ -195,6 +201,7 @@ Rectangle {
                         font.pixelSize: 14
                         color: "#7a7a7a"
                         width: 140
+                        clip: true
                         height: 20
                     }
                     Text {
@@ -213,6 +220,7 @@ Rectangle {
                         font.pixelSize: 14
                         color: "#7a7a7a"
                         width: 140
+                        clip: true
                         height: 20
                     }
                     Text {

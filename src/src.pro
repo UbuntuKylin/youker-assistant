@@ -48,10 +48,10 @@ HEADERS += homepage.h \
     qtoplevelwindow.h \
     qcursorarea.h \
     tray.h \
-    fcitxcfgwizard.h \
+#    fcitxcfgwizard.h \
     qtkeytrans.h \
     qtkeytransdata.h \
-    fcitxwarndialog.h \
+#    fcitxwarndialog.h \
     kthread.h \
     suspensionframe.h \
     alertdialog.h \
@@ -97,9 +97,9 @@ SOURCES += main.cpp \
     qtoplevelwindow.cpp \
     qcursorarea.cpp \
     tray.cpp \
-    fcitxcfgwizard.cpp \
+#    fcitxcfgwizard.cpp \
     qtkeytrans.cpp \
-    fcitxwarndialog.cpp \
+#    fcitxwarndialog.cpp \
     kthread.cpp \
     suspensionframe.cpp \
     alertdialog.cpp \
@@ -125,7 +125,7 @@ FORMS += \
     warningdialog.ui \
 #    messagedialog.ui \
     tray.ui \
-    fcitxwarndialog.ui \
+#    fcitxwarndialog.ui \
     suspensionframe.ui \
     alertdialog.ui \
     locationdialog.ui \

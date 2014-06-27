@@ -78,6 +78,9 @@ LocationDialog::LocationDialog(QWidget *parent) :
 
 LocationDialog::~LocationDialog()
 {
+    if (sedispather != NULL) {
+        delete sedispather;
+    }
     delete ui;
 }
 

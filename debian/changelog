@@ -1,16 +1,16 @@
-youker-assistant (1.0.3-0ubuntu1) trusty; urgency=low
+youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
 
   * Perfect for parameter when checkbox checked.
   * Get the correct version information of OS.
   * Do system scan with thread.
   * Use Python Socket and UUID to get LAN port, IP address and MAC address(LP: #1310882).
-  * Add slider show.
+  * Add slider show and battery information.
   * Solved the interface flicker problem when it move(LP: #1304980).
   * Add some settings about Dash, Panel and Launcher.
   * Use camera to take pictures.
   * Modify moving zone of the main widget.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 25 Jun 2014 15:58:40 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 27 Jun 2014 09:20:51 +0800
 
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 

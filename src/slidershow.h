@@ -63,7 +63,7 @@ private:
     QLabel *master_label;
     IconText *pic_array[5];
 //    IconText *cur_pic;
-//    KButton *close_button; //关闭按钮
+    KButton *close_button; //关闭按钮
     KButton *start_button; //开始按钮
     QHBoxLayout *hLayout;
 

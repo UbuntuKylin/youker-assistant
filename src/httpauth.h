@@ -27,6 +27,7 @@ class HttpAuth : public QObject
     Q_OBJECT
 public:
     explicit HttpAuth(QObject *parent = 0);
+     ~HttpAuth();
     void sendPostRequest(const QUrl &url, const QByteArray &data);
     void sendGetRequest(const QUrl &url);
     bool isDigitStr(const QString& str/*QString str*/);

@@ -596,7 +596,7 @@ class SessionDaemon(dbus.service.Object):
 
 
 
-    #add by kobe for v1.0.3
+    #add by kobe for v1.1.0
     # 透明度
     @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
     def get_launcher_transparency(self):

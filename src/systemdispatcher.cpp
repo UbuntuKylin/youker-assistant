@@ -62,6 +62,9 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
 
 SystemDispatcher::~SystemDispatcher() {
     this->exit_qt();
+    if (systemiface != NULL) {
+        delete systemiface;
+    }
 }
 
 void SystemDispatcher::kill_root_process_qt(QString pid) {

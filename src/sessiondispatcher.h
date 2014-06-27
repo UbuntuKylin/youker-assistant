@@ -180,7 +180,7 @@ public:
 
 
 
-    // for v1.0.3
+    // for v1.1.0
     //透明度
     Q_INVOKABLE double get_launcher_transparency_qt();
     Q_INVOKABLE bool set_launcher_transparency_qt(double opacity);
@@ -371,7 +371,7 @@ public:
     Q_INVOKABLE QString read_default_configure_from_qsetting_file(QString key, QString name);
 
     //fcitxconfigtoolkey获取sekectedfcitxfont
-    Q_INVOKABLE QString getSelectedFcitxFont();
+//    Q_INVOKABLE QString getSelectedFcitxFont();
 
     //一键清理扫描
     Q_INVOKABLE void onekey_scan_function_qt(QStringList selectedList);

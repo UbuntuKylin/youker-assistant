@@ -17,8 +17,12 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="86"/>
+        <source>V1.1.0</source>
+        <translation>V1.1.0</translation>
+    </message>
+    <message>
         <source>V1.0.2</source>
-        <translation>V1.0.2</translation>
+        <translation type="obsolete">V1.0.2</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="102"/>
@@ -1421,7 +1425,12 @@ p, li { white-space: pre-wrap; }
         <translation>使用的驱动：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/DriveInfo.qml" line="243"/>
+        <location filename="../../qml/func/info/DriveInfo.qml" line="45"/>
+        <source>Multimedia audio controller:</source>
+        <translation>多媒体音频控制器：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/DriveInfo.qml" line="251"/>
         <source>Device Driver Info</source>
         <translation>设备驱动信息</translation>
     </message>
@@ -1641,33 +1650,24 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FcitxWarnDialog</name>
     <message>
-        <location filename="../fcitxwarndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>对话框</translation>
+        <translation type="obsolete">对话框</translation>
     </message>
     <message>
-        <location filename="../fcitxwarndialog.ui" line="71"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="obsolete">取消</translation>
     </message>
     <message>
-        <location filename="../fcitxwarndialog.ui" line="97"/>
-        <source>OK</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../fcitxwarndialog.ui" line="84"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温馨提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温馨提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Are you sure you want to exit the wizardï¼</source>
         <translation type="obsolete">您确定退出输入法配置向导？</translation>
     </message>
     <message>
-        <location filename="../fcitxwarndialog.cpp" line="47"/>
         <source>Are you sure you want to exit the wizard ?</source>
-        <translation>您确定退出输入法配置向导？</translation>
+        <translation type="obsolete">您确定退出输入法配置向导？</translation>
     </message>
 </context>
 <context>
@@ -1755,55 +1755,60 @@ p, li { white-space: pre-wrap; }
         <translation>大小范围为1M-20480M；1GB = 1024MB</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="85"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="86"/>
         <source>Cleanup path is:</source>
         <translation>清理路径为：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="87"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="88"/>
         <source>cleaning up the maximum files in user-specified directory, to save disk space.</source>
         <translation>清理用户指定目录下的最大文件，节省磁盘空间。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="168"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="90"/>
+        <source>None size of the file!</source>
+        <translation>没有该大小的文件！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="172"/>
         <source>Cleared!</source>
         <translation>清理完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="218"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="222"/>
         <source>Please input the file size (M) : </source>
         <translation>请输入文件大小 (M)：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="249"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="253"/>
         <source>Browse...</source>
         <translation>浏览...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="274"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="278"/>
         <source>Begin cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="281"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="289"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="297"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="315"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="285"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="293"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="301"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="319"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="281"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="285"/>
         <source>Sorry, You haven&apos;t set the file size or the value is 0, please input the file sizes !</source>
         <translation>对不起，您没有设置扫描文件的大小或者设置值为 0，请重新输入文件大小！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="289"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="293"/>
         <source>Sorry, You did not choose the scan path, please click the &apos;Browse&apos; button to continue!</source>
         <translation>对不起，您没有选择扫描路径，请点击＂浏览＂按钮选择！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="297"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="301"/>
         <source>The scan results are empty, no need to clean up !</source>
         <translation>扫描内容为空，无需清理！</translation>
     </message>
@@ -1812,24 +1817,24 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">扫描内容为空，无需清理！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="315"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="319"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
         <translation>对不起，您没有选择需要清理的项，请确认！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="412"/>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="419"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="416"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="423"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="423"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="427"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/cleaner/FileModel.qml" line="427"/>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="431"/>
+        <location filename="../../qml/func/cleaner/FileModel.qml" line="435"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
@@ -1957,12 +1962,12 @@ p, li { white-space: pre-wrap; }
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../kfontdialog.cpp" line="276"/>
+        <location filename="../kfontdialog.cpp" line="277"/>
         <source>Tips</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../kfontdialog.cpp" line="277"/>
+        <location filename="../kfontdialog.cpp" line="278"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
         <translation>您还没有更换字体，请选择字体进行更换！</translation>
     </message>
@@ -2239,9 +2244,8 @@ p, li { white-space: pre-wrap; }
         <translation>对话框</translation>
     </message>
     <message>
-        <location filename="../locationdialog.ui" line="123"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name or pinyin to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市中文名或者拼音进行查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市中文名或者拼音进行查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../locationdialog.ui" line="71"/>
@@ -2254,23 +2258,28 @@ p, li { white-space: pre-wrap; }
         <translation>取消</translation>
     </message>
     <message>
+        <location filename="../locationdialog.ui" line="123"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市名字去查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <location filename="../locationdialog.ui" line="97"/>
         <source>Search</source>
         <translation>查找</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="191"/>
-        <location filename="../locationdialog.cpp" line="219"/>
+        <location filename="../locationdialog.cpp" line="194"/>
+        <location filename="../locationdialog.cpp" line="222"/>
         <source>Warning:</source>
         <translation>警告：</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="192"/>
+        <location filename="../locationdialog.cpp" line="195"/>
         <source>Please input city name and click &apos;find&apos; button to find!</source>
         <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="220"/>
+        <location filename="../locationdialog.cpp" line="223"/>
         <source>Please input city name and click &apos;search&apos; button to find!</source>
         <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
@@ -3134,7 +3143,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="115"/>
+        <location filename="../main.cpp" line="118"/>
         <source>starting....</source>
         <translation>优客助手正在启动中....</translation>
     </message>
@@ -3899,7 +3908,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="352"/>
+        <location filename="../systemdispatcher.cpp" line="355"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
@@ -3908,17 +3917,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">图像文件  (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="352"/>
+        <location filename="../systemdispatcher.cpp" line="355"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation>图像文件  (*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="357"/>
+        <location filename="../systemdispatcher.cpp" line="360"/>
         <source>Select music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="357"/>
+        <location filename="../systemdispatcher.cpp" line="360"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
@@ -4504,22 +4513,22 @@ p, li { white-space: pre-wrap; }
         <translation>0%</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="136"/>
+        <location filename="../tray.cpp" line="144"/>
         <source>Hide/Show window</source>
         <translation>隐藏/显示主界面</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="138"/>
+        <location filename="../tray.cpp" line="146"/>
         <source>Hide/Show monitor</source>
         <translation>隐藏/显示监控球</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="143"/>
+        <location filename="../tray.cpp" line="151"/>
         <source>About</source>
         <translation>关于本软件</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="146"/>
+        <location filename="../tray.cpp" line="154"/>
         <source>&amp;Exit</source>
         <translation>退出(&amp;E)</translation>
     </message>

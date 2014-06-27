@@ -45,6 +45,7 @@ Rectangle {
     {
         target: sessiondispatcher
         onTellQMLLargeFileList: {
+            subModel.clear();
             var largestfile_data = filelist;
             if (largestfile_data.length === 0) {
                 filepage.null_flag = true;
@@ -58,10 +59,10 @@ Rectangle {
                 filepage.null_flag = false;
                 filepage.deleget_arrow =1;
                 statusImage.visible = true;
+                filepage.resultFlag = true;//扫描内容存在
             }
             filepage.sub_num = largestfile_data.length;
     //        systemdispatcher.clear_largestfile_args();
-            subModel.clear();
             var num = 0;
             for (var i=0; i< largestfile_data.length; i++) {
                 var splitlist = largestfile_data[i].split("<2_2>");
@@ -77,7 +78,7 @@ Rectangle {
             filepage.lar_num = filepage.sub_num;
             filepage.check_num = filepage.sub_num;
             if(check_num != 0) {
-                check_flag = true;
+                filepage.check_flag = true;
             }
             mainModel.clear();
             //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
@@ -85,6 +86,9 @@ Rectangle {
                               "itemTitle": qsTr("Cleanup path is:")  + filepage.directory,
                              "picture": "../../img/toolWidget/deb-min.png",
                              "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
+            if (filepage.resultFlag == false) {
+                toolkits.alertMSG(qsTr("None size of the file!"));// 没有该大小的文件！
+            }
         }
     }
 

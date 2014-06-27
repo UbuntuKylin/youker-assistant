@@ -71,13 +71,13 @@ SliderShow::SliderShow(QWidget *parent)
     pic_array[3]->installEventFilter(this);
     pic_array[4]->installEventFilter(this);
     //设置隐藏按钮属性
-//    close_button = new KButton(this);
-//    close_button->setPicName(":/pixmap/image/closeBtn");
-//    close_button->resize(QSize(26, 20));
-//    close_button->move(1, 1);
-//    close_button->raise();
-//    close_button->installEventFilter(this);
-//    connect(close_button, SIGNAL(clicked()), this, SLOT(close()));
+    close_button = new KButton(this);
+    close_button->setPicName(":/pixmap/image/closeBtn");
+    close_button->resize(QSize(26, 20));
+    close_button->move(1, 1);
+    close_button->raise();
+    close_button->installEventFilter(this);
+    connect(close_button, SIGNAL(clicked()), this, SLOT(accept()));
 
     //设置开始按钮属性
     hLayout = new QHBoxLayout(this);
@@ -114,7 +114,7 @@ SliderShow::~SliderShow()
         delete pic_array[i];
     }
     delete master_label;
-//    delete close_button;
+    delete close_button;
     delete background_label;
     delete start_button;
 //    delete cur_pic;
@@ -144,7 +144,7 @@ QString SliderShow::get_locale_version() {
 //}
 
 bool SliderShow::eventFilter(QObject *obj, QEvent *event) {
-    if(obj == start_button || obj == pic_array[0] || obj == pic_array[1] || obj == pic_array[2] || obj == pic_array[3] || obj == pic_array[4])
+    if(obj == start_button || obj == close_button || obj == pic_array[0] || obj == pic_array[1] || obj == pic_array[2] || obj == pic_array[3] || obj == pic_array[4])
     {
         if (((QMouseEvent *)event)->button() == Qt::LeftButton) {
             if (event->type() == QEvent::MouseButtonPress) {

@@ -26,6 +26,13 @@ HttpAuth::HttpAuth(QObject *parent) :
     QObject::connect(mManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
 }
 
+HttpAuth::~HttpAuth()
+{
+    if (mManager != NULL) {
+        delete mManager;
+    }
+}
+
 void HttpAuth::sendPostRequest(const QUrl &url, const QByteArray &data){
     mUrl = url;
     QNetworkRequest request(mUrl);

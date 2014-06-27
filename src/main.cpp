@@ -21,7 +21,7 @@
 #include <QDir>
 #include <QTranslator>
 
-#include "fcitxcfgwizard.h"
+//#include "fcitxcfgwizard.h"
 #include "toolkits.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
@@ -43,7 +43,7 @@ void registerTypes() {
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");
     qmlRegisterType<DeviceManager>("DeviceType", 0, 1, "DeviceManager");
-    qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");
+//    qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
     qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");
@@ -104,6 +104,9 @@ int main(int argc, char** argv)
     splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
     splash->setDisabled(true);
 
+    //同时创建主视图对象
+    HomePage homePage;
+
     //去掉splash背景底色
     QBitmap objBitmap(313, 209);
     QPainter painter(&objBitmap);
@@ -114,9 +117,6 @@ int main(int argc, char** argv)
     splash->show();
     splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
     app.processEvents();
-
-    //同时创建主视图对象
-    HomePage homePage;
     splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
     homePage.setup(/*"main.qml"*/);
@@ -138,6 +138,7 @@ int main(int argc, char** argv)
         homePage.show();
         delete splash;
     }
+    delete mSettings;
     return app.exec();
 }
 

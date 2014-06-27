@@ -62,6 +62,7 @@ private:
     QPixmap blister;
     int ratio_sus;
     AboutDialog *aboutDlg;
+    QTimer *timer;
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);

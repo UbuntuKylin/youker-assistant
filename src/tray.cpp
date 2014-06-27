@@ -43,6 +43,7 @@ Tray::Tray(QWidget *parent)
     QDesktopWidget *desktop = QApplication::desktop();
     this->move(desktop->width() - this->width(), 25);
     this->show();
+    delete desktop;
 
     aboutDlg = new AboutDialog();
     aboutDlg->hide();
@@ -56,13 +57,17 @@ Tray::Tray(QWidget *parent)
 //    connect(this, SIGNAL(ready_to_write_user_info_when_exit()), sedispather, SLOT(handler_write_user_info_when_exit()));
 //    connect(sedispather, SIGNAL(ready_to_exit()), this, SLOT(handler_to_exit()));
 
-    QTimer *timer = new QTimer(this);
+    timer = new QTimer(this);
     timer->setInterval(1000);
     connect(timer,SIGNAL(timeout()),this,SLOT(updateData()));
     timer->start();
 }
 
 Tray::~Tray() {
+    disconnect(timer,SIGNAL(timeout()),this,SLOT(updateData()));
+    if(timer->isActive()) {
+        timer->stop();
+    }
     if(frame) {
         delete frame;
     }
@@ -71,6 +76,9 @@ Tray::~Tray() {
     }
     if(sedispather) {
         delete sedispather;
+    }
+    if(aboutDlg) {
+        delete aboutDlg;
     }
 }
 

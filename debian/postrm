@@ -2,6 +2,7 @@
 
 if [ "$1" = "purge" ] ; then
 	rm -rf /var/lib/youker-assistant-daemon/
+	ps ax |grep youker-assistant | awk '{print $1}' |xargs kill -9
 fi
 
 #DEBHELPER#

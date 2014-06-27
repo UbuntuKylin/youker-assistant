@@ -19,7 +19,7 @@ import QtQuick 1.1
 import ToolkitsType 0.1
 import SessionType 0.1
 import SystemType 0.1
-import FcitxCfgWizard 0.1
+//import FcitxCfgWizard 0.1
 import ProcessType 0.1
 import DeviceType 0.1
 import "./func/common" as Common
@@ -38,7 +38,7 @@ Rectangle {
 
     SessionDispatcher { id: sessiondispatcher }
     SystemDispatcher { id: systemdispatcher }
-    FcitxCfgWizard { id: fcitxcfgwizard }
+//    FcitxCfgWizard { id: fcitxcfgwizard }
     Toolkits{ id: toolkits }
     ProcessManager { id: processmanager }
     DeviceManager { id: devicemanager }
