@@ -28,8 +28,7 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     ui->memory_title->setStyleSheet("color:white");//设置字颜色
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
-    QDesktopWidget *desktop = QApplication::desktop();
-    this->move(desktop->width() - this->width(), 80);
+    this->move(QApplication::desktop()->width() - this->width(), 80);
     ratio_sus = 0;
     cpu_sus = 0;
 

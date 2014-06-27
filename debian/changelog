@@ -10,7 +10,7 @@ youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
   * Use camera to take pictures.
   * Modify moving zone of the main widget.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 27 Jun 2014 09:20:51 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 27 Jun 2014 17:20:06 +0800
 
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 

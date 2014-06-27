@@ -27,9 +27,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowFlags(Qt::WindowStaysOnTopHint);
-    QDesktopWidget* desktop = QApplication::desktop();
-    move((desktop->width() - this->width())/2, (desktop->height() - this->height())/2);
-    delete desktop;
+    move((QApplication::desktop()->width() - this->width())/2, (QApplication::desktop()->height() - this->height())/2);
     ui->tabWidget->setCurrentIndex(0);
     connect(ui->homeBtn, SIGNAL(linkActivated(QString)), this, SLOT(openUrl(QString)));
 }
