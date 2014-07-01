@@ -31,6 +31,10 @@ SuspensionFrame::SuspensionFrame(QWidget *parent) :
     this->move(QApplication::desktop()->width() - this->width(), 80);
     ratio_sus = 0;
     cpu_sus = 0;
+    nowtotalCPU = 0;
+    lastTotalCPU = 0;
+    nowIdle = 0;
+    lastIdle = 0;
 
     locale_Lan = this->get_locale_version();
     if(locale_Lan == "zh_CN") {
@@ -60,13 +64,58 @@ QString SuspensionFrame::get_locale_version() {
     return locale;
 }
 
+QStringList SuspensionFrame::readStatFile()
+{
+    QFile file("/proc/stat");
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+    {
+        qDebug()<<"Cann't open /proc/stat!";
+    }
+    QTextStream stream(&file);
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    QString fileLine;
+    QStringList statList;
+    do {
+        fileLine = stream.readLine();
+        statList += fileLine;
+    } while (!fileLine.isNull());
+    QApplication::restoreOverrideCursor();
+    file.close();
+    return statList;
+}
+
+QString SuspensionFrame::getCPURatio()
+{
+    QStringList strList = readStatFile();
+    for(int i=1;i<10;i++) {
+        nowtotalCPU+=strList.at(0).split(" ",QString::SkipEmptyParts).at(i).toDouble();
+    }
+    nowIdle = strList.at(0).split(" ",QString::SkipEmptyParts).at(4).toDouble();
+    double allCPU = nowtotalCPU - lastTotalCPU;
+    double unusedCPU = nowIdle - lastIdle;
+//    result.setNum(100*(allCPU-unusedCPU)/allCPU);
+    lastTotalCPU = nowtotalCPU;
+    lastIdle = nowIdle;
+    nowtotalCPU = 0;
+    QString result  = QString::number(100*(allCPU-unusedCPU)/allCPU, 'f', 1);
+    return result;
+}
+
 void SuspensionFrame::get_sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio) {
     ratio_sus = ratio.toInt();
+    QString tmp_cpu = this->getCPURatio();
+    if (tmp_cpu.isEmpty()) {
+        cpu_sus = cpu_ratio.toInt();
+        ui->ratiolabel_2->setText(cpu_ratio + "%");
+    }
+    else {
+        cpu_sus = tmp_cpu.toInt();
+        ui->ratiolabel_2->setText(tmp_cpu+ "%");
+    }
     cpu_sus = cpu_ratio.toInt();
     ui->uplabel->setText(upspeed);
     ui->downlabel->setText(downspeed);
     ui->ratiolabel->setText(ratio + "%");
-    ui->ratiolabel_2->setText(cpu_ratio + "%");
     ui->memory_1->setText(tr("%1").arg(used_memory)+"M");
     ui->memory_2->setText(free_memory+"M");
     update();
@@ -77,7 +126,6 @@ void SuspensionFrame::mousePressEvent(QMouseEvent *event) {
         dragPos = event->globalPos() - frameGeometry().topLeft();
         event->accept();
     }
-
 }
 
 void SuspensionFrame::mouseMoveEvent(QMouseEvent *event) {

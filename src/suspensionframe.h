@@ -31,6 +31,7 @@ public:
     virtual QSize sizeHint()const;
     QString get_locale_version();
     ~SuspensionFrame();
+    QString getCPURatio();
     
 private:
     Ui::SuspensionFrame *ui;
@@ -41,6 +42,11 @@ private:
     int ratio_sus;
     int cpu_sus;
     QString locale_Lan;
+    QStringList readStatFile();
+    double nowtotalCPU;
+    double lastTotalCPU;
+    double nowIdle;
+    double lastIdle;
 signals:
     void accelerate_memory();
 protected:
