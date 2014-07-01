@@ -53,6 +53,16 @@ Rectangle {
         }
     }
 
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onTellDetailPageUpdateData: {
+//            if (infoFlag == "computer") {
+//                home.init_data();
+//            }
+//        }
+//    }
+
     Column {
         anchors {
             top: parent.top

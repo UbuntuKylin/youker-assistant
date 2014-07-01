@@ -21,6 +21,7 @@ Rectangle {
     id: bootimagepage
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property int scrollbar_z:0
     property int lisv_height: 250
@@ -33,10 +34,10 @@ Rectangle {
     ListModel { id: mainModel }
 
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"//bg-bottom-tab
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"//bg-bottom-tab
+//        anchors.fill: parent
+//    }
     Component.onCompleted: {
         systemdispatcher.plymouth_init_check_qt();
         var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
@@ -281,14 +282,14 @@ Rectangle {
                         anchors.fill:parent
                         hoverEnabled: true
                         onEntered: {
-                            btnImg.source = "../../img/toolWidget/highlight.png";
+                            btnImg.source = "../../img/icons/revoke_hover.png";
                         }
                         onPressed: {
-                            btnImg.source = "../../img/toolWidget/highlight.png";
+                            btnImg.source = "../../img/icons/revoke_hover.png";
                         }
                         //要判断松开是鼠标位置
                         onReleased: {
-                            btnImg.source = "../../img/toolWidget/highlight.png";
+                            btnImg.source = "";
                         }
                         onExited: {
                             btnImg.source = ""

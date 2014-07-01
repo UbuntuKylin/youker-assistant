@@ -162,8 +162,18 @@ Rectangle {
 
     ListModel {
         id: dataModel
-        Component.onCompleted: {
-            home.appendDataList();
+//        Component.onCompleted: {
+//            home.appendDataList();
+//        }
+    }
+
+    Connections
+    {
+        target: sessiondispatcher
+        onTellDetailPageUpdateData: {
+            if (infoFlag == "drive") {
+                home.appendDataList();
+            }
         }
     }
 

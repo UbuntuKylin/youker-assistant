@@ -21,16 +21,17 @@ Rectangle {
     id: touchpadsetpage
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
     property string actiontitle: qsTr("Touchpad settings")//触摸板设置
     property string actiontext: qsTr("By setting the relevant properties of your touchpad, make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     //使用云配置后，控件状态根据配置发生相应的变化
     Connections

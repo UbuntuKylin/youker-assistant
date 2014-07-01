@@ -17,6 +17,8 @@
 #include <QObject>
 #include <phonon>
 #include <QDebug>
+#include <QSound>
+
 QString music_path;
 QmlAudio::QmlAudio(QDeclarativeItem *parent) : QDeclarativeItem(parent)
 {
@@ -31,6 +33,11 @@ void QmlAudio::play() {
     audioObject = Phonon::createPlayer(Phonon::MusicCategory,
                                        Phonon::MediaSource(music_path));
     audioObject->play();
+//    QSound player(music_path);
+//    player.play();
+//    if (player.isFinished() == true) {
+//        player.stop();
+//    }
 }
 
 void QmlAudio::pause() {

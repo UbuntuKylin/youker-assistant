@@ -60,6 +60,9 @@ log = logging.getLogger('SessionDaemon')
 
 INTERFACE = "com.ubuntukylin.session"
 UKPATH = "/"
+POWER_PATH = "/sys/class/power_supply"
+BATTERY_PATH = "/sys/class/power_supply/BAT0"
+BAT_FILE = "/sys/class/power_supply/BAT0/uevent"
 
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
@@ -76,7 +79,7 @@ class SessionDaemon(dbus.service.Object):
         self.fileconf = FileManager()
         self.weatherconf = WeatherInfo(self)
         self.yahooconf = YahooWeather(self)
-        self.capturemode = Capture()
+#        self.capturemode = Capture()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -102,11 +105,45 @@ class SessionDaemon(dbus.service.Object):
     # True: has camera, False: no camera
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def judge_camera(self):
+        if not hasattr(self, 'capturemode'):
+            self.capturemode = Capture()
         return self.capturemode.judge_camera()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def call_camera(self):
         self.capturemode.call_camera()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def judge_power_is_exists(self):
+        if os.path.isdir(POWER_PATH):
+            if len(os.listdir(POWER_PATH)) == 0:
+                return False
+            else:
+                if os.path.isdir(BATTERY_PATH):
+                    return True
+                else:
+                    return False
+        else:
+            return False
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def read_battery_info(self):
+        bat_dict = {}
+        if not os.path.exists(BAT_FILE):
+            bat_dict['error'] = 'unknown'
+        else:
+            try:
+                fp = open(BAT_FILE)
+                allLines = fp.readlines()
+                fp.close()
+                for eachline in allLines:
+                    eachline = eachline.strip('\n')
+                    if '=' in eachline:
+                        tmp_list = eachline.split('=')
+                        bat_dict[tmp_list[0]] = tmp_list[1]
+            except Exception, e:
+                bat_dict['error'] = 'unknown'
+            return bat_dict
 
     # a dbus method which download and use kuaipan cloud conf by kobe
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')

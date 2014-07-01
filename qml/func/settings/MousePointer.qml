@@ -21,6 +21,7 @@ Rectangle {
     id: mousepointerpage
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property int cursor_size: 24
 //    property int current_index//当前主题的索引
@@ -31,10 +32,10 @@ Rectangle {
     ListModel { id: choices }
 
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
     Component.onCompleted: {
         mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
 

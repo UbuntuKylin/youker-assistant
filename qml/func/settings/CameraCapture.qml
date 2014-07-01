@@ -20,7 +20,8 @@ import "../common" as Common
 Rectangle {
     id: capturepage
     width: parent.width
-    color:"transparent"
+//    color:"transparent"
+    color: "#e4f2fc"
     height: 476
 
     property string actiontitle: qsTr("Camera")//摄像头

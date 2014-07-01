@@ -258,11 +258,17 @@ Rectangle {
             fontsize: 12
             width: 100; height: 28
             onClicked: {
-                filepage.size = size_text.text;
-                filepage.directory = sessiondispatcher.show_folder_dialog();
-                if (filepage.directory != "") {
-                    filepage.refresh_page();
-                    filepage.state = "LargestFileWorkAgain";
+                if (size_text.text == 0) {
+                    //对不起，您没有设置扫描文件大小或者设置值为0,请重新输入文件大小！
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, you haven't set the file size or the value is 0, please input the file size!"));
+                }
+                else {
+                    filepage.size = size_text.text;
+                    filepage.directory = sessiondispatcher.show_folder_dialog();
+                    if (filepage.directory != "") {
+                        filepage.refresh_page();
+                        filepage.state = "LargestFileWorkAgain";
+                    }
                 }
             }
         }
@@ -275,6 +281,7 @@ Rectangle {
             fontcolor:"#ffffff"
             fontsize: 16
             width: 120; height: 36
+            visible: ((filepage.lar_num > 0) && (size_text.text != "") && (size_text.text != 0) && (filepage.directory != "") && (filepage.null_flag == false)) ? true : false
             text: qsTr("Begin cleanup")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
@@ -308,15 +315,21 @@ Rectangle {
                                     filelist.push(subModel.get(i).desc);
                                 }
                             }
+                            if (filelist == "") {
+                                //友情提示：         对不起，您没有选择需要清理的项，请确认！
+                                sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"));
+                            }
+                            else {
 //                            console.log("yyyy", filelist);
                             systemdispatcher.clean_file_cruft_qt(filelist, "largestfile");
 //                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
+                            }
                         }
                     }
                 }
                 else {
                     //友情提示：         对不起，您没有选择需要清理的项，请确认！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"))
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"));
                 }
             }
         }

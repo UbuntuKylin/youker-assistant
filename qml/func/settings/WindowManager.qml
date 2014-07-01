@@ -21,6 +21,7 @@ Rectangle {
     id: windowmanagerpage
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property string position_mode: ""
     property int wheel_current_index//当前的索引
@@ -559,7 +560,7 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-double-click-titlebar");
+                    var default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-double-click-titlebar");
                     if(doublecombo.selectedText !== default_theme) {
                         sessiondispatcher.restore_uk_default_setting("window", "action-double-click-titlebar");
                         doublecombo.selectedIndex = windowmanagerpage.double_default_index;
@@ -611,7 +612,7 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-middle-click-titlebar");
+                    var default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-middle-click-titlebar");
                     if(middlecombo.selectedText !== default_theme) {
                         sessiondispatcher.restore_uk_default_setting("window", "action-middle-click-titlebar");
                         middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
@@ -663,7 +664,7 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-right-click-titlebar");
+                    var default_theme = sessiondispatcher.get_uk_default_setting_string("window", "action-right-click-titlebar");
                     if(rightcombo.selectedText !== default_theme) {
                         sessiondispatcher.restore_uk_default_setting("window", "action-right-click-titlebar");
                         rightcombo.selectedIndex = windowmanagerpage.right_default_index;

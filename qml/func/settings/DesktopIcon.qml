@@ -21,6 +21,7 @@ Rectangle {
     id: desktopiconsetpage
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property int default_index//系统默认主题的索引
     property string actiontitle: qsTr("Desktop Icons")//桌面图标设置
@@ -29,10 +30,10 @@ Rectangle {
     ListModel { id: choices }
 
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     //使用云配置后，控件状态根据配置发生相应的变化
     Connections

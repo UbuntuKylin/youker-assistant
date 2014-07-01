@@ -21,6 +21,7 @@ Rectangle {
     id: panelmanagerpage
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property int blur_mode
 
@@ -36,10 +37,10 @@ Rectangle {
     ListModel { id: powerchoices }
 
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     Component.onCompleted: {
         panelmanagerpage.battery_exists = sessiondispatcher.judge_power_is_exists_qt();
@@ -278,9 +279,9 @@ Rectangle {
 
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -356,9 +357,9 @@ Rectangle {
 
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -405,9 +406,9 @@ Rectangle {
             }
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -460,9 +461,9 @@ Rectangle {
 
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -519,9 +520,9 @@ Rectangle {
 
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -578,9 +579,9 @@ Rectangle {
 
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -637,9 +638,9 @@ Rectangle {
             }
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -694,9 +695,9 @@ Rectangle {
             }
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
@@ -753,9 +754,9 @@ Rectangle {
             }
             Common.Button {
 //                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28

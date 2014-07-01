@@ -21,6 +21,7 @@ Rectangle {
     property bool on: true
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property string current_font: "Helvetica"
     property string desktop_font: "Helvetica"
@@ -36,10 +37,10 @@ Rectangle {
     property string actiontitle: qsTr("Default font settings")//默认字体设置
     property string actiontext: qsTr("According to personal preferences to set the system default font, click the  'Restore' button, can be restored to the state before the font settings. ")//根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
     ListModel { id: smoothchoices }
     ListModel { id: antialiasingchoices }
 

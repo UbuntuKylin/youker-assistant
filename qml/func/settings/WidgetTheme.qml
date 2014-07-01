@@ -21,6 +21,7 @@ Rectangle {
     id: widgetthemepage
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property string actiontitle: qsTr("Theme settings")//GTK主题设置
     property string actiontext: qsTr("Choose the theme what you want.")//选择您想设置的主题。
@@ -120,10 +121,10 @@ Rectangle {
     }
 
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     Row {
         spacing: 20

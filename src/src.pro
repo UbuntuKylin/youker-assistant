@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = youker-assistant
-QT += core gui phonon declarative dbus network xml
+QT += core gui phonon declarative dbus xml
 
 inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
@@ -13,7 +13,7 @@ INSTALLS += inst1 \
     target
 
 include(../qtsingleapplication/src/qtsingleapplication.pri)
-LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
+#LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH =

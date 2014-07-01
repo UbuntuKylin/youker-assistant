@@ -21,6 +21,7 @@ Rectangle {
     id: filemanagerpage
     width: parent.width
     height: 476
+    color: "#e4f2fc"
 
     property string actiontitle: qsTr("File Manager")//文件管理器
     property string actiontext: qsTr("Manage the Nautilus file manager.")//管理Nautilus文件管理器
@@ -29,10 +30,10 @@ Rectangle {
     property bool first_cache_time: false
     property bool first_cache_size: false
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     //使用云配置后，控件状态根据配置发生相应的变化
     Connections

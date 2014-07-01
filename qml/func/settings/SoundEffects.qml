@@ -21,7 +21,8 @@ import AudioType 0.1
 Rectangle {
     id: soundeffectspage
     width: parent.width
-    color:"transparent"
+//    color:"transparent"
+    color: "#e4f2fc"
     height: 476
 
     property int scrollbar_z: 0
@@ -31,7 +32,7 @@ Rectangle {
     property string actiontext: qsTr("Selected music file name in the list box, do something such as audition, substitution and reduction.")//选中列表框中的音乐文件名，进行对应程序事件的试听、替换和还原。
     property int musiclist_num: 0
     property int current_index//当前主题的索引
-    property int default_index//系统默认主题的索引
+//    property int default_index//系统默认主题的索引
 
     ListModel { id: choices }
     ListModel { id: musicmodel }
@@ -87,7 +88,7 @@ Rectangle {
                 soundeffectspage.current_index = i;
             }
             if (default_theme == soundlist[i]) {
-                soundeffectspage.default_index = i;
+//                soundeffectspage.default_index = i;
             }
         }
         choices.clear();
@@ -125,11 +126,11 @@ Rectangle {
         }
     }
 
-    Image {     //背景图片
-        id: background
-        anchors.fill: parent
-        source: "../../img/skin/bg-middle.png"
-    }
+//    Image {     //背景图片
+//        id: background
+//        anchors.fill: parent
+//        source: "../../img/skin/bg-middle.png"
+//    }
 
     QmlAudio{ id: song }
 
@@ -257,21 +258,21 @@ Rectangle {
                 }
             }
 
-            Common.Button {
-//                hoverimage: "blue.png"
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
-                fontsize: 12
-                width: 100; height: 28
-                text: qsTr("Restore")//恢复默认
-                onClicked: {
-                    sessiondispatcher.set_default_sound_qt("soundtheme");
-                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
-                    iconcombo.selectedIndex = soundeffectspage.default_index;
-                }
-            }
+//            Common.Button {
+////                hoverimage: "blue.png"
+//                picNormal: "../../img/icons/button12-blue.png"
+//                picHover: "../../img/icons/button12-blue-hover.png"
+//                picPressed: "../../img/icons/button12-blue-hover.png"
+//                fontcolor:"#ffffff"
+//                fontsize: 12
+//                width: 100; height: 28
+//                text: qsTr("Restore")//恢复默认
+//                onClicked: {
+//                    sessiondispatcher.set_default_sound_qt("soundtheme");
+//                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
+//                    iconcombo.selectedIndex = soundeffectspage.default_index;
+//                }
+//            }
         }
 
         Row {
@@ -407,14 +408,14 @@ Rectangle {
                                 anchors.fill:parent
                                 hoverEnabled: true
                                 onEntered: {
-                                    btnImg1.source = "../../img/toolWidget/highlight.png";
+                                    btnImg1.source = "../../img/icons/play_hover.png";
                                 }
                                 onPressed: {
-                                    btnImg1.source = "../../img/toolWidget/highlight.png";
+                                    btnImg1.source = "../../img/icons/play_hover.png";
                                 }
                                 //要判断松开是鼠标位置
                                 onReleased: {
-                                    btnImg1.source = "../../img/toolWidget/highlight.png";
+                                    btnImg1.source = "";
                                 }
                                 onExited: {
                                     btnImg1.source = ""
@@ -428,8 +429,8 @@ Rectangle {
                                     }
                                     else if(play_pause == 1)
                                     {
-                                        song.stop()
-                                        song.play()
+                                        song.stop();
+                                        song.play();
                                     }
                                 }
                             }
@@ -446,14 +447,14 @@ Rectangle {
                                 anchors.fill:parent
                                 hoverEnabled: true
                                 onEntered: {
-                                    btnImg2.source = "../../img/toolWidget/highlight.png";
+                                    btnImg2.source = "../../img/icons/folder_hover.png";
                                 }
                                 onPressed: {
-                                    btnImg2.source = "../../img/toolWidget/highlight.png";
+                                    btnImg2.source = "../../img/icons/folder_hover.png";
                                 }
                                 //要判断松开是鼠标位置
                                 onReleased: {
-                                    btnImg2.source = "../../img/toolWidget/highlight.png";
+                                    btnImg2.source = "";
                                 }
                                 onExited: {
                                     btnImg2.source = ""
@@ -479,14 +480,14 @@ Rectangle {
                                 anchors.fill:parent
                                 hoverEnabled: true
                                 onEntered: {
-                                    btnImg3.source = "../../img/toolWidget/highlight.png";
+                                    btnImg3.source = "../../img/icons/revoke_hover.png";
                                 }
                                 onPressed: {
-                                    btnImg3.source = "../../img/toolWidget/highlight.png";
+                                    btnImg3.source = "../../img/icons/revoke_hover.png";
                                 }
                                 //要判断松开是鼠标位置
                                 onReleased: {
-                                    btnImg3.source = "../../img/toolWidget/highlight.png";
+                                    btnImg3.source = "";
                                 }
                                 onExited: {
                                     btnImg3.source = ""
