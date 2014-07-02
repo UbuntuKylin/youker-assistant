@@ -52,7 +52,12 @@ from beautify.filemanager import FileManager
 from beautify.cloudconfig import CloudConfig
 from sysinfo import Sysinfo
 from camera.capture import Capture
-from weather.weatherinfo import WeatherInfo
+#from weather.weatherinfo import WeatherInfo
+from piston_mini_client import APIError
+import httplib2
+from weather.piston import WeatherPistonAPI
+MySever = ("http://service.ubuntukylin.com:8001/weather/api/1.0/")
+WeatherPistonAPI.default_service_root = MySever
 from weather.yahoo import YahooWeather
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
@@ -77,7 +82,8 @@ class SessionDaemon(dbus.service.Object):
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
         self.fileconf = FileManager()
-        self.weatherconf = WeatherInfo(self)
+#        self.weatherconf = WeatherInfo(self)
+        self.server = WeatherPistonAPI(service_root=MySever)
         self.yahooconf = YahooWeather(self)
 #        self.capturemode = Capture()
         self.daemonsame = cleaner.SearchTheSame()
@@ -1236,19 +1242,26 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------weather-------------------------
     # get weather information of six days
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def get_forecast_weahter(self, cityId):
-        self.weatherconf.getWeatherForecast(cityId)
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+#    def get_forecast_weahter(self, cityId):
+#        self.weatherconf.getWeatherForecast(cityId)
 
     # get real forecast weather information of six days
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def get_forecast_dict(self):
-        return self.weatherconf.get_forecast_dict()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+#    def get_forecast_dict(self):
+#        return self.weatherconf.get_forecast_dict()
+
+    def real_get_current_weather(self, cityId):
+        self.weather_data = self.server.get_cma_observe_weather(cityId)
+        if self.weather_data not in (False, None, {}, '', '[]', "['']"):
+            self.access_weather('weather', 'kobe')
 
     # get current day's weather
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def get_current_weather(self, cityId):
-        self.weatherconf.getCurrentWeather(cityId)
+        t = threading.Thread(target = self.real_get_current_weather, args = (cityId,))
+        t.start()
+#        self.weatherconf.getCurrentWeather(cityId)
 
     # get current day's weather from yahoo 0.3.3
     @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
@@ -1257,31 +1270,32 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_current_weather_dict(self):
-        return self.weatherconf.get_current_weather_dict()
+        return self.weather_data
+#        return self.weatherconf.get_current_weather_dict()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_current_yahoo_weather_dict(self):
         return self.yahooconf.get_current_yahoo_weather_dict()
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def get_yahoo_forecast_dict(self):
-        return self.yahooconf.get_yahoo_forecast_dict()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+#    def get_yahoo_forecast_dict(self):
+#        return self.yahooconf.get_yahoo_forecast_dict()
 
     # get current PM2.5
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def get_current_pm25(self, cityId):
-        self.weatherconf.getPM25Info(cityId)
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+#    def get_current_pm25(self, cityId):
+#        self.weatherconf.getPM25Info(cityId)
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def get_pm25_str(self):
-        return self.weatherconf.get_pm25_str()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+#    def get_pm25_str(self):
+#        return self.weatherconf.get_pm25_str()
 
     # update weather data
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
-    def update_weather_data(self, cityId):
-        return self.weatherconf.updateCurrentWeather(cityId)
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+#    def update_weather_data(self, cityId):
+#        return self.weatherconf.updateCurrentWeather(cityId)
 
     # get cityid from citynamegetPM25Info
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
-    def get_city_id(self, cityName):
-        return self.weatherconf.getCityId(cityName)
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
+#    def get_city_id(self, cityName):
+#        return self.weatherconf.getCityId(cityName)

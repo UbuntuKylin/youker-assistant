@@ -111,7 +111,7 @@ void LocationDialog::changeSelectCity(QString currentName) {
 }
 
 QStringList LocationDialog::list_city_names(QString inputText) {
-    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt");
+    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/locations.txt");
     QStringList listCity;
     if(locationFile.exists() && locationFile.open(QFile::ReadOnly)) {
         QTextStream in(&locationFile);

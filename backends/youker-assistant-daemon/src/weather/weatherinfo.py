@@ -21,7 +21,7 @@ import urllib2, urllib
 import json
 from base import PROJECT_ROOT_DIRECTORY, PROJECT_ROOT_DIRECTORY, WEATHER_URL, WEATHER_URL1, WEATHER_URL2, PM25_URL, TOKEN
 
-CHN_CITY_LIST_FILE = '/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt'
+CHN_CITY_LIST_FILE = '/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/locations.txt'
 
 class Getpmdata:
     def get_url(self, cityplace):

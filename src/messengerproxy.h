@@ -32,13 +32,9 @@ private:
     static MessengerProxy *proxy;
 
 signals:
-//    void mainHide();
-//    void showMin();
     void getHomeBackIndex(int index);
 
 public slots:
-//    void hideMainWidget();
-//    void showMinMainWidget();
     void accessCurrentHomeIndex(int index);
 };
 

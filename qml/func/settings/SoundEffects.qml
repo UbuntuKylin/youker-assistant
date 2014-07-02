@@ -432,6 +432,9 @@ Rectangle {
                                         song.stop();
                                         song.play();
                                     }
+
+
+//                                    systemdispatcher.listen_music(musicname);
                                 }
                             }
                         }

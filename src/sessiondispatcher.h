@@ -24,11 +24,10 @@
 #include <QDeclarativeView>
 #include "quibo.h"
 #include "modaldialog.h"
-//#include "skinswidget.h"
 #include "httpauth.h"
-//#include "skincenter.h"
 #include "newcharacter.h"
 #include "wizarddialog.h"
+
 class QSettings;
 
 class SessionDispatcher : public QObject
@@ -77,9 +76,7 @@ public:
     //扫描同名文件
 //    Q_INVOKABLE QStringList scan_of_same_qt(QString abspath);
     //扫描大文件
-    Q_INVOKABLE /*QStringList*/void scan_of_large_qt(QString abspath, int size);
-    //扫描cookies
-//    Q_INVOKABLE QStringList scan_cookies_records_qt();
+    Q_INVOKABLE void scan_of_large_qt(QString abspath, int size);
     //扫描firefox和chromium的cookies
     Q_INVOKABLE void cookies_scan_function_qt(QString flag);
 
@@ -90,7 +87,6 @@ public:
     Q_INVOKABLE QStringList get_cache_arglist(int i);
     Q_INVOKABLE QStringList get_package_arglist(int i);
     //扫描旧内核安装包
-//    Q_INVOKABLE QStringList scan_oldkernel_packages_qt();
     //扫描浏览器缓存时的参数获取
     Q_INVOKABLE QStringList get_browser_cache_arglist();
 
@@ -105,7 +101,7 @@ public:
     //弹出确认对话框
     Q_INVOKABLE bool showConfirmDialog(QString title, QString content);
 
-    /*Q_INVOKABLE  */void set_page_num(int num);
+    void set_page_num(int num);
     Q_INVOKABLE int get_page_num();
     int page_num;
 
@@ -122,7 +118,6 @@ public:
     //通过键得到对应的单个信息的值
     Q_INVOKABLE QString getSingleInfo(QString key);
     Q_INVOKABLE QString getBatterySingleInfo(QString key);
-
 
     //恢复ubuntukylin默认配置
     Q_INVOKABLE QString get_uk_default_setting_string(QString key, QString name);
@@ -323,33 +318,14 @@ public:
     Q_INVOKABLE QString get_used_memory_qt();
     Q_INVOKABLE QString get_free_memory_qt();
     Q_INVOKABLE QStringList get_network_flow_total_qt();
-    
-    /*-------------------change skin-------------------*/
-    Q_INVOKABLE QString setSkin();
-    //皮肤对话框
-    Q_INVOKABLE void showSkinWidget(/*int window_x, int window_y*/);
-//    Q_INVOKABLE void showSkinCenter();
 
-    /*-------------------weather forecast-------------------*/
-    Q_INVOKABLE void get_forecast_weahter_qt();
-    void get_forecast_dict_qt();//天气预报数据获取完成后，通过该函数返回其获取的值给forecastInfo
-    void get_yahoo_forecast_dict_qt();
+    /*-------------------weather-------------------*/
     Q_INVOKABLE void get_current_weather_qt();
     void get_current_weather_dict_qt();//当天天气数据获取完成后，通过该函数返回其获取的值给currentInfo
     void get_current_yahoo_weather_dict_qt();//yahoo当天天气数据获取完成后，通过该函数返回其获取的值给yahoocurrentInfo
-    Q_INVOKABLE void get_current_pm25_qt();
-    void get_pm25_str_qt();//当PM2.5获取成功后，返回给pm25Info
-    Q_INVOKABLE QString access_pm25_str_qt();//把pm25Info给QML
-    //得到配置文件中的更新周期
-    Q_INVOKABLE int get_current_rate();
-    //更新当天天气
-    Q_INVOKABLE bool update_weather_data_qt();
 
-    QMap<QString, QVariant> forecastInfo;
     QMap<QString, QVariant> currentInfo;
     QMap<QString, QVariant> yahoocurrentInfo;
-    QMap<QString, QVariant> yahooforecastInfo;
-    QString pm25Info;
     //通过键得到对应的单个信息的值,flag= forecast/current
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 
@@ -364,18 +340,8 @@ public:
 
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);
-
-    //把优客助手运行时，系统的默认配置写到配置文件
-    Q_INVOKABLE void write_default_configure_to_qsetting_file(QString key, QString name, QString value);
-    //从Qsetting配置文件中读取系统启动时的默认配置
-    Q_INVOKABLE QString read_default_configure_from_qsetting_file(QString key, QString name);
-
-    //fcitxconfigtoolkey获取sekectedfcitxfont
-//    Q_INVOKABLE QString getSelectedFcitxFont();
-
     //一键清理扫描
     Q_INVOKABLE void onekey_scan_function_qt(QStringList selectedList);
-
 
     //金山快盘云配置
     Q_INVOKABLE void download_kysoft_cloud_conf_qt();
@@ -388,11 +354,9 @@ signals:
     void isScanning(QString msg);
 
     void notifyFontStyleToQML(QString font_style);
-    void startChangeQMLSkin(QString skinName);//发送开始更换QML界面皮肤的信号
     void startChangeQMLCity();//发送开始更换QML城市
     void startUpdateForecastWeahter(QString flag);//发送开始更换六天天气预报
     void showKeyandData(QString key, QString value);//根据天气的key显示对应的数据
-    void startUpdateRateTime(int rate);//发送开始更换天气自动更新周期时间
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
 
@@ -463,11 +427,10 @@ public slots:
     //扫描的总数
     void handler_total_data_transmit(QString flag, QString msg);
 
-    void handler_change_skin(QString skinName);
     //更换城市槽函数
     void handler_change_city();
     //更换自动更新天气周期槽函数
-    void handler_change_rate(int rate);
+//    void handler_change_rate(int rate);
 
     //接收缓存信号，把数据动态堆加到model中
     void handler_append_cache_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):

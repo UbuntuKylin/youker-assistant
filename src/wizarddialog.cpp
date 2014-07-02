@@ -67,24 +67,18 @@ WizardDialog::WizardDialog(QSettings *mSettings, QWidget *parent) :
 
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
-
-    spinValue = 0;
     newCityName = "";
     newCityId = "";
 
     ui->btn_close->installEventFilter(this);
-    ui->spinBox->installEventFilter(this);
     ui->quitBtn->installEventFilter(this);
     ui->okBtn->installEventFilter(this);
     ui->addBtn->installEventFilter(this);
     ui->delBtn->installEventFilter(this);
-    ui->spinBox->setRange(0, 60);
-    ui->spinBox->setSingleStep(5);
 
     loadConf();
     connect(ui->okBtn, SIGNAL(clicked()),this, SLOT(writeWeatherConf()));
     connect(ui->quitBtn, SIGNAL(clicked()), this, SLOT(hide()));
-    connect(ui->spinBox,SIGNAL(valueChanged(int)),this,SLOT(setSpinValue(int)));
 }
 
 WizardDialog::~WizardDialog()
@@ -95,12 +89,10 @@ WizardDialog::~WizardDialog()
 
 void WizardDialog::loadConf() {
     pSettings->beginGroup("weather");
-    spinValue = pSettings->value("rate").toInt();
     cityList = pSettings->value("places").toStringList();
     newCityId = pSettings->value("cityId").toString();
     pSettings->endGroup();
     pSettings->sync();
-    ui->spinBox->setValue(spinValue);
     ui->listWidget->clear();
     int len = cityList.size();
     if (len == 0) {
@@ -159,17 +151,8 @@ void WizardDialog::setLocation(QString cityName, QString cityId, QString lat, QS
     }
 }
 
-void WizardDialog::setSpinValue(int value) {
-    spinValue = value;
-}
-
 void WizardDialog::writeWeatherConf() {
-    QString strValue = QString::number(spinValue, 10);
-    pSettings->setValue("weather/rate", strValue);
-    pSettings->sync();
-    emit readyToUpdateRateTime(spinValue);
     this->hide();
-//    this->accept();
 }
 
 void WizardDialog::addLocation() {
@@ -300,8 +283,7 @@ bool WizardDialog::eventFilter(QObject *obj, QEvent *event) {
                 delLocation();
             }
         }
-    if(obj == ui->spinBox || obj == ui->quitBtn || obj == ui->okBtn)
-    {
+    if(obj == ui->quitBtn || obj == ui->okBtn) {//obj == ui->spinBox ||
         if(event->type() == QEvent::MouseButtonPress)
         {
             QMouseEvent *me = (QMouseEvent *)event;

@@ -43,19 +43,16 @@ protected:
 protected slots:
     void addLocation();
     void delLocation();
-    void setSpinValue(int value);
     void writeWeatherConf();
     void setLocation(QString cityName, QString cityId, QString lat, QString lon);
 
 signals:
     void transConfValue(QString key, QString value);
-    void readyToUpdateRateTime(int rate);//更新天气自动更新的周期信号
     void readyToUpdateWeatherForWizard();
 
 private:
     Ui::WizardDialog *ui;
     QPoint dragPos;
-    int spinValue;
     QStringList cityList;
     QString newCityName;
     QString newCityId;

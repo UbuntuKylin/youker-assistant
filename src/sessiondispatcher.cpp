@@ -21,7 +21,6 @@
 #include <QtDBus>
 #include <QObject>
 #include <QString>
-//#include "messagedialog.h"
 #include "warningdialog.h"
 #include <QDesktopWidget>
 #include <QDeclarativeContext>
@@ -36,7 +35,6 @@
 #include "messengerproxy.h"
 
 QString selectedFont;
-//QString selectedFcitxFont;
 extern QPoint widgetPosition;
 
 SessionDispatcher::SessionDispatcher(QObject *parent) :
@@ -69,9 +67,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     timer=new QTimer(this);
     loginOK = false;
 
-//    skin_widget = new SkinsWidget(mSettings);
-//    skinCenter = new SkinCenter();
-//    connect(skin_widget, SIGNAL(skinSignalToQML(QString)), this, SLOT(handler_change_skin(QString)));
     //handler_change_titlebar_position
     QObject::connect(sessioniface, SIGNAL(change_titlebar_position(QString)), this, SLOT(handler_change_titlebar_position(QString)));
     QObject::connect(sessioniface, SIGNAL(display_scan_process(QString)), this, SLOT(handler_scan_process(QString)));
@@ -113,7 +108,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(MessengerProxy::get_instance_object(), SIGNAL(getHomeBackIndex(int)), this, SLOT(handlerBackToHomePage(int)));
 
     wizardDialog = new WizardDialog(mSettings, 0);
-    connect(wizardDialog, SIGNAL(readyToUpdateRateTime(int)), this, SLOT(handler_change_rate(int)));
     connect(wizardDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
 }
 
@@ -128,11 +122,18 @@ SessionDispatcher::~SessionDispatcher() {
         QUrl url(requestData);
         httpauth->sendGetRequest(url);
     }
+    if (httpauth != NULL) {
+        delete httpauth;
+    }
     waitTime = 0;
     disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
     if(timer->isActive()) {
         timer->stop();
     }
+    if (timer != NULL) {
+        delete timer;
+    }
+
     this->exit_qt();
     if (sessioniface != NULL) {
         delete sessioniface;
@@ -170,7 +171,6 @@ void SessionDispatcher::call_camera_qt() {
     QStringList tmp;
     KThread *thread = new KThread(tmp, sessioniface, "call_camera");
     thread->start();
-//    sessioniface->call("call_camera");
 }
 
 bool SessionDispatcher::judge_power_is_exists_qt() {
@@ -419,17 +419,9 @@ QString SessionDispatcher::get_yahoo_city_id_qt(QString geonameid) {
 
 //更加相应的标记去获取需要的天气数据
 void SessionDispatcher::accord_flag_access_weather(QString key, QString value) {
-    if(key == "forecast" && value == "kobe") {
-        get_forecast_dict_qt();
-        emit startUpdateForecastWeahter("forecast");
-    }
-    else if(key == "weather" && value == "kobe") {
+    if(key == "weather" && value == "kobe") {
         get_current_weather_dict_qt();
         emit startUpdateForecastWeahter("weather");
-    }
-    else if(key == "pm25" && value == "kobe") {
-        get_pm25_str_qt();
-        emit startUpdateForecastWeahter("pm25");
     }
     else if(key == "yahoo" && value == "kobe") {
         get_current_yahoo_weather_dict_qt();
@@ -589,8 +581,6 @@ QStringList SessionDispatcher::get_package_arglist(int i) {
 
 void SessionDispatcher::cache_scan_function_qt(QStringList argList, QString flag) {
 //    sessioniface->call("cache_scan_function", argList, flag);
-
-
     KThread *thread = new KThread(argList, sessioniface, "cache_scan_function", flag);
     thread->start();
 }
@@ -622,9 +612,7 @@ QString SessionDispatcher::get_session_daemon_qt() {
 
 void SessionDispatcher::get_system_message_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");
-//    qDebug() << "111";
     if (reply.isValid()) {
-//        qDebug() << "222";
         QMap<QString, QVariant> value = reply.value();
         systemInfo.clear();
         systemInfo = value;
@@ -639,24 +627,6 @@ void SessionDispatcher::get_system_message_qt() {
     else {
         qDebug() << "get pc_message failed!";
     }
-}
-
-//把优客助手运行时，系统的默认配置写到配置文件
-void SessionDispatcher::write_default_configure_to_qsetting_file(QString key, QString name, QString value) {
-    mSettings->beginGroup(key);
-    mSettings->setValue(name, value);
-    mSettings->endGroup();
-    mSettings->sync();
-}
-
-//从Qsetting配置文件中读取系统启动时的默认配置
-QString SessionDispatcher::read_default_configure_from_qsetting_file(QString key, QString name) {
-    QString result;
-    mSettings->beginGroup(key);
-    result = mSettings->value(name).toString();
-    mSettings->endGroup();
-    mSettings->sync();
-    return result;
 }
 
 //----------------message dialog--------------------
@@ -1820,69 +1790,9 @@ QStringList SessionDispatcher::get_network_flow_total_qt() {
     return reply.value();
 }
 
-//-----------------------change skin------------------------
-void SessionDispatcher::handler_change_skin(QString skinName) {
-    //将得到的更换皮肤名字写入配置文件中
-    mSettings->setValue("skin/background", skinName);
-    mSettings->sync();
-//    //发送开始更换QML界面皮肤的信号
-    emit startChangeQMLSkin(skinName);
-}
-
-QString SessionDispatcher::setSkin() {
-    QString skinName;
-    mSettings->beginGroup("skin");
-    skinName = mSettings->value("background").toString();
-    if(skinName.isEmpty()) {
-        skinName = QString("0_bg");
-        mSettings->setValue("background", skinName);
-    }
-    mSettings->endGroup();
-    mSettings->sync();
-    return skinName;
-}
-
-void SessionDispatcher::showSkinWidget() {
-//    skin_widget->show();
-}
-
-//void SessionDispatcher::showSkinCenter() {
-//    skinCenter->show();
-//}
-
-void SessionDispatcher::get_forecast_weahter_qt() {
-    getCityIdInfo();
-
-    bool flag = Util::id_exists_in_location_file(initCityId);
-    if(flag) {//获取中国气象局数据
-        QStringList tmplist;
-        tmplist << "Kobe" << "Lee";
-        KThread *thread = new KThread(tmplist, sessioniface, "get_forecast_weahter", initCityId);
-        thread->start();
-    }
-    else {
-        get_yahoo_forecast_dict_qt();
-        emit startUpdateForecastWeahter("yahooforecast");
-    }
-}
-
-void SessionDispatcher::get_forecast_dict_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_forecast_dict");
-    forecastInfo.clear();
-    forecastInfo = reply.value();
-}
-
-void SessionDispatcher::get_yahoo_forecast_dict_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_yahoo_forecast_dict");
-    yahooforecastInfo.clear();
-    yahooforecastInfo = reply.value();
-}
-
 void SessionDispatcher::get_current_weather_qt() {
     getCityIdInfo();
     QStringList tmplist;
-    tmplist << "Kobe" << "Lee";
-
     bool flag = Util::id_exists_in_location_file(initCityId);
     if(flag) {//获取中国气象局数据
         KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
@@ -1907,53 +1817,9 @@ void SessionDispatcher::get_current_yahoo_weather_dict_qt() {
     yahoocurrentInfo = reply.value();
 }
 
-void SessionDispatcher::get_current_pm25_qt() {
-    getCityIdInfo();
-    QStringList tmplist;
-    tmplist << "Kobe" << "Lee";
-    KThread *thread = new KThread(tmplist, sessioniface, "get_current_pm25", initCityId);
-    thread->start();
-}
-
-void SessionDispatcher::get_pm25_str_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_pm25_str");
-    pm25Info = reply.value();
-}
-
-QString SessionDispatcher::access_pm25_str_qt() {
-    return pm25Info;
-}
-
-int SessionDispatcher::get_current_rate() {
-    mSettings->beginGroup("weather");
-    int rate = 60;
-    rate = mSettings->value("rate").toInt();
-    mSettings->endGroup();
-    mSettings->sync();
-    return rate;
-}
-
-bool SessionDispatcher::update_weather_data_qt() {
-    getCityIdInfo();
-    bool flag = Util::id_exists_in_location_file(initCityId);
-    if(flag) {//获取中国气象局数据
-        QDBusReply<bool> reply = sessioniface->call("update_weather_data", initCityId);
-        return reply.value();
-    }
-    else {
-        QStringList latlon = this->getLatandLon(initCityId);
-        KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
-        thread->start();
-        return false;
-    }
-}
-
 QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     QVariant info = "";
-    if(flag == "forecast") {
-        info = forecastInfo.value(key);
-    }
-    else if(flag == "current") {
+    if(flag == "current") {
         info = currentInfo.value(key);
     }
     else if(flag == "weathericon") {
@@ -1962,17 +1828,11 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     else if(flag == "yahoo") {
         info = yahoocurrentInfo.value(key);
     }
-    else if(flag == "yahooforecast") {
-        info = yahooforecastInfo.value(key);
-    }
     return info.toString();
 }
 
 bool SessionDispatcher::showWizardController() {
     //WizardDialog width:531; WizardDialog height:210
-//    WizardDialog *wizardDialog = new WizardDialog(mSettings, 0);
-//    connect(wizardDialog, SIGNAL(readyToUpdateRateTime(int)), this, SLOT(handler_change_rate(int)));
-//    connect(wizardDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
     int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (531  / 2);
     int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (210  / 2);
     wizardDialog->move(w_x, w_y);
@@ -1987,9 +1847,6 @@ bool SessionDispatcher::showWizardController() {
 //    }
 }
 
-void SessionDispatcher::handler_change_rate(int rate) {
-    emit startUpdateRateTime(rate);
-}
 
 bool SessionDispatcher::showChangeCityDialog() {
     //ChangeCityDialog width:421; ChangeCityDialog height:280
@@ -2066,21 +1923,6 @@ void SessionDispatcher::initConfigFile() {
         longitude.append("NA");
         mSettings->setValue("longitude", longitude);
     }
-    QString rate = mSettings->value("rate").toString();
-    //rate为空时，赋默认值为：60
-    if(rate.isEmpty()) {
-        rate = QString("60");
-        mSettings->setValue("rate", rate);
-    }
-    mSettings->endGroup();
-
-    mSettings->beginGroup("skin");
-    QString backGround = mSettings->value("background").toString();
-    //backGround为空时，赋默认值为：0_bg
-    if(backGround.isEmpty() || backGround != "0_bg") {
-        backGround = QString("0_bg");
-        mSettings->setValue("background", backGround);
-    }
     mSettings->endGroup();
     mSettings->sync();
 }
@@ -2121,7 +1963,6 @@ QStringList SessionDispatcher::getLatandLon(QString id) {
 void SessionDispatcher::change_maincheckbox_status(QString status) {
     emit startChangeMaincheckboxStatus(status);
 }
-
 
 //0412
 void SessionDispatcher::handlerBackToHomePage(int index) {

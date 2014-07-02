@@ -239,6 +239,16 @@ void SystemDispatcher::getMusicFileAbsolutePath(QString musicpath) {
     music_path = musicpath;
 }
 
+void SystemDispatcher::listen_music(QString path) {
+    if (QSound::isAvailable()) {
+        QSound player(path);
+        player.play();
+        if (player.isFinished() == true) {
+            player.stop();
+        }
+    }
+}
+
 void SystemDispatcher::set_homedir_qt() {
     QString homedir = QDir::homePath();
     systemiface->call("set_homedir", homedir);
@@ -248,7 +258,6 @@ void SystemDispatcher::set_user_homedir_qt() {
     QString homedir = QDir::homePath();
     systemiface->call("set_user_homedir", homedir);
 }
-
 
 //void SystemDispatcher::set_history_flag(bool flag) {
 //    history_flag = flag;

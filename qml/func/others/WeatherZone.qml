@@ -37,22 +37,12 @@ Rectangle {
     //当启动时没有网络的时候，设置默认界面
     function setDefaultWeather() {
         weatherIcon.source = "../../img/weather/d0.gif"
-//        locationText.text = qsTr("Unable to get weather data,");//无法获取天气数据，
-//        ptimeText.text = qsTr("please check network.");//请检查网络。
         weatherText.text = qsTr("Weather");//天气
         windText.text = qsTr("Wind");//风力
         pmText.text = qsTr("AQI");//空气质量指数
         tempText.text = qsTr("Current temperature");//当前温度（℃）
         temperatureRangeText.text = qsTr("Temperature range");//温度范围
         humidityText.text = qsTr("Humidity");//湿度
-    }
-
-    //设置PM2.5到QML界面上
-    function resetPM25(pmData) {
-        if (pmData == "N/A") {
-            pmData = qsTr("N/A");//未知
-        }
-        pmText.text = qsTr("AQI:") + pmData;//空气质量指数：
     }
 
     //设置天气数据到QML界面上
@@ -73,12 +63,7 @@ Rectangle {
         ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + qsTr(" ");// 发布
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
         windText.text = sessiondispatcher.getSingleWeatherInfo("WD", "current") + sessiondispatcher.getSingleWeatherInfo("WS", "current");
-        sessiondispatcher.get_current_pm25_qt();
-        //        var pmData = sessiondispatcher.get_current_pm25_qt();
-//        if (pmData == "N/A") {
-//            pmData = qsTr("N/A");//未知
-//        }
-//        pmText.text = qsTr("AQI:") + pmData;//空气质量指数：
+        pmText.text = qsTr("AQI:") + sessiondispatcher.getSingleWeatherInfo("aqi", "current");;//空气质量指数：
         tempText.text = qsTr("Current temperature:") + sessiondispatcher.getSingleWeatherInfo("temp", "current") + "℃";//当前温度：
         temperatureRangeText.text = qsTr("Temperature range:") + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");//温度范围：
         humidityText.text = qsTr("Humidity:") + sessiondispatcher.getSingleWeatherInfo("SD", "current");//湿度：
@@ -105,43 +90,23 @@ Rectangle {
         onStartUpdateForecastWeahter: {
             if(flag == "weather") {
                 weahterzone.resetCurrentWeather();
-                weahterzone.resetChangeCityBtn();
-            }
-            else if(flag == "pm25") {
-                weahterzone.resetPM25(sessiondispatcher.access_pm25_str_qt());
+//                weahterzone.resetChangeCityBtn();
             }
             else if(flag == "yahoo") {
                 weahterzone.resetCurrentYahooWeather();
-                weahterzone.resetChangeCityBtn();
+//                weahterzone.resetChangeCityBtn();
             }
         }
 
         //用户修改了城市时更新
         onStartChangeQMLCity: {
             sessiondispatcher.get_current_weather_qt();
-//            if(sessiondispatcher.get_current_weather_qt()) {
-//                weahterzone.resetCurrentWeather();
-//                weahterzone.resetChangeCityBtn();
-//            }
-        }
-        //自动更新时间到了的时候更新
-        onStartUpdateRateTime: {
-            updateTime.interval = 10000 * rate;
         }
     }
 
     Component.onCompleted: {
         weahterzone.setDefaultWeather();
-        var rate = sessiondispatcher.get_current_rate();
-        updateTime.interval = 10000 * rate;
         sessiondispatcher.get_current_weather_qt();
-//        if(sessiondispatcher.get_current_weather_qt()) {
-//            weahterzone.resetCurrentWeather();
-//            weahterzone.resetChangeCityBtn();
-//        }
-//        else {
-//            weahterzone.setDefaultWeather();
-//        }
     }
     Text {
         id: locationText
@@ -153,7 +118,7 @@ Rectangle {
     }
     Common.StyleButton {
         id: changeCityBtn
-        visible: false
+//        visible: false
         anchors.left: locationText.right
         wordname: qsTr("[Change]")//[切换]
         width: 60
@@ -181,23 +146,15 @@ Rectangle {
         Image {
             id: weatherIcon
             anchors.horizontalCenter: parent.horizontalCenter
-//                    anchors {
-//                        top: ptimeText.bottom
-//                        topMargin: 5
-//                        right: parent.right
-//            //            rightMargin: 10
-//                    }
             width: 48; height: 48
             source: ""//http://l.yimg.com/a/i/us/we/52/21.gif
          }
         Common.StyleButton {
             id: preferencesBtn
             anchors.horizontalCenter: parent.horizontalCenter
-//                    anchors.top: weatherIcon.bottom
             wordname: qsTr("Configure")//配  置
             width: 40
             height: 20
-    //                flag: "WeatherPreference"
             onClicked: {
                 sessiondispatcher.showWizardController();
             }
@@ -207,55 +164,6 @@ Rectangle {
         anchors.top: parent.top
         anchors.topMargin: 25
         spacing: 15
-//        Column {
-//            id: leftrow
-//            spacing: 5
-//            Image {
-//                id: weatherIcon
-//                width: 48; height: 48
-//                source: ""//http://l.yimg.com/a/i/us/we/52/21.gif
-//            }
-
-//            Common.StyleButton {
-//                id: forecastBtn
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                wordname: qsTr("Forecast")//预  报
-//                width: 40
-//                height: 20
-////                flag: "WeatherForecast"
-//                onClicked: {
-//                    //1、获取六天天气预报数据
-//                    sessiondispatcher.get_forecast_weahter_qt();
-//                    //2、加载天气预报界面
-//                    pageStack.push(weatherpage);
-//                }
-//            }
-//            Common.StyleButton {
-//                id: preferencesBtn
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                wordname: qsTr("Configure")//配  置
-//                width: 40
-//                height: 20
-////                flag: "WeatherPreference"
-//                onClicked: {
-//                    sessiondispatcher.showWizardController();
-//                }
-//            }
-//            Common.StyleButton {
-//                id: refreshBtn
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                wordname: qsTr("Update")//更  新
-//                width: 40
-//                height: 20
-//                onClicked: {
-//                    if(sessiondispatcher.update_weather_data_qt()) {
-//                        weahterzone.resetCurrentWeather();
-//                        weahterzone.resetChangeCityBtn();
-//                        toolkits.alertMSG(qsTr("Update completed!"));//更新完毕！
-//                    }
-//                }
-//            }
-//        }
 
         Column {
             spacing: 5
@@ -302,10 +210,6 @@ Rectangle {
         interval: 60 * 10000;running: true;repeat: true
         onTriggered: {
             sessiondispatcher.get_current_weather_qt();
-//            if(sessiondispatcher.get_current_weather_qt()) {
-//                weahterzone.resetCurrentWeather();
-//                weahterzone.resetChangeCityBtn();
-//            }
         }
     }
 }

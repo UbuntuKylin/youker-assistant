@@ -19,7 +19,7 @@
 
 QString Util::get_id_from_cityname(QString cityName) {
     QString cityId = "";
-    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt");
+    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/locations.txt");
     if(locationFile.exists() && locationFile.open(QFile::ReadOnly)) {
         QTextStream in(&locationFile);
         QString line;
@@ -40,7 +40,7 @@ QString Util::get_id_from_cityname(QString cityName) {
 }
 
 bool Util::id_exists_in_location_file(QString id) {
-    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/location.txt");
+    QFile locationFile("/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/locations.txt");
     if(locationFile.exists() && locationFile.open(QFile::ReadOnly)) {
         QTextStream in(&locationFile);
         QString line;

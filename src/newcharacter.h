@@ -42,25 +42,17 @@ protected:
 
 private slots:
     void changeCurrentPage(int);//点击按钮时更换成对应的图片
-//    void changeCurrentPage(IconText *);//点击按钮时更换成对应的图片
     void timerChangePosition();
     void hideSlider();
 
 private:
-//    void changeCurrentButton();
-//    void movePicPosition(bool);
-//    QPoint mouseSrcPos;//鼠标起始位置
-//    QPoint mouseDstPos;//鼠标结束位置
     int current_pos_x;
 
     QLabel *background_label; //背景图片
     int current_index; //当前图片下标
     QLabel *master_label;
     IconText *pic_array[5];
-//    IconText *cur_pic;
     KButton *close_button; //关闭按钮
-//    KButton *start_button; //开始按钮
-//    QHBoxLayout *hLayout;
 
     int page_count;
     int window_btn_count;

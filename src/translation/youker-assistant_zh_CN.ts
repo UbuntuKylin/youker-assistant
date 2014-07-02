@@ -3343,7 +3343,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1484"/>
+        <location filename="../sessiondispatcher.cpp" line="1472"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -3768,8 +3768,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="26"/>
-        <location filename="../suspensionframe.cpp" line="163"/>
-        <location filename="../suspensionframe.cpp" line="177"/>
+        <location filename="../suspensionframe.cpp" line="211"/>
+        <location filename="../suspensionframe.cpp" line="225"/>
         <source>System runs smoothly</source>
         <translation>系统运行流畅</translation>
     </message>
@@ -3779,38 +3779,38 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="27"/>
-        <location filename="../suspensionframe.cpp" line="164"/>
-        <location filename="../suspensionframe.cpp" line="178"/>
+        <location filename="../suspensionframe.cpp" line="212"/>
+        <location filename="../suspensionframe.cpp" line="226"/>
         <source>No need to accelerate</source>
         <translation>无需进行加速</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="48"/>
+        <location filename="../suspensionframe.cpp" line="52"/>
         <source>Details</source>
         <translation>详细</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="70"/>
+        <location filename="../suspensionframe.cpp" line="119"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="145"/>
-        <location filename="../suspensionframe.cpp" line="157"/>
-        <location filename="../suspensionframe.cpp" line="171"/>
+        <location filename="../suspensionframe.cpp" line="193"/>
+        <location filename="../suspensionframe.cpp" line="205"/>
+        <location filename="../suspensionframe.cpp" line="219"/>
         <source>Detected the high usage of CPU</source>
         <translation>检查到CPU占用率过高</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="184"/>
+        <location filename="../suspensionframe.cpp" line="232"/>
         <source>Computer runs slowly</source>
         <translation>电脑运行缓慢</translation>
     </message>
     <message>
-        <location filename="../suspensionframe.cpp" line="146"/>
-        <location filename="../suspensionframe.cpp" line="158"/>
-        <location filename="../suspensionframe.cpp" line="172"/>
-        <location filename="../suspensionframe.cpp" line="185"/>
+        <location filename="../suspensionframe.cpp" line="194"/>
+        <location filename="../suspensionframe.cpp" line="206"/>
+        <location filename="../suspensionframe.cpp" line="220"/>
+        <location filename="../suspensionframe.cpp" line="233"/>
         <source>Using &apos;quick clean&apos; ?</source>
         <translation>使用一键加速？</translation>
     </message>
@@ -3915,7 +3915,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="355"/>
+        <location filename="../systemdispatcher.cpp" line="364"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
@@ -3924,17 +3924,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">图像文件  (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="355"/>
+        <location filename="../systemdispatcher.cpp" line="364"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation>图像文件  (*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="360"/>
+        <location filename="../systemdispatcher.cpp" line="369"/>
         <source>Select music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="360"/>
+        <location filename="../systemdispatcher.cpp" line="369"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
@@ -4646,17 +4646,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">请检查网络。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="42"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="40"/>
         <source>Weather</source>
         <translation>天气</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="43"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="41"/>
         <source>Wind</source>
         <translation>风力</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="44"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="42"/>
         <source>AQI</source>
         <translation>空气质量指数</translation>
     </message>
@@ -4665,23 +4665,22 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">当前温度（℃）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="46"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="44"/>
         <source>Temperature range</source>
         <translation>温度范围</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="47"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="45"/>
         <source>Humidity</source>
         <translation>湿度</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="53"/>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="264"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="176"/>
         <source>N/A</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="55"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="66"/>
         <source>AQI:</source>
         <translation>空气质量指数：</translation>
     </message>
@@ -4694,43 +4693,43 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">时发布</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="82"/>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="95"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="67"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="80"/>
         <source>Current temperature:</source>
         <translation>当前温度：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="83"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="68"/>
         <source>Temperature range:</source>
         <translation>温度范围：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="84"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="69"/>
         <source>Humidity:</source>
         <translation>湿度：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="94"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="79"/>
         <source>Wind:</source>
         <translation>风力：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="96"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="81"/>
         <source>Sunrise:</source>
         <translation>日出：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="97"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="82"/>
         <source>Sunset:</source>
         <translation>日落：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="148"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="117"/>
         <source>Changsha</source>
         <translation>长沙</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="158"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="127"/>
         <source>[Change]</source>
         <translation>[ 切换 ]</translation>
     </message>
@@ -4744,12 +4743,12 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="45"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="43"/>
         <source>Current temperature</source>
         <translation>当前温度（℃）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="73"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="63"/>
         <source> </source>
         <translation>发布</translation>
     </message>
@@ -4758,7 +4757,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">[更换城市]</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="169"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="138"/>
         <source>Release time</source>
         <translation>发布时间</translation>
     </message>
@@ -4767,7 +4766,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">预  报</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="197"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="159"/>
         <source>Configure</source>
         <translation>配  置</translation>
     </message>
@@ -4780,27 +4779,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">更新完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="270"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="182"/>
         <source>AQI:N/A</source>
         <translation>空气质量指数：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="276"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="188"/>
         <source>Temperature:N/A</source>
         <translation>温度：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="282"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="194"/>
         <source>Humidity:N/A</source>
         <translation>湿度：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="288"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="200"/>
         <source>Temperature range:N/A</source>
         <translation>温度范围：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="294"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="206"/>
         <source>Wind:N/A</source>
         <translation>风力：未知</translation>
     </message>
@@ -4957,9 +4956,8 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;天气配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="153"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="105"/>
@@ -4971,29 +4969,38 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="172"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;minutes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="243"/>
+        <location filename="../wizarddialog.ui" line="214"/>
         <source>Add City</source>
         <translation>添加城市</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="256"/>
+        <location filename="../wizarddialog.ui" line="227"/>
         <source>Delete City</source>
         <translation>删除城市</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="198"/>
+        <location filename="../wizarddialog.ui" line="169"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="185"/>
+        <location filename="../wizarddialog.ui" line="143"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle: 60 &lt;a name=&quot;w_98&quot;/&gt;minutes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期： 60 &lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../wizarddialog.ui" line="156"/>
         <source>Finish</source>
         <translation>完成</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../wizarddialog.ui" line="246"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperature unit: ℃&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温度单位： ℃&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../wizarddialog.ui" line="124"/>

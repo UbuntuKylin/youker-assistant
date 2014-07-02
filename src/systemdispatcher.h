@@ -22,6 +22,7 @@
 #include <QApplication>
 #include <QString>
 #include <QDeclarativeView>
+#include <QSound>
 #include "util.h"
 
 class SystemDispatcher : public QObject
@@ -32,6 +33,8 @@ public:
     ~SystemDispatcher();
     //退出systemdbus服务
     Q_INVOKABLE void exit_qt();
+    //听音频文件
+    Q_INVOKABLE void listen_music(QString path);
     //杀掉root用户的进程
     Q_INVOKABLE void kill_root_process_qt(QString pid);
     //得到SystemDbus的验证值，可以通过其判断该服务是否正在运行
