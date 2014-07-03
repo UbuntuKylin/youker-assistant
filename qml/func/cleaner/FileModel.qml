@@ -62,7 +62,6 @@ Rectangle {
                 filepage.resultFlag = true;//扫描内容存在
             }
             filepage.sub_num = largestfile_data.length;
-    //        systemdispatcher.clear_largestfile_args();
             var num = 0;
             for (var i=0; i< largestfile_data.length; i++) {
                 var splitlist = largestfile_data[i].split("<2_2>");
@@ -71,7 +70,6 @@ Rectangle {
                 }
                 else {
                     subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i, "checked": true});
-    //                systemdispatcher.set_largestfile_args(splitlist[1]);
                 }
             }
             filepage.sub_num -= num;
@@ -99,61 +97,6 @@ Rectangle {
         sessiondispatcher.scan_of_large_qt(filepage.directory, filepage.size);
     }
 
-    //获取数据
-//    function refresh_page() {
-//        filepage.sub_num=0;
-//        filepage.check_num=0
-//        var largestfile_data = sessiondispatcher.scan_of_large_qt(filepage.size, filepage.directory);
-//        if (largestfile_data.length === 0) {
-//            filepage.null_flag = true;
-//            filepage.deleget_arrow =0;
-//            if(statusImage.visible == true)
-//                statusImage.visible = false;
-//            filepage.resultFlag = false;//扫描内容不存在
-//        }
-//        else
-//        {
-//            filepage.null_flag = false;
-//            filepage.deleget_arrow =1;
-//            statusImage.visible = true;
-//        }
-//        filepage.sub_num = largestfile_data.length;
-////        systemdispatcher.clear_largestfile_args();
-//        subModel.clear();
-//        var num = 0;
-//        for (var i=0; i< largestfile_data.length; i++) {
-//            var splitlist = largestfile_data[i].split("<2_2>");
-//            if (splitlist[0] == "") {
-//                num++;
-//            }
-//            else {
-//                subModel.append({"itemTitle": splitlist[0], "desc": splitlist[1], "number": "", "index": i, "checked": true});
-////                systemdispatcher.set_largestfile_args(splitlist[1]);
-
-
-////                if(filepage.yesOrno == "true") {
-////                    console.log("is yes...........");
-////                    systemdispatcher.set_largestfile_args(splitlist[1]);
-////                }
-////                else {
-////                    console.log("is no...........");
-////                }
-//            }
-//        }
-//        filepage.sub_num -= num;
-//        filepage.lar_num = filepage.sub_num;
-//        filepage.check_num = filepage.sub_num;
-//        if(check_num != 0) {
-//            check_flag = true;
-//        }
-//        mainModel.clear();
-//        //清理路径为：   清理用户指定目录下的最大文件，节省磁盘空间。
-//        mainModel.append({"mstatus": filepage.check_flag ? "true": "false",
-//                          "itemTitle": qsTr("Cleanup path is:")  + filepage.directory,
-//                         "picture": "../../img/toolWidget/deb-min.png",
-//                         "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
-//    }
-
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
     {
@@ -174,12 +117,6 @@ Rectangle {
             }
         }
     }
-
-//    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
 
     //titlebar
     Row {
@@ -207,11 +144,6 @@ Rectangle {
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
-//            Text {
-//                text: filepage.scope_desc
-//                font.pixelSize: 12
-//                color: "#7a7a7a"
-//            }
         }
 
     }
@@ -285,21 +217,15 @@ Rectangle {
             text: qsTr("Begin cleanup")//开始清理
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
-//                if(filepage.check_flag) {
                 if(filepage.lar_num > 0) {
                     if(size_text.text == "" || size_text.text == 0)
                         //友情提示：        对不起，您没有设置扫描文件的大小或者设置值为 0，请重新输入文件大小！
                         sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You haven't set the file size or the value is 0, please input the file sizes !"));
                     else if (filepage.directory == "")
                     {
-//                        if(filepage.sub_num != 0 && filepage.null_flag == false) {
-//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
-//                        }
-//                        else {
                         //友情提示：        对不起，您没有选择扫描路径，请点击＂浏览＂按钮选择！
                         sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the scan path, please click the 'Browse' button to continue!"));
                         filepage.deleget_arrow =0;
-//                        }
                     }
                     else {
                         if(filepage.null_flag == true) {
@@ -320,9 +246,7 @@ Rectangle {
                                 sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"));
                             }
                             else {
-//                            console.log("yyyy", filelist);
                             systemdispatcher.clean_file_cruft_qt(filelist, "largestfile");
-//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_largestfile_args(), "largestfile");
                             }
                         }
                     }
@@ -352,10 +276,8 @@ Rectangle {
         anchors.top: titlebar.bottom
         anchors.topMargin: 30
         anchors.left:parent.left
-//        anchors.leftMargin: 27
         height: filepage.height -titlebar.height - 37
         width: parent.width -2
-//        width: parent.width - 27 -2
         Item {
             width: parent.width
             height: (filepage.sub_num + 1) * 30 + 30
@@ -370,9 +292,6 @@ Rectangle {
                     btn_flag: filepage.btnFlag
                     arrow_display: filepage.deleget_arrow
                     delegate_flag: false
-//                    main_check_value: filepage.yesOrno
-
-
                     //test 0410
                     onTransmitFileItemMainCheckBoxStatus: {
                         if(status) {
@@ -396,7 +315,6 @@ Rectangle {
                             subModel.setProperty(index, "checked", false);
                         }
                     }
-
 
                     onSubpressed: {
                         filepage.sub_num = hMark;

@@ -24,15 +24,13 @@ Rectangle {
 //    color: "transparent"
     color: "#e4f2fc"
     property int fontSize: 14
+
 //    Component.onCompleted: {
     function init_data() {
         systemdispatcher.get_networkcard_info_qt();//获取详细信息
         var netName = systemdispatcher.getHWSingleInfo("NetVendor", "networkcard");
         logo.source = InfoGroup.judgeName(netName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + netName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//        var pat = new RegExp('Intel');
-//        if(pat.test(msg)) {
-//            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-//        }
+
         modelText.text = systemdispatcher.getHWSingleInfo("NetProduct", "networkcard");
         vendorText.text = netName;
         driverText.text = systemdispatcher.getHWSingleInfo("NetDrive", "networkcard");

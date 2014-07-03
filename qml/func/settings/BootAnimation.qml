@@ -33,11 +33,6 @@ Rectangle {
 
     ListModel { id: mainModel }
 
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"//bg-bottom-tab
-//        anchors.fill: parent
-//    }
     Component.onCompleted: {
         systemdispatcher.plymouth_init_check_qt();
         var plymouth_list = systemdispatcher.get_existing_plymouth_list_qt();
@@ -85,7 +80,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -95,22 +89,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -169,7 +147,6 @@ Rectangle {
         }
 
         Common.Button {
-//            hoverimage: "button12-gray-long.png"
             picNormal: "../../img/icons/button12-gray-long.png"
             picHover: "../../img/icons/button12-gray-long-hover.png"
             picPressed: "../../img/icons/button12-gray-long-hover.png"
@@ -232,7 +209,6 @@ Rectangle {
             id:cdelegat
             Item{
                 id:wrapper
-//                width: 440; height: 30
                 width: 460; height: 30
                 Text{
                     id:listtext
@@ -245,11 +221,6 @@ Rectangle {
                     color: "#7a7a7a"
                     text:itemTitle
                 }
-//                Image {
-//                    id: btnImg
-//                    anchors.fill: parent
-//                    source: ""
-//                }
                 MouseArea{
                     anchors.fill:parent
                     hoverEnabled: true
@@ -269,7 +240,7 @@ Rectangle {
                     anchors{
                         verticalCenter: parent.verticalCenter
                         right: parent.right
-                        rightMargin: 20
+                        rightMargin: 35
                     }
                     opacity: wrapper.ListView.isCurrentItem? 1:0
                     Image {id:revoke;source: "../../img/icons/revoke.png"}
@@ -278,11 +249,23 @@ Rectangle {
                         anchors.fill: parent
                         source: ""
                     }
+                    Text {
+                        id: showText
+                        anchors {
+                            left: btnImg.right
+                            verticalCenter: parent.verticalCenter
+                        }
+                        visible: false
+                        text: qsTr("Delete")
+                        font.pixelSize: 10
+                        color: "#dd291c"
+                    }
                     MouseArea{
                         anchors.fill:parent
                         hoverEnabled: true
                         onEntered: {
                             btnImg.source = "../../img/icons/revoke_hover.png";
+                            showText.visible = true;
                         }
                         onPressed: {
                             btnImg.source = "../../img/icons/revoke_hover.png";
@@ -292,7 +275,8 @@ Rectangle {
                             btnImg.source = "";
                         }
                         onExited: {
-                            btnImg.source = ""
+                            btnImg.source = "";
+                            showText.visible = false;
                         }
                         enabled:wrapper.ListView.isCurrentItem? true:false
                         onClicked: {
@@ -349,7 +333,6 @@ Rectangle {
             bottom: parent.bottom
             bottomMargin: 30
         }
-//        hoverimage: "button12-gray.png"
         picNormal: "../../img/icons/button12-gray.png"
         picHover: "../../img/icons/button12-gray-hover.png"
         picPressed: "../../img/icons/button12-gray-hover.png"

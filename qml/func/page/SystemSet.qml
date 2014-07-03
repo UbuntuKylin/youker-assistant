@@ -67,7 +67,6 @@ Item {
                     Image {
                         id: personal
                         source: "../../img/icons/themeset.png"
-//                        anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     Column {
@@ -112,9 +111,7 @@ Item {
                             spacing: 18
                             Common.StyleButton {
                                 wordname: qsTr("ThemeSetting"); width: b1.width//主题设置
-//                                flag: "WidgetTheme"
                                 onClicked: {
-//                                    pageStack.push(widgetthemepage);
                                     pageStack.push(Qt.resolvedUrl("../settings/WidgetTheme.qml"));
                                 }
                             }//更改窗口主题
@@ -122,9 +119,7 @@ Item {
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter}
                             Common.StyleButton {
                                 wordname: qsTr("IconSetting"); width: b2.width//图标配置
-//                                flag: "Desktopicon"
                                 onClicked: {
-//                                    pageStack.push(desktopiconsetpage);
                                     pageStack.push(Qt.resolvedUrl("../settings/DesktopIcon.qml"));
                                 }
                             }//更改图标配置
@@ -132,9 +127,7 @@ Item {
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
                                 wordname: qsTr("MousePointer"); width: b3.width//鼠标指针
-//                                flag: "MousePointer"
                                 onClicked: {
-//                                    pageStack.push(mousepointerpage);
                                     pageStack.push(Qt.resolvedUrl("../settings/MousePointer.qml"));
                                 }
                             }//更改鼠标指针
@@ -142,9 +135,7 @@ Item {
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
                                 wordname: qsTr("SoundEffect"); width: b4.width//声音效果
-//                                flag: "SoundEffects"
                                 onClicked: {
-//                                    pageStack.push(soundeffectspage);
                                     pageStack.push(Qt.resolvedUrl("../settings/SoundEffects.qml"));
                                 }
                             }//更改声音效果
@@ -152,9 +143,7 @@ Item {
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
                                 wordname: qsTr("BootAnimation"); width: b5.width//开机动画
-//                                flag: "BootAnimation"
                                 onClicked: {
-//                                    pageStack.push(bootanimationpage);
                                     pageStack.push(Qt.resolvedUrl("../settings/BootAnimation.qml"));
                                 }
                             }//更改开机动画
@@ -168,7 +157,6 @@ Item {
                     Image {
                         id: unity
                         source: "../../img/icons/unity.png"
-//                        anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     Column {
@@ -204,14 +192,12 @@ Item {
                             Common.StyleButton {
                                 wordname: qsTr("Custom Launcher"); width: b6.width//自定义启动器
                                 onClicked: {
-//                                    pageStack.push(launcherthemepage);
                                     pageStack.push(Qt.resolvedUrl("../settings/LauncherTheme.qml"));
                                 }
                             }
                             Common.StyleButton {
                                 wordname: qsTr("Dash & Panel"); width: b9.width//搜索和面板
                                 onClicked: {
-//                                    pageStack.push(panelmanagerpage);
                                     pageStack.push(Qt.resolvedUrl("../settings/PanelManager.qml"));
                                 }
                             }
@@ -219,7 +205,6 @@ Item {
                             Common.StyleButton {
                                 wordname: qsTr("Window"); width: b7.width//窗口
                                 onClicked: {
-//                                    pageStack.push(windowmanagerpage);
                                     pageStack.push(Qt.resolvedUrl("../settings/WindowManager.qml"));
                                 }
                             }
@@ -233,7 +218,6 @@ Item {
                     Image {
                         id: fontimage
                         source: "../../img/icons/font.png"
-//                        anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     Column {
@@ -258,9 +242,7 @@ Item {
                             spacing: 18
                             Common.StyleButton {
                                 wordname: qsTr("DefaultFont"); width: b8.width//默认字体设置
-//                                flag: "DefaultFont"
                                 onClicked: {
-//                                    pageStack.push(defaultfontpage);
                                     pageStack.push(Qt.resolvedUrl("../settings/DefaultFont.qml"));
                                 }
                             }
@@ -274,7 +256,6 @@ Item {
                     Image {
                         id: sysimage
                         source: "../../img/icons/systemset.png"
-//                        anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     Column {
@@ -304,16 +285,13 @@ Item {
                             spacing: 18
                             Common.StyleButton {
                                 wordname: qsTr("Touchpad"); width: b10.width//触摸板设置
-//                                flag: "TouchpadSet"
                                 onClicked: {
-//                                    pageStack.push(touchpadsetpage);
                                     pageStack.push(Qt.resolvedUrl("../settings/TouchpadSet.qml"));
                                 }
                             }//更改触摸板设置
                             Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
                             Common.StyleButton {
                                 wordname: qsTr("Dead pixel test"); width: b11.width//坏点检测
-//                                flag: "CheckScreen"
                                 onClicked: {
                                     sessiondispatcher.showCheckscreenDialog();
                                 }
@@ -352,14 +330,12 @@ Item {
                             Common.StyleButton {
                                 wordname: qsTr("File manager"); width: b12.width//文件管理器
                                 onClicked: {
-//                                    pageStack.push(filemanagerpage);
                                     pageStack.push(Qt.resolvedUrl("../settings/FileManager.qml"));
                                 }
                             }
                         }
                     }
                 }
-
             }
             Item { id: foreground; anchors.fill: parent }
         }

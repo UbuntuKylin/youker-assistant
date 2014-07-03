@@ -108,10 +108,6 @@ Item {
                 Common.StyleButton {
                     id: resetBtn
                     visible: broswerDelegate.resetStatus//false
-//                    anchors {
-//                        left: parent.left
-//                        leftMargin: 580
-//                    }
                     anchors.verticalCenter: parent.verticalCenter
                     wordname: qsTr("Back")//返回
                     width: 40
@@ -123,10 +119,6 @@ Item {
                 Common.StyleButton {
                     id: rescanBtn
                     visible: broswerDelegate.resetStatus//false
-//                    anchors {
-//                        left: parent.left
-//                        leftMargin: 640
-//                    }
                     anchors.verticalCenter: parent.verticalCenter
                     wordname: qsTr("Rescan")//重新扫描
                     width: 40
@@ -144,10 +136,6 @@ Item {
                     fontsize: 12
                     width: 100; height: 28
                     text: broswerDelegate.actionTitle
-//                    anchors {
-//                        left: parent.left
-//                        leftMargin: 700
-//                    }
                     anchors.verticalCenter: parent.verticalCenter
                     onClicked: {
                         if(broswerDelegate.btn_flag == "cookies_scan") {

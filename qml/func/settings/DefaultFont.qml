@@ -36,11 +36,7 @@ Rectangle {
 
     property string actiontitle: qsTr("Default font settings")//默认字体设置
     property string actiontext: qsTr("According to personal preferences to set the system default font, click the  'Restore' button, can be restored to the state before the font settings. ")//根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
+
     ListModel { id: smoothchoices }
     ListModel { id: antialiasingchoices }
 
@@ -183,7 +179,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -193,22 +188,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -299,8 +278,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("font", "font-name");
                         fontBtn.text = sessiondispatcher.get_font_qt();
                     }
-//                    sessiondispatcher.set_default_theme_qt("defaultfont");
-//                    fontBtn.text = sessiondispatcher.get_font_qt();
                 }
             }
         }
@@ -352,8 +329,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("font", "font");
                         desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
                     }
-//                    sessiondispatcher.set_default_theme_qt("desktopfont");
-//                    desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
                 }
             }
         }
@@ -404,8 +379,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("font", "monospace-font-name");
                         monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
                     }
-//                    sessiondispatcher.set_default_theme_qt("monospacefont");
-//                    monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
                 }
             }
         }
@@ -456,8 +429,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("font", "document-font-name");
                         docufontBtn.text = sessiondispatcher.get_document_font_qt();
                     }
-//                    sessiondispatcher.set_default_theme_qt("documentfont");
-//                    docufontBtn.text = sessiondispatcher.get_document_font_qt();
                 }
             }
         }
@@ -508,8 +479,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("font", "titlebar-font");
                         titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
                     }
-//                    sessiondispatcher.set_default_theme_qt("titlebarfont");
-//                    titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
                 }
             }
         }
@@ -568,8 +537,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("font", "text-scaling-factor");
                         slider.value = sessiondispatcher.get_font_zoom_qt();
                     }
-//                    sessiondispatcher.set_default_theme_qt("globalfontscaling");
-//                    slider.value = sessiondispatcher.get_font_zoom_qt();
                 }
             }
 
@@ -622,8 +589,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("font", "hinting");
                         smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
                     }
-//                    sessiondispatcher.set_default_theme_qt("smoothstyle");
-//                    smoothcombo.selectedIndex = defaultfontpage.default_smooth_index;
                 }
             }
         }
@@ -675,8 +640,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("font", "antialiasing");
                         antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
                     }
-//                    sessiondispatcher.set_default_theme_qt("antialiasingstyle");
-//                    antialiasingcombo.selectedIndex = defaultfontpage.default_antialiasing_index;
                 }
             }
         }

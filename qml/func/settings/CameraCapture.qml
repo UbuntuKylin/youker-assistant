@@ -41,7 +41,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -51,22 +50,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -98,8 +81,6 @@ Rectangle {
         width: parent.width - 4
     }
 
-
-
     Column{
         spacing: 20
         anchors{
@@ -111,8 +92,6 @@ Rectangle {
             width: 600
             text: qsTr("Press enter the [Esc] button at the top left of the keyboard, it can take picture and close the camera, also photos saved in home directory of the current user.")//按下键盘左上方的 [Esc] 按键可以拍照并关闭摄像头，照片保存在当前用户主目录下。
             wrapMode: Text.WordWrap
-//            font.pixelSize: 14
-//            color: "#383838"
         }
 
         Row {

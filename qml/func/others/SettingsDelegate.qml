@@ -69,17 +69,8 @@ Rectangle {
             }
             else if (flag == "BootAnimation") {
                 pageStack.push(Qt.resolvedUrl("../settings/BootAnimation.qml"));
-//                pageStack.push(bootanimationpage);
-//                var component_boot = Qt.createComponent("./settings/BootAnimation.qml");
-//                if (component_boot.status == Component.Ready) {
-//                    pageStack.push(component_boot);
-//                }
             }
-//            else if(flag == "FcitxConfigtool") {
-//                pageStack.push(fcitxConfigtoolpage);
-//            }
             else if(flag == "ProcessManager") {
-//                pageStack.push(processmanagerpage);
                 pageStack.push(Qt.resolvedUrl("../settings/ProcessManager.qml"));
             }
             //kobe:选中项深色块移动

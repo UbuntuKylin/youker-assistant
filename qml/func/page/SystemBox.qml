@@ -35,7 +35,6 @@ Item {
             funcmodel.clear();//清空
             funcmodel.append({"icon": "../../img/icons/checkscreen.png", "name": qsTr("Dead pixel test"), "flag": "CheckScreen"});//坏点检测
             funcmodel.append({"icon": "../../img/icons/bootanimation.png", "name": qsTr("Boot Animation"), "flag": "BootAnimation"});//开机动画
-//            funcmodel.append({"icon": "../../img/icons/fcitx.png", "name": qsTr("Fcitx Configure"), "flag": "FcitxConfigtool"});//输入法配置
             funcmodel.append({"icon": "../../img/icons/processmanager.png", "name": qsTr("Task Manager"), "flag": "ProcessManager"});//任务管理器
         }
 

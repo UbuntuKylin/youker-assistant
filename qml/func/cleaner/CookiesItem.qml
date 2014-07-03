@@ -67,28 +67,10 @@ Item {
         return need_str;
     }
 
-//    BorderImage {
-//        id: background
-//        anchors {
-//            left: parent.left
-//            leftMargin: 20
-//        }
-////        border { top: 9; bottom: 36; left: 35; right: 35; }
-////        source: bgImage
-//        border {left: 35; right: 35; }
-//        source: (container.item_index%2 == 0) ? bgImage : bgImage2
-////        source: (container.item_index%2 == 0) ? "../../img/icons/green.png": "../../img/icons/blue.png"
-//        anchors.fill: parent
-//    }
-
     Rectangle {
         id: background
         anchors.fill: parent
         color: (container.item_index%2 == 0) ? "#d7ecfb" : "transparent"
-//        color: (container.item_index%2 == 0) ? "#d0eafb" : "#d7eefd"
-//         border.color: "black"
-//         border.width: 5
-//         radius: 10
      }
 
     Text {
@@ -154,15 +136,4 @@ Item {
             PropertyChanges { target: background; color: "#cae7fa" }
         }
     ]
-
-//    states: [
-//        State {
-//            name: 'pressed'; when: mouseArea.pressed
-//            PropertyChanges { target: background; source: bgImagePressed; border { left: 35; top: 35; right: 35; bottom: 10 } }
-//        },
-//        State {
-//            name: 'selected'
-//            PropertyChanges { target: background; source: bgImageSelected; border { left: 35; top: 35; right: 35; bottom: 10 } }
-//        }
-//    ]
 }

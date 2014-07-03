@@ -191,57 +191,6 @@ Rectangle {
         }
     }
 
-//    Component.onCompleted: {
-//        systemdispatcher.get_monitor_info_qt();//获取详细信息
-//        chipText.text = systemdispatcher.getHWSingleInfo("Mon_chip", "monitor");
-//        chipmodelText.text = systemdispatcher.getHWSingleInfo("Vga_product", "monitor");
-//        var cardVendor = systemdispatcher.getHWSingleInfo("Vga_vendor", "monitor");
-//        chipvendorText.text = cardVendor;
-//        driverText.text = systemdispatcher.getHWSingleInfo("Vga_Drive", "monitor");
-//        cardlogo.source = InfoGroup.judgeName(cardVendor.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cardVendor.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//        chipbusText.text = systemdispatcher.getHWSingleInfo("Vga_businfo", "monitor");
-//        var vendor = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
-//        if(vendor.length !== 0 ) {
-//            productLabel.visible = true;
-//            vendorLabel.visible = true;
-//            dateLabel.visible = true;
-//            sizeLabel.visible = true;
-//            inLabel.visible = true;
-//            maxmodeLabel.visible = true;
-//            gammaLabel.visible = true;
-//            outputLabel.visible = true;
-//            supportLabel.visible = true;
-//            monitortitlebar.visible = true;
-//            montitle.visible = true;
-//            monitorlogo.visible = true;
-//            var vendorName = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
-//            monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//            productText.text = systemdispatcher.getHWSingleInfo("Mon_product", "monitor");
-//            vendorText.text = vendorName;
-//            dateText.text = systemdispatcher.getHWSingleInfo("Mon_year", "monitor") + "/" + systemdispatcher.getHWSingleInfo("Mon_week", "monitor");
-//            sizeText.text = systemdispatcher.getHWSingleInfo("Mon_size", "monitor");
-//            inText.text = systemdispatcher.getHWSingleInfo("Mon_in", "monitor");
-//            maxmodeText.text = systemdispatcher.getHWSingleInfo("Mon_maxmode", "monitor");
-//            gammaText.text = systemdispatcher.getHWSingleInfo("Mon_gamma", "monitor");
-//            outputText.text = systemdispatcher.getHWSingleInfo("Mon_output", "monitor");
-//            supportText.text = systemdispatcher.getHWSingleInfo("Mon_support", "monitor");
-//        }
-//        else {
-//            productLabel.visible = false;
-//            vendorLabel.visible = false;
-//            dateLabel.visible = false;
-//            sizeLabel.visible = false;
-//            inLabel.visible = false;
-//            maxmodeLabel.visible = false;
-//            gammaLabel.visible = false;
-//            outputLabel.visible = false;
-//            supportLabel.visible = false;
-//            monitortitlebar.visible = false;
-//            montitle.visible = false;
-//            monitorlogo.visible = false;
-//        }
-//    }
-
     Component {
         id: monitorDelegate
         Row {
@@ -251,7 +200,6 @@ Rectangle {
                 font.pixelSize: 14
                 color: "#7a7a7a"
                 width: 150
-//                height: 20
             }
             Text {
                 id: slotText
@@ -260,7 +208,6 @@ Rectangle {
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
-//                height: 20
             }
         }
     }
@@ -328,15 +275,10 @@ Rectangle {
                                     right: parent.right
                                     top:parent.top
                                     topMargin: 40
-        //                            rightMargin: 30
                                 }
                             }
                         }
-//                        Common.Separator {
-//                            id: splitbar1
-//                            width: 680 - 4 - 30*2
-//                            visible: false
-//                        }
+
                         Common.Separator {
                             id: splitbar2
                             width: 680 - 4 - 30*2
@@ -362,7 +304,6 @@ Rectangle {
                                     right: parent.right
                                     top:parent.top
                                     topMargin: 40
-        //                            rightMargin: 30
                                 }
                             }
                         }
@@ -391,7 +332,6 @@ Rectangle {
                                     right: parent.right
                                     top:parent.top
                                     topMargin: 40
-        //                            rightMargin: 30
                                 }
                             }
                         }
@@ -420,90 +360,11 @@ Rectangle {
                                     right: parent.right
                                     top:parent.top
                                     topMargin: 40
-        //                            rightMargin: 30
                                 }
                             }
                         }
                     }
                 }//Item
-
-//                Row {
-//                    spacing: 10
-//                    Common.Label {
-//                        text: qsTr("Graphics Card Model: ")//显卡型号：
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                        width: 150
-//                    }
-//                    Text {
-//                        id: chipmodelText
-//                        width: 450
-//                        text: ""//systemdispatcher.getHWSingleInfo("Vga_product")
-//                        font.pixelSize: 14
-//                        wrapMode: Text.WordWrap
-//                        color: "#7a7a7a"
-//                    }
-//                }
-//                Row {
-//                    spacing: 10
-//                    Common.Label {
-//                        text: qsTr("Current Graphics Card: ")//当前显卡：
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                        width: 150
-//                    }
-//                    Text {
-//                        id: chipText
-//                        text: ""//systemdispatcher.getHWSingleInfo("Mon_chip")
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                    }
-//                }
-//                Row {
-//                    spacing: 10
-//                    Common.Label {
-//                        text: qsTr("Graphics Card Vendor: ")//显卡制造商：
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                        width: 150
-//                    }
-//                    Text {
-//                        id: chipvendorText
-//                        text: ""//systemdispatcher.getHWSingleInfo("Vga_vendor")
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                    }
-//                }
-//                Row {
-//                    spacing: 10
-//                    Common.Label {
-//                        text: qsTr("Graphics Driver: ")//显卡驱动：
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                        width: 150
-//                    }
-//                    Text {
-//                        id: driverText
-//                        text: ""//systemdispatcher.getHWSingleInfo("Vga_Drive")
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                    }
-//                }
-//                Row {
-//                    spacing: 10
-//                    Common.Label {
-//                        text: qsTr("Bus Address: ")//显卡总线地址：
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                        width: 150
-//                    }
-//                    Text {
-//                        id: chipbusText
-//                        text: ""//systemdispatcher.getHWSingleInfo("Vga_businfo")
-//                        font.pixelSize: 14
-//                        color: "#7a7a7a"
-//                    }
-//                }
             }
 
             Row {
@@ -682,19 +543,5 @@ Rectangle {
                 }
             }
         }
-
-        //logo
-//        Image {
-//            id: cardlogo
-//            source: ""
-//            opacity: 0.5
-//            anchors {
-//                top: parent.top
-//                topMargin: 75
-//                left: parent.left
-//                leftMargin: 570
-//            }
-//        }
-        //logo
     }
 }

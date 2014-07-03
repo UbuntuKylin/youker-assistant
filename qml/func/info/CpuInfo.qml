@@ -30,27 +30,6 @@ Rectangle {
         systemdispatcher.get_cpu_info_qt();//获取详细信息
         var cpuName = systemdispatcher.getHWSingleInfo("CpuVendor", "cpu");
         logo.source = InfoGroup.judgeName(cpuName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cpuName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//        var pat1 = new RegExp('Intel');
-//        var pat2 = new RegExp('AMD');
-//        var pat3 = new RegExp('Vimicro');
-//        if(pat1.test(msg)) {
-//            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-//        }
-//        else if(pat2.test(msg)) {
-//            logo.source =  "../../img/logo/Manufacturer/AMD.jpg";
-//        }
-//        else if(pat3.test(msg)) {
-//            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
-//        }
-//        if(msg.indexOf("Intel") > 0) {
-//            logo.source =  "../../img/logo/Manufacturer/INTEL.jpg";
-//        }
-//        else if(msg.indexOf("AMD") > 0 || msg.indexOf("Amd") > 0) {
-//            logo.source =  "../../img/logo/Manufacturer/AMD.jpg";
-//        }
-//        else if(msg.indexOf("VIMICRO") > 0 || msg.indexOf("Vimicro") > 0) {
-//            logo.source =  "../../img/logo/Manufacturer/VIMICRO.jpg";
-//        }
 
         cpuversionText.text = systemdispatcher.getHWSingleInfo("CpuVersion", "cpu");
         cpuverdorText.text = cpuName;

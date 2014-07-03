@@ -26,10 +26,6 @@ Rectangle {
     height: 82
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
-//    function iconClicked() {
-//        scaleMe.state = "Details";
-//        settigsDetails.setTitle = flag;
-//    }
 
     Column {
         anchors.fill: parent
@@ -70,25 +66,13 @@ Rectangle {
                 sessiondispatcher.showCheckscreenDialog();
             }
             else if (flag == "Desktopicon") {
-//                pageStack.push(desktopiconsetpage);
                 pageStack.push(Qt.resolvedUrl("../settings/DesktopIcon.qml"));
             }
             else if (flag == "BootAnimation") {
                 pageStack.push(Qt.resolvedUrl("../settings/BootAnimation.qml"));
-//                var component_boot = Qt.createComponent("../settings/BootAnimation.qml");
-//                if (component_boot.status == Component.Ready) {
-//                    pageStack.push(component_boot);
-//                }
             }
-//            else if (flag == "SoundEffects") {
-//                var component_sound = Qt.createComponent("../settings/SoundEffects.qml");
-//                if (component_sound.status == Component.Ready) {
-//                    pageStack.push(component_sound);
-//                }
-//            }
             else if (flag == "CameraCapture") {
                 if (sessiondispatcher.judge_camera_qt()) {
-//                    pageStack.push(capturepage);
                     pageStack.push(Qt.resolvedUrl("../settings/CameraCapture.qml"));
                 }
                 else {
@@ -96,11 +80,9 @@ Rectangle {
                 }
             }
             else if (flag == "MousePointer") {
-//                pageStack.push(mousepointerpage);
                 pageStack.push(Qt.resolvedUrl("../settings/MousePointer.qml"));
             }
             else if (flag == "TouchpadSet") {
-//                pageStack.push(touchpadsetpage);
                 pageStack.push(Qt.resolvedUrl("../settings/TouchpadSet.qml"));
             }
             //kobe:选中项深色块移动

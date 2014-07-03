@@ -24,18 +24,12 @@ Rectangle {
     color: "#e4f2fc"
 
     property int cursor_size: 24
-//    property int current_index//当前主题的索引
     property int default_index//系统默认主题的索引
     property string actiontitle: qsTr("Mouse Settings")//鼠标设置
     property string actiontext: qsTr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm. Also, theme change need to restart system.")//更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。
 
     ListModel { id: choices }
 
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
     Component.onCompleted: {
         mousepointerpage.cursor_size = sessiondispatcher.get_cursor_size_qt();
 
@@ -69,7 +63,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -79,22 +72,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -170,7 +147,6 @@ Rectangle {
             }
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -187,10 +163,6 @@ Rectangle {
                         systemdispatcher.set_cursor_theme_with_root_qt(default_theme);
                         cursorcombo.selectedIndex = mousepointerpage.default_index;
                     }
-
-//                    sessiondispatcher.set_cursor_theme_qt("DMZ-White");
-//                    systemdispatcher.set_cursor_theme_with_root_qt("DMZ-White");
-//                    cursorcombo.selectedIndex = mousepointerpage.default_index;
                 }
             }
         }
@@ -253,7 +225,6 @@ Rectangle {
             }
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -279,14 +250,6 @@ Rectangle {
                             bigstyle.checked = true;
                         }
                     }
-//                    sessiondispatcher.set_default_theme_qt("cursorsize");
-//                    var default_value = sessiondispatcher.get_cursor_size_qt();
-//                    if(default_value == 24) {
-//                        smallstyle.checked = true;
-//                    }
-//                    else if(default_type == 48) {
-//                        bigstyle.checked = true;
-//                    }
                 }
             }
         }

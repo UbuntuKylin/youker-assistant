@@ -13,7 +13,6 @@ INSTALLS += inst1 \
     target
 
 include(../qtsingleapplication/src/qtsingleapplication.pri)
-#LIBS += -lfcitx-qt -lfcitx-config -lfcitx-utils
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH =
@@ -37,7 +36,6 @@ HEADERS += homepage.h \
     sessiondispatcher.h \
     modaldialog.h \
     warningdialog.h \
-#    messagedialog.h \
     qmlaudio.h \
     qrangemodel.h \
     qrangemodel_p.h \
@@ -48,16 +46,10 @@ HEADERS += homepage.h \
     qtoplevelwindow.h \
     qcursorarea.h \
     tray.h \
-#    fcitxcfgwizard.h \
-    qtkeytrans.h \
-    qtkeytransdata.h \
-#    fcitxwarndialog.h \
     kthread.h \
     suspensionframe.h \
     alertdialog.h \
     toolkits.h \
-#    skinswidget.h \
-#    skingrid.h \
     locationdialog.h \
     wizarddialog.h \
     changecitydialog.h \
@@ -87,7 +79,6 @@ SOURCES += main.cpp \
     sessiondispatcher.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
-#    messagedialog.cpp \
     qmlaudio.cpp \
     qrangemodel.cpp \
     qstyleitem.cpp \
@@ -97,15 +88,10 @@ SOURCES += main.cpp \
     qtoplevelwindow.cpp \
     qcursorarea.cpp \
     tray.cpp \
-#    fcitxcfgwizard.cpp \
-    qtkeytrans.cpp \
-#    fcitxwarndialog.cpp \
     kthread.cpp \
     suspensionframe.cpp \
     alertdialog.cpp \
     toolkits.cpp \
-#    skinswidget.cpp \
-#    skingrid.cpp \
     locationdialog.cpp \
     wizarddialog.cpp \
     changecitydialog.cpp \
@@ -123,9 +109,7 @@ FORMS += \
     logindialog.ui \
     modaldialog.ui \
     warningdialog.ui \
-#    messagedialog.ui \
     tray.ui \
-#    fcitxwarndialog.ui \
     suspensionframe.ui \
     alertdialog.ui \
     locationdialog.ui \

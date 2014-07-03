@@ -19,7 +19,6 @@ import QtQuick 1.1
 import ToolkitsType 0.1
 import SessionType 0.1
 import SystemType 0.1
-//import FcitxCfgWizard 0.1
 import ProcessType 0.1
 import DeviceType 0.1
 import "./func/common" as Common
@@ -33,12 +32,10 @@ Rectangle {
     objectName: "main"
     radius: 4
     opacity: 1.0
-//    property color borderColor: "lightblue"
     property string globalFlag: "safepage"
 
     SessionDispatcher { id: sessiondispatcher }
     SystemDispatcher { id: systemdispatcher }
-//    FcitxCfgWizard { id: fcitxcfgwizard }
     Toolkits{ id: toolkits }
     ProcessManager { id: processmanager }
     DeviceManager { id: devicemanager }
@@ -65,7 +62,6 @@ Rectangle {
             }
         }
     }
-
 
     Common.PageStack {
         id: pageStack
@@ -97,96 +93,5 @@ Rectangle {
             visible: false
             HomeView.SystemBox {}
         }
-
-            //ProcessManager page
-//            Common.Page {
-//                id: processmanagerpage
-//                visible: false
-//                HomeView.ProcessManager {}
-//            }
-            //WeatherForecast-page
-//            Common.Page {
-//                id:weatherpage
-//                visible: false
-//                HomeView.WeatherForecast {}
-//            }
-
-            //systemset-pages
-//            Common.Page {
-//                id: capturepage
-//                visible: false
-//                SysSettings.CameraCapture {}
-//            }
-//            Common.Page {
-//                id: widgetthemepage
-//                visible: false
-//                SysSettings.WidgetTheme {}
-//            }
-//            Common.Page {
-//                id: desktopiconsetpage
-//                visible: false
-//                SysSettings.DesktopIcon {}
-//            }
-//            Common.Page {
-//                id: mousepointerpage
-//                visible: false
-//                SysSettings.MousePointer {}
-//            }
-
-//            Common.Page {
-//                id: soundeffectspage
-//                visible: false
-//                SysSettings.SoundEffects {}
-//            }
-//            Common.Page {
-//                id: bootanimationpage
-//                visible: false
-//                SysSettings.BootAnimation {}
-//            }
-//            Common.Page {
-//                id: launcherthemepage
-//                visible: false
-//                SysSettings.LauncherTheme {}
-//            }
-//            Common.Page {
-//                id: panelmanagerpage
-//                visible: false
-//                SysSettings.PanelManager {}
-//            }
-//            Common.Page {
-//                id: windowmanagerpage
-//                visible: false
-//                SysSettings.WindowManager {}
-//            }
-//            Common.Page {
-//                id: defaultfontpage
-//                visible: false
-//                SysSettings.DefaultFont {}
-//            }
-//            Common.Page {
-//                id: touchpadsetpage
-//                visible: false
-//                SysSettings.TouchpadSet {}
-//            }
-//            Common.Page {
-//                id: filemanagerpage
-//                visible: false
-//                SysSettings.FileManager {}
-//            }
-//            Common.Page {
-//                id: fcitxConfigtoolpage
-//                visible: false
-//                SysSettings.FcitxConfigtool{}
-//            }
-//            Common.Page {
-//                id: fcitxConfigtoolFontpage
-//                visible: false
-//                SysSettings.FcitxConfigtoolFont{}
-//            }
-//            Common.Page {
-//                id: fcitxConfigtoolKeypage
-//                visible: false
-//                SysSettings.FcitxConfigtoolKey{}
-//            }
     }
 }

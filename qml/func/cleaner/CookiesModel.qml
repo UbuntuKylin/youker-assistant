@@ -139,7 +139,6 @@ Rectangle {
                         chromiummainModel.append({
                                          "itemTitle": qsTr("Cleanup the Cookies saving in Chromium"),
                                          "picture": "../../img/toolWidget/chromium.png"})
-//                                       "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                     }
                     else {
                         cookiespage.chromiumResultFlag = false;//扫描的实际有效内容不存在
@@ -200,12 +199,10 @@ Rectangle {
         firefoxmainModel.append({
                          "itemTitle": qsTr("Cleanup the Cookies saving in Firefox"),
                          "picture": "../../img/toolWidget/firefox.png"})
-//                         "detailstr": qsTr("Clean up automatically saved logon information by Firefox browser(Cookies)")})
         //清理 Chromium 保存的 Cookies             清理 Chromium 浏览器自动保存的登录信息 (Cookies)
         chromiummainModel.append({
                          "itemTitle": qsTr("Cleanup the Cookies saving in Chromium"),
                          "picture": "../../img/toolWidget/chromium.png"})
-//                         "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
     }
 
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
@@ -269,7 +266,6 @@ Rectangle {
                     chromiummainModel.append({
                                      "itemTitle": qsTr("Cleanup the Cookies saving in Chromium"),
                                      "picture": "../../img/toolWidget/chromium.png"})
-//                                     "detailstr": qsTr("Clean up automatically saved logon information by Chromium browser(Cookies)")})
                     cookiespage.chromium_expanded = false;//伸缩箭头不扩展
                     cookiespage.chromium_arrow_show = 0;//伸缩箭头不显示
                     cookiespage.chromium_showNum = false;
@@ -288,12 +284,6 @@ Rectangle {
             }
         }
     }
-
-//    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
 
     //titlebar
     Row {
@@ -406,7 +396,6 @@ Rectangle {
 //                                    cookiespage.getDataOfFirefox();
                                 }
                                 else if(status == "refresh") {//清理完某个子项后自动刷新列表
-                                    console.log("---*****2222------");
                                     firefoxsubModel.clear();
                                     cookiespage.firefoxNum = 0;
                                     cookiespage.firefox_btn_flag = "cookies_scan";//1206
@@ -419,24 +408,19 @@ Rectangle {
                                     cookiespage.firefox_showNum = false;//隐藏扫描的数目
                                     cookiespage.flag = true;
                                     sessiondispatcher.cookies_scan_function_qt("firefox");
-//                                    cookiespage.getDataOfFirefox();
                                 }
                                 else {
                                     cookiespage.firefox_btn_flag = status;
                                     if (cookiespage.firefox_btn_flag == "cookies_scan") {
-//                                        console.log("scan---f......");
                                         //开始扫描时获取cookies
                                         cookiespage.firefoxNum = 0;
                                         cookiespage.flag = false;
                                         sessiondispatcher.cookies_scan_function_qt("firefox");
-//                                        cookiespage.getDataOfFirefox();
                                     }
                                     else if (cookiespage.firefox_btn_flag == "cookies_work") {
-//                                        if(cookiespage.firefox_check_flag) {
-                                            console.log("clean---f......");
-                                            //开始清理cookies
-                                            systemdispatcher.set_user_homedir_qt();
-                                            systemdispatcher.cookies_clean_records_function_qt("firefox");
+                                        //开始清理cookies
+                                        systemdispatcher.set_user_homedir_qt();
+                                        systemdispatcher.cookies_clean_records_function_qt("firefox");
                                     }
                                 }
                             }
@@ -524,7 +508,6 @@ Rectangle {
                                     cookiespage.chromium_showNum = false;//隐藏扫描的数目
                                     cookiespage.flag = false;
                                     sessiondispatcher.cookies_scan_function_qt("chromium");
-//                                    cookiespage.getDataOfChromium();
                                 }
                                 else if(status == "refresh") {//清理完某个子项后自动刷新列表
                                     chromiumsubModel.clear();
@@ -539,25 +522,19 @@ Rectangle {
                                     cookiespage.chromium_showNum = false;//隐藏扫描的数目
                                     cookiespage.flag = true;
                                     sessiondispatcher.cookies_scan_function_qt("chromium");
-//                                    cookiespage.getDataOfChromium();
                                 }
                                 else {
                                     cookiespage.chromium_btn_flag = status;
                                     if (cookiespage.chromium_btn_flag == "cookies_scanc") {
-//                                        console.log("scan---c......");
                                         //开始扫描时获取cookies
                                         cookiespage.flag = false;
                                         cookiespage.chromiumNum = 0;
                                         sessiondispatcher.cookies_scan_function_qt("chromium");
-//                                        cookiespage.getDataOfChromium();
                                     }
                                     else if (cookiespage.chromium_btn_flag == "cookies_workc") {
-//                                        if(cookiespage.chromium_check_flag)
-//                                        {
-                                            console.log("clean---c......");
-                                            //开始清理cookies
-                                            systemdispatcher.set_user_homedir_qt();
-                                            systemdispatcher.cookies_clean_records_function_qt("chromium");
+                                        //开始清理cookies
+                                        systemdispatcher.set_user_homedir_qt();
+                                        systemdispatcher.cookies_clean_records_function_qt("chromium");
                                     }
                                 }
                             }

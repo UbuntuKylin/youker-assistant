@@ -51,32 +51,6 @@ Rectangle {
         else {
             soundswitcher.switchedOn = false;
         }
-//        var soundlist = systemdispatcher.get_sound_themes_qt();
-//        var current_sound = sessiondispatcher.get_sound_theme_qt();
-//        var default_theme = sessiondispatcher.get_default_sound_string_qt("soundtheme");
-//        choices.clear();
-//        if(current_sound == default_theme) {
-//            for(var i=0; i < soundlist.length; i++) {
-//                choices.append({"themetext": soundlist[i]});
-//                if (soundlist[i] == current_sound) {
-//                    soundeffectspage.current_index = i;
-//                    soundeffectspage.default_index = i;
-//                }
-//            }
-//        }
-//        else {
-//            for(var j=0; j < soundlist.length; j++) {
-//                choices.append({"themetext": soundlist[j]});
-//                if (soundlist[j] == current_sound) {
-//                    soundeffectspage.current_index = j;
-//                }
-//                else if (soundlist[j] == default_theme) {
-//                    soundeffectspage.default_index = j;
-//                }
-//            }
-//        }
-//        iconcombo.selectedIndex = soundeffectspage.current_index;
-
 
         var index = 0;
         var soundlist = systemdispatcher.get_sound_themes_qt();
@@ -107,11 +81,6 @@ Rectangle {
             }
         }
 
-
-
-
-
-
         musicmodel.clear();
         var musiclist=systemdispatcher.get_sounds_qt();
         musiclist_num = musiclist.length;
@@ -126,11 +95,6 @@ Rectangle {
         }
     }
 
-//    Image {     //背景图片
-//        id: background
-//        anchors.fill: parent
-//        source: "../../img/skin/bg-middle.png"
-//    }
 
     QmlAudio{ id: song }
 
@@ -145,7 +109,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -155,22 +118,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -257,22 +204,6 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
-
-//            Common.Button {
-////                hoverimage: "blue.png"
-//                picNormal: "../../img/icons/button12-blue.png"
-//                picHover: "../../img/icons/button12-blue-hover.png"
-//                picPressed: "../../img/icons/button12-blue-hover.png"
-//                fontcolor:"#ffffff"
-//                fontsize: 12
-//                width: 100; height: 28
-//                text: qsTr("Restore")//恢复默认
-//                onClicked: {
-//                    sessiondispatcher.set_default_sound_qt("soundtheme");
-//                    var defaulttheme = sessiondispatcher.get_sound_theme_qt();
-//                    iconcombo.selectedIndex = soundeffectspage.default_index;
-//                }
-//            }
         }
 
         Row {
@@ -432,8 +363,6 @@ Rectangle {
                                         song.stop();
                                         song.play();
                                     }
-
-
 //                                    systemdispatcher.listen_music(musicname);
                                 }
                             }

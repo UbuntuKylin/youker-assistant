@@ -131,14 +131,6 @@ Item {
                         text: qsTr("No content")//无内容
                     }
                 }
-//                Text {
-//                    text: detailstr
-//                    width: 700
-//                    wrapMode: Text.WordWrap
-//                    font.family: "URW Bookman L"
-//                    font.pointSize: 9
-//                    color: "gray"
-//                }
             }
         }
 

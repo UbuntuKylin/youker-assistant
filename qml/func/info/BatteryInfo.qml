@@ -105,24 +105,6 @@ Rectangle {
             energy_full_text.text = qsTr("Failed to get data");
             energy_now_text.text = qsTr("Failed to get data");
         }
-
-//        #设备：battery_BAT0
-        //#=45N1023      型号:45N1023
-        //#=SANYO        发行商:SANYO
-        //#=15403       序列号:15403
-        //#=Li-ion      技术:Li-ion
-        //#=12824000      电压:12824000     12.8V
-        //#=62160000   能量（设计）:62160000   62.2Wh
-        //#=47700000      满时能量:47700000   47.7Wh
-        //#=47660000     能量:47660000   47.6Wh
-        //类型：Battery    笔记本电池
-        //#POWER_SUPPLY_NAME=BAT0
-        //#POWER_SUPPLY_STATUS=Unknown
-        //#POWER_SUPPLY_PRESENT=1
-        //#POWER_SUPPLY_CYCLE_COUNT=0
-        //#POWER_SUPPLY_VOLTAGE_MIN_DESIGN=11100000
-        //#POWER_SUPPLY_POWER_NOW=0
-        //#POWER_SUPPLY_CAPACITY=99
     }
 
     Connections

@@ -41,7 +41,7 @@ public:
     //监控球、QML、关于、退出程序四个托盘菜单
     QAction *actionShow, *actionQml, *actionAbout, *actionQuit;
 
-    virtual QSize sizeHint()const;
+    virtual QSize sizeHint() const;
 private:
     QPoint dragPos;
     SuspensionFrame *frame;
@@ -93,7 +93,6 @@ signals:
     //将小监控球实时更新的数据同步到大监控球
     void sysc_data(QString upspeed, QString downspeed, QString ratio, int used_memory, QString free_memory, QString cpu_ratio);
 //    void ready_to_write_user_info_when_exit();
-
 };
 
 #endif

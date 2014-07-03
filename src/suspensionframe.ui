@@ -287,7 +287,7 @@
    <property name="geometry">
     <rect>
      <x>44</x>
-     <y>204</y>
+     <y>211</y>
      <width>171</width>
      <height>21</height>
     </rect>
@@ -305,7 +305,7 @@
     <string notr="true">font: 10pt &quot;文泉驿微米黑&quot;;</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory Utilization:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory usage condition:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <zorder>descBtn</zorder>

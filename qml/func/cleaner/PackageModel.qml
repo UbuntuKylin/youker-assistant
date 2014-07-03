@@ -161,17 +161,14 @@ Item {
                 if(flag == "unneed") {
                     packagesubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.packageNum, "checked": true});
                     root.packageNum += 1;
-//                    systemdispatcher.set_package_args(pkgName);
                 }
                 else if(flag == "oldkernel") {
                     kernelsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.kernelNum, "checked": true});
                     root.kernelNum += 1;
-//                    systemdispatcher.set_package_args(pkgName);
                 }
                 else if(flag == "configfile") {
                     configsubModel.append({"itemTitle": pkgName, "desc": description, "number": sizeValue, "index": root.configNum, "checked": true});
                     root.configNum += 1;
-//                    systemdispatcher.set_package_args(pkgName);
                 }
             }
             onTellQMLPackageOver: {
@@ -324,7 +321,6 @@ Item {
                             configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup software configfile"),
                                              "picture": "../../img/toolWidget/configfile.png"})
-//                            systemdispatcher.clear_package_args();
                             packagesubModel.clear();//内容清空
                             kernelsubModel.clear();//内容清空
                             configsubModel.clear();//内容清空
@@ -341,7 +337,6 @@ Item {
                                 packagemainModel.append({"mstatus": root.package_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall unnecessary procedures"),
                                                  "picture": "../../img/toolWidget/deb-min.png"})
-//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -357,7 +352,6 @@ Item {
                                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
                                                  "picture": "../../img/toolWidget/kernel.png"})
-//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -373,7 +367,6 @@ Item {
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
                                                  "picture": "../../img/toolWidget/configfile.png"})
-//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -394,7 +387,6 @@ Item {
                                 kernelmainModel.append({"mstatus": root.kernel_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Uninstall old kernel packages"),
                                                  "picture": "../../img/toolWidget/kernel.png"})
-//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -415,7 +407,6 @@ Item {
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
                                                  "picture": "../../img/toolWidget/configfile.png"})
-//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -436,7 +427,6 @@ Item {
                                 configmainModel.append({"mstatus": root.config_maincheck ? "true": "false",
                                                  "itemTitle": qsTr("Cleanup software configfile"),
                                                  "picture": "../../img/toolWidget/configfile.png"})
-//                                systemdispatcher.clear_package_args();
                                 packagesubModel.clear();//内容清空
                                 kernelsubModel.clear();//内容清空
                                 configsubModel.clear();//内容清空
@@ -521,7 +511,6 @@ Item {
                         if(root.config_maincheck == false) {
                             root.config_maincheck = true;
                         }
-//                        systemdispatcher.clear_package_args();
                         root.package_showNum = false;
                         root.kernel_showNum = false;
                         root.config_showNum = false;
@@ -657,14 +646,9 @@ Item {
                                         packagelist.push(configsubModel.get(k).itemTitle);
                                     }
                                 }
-//                                console.log("hhhhh", packagelist);
-
-
                                 //开始清理时，禁用按钮，等到清理完成后解禁
                                 actionBtn.enabled = false;
-//                                console.log(systemdispatcher.get_package_args());
                                 systemdispatcher.clean_package_cruft_qt(packagelist, "package");
-//                                systemdispatcher.clean_package_cruft_qt(systemdispatcher.get_package_args(), "package");
                             }
                         }
                     }
@@ -697,7 +681,6 @@ Item {
             anchors.top: titlebar.bottom
             anchors.topMargin: 30
             anchors.left:parent.left
-//            anchors.leftMargin: 27
             height: root.height - titlebar.height - 47
             width: parent.width -2//parent.width - 27 -2
             Item {

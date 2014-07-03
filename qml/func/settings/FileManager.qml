@@ -29,11 +29,6 @@ Rectangle {
     property bool first_icon_size: false
     property bool first_cache_time: false
     property bool first_cache_size: false
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
 
     //使用云配置后，控件状态根据配置发生相应的变化
     Connections
@@ -125,7 +120,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -135,22 +129,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -229,7 +207,6 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -247,14 +224,6 @@ Rectangle {
                             pathbarswitcher.switchedOn = false;
                         }
                     }
-
-//                    sessiondispatcher.set_default_filemanager_qt("pathbar");
-//                    if (sessiondispatcher.get_location_replace_pathbar_qt()) {
-//                        pathbarswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        pathbarswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -298,7 +267,6 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -316,13 +284,6 @@ Rectangle {
                             mediaswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_filemanager_qt("media");
-//                    if (sessiondispatcher.get_auto_mount_media_qt()) {
-//                        mediaswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        mediaswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -366,7 +327,6 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -384,13 +344,6 @@ Rectangle {
                             folderswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_filemanager_qt("folder");
-//                    if (sessiondispatcher.get_auto_open_folder_qt()) {
-//                        folderswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        folderswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -434,7 +387,6 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -452,13 +404,6 @@ Rectangle {
                             programsswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_filemanager_qt("programs");
-//                    if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
-//                        programsswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        programsswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -507,7 +452,6 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -520,8 +464,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("file", "thumbnail-size");//缩略图图标尺寸（像素）
                         iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
                     }
-//                    sessiondispatcher.set_default_filemanager_qt("iconsize");
-//                    iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
                 }
             }
         }
@@ -570,7 +512,6 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -583,8 +524,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("file", "maximum-age");//缩略图缓存时间（天数）
                         cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
                     }
-//                    sessiondispatcher.set_default_filemanager_qt("cachetime");
-//                    cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
                 }
             }
         }
@@ -633,7 +572,6 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -646,8 +584,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("file", "maximum-size");//最大缩略图缓存尺寸（MB）
                         maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
                     }
-//                    sessiondispatcher.set_default_filemanager_qt("maxsize");
-//                    maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
                 }
             }
         }

@@ -57,26 +57,10 @@ Item {
         return need_str;
     }
 
-//    BorderImage {
-//        id: background
-//        anchors {
-//            left: parent.left
-//            leftMargin: 20
-//        }
-////        border { top: 9; bottom: 36; left: 35; right: 35; }
-////        source: bgImage
-//        border {left: 35; right: 35; }
-//        source: (container.item_index%2 == 0) ? bgImage : bgImage2
-//        anchors.fill: parent
-//    }
     Rectangle {
         id: background
         anchors.fill: parent
         color: (container.item_index%2 == 0) ? "#d7ecfb" : "transparent"
-//        color: (container.item_index%2 == 0) ? "#d0eafb" : "#d7eefd"
-//         border.color: "black"
-//         border.width: 5
-//         radius: 10
      }
     Common.CheckBox {
         id: checkbox
@@ -93,98 +77,6 @@ Item {
         onCheckedChanged: {
             //单个checkbox状态改变时，先将状态通过信号change_num()传递给BrowserCookies.qml
             container.change_num(checkbox.checked, container.browserFlag);
-            //for apt or soft
-//            if (checkbox.checked) {
-//                if (btn_flag == "apt_work") {
-//                    var aptlist = systemdispatcher.get_apt_args();
-//                    var word_flag = "false";
-//                    for (var i=0; i<aptlist.length; i++) {
-//                        if (aptlist[i] == container.text) {
-//                            word_flag = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag == "false") {
-//                        systemdispatcher.set_apt_args(container.text);
-//                    }
-//                }
-//                else if (btn_flag == "software_work") {
-//                    var softwarelist = systemdispatcher.get_software_args();
-//                    var word_flag1 = "false";
-//                    for (var j=0; j<softwarelist.length; j++) {
-//                        if (softwarelist[j] == container.text) {
-//                            word_flag1 = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag1 == "false") {
-//                        systemdispatcher.set_software_args(container.text);
-//                    }
-//                }
-//                else if (btn_flag == "package_work") {
-//                    var mylist = systemdispatcher.get_package_args();
-//                    var word_flag3 = "false";
-//                    for (var q=0; q<mylist.length; q++) {
-//                        if (mylist[q] == container.text) {
-//                            word_flag3 = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag3 == "false") {
-//                        systemdispatcher.set_package_args(container.text);
-//                    }
-//                }
-
-//                else if (btn_flag == "largestfile_work") {
-//                    var filelist = systemdispatcher.get_largestfile_args();
-//                    var word_flag4 = "false";
-//                    for (var t=0; t<filelist.length; t++) {
-//                        if (filelist[t] == container.descript) {
-//                            word_flag4 = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag4 == "false") {
-//                        systemdispatcher.set_largestfile_args(container.descript);
-//                    }
-//                }
-
-//                else if (btn_flag == "kernel_work") {
-//                    var kernellist = systemdispatcher.get_kernel_args();
-//                    var word_flag5 = "false";
-//                    for (var y=0; y<kernellist.length; y++) {
-//                        if (kernellist[y] == container.text) {
-//                            word_flag5 = "true";
-//                            break;
-//                        }
-//                    }
-//                    if (word_flag5 == "false") {
-//                        systemdispatcher.set_kernel_args(container.text);
-//                    }
-//                }
-//            }
-//            else if (!checkbox.checked) {
-//                if (btn_flag == "apt_work") {
-//                    systemdispatcher.del_apt_args(container.text);
-//                }
-//                else if (btn_flag == "software_work") {
-//                    systemdispatcher.del_software_args(container.text);
-//                }
-////               else if (btn_flag == "cookies_work") {
-////                    systemdispatcher.del_cookies_args(container.text);
-////                }
-//                else if (btn_flag == "package_work") {
-//                    systemdispatcher.del_package_args(container.text);
-//                }
-//                else if (btn_flag == "kernel_work") {
-//                    systemdispatcher.del_kernel_args(container.text);
-//                }
-//                else if (btn_flag == "largestfile_work") {
-//                    systemdispatcher.del_largestfile_args(container.descript);
-//                }
-
-//            }
-
         }
         visible: itemText.text=="" ? false : true
     }
@@ -292,15 +184,4 @@ Item {
             PropertyChanges { target: background; color: "#cae7fa" }
         }
     ]
-
-//    states: [
-//        State {
-//            name: 'pressed'; when: mouseArea.pressed
-//            PropertyChanges { target: background; source: bgImagePressed; border { left: 35; top: 35; right: 35; bottom: 10 } }
-//        },
-//        State {
-//            name: 'selected'
-//            PropertyChanges { target: background; source: bgImageSelected; border { left: 35; top: 35; right: 35; bottom: 10 } }
-//        }
-//    ]
 }

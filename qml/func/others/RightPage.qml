@@ -62,7 +62,6 @@ Rectangle {
         clearModel.append({"icon": "../../img/icons/checkscreen.png", "name": qsTr("DeadpixelTest"), "flag": "CheckScreen"});//坏点检测
         clearModel.append({"icon": "../../img/icons/iconbeauty.png", "name": qsTr("DesktopIcon"), "flag": "Desktopicon"});//桌面图标
         clearModel.append({"icon": "../../img/icons/bootanimation.png", "name": qsTr("BootAnimation"), "flag": "BootAnimation"});//开机动画
-//        clearModel.append({"icon": "../../img/icons/systemsound.png", "name": qsTr("SysSounds"), "flag": "SoundEffects"});//系统声音
         clearModel.append({"icon": "../../img/icons/camera.png", "name": qsTr("Camera"), "flag": "CameraCapture"});//摄像头
         clearModel.append({"icon": "../../img/icons/mouse.png", "name": qsTr("MousePointer"), "flag": "MousePointer"});//鼠标指针
         clearModel.append({"icon": "../../img/icons/touchpad.png", "name": qsTr("Touchpad"), "flag": "TouchpadSet"});//触摸板
@@ -134,9 +133,6 @@ Rectangle {
         }
     }
 
-
-
-
     //------------------login
     Rectangle {
         id: online
@@ -163,7 +159,7 @@ Rectangle {
                 picPressed: "../../img/icons/button12-gray-hover.png"
                 fontcolor:"#707070"
                 fontsize: 12
-                width: 70; height: 28
+                width: 56; height: 24
                 text: qsTr("Logout")//注销
                 onClicked: {
                     sessiondispatcher.logout_ubuntukylin_account();
@@ -178,7 +174,6 @@ Rectangle {
         Column {
             spacing: 10
             anchors{
-//                left: logo.right
                 left: logcolumn.right
                 leftMargin: 10
                 top:parent.top
@@ -201,7 +196,6 @@ Rectangle {
                 Text {
                     id: levelText
                     text: ""
-//                    width: 160
                 }
             }
             Row {
@@ -213,11 +207,9 @@ Rectangle {
                 Text {
                     id: scoreText
                     text: ""
-//                    width: 160
                 }
             }
         }
-//        }
         Common.Separator {
             anchors {
                 left: parent.left
@@ -239,9 +231,6 @@ Rectangle {
         }
     }
 
-    //上下分割条
-//    Rectangle {id: splitbar1; x: 2; y: 270; width: parent.width - 4; height: 1; color: "#b9c5cc" }
-//    Rectangle {id: splitbar; x: 2; y: 272; width: parent.width - 4; height: 1; color: "#fafcfe" }
     Common.Separator {
         id: splitbar
         x: 2; y: 270;
@@ -287,7 +276,6 @@ Rectangle {
             wordname: qsTr("Forum Help")//论坛求助
             width: 50
             height: 25
-//            flag: "BBS"
             onClicked: {
                 Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
             }
@@ -297,7 +285,6 @@ Rectangle {
             wordname: qsTr("Features")//新版本特性
             width: 60
             height: 25
-//            flag: "VersionFeature"
             onClicked: {
                 sessiondispatcher.showFeatureDialog();
             }
@@ -307,7 +294,6 @@ Rectangle {
             wordname: qsTr("Feedback")//问题反馈
             width: 40
             height: 25
-//            flag: "BUG"
             onClicked: {
                 Qt.openUrlExternally("https://bugs.launchpad.net/youker-assistant");
             }

@@ -33,66 +33,8 @@ Rectangle {
 //    property int default_index//系统默认主题的索引
 
     ListModel { id: themeModel }
-//    ListModel { id: choices }
-
-    //使用云配置后，控件状态根据配置发生相应的变化
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onTellDownloadCloudConfToQML: {
-//            if(download == "gtk_theme") {
-//                var syslist = sessiondispatcher.get_themes_qt();
-//                widgetthemepage.init_theme = sessiondispatcher.get_theme_qt();
-//                for(var i=0; i < syslist.length; i++) {
-//                    if(syslist[i] == widgetthemepage.init_theme){
-//                        widgetthemepage.themeIndex = i;
-//                        break;
-//                    }
-//                }
-//            }
-//            if(download == "window_theme") {
-//                var windowlist = sessiondispatcher.get_window_themes_qt();
-//                var current_window_theme = sessiondispatcher.get_current_window_theme_qt();
-//                for(var i=0; i < windowlist.length; i++) {
-//                    if (windowlist[i] == current_window_theme) {
-//                        widgetthemepage.current_index = i;
-//                        break;
-//                    }
-//                }
-//                windowcombo.selectedIndex = widgetthemepage.current_index;
-//            }
-//        }
-//    }
 
     Component.onCompleted: {
-        //window theme
-//        var windowlist = sessiondispatcher.get_window_themes_qt();
-//        var current_window_theme = sessiondispatcher.get_current_window_theme_qt();
-//        var default_window_theme = sessiondispatcher.get_default_theme_sring_qt("windowtheme");
-//        //系统默认值为Adwaita，但是目前均无法设置该值
-//        choices.clear();
-//        if(current_window_theme == default_window_theme) {
-//            for(var i=0; i < windowlist.length; i++) {
-//                choices.append({"text": windowlist[i]});
-//                if (windowlist[i] == current_window_theme) {
-//                    widgetthemepage.current_index = i;
-//                    widgetthemepage.default_index = i;
-//                }
-//            }
-//        }
-//        else {
-//            for(var j=0; j < windowlist.length; j++) {
-//                choices.append({"text": windowlist[j]});
-//                if (windowlist[j] == current_window_theme) {
-//                    widgetthemepage.current_index = j;
-//                }
-//                else if (windowlist[j] == default_window_theme) {
-//                    widgetthemepage.default_index = j;
-//                }
-//            }
-//        }
-//        windowcombo.selectedIndex = widgetthemepage.current_index;
-
         //gtk theme
         if(sessiondispatcher.get_locale_version() == "zh_CN") {
             widgetthemepage.path = "../../img/zh_CN/";
@@ -120,12 +62,6 @@ Rectangle {
         }
     }
 
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
-
     Row {
         spacing: 20
         anchors {
@@ -137,7 +73,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -147,22 +82,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -192,93 +111,6 @@ Rectangle {
         }
         width: parent.width - 4
     }
-
-//    Row {
-//        id: themeline
-//        anchors{
-//            left: parent.left
-//            leftMargin: 60
-//            top: top_splitbar.bottom
-//            topMargin: 50
-//        }
-//        z: 11
-//        spacing: 285 - 16 - 20 - 20
-//        Row {
-//            spacing: 20
-//            Image {
-//                source: "../../img/icons/dot.png"
-//                width: 14; height: 14
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-//            Common.TipLabel {
-//                anchors.verticalCenter: parent.verticalCenter
-//                kflag: "yes"
-//                showImage: "../../img/icons/cloud-light.png"
-//            }
-//            Text {
-//                id: iconthemelabel
-//                width: 130
-//                text: qsTr("Window theme:")//窗口主题：
-//                font.pixelSize: 12
-//                color: "#7a7a7a"
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-//            Common.ComboBox {
-//                id: windowcombo
-//                model: choices
-//                width: 220
-//                onSelectedTextChanged: {
-//                    sessiondispatcher.set_window_theme_qt(windowcombo.selectedText);
-//                }
-//            }
-//        }
-
-
-//        Common.Button {
-////            hoverimage: "button12.png"
-//            picNormal: "../../img/icons/button12.png"
-//            picHover: "../../img/icons/button12-hover.png"
-//            picPressed: "../../img/icons/button12-hover.png"
-//            fontcolor:"#ffffff"
-//            fontsize: 12
-//            width: 100; height: 28
-//            text: qsTr("Restore")//恢复默认
-//            onClicked: {
-//                var mylist = sessiondispatcher.get_window_themes_qt();
-//                var mytheme = sessiondispatcher.get_default_theme_sring_qt("windowtheme");
-//                //系统默认值为Adwaita，但是目前均无法设置该值
-//                var flag = false;
-//                for(var k=0; k < mylist.length; k++) {
-//                    if(mylist[k] == mytheme) {
-//                        flag = true;
-//                        break;
-//                    }
-//                }
-//                if(flag) {//系统默认值存在于列表中
-//                    sessiondispatcher.set_default_theme_qt("windowtheme");
-//                    windowcombo.selectedIndex = widgetthemepage.default_index;
-//                }
-//                else {//系统默认值不存在于列表中
-//                    flag = false;
-//                    var q;
-//                    for(q=0; q < mylist.length; q++) {
-//                        if(mylist[q] == "ubuntukylin-theme") {
-//                            flag = true;
-//                            break;
-//                        }
-//                    }
-//                    if(flag) {//ubuntukylin-theme存在于列表中
-//                        sessiondispatcher.set_window_theme_qt("ubuntukylin-theme");
-//                        windowcombo.selectedIndex = q;
-//                    }
-//                    else {//ubuntukylin-theme不存在于列表中
-//                        sessiondispatcher.set_window_theme_qt(mylist[0]);
-//                        windowcombo.selectedIndex = 0;
-//                    }
-//                }
-//            }
-//        }
-//    }
 
     Row {
         id: icontitle

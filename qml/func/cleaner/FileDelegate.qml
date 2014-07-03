@@ -35,13 +35,6 @@ Item {
     property int arrow_num: 0
     width: parent.width
 
-    //----------------------------
-//    property bool showNum: false//决定扫描结果数是否显示
-//    property string arrowFlag
-//    property bool emptyTip//是否显示扫描内容为空的提示图
-//    signal arrowClicked(string cacheFlag, bool expand_flag);
-//    //----------------------------
-
     Item {
         id: delegate
         property alias expandedItemCount: subItemRepeater.count
@@ -61,11 +54,9 @@ Item {
                 id: arrow
                 anchors.verticalCenter: parent.verticalCenter
                 fillMode: "PreserveAspectFit"
-    //                    height: parent.height*0.3
                 height: 28
                 width: 26
                 x:740
-//                y:10//15
                 source: listViewDelegate.arrow
                 opacity: arrow_display
                 //当鼠标点击后,箭头图片旋转90度

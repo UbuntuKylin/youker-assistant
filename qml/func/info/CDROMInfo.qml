@@ -311,7 +311,6 @@ Rectangle {
                         source: ""
                         anchors {
                             right: parent.right
-//                            rightMargin: 30
                         }
                     }
                 }

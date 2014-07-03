@@ -113,17 +113,14 @@ Rectangle {
             else if (msg == "c") {
                 cachestatus.state = "GarbageOK";
                 firstonekey.showImage = leftbar.path + "cleaningup.png";
-//                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "h") {
                 historystatus.state = "HistoryOK";
                 firstonekey.showImage = leftbar.path + "cleaningup.png";
-//                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "k") {
                 cookiestatus.state = "CookiesOK";
                 firstonekey.showImage = leftbar.path + "cleaningup.png";
-//                firstonekey.text = qsTr("Cleaning up...");//正在清理...
             }
             else if (msg == "o") {
                 //清理完毕后显示清理总数
@@ -140,9 +137,6 @@ Rectangle {
                     historydes.text = qsTr("(totally cleared") + leftbar.trace + qsTr("historical records)");//（共清理掉     条历史记录）
                 }
                 //显示清理总数后把与之相关的一些标记和变量恢复默认值
-//                leftbar.cookiesFlag = false;
-//                leftbar.garbageFlag = false;
-//                leftbar.traceFlag = false;
                 leftbar.cookies = "";
                 leftbar.garbage = "";
                 leftbar.trace = "";
@@ -151,7 +145,6 @@ Rectangle {
                 toolkits.alertMSG(qsTr("Cleared!"));//一键清理完毕！
                 leftbar.flag = "onekeyscan";
                 firstonekey.showImage = leftbar.path + "quickscan.png";
-//                firstonekey.text = qsTr("Quick scan");//一键扫描
             }
             staticImage.visible = true;
             dynamicImage.visible = false;
@@ -379,29 +372,6 @@ Rectangle {
         }
     }//Row
 
-//    Column {
-//        id: scanColumn
-//        anchors { top: parent.top; topMargin: 150; left: parent.left; leftMargin: 30 }
-//        spacing: 20
-//        Row {
-//            spacing: 10
-//            Text {
-//                id: showLabel
-//                width: 50
-////                visible: false
-//                visible: true
-//                font.pixelSize: 12
-//                text: qsTr("Scan to:  ")//扫描到：
-//            }
-//            Text {
-//                id: showText
-//                width: leftbar.width - 50 - 20 * 2 - 20
-//                height: 30
-//                text: ""
-//                wrapMode: Text.WrapAnywhere//Text.WordWrap
-//                color: "green"
-//            }
-//        }
     Row{
         spacing: 14
         anchors { top: parent.top; topMargin: 195; left: parent.left; leftMargin: 30 }
@@ -426,7 +396,6 @@ Rectangle {
             id: showLabel
             width: 50
             visible: false
-//            visible: true
             font.pixelSize: 12
             color: "#7a7a7a"
             text: qsTr("(Scan to:  ")//扫描到：
@@ -548,11 +517,6 @@ Rectangle {
                         }
                     ]
                 }
-//                Rectangle {  //分割条
-//                    width: parent.width; height: 1
-//                    anchors { top: lineLayout.bottom; topMargin: 5}
-//                    color: "red"
-//                }
             }
         }
         //---------------history-------------

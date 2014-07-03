@@ -456,10 +456,6 @@ class SessionDaemon(dbus.service.Object):
     def trans_thread_infor(self, target_tid):
         pass
 
-    #@dbus.service.signal(INTERFACE, signature='ss')
-    #def path_transmit_by_cache(self, flag, path):
-    #    pass
-
     @dbus.service.signal(INTERFACE, signature='ssss')
     def data_transmit_by_package(self, flag, name, summary, size):
         pass

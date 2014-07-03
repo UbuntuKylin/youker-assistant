@@ -36,12 +36,6 @@ Rectangle {
     ListModel { id: datechoices }
     ListModel { id: powerchoices }
 
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
-
     Component.onCompleted: {
         panelmanagerpage.battery_exists = sessiondispatcher.judge_power_is_exists_qt();
         if(panelmanagerpage.battery_exists) {
@@ -74,8 +68,6 @@ Rectangle {
                 panelmanagerpage.default_time_index = j;
             }
         }
-
-
 
         if (sessiondispatcher.get_show_seconds_qt()) {
             secondswitcher.switchedOn = true;
@@ -142,7 +134,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -152,22 +143,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -278,7 +253,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -356,7 +330,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -405,7 +378,6 @@ Rectangle {
                 }
             }
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -460,7 +432,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -519,7 +490,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -578,7 +548,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -637,7 +606,6 @@ Rectangle {
                 }
             }
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -694,7 +662,6 @@ Rectangle {
                 }
             }
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -753,7 +720,6 @@ Rectangle {
                 }
             }
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"

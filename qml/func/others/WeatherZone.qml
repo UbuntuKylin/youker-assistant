@@ -90,11 +90,11 @@ Rectangle {
         onStartUpdateForecastWeahter: {
             if(flag == "weather") {
                 weahterzone.resetCurrentWeather();
-//                weahterzone.resetChangeCityBtn();
+                weahterzone.resetChangeCityBtn();
             }
             else if(flag == "yahoo") {
                 weahterzone.resetCurrentYahooWeather();
-//                weahterzone.resetChangeCityBtn();
+                weahterzone.resetChangeCityBtn();
             }
         }
 
@@ -118,12 +118,11 @@ Rectangle {
     }
     Common.StyleButton {
         id: changeCityBtn
-//        visible: false
+        visible: false
         anchors.left: locationText.right
         wordname: qsTr("[Change]")//[切换]
         width: 60
         height: locationText.height
-//        flag: "ChangeCity"
         onClicked: {
             sessiondispatcher.showChangeCityDialog();
         }

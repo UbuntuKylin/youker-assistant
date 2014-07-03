@@ -165,7 +165,6 @@ Rectangle {
                 font.pixelSize: 14
                 color: "#7a7a7a"
                 width: 150
-//                height: 20
             }
             Text {
                 id: slotText
@@ -174,7 +173,6 @@ Rectangle {
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
-//                height: 20
             }
         }
     }
@@ -223,8 +221,6 @@ Rectangle {
                     ListView {
                         id: firstView
                         anchors.fill: parent
-//                        width: parent.width
-//                        height: home.firstFlag ? (7*20 + 6*10) : 0
                         model: firstModel
                         delegate: memoryDelegate
                         visible: false
@@ -252,8 +248,6 @@ Rectangle {
                     ListView {
                         id: secondView
                         anchors.fill: parent
-//                        width: parent.width
-//                        height: home.secondFlag ? (7*20 + 6*10) : 0
                         model: secondModel
                         delegate: memoryDelegate
                         visible: false
@@ -281,8 +275,6 @@ Rectangle {
                     ListView {
                         id: thirdView
                         anchors.fill: parent
-//                        width: parent.width
-//                        height: home.thirdFlag ? (7*20 + 6*10) : 0
                         model: thirdModel
                         delegate: memoryDelegate
                         visible: false
@@ -310,8 +302,6 @@ Rectangle {
                     ListView {
                         id: fourthView
                         anchors.fill: parent
-//                        width: parent.width
-//                        height: home.fourthFlag ? (7*20 + 6*10) : 0
                         model: fourthModel
                         delegate: memoryDelegate
                         visible: false

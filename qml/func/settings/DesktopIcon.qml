@@ -29,12 +29,6 @@ Rectangle {
 
     ListModel { id: choices }
 
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
-
     //使用云配置后，控件状态根据配置发生相应的变化
     Connections
     {
@@ -166,7 +160,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -176,22 +169,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -266,7 +243,6 @@ Rectangle {
             }
 
             Common.Button {
-    //            hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -280,8 +256,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("icon", "icon-theme");
                         iconcombo.selectedIndex = desktopiconsetpage.default_index;
                     }
-//                    sessiondispatcher.set_default_theme_qt("icontheme");
-//                    iconcombo.selectedIndex = desktopiconsetpage.default_index;
                 }
             }
         }
@@ -323,7 +297,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -341,13 +314,6 @@ Rectangle {
                             iconswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_desktop_qt("showdesktopicons");
-//                    if (sessiondispatcher.get_show_desktop_icons_qt()) {
-//                        iconswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        iconswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -389,7 +355,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -407,13 +372,6 @@ Rectangle {
                             folderswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_desktop_qt("homeiconvisible");
-//                    if (sessiondispatcher.get_show_homefolder_qt()) {
-//                        folderswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        folderswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -455,7 +413,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -473,13 +430,6 @@ Rectangle {
                             networkswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_desktop_qt("networkiconvisible");
-//                    if (sessiondispatcher.get_show_network_qt()) {
-//                        networkswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        networkswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -521,7 +471,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -539,13 +488,6 @@ Rectangle {
                             trashswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_desktop_qt("trashiconvisible");
-//                    if (sessiondispatcher.get_show_trash_qt()) {
-//                        trashswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        trashswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -587,7 +529,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -605,13 +546,6 @@ Rectangle {
                             deviceswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_desktop_qt("volumesvisible");
-//                    if (sessiondispatcher.get_show_devices_qt()) {
-//                        deviceswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        deviceswitcher.switchedOn = false;
-//                    }
                 }
             }
         }

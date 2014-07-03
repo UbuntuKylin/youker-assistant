@@ -27,11 +27,6 @@ Rectangle {
     property string touchscrolling_mode: ""
     property string actiontitle: qsTr("Touchpad settings")//触摸板设置
     property string actiontext: qsTr("By setting the relevant properties of your touchpad, make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
 
     //使用云配置后，控件状态根据配置发生相应的变化
     Connections
@@ -103,7 +98,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -113,22 +107,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -208,7 +186,6 @@ Rectangle {
             }
 
             Common.Button {
-    //            hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -227,13 +204,6 @@ Rectangle {
                             touchpadswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_system_qt("touchpad-enabled");//启用禁用触摸板
-//                    if (sessiondispatcher.get_touchpad_enable_qt()) {
-//                        touchpadswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        touchpadswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -276,7 +246,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -295,13 +264,6 @@ Rectangle {
                             horizontalswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_system_qt("horiz-scroll-enabled");//触摸板横向滚动
-//                    if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
-//                        horizontalswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        horizontalswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -369,7 +331,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -396,14 +357,6 @@ Rectangle {
                             legacy.checked = true;
                         }
                     }
-//                    sessiondispatcher.set_default_system_qt("scrollbar-mode");//滚动条类型
-//                    var default_type = sessiondispatcher.get_scrollbars_mode_qt();
-//                    if(default_type == "overlay-auto") {
-//                        overlay.checked = true;
-//                    }
-//                    else if(default_type == "normal") {
-//                        legacy.checked = true;
-//                    }
                 }
             }
         }
@@ -470,7 +423,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -497,14 +449,6 @@ Rectangle {
                             twofinger.checked = true;
                         }
                     }
-//                    sessiondispatcher.set_default_system_qt("scroll-method");//触摸板滚动条触发方式
-//                    var default_mode = sessiondispatcher.get_touchscrolling_mode_qt();
-//                    if(default_mode == "edge-scrolling") {
-//                        edge.checked = true;
-//                    }
-//                    else if(default_mode == "two-finger-scrolling") {
-//                        twofinger.checked = true;
-//                    }
                 }
             }
         }

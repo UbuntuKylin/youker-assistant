@@ -237,7 +237,6 @@ Rectangle {
         Common.Button {
             id: backBtn
             anchors.verticalCenter: parent.verticalCenter
-//            hoverimage: "button12-gray.png"
             picNormal: "../../img/icons/button12-gray.png"
             picHover: "../../img/icons/button12-gray-hover.png"
             picPressed: "../../img/icons/button12-gray-hover.png"
@@ -247,22 +246,6 @@ Rectangle {
             text: qsTr("Back")//返回
             onClicked: {
                 pageStack.pop();
-//                var num = sessiondispatcher.get_page_num();
-//                if (num == 0) {
-//                    pageStack.push(homepage);
-//                }
-//                else if (num == 1) {
-//                    pageStack.push(systemmessage);
-//                }
-//                else if (num == 2) {
-//                    pageStack.push(clearrubbish);
-//                }
-//                else if (num == 3) {
-//                    pageStack.push(systemset);
-//                }
-//                else if (num == 4) {
-//                    pageStack.push(functioncollection);
-//                }
             }
         }
         Column {
@@ -359,7 +342,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -388,15 +370,6 @@ Rectangle {
                             rightbox.checked = true;
                         }
                     }
-//                    sessiondispatcher.set_default_system_qt("control-button-position");
-//                    var default_type = sessiondispatcher.get_window_button_align_qt();
-//                    windowmanagerpage.position_mode = default_type;
-//                    if(default_type == "left") {
-//                        leftbox.checked = true;
-//                    }
-//                    else if(default_type == "right") {
-//                        rightbox.checked = true;
-//                    }
                 }
             }
         }
@@ -437,7 +410,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -456,13 +428,6 @@ Rectangle {
                             menuswitcher.switchedOn = false;
                         }
                     }
-//                    sessiondispatcher.set_default_system_qt("menu-with-icons");
-//                    if (sessiondispatcher.get_menus_have_icons_qt()) {
-//                        menuswitcher.switchedOn = true;
-//                    }
-//                    else {
-//                        menuswitcher.switchedOn = false;
-//                    }
                 }
             }
         }
@@ -499,7 +464,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -513,8 +477,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("window", "mouse-wheel-action");
                         wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
                     }
-//                    sessiondispatcher.set_default_system_qt("wheel-action");
-//                    wheelcombo.selectedIndex = windowmanagerpage.wheel_default_index;
                 }
             }
         }
@@ -551,7 +513,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -565,8 +526,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("window", "action-double-click-titlebar");
                         doublecombo.selectedIndex = windowmanagerpage.double_default_index;
                     }
-//                    sessiondispatcher.set_default_system_qt("double-action");
-//                    doublecombo.selectedIndex = windowmanagerpage.double_default_index;
                 }
             }
         }
@@ -603,7 +562,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -617,8 +575,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("window", "action-middle-click-titlebar");
                         middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
                     }
-//                    sessiondispatcher.set_default_system_qt("middle-action");
-//                    middlecombo.selectedIndex = windowmanagerpage.middle_default_index;
                 }
             }
         }
@@ -655,7 +611,6 @@ Rectangle {
             }
 
             Common.Button {
-//                hoverimage: "blue.png"
                 picNormal: "../../img/icons/button12-blue.png"
                 picHover: "../../img/icons/button12-blue-hover.png"
                 picPressed: "../../img/icons/button12-blue-hover.png"
@@ -669,8 +624,6 @@ Rectangle {
                         sessiondispatcher.restore_uk_default_setting("window", "action-right-click-titlebar");
                         rightcombo.selectedIndex = windowmanagerpage.right_default_index;
                     }
-//                    sessiondispatcher.set_default_system_qt("right-action");
-//                    rightcombo.selectedIndex = windowmanagerpage.right_default_index;
                 }
             }
         }

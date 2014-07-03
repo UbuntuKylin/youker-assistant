@@ -65,17 +65,14 @@ Rectangle {
             if(flag == "apt") {//Apt缓存
                 aptsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": cachepage.aptNum, "checked": true});
                 cachepage.aptNum += 1;
-//                systemdispatcher.set_cache_args(path);
             }
             else if(flag == "software-center") {//软件中心缓存
                 softsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": cachepage.softNum, "checked": true});
                 cachepage.softNum += 1;
-//                systemdispatcher.set_cache_args(path);
             }
             else if(flag == "thumbnails") {//缩略图缓存
                 thumbsubModel.append({"itemTitle": path, "desc": fileFlag, "number": sizeValue, "index": cachepage.thumbNum, "checked": true});
                 cachepage.thumbNum += 1;
-//                systemdispatcher.set_cache_args(path);
             }
         }
         onTellQMLCaheOver: {
@@ -246,7 +243,6 @@ Rectangle {
                         thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                          "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                          "picture": "../../img/toolWidget/thumbnails.png"})
-//                        systemdispatcher.clear_cache_args();
                         aptsubModel.clear();//内容清空
                         softsubModel.clear();//内容清空
                         thumbsubModel.clear();//内容清空
@@ -263,7 +259,6 @@ Rectangle {
                             aptmainModel.append({"mstatus": cachepage.apt_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Package cache cleanup"),
                                              "picture": "../../img/toolWidget/apt-min.png"})
-//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -279,7 +274,6 @@ Rectangle {
                             softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png"})
-//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -295,7 +289,6 @@ Rectangle {
                             thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
-//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -316,7 +309,6 @@ Rectangle {
                             softmainModel.append({"mstatus": cachepage.soft_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Software Center buffer cleaning"),
                                              "picture": "../../img/toolWidget/software-min.png"})
-//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -337,7 +329,6 @@ Rectangle {
                             thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
-//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -358,7 +349,6 @@ Rectangle {
                             thumbmainModel.append({"mstatus": cachepage.thumb_maincheck ? "true": "false",
                                              "itemTitle": qsTr("Cleanup Thumbnails Cache"),
                                              "picture": "../../img/toolWidget/thumbnails.png"})
-//                            systemdispatcher.clear_cache_args();
                             aptsubModel.clear();//内容清空
                             softsubModel.clear();//内容清空
                             thumbsubModel.clear();//内容清空
@@ -442,7 +432,6 @@ Rectangle {
                     if(cachepage.thumb_maincheck == false) {
                         cachepage.thumb_maincheck = true;
                     }
-//                    systemdispatcher.clear_cache_args();
                     cachepage.apt_showNum = false;
                     cachepage.soft_showNum = false;
                     cachepage.thumb_showNum = false;
@@ -583,17 +572,10 @@ Rectangle {
                                     filelist.push(thumbsubModel.get(k).itemTitle);
                                 }
                             }
-//                            console.log("ffff", filelist);
-
-
-
                             doingImage.visible = true;
-//                            console.log("33333333333");
-//                            console.log(systemdispatcher.get_cache_args());
                             //开始清理时，禁用按钮，等到清理完成后解禁
                             actionBtn.enabled = false;
                             systemdispatcher.clean_file_cruft_qt(filelist, "cache");
-//                            systemdispatcher.clean_file_cruft_qt(systemdispatcher.get_cache_args(), "cache");
                         }
                     }
                 }

@@ -362,8 +362,6 @@ signals:
 
     //把cache扫描结果告诉QML
     void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
-    //把cache的绝对路径告诉QML
-//    void tellAbsPathToCacheModel(QString flag, QString path);
     //cache扫描完后告诉QML
     void tellQMLCaheOver(QString flag);
     //把package和old kernel扫描结果告诉QML
@@ -436,8 +434,6 @@ public slots:
     void handler_append_cache_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
     //接收cache扫描完后的信号
     void handler_cache_scan_over(QString flag);
-    //接收cache的绝对路径
-//    void handler_cache_path(QString flag, QString path);
 
     //接收package和old kernel信号，把数据动态堆加到model中
     void handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue);
@@ -484,13 +480,6 @@ public slots:
 private:
     int mainwindow_width;
     int mainwindow_height;
-    int alert_width;
-    int alert_height;
-    //本次alert的x坐标
-    int alert_x;
-    //保额次alert的y坐标
-    int alert_y;
-    int alert_width_bg;
 
     //皮肤对话框对象
 //    SkinsWidget *skin_widget;
