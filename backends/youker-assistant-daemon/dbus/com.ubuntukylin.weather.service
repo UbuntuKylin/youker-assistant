@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.ubuntukylin.weather
+Exec=/usr/bin/youker-assistant-weather.py
