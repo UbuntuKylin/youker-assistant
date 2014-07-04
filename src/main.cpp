@@ -21,7 +21,6 @@
 #include <QDir>
 #include <QTranslator>
 
-//#include "fcitxcfgwizard.h"
 #include "toolkits.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
@@ -43,7 +42,6 @@ void registerTypes() {
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
     qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");
     qmlRegisterType<DeviceManager>("DeviceType", 0, 1, "DeviceManager");
-//    qmlRegisterType<FcitxCfgWizard>("FcitxCfgWizard", 0, 1, "FcitxCfgWizard");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
     qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");
@@ -119,7 +117,7 @@ int main(int argc, char** argv)
     app.processEvents();
     splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
-    homePage.setup(/*"main.qml"*/);
+    homePage.setup();
     if(flag) {
         splash->finish(&homePage);
         delete splash;
@@ -129,13 +127,13 @@ int main(int argc, char** argv)
         mSettings->endGroup();
         mSettings->sync();
         if(slider->exec() == QDialog::Accepted) {
-             homePage.show();
+             homePage.showPage();
         }
     }
     else {
         splash->finish(&homePage);
         //显示主界面，并结束启动画面
-        homePage.show();
+        homePage.showPage();
         delete splash;
     }
     delete mSettings;

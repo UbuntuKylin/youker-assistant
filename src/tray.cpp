@@ -41,7 +41,7 @@ Tray::Tray(QWidget *parent)
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->move(QApplication::desktop()->width() - this->width(), 25);
-    this->show();
+//    this->show();
 
     aboutDlg = new AboutDialog();
     aboutDlg->hide();
@@ -50,10 +50,6 @@ Tray::Tray(QWidget *parent)
     frame->hide();
     connect(this, SIGNAL(sysc_data(QString, QString,QString,int,QString, QString)), frame, SLOT(get_sysc_data(QString,QString,QString,int,QString, QString)));
     connect(frame, SIGNAL(accelerate_memory()), this, SLOT(startMemoryAccelerate()));
-
-    //--------------------------
-//    connect(this, SIGNAL(ready_to_write_user_info_when_exit()), sedispather, SLOT(handler_write_user_info_when_exit()));
-//    connect(sedispather, SIGNAL(ready_to_exit()), this, SLOT(handler_to_exit()));
 
     timer = new QTimer(this);
     timer->setInterval(1000);
@@ -66,23 +62,22 @@ Tray::~Tray() {
     if(timer->isActive()) {
         timer->stop();
     }
-    if(frame) {
+    if(timer != NULL) {
+        delete timer;
+    }
+    if(frame != NULL) {
         delete frame;
     }
-    if(dispather) {
+    if(dispather != NULL) {
         delete dispather;
     }
-    if(sedispather) {
+    if(sedispather != NULL) {
         delete sedispather;
     }
-    if(aboutDlg) {
+    if(aboutDlg != NULL) {
         delete aboutDlg;
     }
 }
-
-//void Tray::handler_to_exit() {
-//    qApp->quit();
-//}
 
 void Tray::updateData() {
     QStringList current_speed = sedispather->get_network_flow_total_qt();
@@ -181,7 +176,6 @@ void Tray::handle_trayIcon_activated(QSystemTrayIcon::ActivationReason reason) {
 }
 
 void Tray::exit() {
-//    emit ready_to_write_user_info_when_exit();
     qApp->quit();
 }
 

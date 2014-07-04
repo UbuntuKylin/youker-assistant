@@ -9,8 +9,9 @@ youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
   * Add some settings about Dash, Panel and Launcher.
   * Use camera to take pictures.
   * Modify moving zone of the main widget, file cleaner, cpu ratio and the monitor ball.
+  * Modify weather model.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 03 Jul 2014 11:29:58 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 04 Jul 2014 11:08:30 +0800
 
 youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
 

@@ -26,7 +26,7 @@
 #include "modaldialog.h"
 #include "httpauth.h"
 #include "newcharacter.h"
-#include "wizarddialog.h"
+#include "selectdialog.h"
 
 class QSettings;
 
@@ -54,16 +54,7 @@ public:
     //退出登录
     Q_INVOKABLE void logout_ubuntukylin_account();
 
-    //得到yahoo城市列表
-    Q_INVOKABLE QStringList search_city_names_qt(QString search_name);
-    //得到对应yahoo城市列表的geonameid列表
-    Q_INVOKABLE QStringList get_geonameid_list_qt();
-    //得到经度
-    Q_INVOKABLE QStringList get_longitude_list_qt();
-    //得到纬度
-    Q_INVOKABLE QStringList get_latitude_list_qt();
-    //得到可以获取天气数据的id
-    Q_INVOKABLE QString get_yahoo_city_id_qt(QString geonameid);
+
 
     //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_session_daemon_qt();
@@ -145,9 +136,6 @@ public:
     Q_INVOKABLE QString get_default_system_sring_qt(QString flag);
     Q_INVOKABLE bool get_default_system_bool_qt(QString schema, QString key);
     Q_INVOKABLE void set_default_system_qt(QString flag);
-    //获取和设置文件管理器默认值:filemanager.py
-//    Q_INVOKABLE bool get_default_filemanager_bool_qt(QString flag);
-//    Q_INVOKABLE int get_default_filemanager_int_qt(QString flag);
     Q_INVOKABLE void set_default_filemanager_qt(QString flag);
 
 
@@ -322,7 +310,6 @@ public:
     /*-------------------weather-------------------*/
     Q_INVOKABLE void get_current_weather_qt();
     void get_current_weather_dict_qt();//当天天气数据获取完成后，通过该函数返回其获取的值给currentInfo
-    void get_current_yahoo_weather_dict_qt();//yahoo当天天气数据获取完成后，通过该函数返回其获取的值给yahoocurrentInfo
 
     QMap<QString, QVariant> currentInfo;
     QMap<QString, QVariant> yahoocurrentInfo;
@@ -330,13 +317,11 @@ public:
     Q_INVOKABLE QString getSingleWeatherInfo(QString key, QString flag);
 
     //显示wizard
-    Q_INVOKABLE bool showWizardController();
-    //显示更改城市对话框
-    Q_INVOKABLE bool showChangeCityDialog();
-    Q_INVOKABLE int getLengthOfCityList();
+    Q_INVOKABLE void showWizardController();
     void initConfigFile();
-    void getCityIdInfo();
-    QStringList getLatandLon(QString id);//得到纬度和经度
+    QString getCityIdInfo();
+    QStringList getLatandLon();//得到纬度和经度
+    void get_current_yahoo_weather_dict_qt();//yahoo当天天气数据获取完成后，通过该函数返回其获取的值给yahoocurrentInfo
 
     //改变主checkbox的状态
     Q_INVOKABLE void change_maincheckbox_status(QString status);
@@ -397,9 +382,6 @@ signals:
     //把上传配置到云端的情况告诉QML
     void tellUploadCloudConfToQML(QString upload);
 
-    //程序退出之前用户信息写入服务器端完毕后，告诉tray退出程序
-//    void ready_to_exit();
-
     //告诉QML确认云配置操作
 //    void tellQMLCloudConfirm();
 
@@ -449,8 +431,6 @@ public slots:
     void handler_append_cookies_to_model(QString flag, QString domain, QString num);
     //接收cookies扫描完后的信号
     void handler_cookies_scan_over(QString cookiesFlag);
-    //程序退出之前接受传递过来的用户信息，准备写入服务器端
-//    void handler_write_user_info_when_exit();
 
     //连接服务器
     void connectHttpServer();
@@ -468,9 +448,6 @@ public slots:
     void handler_download_cloud_conf(QString download);
     //接收上传配置到云端时的信号
     void handler_upload_cloud_conf(QString upload);
-    //接收确认云配置操作
-//    void handler_confirm_cloud_action();
-
     void handlerHistoryNumber(QString flag, int num);
     void handlerLargeFileList(QStringList filelist);
 
@@ -487,14 +464,14 @@ private:
 
     QSettings * mSettings;
     QSettings * default_Settings;
-    QString initCityId;
+//    QString initCityId;
     HttpAuth *httpauth;
 
     int waitTime;//超时重试次数
     QTimer *timer;
     bool loginOK;
     NewCharacter *slidershow; //新版特性界面
-    WizardDialog *wizardDialog;
+    SelectDialog *selectDialog;
 };
 
 #endif // SESSIONDISPATCHER_H

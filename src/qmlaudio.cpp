@@ -30,8 +30,7 @@ void QmlAudio::setSong(const QUrl & songUrl) {
 }
 
 void QmlAudio::play() {
-    audioObject = Phonon::createPlayer(Phonon::MusicCategory,
-                                       Phonon::MediaSource(music_path));
+    audioObject = Phonon::createPlayer(Phonon::MusicCategory, Phonon::MediaSource(music_path));
     audioObject->play();
 //    QSound player(music_path);
 //    player.play();

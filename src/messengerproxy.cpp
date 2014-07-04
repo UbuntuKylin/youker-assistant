@@ -37,14 +37,6 @@ MessengerProxy *MessengerProxy::get_instance_object()
     return proxy;
 }
 
-//void MessengerProxy::hideMainWidget() {
-//    emit mainHide();
-//}
-
-//void MessengerProxy::showMinMainWidget() {
-//    emit showMin();
-//}
-
 //返回首页
 void MessengerProxy::accessCurrentHomeIndex(int index) {
     emit getHomeBackIndex(index);

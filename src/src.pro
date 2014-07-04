@@ -2,6 +2,25 @@ TEMPLATE = app
 TARGET = youker-assistant
 QT += core gui phonon declarative dbus xml
 
+CONFIG(debug,debug|release){
+    message(debug)
+
+    DEFINES += _DEBUG
+
+#    DESTDIR = $$PWD/../bin/Debug
+    OBJECTS_DIR = $$PWD/../obj/Debug
+}
+
+CONFIG(release,debug|release){
+    message(release)
+
+#    DESTDIR = $$PWD/../bin/Release
+    OBJECTS_DIR = $$PWD/../obj/Release
+
+    QMAKE_CFLAGS    += -Os -s
+    QMAKE_CXXFLAGS  += -Os -s
+}
+
 inst1.files += image/youker-assistant.png
 inst1.path = /usr/share/pixmaps
 inst2.files += ../youker-assistant.desktop
@@ -47,12 +66,11 @@ HEADERS += homepage.h \
     qcursorarea.h \
     tray.h \
     kthread.h \
+    selectdialog.h \
+    weatherdb.h \
     suspensionframe.h \
     alertdialog.h \
     toolkits.h \
-    locationdialog.h \
-    wizarddialog.h \
-    changecitydialog.h \
     util.h \
     processmanager.h \
     yprocess.h \
@@ -89,12 +107,11 @@ SOURCES += main.cpp \
     qcursorarea.cpp \
     tray.cpp \
     kthread.cpp \
+    selectdialog.cpp \
+    weatherdb.cpp \
     suspensionframe.cpp \
     alertdialog.cpp \
     toolkits.cpp \
-    locationdialog.cpp \
-    wizarddialog.cpp \
-    changecitydialog.cpp \
     util.cpp \
     processmanager.cpp \
     yprocess.cpp \
@@ -112,8 +129,6 @@ FORMS += \
     tray.ui \
     suspensionframe.ui \
     alertdialog.ui \
-    locationdialog.ui \
-    wizarddialog.ui \
-    changecitydialog.ui \
+    selectdialog.ui \
     kfontdialog.ui \
     aboutdialog.ui

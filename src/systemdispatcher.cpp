@@ -304,14 +304,11 @@ void SystemDispatcher::restore_sound_file_qt(QString targetfile) {
 void SystemDispatcher::restore_all_sound_file_qt(QString soundtheme) {
     systemiface->call("restore_all_sound_file", soundtheme);
 }
-//-----------------------------------------------
 
 //-----------------------monitorball------------------------
 void SystemDispatcher::cleanup_memory_qt() {
     systemiface->call("cleanup_memory");
 }
-
-//-----------------------------------------------
 
 //-----------------------others------------------------
 void SystemDispatcher::custom_plymouth_bg_qt(QString plymouthName) {

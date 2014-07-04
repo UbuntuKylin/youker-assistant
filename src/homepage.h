@@ -36,6 +36,7 @@ public:
     explicit HomePage(QWidget *parent = 0);
     ~HomePage();
     void setup();
+    void showPage();
 
 private:
     QBoxLayout *hlayout;

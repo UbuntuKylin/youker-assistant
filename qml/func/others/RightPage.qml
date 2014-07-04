@@ -226,7 +226,7 @@ Rectangle {
         width: 208;height: 147
         anchors {
             top: parent.top
-            topMargin: 115
+            topMargin: 110
             horizontalCenter: parent.horizontalCenter
         }
     }

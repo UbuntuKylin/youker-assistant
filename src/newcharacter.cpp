@@ -26,7 +26,6 @@ NewCharacter::NewCharacter(QWidget *parent)
     current_pos_x = 0;
     page_count = 5;
     window_btn_count = 5;
-//    mouse_move = true;
 
     //去掉默认标题栏等，设置大小
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
@@ -57,13 +56,11 @@ NewCharacter::NewCharacter(QWidget *parent)
         label->resize(QSize(14, 14));
         label->setIcon(QPixmap(QString(":/pixmap/image/dot_normal")));
         label->move(300+i*14, 319);
-//        connect(label, SIGNAL(ukclicked(IconText*)), this, SLOT(changeCurrentPage(IconText*)));
         connect(label, SIGNAL(ukclicked(int)), this, SLOT(changeCurrentPage(int)));
         pic_array[i] = label;
         label->raise();
     }
     pic_array[0]->setMousePressFlag(true);
-//    cur_pic = pic_array[0];
     pic_array[0]->installEventFilter(this);
     pic_array[1]->installEventFilter(this);
     pic_array[2]->installEventFilter(this);
@@ -89,26 +86,15 @@ NewCharacter::~NewCharacter()
     delete master_label;
     delete close_button;
     delete background_label;
-//    delete cur_pic;
 
     disconnect(timer,SIGNAL(timeout()),this,SLOT(timerChangePosition()));
     if(timer->isActive()) {
         timer->stop();
     }
+    if (timer != NULL) {
+        delete timer;
+    }
 }
-
-//void SliderShow::mousePressEvent(QMouseEvent *event)
-//{
-//    if(event->button() == Qt::LeftButton) {
-//        mouseSrcPos = event->pos();
-//    }
-//}
-
-//void SliderShow::mouseMoveEvent(QMouseEvent *e)
-//{
-//    mouseDstPos = e->pos();
-//    this->move(this->pos() + mouseDstPos - mouseSrcPos);
-//}
 
 bool NewCharacter::eventFilter(QObject *obj, QEvent *event) {
     if(obj == close_button || obj == pic_array[0] || obj == pic_array[1] || obj == pic_array[2] || obj == pic_array[3] || obj == pic_array[4])
@@ -183,111 +169,19 @@ void NewCharacter::changeCurrentPage(int index/*IconText *iconText*/)
     master_label->move(dest_pos_x, 0);
     current_index = index;
     timer->start();
-
-
-
-
-
-
-
-
-
-//    timer->stop();
-//    for(int i=0; i<window_btn_count; i++)
-//    {
-//        if(iconText != pic_array[i]) {
-//            pic_array[i]->setMousePressFlag(false);
-//        }
-//    }
-//    int index = 0;
-//    for(int i=0; i<page_count; i++)
-//    {
-//        if(iconText == pic_array[i]) {
-//            index = i;
-//            break;
-//        }
-//    }
-////    qDebug() << "----------";
-////    qDebug() << index;
-////    qDebug() << current_index;
-//    if(current_index < 0) {//防止异常情况
-//        index = 1;
-//        current_index = 0;
-//    }
-
-//    if(index < current_index) {
-//        while(index != current_index) {
-//            current_index--;
-//            movePicPosition(false);
-//        }
-//    }
-//    else if(index > current_index) {
-//        while(index != current_index)
-//        {
-//            current_index++;
-//            movePicPosition(true);
-//        }
-//    }
-//    else {
-//        movePicPosition(true);
-//    }
-//    timer->start();
 }
-
-//void NewCharacter::changeCurrentButton()
-//{
-//    for(int i=0; i<window_btn_count; i++)
-//    {
-//        if(i != current_index) {
-//            pic_array[i]->setMousePressFlag(false);
-//        }
-//        else {
-//            pic_array[i]->setMousePressFlag(true);
-//        }
-//    }
-//}
 
 void NewCharacter::timerChangePosition() {
     if(current_index == page_count-1) {
         current_index = 0;
         pic_array[0]->setMousePressFlag(true);
-//        cur_pic = pic_array[0];
         this->changeCurrentPage(current_index);
     }
     else {
-//        cur_pic = pic_array[current_index + 1];
         ++current_index;
         this->changeCurrentPage(current_index);
     }
-//    this->changeCurrentPage(cur_pic);
-//    ++current_index;
-//    this->changeCurrentPage(current_index);
 }
-
-//void NewCharacter::movePicPosition(bool direction)
-//{
-//    changeCurrentButton();//更换button遮盖层位置
-//    int current_pos_x = master_label->x();
-//    int dest_pos_x = -680 * current_index;
-//    if(direction) {
-//        while(current_pos_x > dest_pos_x)
-//        {
-//            master_label->move(current_pos_x-20, 0);
-//            current_pos_x = master_label->x();
-//            qApp->processEvents(QEventLoop::AllEvents);//防止界面冻结
-//        }
-//    }
-//    else {
-//        while(current_pos_x < dest_pos_x)
-//        {
-//            master_label->move(current_pos_x+20, 0);
-//            current_pos_x = master_label->x();
-//            qApp->processEvents(QEventLoop::AllEvents);//防止界面冻结
-//        }
-//    }
-
-//    master_label->move(dest_pos_x, 0);
-//}
 
 void NewCharacter::showSlider() {
     timer->start(3000);

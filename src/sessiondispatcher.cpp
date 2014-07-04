@@ -27,7 +27,6 @@
 #include <QFontDialog>
 #include <QFileDialog>
 #include "kthread.h"
-#include "changecitydialog.h"
 #include "util.h"
 #include "kfontdialog.h"
 #include "logindialog.h"
@@ -102,9 +101,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(get_largefile_list(QStringList)), this, SLOT(handlerLargeFileList(QStringList)));
 
     QObject::connect(MessengerProxy::get_instance_object(), SIGNAL(getHomeBackIndex(int)), this, SLOT(handlerBackToHomePage(int)));
-
-    wizardDialog = new WizardDialog(mSettings, 0);
-    connect(wizardDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
+    selectDialog = new SelectDialog(mSettings, 0);
+    connect(selectDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -148,8 +146,8 @@ SessionDispatcher::~SessionDispatcher() {
         delete slidershow;
     }
 
-    if (wizardDialog != NULL) {
-        delete wizardDialog;
+    if (selectDialog != NULL) {
+        delete selectDialog;
     }
 }
 
@@ -241,7 +239,6 @@ void SessionDispatcher::handler_change_titlebar_position(QString position) {
 
 //每30minutes连接服务器beat一次
 void SessionDispatcher::connectHttpServer(){
-    qDebug()<<"start to connect every 30 minutes...";
     mSettings->beginGroup("user");
     int id = mSettings->value("id").toInt();
     mSettings->endGroup();
@@ -295,18 +292,10 @@ void SessionDispatcher::ready_exit_normally() {
     httpauth->sendGetRequest(url);
 }
 
-//void SessionDispatcher::handler_write_user_info_when_exit() {//更新数据库数据和本地配置文件
-//    this->ready_exit_normally();
-//    emit this->ready_to_exit();//通知菜单可以退出程序了
-//}
-
 //点击登录框的确定按钮后，开始发送数据给服务端进行登录验证
 void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
     //显示登录动态图
     emit showLoginAnimatedImage();
-//    qDebug() << user;
-//    qDebug() << pwd;
-
     //发送数据给服务端进行登录验证
     QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
     QUrl url(requestData);
@@ -386,31 +375,6 @@ void SessionDispatcher::handle_data_when_login_failed(int status) {
 //根据积分计算用户等级
 QString SessionDispatcher::score_count_level(int score) {
     return QString::number(qFloor(sqrt((score - 5) / 30 )));
-}
-
-QStringList SessionDispatcher::search_city_names_qt(QString search_name) {
-    QDBusReply<QStringList> reply = sessioniface->call("search_city_names", search_name);
-    return reply.value();
-}
-
-QStringList SessionDispatcher::get_geonameid_list_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_geonameid_list");
-    return reply.value();
-}
-
-QStringList SessionDispatcher::get_longitude_list_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_longitude_list");
-    return reply.value();
-}
-
-QStringList SessionDispatcher::get_latitude_list_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_latitude_list");
-    return reply.value();
-}
-
-QString SessionDispatcher::get_yahoo_city_id_qt(QString geonameid) {
-    QDBusReply<QString> reply = sessioniface->call("get_yahoo_city_id", geonameid);
-    return reply.value();
 }
 
 //更加相应的标记去获取需要的天气数据
@@ -509,23 +473,13 @@ void SessionDispatcher::scan_system_history_qt() {
 //    return reply.value();
 //}
 
-/*QStringList*/void SessionDispatcher::scan_of_large_qt(QString abspath, int size) {
-//    sessioniface->call("scan_of_large", size, abspath);
-//    QDBusReply<QStringList> reply = sessioniface->call("scan_of_large", size, abspath);
-//    return reply.value();
-
+void SessionDispatcher::scan_of_large_qt(QString abspath, int size) {
     QStringList tmp;
     KThread *thread = new KThread(tmp, sessioniface, "scan_of_large", abspath, size);
     thread->start();
 }
 
-//QStringList SessionDispatcher::scan_cookies_records_qt() {
-//    QDBusReply<QStringList> reply = sessioniface->call("scan_cookies_records");
-//    return reply.value();
-//}
-
 void SessionDispatcher::cookies_scan_function_qt(QString flag) {
-//    sessioniface->call("cookies_scan_function", flag);
     QStringList tmp;
     KThread *thread = new KThread(tmp, sessioniface, "cookies_scan_function", flag);
     thread->start();
@@ -572,14 +526,11 @@ QStringList SessionDispatcher::get_package_arglist(int i) {
 }
 
 void SessionDispatcher::cache_scan_function_qt(QStringList argList, QString flag) {
-//    sessioniface->call("cache_scan_function", argList, flag);
     KThread *thread = new KThread(argList, sessioniface, "cache_scan_function", flag);
     thread->start();
 }
 
 void SessionDispatcher::package_scan_function_qt(QStringList argList) {
-//    sessioniface->call("package_scan_function", argList);
-
     KThread *thread = new KThread(argList, sessioniface, "package_scan_function");
     thread->start();
 }
@@ -664,10 +615,6 @@ bool SessionDispatcher::showConfirmDialog(QString title, QString content) {
         return true;
     }
 }
-
-//void SessionDispatcher::handler_confirm_cloud_action() {
-//    emit this->tellQMLCloudConfirm();
-//}
 
 QString SessionDispatcher::getSingleInfo(QString key) {
     QVariant info = systemInfo.value(key);
@@ -978,7 +925,6 @@ bool SessionDispatcher::get_launcher_have_showdesktopicon_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_launcher_have_showdesktopicon");
     return reply.value();
 }
-
 
 // for v1.1.0
 //透明度
@@ -1410,10 +1356,6 @@ void SessionDispatcher::restore_default_font_signal(QString flag) {
     emit notifyFontStyleToQML(flag); //font_style
 }
 
-//QString SessionDispatcher::getSelectedFcitxFont() {
-//     return selectedFcitxFont;//
-//}
-
 void SessionDispatcher::show_font_dialog(QString flag) {
     KFontDialog *fontDialog = new KFontDialog(mSettings, flag, 0);
     fontDialog->exec();
@@ -1660,15 +1602,6 @@ void SessionDispatcher::set_sound_theme_qt(QString theme) {
     sessioniface->call("set_sound_theme", theme);
 }
 
-/*-------------------filemanager of beauty-------------------*/
-//bool SessionDispatcher::get_default_filemanager_bool_qt(QString flag) {
-
-//}
-
-//int SessionDispatcher::get_default_filemanager_int_qt(QString flag) {
-
-//}
-
 void SessionDispatcher::set_default_filemanager_qt(QString flag) {
     if(flag == "pathbar") {//路径输入框取代路径栏
         sessioniface->call("set_default_filemanager", "org.gnome.nautilus.preferences", "always-use-location-entry", "boolean");
@@ -1783,15 +1716,15 @@ QStringList SessionDispatcher::get_network_flow_total_qt() {
 }
 
 void SessionDispatcher::get_current_weather_qt() {
-    getCityIdInfo();
-    QStringList tmplist;
+    QString initCityId = this->getCityIdInfo();
     bool flag = Util::id_exists_in_location_file(initCityId);
     if(flag) {//获取中国气象局数据
+        QStringList tmplist;
         KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
         thread->start();
     }
     else {//获取雅虎气象数据
-        QStringList latlon = this->getLatandLon(initCityId);
+        QStringList latlon = this->getLatandLon();
         KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
         thread->start();
     }
@@ -1809,6 +1742,7 @@ void SessionDispatcher::get_current_yahoo_weather_dict_qt() {
     yahoocurrentInfo = reply.value();
 }
 
+
 QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     QVariant info = "";
     if(flag == "current") {
@@ -1823,49 +1757,16 @@ QString SessionDispatcher::getSingleWeatherInfo(QString key, QString flag) {
     return info.toString();
 }
 
-bool SessionDispatcher::showWizardController() {
-    //WizardDialog width:531; WizardDialog height:210
+void SessionDispatcher::showWizardController() {
+    //selectDialog width:531; selectDialog height:210
     int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (531  / 2);
     int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (210  / 2);
-    wizardDialog->move(w_x, w_y);
-    wizardDialog->show();
-    return true;
-//    wizardDialog->QWidget::setAttribute(Qt::WA_DeleteOnClose);
-//    if(wizardDialog->exec()==QDialog::Rejected) {
-//        return false;
-//    }
-//    else {
-//        return true;
-//    }
-}
-
-
-bool SessionDispatcher::showChangeCityDialog() {
-    //ChangeCityDialog width:421; ChangeCityDialog height:280
-    ChangeCityDialog *cityDialog = new ChangeCityDialog(mSettings);
-    cityDialog-> QWidget::setAttribute(Qt::WA_DeleteOnClose);
-    connect(cityDialog, SIGNAL(readyToUpdateWeather()), this, SLOT(handler_change_city()));
-    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (421  / 2);
-    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (280  / 2);
-    cityDialog->move(w_x, w_y);
-    if(cityDialog->exec()==QDialog::Rejected) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    selectDialog->move(w_x, w_y);
+    selectDialog->showCityDialog();
 }
 
 void SessionDispatcher::handler_change_city() {
     emit startChangeQMLCity();
-}
-
-int SessionDispatcher::getLengthOfCityList() {
-    mSettings->beginGroup("weather");
-    QStringList cityList = mSettings->value("places").toStringList();
-    mSettings->endGroup();
-    mSettings->sync();
-    return cityList.size();
 }
 
 void SessionDispatcher::initConfigFile() {
@@ -1883,73 +1784,36 @@ void SessionDispatcher::initConfigFile() {
         cityId = QString("101250101");
         mSettings->setValue("cityId", cityId);
     }
-    QStringList idList = mSettings->value("idList").toStringList();
-    if(idList.isEmpty()) {
-        idList.append("101250101");
-        idList.append("101010100");
-        idList.append("101020100");
-        mSettings->setValue("idList", idList);
+    QString cityName = mSettings->value("cityName").toString();
+    if(cityName.isEmpty()) {
+        cityName = QString("湖南,长沙,长沙");
+        mSettings->setValue("cityName", cityName);
     }
-    QStringList places = mSettings->value("places").toStringList();
-    //places为空时，赋默认值为：湖南,长沙,长沙
-    if(places.isEmpty()) {
-//        places = QStringList("湖南,长沙,长沙");
-        places.append("湖南,长沙,长沙");
-        places.append("北京,北京,北京");
-        places.append("上海,上海,上海");
-        mSettings->setValue("places", places);
-    }
-    //纬度
-    QStringList latitude = mSettings->value("latitude").toStringList();
-    if(latitude.isEmpty()) {
-        latitude.append("NA");
-        latitude.append("NA");
-        latitude.append("NA");
-        mSettings->setValue("latitude", latitude);
-    }
-    //经度
-    QStringList longitude = mSettings->value("longitude").toStringList();
-    if(longitude.isEmpty()) {
-        longitude.append("NA");
-        longitude.append("NA");
-        longitude.append("NA");
-        mSettings->setValue("longitude", longitude);
+    QStringList lat_lon = mSettings->value("latLon").toStringList();
+    if(lat_lon.isEmpty()) {
+        lat_lon.append("NA");
+        lat_lon.append("NA");
+        mSettings->setValue("latLon", lat_lon);
     }
     mSettings->endGroup();
     mSettings->sync();
 }
 
-void SessionDispatcher::getCityIdInfo() {
+QString SessionDispatcher::getCityIdInfo() {
     mSettings->beginGroup("weather");
-    initCityId = mSettings->value("cityId").toString();
+    QString initCityId = mSettings->value("cityId").toString();
     mSettings->endGroup();
     mSettings->sync();
+    return initCityId;
 }
 
-QStringList SessionDispatcher::getLatandLon(QString id) {
-    QStringList tmp;
-    bool flag = false;
+QStringList SessionDispatcher::getLatandLon() {
+    QStringList lat_lon;
     mSettings->beginGroup("weather");
-    QStringList idList = mSettings->value("idList").toStringList();
-    QStringList latitude = mSettings->value("latitude").toStringList();
-    QStringList longitude = mSettings->value("longitude").toStringList();
+    lat_lon = mSettings->value("latLon").toStringList();
     mSettings->endGroup();
     mSettings->sync();
-
-    int j = 0;
-    for (int i=0; i< idList.length(); i++) {
-        if(id == idList[i]) {
-            flag = true;
-            break;
-        }
-        j += 1;
-    }
-    if(flag) {
-        flag = false;
-        tmp << latitude[j];
-        tmp << longitude[j];
-    }
-    return tmp;
+    return lat_lon;
 }
 
 void SessionDispatcher::change_maincheckbox_status(QString status) {

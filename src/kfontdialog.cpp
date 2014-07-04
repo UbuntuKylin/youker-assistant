@@ -23,7 +23,6 @@
 #include <QMessageBox>
 
 extern QString selectedFont;
-//extern QString selectedFcitxFont;
 
 KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
     QDialog(parent),
@@ -82,6 +81,15 @@ KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
 KFontDialog::~KFontDialog()
 {
     delete ui;
+    if (familymodel != NULL) {
+        delete familymodel;
+    }
+    if (stylemodel != NULL) {
+        delete stylemodel;
+    }
+    if (sizemodel != NULL) {
+        delete sizemodel;
+    }
 }
 
 void KFontDialog::getInitFont() {
@@ -280,8 +288,6 @@ void KFontDialog::on_okBtn_clicked() {
     }
     else {
         selectedFont = ui->familyEdit->text().append(" ").append(ui->styleEdit->text().append(" ").append(ui->sizeEdit->text()));
-//        selectedFcitxFont = ui->familyEdit->text();
-//        qDebug()<<selectedFcitxFont;
         this->accept();
     }
 }

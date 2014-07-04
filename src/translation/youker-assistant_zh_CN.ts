@@ -742,48 +742,40 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ChangeCityDialog</name>
     <message>
-        <location filename="../changecitydialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>对话框</translation>
+        <translation type="obsolete">对话框</translation>
     </message>
     <message>
-        <location filename="../changecitydialog.ui" line="51"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change Cities&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;更换城市&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;更换城市&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../changecitydialog.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;City List:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;城市列表：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;城市列表：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../changecitydialog.ui" line="135"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="obsolete">取消</translation>
     </message>
     <message>
-        <location filename="../changecitydialog.ui" line="77"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../changecitydialog.ui" line="109"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置三个城市，点击“首页”上的“配置”按钮添加城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置三个城市，点击“首页”上的“配置”按钮添加城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Three cities to be set by default, Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置三个城市，点击“首页”上的“配置”按钮添加城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../changecitydialog.cpp" line="79"/>
         <source>Warning:</source>
-        <translation>警告：</translation>
+        <translation type="obsolete">警告：</translation>
     </message>
     <message>
-        <location filename="../changecitydialog.cpp" line="80"/>
         <source>Cannot find the city!</source>
-        <translation>没有找到对应城市！</translation>
+        <translation type="obsolete">没有找到对应城市！</translation>
     </message>
     <message>
         <source>The configuration file is not found!</source>
@@ -1938,12 +1930,12 @@ p, li { white-space: pre-wrap; }
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../kfontdialog.cpp" line="277"/>
+        <location filename="../kfontdialog.cpp" line="276"/>
         <source>Tips</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../kfontdialog.cpp" line="278"/>
+        <location filename="../kfontdialog.cpp" line="277"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
         <translation>您还没有更换字体，请选择字体进行更换！</translation>
     </message>
@@ -2215,49 +2207,40 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LocationDialog</name>
     <message>
-        <location filename="../locationdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>对话框</translation>
+        <translation type="obsolete">对话框</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name or pinyin to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市中文名或者拼音进行查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../locationdialog.ui" line="71"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../locationdialog.ui" line="110"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="obsolete">取消</translation>
     </message>
     <message>
-        <location filename="../locationdialog.ui" line="123"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市名字去查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市名字去查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../locationdialog.ui" line="97"/>
         <source>Search</source>
-        <translation>查找</translation>
+        <translation type="obsolete">查找</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="194"/>
-        <location filename="../locationdialog.cpp" line="222"/>
         <source>Warning:</source>
-        <translation>警告：</translation>
+        <translation type="obsolete">警告：</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="195"/>
         <source>Please input city name and click &apos;find&apos; button to find!</source>
-        <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
+        <translation type="obsolete">请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
     <message>
-        <location filename="../locationdialog.cpp" line="223"/>
         <source>Please input city name and click &apos;search&apos; button to find!</source>
-        <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
+        <translation type="obsolete">请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
 </context>
 <context>
@@ -3309,9 +3292,76 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>SelectDialog</name>
+    <message>
+        <location filename="../selectdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>对话框</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.ui" line="72"/>
+        <source>Chinese Cities</source>
+        <translation>中国国内城市</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.ui" line="136"/>
+        <location filename="../selectdialog.ui" line="206"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.ui" line="142"/>
+        <source>Foreign Cities</source>
+        <translation>国外城市</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.ui" line="154"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入非中国国内城市名字去查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.ui" line="167"/>
+        <source>Search</source>
+        <translation>查找</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.ui" line="123"/>
+        <location filename="../selectdialog.ui" line="193"/>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.ui" line="51"/>
+        <source>Select City</source>
+        <translation>选择城市</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.cpp" line="181"/>
+        <location filename="../selectdialog.cpp" line="202"/>
+        <location filename="../selectdialog.cpp" line="233"/>
+        <source>Warning:</source>
+        <translation>警告：</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.cpp" line="182"/>
+        <source>The city was not be found, please input the city name again!</source>
+        <translation>没有找到该城市，请重新输入城市名字！</translation>
+    </message>
+    <message>
+        <source>Please input city name and click &apos;find&apos; button to find!</source>
+        <translation type="obsolete">请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.cpp" line="203"/>
+        <location filename="../selectdialog.cpp" line="234"/>
+        <source>Please input city name and click &apos;search&apos; button to find!</source>
+        <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
+    </message>
+</context>
+<context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1446"/>
+        <location filename="../sessiondispatcher.cpp" line="1388"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -3887,7 +3937,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="352"/>
+        <location filename="../systemdispatcher.cpp" line="349"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
@@ -3896,17 +3946,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">图像文件  (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="352"/>
+        <location filename="../systemdispatcher.cpp" line="349"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation>图像文件  (*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="357"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Select music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="357"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
@@ -4492,22 +4542,22 @@ p, li { white-space: pre-wrap; }
         <translation>0%</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="142"/>
+        <location filename="../tray.cpp" line="137"/>
         <source>Hide/Show window</source>
         <translation>隐藏/显示主界面</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="144"/>
+        <location filename="../tray.cpp" line="139"/>
         <source>Hide/Show monitor</source>
         <translation>隐藏/显示监控球</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="149"/>
+        <location filename="../tray.cpp" line="144"/>
         <source>About</source>
         <translation>关于本软件</translation>
     </message>
     <message>
-        <location filename="../tray.cpp" line="152"/>
+        <location filename="../tray.cpp" line="147"/>
         <source>&amp;Exit</source>
         <translation>退出(&amp;E)</translation>
     </message>
@@ -4615,17 +4665,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">请检查网络。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="40"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="29"/>
         <source>Weather</source>
         <translation>天气</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="41"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="30"/>
         <source>Wind</source>
         <translation>风力</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="42"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="31"/>
         <source>AQI</source>
         <translation>空气质量指数</translation>
     </message>
@@ -4634,22 +4684,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">当前温度（℃）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="44"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="33"/>
         <source>Temperature range</source>
         <translation>温度范围</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="45"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="34"/>
         <source>Humidity</source>
         <translation>湿度</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="171"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="100"/>
+        <source>City</source>
+        <translation>城市</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="168"/>
         <source>N/A</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="66"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="55"/>
         <source>AQI:</source>
         <translation>空气质量指数：</translation>
     </message>
@@ -4662,43 +4717,42 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">时发布</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="67"/>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="80"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="56"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="69"/>
         <source>Current temperature:</source>
         <translation>当前温度：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="68"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="57"/>
         <source>Temperature range:</source>
         <translation>温度范围：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="69"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="58"/>
         <source>Humidity:</source>
         <translation>湿度：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="79"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="68"/>
         <source>Wind:</source>
         <translation>风力：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="81"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="70"/>
         <source>Sunrise:</source>
         <translation>日出：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="82"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="71"/>
         <source>Sunset:</source>
         <translation>日落：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="113"/>
         <source>Changsha</source>
-        <translation>长沙</translation>
+        <translation type="obsolete">长沙</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="123"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="110"/>
         <source>[Change]</source>
         <translation>[ 切换 ]</translation>
     </message>
@@ -4712,12 +4766,12 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="43"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="32"/>
         <source>Current temperature</source>
         <translation>当前温度（℃）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="63"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="52"/>
         <source> </source>
         <translation>发布</translation>
     </message>
@@ -4726,7 +4780,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">[更换城市]</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="133"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="120"/>
         <source>Release time</source>
         <translation>发布时间</translation>
     </message>
@@ -4735,9 +4789,8 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">预  报</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="154"/>
         <source>Configure</source>
-        <translation>配  置</translation>
+        <translation type="obsolete">配  置</translation>
     </message>
     <message>
         <source>Update</source>
@@ -4748,27 +4801,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">更新完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="177"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="174"/>
         <source>AQI:N/A</source>
         <translation>空气质量指数：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="183"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="180"/>
         <source>Temperature:N/A</source>
         <translation>温度：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="189"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="186"/>
         <source>Humidity:N/A</source>
         <translation>湿度：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="195"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="192"/>
         <source>Temperature range:N/A</source>
         <translation>温度范围：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="201"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="198"/>
         <source>Wind:N/A</source>
         <translation>风力：未知</translation>
     </message>
@@ -4915,23 +4968,20 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>WizardDialog</name>
     <message>
-        <location filename="../wizarddialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>对话框</translation>
+        <translation type="obsolete">对话框</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="38"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weather Configuration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;天气配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;天气配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="105"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Location:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;地点：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;地点：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;minute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -4942,39 +4992,32 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="214"/>
         <source>Add City</source>
-        <translation>添加城市</translation>
+        <translation type="obsolete">添加城市</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="227"/>
         <source>Delete City</source>
-        <translation>删除城市</translation>
+        <translation type="obsolete">删除城市</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="169"/>
         <source>Back</source>
-        <translation>返回</translation>
+        <translation type="obsolete">返回</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="143"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle: 60 &lt;a name=&quot;w_98&quot;/&gt;minutes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期： 60 &lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期： 60 &lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="156"/>
         <source>Finish</source>
-        <translation>完成</translation>
+        <translation type="obsolete">完成</translation>
     </message>
     <message utf8="true">
-        <location filename="../wizarddialog.ui" line="246"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperature unit: ℃&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温度单位： ℃&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温度单位： ℃&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.ui" line="124"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: CMA/Yahoo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局 / 雅虎&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局 / 雅虎&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wind speed unit: Beaufort number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -4989,14 +5032,12 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="124"/>
         <source>Warning:</source>
-        <translation>警告：</translation>
+        <translation type="obsolete">警告：</translation>
     </message>
     <message>
-        <location filename="../wizarddialog.cpp" line="125"/>
         <source>The city already exists, please click on the &apos;[Change City]&apos; button!</source>
-        <translation>该城市已经存在，请点击 ’[更换城市]‘ 按钮！</translation>
+        <translation type="obsolete">该城市已经存在，请点击 ’[更换城市]‘ 按钮！</translation>
     </message>
     <message>
         <source>The configuration file is not found!</source>

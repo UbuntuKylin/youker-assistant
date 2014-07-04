@@ -14,6 +14,8 @@ inst6.files += ../backends/youker-assistant-daemon/data/youker-assistant-start.i
 inst6.path = /var/lib/youker-assistant-daemon/
 inst7.files += ../backends/youker-assistant-daemon/data/ubuntukylin-default-settings.ini
 inst7.path = /var/lib/youker-assistant-daemon/
+inst8.files += ../backends/youker-assistant-daemon/data/weather-app.db
+inst8.path = /var/lib/youker-assistant-daemon/
 
 INSTALLS += inst1 \
     inst2 \
@@ -21,4 +23,5 @@ INSTALLS += inst1 \
     inst4 \
     inst5 \
     inst6 \
-    inst7
+    inst7 \
+    inst8

@@ -23,17 +23,6 @@ Rectangle {
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
 
-    //设置[更换城市]按钮是否显示
-    function resetChangeCityBtn() {
-        var len = sessiondispatcher.getLengthOfCityList();
-        if(len <= 1) {
-            changeCityBtn.visible = false;
-        }
-        else {
-            changeCityBtn.visible = true;
-        }
-    }
-
     //当启动时没有网络的时候，设置默认界面
     function setDefaultWeather() {
         weatherIcon.source = "../../img/weather/d0.gif"
@@ -90,11 +79,9 @@ Rectangle {
         onStartUpdateForecastWeahter: {
             if(flag == "weather") {
                 weahterzone.resetCurrentWeather();
-                weahterzone.resetChangeCityBtn();
             }
             else if(flag == "yahoo") {
                 weahterzone.resetCurrentYahooWeather();
-                weahterzone.resetChangeCityBtn();
             }
         }
 
@@ -110,7 +97,7 @@ Rectangle {
     }
     Text {
         id: locationText
-        text: qsTr("Changsha")//长沙
+        text: qsTr("City")//城市
         font.bold: true
         font.pixelSize: 14
         color: "#383838"
@@ -118,13 +105,13 @@ Rectangle {
     }
     Common.StyleButton {
         id: changeCityBtn
-        visible: false
+//        visible: false
         anchors.left: locationText.right
         wordname: qsTr("[Change]")//[切换]
         width: 60
         height: locationText.height
         onClicked: {
-            sessiondispatcher.showChangeCityDialog();
+            sessiondispatcher.showWizardController();
         }
     }
 
@@ -136,29 +123,39 @@ Rectangle {
         color: "#383838"
         anchors.right: parent.right
     }
-    Column {
+    Image {
+        id: weatherIcon
         anchors {
             top: ptimeText.bottom
             topMargin: 5
             right: parent.right
         }
-        Image {
-            id: weatherIcon
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: 48; height: 48
-            source: ""//http://l.yimg.com/a/i/us/we/52/21.gif
-         }
-        Common.StyleButton {
-            id: preferencesBtn
-            anchors.horizontalCenter: parent.horizontalCenter
-            wordname: qsTr("Configure")//配  置
-            width: 40
-            height: 20
-            onClicked: {
-                sessiondispatcher.showWizardController();
-            }
-        }
-    }
+        width: 48; height: 48
+        source: ""
+     }
+//    Column {
+//        anchors {
+//            top: ptimeText.bottom
+//            topMargin: 5
+//            right: parent.right
+//        }
+//        Image {
+//            id: weatherIcon
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            width: 48; height: 48
+//            source: ""
+//         }
+//        Common.StyleButton {
+//            id: preferencesBtn
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            wordname: qsTr("Configure")//配  置
+//            width: 40
+//            height: 20
+//            onClicked: {
+//                sessiondispatcher.showWizardController();
+//            }
+//        }
+//    }
     Row {
         anchors.top: parent.top
         anchors.topMargin: 25
